@@ -1,5 +1,5 @@
 import NextLink from 'next/link';
-import { Box, Flex, Container, Separator, Grid, Text, Link } from '@modulz/design-system';
+import { Box, Flex, Container, Separator, Grid, Title, Subtitle, Text, Link } from '@modulz/design-system';
 import { RadixLogo } from '../components/RadixLogo';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
 
@@ -39,28 +39,15 @@ export default function Home() {
         </NextLink>
       </Box>
       <Container size="3" css={{ textAlign: 'center', mb: '$4' }}>
-        <Text
-          size={{ initial: '8', bp2: '9' }}
-          css={{ fontWeight: 500, lineHeight: '35px', bp2: { lineHeight: '55px' } }}
-        >
-          Radix UI — Suite Max Pro II X
-        </Text>
+        <Title>
+          The UI toolkit
+        </Title>
       </Container>
 
       <Container size="2" css={{ textAlign: 'center' }}>
-        <Text
-          as="h2"
-          size={{ initial: '5', bp2: '6' }}
-          css={{
-            color: '$gray800',
-            textAlign: 'center',
-            lineHeight: '25px',
-            bp2: { lineHeight: '30px' },
-          }}
-        >
-          Everything UI for developers, designers and all creative minds. From tokens to fully
-          fledged page layouts. From low-level accessible components to Stripe like buttons.
-        </Text>
+        <Subtitle>
+          Components, colors, icons, templates, and an extensive design system. Free and open-source.
+        </Subtitle>
       </Container>
 
       <Flex css={{ justifyContent: 'center', my: '$9' }}>
@@ -71,7 +58,7 @@ export default function Home() {
         <Text as="h2" size={{ initial: '6', bp2: '7' }} css={{ mb: '$4', fontWeight: 500 }}>
           Products
         </Text>
-        <Text as="h3" size={{ initial: '5', bp2: '6' }} css={{ color: '$gray800', mb: '$4' }}>
+        <Text as="h3" size={{ initial: '5', bp2: '6' }} css={{ color: '$gray900', mb: '$4' }}>
           Everything a UI needs.
         </Text>
       </Container>
@@ -94,7 +81,7 @@ export default function Home() {
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
-              css={{ lineHeight: '30px', color: '$gray800' }}
+              css={{ lineHeight: '30px', color: '$gray900' }}
             >
               Browse an extensive collection of themes, including dark mode. Fully tested and
               interoperable with Radix Components.
@@ -108,7 +95,7 @@ export default function Home() {
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
-              css={{ lineHeight: '30px', color: '$gray800' }}
+              css={{ lineHeight: '30px', color: '$gray900' }}
             >
               An off-the-shelf set of components. Built with Radix Primitives and Stitches.
             </Text>
@@ -125,7 +112,7 @@ export default function Home() {
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
-              css={{ lineHeight: '30px', color: '$gray800' }}
+              css={{ lineHeight: '30px', color: '$gray900' }}
             >
               Low-level, accessible and unstyled React Components. The foundation of our Design
               System.
@@ -143,7 +130,7 @@ export default function Home() {
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
-              css={{ lineHeight: '30px', color: '$gray800' }}
+              css={{ lineHeight: '30px', color: '$gray900' }}
             >
               A collection of one-offs components, built with Radix Primitives. Browse and pick the
               ones you need.
@@ -158,7 +145,7 @@ export default function Home() {
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
-              css={{ lineHeight: '30px', color: '$gray800' }}
+              css={{ lineHeight: '30px', color: '$gray900' }}
             >
               An ever-growing library of crisp icons. Currently more than 300 to choose from.
               Available in different sizes.
@@ -173,7 +160,7 @@ export default function Home() {
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
-              css={{ lineHeight: '30px', color: '$gray800' }}
+              css={{ lineHeight: '30px', color: '$gray900' }}
             >
               Tokens for beautiful typography. Includes different font faces, as well as line
               heights, letter spacings and font weights.
