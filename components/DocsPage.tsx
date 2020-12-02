@@ -55,7 +55,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
           width: '100%',
           maxHeight: 'auto',
           borderBottom: '1px solid',
-          borderColor: '$gray300',
+          borderColor: '$gray500',
           WebkitOverflowScrolling: 'touch',
           overflowX: 'hidden',
 
@@ -67,7 +67,6 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
             width: '250px',
             borderRight: '1px solid',
             borderBottom: '0',
-            borderColor: '$gray300',
           },
         }}
       >
@@ -134,18 +133,17 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
         css={{
           maxWidth: '100%',
           flex: 1,
-          pt: '$8',
-          pb: '$9',
+          pt: '$7',
           bp2: {
-            pl: '250px',
+            px: '250px',
           },
         }}
       >
-        <Container size="3" css={{ maxWidth: '780px' }}>
+        <Container size="2">
           {children}
         </Container>
 
-        <Container size="3">
+        <Container size="2">
           {(previous || next) && (
             <Flex
               aria-label="Pagination navigation"
@@ -202,6 +200,31 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
                   </NextLink>
                 </Box>
               )}
+
+              <Box
+                css={{
+                  width: '100%',
+                  maxHeight: 'auto',
+                  borderBottom: '1px solid',
+                  borderColor: '$gray500',
+                  WebkitOverflowScrolling: 'touch',
+                  overflowX: 'hidden',
+
+                  bp2: {
+                    position: 'fixed',
+                    top: 0,
+                    right: 0,
+                    bottom: 0,
+                    width: '250px',
+                    borderBottom: '0',
+                  },
+                }}
+              >
+                <ScrollArea>
+                  <Text>Mini nav</Text>
+                </ScrollArea>
+              </Box>
+
             </Flex>
           )}
         </Container>
