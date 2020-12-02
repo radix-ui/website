@@ -453,6 +453,13 @@
     "@interop-ui/react-utils" "0.0.1-12"
     "@interop-ui/utils" "0.0.1-4"
 
+"@interop-ui/react-collection@0.0.1-12":
+  version "0.0.1-12"
+  resolved "https://registry.yarnpkg.com/@interop-ui/react-collection/-/react-collection-0.0.1-12.tgz#3e215f7850ab7daf4dce5a1fbe6dd0a5540507ca"
+  integrity sha512-NRlOZbr+homK8gJ5+s5iElwt45TJagiHfEJs1uUb+HexUb90e4VvExm/a1cMwNoOnGn2IhgwEDstH1vDMXxdAw==
+  dependencies:
+    "@interop-ui/react-utils" "0.0.1-12"
+
 "@interop-ui/react-debug-context@0.0.1-12":
   version "0.0.1-12"
   resolved "https://registry.yarnpkg.com/@interop-ui/react-debug-context/-/react-debug-context-0.0.1-12.tgz#f09fcc9e47b6170a93192df2640367a9a30ca020"
@@ -561,6 +568,16 @@
   resolved "https://registry.yarnpkg.com/@interop-ui/react-separator/-/react-separator-0.0.1-10.tgz#d38f5827db5b2d7e5cf5ba0f69d849eb9ae760c7"
   integrity sha512-KHNIep3J33StUCvQlTtFyuGIgxcwCbvQwPWvNx3wB2dcezkq2i0u2O/39ESIndpHiSpAKeJMNwNUeTp4xgBDAA==
   dependencies:
+    "@interop-ui/react-utils" "0.0.1-12"
+    "@interop-ui/utils" "0.0.1-4"
+
+"@interop-ui/react-slider@0.0.1-12":
+  version "0.0.1-12"
+  resolved "https://registry.yarnpkg.com/@interop-ui/react-slider/-/react-slider-0.0.1-12.tgz#bc385b4cc0c3b48015c6afb69f415a50c9a08270"
+  integrity sha512-rElUwe4WkMnN7MlfPTETlQ92iCq7Hy3T4Om2KmRFFxeLPH6sCocBfPhYBMw+l7KFAQ2UXXEC8LcGs61+0TiD/w==
+  dependencies:
+    "@interop-ui/react-collection" "0.0.1-12"
+    "@interop-ui/react-use-size" "0.0.1-12"
     "@interop-ui/react-utils" "0.0.1-12"
     "@interop-ui/utils" "0.0.1-4"
 
@@ -675,10 +692,10 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.21.tgz#25f97a0a1b76e78c16ae5d98c6c73e1be8d89e39"
   integrity sha512-6sANhqfEHu6gdHZSrzDjN18Y48mIon8f2Os6J+IFmMHN0IhNG/0PUIIsI07kA1sZ9t6vgZNBloVmcDa5WOSe6A==
 
-"@modulz/design-system@0.0.12":
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.0.12.tgz#3b0571a11a20296c669443fb28814855fbef4aa7"
-  integrity sha512-YNZVHIWa6Gbww5setVEulnb1a+/dNfyBaFnWcv52xKg3wREuvXnb0u05ntucZHdet/JM4wl6C131hJ7pBeZNlw==
+"@modulz/design-system@0.0.13":
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.0.13.tgz#b813d0096a53d269f969df35498602ae9359a761"
+  integrity sha512-XwBU9lKJiZJYKvbq1FklrjU1OtXr7YCgP8xwnT9leQKjvro1pYxrI28s5mXMUjRLRHC7Y2lcrrzz/mKTdyg5og==
   dependencies:
     "@interop-ui/react-accordion" "0.0.1-13"
     "@interop-ui/react-alert-dialog" "0.0.1-11"
@@ -689,6 +706,7 @@
     "@interop-ui/react-progress-bar" "0.0.1-10"
     "@interop-ui/react-radio-group" "0.0.1-6"
     "@interop-ui/react-separator" "0.0.1-10"
+    "@interop-ui/react-slider" "0.0.1-12"
     "@interop-ui/react-switch" "0.0.1-13"
     "@interop-ui/react-tabs" "0.0.1-12"
     "@interop-ui/react-toggle-button" "0.0.1-13"

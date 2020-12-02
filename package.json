@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@modulz/design-system": "0.0.12",
+    "@modulz/design-system": "0.0.13",
     "@modulz/radix-icons": "^3.3.0",
     "@next/mdx": "^10.0.3",
     "@segment/snippet": "^4.13.1",
