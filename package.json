@@ -10,7 +10,6 @@
   "dependencies": {
     "@modulz/design-system": "0.0.12",
     "@modulz/radix-icons": "^3.3.0",
-    "@next/mdx": "^10.0.3",
     "@segment/snippet": "^4.13.1",
     "babel-plugin-import-glob-array": "^0.2.0",
     "copy-to-clipboard": "^3.3.1",

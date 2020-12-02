@@ -1,8 +1,8 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { Box, Badge, Separator } from '@modulz/design-system';
+import { Box, Separator } from '@modulz/design-system';
 import { NavHeading } from './NavHeading';
-import { NavItem } from './NavItem';
+import { NavItem, NavItemBadge } from './NavItem';
 import { overviewPages, componentsPages } from '../utils/primitives';
 
 export function PrimitivesNav() {
@@ -24,8 +24,13 @@ export function PrimitivesNav() {
       <Box css={{ mb: '$4' }}>
         <NavHeading>Components</NavHeading>
         {componentsPages.map((page) => (
-          <NavItem key={page.id} href={`/${page.id}`} active={router.pathname === `/${page.id}`}>
-            {page.title}
+          <NavItem
+            key={page.id}
+            href={`/${page.id}`}
+            active={router.pathname === `/${page.id}`}
+            disabled={page.status === 'soon'}
+          >
+            {page.title} {Boolean(page.status) && <NavItemBadge status={page.status} />}
           </NavItem>
         ))}
       </Box>

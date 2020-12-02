@@ -1,8 +1,8 @@
 import { Box, Button, Text, theme as DStheme, darkThemeClass } from '@modulz/design-system';
+import { useMDXComponents, mdx } from '@mdx-js/react';
 import React, { useState } from 'react';
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
 import { useClipboard } from '../utils/useClipboard';
-import { styled, css } from '@modulz/design-system';
 
 const { colors } = DStheme;
 
@@ -136,7 +136,9 @@ const CopyButton = (props: any) => (
   />
 );
 
-export function CodeBlock({ className, live, manual, render, children, ...props }) {
+export function CodeBlock({ className, live, manual, render, children, removeFragment, ...props }) {
+  const components = useMDXComponents();
+
   const [editorCode, setEditorCode] = useState(children.trim());
 
   const language = className && className.replace(/language-/, '');
@@ -146,10 +148,9 @@ export function CodeBlock({ className, live, manual, render, children, ...props 
     theme,
     language,
     code: editorCode,
+    transformCode: (code) => (removeFragment ? code : `<>${code}</>`),
     scope: {
-      styled,
-      css,
-      darkTheme: darkThemeClass,
+      ...components,
     },
     noInline: manual,
     ...props,

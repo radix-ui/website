@@ -10,5 +10,6 @@ export type FrontMatter = {
   readingTime?: { text: string; minutes: number; time: number; words: number };
   nextId?: string;
   poster?: string;
+  status?: 'new' | 'soon' | 'deprecated';
   __resourcePath: string;
 };
