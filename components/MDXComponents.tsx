@@ -48,7 +48,6 @@ const LinkHeading = (props) => (
 );
 
 export const MDXComponents = {
-  ...DS,
   h1: (props) => (
     <DS.Text size="6" {...props} css={{ mb: '$8', fontWeight: 500, ...props.css }} as="h1" />
   ),

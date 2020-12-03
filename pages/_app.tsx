@@ -3,10 +3,8 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import useDarkMode from 'use-dark-mode';
-import { MDXProvider } from '@mdx-js/react';
 import { Box, darkThemeClass } from '@modulz/design-system';
 import { Footer } from '../components/Footer';
-import { MDXComponents } from '../components/MDXComponents';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { DocsPage } from '../components/DocsPage';
 import { BlogPage } from '../components/BlogPage';
@@ -64,7 +62,7 @@ function App({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <MDXProvider components={MDXComponents}>
+    <>
       <Head>
         <link rel="icon" href="/favicon.png" />
         <link rel="stylesheet" href="https://develop.modulz.app/fonts/fonts.css" />
@@ -129,7 +127,7 @@ pre {
         <Component {...pageProps} />
       )}
       {!isDocs && <Footer />}
-    </MDXProvider>
+    </>
   );
 }
 

@@ -453,6 +453,13 @@
     "@interop-ui/react-utils" "0.0.1-12"
     "@interop-ui/utils" "0.0.1-4"
 
+"@interop-ui/react-collection@0.0.1-12":
+  version "0.0.1-12"
+  resolved "https://registry.yarnpkg.com/@interop-ui/react-collection/-/react-collection-0.0.1-12.tgz#3e215f7850ab7daf4dce5a1fbe6dd0a5540507ca"
+  integrity sha512-NRlOZbr+homK8gJ5+s5iElwt45TJagiHfEJs1uUb+HexUb90e4VvExm/a1cMwNoOnGn2IhgwEDstH1vDMXxdAw==
+  dependencies:
+    "@interop-ui/react-utils" "0.0.1-12"
+
 "@interop-ui/react-debug-context@0.0.1-12":
   version "0.0.1-12"
   resolved "https://registry.yarnpkg.com/@interop-ui/react-debug-context/-/react-debug-context-0.0.1-12.tgz#f09fcc9e47b6170a93192df2640367a9a30ca020"
@@ -561,6 +568,16 @@
   resolved "https://registry.yarnpkg.com/@interop-ui/react-separator/-/react-separator-0.0.1-10.tgz#d38f5827db5b2d7e5cf5ba0f69d849eb9ae760c7"
   integrity sha512-KHNIep3J33StUCvQlTtFyuGIgxcwCbvQwPWvNx3wB2dcezkq2i0u2O/39ESIndpHiSpAKeJMNwNUeTp4xgBDAA==
   dependencies:
+    "@interop-ui/react-utils" "0.0.1-12"
+    "@interop-ui/utils" "0.0.1-4"
+
+"@interop-ui/react-slider@0.0.1-12":
+  version "0.0.1-12"
+  resolved "https://registry.yarnpkg.com/@interop-ui/react-slider/-/react-slider-0.0.1-12.tgz#bc385b4cc0c3b48015c6afb69f415a50c9a08270"
+  integrity sha512-rElUwe4WkMnN7MlfPTETlQ92iCq7Hy3T4Om2KmRFFxeLPH6sCocBfPhYBMw+l7KFAQ2UXXEC8LcGs61+0TiD/w==
+  dependencies:
+    "@interop-ui/react-collection" "0.0.1-12"
+    "@interop-ui/react-use-size" "0.0.1-12"
     "@interop-ui/react-utils" "0.0.1-12"
     "@interop-ui/utils" "0.0.1-4"
 
@@ -675,10 +692,10 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.21.tgz#25f97a0a1b76e78c16ae5d98c6c73e1be8d89e39"
   integrity sha512-6sANhqfEHu6gdHZSrzDjN18Y48mIon8f2Os6J+IFmMHN0IhNG/0PUIIsI07kA1sZ9t6vgZNBloVmcDa5WOSe6A==
 
-"@modulz/design-system@0.0.12":
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.0.12.tgz#3b0571a11a20296c669443fb28814855fbef4aa7"
-  integrity sha512-YNZVHIWa6Gbww5setVEulnb1a+/dNfyBaFnWcv52xKg3wREuvXnb0u05ntucZHdet/JM4wl6C131hJ7pBeZNlw==
+"@modulz/design-system@0.0.13":
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.0.13.tgz#b813d0096a53d269f969df35498602ae9359a761"
+  integrity sha512-XwBU9lKJiZJYKvbq1FklrjU1OtXr7YCgP8xwnT9leQKjvro1pYxrI28s5mXMUjRLRHC7Y2lcrrzz/mKTdyg5og==
   dependencies:
     "@interop-ui/react-accordion" "0.0.1-13"
     "@interop-ui/react-alert-dialog" "0.0.1-11"
@@ -689,6 +706,7 @@
     "@interop-ui/react-progress-bar" "0.0.1-10"
     "@interop-ui/react-radio-group" "0.0.1-6"
     "@interop-ui/react-separator" "0.0.1-10"
+    "@interop-ui/react-slider" "0.0.1-12"
     "@interop-ui/react-switch" "0.0.1-13"
     "@interop-ui/react-tabs" "0.0.1-12"
     "@interop-ui/react-toggle-button" "0.0.1-13"
@@ -733,11 +751,6 @@
   version "10.0.3"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-10.0.3.tgz#ef1077d78bf500855576f83090d6fb1ec96272f8"
   integrity sha512-xjJt2VXoSxAydskmt77nJuEtRL782E4ltaj5JtMzJ8YkNUMMu3d5ktpCR+Q3INKHF/RY6zHJ9QzyE3/s1ikbNg==
-
-"@next/mdx@^10.0.3":
-  version "10.0.3"
-  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-10.0.3.tgz#91bbff794bb1f422b26170de6e5ac4f05f98dc19"
-  integrity sha512-KpvYJvp0s3h6p0GfMt2TJHqUsG1QaXXhmURgA4t7Ifz2W8gvTLzQGXYb4FvRHo5+pKwIofVfEi2sOQX2R0kU3g==
 
 "@next/polyfill-module@10.0.3":
   version "10.0.3"
@@ -3037,6 +3050,14 @@ find-up@^4.0.0:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
 
+find-up@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/find-up/-/find-up-5.0.0.tgz#4c92819ecb7083561e4f4a240a86be5198f536fc"
+  integrity sha512-78/PXT1wlLLDgTzDs7sjq9hzz0vXD+zn+7wypEe4fXQxCmdmqfGsEPQxmiCSQI3ajFV91bVSsvNtrJRiW6nGng==
+  dependencies:
+    locate-path "^6.0.0"
+    path-exists "^4.0.0"
+
 find-versions@^3.0.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/find-versions/-/find-versions-3.2.0.tgz#10297f98030a786829681690545ef659ed1d254e"
@@ -4165,6 +4186,13 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
+locate-path@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/locate-path/-/locate-path-6.0.0.tgz#55321eb309febbc59c4801d931a72452a681d286"
+  integrity sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==
+  dependencies:
+    p-locate "^5.0.0"
+
 lodash.sortby@^4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
@@ -4628,12 +4656,13 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
-next-transpile-modules@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/next-transpile-modules/-/next-transpile-modules-5.0.0.tgz#a457295223d500454741de084170b920b68bfe63"
-  integrity sha512-cImsh2YAq++sLpeOdUMRKwDFretSmJQyA/qToH84tBZXFe3L/bwTECd82M2K/dIklnvxmK1xbihDNksfMrnq/Q==
+next-transpile-modules@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/next-transpile-modules/-/next-transpile-modules-6.0.0.tgz#ba2d9c944de34a6e04c8834b6a06dbc4b28e4611"
+  integrity sha512-+Xdn4Upb8FeOXorzqVFyqww3kR9ML6S7y6Q3gFnoLdsqC5Jim3fwGNGTHENLOwedoKxcM6bCyRBuMYzyxru/wA==
   dependencies:
     enhanced-resolve "^5.3.2"
+    pkg-dir "^5.0.0"
 
 next-videos@^1.4.0:
   version "1.4.0"
@@ -4949,6 +4978,13 @@ p-limit@^2.0.0, p-limit@^2.2.0:
   dependencies:
     p-try "^2.0.0"
 
+p-limit@^3.0.2:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-3.1.0.tgz#e1daccbe78d0d1388ca18c64fea38e3e57e3706b"
+  integrity sha512-TYOanM3wGwNGsZN2cVTYPArw454xnXj5qmWF1bEoAc4+cU/ol7GVh7odevjp1FNHduHc3KZMcFduxU5Xc6uJRQ==
+  dependencies:
+    yocto-queue "^0.1.0"
+
 p-locate@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/p-locate/-/p-locate-3.0.0.tgz#322d69a05c0264b25997d9f40cd8a891ab0064a4"
@@ -4962,6 +4998,13 @@ p-locate@^4.1.0:
   integrity sha512-R79ZZ/0wAxKGu3oYMlz8jy/kbhsNrS7SKZ7PxEHBgJ5+F2mtFW2fK2cOtBh1cHYkQsbzFV7I+EoRKe6Yt0oK7A==
   dependencies:
     p-limit "^2.2.0"
+
+p-locate@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/p-locate/-/p-locate-5.0.0.tgz#83c8315c6785005e3bd021839411c9e110e6d834"
+  integrity sha512-LaNjtRWUBY++zB5nE/NwcaoMylSPk+S+ZHNB1TzdbMJMny6dynpAGt7X/tl/QYq3TIeE6nxHppbo2LGymrG5Pw==
+  dependencies:
+    p-limit "^3.0.2"
 
 p-map-series@^1.0.0:
   version "1.0.0"
@@ -5201,6 +5244,13 @@ pkg-dir@^4.1.0:
   dependencies:
     find-up "^4.0.0"
 
+pkg-dir@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/pkg-dir/-/pkg-dir-5.0.0.tgz#a02d6aebe6ba133a928f74aec20bafdfe6b8e760"
+  integrity sha512-NPE8TDbzl/3YQYY7CSS228s3g2ollTFnc+Qi3tqmqJp9Vg2ovUpixcJEo2HJScN2Ez+kEaal6y70c0ehqJBJeA==
+  dependencies:
+    find-up "^5.0.0"
+
 platform@1.3.3:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/platform/-/platform-1.3.3.tgz#646c77011899870b6a0903e75e997e8e51da7461"
@@ -5340,10 +5390,10 @@ prepend-http@^2.0.0:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
 
-prettier@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.2.0.tgz#8a03c7777883b29b37fb2c4348c66a78e980418b"
-  integrity sha512-yYerpkvseM4iKD/BXLYUkQV5aKt4tQPqaGW6EsZjzyu0r7sVZZNPJW4Y8MyKmicp6t42XUPcBVA+H6sB3gqndw==
+prettier@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.2.1.tgz#795a1a78dd52f073da0cd42b21f9c91381923ff5"
+  integrity sha512-PqyhM2yCjg/oKkFPtTGUojv7gnZAoG80ttl45O6x2Ug/rMJw4wcc9k6aaf2hibP7BGVCCM33gZoGjyvt9mm16Q==
 
 prism-react-renderer@^1.0.1, prism-react-renderer@^1.1.1:
   version "1.1.1"
@@ -7378,6 +7428,11 @@ yauzl@^2.4.2:
   dependencies:
     buffer-crc32 "~0.2.3"
     fd-slicer "~1.1.0"
+
+yocto-queue@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
+  integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
 zwitch@^1.0.0:
   version "1.0.5"
