@@ -26,7 +26,7 @@ export default function BlogLayout({ children, frontMatter }: LayoutProps) {
 
   return (
     <>
-      <TitleAndMetaTags title={`${frontMatter.title} — Stitches`} poster={frontMatter.poster} />
+      <TitleAndMetaTags title={`${frontMatter.title} — Radix UI`} poster={frontMatter.poster} />
 
       <Container size="3" css={{ mb: '$5' }}>
         <NextLink href="/blog" passHref>

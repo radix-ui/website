@@ -11,7 +11,7 @@ type TitleAndMetaTagsProps = {
 };
 
 export function TitleAndMetaTags({
-  url = 'https://stitches.dev',
+  url = 'https://radixui.com',
   pathname,
   title = 'Radix',
   description = 'The UI Suite',
@@ -32,7 +32,7 @@ export function TitleAndMetaTags({
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
 
-      <meta name="twitter:site" content="@stitchesjs" />
+      <meta name="twitter:site" content="@radix_ui" />
       {/* <meta name="twitter:card" content="summary" /> */}
       <meta name="twitter:card" content="summary_large_image" />
     </Head>

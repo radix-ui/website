@@ -1,8 +1,10 @@
-import { Box, Button, Text, theme as DStheme, darkThemeClass } from '@modulz/design-system';
-import { useMDXComponents, mdx } from '@mdx-js/react';
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
+import { Box, Button, Text, theme as DStheme } from '@modulz/design-system';
 import { useClipboard } from '../utils/useClipboard';
+import * as DS from '@modulz/design-system';
+import * as Primitives from './Primitives';
 
 const { colors } = DStheme;
 
@@ -137,9 +139,12 @@ const CopyButton = (props: any) => (
 );
 
 export function CodeBlock({ className, live, manual, render, children, removeFragment, ...props }) {
-  const components = useMDXComponents();
-
   const [editorCode, setEditorCode] = useState(children.trim());
+  const router = useRouter();
+
+  const [_, productType] = router.pathname.split('/');
+  const components =
+    productType === 'design-system' ? DS : productType === 'primitives' ? Primitives : {};
 
   const language = className && className.replace(/language-/, '');
   const { hasCopied, onCopy } = useClipboard(editorCode);

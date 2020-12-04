@@ -72,7 +72,7 @@ export const MDXComponents = {
       size="6"
       {...props}
       css={{ mt: '$7', mb: '$1', lineHeight: '25px', fontWeight: 500, ...props.css }}
-      as="h3"
+      as="h4"
     />
   ),
   code: (props) => (
