@@ -24,11 +24,11 @@ const OffsetBox = DS.styled('div', {
   },
 });
 
-const LinkHeading = (props) => (
-  <DS.Text {...props}>
+const LinkHeading = ({ id, ...props }) => (
+  <DS.Text {...props} data-heading id={id}>
     <DS.Box
       as="a"
-      href={`#${props.id}`}
+      href={`#${id}`}
       css={{
         fontSize: 'inherit',
         textDecoration: 'none',
@@ -101,6 +101,19 @@ export const MDXComponents = {
             }}
           />
         </NextLink>
+      );
+    }
+    if (href.startsWith('#')) {
+      return (
+        <DS.Link
+          {...props}
+          href={href}
+          css={{
+            color: 'inherit',
+            fontSize: 'inherit',
+            ...props.css,
+          }}
+        />
       );
     }
     return (

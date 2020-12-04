@@ -1,7 +1,16 @@
 import * as React from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { Text, Box, Flex, Container, Badge, IconButton, Link } from '@modulz/design-system';
+import {
+  Text,
+  Box,
+  Flex,
+  Container,
+  Badge,
+  IconButton,
+  Link,
+  Heading,
+} from '@modulz/design-system';
 import { HamburgerMenuIcon } from '@modulz/radix-icons';
 import { ScrollArea } from '../components/ScrollArea';
 import { RadixLogo } from './RadixLogo';

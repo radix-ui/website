@@ -46,6 +46,20 @@ type LayoutProps = {
 
 export default function DocsLayout({ children, frontMatter }: LayoutProps) {
   const router = useRouter();
+  const [headings, setHeadings] = React.useState<HTMLHeadingElement[]>([]);
+
+  React.useEffect(() => {
+    const headingElements = document.querySelectorAll('[data-heading]');
+    let headingsArray = [];
+    Array.from(headingElements).map((h: HTMLHeadingElement) =>
+      headingsArray.push({
+        text: h.innerText,
+        level: Number(h.nodeName.replace('H', '')) - 2,
+        id: h.id,
+      })
+    );
+    setHeadings(headingsArray);
+  }, []);
 
   const [_, productType] = router.pathname.split('/');
   const components =
@@ -54,6 +68,8 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
   return (
     <MDXProvider components={{ ...components, ...MDXComponents }}>
       <TitleAndMetaTags title={`${frontMatter.title} — Stitches`} poster={frontMatter.poster} />
+
+      <QuickNav headings={headings} />
 
       <DS.Text as="h1" size="8" css={{ fontWeight: 500, mb: '$2', lineHeight: '40px' }}>
         {frontMatter.title}
@@ -124,5 +140,21 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
         </>
       )}
     </MDXProvider>
+  );
+}
+
+function QuickNav({ headings }) {
+  if (headings.length === 0) {
+    return null;
+  }
+  return (
+    <DS.Box>
+      <DS.Heading>Quick nav</DS.Heading>
+      {headings.map((h) => (
+        <DS.Text key={h.id} css={{ marginLeft: 'calc(`${h.level} * 10px`)' }}>
+          <DS.Link href={`#${h.id}`}>{h.text}</DS.Link>
+        </DS.Text>
+      ))}
+    </DS.Box>
   );
 }

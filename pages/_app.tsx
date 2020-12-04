@@ -70,6 +70,10 @@ function App({ Component, pageProps }: AppProps) {
         <style
           dangerouslySetInnerHTML={{
             __html: `
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   background-color: var(--colors-loContrast);
