@@ -54,7 +54,7 @@ export function PropsTable({ data }: { data: PropDef[] }) {
               )}
             </Box>
             <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
-              <Code>{type}</Code>
+              <Code css={{ bc: '$gray200', color: '$gray900' }}>{type}</Code>
             </Box>
             <Box
               as="td"
@@ -79,7 +79,7 @@ export function PropsTable({ data }: { data: PropDef[] }) {
               ) : null}
             </Box>
             <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
-              <Code>{String(defaultValue)}</Code>
+              <Code css={{ bc: '$gray200', color: '$gray900' }}>{String(defaultValue)}</Code>
             </Box>
           </tr>
         ))}
