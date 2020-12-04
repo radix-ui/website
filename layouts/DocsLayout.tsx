@@ -2,7 +2,7 @@ import React from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { MDXProvider } from '@mdx-js/react';
-import { Container, Text, Box, Link, Separator, Heading, Flex } from '@modulz/design-system';
+import { Text, Box, Link, Separator, Heading, Flex } from '@modulz/design-system';
 import { MDXComponents } from '../components/MDXComponents';
 import { FrontMatter } from '../types';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
@@ -10,6 +10,7 @@ import { getPostById } from '../utils/allPosts';
 import { pages as primitivesPages } from '../utils/primitives';
 import { pages as designSystemPages } from '../utils/designSystem';
 import { useProductType } from '../utils/useProductType';
+import { ScrollArea } from '../components/ScrollArea';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -38,7 +39,20 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
       <TitleAndMetaTags title={`${frontMatter.title} — Radix UI`} poster={frontMatter.poster} />
 
       <Flex css={{ maxWidth: '1145px', mx: 'auto' }}>
-        <Box css={{ width: '230px', order: 1 }}>
+        <Box
+          css={{
+            display: 'none',
+            bp3: {
+              display: 'block',
+              width: '230px',
+              flexShrink: 0,
+              order: 1,
+              position: 'sticky',
+              top: '$8',
+              maxHeight: 'calc(100vh - (var(--space-8) + var(--space-5)))',
+            },
+          }}
+        >
           <QuickNav />
         </Box>
         <Box css={{ flex: '1 1 100%', px: '$5' }}>
@@ -192,7 +206,6 @@ function QuickNav() {
     const headingElements: HTMLHeadingElement[] = Array.from(
       document.querySelectorAll('[data-heading]')
     );
-    console.log(headingElements);
     const headings = headingElements.map((heading) => ({
       text: heading.innerText,
       level: Number(heading.nodeName.replace('H', '')) - 2,
@@ -206,22 +219,24 @@ function QuickNav() {
   }
 
   return (
-    <Box css={{ position: 'sticky', top: '$8' }}>
-      <Text size="2" css={{ fontWeight: '500', mb: '$3' }}>
-        Quick nav
-      </Text>
-      {headings.map(({ id, level, text }) => (
-        <Text
-          as="div"
-          size="3"
-          key={id}
-          css={{ marginLeft: `calc(${level} * 10px)`, lineHeight: '27px' }}
-        >
-          <Link variant="subtle" href={`#${id}`}>
-            {text}
-          </Link>
+    <ScrollArea>
+      <Box css={{}}>
+        <Text size="2" css={{ fontWeight: '500', mb: '$3' }}>
+          Quick nav
         </Text>
-      ))}
-    </Box>
+        {headings.map(({ id, level, text }) => (
+          <Text
+            as="div"
+            size="3"
+            key={id}
+            css={{ marginLeft: `calc(${level} * 10px)`, lineHeight: '20px', mt: '$2' }}
+          >
+            <Link variant="subtle" href={`#${id}`}>
+              {text}
+            </Link>
+          </Text>
+        ))}
+      </Box>
+    </ScrollArea>
   );
 }
