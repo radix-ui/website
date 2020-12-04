@@ -193,10 +193,8 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
   );
 }
 
-type Heading = HTMLHeadingElement;
-
 function QuickNav() {
-  const [headings, setHeadings] = React.useState<Heading[]>([]);
+  const [headings, setHeadings] = React.useState<HTMLHeadingElement[]>([]);
   const [activeHeadings, setActiveHeadings] = React.useState({});
 
   React.useEffect(() => {
