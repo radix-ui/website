@@ -197,10 +197,12 @@ type Heading = {
   text: string;
   level: number;
   id: string;
+  top: number;
 };
 
 function QuickNav() {
   const [headings, setHeadings] = React.useState<Heading[]>([]);
+  const [activeHeading, setActiveHeading] = React.useState<string | undefined>(undefined);
 
   React.useEffect(() => {
     const headingElements: HTMLHeadingElement[] = Array.from(
@@ -210,9 +212,44 @@ function QuickNav() {
       text: heading.innerText,
       level: Number(heading.nodeName.replace('H', '')) - 2,
       id: heading.id,
+      top: heading.getBoundingClientRect().top,
     }));
     setHeadings(headings);
   }, []);
+
+  React.useEffect(() => {
+    if (headings.length === 0) return;
+
+    function onScroll() {
+      let y = window.pageYOffset;
+      let windowHeight = window.innerHeight;
+      let sortedHeadings = headings.concat([]).sort((a, b) => a.top - b.top);
+
+      if (y <= 0) {
+        setActiveHeading(sortedHeadings[0].id);
+        return;
+      }
+      if (y + windowHeight >= document.body.scrollHeight) {
+        setActiveHeading(sortedHeadings[sortedHeadings.length - 1].id);
+        return;
+      }
+      const middle = y + windowHeight / 2;
+      let current = sortedHeadings[0].id;
+      for (let i = 0; i < sortedHeadings.length; i++) {
+        if (middle >= sortedHeadings[i].top) {
+          current = sortedHeadings[i].id;
+        }
+      }
+      setActiveHeading(current);
+    }
+
+    window.addEventListener('scroll', onScroll, {
+      capture: true,
+      passive: true,
+    });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll, true);
+  }, [headings]);
 
   if (headings.length === 0) {
     return null;
@@ -220,7 +257,7 @@ function QuickNav() {
 
   return (
     <ScrollArea>
-      <Box css={{}}>
+      <Box>
         <Text size="2" css={{ fontWeight: '500', mb: '$3' }}>
           Quick nav
         </Text>
@@ -231,7 +268,14 @@ function QuickNav() {
             key={id}
             css={{ marginLeft: `calc(${level} * 10px)`, lineHeight: '20px', mt: '$2' }}
           >
-            <Link variant="subtle" href={`#${id}`}>
+            <Link
+              variant="subtle"
+              href={`#${id}`}
+              css={{
+                color: activeHeading === id ? '$hiContrast' : 'inherit',
+                fontWeight: activeHeading === id ? 500 : 400,
+              }}
+            >
               {text}
             </Link>
           </Text>
