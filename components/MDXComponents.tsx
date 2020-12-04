@@ -2,27 +2,7 @@ import NextLink from 'next/link';
 import * as DS from '@modulz/design-system';
 import { Link2Icon } from '@modulz/radix-icons';
 import { CodeBlock } from './CodeBlock';
-
-const OffsetBox = DS.styled('div', {
-  variants: {
-    size: {
-      wide: {
-        bp2: {
-          mx: '-50px',
-        },
-      },
-      hero: {
-        mx: '-35px',
-        bp2: {
-          mx: '-90px',
-        },
-        bp3: {
-          mx: '-166px',
-        },
-      },
-    },
-  },
-});
+import { PropsTable } from './PropsTable';
 
 const LinkHeading = ({ id, ...props }) => (
   <DS.Text {...props} data-heading id={id}>
@@ -155,73 +135,13 @@ export const MDXComponents = {
       />
     </DS.Box>
   ),
-  Image: ({ children, size, ...props }) => (
-    <DS.Box as="figure" css={{ mx: '0', my: '$6' }}>
-      <OffsetBox size={size}>
-        <DS.Image
-          {...props}
-          css={{
-            maxWidth: '100%',
-            verticalAlign: 'middle',
-          }}
-        />
-      </OffsetBox>
-      <DS.Text
-        as="figcaption"
-        size="3"
-        css={{
-          lineHeight: '23px',
-          color: '$gray600',
-          mt: '$2',
-        }}
-      >
-        {children}
-      </DS.Text>
-    </DS.Box>
-  ),
-  Video: ({
-    small,
-    large,
-    src,
-    children = '',
-    muted = true,
-    autoPlay = true,
-    controls,
-    size,
-    ...props
-  }) => (
-    <DS.Box as="figure" css={{ mx: '0', my: '$6' }}>
-      <OffsetBox size={size}>
-        <video
-          src={src}
-          autoPlay={autoPlay}
-          playsInline
-          muted={muted}
-          controls={controls}
-          loop
-          style={{ width: '100%', display: 'block' }}
-        ></video>
-      </OffsetBox>
-      <DS.Text
-        as="figcaption"
-        size="3"
-        css={{
-          lineHeight: '23px',
-          color: '$gray600',
-          mt: '$2',
-        }}
-      >
-        {children}
-      </DS.Text>
-    </DS.Box>
-  ),
   blockquote: (props) => (
     <DS.Box
       css={{
         mt: '$6',
         mb: '$5',
         pl: '$4',
-        borderLeft: `1px solid ${DS.theme.colors.$gray400}`,
+        borderLeft: `1px solid $gray400`,
         color: 'orange',
         '& p': {
           fontSize: '$3',
@@ -231,5 +151,10 @@ export const MDXComponents = {
       }}
       {...props}
     />
+  ),
+  PropsTable: (props) => (
+    <DS.Box css={{ mb: '$5' }}>
+      <PropsTable {...props} />
+    </DS.Box>
   ),
 };
