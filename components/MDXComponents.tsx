@@ -11,6 +11,7 @@ const LinkHeading = ({ id, ...props }) => (
       href={`#${id}`}
       css={{
         textDecoration: 'none',
+        color: 'inherit',
         display: 'inline-flex',
         alignItems: 'center',
         mt: '$4', mb: '$1',
@@ -48,9 +49,10 @@ export const MDXComponents = {
   h4: (props) => (
     <LinkHeading
       {...props}
-      css={{ mt: '$7', mb: '$1', lineHeight: '25px', fontWeight: 500, ...props.css }}
-      as="h4"
-    />
+      css={{ mt: '$7', mb: '$1', ...props.css }}
+    >
+      <DS.Subheading {...props} as="h4" />
+    </LinkHeading>
   ),
   code: (props) => (
     <DS.Box css={{ my: '$5' }}>

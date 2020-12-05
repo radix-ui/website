@@ -113,11 +113,10 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
 
       <Box
         css={{
-          maxWidth: '100%',
-          flex: 1,
-          pt: '$7',
           bp2: {
+            width: '100%',
             px: '250px',
+            pt: '$9'
           },
         }}
       >

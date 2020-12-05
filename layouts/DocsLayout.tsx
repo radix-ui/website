@@ -2,7 +2,7 @@ import React from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { MDXProvider } from '@mdx-js/react';
-import { Text, Box, Link, Separator, Heading, Flex } from '@modulz/design-system';
+import { Text, Box, Link, Separator, Heading, Flex, Subheading, Subtitle, Container } from '@modulz/design-system';
 import { MDXComponents } from '../components/MDXComponents';
 import { FrontMatter } from '../types';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
@@ -38,157 +38,156 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
     <MDXProvider components={MDXComponents}>
       <TitleAndMetaTags title={`${frontMatter.title} — Radix UI`} poster={frontMatter.poster} />
 
-      <Flex css={{ maxWidth: '1145px', mx: 'auto' }}>
-        <Box
-          css={{
-            display: 'none',
-            bp3: {
-              display: 'block',
-              width: '230px',
-              flexShrink: 0,
-              order: 1,
-              position: 'sticky',
-              top: '$8',
-              maxHeight: 'calc(100vh - (var(--space-8) + var(--space-5)))',
-            },
-          }}
-        >
+      <Box
+        css={{
+          display: 'none',
+          bp3: {
+            display: 'block',
+            width: '250px',
+            flexShrink: 0,
+            position: 'fixed',
+            right: 0,
+            order: 1,
+            px: '$5',
+            maxHeight: 'calc(100vh - (var(--space-8) + var(--space-5)))',
+          },
+        }}>
           <QuickNav />
-        </Box>
-        <Box css={{ flex: '1 1 100%', px: '$5' }}>
-          <Text as="h1" size="8" css={{ fontWeight: 500, mb: '$2', lineHeight: '40px' }}>
-            {frontMatter.title}
-          </Text>
+      </Box>
 
-          <Text
-            as="h2"
-            size="6"
-            css={{ mt: '$2', mb: '$4', color: '$gray600', lineHeight: '30px' }}
+      <Container size="2">
+        <Text as="h1" size="8" css={{ fontWeight: 500, mb: '$1', lineHeight: '40px' }}>
+          {frontMatter.title}
+        </Text>
+
+        <Subtitle
+          css={{ mt: '$2' }}
+        >
+          {frontMatter.description}
+        </Subtitle>
+
+        <Box>{children}</Box>
+
+        {Boolean(frontMatter.relatedIds) && (
+          <>
+            <Separator size="2" css={{ my: '$9', mx: 'auto' }} />
+            <Box>
+              <Text
+                as="h3"
+                size="2"
+                css={{
+                  mb: '$3',
+                  fontWeight: 500,
+                  textAlign: 'center',
+                  textTransform: 'uppercase',
+                }}
+              >
+                Related
+              </Text>
+
+              <Flex css={{ my: '$4', flexDirection: 'column', gap: '$4' }}>
+                {frontMatter.relatedIds.map((relatedPostId) => {
+                  const post = getPostById(relatedPostId);
+                  return (
+                    <Box
+                      as="a"
+                      key={post.id}
+                      href={`/${post.id}`}
+                      css={{
+                        textDecoration: 'none',
+                        color: 'inherit',
+                      }}
+                    >
+                      <Box>
+                        <Text
+                          as="h6"
+                          size="4"
+                          css={{
+                            fontWeight: 500,
+                            mb: '$1',
+                          }}
+                        >
+                          {post.title}
+                        </Text>
+                        <Text
+                          as="p"
+                          size="3"
+                          css={{
+                            color: '$hiContrast',
+                          }}
+                        >
+                          {post.description}
+                        </Text>
+                      </Box>
+                    </Box>
+                  );
+                })}
+              </Flex>
+            </Box>
+          </>
+        )}
+
+        <Separator size="2" css={{ my: '$9', mx: 'auto' }} />
+
+        {(previous || next) && (
+          <Flex
+            aria-label="Pagination navigation"
+            css={{
+              justifyContent: 'space-between',
+              my: '$9',
+            }}
           >
-            {frontMatter.description}
-          </Text>
-
-          <Box>{children}</Box>
-
-          {Boolean(frontMatter.relatedIds) && (
-            <>
-              <Separator size="2" css={{ my: '$8', mx: 'auto' }} />
+            {previous && (
               <Box>
-                <Text
-                  as="h3"
-                  size="2"
-                  css={{
-                    mb: '$3',
-                    fontWeight: 500,
-                    textAlign: 'center',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  Related
-                </Text>
-
-                <Flex css={{ my: '$4', flexDirection: 'column', gap: '$4' }}>
-                  {frontMatter.relatedIds.map((relatedPostId) => {
-                    const post = getPostById(relatedPostId);
-                    return (
-                      <Box
-                        as="a"
-                        key={post.id}
-                        href={`/${post.id}`}
-                        css={{
-                          textDecoration: 'none',
-                          color: 'inherit',
-                        }}
-                      >
-                        <Box>
-                          <Text
-                            as="h6"
-                            size="4"
-                            css={{
-                              fontWeight: 500,
-                              mb: '$1',
-                            }}
-                          >
-                            {post.title}
-                          </Text>
-                          <Text
-                            as="p"
-                            size="3"
-                            css={{
-                              color: '$hiContrast',
-                            }}
-                          >
-                            {post.description}
-                          </Text>
-                        </Box>
-                      </Box>
-                    );
-                  })}
-                </Flex>
+                <NextLink href={`/${previous.id}`} passHref>
+                  <Box
+                    as="a"
+                    aria-label={`Previous page: ${previous.title}`}
+                    css={{
+                      color: '$blue900',
+                      textDecoration: 'none',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <Box css={{ mb: '$2' }}>
+                      <Text size="3" css={{ color: '$gray900' }}>
+                        Previous
+                      </Text>
+                    </Box>
+                    <Text size="5" css={{ color: 'inherit' }}>
+                      {previous.title}
+                    </Text>
+                  </Box>
+                </NextLink>
               </Box>
-            </>
-          )}
-
-          {(previous || next) && (
-            <Flex
-              aria-label="Pagination navigation"
-              css={{
-                justifyContent: 'space-between',
-                my: '$9',
-              }}
-            >
-              {previous && (
-                <Box>
-                  <NextLink href={`/${previous.id}`} passHref>
-                    <Box
-                      as="a"
-                      aria-label={`Previous page: ${previous.title}`}
-                      css={{
-                        color: '$blue600',
-                        textDecoration: 'none',
-                        alignItems: 'center',
-                      }}
-                    >
-                      <Box css={{ mb: '$2' }}>
-                        <Text size="3" css={{ color: '$gray600' }}>
-                          Previous
-                        </Text>
-                      </Box>
-                      <Text size="5" css={{ color: 'inherit' }}>
-                        {previous.title}
+            )}
+            {next && (
+              <Box css={{ ml: 'auto' }}>
+                <NextLink href={`/${next.id}`} passHref>
+                  <Box
+                    as="a"
+                    aria-label={`Previous page: ${next.title}`}
+                    css={{
+                      color: '$blue900',
+                      textDecoration: 'none',
+                      textAlign: 'right',
+                    }}
+                  >
+                    <Box css={{ mb: '$2' }}>
+                      <Text size="3" css={{ color: '$gray900' }}>
+                        Next
                       </Text>
                     </Box>
-                  </NextLink>
-                </Box>
-              )}
-              {next && (
-                <Box css={{ ml: 'auto' }}>
-                  <NextLink href={`/${next.id}`} passHref>
-                    <Box
-                      as="a"
-                      aria-label={`Previous page: ${next.title}`}
-                      css={{
-                        color: '$blue600',
-                        textDecoration: 'none',
-                        textAlign: 'right',
-                      }}
-                    >
-                      <Box css={{ mb: '$2' }}>
-                        <Text size="3" css={{ color: '$gray600' }}>
-                          Next
-                        </Text>
-                      </Box>
-                      <Text size="5" css={{ color: 'inherit' }}>
-                        {next.title}
-                      </Text>
-                    </Box>
-                  </NextLink>
-                </Box>
-              )}
-            </Flex>
-          )}
-        </Box>
-      </Flex>
+                    <Text size="5" css={{ color: 'inherit' }}>
+                      {next.title}
+                    </Text>
+                  </Box>
+                </NextLink>
+              </Box>
+            )}
+          </Flex>
+        )}
+      </Container>
     </MDXProvider>
   );
 }
@@ -237,33 +236,40 @@ function QuickNav() {
   return (
     <ScrollArea>
       <Box>
-        <Text size="2" css={{ fontWeight: '500', mb: '$3' }}>
+        <Subheading css={{ mb: '$3' }}>
           Quick nav
-        </Text>
-        {headings.map(({ id, nodeName, innerText }) => (
-          <Text
-            as="div"
-            size="3"
-            key={id}
-            css={{
-              marginLeft: `calc(${getLevel(nodeName)} * 10px)`,
-              lineHeight: '20px',
-              mt: '$2',
-            }}
-          >
-            <Link
-              variant="subtle"
-              href={`#${id}`}
-              css={{
-                color: activeHeadings[id] === true ? '$hiContrast' : '$gray800',
-                fontWeight: activeHeadings[id] === true ? '500' : '400',
-                transition: 'color 100ms',
-              }}
-            >
-              {innerText}
-            </Link>
-          </Text>
-        ))}
+        </Subheading>
+        <Box as="ul" css={{
+          listStyleType: 'none',
+          p: 0,
+          m: 0
+        }}>
+          {headings.map(({ id, nodeName, innerText }) => (
+            <Box as="li" css={{ py: '$1', }}>
+              <Link
+                variant="subtle"
+                href={`#${id}`}
+                css={{
+                  color: activeHeadings[id] === true ? '$hiContrast' : '$gray800',
+                  fontWeight: activeHeadings[id] === true ? '500' : '400',
+                  display: 'inline-flex',
+                  marginLeft: `calc(${getLevel(nodeName)} * 15px)`,
+                }}
+              >
+                <Text
+                  size="3"
+                  key={id}
+                  css={{
+                    color: 'inherit',
+                    lineHeight: '23px',
+                  }}
+                >
+                  {innerText}
+                </Text>
+              </Link>
+            </Box>
+          ))}
+        </Box>
       </Box>
     </ScrollArea>
   );
