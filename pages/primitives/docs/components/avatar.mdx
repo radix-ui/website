@@ -3,3 +3,45 @@ title: 'Avatar'
 ---
 
 Avatar Primitive
+
+```jsx live
+<Avatar
+  style={{
+    // ensures image/fallback is centered
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    verticalAlign: 'middle',
+    // ensures image doesn't bleed out
+    overflow: 'hidden',
+    // ensures no selection is possible
+    userSelect: 'none',
+    borderRadius: 9999,
+    width: 48,
+    height: 48,
+  }}
+>
+  <Avatar.Image
+    src="https://picsum.photos/id/1005/400/400"
+    style={{
+      // ensures image is full size and not distorted
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+    }}
+  />
+  <Avatar.Fallback
+    style={{
+      width: '100%',
+      height: '100%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'black',
+      color: 'white',
+    }}
+  >
+    JS
+  </Avatar.Fallback>
+</Avatar>
+```

@@ -3,14 +3,13 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import useDarkMode from 'use-dark-mode';
-import { MDXProvider } from '@mdx-js/react';
 import { Box, darkThemeClass } from '@modulz/design-system';
 import { Footer } from '../components/Footer';
-import { MDXComponents } from '../components/MDXComponents';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { DocsPage } from '../components/DocsPage';
 import { BlogPage } from '../components/BlogPage';
 import { useAnalytics } from '../utils/analytics';
+import { scrollToUrlHash } from '../utils/scrollToUrlHash';
 
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -33,23 +32,11 @@ function App({ Component, pageProps }: AppProps) {
   // due to the dark theme hack. :facepalm:
   React.useEffect(() => {
     if (mounted) {
-      const [_, hashLocation] = router.asPath.split('#');
-      if (hashLocation) {
-        const anchor = document.querySelector(`#${hashLocation}`);
-        if (!anchor) {
-          return;
-        }
-        const scrollMargin = 20;
-        const distanceToScroll =
-          window.pageYOffset + anchor.getBoundingClientRect().top - scrollMargin;
-
-        window.scrollTo(0, distanceToScroll);
-      }
+      scrollToUrlHash(router.asPath);
     }
   }, [mounted]);
 
   const isDocs = router.pathname.includes('/docs');
-  // const isDocs = false; // TODO: update logic
   const isBlog = router.pathname.includes('/blog/');
 
   // Dark theme hack to prevent flash
@@ -64,43 +51,7 @@ function App({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <MDXProvider components={MDXComponents}>
-      <Head>
-        <link rel="icon" href="/favicon.png" />
-        <link rel="stylesheet" href="https://develop.modulz.app/fonts/fonts.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `
-body {
-  margin: 0;
-  background-color: var(--colors-loContrast);
-}
-
-body, button {
-  font-family: var(--fonts-untitled);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-svg {
-  display: block;
-}
-
-pre {
-  margin: 0;
-  font-family: var(--fonts-mono)
-}
-
-::selection {
-  background-color: var(--colors-blue600);
-  color: white;
-}
-        `,
-          }}
-        />
-      </Head>
-
+    <>
       <Box
         css={{
           position: 'absolute',
@@ -129,7 +80,7 @@ pre {
         <Component {...pageProps} />
       )}
       {!isDocs && <Footer />}
-    </MDXProvider>
+    </>
   );
 }
 
