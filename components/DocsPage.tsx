@@ -115,6 +115,10 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
         css={{
           bp2: {
             width: '100%',
+            pl: '250px',
+            pr: 0,
+          },
+          bp3: {
             px: '250px',
             pt: '$9'
           },
