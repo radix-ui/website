@@ -154,7 +154,7 @@ export function HeroCodeDemo() {
           p: '$1',
           borderRadius: '$2',
           // bc: '$gray100',
-          boxShadow: '0 0 0 1px $gray300',
+          boxShadow: '0 0 0 1px $gray500',
           textarea: { outline: '0' },
           ':focus-within': {
             boxShadow: '0 0 0 3px $blue500',

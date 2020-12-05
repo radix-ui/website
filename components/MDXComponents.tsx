@@ -14,9 +14,12 @@ const LinkHeading = ({ id, ...props }) => (
         color: 'inherit',
         display: 'inline-flex',
         alignItems: 'center',
-        mt: '$4', mb: '$1',
-        svg: { opacity: 0 },
-        ':hover svg': { opacity: 1 },
+        svg: {
+          opacity: 0
+        },
+        ':hover svg': {
+          opacity: 1
+        },
       }}
     >
       {props.children}
@@ -41,7 +44,7 @@ export const MDXComponents = {
   h3: (props) => (
     <LinkHeading
       {...props}
-      css={{ mt: '$7', mb: '$1', ...props.css }}
+      css={{ mt: '$7', ...props.css }}
     >
       <DS.Heading {...props} as="h3" />
     </LinkHeading>
