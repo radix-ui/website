@@ -692,10 +692,10 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.21.tgz#25f97a0a1b76e78c16ae5d98c6c73e1be8d89e39"
   integrity sha512-6sANhqfEHu6gdHZSrzDjN18Y48mIon8f2Os6J+IFmMHN0IhNG/0PUIIsI07kA1sZ9t6vgZNBloVmcDa5WOSe6A==
 
-"@modulz/design-system@0.0.13":
-  version "0.0.13"
-  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.0.13.tgz#b813d0096a53d269f969df35498602ae9359a761"
-  integrity sha512-XwBU9lKJiZJYKvbq1FklrjU1OtXr7YCgP8xwnT9leQKjvro1pYxrI28s5mXMUjRLRHC7Y2lcrrzz/mKTdyg5og==
+"@modulz/design-system@0.0.14":
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.0.14.tgz#32abd48bb7ac9e3ee80de185de2fab7340d67e24"
+  integrity sha512-bT1JxJ6GTf4HypmTvsNw4RsMlw2nmDa45BpdKcUqFKKXvuqkxXuw0CxUK8B97JmKfFT6kYdTVyUCV/IgNyZ32g==
   dependencies:
     "@interop-ui/react-accordion" "0.0.1-13"
     "@interop-ui/react-alert-dialog" "0.0.1-11"
