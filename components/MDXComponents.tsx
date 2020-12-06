@@ -10,17 +10,20 @@ const LinkHeading = ({ id, ...props }) => (
       as="a"
       href={`#${id}`}
       css={{
-        fontSize: 'inherit',
         textDecoration: 'none',
+        color: 'inherit',
         display: 'inline-flex',
         alignItems: 'center',
-        color: 'inherit',
-        svg: { opacity: 0 },
-        ':hover svg': { opacity: 1 },
+        svg: {
+          opacity: 0
+        },
+        ':hover svg': {
+          opacity: 1
+        },
       }}
     >
-      <span>{props.children}</span>
-      <DS.Box as="span" css={{ ml: '$2', color: '$gray500' }}>
+      {props.children}
+      <DS.Box as="span" css={{ ml: '$2', color: '$gray900' }}>
         <Link2Icon />
       </DS.Box>
     </DS.Box>
@@ -29,31 +32,30 @@ const LinkHeading = ({ id, ...props }) => (
 
 export const MDXComponents = {
   h1: (props) => (
-    <DS.Text size="6" {...props} css={{ mb: '$8', fontWeight: 500, ...props.css }} as="h1" />
+    <DS.Title {...props} css={{ mb: '$1', ...props.css }} as="h1" />
   ),
   h2: (props) => (
-    <DS.Text
-      size="6"
+    <DS.Subtitle
       {...props}
-      css={{ mt: '$2', mb: '$6', color: '$gray600', lineHeight: '30px', ...props.css }}
+      css={{ mt: '$2', mb: '$6', ...props.css }}
       as="h2"
     />
   ),
   h3: (props) => (
     <LinkHeading
-      size="7"
       {...props}
-      css={{ mt: '$7', mb: '$1', lineHeight: '35px', fontWeight: 500, ...props.css }}
-      as="h3"
-    />
+      css={{ mt: '$7', ...props.css }}
+    >
+      <DS.Heading {...props} as="h3" />
+    </LinkHeading>
   ),
   h4: (props) => (
     <LinkHeading
-      size="6"
       {...props}
-      css={{ mt: '$7', mb: '$1', lineHeight: '25px', fontWeight: 500, ...props.css }}
-      as="h4"
-    />
+      css={{ mt: '$7', mb: '$1', ...props.css }}
+    >
+      <DS.Subheading {...props} as="h4" />
+    </LinkHeading>
   ),
   code: (props) => (
     <DS.Box css={{ my: '$5' }}>
@@ -61,10 +63,9 @@ export const MDXComponents = {
     </DS.Box>
   ),
   p: (props) => (
-    <DS.Text
-      size="4"
+    <DS.Paragraph
       {...props}
-      css={{ mb: '$3', lineHeight: '30px', letterSpacing: 0, ...props.css }}
+      css={{ mb: '$3', ...props.css }}
       as="p"
     />
   ),
@@ -120,7 +121,7 @@ export const MDXComponents = {
   ),
   li: (props) => (
     <li>
-      <DS.Text size="4" {...props} css={{ lineHeight: '30px', letterSpacing: 0, ...props.css }} />
+      <DS.Paragraph {...props} css={{ ...props.css }} />
     </li>
   ),
   strong: (props) => (
@@ -145,7 +146,7 @@ export const MDXComponents = {
         color: 'orange',
         '& p': {
           fontSize: '$3',
-          color: '$gray600',
+          color: '$gray900',
           lineHeight: '25px',
         },
       }}

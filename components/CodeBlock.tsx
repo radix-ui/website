@@ -17,7 +17,7 @@ const theme: any = {
     {
       types: ['comment', 'prolog', 'doctype', 'cdata'],
       style: {
-        color: colors.$gray600,
+        color: colors.$gray900,
         fontStyle: 'italic',
       },
     },
@@ -30,13 +30,13 @@ const theme: any = {
     {
       types: ['string', 'attr-value'],
       style: {
-        color: colors.$purple600,
+        color: colors.$purple900,
       },
     },
     {
       types: ['punctuation', 'operator'],
       style: {
-        color: colors.$gray600,
+        color: colors.$gray900,
       },
     },
     {
@@ -53,31 +53,31 @@ const theme: any = {
         'inserted',
       ],
       style: {
-        color: colors.$red600,
+        color: colors.$red900,
       },
     },
     {
       types: ['atrule', 'keyword', 'attr-name', 'selector'],
       style: {
-        color: colors.$blue600,
+        color: colors.$blue900,
       },
     },
     {
       types: ['function', 'deleted', 'tag'],
       style: {
-        color: colors.$yellow600,
+        color: colors.$yellow900,
       },
     },
     {
       types: ['function-variable'],
       style: {
-        color: colors.$green600,
+        color: colors.$green900,
       },
     },
     {
       types: ['tag', 'selector', 'keyword'],
       style: {
-        color: colors.$blue600,
+        color: colors.$blue900,
       },
     },
   ],
@@ -94,7 +94,7 @@ const StyledLivePreview = ({ live, ...props }: { live?: boolean }) => (
   <Box
     css={{
       p: '$3',
-      boxShadow: `0 0 0 1px ${colors.$gray300}`,
+      boxShadow: `inset 0 0 0 1px ${colors.$gray500}`,
       borderTopLeftRadius: '$2',
       borderTopRightRadius: '$2',
       borderBottomLeftRadius: live ? '0' : '$2',
@@ -113,11 +113,11 @@ const CodeContainer = ({ live, children }: { live?: boolean; children: React.Rea
       borderTopRightRadius: live ? '0' : '$2',
       borderBottomLeftRadius: '$2',
       borderBottomRightRadius: '$2',
-      marginTop: '1px',
-      boxShadow: `0 0 0 1px ${colors.$gray300}`,
+      marginTop: -1,
+      boxShadow: `inset 0 0 0 1px ${colors.$gray500}`,
       textarea: { outline: 0 },
       'textarea::selection': {
-        backgroundColor: 'hsla(208, 10%, 65%,1)',
+        backgroundColor: 'hsla(208, 100%, 97%,1)',
       },
     }}
     children={children}
@@ -189,7 +189,7 @@ export function CodeBlock({ className, live, manual, render, children, removeFra
               zIndex: 0,
               textAlign: 'center',
               pointerEvents: 'none',
-              color: '$gray600',
+              color: '$gray900',
               letterSpacing: '.1em',
               fontSize: '11px',
             }}
@@ -199,12 +199,18 @@ export function CodeBlock({ className, live, manual, render, children, removeFra
         </Box>
         <LiveError
           style={{
-            fontFamily: DStheme.fonts.$untitled,
-            fontSize: DStheme.fontSizes.$3,
+            fontFamily: DStheme.fonts.$mono,
+            fontSize: DStheme.fontSizes.$2,
+            borderBottomLeftRadius: DStheme.radii.$2,
+            borderBottomRightRadius: DStheme.radii.$2,
+            boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.1)',
             padding: DStheme.space.$2,
             overflowX: 'auto',
-            color: 'white',
-            backgroundColor: colors.$red600,
+            color: colors.$red900,
+            backgroundColor: colors.$red100,
+            marginTop: -3,
+            position: 'relative',
+            zIndex: 1,
           }}
         />
       </LiveProvider>

@@ -30,7 +30,7 @@ export default function BlogLayout({ children, frontMatter }: LayoutProps) {
 
       <Container size="3" css={{ mb: '$5' }}>
         <NextLink href="/blog" passHref>
-          <Button size="2" as="a" variant="ghost" css={{ color: '$gray600', ml: '-40px' }}>
+          <Button size="2" as="a" variant="ghost" css={{ color: '$gray900', ml: '-40px' }}>
             <Box css={{ mr: '$2' }}>
               <ArrowLeftIcon />
             </Box>
@@ -43,13 +43,13 @@ export default function BlogLayout({ children, frontMatter }: LayoutProps) {
         {frontMatter.title}sdsd
       </Text>
 
-      <Text as="h2" size="6" css={{ mt: '$2', mb: '$4', color: '$gray600', lineHeight: '30px' }}>
+      <Text as="h2" size="6" css={{ mt: '$2', mb: '$4', color: '$gray900', lineHeight: '30px' }}>
         {frontMatter.description}
       </Text>
 
       <Flex css={{ mt: '$4', mb: '$7', alignItems: 'center' }}>
         {/* <Avatar src={authors[frontMatter.by].avatar} mr={2} /> */}
-        <Text as="p" size="3" css={{ color: '$gray600', lineHeight: 0, whiteSpace: 'nowrap' }}>
+        <Text as="p" size="3" css={{ color: '$gray900', lineHeight: 0, whiteSpace: 'nowrap' }}>
           <Link
             href={`https://twitter.com/${authors[frontMatter.by].twitter}`}
             rel="noopener noreferrer"
@@ -59,12 +59,12 @@ export default function BlogLayout({ children, frontMatter }: LayoutProps) {
           </Link>
         </Text>
         <Separator orientation="vertical" css={{ mx: '$2' }} />
-        <Text as="time" size="3" css={{ color: '$gray600', lineHeight: 0, whiteSpace: 'nowrap' }}>
+        <Text as="time" size="3" css={{ color: '$gray900', lineHeight: 0, whiteSpace: 'nowrap' }}>
           {format(parseISO(frontMatter.publishedAt), 'MMMM yyyy')}
         </Text>
         <Flex css={{ alignItems: 'center', display: 'none', bp2: { display: 'flex' } }}>
           <Separator orientation="vertical" css={{ mx: '$2' }} />
-          <Text size="3" css={{ color: '$gray600', lineHeight: 0 }}>
+          <Text size="3" css={{ color: '$gray900', lineHeight: 0 }}>
             {frontMatter.readingTime.text}
           </Text>
           {frontMatter.type === 'changelog' && (
