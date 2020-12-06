@@ -210,7 +210,7 @@ export function CodeBlock({ className, live, manual, render, children, removeFra
             backgroundColor: colors.$red100,
             marginTop: -3,
             position: 'relative',
-            zIndex: '1',
+            zIndex: 1,
           }}
         />
       </LiveProvider>
