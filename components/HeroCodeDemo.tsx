@@ -26,13 +26,13 @@ const theme: any = {
     {
       types: ['string', 'attr-value'],
       style: {
-        color: colors.$purple600,
+        color: colors.$purple900,
       },
     },
     {
       types: ['punctuation', 'operator'],
       style: {
-        color: colors.$gray600,
+        color: colors.$gray900,
       },
     },
     {
@@ -49,31 +49,31 @@ const theme: any = {
         'inserted',
       ],
       style: {
-        color: colors.$red600,
+        color: colors.$red900,
       },
     },
     {
       types: ['atrule', 'keyword', 'attr-name', 'selector'],
       style: {
-        color: colors.$blue600,
+        color: colors.$blue900,
       },
     },
     {
       types: ['function', 'deleted', 'tag'],
       style: {
-        color: colors.$yellow600,
+        color: colors.$yellow900,
       },
     },
     {
       types: ['function-variable'],
       style: {
-        color: colors.$green600,
+        color: colors.$green900,
       },
     },
     {
       types: ['tag', 'selector', 'keyword'],
       style: {
-        color: colors.$blue600,
+        color: colors.$blue900,
       },
     },
   ],
@@ -154,7 +154,7 @@ export function HeroCodeDemo() {
           p: '$1',
           borderRadius: '$2',
           // bc: '$gray100',
-          boxShadow: '0 0 0 1px $gray300',
+          boxShadow: '0 0 0 1px $gray500',
           textarea: { outline: '0' },
           ':focus-within': {
             boxShadow: '0 0 0 3px $blue500',
@@ -172,7 +172,7 @@ export function HeroCodeDemo() {
             padding: 'var(--space-2)',
             overflowX: 'auto',
             color: 'white',
-            backgroundColor: 'var(--colors-$red600)',
+            backgroundColor: 'var(--colors-$red900)',
           }}
         />
       </Box>

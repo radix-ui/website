@@ -37,7 +37,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
           width: '100%',
           maxHeight: 'auto',
           borderBottom: '1px solid',
-          borderColor: '$gray300',
+          borderColor: '$gray500',
           WebkitOverflowScrolling: 'touch',
           overflowX: 'hidden',
 
@@ -49,7 +49,6 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
             width: '250px',
             borderRight: '1px solid',
             borderBottom: '0',
-            borderColor: '$gray300',
           },
         }}
       >
@@ -114,12 +113,14 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
 
       <Box
         css={{
-          maxWidth: '100%',
-          flex: 1,
-          pt: '$8',
-          pb: '$9',
           bp2: {
+            width: '100%',
             pl: '250px',
+            pr: 0,
+          },
+          bp3: {
+            px: '250px',
+            py: '$9'
           },
         }}
       >

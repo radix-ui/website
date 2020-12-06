@@ -19,23 +19,23 @@ export function PropsTable({ data }: { data: PropDef[] }) {
       <thead>
         <tr>
           <Box as="th" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
-            <Text size="2" css={{ color: '$gray800' }}>
+            <Text size="2" css={{ color: '$gray900' }}>
               Prop
             </Text>
           </Box>
           <Box as="th" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
-            <Text size="2" css={{ color: '$gray800' }}>
+            <Text size="2" css={{ color: '$gray900' }}>
               Type
             </Text>
           </Box>
-          <Box as="th" css={{ borderBottom: '1px solid $gray500', py: '$3', textAlign: 'center' }}>
-            <Text size="2" css={{ color: '$gray800' }}>
-              Required
+          <Box as="th" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
+            <Text size="2" css={{ color: '$gray900' }}>
+              Default
             </Text>
           </Box>
-          <Box as="th" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
-            <Text size="2" css={{ color: '$gray800' }}>
-              Default
+          <Box as="th" css={{ borderBottom: '1px solid $gray500', py: '$3', textAlign: 'right', width: 'auto', whiteSpace: 'nowrap' }}>
+            <Text size="2" css={{ color: '$gray900' }}>
+              Required
             </Text>
           </Box>
         </tr>
@@ -56,9 +56,12 @@ export function PropsTable({ data }: { data: PropDef[] }) {
             <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
               <Code css={{ bc: '$gray200', color: '$gray900' }}>{type}</Code>
             </Box>
+            <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
+              <Code css={{ bc: '$gray200', color: '$gray900' }}>{String(defaultValue)}</Code>
+            </Box>
             <Box
               as="td"
-              css={{ borderBottom: '1px solid $gray500', py: '$3', textAlign: 'center' }}
+              css={{ borderBottom: '1px solid $gray500', py: '$3', textAlign: 'right' }}
             >
               {required ? (
                 <Box
@@ -69,17 +72,14 @@ export function PropsTable({ data }: { data: PropDef[] }) {
                     justifyContent: 'center',
                     width: '$5',
                     height: '$5',
-                    backgroundColor: '$yellow200',
+                    backgroundColor: '$blue200',
                     borderRadius: '50%',
-                    color: '$yellow900',
+                    color: '$blue900',
                   }}
                 >
                   <CheckIcon />
                 </Box>
               ) : null}
-            </Box>
-            <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
-              <Code css={{ bc: '$gray200', color: '$gray900' }}>{String(defaultValue)}</Code>
             </Box>
           </tr>
         ))}

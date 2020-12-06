@@ -23,7 +23,7 @@
     "@interop-ui/react-toggle-button": "0.0.1-13",
     "@interop-ui/react-tooltip": "0.0.1-12",
     "@interop-ui/react-utils": "0.0.1-12",
-    "@modulz/design-system": "0.0.13",
+    "@modulz/design-system": "0.0.14",
     "@modulz/radix-icons": "^3.3.0",
     "@segment/snippet": "^4.13.1",
     "babel-plugin-import-glob-array": "^0.2.0",
