@@ -58,6 +58,9 @@ export const MDXComponents = {
       </DS.Subheading>
     </LinkHeading>
   ),
+  // MDX adds a `pre` tag when we use ``` for CodeBlock
+  // which causes everything to be wrapped in it.
+  pre: (props) => <div>{props.children}</div>,
   code: (props) => (
     <DS.Box css={{ }}>
       <CodeBlock {...props} />
