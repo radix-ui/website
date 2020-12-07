@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, Code, Tooltip } from '@modulz/design-system';
+import { Box, Text, Code, Popover } from '@modulz/design-system';
 import { CheckIcon, InfoCircledIcon } from '@modulz/radix-icons';
 
 type PropDef = {
@@ -33,7 +33,16 @@ export function PropsTable({ data }: { data: PropDef[] }) {
               Default
             </Text>
           </Box>
-          <Box as="th" css={{ borderBottom: '1px solid $gray500', py: '$3', textAlign: 'right', width: 'auto', whiteSpace: 'nowrap' }}>
+          <Box
+            as="th"
+            css={{
+              borderBottom: '1px solid $gray500',
+              py: '$3',
+              textAlign: 'right',
+              width: 'auto',
+              whiteSpace: 'nowrap',
+            }}
+          >
             <Text size="2" css={{ color: '$gray900' }}>
               Required
             </Text>
@@ -46,11 +55,22 @@ export function PropsTable({ data }: { data: PropDef[] }) {
             <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
               <Code>{name}</Code>
               {description && (
-                <Tooltip content={description}>
-                  <Box css={{ display: 'inline-block', color: '$purple800', ml: '$2' }}>
-                    <InfoCircledIcon style={{ display: 'inline-block', verticalAlign: 'middle' }} />
-                  </Box>
-                </Tooltip>
+                <Popover>
+                  <Popover.Trigger>
+                    <Box css={{ display: 'inline-block', color: '$purple800', ml: '$2' }}>
+                      <InfoCircledIcon
+                        style={{ display: 'inline-block', verticalAlign: 'middle' }}
+                      />
+                    </Box>
+                  </Popover.Trigger>
+                  <Popover.Content>
+                    <Box css={{ p: '$3', width: '320px' }}>
+                      <Text size="3" css={{ lineHeight: '25px' }}>
+                        {description}
+                      </Text>
+                    </Box>
+                  </Popover.Content>
+                </Popover>
               )}
             </Box>
             <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
@@ -59,10 +79,7 @@ export function PropsTable({ data }: { data: PropDef[] }) {
             <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
               <Code css={{ bc: '$gray200', color: '$gray900' }}>{String(defaultValue)}</Code>
             </Box>
-            <Box
-              as="td"
-              css={{ borderBottom: '1px solid $gray500', py: '$3', textAlign: 'right' }}
-            >
+            <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3', textAlign: 'right' }}>
               {required ? (
                 <Box
                   aria-label="Required"
