@@ -62,7 +62,7 @@ export const MDXComponents = {
   // which causes everything to be wrapped in it.
   pre: (props) => <div>{props.children}</div>,
   code: (props) => (
-    <DS.Box css={{ }}>
+    <DS.Box css={{}}>
       <CodeBlock {...props} />
     </DS.Box>
   ),
@@ -151,6 +151,8 @@ export const MDXComponents = {
       {...props}
     />
   ),
+  Kbd: DS.Kbd,
+  Code: DS.Code,
   PropsTable: (props) => (
     <DS.Box css={{ mb: '$5' }}>
       <PropsTable {...props} />
@@ -161,13 +163,12 @@ export const MDXComponents = {
       <KeyboardTable {...props} />
     </DS.Box>
   ),
-  Kbd: DS.Kbd,
   Overview: (props) => <DS.Box {...props} />,
   FeatureList: ({ children, ...props }) => (
     <DS.Flex {...props}>
       <DS.Box css={{ flex: 1, mr: '$5' }}>
         <DS.Heading css={{ mb: '$6' }}>Features</DS.Heading>
-        <DS.Box as="ul" css={{ p: 0 , m: 0 }}>
+        <DS.Box as="ul" css={{ p: 0, m: 0 }}>
           {children}
         </DS.Box>
       </DS.Box>
@@ -176,10 +177,14 @@ export const MDXComponents = {
           Version: v.0.0.1
         </DS.Text>
         <DS.Box css={{ mb: '$2' }}>
-          <DS.Link variant="blue" href="#" target="_blank"><DS.Text size="2">View on Github</DS.Text></DS.Link>
+          <DS.Link variant="blue" href="#" target="_blank">
+            <DS.Text size="2">View on Github</DS.Text>
+          </DS.Link>
         </DS.Box>
         <DS.Box css={{ mb: '$2' }}>
-        <DS.Link variant="blue" href="#" target="_blank"><DS.Text size="2">View on npm</DS.Text></DS.Link>
+          <DS.Link variant="blue" href="#" target="_blank">
+            <DS.Text size="2">View on npm</DS.Text>
+          </DS.Link>
         </DS.Box>
       </DS.Box>
     </DS.Flex>
