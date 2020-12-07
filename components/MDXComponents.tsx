@@ -1,13 +1,21 @@
 import * as React from 'react';
 import NextLink from 'next/link';
 import * as DS from '@modulz/design-system';
-import { Link2Icon } from '@modulz/radix-icons';
+import { CheckIcon, Link2Icon } from '@modulz/radix-icons';
 import { CodeBlock } from './CodeBlock';
 import { PropsTable } from './PropsTable';
 import { KeyboardTable } from './KeyboardTable';
 
-const LinkHeading = ({ id, ...props }) => (
-  <DS.Subheading {...props} data-heading id={id}>
+const LinkHeading = ({
+  id,
+  children,
+  css,
+}: {
+  id: string;
+  children: React.ReactNode;
+  css?: any;
+}) => (
+  <DS.Box>
     <DS.Box
       as="a"
       href={`#${id}`}
@@ -22,23 +30,39 @@ const LinkHeading = ({ id, ...props }) => (
         ':hover svg': {
           opacity: 1,
         },
+        ...css,
       }}
     >
-      {props.children}
+      {children}
       <DS.Box as="span" css={{ ml: '$2', color: '$gray900' }}>
         <Link2Icon />
       </DS.Box>
     </DS.Box>
-  </DS.Subheading>
+  </DS.Box>
 );
 
 export const MDXComponents = {
-  h1: (props) => <DS.Title {...props} css={{ mb: '$1', ...props.css }} as="h1" />,
-  h2: (props) => <DS.Subtitle {...props} css={{ mt: '$2', mb: '$6', ...props.css }} as="h2" />,
-  h3: (props) => <LinkHeading {...props} as="h3" css={{ mt: '$7', ...props.css }} />,
-  h4: (props) => <LinkHeading {...props} as="h4" css={{ mt: '$7', mb: '$1', ...props.css }} />,
+  h1: (props) => <DS.Title {...props} css={{ mb: '$1', ...props.css }} />,
+  h2: (props) => <DS.Subtitle {...props} css={{ mt: '$2', mb: '$6', ...props.css }} />,
+  h3: ({ children, id, ...props }) => (
+    <LinkHeading id={id} css={{ mt: '$7', mb: '$2', ...props.css }}>
+      <DS.Heading {...props} id={id} data-heading>
+        {children}
+      </DS.Heading>
+    </LinkHeading>
+  ),
+  h4: ({ children, id, ...props }) => (
+    <LinkHeading id={id} css={{ mt: '$7', mb: '$1', ...props.css }}>
+      <DS.Subheading {...props} id={id} data-heading>
+        {children}
+      </DS.Subheading>
+    </LinkHeading>
+  ),
+  // MDX adds a `pre` tag when we use ``` for CodeBlock
+  // which causes everything to be wrapped in it.
+  pre: (props) => <div>{props.children}</div>,
   code: (props) => (
-    <DS.Box css={{ my: '$5' }}>
+    <DS.Box css={{ }}>
       <CodeBlock {...props} />
     </DS.Box>
   ),
@@ -138,4 +162,51 @@ export const MDXComponents = {
     </DS.Box>
   ),
   Kbd: DS.Kbd,
+  Overview: (props) => <DS.Box {...props} />,
+  FeatureList: ({ children, ...props }) => (
+    <DS.Flex {...props}>
+      <DS.Box css={{ flex: 1, mr: '$5' }}>
+        <DS.Heading css={{ mb: '$6' }}>Features</DS.Heading>
+        <DS.Box as="ul" css={{ p: 0 , m: 0 }}>
+          {children}
+        </DS.Box>
+      </DS.Box>
+      <DS.Box css={{ flex: 0, width: '30%' }}>
+        <DS.Text size="2" color="gray" css={{ fontFamily: '$mono', mb: '$4' }}>
+          Version: v.0.0.1
+        </DS.Text>
+        <DS.Box css={{ mb: '$2' }}>
+          <DS.Link variant="blue" href="#" target="_blank"><DS.Text size="2">View on Github</DS.Text></DS.Link>
+        </DS.Box>
+        <DS.Box css={{ mb: '$2' }}>
+        <DS.Link variant="blue" href="#" target="_blank"><DS.Text size="2">View on npm</DS.Text></DS.Link>
+        </DS.Box>
+      </DS.Box>
+    </DS.Flex>
+  ),
+  Feature: ({ children, ...props }) => (
+    <DS.Flex as="li" {...props} css={{ mt: '$4' }}>
+      <DS.Box
+        css={{
+          position: 'relative',
+          top: '-2px',
+          width: '25px',
+          height: '25px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: '$green200',
+          borderRadius: '50%',
+          color: '$green900',
+          marginRight: '15px',
+          flexShrink: 0,
+        }}
+      >
+        <CheckIcon />
+      </DS.Box>
+      <DS.Text size="3" css={{ lineHeight: '23px' }}>
+        {children}
+      </DS.Text>
+    </DS.Flex>
+  ),
 };

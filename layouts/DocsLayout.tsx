@@ -58,7 +58,6 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
             position: 'fixed',
             right: 0,
             order: 1,
-            px: '$5',
             maxHeight: 'calc(100vh - (var(--space-8) + var(--space-5)))',
           },
         }}
@@ -201,7 +200,6 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
 
 function QuickNav() {
   const [headings, setHeadings] = React.useState<HTMLHeadingElement[]>([]);
-  const [activeHeadings, setActiveHeadings] = React.useState({});
 
   React.useEffect(() => {
     const headingElements: HTMLHeadingElement[] = Array.from(
@@ -211,38 +209,19 @@ function QuickNav() {
     setHeadings(headingElements);
   }, []);
 
-  React.useEffect(() => {
-    if (headings.length === 0) false;
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const id = entry.target.getAttribute('id');
-        if (entry.intersectionRatio > 0) {
-          setActiveHeadings((s) => ({ ...s, [id]: true }));
-        } else {
-          setActiveHeadings((s) => ({ ...s, [id]: false }));
-        }
-      });
-    });
-
-    // Track all sections that have an `id` applied
-    headings.forEach((heading) => {
-      observer.observe(heading);
-    });
-  }, [headings]);
-
   if (headings.length === 0) {
     return null;
   }
 
   // Function to determine the Heading Level based on `nodeName` (H2, H3, etc)
   const getLevel = (nodeName) => {
-    const startLevel = 2;
+    const startLevel = 3;
     return Number(nodeName.replace('H', '')) - startLevel;
   };
 
   return (
     <ScrollArea>
-      <Box>
+      <Box css={{ px: '$5' }}>
         <Subheading css={{ mb: '$3' }}>Quick nav</Subheading>
         <Box
           as="ul"
@@ -253,18 +232,15 @@ function QuickNav() {
           }}
         >
           {headings.map(({ id, nodeName, innerText }) => {
-            console.log(nodeName);
-            console.log(getLevel(nodeName));
             return (
               <Box as="li" css={{ py: '$1' }}>
                 <Link
                   variant="subtle"
                   href={`#${id}`}
                   css={{
-                    color: activeHeadings[id] === true ? '$hiContrast' : '$gray800',
-                    fontWeight: activeHeadings[id] === true ? '500' : '400',
+                    color: '$gray800',
                     display: 'inline-flex',
-                    marginLeft: `calc(${getLevel(nodeName)} * 15px)`,
+                    marginLeft: `calc(${getLevel(nodeName)} * 25px)`,
                   }}
                 >
                   <Text

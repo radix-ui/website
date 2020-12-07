@@ -3,117 +3,405 @@ title: 'Slider'
 description: 'An input where the user selects a value from within a given range.'
 ---
 
+<div
+  style={{
+    height: 300,
+    background:
+      'linear-gradient(330deg, rgba(2,0,36,1) 0%, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%)',
+    marginLeft: -65,
+    marginRight: -65,
+    marginBottom: 45,
+    marginTop: 45,
+    alignItems: 'center',
+    justifyContent: 'center',
+    display: 'flex',
+  }}
+>
+  <div
+    style={{
+      height: '2px',
+      backgroundColor: 'white',
+      borderRadius: '9999px',
+      flexShrink: 0,
+      width: '20%',
+      display: 'flex',
+      justifyContent: 'center',
+    }}
+  >
+    <div
+      style={{
+        backgroundColor: 'white',
+        borderRadius: '50%',
+        flexShrink: 0,
+        width: '16px',
+        height: '16px',
+        marginTop: -7,
+      }}
+    ></div>
+  </div>
+</div>
+
+<Overview>
+  <FeatureList>
+    <Feature>
+      The user can touch or click anywhere on the Slider track to activate the thumb and update the
+      value.
+    </Feature>
+    <Feature>
+      The user can touch or click anywhere on the Slider track to activate the thumb and update the
+      value.
+    </Feature>
+    <Feature>
+      The user can touch or click anywhere on the Slider track to activate the thumb and update the
+      value.
+    </Feature>
+    <Feature>
+      The user can touch or click anywhere on the Slider track to activate the thumb and update the
+      value.
+    </Feature>
+  </FeatureList>
+</Overview>
+
 ### Installation
 
 Install the component from your command line.
 
-```
+```bash
 npm install @radix-ui/react-slider
 ```
 
 Then import the component in your component file.
 
-```
+```jsx
 // Slider.tsx
-import { Slider } from '@radix-ui/react-slider';
+import * as SliderPrimitive from '@interop-ui/react-slider';
 ```
 
-### Styling
+### Basic example
 
 Create your styled slider components, then pass those styled components into `Slider` via the `as` prop:
 
 ```jsx live manual
+// Slider.tsx
+// import * as SliderPrimitive from '@interop-ui/react-slider';
+
 // outer container styles
-const StyledSlider = styled('div', {
+const Slider = styled(SliderPrimitive, {
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
   flexShrink: 0,
   userSelect: 'none',
   touchAction: 'none',
+  height: 16,
 });
 
 // track styles
-const StyledSliderTrack = styled('div', {
+const SliderTrack = styled(SliderPrimitive.Track, {
   backgroundColor: 'gainsboro',
   position: 'relative',
   flexGrow: 1,
+  height: 2,
 });
 
 // range styles
-const StyledSliderRange = styled('div', {
+const SliderRange = styled(SliderPrimitive.Range, {
+  backgroundColor: 'dodgerblue',
   position: 'absolute',
+  borderRadius: '9999px',
+  height: '100%',
 });
 
 // thumb styles
-const StyledSliderThumb = styled('div', {
+const SliderThumb = styled(SliderPrimitive.Thumb, {
   display: 'block',
+  width: 16,
+  height: 16,
+  backgroundColor: 'white',
+  border: '1px solid lightgray',
+  borderRadius: '20px',
+  ':focus': {
+    outline: 'none',
+    borderColor: 'blue',
+  },
 });
 
 render(
-  <Slider defaultValue={10} as={StyledSlider}>
-    <Slider.Track as={StyledSliderTrack}>
-      <Slider.Range as={StyledSliderRange} />
-    </Slider.Track>
-    <Slider.Thumb as={StyledSliderThumb} />
+  <Slider defaultValue={50}>
+    <SliderTrack>
+      <SliderRange />
+    </SliderTrack>
+    <SliderThumb />
   </Slider>
 );
 ```
 
 ---
 
-### Accessibility
+### Examples
 
-- Regardless of the visible size of the track or thumb, their touch targets should be sufficiently large. The touch target can be increased by adding an invisible pseudo element to the thumb and/or track.
-- The user can touch or click anywhere on the `Slider` track to activate the thumb and update the value.
-- The element with the accessible role of `slider` is `SliderThumb`, not `Slider` itself. This is because `Slider` can have multiple thumbs that represent two independent values.
-- The element rendered by `SliderThumb` sets a value for `aria-label` by default that represents the slider's range in a human readable format. This can be overridden by passing `aria-label` directly to `SliderThumb`.
-- The element rendered by `SliderThumb` sets a value for `aria-valuemin` equal to the min prop passed to Slider.
-- The element rendered by `SliderThumb` sets a value for `aria-valuemax` equal to the max prop passed to Slider.
-- The element rendered by `SliderThumb` sets a value for `aria-valuenow` equal to the component's current value.
-- The element rendered by `SliderThumb` sets a value for `aria-orientation` equal to the orientation prop passed to Slider.
-- The `SliderThumb` must be in the document's tab sequence and has a `tabIndex` of `0` by default.
+#### Vertical orientation
 
----
+Create your styled slider components, then pass those styled components into `Slider` via the `as` prop:
 
-### WAI-ARIA Guidance
+```jsx live manual
+// Slider.tsx
+// import * as SliderPrimitive from '@interop-ui/react-slider';
 
-Slider implements the [WAI-ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/#slider) slider pattern.
+// outer container styles
+const Slider = styled(SliderPrimitive, {
+  position: 'relative',
+  display: 'flex',
+  alignItems: 'center',
+  flexShrink: 0,
+  userSelect: 'none',
+  touchAction: 'none',
+  height: 16,
+  '&[data-orientation="vertical"]': {
+    flexDirection: 'column',
+    width: 16,
+    height: 100,
+  },
+});
+
+// track styles
+const SliderTrack = styled(SliderPrimitive.Track, {
+  backgroundColor: 'gainsboro',
+  position: 'relative',
+  flexGrow: 1,
+  height: 2,
+  '&[data-orientation="horizontal"]': {
+    height: 2,
+  },
+  '&[data-orientation="vertical"]': {
+    width: 2,
+  },
+});
+
+// range styles
+const SliderRange = styled(SliderPrimitive.Range, {
+  backgroundColor: 'dodgerblue',
+  position: 'absolute',
+  borderRadius: '9999px',
+  height: '100%',
+  '&[data-orientation="horizontal"]': {
+    height: '100%',
+  },
+  '&[data-orientation="vertical"]': {
+    width: '100%',
+  },
+});
+
+// thumb styles
+const SliderThumb = styled(SliderPrimitive.Thumb, {
+  display: 'block',
+  width: 16,
+  height: 16,
+  backgroundColor: 'white',
+  border: '1px solid lightgray',
+  borderRadius: '20px',
+  ':focus': {
+    outline: 'none',
+    borderColor: 'blue',
+  },
+});
+
+render(
+  <Slider defaultValue={50} orientation="vertical">
+    <SliderTrack>
+      <SliderRange />
+    </SliderTrack>
+    <SliderThumb />
+  </Slider>
+);
+```
+
+#### Show thumb on hover
+
+Create your styled slider components, then pass those styled components into `Slider` via the `as` prop:
+
+```jsx live manual
+// track styles
+const SliderTrack = styled(SliderPrimitive.Track, {
+  backgroundColor: 'gainsboro',
+  position: 'relative',
+  flexGrow: 1,
+  height: 2,
+});
+
+// range styles
+const SliderRange = styled(SliderPrimitive.Range, {
+  backgroundColor: 'gray',
+  position: 'absolute',
+  borderRadius: '9999px',
+  height: '100%',
+});
+
+// thumb styles
+const SliderThumb = styled(SliderPrimitive.Thumb, {
+  display: 'block',
+  width: 16,
+  height: 16,
+  backgroundColor: 'white',
+  border: '1px solid lightgray',
+  borderRadius: '20px',
+  opacity: 0,
+  ':focus': {
+    outline: 'none',
+    borderColor: 'blue',
+  },
+});
+
+// outer container styles
+const Slider = styled(SliderPrimitive, {
+  position: 'relative',
+  display: 'flex',
+  alignItems: 'center',
+  flexShrink: 0,
+  userSelect: 'none',
+  touchAction: 'none',
+  height: 16,
+  ':hover': {
+    [`& ${SliderRange}`]: {
+      backgroundColor: 'dodgerblue',
+    },
+    [`& ${SliderThumb}`]: {
+      opacity: '1',
+    },
+  },
+});
+
+render(
+  <Slider defaultValue={10}>
+    <SliderTrack>
+      <SliderRange />
+    </SliderTrack>
+    <SliderThumb />
+  </Slider>
+);
+```
+
+#### Controlled state
+
+The component will work as expected without any additional props or configuration, but if you need access to its state you can control it with the value and onChange props.
+
+```jsx live manual
+// Slider.tsx
+// import * as SliderPrimitive from '@interop-ui/react-slider';
+
+// outer container styles
+const Slider = styled(SliderPrimitive, {
+  position: 'relative',
+  display: 'flex',
+  alignItems: 'center',
+  flexShrink: 0,
+  userSelect: 'none',
+  touchAction: 'none',
+  height: 16,
+});
+
+// track styles
+const SliderTrack = styled(SliderPrimitive.Track, {
+  backgroundColor: 'gainsboro',
+  position: 'relative',
+  flexGrow: 1,
+  height: 2,
+});
+
+// range styles
+const SliderRange = styled(SliderPrimitive.Range, {
+  backgroundColor: 'dodgerblue',
+  position: 'absolute',
+  borderRadius: '9999px',
+  height: '100%',
+});
+
+// thumb styles
+const SliderThumb = styled(SliderPrimitive.Thumb, {
+  display: 'block',
+  width: 16,
+  height: 16,
+  backgroundColor: 'white',
+  border: '1px solid lightgray',
+  borderRadius: '20px',
+  ':focus': {
+    outline: 'none',
+    borderColor: 'blue',
+  },
+});
+
+function ControlledSlider() {
+  const [value, setValue] = React.useState(10);
+  return (
+    <Slider value={value} onChange={(newValue) => setValue(newValue)}>
+      <SliderTrack>
+        <SliderRange />
+      </SliderTrack>
+      <SliderThumb />
+    </Slider>
+  );
+}
+
+render(<ControlledSlider />);
+```
 
 ---
 
 ### Keyboard Interactions
 
-ArrowUp
-Increases the value by the step amount.
+<KeyboardTable
+  data={[
+    {
+      keys: ['ArrowRight'],
+      description:
+        'Increments/decrements by the `step` value depending on `orientation`.',
+    },
+    {
+      keys: ['ArrowLeft'],
+      description:
+        'Updates the value in the direction indicated by the left side of the slider by the step amount',
+    },
+    {
+      keys: ['ArrowUp'],
+      description: 'Increases the value by the step amount',
+    },
+    {
+      keys: ['ArrowDown'],
+      description: 'Decreases the value by the step amount',
+    },
+    {
+      keys: ['PageUp'],
+      description: (
+        <span>
+          Increases the value by a larger step.
+        </span>
+      ),
+    },
+    {
+      keys: ['PageDown'],
+      description: (
+        <span>
+          Descreases the value by a larger step.
+        </span>
+      ),
+    },
+    {
+      keys: ['Home'],
+      description: 'Sets the value to its minimum',
+    },
+    {
+      keys: ['End'],
+      description: 'Sets the value to its maximum',
+    },
+    {
+      keys: ['Enter'],
+      description:
+        'If the Slider is in a form context, simulates a click on the associated form submit button',
+    },
+  ]}
+/>
 
-ArrowRight
-Increases the value by the step amount.
-
-ArrowDown
-Decreases the value by the step amount.
-
-ArrowLeft
-Decreases the value by the step amount.
-
-Page Up
-Increases the value by a larger step.
-
-Page Down
-Decreases the value by a larger step.
-
-Home
-Sets the value to its minimum.
-
-End
-Sets the value to its maximum.
-
-Enter
-If the Slider is in a form context, simulates a click on the associated form submit button.
-
----
-
-### API Reference
+### Prop table
 
 <PropsTable
   data={[
@@ -151,82 +439,6 @@ If the Slider is in a form context, simulates a click on the associated form sub
       default: true,
       type: 'boolean',
       description: 'Dummy text ever since the 1500s',
-    },
-  ]}
-/>
-
-### Controlled state
-
-The component will work as expected without any additional props or configuration, but if you need access to its state you can control it with the value and onChange props.
-
-```jsx live manual
-function ControlledSlider() {
-  const [value, setValue] = React.useState(10);
-  return (
-    <Slider value={value} onChange={(newValue) => setValue(newValue)}>
-      <Slider.Track>
-        <Slider.Range />
-      </Slider.Track>
-      <Slider.Thumb />
-    </Slider>
-  );
-}
-
-render(<ControlledSlider />);
-```
-
-### Accessibility
-
-#### Keyboard interactions
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['ArrowRight'],
-      description:
-        'Updates the value in the direction indicated by the right side of the slider by the step amount',
-    },
-    {
-      keys: ['ArrowLeft'],
-      description:
-        'Updates the value in the direction indicated by the left side of the slider by the step amount',
-    },
-    {
-      keys: ['ArrowUp'],
-      description: 'Increases the value by the step amount',
-    },
-    {
-      keys: ['ArrowDown'],
-      description: 'Decreases the value by the step amount',
-    },
-    {
-      keys: ['PageUp'],
-      description: (
-        <span>
-          Increases the value by a larger step than <Kbd>ArrowUp</Kbd>
-        </span>
-      ),
-    },
-    {
-      keys: ['PageDown'],
-      description: (
-        <span>
-          Descreases the value by a larger step than <Kbd>ArrowDown</Kbd>
-        </span>
-      ),
-    },
-    {
-      keys: ['Home'],
-      description: 'Sets the value to its minimum',
-    },
-    {
-      keys: ['End'],
-      description: 'Sets the value to its maximum',
-    },
-    {
-      keys: ['Enter'],
-      description:
-        'If the Slider is in a form context, simulates a click on the associated form submit button',
     },
   ]}
 />

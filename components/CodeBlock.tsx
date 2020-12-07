@@ -156,8 +156,8 @@ export function CodeBlock({ className, live, manual, render, children, addFragme
     transformCode: (code) => (addFragment ? `<>${code}</>` : code),
     scope: {
       React,
-      styled,
       ...components,
+      styled,
     },
     noInline: manual,
     ...props,
@@ -214,6 +214,7 @@ export function CodeBlock({ className, live, manual, render, children, addFragme
             position: 'relative',
             zIndex: 1,
             display: 'block',
+            lineHeight: '20px',
           }}
         />
       </LiveProvider>
