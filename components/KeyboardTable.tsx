@@ -26,9 +26,19 @@ export function KeyboardTable({ data }: { data: KeyboardDef[] }) {
       <tbody>
         {data.map(({ keys, description }, i) => (
           <tr key={i}>
-            <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
+            <Box
+              as="td"
+              css={{
+                borderBottom: '1px solid $gray500',
+                py: '$3',
+                pr: '$4',
+                whiteSpace: 'nowrap',
+              }}
+            >
               {keys.map((k) => (
-                <Kbd key={k}>{k}</Kbd>
+                <Kbd key={k} css={{ '& + &': { ml: '4px' } }}>
+                  {k}
+                </Kbd>
               ))}
             </Box>
             <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3' }}>

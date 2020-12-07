@@ -353,35 +353,49 @@ render(<ControlledSlider />);
   data={[
     {
       keys: ['ArrowRight'],
-      description:
-        'Increments/decrements by the `step` value depending on `orientation`.',
-    },
-    {
-      keys: ['ArrowLeft'],
-      description:
-        'Updates the value in the direction indicated by the left side of the slider by the step amount',
-    },
-    {
-      keys: ['ArrowUp'],
-      description: 'Increases the value by the step amount',
-    },
-    {
-      keys: ['ArrowDown'],
-      description: 'Decreases the value by the step amount',
-    },
-    {
-      keys: ['PageUp'],
       description: (
         <span>
-          Increases the value by a larger step.
+          Increments/decrements by the <Code>step</Code> value depending on <Code>orientation</Code>
         </span>
       ),
     },
     {
-      keys: ['PageDown'],
+      keys: ['ArrowLeft'],
       description: (
         <span>
-          Descreases the value by a larger step.
+          Increments/decrements by the <Code>step</Code> value depending on <Code>orientation</Code>
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowUp'],
+      description: (
+        <span>
+          Increases the value by the <Code>step</Code> amount
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowDown'],
+      description: (
+        <span>
+          Decreases the value by the <Code>step</Code> amount
+        </span>
+      ),
+    },
+    {
+      keys: ['PageUp', 'Shift + ArrowUp'],
+      description: (
+        <span>
+          Increases the value by a larger <Code>step</Code>
+        </span>
+      ),
+    },
+    {
+      keys: ['PageDown', 'Shift + ArrowDown'],
+      description: (
+        <span>
+          Decreases the value by a larger <Code>step</Code>
         </span>
       ),
     },
@@ -395,50 +409,89 @@ render(<ControlledSlider />);
     },
     {
       keys: ['Enter'],
-      description:
-        'If the Slider is in a form context, simulates a click on the associated form submit button',
+      description: (
+        <span>
+          If the <Code>Slider</Code> is in a form context, simulates a click on the associated form
+          submit button
+        </span>
+      ),
     },
   ]}
 />
 
-### Prop table
+### API Reference
+
+#### Slider
+
+`Slider` is the root component.
 
 <PropsTable
   data={[
     {
-      name: 'isOpen',
-      required: false,
-      default: true,
-      type: 'boolean',
-      description: 'Dummy text ever since the 1500s',
+      name: 'value',
+      type: 'number',
     },
     {
-      name: 'side',
-      required: false,
-      default: 'bottom',
-      type: 'boolean',
-      description: 'Dummy text ever since the 1500s',
+      name: 'defaultValue',
+      type: 'number',
     },
     {
-      name: 'position',
-      required: true,
-      default: 'right',
-      type: 'boolean',
-      description: 'Dummy text ever since the 1500s',
+      name: 'onChange',
+      type: 'onChange?(value: number): void',
+      typeSimple: 'function',
     },
     {
-      name: 'offset',
-      required: false,
-      default: '10px',
-      type: 'boolean',
-      description: 'Dummy text ever since the 1500s',
+      name: 'name',
+      type: 'string',
     },
     {
-      name: 'showArrow',
-      required: true,
-      default: true,
+      name: 'disabled',
       type: 'boolean',
-      description: 'Dummy text ever since the 1500s',
+      default: 'false',
+    },
+    {
+      name: 'orientation',
+      type: '"horizontal" | "vertical"',
+      typeSimple: 'enum',
+      default: '"horizontal"',
+    },
+    {
+      name: 'dir',
+      type: '"ltr" | "rtl"',
+      typeSimple: 'enum',
+      default: '"ltr"',
+    },
+    {
+      name: 'min',
+      type: 'number',
+      default: '0',
+    },
+    {
+      name: 'max',
+      type: 'number',
+      default: '100',
+    },
+    {
+      name: 'step',
+      type: 'number',
+      default: '1',
+    },
+    {
+      name: 'minStepsBetweenThumbs',
+      type: 'number',
+      default: '0',
     },
   ]}
 />
+
+#### SliderTrack
+
+`SliderTrack` is the track part.
+
+#### Range
+
+`SliderRange` is the range part. Must live inside `SliderTrack`.
+
+#### Thumb
+
+`SliderThumb` is the thumb part. You can render multiple thumbs.

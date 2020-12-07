@@ -1,21 +1,19 @@
 import React from 'react';
 import { Box, IconButton, Text, Code, Popover } from '@modulz/design-system';
-import { CheckIcon, InfoCircledIcon } from '@modulz/radix-icons';
+import { CheckIcon, InfoCircledIcon, DividerHorizontalIcon } from '@modulz/radix-icons';
 
 type PropDef = {
   name: string;
   required?: boolean;
   default?: string | boolean;
   type: string;
+  typeSimple: string;
   description?: string;
 };
 
 export function PropsTable({ data }: { data: PropDef[] }) {
   return (
-    <Box
-      as="table"
-      css={{ width: '100%', textAlign: 'left', tableLayout: 'fixed', borderCollapse: 'collapse' }}
-    >
+    <Box as="table" css={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}>
       <thead>
         <tr>
           <Box as="th" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
@@ -33,6 +31,7 @@ export function PropsTable({ data }: { data: PropDef[] }) {
               Default
             </Text>
           </Box>
+
           <Box
             as="th"
             css={{
@@ -50,20 +49,24 @@ export function PropsTable({ data }: { data: PropDef[] }) {
         </tr>
       </thead>
       <tbody>
-        {data.map(({ name, type, required, default: defaultValue, description }, i) => (
+        {data.map(({ name, type, typeSimple, required, default: defaultValue, description }, i) => (
           <tr key={`${name}-${i}`}>
             <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
               <Code>{name}</Code>
               {description && (
                 <Popover>
-                  <Popover.Trigger as={IconButton} variant="ghost" css={{ ml: '$2' }} aria-label="Prop description">
+                  <Popover.Trigger
+                    as={IconButton}
+                    variant="ghost"
+                    css={{ ml: '$2' }}
+                    aria-label="Prop description"
+                  >
                     <InfoCircledIcon />
                   </Popover.Trigger>
                   <Popover.Content side="top">
-                    <Box css={{ pt: '$2', px: '$3', pb: '$2', width: '320px' }}>
+                    <Box css={{ py: '$2', px: '$3', width: '320px' }}>
                       <Text size="2" css={{ lineHeight: '20px' }}>
                         {description}
-                        If the Slider is in a form context, simulates a click on the associated form submit button
                       </Text>
                     </Box>
                   </Popover.Content>
@@ -71,11 +74,34 @@ export function PropsTable({ data }: { data: PropDef[] }) {
               )}
             </Box>
             <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
-              <Code css={{ bc: '$gray200', color: '$gray900' }}>{type}</Code>
+              <Code css={{ bc: '$gray200', color: '$gray900' }}>
+                {Boolean(typeSimple) ? typeSimple : type}
+              </Code>
+              {Boolean(typeSimple) && (
+                <Popover>
+                  <Popover.Trigger
+                    as={IconButton}
+                    variant="ghost"
+                    css={{ ml: '$2' }}
+                    aria-label="See full type"
+                  >
+                    <InfoCircledIcon />
+                  </Popover.Trigger>
+                  <Popover.Content side="top">
+                    <Box css={{ py: '$2', px: '$2', height: '39px', whiteSpace: 'nowrap' }}>
+                      <Text size="2" css={{ display: 'inline' }}>
+                        Type:
+                      </Text>{' '}
+                      <Code>{type}</Code>
+                    </Box>
+                  </Popover.Content>
+                </Popover>
+              )}
             </Box>
             <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
               <Code css={{ bc: '$gray200', color: '$gray900' }}>{String(defaultValue)}</Code>
             </Box>
+
             <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3', textAlign: 'right' }}>
               {required ? (
                 <Box
@@ -93,7 +119,11 @@ export function PropsTable({ data }: { data: PropDef[] }) {
                 >
                   <CheckIcon />
                 </Box>
-              ) : null}
+              ) : (
+                <Box aria-label="Not required" css={{ display: 'inline-flex', color: '$gray600' }}>
+                  <DividerHorizontalIcon />
+                </Box>
+              )}
             </Box>
           </tr>
         ))}
