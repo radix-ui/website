@@ -66,13 +66,13 @@ description: 'An input where the user selects a value from within a given range.
 
 Install the component from your command line.
 
-```
+```bash
 npm install @radix-ui/react-slider
 ```
 
 Then import the component in your component file.
 
-```
+```jsx
 // Slider.tsx
 import * as SliderPrimitive from '@interop-ui/react-slider';
 ```
@@ -82,10 +82,11 @@ import * as SliderPrimitive from '@interop-ui/react-slider';
 Create your styled slider components, then pass those styled components into `Slider` via the `as` prop:
 
 ```jsx live manual
+// Slider.tsx
 // import * as SliderPrimitive from '@interop-ui/react-slider';
 
 // outer container styles
-const StyledSlider = styled('div', {
+const Slider = styled(SliderPrimitive, {
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
@@ -96,7 +97,7 @@ const StyledSlider = styled('div', {
 });
 
 // track styles
-const StyledSliderTrack = styled('div', {
+const SliderTrack = styled(SliderPrimitive.Track, {
   backgroundColor: 'gainsboro',
   position: 'relative',
   flexGrow: 1,
@@ -104,7 +105,7 @@ const StyledSliderTrack = styled('div', {
 });
 
 // range styles
-const StyledSliderRange = styled('div', {
+const SliderRange = styled(SliderPrimitive.Range, {
   backgroundColor: 'dodgerblue',
   position: 'absolute',
   borderRadius: '9999px',
@@ -112,7 +113,7 @@ const StyledSliderRange = styled('div', {
 });
 
 // thumb styles
-const StyledSliderThumb = styled('div', {
+const SliderThumb = styled(SliderPrimitive.Thumb, {
   display: 'block',
   width: 16,
   height: 16,
@@ -126,11 +127,11 @@ const StyledSliderThumb = styled('div', {
 });
 
 render(
-  <Slider defaultValue={50} as={StyledSlider}>
-    <Slider.Track as={StyledSliderTrack}>
-      <Slider.Range as={StyledSliderRange} />
-    </Slider.Track>
-    <Slider.Thumb as={StyledSliderThumb} />
+  <Slider defaultValue={50}>
+    <SliderTrack>
+      <SliderRange />
+    </SliderTrack>
+    <SliderThumb />
   </Slider>
 );
 ```
@@ -144,8 +145,11 @@ render(
 Create your styled slider components, then pass those styled components into `Slider` via the `as` prop:
 
 ```jsx live manual
+// Slider.tsx
+// import * as SliderPrimitive from '@interop-ui/react-slider';
+
 // outer container styles
-const StyledSlider = styled('div', {
+const Slider = styled(SliderPrimitive, {
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
@@ -161,7 +165,7 @@ const StyledSlider = styled('div', {
 });
 
 // track styles
-const StyledSliderTrack = styled('div', {
+const SliderTrack = styled(SliderPrimitive.Track, {
   backgroundColor: 'gainsboro',
   position: 'relative',
   flexGrow: 1,
@@ -175,7 +179,7 @@ const StyledSliderTrack = styled('div', {
 });
 
 // range styles
-const StyledSliderRange = styled('div', {
+const SliderRange = styled(SliderPrimitive.Range, {
   backgroundColor: 'dodgerblue',
   position: 'absolute',
   borderRadius: '9999px',
@@ -189,7 +193,7 @@ const StyledSliderRange = styled('div', {
 });
 
 // thumb styles
-const StyledSliderThumb = styled('div', {
+const SliderThumb = styled(SliderPrimitive.Thumb, {
   display: 'block',
   width: 16,
   height: 16,
@@ -203,11 +207,11 @@ const StyledSliderThumb = styled('div', {
 });
 
 render(
-  <Slider defaultValue={50} as={StyledSlider} orientation="vertical">
-    <Slider.Track as={StyledSliderTrack}>
-      <Slider.Range as={StyledSliderRange} />
-    </Slider.Track>
-    <Slider.Thumb as={StyledSliderThumb} />
+  <Slider defaultValue={50} orientation="vertical">
+    <SliderTrack>
+      <SliderRange />
+    </SliderTrack>
+    <SliderThumb />
   </Slider>
 );
 ```
@@ -218,7 +222,7 @@ Create your styled slider components, then pass those styled components into `Sl
 
 ```jsx live manual
 // track styles
-const StyledSliderTrack = styled('div', {
+const SliderTrack = styled(SliderPrimitive.Track, {
   backgroundColor: 'gainsboro',
   position: 'relative',
   flexGrow: 1,
@@ -226,7 +230,7 @@ const StyledSliderTrack = styled('div', {
 });
 
 // range styles
-const StyledSliderRange = styled('div', {
+const SliderRange = styled(SliderPrimitive.Range, {
   backgroundColor: 'gray',
   position: 'absolute',
   borderRadius: '9999px',
@@ -234,7 +238,7 @@ const StyledSliderRange = styled('div', {
 });
 
 // thumb styles
-const StyledSliderThumb = styled('div', {
+const SliderThumb = styled(SliderPrimitive.Thumb, {
   display: 'block',
   width: 16,
   height: 16,
@@ -249,7 +253,7 @@ const StyledSliderThumb = styled('div', {
 });
 
 // outer container styles
-const StyledSlider = styled('div', {
+const Slider = styled(SliderPrimitive, {
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
@@ -258,63 +262,21 @@ const StyledSlider = styled('div', {
   touchAction: 'none',
   height: 16,
   ':hover': {
-    [`& ${StyledSliderRange}`]: {
+    [`& ${SliderRange}`]: {
       backgroundColor: 'dodgerblue',
     },
-    [`& ${StyledSliderThumb}`]: {
+    [`& ${SliderThumb}`]: {
       opacity: '1',
     },
   },
 });
 
 render(
-  <Slider defaultValue={10} as={StyledSlider}>
-    <Slider.Track as={StyledSliderTrack}>
-      <Slider.Range as={StyledSliderRange} />
-    </Slider.Track>
-    <Slider.Thumb as={StyledSliderThumb} />
-  </Slider>
-);
-```
-
-#### Use case 3
-
-Create your styled slider components, then pass those styled components into `Slider` via the `as` prop:
-
-```jsx live manual
-// outer container styles
-const StyledSlider = styled('div', {
-  position: 'relative',
-  display: 'flex',
-  alignItems: 'center',
-  flexShrink: 0,
-  userSelect: 'none',
-  touchAction: 'none',
-});
-
-// track styles
-const StyledSliderTrack = styled('div', {
-  backgroundColor: 'gainsboro',
-  position: 'relative',
-  flexGrow: 1,
-});
-
-// range styles
-const StyledSliderRange = styled('div', {
-  position: 'absolute',
-});
-
-// thumb styles
-const StyledSliderThumb = styled('div', {
-  display: 'block',
-});
-
-render(
-  <Slider defaultValue={10} as={StyledSlider}>
-    <Slider.Track as={StyledSliderTrack}>
-      <Slider.Range as={StyledSliderRange} />
-    </Slider.Track>
-    <Slider.Thumb as={StyledSliderThumb} />
+  <Slider defaultValue={10}>
+    <SliderTrack>
+      <SliderRange />
+    </SliderTrack>
+    <SliderThumb />
   </Slider>
 );
 ```
@@ -324,14 +286,58 @@ render(
 The component will work as expected without any additional props or configuration, but if you need access to its state you can control it with the value and onChange props.
 
 ```jsx live manual
+// Slider.tsx
+// import * as SliderPrimitive from '@interop-ui/react-slider';
+
+// outer container styles
+const Slider = styled(SliderPrimitive, {
+  position: 'relative',
+  display: 'flex',
+  alignItems: 'center',
+  flexShrink: 0,
+  userSelect: 'none',
+  touchAction: 'none',
+  height: 16,
+});
+
+// track styles
+const SliderTrack = styled(SliderPrimitive.Track, {
+  backgroundColor: 'gainsboro',
+  position: 'relative',
+  flexGrow: 1,
+  height: 2,
+});
+
+// range styles
+const SliderRange = styled(SliderPrimitive.Range, {
+  backgroundColor: 'dodgerblue',
+  position: 'absolute',
+  borderRadius: '9999px',
+  height: '100%',
+});
+
+// thumb styles
+const SliderThumb = styled(SliderPrimitive.Thumb, {
+  display: 'block',
+  width: 16,
+  height: 16,
+  backgroundColor: 'white',
+  border: '1px solid lightgray',
+  borderRadius: '20px',
+  ':focus': {
+    outline: 'none',
+    borderColor: 'blue',
+  },
+});
+
 function ControlledSlider() {
   const [value, setValue] = React.useState(10);
   return (
     <Slider value={value} onChange={(newValue) => setValue(newValue)}>
-      <Slider.Track>
-        <Slider.Range />
-      </Slider.Track>
-      <Slider.Thumb />
+      <SliderTrack>
+        <SliderRange />
+      </SliderTrack>
+      <SliderThumb />
     </Slider>
   );
 }

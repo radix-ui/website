@@ -7,7 +7,7 @@ export { Popover } from '@interop-ui/react-popover';
 export { ProgressBar } from '@interop-ui/react-progress-bar';
 export { RadioGroup } from '@interop-ui/react-radio-group';
 export { Separator } from '@interop-ui/react-separator';
-export { Slider } from '@interop-ui/react-slider';
+export { Slider as SliderPrimitive } from '@interop-ui/react-slider';
 export { Switch } from '@interop-ui/react-switch';
 export { Tabs } from '@interop-ui/react-tabs';
 export { ToggleButton } from '@interop-ui/react-toggle-button';

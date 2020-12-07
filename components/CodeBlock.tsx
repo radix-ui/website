@@ -156,8 +156,8 @@ export function CodeBlock({ className, live, manual, render, children, addFragme
     transformCode: (code) => (addFragment ? `<>${code}</>` : code),
     scope: {
       React,
-      styled,
       ...components,
+      styled,
     },
     noInline: manual,
     ...props,
