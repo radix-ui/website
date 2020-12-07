@@ -1,7 +1,7 @@
 import * as React from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { Box, Flex, Badge, IconButton } from '@modulz/design-system';
+import { Box, Flex, Badge, IconButton, Subheading, Link, Text } from '@modulz/design-system';
 import { HamburgerMenuIcon } from '@modulz/radix-icons';
 import { ScrollArea } from '../components/ScrollArea';
 import { RadixLogo } from './RadixLogo';
@@ -120,12 +120,115 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
           },
           bp3: {
             px: '250px',
-            py: '$9'
+            py: '$9',
           },
         }}
       >
         {children}
       </Box>
+      <Box
+        css={{
+          display: 'none',
+          bp3: {
+            display: 'block',
+            width: '250px',
+            flexShrink: 0,
+            position: 'fixed',
+            right: 0,
+            order: 1,
+            px: '$5',
+            maxHeight: 'calc(100vh - (var(--space-8) + var(--space-5)))',
+          },
+        }}
+      >
+        <QuickNav />
+      </Box>
     </Flex>
+  );
+}
+
+export function QuickNav() {
+  const [headings, setHeadings] = React.useState<HTMLHeadingElement[]>([]);
+  const [activeHeadings, setActiveHeadings] = React.useState({});
+
+  React.useEffect(() => {
+    const headingElements: HTMLHeadingElement[] = Array.from(
+      document.querySelectorAll('[data-heading]')
+    );
+
+    setHeadings(headingElements);
+  }, []);
+
+  React.useEffect(() => {
+    if (headings.length === 0) false;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.getAttribute('id');
+        if (entry.intersectionRatio > 0) {
+          setActiveHeadings((s) => ({ ...s, [id]: true }));
+        } else {
+          setActiveHeadings((s) => ({ ...s, [id]: false }));
+        }
+      });
+    });
+
+    // Track all sections that have an `id` applied
+    headings.forEach((heading) => {
+      observer.observe(heading);
+    });
+  }, [headings]);
+
+  if (headings.length === 0) {
+    return null;
+  }
+
+  // Function to determine the Heading Level based on `nodeName` (H2, H3, etc)
+  const getLevel = (nodeName) => {
+    const startLevel = 3;
+    return Number(nodeName.replace('H', '')) - startLevel;
+  };
+
+  return (
+    <ScrollArea>
+      <Box>
+        <Subheading css={{ mb: '$3' }}>Quick nav</Subheading>
+        <Box
+          as="ul"
+          css={{
+            listStyleType: 'none',
+            p: 0,
+            m: 0,
+          }}
+        >
+          {headings.map(({ id, nodeName, innerText }) => {
+            return (
+              <Box as="li" css={{ py: '$1' }}>
+                <Link
+                  variant="subtle"
+                  href={`#${id}`}
+                  css={{
+                    color: activeHeadings[id] === true ? '$hiContrast' : '$gray800',
+                    fontWeight: activeHeadings[id] === true ? '500' : '400',
+                    display: 'inline-flex',
+                    marginLeft: `calc(${getLevel(nodeName)} * 15px)`,
+                  }}
+                >
+                  <Text
+                    size="3"
+                    key={id}
+                    css={{
+                      color: 'inherit',
+                      lineHeight: '23px',
+                    }}
+                  >
+                    {innerText}
+                  </Text>
+                </Link>
+              </Box>
+            );
+          })}
+        </Box>
+      </Box>
+    </ScrollArea>
   );
 }
