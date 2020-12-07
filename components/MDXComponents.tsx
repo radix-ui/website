@@ -1,8 +1,10 @@
+import * as React from 'react';
 import NextLink from 'next/link';
 import * as DS from '@modulz/design-system';
 import { Link2Icon } from '@modulz/radix-icons';
 import { CodeBlock } from './CodeBlock';
 import { PropsTable } from './PropsTable';
+import { KeyboardTable } from './KeyboardTable';
 
 const LinkHeading = ({ id, ...props }) => (
   <DS.Text {...props} data-heading id={id}>
@@ -15,10 +17,10 @@ const LinkHeading = ({ id, ...props }) => (
         display: 'inline-flex',
         alignItems: 'center',
         svg: {
-          opacity: 0
+          opacity: 0,
         },
         ':hover svg': {
-          opacity: 1
+          opacity: 1,
         },
       }}
     >
@@ -31,29 +33,15 @@ const LinkHeading = ({ id, ...props }) => (
 );
 
 export const MDXComponents = {
-  h1: (props) => (
-    <DS.Title {...props} css={{ mb: '$1', ...props.css }} as="h1" />
-  ),
-  h2: (props) => (
-    <DS.Subtitle
-      {...props}
-      css={{ mt: '$2', mb: '$6', ...props.css }}
-      as="h2"
-    />
-  ),
+  h1: (props) => <DS.Title {...props} css={{ mb: '$1', ...props.css }} as="h1" />,
+  h2: (props) => <DS.Subtitle {...props} css={{ mt: '$2', mb: '$6', ...props.css }} as="h2" />,
   h3: (props) => (
-    <LinkHeading
-      {...props}
-      css={{ mt: '$7', ...props.css }}
-    >
+    <LinkHeading {...props} css={{ mt: '$7', ...props.css }}>
       <DS.Heading {...props} as="h3" />
     </LinkHeading>
   ),
   h4: (props) => (
-    <LinkHeading
-      {...props}
-      css={{ mt: '$7', mb: '$1', ...props.css }}
-    >
+    <LinkHeading {...props} css={{ mt: '$7', mb: '$1', ...props.css }}>
       <DS.Subheading {...props} as="h4" />
     </LinkHeading>
   ),
@@ -62,13 +50,7 @@ export const MDXComponents = {
       <CodeBlock {...props} />
     </DS.Box>
   ),
-  p: (props) => (
-    <DS.Paragraph
-      {...props}
-      css={{ mb: '$3', ...props.css }}
-      as="p"
-    />
-  ),
+  p: (props) => <DS.Paragraph {...props} css={{ mb: '$3', ...props.css }} as="p" />,
   a: ({ href = '', ...props }) => {
     if (href.startsWith('/')) {
       return (
@@ -156,6 +138,11 @@ export const MDXComponents = {
   PropsTable: (props) => (
     <DS.Box css={{ mb: '$5' }}>
       <PropsTable {...props} />
+    </DS.Box>
+  ),
+  KeyboardTable: (props) => (
+    <DS.Box css={{ mb: '$5' }}>
+      <KeyboardTable {...props} />
     </DS.Box>
   ),
 };
