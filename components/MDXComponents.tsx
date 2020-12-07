@@ -15,26 +15,28 @@ const LinkHeading = ({
   children: React.ReactNode;
   css?: any;
 }) => (
-  <DS.Box
-    as="a"
-    href={`#${id}`}
-    css={{
-      textDecoration: 'none',
-      color: 'inherit',
-      display: 'flex',
-      alignItems: 'center',
-      svg: {
-        opacity: 0,
-      },
-      ':hover svg': {
-        opacity: 1,
-      },
-      ...css,
-    }}
-  >
-    {children}
-    <DS.Box as="span" css={{ ml: '$2', color: '$gray900' }}>
-      <Link2Icon />
+  <DS.Box>
+    <DS.Box
+      as="a"
+      href={`#${id}`}
+      css={{
+        textDecoration: 'none',
+        color: 'inherit',
+        display: 'inline-flex',
+        alignItems: 'center',
+        svg: {
+          opacity: 0,
+        },
+        ':hover svg': {
+          opacity: 1,
+        },
+        ...css,
+      }}
+    >
+      {children}
+      <DS.Box as="span" css={{ ml: '$2', color: '$gray900' }}>
+        <Link2Icon />
+      </DS.Box>
     </DS.Box>
   </DS.Box>
 );
@@ -57,7 +59,7 @@ export const MDXComponents = {
     </LinkHeading>
   ),
   code: (props) => (
-    <DS.Box css={{ my: '$5' }}>
+    <DS.Box css={{ }}>
       <CodeBlock {...props} />
     </DS.Box>
   ),

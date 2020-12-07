@@ -214,6 +214,7 @@ export function CodeBlock({ className, live, manual, render, children, addFragme
             position: 'relative',
             zIndex: 1,
             display: 'block',
+            lineHeight: '20px',
           }}
         />
       </LiveProvider>

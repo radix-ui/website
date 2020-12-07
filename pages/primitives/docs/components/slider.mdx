@@ -347,20 +347,6 @@ render(<ControlledSlider />);
 
 ---
 
-### Accessibility
-
-- Regardless of the visible size of the track or thumb, their touch targets should be sufficiently large. The touch target can be increased by adding an invisible pseudo element to the thumb and/or track.
-- The user can touch or click anywhere on the `Slider` track to activate the thumb and update the value.
-- The element with the accessible role of `slider` is `SliderThumb`, not `Slider` itself. This is because `Slider` can have multiple thumbs that represent two independent values.
-- The element rendered by `SliderThumb` sets a value for `aria-label` by default that represents the slider's range in a human readable format. This can be overridden by passing `aria-label` directly to `SliderThumb`.
-- The element rendered by `SliderThumb` sets a value for `aria-valuemin` equal to the min prop passed to Slider.
-- The element rendered by `SliderThumb` sets a value for `aria-valuemax` equal to the max prop passed to Slider.
-- The element rendered by `SliderThumb` sets a value for `aria-valuenow` equal to the component's current value.
-- The element rendered by `SliderThumb` sets a value for `aria-orientation` equal to the orientation prop passed to Slider.
-- The `SliderThumb` must be in the document's tab sequence and has a `tabIndex` of `0` by default.
-
----
-
 ### Keyboard Interactions
 
 <KeyboardTable
@@ -368,7 +354,7 @@ render(<ControlledSlider />);
     {
       keys: ['ArrowRight'],
       description:
-        'Updates the value in the direction indicated by the right side of the slider by the step amount',
+        'Increments/decrements by the `step` value depending on `orientation`.',
     },
     {
       keys: ['ArrowLeft'],
@@ -387,7 +373,7 @@ render(<ControlledSlider />);
       keys: ['PageUp'],
       description: (
         <span>
-          Increases the value by a larger step than <Kbd>ArrowUp</Kbd>
+          Increases the value by a larger step.
         </span>
       ),
     },
@@ -395,7 +381,7 @@ render(<ControlledSlider />);
       keys: ['PageDown'],
       description: (
         <span>
-          Descreases the value by a larger step than <Kbd>ArrowDown</Kbd>
+          Descreases the value by a larger step.
         </span>
       ),
     },
