@@ -162,7 +162,7 @@ export const MDXComponents = {
     <DS.Flex {...props}>
       <DS.Box css={{ flex: 1, mr: '$5' }}>
         <DS.Heading css={{ mb: '$6' }}>Features</DS.Heading>
-        <DS.Box as="ul" css={{ p: 0 }}>
+        <DS.Box as="ul" css={{ p: 0 , m: 0 }}>
           {children}
         </DS.Box>
       </DS.Box>

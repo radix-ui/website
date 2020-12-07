@@ -56,7 +56,7 @@ export function PropsTable({ data }: { data: PropDef[] }) {
               <Code>{name}</Code>
               {description && (
                 <Popover>
-                  <Popover.Trigger as={IconButton} variant="ghost" css={{ ml: '$2' }}>
+                  <Popover.Trigger as={IconButton} variant="ghost" css={{ ml: '$2' }} aria-label="Prop description">
                     <InfoCircledIcon style={{ display: 'inline-block', verticalAlign: 'middle' }} />
                   </Popover.Trigger>
                   <Popover.Content side="top">
