@@ -182,6 +182,7 @@ export function CodeBlock({
         {compact && (
           <Box
             css={{
+              textAlign: 'right',
               bc: '$gray100',
               p: '$2',
               borderBottomLeftRadius: isOpen ? '0' : '$2',
