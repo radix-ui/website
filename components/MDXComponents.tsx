@@ -6,7 +6,7 @@ import { CodeBlock } from './CodeBlock';
 import { PropsTable } from './PropsTable';
 import { KeyboardTable } from './KeyboardTable';
 
-const LinkHeading = ({ id, children }: { id: string; children: React.ReactNode; css?: any }) => (
+const LinkHeading = ({ id, children, css }: { id: string; children: React.ReactNode; css?: any }) => (
   <DS.Box
     as="a"
     href={`#${id}`}
@@ -21,6 +21,7 @@ const LinkHeading = ({ id, children }: { id: string; children: React.ReactNode; 
       ':hover svg': {
         opacity: 1,
       },
+      ...css
     }}
   >
     {children}
@@ -34,14 +35,14 @@ export const MDXComponents = {
   h1: (props) => <DS.Title {...props} css={{ mb: '$1', ...props.css }} />,
   h2: (props) => <DS.Subtitle {...props} css={{ mt: '$2', mb: '$6', ...props.css }} />,
   h3: ({ children, id, ...props }) => (
-    <LinkHeading id={id} css={{ mt: '$9', mb: '$9', ...props.css }}>
+    <LinkHeading id={id} css={{ mt: '$7', mb: '$2', ...props.css }}>
       <DS.Heading {...props} id={id} data-heading>
         {children}
       </DS.Heading>
     </LinkHeading>
   ),
   h4: ({ children, id, ...props }) => (
-    <LinkHeading id={id} css={{ mt: '$9', ...props.css }}>
+    <LinkHeading id={id} css={{ mt: '$7', mb: '$1', ...props.css }}>
       <DS.Subheading {...props} id={id} data-heading>
         {children}
       </DS.Subheading>

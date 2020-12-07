@@ -58,7 +58,6 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
             position: 'fixed',
             right: 0,
             order: 1,
-            px: '$5',
             maxHeight: 'calc(100vh - (var(--space-8) + var(--space-5)))',
           },
         }}
@@ -242,7 +241,7 @@ function QuickNav() {
 
   return (
     <ScrollArea>
-      <Box css={{ pt: '$9', px: '$5' }}>
+      <Box css={{ px: '$5' }}>
         <Subheading css={{ mb: '$3' }}>Quick nav</Subheading>
         <Box
           as="ul"
