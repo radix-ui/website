@@ -236,7 +236,7 @@ function QuickNav() {
 
   // Function to determine the Heading Level based on `nodeName` (H2, H3, etc)
   const getLevel = (nodeName) => {
-    const startLevel = 2;
+    const startLevel = 3;
     return Number(nodeName.replace('H', '')) - startLevel;
   };
 
