@@ -22,7 +22,7 @@ import { Slider } from '@radix-ui/react-slider';
 
 Create your styled slider components, then pass those styled components into `Slider` via the `as` prop:
 
-```jsx live
+```jsx live manual
 // outer container styles
 const StyledSlider = styled('div', {
   position: 'relative',
@@ -31,31 +31,33 @@ const StyledSlider = styled('div', {
   flexShrink: 0,
   userSelect: 'none',
   touchAction: 'none',
-})',
+});
 
 // track styles
 const StyledSliderTrack = styled('div', {
   backgroundColor: 'gainsboro',
   position: 'relative',
   flexGrow: 1,
-})',
+});
 
 // range styles
 const StyledSliderRange = styled('div', {
   position: 'absolute',
-})',
+});
 
 // thumb styles
 const StyledSliderThumb = styled('div', {
   display: 'block',
 });
 
-<Slider defaultValue={10} as={StyledSlider}>
-  <Slider.Track as={StyledSliderTrack}>
-    <Slider.Range as={StyledSliderRange} />
-  </Slider.Track>
-  <Slider.Thumb as={StyledSliderThumb} />
-</Slider>
+render(
+  <Slider defaultValue={10} as={StyledSlider}>
+    <Slider.Track as={StyledSliderTrack}>
+      <Slider.Range as={StyledSliderRange} />
+    </Slider.Track>
+    <Slider.Thumb as={StyledSliderThumb} />
+  </Slider>
+);
 ```
 
 ---

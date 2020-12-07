@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
-import { Box, Button, Text, theme as DStheme } from '@modulz/design-system';
+import { Box, Button, Text, theme as DStheme, styled } from '@modulz/design-system';
 import { useClipboard } from '../utils/useClipboard';
 import * as DS from '@modulz/design-system';
 import * as Primitives from './Primitives';
@@ -138,7 +138,7 @@ const CopyButton = (props: any) => (
   />
 );
 
-export function CodeBlock({ className, live, manual, render, children, removeFragment, ...props }) {
+export function CodeBlock({ className, live, manual, render, children, addFragment, ...props }) {
   const [editorCode, setEditorCode] = useState(children.trim());
   const router = useRouter();
 
@@ -153,8 +153,9 @@ export function CodeBlock({ className, live, manual, render, children, removeFra
     theme,
     language,
     code: editorCode,
-    transformCode: (code) => (removeFragment ? code : `<>${code}</>`),
+    transformCode: (code) => (addFragment ? `<>${code}</>` : code),
     scope: {
+      styled,
       ...components,
     },
     noInline: manual,
@@ -211,6 +212,7 @@ export function CodeBlock({ className, live, manual, render, children, removeFra
             marginTop: -3,
             position: 'relative',
             zIndex: 1,
+            display: 'block',
           }}
         />
       </LiveProvider>
