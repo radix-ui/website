@@ -99,7 +99,13 @@ export function PropsTable({ data }: { data: PropDef[] }) {
               )}
             </Box>
             <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
-              <Code css={{ bc: '$gray200', color: '$gray900' }}>{String(defaultValue)}</Code>
+              {Boolean(defaultValue) ? (
+                <Code css={{ bc: '$gray200', color: '$gray900' }}>{defaultValue}</Code>
+              ) : (
+                <Box aria-label="No default value" css={{ color: '$gray600' }}>
+                  <DividerHorizontalIcon />
+                </Box>
+              )}
             </Box>
 
             <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3', textAlign: 'right' }}>
