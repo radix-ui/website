@@ -6,8 +6,8 @@ import { CodeBlock } from './CodeBlock';
 import { PropsTable } from './PropsTable';
 import { KeyboardTable } from './KeyboardTable';
 
-const LinkHeading = ({ id, ...props }) => (
-  <DS.Box {...props} data-heading id={id}>
+const LinkHeading = ({ id, children }: { id: string; children: React.ReactNode }) => (
+  <DS.Box>
     <DS.Box
       as="a"
       href={`#${id}`}
@@ -24,7 +24,7 @@ const LinkHeading = ({ id, ...props }) => (
         },
       }}
     >
-      {props.children}
+      {children}
       <DS.Box as="span" css={{ ml: '$2', color: '$gray900' }}>
         <Link2Icon />
       </DS.Box>
@@ -35,8 +35,20 @@ const LinkHeading = ({ id, ...props }) => (
 export const MDXComponents = {
   h1: (props) => <DS.Title {...props} css={{ mb: '$1', ...props.css }} />,
   h2: (props) => <DS.Subtitle {...props} css={{ mt: '$2', mb: '$6', ...props.css }} />,
-  h3: (props) => <LinkHeading {...props} as={DS.Heading} css={{ mt: '$7', ...props.css }} />,
-  h4: (props) => <LinkHeading {...props} as={DS.Subheading} css={{ mt: '$7', mb: '$1', ...props.css }} />,
+  h3: ({ children, id, ...props }) => (
+    <LinkHeading id={id} css={{ mt: '$7', ...props.css }}>
+      <DS.Heading {...props} id={id} data-heading>
+        {children}
+      </DS.Heading>
+    </LinkHeading>
+  ),
+  h4: ({ children, id, ...props }) => (
+    <LinkHeading id={id} css={{ mt: '$7', ...props.css }}>
+      <DS.Subheading {...props} id={id} data-heading>
+        {children}
+      </DS.Subheading>
+    </LinkHeading>
+  ),
   code: (props) => (
     <DS.Box css={{ my: '$5' }}>
       <CodeBlock {...props} />
