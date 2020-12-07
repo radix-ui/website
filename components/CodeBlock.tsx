@@ -138,8 +138,18 @@ const CopyButton = (props: any) => (
   />
 );
 
-export function CodeBlock({ className, live, manual, render, children, addFragment, ...props }) {
+export function CodeBlock({
+  className,
+  live,
+  manual,
+  render,
+  compact,
+  children,
+  addFragment,
+  ...props
+}) {
   const [editorCode, setEditorCode] = React.useState(children.trim());
+  const [isOpen, setIsOpen] = React.useState(compact ? false : true);
   const router = useRouter();
 
   const [_, productType] = router.pathname.split('/');
@@ -169,10 +179,26 @@ export function CodeBlock({ className, live, manual, render, children, addFragme
     return (
       <LiveProvider {...liveProviderProps}>
         <StyledLivePreview live={live} />
+        {compact && (
+          <Box
+            css={{
+              bc: '$gray100',
+              p: '$2',
+              borderBottomLeftRadius: isOpen ? '0' : '$2',
+              borderBottomRightRadius: isOpen ? '0' : '$2',
+              boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.1)',
+              mt: '-1px',
+            }}
+          >
+            <Button onClick={() => setIsOpen(!isOpen)}>{isOpen ? 'Hide' : 'Show'} code</Button>
+          </Box>
+        )}
         <Box
           css={{
             position: 'relative',
             zIndex: 1,
+            height: isOpen ? 'auto' : 0,
+            visibility: isOpen ? 'visible' : 'hidden',
           }}
         >
           <CodeContainer live={live}>

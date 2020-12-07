@@ -136,15 +136,13 @@ render(
 );
 ```
 
----
-
 ### Examples
 
 #### Vertical orientation
 
 Create your styled slider components, then pass those styled components into `Slider` via the `as` prop:
 
-```jsx live manual
+```jsx live manual compact
 // Slider.tsx
 // import * as SliderPrimitive from '@interop-ui/react-slider';
 
@@ -220,7 +218,7 @@ render(
 
 Create your styled slider components, then pass those styled components into `Slider` via the `as` prop:
 
-```jsx live manual
+```jsx live manual compact
 // track styles
 const SliderTrack = styled(SliderPrimitive.Track, {
   backgroundColor: 'gainsboro',
@@ -285,7 +283,7 @@ render(
 
 The component will work as expected without any additional props or configuration, but if you need access to its state you can control it with the value and onChange props.
 
-```jsx live manual
+```jsx live manual compact
 // Slider.tsx
 // import * as SliderPrimitive from '@interop-ui/react-slider';
 
@@ -344,8 +342,6 @@ function ControlledSlider() {
 
 render(<ControlledSlider />);
 ```
-
----
 
 ### Keyboard Interactions
 
