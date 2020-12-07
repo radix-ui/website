@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
 import { Box, Button, Text, theme as DStheme, styled } from '@modulz/design-system';
@@ -139,7 +139,7 @@ const CopyButton = (props: any) => (
 );
 
 export function CodeBlock({ className, live, manual, render, children, addFragment, ...props }) {
-  const [editorCode, setEditorCode] = useState(children.trim());
+  const [editorCode, setEditorCode] = React.useState(children.trim());
   const router = useRouter();
 
   const [_, productType] = router.pathname.split('/');
@@ -155,6 +155,7 @@ export function CodeBlock({ className, live, manual, render, children, addFragme
     code: editorCode,
     transformCode: (code) => (addFragment ? `<>${code}</>` : code),
     scope: {
+      React,
       styled,
       ...components,
     },

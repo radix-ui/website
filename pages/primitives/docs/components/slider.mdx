@@ -174,3 +174,43 @@ function ControlledSlider() {
 
 render(<ControlledSlider />);
 ```
+
+### Accessibility
+
+#### Keyboard interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['ArrowRight'],
+      description:
+        'Updates the value in the direction indicated by the right side of the slider by the step amount',
+    },
+    {
+      keys: ['ArrowLeft'],
+      description:
+        'Updates the value in the direction indicated by the left side of the slider by the step amount',
+    },
+    {
+      keys: ['ArrowUp'],
+      description: 'Increases the value by the step amount',
+    },
+    {
+      keys: ['ArrowDown'],
+      description: 'Decreases the value by the step amount',
+    },
+    {
+      keys: ['Home'],
+      description: 'Sets the value to its minimum',
+    },
+    {
+      keys: ['End'],
+      description: 'Sets the value to its maximum',
+    },
+    {
+      keys: ['Enter'],
+      description:
+        'If the Slider is in a form context, simulates a click on the associated form submit button',
+    },
+  ]}
+/>
