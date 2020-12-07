@@ -408,6 +408,22 @@ render(<ControlledSlider />);
       description: 'Decreases the value by the step amount',
     },
     {
+      keys: ['PageUp'],
+      description: (
+        <span>
+          Increases the value by a larger step than <Kbd>ArrowUp</Kbd>
+        </span>
+      ),
+    },
+    {
+      keys: ['PageDown'],
+      description: (
+        <span>
+          Descreases the value by a larger step than <Kbd>ArrowDown</Kbd>
+        </span>
+      ),
+    },
+    {
       keys: ['Home'],
       description: 'Sets the value to its minimum',
     },

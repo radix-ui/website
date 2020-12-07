@@ -2,7 +2,17 @@ import React from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { MDXProvider } from '@mdx-js/react';
-import { Text, Box, Link, Separator, Heading, Flex, Subheading, Subtitle, Container } from '@modulz/design-system';
+import {
+  Text,
+  Box,
+  Link,
+  Separator,
+  Heading,
+  Flex,
+  Subheading,
+  Subtitle,
+  Container,
+} from '@modulz/design-system';
 import { MDXComponents } from '../components/MDXComponents';
 import { FrontMatter } from '../types';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
@@ -51,8 +61,9 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
             px: '$5',
             maxHeight: 'calc(100vh - (var(--space-8) + var(--space-5)))',
           },
-        }}>
-          <QuickNav />
+        }}
+      >
+        <QuickNav />
       </Box>
 
       <Container size="2">
@@ -60,11 +71,7 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
           {frontMatter.title}
         </Text>
 
-        <Subtitle
-          css={{ mt: '$2' }}
-        >
-          {frontMatter.description}
-        </Subtitle>
+        <Subtitle css={{ mt: '$2' }}>{frontMatter.description}</Subtitle>
 
         <Box>{children}</Box>
 
@@ -236,39 +243,44 @@ function QuickNav() {
   return (
     <ScrollArea>
       <Box>
-        <Subheading css={{ mb: '$3' }}>
-          Quick nav
-        </Subheading>
-        <Box as="ul" css={{
-          listStyleType: 'none',
-          p: 0,
-          m: 0
-        }}>
-          {headings.map(({ id, nodeName, innerText }) => (
-            <Box as="li" css={{ py: '$1', }}>
-              <Link
-                variant="subtle"
-                href={`#${id}`}
-                css={{
-                  color: activeHeadings[id] === true ? '$hiContrast' : '$gray800',
-                  fontWeight: activeHeadings[id] === true ? '500' : '400',
-                  display: 'inline-flex',
-                  paddingLeft: `calc(${getLevel(nodeName)} * 15px)`,
-                }}
-              >
-                <Text
-                  size="3"
-                  key={id}
+        <Subheading css={{ mb: '$3' }}>Quick nav</Subheading>
+        <Box
+          as="ul"
+          css={{
+            listStyleType: 'none',
+            p: 0,
+            m: 0,
+          }}
+        >
+          {headings.map(({ id, nodeName, innerText }) => {
+            console.log(nodeName);
+            console.log(getLevel(nodeName));
+            return (
+              <Box as="li" css={{ py: '$1' }}>
+                <Link
+                  variant="subtle"
+                  href={`#${id}`}
                   css={{
-                    color: 'inherit',
-                    lineHeight: '23px',
+                    color: activeHeadings[id] === true ? '$hiContrast' : '$gray800',
+                    fontWeight: activeHeadings[id] === true ? '500' : '400',
+                    display: 'inline-flex',
+                    marginLeft: `calc(${getLevel(nodeName)} * 15px)`,
                   }}
                 >
-                  {innerText}
-                </Text>
-              </Link>
-            </Box>
-          ))}
+                  <Text
+                    size="3"
+                    key={id}
+                    css={{
+                      color: 'inherit',
+                      lineHeight: '23px',
+                    }}
+                  >
+                    {innerText}
+                  </Text>
+                </Link>
+              </Box>
+            );
+          })}
         </Box>
       </Box>
     </ScrollArea>
