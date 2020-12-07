@@ -13,7 +13,7 @@ const LinkHeading = ({ id, children }: { id: string; children: React.ReactNode; 
     css={{
       textDecoration: 'none',
       color: 'inherit',
-      display: 'inline-flex',
+      display: 'flex',
       alignItems: 'center',
       svg: {
         opacity: 0,

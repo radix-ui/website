@@ -253,8 +253,6 @@ function QuickNav() {
           }}
         >
           {headings.map(({ id, nodeName, innerText }) => {
-            console.log(nodeName);
-            console.log(getLevel(nodeName));
             return (
               <Box as="li" css={{ py: '$1' }}>
                 <Link
