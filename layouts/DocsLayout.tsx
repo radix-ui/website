@@ -253,7 +253,7 @@ function QuickNav() {
                   color: activeHeadings[id] === true ? '$hiContrast' : '$gray800',
                   fontWeight: activeHeadings[id] === true ? '500' : '400',
                   display: 'inline-flex',
-                  marginLeft: `calc(${getLevel(nodeName)} * 15px)`,
+                  paddingLeft: `calc(${getLevel(nodeName)} * 15px)`,
                 }}
               >
                 <Text
