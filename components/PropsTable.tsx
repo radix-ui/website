@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, Code, Popover } from '@modulz/design-system';
+import { Box, IconButton, Text, Code, Popover } from '@modulz/design-system';
 import { CheckIcon, InfoCircledIcon } from '@modulz/radix-icons';
 
 type PropDef = {
@@ -57,11 +57,11 @@ export function PropsTable({ data }: { data: PropDef[] }) {
               {description && (
                 <Popover>
                   <Popover.Trigger>
-                    <Box css={{ display: 'inline-block', color: '$purple800', ml: '$2' }}>
+                    <IconButton variant="ghost" css={{ ml: '$2' }}>
                       <InfoCircledIcon
                         style={{ display: 'inline-block', verticalAlign: 'middle' }}
                       />
-                    </Box>
+                    </IconButton>
                   </Popover.Trigger>
                   <Popover.Content>
                     <Box css={{ p: '$3', width: '320px' }}>
