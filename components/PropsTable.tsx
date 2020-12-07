@@ -63,10 +63,11 @@ export function PropsTable({ data }: { data: PropDef[] }) {
                       />
                     </IconButton>
                   </Popover.Trigger>
-                  <Popover.Content>
-                    <Box css={{ p: '$3', width: '320px' }}>
-                      <Text size="3" css={{ lineHeight: '25px' }}>
+                  <Popover.Content side="top" align="center">
+                    <Box css={{ pt: '$2', px: '$3', pb: '$2', width: '320px' }}>
+                      <Text size="2" css={{ lineHeight: '20px' }}>
                         {description}
+                        If the Slider is in a form context, simulates a click on the associated form submit button
                       </Text>
                     </Box>
                   </Popover.Content>
