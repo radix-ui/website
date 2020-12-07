@@ -3,94 +3,64 @@ title: 'Slider'
 description: 'An input where the user selects a value from within a given range.'
 ---
 
-<div style={{ height: 300, background: 'linear-gradient(330deg, rgba(2,0,36,1) 0%, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%)', marginLeft: -65, marginRight: -65, marginBottom: 45, marginTop: 45, alignItems: 'center', justifyContent: 'center', display: 'flex' }}>
-  <div style={{ height: '2px', backgroundColor: 'white', borderRadius: '9999px', flexShrink: 0, width: '20%', display: 'flex', justifyContent: 'center' }}>
-    <div style={{ backgroundColor: 'white', borderRadius: '50%', flexShrink: 0, width: '16px', height: '16px', marginTop: -7 }}></div>
+<div
+  style={{
+    height: 300,
+    background:
+      'linear-gradient(330deg, rgba(2,0,36,1) 0%, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%)',
+    marginLeft: -65,
+    marginRight: -65,
+    marginBottom: 45,
+    marginTop: 45,
+    alignItems: 'center',
+    justifyContent: 'center',
+    display: 'flex',
+  }}
+>
+  <div
+    style={{
+      height: '2px',
+      backgroundColor: 'white',
+      borderRadius: '9999px',
+      flexShrink: 0,
+      width: '20%',
+      display: 'flex',
+      justifyContent: 'center',
+    }}
+  >
+    <div
+      style={{
+        backgroundColor: 'white',
+        borderRadius: '50%',
+        flexShrink: 0,
+        width: '16px',
+        height: '16px',
+        marginTop: -7,
+      }}
+    ></div>
   </div>
 </div>
 
-<div style={{ display: 'flex', gap: '45px' }}>
-  <div style={{ width: '70%' }}>
-    <div style={{ fontSize: '19px', lineHeight: '23px', fontWeight: '500', letterSpacing: '-.5px', marginBottom: 20 }}>
-      Features
-    </div>
-    <div style={{ display: 'flex' }}>
-      <div style={{ position: 'relative', top: '-2px', width: '25px', height: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'hsl(152, 72%, 94%)', borderRadius: '50%', color:'hsl(148, 67%, 30%)', marginRight: '15px', flexShrink: 0, }}>
-        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-      </div>
-      <div style={{ fontSize: '15px', lineHeight: '23px' }}>
-        The user can touch or click anywhere on the Slider track to activate the thumb and update the value.
-      </div>
-    </div>
-    <div style={{ display: 'flex', marginTop: '15px' }}>
-      <div style={{ position: 'relative', top: '-2px', width: '25px', height: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'hsl(152, 72%, 94%)', borderRadius: '50%', color:'hsl(148, 67%, 30%)', marginRight: '15px', flexShrink: 0, }}>
-        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-      </div>
-      <div style={{ fontSize: '15px', lineHeight: '23px' }}>
-        The user can touch or click anywhere on the Slider track to activate the thumb and update the value.
-      </div>
-    </div>
-    <div style={{ display: 'flex', marginTop: '15px' }}>
-      <div style={{ position: 'relative', top: '-2px', width: '25px', height: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'hsl(152, 72%, 94%)', borderRadius: '50%', color:'hsl(148, 67%, 30%)', marginRight: '15px', flexShrink: 0, }}>
-        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-      </div>
-      <div style={{ fontSize: '15px', lineHeight: '23px' }}>
-        The user can touch or click anywhere on the Slider track to activate the thumb and update the value.
-      </div>
-    </div>
-    <div style={{ display: 'flex', marginTop: '15px' }}>
-      <div style={{ position: 'relative', top: '-2px', width: '25px', height: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'hsl(152, 72%, 94%)', borderRadius: '50%', color:'hsl(148, 67%, 30%)', marginRight: '15px', flexShrink: 0, }}>
-        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-      </div>
-      <div style={{ fontSize: '15px', lineHeight: '23px' }}>
-        The user can touch or click anywhere on the Slider track to activate the thumb and update the value.
-      </div>
-    </div>
-    <div style={{ display: 'flex', marginTop: '15px' }}>
-      <div style={{ position: 'relative', top: '-2px', width: '25px', height: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'hsl(152, 72%, 94%)', borderRadius: '50%', color:'hsl(148, 67%, 30%)', marginRight: '15px', flexShrink: 0, }}>
-        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-      </div>
-      <div style={{ fontSize: '15px', lineHeight: '23px' }}>
-        The user can touch or click anywhere on the Slider track to activate the thumb and update the value.
-      </div>
-    </div>
-    <div style={{ display: 'flex', marginTop: '15px' }}>
-      <div style={{ position: 'relative', top: '-2px', width: '25px', height: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'hsl(152, 72%, 94%)', borderRadius: '50%', color:'hsl(148, 67%, 30%)', marginRight: '15px', flexShrink: 0, }}>
-        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-      </div>
-      <div style={{ fontSize: '15px', lineHeight: '23px' }}>
-        The user can touch or click anywhere on the Slider track to activate the thumb and update the value.
-      </div>
-    </div>
-    <div style={{ display: 'flex', marginTop: '15px' }}>
-      <div style={{ position: 'relative', top: '-2px', width: '25px', height: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'hsl(152, 72%, 94%)', borderRadius: '50%', color:'hsl(148, 67%, 30%)', marginRight: '15px', flexShrink: 0, }}>
-        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-      </div>
-      <div style={{ fontSize: '15px', lineHeight: '23px' }}>
-        The user can touch or click anywhere on the Slider track to activate the thumb and update the value.
-      </div>
-    </div>
-    <div style={{ display: 'flex', marginTop: '15px' }}>
-      <div style={{ position: 'relative', top: '-2px', width: '25px', height: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'hsl(152, 72%, 94%)', borderRadius: '50%', color:'hsl(148, 67%, 30%)', marginRight: '15px', flexShrink: 0, }}>
-        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-      </div>
-      <div style={{ fontSize: '15px', lineHeight: '23px' }}>
-        The user can touch or click anywhere on the Slider track to activate the thumb and update the value.
-      </div>
-    </div>
-  </div>
-  <div style={{ width: '30%' }}>
-    <div style={{ lineHeight: '23px', fontSize: '15px', color: 'gray' }}>
-      The user can touch or click anywhere on the Slider track to activate the thumb and update the value.
-    </div>
-
-
-
-  </div>
-</div>
-
-<div></div>
-<br />
+<Overview>
+  <FeatureList>
+    <Feature>
+      The user can touch or click anywhere on the Slider track to activate the thumb and update the
+      value.
+    </Feature>
+    <Feature>
+      The user can touch or click anywhere on the Slider track to activate the thumb and update the
+      value.
+    </Feature>
+    <Feature>
+      The user can touch or click anywhere on the Slider track to activate the thumb and update the
+      value.
+    </Feature>
+    <Feature>
+      The user can touch or click anywhere on the Slider track to activate the thumb and update the
+      value.
+    </Feature>
+  </FeatureList>
+</Overview>
 
 ### Installation
 
@@ -151,8 +121,8 @@ const StyledSliderThumb = styled('div', {
   borderRadius: '20px',
   ':focus': {
     outline: 'none',
-    borderColor: 'blue'
-  }
+    borderColor: 'blue',
+  },
 });
 
 render(
@@ -228,8 +198,8 @@ const StyledSliderThumb = styled('div', {
   borderRadius: '20px',
   ':focus': {
     outline: 'none',
-    borderColor: 'blue'
-  }
+    borderColor: 'blue',
+  },
 });
 
 render(
@@ -275,7 +245,7 @@ const StyledSliderThumb = styled('div', {
   ':focus': {
     outline: 'none',
     borderColor: 'blue',
-  }
+  },
 });
 
 // outer container styles

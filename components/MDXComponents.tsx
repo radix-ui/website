@@ -1,12 +1,20 @@
 import * as React from 'react';
 import NextLink from 'next/link';
 import * as DS from '@modulz/design-system';
-import { Link2Icon } from '@modulz/radix-icons';
+import { CheckIcon, Link2Icon } from '@modulz/radix-icons';
 import { CodeBlock } from './CodeBlock';
 import { PropsTable } from './PropsTable';
 import { KeyboardTable } from './KeyboardTable';
 
-const LinkHeading = ({ id, children, css }: { id: string; children: React.ReactNode; css?: any }) => (
+const LinkHeading = ({
+  id,
+  children,
+  css,
+}: {
+  id: string;
+  children: React.ReactNode;
+  css?: any;
+}) => (
   <DS.Box
     as="a"
     href={`#${id}`}
@@ -21,7 +29,7 @@ const LinkHeading = ({ id, children, css }: { id: string; children: React.ReactN
       ':hover svg': {
         opacity: 1,
       },
-      ...css
+      ...css,
     }}
   >
     {children}
@@ -149,4 +157,51 @@ export const MDXComponents = {
     </DS.Box>
   ),
   Kbd: DS.Kbd,
+  Overview: (props) => <DS.Box {...props} />,
+  FeatureList: ({ children, ...props }) => (
+    <DS.Flex {...props}>
+      <DS.Box css={{ flex: 1, mr: '$5' }}>
+        <DS.Heading css={{ mb: '$6' }}>Features</DS.Heading>
+        <DS.Box as="ul" css={{ p: 0 }}>
+          {children}
+        </DS.Box>
+      </DS.Box>
+      <DS.Box css={{ flex: 0, width: '30%' }}>
+        <DS.Text size="2" color="gray" css={{ fontFamily: '$mono', mb: '$4' }}>
+          Version: v.0.0.1
+        </DS.Text>
+        <DS.Box css={{ mb: '$2' }}>
+          <DS.Link variant="blue" href="#" target="_blank"><DS.Text size="2">View on Github</DS.Text></DS.Link>
+        </DS.Box>
+        <DS.Box css={{ mb: '$2' }}>
+        <DS.Link variant="blue" href="#" target="_blank"><DS.Text size="2">View on npm</DS.Text></DS.Link>
+        </DS.Box>
+      </DS.Box>
+    </DS.Flex>
+  ),
+  Feature: ({ children, ...props }) => (
+    <DS.Flex as="li" {...props} css={{ mt: '$4' }}>
+      <DS.Box
+        css={{
+          position: 'relative',
+          top: '-2px',
+          width: '25px',
+          height: '25px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: '$green200',
+          borderRadius: '50%',
+          color: '$green900',
+          marginRight: '15px',
+          flexShrink: 0,
+        }}
+      >
+        <CheckIcon />
+      </DS.Box>
+      <DS.Text size="3" css={{ lineHeight: '23px' }}>
+        {children}
+      </DS.Text>
+    </DS.Flex>
+  ),
 };
