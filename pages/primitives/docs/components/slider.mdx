@@ -4,6 +4,7 @@ description: 'An input where the user selects a value from within a given range.
 ---
 
 ### Installation
+
 Install the component from your command line.
 
 ```
@@ -18,6 +19,7 @@ import { Slider } from '@radix-ui/react-slider';
 ```
 
 ### Styling
+
 Create your styled slider components, then pass those styled components into `Slider` via the `as` prop:
 
 ```jsx live
@@ -56,9 +58,10 @@ const StyledSliderThumb = styled('div', {
 </Slider>
 ```
 
-----
+---
 
 ### Accessibility
+
 - Regardless of the visible size of the track or thumb, their touch targets should be sufficiently large. The touch target can be increased by adding an invisible pseudo element to the thumb and/or track.
 - The user can touch or click anywhere on the `Slider` track to activate the thumb and update the value.
 - The element with the accessible role of `slider` is `SliderThumb`, not `Slider` itself. This is because `Slider` can have multiple thumbs that represent two independent values.
@@ -69,15 +72,15 @@ const StyledSliderThumb = styled('div', {
 - The element rendered by `SliderThumb` sets a value for `aria-orientation` equal to the orientation prop passed to Slider.
 - The `SliderThumb` must be in the document's tab sequence and has a `tabIndex` of `0` by default.
 
-----
+---
 
 ### WAI-ARIA Guidance
+
 Slider implements the [WAI-ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/#slider) slider pattern.
 
-----
+---
 
 ### Keyboard Interactions
-
 
 ArrowUp
 Increases the value by the step amount.
@@ -106,7 +109,7 @@ Sets the value to its maximum.
 Enter
 If the Slider is in a form context, simulates a click on the associated form submit button.
 
-----
+---
 
 ### API Reference
 
@@ -119,27 +122,36 @@ If the Slider is in a form context, simulates a click on the associated form sub
       type: 'boolean',
       description: 'Dummy text ever since the 1500s',
     },
-    { name: 'side', required: false, default: 'bottom', type: 'boolean', description: 'Dummy text ever since the 1500s', },
-    { name: 'position', required: true, default: 'right', type: 'boolean', description: 'Dummy text ever since the 1500s', },
-    { name: 'offset', required: false, default: '10px', type: 'boolean', description: 'Dummy text ever since the 1500s', },
-    { name: 'showArrow', required: true, default: true, type: 'boolean', description: 'Dummy text ever since the 1500s', },
+    {
+      name: 'side',
+      required: false,
+      default: 'bottom',
+      type: 'boolean',
+      description: 'Dummy text ever since the 1500s',
+    },
+    {
+      name: 'position',
+      required: true,
+      default: 'right',
+      type: 'boolean',
+      description: 'Dummy text ever since the 1500s',
+    },
+    {
+      name: 'offset',
+      required: false,
+      default: '10px',
+      type: 'boolean',
+      description: 'Dummy text ever since the 1500s',
+    },
+    {
+      name: 'showArrow',
+      required: true,
+      default: true,
+      type: 'boolean',
+      description: 'Dummy text ever since the 1500s',
+    },
   ]}
 />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ### Controlled state
 
