@@ -108,7 +108,15 @@ export function PropsTable({ data }: { data: PropDef[] }) {
               )}
             </Box>
 
-            <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3', textAlign: 'right' }}>
+            <Box
+              as="td"
+              css={{
+                borderBottom: '1px solid $gray500',
+                py: '$3',
+                textAlign: 'right',
+                width: '60px',
+              }}
+            >
               {required ? (
                 <Box
                   aria-label="Required"
