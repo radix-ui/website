@@ -6,28 +6,26 @@ import { CodeBlock } from './CodeBlock';
 import { PropsTable } from './PropsTable';
 import { KeyboardTable } from './KeyboardTable';
 
-const LinkHeading = ({ id, children }: { id: string; children: React.ReactNode }) => (
-  <DS.Box>
-    <DS.Box
-      as="a"
-      href={`#${id}`}
-      css={{
-        textDecoration: 'none',
-        color: 'inherit',
-        display: 'inline-flex',
-        alignItems: 'center',
-        svg: {
-          opacity: 0,
-        },
-        ':hover svg': {
-          opacity: 1,
-        },
-      }}
-    >
-      {children}
-      <DS.Box as="span" css={{ ml: '$2', color: '$gray900' }}>
-        <Link2Icon />
-      </DS.Box>
+const LinkHeading = ({ id, children }: { id: string; children: React.ReactNode; css?: any }) => (
+  <DS.Box
+    as="a"
+    href={`#${id}`}
+    css={{
+      textDecoration: 'none',
+      color: 'inherit',
+      display: 'inline-flex',
+      alignItems: 'center',
+      svg: {
+        opacity: 0,
+      },
+      ':hover svg': {
+        opacity: 1,
+      },
+    }}
+  >
+    {children}
+    <DS.Box as="span" css={{ ml: '$2', color: '$gray900' }}>
+      <Link2Icon />
     </DS.Box>
   </DS.Box>
 );
@@ -36,15 +34,15 @@ export const MDXComponents = {
   h1: (props) => <DS.Title {...props} css={{ mb: '$1', ...props.css }} />,
   h2: (props) => <DS.Subtitle {...props} css={{ mt: '$2', mb: '$6', ...props.css }} />,
   h3: ({ children, id, ...props }) => (
-    <LinkHeading id={id}>
-      <DS.Heading {...props} id={id} data-heading css={{ mt: '$7', ...props.css }}>
+    <LinkHeading id={id} css={{ mt: '$7', ...props.css }}>
+      <DS.Heading {...props} id={id} data-heading>
         {children}
       </DS.Heading>
     </LinkHeading>
   ),
   h4: ({ children, id, ...props }) => (
-    <LinkHeading id={id}>
-      <DS.Subheading {...props} id={id} data-heading css={{ mt: '$7', ...props.css }}>
+    <LinkHeading id={id} css={{ mt: '$7', ...props.css }}>
+      <DS.Subheading {...props} id={id} data-heading>
         {children}
       </DS.Subheading>
     </LinkHeading>
