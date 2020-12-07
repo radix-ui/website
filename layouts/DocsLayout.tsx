@@ -242,7 +242,7 @@ function QuickNav() {
 
   return (
     <ScrollArea>
-      <Box>
+      <Box css={{ px: '$5' }}>
         <Subheading css={{ mb: '$3' }}>Quick nav</Subheading>
         <Box
           as="ul"
