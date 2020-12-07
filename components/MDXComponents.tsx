@@ -163,31 +163,41 @@ export const MDXComponents = {
       <KeyboardTable {...props} />
     </DS.Box>
   ),
-  Overview: (props) => <DS.Box {...props} />,
-  FeatureList: ({ children, ...props }) => (
+  Overview: ({ children, version, name, ...props }) => (
     <DS.Flex {...props}>
-      <DS.Box css={{ flex: 1, mr: '$5' }}>
-        <DS.Heading css={{ mb: '$6' }}>Features</DS.Heading>
-        <DS.Box as="ul" css={{ p: 0, m: 0 }}>
-          {children}
-        </DS.Box>
-      </DS.Box>
+      <DS.Box css={{ flex: 1, mr: '$5' }}>{children}</DS.Box>
       <DS.Box css={{ flex: 0, width: '30%' }}>
         <DS.Text size="2" color="gray" css={{ fontFamily: '$mono', mb: '$4' }}>
-          Version: v.0.0.1
+          Version: v{version}
         </DS.Text>
         <DS.Box css={{ mb: '$2' }}>
-          <DS.Link variant="blue" href="#" target="_blank">
+          <DS.Link
+            variant="blue"
+            href={`https://github.com/modulz/interop-ui/tree/main/packages/react/${name}/src`}
+            target="_blank"
+          >
             <DS.Text size="2">View on Github</DS.Text>
           </DS.Link>
         </DS.Box>
         <DS.Box css={{ mb: '$2' }}>
-          <DS.Link variant="blue" href="#" target="_blank">
+          <DS.Link
+            variant="blue"
+            href={`https://www.npmjs.com/package/@interop-ui/react-${name}`}
+            target="_blank"
+          >
             <DS.Text size="2">View on npm</DS.Text>
           </DS.Link>
         </DS.Box>
       </DS.Box>
     </DS.Flex>
+  ),
+  FeatureList: ({ children, ...props }) => (
+    <DS.Box {...props}>
+      <DS.Heading css={{ mb: '$6' }}>Features</DS.Heading>
+      <DS.Box as="ul" css={{ p: 0, m: 0 }}>
+        {children}
+      </DS.Box>
+    </DS.Box>
   ),
   Feature: ({ children, ...props }) => (
     <DS.Flex as="li" {...props} css={{ mt: '$4' }}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, Code, Kbd } from '@modulz/design-system';
+import { Box, Text, Kbd } from '@modulz/design-system';
 
 type KeyboardDef = {
   keys: string[];
