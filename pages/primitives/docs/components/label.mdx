@@ -1,5 +1,81 @@
 ---
-title: 'Label'
+title: Label
+name: label
+version: 0.0.1
+description: A primitive useful for rendering labels.
+features:
+  - Text selection is precented when double clicking label.
 ---
 
-Label Primitive. Coming soon.
+### Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-label
+```
+
+Then import the component in your component file.
+
+```jsx
+// Label.tsx
+import * as LabelPrimitive from '@interop-ui/react-label';
+```
+
+### Basic example
+
+Create your styled label component from the label primitive.
+
+```jsx live manual
+// Label.tsx
+// import * as LabelPrimitive from '@interop-ui/react-label';
+
+const Label = styled(LabelPrimitive, {
+  fontSize: '16px',
+  fontFamily: 'system-ui',
+});
+
+render(<Label>First name</Label>);
+```
+
+### Examples
+
+#### Focus input when clicking on label
+
+Use the `htmlfor` attribute to connect the label with the input's id.
+
+```jsx live manual compact
+// Label.tsx
+// import * as SliderPrimitive from '@interop-ui/react-label';
+
+const Label = styled(LabelPrimitive, {
+  fontSize: '16px',
+  fontFamily: 'system-ui',
+});
+
+const Input = styled('input', {});
+
+render(
+  <>
+    <Label htmlFor="firstName">First name</Label>
+    <Input type="text" id="firstName" css={{ ml: 10 }} />
+  </>
+);
+```
+
+### Accessibility
+
+### API Reference
+
+#### Label
+
+`Label` is the root component.
+
+<PropsTable
+  data={[
+    {
+      name: 'htmlFor',
+      type: 'string',
+    },
+  ]}
+/>
