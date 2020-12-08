@@ -1,5 +1,155 @@
 ---
-title: 'Alert Dialog'
+title: Alert Dialog
+name: alert-aialog
+version: 0.0.1
+features:
+  - Composes `Dialog`
+  - Focus is automatically trapped.
+  - Works in an uncontrolled way by default.
+  - Can also be controlled.
 ---
 
-Alert Dialog Primitive. Coming soon
+### Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-alert-dialog
+```
+
+Then import the component in your component file.
+
+```jsx
+// AlertDialog.tsx
+import * as AlertDialogPrimitive from '@interop-ui/react-alert-dialog';
+```
+
+### Basic example
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+### Examples
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+### Accessibility
+
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Esc'],
+      description: <span>Closes the dialog</span>,
+    },
+  ]}
+/>
+
+### API Reference
+
+#### AlertDialog
+
+`AlertDialog` is the root component.
+
+<PropsTable
+  data={[
+    {
+      name: 'defaultIsOpen',
+      type: 'boolean',
+      description:
+        'The open state of the dialog when it is initially rendered. Use `defaultIsOpen` if you do not need to control the state of an dialog.',
+    },
+    {
+      name: 'isOpen',
+      type: 'boolean',
+      description:
+        'The controlled open state of the dialog. Must be used in conjunction with `onIsOpenChange`.',
+    },
+    {
+      name: 'onIsOpenChange',
+      type: '(isOpen: boolean) => void',
+      typeSimple: 'function',
+      description: 'The callback that fires when the state of the dialog changes.',
+    },
+    {
+      name: 'id',
+      type: 'string',
+      description:
+        'A unique identifier for the dialog component. The `id` is used to generate DOM id attributes for nested components. If no `id` prop is provided, a generated id will be used.',
+    },
+  ]}
+/>
+
+#### AlertDialogOverlay
+
+`AlertDialogOverlay` is the overlay that covers the inert portion of the view when a dialog is open.
+
+<PropsTable
+  data={[
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description:
+        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+    },
+  ]}
+/>
+
+#### AlertDialogContent
+
+`AlertDialogContent` is the component that contains content to be rendered in an open `AlertDialog`.
+
+<PropsTable
+  data={[
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description:
+        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+    },
+    {
+      name: 'onOpenAutoFocus',
+      type: '(event: Event) => void',
+      typeSimple: 'function',
+      description: 'Event handler called when auto-focusing on open. It can be prevented by calling `event.preventDefault`.',
+    },
+    {
+      name: 'onCloseAutoFocus',
+      type: '(event: Event) => void',
+      typeSimple: 'function',
+      description: 'Event handler called when auto-focusing on close. It can be prevented by calling `event.preventDefault`.',
+    },
+    {
+      name: 'onEscapeKeyDown',
+      type: '(event: KeyboardEvent) => void',
+      typeSimple: 'function',
+      description: 'Event handler called when the escape key is down. It can be prevented by calling `event.preventDefault`',
+    },
+    {
+      name: 'onPointerDownOutside',
+      type: '(event: MouseEvent | TouchEvent) => void',
+      typeSimple: 'function',
+      description: 'Event handler called when the a pointer event happens outside of the `Dialog`. It can be prevented by calling `event.preventDefault`.',
+    },
+  ]}
+/>
+
+#### AlertDialogTrigger
+
+`AlertDialogTrigger` is the button that triggers the `AlertDialog`. Use this when an uncontrolled state is desired.
+
+#### AlertDialogCancel
+
+`AlertDialogCancel` is a button that closes the `AlertDialog` and assumes no subsequent action is expected by the user. This button should be distinguished visually from `AlertDialogAction` buttons for the best usability.
+
+#### AlertDialogAction
+
+`AlertDialogAction` is a button that closes the `AlertDialog` and assumes that a subsequent action is expected by the user. These buttons should be distinguished visually from the `AlertDialogCancel` button for the best usability.
+
+#### AlertDialogTitle
+
+A component to provide an accessible name to be announced when an `AlertDialog` is opened. Alternatively, you can provide `aria-label` or `aria-labelledby` to `AlertDialogContent` and exclude this component.
+
+#### AlertDialogDescription
+
+A component to provide an accessible description to be announced when an `AlertDialog` is opened. Alternatively, you can provide `aria-describedby` to `AlertDialogContent` and exclude this component.
