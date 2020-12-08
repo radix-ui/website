@@ -11,4 +11,4 @@ export { Slider as SliderPrimitive } from '@interop-ui/react-slider';
 export { Switch } from '@interop-ui/react-switch';
 export { Tabs } from '@interop-ui/react-tabs';
 export { ToggleButton } from '@interop-ui/react-toggle-button';
-export { Tooltip } from '@interop-ui/react-tooltip';
+export { Tooltip as TooltipPrimitive } from '@interop-ui/react-tooltip';

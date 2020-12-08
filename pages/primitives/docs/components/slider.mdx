@@ -1,66 +1,15 @@
 ---
-title: 'Slider'
-description: 'An input where the user selects a value from within a given range.'
+title: Slider
+name: slider
+version: 0.0.1
+description: An input where the user selects a value from within a given range.
+features:
+  - The user can touch or click anywhere on the Slider track to activate the thumb and update the value.
+  - The user can touch or click anywhere on the Slider track to activate the thumb and update the value.
+  - The user can touch or click anywhere on the Slider track to activate the thumb and update the value.
+  - The user can touch or click anywhere on the Slider track to activate the thumb and update the value.
+  - The user can touch or click anywhere on the Slider track to activate the thumb and update the value.
 ---
-
-<div
-  style={{
-    height: 300,
-    background:
-      'linear-gradient(330deg, rgba(2,0,36,1) 0%, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%)',
-    marginLeft: -65,
-    marginRight: -65,
-    marginBottom: 45,
-    marginTop: 45,
-    alignItems: 'center',
-    justifyContent: 'center',
-    display: 'flex',
-  }}
->
-  <div
-    style={{
-      height: '2px',
-      backgroundColor: 'white',
-      borderRadius: '9999px',
-      flexShrink: 0,
-      width: '20%',
-      display: 'flex',
-      justifyContent: 'center',
-    }}
-  >
-    <div
-      style={{
-        backgroundColor: 'white',
-        borderRadius: '50%',
-        flexShrink: 0,
-        width: '16px',
-        height: '16px',
-        marginTop: -7,
-      }}
-    ></div>
-  </div>
-</div>
-
-<Overview version="0.0.1" name="slider">
-  <FeatureList>
-    <Feature>
-      The user can touch or click anywhere on the Slider track to activate the thumb and update the
-      value.
-    </Feature>
-    <Feature>
-      The user can touch or click anywhere on the Slider track to activate the thumb and update the
-      value.
-    </Feature>
-    <Feature>
-      The user can touch or click anywhere on the Slider track to activate the thumb and update the
-      value.
-    </Feature>
-    <Feature>
-      The user can touch or click anywhere on the Slider track to activate the thumb and update the
-      value.
-    </Feature>
-  </FeatureList>
-</Overview>
 
 ### Installation
 
@@ -81,22 +30,19 @@ import * as SliderPrimitive from '@interop-ui/react-slider';
 
 Create your styled slider components, then pass those styled components into `Slider` via the `as` prop:
 
-```jsx live manual
+```jsx live manual compact
 // Slider.tsx
 // import * as SliderPrimitive from '@interop-ui/react-slider';
 
-// outer container styles
 const Slider = styled(SliderPrimitive, {
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
-  flexShrink: 0,
   userSelect: 'none',
   touchAction: 'none',
   height: 16,
 });
 
-// track styles
 const SliderTrack = styled(SliderPrimitive.Track, {
   backgroundColor: 'gainsboro',
   position: 'relative',
@@ -104,15 +50,13 @@ const SliderTrack = styled(SliderPrimitive.Track, {
   height: 2,
 });
 
-// range styles
 const SliderRange = styled(SliderPrimitive.Range, {
-  backgroundColor: 'dodgerblue',
   position: 'absolute',
+  backgroundColor: 'dodgerblue',
   borderRadius: '9999px',
   height: '100%',
 });
 
-// thumb styles
 const SliderThumb = styled(SliderPrimitive.Thumb, {
   display: 'block',
   width: 16,
@@ -122,7 +66,7 @@ const SliderThumb = styled(SliderPrimitive.Thumb, {
   borderRadius: '20px',
   ':focus': {
     outline: 'none',
-    borderColor: 'blue',
+    borderColor: 'dodgerblue',
   },
 });
 
@@ -146,51 +90,31 @@ Create your styled slider components, then pass those styled components into `Sl
 // Slider.tsx
 // import * as SliderPrimitive from '@interop-ui/react-slider';
 
-// outer container styles
 const Slider = styled(SliderPrimitive, {
   position: 'relative',
   display: 'flex',
+  flexDirection: 'column',
   alignItems: 'center',
-  flexShrink: 0,
   userSelect: 'none',
   touchAction: 'none',
-  height: 16,
-  '&[data-orientation="vertical"]': {
-    flexDirection: 'column',
-    width: 16,
-    height: 100,
-  },
+  width: 16,
+  height: 100,
 });
 
-// track styles
 const SliderTrack = styled(SliderPrimitive.Track, {
   backgroundColor: 'gainsboro',
   position: 'relative',
   flexGrow: 1,
-  height: 2,
-  '&[data-orientation="horizontal"]': {
-    height: 2,
-  },
-  '&[data-orientation="vertical"]': {
-    width: 2,
-  },
+  width: 2,
 });
 
-// range styles
 const SliderRange = styled(SliderPrimitive.Range, {
-  backgroundColor: 'dodgerblue',
   position: 'absolute',
+  backgroundColor: 'dodgerblue',
   borderRadius: '9999px',
-  height: '100%',
-  '&[data-orientation="horizontal"]': {
-    height: '100%',
-  },
-  '&[data-orientation="vertical"]': {
-    width: '100%',
-  },
+  width: '100%',
 });
 
-// thumb styles
 const SliderThumb = styled(SliderPrimitive.Thumb, {
   display: 'block',
   width: 16,
@@ -200,7 +124,7 @@ const SliderThumb = styled(SliderPrimitive.Thumb, {
   borderRadius: '20px',
   ':focus': {
     outline: 'none',
-    borderColor: 'blue',
+    borderColor: 'dodgerblue',
   },
 });
 
@@ -214,12 +138,23 @@ render(
 );
 ```
 
-#### Show thumb on hover
+#### Create a range
 
 Create your styled slider components, then pass those styled components into `Slider` via the `as` prop:
 
 ```jsx live manual compact
-// track styles
+// Slider.tsx
+// import * as SliderPrimitive from '@interop-ui/react-slider';
+
+const Slider = styled(SliderPrimitive, {
+  position: 'relative',
+  display: 'flex',
+  alignItems: 'center',
+  userSelect: 'none',
+  touchAction: 'none',
+  height: 16,
+});
+
 const SliderTrack = styled(SliderPrimitive.Track, {
   backgroundColor: 'gainsboro',
   position: 'relative',
@@ -227,15 +162,71 @@ const SliderTrack = styled(SliderPrimitive.Track, {
   height: 2,
 });
 
-// range styles
 const SliderRange = styled(SliderPrimitive.Range, {
-  backgroundColor: 'gray',
   position: 'absolute',
+  backgroundColor: 'dodgerblue',
   borderRadius: '9999px',
   height: '100%',
 });
 
-// thumb styles
+const SliderThumb = styled(SliderPrimitive.Thumb, {
+  display: 'block',
+  width: 16,
+  height: 16,
+  backgroundColor: 'white',
+  border: '1px solid lightgray',
+  borderRadius: '20px',
+  ':focus': {
+    outline: 'none',
+    borderColor: 'dodgerblue',
+  },
+});
+
+render(
+  <Slider defaultValue={[25, 75]}>
+    <SliderTrack>
+      <SliderRange />
+    </SliderTrack>
+    <SliderThumb />
+    <SliderThumb />
+  </Slider>
+);
+```
+
+#### Show thumb on hover
+
+Create your styled slider components, then pass those styled components into `Slider` via the `as` prop:
+
+```jsx live manual compact
+// Slider.tsx
+// import * as SliderPrimitive from '@interop-ui/react-slider';
+
+const Slider = styled(SliderPrimitive, {
+  position: 'relative',
+  display: 'flex',
+  alignItems: 'center',
+  userSelect: 'none',
+  touchAction: 'none',
+  height: 16,
+  '&:hover [data-interop-ui-slider-thumb]': {
+    opacity: 1,
+  },
+});
+
+const SliderTrack = styled(SliderPrimitive.Track, {
+  backgroundColor: 'gainsboro',
+  position: 'relative',
+  flexGrow: 1,
+  height: 2,
+});
+
+const SliderRange = styled(SliderPrimitive.Range, {
+  position: 'absolute',
+  backgroundColor: 'dodgerblue',
+  borderRadius: '9999px',
+  height: '100%',
+});
+
 const SliderThumb = styled(SliderPrimitive.Thumb, {
   display: 'block',
   width: 16,
@@ -246,31 +237,12 @@ const SliderThumb = styled(SliderPrimitive.Thumb, {
   opacity: 0,
   ':focus': {
     outline: 'none',
-    borderColor: 'blue',
-  },
-});
-
-// outer container styles
-const Slider = styled(SliderPrimitive, {
-  position: 'relative',
-  display: 'flex',
-  alignItems: 'center',
-  flexShrink: 0,
-  userSelect: 'none',
-  touchAction: 'none',
-  height: 16,
-  ':hover': {
-    [`& ${SliderRange}`]: {
-      backgroundColor: 'dodgerblue',
-    },
-    [`& ${SliderThumb}`]: {
-      opacity: '1',
-    },
+    borderColor: 'dodgerblue',
   },
 });
 
 render(
-  <Slider defaultValue={10}>
+  <Slider defaultValue={50}>
     <SliderTrack>
       <SliderRange />
     </SliderTrack>
@@ -279,26 +251,23 @@ render(
 );
 ```
 
-#### Controlled state
+#### Define step size and markers
 
-The component will work as expected without any additional props or configuration, but if you need access to its state you can control it with the value and onChange props.
+Use the `step` prop to define how the slider value updates. Add extra decorative elements as the markers.
 
 ```jsx live manual compact
 // Slider.tsx
 // import * as SliderPrimitive from '@interop-ui/react-slider';
 
-// outer container styles
 const Slider = styled(SliderPrimitive, {
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
-  flexShrink: 0,
   userSelect: 'none',
   touchAction: 'none',
   height: 16,
 });
 
-// track styles
 const SliderTrack = styled(SliderPrimitive.Track, {
   backgroundColor: 'gainsboro',
   position: 'relative',
@@ -306,15 +275,13 @@ const SliderTrack = styled(SliderPrimitive.Track, {
   height: 2,
 });
 
-// range styles
 const SliderRange = styled(SliderPrimitive.Range, {
-  backgroundColor: 'dodgerblue',
   position: 'absolute',
+  backgroundColor: 'dodgerblue',
   borderRadius: '9999px',
   height: '100%',
 });
 
-// thumb styles
 const SliderThumb = styled(SliderPrimitive.Thumb, {
   display: 'block',
   width: 16,
@@ -324,23 +291,138 @@ const SliderThumb = styled(SliderPrimitive.Thumb, {
   borderRadius: '20px',
   ':focus': {
     outline: 'none',
-    borderColor: 'blue',
+    borderColor: 'dodgerblue',
   },
 });
 
-function ControlledSlider() {
-  const [value, setValue] = React.useState(10);
+const Markers = styled('div', {
+  display: 'flex',
+  justifyContent: 'flex-start',
+  height: 4,
+  position: 'relative',
+});
+const Marker = styled('div', {
+  width: 1,
+  height: '100%',
+  backgroundColor: 'dodgerblue',
+  position: 'absolute',
+});
+
+function SliderWithMarkers(props) {
+  const [value, setValue] = React.useState(50);
+
   return (
-    <Slider value={value} onChange={(newValue) => setValue(newValue)}>
-      <SliderTrack>
-        <SliderRange />
-      </SliderTrack>
-      <SliderThumb />
-    </Slider>
+    <>
+      <Slider min={0} max={100} step={10} value={value} onChange={(newValue) => setValue(newValue)}>
+        <SliderTrack>
+          <SliderRange />
+        </SliderTrack>
+        <SliderThumb />
+      </Slider>
+      <Markers>
+        <Marker css={{ left: '0%' }} />
+        <Marker css={{ left: '10%' }} />
+        <Marker css={{ left: '20%' }} />
+        <Marker css={{ left: '30%' }} />
+        <Marker css={{ left: '40%' }} />
+        <Marker css={{ left: '50%' }} />
+        <Marker css={{ left: '60%' }} />
+        <Marker css={{ left: '70%' }} />
+        <Marker css={{ left: '80%' }} />
+        <Marker css={{ left: '90%' }} />
+        <Marker css={{ left: '100%' }} />
+      </Markers>
+    </>
   );
 }
 
-render(<ControlledSlider />);
+render(<SliderWithMarkers />);
+```
+
+#### Show tooltip on thumb
+
+Control the Slider and compose extra functionality
+
+```jsx live manual compact
+// Slider.tsx
+// import * as SliderPrimitive from '@interop-ui/react-slider';
+
+const Slider = styled(SliderPrimitive, {
+  position: 'relative',
+  display: 'flex',
+  alignItems: 'center',
+  userSelect: 'none',
+  touchAction: 'none',
+  height: 16,
+});
+
+const SliderTrack = styled(SliderPrimitive.Track, {
+  backgroundColor: 'gainsboro',
+  position: 'relative',
+  flexGrow: 1,
+  height: 2,
+});
+
+const SliderRange = styled(SliderPrimitive.Range, {
+  position: 'absolute',
+  backgroundColor: 'dodgerblue',
+  borderRadius: '9999px',
+  height: '100%',
+});
+
+const SliderThumb = styled(SliderPrimitive.Thumb, {
+  display: 'block',
+  width: 16,
+  height: 16,
+  backgroundColor: 'white',
+  border: '1px solid lightgray',
+  borderRadius: '20px',
+  ':focus': {
+    outline: 'none',
+    borderColor: 'dodgerblue',
+  },
+});
+
+const Tooltip = styled(TooltipPrimitive, {});
+
+function SliderWithTooltip(props) {
+  const [value, setValue] = React.useState(50);
+
+  return (
+    <div>
+      <Slider value={value} onChange={(newValue) => setValue(newValue)}>
+        <SliderTrack>
+          <SliderRange />
+        </SliderTrack>
+        <TooltipPrimitive>
+          <TooltipPrimitive.Trigger as={SliderThumb} />
+          <TooltipPrimitive.Popper side="top">
+            <TooltipPrimitive.Content
+              style={{
+                backgroundColor: 'dodgerblue',
+                padding: '5px',
+                fontSize: '12px',
+                borderRadius: '3px',
+              }}
+            >
+              {value}
+            </TooltipPrimitive.Content>
+            <TooltipPrimitive.Arrow
+              offset={5}
+              width={11}
+              height={5}
+              style={{
+                fill: 'dodgerblue',
+              }}
+            />
+          </TooltipPrimitive.Popper>
+        </TooltipPrimitive>
+      </Slider>
+    </div>
+  );
+}
+
+render(<SliderWithTooltip />);
 ```
 
 ### Accessibility

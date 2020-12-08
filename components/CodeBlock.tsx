@@ -93,8 +93,13 @@ export const liveEditorStyle: React.CSSProperties = {
 const StyledLivePreview = ({ live, ...props }: { live?: boolean }) => (
   <Box
     css={{
+      // TODO: consider sticky, needs more exploration
+      // position: 'sticky',
+      // top: 0,
+      // backgroundColor: 'white',
+      // zIndex: 3,
       p: '$3',
-      boxShadow: `inset 0 0 0 1px ${colors.$gray500}`,
+      boxShadow: `inset 0 0 0 1px $gray500`,
       borderTopLeftRadius: '$2',
       borderTopRightRadius: '$2',
       borderBottomLeftRadius: live ? '0' : '$2',
@@ -198,8 +203,7 @@ export function CodeBlock({
           css={{
             position: 'relative',
             zIndex: 1,
-            height: isOpen ? 'auto' : 0,
-            visibility: isOpen ? 'visible' : 'hidden',
+            display: isOpen ? 'block' : 'none',
           }}
         >
           <CodeContainer live={live}>
