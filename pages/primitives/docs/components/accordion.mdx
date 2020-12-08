@@ -1,5 +1,105 @@
 ---
 title: 'Accordion'
+description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
 ---
 
-Accordion Primitive. Coming soon.
+### Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-accordion
+```
+
+Then import the component in your component file.
+
+```jsx
+// Accordion.tsx
+import * as AccordionPrimitive from '@interop-ui/react-accordion';
+```
+
+### Basic example
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+### Examples
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+### Accessibility
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+### API Reference
+
+#### Accordion
+
+`Accordion` is the root component.
+
+<PropsTable
+  data={[
+    {
+      name: 'value',
+      required: false,
+      type: 'string',
+      description: 'The controlled stateful value of the accordion item whose panel is expanded.',
+    },
+    {
+      name: 'defaultValue',
+      required: false,
+      type: 'string',
+      description:
+        'The value of the item whose panel is expanded when the accordion is initially rendered. Use `defaultValue` if you do not need to control the state of an accordion.',
+    },
+    {
+      name: 'disabled',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description: 'Whether or not an accordion is disabled from user interaction.',
+    },
+    {
+      name: 'onChange',
+      required: false,
+      type: '(value: string) => void',
+      typeSimple: 'function',
+      description: 'The callback that fires when the state of the accordion changes.',
+    },
+  ]}
+/>
+
+#### AccordionItem
+
+`AccordionItem` contains all of the parts of a collapsible section inside of an `Accordion`.
+
+<PropsTable
+  data={[
+      {
+      name: 'disabled',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Whether or not an accordion item is disabled from user interaction.',
+    },
+    {
+      name: 'value',
+      required: true,
+      type: 'string',
+      description:
+        'A string value for the accordion item. All items within an accordion should use a unique value.',
+    },
+  ]}
+/>
+
+#### AccordionHeader
+
+`AccordionHeader` contains the content for the parts of an `AccordionItem` that will be visible whether or not its content is collapsed.
+
+#### AccordionButton
+
+`AccordionButton` is the trigger that toggles the collapsed state of an `AccordionItem`. It should always be nested inside of an `AccordionHeader`.
+
+#### AccordionPanel
+
+`AccordionPanel` contains the collapsible content for an `AccordionItem`.
