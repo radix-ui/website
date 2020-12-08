@@ -61,7 +61,7 @@ export function PropsTable({ data }: { data: PropDef[] }) {
                     css={{ ml: '$2' }}
                     aria-label="Prop description"
                   >
-                    <InfoCircledIcon />
+                    <InfoCircledIcon aria-hidden />
                   </Popover.Trigger>
                   <Popover.Content side="top">
                     <Box css={{ py: '$2', px: '$3', width: '320px' }}>
