@@ -2,7 +2,7 @@ export { Accordion } from '@interop-ui/react-accordion';
 export { AlertDialog } from '@interop-ui/react-alert-dialog';
 export { Avatar } from '@interop-ui/react-avatar';
 export { Checkbox } from '@interop-ui/react-checkbox';
-export { Dialog } from '@interop-ui/react-dialog';
+export { Dialog as DialogPrimitive } from '@interop-ui/react-dialog';
 export { Label as LabelPrimitive } from '@interop-ui/react-label';
 export { Popover } from '@interop-ui/react-popover';
 export { ProgressBar } from '@interop-ui/react-progress-bar';

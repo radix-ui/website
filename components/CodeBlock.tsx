@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
-import { Box, Button, Text, theme as DStheme, styled } from '@modulz/design-system';
+import { Box, Button, Text, theme as DStheme, styled, css } from '@modulz/design-system';
 import { useClipboard } from '../utils/useClipboard';
 import * as DS from '@modulz/design-system';
 import * as Primitives from './Primitives';
@@ -173,6 +173,7 @@ export function CodeBlock({
       React,
       ...components,
       styled,
+      css,
     },
     noInline: manual,
     ...props,
