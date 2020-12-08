@@ -29,9 +29,10 @@ Create your styled dialog component from the dialog primitives.
 
 ```jsx live manual
 // Dialog.tsx
-// import { Dialog as DialogPrimitive } from '@interop-ui/react-dialog';
+// import * as DialogPrimitive from '@interop-ui/react-dialog';
+// import { Button } from '@radix-ui/ds-button'
 
-const Overlay = styled(DialogPrimitive.Overlay, {
+const Overlay = styled(DialogPrimitive.DialogOverlay, {
   backgroundColor: 'rgba(0, 0, 0, .15)',
   position: 'fixed',
   top: 0,
@@ -40,7 +41,7 @@ const Overlay = styled(DialogPrimitive.Overlay, {
   left: 0,
 });
 
-const Content = styled(DialogPrimitive.Content, {
+const Content = styled(DialogPrimitive.DialogContent, {
   position: 'fixed',
   top: '50%',
   left: '50%',
@@ -59,14 +60,14 @@ const Content = styled(DialogPrimitive.Content, {
 });
 
 render(
-  <DialogPrimitive>
-    <DialogPrimitive.Trigger>Open</DialogPrimitive.Trigger>
+  <DialogPrimitive.Dialog>
+    <DialogPrimitive.DialogTrigger as={Button}>Open</DialogPrimitive.DialogTrigger>
     <Overlay />
     <Content>
       <p>Dialog content</p>
-      <DialogPrimitive.Close>Close</DialogPrimitive.Close>
+      <DialogPrimitive.DialogClose as={Button}>Close</DialogPrimitive.DialogClose>
     </Content>
-  </DialogPrimitive>
+  </DialogPrimitive.Dialog>
 );
 ```
 
@@ -76,7 +77,8 @@ render(
 
 ```jsx live manual compact
 // Dialog.tsx
-// import { Dialog as DialogPrimitive } from '@interop-ui/react-dialog';
+// import * as DialogPrimitive from '@interop-ui/react-dialog';
+// import { Button } from '@radix-ui/ds-button'
 
 const fadeIn = css.keyframes({
   '0%': { opacity: 0 },
@@ -88,7 +90,7 @@ const moveDown = css.keyframes({
   '100%': { transform: 'translate(-50%, -50%)' },
 });
 
-const Overlay = styled(DialogPrimitive.Overlay, {
+const Overlay = styled(DialogPrimitive.DialogOverlay, {
   backgroundColor: 'rgba(0, 0, 0, .15)',
   position: 'fixed',
   top: 0,
@@ -98,7 +100,7 @@ const Overlay = styled(DialogPrimitive.Overlay, {
   animation: `${fadeIn} 125ms linear`,
 });
 
-const Content = styled(DialogPrimitive.Content, {
+const Content = styled(DialogPrimitive.DialogContent, {
   position: 'fixed',
   top: '50%',
   left: '50%',
@@ -118,14 +120,14 @@ const Content = styled(DialogPrimitive.Content, {
 });
 
 render(
-  <DialogPrimitive>
-    <DialogPrimitive.Trigger>Open</DialogPrimitive.Trigger>
+  <DialogPrimitive.Dialog>
+    <DialogPrimitive.DialogTrigger as={Button}>Open</DialogPrimitive.DialogTrigger>
     <Overlay />
     <Content>
       <p>Dialog content</p>
-      <DialogPrimitive.Close>Close</DialogPrimitive.Close>
+      <DialogPrimitive.DialogClose as={Button}>Close</DialogPrimitive.DialogClose>
     </Content>
-  </DialogPrimitive>
+  </DialogPrimitive.Dialog>
 );
 ```
 

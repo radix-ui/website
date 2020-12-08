@@ -42,7 +42,6 @@ export function TitleAndMetaTags({
       <style
         dangerouslySetInnerHTML={{
           __html: `
-
 *,
 *::before,
 *::after {
@@ -91,10 +90,6 @@ button {
   user-select: none;
   vertical-align: middle;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-button::before,
-button::after {
-  box-sizing: border-box;
 }
 
 p,
