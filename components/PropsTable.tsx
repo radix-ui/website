@@ -61,7 +61,7 @@ export function PropsTable({ data }: { data: PropDef[] }) {
                     css={{ ml: '$2' }}
                     aria-label="Prop description"
                   >
-                    <InfoCircledIcon />
+                    <InfoCircledIcon aria-hidden />
                   </Popover.Trigger>
                   <Popover.Content side="top">
                     <Box css={{ py: '$2', px: '$3', width: '320px' }}>
@@ -99,10 +99,24 @@ export function PropsTable({ data }: { data: PropDef[] }) {
               )}
             </Box>
             <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
-              <Code css={{ bc: '$gray200', color: '$gray900' }}>{String(defaultValue)}</Code>
+              {Boolean(defaultValue) ? (
+                <Code css={{ bc: '$gray200', color: '$gray900' }}>{defaultValue}</Code>
+              ) : (
+                <Box aria-label="No default value" css={{ color: '$gray600' }}>
+                  <DividerHorizontalIcon />
+                </Box>
+              )}
             </Box>
 
-            <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3', textAlign: 'right' }}>
+            <Box
+              as="td"
+              css={{
+                borderBottom: '1px solid $gray500',
+                py: '$3',
+                textAlign: 'right',
+                width: '60px',
+              }}
+            >
               {required ? (
                 <Box
                   aria-label="Required"

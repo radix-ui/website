@@ -1,5 +1,189 @@
 ---
-title: 'Dialog'
+title: Dialog
+name: dialog
+version: 0.0.1
+features:
+  - Focus is automatically trapped.
+  - Works in an uncontrolled way by default.
+  - Can also be controlled.
 ---
 
-Dialog Primitive. Coming soon.
+### Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-dialog
+```
+
+Then import the component in your component file.
+
+```jsx
+// Dialog.tsx
+import * as DialogPrimitive from '@interop-ui/react-dialog';
+```
+
+### Basic example
+
+Create your styled dialog component from the dialog primitives.
+
+```jsx live manual
+// Dialog.tsx
+// import * as DialogPrimitive from '@interop-ui/react-dialog';
+// import { Button } from '@radix-ui/ds-button'
+
+const Overlay = styled(DialogPrimitive.DialogOverlay, {
+  backgroundColor: 'rgba(0, 0, 0, .15)',
+  position: 'fixed',
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0,
+});
+
+const Content = styled(DialogPrimitive.DialogContent, {
+  position: 'fixed',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  minWidth: 200,
+  maxWidth: 'fit-content',
+  maxHeight: '85vh',
+  padding: 20,
+  marginTop: '-5vh',
+  backgroundColor: 'white',
+  borderRadius: 6,
+
+  '&:focus': {
+    outline: 'none',
+  },
+});
+
+render(
+  <DialogPrimitive.Dialog>
+    <DialogPrimitive.DialogTrigger as={Button}>Open</DialogPrimitive.DialogTrigger>
+    <Overlay />
+    <Content>
+      <p>Dialog content</p>
+      <DialogPrimitive.DialogClose as={Button}>Close</DialogPrimitive.DialogClose>
+    </Content>
+  </DialogPrimitive.Dialog>
+);
+```
+
+### Examples
+
+#### With CSS animations
+
+```jsx live manual compact
+// Dialog.tsx
+// import * as DialogPrimitive from '@interop-ui/react-dialog';
+// import { Button } from '@radix-ui/ds-button'
+
+const fadeIn = css.keyframes({
+  '0%': { opacity: 0 },
+  '100%': { opacity: 1 },
+});
+
+const moveDown = css.keyframes({
+  '0%': { transform: 'translate(-50%, calc(-50% - 20px))' },
+  '100%': { transform: 'translate(-50%, -50%)' },
+});
+
+const Overlay = styled(DialogPrimitive.DialogOverlay, {
+  backgroundColor: 'rgba(0, 0, 0, .15)',
+  position: 'fixed',
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0,
+  animation: `${fadeIn} 125ms linear`,
+});
+
+const Content = styled(DialogPrimitive.DialogContent, {
+  position: 'fixed',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  minWidth: 200,
+  maxWidth: 'fit-content',
+  maxHeight: '85vh',
+  padding: 20,
+  marginTop: '-5vh',
+  backgroundColor: 'white',
+  borderRadius: 6,
+  animation: `${fadeIn} 125ms linear, ${moveDown} 325ms cubic-bezier(0.22, 1, 0.36, 1)`,
+
+  '&:focus': {
+    outline: 'none',
+  },
+});
+
+render(
+  <DialogPrimitive.Dialog>
+    <DialogPrimitive.DialogTrigger as={Button}>Open</DialogPrimitive.DialogTrigger>
+    <Overlay />
+    <Content>
+      <p>Dialog content</p>
+      <DialogPrimitive.DialogClose as={Button}>Close</DialogPrimitive.DialogClose>
+    </Content>
+  </DialogPrimitive.Dialog>
+);
+```
+
+### Accessibility
+
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Esc'],
+      description: <span>Closes the dialog</span>,
+    },
+  ]}
+/>
+
+### API Reference
+
+#### Dialog
+
+`Dialog` is the root component.
+
+<PropsTable
+  data={[
+    {
+      name: 'defaultIsOpen',
+      type: 'boolean',
+    },
+    {
+      name: 'isOpen',
+      type: 'boolean',
+    },
+    {
+      name: 'onIsOpenChange',
+      type: '(isOpen: boolean) => void',
+      typeSimple: 'function',
+    },
+    {
+      name: 'id',
+      type: 'string',
+    },
+  ]}
+/>
+
+#### DialogOverlay
+
+`DialogOverlay` is the overlay part.
+
+#### DialogContent
+
+`DialogContent` is the content part.
+
+#### DialogTrigger
+
+`DialogTrigger` is the trigger button part. Use this when an uncontrolled behaviour is desired.
+
+#### DialogClose
+
+`DialogClose` is the close button part. Use this when an uncontrolled behaviour is desired.
