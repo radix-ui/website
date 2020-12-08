@@ -28,7 +28,7 @@ import * as SliderPrimitive from '@interop-ui/react-slider';
 
 ### Basic example
 
-Create your styled slider components, then pass those styled components into `Slider` via the `as` prop:
+Create your styled slider components from the slider primitives.
 
 ```jsx live manual compact
 // Slider.tsx
@@ -84,7 +84,7 @@ render(
 
 #### Vertical orientation
 
-Create your styled slider components, then pass those styled components into `Slider` via the `as` prop:
+Use the `orientation` prop to create a vertical slider.
 
 ```jsx live manual compact
 // Slider.tsx
@@ -195,7 +195,7 @@ render(
 
 #### Show thumb on hover
 
-Create your styled slider components, then pass those styled components into `Slider` via the `as` prop:
+Use the `data-interop-*` data attributes to target a part.
 
 ```jsx live manual compact
 // Slider.tsx
@@ -251,9 +251,9 @@ render(
 );
 ```
 
-#### Define step size and markers
+#### Define step size
 
-Use the `step` prop to define how the slider value updates. Add extra decorative elements as the markers.
+Use the `step` prop to define how the slider value updates.
 
 ```jsx live manual compact
 // Slider.tsx
@@ -295,53 +295,19 @@ const SliderThumb = styled(SliderPrimitive.Thumb, {
   },
 });
 
-const Markers = styled('div', {
-  display: 'flex',
-  justifyContent: 'flex-start',
-  height: 4,
-  position: 'relative',
-});
-const Marker = styled('div', {
-  width: 1,
-  height: '100%',
-  backgroundColor: 'dodgerblue',
-  position: 'absolute',
-});
-
-function SliderWithMarkers(props) {
-  const [value, setValue] = React.useState(50);
-
-  return (
-    <>
-      <Slider min={0} max={100} step={10} value={value} onChange={(newValue) => setValue(newValue)}>
-        <SliderTrack>
-          <SliderRange />
-        </SliderTrack>
-        <SliderThumb />
-      </Slider>
-      <Markers>
-        <Marker css={{ left: '0%' }} />
-        <Marker css={{ left: '10%' }} />
-        <Marker css={{ left: '20%' }} />
-        <Marker css={{ left: '30%' }} />
-        <Marker css={{ left: '40%' }} />
-        <Marker css={{ left: '50%' }} />
-        <Marker css={{ left: '60%' }} />
-        <Marker css={{ left: '70%' }} />
-        <Marker css={{ left: '80%' }} />
-        <Marker css={{ left: '90%' }} />
-        <Marker css={{ left: '100%' }} />
-      </Markers>
-    </>
-  );
-}
-
-render(<SliderWithMarkers />);
+render(
+  <Slider defaultValue={50}>
+    <SliderTrack>
+      <SliderRange />
+    </SliderTrack>
+    <SliderThumb />
+  </Slider>
+);
 ```
 
-#### Show tooltip on thumb
+#### Disabled style
 
-Control the Slider and compose extra functionality
+Use the availabe `data-*` attribute selectors to style the `disabled` state.
 
 ```jsx live manual compact
 // Slider.tsx
@@ -368,6 +334,9 @@ const SliderRange = styled(SliderPrimitive.Range, {
   backgroundColor: 'dodgerblue',
   borderRadius: '9999px',
   height: '100%',
+  '[data-disabled] &': {
+    backgroundColor: 'darkgray',
+  },
 });
 
 const SliderThumb = styled(SliderPrimitive.Thumb, {
@@ -383,46 +352,14 @@ const SliderThumb = styled(SliderPrimitive.Thumb, {
   },
 });
 
-const Tooltip = styled(TooltipPrimitive, {});
-
-function SliderWithTooltip(props) {
-  const [value, setValue] = React.useState(50);
-
-  return (
-    <div>
-      <Slider value={value} onChange={(newValue) => setValue(newValue)}>
-        <SliderTrack>
-          <SliderRange />
-        </SliderTrack>
-        <TooltipPrimitive>
-          <TooltipPrimitive.Trigger as={SliderThumb} />
-          <TooltipPrimitive.Popper side="top">
-            <TooltipPrimitive.Content
-              style={{
-                backgroundColor: 'dodgerblue',
-                padding: '5px',
-                fontSize: '12px',
-                borderRadius: '3px',
-              }}
-            >
-              {value}
-            </TooltipPrimitive.Content>
-            <TooltipPrimitive.Arrow
-              offset={5}
-              width={11}
-              height={5}
-              style={{
-                fill: 'dodgerblue',
-              }}
-            />
-          </TooltipPrimitive.Popper>
-        </TooltipPrimitive>
-      </Slider>
-    </div>
-  );
-}
-
-render(<SliderWithTooltip />);
+render(
+  <Slider defaultValue={50} disabled>
+    <SliderTrack>
+      <SliderRange />
+    </SliderTrack>
+    <SliderThumb />
+  </Slider>
+);
 ```
 
 ### Accessibility
