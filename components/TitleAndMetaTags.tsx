@@ -64,6 +64,10 @@ body, button, input {
 	color: var(--colors-hiContrast);
 }
 
+h1, h2, h3, h4, h5, strong {
+	font-weight: 500;
+}
+
 svg {
   display: block;
   vertical-align: middle;
