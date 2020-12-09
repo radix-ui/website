@@ -61,11 +61,15 @@ const Content = styled(DialogPrimitive.DialogContent, {
 
 render(
   <DialogPrimitive.Dialog>
-    <DialogPrimitive.DialogTrigger as={Button}>Open</DialogPrimitive.DialogTrigger>
+    <DialogPrimitive.DialogTrigger as={Button}>
+      Open
+    </DialogPrimitive.DialogTrigger>
     <Overlay />
     <Content>
       <p>Dialog content</p>
-      <DialogPrimitive.DialogClose as={Button}>Close</DialogPrimitive.DialogClose>
+      <DialogPrimitive.DialogClose as={Button}>
+        Close
+      </DialogPrimitive.DialogClose>
     </Content>
   </DialogPrimitive.Dialog>
 );
@@ -121,11 +125,15 @@ const Content = styled(DialogPrimitive.DialogContent, {
 
 render(
   <DialogPrimitive.Dialog>
-    <DialogPrimitive.DialogTrigger as={Button}>Open</DialogPrimitive.DialogTrigger>
+    <DialogPrimitive.DialogTrigger as={Button}>
+      Open
+    </DialogPrimitive.DialogTrigger>
     <Overlay />
     <Content>
       <p>Dialog content</p>
-      <DialogPrimitive.DialogClose as={Button}>Close</DialogPrimitive.DialogClose>
+      <DialogPrimitive.DialogClose as={Button}>
+        Close
+      </DialogPrimitive.DialogClose>
     </Content>
   </DialogPrimitive.Dialog>
 );
@@ -168,7 +176,8 @@ render(
       name: 'onIsOpenChange',
       type: '(isOpen: boolean) => void',
       typeSimple: 'function',
-      description: 'The callback that fires when the state of the dialog changes.',
+      description:
+        'The callback that fires when the state of the dialog changes.',
     },
     {
       name: 'id',

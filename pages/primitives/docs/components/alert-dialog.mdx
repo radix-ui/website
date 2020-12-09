@@ -65,11 +65,15 @@ render(
     <Overlay />
     <Content>
       <Title>Alert title</Title>
-      <Description>This is an example of the alert description part. Are you sure?</Description>
+      <Description>
+        This is an example of the alert description part. Are you sure?
+      </Description>
       <AlertDialogPrimitive.Cancel as={Button} css={{ marginRight: 15 }}>
         Cancel
       </AlertDialogPrimitive.Cancel>
-      <AlertDialogPrimitive.Action as={Button}>Accept</AlertDialogPrimitive.Action>
+      <AlertDialogPrimitive.Action as={Button}>
+        Accept
+      </AlertDialogPrimitive.Action>
     </Content>
   </AlertDialogPrimitive>
 );
@@ -135,10 +139,16 @@ render(
     <Overlay />
     <Content>
       <Title>Alert title</Title>
-      <Description>This is an example of the alert description part. Are you sure?</Description>
+      <Description>
+        This is an example of the alert description part. Are you sure?
+      </Description>
       <ButtonsWrapper>
-        <AlertDialogPrimitive.Cancel as={Button}>Cancel</AlertDialogPrimitive.Cancel>
-        <AlertDialogPrimitive.Action as={Button}>Accept</AlertDialogPrimitive.Action>
+        <AlertDialogPrimitive.Cancel as={Button}>
+          Cancel
+        </AlertDialogPrimitive.Cancel>
+        <AlertDialogPrimitive.Action as={Button}>
+          Accept
+        </AlertDialogPrimitive.Action>
       </ButtonsWrapper>
     </Content>
   </AlertDialogPrimitive>
@@ -202,11 +212,15 @@ render(
     <Overlay />
     <Content>
       <Title>Alert title</Title>
-      <Description>This is an example of the alert description part. Are you sure?</Description>
+      <Description>
+        This is an example of the alert description part. Are you sure?
+      </Description>
       <AlertDialogPrimitive.Cancel as={AlertButton} css={{ marginRight: 15 }}>
         Cancel
       </AlertDialogPrimitive.Cancel>
-      <AlertDialogPrimitive.Action as={AlertButton}>Accept</AlertDialogPrimitive.Action>
+      <AlertDialogPrimitive.Action as={AlertButton}>
+        Accept
+      </AlertDialogPrimitive.Action>
     </Content>
   </AlertDialogPrimitive>
 );
@@ -249,7 +263,8 @@ render(
       name: 'onIsOpenChange',
       type: '(isOpen: boolean) => void',
       typeSimple: 'function',
-      description: 'The callback that fires when the state of the dialog changes.',
+      description:
+        'The callback that fires when the state of the dialog changes.',
     },
     {
       name: 'id',
