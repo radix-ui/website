@@ -44,18 +44,18 @@ const Content = styled(AlertDialogPrimitive.Content, {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 320,
+  width: 360,
   backgroundColor: 'white',
   borderRadius: 6,
-  padding: 20,
+  padding: 30,
 });
 
 const Title = styled(AlertDialogPrimitive.Title, {
-  marginBottom: 30,
+  margin: '0 0 30px',
 });
 
 const Description = styled(AlertDialogPrimitive.Description, {
-  marginBottom: 30,
+  margin: '0 0 30px',
   lineHeight: 1.5,
 });
 
@@ -98,7 +98,7 @@ const Content = styled(AlertDialogPrimitive.Content, {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 320,
+  width: 360,
   backgroundColor: 'white',
   borderRadius: 6,
 });
@@ -140,6 +140,73 @@ render(
         <AlertDialogPrimitive.Cancel as={Button}>Cancel</AlertDialogPrimitive.Cancel>
         <AlertDialogPrimitive.Action as={Button}>Accept</AlertDialogPrimitive.Action>
       </ButtonsWrapper>
+    </Content>
+  </AlertDialogPrimitive>
+);
+```
+
+#### With colored buttons
+
+```jsx live manual
+// Dialog.tsx
+// import * as AlertDialogPrimitive from '@interop-ui/react-dialog';
+// import { Button } from '@radix-ui/ds-button'
+
+const Overlay = styled(AlertDialogPrimitive.Overlay, {
+  backgroundColor: 'rgba(0, 0, 0, .15)',
+  position: 'fixed',
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0,
+});
+
+const Content = styled(AlertDialogPrimitive.Content, {
+  position: 'fixed',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 360,
+  backgroundColor: 'var(--colors-loContrast, white)',
+  borderRadius: 6,
+  padding: 30,
+});
+
+const Title = styled(AlertDialogPrimitive.Title, {
+  margin: '0 0 30px',
+});
+
+const Description = styled(AlertDialogPrimitive.Description, {
+  margin: '0 0 30px',
+  lineHeight: 1.5,
+});
+
+const AlertButton = styled('button', {
+  padding: '0 20px',
+  fontSize: 16,
+  lineHeight: '40px',
+  borderRadius: 20,
+  border: 'none',
+
+  '&[data-interop-ui-alert-dialog-cancel]': {
+    backgroundColor: 'slategray',
+  },
+  '&[data-interop-ui-alert-dialog-action]': {
+    backgroundColor: 'dodgerblue',
+  },
+});
+
+render(
+  <AlertDialogPrimitive>
+    <AlertDialogPrimitive.Trigger>Open</AlertDialogPrimitive.Trigger>
+    <Overlay />
+    <Content>
+      <Title>Alert title</Title>
+      <Description>This is an example of the alert description part. Are you sure?</Description>
+      <AlertDialogPrimitive.Cancel as={AlertButton} css={{ marginRight: 15 }}>
+        Cancel
+      </AlertDialogPrimitive.Cancel>
+      <AlertDialogPrimitive.Action as={AlertButton}>Accept</AlertDialogPrimitive.Action>
     </Content>
   </AlertDialogPrimitive>
 );

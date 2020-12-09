@@ -53,7 +53,6 @@ body {
   background-color: var(--colors-loContrast);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: hsl(206, 10%, 5%);
   line-height: 1;
 }
 
