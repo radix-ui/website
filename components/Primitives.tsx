@@ -1,4 +1,4 @@
-export { Accordion } from '@interop-ui/react-accordion';
+export { Accordion as AccordionPrimitive } from '@interop-ui/react-accordion';
 export { AlertDialog } from '@interop-ui/react-alert-dialog';
 export { Avatar } from '@interop-ui/react-avatar';
 export { Checkbox } from '@interop-ui/react-checkbox';

@@ -58,6 +58,11 @@ body {
   line-height: 1;
 }
 
+body, button, input {
+	color: var(--colors-hiContrast);
+	text-align: inherit;
+}
+
 svg {
   display: block;
   vertical-align: middle;
@@ -70,41 +75,7 @@ svg {
 
 img {
   vertical-align: middle;
-}
-
-button {
-  align-items: center;
-  appearance: none;
-  background-color: transparent;
-  border: none;
-  box-sizing: border-box;
-  display: inline-flex;
-  font: inherit;
-  justify-content: center;
-  line-height: 1;
-  margin: 0;
-  outline: none;
-  padding: 0;
-  text-align: inherit;
-  text-decoration: none;
-  user-select: none;
-  vertical-align: middle;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-}
-
-img {
-  vertical-align: middle;
-  max-width: 100%;
+	max-width: 100%;
 }
 
 pre {

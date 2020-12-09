@@ -20,7 +20,68 @@ import * as AccordionPrimitive from '@interop-ui/react-accordion';
 
 ### Basic example
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+Create your styled slider component from the slider primitives.
+
+```jsx live manual
+// Slider.tsx
+// import * as AccordionPrimitive from '@interop-ui/react-accordion';
+
+const AccordionItem = styled(AccordionPrimitive.Item, {
+  borderTop: '1px solid $gray500',
+
+  '&:last-of-type': {
+    borderBottom: '1px solid $gray500',
+  },
+});
+
+const AccordionHeader = styled(AccordionPrimitive.Header, {
+  margin: 0,
+  display: 'flex',
+});
+
+const AccordionButton = styled(AccordionPrimitive.Button, {
+  backgroundColor: 'transparent',
+  border: 'none',
+  padding: 10,
+  flex: 1,
+});
+
+const AccordionPanel = styled(AccordionPrimitive.Panel, {
+  paddingLeft: 10,
+  paddingRight: 10,
+});
+
+render(
+  <AccordionPrimitive>
+    <AccordionItem value="item-1">
+      <AccordionHeader>
+        <AccordionButton>Item 1</AccordionButton>
+      </AccordionHeader>
+      <AccordionPanel>
+        <p>Here goes the content for the accordion item 1.</p>
+      </AccordionPanel>
+    </AccordionItem>
+
+    <AccordionItem value="item-2">
+      <AccordionHeader>
+        <AccordionButton>Item 2</AccordionButton>
+      </AccordionHeader>
+      <AccordionPanel>
+        <p>Here goes the content for the accordion item 2.</p>
+      </AccordionPanel>
+    </AccordionItem>
+
+    <AccordionItem value="item-3">
+      <AccordionHeader>
+        <AccordionButton>Item 3</AccordionButton>
+      </AccordionHeader>
+      <AccordionPanel>
+        <p>Here goes the content for the accordion item 3.</p>
+      </AccordionPanel>
+    </AccordionItem>
+  </AccordionPrimitive>
+);
+```
 
 ### Examples
 
@@ -74,13 +135,12 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 <PropsTable
   data={[
-      {
+    {
       name: 'disabled',
       required: false,
       type: 'boolean',
       default: 'false',
-      description:
-        'Whether or not an accordion item is disabled from user interaction.',
+      description: 'Whether or not an accordion item is disabled from user interaction.',
     },
     {
       name: 'value',
