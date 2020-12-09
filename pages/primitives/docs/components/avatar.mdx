@@ -1,47 +1,158 @@
 ---
-title: 'Avatar'
+title: Avatar
+name: avatar
+version: 0.0.1-13
+description: Useful for presenting profile images and initials.
 ---
 
-Avatar Primitive
+### Installation
 
-```jsx live
-<Avatar
-  style={{
-    // ensures image/fallback is centered
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    verticalAlign: 'middle',
-    // ensures image doesn't bleed out
-    overflow: 'hidden',
-    // ensures no selection is possible
-    userSelect: 'none',
-    borderRadius: 9999,
-    width: 48,
-    height: 48,
-  }}
->
-  <Avatar.Image
-    src="https://picsum.photos/id/1005/400/400"
-    style={{
-      // ensures image is full size and not distorted
-      width: '100%',
-      height: '100%',
-      objectFit: 'cover',
-    }}
-  />
-  <Avatar.Fallback
-    style={{
-      width: '100%',
-      height: '100%',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: 'black',
-      color: 'white',
-    }}
-  >
-    JS
-  </Avatar.Fallback>
-</Avatar>
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-avatar
+```
+
+Then import the component in your component file.
+
+```jsx
+// Avatar.tsx
+import * as AvatarPrimitive from '@interop-ui/react-avatar';
+```
+
+### Basic example
+
+```jsx live manual
+// Avatar.tsx
+// import * as AvatarPrimitive from '@interop-ui/react-avatar';
+
+const Avatar = styled(AvatarPrimitive, {
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  verticalAlign: 'middle',
+  overflow: 'hidden',
+  userSelect: 'none',
+  width: 48,
+  height: 48,
+  borderRadius: 24,
+});
+
+const AvatarImage = styled(AvatarPrimitive.Image, {
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+});
+
+const AvatarFallback = styled(AvatarPrimitive.Fallback, {
+  width: '100%',
+  height: '100%',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: 'dodgerblue',
+});
+
+render(
+  <Avatar>
+    <AvatarImage src="https://picsum.photos/id/1005/400/400" />
+    <AvatarFallback>UI</AvatarFallback>
+  </Avatar>
+);
+```
+
+### Examples
+
+#### Initials only
+
+```jsx live manual compact
+// Avatar.tsx
+// import * as AvatarPrimitive from '@interop-ui/react-avatar';
+
+const Avatar = styled(AvatarPrimitive, {
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  verticalAlign: 'middle',
+  overflow: 'hidden',
+  userSelect: 'none',
+  width: 48,
+  height: 48,
+  borderRadius: 24,
+});
+
+const AvatarFallback = styled(AvatarPrimitive.Fallback, {
+  width: '100%',
+  height: '100%',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: 'dodgerblue',
+  fontWeight: 500,
+});
+
+render(
+  <Avatar>
+    <AvatarFallback>UI</AvatarFallback>
+  </Avatar>
+);
+```
+
+#### Grouped
+
+```jsx live manual compact
+// Avatar.tsx
+// import * as AvatarPrimitive from '@interop-ui/react-avatar';
+
+const Avatar = styled(AvatarPrimitive, {
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  verticalAlign: 'middle',
+  overflow: 'hidden',
+  userSelect: 'none',
+  width: 48,
+  height: 48,
+  borderRadius: 24,
+  boxShadow: '0 0 0 1px white',
+
+  '& + &': {
+    marginLeft: -12,
+  },
+});
+
+const AvatarImage = styled(AvatarPrimitive.Image, {
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+});
+
+const AvatarFallback = styled(AvatarPrimitive.Fallback, {
+  width: '100%',
+  height: '100%',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: 'dodgerblue',
+});
+
+render(
+  <>
+    <Avatar>
+      <AvatarImage src="https://picsum.photos/id/1006/400/400" />
+      <AvatarFallback>AB</AvatarFallback>
+    </Avatar>
+    <Avatar>
+      <AvatarImage src="https://picsum.photos/id/1001/400/400" />
+      <AvatarFallback>CD</AvatarFallback>
+    </Avatar>
+    <Avatar>
+      <AvatarImage src="https://picsum.photos/id/1008/400/400" />
+      <AvatarFallback>EF</AvatarFallback>
+    </Avatar>
+    <Avatar>
+      <AvatarFallback>+10</AvatarFallback>
+    </Avatar>
+  </>
+);
 ```

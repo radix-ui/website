@@ -1,7 +1,7 @@
 export { AccessibleIcon } from '@interop-ui/react-accessible-icon';
 export { Accordion as AccordionPrimitive } from '@interop-ui/react-accordion';
 export { AlertDialog as AlertDialogPrimitive } from '@interop-ui/react-alert-dialog';
-export { Avatar } from '@interop-ui/react-avatar';
+export { Avatar as AvatarPrimitive } from '@interop-ui/react-avatar';
 export { Checkbox } from '@interop-ui/react-checkbox';
 export * as DialogPrimitive from '@interop-ui/react-dialog';
 export { Label as LabelPrimitive } from '@interop-ui/react-label';
