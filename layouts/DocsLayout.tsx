@@ -75,15 +75,18 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
 
         <Hero />
 
-        {Boolean(frontMatter.features) && (
-          <Overview version={frontMatter.version} name={frontMatter.name}>
-            <FeatureList>
-              {frontMatter.features.map((feature, i) => (
-                <Feature key={i}>{feature}</Feature>
-              ))}
-            </FeatureList>
-          </Overview>
-        )}
+        <Flex>
+          <Box css={{ flex: '1 1 100%', mr: '$5' }}>
+            {Boolean(frontMatter.features) && (
+              <FeatureList>
+                {frontMatter.features.map((feature, i) => (
+                  <Feature key={i}>{feature}</Feature>
+                ))}
+              </FeatureList>
+            )}
+          </Box>
+          <ComponentInfo version={frontMatter.version} name={frontMatter.name} />
+        </Flex>
 
         <Box>{children}</Box>
 
@@ -275,37 +278,34 @@ function QuickNav() {
   );
 }
 
-const Overview = ({ children, version, name, ...props }) => (
-  <Flex {...props}>
-    <Box css={{ flex: 1, mr: '$5' }}>{children}</Box>
-    <Box css={{ flex: 0, width: '30%' }}>
-      <Text size="2" color="gray" css={{ fontFamily: '$mono', mb: '$4' }}>
-        Version: v{version}
-      </Text>
-      <Box css={{ mb: '$2' }}>
-        <Link
-          variant="blue"
-          href={`https://github.com/modulz/interop-ui/tree/main/packages/react/${name}/src`}
-          target="_blank"
-        >
-          <Text size="2">View on Github</Text>
-        </Link>
-      </Box>
-      <Box css={{ mb: '$2' }}>
-        <Link
-          variant="blue"
-          href={`https://www.npmjs.com/package/@interop-ui/react-${name}`}
-          target="_blank"
-        >
-          <Text size="2">View on npm</Text>
-        </Link>
-      </Box>
+const ComponentInfo = ({ version, name }) => (
+  <Box css={{ flex: 0, width: '30%' }}>
+    <Text size="2" color="gray" css={{ fontFamily: '$mono', mb: '$4' }}>
+      Version: v{version}
+    </Text>
+    <Box css={{ mb: '$2' }}>
+      <Link
+        variant="blue"
+        href={`https://github.com/modulz/interop-ui/tree/main/packages/react/${name}/src`}
+        target="_blank"
+      >
+        <Text size="2">View on Github</Text>
+      </Link>
     </Box>
-  </Flex>
+    <Box css={{ mb: '$2' }}>
+      <Link
+        variant="blue"
+        href={`https://www.npmjs.com/package/@interop-ui/react-${name}`}
+        target="_blank"
+      >
+        <Text size="2">View on npm</Text>
+      </Link>
+    </Box>
+  </Box>
 );
 
-const FeatureList = ({ children, ...props }) => (
-  <Box {...props}>
+const FeatureList = ({ children }) => (
+  <Box>
     <Heading css={{ mb: '$6' }}>Features</Heading>
     <Box as="ul" css={{ p: 0, m: 0 }}>
       {children}

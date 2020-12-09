@@ -1,6 +1,6 @@
 export type FrontMatter = {
   title: string;
-  name?: string;
+  name: string;
   id?: string;
   description?: string;
   by?: string;
@@ -13,6 +13,6 @@ export type FrontMatter = {
   poster?: string;
   status?: 'new' | 'soon' | 'deprecated';
   features?: string[];
-  version?: string;
+  version: string;
   __resourcePath: string;
 };
