@@ -51,7 +51,6 @@ export function TitleAndMetaTags({
 body {
   margin: 0;
   background-color: var(--colors-loContrast);
-  font-family: var(--fonts-untitled);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: hsl(206, 10%, 5%);
@@ -59,8 +58,10 @@ body {
 }
 
 body, button, input {
-	color: var(--colors-hiContrast);
+	font-family: var(--fonts-untitled);
 	text-align: inherit;
+	font-size: initial;
+	color: var(--colors-hiContrast);
 }
 
 svg {

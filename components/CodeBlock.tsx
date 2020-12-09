@@ -2,6 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
 import { Box, Button, Text, theme as DStheme, styled, css } from '@modulz/design-system';
+import * as RadixIcons from '@modulz/radix-icons';
 import { useClipboard } from '../utils/useClipboard';
 import * as DS from '@modulz/design-system';
 import * as Primitives from './Primitives';
@@ -98,6 +99,7 @@ const StyledLivePreview = ({ live, ...props }: { live?: boolean }) => (
       // top: 0,
       // backgroundColor: 'white',
       // zIndex: 3,
+      overflow: 'hidden',
       p: '$3',
       boxShadow: `inset 0 0 0 1px $gray500`,
       borderTopLeftRadius: '$2',
@@ -172,6 +174,7 @@ export function CodeBlock({
     scope: {
       React,
       ...components,
+      ...RadixIcons,
       styled,
       css,
       // Always expose the the following
@@ -191,11 +194,10 @@ export function CodeBlock({
           <Box
             css={{
               textAlign: 'right',
-              bc: '$gray100',
               p: '$2',
               borderBottomLeftRadius: isOpen ? '0' : '$2',
               borderBottomRightRadius: isOpen ? '0' : '$2',
-              boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.1)',
+              boxShadow: 'inset 0 0 0 1px $gray500',
               mt: '-1px',
             }}
           >
