@@ -402,6 +402,15 @@
     "@interop-ui/utils" "0.0.1-4"
     csstype "^3.0.4"
 
+"@interop-ui/react-accessible-icon@0.0.1-13":
+  version "0.0.1-13"
+  resolved "https://registry.yarnpkg.com/@interop-ui/react-accessible-icon/-/react-accessible-icon-0.0.1-13.tgz#b9b78702d2f717c71ad024f5ac505b414ea68fe6"
+  integrity sha512-wca+xPfe4oftQYEJNXQob5VQdwQV8omspBg97KjTRcKl3zOFCYwnD1x0oZH3EDabPIkfaS9tNbAaXw/6zJfEhA==
+  dependencies:
+    "@interop-ui/react-polymorphic" "0.0.1-0"
+    "@interop-ui/react-visually-hidden" "0.0.1-13"
+    "@interop-ui/utils" "0.0.1-5"
+
 "@interop-ui/react-accordion@0.0.1-13":
   version "0.0.1-13"
   resolved "https://registry.yarnpkg.com/@interop-ui/react-accordion/-/react-accordion-0.0.1-13.tgz#db45a92c4c78108e76d873b497bf2c07fc04a583"
@@ -704,6 +713,15 @@
   dependencies:
     "@interop-ui/react-utils" "0.0.1-12"
     "@interop-ui/utils" "0.0.1-4"
+
+"@interop-ui/react-visually-hidden@0.0.1-13":
+  version "0.0.1-13"
+  resolved "https://registry.yarnpkg.com/@interop-ui/react-visually-hidden/-/react-visually-hidden-0.0.1-13.tgz#6a83f2d2548f7bb8ea6a4ccedbdcbb68eb517e51"
+  integrity sha512-qzCis37Eks2mzPdgh2emFhIa6hSSHpNKOCTJzuCN9N3I23eRgp8TkRq+ifAKGDqYbiRvAMOF94nE0aQ6pZVeHg==
+  dependencies:
+    "@interop-ui/react-polymorphic" "0.0.1-0"
+    "@interop-ui/react-utils" "0.0.1-13"
+    "@interop-ui/utils" "0.0.1-5"
 
 "@interop-ui/utils@0.0.1-4":
   version "0.0.1-4"

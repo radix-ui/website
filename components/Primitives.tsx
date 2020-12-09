@@ -1,3 +1,4 @@
+export { AccessibleIcon } from '@interop-ui/react-accessible-icon';
 export { Accordion as AccordionPrimitive } from '@interop-ui/react-accordion';
 export { AlertDialog } from '@interop-ui/react-alert-dialog';
 export { Avatar } from '@interop-ui/react-avatar';

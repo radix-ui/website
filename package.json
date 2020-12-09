@@ -9,6 +9,7 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
+    "@interop-ui/react-accessible-icon": "0.0.1-13",
     "@interop-ui/react-accordion": "0.0.1-13",
     "@interop-ui/react-alert-dialog": "0.0.1-11",
     "@interop-ui/react-avatar": "0.0.1-12",
