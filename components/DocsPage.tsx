@@ -120,7 +120,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
           },
           bp3: {
             px: '250px',
-            py: '$9'
+            py: '$9',
           },
         }}
       >

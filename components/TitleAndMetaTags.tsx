@@ -51,11 +51,20 @@ export function TitleAndMetaTags({
 body {
   margin: 0;
   background-color: var(--colors-loContrast);
-  font-family: var(--fonts-untitled);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: hsl(206, 10%, 5%);
   line-height: 1;
+}
+
+body, button, input {
+	font-family: var(--fonts-untitled);
+	text-align: inherit;
+	font-size: initial;
+	color: var(--colors-hiContrast);
+}
+
+h1, h2, h3, h4, h5, strong {
+	font-weight: 500;
 }
 
 svg {
@@ -70,41 +79,7 @@ svg {
 
 img {
   vertical-align: middle;
-}
-
-button {
-  align-items: center;
-  appearance: none;
-  background-color: transparent;
-  border: none;
-  box-sizing: border-box;
-  display: inline-flex;
-  font: inherit;
-  justify-content: center;
-  line-height: 1;
-  margin: 0;
-  outline: none;
-  padding: 0;
-  text-align: inherit;
-  text-decoration: none;
-  user-select: none;
-  vertical-align: middle;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-}
-
-img {
-  vertical-align: middle;
-  max-width: 100%;
+	max-width: 100%;
 }
 
 pre {

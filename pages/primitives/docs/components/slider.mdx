@@ -193,64 +193,6 @@ render(
 );
 ```
 
-#### Show thumb on hover
-
-Use the `data-interop-*` data attributes to target a part.
-
-```jsx live manual compact
-// Slider.tsx
-// import * as SliderPrimitive from '@interop-ui/react-slider';
-
-const Slider = styled(SliderPrimitive, {
-  position: 'relative',
-  display: 'flex',
-  alignItems: 'center',
-  userSelect: 'none',
-  touchAction: 'none',
-  height: 16,
-  '&:hover [data-interop-ui-slider-thumb]': {
-    opacity: 1,
-  },
-});
-
-const SliderTrack = styled(SliderPrimitive.Track, {
-  backgroundColor: 'gainsboro',
-  position: 'relative',
-  flexGrow: 1,
-  height: 2,
-});
-
-const SliderRange = styled(SliderPrimitive.Range, {
-  position: 'absolute',
-  backgroundColor: 'dodgerblue',
-  borderRadius: '9999px',
-  height: '100%',
-});
-
-const SliderThumb = styled(SliderPrimitive.Thumb, {
-  display: 'block',
-  width: 16,
-  height: 16,
-  backgroundColor: 'white',
-  border: '1px solid lightgray',
-  borderRadius: '20px',
-  opacity: 0,
-  ':focus': {
-    outline: 'none',
-    borderColor: 'dodgerblue',
-  },
-});
-
-render(
-  <Slider defaultValue={50}>
-    <SliderTrack>
-      <SliderRange />
-    </SliderTrack>
-    <SliderThumb />
-  </Slider>
-);
-```
-
 #### Define step size
 
 Use the `step` prop to define how the slider value updates.
@@ -372,7 +314,8 @@ render(
       keys: ['ArrowRight'],
       description: (
         <span>
-          Increments/decrements by the <Code>step</Code> value depending on <Code>orientation</Code>
+          Increments/decrements by the <Code>step</Code> value depending on{' '}
+          <Code>orientation</Code>
         </span>
       ),
     },
@@ -380,7 +323,8 @@ render(
       keys: ['ArrowLeft'],
       description: (
         <span>
-          Increments/decrements by the <Code>step</Code> value depending on <Code>orientation</Code>
+          Increments/decrements by the <Code>step</Code> value depending on{' '}
+          <Code>orientation</Code>
         </span>
       ),
     },
@@ -428,8 +372,8 @@ render(
       keys: ['Enter'],
       description: (
         <span>
-          If the <Code>Slider</Code> is in a form context, simulates a click on the associated form
-          submit button
+          If the <Code>Slider</Code> is in a form context, simulates a click on
+          the associated form submit button
         </span>
       ),
     },

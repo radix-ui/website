@@ -1,6 +1,6 @@
-## Stitches Site
+## Radix UI Website
 
-This is the source code of the [Stitches documentation](https://stitches.dev).
+This is the source code of the [Radix UI documentation](https://radix-ui.com).
 
 ---
 

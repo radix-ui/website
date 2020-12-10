@@ -1,6 +1,8 @@
 ---
-title: 'Accessible Icon'
-description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+title: Accessible Icon
+name: accessible-icon
+version: 0.0.1-13
+description: Useful for wrapping SVG's in an accessible wrapper.
 ---
 
 ### Installation
@@ -14,17 +16,22 @@ npm install @radix-ui/react-accessible-icon
 Then import the component in your component file.
 
 ```jsx
-// AccessibleIcon.tsx
-import * as AccessibleIconPrimitive from '@interop-ui/react-accessible-icon';
+import { AccessibleIcon } from '@interop-ui/react-accessible-icon';
 ```
 
 ### Basic example
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+```jsx live manual
+// CloseIcon.tsx
+// import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
+// import { CrossCircledIcon } from '@modulz/radix-icons';
 
-### Examples
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+render(
+  <AccessibleIcon label="Close">
+    <CrossCircledIcon />
+  </AccessibleIcon>
+);
+```
 
 ### Accessibility
 

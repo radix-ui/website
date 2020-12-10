@@ -2,5 +2,13 @@
   "printWidth": 100,
   "singleQuote": true,
   "semi": true,
-  "tabWidth": 2
+  "tabWidth": 2,
+  "overrides": [
+    {
+      "files": "*.mdx",
+      "options": {
+        "printWidth": 80
+      }
+    }
+  ]
 }

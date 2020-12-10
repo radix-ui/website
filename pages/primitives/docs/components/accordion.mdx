@@ -1,5 +1,426 @@
 ---
-title: 'Accordion'
+title: Accordion
+name: accordion
+version: 0.0.1-13
+description: Useful to group information into collapsible items.
+features:
+  - Full keyboard navigation.
+  - Can be controlled or uncontrolled.
 ---
 
-Accordion Primitive. Coming soon.
+### Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-accordion
+```
+
+Then import the component in your component file.
+
+```jsx
+// Accordion.tsx
+import * as AccordionPrimitive from '@interop-ui/react-accordion';
+```
+
+### Basic example
+
+Create your styled slider component from the slider primitives.
+
+```jsx live manual
+// Slider.tsx
+// import * as AccordionPrimitive from '@interop-ui/react-accordion';
+
+const AccordionItem = styled(AccordionPrimitive.Item, {
+  borderTop: '1px solid $gray500',
+
+  '&:last-of-type': {
+    borderBottom: '1px solid $gray500',
+  },
+});
+
+const AccordionHeader = styled(AccordionPrimitive.Header, {
+  margin: 0,
+  display: 'flex',
+});
+
+const AccordionButton = styled(AccordionPrimitive.Button, {
+  backgroundColor: 'transparent',
+  border: 'none',
+  padding: 10,
+  flex: 1,
+});
+
+const AccordionPanel = styled(AccordionPrimitive.Panel, {
+  padding: 10,
+});
+
+render(
+  <AccordionPrimitive>
+    <AccordionItem value="item-1">
+      <AccordionHeader>
+        <AccordionButton>Item 1</AccordionButton>
+      </AccordionHeader>
+      <AccordionPanel>
+        <div>Here goes the content for the accordion item 1.</div>
+      </AccordionPanel>
+    </AccordionItem>
+
+    <AccordionItem value="item-2">
+      <AccordionHeader>
+        <AccordionButton>Item 2</AccordionButton>
+      </AccordionHeader>
+      <AccordionPanel>
+        <div>Here goes the content for the accordion item 2.</div>
+      </AccordionPanel>
+    </AccordionItem>
+
+    <AccordionItem value="item-3">
+      <AccordionHeader>
+        <AccordionButton>Item 3</AccordionButton>
+      </AccordionHeader>
+      <AccordionPanel>
+        <div>Here goes the content for the accordion item 3.</div>
+      </AccordionPanel>
+    </AccordionItem>
+  </AccordionPrimitive>
+);
+```
+
+### Examples
+
+#### With directional Icon
+
+```jsx live manual compact
+// Slider.tsx
+// import * as AccordionPrimitive from '@interop-ui/react-accordion';
+// import { ChevronDownIcon } from '@modulz/radix-icons';
+
+const AccordionItem = styled(AccordionPrimitive.Item, {
+  borderTop: '1px solid $gray500',
+
+  '&:last-of-type': {
+    borderBottom: '1px solid $gray500',
+  },
+});
+
+const AccordionHeader = styled(AccordionPrimitive.Header, {
+  margin: 0,
+  display: 'flex',
+});
+
+const AccordionButton = styled(AccordionPrimitive.Button, {
+  backgroundColor: 'transparent',
+  border: 'none',
+  padding: 10,
+  flex: 1,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+});
+
+const AccordionPanel = styled(AccordionPrimitive.Panel, {
+  padding: 10,
+});
+
+const AccordionChevron = styled(ChevronDownIcon, {
+  transition: 'transform 300ms',
+
+  '[data-state=open] &': {
+    transform: 'rotate(180deg)',
+  },
+});
+
+render(
+  <AccordionPrimitive>
+    <AccordionItem value="item-1">
+      <AccordionHeader>
+        <AccordionButton>
+          Item 1
+          <AccordionChevron aria-hidden />
+        </AccordionButton>
+      </AccordionHeader>
+      <AccordionPanel>
+        <div>Here goes the content for the accordion item 1.</div>
+      </AccordionPanel>
+    </AccordionItem>
+
+    <AccordionItem value="item-2">
+      <AccordionHeader>
+        <AccordionButton>
+          Item 2
+          <AccordionChevron aria-hidden />
+        </AccordionButton>
+      </AccordionHeader>
+      <AccordionPanel>
+        <div>Here goes the content for the accordion item 2.</div>
+      </AccordionPanel>
+    </AccordionItem>
+
+    <AccordionItem value="item-3">
+      <AccordionHeader>
+        <AccordionButton>
+          Item 3
+          <AccordionChevron aria-hidden />
+        </AccordionButton>
+      </AccordionHeader>
+      <AccordionPanel>
+        <div>Here goes the content for the accordion item 3.</div>
+      </AccordionPanel>
+    </AccordionItem>
+  </AccordionPrimitive>
+);
+```
+
+#### Expanded by default
+
+```jsx live manual compact
+// Slider.tsx
+// import * as AccordionPrimitive from '@interop-ui/react-accordion';
+// import { ChevronDownIcon } from '@modulz/radix-icons';
+
+const AccordionItem = styled(AccordionPrimitive.Item, {
+  borderTop: '1px solid $gray500',
+
+  '&:last-of-type': {
+    borderBottom: '1px solid $gray500',
+  },
+});
+
+const AccordionHeader = styled(AccordionPrimitive.Header, {
+  margin: 0,
+  display: 'flex',
+});
+
+const AccordionButton = styled(AccordionPrimitive.Button, {
+  backgroundColor: 'transparent',
+  border: 'none',
+  padding: 10,
+  flex: 1,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+});
+
+const AccordionPanel = styled(AccordionPrimitive.Panel, {
+  padding: 10,
+});
+
+const AccordionChevron = styled(ChevronDownIcon, {
+  transition: 'transform 300ms',
+
+  '[data-state=open] &': {
+    transform: 'rotate(180deg)',
+  },
+});
+
+render(
+  <AccordionPrimitive defaultValue="item-2">
+    <AccordionItem value="item-1">
+      <AccordionHeader>
+        <AccordionButton>
+          Item 1
+          <AccordionChevron aria-hidden />
+        </AccordionButton>
+      </AccordionHeader>
+      <AccordionPanel>
+        <div>Here goes the content for the accordion item 1.</div>
+      </AccordionPanel>
+    </AccordionItem>
+
+    <AccordionItem value="item-2">
+      <AccordionHeader>
+        <AccordionButton>
+          Item 2
+          <AccordionChevron aria-hidden />
+        </AccordionButton>
+      </AccordionHeader>
+      <AccordionPanel>
+        <div>Here goes the content for the accordion item 2.</div>
+      </AccordionPanel>
+    </AccordionItem>
+
+    <AccordionItem value="item-3">
+      <AccordionHeader>
+        <AccordionButton>
+          Item 3
+          <AccordionChevron aria-hidden />
+        </AccordionButton>
+      </AccordionHeader>
+      <AccordionPanel>
+        <div>Here goes the content for the accordion item 3.</div>
+      </AccordionPanel>
+    </AccordionItem>
+  </AccordionPrimitive>
+);
+```
+
+#### Card styles
+
+```jsx live manual compact
+// Slider.tsx
+// import * as AccordionPrimitive from '@interop-ui/react-accordion';
+// import { ChevronDownIcon } from '@modulz/radix-icons';
+
+const AccordionItem = styled(AccordionPrimitive.Item, {
+  borderRadius: 6,
+  boxShadow:
+    'hsla(206,22%,7%,.15) 0px 5px 15px -5px, hsla(206,22%,7%,.1) 0px 5px 10px -15px',
+  border: '1px solid rgba(255, 255, 255, 0.1)',
+  marginBottom: 20,
+  padding: 10,
+
+  '&:last-of-type': {
+    marginBottom: 0,
+  },
+});
+
+const AccordionHeader = styled(AccordionPrimitive.Header, {
+  margin: 0,
+  display: 'flex',
+});
+
+const AccordionButton = styled(AccordionPrimitive.Button, {
+  backgroundColor: 'transparent',
+  border: 'none',
+  padding: 10,
+  flex: 1,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  fontWeight: 500,
+});
+
+const AccordionPanel = styled(AccordionPrimitive.Panel, {
+  padding: 10,
+});
+
+const AccordionChevron = styled(ChevronDownIcon, {
+  transition: 'transform 300ms',
+
+  '[data-state=open] &': {
+    transform: 'rotate(180deg)',
+  },
+});
+
+render(
+  <AccordionPrimitive>
+    <AccordionItem value="item-1">
+      <AccordionHeader>
+        <AccordionButton>
+          Item 1
+          <AccordionChevron aria-hidden />
+        </AccordionButton>
+      </AccordionHeader>
+      <AccordionPanel>
+        <div>Here goes the content for the accordion item 1.</div>
+      </AccordionPanel>
+    </AccordionItem>
+
+    <AccordionItem value="item-2">
+      <AccordionHeader>
+        <AccordionButton>
+          Item 2
+          <AccordionChevron aria-hidden />
+        </AccordionButton>
+      </AccordionHeader>
+      <AccordionPanel>
+        <div>Here goes the content for the accordion item 2.</div>
+      </AccordionPanel>
+    </AccordionItem>
+
+    <AccordionItem value="item-3">
+      <AccordionHeader>
+        <AccordionButton>
+          Item 3
+          <AccordionChevron aria-hidden />
+        </AccordionButton>
+      </AccordionHeader>
+      <AccordionPanel>
+        <div>Here goes the content for the accordion item 3.</div>
+      </AccordionPanel>
+    </AccordionItem>
+  </AccordionPrimitive>
+);
+```
+
+### Accessibility
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+### API Reference
+
+#### Accordion
+
+`Accordion` is the root component.
+
+<PropsTable
+  data={[
+    {
+      name: 'value',
+      required: false,
+      type: 'string',
+      description:
+        'The controlled stateful value of the accordion item whose panel is expanded.',
+    },
+    {
+      name: 'defaultValue',
+      required: false,
+      type: 'string',
+      description:
+        'The value of the item whose panel is expanded when the accordion is initially rendered. Use `defaultValue` if you do not need to control the state of an accordion.',
+    },
+    {
+      name: 'disabled',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Whether or not an accordion is disabled from user interaction.',
+    },
+    {
+      name: 'onChange',
+      required: false,
+      type: '(value: string) => void',
+      typeSimple: 'function',
+      description:
+        'The callback that fires when the state of the accordion changes.',
+    },
+  ]}
+/>
+
+#### AccordionItem
+
+`AccordionItem` contains all of the parts of a collapsible section inside of an `Accordion`.
+
+<PropsTable
+  data={[
+    {
+      name: 'disabled',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Whether or not an accordion item is disabled from user interaction.',
+    },
+    {
+      name: 'value',
+      required: true,
+      type: 'string',
+      description:
+        'A string value for the accordion item. All items within an accordion should use a unique value.',
+    },
+  ]}
+/>
+
+#### AccordionHeader
+
+`AccordionHeader` contains the content for the parts of an `AccordionItem` that will be visible whether or not its content is collapsed.
+
+#### AccordionButton
+
+`AccordionButton` is the trigger that toggles the collapsed state of an `AccordionItem`. It should always be nested inside of an `AccordionHeader`.
+
+#### AccordionPanel
+
+`AccordionPanel` contains the collapsible content for an `AccordionItem`.

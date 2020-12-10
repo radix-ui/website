@@ -1,5 +1,15 @@
 import NextLink from 'next/link';
-import { Box, Flex, Container, Separator, Grid, Title, Subtitle, Text, Link } from '@modulz/design-system';
+import {
+  Box,
+  Flex,
+  Container,
+  Separator,
+  Grid,
+  Title,
+  Subtitle,
+  Text,
+  Link,
+} from '@modulz/design-system';
 import { RadixLogo } from '../components/RadixLogo';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
 
@@ -39,14 +49,13 @@ export default function Home() {
         </NextLink>
       </Box>
       <Container size="3" css={{ textAlign: 'center', mb: '$4' }}>
-        <Title>
-          The UI toolkit
-        </Title>
+        <Title>The UI toolkit</Title>
       </Container>
 
       <Container size="2" css={{ textAlign: 'center' }}>
         <Subtitle>
-          Components, colors, icons, templates, and an extensive design system. Free and open-source.
+          Components, colors, icons, templates, and an extensive design system. Free and
+          open-source.
         </Subtitle>
       </Container>
 
