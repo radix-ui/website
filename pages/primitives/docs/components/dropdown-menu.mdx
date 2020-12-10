@@ -5,6 +5,82 @@ status: soon
 
 Dropdown Menu Primitive. Coming soon.
 
+### Accessibility
+
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space', 'Enter'],
+      description: (
+        <ul>
+          <li>
+            When focus is on <Code>Trigger</Code>, opens <Code>Popper</Code>.
+          </li>
+          <li>
+            When focus is on an <Code>Item</Code>, closes <Code>Popper</Code>{' '}
+            and moves focus to <Code>Trigger</Code>.
+          </li>
+          <li>
+            When focus is on an unchecked <Code>CheckboxItem</Code>, checks the{' '}
+            <Code>CheckboxItem</Code>, closes <Code>Popper</Code> and moves
+            focus to <Code>Trigger</Code>.
+          </li>
+          <li>
+            When focus is on a checked <Code>CheckboxItem</Code>, unchecks the{' '}
+            <Code>CheckboxItem</Code>, closes <Code>Popper</Code> and moves
+            focus to <Code>Trigger</Code>.
+          </li>
+          <li>
+            When focus is on an unchecked <Code>RadioItem</Code>, checks the{' '}
+            <Code>RadioItem</Code>, closes <Code>Popper</Code> and moves focus
+            to <Code>Trigger</Code>.
+          </li>
+          <li>
+            When focus is on a checked <Code>RadioItem</Code>, unchecks the{' '}
+            <Code>RadioItem</Code>, closes <Code>Popper</Code> and moves focus
+            to <Code>Trigger</Code>.
+          </li>
+        </ul>
+      ),
+    },
+    ,
+    {
+      keys: ['ArrowDown'],
+      description: (
+        <ul>
+          <li>
+            When focus is not on an item of an open <Code>Popper</Code>, moves
+            focus to the first item.
+          </li>
+          <li>When focus is on an item, moves focus to the next item.</li>
+        </ul>
+      ),
+    },
+    {
+      keys: ['ArrowUp'],
+      description: (
+        <ul>
+          <li>
+            When focus is not on an item of an open <Code>Popper</Code>, moves
+            focus to the last item.
+          </li>
+          <li>When focus is on an item, moves focus to the previous item.</li>
+        </ul>
+      ),
+    },
+    {
+      keys: ['Esc'],
+      description: (
+        <span>
+          Closes <Code>Popper</Code> and moves focus to <Code>Trigger</Code>.
+        </span>
+      ),
+    },
+  ]}
+/>
+
 ### API Reference
 
 #### DropdownMenu
