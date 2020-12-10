@@ -3,3 +3,21 @@ title: 'Portal'
 ---
 
 Portal Primitive. Coming soon.
+
+### API Reference
+
+#### Portal
+
+`Portal` is the root component. Anything you put inside `Portal` will be rendered in a separate `<radix-portal>` element. By default, this element will be appended to `document.body` but you can choose a different container by using the `containerRef` prop.
+
+<PropsTable
+  data={[
+    {
+      name: 'containerRef',
+      type: 'React.RefObject<HTMLElement>',
+      typeSimple: 'ref',
+      description:
+        'A optional ref to a different container where the portal should be appended.',
+    },
+  ]}
+/>
