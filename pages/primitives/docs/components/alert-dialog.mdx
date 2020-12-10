@@ -302,9 +302,9 @@ render(
       type: 'boolean',
       description: (
         <span>
-          The open state of the dialog when it is initially rendered. Use
-          <Code>defaultIsOpen</Code> if you do not need to control the state of an
-          dialog.
+          The open state of the <Code>AlertDialog</Code> when it is initially
+          rendered. Use <Code>defaultIsOpen</Code> if you do not need to control
+          the state of an dialog.
         </span>
       ),
     },
@@ -313,8 +313,8 @@ render(
       type: 'boolean',
       description: (
         <span>
-          The controlled open state of the dialog. Must be used in conjunction
-          with <pCode>onIsOpenChange</pCode>.
+          The controlled open state of the <Code>AlertDialog</Code>. Must be
+          used in conjunction with <pCode>onIsOpenChange</pCode>.
         </span>
       ),
     },
@@ -322,17 +322,22 @@ render(
       name: 'onIsOpenChange',
       type: '(isOpen: boolean) => void',
       typeSimple: 'function',
-      description:
-        'The callback that fires when the state of the dialog changes.',
+      description: (
+        <span>
+          The callback that fires when the state of the <Code>AlertDialog</Code>{' '}
+          changes.
+        </span>
+      ),
     },
     {
       name: 'id',
       type: 'string',
       description: (
         <span>
-          A unique identifier for the dialog component. The <Code>id</Code> is
-          used to generate DOM id attributes for nested components. If no{' '}
-          <Code>id</Code> prop is provided, a generated id will be used.
+          A unique identifier for the <Code>AlertDialog</Code> component. The{' '}
+          <Code>id</Code> is used to generate DOM id attributes for nested
+          components. If no <Code>id</Code> prop is provided, a generated id
+          will be used.
         </span>
       ),
     },
