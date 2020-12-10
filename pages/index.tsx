@@ -102,7 +102,7 @@ export default function Home() {
           >
             <NextLink passHref href="/design-system">
               <Card as="a" variant="ghost" css={{ p: '$5' }}>
-                <Subheading size="5" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
+                <Subheading css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
                   Design System
                 </Subheading>
                 <Paragraph css={{ color: '$gray900' }}>
@@ -113,7 +113,7 @@ export default function Home() {
 
             <NextLink passHref href="/primitives">
               <Card as="a" variant="ghost" css={{ p: '$5' }}>
-                <Subheading size="5" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
+                <Subheading css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
                   Primitives
                 </Subheading>
                 <Paragraph css={{ color: '$gray900' }}>
@@ -124,7 +124,7 @@ export default function Home() {
             </NextLink>
 
             <Card as="a" variant="ghost" href="#" css={{ p: '$5' }}>
-              <Subheading size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
+              <Subheading css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
                 Color
               </Subheading>
               <Paragraph css={{ color: '$gray900' }}>
@@ -135,7 +135,7 @@ export default function Home() {
 
             <NextLink passHref href="/primitives">
               <Card as="a" variant="ghost" css={{ p: '$5' }}>
-                <Subheading size="5" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
+                <Subheading css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
                   Reset
                 </Subheading>
                 <Paragraph css={{ color: '$gray900' }}>
@@ -147,7 +147,7 @@ export default function Home() {
 
             <NextLink passHref href="/primitives">
               <Card as="a" variant="ghost" css={{ p: '$5' }}>
-                <Subheading size="5" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
+                <Subheading css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
                   Tenplates
                 </Subheading>
                 <Paragraph css={{ color: '$gray900' }}>
@@ -158,7 +158,7 @@ export default function Home() {
             </NextLink>
 
             <Card as="a" variant="ghost" href="#" css={{ p: '$5' }}>
-              <Subheading size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
+              <Subheading css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
                 Icons
               </Subheading>
 
