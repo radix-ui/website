@@ -171,20 +171,33 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
       name: 'selectedId',
       required: false,
       type: 'string',
-      description: 'The id of the selected tab, if controlled.',
+      description: (
+        <span>
+          The <Code>id</Code> of the selected tab, if controlled.
+        </span>
+      ),
     },
     {
       name: 'defaultSelectedId',
       required: false,
       type: 'string',
-      description: 'The id of the tab to select by default, if uncontrolled.',
+      description: (
+        <span>
+          The <Code>id</Code> of the tab to select by default, if uncontrolled.
+        </span>
+      ),
     },
     {
       name: 'onSelect',
       required: false,
       type: '(id: string) => void',
       typeSimple: 'function',
-      description: 'The callback that fires when a new tab is selected.',
+      description: (
+        <span>
+          The callback that fires when a new tab is selected (via mouse or
+          keyboard).
+        </span>
+      ),
     },
     {
       name: 'orientation',
@@ -192,8 +205,13 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
       type: '"horizontal" | "vertical" | undefined',
       typeSimple: 'enum',
       default: '"horizontal"',
-      description:
-        'The orientation in which the tabs are displayed. This is helpful alongside proper visual styles to improve keyboard navigation in the tab list.',
+      description: (
+        <span>
+          The orientation in which the <Code>Tab</Code> elements are displayed.
+          This is helpful alongside proper visual styles to improve keyboard
+          navigation in the tab list.
+        </span>
+      ),
     },
     {
       name: 'activationMode',
@@ -201,16 +219,26 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
       type: '"automatic" | "manual"',
       typeSimple: 'enum',
       default: '"automatic"',
-      description:
-        'Whether a tab is activated automatically when it receives focus, or manually in which case the user must always activate the tab with a click.',
+      description: (
+        <span>
+          Whether a <Code>Tab</Code> is activated automatically when it receives
+          focus, or manually in which case the user must always activate the tab
+          with a click.
+        </span>
+      ),
     },
     {
       name: 'shouldLoop',
       required: false,
       type: 'boolean',
       default: 'true',
-      description:
-        'Whether or not the user loops from the last tab to the first tab when navigating forward via keyboard input, and vice versa.',
+      description: (
+        <span>
+          Whether or not the user loops from the last <Code>Tab</Code> to the
+          first <Code>Tab</Code> when navigating forward via keyboard input, and
+          vice versa.
+        </span>
+      ),
     },
   ]}
 />
@@ -229,23 +257,31 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
       name: 'id',
       required: true,
       type: 'string',
-      description:
-        'An indentifier that pairs a `TabsTab` with its relevant `TabsPanel`. All `TabsTab` components must have unique ids within a `Tabs` component.',
+      description: (
+        <span>
+          An indentifier that pairs a <Code>Tab</Code> with its relevant{' '}
+          <Code>Panel</Code>`. All <Code>Tab</Code> components must have unique
+          ids within a <Code>Tabs</Code> component.
+        </span>
+      ),
     },
     {
       name: 'disabled',
       required: false,
       type: 'boolean',
       default: 'false',
-      description:
-        'Whether or not the component is disabled from user activation.',
+      description: (
+        <span>
+          Whether or not the component is disabled from user activation.
+        </span>
+      ),
     },
   ]}
 />
 
 #### TabsPanel
 
-`TabsPanel` is where the content is displayed when it is activated.
+The component in which here the content is displayed when its `Tab` is activated.
 
 <PropsTable
   data={[
@@ -253,8 +289,13 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
       name: 'id',
       required: true,
       type: 'string',
-      description:
-        'An indentifier that pairs a `TabsPanel` with its relevant `TabsTab`. All `TabsPanel` components must have unique ids within a `Tabs` component.',
+      description: (
+        <span>
+          An indentifier that pairs a <Code>Panel</Code>` with its relevant{' '}
+          <Code>Tab</Code>. All <Code>Panel</Code> components must have unique
+          ids within a <Code>Tabs</Code> component.
+        </span>
+      ),
     },
   ]}
 />
