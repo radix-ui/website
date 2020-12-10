@@ -97,47 +97,76 @@ render(
     {
       name: 'defaultChecked',
       type: 'boolean',
-      description:
-        'The checked state of the `Switch` when it is initially rendered. Use `defaultChecked` if you do not need to control the state of the `Switch`.',
+      description: (
+        <span>
+          The checked state of the <Code>Switch</Code> when it is initially
+          rendered. Use <Code>defaultChecked</Code> if you do not need to
+          control the state of the <Code>Switch</Code>.
+        </span>
+      ),
     },
     {
       name: 'checked',
       type: 'boolean',
-      description:
-        'The controlled checked state of the `Switch`. Must be used in conjunction with `onCheckedChange`.',
+      description: (
+        <span>
+          The controlled checked state of the <Code>Switch</Code>. Must be used
+          in conjunction with <Code>onCheckedChange</Code>.
+        </span>
+      ),
     },
     {
       name: 'onCheckedChange',
       type: '(event: React.ChangeEvent<HTMLInputElement>) => void',
       typeSimple: 'function',
-      description:
-        'The callback that fires when the checked state of the `Switch` changes.',
+      description: (
+        <span>
+          The callback that fires when the checked state of the{' '}
+          <Code>Switch</Code> changes.
+        </span>
+      ),
     },
     {
       name: 'disabled',
       type: 'boolean',
-      description: 'Whether the `Switch` is disabled or not.',
+      description: (
+        <span>
+          Whether or not the <Code>Switch</Code> is disabled or not.
+        </span>
+      ),
     },
     {
       name: 'required',
       type: 'boolean',
-      description: 'Whether this choice is required in a form.',
+      description: (
+        <span>
+          Whether or not the <Code>Switch</Code> is required in a form.
+        </span>
+      ),
     },
     {
       name: 'readOnly',
       type: 'boolean',
-      description:
-        'Whether this `Switch` is read-only and cannot be toggled by the user.',
+      description: (
+        <span>
+          Whether or not the <Code>Switch</Code> is read-only and cannot be
+          toggled by the user.
+        </span>
+      ),
     },
     {
       name: 'value',
       type: 'string',
       default: 'on',
-      description: 'The value behind the `Switch`. Useful in forms.',
+      description: (
+        <span>
+          The value behind the <Code>Switch</Code>. Useful in forms.
+        </span>
+      ),
     },
   ]}
 />
 
 #### SwitchThumb
 
-`SwitchThumb` is the thumb that is used to visually show whether the `Switch` is on or off.
+The thumb that is used to visually show whether the `Switch` is on or off.

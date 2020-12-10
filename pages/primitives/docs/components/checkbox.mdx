@@ -138,14 +138,18 @@ render(
     {
       name: 'required',
       type: 'boolean',
-      description: 'Whether or not the input is required in a form.',
+      description: (
+        <span>
+          Whether or not the <Code>Checkbox</Code> is required in a form.
+        </span>
+      ),
     },
     {
       name: 'readOnly',
       type: 'boolean',
       description: (
         <span>
-          Whether or not this <Code>Checkbox</Code> is read-only and cannot be
+          Whether or not the <Code>Checkbox</Code> is read-only and cannot be
           toggled by the user.
         </span>
       ),
@@ -165,7 +169,7 @@ render(
 
 #### CheckboxIndicator
 
-`CheckboxIndicator` will render when the `Checkbox` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
+Renders when the `Checkbox` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
 
 <PropsTable
   data={[
