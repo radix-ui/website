@@ -346,7 +346,95 @@ render(
 
 ### Accessibility
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space', 'Enter'],
+      description: (
+        <span>
+          When focus is on a <Code>Button</Code> of a collapsed section, expands
+          the section.
+        </span>
+      ),
+    },
+    {
+      keys: ['Tab'],
+      description: (
+        <ul>
+          <li>
+            <span>Moves focus to the next focusable element.</span>
+          </li>
+          <li>
+            All focusable elements in the <Code>Accordion</Code> are included in
+            the page <Code>Tab</Code> sequence.
+          </li>
+        </ul>
+      ),
+    },
+    {
+      keys: ['Shift + Tab'],
+      description: (
+        <ul>
+          <li>Moves focus to the previous focusable element.</li>
+          <li>
+            All focusable elements in the <Code>Accordion</Code> are included in
+            the page <Code>Tab</Code> sequence.
+          </li>
+        </ul>
+      ),
+    },
+    {
+      keys: ['ArrowDown'],
+      description: (
+        <ul>
+          <li>
+            When focus is on a <Code>Button</Code>, moves focus to the next{' '}
+            <Code>Button</Code>.
+          </li>
+          <li>
+            When focus is on the last <Code>Button</Code>, moves focus to the
+            first <Code>Button</Code>.
+          </li>
+        </ul>
+      ),
+    },
+    {
+      keys: ['ArrowUp'],
+      description: (
+        <ul>
+          <li>
+            When focus is on a <Code>Button</Code>, moves focus to the previous{' '}
+            <Code>Button</Code>.
+          </li>
+          <li>
+            When focus is on the first <Code>Button</Code>, moves focus to the
+            last <Code>Button</Code>.
+          </li>
+        </ul>
+      ),
+    },
+    {
+      keys: ['Home'],
+      description: (
+        <span>
+          When focus is on a <Code>Button</Code>, moves focus to the first{' '}
+          <Code>Button</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['End'],
+      description: (
+        <span>
+          When focus is on a <Code>Button</Code>, moves focus to the last{' '}
+          <Code>Button</Code>.
+        </span>
+      ),
+    },
+  ]}
+/>
 
 ### API Reference
 
