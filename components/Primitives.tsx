@@ -15,6 +15,6 @@ export * as ScrollAreaPrimitive from '@interop-ui/react-scroll-area';
 export { Separator } from '@interop-ui/react-separator';
 export { Slider as SliderPrimitive } from '@interop-ui/react-slider';
 export { Switch } from '@interop-ui/react-switch';
-export { Tabs } from '@interop-ui/react-tabs';
+export { Tabs as TabsPrimitive } from '@interop-ui/react-tabs';
 export { ToggleButton } from '@interop-ui/react-toggle-button';
 export { Tooltip as TooltipPrimitive } from '@interop-ui/react-tooltip';
