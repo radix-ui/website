@@ -536,6 +536,16 @@
   dependencies:
     "@interop-ui/react-utils" "0.0.1-14"
 
+"@interop-ui/react-dropdown-menu@0.0.1-1":
+  version "0.0.1-1"
+  resolved "https://registry.yarnpkg.com/@interop-ui/react-dropdown-menu/-/react-dropdown-menu-0.0.1-1.tgz#43318ae3aac5ec2de8627581100ec3009776278d"
+  integrity sha512-J8vjzhxfZl3KsjL/QEnffIv5WLqZkrAesHImKEmOsmbxwTFzjPRWFgcgGdCfXFIS2O7RgCbye6dxFPYNwGxkVg==
+  dependencies:
+    "@interop-ui/react-menu" "0.0.1-2"
+    "@interop-ui/react-polymorphic" "0.0.1-1"
+    "@interop-ui/react-utils" "0.0.1-14"
+    "@interop-ui/utils" "0.0.1-6"
+
 "@interop-ui/react-focus-guards@0.0.1-1":
   version "0.0.1-1"
   resolved "https://registry.yarnpkg.com/@interop-ui/react-focus-guards/-/react-focus-guards-0.0.1-1.tgz#421bd5a89e8692d68146c2fc43f8d0dc89b7af43"
@@ -579,6 +589,24 @@
     "@interop-ui/react-polymorphic" "0.0.1-1"
     "@interop-ui/react-utils" "0.0.1-14"
     "@interop-ui/utils" "0.0.1-6"
+
+"@interop-ui/react-menu@0.0.1-2":
+  version "0.0.1-2"
+  resolved "https://registry.yarnpkg.com/@interop-ui/react-menu/-/react-menu-0.0.1-2.tgz#8de6d9062c5007f23d83156fd4c76afb8cda3173"
+  integrity sha512-mIDIA87XeEBjJdwkiUgkFmVHqK7FhIPvyE2QY3NAU8Q81pFS143l6jBW17Zq4zLIR/UmC9BFGkecnutZ9QsEOg==
+  dependencies:
+    "@interop-ui/react-dismissable-layer" "0.0.1-5"
+    "@interop-ui/react-focus-guards" "0.0.1-2"
+    "@interop-ui/react-focus-scope" "0.0.1-5"
+    "@interop-ui/react-polymorphic" "0.0.1-1"
+    "@interop-ui/react-popper" "0.0.1-13"
+    "@interop-ui/react-portal" "0.0.1-14"
+    "@interop-ui/react-presence" "0.0.1-0"
+    "@interop-ui/react-roving-focus" "0.0.1-1"
+    "@interop-ui/react-utils" "0.0.1-14"
+    "@interop-ui/utils" "0.0.1-6"
+    aria-hidden "^1.1.1"
+    react-remove-scroll "^2.4.0"
 
 "@interop-ui/react-polymorphic@0.0.1-1":
   version "0.0.1-1"
