@@ -32,6 +32,7 @@ import * as RadioGroupPrimitive from '@interop-ui/react-radio-group';
 
 const Radio = styled(RadioGroupPrimitive.Item, {
   appearance: 'none',
+  backgroundColor: 'transparent',
   border: 'none',
   padding: 0,
   borderRadius: '50%',
@@ -47,7 +48,7 @@ const Radio = styled(RadioGroupPrimitive.Item, {
 
   '&:focus': {
     outline: 'none',
-    boxShadow: 'inset 0 0 0 2px dodgerblue',
+    boxShadow: 'inset 0 0 0 1px dodgerblue, 0 0 0 1px dodgerblue',
   },
 });
 

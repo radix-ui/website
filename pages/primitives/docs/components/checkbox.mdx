@@ -32,17 +32,18 @@ import * as CheckboxPrimitive from '@interop-ui/react-checkbox';
 
 const Checkbox = styled(CheckboxPrimitive, {
   appearance: 'none',
+  backgroundColor: 'transparent',
   border: 'none',
   padding: 0,
   boxShadow: 'inset 0 0 0 1px gainsboro',
   overflow: 'hidden',
   width: 15,
   height: 15,
-  borderRadius: 15,
+  borderRadius: 2,
 
   '&:focus': {
     outline: 'none',
-    boxShadow: 'inset 0 0 0 2px dodgerblue',
+    boxShadow: 'inset 0 0 0 1px dodgerblue, 0 0 0 1px dodgerblue',
   },
 });
 
