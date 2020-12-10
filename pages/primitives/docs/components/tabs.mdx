@@ -1,5 +1,215 @@
 ---
-title: 'Tabs'
+title: Tabs
+name: tabs
+description: An interface of layered content where activated by tab buttons.
+features:
+  - Full keyboard navigation.
+  - Can be controlled or uncontrolled.
 ---
 
-Tabs Primitive. Coming soon.
+### Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-tabs
+```
+
+Then import the component in your component file.
+
+```jsx
+// Tabs.tsx
+import * as TabsPrimitive from '@interop-ui/react-tabs';
+```
+
+### Basic example
+
+Create your styled tabs component from the tabs primitives.
+
+```jsx live manual
+// Tabs.tsx
+// import * as TabsPrimitive from '@interop-ui/react-tabs';
+
+const Tabs = styled(TabsPrimitive, {
+  width: '20rem',
+  maxWidth: '100%',
+});
+
+const TabsList = styled(TabsPrimitive.List, {
+  flexShrink: 0,
+  display: 'flex',
+  '&[data-orientation="horizontal"]': {
+    flexDirection: 'row',
+    borderBottom: '1px solid $gray500',
+  },
+  '&[data-orientation="vertical"]': {
+    flexDirection: 'column',
+    borderRight: '1px solid $gray500',
+  },
+});
+
+const TabsTab = styled(TabsPrimitive.Tab, {
+  flexShrink: 0,
+  padding: '0.4em 0.6em',
+  fontWeight: '500',
+  lineHeight: '1',
+  userSelect: 'none',
+
+  '&[data-orientation="horizontal"]': {
+    borderBottom: '4px solid var(--border-color, transparent)',
+  },
+
+  '&[data-orientation="vertical"]': {
+    borderRight: '4px solid var(--border-color, transparent)',
+  },
+
+  '&:focus': {
+    '--border-color': '$black',
+    outline: '1px solid var(--border-color)',
+  },
+
+  '&[data-disabled]': {
+    color: '$gray300',
+  },
+
+  '&[data-state="active"]': {
+    '--border-color': '$red500',
+  },
+});
+
+const TabsPanel = styled(TabsPrimitive.Panel, {
+  flexGrow: 1,
+  padding: '1em',
+  border: '1px solid $gray200',
+});
+
+render(
+  <Tabs defaultSelectedId="tab1">
+    <TabsList aria-label="tabs example">
+      <TabsTab id="tab1">Tab 1</TabsTab>
+      <TabsTab id="tab2" disabled>
+        Tab 2
+      </TabsTab>
+      <TabsTab id="tab3">Tab 3</TabsTab>
+    </TabsList>
+    <TabsPanel id="tab1">
+      Dis metus rhoncus sit convallis sollicitudin vel cum, hac purus tincidunt
+      eros sem himenaeos integer, faucibus varius nullam nostra bibendum
+      consectetur mollis, gravida elementum pellentesque volutpat dictum ipsum.
+    </TabsPanel>
+    <TabsPanel id="tab2">You'll never find me!</TabsPanel>
+    <TabsPanel id="tab3">
+      Ut nisi elementum metus semper mauris dui fames accumsan aenean, maecenas
+      ac sociis dolor quam tempus pretium.
+    </TabsPanel>
+  </Tabs>
+);
+```
+
+### Examples
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+### Accessibility
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+### API Reference
+
+#### Tabs
+
+`Tabs` is the root component.
+
+<PropsTable
+  data={[
+    {
+      name: 'selectedId',
+      required: false,
+      type: 'string',
+      description: 'The id of the selected tab, if controlled.',
+    },
+    {
+      name: 'defaultSelectedId',
+      required: false,
+      type: 'string',
+      description: 'The id of the tab to select by default, if uncontrolled.',
+    },
+    {
+      name: 'onSelect',
+      required: false,
+      type: '(id: string) => void',
+      typeSimple: 'function',
+      description: 'The callback that fires when a new tab is selected.',
+    },
+    {
+      name: 'orientation',
+      required: false,
+      type: '"horizontal" | "vertical" | undefined',
+      typeSimple: 'enum',
+      default: '"horizontal"',
+      description:
+        'The orientation in which the tabs are displayed. This is helpful alongside proper visual styles to improve keyboard navigation in the tab list.',
+    },
+    {
+      name: 'activationMode',
+      required: false,
+      type: '"automatic" | "manual"',
+      typeSimple: 'enum',
+      default: '"automatic"',
+      description:
+        'Whether a tab is activated automatically when it receives focus, or manually in which case the user must always activate the tab with a click.',
+    },
+    {
+      name: 'shouldLoop',
+      required: false,
+      type: 'boolean',
+      default: 'true',
+      description:
+        'Whether or not the user loops from the last tab to the first tab when navigating forward via keyboard input, and vice versa.',
+    },
+  ]}
+/>
+
+#### TabsList
+
+`TabsList` displays the `TabsTab` components aligned along the edge of the active `TabsPanel`.
+
+#### TabsTab
+
+`TabsTab` is the button that activates its relative `TabsPanel`.
+
+<PropsTable
+  data={[
+    {
+      name: 'id',
+      required: true,
+      type: 'string',
+      description:
+        'An indentifier that pairs a `TabsTab` with its relevant `TabsPanel`. All `TabsTab` components must have unique ids within a `Tabs` component.',
+    },
+    {
+      name: 'disabled',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Whether or not the component is disabled from user activation.',
+    },
+  ]}
+/>
+
+#### TabsPanel
+
+`TabsPanel` is where the content is displayed when it is activated.
+
+<PropsTable
+  data={[
+    {
+      name: 'id',
+      required: true,
+      type: 'string',
+      description:
+        'An indentifier that pairs a `TabsPanel` with its relevant `TabsTab`. All `TabsPanel` components must have unique ids within a `Tabs` component.',
+    },
+  ]}
+/>
