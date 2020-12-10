@@ -448,8 +448,12 @@ render(
       name: 'value',
       required: false,
       type: 'string',
-      description:
-        'The controlled stateful value of the accordion item whose panel is expanded.',
+      description: (
+        <span>
+          The controlled value of the <Code>Item</Code> whose panel is expanded.
+          Must be used in conjunction with <Code>onChange</Code>.
+        </span>
+      ),
     },
     {
       name: 'defaultValue',
@@ -457,9 +461,10 @@ render(
       type: 'string',
       description: (
         <span>
-          The value of the item whose panel is expanded when the accordion is
-          initially rendered. Use <Code>defaultValue</Code> if you do not need to control
-          the state of an accordion.
+          The value of the <Code>Item</Code> whose panel is expanded when the{' '}
+          <Code>Accordion</Code> is initially rendered. Use{' '}
+          <Code>defaultValue</Code> if you do not need to control the state of
+          an <Code>Accordion</Code>.
         </span>
       ),
     },
@@ -468,16 +473,24 @@ render(
       required: false,
       type: 'boolean',
       default: 'false',
-      description:
-        'Whether or not an accordion is disabled from user interaction.',
+      description: (
+        <span>
+          Whether or not an <Code>Accordion</Code> is disabled from user
+          interaction.
+        </span>
+      ),
     },
     {
       name: 'onChange',
       required: false,
       type: '(value: string) => void',
       typeSimple: 'function',
-      description:
-        'The callback that fires when the state of the accordion changes.',
+      description: (
+        <span>
+          The callback that fires when the state of the <Code>Accordion</Code>{' '}
+          changes.
+        </span>
+      ),
     },
   ]}
 />
@@ -493,15 +506,22 @@ The component that contains all of the parts of a collapsible section inside of 
       required: false,
       type: 'boolean',
       default: 'false',
-      description:
-        'Whether or not an accordion item is disabled from user interaction.',
+      description: (
+        <span>
+          Whether or not an <Code>Item</Code> is disabled from user interaction.
+        </span>
+      ),
     },
     {
       name: 'value',
       required: true,
       type: 'string',
-      description:
-        'A string value for the accordion item. All items within an accordion should use a unique value.',
+      description: (
+        <span>
+          A string value for the <Code>Item</Code>. All items within an{' '}
+          <Code>Accordion</Code> should use a unique value.
+        </span>
+      ),
     },
   ]}
 />
