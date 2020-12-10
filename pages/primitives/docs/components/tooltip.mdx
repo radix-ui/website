@@ -26,7 +26,8 @@ import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 ```jsx live manual
 // Tooltip.tsx
 // import * as TooltipPrimitive from '@radix-ui/react-tooltip';
-// import { Button } from '@radix-ui/ds-button'
+// import { IconButton } from '@radix-ui/ds-button'
+// import { BlendingModeIcon } from '@modulz/radix-icons'
 
 const TooltipContent = styled(TooltipPrimitive.Content, {
   borderRadius: 3,
@@ -38,10 +39,11 @@ const TooltipContent = styled(TooltipPrimitive.Content, {
 
 render(
   <TooltipPrimitive>
-    <TooltipPrimitive.Trigger as={Button}>Hover me</TooltipPrimitive.Trigger>
-
+    <TooltipPrimitive.Trigger as={IconButton}>
+      <BlendingModeIcon aria-label="Blending mode" />
+    </TooltipPrimitive.Trigger>
     <TooltipPrimitive.Popper side="top">
-      <TooltipContent>Tooltip content</TooltipContent>
+      <TooltipContent>Blending mode</TooltipContent>
       <TooltipPrimitive.Arrow style={{ fill: 'gainsboro' }} />
     </TooltipPrimitive.Popper>
   </TooltipPrimitive>
