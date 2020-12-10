@@ -112,7 +112,81 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 ### Accessibility
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Tab'],
+      description: (
+        <ul>
+          <li>
+            When focus moves into the <Code>List</Code>, places focus on the
+            active <Code>Tab</Code>.
+          </li>
+          <li>
+            When the <Code>List</Code> contains focus, moves focus to{' '}
+            <Code>Panel</Code>.
+          </li>
+        </ul>
+      ),
+    },
+    {
+      keys: ['ArrowRight', 'ArrowDown'],
+      description: (
+        <ul>
+          <li>
+            Moves focus to the next <Code>Tab</Code> depending on{' '}
+            <Code>orientation</Code>.
+          </li>
+          <li>
+            If focus is on the last <Code>Tab</Code>, moves focus to the first{' '}
+            <Code>Tab</Code> depending on <Code>orientation</Code>.
+          </li>
+          <li>
+            Activates the associated <Code>Panel</Code>.
+          </li>
+        </ul>
+      ),
+    },
+    {
+      keys: ['ArrowLeft', 'ArrowUp'],
+      description: (
+        <ul>
+          <li>
+            Moves focus to the previous <Code>Tab</Code> depending on{' '}
+            <Code>orientation</Code>.
+          </li>
+          <li>
+            If focus is on the first <Code>Tab</Code>, moves focus to the last{' '}
+            <Code>Tab</Code> depending on <Code>orientation</Code>.
+          </li>
+          <li>
+            Activates the associated <Code>Panel</Code>.
+          </li>
+        </ul>
+      ),
+    },
+    {
+      keys: ['Home'],
+      description: (
+        <span>
+          Moves focus to the first <Code>Tab</Code> and activates its associated{' '}
+          <Code>Panel</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['End'],
+      description: (
+        <span>
+          Moves focus to the last <Code>Tab</Code> and activates its associated{' '}
+          <Code>Panel</Code>.
+        </span>
+      ),
+    },
+  ]}
+/>
 
 ### API Reference
 

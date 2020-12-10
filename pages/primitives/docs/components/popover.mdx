@@ -52,6 +52,61 @@ render(
 );
 ```
 
+### Accessibility
+
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space', 'Enter'],
+      description: (
+        <ul>
+          <li>
+            When focus is on <Code>Trigger</Code>, opens <Code>Popper</Code>.
+          </li>
+          <li>
+            When focus is on <Code>Close</Code>, closes <Code>Popper</Code> and
+            moves focus to <Code>Trigger</Code>.
+          </li>
+        </ul>
+      ),
+    },
+    {
+      keys: ['Tab'],
+      description: (
+        <ul>
+          <li>Moves focus to the next focusable element.</li>
+          <li>
+            When focus is on the last focusable element within{' '}
+            <Code>Popper</Code>, moves focus to the first focusable element.
+          </li>
+        </ul>
+      ),
+    },
+    {
+      keys: ['Shift + Tab'],
+      description: (
+        <ul>
+          <li>Moves focus to the previous focusable element.</li>
+          <li>
+            When focus is on the first focusable element within{' '}
+            <Code>Popper</Code>, moves focus to the last focusable element.
+          </li>
+        </ul>
+      ),
+    },
+    {
+      keys: ['Esc'],
+      description: (
+        <span>
+          Closes <Code>Popper</Code> and moves focus to <Code>Trigger</Code>.
+        </span>
+      ),
+    },
+  ]}
+/>
+
 ### API Reference
 
 #### Popover
