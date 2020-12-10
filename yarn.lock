@@ -437,6 +437,15 @@
     "@interop-ui/react-utils" "0.0.1-12"
     "@interop-ui/utils" "0.0.1-4"
 
+"@interop-ui/react-aspect-ratio@0.0.1-13":
+  version "0.0.1-13"
+  resolved "https://registry.yarnpkg.com/@interop-ui/react-aspect-ratio/-/react-aspect-ratio-0.0.1-13.tgz#f86332a245d35ed507dc62290c03d8ff35e4635e"
+  integrity sha512-uvhyxpWJtFS13iDWuOgBkLRDUSztW0oJFpPD2CzsF0JUNB+3xAo4jNLuD3Mh/hGgcE5SFSh2sDFYttgUHzinbA==
+  dependencies:
+    "@interop-ui/react-polymorphic" "0.0.1-0"
+    "@interop-ui/react-utils" "0.0.1-13"
+    "@interop-ui/utils" "0.0.1-5"
+
 "@interop-ui/react-avatar@0.0.1-12":
   version "0.0.1-12"
   resolved "https://registry.yarnpkg.com/@interop-ui/react-avatar/-/react-avatar-0.0.1-12.tgz#57a48d10dceb28c751f1a7daba28493bf528dd00"
