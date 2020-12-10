@@ -179,6 +179,7 @@ export function CodeBlock({
       css,
       // Always expose the the following
       Button: DS.Button,
+      IconButton: DS.IconButton,
     },
     noInline: manual,
     ...props,

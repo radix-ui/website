@@ -1,6 +1,73 @@
 ---
-title: 'Aspect Ratio'
-status: 'deprecated'
+title: Aspect Ratio
+name: aspect-ratio
+version: 0.0.1-13
+description: Useful to keep your content within a desired ratio.
 ---
 
-Aspect Ratio Primitive. Coming soon.
+### Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-aspect-ratio
+```
+
+Then import the component in your component file.
+
+```jsx
+// Avatar.tsx
+import * as AspectRatioPrimitive from '@interop-ui/react-aspect-ratio';
+```
+
+### Basic example
+
+```jsx live manual
+// AspectRatio.tsx
+// import * as AspectRatioPrimitive from '@interop-ui/react-aspect-ratio';
+
+render(
+  <AspectRatioPrimitive>
+    <img
+      src="https://images.unsplash.com/photo-1605030753481-bb38b08c384a?&auto=format&fit=crop&w=800&q=80"
+      alt="mountain view"
+    />
+  </AspectRatioPrimitive>
+);
+```
+
+### Examples
+
+#### 16 by 9 ratio
+
+```jsx live manual compact
+// AspectRatio.tsx
+// import * as AspectRatioPrimitive from '@interop-ui/react-aspect-ratio';
+
+render(
+  <AspectRatioPrimitive ratio={16 / 9}>
+    <img
+      src="https://images.unsplash.com/photo-1605030753481-bb38b08c384a?&auto=format&fit=crop&w=800&q=80"
+      alt="mountain view"
+      style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+    />
+  </AspectRatioPrimitive>
+);
+```
+
+### API Reference
+
+#### AspectRatio
+
+`AspectRatio` is the root component.
+
+<PropsTable
+  data={[
+    {
+      name: 'ratio',
+      type: 'number',
+      default: '1',
+      description: 'The desired ratio',
+    },
+  ]}
+/>

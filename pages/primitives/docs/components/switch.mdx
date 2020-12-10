@@ -1,0 +1,61 @@
+---
+title: 'Switch'
+---
+
+Switch Primitive. Coming soon.
+
+### API Reference
+
+#### Switch
+
+`Switch` is the root component.
+
+<PropsTable
+  data={[
+    {
+      name: 'defaultChecked',
+      type: 'boolean',
+      description:
+        'The checked state of the `Switch` when it is initially rendered. Use `defaultChecked` if you do not need to control the state of the `Switch`.',
+    },
+    {
+      name: 'checked',
+      type: 'boolean',
+      description:
+        'The controlled checked state of the `Switch`. Must be used in conjunction with `onCheckedChange`.',
+    },
+    {
+      name: 'onCheckedChange',
+      type: '(event: React.ChangeEvent<HTMLInputElement>) => void',
+      typeSimple: 'function',
+      description:
+        'The callback that fires when the checked state of the `Switch` changes.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      description: 'Whether the `Switch` is disabled or not.',
+    },
+    {
+      name: 'required',
+      type: 'boolean',
+      description: 'Whether this choice is required in a form.',
+    },
+    {
+      name: 'readOnly',
+      type: 'boolean',
+      description:
+        'Whether this `Switch` is read-only and cannot be toggled by the user.',
+    },
+    {
+      name: 'value',
+      type: 'string',
+      default: 'on',
+      description: 'The value behind the `Switch`. Useful in forms.',
+    },
+  ]}
+/>
+
+#### SwitchThumb
+
+`SwitchThumb` is the thumb that is used to visually show whether the `Switch` is on or off.
