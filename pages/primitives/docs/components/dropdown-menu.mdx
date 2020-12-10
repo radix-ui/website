@@ -3,3 +3,329 @@ title: 'Dropdown Menu'
 ---
 
 Dropdown Menu Primitive. Coming soon.
+
+### API Reference
+
+#### DropdownMenu
+
+`DropdownMenu` is the root component.
+
+<PropsTable
+  data={[
+    {
+      name: 'defaultIsOpen',
+      type: 'boolean',
+      description:
+        'The open state of the `DropdownMenu` when it is initially rendered. Use `defaultIsOpen` if you do not need to control the state of an `DropdownMenu`.',
+    },
+    {
+      name: 'isOpen',
+      type: 'boolean',
+      description:
+        'The controlled open state of the `DropdownMenu`. Must be used in conjunction with `onIsOpenChange`.',
+    },
+    {
+      name: 'onIsOpenChange',
+      type: '(isOpen: boolean) => void',
+      typeSimple: 'function',
+      description:
+        'The callback that fires when the state of the `DropdownMenu` changes.',
+    },
+    {
+      name: 'id',
+      type: 'string',
+      description:
+        'A unique identifier for the `DropdownMenu` component. The `id` is used to generate DOM id attributes for nested components. If no `id` prop is provided, a generated id will be used.',
+    },
+  ]}
+/>
+
+#### DropdownMenuTrigger
+
+`DropdownMenuTrigger` is the button that triggers the `DropdownMenu`. It is also used as the anchor the `DropdownMenuPopper` is positioned against.
+
+#### DropdownMenuPopper
+
+`DropdownMenuPopper` is the component that pops out in an open `DropdownMenu`.
+
+<PropsTable
+  data={[
+    {
+      name: 'disableOutsidePointerEvents',
+      type: 'boolean',
+      default: 'false',
+      description:
+        'When `true`, hover/focus/click interactions will be disabled on elements outside the `DropdownMenuPopper`. Users will need to click twice on outside elements to interact with them: Once to close the `DropdownMenu`, and again to trigger the element.',
+    },
+    {
+      name: 'onEscapeKeyDown',
+      type: '(event: KeyboardEvent) => void',
+      typeSimple: 'function',
+      description:
+        'Event handler called when the escape key is down. It can be prevented by calling `event.preventDefault`',
+    },
+    {
+      name: 'onPointerDownOutside',
+      type: '(event: MouseEvent | TouchEvent) => void',
+      typeSimple: 'function',
+      description:
+        'Event handler called when the a pointer event happens outside of the `DropdownMenuPopper`. It can be prevented by calling `event.preventDefault`.',
+    },
+    {
+      name: 'onInteractOutside',
+      type: '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
+      typeSimple: 'function',
+      description:
+        'Event handler called when an interaction happens outside the `DropdownMenuPopper`. Specifically, when a pointer event happens outside of the `DropdownMenuPopper` or focus moves outside of it. It can be prevented by calling `event.preventDefault`.',
+    },
+    {
+      name: 'disableOutsideScroll',
+      type: 'boolean',
+      default: 'true',
+      description:
+        'Whether scrolling outside the `DropdownMenuPopper` should be prevented.',
+    },
+    {
+      name: 'shouldPortal',
+      type: 'boolean',
+      default: 'true',
+      description:
+        'Whether the `DropdownMenuPopper` should render in a `Portal`.',
+    },
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description:
+        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+    },
+    {
+      name: 'anchorRef',
+      type: 'React.RefObject<MeasurableElement>',
+      typeSimple: 'ref',
+      description:
+        'An optional ref to an element to be used as the anchor for the `DropdownMenuPopper`. By default, it will use `DropdownMenuTrigger` as anchor element.',
+    },
+    {
+      name: 'side',
+      type: 'top | right | bottom |left',
+      typeSimple: 'enum',
+      default: 'bottom',
+      description:
+        'The desired side to place the `DropdownMenuPopper` against `DropdownMenuTrigger`. May switch in case of collisions.',
+    },
+    {
+      name: 'sideOffset',
+      type: 'number',
+      default: '0',
+      description: 'The side offset for the `DropdownMenuPopper`',
+    },
+    {
+      name: 'align',
+      type: 'start | center | end',
+      typeSimple: 'enum',
+      default: 'center',
+      description:
+        'How to align the `DropdownMenuPopper` against `DropdownMenuTrigger`. May switch in case of collisions.',
+    },
+    {
+      name: 'alignOffset',
+      type: 'number',
+      default: '0',
+      description: 'The align offset for the `DropdownMenuPopper`',
+    },
+    {
+      name: 'shouldAvoidCollisions',
+      type: 'boolean',
+      default: 'true',
+      description:
+        'Whether or not collisions with window edges should be avoided. When turned on, this will result in the `DropdownMenuPopper` flipping its side and alignment accordingly.',
+    },
+    {
+      name: 'collisionTolerance',
+      type: 'boolean',
+      default: '0',
+      description:
+        'The tolerance within which the `DropdownMenuPopper` is to be checked against window edges.',
+    },
+  ]}
+/>
+
+#### DropdownMenuArrow
+
+`DropdownMenuArrow` is the optional arrow element to render for the `DropdownMenu`. This can be used to help visually link the `DropdownMenuTrigger` with the `DropdownMenuPopper`. Must live inside `DropdownMenuPopper`.
+
+<PropsTable
+  data={[
+    {
+      name: 'width',
+      type: 'number',
+      default: 10,
+      description: 'The width of the `DropdownMenuArrow`.',
+    },
+    {
+      name: 'height',
+      type: 'number',
+      default: 5,
+      description: 'The height of the `DropdownMenuArrow`.',
+    },
+    {
+      name: 'offset',
+      type: 'number',
+      default: 0,
+      description:
+        'The offset of the `DropdownMenuArrow` along the edge of `DropdownMenuPopper`.',
+    },
+  ]}
+/>
+
+#### DropdownMenuItem
+
+`DropdownMenuItem` is used to render items in the `DropdownMenu`.
+
+<PropsTable
+  data={[
+    {
+      name: 'disabled',
+      type: 'boolean',
+      description:
+        'Whether the item is disabled. If so it will not be clickable and will not be focusable using arrow keys',
+    },
+    {
+      name: 'onSelect',
+      type: '(event: Event) => void',
+      typeSimple: 'function',
+      description:
+        'The callback that fires when a `DropdownMenuItem` is selected (via mouse or keyboard). Calling `event.preventDefault() in this handler will prevent the `DropdownMenu` from closing when selecting that item.',
+    },
+    {
+      name: 'textValue',
+      type: 'string',
+      description:
+        'An optional text used for typeahead purpose. By default the typeahead behavior will use the `.textContent` of `MenuItem`. Use this when the content inside the `MenuItem` is too complex, or you have non-textual content inside.',
+    },
+  ]}
+/>
+
+#### DropdownMenuGroup
+
+`DropdownMenuGroup` is used to group multiple `DropdownMenuItem`.
+
+#### DropdownMenuLabel
+
+`DropdownMenuLabel` is used to render a label. It won't be focusable using arrow keys.
+
+#### DropdownMenuCheckboxItem
+
+`DropdownMenuCheckboxItem` is a more specific `DropdownMenuItem` which can be controlled like a `Checkbox` and also has an indicator (`DropdownMenuItemIndicator`). This conceptually functions like a standard `Checkbox`.
+
+<PropsTable
+  data={[
+    {
+      name: 'checked',
+      type: 'boolean',
+      description:
+        'The controlled checked state of the `DropdownMenuCheckboxItem`. Must be used in conjunction with `onCheckedChange`.',
+    },
+    {
+      name: 'onCheckedChange',
+      type: '(checked: boolean) => void',
+      typeSimple: 'function',
+      description:
+        'The callback that fires when the checked state of the `DropdownMenuCheckboxItem` changes.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      description:
+        'Whether the item is disabled. If so it will not be clickable and will not be focusable using arrow keys',
+    },
+    {
+      name: 'onSelect',
+      type: '(event: Event) => void',
+      typeSimple: 'function',
+      description:
+        'The callback that fires when a `DropdownMenuItem` is selected (via mouse or keyboard). Calling `event.preventDefault() in this handler will prevent the `DropdownMenu` from closing when selecting that item.',
+    },
+    {
+      name: 'textValue',
+      type: 'string',
+      description:
+        'An optional text used for typeahead purpose. By default the typeahead behavior will use the `.textContent` of `MenuItem`. Use this when the content inside the `MenuItem` is too complex, or you have non-textual content inside.',
+    },
+  ]}
+/>
+
+#### DropdownMenuRadioGroup
+
+`DropdownMenuRadioGroup` is a more specific `DropdownMenuGroup` which also handles a value out of multiple potential `DropdownMenuRadioItem`. This conceptually functions like a standard `RadioGroup`.
+
+<PropsTable
+  data={[
+    {
+      name: 'value',
+      type: 'string',
+      description:
+        'The value of the selected `DropdownMenuRadioItem` in this `DropdownMenuRadioGroup`',
+    },
+    {
+      name: 'onValueChange',
+      type: '(value: string) => void',
+      typeSimple: 'function',
+      description:
+        'The callback that fires when the selected `DropdownMenuRadioItem` changes.',
+    },
+  ]}
+/>
+
+#### DropdownMenuRadioItem
+
+`DropdownMenuRadioItem` is a more specific `DropdownMenuItem` which conceptually acts like a standard `Radio`. It has an indicator (`DropdownMenuItemIndicator`).
+
+<PropsTable
+  data={[
+    {
+      name: 'value',
+      type: 'string',
+      required: true,
+      description: 'The value for this `DropdownMenuRadioItem`.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      description:
+        'Whether the item is disabled. If so it will not be clickable and will not be focusable using arrow keys',
+    },
+    {
+      name: 'onSelect',
+      type: '(event: Event) => void',
+      typeSimple: 'function',
+      description:
+        'The callback that fires when a `DropdownMenuItem` is selected (via mouse or keyboard). Calling `event.preventDefault() in this handler will prevent the `DropdownMenu` from closing when selecting that item.',
+    },
+    {
+      name: 'textValue',
+      type: 'string',
+      description:
+        'An optional text used for typeahead purpose. By default the typeahead behavior will use the `.textContent` of `MenuItem`. Use this when the content inside the `MenuItem` is too complex, or you have non-textual content inside.',
+    },
+  ]}
+/>
+
+#### DropdownMenuItemIndicator
+
+`DropdownMenuItemIndicator` will render when the parent `DropdownMenuCheckboxItem` or `DropdownMenuRadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
+
+<PropsTable
+  data={[
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description:
+        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+    },
+  ]}
+/>
+
+#### DropdownMenuSeparator
+
+`DropdownMenuSeparator` is used to visually separate items in a `DropdownMenu`.
