@@ -1,8 +1,40 @@
 ---
-title: 'Separator'
+title: Separator
+name: separator
+version: 0.0.1
+description: A primitive useful for separating things.
 ---
 
-Separator Primitive. Coming soon.
+### Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-separator
+```
+
+Then import the component in your component file.
+
+```jsx
+// Separator.tsx
+import * as SeparatorPrimitive from '@radix-ui/react-separator';
+```
+
+### Basic example
+
+Create your styled separator component from the separator primitive.
+
+```jsx live manual
+// Separator.tsx
+// import * as SeparatorPrimitive from '@radix-ui/react-separator';
+
+const Separator = styled(SeparatorPrimitive, {
+  backgroundColor: 'gainsboro',
+  height: 1,
+});
+
+render(<Separator />);
+```
 
 ### API Reference
 

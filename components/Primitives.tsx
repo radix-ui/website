@@ -12,7 +12,7 @@ export { Popover as PopoverPrimitive } from '@interop-ui/react-popover';
 export { ProgressBar as ProgressBarPrimitive } from '@interop-ui/react-progress-bar';
 export { RadioGroup as RadioGroupPrimitive } from '@interop-ui/react-radio-group';
 export * as ScrollAreaPrimitive from '@interop-ui/react-scroll-area';
-export { Separator } from '@interop-ui/react-separator';
+export { Separator as SeparatorPrimitive } from '@interop-ui/react-separator';
 export { Slider as SliderPrimitive } from '@interop-ui/react-slider';
 export { Switch } from '@interop-ui/react-switch';
 export { Tabs as TabsPrimitive } from '@interop-ui/react-tabs';
