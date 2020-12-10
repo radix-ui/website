@@ -1,5 +1,5 @@
 ---
-title: ScrollArea
+title: Scroll Area
 name: scroll-area
 version: 0.0.1-13
 description: Useful for scrolling content with custom scrollbars.
@@ -92,12 +92,10 @@ render(
       <Viewport>
         <div
           style={{
-            height: '5000px',
-            // width: '100%', expected this to work
-            width: 200,
+            width: 200, // why cant I do 100% here?
+            height: 1000,
             backgroundImage:
-              'linear-gradient(0deg, hsl(226,68%,56%) 0%, hsl(272,53%,50%) 50%, hsl(226,68%,56%) 100%)',
-            backgroundSize: '100% 100px',
+              'repeating-linear-gradient(0deg, dodgerblue, dodgerblue 10px, transparent 10px, transparent 20px)',
           }}
         />
       </Viewport>
