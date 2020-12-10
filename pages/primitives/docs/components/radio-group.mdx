@@ -1,8 +1,77 @@
 ---
-title: 'Radio Group'
+title: RadioGroup
+name: radio-group
+version: 0.0.1-13
+description: Useful for allowing users to select only one option from a set.
+features:
+  - Full keyboard navigation.
+  - Can be controlled or uncontrolled.
 ---
 
-Radio Group Primitive. Coming soon.
+### Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-radio-group
+```
+
+Then import the component in your component file.
+
+```jsx
+// RadioGroup.tsx
+import * as RadioGroupPrimitive from '@interop-ui/react-radio-group';
+```
+
+### Basic example
+
+```jsx live manual
+// RadioGroup.tsx
+// import * as RadioGroupPrimitive from '@interop-ui/react-radio-group';
+// import { CheckIcon } from '@modulz/radix-icons';
+
+const Radio = styled(RadioGroupPrimitive.Item, {
+  appearance: 'none',
+  border: 'none',
+  padding: 0,
+  borderRadius: '50%',
+  boxShadow: 'inset 0 0 0 1px gainsboro',
+  width: 15,
+  height: 15,
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  verticalAlign: 'middle',
+
+  '& ~ &': { marginLeft: 5 },
+
+  '&:focus': {
+    outline: 'none',
+    boxShadow: 'inset 0 0 0 2px dodgerblue',
+  },
+});
+
+const Indicator = styled(RadioGroupPrimitive.Indicator, {
+  width: 7,
+  height: 7,
+  borderRadius: '50%',
+  backgroundColor: 'dodgerblue',
+});
+
+render(
+  <RadioGroupPrimitive>
+    <Radio value="cat">
+      <Indicator />
+    </Radio>
+    <Radio value="dog">
+      <Indicator />
+    </Radio>
+    <Radio value="rabbit">
+      <Indicator />
+    </Radio>
+  </RadioGroupPrimitive>
+);
+```
 
 ### API Reference
 
