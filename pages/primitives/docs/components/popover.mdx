@@ -44,7 +44,8 @@ Popover Primitive. Coming soon.
       name: 'trapFocus',
       type: 'boolean',
       default: 'true',
-      description: 'Whether focus should be trapped within the `Popover`.',
+      description:
+        'Whether focus should be trapped within the `PopoverPopper`.',
     },
     {
       name: 'onOpenAutoFocus',
@@ -65,7 +66,7 @@ Popover Primitive. Coming soon.
       type: 'boolean',
       default: 'false',
       description:
-        'When `true`, hover/focus/click interactions will be disabled on elements outside the `Popover`. Users will need to click twice on outside elements to interact with them: Once to close the `Popover`, and again to trigger the element.',
+        'When `true`, hover/focus/click interactions will be disabled on elements outside the `PopoverPopper`. Users will need to click twice on outside elements to interact with them: Once to close the `Popover`, and again to trigger the element.',
     },
     {
       name: 'onEscapeKeyDown',
@@ -86,27 +87,27 @@ Popover Primitive. Coming soon.
       type: '(event: React.FocusEvent) => void',
       typeSimple: 'function',
       description:
-        'Event handler called when the focus moves outside of the `Popover`. It can be prevented by calling `event.preventDefault`.',
+        'Event handler called when the focus moves outside of the `PopoverPopper`. It can be prevented by calling `event.preventDefault`.',
     },
     {
       name: 'onInteractOutside',
       type: '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
       typeSimple: 'function',
       description:
-        'Event handler called when an interaction happens outside the `Popover`. Specifically, when a pointer event happens outside of the `Popover` or focus moves outside of it. It can be prevented by calling `event.preventDefault`.',
+        'Event handler called when an interaction happens outside the `PopoverPopper`. Specifically, when a pointer event happens outside of the `PopoverPopper` or focus moves outside of it. It can be prevented by calling `event.preventDefault`.',
     },
     {
       name: 'disableOutsideScroll',
       type: 'boolean',
       default: 'false',
       description:
-        'Whether scrolling outside the `Popover` should be prevented.',
+        'Whether scrolling outside the `PopoverPopper` should be prevented.',
     },
     {
       name: 'shouldPortal',
       type: 'boolean',
       default: 'true',
-      description: 'Whether the `Popover` should render in a `Portal`',
+      description: 'Whether the `PopoverPopper` should render in a `Portal`.',
     },
     {
       name: 'forceMount',
@@ -119,7 +120,7 @@ Popover Primitive. Coming soon.
       type: 'React.RefObject<MeasurableElement>',
       typeSimple: 'ref',
       description:
-        'An optional ref to an element to be used as the anchor for the `Popover`. By default, it will use `PopoverTrigger` as anchor element.',
+        'An optional ref to an element to be used as the anchor for the `PopoverPopper`. By default, it will use `PopoverTrigger` as anchor element.',
     },
     {
       name: 'side',
