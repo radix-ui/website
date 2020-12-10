@@ -1,8 +1,52 @@
 ---
-title: 'Tooltip'
+title: Tooltip
+name: tooltip
+description: An accessible Tooltip component that shows information related to an element when it is hovered or focused.
+features:
+  - Built in time machine to control appearance delays
 ---
 
-Tooltip Primitive. Coming soon.
+### Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-tooltip
+```
+
+Then import the component in your component file.
+
+```jsx
+// Tooltip.tsx
+import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+```
+
+### Basic example
+
+```jsx live manual
+// Tooltip.tsx
+// import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+// import { Button } from '@radix-ui/ds-button'
+
+const TooltipContent = styled(TooltipPrimitive.Content, {
+  borderRadius: 3,
+  padding: '5px 10px',
+  fontSize: 14,
+  backgroundColor: 'gainsboro',
+  color: 'black',
+});
+
+render(
+  <TooltipPrimitive>
+    <TooltipPrimitive.Trigger as={Button}>Hover me</TooltipPrimitive.Trigger>
+
+    <TooltipPrimitive.Popper side="top">
+      <TooltipContent>Tooltip content</TooltipContent>
+      <TooltipPrimitive.Arrow style={{ fill: 'gainsboro' }} />
+    </TooltipPrimitive.Popper>
+  </TooltipPrimitive>
+);
+```
 
 ### API Reference
 
