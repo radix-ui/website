@@ -30,6 +30,7 @@
     "@interop-ui/react-toggle-button": "0.0.1-15",
     "@interop-ui/react-tooltip": "0.0.1-14",
     "@interop-ui/react-utils": "0.0.1-14",
+    "@interop-ui/react-visually-hidden": "0.0.1-14",
     "@modulz/design-system": "0.0.14",
     "@modulz/radix-icons": "^3.3.0",
     "@segment/snippet": "^4.13.1",
