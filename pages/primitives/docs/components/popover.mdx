@@ -3,3 +3,201 @@ title: 'Popover'
 ---
 
 Popover Primitive. Coming soon.
+
+### API Reference
+
+#### Popover
+
+`Popover` is the root component.
+
+<PropsTable
+  data={[
+    {
+      name: 'defaultIsOpen',
+      type: 'boolean',
+      description:
+        'The open state of the `Popover` when it is initially rendered. Use `defaultIsOpen` if you do not need to control the state of an `Popover`.',
+    },
+    {
+      name: 'isOpen',
+      type: 'boolean',
+      description:
+        'The controlled open state of the `Popover`. Must be used in conjunction with `onIsOpenChange`.',
+    },
+    {
+      name: 'onIsOpenChange',
+      type: '(isOpen: boolean) => void',
+      typeSimple: 'function',
+      description:
+        'The callback that fires when the state of the `Popover` changes.',
+    },
+  ]}
+/>
+
+#### PopoverPopper
+
+`PopoverPopper` is the component that pops out in an open `Popover`.
+
+<PropsTable
+  data={[
+    {
+      name: 'trapFocus',
+      type: 'boolean',
+      default: 'true',
+      description: 'Whether focus should be trapped within the `Popover`.',
+    },
+    {
+      name: 'onOpenAutoFocus',
+      type: '(event: Event) => void',
+      typeSimple: 'function',
+      description:
+        'Event handler called when auto-focusing on open. It can be prevented by calling `event.preventDefault`.',
+    },
+    {
+      name: 'onCloseAutoFocus',
+      type: '(event: Event) => void',
+      typeSimple: 'function',
+      description:
+        'Event handler called when auto-focusing on close. It can be prevented by calling `event.preventDefault`.',
+    },
+    {
+      name: 'disableOutsidePointerEvents',
+      type: 'boolean',
+      default: 'false',
+      description:
+        'When `true`, hover/focus/click interactions will be disabled on elements outside the `Popover`. Users will need to click twice on outside elements to interact with them: Once to close the `Popover`, and again to trigger the element.',
+    },
+    {
+      name: 'onEscapeKeyDown',
+      type: '(event: KeyboardEvent) => void',
+      typeSimple: 'function',
+      description:
+        'Event handler called when the escape key is down. It can be prevented by calling `event.preventDefault`',
+    },
+    {
+      name: 'onPointerDownOutside',
+      type: '(event: MouseEvent | TouchEvent) => void',
+      typeSimple: 'function',
+      description:
+        'Event handler called when the a pointer event happens outside of the `Dialog`. It can be prevented by calling `event.preventDefault`.',
+    },
+    {
+      name: 'onFocusOutside',
+      type: '(event: React.FocusEvent) => void',
+      typeSimple: 'function',
+      description:
+        'Event handler called when the focus moves outside of the `Popover`. It can be prevented by calling `event.preventDefault`.',
+    },
+    {
+      name: 'onInteractOutside',
+      type: '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
+      typeSimple: 'function',
+      description:
+        'Event handler called when an interaction happens outside the `Popover`. Specifically, when a pointer event happens outside of the `Popover` or focus moves outside of it. It can be prevented by calling `event.preventDefault`.',
+    },
+    {
+      name: 'disableOutsideScroll',
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Whether scrolling outside the `Popover` should be prevented.',
+    },
+    {
+      name: 'shouldPortal',
+      type: 'boolean',
+      default: 'true',
+      description: 'Whether the `Popover` should render in a `Portal`',
+    },
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description:
+        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+    },
+    {
+      name: 'anchorRef',
+      type: 'React.RefObject<MeasurableElement>',
+      typeSimple: 'ref',
+      description:
+        'An optional ref to an element to be used as the anchor for the `Popover`. By default, it will use `PopoverTrigger` as anchor element.',
+    },
+    {
+      name: 'side',
+      type: 'top | right | bottom |left',
+      typeSimple: 'enum',
+      default: 'bottom',
+      description:
+        'The desired side to place the `PopoverPopper` against `PopoverTrigger`. May switch in case of collisions.',
+    },
+    {
+      name: 'sideOffset',
+      type: 'number',
+      default: '0',
+      description: 'The side offset for the `PopoverPopper`',
+    },
+    {
+      name: 'align',
+      type: 'start | center | end',
+      typeSimple: 'enum',
+      default: 'center',
+      description:
+        'How to align the `PopoverPopper` against `PopoverTrigger`. May switch in case of collisions.',
+    },
+    {
+      name: 'alignOffset',
+      type: 'number',
+      default: '0',
+      description: 'The align offset for the `PopoverPopper`',
+    },
+    {
+      name: 'shouldAvoidCollisions',
+      type: 'boolean',
+      default: 'true',
+      description:
+        'Whether or not collisions with window edges should be avoided. When turned on, this will result in the `PopoverPopper` flipping its side and alignment accordingly.',
+    },
+    {
+      name: 'collisionTolerance',
+      type: 'boolean',
+      default: '0',
+      description:
+        'The tolerance within which the `PopoverPopper` is to be checked against window edges.',
+    },
+  ]}
+/>
+
+#### PopoverArrow
+
+`PopoverArrow` is the optional arrow element to render for the `Popover`. This can be used to help visually link the `PopoverTrigger` with the `PopoverPopper`. Must live inside `PopoverPopper`.
+
+<PropsTable
+  data={[
+    {
+      name: 'width',
+      type: 'number',
+      default: 10,
+      description: 'The width of the `PopoverArrow`.',
+    },
+    {
+      name: 'height',
+      type: 'number',
+      default: 5,
+      description: 'The height of the `PopoverArrow`.',
+    },
+    {
+      name: 'offset',
+      type: 'number',
+      default: 0,
+      description:
+        'The offset of the `PopoverArrow` along the edge of `PopoverPopper`.',
+    },
+  ]}
+/>
+
+#### PopoverTrigger
+
+`PopoverTrigger` is the button that triggers the `Popover`. It is also used as the anchor the `PopoverPopper` is positioned against.
+
+#### PopoverClose
+
+`PopoverClose` is the button that closes an open `Popover`.
