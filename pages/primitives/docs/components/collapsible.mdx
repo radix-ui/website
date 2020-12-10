@@ -75,34 +75,51 @@ render(
     {
       name: 'defaultIsOpen',
       type: 'boolean',
-      description:
-        'The open state of the `Collapsible` when it is initially rendered. Use `defaultIsOpen` if you do not need to control the state of an `Collapsible`.',
+      description: (
+        <span>
+          The open state of the <Code>Collapsible</Code> when it is initially
+          rendered. Use <Code>defaultIsOpen</Code> if you do not need to control
+          the state of an <Code>Collapsible</Code>.
+        </span>
+      ),
     },
     {
       name: 'isOpen',
       type: 'boolean',
-      description:
-        'The controlled open state of the `Collapsible`. Must be used in conjunction with `onToggle`.',
+      description: (
+        <span>
+          The controlled open state of the <Code>Collapsible</Code>. Must be
+          used in conjunction with <Code>onToggle</Code>.
+        </span>
+      ),
     },
     {
       name: 'onToggle',
       type: '(isOpen: boolean) => void',
       typeSimple: 'function',
-      description:
-        'The callback that fires when the open state of the `Collapsible` changes.',
+      description: (
+        <span>
+          The callback that fires when the open state of the{' '}
+          <Code>Collapsible</Code> changes.
+        </span>
+      ),
     },
     {
       name: 'disabled',
       type: 'boolean',
-      description: 'Whether the `Collapsible` is disabled or not.',
+      description: (
+        <span>
+          Whether or not the <Code>Collapsible</Code> is disabled.
+        </span>
+      ),
     },
   ]}
 />
 
 #### CollapsibleButton
 
-`CollapsibleButton` is the button that triggers the `Collapsible`.
+The button that triggers the `Collapsible`.
 
 #### CollapsibleContent
 
-`CollapsibleContent` contains the collapsible content.
+The component that contains the collapsible content.
