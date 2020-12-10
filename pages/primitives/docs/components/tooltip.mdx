@@ -95,102 +95,156 @@ render(
     {
       name: 'defaultIsOpen',
       type: 'boolean',
-      description:
-        'The open state of the `Tooltip` when it is initially rendered. Use `defaultIsOpen` if you do not need to control the state of an `Tooltip`.',
+      description: (
+        <span>
+          The open state of the <Code>Tooltip</Code> when it is initially
+          rendered. Use <Code>defaultIsOpen</Code> if you do not need to control
+          the state of an <Code>Tooltip</Code>.
+        </span>
+      ),
     },
     {
       name: 'isOpen',
       type: 'boolean',
-      description:
-        'The controlled open state of the `Tooltip`. Must be used in conjunction with `onIsOpenChange`.',
+      description: (
+        <span>
+          The controlled open state of the <Code>Tooltip</Code>. Must be used in
+          conjunction with <Code>onIsOpenChange</Code>.
+        </span>
+      ),
     },
     {
       name: 'onIsOpenChange',
       type: '(isOpen: boolean) => void',
       typeSimple: 'function',
-      description:
-        'The callback that fires when the state of the `Tooltip` changes.',
+      description: (
+        <span>
+          The callback that fires when the open state of the{' '}
+          <Code>Tooltip</Code> changes.
+        </span>
+      ),
     },
   ]}
 />
 
 #### TooltipTrigger
 
-`TooltipTrigger` is the button that triggers the `Tooltip`. It is also used as the anchor the `TooltipPopper` is positioned against.
+The button that triggers the `Tooltip`. It is also used as the anchor the `TooltipPopper` is positioned against.
 
 #### TooltipPopper
 
-`TooltipPopper` is the component that pops out in an open `Tooltip`.
+The component that pops out in an open `Tooltip`.
 
 <PropsTable
   data={[
     {
       name: 'aria-label',
       type: 'string',
-      description:
-        'By default, screenreaders will announce the content inside `TooltipPopper`. If this is not descriptive enough, or you have content that cannot be announced, use `aria-label` as a more descriptive label .',
+      description: (
+        <span>
+          By default, screenreaders will announce the content inside{' '}
+          <Code>Popper</Code>. If this is not descriptive enough, or you have
+          content that cannot be announced, use <Code>aria-label</Code> as a
+          more descriptive label .
+        </span>
+      ),
     },
     {
       name: 'shouldPortal',
       type: 'boolean',
       default: 'true',
-      description: 'Whether the `TooltipPopper` should render in a `Portal`.',
+      description: (
+        <span>
+          Whether or not the <Code>Popper</Code> should render in a{' '}
+          <Code>Portal</Code>.
+        </span>
+      ),
     },
     {
       name: 'anchorRef',
       type: 'React.RefObject<MeasurableElement>',
       typeSimple: 'ref',
-      description:
-        'An optional ref to an element to be used as the anchor for the `TooltipPopper`. By default, it will use `TooltipTrigger` as anchor element.',
+      description: (
+        <span>
+          An optional ref to an element to be used as the anchor for the{' '}
+          <Code>Popper</Code>. By default, it will use <Code>Trigger</Code> as
+          anchor element.
+        </span>
+      ),
     },
     {
       name: 'side',
-      type: 'top | right | bottom |left',
+      type: '"top" | "right" | "bottom" | "left"',
       typeSimple: 'enum',
-      default: 'bottom',
-      description:
-        'The desired side to place the `TooltipPopper` against `TooltipTrigger`. May switch in case of collisions.',
+      default: '"bottom"',
+      description: (
+        <span>
+          The desired side to place the <Code>Popper</Code> against{' '}
+          <Code>Trigger</Code>. May switch in case of collisions.
+        </span>
+      ),
     },
     {
       name: 'sideOffset',
       type: 'number',
       default: '0',
-      description: 'The side offset for the `TooltipPopper`',
+      description: (
+        <span>
+          The side offset for the <Code>Popper</Code>.
+        </span>
+      ),
     },
     {
       name: 'align',
-      type: 'start | center | end',
+      type: '"start" | "center" | "end"',
       typeSimple: 'enum',
-      default: 'center',
-      description:
-        'How to align the `TooltipPopper` against `TooltipTrigger`. May switch in case of collisions.',
+      default: '"center"',
+      description: (
+        <span>
+          How to align the <Code>Popper</Code> against <Code>Trigger</Code>. May
+          switch in case of collisions.
+        </span>
+      ),
     },
     {
       name: 'alignOffset',
       type: 'number',
       default: '0',
-      description: 'The align offset for the `TooltipPopper`',
+      description: (
+        <span>
+          The align offset for the <Code>Popper</Code>
+        </span>
+      ),
     },
     {
       name: 'shouldAvoidCollisions',
       type: 'boolean',
       default: 'true',
-      description:
-        'Whether or not collisions with window edges should be avoided. When turned on, this will result in the `TooltipPopper` flipping its side and alignment accordingly.',
+      description: (
+        <span>
+          Whether or not collisions with window edges should be avoided. When
+          turned on, this will result in the <Code>Popper</Code> flipping its
+          side and alignment accordingly.
+        </span>
+      ),
     },
     {
       name: 'collisionTolerance',
       type: 'boolean',
       default: '0',
-      description:
-        'The tolerance within which the `TooltipPopper` is to be checked against window edges.',
+      description: (
+        <span>
+          The tolerance within which the <Code>Popper</Code> is to be checked
+          against window edges.
+        </span>
+      ),
     },
   ]}
 />
 
 #### TooltipArrow
 
-`TooltipArrow` is the optional arrow element to render for the `Tooltip`. This can be used to help visually link the `TooltipTrigger` with the `TooltipPopper`. Must live inside `TooltipPopper`.
+The optional arrow element to render for the `Tooltip`. This can be used to help visually link the `TooltipTrigger` with the `TooltipPopper`. Must live inside `TooltipPopper`.
 
 <PropsTable
   data={[
@@ -198,20 +252,32 @@ render(
       name: 'width',
       type: 'number',
       default: 10,
-      description: 'The width of the `TooltipArrow`.',
+      description: (
+        <span>
+          The width of the <Code>Arrow</Code>.
+        </span>
+      ),
     },
     {
       name: 'height',
       type: 'number',
       default: 5,
-      description: 'The height of the `TooltipArrow`.',
+      description: (
+        <span>
+          The height of the <Code>Arrow</Code>.
+        </span>
+      ),
     },
     {
       name: 'offset',
       type: 'number',
       default: 0,
-      description:
-        'The offset of the `TooltipArrow` along the edge of `TooltipPopper`.',
+      description: (
+        <span>
+          The offset of the `<Code>Arrow</Code> along the edge of{' '}
+          <Code>Popper</Code>.
+        </span>
+      ),
     },
   ]}
 />
