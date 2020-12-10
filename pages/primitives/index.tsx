@@ -63,7 +63,7 @@ export default function PrimitivesHome() {
       </Container>
 
       <Container size="2" css={{ textAlign: 'center' }}>
-        <NextLink passHref href="/design-system/docs">
+        <NextLink passHref href="/primitives/docs">
           <Link>Read the docs</Link>
         </NextLink>
       </Container>
