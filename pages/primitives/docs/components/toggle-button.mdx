@@ -1,0 +1,38 @@
+---
+title: 'Toggle Button'
+---
+
+### API Reference
+
+#### ToggleButton
+
+`ToggleButton` is the root component.
+
+<PropsTable
+  data={[
+    {
+      name: 'defaultToggled',
+      type: 'boolean',
+      description:
+        'The toggled state of the `ToggleButton` when it is initially rendered. Use `defaultToggled` if you do not need to control the state of the `ToggleButton`.',
+    },
+    {
+      name: 'toggled',
+      type: 'boolean',
+      description:
+        'The controlled toggled state of the `ToggleButton`. Must be used in conjunction with `onToggle`.',
+    },
+    {
+      name: 'onToggle',
+      type: '(toggled: boolean) => void',
+      typeSimple: 'function',
+      description:
+        'The callback that fires when the toggled state of the `ToggleButton` changes.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      description: 'Whether the `ToggleButton` is disabled or not.',
+    },
+  ]}
+/>

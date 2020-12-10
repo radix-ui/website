@@ -1,5 +1,86 @@
 ---
-title: 'Collapsible'
+title: Collapsible
+name: collapsible
+version: 0.0.1-13
+description: Useful to group information into collapsible items.
+features:
+  - Full keyboard navigation.
+  - Can be controlled or uncontrolled.
 ---
 
-Collapsible Primitive. Coming soon.
+### Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-collapsible
+```
+
+Then import the component in your component file.
+
+```jsx
+// Avatar.tsx
+import * as CollapsiblePrimitive from '@interop-ui/react-collapsible';
+```
+
+### Basic example
+
+```jsx live manual
+// Collapsible.tsx
+// import * as CollapsiblePrimitive from '@interop-ui/react-collapsible';
+// import { Button } from '@radix-ui/ds-button';
+
+render(
+  <CollapsiblePrimitive.Collapsible>
+    <CollapsiblePrimitive.CollapsibleButton as={Button}>
+      Button
+    </CollapsiblePrimitive.CollapsibleButton>
+    <CollapsiblePrimitive.CollapsibleContent>
+      Content 1
+    </CollapsiblePrimitive.CollapsibleContent>
+  </CollapsiblePrimitive.Collapsible>
+);
+```
+
+### API Reference
+
+#### Collapsible
+
+`Collapsible` is the root component.
+
+<PropsTable
+  data={[
+    {
+      name: 'defaultIsOpen',
+      type: 'boolean',
+      description:
+        'The open state of the `Collapsible` when it is initially rendered. Use `defaultIsOpen` if you do not need to control the state of an `Collapsible`.',
+    },
+    {
+      name: 'isOpen',
+      type: 'boolean',
+      description:
+        'The controlled open state of the `Collapsible`. Must be used in conjunction with `onToggle`.',
+    },
+    {
+      name: 'onToggle',
+      type: '(isOpen: boolean) => void',
+      typeSimple: 'function',
+      description:
+        'The callback that fires when the open state of the `Collapsible` changes.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      description: 'Whether the `Collapsible` is disabled or not.',
+    },
+  ]}
+/>
+
+#### CollapsibleButton
+
+`CollapsibleButton` is the button that triggers the `Collapsible`.
+
+#### CollapsibleContent
+
+`CollapsibleContent` contains the collapsible content.

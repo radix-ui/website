@@ -164,33 +164,37 @@ render(
       name: 'defaultIsOpen',
       type: 'boolean',
       description:
-        'The open state of the dialog when it is initially rendered. Use `defaultIsOpen` if you do not need to control the state of an dialog.',
+        'The open state of the `Dialog` when it is initially rendered. Use `defaultIsOpen` if you do not need to control the state of an `Dialog`.',
     },
     {
       name: 'isOpen',
       type: 'boolean',
       description:
-        'The controlled open state of the dialog. Must be used in conjunction with `onIsOpenChange`.',
+        'The controlled open state of the `Dialog`. Must be used in conjunction with `onIsOpenChange`.',
     },
     {
       name: 'onIsOpenChange',
       type: '(isOpen: boolean) => void',
       typeSimple: 'function',
       description:
-        'The callback that fires when the state of the dialog changes.',
+        'The callback that fires when the state of the `Dialog` changes.',
     },
     {
       name: 'id',
       type: 'string',
       description:
-        'A unique identifier for the dialog component. The `id` is used to generate DOM id attributes for nested components. If no `id` prop is provided, a generated id will be used.',
+        'A unique identifier for the `Dialog` component. The `id` is used to generate DOM id attributes for nested components. If no `id` prop is provided, a generated id will be used.',
     },
   ]}
 />
 
+#### DialogTrigger
+
+`DialogTrigger` is the button that triggers the `Dialog`.
+
 #### DialogOverlay
 
-`DialogOverlay` is the overlay that covers the inert portion of the view when a dialog is open.
+`DialogOverlay` is the overlay that covers the inert portion of the view when a `Dialog` is open.
 
 <PropsTable
   data={[
@@ -246,10 +250,6 @@ render(
   ]}
 />
 
-#### DialogTrigger
-
-`DialogTrigger` is the button that triggers the `Dialog`. Use this when an uncontrolled state is desired.
-
 #### DialogClose
 
-`DialogClose` is the button that closes an open `Dialog`. Use this when an uncontrolled state is desired.
+`DialogClose` is the button that closes an open `Dialog`.

@@ -1,5 +1,131 @@
 ---
-title: 'Checkbox'
+title: Checkbox
+name: checkbox
+version: 0.0.1-13
+description: Useful for allowing users to select one or more options in a form.
+features:
+  - Full keyboard navigation.
+  - Can be controlled or uncontrolled.
 ---
 
-Checkbox Primitive. Coming soon.
+### Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-checkbox
+```
+
+Then import the component in your component file.
+
+```jsx
+// Checkbox.tsx
+import * as CheckboxPrimitive from '@interop-ui/react-checkbox';
+```
+
+### Basic example
+
+```jsx live manual
+// Checkbox.tsx
+// import * as CheckboxPrimitive from '@interop-ui/react-checkbox';
+// import { CheckIcon } from '@modulz/radix-icons';
+
+const Checkbox = styled(CheckboxPrimitive, {
+  appearance: 'none',
+  border: 'none',
+  padding: 0,
+  boxShadow: 'inset 0 0 0 1px gainsboro',
+  overflow: 'hidden',
+  width: 15,
+  height: 15,
+  borderRadius: 15,
+
+  '&:focus': {
+    outline: 'none',
+    boxShadow: 'inset 0 0 0 2px dodgerblue',
+  },
+});
+
+const Indicator = styled(CheckboxPrimitive.Indicator, {
+  alignItems: 'center',
+  display: 'flex',
+  height: '100%',
+  justifyContent: 'center',
+  width: '100%',
+});
+
+render(
+  <Checkbox defaultChecked>
+    <Indicator>
+      <CheckIcon />
+    </Indicator>
+  </Checkbox>
+);
+```
+
+### API Reference
+
+#### Checkbox
+
+`Checkbox` is the root component.
+
+<PropsTable
+  data={[
+    {
+      name: 'defaultChecked',
+      type: 'boolean',
+      description:
+        'The checked state of the `Checkbox` when it is initially rendered. Use `defaultChecked` if you do not need to control the state of the `Checkbox`.',
+    },
+    {
+      name: 'checked',
+      type: 'boolean',
+      description:
+        'The controlled checked state of the `Checkbox`. Must be used in conjunction with `onCheckedChange`.',
+    },
+    {
+      name: 'onCheckedChange',
+      type: '(event: React.ChangeEvent<HTMLInputElement>) => void',
+      typeSimple: 'function',
+      description:
+        'The callback that fires when the checked state of the `Checkbox` changes.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      description: 'Whether the `Checkbox` is disabled or not.',
+    },
+    {
+      name: 'required',
+      type: 'boolean',
+      description: 'Whether this choice is required in a form.',
+    },
+    {
+      name: 'readOnly',
+      type: 'boolean',
+      description:
+        'Whether this `Checkbox` is read-only and cannot be toggled by the user.',
+    },
+    {
+      name: 'value',
+      type: 'string',
+      default: 'on',
+      description: 'The value behind the `Checkbox`. Useful in forms.',
+    },
+  ]}
+/>
+
+#### CheckboxIndicator
+
+`CheckboxIndicator` will render when the `Checkbox` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
+
+<PropsTable
+  data={[
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description:
+        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+    },
+  ]}
+/>

@@ -1,5 +1,84 @@
 ---
-title: 'Progress Bar'
+title: Progress Bar
+name: progress-bar
+version: 0.0.1-13
+description: Useful to display the progress status for given task.
+features:
+  - Full control over the rendering.
 ---
 
-Progress Bar Primitive. Coming soon.
+### Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-progress-bar
+```
+
+Then import the component in your component file.
+
+```jsx
+// ProgressBar.tsx
+import * as ProgressBarPrimitive from '@interop-ui/react-progress-bar';
+```
+
+### Basic example
+
+```jsx live manual
+// ProgressBar.tsx
+// import * as ProgressBarPrimitive from '@interop-ui/react-progress-bar';
+
+const ProgressBar = styled(ProgressBarPrimitive, {
+  position: 'relative',
+  height: 10,
+  overflow: 'hidden',
+  borderRadius: 5,
+  background: 'gainsboro',
+});
+
+const ProgressBarIndicator = styled(ProgressBarPrimitive.Indicator, {
+  boxSizing: 'border-box',
+  position: 'absolute',
+  backgroundColor: 'dodgerblue',
+  height: '100%',
+});
+
+render(
+  <ProgressBar value={50}>
+    <ProgressBarIndicator style={{ width: '50%' }} />
+  </ProgressBar>
+);
+```
+
+### API Reference
+
+#### ProgressBar
+
+`ProgressBar` is the root component.
+
+<PropsTable
+  data={[
+    {
+      name: 'value',
+      type: 'number | null',
+      description: 'The value of the `ProgressBar`',
+    },
+    {
+      name: 'max',
+      type: 'number',
+      description: 'The max value the progress can reach.',
+    },
+    {
+      name: 'getValueLabel',
+      type: '(value: number, max: number) => string',
+      typeSimple: 'function',
+      default: 'xx%',
+      description:
+        'A function to get the accessible label text representing the current value, for example "35%".',
+    },
+  ]}
+/>
+
+#### ProgressBarIndicator
+
+`ProgressBarIndicator` is used to show the progress visually. It also makes progress accessible to assistive technologies.

@@ -429,6 +429,15 @@
     "@interop-ui/react-utils" "0.0.1-12"
     "@interop-ui/utils" "0.0.1-4"
 
+"@interop-ui/react-announce@0.0.1-13":
+  version "0.0.1-13"
+  resolved "https://registry.yarnpkg.com/@interop-ui/react-announce/-/react-announce-0.0.1-13.tgz#8014fd8a5e92d6a7b067ead8660b032e92539ecf"
+  integrity sha512-TXfYMco0ssT74s3Zn4AtRb5pFn8/BtdvWTCsJbpjhdiZQfjEn0rYJItkkhSUTKGYT0gtuAWlYaM2eYi+LLEwlA==
+  dependencies:
+    "@interop-ui/react-polymorphic" "0.0.1-0"
+    "@interop-ui/react-utils" "0.0.1-13"
+    "@interop-ui/utils" "0.0.1-5"
+
 "@interop-ui/react-arrow@0.0.1-12":
   version "0.0.1-12"
   resolved "https://registry.yarnpkg.com/@interop-ui/react-arrow/-/react-arrow-0.0.1-12.tgz#61a4f8419be472b984c8fc38e96aa382906ae923"
@@ -436,6 +445,15 @@
   dependencies:
     "@interop-ui/react-utils" "0.0.1-12"
     "@interop-ui/utils" "0.0.1-4"
+
+"@interop-ui/react-aspect-ratio@0.0.1-13":
+  version "0.0.1-13"
+  resolved "https://registry.yarnpkg.com/@interop-ui/react-aspect-ratio/-/react-aspect-ratio-0.0.1-13.tgz#f86332a245d35ed507dc62290c03d8ff35e4635e"
+  integrity sha512-uvhyxpWJtFS13iDWuOgBkLRDUSztW0oJFpPD2CzsF0JUNB+3xAo4jNLuD3Mh/hGgcE5SFSh2sDFYttgUHzinbA==
+  dependencies:
+    "@interop-ui/react-polymorphic" "0.0.1-0"
+    "@interop-ui/react-utils" "0.0.1-13"
+    "@interop-ui/utils" "0.0.1-5"
 
 "@interop-ui/react-avatar@0.0.1-12":
   version "0.0.1-12"
@@ -461,6 +479,15 @@
   dependencies:
     "@interop-ui/react-utils" "0.0.1-12"
     "@interop-ui/utils" "0.0.1-4"
+
+"@interop-ui/react-collapsible@0.0.1-13":
+  version "0.0.1-13"
+  resolved "https://registry.yarnpkg.com/@interop-ui/react-collapsible/-/react-collapsible-0.0.1-13.tgz#6b9f790bc4420bdf23f7fd411781b8c518bf0d11"
+  integrity sha512-E1xPSgQ3SOR1Q8S9NnGIXJ8zblqQjfARwQbYDlb81ZO5qmIe4HhUf7EOni6VX679gRboa7D9v4QTYqzTFiXmHQ==
+  dependencies:
+    "@interop-ui/react-polymorphic" "0.0.1-0"
+    "@interop-ui/react-utils" "0.0.1-13"
+    "@interop-ui/utils" "0.0.1-5"
 
 "@interop-ui/react-collection@0.0.1-12":
   version "0.0.1-12"

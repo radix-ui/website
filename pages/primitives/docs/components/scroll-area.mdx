@@ -1,0 +1,104 @@
+---
+title: 'ScrollArea'
+---
+
+ScrollArea Primitive. Coming soon.
+
+### API Reference
+
+#### ScrollArea
+
+`ScrollArea` is the root component.
+
+<PropsTable
+  data={[
+    {
+      name: 'overflowX',
+      type: 'auto | hidden | scroll | visible',
+      typeSimple: 'enum',
+      default: 'auto',
+      description:
+        'Overflow behavior for the x axis. Mirrors the `overflow-x` CSS property.',
+    },
+    {
+      name: 'overflowY',
+      type: 'auto | hidden | scroll | visible',
+      typeSimple: 'enum',
+      default: 'auto',
+      description:
+        'Overflow behavior for the y axis. Mirrors the `overflow-y` CSS property.',
+    },
+    {
+      name: 'scrollbarVisibility',
+      type: 'always | scroll | hover',
+      typeSimple: 'enum',
+      default: 'hover',
+      description: `Describes the nature of scrollbar visibility, similar to how the scrollbar preferences in MacOS
+control visibility of native scrollbars.
+- "always": Scrollbars are always visible when content is overflowing
+- "scroll": Scrollbars are visible when the user is scrolling along its corresponding axis
+- "hover": Scrollbars are visible when the user is scrolling along its corresponding axis and
+  when the user is hovering over scrollable area`,
+    },
+    {
+      name: 'scrollbarVisibilityRestTimeout',
+      type: 'number',
+      default: '600',
+      description:
+        'If `scrollbarVisibility` is set to either `"scroll"`, this prop determines the length of time, in milliseconds, before the scrollbars are hidden after the user stops interacting with scrollbars.',
+    },
+    {
+      name: 'trackClickBehavior',
+      type: 'page | relative',
+      typeSimple: 'emum',
+      default: 'relative',
+      description:
+        'Describes the action that occurs when a user clicks on the scroll track. When `"relative"`, the scroll area will jump to a spot relative to where the user has clicked in relation to the track. When `"page"`, the scroll area will initially jump to the next or previous page of the viewable area, depending on which direction on the track is clicked.',
+    },
+    {
+      name: 'unstable_forceNative',
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Whether native scrollbars should be forced even though custom ones are supported.',
+    },
+    {
+      name: 'unstable_prefersReducedMotion',
+      type: 'boolean',
+      default: 'false',
+      description: 'If true, disables all animations.',
+    },
+  ]}
+/>
+
+#### ScrollAreaViewport
+
+`ScrollAreaViewport` is the viewport area of the `ScrollArea`.
+
+#### ScrollAreaScrollbarX
+
+`ScrollAreaScrollbarX` is the horizontal scrollbar.
+
+#### ScrollAreaScrollbarY
+
+`ScrollAreaScrollbarY` is the vertical scrollbar.
+
+#### ScrollAreaButtonStart
+
+`ScrollAreaButtonStart` is the start button in either `ScrollAreaScrollbarX` or `ScrollAreaScrollbarY`.
+
+#### ScrollAreaButtonEnd
+
+`ScrollAreaButtonEnd` is the end button in either `ScrollAreaScrollbarX` or `ScrollAreaScrollbarY`.
+
+#### ScrollAreaTrack
+
+`ScrollAreaTrack` is the track inside either `ScrollAreaScrollbarX` or `ScrollAreaScrollbarY`.
+
+#### ScrollAreaThumb
+
+`ScrollAreaThumb` is the thumb inside either `ScrollAreaScrollbarX` or `ScrollAreaScrollbarY`.
+
+#### ScrollAreaCorner
+
+`ScrollAreaCorner` is the corner where both vertical and horizontal scrollbars meet.
