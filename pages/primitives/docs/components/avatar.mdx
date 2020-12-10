@@ -225,3 +225,40 @@ render(
   </TooltipPrimitive>
 );
 ```
+
+### API Reference
+
+#### Avatar
+
+`Avatar` is the root component.
+
+#### AvatarImage
+
+`AvatarImage` is the image to render. By default `AvatarImage` will only render when it has actually been loaded. You can use the `onLoadingStatusChange` handler if you need finer control.
+
+<PropsTable
+  data={[
+    {
+      name: 'onLoadingStatusChange',
+      type: '(status: idle | loading | loaded | error) => void',
+      typeSimple: 'function',
+      description:
+        'A callback giving you information about the loading status of the image. This is useful in case you want to control more precisely what to render and when.',
+    },
+  ]}
+/>
+
+#### AvatarFallback
+
+`AvatarFallback` is the fallback element. It will only render anytime `AvatarImage` hasn't loaded. This means whilst it's loading, or if there was an error. If you don't want it to flash quickly whilst it's loading, you can provide a `delayMs` prop which will delay its rendering a bit. Otherwise, if you need finer control you can use the `onLoadingStatusChange` handler on `AvatarImage`.
+
+<PropsTable
+  data={[
+    {
+      name: 'delayMs',
+      type: 'number',
+      description:
+        'Useful to delay the rendering of `AvatarFallback` a little bit to avoid it flashing whilst `AvatarImage` is loading.',
+    },
+  ]}
+/>
