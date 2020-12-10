@@ -485,6 +485,16 @@
   dependencies:
     "@interop-ui/react-utils" "0.0.1-14"
 
+"@interop-ui/react-context-menu@0.0.1-1":
+  version "0.0.1-1"
+  resolved "https://registry.yarnpkg.com/@interop-ui/react-context-menu/-/react-context-menu-0.0.1-1.tgz#9a5cf3ac9af085197299635d015a94d64ce6aeee"
+  integrity sha512-J4SWygChoLbcAmiUQmaUrnkfx82CviepAnmPHm1JkWA6WXmn4x9srE7Yl4I3aCwmRNf4n1/oqLZBRrk+qbxVbA==
+  dependencies:
+    "@interop-ui/react-menu" "0.0.1-2"
+    "@interop-ui/react-polymorphic" "0.0.1-1"
+    "@interop-ui/react-utils" "0.0.1-14"
+    "@interop-ui/utils" "0.0.1-6"
+
 "@interop-ui/react-debug-context@0.0.1-12":
   version "0.0.1-12"
   resolved "https://registry.yarnpkg.com/@interop-ui/react-debug-context/-/react-debug-context-0.0.1-12.tgz#f09fcc9e47b6170a93192df2640367a9a30ca020"

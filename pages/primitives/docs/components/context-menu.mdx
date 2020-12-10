@@ -1,9 +1,88 @@
 ---
 title: Context Menu
-status: soon
+name: context-menu
+version: 0.0.1-1
+description: Useful for displaying a list of contextual actions by right clicking.
 ---
 
-Context Menu Primitive. Coming soon.
+### Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-context-menu
+```
+
+Then import the component in your component file.
+
+```jsx
+// ContextMenu.tsx
+import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
+```
+
+### Basic example
+
+```jsx live manual
+// ContextMenu.tsx
+// import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
+
+const MenuPopper = styled(ContextMenuPrimitive.ContextMenuPopper, {
+  minWidth: 130,
+  backgroundColor: 'white',
+  borderRadius: 6,
+  padding: 5,
+  boxShadow:
+    'hsla(206,22%,7%,.15) 0px 5px 15px -5px, hsla(206,22%,7%,.1) 0px 5px 10px -15px',
+});
+
+const MenuItem = styled(ContextMenuPrimitive.ContextMenuItem, {
+  fontSize: 13,
+  padding: '5px 10px',
+  borderRadius: 3,
+
+  '&[data-disabled]': { color: 'slategray' },
+
+  ':focus': {
+    outline: 'none',
+    backgroundColor: 'dodgerblue',
+    color: 'white',
+  },
+});
+
+const MenuSeparator = styled(ContextMenuPrimitive.ContextMenuSeparator, {
+  height: 1,
+  backgroundColor: 'gainsboro',
+  margin: '5px 10px',
+});
+
+const MenuArrow = styled(ContextMenuPrimitive.ContextMenuArrow, {
+  fill: 'white',
+});
+
+const TriggerArea = styled(ContextMenuPrimitive.ContextMenuTrigger, {
+  display: 'block',
+  textAlign: 'center',
+  padding: 100,
+  backgroundColor: 'slategray',
+});
+
+render(
+  <ContextMenuPrimitive.Root>
+    <TriggerArea>Right click anywhere here</TriggerArea>
+    <MenuPopper sideOffset={5}>
+      <MenuItem onSelect={() => alert('undo')}>Undo</MenuItem>
+      <MenuItem onSelect={() => alert('redo')}>Redo</MenuItem>
+      <MenuSeparator />
+      <MenuItem disabled onSelect={() => alert('cut')}>
+        Cut
+      </MenuItem>
+      <MenuItem onSelect={() => alert('copy')}>Copy</MenuItem>
+      <MenuItem onSelect={() => alert('paste')}>Paste</MenuItem>
+      <MenuArrow />
+    </MenuPopper>
+  </ContextMenuPrimitive.Root>
+);
+```
 
 ### Accessibility
 

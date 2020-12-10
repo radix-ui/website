@@ -5,6 +5,7 @@ export * as AnnouncePrimitive from '@interop-ui/react-announce';
 export * as AspectRatioPrimitive from '@interop-ui/react-aspect-ratio';
 export * as AvatarPrimitive from '@interop-ui/react-avatar';
 export * as CollapsiblePrimitive from '@interop-ui/react-collapsible';
+export * as ContextMenuPrimitive from '@interop-ui/react-context-menu';
 export * as CheckboxPrimitive from '@interop-ui/react-checkbox';
 export * as DialogPrimitive from '@interop-ui/react-dialog';
 export * as DropdownMenuPrimitive from '@interop-ui/react-dropdown-menu';
