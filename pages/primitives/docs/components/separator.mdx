@@ -3,3 +3,27 @@ title: 'Separator'
 ---
 
 Separator Primitive. Coming soon.
+
+### API Reference
+
+#### Separator
+
+`Separator` is the root component.
+
+<PropsTable
+  data={[
+    {
+      name: 'orientation',
+      type: 'horizontal | vertical',
+      typeSimple: 'enum',
+      default: 'horizontal',
+      description: 'The orientation of the `Separator`',
+    },
+    {
+      name: 'decorative',
+      type: 'boolean',
+      description:
+        'Whether the `Separator` is purely visual and carries no semantic at all. Making this true will ensure the separator is not present in the accessibility tree.',
+    },
+  ]}
+/>
