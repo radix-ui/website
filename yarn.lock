@@ -480,7 +480,7 @@
     "@interop-ui/react-utils" "0.0.1-12"
     "@interop-ui/utils" "0.0.1-4"
 
-"@interop-ui/react-collapsible@0.0.1-14":
+"@interop-ui/react-collapsible@0.0.1-13":
   version "0.0.1-13"
   resolved "https://registry.yarnpkg.com/@interop-ui/react-collapsible/-/react-collapsible-0.0.1-13.tgz#6b9f790bc4420bdf23f7fd411781b8c518bf0d11"
   integrity sha512-E1xPSgQ3SOR1Q8S9NnGIXJ8zblqQjfARwQbYDlb81ZO5qmIe4HhUf7EOni6VX679gRboa7D9v4QTYqzTFiXmHQ==
