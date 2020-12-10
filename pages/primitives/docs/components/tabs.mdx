@@ -1,6 +1,7 @@
 ---
 title: Tabs
 name: tabs
+version: 0.0.1-13
 description: An interface of layered content where activated by tab buttons.
 features:
   - Full keyboard navigation.
@@ -31,77 +32,45 @@ Create your styled tabs component from the tabs primitives.
 // import * as TabsPrimitive from '@radix-ui/react-tabs';
 
 const Tabs = styled(TabsPrimitive, {
-  width: '20rem',
-  maxWidth: '100%',
+  display: 'flex',
+  flexDirection: 'column',
 });
 
 const TabsList = styled(TabsPrimitive.List, {
   flexShrink: 0,
   display: 'flex',
-  '&[data-orientation="horizontal"]': {
-    flexDirection: 'row',
-    borderBottom: '1px solid $gray500',
-  },
-  '&[data-orientation="vertical"]': {
-    flexDirection: 'column',
-    borderRight: '1px solid $gray500',
-  },
+  borderBottom: '1px solid gainsboro',
 });
 
 const TabsTab = styled(TabsPrimitive.Tab, {
   flexShrink: 0,
-  padding: '0.4em 0.6em',
-  fontWeight: '500',
-  lineHeight: '1',
+  padding: '10px 20px',
+  color: 'slategray',
   userSelect: 'none',
 
-  '&[data-orientation="horizontal"]': {
-    borderBottom: '4px solid var(--border-color, transparent)',
-  },
-
-  '&[data-orientation="vertical"]': {
-    borderRight: '4px solid var(--border-color, transparent)',
-  },
-
-  '&:focus': {
-    '--border-color': '$black',
-    outline: '1px solid var(--border-color)',
-  },
-
-  '&[data-disabled]': {
-    color: '$gray300',
-  },
+  '&:hover': { color: 'black' },
 
   '&[data-state="active"]': {
-    '--border-color': '$red500',
+    color: 'black',
+    boxShadow: 'inset 0 -1px 0 0 currentColor, 0 1px 0 0 currentColor',
   },
 });
 
 const TabsPanel = styled(TabsPrimitive.Panel, {
   flexGrow: 1,
-  padding: '1em',
-  border: '1px solid $gray200',
+  padding: 20,
 });
 
 render(
   <Tabs defaultSelectedId="tab1">
     <TabsList aria-label="tabs example">
-      <TabsTab id="tab1">Tab 1</TabsTab>
-      <TabsTab id="tab2" disabled>
-        Tab 2
-      </TabsTab>
-      <TabsTab id="tab3">Tab 3</TabsTab>
+      <TabsTab id="tab1">One</TabsTab>
+      <TabsTab id="tab2">Two</TabsTab>
+      <TabsTab id="tab3">Three</TabsTab>
     </TabsList>
-    <TabsPanel id="tab1">
-      Dis metus rhoncus sit convallis sollicitudin vel cum, hac purus tincidunt
-      eros sem himenaeos integer, faucibus varius nullam nostra bibendum
-      consectetur mollis, gravida elementum pellentesque volutpat dictum ipsum.
-    </TabsPanel>
-    <TabsPanel id="tab2">You'll never find me!</TabsPanel>
-    <TabsPanel id="tab3">
-      Ut nisi elementum metus semper mauris dui fames accumsan aenean, maecenas
-      ac sociis dolor quam tempus pretium.
-    </TabsPanel>
+    <TabsPanel id="tab1">Tab one content</TabsPanel>
+    <TabsPanel id="tab2">Tab two content</TabsPanel>
+    <TabsPanel id="tab3">Tab three content</TabsPanel>
   </Tabs>
 );
 ```
