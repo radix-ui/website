@@ -286,7 +286,7 @@ const ComponentInfo = ({ version, name }) => (
     <Box css={{ mb: '$2' }}>
       <Link
         variant="blue"
-        href={`https://github.com/modulz/interop-ui/tree/main/packages/react/${name}/src`}
+        href={`https://github.com/radix-ui/primitives/tree/main/packages/react/${name}/src`}
         target="_blank"
       >
         <Text size="2">View on Github</Text>
