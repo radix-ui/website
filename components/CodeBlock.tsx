@@ -165,7 +165,7 @@ export function CodeBlock({
 
   const language = className && className.replace(/language-/, '');
   const { hasCopied, onCopy } = useClipboard(editorCode);
-
+  console.log({ components });
   const liveProviderProps = {
     theme,
     language,

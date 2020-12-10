@@ -429,6 +429,15 @@
     "@interop-ui/react-utils" "0.0.1-12"
     "@interop-ui/utils" "0.0.1-4"
 
+"@interop-ui/react-announce@0.0.1-13":
+  version "0.0.1-13"
+  resolved "https://registry.yarnpkg.com/@interop-ui/react-announce/-/react-announce-0.0.1-13.tgz#8014fd8a5e92d6a7b067ead8660b032e92539ecf"
+  integrity sha512-TXfYMco0ssT74s3Zn4AtRb5pFn8/BtdvWTCsJbpjhdiZQfjEn0rYJItkkhSUTKGYT0gtuAWlYaM2eYi+LLEwlA==
+  dependencies:
+    "@interop-ui/react-polymorphic" "0.0.1-0"
+    "@interop-ui/react-utils" "0.0.1-13"
+    "@interop-ui/utils" "0.0.1-5"
+
 "@interop-ui/react-arrow@0.0.1-12":
   version "0.0.1-12"
   resolved "https://registry.yarnpkg.com/@interop-ui/react-arrow/-/react-arrow-0.0.1-12.tgz#61a4f8419be472b984c8fc38e96aa382906ae923"
