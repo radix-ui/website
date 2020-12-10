@@ -171,10 +171,11 @@ render(
       default: 'true',
       description: (
         <span>
-          When `true`, hover/focus/click interactions will be disabled on
-          elements outside the `ContextMenuPopper`. Users will need to click
-          twice on outside elements to interact with them: Once to close the
-          `ContextMenu`, and again to trigger the element.
+          When <Code>true</Code>, hover/focus/click interactions will be
+          disabled on elements outside the <Code>ContextMenuPopper</Code>. Users
+          will need to click twice on outside elements to interact with them:
+          Once to close the <Code>ContextMenu</Code>, and again to trigger the
+          element.
         </span>
       ),
     },
@@ -301,8 +302,8 @@ The component used to render items in the `ContextMenu`.
       type: 'boolean',
       description: (
         <span>
-          Whether the item is disabled. If so it will not be clickable and will
-          not be focusable using arrow keys
+          Whether or not the <Code>Item</Code> is disabled. If so it will not be
+          clickable and will not be focusable using arrow keys
         </span>
       ),
     },
@@ -312,10 +313,10 @@ The component used to render items in the `ContextMenu`.
       typeSimple: 'function',
       description: (
         <span>
-          The callback that fires when a <Code>ContextMenuItem</Code> is
-          selected (via mouse or keyboard). Calling{' '}
-          <Code>event.preventDefault</Code> in this handler will prevent the
-          <Code>ContextMenu</Code> from closing when selecting that item.
+          The callback that fires when an <Code>Item</Code> is selected (via
+          mouse or keyboard). Calling <Code>event.preventDefault</Code> in this
+          handler will prevent the <Code>ContextMenu</Code> from closing when
+          selecting that item.
         </span>
       ),
     },
@@ -325,9 +326,9 @@ The component used to render items in the `ContextMenu`.
       description: (
         <span>
           An optional text used for typeahead purpose. By default the typeahead
-          behavior will use the <Code>.textContent</Code> of{' '}
-          <Code>MenuItem</Code>. Use this when the content inside the `MenuItem`
-          is too complex, or you have non-textual content inside.
+          behavior will use the <Code>.textContent</Code> of <Code>Item</Code>{' '}
+          is too complex, or you have non-textual content
+          <Code>Item</Code>. Use this when the content inside the inside.
         </span>
       ),
     },
@@ -353,9 +354,8 @@ A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and 
       type: 'boolean',
       description: (
         <span>
-          The controlled checked state of the{' '}
-          <Code>ContextMenuCheckboxItem</Code>. Must be used in conjunction with{' '}
-          <Code>onCheckedChange</Code>.
+          The controlled checked state of the <Code>CheckboxItem</Code>. Must be
+          used in conjunction with <Code>onCheckedChange</Code>.
         </span>
       ),
     },
@@ -366,7 +366,7 @@ A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and 
       description: (
         <span>
           The callback that fires when the checked state of the{' '}
-          <Code>ContextMenuCheckboxItem</Code> changes.
+          <Code>CheckboxItem</Code> changes.
         </span>
       ),
     },
@@ -375,8 +375,8 @@ A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and 
       type: 'boolean',
       description: (
         <span>
-          Whether the item is disabled. If so it will not be clickable and will
-          not be focusable using arrow keys
+          Whether the <Code>CheckboxItem</Code> is disabled. If so it will not
+          be clickable and will not be focusable using arrow keys
         </span>
       ),
     },
@@ -386,10 +386,10 @@ A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and 
       typeSimple: 'function',
       description: (
         <span>
-          The callback that fires when a <Code>ContextMenuItem</Code> is
-          selected (via mouse or keyboard). Calling{' '}
-          <Code>event.preventDefault</Code> in this handler will prevent the{' '}
-          <Code>ContextMenu</Code> from closing when selecting that item.
+          The callback that fires when a <Code>CheckboxItem</Code> is selected
+          (via mouse or keyboard). Calling <Code>event.preventDefault</Code> in
+          this handler will prevent the <Code>ContextMenu</Code> from closing
+          when selecting that item.
         </span>
       ),
     },
@@ -400,8 +400,9 @@ A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and 
         <span>
           An optional text used for typeahead purpose. By default the typeahead
           behavior will use the <Code>.textContent</Code> of{' '}
-          <Code>MenuItem</Code>. Use this when the content inside the `MenuItem`
-          is too complex, or you have non-textual content inside.
+          <Code>CheckboxItem</Code>. Use this when the content inside the{' '}
+          <Code>CheckboxItem</Code> is too complex, or you have non-textual
+          content inside.
         </span>
       ),
     },
@@ -419,8 +420,8 @@ A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and 
       type: 'string',
       description: (
         <span>
-          The value of the selected <Code>ContextMenuRadioItem</Code> in this{' '}
-          <Code>ContextMenuRadioGroup</Code>.
+          The value of the selected <Code>RadioItem</Code> in this{' '}
+          <Code>RadioGroup</Code>.
         </span>
       ),
     },
@@ -430,8 +431,8 @@ A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and 
       typeSimple: 'function',
       description: (
         <span>
-          The callback that fires when the selected{' '}
-          <Code>ContextMenuRadioItem</Code> changes.
+          The callback that fires when the selected <Code>RadioItem</Code>{' '}
+          changes.
         </span>
       ),
     },
@@ -450,15 +451,19 @@ A more specific `ContextMenuItem` which conceptually acts like a standard `Radio
       required: true,
       description: (
         <span>
-          The value for this <Code>ContextMenuRadioItem</Code>.
+          The value for this <Code>RadioItem</Code>.
         </span>
       ),
     },
     {
       name: 'disabled',
       type: 'boolean',
-      description:
-        'Whether or not the item is disabled. If so it will not be clickable and will not be focusable using arrow keys',
+      description: (
+        <span>
+          Whether or not the <Code>RadioItem</Code> is disabled. If so it will
+          not be clickable and will not be focusable using arrow keys
+        </span>
+      ),
     },
     {
       name: 'onSelect',
@@ -466,10 +471,10 @@ A more specific `ContextMenuItem` which conceptually acts like a standard `Radio
       typeSimple: 'function',
       description: (
         <span>
-          The callback that fires when a <Code>ContextMenuItem</Code> is
-          selected (via mouse or keyboard). Calling{' '}
-          <Code>event.preventDefault</Code> in this handler will prevent the{' '}
-          <Code>ContextMenu</Code> from closing when selecting that item.
+          The callback that fires when a <Code>RadioItem</Code> is selected (via
+          mouse or keyboard). Calling <Code>event.preventDefault</Code> in this
+          handler will prevent the <Code>ContextMenu</Code> from closing when
+          selecting that item.
         </span>
       ),
     },
@@ -480,8 +485,8 @@ A more specific `ContextMenuItem` which conceptually acts like a standard `Radio
         <span>
           An optional text used for typeahead purpose. By default the typeahead
           behavior will use the <Code>.textContent</Code> of{' '}
-          <Code>MenuItem</Code>. Use this when the content inside the{' '}
-          <Code>MenuItem</Code> is too complex, or you have non-textual content
+          <Code>RadioItem</Code>. Use this when the content inside the{' '}
+          <Code>RadioItem</Code> is too complex, or you have non-textual content
           inside.
         </span>
       ),
@@ -491,7 +496,7 @@ A more specific `ContextMenuItem` which conceptually acts like a standard `Radio
 
 #### ContextMenuItemIndicator
 
-`ContextMenuItemIndicator` will render when the parent `ContextMenuCheckboxItem` or `ContextMenuRadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
+Renders when the parent `ContextMenuCheckboxItem` or `ContextMenuRadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
 
 <PropsTable
   data={[
