@@ -22,6 +22,7 @@
     "@interop-ui/react-popover": "0.0.1-13",
     "@interop-ui/react-progress-bar": "0.0.1-10",
     "@interop-ui/react-radio-group": "0.0.1-6",
+    "@interop-ui/react-scroll-area": "0.0.1-0",
     "@interop-ui/react-separator": "0.0.1-10",
     "@interop-ui/react-slider": "0.0.1-12",
     "@interop-ui/react-switch": "0.0.1-13",

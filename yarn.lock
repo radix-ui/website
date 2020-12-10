@@ -593,6 +593,11 @@
   resolved "https://registry.yarnpkg.com/@interop-ui/react-polymorphic/-/react-polymorphic-0.0.1-0.tgz#3845cbe7277b7086abd90f39b2cbb6605d80857a"
   integrity sha512-pRqfVALsHGphrtS/Z5oYbkLiAYcG+hgORXuKn9H4CKQ+jlB+GwpPSgz4/YC953KiGnlAxpBU8YTgl/9ric6lNA==
 
+"@interop-ui/react-polymorphic@0.0.1-1":
+  version "0.0.1-1"
+  resolved "https://registry.yarnpkg.com/@interop-ui/react-polymorphic/-/react-polymorphic-0.0.1-1.tgz#d915c3a448fa941c3b354246fc18e68954eca5f5"
+  integrity sha512-m3ySN4XNEoc8jbQ9UfHQZcBESArTDEqRopEEWLP9uDmBko67h1pe/KnOtbA1g4NymBLUL3vEidZMt/52QssFZA==
+
 "@interop-ui/react-popover@0.0.1-13":
   version "0.0.1-13"
   resolved "https://registry.yarnpkg.com/@interop-ui/react-popover/-/react-popover-0.0.1-13.tgz#a80a10990aaafcd4e425fe9e43e7be694d075236"
@@ -653,6 +658,15 @@
     "@interop-ui/react-label" "0.0.1-10"
     "@interop-ui/react-utils" "0.0.1-12"
     "@interop-ui/utils" "0.0.1-4"
+
+"@interop-ui/react-scroll-area@0.0.1-0":
+  version "0.0.1-0"
+  resolved "https://registry.yarnpkg.com/@interop-ui/react-scroll-area/-/react-scroll-area-0.0.1-0.tgz#3639e4d53038e82d5d912a31dd14218078caecc0"
+  integrity sha512-a1ND0Mt6YKNaxe5BmIrUME5Bf3juGazHyro7IAvOYLkYpjUTM7Mh9laomJCrlc2Bak0yRDE3ypwHj4zG4HC80g==
+  dependencies:
+    "@interop-ui/react-polymorphic" "0.0.1-1"
+    "@interop-ui/react-utils" "0.0.1-14"
+    "@interop-ui/utils" "0.0.1-6"
 
 "@interop-ui/react-separator@0.0.1-10":
   version "0.0.1-10"
@@ -733,6 +747,13 @@
   dependencies:
     "@interop-ui/utils" "0.0.1-5"
 
+"@interop-ui/react-utils@0.0.1-14":
+  version "0.0.1-14"
+  resolved "https://registry.yarnpkg.com/@interop-ui/react-utils/-/react-utils-0.0.1-14.tgz#d40be3c7f5a754cae7dae1777b662aa387ddf9c6"
+  integrity sha512-u5dh4W/c9NcJR4oNhbTsvPA2h2a6Q4XMyQY/metwRbafVraO9zj1zg1HMH44oMkWxQ19n6QIfvypGWvEzt9x0w==
+  dependencies:
+    "@interop-ui/utils" "0.0.1-6"
+
 "@interop-ui/react-visually-hidden@0.0.1-12":
   version "0.0.1-12"
   resolved "https://registry.yarnpkg.com/@interop-ui/react-visually-hidden/-/react-visually-hidden-0.0.1-12.tgz#f5bdeae790ef522867b6c90424fb887326c23d94"
@@ -759,6 +780,11 @@
   version "0.0.1-5"
   resolved "https://registry.yarnpkg.com/@interop-ui/utils/-/utils-0.0.1-5.tgz#80bd8347af590547a84fd1f48e777ae39d98ad4a"
   integrity sha512-tGblAUDPKrM4FVBsRDRU9BkZmpMqTSPgddViDt9KmFaTGGK80HjvGl3EhEPQVI2LpaRQxgAOUkppiqyd3+aXiA==
+
+"@interop-ui/utils@0.0.1-6":
+  version "0.0.1-6"
+  resolved "https://registry.yarnpkg.com/@interop-ui/utils/-/utils-0.0.1-6.tgz#e5d21c2d50ccab2b1badf1dcc10cc8e51a191dae"
+  integrity sha512-qkeSxX8VpJk0QbMDbulKMwMQn0KfYKn5nrvTOBQCisQsI9aMPn16FmlzUwJu7FO2MeoLxsycXaSG060aLYWZ2A==
 
 "@mdx-js/loader@^1.6.19":
   version "1.6.21"
