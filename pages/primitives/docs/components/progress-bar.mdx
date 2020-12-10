@@ -4,7 +4,7 @@ name: progress-bar
 version: 0.0.1-13
 description: Useful to display the progress status for given task.
 features:
-  - Full control over the rendering.
+  - Provides context for assistive technology to read the progress of a task.
 ---
 
 ### Installation
@@ -61,24 +61,31 @@ render(
     {
       name: 'value',
       type: 'number | null',
-      description: 'The value of the `ProgressBar`',
+      description: (
+        <span>
+          The value of the <Code>ProgressBar</Code>
+        </span>
+      ),
     },
     {
       name: 'max',
       type: 'number',
-      description: 'The max value the progress can reach.',
+      description: (
+        <span>
+          The maximum value the <Code>ProgressBar</Code> can reach.
+        </span>
+      ),
     },
     {
       name: 'getValueLabel',
       type: '(value: number, max: number) => string',
       typeSimple: 'function',
-      default: 'xx%',
       description:
-        'A function to get the accessible label text representing the current value, for example "35%".',
+        'A function to get the accessible label text representing the current value in a human-readable format. If not provided, the value label will be read as the numeric value as a percentage of the max value.',
     },
   ]}
 />
 
 #### ProgressBarIndicator
 
-`ProgressBarIndicator` is used to show the progress visually. It also makes progress accessible to assistive technologies.
+Used to show the progress visually. It also makes progress accessible to assistive technologies.
