@@ -28,7 +28,29 @@ import * as AspectRatioPrimitive from '@interop-ui/react-aspect-ratio';
 
 render(
   <AspectRatioPrimitive>
-    <img src="https://picsum.photos/id/1006/800/800" alt="mountain view" />
+    <img
+      src="https://images.unsplash.com/photo-1605030753481-bb38b08c384a?&auto=format&fit=crop&w=800&q=80"
+      alt="mountain view"
+    />
+  </AspectRatioPrimitive>
+);
+```
+
+### Examples
+
+#### 16 by 9 ratio
+
+```jsx live manual compact
+// AspectRatio.tsx
+// import * as AspectRatioPrimitive from '@interop-ui/react-aspect-ratio';
+
+render(
+  <AspectRatioPrimitive ratio={16 / 9}>
+    <img
+      src="https://images.unsplash.com/photo-1605030753481-bb38b08c384a?&auto=format&fit=crop&w=800&q=80"
+      alt="mountain view"
+      style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+    />
   </AspectRatioPrimitive>
 );
 ```
