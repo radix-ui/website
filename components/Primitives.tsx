@@ -5,7 +5,7 @@ export { Announce as AnnouncePrimitive } from '@interop-ui/react-announce';
 export { AspectRatio as AspectRatioPrimitive } from '@interop-ui/react-aspect-ratio';
 export { Avatar as AvatarPrimitive } from '@interop-ui/react-avatar';
 export * as CollapsiblePrimitive from '@interop-ui/react-collapsible';
-export { Checkbox } from '@interop-ui/react-checkbox';
+export { Checkbox as CheckboxPrimitive } from '@interop-ui/react-checkbox';
 export * as DialogPrimitive from '@interop-ui/react-dialog';
 export { Label as LabelPrimitive } from '@interop-ui/react-label';
 export { Popover as PopoverPrimitive } from '@interop-ui/react-popover';

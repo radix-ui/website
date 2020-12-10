@@ -1,8 +1,69 @@
 ---
-title: 'Checkbox'
+title: Checkbox
+name: checkbox
+version: 0.0.1-13
+description: Useful for allowing users to select one or more options in a form.
+features:
+  - Full keyboard navigation.
+  - Can be controlled or uncontrolled.
 ---
 
-Checkbox Primitive. Coming soon.
+### Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-checkbox
+```
+
+Then import the component in your component file.
+
+```jsx
+// Avatar.tsx
+import * as CheckboxPrimitive from '@interop-ui/react-checkbox';
+```
+
+### Basic example
+
+```jsx live manual
+// Checkbox.tsx
+// import * as CheckboxPrimitive from '@interop-ui/react-checkbox';
+// import { Button } from '@radix-ui/ds-button';
+// import { CheckIcon } from '@modulz/radix-icons';
+
+const Checkbox = styled(CheckboxPrimitive, {
+  appearance: 'none',
+  border: 'none',
+  padding: 0,
+  color: '$hiContrast',
+  boxShadow: 'inset 0 0 0 1px gainsboro',
+  overflow: 'hidden',
+  width: '$3',
+  height: '$3',
+  borderRadius: '$1',
+
+  '&:focus': {
+    outline: 'none',
+    boxShadow: 'inset 0 0 0 2px dodgerblue',
+  },
+});
+
+const Indicator = styled(CheckboxPrimitive.Indicator, {
+  alignItems: 'center',
+  display: 'flex',
+  height: '100%',
+  justifyContent: 'center',
+  width: '100%',
+});
+
+render(
+  <Checkbox defaultChecked>
+    <Indicator>
+      <CheckIcon />
+    </Indicator>
+  </Checkbox>
+);
+```
 
 ### API Reference
 
