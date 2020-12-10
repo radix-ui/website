@@ -62,7 +62,7 @@ const Description = styled(AlertDialogPrimitive.Description, {
 });
 
 render(
-  <AlertDialogPrimitive>
+  <AlertDialogPrimitive.Root>
     <AlertDialogPrimitive.Trigger>Open</AlertDialogPrimitive.Trigger>
     <Overlay />
     <Content>
@@ -77,7 +77,7 @@ render(
         Accept
       </AlertDialogPrimitive.Action>
     </Content>
-  </AlertDialogPrimitive>
+  </AlertDialogPrimitive.Root>
 );
 ```
 
@@ -136,7 +136,7 @@ const Button = styled('button', {
 });
 
 render(
-  <AlertDialogPrimitive>
+  <AlertDialogPrimitive.Root>
     <AlertDialogPrimitive.Trigger>Open</AlertDialogPrimitive.Trigger>
     <Overlay />
     <Content>
@@ -153,7 +153,7 @@ render(
         </AlertDialogPrimitive.Action>
       </ButtonsWrapper>
     </Content>
-  </AlertDialogPrimitive>
+  </AlertDialogPrimitive.Root>
 );
 ```
 
@@ -200,16 +200,16 @@ const AlertButton = styled('button', {
   borderRadius: 20,
   border: 'none',
 
-  '&[data-interop-ui-alert-dialog-cancel]': {
+  '&[data-radix-alert-dialog-cancel]': {
     backgroundColor: 'slategray',
   },
-  '&[data-interop-ui-alert-dialog-action]': {
+  '&[data-radix-alert-dialog-action]': {
     backgroundColor: 'dodgerblue',
   },
 });
 
 render(
-  <AlertDialogPrimitive>
+  <AlertDialogPrimitive.Root>
     <AlertDialogPrimitive.Trigger>Open</AlertDialogPrimitive.Trigger>
     <Overlay />
     <Content>
@@ -224,7 +224,7 @@ render(
         Accept
       </AlertDialogPrimitive.Action>
     </Content>
-  </AlertDialogPrimitive>
+  </AlertDialogPrimitive.Root>
 );
 ```
 
