@@ -1,6 +1,55 @@
 ---
-title: 'Toggle Button'
+title: Toggle Button
+name: toggle-button
+version: 0.0.1-13
+description: Useful for allowing users to toggle a button.
+features:
+  - Full keyboard navigation.
+  - Can be controlled or uncontrolled.
 ---
+
+### Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-toggle-button
+```
+
+Then import the component in your component file.
+
+```jsx
+// ToggleButton.tsx
+import * as ToggleButtonPrimitive from '@radix-ui/react-toggle-button';
+```
+
+### Basic example
+
+```jsx live manual
+// ToggleButton.tsx
+// import * as ToggleButtonPrimitive from '@radix-ui/react-toggle-button';
+
+const ToggleButton = styled(ToggleButtonPrimitive.Root, {
+  appearance: 'none',
+  backgroundColor: 'transparent',
+  border: 'none',
+  padding: '5px 10px',
+  boxShadow: 'inset 0 0 0 1px gainsboro',
+  overflow: 'hidden',
+  borderRadius: 3,
+
+  '&:focus': {
+    outline: 'none',
+    boxShadow: 'inset 0 0 0 1px dodgerblue, 0 0 0 1px dodgerblue',
+  },
+
+  '&[data-state=on]': {
+    backgroundColor: 'gainsboro',
+  },
+});
+
+render(<ToggleButton>Togggle</ToggleButton>);
+```
 
 ### Accessibility
 

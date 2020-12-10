@@ -1,8 +1,40 @@
 ---
-title: 'Visually Hidden'
+title: Visually Hidden
+name: visually-hidden
+version: 0.0.1-13
+description: Useful for hiding content from the screen in an accessible way.
 ---
 
-Visually Hidden Primitive. Coming soon.
+### Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-visually-hidden
+```
+
+Then import the component in your component file.
+
+```jsx
+// VisuallyHidden.tsx
+import * as VisuallyHiddenPrimitive from '@radix-ui/react-visually-hidden';
+```
+
+### Basic example
+
+```jsx live manual
+// VisuallyHidden.tsx
+// import * as VisuallyHiddenPrimitive from '@radix-ui/react-visually-hidden';
+// import { IconButton } from '@radix-ui/ds-icon-button'
+// import { GearIcon } from '@modulz/radix-icons'
+
+render(
+  <IconButton>
+    <GearIcon />
+    <VisuallyHiddenPrimitive.Root>Settings</VisuallyHiddenPrimitive.Root>
+  </IconButton>
+);
+```
 
 ### API Reference
 

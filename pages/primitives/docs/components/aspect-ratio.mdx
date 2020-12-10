@@ -27,31 +27,31 @@ import * as AspectRatioPrimitive from '@radix-ui/react-aspect-ratio';
 // import * as AspectRatioPrimitive from '@radix-ui/react-aspect-ratio';
 
 render(
-  <AspectRatioPrimitive>
+  <AspectRatioPrimitive.Root>
     <img
       src="https://images.unsplash.com/photo-1605030753481-bb38b08c384a?&auto=format&fit=crop&w=800&q=80"
       alt="mountain view"
     />
-  </AspectRatioPrimitive>
+  </AspectRatioPrimitive.Root>
 );
 ```
 
 ### Examples
 
-#### 16 by 9 ratio
+#### 16 x 9 ratio
 
 ```jsx live manual compact
 // AspectRatio.tsx
 // import * as AspectRatioPrimitive from '@radix-ui/react-aspect-ratio';
 
 render(
-  <AspectRatioPrimitive ratio={16 / 9}>
+  <AspectRatioPrimitive.Root ratio={16 / 9}>
     <img
       src="https://images.unsplash.com/photo-1605030753481-bb38b08c384a?&auto=format&fit=crop&w=800&q=80"
       alt="mountain view"
       style={{ objectFit: 'cover', width: '100%', height: '100%' }}
     />
-  </AspectRatioPrimitive>
+  </AspectRatioPrimitive.Root>
 );
 ```
 

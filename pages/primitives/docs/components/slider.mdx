@@ -34,7 +34,7 @@ Create your styled slider component from the slider primitives.
 // Slider.tsx
 // import * as SliderPrimitive from '@radix-ui/react-slider';
 
-const Slider = styled(SliderPrimitive, {
+const Slider = styled(SliderPrimitive.Root, {
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
@@ -71,7 +71,7 @@ const SliderThumb = styled(SliderPrimitive.Thumb, {
 });
 
 render(
-  <Slider defaultValue={50}>
+  <Slider defaultValue={[50]}>
     <SliderTrack>
       <SliderRange />
     </SliderTrack>
@@ -90,7 +90,7 @@ Use the `orientation` prop to create a vertical slider.
 // Slider.tsx
 // import * as SliderPrimitive from '@radix-ui/react-slider';
 
-const Slider = styled(SliderPrimitive, {
+const Slider = styled(SliderPrimitive.Root, {
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
@@ -129,7 +129,7 @@ const SliderThumb = styled(SliderPrimitive.Thumb, {
 });
 
 render(
-  <Slider defaultValue={50} orientation="vertical">
+  <Slider defaultValue={[50]} orientation="vertical">
     <SliderTrack>
       <SliderRange />
     </SliderTrack>
@@ -146,7 +146,7 @@ Create your styled slider components, then pass those styled components into `Sl
 // Slider.tsx
 // import * as SliderPrimitive from '@radix-ui/react-slider';
 
-const Slider = styled(SliderPrimitive, {
+const Slider = styled(SliderPrimitive.Root, {
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
@@ -201,7 +201,7 @@ Use the `step` prop to define how the slider value updates.
 // Slider.tsx
 // import * as SliderPrimitive from '@radix-ui/react-slider';
 
-const Slider = styled(SliderPrimitive, {
+const Slider = styled(SliderPrimitive.Root, {
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
@@ -238,7 +238,7 @@ const SliderThumb = styled(SliderPrimitive.Thumb, {
 });
 
 render(
-  <Slider defaultValue={50}>
+  <Slider defaultValue={[50]}>
     <SliderTrack>
       <SliderRange />
     </SliderTrack>
@@ -255,7 +255,7 @@ Use the availabe `data-*` attribute selectors to style the `disabled` state.
 // Slider.tsx
 // import * as SliderPrimitive from '@radix-ui/react-slider';
 
-const Slider = styled(SliderPrimitive, {
+const Slider = styled(SliderPrimitive.Root, {
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
@@ -295,7 +295,7 @@ const SliderThumb = styled(SliderPrimitive.Thumb, {
 });
 
 render(
-  <Slider defaultValue={50} disabled>
+  <Slider defaultValue={[50]} disabled>
     <SliderTrack>
       <SliderRange />
     </SliderTrack>
@@ -381,15 +381,15 @@ render(
   data={[
     {
       name: 'value',
-      type: 'number',
+      type: 'number[]',
     },
     {
       name: 'defaultValue',
-      type: 'number',
+      type: 'number[]',
     },
     {
       name: 'onChange',
-      type: 'onChange?(value: number): void',
+      type: 'onChange?(value: number[]): void',
       typeSimple: 'function',
     },
     {

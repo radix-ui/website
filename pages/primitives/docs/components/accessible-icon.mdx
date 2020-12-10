@@ -16,20 +16,20 @@ npm install @radix-ui/react-accessible-icon
 Then import the component in your component file.
 
 ```jsx
-import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
+import * as AccessibleIconPrimitive from '@radix-ui/react-accessible-icon';
 ```
 
 ### Basic example
 
 ```jsx live manual
 // CloseIcon.tsx
-// import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
+// import * as AccessibleIconPrimitive from '@radix-ui/react-accessible-icon';
 // import { CrossCircledIcon } from '@modulz/radix-icons';
 
 render(
-  <AccessibleIcon label="Close">
+  <AccessibleIconPrimitive.Root label="Close">
     <CrossCircledIcon />
-  </AccessibleIcon>
+  </AccessibleIconPrimitive.Root>
 );
 ```
 

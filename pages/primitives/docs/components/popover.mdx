@@ -38,7 +38,7 @@ const PopoverContent = styled(PopoverPrimitive.Content, {
 });
 
 render(
-  <PopoverPrimitive>
+  <PopoverPrimitive.Root>
     <PopoverPrimitive.Trigger as={Button}>Trigger</PopoverPrimitive.Trigger>
     <PopoverPrimitive.Popper>
       <PopoverContent>
@@ -48,7 +48,7 @@ render(
       </PopoverContent>
       <TooltipPrimitive.Arrow style={{ fill: 'gainsboro' }} />
     </PopoverPrimitive.Popper>
-  </PopoverPrimitive>
+  </PopoverPrimitive.Root>
 );
 ```
 
