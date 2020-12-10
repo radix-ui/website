@@ -300,14 +300,23 @@ render(
     {
       name: 'defaultIsOpen',
       type: 'boolean',
-      description:
-        'The open state of the dialog when it is initially rendered. Use `defaultIsOpen` if you do not need to control the state of an dialog.',
+      description: (
+        <span>
+          The open state of the dialog when it is initially rendered. Use
+          <Code>defaultIsOpen</Code> if you do not need to control the state of an
+          dialog.
+        </span>
+      ),
     },
     {
       name: 'isOpen',
       type: 'boolean',
-      description:
-        'The controlled open state of the dialog. Must be used in conjunction with `onIsOpenChange`.',
+      description: (
+        <span>
+          The controlled open state of the dialog. Must be used in conjunction
+          with <pCode>onIsOpenChange</pCode>.
+        </span>
+      ),
     },
     {
       name: 'onIsOpenChange',
@@ -319,8 +328,13 @@ render(
     {
       name: 'id',
       type: 'string',
-      description:
-        'A unique identifier for the dialog component. The `id` is used to generate DOM id attributes for nested components. If no `id` prop is provided, a generated id will be used.',
+      description: (
+        <span>
+          A unique identifier for the dialog component. The <Code>id</Code> is
+          used to generate DOM id attributes for nested components. If no{' '}
+          <Code>id</Code> prop is provided, a generated id will be used.
+        </span>
+      ),
     },
   ]}
 />
@@ -360,29 +374,46 @@ The component that contains content to be rendered in an open `AlertDialog`.
       name: 'onOpenAutoFocus',
       type: '(event: Event) => void',
       typeSimple: 'function',
-      description:
-        'Event handler called when auto-focusing on open. It can be prevented by calling `event.preventDefault`.',
+      description: (
+        <span>
+          Event handler called when auto-focusing on open. It can be prevented
+          by calling <Code>event.preventDefault</Code>.
+        </span>
+      ),
     },
     {
       name: 'onCloseAutoFocus',
       type: '(event: Event) => void',
       typeSimple: 'function',
-      description:
-        'Event handler called when auto-focusing on close. It can be prevented by calling `event.preventDefault`.',
+      description: (
+        <span>
+          Event handler called when auto-focusing on close. It can be prevented
+          by calling <Code>event.preventDefault</Code>.
+        </span>
+      ),
     },
     {
       name: 'onEscapeKeyDown',
       type: '(event: KeyboardEvent) => void',
       typeSimple: 'function',
-      description:
-        'Event handler called when the escape key is down. It can be prevented by calling `event.preventDefault`',
+      description: (
+        <span>
+          Event handler called when the escape key is down. It can be prevented
+          by calling <Code>event.preventDefault</Code>.
+        </span>
+      ),
     },
     {
       name: 'onPointerDownOutside',
       type: '(event: MouseEvent | TouchEvent) => void',
       typeSimple: 'function',
-      description:
-        'Event handler called when the a pointer event happens outside of the `AlertDialog`. It can be prevented by calling `event.preventDefault`.',
+      description: (
+        <span>
+          Event handler called when the a pointer event happens outside of the{' '}
+          <Code>AlertDialog</Code>. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
+        </span>
+      ),
     },
   ]}
 />
