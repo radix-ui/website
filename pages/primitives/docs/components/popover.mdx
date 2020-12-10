@@ -1,8 +1,56 @@
 ---
-title: 'Popover'
+title: Popover
+name: popover
+version: 0.0.1-13
+description: An accessible Popover component that displays rich content as a result of clicking on a target.
+features:
+  - Cool popover feature
 ---
 
-Popover Primitive. Coming soon.
+### Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-popover
+```
+
+Then import the component in your component file.
+
+```jsx
+// Popover.tsx
+import * as PopoverPrimitive from '@radix-ui/react-popover';
+```
+
+### Basic example
+
+```jsx live manual
+// Popover.tsx
+// import * as PopoverPrimitive from '@radix-ui/react-popover';
+// import { Button } from '@radix-ui/ds-button'
+
+const PopoverContent = styled(PopoverPrimitive.Content, {
+  borderRadius: 3,
+  padding: '20px',
+  fontSize: 14,
+  backgroundColor: 'gainsboro',
+  color: 'black',
+});
+
+render(
+  <PopoverPrimitive>
+    <PopoverPrimitive.Trigger as={Button}>Trigger</PopoverPrimitive.Trigger>
+    <PopoverPrimitive.Popper>
+      <PopoverContent>
+        <h3>Popover content</h3>
+        <p>Are you sure you wanna do this?</p>
+        <PopoverPrimitive.Close as={Button}>Yes</PopoverPrimitive.Close>
+      </PopoverContent>
+      <TooltipPrimitive.Arrow style={{ fill: 'gainsboro' }} />
+    </PopoverPrimitive.Popper>
+  </PopoverPrimitive>
+);
+```
 
 ### API Reference
 
