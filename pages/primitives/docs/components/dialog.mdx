@@ -2,6 +2,7 @@
 title: Dialog
 name: dialog
 version: 0.0.1
+description: A modal of content overlaid on top of a document's primary viewport.
 features:
   - Focus is automatically trapped.
   - Works in an uncontrolled way by default.
@@ -147,7 +148,11 @@ render(
   data={[
     {
       keys: ['Esc'],
-      description: <span>Closes the dialog</span>,
+      description: <span>Closes the dialog and returns focus to the element that triggered it</span>,
+    },
+    {
+      keys: ['Tab'],
+      description: <span>Moves focus within the scope of the active dialog</span>,
     },
   ]}
 />
@@ -190,11 +195,11 @@ render(
 
 #### DialogTrigger
 
-`DialogTrigger` is the button that triggers the `Dialog`.
+The button that triggers the `Dialog`.
 
 #### DialogOverlay
 
-`DialogOverlay` is the overlay that covers the inert portion of the view when a `Dialog` is open.
+The overlay that covers the inert portion of the view when a `Dialog` is open.
 
 <PropsTable
   data={[
@@ -209,7 +214,7 @@ render(
 
 #### DialogContent
 
-`DialogContent` is the component that contains content to be rendered in an open `Dialog`.
+The component that contains content to be rendered in an open `Dialog`.
 
 <PropsTable
   data={[
@@ -252,4 +257,4 @@ render(
 
 #### DialogClose
 
-`DialogClose` is the button that closes an open `Dialog`.
+The button that closes an open `Dialog`.
