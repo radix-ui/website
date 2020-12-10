@@ -51,6 +51,39 @@ render(
 );
 ```
 
+### Accessibility
+
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Tab'],
+      description: (
+        <ul>
+          <li>
+            When focus moves to <Code>Trigger</Code>, opens <Code>Popper</Code>{' '}
+            without delay.
+          </li>
+          <li>
+            When focus moves from <Code>Trigger</Code>, closes{' '}
+            <Code>Popper</Code> without delay.
+          </li>
+        </ul>
+      ),
+    },
+    {
+      keys: ['Space', 'Enter'],
+      description: (
+        <span>
+          If <Code>Popper</Code> is open, closes <Code>Popper</Code> without
+          delay.
+        </span>
+      ),
+    },
+  ]}
+/>
+
 ### API Reference
 
 #### Tooltip
