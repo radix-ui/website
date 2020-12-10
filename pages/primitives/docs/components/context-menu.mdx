@@ -166,29 +166,50 @@ render(
       name: 'disableOutsidePointerEvents',
       type: 'boolean',
       default: 'true',
-      description:
-        'When `true`, hover/focus/click interactions will be disabled on elements outside the `ContextMenuPopper`. Users will need to click twice on outside elements to interact with them: Once to close the `ContextMenu`, and again to trigger the element.',
+      description: (
+        <span>
+          When `true`, hover/focus/click interactions will be disabled on
+          elements outside the `ContextMenuPopper`. Users will need to click
+          twice on outside elements to interact with them: Once to close the
+          `ContextMenu`, and again to trigger the element.
+        </span>
+      ),
     },
     {
       name: 'onEscapeKeyDown',
       type: '(event: KeyboardEvent) => void',
       typeSimple: 'function',
-      description:
-        'Event handler called when the escape key is down. It can be prevented by calling `event.preventDefault`',
+      description: (
+        <span>
+          Event handler called when the escape key is down. It can be prevented
+          by calling <Code>event.preventDefault</Code>
+        </span>
+      ),
     },
     {
       name: 'onPointerDownOutside',
       type: '(event: MouseEvent | TouchEvent) => void',
       typeSimple: 'function',
-      description:
-        'Event handler called when the a pointer event happens outside of the `ContextMenuPopper`. It can be prevented by calling `event.preventDefault`.',
+      description: (
+        <span>
+          Event handler called when the a pointer event happens outside of the{' '}
+          <Code>ContextMenuPopper</Code>. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
+        </span>
+      ),
     },
     {
       name: 'onInteractOutside',
       type: '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
       typeSimple: 'function',
-      description:
-        'Event handler called when an interaction happens outside the `ContextMenuPopper`. Specifically, when a pointer event happens outside of the `ContextMenuPopper` or focus moves outside of it. It can be prevented by calling `event.preventDefault`.',
+      description: (
+        <span>
+          Event handler called when an interaction happens outside the
+          <Code>ContextMenuPopper</Code>. Specifically, when a pointer event happens
+          outside of the `ContextMenuPopper` or focus moves outside of it. It can
+          be prevented by calling <Code>event.preventDefault</Code>.
+        </span>
+      ),
     },
     {
       name: 'forceMount',
@@ -198,122 +219,188 @@ render(
     },
     {
       name: 'side',
-      type: 'top | right | bottom |left',
+      type: '"top" | "right" | "bottom" | "left"',
       typeSimple: 'enum',
-      default: 'bottom',
-      description:
-        'The desired side to place the `ContextMenuPopper` against the mouse position. May switch in case of collisions.',
+      default: '"bottom"',
+      description: (
+        <span>
+          The desired side to place the <Code>ContextMenuPopper</Code> against
+          the mouse position. May switch in case of collisions.
+        </span>
+      ),
     },
     {
       name: 'sideOffset',
       type: 'number',
       default: '0',
-      description: 'The side offset for the `ContextMenuPopper`',
+      description: (
+        <span>
+          The side offset for the <Code>ContextMenuPopper</Code>
+        </span>
+      ),
     },
     {
       name: 'align',
-      type: 'start | center | end',
+      type: '"start" | "center" | "end"',
       typeSimple: 'enum',
-      default: 'start',
-      description:
-        'How to align the `ContextMenuPopper` against the mouse position. May switch in case of collisions.',
+      default: '"start"',
+      description: (
+        <span>
+          How to align the <Code>ContextMenuPopper</Code> against the mouse
+          position. May switch in case of collisions.
+        </span>
+      ),
     },
     {
       name: 'alignOffset',
       type: 'number',
       default: '0',
-      description: 'The align offset for the `ContextMenuPopper`',
+      description: (
+        <span>
+          The align offset for the <Code>ContextMenuPopper</Code>
+        </span>
+      ),
     },
     {
       name: 'shouldAvoidCollisions',
       type: 'boolean',
       default: 'true',
-      description:
-        'Whether or not collisions with window edges should be avoided. When turned on, this will result in the `ContextMenuPopper` flipping its side and alignment accordingly.',
+      description: (
+        <span>
+          Whether or not collisions with window edges should be avoided. When
+          turned on, this will result in the <Code>ContextMenuPopper</Code>{' '}
+          flipping its side and alignment accordingly.
+        </span>
+      ),
     },
     {
       name: 'collisionTolerance',
       type: 'boolean',
       default: '0',
-      description:
-        'The tolerance within which the `ContextMenuPopper` is to be checked against window edges.',
+      description: (
+        <span>
+          The tolerance within which the <Code>ContextMenuPopper</Code> is to be
+          checked against window edges.
+        </span>
+      ),
     },
   ]}
 />
 
 #### ContextMenuItem
 
-`ContextMenuItem` is used to render items in the `ContextMenu`.
+The component used to render items in the `ContextMenu`.
 
 <PropsTable
   data={[
     {
       name: 'disabled',
       type: 'boolean',
-      description:
-        'Whether the item is disabled. If so it will not be clickable and will not be focusable using arrow keys',
+      description: (
+        <span>
+          Whether the item is disabled. If so it will not be clickable and will
+          not be focusable using arrow keys
+        </span>
+      ),
     },
     {
       name: 'onSelect',
       type: '(event: Event) => void',
       typeSimple: 'function',
-      description:
-        'The callback that fires when a `ContextMenuItem` is selected (via mouse or keyboard). Calling `event.preventDefault() in this handler will prevent the `ContextMenu` from closing when selecting that item.',
+      description: (
+        <span>
+          The callback that fires when a <Code>ContextMenuItem</Code> is
+          selected (via mouse or keyboard). Calling{' '}
+          <Code>event.preventDefault</Code> in this handler will prevent the
+          <Code>ContextMenu</Code> from closing when selecting that item.
+        </span>
+      ),
     },
     {
       name: 'textValue',
       type: 'string',
-      description:
-        'An optional text used for typeahead purpose. By default the typeahead behavior will use the `.textContent` of `MenuItem`. Use this when the content inside the `MenuItem` is too complex, or you have non-textual content inside.',
+      description: (
+        <span>
+          An optional text used for typeahead purpose. By default the typeahead
+          behavior will use the <Code>.textContent</Code> of{' '}
+          <Code>MenuItem</Code>. Use this when the content inside the `MenuItem`
+          is too complex, or you have non-textual content inside.
+        </span>
+      ),
     },
   ]}
 />
 
 #### ContextMenuGroup
 
-`ContextMenuGroup` is used to group multiple `ContextMenuItem`.
+Used to group multiple `ContextMenuItem`.
 
 #### ContextMenuLabel
 
-`ContextMenuLabel` is used to render a label. It won't be focusable using arrow keys.
+Uused to render a label. It won't be focusable using arrow keys.
 
 #### ContextMenuCheckboxItem
 
-`ContextMenuCheckboxItem` is a more specific `ContextMenuItem` which can be controlled like a `Checkbox` and also has an indicator (`ContextMenuItemIndicator`). This conceptually functions like a standard `Checkbox`.
+A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and also has an indicator (`ContextMenuItemIndicator`). This conceptually functions like a standard `Checkbox`.
 
 <PropsTable
   data={[
     {
       name: 'checked',
       type: 'boolean',
-      description:
-        'The controlled checked state of the `ContextMenuCheckboxItem`. Must be used in conjunction with `onCheckedChange`.',
+      description: (
+        <span>
+          The controlled checked state of the{' '}
+          <Code>ContextMenuCheckboxItem</Code>. Must be used in conjunction with{' '}
+          <Code>onCheckedChange</Code>.
+        </span>
+      ),
     },
     {
       name: 'onCheckedChange',
       type: '(checked: boolean) => void',
       typeSimple: 'function',
-      description:
-        'The callback that fires when the checked state of the `ContextMenuCheckboxItem` changes.',
+      description: (
+        <span>
+          The callback that fires when the checked state of the{' '}
+          <Code>ContextMenuCheckboxItem</Code> changes.
+        </span>
+      ),
     },
     {
       name: 'disabled',
       type: 'boolean',
-      description:
-        'Whether the item is disabled. If so it will not be clickable and will not be focusable using arrow keys',
+      description: (
+        <span>
+          Whether the item is disabled. If so it will not be clickable and will
+          not be focusable using arrow keys
+        </span>
+      ),
     },
     {
       name: 'onSelect',
       type: '(event: Event) => void',
       typeSimple: 'function',
-      description:
-        'The callback that fires when a `ContextMenuItem` is selected (via mouse or keyboard). Calling `event.preventDefault() in this handler will prevent the `ContextMenu` from closing when selecting that item.',
+      description: (
+        <span>
+          The callback that fires when a <Code>ContextMenuItem</Code> is
+          selected (via mouse or keyboard). Calling{' '}
+          <Code>event.preventDefault</Code> in this handler will prevent the{' '}
+          <Code>ContextMenu</Code> from closing when selecting that item.
+        </span>
+      ),
     },
     {
       name: 'textValue',
       type: 'string',
-      description:
-        'An optional text used for typeahead purpose. By default the typeahead behavior will use the `.textContent` of `MenuItem`. Use this when the content inside the `MenuItem` is too complex, or you have non-textual content inside.',
+      description: (
+        <span>
+          An optional text used for typeahead purpose. By default the typeahead
+          behavior will use the <Code>.textContent</Code> of{' '}
+          <Code>MenuItem</Code>. Use this when the content inside the `MenuItem`
+          is too complex, or you have non-textual content inside.
+        </span>
+      ),
     },
   ]}
 />
@@ -327,22 +414,30 @@ render(
     {
       name: 'value',
       type: 'string',
-      description:
-        'The value of the selected `ContextMenuRadioItem` in this `ContextMenuRadioGroup`',
+      description: (
+        <span>
+          The value of the selected <Code>ContextMenuRadioItem</Code> in this{' '}
+          <Code>ContextMenuRadioGroup</Code>.
+        </span>
+      ),
     },
     {
       name: 'onValueChange',
       type: '(value: string) => void',
       typeSimple: 'function',
-      description:
-        'The callback that fires when the selected `ContextMenuRadioItem` changes.',
+      description: (
+        <span>
+          The callback that fires when the selected{' '}
+          <Code>ContextMenuRadioItem</Code> changes.
+        </span>
+      ),
     },
   ]}
 />
 
 #### ContextMenuRadioItem
 
-`ContextMenuRadioItem` is a more specific `ContextMenuItem` which conceptually acts like a standard `Radio`. It has an indicator (`ContextMenuItemIndicator`).
+A more specific `ContextMenuItem` which conceptually acts like a standard `Radio`. It has an indicator (`ContextMenuItemIndicator`).
 
 <PropsTable
   data={[
@@ -350,26 +445,43 @@ render(
       name: 'value',
       type: 'string',
       required: true,
-      description: 'The value for this `ContextMenuRadioItem`.',
+      description: (
+        <span>
+          The value for this <Code>ContextMenuRadioItem</Code>.
+        </span>
+      ),
     },
     {
       name: 'disabled',
       type: 'boolean',
       description:
-        'Whether the item is disabled. If so it will not be clickable and will not be focusable using arrow keys',
+        'Whether or not the item is disabled. If so it will not be clickable and will not be focusable using arrow keys',
     },
     {
       name: 'onSelect',
       type: '(event: Event) => void',
       typeSimple: 'function',
-      description:
-        'The callback that fires when a `ContextMenuItem` is selected (via mouse or keyboard). Calling `event.preventDefault() in this handler will prevent the `ContextMenu` from closing when selecting that item.',
+      description: (
+        <span>
+          The callback that fires when a <Code>ContextMenuItem</Code> is
+          selected (via mouse or keyboard). Calling{' '}
+          <Code>event.preventDefault</Code> in this handler will prevent the{' '}
+          <Code>ContextMenu</Code> from closing when selecting that item.
+        </span>
+      ),
     },
     {
       name: 'textValue',
       type: 'string',
-      description:
-        'An optional text used for typeahead purpose. By default the typeahead behavior will use the `.textContent` of `MenuItem`. Use this when the content inside the `MenuItem` is too complex, or you have non-textual content inside.',
+      description: (
+        <span>
+          An optional text used for typeahead purpose. By default the typeahead
+          behavior will use the <Code>.textContent</Code> of{' '}
+          <Code>MenuItem</Code>. Use this when the content inside the{' '}
+          <Code>MenuItem</Code> is too complex, or you have non-textual content
+          inside.
+        </span>
+      ),
     },
   ]}
 />
@@ -383,12 +495,16 @@ render(
     {
       name: 'forceMount',
       type: 'boolean',
-      description:
-        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+      description: (
+        <span>
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries.
+        </span>
+      ),
     },
   ]}
 />
 
 #### ContextMenuSeparator
 
-`ContextMenuSeparator` is used to visually separate items in a `ContextMenu`.
+Used to visually separate items in a `ContextMenu`.
