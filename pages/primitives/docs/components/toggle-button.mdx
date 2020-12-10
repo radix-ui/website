@@ -84,26 +84,43 @@ render(<ToggleButton>Togggle</ToggleButton>);
     {
       name: 'defaultToggled',
       type: 'boolean',
-      description:
-        'The toggled state of the `ToggleButton` when it is initially rendered. Use `defaultToggled` if you do not need to control the state of the `ToggleButton`.',
+      description: (
+        <span>
+          The checked state of the <Code>ToggleButton</Code> when it is
+          initially rendered. Use <Code>defaultToggled</Code> if you do not need
+          to control the state of the <Code>ToggleButton</Code>.
+        </span>
+      ),
     },
     {
       name: 'toggled',
       type: 'boolean',
-      description:
-        'The controlled toggled state of the `ToggleButton`. Must be used in conjunction with `onToggle`.',
+      description: (
+        <span>
+          The controlled checked state of the <Code>ToggleButton</Code>. Must be
+          used in conjunction with <Code>onToggle</Code>.
+        </span>
+      ),
     },
     {
       name: 'onToggle',
       type: '(toggled: boolean) => void',
       typeSimple: 'function',
-      description:
-        'The callback that fires when the toggled state of the `ToggleButton` changes.',
+      description: (
+        <span>
+          The callback that fires when the toggled state of the{' '}
+          <Code>ToggleButton</Code> changes.
+        </span>
+      ),
     },
     {
       name: 'disabled',
       type: 'boolean',
-      description: 'Whether the `ToggleButton` is disabled or not.',
+      description: (
+        <span>
+          Whether or not the <Code>ToggleButton</Code> is disabled.
+        </span>
+      ),
     },
   ]}
 />
