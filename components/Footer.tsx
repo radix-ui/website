@@ -71,7 +71,7 @@ export const Footer = () => {
                 bp2: { mt: '$5', ml: '0' },
               }}
             >
-              Radix UI is maintained by <Link href="https://modulz.app">Modulz</Link>.
+              Radix UI is maintained by <Link variant="subtle" href="https://modulz.app">Modulz</Link>.
             </Text>
           </Flex>
           <Box>
@@ -82,28 +82,28 @@ export const Footer = () => {
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <NextLink href="/docs/introduction" passHref>
-                    <Link>Introduction</Link>
+                    <Link variant="subtle">Introduction</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <NextLink href="/docs/tutorials" passHref>
-                    <Link>Tutorials</Link>
+                    <Link variant="subtle">Tutorials</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <NextLink href="/docs/api" passHref>
-                    <Link>API</Link>
+                    <Link variant="subtle">API</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <NextLink href="/docs/frequently-asked-questions" passHref>
-                    <Link>FAQ</Link>
+                    <Link variant="subtle">FAQ</Link>
                   </NextLink>
                 </Text>
               </li>
@@ -117,28 +117,28 @@ export const Footer = () => {
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <NextLink href="/docs/installation" passHref>
-                    <Link>Installation</Link>
+                    <Link variant="subtle">Installation</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <NextLink href="/docs/styling" passHref>
-                    <Link>Styling</Link>
+                    <Link variant="subtle">Styling</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <NextLink href="/docs/variants" passHref>
-                    <Link>Variants</Link>
+                    <Link variant="subtle">Variants</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <NextLink href="/docs/tokens" passHref>
-                    <Link>Configuration</Link>
+                    <Link variant="subtle">Configuration</Link>
                   </NextLink>
                 </Text>
               </li>
@@ -152,7 +152,7 @@ export const Footer = () => {
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <NextLink href="/blog" passHref>
-                    <Link>Blog</Link>
+                    <Link variant="subtle">Blog</Link>
                   </NextLink>
                 </Text>
               </li>
