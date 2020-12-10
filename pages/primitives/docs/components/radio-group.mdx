@@ -3,3 +3,90 @@ title: 'Radio Group'
 ---
 
 Radio Group Primitive. Coming soon.
+
+### API Reference
+
+#### RadioGroup
+
+`RadioGroup` is the root component.
+
+<PropsTable
+  data={[
+    {
+      name: 'defaultValue',
+      type: 'string',
+      description:
+        'The selected value of the `RadioGroup` when it is initially rendered. Use `defaultValue` if you do not need to control the value of a `RadioGroup`.',
+    },
+    {
+      name: 'value',
+      type: 'string',
+      description:
+        'The controlled value of the `RadioGroup`. Must be used in conjunction with `onValueChange`.',
+    },
+    {
+      name: 'onValueChange',
+      type: '(value: string) => void',
+      typeSimple: 'function',
+      description: 'The callback that fires when the selected value changes.',
+    },
+    {
+      name: 'required',
+      type: 'boolean',
+      description: 'Whether this choice is required in a form.',
+    },
+  ]}
+/>
+
+#### RadioGroupItem
+
+`RadioGroupItem` is a single item in a `RadioGroup`.
+
+<PropsTable
+  data={[
+    {
+      name: 'value',
+      type: 'string',
+      required: true,
+      description: 'The value behind the `RadioGroupItem`.',
+    },
+    {
+      name: 'onCheckedChange',
+      type: '(event: React.ChangeEvent<HTMLInputElement>) => void',
+      typeSimple: 'function',
+      description:
+        'The callback that fires when the checked state of the `RadioGroupItem` changes.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      description: 'Whether the `RadioGroupItem` is disabled or not.',
+    },
+    {
+      name: 'required',
+      type: 'boolean',
+      description: 'Whether this choice is required in a form.',
+    },
+    {
+      name: 'readOnly',
+      type: 'boolean',
+      description:
+        'Whether this `RadioGroupItem` is read-only and cannot be toggled by the user.',
+    },
+  ]}
+/>
+
+#### RadioGroupIndicator
+
+`RadioGroupIndicator` will render when the `RadioGroupItem` is the currently selected on. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
+
+<PropsTable
+  data={[
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description:
+        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+    },
+  ]}
+/>
