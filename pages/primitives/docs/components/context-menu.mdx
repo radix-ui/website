@@ -46,6 +46,7 @@ const MenuItem = styled(ContextMenuPrimitive.ContextMenuItem, {
   fontSize: 13,
   padding: '5px 10px',
   borderRadius: 3,
+  cursor: 'default',
 
   '&[data-disabled]': { color: 'slategray' },
 
@@ -60,10 +61,6 @@ const MenuSeparator = styled(ContextMenuPrimitive.ContextMenuSeparator, {
   height: 1,
   backgroundColor: 'gainsboro',
   margin: '5px 10px',
-});
-
-const MenuArrow = styled(ContextMenuPrimitive.ContextMenuArrow, {
-  fill: 'white',
 });
 
 const TriggerArea = styled(ContextMenuPrimitive.ContextMenuTrigger, {
@@ -85,7 +82,6 @@ render(
       </MenuItem>
       <MenuItem onSelect={() => alert('copy')}>Copy</MenuItem>
       <MenuItem onSelect={() => alert('paste')}>Paste</MenuItem>
-      <MenuArrow />
     </MenuPopper>
   </ContextMenuPrimitive.Root>
 );
