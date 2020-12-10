@@ -276,7 +276,7 @@ const SliderRange = styled(SliderPrimitive.Range, {
   backgroundColor: 'dodgerblue',
   borderRadius: '9999px',
   height: '100%',
-  '[data-disabled] &': {
+  [`${Slider}[data-disabled] &`]: {
     backgroundColor: 'darkgray',
   },
 });
@@ -288,8 +288,8 @@ const SliderThumb = styled(SliderPrimitive.Thumb, {
   backgroundColor: 'white',
   border: '1px solid lightgray',
   borderRadius: '20px',
-  ':focus': {
-    outline: 'none',
+  outline: 'none',
+  [`${Slider}:not([data-disabled]) &:focus`]: {
     borderColor: 'dodgerblue',
   },
 });
