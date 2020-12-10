@@ -172,10 +172,9 @@ render(
       description: (
         <span>
           When <Code>true</Code>, hover/focus/click interactions will be
-          disabled on elements outside the <Code>ContextMenuPopper</Code>. Users
-          will need to click twice on outside elements to interact with them:
-          Once to close the <Code>ContextMenu</Code>, and again to trigger the
-          element.
+          disabled on elements outside the <Code>Popper</Code>. Users will need
+          to click twice on outside elements to interact with them: Once to
+          close the <Code>ContextMenu</Code>, and again to trigger the element.
         </span>
       ),
     },
@@ -197,7 +196,7 @@ render(
       description: (
         <span>
           Event handler called when the a pointer event happens outside of the{' '}
-          <Code>ContextMenuPopper</Code>. It can be prevented by calling{' '}
+          <Code>Popper</Code>. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
         </span>
       ),
@@ -209,9 +208,9 @@ render(
       description: (
         <span>
           Event handler called when an interaction happens outside the
-          <Code>ContextMenuPopper</Code>. Specifically, when a pointer event happens
-          outside of the `ContextMenuPopper` or focus moves outside of it. It can
-          be prevented by calling <Code>event.preventDefault</Code>.
+          <Code>Popper</Code>. Specifically, when a pointer event happens outside
+          of the `ContextMenuPopper` or focus moves outside of it. It can be prevented
+          by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -228,8 +227,8 @@ render(
       default: '"bottom"',
       description: (
         <span>
-          The desired side to place the <Code>ContextMenuPopper</Code> against
-          the mouse position. May switch in case of collisions.
+          The desired side to place the <Code>Popper</Code> against the mouse
+          position. May switch in case of collisions.
         </span>
       ),
     },
@@ -239,7 +238,7 @@ render(
       default: '0',
       description: (
         <span>
-          The side offset for the <Code>ContextMenuPopper</Code>
+          The side offset for the <Code>Popper</Code>
         </span>
       ),
     },
@@ -250,8 +249,8 @@ render(
       default: '"start"',
       description: (
         <span>
-          How to align the <Code>ContextMenuPopper</Code> against the mouse
-          position. May switch in case of collisions.
+          How to align the <Code>Popper</Code> against the mouse position. May
+          switch in case of collisions.
         </span>
       ),
     },
@@ -261,7 +260,7 @@ render(
       default: '0',
       description: (
         <span>
-          The align offset for the <Code>ContextMenuPopper</Code>
+          The align offset for the <Code>Popper</Code>
         </span>
       ),
     },
@@ -272,8 +271,8 @@ render(
       description: (
         <span>
           Whether or not collisions with window edges should be avoided. When
-          turned on, this will result in the <Code>ContextMenuPopper</Code>{' '}
-          flipping its side and alignment accordingly.
+          turned on, this will result in the <Code>Popper</Code> flipping its
+          side and alignment accordingly.
         </span>
       ),
     },
@@ -283,8 +282,8 @@ render(
       default: '0',
       description: (
         <span>
-          The tolerance within which the <Code>ContextMenuPopper</Code> is to be
-          checked against window edges.
+          The tolerance within which the <Code>Popper</Code> is to be checked
+          against window edges.
         </span>
       ),
     },

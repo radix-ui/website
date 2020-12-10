@@ -238,10 +238,9 @@ The component that pops out in an open `DropdownMenu`.
       description: (
         <span>
           When <Code>true</Code>, hover/focus/click interactions will be
-          disabled on elements outside the <Code>DropdownMenuPopper</Code>.
-          Users will need to click twice on outside elements to interact with
-          them: Once to close the <Code>DropdownMenu</Code>, and again to
-          trigger the element.
+          disabled on elements outside the <Code>Popper</Code>. Users will need
+          to click twice on outside elements to interact with them: Once to
+          close the <Code>DropdownMenu</Code>, and again to trigger the element.
         </span>
       ),
     },
@@ -263,7 +262,7 @@ The component that pops out in an open `DropdownMenu`.
       description: (
         <span>
           Event handler called when the a pointer event happens outside of the{' '}
-          <Code>DropdownMenuPopper</Code>. It can be prevented by calling{' '}
+          <Code>Popper</Code>. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
         </span>
       ),
@@ -275,9 +274,9 @@ The component that pops out in an open `DropdownMenu`.
       description: (
         <span>
           Event handler called when an interaction happens outside the
-          <Code>DropdownMenuPopper</Code>. Specifically, when a pointer event happens
-          outside of the `DropdownMenuPopper` or focus moves outside of it. It can
-          be prevented by calling <Code>event.preventDefault</Code>.
+          <Code>Popper</Code>. Specifically, when a pointer event happens outside
+          of the `DropdownMenuPopper` or focus moves outside of it. It can be prevented
+          by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -287,8 +286,7 @@ The component that pops out in an open `DropdownMenu`.
       default: 'true',
       description: (
         <span>
-          Whether scrolling outside the <Code>DropdownMenuPopper</Code> should
-          be prevented.
+          Whether scrolling outside the <Code>Popper</Code> should be prevented.
         </span>
       ),
     },
@@ -298,7 +296,7 @@ The component that pops out in an open `DropdownMenu`.
       default: 'true',
       description: (
         <span>
-          Whether or not the <Code>DropdownMenuPopper</Code> should render in a
+          Whether or not the <Code>Popper</Code> should render in a
           <Code>Portal</Code>.
         </span>
       ),
@@ -320,8 +318,8 @@ The component that pops out in an open `DropdownMenu`.
       description: (
         <span>
           An optional ref to an element to be used as the anchor for the{' '}
-          <Code>DropdownMenuPopper</Code>. By default, it will use{' '}
-          <Code>DropdownMenuTrigger</Code> as anchor element.
+          <Code>Popper</Code>. By default, it will use <Code>Trigger</Code> as
+          anchor element.
         </span>
       ),
     },
@@ -332,8 +330,8 @@ The component that pops out in an open `DropdownMenu`.
       default: '"bottom"',
       description: (
         <span>
-          The desired side to place the <Code>DropdownMenuPopper</Code> against{' '}
-          <Code>DropdownMenuTrigger</Code>. May switch in case of collisions.
+          The desired side to place the <Code>Popper</Code> against{' '}
+          <Code>Trigger</Code>. May switch in case of collisions.
         </span>
       ),
     },
@@ -343,7 +341,7 @@ The component that pops out in an open `DropdownMenu`.
       default: '0',
       description: (
         <span>
-          The side offset for the <Code>DropdownMenuPopper</Code>.
+          The side offset for the <Code>Popper</Code>.
         </span>
       ),
     },
@@ -354,8 +352,8 @@ The component that pops out in an open `DropdownMenu`.
       default: '"center"',
       description: (
         <span>
-          How to align the <Code>DropdownMenuPopper</Code> against{' '}
-          <Code>DropdownMenuTrigger</Code>. May switch in case of collisions.
+          How to align the <Code>Popper</Code> against <Code>Trigger</Code>. May
+          switch in case of collisions.
         </span>
       ),
     },
@@ -365,7 +363,7 @@ The component that pops out in an open `DropdownMenu`.
       default: '0',
       description: (
         <span>
-          The align offset for the <Code>DropdownMenuPopper</Code>
+          The align offset for the <Code>Popper</Code>
         </span>
       ),
     },
@@ -376,8 +374,8 @@ The component that pops out in an open `DropdownMenu`.
       description: (
         <span>
           Whether or not collisions with window edges should be avoided. When
-          turned on, this will result in the <Code>DropdownMenuPopper</Code>{' '}
-          flipping its side and alignment accordingly.
+          turned on, this will result in the <Code>Popper</Code> flipping its
+          side and alignment accordingly.
         </span>
       ),
     },
@@ -387,8 +385,8 @@ The component that pops out in an open `DropdownMenu`.
       default: '0',
       description: (
         <span>
-          The tolerance within which the <Code>DropdownMenuPopper</Code> is to
-          be checked against window edges.
+          The tolerance within which the <Code>Popper</Code> is to be checked
+          against window edges.
         </span>
       ),
     },
@@ -407,7 +405,7 @@ The optional arrow element to render for the `DropdownMenu`. This can be used to
       default: 10,
       description: (
         <span>
-          The width of the <Code>DropdownMenuArrow</Code>.
+          The width of the <Code>Arrow</Code>.
         </span>
       ),
     },
@@ -417,7 +415,7 @@ The optional arrow element to render for the `DropdownMenu`. This can be used to
       default: 5,
       description: (
         <span>
-          The height of the <Code>DropdownMenuArrow</Code>.
+          The height of the <Code>Arrow</Code>.
         </span>
       ),
     },
@@ -427,8 +425,8 @@ The optional arrow element to render for the `DropdownMenu`. This can be used to
       default: 0,
       description: (
         <span>
-          The offset of the `<Code>DropdownMenuArrow</Code> along the edge of{' '}
-          <Code>DropdownMenuPopper</Code>.
+          The offset of the `<Code>Arrow</Code> along the edge of{' '}
+          <Code>Popper</Code>.
         </span>
       ),
     },
