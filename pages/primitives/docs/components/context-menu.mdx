@@ -69,7 +69,7 @@ const TriggerArea = styled(ContextMenuPrimitive.ContextMenuTrigger, {
 render(
   <ContextMenuPrimitive.Root>
     <TriggerArea>Right click anywhere here</TriggerArea>
-    <MenuPopper sideOffset={5}>
+    <MenuPopper sideOffset={-5}>
       <MenuItem onSelect={() => alert('undo')}>Undo</MenuItem>
       <MenuItem onSelect={() => alert('redo')}>Redo</MenuItem>
       <MenuSeparator />
