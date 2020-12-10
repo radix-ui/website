@@ -32,13 +32,15 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
   const router = useRouter();
   const productType = useProductType();
 
-  let productPages;
+  let allProductPages: FrontMatter[];
   if (productType === 'primitives') {
-    productPages = primitivesPages;
+    allProductPages = primitivesPages;
   }
   if (productType === 'designSystem') {
-    productPages = designSystemPages;
+    allProductPages = designSystemPages;
   }
+
+  const productPages = allProductPages.filter((p) => p.status !== 'soon');
 
   const currentPageId = router.pathname.substr(1);
   const currentPageIndex = productPages.findIndex((page) => page.id === currentPageId);
