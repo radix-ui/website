@@ -277,7 +277,7 @@ render(
 
 #### AlertDialogOverlay
 
-`AlertDialogOverlay` is the overlay that covers the inert portion of the view when a dialog is open.
+`AlertDialogOverlay` is the overlay that covers the inert portion of the view when an `AlertDialog` is open.
 
 <PropsTable
   data={[
@@ -328,14 +328,14 @@ render(
       type: '(event: MouseEvent | TouchEvent) => void',
       typeSimple: 'function',
       description:
-        'Event handler called when the a pointer event happens outside of the `Dialog`. It can be prevented by calling `event.preventDefault`.',
+        'Event handler called when the a pointer event happens outside of the `AlertDialog`. It can be prevented by calling `event.preventDefault`.',
     },
   ]}
 />
 
 #### AlertDialogTrigger
 
-`AlertDialogTrigger` is the button that triggers the `AlertDialog`. Use this when an uncontrolled state is desired.
+`AlertDialogTrigger` is the button that triggers the `AlertDialog`.
 
 #### AlertDialogCancel
 
