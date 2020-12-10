@@ -16,5 +16,5 @@ export { Separator as SeparatorPrimitive } from '@interop-ui/react-separator';
 export { Slider as SliderPrimitive } from '@interop-ui/react-slider';
 export { Switch as SwitchPrimitive } from '@interop-ui/react-switch';
 export { Tabs as TabsPrimitive } from '@interop-ui/react-tabs';
-export { ToggleButton } from '@interop-ui/react-toggle-button';
+export { ToggleButton as ToggleButtonPrimitive } from '@interop-ui/react-toggle-button';
 export { Tooltip as TooltipPrimitive } from '@interop-ui/react-tooltip';
