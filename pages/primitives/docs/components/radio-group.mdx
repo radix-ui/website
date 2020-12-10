@@ -74,6 +74,66 @@ render(
 );
 ```
 
+### Accessibility
+
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Tab'],
+      description: (
+        <ul>
+          <li>
+            Moves focus to the checked <Code>Item</Code>.
+          </li>
+          <li>
+            If no <Code>Item</Code> is checked, focus moves to the first{' '}
+            <Code>Item</Code> in the group.
+          </li>
+        </ul>
+      ),
+    },
+    {
+      keys: ['Space', 'Enter'],
+      description: (
+        <span>
+          When focus is on an unchecked <Code>Item</Code>, checks the{' '}
+          <Code>Item</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowDown', 'ArrowRight'],
+      description: (
+        <ul>
+          <li>
+            Moves focus to the next <Code>Item</Code> in the group.
+          </li>
+          <li>
+            When focus is on the last <Code>Item</Code>, moves focus to the
+            first <Code>Item</Code> in the group.
+          </li>
+        </ul>
+      ),
+    },
+    {
+      keys: ['ArrowUp', 'ArrowLeft'],
+      description: (
+        <ul>
+          <li>
+            Moves focus to the previous <Code>Item</Code> in the group.
+          </li>
+          <li>
+            When focus is on the first <Code>Item</Code>, moves focus to the
+            last <Code>Item</Code> in the group.
+          </li>
+        </ul>
+      ),
+    },
+  ]}
+/>
+
 ### API Reference
 
 #### RadioGroup
