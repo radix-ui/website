@@ -1,8 +1,46 @@
 ---
-title: 'Collapsible'
+title: Collapsible
+name: collapsible
+version: 0.0.1-13
+description: Useful to group information into collapsible items.
+features:
+  - Full keyboard navigation.
+  - Can be controlled or uncontrolled.
 ---
 
-Collapsible Primitive. Coming soon.
+### Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-collapsible
+```
+
+Then import the component in your component file.
+
+```jsx
+// Avatar.tsx
+import * as CollapsiblePrimitive from '@interop-ui/react-collapsible';
+```
+
+### Basic example
+
+```jsx live manual
+// Collapsible.tsx
+// import * as CollapsiblePrimitive from '@interop-ui/react-collapsible';
+// import { Button } from '@radix-ui/ds-button';
+
+render(
+  <CollapsiblePrimitive.Collapsible>
+    <CollapsiblePrimitive.CollapsibleButton as={Button}>
+      Button
+    </CollapsiblePrimitive.CollapsibleButton>
+    <CollapsiblePrimitive.CollapsibleContent>
+      Content 1
+    </CollapsiblePrimitive.CollapsibleContent>
+  </CollapsiblePrimitive.Collapsible>
+);
+```
 
 ### API Reference
 

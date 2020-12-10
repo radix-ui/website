@@ -26,9 +26,7 @@ import * as AnnouncePrimitive from '@interop-ui/react-announce';
 // Announce.tsx
 // import * as AnnouncePrimitive from '@interop-ui/react-announce';
 
-render(
-  <AnnouncePrimitive type="polite">Welcome to Radix UI.</AnnouncePrimitive>
-);
+render(<AnnouncePrimitive>Welcome to Radix UI.</AnnouncePrimitive>);
 ```
 
 ### API Reference
@@ -72,6 +70,7 @@ render(
       typeSimple: 'enum',
       description:
         'Mirrors the `aria-live` DOM attribute. The `aria-live=POLITENESS_SETTING` is used to set the priority with which screen reader should treat updates to live regions. Its possible settings are: off, polite or assertive. Defaults to `polite`.',
+      default: 'polite',
     },
   ]}
 />

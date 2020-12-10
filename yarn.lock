@@ -480,6 +480,15 @@
     "@interop-ui/react-utils" "0.0.1-12"
     "@interop-ui/utils" "0.0.1-4"
 
+"@interop-ui/react-collapsible@0.0.1-14":
+  version "0.0.1-13"
+  resolved "https://registry.yarnpkg.com/@interop-ui/react-collapsible/-/react-collapsible-0.0.1-13.tgz#6b9f790bc4420bdf23f7fd411781b8c518bf0d11"
+  integrity sha512-E1xPSgQ3SOR1Q8S9NnGIXJ8zblqQjfARwQbYDlb81ZO5qmIe4HhUf7EOni6VX679gRboa7D9v4QTYqzTFiXmHQ==
+  dependencies:
+    "@interop-ui/react-polymorphic" "0.0.1-0"
+    "@interop-ui/react-utils" "0.0.1-13"
+    "@interop-ui/utils" "0.0.1-5"
+
 "@interop-ui/react-collection@0.0.1-12":
   version "0.0.1-12"
   resolved "https://registry.yarnpkg.com/@interop-ui/react-collection/-/react-collection-0.0.1-12.tgz#3e215f7850ab7daf4dce5a1fbe6dd0a5540507ca"
