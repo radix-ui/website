@@ -3,3 +3,36 @@ title: 'Progress Bar'
 ---
 
 Progress Bar Primitive. Coming soon.
+
+### API Reference
+
+#### ProgressBar
+
+`ProgressBar` is the root component.
+
+<PropsTable
+  data={[
+    {
+      name: 'value',
+      type: 'number | null',
+      description: 'The value of the `ProgressBar`',
+    },
+    {
+      name: 'max',
+      type: 'number',
+      description: 'The max value the progress can reach.',
+    },
+    {
+      name: 'getValueLabel',
+      type: '(value: number, max: number) => string',
+      typeSimple: 'function',
+      default: 'xx%',
+      description:
+        'A function to get the accessible label text representing the current value, for example "35%".',
+    },
+  ]}
+/>
+
+#### ProgressBarIndicator
+
+`ProgressBarIndicator` is used to show the progress visually. It also makes progress accessible to assistive technologies.
