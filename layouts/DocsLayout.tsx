@@ -295,7 +295,7 @@ const ComponentInfo = ({ version, name }) => (
     <Box css={{ mb: '$2' }}>
       <Link
         variant="blue"
-        href={`https://www.npmjs.com/package/@interop-ui/react-${name}`}
+        href={`https://www.npmjs.com/package/@radix-ui/react-${name}`}
         target="_blank"
       >
         <Text size="2">View on npm</Text>
