@@ -1,6 +1,7 @@
 ---
 title: Tooltip
 name: tooltip
+version: 0.0.1-13
 description: An accessible Tooltip component that shows information related to an element when it is hovered or focused.
 features:
   - Built in time machine to control appearance delays
@@ -42,7 +43,7 @@ render(
     <TooltipPrimitive.Trigger as={IconButton}>
       <BlendingModeIcon aria-label="Blending mode" />
     </TooltipPrimitive.Trigger>
-    <TooltipPrimitive.Popper side="top">
+    <TooltipPrimitive.Popper>
       <TooltipContent>Blending mode</TooltipContent>
       <TooltipPrimitive.Arrow style={{ fill: 'gainsboro' }} />
     </TooltipPrimitive.Popper>
