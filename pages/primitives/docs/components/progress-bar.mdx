@@ -1,8 +1,52 @@
 ---
-title: 'Progress Bar'
+title: Progress Bar
+name: progress-bar
+version: 0.0.1-13
+description:
 ---
 
-Progress Bar Primitive. Coming soon.
+### Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-avatar
+```
+
+Then import the component in your component file.
+
+```jsx
+// Avatar.tsx
+import * as AvatarPrimitive from '@interop-ui/react-avatar';
+```
+
+### Basic example
+
+```jsx live manual
+// Avatar.tsx
+// import * as AvatarPrimitive from '@interop-ui/react-avatar';
+
+const ProgressBar = styled(ProgressBarPrimitive, {
+  position: 'relative',
+  height: 10,
+  overflow: 'hidden',
+  borderRadius: 5,
+  background: 'gainsboro',
+});
+
+const ProgressBarIndicator = styled(ProgressBarPrimitive.Indicator, {
+  boxSizing: 'border-box',
+  position: 'absolute',
+  backgroundColor: 'dodgerblue',
+  height: '100%',
+});
+
+render(
+  <ProgressBar value={50}>
+    <ProgressBarIndicator style={{ width: '50%' }} />
+  </ProgressBar>
+);
+```
 
 ### API Reference
 

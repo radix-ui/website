@@ -9,7 +9,7 @@ export { Checkbox as CheckboxPrimitive } from '@interop-ui/react-checkbox';
 export * as DialogPrimitive from '@interop-ui/react-dialog';
 export { Label as LabelPrimitive } from '@interop-ui/react-label';
 export { Popover as PopoverPrimitive } from '@interop-ui/react-popover';
-export { ProgressBar } from '@interop-ui/react-progress-bar';
+export { ProgressBar as ProgressBarPrimitive } from '@interop-ui/react-progress-bar';
 export { RadioGroup } from '@interop-ui/react-radio-group';
 export { Separator } from '@interop-ui/react-separator';
 export { Slider as SliderPrimitive } from '@interop-ui/react-slider';
