@@ -46,16 +46,25 @@ render(<Separator />);
   data={[
     {
       name: 'orientation',
-      type: 'horizontal | vertical',
+      type: '"horizontal" | "vertical"',
       typeSimple: 'enum',
-      default: 'horizontal',
-      description: 'The orientation of the `Separator`',
+      default: '"horizontal"',
+      description: (
+        <span>
+          The orientation of the <Code>Separator</Code>.
+        </span>
+      ),
     },
     {
       name: 'decorative',
       type: 'boolean',
-      description:
-        'Whether the `Separator` is purely visual and carries no semantic at all. Making this true will ensure the separator is not present in the accessibility tree.',
+      description: (
+        <span>
+          Whether or not the <Code>Separator</Code> is purely visual and carries
+          no semantic meaining. Setting this to <Code>true</Code> will ensure
+          the separator is not present in the accessibility tree.
+        </span>
+      ),
     },
   ]}
 />
