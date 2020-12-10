@@ -3,3 +3,46 @@ title: 'Collapsible'
 ---
 
 Collapsible Primitive. Coming soon.
+
+### API Reference
+
+#### Collapsible
+
+`Collapsible` is the root component.
+
+<PropsTable
+  data={[
+    {
+      name: 'defaultIsOpen',
+      type: 'boolean',
+      description:
+        'The open state of the `Collapsible` when it is initially rendered. Use `defaultIsOpen` if you do not need to control the state of an `Collapsible`.',
+    },
+    {
+      name: 'isOpen',
+      type: 'boolean',
+      description:
+        'The controlled open state of the `Collapsible`. Must be used in conjunction with `onToggle`.',
+    },
+    {
+      name: 'onToggle',
+      type: '(isOpen: boolean) => void',
+      typeSimple: 'function',
+      description:
+        'The callback that fires when the open state of the `Collapsible` changes.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      description: 'Whether the `Collapsible` is disabled or not.',
+    },
+  ]}
+/>
+
+#### CollapsibleButton
+
+`CollapsibleButton` is the button that triggers the `Collapsible`.
+
+#### CollapsibleContent
+
+`CollapsibleContent` contains the collapsible content.
