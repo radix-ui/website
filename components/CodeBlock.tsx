@@ -190,8 +190,6 @@ export function CodeBlock({
         // replace `render` with export
         .replace('export default () => ', 'render');
 
-      console.log(code);
-
       return addFragment ? `<>${code}</>` : code;
     },
     scope: {
@@ -296,7 +294,7 @@ export function CodeBlock({
       css={{
         position: 'relative',
         zIndex: 1,
-        mb: '$3'
+        mb: '$3',
       }}
     >
       <LiveProvider disabled {...liveProviderProps}>
