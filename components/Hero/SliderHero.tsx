@@ -2,9 +2,9 @@ import React from 'react';
 import { Box, styled, css } from '@modulz/design-system';
 
 const anim = css.keyframes({
-  '33%': { transform: 'translateX(150px)' },
-  '66%': { transform: 'translateX(50px)' },
-  '100%': { transform: 'translateX(100px)' },
+  '33%': { transform: 'translateX(100px)' },
+  '66%': { transform: 'translateX(42px)' },
+  '100%': { transform: 'translateX(70px)' },
 });
 
 const scale = css.keyframes({
@@ -22,7 +22,7 @@ const HeroSkeleton = () => {
         backgroundColor: 'hsla(0,0%,0%,.35)',
         borderRadius: '9999px',
         flexShrink: 0,
-        width: '200px',
+        width: 140,
         display: 'flex',
       }}
     >
@@ -33,10 +33,10 @@ const HeroSkeleton = () => {
           backgroundColor: 'white',
           borderRadius: '9999px',
           flexShrink: 0,
-          width: '200px',
+          width: 140,
           transform: 'ScaleX(.5)',
           transformOrigin: 'left',
-          animation: `${scale} 3000ms infinite`,
+          animation: `${scale} 2500ms infinite`,
           animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
           animationDelay: '1000ms',
         }}
@@ -50,8 +50,8 @@ const HeroSkeleton = () => {
           height: 16, 
           marginTop: -7,
           marginLeft: -8,
-          transform: 'translateX(100px)',
-          animation: `${anim} 3000ms infinite`,
+          transform: 'translateX(70px)',
+          animation: `${anim} 2500ms infinite`,
           animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
           animationDelay: '1000ms',
         }}

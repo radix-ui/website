@@ -21,7 +21,7 @@ export function HeroSlot({ children }) {
             height: 0,
             overflow: 'hidden',
             // paddingTop: 'calc(591.44px / 1127.34px * 100%)',
-            paddingTop: '42%',
+            paddingTop: '40%',
             position: 'relative',
 
             background:
