@@ -120,29 +120,29 @@ render(
 <PropsTable
   data={[
     {
-      name: 'defaultIsOpen',
+      name: 'defaultOpen',
       type: 'boolean',
       description: (
         <span>
           The open state of the <Code>Popover</Code> when it is initially
-          rendered. Use <Code>defaultIsOpen</Code> if you do not need to control
+          rendered. Use <Code>defaultOpen</Code> if you do not need to control
           the state of an <Code>Popover</Code>.
         </span>
       ),
     },
     {
-      name: 'isOpen',
+      name: 'open',
       type: 'boolean',
       description: (
         <span>
           The controlled open state of the <Code>Popover</Code>. Must be used in
-          conjunction with <Code>onIsOpenChange</Code>.
+          conjunction with <Code>onOpenChange</Code>.
         </span>
       ),
     },
     {
-      name: 'onIsOpenChange',
-      type: '(isOpen: boolean) => void',
+      name: 'onOpenChange',
+      type: '(open: boolean) => void',
       typeSimple: 'function',
       description: (
         <span>
@@ -269,7 +269,7 @@ The component that pops out in an open `Popover`.
       ),
     },
     {
-      name: 'shouldPortal',
+      name: 'portalled',
       type: 'boolean',
       default: 'true',
       description: (
@@ -346,7 +346,7 @@ The component that pops out in an open `Popover`.
       ),
     },
     {
-      name: 'shouldAvoidCollisions',
+      name: 'avoidCollisions',
       type: 'boolean',
       default: 'true',
       description: (

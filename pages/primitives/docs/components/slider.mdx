@@ -405,7 +405,7 @@ render(
       description: (
         <span>
           The controlled value of the <Code>Slider</Code>`. Must be used in
-          conjunction with <Code>onChange</Code>.
+          conjunction with <Code>onValueChange</Code>.
         </span>
       ),
     },
@@ -474,9 +474,9 @@ render(
       description: <span>The maximum value for the range</span>,
     },
     {
-      name: 'onChange',
+      name: 'onValueChange',
       required: false,
-      type: 'onChange?(value: number[]): void',
+      type: 'onValueChange?(value: number[]): void',
       typeSimple: 'function',
       description: (
         <span>
