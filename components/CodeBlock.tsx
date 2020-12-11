@@ -159,7 +159,10 @@ export function CodeBlock({
   const [isOpen, setIsOpen] = React.useState(compact ? false : true);
   const router = useRouter();
 
-  const [_, productType] = router.pathname.split('/');
+  // based on the url
+  // /primitives/docs/components/popover
+  const [, productType, , , componentName] = router.pathname.split('/');
+
   const components =
     productType === 'design-system' ? DS : productType === 'primitives' ? Primitives : {};
 
@@ -180,6 +183,7 @@ export function CodeBlock({
       // Always expose the the following
       Button: DS.Button,
       IconButton: DS.IconButton,
+      ...require('../pages/primitives/docs/components/context-menu'),
     },
     noInline: manual,
     ...props,

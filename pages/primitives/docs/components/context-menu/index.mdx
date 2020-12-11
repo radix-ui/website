@@ -20,20 +20,56 @@ Install the component from your command line.
 npm install @radix-ui/react-context-menu
 ```
 
-Then import the component in your component file.
+### Assembly
+
+Import the component, add style to each part and piece the parts together.
 
 ```jsx
-// ContextMenu.tsx
+import { styled } from '@stitches/react';
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
+
+const Root = styled(ContextMenuPrimitive.Root, {});
+const MenuPopper = styled(ContextMenuPrimitive.Popper, {});
+const MenuItem = styled(ContextMenuPrimitive.MenuItem, {});
+const MenuSeparator = styled(ContextMenuPrimitive.MenuSeparator, {});
+const TriggerArea = styled(ContextMenuPrimitive.Trigger, {});
+
+export default () => (
+  <Root>
+    <TriggerArea>Trigger</TriggerArea>
+    <MenuPopper>
+      <MenuItem>Item</MenuItem>
+      <MenuSeparator />
+      <MenuItem>Item</MenuItem>
+    </MenuPopper>
+  </Root>
+);
 ```
 
 ### Basic example
 
-```jsx live manual
-// ContextMenu.tsx
-// import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
+```jsx live
+<Root>
+  <TriggerArea>Right click anywhere here</TriggerArea>
+  <MenuPopper sideOffset={-5}>
+    <MenuItem onSelect={() => alert('undo')}>Undo</MenuItem>
+    <MenuItem onSelect={() => alert('redo')}>Redo</MenuItem>
+    <MenuSeparator />
+    <MenuItem disabled onSelect={() => alert('cut')}>
+      Cut
+    </MenuItem>
+    <MenuItem onSelect={() => alert('copy')}>Copy</MenuItem>
+    <MenuItem onSelect={() => alert('paste')}>Paste</MenuItem>
+  </MenuPopper>
+</Root>
+```
 
-const MenuPopper = styled(ContextMenuPrimitive.ContextMenuPopper, {
+### Styles
+
+Add your own styles to each part. Below are some basic recommendations.
+
+```js
+const menuPopperStyles = {
   minWidth: 130,
   backgroundColor: 'white',
   borderRadius: 6,
@@ -42,7 +78,7 @@ const MenuPopper = styled(ContextMenuPrimitive.ContextMenuPopper, {
     'hsla(206,22%,7%,.15) 0px 5px 15px -5px, hsla(206,22%,7%,.1) 0px 5px 10px -15px',
 });
 
-const MenuItem = styled(ContextMenuPrimitive.ContextMenuItem, {
+const menuItemStyles = {
   fontSize: 13,
   padding: '5px 10px',
   borderRadius: 3,
@@ -57,34 +93,18 @@ const MenuItem = styled(ContextMenuPrimitive.ContextMenuItem, {
   },
 });
 
-const MenuSeparator = styled(ContextMenuPrimitive.ContextMenuSeparator, {
+const menuSeparatorStyles = {
   height: 1,
   backgroundColor: 'gainsboro',
   margin: '5px 10px',
 });
 
-const TriggerArea = styled(ContextMenuPrimitive.ContextMenuTrigger, {
+const triggerAreaStyles = {
   display: 'block',
   textAlign: 'center',
   padding: 100,
   backgroundColor: 'slategray',
 });
-
-render(
-  <ContextMenuPrimitive.Root>
-    <TriggerArea>Right click anywhere here</TriggerArea>
-    <MenuPopper sideOffset={-5}>
-      <MenuItem onSelect={() => alert('undo')}>Undo</MenuItem>
-      <MenuItem onSelect={() => alert('redo')}>Redo</MenuItem>
-      <MenuSeparator />
-      <MenuItem disabled onSelect={() => alert('cut')}>
-        Cut
-      </MenuItem>
-      <MenuItem onSelect={() => alert('copy')}>Copy</MenuItem>
-      <MenuItem onSelect={() => alert('paste')}>Paste</MenuItem>
-    </MenuPopper>
-  </ContextMenuPrimitive.Root>
-);
 ```
 
 ### Accessibility
