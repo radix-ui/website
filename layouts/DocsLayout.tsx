@@ -320,11 +320,11 @@ const FeatureList = ({ children }) => (
 );
 
 const Feature = ({ children, ...props }) => (
-  <Flex as="li" {...props} css={{ mt: '$4' }}>
+  <Flex as="li" {...props} css={{ mt: '$2' }}>
     <Box
       css={{
         position: 'relative',
-        top: '-2px',
+        top: '0',
         width: '25px',
         height: '25px',
         display: 'flex',
@@ -339,7 +339,7 @@ const Feature = ({ children, ...props }) => (
     >
       <CheckIcon />
     </Box>
-    <Text size="3" css={{ lineHeight: '23px' }}>
+    <Text size="3" css={{ lineHeight: '25px' }}>
       {children}
     </Text>
   </Flex>
