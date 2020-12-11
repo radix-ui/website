@@ -53,7 +53,7 @@ export const MDXComponents = {
     </LinkHeading>
   ),
   h4: ({ children, id, ...props }) => (
-    <LinkHeading id={id} css={{ mt: '$7', mb: '$1', ...props.css }}>
+    <LinkHeading id={id} css={{ mt: '$5', mb: '$1', ...props.css }}>
       <DS.Subheading {...props} id={id} data-heading>
         {children}
       </DS.Subheading>
@@ -63,7 +63,7 @@ export const MDXComponents = {
   // which causes everything to be wrapped in it.
   pre: (props) => <div>{props.children}</div>,
   code: (props) => (
-    <DS.Box css={{}}>
+    <DS.Box css={{ mb:'$3' }}>
       <CodeBlock {...props} />
     </DS.Box>
   ),
