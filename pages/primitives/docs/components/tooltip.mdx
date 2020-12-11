@@ -43,10 +43,10 @@ render(
     <TooltipPrimitive.Trigger as={IconButton}>
       <BlendingModeIcon aria-label="Blending mode" />
     </TooltipPrimitive.Trigger>
-    <TooltipPrimitive.Popper>
+    <TooltipPrimitive.Content>
       <TooltipContent>Blending mode</TooltipContent>
       <TooltipPrimitive.Arrow style={{ fill: 'gainsboro' }} />
-    </TooltipPrimitive.Popper>
+    </TooltipPrimitive.Content>
   </TooltipPrimitive.Root>
 );
 ```
@@ -62,12 +62,12 @@ render(
       description: (
         <ul>
           <li>
-            When focus moves to <Code>Trigger</Code>, opens <Code>Popper</Code>{' '}
+            When focus moves to <Code>Trigger</Code>, opens <Code>Content</Code>{' '}
             without delay.
           </li>
           <li>
             When focus moves from <Code>Trigger</Code>, closes{' '}
-            <Code>Popper</Code> without delay.
+            <Code>Content</Code> without delay.
           </li>
         </ul>
       ),
@@ -76,7 +76,7 @@ render(
       keys: ['Space', 'Enter'],
       description: (
         <span>
-          If <Code>Popper</Code> is open, closes <Code>Popper</Code> without
+          If <Code>Content</Code> is open, closes <Code>Content</Code> without
           delay.
         </span>
       ),
@@ -129,9 +129,9 @@ render(
 
 #### TooltipTrigger
 
-The button that triggers the `Tooltip`. It is also used as the anchor the `TooltipPopper` is positioned against.
+The button that triggers the `Tooltip`. It is also used as the anchor the `TooltipContent` is positioned against.
 
-#### TooltipPopper
+#### TooltipContent
 
 The component that pops out in an open `Tooltip`.
 
@@ -143,7 +143,7 @@ The component that pops out in an open `Tooltip`.
       description: (
         <span>
           By default, screenreaders will announce the content inside{' '}
-          <Code>Popper</Code>. If this is not descriptive enough, or you have
+          <Code>Content</Code>. If this is not descriptive enough, or you have
           content that cannot be announced, use <Code>aria-label</Code> as a
           more descriptive label .
         </span>
@@ -155,7 +155,7 @@ The component that pops out in an open `Tooltip`.
       default: 'true',
       description: (
         <span>
-          Whether or not the <Code>Popper</Code> should render in a{' '}
+          Whether or not the <Code>Content</Code> should render in a{' '}
           <Code>Portal</Code>.
         </span>
       ),
@@ -167,7 +167,7 @@ The component that pops out in an open `Tooltip`.
       description: (
         <span>
           An optional ref to an element to be used as the anchor for the{' '}
-          <Code>Popper</Code>. By default, it will use <Code>Trigger</Code> as
+          <Code>Content</Code>. By default, it will use <Code>Trigger</Code> as
           anchor element.
         </span>
       ),
@@ -179,7 +179,7 @@ The component that pops out in an open `Tooltip`.
       default: '"bottom"',
       description: (
         <span>
-          The desired side to place the <Code>Popper</Code> against{' '}
+          The desired side to place the <Code>Content</Code> against{' '}
           <Code>Trigger</Code>. May switch in case of collisions.
         </span>
       ),
@@ -190,7 +190,7 @@ The component that pops out in an open `Tooltip`.
       default: '0',
       description: (
         <span>
-          The side offset for the <Code>Popper</Code>.
+          The side offset for the <Code>Content</Code>.
         </span>
       ),
     },
@@ -201,8 +201,8 @@ The component that pops out in an open `Tooltip`.
       default: '"center"',
       description: (
         <span>
-          How to align the <Code>Popper</Code> against <Code>Trigger</Code>. May
-          switch in case of collisions.
+          How to align the <Code>Content</Code> against <Code>Trigger</Code>.
+          May switch in case of collisions.
         </span>
       ),
     },
@@ -212,7 +212,7 @@ The component that pops out in an open `Tooltip`.
       default: '0',
       description: (
         <span>
-          The align offset for the <Code>Popper</Code>
+          The align offset for the <Code>Content</Code>
         </span>
       ),
     },
@@ -223,7 +223,7 @@ The component that pops out in an open `Tooltip`.
       description: (
         <span>
           Whether or not collisions with window edges should be avoided. When
-          turned on, this will result in the <Code>Popper</Code> flipping its
+          turned on, this will result in the <Code>Content</Code> flipping its
           side and alignment accordingly.
         </span>
       ),
@@ -234,7 +234,7 @@ The component that pops out in an open `Tooltip`.
       default: '0',
       description: (
         <span>
-          The tolerance within which the <Code>Popper</Code> is to be checked
+          The tolerance within which the <Code>Content</Code> is to be checked
           against window edges.
         </span>
       ),
@@ -244,7 +244,7 @@ The component that pops out in an open `Tooltip`.
 
 #### TooltipArrow
 
-The optional arrow element to render for the `Tooltip`. This can be used to help visually link the `TooltipTrigger` with the `TooltipPopper`. Must live inside `TooltipPopper`.
+The optional arrow element to render for the `Tooltip`. This can be used to help visually link the `TooltipTrigger` with the `TooltipContent`. Must live inside `TooltipContent`.
 
 <PropsTable
   data={[
@@ -275,7 +275,7 @@ The optional arrow element to render for the `Tooltip`. This can be used to help
       description: (
         <span>
           The offset of the `<Code>Arrow</Code> along the edge of{' '}
-          <Code>Popper</Code>.
+          <Code>Content</Code>.
         </span>
       ),
     },

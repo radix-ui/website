@@ -33,7 +33,7 @@ import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 // ContextMenu.tsx
 // import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 
-const MenuPopper = styled(ContextMenuPrimitive.ContextMenuPopper, {
+const MenuContent = styled(ContextMenuPrimitive.ContextMenuContent, {
   minWidth: 130,
   backgroundColor: 'white',
   borderRadius: 6,
@@ -73,7 +73,7 @@ const TriggerArea = styled(ContextMenuPrimitive.ContextMenuTrigger, {
 render(
   <ContextMenuPrimitive.Root>
     <TriggerArea>Right click anywhere here</TriggerArea>
-    <MenuPopper sideOffset={-5}>
+    <MenuContent sideOffset={-5}>
       <MenuItem onSelect={() => alert('undo')}>Undo</MenuItem>
       <MenuItem onSelect={() => alert('redo')}>Redo</MenuItem>
       <MenuSeparator />
@@ -82,7 +82,7 @@ render(
       </MenuItem>
       <MenuItem onSelect={() => alert('copy')}>Copy</MenuItem>
       <MenuItem onSelect={() => alert('paste')}>Paste</MenuItem>
-    </MenuPopper>
+    </MenuContent>
   </ContextMenuPrimitive.Root>
 );
 ```
@@ -98,23 +98,23 @@ render(
       description: (
         <ul>
           <li>
-            When focus is on an <Code>Item</Code>, closes <Code>Popper</Code>.
+            When focus is on an <Code>Item</Code>, closes <Code>Content</Code>.
           </li>
           <li>
             When focus is on an unchecked <Code>CheckboxItem</Code>, checks the{' '}
-            <Code>CheckboxItem</Code> and closes <Code>Popper</Code>.
+            <Code>CheckboxItem</Code> and closes <Code>Content</Code>.
           </li>
           <li>
             When focus is on a checked <Code>CheckboxItem</Code>, unchecks the{' '}
-            <Code>CheckboxItem</Code> and closes <Code>Popper</Code>.
+            <Code>CheckboxItem</Code> and closes <Code>Content</Code>.
           </li>
           <li>
             When focus is on an unchecked <Code>RadioItem</Code>, checks the{' '}
-            <Code>RadioItem</Code> and closes <Code>Popper</Code>.
+            <Code>RadioItem</Code> and closes <Code>Content</Code>.
           </li>
           <li>
             When focus is on a checked <Code>RadioItem</Code>, unchecks the{' '}
-            <Code>RadioItem</Code> and closes <Code>Popper</Code>.
+            <Code>RadioItem</Code> and closes <Code>Content</Code>.
           </li>
         </ul>
       ),
@@ -142,7 +142,7 @@ render(
       keys: ['Esc'],
       description: (
         <span>
-          Closes <Code>Popper</Code>.
+          Closes <Code>Content</Code>.
         </span>
       ),
     },
@@ -159,9 +159,9 @@ render(
 
 `ContextMenuTrigger` is the area that triggers the `ContextMenu`. Wrap this around the thing you want your `ContextMenu` to open when right-clicking (or using the relevant keyboard shortcuts).
 
-#### ContextMenuPopper
+#### ContextMenuContent
 
-`ContextMenuPopper` is the component that pops out in an open `ContextMenu`.
+`ContextMenuContent` is the component that pops out in an open `ContextMenu`.
 
 <PropsTable
   data={[
@@ -172,7 +172,7 @@ render(
       description: (
         <span>
           When <Code>true</Code>, hover/focus/click interactions will be
-          disabled on elements outside the <Code>Popper</Code>. Users will need
+          disabled on elements outside the <Code>Content</Code>. Users will need
           to click twice on outside elements to interact with them: Once to
           close the <Code>ContextMenu</Code>, and again to trigger the element.
         </span>
@@ -196,7 +196,7 @@ render(
       description: (
         <span>
           Event handler called when the a pointer event happens outside of the{' '}
-          <Code>Popper</Code>. It can be prevented by calling{' '}
+          <Code>Content</Code>. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
         </span>
       ),
@@ -208,8 +208,8 @@ render(
       description: (
         <span>
           Event handler called when an interaction happens outside the
-          <Code>Popper</Code>. Specifically, when a pointer event happens outside
-          of the `ContextMenuPopper` or focus moves outside of it. It can be prevented
+          <Code>Content</Code>. Specifically, when a pointer event happens outside
+          of the `ContextMenuContent` or focus moves outside of it. It can be prevented
           by calling <Code>event.preventDefault</Code>.
         </span>
       ),
@@ -227,7 +227,7 @@ render(
       default: '"bottom"',
       description: (
         <span>
-          The desired side to place the <Code>Popper</Code> against the mouse
+          The desired side to place the <Code>Content</Code> against the mouse
           position. May switch in case of collisions.
         </span>
       ),
@@ -238,7 +238,7 @@ render(
       default: '0',
       description: (
         <span>
-          The side offset for the <Code>Popper</Code>
+          The side offset for the <Code>Content</Code>
         </span>
       ),
     },
@@ -249,7 +249,7 @@ render(
       default: '"start"',
       description: (
         <span>
-          How to align the <Code>Popper</Code> against the mouse position. May
+          How to align the <Code>Content</Code> against the mouse position. May
           switch in case of collisions.
         </span>
       ),
@@ -260,7 +260,7 @@ render(
       default: '0',
       description: (
         <span>
-          The align offset for the <Code>Popper</Code>
+          The align offset for the <Code>Content</Code>
         </span>
       ),
     },
@@ -271,7 +271,7 @@ render(
       description: (
         <span>
           Whether or not collisions with window edges should be avoided. When
-          turned on, this will result in the <Code>Popper</Code> flipping its
+          turned on, this will result in the <Code>Content</Code> flipping its
           side and alignment accordingly.
         </span>
       ),
@@ -282,7 +282,7 @@ render(
       default: '0',
       description: (
         <span>
-          The tolerance within which the <Code>Popper</Code> is to be checked
+          The tolerance within which the <Code>Content</Code> is to be checked
           against window edges.
         </span>
       ),
