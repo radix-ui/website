@@ -166,6 +166,13 @@ export function CodeBlock({
   const components =
     productType === 'design-system' ? DS : productType === 'primitives' ? Primitives : {};
 
+  let ExampleComponents = {};
+  try {
+    ExampleComponents = require(`./Examples/${componentName}`);
+  } catch (error) {
+    console.warn(`No example components found for ${componentName}`);
+  }
+
   const language = className && className.replace(/language-/, '');
   const { hasCopied, onCopy } = useClipboard(editorCode);
 
@@ -183,7 +190,8 @@ export function CodeBlock({
       // Always expose the the following
       Button: DS.Button,
       IconButton: DS.IconButton,
-      ...require('./Examples/context-menu.tsx'),
+      // Styled Parts for examples
+      ...ExampleComponents,
     },
     noInline: manual,
     ...props,
