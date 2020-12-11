@@ -22,6 +22,7 @@ import { pages as designSystemPages } from '../utils/designSystem';
 import { useProductType } from '../utils/useProductType';
 import { ScrollArea } from '../components/ScrollArea';
 import { CheckIcon } from '@modulz/radix-icons';
+import { HeroContext } from '../components/HeroSlot';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -31,6 +32,7 @@ type LayoutProps = {
 export default function DocsLayout({ children, frontMatter }: LayoutProps) {
   const router = useRouter();
   const productType = useProductType();
+  const heroSlotRef = React.useRef<HTMLDivElement>(null);
 
   let allProductPages: FrontMatter[];
   if (productType === 'primitives') {
@@ -73,9 +75,9 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
           {frontMatter.title}
         </Text>
 
-        <Subtitle css={{ mt: '$2' }}>{frontMatter.description}</Subtitle>
+        <Subtitle css={{ mt: '$2', mb: '$7' }}>{frontMatter.description}</Subtitle>
 
-        <Hero />
+        <div ref={heroSlotRef} />
 
         <Flex>
           <Box css={{ flex: '1 1 100%', mr: '$5' }}>
@@ -90,7 +92,9 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
           <ComponentInfo version={frontMatter.version} name={frontMatter.name} />
         </Flex>
 
-        <Box>{children}</Box>
+        <HeroContext.Provider value={heroSlotRef}>
+          <Box>{children}</Box>
+        </HeroContext.Provider>
 
         {Boolean(frontMatter.relatedIds) && (
           <>
@@ -339,44 +343,4 @@ const Feature = ({ children, ...props }) => (
       {children}
     </Text>
   </Flex>
-);
-
-const Hero = () => (
-  <div
-    style={{
-      height: 300,
-      background:
-        'linear-gradient(330deg, rgba(2,0,36,1) 0%, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%)',
-      marginLeft: -65,
-      marginRight: -65,
-      marginBottom: 45,
-      marginTop: 45,
-      alignItems: 'center',
-      justifyContent: 'center',
-      display: 'flex',
-    }}
-  >
-    <div
-      style={{
-        height: '2px',
-        backgroundColor: 'white',
-        borderRadius: '9999px',
-        flexShrink: 0,
-        width: '20%',
-        display: 'flex',
-        justifyContent: 'center',
-      }}
-    >
-      <div
-        style={{
-          backgroundColor: 'white',
-          borderRadius: '50%',
-          flexShrink: 0,
-          width: '16px',
-          height: '16px',
-          marginTop: -7,
-        }}
-      ></div>
-    </div>
-  </div>
 );
