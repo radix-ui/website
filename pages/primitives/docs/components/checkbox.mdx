@@ -4,6 +4,7 @@ name: checkbox
 version: 0.0.1-13
 description: Useful for allowing users to select one or more options in a form.
 features:
+  - Supports indeterminate state.
   - Full keyboard navigation.
   - Can be controlled or uncontrolled.
 ---
@@ -169,7 +170,7 @@ render(
 
 #### CheckboxIndicator
 
-Renders when the `Checkbox` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
+Renders when the `Checkbox` is in a checked or indeterminate state. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
 
 <PropsTable
   data={[
