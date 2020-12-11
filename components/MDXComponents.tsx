@@ -42,7 +42,13 @@ const LinkHeading = ({
   </DS.Box>
 );
 
+console.log(DS);
+
 export const MDXComponents = {
+  ...DS,
+  TabsList: DS.Tabs.List,
+  TabsTab: DS.Tabs.Tab,
+  TabsPanel: DS.Tabs.Panel,
   h1: (props) => <DS.Title {...props} css={{ mb: '$1', ...props.css }} />,
   h2: (props) => <DS.Subtitle {...props} css={{ mt: '$2', mb: '$6', ...props.css }} />,
   h3: ({ children, id, ...props }) => (
@@ -63,7 +69,7 @@ export const MDXComponents = {
   // which causes everything to be wrapped in it.
   pre: (props) => <div>{props.children}</div>,
   code: (props) => (
-    <DS.Box css={{ mb:'$3' }}>
+    <DS.Box css={{ mb: '$3' }}>
       <CodeBlock {...props} />
     </DS.Box>
   ),

@@ -12,50 +12,53 @@ features:
   - Dismissing and layering behavior is highly customisable.
 ---
 
-import { ContextMenuHero } from '../../../../components/Hero/ContextMenuHero';
-
-<HeroSlot>
-  <ContextMenuHero />
-</HeroSlot>
-
-### Installation
-
-Install the component from your command line.
-
-```bash
-npm install @radix-ui/react-context-menu
+```jsx render
+<ContextMenuPrimitive.Root>
+  <ContextMenuPrimitive.Trigger>
+    <TriggerArea />
+  </ContextMenuPrimitive.Trigger>
+  <MenuPopper sideOffset={-5}>
+    <MenuItem>Undo</MenuItem>
+    <MenuItem>Redo</MenuItem>
+    <MenuSeparator />
+    <MenuItem>Cut</MenuItem>
+    <MenuItem>Copy</MenuItem>
+    <MenuItem>Paste</MenuItem>
+  </MenuPopper>
+</ContextMenuPrimitive.Root>
 ```
 
-### Assembly
-
-Import the component, add style to each part and piece the parts together.
+<Tabs defaultSelectedId="tab-one">
+  <TabsList>
+    <TabsTab id="tab-one">
+      <Text size="2">Component</Text>
+    </TabsTab>
+    <TabsTab id="tab-two">
+      <Text size="2">Styles</Text>
+    </TabsTab>
+  </TabsList>
+  <TabsPanel id="tab-one">
 
 ```jsx
-import {
-  ContextMenu,
-  Trigger,
-  MenuPopper,
-  MenuItem,
-  MenuSeparator,
-} from '@radix-ui/react-context-menu';
-
-export default () => (
-  <ContextMenu>
-    <Trigger>Trigger</Trigger>
-    <MenuPopper>
-      <MenuItem>Item</MenuItem>
-      <MenuSeparator />
-      <MenuItem>Item</MenuItem>
-    </MenuPopper>
-  </ContextMenu>
-);
+<ContextMenuPrimitive.Root>
+  <ContextMenuPrimitive.Trigger>
+    <TriggerArea />
+  </ContextMenuPrimitive.Trigger>
+  <MenuPopper sideOffset={-5}>
+    <MenuItem>Undo</MenuItem>
+    <MenuItem>Redo</MenuItem>
+    <MenuSeparator />
+    <MenuItem>Cut</MenuItem>
+    <MenuItem>Copy</MenuItem>
+    <MenuItem>Paste</MenuItem>
+  </MenuPopper>
+</ContextMenuPrimitive.Root>
 ```
 
-### Basic example
+  </TabsPanel>
+  <TabsPanel id="tab-two">
 
-Here's a basic example with styled parts.
-
-```jsx preview manual
+```jsx manual
 import React from 'react';
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 import { styled } from './stitches.config';
@@ -89,471 +92,5 @@ export default () => (
 );
 ```
 
-### API Reference
-
-#### ContextMenu
-
-`ContextMenu` is the root component.
-
-#### ContextMenuTrigger
-
-`ContextMenuTrigger` is the area that triggers the `ContextMenu`. Wrap this around the thing you want your `ContextMenu` to open when right-clicking (or using the relevant keyboard shortcuts).
-
-#### ContextMenuPopper
-
-`ContextMenuPopper` is the component that pops out in an open `ContextMenu`.
-
-<PropsTable
-  data={[
-    {
-      name: 'disableOutsidePointerEvents',
-      type: 'boolean',
-      default: 'true',
-      description: (
-        <span>
-          When <Code>true</Code>, hover/focus/click interactions will be
-          disabled on elements outside the <Code>Popper</Code>. Users will need
-          to click twice on outside elements to interact with them: Once to
-          close the <Code>ContextMenu</Code>, and again to trigger the element.
-        </span>
-      ),
-    },
-    {
-      name: 'onEscapeKeyDown',
-      type: '(event: KeyboardEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when the escape key is down. It can be prevented
-          by calling <Code>event.preventDefault</Code>
-        </span>
-      ),
-    },
-    {
-      name: 'onPointerDownOutside',
-      type: '(event: MouseEvent | TouchEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when the a pointer event happens outside of the{' '}
-          <Code>Popper</Code>. It can be prevented by calling{' '}
-          <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onInteractOutside',
-      type: '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when an interaction happens outside the
-          <Code>Popper</Code>. Specifically, when a pointer event happens outside
-          of the `ContextMenuPopper` or focus moves outside of it. It can be prevented
-          by calling <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'forceMount',
-      type: 'boolean',
-      description:
-        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
-    },
-    {
-      name: 'side',
-      type: '"top" | "right" | "bottom" | "left"',
-      typeSimple: 'enum',
-      default: '"bottom"',
-      description: (
-        <span>
-          The desired side to place the <Code>Popper</Code> against the mouse
-          position. May switch in case of collisions.
-        </span>
-      ),
-    },
-    {
-      name: 'sideOffset',
-      type: 'number',
-      default: '0',
-      description: (
-        <span>
-          The side offset for the <Code>Popper</Code>
-        </span>
-      ),
-    },
-    {
-      name: 'align',
-      type: '"start" | "center" | "end"',
-      typeSimple: 'enum',
-      default: '"start"',
-      description: (
-        <span>
-          How to align the <Code>Popper</Code> against the mouse position. May
-          switch in case of collisions.
-        </span>
-      ),
-    },
-    {
-      name: 'alignOffset',
-      type: 'number',
-      default: '0',
-      description: (
-        <span>
-          The align offset for the <Code>Popper</Code>
-        </span>
-      ),
-    },
-    {
-      name: 'shouldAvoidCollisions',
-      type: 'boolean',
-      default: 'true',
-      description: (
-        <span>
-          Whether or not collisions with window edges should be avoided. When
-          turned on, this will result in the <Code>Popper</Code> flipping its
-          side and alignment accordingly.
-        </span>
-      ),
-    },
-    {
-      name: 'collisionTolerance',
-      type: 'boolean',
-      default: '0',
-      description: (
-        <span>
-          The tolerance within which the <Code>Popper</Code> is to be checked
-          against window edges.
-        </span>
-      ),
-    },
-  ]}
-/>
-
-#### ContextMenuItem
-
-The component used to render items in the `ContextMenu`.
-
-<PropsTable
-  data={[
-    {
-      name: 'disabled',
-      type: 'boolean',
-      description: (
-        <span>
-          Whether or not the <Code>Item</Code> is disabled. If so it will not be
-          clickable and will not be focusable using arrow keys
-        </span>
-      ),
-    },
-    {
-      name: 'onSelect',
-      type: '(event: Event) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          The callback that fires when an <Code>Item</Code> is selected (via
-          mouse or keyboard). Calling <Code>event.preventDefault</Code> in this
-          handler will prevent the <Code>ContextMenu</Code> from closing when
-          selecting that item.
-        </span>
-      ),
-    },
-    {
-      name: 'textValue',
-      type: 'string',
-      description: (
-        <span>
-          An optional text used for typeahead purpose. By default the typeahead
-          behavior will use the <Code>.textContent</Code> of <Code>Item</Code>{' '}
-          is too complex, or you have non-textual content
-          <Code>Item</Code>. Use this when the content inside the inside.
-        </span>
-      ),
-    },
-  ]}
-/>
-
-#### ContextMenuGroup
-
-Used to group multiple `ContextMenuItem`.
-
-#### ContextMenuLabel
-
-Uused to render a label. It won't be focusable using arrow keys.
-
-#### ContextMenuCheckboxItem
-
-A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and also has an indicator (`ContextMenuItemIndicator`). This conceptually functions like a standard `Checkbox`.
-
-<PropsTable
-  data={[
-    {
-      name: 'checked',
-      type: 'boolean',
-      description: (
-        <span>
-          The controlled checked state of the <Code>CheckboxItem</Code>. Must be
-          used in conjunction with <Code>onCheckedChange</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onCheckedChange',
-      type: '(checked: boolean) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          The callback that fires when the checked state of the{' '}
-          <Code>CheckboxItem</Code> changes.
-        </span>
-      ),
-    },
-    {
-      name: 'disabled',
-      type: 'boolean',
-      description: (
-        <span>
-          Whether the <Code>CheckboxItem</Code> is disabled. If so it will not
-          be clickable and will not be focusable using arrow keys
-        </span>
-      ),
-    },
-    {
-      name: 'onSelect',
-      type: '(event: Event) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          The callback that fires when a <Code>CheckboxItem</Code> is selected
-          (via mouse or keyboard). Calling <Code>event.preventDefault</Code> in
-          this handler will prevent the <Code>ContextMenu</Code> from closing
-          when selecting that item.
-        </span>
-      ),
-    },
-    {
-      name: 'textValue',
-      type: 'string',
-      description: (
-        <span>
-          An optional text used for typeahead purpose. By default the typeahead
-          behavior will use the <Code>.textContent</Code> of{' '}
-          <Code>CheckboxItem</Code>. Use this when the content inside the{' '}
-          <Code>CheckboxItem</Code> is too complex, or you have non-textual
-          content inside.
-        </span>
-      ),
-    },
-  ]}
-/>
-
-#### ContextMenuRadioGroup
-
-`ContextMenuRadioGroup` is a more specific `ContextMenuGroup` which also handles a value out of multiple potential `ContextMenuRadioItem`. This conceptually functions like a standard `RadioGroup`.
-
-<PropsTable
-  data={[
-    {
-      name: 'value',
-      type: 'string',
-      description: (
-        <span>
-          The value of the selected <Code>RadioItem</Code> in this{' '}
-          <Code>RadioGroup</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onValueChange',
-      type: '(value: string) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          The callback that fires when the selected <Code>RadioItem</Code>{' '}
-          changes.
-        </span>
-      ),
-    },
-  ]}
-/>
-
-#### ContextMenuRadioItem
-
-A more specific `ContextMenuItem` which conceptually acts like a standard `Radio`. It has an indicator (`ContextMenuItemIndicator`).
-
-<PropsTable
-  data={[
-    {
-      name: 'value',
-      type: 'string',
-      required: true,
-      description: (
-        <span>
-          The value for this <Code>RadioItem</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'disabled',
-      type: 'boolean',
-      description: (
-        <span>
-          Whether or not the <Code>RadioItem</Code> is disabled. If so it will
-          not be clickable and will not be focusable using arrow keys.
-        </span>
-      ),
-    },
-    {
-      name: 'onSelect',
-      type: '(event: Event) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          The callback that fires when a <Code>RadioItem</Code> is selected (via
-          mouse or keyboard). Calling <Code>event.preventDefault</Code> in this
-          handler will prevent the <Code>ContextMenu</Code> from closing when
-          selecting that item.
-        </span>
-      ),
-    },
-    {
-      name: 'textValue',
-      type: 'string',
-      description: (
-        <span>
-          An optional text used for typeahead purpose. By default the typeahead
-          behavior will use the <Code>.textContent</Code> of{' '}
-          <Code>RadioItem</Code>. Use this when the content inside the{' '}
-          <Code>RadioItem</Code> is too complex, or you have non-textual content
-          inside.
-        </span>
-      ),
-    },
-  ]}
-/>
-
-#### ContextMenuItemIndicator
-
-Renders when the parent `ContextMenuCheckboxItem` or `ContextMenuRadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
-
-<PropsTable
-  data={[
-    {
-      name: 'forceMount',
-      type: 'boolean',
-      description: (
-        <span>
-          Used to force mounting when more control is needed. Useful when
-          controlling animation with React animation libraries.
-        </span>
-      ),
-    },
-  ]}
-/>
-
-#### ContextMenuSeparator
-
-Used to visually separate items in a `ContextMenu`.
-
-### Styling
-
-Add your own styles to each part. Below are some basic recommendations.
-
-```js
-const menuPopperStyles = {});
-
-const menuItemStyles = {
-  cursor: 'default',
-  '&[data-disabled]': {
-		color: 'slategray'
-	},
-});
-
-const menuSeparatorStyles = {
-  height: 1,
-  backgroundColor: 'gainsboro',
-});
-```
-
-#### State attributes
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['MenuItem'],
-      description: (
-        <ul>
-          <li>
-            Disabled: <Code>[data-disabled]</Code>
-          </li>
-          <li>
-            Highlighted: <Code>:focus</Code>
-          </li>
-        </ul>
-      ),
-    },
-  ]}
-/>
-
-### Accessibility
-
-#### Keyboard Interactions
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['Space', 'Enter'],
-      description: (
-        <ul>
-          <li>
-            When focus is on an <Code>Item</Code>, closes <Code>Popper</Code>.
-          </li>
-          <li>
-            When focus is on an unchecked <Code>CheckboxItem</Code>, checks the{' '}
-            <Code>CheckboxItem</Code> and closes <Code>Popper</Code>.
-          </li>
-          <li>
-            When focus is on a checked <Code>CheckboxItem</Code>, unchecks the{' '}
-            <Code>CheckboxItem</Code> and closes <Code>Popper</Code>.
-          </li>
-          <li>
-            When focus is on an unchecked <Code>RadioItem</Code>, checks the{' '}
-            <Code>RadioItem</Code> and closes <Code>Popper</Code>.
-          </li>
-          <li>
-            When focus is on a checked <Code>RadioItem</Code>, unchecks the{' '}
-            <Code>RadioItem</Code> and closes <Code>Popper</Code>.
-          </li>
-        </ul>
-      ),
-    },
-    ,
-    {
-      keys: ['ArrowDown'],
-      description: (
-        <ul>
-          <li>When focus is not on an item, moves focus to the first item.</li>
-          <li>When focus is on an item, moves focus to the next item.</li>
-        </ul>
-      ),
-    },
-    {
-      keys: ['ArrowUp'],
-      description: (
-        <ul>
-          <li>When focus is not on an item, moves focus to the last item.</li>
-          <li>When focus is on an item, moves focus to the previous item.</li>
-        </ul>
-      ),
-    },
-    {
-      keys: ['Esc'],
-      description: (
-        <span>
-          Closes <Code>Popper</Code>.
-        </span>
-      ),
-    },
-  ]}
-/>
+  </TabsPanel>
+</Tabs>
