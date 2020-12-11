@@ -15,6 +15,6 @@ const AvatarSkeleton = styled('div', {
   animation: `${anim} 1000ms infinite`,
 });
 
-export const Hero = () => {
+export function AvatarHero() {
   return <AvatarSkeleton />;
-};
+}

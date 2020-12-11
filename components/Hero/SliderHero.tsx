@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Hero = () => {
+export function SliderHero() {
   return (
     <div
       style={{
@@ -25,4 +25,4 @@ export const Hero = () => {
       ></div>
     </div>
   );
-};
+}
