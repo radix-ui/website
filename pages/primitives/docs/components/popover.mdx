@@ -44,14 +44,12 @@ const PopoverContent = styled(PopoverPrimitive.Content, {
 render(
   <PopoverPrimitive.Root>
     <PopoverPrimitive.Trigger as={Button}>Trigger</PopoverPrimitive.Trigger>
-    <PopoverPrimitive.Popper>
-      <PopoverContent>
-        <h3>Popover content</h3>
-        <p>Are you sure you wanna do this?</p>
-        <PopoverPrimitive.Close as={Button}>Yes</PopoverPrimitive.Close>
-      </PopoverContent>
+    <PopoverContent>
+      <h3>Popover content</h3>
+      <p>Are you sure you wanna do this?</p>
+      <PopoverPrimitive.Close as={Button}>Yes</PopoverPrimitive.Close>
       <TooltipPrimitive.Arrow style={{ fill: 'gainsboro' }} />
-    </PopoverPrimitive.Popper>
+    </PopoverContent>
   </PopoverPrimitive.Root>
 );
 ```
@@ -156,9 +154,9 @@ render(
 
 #### PopoverTrigger
 
-`PopoverTrigger` is the button that triggers the `Popover`. It is also used as the anchor the `PopoverPopper` is positioned against.
+`PopoverTrigger` is the button that triggers the `Popover`. It is also used as the anchor the `PopoverContent` is positioned against.
 
-#### PopoverPopper
+#### PopoverContent
 
 The component that pops out in an open `Popover`.
 
@@ -171,7 +169,7 @@ The component that pops out in an open `Popover`.
       description: (
         <span>
           Whether or not focus should be trapped within the{' '}
-          <Code>PopoverPopper</Code>.
+          <Code>PopoverContent</Code>.
         </span>
       ),
     },
@@ -373,7 +371,7 @@ The component that pops out in an open `Popover`.
 
 #### PopoverArrow
 
-The optional arrow element to render for the `Popover`. This can be used to help visually link the `PopoverTrigger` with the `PopoverPopper`. Must live inside `PopoverPopper`.
+The optional arrow element to render for the `Popover`. This can be used to help visually link the `PopoverTrigger` with the `PopoverContent`. Must live inside `PopoverContent`.
 
 <PropsTable
   data={[
