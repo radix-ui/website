@@ -152,6 +152,7 @@ export function CodeBlock({
   render,
   compact,
   children,
+  preview,
   addFragment,
   ...props
 }) {
@@ -180,7 +181,16 @@ export function CodeBlock({
     theme,
     language,
     code: editorCode,
-    transformCode: (code) => (addFragment ? `<>${code}</>` : code),
+    transformCode: (rawCode) => {
+      const code = rawCode
+        // remove imports
+        .replace(/^([;\s]*import[^"']*(.)[^]*?\2)*/, '')
+        // replace `render` with export
+        .replace('export default () => ', 'render')
+        .replace(/((^|\n)const[^;]+[; ]+)+/, '\n');
+
+      return addFragment ? `<>${code}</>` : code;
+    },
     scope: {
       React,
       ...components,
@@ -199,10 +209,10 @@ export function CodeBlock({
 
   const onChange = (newCode) => setEditorCode(newCode.trim());
 
-  if (language === 'jsx' && live === true) {
+  if (language === 'jsx' && preview === true) {
     return (
       <LiveProvider {...liveProviderProps}>
-        <StyledLivePreview live={live} />
+        <StyledLivePreview live />
         {compact && (
           <Box
             css={{
@@ -224,8 +234,8 @@ export function CodeBlock({
             display: isOpen ? 'block' : 'none',
           }}
         >
-          <CodeContainer live={live}>
-            <LiveEditor onChange={onChange} style={liveEditorStyle} />
+          <CodeContainer live>
+            <LiveEditor onChange={onChange} disabled style={liveEditorStyle} />
           </CodeContainer>
           <CopyButton onClick={onCopy}>{hasCopied ? 'Copied' : 'Copy'}</CopyButton>
           <Text

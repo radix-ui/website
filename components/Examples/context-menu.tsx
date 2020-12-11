@@ -1,13 +1,7 @@
 import { styled } from '@modulz/design-system';
 import * as ContextMenuPrimitive from '@interop-ui/react-context-menu';
 
-export const Root = styled(ContextMenuPrimitive.Root, {
-  minWidth: 130,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 5,
-  boxShadow: 'hsla(206,22%,7%,.15) 0px 5px 15px -5px, hsla(206,22%,7%,.1) 0px 5px 10px -15px',
-});
+export const Root = styled(ContextMenuPrimitive.Root, {});
 
 export const MenuPopper = styled(ContextMenuPrimitive.Popper, {
   minWidth: 130,
