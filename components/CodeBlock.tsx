@@ -271,6 +271,7 @@ export function CodeBlock({
       css={{
         position: 'relative',
         zIndex: 1,
+        mb: '$3'
       }}
     >
       <LiveProvider disabled {...liveProviderProps}>
