@@ -452,7 +452,7 @@ render(
       description: (
         <span>
           The controlled value of the <Code>Item</Code> whose panel is expanded.
-          Must be used in conjunction with <Code>onChange</Code>.
+          Must be used in conjunction with <Code>onValueChange</Code>.
         </span>
       ),
     },
@@ -482,7 +482,7 @@ render(
       ),
     },
     {
-      name: 'onChange',
+      name: 'onValueChange',
       required: false,
       type: '(value: string) => void',
       typeSimple: 'function',
