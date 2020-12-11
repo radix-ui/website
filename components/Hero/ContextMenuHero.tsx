@@ -15,7 +15,8 @@ const Item = styled('div', {
   variants: {
     active: {
       true: {
-        backgroundColor: 'mediumvioletred',
+        background:
+          'linear-gradient(330deg, rgba(2,0,36,1) 0%, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%)',
       },
     },
   },
