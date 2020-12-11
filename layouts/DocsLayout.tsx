@@ -14,6 +14,7 @@ import {
   Container,
 } from '@modulz/design-system';
 import { MDXComponents } from '../components/MDXComponents';
+import { ExternalIcon } from '../components/ExternalIcon';
 import { FrontMatter } from '../types';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
 import { getPostById } from '../utils/allPosts';
@@ -286,16 +287,25 @@ function QuickNav() {
 
 const ComponentInfo = ({ version, name }) => (
   <Box css={{ flex: 0, width: '30%' }}>
-    <Text size="2" color="gray" css={{ fontFamily: '$mono', mb: '$4' }}>
-      Version: v{version}
-    </Text>
+    <Flex css={{ mb: '$4', alignItems: 'baseline' }}>
+      <Text size="2" css={{ fontWeight: 500, mr: '$1' }}>Version:</Text>
+      <Text size="2" color="gray" css={{ fontFamily: '$mono' }}>
+        v{version}
+      </Text>
+    </Flex>
+    <Separator size="2" css={{ mb: '$4' }} />
     <Box css={{ mb: '$2' }}>
       <Link
         variant="blue"
         href={`https://github.com/radix-ui/primitives/tree/main/packages/react/${name}/src`}
         target="_blank"
       >
-        <Text size="2">View on Github</Text>
+        <Flex css={{ display: 'inline-flex', position: 'relative' }}>
+          <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>View on Github</Text>
+          <Box css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
+            <ExternalIcon />
+          </Box>
+        </Flex>
       </Link>
     </Box>
     <Box css={{ mb: '$2' }}>
@@ -304,7 +314,12 @@ const ComponentInfo = ({ version, name }) => (
         href={`https://www.npmjs.com/package/@radix-ui/react-${name}`}
         target="_blank"
       >
-        <Text size="2">View on npm</Text>
+        <Flex css={{ display: 'inline-flex', position: 'relative' }}>
+          <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>View on npm</Text>
+          <Box css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
+            <ExternalIcon />
+          </Box>
+        </Flex>
       </Link>
     </Box>
   </Box>
