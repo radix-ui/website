@@ -90,7 +90,11 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
               </FeatureList>
             )}
           </Box>
-          <ComponentInfo version={frontMatter.version} name={frontMatter.name} />
+          <ComponentInfo
+            version={frontMatter.version}
+            name={frontMatter.name}
+            aria={frontMatter.aria}
+          />
         </Flex>
 
         <HeroContext.Provider value={heroSlotRef}>
@@ -285,7 +289,7 @@ function QuickNav() {
   );
 }
 
-const ComponentInfo = ({ version, name }) => (
+const ComponentInfo = ({ version, name, aria }) => (
   <Box css={{ flex: 0, width: '30%' }}>
     <Flex css={{ mb: '$4', alignItems: 'baseline' }}>
       <Text size="2" css={{ fontWeight: 500, mr: '$1' }}>Version:</Text>
@@ -322,6 +326,13 @@ const ComponentInfo = ({ version, name }) => (
         </Flex>
       </Link>
     </Box>
+    {aria && (
+      <Box css={{ mb: '$2' }}>
+        <Link variant="blue" href={aria} target="_blank">
+          <Text size="2">ARIA design pattern</Text>
+        </Link>
+      </Box>
+    )}
   </Box>
 );
 
