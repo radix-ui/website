@@ -5,7 +5,8 @@ version: 0.0.1
 description: A primitive useful for rendering labels.
 features:
   - Text selection is prevented when double clicking label.
-  - Supports labelling custom controls.
+  - Supports nested controls.
+  - Supports custom controls.
 ---
 
 ### Installation
@@ -47,7 +48,7 @@ Use the `htmlfor` attribute to connect the label with the input's id.
 
 ```jsx live manual compact
 // Label.tsx
-// import * as SliderPrimitive from '@radix-ui/react-label';
+// import * as LabelPrimitive from '@radix-ui/react-label';
 
 const Label = styled(LabelPrimitive.Root, {
   fontSize: '16px',
@@ -61,6 +62,43 @@ render(
     <Label htmlFor="firstName">First name</Label>
     <Input type="text" id="firstName" css={{ ml: 10 }} />
   </>
+);
+```
+
+#### Custom control with label support
+
+Add an `aria-labelledby` attribute to your custom controls using the `useLabelContext` hook to add support for `Label` nesting.
+
+```jsx live manual compact
+// Label.tsx
+// import * as LabelPrimitive from '@radix-ui/react-label';
+// import { useLabelContext } from '@radix-ui/react-label';
+
+const Label = styled(LabelPrimitive.Root, {
+  fontSize: '16px',
+  fontFamily: 'system-ui',
+});
+
+/* A custom form control you have built */
+const CustomCheckbox = () => {
+  const id = useLabelContext();
+  return (
+    <CustomCheckboxPart aria-labelledby={id} tabIndex={0} role="checkbox" />
+  );
+};
+
+const CustomCheckboxPart = styled('span', {
+  display: 'inline-block',
+  verticalAlign: 'middle',
+  border: '1px solid black',
+  width: 15,
+  height: 15,
+});
+
+render(
+  <Label>
+    <CustomCheckbox /> I agree to the terms and conditions
+  </Label>
 );
 ```
 

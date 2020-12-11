@@ -10,6 +10,7 @@ export * as CheckboxPrimitive from '@interop-ui/react-checkbox';
 export * as DialogPrimitive from '@interop-ui/react-dialog';
 export * as DropdownMenuPrimitive from '@interop-ui/react-dropdown-menu';
 export * as LabelPrimitive from '@interop-ui/react-label';
+export { useLabelContext } from '@interop-ui/react-label';
 export * as PopoverPrimitive from '@interop-ui/react-popover';
 export * as ProgressBarPrimitive from '@interop-ui/react-progress-bar';
 export * as RadioGroupPrimitive from '@interop-ui/react-radio-group';
