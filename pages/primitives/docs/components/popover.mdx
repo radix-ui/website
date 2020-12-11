@@ -44,14 +44,12 @@ const PopoverContent = styled(PopoverPrimitive.Content, {
 render(
   <PopoverPrimitive.Root>
     <PopoverPrimitive.Trigger as={Button}>Trigger</PopoverPrimitive.Trigger>
-    <PopoverPrimitive.Popper>
-      <PopoverContent>
-        <h3>Popover content</h3>
-        <p>Are you sure you wanna do this?</p>
-        <PopoverPrimitive.Close as={Button}>Yes</PopoverPrimitive.Close>
-      </PopoverContent>
+    <PopoverContent>
+      <h3>Popover content</h3>
+      <p>Are you sure you wanna do this?</p>
+      <PopoverPrimitive.Close as={Button}>Yes</PopoverPrimitive.Close>
       <TooltipPrimitive.Arrow style={{ fill: 'gainsboro' }} />
-    </PopoverPrimitive.Popper>
+    </PopoverContent>
   </PopoverPrimitive.Root>
 );
 ```
@@ -67,10 +65,10 @@ render(
       description: (
         <ul>
           <li>
-            When focus is on <Code>Trigger</Code>, opens <Code>Popper</Code>.
+            When focus is on <Code>Trigger</Code>, opens <Code>Content</Code>.
           </li>
           <li>
-            When focus is on <Code>Close</Code>, closes <Code>Popper</Code> and
+            When focus is on <Code>Close</Code>, closes <Code>Content</Code> and
             moves focus to <Code>Trigger</Code>.
           </li>
         </ul>
@@ -83,7 +81,7 @@ render(
           <li>Moves focus to the next focusable element.</li>
           <li>
             When focus is on the last focusable element within{' '}
-            <Code>Popper</Code>, moves focus to the first focusable element.
+            <Code>Content</Code>, moves focus to the first focusable element.
           </li>
         </ul>
       ),
@@ -95,7 +93,7 @@ render(
           <li>Moves focus to the previous focusable element.</li>
           <li>
             When focus is on the first focusable element within{' '}
-            <Code>Popper</Code>, moves focus to the last focusable element.
+            <Code>Content</Code>, moves focus to the last focusable element.
           </li>
         </ul>
       ),
@@ -104,7 +102,7 @@ render(
       keys: ['Esc'],
       description: (
         <span>
-          Closes <Code>Popper</Code> and moves focus to <Code>Trigger</Code>.
+          Closes <Code>Content</Code> and moves focus to <Code>Trigger</Code>.
         </span>
       ),
     },
@@ -156,9 +154,9 @@ render(
 
 #### PopoverTrigger
 
-`PopoverTrigger` is the button that triggers the `Popover`. It is also used as the anchor the `PopoverPopper` is positioned against.
+`PopoverTrigger` is the button that triggers the `Popover`. It is also used as the anchor the `PopoverContent` is positioned against.
 
-#### PopoverPopper
+#### PopoverContent
 
 The component that pops out in an open `Popover`.
 
@@ -171,7 +169,7 @@ The component that pops out in an open `Popover`.
       description: (
         <span>
           Whether or not focus should be trapped within the{' '}
-          <Code>PopoverPopper</Code>.
+          <Code>PopoverContent</Code>.
         </span>
       ),
     },
@@ -204,7 +202,7 @@ The component that pops out in an open `Popover`.
       description: (
         <span>
           When <Code>true</Code>, hover/focus/click interactions will be
-          disabled on elements outside the <Code>Popper</Code>. Users will need
+          disabled on elements outside the <Code>Content</Code>. Users will need
           to click twice on outside elements to interact with them: Once to
           close the <Code>Popover</Code>, and again to trigger the element.
         </span>
@@ -228,7 +226,7 @@ The component that pops out in an open `Popover`.
       description: (
         <span>
           Event handler called when the a pointer event happens outside of the{' '}
-          <Code>Popper</Code>. It can be prevented by calling{' '}
+          <Code>Content</Code>. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
         </span>
       ),
@@ -240,7 +238,7 @@ The component that pops out in an open `Popover`.
       description: (
         <span>
           Event handler called when the focus moves outside of the{' '}
-          <Code>Popper</Code>. It can be prevented by calling{' '}
+          <Code>Content</Code>. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
         </span>
       ),
@@ -252,8 +250,8 @@ The component that pops out in an open `Popover`.
       description: (
         <span>
           Event handler called when an interaction happens outside the
-          <Code>Popper</Code>. Specifically, when a pointer event happens outside
-          of the `ContextMenuPopper` or focus moves outside of it. It can be prevented
+          <Code>Content</Code>. Specifically, when a pointer event happens outside
+          of the `ContextMenuContent` or focus moves outside of it. It can be prevented
           by calling <Code>event.preventDefault</Code>.
         </span>
       ),
@@ -264,7 +262,8 @@ The component that pops out in an open `Popover`.
       default: 'false',
       description: (
         <span>
-          Whether scrolling outside the <Code>Popper</Code> should be prevented.
+          Whether scrolling outside the <Code>Content</Code> should be
+          prevented.
         </span>
       ),
     },
@@ -274,7 +273,7 @@ The component that pops out in an open `Popover`.
       default: 'true',
       description: (
         <span>
-          Whether or not the <Code>Popper</Code> should render in a
+          Whether or not the <Code>Content</Code> should render in a
           <Code>Portal</Code>.
         </span>
       ),
@@ -296,7 +295,7 @@ The component that pops out in an open `Popover`.
       description: (
         <span>
           An optional ref to an element to be used as the anchor for the{' '}
-          <Code>Popper</Code>. By default, it will use <Code>Trigger</Code> as
+          <Code>Content</Code>. By default, it will use <Code>Trigger</Code> as
           anchor element.
         </span>
       ),
@@ -308,7 +307,7 @@ The component that pops out in an open `Popover`.
       default: '"bottom"',
       description: (
         <span>
-          The desired side to place the <Code>Popper</Code> against{' '}
+          The desired side to place the <Code>Content</Code> against{' '}
           <Code>Trigger</Code>. May switch in case of collisions.
         </span>
       ),
@@ -319,7 +318,7 @@ The component that pops out in an open `Popover`.
       default: '0',
       description: (
         <span>
-          The side offset for the <Code>Popper</Code>.
+          The side offset for the <Code>Content</Code>.
         </span>
       ),
     },
@@ -330,8 +329,8 @@ The component that pops out in an open `Popover`.
       default: '"center"',
       description: (
         <span>
-          How to align the <Code>Popper</Code> against <Code>Trigger</Code>. May
-          switch in case of collisions.
+          How to align the <Code>Content</Code> against <Code>Trigger</Code>.
+          May switch in case of collisions.
         </span>
       ),
     },
@@ -341,7 +340,7 @@ The component that pops out in an open `Popover`.
       default: '0',
       description: (
         <span>
-          The align offset for the <Code>Popper</Code>
+          The align offset for the <Code>Content</Code>
         </span>
       ),
     },
@@ -352,7 +351,7 @@ The component that pops out in an open `Popover`.
       description: (
         <span>
           Whether or not collisions with window edges should be avoided. When
-          turned on, this will result in the <Code>Popper</Code> flipping its
+          turned on, this will result in the <Code>Content</Code> flipping its
           side and alignment accordingly.
         </span>
       ),
@@ -363,7 +362,7 @@ The component that pops out in an open `Popover`.
       default: '0',
       description: (
         <span>
-          The tolerance within which the <Code>Popper</Code> is to be checked
+          The tolerance within which the <Code>Content</Code> is to be checked
           against window edges.
         </span>
       ),
@@ -373,7 +372,7 @@ The component that pops out in an open `Popover`.
 
 #### PopoverArrow
 
-The optional arrow element to render for the `Popover`. This can be used to help visually link the `PopoverTrigger` with the `PopoverPopper`. Must live inside `PopoverPopper`.
+The optional arrow element to render for the `Popover`. This can be used to help visually link the `PopoverTrigger` with the `PopoverContent`. Must live inside `PopoverContent`.
 
 <PropsTable
   data={[
@@ -404,7 +403,7 @@ The optional arrow element to render for the `Popover`. This can be used to help
       description: (
         <span>
           The offset of the `<Code>Arrow</Code> along the edge of{' '}
-          <Code>Popper</Code>.
+          <Code>Content</Code>.
         </span>
       ),
     },
