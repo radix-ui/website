@@ -1,10 +1,11 @@
 import * as React from 'react';
 import NextLink from 'next/link';
 import * as DS from '@modulz/design-system';
-import { CheckIcon, Link2Icon } from '@modulz/radix-icons';
+import { Link2Icon } from '@modulz/radix-icons';
 import { CodeBlock } from './CodeBlock';
 import { PropsTable } from './PropsTable';
 import { KeyboardTable } from './KeyboardTable';
+import { HeroSlot } from './HeroSlot';
 
 const LinkHeading = ({
   id,
@@ -163,4 +164,5 @@ export const MDXComponents = {
       <KeyboardTable {...props} />
     </DS.Box>
   ),
+  HeroSlot,
 };
