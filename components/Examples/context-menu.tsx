@@ -32,9 +32,4 @@ export const MenuSeparator = styled(ContextMenuPrimitive.MenuSeparator, {
   margin: '5px 10px',
 });
 
-export const TriggerArea = styled(ContextMenuPrimitive.Trigger, {
-  display: 'block',
-  textAlign: 'center',
-  padding: 100,
-  backgroundColor: 'slategray',
-});
+export const TriggerArea = styled(ContextMenuPrimitive.Trigger, {});

@@ -15,7 +15,7 @@ features:
 ```jsx render
 <ContextMenuPrimitive.Root>
   <ContextMenuPrimitive.Trigger>
-    <TriggerArea />
+    <div style={{ padding: 100, backgroundColor: 'slategray' }} />
   </ContextMenuPrimitive.Trigger>
   <MenuPopper sideOffset={-5}>
     <MenuItem>Undo</MenuItem>
@@ -31,55 +31,29 @@ features:
 <Tabs defaultSelectedId="tab-one">
   <TabsList>
     <TabsTab id="tab-one">
-      <Text size="2">Component</Text>
+      <Text size="2">App</Text>
     </TabsTab>
     <TabsTab id="tab-two">
-      <Text size="2">Styles</Text>
+      <Text size="2">ContextMenu</Text>
     </TabsTab>
   </TabsList>
   <TabsPanel id="tab-one">
 
 ```jsx
-<ContextMenuPrimitive.Root>
-  <ContextMenuPrimitive.Trigger>
-    <TriggerArea />
-  </ContextMenuPrimitive.Trigger>
-  <MenuPopper sideOffset={-5}>
-    <MenuItem>Undo</MenuItem>
-    <MenuItem>Redo</MenuItem>
-    <MenuSeparator />
-    <MenuItem>Cut</MenuItem>
-    <MenuItem>Copy</MenuItem>
-    <MenuItem>Paste</MenuItem>
-  </MenuPopper>
-</ContextMenuPrimitive.Root>
-```
+// App
+import {
+  Root,
+  Trigger,
+  MenuPopper,
+  MenuItem,
+  MenuSeparator,
+} from './ContextMenu';
 
-  </TabsPanel>
-  <TabsPanel id="tab-two">
-
-```jsx manual
-import React from 'react';
-import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
-import { styled } from './stitches.config';
-
-const MenuPopper = styled(ContextMenuPrimitive.Popper, {
-  // separator styles
-});
-
-const MenuItem = styled(ContextMenuPrimitive.MenuItem, {
-  // ...item styles
-});
-
-const MenuSeparator = styled(ContextMenuPrimitive.MenuSeparator, {
-  // ...separator styles
-});
-
-export default () => (
-  <ContextMenuPrimitive.Root>
-    <ContextMenuPrimitive.Trigger>
-      <TriggerArea />
-    </ContextMenuPrimitive.Trigger>
+() => (
+  <Root>
+    <Trigger>
+      <div style={{ padding: 100, backgroundColor: 'slategray' }} />
+    </Trigger>
     <MenuPopper sideOffset={-5}>
       <MenuItem>Undo</MenuItem>
       <MenuItem>Redo</MenuItem>
@@ -88,8 +62,56 @@ export default () => (
       <MenuItem>Copy</MenuItem>
       <MenuItem>Paste</MenuItem>
     </MenuPopper>
-  </ContextMenuPrimitive.Root>
+  </Root>
 );
+```
+
+  </TabsPanel>
+  <TabsPanel id="tab-two">
+
+```jsx manual
+// ContextMenu
+import { styled } from '@modulz/design-system';
+import * as ContextMenuPrimitive from '@interop-ui/react-context-menu';
+
+export const Root = styled(ContextMenuPrimitive.Root, {});
+
+export const MenuPopper = styled(ContextMenuPrimitive.Popper, {
+  minWidth: 130,
+  backgroundColor: 'white',
+  borderRadius: 6,
+  padding: 5,
+  boxShadow:
+    'hsla(206,22%,7%,.15) 0px 5px 15px -5px, hsla(206,22%,7%,.1) 0px 5px 10px -15px',
+});
+
+export const MenuItem = styled(ContextMenuPrimitive.MenuItem, {
+  fontSize: 13,
+  padding: '5px 10px',
+  borderRadius: 3,
+  cursor: 'default',
+
+  '&[data-disabled]': { color: 'slategray' },
+
+  ':focus': {
+    outline: 'none',
+    backgroundColor: 'dodgerblue',
+    color: 'white',
+  },
+});
+
+export const MenuSeparator = styled(ContextMenuPrimitive.MenuSeparator, {
+  height: 1,
+  backgroundColor: 'gainsboro',
+  margin: '5px 10px',
+});
+
+export const TriggerArea = styled(ContextMenuPrimitive.Trigger, {
+  display: 'block',
+  textAlign: 'center',
+  padding: 100,
+  backgroundColor: 'slategray',
+});
 ```
 
   </TabsPanel>
