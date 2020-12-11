@@ -183,7 +183,7 @@ export function CodeBlock({
       // Always expose the the following
       Button: DS.Button,
       IconButton: DS.IconButton,
-      ...require('../pages/primitives/docs/components/context-menu/_examples.tsx'),
+      ...require('./Examples/context-menu.tsx'),
     },
     noInline: manual,
     ...props,
