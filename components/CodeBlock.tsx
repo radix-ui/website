@@ -184,10 +184,13 @@ export function CodeBlock({
     transformCode: (rawCode) => {
       const code = rawCode
         // remove imports
-        .replace(/^([;\s]*import[^"']*(.)[^]*?\2)*/, '')
+        .replace(/((^|)import[^;]+[; ]+)+/gi, '')
+        // remove conts
+        .replace(/((^|\n)const[^;]+[; ]+)+/gi, '\n')
         // replace `render` with export
-        .replace('export default () => ', 'render')
-        .replace(/((^|\n)const[^;]+[; ]+)+/, '\n');
+        .replace('export default () => ', 'render');
+
+      console.log(code);
 
       return addFragment ? `<>${code}</>` : code;
     },
@@ -195,8 +198,8 @@ export function CodeBlock({
       React,
       ...components,
       ...RadixIcons,
-      styled,
-      css,
+      // styled,
+      // css,
       // Always expose the the following
       Button: DS.Button,
       IconButton: DS.IconButton,
@@ -238,7 +241,7 @@ export function CodeBlock({
             <LiveEditor onChange={onChange} disabled style={liveEditorStyle} />
           </CodeContainer>
           <CopyButton onClick={onCopy}>{hasCopied ? 'Copied' : 'Copy'}</CopyButton>
-          <Text
+          {/* <Text
             as="span"
             size="1"
             css={{
@@ -256,7 +259,7 @@ export function CodeBlock({
             }}
           >
             Live example
-          </Text>
+          </Text> */}
         </Box>
         <LiveError
           style={{
