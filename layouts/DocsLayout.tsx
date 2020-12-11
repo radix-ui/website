@@ -312,7 +312,7 @@ const ComponentInfo = ({ version, name }) => (
 
 const FeatureList = ({ children }) => (
   <Box>
-    <Heading css={{ mb: '$6' }}>Features</Heading>
+    <Heading css={{ mb: '$4' }}>Features</Heading>
     <Box as="ul" css={{ p: 0, m: 0 }}>
       {children}
     </Box>
@@ -323,8 +323,6 @@ const Feature = ({ children, ...props }) => (
   <Flex as="li" {...props} css={{ mt: '$2' }}>
     <Box
       css={{
-        position: 'relative',
-        top: '0',
         width: '25px',
         height: '25px',
         display: 'flex',
