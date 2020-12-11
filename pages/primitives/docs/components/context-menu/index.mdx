@@ -25,6 +25,7 @@ npm install @radix-ui/react-context-menu
 Import the component, add style to each part and piece the parts together.
 
 ```jsx
+import React from 'react';
 import { styled } from '@stitches/react';
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 
@@ -69,41 +70,18 @@ export default () => (
 Add your own styles to each part. Below are some basic recommendations.
 
 ```js
-const menuPopperStyles = {
-  minWidth: 130,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 5,
-  boxShadow:
-    'hsla(206,22%,7%,.15) 0px 5px 15px -5px, hsla(206,22%,7%,.1) 0px 5px 10px -15px',
-});
+const menuPopperStyles = {});
 
 const menuItemStyles = {
-  fontSize: 13,
-  padding: '5px 10px',
-  borderRadius: 3,
   cursor: 'default',
-
-  '&[data-disabled]': { color: 'slategray' },
-
-  ':focus': {
-    outline: 'none',
-    backgroundColor: 'dodgerblue',
-    color: 'white',
-  },
+  '&[data-disabled]': {
+		color: 'slategray'
+	},
 });
 
 const menuSeparatorStyles = {
   height: 1,
   backgroundColor: 'gainsboro',
-  margin: '5px 10px',
-});
-
-const triggerAreaStyles = {
-  display: 'block',
-  textAlign: 'center',
-  padding: 100,
-  backgroundColor: 'slategray',
 });
 ```
 
