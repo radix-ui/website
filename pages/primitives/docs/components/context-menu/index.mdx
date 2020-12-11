@@ -20,133 +20,6 @@ Install the component from your command line.
 npm install @radix-ui/react-context-menu
 ```
 
-### Assembly
-
-Import the component, add style to each part and piece the parts together.
-
-```jsx
-import React from 'react';
-import { styled } from '@stitches/react';
-import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
-
-const Root = styled(ContextMenuPrimitive.Root, {});
-const MenuPopper = styled(ContextMenuPrimitive.Popper, {});
-const MenuItem = styled(ContextMenuPrimitive.MenuItem, {});
-const MenuSeparator = styled(ContextMenuPrimitive.MenuSeparator, {});
-const TriggerArea = styled(ContextMenuPrimitive.Trigger, {});
-
-export default () => (
-  <Root>
-    <TriggerArea>Trigger</TriggerArea>
-    <MenuPopper>
-      <MenuItem>Item</MenuItem>
-      <MenuSeparator />
-      <MenuItem>Item</MenuItem>
-    </MenuPopper>
-  </Root>
-);
-```
-
-### Basic example
-
-```jsx live
-<Root>
-  <TriggerArea>Right click anywhere here</TriggerArea>
-  <MenuPopper sideOffset={-5}>
-    <MenuItem onSelect={() => alert('undo')}>Undo</MenuItem>
-    <MenuItem onSelect={() => alert('redo')}>Redo</MenuItem>
-    <MenuSeparator />
-    <MenuItem disabled onSelect={() => alert('cut')}>
-      Cut
-    </MenuItem>
-    <MenuItem onSelect={() => alert('copy')}>Copy</MenuItem>
-    <MenuItem onSelect={() => alert('paste')}>Paste</MenuItem>
-  </MenuPopper>
-</Root>
-```
-
-### Styles
-
-Add your own styles to each part. Below are some basic recommendations.
-
-```js
-const menuPopperStyles = {});
-
-const menuItemStyles = {
-  cursor: 'default',
-  '&[data-disabled]': {
-		color: 'slategray'
-	},
-});
-
-const menuSeparatorStyles = {
-  height: 1,
-  backgroundColor: 'gainsboro',
-});
-```
-
-### Accessibility
-
-#### Keyboard Interactions
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['Space', 'Enter'],
-      description: (
-        <ul>
-          <li>
-            When focus is on an <Code>Item</Code>, closes <Code>Popper</Code>.
-          </li>
-          <li>
-            When focus is on an unchecked <Code>CheckboxItem</Code>, checks the{' '}
-            <Code>CheckboxItem</Code> and closes <Code>Popper</Code>.
-          </li>
-          <li>
-            When focus is on a checked <Code>CheckboxItem</Code>, unchecks the{' '}
-            <Code>CheckboxItem</Code> and closes <Code>Popper</Code>.
-          </li>
-          <li>
-            When focus is on an unchecked <Code>RadioItem</Code>, checks the{' '}
-            <Code>RadioItem</Code> and closes <Code>Popper</Code>.
-          </li>
-          <li>
-            When focus is on a checked <Code>RadioItem</Code>, unchecks the{' '}
-            <Code>RadioItem</Code> and closes <Code>Popper</Code>.
-          </li>
-        </ul>
-      ),
-    },
-    ,
-    {
-      keys: ['ArrowDown'],
-      description: (
-        <ul>
-          <li>When focus is not on an item, moves focus to the first item.</li>
-          <li>When focus is on an item, moves focus to the next item.</li>
-        </ul>
-      ),
-    },
-    {
-      keys: ['ArrowUp'],
-      description: (
-        <ul>
-          <li>When focus is not on an item, moves focus to the last item.</li>
-          <li>When focus is on an item, moves focus to the previous item.</li>
-        </ul>
-      ),
-    },
-    {
-      keys: ['Esc'],
-      description: (
-        <span>
-          Closes <Code>Popper</Code>.
-        </span>
-      ),
-    },
-  ]}
-/>
-
 ### API Reference
 
 #### ContextMenu
@@ -513,3 +386,130 @@ Renders when the parent `ContextMenuCheckboxItem` or `ContextMenuRadioItem` is c
 #### ContextMenuSeparator
 
 Used to visually separate items in a `ContextMenu`.
+
+### Assembly
+
+Import the component, add style to each part and piece the parts together.
+
+```jsx
+import React from 'react';
+import { styled } from '@stitches/react';
+import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
+
+const Root = styled(ContextMenuPrimitive.Root, {});
+const MenuPopper = styled(ContextMenuPrimitive.Popper, {});
+const MenuItem = styled(ContextMenuPrimitive.MenuItem, {});
+const MenuSeparator = styled(ContextMenuPrimitive.MenuSeparator, {});
+const TriggerArea = styled(ContextMenuPrimitive.Trigger, {});
+
+export default () => (
+  <Root>
+    <TriggerArea>Trigger</TriggerArea>
+    <MenuPopper>
+      <MenuItem>Item</MenuItem>
+      <MenuSeparator />
+      <MenuItem>Item</MenuItem>
+    </MenuPopper>
+  </Root>
+);
+```
+
+### Basic example
+
+```jsx live
+<Root>
+  <TriggerArea>Right click anywhere here</TriggerArea>
+  <MenuPopper sideOffset={-5}>
+    <MenuItem onSelect={() => alert('undo')}>Undo</MenuItem>
+    <MenuItem onSelect={() => alert('redo')}>Redo</MenuItem>
+    <MenuSeparator />
+    <MenuItem disabled onSelect={() => alert('cut')}>
+      Cut
+    </MenuItem>
+    <MenuItem onSelect={() => alert('copy')}>Copy</MenuItem>
+    <MenuItem onSelect={() => alert('paste')}>Paste</MenuItem>
+  </MenuPopper>
+</Root>
+```
+
+### Styles
+
+Add your own styles to each part. Below are some basic recommendations.
+
+```js
+const menuPopperStyles = {});
+
+const menuItemStyles = {
+  cursor: 'default',
+  '&[data-disabled]': {
+		color: 'slategray'
+	},
+});
+
+const menuSeparatorStyles = {
+  height: 1,
+  backgroundColor: 'gainsboro',
+});
+```
+
+### Accessibility
+
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space', 'Enter'],
+      description: (
+        <ul>
+          <li>
+            When focus is on an <Code>Item</Code>, closes <Code>Popper</Code>.
+          </li>
+          <li>
+            When focus is on an unchecked <Code>CheckboxItem</Code>, checks the{' '}
+            <Code>CheckboxItem</Code> and closes <Code>Popper</Code>.
+          </li>
+          <li>
+            When focus is on a checked <Code>CheckboxItem</Code>, unchecks the{' '}
+            <Code>CheckboxItem</Code> and closes <Code>Popper</Code>.
+          </li>
+          <li>
+            When focus is on an unchecked <Code>RadioItem</Code>, checks the{' '}
+            <Code>RadioItem</Code> and closes <Code>Popper</Code>.
+          </li>
+          <li>
+            When focus is on a checked <Code>RadioItem</Code>, unchecks the{' '}
+            <Code>RadioItem</Code> and closes <Code>Popper</Code>.
+          </li>
+        </ul>
+      ),
+    },
+    ,
+    {
+      keys: ['ArrowDown'],
+      description: (
+        <ul>
+          <li>When focus is not on an item, moves focus to the first item.</li>
+          <li>When focus is on an item, moves focus to the next item.</li>
+        </ul>
+      ),
+    },
+    {
+      keys: ['ArrowUp'],
+      description: (
+        <ul>
+          <li>When focus is not on an item, moves focus to the last item.</li>
+          <li>When focus is on an item, moves focus to the previous item.</li>
+        </ul>
+      ),
+    },
+    {
+      keys: ['Esc'],
+      description: (
+        <span>
+          Closes <Code>Popper</Code>.
+        </span>
+      ),
+    },
+  ]}
+/>
