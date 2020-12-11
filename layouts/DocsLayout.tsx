@@ -87,7 +87,11 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
               </FeatureList>
             )}
           </Box>
-          <ComponentInfo version={frontMatter.version} name={frontMatter.name} />
+          <ComponentInfo
+            version={frontMatter.version}
+            name={frontMatter.name}
+            aria={frontMatter.aria}
+          />
         </Flex>
 
         <Box>{children}</Box>
@@ -280,7 +284,7 @@ function QuickNav() {
   );
 }
 
-const ComponentInfo = ({ version, name }) => (
+const ComponentInfo = ({ version, name, aria }) => (
   <Box css={{ flex: 0, width: '30%' }}>
     <Text size="2" color="gray" css={{ fontFamily: '$mono', mb: '$4' }}>
       Version: v{version}
@@ -303,6 +307,13 @@ const ComponentInfo = ({ version, name }) => (
         <Text size="2">View on npm</Text>
       </Link>
     </Box>
+    {aria && (
+      <Box css={{ mb: '$2' }}>
+        <Link variant="blue" href={aria} target="_blank">
+          <Text size="2">ARIA design pattern</Text>
+        </Link>
+      </Box>
+    )}
   </Box>
 );
 
