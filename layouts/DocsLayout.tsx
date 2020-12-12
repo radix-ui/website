@@ -265,7 +265,7 @@ function QuickNav() {
                   variant="subtle"
                   href={`#${id}`}
                   css={{
-                    color: '$gray800',
+                    color: '$gray900',
                     display: 'inline-flex',
                     marginLeft: `calc(${getLevel(nodeName)} * 25px)`,
                   }}
