@@ -4,7 +4,9 @@ name: scroll-area
 version: 0.0.1-13
 description: Useful for scrolling content with custom scrollbars.
 features:
-  - Combines native scroll functionality with customizable control parts
+  - Combines native scroll functionality with customizable visual parts
+  - No weird underlying position movements via CSS transformations; all scrolling is native
+  - Only shims pointer behaviors when interacting with the controls, meaning that keyboard controls are unaffected and work as users expect
   - Progressively enhanced so that content is avalaible on devices where custom controls aren't supported
 ---
 
@@ -22,6 +24,10 @@ Then import the component in your component file.
 // ScrollArea.tsx
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 ```
+
+### Overview
+
+In most cases, it's best to rely on native scrolling and work with the customization options available in CSS. Sometimes this isn't enough, but recreating scroll behavior is incredibly hard work. `ScrollArea` provides additional customizability that maintains the browser's native scroll beahvior while replacing the visual controls with stylable parts.
 
 ### Basic example
 

@@ -7,7 +7,7 @@ export const HeroContext = React.createContext<React.RefObject<HTMLDivElement>>(
 export function HeroSlot({ children }) {
   const heroSlotRef = React.useContext(HeroContext);
 
-  return typeof document !== 'undefined' ? (
+  return (
     <Portal containerRef={heroSlotRef}>
       <Box css={{
         marginBottom: 45,
@@ -43,5 +43,5 @@ export function HeroSlot({ children }) {
         </Box>
       </Box>
     </Portal>
-  ) : null;
+  );
 }

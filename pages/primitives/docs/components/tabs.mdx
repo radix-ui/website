@@ -168,29 +168,30 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 <PropsTable
   data={[
     {
-      name: 'selectedId',
+      name: 'value',
       required: false,
       type: 'string',
       description: (
         <span>
-          The <Code>id</Code> of the selected tab, if controlled.
+          The <Code>value</Code> of the selected tab, if controlled.
         </span>
       ),
     },
     {
-      name: 'defaultSelectedId',
+      name: 'defaultValue',
       required: false,
       type: 'string',
       description: (
         <span>
-          The <Code>id</Code> of the tab to select by default, if uncontrolled.
+          The <Code>value</Code> of the tab to select by default, if
+          uncontrolled.
         </span>
       ),
     },
     {
-      name: 'onSelect',
+      name: 'onValueChange',
       required: false,
-      type: '(id: string) => void',
+      type: '(value: string) => void',
       typeSimple: 'function',
       description: (
         <span>
@@ -227,8 +228,17 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
         </span>
       ),
     },
+  ]}
+/>
+
+#### TabsList
+
+`TabsList` displays the `TabsTab` components aligned along the edge of the active `TabsPanel`.
+
+<PropsTable
+  data={[
     {
-      name: 'shouldLoop',
+      name: 'loop',
       required: false,
       type: 'boolean',
       default: 'true',
@@ -243,10 +253,6 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
   ]}
 />
 
-#### TabsList
-
-`TabsList` displays the `TabsTab` components aligned along the edge of the active `TabsPanel`.
-
 #### TabsTab
 
 `TabsTab` is the button that activates its relative `TabsPanel`.
@@ -254,14 +260,14 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 <PropsTable
   data={[
     {
-      name: 'id',
+      name: 'value',
       required: true,
       type: 'string',
       description: (
         <span>
-          An indentifier that pairs a <Code>Tab</Code> with its relevant{' '}
-          <Code>Panel</Code>`. All <Code>Tab</Code> components must have unique
-          ids within a <Code>Tabs</Code> component.
+          A value that pairs a <Code>Tab</Code> with its relevant{' '}
+          <Code>Panel</Code>. All <Code>Tab</Code> components must have unique
+          values within a <Code>Tabs</Code> component.
         </span>
       ),
     },
@@ -286,14 +292,14 @@ The component in which here the content is displayed when its `Tab` is activated
 <PropsTable
   data={[
     {
-      name: 'id',
+      name: 'value',
       required: true,
       type: 'string',
       description: (
         <span>
-          An indentifier that pairs a <Code>Panel</Code>` with its relevant{' '}
+          A value that pairs a <Code>Panel</Code> with its relevant{' '}
           <Code>Tab</Code>. All <Code>Panel</Code> components must have unique
-          ids within a <Code>Tabs</Code> component.
+          values within a <Code>Tabs</Code> component.
         </span>
       ),
     },

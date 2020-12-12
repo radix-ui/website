@@ -8,11 +8,13 @@ export type FrontMatter = {
   relatedIds?: string[];
   previousId?: string;
   type?: 'changelog' | string;
+  navRank?: number | string;
   readingTime?: { text: string; minutes: number; time: number; words: number };
   nextId?: string;
   poster?: string;
   status?: 'new' | 'soon' | 'deprecated';
   features?: string[];
   version: string;
+  aria?: string;
   __resourcePath: string;
 };

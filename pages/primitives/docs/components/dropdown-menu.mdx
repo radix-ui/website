@@ -36,7 +36,7 @@ import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 // import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 // import { Button } from '@radix-ui/ds-button';
 
-const MenuPopper = styled(DropdownMenuPrimitive.DropdownMenuPopper, {
+const MenuContent = styled(DropdownMenuPrimitive.DropdownMenuContent, {
   minWidth: 130,
   backgroundColor: 'white',
   borderRadius: 6,
@@ -75,7 +75,7 @@ render(
     <DropdownMenuPrimitive.DropdownMenuTrigger as={Button}>
       Open
     </DropdownMenuPrimitive.DropdownMenuTrigger>
-    <MenuPopper sideOffset={5}>
+    <MenuContent sideOffset={5}>
       <MenuItem onSelect={() => alert('undo')}>Undo</MenuItem>
       <MenuItem onSelect={() => alert('redo')}>Redo</MenuItem>
       <MenuSeparator />
@@ -85,7 +85,7 @@ render(
       <MenuItem onSelect={() => alert('copy')}>Copy</MenuItem>
       <MenuItem onSelect={() => alert('paste')}>Paste</MenuItem>
       <MenuArrow />
-    </MenuPopper>
+    </MenuContent>
   </DropdownMenuPrimitive.Root>
 );
 ```
@@ -101,30 +101,30 @@ render(
       description: (
         <ul>
           <li>
-            When focus is on <Code>Trigger</Code>, opens <Code>Popper</Code>.
+            When focus is on <Code>Trigger</Code>, opens <Code>Content</Code>.
           </li>
           <li>
-            When focus is on an <Code>Item</Code>, closes <Code>Popper</Code>{' '}
+            When focus is on an <Code>Item</Code>, closes <Code>Content</Code>{' '}
             and moves focus to <Code>Trigger</Code>.
           </li>
           <li>
             When focus is on an unchecked <Code>CheckboxItem</Code>, checks the{' '}
-            <Code>CheckboxItem</Code>, closes <Code>Popper</Code> and moves
+            <Code>CheckboxItem</Code>, closes <Code>Content</Code> and moves
             focus to <Code>Trigger</Code>.
           </li>
           <li>
             When focus is on a checked <Code>CheckboxItem</Code>, unchecks the{' '}
-            <Code>CheckboxItem</Code>, closes <Code>Popper</Code> and moves
+            <Code>CheckboxItem</Code>, closes <Code>Content</Code> and moves
             focus to <Code>Trigger</Code>.
           </li>
           <li>
             When focus is on an unchecked <Code>RadioItem</Code>, checks the{' '}
-            <Code>RadioItem</Code>, closes <Code>Popper</Code> and moves focus
+            <Code>RadioItem</Code>, closes <Code>Content</Code> and moves focus
             to <Code>Trigger</Code>.
           </li>
           <li>
             When focus is on a checked <Code>RadioItem</Code>, unchecks the{' '}
-            <Code>RadioItem</Code>, closes <Code>Popper</Code> and moves focus
+            <Code>RadioItem</Code>, closes <Code>Content</Code> and moves focus
             to <Code>Trigger</Code>.
           </li>
         </ul>
@@ -136,7 +136,7 @@ render(
       description: (
         <ul>
           <li>
-            When focus is not on an item of an open <Code>Popper</Code>, moves
+            When focus is not on an item of an open <Code>Content</Code>, moves
             focus to the first item.
           </li>
           <li>When focus is on an item, moves focus to the next item.</li>
@@ -148,7 +148,7 @@ render(
       description: (
         <ul>
           <li>
-            When focus is not on an item of an open <Code>Popper</Code>, moves
+            When focus is not on an item of an open <Code>Content</Code>, moves
             focus to the last item.
           </li>
           <li>When focus is on an item, moves focus to the previous item.</li>
@@ -159,7 +159,7 @@ render(
       keys: ['Esc'],
       description: (
         <span>
-          Closes <Code>Popper</Code> and moves focus to <Code>Trigger</Code>.
+          Closes <Code>Content</Code> and moves focus to <Code>Trigger</Code>.
         </span>
       ),
     },
@@ -175,29 +175,29 @@ render(
 <PropsTable
   data={[
     {
-      name: 'defaultIsOpen',
+      name: 'defaultOpen',
       type: 'boolean',
       description: (
         <span>
           The open state of the <Code>DropdownMenu</Code> when it is initially
-          rendered. Use <Code>defaultIsOpen</Code> if you do not need to control
+          rendered. Use <Code>defaultOpen</Code> if you do not need to control
           the state of an <Code>DropdownMenu</Code>.
         </span>
       ),
     },
     {
-      name: 'isOpen',
+      name: 'open',
       type: 'boolean',
       description: (
         <span>
           The controlled open state of the <Code>DropdownMenu</Code>. Must be
-          used in conjunction with <Code>onIsOpenChange</Code>`.
+          used in conjunction with <Code>onOpenChange</Code>`.
         </span>
       ),
     },
     {
-      name: 'onIsOpenChange',
-      type: '(isOpen: boolean) => void',
+      name: 'onOpenChange',
+      type: '(open: boolean) => void',
       typeSimple: 'function',
       description: (
         <span>
@@ -223,9 +223,9 @@ render(
 
 #### DropdownMenuTrigger
 
-The button that triggers the `DropdownMenu`. It is also used as the anchor the `DropdownMenuPopper` is positioned against.
+The button that triggers the `DropdownMenu`. It is also used as the anchor the `DropdownMenuContent` is positioned against.
 
-#### DropdownMenuPopper
+#### DropdownMenuContent
 
 The component that pops out in an open `DropdownMenu`.
 
@@ -238,7 +238,7 @@ The component that pops out in an open `DropdownMenu`.
       description: (
         <span>
           When <Code>true</Code>, hover/focus/click interactions will be
-          disabled on elements outside the <Code>Popper</Code>. Users will need
+          disabled on elements outside the <Code>Content</Code>. Users will need
           to click twice on outside elements to interact with them: Once to
           close the <Code>DropdownMenu</Code>, and again to trigger the element.
         </span>
@@ -262,7 +262,7 @@ The component that pops out in an open `DropdownMenu`.
       description: (
         <span>
           Event handler called when the a pointer event happens outside of the{' '}
-          <Code>Popper</Code>. It can be prevented by calling{' '}
+          <Code>Content</Code>. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
         </span>
       ),
@@ -274,8 +274,8 @@ The component that pops out in an open `DropdownMenu`.
       description: (
         <span>
           Event handler called when an interaction happens outside the
-          <Code>Popper</Code>. Specifically, when a pointer event happens outside
-          of the `DropdownMenuPopper` or focus moves outside of it. It can be prevented
+          <Code>Content</Code>. Specifically, when a pointer event happens outside
+          of the `DropdownMenuContent` or focus moves outside of it. It can be prevented
           by calling <Code>event.preventDefault</Code>.
         </span>
       ),
@@ -286,17 +286,18 @@ The component that pops out in an open `DropdownMenu`.
       default: 'true',
       description: (
         <span>
-          Whether scrolling outside the <Code>Popper</Code> should be prevented.
+          Whether scrolling outside the <Code>Content</Code> should be
+          prevented.
         </span>
       ),
     },
     {
-      name: 'shouldPortal',
+      name: 'portalled',
       type: 'boolean',
       default: 'true',
       description: (
         <span>
-          Whether or not the <Code>Popper</Code> should render in a
+          Whether or not the <Code>Content</Code> should render in a
           <Code>Portal</Code>.
         </span>
       ),
@@ -318,7 +319,7 @@ The component that pops out in an open `DropdownMenu`.
       description: (
         <span>
           An optional ref to an element to be used as the anchor for the{' '}
-          <Code>Popper</Code>. By default, it will use <Code>Trigger</Code> as
+          <Code>Content</Code>. By default, it will use <Code>Trigger</Code> as
           anchor element.
         </span>
       ),
@@ -330,7 +331,7 @@ The component that pops out in an open `DropdownMenu`.
       default: '"bottom"',
       description: (
         <span>
-          The desired side to place the <Code>Popper</Code> against{' '}
+          The desired side to place the <Code>Content</Code> against{' '}
           <Code>Trigger</Code>. May switch in case of collisions.
         </span>
       ),
@@ -341,7 +342,7 @@ The component that pops out in an open `DropdownMenu`.
       default: '0',
       description: (
         <span>
-          The side offset for the <Code>Popper</Code>.
+          The side offset for the <Code>Content</Code>.
         </span>
       ),
     },
@@ -352,8 +353,8 @@ The component that pops out in an open `DropdownMenu`.
       default: '"center"',
       description: (
         <span>
-          How to align the <Code>Popper</Code> against <Code>Trigger</Code>. May
-          switch in case of collisions.
+          How to align the <Code>Content</Code> against <Code>Trigger</Code>.
+          May switch in case of collisions.
         </span>
       ),
     },
@@ -363,18 +364,18 @@ The component that pops out in an open `DropdownMenu`.
       default: '0',
       description: (
         <span>
-          The align offset for the <Code>Popper</Code>
+          The align offset for the <Code>Content</Code>
         </span>
       ),
     },
     {
-      name: 'shouldAvoidCollisions',
+      name: 'avoidCollisions',
       type: 'boolean',
       default: 'true',
       description: (
         <span>
           Whether or not collisions with window edges should be avoided. When
-          turned on, this will result in the <Code>Popper</Code> flipping its
+          turned on, this will result in the <Code>Content</Code> flipping its
           side and alignment accordingly.
         </span>
       ),
@@ -385,7 +386,7 @@ The component that pops out in an open `DropdownMenu`.
       default: '0',
       description: (
         <span>
-          The tolerance within which the <Code>Popper</Code> is to be checked
+          The tolerance within which the <Code>Content</Code> is to be checked
           against window edges.
         </span>
       ),
@@ -395,7 +396,7 @@ The component that pops out in an open `DropdownMenu`.
 
 #### DropdownMenuArrow
 
-The optional arrow element to render for the `DropdownMenu`. This can be used to help visually link the `DropdownMenuTrigger` with the `DropdownMenuPopper`. Must live inside `DropdownMenuPopper`.
+The optional arrow element to render for the `DropdownMenu`. This can be used to help visually link the `DropdownMenuTrigger` with the `DropdownMenuContent`. Must live inside `DropdownMenuContent`.
 
 <PropsTable
   data={[
@@ -426,7 +427,7 @@ The optional arrow element to render for the `DropdownMenu`. This can be used to
       description: (
         <span>
           The offset of the `<Code>Arrow</Code> along the edge of{' '}
-          <Code>Popper</Code>.
+          <Code>Content</Code>.
         </span>
       ),
     },

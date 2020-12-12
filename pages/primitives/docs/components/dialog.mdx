@@ -206,29 +206,29 @@ render(
 <PropsTable
   data={[
     {
-      name: 'defaultIsOpen',
+      name: 'defaultOpen',
       type: 'boolean',
       description: (
         <span>
           The open state of the <Code>Dialog</Code> when it is initially
-          rendered. Use <Code>defaultIsOpen</Code> if you do not need to control
+          rendered. Use <Code>defaultOpen</Code> if you do not need to control
           the state of an dialog.
         </span>
       ),
     },
     {
-      name: 'isOpen',
+      name: 'open',
       type: 'boolean',
       description: (
         <span>
           The controlled open state of the <Code>Dialog</Code>. Must be used in
-          conjunction with <pCode>onIsOpenChange</pCode>.
+          conjunction with <pCode>onOpenChange</pCode>.
         </span>
       ),
     },
     {
-      name: 'onIsOpenChange',
-      type: '(isOpen: boolean) => void',
+      name: 'onOpenChange',
+      type: '(open: boolean) => void',
       typeSimple: 'function',
       description: (
         <span>

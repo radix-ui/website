@@ -3,6 +3,7 @@ title: Accordion
 name: accordion
 version: 0.0.1-13
 description: Useful to group information into collapsible items.
+aria: https://www.w3.org/TR/wai-aria-practices-1.1/#accordion
 features:
   - Full keyboard navigation.
   - Expands one panel at a time.
@@ -347,6 +348,8 @@ render(
 
 ### Accessibility
 
+Adheres to the [accordion WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#accordion).
+
 #### Keyboard Interactions
 
 <KeyboardTable
@@ -452,7 +455,7 @@ render(
       description: (
         <span>
           The controlled value of the <Code>Item</Code> whose panel is expanded.
-          Must be used in conjunction with <Code>onChange</Code>.
+          Must be used in conjunction with <Code>onValueChange</Code>.
         </span>
       ),
     },
@@ -482,7 +485,7 @@ render(
       ),
     },
     {
-      name: 'onChange',
+      name: 'onValueChange',
       required: false,
       type: '(value: string) => void',
       typeSimple: 'function',
@@ -529,7 +532,7 @@ The component that contains all of the parts of a collapsible section inside of 
 
 #### AccordionHeader
 
-The component that contains the content for the parts of an `AccordionItem` that will be visible whether or not its content is collapsed.
+The component that wraps the `AccordionButton` and will be an `h2` by default. Use the `as` prop to update it to the appropriate heading level for your page.
 
 #### AccordionButton
 
