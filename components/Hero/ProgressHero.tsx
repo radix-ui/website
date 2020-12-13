@@ -44,7 +44,7 @@ const ProgressContainer = () => {
           width: '100%',
           transform: 'ScaleX(0)',
           transformOrigin: 'left',
-          animation: `${scale} 10s infinite`,
+          animation: `${scale} 9s infinite`,
           animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
         }}
       ></Box>

@@ -84,12 +84,15 @@ render(
 <KeyboardTable
   data={[
     {
-      keys: ['Space', 'Enter'],
+      keys: ['Space'],
       description: (
-        <ul>
-          <li>When off, changes to on state.</li>
-          <li>When on, changes to off state.</li>
-        </ul>
+        "Toggles the component's state."
+      ),
+    },
+    {
+      keys: ['Enter'],
+      description: (
+        "Toggles the component's state."
       ),
     },
   ]}
