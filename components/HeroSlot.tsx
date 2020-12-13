@@ -11,6 +11,8 @@ export function HeroSlot({ children }) {
     <Portal containerRef={heroSlotRef}>
       <Box css={{
         marginBottom: 45,
+        marginLeft: -25,
+        marginRight: -25,
         bp4: {
           marginLeft: -65,
           marginRight: -65,

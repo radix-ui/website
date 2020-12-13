@@ -36,6 +36,10 @@ export function NavItem({ children, active, disabled, href, ...props }: NavItemP
           '&:not(div):hover': {
             backgroundColor: active ? '$blue400' : '$blue200',
           },
+          ':focus': {
+            outline: 'none',
+            boxShadow: '0 0 0 1px $blue500',
+          }
         }}
       >
         <Text
