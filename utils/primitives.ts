@@ -22,7 +22,11 @@ export const componentsPages: FrontMatter[] = allPages.filter((page) =>
   page.id.includes('/components/')
 );
 
-export const pages = [...overviewPages, ...componentsPages];
+export const utilitiesPages: FrontMatter[] = allPages.filter((page) =>
+  page.id.includes('/utilities/')
+);
+
+export const pages = [...overviewPages, ...componentsPages, ...utilitiesPages];
 
 function sortByNavRank(page1: FrontMatter, page2: FrontMatter) {
   const pageRank1 = page1.navRank != null ? String(page1.navRank) : page1.title;
