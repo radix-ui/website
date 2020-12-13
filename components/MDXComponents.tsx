@@ -63,7 +63,7 @@ export const MDXComponents = {
   // which causes everything to be wrapped in it.
   pre: (props) => <div>{props.children}</div>,
   code: (props) => (
-    <DS.Box css={{ mb:'$3' }}>
+    <DS.Box css={{ mt: '$3', mb:'$3' }}>
       <CodeBlock {...props} />
     </DS.Box>
   ),
