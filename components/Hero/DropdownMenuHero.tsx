@@ -45,7 +45,8 @@ const DropdownMenuContainer = () => {
         backgroundColor: 'white',
         borderRadius: '5px',
         width: 120,
-        py: '$1'
+        py: '$1',
+        boxShadow: 'hsla(252, 4%, 9%, 0.35) 0px 10px 38px -10px, hsla(252, 4%, 9%, 0.2) 0px 10px 20px -15px',
       }}
     >
       <Box css={{ position: 'relative', zIndex: '1', backgroundColor: '$gray800', height: 4, width: '25%', mt: 8, mb: 16, mx: '$2' }}></Box>
