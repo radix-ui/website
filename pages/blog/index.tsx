@@ -1,5 +1,5 @@
 import NextLink from 'next/link';
-import { Box, Container, Text, Flex, Link, Badge } from '@modulz/design-system';
+import { Box, Container, Text, Title, Subtitle, Heading, Flex, Link, Badge, Section } from '@modulz/design-system';
 import { RadixLogo } from '../../components/RadixLogo';
 import { blogPosts } from '../../utils/blogPosts';
 import { parseISO, format } from 'date-fns';
@@ -42,51 +42,46 @@ export default function Home() {
         </NextLink>
       </Box>
       <Container size="3" css={{ textAlign: 'center', mb: '$4' }}>
-        <Text as="h1" size={{ initial: '6', bp2: '7' }} css={{ mb: '$4', fontWeight: 500 }}>
+        <Title css={{ mb: '$4' }}>
           Blog
-        </Text>
-        <Text as="h2" size={{ initial: '4', bp2: '6' }} css={{ color: '$gray900', mb: '$4' }}>
+        </Title>
+        <Subtitle>
           More about what we're up to.
-        </Text>
+        </Subtitle>
       </Container>
-
-      <Container size="2" css={{ my: '$8' }}>
-        {blogPosts.map((frontMatter, index) => (
-          <Box
-            key={frontMatter.title}
-            css={{
-              textDecoration: 'none',
-              color: 'inherit',
-            }}
-          >
-            <Box css={{ mb: '$7' }}>
-              <NextLink href={`/${frontMatter.id}`} passHref>
-                <Link>
-                  <Text
-                    as="h3"
-                    size="6"
-                    css={{ display: 'inline', fontWeight: 500, lineHeight: '30px' }}
-                  >
-                    {frontMatter.title}
+      
+      <Section size="3">
+        <Container size="2">
+          {blogPosts.map((frontMatter, index) => (
+            <Box
+              key={frontMatter.title}
+              css={{
+                textDecoration: 'none',
+                color: 'inherit',
+              }}
+            >
+              <Box css={{ mb: '$7' }}>
+                <NextLink href={`/${frontMatter.id}`} passHref>
+                  <Link variant="contrast">
+                    <Heading>
+                      {frontMatter.title}
+                    </Heading>
+                  </Link>
+                </NextLink>
+                <Flex css={{ mt: '$3', alignItems: 'center' }}>
+                  <Text as="time" size="2" css={{ color: '$gray900' }}>
+                    {format(parseISO(frontMatter.publishedAt), 'MMMM yyyy')}
                   </Text>
-                </Link>
-              </NextLink>
-              <Flex css={{ mt: '$2', alignItems: 'center' }}>
-                <Text as="time" size="2" css={{ color: '$gray900' }}>
-                  {format(parseISO(frontMatter.publishedAt), 'MMMM yyyy')}
-                </Text>
-                <Text size="2" css={{ color: '$gray900' }}>
-                  &nbsp;by {authors[frontMatter.by].name}
-                </Text>
-                {frontMatter.type === 'changelog' && <Badge css={{ ml: '$2' }}>Changelog</Badge>}
-              </Flex>
-              <Text as="p" size="4" css={{ lineHeight: '25px', mt: '$2', color: '$gray900' }}>
-                {frontMatter.description}
-              </Text>
+                  <Text size="2" css={{ color: '$gray900' }}>
+                    &nbsp;by {authors[frontMatter.by].name}
+                  </Text>
+                  {frontMatter.type === 'changelog' && <Badge css={{ ml: '$2' }}>Changelog</Badge>}
+                </Flex>
+              </Box>
             </Box>
-          </Box>
-        ))}
-      </Container>
+          ))}
+        </Container>
+      </Section>
     </Box>
   );
 }
