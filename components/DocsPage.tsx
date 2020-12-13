@@ -81,7 +81,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
                 <RadixLogo />
               </Box>
             </NextLink>
-            <Badge size="2" variant="yellow" css={{ ml: '$3' }}>
+            <Badge size="2" variant="yellow" css={{ ml: '$2' }}>
               Alpha
             </Badge>
             <Box css={{ ml: 'auto', mr: '$6', bp2: { display: 'none' } }}>
