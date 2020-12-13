@@ -1,6 +1,6 @@
-## Radix UI Website
+## Radix Website
 
-This is the source code of the [Radix UI documentation](https://radix-ui.com).
+This is the source code of the [Radix documentation](https://radix-ui.com).
 
 ---
 

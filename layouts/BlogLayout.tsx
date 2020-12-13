@@ -41,7 +41,7 @@ export default function BlogLayout({ children, frontMatter }: LayoutProps) {
 
   return (
     <MDXProvider components={MDXComponents}>
-      <TitleAndMetaTags title={`${frontMatter.title} — Radix UI`} poster={frontMatter.poster} />
+      <TitleAndMetaTags title={`${frontMatter.title} — Radix`} poster={frontMatter.poster} />
 
       <NextLink href="/blog" passHref>
         <Button size="2" as="a" variant="ghost" css={{ color: '$gray900', ml: '-40px', mb: '$6' }}>

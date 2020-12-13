@@ -9,7 +9,7 @@ import { TitleAndMetaTags } from '../../components/TitleAndMetaTags';
 export default function Home() {
   return (
     <Box>
-      <TitleAndMetaTags title="Blog — Radix UI" description="More about what we're up to." />
+      <TitleAndMetaTags title="Blog — Radix" description="More about what we're up to." />
       <Box as="header" css={{ py: '$4', px: '$4', mb: '$7' }}>
         <NextLink href="/" passHref>
           <Box
