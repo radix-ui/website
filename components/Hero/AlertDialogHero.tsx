@@ -24,8 +24,8 @@ const AlertDialogContainer = () => {
         position: 'relative',
         backgroundColor: 'white',
         borderRadius: '5px',
-        height: 20,
-        width: 60,
+        height: 25,
+        width: 65,
         px: '$2',
         mb: 2,
         display: 'inline-flex',
@@ -121,8 +121,8 @@ const AlertDialogContainer = () => {
           css={{
             backgroundColor: '$gray700',
             borderRadius: '5px',
-            height: 20,
-            width: 50,
+            height: 25,
+            width: 65,
             display: 'inline-flex',
             alignItems: 'center',
           }}
@@ -132,8 +132,8 @@ const AlertDialogContainer = () => {
           css={{
             backgroundColor: '$blue800',
             borderRadius: '5px',
-            height: 20,
-            width: 50,
+            height: 25,
+            width: 65,
             ml: '$2',
             display: 'inline-flex',
             alignItems: 'center',
