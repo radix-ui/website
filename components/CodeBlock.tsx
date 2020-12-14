@@ -170,7 +170,17 @@ export function CodeBlock({
     theme,
     language,
     code: editorCode,
-    transformCode: (code) => (addFragment ? `<>${code}</>` : code),
+    transformCode: (rawCode) => {
+      const code = rawCode
+        // remove imports
+        .replace(/((^|)import[^;]+[; ]+)+/gi, '')
+        // remove conts
+        // .replace(/((^|\n)const[^;]+[; ]+)+/gi, '\n')
+        // replace `render` with export
+        .replace('export default () => ', 'render');
+
+      return addFragment ? `<>${code}</>` : code;
+    },
     scope: {
       React,
       ...components,
@@ -213,10 +223,16 @@ export function CodeBlock({
           }}
         >
           <CodeContainer live={live}>
-            <LiveEditor onChange={onChange} style={liveEditorStyle} />
+            <LiveEditor
+              onChange={onChange}
+              style={liveEditorStyle}
+              // Code blocks are no longer "live"
+              // TODO: Refactor this whole file :D
+              disabled
+            />
           </CodeContainer>
           <CopyButton onClick={onCopy}>{hasCopied ? 'Copied' : 'Copy'}</CopyButton>
-          <Text
+          {/* <Text
             as="span"
             size="1"
             css={{
@@ -234,7 +250,7 @@ export function CodeBlock({
             }}
           >
             Live example
-          </Text>
+          </Text> */}
         </Box>
         <LiveError
           style={{
@@ -271,7 +287,7 @@ export function CodeBlock({
       css={{
         position: 'relative',
         zIndex: 1,
-        mb: '$3'
+        mb: '$3',
       }}
     >
       <LiveProvider disabled {...liveProviderProps}>
