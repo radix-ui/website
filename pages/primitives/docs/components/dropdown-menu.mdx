@@ -2,7 +2,7 @@
 title: Dropdown Menu
 name: dropdown-menu
 version: 0.0.1-1
-description: Useful for displaying a list of contextual actions when clicking a trigger.
+description: Displays a menu to the user—such as a set of actions or functions—triggered by a button.
 features:
   - Can be controlled or uncontrolled.
   - Supports items, labels, groups of items.
@@ -103,62 +103,35 @@ render(
 <KeyboardTable
   data={[
     {
-      keys: ['Space', 'Enter'],
+      keys: ['Space'],
       description: (
-        <ul>
-          <li>
-            When focus is on <Code>Trigger</Code>, opens <Code>Content</Code>.
-          </li>
-          <li>
-            When focus is on an <Code>Item</Code>, closes <Code>Content</Code>{' '}
-            and moves focus to <Code>Trigger</Code>.
-          </li>
-          <li>
-            When focus is on an unchecked <Code>CheckboxItem</Code>, checks the{' '}
-            <Code>CheckboxItem</Code>, closes <Code>Content</Code> and moves
-            focus to <Code>Trigger</Code>.
-          </li>
-          <li>
-            When focus is on a checked <Code>CheckboxItem</Code>, unchecks the{' '}
-            <Code>CheckboxItem</Code>, closes <Code>Content</Code> and moves
-            focus to <Code>Trigger</Code>.
-          </li>
-          <li>
-            When focus is on an unchecked <Code>RadioItem</Code>, checks the{' '}
-            <Code>RadioItem</Code>, closes <Code>Content</Code> and moves focus
-            to <Code>Trigger</Code>.
-          </li>
-          <li>
-            When focus is on a checked <Code>RadioItem</Code>, unchecks the{' '}
-            <Code>RadioItem</Code>, closes <Code>Content</Code> and moves focus
-            to <Code>Trigger</Code>.
-          </li>
-        </ul>
+        <span>
+          Activates the focused item.
+        </span>
       ),
     },
-    ,
+    {
+      keys: ['Enter'],
+      description: (
+        <span>
+          Activates the focused item.
+        </span>
+      ),
+    },
     {
       keys: ['ArrowDown'],
       description: (
-        <ul>
-          <li>
-            When focus is not on an item of an open <Code>Content</Code>, moves
-            focus to the first item.
-          </li>
-          <li>When focus is on an item, moves focus to the next item.</li>
-        </ul>
+        <span>
+          Moves focus to the next item.
+        </span>
       ),
     },
     {
       keys: ['ArrowUp'],
       description: (
-        <ul>
-          <li>
-            When focus is not on an item of an open <Code>Content</Code>, moves
-            focus to the last item.
-          </li>
-          <li>When focus is on an item, moves focus to the previous item.</li>
-        </ul>
+        <span>
+          Moves focus to the previous item.
+        </span>
       ),
     },
     {
@@ -227,11 +200,11 @@ render(
   ]}
 />
 
-#### DropdownMenuTrigger
+#### Trigger
 
 The button that triggers the `DropdownMenu`. It is also used as the anchor the `DropdownMenuContent` is positioned against.
 
-#### DropdownMenuContent
+#### Content
 
 The component that pops out in an open `DropdownMenu`.
 
@@ -400,7 +373,7 @@ The component that pops out in an open `DropdownMenu`.
   ]}
 />
 
-#### DropdownMenuArrow
+#### Arrow
 
 The optional arrow element to render for the `DropdownMenu`. This can be used to help visually link the `DropdownMenuTrigger` with the `DropdownMenuContent`. Must live inside `DropdownMenuContent`.
 
@@ -440,7 +413,7 @@ The optional arrow element to render for the `DropdownMenu`. This can be used to
   ]}
 />
 
-#### DropdownMenuItem
+#### Item
 
 Used to render items in the `DropdownMenu`.
 
@@ -484,15 +457,15 @@ Used to render items in the `DropdownMenu`.
   ]}
 />
 
-#### DropdownMenuGroup
+#### Group
 
 Used to group multiple `DropdownMenuItem`.
 
-#### DropdownMenuLabel
+#### Label
 
 Used to render a label. It won't be focusable using arrow keys.
 
-#### DropdownMenuCheckboxItem
+#### CheckboxItem
 
 A more specific `DropdownMenuItem` which can be controlled like a `Checkbox` and also has an indicator (`DropdownMenuItemIndicator`). This conceptually functions like a standard `Checkbox`.
 
@@ -558,7 +531,7 @@ A more specific `DropdownMenuItem` which can be controlled like a `Checkbox` and
   ]}
 />
 
-#### DropdownMenuRadioGroup
+#### RadioGroup
 
 A more specific `DropdownMenuGroup` which also handles a value out of multiple potential `DropdownMenuRadioItem`. This conceptually functions like a standard `RadioGroup`.
 
@@ -588,7 +561,7 @@ A more specific `DropdownMenuGroup` which also handles a value out of multiple p
   ]}
 />
 
-#### DropdownMenuRadioItem
+#### RadioItem
 
 A more specific `DropdownMenuItem` which conceptually acts like a standard `Radio`. It has an indicator (`DropdownMenuItemIndicator`).
 
@@ -643,7 +616,7 @@ A more specific `DropdownMenuItem` which conceptually acts like a standard `Radi
   ]}
 />
 
-#### DropdownMenuItemIndicator
+#### ItemIndicator
 
 Renders when the parent `DropdownMenuCheckboxItem` or `DropdownMenuRadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
 
@@ -662,6 +635,6 @@ Renders when the parent `DropdownMenuCheckboxItem` or `DropdownMenuRadioItem` is
   ]}
 />
 
-#### DropdownMenuSeparator
+#### Separator
 
 Used to visually separate items in a `DropdownMenu`.
