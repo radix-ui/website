@@ -25,16 +25,21 @@ export function NavItem({ children, active, disabled, href, ...props }: NavItemP
         css={{
           textDecoration: 'none',
           color: disabled ? '$gray700' : '$hiContrast',
-          display: 'block',
+          display: 'flex',
+          alignItems: 'center',
           py: '$2',
           px: '$5',
-          backgroundColor: active ? '$blue300' : 'transparent',
+          backgroundColor: active ? '$violet400' : 'transparent',
           userSelect: 'none',
           minHeight: '$6',
-          transition: 'background-color 50ms linear',
+          transition: 'background-color 25ms linear',
           '&:not(div):hover': {
-            backgroundColor: active ? '$blue300' : '$blue200',
+            backgroundColor: active ? '$violet400' : '$violet200',
           },
+          ':focus': {
+            outline: 'none',
+            boxShadow: '0 0 0 1px $violet500',
+          }
         }}
       >
         <Text

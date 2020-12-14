@@ -8,6 +8,12 @@ features:
   - Can be controlled or uncontrolled.
 ---
 
+import { SwitchHero } from '../../../../components/Hero/SwitchHero';
+
+<HeroSlot>
+  <SwitchHero />
+</HeroSlot>
+
 ### Installation
 
 Install the component from your command line.
@@ -78,12 +84,15 @@ render(
 <KeyboardTable
   data={[
     {
-      keys: ['Space', 'Enter'],
+      keys: ['Space'],
       description: (
-        <ul>
-          <li>When off, changes to on state.</li>
-          <li>When on, changes to off state.</li>
-        </ul>
+        "Toggles the component's state."
+      ),
+    },
+    {
+      keys: ['Enter'],
+      description: (
+        "Toggles the component's state."
       ),
     },
   ]}

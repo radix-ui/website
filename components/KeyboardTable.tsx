@@ -8,7 +8,7 @@ type KeyboardDef = {
 
 export function KeyboardTable({ data }: { data: KeyboardDef[] }) {
   return (
-    <Box as="table" css={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}>
+    <Box as="table" css={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse', mt: '$2' }}>
       <thead>
         <tr>
           <Box as="th" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>

@@ -1,13 +1,28 @@
 import React from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { Container, Text, Button, Box, Flex, Separator, Link, Badge } from '@modulz/design-system';
+import { MDXProvider } from '@mdx-js/react';
+import {
+  Container,
+  Text,
+  Button,
+  Box,
+  Title,
+  Subtitle,
+  Paragraph,
+  Heading,
+  Subheading,
+  Flex,
+  Separator,
+  Link,
+  Badge } from '@modulz/design-system';
 import { ArrowLeftIcon } from '@modulz/radix-icons';
 import { parseISO, format } from 'date-fns';
 import { FrontMatter } from '../types';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
 import { getPostById } from '../utils/allPosts';
 import { authors } from '../data/authors';
+import { MDXComponents } from '../components/MDXComponents';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -25,31 +40,29 @@ export default function BlogLayout({ children, frontMatter }: LayoutProps) {
 		`;
 
   return (
-    <>
-      <TitleAndMetaTags title={`${frontMatter.title} — Radix UI`} poster={frontMatter.poster} />
+    <MDXProvider components={MDXComponents}>
+      <TitleAndMetaTags title={`${frontMatter.title} — Radix`} poster={frontMatter.poster} />
 
-      <Container size="3" css={{ mb: '$5' }}>
-        <NextLink href="/blog" passHref>
-          <Button size="2" as="a" variant="ghost" css={{ color: '$gray900', ml: '-40px' }}>
-            <Box css={{ mr: '$2' }}>
-              <ArrowLeftIcon />
-            </Box>
-            Blog
-          </Button>
-        </NextLink>
-      </Container>
+      <NextLink href="/blog" passHref>
+        <Button size="2" as="a" variant="ghost" css={{ color: '$gray900', ml: '-40px', mb: '$6' }}>
+          <Box css={{ mr: '$2' }}>
+            <ArrowLeftIcon />
+          </Box>
+          Blog
+        </Button>
+      </NextLink>
 
-      <Text as="h1" size="8" css={{ fontWeight: 500, mb: '$2', lineHeight: '40px' }}>
-        {frontMatter.title}sdsd
+      <Text size="8" css={{ fontWeight: 500, mb: '$2' }}>
+        {frontMatter.title}
       </Text>
 
-      <Text as="h2" size="6" css={{ mt: '$2', mb: '$4', color: '$gray900', lineHeight: '30px' }}>
+      <Subtitle css={{ mt: '$2', mb: '$5' }}>
         {frontMatter.description}
-      </Text>
+      </Subtitle>
 
-      <Flex css={{ mt: '$4', mb: '$7', alignItems: 'center' }}>
+      <Flex css={{ mb: '$7', alignItems: 'center' }}>
         {/* <Avatar src={authors[frontMatter.by].avatar} mr={2} /> */}
-        <Text as="p" size="3" css={{ color: '$gray900', lineHeight: 0, whiteSpace: 'nowrap' }}>
+        <Text as="p" size="2" css={{ color: '$gray900', lineHeight: 0, whiteSpace: 'nowrap' }}>
           <Link
             href={`https://twitter.com/${authors[frontMatter.by].twitter}`}
             rel="noopener noreferrer"
@@ -59,12 +72,12 @@ export default function BlogLayout({ children, frontMatter }: LayoutProps) {
           </Link>
         </Text>
         <Separator orientation="vertical" css={{ mx: '$2' }} />
-        <Text as="time" size="3" css={{ color: '$gray900', lineHeight: 0, whiteSpace: 'nowrap' }}>
+        <Text as="time" size="2" css={{ color: '$gray900', lineHeight: 0, whiteSpace: 'nowrap' }}>
           {format(parseISO(frontMatter.publishedAt), 'MMMM yyyy')}
         </Text>
         <Flex css={{ alignItems: 'center', display: 'none', bp2: { display: 'flex' } }}>
           <Separator orientation="vertical" css={{ mx: '$2' }} />
-          <Text size="3" css={{ color: '$gray900', lineHeight: 0 }}>
+          <Text size="2" css={{ color: '$gray900', lineHeight: 0 }}>
             {frontMatter.readingTime.text}
           </Text>
           {frontMatter.type === 'changelog' && (
@@ -82,7 +95,7 @@ export default function BlogLayout({ children, frontMatter }: LayoutProps) {
       <Box css={{ textAlign: 'center' }}>
         <Text as="p" size="4" css={{ lineHeight: 2 }}>
           Share this post on{' '}
-          <Link href={twitterShare} target="_blank" title="Share this post on Twitter">
+          <Link variant="blue" href={twitterShare} target="_blank">
             Twitter
           </Link>
           .
@@ -147,6 +160,6 @@ export default function BlogLayout({ children, frontMatter }: LayoutProps) {
           </Box>
         </>
       )}
-    </>
+    </MDXProvider>
   );
 }

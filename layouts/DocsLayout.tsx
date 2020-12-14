@@ -52,7 +52,7 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
 
   return (
     <MDXProvider components={MDXComponents}>
-      <TitleAndMetaTags title={`${frontMatter.title} — Radix UI`} poster={frontMatter.poster} />
+      <TitleAndMetaTags title={`${frontMatter.title} — Radix`} poster={frontMatter.poster} />
 
       <Box
         css={{
@@ -265,7 +265,7 @@ function QuickNav() {
                   variant="subtle"
                   href={`#${id}`}
                   css={{
-                    color: '$gray800',
+                    color: '$gray900',
                     display: 'inline-flex',
                     marginLeft: `calc(${getLevel(nodeName)} * 25px)`,
                   }}

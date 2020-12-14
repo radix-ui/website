@@ -322,7 +322,7 @@ render(
       description: (
         <span>
           Increments/decrements by the <Code>step</Code> value depending on{' '}
-          <Code>orientation</Code>
+          <Code>orientation</Code>.
         </span>
       ),
     },
@@ -331,7 +331,7 @@ render(
       description: (
         <span>
           Increments/decrements by the <Code>step</Code> value depending on{' '}
-          <Code>orientation</Code>
+          <Code>orientation</Code>.
         </span>
       ),
     },
@@ -339,7 +339,7 @@ render(
       keys: ['ArrowUp'],
       description: (
         <span>
-          Increases the value by the <Code>step</Code> amount
+          Increases the value by the <Code>step</Code> amount.
         </span>
       ),
     },
@@ -347,33 +347,49 @@ render(
       keys: ['ArrowDown'],
       description: (
         <span>
-          Decreases the value by the <Code>step</Code> amount
+          Decreases the value by the <Code>step</Code> amount.
         </span>
       ),
     },
     {
-      keys: ['PageUp', 'Shift + ArrowUp'],
+      keys: ['PageUp'],
       description: (
         <span>
-          Increases the value by a larger <Code>step</Code>
+          Increases the value by a larger <Code>step</Code>.
         </span>
       ),
     },
     {
-      keys: ['PageDown', 'Shift + ArrowDown'],
+      keys: ['PageDown'],
       description: (
         <span>
-          Decreases the value by a larger <Code>step</Code>
+          Decreases the value by a larger <Code>step</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['Shift + ArrowUp'],
+      description: (
+        <span>
+          Increases the value by a larger <Code>step</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['Shift + ArrowDown'],
+      description: (
+        <span>
+          Decreases the value by a larger <Code>step</Code>.
         </span>
       ),
     },
     {
       keys: ['Home'],
-      description: 'Sets the value to its minimum',
+      description: 'Sets the value to its minimum.',
     },
     {
       keys: ['End'],
-      description: 'Sets the value to its maximum',
+      description: 'Sets the value to its maximum.',
     },
   ]}
 />

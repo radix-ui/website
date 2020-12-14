@@ -71,7 +71,7 @@ export const Footer = () => {
                 bp2: { mt: '$5', ml: '0' },
               }}
             >
-              Radix UI is maintained by <Link variant="subtle" href="https://modulz.app">Modulz</Link>.
+              Radix is maintained by <Link variant="subtle" href="https://modulz.app">Modulz</Link>.
             </Text>
           </Flex>
           <Box>
