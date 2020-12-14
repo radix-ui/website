@@ -2,7 +2,7 @@
 title: Radio Group
 name: radio-group
 version: 0.0.1-13
-description: Useful for allowing users to select only one option from a set.
+description: A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.
 features:
   - Full keyboard navigation.
   - Can be controlled or uncontrolled.
@@ -88,19 +88,13 @@ render(
     {
       keys: ['Tab'],
       description: (
-        <ul>
-          <li>
-            Moves focus to the checked <Code>Item</Code>.
-          </li>
-          <li>
-            If no <Code>Item</Code> is checked, focus moves to the first{' '}
-            <Code>Item</Code> in the group.
-          </li>
-        </ul>
+        <span>
+          Moves focus to either the checked <Code>Item</Code> or the first <Code>Item</Code> in the group.
+        </span>
       ),
     },
     {
-      keys: ['Space', 'Enter'],
+      keys: ['Space'],
       description: (
         <span>
           When focus is on an unchecked <Code>Item</Code>, checks the{' '}
@@ -109,31 +103,44 @@ render(
       ),
     },
     {
-      keys: ['ArrowDown', 'ArrowRight'],
+      keys: ['Enter'],
       description: (
-        <ul>
-          <li>
-            Moves focus to the next <Code>Item</Code> in the group.
-          </li>
-          <li>
-            When focus is on the last <Code>Item</Code>, moves focus to the
-            first <Code>Item</Code> in the group.
-          </li>
-        </ul>
+        <span>
+          When focus is on an unchecked <Code>Item</Code>, checks the{' '}
+          <Code>Item</Code>.
+        </span>
       ),
     },
     {
-      keys: ['ArrowUp', 'ArrowLeft'],
+      keys: ['ArrowDown'],
       description: (
-        <ul>
-          <li>
-            Moves focus to the previous <Code>Item</Code> in the group.
-          </li>
-          <li>
-            When focus is on the first <Code>Item</Code>, moves focus to the
-            last <Code>Item</Code> in the group.
-          </li>
-        </ul>
+        <span>
+          Moves focus to the next <Code>Item</Code> in the group.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowRight'],
+      description: (
+        <span>
+          Moves focus to the next <Code>Item</Code> in the group.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowUp'],
+      description: (
+        <span>
+          Moves focus to the previous <Code>Item</Code> in the group.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowLeft'],
+      description: (
+        <span>
+          Moves focus to the previous <Code>Item</Code> in the group.
+        </span>
       ),
     },
   ]}
@@ -187,7 +194,7 @@ render(
   ]}
 />
 
-#### RadioGroupItem
+#### Item
 
 A single item in a `RadioGroup`.
 
@@ -245,7 +252,7 @@ A single item in a `RadioGroup`.
   ]}
 />
 
-#### RadioGroupIndicator
+#### Indicator
 
 Renders when the `RadioGroupItem` is the currently selected on. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
 
