@@ -10,20 +10,25 @@ const AvatarSkeleton = styled('div', {
   borderRadius: '50%',
   backgroundColor: 'white',
   mx: '$2',
-  // animation: `${anim} 1000ms infinite`,
 });
 
 export function AvatarHero() {
   return (
     <Flex>
       <AvatarSkeleton>
-        <Text size="5" color="gray" css={{ fontWeight: 500, letterSpacing: '-.5px' }}>CT</Text>
+        <Text size="5" color="gray" css={{ fontWeight: 500, letterSpacing: '-.5px' }}>
+          CT
+        </Text>
       </AvatarSkeleton>
       <AvatarSkeleton>
-        <Text size="5" color="gray" css={{ fontWeight: 500, letterSpacing: '-.5px' }}>AV</Text>
+        <Text size="5" color="gray" css={{ fontWeight: 500, letterSpacing: '-.5px' }}>
+          AV
+        </Text>
       </AvatarSkeleton>
       <AvatarSkeleton>
-        <Text size="5" color="gray" css={{ fontWeight: 500, letterSpacing: '-.5px' }}>PD</Text>
+        <Text size="5" color="gray" css={{ fontWeight: 500, letterSpacing: '-.5px' }}>
+          PD
+        </Text>
       </AvatarSkeleton>
     </Flex>
   );
