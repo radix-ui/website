@@ -2,7 +2,7 @@
 title: Context Menu
 name: context-menu
 version: 0.0.1-1
-description: Useful for displaying a list of contextual actions by right clicking.
+description: Displays a menu located at the pointer, triggered by a right-click.
 features:
   - Supports items, labels, groups of items.
   - Supports checkable items (single or multiple).
@@ -100,48 +100,36 @@ render(
 <KeyboardTable
   data={[
     {
-      keys: ['Space', 'Enter'],
+      keys: ['Space'],
       description: (
-        <ul>
-          <li>
-            When focus is on an <Code>Item</Code>, closes <Code>Content</Code>.
-          </li>
-          <li>
-            When focus is on an unchecked <Code>CheckboxItem</Code>, checks the{' '}
-            <Code>CheckboxItem</Code> and closes <Code>Content</Code>.
-          </li>
-          <li>
-            When focus is on a checked <Code>CheckboxItem</Code>, unchecks the{' '}
-            <Code>CheckboxItem</Code> and closes <Code>Content</Code>.
-          </li>
-          <li>
-            When focus is on an unchecked <Code>RadioItem</Code>, checks the{' '}
-            <Code>RadioItem</Code> and closes <Code>Content</Code>.
-          </li>
-          <li>
-            When focus is on a checked <Code>RadioItem</Code>, unchecks the{' '}
-            <Code>RadioItem</Code> and closes <Code>Content</Code>.
-          </li>
-        </ul>
+        <span>
+          Activates the focused item.
+        </span>
+      ),
+    },
+    {
+      keys: ['Enter'],
+      description: (
+        <span>
+          Activates the focused item.
+        </span>
       ),
     },
     ,
     {
       keys: ['ArrowDown'],
       description: (
-        <ul>
-          <li>When focus is not on an item, moves focus to the first item.</li>
-          <li>When focus is on an item, moves focus to the next item.</li>
-        </ul>
+        <span>
+          Moves focus to the next item.
+        </span>
       ),
     },
     {
       keys: ['ArrowUp'],
       description: (
-        <ul>
-          <li>When focus is not on an item, moves focus to the last item.</li>
-          <li>When focus is on an item, moves focus to the previous item.</li>
-        </ul>
+        <span>
+          Moves focus to the previous item.
+        </span>
       ),
     },
     {
@@ -161,11 +149,11 @@ render(
 
 `ContextMenu` is the root component.
 
-#### ContextMenuTrigger
+#### Trigger
 
 `ContextMenuTrigger` is the area that triggers the `ContextMenu`. Wrap this around the thing you want your `ContextMenu` to open when right-clicking (or using the relevant keyboard shortcuts).
 
-#### ContextMenuContent
+#### Content
 
 `ContextMenuContent` is the component that pops out in an open `ContextMenu`.
 
@@ -296,7 +284,7 @@ render(
   ]}
 />
 
-#### ContextMenuItem
+#### Item
 
 The component used to render items in the `ContextMenu`.
 
@@ -340,15 +328,15 @@ The component used to render items in the `ContextMenu`.
   ]}
 />
 
-#### ContextMenuGroup
+#### Group
 
 Used to group multiple `ContextMenuItem`.
 
-#### ContextMenuLabel
+#### Label
 
 Uused to render a label. It won't be focusable using arrow keys.
 
-#### ContextMenuCheckboxItem
+#### CheckboxItem
 
 A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and also has an indicator (`ContextMenuItemIndicator`). This conceptually functions like a standard `Checkbox`.
 
@@ -414,7 +402,7 @@ A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and 
   ]}
 />
 
-#### ContextMenuRadioGroup
+#### RadioGroup
 
 `ContextMenuRadioGroup` is a more specific `ContextMenuGroup` which also handles a value out of multiple potential `ContextMenuRadioItem`. This conceptually functions like a standard `RadioGroup`.
 
@@ -444,7 +432,7 @@ A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and 
   ]}
 />
 
-#### ContextMenuRadioItem
+#### RadioItem
 
 A more specific `ContextMenuItem` which conceptually acts like a standard `Radio`. It has an indicator (`ContextMenuItemIndicator`).
 
@@ -499,7 +487,7 @@ A more specific `ContextMenuItem` which conceptually acts like a standard `Radio
   ]}
 />
 
-#### ContextMenuItemIndicator
+#### ItemIndicator
 
 Renders when the parent `ContextMenuCheckboxItem` or `ContextMenuRadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
 
@@ -518,6 +506,6 @@ Renders when the parent `ContextMenuCheckboxItem` or `ContextMenuRadioItem` is c
   ]}
 />
 
-#### ContextMenuSeparator
+#### Separator
 
 Used to visually separate items in a `ContextMenu`.
