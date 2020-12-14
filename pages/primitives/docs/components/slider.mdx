@@ -99,6 +99,143 @@ export default () => (
 );
 ```
 
+### API Reference
+
+#### Slider
+
+`Slider` is the root component.
+
+<PropsTable
+  data={[
+    {
+      name: 'defaultValue',
+      required: false,
+      type: 'number[]',
+      description: (
+        <span>
+          The value of the <Code>Slider</Code> when it is initially
+          rendered. Use <Code>defaultValue</Code> if you do not need
+          to control the state of a <Code>Slider</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'value',
+      required: false,
+      type: 'number[]',
+      description: (
+        <span>
+          The controlled value of the <Code>Slider</Code>`. Must be
+          used in conjunction with <Code>onValueChange</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'name',
+      required: false,
+      type: 'string',
+      description: (
+        <span>
+          Identifier for the <Code>Slider</Code> and its values in a
+          form.
+        </span>
+      ),
+    },
+    {
+      name: 'disabled',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description: (
+        <span>
+          Whether or not a <Code>Slider</Code> is disabled from user
+          interaction.
+        </span>
+      ),
+    },
+    {
+      name: 'orientation',
+      required: false,
+      type: '"horizontal" | "vertical"',
+      typeSimple: 'enum',
+      default: '"horizontal"',
+      description: (
+        <span>
+          The orientation in which the <Code>Slider</Code> is
+          displayed. This is helpful alongside proper visual styles to
+          improve keyboard controls, and it provides extra context for
+          assistive technology.
+        </span>
+      ),
+    },
+    {
+      name: 'dir',
+      required: false,
+      type: '"ltr" | "rtl"',
+      typeSimple: 'enum',
+      default: '"ltr"',
+      description: (
+        <span>
+          The reading mode of the document where the{' '}
+          <Code>Slider</Code> is rendered. If omitted,{' '}
+          <Code>Slider</Code> assumes LTR (left-to-right) reading
+          mode.
+        </span>
+      ),
+    },
+    {
+      name: 'min',
+      required: false,
+      type: 'number',
+      default: '0',
+      description: <span>The minimum value for the range.</span>,
+    },
+    {
+      name: 'max',
+      required: false,
+      type: 'number',
+      default: '100',
+      description: <span>The maximum value for the range</span>,
+    },
+    {
+      name: 'onValueChange',
+      required: false,
+      type: 'onValueChange?(value: number[]): void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          The callback that fires when one of the values for the{' '}
+          <Code>Slider</Code> change.
+        </span>
+      ),
+    },
+    {
+      name: 'minStepsBetweenThumbs',
+      required: false,
+      type: 'number',
+      default: '0',
+      description: (
+        <span>
+          The minimum step allowed between multiple{' '}
+          <Code>Slider</Code> thumbs.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+#### Track
+
+`SliderTrack` is the track part.
+
+#### Range
+
+`SliderRange` is the range part. Must live inside `SliderTrack`.
+
+#### Thumb
+
+`SliderThumb` is the thumb part. You can render multiple thumbs.
+
 ### Examples
 
 #### Vertical orientation
@@ -265,143 +402,6 @@ export default () => (
   </Slider>
 );
 ```
-
-### API Reference
-
-#### Slider
-
-`Slider` is the root component.
-
-<PropsTable
-  data={[
-    {
-      name: 'defaultValue',
-      required: false,
-      type: 'number[]',
-      description: (
-        <span>
-          The value of the <Code>Slider</Code> when it is initially
-          rendered. Use <Code>defaultValue</Code> if you do not need
-          to control the state of a <Code>Slider</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'value',
-      required: false,
-      type: 'number[]',
-      description: (
-        <span>
-          The controlled value of the <Code>Slider</Code>`. Must be
-          used in conjunction with <Code>onValueChange</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'name',
-      required: false,
-      type: 'string',
-      description: (
-        <span>
-          Identifier for the <Code>Slider</Code> and its values in a
-          form.
-        </span>
-      ),
-    },
-    {
-      name: 'disabled',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <span>
-          Whether or not a <Code>Slider</Code> is disabled from user
-          interaction.
-        </span>
-      ),
-    },
-    {
-      name: 'orientation',
-      required: false,
-      type: '"horizontal" | "vertical"',
-      typeSimple: 'enum',
-      default: '"horizontal"',
-      description: (
-        <span>
-          The orientation in which the <Code>Slider</Code> is
-          displayed. This is helpful alongside proper visual styles to
-          improve keyboard controls, and it provides extra context for
-          assistive technology.
-        </span>
-      ),
-    },
-    {
-      name: 'dir',
-      required: false,
-      type: '"ltr" | "rtl"',
-      typeSimple: 'enum',
-      default: '"ltr"',
-      description: (
-        <span>
-          The reading mode of the document where the{' '}
-          <Code>Slider</Code> is rendered. If omitted,{' '}
-          <Code>Slider</Code> assumes LTR (left-to-right) reading
-          mode.
-        </span>
-      ),
-    },
-    {
-      name: 'min',
-      required: false,
-      type: 'number',
-      default: '0',
-      description: <span>The minimum value for the range.</span>,
-    },
-    {
-      name: 'max',
-      required: false,
-      type: 'number',
-      default: '100',
-      description: <span>The maximum value for the range</span>,
-    },
-    {
-      name: 'onValueChange',
-      required: false,
-      type: 'onValueChange?(value: number[]): void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          The callback that fires when one of the values for the{' '}
-          <Code>Slider</Code> change.
-        </span>
-      ),
-    },
-    {
-      name: 'minStepsBetweenThumbs',
-      required: false,
-      type: 'number',
-      default: '0',
-      description: (
-        <span>
-          The minimum step allowed between multiple{' '}
-          <Code>Slider</Code> thumbs.
-        </span>
-      ),
-    },
-  ]}
-/>
-
-#### Track
-
-`SliderTrack` is the track part.
-
-#### Range
-
-`SliderRange` is the range part. Must live inside `SliderTrack`.
-
-#### Thumb
-
-`SliderThumb` is the thumb part. You can render multiple thumbs.
 
 ### Accessibility
 
