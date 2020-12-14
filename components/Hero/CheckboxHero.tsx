@@ -2,24 +2,24 @@ import React from 'react';
 import { Box, styled, css, Flex } from '@modulz/design-system';
 
 const check1 = css.keyframes({
-  '0%': { opacity: '0', },
-  '44.9999%': { opacity: '0', },
-  '45%': { opacity: '1', },
-  '100%': { opacity: '1', },
+  '0%': { opacity: '0' },
+  '44.9999%': { opacity: '0' },
+  '45%': { opacity: '1' },
+  '100%': { opacity: '1' },
 });
 
 const check2 = css.keyframes({
-  '0%': { opacity: '0', },
-  '54.9999%': { opacity: '0', },
-  '55%': { opacity: '1', },
-  '100%': { opacity: '1', },
+  '0%': { opacity: '0' },
+  '54.9999%': { opacity: '0' },
+  '55%': { opacity: '1' },
+  '100%': { opacity: '1' },
 });
 
 const cursor = css.keyframes({
-  '0%': { transform: 'translateY(0)', },
-  '45%': { transform: 'translateY(0)', },
-  '48%': { transform: 'translateY(40px)', },
-  '100%': { transform: 'translateY(40px)', },
+  '0%': { transform: 'translateY(0)' },
+  '45%': { transform: 'translateY(0)' },
+  '48%': { transform: 'translateY(40px)' },
+  '100%': { transform: 'translateY(40px)' },
 });
 
 const click = css.keyframes({
@@ -37,10 +37,12 @@ const click = css.keyframes({
 const CheckboxContainer = () => {
   return (
     <Box>
-      <Flex css={{
-        alignItems: 'center',
-        my: '$3',
-      }}>
+      <Flex
+        css={{
+          alignItems: 'center',
+          my: '$3',
+        }}
+      >
         <Box
           css={{
             position: 'relative',
@@ -54,12 +56,27 @@ const CheckboxContainer = () => {
             color: 'white',
           }}
         >
-          <Box css={{
-            opacity: '0',
-            animation: `${check1} 5000ms infinite`,
-            animationDirection: 'alternate',
-          }}>
-            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          <Box
+            css={{
+              opacity: '0',
+              animation: `${check1} 5000ms infinite`,
+              animationDirection: 'alternate',
+            }}
+          >
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z"
+                fill="currentColor"
+                fillRule="evenodd"
+                clipRule="evenodd"
+              ></path>
+            </svg>
           </Box>
           <Box
             css={{
@@ -70,15 +87,24 @@ const CheckboxContainer = () => {
               animationDirection: 'alternate',
             }}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-              <g clip-path="url(#clip0)">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="25"
+              viewBox="0 0 25 25"
+              fill="none"
+            >
+              <g clipPath="url(#clip0)">
                 <g filter="url(#filter0_d)">
-                  <path d="M7.5 23.1865L4.79423 0.5L23.0885 14.1865L13.5442 15.6554L7.5 23.1865Z" fill="black" />
+                  <path
+                    d="M7.5 23.1865L4.79423 0.5L23.0885 14.1865L13.5442 15.6554L7.5 23.1865Z"
+                    fill="black"
+                  />
                   <path
                     d="M7.5 23.1865L4.79423 0.5L23.0885 14.1865L13.5442 15.6554L7.5 23.1865Z"
                     stroke="white"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </g>
               </g>
@@ -90,15 +116,27 @@ const CheckboxContainer = () => {
                   width="31.4545"
                   height="32.5526"
                   filterUnits="userSpaceOnUse"
-                  color-interpolation-filters="sRGB"
+                  colorInterpolationFilters="sRGB"
                 >
-                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                  <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                  <feColorMatrix
+                    in="SourceAlpha"
+                    type="matrix"
+                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  />
                   <feOffset dy="1" />
                   <feGaussianBlur stdDeviation="1" />
-                  <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                  <feColorMatrix
+                    type="matrix"
+                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                  />
                   <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
-                  <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+                  <feBlend
+                    mode="normal"
+                    in="SourceGraphic"
+                    in2="effect1_dropShadow"
+                    result="shape"
+                  />
                 </filter>
                 <clipPath id="clip0">
                   <rect width="25" height="25" fill="white" />
@@ -120,16 +158,26 @@ const CheckboxContainer = () => {
                 animationDirection: 'alternate',
                 animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
               }}
-            >
-            </Box>
+            ></Box>
           </Box>
         </Box>
-        <Box css={{ position: 'relative', zIndex: '1', backgroundColor: 'white', height: 3, width: 100, ml: '$3' }}></Box>
+        <Box
+          css={{
+            position: 'relative',
+            zIndex: '1',
+            backgroundColor: 'white',
+            height: 3,
+            width: 100,
+            ml: '$3',
+          }}
+        ></Box>
       </Flex>
-      <Flex css={{
-        alignItems: 'center',
-        my: '$3',
-      }}>
+      <Flex
+        css={{
+          alignItems: 'center',
+          my: '$3',
+        }}
+      >
         <Box
           css={{
             position: 'relative',
@@ -143,15 +191,39 @@ const CheckboxContainer = () => {
             color: 'white',
           }}
         >
-          <Box css={{
-            opacity: '0',
-            animation: `${check2} 5000ms infinite`,
-            animationDirection: 'alternate',
-          }}>
-            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          <Box
+            css={{
+              opacity: '0',
+              animation: `${check2} 5000ms infinite`,
+              animationDirection: 'alternate',
+            }}
+          >
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z"
+                fill="currentColor"
+                fillRule="evenodd"
+                clipRule="evenodd"
+              ></path>
+            </svg>
           </Box>
         </Box>
-        <Box css={{ position: 'relative', zIndex: '1', backgroundColor: 'white', height: 3, width: 50, ml: '$3' }}></Box>
+        <Box
+          css={{
+            position: 'relative',
+            zIndex: '1',
+            backgroundColor: 'white',
+            height: 3,
+            width: 50,
+            ml: '$3',
+          }}
+        ></Box>
       </Flex>
     </Box>
   );
@@ -160,4 +232,3 @@ const CheckboxContainer = () => {
 export const CheckboxHero = () => {
   return <CheckboxContainer />;
 };
-
