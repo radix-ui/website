@@ -58,7 +58,7 @@ export function PropsTable({ data }: { data: PropDef[] }) {
                   <Popover.Trigger
                     as={IconButton}
                     variant="ghost"
-                    css={{ ml: '$2', verticalAlign: 'middle' }}
+                    css={{ ml: '$1', verticalAlign: 'middle' }}
                     aria-label="Prop description"
                   >
                     <InfoCircledIcon aria-hidden />
@@ -82,13 +82,13 @@ export function PropsTable({ data }: { data: PropDef[] }) {
                   <Popover.Trigger
                     as={IconButton}
                     variant="ghost"
-                    css={{ ml: '$2' }}
+                    css={{ ml: '$1', verticalAlign: 'middle' }}
                     aria-label="See full type"
                   >
                     <InfoCircledIcon />
                   </Popover.Trigger>
                   <Popover.Content side="top">
-                    <Box css={{ py: '$2', px: '$2', height: '39px', whiteSpace: 'nowrap' }}>
+                    <Box css={{ py: '$2', px: '$2', height: '38px', whiteSpace: 'nowrap' }}>
                       <Text size="2" css={{ display: 'inline' }}>
                         Type:
                       </Text>{' '}
