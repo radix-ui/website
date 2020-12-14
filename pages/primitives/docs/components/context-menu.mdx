@@ -26,35 +26,61 @@ Install the component from your command line.
 npm install @radix-ui/react-context-menu
 ```
 
-Then import the component in your component file.
+### Anatomy
+
+Import the components and piece the parts together.
 
 ```jsx
-// ContextMenu.tsx
-import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
+import {
+  ContextMenu,
+  Trigger,
+  Content,
+  Item,
+  Group,
+  Label,
+  CheckboxItem,
+  RadioGroup,
+  RadioItem,
+  ItemIndicator,
+  Separator,
+} from '@radix-ui/react-context-menu';
+
+export default () => (
+  <ContextMenu>
+    <Trigger />
+    <Content>
+      <Item />
+      <Separator />
+      <CheckboxItem />
+      <RadioGroup>
+        <RadioItem />
+      </RadioGroup>
+      <Item>
+        <ItemIndicator />
+      </Item>
+    </Content>
+  </ContextMenu>
+);
 ```
 
 ### Basic example
 
 ```jsx live manual
-// ContextMenu.tsx
-// import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
+import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 
-const MenuContent = styled(ContextMenuPrimitive.ContextMenuContent, {
+const Content = styled(ContextMenuPrimitive.Content, {
   minWidth: 130,
   backgroundColor: 'white',
   borderRadius: 6,
   padding: 5,
-  boxShadow:
-    'hsla(206,22%,7%,.15) 0px 5px 15px -5px, hsla(206,22%,7%,.1) 0px 5px 10px -15px',
+  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
 });
 
-const MenuItem = styled(ContextMenuPrimitive.ContextMenuItem, {
+const Item = styled(ContextMenuPrimitive.Item, {
   fontSize: 13,
   padding: '5px 10px',
   borderRadius: 3,
   cursor: 'default',
-
-  '&[data-disabled]': { color: 'slategray' },
 
   ':focus': {
     outline: 'none',
@@ -63,85 +89,30 @@ const MenuItem = styled(ContextMenuPrimitive.ContextMenuItem, {
   },
 });
 
-const MenuSeparator = styled(ContextMenuPrimitive.ContextMenuSeparator, {
-  height: 1,
-  backgroundColor: 'gainsboro',
-  margin: '5px 10px',
-});
-
-const TriggerArea = styled(ContextMenuPrimitive.ContextMenuTrigger, {
-  display: 'block',
-  textAlign: 'center',
-  padding: 100,
-  backgroundColor: 'slategray',
-});
-
 render(
   <ContextMenuPrimitive.Root>
-    <TriggerArea>Right click anywhere here</TriggerArea>
-    <MenuContent sideOffset={-5}>
-      <MenuItem onSelect={() => alert('undo')}>Undo</MenuItem>
-      <MenuItem onSelect={() => alert('redo')}>Redo</MenuItem>
-      <MenuSeparator />
-      <MenuItem disabled onSelect={() => alert('cut')}>
-        Cut
-      </MenuItem>
-      <MenuItem onSelect={() => alert('copy')}>Copy</MenuItem>
-      <MenuItem onSelect={() => alert('paste')}>Paste</MenuItem>
-    </MenuContent>
+    <ContextMenuPrimitive.Trigger>
+      <div
+        style={{
+          display: 'block',
+          textAlign: 'center',
+          padding: 100,
+          backgroundColor: 'slategray',
+        }}
+      >
+        Right click anywhere here
+      </div>
+    </ContextMenuPrimitive.Trigger>
+    <Content sideOffset={-5}>
+      <Item>Undo</Item>
+      <Item>Redo</Item>
+      <Item>Cut</Item>
+      <Item>Copy</Item>
+      <Item>Paste</Item>
+    </Content>
   </ContextMenuPrimitive.Root>
 );
 ```
-
-### Accessibility
-
-#### Keyboard Interactions
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['Space'],
-      description: (
-        <span>
-          Activates the focused item.
-        </span>
-      ),
-    },
-    {
-      keys: ['Enter'],
-      description: (
-        <span>
-          Activates the focused item.
-        </span>
-      ),
-    },
-    ,
-    {
-      keys: ['ArrowDown'],
-      description: (
-        <span>
-          Moves focus to the next item.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowUp'],
-      description: (
-        <span>
-          Moves focus to the previous item.
-        </span>
-      ),
-    },
-    {
-      keys: ['Esc'],
-      description: (
-        <span>
-          Closes <Code>Content</Code>.
-        </span>
-      ),
-    },
-  ]}
-/>
 
 ### API Reference
 
@@ -165,10 +136,11 @@ render(
       default: 'true',
       description: (
         <span>
-          When <Code>true</Code>, hover/focus/click interactions will be
-          disabled on elements outside the <Code>Content</Code>. Users will need
-          to click twice on outside elements to interact with them: Once to
-          close the <Code>ContextMenu</Code>, and again to trigger the element.
+          When <Code>true</Code>, hover/focus/click interactions will
+          be disabled on elements outside the <Code>Content</Code>.
+          Users will need to click twice on outside elements to
+          interact with them: Once to close the{' '}
+          <Code>ContextMenu</Code>, and again to trigger the element.
         </span>
       ),
     },
@@ -178,8 +150,8 @@ render(
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the escape key is down. It can be prevented
-          by calling <Code>event.preventDefault</Code>
+          Event handler called when the escape key is down. It can be
+          prevented by calling <Code>event.preventDefault</Code>
         </span>
       ),
     },
@@ -189,22 +161,25 @@ render(
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the a pointer event happens outside of the{' '}
-          <Code>Content</Code>. It can be prevented by calling{' '}
-          <Code>event.preventDefault</Code>.
+          Event handler called when the a pointer event happens
+          outside of the <Code>Content</Code>. It can be prevented by
+          calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
     {
       name: 'onInteractOutside',
-      type: '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
+      type:
+        '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
       typeSimple: 'function',
       description: (
         <span>
           Event handler called when an interaction happens outside the
-          <Code>Content</Code>. Specifically, when a pointer event happens outside
-          of the `ContextMenuContent` or focus moves outside of it. It can be prevented
-          by calling <Code>event.preventDefault</Code>.
+          <Code>Content</Code>. Specifically, when a pointer event happens
+          outside of the `ContextMenuContent` or focus moves outside of
+          it. It can be prevented by calling <Code>
+            event.preventDefault
+          </Code>.
         </span>
       ),
     },
@@ -221,8 +196,8 @@ render(
       default: '"bottom"',
       description: (
         <span>
-          The desired side to place the <Code>Content</Code> against the mouse
-          position. May switch in case of collisions.
+          The desired side to place the <Code>Content</Code> against
+          the mouse position. May switch in case of collisions.
         </span>
       ),
     },
@@ -243,8 +218,8 @@ render(
       default: '"start"',
       description: (
         <span>
-          How to align the <Code>Content</Code> against the mouse position. May
-          switch in case of collisions.
+          How to align the <Code>Content</Code> against the mouse
+          position. May switch in case of collisions.
         </span>
       ),
     },
@@ -264,9 +239,10 @@ render(
       default: 'true',
       description: (
         <span>
-          Whether or not collisions with window edges should be avoided. When
-          turned on, this will result in the <Code>Content</Code> flipping its
-          side and alignment accordingly.
+          Whether or not collisions with window edges should be
+          avoided. When turned on, this will result in the{' '}
+          <Code>Content</Code> flipping its side and alignment
+          accordingly.
         </span>
       ),
     },
@@ -276,8 +252,8 @@ render(
       default: '0',
       description: (
         <span>
-          The tolerance within which the <Code>Content</Code> is to be checked
-          against window edges.
+          The tolerance within which the <Code>Content</Code> is to be
+          checked against window edges.
         </span>
       ),
     },
@@ -295,8 +271,9 @@ The component used to render items in the `ContextMenu`.
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>Item</Code> is disabled. If so it will not be
-          clickable and will not be focusable using arrow keys
+          Whether or not the <Code>Item</Code> is disabled. If so it
+          will not be clickable and will not be focusable using arrow
+          keys
         </span>
       ),
     },
@@ -306,9 +283,10 @@ The component used to render items in the `ContextMenu`.
       typeSimple: 'function',
       description: (
         <span>
-          The callback that fires when an <Code>Item</Code> is selected (via
-          mouse or keyboard). Calling <Code>event.preventDefault</Code> in this
-          handler will prevent the <Code>ContextMenu</Code> from closing when
+          The callback that fires when an <Code>Item</Code> is
+          selected (via mouse or keyboard). Calling{' '}
+          <Code>event.preventDefault</Code> in this handler will
+          prevent the <Code>ContextMenu</Code> from closing when
           selecting that item.
         </span>
       ),
@@ -318,9 +296,10 @@ The component used to render items in the `ContextMenu`.
       type: 'string',
       description: (
         <span>
-          An optional text used for typeahead purpose. By default the typeahead
-          behavior will use the <Code>.textContent</Code> of <Code>Item</Code>{' '}
-          is too complex, or you have non-textual content
+          An optional text used for typeahead purpose. By default the
+          typeahead behavior will use the <Code>.textContent</Code> of{' '}
+          <Code>Item</Code> is too complex, or you have non-textual
+          content
           <Code>Item</Code>. Use this when the content inside the inside.
         </span>
       ),
@@ -347,8 +326,9 @@ A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and 
       type: 'boolean',
       description: (
         <span>
-          The controlled checked state of the <Code>CheckboxItem</Code>. Must be
-          used in conjunction with <Code>onCheckedChange</Code>.
+          The controlled checked state of the{' '}
+          <Code>CheckboxItem</Code>. Must be used in conjunction with{' '}
+          <Code>onCheckedChange</Code>.
         </span>
       ),
     },
@@ -368,8 +348,9 @@ A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and 
       type: 'boolean',
       description: (
         <span>
-          Whether the <Code>CheckboxItem</Code> is disabled. If so it will not
-          be clickable and will not be focusable using arrow keys
+          Whether the <Code>CheckboxItem</Code> is disabled. If so it
+          will not be clickable and will not be focusable using arrow
+          keys
         </span>
       ),
     },
@@ -379,10 +360,11 @@ A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and 
       typeSimple: 'function',
       description: (
         <span>
-          The callback that fires when a <Code>CheckboxItem</Code> is selected
-          (via mouse or keyboard). Calling <Code>event.preventDefault</Code> in
-          this handler will prevent the <Code>ContextMenu</Code> from closing
-          when selecting that item.
+          The callback that fires when a <Code>CheckboxItem</Code> is
+          selected (via mouse or keyboard). Calling{' '}
+          <Code>event.preventDefault</Code> in this handler will
+          prevent the <Code>ContextMenu</Code> from closing when
+          selecting that item.
         </span>
       ),
     },
@@ -391,11 +373,11 @@ A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and 
       type: 'string',
       description: (
         <span>
-          An optional text used for typeahead purpose. By default the typeahead
-          behavior will use the <Code>.textContent</Code> of{' '}
-          <Code>CheckboxItem</Code>. Use this when the content inside the{' '}
-          <Code>CheckboxItem</Code> is too complex, or you have non-textual
-          content inside.
+          An optional text used for typeahead purpose. By default the
+          typeahead behavior will use the <Code>.textContent</Code> of{' '}
+          <Code>CheckboxItem</Code>. Use this when the content inside
+          the <Code>CheckboxItem</Code> is too complex, or you have
+          non-textual content inside.
         </span>
       ),
     },
@@ -424,8 +406,8 @@ A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and 
       typeSimple: 'function',
       description: (
         <span>
-          The callback that fires when the selected <Code>RadioItem</Code>{' '}
-          changes.
+          The callback that fires when the selected{' '}
+          <Code>RadioItem</Code> changes.
         </span>
       ),
     },
@@ -453,8 +435,9 @@ A more specific `ContextMenuItem` which conceptually acts like a standard `Radio
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>RadioItem</Code> is disabled. If so it will
-          not be clickable and will not be focusable using arrow keys.
+          Whether or not the <Code>RadioItem</Code> is disabled. If so
+          it will not be clickable and will not be focusable using
+          arrow keys.
         </span>
       ),
     },
@@ -464,9 +447,10 @@ A more specific `ContextMenuItem` which conceptually acts like a standard `Radio
       typeSimple: 'function',
       description: (
         <span>
-          The callback that fires when a <Code>RadioItem</Code> is selected (via
-          mouse or keyboard). Calling <Code>event.preventDefault</Code> in this
-          handler will prevent the <Code>ContextMenu</Code> from closing when
+          The callback that fires when a <Code>RadioItem</Code> is
+          selected (via mouse or keyboard). Calling{' '}
+          <Code>event.preventDefault</Code> in this handler will
+          prevent the <Code>ContextMenu</Code> from closing when
           selecting that item.
         </span>
       ),
@@ -476,11 +460,11 @@ A more specific `ContextMenuItem` which conceptually acts like a standard `Radio
       type: 'string',
       description: (
         <span>
-          An optional text used for typeahead purpose. By default the typeahead
-          behavior will use the <Code>.textContent</Code> of{' '}
+          An optional text used for typeahead purpose. By default the
+          typeahead behavior will use the <Code>.textContent</Code> of{' '}
           <Code>RadioItem</Code>. Use this when the content inside the{' '}
-          <Code>RadioItem</Code> is too complex, or you have non-textual content
-          inside.
+          <Code>RadioItem</Code> is too complex, or you have
+          non-textual content inside.
         </span>
       ),
     },
@@ -498,8 +482,8 @@ Renders when the parent `ContextMenuCheckboxItem` or `ContextMenuRadioItem` is c
       type: 'boolean',
       description: (
         <span>
-          Used to force mounting when more control is needed. Useful when
-          controlling animation with React animation libraries.
+          Used to force mounting when more control is needed. Useful
+          when controlling animation with React animation libraries.
         </span>
       ),
     },
@@ -509,3 +493,37 @@ Renders when the parent `ContextMenuCheckboxItem` or `ContextMenuRadioItem` is c
 #### Separator
 
 Used to visually separate items in a `ContextMenu`.
+
+### Accessibility
+
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space'],
+      description: <span>Activates the focused item.</span>,
+    },
+    {
+      keys: ['Enter'],
+      description: <span>Activates the focused item.</span>,
+    },
+    ,
+    {
+      keys: ['ArrowDown'],
+      description: <span>Moves focus to the next item.</span>,
+    },
+    {
+      keys: ['ArrowUp'],
+      description: <span>Moves focus to the previous item.</span>,
+    },
+    {
+      keys: ['Esc'],
+      description: (
+        <span>
+          Closes <Code>Content</Code>.
+        </span>
+      ),
+    },
+  ]}
+/>

@@ -35,17 +35,19 @@ import {
   Content,
   Title,
   Description,
+  Cancel,
+  Action,
 } from '@radix-ui/react-alert-dialog';
 
 export default () => (
   <Root>
-    <Trigger>Trigger button</Trigger>
+    <Trigger />
     <Overlay />
     <Content>
-      <Title>Title</Title>
-      <Description>Description</Description>
-      <Cancel>Cancel</Cancel>
-      <Action>Accept</Action>
+      <Title />
+      <Description />
+      <Cancel />
+      <Action />
     </Content>
   </Root>
 );
@@ -123,8 +125,7 @@ render(
       description: (
         <span>
           The controlled open state of the <Code>AlertDialog</Code>.
-          Must be used in conjunction with <pCode>onOpenChange</pCode>
-          .
+          Must be used in conjunction with <Code>onOpenChange</Code>.
         </span>
       ),
     },
