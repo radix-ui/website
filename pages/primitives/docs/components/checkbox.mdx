@@ -23,19 +23,25 @@ Install the component from your command line.
 npm install @radix-ui/react-checkbox
 ```
 
-Then import the component in your component file.
+### Anatomy
+
+Import the components and piece the parts together.
 
 ```jsx
-// Checkbox.tsx
-import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
+import { Root, Indicator } from '@radix-ui/react-checkbox';
+
+export default () => (
+  <Root>
+    <Indicator />
+  </Root>
+);
 ```
 
 ### Basic example
 
 ```jsx live manual
-// Checkbox.tsx
-// import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
-// import { CheckIcon } from '@modulz/radix-icons';
+import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
+import { CheckIcon } from '@modulz/radix-icons';
 
 const Checkbox = styled(CheckboxPrimitive.Root, {
   appearance: 'none',
@@ -62,7 +68,7 @@ const Indicator = styled(CheckboxPrimitive.Indicator, {
   width: '100%',
 });
 
-render(
+export default () => (
   <Checkbox defaultChecked>
     <Indicator>
       <CheckIcon />
@@ -70,31 +76,6 @@ render(
   </Checkbox>
 );
 ```
-
-### Accessibility
-
-#### Keyboard Interactions
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['Space'],
-      description: (
-        <span>
-          Checks/unchecks <Code>Checkbox</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['Enter'],
-      description: (
-        <span>
-          Checks/unchecks <Code>Checkbox</Code>.
-        </span>
-      ),
-    },
-  ]}
-/>
 
 ### API Reference
 
@@ -109,9 +90,10 @@ render(
       type: 'boolean',
       description: (
         <span>
-          The checked state of the <Code>Checkbox</Code> when it is initially
-          rendered. Use <Code>defaultChecked</Code> if you do not need to
-          control the state of the <Code>Checkbox</Code>.
+          The checked state of the <Code>Checkbox</Code> when it is
+          initially rendered. Use <Code>defaultChecked</Code> if you
+          do not need to control the state of the{' '}
+          <Code>Checkbox</Code>.
         </span>
       ),
     },
@@ -120,8 +102,9 @@ render(
       type: 'boolean',
       description: (
         <span>
-          The controlled checked state of the <Code>Checkbox</Code>. Must be
-          used in conjunction with <Code>onCheckedChange</Code>.
+          The controlled checked state of the <Code>Checkbox</Code>.
+          Must be used in conjunction with{' '}
+          <Code>onCheckedChange</Code>.
         </span>
       ),
     },
@@ -150,7 +133,8 @@ render(
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>Checkbox</Code> is required in a form.
+          Whether or not the <Code>Checkbox</Code> is required in a
+          form.
         </span>
       ),
     },
@@ -159,8 +143,8 @@ render(
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>Checkbox</Code> is read-only and cannot be
-          toggled by the user.
+          Whether or not the <Code>Checkbox</Code> is read-only and
+          cannot be toggled by the user.
         </span>
       ),
     },
@@ -188,6 +172,31 @@ Renders when the `Checkbox` is in a checked or indeterminate state. You can styl
       type: 'boolean',
       description:
         'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+    },
+  ]}
+/>
+
+### Accessibility
+
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space'],
+      description: (
+        <span>
+          Checks/unchecks <Code>Checkbox</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['Enter'],
+      description: (
+        <span>
+          Checks/unchecks <Code>Checkbox</Code>.
+        </span>
+      ),
     },
   ]}
 />
