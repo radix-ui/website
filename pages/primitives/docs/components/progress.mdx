@@ -21,20 +21,31 @@ Install the component from your command line.
 npm install @radix-ui/react-progress
 ```
 
-Then import the component in your component file.
+### Anatomy
+
+Import the components and piece the parts together.
 
 ```jsx
-// Progress.tsx
-import * as ProgressPrimitive from '@radix-ui/react-progress';
+import { Progress, Indicator } from '@radix-ui/react-progress';
+
+export default () => (
+  <Progress>
+    <Indicator />
+  </Progress>
+);
 ```
 
 ### Basic example
 
-```jsx live manual
-// Progress.tsx
-// import * as ProgressPrimitive from '@radix-ui/react-progress';
+Create your styled progress component from the primitive parts.
 
-const Progress = styled(ProgressPrimitive.Root, {
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
+
+```jsx live manual
+// import { stitches } from 'path-to/stitches.config';
+import * as ProgressBarPrimitive from '@radix-ui/react-progress';
+
+const Progress = styled(ProgressBarPrimitive.Root, {
   position: 'relative',
   height: 10,
   overflow: 'hidden',
@@ -42,14 +53,14 @@ const Progress = styled(ProgressPrimitive.Root, {
   background: 'gainsboro',
 });
 
-const ProgressIndicator = styled(ProgressPrimitive.Indicator, {
+const ProgressIndicator = styled(ProgressBarPrimitive.Indicator, {
   boxSizing: 'border-box',
   position: 'absolute',
   backgroundColor: 'dodgerblue',
   height: '100%',
 });
 
-render(
+export () => (
   <Progress value={50}>
     <ProgressIndicator style={{ width: '50%' }} />
   </Progress>
