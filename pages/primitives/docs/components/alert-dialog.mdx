@@ -7,6 +7,7 @@ features:
   - Focus is automatically trapped.
   - Can be controlled or uncontrolled.
   - Manages screen reader announcements with `Title` and `Description` components.
+  - Esc closes the component automatically.
 ---
 
 import { AlertDialogHero } from '../../../../components/Hero/AlertDialogHero';
@@ -243,9 +244,8 @@ render(
       keys: ['Space'],
       description: (
         <div>
-            When focus is on <Code>Trigger</Code>, opens <Code>Overlay</Code>{' '}
-            and <Code>Content</Code>. When focus is on <Code>Action</Code> or <Code>Cancel</Code>, closes <Code>Overlay</Code>{' '}
-            and <Code>Content</Code> and moves focus to <Code>Trigger</Code>.
+            Opens/closes <Code>Overlay</Code>{' '}
+            and <Code>Content</Code>.
         </div>
       ),
     },
@@ -253,9 +253,8 @@ render(
       keys: ['Enter'],
       description: (
         <div>
-            When focus is on <Code>Trigger</Code>, opens <Code>Overlay</Code>{' '}
-            and <Code>Content</Code>. When focus is on <Code>Action</Code> or <Code>Cancel</Code>, closes <Code>Overlay</Code>{' '}
-            and <Code>Content</Code> and moves focus to <Code>Trigger</Code>.
+            Opens/closes <Code>Overlay</Code>{' '}
+            and <Code>Content</Code>.
         </div>
       ),
     },
@@ -338,13 +337,13 @@ render(
   ]}
 />
 
-#### AlertDialogTrigger
+#### Trigger
 
-A button that triggers the `AlertDialog`.
+`AlertDialogTrigger` is a button that triggers the `AlertDialog`.
 
-#### AlertDialogOverlay
+#### Overlay
 
-The overlay that covers the inert portion of the view when an `AlertDialog` is open.
+`AlertDialogOverlay` is an overlay that covers the inert portion of the view when an `AlertDialog` is open.
 
 <PropsTable
   data={[
@@ -357,9 +356,9 @@ The overlay that covers the inert portion of the view when an `AlertDialog` is o
   ]}
 />
 
-#### AlertDialogContent
+#### Content
 
-The component that contains content to be rendered in an open `AlertDialog`.
+`AlertDialogContent` contains content to be rendered in an open `AlertDialog`.
 
 <PropsTable
   data={[
@@ -417,18 +416,18 @@ The component that contains content to be rendered in an open `AlertDialog`.
   ]}
 />
 
-#### AlertDialogCancel
+#### Cancel
 
-A button that closes the `AlertDialog` and assumes no subsequent action is expected by the user. This button should be distinguished visually from `Action` buttons for the best usability.
+`AlertDialogCancel` is a button that closes the `AlertDialog`. This button should be distinguished visually from `Action` buttons.
 
-#### AlertDialogAction
+#### Action
 
-A button that closes the `AlertDialog` and assumes that a subsequent action is expected by the user. These buttons should be distinguished visually from the `Cancel` button for the best usability.
+`AlertDialogAction` is a button that closes the `AlertDialog`. These buttons should be distinguished visually from the `Cancel` button.
 
-#### AlertDialogTitle
+#### Title
 
-A component to provide an accessible name to be announced when an `AlertDialog` is opened. Alternatively, you can provide `aria-label` or `aria-labelledby` to `Content` and exclude this component.
+`AlertDialogTitle` provides an accessible name to be announced when an `AlertDialog` is opened. Alternatively, you can provide `aria-label` or `aria-labelledby` to `Content` and exclude this component.
 
-#### AlertDialogDescription
+#### Description
 
-A component to provide an accessible description to be announced when an `AlertDialog` is opened. Alternatively, you can provide `aria-describedby` to `Content` and exclude this component.
+`AlertDialogDescription` provides an accessible description to be announced when an `AlertDialog` is opened. Alternatively, you can provide `aria-describedby` to `Content` and exclude this component.
