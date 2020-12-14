@@ -198,7 +198,7 @@ const TooltipTrigger = styled(TooltipPrimitive.Trigger, {
   padding: 0,
 });
 
-const TooltipPopper = styled(TooltipPrimitive.Popper, {
+const TooltipContent = styled(TooltipPrimitive.Content, {
   borderRadius: 3,
   padding: '5px 10px',
   fontSize: 14,
@@ -215,10 +215,10 @@ export default () => (
       </Avatar>
     </TooltipTrigger>
 
-    <TooltipPopper side="top">
+    <TooltipContent side="top">
       Tooltip content
       <TooltipPrimitive.Arrow style={{ fill: 'gainsboro' }} />
-    </TooltipPopper>
+    </TooltipContent>
   </TooltipPrimitive.Root>
 );
 ```
