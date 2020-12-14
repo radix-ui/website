@@ -1,6 +1,119 @@
 ---
-title: 'Introduction'
+title: Introduction
+description: The what and the why of Radix Primitives.
 navRank: 1
 ---
 
-Getting started with Radix Primitives
+Radix Primitives is a low-level component library with a focus on accessibility, customisation and developer experience.
+
+You can use these components as the base layer of your design system or just as a one off solution.
+
+With Radix Primitives, you'll be able to implement complex UI Components in minutes, such as a [custom select](https://modulz.app/blog/under-the-spotlight-select).
+
+---
+
+### Key Features
+
+#### Accessibility
+
+Building accessible components is a highly demanding task. There are many things to take into consideration, from screen reader support to keyboard navigation.
+
+We ensure that all components adhere to the [WAI-ARAI design pattern](https://www.w3.org/TR/wai-aria-practices-1.2) when possible. Giving you a piece of mind and allowing you to focus on the UI.
+
+Learn more in the [accessibility](./accessibility) page.
+
+#### Customisation
+
+The Radix Primitives components were designed to be customised to suit your needs.
+
+All components ship without any CSS, giving you have full control over styling. Learn more in the [styling](./styling) page.
+
+Some components also accept configurational props. For example, you choose whether the [Popover](../components/popover) appear below or above the trigger.
+
+#### Developer Experience
+
+One of our main goals is to provide the best possible developer experience. Radix Primitives provides a fully-typed API.
+
+All components share a similar API, creating a consitent and predictable experience. When applicable, all components are uncontrolled, but can optionally be controlled if needed.
+
+Also, when using the `as` prop, the prop suggestions will update. Truly polymorphic.
+
+#### Incremental adoption
+
+Each primitive can be installed indivudually so you can incrementally adopt them over time.
+
+```bash
+npm install @radix-ui/react-dialog
+npm install @radix-ui/react-dropdown-menu
+npm install @radix-ui/react-dropdown-tooltip
+```
+
+Please refer to each primitive's documentation for installation instructions.
+
+---
+
+### A quick tutorial
+
+Let's take a few minutes to install a Dropdown Menu component, style it, and package it as your own.
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](./styling).
+
+#### 1. Install
+
+```bash
+npm install @radix-ui/react-dropdown-menu
+```
+
+#### 2. Create your Dropdown Menu file
+
+```jsx live manual
+import { styled } from 'path-to/stitches.config';
+import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
+
+const DropdownTrigger = styled(DropdownMenuPrimitive.Trigger, {
+  backgroundColor: 'hsl(252,78%,71%)',
+  borderRadius: '9999px',
+  fontSize: '$2',
+  lineHeight: '1',
+  fontWeight: 500,
+  padding: '$2 $3',
+  border: '0',
+
+  '&:hover': { backgroundColor: 'hsl(252,78%,60%)' },
+});
+
+const DropdownContent = styled(DropdownMenuPrimitive.Content, {
+  minWidth: 130,
+  backgroundColor: 'hsl(252,50%,10%)',
+  borderRadius: 6,
+  padding: 5,
+  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
+});
+
+const DropdownItem = styled(DropdownMenuPrimitive.Item, {
+  fontSize: 13,
+  padding: '5px 10px',
+  borderRadius: 3,
+  cursor: 'default',
+  color: 'white',
+
+  '&:focus': {
+    outline: 'none',
+    backgroundColor: 'hsl(252,78%,71%)',
+    color: 'white',
+  },
+});
+
+export default () => (
+  <DropdownMenuPrimitive.Root>
+    <DropdownTrigger>Trigger</DropdownTrigger>
+    <DropdownContent>
+      <DropdownItem>Undo</DropdownItem>
+      <DropdownItem>Redo</DropdownItem>
+      <DropdownItem>Cut</DropdownItem>
+      <DropdownItem>Copy</DropdownItem>
+      <DropdownItem>Paste</DropdownItem>
+    </DropdownContent>
+  </DropdownMenuPrimitive.Root>
+);
+```
