@@ -70,6 +70,8 @@ Create your styled scroll area component from the primitive parts.
 // import { stitches } from 'path-to/stitches.config';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 
+const { SCROLL_AREA_CSS_PROPS } = ScrollAreaPrimitive;
+
 const ScrollArea = styled(ScrollAreaPrimitive.Root, {
   position: 'relative',
   // Root z-index set to 0 so we can set a new baseline for its children Apps may need to override
@@ -79,7 +81,7 @@ const ScrollArea = styled(ScrollAreaPrimitive.Root, {
   maxWidth: '100%',
   maxHeight: '100%',
   '&[data-dragging], &[data-scrolling]': {
-    pointerEvents: 'auto !important',
+    pointerEvents: 'auto',
   },
   '& [data-radix-scroll-area-position]::-webkit-scrollbar': {
     display: 'none',
@@ -102,33 +104,28 @@ const ScrollbarY = styled(ScrollAreaPrimitive.ScrollbarY, {
   bottom: 0,
 });
 
-const ScrollTrack = styled(ScrollAreaPrimitive.ScrollAreaTrack, {
+const ScrollTrack = styled(ScrollAreaPrimitive.Track, {
   zIndex: -1,
   position: 'relative',
   width: '100%',
   height: '100%',
 });
 
-const ScrollThumb = styled(ScrollAreaPrimitive.ScrollAreaThumb, {
+const ScrollThumb = styled(ScrollAreaPrimitive.Thumb, {
   backgroundColor: 'gainsboro',
   position: 'absolute',
-  top: '0',
-  left: '0',
+  top: 0,
+  left: 0,
   userSelect: 'none',
   borderRadius: 9999,
-  willChange: `var(${ScrollAreaPrimitive.SCROLL_AREA_CSS_PROPS.scrollbarThumbWillChange})`,
-  height: `var(${ScrollAreaPrimitive.SCROLL_AREA_CSS_PROPS.scrollbarThumbHeight})`,
-  width: `var(${ScrollAreaPrimitive.SCROLL_AREA_CSS_PROPS.scrollbarThumbWidth})`,
+  willChange: `var(${SCROLL_AREA_CSS_PROPS.scrollbarThumbWillChange})`,
+  height: `var(${SCROLL_AREA_CSS_PROPS.scrollbarThumbHeight})`,
+  width: `var(${SCROLL_AREA_CSS_PROPS.scrollbarThumbWidth})`,
 });
 
 export default () => (
   <div style={{ height: 500 }}>
     <ScrollArea>
-      <ScrollbarY>
-        <ScrollTrack>
-          <ScrollThumb />
-        </ScrollTrack>
-      </ScrollbarY>
       <Viewport>
         <div
           style={{
@@ -139,6 +136,12 @@ export default () => (
           }}
         />
       </Viewport>
+
+      <ScrollbarY>
+        <ScrollTrack>
+          <ScrollThumb />
+        </ScrollTrack>
+      </ScrollbarY>
     </ScrollArea>
   </div>
 );
