@@ -2,7 +2,7 @@
 title: Checkbox
 name: checkbox
 version: 0.0.1-13
-description: Useful for allowing users to select one or more options in a form.
+description: A control that allows the user to toggle between checked and not checked.
 features:
   - Supports indeterminate state.
   - Full keyboard navigation.
@@ -78,16 +78,19 @@ render(
 <KeyboardTable
   data={[
     {
-      keys: ['Space', 'Enter'],
+      keys: ['Space'],
       description: (
-        <ul>
-          <li>
-            When unchecked, checks <Code>Checkbox</Code>.
-          </li>
-          <li>
-            When checked, unchecks <Code>Checkbox</Code>.
-          </li>
-        </ul>
+        <span>
+          Checks/unchecks <Code>Checkbox</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['Enter'],
+      description: (
+        <span>
+          Checks/unchecks <Code>Checkbox</Code>.
+        </span>
       ),
     },
   ]}
@@ -174,7 +177,7 @@ render(
   ]}
 />
 
-#### CheckboxIndicator
+#### Indicator
 
 Renders when the `Checkbox` is in a checked or indeterminate state. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
 
