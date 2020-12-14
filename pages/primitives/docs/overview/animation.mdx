@@ -4,4 +4,87 @@ title: 'Animation'
 
 ## Overview
 
-Getting started with Radix Primitives
+Animation of Radix Primitives can generally be summed in terms of the `entering` and `exiting` phases of a stateful component. In either case, adding animation to a Primitives component should feel similar to any other component, but there are some caveats noted here in regards to `exiting` animations with JS animation libraries.
+
+### CSS `transition` and `animation` Properties
+
+The simplest way to animate Primitives is with CSS. You can use either `transition` or `animation` and it should work with `entering` or `exiting` animations as expected.
+
+```css
+@keyfames fadeIn {
+  from {
+    opacity: 0;
+  }
+  to: {
+    opacity: 1;
+  }
+}
+
+@keyfames fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+[data-radix-dialog-overlay][data-state='open'],
+[data-radix-dialog-content][data-state='open'] {
+  animation: fadeIn 300ms ease-out;
+}
+
+[data-radix-dialog-overlay][data-state='closed'],
+[data-radix-dialog-content][data-state='closed'] {
+  animation: fadeOut 300ms ease-in;
+}
+```
+
+### Using `forceMount` for JavaScript Animations
+
+When many stateful Primitives are hidden from view, they are actually removed from the React Tree, and their elements removed from the DOM. Many JavaScript animation libraries need control of the unmounting phase, so we provide the `forceMount` prop on many components to allow consumers to delegate the mounting and unmounting of children based on the animation state determined by those libraries.
+
+For example, if you want to use React Spring to animate a `Dialog`, you would do so by conditionally rendering its `Overlay` and `Content` parts based on the animation state from a hook like `useTransition`:
+
+```jsx
+import * as DialogPrimitive from '@radix-ui/react-dialog';
+import { useTransition, animated, config } from 'react-spring';
+
+const DialogOverlay = animated(DialogPrimitive.Overlay);
+const DialogContent = animated(DialogPrimitive.Content);
+
+function Example() {
+  const [showDialog, setShowDialog] = React.useState(false);
+  const transitions = useTransition(showDialog, null, {
+    from: { opacity: 0, y: -10 },
+    enter: { opacity: 1, y: 0 },
+    leave: { opacity: 0, y: 10 },
+    config: config.stiff,
+  });
+  return (
+    <DialogPrimitive open={open} onOpenChange={setOpen} forceMount>
+      <DialogPrimitive.Trigger>Open Dialog</DialogPrimitive.Trigger>
+      {transitions.map(({ item, props: styles }) =>
+        item ? (
+          <React.Fragment>
+            <DialogOverlay
+              key={item}
+              style={{ opacity: styles.opacity }}
+            />
+            <DialogContent
+              style={{
+                transform: styles.y.interpolate(
+                  (value) => `translate3d(0px, ${value}px, 0px)`
+                ),
+              }}
+            >
+              <h1>Hello from inside the Dialog!</h1>
+              <DialogPrimitive.Close>close</DialogPrimitive.Close>
+            </DialogContent>
+          </React.Fragment>
+        ) : null
+      )}
+    </DialogPrimitive>
+  );
+}
+```
