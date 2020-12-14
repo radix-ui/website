@@ -17,92 +17,37 @@ Install the component from your command line.
 npm install @radix-ui/react-label
 ```
 
-Then import the component in your component file.
+### Anatomy
+
+Import the components and piece the parts together.
 
 ```jsx
-// Label.tsx
-import * as LabelPrimitive from '@radix-ui/react-label';
+import { LabelPrimitive } from '@radix-ui/react-label';
+
+export default () => <LabelPrimitive />;
 ```
 
 ### Basic example
 
-Create your styled label component from the label primitive.
+Create your styled label component from the primitive parts.
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
 
 ```jsx live manual
-// Label.tsx
-// import * as LabelPrimitive from '@radix-ui/react-label';
+// import { styled } from 'path-to/stitches.config';
+import * as LabelPrimitive from '@radix-ui/react-label';
 
 const Label = styled(LabelPrimitive.Root, {
   fontSize: '16px',
   fontFamily: 'system-ui',
 });
 
-render(<Label>First name</Label>);
-```
-
-### Examples
-
-#### Focus input when clicking on label
-
-Use the `htmlfor` attribute to connect the label with the input's id.
-
-```jsx live manual compact
-// Label.tsx
-// import * as LabelPrimitive from '@radix-ui/react-label';
-
-const Label = styled(LabelPrimitive.Root, {
-  fontSize: '16px',
-  fontFamily: 'system-ui',
-});
-
-const Input = styled('input', {});
-
-render(
+export default () => (
   <>
-    <Label htmlFor="firstName">First name</Label>
-    <Input type="text" id="firstName" css={{ ml: 10 }} />
+    <Label>First name</Label>
   </>
 );
 ```
-
-#### Custom control with label support
-
-Add an `aria-labelledby` attribute to your custom controls using the `useLabelContext` hook to add support for `Label` nesting.
-
-```jsx live manual compact
-// Label.tsx
-// import * as LabelPrimitive from '@radix-ui/react-label';
-// import { useLabelContext } from '@radix-ui/react-label';
-
-const Label = styled(LabelPrimitive.Root, {
-  fontSize: '16px',
-  fontFamily: 'system-ui',
-});
-
-/* A custom form control you have built */
-const CustomCheckbox = () => {
-  const id = useLabelContext();
-  return (
-    <CustomCheckboxPart aria-labelledby={id} tabIndex={0} role="checkbox" />
-  );
-};
-
-const CustomCheckboxPart = styled('span', {
-  display: 'inline-block',
-  verticalAlign: 'middle',
-  border: '1px solid black',
-  width: 15,
-  height: 15,
-});
-
-render(
-  <Label>
-    <CustomCheckbox /> I agree to the terms and conditions
-  </Label>
-);
-```
-
-### Accessibility
 
 ### API Reference
 
@@ -118,3 +63,71 @@ render(
     },
   ]}
 />
+
+### Accessibility
+
+### Examples
+
+#### Focus input when clicking on label
+
+Use the `htmlfor` attribute to connect the label with the input's id.
+
+```jsx live manual compact
+// import { styled } from 'path-to/stitches.config';
+import * as LabelPrimitive from '@radix-ui/react-label';
+
+const Label = styled(LabelPrimitive.Root, {
+  fontSize: '16px',
+  fontFamily: 'system-ui',
+});
+
+const Input = styled('input', {});
+
+export default () => (
+  <>
+    <Label htmlFor="firstName">First name</Label>
+    <Input type="text" id="firstName" css={{ ml: 10 }} />
+  </>
+);
+```
+
+#### Custom control with label support
+
+Add an `aria-labelledby` attribute to your custom controls using the `useLabelContext` hook to add support for `Label` nesting.
+
+```jsx live manual compact
+// import { styled } from 'path-to/stitches.config';
+import * as LabelPrimitive from '@radix-ui/react-label';
+import { useLabelContext } from '@radix-ui/react-label';
+
+const Label = styled(LabelPrimitive.Root, {
+  fontSize: '16px',
+  fontFamily: 'system-ui',
+});
+
+/* A custom form control you have built */
+const CustomCheckbox = () => {
+  const id = useLabelContext();
+  return (
+    <CustomCheckboxPart
+      aria-labelledby={id}
+      tabIndex={0}
+      role="checkbox"
+    />
+  );
+};
+
+const CustomCheckboxPart = styled('span', {
+  display: 'inline-block',
+  verticalAlign: 'middle',
+  border: '1px solid black',
+  width: 15,
+  height: 15,
+});
+
+export default () => (
+  <Label>
+    <CustomCheckbox /> I agree to the terms and conditions
+  </Label>
+);
+```
