@@ -66,65 +66,101 @@ Please refer to each primitive's documentation for installation instructions.
 
 ### A quick tutorial
 
-Let's take a few minutes to install a Dropdown Menu component, style it, and package it as your own.
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](./styling).
+Let's take a few minutes to install, style, and wrap a [Popover component](../components/popover).
 
 #### 1. Install
 
 ```bash
-npm install @radix-ui/react-dropdown-menu
+npm install @radix-ui/react-popover
 ```
 
-#### 2. Create your Dropdown Menu file
+#### 2. Expose
 
-```jsx live manual
+Import and export the parts. Add styles where desired.
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](./styling).
+
+```jsx
+// Popover.tsx
 import { styled } from 'path-to/stitches.config';
-import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
+import * as PopoverPrimitive from '@radix-ui/react-popover';
 
-const DropdownTrigger = styled(DropdownMenuPrimitive.Trigger, {
-  backgroundColor: 'hsl(252,78%,71%)',
+export const Popover = PopoverPrimitive.Root;
+export const PopoverTrigger = PopoverPrimitive.Trigger;
+export const PopoverContent = styled(PopoverPrimitive.Content, {...});
+```
+
+#### 3. Use it
+
+```jsx
+// App.tsx
+import { Popover } from 'your-components/Popover';
+
+function App() {
+  return (
+    <Popover>
+      <PopoverTrigger>…</PopoverTrigger>
+      <PopoverContent>…</PopoverContent>
+    </Popover>
+  );
+}
+```
+
+#### 4. Demo
+
+```jsx live manual compact
+import { styled } from 'path-to/stitches.config';
+import * as PopoverPrimitive from '@radix-ui/react-popover';
+
+const Popover = PopoverPrimitive.Root;
+const PopoverTrigger = PopoverPrimitive.Trigger;
+const PopoverContent = styled(PopoverPrimitive.Content, {
+  backgroundColor: 'white',
   borderRadius: 6,
-  lineHeight: '1',
-  fontWeight: 500,
-  padding: '10px 15px',
-  border: 'none',
-
-  '&:hover': { backgroundColor: 'hsl(252,78%,60%)' },
-});
-
-const DropdownContent = styled(DropdownMenuPrimitive.Content, {
-  minWidth: 130,
-  backgroundColor: 'hsl(252,50%,10%)',
-  borderRadius: 6,
-  padding: 5,
-  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
-});
-
-const DropdownItem = styled(DropdownMenuPrimitive.Item, {
-  fontSize: 13,
-  padding: '5px 10px',
-  borderRadius: 3,
-  cursor: 'default',
-  color: 'white',
+  boxShadow: '0px 10px 38px -10px hsla(206,22%,7%,.35)',
+  overflow: 'hidden',
 
   '&:focus': {
     outline: 'none',
-    backgroundColor: 'hsl(252,78%,71%)',
-    color: 'white',
+    boxShadow: '0 0 0 3px hsl(272,100%,96%)',
+  },
+});
+
+// Other components in your App
+const Box = styled('div', {});
+const Text = styled('div', {
+  fontSize: 16,
+});
+const Button = styled('button', {
+  appearance: 'none',
+  border: 'none',
+  backgroundColor: 'transparent',
+  border: '1px solid hsl(272,68%,70%)',
+  color: 'hsl(272,62%,44%)',
+  padding: '5px 15px',
+  borderRadius: 4,
+
+  '&:focus': {
+    outline: 'none',
+    boxShadow: '0 0 0 3px hsl(272,100%,96%)',
   },
 });
 
 export default () => (
-  <DropdownMenuPrimitive.Root>
-    <DropdownTrigger>Trigger</DropdownTrigger>
-    <DropdownContent sideOffset={5}>
-      <DropdownItem>Undo</DropdownItem>
-      <DropdownItem>Redo</DropdownItem>
-      <DropdownItem>Cut</DropdownItem>
-      <DropdownItem>Copy</DropdownItem>
-      <DropdownItem>Paste</DropdownItem>
-    </DropdownContent>
-  </DropdownMenuPrimitive.Root>
+  <Popover>
+    <PopoverTrigger as={Button}>Trigger</PopoverTrigger>
+    <PopoverContent sideOffset={3} side="top">
+      <Box css={{ width: 320 }}>
+        <img src="https://images.unsplash.com/photo-1607622122464-5468eb3bc725?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2552&q=80" />
+        <Box css={{ padding: 20 }}>
+          <Text css={{ fontWeight: 500 }}>Woman in furcoat</Text>
+          <Text css={{ margin: '5px 0 15px', color: 'slategray' }}>
+            By Benn Mcguiness
+          </Text>
+          <Button css={{ width: '100%' }}>Follow</Button>
+        </Box>
+      </Box>
+    </PopoverContent>
+  </Popover>
 );
 ```
