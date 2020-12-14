@@ -329,7 +329,12 @@ const ComponentInfo = ({ version, name, aria }) => (
     {aria && (
       <Box css={{ mb: '$2' }}>
         <Link variant="blue" href={aria} target="_blank">
-          <Text size="2">ARIA design pattern</Text>
+          <Flex css={{ display: 'inline-flex', position: 'relative' }}>
+            <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>ARIA design pattern</Text>
+            <Box css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
+              <ExternalIcon />
+            </Box>
+          </Flex>
         </Link>
       </Box>
     )}

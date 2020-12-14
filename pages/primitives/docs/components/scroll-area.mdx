@@ -25,10 +25,6 @@ Then import the component in your component file.
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 ```
 
-### Overview
-
-In most cases, it's best to rely on native scrolling and work with the customization options available in CSS. Sometimes this isn't enough, but recreating scroll behavior is incredibly hard work. `ScrollArea` provides additional customizability that maintains the browser's native scroll beahvior while replacing the visual controls with stylable parts.
-
 ### Basic example
 
 ```jsx live manual
@@ -197,34 +193,42 @@ render(
   ]}
 />
 
-#### ScrollAreaViewport
+#### Viewport
 
 `ScrollAreaViewport` is the viewport area of the `ScrollArea`.
 
-#### ScrollAreaScrollbarX
+#### ScrollbarX
 
 `ScrollAreaScrollbarX` is the horizontal scrollbar.
 
-#### ScrollAreaScrollbarY
+#### ScrollbarY
 
 `ScrollAreaScrollbarY` is the vertical scrollbar.
 
-#### ScrollAreaButtonStart
+#### ButtonStart
 
 `ScrollAreaButtonStart` is the start button in either `ScrollAreaScrollbarX` or `ScrollAreaScrollbarY`.
 
-#### ScrollAreaButtonEnd
+#### ButtonEnd
 
 `ScrollAreaButtonEnd` is the end button in either `ScrollAreaScrollbarX` or `ScrollAreaScrollbarY`.
 
-#### ScrollAreaTrack
+#### Track
 
 `ScrollAreaTrack` is the track inside either `ScrollAreaScrollbarX` or `ScrollAreaScrollbarY`.
 
-#### ScrollAreaThumb
+#### Thumb
 
 `ScrollAreaThumb` is the thumb inside either `ScrollAreaScrollbarX` or `ScrollAreaScrollbarY`.
 
-#### ScrollAreaCorner
+#### Corner
 
 `ScrollAreaCorner` is the corner where both vertical and horizontal scrollbars meet.
+
+### Accessibility
+
+#### Notes
+
+In most cases, it's best to rely on native scrolling and work with the customization options available in CSS. Sometimes this isn't enough, but recreating scroll behavior is incredibly hard work. `ScrollArea` provides additional customizability that maintains the browser's native scroll beahvior while replacing the visual controls with stylable parts.
+
+#### Keyboard interactions
