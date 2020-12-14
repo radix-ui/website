@@ -66,7 +66,7 @@ Please refer to each primitive's documentation for installation instructions.
 
 ### A quick tutorial
 
-Let's take a few minutes to install, style, and wrap a [Popover component](../components/popover).
+Let's take a few minutes to install, style, and create a Popover Component, powered by the [Popover Primitive](../components/popover).
 
 #### 1. Install
 
@@ -94,19 +94,23 @@ export const PopoverContent = styled(PopoverPrimitive.Content, {...});
 
 ```jsx
 // App.tsx
-import { Popover } from 'your-components/Popover';
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from 'your-components/Popover';
 
 function App() {
   return (
     <Popover>
-      <PopoverTrigger>…</PopoverTrigger>
-      <PopoverContent>…</PopoverContent>
+      <PopoverTrigger>...</PopoverTrigger>
+      <PopoverContent>...</PopoverContent>
     </Popover>
   );
 }
 ```
 
-#### 4. Demo
+#### Demo
 
 ```jsx live manual compact
 import { styled } from 'path-to/stitches.config';
@@ -149,7 +153,7 @@ const Button = styled('button', {
 export default () => (
   <Popover>
     <PopoverTrigger as={Button}>Trigger</PopoverTrigger>
-    <PopoverContent sideOffset={3} side="top">
+    <PopoverContent sideOffset={3}>
       <Box css={{ width: 320 }}>
         <img src="https://images.unsplash.com/photo-1607622122464-5468eb3bc725?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2552&q=80" />
         <Box css={{ padding: 20 }}>
@@ -164,3 +168,18 @@ export default () => (
   </Popover>
 );
 ```
+
+#### Conclusion
+
+The steps above are generally what it takes to use a Radix Primitive in your application.
+
+These components are low-level enough, but the power is in your hands to choose how you want to wrap them. You're free to introduce your own high-level API to better suit your team's and product's needs.
+
+In a few simple steps, we've implemented a fully accessible Popover component, without having to worry about many of its complexities.
+
+- Adheres to [WAI-ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal) design pattern.
+- Can be controlled or uncontrolled.
+- Customise side, alignment, offsets, collision handling.
+- Optionally render a pointing arrow.
+- Focus is fully managed and customisable.
+- Dismissing and layering behavior is highly customisable.
