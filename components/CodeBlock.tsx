@@ -193,7 +193,7 @@ export function CodeBlock({
     noInline: manual,
     ...props,
   };
-
+  console.log(components);
   const onChange = (newCode) => setEditorCode(newCode.trim());
 
   if (language === 'jsx' && live === true) {
