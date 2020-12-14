@@ -621,6 +621,11 @@
   resolved "https://registry.yarnpkg.com/@interop-ui/react-polymorphic/-/react-polymorphic-0.0.1-2.tgz#1afbc428b1d07e0e682b2e789dee567e975466ed"
   integrity sha512-wNfiwhKhRZwPchJDTYCvth9kyTHZSDTgEk1rq4ZqhrzI+yE/rrQ4AnzDE02KiwObAfZo/y2VsMDshQl0i+ztrg==
 
+"@interop-ui/react-polymorphic@0.0.1-3":
+  version "0.0.1-3"
+  resolved "https://registry.yarnpkg.com/@interop-ui/react-polymorphic/-/react-polymorphic-0.0.1-3.tgz#b0fdb894dc48a905433048404322418bec5fb870"
+  integrity sha512-i906c7Hv5Kd5kfY5jD7p55b4lKcZhsDzYuHFDQQdRVXcwVssB7ZxcMgIatdn1qDXjQCn4km99puMiCHcrDflDA==
+
 "@interop-ui/react-popover@0.0.1-13":
   version "0.0.1-13"
   resolved "https://registry.yarnpkg.com/@interop-ui/react-popover/-/react-popover-0.0.1-13.tgz#a80a10990aaafcd4e425fe9e43e7be694d075236"
@@ -746,6 +751,14 @@
     "@interop-ui/react-utils" "0.0.1-15"
     "@interop-ui/utils" "0.0.1-7"
 
+"@interop-ui/react-roving-focus@0.0.1-3":
+  version "0.0.1-3"
+  resolved "https://registry.yarnpkg.com/@interop-ui/react-roving-focus/-/react-roving-focus-0.0.1-3.tgz#d28797557933eea249aecee3a2fe4c8178e9de4c"
+  integrity sha512-/7f9f19dSm38Zm7v4J8GzeNrVIwIKYfFBImN14R51elIVi2p1NhuJSpdm+bILJFNqE2fP0w7K2ttqA6za6atwQ==
+  dependencies:
+    "@interop-ui/react-utils" "0.0.1-16"
+    "@interop-ui/utils" "0.0.1-8"
+
 "@interop-ui/react-scroll-area@0.0.1-1":
   version "0.0.1-1"
   resolved "https://registry.yarnpkg.com/@interop-ui/react-scroll-area/-/react-scroll-area-0.0.1-1.tgz#d590777eea84ff4433d078ba57ceb3fe6791ef83"
@@ -818,15 +831,15 @@
     "@interop-ui/react-utils" "0.0.1-12"
     "@interop-ui/utils" "0.0.1-4"
 
-"@interop-ui/react-tabs@0.0.1-15":
-  version "0.0.1-15"
-  resolved "https://registry.yarnpkg.com/@interop-ui/react-tabs/-/react-tabs-0.0.1-15.tgz#24b5d0715045b5ad187de967c92d642d73c02c1e"
-  integrity sha512-WzVeRhlTdQJl50rdzJAO8/qB2kWc3iAXKCQE1LMVJPaXS7ujCGnHy0ZspkZAuWnP0xV2sLxFBFAxexbEZWhoXg==
+"@interop-ui/react-tabs@0.0.1-16":
+  version "0.0.1-16"
+  resolved "https://registry.yarnpkg.com/@interop-ui/react-tabs/-/react-tabs-0.0.1-16.tgz#387b6eede80b73cca0395d3cd4768e096bfaa1a2"
+  integrity sha512-d+H8yz1q1Ijy02bQbht2r77V+DeQdWmq3+BtlJqSh/oix+kLilo8FlKjC5RFZ2ScXR7SeFOkf+Cbg+L5gxj6eA==
   dependencies:
-    "@interop-ui/react-polymorphic" "0.0.1-2"
-    "@interop-ui/react-roving-focus" "0.0.1-2"
-    "@interop-ui/react-utils" "0.0.1-15"
-    "@interop-ui/utils" "0.0.1-7"
+    "@interop-ui/react-polymorphic" "0.0.1-3"
+    "@interop-ui/react-roving-focus" "0.0.1-3"
+    "@interop-ui/react-utils" "0.0.1-16"
+    "@interop-ui/utils" "0.0.1-8"
 
 "@interop-ui/react-toggle-button@0.0.1-13":
   version "0.0.1-13"
@@ -894,6 +907,14 @@
     "@interop-ui/react-polymorphic" "0.0.1-2"
     "@interop-ui/utils" "0.0.1-7"
 
+"@interop-ui/react-utils@0.0.1-16":
+  version "0.0.1-16"
+  resolved "https://registry.yarnpkg.com/@interop-ui/react-utils/-/react-utils-0.0.1-16.tgz#e9079958f0e68e80a3b89c0d7a7296cfcc0f047e"
+  integrity sha512-6iLyuKS6Lt0ATEX4w7JSj6MOv7ct3dhyIgd+QVD6hKbLyK3hm2wB+ZoyW+YMliSQCWuusiSQEgOllZ8gpIEwBQ==
+  dependencies:
+    "@interop-ui/react-polymorphic" "0.0.1-3"
+    "@interop-ui/utils" "0.0.1-8"
+
 "@interop-ui/react-visually-hidden@0.0.1-12":
   version "0.0.1-12"
   resolved "https://registry.yarnpkg.com/@interop-ui/react-visually-hidden/-/react-visually-hidden-0.0.1-12.tgz#f5bdeae790ef522867b6c90424fb887326c23d94"
@@ -919,6 +940,11 @@
   version "0.0.1-7"
   resolved "https://registry.yarnpkg.com/@interop-ui/utils/-/utils-0.0.1-7.tgz#4a360d6c30bcc8a8f24acc893d0d1eb8f39fbb20"
   integrity sha512-xPCXTOzR4iJIdts2CQuD8H5fWfCo9dNr3R0q0BQ9DQLICVhXLE6RNwwoeKUGKNqqp6Kznqc3HL8z1jZN4whx8w==
+
+"@interop-ui/utils@0.0.1-8":
+  version "0.0.1-8"
+  resolved "https://registry.yarnpkg.com/@interop-ui/utils/-/utils-0.0.1-8.tgz#1a529b5f7134c78b820fcded748ce18beafa3dec"
+  integrity sha512-u03ZNjTijdpMwAiR0cV0tLA015WqwF3W57aWDsDNw2GMqZFjSQLYo87/pJN+mqwNimXMVnpKOIdynZEhWkPhkQ==
 
 "@mdx-js/loader@^1.6.19":
   version "1.6.22"

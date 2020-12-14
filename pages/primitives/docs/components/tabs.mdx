@@ -17,7 +17,6 @@ import { TabsHero } from '../../../../components/Hero/TabsHero';
   <TabsHero />
 </HeroSlot>
 
-
 ### Installation
 
 Install the component from your command line.
@@ -26,33 +25,45 @@ Install the component from your command line.
 npm install @radix-ui/react-tabs
 ```
 
-Then import the component in your component file.
+### Anatomy
+
+Import the components and piece the parts together.
 
 ```jsx
-// Tabs.tsx
-import * as TabsPrimitive from '@radix-ui/react-tabs';
+import { Tabs, List, Tab, Panel } from '@radix-ui/react-tabs';
+
+export default () => (
+  <Tabs>
+    <List>
+      <Tab />
+    </List>
+    <Panel />
+  </Tabs>
+);
 ```
 
 ### Basic example
 
-Create your styled tabs component from the tabs primitives.
+Create your styled tabs component from the primitive parts.
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
 
 ```jsx live manual
-// Tabs.tsx
-// import * as TabsPrimitive from '@radix-ui/react-tabs';
+// import { styled } from 'path-to/stitches.config';
+import * as TabsPrimitive from '@radix-ui/react-tabs';
 
 const Tabs = styled(TabsPrimitive.Root, {
   display: 'flex',
   flexDirection: 'column',
 });
 
-const TabsList = styled(TabsPrimitive.List, {
+const List = styled(TabsPrimitive.List, {
   flexShrink: 0,
   display: 'flex',
   borderBottom: '1px solid gainsboro',
 });
 
-const TabsTab = styled(TabsPrimitive.Tab, {
+const Tab = styled(TabsPrimitive.Tab, {
   flexShrink: 0,
   padding: '10px 20px',
   color: 'slategray',
@@ -62,101 +73,29 @@ const TabsTab = styled(TabsPrimitive.Tab, {
 
   '&[data-state="active"]': {
     color: 'black',
-    boxShadow: 'inset 0 -1px 0 0 currentColor, 0 1px 0 0 currentColor',
+    boxShadow:
+      'inset 0 -1px 0 0 currentColor, 0 1px 0 0 currentColor',
   },
 });
 
-const TabsPanel = styled(TabsPrimitive.Panel, {
+const Panel = styled(TabsPrimitive.Panel, {
   flexGrow: 1,
   padding: 20,
 });
 
-render(
-  <Tabs defaultSelectedId="tab1">
-    <TabsList aria-label="tabs example">
-      <TabsTab id="tab1">One</TabsTab>
-      <TabsTab id="tab2">Two</TabsTab>
-      <TabsTab id="tab3">Three</TabsTab>
-    </TabsList>
-    <TabsPanel id="tab1">Tab one content</TabsPanel>
-    <TabsPanel id="tab2">Tab two content</TabsPanel>
-    <TabsPanel id="tab3">Tab three content</TabsPanel>
+export default () => (
+  <Tabs defaultValue="tab1">
+    <List aria-label="tabs example">
+      <Tab value="tab1">One</Tab>
+      <Tab value="tab2">Two</Tab>
+      <Tab value="tab3">Three</Tab>
+    </List>
+    <Panel value="tab1">Tab one content</Panel>
+    <Panel value="tab2">Tab two content</Panel>
+    <Panel value="tab3">Tab three content</Panel>
   </Tabs>
 );
 ```
-
-### Accessibility
-
-#### Keyboard Interactions
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['Tab'],
-      description: (
-        <span>
-          When focus moves into the <Code>List</Code>, moves focus to the
-          active <Code>Tab</Code>. When the <Code>List</Code> contains focus, moves focus to{' '}
-          <Code>Panel</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowDown'],
-      description: (
-        <span>
-          Moves focus to the next <Code>Tab</Code> depending on <Code>orientation</Code> and activates its associated{' '}
-          <Code>Panel</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowRight'],
-      description: (
-        <span>
-          Moves focus to the next <Code>Tab</Code> depending on <Code>orientation</Code> and activates its associated{' '}
-          <Code>Panel</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowUp'],
-      description: (
-        <span>
-          Moves focus to the previous <Code>Tab</Code> depending on <Code>orientation</Code> and activates its associated{' '}
-          <Code>Panel</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowLeft'],
-      description: (
-        <span>
-          Moves focus to the previous <Code>Tab</Code> depending on <Code>orientation</Code> and activates its associated{' '}
-          <Code>Panel</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['Home'],
-      description: (
-        <span>
-          Moves focus to the first <Code>Tab</Code> and activates its associated{' '}
-          <Code>Panel</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['End'],
-      description: (
-        <span>
-          Moves focus to the last <Code>Tab</Code> and activates its associated{' '}
-          <Code>Panel</Code>.
-        </span>
-      ),
-    },
-  ]}
-/>
 
 ### API Reference
 
@@ -194,8 +133,8 @@ render(
       typeSimple: 'function',
       description: (
         <span>
-          The callback that fires when a new tab is selected (via mouse or
-          keyboard).
+          The callback that fires when a new tab is selected (via
+          mouse or keyboard).
         </span>
       ),
     },
@@ -207,9 +146,9 @@ render(
       default: '"horizontal"',
       description: (
         <span>
-          The orientation in which the <Code>Tab</Code> elements are displayed.
-          This is helpful alongside proper visual styles to improve keyboard
-          navigation in the tab list.
+          The orientation in which the <Code>Tab</Code> elements are
+          displayed. This is helpful alongside proper visual styles to
+          improve keyboard navigation in the tab list.
         </span>
       ),
     },
@@ -221,9 +160,9 @@ render(
       default: '"automatic"',
       description: (
         <span>
-          Whether a <Code>Tab</Code> is activated automatically when it receives
-          focus, or manually in which case the user must always activate the tab
-          with a click.
+          Whether a <Code>Tab</Code> is activated automatically when
+          it receives focus, or manually in which case the user must
+          always activate the tab with a click.
         </span>
       ),
     },
@@ -243,9 +182,9 @@ render(
       default: 'true',
       description: (
         <span>
-          Whether or not the user loops from the last <Code>Tab</Code> to the
-          first <Code>Tab</Code> when navigating forward via keyboard input, and
-          vice versa.
+          Whether or not the user loops from the last <Code>Tab</Code>{' '}
+          to the first <Code>Tab</Code> when navigating forward via
+          keyboard input, and vice versa.
         </span>
       ),
     },
@@ -265,8 +204,8 @@ render(
       description: (
         <span>
           A value that pairs a <Code>Tab</Code> with its relevant{' '}
-          <Code>Panel</Code>. All <Code>Tab</Code> components must have unique
-          values within a <Code>Tabs</Code> component.
+          <Code>Panel</Code>. All <Code>Tab</Code> components must
+          have unique values within a <Code>Tabs</Code> component.
         </span>
       ),
     },
@@ -277,7 +216,8 @@ render(
       default: 'false',
       description: (
         <span>
-          Whether or not the component is disabled from user activation.
+          Whether or not the component is disabled from user
+          activation.
         </span>
       ),
     },
@@ -297,8 +237,85 @@ The component in which here the content is displayed when its `Tab` is activated
       description: (
         <span>
           A value that pairs a <Code>Panel</Code> with its relevant{' '}
-          <Code>Tab</Code>. All <Code>Panel</Code> components must have unique
-          values within a <Code>Tabs</Code> component.
+          <Code>Tab</Code>. All <Code>Panel</Code> components must
+          have unique values within a <Code>Tabs</Code> component.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### Accessibility
+
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Tab'],
+      description: (
+        <span>
+          When focus moves into the <Code>List</Code>, moves focus to
+          the active <Code>Tab</Code>. When the <Code>List</Code>{' '}
+          contains focus, moves focus to <Code>Panel</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowDown'],
+      description: (
+        <span>
+          Moves focus to the next <Code>Tab</Code> depending on{' '}
+          <Code>orientation</Code> and activates its associated{' '}
+          <Code>Panel</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowRight'],
+      description: (
+        <span>
+          Moves focus to the next <Code>Tab</Code> depending on{' '}
+          <Code>orientation</Code> and activates its associated{' '}
+          <Code>Panel</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowUp'],
+      description: (
+        <span>
+          Moves focus to the previous <Code>Tab</Code> depending on{' '}
+          <Code>orientation</Code> and activates its associated{' '}
+          <Code>Panel</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowLeft'],
+      description: (
+        <span>
+          Moves focus to the previous <Code>Tab</Code> depending on{' '}
+          <Code>orientation</Code> and activates its associated{' '}
+          <Code>Panel</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['Home'],
+      description: (
+        <span>
+          Moves focus to the first <Code>Tab</Code> and activates its
+          associated <Code>Panel</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['End'],
+      description: (
+        <span>
+          Moves focus to the last <Code>Tab</Code> and activates its
+          associated <Code>Panel</Code>.
         </span>
       ),
     },
