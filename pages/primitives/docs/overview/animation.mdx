@@ -54,8 +54,8 @@ const DialogOverlay = animated(DialogPrimitive.Overlay);
 const DialogContent = animated(DialogPrimitive.Content);
 
 function Example() {
-  const [showDialog, setShowDialog] = React.useState(false);
-  const transitions = useTransition(showDialog, null, {
+  const [open, setOpen] = React.useState(false);
+  const transitions = useTransition(open, null, {
     from: { opacity: 0, y: -10 },
     enter: { opacity: 1, y: 0 },
     leave: { opacity: 0, y: 10 },
