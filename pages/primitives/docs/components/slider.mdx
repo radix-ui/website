@@ -26,20 +26,32 @@ Install the component from your command line.
 npm install @radix-ui/react-slider
 ```
 
-Then import the component in your component file.
+### Anatomy
+
+Import the components and piece the parts together.
 
 ```jsx
-// Slider.tsx
-import * as SliderPrimitive from '@radix-ui/react-slider';
+import { Slider, Track, Range, Thumb } from '@radix-ui/react-slider';
+
+export default () => (
+  <Slider>
+    <Track>
+      <Thumb />
+    </Track>
+    <Range />
+  </Slider>
+);
 ```
 
 ### Basic example
 
-Create your styled slider component from the slider primitives.
+Create your styled slider component from the primitive parts.
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
 
 ```jsx live manual
-// Slider.tsx
-// import * as SliderPrimitive from '@radix-ui/react-slider';
+// import { stitches } from 'path-to/stitches.config';
+import * as SliderPrimitive from '@radix-ui/react-slider';
 
 const Slider = styled(SliderPrimitive.Root, {
   position: 'relative',
@@ -77,7 +89,7 @@ const SliderThumb = styled(SliderPrimitive.Thumb, {
   },
 });
 
-render(
+export default () => (
   <Slider defaultValue={[50]}>
     <SliderTrack>
       <SliderRange />
@@ -94,8 +106,8 @@ render(
 Use the `orientation` prop to create a vertical slider.
 
 ```jsx live manual compact
-// Slider.tsx
-// import * as SliderPrimitive from '@radix-ui/react-slider';
+// import { stitches } from 'path-to/stitches.config';
+import * as SliderPrimitive from '@radix-ui/react-slider';
 
 const Slider = styled(SliderPrimitive.Root, {
   position: 'relative',
@@ -135,7 +147,7 @@ const SliderThumb = styled(SliderPrimitive.Thumb, {
   },
 });
 
-render(
+export default () => (
   <Slider defaultValue={[50]} orientation="vertical">
     <SliderTrack>
       <SliderRange />
@@ -150,8 +162,8 @@ render(
 Create your styled slider components, then pass those styled components into `Slider` via the `as` prop:
 
 ```jsx live manual compact
-// Slider.tsx
-// import * as SliderPrimitive from '@radix-ui/react-slider';
+// import { stitches } from 'path-to/stitches.config';
+import * as SliderPrimitive from '@radix-ui/react-slider';
 
 const Slider = styled(SliderPrimitive.Root, {
   position: 'relative',
@@ -189,7 +201,7 @@ const SliderThumb = styled(SliderPrimitive.Thumb, {
   },
 });
 
-render(
+export default () => (
   <Slider defaultValue={[25, 75]}>
     <SliderTrack>
       <SliderRange />
@@ -205,8 +217,8 @@ render(
 Use the `step` prop to define how the slider value updates.
 
 ```jsx live manual compact
-// Slider.tsx
-// import * as SliderPrimitive from '@radix-ui/react-slider';
+// import { stitches } from 'path-to/stitches.config';
+import * as SliderPrimitive from '@radix-ui/react-slider';
 
 const Slider = styled(SliderPrimitive.Root, {
   position: 'relative',
@@ -244,7 +256,7 @@ const SliderThumb = styled(SliderPrimitive.Thumb, {
   },
 });
 
-render(
+export default () => (
   <Slider defaultValue={[50]}>
     <SliderTrack>
       <SliderRange />
@@ -253,6 +265,143 @@ render(
   </Slider>
 );
 ```
+
+### API Reference
+
+#### Slider
+
+`Slider` is the root component.
+
+<PropsTable
+  data={[
+    {
+      name: 'defaultValue',
+      required: false,
+      type: 'number[]',
+      description: (
+        <span>
+          The value of the <Code>Slider</Code> when it is initially
+          rendered. Use <Code>defaultValue</Code> if you do not need
+          to control the state of a <Code>Slider</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'value',
+      required: false,
+      type: 'number[]',
+      description: (
+        <span>
+          The controlled value of the <Code>Slider</Code>`. Must be
+          used in conjunction with <Code>onValueChange</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'name',
+      required: false,
+      type: 'string',
+      description: (
+        <span>
+          Identifier for the <Code>Slider</Code> and its values in a
+          form.
+        </span>
+      ),
+    },
+    {
+      name: 'disabled',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description: (
+        <span>
+          Whether or not a <Code>Slider</Code> is disabled from user
+          interaction.
+        </span>
+      ),
+    },
+    {
+      name: 'orientation',
+      required: false,
+      type: '"horizontal" | "vertical"',
+      typeSimple: 'enum',
+      default: '"horizontal"',
+      description: (
+        <span>
+          The orientation in which the <Code>Slider</Code> is
+          displayed. This is helpful alongside proper visual styles to
+          improve keyboard controls, and it provides extra context for
+          assistive technology.
+        </span>
+      ),
+    },
+    {
+      name: 'dir',
+      required: false,
+      type: '"ltr" | "rtl"',
+      typeSimple: 'enum',
+      default: '"ltr"',
+      description: (
+        <span>
+          The reading mode of the document where the{' '}
+          <Code>Slider</Code> is rendered. If omitted,{' '}
+          <Code>Slider</Code> assumes LTR (left-to-right) reading
+          mode.
+        </span>
+      ),
+    },
+    {
+      name: 'min',
+      required: false,
+      type: 'number',
+      default: '0',
+      description: <span>The minimum value for the range.</span>,
+    },
+    {
+      name: 'max',
+      required: false,
+      type: 'number',
+      default: '100',
+      description: <span>The maximum value for the range</span>,
+    },
+    {
+      name: 'onValueChange',
+      required: false,
+      type: 'onValueChange?(value: number[]): void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          The callback that fires when one of the values for the{' '}
+          <Code>Slider</Code> change.
+        </span>
+      ),
+    },
+    {
+      name: 'minStepsBetweenThumbs',
+      required: false,
+      type: 'number',
+      default: '0',
+      description: (
+        <span>
+          The minimum step allowed between multiple{' '}
+          <Code>Slider</Code> thumbs.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+#### Track
+
+`SliderTrack` is the track part.
+
+#### Range
+
+`SliderRange` is the range part. Must live inside `SliderTrack`.
+
+#### Thumb
+
+`SliderThumb` is the thumb part. You can render multiple thumbs.
 
 ### Accessibility
 
@@ -264,8 +413,8 @@ render(
       keys: ['ArrowRight'],
       description: (
         <span>
-          Increments/decrements by the <Code>step</Code> value depending on{' '}
-          <Code>orientation</Code>.
+          Increments/decrements by the <Code>step</Code> value
+          depending on <Code>orientation</Code>.
         </span>
       ),
     },
@@ -273,8 +422,8 @@ render(
       keys: ['ArrowLeft'],
       description: (
         <span>
-          Increments/decrements by the <Code>step</Code> value depending on{' '}
-          <Code>orientation</Code>.
+          Increments/decrements by the <Code>step</Code> value
+          depending on <Code>orientation</Code>.
         </span>
       ),
     },
@@ -336,136 +485,3 @@ render(
     },
   ]}
 />
-
-### API Reference
-
-#### Slider
-
-`Slider` is the root component.
-
-<PropsTable
-  data={[
-    {
-      name: 'defaultValue',
-      required: false,
-      type: 'number[]',
-      description: (
-        <span>
-          The value of the <Code>Slider</Code> when it is initially rendered.
-          Use <Code>defaultValue</Code> if you do not need to control the state
-          of a <Code>Slider</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'value',
-      required: false,
-      type: 'number[]',
-      description: (
-        <span>
-          The controlled value of the <Code>Slider</Code>`. Must be used in
-          conjunction with <Code>onValueChange</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'name',
-      required: false,
-      type: 'string',
-      description: (
-        <span>
-          Identifier for the <Code>Slider</Code> and its values in a form.
-        </span>
-      ),
-    },
-    {
-      name: 'disabled',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <span>
-          Whether or not a <Code>Slider</Code> is disabled from user
-          interaction.
-        </span>
-      ),
-    },
-    {
-      name: 'orientation',
-      required: false,
-      type: '"horizontal" | "vertical"',
-      typeSimple: 'enum',
-      default: '"horizontal"',
-      description: (
-        <span>
-          The orientation in which the <Code>Slider</Code> is displayed. This is
-          helpful alongside proper visual styles to improve keyboard controls,
-          and it provides extra context for assistive technology.
-        </span>
-      ),
-    },
-    {
-      name: 'dir',
-      required: false,
-      type: '"ltr" | "rtl"',
-      typeSimple: 'enum',
-      default: '"ltr"',
-      description: (
-        <span>
-          The reading mode of the document where the <Code>Slider</Code> is
-          rendered. If omitted, <Code>Slider</Code> assumes LTR (left-to-right)
-          reading mode.
-        </span>
-      ),
-    },
-    {
-      name: 'min',
-      required: false,
-      type: 'number',
-      default: '0',
-      description: <span>The minimum value for the range.</span>,
-    },
-    {
-      name: 'max',
-      required: false,
-      type: 'number',
-      default: '100',
-      description: <span>The maximum value for the range</span>,
-    },
-    {
-      name: 'onValueChange',
-      required: false,
-      type: 'onValueChange?(value: number[]): void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          The callback that fires when one of the values for the{' '}
-          <Code>Slider</Code> change.
-        </span>
-      ),
-    },
-    {
-      name: 'minStepsBetweenThumbs',
-      required: false,
-      type: 'number',
-      default: '0',
-      description: (
-        <span>
-          The minimum step allowed between multiple <Code>Slider</Code> thumbs.
-        </span>
-      ),
-    },
-  ]}
-/>
-
-#### Track
-
-`SliderTrack` is the track part.
-
-#### Range
-
-`SliderRange` is the range part. Must live inside `SliderTrack`.
-
-#### Thumb
-
-`SliderThumb` is the thumb part. You can render multiple thumbs.
