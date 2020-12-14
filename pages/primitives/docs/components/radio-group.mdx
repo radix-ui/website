@@ -22,18 +22,35 @@ Install the component from your command line.
 npm install @radix-ui/react-radio-group
 ```
 
-Then import the component in your component file.
+### Anatomy
+
+Import the components and piece the parts together.
 
 ```jsx
-// RadioGroup.tsx
-import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
+import {
+  RadioGroup,
+  Item,
+  Indicator,
+} from '@radix-ui/react-radio-group';
+
+export default () => (
+  <RadioGroup>
+    <Item>
+      <Indicator />
+    </Item>
+  </RadioGroup>
+);
 ```
 
 ### Basic example
 
+Create your styled radio group component from the primitive parts.
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
+
 ```jsx live manual
-// RadioGroup.tsx
-// import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
+// import { stitches } from 'path-to/stitches.config';
+import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 
 const Radio = styled(RadioGroupPrimitive.Item, {
   appearance: 'none',
@@ -64,7 +81,7 @@ const Indicator = styled(RadioGroupPrimitive.Indicator, {
   backgroundColor: 'dodgerblue',
 });
 
-render(
+export default () => (
   <RadioGroupPrimitive.Root>
     <Radio value="cat">
       <Indicator />
@@ -78,73 +95,6 @@ render(
   </RadioGroupPrimitive.Root>
 );
 ```
-
-### Accessibility
-
-#### Keyboard Interactions
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['Tab'],
-      description: (
-        <span>
-          Moves focus to either the checked <Code>Item</Code> or the first <Code>Item</Code> in the group.
-        </span>
-      ),
-    },
-    {
-      keys: ['Space'],
-      description: (
-        <span>
-          When focus is on an unchecked <Code>Item</Code>, checks the{' '}
-          <Code>Item</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['Enter'],
-      description: (
-        <span>
-          When focus is on an unchecked <Code>Item</Code>, checks the{' '}
-          <Code>Item</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowDown'],
-      description: (
-        <span>
-          Moves focus to the next <Code>Item</Code> in the group.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowRight'],
-      description: (
-        <span>
-          Moves focus to the next <Code>Item</Code> in the group.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowUp'],
-      description: (
-        <span>
-          Moves focus to the previous <Code>Item</Code> in the group.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowLeft'],
-      description: (
-        <span>
-          Moves focus to the previous <Code>Item</Code> in the group.
-        </span>
-      ),
-    },
-  ]}
-/>
 
 ### API Reference
 
@@ -161,8 +111,8 @@ render(
         <span>
           The value of the selected <Code>Item</Code> when the{' '}
           <Code>RadioGroup</Code> is initially rendered. Use{' '}
-          <Code>defaultValue</Code> if you do not need to control the state of a{' '}
-          <Code>RadioGroup</Code>.
+          <Code>defaultValue</Code> if you do not need to control the
+          state of a <Code>RadioGroup</Code>.
         </span>
       ),
     },
@@ -171,8 +121,8 @@ render(
       type: 'string',
       description: (
         <span>
-          The controlled value of the <Code>RadioGroup</Code>`. Must be used in
-          conjunction with <Code>onValueChange</Code>.
+          The controlled value of the <Code>RadioGroup</Code>`. Must
+          be used in conjunction with <Code>onValueChange</Code>.
         </span>
       ),
     },
@@ -181,7 +131,9 @@ render(
       type: '(value: string) => void',
       typeSimple: 'function',
       description: (
-        <span>The callback that fires when the selected value changes.</span>
+        <span>
+          The callback that fires when the selected value changes.
+        </span>
       ),
     },
     {
@@ -235,7 +187,8 @@ A single item in a `RadioGroup`.
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>Item</Code> choice is required in a form.
+          Whether or not the <Code>Item</Code> choice is required in a
+          form.
         </span>
       ),
     },
@@ -244,8 +197,8 @@ A single item in a `RadioGroup`.
       type: 'boolean',
       description: (
         <span>
-          Whether or not this <Code>Item</Code> is read-only and cannot be
-          toggled by the user.
+          Whether or not this <Code>Item</Code> is read-only and
+          cannot be toggled by the user.
         </span>
       ),
     },
@@ -263,6 +216,74 @@ Renders when the `RadioGroupItem` is the currently selected on. You can style th
       type: 'boolean',
       description:
         'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+    },
+  ]}
+/>
+
+### Accessibility
+
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Tab'],
+      description: (
+        <span>
+          Moves focus to either the checked <Code>Item</Code> or the
+          first <Code>Item</Code> in the group.
+        </span>
+      ),
+    },
+    {
+      keys: ['Space'],
+      description: (
+        <span>
+          When focus is on an unchecked <Code>Item</Code>, checks the{' '}
+          <Code>Item</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['Enter'],
+      description: (
+        <span>
+          When focus is on an unchecked <Code>Item</Code>, checks the{' '}
+          <Code>Item</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowDown'],
+      description: (
+        <span>
+          Moves focus to the next <Code>Item</Code> in the group.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowRight'],
+      description: (
+        <span>
+          Moves focus to the next <Code>Item</Code> in the group.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowUp'],
+      description: (
+        <span>
+          Moves focus to the previous <Code>Item</Code> in the group.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowLeft'],
+      description: (
+        <span>
+          Moves focus to the previous <Code>Item</Code> in the group.
+        </span>
+      ),
     },
   ]}
 />
