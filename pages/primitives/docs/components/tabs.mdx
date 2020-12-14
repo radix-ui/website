@@ -2,7 +2,7 @@
 title: Tabs
 name: tabs
 version: 0.0.1-13
-description: An interface of layered content where activated by tab buttons.
+description: A set of layered sections of content—known as tab panels—that display one panel of content at a time.
 features:
   - Can be controlled or uncontrolled.
   - Supports horizontal/vertical orientation.
@@ -93,52 +93,47 @@ render(
     {
       keys: ['Tab'],
       description: (
-        <ul>
-          <li>
-            When focus moves into the <Code>List</Code>, places focus on the
-            active <Code>Tab</Code>.
-          </li>
-          <li>
-            When the <Code>List</Code> contains focus, moves focus to{' '}
-            <Code>Panel</Code>.
-          </li>
-        </ul>
+        <span>
+          When focus moves into the <Code>List</Code>, moves focus to the
+          active <Code>Tab</Code>. When the <Code>List</Code> contains focus, moves focus to{' '}
+          <Code>Panel</Code>.
+        </span>
       ),
     },
     {
-      keys: ['ArrowRight', 'ArrowDown'],
+      keys: ['ArrowDown'],
       description: (
-        <ul>
-          <li>
-            Moves focus to the next <Code>Tab</Code> depending on{' '}
-            <Code>orientation</Code>.
-          </li>
-          <li>
-            If focus is on the last <Code>Tab</Code>, moves focus to the first{' '}
-            <Code>Tab</Code> depending on <Code>orientation</Code>.
-          </li>
-          <li>
-            Activates the associated <Code>Panel</Code>.
-          </li>
-        </ul>
+        <span>
+          Moves focus to the next <Code>Tab</Code> depending on <Code>orientation</Code> and activates its associated{' '}
+          <Code>Panel</Code>.
+        </span>
       ),
     },
     {
-      keys: ['ArrowLeft', 'ArrowUp'],
+      keys: ['ArrowRight'],
       description: (
-        <ul>
-          <li>
-            Moves focus to the previous <Code>Tab</Code> depending on{' '}
-            <Code>orientation</Code>.
-          </li>
-          <li>
-            If focus is on the first <Code>Tab</Code>, moves focus to the last{' '}
-            <Code>Tab</Code> depending on <Code>orientation</Code>.
-          </li>
-          <li>
-            Activates the associated <Code>Panel</Code>.
-          </li>
-        </ul>
+        <span>
+          Moves focus to the next <Code>Tab</Code> depending on <Code>orientation</Code> and activates its associated{' '}
+          <Code>Panel</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowUp'],
+      description: (
+        <span>
+          Moves focus to the previous <Code>Tab</Code> depending on <Code>orientation</Code> and activates its associated{' '}
+          <Code>Panel</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowLeft'],
+      description: (
+        <span>
+          Moves focus to the previous <Code>Tab</Code> depending on <Code>orientation</Code> and activates its associated{' '}
+          <Code>Panel</Code>.
+        </span>
       ),
     },
     {
@@ -234,7 +229,7 @@ render(
   ]}
 />
 
-#### TabsList
+#### List
 
 `TabsList` displays the `TabsTab` components aligned along the edge of the active `TabsPanel`.
 
@@ -256,7 +251,7 @@ render(
   ]}
 />
 
-#### TabsTab
+#### Tab
 
 `TabsTab` is the button that activates its relative `TabsPanel`.
 
@@ -288,7 +283,7 @@ render(
   ]}
 />
 
-#### TabsPanel
+#### Panel
 
 The component in which here the content is displayed when its `Tab` is activated.
 
