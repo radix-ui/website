@@ -15,26 +15,31 @@ Install the component from your command line.
 npm install @radix-ui/react-visually-hidden
 ```
 
-Then import the component in your component file.
+### Anatomy
+
+Import the components and piece the parts together.
 
 ```jsx
-// VisuallyHidden.tsx
-import * as VisuallyHiddenPrimitive from '@radix-ui/react-visually-hidden';
+import { VisuallyHiddenPrimitive } from '@radix-ui/react-visually-hidden';
+
+export default () => <VisuallyHiddenPrimitive />;
 ```
 
 ### Basic example
 
+Create your visually hidden component from the primitive.
+
 ```jsx live manual
-// VisuallyHidden.tsx
-// import * as VisuallyHiddenPrimitive from '@radix-ui/react-visually-hidden';
-// import { IconButton } from '@radix-ui/ds-icon-button'
-// import { GearIcon } from '@modulz/radix-icons'
+import * as VisuallyHiddenPrimitive from '@radix-ui/react-visually-hidden';
+import { GearIcon } from '@modulz/radix-icons';
 
 render(
-  <IconButton>
+  <button>
     <GearIcon />
-    <VisuallyHiddenPrimitive.Root>Settings</VisuallyHiddenPrimitive.Root>
-  </IconButton>
+    <VisuallyHiddenPrimitive.Root>
+      Settings
+    </VisuallyHiddenPrimitive.Root>
+  </button>
 );
 ```
 
