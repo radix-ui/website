@@ -35,29 +35,29 @@ import {
   ContextMenu,
   Trigger,
   Content,
-  Item,
-  Group,
+  MenuItem,
+  MenuGroup,
   Label,
-  CheckboxItem,
-  RadioGroup,
-  RadioItem,
-  ItemIndicator,
-  Separator,
+  MenuCheckboxItem,
+  MenuRadioGroup,
+  MenuRadioItem,
+  MenuItemIndicator,
+  MenuSeparator,
 } from '@radix-ui/react-context-menu';
 
 export default () => (
   <ContextMenu>
     <Trigger />
     <Content>
-      <Item />
-      <Separator />
-      <CheckboxItem />
-      <RadioGroup>
-        <RadioItem />
-      </RadioGroup>
-      <Item>
-        <ItemIndicator />
-      </Item>
+      <MenuItem />
+      <MenuSeparator />
+      <MenuCheckboxItem />
+      <MenuRadioGroup>
+        <MenuRadioItem />
+      </MenuRadioGroup>
+      <MenuItem>
+        <MenuItemIndicator />
+      </MenuItem>
     </Content>
   </ContextMenu>
 );
@@ -76,20 +76,20 @@ const Content = styled(ContextMenuPrimitive.Content, {
   boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
 });
 
-const Item = styled(ContextMenuPrimitive.Item, {
+const MenuItem = styled(ContextMenuPrimitive.MenuItem, {
   fontSize: 13,
   padding: '5px 10px',
   borderRadius: 3,
   cursor: 'default',
 
-  ':focus': {
+  '&:focus': {
     outline: 'none',
     backgroundColor: 'dodgerblue',
     color: 'white',
   },
 });
 
-render(
+export default () => (
   <ContextMenuPrimitive.Root>
     <ContextMenuPrimitive.Trigger>
       <div
@@ -104,11 +104,11 @@ render(
       </div>
     </ContextMenuPrimitive.Trigger>
     <Content sideOffset={-5}>
-      <Item>Undo</Item>
-      <Item>Redo</Item>
-      <Item>Cut</Item>
-      <Item>Copy</Item>
-      <Item>Paste</Item>
+      <MenuItem onSelect={() => {}}>Undo</MenuItem>
+      <MenuItem onSelect={() => {}}>Redo</MenuItem>
+      <MenuItem onSelect={() => {}}>Cut</MenuItem>
+      <MenuItem onSelect={() => {}}>Copy</MenuItem>
+      <MenuItem onSelect={() => {}}>Paste</MenuItem>
     </Content>
   </ContextMenuPrimitive.Root>
 );
@@ -307,7 +307,7 @@ The component used to render items in the `ContextMenu`.
   ]}
 />
 
-#### Group
+#### MenuGroup
 
 Used to group multiple `ContextMenuItem`.
 
@@ -315,9 +315,9 @@ Used to group multiple `ContextMenuItem`.
 
 Uused to render a label. It won't be focusable using arrow keys.
 
-#### CheckboxItem
+#### MenuCheckboxItem
 
-A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and also has an indicator (`ContextMenuItemIndicator`). This conceptually functions like a standard `Checkbox`.
+A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and also has an indicator (`ContextMenuMenuItemIndicator`). This conceptually functions like a standard `Checkbox`.
 
 <PropsTable
   data={[
@@ -327,8 +327,8 @@ A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and 
       description: (
         <span>
           The controlled checked state of the{' '}
-          <Code>CheckboxItem</Code>. Must be used in conjunction with{' '}
-          <Code>onCheckedChange</Code>.
+          <Code>MenuCheckboxItem</Code>. Must be used in conjunction
+          with <Code>onCheckedChange</Code>.
         </span>
       ),
     },
@@ -339,7 +339,7 @@ A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and 
       description: (
         <span>
           The callback that fires when the checked state of the{' '}
-          <Code>CheckboxItem</Code> changes.
+          <Code>MenuCheckboxItem</Code> changes.
         </span>
       ),
     },
@@ -348,9 +348,9 @@ A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and 
       type: 'boolean',
       description: (
         <span>
-          Whether the <Code>CheckboxItem</Code> is disabled. If so it
-          will not be clickable and will not be focusable using arrow
-          keys
+          Whether the <Code>MenuCheckboxItem</Code> is disabled. If so
+          it will not be clickable and will not be focusable using
+          arrow keys
         </span>
       ),
     },
@@ -360,8 +360,8 @@ A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and 
       typeSimple: 'function',
       description: (
         <span>
-          The callback that fires when a <Code>CheckboxItem</Code> is
-          selected (via mouse or keyboard). Calling{' '}
+          The callback that fires when a <Code>MenuCheckboxItem</Code>{' '}
+          is selected (via mouse or keyboard). Calling{' '}
           <Code>event.preventDefault</Code> in this handler will
           prevent the <Code>ContextMenu</Code> from closing when
           selecting that item.
@@ -375,18 +375,18 @@ A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and 
         <span>
           An optional text used for typeahead purpose. By default the
           typeahead behavior will use the <Code>.textContent</Code> of{' '}
-          <Code>CheckboxItem</Code>. Use this when the content inside
-          the <Code>CheckboxItem</Code> is too complex, or you have
-          non-textual content inside.
+          <Code>MenuCheckboxItem</Code>. Use this when the content
+          inside the <Code>MenuCheckboxItem</Code> is too complex, or
+          you have non-textual content inside.
         </span>
       ),
     },
   ]}
 />
 
-#### RadioGroup
+#### MenuRadioGroup
 
-`ContextMenuRadioGroup` is a more specific `ContextMenuGroup` which also handles a value out of multiple potential `ContextMenuRadioItem`. This conceptually functions like a standard `RadioGroup`.
+`ContextMenuMenuRadioGroup` is a more specific `ContextMenuGroup` which also handles a value out of multiple potential `ContextMenuMenuRadioItem`. This conceptually functions like a standard `MenuRadioGroup`.
 
 <PropsTable
   data={[
@@ -395,8 +395,8 @@ A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and 
       type: 'string',
       description: (
         <span>
-          The value of the selected <Code>RadioItem</Code> in this{' '}
-          <Code>RadioGroup</Code>.
+          The value of the selected <Code>MenuRadioItem</Code> in this{' '}
+          <Code>MenuRadioGroup</Code>.
         </span>
       ),
     },
@@ -407,16 +407,16 @@ A more specific `ContextMenuItem` which can be controlled like a `Checkbox` and 
       description: (
         <span>
           The callback that fires when the selected{' '}
-          <Code>RadioItem</Code> changes.
+          <Code>MenuRadioItem</Code> changes.
         </span>
       ),
     },
   ]}
 />
 
-#### RadioItem
+#### MenuRadioItem
 
-A more specific `ContextMenuItem` which conceptually acts like a standard `Radio`. It has an indicator (`ContextMenuItemIndicator`).
+A more specific `ContextMenuItem` which conceptually acts like a standard `Radio`. It has an indicator (`ContextMenuMenuItemIndicator`).
 
 <PropsTable
   data={[
@@ -426,7 +426,7 @@ A more specific `ContextMenuItem` which conceptually acts like a standard `Radio
       required: true,
       description: (
         <span>
-          The value for this <Code>RadioItem</Code>.
+          The value for this <Code>MenuRadioItem</Code>.
         </span>
       ),
     },
@@ -435,9 +435,9 @@ A more specific `ContextMenuItem` which conceptually acts like a standard `Radio
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>RadioItem</Code> is disabled. If so
-          it will not be clickable and will not be focusable using
-          arrow keys.
+          Whether or not the <Code>MenuRadioItem</Code> is disabled.
+          If so it will not be clickable and will not be focusable
+          using arrow keys.
         </span>
       ),
     },
@@ -447,7 +447,7 @@ A more specific `ContextMenuItem` which conceptually acts like a standard `Radio
       typeSimple: 'function',
       description: (
         <span>
-          The callback that fires when a <Code>RadioItem</Code> is
+          The callback that fires when a <Code>MenuRadioItem</Code> is
           selected (via mouse or keyboard). Calling{' '}
           <Code>event.preventDefault</Code> in this handler will
           prevent the <Code>ContextMenu</Code> from closing when
@@ -462,8 +462,8 @@ A more specific `ContextMenuItem` which conceptually acts like a standard `Radio
         <span>
           An optional text used for typeahead purpose. By default the
           typeahead behavior will use the <Code>.textContent</Code> of{' '}
-          <Code>RadioItem</Code>. Use this when the content inside the{' '}
-          <Code>RadioItem</Code> is too complex, or you have
+          <Code>MenuRadioItem</Code>. Use this when the content inside
+          the <Code>MenuRadioItem</Code> is too complex, or you have
           non-textual content inside.
         </span>
       ),
@@ -471,9 +471,9 @@ A more specific `ContextMenuItem` which conceptually acts like a standard `Radio
   ]}
 />
 
-#### ItemIndicator
+#### MenuItemIndicator
 
-Renders when the parent `ContextMenuCheckboxItem` or `ContextMenuRadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
+Renders when the parent `ContextMenuMenuCheckboxItem` or `ContextMenuMenuRadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
 
 <PropsTable
   data={[
@@ -490,7 +490,7 @@ Renders when the parent `ContextMenuCheckboxItem` or `ContextMenuRadioItem` is c
   ]}
 />
 
-#### Separator
+#### MenuSeparator
 
 Used to visually separate items in a `ContextMenu`.
 

@@ -47,15 +47,18 @@ export default () => (
 
 Create your styled accordion component from the accordion parts.
 
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible]().
+
 ```jsx live manual
+// import { stitches } from 'path-to/stitches.config';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
 
 const Accordion = styled(AccordionPrimitive.Root, {
-  borderTop: '1px solid gainsboro',
+  // borderTop: '1px solid gainsboro',
 });
 
 const Item = styled(AccordionPrimitive.Item, {
-  borderBottom: '1px solid gainsboro',
+  marginBottom: 1,
 });
 
 const Header = styled(AccordionPrimitive.Header, {
@@ -64,7 +67,8 @@ const Header = styled(AccordionPrimitive.Header, {
 });
 
 const Button = styled(AccordionPrimitive.Button, {
-  backgroundColor: 'transparent',
+  backgroundColor: 'gainsboro',
+  color: 'black',
   border: 'none',
   padding: 10,
   flex: 1,

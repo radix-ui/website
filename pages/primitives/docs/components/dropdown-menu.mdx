@@ -28,70 +28,81 @@ Install the component from your command line.
 npm install @radix-ui/react-dropdown-menu
 ```
 
-Then import the component in your component file.
+### Anatomy
+
+Import the components and piece the parts together.
 
 ```jsx
-// DropdownMenu.tsx
-import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
+import {
+  ContextMenu,
+  Trigger,
+  Content,
+  MenuItem,
+  MenuGroup,
+  Label,
+  MenuCheckboxItem,
+  MenuRadioGroup,
+  MenuRadioItem,
+  MenuItemIndicator,
+  MenuSeparator,
+} from '@radix-ui/react-dropdown-menu';
+
+export default () => (
+  <ContextMenu>
+    <Trigger />
+    <Content>
+      <MenuItem />
+      <MenuSeparator />
+      <MenuCheckboxItem />
+      <MenuRadioGroup>
+        <MenuRadioItem />
+      </MenuRadioGroup>
+      <MenuItem>
+        <MenuItemIndicator />
+      </MenuItem>
+    </Content>
+  </ContextMenu>
+);
 ```
 
 ### Basic example
 
 ```jsx live manual
-// DropdownMenu.tsx
-// import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-// import { Button } from '@radix-ui/ds-button';
+import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 
-const MenuContent = styled(DropdownMenuPrimitive.DropdownMenuContent, {
+const Content = styled(DropdownMenuPrimitive.Content, {
   minWidth: 130,
   backgroundColor: 'white',
   borderRadius: 6,
   padding: 5,
-  boxShadow:
-    'hsla(206,22%,7%,.15) 0px 5px 15px -5px, hsla(206,22%,7%,.1) 0px 5px 10px -15px',
+  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
 });
 
-const MenuItem = styled(DropdownMenuPrimitive.DropdownMenuItem, {
+const MenuItem = styled(DropdownMenuPrimitive.MenuItem, {
   fontSize: 13,
   padding: '5px 10px',
   borderRadius: 3,
   cursor: 'default',
 
-  '&[data-disabled]': { color: 'slategray' },
-
-  ':focus': {
+  '&:focus': {
     outline: 'none',
     backgroundColor: 'dodgerblue',
     color: 'white',
   },
 });
 
-const MenuSeparator = styled(DropdownMenuPrimitive.DropdownMenuSeparator, {
-  height: 1,
-  backgroundColor: 'gainsboro',
-  margin: '5px 10px',
-});
-
-const MenuArrow = styled(DropdownMenuPrimitive.DropdownMenuArrow, {
-  fill: 'white',
-});
-
 render(
   <DropdownMenuPrimitive.Root>
-    <DropdownMenuPrimitive.DropdownMenuTrigger as={Button}>
-      Open
-    </DropdownMenuPrimitive.DropdownMenuTrigger>
-    <MenuContent sideOffset={5}>
-      <MenuItem onSelect={() => alert('undo')}>Undo</MenuItem>
-      <MenuItem onSelect={() => alert('redo')}>Redo</MenuItem>
-      <MenuSeparator />
-      <MenuItem disabled onSelect={() => alert('cut')}>
-        Cut
-      </MenuItem>
-      <MenuItem onSelect={() => alert('copy')}>Copy</MenuItem>
-      <MenuItem onSelect={() => alert('paste')}>Paste</MenuItem>
-      <MenuArrow />
-    </MenuContent>
+    <DropdownMenuPrimitive.Trigger>
+      Trigger
+    </DropdownMenuPrimitive.Trigger>
+    <Content sideOffset={-5}>
+      <MenuItem onSelect={() => {}}>Undo</MenuItem>
+      <MenuItem onSelect={() => {}}>Redo</MenuItem>
+      <MenuItem onSelect={() => {}}>Cut</MenuItem>
+      <MenuItem onSelect={() => {}}>Copy</MenuItem>
+      <MenuItem onSelect={() => {}}>Paste</MenuItem>
+    </Content>
   </DropdownMenuPrimitive.Root>
 );
 ```
@@ -104,41 +115,26 @@ render(
   data={[
     {
       keys: ['Space'],
-      description: (
-        <span>
-          Activates the focused item.
-        </span>
-      ),
+      description: <span>Activates the focused item.</span>,
     },
     {
       keys: ['Enter'],
-      description: (
-        <span>
-          Activates the focused item.
-        </span>
-      ),
+      description: <span>Activates the focused item.</span>,
     },
     {
       keys: ['ArrowDown'],
-      description: (
-        <span>
-          Moves focus to the next item.
-        </span>
-      ),
+      description: <span>Moves focus to the next item.</span>,
     },
     {
       keys: ['ArrowUp'],
-      description: (
-        <span>
-          Moves focus to the previous item.
-        </span>
-      ),
+      description: <span>Moves focus to the previous item.</span>,
     },
     {
       keys: ['Esc'],
       description: (
         <span>
-          Closes <Code>Content</Code> and moves focus to <Code>Trigger</Code>.
+          Closes <Code>Content</Code> and moves focus to{' '}
+          <Code>Trigger</Code>.
         </span>
       ),
     },
@@ -158,9 +154,10 @@ render(
       type: 'boolean',
       description: (
         <span>
-          The open state of the <Code>DropdownMenu</Code> when it is initially
-          rendered. Use <Code>defaultOpen</Code> if you do not need to control
-          the state of an <Code>DropdownMenu</Code>.
+          The open state of the <Code>DropdownMenu</Code> when it is
+          initially rendered. Use <Code>defaultOpen</Code> if you do
+          not need to control the state of an{' '}
+          <Code>DropdownMenu</Code>.
         </span>
       ),
     },
@@ -169,8 +166,8 @@ render(
       type: 'boolean',
       description: (
         <span>
-          The controlled open state of the <Code>DropdownMenu</Code>. Must be
-          used in conjunction with <Code>onOpenChange</Code>`.
+          The controlled open state of the <Code>DropdownMenu</Code>.
+          Must be used in conjunction with <Code>onOpenChange</Code>`.
         </span>
       ),
     },
@@ -190,10 +187,10 @@ render(
       type: 'string',
       description: (
         <span>
-          A unique identifier for the <Code>DropdownMenu</Code> component. The{' '}
-          <Code>id</Code> is used to generate DOM id attributes for nested
-          components. If no <Code>id</Code> prop is provided, a generated id
-          will be used.
+          A unique identifier for the <Code>DropdownMenu</Code>{' '}
+          component. The <Code>id</Code> is used to generate DOM id
+          attributes for nested components. If no <Code>id</Code> prop
+          is provided, a generated id will be used.
         </span>
       ),
     },
@@ -216,10 +213,11 @@ The component that pops out in an open `DropdownMenu`.
       default: 'false',
       description: (
         <span>
-          When <Code>true</Code>, hover/focus/click interactions will be
-          disabled on elements outside the <Code>Content</Code>. Users will need
-          to click twice on outside elements to interact with them: Once to
-          close the <Code>DropdownMenu</Code>, and again to trigger the element.
+          When <Code>true</Code>, hover/focus/click interactions will
+          be disabled on elements outside the <Code>Content</Code>.
+          Users will need to click twice on outside elements to
+          interact with them: Once to close the{' '}
+          <Code>DropdownMenu</Code>, and again to trigger the element.
         </span>
       ),
     },
@@ -229,8 +227,8 @@ The component that pops out in an open `DropdownMenu`.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the escape key is down. It can be prevented
-          by calling <Code>event.preventDefault</Code>
+          Event handler called when the escape key is down. It can be
+          prevented by calling <Code>event.preventDefault</Code>
         </span>
       ),
     },
@@ -240,22 +238,25 @@ The component that pops out in an open `DropdownMenu`.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the a pointer event happens outside of the{' '}
-          <Code>Content</Code>. It can be prevented by calling{' '}
-          <Code>event.preventDefault</Code>.
+          Event handler called when the a pointer event happens
+          outside of the <Code>Content</Code>. It can be prevented by
+          calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
     {
       name: 'onInteractOutside',
-      type: '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
+      type:
+        '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
       typeSimple: 'function',
       description: (
         <span>
           Event handler called when an interaction happens outside the
-          <Code>Content</Code>. Specifically, when a pointer event happens outside
-          of the `DropdownMenuContent` or focus moves outside of it. It can be prevented
-          by calling <Code>event.preventDefault</Code>.
+          <Code>Content</Code>. Specifically, when a pointer event happens
+          outside of the `DropdownMenuContent` or focus moves outside of
+          it. It can be prevented by calling <Code>
+            event.preventDefault
+          </Code>.
         </span>
       ),
     },
@@ -286,8 +287,8 @@ The component that pops out in an open `DropdownMenu`.
       type: 'boolean',
       description: (
         <span>
-          Used to force mounting when more control is needed. Useful when
-          controlling animation with React animation libraries.
+          Used to force mounting when more control is needed. Useful
+          when controlling animation with React animation libraries.
         </span>
       ),
     },
@@ -297,9 +298,9 @@ The component that pops out in an open `DropdownMenu`.
       typeSimple: 'ref',
       description: (
         <span>
-          An optional ref to an element to be used as the anchor for the{' '}
-          <Code>Content</Code>. By default, it will use <Code>Trigger</Code> as
-          anchor element.
+          An optional ref to an element to be used as the anchor for
+          the <Code>Content</Code>. By default, it will use{' '}
+          <Code>Trigger</Code> as anchor element.
         </span>
       ),
     },
@@ -332,8 +333,8 @@ The component that pops out in an open `DropdownMenu`.
       default: '"center"',
       description: (
         <span>
-          How to align the <Code>Content</Code> against <Code>Trigger</Code>.
-          May switch in case of collisions.
+          How to align the <Code>Content</Code> against{' '}
+          <Code>Trigger</Code>. May switch in case of collisions.
         </span>
       ),
     },
@@ -353,9 +354,10 @@ The component that pops out in an open `DropdownMenu`.
       default: 'true',
       description: (
         <span>
-          Whether or not collisions with window edges should be avoided. When
-          turned on, this will result in the <Code>Content</Code> flipping its
-          side and alignment accordingly.
+          Whether or not collisions with window edges should be
+          avoided. When turned on, this will result in the{' '}
+          <Code>Content</Code> flipping its side and alignment
+          accordingly.
         </span>
       ),
     },
@@ -365,8 +367,8 @@ The component that pops out in an open `DropdownMenu`.
       default: '0',
       description: (
         <span>
-          The tolerance within which the <Code>Content</Code> is to be checked
-          against window edges.
+          The tolerance within which the <Code>Content</Code> is to be
+          checked against window edges.
         </span>
       ),
     },
@@ -424,8 +426,9 @@ Used to render items in the `DropdownMenu`.
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>Item</Code> is disabled. If so it will not be
-          clickable and will not be focusable using arrow keys.
+          Whether or not the <Code>Item</Code> is disabled. If so it
+          will not be clickable and will not be focusable using arrow
+          keys.
         </span>
       ),
     },
@@ -435,9 +438,10 @@ Used to render items in the `DropdownMenu`.
       typeSimple: 'function',
       description: (
         <span>
-          The callback that fires when an <Code>Item</Code> is selected (via
-          mouse or keyboard). Calling <Code>event.preventDefault</Code> in this
-          handler will prevent the <Code>DropdownMenu</Code> from closing when
+          The callback that fires when an <Code>Item</Code> is
+          selected (via mouse or keyboard). Calling{' '}
+          <Code>event.preventDefault</Code> in this handler will
+          prevent the <Code>DropdownMenu</Code> from closing when
           selecting that item.
         </span>
       ),
@@ -447,10 +451,11 @@ Used to render items in the `DropdownMenu`.
       type: 'string',
       description: (
         <span>
-          An optional text used for typeahead purpose. By default the typeahead
-          behavior will use the <Code>.textContent</Code> of <Code>Item</Code>.
-          Use this when the content inside the <Code>Item</Code> is too complex,
-          or you have non-textual content inside.
+          An optional text used for typeahead purpose. By default the
+          typeahead behavior will use the <Code>.textContent</Code> of{' '}
+          <Code>Item</Code>. Use this when the content inside the{' '}
+          <Code>Item</Code> is too complex, or you have non-textual
+          content inside.
         </span>
       ),
     },
@@ -476,8 +481,9 @@ A more specific `DropdownMenuItem` which can be controlled like a `Checkbox` and
       type: 'boolean',
       description: (
         <span>
-          The controlled checked state of the <Code>CheckboxItem</Code>. Must be
-          used in conjunction with <Code>onCheckedChange</Code>.
+          The controlled checked state of the{' '}
+          <Code>CheckboxItem</Code>. Must be used in conjunction with{' '}
+          <Code>onCheckedChange</Code>.
         </span>
       ),
     },
@@ -497,8 +503,9 @@ A more specific `DropdownMenuItem` which can be controlled like a `Checkbox` and
       type: 'boolean',
       description: (
         <span>
-          Whether the <Code>CheckboxItem</Code> is disabled. If so it will not
-          be clickable and will not be focusable using arrow keys.
+          Whether the <Code>CheckboxItem</Code> is disabled. If so it
+          will not be clickable and will not be focusable using arrow
+          keys.
         </span>
       ),
     },
@@ -508,10 +515,11 @@ A more specific `DropdownMenuItem` which can be controlled like a `Checkbox` and
       typeSimple: 'function',
       description: (
         <span>
-          The callback that fires when a <Code>CheckboxItem</Code> is selected
-          (via mouse or keyboard). Calling <Code>event.preventDefault</Code> in
-          this handler will prevent the <Code>DropdownMenu</Code> from closing
-          when selecting that item.
+          The callback that fires when a <Code>CheckboxItem</Code> is
+          selected (via mouse or keyboard). Calling{' '}
+          <Code>event.preventDefault</Code> in this handler will
+          prevent the <Code>DropdownMenu</Code> from closing when
+          selecting that item.
         </span>
       ),
     },
@@ -520,11 +528,11 @@ A more specific `DropdownMenuItem` which can be controlled like a `Checkbox` and
       type: 'string',
       description: (
         <span>
-          An optional text used for typeahead purpose. By default the typeahead
-          behavior will use the <Code>.textContent</Code> of{' '}
-          <Code>CheckboxItem</Code>. Use this when the content inside the{' '}
-          <Code>CheckboxItem</Code> is too complex, or you have non-textual
-          content inside.
+          An optional text used for typeahead purpose. By default the
+          typeahead behavior will use the <Code>.textContent</Code> of{' '}
+          <Code>CheckboxItem</Code>. Use this when the content inside
+          the <Code>CheckboxItem</Code> is too complex, or you have
+          non-textual content inside.
         </span>
       ),
     },
@@ -553,8 +561,8 @@ A more specific `DropdownMenuGroup` which also handles a value out of multiple p
       typeSimple: 'function',
       description: (
         <span>
-          The callback that fires when the selected <Code>RadioItem</Code>{' '}
-          changes.
+          The callback that fires when the selected{' '}
+          <Code>RadioItem</Code> changes.
         </span>
       ),
     },
@@ -582,8 +590,9 @@ A more specific `DropdownMenuItem` which conceptually acts like a standard `Radi
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>RadioItem</Code> is disabled. If so it will
-          not be clickable and will not be focusable using arrow keys.
+          Whether or not the <Code>RadioItem</Code> is disabled. If so
+          it will not be clickable and will not be focusable using
+          arrow keys.
         </span>
       ),
     },
@@ -593,9 +602,10 @@ A more specific `DropdownMenuItem` which conceptually acts like a standard `Radi
       typeSimple: 'function',
       description: (
         <span>
-          The callback that fires when a <Code>RadioItem</Code> is selected (via
-          mouse or keyboard). Calling <Code>event.preventDefault</Code> in this
-          handler will prevent the <Code>DropdownMenu</Code> from closing when
+          The callback that fires when a <Code>RadioItem</Code> is
+          selected (via mouse or keyboard). Calling{' '}
+          <Code>event.preventDefault</Code> in this handler will
+          prevent the <Code>DropdownMenu</Code> from closing when
           selecting that item.
         </span>
       ),
@@ -605,11 +615,11 @@ A more specific `DropdownMenuItem` which conceptually acts like a standard `Radi
       type: 'string',
       description: (
         <span>
-          An optional text used for typeahead purpose. By default the typeahead
-          behavior will use the <Code>.textContent</Code> of{' '}
+          An optional text used for typeahead purpose. By default the
+          typeahead behavior will use the <Code>.textContent</Code> of{' '}
           <Code>RadioItem</Code>. Use this when the content inside the{' '}
-          <Code>RadioItem</Code> is too complex, or you have non-textual content
-          inside.
+          <Code>RadioItem</Code> is too complex, or you have
+          non-textual content inside.
         </span>
       ),
     },
@@ -627,8 +637,8 @@ Renders when the parent `DropdownMenuCheckboxItem` or `DropdownMenuRadioItem` is
       type: 'boolean',
       description: (
         <span>
-          Used to force mounting when more control is needed. Useful when
-          controlling animation with React animation libraries.
+          Used to force mounting when more control is needed. Useful
+          when controlling animation with React animation libraries.
         </span>
       ),
     },

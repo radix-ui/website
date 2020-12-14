@@ -54,14 +54,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1;
-}
-
-body, button, input {
 	font-family: var(--fonts-untitled);
 	text-align: inherit;
 	font-size: initial;
 	color: var(--colors-hiContrast);
 }
+
 
 h1, h2, h3, h4, h5, strong {
 	font-weight: 500;
