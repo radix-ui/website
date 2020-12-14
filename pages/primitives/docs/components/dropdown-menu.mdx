@@ -38,14 +38,14 @@ import {
   ContextMenu,
   Trigger,
   Content,
-  MenuItem,
-  MenuGroup,
+  Item,
+  Group,
   Label,
-  MenuCheckboxItem,
-  MenuRadioGroup,
-  MenuRadioItem,
-  MenuItemIndicator,
-  MenuSeparator,
+  CheckboxItem,
+  RadioGroup,
+  RadioItem,
+  ItemIndicator,
+  Separator,
   Arrow,
 } from '@radix-ui/react-dropdown-menu';
 
@@ -53,15 +53,15 @@ export default () => (
   <ContextMenu>
     <Trigger />
     <Content>
-      <MenuItem />
-      <MenuSeparator />
-      <MenuCheckboxItem />
-      <MenuRadioGroup>
-        <MenuRadioItem />
-      </MenuRadioGroup>
-      <MenuItem>
-        <MenuItemIndicator />
-      </MenuItem>
+      <Item />
+      <Separator />
+      <CheckboxItem />
+      <RadioGroup>
+        <RadioItem />
+      </RadioGroup>
+      <Item>
+        <ItemIndicator />
+      </Item>
     </Content>
   </ContextMenu>
 );
@@ -85,7 +85,7 @@ const Content = styled(DropdownMenuPrimitive.Content, {
   boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
 });
 
-const MenuItem = styled(DropdownMenuPrimitive.MenuItem, {
+const Item = styled(DropdownMenuPrimitive.Item, {
   fontSize: 13,
   padding: '5px 10px',
   borderRadius: 3,
@@ -98,17 +98,22 @@ const MenuItem = styled(DropdownMenuPrimitive.MenuItem, {
   },
 });
 
+const Arrow = styled(DropdownMenuPrimitive.Arrow, {
+  fill: 'white',
+});
+
 render(
   <DropdownMenuPrimitive.Root>
     <DropdownMenuPrimitive.Trigger>
       Trigger
     </DropdownMenuPrimitive.Trigger>
-    <Content sideOffset={-5}>
-      <MenuItem onSelect={() => {}}>Undo</MenuItem>
-      <MenuItem onSelect={() => {}}>Redo</MenuItem>
-      <MenuItem onSelect={() => {}}>Cut</MenuItem>
-      <MenuItem onSelect={() => {}}>Copy</MenuItem>
-      <MenuItem onSelect={() => {}}>Paste</MenuItem>
+    <Content>
+      <Item>Undo</Item>
+      <Item>Redo</Item>
+      <Item>Cut</Item>
+      <Item>Copy</Item>
+      <Item>Paste</Item>
+      <Arrow />
     </Content>
   </DropdownMenuPrimitive.Root>
 );
@@ -471,7 +476,7 @@ Used to render items in the `DropdownMenu`.
 
 #### Group
 
-Used to group multiple `DropdownMenuItem`.
+Used to group multiple `DropdownItem`.
 
 #### Label
 
@@ -479,7 +484,7 @@ Used to render a label. It won't be focusable using arrow keys.
 
 #### CheckboxItem
 
-A more specific `DropdownMenuItem` which can be controlled like a `Checkbox` and also has an indicator (`DropdownMenuItemIndicator`). This conceptually functions like a standard `Checkbox`.
+A more specific `DropdownItem` which can be controlled like a `Checkbox` and also has an indicator (`DropdownItemIndicator`). This conceptually functions like a standard `Checkbox`.
 
 <PropsTable
   data={[
@@ -548,7 +553,7 @@ A more specific `DropdownMenuItem` which can be controlled like a `Checkbox` and
 
 #### RadioGroup
 
-A more specific `DropdownMenuGroup` which also handles a value out of multiple potential `DropdownMenuRadioItem`. This conceptually functions like a standard `RadioGroup`.
+A more specific `DropdownGroup` which also handles a value out of multiple potential `DropdownRadioItem`. This conceptually functions like a standard `RadioGroup`.
 
 <PropsTable
   data={[
@@ -578,7 +583,7 @@ A more specific `DropdownMenuGroup` which also handles a value out of multiple p
 
 #### RadioItem
 
-A more specific `DropdownMenuItem` which conceptually acts like a standard `Radio`. It has an indicator (`DropdownMenuItemIndicator`).
+A more specific `DropdownItem` which conceptually acts like a standard `Radio`. It has an indicator (`DropdownItemIndicator`).
 
 <PropsTable
   data={[
@@ -635,7 +640,7 @@ A more specific `DropdownMenuItem` which conceptually acts like a standard `Radi
 
 #### ItemIndicator
 
-Renders when the parent `DropdownMenuCheckboxItem` or `DropdownMenuRadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
+Renders when the parent `DropdownCheckboxItem` or `DropdownRadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
 
 <PropsTable
   data={[
