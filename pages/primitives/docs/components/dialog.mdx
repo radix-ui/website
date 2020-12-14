@@ -2,7 +2,7 @@
 title: Dialog
 name: dialog
 version: 0.0.1
-description: A modal of content overlaid on top of a document's primary viewport.
+description: A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
 features:
   - Focus is automatically trapped.
   - Works in an uncontrolled way by default.
@@ -150,9 +150,7 @@ render(
       keys: ['Space'],
       description: (
         <div>
-            When focus is on <Code>Trigger</Code>, opens <Code>Overlay</Code>{' '}
-            and <Code>Content</Code>. When focus is on <Code>Action</Code> or <Code>Cancel</Code>, closes <Code>Overlay</Code>{' '}
-            and <Code>Content</Code> and moves focus to <Code>Trigger</Code>.
+          Opens/closes <Code>Overlay</Code> and <Code>Content</Code>.
         </div>
       ),
     },
@@ -160,9 +158,7 @@ render(
       keys: ['Enter'],
       description: (
         <div>
-            When focus is on <Code>Trigger</Code>, opens <Code>Overlay</Code>{' '}
-            and <Code>Content</Code>. When focus is on <Code>Action</Code> or <Code>Cancel</Code>, closes <Code>Overlay</Code>{' '}
-            and <Code>Content</Code> and moves focus to <Code>Trigger</Code>.
+          Opens/closes <Code>Overlay</Code> and <Code>Content</Code>.
         </div>
       ),
     },
@@ -245,11 +241,11 @@ render(
   ]}
 />
 
-#### DialogTrigger
+#### Trigger
 
 The button that triggers the `Dialog`.
 
-#### DialogOverlay
+#### Overlay
 
 The overlay that covers the inert portion of the view when a `Dialog` is open.
 
@@ -264,7 +260,7 @@ The overlay that covers the inert portion of the view when a `Dialog` is open.
   ]}
 />
 
-#### DialogContent
+#### Content
 
 The component that contains content to be rendered in an open `Dialog`.
 
@@ -324,6 +320,6 @@ The component that contains content to be rendered in an open `Dialog`.
   ]}
 />
 
-#### DialogClose
+#### Close
 
 The button that closes an open `Dialog`.
