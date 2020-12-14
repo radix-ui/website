@@ -86,12 +86,11 @@ import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 
 const DropdownTrigger = styled(DropdownMenuPrimitive.Trigger, {
   backgroundColor: 'hsl(252,78%,71%)',
-  borderRadius: '9999px',
-  fontSize: '$2',
+  borderRadius: 6,
   lineHeight: '1',
   fontWeight: 500,
-  padding: '$2 $3',
-  border: '0',
+  padding: '10px 15px',
+  border: 'none',
 
   '&:hover': { backgroundColor: 'hsl(252,78%,60%)' },
 });
@@ -121,7 +120,7 @@ const DropdownItem = styled(DropdownMenuPrimitive.Item, {
 export default () => (
   <DropdownMenuPrimitive.Root>
     <DropdownTrigger>Trigger</DropdownTrigger>
-    <DropdownContent>
+    <DropdownContent sideOffset={5}>
       <DropdownItem>Undo</DropdownItem>
       <DropdownItem>Redo</DropdownItem>
       <DropdownItem>Cut</DropdownItem>
