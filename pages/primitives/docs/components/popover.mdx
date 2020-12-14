@@ -19,21 +19,41 @@ Install the component from your command line.
 npm install @radix-ui/react-popover
 ```
 
-Then import the component in your component file.
+### Anatomy
+
+Import the components and piece the parts together.
 
 ```jsx
-// Popover.tsx
-import * as PopoverPrimitive from '@radix-ui/react-popover';
+import {
+  Popover,
+  Trigger,
+  Content,
+  Close,
+  Arrow,
+} from '@radix-ui/react-popover';
+
+export default () => (
+  <Popover>
+    <Trigger />
+    <Content>
+      <Close />
+      <Arrow />
+    </Content>
+  </Popover>
+);
 ```
 
 ### Basic example
 
-```jsx live manual
-// Popover.tsx
-// import * as PopoverPrimitive from '@radix-ui/react-popover';
-// import { Button } from '@radix-ui/ds-button'
+Create your styled accordion component from the primitive parts.
 
-const PopoverContent = styled(PopoverPrimitive.Content, {
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
+
+```jsx live manual
+// import { stitches } from 'path-to/stitches.config';
+import * as PopoverPrimitive from '@radix-ui/react-popover';
+
+const Content = styled(PopoverPrimitive.Content, {
   borderRadius: 3,
   padding: '20px',
   fontSize: 14,
@@ -41,67 +61,18 @@ const PopoverContent = styled(PopoverPrimitive.Content, {
   color: 'black',
 });
 
-render(
+export default () => (
   <PopoverPrimitive.Root>
-    <PopoverPrimitive.Trigger as={Button}>Trigger</PopoverPrimitive.Trigger>
-    <PopoverContent>
+    <PopoverPrimitive.Trigger>Trigger</PopoverPrimitive.Trigger>
+    <Content>
       <h3>Popover content</h3>
       <p>Are you sure you wanna do this?</p>
-      <PopoverPrimitive.Close as={Button}>Yes</PopoverPrimitive.Close>
+      <PopoverPrimitive.Close>Yes</PopoverPrimitive.Close>
       <TooltipPrimitive.Arrow style={{ fill: 'gainsboro' }} />
-    </PopoverContent>
+    </Content>
   </PopoverPrimitive.Root>
 );
 ```
-
-### Accessibility
-
-#### Keyboard Interactions
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['Space'],
-      description: (
-        <span>
-          Opens/closes <Code>Content</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['Enter'],
-      description: (
-        <span>
-          Opens/closes <Code>Content</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['Tab'],
-      description: (
-        <span>
-          Moves focus to the next focusable element.
-        </span>
-      ),
-    },
-    {
-      keys: ['Shift + Tab'],
-      description: (
-        <span>
-          Moves focus to the previous focusable element.
-        </span>
-      ),
-    },
-    {
-      keys: ['Esc'],
-      description: (
-        <span>
-          Closes <Code>Content</Code> and moves focus to <Code>Trigger</Code>.
-        </span>
-      ),
-    },
-  ]}
-/>
 
 ### API Reference
 
@@ -116,9 +87,9 @@ render(
       type: 'boolean',
       description: (
         <span>
-          The open state of the <Code>Popover</Code> when it is initially
-          rendered. Use <Code>defaultOpen</Code> if you do not need to control
-          the state of an <Code>Popover</Code>.
+          The open state of the <Code>Popover</Code> when it is
+          initially rendered. Use <Code>defaultOpen</Code> if you do
+          not need to control the state of an <Code>Popover</Code>.
         </span>
       ),
     },
@@ -127,8 +98,8 @@ render(
       type: 'boolean',
       description: (
         <span>
-          The controlled open state of the <Code>Popover</Code>. Must be used in
-          conjunction with <Code>onOpenChange</Code>.
+          The controlled open state of the <Code>Popover</Code>. Must
+          be used in conjunction with <Code>onOpenChange</Code>.
         </span>
       ),
     },
@@ -138,8 +109,8 @@ render(
       typeSimple: 'function',
       description: (
         <span>
-          The callback that fires when the state of the <Code>Popover</Code>{' '}
-          changes.
+          The callback that fires when the state of the{' '}
+          <Code>Popover</Code> changes.
         </span>
       ),
     },
@@ -173,8 +144,8 @@ The component that pops out in an open `Popover`.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when auto-focusing on open. It can be prevented
-          by calling <Code>event.preventDefault</Code>.
+          Event handler called when auto-focusing on open. It can be
+          prevented by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -184,8 +155,8 @@ The component that pops out in an open `Popover`.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when auto-focusing on close. It can be prevented
-          by calling <Code>event.preventDefault</Code>.
+          Event handler called when auto-focusing on close. It can be
+          prevented by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -195,10 +166,11 @@ The component that pops out in an open `Popover`.
       default: 'false',
       description: (
         <span>
-          When <Code>true</Code>, hover/focus/click interactions will be
-          disabled on elements outside the <Code>Content</Code>. Users will need
-          to click twice on outside elements to interact with them: Once to
-          close the <Code>Popover</Code>, and again to trigger the element.
+          When <Code>true</Code>, hover/focus/click interactions will
+          be disabled on elements outside the <Code>Content</Code>.
+          Users will need to click twice on outside elements to
+          interact with them: Once to close the <Code>Popover</Code>,
+          and again to trigger the element.
         </span>
       ),
     },
@@ -208,8 +180,8 @@ The component that pops out in an open `Popover`.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the escape key is down. It can be prevented
-          by calling <Code>event.preventDefault</Code>
+          Event handler called when the escape key is down. It can be
+          prevented by calling <Code>event.preventDefault</Code>
         </span>
       ),
     },
@@ -219,9 +191,9 @@ The component that pops out in an open `Popover`.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the a pointer event happens outside of the{' '}
-          <Code>Content</Code>. It can be prevented by calling{' '}
-          <Code>event.preventDefault</Code>.
+          Event handler called when the a pointer event happens
+          outside of the <Code>Content</Code>. It can be prevented by
+          calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -239,14 +211,17 @@ The component that pops out in an open `Popover`.
     },
     {
       name: 'onInteractOutside',
-      type: '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
+      type:
+        '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
       typeSimple: 'function',
       description: (
         <span>
           Event handler called when an interaction happens outside the
-          <Code>Content</Code>. Specifically, when a pointer event happens outside
-          of the `ContextMenuContent` or focus moves outside of it. It can be prevented
-          by calling <Code>event.preventDefault</Code>.
+          <Code>Content</Code>. Specifically, when a pointer event happens
+          outside of the `ContextMenuContent` or focus moves outside of
+          it. It can be prevented by calling <Code>
+            event.preventDefault
+          </Code>.
         </span>
       ),
     },
@@ -277,8 +252,8 @@ The component that pops out in an open `Popover`.
       type: 'boolean',
       description: (
         <span>
-          Used to force mounting when more control is needed. Useful when
-          controlling animation with React animation libraries.
+          Used to force mounting when more control is needed. Useful
+          when controlling animation with React animation libraries.
         </span>
       ),
     },
@@ -288,9 +263,9 @@ The component that pops out in an open `Popover`.
       typeSimple: 'ref',
       description: (
         <span>
-          An optional ref to an element to be used as the anchor for the{' '}
-          <Code>Content</Code>. By default, it will use <Code>Trigger</Code> as
-          anchor element.
+          An optional ref to an element to be used as the anchor for
+          the <Code>Content</Code>. By default, it will use{' '}
+          <Code>Trigger</Code> as anchor element.
         </span>
       ),
     },
@@ -323,8 +298,8 @@ The component that pops out in an open `Popover`.
       default: '"center"',
       description: (
         <span>
-          How to align the <Code>Content</Code> against <Code>Trigger</Code>.
-          May switch in case of collisions.
+          How to align the <Code>Content</Code> against{' '}
+          <Code>Trigger</Code>. May switch in case of collisions.
         </span>
       ),
     },
@@ -344,9 +319,10 @@ The component that pops out in an open `Popover`.
       default: 'true',
       description: (
         <span>
-          Whether or not collisions with window edges should be avoided. When
-          turned on, this will result in the <Code>Content</Code> flipping its
-          side and alignment accordingly.
+          Whether or not collisions with window edges should be
+          avoided. When turned on, this will result in the{' '}
+          <Code>Content</Code> flipping its side and alignment
+          accordingly.
         </span>
       ),
     },
@@ -356,8 +332,8 @@ The component that pops out in an open `Popover`.
       default: '0',
       description: (
         <span>
-          The tolerance within which the <Code>Content</Code> is to be checked
-          against window edges.
+          The tolerance within which the <Code>Content</Code> is to be
+          checked against window edges.
         </span>
       ),
     },
@@ -407,3 +383,49 @@ The optional arrow element to render for the `Popover`. This can be used to help
 #### Close
 
 The button that closes an open `Popover`.
+
+### Accessibility
+
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space'],
+      description: (
+        <span>
+          Opens/closes <Code>Content</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['Enter'],
+      description: (
+        <span>
+          Opens/closes <Code>Content</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['Tab'],
+      description: (
+        <span>Moves focus to the next focusable element.</span>
+      ),
+    },
+    {
+      keys: ['Shift + Tab'],
+      description: (
+        <span>Moves focus to the previous focusable element.</span>
+      ),
+    },
+    {
+      keys: ['Esc'],
+      description: (
+        <span>
+          Closes <Code>Content</Code> and moves focus to{' '}
+          <Code>Trigger</Code>.
+        </span>
+      ),
+    },
+  ]}
+/>
