@@ -45,6 +45,7 @@ import {
   MenuRadioItem,
   MenuItemIndicator,
   MenuSeparator,
+  Arrow,
 } from '@radix-ui/react-dropdown-menu';
 
 export default () => (
@@ -67,7 +68,12 @@ export default () => (
 
 ### Basic example
 
+Create your styled accordion component from the primitive parts.
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
+
 ```jsx live manual
+// import { stitches } from 'path-to/stitches.config';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 
 const Content = styled(DropdownMenuPrimitive.Content, {
