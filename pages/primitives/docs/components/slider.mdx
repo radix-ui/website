@@ -254,63 +254,6 @@ render(
 );
 ```
 
-#### Disabled style
-
-Use the availabe `data-*` attribute selectors to style the `disabled` state.
-
-```jsx live manual compact
-// Slider.tsx
-// import * as SliderPrimitive from '@radix-ui/react-slider';
-
-const Slider = styled(SliderPrimitive.Root, {
-  position: 'relative',
-  display: 'flex',
-  alignItems: 'center',
-  userSelect: 'none',
-  touchAction: 'none',
-  height: 16,
-});
-
-const SliderTrack = styled(SliderPrimitive.Track, {
-  backgroundColor: 'gainsboro',
-  position: 'relative',
-  flexGrow: 1,
-  height: 2,
-});
-
-const SliderRange = styled(SliderPrimitive.Range, {
-  position: 'absolute',
-  backgroundColor: 'dodgerblue',
-  borderRadius: '9999px',
-  height: '100%',
-  [`${Slider}[data-disabled] &`]: {
-    backgroundColor: 'darkgray',
-  },
-});
-
-const SliderThumb = styled(SliderPrimitive.Thumb, {
-  display: 'block',
-  width: 16,
-  height: 16,
-  backgroundColor: 'white',
-  border: '1px solid lightgray',
-  borderRadius: '20px',
-  outline: 'none',
-  [`${Slider}:not([data-disabled]) &:focus`]: {
-    borderColor: 'dodgerblue',
-  },
-});
-
-render(
-  <Slider defaultValue={[50]} disabled>
-    <SliderTrack>
-      <SliderRange />
-    </SliderTrack>
-    <SliderThumb />
-  </Slider>
-);
-```
-
 ### Accessibility
 
 #### Keyboard Interactions
@@ -515,7 +458,7 @@ render(
   ]}
 />
 
-#### SliderTrack
+#### Track
 
 `SliderTrack` is the track part.
 
