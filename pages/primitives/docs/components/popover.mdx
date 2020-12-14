@@ -2,7 +2,7 @@
 title: Popover
 name: popover
 version: 0.0.1-13
-description: An accessible Popover component that displays rich content as a result of clicking on a target.
+description: Displays rich content in a portal, triggered by a button.
 features:
   - Can be controlled or uncontrolled.
   - Customise side, alignment, offsets, collision handling.
@@ -61,41 +61,35 @@ render(
 <KeyboardTable
   data={[
     {
-      keys: ['Space', 'Enter'],
+      keys: ['Space'],
       description: (
-        <ul>
-          <li>
-            When focus is on <Code>Trigger</Code>, opens <Code>Content</Code>.
-          </li>
-          <li>
-            When focus is on <Code>Close</Code>, closes <Code>Content</Code> and
-            moves focus to <Code>Trigger</Code>.
-          </li>
-        </ul>
+        <span>
+          Opens/closes <Code>Content</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['Enter'],
+      description: (
+        <span>
+          Opens/closes <Code>Content</Code>.
+        </span>
       ),
     },
     {
       keys: ['Tab'],
       description: (
-        <ul>
-          <li>Moves focus to the next focusable element.</li>
-          <li>
-            When focus is on the last focusable element within{' '}
-            <Code>Content</Code>, moves focus to the first focusable element.
-          </li>
-        </ul>
+        <span>
+          Moves focus to the next focusable element.
+        </span>
       ),
     },
     {
       keys: ['Shift + Tab'],
       description: (
-        <ul>
-          <li>Moves focus to the previous focusable element.</li>
-          <li>
-            When focus is on the first focusable element within{' '}
-            <Code>Content</Code>, moves focus to the last focusable element.
-          </li>
-        </ul>
+        <span>
+          Moves focus to the previous focusable element.
+        </span>
       ),
     },
     {
@@ -152,11 +146,11 @@ render(
   ]}
 />
 
-#### PopoverTrigger
+#### Trigger
 
 `PopoverTrigger` is the button that triggers the `Popover`. It is also used as the anchor the `PopoverContent` is positioned against.
 
-#### PopoverContent
+#### Content
 
 The component that pops out in an open `Popover`.
 
@@ -370,7 +364,7 @@ The component that pops out in an open `Popover`.
   ]}
 />
 
-#### PopoverArrow
+#### Arrow
 
 The optional arrow element to render for the `Popover`. This can be used to help visually link the `PopoverTrigger` with the `PopoverContent`. Must live inside `PopoverContent`.
 
@@ -410,6 +404,6 @@ The optional arrow element to render for the `Popover`. This can be used to help
   ]}
 />
 
-#### PopoverClose
+#### Close
 
 The button that closes an open `Popover`.
