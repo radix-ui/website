@@ -3,6 +3,8 @@ title: Separator
 name: separator
 version: 0.0.1
 description: A primitive useful for separating things.
+features:
+  - Supports horizontal and vertical orientations.
 ---
 
 ### Installation
@@ -13,27 +15,39 @@ Install the component from your command line.
 npm install @radix-ui/react-separator
 ```
 
-Then import the component in your component file.
+### Anatomy
+
+Import the components and piece the parts together.
 
 ```jsx
-// Separator.tsx
-import * as SeparatorPrimitive from '@radix-ui/react-separator';
+import { Separator } from '@radix-ui/react-separator';
+
+export default () => <Separator />;
 ```
 
 ### Basic example
 
-Create your styled separator component from the separator primitive.
+Create your styled separator component from the primitive part.
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
 
 ```jsx live manual
-// Separator.tsx
-// import * as SeparatorPrimitive from '@radix-ui/react-separator';
+// import { stitches } from 'path-to/stitches.config';
+import * as SeparatorPrimitive from '@radix-ui/react-separator';
 
 const Separator = styled(SeparatorPrimitive.Root, {
   backgroundColor: 'gainsboro',
   height: 1,
+  margin: '20px 0',
 });
 
-render(<Separator />);
+export default () => (
+  <>
+    Content
+    <Separator />
+    Content
+  </>
+);
 ```
 
 ### API Reference
@@ -60,9 +74,10 @@ render(<Separator />);
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>Separator</Code> is purely visual and carries
-          no semantic meaining. Setting this to <Code>true</Code> will ensure
-          the separator is not present in the accessibility tree.
+          Whether or not the <Code>Separator</Code> is purely visual
+          and carries no semantic meaining. Setting this to{' '}
+          <Code>true</Code> will ensure the separator is not present
+          in the accessibility tree.
         </span>
       ),
     },
