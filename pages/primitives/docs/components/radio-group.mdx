@@ -3,7 +3,7 @@ title: Radio Group
 name: radio-group
 version: 0.0.1-13
 description: A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.
-aria: https://www.w3.org/TR/wai-aria-practices-1.2/#radiobutton
+aria: https://www.w3.org/TR/wai-aria-practices/#radiobutton
 features:
   - Full keyboard navigation.
   - Can be controlled or uncontrolled.
@@ -222,6 +222,8 @@ Renders when the `RadioGroupItem` is the currently selected on. You can style th
 />
 
 ### Accessibility
+
+Adheres to the [Radio Group WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices/#radiobutton) and uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices/examples/radio/radio-1/radio-1.html) to manage focus movement among radio items.
 
 #### Keyboard Interactions
 
