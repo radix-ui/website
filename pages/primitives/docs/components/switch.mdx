@@ -22,18 +22,25 @@ Install the component from your command line.
 npm install @radix-ui/react-switch
 ```
 
-Then import the component in your component file.
+### Anatomy
+
+Import the components and piece the parts together.
 
 ```jsx
-// Switch.tsx
-import * as SwitchPrimitive from '@radix-ui/react-switch';
+import { Switch, Thumb } from '@radix-ui/react-switch';
+
+export default () => (
+  <Switch>
+    <Thumb />
+  </Switch>
+);
 ```
 
 ### Basic example
 
 ```jsx live manual
-// Switch.tsx
-// import * as SwitchPrimitive from '@radix-ui/react-switch';
+// import { stitches } from 'path-to/stitches.config';
+import * as SwitchPrimitive from '@radix-ui/react-switch';
 
 const Switch = styled(SwitchPrimitive.Root, {
   appearance: 'none',
@@ -70,33 +77,12 @@ const Thumb = styled(SwitchPrimitive.Thumb, {
   },
 });
 
-render(
+export default () => (
   <Switch>
     <Thumb />
   </Switch>
 );
 ```
-
-### Accessibility
-
-#### Keyboard Interactions
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['Space'],
-      description: (
-        "Toggles the component's state."
-      ),
-    },
-    {
-      keys: ['Enter'],
-      description: (
-        "Toggles the component's state."
-      ),
-    },
-  ]}
-/>
 
 ### API Reference
 
@@ -111,9 +97,9 @@ render(
       type: 'boolean',
       description: (
         <span>
-          The checked state of the <Code>Switch</Code> when it is initially
-          rendered. Use <Code>defaultChecked</Code> if you do not need to
-          control the state of the <Code>Switch</Code>.
+          The checked state of the <Code>Switch</Code> when it is
+          initially rendered. Use <Code>defaultChecked</Code> if you
+          do not need to control the state of the <Code>Switch</Code>.
         </span>
       ),
     },
@@ -122,8 +108,9 @@ render(
       type: 'boolean',
       description: (
         <span>
-          The controlled checked state of the <Code>Switch</Code>. Must be used
-          in conjunction with <Code>onCheckedChange</Code>.
+          The controlled checked state of the <Code>Switch</Code>.
+          Must be used in conjunction with{' '}
+          <Code>onCheckedChange</Code>.
         </span>
       ),
     },
@@ -152,7 +139,8 @@ render(
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>Switch</Code> is required in a form.
+          Whether or not the <Code>Switch</Code> is required in a
+          form.
         </span>
       ),
     },
@@ -161,8 +149,8 @@ render(
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>Switch</Code> is read-only and cannot be
-          toggled by the user.
+          Whether or not the <Code>Switch</Code> is read-only and
+          cannot be toggled by the user.
         </span>
       ),
     },
@@ -182,3 +170,20 @@ render(
 #### Thumb
 
 The thumb that is used to visually show whether the `Switch` is on or off.
+
+### Accessibility
+
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space'],
+      description: "Toggles the component's state.",
+    },
+    {
+      keys: ['Enter'],
+      description: "Toggles the component's state.",
+    },
+  ]}
+/>
