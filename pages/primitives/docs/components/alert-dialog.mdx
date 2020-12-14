@@ -24,19 +24,37 @@ Install the component from your command line.
 npm install @radix-ui/react-alert-dialog
 ```
 
-Then import the component in your component file.
+### Anatomy
+
+Import the components and piece the parts together.
 
 ```jsx
-// AlertDialog.tsx
-import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
+import {
+  Root,
+  Overlay,
+  Content,
+  Title,
+  Description,
+} from '@radix-ui/react-alert-dialog';
+
+export default () => (
+  <Root>
+    <Trigger>Trigger button</Trigger>
+    <Overlay />
+    <Content>
+      <Title>Title</Title>
+      <Description>Description</Description>
+      <Cancel>Cancel</Cancel>
+      <Action>Accept</Action>
+    </Content>
+  </Root>
+);
 ```
 
 ### Basic example
 
 ```jsx live manual
-// AlertDialog.tsx
-// import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
-// import { Button } from '@radix-ui/ds-button'
+import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 
 const Overlay = styled(AlertDialogPrimitive.Overlay, {
   backgroundColor: 'rgba(0, 0, 0, .15)',
@@ -55,16 +73,7 @@ const Content = styled(AlertDialogPrimitive.Content, {
   width: 360,
   backgroundColor: 'white',
   borderRadius: 6,
-  padding: 30,
-});
-
-const Title = styled(AlertDialogPrimitive.Title, {
-  margin: '0 0 30px',
-});
-
-const Description = styled(AlertDialogPrimitive.Description, {
-  margin: '0 0 30px',
-  lineHeight: 1.5,
+  padding: 20,
 });
 
 render(
@@ -72,215 +81,22 @@ render(
     <AlertDialogPrimitive.Trigger>Open</AlertDialogPrimitive.Trigger>
     <Overlay />
     <Content>
-      <Title>Alert title</Title>
-      <Description>
-        This is an example of the alert description part. Are you sure?
-      </Description>
-      <AlertDialogPrimitive.Cancel as={Button} css={{ marginRight: 15 }}>
+      <AlertDialogPrimitive.Title>
+        Alert title
+      </AlertDialogPrimitive.Title>
+      <AlertDialogPrimitive.Description>
+        Alert description.
+      </AlertDialogPrimitive.Description>
+      <AlertDialogPrimitive.Cancel>
         Cancel
       </AlertDialogPrimitive.Cancel>
-      <AlertDialogPrimitive.Action as={Button}>
+      <AlertDialogPrimitive.Action>
         Accept
       </AlertDialogPrimitive.Action>
     </Content>
   </AlertDialogPrimitive.Root>
 );
 ```
-
-### Examples
-
-#### With button group
-
-```jsx live manual compact
-// AlertDialog.tsx
-// import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
-// import { Cross2Icon } from '@radix-ui/icons'
-
-const Overlay = styled(AlertDialogPrimitive.Overlay, {
-  backgroundColor: 'rgba(0, 0, 0, .15)',
-  position: 'fixed',
-  top: 0,
-  right: 0,
-  bottom: 0,
-  left: 0,
-});
-
-const Content = styled(AlertDialogPrimitive.Content, {
-  position: 'fixed',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 360,
-  backgroundColor: 'white',
-  borderRadius: 6,
-});
-
-const Title = styled(AlertDialogPrimitive.Title, {
-  margin: '30px 20px',
-});
-
-const Description = styled(AlertDialogPrimitive.Description, {
-  margin: '30px 20px',
-  lineHeight: 1.5,
-});
-
-const ButtonsWrapper = styled('div', {
-  display: 'flex',
-  borderTop: '1px solid gainsboro',
-});
-
-const Button = styled('button', {
-  flex: '1 1 100%',
-  backgroundColor: 'transparent',
-  textAlign: 'center',
-  padding: '20px 0',
-  border: 'none',
-
-  '&:focus': { zIndex: 1 },
-
-  '& + &': { boxShadow: '0 0 0 1px gainsboro' },
-});
-
-render(
-  <AlertDialogPrimitive.Root>
-    <AlertDialogPrimitive.Trigger>Open</AlertDialogPrimitive.Trigger>
-    <Overlay />
-    <Content>
-      <Title>Alert title</Title>
-      <Description>
-        This is an example of the alert description part. Are you sure?
-      </Description>
-      <ButtonsWrapper>
-        <AlertDialogPrimitive.Cancel as={Button}>
-          Cancel
-        </AlertDialogPrimitive.Cancel>
-        <AlertDialogPrimitive.Action as={Button}>
-          Accept
-        </AlertDialogPrimitive.Action>
-      </ButtonsWrapper>
-    </Content>
-  </AlertDialogPrimitive.Root>
-);
-```
-
-#### With colored buttons
-
-```jsx live manual
-// AlertDialog.tsx
-// import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
-// import { Button } from '@radix-ui/ds-button'
-
-const Overlay = styled(AlertDialogPrimitive.Overlay, {
-  backgroundColor: 'rgba(0, 0, 0, .15)',
-  position: 'fixed',
-  top: 0,
-  right: 0,
-  bottom: 0,
-  left: 0,
-});
-
-const Content = styled(AlertDialogPrimitive.Content, {
-  position: 'fixed',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 360,
-  backgroundColor: 'var(--colors-loContrast, white)',
-  borderRadius: 6,
-  padding: 30,
-});
-
-const Title = styled(AlertDialogPrimitive.Title, {
-  margin: '0 0 30px',
-});
-
-const Description = styled(AlertDialogPrimitive.Description, {
-  margin: '0 0 30px',
-  lineHeight: 1.5,
-});
-
-const AlertButton = styled('button', {
-  padding: '0 20px',
-  fontSize: 16,
-  lineHeight: '40px',
-  borderRadius: 20,
-  border: 'none',
-
-  '&[data-radix-alert-dialog-cancel]': {
-    backgroundColor: 'slategray',
-  },
-  '&[data-radix-alert-dialog-action]': {
-    backgroundColor: 'dodgerblue',
-  },
-});
-
-render(
-  <AlertDialogPrimitive.Root>
-    <AlertDialogPrimitive.Trigger>Open</AlertDialogPrimitive.Trigger>
-    <Overlay />
-    <Content>
-      <Title>Alert title</Title>
-      <Description>
-        This is an example of the alert description part. Are you sure?
-      </Description>
-      <AlertDialogPrimitive.Cancel as={AlertButton} css={{ marginRight: 15 }}>
-        Cancel
-      </AlertDialogPrimitive.Cancel>
-      <AlertDialogPrimitive.Action as={AlertButton}>
-        Accept
-      </AlertDialogPrimitive.Action>
-    </Content>
-  </AlertDialogPrimitive.Root>
-);
-```
-
-### Accessibility
-
-#### Keyboard Interactions
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['Space'],
-      description: (
-        <div>
-            Opens/closes <Code>Overlay</Code>{' '}
-            and <Code>Content</Code>.
-        </div>
-      ),
-    },
-    {
-      keys: ['Enter'],
-      description: (
-        <div>
-            Opens/closes <Code>Overlay</Code>{' '}
-            and <Code>Content</Code>.
-        </div>
-      ),
-    },
-    {
-      keys: ['Tab'],
-      description: (
-        "Moves focus to the next focusable element."
-      ),
-    },
-    {
-      keys: ['Shift + Tab'],
-      description: (
-        "Moves focus to the previous focusable element."
-      ),
-    },
-    {
-      keys: ['Esc'],
-      description: (
-        <span>
-          Closes <Code>Overlay</Code> and <Code>Content</Code> and moves focus
-          to <Code>Trigger</Code>.
-        </span>
-      ),
-    },
-  ]}
-/>
 
 ### API Reference
 
@@ -295,9 +111,9 @@ render(
       type: 'boolean',
       description: (
         <span>
-          The open state of the <Code>AlertDialog</Code> when it is initially
-          rendered. Use <Code>defaultOpen</Code> if you do not need to control
-          the state of an dialog.
+          The open state of the <Code>AlertDialog</Code> when it is
+          initially rendered. Use <Code>defaultOpen</Code> if you do
+          not need to control the state of an dialog.
         </span>
       ),
     },
@@ -306,8 +122,9 @@ render(
       type: 'boolean',
       description: (
         <span>
-          The controlled open state of the <Code>AlertDialog</Code>. Must be
-          used in conjunction with <pCode>onOpenChange</pCode>.
+          The controlled open state of the <Code>AlertDialog</Code>.
+          Must be used in conjunction with <pCode>onOpenChange</pCode>
+          .
         </span>
       ),
     },
@@ -317,8 +134,8 @@ render(
       typeSimple: 'function',
       description: (
         <span>
-          The callback that fires when the state of the <Code>AlertDialog</Code>{' '}
-          changes.
+          The callback that fires when the state of the{' '}
+          <Code>AlertDialog</Code> changes.
         </span>
       ),
     },
@@ -327,10 +144,10 @@ render(
       type: 'string',
       description: (
         <span>
-          A unique identifier for the <Code>AlertDialog</Code> component. The{' '}
-          <Code>id</Code> is used to generate DOM id attributes for nested
-          components. If no <Code>id</Code> prop is provided, a generated id
-          will be used.
+          A unique identifier for the <Code>AlertDialog</Code>{' '}
+          component. The <Code>id</Code> is used to generate DOM id
+          attributes for nested components. If no <Code>id</Code> prop
+          is provided, a generated id will be used.
         </span>
       ),
     },
@@ -374,8 +191,8 @@ render(
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when auto-focusing on open. It can be prevented
-          by calling <Code>event.preventDefault</Code>.
+          Event handler called when auto-focusing on open. It can be
+          prevented by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -385,8 +202,8 @@ render(
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when auto-focusing on close. It can be prevented
-          by calling <Code>event.preventDefault</Code>.
+          Event handler called when auto-focusing on close. It can be
+          prevented by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -396,8 +213,8 @@ render(
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the escape key is down. It can be prevented
-          by calling <Code>event.preventDefault</Code>.
+          Event handler called when the escape key is down. It can be
+          prevented by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -407,9 +224,9 @@ render(
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the a pointer event happens outside of the{' '}
-          <Code>AlertDialog</Code>. It can be prevented by calling{' '}
-          <Code>event.preventDefault</Code>.
+          Event handler called when the a pointer event happens
+          outside of the <Code>AlertDialog</Code>. It can be prevented
+          by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -431,3 +248,45 @@ render(
 #### Description
 
 `AlertDialogDescription` provides an accessible description to be announced when an `AlertDialog` is opened. Alternatively, you can provide `aria-describedby` to `Content` and exclude this component.
+
+### Accessibility
+
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space'],
+      description: (
+        <div>
+          Opens/closes <Code>Overlay</Code> and <Code>Content</Code>.
+        </div>
+      ),
+    },
+    {
+      keys: ['Enter'],
+      description: (
+        <div>
+          Opens/closes <Code>Overlay</Code> and <Code>Content</Code>.
+        </div>
+      ),
+    },
+    {
+      keys: ['Tab'],
+      description: 'Moves focus to the next focusable element.',
+    },
+    {
+      keys: ['Shift + Tab'],
+      description: 'Moves focus to the previous focusable element.',
+    },
+    {
+      keys: ['Esc'],
+      description: (
+        <span>
+          Closes <Code>Overlay</Code> and <Code>Content</Code> and
+          moves focus to <Code>Trigger</Code>.
+        </span>
+      ),
+    },
+  ]}
+/>
