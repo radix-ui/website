@@ -6,6 +6,36 @@ features:
   - Appends to `document.body` by default but can be customised to use a different container.
 ---
 
+### Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-portal
+```
+
+### Anatomy
+
+Import the components and piece the parts together.
+
+```jsx
+import { PortalPrimitive } from '@radix-ui/react-portal';
+
+export default () => <PortalPrimitive />;
+```
+
+### Basic example
+
+Create your portaled component from the primitive.
+
+```jsx
+export default () => (
+  <>
+    <Portal>Content</Portal>
+  </>
+);
+```
+
 ### API Reference
 
 #### Portal
