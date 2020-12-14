@@ -18,100 +18,214 @@ Install the component from your command line.
 npm install @radix-ui/react-accordion
 ```
 
-Then import the component in your component file.
+### Anatomy
+
+Import the components and piece the parts together.
 
 ```jsx
-// Accordion.tsx
-import * as AccordionPrimitive from '@radix-ui/react-accordion';
+import {
+  Root,
+  Item,
+  Header,
+  Button,
+  Panel,
+} from '@radix-ui/react-accordion';
+
+export default () => (
+  <Root>
+    <Item>
+      <Header>
+        <Button>Item</Button>
+      </Header>
+      <Panel>Panel content</Panel>
+    </Item>
+  </Root>
+);
 ```
 
 ### Basic example
 
-Create your styled accordion component from the accordion primitives.
+Create your styled accordion component from the accordion parts.
 
 ```jsx live manual
-// Accordion.tsx
-// import * as AccordionPrimitive from '@radix-ui/react-accordion';
+import * as AccordionPrimitive from '@radix-ui/react-accordion';
 
-const AccordionItem = styled(AccordionPrimitive.Item, {
-  borderTop: '1px solid $gray500',
-
-  '&:last-of-type': {
-    borderBottom: '1px solid $gray500',
-  },
+const Accordion = styled(AccordionPrimitive.Root, {
+  borderTop: '1px solid gainsboro',
 });
 
-const AccordionHeader = styled(AccordionPrimitive.Header, {
+const Item = styled(AccordionPrimitive.Item, {
+  borderBottom: '1px solid gainsboro',
+});
+
+const Header = styled(AccordionPrimitive.Header, {
   margin: 0,
   display: 'flex',
 });
 
-const AccordionButton = styled(AccordionPrimitive.Button, {
+const Button = styled(AccordionPrimitive.Button, {
   backgroundColor: 'transparent',
   border: 'none',
   padding: 10,
   flex: 1,
 });
 
-const AccordionPanel = styled(AccordionPrimitive.Panel, {
+const Panel = styled(AccordionPrimitive.Panel, {
   padding: 10,
 });
 
-render(
-  <AccordionPrimitive.Root>
-    <AccordionItem value="item-1">
-      <AccordionHeader>
-        <AccordionButton>Item 1</AccordionButton>
-      </AccordionHeader>
-      <AccordionPanel>
-        <div>Here goes the content for the accordion item 1.</div>
-      </AccordionPanel>
-    </AccordionItem>
+export default () => (
+  <Accordion>
+    <Item value="item-1">
+      <Header>
+        <Button>Item 1</Button>
+      </Header>
+      <Panel>Here goes the content for the accordion item 1.</Panel>
+    </Item>
 
-    <AccordionItem value="item-2">
-      <AccordionHeader>
-        <AccordionButton>Item 2</AccordionButton>
-      </AccordionHeader>
-      <AccordionPanel>
-        <div>Here goes the content for the accordion item 2.</div>
-      </AccordionPanel>
-    </AccordionItem>
+    <Item value="item-2">
+      <Header>
+        <Button>Item 2</Button>
+      </Header>
+      <Panel>Here goes the content for the accordion item 2.</Panel>
+    </Item>
 
-    <AccordionItem value="item-3">
-      <AccordionHeader>
-        <AccordionButton>Item 3</AccordionButton>
-      </AccordionHeader>
-      <AccordionPanel>
-        <div>Here goes the content for the accordion item 3.</div>
-      </AccordionPanel>
-    </AccordionItem>
-  </AccordionPrimitive.Root>
+    <Item value="item-3">
+      <Header>
+        <Button>Item 3</Button>
+      </Header>
+      <Panel>Here goes the content for the accordion item 3.</Panel>
+    </Item>
+  </Accordion>
 );
 ```
+
+### API Reference
+
+#### Accordion
+
+`Accordion` is the root component.
+
+<PropsTable
+  data={[
+    {
+      name: 'value',
+      required: false,
+      type: 'string',
+      description: (
+        <span>
+          The controlled value of the <Code>Item</Code> whose panel is
+          expanded. Must be used in conjunction with{' '}
+          <Code>onValueChange</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'defaultValue',
+      required: false,
+      type: 'string',
+      description: (
+        <span>
+          The value of the <Code>Item</Code> whose panel is expanded
+          when the <Code>Accordion</Code> is initially rendered. Use{' '}
+          <Code>defaultValue</Code> if you do not need to control the
+          state of an <Code>Accordion</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'disabled',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description: (
+        <span>
+          Whether or not an <Code>Accordion</Code> is disabled from
+          user interaction.
+        </span>
+      ),
+    },
+    {
+      name: 'onValueChange',
+      required: false,
+      type: '(value: string) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          The callback that fires when the state of the{' '}
+          <Code>Accordion</Code> changes.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+#### Item
+
+`Item` contains all of the parts of a collapsible section inside of an `Accordion`.
+
+<PropsTable
+  data={[
+    {
+      name: 'disabled',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description: (
+        <span>
+          Whether or not an <Code>Item</Code> is disabled from user
+          interaction.
+        </span>
+      ),
+    },
+    {
+      name: 'value',
+      required: true,
+      type: 'string',
+      description: (
+        <span>
+          A string value for the <Code>Item</Code>. All items within
+          an <Code>Accordion</Code> should use a unique value.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+#### Header
+
+`Header` wraps a `button` and will be an `h3` by default. Use the `as` prop to update it to the appropriate heading level for your page.
+
+#### Button
+
+`Button` toggles the collapsed state of an `Item`. It should always be nested inside of an `Header`.
+
+#### Panel
+
+`Panel` contains the collapsible content for an `Item`.
 
 ### Examples
 
 #### With directional Icon
 
 ```jsx live manual compact
-// Accordion.tsx
-// import * as AccordionPrimitive from '@radix-ui/react-accordion';
-// import { ChevronDownIcon } from '@modulz/radix-icons';
+import * as AccordionPrimitive from '@radix-ui/react-accordion';
+import { ChevronDownIcon } from '@modulz/radix-icons';
 
-const AccordionItem = styled(AccordionPrimitive.Item, {
-  borderTop: '1px solid $gray500',
-
-  '&:last-of-type': {
-    borderBottom: '1px solid $gray500',
-  },
+const Accordion = styled(AccordionPrimitive.Root, {
+  borderTop: '1px solid gainsboro',
 });
 
-const AccordionHeader = styled(AccordionPrimitive.Header, {
+const Item = styled(AccordionPrimitive.Item, {
+  borderBottom: '1px solid gainsboro',
+});
+
+const Header = styled(AccordionPrimitive.Header, {
   margin: 0,
   display: 'flex',
 });
 
-const AccordionButton = styled(AccordionPrimitive.Button, {
+const Button = styled(AccordionPrimitive.Button, {
   backgroundColor: 'transparent',
   border: 'none',
   padding: 10,
@@ -121,7 +235,7 @@ const AccordionButton = styled(AccordionPrimitive.Button, {
   justifyContent: 'space-between',
 });
 
-const AccordionPanel = styled(AccordionPrimitive.Panel, {
+const Panel = styled(AccordionPrimitive.Panel, {
   padding: 10,
 });
 
@@ -133,43 +247,37 @@ const AccordionChevron = styled(ChevronDownIcon, {
   },
 });
 
-render(
+export default () => (
   <AccordionPrimitive.Root>
-    <AccordionItem value="item-1">
-      <AccordionHeader>
-        <AccordionButton>
+    <Item value="item-1">
+      <Header>
+        <Button>
           Item 1
           <AccordionChevron aria-hidden />
-        </AccordionButton>
-      </AccordionHeader>
-      <AccordionPanel>
-        <div>Here goes the content for the accordion item 1.</div>
-      </AccordionPanel>
-    </AccordionItem>
+        </Button>
+      </Header>
+      <Panel>Here goes the content for the accordion item 1.</Panel>
+    </Item>
 
-    <AccordionItem value="item-2">
-      <AccordionHeader>
-        <AccordionButton>
+    <Item value="item-2">
+      <Header>
+        <Button>
           Item 2
           <AccordionChevron aria-hidden />
-        </AccordionButton>
-      </AccordionHeader>
-      <AccordionPanel>
-        <div>Here goes the content for the accordion item 2.</div>
-      </AccordionPanel>
-    </AccordionItem>
+        </Button>
+      </Header>
+      <Panel>Here goes the content for the accordion item 2.</Panel>
+    </Item>
 
-    <AccordionItem value="item-3">
-      <AccordionHeader>
-        <AccordionButton>
+    <Item value="item-3">
+      <Header>
+        <Button>
           Item 3
           <AccordionChevron aria-hidden />
-        </AccordionButton>
-      </AccordionHeader>
-      <AccordionPanel>
-        <div>Here goes the content for the accordion item 3.</div>
-      </AccordionPanel>
-    </AccordionItem>
+        </Button>
+      </Header>
+      <Panel>Here goes the content for the accordion item 3.</Panel>
+    </Item>
   </AccordionPrimitive.Root>
 );
 ```
@@ -177,24 +285,23 @@ render(
 #### Expanded by default
 
 ```jsx live manual compact
-// Accordion.tsx
-// import * as AccordionPrimitive from '@radix-ui/react-accordion';
-// import { ChevronDownIcon } from '@modulz/radix-icons';
+import * as AccordionPrimitive from '@radix-ui/react-accordion';
+import { ChevronDownIcon } from '@modulz/radix-icons';
 
-const AccordionItem = styled(AccordionPrimitive.Item, {
-  borderTop: '1px solid $gray500',
-
-  '&:last-of-type': {
-    borderBottom: '1px solid $gray500',
-  },
+const Accordion = styled(AccordionPrimitive.Root, {
+  borderTop: '1px solid gainsboro',
 });
 
-const AccordionHeader = styled(AccordionPrimitive.Header, {
+const Item = styled(AccordionPrimitive.Item, {
+  borderBottom: '1px solid gainsboro',
+});
+
+const Header = styled(AccordionPrimitive.Header, {
   margin: 0,
   display: 'flex',
 });
 
-const AccordionButton = styled(AccordionPrimitive.Button, {
+const Button = styled(AccordionPrimitive.Button, {
   backgroundColor: 'transparent',
   border: 'none',
   padding: 10,
@@ -204,7 +311,7 @@ const AccordionButton = styled(AccordionPrimitive.Button, {
   justifyContent: 'space-between',
 });
 
-const AccordionPanel = styled(AccordionPrimitive.Panel, {
+const Panel = styled(AccordionPrimitive.Panel, {
   padding: 10,
 });
 
@@ -216,43 +323,37 @@ const AccordionChevron = styled(ChevronDownIcon, {
   },
 });
 
-render(
+export default () => (
   <AccordionPrimitive.Root defaultValue="item-2">
-    <AccordionItem value="item-1">
-      <AccordionHeader>
-        <AccordionButton>
+    <Item value="item-1">
+      <Header>
+        <Button>
           Item 1
           <AccordionChevron aria-hidden />
-        </AccordionButton>
-      </AccordionHeader>
-      <AccordionPanel>
-        <div>Here goes the content for the accordion item 1.</div>
-      </AccordionPanel>
-    </AccordionItem>
+        </Button>
+      </Header>
+      <Panel>Here goes the content for the accordion item 1.</Panel>
+    </Item>
 
-    <AccordionItem value="item-2">
-      <AccordionHeader>
-        <AccordionButton>
+    <Item value="item-2">
+      <Header>
+        <Button>
           Item 2
           <AccordionChevron aria-hidden />
-        </AccordionButton>
-      </AccordionHeader>
-      <AccordionPanel>
-        <div>Here goes the content for the accordion item 2.</div>
-      </AccordionPanel>
-    </AccordionItem>
+        </Button>
+      </Header>
+      <Panel>Here goes the content for the accordion item 2.</Panel>
+    </Item>
 
-    <AccordionItem value="item-3">
-      <AccordionHeader>
-        <AccordionButton>
+    <Item value="item-3">
+      <Header>
+        <Button>
           Item 3
           <AccordionChevron aria-hidden />
-        </AccordionButton>
-      </AccordionHeader>
-      <AccordionPanel>
-        <div>Here goes the content for the accordion item 3.</div>
-      </AccordionPanel>
-    </AccordionItem>
+        </Button>
+      </Header>
+      <Panel>Here goes the content for the accordion item 3.</Panel>
+    </Item>
   </AccordionPrimitive.Root>
 );
 ```
@@ -260,29 +361,27 @@ render(
 #### Card styles
 
 ```jsx live manual compact
-// Accordion.tsx
-// import * as AccordionPrimitive from '@radix-ui/react-accordion';
-// import { ChevronDownIcon } from '@modulz/radix-icons';
+import * as AccordionPrimitive from '@radix-ui/react-accordion';
+import { ChevronDownIcon } from '@modulz/radix-icons';
 
-const AccordionItem = styled(AccordionPrimitive.Item, {
-  borderRadius: 6,
-  boxShadow:
-    'hsla(206,22%,7%,.15) 0px 5px 15px -5px, hsla(206,22%,7%,.1) 0px 5px 10px -15px',
-  border: '1px solid rgba(255, 255, 255, 0.1)',
-  marginBottom: 20,
-  padding: 10,
-
-  '&:last-of-type': {
-    marginBottom: 0,
-  },
+const Accordion = styled(AccordionPrimitive.Root, {
+  marginTop: 0,
 });
 
-const AccordionHeader = styled(AccordionPrimitive.Header, {
+const Item = styled(AccordionPrimitive.Item, {
+  borderRadius: 6,
+  boxShadow: '0px 5px 10px 0 hsla(206,22%,7%,.1) ',
+  border: '1px solid rgba(255, 255, 255, 0.1)',
+  marginTop: 20,
+  padding: 10,
+});
+
+const Header = styled(AccordionPrimitive.Header, {
   margin: 0,
   display: 'flex',
 });
 
-const AccordionButton = styled(AccordionPrimitive.Button, {
+const Button = styled(AccordionPrimitive.Button, {
   backgroundColor: 'transparent',
   border: 'none',
   padding: 10,
@@ -293,7 +392,7 @@ const AccordionButton = styled(AccordionPrimitive.Button, {
   fontWeight: 500,
 });
 
-const AccordionPanel = styled(AccordionPrimitive.Panel, {
+const Panel = styled(AccordionPrimitive.Panel, {
   padding: 10,
 });
 
@@ -305,44 +404,38 @@ const AccordionChevron = styled(ChevronDownIcon, {
   },
 });
 
-render(
-  <AccordionPrimitive.Root>
-    <AccordionItem value="item-1">
-      <AccordionHeader>
-        <AccordionButton>
+export default () => (
+  <Accordion>
+    <Item value="item-1">
+      <Header>
+        <Button>
           Item 1
           <AccordionChevron aria-hidden />
-        </AccordionButton>
-      </AccordionHeader>
-      <AccordionPanel>
-        <div>Here goes the content for the accordion item 1.</div>
-      </AccordionPanel>
-    </AccordionItem>
+        </Button>
+      </Header>
+      <Panel>Here goes the content for the accordion item 1.</Panel>
+    </Item>
 
-    <AccordionItem value="item-2">
-      <AccordionHeader>
-        <AccordionButton>
+    <Item value="item-2">
+      <Header>
+        <Button>
           Item 2
           <AccordionChevron aria-hidden />
-        </AccordionButton>
-      </AccordionHeader>
-      <AccordionPanel>
-        <div>Here goes the content for the accordion item 2.</div>
-      </AccordionPanel>
-    </AccordionItem>
+        </Button>
+      </Header>
+      <Panel>Here goes the content for the accordion item 2.</Panel>
+    </Item>
 
-    <AccordionItem value="item-3">
-      <AccordionHeader>
-        <AccordionButton>
+    <Item value="item-3">
+      <Header>
+        <Button>
           Item 3
           <AccordionChevron aria-hidden />
-        </AccordionButton>
-      </AccordionHeader>
-      <AccordionPanel>
-        <div>Here goes the content for the accordion item 3.</div>
-      </AccordionPanel>
-    </AccordionItem>
-  </AccordionPrimitive.Root>
+        </Button>
+      </Header>
+      <Panel>Here goes the content for the accordion item 3.</Panel>
+    </Item>
+  </Accordion>
 );
 ```
 
@@ -358,8 +451,8 @@ Adheres to the [accordion WAI-ARIA design pattern](https://www.w3.org/TR/wai-ari
       keys: ['Space'],
       description: (
         <span>
-          When focus is on a <Code>Button</Code> of a collapsed section, expands
-          the section.
+          When focus is on a <Code>Button</Code> of a collapsed
+          section, expands the section.
         </span>
       ),
     },
@@ -367,8 +460,8 @@ Adheres to the [accordion WAI-ARIA design pattern](https://www.w3.org/TR/wai-ari
       keys: ['Enter'],
       description: (
         <span>
-          When focus is on a <Code>Button</Code> of a collapsed section, expands
-          the section.
+          When focus is on a <Code>Button</Code> of a collapsed
+          section, expands the section.
         </span>
       ),
     },
@@ -387,16 +480,16 @@ Adheres to the [accordion WAI-ARIA design pattern](https://www.w3.org/TR/wai-ari
     {
       keys: ['ArrowDown'],
       description: (
-        <span>Moves focus to the next {' '}
-          <Code>Button</Code>.
+        <span>
+          Moves focus to the next <Code>Button</Code>.
         </span>
       ),
     },
     {
       keys: ['ArrowUp'],
       description: (
-        <span>Moves focus to the previous {' '}
-          <Code>Button</Code>.
+        <span>
+          Moves focus to the previous <Code>Button</Code>.
         </span>
       ),
     },
@@ -404,8 +497,8 @@ Adheres to the [accordion WAI-ARIA design pattern](https://www.w3.org/TR/wai-ari
       keys: ['Home'],
       description: (
         <span>
-          When focus is on a <Code>Button</Code>, moves focus to the first{' '}
-          <Code>Button</Code>.
+          When focus is on a <Code>Button</Code>, moves focus to the
+          first <Code>Button</Code>.
         </span>
       ),
     },
@@ -413,112 +506,10 @@ Adheres to the [accordion WAI-ARIA design pattern](https://www.w3.org/TR/wai-ari
       keys: ['End'],
       description: (
         <span>
-          When focus is on a <Code>Button</Code>, moves focus to the last{' '}
-          <Code>Button</Code>.
+          When focus is on a <Code>Button</Code>, moves focus to the
+          last <Code>Button</Code>.
         </span>
       ),
     },
   ]}
 />
-
-### API Reference
-
-#### Accordion
-
-`Accordion` is the root component.
-
-<PropsTable
-  data={[
-    {
-      name: 'value',
-      required: false,
-      type: 'string',
-      description: (
-        <span>
-          The controlled value of the <Code>Item</Code> whose panel is expanded.
-          Must be used in conjunction with <Code>onValueChange</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'defaultValue',
-      required: false,
-      type: 'string',
-      description: (
-        <span>
-          The value of the <Code>Item</Code> whose panel is expanded when the{' '}
-          <Code>Accordion</Code> is initially rendered. Use{' '}
-          <Code>defaultValue</Code> if you do not need to control the state of
-          an <Code>Accordion</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'disabled',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <span>
-          Whether or not an <Code>Accordion</Code> is disabled from user
-          interaction.
-        </span>
-      ),
-    },
-    {
-      name: 'onValueChange',
-      required: false,
-      type: '(value: string) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          The callback that fires when the state of the <Code>Accordion</Code>{' '}
-          changes.
-        </span>
-      ),
-    },
-  ]}
-/>
-
-#### Item
-
-`AccordionItem` contains all of the parts of a collapsible section inside of an `Accordion`.
-
-<PropsTable
-  data={[
-    {
-      name: 'disabled',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <span>
-          Whether or not an <Code>Item</Code> is disabled from user interaction.
-        </span>
-      ),
-    },
-    {
-      name: 'value',
-      required: true,
-      type: 'string',
-      description: (
-        <span>
-          A string value for the <Code>Item</Code>. All items within an{' '}
-          <Code>Accordion</Code> should use a unique value.
-        </span>
-      ),
-    },
-  ]}
-/>
-
-#### Header
-
-`AccordionHeader` wraps the `AccordionButton` and will be an `h2` by default. Use the `as` prop to update it to the appropriate heading level for your page.
-
-#### Button
-
-`AccordionButton` toggles the collapsed state of an `AccordionItem`. It should always be nested inside of an `AccordionHeader`.
-
-#### Panel
-
-`AccordionPanel` contains the collapsible content for an `AccordionItem`.
