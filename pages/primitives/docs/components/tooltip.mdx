@@ -16,20 +16,37 @@ Install the component from your command line.
 npm install @radix-ui/react-tooltip
 ```
 
-Then import the component in your component file.
+### Anatomy
+
+Import the components and piece the parts together.
 
 ```jsx
-// Tooltip.tsx
-import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+import {
+  Tooltip,
+  Trigger,
+  Content,
+  Arrow,
+} from '@radix-ui/react-switch';
+
+export default () => (
+  <Tooltip>
+    <Trigger />
+    <Content />
+    <Arrow />
+  </Tooltip>
+);
 ```
 
 ### Basic example
 
+Create your styled tooltip component from the primitive parts.
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
+
 ```jsx live manual
-// Tooltip.tsx
-// import * as TooltipPrimitive from '@radix-ui/react-tooltip';
-// import { IconButton } from '@radix-ui/ds-button'
-// import { BlendingModeIcon } from '@modulz/radix-icons'
+// import { styled } from 'path-to/stitches.config';
+import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+import { BlendingModeIcon } from '@modulz/radix-icons';
 
 const TooltipContent = styled(TooltipPrimitive.Content, {
   borderRadius: 3,
@@ -39,55 +56,26 @@ const TooltipContent = styled(TooltipPrimitive.Content, {
   color: 'black',
 });
 
-render(
+const Arrow = styled(TooltipPrimitive.Arrow, {
+  fill: 'gainsboro',
+});
+
+export default () => (
   <TooltipPrimitive.Root>
-    <TooltipPrimitive.Trigger as={IconButton}>
+    <TooltipPrimitive.Trigger>
       <BlendingModeIcon aria-label="Blending mode" />
     </TooltipPrimitive.Trigger>
     <TooltipContent>
       Blending mode
-      <TooltipPrimitive.Arrow style={{ fill: 'gainsboro' }} />
+      <Arrow />
     </TooltipContent>
   </TooltipPrimitive.Root>
 );
 ```
 
-### Accessibility
-
-#### Keyboard Interactions
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['Tab'],
-      description: (
-        <ul>
-          <li>
-            When focus moves to <Code>Trigger</Code>, opens <Code>Content</Code>{' '}
-            without delay.
-          </li>
-          <li>
-            When focus moves from <Code>Trigger</Code>, closes{' '}
-            <Code>Content</Code> without delay.
-          </li>
-        </ul>
-      ),
-    },
-    {
-      keys: ['Space', 'Enter'],
-      description: (
-        <span>
-          If <Code>Content</Code> is open, closes <Code>Content</Code> without
-          delay.
-        </span>
-      ),
-    },
-  ]}
-/>
-
 ### API Reference
 
-#### Tooltip
+####
 
 `Tooltip` is the root component.
 
@@ -98,9 +86,9 @@ render(
       type: 'boolean',
       description: (
         <span>
-          The open state of the <Code>Tooltip</Code> when it is initially
-          rendered. Use <Code>defaultOpen</Code> if you do not need to control
-          the state of an <Code>Tooltip</Code>.
+          The open state of the <Code>Tooltip</Code> when it is
+          initially rendered. Use <Code>defaultOpen</Code> if you do
+          not need to control the state of an <Code>Tooltip</Code>.
         </span>
       ),
     },
@@ -109,8 +97,8 @@ render(
       type: 'boolean',
       description: (
         <span>
-          The controlled open state of the <Code>Tooltip</Code>. Must be used in
-          conjunction with <Code>onOpenChange</Code>.
+          The controlled open state of the <Code>Tooltip</Code>. Must
+          be used in conjunction with <Code>onOpenChange</Code>.
         </span>
       ),
     },
@@ -128,11 +116,11 @@ render(
   ]}
 />
 
-#### TooltipTrigger
+#### Trigger
 
 The button that triggers the `Tooltip`. It is also used as the anchor the `TooltipContent` is positioned against.
 
-#### TooltipContent
+#### Content
 
 The component that pops out in an open `Tooltip`.
 
@@ -144,9 +132,9 @@ The component that pops out in an open `Tooltip`.
       description: (
         <span>
           By default, screenreaders will announce the content inside{' '}
-          <Code>Content</Code>. If this is not descriptive enough, or you have
-          content that cannot be announced, use <Code>aria-label</Code> as a
-          more descriptive label .
+          <Code>Content</Code>. If this is not descriptive enough, or
+          you have content that cannot be announced, use{' '}
+          <Code>aria-label</Code> as a more descriptive label .
         </span>
       ),
     },
@@ -167,9 +155,9 @@ The component that pops out in an open `Tooltip`.
       typeSimple: 'ref',
       description: (
         <span>
-          An optional ref to an element to be used as the anchor for the{' '}
-          <Code>Content</Code>. By default, it will use <Code>Trigger</Code> as
-          anchor element.
+          An optional ref to an element to be used as the anchor for
+          the <Code>Content</Code>. By default, it will use{' '}
+          <Code>Trigger</Code> as anchor element.
         </span>
       ),
     },
@@ -202,8 +190,8 @@ The component that pops out in an open `Tooltip`.
       default: '"center"',
       description: (
         <span>
-          How to align the <Code>Content</Code> against <Code>Trigger</Code>.
-          May switch in case of collisions.
+          How to align the <Code>Content</Code> against{' '}
+          <Code>Trigger</Code>. May switch in case of collisions.
         </span>
       ),
     },
@@ -223,9 +211,10 @@ The component that pops out in an open `Tooltip`.
       default: 'true',
       description: (
         <span>
-          Whether or not collisions with window edges should be avoided. When
-          turned on, this will result in the <Code>Content</Code> flipping its
-          side and alignment accordingly.
+          Whether or not collisions with window edges should be
+          avoided. When turned on, this will result in the{' '}
+          <Code>Content</Code> flipping its side and alignment
+          accordingly.
         </span>
       ),
     },
@@ -235,15 +224,15 @@ The component that pops out in an open `Tooltip`.
       default: '0',
       description: (
         <span>
-          The tolerance within which the <Code>Content</Code> is to be checked
-          against window edges.
+          The tolerance within which the <Code>Content</Code> is to be
+          checked against window edges.
         </span>
       ),
     },
   ]}
 />
 
-#### TooltipArrow
+#### Arrow
 
 The optional arrow element to render for the `Tooltip`. This can be used to help visually link the `TooltipTrigger` with the `TooltipContent`. Must live inside `TooltipContent`.
 
@@ -277,6 +266,39 @@ The optional arrow element to render for the `Tooltip`. This can be used to help
         <span>
           The offset of the `<Code>Arrow</Code> along the edge of{' '}
           <Code>Content</Code>.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### Accessibility
+
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Tab'],
+      description: (
+        <ul>
+          <li>
+            When focus moves to <Code>Trigger</Code>, opens{' '}
+            <Code>Content</Code> without delay.
+          </li>
+          <li>
+            When focus moves from <Code>Trigger</Code>, closes{' '}
+            <Code>Content</Code> without delay.
+          </li>
+        </ul>
+      ),
+    },
+    {
+      keys: ['Space', 'Enter'],
+      description: (
+        <span>
+          If <Code>Content</Code> is open, closes <Code>Content</Code>{' '}
+          without delay.
         </span>
       ),
     },
