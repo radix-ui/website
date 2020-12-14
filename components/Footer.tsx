@@ -71,7 +71,11 @@ export const Footer = () => {
                 bp2: { mt: '$5', ml: '0' },
               }}
             >
-              Radix is maintained by <Link variant="subtle" href="https://modulz.app">Modulz</Link>.
+              Radix is maintained by{' '}
+              <Link variant="subtle" href="https://modulz.app">
+                Modulz
+              </Link>
+              .
             </Text>
           </Flex>
           <Box>
@@ -116,8 +120,8 @@ export const Footer = () => {
             <ul>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/docs/installation" passHref>
-                    <Link variant="subtle">Installation</Link>
+                  <NextLink href="/docs/introduction" passHref>
+                    <Link variant="subtle">Introduction</Link>
                   </NextLink>
                 </Text>
               </li>
