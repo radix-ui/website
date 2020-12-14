@@ -1,20 +1,30 @@
 import React from 'react';
-import { Box, styled, css } from '@modulz/design-system';
-
-const anim = css.keyframes({
-  '0%': { transform: 'scale(1)' },
-  '50%': { transform: 'scale(2)' },
-  '100%': { transform: 'scale(1)' },
-});
+import { Box, Text, Flex, styled, css } from '@modulz/design-system';
 
 const AvatarSkeleton = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   height: '45px',
   width: '45px',
-  borderRadius: '999px',
+  borderRadius: '50%',
   backgroundColor: 'white',
-  animation: `${anim} 1000ms infinite`,
+  mx: '$2',
+  // animation: `${anim} 1000ms infinite`,
 });
 
 export function AvatarHero() {
-  return <AvatarSkeleton />;
+  return (
+    <Flex>
+      <AvatarSkeleton>
+        <Text size="5" color="gray" css={{ fontWeight: 500, letterSpacing: '-.5px' }}>CT</Text>
+      </AvatarSkeleton>
+      <AvatarSkeleton>
+        <Text size="5" color="gray" css={{ fontWeight: 500, letterSpacing: '-.5px' }}>AV</Text>
+      </AvatarSkeleton>
+      <AvatarSkeleton>
+        <Text size="5" color="gray" css={{ fontWeight: 500, letterSpacing: '-.5px' }}>PD</Text>
+      </AvatarSkeleton>
+    </Flex>
+  );
 }
