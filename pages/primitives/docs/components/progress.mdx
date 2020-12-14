@@ -1,8 +1,8 @@
 ---
-title: Progress Bar
-name: progress-bar
+title: Progress
+name: progress
 version: 0.0.1-13
-description: Useful to display the progress status for given task.
+description: Displays an indicator showing the completion progress of a task, typically displayed as a progress .
 features:
   - Provides context for assistive technology to read the progress of a task.
 ---
@@ -18,23 +18,23 @@ import { ProgressHero } from '../../../../components/Hero/ProgressHero';
 Install the component from your command line.
 
 ```bash
-npm install @radix-ui/react-progress-bar
+npm install @radix-ui/react-progress
 ```
 
 Then import the component in your component file.
 
 ```jsx
-// ProgressBar.tsx
-import * as ProgressBarPrimitive from '@radix-ui/react-progress-bar';
+// Progress.tsx
+import * as ProgressPrimitive from '@radix-ui/react-progress';
 ```
 
 ### Basic example
 
 ```jsx live manual
-// ProgressBar.tsx
-// import * as ProgressBarPrimitive from '@radix-ui/react-progress-bar';
+// Progress.tsx
+// import * as ProgressPrimitive from '@radix-ui/react-progress';
 
-const ProgressBar = styled(ProgressBarPrimitive.Root, {
+const Progress = styled(ProgressPrimitive.Root, {
   position: 'relative',
   height: 10,
   overflow: 'hidden',
@@ -42,7 +42,7 @@ const ProgressBar = styled(ProgressBarPrimitive.Root, {
   background: 'gainsboro',
 });
 
-const ProgressBarIndicator = styled(ProgressBarPrimitive.Indicator, {
+const ProgressIndicator = styled(ProgressPrimitive.Indicator, {
   boxSizing: 'border-box',
   position: 'absolute',
   backgroundColor: 'dodgerblue',
@@ -50,17 +50,17 @@ const ProgressBarIndicator = styled(ProgressBarPrimitive.Indicator, {
 });
 
 render(
-  <ProgressBar value={50}>
-    <ProgressBarIndicator style={{ width: '50%' }} />
-  </ProgressBar>
+  <Progress value={50}>
+    <ProgressIndicator style={{ width: '50%' }} />
+  </Progress>
 );
 ```
 
 ### API Reference
 
-#### ProgressBar
+#### Progress
 
-`ProgressBar` is the root component.
+`Progress` is the root component.
 
 <PropsTable
   data={[
@@ -69,7 +69,7 @@ render(
       type: 'number | null',
       description: (
         <span>
-          The value of the <Code>ProgressBar</Code>
+          The value of the <Code>Progress</Code>
         </span>
       ),
     },
@@ -78,7 +78,7 @@ render(
       type: 'number',
       description: (
         <span>
-          The maximum value the <Code>ProgressBar</Code> can reach.
+          The maximum value the <Code>Progress</Code> can reach.
         </span>
       ),
     },
@@ -92,6 +92,6 @@ render(
   ]}
 />
 
-#### ProgressBarIndicator
+#### Indicator
 
 Used to show the progress visually. It also makes progress accessible to assistive technologies.
