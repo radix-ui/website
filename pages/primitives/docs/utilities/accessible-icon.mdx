@@ -16,29 +16,30 @@ Install the component from your command line.
 npm install @radix-ui/react-accessible-icon
 ```
 
-Then import the component in your component file.
+### Anatomy
+
+Import the components and piece the parts together.
 
 ```jsx
-import * as AccessibleIconPrimitive from '@radix-ui/react-accessible-icon';
+import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
+
+export default () => <AccessibleIcon />;
 ```
 
 ### Basic example
 
-```jsx live manual
-// CloseIcon.tsx
-// import * as AccessibleIconPrimitive from '@radix-ui/react-accessible-icon';
-// import { CrossCircledIcon } from '@modulz/radix-icons';
+Create your styled accessible icon component from the primitive.
 
-render(
+```jsx live manual
+import * as AccessibleIconPrimitive from '@radix-ui/react-accessible-icon';
+import { CrossCircledIcon } from '@modulz/radix-icons';
+
+export default () => (
   <AccessibleIconPrimitive.Root label="Close">
     <CrossCircledIcon />
   </AccessibleIconPrimitive.Root>
 );
 ```
-
-### Accessibility
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
 ### API Reference
 
@@ -54,12 +55,16 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
       type: 'string',
       description: (
         <span>
-          The accessible label for the icon. This label will be visually hidden
-          but announced to screen reader users, similar to <Code>alt</Code> text
-          for <Code>img</Code>
+          The accessible label for the icon. This label will be
+          visually hidden but announced to screen reader users,
+          similar to <Code>alt</Code> text for <Code>img</Code>
           tags.
         </span>
       ),
     },
   ]}
 />
+
+### Accessibility
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
