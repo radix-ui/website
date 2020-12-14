@@ -13,43 +13,30 @@ Install the component from your command line.
 npm install @radix-ui/react-aspect-ratio
 ```
 
-Then import the component in your component file.
+### Anatomy
+
+Import the components and piece the parts together.
 
 ```jsx
-// Avatar.tsx
-import * as AspectRatioPrimitive from '@radix-ui/react-aspect-ratio';
+import { AspectRatio } from '@radix-ui/react-aspect-ratio';
+
+export default () => (
+  <AspectRatio/>>
+);
 ```
 
 ### Basic example
 
-```jsx live manual
-// AspectRatio.tsx
-// import * as AspectRatioPrimitive from '@radix-ui/react-aspect-ratio';
+Create your aspect ratio component from the primitive.
 
-render(
+```jsx live manual
+import * as AspectRatioPrimitive from '@radix-ui/react-aspect-ratio';
+
+export default () => (
   <AspectRatioPrimitive.Root>
     <img
       src="https://images.unsplash.com/photo-1605030753481-bb38b08c384a?&auto=format&fit=crop&w=800&q=80"
       alt="mountain view"
-    />
-  </AspectRatioPrimitive.Root>
-);
-```
-
-### Examples
-
-#### 16 x 9 ratio
-
-```jsx live manual compact
-// AspectRatio.tsx
-// import * as AspectRatioPrimitive from '@radix-ui/react-aspect-ratio';
-
-render(
-  <AspectRatioPrimitive.Root ratio={16 / 9}>
-    <img
-      src="https://images.unsplash.com/photo-1605030753481-bb38b08c384a?&auto=format&fit=crop&w=800&q=80"
-      alt="mountain view"
-      style={{ objectFit: 'cover', width: '100%', height: '100%' }}
     />
   </AspectRatioPrimitive.Root>
 );
@@ -71,3 +58,21 @@ render(
     },
   ]}
 />
+
+### Examples
+
+#### 16 x 9 ratio
+
+```jsx live manual compact
+import * as AspectRatioPrimitive from '@radix-ui/react-aspect-ratio';
+
+export default () => (
+  <AspectRatioPrimitive.Root ratio={16 / 9}>
+    <img
+      src="https://images.unsplash.com/photo-1605030753481-bb38b08c384a?&auto=format&fit=crop&w=800&q=80"
+      alt="mountain view"
+      style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+    />
+  </AspectRatioPrimitive.Root>
+);
+```
