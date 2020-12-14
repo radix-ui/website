@@ -34,6 +34,7 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
   const router = useRouter();
   const productType = useProductType();
   const heroSlotRef = React.useRef<HTMLDivElement>(null);
+  const [, , , categoryType] = router.pathname.split('/');
 
   let allProductPages: FrontMatter[];
   if (productType === 'primitives') {
@@ -78,24 +79,28 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
 
         <Subtitle css={{ mt: '$2', mb: '$7' }}>{frontMatter.description}</Subtitle>
 
-        <div ref={heroSlotRef} />
+        {categoryType !== 'overview' && (
+          <>
+            <div ref={heroSlotRef} />
 
-        <Flex>
-          <Box css={{ flex: '1 1 100%', mr: '$5' }}>
-            {Boolean(frontMatter.features) && (
-              <FeatureList>
-                {frontMatter.features.map((feature, i) => (
-                  <Feature key={i}>{feature}</Feature>
-                ))}
-              </FeatureList>
-            )}
-          </Box>
-          <ComponentInfo
-            version={frontMatter.version}
-            name={frontMatter.name}
-            aria={frontMatter.aria}
-          />
-        </Flex>
+            <Flex>
+              <Box css={{ flex: '1 1 100%', mr: '$5' }}>
+                {Boolean(frontMatter.features) && (
+                  <FeatureList>
+                    {frontMatter.features.map((feature, i) => (
+                      <Feature key={i}>{feature}</Feature>
+                    ))}
+                  </FeatureList>
+                )}
+              </Box>
+              <ComponentInfo
+                version={frontMatter.version}
+                name={frontMatter.name}
+                aria={frontMatter.aria}
+              />
+            </Flex>
+          </>
+        )}
 
         <HeroContext.Provider value={heroSlotRef}>
           <Box>{children}</Box>
@@ -292,7 +297,9 @@ function QuickNav() {
 const ComponentInfo = ({ version, name, aria }) => (
   <Box css={{ flex: 0, width: '30%' }}>
     <Flex css={{ mb: '$4', alignItems: 'baseline' }}>
-      <Text size="2" css={{ fontWeight: 500, mr: '$1' }}>Version:</Text>
+      <Text size="2" css={{ fontWeight: 500, mr: '$1' }}>
+        Version:
+      </Text>
       <Text size="2" color="gray" css={{ fontFamily: '$mono' }}>
         v{version}
       </Text>
@@ -305,7 +312,9 @@ const ComponentInfo = ({ version, name, aria }) => (
         target="_blank"
       >
         <Flex css={{ display: 'inline-flex', position: 'relative' }}>
-          <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>View on Github</Text>
+          <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
+            View on Github
+          </Text>
           <Box css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
             <ExternalIcon />
           </Box>
@@ -319,7 +328,9 @@ const ComponentInfo = ({ version, name, aria }) => (
         target="_blank"
       >
         <Flex css={{ display: 'inline-flex', position: 'relative' }}>
-          <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>View on npm</Text>
+          <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
+            View on npm
+          </Text>
           <Box css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
             <ExternalIcon />
           </Box>
@@ -330,7 +341,9 @@ const ComponentInfo = ({ version, name, aria }) => (
       <Box css={{ mb: '$2' }}>
         <Link variant="blue" href={aria} target="_blank">
           <Flex css={{ display: 'inline-flex', position: 'relative' }}>
-            <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>ARIA design pattern</Text>
+            <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
+              ARIA design pattern
+            </Text>
             <Box css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
               <ExternalIcon />
             </Box>
