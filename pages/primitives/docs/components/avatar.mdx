@@ -2,7 +2,7 @@
 title: Avatar
 name: avatar
 version: 0.0.1-13
-description: Useful for presenting profile images and initials.
+description: An image element with a fallback for representing the user.
 features:
   - Automatic and manual control over when the image renders.
   - Fallback part accepts any children.
@@ -242,9 +242,9 @@ render(
 
 `Avatar` is the root component.
 
-#### AvatarImage
+#### Image
 
-The image to render. By default `AvatarImage` will only render when it has actually been loaded. You can use the `onLoadingStatusChange` handler if you need finer control.
+`AvatarImage` is image to render. By default `AvatarImage` will only render when it has actually been loaded. You can use the `onLoadingStatusChange` handler if you need finer control.
 
 <PropsTable
   data={[
@@ -258,9 +258,9 @@ The image to render. By default `AvatarImage` will only render when it has actua
   ]}
 />
 
-#### AvatarFallback
+#### Fallback
 
-The fallback element. It will only render anytime `AvatarImage` hasn't loaded. This means whilst it's loading, or if there was an error. If you don't want it to flash quickly whilst it's loading, you can provide a `delayMs` prop which will delay its rendering a bit. Otherwise, if you need finer control you can use the `onLoadingStatusChange` handler on `AvatarImage`.
+`AvatarFallback` provides a fallback element that will only render anytime `AvatarImage` hasn't loaded. This means whilst it's loading, or if there was an error. If you don't want it to flash quickly whilst it's loading, you can provide a `delayMs` prop which will delay its rendering a bit. Otherwise, if you need finer control you can use the `onLoadingStatusChange` handler on `AvatarImage`.
 
 <PropsTable
   data={[
