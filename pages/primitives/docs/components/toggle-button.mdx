@@ -17,18 +17,25 @@ Install the component from your command line.
 npm install @radix-ui/react-toggle-button
 ```
 
-Then import the component in your component file.
+### Anatomy
+
+Import the components and piece the parts together.
 
 ```jsx
-// ToggleButton.tsx
-import * as ToggleButtonPrimitive from '@radix-ui/react-toggle-button';
+import { ToggleButton } from '@radix-ui/react-toggle-buton';
+
+export default () => <ToggleButton />;
 ```
 
 ### Basic example
 
+Create your styled toggle button component from the primitive parts.
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
+
 ```jsx live manual
-// ToggleButton.tsx
-// import * as ToggleButtonPrimitive from '@radix-ui/react-toggle-button';
+// import { styled } from 'path-to/stitches.config';
+import * as ToggleButtonPrimitive from '@radix-ui/react-toggle-button';
 
 const ToggleButton = styled(ToggleButtonPrimitive.Root, {
   appearance: 'none',
@@ -49,30 +56,12 @@ const ToggleButton = styled(ToggleButtonPrimitive.Root, {
   },
 });
 
-render(<ToggleButton>Togggle</ToggleButton>);
+export default () => (
+  <>
+    <ToggleButton>Togggle</ToggleButton>
+  </>
+);
 ```
-
-### Accessibility
-
-#### Keyboard Interactions
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['Space', 'Enter'],
-      description: (
-        <ul>
-          <li>
-            When deactivated, activates <Code>ToggleButton</Code>.
-          </li>
-          <li>
-            When activated, deactivates <Code>ToggleButton</Code>.
-          </li>
-        </ul>
-      ),
-    },
-  ]}
-/>
 
 ### API Reference
 
@@ -87,9 +76,10 @@ render(<ToggleButton>Togggle</ToggleButton>);
       type: 'boolean',
       description: (
         <span>
-          The checked state of the <Code>ToggleButton</Code> when it is
-          initially rendered. Use <Code>defaultToggled</Code> if you do not need
-          to control the state of the <Code>ToggleButton</Code>.
+          The checked state of the <Code>ToggleButton</Code> when it
+          is initially rendered. Use <Code>defaultToggled</Code> if
+          you do not need to control the state of the{' '}
+          <Code>ToggleButton</Code>.
         </span>
       ),
     },
@@ -98,8 +88,9 @@ render(<ToggleButton>Togggle</ToggleButton>);
       type: 'boolean',
       description: (
         <span>
-          The controlled checked state of the <Code>ToggleButton</Code>. Must be
-          used in conjunction with <Code>onToggle</Code>.
+          The controlled checked state of the{' '}
+          <Code>ToggleButton</Code>. Must be used in conjunction with{' '}
+          <Code>onToggle</Code>.
         </span>
       ),
     },
@@ -121,6 +112,28 @@ render(<ToggleButton>Togggle</ToggleButton>);
         <span>
           Whether or not the <Code>ToggleButton</Code> is disabled.
         </span>
+      ),
+    },
+  ]}
+/>
+
+### Accessibility
+
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space', 'Enter'],
+      description: (
+        <ul>
+          <li>
+            When deactivated, activates <Code>ToggleButton</Code>.
+          </li>
+          <li>
+            When activated, deactivates <Code>ToggleButton</Code>.
+          </li>
+        </ul>
       ),
     },
   ]}
