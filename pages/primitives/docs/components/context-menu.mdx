@@ -65,7 +65,12 @@ export default () => (
 
 ### Basic example
 
+Create your styled context menu component from the primitive parts.
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
+
 ```jsx live manual
+// import { stitches } from 'path-to/stitches.config';
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 
 const Content = styled(ContextMenuPrimitive.Content, {
@@ -94,21 +99,20 @@ export default () => (
     <ContextMenuPrimitive.Trigger>
       <div
         style={{
-          display: 'block',
-          textAlign: 'center',
+          backgroundColor: 'gainsboro',
           padding: 100,
-          backgroundColor: 'slategray',
+          textAlign: 'center',
         }}
       >
-        Right click anywhere here
+        Right click anywhere
       </div>
     </ContextMenuPrimitive.Trigger>
-    <Content sideOffset={-5}>
-      <MenuItem onSelect={() => {}}>Undo</MenuItem>
-      <MenuItem onSelect={() => {}}>Redo</MenuItem>
-      <MenuItem onSelect={() => {}}>Cut</MenuItem>
-      <MenuItem onSelect={() => {}}>Copy</MenuItem>
-      <MenuItem onSelect={() => {}}>Paste</MenuItem>
+    <Content>
+      <MenuItem>Undo</MenuItem>
+      <MenuItem>Redo</MenuItem>
+      <MenuItem>Cut</MenuItem>
+      <MenuItem>Copy</MenuItem>
+      <MenuItem>Paste</MenuItem>
     </Content>
   </ContextMenuPrimitive.Root>
 );

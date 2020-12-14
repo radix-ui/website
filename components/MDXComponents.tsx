@@ -69,27 +69,28 @@ export const MDXComponents = {
   ),
   p: (props) => <DS.Paragraph {...props} css={{ mb: '$3', ...props.css }} as="p" />,
   a: ({ href = '', ...props }) => {
-    if (href.startsWith('/')) {
+    if (href.startsWith('http')) {
       return (
-        <NextLink href={href} passHref>
-          <DS.Link
-            {...props}
-            css={{
-              color: 'inherit',
-              fontSize: 'inherit',
-              ...props.css,
-            }}
-          />
-        </NextLink>
+        <DS.Link
+          variant="blue"
+          href={href}
+          {...props}
+          css={{
+            fontSize: 'inherit',
+            ...props.css,
+          }}
+          target="_blank"
+          rel="noopener"
+        />
       );
     }
     if (href.startsWith('#')) {
       return (
         <DS.Link
           {...props}
+          variant="blue"
           href={href}
           css={{
-            color: 'inherit',
             fontSize: 'inherit',
             ...props.css,
           }}
@@ -97,17 +98,16 @@ export const MDXComponents = {
       );
     }
     return (
-      <DS.Link
-        variant="blue"
-        href={href}
-        {...props}
-        css={{
-          fontSize: 'inherit',
-          ...props.css,
-        }}
-        target="_blank"
-        rel="noopener"
-      />
+      <NextLink href={href} passHref>
+        <DS.Link
+          {...props}
+          variant="blue"
+          css={{
+            fontSize: 'inherit',
+            ...props.css,
+          }}
+        />
+      </NextLink>
     );
   },
   hr: (props) => <DS.Separator size="2" {...props} css={{ my: '$6', mx: 'auto', ...props.css }} />,

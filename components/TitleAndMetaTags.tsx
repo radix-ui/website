@@ -54,15 +54,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1;
-	font-family: var(--fonts-untitled);
-	text-align: inherit;
-	font-size: initial;
-	color: var(--colors-hiContrast);
+  font-family: var(--fonts-untitled);
 }
 
 
 h1, h2, h3, h4, h5, strong {
-	font-weight: 500;
+  font-weight: 500;
 }
 
 svg {
@@ -77,7 +74,7 @@ svg {
 
 img {
   vertical-align: middle;
-	max-width: 100%;
+  max-width: 100%;
 }
 
 pre {

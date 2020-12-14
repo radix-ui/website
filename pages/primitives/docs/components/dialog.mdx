@@ -44,10 +44,13 @@ export default () => (
 
 Create your styled dialog component from the dialog primitives.
 
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
+
 ```jsx live manual
+// import { stitches } from 'path-to/stitches.config';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 
-const Overlay = styled(DialogPrimitive.DialogOverlay, {
+const Overlay = styled(DialogPrimitive.Overlay, {
   backgroundColor: 'rgba(0, 0, 0, .15)',
   position: 'fixed',
   top: 0,
@@ -56,7 +59,7 @@ const Overlay = styled(DialogPrimitive.DialogOverlay, {
   left: 0,
 });
 
-const Content = styled(DialogPrimitive.DialogContent, {
+const Content = styled(DialogPrimitive.Content, {
   position: 'fixed',
   top: '50%',
   left: '50%',
@@ -74,15 +77,13 @@ const Content = styled(DialogPrimitive.DialogContent, {
   },
 });
 
-render(
+export default () => (
   <DialogPrimitive.Root>
-    <DialogPrimitive.DialogTrigger>
-      Open
-    </DialogPrimitive.DialogTrigger>
+    <DialogPrimitive.Trigger>Open</DialogPrimitive.Trigger>
     <Overlay />
     <Content>
       <p>Dialog content</p>
-      <DialogPrimitive.DialogClose>Close</DialogPrimitive.DialogClose>
+      <DialogPrimitive.Close>Close</DialogPrimitive.Close>
     </Content>
   </DialogPrimitive.Root>
 );
