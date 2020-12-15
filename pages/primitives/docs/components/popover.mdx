@@ -424,7 +424,7 @@ The button that closes an open popover.
 
 ### Origin-aware animations
 
-We expose a CSS custom property `--radix-popover-content-transform-origin` which you can use to animate the popover from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
+We expose a CSS custom property `--radix-popover-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
 ```jsx
 const scaleIn = css.keyframes({
@@ -440,7 +440,7 @@ const StyledContent = styled(Popover.Content, {
 
 ### Collision-aware animations
 
-We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions so they can be used to create collision and direction-aware animations.
+We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
 
 ```jsx
 const slideDown = css.keyframes({
