@@ -14,6 +14,10 @@ export const getPageById = (id: string) => {
 
 const allPages: FrontMatter[] = frontMatter;
 
+export function getPagesByNavGroup(group: string): FrontMatter[] {
+  return allPages.filter((page) => page.navGroup === group).sort(sortByNavRank);
+}
+
 export const overviewPages: FrontMatter[] = allPages
   .filter((page) => page.id.includes('/overview/'))
   .sort(sortByNavRank);

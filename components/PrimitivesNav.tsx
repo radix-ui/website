@@ -3,21 +3,18 @@ import { useRouter } from 'next/router';
 import { Box, Separator } from '@modulz/design-system';
 import { NavHeading } from './NavHeading';
 import { NavItem, NavItemBadge } from './NavItem';
-import { overviewPages, componentsPages, utilitiesPages } from '../utils/primitives';
+import { utilitiesPages, getPagesByNavGroup } from '../utils/primitives';
 
 export function PrimitivesNav() {
   const router = useRouter();
 
   return (
-    <Box css={{ mt: '$1'}}>
+    <Box css={{ mt: '$1' }}>
       <NavHeading>Primitives</NavHeading>
       <Box css={{ mt: '$2', mb: '$4' }}>
         <NavHeading>Overview</NavHeading>
-        {overviewPages.map((page) => (
-          <NavItem
-            key={page.id}
-            href={`/${page.id}`}
-            active={router.pathname === `/${page.id}`}>
+        {getPagesByNavGroup('overview').map((page) => (
+          <NavItem key={page.id} href={`/${page.id}`} active={router.pathname === `/${page.id}`}>
             {page.title}
           </NavItem>
         ))}
@@ -25,7 +22,7 @@ export function PrimitivesNav() {
 
       <Box css={{ mb: '$4' }}>
         <NavHeading>Components</NavHeading>
-        {componentsPages.map((page) => (
+        {getPagesByNavGroup('components').map((page) => (
           <NavItem
             key={page.id}
             href={`/${page.id}`}
@@ -39,7 +36,7 @@ export function PrimitivesNav() {
 
       <Box css={{ mb: '$4' }}>
         <NavHeading>Utilities</NavHeading>
-        {utilitiesPages.map((page) => (
+        {getPagesByNavGroup('utilities').map((page) => (
           <NavItem
             key={page.id}
             href={`/${page.id}`}
