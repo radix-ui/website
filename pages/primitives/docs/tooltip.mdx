@@ -2,11 +2,14 @@
 title: Tooltip
 name: tooltip
 version: 0.0.1-13
-description: An accessible Tooltip component that shows information related to an element when it is hovered or focused.
+description: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
 navGroup: components
 aria: https://www.w3.org/TR/wai-aria-practices-1.2/#tooltip
 features:
-  - Built in time machine to control appearance delays
+  - Built-in time machine to control display delay.
+  - Full keyboard support.
+  - Opens when the trigger is focused.
+  - Closes when the trigger is clicked.
 ---
 
 ## Installation
@@ -67,7 +70,7 @@ export default () => (
       <BlendingModeIcon aria-label="Blending mode" />
     </TooltipPrimitive.Trigger>
     <TooltipContent>
-      Blending mode
+      Blend mode
       <Arrow />
     </TooltipContent>
   </TooltipPrimitive.Root>
@@ -83,20 +86,23 @@ export default () => (
     {
       keys: ['Tab'],
       description: (
-        <ul>
-          <li>
-            When focus moves to <Code>Trigger</Code>, opens{' '}
-            <Code>Content</Code> without delay.
-          </li>
-          <li>
-            When focus moves from <Code>Trigger</Code>, closes{' '}
-            <Code>Content</Code> without delay.
-          </li>
-        </ul>
+        <span>
+          When focus moves to <Code>Trigger</Code>, opens{' '}
+          <Code>Content</Code> without delay.
+        </span>
       ),
     },
     {
-      keys: ['Space', 'Enter'],
+      keys: ['Space'],
+      description: (
+        <span>
+          If <Code>Content</Code> is open, closes <Code>Content</Code>{' '}
+          without delay.
+        </span>
+      ),
+    },
+    {
+      keys: ['Enter'],
       description: (
         <span>
           If <Code>Content</Code> is open, closes <Code>Content</Code>{' '}
