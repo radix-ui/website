@@ -267,4 +267,8 @@ export default () => (
 
 ## Accessibility
 
-In most cases, it's best to rely on native scrolling and work with the customization options available in CSS. Sometimes this isn't enough, but recreating scroll behavior is incredibly hard work. `ScrollArea` provides additional customizability that maintains the browser's native scroll beahvior (as well as its accessibiliy features, like keyboard scrolling) while replacing the visual controls with stylable parts.
+In most cases, it's best to rely on native scrolling and work with the customization options available in CSS. Sometimes this isn't enough, but recreating scroll behavior is incredibly hard work. `ScrollArea` provides additional customizability that maintains the browser's native scroll behavior (as well as its accessibility features) while replacing the visual controls with stylable parts.
+
+### Keyboard Interactions
+
+Because `ScrollArea` relies on native scrolling, scrolling via keyboard is supported by default. Specific keyboard interactions may differ between platforms, so we do not specify them here or add specific event listeners to handle scrolling via key events.
