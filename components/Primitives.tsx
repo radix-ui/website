@@ -19,6 +19,6 @@ export * as SeparatorPrimitive from '@radix-ui/react-separator';
 export * as SliderPrimitive from '@radix-ui/react-slider';
 export * as SwitchPrimitive from '@radix-ui/react-switch';
 export * as TabsPrimitive from '@radix-ui/react-tabs';
-export * as ToggleButtonPrimitive from '@radix-ui/react-toggle-button';
+export * as ToggleButton from '@radix-ui/react-toggle-button';
 export * as TooltipPrimitive from '@radix-ui/react-tooltip';
 export * as VisuallyHidden from '@radix-ui/react-visually-hidden';
