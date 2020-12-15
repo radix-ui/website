@@ -153,6 +153,14 @@ Contains all the parts of an accordion.
       description:
         'Event handler called when the expanded state of an item changes.',
     },
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
   ]}
 />
 
@@ -180,20 +188,67 @@ Contains all the parts of a collapsible section.
       type: 'string',
       description: 'A unique value for the item.',
     },
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
   ]}
 />
 
 ### Header
 
-Wraps an `Accordion.Button` and will be an `h3` by default. Use the `as` prop to update it to the appropriate heading level for your page.
+Wraps an `Accordion.Button`. Use the `as` prop to update it to the appropriate heading level for your page.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'h3',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
 
 ### Button
 
 Toggles the collapsed state of its associated item. It should be nested inside of an `Accordion.Header`.
 
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'button',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
 ### Panel
 
 Contains the collapsible content for an item.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
 
 ## Examples
 
