@@ -712,7 +712,7 @@ Used to visually separate items in the dropdown menu.
 
 ## Examples
 
-### Disabled
+### With disabled items
 
 You can add special styles to disabled items via the `data-disabled` attribute.
 
@@ -764,7 +764,66 @@ export default () => (
 );
 ```
 
-### Checkbox
+### With separators
+
+Use the `Separator` part to add a separator between items.
+
+```jsx live manual
+// import { styled } from 'path-to/stitches.config';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+
+const StyledContent = styled(DropdownMenu.Content, {
+  minWidth: 130,
+  backgroundColor: 'white',
+  borderRadius: 6,
+  padding: 5,
+  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
+});
+
+const StyledItem = styled(DropdownMenu.Item, {
+  fontSize: 13,
+  padding: '5px 10px',
+  borderRadius: 3,
+  cursor: 'default',
+
+  '&[data-disabled]': {
+    color: 'gainsboro',
+  },
+
+  '&:focus': {
+    outline: 'none',
+    backgroundColor: 'dodgerblue',
+    color: 'white',
+  },
+});
+
+const StyledSeparator = styled(DropdownMenu.Separator, {
+  height: 1,
+  backgroundColor: 'gainsboro',
+  margin: 5,
+});
+
+const StyledArrow = styled(DropdownMenu.Arrow, {
+  fill: 'white',
+});
+
+export default () => (
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
+    <StyledContent>
+      <StyledItem>Undo</StyledItem>
+      <StyledItem>Redo</StyledItem>
+      <StyledSeparator />
+      <StyledItem>Cut</StyledItem>
+      <StyledItem>Copy</StyledItem>
+      <StyledItem>Paste</StyledItem>
+      <StyledArrow />
+    </StyledContent>
+  </DropdownMenu.Root>
+);
+```
+
+### With checkbox items
 
 Use the `CheckboxItem` part to add an item that can be checked.
 
@@ -786,10 +845,6 @@ const itemStyles = {
   padding: '5px 10px 5px 5px',
   borderRadius: 3,
   cursor: 'default',
-
-  '&[data-disabled]': {
-    color: 'gainsboro',
-  },
 
   '&:focus': {
     outline: 'none',
