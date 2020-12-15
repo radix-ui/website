@@ -12,7 +12,7 @@ const { colors } = DStheme;
 const theme: any = {
   plain: {
     color: 'var(--colors-hiContrast)',
-    backgroundColor: 'var(--colors-loContrast)',
+    backgroundColor: 'transparent',
   },
   styles: [
     {
@@ -100,7 +100,7 @@ const StyledLivePreview = ({ live, ...props }: { live?: boolean }) => (
       // backgroundColor: 'white',
       // zIndex: 3,
       overflow: 'hidden',
-      p: '$3',
+      p: '$4',
       boxShadow: `inset 0 0 0 1px $gray500`,
       borderTopLeftRadius: '$2',
       borderTopRightRadius: '$2',
@@ -115,7 +115,7 @@ const StyledLivePreview = ({ live, ...props }: { live?: boolean }) => (
 const CodeContainer = ({ live, children }: { live?: boolean; children: React.ReactNode }) => (
   <Box
     css={{
-      p: '$1',
+      p: '$4',
       borderTopLeftRadius: live ? '0' : '$2',
       borderTopRightRadius: live ? '0' : '$2',
       borderBottomLeftRadius: '$2',
@@ -137,9 +137,9 @@ const CopyButton = (props: any) => (
     css={{
       fontFamily: '$untitled',
       position: 'absolute',
-      top: '$1',
-      zIndex: '$1',
-      right: '$1',
+      top: '$2',
+      zIndex: '$2',
+      right: '$2',
     }}
     {...props}
   />
@@ -254,6 +254,7 @@ export function CodeBlock({
             <LiveEditor
               onChange={onChange}
               style={liveEditorStyle}
+              {...{ padding: 0 }}
               // Code blocks are no longer "live"
               // TODO: Refactor this whole file :D
               disabled
@@ -323,7 +324,7 @@ export function CodeBlock({
     >
       <LiveProvider disabled {...liveProviderProps}>
         <CodeContainer live={live}>
-          <LiveEditor style={liveEditorStyle} />
+          <LiveEditor style={liveEditorStyle} {...{ padding: 0 }} />
         </CodeContainer>
         <CopyButton onClick={onCopy}>{hasCopied ? 'Copied' : 'Copy'}</CopyButton>
       </LiveProvider>
