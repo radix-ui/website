@@ -786,10 +786,6 @@ const StyledItem = styled(DropdownMenu.Item, {
   borderRadius: 3,
   cursor: 'default',
 
-  '&[data-disabled]': {
-    color: 'gainsboro',
-  },
-
   '&:focus': {
     outline: 'none',
     backgroundColor: 'dodgerblue',
@@ -814,6 +810,62 @@ export default () => (
       <StyledItem>Undo</StyledItem>
       <StyledItem>Redo</StyledItem>
       <StyledSeparator />
+      <StyledItem>Cut</StyledItem>
+      <StyledItem>Copy</StyledItem>
+      <StyledItem>Paste</StyledItem>
+      <StyledArrow />
+    </StyledContent>
+  </DropdownMenu.Root>
+);
+```
+
+### With labels
+
+Use the `Label` part to help label a section.
+
+```jsx live manual
+// import { styled } from 'path-to/stitches.config';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+
+const StyledContent = styled(DropdownMenu.Content, {
+  minWidth: 130,
+  backgroundColor: 'white',
+  borderRadius: 6,
+  padding: 5,
+  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
+});
+
+const StyledItem = styled(DropdownMenu.Item, {
+  fontSize: 13,
+  padding: '5px 10px',
+  borderRadius: 3,
+  cursor: 'default',
+
+  '&:focus': {
+    outline: 'none',
+    backgroundColor: 'dodgerblue',
+    color: 'white',
+  },
+});
+
+const StyledLabel = styled(DropdownMenu.Label, {
+  color: 'slategray',
+  fontSize: 13,
+  padding: '5px 10px',
+  cursor: 'default',
+});
+
+const StyledArrow = styled(DropdownMenu.Arrow, {
+  fill: 'white',
+});
+
+export default () => (
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
+    <StyledContent>
+      <StyledLabel>Actions</StyledLabel>
+      <StyledItem>Undo</StyledItem>
+      <StyledItem>Redo</StyledItem>
       <StyledItem>Cut</StyledItem>
       <StyledItem>Copy</StyledItem>
       <StyledItem>Paste</StyledItem>
