@@ -98,7 +98,8 @@ Contains all the parts of an avatar.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'span',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -115,7 +116,8 @@ The image to render. By default it will only render when it has loaded. You can 
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'img',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -140,7 +142,8 @@ An element that renders when the image hasn't loaded. This means whilst it's loa
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'span',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',

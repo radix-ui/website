@@ -118,7 +118,8 @@ Contains all the parts of an accordion.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -173,7 +174,8 @@ Contains all the parts of a collapsible section.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -208,7 +210,8 @@ Wraps an `Accordion.Button`. Use the `as` prop to update it to the appropriate h
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'h3',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -225,7 +228,8 @@ Toggles the collapsed state of its associated item. It should be nested inside o
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'button',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -242,7 +246,8 @@ Contains the collapsible content for an item.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',

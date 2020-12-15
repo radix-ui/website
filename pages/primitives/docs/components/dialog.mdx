@@ -152,7 +152,8 @@ The button that opens the dialog.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'button',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -169,7 +170,8 @@ A layer that covers the inert portion of the view when the dialog is open.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -192,7 +194,8 @@ Contains content to be rendered in the open dialog.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -262,7 +265,8 @@ The button that closes the dialog.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'button',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
