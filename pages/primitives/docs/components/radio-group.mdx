@@ -137,6 +137,14 @@ Contains all the parts of a radio group.
         </span>
       ),
     },
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
   ]}
 />
 
@@ -199,6 +207,14 @@ An item in the group that can be checked.
         </span>
       ),
     },
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'button',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
   ]}
 />
 
@@ -213,6 +229,14 @@ Renders when the radio item is in a checked state. You can style this element di
       type: 'boolean',
       description:
         'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+    },
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'span',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
   ]}
 />
