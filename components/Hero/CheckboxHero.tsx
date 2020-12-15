@@ -85,6 +85,7 @@ const CheckboxContainer = () => {
               right: -10,
               animation: `${cursor} 5000ms infinite`,
               animationDirection: 'alternate',
+              zIndex: '1',
             }}
           >
             <svg
