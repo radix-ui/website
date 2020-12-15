@@ -10,7 +10,7 @@ features:
   - Can be controlled or uncontrolled.
 ---
 
-## Installation
+### Installation
 
 Install the component from your command line.
 
@@ -18,7 +18,7 @@ Install the component from your command line.
 npm install @radix-ui/react-toggle-button
 ```
 
-## Anatomy
+### Anatomy
 
 Import the component.
 
@@ -28,7 +28,7 @@ import { ToggleButton } from '@radix-ui/react-toggle-buton';
 export default () => <ToggleButton />;
 ```
 
-## Basic Example
+### Basic example
 
 Create your styled toggle button component from the primitive parts.
 
@@ -64,34 +64,9 @@ export default () => (
 );
 ```
 
-## Accessibility
+### API Reference
 
-### Keyboard Interactions
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['Space'],
-      description: (
-        <span>
-          Activates/deactivates the <Code>ToggleButton</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['Enter'],
-      description: (
-        <span>
-          Activates/deactivates the <Code>ToggleButton</Code>.
-        </span>
-      ),
-    },
-  ]}
-/>
-
-## API Reference
-
-### ToggleButton
+#### ToggleButton
 
 `ToggleButton` is the root component.
 
@@ -138,6 +113,28 @@ export default () => (
         <span>
           Whether or not the <Code>ToggleButton</Code> is disabled.
         </span>
+      ),
+    },
+  ]}
+/>
+
+### Accessibility
+
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space', 'Enter'],
+      description: (
+        <ul>
+          <li>
+            When deactivated, activates <Code>ToggleButton</Code>.
+          </li>
+          <li>
+            When activated, deactivates <Code>ToggleButton</Code>.
+          </li>
+        </ul>
       ),
     },
   ]}

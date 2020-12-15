@@ -17,7 +17,7 @@ import { CheckboxHero } from '../../../components/Hero/CheckboxHero';
   <CheckboxHero />
 </HeroSlot>
 
-## Installation
+### Installation
 
 Install the component from your command line.
 
@@ -25,7 +25,7 @@ Install the component from your command line.
 npm install @radix-ui/react-checkbox
 ```
 
-## Anatomy
+### Anatomy
 
 Import the components and piece the parts together.
 
@@ -39,7 +39,7 @@ export default () => (
 );
 ```
 
-## Basic Example
+### Basic example
 
 Create your styled checkbox component from the primitive parts.
 
@@ -84,36 +84,9 @@ export default () => (
 );
 ```
 
-## Accessibility
+### API Reference
 
-Adheres to the [tri-state Checkbox WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#checkbox).
-
-### Keyboard Interactions
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['Space'],
-      description: (
-        <span>
-          Checks/unchecks <Code>Checkbox</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['Enter'],
-      description: (
-        <span>
-          Checks/unchecks <Code>Checkbox</Code>.
-        </span>
-      ),
-    },
-  ]}
-/>
-
-## API Reference
-
-### Checkbox
+#### Checkbox
 
 `Checkbox` is the root component.
 
@@ -195,7 +168,7 @@ Adheres to the [tri-state Checkbox WAI-ARIA design pattern](https://www.w3.org/T
   ]}
 />
 
-### Indicator
+#### Indicator
 
 Renders when the `Checkbox` is in a checked or indeterminate state. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
 
@@ -206,6 +179,33 @@ Renders when the `Checkbox` is in a checked or indeterminate state. You can styl
       type: 'boolean',
       description:
         'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+    },
+  ]}
+/>
+
+### Accessibility
+
+Adheres to the [tri-state Checkbox WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#checkbox).
+
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space'],
+      description: (
+        <span>
+          Checks/unchecks <Code>Checkbox</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['Enter'],
+      description: (
+        <span>
+          Checks/unchecks <Code>Checkbox</Code>.
+        </span>
+      ),
     },
   ]}
 />

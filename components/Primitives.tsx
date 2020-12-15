@@ -21,4 +21,4 @@ export * as SwitchPrimitive from '@interop-ui/react-switch';
 export * as TabsPrimitive from '@interop-ui/react-tabs';
 export * as ToggleButtonPrimitive from '@interop-ui/react-toggle-button';
 export * as TooltipPrimitive from '@interop-ui/react-tooltip';
-export { VisuallyHidden } from '@interop-ui/react-visually-hidden';
+export * as VisuallyHiddenPrimitive from '@interop-ui/react-visually-hidden';

@@ -7,7 +7,7 @@ features:
   - Appends to `document.body` by default but can be customised to use a different container.
 ---
 
-## Installation
+### Installation
 
 Install the component from your command line.
 
@@ -15,7 +15,7 @@ Install the component from your command line.
 npm install @radix-ui/react-portal
 ```
 
-## Anatomy
+### Anatomy
 
 Import the component.
 
@@ -25,7 +25,7 @@ import { PortalPrimitive } from '@radix-ui/react-portal';
 export default () => <PortalPrimitive />;
 ```
 
-## Basic Example
+### Basic example
 
 Create your portaled component from the primitive.
 
@@ -37,9 +37,9 @@ export default () => (
 );
 ```
 
-## API Reference
+### API Reference
 
-### Portal
+#### Portal
 
 `Portal` is the root component. Anything you put inside `Portal` will be rendered in a separate `<radix-portal>` element. By default, this element will be appended to `document.body` but you can choose a different container by using the `containerRef` prop.
 

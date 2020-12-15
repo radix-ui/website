@@ -16,7 +16,7 @@ import { RadioHero } from '../../../components/Hero/RadioHero';
   <RadioHero />
 </HeroSlot>
 
-## Installation
+### Installation
 
 Install the component from your command line.
 
@@ -24,7 +24,7 @@ Install the component from your command line.
 npm install @radix-ui/react-radio-group
 ```
 
-## Anatomy
+### Anatomy
 
 Import the components and piece the parts together.
 
@@ -44,7 +44,7 @@ export default () => (
 );
 ```
 
-## Basic Example
+### Basic example
 
 Create your styled radio group component from the primitive parts.
 
@@ -98,11 +98,135 @@ export default () => (
 );
 ```
 
-## Accessibility
+### API Reference
+
+#### RadioGroup
+
+`RadioGroup` is the root component.
+
+<PropsTable
+  data={[
+    {
+      name: 'defaultValue',
+      type: 'string',
+      description: (
+        <span>
+          The value of the selected <Code>Item</Code> when the{' '}
+          <Code>RadioGroup</Code> is initially rendered. Use{' '}
+          <Code>defaultValue</Code> if you do not need to control the
+          state of a <Code>RadioGroup</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'value',
+      type: 'string',
+      description: (
+        <span>
+          The controlled value of the <Code>RadioGroup</Code>`. Must
+          be used in conjunction with <Code>onValueChange</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onValueChange',
+      type: '(value: string) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          The callback that fires when the selected value changes.
+        </span>
+      ),
+    },
+    {
+      name: 'required',
+      type: 'boolean',
+      description: (
+        <span>Whether or not this choice is required in a form.</span>
+      ),
+    },
+  ]}
+/>
+
+#### Item
+
+A single item in a `RadioGroup`.
+
+<PropsTable
+  data={[
+    {
+      name: 'value',
+      type: 'string',
+      required: true,
+      description: (
+        <span>
+          The value behind the <Code>Item</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onCheckedChange',
+      type: '(event: React.ChangeEvent<HTMLInputElement>) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          The callback that fires when the checked state of the{' '}
+          <Code>Item</Code> changes.
+        </span>
+      ),
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      description: (
+        <span>
+          Whether or not the <Code>Item</Code> is disabled.
+        </span>
+      ),
+    },
+    {
+      name: 'required',
+      type: 'boolean',
+      description: (
+        <span>
+          Whether or not the <Code>Item</Code> choice is required in a
+          form.
+        </span>
+      ),
+    },
+    {
+      name: 'readOnly',
+      type: 'boolean',
+      description: (
+        <span>
+          Whether or not this <Code>Item</Code> is read-only and
+          cannot be toggled by the user.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+#### Indicator
+
+Renders when the `RadioGroupItem` is the currently selected on. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
+
+<PropsTable
+  data={[
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description:
+        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+    },
+  ]}
+/>
+
+### Accessibility
 
 Adheres to the [Radio Group WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#radiobutton) and uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/radio/radio-1/radio-1.html) to manage focus movement among radio items.
 
-### Keyboard Interactions
+#### Keyboard Interactions
 
 <KeyboardTable
   data={[
@@ -164,130 +288,6 @@ Adheres to the [Radio Group WAI-ARIA design pattern](https://www.w3.org/TR/wai-a
           Moves focus to the previous <Code>Item</Code> in the group.
         </span>
       ),
-    },
-  ]}
-/>
-
-## API Reference
-
-### RadioGroup
-
-`RadioGroup` is the root component.
-
-<PropsTable
-  data={[
-    {
-      name: 'defaultValue',
-      type: 'string',
-      description: (
-        <span>
-          The value of the selected <Code>Item</Code> when the{' '}
-          <Code>RadioGroup</Code> is initially rendered. Use{' '}
-          <Code>defaultValue</Code> if you do not need to control the
-          state of a <Code>RadioGroup</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'value',
-      type: 'string',
-      description: (
-        <span>
-          The controlled value of the <Code>RadioGroup</Code>`. Must
-          be used in conjunction with <Code>onValueChange</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onValueChange',
-      type: '(value: string) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          The callback that fires when the selected value changes.
-        </span>
-      ),
-    },
-    {
-      name: 'required',
-      type: 'boolean',
-      description: (
-        <span>Whether or not this choice is required in a form.</span>
-      ),
-    },
-  ]}
-/>
-
-### Item
-
-A single item in a `RadioGroup`.
-
-<PropsTable
-  data={[
-    {
-      name: 'value',
-      type: 'string',
-      required: true,
-      description: (
-        <span>
-          The value behind the <Code>Item</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onCheckedChange',
-      type: '(event: React.ChangeEvent<HTMLInputElement>) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          The callback that fires when the checked state of the{' '}
-          <Code>Item</Code> changes.
-        </span>
-      ),
-    },
-    {
-      name: 'disabled',
-      type: 'boolean',
-      description: (
-        <span>
-          Whether or not the <Code>Item</Code> is disabled.
-        </span>
-      ),
-    },
-    {
-      name: 'required',
-      type: 'boolean',
-      description: (
-        <span>
-          Whether or not the <Code>Item</Code> choice is required in a
-          form.
-        </span>
-      ),
-    },
-    {
-      name: 'readOnly',
-      type: 'boolean',
-      description: (
-        <span>
-          Whether or not this <Code>Item</Code> is read-only and
-          cannot be toggled by the user.
-        </span>
-      ),
-    },
-  ]}
-/>
-
-### Indicator
-
-Renders when the `RadioGroupItem` is the currently selected on. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
-
-<PropsTable
-  data={[
-    {
-      name: 'forceMount',
-      type: 'boolean',
-      description:
-        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
     },
   ]}
 />

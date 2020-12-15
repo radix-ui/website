@@ -16,7 +16,7 @@ import { AvatarHero } from '../../../components/Hero/AvatarHero';
   <AvatarHero />
 </HeroSlot>
 
-## Installation
+### Installation
 
 Install the component from your command line.
 
@@ -24,7 +24,7 @@ Install the component from your command line.
 npm install @radix-ui/react-avatar
 ```
 
-## Anatomy
+### Anatomy
 
 Create your styled avatar component from the primitive parts.
 
@@ -42,7 +42,7 @@ export default () => (
 );
 ```
 
-## Basic Example
+### Basic example
 
 ```jsx live manual
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
@@ -82,13 +82,13 @@ export default () => (
 );
 ```
 
-## API Reference
+### API Reference
 
-### Avatar
+#### Avatar
 
 `Avatar` is the root component.
 
-### Image
+#### Image
 
 `AvatarImage` is image to render. By default `AvatarImage` will only render when it has actually been loaded. You can use the `onLoadingStatusChange` handler if you need finer control.
 
@@ -105,7 +105,7 @@ export default () => (
   ]}
 />
 
-### Fallback
+#### Fallback
 
 `AvatarFallback` provides a fallback element that will only render anytime `AvatarImage` hasn't loaded. This means whilst it's loading, or if there was an error. If you don't want it to flash quickly whilst it's loading, you can provide a `delayMs` prop which will delay its rendering a bit. Otherwise, if you need finer control you can use the `onLoadingStatusChange` handler on `AvatarImage`.
 
@@ -124,9 +124,9 @@ export default () => (
   ]}
 />
 
-## Examples
+### Examples
 
-### Initials only
+#### Initials only
 
 ```jsx live manual compact
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
@@ -160,7 +160,7 @@ export default () => (
 );
 ```
 
-### Clickable Avatar with tooltip
+#### Clickable Avatar with tooltip
 
 ```jsx live manual compact
 import * as AvatarPrimitive from '@radix-ui/react-avatar';

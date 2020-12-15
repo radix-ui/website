@@ -13,7 +13,7 @@ features:
   - Dismissing and layering behavior is highly customisable.
 ---
 
-## Installation
+### Installation
 
 Install the component from your command line.
 
@@ -21,7 +21,7 @@ Install the component from your command line.
 npm install @radix-ui/react-popover
 ```
 
-## Anatomy
+### Anatomy
 
 Import the components and piece the parts together.
 
@@ -45,7 +45,7 @@ export default () => (
 );
 ```
 
-## Basic Example
+### Basic example
 
 Create your styled popover component from the primitive parts.
 
@@ -80,57 +80,9 @@ export default () => (
 );
 ```
 
-## Accessibility
+### API Reference
 
-Adheres to the [Dialog WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal).
-
-### Keyboard Interactions
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['Space'],
-      description: (
-        <span>
-          Opens/closes <Code>Content</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['Enter'],
-      description: (
-        <span>
-          Opens/closes <Code>Content</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['Tab'],
-      description: (
-        <span>Moves focus to the next focusable element.</span>
-      ),
-    },
-    {
-      keys: ['Shift + Tab'],
-      description: (
-        <span>Moves focus to the previous focusable element.</span>
-      ),
-    },
-    {
-      keys: ['Esc'],
-      description: (
-        <span>
-          Closes <Code>Content</Code> and moves focus to{' '}
-          <Code>Trigger</Code>.
-        </span>
-      ),
-    },
-  ]}
-/>
-
-## API Reference
-
-### Popover
+#### Popover
 
 `Popover` is the root component.
 
@@ -171,11 +123,11 @@ Adheres to the [Dialog WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-p
   ]}
 />
 
-### Trigger
+#### Trigger
 
 `PopoverTrigger` is the button that triggers the `Popover`. It is also used as the anchor the `PopoverContent` is positioned against.
 
-### Content
+#### Content
 
 The component that pops out in an open `Popover`.
 
@@ -394,7 +346,7 @@ The component that pops out in an open `Popover`.
   ]}
 />
 
-### Arrow
+#### Arrow
 
 The optional arrow element to render for the `Popover`. This can be used to help visually link the `PopoverTrigger` with the `PopoverContent`. Must live inside `PopoverContent`.
 
@@ -434,6 +386,54 @@ The optional arrow element to render for the `Popover`. This can be used to help
   ]}
 />
 
-### Close
+#### Close
 
 The button that closes an open `Popover`.
+
+### Accessibility
+
+Adheres to the [Dialog WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal).
+
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space'],
+      description: (
+        <span>
+          Opens/closes <Code>Content</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['Enter'],
+      description: (
+        <span>
+          Opens/closes <Code>Content</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['Tab'],
+      description: (
+        <span>Moves focus to the next focusable element.</span>
+      ),
+    },
+    {
+      keys: ['Shift + Tab'],
+      description: (
+        <span>Moves focus to the previous focusable element.</span>
+      ),
+    },
+    {
+      keys: ['Esc'],
+      description: (
+        <span>
+          Closes <Code>Content</Code> and moves focus to{' '}
+          <Code>Trigger</Code>.
+        </span>
+      ),
+    },
+  ]}
+/>

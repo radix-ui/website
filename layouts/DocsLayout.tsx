@@ -93,13 +93,11 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
                   </FeatureList>
                 )}
               </Box>
-              {frontMatter.navGroup !== 'overview' && (
-                <ComponentInfo
-                  version={frontMatter.version}
-                  name={frontMatter.name}
-                  aria={frontMatter.aria}
-                />
-              )}
+              <ComponentInfo
+                version={frontMatter.version}
+                name={frontMatter.name}
+                aria={frontMatter.aria}
+              />
             </Flex>
           </>
         )}
