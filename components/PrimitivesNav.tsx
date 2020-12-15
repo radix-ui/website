@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { Box, Separator } from '@modulz/design-system';
 import { NavHeading } from './NavHeading';
 import { NavItem, NavItemBadge } from './NavItem';
-import { utilitiesPages, getPagesByNavGroup } from '../utils/primitives';
+import { getPagesByNavGroup } from '../utils/primitives';
 
 export function PrimitivesNav() {
   const router = useRouter();
