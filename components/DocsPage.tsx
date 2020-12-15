@@ -34,6 +34,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
       }}
     >
       <Box
+        as="header"
         css={{
           width: '100%',
           maxHeight: 'auto',
@@ -64,22 +65,8 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
                   ':focus': { boxShadow: 'none' },
                 }}
               >
-                <span
-                  style={{
-                    position: 'absolute',
-                    width: 1,
-                    height: 1,
-                    padding: 0,
-                    margin: -1,
-                    overflow: 'hidden',
-                    clip: 'rect(0, 0, 0, 0)',
-                    whiteSpace: 'nowrap',
-                    border: 0,
-                  }}
-                >
-                  Stitches homepage
-                </span>
-                <RadixLogo />
+                <VisuallyHidden>Radix Documentation (Alpha)</VisuallyHidden>
+                <RadixLogo aria-hidden />
               </Box>
             </NextLink>
             <Badge size="2" variant="yellow" css={{ ml: '$2' }}>

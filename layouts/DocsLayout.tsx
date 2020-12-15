@@ -24,6 +24,7 @@ import { useProductType } from '../utils/useProductType';
 import { ScrollArea } from '../components/ScrollArea';
 import { CheckIcon } from '@modulz/radix-icons';
 import { HeroContext } from '../components/HeroSlot';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -60,6 +61,7 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
       />
 
       <Box
+        as="aside"
         css={{
           display: 'none',
           bp3: {
@@ -76,109 +78,115 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
         <QuickNav />
       </Box>
 
-      <Container size="2">
-        <Text as="h1" size="8" css={{ fontWeight: 500, mb: '$1', lineHeight: '40px' }}>
-          {frontMatter.title}
-        </Text>
+      <Container size="2" as="main">
+        <Box as="article">
+          <Box as="header">
+            <Text as="h1" size="8" css={{ fontWeight: 500, mb: '$1', lineHeight: '40px' }}>
+              {frontMatter.title}
+            </Text>
 
-        <Subtitle css={{ mt: '$2', mb: '$7' }} as={'p' as any} role="doc-subtitle">
-          {frontMatter.description}
-        </Subtitle>
-
-        <div ref={heroSlotRef} />
-
-        {categoryType !== 'overview' && (
-          <Flex>
-            <Box css={{ flex: '1 1 100%', mr: '$5' }}>
-              {Boolean(frontMatter.features) && (
-                <FeatureList>
-                  {frontMatter.features.map((feature, i) => (
-                    <Feature key={i}>{feature}</Feature>
-                  ))}
-                </FeatureList>
-              )}
-            </Box>
-            <ComponentInfo
-              version={frontMatter.version}
-              name={frontMatter.name}
-              aria={frontMatter.aria}
-            />
-          </Flex>
-        )}
-
-        <HeroContext.Provider value={heroSlotRef}>
-          <Box>{children}</Box>
-        </HeroContext.Provider>
-
-        {Boolean(frontMatter.relatedIds) && (
-          <>
-            <Separator size="2" css={{ my: '$9', mx: 'auto' }} />
-            <Box>
-              <Text
-                as="h3"
-                size="2"
-                css={{
-                  mb: '$3',
-                  fontWeight: 500,
-                  textAlign: 'center',
-                  textTransform: 'uppercase',
-                }}
-              >
-                Related
-              </Text>
-
-              <Flex css={{ my: '$4', flexDirection: 'column', gap: '$4' }}>
-                {frontMatter.relatedIds.map((relatedPostId) => {
-                  const post = getPostById(relatedPostId);
-                  return (
-                    <Box
-                      as="a"
-                      key={post.id}
-                      href={`/${post.id}`}
-                      css={{
-                        textDecoration: 'none',
-                        color: 'inherit',
-                      }}
-                    >
-                      <Box>
-                        <Text
-                          as="h6"
-                          size="4"
-                          css={{
-                            fontWeight: 500,
-                            mb: '$1',
-                          }}
-                        >
-                          {post.title}
-                        </Text>
-                        <Text
-                          as="p"
-                          size="3"
-                          css={{
-                            color: '$hiContrast',
-                          }}
-                        >
-                          {post.description}
-                        </Text>
-                      </Box>
-                    </Box>
-                  );
-                })}
+            <Subtitle css={{ mt: '$2', mb: '$7' }} as={'p' as any} role="doc-subtitle">
+              {frontMatter.description}
+            </Subtitle>
+            <div ref={heroSlotRef} />
+            {categoryType !== 'overview' && (
+              <Flex>
+                <Box css={{ flex: '1 1 100%', mr: '$5' }}>
+                  {Boolean(frontMatter.features) && (
+                    <FeatureList>
+                      {frontMatter.features.map((feature, i) => (
+                        <Feature key={i}>{feature}</Feature>
+                      ))}
+                    </FeatureList>
+                  )}
+                </Box>
+                <ComponentInfo
+                  version={frontMatter.version}
+                  name={frontMatter.name}
+                  aria={frontMatter.aria}
+                />
               </Flex>
-            </Box>
-          </>
-        )}
+            )}
+          </Box>
+
+          <HeroContext.Provider value={heroSlotRef}>
+            <Box>{children}</Box>
+          </HeroContext.Provider>
+
+          {Boolean(frontMatter.relatedIds) && (
+            <>
+              <Separator size="2" css={{ my: '$9', mx: 'auto' }} />
+              <Box>
+                <Text
+                  as="h3"
+                  size="2"
+                  css={{
+                    mb: '$3',
+                    fontWeight: 500,
+                    textAlign: 'center',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  Related
+                </Text>
+
+                <Flex css={{ my: '$4', flexDirection: 'column', gap: '$4' }}>
+                  {frontMatter.relatedIds.map((relatedPostId) => {
+                    const post = getPostById(relatedPostId);
+                    return (
+                      <Box
+                        as="a"
+                        key={post.id}
+                        href={`/${post.id}`}
+                        css={{
+                          textDecoration: 'none',
+                          color: 'inherit',
+                        }}
+                      >
+                        <Box>
+                          <Text
+                            as="h6"
+                            size="4"
+                            css={{
+                              fontWeight: 500,
+                              mb: '$1',
+                            }}
+                          >
+                            {post.title}
+                          </Text>
+                          <Text
+                            as="p"
+                            size="3"
+                            css={{
+                              color: '$hiContrast',
+                            }}
+                          >
+                            {post.description}
+                          </Text>
+                        </Box>
+                      </Box>
+                    );
+                  })}
+                </Flex>
+              </Box>
+            </>
+          )}
+        </Box>
 
         <Separator size="2" css={{ my: '$9', mx: 'auto' }} />
 
         {(previous || next) && (
           <Flex
-            aria-label="Pagination navigation"
+            as="nav"
+            aria-labelledby="site-page-nav-label"
             css={{
               justifyContent: 'space-between',
               my: '$9',
             }}
           >
+            <VisuallyHidden id="site-page-nav-label" as="h2">
+              Page Navigation
+            </VisuallyHidden>
             {previous && (
               <Box>
                 <NextLink href={`/${previous.id}`} passHref>
@@ -190,6 +198,7 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
                       textDecoration: 'none',
                       alignItems: 'center',
                     }}
+                    rel="prev"
                   >
                     <Box css={{ mb: '$2' }}>
                       <Text size="3" css={{ color: '$gray900' }}>
@@ -214,6 +223,7 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
                       textDecoration: 'none',
                       textAlign: 'right',
                     }}
+                    rel="next"
                   >
                     <Box css={{ mb: '$2' }}>
                       <Text size="3" css={{ color: '$gray900' }}>
@@ -257,8 +267,10 @@ function QuickNav() {
 
   return (
     <ScrollArea>
-      <Box css={{ px: '$5' }}>
-        <Subheading css={{ mb: '$3' }}>Quick nav</Subheading>
+      <Box css={{ px: '$5' }} as="nav" aria-labelledby="site-quick-nav-heading">
+        <Subheading css={{ mb: '$3' }} id="site-quick-nav-heading">
+          Quick nav
+        </Subheading>
         <Box
           as="ul"
           css={{
@@ -299,12 +311,15 @@ function QuickNav() {
 }
 
 const ComponentInfo = ({ version, name, aria }) => (
-  <Box css={{ flex: 0, width: '30%' }}>
-    <Flex css={{ mb: '$4', alignItems: 'baseline' }}>
-      <Text size="2" css={{ fontWeight: 500, mr: '$1' }}>
+  <Box css={{ flex: 0, width: '30%' }} as="nav" aria-labelledby="site-component-info-heading">
+    <VisuallyHidden as="h2" id="site-component-info-heading">
+      Component Reference Links
+    </VisuallyHidden>
+    <Flex css={{ mb: '$4', alignItems: 'baseline' }} as="dl">
+      <Text size="2" as="dt" css={{ fontWeight: 500, mr: '$1' }}>
         Version:
       </Text>
-      <Text size="2" color="gray" css={{ fontFamily: '$mono' }}>
+      <Text size="2" as="dd" color="gray" css={{ fontFamily: '$mono' }}>
         v{version}
       </Text>
     </Flex>
@@ -360,7 +375,9 @@ const ComponentInfo = ({ version, name, aria }) => (
 
 const FeatureList = ({ children }) => (
   <Box>
-    <Heading css={{ mb: '$4' }}>Features</Heading>
+    <Heading css={{ mb: '$4' }} as={'h2' as any}>
+      Features
+    </Heading>
     <Box as="ul" css={{ p: 0, m: 0 }}>
       {children}
     </Box>
