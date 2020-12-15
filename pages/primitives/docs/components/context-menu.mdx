@@ -592,9 +592,7 @@ Used to visually separate items in the context menu.
 
 ### Origin-aware animations
 
-If you want to animate the content, chances are you want your animations to be relative to the correct origin. This is difficult because it depends on all the positioning props such as `side`, `sideOffset`, `align`, `alignOffset`, and can also change based on collisions.
-
-For this, we expose a CSS custom property called `--radix-context-menu-content-transform-origin` which you can use this way:
+We expose a CSS custom property `--radix-context-menu-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
 ```jsx
 const scaleIn = css.keyframes({
@@ -611,9 +609,7 @@ const StyledContent = styled(ContextMenu.Content, {
 
 ### Collision-aware animations
 
-When collisions happen, the `side` and `align` may be the opposite of the prop you passed in. That makes directional animations difficult because you can't know ahead of time where the content will be placed.
-
-For this, we expose a couple extra data attributes, `data-side` and `data-align` so you have full control of creating collision and direction-aware animations.
+We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
 
 ```jsx
 const slideDown = css.keyframes({
