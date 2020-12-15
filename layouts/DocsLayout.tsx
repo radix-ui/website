@@ -79,27 +79,25 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
 
         <Subtitle css={{ mt: '$2', mb: '$7' }}>{frontMatter.description}</Subtitle>
 
-        {categoryType !== 'overview' && (
-          <>
-            <div ref={heroSlotRef} />
+        <div ref={heroSlotRef} />
 
-            <Flex>
-              <Box css={{ flex: '1 1 100%', mr: '$5' }}>
-                {Boolean(frontMatter.features) && (
-                  <FeatureList>
-                    {frontMatter.features.map((feature, i) => (
-                      <Feature key={i}>{feature}</Feature>
-                    ))}
-                  </FeatureList>
-                )}
-              </Box>
-              <ComponentInfo
-                version={frontMatter.version}
-                name={frontMatter.name}
-                aria={frontMatter.aria}
-              />
-            </Flex>
-          </>
+        {categoryType !== 'overview' && (
+          <Flex>
+            <Box css={{ flex: '1 1 100%', mr: '$5' }}>
+              {Boolean(frontMatter.features) && (
+                <FeatureList>
+                  {frontMatter.features.map((feature, i) => (
+                    <Feature key={i}>{feature}</Feature>
+                  ))}
+                </FeatureList>
+              )}
+            </Box>
+            <ComponentInfo
+              version={frontMatter.version}
+              name={frontMatter.name}
+              aria={frontMatter.aria}
+            />
+          </Flex>
         )}
 
         <HeroContext.Provider value={heroSlotRef}>

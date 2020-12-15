@@ -80,9 +80,6 @@ const ScrollArea = styled(ScrollAreaPrimitive.Root, {
   zIndex: 0,
   maxWidth: '100%',
   maxHeight: '100%',
-  '&[data-dragging], &[data-scrolling]': {
-    pointerEvents: 'auto',
-  },
   '& [data-radix-scroll-area-position]::-webkit-scrollbar': {
     display: 'none',
   },
@@ -124,12 +121,11 @@ const ScrollThumb = styled(ScrollAreaPrimitive.Thumb, {
 });
 
 export default () => (
-  <div style={{ height: 500 }}>
+  <div style={{ height: 250 }}>
     <ScrollArea>
       <Viewport>
         <div
           style={{
-            width: 200, // why cant I do 100% here?
             height: 1000,
             backgroundImage:
               'repeating-linear-gradient(0deg, dodgerblue, dodgerblue 10px, transparent 10px, transparent 20px)',
