@@ -457,7 +457,7 @@ const slideUp = css.keyframes({
   '100%': { opacity: 1, transform: 'translateY(0)' },
 });
 
-const StyledContent = styled(Popopover.Content, {
+const StyledContent = styled(Popover.Content, {
   '&[data-side="top"]': { animationName: slideUp },
   '&[data-side="bottom"]': { animationName: slideDown },
   animationDuration: '0.6s',
