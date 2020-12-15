@@ -16,7 +16,7 @@ We don't expose any external stylesheets or JavaScript styling objects because P
 
 As a general rule, most Primitives components that render to the DOM only render one DOM element. In all components that render to the DOM, an element will have a data attribute namespaced with `radix` that matches the name of the component, but as a kebab-cased string.
 
-For example, [`DialogContent`](https://radix-ui.vercel.app/primitives/docs/components/dialog#content) will render an element with a `data-radix-dialog-content` attribute. [`DialogOverlay`](https://radix-ui.vercel.app/primitives/docs/components/dialog#overlay) will render an element with a `data-radix-dialog-overlay` attribute.
+For example, [`DialogContent`](./dialog#content) will render an element with a `data-radix-dialog-content` attribute. [`DialogOverlay`](./dialog#overlay) will render an element with a `data-radix-dialog-overlay` attribute.
 
 You can target these elements in plain CSS directly using attribute selectors.
 
@@ -30,11 +30,11 @@ You can target these elements in plain CSS directly using attribute selectors.
 }
 ```
 
-If a component renders multiple DOM elements, as is the case with [`ScrollAreaViewport`](https://radix-ui.vercel.app/primitives/docs/components/scroll-area#viewport), elements that are not directly exposed with a custom component are considered implementation details and should generally not be styled directly, though we do add similar data attributes to those elements as an escape hatch. Use these with caution, and if you cannot style a component as expected without accessing hidden functional elements, we encourage you to [open an issue](https://github.com/radix-ui/primitives/issues) instead so we can provide alternative solutions or update our API to accommodate these needs.
+If a component renders multiple DOM elements, as is the case with [`ScrollAreaViewport`](./scroll-area#viewport), elements that are not directly exposed with a custom component are considered implementation details and should generally not be styled directly, though we do add similar data attributes to those elements as an escape hatch. Use these with caution, and if you cannot style a component as expected without accessing hidden functional elements, we encourage you to [open an issue](https://github.com/radix-ui/primitives/issues) instead so we can provide alternative solutions or update our API to accommodate these needs.
 
 ### The `data-state` selector
 
-For stateful components, we generally provide a `data-state` attribute on elements to target elements in a specific state. For example, an [`AccordionButton`](https://radix-ui.vercel.app/primitives/docs/components/accordion#button) component may be styled differently when its [`AccordionItem`](https://radix-ui.vercel.app/primitives/docs/components/accordion#item) is `open` than when it is `closed`. You can target the button in its `open` state directly using `data-state`:
+For stateful components, we generally provide a `data-state` attribute on elements to target elements in a specific state. For example, an [`AccordionButton`](./accordion#button) component may be styled differently when its [`AccordionItem`](./accordion#item) is `open` than when it is `closed`. You can target the button in its `open` state directly using `data-state`:
 
 ```css
 [data-radix-accordion-button] {

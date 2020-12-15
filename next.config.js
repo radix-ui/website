@@ -35,12 +35,12 @@ module.exports = withPlugins(
       return [
         {
           source: '/primitives/docs',
-          destination: '/primitives/docs/overview/introduction',
+          destination: '/primitives/docs/introduction',
           permanent: false,
         },
         {
           source: '/design-system/docs',
-          destination: '/design-system/docs/overview/introduction',
+          destination: '/design-system/docs/introduction',
           permanent: false,
         },
       ];
