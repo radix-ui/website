@@ -1,135 +1,171 @@
 ---
 title: Styling
-description: Radix Primitives are unstyled and unopinionated by default.
+description: Unstyled and unopinionated by default.
 navRank: 2
 ---
 
-You can style Radix Primitives the same way you would any other component that renders elements to the DOM.
+Radix Primitives are unstyled, giving you have full control over its look and feel. They work with CSS-in-JS libraries, with CSS preprocessors and even vanilla CSS.
 
-### Functional Styles
+Regardless of your preferred styling solution, this page will cover how to style them.
 
-For many components, there are some basic styles needed for basic functionality. Where it makes sense, we apply many computed styles inline, but in general we avoid this for a few reasons. Inline styles are difficult to override in other styling contexts, and in many cases there are ways to add these functional styles differently than we might prescribe them.
+---
 
-We don't expose any external stylesheets or JavaScript styling objects because Primitives exist without any knowledge of how they might be styled. As such, we provide examples in each component's documentation as a guide for which functional styles you may want to apply as a starting point for your design system.
+### Overview
 
-### CSS selectors
+#### Functional styles
 
-As a general rule, most Primitives components that render to the DOM only render one DOM element. In all components that render to the DOM, an element will have a data attribute namespaced with `radix` that matches the name of the component, but as a kebab-cased string.
+You're in charge of every single style that gets applies. This also includes functional styles. For example, by default a [Dialog Overlay](../components/dialog) won't be covering the entire viewport.
 
-For example, [`DialogContent`](./dialog#content) will render an element with a `data-radix-dialog-content` attribute. [`DialogOverlay`](./dialog#overlay) will render an element with a `data-radix-dialog-overlay` attribute.
+#### Data attributes
 
-You can target these elements in plain CSS directly using attribute selectors.
+All components have a `data-radix-*` attribute, matching its name. For example, the [Separator](../components/separator) component will include the `data-radix-separator` attribute.
+
+When components are stateful, their state will be exposed in a `data-state` attribute. For example, when an [Accordion Item](../components/dialog) is opened, it'll include the `data-state="open"` attribute.
+
+#### Classes
+
+All components accept a `className` prop. This class will be passed through to the DOM element. You can use it in CSS as expected.
+
+### CSS
+
+#### Styling a part
+
+You can style a component part by targering its `data-radix-*` attribute.
 
 ```css
-[data-radix-dialog-content] {
-  color: var(--color-black);
+[data-radix-accordion-item] {
+  border-bottom: 1px solid gainsboro;
 }
 
-[data-radix-dialog-overlay] {
-  background-color: rgba(0, 0, 0, 0.3);
+[data-radix-accordion-panel] {
+  padding: 10px;
 }
 ```
 
-If a component renders multiple DOM elements, as is the case with [`ScrollAreaViewport`](./scroll-area#viewport), elements that are not directly exposed with a custom component are considered implementation details and should generally not be styled directly, though we do add similar data attributes to those elements as an escape hatch. Use these with caution, and if you cannot style a component as expected without accessing hidden functional elements, we encourage you to [open an issue](https://github.com/radix-ui/primitives/issues) instead so we can provide alternative solutions or update our API to accommodate these needs.
+#### Styling a state
 
-#### The `data-state` selector
-
-For stateful components, we generally provide a `data-state` attribute on elements to target elements in a specific state. For example, an [`AccordionButton`](./accordion#button) component may be styled differently when its [`AccordionItem`](./accordion#item) is `open` than when it is `closed`. You can target the button in its `open` state directly using `data-state`:
+You can target the `data-state` attribute to style states.
 
 ```css
-[data-radix-accordion-button] {
-  color: var(--color-black);
+[data-radix-accordion-item] {
+  border-bottom: 1px solid gainsboro;
 }
 
-[data-radix-accordion-button][data-state='open'] {
-  color: var(--color-blue);
-}
-```
-
-#### CSS Classnames
-
-We do not add `className` properties to elements by default, but any props passed to a component that renders an element will be passed through to the underlying JSX component. This means you can add a `className` to any component and use it in CSS as expected.
-
-```js
-<AccordionButton className="hello">Hello</AccordionButton>
-```
-
-```css
-.hello {
-  color: var(--color-black);
-}
-
-.hello[data-state='open'] {
-  color: var(--color-blue);
+[data-radix-accordion-item][data-state='open'] {
+  border-bottom-width: 2px;
 }
 ```
 
 ### CSS-in-JS
 
-Radix Primitives can be styled with any CSS-in-JS library of your choosing, using the same APIs those libraries would provide for styling any custom component.
+#### Styling a part
 
-#### Stitches
+You can style a component part by wrapping it in a `styled` function (or similar).
 
-For example, if you are using [Stitches](https://stitches.dev/), you could add styles to a primitive `AccordionButton` using the `styled` or `css` utilities returned from `createStyled`:
+The examples below are using [Stitches](https://stitches.dev), but you an use any CSS-in-JS library of your choice.
 
-```js
-import * as AccordionPrimitive from '@radix-ui/react-accordion';
-import { createStyled } from '@stitches/react';
+```jsx
+import { styled } from 'path-to/stitches.config';
+import * as Accordion from '@radix-ui/react-accordion';
 
-export const { styled, css } = createStyled({
-  tokens: {
-    colors: {
-      $white: '#fff',
-      $gray100: '#ccc',
-      $gray300: '#aaa',
-      $black: '#111',
-      $blue: 'royalblue',
-    },
-  },
+const StyledItem = styled(Accordion.Item, {
+  borderBottom: '1px solid gainsboro',
 });
 
-const AccordionButton = styled(AccordionPrimitive.Button, {
-  boxSizing: 'border-box',
-  width: '100%',
-  textAlign: 'inherit',
+const StyledPanel = styled(Accordion.Panel, {
+  padding: 10,
+});
+```
+
+#### Styling a state
+
+You can target the `data-state` attribute to style states.
+
+```jsx
+import { styled } from 'path-to/stitches.config';
+import * as Accordion from '@radix-ui/react-accordion';
+
+const StyledItem = styled(Accordion.Item, {
+  borderBottom: '1px solid gainsboro',
+
+  '&[data-state=open]': {
+    borderBottomWidth: '2px',
+  },
+});
+```
+
+#### Demo
+
+Here's an example of how you can style the [Accordion](../components/accordion) component with CSS-in-JS.
+
+```jsx live manual compact
+import { styled } from 'path-to/stitches.config';
+import * as AccordionPrimitive from '@radix-ui/react-accordion';
+
+const Accordion = styled(AccordionPrimitive.Root, {
+  borderTop: '1px solid hsl(272,68%,70%)',
+});
+
+const Item = styled(AccordionPrimitive.Item, {
+  borderBottom: '1px solid hsl(272,68%,70%)',
+});
+
+const Header = styled(AccordionPrimitive.Header, {
+  margin: 0,
+  display: 'flex',
+});
+
+const Button = styled(AccordionPrimitive.Button, {
   appearance: 'none',
   border: 'none',
-  backgroundColor: '$white',
-  color: '$black',
+  backgroundColor: 'transparent',
+  color: 'hsl(272,62%,44%)',
+  padding: '10px 15px',
+  flex: 1,
+  textAlign: 'left',
 
-  '&:disabled': {
-    color: '$gray300',
-  },
-
-  '&[data-state="open"]': {
-    color: '$blue',
+  '&:focus': {
+    outline: 'none',
+    boxShadow:
+      '0 0 0 1px hsl(272,62%,44%), 0 0 0 3px hsl(272,100%,96%)',
   },
 });
+
+const Panel = styled(AccordionPrimitive.Panel, {
+  padding: '10px 15px',
+  color: 'hsl(272,62%,44%)',
+});
+
+export default () => (
+  <Accordion>
+    <Item value="item-1">
+      <Header>
+        <Button>Item 1</Button>
+      </Header>
+      <Panel>Here goes the content for the accordion item 1.</Panel>
+    </Item>
+
+    <Item value="item-2">
+      <Header>
+        <Button>Item 2</Button>
+      </Header>
+      <Panel>Here goes the content for the accordion item 2.</Panel>
+    </Item>
+
+    <Item value="item-3">
+      <Header>
+        <Button>Item 3</Button>
+      </Header>
+      <Panel>Here goes the content for the accordion item 3.</Panel>
+    </Item>
+  </Accordion>
+);
 ```
 
-#### Styled Components or Emotion
+### Conclusion
 
-[Styled Components](https://styled-components.com/) and [Emotion](https://emotion.sh/docs/introduction) have similar APIs with the `styled` function. You can pass styles to any primitve using either the JS object or string literal syntax:
+Radix Primitives were designed to encapsulate accessibility concerns and other complex functionalities, while ensuring consumers have full control over the look and feel.
 
-```js
-import * as AccordionPrimitive from '@radix-ui/react-accordion';
-import styled from '@emotion/styled'; // Or: import styled from '@emotion/styled'
+To ensure compatibility with global CSS solutions, components include a `data-radix-*` attribute. Stateful components include a `data-state` attribute.
 
-const AccordionButton = styled(AccordionPrimitive.Button)`
-  box-sizing: border-box;
-  width: 100%;
-  text-align: inherit;
-  appearance: none;
-  border: none;
-  background-color: var(--color-white);
-  color: var(--color-black);
-
-  &:disabled {
-    color: var(--color-gray-300);
-  }
-
-  &[data-state='open'] {
-    color: var(--color-blue);
-  }
-`;
-```
+Every component that renders an HTML element will contain these attributes, so feel free to inspect them and look around.
