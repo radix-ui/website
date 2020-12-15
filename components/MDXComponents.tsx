@@ -53,7 +53,7 @@ export const MDXComponents = {
   ),
   h3: ({ children, id, ...props }) => (
     <LinkHeading id={id} css={{ mt: '$5', mb: '$1', ...props.css }}>
-      <DS.Subheading {...props} as={'h3' as any} level={3} id={id} data-heading style={{ scrollMarginTop: '45px' }}>
+      <DS.Subheading {...props} as={'h3' as any} id={id} data-heading style={{ scrollMarginTop: '45px' }}>
         {children}
       </DS.Subheading>
     </LinkHeading>
