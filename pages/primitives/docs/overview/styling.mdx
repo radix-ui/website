@@ -60,17 +60,17 @@ You can target the `data-state` attribute to style states.
 
 #### Styling a part
 
-You can style a component part by wrapping it in a `styled` functions (or similar).
+You can style a component part by wrapping it in a `styled` function (or similar). These examples use [Stitches]().
 
 ```jsx
 import { styled } from 'path-to/stitches.config';
-import * as AccordionPrimitive from '@radix-ui/react-accordion';
+import * as Accordion from '@radix-ui/react-accordion';
 
-const Item = styled(AccordionPrimitive.Item, {
+const StyledItem = styled(Accordion.Item, {
   borderBottom: '1px solid gainsboro',
 });
 
-const Panel = styled(AccordionPrimitive.Panel, {
+const StyledPanel = styled(Accordion.Panel, {
   padding: 10,
 });
 ```
@@ -81,9 +81,9 @@ You can target the `data-state` attribute to style states.
 
 ```jsx
 import { styled } from 'path-to/stitches.config';
-import * as AccordionPrimitive from '@radix-ui/react-accordion';
+import * as Accordion from '@radix-ui/react-accordion';
 
-const Item = styled(AccordionPrimitive.Item, {
+const StyledItem = styled(Accordion.Item, {
   borderBottom: '1px solid gainsboro',
 
   '&[data-state=open]': {
@@ -91,3 +91,11 @@ const Item = styled(AccordionPrimitive.Item, {
   },
 });
 ```
+
+### Conclusion
+
+Radix Primitives were designed to encapsulate accessibility concerns and other complex functionalities, while ensuring consumers have full control over the look and feel.
+
+To ensure compatibility with Global CSS solutions, components include a `data-radix-*` attribute. Stateful components include a `data-state` attribute.
+
+Every component that renders a HTML element will contain these attributes, so feel free to inspect them and look around.
