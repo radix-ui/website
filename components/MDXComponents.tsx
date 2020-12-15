@@ -155,6 +155,24 @@ export const MDXComponents = {
       {...props}
     />
   ),
+  Note: (props) => (
+    <DS.Box
+      css={{
+        mt: '$6',
+        mb: '$5',
+        p: '$4',
+        bc: '$purple100',
+        borderRadius: '$2',
+        '& p': {
+          fontSize: '$3',
+          color: '$purple900',
+          lineHeight: '25px',
+          margin: 0,
+        },
+      }}
+      {...props}
+    />
+  ),
   Kbd: DS.Kbd,
   Code: DS.Code,
   PropsTable: (props) => (
