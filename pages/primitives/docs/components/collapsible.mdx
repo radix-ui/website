@@ -43,32 +43,6 @@ render(
 );
 ```
 
-### Accessibility
-
-Adheres to the [Disclosure WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#disclosure).
-
-#### Keyboard Interactions
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['Space', 'Enter'],
-      description: (
-        <ul>
-          <li>
-            When focus is on <Code>Button</Code> of a collapsed{' '}
-            <Code>Collapsible</Code>, expands <Code>Content</Code>.
-          </li>
-          <li>
-            When focus is on <Code>Button</Code> of an expanded{' '}
-            <Code>Collapsible</Code>, collapses <Code>Content</Code>.
-          </li>
-        </ul>
-      ),
-    },
-  ]}
-/>
-
 ### API Reference
 
 #### Collapsible
@@ -121,11 +95,11 @@ Adheres to the [Disclosure WAI-ARIA design pattern](https://www.w3.org/TR/wai-ar
   ]}
 />
 
-#### CollapsibleButton
+#### Button
 
 The button that triggers the `Collapsible`.
 
-#### CollapsibleContent
+#### Content
 
 The component that contains the collapsible content.
 
@@ -136,6 +110,32 @@ The component that contains the collapsible content.
       type: 'boolean',
       description:
         'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+    },
+  ]}
+/>
+
+### Accessibility
+
+Adheres to the [Disclosure WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#disclosure).
+
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space', 'Enter'],
+      description: (
+        <ul>
+          <li>
+            When focus is on <Code>Button</Code> of a collapsed{' '}
+            <Code>Collapsible</Code>, expands <Code>Content</Code>.
+          </li>
+          <li>
+            When focus is on <Code>Button</Code> of an expanded{' '}
+            <Code>Collapsible</Code>, collapses <Code>Content</Code>.
+          </li>
+        </ul>
+      ),
     },
   ]}
 />
