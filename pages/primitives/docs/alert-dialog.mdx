@@ -18,7 +18,7 @@ import { AlertDialogHero } from '../../../components/Hero/AlertDialogHero';
   <AlertDialogHero />
 </HeroSlot>
 
-### Installation
+## Installation
 
 Install the component from your command line.
 
@@ -26,7 +26,7 @@ Install the component from your command line.
 npm install @radix-ui/react-alert-dialog
 ```
 
-### Anatomy
+## Anatomy
 
 Import the components and piece the parts together.
 
@@ -55,7 +55,7 @@ export default () => (
 );
 ```
 
-### Basic example
+## Basic Example
 
 Create your styled alert dialog component from the primitive parts.
 
@@ -107,9 +107,53 @@ export default () => (
 );
 ```
 
-### API Reference
+## Accessibility
 
-#### AlertDialog
+Adheres to the [Alert and Message Dialogs WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#alertdialog).
+
+### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space'],
+      description: (
+        <div>
+          Opens/closes <Code>Overlay</Code> and <Code>Content</Code>.
+        </div>
+      ),
+    },
+    {
+      keys: ['Enter'],
+      description: (
+        <div>
+          Opens/closes <Code>Overlay</Code> and <Code>Content</Code>.
+        </div>
+      ),
+    },
+    {
+      keys: ['Tab'],
+      description: 'Moves focus to the next focusable element.',
+    },
+    {
+      keys: ['Shift + Tab'],
+      description: 'Moves focus to the previous focusable element.',
+    },
+    {
+      keys: ['Esc'],
+      description: (
+        <span>
+          Closes <Code>Overlay</Code> and <Code>Content</Code> and
+          moves focus to <Code>Trigger</Code>.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+## API Reference
+
+### AlertDialog
 
 `AlertDialog` is the root component.
 
@@ -162,11 +206,11 @@ export default () => (
   ]}
 />
 
-#### Trigger
+### Trigger
 
 `AlertDialogTrigger` is a button that triggers the `AlertDialog`.
 
-#### Overlay
+### Overlay
 
 `AlertDialogOverlay` is an overlay that covers the inert portion of the view when an `AlertDialog` is open.
 
@@ -181,7 +225,7 @@ export default () => (
   ]}
 />
 
-#### Content
+### Content
 
 `AlertDialogContent` contains content to be rendered in an open `AlertDialog`.
 
@@ -241,62 +285,18 @@ export default () => (
   ]}
 />
 
-#### Cancel
+### Cancel
 
 `AlertDialogCancel` is a button that closes the `AlertDialog`. This button should be distinguished visually from `Action` buttons.
 
-#### Action
+### Action
 
 `AlertDialogAction` is a button that closes the `AlertDialog`. These buttons should be distinguished visually from the `Cancel` button.
 
-#### Title
+### Title
 
 `AlertDialogTitle` provides an accessible name to be announced when an `AlertDialog` is opened. Alternatively, you can provide `aria-label` or `aria-labelledby` to `Content` and exclude this component.
 
-#### Description
+### Description
 
 `AlertDialogDescription` provides an accessible description to be announced when an `AlertDialog` is opened. Alternatively, you can provide `aria-describedby` to `Content` and exclude this component.
-
-### Accessibility
-
-Adheres to the [Alert and Message Dialogs WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#alertdialog).
-
-#### Keyboard Interactions
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['Space'],
-      description: (
-        <div>
-          Opens/closes <Code>Overlay</Code> and <Code>Content</Code>.
-        </div>
-      ),
-    },
-    {
-      keys: ['Enter'],
-      description: (
-        <div>
-          Opens/closes <Code>Overlay</Code> and <Code>Content</Code>.
-        </div>
-      ),
-    },
-    {
-      keys: ['Tab'],
-      description: 'Moves focus to the next focusable element.',
-    },
-    {
-      keys: ['Shift + Tab'],
-      description: 'Moves focus to the previous focusable element.',
-    },
-    {
-      keys: ['Esc'],
-      description: (
-        <span>
-          Closes <Code>Overlay</Code> and <Code>Content</Code> and
-          moves focus to <Code>Trigger</Code>.
-        </span>
-      ),
-    },
-  ]}
-/>

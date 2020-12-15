@@ -9,7 +9,7 @@ features:
   - Built in time machine to control appearance delays
 ---
 
-### Installation
+## Installation
 
 Install the component from your command line.
 
@@ -17,7 +17,7 @@ Install the component from your command line.
 npm install @radix-ui/react-tooltip
 ```
 
-### Anatomy
+## Anatomy
 
 Import the components and piece the parts together.
 
@@ -38,7 +38,7 @@ export default () => (
 );
 ```
 
-### Basic example
+## Basic Example
 
 Create your styled tooltip component from the primitive parts.
 
@@ -74,9 +74,42 @@ export default () => (
 );
 ```
 
-### API Reference
+## Accessibility
 
-####
+### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Tab'],
+      description: (
+        <ul>
+          <li>
+            When focus moves to <Code>Trigger</Code>, opens{' '}
+            <Code>Content</Code> without delay.
+          </li>
+          <li>
+            When focus moves from <Code>Trigger</Code>, closes{' '}
+            <Code>Content</Code> without delay.
+          </li>
+        </ul>
+      ),
+    },
+    {
+      keys: ['Space', 'Enter'],
+      description: (
+        <span>
+          If <Code>Content</Code> is open, closes <Code>Content</Code>{' '}
+          without delay.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+## API Reference
+
+### Tooltip
 
 `Tooltip` is the root component.
 
@@ -117,11 +150,11 @@ export default () => (
   ]}
 />
 
-#### Trigger
+### Trigger
 
 The button that triggers the `Tooltip`. It is also used as the anchor the `TooltipContent` is positioned against.
 
-#### Content
+### Content
 
 The component that pops out in an open `Tooltip`.
 
@@ -233,7 +266,7 @@ The component that pops out in an open `Tooltip`.
   ]}
 />
 
-#### Arrow
+### Arrow
 
 The optional arrow element to render for the `Tooltip`. This can be used to help visually link the `TooltipTrigger` with the `TooltipContent`. Must live inside `TooltipContent`.
 
@@ -267,39 +300,6 @@ The optional arrow element to render for the `Tooltip`. This can be used to help
         <span>
           The offset of the `<Code>Arrow</Code> along the edge of{' '}
           <Code>Content</Code>.
-        </span>
-      ),
-    },
-  ]}
-/>
-
-### Accessibility
-
-#### Keyboard Interactions
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['Tab'],
-      description: (
-        <ul>
-          <li>
-            When focus moves to <Code>Trigger</Code>, opens{' '}
-            <Code>Content</Code> without delay.
-          </li>
-          <li>
-            When focus moves from <Code>Trigger</Code>, closes{' '}
-            <Code>Content</Code> without delay.
-          </li>
-        </ul>
-      ),
-    },
-    {
-      keys: ['Space', 'Enter'],
-      description: (
-        <span>
-          If <Code>Content</Code> is open, closes <Code>Content</Code>{' '}
-          without delay.
         </span>
       ),
     },

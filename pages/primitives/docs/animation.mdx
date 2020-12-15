@@ -1,13 +1,12 @@
 ---
 title: 'Animation'
 navGroup: overview
+description: Animate Radix Primitives with CSS keyframes or the JavaScript animation library of your choice.
 ---
-
-## Overview
 
 Animation of Radix Primitives can generally be summed in terms of the `entering` and `exiting` phases of a stateful component. In either case, adding animation to a Primitives component should feel similar to any other component, but there are some caveats noted here in regards to `exiting` animations with JS animation libraries.
 
-### CSS `transition` and `animation` Properties
+## CSS `transition` and `animation` Properties
 
 The simplest way to animate Primitives is with CSS. You can use either `transition` or `animation` and it should work with `entering` or `exiting` animations as expected.
 
@@ -41,7 +40,7 @@ The simplest way to animate Primitives is with CSS. You can use either `transiti
 }
 ```
 
-### Using `forceMount` for JavaScript Animations
+## Using `forceMount` for JavaScript Animations
 
 When many stateful Primitives are hidden from view, they are actually removed from the React Tree, and their elements removed from the DOM. Many JavaScript animation libraries need control of the unmounting phase, so we provide the `forceMount` prop on many components to allow consumers to delegate the mounting and unmounting of children based on the animation state determined by those libraries.
 

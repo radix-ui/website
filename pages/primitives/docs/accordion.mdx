@@ -11,7 +11,7 @@ features:
   - Can be controlled or uncontrolled.
 ---
 
-### Installation
+## Installation
 
 Install the component from your command line.
 
@@ -19,7 +19,7 @@ Install the component from your command line.
 npm install @radix-ui/react-accordion
 ```
 
-### Anatomy
+## Anatomy
 
 Import the components and piece the parts together.
 
@@ -44,7 +44,7 @@ export default () => (
 );
 ```
 
-### Basic example
+## Basic Example
 
 Create your styled accordion component from the primitive parts.
 
@@ -104,9 +104,84 @@ export default () => (
 );
 ```
 
-### API Reference
+## Accessibility
 
-#### Accordion
+Adheres to the [Accordion WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#accordion).
+
+### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space'],
+      description: (
+        <span>
+          When focus is on a <Code>Button</Code> of a collapsed
+          section, expands the section.
+        </span>
+      ),
+    },
+    {
+      keys: ['Enter'],
+      description: (
+        <span>
+          When focus is on a <Code>Button</Code> of a collapsed
+          section, expands the section.
+        </span>
+      ),
+    },
+    {
+      keys: ['Tab'],
+      description: (
+        <span>Moves focus to the next focusable element.</span>
+      ),
+    },
+    {
+      keys: ['Shift + Tab'],
+      description: (
+        <span>Moves focus to the previous focusable element.</span>
+      ),
+    },
+    {
+      keys: ['ArrowDown'],
+      description: (
+        <span>
+          Moves focus to the next <Code>Button</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowUp'],
+      description: (
+        <span>
+          Moves focus to the previous <Code>Button</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['Home'],
+      description: (
+        <span>
+          When focus is on a <Code>Button</Code>, moves focus to the
+          first <Code>Button</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['End'],
+      description: (
+        <span>
+          When focus is on a <Code>Button</Code>, moves focus to the
+          last <Code>Button</Code>.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+## API Reference
+
+### Accordion
 
 `Accordion` is the root component.
 
@@ -164,7 +239,7 @@ export default () => (
   ]}
 />
 
-#### Item
+### Item
 
 `Item` contains all of the parts of a collapsible section inside of an `Accordion`.
 
@@ -196,21 +271,21 @@ export default () => (
   ]}
 />
 
-#### Header
+### Header
 
 `Header` wraps a `button` and will be an `h3` by default. Use the `as` prop to update it to the appropriate heading level for your page.
 
-#### Button
+### Button
 
 `Button` toggles the collapsed state of an `Item`. It should always be nested inside of an `Header`.
 
-#### Panel
+### Panel
 
 `Panel` contains the collapsible content for an `Item`.
 
-### Examples
+## Examples
 
-#### With chevrons
+### With chevrons
 
 ```jsx live manual compact
 // import { styled } from 'path-to/stitches.config';
@@ -287,7 +362,7 @@ export default () => (
 );
 ```
 
-#### Expanded by default
+### Expanded by default
 
 ```jsx live manual compact
 // import { styled } from 'path-to/stitches.config';
@@ -363,78 +438,3 @@ export default () => (
   </AccordionPrimitive.Root>
 );
 ```
-
-### Accessibility
-
-Adheres to the [Accordion WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#accordion).
-
-#### Keyboard Interactions
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['Space'],
-      description: (
-        <span>
-          When focus is on a <Code>Button</Code> of a collapsed
-          section, expands the section.
-        </span>
-      ),
-    },
-    {
-      keys: ['Enter'],
-      description: (
-        <span>
-          When focus is on a <Code>Button</Code> of a collapsed
-          section, expands the section.
-        </span>
-      ),
-    },
-    {
-      keys: ['Tab'],
-      description: (
-        <span>Moves focus to the next focusable element.</span>
-      ),
-    },
-    {
-      keys: ['Shift + Tab'],
-      description: (
-        <span>Moves focus to the previous focusable element.</span>
-      ),
-    },
-    {
-      keys: ['ArrowDown'],
-      description: (
-        <span>
-          Moves focus to the next <Code>Button</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowUp'],
-      description: (
-        <span>
-          Moves focus to the previous <Code>Button</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['Home'],
-      description: (
-        <span>
-          When focus is on a <Code>Button</Code>, moves focus to the
-          first <Code>Button</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['End'],
-      description: (
-        <span>
-          When focus is on a <Code>Button</Code>, moves focus to the
-          last <Code>Button</Code>.
-        </span>
-      ),
-    },
-  ]}
-/>

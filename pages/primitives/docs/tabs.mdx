@@ -18,7 +18,7 @@ import { TabsHero } from '../../../components/Hero/TabsHero';
   <TabsHero />
 </HeroSlot>
 
-### Installation
+## Installation
 
 Install the component from your command line.
 
@@ -26,7 +26,7 @@ Install the component from your command line.
 npm install @radix-ui/react-tabs
 ```
 
-### Anatomy
+## Anatomy
 
 Import the components and piece the parts together.
 
@@ -43,7 +43,7 @@ export default () => (
 );
 ```
 
-### Basic example
+## Basic Example
 
 Create your styled tabs component from the primitive parts.
 
@@ -98,9 +98,88 @@ export default () => (
 );
 ```
 
-### API Reference
+## Accessibility
 
-#### Tabs
+Adheres to the [Tabs WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#tabpanel).
+
+### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Tab'],
+      description: (
+        <span>
+          When focus moves into the <Code>List</Code>, moves focus to
+          the active <Code>Tab</Code>. When the <Code>List</Code>{' '}
+          contains focus, moves focus to <Code>Panel</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowDown'],
+      description: (
+        <span>
+          Moves focus to the next <Code>Tab</Code> depending on{' '}
+          <Code>orientation</Code> and activates its associated{' '}
+          <Code>Panel</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowRight'],
+      description: (
+        <span>
+          Moves focus to the next <Code>Tab</Code> depending on{' '}
+          <Code>orientation</Code> and activates its associated{' '}
+          <Code>Panel</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowUp'],
+      description: (
+        <span>
+          Moves focus to the previous <Code>Tab</Code> depending on{' '}
+          <Code>orientation</Code> and activates its associated{' '}
+          <Code>Panel</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowLeft'],
+      description: (
+        <span>
+          Moves focus to the previous <Code>Tab</Code> depending on{' '}
+          <Code>orientation</Code> and activates its associated{' '}
+          <Code>Panel</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['Home'],
+      description: (
+        <span>
+          Moves focus to the first <Code>Tab</Code> and activates its
+          associated <Code>Panel</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['End'],
+      description: (
+        <span>
+          Moves focus to the last <Code>Tab</Code> and activates its
+          associated <Code>Panel</Code>.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+## API Reference
+
+### Tabs
 
 `Tabs` is the root component.
 
@@ -170,7 +249,7 @@ export default () => (
   ]}
 />
 
-#### List
+### List
 
 `TabsList` displays the `TabsTab` components aligned along the edge of the active `TabsPanel`.
 
@@ -192,7 +271,7 @@ export default () => (
   ]}
 />
 
-#### Tab
+### Tab
 
 `TabsTab` is the button that activates its relative `TabsPanel`.
 
@@ -225,7 +304,7 @@ export default () => (
   ]}
 />
 
-#### Panel
+### Panel
 
 The component in which here the content is displayed when its `Tab` is activated.
 
@@ -240,85 +319,6 @@ The component in which here the content is displayed when its `Tab` is activated
           A value that pairs a <Code>Panel</Code> with its relevant{' '}
           <Code>Tab</Code>. All <Code>Panel</Code> components must
           have unique values within a <Code>Tabs</Code> component.
-        </span>
-      ),
-    },
-  ]}
-/>
-
-### Accessibility
-
-Adheres to the [Tabs WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#tabpanel).
-
-#### Keyboard Interactions
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['Tab'],
-      description: (
-        <span>
-          When focus moves into the <Code>List</Code>, moves focus to
-          the active <Code>Tab</Code>. When the <Code>List</Code>{' '}
-          contains focus, moves focus to <Code>Panel</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowDown'],
-      description: (
-        <span>
-          Moves focus to the next <Code>Tab</Code> depending on{' '}
-          <Code>orientation</Code> and activates its associated{' '}
-          <Code>Panel</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowRight'],
-      description: (
-        <span>
-          Moves focus to the next <Code>Tab</Code> depending on{' '}
-          <Code>orientation</Code> and activates its associated{' '}
-          <Code>Panel</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowUp'],
-      description: (
-        <span>
-          Moves focus to the previous <Code>Tab</Code> depending on{' '}
-          <Code>orientation</Code> and activates its associated{' '}
-          <Code>Panel</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowLeft'],
-      description: (
-        <span>
-          Moves focus to the previous <Code>Tab</Code> depending on{' '}
-          <Code>orientation</Code> and activates its associated{' '}
-          <Code>Panel</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['Home'],
-      description: (
-        <span>
-          Moves focus to the first <Code>Tab</Code> and activates its
-          associated <Code>Panel</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['End'],
-      description: (
-        <span>
-          Moves focus to the last <Code>Tab</Code> and activates its
-          associated <Code>Panel</Code>.
         </span>
       ),
     },

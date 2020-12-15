@@ -9,7 +9,7 @@ features:
   - Mirrors visual alert content in an `aria-live` container for proper screen reader support.
 ---
 
-### Installation
+## Installation
 
 Install the component from your command line.
 
@@ -17,7 +17,7 @@ Install the component from your command line.
 npm install @radix-ui/react-announce
 ```
 
-### Anatomy
+## Anatomy
 
 Import the component.
 
@@ -27,7 +27,7 @@ import { AnnouncePrimitive } from '@radix-ui/react-announce';
 export default () => <AnnouncePrimitive />;
 ```
 
-### Basic example
+## Basic Example
 
 Create your announce component from the primitive.
 
@@ -39,9 +39,17 @@ export default () => (
 );
 ```
 
-### API Reference
+## Accessibility
 
-#### Announce
+`Announce` renders a visual message that is rendered to an `aria-live` region.
+
+Not every `Announce` message renders a separate `aria-live` element. Only one unique `aria-live` region per `type` (`"polite"` or `"assertive"`) should exist on a given view. Messages are appended to the `aria-live` region when the visual alert appears and removed from the `aria-live` region as they disappear.
+
+When a new message is added to the `aria-live` region, it is announced to screen reader users. If the `type` prop is set to `"polite"`, the message will be announced after the screen reader has finished reading any content it has started. If `"assertove"` is used, the screen reader will stop prior messages and read the message from `Announce`.
+
+## API Reference
+
+### Announce
 
 `Announce` is the root component.
 

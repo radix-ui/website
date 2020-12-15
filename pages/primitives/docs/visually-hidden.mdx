@@ -8,7 +8,7 @@ features:
   - Visually hides content while preserving it for assistive technology.
 ---
 
-### Installation
+## Installation
 
 Install the component from your command line.
 
@@ -16,37 +16,35 @@ Install the component from your command line.
 npm install @radix-ui/react-visually-hidden
 ```
 
-### Anatomy
+## Anatomy
 
 Import the component.
 
 ```jsx
-import { VisuallyHiddenPrimitive } from '@radix-ui/react-visually-hidden';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
-export default () => <VisuallyHiddenPrimitive />;
+export default () => <VisuallyHidden />;
 ```
 
-### Basic example
+## Basic Example
 
 Create your visually hidden component from the primitive.
 
 ```jsx live manual
-import * as VisuallyHiddenPrimitive from '@radix-ui/react-visually-hidden';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { GearIcon } from '@modulz/radix-icons';
 
 render(
   <button>
     <GearIcon />
-    <VisuallyHiddenPrimitive.Root>
-      Settings
-    </VisuallyHiddenPrimitive.Root>
+    <VisuallyHidden>Settings</VisuallyHidden>
   </button>
 );
 ```
 
-### API Reference
+## API Reference
 
-#### VisuallyHidden
+### VisuallyHidden
 
 `VisuallyHidden` is the root component. Anything you put inside `VisuallyHidden` will be hidden from the screen but will be announced by screen readers.
 

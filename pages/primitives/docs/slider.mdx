@@ -20,7 +20,7 @@ import { SliderHero } from '../../../components/Hero/SliderHero';
   <SliderHero />
 </HeroSlot>
 
-### Installation
+## Installation
 
 Install the component from your command line.
 
@@ -28,7 +28,7 @@ Install the component from your command line.
 npm install @radix-ui/react-slider
 ```
 
-### Anatomy
+## Anatomy
 
 Import the components and piece the parts together.
 
@@ -45,7 +45,7 @@ export default () => (
 );
 ```
 
-### Basic example
+## Basic Example
 
 Create your styled slider component from the primitive parts.
 
@@ -101,9 +101,261 @@ export default () => (
 );
 ```
 
-### API Reference
+## Examples
 
-#### Slider
+### Vertical orientation
+
+Use the `orientation` prop to create a vertical slider.
+
+```jsx live manual compact
+// import { styled } from 'path-to/stitches.config';
+import * as SliderPrimitive from '@radix-ui/react-slider';
+
+const Slider = styled(SliderPrimitive.Root, {
+  position: 'relative',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  userSelect: 'none',
+  touchAction: 'none',
+  width: 16,
+  height: 100,
+});
+
+const SliderTrack = styled(SliderPrimitive.Track, {
+  backgroundColor: 'gainsboro',
+  position: 'relative',
+  flexGrow: 1,
+  width: 2,
+});
+
+const SliderRange = styled(SliderPrimitive.Range, {
+  position: 'absolute',
+  backgroundColor: 'dodgerblue',
+  borderRadius: '9999px',
+  width: '100%',
+});
+
+const SliderThumb = styled(SliderPrimitive.Thumb, {
+  display: 'block',
+  width: 16,
+  height: 16,
+  backgroundColor: 'white',
+  border: '1px solid lightgray',
+  borderRadius: '20px',
+  ':focus': {
+    outline: 'none',
+    borderColor: 'dodgerblue',
+  },
+});
+
+export default () => (
+  <Slider defaultValue={[50]} orientation="vertical">
+    <SliderTrack>
+      <SliderRange />
+    </SliderTrack>
+    <SliderThumb />
+  </Slider>
+);
+```
+
+### Create a range
+
+Create your styled slider components, then pass those styled components into `Slider` via the `as` prop:
+
+```jsx live manual compact
+// import { styled } from 'path-to/stitches.config';
+import * as SliderPrimitive from '@radix-ui/react-slider';
+
+const Slider = styled(SliderPrimitive.Root, {
+  position: 'relative',
+  display: 'flex',
+  alignItems: 'center',
+  userSelect: 'none',
+  touchAction: 'none',
+  height: 16,
+});
+
+const SliderTrack = styled(SliderPrimitive.Track, {
+  backgroundColor: 'gainsboro',
+  position: 'relative',
+  flexGrow: 1,
+  height: 2,
+});
+
+const SliderRange = styled(SliderPrimitive.Range, {
+  position: 'absolute',
+  backgroundColor: 'dodgerblue',
+  borderRadius: '9999px',
+  height: '100%',
+});
+
+const SliderThumb = styled(SliderPrimitive.Thumb, {
+  display: 'block',
+  width: 16,
+  height: 16,
+  backgroundColor: 'white',
+  border: '1px solid lightgray',
+  borderRadius: '20px',
+  ':focus': {
+    outline: 'none',
+    borderColor: 'dodgerblue',
+  },
+});
+
+export default () => (
+  <Slider defaultValue={[25, 75]}>
+    <SliderTrack>
+      <SliderRange />
+    </SliderTrack>
+    <SliderThumb />
+    <SliderThumb />
+  </Slider>
+);
+```
+
+### Define step size
+
+Use the `step` prop to define how the slider value updates.
+
+```jsx live manual compact
+// import { styled } from 'path-to/stitches.config';
+import * as SliderPrimitive from '@radix-ui/react-slider';
+
+const Slider = styled(SliderPrimitive.Root, {
+  position: 'relative',
+  display: 'flex',
+  alignItems: 'center',
+  userSelect: 'none',
+  touchAction: 'none',
+  height: 16,
+});
+
+const SliderTrack = styled(SliderPrimitive.Track, {
+  backgroundColor: 'gainsboro',
+  position: 'relative',
+  flexGrow: 1,
+  height: 2,
+});
+
+const SliderRange = styled(SliderPrimitive.Range, {
+  position: 'absolute',
+  backgroundColor: 'dodgerblue',
+  borderRadius: '9999px',
+  height: '100%',
+});
+
+const SliderThumb = styled(SliderPrimitive.Thumb, {
+  display: 'block',
+  width: 16,
+  height: 16,
+  backgroundColor: 'white',
+  border: '1px solid lightgray',
+  borderRadius: '20px',
+  ':focus': {
+    outline: 'none',
+    borderColor: 'dodgerblue',
+  },
+});
+
+export default () => (
+  <Slider defaultValue={[50]}>
+    <SliderTrack>
+      <SliderRange />
+    </SliderTrack>
+    <SliderThumb />
+  </Slider>
+);
+```
+
+## Accessibility
+
+Adheres to the [Slider WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#slidertwothumb).
+
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['ArrowRight'],
+      description: (
+        <span>
+          Increments/decrements by the <Code>step</Code> value
+          depending on <Code>orientation</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowLeft'],
+      description: (
+        <span>
+          Increments/decrements by the <Code>step</Code> value
+          depending on <Code>orientation</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowUp'],
+      description: (
+        <span>
+          Increases the value by the <Code>step</Code> amount.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowDown'],
+      description: (
+        <span>
+          Decreases the value by the <Code>step</Code> amount.
+        </span>
+      ),
+    },
+    {
+      keys: ['PageUp'],
+      description: (
+        <span>
+          Increases the value by a larger <Code>step</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['PageDown'],
+      description: (
+        <span>
+          Decreases the value by a larger <Code>step</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['Shift + ArrowUp'],
+      description: (
+        <span>
+          Increases the value by a larger <Code>step</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['Shift + ArrowDown'],
+      description: (
+        <span>
+          Decreases the value by a larger <Code>step</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['Home'],
+      description: 'Sets the value to its minimum.',
+    },
+    {
+      keys: ['End'],
+      description: 'Sets the value to its maximum.',
+    },
+  ]}
+/>
+
+## API Reference
+
+### Slider
 
 `Slider` is the root component.
 
@@ -226,266 +478,14 @@ export default () => (
   ]}
 />
 
-#### Track
+### Track
 
 `SliderTrack` is the track part.
 
-#### Range
+### Range
 
 `SliderRange` is the range part. Must live inside `SliderTrack`.
 
-#### Thumb
+### Thumb
 
 `SliderThumb` is the thumb part. You can render multiple thumbs.
-
-### Examples
-
-#### Vertical orientation
-
-Use the `orientation` prop to create a vertical slider.
-
-```jsx live manual compact
-// import { styled } from 'path-to/stitches.config';
-import * as SliderPrimitive from '@radix-ui/react-slider';
-
-const Slider = styled(SliderPrimitive.Root, {
-  position: 'relative',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  userSelect: 'none',
-  touchAction: 'none',
-  width: 16,
-  height: 100,
-});
-
-const SliderTrack = styled(SliderPrimitive.Track, {
-  backgroundColor: 'gainsboro',
-  position: 'relative',
-  flexGrow: 1,
-  width: 2,
-});
-
-const SliderRange = styled(SliderPrimitive.Range, {
-  position: 'absolute',
-  backgroundColor: 'dodgerblue',
-  borderRadius: '9999px',
-  width: '100%',
-});
-
-const SliderThumb = styled(SliderPrimitive.Thumb, {
-  display: 'block',
-  width: 16,
-  height: 16,
-  backgroundColor: 'white',
-  border: '1px solid lightgray',
-  borderRadius: '20px',
-  ':focus': {
-    outline: 'none',
-    borderColor: 'dodgerblue',
-  },
-});
-
-export default () => (
-  <Slider defaultValue={[50]} orientation="vertical">
-    <SliderTrack>
-      <SliderRange />
-    </SliderTrack>
-    <SliderThumb />
-  </Slider>
-);
-```
-
-#### Create a range
-
-Create your styled slider components, then pass those styled components into `Slider` via the `as` prop:
-
-```jsx live manual compact
-// import { styled } from 'path-to/stitches.config';
-import * as SliderPrimitive from '@radix-ui/react-slider';
-
-const Slider = styled(SliderPrimitive.Root, {
-  position: 'relative',
-  display: 'flex',
-  alignItems: 'center',
-  userSelect: 'none',
-  touchAction: 'none',
-  height: 16,
-});
-
-const SliderTrack = styled(SliderPrimitive.Track, {
-  backgroundColor: 'gainsboro',
-  position: 'relative',
-  flexGrow: 1,
-  height: 2,
-});
-
-const SliderRange = styled(SliderPrimitive.Range, {
-  position: 'absolute',
-  backgroundColor: 'dodgerblue',
-  borderRadius: '9999px',
-  height: '100%',
-});
-
-const SliderThumb = styled(SliderPrimitive.Thumb, {
-  display: 'block',
-  width: 16,
-  height: 16,
-  backgroundColor: 'white',
-  border: '1px solid lightgray',
-  borderRadius: '20px',
-  ':focus': {
-    outline: 'none',
-    borderColor: 'dodgerblue',
-  },
-});
-
-export default () => (
-  <Slider defaultValue={[25, 75]}>
-    <SliderTrack>
-      <SliderRange />
-    </SliderTrack>
-    <SliderThumb />
-    <SliderThumb />
-  </Slider>
-);
-```
-
-#### Define step size
-
-Use the `step` prop to define how the slider value updates.
-
-```jsx live manual compact
-// import { styled } from 'path-to/stitches.config';
-import * as SliderPrimitive from '@radix-ui/react-slider';
-
-const Slider = styled(SliderPrimitive.Root, {
-  position: 'relative',
-  display: 'flex',
-  alignItems: 'center',
-  userSelect: 'none',
-  touchAction: 'none',
-  height: 16,
-});
-
-const SliderTrack = styled(SliderPrimitive.Track, {
-  backgroundColor: 'gainsboro',
-  position: 'relative',
-  flexGrow: 1,
-  height: 2,
-});
-
-const SliderRange = styled(SliderPrimitive.Range, {
-  position: 'absolute',
-  backgroundColor: 'dodgerblue',
-  borderRadius: '9999px',
-  height: '100%',
-});
-
-const SliderThumb = styled(SliderPrimitive.Thumb, {
-  display: 'block',
-  width: 16,
-  height: 16,
-  backgroundColor: 'white',
-  border: '1px solid lightgray',
-  borderRadius: '20px',
-  ':focus': {
-    outline: 'none',
-    borderColor: 'dodgerblue',
-  },
-});
-
-export default () => (
-  <Slider defaultValue={[50]}>
-    <SliderTrack>
-      <SliderRange />
-    </SliderTrack>
-    <SliderThumb />
-  </Slider>
-);
-```
-
-### Accessibility
-
-Adheres to the [Slider WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#slidertwothumb).
-
-#### Keyboard Interactions
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['ArrowRight'],
-      description: (
-        <span>
-          Increments/decrements by the <Code>step</Code> value
-          depending on <Code>orientation</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowLeft'],
-      description: (
-        <span>
-          Increments/decrements by the <Code>step</Code> value
-          depending on <Code>orientation</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowUp'],
-      description: (
-        <span>
-          Increases the value by the <Code>step</Code> amount.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowDown'],
-      description: (
-        <span>
-          Decreases the value by the <Code>step</Code> amount.
-        </span>
-      ),
-    },
-    {
-      keys: ['PageUp'],
-      description: (
-        <span>
-          Increases the value by a larger <Code>step</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['PageDown'],
-      description: (
-        <span>
-          Decreases the value by a larger <Code>step</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['Shift + ArrowUp'],
-      description: (
-        <span>
-          Increases the value by a larger <Code>step</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['Shift + ArrowDown'],
-      description: (
-        <span>
-          Decreases the value by a larger <Code>step</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['Home'],
-      description: 'Sets the value to its minimum.',
-    },
-    {
-      keys: ['End'],
-      description: 'Sets the value to its maximum.',
-    },
-  ]}
-/>

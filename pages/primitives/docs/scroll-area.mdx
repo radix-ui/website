@@ -11,7 +11,7 @@ features:
   - Progressively enhanced so that content is avalaible on devices where custom controls aren't supported.
 ---
 
-### Installation
+## Installation
 
 Install the component from your command line.
 
@@ -19,7 +19,7 @@ Install the component from your command line.
 npm install @radix-ui/react-scroll-area
 ```
 
-### Anatomy
+## Anatomy
 
 Import the components and piece the parts together.
 
@@ -61,7 +61,7 @@ export default () => (
 );
 ```
 
-### Basic example
+## Basic Example
 
 Create your styled scroll area component from the primitive parts.
 
@@ -148,9 +148,15 @@ export default () => (
 );
 ```
 
-### API Reference
+## Accessibility
 
-#### ScrollArea
+In most cases, it's best to rely on native scrolling and work with the customisation options available in CSS. Sometimes this isn't enough, but recreating scroll behavior is incredibly hard work, process intensive, and requires a great deal of client-side code. `ScrollArea` provides additional customisability that maintains the browser's native scroll beahvior while replacing the visual controls with stylable parts. This preserves many great accessibility features of native scrolling, as well as improved performance over a complete custom reimplementation. 
+
+Further, scrollbar behavior is inconsistent across platforms. Native scroll features, such as keyboard controls, should work as the user would expect in a native overflowing element because that's what we provide under the hood.
+
+## API Reference
+
+### ScrollArea
 
 `ScrollArea` is the root component.
 
@@ -238,42 +244,34 @@ export default () => (
   ]}
 />
 
-#### Viewport
+### Viewport
 
 `ScrollAreaViewport` is the viewport area of the `ScrollArea`.
 
-#### ScrollbarX
+### ScrollbarX
 
 `ScrollAreaScrollbarX` is the horizontal scrollbar.
 
-#### ScrollbarY
+### ScrollbarY
 
 `ScrollAreaScrollbarY` is the vertical scrollbar.
 
-#### ButtonStart
+### ButtonStart
 
 `ScrollAreaButtonStart` is the start button in either `ScrollAreaScrollbarX` or `ScrollAreaScrollbarY`.
 
-#### ButtonEnd
+### ButtonEnd
 
 `ScrollAreaButtonEnd` is the end button in either `ScrollAreaScrollbarX` or `ScrollAreaScrollbarY`.
 
-#### Track
+### Track
 
 `ScrollAreaTrack` is the track inside either `ScrollAreaScrollbarX` or `ScrollAreaScrollbarY`.
 
-#### Thumb
+### Thumb
 
 `ScrollAreaThumb` is the thumb inside either `ScrollAreaScrollbarX` or `ScrollAreaScrollbarY`.
 
-#### Corner
+### Corner
 
 `ScrollAreaCorner` is the corner where both vertical and horizontal scrollbars meet.
-
-### Accessibility
-
-#### Notes
-
-In most cases, it's best to rely on native scrolling and work with the customization options available in CSS. Sometimes this isn't enough, but recreating scroll behavior is incredibly hard work. `ScrollArea` provides additional customizability that maintains the browser's native scroll beahvior while replacing the visual controls with stylable parts.
-
-#### Keyboard interactions
