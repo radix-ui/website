@@ -1,8 +1,8 @@
 ---
 title: Accessible Icon
 name: accessible-icon
-version: 0.0.1-13
-description: Useful for adding an accessible label to icons.
+version: 0.0.1
+description: Makes icons accessible by adding a label.
 features:
   - Quickly make any icon accessible by wrapping it and providing a meaningful label.
   - No visual difference, but announced correctly by screen readers.
@@ -21,31 +21,31 @@ npm install @radix-ui/react-accessible-icon
 Import the component.
 
 ```jsx
-import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
+import * as AccessibleIcon from '@radix-ui/react-accessible-icon';
 
-export default () => <AccessibleIcon />;
+export default () => <AccessibleIcon.Root />;
 ```
 
 ## Basic example
 
-Create your accessible icon component from the primitive.
+Use the accessible icon primitive.
 
 ```jsx live manual
-import * as AccessibleIconPrimitive from '@radix-ui/react-accessible-icon';
+import * as AccessibleIcon from '@radix-ui/react-accessible-icon';
 import { CrossCircledIcon } from '@modulz/radix-icons';
 
 export default () => (
-  <AccessibleIconPrimitive.Root label="Close">
+  <AccessibleIcon.Root label="Close">
     <CrossCircledIcon />
-  </AccessibleIconPrimitive.Root>
+  </AccessibleIcon.Root>
 );
 ```
 
 ## API Reference
 
-### AccessibleIcon
+### Root
 
-`AccessibleIcon` is the root component.
+Contains the icon to make accessible.
 
 <PropsTable
   data={[
@@ -64,3 +64,9 @@ export default () => (
     },
   ]}
 />
+
+## Accessibility
+
+Most icons or icon systems come with no accessibility built-in. For example, the same visual **cross** icon may in fact mean **"close"** or **"delete"**. This component lets you give meaning to icons used throughout your app.
+
+This is built with [Visually Hidden](./visually-hidden).

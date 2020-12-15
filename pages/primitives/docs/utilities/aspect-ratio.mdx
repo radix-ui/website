@@ -1,8 +1,10 @@
 ---
 title: Aspect Ratio
 name: aspect-ratio
-version: 0.0.1-13
-description: Useful to keep your content within a desired ratio.
+version: 0.0.1
+description: Displays content within a desired ratio.
+features:
+  - Accepts any custom ratio.
 ---
 
 ## Installation
@@ -18,34 +20,34 @@ npm install @radix-ui/react-aspect-ratio
 Import the component.
 
 ```jsx
-import { AspectRatio } from '@radix-ui/react-aspect-ratio';
+import * as AspectRatio from '@radix-ui/react-aspect-ratio';
 
-export default () => <AspectRatio />;
+export default () => <AspectRatio.Root />;
 ```
 
 ## Basic example
 
-Create your aspect ratio component from the primitive.
+Use the aspect ratio primitive.
 
 ```jsx live manual
-import * as AspectRatioPrimitive from '@radix-ui/react-aspect-ratio';
+import * as AspectRatio from '@radix-ui/react-aspect-ratio';
 
 export default () => (
-  <AspectRatioPrimitive.Root>
+  <AspectRatio.Root>
     <img
-      src="https://images.unsplash.com/photo-1605030753481-bb38b08c384a?&auto=format&fit=crop&w=800&q=80"
+      src="https://images.unsplash.com/photo-1605030753481-bb38b08c384a"
       alt="mountain view"
       style={{ objectFit: 'cover', width: '100%', height: '100%' }}
     />
-  </AspectRatioPrimitive.Root>
+  </AspectRatio.Root>
 );
 ```
 
 ## API Reference
 
-### AspectRatio
+### Root
 
-`AspectRatio` is the root component.
+Contains the content you want to constrain to a given ratio.
 
 <PropsTable
   data={[
@@ -63,15 +65,15 @@ export default () => (
 ### 16 x 9 ratio
 
 ```jsx live manual compact
-import * as AspectRatioPrimitive from '@radix-ui/react-aspect-ratio';
+import * as AspectRatio from '@radix-ui/react-aspect-ratio';
 
 export default () => (
-  <AspectRatioPrimitive.Root ratio={16 / 9}>
+  <AspectRatio.Root ratio={16 / 9}>
     <img
-      src="https://images.unsplash.com/photo-1605030753481-bb38b08c384a?&auto=format&fit=crop&w=800&q=80"
+      src="https://images.unsplash.com/photo-1605030753481-bb38b08c384a"
       alt="mountain view"
       style={{ objectFit: 'cover', width: '100%', height: '100%' }}
     />
-  </AspectRatioPrimitive.Root>
+  </AspectRatio.Root>
 );
 ```

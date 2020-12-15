@@ -1,8 +1,8 @@
-export * as AccessibleIconPrimitive from '@radix-ui/react-accessible-icon';
+export * as AccessibleIcon from '@radix-ui/react-accessible-icon';
 export * as AccordionPrimitive from '@radix-ui/react-accordion';
 export * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
-export * as AnnouncePrimitive from '@radix-ui/react-announce';
-export * as AspectRatioPrimitive from '@radix-ui/react-aspect-ratio';
+export * as Announce from '@radix-ui/react-announce';
+export * as AspectRatio from '@radix-ui/react-aspect-ratio';
 export * as AvatarPrimitive from '@radix-ui/react-avatar';
 export * as CollapsiblePrimitive from '@radix-ui/react-collapsible';
 export * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
