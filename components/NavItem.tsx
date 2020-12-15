@@ -39,7 +39,7 @@ export function NavItem({ children, active, disabled, href, ...props }: NavItemP
           ':focus': {
             outline: 'none',
             boxShadow: '0 0 0 1px $violet500',
-          }
+          },
         }}
       >
         <Text

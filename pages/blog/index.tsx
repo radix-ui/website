@@ -1,5 +1,16 @@
 import NextLink from 'next/link';
-import { Box, Container, Text, Title, Subtitle, Heading, Flex, Link, Badge, Section } from '@modulz/design-system';
+import {
+  Box,
+  Container,
+  Text,
+  Title,
+  Subtitle,
+  Heading,
+  Flex,
+  Link,
+  Badge,
+  Section,
+} from '@modulz/design-system';
 import { RadixLogo } from '../../components/RadixLogo';
 import { blogPosts } from '../../utils/blogPosts';
 import { parseISO, format } from 'date-fns';
@@ -42,14 +53,10 @@ export default function Home() {
         </NextLink>
       </Box>
       <Container size="3" css={{ textAlign: 'center', mb: '$4' }}>
-        <Title css={{ mb: '$4' }}>
-          Blog
-        </Title>
-        <Subtitle>
-          More about what we're up to.
-        </Subtitle>
+        <Title css={{ mb: '$4' }}>Blog</Title>
+        <Subtitle>More about what we're up to.</Subtitle>
       </Container>
-      
+
       <Section size="3">
         <Container size="2">
           {blogPosts.map((frontMatter, index) => (
@@ -63,9 +70,7 @@ export default function Home() {
               <Box css={{ mb: '$7' }}>
                 <NextLink href={`/${frontMatter.id}`} passHref>
                   <Link variant="contrast">
-                    <Heading>
-                      {frontMatter.title}
-                    </Heading>
+                    <Heading>{frontMatter.title}</Heading>
                   </Link>
                 </NextLink>
                 <Flex css={{ mt: '$3', alignItems: 'center' }}>

@@ -8,17 +8,17 @@ const anim = css.keyframes({
 });
 
 const scale = css.keyframes({
-  '0%': { transform: 'ScaleX(0)', },
-  '18%': { transform: 'ScaleX(0)', },
-  '20%': { transform: 'ScaleX(.25)', },
-  '48%': { transform: 'ScaleX(.25)', },
-  '50%': { transform: 'ScaleX(.4)', },
-  '52%': { transform: 'ScaleX(.5)', },
-  '68%': { transform: 'ScaleX(.5)', },
-  '70%': { transform: 'ScaleX(.75)', },
-  '90%': { transform: 'ScaleX(.75)', },
-  '92%': { transform: 'ScaleX(1)', },
-  '100%': { transform: 'ScaleX(1)', },
+  '0%': { transform: 'ScaleX(0)' },
+  '18%': { transform: 'ScaleX(0)' },
+  '20%': { transform: 'ScaleX(.25)' },
+  '48%': { transform: 'ScaleX(.25)' },
+  '50%': { transform: 'ScaleX(.4)' },
+  '52%': { transform: 'ScaleX(.5)' },
+  '68%': { transform: 'ScaleX(.5)' },
+  '70%': { transform: 'ScaleX(.75)' },
+  '90%': { transform: 'ScaleX(.75)' },
+  '92%': { transform: 'ScaleX(1)' },
+  '100%': { transform: 'ScaleX(1)' },
 });
 
 const ProgressContainer = () => {
@@ -32,7 +32,7 @@ const ProgressContainer = () => {
         flexShrink: 0,
         width: 200,
         display: 'flex',
-        overflow: 'hidden'
+        overflow: 'hidden',
       }}
     >
       <Box
@@ -55,4 +55,3 @@ const ProgressContainer = () => {
 export const ProgressHero = () => {
   return <ProgressContainer />;
 };
-

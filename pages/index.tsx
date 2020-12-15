@@ -55,7 +55,9 @@ export default function Home() {
 
       <Section size="3" css={{ pt: '$6' }}>
         <Container size="3" css={{ textAlign: 'center' }}>
-          <Title css={{ mb: '$4' }}>Everything you need to build a design system, website or web app.</Title>
+          <Title css={{ mb: '$4' }}>
+            Everything you need to build a design system, website or web app.
+          </Title>
         </Container>
 
         <Container size="2" css={{ textAlign: 'center' }}>
@@ -66,16 +68,14 @@ export default function Home() {
           <Flex css={{ jc: 'center', mt: '$7' }}>
             <NextLink href="/blog" passHref>
               <Link variant="blue">
-                <Text size="6">
-                  View documentation
-                </Text>
+                <Text size="6">View documentation</Text>
               </Link>
             </NextLink>
           </Flex>
         </Container>
       </Section>
 
-      <Flex css={{ justifyContent: 'center', }}>
+      <Flex css={{ justifyContent: 'center' }}>
         <Separator size="2" css={{ flexShrink: 0, width: '45px' }} />
       </Flex>
 
@@ -117,16 +117,14 @@ export default function Home() {
                   Primitives
                 </Subheading>
                 <Paragraph css={{ color: '$gray900' }}>
-                Low-level, accessible and unstyled React Components. The foundation of our Design
-                System.
+                  Low-level, accessible and unstyled React Components. The foundation of our Design
+                  System.
                 </Paragraph>
               </Card>
             </NextLink>
 
             <Card as="a" variant="ghost" href="#" css={{ p: '$5' }}>
-              <Subheading css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
-                Color
-              </Subheading>
+              <Subheading css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>Color</Subheading>
               <Paragraph css={{ color: '$gray900' }}>
                 Browse an extensive collection of themes, including dark mode. Fully tested and
                 interoperable with Radix Components.
@@ -135,12 +133,10 @@ export default function Home() {
 
             <NextLink passHref href="/primitives">
               <Card as="a" variant="ghost" css={{ p: '$5' }}>
-                <Subheading css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
-                  Reset
-                </Subheading>
+                <Subheading css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>Reset</Subheading>
                 <Paragraph css={{ color: '$gray900' }}>
-                Low-level, accessible and unstyled React Components. The foundation of our Design
-                System.
+                  Low-level, accessible and unstyled React Components. The foundation of our Design
+                  System.
                 </Paragraph>
               </Card>
             </NextLink>
@@ -151,16 +147,14 @@ export default function Home() {
                   Tenplates
                 </Subheading>
                 <Paragraph css={{ color: '$gray900' }}>
-                Low-level, accessible and unstyled React Components. The foundation of our Design
-                System.
+                  Low-level, accessible and unstyled React Components. The foundation of our Design
+                  System.
                 </Paragraph>
               </Card>
             </NextLink>
 
             <Card as="a" variant="ghost" href="#" css={{ p: '$5' }}>
-              <Subheading css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
-                Icons
-              </Subheading>
+              <Subheading css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>Icons</Subheading>
 
               <Text
                 as="p"
