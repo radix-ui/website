@@ -28,15 +28,20 @@ export default () => <AspectRatio />;
 Create your aspect ratio component from the primitive.
 
 ```jsx live manual
+// import { styled } from 'path-to/stitches.config';
 import * as AspectRatioPrimitive from '@radix-ui/react-aspect-ratio';
 
+const AspectRatio = styled(AspectRatioPrimitive.Root, {
+  overflow: 'hidden',
+});
+
 export default () => (
-  <AspectRatioPrimitive.Root>
+  <AspectRatio>
     <img
       src="https://images.unsplash.com/photo-1605030753481-bb38b08c384a?&auto=format&fit=crop&w=800&q=80"
       alt="mountain view"
     />
-  </AspectRatioPrimitive.Root>
+  </AspectRatio>
 );
 ```
 
