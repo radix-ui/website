@@ -15,7 +15,8 @@ import {
   Flex,
   Separator,
   Link,
-  Badge } from '@modulz/design-system';
+  Badge,
+} from '@modulz/design-system';
 import { ArrowLeftIcon } from '@modulz/radix-icons';
 import { parseISO, format } from 'date-fns';
 import { FrontMatter } from '../types';
@@ -56,7 +57,7 @@ export default function BlogLayout({ children, frontMatter }: LayoutProps) {
         {frontMatter.title}
       </Text>
 
-      <Subtitle css={{ mt: '$2', mb: '$5' }}>
+      <Subtitle css={{ mt: '$2', mb: '$5' }} as={'p' as any} role="doc-subtitle">
         {frontMatter.description}
       </Subtitle>
 

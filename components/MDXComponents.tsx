@@ -44,17 +44,16 @@ const LinkHeading = ({
 
 export const MDXComponents = {
   h1: (props) => <DS.Title {...props} css={{ mb: '$1', ...props.css }} />,
-  h2: (props) => <DS.Subtitle {...props} css={{ mt: '$2', mb: '$6', ...props.css }} />,
-  h3: ({ children, id, ...props }) => (
+  h2: ({ children, id, ...props }) => (
     <LinkHeading id={id} css={{ mt: '$7', mb: '$2', ...props.css }}>
-      <DS.Heading {...props} id={id} data-heading style={{ scrollMarginTop: '45px' }}>
+      <DS.Heading {...props} as={'h2' as any} id={id} data-heading style={{ scrollMarginTop: '45px' }}>
         {children}
       </DS.Heading>
     </LinkHeading>
   ),
-  h4: ({ children, id, ...props }) => (
+  h3: ({ children, id, ...props }) => (
     <LinkHeading id={id} css={{ mt: '$5', mb: '$1', ...props.css }}>
-      <DS.Subheading {...props} id={id} data-heading style={{ scrollMarginTop: '45px' }}>
+      <DS.Subheading {...props} as={'h3' as any} level={3} id={id} data-heading style={{ scrollMarginTop: '45px' }}>
         {children}
       </DS.Subheading>
     </LinkHeading>

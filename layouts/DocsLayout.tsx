@@ -77,7 +77,9 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
           {frontMatter.title}
         </Text>
 
-        <Subtitle css={{ mt: '$2', mb: '$7' }}>{frontMatter.description}</Subtitle>
+        <Subtitle css={{ mt: '$2', mb: '$7' }} as={'p' as any} role="doc-subtitle">
+          {frontMatter.description}
+        </Subtitle>
 
         <div ref={heroSlotRef} />
 
@@ -245,7 +247,7 @@ function QuickNav() {
 
   // Function to determine the Heading Level based on `nodeName` (H2, H3, etc)
   const getLevel = (nodeName) => {
-    const startLevel = 3;
+    const startLevel = 2;
     return Number(nodeName.replace('H', '')) - startLevel;
   };
 
