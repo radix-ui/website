@@ -116,6 +116,14 @@ Contains all the parts of an accordion.
 <PropsTable
   data={[
     {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
       name: 'value',
       required: false,
       type: 'string',
@@ -153,14 +161,6 @@ Contains all the parts of an accordion.
       description:
         'Event handler called when the expanded state of an item changes.',
     },
-    {
-      name: 'as',
-      required: false,
-      type: 'React.ElementType',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
   ]}
 />
 
@@ -170,6 +170,14 @@ Contains all the parts of a collapsible section.
 
 <PropsTable
   data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
     {
       name: 'disabled',
       required: false,
@@ -187,14 +195,6 @@ Contains all the parts of a collapsible section.
       required: true,
       type: 'string',
       description: 'A unique value for the item.',
-    },
-    {
-      name: 'as',
-      required: false,
-      type: 'React.ElementType',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
   ]}
 />

@@ -113,20 +113,20 @@ The image to render. By default it will only render when it has loaded. You can 
 <PropsTable
   data={[
     {
-      name: 'onLoadingStatusChange',
-      type:
-        '(status: "idle" | "loading" | "loaded" | "error") => void',
-      typeSimple: 'function',
-      description:
-        'A callback providing information about the loading status of the image. This is useful in case you want to control more precisely what to render as the image is loading.',
-    },
-    {
       name: 'as',
       required: false,
       type: 'React.ElementType',
       default: 'img',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'onLoadingStatusChange',
+      type:
+        '(status: "idle" | "loading" | "loaded" | "error") => void',
+      typeSimple: 'function',
+      description:
+        'A callback providing information about the loading status of the image. This is useful in case you want to control more precisely what to render as the image is loading.',
     },
   ]}
 />
@@ -138,18 +138,18 @@ An element that renders when the image hasn't loaded. This means whilst it's loa
 <PropsTable
   data={[
     {
-      name: 'delayMs',
-      type: 'number',
-      description:
-        'Useful for delaying rendering so it only appears for those with slower connections.',
-    },
-    {
       name: 'as',
       required: false,
       type: 'React.ElementType',
       default: 'span',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'delayMs',
+      type: 'number',
+      description:
+        'Useful for delaying rendering so it only appears for those with slower connections.',
     },
   ]}
 />

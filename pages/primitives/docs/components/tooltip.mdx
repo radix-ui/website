@@ -141,6 +141,14 @@ The component that pops out when the tooltip is open.
 <PropsTable
   data={[
     {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
       name: 'aria-label',
       type: 'string',
       description: (
@@ -242,14 +250,6 @@ The component that pops out when the tooltip is open.
         </span>
       ),
     },
-    {
-      name: 'as',
-      required: false,
-      type: 'React.ElementType',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
   ]}
 />
 
@@ -259,6 +259,14 @@ An optional arrow element to render alongside the tooltip. This can be used to h
 
 <PropsTable
   data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'svg',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the entire SVG and all of its paths.',
+    },
     {
       name: 'width',
       type: 'number',
@@ -281,14 +289,6 @@ An optional arrow element to render alongside the tooltip. This can be used to h
           <Code>Tooltip.Content</Code> edge.
         </span>
       ),
-    },
-    {
-      name: 'as',
-      required: false,
-      type: 'React.ElementType',
-      default: 'svg',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the entire SVG and all of its paths.',
     },
   ]}
 />

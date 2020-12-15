@@ -166,18 +166,18 @@ A layer that covers the inert portion of the view when the dialog is open.
 <PropsTable
   data={[
     {
-      name: 'forceMount',
-      type: 'boolean',
-      description:
-        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
-    },
-    {
       name: 'as',
       required: false,
       type: 'React.ElementType',
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description:
+        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
     },
   ]}
 />
@@ -188,6 +188,14 @@ Contains content to be rendered when the dialog is open.
 
 <PropsTable
   data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
     {
       name: 'forceMount',
       type: 'boolean',
@@ -240,14 +248,6 @@ Contains content to be rendered when the dialog is open.
           <Code>event.preventDefault</Code>.
         </span>
       ),
-    },
-    {
-      name: 'as',
-      required: false,
-      type: 'React.ElementType',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
   ]}
 />

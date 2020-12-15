@@ -102,6 +102,14 @@ Contains all the parts of a switch.
 <PropsTable
   data={[
     {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'button',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
       name: 'defaultChecked',
       type: 'boolean',
       description:
@@ -170,14 +178,6 @@ Contains all the parts of a switch.
           <Code>name</Code>.
         </span>
       ),
-    },
-    {
-      name: 'as',
-      required: false,
-      type: 'React.ElementType',
-      default: 'button',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
   ]}
 />

@@ -154,6 +154,14 @@ The component that pops out in an open context menu.
 <PropsTable
   data={[
     {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
       name: 'disableOutsidePointerEvents',
       type: 'boolean',
       default: 'true',
@@ -276,14 +284,6 @@ The component that pops out in an open context menu.
         </span>
       ),
     },
-    {
-      name: 'as',
-      required: false,
-      type: 'React.ElementType',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
   ]}
 />
 
@@ -293,6 +293,14 @@ The component that contains the context menu items.
 
 <PropsTable
   data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
     {
       name: 'disabled',
       type: 'boolean',
@@ -328,14 +336,6 @@ The component that contains the context menu items.
           non-textual content inside.
         </span>
       ),
-    },
-    {
-      name: 'as',
-      required: false,
-      type: 'React.ElementType',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
   ]}
 />
@@ -380,6 +380,14 @@ An item that can be controlled and rendered like a checkbox.
 
 <PropsTable
   data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
     {
       name: 'checked',
       type: 'boolean',
@@ -436,14 +444,6 @@ An item that can be controlled and rendered like a checkbox.
         </span>
       ),
     },
-    {
-      name: 'as',
-      required: false,
-      type: 'React.ElementType',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
   ]}
 />
 
@@ -453,6 +453,14 @@ Used to group multiple `ContextMenu.RadioItem`s.
 
 <PropsTable
   data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
     {
       name: 'value',
       type: 'string',
@@ -464,14 +472,6 @@ Used to group multiple `ContextMenu.RadioItem`s.
       typeSimple: 'function',
       description: 'Event handler called when the value changes.',
     },
-    {
-      name: 'as',
-      required: false,
-      type: 'React.ElementType',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
   ]}
 />
 
@@ -481,6 +481,14 @@ An item that can be controlled and rendered like a radio.
 
 <PropsTable
   data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
     {
       name: 'value',
       type: 'string',
@@ -523,14 +531,6 @@ An item that can be controlled and rendered like a radio.
         </span>
       ),
     },
-    {
-      name: 'as',
-      required: false,
-      type: 'React.ElementType',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
   ]}
 />
 
@@ -541,6 +541,14 @@ Renders when the parent `DropdownMenu.CheckboxItem` or `DropdownMenu.RadioItem` 
 <PropsTable
   data={[
     {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'span',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
       name: 'forceMount',
       type: 'boolean',
       description: (
@@ -549,14 +557,6 @@ Renders when the parent `DropdownMenu.CheckboxItem` or `DropdownMenu.RadioItem` 
           when controlling animation with React animation libraries.
         </span>
       ),
-    },
-    {
-      name: 'as',
-      required: false,
-      type: 'React.ElementType',
-      default: 'span',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
   ]}
 />

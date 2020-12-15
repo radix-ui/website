@@ -143,6 +143,14 @@ Contains all the parts of a scroll area.
 <PropsTable
   data={[
     {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
       name: 'overflowX',
       type: '"auto" | "hidden" | "scroll" | "visible"',
       typeSimple: 'enum',
