@@ -12,13 +12,12 @@ const { colors } = DStheme;
 const theme: any = {
   plain: {
     color: 'var(--colors-hiContrast)',
-    backgroundColor: 'transparent',
   },
   styles: [
     {
       types: ['comment', 'prolog', 'doctype', 'cdata'],
       style: {
-        color: colors.$gray900,
+        color: colors.$gray800,
         fontStyle: 'italic',
       },
     },
@@ -31,13 +30,13 @@ const theme: any = {
     {
       types: ['string', 'attr-value'],
       style: {
-        color: colors.$purple900,
+        color: colors.$violet900,
       },
     },
     {
       types: ['punctuation', 'operator'],
       style: {
-        color: colors.$gray900,
+        color: colors.$gray800,
       },
     },
     {
@@ -66,7 +65,7 @@ const theme: any = {
     {
       types: ['function', 'deleted', 'tag'],
       style: {
-        color: colors.$orange900,
+        color: colors.$bronze900,
       },
     },
     {
@@ -78,7 +77,7 @@ const theme: any = {
     {
       types: ['tag', 'selector', 'keyword'],
       style: {
-        color: colors.$blue900,
+        color: colors.$turquoise900,
       },
     },
   ],
@@ -101,7 +100,7 @@ const StyledLivePreview = ({ live, ...props }: { live?: boolean }) => (
       // zIndex: 3,
       overflow: 'hidden',
       p: '$4',
-      boxShadow: `inset 0 0 0 1px $gray500`,
+      boxShadow: `inset 0 0 0 1px $gray600`,
       borderTopLeftRadius: '$2',
       borderTopRightRadius: '$2',
       borderBottomLeftRadius: live ? '0' : '$2',
@@ -116,12 +115,13 @@ const CodeContainer = ({ live, children }: { live?: boolean; children: React.Rea
   <Box
     css={{
       p: '$4',
+      backgroundColor: 'var(--colors-gray100)',
       borderTopLeftRadius: live ? '0' : '$2',
       borderTopRightRadius: live ? '0' : '$2',
       borderBottomLeftRadius: '$2',
       borderBottomRightRadius: '$2',
       marginTop: -1,
-      boxShadow: `inset 0 0 0 1px ${colors.$gray500}`,
+      boxShadow: `inset 0 0 0 1px ${colors.$gray600}`,
       textarea: { outline: 0 },
       'textarea::selection': {
         backgroundColor: 'hsla(208, 100%, 97%,1)',
