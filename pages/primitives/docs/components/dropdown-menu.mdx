@@ -114,42 +114,6 @@ export default () => (
 );
 ```
 
-## Accessibility
-
-Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#menubutton) and uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/menu-button/menu-button-actions.html) to manage focus movement among menu items.
-
-### Keyboard Interactions
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['Space'],
-      description: 'Activates the focused item.',
-    },
-    {
-      keys: ['Enter'],
-      description: 'Activates the focused item.',
-    },
-    {
-      keys: ['ArrowDown'],
-      description: 'Moves focus to the next item.',
-    },
-    {
-      keys: ['ArrowUp'],
-      description: 'Moves focus to the previous item.',
-    },
-    {
-      keys: ['Esc'],
-      description: (
-        <span>
-          Closes the dropdown menu and moves focus to{' '}
-          <Code>DropdownMenu.Trigger</Code>.
-        </span>
-      ),
-    },
-  ]}
-/>
-
 <Note>
 
 **Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
@@ -731,6 +695,42 @@ Used to visually separate items in the dropdown menu.
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+## Accessibility
+
+Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#menubutton) and uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/menu-button/menu-button-actions.html) to manage focus movement among menu items.
+
+### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space'],
+      description: 'Activates the focused item.',
+    },
+    {
+      keys: ['Enter'],
+      description: 'Activates the focused item.',
+    },
+    {
+      keys: ['ArrowDown'],
+      description: 'Moves focus to the next item.',
+    },
+    {
+      keys: ['ArrowUp'],
+      description: 'Moves focus to the previous item.',
+    },
+    {
+      keys: ['Esc'],
+      description: (
+        <span>
+          Closes the dropdown menu and moves focus to{' '}
+          <Code>DropdownMenu.Trigger</Code>.
+        </span>
+      ),
     },
   ]}
 />
