@@ -24,7 +24,7 @@ export function NavItem({ children, active, disabled, href, ...props }: NavItemP
         as={disabled ? 'div' : 'a'}
         css={{
           textDecoration: 'none',
-          color: disabled ? '$gray700' : '$hiContrast',
+          color: disabled ? '$gray800' : '$hiContrast',
           display: 'flex',
           alignItems: 'center',
           py: '$2',
