@@ -157,16 +157,19 @@ export const MDXComponents = {
   ),
   Note: (props) => (
     <DS.Box
+      as="aside"
       css={{
         mt: '$6',
-        mb: '$5',
-        p: '$4',
-        bc: '$purple100',
+        mb: '$3',
+        py: '$2',
+        px: '$3',
+        bc: '$violet100',
+        border: '1px solid $violet400',
         borderRadius: '$2',
         '& p': {
           fontSize: '$3',
-          color: '$purple900',
-          lineHeight: '25px',
+          color: '$violet900',
+          lineHeight: '21px',
           margin: 0,
         },
       }}
