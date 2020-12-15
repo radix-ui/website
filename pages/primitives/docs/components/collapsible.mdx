@@ -17,28 +17,48 @@ Install the component from your command line.
 npm install @radix-ui/react-collapsible
 ```
 
-Then import the component in your component file.
+### Anatomy
+
+Import the components and piece the parts together.
 
 ```jsx
-// Avatar.tsx
-import * as CollapsiblePrimitive from '@radix-ui/react-collapsible';
+import {
+  Collapsible,
+  Button,
+  Content,
+} from '@radix-ui/react-collapsible';
+
+export default () => (
+  <Collapsible>
+    <Button />
+    <Content />
+  </Collapsible>
+);
 ```
 
 ### Basic example
 
-```jsx live manual
-// Collapsible.tsx
-// import * as CollapsiblePrimitive from '@radix-ui/react-collapsible';
-// import { Button } from '@radix-ui/ds-button';
+Create your styled collapsible component from the primitive parts.
 
-render(
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
+
+```jsx live manual
+// import { styled } from 'path-to/stitches.config';
+import * as CollapsiblePrimitive from '@radix-ui/react-collapsible';
+
+const Content = styled(CollapsiblePrimitive.CollapsibleContent, {
+  padding: 10,
+  marginTop: 10,
+  backgroundColor: 'gainsboro',
+  borderRadius: 6,
+});
+
+export default () => (
   <CollapsiblePrimitive.Root>
-    <CollapsiblePrimitive.CollapsibleButton as={Button}>
+    <CollapsiblePrimitive.CollapsibleButton>
       Button
     </CollapsiblePrimitive.CollapsibleButton>
-    <CollapsiblePrimitive.CollapsibleContent>
-      Content 1
-    </CollapsiblePrimitive.CollapsibleContent>
+    <Content>Content 1</Content>
   </CollapsiblePrimitive.Root>
 );
 ```
@@ -58,7 +78,8 @@ render(
         <span>
           The open state of the <Code>Collapsible</Code> when it is
           initially rendered. Use <Code>defaultOpen</Code> if you do
-          not need to control the state of an <Code>Collapsible</Code>.
+          not need to control the state of an <Code>Collapsible</Code>
+          .
         </span>
       ),
     },
