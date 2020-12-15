@@ -22,7 +22,7 @@ import { DropdownMenuHero } from '../../../../components/Hero/DropdownMenuHero';
   <DropdownMenuHero />
 </HeroSlot>
 
-### Installation
+## Installation
 
 Install the component from your command line.
 
@@ -30,7 +30,7 @@ Install the component from your command line.
 npm install @radix-ui/react-dropdown-menu
 ```
 
-### Anatomy
+## Anatomy
 
 Import the components and piece the parts together.
 
@@ -73,7 +73,7 @@ export default () => (
 );
 ```
 
-### Basic example
+## Basic example
 
 Create your styled dropdown menu component from the primitive parts.
 
@@ -125,11 +125,11 @@ export default () => (
 );
 ```
 
-### Accessibility
+## Accessibility
 
 Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#menubutton) and uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/menu-button/menu-button-actions.html) to manage focus movement among menu items.
 
-#### Keyboard Interactions
+### Keyboard Interactions
 
 <KeyboardTable
   data={[
@@ -161,9 +161,9 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-a
   ]}
 />
 
-### API Reference
+## API Reference
 
-#### DropdownMenu
+### DropdownMenu
 
 `DropdownMenu` is the root component.
 
@@ -217,11 +217,11 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-a
   ]}
 />
 
-#### Trigger
+### Trigger
 
 The button that triggers the `DropdownMenu`. It is also used as the anchor the `DropdownMenuContent` is positioned against.
 
-#### Content
+### Content
 
 The component that pops out in an open `DropdownMenu`.
 
@@ -395,7 +395,7 @@ The component that pops out in an open `DropdownMenu`.
   ]}
 />
 
-#### Arrow
+### Arrow
 
 The optional arrow element to render for the `DropdownMenu`. This can be used to help visually link the `DropdownMenuTrigger` with the `DropdownMenuContent`. Must live inside `DropdownMenuContent`.
 
@@ -435,7 +435,7 @@ The optional arrow element to render for the `DropdownMenu`. This can be used to
   ]}
 />
 
-#### Item
+### Item
 
 Used to render items in the `DropdownMenu`.
 
@@ -482,15 +482,15 @@ Used to render items in the `DropdownMenu`.
   ]}
 />
 
-#### Group
+### Group
 
 Used to group multiple `DropdownItem`.
 
-#### Label
+### Label
 
 Used to render a label. It won't be focusable using arrow keys.
 
-#### CheckboxItem
+### CheckboxItem
 
 A more specific `DropdownItem` which can be controlled like a `Checkbox` and also has an indicator (`DropdownItemIndicator`). This conceptually functions like a standard `Checkbox`.
 
@@ -559,7 +559,7 @@ A more specific `DropdownItem` which can be controlled like a `Checkbox` and als
   ]}
 />
 
-#### RadioGroup
+### RadioGroup
 
 A more specific `DropdownGroup` which also handles a value out of multiple potential `DropdownRadioItem`. This conceptually functions like a standard `RadioGroup`.
 
@@ -589,7 +589,7 @@ A more specific `DropdownGroup` which also handles a value out of multiple poten
   ]}
 />
 
-#### RadioItem
+### RadioItem
 
 A more specific `DropdownItem` which conceptually acts like a standard `Radio`. It has an indicator (`DropdownItemIndicator`).
 
@@ -646,7 +646,7 @@ A more specific `DropdownItem` which conceptually acts like a standard `Radio`. 
   ]}
 />
 
-#### ItemIndicator
+### ItemIndicator
 
 Renders when the parent `DropdownCheckboxItem` or `DropdownRadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
 
@@ -665,6 +665,6 @@ Renders when the parent `DropdownCheckboxItem` or `DropdownRadioItem` is checked
   ]}
 />
 
-#### Separator
+### Separator
 
 Used to visually separate items in a `DropdownMenu`.

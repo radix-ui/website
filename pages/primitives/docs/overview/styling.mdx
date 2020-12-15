@@ -10,25 +10,25 @@ Regardless of your preferred styling solution, this page will cover how to style
 
 ---
 
-### Overview
+## Overview
 
-#### Functional styles
+### Functional styles
 
 You're in charge of every single style that gets applies. This also includes functional styles. For example, by default a [Dialog Overlay](../components/dialog) won't be covering the entire viewport.
 
-#### Data attributes
+### Data attributes
 
 All components have a `data-radix-*` attribute, matching its name. For example, the [Separator](../components/separator) component will include the `data-radix-separator` attribute.
 
 When components are stateful, their state will be exposed in a `data-state` attribute. For example, when an [Accordion Item](../components/dialog) is opened, it'll include the `data-state="open"` attribute.
 
-#### Classes
+### Classes
 
 All components accept a `className` prop. This class will be passed through to the DOM element. You can use it in CSS as expected.
 
-### CSS
+## CSS
 
-#### Styling a part
+### Styling a part
 
 You can style a component part by targering its `data-radix-*` attribute.
 
@@ -42,7 +42,7 @@ You can style a component part by targering its `data-radix-*` attribute.
 }
 ```
 
-#### Styling a state
+### Styling a state
 
 You can target the `data-state` attribute to style states.
 
@@ -56,9 +56,9 @@ You can target the `data-state` attribute to style states.
 }
 ```
 
-### CSS-in-JS
+## CSS-in-JS
 
-#### Styling a part
+### Styling a part
 
 You can style a component part by wrapping it in a `styled` function (or similar).
 
@@ -77,7 +77,7 @@ const StyledPanel = styled(Accordion.Panel, {
 });
 ```
 
-#### Styling a state
+### Styling a state
 
 You can target the `data-state` attribute to style states.
 
@@ -94,7 +94,7 @@ const StyledItem = styled(Accordion.Item, {
 });
 ```
 
-#### Demo
+### Demo
 
 Here's an example of how you can style the [Accordion](../components/accordion) component with CSS-in-JS.
 
@@ -162,7 +162,7 @@ export default () => (
 );
 ```
 
-### Conclusion
+## Conclusion
 
 Radix Primitives were designed to encapsulate accessibility concerns and other complex functionalities, while ensuring consumers have full control over the look and feel.
 
