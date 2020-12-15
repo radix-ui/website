@@ -1,24 +1,25 @@
 ---
-title: Context Menu
-name: context-menu
+title: Dropdown Menu
+name: dropdown-menu
 version: 0.0.1-1
-description: Displays a menu located at the pointer, triggered by a right-click.
-navGroup: components
-aria: https://www.w3.org/TR/wai-aria-practices-1.2/#menu
+description: Displays a menu to the user—such as a set of actions or functions—triggered by a button.
+aria: https://www.w3.org/TR/wai-aria-practices-1.2/#menubutton
 features:
+  - Can be controlled or uncontrolled.
   - Supports items, labels, groups of items.
   - Supports checkable items (single or multiple).
   - Customise side, alignment, offsets, collision handling.
+  - Optionally render a pointing arrow.
   - Focus is fully managed.
   - Full keyboard navigation.
   - Typeahead support.
   - Dismissing and layering behavior is highly customisable.
 ---
 
-import { ContextMenuHero } from '../../../components/Hero/ContextMenuHero';
+import { DropdownMenuHero } from '../../../../components/Hero/DropdownMenuHero';
 
 <HeroSlot>
-  <ContextMenuHero />
+  <DropdownMenuHero />
 </HeroSlot>
 
 ### Installation
@@ -26,7 +27,7 @@ import { ContextMenuHero } from '../../../components/Hero/ContextMenuHero';
 Install the component from your command line.
 
 ```bash
-npm install @radix-ui/react-context-menu
+npm install @radix-ui/react-dropdown-menu
 ```
 
 ### Anatomy
@@ -46,7 +47,8 @@ import {
   RadioItem,
   ItemIndicator,
   Separator,
-} from '@radix-ui/react-context-menu';
+  Arrow,
+} from '@radix-ui/react-dropdown-menu';
 
 export default () => (
   <ContextMenu>
@@ -68,15 +70,15 @@ export default () => (
 
 ### Basic example
 
-Create your styled context menu component from the primitive parts.
+Create your styled dropdown menu component from the primitive parts.
 
 **Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
 
 ```jsx live manual
 // import { styled } from 'path-to/stitches.config';
-import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
+import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 
-const Content = styled(ContextMenuPrimitive.Content, {
+const Content = styled(DropdownMenuPrimitive.Content, {
   minWidth: 130,
   backgroundColor: 'white',
   borderRadius: 6,
@@ -84,7 +86,7 @@ const Content = styled(ContextMenuPrimitive.Content, {
   boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
 });
 
-const Item = styled(ContextMenuPrimitive.Item, {
+const Item = styled(DropdownMenuPrimitive.Item, {
   fontSize: 13,
   padding: '5px 10px',
   borderRadius: 3,
@@ -97,59 +99,140 @@ const Item = styled(ContextMenuPrimitive.Item, {
   },
 });
 
+const Arrow = styled(DropdownMenuPrimitive.Arrow, {
+  fill: 'white',
+});
+
 export default () => (
-  <ContextMenuPrimitive.Root>
-    <ContextMenuPrimitive.Trigger>
-      <div
-        style={{
-          backgroundColor: 'gainsboro',
-          padding: 100,
-          textAlign: 'center',
-        }}
-      >
-        Right click anywhere
-      </div>
-    </ContextMenuPrimitive.Trigger>
+  <DropdownMenuPrimitive.Root>
+    <DropdownMenuPrimitive.Trigger>
+      Trigger
+    </DropdownMenuPrimitive.Trigger>
     <Content>
       <Item>Undo</Item>
       <Item>Redo</Item>
       <Item>Cut</Item>
       <Item>Copy</Item>
       <Item>Paste</Item>
+      <Arrow />
     </Content>
-  </ContextMenuPrimitive.Root>
+  </DropdownMenuPrimitive.Root>
 );
 ```
 
+### Accessibility
+
+Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#menubutton) and uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/menu-button/menu-button-actions.html) to manage focus movement among menu items.
+
+#### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space'],
+      description: <span>Activates the focused item.</span>,
+    },
+    {
+      keys: ['Enter'],
+      description: <span>Activates the focused item.</span>,
+    },
+    {
+      keys: ['ArrowDown'],
+      description: <span>Moves focus to the next item.</span>,
+    },
+    {
+      keys: ['ArrowUp'],
+      description: <span>Moves focus to the previous item.</span>,
+    },
+    {
+      keys: ['Esc'],
+      description: (
+        <span>
+          Closes <Code>Content</Code> and moves focus to{' '}
+          <Code>Trigger</Code>.
+        </span>
+      ),
+    },
+  ]}
+/>
+
 ### API Reference
 
-Adheres to the [Menu WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#menu) and uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/menu-button/menu-button-actions.html) to manage focus movement among menu items.
+#### DropdownMenu
 
-#### ContextMenu
+`DropdownMenu` is the root component.
 
-`ContextMenu` is the root component.
+<PropsTable
+  data={[
+    {
+      name: 'defaultOpen',
+      type: 'boolean',
+      description: (
+        <span>
+          The open state of the <Code>DropdownMenu</Code> when it is
+          initially rendered. Use <Code>defaultOpen</Code> if you do
+          not need to control the state of an{' '}
+          <Code>DropdownMenu</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'open',
+      type: 'boolean',
+      description: (
+        <span>
+          The controlled open state of the <Code>DropdownMenu</Code>.
+          Must be used in conjunction with <Code>onOpenChange</Code>`.
+        </span>
+      ),
+    },
+    {
+      name: 'onOpenChange',
+      type: '(open: boolean) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          The callback that fires when the state of the{' '}
+          <Code>DropdownMenu</Code> changes.
+        </span>
+      ),
+    },
+    {
+      name: 'id',
+      type: 'string',
+      description: (
+        <span>
+          A unique identifier for the <Code>DropdownMenu</Code>{' '}
+          component. The <Code>id</Code> is used to generate DOM id
+          attributes for nested components. If no <Code>id</Code> prop
+          is provided, a generated id will be used.
+        </span>
+      ),
+    },
+  ]}
+/>
 
 #### Trigger
 
-`ContextMenuTrigger` is the area that triggers the `ContextMenu`. Wrap this around the thing you want your `ContextMenu` to open when right-clicking (or using the relevant keyboard shortcuts).
+The button that triggers the `DropdownMenu`. It is also used as the anchor the `DropdownMenuContent` is positioned against.
 
 #### Content
 
-`ContextMenuContent` is the component that pops out in an open `ContextMenu`.
+The component that pops out in an open `DropdownMenu`.
 
 <PropsTable
   data={[
     {
       name: 'disableOutsidePointerEvents',
       type: 'boolean',
-      default: 'true',
+      default: 'false',
       description: (
         <span>
           When <Code>true</Code>, hover/focus/click interactions will
           be disabled on elements outside the <Code>Content</Code>.
           Users will need to click twice on outside elements to
           interact with them: Once to close the{' '}
-          <Code>ContextMenu</Code>, and again to trigger the element.
+          <Code>DropdownMenu</Code>, and again to trigger the element.
         </span>
       ),
     },
@@ -185,7 +268,7 @@ Adheres to the [Menu WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
         <span>
           Event handler called when an interaction happens outside the
           <Code>Content</Code>. Specifically, when a pointer event happens
-          outside of the `ContextMenuContent` or focus moves outside of
+          outside of the `DropdownMenuContent` or focus moves outside of
           it. It can be prevented by calling <Code>
             event.preventDefault
           </Code>.
@@ -193,10 +276,48 @@ Adheres to the [Menu WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       ),
     },
     {
+      name: 'disableOutsideScroll',
+      type: 'boolean',
+      default: 'true',
+      description: (
+        <span>
+          Whether scrolling outside the <Code>Content</Code> should be
+          prevented.
+        </span>
+      ),
+    },
+    {
+      name: 'portalled',
+      type: 'boolean',
+      default: 'true',
+      description: (
+        <span>
+          Whether or not the <Code>Content</Code> should render in a
+          <Code>Portal</Code>.
+        </span>
+      ),
+    },
+    {
       name: 'forceMount',
       type: 'boolean',
-      description:
-        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+      description: (
+        <span>
+          Used to force mounting when more control is needed. Useful
+          when controlling animation with React animation libraries.
+        </span>
+      ),
+    },
+    {
+      name: 'anchorRef',
+      type: 'React.RefObject<MeasurableElement>',
+      typeSimple: 'ref',
+      description: (
+        <span>
+          An optional ref to an element to be used as the anchor for
+          the <Code>Content</Code>. By default, it will use{' '}
+          <Code>Trigger</Code> as anchor element.
+        </span>
+      ),
     },
     {
       name: 'side',
@@ -205,8 +326,8 @@ Adheres to the [Menu WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       default: '"bottom"',
       description: (
         <span>
-          The desired side to place the <Code>Content</Code> against
-          the mouse position. May switch in case of collisions.
+          The desired side to place the <Code>Content</Code> against{' '}
+          <Code>Trigger</Code>. May switch in case of collisions.
         </span>
       ),
     },
@@ -216,7 +337,7 @@ Adheres to the [Menu WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       default: '0',
       description: (
         <span>
-          The side offset for the <Code>Content</Code>
+          The side offset for the <Code>Content</Code>.
         </span>
       ),
     },
@@ -224,11 +345,11 @@ Adheres to the [Menu WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       name: 'align',
       type: '"start" | "center" | "end"',
       typeSimple: 'enum',
-      default: '"start"',
+      default: '"center"',
       description: (
         <span>
-          How to align the <Code>Content</Code> against the mouse
-          position. May switch in case of collisions.
+          How to align the <Code>Content</Code> against{' '}
+          <Code>Trigger</Code>. May switch in case of collisions.
         </span>
       ),
     },
@@ -269,9 +390,49 @@ Adheres to the [Menu WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
   ]}
 />
 
+#### Arrow
+
+The optional arrow element to render for the `DropdownMenu`. This can be used to help visually link the `DropdownMenuTrigger` with the `DropdownMenuContent`. Must live inside `DropdownMenuContent`.
+
+<PropsTable
+  data={[
+    {
+      name: 'width',
+      type: 'number',
+      default: 10,
+      description: (
+        <span>
+          The width of the <Code>Arrow</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'height',
+      type: 'number',
+      default: 5,
+      description: (
+        <span>
+          The height of the <Code>Arrow</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'offset',
+      type: 'number',
+      default: 0,
+      description: (
+        <span>
+          The offset of the `<Code>Arrow</Code> along the edge of{' '}
+          <Code>Content</Code>.
+        </span>
+      ),
+    },
+  ]}
+/>
+
 #### Item
 
-The component used to render items in the `ContextMenu`.
+Used to render items in the `DropdownMenu`.
 
 <PropsTable
   data={[
@@ -282,7 +443,7 @@ The component used to render items in the `ContextMenu`.
         <span>
           Whether or not the <Code>Item</Code> is disabled. If so it
           will not be clickable and will not be focusable using arrow
-          keys
+          keys.
         </span>
       ),
     },
@@ -295,7 +456,7 @@ The component used to render items in the `ContextMenu`.
           The callback that fires when an <Code>Item</Code> is
           selected (via mouse or keyboard). Calling{' '}
           <Code>event.preventDefault</Code> in this handler will
-          prevent the <Code>ContextMenu</Code> from closing when
+          prevent the <Code>DropdownMenu</Code> from closing when
           selecting that item.
         </span>
       ),
@@ -307,9 +468,9 @@ The component used to render items in the `ContextMenu`.
         <span>
           An optional text used for typeahead purpose. By default the
           typeahead behavior will use the <Code>.textContent</Code> of{' '}
+          <Code>Item</Code>. Use this when the content inside the{' '}
           <Code>Item</Code> is too complex, or you have non-textual
-          content
-          <Code>Item</Code>. Use this when the content inside the inside.
+          content inside.
         </span>
       ),
     },
@@ -318,15 +479,15 @@ The component used to render items in the `ContextMenu`.
 
 #### Group
 
-Used to group multiple `ContextItem`.
+Used to group multiple `DropdownItem`.
 
 #### Label
 
-Uused to render a label. It won't be focusable using arrow keys.
+Used to render a label. It won't be focusable using arrow keys.
 
 #### CheckboxItem
 
-A more specific `ContextItem` which can be controlled like a `Checkbox` and also has an indicator (`ContextMenuItemIndicator`). This conceptually functions like a standard `Checkbox`.
+A more specific `DropdownItem` which can be controlled like a `Checkbox` and also has an indicator (`DropdownItemIndicator`). This conceptually functions like a standard `Checkbox`.
 
 <PropsTable
   data={[
@@ -359,7 +520,7 @@ A more specific `ContextItem` which can be controlled like a `Checkbox` and also
         <span>
           Whether the <Code>CheckboxItem</Code> is disabled. If so it
           will not be clickable and will not be focusable using arrow
-          keys
+          keys.
         </span>
       ),
     },
@@ -372,7 +533,7 @@ A more specific `ContextItem` which can be controlled like a `Checkbox` and also
           The callback that fires when a <Code>CheckboxItem</Code> is
           selected (via mouse or keyboard). Calling{' '}
           <Code>event.preventDefault</Code> in this handler will
-          prevent the <Code>ContextMenu</Code> from closing when
+          prevent the <Code>DropdownMenu</Code> from closing when
           selecting that item.
         </span>
       ),
@@ -395,7 +556,7 @@ A more specific `ContextItem` which can be controlled like a `Checkbox` and also
 
 #### RadioGroup
 
-`ContextMenuRadioGroup` is a more specific `ContextGroup` which also handles a value out of multiple potential `ContextMenuRadioItem`. This conceptually functions like a standard `RadioGroup`.
+A more specific `DropdownGroup` which also handles a value out of multiple potential `DropdownRadioItem`. This conceptually functions like a standard `RadioGroup`.
 
 <PropsTable
   data={[
@@ -425,7 +586,7 @@ A more specific `ContextItem` which can be controlled like a `Checkbox` and also
 
 #### RadioItem
 
-A more specific `ContextItem` which conceptually acts like a standard `Radio`. It has an indicator (`ContextMenuItemIndicator`).
+A more specific `DropdownItem` which conceptually acts like a standard `Radio`. It has an indicator (`DropdownItemIndicator`).
 
 <PropsTable
   data={[
@@ -459,7 +620,7 @@ A more specific `ContextItem` which conceptually acts like a standard `Radio`. I
           The callback that fires when a <Code>RadioItem</Code> is
           selected (via mouse or keyboard). Calling{' '}
           <Code>event.preventDefault</Code> in this handler will
-          prevent the <Code>ContextMenu</Code> from closing when
+          prevent the <Code>DropdownMenu</Code> from closing when
           selecting that item.
         </span>
       ),
@@ -482,7 +643,7 @@ A more specific `ContextItem` which conceptually acts like a standard `Radio`. I
 
 #### ItemIndicator
 
-Renders when the parent `ContextMenuCheckboxItem` or `ContextMenuRadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
+Renders when the parent `DropdownCheckboxItem` or `DropdownRadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
 
 <PropsTable
   data={[
@@ -501,38 +662,4 @@ Renders when the parent `ContextMenuCheckboxItem` or `ContextMenuRadioItem` is c
 
 #### Separator
 
-Used to visually separate items in a `ContextMenu`.
-
-### Accessibility
-
-#### Keyboard Interactions
-
-<KeyboardTable
-  data={[
-    {
-      keys: ['Space'],
-      description: <span>Activates the focused item.</span>,
-    },
-    {
-      keys: ['Enter'],
-      description: <span>Activates the focused item.</span>,
-    },
-    ,
-    {
-      keys: ['ArrowDown'],
-      description: <span>Moves focus to the next item.</span>,
-    },
-    {
-      keys: ['ArrowUp'],
-      description: <span>Moves focus to the previous item.</span>,
-    },
-    {
-      keys: ['Esc'],
-      description: (
-        <span>
-          Closes <Code>Content</Code>.
-        </span>
-      ),
-    },
-  ]}
-/>
+Used to visually separate items in a `DropdownMenu`.

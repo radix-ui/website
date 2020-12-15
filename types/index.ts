@@ -8,7 +8,6 @@ export type FrontMatter = {
   relatedIds?: string[];
   previousId?: string;
   type?: 'changelog' | string;
-  navGroup?: string;
   navRank?: number | string;
   readingTime?: { text: string; minutes: number; time: number; words: number };
   nextId?: string;

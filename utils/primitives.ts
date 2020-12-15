@@ -14,15 +14,17 @@ export const getPageById = (id: string) => {
 
 const allPages: FrontMatter[] = frontMatter;
 
-export function getPagesByNavGroup(group: string): FrontMatter[] {
-  return allPages.filter((page) => page.navGroup === group).sort(sortByNavRank);
-}
+export const overviewPages: FrontMatter[] = allPages
+  .filter((page) => page.id.includes('/overview/'))
+  .sort(sortByNavRank);
 
-export const overviewPages: FrontMatter[] = getPagesByNavGroup('overview');
+export const componentsPages: FrontMatter[] = allPages.filter((page) =>
+  page.id.includes('/components/')
+);
 
-export const componentsPages: FrontMatter[] = getPagesByNavGroup('components');
-
-export const utilitiesPages: FrontMatter[] = getPagesByNavGroup('utilities');
+export const utilitiesPages: FrontMatter[] = allPages.filter((page) =>
+  page.id.includes('/utilities/')
+);
 
 export const pages = [...overviewPages, ...componentsPages, ...utilitiesPages];
 
