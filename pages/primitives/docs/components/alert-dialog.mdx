@@ -320,64 +320,6 @@ An accessible description to be announced when the dialog is opened. Alternative
   ]}
 />
 
-## Examples
-
-### Animated
-
-Use CSS `@keyframes` animations to animate on enter.
-
-```jsx live manual compact
-// import { styled, css } from 'path-to/stitches.config';
-import * as AlertDialog from '@radix-ui/react-alert-dialog';
-
-const fadeIn = css.keyframes({
-  '0%': { opacity: 0 },
-  '100%': { opacity: 1 },
-});
-
-const scaleIn = css.keyframes({
-  '0%': { transform: 'translate(-50%, -50%) scale(0.2)' },
-  '100%': { transform: 'translate(-50%, -50%) scale(1)' },
-});
-
-const StyledOverlay = styled(AlertDialog.Overlay, {
-  backgroundColor: 'rgba(0, 0, 0, .15)',
-  position: 'fixed',
-  top: 0,
-  right: 0,
-  bottom: 0,
-  left: 0,
-  animation: `${fadeIn} 125ms ease-out`,
-  animation: `${fadeIn} 125ms ease-out, ${scaleIn} 125ms ease-out`,
-});
-
-const StyledContent = styled(AlertDialog.Content, {
-  position: 'fixed',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 360,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 20,
-});
-
-export default () => (
-  <AlertDialog.Root>
-    <AlertDialog.Trigger>Open</AlertDialog.Trigger>
-    <StyledOverlay />
-    <StyledContent>
-      <AlertDialog.Title>Alert title</AlertDialog.Title>
-      <AlertDialog.Description>
-        Alert description.
-      </AlertDialog.Description>
-      <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-      <AlertDialog.Action>Accept</AlertDialog.Action>
-    </StyledContent>
-  </AlertDialog.Root>
-);
-```
-
 ## Accessibility
 
 Adheres to the [Alert and Message Dialogs WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#alertdialog).
