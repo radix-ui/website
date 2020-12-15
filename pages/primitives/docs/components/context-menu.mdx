@@ -37,9 +37,9 @@ import {
   ContextMenu,
   Trigger,
   Content,
+  Label,
   Item,
   Group,
-  Label,
   CheckboxItem,
   RadioGroup,
   RadioItem,
@@ -51,15 +51,22 @@ export default () => (
   <ContextMenu>
     <Trigger />
     <Content>
-      <Item />
-      <Separator />
-      <CheckboxItem />
-      <RadioGroup>
-        <RadioItem />
-      </RadioGroup>
-      <Item>
-        <ItemIndicator />
-      </Item>
+      <Trigger />
+      <Content>
+        <Label />
+        <Item />
+        <Group>
+          <Item />
+        </Group>
+        <CheckboxItem />
+        <RadioGroup>
+          <RadioItem />
+        </RadioGroup>
+        <Item>
+          <ItemIndicator />
+        </Item>
+        <Separator />
+      </Content>
     </Content>
   </ContextMenu>
 );
