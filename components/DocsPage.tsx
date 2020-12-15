@@ -8,6 +8,7 @@ import { RadixLogo } from './RadixLogo';
 import { PrimitivesNav } from './PrimitivesNav';
 import { DesignSystemNav } from './DesignSystemNav';
 import { useProductType } from '../utils/useProductType';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
 export function DocsPage({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -89,7 +90,9 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
                 variant="ghost"
                 onClick={() => setIsOpen(!isOpen)}
                 state={isOpen ? 'active' : undefined}
+                aria-pressed={isOpen}
               >
+                <VisuallyHidden>Toggle Site Navigation Menu</VisuallyHidden>
                 <HamburgerMenuIcon />
               </IconButton>
             </Box>

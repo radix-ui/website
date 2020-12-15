@@ -65,7 +65,7 @@ function App({ Component, pageProps }: AppProps) {
           },
         }}
       >
-        <ThemeToggle toggleTheme={() => darkMode.toggle()} />
+        <ThemeToggle toggleTheme={() => darkMode.toggle()} isDarkMode={darkMode.value} />
       </Box>
 
       {isDocs ? (
