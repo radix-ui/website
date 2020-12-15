@@ -53,7 +53,11 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
 
   return (
     <MDXProvider components={MDXComponents}>
-      <TitleAndMetaTags title={`${frontMatter.title} — Radix`} poster={frontMatter.poster} />
+      <TitleAndMetaTags
+        title={`${frontMatter.title} — Radix UI`}
+        description={frontMatter.description}
+        poster={frontMatter.poster}
+      />
 
       <Box
         css={{

@@ -13,13 +13,13 @@ type TitleAndMetaTagsProps = {
 export function TitleAndMetaTags({
   url = 'https://radix-ui.com',
   pathname,
-  title = 'Radix',
-  description = 'The UI Suite',
+  title = 'Radix UI',
+  description = 'Everything you need to build a design system, website or web app.',
   poster,
 }: TitleAndMetaTagsProps) {
   const router = useRouter();
 
-  const image = poster ? `${url}/${poster}` : `${url}/social.png`;
+  const image = `${url}/social/${poster || 'default.png'}`;
   const path = pathname || router.pathname;
 
   return (
