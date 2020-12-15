@@ -153,6 +153,7 @@ export function CodeBlock({
   compact,
   children,
   addFragment,
+  primitives,
   ...props
 }) {
   const [editorCode, setEditorCode] = React.useState(children.trim());
@@ -160,8 +161,19 @@ export function CodeBlock({
   const router = useRouter();
 
   const [_, productType] = router.pathname.split('/');
-  const components =
-    productType === 'design-system' ? DS : productType === 'primitives' ? Primitives : {};
+
+  // components to be provided to the code blocks
+  let components = {};
+
+  // if the codeblock passes in `primitives`, use it
+  if (primitives) {
+    components = Primitives;
+  }
+  // otherwise derive it from URL
+  else {
+    components =
+      productType === 'design-system' ? DS : productType === 'primitives' ? Primitives : {};
+  }
 
   const language = className && className.replace(/language-/, '');
   const { hasCopied, onCopy } = useClipboard(editorCode);

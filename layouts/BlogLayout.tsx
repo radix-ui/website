@@ -37,7 +37,7 @@ export default function BlogLayout({ children, frontMatter }: LayoutProps) {
 		https://twitter.com/intent/tweet?
 		text="${frontMatter.title}" by @${
     authors[frontMatter.by].twitter
-  } on the @stitchesjs blog.&url=https://stitches.dev${router.route}
+  } on the @radix_ui blog.&url=https://radix-ui.com${router.route}
 		`;
 
   return (
