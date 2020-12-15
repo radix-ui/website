@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, styled, css } from '@modulz/design-system';
-import { Portal } from '@interop-ui/react-portal';
+import { Portal } from '@radix-ui/react-portal';
 
 export const HeroContext = React.createContext<React.RefObject<HTMLDivElement>>({} as any);
 
