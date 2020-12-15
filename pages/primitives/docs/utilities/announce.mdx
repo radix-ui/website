@@ -1,8 +1,8 @@
 ---
 title: Announce
 name: announce
-version: 0.0.1-13
-description: Useful for announcing messages to screen readers.
+version: 0.0.1
+description: Announces messages to screen readers.
 aria: https://www.w3.org/TR/wai-aria-practices-1.2/#alert
 features:
   - Mirrors visual alert content in an `aria-live` container for proper screen reader support.
@@ -21,28 +21,26 @@ npm install @radix-ui/react-announce
 Import the component.
 
 ```jsx
-import { AnnouncePrimitive } from '@radix-ui/react-announce';
+import * as Announce from '@radix-ui/react-announce';
 
-export default () => <AnnouncePrimitive />;
+export default () => <Announce.Root />;
 ```
 
 ## Basic example
 
-Create your announce component from the primitive.
+Use the announce primitive.
 
 ```jsx
-import * as AnnouncePrimitive from '@radix-ui/react-announce';
+import * as Announce from '@radix-ui/react-announce';
 
-export default () => (
-  <AnnouncePrimitive.Root>Welcome to Radix.</AnnouncePrimitive.Root>
-);
+export default () => <Announce.Root>Welcome to Radix.</Announce.Root>;
 ```
 
 ## API Reference
 
-### Announce
+### Root
 
-`Announce` is the root component.
+Contains the content to announce.
 
 <PropsTable
   data={[
