@@ -25,12 +25,7 @@ npm install @radix-ui/react-avatar
 
 ### Anatomy
 
-Create your styled avatar component from the primitive parts.
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
-
-```jsx live manual
-// import { styled } from 'path-to/stitches.config';
+```jsx
 import { Root, Image, Fallback } from '@radix-ui/react-avatar';
 
 export default () => (
@@ -43,7 +38,12 @@ export default () => (
 
 ### Basic example
 
+Create your styled avatar component from the primitive parts.
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
+
 ```jsx live manual
+// import { styled } from 'path-to/stitches.config';
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
 
 const Avatar = styled(AvatarPrimitive.Root, {
