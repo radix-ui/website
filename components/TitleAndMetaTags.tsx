@@ -11,7 +11,7 @@ type TitleAndMetaTagsProps = {
 };
 
 export function TitleAndMetaTags({
-  url = 'https://radixui.com',
+  url = 'https://radix-ui.com',
   pathname,
   title = 'Radix',
   description = 'The UI Suite',
