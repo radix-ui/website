@@ -207,6 +207,22 @@ export function CodeBlock({
   };
   const onChange = (newCode) => setEditorCode(newCode.trim());
 
+  // Eventually I suspect we'll move away from `react-live` since we no longer
+  // include live-editable code blocks. In the mean time, this effect will
+  // remove the underlying hidden `textarea` completely and return semantics to
+  // the `pre` tag so that code blocks are properly exposed to AT.
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  React.useEffect(() => {
+    const pre = containerRef.current?.querySelector('pre');
+    const textarea = containerRef.current?.querySelector('textarea');
+    if (pre) {
+      pre.removeAttribute('aria-hidden');
+    }
+    if (textarea) {
+      textarea.parentNode.removeChild(textarea);
+    }
+  }, []);
+
   if (language === 'jsx' && live === true) {
     return (
       <LiveProvider {...liveProviderProps}>
@@ -226,6 +242,7 @@ export function CodeBlock({
           </Box>
         )}
         <Box
+          ref={containerRef}
           css={{
             position: 'relative',
             zIndex: 1,
@@ -286,9 +303,11 @@ export function CodeBlock({
 
   if (render) {
     return (
-      <LiveProvider {...liveProviderProps}>
-        <StyledLivePreview />
-      </LiveProvider>
+      <Box ref={containerRef}>
+        <LiveProvider {...liveProviderProps}>
+          <StyledLivePreview />
+        </LiveProvider>
+      </Box>
     );
   }
 
@@ -299,6 +318,7 @@ export function CodeBlock({
         zIndex: 1,
         mb: '$3',
       }}
+      ref={containerRef}
     >
       <LiveProvider disabled {...liveProviderProps}>
         <CodeContainer live={live}>
