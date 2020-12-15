@@ -47,11 +47,8 @@ When many stateful Primitives are hidden from view, they are actually removed fr
 For example, if you want to use React Spring to animate a `Dialog`, you would do so by conditionally rendering its `Overlay` and `Content` parts based on the animation state from a hook like `useTransition`:
 
 ```jsx
-import * as DialogPrimitive from '@radix-ui/react-dialog';
+import * as Dialog from '@radix-ui/react-dialog';
 import { useTransition, animated, config } from 'react-spring';
-
-const DialogOverlay = animated(DialogPrimitive.Overlay);
-const DialogContent = animated(DialogPrimitive.Content);
 
 function Example() {
   const [open, setOpen] = React.useState(false);
@@ -62,16 +59,18 @@ function Example() {
     config: config.stiff,
   });
   return (
-    <DialogPrimitive open={open} onOpenChange={setOpen} forceMount>
-      <DialogPrimitive.Trigger>Open Dialog</DialogPrimitive.Trigger>
+    <Dialog open={open} onOpenChange={setOpen} forceMount>
+      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
       {transitions.map(({ item, props: styles }) =>
         item ? (
           <React.Fragment>
-            <DialogOverlay
+            <Dialog.Overlay
+              as={animated.div}
               key={item}
               style={{ opacity: styles.opacity }}
             />
-            <DialogContent
+            <Dialog.Content
+              as={animated.div}
               style={{
                 transform: styles.y.interpolate(
                   (value) => `translate3d(0px, ${value}px, 0px)`
@@ -79,12 +78,12 @@ function Example() {
               }}
             >
               <h1>Hello from inside the Dialog!</h1>
-              <DialogPrimitive.Close>close</DialogPrimitive.Close>
-            </DialogContent>
+              <Dialog.Close>close</Dialog.Close>
+            </AnimatedDialogContent>
           </React.Fragment>
         ) : null
       )}
-    </DialogPrimitive>
+    </Dialog>
   );
 }
 ```
