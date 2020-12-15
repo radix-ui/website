@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, IconButton, Text, Code, Popover } from '@modulz/design-system';
 import { CheckIcon, InfoCircledIcon, DividerHorizontalIcon } from '@modulz/radix-icons';
+import { RegionTable } from './RegionTable';
 
 type PropDef = {
   name: string;
@@ -11,9 +12,22 @@ type PropDef = {
   description?: string;
 };
 
-export function PropsTable({ data }: { data: PropDef[] }) {
+export function PropsTable({
+  data,
+  'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledBy,
+}: {
+  data: PropDef[];
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
+}) {
+  const hasAriaLabel = !!(ariaLabel || ariaLabelledBy);
   return (
-    <Box as="table" css={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}>
+    <RegionTable
+      css={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}
+      aria-label={hasAriaLabel ? ariaLabel : 'Component Props'}
+      aria-labelledby={ariaLabelledBy}
+    >
       <thead>
         <tr>
           <Box as="th" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
@@ -142,6 +156,6 @@ export function PropsTable({ data }: { data: PropDef[] }) {
           </tr>
         ))}
       </tbody>
-    </Box>
+    </RegionTable>
   );
 }
