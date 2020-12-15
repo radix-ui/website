@@ -61,7 +61,7 @@ const theme: any = {
     {
       types: ['function', 'deleted', 'tag'],
       style: {
-        color: colors.$yellow900,
+        color: colors.$orange900,
       },
     },
     {

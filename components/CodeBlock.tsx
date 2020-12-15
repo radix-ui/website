@@ -66,7 +66,7 @@ const theme: any = {
     {
       types: ['function', 'deleted', 'tag'],
       style: {
-        color: colors.$yellow900,
+        color: colors.$orange900,
       },
     },
     {
@@ -217,6 +217,7 @@ export function CodeBlock({
     const textarea = containerRef.current?.querySelector('textarea');
     if (pre) {
       pre.removeAttribute('aria-hidden');
+      pre.style.pointerEvents = 'auto';
     }
     if (textarea) {
       textarea.parentNode.removeChild(textarea);
