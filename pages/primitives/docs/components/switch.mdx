@@ -28,12 +28,12 @@ npm install @radix-ui/react-switch
 Import the components and piece the parts together.
 
 ```jsx
-import { Switch, Thumb } from '@radix-ui/react-switch';
+import * as Switch from '@radix-ui/react-switch';
 
 export default () => (
-  <Switch>
-    <Thumb />
-  </Switch>
+  <Switch.Root>
+    <Switch.Thumb />
+  </Switch.Root>
 );
 ```
 
@@ -43,9 +43,9 @@ Create your styled switch component from the primitive parts.
 
 ```jsx live manual
 // import { styled } from 'path-to/stitches.config';
-import * as SwitchPrimitive from '@radix-ui/react-switch';
+import * as Switch from '@radix-ui/react-switch';
 
-const Switch = styled(SwitchPrimitive.Root, {
+const StyledSwitch = styled(Switch.Root, {
   appearance: 'none',
   backgroundColor: 'transparent',
   border: 'none',
@@ -64,7 +64,7 @@ const Switch = styled(SwitchPrimitive.Root, {
   },
 });
 
-const Thumb = styled(SwitchPrimitive.Thumb, {
+const StyledThumb = styled(Switch.Thumb, {
   display: 'block',
   width: 13,
   height: 13,
@@ -81,9 +81,9 @@ const Thumb = styled(SwitchPrimitive.Thumb, {
 });
 
 export default () => (
-  <Switch>
-    <Thumb />
-  </Switch>
+  <StyledSwitch>
+    <StyledThumb />
+  </StyledSwitch>
 );
 ```
 
@@ -95,31 +95,25 @@ export default () => (
 
 ## API Reference
 
-### Switch
+### Root
 
-`Switch` is the root component.
+Contains all the parts of a switch.
 
 <PropsTable
   data={[
     {
       name: 'defaultChecked',
       type: 'boolean',
-      description: (
-        <span>
-          The checked state of the <Code>Switch</Code> when it is
-          initially rendered. Use <Code>defaultChecked</Code> if you
-          do not need to control the state of the <Code>Switch</Code>.
-        </span>
-      ),
+      description:
+        'The state of the switch when it is initially rendered. Use when you do not need to control its state.',
     },
     {
       name: 'checked',
       type: 'boolean',
       description: (
         <span>
-          The controlled checked state of the <Code>Switch</Code>.
-          Must be used in conjunction with{' '}
-          <Code>onCheckedChange</Code>.
+          The controlled state of the switch. Must be used in
+          conjunction with <Code>onCheckedChange</Code>.
         </span>
       ),
     },
@@ -127,19 +121,16 @@ export default () => (
       name: 'onCheckedChange',
       type: '(event: React.ChangeEvent<HTMLInputElement>) => void',
       typeSimple: 'function',
-      description: (
-        <span>
-          The callback that fires when the checked state of the{' '}
-          <Code>Switch</Code> changes.
-        </span>
-      ),
+      description:
+        'Event handler called when the state of the switch changes.',
     },
     {
       name: 'disabled',
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>Switch</Code> is disabled.
+          When <Code>true</Code>, prevents the user from interacting
+          with the switch.
         </span>
       ),
     },
@@ -148,8 +139,8 @@ export default () => (
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>Switch</Code> is required in a
-          form.
+          When <Code>true</Code>, indicates that the user must check
+          the switch before the owning form can be submitted.
         </span>
       ),
     },
@@ -158,10 +149,16 @@ export default () => (
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>Switch</Code> is read-only and
-          cannot be toggled by the user.
+          When <Code>true</Code>, makes the switch not mutable,
+          meaning the user cannot check the switch.
         </span>
       ),
+    },
+    {
+      name: 'name',
+      type: 'string',
+      description:
+        'The name of the switch. Submitted with its owning form as part of a name/value pair.',
     },
     {
       name: 'value',
@@ -169,7 +166,8 @@ export default () => (
       default: 'on',
       description: (
         <span>
-          The value behind the <Code>Switch</Code>. Useful in forms.
+          The value given as data when submitted with a{' '}
+          <Code>name</Code>.
         </span>
       ),
     },
@@ -178,7 +176,7 @@ export default () => (
 
 ### Thumb
 
-The thumb that is used to visually show whether the `Switch` is on or off.
+The thumb that is used to visually indicate whether the switch is on or off.
 
 ## Accessibility
 

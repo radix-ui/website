@@ -22,17 +22,13 @@ npm install @radix-ui/react-collapsible
 Import the components and piece the parts together.
 
 ```jsx
-import {
-  Collapsible,
-  Button,
-  Content,
-} from '@radix-ui/react-collapsible';
+import * as Collapsible from '@radix-ui/react-collapsible';
 
 export default () => (
-  <Collapsible>
-    <Button />
-    <Content />
-  </Collapsible>
+  <Collapsible.Root>
+    <Collapsible.Button />
+    <Collapsible.Content />
+  </Collapsible.Root>
 );
 ```
 
@@ -42,9 +38,9 @@ Create your styled collapsible component from the primitive parts.
 
 ```jsx live manual
 // import { styled } from 'path-to/stitches.config';
-import * as CollapsiblePrimitive from '@radix-ui/react-collapsible';
+import * as Collapsible from '@radix-ui/react-collapsible';
 
-const Content = styled(CollapsiblePrimitive.CollapsibleContent, {
+const StyledContent = styled(Collapsible.CollapsibleContent, {
   padding: 10,
   marginTop: 10,
   backgroundColor: 'gainsboro',
@@ -52,12 +48,10 @@ const Content = styled(CollapsiblePrimitive.CollapsibleContent, {
 });
 
 export default () => (
-  <CollapsiblePrimitive.Root>
-    <CollapsiblePrimitive.CollapsibleButton>
-      Button
-    </CollapsiblePrimitive.CollapsibleButton>
-    <Content>Content 1</Content>
-  </CollapsiblePrimitive.Root>
+  <Collapsible.Root>
+    <Collapsible.Button>Button</Collapsible.Button>
+    <StyledContent>Content 1</StyledContent>
+  </Collapsible.Root>
 );
 ```
 
@@ -69,31 +63,25 @@ export default () => (
 
 ## API Reference
 
-### Collapsible
+### Root
 
-`Collapsible` is the root component.
+Contains all the parts of a collapsible.
 
 <PropsTable
   data={[
     {
       name: 'defaultOpen',
       type: 'boolean',
-      description: (
-        <span>
-          The open state of the <Code>Collapsible</Code> when it is
-          initially rendered. Use <Code>defaultOpen</Code> if you do
-          not need to control the state of an <Code>Collapsible</Code>
-          .
-        </span>
-      ),
+      description:
+        'The open state of the collapsible when it is initially rendered. Use when you do not need to control its open state.',
     },
     {
       name: 'open',
       type: 'boolean',
       description: (
         <span>
-          The controlled open state of the <Code>Collapsible</Code>.
-          Must be used in conjunction with <Code>onOpenChange</Code>.
+          The controlled open state of the collapsible. Must be used
+          in conjunction with <Code>onOpenChange</Code>.
         </span>
       ),
     },
@@ -101,19 +89,16 @@ export default () => (
       name: 'onOpenChange',
       type: '(open: boolean) => void',
       typeSimple: 'function',
-      description: (
-        <span>
-          The callback that fires when the open state of the{' '}
-          <Code>Collapsible</Code> changes.
-        </span>
-      ),
+      description:
+        'Event handler called when the open state of the collapsible changes.',
     },
     {
       name: 'disabled',
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>Collapsible</Code> is disabled.
+          When <Code>true</Code>, prevents the user from interacting
+          with the collapsible.
         </span>
       ),
     },
@@ -122,7 +107,7 @@ export default () => (
 
 ### Button
 
-The button that triggers the `Collapsible`.
+The button that toggles the collapsible.
 
 ### Content
 
@@ -148,19 +133,12 @@ Adheres to the [Disclosure WAI-ARIA design pattern](https://www.w3.org/TR/wai-ar
 <KeyboardTable
   data={[
     {
-      keys: ['Space', 'Enter'],
-      description: (
-        <ul>
-          <li>
-            When focus is on <Code>Button</Code> of a collapsed{' '}
-            <Code>Collapsible</Code>, expands <Code>Content</Code>.
-          </li>
-          <li>
-            When focus is on <Code>Button</Code> of an expanded{' '}
-            <Code>Collapsible</Code>, collapses <Code>Content</Code>.
-          </li>
-        </ul>
-      ),
+      keys: ['Space'],
+      description: 'Opens/closes the collapsible.',
+    },
+    {
+      keys: ['Enter'],
+      description: 'Opens/closes the collapsible.',
     },
   ]}
 />

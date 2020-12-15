@@ -21,9 +21,9 @@ npm install @radix-ui/react-separator
 Import the components and piece the parts together.
 
 ```jsx
-import { Separator } from '@radix-ui/react-separator';
+import * as Separator from '@radix-ui/react-separator';
 
-export default () => <Separator />;
+export default () => <Separator.Root />;
 ```
 
 ## Basic example
@@ -32,9 +32,9 @@ Create your styled separator component from the primitive part.
 
 ```jsx live manual
 // import { styled } from 'path-to/stitches.config';
-import * as SeparatorPrimitive from '@radix-ui/react-separator';
+import * as Separator from '@radix-ui/react-separator';
 
-const Separator = styled(SeparatorPrimitive.Root, {
+const StyledSeparator = styled(Separator.Root, {
   backgroundColor: 'gainsboro',
   height: 1,
   margin: '20px 0',
@@ -43,7 +43,7 @@ const Separator = styled(SeparatorPrimitive.Root, {
 export default () => (
   <>
     Content
-    <Separator />
+    <StyledSeparator />
     Content
   </>
 );
@@ -57,9 +57,9 @@ export default () => (
 
 ## API Reference
 
-### Separator
+### Root
 
-`Separator` is the root component.
+The separator.
 
 <PropsTable
   data={[
@@ -68,20 +68,15 @@ export default () => (
       type: '"horizontal" | "vertical"',
       typeSimple: 'enum',
       default: '"horizontal"',
-      description: (
-        <span>
-          The orientation of the <Code>Separator</Code>.
-        </span>
-      ),
+      description: 'The orientation of the separator.',
     },
     {
       name: 'decorative',
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>Separator</Code> is purely visual
-          and carries no semantic meaining. Setting this to{' '}
-          <Code>true</Code> will ensure the separator is not present
+          When <Code>true</Code>, signifies that it is purely visual,
+          carries no semantic meaning, and ensures it is not present
           in the accessibility tree.
         </span>
       ),

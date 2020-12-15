@@ -30,15 +30,15 @@ npm install @radix-ui/react-tabs
 Import the components and piece the parts together.
 
 ```jsx
-import { Tabs, List, Tab, Panel } from '@radix-ui/react-tabs';
+import * as Tabs from '@radix-ui/react-tabs';
 
 export default () => (
-  <Tabs>
-    <List>
-      <Tab />
-    </List>
-    <Panel />
-  </Tabs>
+  <Tabs.Root>
+    <Tabs.List>
+      <Tabs.Tab />
+    </Tabs.List>
+    <Tabs.Panel />
+  </Tabs.Root>
 );
 ```
 
@@ -48,20 +48,20 @@ Create your styled tabs component from the primitive parts.
 
 ```jsx live manual
 // import { styled } from 'path-to/stitches.config';
-import * as TabsPrimitive from '@radix-ui/react-tabs';
+import * as Tabs from '@radix-ui/react-tabs';
 
-const Tabs = styled(TabsPrimitive.Root, {
+const StyledTabs = styled(Tabs.Root, {
   display: 'flex',
   flexDirection: 'column',
 });
 
-const List = styled(TabsPrimitive.List, {
+const StyledList = styled(Tabs.List, {
   flexShrink: 0,
   display: 'flex',
   borderBottom: '1px solid gainsboro',
 });
 
-const Tab = styled(TabsPrimitive.Tab, {
+const StyledTab = styled(Tabs.Tab, {
   flexShrink: 0,
   padding: '10px 20px',
   color: 'slategray',
@@ -76,22 +76,22 @@ const Tab = styled(TabsPrimitive.Tab, {
   },
 });
 
-const Panel = styled(TabsPrimitive.Panel, {
+const StyledPanel = styled(Tabs.Panel, {
   flexGrow: 1,
   padding: 20,
 });
 
 export default () => (
-  <Tabs defaultValue="tab1">
-    <List aria-label="tabs example">
-      <Tab value="tab1">One</Tab>
-      <Tab value="tab2">Two</Tab>
-      <Tab value="tab3">Three</Tab>
-    </List>
-    <Panel value="tab1">Tab one content</Panel>
-    <Panel value="tab2">Tab two content</Panel>
-    <Panel value="tab3">Tab three content</Panel>
-  </Tabs>
+  <StyledTabs defaultValue="tab1">
+    <StyledList aria-label="tabs example">
+      <StyledTab value="tab1">One</StyledTab>
+      <StyledTab value="tab2">Two</StyledTab>
+      <StyledTab value="tab3">Three</StyledTab>
+    </StyledList>
+    <StyledPanel value="tab1">Tab one content</StyledPanel>
+    <StyledPanel value="tab2">Tab two content</StyledPanel>
+    <StyledPanel value="tab3">Tab three content</StyledPanel>
+  </StyledTabs>
 );
 ```
 
@@ -103,30 +103,27 @@ export default () => (
 
 ## API Reference
 
-### Tabs
+### Root
 
-`Tabs` is the root component.
+Contains all the tabs component parts.
 
 <PropsTable
   data={[
+    {
+      name: 'defaultValue',
+      required: false,
+      type: 'string',
+      description:
+        'The value of the tab that should be active when initially rendered. Use when you do not need to control the state of the tabs.',
+    },
     {
       name: 'value',
       required: false,
       type: 'string',
       description: (
         <span>
-          The <Code>value</Code> of the selected tab, if controlled.
-        </span>
-      ),
-    },
-    {
-      name: 'defaultValue',
-      required: false,
-      type: 'string',
-      description: (
-        <span>
-          The <Code>value</Code> of the tab to select by default, if
-          uncontrolled.
+          The controlled value of the tab to activate. Should be used
+          in conjunction with <Code>onValueChange</Code>.
         </span>
       ),
     },
@@ -135,12 +132,7 @@ export default () => (
       required: false,
       type: '(value: string) => void',
       typeSimple: 'function',
-      description: (
-        <span>
-          The callback that fires when a new tab is selected (via
-          mouse or keyboard).
-        </span>
-      ),
+      description: 'Event handler called when the value changes.',
     },
     {
       name: 'orientation',
@@ -148,13 +140,7 @@ export default () => (
       type: '"horizontal" | "vertical" | undefined',
       typeSimple: 'enum',
       default: '"horizontal"',
-      description: (
-        <span>
-          The orientation in which the <Code>Tab</Code> elements are
-          displayed. This is helpful alongside proper visual styles to
-          improve keyboard navigation in the tab list.
-        </span>
-      ),
+      description: 'The orientation of the component.',
     },
     {
       name: 'activationMode',
@@ -164,9 +150,9 @@ export default () => (
       default: '"automatic"',
       description: (
         <span>
-          Whether a <Code>Tab</Code> is activated automatically when
-          it receives focus, or manually in which case the user must
-          always activate the tab with a click.
+          When <Code>automatic</Code>, tabs are activated when
+          receiving focus. When <Code>manual</Code>, tabs are
+          activated when clicked.
         </span>
       ),
     },
@@ -175,7 +161,7 @@ export default () => (
 
 ### List
 
-`TabsList` displays the `TabsTab` components aligned along the edge of the active `TabsPanel`.
+Contains the tabs aligned along the edge of the active panel.
 
 <PropsTable
   data={[
@@ -186,9 +172,8 @@ export default () => (
       default: 'true',
       description: (
         <span>
-          Whether or not the user loops from the last <Code>Tab</Code>{' '}
-          to the first <Code>Tab</Code> when navigating forward via
-          keyboard input, and vice versa.
+          When <Code>true</Code>, keyboard navigation will loop from
+          last tab to first, and vice versa.
         </span>
       ),
     },
@@ -197,7 +182,7 @@ export default () => (
 
 ### Tab
 
-`TabsTab` is the button that activates its relative `TabsPanel`.
+The button that activates its associated panel.
 
 <PropsTable
   data={[
@@ -205,13 +190,8 @@ export default () => (
       name: 'value',
       required: true,
       type: 'string',
-      description: (
-        <span>
-          A value that pairs a <Code>Tab</Code> with its relevant{' '}
-          <Code>Panel</Code>. All <Code>Tab</Code> components must
-          have unique values within a <Code>Tabs</Code> component.
-        </span>
-      ),
+      description:
+        'A unique value that associates the tab with a panel.',
     },
     {
       name: 'disabled',
@@ -220,8 +200,8 @@ export default () => (
       default: 'false',
       description: (
         <span>
-          Whether or not the component is disabled from user
-          activation.
+          When <Code>true</Code>, prevents the user from interacting
+          with the tab.
         </span>
       ),
     },
@@ -230,7 +210,7 @@ export default () => (
 
 ### Panel
 
-The component in which here the content is displayed when its `Tab` is activated.
+Contains the content associated with each tab.
 
 <PropsTable
   data={[
@@ -238,13 +218,8 @@ The component in which here the content is displayed when its `Tab` is activated
       name: 'value',
       required: true,
       type: 'string',
-      description: (
-        <span>
-          A value that pairs a <Code>Panel</Code> with its relevant{' '}
-          <Code>Tab</Code>. All <Code>Panel</Code> components must
-          have unique values within a <Code>Tabs</Code> component.
-        </span>
-      ),
+      description:
+        'A unique value that associates the panel with a tab.',
     },
   ]}
 />
@@ -261,9 +236,8 @@ Adheres to the [Tabs WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       keys: ['Tab'],
       description: (
         <span>
-          When focus moves into the <Code>List</Code>, moves focus to
-          the active <Code>Tab</Code>. When the <Code>List</Code>{' '}
-          contains focus, moves focus to <Code>Panel</Code>.
+          When focus moves onto the tabs, focuses the active tab. When
+          a tab contains focus, moves focus to the active panel.
         </span>
       ),
     },
@@ -271,9 +245,8 @@ Adheres to the [Tabs WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       keys: ['ArrowDown'],
       description: (
         <span>
-          Moves focus to the next <Code>Tab</Code> depending on{' '}
-          <Code>orientation</Code> and activates its associated{' '}
-          <Code>Panel</Code>.
+          Moves focus to the next tab depending on{' '}
+          <Code>orientation</Code> and activates its associated panel.
         </span>
       ),
     },
@@ -281,9 +254,8 @@ Adheres to the [Tabs WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       keys: ['ArrowRight'],
       description: (
         <span>
-          Moves focus to the next <Code>Tab</Code> depending on{' '}
-          <Code>orientation</Code> and activates its associated{' '}
-          <Code>Panel</Code>.
+          Moves focus to the next tab depending on{' '}
+          <Code>orientation</Code> and activates its associated panel.
         </span>
       ),
     },
@@ -291,9 +263,8 @@ Adheres to the [Tabs WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       keys: ['ArrowUp'],
       description: (
         <span>
-          Moves focus to the previous <Code>Tab</Code> depending on{' '}
-          <Code>orientation</Code> and activates its associated{' '}
-          <Code>Panel</Code>.
+          Moves focus to the previous tab depending on{' '}
+          <Code>orientation</Code> and activates its associated panel.
         </span>
       ),
     },
@@ -301,9 +272,8 @@ Adheres to the [Tabs WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       keys: ['ArrowLeft'],
       description: (
         <span>
-          Moves focus to the previous <Code>Tab</Code> depending on{' '}
-          <Code>orientation</Code> and activates its associated{' '}
-          <Code>Panel</Code>.
+          Moves focus to the previous tab depending on{' '}
+          <Code>orientation</Code> and activates its associated panel.
         </span>
       ),
     },
@@ -311,8 +281,8 @@ Adheres to the [Tabs WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       keys: ['Home'],
       description: (
         <span>
-          Moves focus to the first <Code>Tab</Code> and activates its
-          associated <Code>Panel</Code>.
+          Moves focus to the first tab and activates its associated{' '}
+          panel.
         </span>
       ),
     },
@@ -320,8 +290,8 @@ Adheres to the [Tabs WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       keys: ['End'],
       description: (
         <span>
-          Moves focus to the last <Code>Tab</Code> and activates its
-          associated <Code>Panel</Code>.
+          Moves focus to the last tab and activates its associated{' '}
+          panel.
         </span>
       ),
     },
