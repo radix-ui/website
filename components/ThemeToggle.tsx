@@ -1,15 +1,24 @@
 import React from 'react';
 import { IconButton } from '@modulz/design-system';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
-export const ThemeToggle = ({ toggleTheme }) => {
+export const ThemeToggle = ({
+  toggleTheme,
+  isDarkMode,
+}: {
+  toggleTheme(): void;
+  isDarkMode: boolean;
+}) => {
   return (
-    <IconButton variant="ghost" onClick={() => toggleTheme()}>
+    <IconButton variant="ghost" onClick={() => toggleTheme()} aria-pressed={isDarkMode}>
+      <VisuallyHidden>Toggle Dark Mode</VisuallyHidden>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="15"
         height="15"
         viewBox="0 0 15 15"
         fill="none"
+        aria-hidden
       >
         <path d="M7.5 0.5V2.5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M0.5 7.5H2.5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
