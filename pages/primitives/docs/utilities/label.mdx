@@ -9,7 +9,7 @@ features:
   - Supports custom controls.
 ---
 
-### Installation
+## Installation
 
 Install the component from your command line.
 
@@ -17,7 +17,7 @@ Install the component from your command line.
 npm install @radix-ui/react-label
 ```
 
-### Anatomy
+## Anatomy
 
 Import the component.
 
@@ -27,7 +27,7 @@ import { LabelPrimitive } from '@radix-ui/react-label';
 export default () => <LabelPrimitive />;
 ```
 
-### Basic example
+## Basic example
 
 Create your styled label component from the primitive parts.
 
@@ -49,9 +49,9 @@ export default () => (
 );
 ```
 
-### API Reference
+## API Reference
 
-#### Label
+### Label
 
 `Label` is the root component.
 
@@ -64,9 +64,9 @@ export default () => (
   ]}
 />
 
-### Examples
+## Examples
 
-#### Focus input when clicking on label
+### Focus input when clicking on label
 
 Use the `htmlfor` attribute to connect the label with the input's id.
 
@@ -89,7 +89,7 @@ export default () => (
 );
 ```
 
-#### Custom control with label support
+### Custom control with label support
 
 Add an `aria-labelledby` attribute to your custom controls using the `useLabelContext` hook to add support for `Label` nesting.
 
@@ -129,5 +129,3 @@ export default () => (
   </Label>
 );
 ```
-
-### Accessibility

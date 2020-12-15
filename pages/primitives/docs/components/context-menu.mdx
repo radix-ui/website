@@ -20,7 +20,7 @@ import { ContextMenuHero } from '../../../../components/Hero/ContextMenuHero';
   <ContextMenuHero />
 </HeroSlot>
 
-### Installation
+## Installation
 
 Install the component from your command line.
 
@@ -28,7 +28,7 @@ Install the component from your command line.
 npm install @radix-ui/react-context-menu
 ```
 
-### Anatomy
+## Anatomy
 
 Import the components and piece the parts together.
 
@@ -72,7 +72,7 @@ export default () => (
 );
 ```
 
-### Basic example
+## Basic example
 
 Create your styled context menu component from the primitive parts.
 
@@ -127,19 +127,19 @@ export default () => (
 );
 ```
 
-### API Reference
+## API Reference
 
 Adheres to the [Menu WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#menu) and uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/menu-button/menu-button-actions.html) to manage focus movement among menu items.
 
-#### ContextMenu
+### ContextMenu
 
 `ContextMenu` is the root component.
 
-#### Trigger
+### Trigger
 
 `ContextMenuTrigger` is the area that triggers the `ContextMenu`. Wrap this around the thing you want your `ContextMenu` to open when right-clicking (or using the relevant keyboard shortcuts).
 
-#### Content
+### Content
 
 `ContextMenuContent` is the component that pops out in an open `ContextMenu`.
 
@@ -275,7 +275,7 @@ Adheres to the [Menu WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
   ]}
 />
 
-#### Item
+### Item
 
 The component used to render items in the `ContextMenu`.
 
@@ -322,15 +322,15 @@ The component used to render items in the `ContextMenu`.
   ]}
 />
 
-#### Group
+### Group
 
 Used to group multiple `ContextItem`.
 
-#### Label
+### Label
 
 Uused to render a label. It won't be focusable using arrow keys.
 
-#### CheckboxItem
+### CheckboxItem
 
 A more specific `ContextItem` which can be controlled like a `Checkbox` and also has an indicator (`ContextMenuItemIndicator`). This conceptually functions like a standard `Checkbox`.
 
@@ -399,7 +399,7 @@ A more specific `ContextItem` which can be controlled like a `Checkbox` and also
   ]}
 />
 
-#### RadioGroup
+### RadioGroup
 
 `ContextMenuRadioGroup` is a more specific `ContextGroup` which also handles a value out of multiple potential `ContextMenuRadioItem`. This conceptually functions like a standard `RadioGroup`.
 
@@ -429,7 +429,7 @@ A more specific `ContextItem` which can be controlled like a `Checkbox` and also
   ]}
 />
 
-#### RadioItem
+### RadioItem
 
 A more specific `ContextItem` which conceptually acts like a standard `Radio`. It has an indicator (`ContextMenuItemIndicator`).
 
@@ -486,7 +486,7 @@ A more specific `ContextItem` which conceptually acts like a standard `Radio`. I
   ]}
 />
 
-#### ItemIndicator
+### ItemIndicator
 
 Renders when the parent `ContextMenuCheckboxItem` or `ContextMenuRadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
 
@@ -505,13 +505,13 @@ Renders when the parent `ContextMenuCheckboxItem` or `ContextMenuRadioItem` is c
   ]}
 />
 
-#### Separator
+### Separator
 
 Used to visually separate items in a `ContextMenu`.
 
-### Accessibility
+## Accessibility
 
-#### Keyboard Interactions
+### Keyboard Interactions
 
 <KeyboardTable
   data={[

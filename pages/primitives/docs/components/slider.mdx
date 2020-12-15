@@ -19,7 +19,7 @@ import { SliderHero } from '../../../../components/Hero/SliderHero';
   <SliderHero />
 </HeroSlot>
 
-### Installation
+## Installation
 
 Install the component from your command line.
 
@@ -27,7 +27,7 @@ Install the component from your command line.
 npm install @radix-ui/react-slider
 ```
 
-### Anatomy
+## Anatomy
 
 Import the components and piece the parts together.
 
@@ -44,7 +44,7 @@ export default () => (
 );
 ```
 
-### Basic example
+## Basic example
 
 Create your styled slider component from the primitive parts.
 
@@ -100,9 +100,9 @@ export default () => (
 );
 ```
 
-### API Reference
+## API Reference
 
-#### Slider
+### Slider
 
 `Slider` is the root component.
 
@@ -225,21 +225,21 @@ export default () => (
   ]}
 />
 
-#### Track
+### Track
 
 `SliderTrack` is the track part.
 
-#### Range
+### Range
 
 `SliderRange` is the range part. Must live inside `SliderTrack`.
 
-#### Thumb
+### Thumb
 
 `SliderThumb` is the thumb part. You can render multiple thumbs.
 
-### Examples
+## Examples
 
-#### Vertical orientation
+### Vertical orientation
 
 Use the `orientation` prop to create a vertical slider.
 
@@ -295,7 +295,7 @@ export default () => (
 );
 ```
 
-#### Create a range
+### Create a range
 
 Create your styled slider components, then pass those styled components into `Slider` via the `as` prop:
 
@@ -350,7 +350,7 @@ export default () => (
 );
 ```
 
-#### Define step size
+### Define step size
 
 Use the `step` prop to define how the slider value updates.
 
@@ -404,11 +404,11 @@ export default () => (
 );
 ```
 
-### Accessibility
+## Accessibility
 
 Adheres to the [Slider WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#slidertwothumb).
 
-#### Keyboard Interactions
+### Keyboard Interactions
 
 <KeyboardTable
   data={[
