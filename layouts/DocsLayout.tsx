@@ -112,66 +112,67 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
           <HeroContext.Provider value={heroSlotRef}>
             <Box>{children}</Box>
           </HeroContext.Provider>
-
-          {Boolean(frontMatter.relatedIds) && (
-            <>
-              <Separator size="2" css={{ my: '$9', mx: 'auto' }} />
-              <Box>
-                <Text
-                  as="h3"
-                  size="2"
-                  css={{
-                    mb: '$3',
-                    fontWeight: 500,
-                    textAlign: 'center',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  Related
-                </Text>
-
-                <Flex css={{ my: '$4', flexDirection: 'column', gap: '$4' }}>
-                  {frontMatter.relatedIds.map((relatedPostId) => {
-                    const post = getPostById(relatedPostId);
-                    return (
-                      <Box
-                        as="a"
-                        key={post.id}
-                        href={`/${post.id}`}
-                        css={{
-                          textDecoration: 'none',
-                          color: 'inherit',
-                        }}
-                      >
-                        <Box>
-                          <Text
-                            as="h6"
-                            size="4"
-                            css={{
-                              fontWeight: 500,
-                              mb: '$1',
-                            }}
-                          >
-                            {post.title}
-                          </Text>
-                          <Text
-                            as="p"
-                            size="3"
-                            css={{
-                              color: '$hiContrast',
-                            }}
-                          >
-                            {post.description}
-                          </Text>
-                        </Box>
-                      </Box>
-                    );
-                  })}
-                </Flex>
-              </Box>
-            </>
-          )}
         </Box>
+
+        {Boolean(frontMatter.relatedIds) && (
+          <>
+            <Separator size="2" css={{ my: '$9', mx: 'auto' }} />
+            <Box as="nav" aria-labelledby="site-related-nav-label">
+              <Text
+                id="site-related-nav-label"
+                as="h2"
+                size="2"
+                css={{
+                  mb: '$3',
+                  fontWeight: 500,
+                  textAlign: 'center',
+                  textTransform: 'uppercase',
+                }}
+              >
+                Related
+              </Text>
+
+              <Flex css={{ my: '$4', flexDirection: 'column', gap: '$4' }}>
+                {frontMatter.relatedIds.map((relatedPostId) => {
+                  const post = getPostById(relatedPostId);
+                  return (
+                    <Box
+                      as="a"
+                      key={post.id}
+                      href={`/${post.id}`}
+                      css={{
+                        textDecoration: 'none',
+                        color: 'inherit',
+                      }}
+                    >
+                      <Box>
+                        <Text
+                          as="span"
+                          size="4"
+                          css={{
+                            fontWeight: 500,
+                            mb: '$1',
+                          }}
+                        >
+                          {post.title}
+                        </Text>
+                        <Text
+                          as="span"
+                          size="3"
+                          css={{
+                            color: '$hiContrast',
+                          }}
+                        >
+                          {post.description}
+                        </Text>
+                      </Box>
+                    </Box>
+                  );
+                })}
+              </Flex>
+            </Box>
+          </>
+        )}
 
         <Separator size="2" css={{ my: '$9', mx: 'auto' }} />
 
