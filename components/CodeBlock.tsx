@@ -9,76 +9,66 @@ import * as Primitives from './Primitives';
 
 const { colors } = DStheme;
 
-const theme: any = {
+const dracula: any = {
   plain: {
-    color: 'var(--colors-hiContrast)',
-    backgroundColor: 'var(--colors-loContrast)',
+    color: 'hsl(272,100%,99%)',
+    // backgroundColor: 'hsl(252,22%,15%)',
+    backgroundColor: 'transparent',
   },
   styles: [
     {
-      types: ['comment', 'prolog', 'doctype', 'cdata'],
+      types: ['prolog', 'constant', 'builtin'],
       style: {
-        color: colors.$gray900,
+        color: 'rgb(189, 147, 249)',
+      },
+    },
+    {
+      types: ['inserted', 'function'],
+      style: {
+        color: 'rgb(80, 250, 123)',
+      },
+    },
+    {
+      types: ['deleted'],
+      style: {
+        color: 'rgb(255, 85, 85)',
+      },
+    },
+    {
+      types: ['changed'],
+      style: {
+        color: 'rgb(255, 184, 108)',
+      },
+    },
+    {
+      types: ['punctuation', 'symbol'],
+      style: {
+        color: 'rgb(248, 248, 242)',
+      },
+    },
+    {
+      types: ['string', 'char', 'tag', 'selector'],
+      style: {
+        color: 'rgb(255, 121, 198)',
+      },
+    },
+    {
+      types: ['keyword', 'variable'],
+      style: {
+        color: 'rgb(189, 147, 249)',
         fontStyle: 'italic',
       },
     },
     {
-      types: ['namespace'],
+      types: ['comment'],
       style: {
-        opacity: 0.7,
+        color: 'rgb(98, 114, 164)',
       },
     },
     {
-      types: ['string', 'attr-value'],
+      types: ['attr-name'],
       style: {
-        color: colors.$purple900,
-      },
-    },
-    {
-      types: ['punctuation', 'operator'],
-      style: {
-        color: colors.$gray900,
-      },
-    },
-    {
-      types: [
-        'entity',
-        'url',
-        'symbol',
-        'number',
-        'boolean',
-        'variable',
-        'constant',
-        'property',
-        'regex',
-        'inserted',
-      ],
-      style: {
-        color: colors.$red900,
-      },
-    },
-    {
-      types: ['atrule', 'keyword', 'attr-name', 'selector'],
-      style: {
-        color: colors.$blue900,
-      },
-    },
-    {
-      types: ['function', 'deleted', 'tag'],
-      style: {
-        color: colors.$orange900,
-      },
-    },
-    {
-      types: ['function-variable'],
-      style: {
-        color: colors.$green900,
-      },
-    },
-    {
-      types: ['tag', 'selector', 'keyword'],
-      style: {
-        color: colors.$blue900,
+        color: 'rgb(241, 250, 140)',
       },
     },
   ],
@@ -89,6 +79,7 @@ export const liveEditorStyle: React.CSSProperties = {
   fontFamily: 'var(--fonts-mono)',
   fontWeight: 400,
   lineHeight: 1.5,
+  padding: 20,
 };
 
 const StyledLivePreview = ({ live, ...props }: { live?: boolean }) => (
@@ -100,8 +91,9 @@ const StyledLivePreview = ({ live, ...props }: { live?: boolean }) => (
       // backgroundColor: 'white',
       // zIndex: 3,
       overflow: 'hidden',
-      p: '$3',
-      boxShadow: `inset 0 0 0 1px $gray500`,
+      p: '$5',
+      // boxShadow: `inset 0 0 0 1px #272a36`,
+      backgroundColor: 'var(--colors-purple200)',
       borderTopLeftRadius: '$2',
       borderTopRightRadius: '$2',
       borderBottomLeftRadius: live ? '0' : '$2',
@@ -115,7 +107,8 @@ const StyledLivePreview = ({ live, ...props }: { live?: boolean }) => (
 const CodeContainer = ({ live, children }: { live?: boolean; children: React.ReactNode }) => (
   <Box
     css={{
-      p: '$1',
+      // p: '$1',
+      overflow: 'hidden',
       borderTopLeftRadius: live ? '0' : '$2',
       borderTopRightRadius: live ? '0' : '$2',
       borderBottomLeftRadius: '$2',
@@ -123,6 +116,8 @@ const CodeContainer = ({ live, children }: { live?: boolean; children: React.Rea
       marginTop: -1,
       boxShadow: `inset 0 0 0 1px ${colors.$gray500}`,
       textarea: { outline: 0 },
+      // background: 'linear-gradient(135deg, hsl(252,22%,15%) 0%, hsl(352,12%,8%) 100%)',
+      background: 'linear-gradient(135deg, hsl(272,53%,15%) 50%, hsl(226,68%,16%) 100%)',
       'textarea::selection': {
         backgroundColor: 'hsla(208, 100%, 97%,1)',
       },
@@ -133,7 +128,7 @@ const CodeContainer = ({ live, children }: { live?: boolean; children: React.Rea
 
 const CopyButton = (props: any) => (
   <Button
-    variant="ghost"
+    variant="transparentWhite"
     css={{
       fontFamily: '$untitled',
       position: 'absolute',
@@ -178,7 +173,7 @@ export function CodeBlock({
   const language = className && className.replace(/language-/, '');
   const { hasCopied, onCopy } = useClipboard(editorCode);
   const liveProviderProps = {
-    theme,
+    theme: dracula,
     language,
     code: editorCode,
     transformCode: (rawCode) => {
@@ -235,11 +230,14 @@ export function CodeBlock({
               p: '$2',
               borderBottomLeftRadius: isOpen ? '0' : '$2',
               borderBottomRightRadius: isOpen ? '0' : '$2',
-              boxShadow: 'inset 0 0 0 1px $gray500',
+              // boxShadow: 'inset 0 0 0 1px $gray500',
+              bc: 'hsl(252,22%,17%)',
               mt: '-1px',
             }}
           >
-            <Button onClick={() => setIsOpen(!isOpen)}>{isOpen ? 'Hide' : 'Show'} code</Button>
+            <Button variant="transparentWhite" onClick={() => setIsOpen(!isOpen)}>
+              {isOpen ? 'Hide' : 'Show'} code
+            </Button>
           </Box>
         )}
         <Box
