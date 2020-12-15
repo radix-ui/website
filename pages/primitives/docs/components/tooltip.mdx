@@ -284,20 +284,23 @@ The optional arrow element to render for the `Tooltip`. This can be used to help
     {
       keys: ['Tab'],
       description: (
-        <ul>
-          <li>
-            When focus moves to <Code>Trigger</Code>, opens{' '}
-            <Code>Content</Code> without delay.
-          </li>
-          <li>
-            When focus moves from <Code>Trigger</Code>, closes{' '}
-            <Code>Content</Code> without delay.
-          </li>
-        </ul>
+        <span>
+          Opens/closes {' '}
+          <Code>Content</Code> without delay.
+        </span>
       ),
     },
     {
-      keys: ['Space', 'Enter'],
+      keys: ['Space'],
+      description: (
+        <span>
+          If <Code>Content</Code> is open, closes <Code>Content</Code>{' '}
+          without delay.
+        </span>
+      ),
+    },
+    {
+      keys: ['Enter'],
       description: (
         <span>
           If <Code>Content</Code> is open, closes <Code>Content</Code>{' '}
