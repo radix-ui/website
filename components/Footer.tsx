@@ -80,40 +80,40 @@ export const Footer = () => {
           </Flex>
           <Box>
             <Text as="h6" size="3" css={{ fontWeight: 500, lineHeight: '20px' }}>
-              Overview
+              Primitives
             </Text>
             <ul>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/docs/introduction" passHref>
+                  <NextLink href="/primitives" passHref>
+                    <Link variant="subtle">About</Link>
+                  </NextLink>
+                </Text>
+              </li>
+              <li>
+                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+                  <NextLink href="/primitives/docs/overview/introduction" passHref>
                     <Link variant="subtle">Introduction</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/docs/tutorials" passHref>
-                    <Link variant="subtle">Tutorials</Link>
+                  <NextLink href="/primitives/docs/overview/introduction" passHref>
+                    <Link variant="subtle">Styling</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/docs/api" passHref>
-                    <Link variant="subtle">API</Link>
-                  </NextLink>
-                </Text>
-              </li>
-              <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/docs/frequently-asked-questions" passHref>
-                    <Link variant="subtle">FAQ</Link>
+                  <NextLink href="/primitives/docs/overview/accessibility" passHref>
+                    <Link variant="subtle">Accessibility</Link>
                   </NextLink>
                 </Text>
               </li>
             </ul>
           </Box>
-          <Box>
+          {/* <Box>
             <Text as="h6" size="3" css={{ fontWeight: 500, lineHeight: '20px' }}>
               Docs
             </Text>
@@ -147,7 +147,7 @@ export const Footer = () => {
                 </Text>
               </li>
             </ul>
-          </Box>
+          </Box> */}
           <Box>
             <Text as="h6" size="3" css={{ fontWeight: 500, lineHeight: '20px' }}>
               Community
@@ -163,7 +163,7 @@ export const Footer = () => {
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <Link
-                    href="https://github.com/modulz/stitches"
+                    href="https://github.com/radix-ui"
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                   >
                     Github
@@ -176,7 +176,7 @@ export const Footer = () => {
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <Link
-                    href="https://twitter.com/stitchesjs"
+                    href="https://twitter.com/radix_ui"
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                   >
                     Twitter
@@ -189,7 +189,7 @@ export const Footer = () => {
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <Link
-                    href="https://discord.com/invite/H4eG3Mk"
+                    href="https://discord.com/invite/7Xb99uG"
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                   >
                     Discord
