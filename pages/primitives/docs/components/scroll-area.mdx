@@ -23,40 +23,30 @@ npm install @radix-ui/react-scroll-area
 Import the components and piece the parts together.
 
 ```jsx
-import {
-  ScrollArea,
-  Viewport,
-  ScrollbarX,
-  ScrollbarY,
-  ButtonStart,
-  ButtonEnd,
-  Track,
-  Thumb,
-  Corner,
-} from '@radix-ui/react-scroll-area';
+import * as ScrollArea from '@radix-ui/react-scroll-area';
 
 export default () => (
-  <ScrollArea>
-    <Viewport />
+  <ScrollArea.Root>
+    <ScrollArea.Viewport />
 
-    <ScrollbarX>
-      <ScrollTrack>
-        <ButtonStart />
-        <ScrollThumb />
-        <ButtonEnd />
-      </ScrollTrack>
-    </ScrollbarX>
+    <ScrollArea.ScrollbarX>
+      <ScrollArea.ScrollTrack>
+        <ScrollArea.ButtonStart />
+        <ScrollArea.ScrollThumb />
+        <ScrollArea.ButtonEnd />
+      </ScrollArea.ScrollTrack>
+    </ScrollArea.ScrollbarX>
 
-    <ScrollbarY>
-      <ScrollTrack>
-        <ButtonStart />
-        <ScrollThumb />
-        <ButtonEnd />
-      </ScrollTrack>
-    </ScrollbarY>
+    <ScrollArea.ScrollbarY>
+      <ScrollArea.ScrollTrack>
+        <ScrollArea.ButtonStart />
+        <ScrollArea.ScrollThumb />
+        <ScrollArea.ButtonEnd />
+      </ScrollArea.ScrollTrack>
+    </ScrollArea.ScrollbarY>
 
-    <Corner />
-  </ScrollArea>
+    <ScrollArea.Corner />
+  </ScrollArea.Root>
 );
 ```
 
@@ -66,15 +56,12 @@ Create your styled scroll area component from the primitive parts.
 
 ```jsx live manual
 // import { styled } from 'path-to/stitches.config';
-import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
+import * as ScrollArea from '@radix-ui/react-scroll-area';
 
-const { SCROLL_AREA_CSS_PROPS } = ScrollAreaPrimitive;
+const { SCROLL_AREA_CSS_PROPS } = ScrollArea;
 
-const ScrollArea = styled(ScrollAreaPrimitive.Root, {
+const StyledScrollArea = styled(ScrollArea.Root, {
   position: 'relative',
-  // Root z-index set to 0 so we can set a new baseline for its children Apps may need to override
-  // this if they have higher z-indices that conflict with their scrollbars, but they should not
-  // need to change the z-indices for other elements in the tree.
   zIndex: 0,
   maxWidth: '100%',
   maxHeight: '100%',
@@ -83,12 +70,12 @@ const ScrollArea = styled(ScrollAreaPrimitive.Root, {
   },
 });
 
-const Viewport = styled(ScrollAreaPrimitive.Viewport, {
+const StyledViewport = styled(ScrollArea.Viewport, {
   zIndex: 1,
   position: 'relative',
 });
 
-const ScrollbarY = styled(ScrollAreaPrimitive.ScrollbarY, {
+const StyledScrollbarY = styled(ScrollArea.ScrollbarY, {
   zIndex: 2,
   position: 'absolute',
   userSelect: 'none',
@@ -99,14 +86,14 @@ const ScrollbarY = styled(ScrollAreaPrimitive.ScrollbarY, {
   bottom: 0,
 });
 
-const ScrollTrack = styled(ScrollAreaPrimitive.Track, {
+const StyledScrollTrack = styled(ScrollArea.Track, {
   zIndex: -1,
   position: 'relative',
   width: '100%',
   height: '100%',
 });
 
-const ScrollThumb = styled(ScrollAreaPrimitive.Thumb, {
+const StyledScrollThumb = styled(ScrollArea.Thumb, {
   backgroundColor: 'gainsboro',
   position: 'absolute',
   top: 0,
@@ -120,8 +107,8 @@ const ScrollThumb = styled(ScrollAreaPrimitive.Thumb, {
 
 export default () => (
   <div style={{ height: 250 }}>
-    <ScrollArea>
-      <Viewport>
+    <StyledScrollArea>
+      <StyledViewport>
         <div
           style={{
             height: 1000,
@@ -129,14 +116,14 @@ export default () => (
               'repeating-linear-gradient(0deg, dodgerblue, dodgerblue 10px, transparent 10px, transparent 20px)',
           }}
         />
-      </Viewport>
+      </StyledViewport>
 
-      <ScrollbarY>
-        <ScrollTrack>
-          <ScrollThumb />
-        </ScrollTrack>
-      </ScrollbarY>
-    </ScrollArea>
+      <StyledScrollbarY>
+        <StyledScrollTrack>
+          <StyledScrollThumb />
+        </StyledScrollTrack>
+      </StyledScrollbarY>
+    </StyledScrollArea>
   </div>
 );
 ```
@@ -149,9 +136,9 @@ export default () => (
 
 ## API Reference
 
-### ScrollArea
+### Root
 
-`ScrollArea` is the root component.
+Contains all the parts of a scroll area.
 
 <PropsTable
   data={[
@@ -239,40 +226,40 @@ export default () => (
 
 ### Viewport
 
-`ScrollAreaViewport` is the viewport area of the `ScrollArea`.
+The viewport area of the scroll area.
 
 ### ScrollbarX
 
-`ScrollAreaScrollbarX` is the horizontal scrollbar.
+The horizontal scrollbar.
 
 ### ScrollbarY
 
-`ScrollAreaScrollbarY` is the vertical scrollbar.
+The vertical scrollbar.
 
 ### ButtonStart
 
-`ScrollAreaButtonStart` is the start button in either `ScrollAreaScrollbarX` or `ScrollAreaScrollbarY`.
+The start button to be used in `ScrollArea.ScrollbarX` and `ScrollArea.ScrollbarY`.
 
 ### ButtonEnd
 
-`ScrollAreaButtonEnd` is the end button in either `ScrollAreaScrollbarX` or `ScrollAreaScrollbarY`.
+The end button to be used in `ScrollArea.ScrollbarX` and `ScrollArea.ScrollbarY`.
 
 ### Track
 
-`ScrollAreaTrack` is the track inside either `ScrollAreaScrollbarX` or `ScrollAreaScrollbarY`.
+The track to be used in `ScrollArea.ScrollbarX` and `ScrollArea.ScrollbarY`.
 
 ### Thumb
 
-`ScrollAreaThumb` is the thumb inside either `ScrollAreaScrollbarX` or `ScrollAreaScrollbarY`.
+The thumb to be used in `ScrollArea.ScrollbarX` and `ScrollArea.ScrollbarY`.
 
 ### Corner
 
-`ScrollAreaCorner` is the corner where both vertical and horizontal scrollbars meet.
+The corner where both vertical and horizontal scrollbars meet.
 
 ## Accessibility
 
-In most cases, it's best to rely on native scrolling and work with the customization options available in CSS. Sometimes this isn't enough, but recreating scroll behavior is incredibly hard work. `ScrollArea` provides additional customizability that maintains the browser's native scroll behavior (as well as its accessibility features) while replacing the visual controls with stylable parts.
+In most cases, it's best to rely on native scrolling and work with the customization options available in CSS. When that isn't enough, `ScrollArea` provides additional customizability while maintaining the browser's native scroll behavior (as well as accessibiliy features, like keyboard scrolling).
 
 ### Keyboard Interactions
 
-Because `ScrollArea` relies on native scrolling, scrolling via keyboard is supported by default. Specific keyboard interactions may differ between platforms, so we do not specify them here or add specific event listeners to handle scrolling via key events.
+Scrolling via keyboard is supported by default because the component relies on native scrolling. Specific keyboard interactions may differ between platforms, so we do not specify them here or add specific event listeners to handle scrolling via key events.

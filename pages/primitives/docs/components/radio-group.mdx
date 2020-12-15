@@ -28,18 +28,14 @@ npm install @radix-ui/react-radio-group
 Import the components and piece the parts together.
 
 ```jsx
-import {
-  RadioGroup,
-  Item,
-  Indicator,
-} from '@radix-ui/react-radio-group';
+import * as RadioGroup from '@radix-ui/react-radio-group';
 
 export default () => (
-  <RadioGroup>
-    <Item>
-      <Indicator />
-    </Item>
-  </RadioGroup>
+  <RadioGroup.Root>
+    <RadioGroup.Item>
+      <RadioGroup.Indicator />
+    </RadioGroup.Item>
+  </RadioGroup.Root>
 );
 ```
 
@@ -49,9 +45,9 @@ Create your styled radio group component from the primitive parts.
 
 ```jsx live manual
 // import { styled } from 'path-to/stitches.config';
-import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
+import * as RadioGroup from '@radix-ui/react-radio-group';
 
-const Radio = styled(RadioGroupPrimitive.Item, {
+const StyledRadio = styled(RadioGroup.Item, {
   appearance: 'none',
   backgroundColor: 'transparent',
   border: 'none',
@@ -73,7 +69,7 @@ const Radio = styled(RadioGroupPrimitive.Item, {
   },
 });
 
-const Indicator = styled(RadioGroupPrimitive.Indicator, {
+const StyledIndicator = styled(RadioGroup.Indicator, {
   width: 7,
   height: 7,
   borderRadius: '50%',
@@ -81,17 +77,17 @@ const Indicator = styled(RadioGroupPrimitive.Indicator, {
 });
 
 export default () => (
-  <RadioGroupPrimitive.Root>
-    <Radio value="cat">
-      <Indicator />
-    </Radio>
-    <Radio value="dog">
-      <Indicator />
-    </Radio>
-    <Radio value="rabbit">
-      <Indicator />
-    </Radio>
-  </RadioGroupPrimitive.Root>
+  <RadioGroup.Root>
+    <StyledRadio value="cat">
+      <StyledIndicator />
+    </StyledRadio>
+    <StyledRadio value="dog">
+      <StyledIndicator />
+    </StyledRadio>
+    <StyledRadio value="rabbit">
+      <StyledIndicator />
+    </StyledRadio>
+  </RadioGroup.Root>
 );
 ```
 
@@ -105,29 +101,23 @@ export default () => (
 
 ### RadioGroup
 
-`RadioGroup` is the root component.
+Contains all the parts of a radio group.
 
 <PropsTable
   data={[
     {
       name: 'defaultValue',
       type: 'string',
-      description: (
-        <span>
-          The value of the selected <Code>Item</Code> when the{' '}
-          <Code>RadioGroup</Code> is initially rendered. Use{' '}
-          <Code>defaultValue</Code> if you do not need to control the
-          state of a <Code>RadioGroup</Code>.
-        </span>
-      ),
+      description:
+        'The value of the radio item that should be checked when initially rendered. Use when you do not need to control the state of the radio items.',
     },
     {
       name: 'value',
       type: 'string',
       description: (
         <span>
-          The controlled value of the <Code>RadioGroup</Code>`. Must
-          be used in conjunction with <Code>onValueChange</Code>.
+          The controlled value of the radio item to check. Should be
+          used in conjunction with <Code>onValueChange</Code>.
         </span>
       ),
     },
@@ -135,17 +125,16 @@ export default () => (
       name: 'onValueChange',
       type: '(value: string) => void',
       typeSimple: 'function',
-      description: (
-        <span>
-          The callback that fires when the selected value changes.
-        </span>
-      ),
+      description: 'Event handler called when the value changes.',
     },
     {
       name: 'required',
       type: 'boolean',
       description: (
-        <span>Whether or not this choice is required in a form.</span>
+        <span>
+          When <Code>true</Code>, indicates that the user must check a
+          radio item before the owning form can be submitted.
+        </span>
       ),
     },
   ]}
@@ -153,17 +142,23 @@ export default () => (
 
 ### Item
 
-A single item in a `RadioGroup`.
+An item in the group that can be checked.
 
 <PropsTable
   data={[
     {
+      name: 'name',
+      type: 'string',
+      description:
+        'The name of the radio item. Submitted with its owning form as part of a name/value pair.',
+    },
+    {
       name: 'value',
       type: 'string',
-      required: true,
       description: (
         <span>
-          The value behind the <Code>Item</Code>.
+          The value given as data when submitted with a{' '}
+          <Code>name</Code>.
         </span>
       ),
     },
@@ -171,19 +166,16 @@ A single item in a `RadioGroup`.
       name: 'onCheckedChange',
       type: '(event: React.ChangeEvent<HTMLInputElement>) => void',
       typeSimple: 'function',
-      description: (
-        <span>
-          The callback that fires when the checked state of the{' '}
-          <Code>Item</Code> changes.
-        </span>
-      ),
+      description:
+        'Event handler called when the checked state of the radio item changes.',
     },
     {
       name: 'disabled',
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>Item</Code> is disabled.
+          When <Code>true</Code>, prevents the user from interacting
+          with the radio item.
         </span>
       ),
     },
@@ -192,8 +184,8 @@ A single item in a `RadioGroup`.
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>Item</Code> choice is required in a
-          form.
+          When <Code>true</Code>, indicates that the user must check
+          the radio item before the owning form can be submitted.
         </span>
       ),
     },
@@ -202,8 +194,8 @@ A single item in a `RadioGroup`.
       type: 'boolean',
       description: (
         <span>
-          Whether or not this <Code>Item</Code> is read-only and
-          cannot be toggled by the user.
+          When <Code>true</Code>, makes the radio item not mutable,
+          meaning the user cannot check the checkbox.
         </span>
       ),
     },
@@ -212,7 +204,7 @@ A single item in a `RadioGroup`.
 
 ### Indicator
 
-Renders when the `RadioGroupItem` is the currently selected on. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
+Renders when the radio item is in a checked state. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
 
 <PropsTable
   data={[
@@ -235,62 +227,36 @@ Adheres to the [Radio Group WAI-ARIA design pattern](https://www.w3.org/TR/wai-a
   data={[
     {
       keys: ['Tab'],
-      description: (
-        <span>
-          Moves focus to either the checked <Code>Item</Code> or the
-          first <Code>Item</Code> in the group.
-        </span>
-      ),
+      description:
+        'Moves focus to either the checked radio item or the first radio item in the group.',
     },
     {
       keys: ['Space'],
-      description: (
-        <span>
-          When focus is on an unchecked <Code>Item</Code>, checks the{' '}
-          <Code>Item</Code>.
-        </span>
-      ),
+      description:
+        'When focus is on an unchecked radio item, checks it.',
     },
     {
       keys: ['Enter'],
-      description: (
-        <span>
-          When focus is on an unchecked <Code>Item</Code>, checks the{' '}
-          <Code>Item</Code>.
-        </span>
-      ),
+      description:
+        'When focus is on an unchecked radio item, checks it.',
     },
     {
       keys: ['ArrowDown'],
-      description: (
-        <span>
-          Moves focus to the next <Code>Item</Code> in the group.
-        </span>
-      ),
+      description: 'Moves focus to the next radio item in the group.',
     },
     {
       keys: ['ArrowRight'],
-      description: (
-        <span>
-          Moves focus to the next <Code>Item</Code> in the group.
-        </span>
-      ),
+      description: 'Moves focus to the next radio item in the group.',
     },
     {
       keys: ['ArrowUp'],
-      description: (
-        <span>
-          Moves focus to the previous <Code>Item</Code> in the group.
-        </span>
-      ),
+      description:
+        'Moves focus to the previous radio item in the group.',
     },
     {
       keys: ['ArrowLeft'],
-      description: (
-        <span>
-          Moves focus to the previous <Code>Item</Code> in the group.
-        </span>
-      ),
+      description:
+        'Moves focus to the previous radio item in the group.',
     },
   ]}
 />

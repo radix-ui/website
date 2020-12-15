@@ -29,12 +29,12 @@ npm install @radix-ui/react-checkbox
 Import the components and piece the parts together.
 
 ```jsx
-import { Root, Indicator } from '@radix-ui/react-checkbox';
+import * as Checkbox from '@radix-ui/react-checkbox';
 
 export default () => (
-  <Root>
-    <Indicator />
-  </Root>
+  <Checkbox.Root>
+    <Checkbox.Indicator />
+  </Checkbox.Root>
 );
 ```
 
@@ -44,19 +44,21 @@ Create your styled checkbox component from the primitive parts.
 
 ```jsx live manual
 // import { styled } from 'path-to/stitches.config';
-import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
+import * as Checkbox from '@radix-ui/react-checkbox';
 import { CheckIcon } from '@modulz/radix-icons';
 
-const Checkbox = styled(CheckboxPrimitive.Root, {
+const StyledCheckbox = styled(Checkbox.Root, {
   appearance: 'none',
   backgroundColor: 'transparent',
   border: 'none',
   padding: 0,
   boxShadow: 'inset 0 0 0 1px gainsboro',
-  overflow: 'hidden',
   width: 15,
   height: 15,
   borderRadius: 2,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
 
   '&:focus': {
     outline: 'none',
@@ -64,20 +66,10 @@ const Checkbox = styled(CheckboxPrimitive.Root, {
   },
 });
 
-const Indicator = styled(CheckboxPrimitive.Indicator, {
-  alignItems: 'center',
-  display: 'flex',
-  height: '100%',
-  justifyContent: 'center',
-  width: '100%',
-});
-
 export default () => (
-  <Checkbox defaultChecked>
-    <Indicator>
-      <CheckIcon />
-    </Indicator>
-  </Checkbox>
+  <StyledCheckbox defaultChecked>
+    <Checkbox.Indicator as={CheckIcon} />
+  </StyledCheckbox>
 );
 ```
 
@@ -89,32 +81,25 @@ export default () => (
 
 ## API Reference
 
-### Checkbox
+### Root
 
-`Checkbox` is the root component.
+Contains all the parts of a checkbox.
 
 <PropsTable
   data={[
     {
       name: 'defaultChecked',
       type: 'boolean',
-      description: (
-        <span>
-          The checked state of the <Code>Checkbox</Code> when it is
-          initially rendered. Use <Code>defaultChecked</Code> if you
-          do not need to control the state of the{' '}
-          <Code>Checkbox</Code>.
-        </span>
-      ),
+      description:
+        'The checked state of the checkbox when it is initially rendered. Use when you do not need to control its checked state.',
     },
     {
       name: 'checked',
       type: 'boolean',
       description: (
         <span>
-          The controlled checked state of the <Code>Checkbox</Code>.
-          Must be used in conjunction with{' '}
-          <Code>onCheckedChange</Code>.
+          The controlled checked state of the checkbox. Must be used
+          in conjunction with <Code>onCheckedChange</Code>.
         </span>
       ),
     },
@@ -122,19 +107,16 @@ export default () => (
       name: 'onCheckedChange',
       type: '(event: React.ChangeEvent<HTMLInputElement>) => void',
       typeSimple: 'function',
-      description: (
-        <span>
-          The callback that fires when the checked state of the{' '}
-          <Code>Checkbox</Code> changes.
-        </span>
-      ),
+      description:
+        'Event handler called when the checked state of the checkbox changes.',
     },
     {
       name: 'disabled',
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>Checkbox</Code> is disabled.
+          When <Code>true</Code>, prevents the user from interacting
+          with the checkbox.
         </span>
       ),
     },
@@ -143,8 +125,8 @@ export default () => (
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>Checkbox</Code> is required in a
-          form.
+          When <Code>true</Code>, indicates that the user must check
+          the checkbox before the owning form can be submitted.
         </span>
       ),
     },
@@ -153,10 +135,16 @@ export default () => (
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>Checkbox</Code> is read-only and
-          cannot be toggled by the user.
+          When <Code>true</Code>, makes the checkbox not mutable,
+          meaning the user cannot check the checkbox.
         </span>
       ),
+    },
+    {
+      name: 'name',
+      type: 'string',
+      description:
+        'The name of the checkbox. Submitted with its owning form as part of a name/value pair.',
     },
     {
       name: 'value',
@@ -164,7 +152,8 @@ export default () => (
       default: 'on',
       description: (
         <span>
-          The value behind the <Code>Checkbox</Code>. Useful in forms.
+          The value given as data when submitted with a{' '}
+          <Code>name</Code>.
         </span>
       ),
     },
@@ -173,7 +162,7 @@ export default () => (
 
 ### Indicator
 
-Renders when the `Checkbox` is in a checked or indeterminate state. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
+Renders when the checkbox is in a checked or indeterminate state. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
 
 <PropsTable
   data={[
@@ -196,19 +185,11 @@ Adheres to the [tri-state Checkbox WAI-ARIA design pattern](https://www.w3.org/T
   data={[
     {
       keys: ['Space'],
-      description: (
-        <span>
-          Checks/unchecks <Code>Checkbox</Code>.
-        </span>
-      ),
+      description: 'Checks/unchecks the checkbox.',
     },
     {
       keys: ['Enter'],
-      description: (
-        <span>
-          Checks/unchecks <Code>Checkbox</Code>.
-        </span>
-      ),
+      description: 'Checks/unchecks the checkbox.',
     },
   ]}
 />

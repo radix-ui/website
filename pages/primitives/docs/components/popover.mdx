@@ -25,22 +25,16 @@ npm install @radix-ui/react-popover
 Import the components and piece the parts together.
 
 ```jsx
-import {
-  Popover,
-  Trigger,
-  Content,
-  Close,
-  Arrow,
-} from '@radix-ui/react-popover';
+import * as Popover from '@radix-ui/react-popover';
 
 export default () => (
-  <Popover>
-    <Trigger />
-    <Content>
-      <Close />
-      <Arrow />
-    </Content>
-  </Popover>
+  <Popover.Root>
+    <Popover.Trigger />
+    <Popover.Content>
+      <Popover.Close />
+      <Popover.Arrow />
+    </Popover.Content>
+  </Popover.Root>
 );
 ```
 
@@ -50,9 +44,9 @@ Create your styled popover component from the primitive parts.
 
 ```jsx live manual
 // import { styled } from 'path-to/stitches.config';
-import * as PopoverPrimitive from '@radix-ui/react-popover';
+import * as Popover from '@radix-ui/react-popover';
 
-const Content = styled(PopoverPrimitive.Content, {
+const StyledContent = styled(Popover.Content, {
   borderRadius: 3,
   padding: '20px',
   fontSize: 14,
@@ -60,20 +54,20 @@ const Content = styled(PopoverPrimitive.Content, {
   color: 'black',
 });
 
-const Arrow = styled(PopoverPrimitive.Arrow, {
+const StyledArrow = styled(Popover.Arrow, {
   fill: 'gainsboro',
 });
 
 export default () => (
-  <PopoverPrimitive.Root>
-    <PopoverPrimitive.Trigger>Trigger</PopoverPrimitive.Trigger>
-    <Content>
+  <Popover.Root>
+    <Popover.Trigger>Trigger</Popover.Trigger>
+    <StyledContent>
       <h3>Popover content</h3>
       <p>Are you sure you wanna do this?</p>
-      <PopoverPrimitive.Close>Yes</PopoverPrimitive.Close>
-      <Arrow />
-    </Content>
-  </PopoverPrimitive.Root>
+      <Popover.Close>Yes</Popover.Close>
+      <StyledArrow />
+    </StyledContent>
+  </Popover.Root>
 );
 ```
 
@@ -85,9 +79,9 @@ export default () => (
 
 ## API Reference
 
-### Popover
+### Root
 
-`Popover` is the root component.
+Contains all the parts of a popover.
 
 <PropsTable
   data={[
@@ -96,9 +90,8 @@ export default () => (
       type: 'boolean',
       description: (
         <span>
-          The open state of the <Code>Popover</Code> when it is
-          initially rendered. Use <Code>defaultOpen</Code> if you do
-          not need to control the state of an <Code>Popover</Code>.
+          The open state of the popover when it is initially rendered.
+          Use when you do not need to control its open state.
         </span>
       ),
     },
@@ -107,8 +100,8 @@ export default () => (
       type: 'boolean',
       description: (
         <span>
-          The controlled open state of the <Code>Popover</Code>. Must
-          be used in conjunction with <Code>onOpenChange</Code>.
+          The controlled open state of the popover. Must be used in
+          conjunction with <Code>onOpenChange</Code>.
         </span>
       ),
     },
@@ -118,8 +111,8 @@ export default () => (
       typeSimple: 'function',
       description: (
         <span>
-          The callback that fires when the state of the{' '}
-          <Code>Popover</Code> changes.
+          Event handler called when the open state of the popover
+          changes.
         </span>
       ),
     },
@@ -128,11 +121,11 @@ export default () => (
 
 ### Trigger
 
-`PopoverTrigger` is the button that triggers the `Popover`. It is also used as the anchor the `PopoverContent` is positioned against.
+The button that toggles the popover. By default, the `Popover.Content` will position itself against the trigger.
 
 ### Content
 
-The component that pops out in an open `Popover`.
+The component that pops out when the popover is open.
 
 <PropsTable
   data={[
@@ -142,8 +135,8 @@ The component that pops out in an open `Popover`.
       default: 'true',
       description: (
         <span>
-          Whether or not focus should be trapped within the{' '}
-          <Code>PopoverContent</Code>.
+          When <Code>true</Code>, focus will be trapped within the
+          component bounds.
         </span>
       ),
     },
@@ -153,8 +146,9 @@ The component that pops out in an open `Popover`.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when auto-focusing on open. It can be
-          prevented by calling <Code>event.preventDefault</Code>.
+          Event handler called when focus moves into the component
+          after opening. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -164,8 +158,9 @@ The component that pops out in an open `Popover`.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when auto-focusing on close. It can be
-          prevented by calling <Code>event.preventDefault</Code>.
+          Event handler called when focus moves to the trigger after
+          closing. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -176,10 +171,10 @@ The component that pops out in an open `Popover`.
       description: (
         <span>
           When <Code>true</Code>, hover/focus/click interactions will
-          be disabled on elements outside the <Code>Content</Code>.
+          be disabled on elements outside the bounds of the component.
           Users will need to click twice on outside elements to
-          interact with them: Once to close the <Code>Popover</Code>,
-          and again to trigger the element.
+          interact with them: Once to close the popover, and again to
+          activate the element.
         </span>
       ),
     },
@@ -190,7 +185,7 @@ The component that pops out in an open `Popover`.
       description: (
         <span>
           Event handler called when the escape key is down. It can be
-          prevented by calling <Code>event.preventDefault</Code>
+          prevented by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -200,9 +195,9 @@ The component that pops out in an open `Popover`.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the a pointer event happens
-          outside of the <Code>Content</Code>. It can be prevented by
-          calling <Code>event.preventDefault</Code>.
+          Event handler called when a pointer event occurs outside the
+          bounds of the component. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -212,8 +207,8 @@ The component that pops out in an open `Popover`.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the focus moves outside of the{' '}
-          <Code>Content</Code>. It can be prevented by calling{' '}
+          Event handler called when focus moves outside the bounds of
+          the component. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
         </span>
       ),
@@ -225,12 +220,9 @@ The component that pops out in an open `Popover`.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when an interaction happens outside the
-          <Code>Content</Code>. Specifically, when a pointer event happens
-          outside of the `ContextMenuContent` or focus moves outside of
-          it. It can be prevented by calling <Code>
-            event.preventDefault
-          </Code>.
+          Event handler called when an interaction (pointer or focus
+          event) happens outside the bounds of the component. It can
+          be prevented by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -240,8 +232,8 @@ The component that pops out in an open `Popover`.
       default: 'false',
       description: (
         <span>
-          Whether scrolling outside the <Code>Content</Code> should be
-          prevented.
+          When <Code>true</Code>, prevents the user from scrolling
+          outside the bounds of the component.
         </span>
       ),
     },
@@ -251,8 +243,7 @@ The component that pops out in an open `Popover`.
       default: 'true',
       description: (
         <span>
-          Whether or not the <Code>Content</Code> should render in a
-          <Code>Portal</Code>.
+          Whether to render in a <Code>Portal</Code> when open.
         </span>
       ),
     },
@@ -272,9 +263,8 @@ The component that pops out in an open `Popover`.
       typeSimple: 'ref',
       description: (
         <span>
-          An optional ref to an element to be used as the anchor for
-          the <Code>Content</Code>. By default, it will use{' '}
-          <Code>Trigger</Code> as anchor element.
+          An optional ref of an element to position against. By
+          default, it will use <Code>Popover.Trigger</Code>.
         </span>
       ),
     },
@@ -285,8 +275,9 @@ The component that pops out in an open `Popover`.
       default: '"bottom"',
       description: (
         <span>
-          The desired side to place the <Code>Content</Code> against{' '}
-          <Code>Trigger</Code>. May switch in case of collisions.
+          The preferred side of the anchor to render against when
+          open. Will be reversed when collisions occur and{' '}
+          <Code>avoidCollisions</Code> is enabled.
         </span>
       ),
     },
@@ -295,9 +286,7 @@ The component that pops out in an open `Popover`.
       type: 'number',
       default: '0',
       description: (
-        <span>
-          The side offset for the <Code>Content</Code>.
-        </span>
+        <span>The distance in pixels from the anchor.</span>
       ),
     },
     {
@@ -307,8 +296,8 @@ The component that pops out in an open `Popover`.
       default: '"center"',
       description: (
         <span>
-          How to align the <Code>Content</Code> against{' '}
-          <Code>Trigger</Code>. May switch in case of collisions.
+          The preferred alignment against the anchor. May change when
+          collisions occur.
         </span>
       ),
     },
@@ -318,7 +307,8 @@ The component that pops out in an open `Popover`.
       default: '0',
       description: (
         <span>
-          The align offset for the <Code>Content</Code>
+          An offset in pixels from the <Code>"start"</Code> or{' '}
+          <Code>"end"</Code> alignment options.
         </span>
       ),
     },
@@ -328,10 +318,9 @@ The component that pops out in an open `Popover`.
       default: 'true',
       description: (
         <span>
-          Whether or not collisions with window edges should be
-          avoided. When turned on, this will result in the{' '}
-          <Code>Content</Code> flipping its side and alignment
-          accordingly.
+          When <Code>true</Code>, overrides the <Code>side</Code> and
+          <Code>align</Code> preferences to prevent collisions with window
+          edges.
         </span>
       ),
     },
@@ -341,8 +330,8 @@ The component that pops out in an open `Popover`.
       default: '0',
       description: (
         <span>
-          The tolerance within which the <Code>Content</Code> is to be
-          checked against window edges.
+          The distance in pixels from window edges where collision
+          detection should occur.
         </span>
       ),
     },
@@ -351,7 +340,7 @@ The component that pops out in an open `Popover`.
 
 ### Arrow
 
-The optional arrow element to render for the `Popover`. This can be used to help visually link the `PopoverTrigger` with the `PopoverContent`. Must live inside `PopoverContent`.
+An optional arrow element to render alongside the popover. This can be used to help visually link the anchor with the `Popover.Content`. Must be rendered inside `Popover.Content`.
 
 <PropsTable
   data={[
@@ -359,21 +348,13 @@ The optional arrow element to render for the `Popover`. This can be used to help
       name: 'width',
       type: 'number',
       default: 10,
-      description: (
-        <span>
-          The width of the <Code>Arrow</Code>.
-        </span>
-      ),
+      description: <span>The width of the arrow in pixels.</span>,
     },
     {
       name: 'height',
       type: 'number',
       default: 5,
-      description: (
-        <span>
-          The height of the <Code>Arrow</Code>.
-        </span>
-      ),
+      description: <span>The height of the arrow in pixels.</span>,
     },
     {
       name: 'offset',
@@ -381,8 +362,8 @@ The optional arrow element to render for the `Popover`. This can be used to help
       default: 0,
       description: (
         <span>
-          The offset of the `<Code>Arrow</Code> along the edge of{' '}
-          <Code>Content</Code>.
+          The distance in pixels to render from the{' '}
+          <Code>Popover.Content</Code> edge.
         </span>
       ),
     },
@@ -391,7 +372,7 @@ The optional arrow element to render for the `Popover`. This can be used to help
 
 ### Close
 
-The button that closes an open `Popover`.
+The button that closes an open popover.
 
 ## Accessibility
 
@@ -403,38 +384,26 @@ Adheres to the [Dialog WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-p
   data={[
     {
       keys: ['Space'],
-      description: (
-        <span>
-          Opens/closes <Code>Content</Code>.
-        </span>
-      ),
+      description: 'Opens/closes the popover.',
     },
     {
       keys: ['Enter'],
-      description: (
-        <span>
-          Opens/closes <Code>Content</Code>.
-        </span>
-      ),
+      description: 'Opens/closes the popover.',
     },
     {
       keys: ['Tab'],
-      description: (
-        <span>Moves focus to the next focusable element.</span>
-      ),
+      description: 'Moves focus to the next focusable element',
     },
     {
       keys: ['Shift + Tab'],
-      description: (
-        <span>Moves focus to the previous focusable element.</span>
-      ),
+      description: 'Moves focus to the previous focusable element',
     },
     {
       keys: ['Esc'],
       description: (
         <span>
-          Closes <Code>Content</Code> and moves focus to{' '}
-          <Code>Trigger</Code>.
+          Closes the popover and moves focus to{' '}
+          <Code>Popover.Trigger</Code>.
         </span>
       ),
     },
