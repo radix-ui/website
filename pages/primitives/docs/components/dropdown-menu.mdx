@@ -215,6 +215,19 @@ Contains all the parts of a dropdown menu.
 
 The button that toggles the dropdown menu. By default, the `DropdownMenu.Content` will position itself against the trigger.
 
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'button',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
 ### Content
 
 The component that pops out when the dropdown menu is open.
@@ -380,6 +393,14 @@ The component that pops out when the dropdown menu is open.
         </span>
       ),
     },
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
   ]}
 />
 
@@ -411,6 +432,14 @@ An optional arrow element to render alongside the dropdown menu. This can be use
           <Code>DropdownMenu.Content</Code> edge.
         </span>
       ),
+    },
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'svg',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the entire SVG and all of its paths.',
     },
   ]}
 />
@@ -457,6 +486,14 @@ The component that contains the dropdown menu items.
         </span>
       ),
     },
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
   ]}
 />
 
@@ -464,9 +501,35 @@ The component that contains the dropdown menu items.
 
 Used to group multiple `DropdownMenu.Item`s.
 
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
 ### Label
 
 Used to render a label. It won't be focusable using arrow keys.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
 
 ### CheckboxItem
 
@@ -530,6 +593,14 @@ An item that can be controlled and rendered like a checkbox.
         </span>
       ),
     },
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
   ]}
 />
 
@@ -549,6 +620,14 @@ Used to group multiple `DropdownMenu.RadioItem`s.
       type: '(value: string) => void',
       typeSimple: 'function',
       description: 'Event handler called when the value changes.',
+    },
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
   ]}
 />
@@ -601,6 +680,14 @@ An item that can be controlled and rendered like a radio.
         </span>
       ),
     },
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
   ]}
 />
 
@@ -620,9 +707,30 @@ Renders when the parent `DropdownMenu.CheckboxItem` or `DropdownMenu.RadioItem` 
         </span>
       ),
     },
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'span',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
   ]}
 />
 
 ### Separator
 
 Used to visually separate items in the dropdown menu.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
