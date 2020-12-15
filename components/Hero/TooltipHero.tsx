@@ -105,24 +105,29 @@ const TooltipContainer = () => {
         >
           <Box css={{ backgroundColor: 'hsl(206,10%,80%)', height: 4, width: '100%' }}></Box>
           <Box
-          css={{
-            position: 'absolute',
-            display: 'flex',
-            alignItems: 'center',
-            px: '$2',
-            height: '$4',
-            backgroundColor: 'black',
-            borderRadius: '5px',
-            width: 120,
-            mr: 2,
-            top: -30,
-            left: -30,
-            animation: `${tooltip} 6000ms infinite`,
-            animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
-          }}
-        >
-          <Box css={{ backgroundColor: 'hsla(0,100%,100%,.85)', height: 2, width: '100%' }}></Box>
-        </Box>
+            css={{
+              position: 'absolute',
+              display: 'flex',
+              alignItems: 'center',
+              px: '$2',
+              height: '$4',
+              backgroundColor: 'black',
+              borderRadius: '5px',
+              width: 120,
+              mr: 2,
+              top: -30,
+              left: -30,
+              animation: `${tooltip} 6000ms infinite`,
+              animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+            }}
+          >
+            <Flex css={{ width: '100%' }}>
+              <Box css={{ backgroundColor: 'hsla(0,100%,100%,.9)', height: 2, fs: 0, fg: 2 }}></Box>
+              <Box css={{ backgroundColor: 'hsla(0,100%,100%,.9)', height: 2, fs: 0, fg: 3, ml: '$1' }}></Box>
+              <Box css={{ backgroundColor: 'hsla(0,100%,100%,.9)', height: 2, fs: 0, fg: 1, ml: '$1' }}></Box>
+              <Box css={{ backgroundColor: 'hsla(0,100%,100%,.9)', height: 2, fs: 0, fg: 4, ml: '$1' }}></Box>
+            </Flex>
+          </Box>
         </Box>
     </Box>
   );
