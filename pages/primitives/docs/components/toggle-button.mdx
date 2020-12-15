@@ -124,16 +124,19 @@ export default () => (
 <KeyboardTable
   data={[
     {
-      keys: ['Space', 'Enter'],
+      keys: ['Space'],
       description: (
-        <ul>
-          <li>
-            When deactivated, activates <Code>ToggleButton</Code>.
-          </li>
-          <li>
-            When activated, deactivates <Code>ToggleButton</Code>.
-          </li>
-        </ul>
+        <span>
+          Activates/deactivates <Code>ToggleButton</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['Enter'],
+      description: (
+        <span>
+          Activates/deactivates <Code>ToggleButton</Code>.
+        </span>
       ),
     },
   ]}
