@@ -184,7 +184,8 @@ The button that toggles the dropdown menu. By default, the `DropdownMenu.Content
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'button',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -201,7 +202,8 @@ The component that pops out when the dropdown menu is open.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -377,7 +379,8 @@ An optional arrow element to render alongside the dropdown menu. This can be use
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'svg',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the entire SVG and all of its paths.',
@@ -417,7 +420,8 @@ The component that contains the dropdown menu items.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -470,7 +474,8 @@ Used to group multiple `DropdownMenu.Item`s.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -487,7 +492,8 @@ Used to render a label. It won't be focusable using arrow keys.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -504,7 +510,8 @@ An item that can be controlled and rendered like a checkbox.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -577,7 +584,8 @@ Used to group multiple `DropdownMenu.RadioItem`s.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -605,7 +613,8 @@ An item that can be controlled and rendered like a radio.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -664,7 +673,8 @@ Renders when the parent `DropdownMenu.CheckboxItem` or `DropdownMenu.RadioItem` 
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'span',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -691,7 +701,8 @@ Used to visually separate items in the dropdown menu.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
