@@ -12,7 +12,7 @@ const { colors } = DStheme;
 const theme: any = {
   plain: {
     color: 'var(--colors-hiContrast)',
-    backgroundColor: 'var(--colors-loContrast)',
+    backgroundColor: 'transparent',
   },
   styles: [
     {
@@ -66,7 +66,7 @@ const theme: any = {
     {
       types: ['function', 'deleted', 'tag'],
       style: {
-        color: colors.$yellow900,
+        color: colors.$orange900,
       },
     },
     {
@@ -100,7 +100,7 @@ const StyledLivePreview = ({ live, ...props }: { live?: boolean }) => (
       // backgroundColor: 'white',
       // zIndex: 3,
       overflow: 'hidden',
-      p: '$3',
+      p: '$4',
       boxShadow: `inset 0 0 0 1px $gray500`,
       borderTopLeftRadius: '$2',
       borderTopRightRadius: '$2',
@@ -115,7 +115,7 @@ const StyledLivePreview = ({ live, ...props }: { live?: boolean }) => (
 const CodeContainer = ({ live, children }: { live?: boolean; children: React.ReactNode }) => (
   <Box
     css={{
-      p: '$1',
+      p: '$4',
       borderTopLeftRadius: live ? '0' : '$2',
       borderTopRightRadius: live ? '0' : '$2',
       borderBottomLeftRadius: '$2',
@@ -137,9 +137,9 @@ const CopyButton = (props: any) => (
     css={{
       fontFamily: '$untitled',
       position: 'absolute',
-      top: '$1',
-      zIndex: '$1',
-      right: '$1',
+      top: '$2',
+      zIndex: '$2',
+      right: '$2',
     }}
     {...props}
   />
@@ -153,6 +153,7 @@ export function CodeBlock({
   compact,
   children,
   addFragment,
+  primitives,
   ...props
 }) {
   const [editorCode, setEditorCode] = React.useState(children.trim());
@@ -160,8 +161,19 @@ export function CodeBlock({
   const router = useRouter();
 
   const [_, productType] = router.pathname.split('/');
-  const components =
-    productType === 'design-system' ? DS : productType === 'primitives' ? Primitives : {};
+
+  // components to be provided to the code blocks
+  let components = {};
+
+  // if the codeblock passes in `primitives`, use it
+  if (primitives) {
+    components = Primitives;
+  }
+  // otherwise derive it from URL
+  else {
+    components =
+      productType === 'design-system' ? DS : productType === 'primitives' ? Primitives : {};
+  }
 
   const language = className && className.replace(/language-/, '');
   const { hasCopied, onCopy } = useClipboard(editorCode);
@@ -195,6 +207,23 @@ export function CodeBlock({
   };
   const onChange = (newCode) => setEditorCode(newCode.trim());
 
+  // Eventually I suspect we'll move away from `react-live` since we no longer
+  // include live-editable code blocks. In the mean time, this effect will
+  // remove the underlying hidden `textarea` completely and return semantics to
+  // the `pre` tag so that code blocks are properly exposed to AT.
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  React.useEffect(() => {
+    const pre = containerRef.current?.querySelector('pre');
+    const textarea = containerRef.current?.querySelector('textarea');
+    if (pre) {
+      pre.removeAttribute('aria-hidden');
+      pre.style.pointerEvents = 'auto';
+    }
+    if (textarea) {
+      textarea.parentNode.removeChild(textarea);
+    }
+  }, []);
+
   if (language === 'jsx' && live === true) {
     return (
       <LiveProvider {...liveProviderProps}>
@@ -214,6 +243,7 @@ export function CodeBlock({
           </Box>
         )}
         <Box
+          ref={containerRef}
           css={{
             position: 'relative',
             zIndex: 1,
@@ -224,6 +254,7 @@ export function CodeBlock({
             <LiveEditor
               onChange={onChange}
               style={liveEditorStyle}
+              {...{ padding: 0 }}
               // Code blocks are no longer "live"
               // TODO: Refactor this whole file :D
               disabled
@@ -274,9 +305,11 @@ export function CodeBlock({
 
   if (render) {
     return (
-      <LiveProvider {...liveProviderProps}>
-        <StyledLivePreview />
-      </LiveProvider>
+      <Box ref={containerRef}>
+        <LiveProvider {...liveProviderProps}>
+          <StyledLivePreview />
+        </LiveProvider>
+      </Box>
     );
   }
 
@@ -287,10 +320,11 @@ export function CodeBlock({
         zIndex: 1,
         mb: '$3',
       }}
+      ref={containerRef}
     >
       <LiveProvider disabled {...liveProviderProps}>
         <CodeContainer live={live}>
-          <LiveEditor style={liveEditorStyle} />
+          <LiveEditor style={liveEditorStyle} {...{ padding: 0 }} />
         </CodeContainer>
         <CopyButton onClick={onCopy}>{hasCopied ? 'Copied' : 'Copy'}</CopyButton>
       </LiveProvider>

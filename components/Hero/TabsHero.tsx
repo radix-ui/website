@@ -61,7 +61,6 @@ const click = css.keyframes({
 const TabsContainer = () => {
   return (
     <Box css={{ position: 'relative' }}>
-
       <Box
         css={{
           position: 'absolute',
@@ -112,17 +111,9 @@ const TabsContainer = () => {
               />
               <feOffset dy="1" />
               <feGaussianBlur stdDeviation="1" />
-              <feColorMatrix
-                type="matrix"
-                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-              />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
               <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="effect1_dropShadow"
-                result="shape"
-              />
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
             </filter>
             <clipPath id="clip0">
               <rect width="25" height="25" fill="white" />

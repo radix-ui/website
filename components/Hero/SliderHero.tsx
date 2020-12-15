@@ -8,9 +8,9 @@ const anim = css.keyframes({
 });
 
 const scale = css.keyframes({
-  '20%': { transform: 'ScaleX(.75)', },
-  '40%': { transform: 'ScaleX(.25)', },
-  '60%': { transform: 'ScaleX(.5)', },
+  '20%': { transform: 'ScaleX(.75)' },
+  '40%': { transform: 'ScaleX(.25)' },
+  '60%': { transform: 'ScaleX(.5)' },
 });
 
 const HeroSkeleton = () => {
@@ -47,7 +47,7 @@ const HeroSkeleton = () => {
           borderRadius: '50%',
           flexShrink: 0,
           width: 16,
-          height: 16, 
+          height: 16,
           marginTop: -7,
           marginLeft: -8,
           transform: 'translateX(70px)',
@@ -63,4 +63,3 @@ const HeroSkeleton = () => {
 export const SliderHero = () => {
   return <HeroSkeleton />;
 };
-

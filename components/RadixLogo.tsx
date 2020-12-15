@@ -1,5 +1,12 @@
-export const RadixLogo = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+export const RadixLogo = (props: React.ComponentPropsWithoutRef<'svg'>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="35"
+    height="35"
+    viewBox="0 0 35 35"
+    fill="none"
+    {...props}
+  >
     <path
       d="M17 35C10.3726 35 5 30.0751 5 24C5 17.9249 10.3726 13 17 13L17 35Z"
       fill="currentColor"

@@ -14,45 +14,47 @@ export function NavItem({ children, active, disabled, href, ...props }: NavItemP
   const isExternal = href.startsWith('http');
 
   return (
-    <Box
-      as={isExternal || disabled ? 'span' : NextLink}
-      {...(isExternal || disabled ? {} : { href, passHref: true })}
-    >
+    <Box as="li" css={{ display: 'block' }}>
       <Box
-        {...props}
-        {...(isExternal && !disabled ? { href, target: '_blank' } : {})}
-        as={disabled ? 'div' : 'a'}
-        css={{
-          textDecoration: 'none',
-          color: disabled ? '$gray800' : '$hiContrast',
-          display: 'flex',
-          alignItems: 'center',
-          py: '$2',
-          px: '$5',
-          backgroundColor: active ? '$violet400' : 'transparent',
-          userSelect: 'none',
-          minHeight: '$6',
-          transition: 'background-color 25ms linear',
-          '&:not(div):hover': {
-            backgroundColor: active ? '$violet400' : '$violet200',
-          },
-          ':focus': {
-            outline: 'none',
-            boxShadow: '0 0 0 1px $violet500',
-          }
-        }}
+        as={isExternal || disabled ? 'span' : NextLink}
+        {...(isExternal || disabled ? {} : { href, passHref: true })}
       >
-        <Text
-          size="2"
+        <Box
+          {...props}
+          {...(isExternal && !disabled ? { href, target: '_blank' } : {})}
+          as={disabled ? 'div' : 'a'}
           css={{
-            color: 'inherit',
-            lineHeight: '1',
+            textDecoration: 'none',
+            color: disabled ? '$gray800' : '$hiContrast',
             display: 'flex',
             alignItems: 'center',
+            py: '$2',
+            px: '$5',
+            backgroundColor: active ? '$violet400' : 'transparent',
+            userSelect: 'none',
+            minHeight: '$6',
+            transition: 'background-color 25ms linear',
+            '&:not(div):hover': {
+              backgroundColor: active ? '$violet400' : '$violet200',
+            },
+            ':focus': {
+              outline: 'none',
+              boxShadow: '0 0 0 1px $violet500',
+            },
           }}
         >
-          {children}
-        </Text>
+          <Text
+            size="2"
+            css={{
+              color: 'inherit',
+              lineHeight: '1',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            {children}
+          </Text>
+        </Box>
       </Box>
     </Box>
   );

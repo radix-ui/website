@@ -1,7 +1,7 @@
 ---
 title: Toggle Button
 name: toggle-button
-version: 0.0.1-13
+version: 0.0.1
 description: A two-state button that can be either on or off.
 aria: https://www.w3.org/TR/wai-aria-practices-1.2/#button
 features:
@@ -28,22 +28,20 @@ npm install @radix-ui/react-toggle-button
 Import the component.
 
 ```jsx
-import { ToggleButton } from '@radix-ui/react-toggle-buton';
+import * as ToggleButton from '@radix-ui/react-toggle-buton';
 
-export default () => <ToggleButton />;
+export default () => <ToggleButton.Root />;
 ```
 
 ## Basic example
 
 Create your styled toggle button component from the primitive parts.
 
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
-
 ```jsx live manual
 // import { styled } from 'path-to/stitches.config';
-import * as ToggleButtonPrimitive from '@radix-ui/react-toggle-button';
+import * as ToggleButton from '@radix-ui/react-toggle-button';
 
-const ToggleButton = styled(ToggleButtonPrimitive.Root, {
+const StyledToggleButton = styled(ToggleButton.Root, {
   appearance: 'none',
   backgroundColor: 'transparent',
   border: 'none',
@@ -64,39 +62,47 @@ const ToggleButton = styled(ToggleButtonPrimitive.Root, {
 
 export default () => (
   <>
-    <ToggleButton>Toggle</ToggleButton>
+    <StyledToggleButton>Toggle</StyledToggleButton>
   </>
 );
 ```
 
+<Note>
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
+
+</Note>
+
 ## API Reference
 
-### ToggleButton
+### Root
 
-`ToggleButton` is the root component.
+The toggle button.
 
 <PropsTable
   data={[
     {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'button',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
       name: 'defaultToggled',
       type: 'boolean',
-      description: (
-        <span>
-          The checked state of the <Code>ToggleButton</Code> when it
-          is initially rendered. Use <Code>defaultToggled</Code> if
-          you do not need to control the state of the{' '}
-          <Code>ToggleButton</Code>.
-        </span>
-      ),
+      description:
+        'The toggled state of the toggle button when it is initially rendered. Use when you do not need to control its toggled state.',
     },
     {
       name: 'toggled',
       type: 'boolean',
       description: (
         <span>
-          The controlled checked state of the{' '}
-          <Code>ToggleButton</Code>. Must be used in conjunction with{' '}
-          <Code>onToggle</Code>.
+          The controlled toggled state of the toggle button. Must be
+          used in conjunction with in conjunction with{' '}
+          <Code>onToggledChange</Code>.
         </span>
       ),
     },
@@ -104,19 +110,16 @@ export default () => (
       name: 'onToggledChange',
       type: '(toggled: boolean) => void',
       typeSimple: 'function',
-      description: (
-        <span>
-          The callback that fires when the toggled state of the{' '}
-          <Code>ToggleButton</Code> changes.
-        </span>
-      ),
+      description:
+        'Event handler called when the toggled state of the toggle button changes.',
     },
     {
       name: 'disabled',
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>ToggleButton</Code> is disabled.
+          When <Code>true</Code>, prevents the user from interacting
+          with the toggle button.
         </span>
       ),
     },
@@ -131,19 +134,11 @@ export default () => (
   data={[
     {
       keys: ['Space'],
-      description: (
-        <span>
-          Activates/deactivates <Code>ToggleButton</Code>.
-        </span>
-      ),
+      description: 'Activates/deactivates the toggle button.',
     },
     {
       keys: ['Enter'],
-      description: (
-        <span>
-          Activates/deactivates <Code>ToggleButton</Code>.
-        </span>
-      ),
+      description: 'Activates/deactivates the toggle button.',
     },
   ]}
 />

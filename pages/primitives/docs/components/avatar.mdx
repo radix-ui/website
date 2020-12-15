@@ -1,7 +1,7 @@
 ---
 title: Avatar
 name: avatar
-version: 0.0.1-13
+version: 0.0.1
 description: An image element with a fallback for representing the user.
 features:
   - Automatic and manual control over when the image renders.
@@ -28,13 +28,13 @@ npm install @radix-ui/react-avatar
 Import the components and piece the parts together.
 
 ```jsx
-import { Root, Image, Fallback } from '@radix-ui/react-avatar';
+import * as Avatar from '@radix-ui/react-avatar';
 
 export default () => (
-  <Avatar>
-    <AvatarImage />
-    <AvatarFallback />
-  </Avatar>
+  <Avatar.Root>
+    <Avatar.Image />
+    <Avatar.Fallback />
+  </Avatar.Root>
 );
 ```
 
@@ -42,13 +42,11 @@ export default () => (
 
 Create your styled avatar component from the primitive parts.
 
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
-
 ```jsx live manual
 // import { styled } from 'path-to/stitches.config';
-import * as AvatarPrimitive from '@radix-ui/react-avatar';
+import * as Avatar from '@radix-ui/react-avatar';
 
-const Avatar = styled(AvatarPrimitive.Root, {
+const StyledAvatar = styled(Avatar.Root, {
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -60,13 +58,13 @@ const Avatar = styled(AvatarPrimitive.Root, {
   borderRadius: 24,
 });
 
-const Image = styled(AvatarPrimitive.Image, {
+const StyledImage = styled(Avatar.Image, {
   width: '100%',
   height: '100%',
   objectFit: 'cover',
 });
 
-const Fallback = styled(AvatarPrimitive.Fallback, {
+const StyledFallback = styled(Avatar.Fallback, {
   width: '100%',
   height: '100%',
   display: 'flex',
@@ -76,25 +74,52 @@ const Fallback = styled(AvatarPrimitive.Fallback, {
 });
 
 export default () => (
-  <Avatar>
-    <Image src="https://picsum.photos/id/1005/400/400" />
-    <Fallback>UI</Fallback>
-  </Avatar>
+  <StyledAvatar>
+    <StyledImage src="https://picsum.photos/id/1005/400/400" />
+    <StyledFallback>UI</StyledFallback>
+  </StyledAvatar>
 );
 ```
 
+<Note>
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
+
+</Note>
+
 ## API Reference
 
-### Avatar
+### Root
 
-`Avatar` is the root component.
-
-### Image
-
-`AvatarImage` is the image to render. By default `AvatarImage` will only render when it has actually been loaded. You can use the `onLoadingStatusChange` handler if you need finer control.
+Contains all the parts of an avatar.
 
 <PropsTable
   data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'span',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Image
+
+The image to render. By default it will only render when it has loaded. You can use the `onLoadingStatusChange` handler if you need more control.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'img',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
     {
       name: 'onLoadingStatusChange',
       type:
@@ -108,19 +133,23 @@ export default () => (
 
 ### Fallback
 
-`AvatarFallback` provides a fallback element that will only render anytime `AvatarImage` hasn't loaded. This means whilst it's loading, or if there was an error. If you don't want it to flash quickly whilst it's loading, you can provide a `delayMs` prop which will delay its rendering a bit. Otherwise, if you need finer control you can use the `onLoadingStatusChange` handler on `AvatarImage`.
+An element that renders when the image hasn't loaded. This means whilst it's loading, or if there was an error. If you notice a flash during loading, you can provide a `delayMs` prop to delay its rendering so it only renders for those with slower connections. For more control, use the `onLoadingStatusChange` handler on `Avatar.Image`.
 
 <PropsTable
   data={[
     {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'span',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
       name: 'delayMs',
       type: 'number',
-      description: (
-        <span>
-          Useful to delay the rendering of <Code>AvatarFallback</Code>{' '}
-          to avoid flashing while the image is loading.
-        </span>
-      ),
+      description:
+        'Useful for delaying rendering so it only appears for those with slower connections.',
     },
   ]}
 />
@@ -130,9 +159,9 @@ export default () => (
 ### Initials only
 
 ```jsx live manual compact
-import * as AvatarPrimitive from '@radix-ui/react-avatar';
+import * as Avatar from '@radix-ui/react-avatar';
 
-const Avatar = styled(AvatarPrimitive.Root, {
+const StyledAvatar = styled(Avatar.Root, {
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -144,7 +173,7 @@ const Avatar = styled(AvatarPrimitive.Root, {
   borderRadius: 24,
 });
 
-const Fallback = styled(AvatarPrimitive.Fallback, {
+const StyledFallback = styled(Avatar.Fallback, {
   width: '100%',
   height: '100%',
   display: 'flex',
@@ -155,19 +184,19 @@ const Fallback = styled(AvatarPrimitive.Fallback, {
 });
 
 export default () => (
-  <Avatar>
-    <Fallback>UI</Fallback>
-  </Avatar>
+  <StyledAvatar>
+    <StyledFallback>UI</StyledFallback>
+  </StyledAvatar>
 );
 ```
 
 ### Clickable Avatar with tooltip
 
 ```jsx live manual compact
-import * as AvatarPrimitive from '@radix-ui/react-avatar';
-import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+import * as Avatar from '@radix-ui/react-avatar';
+import * as Tooltip from '@radix-ui/react-tooltip';
 
-const Avatar = styled(AvatarPrimitive.Root, {
+const StyledAvatar = styled(Avatar.Root, {
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -182,13 +211,13 @@ const Avatar = styled(AvatarPrimitive.Root, {
   padding: 0,
 });
 
-const Image = styled(AvatarPrimitive.Image, {
+const StyledImage = styled(Avatar.Image, {
   width: '100%',
   height: '100%',
   objectFit: 'cover',
 });
 
-const Fallback = styled(AvatarPrimitive.Fallback, {
+const StyledFallback = styled(Avatar.Fallback, {
   width: '100%',
   height: '100%',
   display: 'flex',
@@ -197,13 +226,13 @@ const Fallback = styled(AvatarPrimitive.Fallback, {
   backgroundColor: 'dodgerblue',
 });
 
-const TooltipTrigger = styled(TooltipPrimitive.Trigger, {
+const StyledTooltipTrigger = styled(Tooltip.Trigger, {
   backgroundColor: 'transparent',
   border: 'none',
   padding: 0,
 });
 
-const TooltipContent = styled(TooltipPrimitive.Content, {
+const StyledTooltipContent = styled(Tooltip.Content, {
   borderRadius: 3,
   padding: '5px 10px',
   fontSize: 14,
@@ -212,18 +241,18 @@ const TooltipContent = styled(TooltipPrimitive.Content, {
 });
 
 export default () => (
-  <TooltipPrimitive.Root>
-    <TooltipTrigger>
-      <Avatar onClick={() => alert('Clicked!')}>
-        <Image src="https://picsum.photos/id/1006/400/400" />
-        <Fallback>AB</Fallback>
-      </Avatar>
-    </TooltipTrigger>
+  <Tooltip.Root>
+    <StyledTooltipTrigger>
+      <StyledAvatar onClick={() => alert('Clicked!')}>
+        <StyledImage src="https://picsum.photos/id/1006/400/400" />
+        <StyledFallback>AB</StyledFallback>
+      </StyledAvatar>
+    </StyledTooltipTrigger>
 
-    <TooltipContent side="top">
+    <StyledTooltipContent side="top">
       Tooltip content
-      <TooltipPrimitive.Arrow style={{ fill: 'gainsboro' }} />
-    </TooltipContent>
-  </TooltipPrimitive.Root>
+      <Tooltip.Arrow style={{ fill: 'gainsboro' }} />
+    </StyledTooltipContent>
+  </Tooltip.Root>
 );
 ```

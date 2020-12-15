@@ -1,9 +1,11 @@
 ---
-title: 'Portal'
-description: Useful to render a React subtree in a different part of the DOM.
+title: Portal
+name: portal
+version: 0.0.1
+description: Renders a React subtree in a different part of the DOM.
 features:
   - Render any React subtree outside of your App.
-  - Appends to `document.body` by default but can be customised to use a different container.
+  - Appends to `document.body` by default but can be customized to use a different container.
 ---
 
 ## Installation
@@ -19,28 +21,26 @@ npm install @radix-ui/react-portal
 Import the component.
 
 ```jsx
-import { PortalPrimitive } from '@radix-ui/react-portal';
+import * as Portal from '@radix-ui/react-portal';
 
-export default () => <PortalPrimitive />;
+export default () => <Portal.Root />;
 ```
 
 ## Basic example
 
-Create your portaled component from the primitive.
+Use the portal primitive.
 
 ```jsx
-export default () => (
-  <>
-    <Portal>Content</Portal>
-  </>
-);
+import * as Portal from '@radix-ui/react-portal';
+
+export default () => <Portal.Root>Content</Portal.Root>;
 ```
 
 ## API Reference
 
-### Portal
+### Root
 
-`Portal` is the root component. Anything you put inside `Portal` will be rendered in a separate `<radix-portal>` element. By default, this element will be appended to `document.body` but you can choose a different container by using the `containerRef` prop.
+Anything you put inside this component will be rendered in a separate `<radix-portal>` element. By default, this element will be appended to `document.body` but you can choose a different container by using the `containerRef` prop.
 
 <PropsTable
   data={[
@@ -49,7 +49,7 @@ export default () => (
       type: 'React.RefObject<HTMLElement>',
       typeSimple: 'ref',
       description:
-        'A optional ref to a different container where the portal should be appended.',
+        'A optional ref to a different container where the portaled content should be appended.',
     },
   ]}
 />

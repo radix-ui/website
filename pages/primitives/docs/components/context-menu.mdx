@@ -1,7 +1,7 @@
 ---
 title: Context Menu
 name: context-menu
-version: 0.0.1-1
+version: 0.0.1
 description: Displays a menu located at the pointer, triggered by a right-click.
 aria: https://www.w3.org/TR/wai-aria-practices-1.2/#menu
 features:
@@ -11,7 +11,7 @@ features:
   - Focus is fully managed.
   - Full keyboard navigation.
   - Typeahead support.
-  - Dismissing and layering behavior is highly customisable.
+  - Dismissing and layering behavior is highly customizable.
 ---
 
 import { ContextMenuHero } from '../../../../components/Hero/ContextMenuHero';
@@ -33,42 +33,33 @@ npm install @radix-ui/react-context-menu
 Import the components and piece the parts together.
 
 ```jsx
-import {
-  ContextMenu,
-  Trigger,
-  Content,
-  Label,
-  Item,
-  Group,
-  CheckboxItem,
-  RadioGroup,
-  RadioItem,
-  ItemIndicator,
-  Separator,
-} from '@radix-ui/react-context-menu';
+import * as ContextMenu from '@radix-ui/react-context-menu';
 
 export default () => (
-  <ContextMenu>
-    <Trigger />
-    <Content>
-      <Trigger />
-      <Content>
-        <Label />
-        <Item />
-        <Group>
-          <Item />
-        </Group>
-        <CheckboxItem />
-        <RadioGroup>
-          <RadioItem />
-        </RadioGroup>
-        <Item>
-          <ItemIndicator />
-        </Item>
-        <Separator />
-      </Content>
-    </Content>
-  </ContextMenu>
+  <ContextMenu.Root>
+    <ContextMenu.Trigger />
+
+    <ContextMenu.Content>
+      <ContextMenu.Label />
+      <ContextMenu.Item />
+
+      <ContextMenu.Group>
+        <ContextMenu.Item />
+      </ContextMenu.Group>
+
+      <ContextMenu.CheckboxItem>
+        <ContextMenu.ItemIndicator />
+      </ContextMenu.CheckboxItem>
+
+      <ContextMenu.RadioGroup>
+        <ContextMenu.RadioItem>
+          <ContextMenu.ItemIndicator />
+        </ContextMenu.RadioItem>
+      </ContextMenu.RadioGroup>
+
+      <ContextMenu.Separator />
+    </ContextMenu.Content>
+  </ContextMenu.Root>
 );
 ```
 
@@ -76,13 +67,11 @@ export default () => (
 
 Create your styled context menu component from the primitive parts.
 
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
-
 ```jsx live manual
 // import { styled } from 'path-to/stitches.config';
-import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
+import * as ContextMenu from '@radix-ui/react-context-menu';
 
-const Content = styled(ContextMenuPrimitive.Content, {
+const StyledContent = styled(ContextMenu.Content, {
   minWidth: 130,
   backgroundColor: 'white',
   borderRadius: 6,
@@ -90,7 +79,7 @@ const Content = styled(ContextMenuPrimitive.Content, {
   boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
 });
 
-const Item = styled(ContextMenuPrimitive.Item, {
+const StyledItem = styled(ContextMenu.Item, {
   fontSize: 13,
   padding: '5px 10px',
   borderRadius: 3,
@@ -104,8 +93,8 @@ const Item = styled(ContextMenuPrimitive.Item, {
 });
 
 export default () => (
-  <ContextMenuPrimitive.Root>
-    <ContextMenuPrimitive.Trigger>
+  <ContextMenu.Root>
+    <ContextMenu.Trigger>
       <div
         style={{
           backgroundColor: 'gainsboro',
@@ -115,36 +104,63 @@ export default () => (
       >
         Right click anywhere
       </div>
-    </ContextMenuPrimitive.Trigger>
-    <Content>
-      <Item>Undo</Item>
-      <Item>Redo</Item>
-      <Item>Cut</Item>
-      <Item>Copy</Item>
-      <Item>Paste</Item>
-    </Content>
-  </ContextMenuPrimitive.Root>
+    </ContextMenu.Trigger>
+    <StyledContent>
+      <StyledItem>Undo</StyledItem>
+      <StyledItem>Redo</StyledItem>
+      <StyledItem>Cut</StyledItem>
+      <StyledItem>Copy</StyledItem>
+      <StyledItem>Paste</StyledItem>
+    </StyledContent>
+  </ContextMenu.Root>
 );
 ```
+
+<Note>
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
+
+</Note>
 
 ## API Reference
 
 Adheres to the [Menu WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#menu) and uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/menu-button/menu-button-actions.html) to manage focus movement among menu items.
 
-### ContextMenu
+### Root
 
-`ContextMenu` is the root component.
+Contains all the parts of a context menu.
 
 ### Trigger
 
-`ContextMenuTrigger` is the area that triggers the `ContextMenu`. Wrap this around the thing you want your `ContextMenu` to open when right-clicking (or using the relevant keyboard shortcuts).
-
-### Content
-
-`ContextMenuContent` is the component that pops out in an open `ContextMenu`.
+The area that opens the context menu. Wrap it around the target you want the context menu to open from when right-clicking (or using the relevant keyboard shortcuts).
 
 <PropsTable
   data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'span',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Content
+
+The component that pops out in an open context menu.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
     {
       name: 'disableOutsidePointerEvents',
       type: 'boolean',
@@ -152,10 +168,10 @@ Adheres to the [Menu WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       description: (
         <span>
           When <Code>true</Code>, hover/focus/click interactions will
-          be disabled on elements outside the <Code>Content</Code>.
+          be disabled on elements outside the bounds of the component.
           Users will need to click twice on outside elements to
-          interact with them: Once to close the{' '}
-          <Code>ContextMenu</Code>, and again to trigger the element.
+          interact with them: Once to close the context menu, and
+          again to activate the element.
         </span>
       ),
     },
@@ -166,7 +182,7 @@ Adheres to the [Menu WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       description: (
         <span>
           Event handler called when the escape key is down. It can be
-          prevented by calling <Code>event.preventDefault</Code>
+          prevented by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -176,9 +192,9 @@ Adheres to the [Menu WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the a pointer event happens
-          outside of the <Code>Content</Code>. It can be prevented by
-          calling <Code>event.preventDefault</Code>.
+          Event handler called when a pointer event occurs outside the
+          bounds of the component. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -189,12 +205,9 @@ Adheres to the [Menu WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when an interaction happens outside the
-          <Code>Content</Code>. Specifically, when a pointer event happens
-          outside of the `ContextMenuContent` or focus moves outside of
-          it. It can be prevented by calling <Code>
-            event.preventDefault
-          </Code>.
+          Event handler called when an interaction (pointer or focus
+          event) happens outside the bounds of the component. It can
+          be prevented by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -211,8 +224,9 @@ Adheres to the [Menu WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       default: '"bottom"',
       description: (
         <span>
-          The desired side to place the <Code>Content</Code> against
-          the mouse position. May switch in case of collisions.
+          The preferred side of the anchor to render against when
+          open. Will be reversed when collisions occur and{' '}
+          <Code>avoidCollisions</Code> is enabled.
         </span>
       ),
     },
@@ -221,20 +235,18 @@ Adheres to the [Menu WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       type: 'number',
       default: '0',
       description: (
-        <span>
-          The side offset for the <Code>Content</Code>
-        </span>
+        <span>The distance in pixels from the anchor.</span>
       ),
     },
     {
       name: 'align',
       type: '"start" | "center" | "end"',
       typeSimple: 'enum',
-      default: '"start"',
+      default: '"center"',
       description: (
         <span>
-          How to align the <Code>Content</Code> against the mouse
-          position. May switch in case of collisions.
+          The preferred alignment against the anchor. May change when
+          collisions occur.
         </span>
       ),
     },
@@ -244,7 +256,8 @@ Adheres to the [Menu WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       default: '0',
       description: (
         <span>
-          The align offset for the <Code>Content</Code>
+          An offset in pixels from the <Code>"start"</Code> or{' '}
+          <Code>"end"</Code> alignment options.
         </span>
       ),
     },
@@ -254,10 +267,9 @@ Adheres to the [Menu WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       default: 'true',
       description: (
         <span>
-          Whether or not collisions with window edges should be
-          avoided. When turned on, this will result in the{' '}
-          <Code>Content</Code> flipping its side and alignment
-          accordingly.
+          When <Code>true</Code>, overrides the <Code>side</Code> and
+          <Code>align</Code> preferences to prevent collisions with window
+          edges.
         </span>
       ),
     },
@@ -267,8 +279,8 @@ Adheres to the [Menu WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       default: '0',
       description: (
         <span>
-          The tolerance within which the <Code>Content</Code> is to be
-          checked against window edges.
+          The distance in pixels from window edges where collision
+          detection should occur.
         </span>
       ),
     },
@@ -277,18 +289,25 @@ Adheres to the [Menu WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
 
 ### Item
 
-The component used to render items in the `ContextMenu`.
+The component that contains the context menu items.
 
 <PropsTable
   data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
     {
       name: 'disabled',
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>Item</Code> is disabled. If so it
-          will not be clickable and will not be focusable using arrow
-          keys
+          When <Code>true</Code>, prevents the user from interacting
+          with the item.
         </span>
       ),
     },
@@ -298,11 +317,11 @@ The component used to render items in the `ContextMenu`.
       typeSimple: 'function',
       description: (
         <span>
-          The callback that fires when an <Code>Item</Code> is
-          selected (via mouse or keyboard). Calling{' '}
+          Event handler called when the user selects an item (via
+          mouse of keyboard). Calling{' '}
           <Code>event.preventDefault</Code> in this handler will
-          prevent the <Code>ContextMenu</Code> from closing when
-          selecting that item.
+          prevent the context menu from closing when selecting that
+          item.
         </span>
       ),
     },
@@ -311,11 +330,10 @@ The component used to render items in the `ContextMenu`.
       type: 'string',
       description: (
         <span>
-          An optional text used for typeahead purpose. By default the
+          Optional text used for typeahead purposes. By default the
           typeahead behavior will use the <Code>.textContent</Code> of{' '}
-          <Code>Item</Code> is too complex, or you have non-textual
-          content
-          <Code>Item</Code>. Use this when the content inside the inside.
+          the item. Use this when the content is complex, or you have
+          non-textual content inside.
         </span>
       ),
     },
@@ -324,26 +342,59 @@ The component used to render items in the `ContextMenu`.
 
 ### Group
 
-Used to group multiple `ContextItem`.
-
-### Label
-
-Uused to render a label. It won't be focusable using arrow keys.
-
-### CheckboxItem
-
-A more specific `ContextItem` which can be controlled like a `Checkbox` and also has an indicator (`ContextMenuItemIndicator`). This conceptually functions like a standard `Checkbox`.
+Used to group multiple `ContextMenu.Item`s.
 
 <PropsTable
   data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Label
+
+Used to render a label. It won't be focusable using arrow keys.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### CheckboxItem
+
+An item that can be controlled and rendered like a checkbox.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
     {
       name: 'checked',
       type: 'boolean',
       description: (
         <span>
-          The controlled checked state of the{' '}
-          <Code>CheckboxItem</Code>. Must be used in conjunction with{' '}
-          <Code>onCheckedChange</Code>.
+          The controlled checked state of the item. Must be used in
+          conjunction with <Code>onCheckedChange</Code>.
         </span>
       ),
     },
@@ -353,8 +404,7 @@ A more specific `ContextItem` which can be controlled like a `Checkbox` and also
       typeSimple: 'function',
       description: (
         <span>
-          The callback that fires when the checked state of the{' '}
-          <Code>CheckboxItem</Code> changes.
+          Event handler called when the checked state changes.
         </span>
       ),
     },
@@ -363,9 +413,8 @@ A more specific `ContextItem` which can be controlled like a `Checkbox` and also
       type: 'boolean',
       description: (
         <span>
-          Whether the <Code>CheckboxItem</Code> is disabled. If so it
-          will not be clickable and will not be focusable using arrow
-          keys
+          When <Code>true</Code>, prevents the user from interacting
+          with the item.
         </span>
       ),
     },
@@ -375,11 +424,11 @@ A more specific `ContextItem` which can be controlled like a `Checkbox` and also
       typeSimple: 'function',
       description: (
         <span>
-          The callback that fires when a <Code>CheckboxItem</Code> is
-          selected (via mouse or keyboard). Calling{' '}
+          Event handler called when the user selects an item (via
+          mouse of keyboard). Calling{' '}
           <Code>event.preventDefault</Code> in this handler will
-          prevent the <Code>ContextMenu</Code> from closing when
-          selecting that item.
+          prevent the context menu from closing when selecting that
+          item.
         </span>
       ),
     },
@@ -388,10 +437,9 @@ A more specific `ContextItem` which can be controlled like a `Checkbox` and also
       type: 'string',
       description: (
         <span>
-          An optional text used for typeahead purpose. By default the
+          Optional text used for typeahead purposes. By default the
           typeahead behavior will use the <Code>.textContent</Code> of{' '}
-          <Code>CheckboxItem</Code>. Use this when the content inside
-          the <Code>CheckboxItem</Code> is too complex, or you have
+          the item. Use this when the content is complex, or you have
           non-textual content inside.
         </span>
       ),
@@ -401,58 +449,59 @@ A more specific `ContextItem` which can be controlled like a `Checkbox` and also
 
 ### RadioGroup
 
-`ContextMenuRadioGroup` is a more specific `ContextGroup` which also handles a value out of multiple potential `ContextMenuRadioItem`. This conceptually functions like a standard `RadioGroup`.
+Used to group multiple `ContextMenu.RadioItem`s.
 
 <PropsTable
   data={[
     {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
       name: 'value',
       type: 'string',
-      description: (
-        <span>
-          The value of the selected <Code>RadioItem</Code> in this{' '}
-          <Code>RadioGroup</Code>.
-        </span>
-      ),
+      description: 'The value of the selected item in the group.',
     },
     {
       name: 'onValueChange',
       type: '(value: string) => void',
       typeSimple: 'function',
-      description: (
-        <span>
-          The callback that fires when the selected{' '}
-          <Code>RadioItem</Code> changes.
-        </span>
-      ),
+      description: 'Event handler called when the value changes.',
     },
   ]}
 />
 
 ### RadioItem
 
-A more specific `ContextItem` which conceptually acts like a standard `Radio`. It has an indicator (`ContextMenuItemIndicator`).
+An item that can be controlled and rendered like a radio.
 
 <PropsTable
   data={[
     {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
       name: 'value',
       type: 'string',
       required: true,
-      description: (
-        <span>
-          The value for this <Code>RadioItem</Code>.
-        </span>
-      ),
+      description: 'The unique value of the item.',
     },
     {
       name: 'disabled',
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>RadioItem</Code> is disabled. If so
-          it will not be clickable and will not be focusable using
-          arrow keys.
+          When <Code>true</Code>, prevents the user from interacting
+          with the item.
         </span>
       ),
     },
@@ -462,11 +511,11 @@ A more specific `ContextItem` which conceptually acts like a standard `Radio`. I
       typeSimple: 'function',
       description: (
         <span>
-          The callback that fires when a <Code>RadioItem</Code> is
-          selected (via mouse or keyboard). Calling{' '}
+          Event handler called when the user selects an item (via
+          mouse of keyboard). Calling{' '}
           <Code>event.preventDefault</Code> in this handler will
-          prevent the <Code>ContextMenu</Code> from closing when
-          selecting that item.
+          prevent the context menu from closing when selecting that
+          item.
         </span>
       ),
     },
@@ -475,10 +524,9 @@ A more specific `ContextItem` which conceptually acts like a standard `Radio`. I
       type: 'string',
       description: (
         <span>
-          An optional text used for typeahead purpose. By default the
+          Optional text used for typeahead purposes. By default the
           typeahead behavior will use the <Code>.textContent</Code> of{' '}
-          <Code>RadioItem</Code>. Use this when the content inside the{' '}
-          <Code>RadioItem</Code> is too complex, or you have
+          the item. Use this when the content is complex, or you have
           non-textual content inside.
         </span>
       ),
@@ -488,10 +536,18 @@ A more specific `ContextItem` which conceptually acts like a standard `Radio`. I
 
 ### ItemIndicator
 
-Renders when the parent `ContextMenuCheckboxItem` or `ContextMenuRadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
+Renders when the parent `DropdownMenu.CheckboxItem` or `DropdownMenu.RadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
 
 <PropsTable
   data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'span',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
     {
       name: 'forceMount',
       type: 'boolean',
@@ -507,7 +563,20 @@ Renders when the parent `ContextMenuCheckboxItem` or `ContextMenuRadioItem` is c
 
 ### Separator
 
-Used to visually separate items in a `ContextMenu`.
+Used to visually separate items in the context menu.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
 
 ## Accessibility
 

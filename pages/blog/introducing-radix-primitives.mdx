@@ -1,14 +1,18 @@
 ---
-title: Introduction
+layout: BlogLayout
+title: Introducing Radix Primitives
+publishedAt: '2020-12-16'
 description: An open-source component library for building accessible design systems.
-navRank: 1
+by: pedro
 ---
 
-Radix Primitives is a low-level component library with a focus on accessibility, customization and developer experience.
+<img src="/social/default.png" />
+
+Radix Primitives is a low-level component library with a focus on accessibility, customisation and developer experience.
 
 You can use these components as the base layer of your design system or just as a one off solution.
 
-With Radix Primitives, you'll be able to implement complex UI Components in minutes.
+With Radix Primitives, you'll be able to implement complex UI Components in minutes, such as a [custom select](https://modulz.app/blog/under-the-spotlight-select).
 
 ---
 
@@ -18,7 +22,7 @@ Most of us share similar definitions for common UI patterns like accordion, chec
 combobox, dialog, dropdown, select, slider, and tooltip. These UI patterns are [documented by WAI-ARIA](https://www.w3.org/TR/wai-aria-practices/#aria_ex) and generally understood by the community.
 
 However, the implementations provided to us by the web platform are inadequate. They're
-either non-existent, lacking in functionality, or cannot be customized sufficiently.
+either non-existent, lacking in functionality, or cannot be customised sufficiently.
 
 So, developers are forced to build custom components—an incredibly difficult task. As a
 result, most components on the web are inaccessible, non-performant, and lacking important
@@ -47,7 +51,7 @@ Learn more in the [styling](./styling) page.
 
 ### Opened
 
-The Radix Primitives components were designed to be customized to suit your needs.
+The Radix Primitives components were designed to be customised to suit your needs.
 
 You have access to every part a component depends on. For example, when building a [Tooltip](../components/tooltip), you can access the `Trigger`, `Content` and `Arrow` parts. Having access to all the granular parts of a component gives you a large amount of flexibility to wrap them, add your own event listeners, add your own props or your own refs.
 
@@ -55,7 +59,7 @@ Some components also accept configurational props. For example, you can choose w
 
 ### Uncontrolled
 
-When applicable, components are uncontrolled by default but can optionally be controlled if needed. All the behavior wiring is handled internally, so you can get up and running as smoothly as possible.
+When applicable, components are uncontrolled by default but can optionally be controlled if needed. All the behaviour wiring is handled internally, so you can get up and running as smoothly as possible.
 
 For example, implementing a fully functioning [Dialog](../components/dialog) component doesn't require you to create any local states and update accordingly.
 
@@ -127,7 +131,7 @@ function App() {
 
 ### Demo
 
-```jsx live manual compact
+```jsx live manual compact primitives
 import { styled } from 'path-to/stitches.config';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 
@@ -202,5 +206,24 @@ In a few simple steps, we've implemented a fully accessible Popover component, w
 - Can be controlled or uncontrolled.
 - Customise side, alignment, offsets, collision handling.
 - Optionally render a pointing arrow.
-- Focus is fully managed and customizable.
-- Dismissing and layering behavior is highly customizable.
+- Focus is fully managed and customisable.
+- Dismissing and layering behavior is highly customisable.
+
+## Community
+
+We're excited to see the community adopt Radix Primitives, raise issues, and provide feedback. Whether it's a feature request, bug report, or a project to showcase, please get involved!
+
+- [Discord](https://discord.com/invite/7Xb99uG)
+- [Twitter](https://twitter.com/radix_ui)
+- [Github Discussions](https://github.com/radix-ui/stitches/discussions)
+- [Github](https://github.com/modulz/stitches)
+
+## Credits
+
+We're grateful for everyone who contributed and provided feedback along the way.
+
+Special thanks to [Benoit Grelard](https://twitter.com/benoitgrelard), [Jenna Smith](https://twitter.com/jjenzz) and [Chance Strickland](https://twitter.com/chaance) for their phenomenal work
+
+Special thanks to [Colm Tuite](https://twitter.com/colmtuite) and [Pedro Duarte](https://twitter.com/peduarte) for building the first design system powered by Radix Primitives and creating the documentation platform.
+
+Also, thanks to [Stephen Haney](https://twitter.com/sdothaney) and the entire [Modulz team](https://modulz.app/about) for providing valuable feedback while implementing these primitives into the Modulz Editor.

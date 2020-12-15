@@ -2,7 +2,7 @@
 title: Separator
 name: separator
 version: 0.0.1
-description: A primitive useful for separating things.
+description: Visually or semantically separates content.
 aria: https://www.w3.org/TR/wai-aria-1.2/#separator
 features:
   - Supports horizontal and vertical orientations.
@@ -21,22 +21,20 @@ npm install @radix-ui/react-separator
 Import the components and piece the parts together.
 
 ```jsx
-import { Separator } from '@radix-ui/react-separator';
+import * as Separator from '@radix-ui/react-separator';
 
-export default () => <Separator />;
+export default () => <Separator.Root />;
 ```
 
 ## Basic example
 
 Create your styled separator component from the primitive part.
 
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
-
 ```jsx live manual
 // import { styled } from 'path-to/stitches.config';
-import * as SeparatorPrimitive from '@radix-ui/react-separator';
+import * as Separator from '@radix-ui/react-separator';
 
-const Separator = styled(SeparatorPrimitive.Root, {
+const StyledSeparator = styled(Separator.Root, {
   backgroundColor: 'gainsboro',
   height: 1,
   margin: '20px 0',
@@ -45,39 +43,48 @@ const Separator = styled(SeparatorPrimitive.Root, {
 export default () => (
   <>
     Content
-    <Separator />
+    <StyledSeparator />
     Content
   </>
 );
 ```
 
+<Note>
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
+
+</Note>
+
 ## API Reference
 
-### Separator
+### Root
 
-`Separator` is the root component.
+The separator.
 
 <PropsTable
   data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
     {
       name: 'orientation',
       type: '"horizontal" | "vertical"',
       typeSimple: 'enum',
       default: '"horizontal"',
-      description: (
-        <span>
-          The orientation of the <Code>Separator</Code>.
-        </span>
-      ),
+      description: 'The orientation of the separator.',
     },
     {
       name: 'decorative',
       type: 'boolean',
       description: (
         <span>
-          Whether or not the <Code>Separator</Code> is purely visual
-          and carries no semantic meaining. Setting this to{' '}
-          <Code>true</Code> will ensure the separator is not present
+          When <Code>true</Code>, signifies that it is purely visual,
+          carries no semantic meaning, and ensures it is not present
           in the accessibility tree.
         </span>
       ),

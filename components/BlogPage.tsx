@@ -39,9 +39,7 @@ function BlogPage({ children }: { children: React.ReactNode }) {
       </Box>
 
       <Box css={{ pb: '$9' }}>
-        <Container size="2">
-          {children}
-        </Container>
+        <Container size="2">{children}</Container>
       </Box>
     </Box>
   );

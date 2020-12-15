@@ -2,21 +2,7 @@ import React from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { MDXProvider } from '@mdx-js/react';
-import {
-  Container,
-  Text,
-  Button,
-  Box,
-  Title,
-  Subtitle,
-  Paragraph,
-  Heading,
-  Subheading,
-  Flex,
-  Separator,
-  Link,
-  Badge,
-} from '@modulz/design-system';
+import { Text, Button, Box, Subtitle, Flex, Separator, Link, Badge } from '@modulz/design-system';
 import { ArrowLeftIcon } from '@modulz/radix-icons';
 import { parseISO, format } from 'date-fns';
 import { FrontMatter } from '../types';
@@ -37,7 +23,7 @@ export default function BlogLayout({ children, frontMatter }: LayoutProps) {
 		https://twitter.com/intent/tweet?
 		text="${frontMatter.title}" by @${
     authors[frontMatter.by].twitter
-  } on the @stitchesjs blog.&url=https://stitches.dev${router.route}
+  } on the @radix_ui blog.&url=https://radix-ui.com${router.route}
 		`;
 
   return (

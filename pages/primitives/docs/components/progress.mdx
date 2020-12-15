@@ -1,7 +1,7 @@
 ---
 title: Progress
 name: progress
-version: 0.0.1-13
+version: 0.0.1
 description: Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
 aria: https://www.w3.org/TR/wai-aria-1.2/#progressbar
 features:
@@ -27,12 +27,12 @@ npm install @radix-ui/react-progress
 Import the components and piece the parts together.
 
 ```jsx
-import { Progress, Indicator } from '@radix-ui/react-progress';
+import * as Progress from '@radix-ui/react-progress';
 
 export default () => (
-  <Progress>
-    <Indicator />
-  </Progress>
+  <Progress.Root>
+    <Progress.Indicator />
+  </Progress.Root>
 );
 ```
 
@@ -40,13 +40,11 @@ export default () => (
 
 Create your styled progress component from the primitive parts.
 
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
-
 ```jsx live manual
 // import { styled } from 'path-to/stitches.config';
-import * as ProgressBarPrimitive from '@radix-ui/react-progress';
+import * as Progress from '@radix-ui/react-progress';
 
-const Progress = styled(ProgressBarPrimitive.Root, {
+const StyledProgress = styled(Progress.Root, {
   position: 'relative',
   height: 10,
   overflow: 'hidden',
@@ -54,17 +52,17 @@ const Progress = styled(ProgressBarPrimitive.Root, {
   background: 'gainsboro',
 });
 
-const ProgressIndicator = styled(ProgressBarPrimitive.Indicator, {
+const StyledIndicator = styled(Progress.Indicator, {
   boxSizing: 'border-box',
   position: 'absolute',
   backgroundColor: 'dodgerblue',
   height: '100%',
 });
 
-export () => (
-  <Progress value={50}>
-    <ProgressIndicator style={{ width: '50%' }} />
-  </Progress>
+export default () => (
+  <StyledProgress value={50}>
+    <StyledIndicator style={{ width: '50%' }} />
+  </StyledProgress>
 );
 ```
 
@@ -72,31 +70,37 @@ export () => (
 
 Adheres to the [`progressbar` role requirements](https://www.w3.org/TR/wai-aria-1.2/#progressbar).
 
+<Note>
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
+
+</Note>
+
 ## API Reference
 
-### Progress
+### Root
 
-`Progress` is the root component.
+Contains all of the progress parts.
 
 <PropsTable
   data={[
     {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
       name: 'value',
       type: 'number | null',
-      description: (
-        <span>
-          The value of the <Code>Progress</Code>
-        </span>
-      ),
+      description: 'The progress value.',
     },
     {
       name: 'max',
       type: 'number',
-      description: (
-        <span>
-          The maximum value the <Code>Progress</Code> can reach.
-        </span>
-      ),
+      description: 'The maximum progress value.',
     },
     {
       name: 'getValueLabel',

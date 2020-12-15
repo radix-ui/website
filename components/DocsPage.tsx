@@ -8,6 +8,7 @@ import { RadixLogo } from './RadixLogo';
 import { PrimitivesNav } from './PrimitivesNav';
 import { DesignSystemNav } from './DesignSystemNav';
 import { useProductType } from '../utils/useProductType';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
 export function DocsPage({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -33,6 +34,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
       }}
     >
       <Box
+        as="header"
         css={{
           width: '100%',
           maxHeight: 'auto',
@@ -63,22 +65,8 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
                   ':focus': { boxShadow: 'none' },
                 }}
               >
-                <span
-                  style={{
-                    position: 'absolute',
-                    width: 1,
-                    height: 1,
-                    padding: 0,
-                    margin: -1,
-                    overflow: 'hidden',
-                    clip: 'rect(0, 0, 0, 0)',
-                    whiteSpace: 'nowrap',
-                    border: 0,
-                  }}
-                >
-                  Stitches homepage
-                </span>
-                <RadixLogo />
+                <VisuallyHidden>Radix Documentation (Alpha)</VisuallyHidden>
+                <RadixLogo aria-hidden />
               </Box>
             </NextLink>
             <Badge size="2" variant="yellow" css={{ ml: '$2' }}>
@@ -89,7 +77,9 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
                 variant="ghost"
                 onClick={() => setIsOpen(!isOpen)}
                 state={isOpen ? 'active' : undefined}
+                aria-pressed={isOpen}
               >
+                <VisuallyHidden>Toggle Site Navigation Menu</VisuallyHidden>
                 <HamburgerMenuIcon />
               </IconButton>
             </Box>

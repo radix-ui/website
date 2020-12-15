@@ -1,14 +1,13 @@
 ---
 title: Tooltip
 name: tooltip
-version: 0.0.1-13
+version: 0.0.1
 description: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
 aria: https://www.w3.org/TR/wai-aria-practices-1.2/#tooltip
 features:
-  - Built-in time machine to control display delay.
-  - Full keyboard support.
-  - Opens when the trigger is focused.
-  - Closes when the trigger is clicked.
+  - Built-in state machine to control display delay.
+  - Opens when the trigger is focused or hovered.
+  - Closes when the trigger is activated or when pressing escape.
 ---
 
 import { TooltipHero } from '../../../../components/Hero/TooltipHero';
@@ -30,19 +29,14 @@ npm install @radix-ui/react-tooltip
 Import the components and piece the parts together.
 
 ```jsx
-import {
-  Tooltip,
-  Trigger,
-  Content,
-  Arrow,
-} from '@radix-ui/react-switch';
+import * as Tooltip from '@radix-ui/react-switch';
 
 export default () => (
-  <Tooltip>
-    <Trigger />
-    <Content />
-    <Arrow />
-  </Tooltip>
+  <Tooltip.Root>
+    <Tooltip.Trigger />
+    <Tooltip.Content />
+    <Tooltip.Arrow />
+  </Tooltip.Root>
 );
 ```
 
@@ -50,14 +44,12 @@ export default () => (
 
 Create your styled tooltip component from the primitive parts.
 
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
-
 ```jsx live manual
 // import { styled } from 'path-to/stitches.config';
-import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+import * as Tooltip from '@radix-ui/react-tooltip';
 import { BlendingModeIcon } from '@modulz/radix-icons';
 
-const TooltipContent = styled(TooltipPrimitive.Content, {
+const StyledContent = styled(Tooltip.Content, {
   borderRadius: 3,
   padding: '5px 10px',
   fontSize: 14,
@@ -65,28 +57,34 @@ const TooltipContent = styled(TooltipPrimitive.Content, {
   color: 'black',
 });
 
-const Arrow = styled(TooltipPrimitive.Arrow, {
+const StyledArrow = styled(Tooltip.Arrow, {
   fill: 'gainsboro',
 });
 
 export default () => (
-  <TooltipPrimitive.Root>
-    <TooltipPrimitive.Trigger>
+  <Tooltip.Root>
+    <Tooltip.Trigger>
       <BlendingModeIcon aria-label="Blending mode" />
-    </TooltipPrimitive.Trigger>
-    <TooltipContent>
+    </Tooltip.Trigger>
+    <StyledContent>
       Blend mode
-      <Arrow />
-    </TooltipContent>
-  </TooltipPrimitive.Root>
+      <StyledArrow />
+    </StyledContent>
+  </Tooltip.Root>
 );
 ```
 
+<Note>
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
+
+</Note>
+
 ## API Reference
 
-### Tooltip
+### Root
 
-`Tooltip` is the root component.
+Contains all the parts of a tooltip.
 
 <PropsTable
   data={[
@@ -95,9 +93,8 @@ export default () => (
       type: 'boolean',
       description: (
         <span>
-          The open state of the <Code>Tooltip</Code> when it is
-          initially rendered. Use <Code>defaultOpen</Code> if you do
-          not need to control the state of an <Code>Tooltip</Code>.
+          The open state of the tooltip when it is initially rendered.
+          Use when you do not need to control its open state.
         </span>
       ),
     },
@@ -106,8 +103,8 @@ export default () => (
       type: 'boolean',
       description: (
         <span>
-          The controlled open state of the <Code>Tooltip</Code>. Must
-          be used in conjunction with <Code>onOpenChange</Code>.
+          The controlled open state of the tooltip. Must be used in
+          conjunction with <Code>onOpenChange</Code>.
         </span>
       ),
     },
@@ -117,8 +114,8 @@ export default () => (
       typeSimple: 'function',
       description: (
         <span>
-          The callback that fires when the open state of the{' '}
-          <Code>Tooltip</Code> changes.
+          Event handler called when the open state of the tooltip
+          changes.
         </span>
       ),
     },
@@ -127,23 +124,44 @@ export default () => (
 
 ### Trigger
 
-The button that triggers the `Tooltip`. It is also used as the anchor the `TooltipContent` is positioned against.
-
-### Content
-
-The component that pops out in an open `Tooltip`.
+The button that toggles the tooltip. By default, the `Tooltip.Content` will position itself against the trigger.
 
 <PropsTable
   data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'button',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Content
+
+The component that pops out when the tooltip is open.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
     {
       name: 'aria-label',
       type: 'string',
       description: (
         <span>
-          By default, screenreaders will announce the content inside{' '}
-          <Code>Content</Code>. If this is not descriptive enough, or
-          you have content that cannot be announced, use{' '}
-          <Code>aria-label</Code> as a more descriptive label .
+          By default, screenreaders will announce the content inside
+          the component. If this is not descriptive enough, or you
+          have content that cannot be announced, use{' '}
+          <Code>aria-label</Code> as a more descriptive label.
         </span>
       ),
     },
@@ -153,8 +171,7 @@ The component that pops out in an open `Tooltip`.
       default: 'true',
       description: (
         <span>
-          Whether or not the <Code>Content</Code> should render in a{' '}
-          <Code>Portal</Code>.
+          Whether to render in a <Code>Portal</Code> when open.
         </span>
       ),
     },
@@ -164,9 +181,8 @@ The component that pops out in an open `Tooltip`.
       typeSimple: 'ref',
       description: (
         <span>
-          An optional ref to an element to be used as the anchor for
-          the <Code>Content</Code>. By default, it will use{' '}
-          <Code>Trigger</Code> as anchor element.
+          An optional ref of an element to position against. By
+          default, it will use <Code>Tooltip.Trigger</Code>.
         </span>
       ),
     },
@@ -177,8 +193,9 @@ The component that pops out in an open `Tooltip`.
       default: '"bottom"',
       description: (
         <span>
-          The desired side to place the <Code>Content</Code> against{' '}
-          <Code>Trigger</Code>. May switch in case of collisions.
+          The preferred side of the anchor to render against when
+          open. Will be reversed when collisions occur and{' '}
+          <Code>avoidCollisions</Code> is enabled.
         </span>
       ),
     },
@@ -188,7 +205,7 @@ The component that pops out in an open `Tooltip`.
       default: '0',
       description: (
         <span>
-          The side offset for the <Code>Content</Code>.
+          <span>The distance in pixels from the anchor.</span>
         </span>
       ),
     },
@@ -199,8 +216,8 @@ The component that pops out in an open `Tooltip`.
       default: '"center"',
       description: (
         <span>
-          How to align the <Code>Content</Code> against{' '}
-          <Code>Trigger</Code>. May switch in case of collisions.
+          The preferred alignment against the anchor. May change when
+          collisions occur.
         </span>
       ),
     },
@@ -210,7 +227,8 @@ The component that pops out in an open `Tooltip`.
       default: '0',
       description: (
         <span>
-          The align offset for the <Code>Content</Code>
+          An offset in pixels from the <Code>"start"</Code> or{' '}
+          <Code>"end"</Code> alignment options.
         </span>
       ),
     },
@@ -220,10 +238,9 @@ The component that pops out in an open `Tooltip`.
       default: 'true',
       description: (
         <span>
-          Whether or not collisions with window edges should be
-          avoided. When turned on, this will result in the{' '}
-          <Code>Content</Code> flipping its side and alignment
-          accordingly.
+          When <Code>true</Code>, overrides the <Code>side</Code> and
+          <Code>align</Code> preferences to prevent collisions with window
+          edges.
         </span>
       ),
     },
@@ -233,8 +250,8 @@ The component that pops out in an open `Tooltip`.
       default: '0',
       description: (
         <span>
-          The tolerance within which the <Code>Content</Code> is to be
-          checked against window edges.
+          The distance in pixels from window edges where collision
+          detection should occur.
         </span>
       ),
     },
@@ -243,29 +260,29 @@ The component that pops out in an open `Tooltip`.
 
 ### Arrow
 
-The optional arrow element to render for the `Tooltip`. This can be used to help visually link the `TooltipTrigger` with the `TooltipContent`. Must live inside `TooltipContent`.
+An optional arrow element to render alongside the tooltip. This can be used to help visually link the anchor with the `Tooltip.Content`. Must be rendered inside `Tooltip.Content`.
 
 <PropsTable
   data={[
     {
+      name: 'as',
+      required: false,
+      type: 'React.ElementType',
+      default: 'svg',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the entire SVG and all of its paths.',
+    },
+    {
       name: 'width',
       type: 'number',
       default: 10,
-      description: (
-        <span>
-          The width of the <Code>Arrow</Code>.
-        </span>
-      ),
+      description: <span>The width of the arrow in pixels.</span>,
     },
     {
       name: 'height',
       type: 'number',
       default: 5,
-      description: (
-        <span>
-          The height of the <Code>Arrow</Code>.
-        </span>
-      ),
+      description: <span>The height of the arrow in pixels.</span>,
     },
     {
       name: 'offset',
@@ -273,8 +290,8 @@ The optional arrow element to render for the `Tooltip`. This can be used to help
       default: 0,
       description: (
         <span>
-          The offset of the `<Code>Arrow</Code> along the edge of{' '}
-          <Code>Content</Code>.
+          The distance in pixels to render from the{' '}
+          <Code>Tooltip.Content</Code> edge.
         </span>
       ),
     },
@@ -289,30 +306,15 @@ The optional arrow element to render for the `Tooltip`. This can be used to help
   data={[
     {
       keys: ['Tab'],
-      description: (
-        <span>
-          Opens/closes {' '}
-          <Code>Content</Code> without delay.
-        </span>
-      ),
+      description: 'Opens/closes the tooltip without delay.',
     },
     {
       keys: ['Space'],
-      description: (
-        <span>
-          If <Code>Content</Code> is open, closes <Code>Content</Code>{' '}
-          without delay.
-        </span>
-      ),
+      description: 'If open, closes the tooltip without delay.',
     },
     {
       keys: ['Enter'],
-      description: (
-        <span>
-          If <Code>Content</Code> is open, closes <Code>Content</Code>{' '}
-          without delay.
-        </span>
-      ),
+      description: 'If open, closes the tooltip without delay.',
     },
   ]}
 />
