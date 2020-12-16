@@ -30,7 +30,7 @@ const theme: any = {
     {
       types: ['string', 'attr-value'],
       style: {
-        color: colors.$violet900,
+        color: colors.$turquoise900,
       },
     },
     {
@@ -107,7 +107,7 @@ const StyledLivePreview = ({ live, ...props }: { live?: boolean }) => (
       // zIndex: 3,
       overflow: 'hidden',
       p: '$4',
-      boxShadow: `inset 0 0 0 1px $gray600`,
+      boxShadow: `inset 0 0 0 1px $gray500`,
       borderTopLeftRadius: '$2',
       borderTopRightRadius: '$2',
       borderBottomLeftRadius: live ? '0' : '$2',
@@ -128,7 +128,7 @@ const CodeContainer = ({ live, children }: { live?: boolean; children: React.Rea
       borderBottomLeftRadius: '$2',
       borderBottomRightRadius: '$2',
       marginTop: -1,
-      boxShadow: `inset 0 0 0 1px ${colors.$gray600}`,
+      boxShadow: `inset 0 0 0 1px ${colors.$gray500}`,
       textarea: { outline: 0 },
       'textarea::selection': {
         backgroundColor: 'hsla(208, 100%, 97%,1)',
