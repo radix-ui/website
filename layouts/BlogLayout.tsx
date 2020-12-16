@@ -33,7 +33,7 @@ export default function BlogLayout({ children, frontMatter }: LayoutProps) {
       <NextLink href="/blog" passHref>
         <Button size="2" as="a" variant="ghost" css={{ color: '$gray900', ml: '-40px', mb: '$6' }}>
           <Box css={{ mr: '$2' }}>
-            <ArrowLeftIcon />
+            <ArrowLeftIcon aria-hidden />
           </Box>
           Blog
         </Button>

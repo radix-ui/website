@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, IconButton, Text, Code, Popover } from '@modulz/design-system';
 import { CheckIcon, InfoCircledIcon, DividerHorizontalIcon } from '@modulz/radix-icons';
 import { RegionTable } from './RegionTable';
+import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
 
 type PropDef = {
   name: string;
@@ -76,9 +77,10 @@ export function PropsTable({
                     as={IconButton}
                     variant="ghost"
                     css={{ ml: '$1', verticalAlign: 'middle', color: '$gray900' }}
-                    aria-label="Prop description"
                   >
-                    <InfoCircledIcon aria-hidden />
+                    <AccessibleIcon label="Prop description">
+                      <InfoCircledIcon />
+                    </AccessibleIcon>
                   </Popover.Trigger>
                   <Popover.Content side="top">
                     <Box css={{ py: '$2', px: '$3' }}>
@@ -106,9 +108,10 @@ export function PropsTable({
                       display: 'none',
                       bp1: { display: 'inline-flex' },
                     }}
-                    aria-label="See full type"
                   >
-                    <InfoCircledIcon />
+                    <AccessibleIcon label="See full type">
+                      <InfoCircledIcon />
+                    </AccessibleIcon>
                   </Popover.Trigger>
                   <Popover.Content side="top">
                     <Box css={{ py: '$2', px: '$2', height: '38px', whiteSpace: 'nowrap' }}>
@@ -122,7 +125,7 @@ export function PropsTable({
               {Boolean(defaultValue) ? (
                 <Code css={{ bc: '$gray200', color: '$gray900' }}>{defaultValue}</Code>
               ) : (
-                <Box aria-label="No default value" css={{ color: '$gray600' }}>
+                <Box as={AccessibleIcon} label="No default value" css={{ color: '$gray600' }}>
                   <DividerHorizontalIcon />
                 </Box>
               )}
@@ -139,7 +142,8 @@ export function PropsTable({
             >
               {required ? (
                 <Box
-                  aria-label="Required"
+                  as={AccessibleIcon}
+                  label="Required"
                   css={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -154,7 +158,11 @@ export function PropsTable({
                   <CheckIcon />
                 </Box>
               ) : (
-                <Box aria-label="Not required" css={{ display: 'inline-flex', color: '$gray600' }}>
+                <Box
+                  as={AccessibleIcon}
+                  label="Not required"
+                  css={{ display: 'inline-flex', color: '$gray600' }}
+                >
                   <DividerHorizontalIcon />
                 </Box>
               )}
