@@ -4,7 +4,7 @@
 
 # Radix UI website and documentation
 
-## Everything you need to build a design system, website or web app.
+**Everything you need to build a design system, website or web app.**
 
 Components, colors, icons, templates, and an extensive design system. Free and open-source.
 
