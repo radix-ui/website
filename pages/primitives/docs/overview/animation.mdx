@@ -59,17 +59,19 @@ function Example() {
     config: config.stiff,
   });
   return (
-    <Dialog open={open} onOpenChange={setOpen} forceMount>
+    <Dialog open={open} onOpenChange={setOpen}>
       <Dialog.Trigger>Open Dialog</Dialog.Trigger>
       {transitions.map(({ item, props: styles }) =>
         item ? (
           <React.Fragment>
             <Dialog.Overlay
+              forceMount
               as={animated.div}
               key={item}
               style={{ opacity: styles.opacity }}
             />
             <Dialog.Content
+              forceMount
               as={animated.div}
               style={{
                 transform: styles.y.interpolate(
