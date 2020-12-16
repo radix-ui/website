@@ -43,7 +43,6 @@ const click = css.keyframes({
 const ToggleButtonContainer = () => {
   return (
     <Box css={{ position: 'relative' }}>
-
       <Box
         css={{
           position: 'absolute',
@@ -62,7 +61,7 @@ const ToggleButtonContainer = () => {
           viewBox="0 0 25 25"
           fill="none"
         >
-          <g clip-path="url(#clip0)">
+          <g clipPath="url(#clip0)">
             <g filter="url(#filter0_d)">
               <path
                 d="M7.5 23.1865L4.79423 0.5L23.0885 14.1865L13.5442 15.6554L7.5 23.1865Z"
@@ -71,8 +70,8 @@ const ToggleButtonContainer = () => {
               <path
                 d="M7.5 23.1865L4.79423 0.5L23.0885 14.1865L13.5442 15.6554L7.5 23.1865Z"
                 stroke="white"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </g>
           </g>
@@ -94,17 +93,9 @@ const ToggleButtonContainer = () => {
               />
               <feOffset dy="1" />
               <feGaussianBlur stdDeviation="1" />
-              <feColorMatrix
-                type="matrix"
-                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-              />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
               <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="effect1_dropShadow"
-                result="shape"
-              />
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
             </filter>
             <clipPath id="clip0">
               <rect width="25" height="25" fill="white" />

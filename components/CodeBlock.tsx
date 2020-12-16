@@ -56,9 +56,7 @@ const theme: any = {
       },
     },
     {
-      types: [
-        'property',
-      ],
+      types: ['property'],
       style: {
         color: colors.$gold900,
       },

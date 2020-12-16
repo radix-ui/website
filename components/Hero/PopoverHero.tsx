@@ -34,7 +34,6 @@ const click = css.keyframes({
 const PopoverContainer = () => {
   return (
     <Box css={{ position: 'relative' }}>
-
       <Box
         css={{
           position: 'absolute',
@@ -53,7 +52,7 @@ const PopoverContainer = () => {
           viewBox="0 0 25 25"
           fill="none"
         >
-          <g clip-path="url(#clip0)">
+          <g clipPath="url(#clip0)">
             <g filter="url(#filter0_d)">
               <path
                 d="M7.5 23.1865L4.79423 0.5L23.0885 14.1865L13.5442 15.6554L7.5 23.1865Z"
@@ -62,8 +61,8 @@ const PopoverContainer = () => {
               <path
                 d="M7.5 23.1865L4.79423 0.5L23.0885 14.1865L13.5442 15.6554L7.5 23.1865Z"
                 stroke="white"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </g>
           </g>
@@ -85,17 +84,9 @@ const PopoverContainer = () => {
               />
               <feOffset dy="1" />
               <feGaussianBlur stdDeviation="1" />
-              <feColorMatrix
-                type="matrix"
-                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-              />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
               <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="effect1_dropShadow"
-                result="shape"
-              />
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
             </filter>
             <clipPath id="clip0">
               <rect width="25" height="25" fill="white" />
@@ -118,55 +109,61 @@ const PopoverContainer = () => {
           }}
         ></Box>
       </Box>
+      <Box
+        css={{
+          position: 'relative',
+          display: 'flex',
+          alignItems: 'center',
+          px: '$2',
+          height: '$5',
+          backgroundColor: 'white',
+          borderRadius: '5px',
+          width: 60,
+          mr: 2,
+        }}
+      >
+        <Box css={{ backgroundColor: 'hsl(206,10%,80%)', height: 4, width: '100%' }}></Box>
         <Box
           css={{
-            position: 'relative',
-            display: 'flex',
-            alignItems: 'center',
-            px: '$2',
-            height: '$5',
+            position: 'absolute',
+            p: '$3',
             backgroundColor: 'white',
             borderRadius: '5px',
-            width: 60,
-            mr: 2,
+            width: 200,
+            bottom: 30,
+            left: '50%',
+            ml: -100,
+            animation: `${Popover} 6000ms infinite`,
+            animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+            boxShadow:
+              'hsla(252, 4%, 9%, 0.35) 0px 10px 38px -10px, hsla(252, 4%, 9%, 0.2) 0px 10px 20px -15px',
           }}
         >
-          <Box css={{ backgroundColor: 'hsl(206,10%,80%)', height: 4, width: '100%' }}></Box>
           <Box
             css={{
               position: 'absolute',
-              p: '$3',
-              backgroundColor: 'white',
-              borderRadius: '5px',
-              width: 200,
-              bottom: 30,
+              width: 0,
+              height: 0,
+              borderLeft: '5px solid transparent',
+              borderRight: '5px solid transparent',
+              borderTop: '5px solid white',
+              bottom: -5,
               left: '50%',
-              ml: -100,
-              animation: `${Popover} 6000ms infinite`,
-              animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
-              boxShadow:
-                'hsla(252, 4%, 9%, 0.35) 0px 10px 38px -10px, hsla(252, 4%, 9%, 0.2) 0px 10px 20px -15px',
+              transform: 'translateX(-50%)',
             }}
-          >
-            <Box
-              css={{
-                position: 'absolute',
-                width: 0,
-                height: 0,
-                borderLeft: '5px solid transparent',
-                borderRight: '5px solid transparent',
-                borderTop: '5px solid white',
-                bottom: -5,
-                left: '50%',
-                transform: 'translateX(-50%)',
-              }}
-            ></Box>
-              <Box css={{ backgroundColor: 'hsl(206,10%,80%)', height: 4, }}></Box>
-              <Box css={{ backgroundColor: 'hsl(206,10%,80%)', height: 4, width: '50%', mt: '$2' }}></Box>
-              <Box css={{ backgroundColor: 'hsl(206,10%,80%)', height: 4, width: '75%', mt: '$2' }}></Box>
-              <Box css={{ backgroundColor: 'hsl(206,10%,80%)', height: 4, width: '25%', mt: '$2' }}></Box>
-          </Box>
+          ></Box>
+          <Box css={{ backgroundColor: 'hsl(206,10%,80%)', height: 4 }}></Box>
+          <Box
+            css={{ backgroundColor: 'hsl(206,10%,80%)', height: 4, width: '50%', mt: '$2' }}
+          ></Box>
+          <Box
+            css={{ backgroundColor: 'hsl(206,10%,80%)', height: 4, width: '75%', mt: '$2' }}
+          ></Box>
+          <Box
+            css={{ backgroundColor: 'hsl(206,10%,80%)', height: 4, width: '25%', mt: '$2' }}
+          ></Box>
         </Box>
+      </Box>
     </Box>
   );
 };

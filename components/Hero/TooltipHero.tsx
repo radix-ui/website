@@ -21,7 +21,6 @@ const cursor = css.keyframes({
 const TooltipContainer = () => {
   return (
     <Box css={{ position: 'relative' }}>
-
       <Box
         css={{
           position: 'absolute',
@@ -40,7 +39,7 @@ const TooltipContainer = () => {
           viewBox="0 0 25 25"
           fill="none"
         >
-          <g clip-path="url(#clip0)">
+          <g clipPath="url(#clip0)">
             <g filter="url(#filter0_d)">
               <path
                 d="M7.5 23.1865L4.79423 0.5L23.0885 14.1865L13.5442 15.6554L7.5 23.1865Z"
@@ -49,8 +48,8 @@ const TooltipContainer = () => {
               <path
                 d="M7.5 23.1865L4.79423 0.5L23.0885 14.1865L13.5442 15.6554L7.5 23.1865Z"
                 stroke="white"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </g>
           </g>
@@ -72,17 +71,9 @@ const TooltipContainer = () => {
               />
               <feOffset dy="1" />
               <feGaussianBlur stdDeviation="1" />
-              <feColorMatrix
-                type="matrix"
-                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-              />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
               <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="effect1_dropShadow"
-                result="shape"
-              />
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
             </filter>
             <clipPath id="clip0">
               <rect width="25" height="25" fill="white" />
@@ -90,57 +81,63 @@ const TooltipContainer = () => {
           </defs>
         </svg>
       </Box>
+      <Box
+        css={{
+          position: 'relative',
+          display: 'flex',
+          alignItems: 'center',
+          px: '$2',
+          height: '$5',
+          backgroundColor: 'white',
+          borderRadius: '5px',
+          width: 60,
+          mr: 2,
+        }}
+      >
+        <Box css={{ backgroundColor: 'hsl(206,10%,80%)', height: 4, width: '100%' }}></Box>
         <Box
           css={{
-            position: 'relative',
+            position: 'absolute',
             display: 'flex',
             alignItems: 'center',
             px: '$2',
-            height: '$5',
-            backgroundColor: 'white',
+            height: '$4',
+            backgroundColor: 'black',
             borderRadius: '5px',
-            width: 60,
-            mr: 2,
+            width: 120,
+            top: -25,
+            left: -30,
+            animation: `${tooltip} 6000ms infinite`,
+            animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
           }}
         >
-          <Box css={{ backgroundColor: 'hsl(206,10%,80%)', height: 4, width: '100%' }}></Box>
           <Box
             css={{
               position: 'absolute',
-              display: 'flex',
-              alignItems: 'center',
-              px: '$2',
-              height: '$4',
-              backgroundColor: 'black',
-              borderRadius: '5px',
-              width: 120,
-              top: -25,
-              left: -30,
-              animation: `${tooltip} 6000ms infinite`,
-              animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+              width: 0,
+              height: 0,
+              borderLeft: '5px solid transparent',
+              borderRight: '5px solid transparent',
+              borderTop: '5px solid black',
+              bottom: -5,
+              left: '50%',
+              transform: 'translateX(-50%)',
             }}
-          >
+          ></Box>
+          <Flex css={{ width: '100%' }}>
+            <Box css={{ backgroundColor: 'hsla(0,100%,100%,.9)', height: 2, fs: 0, fg: 2 }}></Box>
             <Box
-              css={{
-                position: 'absolute',
-                width: 0,
-                height: 0,
-                borderLeft: '5px solid transparent',
-                borderRight: '5px solid transparent',
-                borderTop: '5px solid black',
-                bottom: -5,
-                left: '50%',
-                transform: 'translateX(-50%)',
-              }}
+              css={{ backgroundColor: 'hsla(0,100%,100%,.9)', height: 2, fs: 0, fg: 3, ml: '$1' }}
             ></Box>
-            <Flex css={{ width: '100%' }}>
-              <Box css={{ backgroundColor: 'hsla(0,100%,100%,.9)', height: 2, fs: 0, fg: 2 }}></Box>
-              <Box css={{ backgroundColor: 'hsla(0,100%,100%,.9)', height: 2, fs: 0, fg: 3, ml: '$1' }}></Box>
-              <Box css={{ backgroundColor: 'hsla(0,100%,100%,.9)', height: 2, fs: 0, fg: 1, ml: '$1' }}></Box>
-              <Box css={{ backgroundColor: 'hsla(0,100%,100%,.9)', height: 2, fs: 0, fg: 4, ml: '$1' }}></Box>
-            </Flex>
-          </Box>
+            <Box
+              css={{ backgroundColor: 'hsla(0,100%,100%,.9)', height: 2, fs: 0, fg: 1, ml: '$1' }}
+            ></Box>
+            <Box
+              css={{ backgroundColor: 'hsla(0,100%,100%,.9)', height: 2, fs: 0, fg: 4, ml: '$1' }}
+            ></Box>
+          </Flex>
         </Box>
+      </Box>
     </Box>
   );
 };

@@ -79,7 +79,7 @@ const TabsContainer = () => {
           viewBox="0 0 25 25"
           fill="none"
         >
-          <g clip-path="url(#clip0)">
+          <g clipPath="url(#clip0)">
             <g filter="url(#filter0_d)">
               <path
                 d="M7.5 23.1865L4.79423 0.5L23.0885 14.1865L13.5442 15.6554L7.5 23.1865Z"
@@ -88,8 +88,8 @@ const TabsContainer = () => {
               <path
                 d="M7.5 23.1865L4.79423 0.5L23.0885 14.1865L13.5442 15.6554L7.5 23.1865Z"
                 stroke="white"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </g>
           </g>
