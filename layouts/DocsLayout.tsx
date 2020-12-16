@@ -92,8 +92,21 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
             </Subtitle>
             <div ref={heroSlotRef} />
             {categoryType !== 'overview' && (
-              <Flex>
-                <Box css={{ flex: '1 1 100%', mr: '$5' }}>
+              <Flex
+                css={{
+                  fd: 'column',
+                  bp1: {
+                    fd: 'row'
+                  }
+                }}>
+                <Box
+                  css={{
+                    mb: '$5',
+                    bp1: {
+                      flex: '1 1 100%',
+                      mr: '$5',
+                    }
+                  }}>
                   {Boolean(frontMatter.features) && (
                     <FeatureList>
                       {frontMatter.features.map((feature, i) => (
@@ -118,7 +131,7 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
 
         {Boolean(frontMatter.relatedIds) && (
           <>
-            <Separator size="2" css={{ my: '$2', mx: 'auto' }} />
+            <Separator size="2" css={{ my: '$9', mx: 'auto' }} />
             <Box as="nav" aria-labelledby="site-related-nav-label">
               <Text
                 id="site-related-nav-label"
@@ -332,6 +345,7 @@ const ComponentInfo = ({ version, name, aria }) => (
     <VisuallyHidden as="h2" id="site-component-info-heading">
       Component Reference Links
     </VisuallyHidden>
+    <Separator size="2" css={{ mb: '$4', display: 'block', bp1: { display: 'none' } }} />
     <Flex css={{ mb: '$4', alignItems: 'baseline' }} as="dl">
       <Text size="2" as="dt" css={{ fontWeight: 500, mr: '$1' }}>
         Version:
@@ -351,7 +365,7 @@ const ComponentInfo = ({ version, name, aria }) => (
         </Flex>
       </Link>
     </Flex>
-    <Separator size="2" css={{ mb: '$4' }} />
+    <Separator size="2" css={{ mb: '$4', display: 'none', bp1: { display: 'block' } }} />
     <Box css={{ mb: '$2' }}>
       <Link
         variant="blue"
