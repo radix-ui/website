@@ -260,7 +260,7 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
       <Container size="2" css={{ my: '$9' }}>
         <Text size="3">
           <Link
-            href={`https://github.com/radix-ui/website/edit/master/pages${router.pathname}.mdx`}
+            href={`https://github.com/radix-ui/website/edit/main/pages${router.pathname}.mdx`}
             title="Edit this page on GitHub."
             rel="noopener noreferrer"
             target="_blank"
