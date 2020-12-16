@@ -16,7 +16,7 @@ const click = css.keyframes({
   '100%': { boxShadow: '0 0 0 2px black', transform: 'scale(.5)', opacity: '0' },
 });
 
-const AlertDialogContainer = () => {
+const DialogContainer = () => {
   return (
     <Box>
       <Box
@@ -162,16 +162,6 @@ const AlertDialogContainer = () => {
         >
           <Box
             css={{
-              backgroundColor: 'hsl(206,10%,70%)',
-              borderRadius: '5px',
-              height: 25,
-              width: 65,
-              display: 'inline-flex',
-              alignItems: 'center',
-            }}
-          ></Box>
-          <Box
-            css={{
               backgroundColor: '$blue800',
               borderRadius: '5px',
               height: 25,
@@ -187,6 +177,6 @@ const AlertDialogContainer = () => {
   );
 };
 
-export const AlertDialogHero = () => {
-  return <AlertDialogContainer />;
+export const DialogHero = () => {
+  return <DialogContainer />;
 };

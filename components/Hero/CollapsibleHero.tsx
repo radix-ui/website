@@ -2,40 +2,20 @@ import React from 'react';
 import { Box, styled, css, Flex } from '@modulz/design-system';
 
 const tab1 = css.keyframes({
-  '0%': { opacity: '1' },
-  '29.9999%': { opacity: '1' },
-  '30%': { opacity: '.75' },
-  '69.9999%': { opacity: '.75' },
-  '70%': { opacity: '1' },
-  '100%': { opacity: '1' },
-});
-
-const tab2 = css.keyframes({
-  '0%': { opacity: '.75' },
-  '29.9999%': { opacity: '.75' },
+  '0%': { opacity: '0' },
+  '29.9999%': { opacity: '0' },
   '30%': { opacity: '1' },
   '69.9999%': { opacity: '1' },
-  '70%': { opacity: '.75' },
-  '100%': { opacity: '.75' },
-});
-
-const text = css.keyframes({
-  '0%': { opacity: '1' },
-  '29.9999%': { opacity: '1' },
-  '30%': { opacity: '0' },
-  '69.9999%': { opacity: '0' },
-  '70%': { opacity: '1' },
-  '100%': { opacity: '1' },
+  '70%': { opacity: '0' },
+  '100%': { opacity: '0' },
 });
 
 const cursor = css.keyframes({
   '0%': { transform: 'translate(30px, 30px)' },
   '22%': { transform: 'translate(30px, 30px)' },
   '26%': { transform: 'translate(0, 0)' },
-  '62%': { transform: 'translate(0, 0)' },
-  '66%': { transform: 'translate(-50px, 0)' },
-  '86%': { transform: 'translate(-50px, 0)' },
-  '90%': { transform: 'translate(30px, 30px)' },
+  '74%': { transform: 'translate(0, 0)' },
+  '78%': { transform: 'translate(30px, 30px)' },
 });
 
 const click = css.keyframes({
@@ -49,23 +29,16 @@ const click = css.keyframes({
   '71%': { boxShadow: '0 0 0 2px black', transform: 'scale(1)', opacity: '0' },
 
   '100%': { boxShadow: '0 0 0 2px black', transform: 'scale(.5)', opacity: '0' },
-
-  // '24%': { transform: 'translate(30px, 30px)' },
-  // '28%': { transform: 'translate(0, 0)' },
-  // '64%': { transform: 'translate(0, 0)' },
-  // '68%': { transform: 'translate(-50px, 0)' },
-  // '86%': { transform: 'translate(-50px, 0)' },
-  // '90%': { transform: 'translate(30px, 30px)' },
 });
 
-const TabsContainer = () => {
+const CollapsibleContainer = () => {
   return (
     <Box css={{ position: 'relative' }}>
       <Box
         css={{
           position: 'absolute',
-          top: 18,
-          right: 88,
+          top: 5,
+          right: -10,
           transform: 'translate(30px, 30px)',
           animation: `${cursor} 6000ms infinite`,
           animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
@@ -137,74 +110,47 @@ const TabsContainer = () => {
         ></Box>
       </Box>
 
-      <Flex>
         <Box
           css={{
             display: 'flex',
             alignItems: 'center',
             px: '$2',
-            height: '$5',
+            height: '$2',
             backgroundColor: 'white',
-            borderRadius: '5px 5px 0 0 5px',
-            width: 50,
-            mr: 2,
-            animation: `${tab1} 6000ms infinite`,
-          }}
-        >
-          <Box css={{ backgroundColor: 'hsl(206,10%,70%)', height: 4, width: '100%' }}></Box>
-        </Box>
-        <Box
-          css={{
+            width: 100,
             position: 'relative',
-            display: 'flex',
-            alignItems: 'center',
-            px: '$2',
-            height: '$5',
-            backgroundColor: 'white',
-            borderRadius: '5px 5px 0 0 5px',
-            width: 50,
-            opacity: '.75',
-            animation: `${tab2} 6000ms infinite`,
           }}
         >
-          <Box css={{ backgroundColor: 'hsl(206,10%,70%)', height: 4, width: '100%' }}></Box>
+          <Box css={{
+            animation: `${tab1} 6000ms infinite`,
+            position: 'absolute',
+            bottom: -30,
+            left: 0
+          }}>
+            <Box
+              css={{
+                height: '$1',
+                backgroundColor: 'rgba(0,0,0,.8)',
+                width: 75,
+                mt: 10,
+              }}
+            >
+            </Box>
+            <Box
+              css={{
+                height: '$1',
+                backgroundColor: 'rgba(0,0,0,.8)',
+                width: 50,
+                mt: 10,
+              }}
+            >
+            </Box>
+          </Box>
         </Box>
-      </Flex>
-      <Box
-        css={{
-          backgroundColor: 'white',
-          borderRadius: '0 5px 5px 5px',
-          width: 200,
-          p: '$3',
-          top: '50%',
-          left: '50%',
-        }}
-      >
-        <Box css={{ backgroundColor: 'hsl(206,10%,70%)', height: 12, width: '35%', mb: 12 }}></Box>
-        <Box css={{ backgroundColor: 'hsl(206,10%,70%)', height: 4, width: '100%', mb: 12 }}></Box>
-        <Box css={{ backgroundColor: 'hsl(206,10%,70%)', height: 4, width: '50%', mb: 12 }}></Box>
-        <Box
-          css={{
-            animation: `${text} 6000ms infinite`,
-            backgroundColor: 'hsl(206,10%,70%)',
-            height: 4,
-            width: '75%',
-            mb: 12,
-          }}
-        ></Box>
-        <Box
-          css={{
-            animation: `${text} 6000ms infinite`,
-            backgroundColor: 'hsl(206,10%,70%)',
-            height: 4,
-            width: '50%',
-          }}
-        ></Box>
-      </Box>
     </Box>
   );
 };
 
-export const TabsHero = () => {
-  return <TabsContainer />;
+export const CollapsibleHero = () => {
+  return <CollapsibleContainer />;
 };

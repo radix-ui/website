@@ -52,7 +52,7 @@ const DropdownMenuContainer = () => {
           css={{
             position: 'relative',
             zIndex: '1',
-            backgroundColor: '$gray800',
+            backgroundColor: 'hsl(206,10%,70%)',
             height: 4,
             width: '25%',
             mt: 8,
@@ -64,7 +64,7 @@ const DropdownMenuContainer = () => {
           css={{
             position: 'relative',
             zIndex: '1',
-            backgroundColor: '$gray800',
+            backgroundColor: 'hsl(206,10%,70%)',
             height: 4,
             width: '50%',
             mb: 16,
@@ -75,7 +75,7 @@ const DropdownMenuContainer = () => {
           css={{
             position: 'relative',
             zIndex: '1',
-            backgroundColor: '$gray800',
+            backgroundColor: 'hsl(206,10%,70%)',
             height: 4,
             width: '25%',
             mb: 16,
@@ -86,7 +86,7 @@ const DropdownMenuContainer = () => {
           css={{
             position: 'relative',
             zIndex: '1',
-            backgroundColor: '$gray800',
+            backgroundColor: 'hsl(206,10%,70%)',
             height: 4,
             width: '50%',
             mb: 16,
@@ -97,7 +97,7 @@ const DropdownMenuContainer = () => {
           css={{
             position: 'relative',
             zIndex: '1',
-            backgroundColor: '$gray800',
+            backgroundColor: 'hsl(206,10%,70%)',
             height: 4,
             width: '25%',
             mb: 8,
@@ -112,7 +112,7 @@ const DropdownMenuContainer = () => {
             right: 0,
             zIndex: '0',
             height: 20,
-            backgroundColor: '$gray500',
+            backgroundColor: 'hsl(206,10%,92%)',
             display: 'flex',
             alignItems: 'center',
             px: '$3',
