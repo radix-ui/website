@@ -98,7 +98,7 @@ export default () => (
       <div
         style={{
           backgroundColor: 'gainsboro',
-          padding: 100,
+          padding: 50,
           textAlign: 'center',
         }}
       >
@@ -106,8 +106,6 @@ export default () => (
       </div>
     </ContextMenu.Trigger>
     <StyledContent>
-      <StyledItem>Undo</StyledItem>
-      <StyledItem>Redo</StyledItem>
       <StyledItem>Cut</StyledItem>
       <StyledItem>Copy</StyledItem>
       <StyledItem>Paste</StyledItem>
@@ -628,6 +626,361 @@ const StyledContent = styled(ContextMenu.Content, {
   animationDuration: '0.6s',
   animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
 });
+```
+
+## Examples
+
+### With disabled items
+
+You can add special styles to disabled items via the `data-disabled` attribute.
+
+```jsx live manual compact
+// import { styled } from 'path-to/stitches.config';
+import * as ContextMenu from '@radix-ui/react-dropdown-menu';
+
+const StyledContent = styled(ContextMenu.Content, {
+  minWidth: 130,
+  backgroundColor: 'white',
+  borderRadius: 6,
+  padding: 5,
+  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
+});
+
+const StyledItem = styled(ContextMenu.Item, {
+  fontSize: 13,
+  padding: '5px 10px',
+  borderRadius: 3,
+  cursor: 'default',
+
+  '&[data-disabled]': {
+    color: 'gainsboro',
+  },
+
+  '&:focus': {
+    outline: 'none',
+    backgroundColor: 'dodgerblue',
+    color: 'white',
+  },
+});
+
+export default () => (
+  <ContextMenu.Root>
+    <ContextMenu.Trigger>
+      <div
+        style={{
+          backgroundColor: 'gainsboro',
+          padding: 50,
+          textAlign: 'center',
+        }}
+      >
+        Right click anywhere
+      </div>
+    </ContextMenu.Trigger>
+    <StyledContent>
+      <StyledItem disabled>Cut</StyledItem>
+      <StyledItem>Copy</StyledItem>
+      <StyledItem>Paste</StyledItem>
+    </StyledContent>
+  </ContextMenu.Root>
+);
+```
+
+### With separators
+
+Use the `Separator` part to add a separator between items.
+
+```jsx live manual compact
+// import { styled } from 'path-to/stitches.config';
+import * as ContextMenu from '@radix-ui/react-dropdown-menu';
+
+const StyledContent = styled(ContextMenu.Content, {
+  minWidth: 130,
+  backgroundColor: 'white',
+  borderRadius: 6,
+  padding: 5,
+  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
+});
+
+const StyledItem = styled(ContextMenu.Item, {
+  fontSize: 13,
+  padding: '5px 10px',
+  borderRadius: 3,
+  cursor: 'default',
+
+  '&:focus': {
+    outline: 'none',
+    backgroundColor: 'dodgerblue',
+    color: 'white',
+  },
+});
+
+const StyledSeparator = styled(ContextMenu.Separator, {
+  height: 1,
+  backgroundColor: 'gainsboro',
+  margin: 5,
+});
+
+export default () => (
+  <ContextMenu.Root>
+    <ContextMenu.Trigger>
+      <div
+        style={{
+          backgroundColor: 'gainsboro',
+          padding: 50,
+          textAlign: 'center',
+        }}
+      >
+        Right click anywhere
+      </div>
+    </ContextMenu.Trigger>
+    <StyledContent>
+      <StyledItem>Undo</StyledItem>
+      <StyledItem>Redo</StyledItem>
+      <StyledSeparator />
+      <StyledItem>Cut</StyledItem>
+      <StyledItem>Copy</StyledItem>
+      <StyledItem>Paste</StyledItem>
+    </StyledContent>
+  </ContextMenu.Root>
+);
+```
+
+### With labels
+
+Use the `Label` part to help label a section.
+
+```jsx live manual compact
+// import { styled } from 'path-to/stitches.config';
+import * as ContextMenu from '@radix-ui/react-dropdown-menu';
+
+const StyledContent = styled(ContextMenu.Content, {
+  minWidth: 130,
+  backgroundColor: 'white',
+  borderRadius: 6,
+  padding: 5,
+  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
+});
+
+const StyledItem = styled(ContextMenu.Item, {
+  fontSize: 13,
+  padding: '5px 10px',
+  borderRadius: 3,
+  cursor: 'default',
+
+  '&:focus': {
+    outline: 'none',
+    backgroundColor: 'dodgerblue',
+    color: 'white',
+  },
+});
+
+const StyledLabel = styled(ContextMenu.Label, {
+  color: 'slategray',
+  fontSize: 13,
+  padding: '5px 10px',
+  cursor: 'default',
+});
+
+const StyledSeparator = styled(ContextMenu.Separator, {
+  height: 1,
+  backgroundColor: 'gainsboro',
+  margin: 5,
+});
+
+export default () => (
+  <ContextMenu.Root>
+    <ContextMenu.Trigger>
+      <div
+        style={{
+          backgroundColor: 'gainsboro',
+          padding: 50,
+          textAlign: 'center',
+        }}
+      >
+        Right click anywhere
+      </div>
+    </ContextMenu.Trigger>
+    <StyledContent>
+      <StyledLabel>Recently Closed</StyledLabel>
+      <StyledItem>Modulz</StyledItem>
+      <StyledItem>Radix-ui</StyledItem>
+      <StyledItem>Stitches</StyledItem>
+      <StyledSeparator />
+      <StyledLabel>Recently Visited</StyledLabel>
+      <StyledItem>GitHub</StyledItem>
+      <StyledItem>Modulz</StyledItem>
+    </StyledContent>
+  </ContextMenu.Root>
+);
+```
+
+### With checkbox items
+
+Use the `CheckboxItem` part to add an item that can be checked.
+
+```jsx live manual compact
+// import { styled } from 'path-to/stitches.config';
+import * as ContextMenu from '@radix-ui/react-dropdown-menu';
+import { CheckIcon } from '@modulz/radix-icons';
+
+const StyledContent = styled(ContextMenu.Content, {
+  minWidth: 130,
+  backgroundColor: 'white',
+  borderRadius: 6,
+  padding: 5,
+  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
+});
+
+const itemStyles = {
+  fontSize: 13,
+  padding: '5px 10px 5px 25px',
+  borderRadius: 3,
+  cursor: 'default',
+  position: 'relative',
+
+  '&:focus': {
+    outline: 'none',
+    backgroundColor: 'dodgerblue',
+    color: 'white',
+  },
+};
+
+const StyledItem = styled(ContextMenu.Item, itemStyles);
+
+const StyledCheckboxItem = styled(
+  ContextMenu.CheckboxItem,
+  itemStyles
+);
+
+const StyledItemIndicator = styled(ContextMenu.ItemIndicator, {
+  position: 'absolute',
+  left: 5,
+});
+
+const StyledSeparator = styled(ContextMenu.Separator, {
+  height: 1,
+  backgroundColor: 'gainsboro',
+  margin: 5,
+});
+
+export default () => {
+  const [checked, setChecked] = React.useState(true);
+
+  return (
+    <ContextMenu.Root>
+      <ContextMenu.Trigger>
+        <div
+          style={{
+            backgroundColor: 'gainsboro',
+            padding: 50,
+            textAlign: 'center',
+          }}
+        >
+          Right click anywhere
+        </div>
+      </ContextMenu.Trigger>
+      <StyledContent>
+        <StyledItem>About Radix UI</StyledItem>
+        <StyledItem>Check for updates</StyledItem>
+        <StyledSeparator />
+        <StyledCheckboxItem
+          checked={checked}
+          onCheckedChange={setChecked}
+        >
+          <StyledItemIndicator>
+            <CheckIcon />
+          </StyledItemIndicator>
+          Show hidden files
+        </StyledCheckboxItem>
+      </StyledContent>
+    </ContextMenu.Root>
+  );
+};
+```
+
+### With radio items
+
+Use the `RadioGroup` and `RadioItem` parts to add an item that can be checked amongst others.
+
+```jsx live manual compact
+// import { styled } from 'path-to/stitches.config';
+import * as ContextMenu from '@radix-ui/react-dropdown-menu';
+import { CheckIcon } from '@modulz/radix-icons';
+
+const StyledContent = styled(ContextMenu.Content, {
+  minWidth: 130,
+  backgroundColor: 'white',
+  borderRadius: 6,
+  padding: 5,
+  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
+});
+
+const itemStyles = {
+  fontSize: 13,
+  padding: '5px 10px 5px 25px',
+  borderRadius: 3,
+  cursor: 'default',
+  position: 'relative',
+
+  '&:focus': {
+    outline: 'none',
+    backgroundColor: 'dodgerblue',
+    color: 'white',
+  },
+};
+
+const StyledItem = styled(ContextMenu.Item, itemStyles);
+
+const StyledRadioGroup = styled(ContextMenu.RadioGroup, {});
+
+const StyledRadioItem = styled(ContextMenu.RadioItem, itemStyles);
+
+const StyledItemIndicator = styled(ContextMenu.ItemIndicator, {
+  position: 'absolute',
+  left: 5,
+});
+
+export default () => {
+  const [color, setColor] = React.useState('blue');
+
+  return (
+    <ContextMenu.Root>
+      <ContextMenu.Trigger>
+        <div
+          style={{
+            backgroundColor: 'gainsboro',
+            padding: 50,
+            textAlign: 'center',
+          }}
+        >
+          Right click anywhere
+        </div>
+      </ContextMenu.Trigger>
+      <StyledContent>
+        <StyledRadioGroup value={color} onValueChange={setColor}>
+          <StyledRadioItem value="red">
+            <StyledItemIndicator>
+              <CheckIcon />
+            </StyledItemIndicator>
+            Red
+          </StyledRadioItem>
+          <StyledRadioItem value="blue">
+            <StyledItemIndicator>
+              <CheckIcon />
+            </StyledItemIndicator>
+            Blue
+          </StyledRadioItem>
+          <StyledRadioItem value="green">
+            <StyledItemIndicator>
+              <CheckIcon />
+            </StyledItemIndicator>
+            Green
+          </StyledRadioItem>
+        </StyledRadioGroup>
+      </StyledContent>
+    </ContextMenu.Root>
+  );
+};
 ```
 
 ## Accessibility

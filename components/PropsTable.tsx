@@ -65,7 +65,10 @@ export function PropsTable({
       <tbody>
         {data.map(({ name, type, typeSimple, required, default: defaultValue, description }, i) => (
           <tr key={`${name}-${i}`}>
-            <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
+            <Box
+              as="td"
+              css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4', whiteSpace: 'nowrap' }}
+            >
               <Code>{name}</Code>
               {description && (
                 <Popover>
@@ -78,7 +81,7 @@ export function PropsTable({
                     <InfoCircledIcon aria-hidden />
                   </Popover.Trigger>
                   <Popover.Content side="top">
-                    <Box css={{ py: '$2', px: '$3', width: '320px' }}>
+                    <Box css={{ py: '$2', px: '$3' }}>
                       <Text size="2" css={{ lineHeight: '20px' }}>
                         {description}
                       </Text>
@@ -96,16 +99,19 @@ export function PropsTable({
                   <Popover.Trigger
                     as={IconButton}
                     variant="ghost"
-                    css={{ ml: '$1', verticalAlign: 'middle', color: '$gray900' }}
+                    css={{
+                      ml: '$1',
+                      verticalAlign: 'middle',
+                      color: '$gray900',
+                      display: 'none',
+                      bp1: { display: 'inline-flex' },
+                    }}
                     aria-label="See full type"
                   >
                     <InfoCircledIcon />
                   </Popover.Trigger>
                   <Popover.Content side="top">
                     <Box css={{ py: '$2', px: '$2', height: '38px', whiteSpace: 'nowrap' }}>
-                      <Text size="2" css={{ display: 'inline' }}>
-                        Type:
-                      </Text>{' '}
                       <Code>{type}</Code>
                     </Box>
                   </Popover.Content>

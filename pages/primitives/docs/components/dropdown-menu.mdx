@@ -103,8 +103,6 @@ export default () => (
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
     <StyledContent>
-      <StyledItem>Undo</StyledItem>
-      <StyledItem>Redo</StyledItem>
       <StyledItem>Cut</StyledItem>
       <StyledItem>Copy</StyledItem>
       <StyledItem>Paste</StyledItem>
@@ -795,10 +793,8 @@ export default () => (
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
     <StyledContent>
-      <StyledItem>Undo</StyledItem>
-      <StyledItem disabled>Redo</StyledItem>
-      <StyledItem>Cut</StyledItem>
-      <StyledItem disabled>Copy</StyledItem>
+      <StyledItem disabled>Cut</StyledItem>
+      <StyledItem>Copy</StyledItem>
       <StyledItem>Paste</StyledItem>
       <StyledArrow />
     </StyledContent>
@@ -897,6 +893,12 @@ const StyledLabel = styled(DropdownMenu.Label, {
   cursor: 'default',
 });
 
+const StyledSeparator = styled(DropdownMenu.Separator, {
+  height: 1,
+  backgroundColor: 'gainsboro',
+  margin: 5,
+});
+
 const StyledArrow = styled(DropdownMenu.Arrow, {
   fill: 'white',
 });
@@ -905,12 +907,14 @@ export default () => (
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
     <StyledContent>
-      <StyledLabel>Actions</StyledLabel>
-      <StyledItem>Undo</StyledItem>
-      <StyledItem>Redo</StyledItem>
-      <StyledItem>Cut</StyledItem>
-      <StyledItem>Copy</StyledItem>
-      <StyledItem>Paste</StyledItem>
+      <StyledLabel>Recently Closed</StyledLabel>
+      <StyledItem>Modulz</StyledItem>
+      <StyledItem>Radix-ui</StyledItem>
+      <StyledItem>Stitches</StyledItem>
+      <StyledSeparator />
+      <StyledLabel>Recently Visited</StyledLabel>
+      <StyledItem>GitHub</StyledItem>
+      <StyledItem>Modulz</StyledItem>
       <StyledArrow />
     </StyledContent>
   </DropdownMenu.Root>
@@ -960,6 +964,12 @@ const StyledItemIndicator = styled(DropdownMenu.ItemIndicator, {
   left: 5,
 });
 
+const StyledSeparator = styled(DropdownMenu.Separator, {
+  height: 1,
+  backgroundColor: 'gainsboro',
+  margin: 5,
+});
+
 const StyledArrow = styled(DropdownMenu.Arrow, {
   fill: 'white',
 });
@@ -973,6 +983,7 @@ export default () => {
       <StyledContent>
         <StyledItem>About Radix UI</StyledItem>
         <StyledItem>Check for updates</StyledItem>
+        <StyledSeparator />
         <StyledCheckboxItem
           checked={checked}
           onCheckedChange={setChecked}
@@ -982,6 +993,86 @@ export default () => {
           </StyledItemIndicator>
           Show hidden files
         </StyledCheckboxItem>
+        <StyledArrow />
+      </StyledContent>
+    </DropdownMenu.Root>
+  );
+};
+```
+
+### With radio items
+
+Use the `RadioGroup` and `RadioItem` parts to add an item that can be checked amongst others.
+
+```jsx live manual compact
+// import { styled } from 'path-to/stitches.config';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import { CheckIcon } from '@modulz/radix-icons';
+
+const StyledContent = styled(DropdownMenu.Content, {
+  minWidth: 130,
+  backgroundColor: 'white',
+  borderRadius: 6,
+  padding: 5,
+  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
+});
+
+const itemStyles = {
+  fontSize: 13,
+  padding: '5px 10px 5px 25px',
+  borderRadius: 3,
+  cursor: 'default',
+  position: 'relative',
+
+  '&:focus': {
+    outline: 'none',
+    backgroundColor: 'dodgerblue',
+    color: 'white',
+  },
+};
+
+const StyledItem = styled(DropdownMenu.Item, itemStyles);
+
+const StyledRadioGroup = styled(DropdownMenu.RadioGroup, {});
+
+const StyledRadioItem = styled(DropdownMenu.RadioItem, itemStyles);
+
+const StyledItemIndicator = styled(DropdownMenu.ItemIndicator, {
+  position: 'absolute',
+  left: 5,
+});
+
+const StyledArrow = styled(DropdownMenu.Arrow, {
+  fill: 'white',
+});
+
+export default () => {
+  const [color, setColor] = React.useState('blue');
+
+  return (
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
+      <StyledContent>
+        <StyledRadioGroup value={color} onValueChange={setColor}>
+          <StyledRadioItem value="red">
+            <StyledItemIndicator>
+              <CheckIcon />
+            </StyledItemIndicator>
+            Red
+          </StyledRadioItem>
+          <StyledRadioItem value="blue">
+            <StyledItemIndicator>
+              <CheckIcon />
+            </StyledItemIndicator>
+            Blue
+          </StyledRadioItem>
+          <StyledRadioItem value="green">
+            <StyledItemIndicator>
+              <CheckIcon />
+            </StyledItemIndicator>
+            Green
+          </StyledRadioItem>
+        </StyledRadioGroup>
         <StyledArrow />
       </StyledContent>
     </DropdownMenu.Root>

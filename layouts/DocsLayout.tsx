@@ -243,6 +243,20 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
           </Flex>
         )}
       </Container>
+
+      <Container size="2" css={{ my: '$9' }}>
+        <Text size="3">
+          <Link
+            href={`https://github.com/radix-ui/website/edit/master/pages${router.pathname}.mdx`}
+            title="Edit this page on GitHub."
+            rel="noopener noreferrer"
+            target="_blank"
+            variant="subtle"
+          >
+            Edit this page on GitHub.
+          </Link>
+        </Text>
+      </Container>
     </MDXProvider>
   );
 }
@@ -322,9 +336,20 @@ const ComponentInfo = ({ version, name, aria }) => (
       <Text size="2" as="dt" css={{ fontWeight: 500, mr: '$1' }}>
         Version:
       </Text>
-      <Text size="2" as="dd" color="gray" css={{ fontFamily: '$mono' }}>
-        v{version}
-      </Text>
+      <Link
+        variant="subtle"
+        href={`https://www.npmjs.com/package/@radix-ui/react-${name}`}
+        target="_blank"
+      >
+        <Flex css={{ display: 'inline-flex', position: 'relative' }}>
+          <Text size="2" as="dd" color="gray" css={{ fontFamily: '$mono' }}>
+            v{version}
+          </Text>
+          <Box css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
+            <ExternalIcon />
+          </Box>
+        </Flex>
+      </Link>
     </Flex>
     <Separator size="2" css={{ mb: '$4' }} />
     <Box css={{ mb: '$2' }}>
@@ -335,7 +360,7 @@ const ComponentInfo = ({ version, name, aria }) => (
       >
         <Flex css={{ display: 'inline-flex', position: 'relative' }}>
           <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
-            View on Github
+            View source
           </Text>
           <Box css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
             <ExternalIcon />
@@ -344,6 +369,22 @@ const ComponentInfo = ({ version, name, aria }) => (
       </Link>
     </Box>
     <Box css={{ mb: '$2' }}>
+      <Link
+        variant="blue"
+        href="https://github.com/radix-ui/primitives/issues/new/choose"
+        target="_blank"
+      >
+        <Flex css={{ display: 'inline-flex', position: 'relative' }}>
+          <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
+            Report an issue
+          </Text>
+          <Box css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
+            <ExternalIcon />
+          </Box>
+        </Flex>
+      </Link>
+    </Box>
+    {/* <Box css={{ mb: '$2' }}>
       <Link
         variant="blue"
         href={`https://www.npmjs.com/package/@radix-ui/react-${name}`}
@@ -358,7 +399,7 @@ const ComponentInfo = ({ version, name, aria }) => (
           </Box>
         </Flex>
       </Link>
-    </Box>
+    </Box> */}
     {aria && (
       <Box css={{ mb: '$2' }}>
         <Link variant="blue" href={aria} target="_blank">
