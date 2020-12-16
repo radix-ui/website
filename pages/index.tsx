@@ -154,7 +154,7 @@ export default function Home() {
               </Card>
             </NextLink>
 
-            <Card as="a" variant="ghost" href="#" css={{ p: '$5' }}>
+            <Card as="a" variant="ghost" href="https://icons.modulz.app" css={{ p: '$5' }}>
               <Subheading css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>Icons</Subheading>
 
               <Text
