@@ -60,23 +60,25 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
         poster={frontMatter.poster}
       />
 
-      <Box
-        as="aside"
-        css={{
-          display: 'none',
-          bp3: {
-            display: 'block',
-            width: '250px',
-            flexShrink: 0,
-            position: 'fixed',
-            right: 0,
-            order: 1,
-            maxHeight: 'calc(100vh - (var(--space-8) + var(--space-5)))',
-          },
-        }}
-      >
-        <QuickNav />
-      </Box>
+      <ScrollArea>
+        <Box
+          as="aside"
+          css={{
+            display: 'none',
+            bp3: {
+              display: 'block',
+              width: '250px',
+              flexShrink: 0,
+              position: 'fixed',
+              right: 0,
+              order: 1,
+              height: 'calc(100vh - (var(--space-8) + var(--space-5)))',
+            },
+          }}
+        >
+          <QuickNav />
+        </Box>
+      </ScrollArea>
 
       <Container size="2" as="main">
         <Box as="article">
