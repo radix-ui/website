@@ -96,17 +96,19 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
                 css={{
                   fd: 'column',
                   bp1: {
-                    fd: 'row'
-                  }
-                }}>
+                    fd: 'row',
+                  },
+                }}
+              >
                 <Box
                   css={{
                     mb: '$5',
                     bp1: {
                       flex: '1 1 100%',
                       mr: '$5',
-                    }
-                  }}>
+                    },
+                  }}
+                >
                   {Boolean(frontMatter.features) && (
                     <FeatureList>
                       {frontMatter.features.map((feature, i) => (
@@ -350,20 +352,22 @@ const ComponentInfo = ({ version, name, aria }) => (
       <Text size="2" as="dt" css={{ fontWeight: 500, mr: '$1' }}>
         Version:
       </Text>
-      <Link
-        variant="subtle"
-        href={`https://www.npmjs.com/package/@radix-ui/react-${name}`}
-        target="_blank"
-      >
-        <Flex css={{ display: 'inline-flex', position: 'relative' }}>
-          <Text size="2" as="dd" color="gray" css={{ fontFamily: '$mono' }}>
-            v{version}
-          </Text>
-          <Box css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
-            <ExternalIcon />
-          </Box>
-        </Flex>
-      </Link>
+      <Box as="dd">
+        <Link
+          variant="subtle"
+          href={`https://www.npmjs.com/package/@radix-ui/react-${name}`}
+          target="_blank"
+        >
+          <Flex as="span" css={{ display: 'inline-flex', position: 'relative' }}>
+            <Text size="2" as="span" color="gray" css={{ fontFamily: '$mono' }}>
+              v{version}
+            </Text>
+            <Box as="span" css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
+              <ExternalIcon />
+            </Box>
+          </Flex>
+        </Link>
+      </Box>
     </Flex>
     <Separator size="2" css={{ mb: '$4', display: 'none', bp1: { display: 'block' } }} />
     <Box css={{ mb: '$2' }}>
@@ -376,7 +380,7 @@ const ComponentInfo = ({ version, name, aria }) => (
           <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
             View source
           </Text>
-          <Box css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
+          <Box as="span" css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
             <ExternalIcon />
           </Box>
         </Flex>
@@ -392,7 +396,7 @@ const ComponentInfo = ({ version, name, aria }) => (
           <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
             Report an issue
           </Text>
-          <Box css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
+          <Box as="span" css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
             <ExternalIcon />
           </Box>
         </Flex>
@@ -408,7 +412,7 @@ const ComponentInfo = ({ version, name, aria }) => (
           <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
             View on npm
           </Text>
-          <Box css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
+          <Box as="span" css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
             <ExternalIcon />
           </Box>
         </Flex>
@@ -421,7 +425,7 @@ const ComponentInfo = ({ version, name, aria }) => (
             <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
               ARIA design pattern
             </Text>
-            <Box css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
+            <Box as="span" css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
               <ExternalIcon />
             </Box>
           </Flex>
