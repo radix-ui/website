@@ -1,16 +1,27 @@
 import React from 'react';
 import { Box, Text, Kbd } from '@modulz/design-system';
+import { RegionTable } from './RegionTable';
 
 type KeyboardDef = {
   keys: string[];
   description: React.ReactNode;
 };
 
-export function KeyboardTable({ data }: { data: KeyboardDef[] }) {
+export function KeyboardTable({
+  data,
+  'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledBy,
+}: {
+  data: KeyboardDef[];
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
+}) {
+  const hasAriaLabel = !!(ariaLabel || ariaLabelledBy);
   return (
-    <Box
-      as="table"
+    <RegionTable
       css={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse', mt: '$2' }}
+      aria-label={hasAriaLabel ? ariaLabel : 'Keyboard Interactions'}
+      aria-labelledby={ariaLabelledBy}
     >
       <thead>
         <tr>
@@ -52,6 +63,6 @@ export function KeyboardTable({ data }: { data: KeyboardDef[] }) {
           </tr>
         ))}
       </tbody>
-    </Box>
+    </RegionTable>
   );
 }
