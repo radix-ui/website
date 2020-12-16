@@ -118,7 +118,7 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
 
         {Boolean(frontMatter.relatedIds) && (
           <>
-            <Separator size="2" css={{ my: '$9', mx: 'auto' }} />
+            <Separator size="2" css={{ my: '$2', mx: 'auto' }} />
             <Box as="nav" aria-labelledby="site-related-nav-label">
               <Text
                 id="site-related-nav-label"

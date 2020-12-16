@@ -103,6 +103,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
 
       <Box
         css={{
+          py: '$7',
           bp2: {
             width: '100%',
             pl: '250px',
@@ -110,7 +111,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
           },
           bp3: {
             px: '250px',
-            py: '$9',
+            py: '$8',
           },
         }}
       >
