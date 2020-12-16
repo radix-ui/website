@@ -34,6 +34,11 @@ module.exports = withPlugins(
     async redirects() {
       return [
         {
+          source: '/primitives',
+          destination: '/primitives/docs/overview/introduction',
+          permanent: false,
+        },
+        {
           source: '/primitives/docs',
           destination: '/primitives/docs/overview/introduction',
           permanent: false,

@@ -85,13 +85,6 @@ export const Footer = () => {
             <ul>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/primitives" passHref>
-                    <Link variant="subtle">About</Link>
-                  </NextLink>
-                </Text>
-              </li>
-              <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <NextLink href="/primitives/docs/overview/introduction" passHref>
                     <Link variant="subtle">Introduction</Link>
                   </NextLink>

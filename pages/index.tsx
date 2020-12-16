@@ -65,8 +65,9 @@ export default function Home() {
             Components, colors, icons, templates, and an extensive design system. Free and
             open-source.
           </Subtitle>
+
           <Flex css={{ jc: 'center', mt: '$7' }}>
-            <NextLink href="/blog" passHref>
+            <NextLink href="/primitives/docs/overview/introduction" passHref>
               <Link variant="blue">
                 <Text size="6">View documentation</Text>
               </Link>
@@ -111,7 +112,7 @@ export default function Home() {
               </Card>
             </NextLink>
 
-            <NextLink passHref href="/primitives">
+            <NextLink passHref href="/primitives/docs/overview/introduction">
               <Card as="a" variant="ghost" css={{ p: '$5' }}>
                 <Subheading css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
                   Primitives
@@ -131,7 +132,7 @@ export default function Home() {
               </Paragraph>
             </Card>
 
-            <NextLink passHref href="/primitives">
+            <NextLink passHref href="/primitives/docs/overview/introduction">
               <Card as="a" variant="ghost" css={{ p: '$5' }}>
                 <Subheading css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>Reset</Subheading>
                 <Paragraph css={{ color: '$gray900' }}>
@@ -141,7 +142,7 @@ export default function Home() {
               </Card>
             </NextLink>
 
-            <NextLink passHref href="/primitives">
+            <NextLink passHref href="/primitives/docs/overview/introduction">
               <Card as="a" variant="ghost" css={{ p: '$5' }}>
                 <Subheading css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
                   Tenplates
