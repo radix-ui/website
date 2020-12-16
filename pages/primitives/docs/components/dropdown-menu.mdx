@@ -936,9 +936,10 @@ const StyledContent = styled(DropdownMenu.Content, {
 
 const itemStyles = {
   fontSize: 13,
-  padding: '5px 10px 5px 5px',
+  padding: '5px 10px 5px 25px',
   borderRadius: 3,
   cursor: 'default',
+  position: 'relative',
 
   '&:focus': {
     outline: 'none',
@@ -947,39 +948,50 @@ const itemStyles = {
   },
 };
 
-const StyledItem = styled(DropdownMenu.Item, {
-  ...itemStyles,
-  paddingLeft: 25,
-});
+const StyledItem = styled(DropdownMenu.Item, itemStyles);
 
-const StyledCheckboxItem = styled(DropdownMenu.CheckboxItem, {
-  ...itemStyles,
-  display: 'flex',
-});
+const StyledCheckboxItem = styled(
+  DropdownMenu.CheckboxItem,
+  itemStyles
+);
 
 const StyledItemIndicator = styled(DropdownMenu.ItemIndicator, {
-  marginRight: 5,
+  position: 'absolute',
+  left: 5,
 });
 
 const StyledArrow = styled(DropdownMenu.Arrow, {
   fill: 'white',
 });
 
+function DropdownMenuWithCheckbox() {
+  const [checked, setChecked] = React.useState(true);
+
+  return (
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
+      <StyledContent>
+        <StyledItem>About Radix UI</StyledItem>
+        <StyledItem>Check for updates</StyledItem>
+        <StyledCheckboxItem
+          checked={checked}
+          onCheckedChange={setChecked}
+        >
+          <StyledItemIndicator>
+            <CheckIcon />
+          </StyledItemIndicator>
+          Show hidden files
+        </StyledCheckboxItem>
+        <StyledArrow />
+      </StyledContent>
+    </DropdownMenu.Root>
+  );
+}
+
 export default () => (
-  <DropdownMenu.Root>
-    <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
-    <StyledContent>
-      <StyledItem>About Radix UI</StyledItem>
-      <StyledItem>Check for updates</StyledItem>
-      <StyledCheckboxItem checked onCheckedChange={alert}>
-        <StyledItemIndicator>
-          <CheckIcon />
-        </StyledItemIndicator>
-        Show hidden files
-      </StyledCheckboxItem>
-      <StyledArrow />
-    </StyledContent>
-  </DropdownMenu.Root>
+  <>
+    <DropdownMenuWithCheckbox />
+  </>
 );
 ```
 
