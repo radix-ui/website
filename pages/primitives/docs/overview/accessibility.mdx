@@ -4,13 +4,13 @@ description: Radix Primitives follow the WAI-ARIA authoring practices guidelines
 navRank: 5
 ---
 
-We take care of many of the difficult implementation details related to accessibility, including `aria` and `role` attributes, focus management, and keyboard navigation. That means that users should be able to use our components as-is in most contexts and expect certain functionality to follow the expectations based on the component's design pattern.
+We take care of many of the difficult implementation details related to accessibility, including `aria` and `role` attributes, focus management, and keyboard navigation. That means that users should be able to use our components as-is in most contexts and rely on functionality to follow the expected accessibility design patterns.
 
 ## WAI-ARIA
 
-[WAI-ARIA](https://www.w3.org/TR/wai-aria-1.2/), published and maintained by the W3C, specifies the semantics for many common UI patterns that show up in Radix Primitives. This is designed to provide meaning for controls that aren't built using elements provided by the browser. For example, if you use a `div` instead of a `button` element to create a button, there are certain attributes you need to add to the `div` in order to convey that it's actually a button for screen readers or voice recognition tools.
+[WAI-ARIA](https://www.w3.org/TR/wai-aria-1.2/), published and maintained by the W3C, specifies the semantics for many common UI patterns that show up in Radix Primitives. This is designed to provide meaning for controls that aren't built using elements provided by the browser. For example, if you use a `div` instead of a `button` element to create a button, there are attributes you need to add to the `div` in order to convey that it's a button for screen readers or voice recognition tools.
 
-In addition to semantics, there are also certain behaviors that are expected from certain types of components. A `button` element is going to respond to certain interactions in ways that a `div` will not, so it's up to the developer to reimplement those interactions with JavaScript. The [WAI-ARIA authoring practices](https://www.w3.org/TR/wai-aria-practices-1.2/) provide additional guidance for implementing behaviors for various controls that come with Radix Primitives.
+In addition to semantics, there are behaviors that are expected from different types of components. A `button` element is going to respond to certain interactions in ways that a `div` will not, so it's up to the developer to reimplement those interactions with JavaScript. The [WAI-ARIA authoring practices](https://www.w3.org/TR/wai-aria-practices-1.2/) provide additional guidance for implementing behaviors for various controls that come with Radix Primitives.
 
 ## Accessible Labels
 
@@ -20,7 +20,7 @@ Where possible, Radix Primitives include abstractions to make labelling our cont
 
 ## Keyboard Navigation
 
-Many complex components, like [`Tabs`](./tabs) and [`Dialog`](./dialog), come with certain expectations from users on how to interact with their content using a keyboard or other non-mouse input modalities. Radix Primitives come with basic keyboard support in accordance with the [WAI-ARIA authoring practices](https://www.w3.org/TR/wai-aria-practices-1.2/).
+Many complex components, like [`Tabs`](./tabs) and [`Dialog`](./dialog), come with expectations from users on how to interact with their content using a keyboard or other non-mouse input modalities. Radix Primitives provide basic keyboard support in accordance with the [WAI-ARIA authoring practices](https://www.w3.org/TR/wai-aria-practices-1.2/).
 
 ## Focus Management
 
