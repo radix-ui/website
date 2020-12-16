@@ -145,6 +145,8 @@ const CopyButton = (props: any) => (
       top: '$2',
       zIndex: '$2',
       right: '$2',
+      display: 'none',
+      bp1: { display: 'inline' },
     }}
     {...props}
   />
