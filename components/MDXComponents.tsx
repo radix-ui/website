@@ -45,7 +45,7 @@ const LinkHeading = ({
 export const MDXComponents = {
   h1: (props) => <DS.Title {...props} css={{ mb: '$1', ...props.css }} />,
   h2: ({ children, id, ...props }) => (
-    <LinkHeading id={id} css={{ mt: '$7', mb: '$2', ...props.css }}>
+    <LinkHeading id={id} css={{ mt: '$6', mb: '$2', ...props.css }}>
       <DS.Heading
         {...props}
         as={'h2' as any}
@@ -121,7 +121,7 @@ export const MDXComponents = {
       </NextLink>
     );
   },
-  hr: (props) => <DS.Separator size="2" {...props} css={{ my: '$6', mx: 'auto', ...props.css }} />,
+  hr: (props) => <DS.Separator size="2" {...props} css={{ mt: '$7', mx: 'auto', ...props.css }} />,
   inlineCode: (props) => <DS.Code {...props} />,
   ul: (props) => (
     <DS.Box {...props} css={{ color: '$hiContrast', mb: '$3', ...props.css }} as="ul" />
@@ -174,12 +174,12 @@ export const MDXComponents = {
         mb: '$3',
         py: '$2',
         px: '$3',
-        bc: '$violet100',
-        border: '1px solid $violet400',
+        bc: '$yellow100',
+        border: '1px solid $yellow400',
         borderRadius: '$2',
         '& p': {
           fontSize: '$3',
-          color: '$violet900',
+          color: '$yellow900',
           lineHeight: '21px',
           margin: 0,
         },

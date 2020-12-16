@@ -12,13 +12,12 @@ const { colors } = DStheme;
 const theme: any = {
   plain: {
     color: 'var(--colors-hiContrast)',
-    backgroundColor: 'transparent',
   },
   styles: [
     {
       types: ['comment', 'prolog', 'doctype', 'cdata'],
       style: {
-        color: colors.$gray900,
+        color: colors.$gray800,
         fontStyle: 'italic',
       },
     },
@@ -31,13 +30,13 @@ const theme: any = {
     {
       types: ['string', 'attr-value'],
       style: {
-        color: colors.$purple900,
+        color: colors.$turquoise900,
       },
     },
     {
       types: ['punctuation', 'operator'],
       style: {
-        color: colors.$gray900,
+        color: colors.$gray800,
       },
     },
     {
@@ -49,12 +48,19 @@ const theme: any = {
         'boolean',
         'variable',
         'constant',
-        'property',
         'regex',
         'inserted',
       ],
       style: {
         color: colors.$red900,
+      },
+    },
+    {
+      types: [
+        'property',
+      ],
+      style: {
+        color: colors.$gold900,
       },
     },
     {
@@ -66,7 +72,7 @@ const theme: any = {
     {
       types: ['function', 'deleted', 'tag'],
       style: {
-        color: colors.$orange900,
+        color: colors.$bronze900,
       },
     },
     {
@@ -116,6 +122,7 @@ const CodeContainer = ({ live, children }: { live?: boolean; children: React.Rea
   <Box
     css={{
       p: '$4',
+      backgroundColor: 'var(--colors-gray100)',
       borderTopLeftRadius: live ? '0' : '$2',
       borderTopRightRadius: live ? '0' : '$2',
       borderBottomLeftRadius: '$2',

@@ -618,10 +618,10 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.22.tgz#219dfd89ae5b97a8801f015323ffa4b62f45718b"
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
 
-"@modulz/design-system@0.0.14":
-  version "0.0.14"
-  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.0.14.tgz#32abd48bb7ac9e3ee80de185de2fab7340d67e24"
-  integrity sha512-bT1JxJ6GTf4HypmTvsNw4RsMlw2nmDa45BpdKcUqFKKXvuqkxXuw0CxUK8B97JmKfFT6kYdTVyUCV/IgNyZ32g==
+"@modulz/design-system@0.0.15":
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.0.15.tgz#a7cd668117d0908ba12363eb207494d47934009f"
+  integrity sha512-eT/KVrWHpbnHlkZ7lmzfhrV9YbKXD7oP8GuXpR8WXKREi8QeCQYjFrwfXffxkIs7z2XgAYuazi43i0SsWmflMw==
   dependencies:
     "@interop-ui/react-accordion" "0.0.1-13"
     "@interop-ui/react-alert-dialog" "0.0.1-11"
@@ -638,10 +638,11 @@
     "@interop-ui/react-toggle-button" "0.0.1-13"
     "@interop-ui/react-tooltip" "0.0.1-12"
     "@interop-ui/react-utils" "0.0.1-12"
-    "@modulz/radix-icons" "^3.2.0"
+    "@modulz/radix-icons" "^3.3.0"
+    "@radix-ui/react-menu" "0.0.1"
     "@stitches/react" "0.0.3-canary.4"
 
-"@modulz/radix-icons@^3.2.0", "@modulz/radix-icons@^3.3.0":
+"@modulz/radix-icons@^3.3.0":
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/@modulz/radix-icons/-/radix-icons-3.3.0.tgz#4af89aa773d8a3951814a3500ccb1eeb2d2cd262"
   integrity sha512-Wf6YMSsTVmldg3TXP0IbW/a9/zi9vx4vrRmoaIPMsQtVtjtGwwaObJorRwoN+e4vXEeIeQPccdeRslzvkKxELg==

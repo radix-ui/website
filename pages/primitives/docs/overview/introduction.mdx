@@ -1,16 +1,10 @@
 ---
 title: Introduction
-description: An open-source component library for building accessible design systems.
+description: An open-source UI component library for building high-quality, accessible design systems and web apps.
 navRank: 1
 ---
 
-Radix Primitives is a low-level component library with a focus on accessibility, customization and developer experience.
-
-You can use these components as the base layer of your design system or just as a one off solution.
-
-With Radix Primitives, you'll be able to implement complex UI Components in minutes.
-
----
+Radix Primitives is a low-level UI component library with a focus on accessibility, customization and developer experience. You can use these components either as the base layer of your design system, or adopt them incrementally.
 
 ## Vision
 
@@ -20,187 +14,60 @@ combobox, dialog, dropdown, select, slider, and tooltip. These UI patterns are [
 However, the implementations provided to us by the web platform are inadequate. They're
 either non-existent, lacking in functionality, or cannot be customized sufficiently.
 
-So, developers are forced to build custom components—an incredibly difficult task. As a
+So, developers are forced to build custom components; an incredibly difficult task. As a
 result, most components on the web are inaccessible, non-performant, and lacking important
 features.
 
 Our goal is to create a well-funded, open-source component library that the community can
 use to build accessible design systems.
 
----
-
 ## Key Features
 
 ### Accessible
-
-Building accessible components is a highly demanding task. There are many things to take into consideration, from screen reader support to keyboard navigation.
-
-We ensure that all components adhere to the [WAI-ARA design patterns](https://www.w3.org/TR/wai-aria-practices-1.2) when possible. Giving you a piece of mind and allowing you to focus on the UI.
-
-Learn more in the [accessibility](./accessibility) page.
+Components adhere to the [WAI-ARA design patterns](https://www.w3.org/TR/wai-aria-practices-1.2) where possible. We handle many of the difficult implementation details related to accessibility, including aria and role attributes, focus management, and keyboard navigation. Learn more in our [accessibility](./accessibility) overview.
 
 ### Unstyled
 
-All components ship without any CSS, giving you have full control over its look and feel. They work with CSS-in-JS libraries, such as Stitches, or with CSS preprocessors such as Sass.
-
-Learn more in the [styling](./styling) page.
+Components ship with zero styles, giving you complete control over styling. Components are compatible with CSS-in-JS libraries, CSS preprocessors, and vanilla CSS. Learn more in our [styling](./styling) guide.
 
 ### Opened
 
-The Radix Primitives components were designed to be customized to suit your needs.
-
-You have access to every part a component depends on. For example, when building a [Tooltip](../components/tooltip), you can access the `Trigger`, `Content` and `Arrow` parts. Having access to all the granular parts of a component gives you a large amount of flexibility to wrap them, add your own event listeners, add your own props or your own refs.
-
-Some components also accept configurational props. For example, you can choose whether the [Popover](../components/popover) appears below or above its trigger.
+Radix Primitives are designed to be customized to suit your needs. Our open component architecture provides you granular access to each component part, so you can wrap them and add your own event listeners, props, or refs.
 
 ### Uncontrolled
 
-When applicable, components are uncontrolled by default but can optionally be controlled if needed. All the behavior wiring is handled internally, so you can get up and running as smoothly as possible.
+Where applicable, components are uncontrolled by default but can also be controlled, alternatively. All of the behavior wiring is handled internally, so you can get up and running as smoothly as possible, without needing to create any local states.
 
-For example, implementing a fully functioning [Dialog](../components/dialog) component doesn't require you to create any local states and update accordingly.
+### Developer experience
 
-### Pleasant
+One of our main goals is to provide the best possible developer experience. Radix Primitives provides a fully-typed API. All components share a similar API, creating a consitent and predictable experience. We've also implemented a truly polymorphic `as` prop, so the prop suggestions update.
 
-One of our main goals is to provide the best possible developer experience. Radix Primitives provides a fully-typed API. All components share a similar API, creating a consitent and predictable experience.
+### Incremental adoption
 
-Also, when using the `as` prop, the prop suggestions will update. Truly polymorphic.
-
-### Incremental
-
-Each primitive can be installed indivudually so you can incrementally adopt them over time.
+Each primitive can be installed individually so you can adopt them incrementally.
 
 ```bash
 npm install @radix-ui/react-dialog
 npm install @radix-ui/react-dropdown-menu
-npm install @radix-ui/react-dropdown-tooltip
+npm install @radix-ui/react-tooltip
 ```
 
-Please refer to each primitive's documentation for installation instructions.
+Primitives are also versioned independently, to further facilitate incremental adoption.
 
----
+## Community
 
-## A quick tutorial
+### Discord
+To get involved with the Radix community, ask questions, and share tips, join our Discord.
 
-Let's take a few minutes to install, style, and create a Popover Component, powered by the [Popover Primitive](../components/popover).
+[Join our Discord](https://discord.com/invite/7Xb99uG)
 
-### 1. Install
+### Twitter
+To receive updates on new primitives, announcements, blog posts, and general Radix tips, follow along on Twitter.
 
-```bash
-npm install @radix-ui/react-popover
-```
+[Follow Radix on Twitter](https://twitter.com/radix_ui)
 
-### 2. Expose
+### Github
+To file issues, request features, and contribute, check out our Github.
 
-Import and export the parts. Add styles where desired.
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](./styling).
-
-```jsx
-// Popover.tsx
-import { styled } from 'path-to/stitches.config';
-import * as PopoverPrimitive from '@radix-ui/react-popover';
-
-export const Popover = PopoverPrimitive.Root;
-export const PopoverTrigger = PopoverPrimitive.Trigger;
-export const PopoverContent = styled(PopoverPrimitive.Content, {...});
-```
-
-### 3. Use it
-
-```jsx
-// App.tsx
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-} from 'your-components/Popover';
-
-function App() {
-  return (
-    <Popover>
-      <PopoverTrigger>...</PopoverTrigger>
-      <PopoverContent>...</PopoverContent>
-    </Popover>
-  );
-}
-```
-
-### Demo
-
-```jsx live manual compact
-import { styled } from 'path-to/stitches.config';
-import * as PopoverPrimitive from '@radix-ui/react-popover';
-
-const Popover = PopoverPrimitive.Root;
-const PopoverTrigger = PopoverPrimitive.Trigger;
-const PopoverContent = styled(PopoverPrimitive.Content, {
-  backgroundColor: 'white',
-  borderRadius: 6,
-  boxShadow: '0px 10px 38px -10px hsla(206,22%,7%,.35)',
-  overflow: 'hidden',
-
-  '&:focus': {
-    outline: 'none',
-    boxShadow: '0 0 0 3px hsl(272,100%,96%)',
-  },
-});
-
-// Other components in your App
-const Box = styled('div', {});
-const Text = styled('div', {
-  fontSize: 16,
-});
-const Button = styled('button', {
-  appearance: 'none',
-  border: 'none',
-  backgroundColor: 'transparent',
-  border: '1px solid hsl(272,68%,70%)',
-  color: 'hsl(272,62%,44%)',
-  padding: '5px 15px',
-  borderRadius: 4,
-
-  '&:focus': {
-    outline: 'none',
-    boxShadow: '0 0 0 3px hsl(272,100%,96%)',
-  },
-});
-
-export default () => (
-  <Popover>
-    <PopoverTrigger as={Button}>Trigger</PopoverTrigger>
-    <PopoverContent sideOffset={3}>
-      <Box css={{ width: 320 }}>
-        <img src="https://images.unsplash.com/photo-1596420667316-cb2b4f67fc6d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80" />
-        <Box css={{ padding: 20 }}>
-          <Text css={{ fontWeight: 500 }}>Brian Lundquist</Text>
-          <Text
-            css={{
-              margin: '5px 0 15px',
-              color: 'slategray',
-              fontSize: 14,
-            }}
-          >
-            @bwl667
-          </Text>
-          <Button css={{ width: '100%' }}>Download</Button>
-        </Box>
-      </Box>
-    </PopoverContent>
-  </Popover>
-);
-```
-
-### Conclusion
-
-The steps above are generally what it takes to use a Radix Primitive in your application.
-
-These components are low-level enough giving you control to choose how you want to wrap them. You're free to introduce your own high-level API to better suit your team's and product's needs.
-
-In a few simple steps, we've implemented a fully accessible Popover component, without having to worry about many of its complexities.
-
-- Adheres to [WAI-ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal) design pattern.
-- Can be controlled or uncontrolled.
-- Customise side, alignment, offsets, collision handling.
-- Optionally render a pointing arrow.
-- Focus is fully managed and customizable.
-- Dismissing and layering behavior is highly customizable.
+[Github repo](https://github.com/radix-ui/primitives)  
+[Code of conduct](https://github.com/radix-ui/primitives/blob/main/CODE_OF_CONDUCT.md)
