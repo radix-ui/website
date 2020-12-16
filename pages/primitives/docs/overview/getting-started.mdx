@@ -1,0 +1,139 @@
+---
+title: Getting started
+description: An open-source UI component library for building high-quality, accessible design systems and web apps.
+navRank: 2
+---
+
+Radix Primitives is a low-level UI component library with a focus on accessibility, customization and developer experience. You can use these components either as the base layer of your design system, or adopt them incrementally.
+
+---
+
+## A quick tutorial
+
+Let's take a few minutes to install, style, and create a Popover Component, powered by the [Popover Primitive](../components/popover).
+
+### 1. Install
+
+```bash
+npm install @radix-ui/react-popover
+```
+
+### 2. Expose
+
+Import and export the parts. Add styles where desired.
+
+<Note>
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../overview/styling).
+
+</Note>
+
+```jsx
+// Popover.tsx
+import { styled } from 'path-to/stitches.config';
+import * as PopoverPrimitive from '@radix-ui/react-popover';
+
+export const Popover = PopoverPrimitive.Root;
+export const PopoverTrigger = PopoverPrimitive.Trigger;
+export const PopoverContent = styled(PopoverPrimitive.Content, {...});
+```
+
+### 3. Use it
+
+```jsx
+// App.tsx
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from 'your-components/Popover';
+
+function App() {
+  return (
+    <Popover>
+      <PopoverTrigger>...</PopoverTrigger>
+      <PopoverContent>...</PopoverContent>
+    </Popover>
+  );
+}
+```
+
+### Demo
+
+```jsx live manual compact
+import { styled } from 'path-to/stitches.config';
+import * as PopoverPrimitive from '@radix-ui/react-popover';
+
+const Popover = PopoverPrimitive.Root;
+const PopoverTrigger = PopoverPrimitive.Trigger;
+const PopoverContent = styled(PopoverPrimitive.Content, {
+  backgroundColor: 'white',
+  borderRadius: 6,
+  boxShadow: '0px 10px 38px -10px hsla(206,22%,7%,.35)',
+  overflow: 'hidden',
+
+  '&:focus': {
+    outline: 'none',
+    boxShadow: '0 0 0 3px hsl(272,100%,96%)',
+  },
+});
+
+// Other components in your App
+const Box = styled('div', {});
+const Text = styled('div', {
+  fontSize: 16,
+});
+const Button = styled('button', {
+  appearance: 'none',
+  border: 'none',
+  backgroundColor: 'transparent',
+  border: '1px solid hsl(272,68%,70%)',
+  color: 'hsl(272,62%,44%)',
+  padding: '5px 15px',
+  borderRadius: 4,
+
+  '&:focus': {
+    outline: 'none',
+    boxShadow: '0 0 0 3px hsl(272,100%,96%)',
+  },
+});
+
+export default () => (
+  <Popover>
+    <PopoverTrigger as={Button}>Trigger</PopoverTrigger>
+    <PopoverContent sideOffset={3}>
+      <Box css={{ width: 320 }}>
+        <img src="https://images.unsplash.com/photo-1596420667316-cb2b4f67fc6d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80" />
+        <Box css={{ padding: 20 }}>
+          <Text css={{ fontWeight: 500 }}>Brian Lundquist</Text>
+          <Text
+            css={{
+              margin: '5px 0 15px',
+              color: 'slategray',
+              fontSize: 14,
+            }}
+          >
+            @bwl667
+          </Text>
+          <Button css={{ width: '100%' }}>Download</Button>
+        </Box>
+      </Box>
+    </PopoverContent>
+  </Popover>
+);
+```
+
+## Summary
+
+The steps above are generally what it takes to use a Radix Primitive in your application.
+
+These components are low-level enough giving you control to choose how you want to wrap them. You're free to introduce your own high-level API to better suit your team's and product's needs.
+
+In a few simple steps, we've implemented a fully accessible Popover component, without having to worry about many of its complexities.
+
+- Adheres to [WAI-ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal) design pattern.
+- Can be controlled or uncontrolled.
+- Customise side, alignment, offsets, collision handling.
+- Optionally render a pointing arrow.
+- Focus is fully managed and customizable.
+- Dismissing and layering behavior is highly customizable.
