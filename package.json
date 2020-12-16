@@ -54,6 +54,7 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-live": "^2.2.3",
+    "react-remove-scroll": "^2.4.0",
     "reading-time": "^1.2.1",
     "rehype": "^11.0.0",
     "remark-autolink-headings": "^6.0.1",
