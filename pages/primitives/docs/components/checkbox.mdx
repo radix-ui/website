@@ -193,6 +193,76 @@ Renders when the checkbox is in a checked or indeterminate state. You can style 
   ]}
 />
 
+## Examples
+
+### Indeterminate
+
+```jsx live manual compact
+// import { styled } from 'path-to/stitches.config';
+import * as Checkbox from '@radix-ui/react-checkbox';
+import { DividerHorizontalIcon } from '@modulz/radix-icons';
+
+const StyledCheckbox = styled(Checkbox.Root, {
+  appearance: 'none',
+  backgroundColor: 'transparent',
+  border: 'none',
+  padding: 0,
+  boxShadow: 'inset 0 0 0 1px gainsboro',
+  width: 15,
+  height: 15,
+  borderRadius: 2,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginBottom: 10,
+
+  '&:focus': {
+    outline: 'none',
+    boxShadow: 'inset 0 0 0 1px dodgerblue, 0 0 0 1px dodgerblue',
+  },
+});
+
+function Indeterminate() {
+  const [checked, setChecked] = React.useState('indeterminate');
+
+  return (
+    <>
+      <StyledCheckbox
+        checked={checked}
+        onCheckedChange={(event) => setChecked(event.target.checked)}
+      >
+        <Checkbox.Indicator
+          as={
+            checked === 'indeterminate'
+              ? DividerHorizontalIcon
+              : CheckIcon
+          }
+        />
+      </StyledCheckbox>
+
+      <button
+        type="button"
+        onClick={() =>
+          setChecked((prevIsChecked) =>
+            prevIsChecked === 'indeterminate'
+              ? false
+              : 'indeterminate'
+          )
+        }
+      >
+        Toggle indeterminate
+      </button>
+    </>
+  );
+}
+
+export default () => (
+  <>
+    <Indeterminate />
+  </>
+);
+```
+
 ## Accessibility
 
 Adheres to the [tri-state Checkbox WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#checkbox).
