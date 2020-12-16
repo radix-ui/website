@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 import { RemoveScroll } from 'react-remove-scroll';
 import { useRouter } from 'next/router';
 import useDarkMode from 'use-dark-mode';
-import { Box, darkThemeClass, theme as DSTheme, styled } from '@modulz/design-system';
+import { Box, darkThemeClass } from '@modulz/design-system';
 import { Footer } from '../components/Footer';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { DocsPage } from '../components/DocsPage';
