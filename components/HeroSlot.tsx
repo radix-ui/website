@@ -10,6 +10,9 @@ export function HeroSlot({ children }) {
   return typeof document !== 'undefined' ? (
     <Portal containerRef={heroSlotRef}>
       <Box
+        // In case any semantic content sneaks through in a hero, let's hide it
+        // from the a11y tree since this is a presentational component.
+        role="presentation"
         css={{
           marginBottom: 45,
           marginLeft: -25,
