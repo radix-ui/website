@@ -964,7 +964,7 @@ const StyledArrow = styled(DropdownMenu.Arrow, {
   fill: 'white',
 });
 
-function DropdownMenuWithCheckbox() {
+export default () => {
   const [checked, setChecked] = React.useState(true);
 
   return (
@@ -986,13 +986,7 @@ function DropdownMenuWithCheckbox() {
       </StyledContent>
     </DropdownMenu.Root>
   );
-}
-
-export default () => (
-  <>
-    <DropdownMenuWithCheckbox />
-  </>
-);
+};
 ```
 
 ## Accessibility

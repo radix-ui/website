@@ -222,7 +222,7 @@ const StyledCheckbox = styled(Checkbox.Root, {
   },
 });
 
-function Indeterminate() {
+export default () => {
   const [checked, setChecked] = React.useState('indeterminate');
 
   return (
@@ -251,13 +251,7 @@ function Indeterminate() {
       </button>
     </>
   );
-}
-
-export default () => (
-  <>
-    <Indeterminate />
-  </>
-);
+};
 ```
 
 ## Accessibility

@@ -190,10 +190,12 @@ export function CodeBlock({
       const code = rawCode
         // remove imports
         .replace(/((^|)import[^;]+[; ]+)+/gi, '')
-        // remove conts
-        // .replace(/((^|\n)const[^;]+[; ]+)+/gi, '\n')
-        // replace `render` with export
-        .replace('export default () => ', 'render');
+        // replace `export default => {*};` with `render(() => {*});`
+        .replace(/export default \(\) => {((.|\n)*)};/, 'render(() => {$1});')
+        // replace `export default => (*);` with `render(*);`
+        .replace(/export default \(\) => \(((.|\n)*)\);/, 'render($1);')
+        // replace `export default => *;` with `render(*);`
+        .replace(/export default \(\) => ((.|\n)*);/, 'render($1);');
 
       return addFragment ? `<>${code}</>` : code;
     },
