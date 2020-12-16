@@ -48,12 +48,19 @@ const theme: any = {
         'boolean',
         'variable',
         'constant',
-        'property',
         'regex',
         'inserted',
       ],
       style: {
         color: colors.$red900,
+      },
+    },
+    {
+      types: [
+        'property',
+      ],
+      style: {
+        color: colors.$gold900,
       },
     },
     {
@@ -77,7 +84,7 @@ const theme: any = {
     {
       types: ['tag', 'selector', 'keyword'],
       style: {
-        color: colors.$turquoise900,
+        color: colors.$blue900,
       },
     },
   ],
