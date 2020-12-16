@@ -1,36 +1,30 @@
 ---
 title: Styling
-description: Unstyled and unopinionated by default.
+description: Radix Primitives are unstyled—and compatible with any styling solution—giving you complete control over styling. 
 navRank: 2
 ---
 
-Radix Primitives are unstyled, giving you have full control over its look and feel. They work with CSS-in-JS libraries, with CSS preprocessors and even vanilla CSS.
-
-Regardless of your preferred styling solution, this page will cover how to style them.
-
----
-
-## Overview
+## Styling overview
 
 ### Functional styles
 
-You're in charge of every single style that gets applies. This also includes functional styles. For example, by default a [Dialog Overlay](../components/dialog) won't be covering the entire viewport.
+You are in control of all aspects of styling, including functional styles. For example—by default—a [Dialog Overlay](../components/dialog) won't cover the entire viewport. You're responsible for adding those styles, plus any presentation styles.
 
 ### Data attributes
 
-All components have a `data-radix-*` attribute, matching its name. For example, the [Separator](../components/separator) component will include the `data-radix-separator` attribute.
+Each component has a `data-radix-*` attribute, matching its name. For example, the [Separator](../components/separator) component includes a `data-radix-separator` attribute.
 
-When components are stateful, their state will be exposed in a `data-state` attribute. For example, when an [Accordion Item](../components/dialog) is opened, it'll include the `data-state="open"` attribute.
+When components are stateful, their state will be exposed in a `data-state` attribute. For example, when an [Accordion Item](../components/dialog) is opened, it includes a `data-state="open"` attribute.
 
 ### Classes
 
 All components accept a `className` prop. This class will be passed through to the DOM element. You can use it in CSS as expected.
 
-## CSS
+## Styling with CSS
 
 ### Styling a part
 
-You can style a component part by targering its `data-radix-*` attribute.
+You can style a component part by targeting its `data-radix-*` attribute.
 
 ```css
 [data-radix-accordion-item] {
@@ -44,7 +38,7 @@ You can style a component part by targering its `data-radix-*` attribute.
 
 ### Styling a state
 
-You can target the `data-state` attribute to style states.
+You can style a component state by targeting its `data-state` attribute.
 
 ```css
 [data-radix-accordion-item] {
@@ -56,13 +50,13 @@ You can target the `data-state` attribute to style states.
 }
 ```
 
-## CSS-in-JS
+## Styling with CSS-in-JS
+
+The examples below are using [Stitches](https://stitches.dev), but you an use any CSS-in-JS library of your choice.
 
 ### Styling a part
 
-You can style a component part by wrapping it in a `styled` function (or similar).
-
-The examples below are using [Stitches](https://stitches.dev), but you an use any CSS-in-JS library of your choice.
+You can style a component part by wrapping it in a `styled` function (or equivalent).
 
 ```jsx
 import { styled } from 'path-to/stitches.config';
@@ -79,7 +73,7 @@ const StyledPanel = styled(Accordion.Panel, {
 
 ### Styling a state
 
-You can target the `data-state` attribute to style states.
+You can style a component state by targeting its `data-state` attribute.
 
 ```jsx
 import { styled } from 'path-to/stitches.config';
@@ -162,9 +156,11 @@ export default () => (
 );
 ```
 
-## Conclusion
+---
 
-Radix Primitives were designed to encapsulate accessibility concerns and other complex functionalities, while ensuring consumers have full control over the look and feel.
+## Summary
+
+Radix Primitives were designed to encapsulate accessibility concerns and other complex functionalities, while ensuring you retain complete control over styling.
 
 To ensure compatibility with global CSS solutions, components include a `data-radix-*` attribute. Stateful components include a `data-state` attribute.
 
