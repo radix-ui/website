@@ -1,28 +1,41 @@
-## Radix Website
+<a href="https://radix-ui.com" >
+  <img alt="Radix UI hero image" src="https://repository-images.githubusercontent.com/316012819/b7b19180-3f85-11eb-884c-1e19ce2f493a">
+</a>
 
-This is the source code of the [Radix documentation](https://radix-ui.com).
+# Radix UI website and documentation
+
+## Everything you need to build a design system, website or web app.
+
+Components, colors, icons, templates, and an extensive design system. Free and open-source.
 
 ---
+
+## Documentation
+
+For full documentation, visit [radix-ui.com](https://radix-ui.com).
+
+## Contributing
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
-First, run the development server:
+Run the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Authors
 
-## Learn More
+- Pedro Duarte ([@peduarte](https://twitter.com/peduarte)) - [Modulz](https://modulz.app)
+- Benoit Grelard ([@benoitgrelard](https://twitter.com/benoitgrelard)) - [Modulz](https://modulz.app)
+- Jenna Smith ([@jjenzz](https://twitter.com/jjenzz)) - [Modulz](https://modulz.app)
+- Chance Stricland ([@chancethedev](https://twitter.com/chancethedev)) - [Modulz](https://modulz.app)
+- Colm Tuite ([@colmtuite](https://twitter.com/colmtuite)) - [Modulz](https://modulz.app)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Copyright © 2020-present [Modulz](https://modulz.app).
