@@ -151,7 +151,7 @@ const TabsContainer = () => {
             animation: `${tab1} 6000ms infinite`,
           }}
         >
-          <Box css={{ backgroundColor: 'hsl(206,10%,80%)', height: 4, width: '100%' }}></Box>
+          <Box css={{ backgroundColor: 'hsl(206,10%,70%)', height: 4, width: '100%' }}></Box>
         </Box>
         <Box
           css={{
@@ -167,7 +167,7 @@ const TabsContainer = () => {
             animation: `${tab2} 6000ms infinite`,
           }}
         >
-          <Box css={{ backgroundColor: 'hsl(206,10%,80%)', height: 4, width: '100%' }}></Box>
+          <Box css={{ backgroundColor: 'hsl(206,10%,70%)', height: 4, width: '100%' }}></Box>
         </Box>
       </Flex>
       <Box
@@ -180,13 +180,13 @@ const TabsContainer = () => {
           left: '50%',
         }}
       >
-        <Box css={{ backgroundColor: 'hsl(206,10%,80%)', height: 12, width: '35%', mb: 12 }}></Box>
-        <Box css={{ backgroundColor: 'hsl(206,10%,80%)', height: 4, width: '100%', mb: 12 }}></Box>
-        <Box css={{ backgroundColor: 'hsl(206,10%,80%)', height: 4, width: '50%', mb: 12 }}></Box>
+        <Box css={{ backgroundColor: 'hsl(206,10%,70%)', height: 12, width: '35%', mb: 12 }}></Box>
+        <Box css={{ backgroundColor: 'hsl(206,10%,70%)', height: 4, width: '100%', mb: 12 }}></Box>
+        <Box css={{ backgroundColor: 'hsl(206,10%,70%)', height: 4, width: '50%', mb: 12 }}></Box>
         <Box
           css={{
             animation: `${text} 6000ms infinite`,
-            backgroundColor: 'hsl(206,10%,80%)',
+            backgroundColor: 'hsl(206,10%,70%)',
             height: 4,
             width: '75%',
             mb: 12,
@@ -195,7 +195,7 @@ const TabsContainer = () => {
         <Box
           css={{
             animation: `${text} 6000ms infinite`,
-            backgroundColor: 'hsl(206,10%,80%)',
+            backgroundColor: 'hsl(206,10%,70%)',
             height: 4,
             width: '50%',
           }}

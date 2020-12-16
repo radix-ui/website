@@ -128,7 +128,7 @@ const AlertDialogContainer = () => {
           css={{
             position: 'relative',
             zIndex: '1',
-            backgroundColor: '$gray700',
+            backgroundColor: 'hsl(206,10%,70%)',
             height: 12,
             width: '45%',
             mb: 12,
@@ -138,7 +138,7 @@ const AlertDialogContainer = () => {
           css={{
             position: 'relative',
             zIndex: '1',
-            backgroundColor: '$gray700',
+            backgroundColor: 'hsl(206,10%,70%)',
             height: 4,
             width: '60%',
             mb: 12,
@@ -148,7 +148,7 @@ const AlertDialogContainer = () => {
           css={{
             position: 'relative',
             zIndex: '1',
-            backgroundColor: '$gray700',
+            backgroundColor: 'hsl(206,10%,70%)',
             height: 4,
             width: '30%',
             mb: 12,
@@ -162,7 +162,7 @@ const AlertDialogContainer = () => {
         >
           <Box
             css={{
-              backgroundColor: '$gray700',
+              backgroundColor: 'hsl(206,10%,70%)',
               borderRadius: '5px',
               height: 25,
               width: 65,

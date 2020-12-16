@@ -94,7 +94,7 @@ const TooltipContainer = () => {
           mr: 2,
         }}
       >
-        <Box css={{ backgroundColor: 'hsl(206,10%,80%)', height: 4, width: '100%' }}></Box>
+        <Box css={{ backgroundColor: 'hsl(206,10%,70%)', height: 4, width: '100%' }}></Box>
         <Box
           css={{
             position: 'absolute',
@@ -125,15 +125,15 @@ const TooltipContainer = () => {
             }}
           ></Box>
           <Flex css={{ width: '100%' }}>
-            <Box css={{ backgroundColor: 'hsla(0,100%,100%,.9)', height: 2, fs: 0, fg: 2 }}></Box>
+            <Box css={{ backgroundColor: 'hsl(206,10%,80%)', height: 2, fs: 0, fg: 2 }}></Box>
             <Box
-              css={{ backgroundColor: 'hsla(0,100%,100%,.9)', height: 2, fs: 0, fg: 3, ml: '$1' }}
+              css={{ backgroundColor: 'hsl(206,10%,80%)', height: 2, fs: 0, fg: 3, ml: '$1' }}
             ></Box>
             <Box
-              css={{ backgroundColor: 'hsla(0,100%,100%,.9)', height: 2, fs: 0, fg: 1, ml: '$1' }}
+              css={{ backgroundColor: 'hsl(206,10%,80%)', height: 2, fs: 0, fg: 1, ml: '$1' }}
             ></Box>
             <Box
-              css={{ backgroundColor: 'hsla(0,100%,100%,.9)', height: 2, fs: 0, fg: 4, ml: '$1' }}
+              css={{ backgroundColor: 'hsl(206,10%,80%)', height: 2, fs: 0, fg: 4, ml: '$1' }}
             ></Box>
           </Flex>
         </Box>
