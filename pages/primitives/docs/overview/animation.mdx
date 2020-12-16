@@ -59,7 +59,7 @@ function Example() {
     config: config.stiff,
   });
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger>Open Dialog</Dialog.Trigger>
       {transitions.map(({ item, props: styles }) =>
         item ? (
@@ -73,19 +73,15 @@ function Example() {
             <Dialog.Content
               forceMount
               as={animated.div}
-              style={{
-                transform: styles.y.interpolate(
-                  (value) => `translate3d(0px, ${value}px, 0px)`
-                ),
-              }}
+              style={{ opacity: styles.opacity }}
             >
               <h1>Hello from inside the Dialog!</h1>
               <Dialog.Close>close</Dialog.Close>
-            </AnimatedDialogContent>
+            </Dialog.Content>
           </React.Fragment>
         ) : null
       )}
-    </Dialog>
+    </Dialog.Root>
   );
 }
 ```
