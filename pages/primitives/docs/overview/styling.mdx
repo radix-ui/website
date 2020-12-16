@@ -94,22 +94,22 @@ Here's an example of how you can style the [Accordion](../components/accordion) 
 
 ```jsx live manual compact
 import { styled } from 'path-to/stitches.config';
-import * as AccordionPrimitive from '@radix-ui/react-accordion';
+import * as Accordion from '@radix-ui/react-accordion';
 
-const Accordion = styled(AccordionPrimitive.Root, {
+const StyledAccordion = styled(Accordion.Root, {
   borderTop: '1px solid hsl(272,68%,70%)',
 });
 
-const Item = styled(AccordionPrimitive.Item, {
+const StyledItem = styled(Accordion.Item, {
   borderBottom: '1px solid hsl(272,68%,70%)',
 });
 
-const Header = styled(AccordionPrimitive.Header, {
+const StyledHeader = styled(Accordion.Header, {
   margin: 0,
   display: 'flex',
 });
 
-const Button = styled(AccordionPrimitive.Button, {
+const StyledButton = styled(Accordion.Button, {
   appearance: 'none',
   border: 'none',
   backgroundColor: 'transparent',
@@ -125,34 +125,40 @@ const Button = styled(AccordionPrimitive.Button, {
   },
 });
 
-const Panel = styled(AccordionPrimitive.Panel, {
+const StyledPanel = styled(Accordion.Panel, {
   padding: '10px 15px',
   color: 'hsl(272,62%,44%)',
 });
 
 export default () => (
-  <Accordion>
-    <Item value="item-1">
-      <Header>
-        <Button>Item 1</Button>
-      </Header>
-      <Panel>Here goes the content for the accordion item 1.</Panel>
-    </Item>
+  <StyledAccordion>
+    <StyledItem value="item-1">
+      <StyledHeader>
+        <StyledButton>Item 1</StyledButton>
+      </StyledHeader>
+      <StyledPanel>
+        Here goes the content for the accordion item 1.
+      </StyledPanel>
+    </StyledItem>
 
-    <Item value="item-2">
-      <Header>
-        <Button>Item 2</Button>
-      </Header>
-      <Panel>Here goes the content for the accordion item 2.</Panel>
-    </Item>
+    <StyledItem value="item-2">
+      <StyledHeader>
+        <StyledButton>Item 2</StyledButton>
+      </StyledHeader>
+      <StyledPanel>
+        Here goes the content for the accordion item 2.
+      </StyledPanel>
+    </StyledItem>
 
-    <Item value="item-3">
-      <Header>
-        <Button>Item 3</Button>
-      </Header>
-      <Panel>Here goes the content for the accordion item 3.</Panel>
-    </Item>
-  </Accordion>
+    <StyledItem value="item-3">
+      <StyledHeader>
+        <StyledButton>Item 3</StyledButton>
+      </StyledHeader>
+      <StyledPanel>
+        Here goes the content for the accordion item 3.
+      </StyledPanel>
+    </StyledItem>
+  </StyledAccordion>
 );
 ```
 

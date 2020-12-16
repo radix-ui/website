@@ -102,11 +102,11 @@ Import and export the parts. Add styles where desired.
 ```jsx
 // Popover.tsx
 import { styled } from 'path-to/stitches.config';
-import * as PopoverPrimitive from '@radix-ui/react-popover';
+import * as Popover from '@radix-ui/react-popover';
 
-export const Popover = PopoverPrimitive.Root;
-export const PopoverTrigger = PopoverPrimitive.Trigger;
-export const PopoverContent = styled(PopoverPrimitive.Content, {...});
+export const Popover = Popover.Root;
+export const PopoverTrigger = Popover.Trigger;
+export const PopoverContent = styled(Popover.Content, {...});
 ```
 
 ### 3. Use it

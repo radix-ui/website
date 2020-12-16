@@ -12,6 +12,7 @@ export * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 export * as Label from '@radix-ui/react-label';
 export { useLabelContext } from '@radix-ui/react-label';
 export * as Popover from '@radix-ui/react-popover';
+export * as PopoverPrimitive from '@radix-ui/react-popover';
 export * as Progress from '@radix-ui/react-progress';
 export * as RadioGroup from '@radix-ui/react-radio-group';
 export * as ScrollArea from '@radix-ui/react-scroll-area';

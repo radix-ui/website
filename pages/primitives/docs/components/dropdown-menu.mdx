@@ -184,7 +184,8 @@ The button that toggles the dropdown menu. By default, the `DropdownMenu.Content
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'button',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -201,7 +202,8 @@ The component that pops out when the dropdown menu is open.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -377,7 +379,8 @@ An optional arrow element to render alongside the dropdown menu. This can be use
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'svg',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the entire SVG and all of its paths.',
@@ -417,7 +420,8 @@ The component that contains the dropdown menu items.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -470,7 +474,8 @@ Used to group multiple `DropdownMenu.Item`s.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -487,7 +492,8 @@ Used to render a label. It won't be focusable using arrow keys.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -504,7 +510,8 @@ An item that can be controlled and rendered like a checkbox.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -577,7 +584,8 @@ Used to group multiple `DropdownMenu.RadioItem`s.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -605,7 +613,8 @@ An item that can be controlled and rendered like a radio.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -664,7 +673,8 @@ Renders when the parent `DropdownMenu.CheckboxItem` or `DropdownMenu.RadioItem` 
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'span',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
@@ -691,13 +701,287 @@ Used to visually separate items in the dropdown menu.
     {
       name: 'as',
       required: false,
-      type: 'React.ElementType',
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
   ]}
 />
+
+## Styling
+
+### Origin-aware animations
+
+We expose a CSS custom property `--radix-dropdown-menu-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
+
+```jsx
+const scaleIn = css.keyframes({
+  '0%': { opacity: 0, transform: 'scale(0)' },
+  '100%': { opacity: 1, transform: 'scale(1)' },
+});
+
+const StyledContent = styled(DropdownMenu.Content, {
+  transformOrigin:
+    'var(--radix-dropdown-menu-content-transform-origin)',
+  animation: `${scaleIn} 0.5s ease-out`,
+});
+```
+
+### Collision-aware animations
+
+We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
+
+```jsx
+const slideDown = css.keyframes({
+  '0%': { opacity: 0, transform: 'translateY(-10px)' },
+  '100%': { opacity: 1, transform: 'translateY(0)' },
+});
+
+const slideUp = css.keyframes({
+  '0%': { opacity: 0, transform: 'translateY(10px)' },
+  '100%': { opacity: 1, transform: 'translateY(0)' },
+});
+
+const StyledContent = styled(DropdownMenu.Content, {
+  '&[data-side="top"]': { animationName: slideUp },
+  '&[data-side="bottom"]': { animationName: slideDown },
+  animationDuration: '0.6s',
+  animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+});
+```
+
+## Examples
+
+### With disabled items
+
+You can add special styles to disabled items via the `data-disabled` attribute.
+
+```jsx live manual compact
+// import { styled } from 'path-to/stitches.config';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+
+const StyledContent = styled(DropdownMenu.Content, {
+  minWidth: 130,
+  backgroundColor: 'white',
+  borderRadius: 6,
+  padding: 5,
+  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
+});
+
+const StyledItem = styled(DropdownMenu.Item, {
+  fontSize: 13,
+  padding: '5px 10px',
+  borderRadius: 3,
+  cursor: 'default',
+
+  '&[data-disabled]': {
+    color: 'gainsboro',
+  },
+
+  '&:focus': {
+    outline: 'none',
+    backgroundColor: 'dodgerblue',
+    color: 'white',
+  },
+});
+
+const StyledArrow = styled(DropdownMenu.Arrow, {
+  fill: 'white',
+});
+
+export default () => (
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
+    <StyledContent>
+      <StyledItem>Undo</StyledItem>
+      <StyledItem disabled>Redo</StyledItem>
+      <StyledItem>Cut</StyledItem>
+      <StyledItem disabled>Copy</StyledItem>
+      <StyledItem>Paste</StyledItem>
+      <StyledArrow />
+    </StyledContent>
+  </DropdownMenu.Root>
+);
+```
+
+### With separators
+
+Use the `Separator` part to add a separator between items.
+
+```jsx live manual compact
+// import { styled } from 'path-to/stitches.config';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+
+const StyledContent = styled(DropdownMenu.Content, {
+  minWidth: 130,
+  backgroundColor: 'white',
+  borderRadius: 6,
+  padding: 5,
+  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
+});
+
+const StyledItem = styled(DropdownMenu.Item, {
+  fontSize: 13,
+  padding: '5px 10px',
+  borderRadius: 3,
+  cursor: 'default',
+
+  '&:focus': {
+    outline: 'none',
+    backgroundColor: 'dodgerblue',
+    color: 'white',
+  },
+});
+
+const StyledSeparator = styled(DropdownMenu.Separator, {
+  height: 1,
+  backgroundColor: 'gainsboro',
+  margin: 5,
+});
+
+const StyledArrow = styled(DropdownMenu.Arrow, {
+  fill: 'white',
+});
+
+export default () => (
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
+    <StyledContent>
+      <StyledItem>Undo</StyledItem>
+      <StyledItem>Redo</StyledItem>
+      <StyledSeparator />
+      <StyledItem>Cut</StyledItem>
+      <StyledItem>Copy</StyledItem>
+      <StyledItem>Paste</StyledItem>
+      <StyledArrow />
+    </StyledContent>
+  </DropdownMenu.Root>
+);
+```
+
+### With labels
+
+Use the `Label` part to help label a section.
+
+```jsx live manual compact
+// import { styled } from 'path-to/stitches.config';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+
+const StyledContent = styled(DropdownMenu.Content, {
+  minWidth: 130,
+  backgroundColor: 'white',
+  borderRadius: 6,
+  padding: 5,
+  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
+});
+
+const StyledItem = styled(DropdownMenu.Item, {
+  fontSize: 13,
+  padding: '5px 10px',
+  borderRadius: 3,
+  cursor: 'default',
+
+  '&:focus': {
+    outline: 'none',
+    backgroundColor: 'dodgerblue',
+    color: 'white',
+  },
+});
+
+const StyledLabel = styled(DropdownMenu.Label, {
+  color: 'slategray',
+  fontSize: 13,
+  padding: '5px 10px',
+  cursor: 'default',
+});
+
+const StyledArrow = styled(DropdownMenu.Arrow, {
+  fill: 'white',
+});
+
+export default () => (
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
+    <StyledContent>
+      <StyledLabel>Actions</StyledLabel>
+      <StyledItem>Undo</StyledItem>
+      <StyledItem>Redo</StyledItem>
+      <StyledItem>Cut</StyledItem>
+      <StyledItem>Copy</StyledItem>
+      <StyledItem>Paste</StyledItem>
+      <StyledArrow />
+    </StyledContent>
+  </DropdownMenu.Root>
+);
+```
+
+### With checkbox items
+
+Use the `CheckboxItem` part to add an item that can be checked.
+
+```jsx live manual compact
+// import { styled } from 'path-to/stitches.config';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import { CheckIcon } from '@modulz/radix-icons';
+
+const StyledContent = styled(DropdownMenu.Content, {
+  minWidth: 130,
+  backgroundColor: 'white',
+  borderRadius: 6,
+  padding: 5,
+  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
+});
+
+const itemStyles = {
+  fontSize: 13,
+  padding: '5px 10px 5px 5px',
+  borderRadius: 3,
+  cursor: 'default',
+
+  '&:focus': {
+    outline: 'none',
+    backgroundColor: 'dodgerblue',
+    color: 'white',
+  },
+};
+
+const StyledItem = styled(DropdownMenu.Item, {
+  ...itemStyles,
+  paddingLeft: 25,
+});
+
+const StyledCheckboxItem = styled(DropdownMenu.CheckboxItem, {
+  ...itemStyles,
+  display: 'flex',
+});
+
+const StyledItemIndicator = styled(DropdownMenu.ItemIndicator, {
+  marginRight: 5,
+});
+
+const StyledArrow = styled(DropdownMenu.Arrow, {
+  fill: 'white',
+});
+
+export default () => (
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
+    <StyledContent>
+      <StyledItem>About Radix UI</StyledItem>
+      <StyledItem>Check for updates</StyledItem>
+      <StyledCheckboxItem checked onCheckedChange={alert}>
+        <StyledItemIndicator>
+          <CheckIcon />
+        </StyledItemIndicator>
+        Show hidden files
+      </StyledCheckboxItem>
+      <StyledArrow />
+    </StyledContent>
+  </DropdownMenu.Root>
+);
+```
 
 ## Accessibility
 
