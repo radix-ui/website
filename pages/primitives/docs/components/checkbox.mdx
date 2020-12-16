@@ -231,13 +231,10 @@ function Indeterminate() {
         checked={checked}
         onCheckedChange={(event) => setChecked(event.target.checked)}
       >
-        <Checkbox.Indicator
-          as={
-            checked === 'indeterminate'
-              ? DividerHorizontalIcon
-              : CheckIcon
-          }
-        />
+        <Checkbox.Indicator>
+          {checked === 'indeterminate' && <DividerHorizontalIcon />}
+          {checked === true && <CheckIcon />}
+        </Checkbox.Indicator>
       </StyledCheckbox>
 
       <button
