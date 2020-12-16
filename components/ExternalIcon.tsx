@@ -1,16 +1,15 @@
-import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
+import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
 import * as React from 'react';
 
 export function ExternalIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
-    <React.Fragment>
+    <AccessibleIcon label="(Opens in a new window)">
       <svg
         width="15"
         height="15"
         viewBox="0 0 15 15"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        aria-hidden
         {...props}
       >
         <path
@@ -20,7 +19,6 @@ export function ExternalIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
           fill="currentColor"
         />
       </svg>
-      <VisuallyHidden>(Opens in a new window)</VisuallyHidden>
-    </React.Fragment>
+    </AccessibleIcon>
   );
 }

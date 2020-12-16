@@ -36,7 +36,7 @@ const LinkHeading = ({
     >
       {children}
       <DS.Box as="span" css={{ ml: '$2', color: '$gray900' }}>
-        <Link2Icon />
+        <Link2Icon aria-hidden />
       </DS.Box>
     </DS.Box>
   </DS.Box>

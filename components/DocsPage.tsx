@@ -8,7 +8,7 @@ import { RadixLogo } from './RadixLogo';
 import { PrimitivesNav } from './PrimitivesNav';
 import { DesignSystemNav } from './DesignSystemNav';
 import { useProductType } from '../utils/useProductType';
-import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
+import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
 
 export function DocsPage({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -65,8 +65,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
                   ':focus': { boxShadow: 'none' },
                 }}
               >
-                <VisuallyHidden>Radix Documentation (Alpha)</VisuallyHidden>
-                <RadixLogo aria-hidden />
+                <RadixLogo label="Radix Homepage" />
               </Box>
             </NextLink>
             <Badge size="2" variant="yellow" css={{ ml: '$2' }}>
@@ -79,8 +78,9 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
                 state={isOpen ? 'active' : undefined}
                 aria-pressed={isOpen}
               >
-                <VisuallyHidden>Toggle Site Navigation Menu</VisuallyHidden>
-                <HamburgerMenuIcon />
+                <AccessibleIcon label="Toggle Site Navigation Menu">
+                  <HamburgerMenuIcon />
+                </AccessibleIcon>
               </IconButton>
             </Box>
           </Flex>
