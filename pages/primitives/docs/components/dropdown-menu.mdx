@@ -103,9 +103,13 @@ export default () => (
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
     <StyledContent>
-      <StyledItem>Cut</StyledItem>
-      <StyledItem>Copy</StyledItem>
-      <StyledItem>Paste</StyledItem>
+      <StyledItem onSelect={() => console.log('cut')}>Cut</StyledItem>
+      <StyledItem onSelect={() => console.log('copy')}>
+        Copy
+      </StyledItem>
+      <StyledItem onSelect={() => console.log('paste')}>
+        Paste
+      </StyledItem>
       <StyledArrow />
     </StyledContent>
   </DropdownMenu.Root>
@@ -793,9 +797,15 @@ export default () => (
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
     <StyledContent>
-      <StyledItem disabled>Cut</StyledItem>
-      <StyledItem>Copy</StyledItem>
-      <StyledItem>Paste</StyledItem>
+      <StyledItem disabled onSelect={() => console.log('cut')}>
+        Cut
+      </StyledItem>
+      <StyledItem onSelect={() => console.log('copy')}>
+        Copy
+      </StyledItem>
+      <StyledItem onSelect={() => console.log('paste')}>
+        Paste
+      </StyledItem>
       <StyledArrow />
     </StyledContent>
   </DropdownMenu.Root>
@@ -845,12 +855,20 @@ export default () => (
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
     <StyledContent>
-      <StyledItem>Undo</StyledItem>
-      <StyledItem>Redo</StyledItem>
+      <StyledItem onSelect={() => console.log('undo')}>
+        Undo
+      </StyledItem>
+      <StyledItem onSelect={() => console.log('redo')}>
+        Redo
+      </StyledItem>
       <StyledSeparator />
-      <StyledItem>Cut</StyledItem>
-      <StyledItem>Copy</StyledItem>
-      <StyledItem>Paste</StyledItem>
+      <StyledItem onSelect={() => console.log('cut')}>Cut</StyledItem>
+      <StyledItem onSelect={() => console.log('copy')}>
+        Copy
+      </StyledItem>
+      <StyledItem onSelect={() => console.log('paste')}>
+        Paste
+      </StyledItem>
       <StyledArrow />
     </StyledContent>
   </DropdownMenu.Root>
@@ -908,13 +926,23 @@ export default () => (
     <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
     <StyledContent>
       <StyledLabel>Recently Closed</StyledLabel>
-      <StyledItem>Modulz</StyledItem>
-      <StyledItem>Radix-ui</StyledItem>
-      <StyledItem>Stitches</StyledItem>
+      <StyledItem onSelect={() => console.log('modulz')}>
+        Modulz
+      </StyledItem>
+      <StyledItem onSelect={() => console.log('radix-ui')}>
+        Radix-ui
+      </StyledItem>
+      <StyledItem onSelect={() => console.log('stitches')}>
+        Stitches
+      </StyledItem>
       <StyledSeparator />
       <StyledLabel>Recently Visited</StyledLabel>
-      <StyledItem>GitHub</StyledItem>
-      <StyledItem>Modulz</StyledItem>
+      <StyledItem onSelect={() => console.log('github')}>
+        GitHub
+      </StyledItem>
+      <StyledItem onSelect={() => console.log('modulz')}>
+        Modulz
+      </StyledItem>
       <StyledArrow />
     </StyledContent>
   </DropdownMenu.Root>
@@ -981,8 +1009,12 @@ export default () => {
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
       <StyledContent>
-        <StyledItem>About Radix UI</StyledItem>
-        <StyledItem>Check for updates</StyledItem>
+        <StyledItem onSelect={() => console.log('radix-ui')}>
+          About Radix UI
+        </StyledItem>
+        <StyledItem onSelect={() => console.log('check-for-updates')}>
+          Check for updates
+        </StyledItem>
         <StyledSeparator />
         <StyledCheckboxItem
           checked={checked}
@@ -1122,15 +1154,15 @@ export default () => (
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
     <StyledContent>
-      <StyledItem>
+      <StyledItem onSelect={() => console.log('adolfo-hess')}>
         <Image src="https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=facearea&facepad=3&w=24&h=24&dpr=2&q=80" />
         Adolfo Hess
       </StyledItem>
-      <StyledItem>
+      <StyledItem onSelect={() => console.log('miyah-myles')}>
         <Image src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=facearea&facepad=3&w=24&h=24&dpr=2&q=80" />
         Miyah Myles
       </StyledItem>
-      <StyledItem>
+      <StyledItem onSelect={() => console.log('sylvia-reynolds')}>
         <Image src="https://images.unsplash.com/photo-1508186225823-0963cf9ab0de?auto=format&fit=facearea&facepad=3&w=24&h=24&dpr=2&q=80" />
         Sylvia Reynolds
       </StyledItem>
