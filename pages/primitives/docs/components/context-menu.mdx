@@ -1055,6 +1055,8 @@ export default () => (
 
 ## Accessibility
 
+Uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/#kbd_roving_tabindex) to manage focus movement among menu items.
+
 ### Keyboard Interactions
 
 <KeyboardTable
@@ -1078,11 +1080,7 @@ export default () => (
     },
     {
       keys: ['Esc'],
-      description: (
-        <span>
-          Closes <Code>Content</Code>.
-        </span>
-      ),
+      description: 'Closes the context menu',
     },
   ]}
 />

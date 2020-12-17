@@ -1142,7 +1142,7 @@ export default () => (
 
 ## Accessibility
 
-Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#menubutton) and uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/menu-button/menu-button-actions.html) to manage focus movement among menu items.
+Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#menubutton) and uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/#kbd_roving_tabindex) to manage focus movement among menu items.
 
 ### Keyboard Interactions
 
@@ -1150,7 +1150,14 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-a
   data={[
     {
       keys: ['Space'],
-      description: 'Activates the focused item.',
+      description: (
+        <span>
+          When focus is on <Code>DropdownMenu.Trigger</Code>, opens
+          the dropdown menu.
+          <br />
+          When focus is on an item, activates the focused item.
+        </span>
+      ),
     },
     {
       keys: ['Enter'],
@@ -1158,11 +1165,25 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-a
     },
     {
       keys: ['ArrowDown'],
-      description: 'Moves focus to the next item.',
+      description: (
+        <span>
+          When focus is on <Code>DropdownMenu.Trigger</Code>, opens
+          the dropdown menu.
+          <br />
+          When focus is on an item, moves focus to the next item.
+        </span>
+      ),
     },
     {
       keys: ['ArrowUp'],
-      description: 'Moves focus to the previous item.',
+      description: (
+        <span>
+          When focus is on <Code>DropdownMenu.Trigger</Code>, opens
+          the dropdown menu.
+          <br />
+          When focus is on an item, moves focus to the previous item.
+        </span>
+      ),
     },
     {
       keys: ['Esc'],
