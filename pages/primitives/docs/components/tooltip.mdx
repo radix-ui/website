@@ -64,10 +64,10 @@ const StyledArrow = styled(Tooltip.Arrow, {
 export default () => (
   <Tooltip.Root>
     <Tooltip.Trigger>
-      <BlendingModeIcon aria-label="Blending mode" />
+      <BlendingModeIcon />
     </Tooltip.Trigger>
     <StyledContent>
-      Blend mode
+      Blending mode
       <StyledArrow />
     </StyledContent>
   </Tooltip.Root>
@@ -362,3 +362,56 @@ const StyledContent = styled(Tooltip.Content, {
     },
   ]}
 />
+
+## Abstracting
+
+You can create your own API by abstracting the primitive parts into your own component.
+
+### Usage
+
+```jsx
+import { Tooltip } from './your-tooltip';
+
+export default () => (
+  <Tooltip content="Tooltip content">
+    <button>Tooltip trigger</button>
+  </Tooltip>
+);
+```
+
+### Implementation
+
+```jsx
+// your-tooltip.jsx
+import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+
+export function Tooltip({
+  children,
+  content,
+  isOpen,
+  defaultIsOpen,
+  onIsOpenChange,
+  ...props
+}) {
+  return (
+    <TooltipPrimitive
+      isOpen={isOpen}
+      defaultIsOpen={defaultIsOpen}
+      onIsOpenChange={onIsOpenChange}
+    >
+      <TooltipPrimitive.Trigger
+        as={React.forwardRef((props, forwardedRef) =>
+          React.cloneElement(children, {
+            ...props,
+            ref: forwardedRef,
+          })
+        )}
+      />
+      <TooltipPrimitive.Content side="top" align="center" {...props}>
+        {content}
+      </TooltipPrimitive.Content>
+      <TooltipPrimitive.Arrow offset={5} width={11} height={5} />
+    </TooltipPrimitive>
+  );
+}
+```
