@@ -502,3 +502,41 @@ Adheres to the [Dialog WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-p
     },
   ]}
 />
+
+## Abstracting
+
+You can create your own API by abstracting the primitive parts into your own component.
+
+### Usage
+
+```jsx
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from './your-popover';
+
+export default () => (
+  <Popover>
+    <PopoverTrigger>Popover trigger</PopoverTrigger>
+    <PopoverContent>Popover content</PopoverContent>
+  </Popover>
+);
+```
+
+### Implementation
+
+```jsx
+// your-popover.js
+import * as PopoverPrimitive from '@radix-ui/react-popover';
+
+export const Popover = PopoverPrimitive.Root;
+export const PopoverTrigger = PopoverPrimitive.Trigger;
+
+export const PopoverContent = ({ children, ...props }) => (
+  <PopoverPrimitive.Content {...props}>
+    {children}
+    <PopoverPrimitive.Arrow />
+  </PopoverPrimitive.Content>
+);
+```
