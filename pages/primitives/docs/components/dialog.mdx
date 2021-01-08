@@ -315,3 +315,52 @@ Adheres to the [Dialog WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-p
     },
   ]}
 />
+
+## Abstracting
+
+You can create your own API by abstracting the primitive parts into your own component.
+
+### Usage
+
+```jsx
+import { Dialog, DialogTrigger, DialogContent } from './your-dialog';
+
+export default () => (
+  <Dialog>
+    <DialogTrigger>Dialog trigger</DialogTrigger>
+    <DialogContent>Dialog Content</DialogContent>
+  </Dialog>
+);
+```
+
+### Implementation
+
+```jsx
+// your-dialog.js
+import React from 'react';
+import { Dialog as DialogPrimitive } from '@interop-ui/react-dialog';
+import { Cross1Icon } from '@modulz/radix-icons';
+
+export function Dialog({ children, ...props }) {
+  return (
+    <DialogPrimitive {...props}>
+      <DialogPrimitive.Overlay />
+      {children}
+    </DialogPrimitive>
+  );
+}
+
+export const DialogContent = React.forwardRef(
+  ({ children, ...props }, forwardedRef) => (
+    <DialogPrimitive.Content {...props} ref={forwardedRef}>
+      {children}
+      <DialogPrimitive.Close>
+        <Cross1Icon />
+      </DialogPrimitive.Close>
+    </DialogPrimitive.Content>
+  )
+);
+
+export const DialogTrigger = DialogPrimitive.Trigger;
+export const DialogClose = DialogPrimitive.Close;
+```
