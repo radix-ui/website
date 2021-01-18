@@ -533,10 +533,17 @@ import * as PopoverPrimitive from '@radix-ui/react-popover';
 export const Popover = PopoverPrimitive.Root;
 export const PopoverTrigger = PopoverPrimitive.Trigger;
 
-export const PopoverContent = ({ children, ...props }) => (
-  <PopoverPrimitive.Content {...props}>
-    {children}
-    <PopoverPrimitive.Arrow />
-  </PopoverPrimitive.Content>
+export const PopoverContent = React.forwardRef(
+  ({ children, ...props }, forwardedRef) => (
+    <PopoverPrimitive.Content
+      // Set a default side offset
+      sideOffset={5}
+      {...props}
+      ref={forwardedRef}
+    >
+      {children}
+      <PopoverPrimitive.Arrow />
+    </PopoverPrimitive.Content>
+  )
 );
 ```
