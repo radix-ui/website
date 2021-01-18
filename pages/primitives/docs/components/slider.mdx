@@ -601,11 +601,11 @@ export default () => <Slider defaultValue={[25]} />;
 // your-slider.js
 import * as SliderPrimitive from '@radix-ui/react-slider';
 
-export function Slider(props) {
+export const Slider = React.forwardRef((props, forwardedRef) => {
   const value = props.value || props.defaultValue;
 
   return (
-    <SliderPrimitive.Slider {...props}>
+    <SliderPrimitive.Slider {...props} ref={forwardedRef}>
       <SliderPrimitive.Track>
         <SliderPrimitive.Range />
       </SliderPrimitive.Track>
@@ -614,5 +614,5 @@ export function Slider(props) {
       ))}
     </SliderPrimitive.Slider>
   );
-}
+});
 ```
