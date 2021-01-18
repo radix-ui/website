@@ -362,3 +362,67 @@ Adheres to the [Alert and Message Dialogs WAI-ARIA design pattern](https://www.w
     },
   ]}
 />
+
+## Abstracting
+
+You can create your own API by abstracting the primitive parts into your own component.
+
+### Usage
+
+```jsx
+import {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogCancel,
+  AlertDialogAction,
+} from './your-alert-dialog';
+
+export default () => (
+  <AlertDialog>
+    <AlertDialogTrigger>AlertDialog trigger</AlertDialogTrigger>
+    <AlertDialogContent>
+      <AlertDialogTitle>AlertDialog title</AlertDialogTitle>
+      <AlertDialogDescription>
+        AlertDialog description
+      </AlertDialogDescription>
+      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogAction>Action</AlertDialogAction>
+    </AlertDialogContent>
+  </AlertDialog>
+);
+```
+
+### Implementation
+
+```jsx
+// your-alert-dialog.js
+import React from 'react';
+import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
+
+export function AlertDialog({ children, ...props }) {
+  return (
+    <AlertDialogPrimitive {...props}>
+      <AlertDialogPrimitive.Overlay />
+      {children}
+    </AlertDialogPrimitive>
+  );
+}
+
+export const AlertDialogContent = React.forwardRef(
+  ({ children, ...props }, forwardedRef) => (
+    <AlertDialogPrimitive.Content {...props} ref={forwardedRef}>
+      {children}
+    </AlertDialogPrimitive.Content>
+  )
+);
+
+export const AlertDialogTrigger = AlertDialogPrimitive.Trigger;
+export const AlertDialogTitle = AlertDialogPrimitive.Title;
+export const AlertDialogDescription =
+  AlertDialogPrimitive.Description;
+export const AlertDialogCancel = AlertDialogPrimitive.Cancel;
+export const AlertDialogAction = AlertDialogPrimitive.Action;
+```
