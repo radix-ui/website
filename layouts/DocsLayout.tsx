@@ -361,7 +361,7 @@ const ComponentInfo = ({ version, name, aria }) => (
       <Text size="2" as="dt" css={{ fontWeight: 500, mr: '$1' }}>
         Version:
       </Text>
-      <Box as="dd">
+      <Box as="dd" css={{ margin: 0 }}>
         <Link
           variant="subtle"
           href={`https://www.npmjs.com/package/@radix-ui/react-${name}`}
