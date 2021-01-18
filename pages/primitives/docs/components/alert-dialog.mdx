@@ -413,9 +413,16 @@ export function AlertDialog({ children, ...props }) {
 
 export const AlertDialogContent = React.forwardRef(
   ({ children, ...props }, forwardedRef) => (
-    <AlertDialogPrimitive.Content {...props} ref={forwardedRef}>
+    <AlertDialogPrimitive.Content
+      {...props}
+      ref={forwardedRef}
+      // Don't close the Alert Dialog when pressing ESC
+      onEscapeKeyDown={(event) => event.preventDefault()}
+      // Don't close the Alert Dialog when clicking outside
+      onPointerDownOutside={(event) => event.preventDefault()}
+    >
       {children}
-    </AlertDialogPrimitive.Content>
+    </>
   )
 );
 
