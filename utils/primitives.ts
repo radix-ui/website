@@ -18,9 +18,11 @@ export const overviewPages: FrontMatter[] = allPages
   .filter((page) => page.id.includes('/overview/'))
   .sort(sortByNavRank);
 
-export const componentsPages: FrontMatter[] = allPages.filter((page) =>
-  page.id.includes('/components/')
-);
+console.log(allPages);
+
+export const componentsPages: FrontMatter[] = allPages
+  .filter((page) => page.id.includes('/components/'))
+  .filter((page) => page.id.endsWith(page.name));
 
 export const utilitiesPages: FrontMatter[] = allPages.filter((page) =>
   page.id.includes('/utilities/')

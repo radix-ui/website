@@ -30,7 +30,7 @@ export function PrimitivesNav() {
             <NavItem
               key={page.id}
               href={`/${page.id}`}
-              active={router.pathname === `/${page.id}`}
+              active={router.pathname.includes(page.id)}
               disabled={page.status === 'soon'}
             >
               {page.title} {Boolean(page.status) && <NavItemBadge status={page.status} />}

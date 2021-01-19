@@ -55,6 +55,15 @@ module.exports = withPlugins(
         },
       ];
     },
+
+    exportPathMap: async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
+      // TODO: potentially automate this with node script
+      return {
+        '/primitives/docs/components/accordion': {
+          page: '/primitives/docs/components/accordion/2.0.2',
+        },
+      };
+    },
   }
 );
 
