@@ -2,7 +2,7 @@ import * as React from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { Box, Flex, Badge, IconButton } from '@modulz/design-system';
-import { HamburgerMenuIcon } from '@modulz/radix-icons';
+import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import { ScrollArea } from '../components/ScrollArea';
 import { RadixLogo } from './RadixLogo';
 import { PrimitivesNav } from './PrimitivesNav';

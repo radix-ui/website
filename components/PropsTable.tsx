@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, IconButton, Text, Code, Popover } from '@modulz/design-system';
-import { CheckIcon, InfoCircledIcon, DividerHorizontalIcon } from '@modulz/radix-icons';
+import { CheckIcon, InfoCircledIcon, DividerHorizontalIcon } from '@radix-ui/react-icons';
 import { RegionTable } from './RegionTable';
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
 

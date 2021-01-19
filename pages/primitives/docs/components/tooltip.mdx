@@ -47,7 +47,7 @@ Create your styled tooltip component from the primitive parts.
 ```jsx live manual
 // import { styled } from 'path-to/stitches.config';
 import * as Tooltip from '@radix-ui/react-tooltip';
-import { BlendingModeIcon } from '@modulz/radix-icons';
+import { BlendingModeIcon } from '@radix-ui/react-icons';
 
 const StyledContent = styled(Tooltip.Content, {
   borderRadius: 3,
@@ -394,14 +394,14 @@ export function Tooltip({
   ...props
 }) {
   return (
-    <TooltipPrimitive
+    <TooltipPrimitive.Root
       isOpen={isOpen}
       defaultIsOpen={defaultIsOpen}
       onIsOpenChange={onIsOpenChange}
     >
       <TooltipPrimitive.Trigger
         as={React.forwardRef((props, forwardedRef) =>
-          React.cloneElement(children, {
+          React.cloneElement(React.Children.only(children), {
             ...props,
             ref: forwardedRef,
           })
@@ -409,9 +409,9 @@ export function Tooltip({
       />
       <TooltipPrimitive.Content side="top" align="center" {...props}>
         {content}
+        <TooltipPrimitive.Arrow offset={5} width={11} height={5} />
       </TooltipPrimitive.Content>
-      <TooltipPrimitive.Arrow offset={5} width={11} height={5} />
-    </TooltipPrimitive>
+    </TooltipPrimitive.Root>
   );
 }
 ```

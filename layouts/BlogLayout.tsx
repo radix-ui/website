@@ -3,7 +3,7 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { MDXProvider } from '@mdx-js/react';
 import { Text, Button, Box, Subtitle, Flex, Separator, Link, Badge } from '@modulz/design-system';
-import { ArrowLeftIcon } from '@modulz/radix-icons';
+import { ArrowLeftIcon } from '@radix-ui/react-icons';
 import { parseISO, format } from 'date-fns';
 import { FrontMatter } from '../types';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';

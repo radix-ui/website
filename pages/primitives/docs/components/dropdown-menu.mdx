@@ -956,7 +956,7 @@ Use the `CheckboxItem` part to add an item that can be checked.
 ```jsx live manual compact
 // import { styled } from 'path-to/stitches.config';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { CheckIcon } from '@modulz/radix-icons';
+import { CheckIcon } from '@radix-ui/react-icons';
 
 const StyledContent = styled(DropdownMenu.Content, {
   minWidth: 130,
@@ -1039,7 +1039,7 @@ Use the `RadioGroup` and `RadioItem` parts to add an item that can be checked am
 ```jsx live manual compact
 // import { styled } from 'path-to/stitches.config';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { CheckIcon } from '@modulz/radix-icons';
+import { CheckIcon } from '@radix-ui/react-icons';
 
 const StyledContent = styled(DropdownMenu.Content, {
   minWidth: 130,
@@ -1273,44 +1273,50 @@ export default () => (
 // your-dropdown-menu.js
 import React from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { Cross1Icon } from '@modulz/radix-icons';
+import { Cross1Icon } from '@radix-ui/react-icons';
 
 export const DropdownMenu = DropdownMenuPrimitive.Root;
 export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
 
-export function DropdownMenuContent({ children, ...props }) {
-  return (
-    <DropdownMenuPrimitive.Content>
-      {children}
-      <DropdownMenuPrimitive.Arrow />
-    </DropdownMenuPrimitive.Content>
-  );
-}
+export const DropdownMenuContent = React.forwardRef(
+  ({ children, ...props }, forwardedRef) => {
+    return (
+      <DropdownMenuPrimitive.Content ref={forwardedRef}>
+        {children}
+        <DropdownMenuPrimitive.Arrow />
+      </DropdownMenuPrimitive.Content>
+    );
+  }
+);
 
 export const DropdownMenuLabel = DropdownMenuPrimitive.Label;
 export const DropdownMenuItem = DropdownMenuPrimitive.Item;
 export const DropdownMenuGroup = DropdownMenuPrimitive.Group;
 
-export function DropdownMenuCheckboxItem({ children, ...props }) {
-  return (
-    <DropdownMenuPrimitive.CheckboxItem>
-      {children}
-      <DropdownMenuPrimitive.ItemIndicator />
-    </DropdownMenuPrimitive.CheckboxItem>
-  );
-}
+export const DropdownMenuCheckboxItem = React.forwardRef(
+  ({ children, ...props }, forwardedRef) => {
+    return (
+      <DropdownMenuPrimitive.CheckboxItem ref={forwardedRef}>
+        {children}
+        <DropdownMenuPrimitive.ItemIndicator />
+      </DropdownMenuPrimitive.CheckboxItem>
+    );
+  }
+);
 
 export const DropdownMenuRadioGroup =
   DropdownMenuPrimitive.RadioGroup;
 
-export function DropdownMenuRadioItem({ children, ...props }) {
-  return (
-    <DropdownMenuPrimitive.RadioItem>
-      {children}
-      <DropdownMenuPrimitive.ItemIndicator />
-    </DropdownMenuPrimitive.RadioItem>
-  );
-}
+export const DropdownMenuRadioItem = React.forwardRef(
+  ({ children, ...props }, forwardedRef) => {
+    return (
+      <DropdownMenuPrimitive.RadioItem ref={forwardedRef}>
+        {children}
+        <DropdownMenuPrimitive.ItemIndicator />
+      </DropdownMenuPrimitive.RadioItem>
+    );
+  }
+);
 
 export const DropdownMenuSeparator = DropdownMenuPrimitive.Separator;
 ```
