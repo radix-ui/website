@@ -1296,9 +1296,14 @@ export const DropdownMenuGroup = DropdownMenuPrimitive.Group;
 export const DropdownMenuCheckboxItem = React.forwardRef(
   ({ children, ...props }, forwardedRef) => {
     return (
-      <DropdownMenuPrimitive.CheckboxItem ref={forwardedRef}>
+      <DropdownMenuPrimitive.CheckboxItem
+        {...props}
+        ref={forwardedRef}
+      >
         {children}
-        <DropdownMenuPrimitive.ItemIndicator />
+        <DropdownMenuPrimitive.ItemIndicator>
+          <Cross1Icon />
+        </DropdownMenuPrimitive.ItemIndicator>
       </DropdownMenuPrimitive.CheckboxItem>
     );
   }
@@ -1310,9 +1315,11 @@ export const DropdownMenuRadioGroup =
 export const DropdownMenuRadioItem = React.forwardRef(
   ({ children, ...props }, forwardedRef) => {
     return (
-      <DropdownMenuPrimitive.RadioItem ref={forwardedRef}>
+      <DropdownMenuPrimitive.RadioItem {...props} ref={forwardedRef}>
         {children}
-        <DropdownMenuPrimitive.ItemIndicator />
+        <DropdownMenuPrimitive.ItemIndicator>
+          <Cross1Icon />
+        </DropdownMenuPrimitive.ItemIndicator>
       </DropdownMenuPrimitive.RadioItem>
     );
   }
