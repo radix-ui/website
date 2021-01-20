@@ -1273,7 +1273,7 @@ export default () => (
 // your-dropdown-menu.js
 import React from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { Cross1Icon } from '@radix-ui/react-icons';
+import { CheckIcon } from '@radix-ui/react-icons';
 
 export const DropdownMenu = DropdownMenuPrimitive.Root;
 export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
@@ -1302,7 +1302,7 @@ export const DropdownMenuCheckboxItem = React.forwardRef(
       >
         {children}
         <DropdownMenuPrimitive.ItemIndicator>
-          <Cross1Icon />
+          <CheckIcon />
         </DropdownMenuPrimitive.ItemIndicator>
       </DropdownMenuPrimitive.CheckboxItem>
     );
@@ -1318,7 +1318,7 @@ export const DropdownMenuRadioItem = React.forwardRef(
       <DropdownMenuPrimitive.RadioItem {...props} ref={forwardedRef}>
         {children}
         <DropdownMenuPrimitive.ItemIndicator>
-          <Cross1Icon />
+          <CheckIcon />
         </DropdownMenuPrimitive.ItemIndicator>
       </DropdownMenuPrimitive.RadioItem>
     );
