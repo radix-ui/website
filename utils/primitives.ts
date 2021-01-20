@@ -1,7 +1,7 @@
 // @ts-ignore
 import { frontMatter } from '../pages/primitives/docs/**/*.mdx';
 import { FrontMatter } from '../types';
-import compareVersions, { compare } from 'compare-versions';
+import { compare } from 'compare-versions';
 
 export const getPageById = (id: string) => {
   const [page] = allPages.filter((post) => post.id === id);
@@ -21,15 +21,23 @@ export const overviewPages: FrontMatter[] = allPages
 
 export const componentsPages: FrontMatter[] = allPages
   .filter((page) => page.id.includes('/components/'))
-  .sort((a, b) => compareVersions(a.version || '0.0.0', b.version || '0.0.0'))
-  .reverse()
-  .sort((a, b) => a.name.localeCompare(b.name))
-  .reduce((acc, curr) => {
-    if (!acc.some((x) => x.name === curr.name)) {
-      acc.push(curr);
+  .reduce((pages, currentPage) => {
+    const item = pages.find((page) => page.name === currentPage.name);
+    if (item) {
+      // only keep the latest version of each package
+      if (compare(item.version || '0.0.0', currentPage.version || '0.0.0', '<')) {
+        const itemIndex = pages.indexOf(item);
+        pages[itemIndex] = currentPage;
+      }
+    } else {
+      pages.push(currentPage);
     }
-    return acc;
-  }, []);
+
+    return pages;
+  }, [])
+  .sort((a, b) => a.name.localeCompare(b.name));
+
+console.log(componentsPages);
 
 export const utilitiesPages: FrontMatter[] = allPages.filter((page) =>
   page.id.includes('/utilities/')

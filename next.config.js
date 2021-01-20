@@ -60,7 +60,7 @@ module.exports = withPlugins(
       ];
     },
 
-    exportPathMap: async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
+    exportPathMap: async function () {
       const isDirectory = (fileName) => fs.lstatSync(fileName).isDirectory();
 
       const primitivesDirectory = path.join(__dirname, 'pages/primitives/docs/components');
@@ -80,7 +80,7 @@ module.exports = withPlugins(
         return lastVersion;
       });
 
-      const pathMap = latestPrimitivesPaths.reduce((acc, curr, index) => {
+      return latestPrimitivesPaths.reduce((acc, curr, index) => {
         const [_, path] = latestPrimitivesPaths[index].split('/pages');
         const rootPathArray = path.split('/');
         const rootPathArrayWithoutVersion = rootPathArray.pop();
@@ -88,8 +88,6 @@ module.exports = withPlugins(
         acc[rootPath] = { page: path };
         return acc;
       }, {});
-
-      return pathMap;
     },
   }
 );

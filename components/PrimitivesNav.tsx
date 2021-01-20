@@ -29,7 +29,7 @@ export function PrimitivesNav() {
           {componentsPages.map((page) => (
             <NavItem
               key={page.id}
-              href={`/${page.id}`}
+              href={`/${removeVersionFromId(page.id)}`}
               active={router.pathname.includes(page.id)}
               disabled={page.status === 'soon'}
             >
@@ -57,3 +57,12 @@ export function PrimitivesNav() {
     </Box>
   );
 }
+
+// Package IDs always have the version at the end
+// of the URL, as they can be released independently
+// so in this case it's safe to remove the last part of the array
+const removeVersionFromId = (id) => {
+  const rootPathArray = id.split('/');
+  rootPathArray.pop();
+  return rootPathArray.join('/');
+};
