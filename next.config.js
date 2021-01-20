@@ -63,24 +63,25 @@ module.exports = withPlugins(
     exportPathMap: async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
       const isDirectory = (fileName) => fs.lstatSync(fileName).isDirectory();
 
-      const directoryPath = path.join(__dirname, 'pages/primitives/docs/components');
-      const primitivesDirectories = fs
-        .readdirSync(directoryPath)
-        .map((fileOrDirectory) => path.join(directoryPath, fileOrDirectory))
+      const primitivesDirectory = path.join(__dirname, 'pages/primitives/docs/components');
+      const primitivesPaths = fs
+        .readdirSync(primitivesDirectory)
+        .map((file) => path.join(primitivesDirectory, file))
         .filter(isDirectory);
 
-      const latestPrimitives = primitivesDirectories.map((primitiveDirectory) => {
-        const versionDirectories = fs
-          .readdirSync(primitiveDirectory)
+      const latestPrimitivesPaths = primitivesPaths.map((primitivePath) => {
+        const [lastVersion] = fs
+          .readdirSync(primitivePath)
           .sort(compareVersions)
-          .map((fileOrDirectory) => path.join(primitiveDirectory, fileOrDirectory))
-          .filter(isDirectory);
+          .map((file) => path.join(primitivePath, file))
+          .filter(isDirectory)
+          .reverse();
 
-        const [lastVersion] = versionDirectories.reverse();
         return lastVersion;
       });
-      const pathMap = latestPrimitives.reduce((acc, curr, index) => {
-        const [_, path] = latestPrimitives[index].split('/pages');
+
+      const pathMap = latestPrimitivesPaths.reduce((acc, curr, index) => {
+        const [_, path] = latestPrimitivesPaths[index].split('/pages');
         const rootPathArray = path.split('/');
         const rootPathArrayWithoutVersion = rootPathArray.pop();
         const rootPath = rootPathArray.join('/');

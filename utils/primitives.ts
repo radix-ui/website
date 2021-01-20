@@ -1,6 +1,7 @@
 // @ts-ignore
 import { frontMatter } from '../pages/primitives/docs/**/*.mdx';
 import { FrontMatter } from '../types';
+import compareVersions, { compare } from 'compare-versions';
 
 export const getPageById = (id: string) => {
   const [page] = allPages.filter((post) => post.id === id);
@@ -18,11 +19,17 @@ export const overviewPages: FrontMatter[] = allPages
   .filter((page) => page.id.includes('/overview/'))
   .sort(sortByNavRank);
 
-// console.log(allPages);
-
 export const componentsPages: FrontMatter[] = allPages
   .filter((page) => page.id.includes('/components/'))
-  .filter((page) => page.id.endsWith(page.name));
+  .sort((a, b) => compareVersions(a.version || '0.0.0', b.version || '0.0.0'))
+  .reverse()
+  .sort((a, b) => a.name.localeCompare(b.name))
+  .reduce((acc, curr) => {
+    if (!acc.some((x) => x.name === curr.name)) {
+      acc.push(curr);
+    }
+    return acc;
+  }, []);
 
 export const utilitiesPages: FrontMatter[] = allPages.filter((page) =>
   page.id.includes('/utilities/')
