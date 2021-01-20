@@ -367,7 +367,11 @@ const StyledContent = styled(Tooltip.Content, {
 
 Create your own API by abstracting the primitive parts into your own component.
 
-### Usage
+### Abstract parts and introduce a content prop
+
+This example abstract all of the `Tooltip` parts and introduces a new `content` prop.
+
+#### Usage
 
 ```jsx
 import { Tooltip } from './your-tooltip';
@@ -379,7 +383,7 @@ export default () => (
 );
 ```
 
-### Implementation
+#### Implementation
 
 ```jsx
 // your-tooltip.jsx

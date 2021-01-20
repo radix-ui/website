@@ -367,7 +367,11 @@ Adheres to the [Alert and Message Dialogs WAI-ARIA design pattern](https://www.w
 
 Create your own API by abstracting the primitive parts into your own component.
 
-### Usage
+### Abstract the overlay and prevent close
+
+This example abstracts the `AlertDialog.Overlay` part and prevents the dialog from closing when clicking outside, or when pressing <Kbd>ESC</Kbd>.
+
+#### Usage
 
 ```jsx
 import {
@@ -395,7 +399,7 @@ export default () => (
 );
 ```
 
-### Implementation
+#### Implementation
 
 ```jsx
 // your-alert-dialog.js
@@ -404,10 +408,10 @@ import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 
 export function AlertDialog({ children, ...props }) {
   return (
-    <AlertDialogPrimitive {...props}>
+    <AlertDialogPrimitive.Root {...props}>
       <AlertDialogPrimitive.Overlay />
       {children}
-    </AlertDialogPrimitive>
+    </AlertDialogPrimitive.Root>
   );
 }
 
