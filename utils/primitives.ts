@@ -18,7 +18,7 @@ export const overviewPages: FrontMatter[] = allPages
   .filter((page) => page.id.includes('/overview/'))
   .sort(sortByNavRank);
 
-console.log(allPages);
+// console.log(allPages);
 
 export const componentsPages: FrontMatter[] = allPages
   .filter((page) => page.id.includes('/components/'))
