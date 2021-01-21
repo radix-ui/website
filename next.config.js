@@ -60,7 +60,7 @@ module.exports = withPlugins(
       ];
     },
 
-    exportPathMap: async function () {
+    async rewrites() {
       const isDirectory = (fileName) => fs.lstatSync(fileName).isDirectory();
 
       const primitivesDirectory = path.join(__dirname, 'pages/primitives/docs/components');
@@ -85,9 +85,9 @@ module.exports = withPlugins(
         const rootPathArray = path.split('/');
         const rootPathArrayWithoutVersion = rootPathArray.pop();
         const rootPath = rootPathArray.join('/');
-        acc[rootPath] = { page: path };
+        acc.push({ source: rootPath, destination: path });
         return acc;
-      }, {});
+      }, []);
     },
   }
 );
