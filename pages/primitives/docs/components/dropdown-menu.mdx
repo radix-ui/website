@@ -956,7 +956,7 @@ Use the `CheckboxItem` part to add an item that can be checked.
 ```jsx live manual compact
 // import { styled } from 'path-to/stitches.config';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { CheckIcon } from '@modulz/radix-icons';
+import { CheckIcon } from '@radix-ui/react-icons';
 
 const StyledContent = styled(DropdownMenu.Content, {
   minWidth: 130,
@@ -1039,7 +1039,7 @@ Use the `RadioGroup` and `RadioItem` parts to add an item that can be checked am
 ```jsx live manual compact
 // import { styled } from 'path-to/stitches.config';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { CheckIcon } from '@modulz/radix-icons';
+import { CheckIcon } from '@radix-ui/react-icons';
 
 const StyledContent = styled(DropdownMenu.Content, {
   minWidth: 130,
@@ -1228,3 +1228,106 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-a
     },
   ]}
 />
+
+## Custom APIs
+
+Create your own API by abstracting the primitive parts into your own component.
+
+### Abstract the arrow and item indicators
+
+This example abstracts the `DropdownMenu.Arrow` and `DropdownMenu.ItemIndicator` parts.
+
+#### Usage
+
+```jsx
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuItem,
+  DropdownMenuGroup,
+  DropdownMenuCheckboxItem,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+} from './your-dropdown-menu';
+
+export default () => (
+  <DropdownMenu>
+    <DropdownMenuTrigger>DropdownMenu trigger</DropdownMenuTrigger>
+    <DropdownMenuContent>
+      <DropdownMenuItem>Item</DropdownMenuItem>
+      <DropdownMenuLabel>Label</DropdownMenuLabel>
+      <DropdownMenuGroup>Group</DropdownMenuGroup>
+      <DropdownMenuCheckboxItem>
+        CheckboxItem
+      </DropdownMenuCheckboxItem>
+      <DropdownMenuRadioGroup>RadioGroup</DropdownMenuRadioGroup>
+      <DropdownMenuRadioItem>RadioItem</DropdownMenuRadioItem>
+      <DropdownMenuSeparator>Separator</DropdownMenuSeparator>
+    </DropdownMenuContent>
+  </Dialog>
+);
+```
+
+#### Implementation
+
+```jsx
+// your-dropdown-menu.js
+import React from 'react';
+import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
+import { CheckIcon } from '@radix-ui/react-icons';
+
+export const DropdownMenu = DropdownMenuPrimitive.Root;
+export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
+
+export const DropdownMenuContent = React.forwardRef(
+  ({ children, ...props }, forwardedRef) => {
+    return (
+      <DropdownMenuPrimitive.Content ref={forwardedRef}>
+        {children}
+        <DropdownMenuPrimitive.Arrow />
+      </DropdownMenuPrimitive.Content>
+    );
+  }
+);
+
+export const DropdownMenuLabel = DropdownMenuPrimitive.Label;
+export const DropdownMenuItem = DropdownMenuPrimitive.Item;
+export const DropdownMenuGroup = DropdownMenuPrimitive.Group;
+
+export const DropdownMenuCheckboxItem = React.forwardRef(
+  ({ children, ...props }, forwardedRef) => {
+    return (
+      <DropdownMenuPrimitive.CheckboxItem
+        {...props}
+        ref={forwardedRef}
+      >
+        {children}
+        <DropdownMenuPrimitive.ItemIndicator>
+          <CheckIcon />
+        </DropdownMenuPrimitive.ItemIndicator>
+      </DropdownMenuPrimitive.CheckboxItem>
+    );
+  }
+);
+
+export const DropdownMenuRadioGroup =
+  DropdownMenuPrimitive.RadioGroup;
+
+export const DropdownMenuRadioItem = React.forwardRef(
+  ({ children, ...props }, forwardedRef) => {
+    return (
+      <DropdownMenuPrimitive.RadioItem {...props} ref={forwardedRef}>
+        {children}
+        <DropdownMenuPrimitive.ItemIndicator>
+          <CheckIcon />
+        </DropdownMenuPrimitive.ItemIndicator>
+      </DropdownMenuPrimitive.RadioItem>
+    );
+  }
+);
+
+export const DropdownMenuSeparator = DropdownMenuPrimitive.Separator;
+```

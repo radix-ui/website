@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
 import { Box, Button, Text, theme as DStheme, styled, css } from '@modulz/design-system';
-import * as RadixIcons from '@modulz/radix-icons';
+import * as RadixIcons from '@radix-ui/react-icons';
 import { useClipboard } from '../utils/useClipboard';
 import * as DS from '@modulz/design-system';
 import * as Primitives from './Primitives';
