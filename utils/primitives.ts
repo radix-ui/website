@@ -19,9 +19,22 @@ export const overviewPages: FrontMatter[] = allPages
   .filter((page) => page.id.includes('/overview/'))
   .sort(sortByNavRank);
 
-export const componentsPages: FrontMatter[] = allPages
-  .filter((page) => page.id.includes('/components/'))
-  .reduce((pages, currentPage) => {
+export const componentsPages: FrontMatter[] = getLatestVersion(
+  allPages
+    .filter((page) => page.id.includes('/components/'))
+    .sort((a, b) => a.name.localeCompare(b.name))
+);
+
+export const utilitiesPages: FrontMatter[] = getLatestVersion(
+  allPages
+    .filter((page) => page.id.includes('/utilities/'))
+    .sort((a, b) => a.name.localeCompare(b.name))
+);
+
+export const pages = [...overviewPages, ...componentsPages, ...utilitiesPages];
+
+function getLatestVersion(path) {
+  return path.reduce((pages, currentPage) => {
     const item = pages.find((page) => page.name === currentPage.name);
     if (item) {
       // only keep the latest version of each package
@@ -34,14 +47,8 @@ export const componentsPages: FrontMatter[] = allPages
     }
 
     return pages;
-  }, [])
-  .sort((a, b) => a.name.localeCompare(b.name));
-
-export const utilitiesPages: FrontMatter[] = allPages.filter((page) =>
-  page.id.includes('/utilities/')
-);
-
-export const pages = [...overviewPages, ...componentsPages, ...utilitiesPages];
+  }, []);
+}
 
 function sortByNavRank(page1: FrontMatter, page2: FrontMatter) {
   const pageRank1 = page1.navRank != null ? String(page1.navRank) : page1.title;

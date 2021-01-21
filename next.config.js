@@ -19,12 +19,22 @@ module.exports = withPlugins(
       rehypePlugins: [],
       extendFrontMatter: {
         process: (mdxContent, frontMatter) => {
-          return {
-            id: makeIdFromPath(frontMatter.__resourcePath),
+          const { __resourcePath } = frontMatter;
+          const isPrimitive = __resourcePath.includes('primitives/');
+          const isComponent = __resourcePath.includes('/components/');
+          const isUtility = __resourcePath.includes('/utilities/');
+
+          const newFrontMatter = {
+            id: makeIdFromPath(__resourcePath),
             wordCount: mdxContent.split(/\s+/g).length,
             readingTime: readingTime(mdxContent),
-            versions: getAllVersions(frontMatter.name),
           };
+
+          if (isPrimitive && (isComponent || isUtility)) {
+            const dir = path.join(__dirname, 'pages', makeIdFromPath(__resourcePath), '..');
+            newFrontMatter.versions = getAllVersionsFromDir(dir);
+          }
+          return newFrontMatter;
         },
       },
     })({
@@ -60,28 +70,39 @@ module.exports = withPlugins(
       ];
     },
 
+    // Generate URL rewrites for components and utilities
+    // So navigating to /tooltip rewrites to /tooltip/[latestVersion]
     async rewrites() {
       const isDirectory = (fileName) => fs.lstatSync(fileName).isDirectory();
+      const getPaths = (dir) =>
+        fs
+          .readdirSync(dir)
+          .map((file) => path.join(dir, file))
+          .filter(isDirectory);
+
+      const getLatestPath = (dir) =>
+        dir.map((currDir) => {
+          const [lastVersion] = fs
+            .readdirSync(currDir)
+            .sort(compareVersions)
+            .map((file) => path.join(currDir, file))
+            .filter(isDirectory)
+            .reverse();
+          return lastVersion;
+        });
 
       const primitivesDirectory = path.join(__dirname, 'pages/primitives/docs/components');
-      const primitivesPaths = fs
-        .readdirSync(primitivesDirectory)
-        .map((file) => path.join(primitivesDirectory, file))
-        .filter(isDirectory);
+      const primitivesPaths = getPaths(primitivesDirectory);
+      const latestPrimitivesPaths = getLatestPath(primitivesPaths);
 
-      const latestPrimitivesPaths = primitivesPaths.map((primitivePath) => {
-        const [lastVersion] = fs
-          .readdirSync(primitivePath)
-          .sort(compareVersions)
-          .map((file) => path.join(primitivePath, file))
-          .filter(isDirectory)
-          .reverse();
+      const utilitiesDirectory = path.join(__dirname, 'pages/primitives/docs/utilities');
+      const utilitiesPaths = getPaths(utilitiesDirectory);
+      const latestUtilitiesPaths = getLatestPath(utilitiesPaths);
 
-        return lastVersion;
-      });
+      const all = [...latestPrimitivesPaths, ...latestUtilitiesPaths];
 
-      return latestPrimitivesPaths.reduce((acc, curr, index) => {
-        const [_, path] = latestPrimitivesPaths[index].split('/pages');
+      return all.reduce((acc, curr, index) => {
+        const [_, path] = all[index].split('/pages');
         const rootPathArray = path.split('/');
         const rootPathArrayWithoutVersion = rootPathArray.pop();
         const rootPath = rootPathArray.join('/');
@@ -107,13 +128,15 @@ function makeIdFromPath(resourcePath) {
 }
 
 function getAllVersions(name) {
-  if (!name) {
-    return [];
-  }
   const packageDirectory = path.join(__dirname, `pages/primitives/docs/components/${name}`);
   let packageVersions = [];
   if (fs.existsSync(packageDirectory)) {
     packageVersions = fs.readdirSync(packageDirectory).sort(compareVersions).reverse();
   }
   return packageVersions;
+}
+
+function getAllVersionsFromDir(dir) {
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir).sort(compareVersions).reverse();
 }

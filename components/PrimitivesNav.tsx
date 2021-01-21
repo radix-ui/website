@@ -45,8 +45,8 @@ export function PrimitivesNav() {
           {utilitiesPages.map((page) => (
             <NavItem
               key={page.id}
-              href={`/${page.id}`}
-              active={router.pathname === `/${page.id}`}
+              href={`/${removeVersionFromId(page.version, page.id)}`}
+              active={router.pathname.includes(removeVersionFromId(page.version, page.id))}
               disabled={page.status === 'soon'}
             >
               {page.title} {Boolean(page.status) && <NavItemBadge status={page.status} />}
