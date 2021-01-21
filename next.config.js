@@ -24,6 +24,7 @@ module.exports = withPlugins(
             id: makeIdFromPath(frontMatter.__resourcePath),
             wordCount: mdxContent.split(/\s+/g).length,
             readingTime: readingTime(mdxContent),
+            versions: getAllVersions(frontMatter.name),
           };
         },
       },
@@ -104,4 +105,19 @@ module.exports = withPlugins(
  */
 function makeIdFromPath(resourcePath) {
   return resourcePath.replace('.mdx', '').replace('/index', '');
+}
+
+function getAllVersions(name) {
+  if (!name) {
+    return [];
+  }
+  const packageDirectory = path.join(__dirname, `pages/primitives/docs/components/${name}`);
+  console.log(packageDirectory);
+  let packageVersions = [];
+  if (fs.existsSync(packageDirectory)) {
+    packageVersions = fs.readdirSync(packageDirectory).sort(compareVersions).reverse();
+  }
+  console.log('packageVersions');
+  console.log(packageVersions);
+  return packageVersions;
 }

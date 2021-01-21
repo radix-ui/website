@@ -37,8 +37,6 @@ export const componentsPages: FrontMatter[] = allPages
   }, [])
   .sort((a, b) => a.name.localeCompare(b.name));
 
-console.log(componentsPages);
-
 export const utilitiesPages: FrontMatter[] = allPages.filter((page) =>
   page.id.includes('/utilities/')
 );

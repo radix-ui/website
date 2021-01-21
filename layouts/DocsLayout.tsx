@@ -16,6 +16,7 @@ import {
 } from '@modulz/design-system';
 import { MDXComponents } from '../components/MDXComponents';
 import { ExternalIcon } from '../components/ExternalIcon';
+import { Select } from '../components/Select';
 import { FrontMatter } from '../types';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
 import { getPostById } from '../utils/allPosts';
@@ -23,7 +24,7 @@ import { pages as primitivesPages } from '../utils/primitives';
 import { pages as designSystemPages } from '../utils/designSystem';
 import { useProductType } from '../utils/useProductType';
 import { ScrollArea } from '../components/ScrollArea';
-import { CheckIcon } from '@radix-ui/react-icons';
+import { CheckIcon, ChevronDownIcon } from '@radix-ui/react-icons';
 import { HeroContext } from '../components/HeroSlot';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
@@ -128,6 +129,7 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
                 </Box>
                 <ComponentInfo
                   version={frontMatter.version}
+                  versions={frontMatter.versions}
                   name={frontMatter.name}
                   aria={frontMatter.aria}
                 />
@@ -351,88 +353,54 @@ function QuickNav() {
   );
 }
 
-const ComponentInfo = ({ version, name, aria }) => (
-  <Box css={{ flex: 0, width: '30%' }} as="nav" aria-labelledby="site-component-info-heading">
-    <VisuallyHidden as="h2" id="site-component-info-heading">
-      Component Reference Links
-    </VisuallyHidden>
-    <Separator size="2" css={{ mb: '$4', display: 'block', bp1: { display: 'none' } }} />
-    <Flex css={{ mb: '$4', alignItems: 'baseline' }} as="dl">
-      <Text size="2" as="dt" css={{ fontWeight: 500, mr: '$1' }}>
-        Version:
-      </Text>
-      <Box as="dd" css={{ margin: 0 }}>
+const ComponentInfo = ({ version, versions, name, aria }) => {
+  const router = useRouter();
+  return (
+    <Box css={{ flex: 0, width: '30%' }} as="nav" aria-labelledby="site-component-info-heading">
+      <VisuallyHidden as="h2" id="site-component-info-heading">
+        Component Reference Links
+      </VisuallyHidden>
+      <Separator size="2" css={{ mb: '$4', display: 'block', bp1: { display: 'none' } }} />
+      <Flex css={{ mb: '$4', alignItems: 'baseline' }} as="dl">
+        <Text size="2" as="dt" css={{ fontWeight: 500, mr: '2px' }}>
+          Version:
+        </Text>
+        <Box as="dd" css={{ margin: 0 }}>
+          <Select value={version} onChange={(e) => router.push(`./${e.target.value}`)}>
+            {versions.map((v) => (
+              <option key={v} value={v}>
+                {v}
+              </option>
+            ))}
+          </Select>
+        </Box>
+      </Flex>
+      <Separator size="2" css={{ mb: '$4', display: 'none', bp1: { display: 'block' } }} />
+      <Box css={{ mb: '$2' }}>
         <Link
-          variant="subtle"
+          variant="blue"
+          href={`https://github.com/radix-ui/primitives/tree/main/packages/react/${name}/src`}
+          target="_blank"
+        >
+          <Flex css={{ display: 'inline-flex', position: 'relative' }}>
+            <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
+              View source
+            </Text>
+            <Box as="span" css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
+              <ExternalIcon />
+            </Box>
+          </Flex>
+        </Link>
+      </Box>
+      <Box css={{ mb: '$2' }}>
+        <Link
+          variant="blue"
           href={`https://www.npmjs.com/package/@radix-ui/react-${name}`}
           target="_blank"
         >
-          <Flex as="span" css={{ display: 'inline-flex', position: 'relative' }}>
-            <Text size="2" as="span" color="gray" css={{ fontFamily: '$mono' }}>
-              v{version}
-            </Text>
-            <Box as="span" css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
-              <ExternalIcon />
-            </Box>
-          </Flex>
-        </Link>
-      </Box>
-    </Flex>
-    <Separator size="2" css={{ mb: '$4', display: 'none', bp1: { display: 'block' } }} />
-    <Box css={{ mb: '$2' }}>
-      <Link
-        variant="blue"
-        href={`https://github.com/radix-ui/primitives/tree/main/packages/react/${name}/src`}
-        target="_blank"
-      >
-        <Flex css={{ display: 'inline-flex', position: 'relative' }}>
-          <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
-            View source
-          </Text>
-          <Box as="span" css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
-            <ExternalIcon />
-          </Box>
-        </Flex>
-      </Link>
-    </Box>
-    <Box css={{ mb: '$2' }}>
-      <Link
-        variant="blue"
-        href="https://github.com/radix-ui/primitives/issues/new/choose"
-        target="_blank"
-      >
-        <Flex css={{ display: 'inline-flex', position: 'relative' }}>
-          <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
-            Report an issue
-          </Text>
-          <Box as="span" css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
-            <ExternalIcon />
-          </Box>
-        </Flex>
-      </Link>
-    </Box>
-    {/* <Box css={{ mb: '$2' }}>
-      <Link
-        variant="blue"
-        href={`https://www.npmjs.com/package/@radix-ui/react-${name}`}
-        target="_blank"
-      >
-        <Flex css={{ display: 'inline-flex', position: 'relative' }}>
-          <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
-            View on npm
-          </Text>
-          <Box as="span" css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
-            <ExternalIcon />
-          </Box>
-        </Flex>
-      </Link>
-    </Box> */}
-    {aria && (
-      <Box css={{ mb: '$2' }}>
-        <Link variant="blue" href={aria} target="_blank">
           <Flex css={{ display: 'inline-flex', position: 'relative' }}>
             <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
-              ARIA design pattern
+              View on npm
             </Text>
             <Box as="span" css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
               <ExternalIcon />
@@ -440,9 +408,42 @@ const ComponentInfo = ({ version, name, aria }) => (
           </Flex>
         </Link>
       </Box>
-    )}
-  </Box>
-);
+      <Box css={{ mb: '$2' }}>
+        <Link
+          variant="blue"
+          href="https://github.com/radix-ui/primitives/issues/new/choose"
+          target="_blank"
+        >
+          <Flex css={{ display: 'inline-flex', position: 'relative' }}>
+            <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
+              Report an issue
+            </Text>
+            <Box as="span" css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
+              <ExternalIcon />
+            </Box>
+          </Flex>
+        </Link>
+      </Box>
+      {aria && (
+        <Box css={{ mb: '$2' }}>
+          <Link variant="blue" href={aria} target="_blank">
+            <Flex css={{ display: 'inline-flex', position: 'relative' }}>
+              <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
+                ARIA design pattern
+              </Text>
+              <Box
+                as="span"
+                css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}
+              >
+                <ExternalIcon />
+              </Box>
+            </Flex>
+          </Link>
+        </Box>
+      )}
+    </Box>
+  );
+};
 
 const FeatureList = ({ children }) => (
   <Box>
