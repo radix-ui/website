@@ -80,7 +80,7 @@ module.exports = withPlugins(
           .map((file) => path.join(dir, file))
           .filter(isDirectory);
 
-      const getLatestPath = (dir) =>
+      const getPathOfLatestVersion = (dir) =>
         dir.map((currDir) => {
           const [lastVersion] = fs
             .readdirSync(currDir)
@@ -93,20 +93,18 @@ module.exports = withPlugins(
 
       const primitivesDirectory = path.join(__dirname, 'pages/primitives/docs/components');
       const primitivesPaths = getPaths(primitivesDirectory);
-      const latestPrimitivesPaths = getLatestPath(primitivesPaths);
+      const latestPrimitivesPaths = getPathOfLatestVersion(primitivesPaths);
 
       const utilitiesDirectory = path.join(__dirname, 'pages/primitives/docs/utilities');
       const utilitiesPaths = getPaths(utilitiesDirectory);
-      const latestUtilitiesPaths = getLatestPath(utilitiesPaths);
+      const latestUtilitiesPaths = getPathOfLatestVersion(utilitiesPaths);
 
       const all = [...latestPrimitivesPaths, ...latestUtilitiesPaths];
 
       return all.reduce((acc, curr, index) => {
-        const [_, path] = all[index].split('/pages');
-        const rootPathArray = path.split('/');
-        const rootPathArrayWithoutVersion = rootPathArray.pop();
-        const rootPath = rootPathArray.join('/');
-        acc.push({ source: rootPath, destination: path });
+        const [, destination] = all[index].split('/pages');
+        const [, source] = path.join(all[index], '..').split('/pages');
+        acc.push({ source, destination });
         return acc;
       }, []);
     },
@@ -125,15 +123,6 @@ module.exports = withPlugins(
  */
 function makeIdFromPath(resourcePath) {
   return resourcePath.replace('.mdx', '').replace('/index', '');
-}
-
-function getAllVersions(name) {
-  const packageDirectory = path.join(__dirname, `pages/primitives/docs/components/${name}`);
-  let packageVersions = [];
-  if (fs.existsSync(packageDirectory)) {
-    packageVersions = fs.readdirSync(packageDirectory).sort(compareVersions).reverse();
-  }
-  return packageVersions;
 }
 
 function getAllVersionsFromDir(dir) {
