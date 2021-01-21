@@ -6,7 +6,6 @@ const withPlugins = require('next-compose-plugins');
 const withVideos = require('next-videos');
 const withOptimizedImages = require('next-optimized-images');
 const withMdxEnhanced = require('next-mdx-enhanced');
-const { compare } = require('compare-versions');
 
 const withTM = require('next-transpile-modules')(['@modulz/design-system']);
 
