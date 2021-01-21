@@ -23,7 +23,7 @@ import { pages as primitivesPages } from '../utils/primitives';
 import { pages as designSystemPages } from '../utils/designSystem';
 import { useProductType } from '../utils/useProductType';
 import { ScrollArea } from '../components/ScrollArea';
-import { CheckIcon } from '@modulz/radix-icons';
+import { CheckIcon } from '@radix-ui/react-icons';
 import { HeroContext } from '../components/HeroSlot';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
@@ -361,7 +361,7 @@ const ComponentInfo = ({ version, name, aria }) => (
       <Text size="2" as="dt" css={{ fontWeight: 500, mr: '$1' }}>
         Version:
       </Text>
-      <Box as="dd">
+      <Box as="dd" css={{ margin: 0 }}>
         <Link
           variant="subtle"
           href={`https://www.npmjs.com/package/@radix-ui/react-${name}`}

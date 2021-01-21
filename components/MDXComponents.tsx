@@ -1,7 +1,7 @@
 import * as React from 'react';
 import NextLink from 'next/link';
 import * as DS from '@modulz/design-system';
-import { Link2Icon } from '@modulz/radix-icons';
+import { Link2Icon } from '@radix-ui/react-icons';
 import { CodeBlock } from './CodeBlock';
 import { PropsTable } from './PropsTable';
 import { KeyboardTable } from './KeyboardTable';
