@@ -24,14 +24,17 @@ module.exports = withPlugins(
           const isComponent = __resourcePath.includes('/components/');
           const isUtility = __resourcePath.includes('/utilities/');
 
+          const id = makeIdFromPath(__resourcePath);
           const newFrontMatter = {
-            id: makeIdFromPath(__resourcePath),
+            id,
             wordCount: mdxContent.split(/\s+/g).length,
             readingTime: readingTime(mdxContent),
           };
 
           if (isPrimitive && (isComponent || isUtility)) {
             const dir = path.join(__dirname, 'pages', makeIdFromPath(__resourcePath), '..');
+            const [version] = id.split('/').reverse();
+            newFrontMatter.version = version;
             newFrontMatter.versions = getAllVersionsFromDir(dir);
           }
           return newFrontMatter;

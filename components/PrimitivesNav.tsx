@@ -4,7 +4,12 @@ import { Box, Separator } from '@modulz/design-system';
 import { NavHeading } from './NavHeading';
 import { NavItem, NavItemBadge } from './NavItem';
 import { NavList } from './NavList';
-import { overviewPages, componentsPages, utilitiesPages } from '../utils/primitives';
+import {
+  overviewPages,
+  componentsPages,
+  utilitiesPages,
+  removeVersionFromId,
+} from '../utils/primitives';
 
 export function PrimitivesNav() {
   const router = useRouter();
@@ -57,5 +62,3 @@ export function PrimitivesNav() {
     </Box>
   );
 }
-
-const removeVersionFromId = (version, id) => id.replace(`/${version}`, '');

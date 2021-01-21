@@ -55,3 +55,5 @@ function sortByNavRank(page1: FrontMatter, page2: FrontMatter) {
   const pageRank2 = page2.navRank != null ? String(page2.navRank) : page2.title;
   return pageRank1 < pageRank2 ? -1 : pageRank1 > pageRank2 ? 1 : 0;
 }
+
+export const removeVersionFromId = (version, id) => id.replace(`/${version}`, '');

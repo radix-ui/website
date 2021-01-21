@@ -20,7 +20,7 @@ import { Select } from '../components/Select';
 import { FrontMatter } from '../types';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
 import { getPostById } from '../utils/allPosts';
-import { pages as primitivesPages } from '../utils/primitives';
+import { pages as primitivesPages, removeVersionFromId } from '../utils/primitives';
 import { pages as designSystemPages } from '../utils/designSystem';
 import { useProductType } from '../utils/useProductType';
 import { ScrollArea } from '../components/ScrollArea';
@@ -50,7 +50,9 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
   const productPages = allProductPages.filter((p) => p.status !== 'soon');
 
   const currentPageId = router.pathname.substr(1);
-  const currentPageIndex = productPages.findIndex((page) => page.id === currentPageId);
+  const currentPageIndex = productPages.findIndex((page) =>
+    currentPageId.includes(removeVersionFromId(page.version, page.id))
+  );
   const previous = productPages[currentPageIndex - 1];
   const next = productPages[currentPageIndex + 1];
 
@@ -218,7 +220,7 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
             </VisuallyHidden>
             {previous && (
               <Box>
-                <NextLink href={`/${previous.id}`} passHref>
+                <NextLink href={`/${removeVersionFromId(previous.version, previous.id)}`} passHref>
                   <Box
                     as="a"
                     aria-label={`Previous page: ${previous.title}`}
@@ -243,7 +245,7 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
             )}
             {next && (
               <Box css={{ ml: 'auto' }}>
-                <NextLink href={`/${next.id}`} passHref>
+                <NextLink href={`/${removeVersionFromId(next.version, next.id)}`} passHref>
                   <Box
                     as="a"
                     aria-label={`Previous page: ${next.title}`}
