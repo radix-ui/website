@@ -361,19 +361,17 @@ const ComponentInfo = ({ version, versions, name, aria }) => {
         Component Reference Links
       </VisuallyHidden>
       <Separator size="2" css={{ mb: '$4', display: 'block', bp1: { display: 'none' } }} />
-      <Flex css={{ mb: '$4', alignItems: 'baseline' }} as="dl">
-        <Text size="2" as="dt" css={{ fontWeight: 500, mr: '2px' }}>
+      <Flex css={{ mb: '$4', alignItems: 'baseline' }}>
+        <Text size="2" css={{ fontWeight: 500, mr: '2px' }}>
           Version:
         </Text>
-        <Box as="dd" css={{ margin: 0 }}>
-          <Select value={version} onChange={(e) => router.push(`./${e.target.value}`)}>
-            {versions.map((v) => (
-              <option key={v} value={v}>
-                {v}
-              </option>
-            ))}
-          </Select>
-        </Box>
+        <Select value={version} onChange={(e) => router.push(`./${e.target.value}`)}>
+          {versions.map((v) => (
+            <option key={v} value={v}>
+              {v}
+            </option>
+          ))}
+        </Select>
       </Flex>
       <Separator size="2" css={{ mb: '$4', display: 'none', bp1: { display: 'block' } }} />
       <Box css={{ mb: '$2' }}>

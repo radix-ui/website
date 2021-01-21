@@ -14,7 +14,7 @@ const StyledSelect = styled('select', {
   height: '$5',
   pl: '$1',
   pr: '$5',
-  width: '100%',
+  width: 'auto',
   fontVariantNumeric: 'tabular-nums',
 
   '&:focus': { outline: 'none' },
