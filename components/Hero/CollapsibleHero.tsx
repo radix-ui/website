@@ -110,43 +110,43 @@ const CollapsibleContainer = () => {
         ></Box>
       </Box>
 
+      <Box
+        css={{
+          display: 'flex',
+          alignItems: 'center',
+          px: '$2',
+          height: '$2',
+          backgroundColor: 'white',
+          width: 100,
+          position: 'relative',
+        }}
+      >
         <Box
           css={{
-            display: 'flex',
-            alignItems: 'center',
-            px: '$2',
-            height: '$2',
-            backgroundColor: 'white',
-            width: 100,
-            position: 'relative',
-          }}
-        >
-          <Box css={{
             animation: `${tab1} 6000ms infinite`,
             position: 'absolute',
             bottom: -30,
-            left: 0
-          }}>
-            <Box
-              css={{
-                height: '$1',
-                backgroundColor: 'rgba(0,0,0,.8)',
-                width: 75,
-                mt: 10,
-              }}
-            >
-            </Box>
-            <Box
-              css={{
-                height: '$1',
-                backgroundColor: 'rgba(0,0,0,.8)',
-                width: 50,
-                mt: 10,
-              }}
-            >
-            </Box>
-          </Box>
+            left: 0,
+          }}
+        >
+          <Box
+            css={{
+              height: '$1',
+              backgroundColor: 'rgba(0,0,0,.8)',
+              width: 75,
+              mt: 10,
+            }}
+          ></Box>
+          <Box
+            css={{
+              height: '$1',
+              backgroundColor: 'rgba(0,0,0,.8)',
+              width: 50,
+              mt: 10,
+            }}
+          ></Box>
         </Box>
+      </Box>
     </Box>
   );
 };
