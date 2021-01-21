@@ -24,7 +24,7 @@ import { pages as primitivesPages } from '../utils/primitives';
 import { pages as designSystemPages } from '../utils/designSystem';
 import { useProductType } from '../utils/useProductType';
 import { ScrollArea } from '../components/ScrollArea';
-import { CheckIcon, ChevronDownIcon } from '@radix-ui/react-icons';
+import { CheckIcon } from '@radix-ui/react-icons';
 import { HeroContext } from '../components/HeroSlot';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
