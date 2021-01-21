@@ -32,10 +32,10 @@ module.exports = withPlugins(
           };
 
           if (isPrimitive && (isComponent || isUtility)) {
-            const dir = path.join(__dirname, 'pages', makeIdFromPath(__resourcePath), '..');
+            const packagePath = path.join(__dirname, 'pages', makeIdFromPath(__resourcePath), '..');
             const [version] = id.split('/').reverse();
             newFrontMatter.version = version;
-            newFrontMatter.versions = getAllVersionsFromDir(dir);
+            newFrontMatter.versions = getAllVersionsFromPath(packagePath);
           }
           return newFrontMatter;
         },
@@ -102,14 +102,15 @@ module.exports = withPlugins(
       const utilitiesPaths = getPaths(utilitiesDirectory);
       const latestUtilitiesPaths = getPathOfLatestVersion(utilitiesPaths);
 
-      const all = [...latestPrimitivesPaths, ...latestUtilitiesPaths];
-
-      return all.reduce((acc, curr, index) => {
-        const [, destination] = all[index].split('/pages');
-        const [, source] = path.join(all[index], '..').split('/pages');
-        acc.push({ source, destination });
-        return acc;
-      }, []);
+      return [...latestPrimitivesPaths, ...latestUtilitiesPaths].reduce(
+        (redirects, paths, index) => {
+          const [, destination] = paths.split('/pages');
+          const [, source] = path.join(paths, '..').split('/pages');
+          redirects.push({ source, destination });
+          return redirects;
+        },
+        []
+      );
     },
   }
 );
@@ -128,7 +129,7 @@ function makeIdFromPath(resourcePath) {
   return resourcePath.replace('.mdx', '').replace('/index', '');
 }
 
-function getAllVersionsFromDir(dir) {
-  if (!fs.existsSync(dir)) return [];
-  return fs.readdirSync(dir).sort(compareVersions).reverse();
+function getAllVersionsFromPath(path) {
+  if (!fs.existsSync(path)) return [];
+  return fs.readdirSync(path).sort(compareVersions).reverse();
 }
