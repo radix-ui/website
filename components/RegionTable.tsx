@@ -14,6 +14,7 @@ export function RegionTable({
       aria-labelledby={ariaLabelledBy}
       tabIndex={0}
       css={{
+        position: 'relative',
         overflow: 'auto',
         '&:focus': {
           outline: 0,
