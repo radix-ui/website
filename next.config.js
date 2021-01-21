@@ -21,7 +21,6 @@ module.exports = withPlugins(
         process: (mdxContent, frontMatter) => {
           const { __resourcePath } = frontMatter;
           const isPrimitive = __resourcePath.includes('primitives/');
-          const isDesignSystem = __resourcePath.includes('design-system/');
           const isComponent = __resourcePath.includes('/components/');
           const isUtility = __resourcePath.includes('/utilities/');
 
@@ -31,7 +30,7 @@ module.exports = withPlugins(
             readingTime: readingTime(mdxContent),
           };
 
-          if ((isPrimitive || isDesignSystem) && (isComponent || isUtility)) {
+          if (isPrimitive && (isComponent || isUtility)) {
             const dir = path.join(__dirname, 'pages', makeIdFromPath(__resourcePath), '..');
             newFrontMatter.versions = getAllVersionsFromDir(dir);
           }

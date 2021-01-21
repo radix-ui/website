@@ -129,7 +129,7 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
                 </Box>
                 <ComponentInfo
                   version={frontMatter.version}
-                  versions={frontMatter.versions}
+                  versions={frontMatter.versions || []}
                   name={frontMatter.name}
                   aria={frontMatter.aria}
                 />
