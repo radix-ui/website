@@ -1335,7 +1335,14 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-a
     },
     {
       keys: ['Enter'],
-      description: 'Activates the focused item.',
+      description: (
+        <span>
+          When focus is on <Code>DropdownMenu.Trigger</Code>, opens
+          the dropdown menu.
+          <br />
+          When focus is on an item, activates the focused item.
+        </span>
+      ),
     },
     {
       keys: ['ArrowDown'],
