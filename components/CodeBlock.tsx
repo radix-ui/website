@@ -314,7 +314,11 @@ export function CodeBlock({
         <CodeContainer
           live={live}
           css={
-            compact && !isOpen ? { maxHeight: 200, overflow: 'hidden' } : { paddingBottom: '$8' }
+            compact
+              ? !isOpen
+                ? { maxHeight: 200, overflow: 'hidden' }
+                : { paddingBottom: '$8' }
+              : {}
           }
         >
           {compact && (
