@@ -324,13 +324,26 @@ export function CodeBlock({
                 p: '$2',
                 borderBottomLeftRadius: '$2',
                 borderBottomRightRadius: '$2',
-                backgroundColor: 'white',
+                backgroundColor: '$loContrast',
                 boxShadow: 'inset 0 0 0 1px $gray500',
                 position: 'absolute',
                 left: 0,
                 right: 0,
                 bottom: 0,
                 zIndex: 1,
+                '&::before': isOpen
+                  ? undefined
+                  : {
+                      content: '""',
+                      display: 'block',
+                      height: '$9',
+                      position: 'absolute',
+                      left: 1,
+                      right: 1,
+                      bottom: '$7',
+                      backgroundImage:
+                        'linear-gradient(to top, var(--colors-gray100) 20%, transparent)',
+                    },
               }}
             >
               <Button onClick={() => setIsOpen(!isOpen)}>
