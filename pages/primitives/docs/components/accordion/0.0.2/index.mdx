@@ -131,6 +131,19 @@ Contains all the parts of an accordion.
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-accordion',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
+    {
       name: 'value',
       required: false,
       type: 'string',
@@ -187,6 +200,19 @@ Contains all the parts of a collapsible section.
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-accordion-item',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
+    {
       name: 'disabled',
       required: false,
       type: 'boolean',
@@ -222,6 +248,19 @@ Wraps an `Accordion.Button`. Use the `as` prop to update it to the appropriate h
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-accordion-header',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
   ]}
 />
 
@@ -240,6 +279,19 @@ Toggles the collapsed state of its associated item. It should be nested inside o
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-accordion-button',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
   ]}
 />
 
@@ -257,6 +309,19 @@ Contains the collapsible content for an item.
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-accordion-panel',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
     },
     {
       name: 'forceMount',
