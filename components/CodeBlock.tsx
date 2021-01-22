@@ -116,7 +116,15 @@ const StyledLivePreview = ({ live, ...props }: { live?: boolean }) => (
   </Box>
 );
 
-const CodeContainer = ({ live, children }: { live?: boolean; children: React.ReactNode }) => (
+const CodeContainer = ({
+  live,
+  children,
+  css,
+}: {
+  live?: boolean;
+  children: React.ReactNode;
+  css?: any;
+}) => (
   <Box
     css={{
       p: '$4',
@@ -131,6 +139,7 @@ const CodeContainer = ({ live, children }: { live?: boolean; children: React.Rea
       'textarea::selection': {
         backgroundColor: 'hsla(208, 100%, 97%,1)',
       },
+      ...css,
     }}
     children={children}
   />
@@ -253,11 +262,7 @@ export function CodeBlock({
         )}
         <Box
           ref={containerRef}
-          css={{
-            position: 'relative',
-            zIndex: 1,
-            display: isOpen ? 'block' : 'none',
-          }}
+          css={{ position: 'relative', zIndex: 1, display: isOpen ? 'block' : 'none' }}
         >
           <CodeContainer live={live}>
             <LiveEditor
@@ -270,25 +275,6 @@ export function CodeBlock({
             />
           </CodeContainer>
           <CopyButton onClick={onCopy}>{hasCopied ? 'Copied' : 'Copy'}</CopyButton>
-          {/* <Text
-            as="span"
-            size="1"
-            css={{
-              fontFamily: '$untitled',
-              textTransform: 'uppercase',
-              position: 'absolute',
-              width: '100%',
-              top: '$2',
-              zIndex: 0,
-              textAlign: 'center',
-              pointerEvents: 'none',
-              color: '$gray900',
-              letterSpacing: '.1em',
-              fontSize: '11px',
-            }}
-          >
-            Live example
-          </Text> */}
         </Box>
         <LiveError
           style={{
@@ -323,16 +309,35 @@ export function CodeBlock({
   }
 
   return (
-    <Box
-      css={{
-        position: 'relative',
-        zIndex: 1,
-        mb: '$3',
-      }}
-      ref={containerRef}
-    >
+    <Box css={{ position: 'relative', zIndex: 1, mb: '$3' }} ref={containerRef}>
       <LiveProvider disabled {...liveProviderProps}>
-        <CodeContainer live={live}>
+        <CodeContainer
+          live={live}
+          css={
+            compact && !isOpen ? { maxHeight: 200, overflow: 'hidden' } : { paddingBottom: '$8' }
+          }
+        >
+          {compact && (
+            <Box
+              css={{
+                textAlign: 'right',
+                p: '$2',
+                borderBottomLeftRadius: '$2',
+                borderBottomRightRadius: '$2',
+                backgroundColor: 'white',
+                boxShadow: 'inset 0 0 0 1px $gray500',
+                position: 'absolute',
+                left: 0,
+                right: 0,
+                bottom: 0,
+                zIndex: 1,
+              }}
+            >
+              <Button onClick={() => setIsOpen(!isOpen)}>
+                {isOpen ? 'Collapse' : 'Expand'} code
+              </Button>
+            </Box>
+          )}
           <LiveEditor style={liveEditorStyle} {...{ padding: 0 }} />
         </CodeContainer>
         <CopyButton onClick={onCopy}>{hasCopied ? 'Copied' : 'Copy'}</CopyButton>
