@@ -27,8 +27,8 @@ export function Select({ children, ...props }) {
         position: 'relative',
         alignItems: 'center',
         borderRadius: '$1',
-        '&:focus-within': { backgroundColor: '$gray100' },
-        '&:hover': { backgroundColor: '$gray100' },
+        '&:focus-within': { boxShadow: 'inset 0 0 0 1px $gray600' },
+        '&:hover': { boxShadow: 'inset 0 0 0 1px $gray600' },
       }}
     >
       <StyledSelect {...props}>{children}</StyledSelect>
