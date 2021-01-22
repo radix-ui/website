@@ -103,7 +103,7 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
               {frontMatter.description}
             </Subtitle>
 
-            {categoryType !== 'overview' && frontMatter.version !== frontMatter.versions[0] && (
+            {categoryType !== 'overview' && frontMatter.version !== frontMatter.versions?.[0] && (
               <Box
                 as="aside"
                 css={{
