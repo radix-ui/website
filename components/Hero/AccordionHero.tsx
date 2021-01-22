@@ -2,22 +2,22 @@ import React from 'react';
 import { Box, styled, css, Flex } from '@modulz/design-system';
 
 const panel1 = css.keyframes({
-    '0%': { transform: 'translateY(0)' },
-    '29.9999%': { transform: 'translateY(0)' },
-    '30%': { transform: 'translateY(0)' },
-    '69.9999%': { transform: 'translateY(0)' },
-    '70%': { transform: 'translateY(0)' },
-    '100%': { transform: 'translateY(0)' },
-  });
-  
-  const panel2 = css.keyframes({
-      '0%': { transform: 'translateY(0)' },
-      '29.9999%': { transform: 'translateY(0)' },
-      '30%': { transform: 'translateY(30px)' },
-      '69.9999%': { transform: 'translateY(30px)' },
-      '70%': { transform: 'translateY(0)' },
-      '100%': { transform: 'translateY(0)' },
-    });
+  '0%': { transform: 'translateY(0)' },
+  '29.9999%': { transform: 'translateY(0)' },
+  '30%': { transform: 'translateY(0)' },
+  '69.9999%': { transform: 'translateY(0)' },
+  '70%': { transform: 'translateY(0)' },
+  '100%': { transform: 'translateY(0)' },
+});
+
+const panel2 = css.keyframes({
+  '0%': { transform: 'translateY(0)' },
+  '29.9999%': { transform: 'translateY(0)' },
+  '30%': { transform: 'translateY(30px)' },
+  '69.9999%': { transform: 'translateY(30px)' },
+  '70%': { transform: 'translateY(0)' },
+  '100%': { transform: 'translateY(0)' },
+});
 
 const text1 = css.keyframes({
   '0%': { opacity: '0' },
@@ -29,13 +29,13 @@ const text1 = css.keyframes({
 });
 
 const text2 = css.keyframes({
-    '0%': { opacity: '0' },
-    '29.9999%': { opacity: '0' },
-    '30%': { opacity: '0' },
-    '69.9999%': { opacity: '0' },
-    '70%': { opacity: '0' },
-    '100%': { opacity: '0' },
-  });
+  '0%': { opacity: '0' },
+  '29.9999%': { opacity: '0' },
+  '30%': { opacity: '0' },
+  '69.9999%': { opacity: '0' },
+  '70%': { opacity: '0' },
+  '100%': { opacity: '0' },
+});
 
 const cursor = css.keyframes({
   '0%': { transform: 'translate(30px, 30px)' },
@@ -137,82 +137,82 @@ const AccordionContainer = () => {
         ></Box>
       </Box>
 
+      <Box
+        css={{
+          display: 'flex',
+          alignItems: 'center',
+          px: '$2',
+          height: '$2',
+          backgroundColor: 'white',
+          width: 100,
+          position: 'relative',
+          animation: `${panel1} 6000ms infinite`,
+        }}
+      >
         <Box
           css={{
-            display: 'flex',
-            alignItems: 'center',
-            px: '$2',
-            height: '$2',
-            backgroundColor: 'white',
-            width: 100,
-            position: 'relative',
-            animation: `${panel1} 6000ms infinite`,
-          }}
-        >
-          <Box css={{
             animation: `${text1} 6000ms infinite`,
             position: 'absolute',
             bottom: -30,
-            left: 0
-          }}>
-            <Box
-              css={{
-                height: '$1',
-                backgroundColor: 'rgba(0,0,0,.8)',
-                width: 75,
-                mt: 10,
-              }}
-            >
-            </Box>
-            <Box
-              css={{
-                height: '$1',
-                backgroundColor: 'rgba(0,0,0,.8)',
-                width: 50,
-                mt: 10,
-              }}
-            >
-            </Box>
-          </Box>
-        </Box>
-        <Box
-          css={{
-            display: 'flex',
-            alignItems: 'center',
-            height: '$2',
-            backgroundColor: 'white',
-            width: 100,
-            position: 'relative',
-            my: 10,
-            animation: `${panel2} 6000ms infinite`,
+            left: 0,
           }}
         >
-          <Box css={{
+          <Box
+            css={{
+              height: '$1',
+              backgroundColor: 'rgba(0,0,0,.8)',
+              width: 75,
+              mt: 10,
+            }}
+          ></Box>
+          <Box
+            css={{
+              height: '$1',
+              backgroundColor: 'rgba(0,0,0,.8)',
+              width: 50,
+              mt: 10,
+            }}
+          ></Box>
+        </Box>
+      </Box>
+      <Box
+        css={{
+          display: 'flex',
+          alignItems: 'center',
+          height: '$2',
+          backgroundColor: 'white',
+          width: 100,
+          position: 'relative',
+          my: 10,
+          animation: `${panel2} 6000ms infinite`,
+        }}
+      >
+        <Box
+          css={{
             animation: `${text2} 6000ms infinite`,
             position: 'absolute',
             bottom: -30,
-            left: 0
-          }}>
-            <Box
-              css={{
-                height: '$1',
-                backgroundColor: 'rgba(0,0,0,.8)',
-                width: 75,
-                mt: 10,
-              }}
-            >
-            </Box>
-            <Box
-              css={{
-                height: '$1',
-                backgroundColor: 'rgba(0,0,0,.8)',
-                width: 50,
-                mt: 10,
-              }}
-            >
-            </Box>
-          </Box>
+            left: 0,
+          }}
+        >
+          <Box
+            css={{
+              height: '$1',
+              backgroundColor: 'rgba(0,0,0,.8)',
+              width: 75,
+              mt: 10,
+            }}
+          ></Box>
+          <Box
+            css={{
+              height: '$1',
+              backgroundColor: 'rgba(0,0,0,.8)',
+              width: 50,
+              mt: 10,
+            }}
+          ></Box>
         </Box>
+      </Box>
     </Box>
   );
 };

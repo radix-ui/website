@@ -2,230 +2,232 @@ import React from 'react';
 import { Box, styled, css, Flex } from '@modulz/design-system';
 
 const scrollarea = css.keyframes({
-    '0%': { transform: 'translateY(0)' },
-    '20%': { transform: 'translateY(0)' },
-    '40%': { transform: 'translateY(-150px)' },
-    '60%': { transform: 'translateY(-150px)' },
-    '80%': { transform: 'translateY(0)' },
-    '100%': { transform: 'translateY(0)' },
-  });
+  '0%': { transform: 'translateY(0)' },
+  '20%': { transform: 'translateY(0)' },
+  '40%': { transform: 'translateY(-150px)' },
+  '60%': { transform: 'translateY(-150px)' },
+  '80%': { transform: 'translateY(0)' },
+  '100%': { transform: 'translateY(0)' },
+});
 
-  const scrollbar = css.keyframes({
-    '0%': { transform: 'translateY(0)' },
-    '20%': { transform: 'translateY(0)' },
-    '40%': { transform: 'translateY(50px)' },
-    '60%': { transform: 'translateY(50px)' },
-    '80%': { transform: 'translateY(0)' },
-    '100%': { transform: 'translateY(0)' },
-  });
+const scrollbar = css.keyframes({
+  '0%': { transform: 'translateY(0)' },
+  '20%': { transform: 'translateY(0)' },
+  '40%': { transform: 'translateY(50px)' },
+  '60%': { transform: 'translateY(50px)' },
+  '80%': { transform: 'translateY(0)' },
+  '100%': { transform: 'translateY(0)' },
+});
 
 const cursor = css.keyframes({
-    '0%': { transform: 'translateY(0)' },
-    '20%': { transform: 'translateY(0)' },
-    '40%': { transform: 'translateY(50px)' },
-    '60%': { transform: 'translateY(50px)' },
-    '80%': { transform: 'translateY(0)' },
-    '100%': { transform: 'translateY(0)' },
+  '0%': { transform: 'translateY(0)' },
+  '20%': { transform: 'translateY(0)' },
+  '40%': { transform: 'translateY(50px)' },
+  '60%': { transform: 'translateY(50px)' },
+  '80%': { transform: 'translateY(0)' },
+  '100%': { transform: 'translateY(0)' },
 });
 
 const ScrollAreaContainer = () => {
   return (
-
     // Container
-      <Box css={{
-          position: 'relative',
-      }}>
-
-        <Box
-        css={{
-            position: 'relative',
-            backgroundColor: 'white',
-            borderRadius: '5px',
-            width: 200,
-            p: '$3',
-            boxShadow:
-            'hsla(252, 4%, 9%, 0.35) 0px 10px 38px -10px, hsla(252, 4%, 9%, 0.2) 0px 10px 20px -15px',
-            height: 100,
-            overflow: 'hidden',
-        }}
-        >
-            <Box css={{
-                animation: `${scrollarea} 8000ms infinite`,
-            }}>
-                <Box
-            css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'hsl(206,10%,70%)',
-            height: 12,
-            width: '45%',
-            mb: 12,
-            }}
-        ></Box>
-        <Box
-            css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'hsl(206,10%,70%)',
-            height: 4,
-            width: '90%',
-            mb: 12,
-            }}
-        ></Box>
-        <Box
-            css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'hsl(206,10%,70%)',
-            height: 4,
-            width: '70%',
-            mb: 12,
-            }}
-        ></Box>
-        <Box
-            css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'hsl(206,10%,70%)',
-            height: 4,
-            width: '90%',
-            mb: 12,
-            }}
-        ></Box>
-        <Box
-            css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'hsl(206,10%,70%)',
-            height: 4,
-            width: '70%',
-            mb: 12,
-            }}
-        ></Box>
-        <Box
-            css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'hsl(206,10%,70%)',
-            height: 4,
-            width: '90%',
-            mb: 12,
-            }}
-        ></Box>
-        <Box
-            css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'hsl(206,10%,70%)',
-            height: 4,
-            width: '70%',
-            mb: 12,
-            }}
-        ></Box>
-        <Box
-            css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'hsl(206,10%,70%)',
-            height: 4,
-            width: '90%',
-            mb: 12,
-            }}
-        ></Box>
-        <Box
-            css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'hsl(206,10%,70%)',
-            height: 4,
-            width: '70%',
-            mb: 12,
-            }}
-        ></Box>
-        <Box
-            css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'hsl(206,10%,70%)',
-            height: 4,
-            width: '90%',
-            mb: 12,
-            }}
-        ></Box>
-        <Box
-            css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'hsl(206,10%,70%)',
-            height: 4,
-            width: '70%',
-            mb: 12,
-            }}
-        ></Box>
-        <Box
-            css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'hsl(206,10%,70%)',
-            height: 4,
-            width: '90%',
-            mb: 12,
-            }}
-        ></Box>
-        <Box
-            css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'hsl(206,10%,70%)',
-            height: 4,
-            width: '70%',
-            mb: 12,
-            }}
-        ></Box>
-        <Box
-            css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'hsl(206,10%,70%)',
-            height: 4,
-            width: '90%',
-            mb: 12,
-            }}
-        ></Box>
-        <Box
-            css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'hsl(206,10%,70%)',
-            height: 4,
-            width: '70%',
-            mb: 12,
-            }}
-        ></Box>
-    </Box>
-    </Box>
-
     <Box
-            css={{
-                position: 'absolute',
-            backgroundColor: 'hsl(206,10%,70%)',
-            height: 35,
-            width: 5,
-            top: 5,
-            right: 5,
-            borderRadius: '9999px',
-            animation: `${scrollbar} 8000ms infinite`,
-            }}
-        ></Box>
-
+      css={{
+        position: 'relative',
+      }}
+    >
+      <Box
+        css={{
+          position: 'relative',
+          backgroundColor: 'white',
+          borderRadius: '5px',
+          width: 200,
+          p: '$3',
+          boxShadow:
+            'hsla(252, 4%, 9%, 0.35) 0px 10px 38px -10px, hsla(252, 4%, 9%, 0.2) 0px 10px 20px -15px',
+          height: 100,
+          overflow: 'hidden',
+        }}
+      >
+        <Box
+          css={{
+            animation: `${scrollarea} 8000ms infinite`,
+          }}
+        >
           <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'hsl(206,10%,70%)',
+              height: 12,
+              width: '45%',
+              mb: 12,
+            }}
+          ></Box>
+          <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'hsl(206,10%,70%)',
+              height: 4,
+              width: '90%',
+              mb: 12,
+            }}
+          ></Box>
+          <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'hsl(206,10%,70%)',
+              height: 4,
+              width: '70%',
+              mb: 12,
+            }}
+          ></Box>
+          <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'hsl(206,10%,70%)',
+              height: 4,
+              width: '90%',
+              mb: 12,
+            }}
+          ></Box>
+          <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'hsl(206,10%,70%)',
+              height: 4,
+              width: '70%',
+              mb: 12,
+            }}
+          ></Box>
+          <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'hsl(206,10%,70%)',
+              height: 4,
+              width: '90%',
+              mb: 12,
+            }}
+          ></Box>
+          <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'hsl(206,10%,70%)',
+              height: 4,
+              width: '70%',
+              mb: 12,
+            }}
+          ></Box>
+          <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'hsl(206,10%,70%)',
+              height: 4,
+              width: '90%',
+              mb: 12,
+            }}
+          ></Box>
+          <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'hsl(206,10%,70%)',
+              height: 4,
+              width: '70%',
+              mb: 12,
+            }}
+          ></Box>
+          <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'hsl(206,10%,70%)',
+              height: 4,
+              width: '90%',
+              mb: 12,
+            }}
+          ></Box>
+          <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'hsl(206,10%,70%)',
+              height: 4,
+              width: '70%',
+              mb: 12,
+            }}
+          ></Box>
+          <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'hsl(206,10%,70%)',
+              height: 4,
+              width: '90%',
+              mb: 12,
+            }}
+          ></Box>
+          <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'hsl(206,10%,70%)',
+              height: 4,
+              width: '70%',
+              mb: 12,
+            }}
+          ></Box>
+          <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'hsl(206,10%,70%)',
+              height: 4,
+              width: '90%',
+              mb: 12,
+            }}
+          ></Box>
+          <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'hsl(206,10%,70%)',
+              height: 4,
+              width: '70%',
+              mb: 12,
+            }}
+          ></Box>
+        </Box>
+      </Box>
+
+      <Box
+        css={{
+          position: 'absolute',
+          backgroundColor: 'hsl(206,10%,70%)',
+          height: 35,
+          width: 5,
+          top: 5,
+          right: 5,
+          borderRadius: '9999px',
+          animation: `${scrollbar} 8000ms infinite`,
+        }}
+      ></Box>
+
+      <Box
         css={{
           position: 'absolute',
           top: 25,
           right: -13,
           transform: 'translate(30px, 30px)',
           animation: `${cursor} 8000ms infinite`,
-        //   animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+          //   animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
           zIndex: '1',
         }}
       >
@@ -278,7 +280,6 @@ const ScrollAreaContainer = () => {
           </defs>
         </svg>
       </Box>
-
     </Box>
   );
 };

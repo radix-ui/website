@@ -15,6 +15,7 @@ export type FrontMatter = {
   status?: 'new' | 'soon' | 'deprecated';
   features?: string[];
   version: string;
+  versions?: string[];
   aria?: string;
   __resourcePath: string;
 };
