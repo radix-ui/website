@@ -114,6 +114,19 @@ Contains all the parts of a radio group.
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-radio-group',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
+    {
       name: 'defaultValue',
       type: 'string',
       description:
@@ -162,6 +175,19 @@ An item in the group that can be checked.
       default: 'button',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-radio-group-item',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
     },
     {
       name: 'name',
@@ -233,6 +259,19 @@ Renders when the radio item is in a checked state. You can style this element di
       default: 'span',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-radio-group-indicator',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
     },
     {
       name: 'forceMount',
