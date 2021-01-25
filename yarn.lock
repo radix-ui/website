@@ -744,12 +744,12 @@
     "@radix-ui/react-utils" "0.0.2"
     "@radix-ui/utils" "0.0.2"
 
-"@radix-ui/react-alert-dialog@0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-alert-dialog/-/react-alert-dialog-0.0.2.tgz#425fc1e4e36a77fd2ba1650c454f9113e89355e5"
-  integrity sha512-kBPJqbSyjnlFz5RDLNe58U1E+Buu7dBgwKQQtAOO4w8QtVMvSgvyT/LGjEGRSUx2ozaN8MDzJvZ8h+3uFVRs1Q==
+"@radix-ui/react-alert-dialog@0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-alert-dialog/-/react-alert-dialog-0.0.3.tgz#52cd58e41072d0133ddcb7539bd9a1d3471bf6e7"
+  integrity sha512-VQYRUNUE+Aedw/rNgqpJl6CwyvZHT+NPgvlm/e4fW1cEQ5KH/5irejVLHz3yzAYauDtL2JdN7bkQurXrr6MzKw==
   dependencies:
-    "@radix-ui/react-dialog" "0.0.2"
+    "@radix-ui/react-dialog" "0.0.3"
     "@radix-ui/react-polymorphic" "0.0.2"
     "@radix-ui/react-primitive" "0.0.1"
     "@radix-ui/react-utils" "0.0.2"
@@ -831,21 +831,21 @@
   dependencies:
     "@radix-ui/react-utils" "0.0.2"
 
-"@radix-ui/react-context-menu@0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-context-menu/-/react-context-menu-0.0.2.tgz#d81ecf7c53f0a37e8a95b5365f9850df8cd573eb"
-  integrity sha512-/9nFjKs/u9WHi1xj/QoAxueyHL+0hm+pGl3hBB4MlH8rsHsVeFfxCDIOkSFtdvIHUtSjQCiWJU0SnbNF75jJhw==
+"@radix-ui/react-context-menu@0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-context-menu/-/react-context-menu-0.0.3.tgz#208ff26ad466e7baa69be647b8e91c85c42abe6d"
+  integrity sha512-FD4hz8sC/OVeQn4f8D4HYuJeTXIBgShKZzSE1wAc8p3Kc55xNvjOk3a7ZzIshyJIoVfMsHbHat2lIt6yunzUPQ==
   dependencies:
-    "@radix-ui/react-menu" "0.0.2"
+    "@radix-ui/react-menu" "0.0.3"
     "@radix-ui/react-polymorphic" "0.0.2"
     "@radix-ui/react-primitive" "0.0.1"
     "@radix-ui/react-utils" "0.0.2"
     "@radix-ui/utils" "0.0.2"
 
-"@radix-ui/react-dialog@0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-dialog/-/react-dialog-0.0.2.tgz#d3c400815716e305951df4c74b610cb530b7164e"
-  integrity sha512-8k+1BmSd8gXKomIAYla90rGE6Rd1/lkvAWDlgEr08DzfrrlsoJkTjUfnoWVKgsG4nAfLDGxWwJmG6edRh/6DyQ==
+"@radix-ui/react-dialog@0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-dialog/-/react-dialog-0.0.3.tgz#08ef9513fb6ac118f8ec38a48dd4eda479bd315a"
+  integrity sha512-47Pd268vqG2Wfq+XrRzgLhX0JPo4fXlvgCrbrLXlj27broqiZlo7NEfz20ZvpP3/QXjxDQtgEvFU6NwR5qijdw==
   dependencies:
     "@radix-ui/react-dismissable-layer" "0.0.2"
     "@radix-ui/react-focus-guards" "0.0.2"
@@ -873,12 +873,12 @@
   dependencies:
     "@radix-ui/react-utils" "0.0.2"
 
-"@radix-ui/react-dropdown-menu@0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-dropdown-menu/-/react-dropdown-menu-0.0.2.tgz#387fb69fab4eaf09eed62be29ae13ec0dce4c37a"
-  integrity sha512-PM80EQKQaow16UzHtM+4fsFqSzanLAziWuboiqCGxu4taojg3KwBn6MTeA+Gm8VsYl6oHFgKQaOquiDC7E/+sA==
+"@radix-ui/react-dropdown-menu@0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-dropdown-menu/-/react-dropdown-menu-0.0.3.tgz#e12f396e5a1374a3402758a29d815a1fa26ff5f7"
+  integrity sha512-rl/05U7ullkOtYDnAnMj1ktkOEcRL6laW+oZse6oF86nMzd04F2SotZEMRvKIspG9M1lSGCJPSKDecnYGW/6Uw==
   dependencies:
-    "@radix-ui/react-menu" "0.0.2"
+    "@radix-ui/react-menu" "0.0.3"
     "@radix-ui/react-polymorphic" "0.0.2"
     "@radix-ui/react-primitive" "0.0.1"
     "@radix-ui/react-utils" "0.0.2"
@@ -943,10 +943,10 @@
     aria-hidden "^1.1.1"
     react-remove-scroll "^2.4.0"
 
-"@radix-ui/react-menu@0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-menu/-/react-menu-0.0.2.tgz#5694d29b7312bb93d7bd730c117c0ad6702d9eb8"
-  integrity sha512-JO4uplLBF60YKLNRKZL+uI9zQQ1+ARCOSgiNI1eWp0+6BacayhAKoYsAh4bgyFhjnZuUKzBp+aP99KgoYalpMg==
+"@radix-ui/react-menu@0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-menu/-/react-menu-0.0.3.tgz#42d4dbe33d2529e74a9fbf3bf644527e17e1fe1a"
+  integrity sha512-rK7iFsfdZ8OY1V8lPNVsx7REVbKB+h02zzP2xniTpVEsHo3fw8T0YDJUciK9SG0VGSApHLl6DaYQtWeZDPwu6A==
   dependencies:
     "@radix-ui/react-dismissable-layer" "0.0.2"
     "@radix-ui/react-focus-guards" "0.0.2"
