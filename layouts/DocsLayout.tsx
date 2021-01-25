@@ -102,6 +102,42 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
             <Subtitle css={{ mt: '$2', mb: '$7' }} as={'p' as any} role="doc-subtitle">
               {frontMatter.description}
             </Subtitle>
+
+            {categoryType !== 'overview' && frontMatter.version !== frontMatter.versions?.[0] && (
+              <Box
+                as="aside"
+                css={{
+                  my: '$6',
+                  py: '$2',
+                  px: '$3',
+                  bc: '$yellow100',
+                  border: '1px solid $yellow400',
+                  borderRadius: '$2',
+                  '& p': {
+                    fontSize: '$3',
+                    color: '$yellow900',
+                    lineHeight: '21px',
+                    margin: 0,
+                  },
+                }}
+              >
+                <p>
+                  A newer version of{' '}
+                  <Box as="span" css={{ fontWeight: 500 }}>
+                    {frontMatter.title}
+                  </Box>{' '}
+                  is available.{' '}
+                  <NextLink
+                    href={`/${removeVersionFromId(frontMatter.version, frontMatter.id)}`}
+                    passHref
+                  >
+                    <Link variant="blue">Learn more</Link>
+                  </NextLink>
+                  .
+                </p>
+              </Box>
+            )}
+
             <div ref={heroSlotRef} />
             {categoryType !== 'overview' && (
               <Flex

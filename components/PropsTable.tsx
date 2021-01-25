@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, IconButton, Text, Code, Popover } from '@modulz/design-system';
-import { CheckIcon, InfoCircledIcon, DividerHorizontalIcon } from '@radix-ui/react-icons';
+import { InfoCircledIcon, DividerHorizontalIcon } from '@radix-ui/react-icons';
 import { RegionTable } from './RegionTable';
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
 
@@ -46,21 +46,6 @@ export function PropsTable({
               Default
             </Text>
           </Box>
-
-          <Box
-            as="th"
-            css={{
-              borderBottom: '1px solid $gray500',
-              py: '$3',
-              textAlign: 'right',
-              width: 'auto',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            <Text size="2" css={{ color: '$gray900' }}>
-              Required
-            </Text>
-          </Box>
         </tr>
       </thead>
       <tbody>
@@ -70,7 +55,10 @@ export function PropsTable({
               as="td"
               css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4', whiteSpace: 'nowrap' }}
             >
-              <Code>{name}</Code>
+              <Code>
+                {name}
+                {required ? '*' : null}
+              </Code>
               {description && (
                 <Popover>
                   <Popover.Trigger
@@ -126,43 +114,6 @@ export function PropsTable({
                 <Code css={{ bc: '$gray200', color: '$gray900' }}>{defaultValue}</Code>
               ) : (
                 <Box as={AccessibleIcon} label="No default value" css={{ color: '$gray600' }}>
-                  <DividerHorizontalIcon />
-                </Box>
-              )}
-            </Box>
-
-            <Box
-              as="td"
-              css={{
-                borderBottom: '1px solid $gray500',
-                py: '$3',
-                textAlign: 'right',
-                width: '60px',
-              }}
-            >
-              {required ? (
-                <Box
-                  as={AccessibleIcon}
-                  label="Required"
-                  css={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '$5',
-                    height: '$5',
-                    backgroundColor: '$blue200',
-                    borderRadius: '50%',
-                    color: '$blue900',
-                  }}
-                >
-                  <CheckIcon />
-                </Box>
-              ) : (
-                <Box
-                  as={AccessibleIcon}
-                  label="Not required"
-                  css={{ display: 'inline-flex', color: '$gray600' }}
-                >
                   <DividerHorizontalIcon />
                 </Box>
               )}
