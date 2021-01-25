@@ -122,11 +122,19 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
                 }}
               >
                 <p>
-                  You are viewing the documentation for{' '}
+                  This page contains documentation for an older version of{' '}
                   <Box as="span" css={{ fontWeight: 500 }}>
-                    {frontMatter.title} v{frontMatter.version}
-                  </Box>
-                  . Consider updating to the latest version.
+                    {frontMatter.title}
+                  </Box>{' '}
+                  ({frontMatter.version}). If you want to view the documentation for the latest
+                  version ({frontMatter.versions?.[0]}),{' '}
+                  <NextLink
+                    href={`/${removeVersionFromId(frontMatter.version, frontMatter.id)}`}
+                    passHref
+                  >
+                    <Link variant="blue">click here</Link>
+                  </NextLink>
+                  .
                 </p>
               </Box>
             )}
