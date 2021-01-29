@@ -1,0 +1,100 @@
+---
+title: Aspect Ratio
+name: aspect-ratio
+description: Displays content within a desired ratio.
+features:
+  - Accepts any custom ratio.
+---
+
+## Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-aspect-ratio
+```
+
+## Anatomy
+
+Import the component.
+
+```jsx
+import * as AspectRatio from '@radix-ui/react-aspect-ratio';
+
+export default () => <AspectRatio.Root />;
+```
+
+## Basic example
+
+Use the aspect ratio primitive.
+
+```jsx live manual
+import * as AspectRatio from '@radix-ui/react-aspect-ratio';
+
+export default () => (
+  <AspectRatio.Root>
+    <img
+      src="https://images.unsplash.com/photo-1605030753481-bb38b08c384a"
+      alt="mountain view"
+      style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+    />
+  </AspectRatio.Root>
+);
+```
+
+## API Reference
+
+### Root
+
+Contains the content you want to constrain to a given ratio.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-aspect-ratio',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
+    {
+      name: 'ratio',
+      type: 'number',
+      default: '1',
+      description: 'The desired ratio',
+    },
+  ]}
+/>
+
+## Examples
+
+### 16 x 9 ratio
+
+```jsx live manual compact
+import * as AspectRatio from '@radix-ui/react-aspect-ratio';
+
+export default () => (
+  <AspectRatio.Root ratio={16 / 9}>
+    <img
+      src="https://images.unsplash.com/photo-1605030753481-bb38b08c384a"
+      alt="mountain view"
+      style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+    />
+  </AspectRatio.Root>
+);
+```
