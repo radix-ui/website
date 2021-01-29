@@ -30,6 +30,7 @@
     "@radix-ui/react-scroll-area": "0.0.3",
     "@radix-ui/react-separator": "0.0.3",
     "@radix-ui/react-slider": "0.0.3",
+    "@radix-ui/react-slot": "^0.0.1",
     "@radix-ui/react-switch": "0.0.3",
     "@radix-ui/react-tabs": "0.0.3",
     "@radix-ui/react-toggle-button": "0.0.3",
