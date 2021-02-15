@@ -831,10 +831,10 @@
   dependencies:
     "@radix-ui/react-utils" "0.0.5"
 
-"@radix-ui/react-context-menu@0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-context-menu/-/react-context-menu-0.0.7.tgz#d8578b9f76256bd53a12e80e59ebfad413abec87"
-  integrity sha512-Ris8wZ7yH+YkQvZxzIC8LmJ5mqIvFBJYMMqY39ywbnYG50Ea/PAW2tdRwRryI0RgfPwzNsO2KBXr4JH+6bG72A==
+"@radix-ui/react-context-menu@0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-context-menu/-/react-context-menu-0.0.8.tgz#e6502f44658fdfa2329701aa3d44c0472467e735"
+  integrity sha512-eL7pi+2Et6hrKoVndp6ZpJ6Ke7Bzp53VZkGLFR9fhOzLT8sKRH3sOlrfrAkRag3bEgsLz/Ouq66ehouamgp4rw==
   dependencies:
     "@radix-ui/react-menu" "0.0.7"
     "@radix-ui/react-polymorphic" "0.0.5"
@@ -873,10 +873,10 @@
   dependencies:
     "@radix-ui/react-utils" "0.0.5"
 
-"@radix-ui/react-dropdown-menu@0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-dropdown-menu/-/react-dropdown-menu-0.0.7.tgz#035ca3fd2387ab38eb5208595c21e07cdb3a6949"
-  integrity sha512-A9ozilMa/wh6Py+K9Ut4BUWoA0RbN/+LkKO7xnTDx1wAbAGx2R2+mxuZ7srJLh7xz+SRS25o8hJO/mdqKvFaTw==
+"@radix-ui/react-dropdown-menu@0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-dropdown-menu/-/react-dropdown-menu-0.0.8.tgz#1afe26017994ccfd8f6ef76477bfb412a187e79e"
+  integrity sha512-zOEXrnUumAS5/mNJ4IqMZBOzb/trLsb+KmovDPdLmflmlKywmyKa6KkKbXnlCPRk6V56u1q36XwfZoc29K0owQ==
   dependencies:
     "@radix-ui/react-menu" "0.0.7"
     "@radix-ui/react-polymorphic" "0.0.5"
