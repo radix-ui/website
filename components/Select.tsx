@@ -4,6 +4,7 @@ import { ChevronDownIcon } from '@radix-ui/react-icons';
 
 const StyledSelect = styled('select', {
   appearance: 'none',
+  '-webkit-appearance': 'none',
   border: 'none',
   fontSize: '$2',
   userSelect: 'none',
