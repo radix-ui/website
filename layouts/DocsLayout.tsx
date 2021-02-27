@@ -38,6 +38,7 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
   const productType = useProductType();
   const heroSlotRef = React.useRef<HTMLDivElement>(null);
   const [, , , categoryType] = router.pathname.split('/');
+  const mdxDocEditPath = `${router.pathname}${categoryType !== 'overview' ? '/index.mdx' : '.mdx'}`;
 
   let allProductPages: FrontMatter[];
   if (productType === 'primitives') {
@@ -311,7 +312,7 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
       <Container size="2" css={{ my: '$9' }}>
         <Text size="3">
           <Link
-            href={`https://github.com/radix-ui/website/edit/main/pages${router.pathname}.mdx`}
+            href={`https://github.com/radix-ui/website/edit/main/pages${mdxDocEditPath}`}
             title="Edit this page on GitHub."
             rel="noopener noreferrer"
             target="_blank"
