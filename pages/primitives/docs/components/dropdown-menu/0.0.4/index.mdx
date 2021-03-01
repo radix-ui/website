@@ -236,6 +236,18 @@ The component that pops out when the dropdown menu is open.
       ),
     },
     {
+      name: 'loop',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description: (
+        <span>
+          When <Code>true</Code>, keyboard navigation will loop from
+          last item to first, and vice versa.
+        </span>
+      ),
+    },
+    {
       name: 'disableOutsidePointerEvents',
       type: 'boolean',
       default: 'true',
