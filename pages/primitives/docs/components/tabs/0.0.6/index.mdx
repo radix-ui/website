@@ -151,6 +151,15 @@ Contains all the tabs component parts.
       description: 'The orientation of the component.',
     },
     {
+      name: 'dir',
+      required: false,
+      type: '"ltr" | "rtl"',
+      typeSimple: 'enum',
+      default: '"ltr"',
+      description:
+        'The reading direction of the tabs. If omitted, assumes LTR (left-to-right) reading mode.',
+    },
+    {
       name: 'activationMode',
       required: false,
       type: '"automatic" | "manual"',
