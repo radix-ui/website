@@ -12,26 +12,24 @@ You are in control of all aspects of styling, including functional styles. For e
 
 ### Data attributes
 
-Each component has a `data-radix-*` attribute, matching its name. For example, the [Separator](../components/separator) component includes a `data-radix-separator` attribute.
-
 When components are stateful, their state will be exposed in a `data-state` attribute. For example, when an [Accordion Item](../components/dialog) is opened, it includes a `data-state="open"` attribute.
 
 ### Classes
 
-All components accept a `className` prop. This class will be passed through to the DOM element. You can use it in CSS as expected.
+All components and their parts accept a `className` prop. This class will be passed through to the DOM element. You can use it in CSS as expected.
 
 ## Styling with CSS
 
 ### Styling a part
 
-You can style a component part by targeting its `data-radix-*` attribute.
+You can style a component part by targeting the `className` that you provide.
 
 ```css
-[data-radix-accordion-item] {
+.accordion-item {
   border-bottom: 1px solid gainsboro;
 }
 
-[data-radix-accordion-panel] {
+.accordion-panel {
   padding: 10px;
 }
 ```
@@ -41,11 +39,11 @@ You can style a component part by targeting its `data-radix-*` attribute.
 You can style a component state by targeting its `data-state` attribute.
 
 ```css
-[data-radix-accordion-item] {
+.accordion-item {
   border-bottom: 1px solid gainsboro;
 }
 
-[data-radix-accordion-item][data-state='open'] {
+.accordion-item[data-state='open'] {
   border-bottom-width: 2px;
 }
 ```
@@ -131,7 +129,7 @@ const StyledPanel = styled(Accordion.Panel, {
 });
 
 export default () => (
-  <StyledAccordion>
+  <StyledAccordion type="single">
     <StyledItem value="item-1">
       <StyledHeader>
         <StyledButton>Item 1</StyledButton>
@@ -168,6 +166,4 @@ export default () => (
 
 Radix Primitives were designed to encapsulate accessibility concerns and other complex functionalities, while ensuring you retain complete control over styling.
 
-To ensure compatibility with global CSS solutions, components include a `data-radix-*` attribute. Stateful components include a `data-state` attribute.
-
-Every component that renders an HTML element will contain these attributes, so feel free to inspect them and look around.
+For convenience, stateful components include a `data-state` attribute.

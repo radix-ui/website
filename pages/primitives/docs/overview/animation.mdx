@@ -29,13 +29,13 @@ The simplest way to animate Primitives is with CSS. You can use either `transiti
   }
 }
 
-[data-radix-dialog-overlay][data-state='open'],
-[data-radix-dialog-content][data-state='open'] {
+.dialog-overlay[data-state='open'],
+.dialog-content[data-state='open'] {
   animation: fadeIn 300ms ease-out;
 }
 
-[data-radix-dialog-overlay][data-state='closed'],
-[data-radix-dialog-content][data-state='closed'] {
+.dialog-overlay[data-state='closed'],
+.dialog-content[data-state='closed'] {
   animation: fadeOut 300ms ease-in;
 }
 ```
