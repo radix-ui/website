@@ -76,7 +76,7 @@ const StyledPanel = styled(Accordion.Panel, {
 });
 
 export default () => (
-  <StyledAccordion>
+  <StyledAccordion type="single">
     <StyledItem value="item-1">
       <StyledHeader>
         <StyledButton>Item 1</StyledButton>
@@ -381,7 +381,7 @@ const AccordionChevron = styled(ChevronDownIcon, {
 });
 
 export default () => (
-  <StyledAccordion>
+  <StyledAccordion type="single">
     <StyledItem value="item-1">
       <StyledHeader>
         <StyledButton>
@@ -464,7 +464,7 @@ const AccordionChevron = styled(ChevronDownIcon, {
 });
 
 export default () => (
-  <StyledAccordion defaultValue="item-2">
+  <StyledAccordion type="single" defaultValue="item-2">
     <StyledItem value="item-1">
       <StyledHeader>
         <StyledButton>
