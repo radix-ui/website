@@ -5,7 +5,7 @@ description: A vertically stacked set of interactive headings that each reveal a
 aria: https://www.w3.org/TR/wai-aria-practices-1.2/#accordion
 features:
   - Full keyboard navigation.
-  - Expands one panel at a time.
+  - Can expand only one panel at a time or multiple.
   - Can be controlled or uncontrolled.
 ---
 
@@ -129,6 +129,17 @@ Contains all the parts of an accordion.
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'type',
+      required: true,
+      type: '"single" | "multiple"',
+      description: (
+        <span>
+          Determines whether a single panel can be open at a time or
+          multiple panels at the same time.
+        </span>
+      ),
     },
     {
       name: 'value',
@@ -400,6 +411,182 @@ const AccordionChevron = styled(ChevronDownIcon, {
 
 export default () => (
   <StyledAccordion type="single" defaultValue="item-2">
+    <StyledItem value="item-1">
+      <StyledHeader>
+        <StyledButton>
+          Item 1
+          <AccordionChevron aria-hidden />
+        </StyledButton>
+      </StyledHeader>
+      <StyledPanel>
+        Here goes the content for the accordion item 1.
+      </StyledPanel>
+    </StyledItem>
+
+    <StyledItem value="item-2">
+      <StyledHeader>
+        <StyledButton>
+          Item 2
+          <AccordionChevron aria-hidden />
+        </StyledButton>
+      </StyledHeader>
+      <StyledPanel>
+        Here goes the content for the accordion item 2.
+      </StyledPanel>
+    </StyledItem>
+
+    <StyledItem value="item-3">
+      <StyledHeader>
+        <StyledButton>
+          Item 3
+          <AccordionChevron aria-hidden />
+        </StyledButton>
+      </StyledHeader>
+      <StyledPanel>
+        Here goes the content for the accordion item 3.
+      </StyledPanel>
+    </StyledItem>
+  </StyledAccordion>
+);
+```
+
+### Controlled to prevent closing
+
+```jsx live manual compact
+// import { styled } from 'path-to/stitches.config';
+import * as Accordion from '@radix-ui/react-accordion';
+import { ChevronDownIcon } from '@radix-ui/react-icons';
+
+const StyledAccordion = styled(Accordion.Root, {
+  borderTop: '1px solid gainsboro',
+});
+
+const StyledItem = styled(Accordion.Item, {
+  borderBottom: '1px solid gainsboro',
+});
+
+const StyledHeader = styled(Accordion.Header, {
+  margin: 0,
+  display: 'flex',
+});
+
+const StyledButton = styled(Accordion.Button, {
+  backgroundColor: 'transparent',
+  border: 'none',
+  padding: 10,
+  flex: 1,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+});
+
+const StyledPanel = styled(Accordion.Panel, {
+  padding: 10,
+});
+
+const AccordionChevron = styled(ChevronDownIcon, {
+  transition: 'transform 300ms',
+
+  '[data-state=open] &': {
+    transform: 'rotate(180deg)',
+  },
+});
+
+export default () => {
+  const [value, setValue] = React.useState('item-2');
+  return (
+    <StyledAccordion
+      type="single"
+      value={value}
+      onValueChange={(value) => value && setValue(value)}
+    >
+      <StyledItem value="item-1">
+        <StyledHeader>
+          <StyledButton>
+            Item 1
+            <AccordionChevron aria-hidden />
+          </StyledButton>
+        </StyledHeader>
+        <StyledPanel>
+          Here goes the content for the accordion item 1.
+        </StyledPanel>
+      </StyledItem>
+
+      <StyledItem value="item-2">
+        <StyledHeader>
+          <StyledButton>
+            Item 2
+            <AccordionChevron aria-hidden />
+          </StyledButton>
+        </StyledHeader>
+        <StyledPanel>
+          Here goes the content for the accordion item 2.
+        </StyledPanel>
+      </StyledItem>
+
+      <StyledItem value="item-3">
+        <StyledHeader>
+          <StyledButton>
+            Item 3
+            <AccordionChevron aria-hidden />
+          </StyledButton>
+        </StyledHeader>
+        <StyledPanel>
+          Here goes the content for the accordion item 3.
+        </StyledPanel>
+      </StyledItem>
+    </StyledAccordion>
+  );
+};
+```
+
+### Multiple panels open at the same time
+
+```jsx live manual compact
+// import { styled } from 'path-to/stitches.config';
+import * as Accordion from '@radix-ui/react-accordion';
+import { ChevronDownIcon } from '@radix-ui/react-icons';
+
+const StyledAccordion = styled(Accordion.Root, {
+  borderTop: '1px solid gainsboro',
+});
+
+const StyledItem = styled(Accordion.Item, {
+  borderBottom: '1px solid gainsboro',
+});
+
+const StyledHeader = styled(Accordion.Header, {
+  margin: 0,
+  display: 'flex',
+});
+
+const StyledButton = styled(Accordion.Button, {
+  backgroundColor: 'transparent',
+  border: 'none',
+  padding: 10,
+  flex: 1,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+});
+
+const StyledPanel = styled(Accordion.Panel, {
+  padding: 10,
+});
+
+const AccordionChevron = styled(ChevronDownIcon, {
+  transition: 'transform 300ms',
+
+  '[data-state=open] &': {
+    transform: 'rotate(180deg)',
+  },
+});
+
+export default () => (
+  <StyledAccordion
+    type="multiple"
+    defaultValue={['item-2', 'item-3']}
+  >
     <StyledItem value="item-1">
       <StyledHeader>
         <StyledButton>
