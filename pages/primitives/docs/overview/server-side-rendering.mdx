@@ -18,16 +18,12 @@ The way `SSR` works with React is by rendering components to HTML on the server 
 
 For all of this to function properly, React has to match the DOM structure between client and server. This is potentially an issue for Radix Primitives because we rely on generating random `id`s internally so that accessibility works out of the box.
 
-You will need to wrap your app with an `IdProvider` like so:
+To enable more deterministic `id`s between server and client and ensure that no mismatch occurs, wrap your app with our `IdProvider` like so:
 
 ```tsx
 import { IdProvider } from '@radix-ui/react-id';
-
 export default () => (
   <IdProvider>
     <App />
   </IdProvider>
 );
-```
-
-This will enable more deterministic `id`s between server and client and ensure that no mismatch will happen.
