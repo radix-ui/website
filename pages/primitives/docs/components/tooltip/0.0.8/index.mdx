@@ -434,16 +434,16 @@ import { Slot } from '@radix-ui/react-slot';
 export function Tooltip({
   children,
   content,
-  isOpen,
-  defaultIsOpen,
-  onIsOpenChange,
+  open,
+  defaultOpen,
+  onOpenChange,
   ...props
 }) {
   return (
     <TooltipPrimitive.Root
-      isOpen={isOpen}
-      defaultIsOpen={defaultIsOpen}
-      onIsOpenChange={onIsOpenChange}
+      open={open}
+      defaultOpen={defaultOpen}
+      onOpenChange={onOpenChange}
     >
       <TooltipPrimitive.Trigger as={Slot}>
         {children}
