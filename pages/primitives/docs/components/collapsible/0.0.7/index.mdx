@@ -161,6 +161,33 @@ The component that contains the collapsible content.
   ]}
 />
 
+## Styling
+
+### Animating content height
+
+We expose a CSS custom property `--radix-collapsible-content-height`.<br />Use it to animate the height of the content when it opens/closes.
+
+```jsx
+const slideDown = css.keyframes({
+  from: { height: 0 },
+  to: { height: 'var(--radix-collapsible-content-height)' },
+});
+
+const slideUp = css.keyframes({
+  from: { height: 'var(--radix-collapsible-content-height)' },
+  to: { height: 0 },
+});
+
+const StyledContent = styled(Collapsible.Content, {
+  '&[data-state="open"]': {
+    animation: `${slideDown} 300ms ease-out`,
+  },
+  '&[data-state="closed"]': {
+    animation: `${slideUp} 300ms ease-out`,
+  },
+});
+```
+
 ## Accessibility
 
 Adheres to the [Disclosure WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#disclosure).

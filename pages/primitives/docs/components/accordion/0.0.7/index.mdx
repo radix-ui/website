@@ -283,6 +283,33 @@ Contains the collapsible content for an item.
   ]}
 />
 
+## Styling
+
+### Animating panel height
+
+We expose a CSS custom property `--radix-accordion-panel-height`.<br />Use it to animate the height of the panel when it opens/closes.
+
+```jsx
+const slideDown = css.keyframes({
+  from: { height: 0 },
+  to: { height: 'var(--radix-accordion-panel-height)' },
+});
+
+const slideUp = css.keyframes({
+  from: { height: 'var(--radix-accordion-panel-height)' },
+  to: { height: 0 },
+});
+
+const StyledPanel = styled(Accordion.Panel, {
+  '&[data-state="open"]': {
+    animation: `${slideDown} 300ms ease-out`,
+  },
+  '&[data-state="closed"]': {
+    animation: `${slideUp} 300ms ease-out`,
+  },
+});
+```
+
 ## Examples
 
 ### With chevrons
