@@ -24,6 +24,8 @@ When components are stateful, their state will be exposed in a `data-state` attr
 
 You can style a component part by targeting the `className` that you provide.
 
+We expose an `extendPrimitive` utility as a convenience for adding default props like `className`.
+
 ```css
 .accordion-item {
   border-bottom: 1px solid gainsboro;
@@ -32,6 +34,19 @@ You can style a component part by targeting the `className` that you provide.
 .accordion-panel {
   padding: 10px;
 }
+```
+
+```jsx
+import { extendPrimitive } from '@radix-ui/react-primitive';
+import * as AccordionPrimitive from '@radix-ui/react-accordion';
+
+const AccordionItem = extendPrimitive(AccordionPrimitive.Item, {
+  className: 'accordion-item',
+});
+
+const AccordionPanel = extendPrimitive(AccordionPrimitive.Panel, {
+  className: 'accordion-panel',
+});
 ```
 
 ### Styling a state
