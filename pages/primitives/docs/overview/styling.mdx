@@ -41,11 +41,15 @@ import { extendPrimitive } from '@radix-ui/react-primitive';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
 
 const AccordionItem = extendPrimitive(AccordionPrimitive.Item, {
-  className: 'accordion-item',
+  defaultProps: {
+    className: 'accordion-item',
+  }
 });
 
 const AccordionPanel = extendPrimitive(AccordionPrimitive.Panel, {
-  className: 'accordion-panel',
+  defaultProps: {
+    className: 'accordion-panel',
+  }
 });
 ```
 
