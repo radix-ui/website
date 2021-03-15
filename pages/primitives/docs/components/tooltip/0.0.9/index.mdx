@@ -341,6 +341,48 @@ const StyledContent = styled(Tooltip.Content, {
 });
 ```
 
+## Examples
+
+### With disabled trigger
+
+Because a disabled trigger will not fire events, adding a tooltip on a disabled trigger require a little bit more work. You will need to render the trigger as a wrapper (`span` for example) and add your disabled button inside. Furthermore, the disabled button will need a few more styles.
+
+```jsx live manual
+// import { styled } from 'path-to/stitches.config';
+import * as Tooltip from '@radix-ui/react-tooltip';
+import { BlendingModeIcon } from '@radix-ui/react-icons';
+
+const StyledContent = styled(Tooltip.Content, {
+  borderRadius: 3,
+  padding: '5px 10px',
+  fontSize: 14,
+  backgroundColor: 'gainsboro',
+  color: 'black',
+});
+
+const StyledArrow = styled(Tooltip.Arrow, {
+  fill: 'gainsboro',
+});
+
+export default () => (
+  <Tooltip.Root>
+    <Tooltip.Trigger as="span">
+      <button
+        type="button"
+        disabled
+        style={{ pointerEvents: 'none' }}
+      >
+        <BlendingModeIcon />
+      </button>
+    </Tooltip.Trigger>
+    <StyledContent>
+      Blending mode
+      <StyledArrow />
+    </StyledContent>
+  </Tooltip.Root>
+);
+```
+
 ## Accessibility
 
 ### Keyboard Interactions
