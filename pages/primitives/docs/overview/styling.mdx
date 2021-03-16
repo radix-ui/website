@@ -22,35 +22,74 @@ When components are stateful, their state will be exposed in a `data-state` attr
 
 ### Styling a part
 
-You can style a component part by targeting the `className` that you provide.
+You can style a component part by targeting the `className` that you provide. The primitives can be wrapped to add your class.
 
-We expose an `extendPrimitive` utility as a convenience for adding default props like `className`.
+```jsx
+import * as React from 'react';
+import * as AccordionPrimitive from '@radix-ui/react-accordion';
 
-```css
-.accordion-item {
-  border-bottom: 1px solid gainsboro;
-}
-
-.accordion-panel {
-  padding: 10px;
-}
+const AccordionItem = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Item>,
+  React.ComponentProps<typeof AccordionPrimitive.Item>
+>((props, forwardedRef) => {
+  const { className, ...itemProps } = props;
+  return (
+    <AccordionPrimitive.Item
+      {...itemProps}
+      ref={forwardedRef}
+      className={'accordion-item ' + className}
+    />
+  );
+});
 ```
+
+If you would like to retain support for the `as` prop (polymorphism), you can use our `react-polymorphic` types when wrapping.
+
+```jsx
+import * as React from 'react';
+import * as AccordionPrimitive from '@radix-ui/react-accordion';
+import type * as Polymorphic from '@radix-ui/react-polymorphic';
+
+type AccordionItemComponent = Polymorphic.ForwardRefComponent<
+  Polymorphic.IntrinsicElement<typeof AccordionPrimitive.Item>,
+  Polymorphic.OwnProps<typeof AccordionPrimitive.Item>,
+>;
+
+const AccordionItem = React.forwardRef((props, forwardedRef) => {
+  const { className, ...itemProps } = props;
+  return (
+    <AccordionPrimitive.Item
+      {...itemProps}
+      ref={forwardedRef}
+      className={'accordion-item ' + className}
+    />
+  );
+}) as AccordionItemComponent;
+```
+
+Alternatively, we expose an `extendPrimitive` utility as a convenience for adding default props while retaining polymoprhism. It can be useful if your preference is to style data attributes as they needn't be composed like class names.
 
 ```jsx
 import { extendPrimitive } from '@radix-ui/react-primitive';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
 
 const AccordionItem = extendPrimitive(AccordionPrimitive.Item, {
-  defaultProps: {
-    className: 'accordion-item',
-  }
+  defaultProps: { 'data-accordion-item': '' },
 });
 
 const AccordionPanel = extendPrimitive(AccordionPrimitive.Panel, {
-  defaultProps: {
-    className: 'accordion-panel',
-  }
+  defaultProps: { 'data-accordion-panel': '' },
 });
+```
+
+```css
+[data-accordion-item] {
+  border-bottom: 1px solid gainsboro;
+}
+
+[data-accordion-panel] {
+  padding: 10px;
+}
 ```
 
 ### Styling a state
