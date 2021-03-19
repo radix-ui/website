@@ -345,7 +345,9 @@ const StyledContent = styled(Tooltip.Content, {
 
 ### With disabled trigger
 
-Because a disabled trigger will not fire events, adding a tooltip on a disabled trigger require a little bit more work. You will need to render the trigger as a wrapper (`span` for example) and add your disabled button inside. Furthermore, the disabled button will need a few more styles.
+A disabled button will not fire events so adding a tooltip to a disabled trigger requires a little more work.
+
+Render the trigger as a wrapper (`span` for example) and place your disabled button inside with some CSS to disable pointer events. This allows the tooltip to receive all mouse and keyboard events instead of being blocked by the button.
 
 ```jsx live manual
 // import { styled } from 'path-to/stitches.config';
