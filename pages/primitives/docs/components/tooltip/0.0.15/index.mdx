@@ -402,12 +402,19 @@ export default () => (
 
 ### Show instantly
 
-Use the `delayDuration` to control the time it takes for the tooltip to open. You can define these per-instance, but it is best to set a default value for the prop so all your tooltips use the same timings.
+Use the `delayDuration` to control the time it takes for the tooltip to open. We recommend wrapping the tooltip in your own component with a default value for the prop for consistent timings across your app. You will still be able to override the prop per-instance.
+
+You can use our `extendPrimitive` utility for this.
 
 ```jsx live manual compact
 // import { styled } from 'path-to/stitches.config';
 import * as Tooltip from '@radix-ui/react-tooltip';
+import { extendPrimitive } from '@radix-ui/react-primitive';
 import { ZoomInIcon, ZoomOutIcon } from '@radix-ui/react-icons';
+
+const MyTooltip = extendPrimitive(Tooltip.Root, {
+  defaultProps: { delayDuration: 0 },
+});
 
 const StyledContent = styled(Tooltip.Content, {
   borderRadius: 3,
@@ -423,7 +430,7 @@ const StyledArrow = styled(Tooltip.Arrow, {
 
 export default () => (
   <>
-    <Tooltip.Root delayDuration={0}>
+    <MyTooltip>
       <Tooltip.Trigger>
         <ZoomInIcon />
       </Tooltip.Trigger>
@@ -431,9 +438,9 @@ export default () => (
         Zoom In
         <StyledArrow />
       </StyledContent>
-    </Tooltip.Root>
+    </MyTooltip>
 
-    <Tooltip.Root delayDuration={0}>
+    <MyTooltip>
       <Tooltip.Trigger style={{ marginLeft: 10 }}>
         <ZoomOutIcon />
       </Tooltip.Trigger>
@@ -441,7 +448,7 @@ export default () => (
         Zoom Out
         <StyledArrow />
       </StyledContent>
-    </Tooltip.Root>
+    </MyTooltip>
   </>
 );
 ```
