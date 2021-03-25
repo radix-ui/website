@@ -399,11 +399,9 @@ export default () => (
 );
 ```
 
-### Custom timings
+### Show instantly
 
-Use the `delayDuration` and `skipDelayDuration` to control the timings at which a tooltip is shown. You can define these per-instance, but it is best to set default prop values for it so all your tooltips use the same timings.
-
-These will always show instantly:
+Use the `delayDuration` to control the time it takes for the tooltip to open. You can define these per-instance, but it is best to set a default value for the prop so all your tooltips use the same timings.
 
 ```jsx live manual compact
 // import { styled } from 'path-to/stitches.config';
@@ -463,6 +461,10 @@ export default () => (
     },
     {
       keys: ['Enter'],
+      description: 'If open, closes the tooltip without delay.',
+    },
+    {
+      keys: ['Escape'],
       description: 'If open, closes the tooltip without delay.',
     },
   ]}
