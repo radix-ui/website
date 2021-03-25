@@ -1,6 +1,6 @@
 ---
-title: Toggle Button
-name: toggle-button
+title: Toggle
+name: toggle
 description: A two-state button that can be either on or off.
 aria: https://www.w3.org/TR/wai-aria-practices-1.2/#button
 features:
@@ -8,10 +8,10 @@ features:
   - Can be controlled or uncontrolled.
 ---
 
-import { ToggleButtonHero } from '../../../../../../components/Hero/ToggleButtonHero';
+import { ToggleHero } from '../../../../../../components/Hero/ToggleHero';
 
 <HeroSlot>
-  <ToggleButtonHero />
+  <ToggleHero />
 </HeroSlot>
 
 ## Installation
@@ -19,7 +19,7 @@ import { ToggleButtonHero } from '../../../../../../components/Hero/ToggleButton
 Install the component from your command line.
 
 ```bash
-npm install @radix-ui/react-toggle-button
+npm install @radix-ui/react-toggle
 ```
 
 ## Anatomy
@@ -27,20 +27,20 @@ npm install @radix-ui/react-toggle-button
 Import the component.
 
 ```jsx
-import * as ToggleButton from '@radix-ui/react-toggle-buton';
+import * as Toggle from '@radix-ui/react-toggle';
 
-export default () => <ToggleButton.Root />;
+export default () => <Toggle.Root />;
 ```
 
 ## Basic example
 
-Create your styled toggle button component from the primitive parts.
+Create your styled toggle component from the primitive parts.
 
 ```jsx live manual
 // import { styled } from 'path-to/stitches.config';
-import * as ToggleButton from '@radix-ui/react-toggle-button';
+import * as Toggle from '@radix-ui/react-toggle';
 
-const StyledToggleButton = styled(ToggleButton.Root, {
+const StyledToggle = styled(Toggle.Root, {
   appearance: 'none',
   backgroundColor: 'transparent',
   border: 'none',
@@ -59,7 +59,7 @@ const StyledToggleButton = styled(ToggleButton.Root, {
   },
 });
 
-export default () => <StyledToggleButton>Toggle</StyledToggleButton>;
+export default () => <StyledToggle>Toggle</StyledToggle>;
 ```
 
 <Note>
@@ -72,7 +72,7 @@ export default () => <StyledToggleButton>Toggle</StyledToggleButton>;
 
 ### Root
 
-The toggle button.
+The toggle.
 
 <PropsTable
   data={[
@@ -86,28 +86,28 @@ The toggle button.
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
-      name: 'defaultToggled',
+      name: 'defaultPressed',
       type: 'boolean',
       description:
-        'The toggled state of the toggle button when it is initially rendered. Use when you do not need to control its toggled state.',
+        'The pressed state of the toggle when it is initially rendered. Use when you do not need to control its pressed state.',
     },
     {
-      name: 'toggled',
+      name: 'pressed',
       type: 'boolean',
       description: (
         <span>
-          The controlled toggled state of the toggle button. Must be
-          used in conjunction with in conjunction with{' '}
-          <Code>onToggledChange</Code>.
+          The controlled pressed state of the toggle. Must be used in
+          conjunction with in conjunction with{' '}
+          <Code>onPressedChange</Code>.
         </span>
       ),
     },
     {
-      name: 'onToggledChange',
-      type: '(toggled: boolean) => void',
+      name: 'onPressedChange',
+      type: '(pressed: boolean) => void',
       typeSimple: 'function',
       description:
-        'Event handler called when the toggled state of the toggle button changes.',
+        'Event handler called when the pressed state of the toggle changes.',
     },
     {
       name: 'disabled',
@@ -115,7 +115,7 @@ The toggle button.
       description: (
         <span>
           When <Code>true</Code>, prevents the user from interacting
-          with the toggle button.
+          with the toggle.
         </span>
       ),
     },
@@ -130,11 +130,11 @@ The toggle button.
   data={[
     {
       keys: ['Space'],
-      description: 'Activates/deactivates the toggle button.',
+      description: 'Activates/deactivates the toggle.',
     },
     {
       keys: ['Enter'],
-      description: 'Activates/deactivates the toggle button.',
+      description: 'Activates/deactivates the toggle.',
     },
   ]}
 />

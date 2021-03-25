@@ -1,0 +1,65 @@
+---
+title: Visually Hidden
+name: visually-hidden
+description: Hides content from the screen in an accessible way.
+features:
+  - Visually hides content while preserving it for assistive technology.
+---
+
+## Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-visually-hidden
+```
+
+## Anatomy
+
+Import the component.
+
+```jsx
+import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
+
+export default () => <VisuallyHidden.Root />;
+```
+
+## Basic example
+
+Use the visually hidden primitive.
+
+```jsx live manual
+import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
+import { GearIcon } from '@radix-ui/react-icons';
+
+export default () => (
+  <button>
+    <GearIcon />
+    <VisuallyHidden.Root>Settings</VisuallyHidden.Root>
+  </button>
+);
+```
+
+## API Reference
+
+### Root
+
+Anything you put inside this component will be hidden from the screen but will be announced by screen readers.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'span',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+## Accessibility
+
+This is useful in certain scenarios as an alternative to traditional labelling with `aria-label` or `aria-labelledby`.
