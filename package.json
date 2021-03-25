@@ -36,6 +36,7 @@
     "@radix-ui/react-tabs": "0.0.10",
     "@radix-ui/react-toggle": "0.0.5",
     "@radix-ui/react-toggle-group": "0.0.5",
+    "@radix-ui/react-toolbar": "0.0.8",
     "@radix-ui/react-tooltip": "0.0.15",
     "@radix-ui/react-visually-hidden": "0.0.10",
     "@segment/snippet": "^4.13.1",
