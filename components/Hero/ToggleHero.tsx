@@ -40,7 +40,7 @@ const click = css.keyframes({
   '100%': { boxShadow: '0 0 0 2px black', transform: 'scale(.5)', opacity: '0' },
 });
 
-const ToggleButtonContainer = () => {
+const ToggleContainer = () => {
   return (
     <Box css={{ position: 'relative' }}>
       <Box
@@ -140,6 +140,6 @@ const ToggleButtonContainer = () => {
   );
 };
 
-export const ToggleButtonHero = () => {
-  return <ToggleButtonContainer />;
+export const ToggleHero = () => {
+  return <ToggleContainer />;
 };

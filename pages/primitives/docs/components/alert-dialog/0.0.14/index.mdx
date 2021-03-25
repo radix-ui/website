@@ -1,0 +1,438 @@
+---
+title: Alert Dialog
+name: alert-dialog
+description: A modal dialog that interrupts the user with important content and expects a response.
+aria: https://www.w3.org/TR/wai-aria-practices-1.2/#alertdialog
+features:
+  - Focus is automatically trapped.
+  - Can be controlled or uncontrolled.
+  - Manages screen reader announcements with `Title` and `Description` components.
+  - Esc closes the component automatically.
+---
+
+import { AlertDialogHero } from '../../../../../../components/Hero/AlertDialogHero';
+
+<HeroSlot>
+  <AlertDialogHero />
+</HeroSlot>
+
+## Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-alert-dialog
+```
+
+## Anatomy
+
+Import the components and piece the parts together.
+
+```jsx
+import * as AlertDialog from '@radix-ui/react-alert-dialog';
+
+export default () => (
+  <AlertDialog.Root>
+    <AlertDialog.Trigger />
+    <AlertDialog.Overlay />
+    <AlertDialog.Content>
+      <AlertDialog.Title />
+      <AlertDialog.Description />
+      <AlertDialog.Cancel />
+      <AlertDialog.Action />
+    </AlertDialog.Content>
+  </AlertDialog.Root>
+);
+```
+
+## Basic example
+
+Create your styled alert dialog component from the primitive parts.
+
+```jsx live manual
+// import { styled } from 'path-to/stitches.config';
+import * as AlertDialog from '@radix-ui/react-alert-dialog';
+
+const StyledOverlay = styled(AlertDialog.Overlay, {
+  backgroundColor: 'rgba(0, 0, 0, .15)',
+  position: 'fixed',
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0,
+});
+
+const StyledContent = styled(AlertDialog.Content, {
+  position: 'fixed',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 360,
+  backgroundColor: 'white',
+  borderRadius: 6,
+  padding: 20,
+});
+
+export default () => (
+  <AlertDialog.Root>
+    <AlertDialog.Trigger>Open</AlertDialog.Trigger>
+    <StyledOverlay />
+    <StyledContent>
+      <AlertDialog.Title>Alert title</AlertDialog.Title>
+      <AlertDialog.Description>
+        Alert description.
+      </AlertDialog.Description>
+      <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+      <AlertDialog.Action>Accept</AlertDialog.Action>
+    </StyledContent>
+  </AlertDialog.Root>
+);
+```
+
+<Note>
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](../../overview/styling).
+
+</Note>
+
+## API Reference
+
+### Root
+
+Contains all the parts of an alert dialog.
+
+<PropsTable
+  data={[
+    {
+      name: 'defaultOpen',
+      type: 'boolean',
+      description:
+        'The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.',
+    },
+    {
+      name: 'open',
+      type: 'boolean',
+      description: (
+        <span>
+          The controlled open state of the dialog. Must be used in
+          conjunction with <Code>onOpenChange</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onOpenChange',
+      type: '(open: boolean) => void',
+      typeSimple: 'function',
+      description:
+        'Event handler called when the open state of the dialog changes.',
+    },
+    {
+      name: 'id',
+      type: 'string',
+      description: (
+        <span>
+          A unique identifier for the component. The <Code>id</Code>{' '}
+          is used to generate <Code>id</Code> attributes for nested
+          components. If no <Code>id</Code> prop is provided, a
+          generated id will be used.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### Trigger
+
+A button that opens the dialog.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'button',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Overlay
+
+A layer that covers the inert portion of the view when the dialog is open.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description:
+        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+    },
+  ]}
+/>
+
+### Content
+
+Contains content to be rendered when the dialog is open.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description:
+        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+    },
+    {
+      name: 'onOpenAutoFocus',
+      type: '(event: Event) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when focus moves to the destructive
+          action after opening. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onCloseAutoFocus',
+      type: '(event: Event) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when focus moves to the trigger after
+          closing. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onEscapeKeyDown',
+      type: '(event: KeyboardEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when the escape key is down. It can be
+          prevented by calling <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onPointerDownOutside',
+      type: '(event: MouseEvent | TouchEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when a pointer event occurs outside the
+          bounds of the component. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### Cancel
+
+A button that closes the dialog. This button should be distinguished visually from `AlertDialog.Action` buttons.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'button',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Action
+
+A button that closes the dialog. These buttons should be distinguished visually from the `AlertDialog.Cancel` button.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'button',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Title
+
+An accessible name to be announced when the dialog is opened. Alternatively, you can provide `aria-label` or `aria-labelledby` to `AlertDialog.Content` and exclude this component.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'h2',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Description
+
+An accessible description to be announced when the dialog is opened. Alternatively, you can provide `aria-describedby` to `AlertDialog.Content` and exclude this component.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'p',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+## Accessibility
+
+Adheres to the [Alert and Message Dialogs WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#alertdialog).
+
+### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space'],
+      description: 'Opens/closes the dialog.',
+    },
+    {
+      keys: ['Enter'],
+      description: 'Opens/closes the dialog.',
+    },
+    {
+      keys: ['Tab'],
+      description: 'Moves focus to the next focusable element.',
+    },
+    {
+      keys: ['Shift + Tab'],
+      description: 'Moves focus to the previous focusable element.',
+    },
+    {
+      keys: ['Esc'],
+      description: (
+        <span>
+          Closes the dialog and moves focus to{' '}
+          <Code>AlertDialog.Trigger</Code>.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+## Custom APIs
+
+Create your own API by abstracting the primitive parts into your own component.
+
+### Abstract the overlay and prevent close
+
+This example abstracts the `AlertDialog.Overlay` part and prevents the dialog from closing when clicking outside, or when pressing <Kbd>ESC</Kbd>.
+
+#### Usage
+
+```jsx
+import {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogCancel,
+  AlertDialogAction,
+} from './your-alert-dialog';
+
+export default () => (
+  <AlertDialog>
+    <AlertDialogTrigger>AlertDialog trigger</AlertDialogTrigger>
+    <AlertDialogContent>
+      <AlertDialogTitle>AlertDialog title</AlertDialogTitle>
+      <AlertDialogDescription>
+        AlertDialog description
+      </AlertDialogDescription>
+      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogAction>Action</AlertDialogAction>
+    </AlertDialogContent>
+  </AlertDialog>
+);
+```
+
+#### Implementation
+
+```jsx
+// your-alert-dialog.js
+import React from 'react';
+import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
+
+export function AlertDialog({ children, ...props }) {
+  return (
+    <AlertDialogPrimitive.Root {...props}>
+      <AlertDialogPrimitive.Overlay />
+      {children}
+    </AlertDialogPrimitive.Root>
+  );
+}
+
+export const AlertDialogContent = React.forwardRef(
+  ({ children, ...props }, forwardedRef) => (
+    <AlertDialogPrimitive.Content
+      {...props}
+      ref={forwardedRef}
+      // Don't close the Alert Dialog when pressing ESC
+      onEscapeKeyDown={(event) => event.preventDefault()}
+      // Don't close the Alert Dialog when clicking outside
+      onPointerDownOutside={(event) => event.preventDefault()}
+    >
+      {children}
+    </>
+  )
+);
+
+export const AlertDialogTrigger = AlertDialogPrimitive.Trigger;
+export const AlertDialogTitle = AlertDialogPrimitive.Title;
+export const AlertDialogDescription =
+  AlertDialogPrimitive.Description;
+export const AlertDialogCancel = AlertDialogPrimitive.Cancel;
+export const AlertDialogAction = AlertDialogPrimitive.Action;
+```
