@@ -1271,6 +1271,20 @@
     "@radix-ui/react-use-callback-ref" "0.0.4"
     "@radix-ui/react-use-controllable-state" "0.0.5"
 
+"@radix-ui/react-toggle-group@0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-toggle-group/-/react-toggle-group-0.0.5.tgz#53334b9ea24e6177903f822ca27fcd0def137bbc"
+  integrity sha512-ssn0M0x9EjD2haOUOUUTBRti7Aa7xyx7HJvQjkjCDzQpZXEG1ipB1O1VxrF40lmvHr1Iv9Iaet23vM1zdeLpTA==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/primitive" "0.0.4"
+    "@radix-ui/react-context" "0.0.4"
+    "@radix-ui/react-polymorphic" "0.0.9"
+    "@radix-ui/react-primitive" "0.0.10"
+    "@radix-ui/react-roving-focus" "0.0.10"
+    "@radix-ui/react-toggle" "0.0.5"
+    "@radix-ui/react-use-controllable-state" "0.0.5"
+
 "@radix-ui/react-toggle@0.0.5":
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-toggle/-/react-toggle-0.0.5.tgz#2bb226daa0408c96e82f368b34a988e6cdef7294"

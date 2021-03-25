@@ -51,7 +51,7 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
 
   const currentPageId = router.pathname.substr(1);
   const currentPageIndex = productPages.findIndex((page) =>
-    currentPageId.includes(removeVersionFromId(page.version, page.id))
+    currentPageId.includes(removeVersionFromId(page.version, page.id) + '/')
   );
   const previous = productPages[currentPageIndex - 1];
   const next = productPages[currentPageIndex + 1];
