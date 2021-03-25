@@ -1296,6 +1296,21 @@
     "@radix-ui/react-primitive" "0.0.10"
     "@radix-ui/react-use-controllable-state" "0.0.5"
 
+"@radix-ui/react-toolbar@0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-toolbar/-/react-toolbar-0.0.8.tgz#8eb674660ef7a5bc2e7c8cac11b35d2b0a82cda0"
+  integrity sha512-s9j5p+Yh/qr5nDXPoiwzIIn2S5jbdWfEGLyqtcyg8Tcm4JI+e9GZDGgdjfCatyO7bI5TGBmPtsgSAq/WKSGcBQ==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/primitive" "0.0.4"
+    "@radix-ui/react-context" "0.0.4"
+    "@radix-ui/react-polymorphic" "0.0.9"
+    "@radix-ui/react-primitive" "0.0.10"
+    "@radix-ui/react-roving-focus" "0.0.10"
+    "@radix-ui/react-separator" "0.0.10"
+    "@radix-ui/react-slot" "0.0.8"
+    "@radix-ui/react-toggle-group" "0.0.5"
+
 "@radix-ui/react-tooltip@0.0.15":
   version "0.0.15"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-tooltip/-/react-tooltip-0.0.15.tgz#90c96e00e3eb638ad10819c9a4ad50cdadb87596"

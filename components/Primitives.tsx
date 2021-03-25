@@ -23,6 +23,7 @@ export * as Switch from '@radix-ui/react-switch';
 export * as Tabs from '@radix-ui/react-tabs';
 export * as Toggle from '@radix-ui/react-toggle';
 export * as ToggleGroup from '@radix-ui/react-toggle-group';
+export * as Toolbar from '@radix-ui/react-toolbar';
 export * as Tooltip from '@radix-ui/react-tooltip';
 export * as Slot from '@radix-ui/react-slot';
 export * as VisuallyHidden from '@radix-ui/react-visually-hidden';
