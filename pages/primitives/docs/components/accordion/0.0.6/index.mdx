@@ -148,7 +148,8 @@ Contains all the parts of an accordion.
       type: 'string',
       description: (
         <span>
-          The controlled value of the item to expand. Must be used in
+          The controlled value of the item to expand when{' '}
+          <Code>type</Code> is <Code>"single"</Code>. Must be used in
           conjunction with <Code>onValueChange</Code>.
         </span>
       ),
@@ -157,8 +158,63 @@ Contains all the parts of an accordion.
       name: 'defaultValue',
       required: false,
       type: 'string',
-      description:
-        'The value of the item to expand when initially rendered. Use when you do not need to control the state of the items.',
+      description: (
+        <span>
+          The value of the item to expand when initially rendered
+          and <Code>type</Code> is <Code>"single"</Code>. Use when
+          you do not need to control the state of the items.
+        </span>
+      ),
+    },
+    {
+      name: 'onValueChange',
+      required: false,
+      type: '(value: string) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when the expanded state of an item
+          changes and <Code>type</Code> is <Code>"single"</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'value',
+      required: false,
+      default: '[]',
+      type: 'string[]',
+      description: (
+        <span>
+          The controlled value of the item to expand when{' '}
+          <Code>type</Code> is <Code>"multiple"</Code>. Must be used
+          in conjunction with <Code>onValueChange</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'defaultValue',
+      required: false,
+      default: '[]',
+      type: 'string[]',
+      description: (
+        <span>
+          The value of the item to expand when initially rendered when{' '}
+          <Code>type</Code> is <Code>"multiple"</Code>. Use when you
+          do not need to control the state of the items.
+        </span>
+      ),
+    },
+    {
+      name: 'onValueChange',
+      required: false,
+      type: '(value: string[]) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when the expanded state of an item
+          changes and <Code>type</Code> is <Code>"multiple"</Code>.
+        </span>
+      ),
     },
     {
       name: 'disabled',
@@ -171,14 +227,6 @@ Contains all the parts of an accordion.
           with the accordion and all its items.
         </span>
       ),
-    },
-    {
-      name: 'onValueChange',
-      required: false,
-      type: '(value: string) => void',
-      typeSimple: 'function',
-      description:
-        'Event handler called when the expanded state of an item changes.',
     },
   ]}
 />

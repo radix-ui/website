@@ -32,7 +32,7 @@ export function PrimitivesNav() {
         <NavHeading id="site-nav-components">Components</NavHeading>
         <NavList>
           {componentsPages.map((page) => {
-            const idWithoutVersion = removeVersionFromId(page.version, page.id);
+            const idWithoutVersion = removeVersionFromId(page.version, page.id) + '/';
             return (
               <NavItem
                 key={page.id}
