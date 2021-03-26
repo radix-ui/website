@@ -341,6 +341,50 @@ const StyledContent = styled(Tooltip.Content, {
 });
 ```
 
+## Examples
+
+### With disabled trigger
+
+A disabled button will not fire events so adding a tooltip to a disabled trigger requires a little more work.
+
+Render the trigger as a wrapper (`span` for example) and place your disabled button inside with some CSS to disable pointer events. This allows the tooltip to receive all mouse and keyboard events instead of being blocked by the button.
+
+```jsx manual compact
+// import { styled } from 'path-to/stitches.config';
+import * as Tooltip from '@radix-ui/react-tooltip';
+import { BlendingModeIcon } from '@radix-ui/react-icons';
+
+const StyledContent = styled(Tooltip.Content, {
+  borderRadius: 3,
+  padding: '5px 10px',
+  fontSize: 14,
+  backgroundColor: 'gainsboro',
+  color: 'black',
+});
+
+const StyledArrow = styled(Tooltip.Arrow, {
+  fill: 'gainsboro',
+});
+
+export default () => (
+  <Tooltip.Root>
+    <Tooltip.Trigger as="span">
+      <button
+        type="button"
+        disabled
+        style={{ pointerEvents: 'none' }}
+      >
+        <BlendingModeIcon />
+      </button>
+    </Tooltip.Trigger>
+    <StyledContent>
+      Blending mode
+      <StyledArrow />
+    </StyledContent>
+  </Tooltip.Root>
+);
+```
+
 ## Accessibility
 
 ### Keyboard Interactions
@@ -368,7 +412,7 @@ Create your own API by abstracting the primitive parts into your own component.
 
 ### Abstract parts and introduce a content prop
 
-This example abstract all of the `Tooltip` parts and introduces a new `content` prop.
+This example abstracts all of the `Tooltip` parts and introduces a new `content` prop.
 
 #### Usage
 
