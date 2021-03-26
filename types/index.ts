@@ -17,5 +17,6 @@ export type FrontMatter = {
   version: string;
   versions?: string[];
   aria?: string;
+  hideFromNav?: boolean;
   __resourcePath: string;
 };
