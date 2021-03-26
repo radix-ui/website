@@ -50,9 +50,12 @@ export default function DocsLayout({ children, frontMatter }: LayoutProps) {
   const productPages = allProductPages.filter((p) => p.status !== 'soon');
 
   const currentPageId = router.pathname.substr(1);
-  const currentPageIndex = productPages.findIndex((page) =>
-    currentPageId.includes(removeVersionFromId(page.version, page.id) + '/')
-  );
+  const currentPageIndex = productPages.findIndex((page) => {
+    const isVersionedPage = page.version !== undefined;
+    return currentPageId.includes(
+      isVersionedPage ? removeVersionFromId(page.version, page.id) + '/' : page.id
+    );
+  });
   const previous = productPages[currentPageIndex - 1];
   const next = productPages[currentPageIndex + 1];
 
