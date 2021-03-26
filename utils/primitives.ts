@@ -21,7 +21,7 @@ export const overviewPages: FrontMatter[] = allPages
 
 export const componentsPages: FrontMatter[] = getLatestVersion(
   allPages
-    .filter((page) => page.id.includes('/components/'))
+    .filter((page) => page.id.includes('/components/') && !page.hideFromNav)
     .sort((a, b) => a.name.localeCompare(b.name))
 );
 
