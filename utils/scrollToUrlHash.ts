@@ -1,7 +1,7 @@
 export function scrollToUrlHash(path) {
   const [_, hashLocation] = path.split('#');
   if (hashLocation) {
-    const anchor = document.querySelector(`#${hashLocation}`);
+    const anchor = document.querySelector(`[data-id="${hashLocation}]"`);
     if (!anchor) {
       return;
     }
