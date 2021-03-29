@@ -20,6 +20,10 @@ const LinkHeading = ({
     <DS.Box
       as="a"
       href={`#${id}`}
+      // used by `scrollToUrlHash`
+      // not using the `id` attribute for that because we may get ids that start with a number
+      // and that is not a valid css selector
+      data-id={id}
       css={{
         textDecoration: 'none',
         color: 'inherit',
