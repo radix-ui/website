@@ -1,7 +1,7 @@
 import React from 'react';
 import NextLink from 'next/link';
 import { Badge, Box, Text } from '@modulz/design-system';
-import { FrontMatter } from '../types';
+import { PrimitivesFrontmatter } from '../types/primitives';
 
 type NavItemProps = {
   children: React.ReactNode;
@@ -62,19 +62,19 @@ export function NavItem({ children, active, disabled, href, ...props }: NavItemP
 
 type BadgeProps = React.ComponentProps<typeof Badge>;
 
-const badgeStatusToVariant: Record<FrontMatter['status'], BadgeProps['variant']> = {
+const badgeStatusToVariant: Record<PrimitivesFrontmatter['status'], BadgeProps['variant']> = {
   new: 'green',
   deprecated: 'yellow',
   soon: undefined,
 };
 
-const badgeStatusToText: Record<FrontMatter['status'], string> = {
+const badgeStatusToText: Record<PrimitivesFrontmatter['status'], string> = {
   new: 'New',
   deprecated: 'Deprecated',
   soon: 'Coming soon',
 };
 
-type NavItemBadgeProps = BadgeProps & { status?: FrontMatter['status'] };
+type NavItemBadgeProps = BadgeProps & { status?: PrimitivesFrontmatter['status'] };
 
 export const NavItemBadge = ({ status, ...props }: NavItemBadgeProps) => (
   <Badge {...props} variant={badgeStatusToVariant[status]} size="1" css={{ ml: '$2' }}>

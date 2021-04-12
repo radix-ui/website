@@ -8,4 +8,5 @@ export type PrimitivesFrontmatter = {
   aria?: string;
   name?: string;
   slug: string;
+  status?: 'new' | 'soon' | 'deprecated';
 };
