@@ -45,7 +45,7 @@ export default () => (
 Create your styled accordion component from the primitive parts.
 
 <Preview>
-  <BasicAccordion />
+  <AccordionDemo />
 </Preview>
 
 ```jsx
@@ -365,7 +365,7 @@ const StyledPanel = styled(Accordion.Panel, {
 ### With chevrons
 
 <Preview>
-  <BasicAccordion showChevrons />
+  <AccordionDemo showChevrons />
 </Preview>
 
 ```jsx collapsed
@@ -452,7 +452,7 @@ export default () => (
 ### Expanded by default
 
 <Preview>
-  <BasicAccordion initialValue="item-2" />
+  <AccordionDemo initialValue="item-2" />
 </Preview>
 
 ```jsx collapsed
@@ -538,7 +538,7 @@ export default () => (
 ### Controlled to prevent closing
 
 <Preview>
-  <BasicAccordion preventClose initialValue="item-2" />
+  <AccordionDemo preventClose initialValue="item-2" />
 </Preview>
 
 ```jsx collapsed
@@ -632,7 +632,7 @@ export default () => {
 ### Multiple panels open at the same time
 
 <Preview>
-  <BasicAccordion
+  <AccordionDemo
     type="multiple"
     initialValue={['item-2', 'item-3']}
   />

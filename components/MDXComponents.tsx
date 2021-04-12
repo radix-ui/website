@@ -5,11 +5,10 @@ import { ChevronDownIcon, Link2Icon } from '@radix-ui/react-icons';
 import { PropsTable } from './PropsTable';
 import { KeyboardTable } from './KeyboardTable';
 import { HeroSlot } from './HeroSlot';
-import { AccordionHero } from './Hero/AccordionHero';
 import { Pre } from './Pre';
 import { Preview } from './Preview';
 import { PackageRelease, PRLink } from './releaseHelpers';
-import { BasicAccordion } from './Demo/Accordion/Basic';
+import { AccordionDemo, AccordionHero } from './Demo/Accordion';
 
 const LinkHeading = ({
   id,
@@ -101,7 +100,7 @@ export const components = {
         inset: 0,
         width: '100%',
         height: '100%',
-        backgroundImage: 'linear-gradient(to bottom, transparent 30%, white)',
+        backgroundImage: 'linear-gradient(to bottom, transparent 30%, $loContrast)',
       },
     };
     return (
@@ -133,7 +132,10 @@ export const components = {
             }}
           >
             <DS.Button onClick={() => setIsCollapsed(false)}>
-              <ChevronDownIcon /> Show code
+              <ChevronDownIcon />{' '}
+              <DS.Box as="span" css={{ ml: '$2' }}>
+                Show code
+              </DS.Box>
             </DS.Button>
           </DS.Box>
         )}
@@ -261,5 +263,5 @@ export const components = {
   PackageRelease,
   PRLink,
   AccordionHero,
-  BasicAccordion,
+  AccordionDemo,
 };

@@ -12,7 +12,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const currentPath = router.pathname.replace('[slug]', router.query.slug as string);
+  const currentPath = router.pathname.replace('[...slug]', router.query.slug.join('/') as string);
   const currentPageId = currentPath.substr(1);
   const currentPageIndex = allDocsRoutes.findIndex((page) => page.slug === currentPageId);
 
@@ -20,7 +20,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
   const next = allDocsRoutes[currentPageIndex + 1];
 
   const GITHUB_URL = 'https://github.com';
-  const REPO_NAME = 'modulz/stitches-site';
+  const REPO_NAME = 'radix-ui/website';
   const editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/master/data${currentPath}.mdx`;
 
   React.useEffect(() => {
