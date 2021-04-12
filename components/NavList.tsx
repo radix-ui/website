@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, BoxProps } from '@modulz/design-system';
+import { Box } from '@modulz/design-system';
 
 export function NavList({ children }) {
   return (
