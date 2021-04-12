@@ -12,7 +12,10 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const currentPath = router.pathname.replace('[...slug]', router.query.slug.join('/') as string);
+  const currentPath = router.pathname.replace(
+    '[...slug]',
+    (router.query.slug as string[]).join('/') as string
+  );
   const currentPageId = currentPath.substr(1);
   const currentPageIndex = allDocsRoutes.findIndex((page) => page.slug === currentPageId);
 
