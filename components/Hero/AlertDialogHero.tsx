@@ -1,14 +1,14 @@
 import React from 'react';
-import { Box, styled, css, Flex } from '@modulz/design-system';
+import { Box, keyframes, Flex } from '@modulz/design-system';
 
-const dialog = css.keyframes({
+const dialog = keyframes({
   '20%': { transform: 'scale(.92) translate(-50%, -50%)', opacity: '0' },
   '22%': { transform: 'scale(1) translate(-50%, -50%)', opacity: '1' },
   '78%': { transform: 'scale(1) translate(-50%, -50%)', opacity: '1' },
   '80%': { transform: 'scale(.92) translate(-50%, -50%)', opacity: '0' },
 });
 
-const click = css.keyframes({
+const click = keyframes({
   '0%': { boxShadow: '0 0 0 2px black', transform: 'scale(.5)', opacity: '0' },
   '14%': { boxShadow: '0 0 0 3px black', transform: 'scale(.5)', opacity: '0' },
   '16%': { boxShadow: '0 0 0 2px black', opacity: '1' },

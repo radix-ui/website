@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, styled, css, Flex } from '@modulz/design-system';
+import { Box, keyframes } from '@modulz/design-system';
 
-const scrollarea = css.keyframes({
+const scrollarea = keyframes({
   '0%': { transform: 'translateY(0)' },
   '20%': { transform: 'translateY(0)' },
   '40%': { transform: 'translateY(-150px)' },
@@ -10,7 +10,7 @@ const scrollarea = css.keyframes({
   '100%': { transform: 'translateY(0)' },
 });
 
-const scrollbar = css.keyframes({
+const scrollbar = keyframes({
   '0%': { transform: 'translateY(0)' },
   '20%': { transform: 'translateY(0)' },
   '40%': { transform: 'translateY(50px)' },
@@ -19,7 +19,7 @@ const scrollbar = css.keyframes({
   '100%': { transform: 'translateY(0)' },
 });
 
-const cursor = css.keyframes({
+const cursor = keyframes({
   '0%': { transform: 'translateY(0)' },
   '20%': { transform: 'translateY(0)' },
   '40%': { transform: 'translateY(50px)' },

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, styled, css, Flex } from '@modulz/design-system';
+import { Box, keyframes, Flex } from '@modulz/design-system';
 
-const tooltip = css.keyframes({
+const tooltip = keyframes({
   '0%': { opacity: '0', transform: 'translateY(0)' },
   '30%': { opacity: '0', transform: 'translateY(0)' },
   '35%': { opacity: '1', transform: 'translateY(-3px)' },
@@ -10,7 +10,7 @@ const tooltip = css.keyframes({
   '100%': { opacity: '0', transform: 'translateY(0)' },
 });
 
-const cursor = css.keyframes({
+const cursor = keyframes({
   '0%': { transform: 'translate(30px, 30px)' },
   '22%': { transform: 'translate(30px, 30px)' },
   '26%': { transform: 'translate(0, 0)' },

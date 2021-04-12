@@ -1,13 +1,13 @@
 import React from 'react';
-import { Box, styled, css } from '@modulz/design-system';
+import { Box, keyframes } from '@modulz/design-system';
 
-const anim = css.keyframes({
+const anim = keyframes({
   '20%': { transform: 'translateX(100px)' },
   '40%': { transform: 'translateX(42px)' },
   '60%': { transform: 'translateX(70px)' },
 });
 
-const scale = css.keyframes({
+const scale = keyframes({
   '0%': { transform: 'ScaleX(0)' },
   '18%': { transform: 'ScaleX(0)' },
   '20%': { transform: 'ScaleX(.25)' },

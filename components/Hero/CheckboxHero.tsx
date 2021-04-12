@@ -1,28 +1,28 @@
 import React from 'react';
-import { Box, styled, css, Flex } from '@modulz/design-system';
+import { Box, keyframes, Flex } from '@modulz/design-system';
 
-const check1 = css.keyframes({
+const check1 = keyframes({
   '0%': { opacity: '0' },
   '44.9999%': { opacity: '0' },
   '45%': { opacity: '1' },
   '100%': { opacity: '1' },
 });
 
-const check2 = css.keyframes({
+const check2 = keyframes({
   '0%': { opacity: '0' },
   '54.9999%': { opacity: '0' },
   '55%': { opacity: '1' },
   '100%': { opacity: '1' },
 });
 
-const cursor = css.keyframes({
+const cursor = keyframes({
   '0%': { transform: 'translateY(0)' },
   '45%': { transform: 'translateY(0)' },
   '48%': { transform: 'translateY(40px)' },
   '100%': { transform: 'translateY(40px)' },
 });
 
-const click = css.keyframes({
+const click = keyframes({
   '0%': { boxShadow: '0 0 0 2px black', transform: 'scale(.5)', opacity: '0' },
   '42%': { boxShadow: '0 0 0 3px black', transform: 'scale(.5)', opacity: '0' },
   '44%': { boxShadow: '0 0 0 2px black', opacity: '1' },

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, styled, css } from '@modulz/design-system';
+import { Box, keyframes } from '@modulz/design-system';
 
-const menuitem = css.keyframes({
+const menuitem = keyframes({
   '0%': { transform: 'translateY(0)' },
   '4.9999%': { transform: 'translateY(0)' },
   '5%': { transform: 'translateY(20px)' },

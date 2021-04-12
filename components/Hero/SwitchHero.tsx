@@ -1,21 +1,21 @@
 import React from 'react';
-import { Box, styled, css } from '@modulz/design-system';
+import { Box, keyframes } from '@modulz/design-system';
 
-const track = css.keyframes({
+const track = keyframes({
   '0%': { backgroundColor: 'hsla(0,0%,0%,.35)' },
   '48%': { backgroundColor: 'hsla(0,0%,0%,.35)' },
   '52%': { backgroundColor: 'hsl(252,100%,93%)' },
   '100%': { backgroundColor: 'hsl(252,100%,93%)' },
 });
 
-const thumb = css.keyframes({
+const thumb = keyframes({
   '0%': { transform: 'translateX(0)' },
   '48%': { transform: 'translateX(0)' },
   '52%': { transform: 'translateX(21px)' },
   '100%': { transform: 'translateX(21px)' },
 });
 
-const click = css.keyframes({
+const click = keyframes({
   '0%': { boxShadow: '0 0 0 2px black', transform: 'scale(.5)', opacity: '0' },
   '37%': { boxShadow: '0 0 0 3px black', transform: 'scale(.5)', opacity: '0' },
   '41%': { boxShadow: '0 0 0 2px black', opacity: '1' },
