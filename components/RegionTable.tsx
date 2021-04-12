@@ -1,11 +1,11 @@
 import React from 'react';
-import { Box, BoxProps, theme as DStheme } from '@modulz/design-system';
+import { Box } from '@modulz/design-system';
 
 export function RegionTable({
   'aria-label': ariaLabel,
   'aria-labelledby': ariaLabelledBy,
   ...props
-}: BoxProps) {
+}) {
   return (
     <Box
       as="div"
@@ -18,7 +18,7 @@ export function RegionTable({
         overflow: 'auto',
         '&:focus': {
           outline: 0,
-          boxShadow: `0 0 0 3px ${DStheme.colors.$gray700}`,
+          boxShadow: '0 0 0 3px $colors$gray700',
         },
       }}
     >
