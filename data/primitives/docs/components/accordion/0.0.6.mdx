@@ -9,8 +9,6 @@ features:
   - Can be controlled or uncontrolled.
 ---
 
-import { AccordionHero } from '../../../../../../components/Hero/AccordionHero';
-
 <HeroSlot>
   <AccordionHero />
 </HeroSlot>
@@ -35,7 +33,7 @@ export default () => (
     <Accordion.Item>
       <Accordion.Header>
         <Accordion.Button />
-      </Accordion.Header>
+      <Accordion.Header>
       <Accordion.Panel />
     </Accordion.Item>
   </Accordion.Root>
@@ -46,7 +44,7 @@ export default () => (
 
 Create your styled accordion component from the primitive parts.
 
-```jsx live manual
+```jsx manual
 // import { styled } from 'path-to/stitches.config';
 import * as Accordion from '@radix-ui/react-accordion';
 
@@ -331,38 +329,11 @@ Contains the collapsible content for an item.
   ]}
 />
 
-## Styling
-
-### Animating panel height
-
-We expose a CSS custom property `--radix-accordion-panel-height`.<br />Use it to animate the height of the panel when it opens/closes.
-
-```jsx
-const slideDown = css.keyframes({
-  from: { height: 0 },
-  to: { height: 'var(--radix-accordion-panel-height)' },
-});
-
-const slideUp = css.keyframes({
-  from: { height: 'var(--radix-accordion-panel-height)' },
-  to: { height: 0 },
-});
-
-const StyledPanel = styled(Accordion.Panel, {
-  '&[data-state="open"]': {
-    animation: `${slideDown} 300ms ease-out`,
-  },
-  '&[data-state="closed"]': {
-    animation: `${slideUp} 300ms ease-out`,
-  },
-});
-```
-
 ## Examples
 
 ### With chevrons
 
-```jsx live manual compact
+```jsx manual compact
 // import { styled } from 'path-to/stitches.config';
 import * as Accordion from '@radix-ui/react-accordion';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
@@ -445,7 +416,7 @@ export default () => (
 
 ### Expanded by default
 
-```jsx live manual compact
+```jsx manual compact
 // import { styled } from 'path-to/stitches.config';
 import * as Accordion from '@radix-ui/react-accordion';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
@@ -528,7 +499,7 @@ export default () => (
 
 ### Controlled to prevent closing
 
-```jsx live manual compact
+```jsx manual compact
 // import { styled } from 'path-to/stitches.config';
 import * as Accordion from '@radix-ui/react-accordion';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
@@ -618,7 +589,7 @@ export default () => {
 
 ### Multiple panels open at the same time
 
-```jsx live manual compact
+```jsx manual compact
 // import { styled } from 'path-to/stitches.config';
 import * as Accordion from '@radix-ui/react-accordion';
 import { ChevronDownIcon } from '@radix-ui/react-icons';

@@ -5,11 +5,9 @@ description: A vertically stacked set of interactive headings that each reveal a
 aria: https://www.w3.org/TR/wai-aria-practices-1.2/#accordion
 features:
   - Full keyboard navigation.
-  - Can expand only one panel at a time or multiple.
+  - Expands one panel at a time.
   - Can be controlled or uncontrolled.
 ---
-
-import { AccordionHero } from '../../../../../../components/Hero/AccordionHero';
 
 <HeroSlot>
   <AccordionHero />
@@ -76,7 +74,7 @@ const StyledPanel = styled(Accordion.Panel, {
 });
 
 export default () => (
-  <StyledAccordion type="single">
+  <StyledAccordion>
     <StyledItem value="item-1">
       <StyledHeader>
         <StyledButton>Item 1</StyledButton>
@@ -131,25 +129,12 @@ Contains all the parts of an accordion.
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
-      name: 'type',
-      required: true,
-      type: '"single" | "multiple"',
-      typeSimple: 'enum',
-      description: (
-        <span>
-          Determines whether a single panel can be open at a time or
-          multiple panels at the same time.
-        </span>
-      ),
-    },
-    {
       name: 'value',
       required: false,
       type: 'string',
       description: (
         <span>
-          The controlled value of the item to expand when{' '}
-          <Code>type</Code> is <Code>"single"</Code>. Must be used in
+          The controlled value of the item to expand. Must be used in
           conjunction with <Code>onValueChange</Code>.
         </span>
       ),
@@ -158,63 +143,8 @@ Contains all the parts of an accordion.
       name: 'defaultValue',
       required: false,
       type: 'string',
-      description: (
-        <span>
-          The value of the item to expand when initially rendered
-          and <Code>type</Code> is <Code>"single"</Code>. Use when
-          you do not need to control the state of the items.
-        </span>
-      ),
-    },
-    {
-      name: 'onValueChange',
-      required: false,
-      type: '(value: string) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when the expanded state of an item
-          changes and <Code>type</Code> is <Code>"single"</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'value',
-      required: false,
-      default: '[]',
-      type: 'string[]',
-      description: (
-        <span>
-          The controlled value of the item to expand when{' '}
-          <Code>type</Code> is <Code>"multiple"</Code>. Must be used
-          in conjunction with <Code>onValueChange</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'defaultValue',
-      required: false,
-      default: '[]',
-      type: 'string[]',
-      description: (
-        <span>
-          The value of the item to expand when initially rendered when{' '}
-          <Code>type</Code> is <Code>"multiple"</Code>. Use when you
-          do not need to control the state of the items.
-        </span>
-      ),
-    },
-    {
-      name: 'onValueChange',
-      required: false,
-      type: '(value: string[]) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when the expanded state of an item
-          changes and <Code>type</Code> is <Code>"multiple"</Code>.
-        </span>
-      ),
+      description:
+        'The value of the item to expand when initially rendered. Use when you do not need to control the state of the items.',
     },
     {
       name: 'disabled',
@@ -227,6 +157,14 @@ Contains all the parts of an accordion.
           with the accordion and all its items.
         </span>
       ),
+    },
+    {
+      name: 'onValueChange',
+      required: false,
+      type: '(value: string) => void',
+      typeSimple: 'function',
+      description:
+        'Event handler called when the expanded state of an item changes.',
     },
   ]}
 />
@@ -376,7 +314,7 @@ const AccordionChevron = styled(ChevronDownIcon, {
 });
 
 export default () => (
-  <StyledAccordion type="single">
+  <StyledAccordion>
     <StyledItem value="item-1">
       <StyledHeader>
         <StyledButton>
@@ -459,183 +397,7 @@ const AccordionChevron = styled(ChevronDownIcon, {
 });
 
 export default () => (
-  <StyledAccordion type="single" defaultValue="item-2">
-    <StyledItem value="item-1">
-      <StyledHeader>
-        <StyledButton>
-          Item 1
-          <AccordionChevron aria-hidden />
-        </StyledButton>
-      </StyledHeader>
-      <StyledPanel>
-        Here goes the content for the accordion item 1.
-      </StyledPanel>
-    </StyledItem>
-
-    <StyledItem value="item-2">
-      <StyledHeader>
-        <StyledButton>
-          Item 2
-          <AccordionChevron aria-hidden />
-        </StyledButton>
-      </StyledHeader>
-      <StyledPanel>
-        Here goes the content for the accordion item 2.
-      </StyledPanel>
-    </StyledItem>
-
-    <StyledItem value="item-3">
-      <StyledHeader>
-        <StyledButton>
-          Item 3
-          <AccordionChevron aria-hidden />
-        </StyledButton>
-      </StyledHeader>
-      <StyledPanel>
-        Here goes the content for the accordion item 3.
-      </StyledPanel>
-    </StyledItem>
-  </StyledAccordion>
-);
-```
-
-### Controlled to prevent closing
-
-```jsx manual compact
-// import { styled } from 'path-to/stitches.config';
-import * as Accordion from '@radix-ui/react-accordion';
-import { ChevronDownIcon } from '@radix-ui/react-icons';
-
-const StyledAccordion = styled(Accordion.Root, {
-  borderTop: '1px solid gainsboro',
-});
-
-const StyledItem = styled(Accordion.Item, {
-  borderBottom: '1px solid gainsboro',
-});
-
-const StyledHeader = styled(Accordion.Header, {
-  margin: 0,
-  display: 'flex',
-});
-
-const StyledButton = styled(Accordion.Button, {
-  backgroundColor: 'transparent',
-  border: 'none',
-  padding: 10,
-  flex: 1,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-});
-
-const StyledPanel = styled(Accordion.Panel, {
-  padding: 10,
-});
-
-const AccordionChevron = styled(ChevronDownIcon, {
-  transition: 'transform 300ms',
-
-  '[data-state=open] &': {
-    transform: 'rotate(180deg)',
-  },
-});
-
-export default () => {
-  const [value, setValue] = React.useState('item-2');
-  return (
-    <StyledAccordion
-      type="single"
-      value={value}
-      onValueChange={(value) => value && setValue(value)}
-    >
-      <StyledItem value="item-1">
-        <StyledHeader>
-          <StyledButton>
-            Item 1
-            <AccordionChevron aria-hidden />
-          </StyledButton>
-        </StyledHeader>
-        <StyledPanel>
-          Here goes the content for the accordion item 1.
-        </StyledPanel>
-      </StyledItem>
-
-      <StyledItem value="item-2">
-        <StyledHeader>
-          <StyledButton>
-            Item 2
-            <AccordionChevron aria-hidden />
-          </StyledButton>
-        </StyledHeader>
-        <StyledPanel>
-          Here goes the content for the accordion item 2.
-        </StyledPanel>
-      </StyledItem>
-
-      <StyledItem value="item-3">
-        <StyledHeader>
-          <StyledButton>
-            Item 3
-            <AccordionChevron aria-hidden />
-          </StyledButton>
-        </StyledHeader>
-        <StyledPanel>
-          Here goes the content for the accordion item 3.
-        </StyledPanel>
-      </StyledItem>
-    </StyledAccordion>
-  );
-};
-```
-
-### Multiple panels open at the same time
-
-```jsx manual compact
-// import { styled } from 'path-to/stitches.config';
-import * as Accordion from '@radix-ui/react-accordion';
-import { ChevronDownIcon } from '@radix-ui/react-icons';
-
-const StyledAccordion = styled(Accordion.Root, {
-  borderTop: '1px solid gainsboro',
-});
-
-const StyledItem = styled(Accordion.Item, {
-  borderBottom: '1px solid gainsboro',
-});
-
-const StyledHeader = styled(Accordion.Header, {
-  margin: 0,
-  display: 'flex',
-});
-
-const StyledButton = styled(Accordion.Button, {
-  backgroundColor: 'transparent',
-  border: 'none',
-  padding: 10,
-  flex: 1,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-});
-
-const StyledPanel = styled(Accordion.Panel, {
-  padding: 10,
-});
-
-const AccordionChevron = styled(ChevronDownIcon, {
-  transition: 'transform 300ms',
-
-  '[data-state=open] &': {
-    transform: 'rotate(180deg)',
-  },
-});
-
-export default () => (
-  <StyledAccordion
-    type="multiple"
-    defaultValue={['item-2', 'item-3']}
-  >
+  <StyledAccordion defaultValue="item-2">
     <StyledItem value="item-1">
       <StyledHeader>
         <StyledButton>

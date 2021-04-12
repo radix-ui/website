@@ -1,11 +1,15 @@
 import * as React from 'react';
 import NextLink from 'next/link';
 import * as DS from '@modulz/design-system';
-import { Link2Icon } from '@radix-ui/react-icons';
-import { CodeBlock } from './CodeBlock';
+import { ChevronDownIcon, Link2Icon } from '@radix-ui/react-icons';
 import { PropsTable } from './PropsTable';
 import { KeyboardTable } from './KeyboardTable';
 import { HeroSlot } from './HeroSlot';
+import { AccordionHero } from './Hero/AccordionHero';
+import { Pre } from './Pre';
+import { Preview } from './Preview';
+import { PackageRelease, PRLink } from './releaseHelpers';
+import { BasicAccordion } from './Demo/Accordion/Basic';
 
 const LinkHeading = ({
   id,
@@ -16,7 +20,7 @@ const LinkHeading = ({
   children: React.ReactNode;
   css?: any;
 }) => (
-  <DS.Box>
+  <DS.Box css={{ ...css }}>
     <DS.Box
       as="a"
       href={`#${id}`}
@@ -32,57 +36,119 @@ const LinkHeading = ({
         svg: {
           opacity: 0,
         },
-        ':hover svg': {
+        '&:hover svg': {
           opacity: 1,
         },
-        ...css,
       }}
     >
       {children}
-      <DS.Box as="span" css={{ ml: '$2', color: '$gray900' }}>
+      <DS.Box as="span" css={{ ml: '$2', color: '$slate500' }}>
         <Link2Icon aria-hidden />
       </DS.Box>
     </DS.Box>
   </DS.Box>
 );
 
-export const MDXComponents = {
-  h1: (props) => <DS.Title {...props} css={{ mb: '$1', ...props.css }} />,
+export const components = {
+  ...DS,
+  h1: (props) => <DS.Text size="6" {...props} css={{ mb: '$8', fontWeight: 500 }} as="h1" />,
   h2: ({ children, id, ...props }) => (
-    <LinkHeading id={id} css={{ mt: '$6', mb: '$2', ...props.css }}>
+    <LinkHeading id={id} css={{ mt: '$7', mb: '$5' }}>
       <DS.Heading
         {...props}
-        as={'h2' as any}
         id={id}
+        size="7"
+        css={{
+          fontWeight: 500,
+          scrollMarginTop: '$6',
+        }}
+        as={'h3' as any}
         data-heading
-        style={{ scrollMarginTop: '45px' }}
       >
         {children}
       </DS.Heading>
     </LinkHeading>
   ),
   h3: ({ children, id, ...props }) => (
-    <LinkHeading id={id} css={{ mt: '$5', mb: '$1', ...props.css }}>
-      <DS.Subheading
+    <LinkHeading id={id} css={{ mt: '$7', mb: '$1' }}>
+      <DS.Heading
         {...props}
-        as={'h3' as any}
         id={id}
+        size="7"
+        css={{
+          fontSize: '19px',
+          lineHeight: '23px',
+          fontWeight: 500,
+          scrollMarginTop: '$6',
+        }}
+        as={'h4' as any}
         data-heading
-        style={{ scrollMarginTop: '45px' }}
       >
         {children}
-      </DS.Subheading>
+      </DS.Heading>
     </LinkHeading>
   ),
-  // MDX adds a `pre` tag when we use ``` for CodeBlock
-  // which causes everything to be wrapped in it.
-  pre: (props) => <div>{props.children}</div>,
-  code: (props) => (
-    <DS.Box css={{ mt: '$3', mb: '$3' }}>
-      <CodeBlock {...props} />
-    </DS.Box>
+  pre: ({ children }) => <>{children}</>,
+  code: ({ className, children, id, showLineNumbers = false, collapsed = false }) => {
+    const [isCollapsed, setIsCollapsed] = React.useState(collapsed);
+    const collapsedStyles = {
+      height: '100px',
+      position: 'relative',
+      overflow: 'hidden',
+      '&::after': {
+        content: `''`,
+        position: 'absolute',
+        inset: 0,
+        width: '100%',
+        height: '100%',
+        backgroundImage: 'linear-gradient(to bottom, transparent 30%, white)',
+      },
+    };
+    return (
+      <Pre
+        as="pre"
+        // variant="blue"
+        css={{
+          my: '$5',
+          ...(isCollapsed ? (collapsedStyles as any) : {}),
+          '[data-preview] + &': {
+            marginTop: 1,
+            borderTopLeftRadius: 0,
+            borderTopRightRadius: 0,
+          },
+        }}
+        className={className}
+        id={id}
+        data-line-numbers={showLineNumbers}
+      >
+        {isCollapsed && (
+          <DS.Box
+            css={{
+              position: 'absolute',
+              left: 0,
+              zIndex: 1,
+              bottom: '$2',
+              width: '100%',
+              textAlign: 'center',
+            }}
+          >
+            <DS.Button onClick={() => setIsCollapsed(false)}>
+              <ChevronDownIcon /> Show code
+            </DS.Button>
+          </DS.Box>
+        )}
+        <code className={className} children={children} />
+      </Pre>
+    );
+  },
+  p: (props) => (
+    <DS.Text
+      size="4"
+      {...props}
+      css={{ mb: '$3', lineHeight: '27px', letterSpacing: 0, ...props.css }}
+      as="p"
+    />
   ),
-  p: (props) => <DS.Paragraph {...props} css={{ mb: '$3', ...props.css }} as="p" />,
   a: ({ href = '', ...props }) => {
     if (href.startsWith('http')) {
       return (
@@ -99,25 +165,12 @@ export const MDXComponents = {
         />
       );
     }
-    if (href.startsWith('#')) {
-      return (
-        <DS.Link
-          {...props}
-          variant="blue"
-          href={href}
-          css={{
-            fontSize: 'inherit',
-            ...props.css,
-          }}
-        />
-      );
-    }
     return (
       <NextLink href={href} passHref>
         <DS.Link
           {...props}
-          variant="blue"
           css={{
+            color: 'inherit',
             fontSize: 'inherit',
             ...props.css,
           }}
@@ -125,7 +178,7 @@ export const MDXComponents = {
       </NextLink>
     );
   },
-  hr: (props) => <DS.Separator size="2" {...props} css={{ mt: '$7', mx: 'auto', ...props.css }} />,
+  hr: (props) => <DS.Separator size="2" {...props} css={{ my: '$6', mx: 'auto', ...props.css }} />,
   inlineCode: (props) => <DS.Code {...props} />,
   ul: (props) => (
     <DS.Box {...props} css={{ color: '$hiContrast', mb: '$3', ...props.css }} as="ul" />
@@ -135,7 +188,7 @@ export const MDXComponents = {
   ),
   li: (props) => (
     <li>
-      <DS.Paragraph {...props} css={{ ...props.css }} />
+      <DS.Text size="4" {...props} css={{ lineHeight: '30px', letterSpacing: 0, ...props.css }} />
     </li>
   ),
   strong: (props) => (
@@ -203,5 +256,10 @@ export const MDXComponents = {
       <KeyboardTable {...props} />
     </DS.Box>
   ),
+  Preview,
   HeroSlot,
+  PackageRelease,
+  PRLink,
+  AccordionHero,
+  BasicAccordion,
 };

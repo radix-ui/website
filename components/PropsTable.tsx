@@ -1,5 +1,13 @@
 import React from 'react';
-import { Box, IconButton, Text, Code, Popover } from '@modulz/design-system';
+import {
+  Box,
+  IconButton,
+  Text,
+  Code,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from '@modulz/design-system';
 import { InfoCircledIcon, DividerHorizontalIcon } from '@radix-ui/react-icons';
 import { RegionTable } from './RegionTable';
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
@@ -61,7 +69,7 @@ export function PropsTable({
               </Code>
               {description && (
                 <Popover>
-                  <Popover.Trigger
+                  <PopoverTrigger
                     as={IconButton}
                     variant="ghost"
                     css={{ ml: '$1', verticalAlign: 'middle', color: '$gray900' }}
@@ -69,14 +77,14 @@ export function PropsTable({
                     <AccessibleIcon label="Prop description">
                       <InfoCircledIcon />
                     </AccessibleIcon>
-                  </Popover.Trigger>
-                  <Popover.Content side="top">
+                  </PopoverTrigger>
+                  <PopoverContent side="top">
                     <Box css={{ py: '$2', px: '$3' }}>
                       <Text size="2" css={{ lineHeight: '20px' }}>
                         {description}
                       </Text>
                     </Box>
-                  </Popover.Content>
+                  </PopoverContent>
                 </Popover>
               )}
             </Box>
@@ -86,7 +94,7 @@ export function PropsTable({
               </Code>
               {Boolean(typeSimple) && (
                 <Popover>
-                  <Popover.Trigger
+                  <PopoverTrigger
                     as={IconButton}
                     variant="ghost"
                     css={{
@@ -100,12 +108,12 @@ export function PropsTable({
                     <AccessibleIcon label="See full type">
                       <InfoCircledIcon />
                     </AccessibleIcon>
-                  </Popover.Trigger>
-                  <Popover.Content side="top">
+                  </PopoverTrigger>
+                  <PopoverContent side="top">
                     <Box css={{ py: '$2', px: '$2', height: '38px', whiteSpace: 'nowrap' }}>
                       <Code>{type}</Code>
                     </Box>
-                  </Popover.Content>
+                  </PopoverContent>
                 </Popover>
               )}
             </Box>

@@ -39,68 +39,6 @@ export function TitleAndMetaTags({
       <meta name="twitter:site" content="@radix_ui" />
       {/* <meta name="twitter:card" content="summary" /> */}
       <meta name="twitter:card" content="summary_large_image" />
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  background-color: var(--colors-loContrast);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1;
-  font-family: var(--fonts-untitled);
-}
-
-
-h1, h2, h3, h4, h5, strong {
-  font-weight: 500;
-}
-
-svg {
-  display: block;
-  vertical-align: middle;
-}
-
-#__next {
-  position: relative;
-  z-index: 0;
-}
-
-img {
-  vertical-align: middle;
-  max-width: 100%;
-}
-
-pre {
-  margin: 0;
-  font-family: var(--fonts-mono);
-  all: unset;
-}
-
-::selection {
-  background-color: var(--colors-blue500);
-}
-        `,
-        }}
-      />
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `(function() {
-                try {
-                  var mode = localStorage.getItem('darkMode');
-                  if (!mode) return;
-                  document.documentElement.setAttribute('data-theme', mode);
-                } catch (e) {}
-              })()
-          `,
-        }}
-      ></script>
     </Head>
   );
 }

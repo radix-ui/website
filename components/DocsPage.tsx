@@ -1,19 +1,27 @@
 import * as React from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { Box, Flex, Badge, IconButton } from '@modulz/design-system';
+import { Box, Flex, Badge, Text, Link, Container, IconButton } from '@modulz/design-system';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import { ScrollArea } from '../components/ScrollArea';
 import { RadixLogo } from './RadixLogo';
-import { PrimitivesNav } from './PrimitivesNav';
-import { DesignSystemNav } from './DesignSystemNav';
-import { useProductType } from '../utils/useProductType';
-import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
+import { ThemeToggle } from '@components/ThemeToggle';
+import { allDocsRoutes, docsRoutes } from '@lib/docsRoutes';
 
 export function DocsPage({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const [isOpen, setIsOpen] = React.useState(false);
-  const productType = useProductType();
+
+  const currentPath = router.pathname.replace('[slug]', router.query.slug as string);
+  const currentPageId = currentPath.substr(1);
+  const currentPageIndex = allDocsRoutes.findIndex((page) => page.slug === currentPageId);
+
+  const previous = allDocsRoutes[currentPageIndex - 1];
+  const next = allDocsRoutes[currentPageIndex + 1];
+
+  const GITHUB_URL = 'https://github.com';
+  const REPO_NAME = 'modulz/stitches-site';
+  const editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/master/data${currentPath}.mdx`;
 
   React.useEffect(() => {
     const handleRouteChange = () => setIsOpen(false);
@@ -28,22 +36,21 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
     <Flex
       css={{
         flexDirection: 'column',
-        bp2: {
+        '@bp2': {
           flexDirection: 'row',
         },
       }}
     >
       <Box
-        as="header"
         css={{
           width: '100%',
           maxHeight: 'auto',
           borderBottom: '1px solid',
-          borderColor: '$gray500',
+          borderColor: '$slate500',
           WebkitOverflowScrolling: 'touch',
           overflowX: 'hidden',
 
-          bp2: {
+          '@bp2': {
             position: 'fixed',
             top: 0,
             left: 0,
@@ -51,6 +58,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
             width: '250px',
             borderRight: '1px solid',
             borderBottom: '0',
+            borderColor: '$slate500',
           },
         }}
       >
@@ -62,25 +70,38 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
                 css={{
                   color: '$hiContrast',
                   display: 'inline-flex',
-                  ':focus': { boxShadow: 'none' },
+                  '&:focus': { boxShadow: 'none' },
                 }}
               >
-                <RadixLogo label="Radix Homepage" />
+                <span
+                  style={{
+                    position: 'absolute',
+                    width: 1,
+                    height: 1,
+                    padding: 0,
+                    margin: -1,
+                    overflow: 'hidden',
+                    clip: 'rect(0, 0, 0, 0)',
+                    whiteSpace: 'nowrap',
+                    border: 0,
+                  }}
+                >
+                  Radix homepage
+                </span>
+                <RadixLogo />
               </Box>
             </NextLink>
-            <Badge size="2" variant="yellow" css={{ ml: '$2' }}>
-              Alpha
+            <Badge variant="yellow" css={{ ml: '$3' }}>
+              Beta
             </Badge>
-            <Box css={{ ml: 'auto', mr: '$6', bp2: { display: 'none' } }}>
+            <ThemeToggle css={{ ml: 'auto' }} />
+            <Box css={{ ml: 'auto', mr: '$6', '@bp2': { display: 'none' } }}>
               <IconButton
                 variant="ghost"
                 onClick={() => setIsOpen(!isOpen)}
                 state={isOpen ? 'active' : undefined}
-                aria-pressed={isOpen}
               >
-                <AccessibleIcon label="Toggle Site Navigation Menu">
-                  <HamburgerMenuIcon />
-                </AccessibleIcon>
+                <HamburgerMenuIcon />
               </IconButton>
             </Box>
           </Flex>
@@ -88,35 +109,174 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
           <Box
             css={{
               display: isOpen ? 'block' : 'none',
-              bp2: {
+              '@bp2': {
                 display: 'block',
               },
             }}
           >
-            {productType === 'primitives' && <PrimitivesNav />}
-            {productType === 'designSystem' && <DesignSystemNav />}
-
-            <Box css={{ height: '$5', bp2: { height: '$8' } }} />
+            {docsRoutes.map((section) => (
+              <Box key={section.label} css={{ mb: '$4' }}>
+                <NavHeading>{section.label}</NavHeading>
+                {section.pages.map((page) => (
+                  <NavItem
+                    key={page.slug}
+                    href={`/${page.slug}`}
+                    active={currentPath === `/${page.slug}`}
+                  >
+                    <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
+                      {page.title}
+                    </Text>
+                  </NavItem>
+                ))}
+              </Box>
+            ))}
+            <Box css={{ height: '$5', '@bp2': { height: '$8' } }} />
           </Box>
         </ScrollArea>
       </Box>
 
       <Box
         css={{
-          py: '$7',
-          bp2: {
-            width: '100%',
+          maxWidth: '100%',
+          flex: 1,
+          pt: '$8',
+          pb: '$9',
+          '@bp2': {
             pl: '250px',
-            pr: 0,
           },
-          bp3: {
-            px: '250px',
-            py: '$8',
+          '@bp3': { pr: '250px' },
+        }}
+      >
+        <Container size="3" css={{ maxWidth: '780px' }}>
+          {children}
+        </Container>
+
+        <Container size="3" css={{ maxWidth: '780px' }}>
+          {(previous || next) && (
+            <Flex
+              aria-label="Pagination navigation"
+              css={{
+                justifyContent: 'space-between',
+                my: '$9',
+              }}
+            >
+              {previous && (
+                <Box>
+                  <NextLink href={`/${previous.slug}`} passHref>
+                    <Box
+                      as="a"
+                      aria-label={`Previous page: ${previous.title}`}
+                      css={{
+                        color: '$blue900',
+                        textDecoration: 'none',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <Box css={{ mb: '$2' }}>
+                        <Text size="3" css={{ color: '$slate900' }}>
+                          Previous
+                        </Text>
+                      </Box>
+                      <Text size="5" css={{ color: 'inherit' }}>
+                        {previous.title}
+                      </Text>
+                    </Box>
+                  </NextLink>
+                </Box>
+              )}
+              {next && (
+                <Box css={{ ml: 'auto' }}>
+                  <NextLink href={`/${next.slug}`} passHref>
+                    <Box
+                      as="a"
+                      aria-label={`Previous page: ${next.title}`}
+                      css={{
+                        color: '$blue900',
+                        textDecoration: 'none',
+                        textAlign: 'right',
+                      }}
+                    >
+                      <Box css={{ mb: '$2' }}>
+                        <Text size="3" css={{ color: '$slate900' }}>
+                          Next
+                        </Text>
+                      </Box>
+                      <Text size="5" css={{ color: 'inherit' }}>
+                        {next.title}
+                      </Text>
+                    </Box>
+                  </NextLink>
+                </Box>
+              )}
+            </Flex>
+          )}
+        </Container>
+        <Container size="3" css={{ maxWidth: '780px', my: '$9' }}>
+          <Text size="3">
+            <Link
+              href={editUrl}
+              title="Edit this page on GitHub."
+              rel="noopener noreferrer"
+              target="_blank"
+              variant="subtle"
+            >
+              Edit this page on GitHub.
+            </Link>
+          </Text>
+        </Container>
+      </Box>
+    </Flex>
+  );
+}
+
+function NavHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <Text
+      as="h4"
+      size="3"
+      css={{
+        fontWeight: 500,
+        px: '$5',
+        py: '$2',
+      }}
+    >
+      {children}
+    </Text>
+  );
+}
+
+type NavItemProps = { children: React.ReactNode; active?: boolean; href: string };
+
+function NavItem({ children, active, href, ...props }: NavItemProps) {
+  const isExternal = href.startsWith('http');
+
+  return (
+    <Box
+      as={isExternal ? 'span' : (NextLink as any)}
+      {...(isExternal ? {} : { href, passHref: true })}
+    >
+      <Box
+        {...props}
+        {...(isExternal ? { href, target: '_blank' } : {})}
+        as="a"
+        css={{
+          display: 'flex',
+          alignItems: 'center',
+          textDecoration: 'none',
+          color: '$hiContrast',
+          py: '$2',
+          px: '$5',
+          backgroundColor: active ? '$violet300' : 'transparent',
+          userSelect: 'none',
+          minHeight: '$6',
+          transition: 'background-color 50ms linear',
+          '&:hover': {
+            backgroundColor: active ? '$violet300' : '$violet200',
           },
         }}
       >
         {children}
       </Box>
-    </Flex>
+    </Box>
   );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, styled, css, Flex } from '@modulz/design-system';
+import { Box, styled, keyframes, Flex } from '@modulz/design-system';
 
-const panel1 = css.keyframes({
+const panel1 = keyframes({
   '0%': { transform: 'translateY(0)' },
   '29.9999%': { transform: 'translateY(0)' },
   '30%': { transform: 'translateY(0)' },
@@ -10,7 +10,7 @@ const panel1 = css.keyframes({
   '100%': { transform: 'translateY(0)' },
 });
 
-const panel2 = css.keyframes({
+const panel2 = keyframes({
   '0%': { transform: 'translateY(0)' },
   '29.9999%': { transform: 'translateY(0)' },
   '30%': { transform: 'translateY(30px)' },
@@ -19,7 +19,7 @@ const panel2 = css.keyframes({
   '100%': { transform: 'translateY(0)' },
 });
 
-const text1 = css.keyframes({
+const text1 = keyframes({
   '0%': { opacity: '0' },
   '29.9999%': { opacity: '0' },
   '30%': { opacity: '1' },
@@ -28,7 +28,7 @@ const text1 = css.keyframes({
   '100%': { opacity: '0' },
 });
 
-const text2 = css.keyframes({
+const text2 = keyframes({
   '0%': { opacity: '0' },
   '29.9999%': { opacity: '0' },
   '30%': { opacity: '0' },
@@ -37,7 +37,7 @@ const text2 = css.keyframes({
   '100%': { opacity: '0' },
 });
 
-const cursor = css.keyframes({
+const cursor = keyframes({
   '0%': { transform: 'translate(30px, 30px)' },
   '22%': { transform: 'translate(30px, 30px)' },
   '26%': { transform: 'translate(0, 0)' },
@@ -45,7 +45,7 @@ const cursor = css.keyframes({
   '78%': { transform: 'translate(30px, 30px)' },
 });
 
-const click = css.keyframes({
+const click = keyframes({
   '0%': { boxShadow: '0 0 0 2px black', transform: 'scale(.5)', opacity: '0' },
   '27%': { boxShadow: '0 0 0 3px black', transform: 'scale(.5)', opacity: '0' },
   '29%': { boxShadow: '0 0 0 2px black', opacity: '1' },
@@ -58,7 +58,7 @@ const click = css.keyframes({
   '100%': { boxShadow: '0 0 0 2px black', transform: 'scale(.5)', opacity: '0' },
 });
 
-const AccordionContainer = () => {
+export const AccordionHero = () => {
   return (
     <Box css={{ position: 'relative' }}>
       <Box
@@ -215,8 +215,4 @@ const AccordionContainer = () => {
       </Box>
     </Box>
   );
-};
-
-export const AccordionHero = () => {
-  return <AccordionContainer />;
 };
