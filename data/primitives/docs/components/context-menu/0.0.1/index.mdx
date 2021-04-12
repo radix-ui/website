@@ -608,7 +608,7 @@ Used to visually separate items in the context menu.
 We expose a CSS custom property `--radix-context-menu-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
 ```jsx
-const scaleIn = css.keyframes({
+const scaleIn = keyframes({
   '0%': { opacity: 0, transform: 'scale(0)' },
   '100%': { opacity: 1, transform: 'scale(1)' },
 });
@@ -625,12 +625,12 @@ const StyledContent = styled(ContextMenu.Content, {
 We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
 
 ```jsx
-const slideDown = css.keyframes({
+const slideDown = keyframes({
   '0%': { opacity: 0, transform: 'translateY(-10px)' },
   '100%': { opacity: 1, transform: 'translateY(0)' },
 });
 
-const slideUp = css.keyframes({
+const slideUp = keyframes({
   '0%': { opacity: 0, transform: 'translateY(10px)' },
   '100%': { opacity: 1, transform: 'translateY(0)' },
 });

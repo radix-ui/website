@@ -168,12 +168,12 @@ The component that contains the collapsible content.
 We expose a CSS custom property `--radix-collapsible-content-height`.<br />Use it to animate the height of the content when it opens/closes.
 
 ```jsx
-const slideDown = css.keyframes({
+const slideDown = keyframes({
   from: { height: 0 },
   to: { height: 'var(--radix-collapsible-content-height)' },
 });
 
-const slideUp = css.keyframes({
+const slideUp = keyframes({
   from: { height: 'var(--radix-collapsible-content-height)' },
   to: { height: 0 },
 });

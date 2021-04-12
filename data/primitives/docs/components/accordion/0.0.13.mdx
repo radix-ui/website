@@ -340,12 +340,12 @@ Contains the collapsible content for an item.
 We expose a CSS custom property `--radix-accordion-panel-height`.<br />Use it to animate the height of the panel when it opens/closes.
 
 ```jsx
-const slideDown = css.keyframes({
+const slideDown = keyframes({
   from: { height: 0 },
   to: { height: 'var(--radix-accordion-panel-height)' },
 });
 
-const slideUp = css.keyframes({
+const slideUp = keyframes({
   from: { height: 'var(--radix-accordion-panel-height)' },
   to: { height: 0 },
 });
