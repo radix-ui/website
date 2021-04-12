@@ -1,6 +1,6 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Badge, BadgeProps, BadgeVariants, Box, Text } from '@modulz/design-system';
+import { Badge, Box, Text } from '@modulz/design-system';
 import { FrontMatter } from '../types';
 
 type NavItemProps = {
@@ -16,7 +16,7 @@ export function NavItem({ children, active, disabled, href, ...props }: NavItemP
   return (
     <Box as="li" css={{ display: 'block' }}>
       <Box
-        as={isExternal || disabled ? 'span' : NextLink}
+        as={isExternal || disabled ? 'span' : (NextLink as any)}
         {...(isExternal || disabled ? {} : { href, passHref: true })}
       >
         <Box
@@ -60,7 +60,9 @@ export function NavItem({ children, active, disabled, href, ...props }: NavItemP
   );
 }
 
-const badgeStatusToVariant: Record<FrontMatter['status'], BadgeVariants['variant']> = {
+type BadgeProps = React.ComponentProps<typeof Badge>;
+
+const badgeStatusToVariant: Record<FrontMatter['status'], BadgeProps['variant']> = {
   new: 'green',
   deprecated: 'yellow',
   soon: undefined,
