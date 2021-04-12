@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, TextProps } from '@modulz/design-system';
+import { Text } from '@modulz/design-system';
 
-export function NavHeading({ css, ...props }: TextProps) {
+export function NavHeading({ css, ...props }: React.ComponentProps<typeof Text>) {
   return (
     <Text
       as="h4"
