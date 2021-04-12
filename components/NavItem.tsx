@@ -37,9 +37,9 @@ export function NavItem({ children, active, disabled, href, ...props }: NavItemP
             '&:not(div):hover': {
               backgroundColor: active ? '$violet400' : '$violet200',
             },
-            ':focus': {
+            '&:focus': {
               outline: 'none',
-              boxShadow: '0 0 0 1px $violet500',
+              boxShadow: '0 0 0 1px $colors$violet500',
             },
           }}
         >
