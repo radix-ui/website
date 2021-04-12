@@ -12,10 +12,15 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const currentPath = router.pathname.replace(
-    '[...slug]',
-    (router.query.slug as string[]).join('/') as string
-  );
+  let currentPath;
+  const slug = router.query.slug;
+
+  if (typeof slug === 'string') {
+    currentPath = router.pathname.replace('[slug]', slug);
+  } else {
+    currentPath = router.pathname.replace('[...slug]', slug.join('/'));
+  }
+
   const currentPageId = currentPath.substr(1);
   const currentPageIndex = allDocsRoutes.findIndex((page) => page.slug === currentPageId);
 
