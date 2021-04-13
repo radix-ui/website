@@ -14,7 +14,10 @@ export const docsRoutes = [
 
   {
     label: 'Components',
-    pages: [{ title: 'Accordion', slug: 'primitives/docs/components/accordion' }],
+    pages: [
+      { title: 'Accordion', slug: 'primitives/docs/components/accordion' },
+      { title: 'Carousel', slug: 'primitives/docs/components/carousel', draft: true },
+    ],
   },
 ];
 

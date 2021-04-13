@@ -126,15 +126,18 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
               <Box key={section.label} css={{ mb: '$4' }}>
                 <NavHeading>{section.label}</NavHeading>
                 {section.pages.map((page) => {
+                  const isDraft = page.draft;
                   return (
                     <NavItem
                       key={page.slug}
                       href={`/${page.slug}`}
+                      disabled={isDraft}
                       active={currentPath.includes(page.slug)}
                     >
                       <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                         {page.title}
                       </Text>
+                      {isDraft && <Badge css={{ ml: '$2' }}>Coming soon</Badge>}
                     </NavItem>
                   );
                 })}
@@ -255,33 +258,43 @@ function NavHeading({ children }: { children: React.ReactNode }) {
   );
 }
 
-type NavItemProps = { children: React.ReactNode; active?: boolean; href: string };
+type NavItemProps = {
+  children: React.ReactNode;
+  active?: boolean;
+  disabled?: boolean;
+  href: string;
+};
 
-function NavItem({ children, active, href, ...props }: NavItemProps) {
+function NavItem({ children, active, disabled, href, ...props }: NavItemProps) {
   const isExternal = href.startsWith('http');
 
   return (
     <Box
-      as={isExternal ? 'span' : (NextLink as any)}
-      {...(isExternal ? {} : { href, passHref: true })}
+      as={isExternal || disabled ? 'span' : (NextLink as any)}
+      {...(isExternal || disabled ? {} : { href, passHref: true })}
     >
       <Box
         {...props}
         {...(isExternal ? { href, target: '_blank' } : {})}
-        as="a"
+        as={disabled ? 'div' : 'a'}
         css={{
           display: 'flex',
           alignItems: 'center',
           textDecoration: 'none',
-          color: '$hiContrast',
+          color: disabled ? '$gray800' : '$hiContrast',
           py: '$2',
           px: '$5',
           backgroundColor: active ? '$violet300' : 'transparent',
           userSelect: 'none',
           minHeight: '$6',
           transition: 'background-color 50ms linear',
+          ...(disabled ? { pointerEvents: 'none' } : {}),
           '&:hover': {
             backgroundColor: active ? '$violet300' : '$violet200',
+          },
+          '&:focus': {
+            outline: 'none',
+            boxShadow: '0 0 0 1px $colors$violet500',
           },
         }}
       >
