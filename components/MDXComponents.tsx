@@ -9,6 +9,7 @@ import { Pre } from './Pre';
 import { Preview } from './Preview';
 import { PackageRelease, PRLink } from './releaseHelpers';
 import * as accordionDemos from './Demo/Accordion';
+import * as alertDialogDemos from './Demo/AlertDialog';
 
 const LinkHeading = ({
   id,
@@ -263,4 +264,5 @@ export const components = {
   PackageRelease,
   PRLink,
   ...accordionDemos,
+  ...alertDialogDemos,
 };

@@ -1,5 +1,40 @@
 import React from 'react';
+import { styled } from '@modulz/design-system';
 import { Box, keyframes, Flex } from '@modulz/design-system';
+import * as AlertDialog from '@radix-ui/react-alert-dialog';
+
+const StyledOverlay = styled(AlertDialog.Overlay, {
+  backgroundColor: 'rgba(0, 0, 0, .15)',
+  position: 'fixed',
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0,
+});
+
+const StyledContent = styled(AlertDialog.Content, {
+  position: 'fixed',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 360,
+  backgroundColor: 'white',
+  borderRadius: 6,
+  padding: 20,
+});
+
+export const AlertDialogDemo = () => (
+  <AlertDialog.Root>
+    <AlertDialog.Trigger>Open</AlertDialog.Trigger>
+    <StyledOverlay />
+    <StyledContent>
+      <AlertDialog.Title>Alert title</AlertDialog.Title>
+      <AlertDialog.Description>Alert description.</AlertDialog.Description>
+      <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+      <AlertDialog.Action>Accept</AlertDialog.Action>
+    </StyledContent>
+  </AlertDialog.Root>
+);
 
 const dialog = keyframes({
   '20%': { transform: 'scale(.92) translate(-50%, -50%)', opacity: '0' },
@@ -16,7 +51,7 @@ const click = keyframes({
   '100%': { boxShadow: '0 0 0 2px black', transform: 'scale(.5)', opacity: '0' },
 });
 
-const AlertDialogContainer = () => {
+export const AlertDialogHero = () => {
   return (
     <Box>
       <Box
@@ -185,8 +220,4 @@ const AlertDialogContainer = () => {
       </Box>
     </Box>
   );
-};
-
-export const AlertDialogHero = () => {
-  return <AlertDialogContainer />;
 };

@@ -10,8 +10,6 @@ features:
   - Esc closes the component automatically.
 ---
 
-import { AlertDialogHero } from '../../../../../../components/Hero/AlertDialogHero';
-
 <HeroSlot>
   <AlertDialogHero />
 </HeroSlot>
@@ -49,8 +47,12 @@ export default () => (
 
 Create your styled alert dialog component from the primitive parts.
 
-```jsx manual
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <AlertDialogDemo />
+</Preview>
+
+```jsx live manual
+import { styled } from 'path-to/stitches.config';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 
 const StyledOverlay = styled(AlertDialog.Overlay, {
