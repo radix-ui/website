@@ -1,5 +1,62 @@
 import React from 'react';
-import { Box, keyframes, Flex } from '@modulz/design-system';
+import { styled, Box, keyframes, Flex } from '@modulz/design-system';
+import * as Checkbox from '@radix-ui/react-checkbox';
+import { CheckIcon, DividerHorizontalIcon } from '@radix-ui/react-icons';
+
+const StyledCheckbox = styled(Checkbox.Root, {
+  appearance: 'none',
+  backgroundColor: 'transparent',
+  border: 'none',
+  padding: 0,
+  boxShadow: 'inset 0 0 0 1px gainsboro',
+  width: 15,
+  height: 15,
+  borderRadius: 2,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+
+  '&:focus': {
+    outline: 'none',
+    boxShadow: 'inset 0 0 0 1px dodgerblue, 0 0 0 1px dodgerblue',
+  },
+});
+
+export const CheckboxDemo = () => (
+  <StyledCheckbox defaultChecked>
+    <Checkbox.Indicator as={CheckIcon} />
+  </StyledCheckbox>
+);
+
+export const CheckboxIndeterminateDemo = () => {
+  const [checked, setChecked] = React.useState<'indeterminate' | boolean>('indeterminate');
+
+  return (
+    <>
+      <StyledCheckbox
+        css={{ mb: '$2' }}
+        checked={checked}
+        onCheckedChange={(event) => setChecked(event.target.checked)}
+      >
+        <Checkbox.Indicator>
+          {checked === 'indeterminate' && <DividerHorizontalIcon />}
+          {checked === true && <CheckIcon />}
+        </Checkbox.Indicator>
+      </StyledCheckbox>
+
+      <button
+        type="button"
+        onClick={() =>
+          setChecked((prevIsChecked) =>
+            prevIsChecked === 'indeterminate' ? false : 'indeterminate'
+          )
+        }
+      >
+        Toggle indeterminate
+      </button>
+    </>
+  );
+};
 
 const check1 = keyframes({
   '0%': { opacity: '0' },
@@ -34,7 +91,7 @@ const click = keyframes({
   '56%': { boxShadow: '0 0 0 2px black', transform: 'scale(1)', opacity: '0' },
 });
 
-const CheckboxContainer = () => {
+export const CheckboxHero = () => {
   return (
     <Box>
       <Flex
@@ -228,8 +285,4 @@ const CheckboxContainer = () => {
       </Flex>
     </Box>
   );
-};
-
-export const CheckboxHero = () => {
-  return <CheckboxContainer />;
 };

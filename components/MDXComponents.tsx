@@ -11,6 +11,7 @@ import { PackageRelease, PRLink } from './releaseHelpers';
 import * as accordionDemos from './Demo/Accordion';
 import * as alertDialogDemos from './Demo/AlertDialog';
 import * as avatarDemos from './Demo/Avatar';
+import * as checkboxDemos from './Demo/Checkbox';
 
 const LinkHeading = ({
   id,
@@ -267,4 +268,5 @@ export const components = {
   ...accordionDemos,
   ...alertDialogDemos,
   ...avatarDemos,
+  ...checkboxDemos,
 };

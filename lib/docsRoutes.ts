@@ -19,6 +19,7 @@ export const docsRoutes = [
       { title: 'Alert Dialog', slug: 'primitives/docs/components/alert-dialog' },
       { title: 'Avatar', slug: 'primitives/docs/components/avatar' },
       { title: 'Carousel', slug: 'primitives/docs/components/carousel', draft: true },
+      { title: 'Checkbox', slug: 'primitives/docs/components/checkbox' },
     ],
   },
 ];
