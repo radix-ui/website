@@ -13,6 +13,7 @@ import * as alertDialogDemos from './Demo/AlertDialog';
 import * as avatarDemos from './Demo/Avatar';
 import * as checkboxDemos from './Demo/Checkbox';
 import * as collapsibleDemos from './Demo/Collapsible';
+import * as contextMenuDemos from './Demo/ContextMenu';
 
 const LinkHeading = ({
   id,
@@ -271,4 +272,5 @@ export const components = {
   ...avatarDemos,
   ...checkboxDemos,
   ...collapsibleDemos,
+  ...contextMenuDemos,
 };

@@ -13,8 +13,6 @@ features:
   - Dismissing and layering behavior is highly customizable.
 ---
 
-import { ContextMenuHero } from '../../../../../../components/Hero/ContextMenuHero';
-
 <HeroSlot>
   <ContextMenuHero />
 </HeroSlot>
@@ -66,8 +64,12 @@ export default () => (
 
 Create your styled context menu component from the primitive parts.
 
-```jsx live manual
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <ContextMenuDemo />
+</Preview>
+
+```jsx
+import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
 const StyledContent = styled(ContextMenu.Content, {
@@ -661,8 +663,12 @@ const StyledContent = styled(ContextMenu.Content, {
 
 You can add special styles to disabled items via the `data-disabled` attribute.
 
-```jsx live manual compact
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <ContextMenuDemo showDisabled />
+</Preview>
+
+```jsx collapsed
+import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
 const StyledContent = styled(ContextMenu.Content, {
@@ -722,8 +728,12 @@ export default () => (
 
 Use the `Separator` part to add a separator between items.
 
-```jsx live manual compact
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <ContextMenuDemo showSeparator />
+</Preview>
+
+```jsx collapsed
+import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
 const StyledContent = styled(ContextMenu.Content, {
@@ -767,17 +777,14 @@ export default () => (
       </div>
     </ContextMenu.Trigger>
     <StyledContent>
-      <StyledItem onSelect={() => console.log('undo')}>
-        Undo
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('redo')}>
-        Redo
+      <StyledItem disabled onSelect={() => console.log('cut')}>
+        Cut
       </StyledItem>
       <StyledSeparator />
-      <StyledItem onSelect={() => console.log('cut')}>Cut</StyledItem>
       <StyledItem onSelect={() => console.log('copy')}>
         Copy
       </StyledItem>
+      <StyledSeparator />
       <StyledItem onSelect={() => console.log('paste')}>
         Paste
       </StyledItem>
@@ -790,8 +797,12 @@ export default () => (
 
 Use the `Label` part to help label a section.
 
-```jsx live manual compact
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <ContextMenuDemo showLabel />
+</Preview>
+
+```jsx collapsed
+import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
 const StyledContent = styled(ContextMenu.Content, {
@@ -842,23 +853,15 @@ export default () => (
       </div>
     </ContextMenu.Trigger>
     <StyledContent>
-      <StyledLabel>Recently Closed</StyledLabel>
-      <StyledItem onSelect={() => console.log('modulz')}>
-        Modulz
+      <StyledLabel>Actions</StyledLabel>}
+      <StyledItem disabled onSelect={() => console.log('cut')}>
+        Cut
       </StyledItem>
-      <StyledItem onSelect={() => console.log('radix-ui')}>
-        Radix-ui
+      <StyledItem onSelect={() => console.log('copy')}>
+        Copy
       </StyledItem>
-      <StyledItem onSelect={() => console.log('stitches')}>
-        Stitches
-      </StyledItem>
-      <StyledSeparator />
-      <StyledLabel>Recently Visited</StyledLabel>
-      <StyledItem onSelect={() => console.log('github')}>
-        GitHub
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('modulz')}>
-        Modulz
+      <StyledItem onSelect={() => console.log('paste')}>
+        Paste
       </StyledItem>
     </StyledContent>
   </ContextMenu.Root>
@@ -869,8 +872,12 @@ export default () => (
 
 Use the `CheckboxItem` part to add an item that can be checked.
 
-```jsx live manual compact
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <ContextMenuCheckboxDemo />
+</Preview>
+
+```jsx collapsed
+import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 import { CheckIcon } from '@radix-ui/react-icons';
 
@@ -957,8 +964,12 @@ export default () => {
 
 Use the `RadioGroup` and `RadioItem` parts to add an item that can be checked amongst others.
 
-```jsx live manual compact
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <ContextMenuRadioDemo />
+</Preview>
+
+```jsx collapsed
+import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 import { CheckIcon } from '@radix-ui/react-icons';
 
@@ -1040,8 +1051,12 @@ export default () => {
 
 ### With complex items
 
-```jsx live manual compact
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <ContextMenuComplexDemo />
+</Preview>
+
+```jsx collapsed
+import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
 const StyledContent = styled(ContextMenu.Content, {

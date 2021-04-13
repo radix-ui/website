@@ -13,8 +13,6 @@ features:
   - Dismissing and layering behavior is highly customizable.
 ---
 
-import { ContextMenuHero } from '../../../../../../components/Hero/ContextMenuHero';
-
 <HeroSlot>
   <ContextMenuHero />
 </HeroSlot>
@@ -146,6 +144,19 @@ The area that opens the context menu. Wrap it around the target you want the con
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-context-menu-trigger',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
   ]}
 />
 
@@ -163,6 +174,19 @@ The component that pops out in an open context menu.
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-context-menu-content',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
     },
     {
       name: 'loop',
@@ -318,6 +342,19 @@ The component that contains the context menu items.
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-context-menu-item',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
+    {
       name: 'disabled',
       type: 'boolean',
       description: (
@@ -371,6 +408,19 @@ Used to group multiple `ContextMenu.Item`s.
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-context-menu-group',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
   ]}
 />
 
@@ -389,6 +439,19 @@ Used to render a label. It won't be focusable using arrow keys.
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-context-menu-label',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
   ]}
 />
 
@@ -406,6 +469,19 @@ An item that can be controlled and rendered like a checkbox.
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-context-menu-checkbox-item',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
     },
     {
       name: 'checked',
@@ -482,6 +558,19 @@ Used to group multiple `ContextMenu.RadioItem`s.
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-context-menu-radio-group',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
+    {
       name: 'value',
       type: 'string',
       description: 'The value of the selected item in the group.',
@@ -509,6 +598,19 @@ An item that can be controlled and rendered like a radio.
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-context-menu-radio-item',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
     },
     {
       name: 'value',
@@ -571,6 +673,19 @@ Renders when the parent `ContextMenu.CheckboxItem` or `ContextMenu.RadioItem` is
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-context-menu-item-indicator',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
+    {
       name: 'forceMount',
       type: 'boolean',
       description: (
@@ -597,6 +712,19 @@ Used to visually separate items in the context menu.
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-context-menu-separator',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
     },
   ]}
 />
