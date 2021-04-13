@@ -8,8 +8,6 @@ features:
   - Optionally delay fallback rendering to avoid content flashing.
 ---
 
-import { AvatarHero } from '../../../../../../components/Hero/AvatarHero';
-
 <HeroSlot>
   <AvatarHero />
 </HeroSlot>
@@ -41,8 +39,12 @@ export default () => (
 
 Create your styled avatar component from the primitive parts.
 
-```jsx manual
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <AvararDemo />
+</Preview>
+
+```jsx
+import { styled } from 'path-to/stitches.config';
 import * as Avatar from '@radix-ui/react-avatar';
 
 const StyledAvatar = styled(Avatar.Root, {
@@ -160,7 +162,11 @@ An element that renders when the image hasn't loaded. This means whilst it's loa
 
 ### Initials only
 
-```jsx manual compact
+<Preview>
+  <AvararDemo initialsOnly />
+</Preview>
+
+```jsx collapsed
 import * as Avatar from '@radix-ui/react-avatar';
 
 const StyledAvatar = styled(Avatar.Root, {
@@ -194,7 +200,11 @@ export default () => (
 
 ### Clickable Avatar with tooltip
 
-```jsx manual compact
+<Preview>
+  <AvatarTooltipDemo />
+</Preview>
+
+```jsx collapsed
 import * as Avatar from '@radix-ui/react-avatar';
 import * as Tooltip from '@radix-ui/react-tooltip';
 

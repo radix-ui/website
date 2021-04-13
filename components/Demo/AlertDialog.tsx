@@ -1,6 +1,5 @@
 import React from 'react';
-import { styled } from '@modulz/design-system';
-import { Box, keyframes, Flex } from '@modulz/design-system';
+import { styled, Box, keyframes, Flex } from '@modulz/design-system';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 
 const StyledOverlay = styled(AlertDialog.Overlay, {

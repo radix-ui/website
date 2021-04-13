@@ -8,8 +8,6 @@ features:
   - Optionally delay fallback rendering to avoid content flashing.
 ---
 
-import { AvatarHero } from '../../../../../../components/Hero/AvatarHero';
-
 <HeroSlot>
   <AvatarHero />
 </HeroSlot>
@@ -41,8 +39,8 @@ export default () => (
 
 Create your styled avatar component from the primitive parts.
 
-```jsx manual
-// import { styled } from 'path-to/stitches.config';
+```jsx
+import { styled } from 'path-to/stitches.config';
 import * as Avatar from '@radix-ui/react-avatar';
 
 const StyledAvatar = styled(Avatar.Root, {
@@ -103,19 +101,6 @@ Contains all the parts of an avatar.
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-avatar',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
-    },
   ]}
 />
 
@@ -133,19 +118,6 @@ The image to render. By default it will only render when it has loaded. You can 
       default: 'img',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-avatar-image',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
     },
     {
       name: 'onLoadingStatusChange',
@@ -174,19 +146,6 @@ An element that renders when the image hasn't loaded. This means whilst it's loa
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-avatar-fallback',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
-    },
-    {
       name: 'delayMs',
       type: 'number',
       description:
@@ -199,7 +158,7 @@ An element that renders when the image hasn't loaded. This means whilst it's loa
 
 ### Initials only
 
-```jsx manual compact
+```jsx
 import * as Avatar from '@radix-ui/react-avatar';
 
 const StyledAvatar = styled(Avatar.Root, {
@@ -233,7 +192,7 @@ export default () => (
 
 ### Clickable Avatar with tooltip
 
-```jsx manual compact
+```jsx
 import * as Avatar from '@radix-ui/react-avatar';
 import * as Tooltip from '@radix-ui/react-tooltip';
 

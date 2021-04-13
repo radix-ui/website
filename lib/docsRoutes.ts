@@ -17,6 +17,7 @@ export const docsRoutes = [
     pages: [
       { title: 'Accordion', slug: 'primitives/docs/components/accordion' },
       { title: 'Alert Dialog', slug: 'primitives/docs/components/alert-dialog' },
+      { title: 'Avatar', slug: 'primitives/docs/components/avatar' },
       { title: 'Carousel', slug: 'primitives/docs/components/carousel', draft: true },
     ],
   },
