@@ -1,5 +1,20 @@
 import React from 'react';
-import { Box, keyframes } from '@modulz/design-system';
+import { styled, Box, keyframes } from '@modulz/design-system';
+import * as Collapsible from '@radix-ui/react-collapsible';
+
+const StyledContent = styled(Collapsible.CollapsibleContent, {
+  padding: 10,
+  marginTop: 10,
+  backgroundColor: 'gainsboro',
+  borderRadius: 6,
+});
+
+export const CollapsibleDemo = () => (
+  <Collapsible.Root>
+    <Collapsible.Button>Button</Collapsible.Button>
+    <StyledContent>Content 1</StyledContent>
+  </Collapsible.Root>
+);
 
 const tab1 = keyframes({
   '0%': { opacity: '0' },
@@ -31,7 +46,7 @@ const click = keyframes({
   '100%': { boxShadow: '0 0 0 2px black', transform: 'scale(.5)', opacity: '0' },
 });
 
-const CollapsibleContainer = () => {
+export const CollapsibleHero = () => {
   return (
     <Box css={{ position: 'relative' }}>
       <Box
@@ -149,8 +164,4 @@ const CollapsibleContainer = () => {
       </Box>
     </Box>
   );
-};
-
-export const CollapsibleHero = () => {
-  return <CollapsibleContainer />;
 };

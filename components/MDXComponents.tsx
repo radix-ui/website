@@ -12,6 +12,7 @@ import * as accordionDemos from './Demo/Accordion';
 import * as alertDialogDemos from './Demo/AlertDialog';
 import * as avatarDemos from './Demo/Avatar';
 import * as checkboxDemos from './Demo/Checkbox';
+import * as collapsibleDemos from './Demo/Collapsible';
 
 const LinkHeading = ({
   id,
@@ -269,4 +270,5 @@ export const components = {
   ...alertDialogDemos,
   ...avatarDemos,
   ...checkboxDemos,
+  ...collapsibleDemos,
 };

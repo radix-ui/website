@@ -20,6 +20,7 @@ export const docsRoutes = [
       { title: 'Avatar', slug: 'primitives/docs/components/avatar' },
       { title: 'Carousel', slug: 'primitives/docs/components/carousel', draft: true },
       { title: 'Checkbox', slug: 'primitives/docs/components/checkbox' },
+      { title: 'Collpasible', slug: 'primitives/docs/components/collpasible' },
     ],
   },
 ];
