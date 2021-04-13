@@ -8,7 +8,7 @@ import { HeroSlot } from './HeroSlot';
 import { Pre } from './Pre';
 import { Preview } from './Preview';
 import { PackageRelease, PRLink } from './releaseHelpers';
-import { AccordionDemo, AccordionHero } from './Demo/Accordion';
+import * as accordionDemos from './Demo/Accordion';
 
 const LinkHeading = ({
   id,
@@ -262,6 +262,5 @@ export const components = {
   HeroSlot,
   PackageRelease,
   PRLink,
-  AccordionHero,
-  AccordionDemo,
+  ...accordionDemos,
 };

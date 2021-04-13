@@ -19,7 +19,8 @@ import type { PrimitivesFrontmatter } from 'types/primitives';
 import type { MdxRemote } from 'next-mdx-remote/types';
 import { useRouter } from 'next/router';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
-import { CheckIcon, ExternalLinkIcon } from '@radix-ui/react-icons';
+import { CheckIcon } from '@radix-ui/react-icons';
+import { ExternalIcon } from '@components/ExternalIcon';
 
 type Doc = {
   frontmatter: PrimitivesFrontmatter;
@@ -103,7 +104,7 @@ export default function Doc({ frontmatter, source }: Doc) {
           css={{
             mb: '$5',
             '@bp1': {
-              flex: '1 1 100%',
+              flex: '1',
               mr: '$5',
             },
           }}
@@ -202,7 +203,7 @@ const ComponentInfo = ({ version, versions, name, aria }) => {
   const router = useRouter();
 
   return (
-    <Box css={{ flex: 0, width: '30%' }} as="nav" aria-labelledby="site-component-info-heading">
+    <Box css={{ width: 'fit-content' }} as="nav" aria-labelledby="site-component-info-heading">
       <VisuallyHidden as="h2" id="site-component-info-heading">
         Component Reference Links
       </VisuallyHidden>
@@ -232,8 +233,8 @@ const ComponentInfo = ({ version, versions, name, aria }) => {
             <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
               View source
             </Text>
-            <Box as="span" css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
-              <ExternalLinkIcon />
+            <Box as="span" css={{ ml: '$1', color: '$gray700' }}>
+              <ExternalIcon />
             </Box>
           </Flex>
         </Link>
@@ -248,8 +249,8 @@ const ComponentInfo = ({ version, versions, name, aria }) => {
             <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
               View on npm
             </Text>
-            <Box as="span" css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
-              <ExternalLinkIcon />
+            <Box as="span" css={{ ml: '$1', color: '$gray700' }}>
+              <ExternalIcon />
             </Box>
           </Flex>
         </Link>
@@ -264,8 +265,8 @@ const ComponentInfo = ({ version, versions, name, aria }) => {
             <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
               Report an issue
             </Text>
-            <Box as="span" css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}>
-              <ExternalLinkIcon />
+            <Box as="span" css={{ ml: '$1', color: '$gray700' }}>
+              <ExternalIcon />
             </Box>
           </Flex>
         </Link>
@@ -277,11 +278,8 @@ const ComponentInfo = ({ version, versions, name, aria }) => {
               <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
                 ARIA design pattern
               </Text>
-              <Box
-                as="span"
-                css={{ ml: '$1', color: '$gray700', position: 'absolute', right: -20 }}
-              >
-                <ExternalLinkIcon />
+              <Box as="span" css={{ ml: '$1', color: '$gray700' }}>
+                <ExternalIcon />
               </Box>
             </Flex>
           </Link>

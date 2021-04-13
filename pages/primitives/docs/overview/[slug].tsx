@@ -1,7 +1,7 @@
 import React from 'react';
 import renderToString from 'next-mdx-remote/render-to-string';
 import hydrate from 'next-mdx-remote/hydrate';
-import { Text, Box, Subheading, Link, Skeleton, styled } from '@modulz/design-system';
+import { Text, Box } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { components } from '@components/MDXComponents';
 import { getAllFrontmatter, getDocBySlug } from '@lib/mdx';
@@ -9,7 +9,6 @@ import rehypeHighlightCode from '@lib/rehype-highlight-code';
 import remarkAutolinkHeadings from 'remark-autolink-headings';
 import remarkSlug from 'remark-slug';
 import { RemoveScroll } from 'react-remove-scroll';
-import { ScrollArea } from '@components/ScrollArea';
 import { QuickNav } from '@components/QuickNav';
 
 import type { PrimitivesFrontmatter } from 'types/primitives';

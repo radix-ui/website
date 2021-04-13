@@ -47,7 +47,6 @@ export const AccordionDemo = ({ showChevrons, preventClose, initialValue = null,
       {...props}
       value={value}
       onValueChange={(newValue) => {
-        console.log('on value change', newValue);
         if (preventClose && newValue === undefined) {
           return;
         }

@@ -125,17 +125,19 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
             {docsRoutes.map((section) => (
               <Box key={section.label} css={{ mb: '$4' }}>
                 <NavHeading>{section.label}</NavHeading>
-                {section.pages.map((page) => (
-                  <NavItem
-                    key={page.slug}
-                    href={`/${page.slug}`}
-                    active={currentPath === `/${page.slug}`}
-                  >
-                    <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
-                      {page.title}
-                    </Text>
-                  </NavItem>
-                ))}
+                {section.pages.map((page) => {
+                  return (
+                    <NavItem
+                      key={page.slug}
+                      href={`/${page.slug}`}
+                      active={currentPath.includes(page.slug)}
+                    >
+                      <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
+                        {page.title}
+                      </Text>
+                    </NavItem>
+                  );
+                })}
               </Box>
             ))}
             <Box css={{ height: '$5', '@bp2': { height: '$8' } }} />
