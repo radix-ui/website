@@ -7,9 +7,8 @@ features:
   - Built-in state machine to control display delay.
   - Opens when the trigger is focused or hovered.
   - Closes when the trigger is activated or when pressing escape.
+  - Supports custom timings.
 ---
-
-import { TooltipHero } from '../../../../../../components/Hero/TooltipHero';
 
 <HeroSlot>
   <TooltipHero />
@@ -43,8 +42,12 @@ export default () => (
 
 Create your styled tooltip component from the primitive parts.
 
-```jsx manual
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <TooltipDemo />
+</Preview>
+
+```jsx
+import { styled } from 'path-to/stitches.config';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import { BlendingModeIcon } from '@radix-ui/react-icons';
 
@@ -117,6 +120,20 @@ Contains all the parts of a tooltip.
           changes.
         </span>
       ),
+    },
+    {
+      name: 'delayDuration',
+      type: 'number',
+      default: 700,
+      description:
+        'The duration from when the mouse enters the trigger until the tooltip opens.',
+    },
+    {
+      name: 'skipDelayDuration',
+      type: 'number',
+      default: 300,
+      description:
+        'How much time a user has to enter another trigger without incurring a delay again.',
     },
   ]}
 />
@@ -343,14 +360,18 @@ const StyledContent = styled(Tooltip.Content, {
 
 ## Examples
 
-### With disabled trigger
+### Displaying a tooltip from a disabled button
 
 A disabled button will not fire events so adding a tooltip to a disabled trigger requires a little more work.
 
 Render the trigger as a wrapper (`span` for example) and place your disabled button inside with some CSS to disable pointer events. This allows the tooltip to receive all mouse and keyboard events instead of being blocked by the button.
 
-```jsx manual compact
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <TooltipDemo disabled />
+</Preview>
+
+```jsx collapsed
+import { styled } from 'path-to/stitches.config';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import { BlendingModeIcon } from '@radix-ui/react-icons';
 
@@ -385,6 +406,44 @@ export default () => (
 );
 ```
 
+### Show instantly
+
+Use the `delayDuration` to control the time it takes for the tooltip to open. We recommend wrapping the tooltip in your own component with a default value for the prop for consistent timings across your app. You will still be able to override the prop per-instance.
+
+<Preview>
+  <TooltipDemo delayDuration={0} />
+</Preview>
+
+```jsx collapsed
+import { styled } from 'path-to/stitches.config';
+import * as Tooltip from '@radix-ui/react-tooltip';
+import { BlendingModeIcon } from '@radix-ui/react-icons';
+
+const StyledContent = styled(Tooltip.Content, {
+  borderRadius: 3,
+  padding: '5px 10px',
+  fontSize: 14,
+  backgroundColor: 'gainsboro',
+  color: 'black',
+});
+
+const StyledArrow = styled(Tooltip.Arrow, {
+  fill: 'gainsboro',
+});
+
+export default () => (
+  <Tooltip.Root delayDuration={0}>
+    <Tooltip.Trigger>
+      <BlendingModeIcon />
+    </Tooltip.Trigger>
+    <StyledContent>
+      Blending mode
+      <StyledArrow />
+    </StyledContent>
+  </Tooltip.Root>
+);
+```
+
 ## Accessibility
 
 ### Keyboard Interactions
@@ -401,6 +460,10 @@ export default () => (
     },
     {
       keys: ['Enter'],
+      description: 'If open, closes the tooltip without delay.',
+    },
+    {
+      keys: ['Escape'],
       description: 'If open, closes the tooltip without delay.',
     },
   ]}
@@ -428,10 +491,13 @@ export default () => (
 
 #### Implementation
 
+Use the [`Slot` utility](../../utilities/slot) to convert the trigger part into a slottable area. It will replace the trigger with the child that gets passed to it.
+
 ```jsx
 // your-tooltip.jsx
 import React from 'react';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+import { Slot } from '@radix-ui/react-slot';
 
 export function Tooltip({
   children,
@@ -447,14 +513,9 @@ export function Tooltip({
       defaultOpen={defaultOpen}
       onOpenChange={onOpenChange}
     >
-      <TooltipPrimitive.Trigger
-        as={React.forwardRef((props, forwardedRef) =>
-          React.cloneElement(React.Children.only(children), {
-            ...props,
-            ref: forwardedRef,
-          })
-        )}
-      />
+      <TooltipPrimitive.Trigger as={Slot}>
+        {children}
+      </TooltipPrimitive.Trigger>
       <TooltipPrimitive.Content side="top" align="center" {...props}>
         {content}
         <TooltipPrimitive.Arrow offset={5} width={11} height={5} />

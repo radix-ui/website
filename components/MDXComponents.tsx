@@ -27,6 +27,7 @@ import * as tabsDemos from './Demo/Tabs';
 import * as toggleDemos from './Demo/Toggle';
 import * as toggleGroupDemos from './Demo/ToggleGroup';
 import * as toolbarDemos from './Demo/Toolbar';
+import * as tooltipDemos from './Demo/Tooltip';
 
 const LinkHeading = ({
   id,
@@ -302,4 +303,5 @@ export const components = {
   ...toggleDemos,
   ...toggleGroupDemos,
   ...toolbarDemos,
+  ...tooltipDemos,
 };

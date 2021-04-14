@@ -23,8 +23,6 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
     version = slug[1];
   }
 
-  console.log(version);
-  console.log(currentPath);
   const currentPageId = currentPath.substr(1);
   const currentPageIndex = allDocsRoutes.findIndex((page) => page.slug === currentPageId);
 
@@ -131,7 +129,6 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
                 <NavHeading>{section.label}</NavHeading>
                 {section.pages.map((page) => {
                   const isDraft = page.draft;
-                  console.log(page.slug);
                   return (
                     <NavItem
                       key={page.slug}

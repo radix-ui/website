@@ -1,5 +1,40 @@
 import React from 'react';
-import { Box, keyframes, Flex } from '@modulz/design-system';
+import { styled, Box, keyframes, Flex } from '@modulz/design-system';
+import * as Tooltip from '@radix-ui/react-tooltip';
+import { BlendingModeIcon } from '@radix-ui/react-icons';
+
+const StyledContent = styled(Tooltip.Content, {
+  borderRadius: 3,
+  padding: '5px 10px',
+  fontSize: 14,
+  backgroundColor: 'gainsboro',
+  color: 'black',
+});
+
+const StyledArrow = styled(Tooltip.Arrow, {
+  fill: 'gainsboro',
+});
+
+export const TooltipDemo = ({ disabled, ...props }) => (
+  <Tooltip.Root {...props}>
+    {disabled ? (
+      <Tooltip.Trigger as="span">
+        <button type="button" disabled style={{ pointerEvents: 'none' }}>
+          <BlendingModeIcon />
+        </button>
+      </Tooltip.Trigger>
+    ) : (
+      <Tooltip.Trigger>
+        <BlendingModeIcon />
+      </Tooltip.Trigger>
+    )}
+
+    <StyledContent>
+      Blending mode
+      <StyledArrow />
+    </StyledContent>
+  </Tooltip.Root>
+);
 
 const tooltip = keyframes({
   '0%': { opacity: '0', transform: 'translateY(0)' },
@@ -18,7 +53,7 @@ const cursor = keyframes({
   '78%': { transform: 'translate(30px, 30px)' },
 });
 
-const TooltipContainer = () => {
+export const TooltipHero = () => {
   return (
     <Box css={{ position: 'relative' }}>
       <Box
@@ -140,8 +175,4 @@ const TooltipContainer = () => {
       </Box>
     </Box>
   );
-};
-
-export const TooltipHero = () => {
-  return <TooltipContainer />;
 };

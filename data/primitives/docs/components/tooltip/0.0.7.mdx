@@ -7,10 +7,7 @@ features:
   - Built-in state machine to control display delay.
   - Opens when the trigger is focused or hovered.
   - Closes when the trigger is activated or when pressing escape.
-  - Supports custom timings.
 ---
-
-import { TooltipHero } from '../../../../../../components/Hero/TooltipHero';
 
 <HeroSlot>
   <TooltipHero />
@@ -44,7 +41,7 @@ export default () => (
 
 Create your styled tooltip component from the primitive parts.
 
-```jsx live manual
+```jsx manual
 // import { styled } from 'path-to/stitches.config';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import { BlendingModeIcon } from '@radix-ui/react-icons';
@@ -119,20 +116,6 @@ Contains all the parts of a tooltip.
         </span>
       ),
     },
-    {
-      name: 'delayDuration',
-      type: 'number',
-      default: 700,
-      description:
-        'The duration from when the mouse enters the trigger until the tooltip opens.',
-    },
-    {
-      name: 'skipDelayDuration',
-      type: 'number',
-      default: 300,
-      description:
-        'How much time a user has to enter another trigger without incurring a delay again.',
-    },
   ]}
 />
 
@@ -151,6 +134,19 @@ The button that toggles the tooltip. By default, the `Tooltip.Content` will posi
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-tooltip-trigger',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
   ]}
 />
 
@@ -168,6 +164,19 @@ The component that pops out when the tooltip is open.
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-tooltip-content',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
     },
     {
       name: 'aria-label',
@@ -290,6 +299,19 @@ An optional arrow element to render alongside the tooltip. This can be used to h
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the entire SVG and all of its paths.',
     },
     {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-tooltip-arrow',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
+    {
       name: 'width',
       type: 'number',
       default: 10,
@@ -364,7 +386,7 @@ A disabled button will not fire events so adding a tooltip to a disabled trigger
 
 Render the trigger as a wrapper (`span` for example) and place your disabled button inside with some CSS to disable pointer events. This allows the tooltip to receive all mouse and keyboard events instead of being blocked by the button.
 
-```jsx live manual compact
+```jsx manual compact
 // import { styled } from 'path-to/stitches.config';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import { BlendingModeIcon } from '@radix-ui/react-icons';
@@ -400,59 +422,6 @@ export default () => (
 );
 ```
 
-### Show instantly
-
-Use the `delayDuration` to control the time it takes for the tooltip to open. We recommend wrapping the tooltip in your own component with a default value for the prop for consistent timings across your app. You will still be able to override the prop per-instance.
-
-You can use our `extendPrimitive` utility for this.
-
-```jsx live manual compact
-// import { styled } from 'path-to/stitches.config';
-import * as Tooltip from '@radix-ui/react-tooltip';
-import { extendPrimitive } from '@radix-ui/react-primitive';
-import { ZoomInIcon, ZoomOutIcon } from '@radix-ui/react-icons';
-
-const MyTooltip = extendPrimitive(Tooltip.Root, {
-  defaultProps: { delayDuration: 0 },
-});
-
-const StyledContent = styled(Tooltip.Content, {
-  borderRadius: 3,
-  padding: '5px 10px',
-  fontSize: 14,
-  backgroundColor: 'gainsboro',
-  color: 'black',
-});
-
-const StyledArrow = styled(Tooltip.Arrow, {
-  fill: 'gainsboro',
-});
-
-export default () => (
-  <>
-    <MyTooltip>
-      <Tooltip.Trigger>
-        <ZoomInIcon />
-      </Tooltip.Trigger>
-      <StyledContent>
-        Zoom In
-        <StyledArrow />
-      </StyledContent>
-    </MyTooltip>
-
-    <MyTooltip>
-      <Tooltip.Trigger style={{ marginLeft: 10 }}>
-        <ZoomOutIcon />
-      </Tooltip.Trigger>
-      <StyledContent>
-        Zoom Out
-        <StyledArrow />
-      </StyledContent>
-    </MyTooltip>
-  </>
-);
-```
-
 ## Accessibility
 
 ### Keyboard Interactions
@@ -469,10 +438,6 @@ export default () => (
     },
     {
       keys: ['Enter'],
-      description: 'If open, closes the tooltip without delay.',
-    },
-    {
-      keys: ['Escape'],
       description: 'If open, closes the tooltip without delay.',
     },
   ]}

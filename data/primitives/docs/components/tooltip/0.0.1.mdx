@@ -9,8 +9,6 @@ features:
   - Closes when the trigger is activated or when pressing escape.
 ---
 
-import { TooltipHero } from '../../../../../../components/Hero/TooltipHero';
-
 <HeroSlot>
   <TooltipHero />
 </HeroSlot>
@@ -428,13 +426,10 @@ export default () => (
 
 #### Implementation
 
-Use the [`Slot` utility](../../utilities/slot) to convert the trigger part into a slottable area. It will replace the trigger with the child that gets passed to it.
-
 ```jsx
 // your-tooltip.jsx
 import React from 'react';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
-import { Slot } from '@radix-ui/react-slot';
 
 export function Tooltip({
   children,
@@ -450,9 +445,14 @@ export function Tooltip({
       defaultOpen={defaultOpen}
       onOpenChange={onOpenChange}
     >
-      <TooltipPrimitive.Trigger as={Slot}>
-        {children}
-      </TooltipPrimitive.Trigger>
+      <TooltipPrimitive.Trigger
+        as={React.forwardRef((props, forwardedRef) =>
+          React.cloneElement(React.Children.only(children), {
+            ...props,
+            ref: forwardedRef,
+          })
+        )}
+      />
       <TooltipPrimitive.Content side="top" align="center" {...props}>
         {content}
         <TooltipPrimitive.Arrow offset={5} width={11} height={5} />
