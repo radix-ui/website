@@ -1,7 +1,32 @@
 import React from 'react';
-import { Box, keyframes, Flex } from '@modulz/design-system';
+import { styled, Box, keyframes } from '@modulz/design-system';
+import * as Popover from '@radix-ui/react-popover';
 
-const Popover = keyframes({
+const StyledContent = styled(Popover.Content, {
+  borderRadius: 3,
+  padding: '20px',
+  fontSize: 14,
+  backgroundColor: 'gainsboro',
+  color: 'black',
+});
+
+const StyledArrow = styled(Popover.Arrow, {
+  fill: 'gainsboro',
+});
+
+export const PopoverDemo = () => (
+  <Popover.Root>
+    <Popover.Trigger>Trigger</Popover.Trigger>
+    <StyledContent>
+      <h3>Popover content</h3>
+      <p>Are you sure you wanna do this?</p>
+      <Popover.Close>Yes</Popover.Close>
+      <StyledArrow />
+    </StyledContent>
+  </Popover.Root>
+);
+
+const popover = keyframes({
   '0%': { opacity: '0', transform: 'translateY(0)' },
   '30%': { opacity: '0', transform: 'translateY(0)' },
   '35%': { opacity: '1', transform: 'translateY(-3px)' },
@@ -31,7 +56,7 @@ const click = keyframes({
   '100%': { boxShadow: '0 0 0 2px black', transform: 'scale(.5)', opacity: '0' },
 });
 
-const PopoverContainer = () => {
+export const PopoverHero = () => {
   return (
     <Box css={{ position: 'relative' }}>
       <Box
@@ -133,7 +158,7 @@ const PopoverContainer = () => {
             bottom: 30,
             left: '50%',
             ml: -100,
-            animation: `${Popover} 6000ms infinite`,
+            animation: `${popover} 6000ms infinite`,
             animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
             boxShadow:
               'hsla(252, 4%, 9%, 0.35) 0px 10px 38px -10px, hsla(252, 4%, 9%, 0.2) 0px 10px 20px -15px',
@@ -166,8 +191,4 @@ const PopoverContainer = () => {
       </Box>
     </Box>
   );
-};
-
-export const PopoverHero = () => {
-  return <PopoverContainer />;
 };

@@ -15,7 +15,8 @@ import * as checkboxDemos from './Demo/Checkbox';
 import * as collapsibleDemos from './Demo/Collapsible';
 import * as contextMenuDemos from './Demo/ContextMenu';
 import * as dialogDemos from './Demo/Dialog';
-import * as dropdownMenuDemos from './Demo/DropdownMenuHero';
+import * as dropdownMenuDemos from './Demo/DropdownMenu';
+import * as popoverDemos from './Demo/Popover';
 
 const LinkHeading = ({
   id,
@@ -280,4 +281,5 @@ export const components = {
   ...contextMenuDemos,
   ...dialogDemos,
   ...dropdownMenuDemos,
+  ...popoverDemos,
 };

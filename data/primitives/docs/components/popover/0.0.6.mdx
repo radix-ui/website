@@ -11,8 +11,6 @@ features:
   - Dismissing and layering behavior is highly customizable.
 ---
 
-import { PopoverHero } from '../../../../../../components/Hero/PopoverHero';
-
 <HeroSlot>
   <PopoverHero />
 </HeroSlot>
@@ -139,6 +137,19 @@ The button that toggles the popover. By default, the `Popover.Content` will posi
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-popover-trigger',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
   ]}
 />
 
@@ -156,6 +167,19 @@ The component that pops out when the popover is open.
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-popover-content',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
     },
     {
       name: 'trapFocus',
@@ -382,6 +406,19 @@ An optional arrow element to render alongside the popover. This can be used to h
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the entire SVG and all of its paths.',
     },
     {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-popover-arrow',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
+    {
       name: 'width',
       type: 'number',
       default: 10,
@@ -421,6 +458,19 @@ The button that closes an open popover.
       default: 'button',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-popover-close',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
     },
   ]}
 />

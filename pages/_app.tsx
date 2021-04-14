@@ -17,7 +17,10 @@ const globalStyles = global({
   body: {
     margin: 0,
     backgroundColor: '$loContrast',
+    fontFamily: '$untitled',
   },
+
+  'h1, h2, h3, h4, h5': { fontWeight: 500 },
 
   'body, button': {
     fontFamily: '$untitled',
