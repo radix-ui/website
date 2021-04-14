@@ -29,6 +29,7 @@ export const docsRoutes = [
       { title: 'Popover', slug: 'primitives/docs/components/popover' },
       { title: 'Progress', slug: 'primitives/docs/components/progress' },
       { title: 'Radio Group', slug: 'primitives/docs/components/radio-group' },
+      { title: 'Scroll Area', slug: 'primitives/docs/components/scroll-area' },
     ],
   },
 ];

@@ -1,5 +1,76 @@
 import React from 'react';
-import { Box, keyframes } from '@modulz/design-system';
+import { styled, Box, keyframes } from '@modulz/design-system';
+
+import * as ScrollArea from '@radix-ui/react-scroll-area';
+
+const { SCROLL_AREA_CSS_PROPS } = ScrollArea;
+
+const StyledScrollArea = styled(ScrollArea.Root, {
+  position: 'relative',
+  zIndex: 0,
+  maxWidth: '100%',
+  maxHeight: '100%',
+  '& [data-radix-scroll-area-viewport-position]::-webkit-scrollbar': {
+    display: 'none',
+  },
+});
+
+const StyledViewport = styled(ScrollArea.Viewport, {
+  zIndex: 1,
+  position: 'relative',
+});
+
+const StyledScrollbarY = styled(ScrollArea.ScrollbarY, {
+  zIndex: 2,
+  position: 'absolute',
+  userSelect: 'none',
+  transition: '300ms opacity ease',
+  width: 8,
+  right: 0,
+  top: 0,
+  bottom: 0,
+});
+
+const StyledScrollTrack = styled(ScrollArea.Track, {
+  zIndex: -1,
+  position: 'relative',
+  width: '100%',
+  height: '100%',
+});
+
+const StyledScrollThumb = styled(ScrollArea.Thumb, {
+  backgroundColor: 'gainsboro',
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  userSelect: 'none',
+  borderRadius: 9999,
+  willChange: `var(${SCROLL_AREA_CSS_PROPS.scrollbarThumbWillChange})`,
+  height: `var(${SCROLL_AREA_CSS_PROPS.scrollbarThumbHeight})`,
+  width: `var(${SCROLL_AREA_CSS_PROPS.scrollbarThumbWidth})`,
+});
+
+export const ScrollAreaDemo = () => (
+  <div style={{ height: 250 }}>
+    <StyledScrollArea>
+      <StyledViewport>
+        <div
+          style={{
+            height: 1000,
+            backgroundImage:
+              'repeating-linear-gradient(0deg, dodgerblue, dodgerblue 10px, transparent 10px, transparent 20px)',
+          }}
+        />
+      </StyledViewport>
+
+      <StyledScrollbarY>
+        <StyledScrollTrack>
+          <StyledScrollThumb />
+        </StyledScrollTrack>
+      </StyledScrollbarY>
+    </StyledScrollArea>
+  </div>
+);
 
 const scrollarea = keyframes({
   '0%': { transform: 'translateY(0)' },
@@ -28,7 +99,7 @@ const cursor = keyframes({
   '100%': { transform: 'translateY(0)' },
 });
 
-const ScrollAreaContainer = () => {
+export const ScrollAreaHero = () => {
   return (
     // Container
     <Box
@@ -282,8 +353,4 @@ const ScrollAreaContainer = () => {
       </Box>
     </Box>
   );
-};
-
-export const ScrollAreaHero = () => {
-  return <ScrollAreaContainer />;
 };

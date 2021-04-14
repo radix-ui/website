@@ -9,8 +9,6 @@ features:
   - Progressively enhanced so that content is avalaible on devices where custom controls aren't supported.
 ---
 
-import { ScrollAreaHero } from '../../../../../../components/Hero/ScrollAreaHero';
-
 <HeroSlot>
   <ScrollAreaHero />
 </HeroSlot>
@@ -59,8 +57,12 @@ export default () => (
 
 Create your styled scroll area component from the primitive parts.
 
-```jsx manual
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <ScrollAreaDemo />
+</Preview>
+
+```jsx
+import { styled } from 'path-to/stitches.config';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
 
 const { SCROLL_AREA_CSS_PROPS } = ScrollArea;
@@ -155,19 +157,6 @@ Contains all the parts of a scroll area.
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-scroll-area',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
     },
     {
       name: 'overflowX',
@@ -266,19 +255,6 @@ The viewport area of the scroll area.
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-scroll-area-viewport',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
-    },
   ]}
 />
 
@@ -296,19 +272,6 @@ The horizontal scrollbar.
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-scroll-area-scrollbar-x',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
     },
   ]}
 />
@@ -328,19 +291,6 @@ The vertical scrollbar.
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-scroll-area-scrollbar-y',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
-    },
   ]}
 />
 
@@ -358,19 +308,6 @@ The start button to be used in `ScrollArea.ScrollbarX` and `ScrollArea.Scrollbar
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-scroll-area-button-start',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
     },
   ]}
 />
@@ -390,19 +327,6 @@ The end button to be used in `ScrollArea.ScrollbarX` and `ScrollArea.ScrollbarY`
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-scroll-area-button-end',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
-    },
   ]}
 />
 
@@ -420,19 +344,6 @@ The track to be used in `ScrollArea.ScrollbarX` and `ScrollArea.ScrollbarY`.
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-scroll-area-track',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
     },
   ]}
 />
@@ -452,19 +363,6 @@ The thumb to be used in `ScrollArea.ScrollbarX` and `ScrollArea.ScrollbarY`.
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-scroll-area-thumb',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
-    },
   ]}
 />
 
@@ -482,19 +380,6 @@ The corner where both vertical and horizontal scrollbars meet.
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-scroll-area-corner',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
     },
   ]}
 />
