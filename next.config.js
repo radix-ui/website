@@ -62,12 +62,11 @@ module.exports = withPlugins([withTM, withOptimizedImages, withVideos], {
     const primitivesPaths = getPaths(primitivesDirectory);
     const latestPrimitivesPaths = getPathOfLatestVersion(primitivesPaths);
 
-    // const utilitiesDirectory = path.join(__dirname, 'pages/primitives/docs/utilities');
-    // const utilitiesPaths = getPaths(utilitiesDirectory);
-    // const latestUtilitiesPaths = getPathOfLatestVersion(utilitiesPaths);
-    // const latestUtilitiesPaths = [];
+    const utilitiesDirectory = path.join(__dirname, 'data/primitives/docs/utilities');
+    const utilitiesPaths = getPaths(utilitiesDirectory);
+    const latestUtilitiesPaths = getPathOfLatestVersion(utilitiesPaths);
 
-    return [...latestPrimitivesPaths].reduce((redirects, paths, index) => {
+    return [...latestPrimitivesPaths, ...latestUtilitiesPaths].reduce((redirects, paths, index) => {
       const [, destination] = paths.split('/data');
       const [, source] = path.join(paths, '..').split('/data');
       redirects.push({ source, destination });

@@ -41,6 +41,20 @@ export const docsRoutes = [
       { title: 'Tooltip', slug: 'primitives/docs/components/tooltip' },
     ],
   },
+
+  {
+    label: 'Utilities',
+    pages: [
+      { title: 'Accessible Icon', slug: 'primitives/docs/utilities/accessible-icon' },
+      { title: 'Announce', slug: 'primitives/docs/utilities/announce' },
+      { title: 'Aspect Ratio', slug: 'primitives/docs/utilities/aspect-ratio' },
+      { title: 'Id Provider', slug: 'primitives/docs/utilities/id-provider' },
+      { title: 'Label', slug: 'primitives/docs/utilities/label' },
+      { title: 'Portal', slug: 'primitives/docs/utilities/portal' },
+      { title: 'Slot', slug: 'primitives/docs/utilities/slot' },
+      { title: 'Visually Hidden', slug: 'primitives/docs/utilities/visually-hidden' },
+    ],
+  },
 ];
 
 export const allDocsRoutes = docsRoutes.reduce((acc, curr) => {
