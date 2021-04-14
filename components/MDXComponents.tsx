@@ -22,6 +22,7 @@ import * as radioGroupDemos from './Demo/RadioGroup';
 import * as scrollAreaDemos from './Demo/ScrollArea';
 import * as separatorDemos from './Demo/Separator';
 import * as sliderDemos from './Demo/Slider';
+import * as switchDemos from './Demo/Switch';
 
 const LinkHeading = ({
   id,
@@ -292,4 +293,5 @@ export const components = {
   ...scrollAreaDemos,
   ...separatorDemos,
   ...sliderDemos,
+  ...switchDemos,
 };

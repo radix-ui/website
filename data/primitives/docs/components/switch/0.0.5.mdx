@@ -8,8 +8,6 @@ features:
   - Can be controlled or uncontrolled.
 ---
 
-import { SwitchHero } from '../../../../../../components/Hero/SwitchHero';
-
 <HeroSlot>
   <SwitchHero />
 </HeroSlot>
@@ -54,7 +52,7 @@ const StyledSwitch = styled(Switch.Root, {
   backgroundColor: 'gainsboro',
   borderRadius: 25,
   position: 'relative',
-  ':focus': {
+  '&:focus': {
     outline: 'none',
     boxShadow: '0 0 0 2px royalblue',
   },

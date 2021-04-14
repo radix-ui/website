@@ -8,8 +8,6 @@ features:
   - Can be controlled or uncontrolled.
 ---
 
-import { SwitchHero } from '../../../../../../components/Hero/SwitchHero';
-
 <HeroSlot>
   <SwitchHero />
 </HeroSlot>
@@ -40,8 +38,12 @@ export default () => (
 
 Create your styled switch component from the primitive parts.
 
-```jsx manual
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <SwitchDemo />
+</Preview>
+
+```jsx
+import { styled } from 'path-to/stitches.config';
 import * as Switch from '@radix-ui/react-switch';
 
 const StyledSwitch = styled(Switch.Root, {
@@ -54,7 +56,7 @@ const StyledSwitch = styled(Switch.Root, {
   backgroundColor: 'gainsboro',
   borderRadius: 25,
   position: 'relative',
-  ':focus': {
+  '&:focus': {
     outline: 'none',
     boxShadow: '0 0 0 2px royalblue',
   },

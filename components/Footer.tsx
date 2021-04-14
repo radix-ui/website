@@ -37,7 +37,7 @@ export const Footer = () => {
                 css={{
                   color: '$hiContrast',
                   display: 'inline-flex',
-                  ':focus': {
+                  '&:focus': {
                     boxShadow: 'none',
                   },
                 }}

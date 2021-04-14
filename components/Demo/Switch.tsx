@@ -1,5 +1,47 @@
 import React from 'react';
-import { Box, keyframes } from '@modulz/design-system';
+import { styled, Box, keyframes } from '@modulz/design-system';
+
+import * as Switch from '@radix-ui/react-switch';
+
+const StyledSwitch = styled(Switch.Root, {
+  appearance: 'none',
+  border: 'none',
+  padding: 0,
+  width: 25,
+  height: 15,
+  backgroundColor: 'gainsboro',
+  borderRadius: 25,
+  position: 'relative',
+  '&:focus': {
+    outline: 'none',
+    boxShadow: '0 0 0 2px royalblue',
+  },
+  '&[data-state="checked"]': {
+    backgroundColor: 'dodgerblue',
+  },
+});
+
+const StyledThumb = styled(Switch.Thumb, {
+  display: 'block',
+  width: 13,
+  height: 13,
+  backgroundColor: 'white',
+  borderRadius: '$round',
+  boxShadow: 'rgba(0, 0, 0, 0.3) 0px 0px 2px',
+  transition: 'transform 100ms',
+  transform: 'translateX(1px)',
+  willChange: 'transform',
+
+  '&[data-state="checked"]': {
+    transform: 'translateX(11px)',
+  },
+});
+
+export const SwitchDemo = () => (
+  <StyledSwitch>
+    <StyledThumb />
+  </StyledSwitch>
+);
 
 const track = keyframes({
   '0%': { backgroundColor: 'hsla(0,0%,0%,.35)' },
@@ -23,7 +65,7 @@ const click = keyframes({
   '100%': { boxShadow: '0 0 0 2px black', transform: 'scale(.5)', opacity: '0' },
 });
 
-const SwitchContainer = () => {
+export const SwitchHero = () => {
   return (
     <Box
       css={{
@@ -130,8 +172,4 @@ const SwitchContainer = () => {
       </Box>
     </Box>
   );
-};
-
-export const SwitchHero = () => {
-  return <SwitchContainer />;
 };

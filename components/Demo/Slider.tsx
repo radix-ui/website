@@ -43,7 +43,7 @@ const StyledThumb = styled(Slider.Thumb, {
   backgroundColor: 'white',
   border: '1px solid lightgray',
   borderRadius: '20px',
-  ':focus': {
+  '&:focus': {
     outline: 'none',
     borderColor: 'dodgerblue',
   },
