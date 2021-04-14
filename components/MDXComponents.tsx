@@ -17,6 +17,7 @@ import * as contextMenuDemos from './Demo/ContextMenu';
 import * as dialogDemos from './Demo/Dialog';
 import * as dropdownMenuDemos from './Demo/DropdownMenu';
 import * as popoverDemos from './Demo/Popover';
+import * as progressDemos from './Demo/Progress';
 
 const LinkHeading = ({
   id,
@@ -282,4 +283,5 @@ export const components = {
   ...dialogDemos,
   ...dropdownMenuDemos,
   ...popoverDemos,
+  ...progressDemos,
 };

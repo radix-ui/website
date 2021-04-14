@@ -1,11 +1,27 @@
 import React from 'react';
-import { Box, keyframes } from '@modulz/design-system';
+import { styled, Box, keyframes } from '@modulz/design-system';
+import * as Progress from '@radix-ui/react-progress';
 
-const anim = keyframes({
-  '20%': { transform: 'translateX(100px)' },
-  '40%': { transform: 'translateX(42px)' },
-  '60%': { transform: 'translateX(70px)' },
+const StyledProgress = styled(Progress.Root, {
+  position: 'relative',
+  height: 10,
+  overflow: 'hidden',
+  borderRadius: 5,
+  background: 'gainsboro',
 });
+
+const StyledIndicator = styled(Progress.Indicator, {
+  boxSizing: 'border-box',
+  position: 'absolute',
+  backgroundColor: 'dodgerblue',
+  height: '100%',
+});
+
+export const ProgressDemo = () => (
+  <StyledProgress value={50}>
+    <StyledIndicator style={{ width: '50%' }} />
+  </StyledProgress>
+);
 
 const scale = keyframes({
   '0%': { transform: 'ScaleX(0)' },
@@ -21,7 +37,7 @@ const scale = keyframes({
   '100%': { transform: 'ScaleX(1)' },
 });
 
-const ProgressContainer = () => {
+export const ProgressHero = () => {
   return (
     <Box
       css={{
@@ -50,8 +66,4 @@ const ProgressContainer = () => {
       ></Box>
     </Box>
   );
-};
-
-export const ProgressHero = () => {
-  return <ProgressContainer />;
 };

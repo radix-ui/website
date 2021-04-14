@@ -7,8 +7,6 @@ features:
   - Provides context for assistive technology to read the progress of a task.
 ---
 
-import { ProgressHero } from '../../../../../../components/Hero/ProgressHero';
-
 <HeroSlot>
   <ProgressHero />
 </HeroSlot>
@@ -39,8 +37,12 @@ export default () => (
 
 Create your styled progress component from the primitive parts.
 
-```jsx live manual
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <ProgressDemo />
+</Preview>
+
+```jsx
+import { styled } from 'path-to/stitches.config';
 import * as Progress from '@radix-ui/react-progress';
 
 const StyledProgress = styled(Progress.Root, {

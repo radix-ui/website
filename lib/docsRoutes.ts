@@ -27,6 +27,7 @@ export const docsRoutes = [
       { title: 'Hover Card', slug: 'primitives/docs/components/hover-card', draft: true },
       { title: 'Menubar', slug: 'primitives/docs/components/menubar', draft: true },
       { title: 'Popover', slug: 'primitives/docs/components/popover' },
+      { title: 'Progress', slug: 'primitives/docs/components/progress' },
     ],
   },
 ];
