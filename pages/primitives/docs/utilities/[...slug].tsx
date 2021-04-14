@@ -146,7 +146,7 @@ export default function Doc({ frontmatter, source }: Doc) {
             flexShrink: 0,
             zIndex: 1,
             position: 'fixed',
-            right: '$2',
+            right: '0',
             top: '$5',
             order: 1,
             height: 'calc(100vh - (var(--space-8) + var(--space-5)))',
