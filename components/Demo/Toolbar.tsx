@@ -24,7 +24,7 @@ const itemStyles = {
   },
 };
 
-const StyledButton = styled(Toolbar.Button, itemStyles);
+const StyledButton = styled(Toolbar.Button, itemStyles as any);
 
 const StyledLink = styled(Toolbar.Link, {
   ...itemStyles,
