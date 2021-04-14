@@ -1,5 +1,27 @@
 import React from 'react';
-import { Box, keyframes, Flex } from '@modulz/design-system';
+import { styled, Box, keyframes, Flex } from '@modulz/design-system';
+import * as Toggle from '@radix-ui/react-toggle';
+
+const StyledToggle = styled(Toggle.Root, {
+  appearance: 'none',
+  backgroundColor: 'transparent',
+  border: 'none',
+  padding: '5px 10px',
+  boxShadow: 'inset 0 0 0 1px gainsboro',
+  overflow: 'hidden',
+  borderRadius: 3,
+
+  '&:focus': {
+    outline: 'none',
+    boxShadow: 'inset 0 0 0 1px dodgerblue, 0 0 0 1px dodgerblue',
+  },
+
+  '&[data-state=on]': {
+    backgroundColor: 'gainsboro',
+  },
+});
+
+export const ToggleDemo = () => <StyledToggle>Toggle</StyledToggle>;
 
 const tab1 = keyframes({
   '0%': { opacity: '1' },
@@ -40,7 +62,7 @@ const click = keyframes({
   '100%': { boxShadow: '0 0 0 2px black', transform: 'scale(.5)', opacity: '0' },
 });
 
-const ToggleContainer = () => {
+export const ToggleHero = () => {
   return (
     <Box css={{ position: 'relative' }}>
       <Box
@@ -138,8 +160,4 @@ const ToggleContainer = () => {
       </Flex>
     </Box>
   );
-};
-
-export const ToggleHero = () => {
-  return <ToggleContainer />;
 };

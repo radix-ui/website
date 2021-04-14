@@ -35,6 +35,7 @@ export const docsRoutes = [
       { title: 'Slider', slug: 'primitives/docs/components/slider' },
       { title: 'Switch', slug: 'primitives/docs/components/switch' },
       { title: 'Tabs', slug: 'primitives/docs/components/tabs' },
+      { title: 'Toggle', slug: 'primitives/docs/components/toggle' },
     ],
   },
 ];
