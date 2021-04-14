@@ -13,14 +13,18 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = React.useState(false);
 
   let currentPath;
-  const slug = router.query.slug;
+  let version;
 
+  const slug = router.query.slug;
   if (typeof slug === 'string') {
     currentPath = router.pathname.replace('[slug]', slug);
   } else {
     currentPath = router.pathname.replace('[...slug]', slug.join('/'));
+    version = slug[1];
   }
 
+  console.log(version);
+  console.log(currentPath);
   const currentPageId = currentPath.substr(1);
   const currentPageIndex = allDocsRoutes.findIndex((page) => page.slug === currentPageId);
 
@@ -127,12 +131,13 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
                 <NavHeading>{section.label}</NavHeading>
                 {section.pages.map((page) => {
                   const isDraft = page.draft;
+                  console.log(page.slug);
                   return (
                     <NavItem
                       key={page.slug}
                       href={`/${page.slug}`}
                       disabled={isDraft}
-                      active={currentPath.includes(page.slug)}
+                      active={currentPath.substr(1).replace(`/${version}`, '') === page.slug}
                     >
                       <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                         {page.title}

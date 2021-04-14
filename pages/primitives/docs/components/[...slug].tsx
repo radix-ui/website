@@ -12,15 +12,14 @@ import remarkSlug from 'remark-slug';
 import { RemoveScroll } from 'react-remove-scroll';
 import { HeroContext } from '@components/HeroSlot';
 import { Select } from '@components/Select';
-
 import { QuickNav } from '@components/QuickNav';
-
-import type { PrimitivesFrontmatter } from 'types/primitives';
-import type { MdxRemote } from 'next-mdx-remote/types';
 import { useRouter } from 'next/router';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { CheckIcon } from '@radix-ui/react-icons';
 import { ExternalIcon } from '@components/ExternalIcon';
+
+import type { PrimitivesFrontmatter } from 'types/primitives';
+import type { MdxRemote } from 'next-mdx-remote/types';
 
 type Doc = {
   frontmatter: PrimitivesFrontmatter;
