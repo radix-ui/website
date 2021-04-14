@@ -28,6 +28,7 @@ export const docsRoutes = [
       { title: 'Menubar', slug: 'primitives/docs/components/menubar', draft: true },
       { title: 'Popover', slug: 'primitives/docs/components/popover' },
       { title: 'Progress', slug: 'primitives/docs/components/progress' },
+      { title: 'Radio Group', slug: 'primitives/docs/components/radio-group' },
     ],
   },
 ];

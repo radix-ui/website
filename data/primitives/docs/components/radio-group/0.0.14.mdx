@@ -8,10 +8,8 @@ features:
   - Can be controlled or uncontrolled.
 ---
 
-import { RadioHero } from '../../../../../../components/Hero/RadioHero';
-
 <HeroSlot>
-  <RadioHero />
+  <RadioGroupHero />
 </HeroSlot>
 
 ## Installation
@@ -42,8 +40,12 @@ export default () => (
 
 Create your styled radio group component from the primitive parts.
 
-```jsx manual
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <RadioGroupDemo />
+</Preview>
+
+```jsx
+import { styled } from 'path-to/stitches.config';
 import * as RadioGroup from '@radix-ui/react-radio-group';
 
 const StyledRadio = styled(RadioGroup.Item, {

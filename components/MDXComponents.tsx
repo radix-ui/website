@@ -18,6 +18,7 @@ import * as dialogDemos from './Demo/Dialog';
 import * as dropdownMenuDemos from './Demo/DropdownMenu';
 import * as popoverDemos from './Demo/Popover';
 import * as progressDemos from './Demo/Progress';
+import * as radioGroupDemos from './Demo/RadioGroup';
 
 const LinkHeading = ({
   id,
@@ -284,4 +285,5 @@ export const components = {
   ...dropdownMenuDemos,
   ...popoverDemos,
   ...progressDemos,
+  ...radioGroupDemos,
 };
