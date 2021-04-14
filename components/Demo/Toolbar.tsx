@@ -27,7 +27,7 @@ const itemStyles = {
 const StyledButton = styled(Toolbar.Button, itemStyles as any);
 
 const StyledLink = styled(Toolbar.Link, {
-  ...itemStyles,
+  ...(itemStyles as any),
   display: 'inline-flex',
   justifyContent: 'center',
   alignItems: 'center',
