@@ -8,6 +8,7 @@ import { HeroSlot } from './HeroSlot';
 import { Pre } from './Pre';
 import { Preview } from './Preview';
 import { PackageRelease, PRLink } from './releaseHelpers';
+import * as gettingStartedDemos from './Demo/GettingStarted';
 import * as accordionDemos from './Demo/Accordion';
 import * as alertDialogDemos from './Demo/AlertDialog';
 import * as avatarDemos from './Demo/Avatar';
@@ -16,6 +17,7 @@ import * as collapsibleDemos from './Demo/Collapsible';
 import * as contextMenuDemos from './Demo/ContextMenu';
 import * as dialogDemos from './Demo/Dialog';
 import * as dropdownMenuDemos from './Demo/DropdownMenu';
+import * as labelDemos from './Demo/Label';
 import * as popoverDemos from './Demo/Popover';
 import * as progressDemos from './Demo/Progress';
 import * as radioGroupDemos from './Demo/RadioGroup';
@@ -284,6 +286,7 @@ export const components = {
   HeroSlot,
   PackageRelease,
   PRLink,
+  ...gettingStartedDemos,
   ...accordionDemos,
   ...alertDialogDemos,
   ...avatarDemos,
@@ -292,6 +295,7 @@ export const components = {
   ...contextMenuDemos,
   ...dialogDemos,
   ...dropdownMenuDemos,
+  ...labelDemos,
   ...popoverDemos,
   ...progressDemos,
   ...radioGroupDemos,
