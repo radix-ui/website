@@ -19,6 +19,7 @@ const itemStyles = {
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
+  color: 'black',
 
   '&[data-disabled]': {
     color: 'gainsboro',

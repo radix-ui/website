@@ -374,9 +374,14 @@ All our primitives which expose a `Trigger` part, such as `Dialog`, `AlertDialog
 
 Here is an example using our `DropdownMenu` primitive.
 
-```jsx live manual compact
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <ToolbarExtraDemo />
+</Preview>
+
+```jsx collapsed
+import { styled } from 'path-to/stitches.config';
 import * as Toolbar from '@radix-ui/react-toolbar';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 const StyledToolbar = styled(Toolbar.Root, {
   display: 'flex',
@@ -385,6 +390,7 @@ const StyledToolbar = styled(Toolbar.Root, {
 const itemStyles = {
   appearance: 'none',
   backgroundColor: 'transparent',
+  color: 'black',
   border: 'none',
   padding: '5px 10px',
   margin: '0 1px',
@@ -440,9 +446,9 @@ export default () => (
     <StyledButton>Action 2</StyledButton>
     <StyledSeparator />
     <DropdownMenu.Root>
-      <StyledMenuTrigger as={Toolbar.Button}>
+      <Toolbar.Button as={StyledMenuTrigger}>Trigger</Toolbar.Button>
         Trigger
-      </StyledMenuTrigger>
+      </Toolbar.Button>
       <StyledMenuContent>
         <StyledMenuItem onSelect={() => console.log('cut')}>
           Cut
