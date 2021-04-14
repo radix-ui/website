@@ -9,8 +9,6 @@ features:
   - Can also be controlled.
 ---
 
-import { DialogHero } from '../../../../../../components/Hero/DialogHero';
-
 <HeroSlot>
   <DialogHero />
 </HeroSlot>
@@ -28,8 +26,6 @@ npm install @radix-ui/react-dialog
 Import the components and piece the parts together.
 
 ```jsx
-import * as Dialog from '@radix-ui/react-dialog';
-
 export default () => (
   <Dialog.Root>
     <Dialog.Trigger />
@@ -46,9 +42,6 @@ export default () => (
 Create your styled dialog component from the dialog primitives.
 
 ```jsx manual
-// import { styled } from 'path-to/stitches.config';
-import * as Dialog from '@radix-ui/react-dialog';
-
 const StyledOverlay = styled(Dialog.Overlay, {
   backgroundColor: 'rgba(0, 0, 0, .15)',
   position: 'fixed',
@@ -378,8 +371,6 @@ This example abstracts the `Dialog.Overlay` and `Dialog.Close` parts.
 #### Usage
 
 ```jsx
-import { Dialog, DialogTrigger, DialogContent } from './your-dialog';
-
 export default () => (
   <Dialog>
     <DialogTrigger>Dialog trigger</DialogTrigger>
@@ -392,9 +383,6 @@ export default () => (
 
 ```jsx
 // your-dialog.js
-import React from 'react';
-import * as DialogPrimitive from '@radix-ui/react-dialog';
-import { Cross1Icon } from '@radix-ui/react-icons';
 
 export function Dialog({ children, ...props }) {
   return (

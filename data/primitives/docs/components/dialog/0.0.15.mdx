@@ -9,8 +9,6 @@ features:
   - Can also be controlled.
 ---
 
-import { DialogHero } from '../../../../../../components/Hero/DialogHero';
-
 <HeroSlot>
   <DialogHero />
 </HeroSlot>
@@ -45,8 +43,12 @@ export default () => (
 
 Create your styled dialog component from the dialog primitives.
 
-```jsx live manual
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <DialogDemo />
+</Preview>
+
+```jsx
+import { styled } from 'path-to/stitches.config';
 import * as Dialog from '@radix-ui/react-dialog';
 
 const StyledOverlay = styled(Dialog.Overlay, {

@@ -22,6 +22,7 @@ export const docsRoutes = [
       { title: 'Checkbox', slug: 'primitives/docs/components/checkbox' },
       { title: 'Collpasible', slug: 'primitives/docs/components/collpasible' },
       { title: 'Context Menu', slug: 'primitives/docs/components/context-menu' },
+      { title: 'Dialog', slug: 'primitives/docs/components/dialog' },
     ],
   },
 ];

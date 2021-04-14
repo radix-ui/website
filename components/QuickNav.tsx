@@ -13,7 +13,7 @@ const QuickNavLink = styled(Link, {
   display: 'inline-flex',
   my: '$1',
 
-  '[data-level="3"] ~ [data-level="4"] &': {
+  '[data-level="2"] ~ [data-level="3"] &': {
     marginLeft: '$5',
   },
 });

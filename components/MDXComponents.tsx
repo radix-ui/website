@@ -14,6 +14,7 @@ import * as avatarDemos from './Demo/Avatar';
 import * as checkboxDemos from './Demo/Checkbox';
 import * as collapsibleDemos from './Demo/Collapsible';
 import * as contextMenuDemos from './Demo/ContextMenu';
+import * as dialogDemos from './Demo/Dialog';
 
 const LinkHeading = ({
   id,
@@ -66,7 +67,7 @@ export const components = {
           fontWeight: 500,
           scrollMarginTop: '$6',
         }}
-        as={'h3' as any}
+        as={'h2' as any}
         data-heading
       >
         {children}
@@ -85,12 +86,15 @@ export const components = {
           fontWeight: 500,
           scrollMarginTop: '$6',
         }}
-        as={'h4' as any}
+        as={'h3' as any}
         data-heading
       >
         {children}
       </DS.Heading>
     </LinkHeading>
+  ),
+  h4: (props) => (
+    <DS.Text as="h4" {...props} size="4" css={{ mb: '$3', lineHeight: '27px', fontWeight: 500 }} />
   ),
   pre: ({ children }) => <>{children}</>,
   code: ({ className, children, id, showLineNumbers = false, collapsed = false }) => {
@@ -273,4 +277,5 @@ export const components = {
   ...checkboxDemos,
   ...collapsibleDemos,
   ...contextMenuDemos,
+  ...dialogDemos,
 };

@@ -1,5 +1,44 @@
 import React from 'react';
-import { Box, keyframes, Flex } from '@modulz/design-system';
+import { styled, Box, keyframes, Flex } from '@modulz/design-system';
+import * as Dialog from '@radix-ui/react-dialog';
+
+const StyledOverlay = styled(Dialog.Overlay, {
+  backgroundColor: 'rgba(0, 0, 0, .15)',
+  position: 'fixed',
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0,
+});
+
+const StyledContent = styled(Dialog.Content, {
+  position: 'fixed',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  minWidth: 200,
+  maxWidth: 'fit-content',
+  maxHeight: '85vh',
+  padding: 20,
+  marginTop: '-5vh',
+  backgroundColor: 'white',
+  borderRadius: 6,
+
+  '&:focus': {
+    outline: 'none',
+  },
+});
+
+export const DialogDemo = () => (
+  <Dialog.Root>
+    <Dialog.Trigger>Open</Dialog.Trigger>
+    <StyledOverlay />
+    <StyledContent>
+      <p>Dialog content</p>
+      <Dialog.Close>Close</Dialog.Close>
+    </StyledContent>
+  </Dialog.Root>
+);
 
 const dialog = keyframes({
   '20%': { transform: 'scale(.92) translate(-50%, -50%)', opacity: '0' },
@@ -16,7 +55,7 @@ const click = keyframes({
   '100%': { boxShadow: '0 0 0 2px black', transform: 'scale(.5)', opacity: '0' },
 });
 
-const DialogContainer = () => {
+export const DialogHero = () => {
   return (
     <Box>
       <Box
@@ -175,8 +214,4 @@ const DialogContainer = () => {
       </Box>
     </Box>
   );
-};
-
-export const DialogHero = () => {
-  return <DialogContainer />;
 };
