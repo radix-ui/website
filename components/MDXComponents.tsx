@@ -25,6 +25,7 @@ import * as sliderDemos from './Demo/Slider';
 import * as switchDemos from './Demo/Switch';
 import * as tabsDemos from './Demo/Tabs';
 import * as toggleDemos from './Demo/Toggle';
+import * as toggleGroupDemos from './Demo/ToggleGroup';
 
 const LinkHeading = ({
   id,
@@ -298,4 +299,5 @@ export const components = {
   ...switchDemos,
   ...tabsDemos,
   ...toggleDemos,
+  ...toggleGroupDemos,
 };
