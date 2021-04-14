@@ -15,8 +15,6 @@ features:
   - Dismissing and layering behavior is highly customizable.
 ---
 
-import { DropdownMenuHero } from '../../../../../../components/Hero/DropdownMenuHero';
-
 <HeroSlot>
   <DropdownMenuHero />
 </HeroSlot>
@@ -69,8 +67,12 @@ export default () => (
 
 Create your styled dropdown menu component from the primitive parts.
 
-```jsx manual
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <DropdownMenuDemo />
+</Preview>
+
+```jsx
+import { styled } from 'path-to/stitches.config';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 const StyledContent = styled(DropdownMenu.Content, {
@@ -218,6 +220,18 @@ The component that pops out when the dropdown menu is open.
         <span>
           When <Code>true</Code>, keyboard navigation will loop from
           last item to first, and vice versa.
+        </span>
+      ),
+    },
+    {
+      name: 'onCloseAutoFocus',
+      type: '(event: Event) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when focus moves to the trigger after
+          closing. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -771,8 +785,12 @@ const StyledContent = styled(DropdownMenu.Content, {
 
 You can add special styles to disabled items via the `data-disabled` attribute.
 
-```jsx manual compact
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <DropdownMenuDemo showDisabled />
+</Preview>
+
+```jsx collapsed
+import { styled } from 'path-to/stitches.config';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 const StyledContent = styled(DropdownMenu.Content, {
@@ -827,8 +845,12 @@ export default () => (
 
 Use the `Separator` part to add a separator between items.
 
-```jsx manual compact
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <DropdownMenuDemo showSeparator />
+</Preview>
+
+```jsx collapsed
+import { styled } from 'path-to/stitches.config';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 const StyledContent = styled(DropdownMenu.Content, {
@@ -866,21 +888,17 @@ export default () => (
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
     <StyledContent>
-      <StyledItem onSelect={() => console.log('undo')}>
-        Undo
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('redo')}>
-        Redo
+      <StyledItem disabled onSelect={() => console.log('cut')}>
+        Cut
       </StyledItem>
       <StyledSeparator />
-      <StyledItem onSelect={() => console.log('cut')}>Cut</StyledItem>
       <StyledItem onSelect={() => console.log('copy')}>
         Copy
       </StyledItem>
+      <StyledSeparator />
       <StyledItem onSelect={() => console.log('paste')}>
         Paste
       </StyledItem>
-      <StyledArrow />
     </StyledContent>
   </DropdownMenu.Root>
 );
@@ -890,8 +908,12 @@ export default () => (
 
 Use the `Label` part to help label a section.
 
-```jsx manual compact
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <DropdownMenuDemo showLabel />
+</Preview>
+
+```jsx collapsed
+import { styled } from 'path-to/stitches.config';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 const StyledContent = styled(DropdownMenu.Content, {
@@ -936,23 +958,15 @@ export default () => (
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
     <StyledContent>
-      <StyledLabel>Recently Closed</StyledLabel>
-      <StyledItem onSelect={() => console.log('modulz')}>
-        Modulz
+      <StyledLabel>Actions</StyledLabel>
+      <StyledItem disabled onSelect={() => console.log('cut')}>
+        Cut
       </StyledItem>
-      <StyledItem onSelect={() => console.log('radix-ui')}>
-        Radix-ui
+      <StyledItem onSelect={() => console.log('copy')}>
+        Copy
       </StyledItem>
-      <StyledItem onSelect={() => console.log('stitches')}>
-        Stitches
-      </StyledItem>
-      <StyledSeparator />
-      <StyledLabel>Recently Visited</StyledLabel>
-      <StyledItem onSelect={() => console.log('github')}>
-        GitHub
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('modulz')}>
-        Modulz
+      <StyledItem onSelect={() => console.log('paste')}>
+        Paste
       </StyledItem>
       <StyledArrow />
     </StyledContent>
@@ -964,8 +978,12 @@ export default () => (
 
 Use the `CheckboxItem` part to add an item that can be checked.
 
-```jsx manual compact
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <DropdownMenuCheckboxDemo />
+</Preview>
+
+```jsx collapsed
+import { styled } from 'path-to/stitches.config';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { CheckIcon } from '@radix-ui/react-icons';
 
@@ -1047,8 +1065,12 @@ export default () => {
 
 Use the `RadioGroup` and `RadioItem` parts to add an item that can be checked amongst others.
 
-```jsx manual compact
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <DropdownMenuRadioDemo />
+</Preview>
+
+```jsx
+import { styled } from 'path-to/stitches.config';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { CheckIcon } from '@radix-ui/react-icons';
 
@@ -1125,8 +1147,12 @@ export default () => {
 
 ### With complex items
 
-```jsx manual compact
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <DropdownMenuComplexDemo />
+</Preview>
+
+```jsx collapsed
+import { styled } from 'path-to/stitches.config';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 const StyledContent = styled(DropdownMenu.Content, {
@@ -1204,7 +1230,14 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-a
     },
     {
       keys: ['Enter'],
-      description: 'Activates the focused item.',
+      description: (
+        <span>
+          When focus is on <Code>DropdownMenu.Trigger</Code>, opens
+          the dropdown menu.
+          <br />
+          When focus is on an item, activates the focused item.
+        </span>
+      ),
     },
     {
       keys: ['ArrowDown'],

@@ -23,6 +23,7 @@ export const docsRoutes = [
       { title: 'Collpasible', slug: 'primitives/docs/components/collpasible' },
       { title: 'Context Menu', slug: 'primitives/docs/components/context-menu' },
       { title: 'Dialog', slug: 'primitives/docs/components/dialog' },
+      { title: 'Dropdown Menu', slug: 'primitives/docs/components/dropdown-menu' },
     ],
   },
 ];

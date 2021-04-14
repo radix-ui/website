@@ -15,8 +15,6 @@ features:
   - Dismissing and layering behavior is highly customizable.
 ---
 
-import { DropdownMenuHero } from '../../../../../../components/Hero/DropdownMenuHero';
-
 <HeroSlot>
   <DropdownMenuHero />
 </HeroSlot>
@@ -244,6 +242,18 @@ The component that pops out when the dropdown menu is open.
         <span>
           When <Code>true</Code>, keyboard navigation will loop from
           last item to first, and vice versa.
+        </span>
+      ),
+    },
+    {
+      name: 'onCloseAutoFocus',
+      type: '(event: Event) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when focus moves to the trigger after
+          closing. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
         </span>
       ),
     },

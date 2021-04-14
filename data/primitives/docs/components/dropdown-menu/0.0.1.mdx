@@ -15,8 +15,6 @@ features:
   - Dismissing and layering behavior is highly customizable.
 ---
 
-import { DropdownMenuHero } from '../../../../../../components/Hero/DropdownMenuHero';
-
 <HeroSlot>
   <DropdownMenuHero />
 </HeroSlot>
@@ -191,19 +189,6 @@ The button that toggles the dropdown menu. By default, the `DropdownMenu.Content
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-dropdown-menu-trigger',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
-    },
   ]}
 />
 
@@ -223,19 +208,6 @@ The component that pops out when the dropdown menu is open.
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-dropdown-menu-content',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
-    },
-    {
       name: 'loop',
       required: false,
       type: 'boolean',
@@ -244,18 +216,6 @@ The component that pops out when the dropdown menu is open.
         <span>
           When <Code>true</Code>, keyboard navigation will loop from
           last item to first, and vice versa.
-        </span>
-      ),
-    },
-    {
-      name: 'onCloseAutoFocus',
-      type: '(event: Event) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when focus moves to the trigger after
-          closing. It can be prevented by calling{' '}
-          <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -437,19 +397,6 @@ An optional arrow element to render alongside the dropdown menu. This can be use
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the entire SVG and all of its paths.',
     },
     {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-dropdown-menu-arrow',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
-    },
-    {
       name: 'width',
       type: 'number',
       default: 10,
@@ -489,19 +436,6 @@ The component that contains the dropdown menu items.
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-dropdown-menu-item',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
     },
     {
       name: 'disabled',
@@ -557,19 +491,6 @@ Used to group multiple `DropdownMenu.Item`s.
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-dropdown-menu-group',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
-    },
   ]}
 />
 
@@ -588,19 +509,6 @@ Used to render a label. It won't be focusable using arrow keys.
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-dropdown-menu-label',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
-    },
   ]}
 />
 
@@ -618,19 +526,6 @@ An item that can be controlled and rendered like a checkbox.
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-dropdown-menu-checkbox-item',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
     },
     {
       name: 'checked',
@@ -707,19 +602,6 @@ Used to group multiple `DropdownMenu.RadioItem`s.
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-dropdown-menu-radio-group',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
-    },
-    {
       name: 'value',
       type: 'string',
       description: 'The value of the selected item in the group.',
@@ -747,19 +629,6 @@ An item that can be controlled and rendered like a radio.
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-dropdown-menu-radio-item',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
     },
     {
       name: 'value',
@@ -822,19 +691,6 @@ Renders when the parent `DropdownMenu.CheckboxItem` or `DropdownMenu.RadioItem` 
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-dropdown-menu-item-indicator',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
-    },
-    {
       name: 'forceMount',
       type: 'boolean',
       description: (
@@ -861,19 +717,6 @@ Used to visually separate items in the dropdown menu.
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-dropdown-menu-separator',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
     },
   ]}
 />
@@ -1359,14 +1202,7 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-a
     },
     {
       keys: ['Enter'],
-      description: (
-        <span>
-          When focus is on <Code>DropdownMenu.Trigger</Code>, opens
-          the dropdown menu.
-          <br />
-          When focus is on an item, activates the focused item.
-        </span>
-      ),
+      description: 'Activates the focused item.',
     },
     {
       keys: ['ArrowDown'],
