@@ -24,6 +24,7 @@ export const docsRoutes = [
       { title: 'Context Menu', slug: 'primitives/docs/components/context-menu' },
       { title: 'Dialog', slug: 'primitives/docs/components/dialog' },
       { title: 'Dropdown Menu', slug: 'primitives/docs/components/dropdown-menu' },
+      { title: 'Hover Card', slug: 'primitives/docs/components/hover-card', draft: true },
     ],
   },
 ];
