@@ -12,8 +12,6 @@ features:
   - Full keyboard navigation.
 ---
 
-import { SliderHero } from '../../../../../../components/Hero/SliderHero';
-
 <HeroSlot>
   <SliderHero />
 </HeroSlot>
@@ -36,9 +34,9 @@ import * as Slider from '@radix-ui/react-slider';
 export default () => (
   <Slider.Root>
     <Slider.Track>
-      <Slider.Thumb />
+      <Slider.Range />
     </Slider.Track>
-    <Slider.Range />
+    <Slider.Thumb />
   </Slider.Root>
 );
 ```
@@ -47,8 +45,12 @@ export default () => (
 
 Create your styled slider component from the primitive parts.
 
-```jsx manual
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <SliderDemo />
+</Preview>
+
+```jsx
+import { styled } from 'path-to/stitches.config';
 import * as Slider from '@radix-ui/react-slider';
 
 const StyledSlider = styled(Slider.Root, {
@@ -277,8 +279,12 @@ A draggable thumb. You can render multiple thumbs.
 
 Use the `orientation` prop to create a vertical slider.
 
-```jsx manual compact
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <SliderDemo orientation="vertical" />
+</Preview>
+
+```jsx collapsed
+import { styled } from 'path-to/stitches.config';
 import * as Slider from '@radix-ui/react-slider';
 
 const StyledSlider = styled(Slider.Root, {
@@ -333,8 +339,12 @@ export default () => (
 
 Add multiple thumbs and values to create a range slider.
 
-```jsx manual compact
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <SliderDemo defaultValue={[25, 75]} />
+</Preview>
+
+```jsx collapsed
+import { styled } from 'path-to/stitches.config';
 import * as Slider from '@radix-ui/react-slider';
 
 const StyledSlider = styled(Slider.Root, {
@@ -388,8 +398,12 @@ export default () => (
 
 Use the `step` prop to increase the stepping interval.
 
-```jsx manual compact
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <SliderDemo step={10} />
+</Preview>
+
+```jsx collapsed
+import { styled } from 'path-to/stitches.config';
 import * as Slider from '@radix-ui/react-slider';
 
 const StyledSlider = styled(Slider.Root, {
@@ -429,7 +443,7 @@ const StyledThumb = styled(Slider.Thumb, {
 });
 
 export default () => (
-  <StyledSlider defaultValue={[50]} step={5}>
+  <StyledSlider defaultValue={[50]} step={10}>
     <StyledTrack>
       <StyledRange />
     </StyledTrack>
@@ -442,8 +456,16 @@ export default () => (
 
 Use `minStepsBetweenThumbs` to avoid thumbs with equal values.
 
-```jsx manual compact
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <SliderDemo
+    defaultValue={[25, 75]}
+    minStepsBetweenThumbs={1}
+    step={10}
+  />
+</Preview>
+
+```jsx collapsed
+import { styled } from 'path-to/stitches.config';
 import * as Slider from '@radix-ui/react-slider';
 
 const StyledSlider = styled(Slider.Root, {
@@ -486,7 +508,7 @@ export default () => (
   <StyledSlider
     defaultValue={[25, 75]}
     minStepsBetweenThumbs={1}
-    step={5}
+    step={10}
   >
     <StyledTrack>
       <StyledRange />

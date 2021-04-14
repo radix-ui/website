@@ -1,5 +1,64 @@
 import React from 'react';
-import { Box, keyframes } from '@modulz/design-system';
+import { styled, Box, keyframes } from '@modulz/design-system';
+import * as Slider from '@radix-ui/react-slider';
+
+const StyledSlider = styled(Slider.Root, {
+  position: 'relative',
+  display: 'flex',
+  alignItems: 'center',
+  userSelect: 'none',
+  touchAction: 'none',
+
+  '&[data-orientation="horizontal"]': {
+    height: 16,
+  },
+
+  '&[data-orientation="vertical"]': {
+    flexDirection: 'column',
+    width: 16,
+    height: 100,
+  },
+});
+
+const StyledTrack = styled(Slider.Track, {
+  backgroundColor: 'gainsboro',
+  position: 'relative',
+  flexGrow: 1,
+
+  '&[data-orientation="horizontal"]': { height: 2 },
+  '&[data-orientation="vertical"]': { width: 2 },
+});
+
+const StyledRange = styled(Slider.Range, {
+  position: 'absolute',
+  backgroundColor: 'dodgerblue',
+  borderRadius: '9999px',
+  height: '100%',
+});
+
+const StyledThumb = styled(Slider.Thumb, {
+  display: 'block',
+  width: 16,
+  height: 16,
+  backgroundColor: 'white',
+  border: '1px solid lightgray',
+  borderRadius: '20px',
+  ':focus': {
+    outline: 'none',
+    borderColor: 'dodgerblue',
+  },
+});
+
+export const SliderDemo = ({ defaultValue = [50], ...props }) => (
+  <StyledSlider defaultValue={defaultValue} {...props}>
+    <StyledTrack>
+      <StyledRange />
+    </StyledTrack>
+    {defaultValue.map((thumb, index) => (
+      <StyledThumb key={index} />
+    ))}
+  </StyledSlider>
+);
 
 const anim = keyframes({
   '20%': { transform: 'translateX(100px)' },
@@ -13,7 +72,7 @@ const scale = keyframes({
   '60%': { transform: 'ScaleX(.5)' },
 });
 
-const HeroSkeleton = () => {
+export const SliderHero = () => {
   return (
     <Box
       css={{
@@ -58,8 +117,4 @@ const HeroSkeleton = () => {
       ></Box>
     </Box>
   );
-};
-
-export const SliderHero = () => {
-  return <HeroSkeleton />;
 };

@@ -32,6 +32,7 @@ export const docsRoutes = [
       { title: 'Scroll Area', slug: 'primitives/docs/components/scroll-area' },
       { title: 'Select', slug: 'primitives/docs/components/select', draft: true },
       { title: 'Separator', slug: 'primitives/docs/components/separator' },
+      { title: 'Slider', slug: 'primitives/docs/components/slider' },
     ],
   },
 ];
