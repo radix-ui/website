@@ -31,6 +31,7 @@ export const docsRoutes = [
       { title: 'Radio Group', slug: 'primitives/docs/components/radio-group' },
       { title: 'Scroll Area', slug: 'primitives/docs/components/scroll-area' },
       { title: 'Select', slug: 'primitives/docs/components/select', draft: true },
+      { title: 'Separator', slug: 'primitives/docs/components/separator' },
     ],
   },
 ];

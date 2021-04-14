@@ -20,6 +20,7 @@ import * as popoverDemos from './Demo/Popover';
 import * as progressDemos from './Demo/Progress';
 import * as radioGroupDemos from './Demo/RadioGroup';
 import * as scrollAreaDemos from './Demo/ScrollArea';
+import * as separatorDemos from './Demo/Separator';
 
 const LinkHeading = ({
   id,
@@ -288,4 +289,5 @@ export const components = {
   ...progressDemos,
   ...radioGroupDemos,
   ...scrollAreaDemos,
+  ...separatorDemos,
 };
