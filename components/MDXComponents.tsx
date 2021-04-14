@@ -23,6 +23,7 @@ import * as scrollAreaDemos from './Demo/ScrollArea';
 import * as separatorDemos from './Demo/Separator';
 import * as sliderDemos from './Demo/Slider';
 import * as switchDemos from './Demo/Switch';
+import * as tabsDemos from './Demo/Tabs';
 
 const LinkHeading = ({
   id,
@@ -294,4 +295,5 @@ export const components = {
   ...separatorDemos,
   ...sliderDemos,
   ...switchDemos,
+  ...tabsDemos,
 };

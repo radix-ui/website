@@ -1,5 +1,68 @@
 import React from 'react';
-import { Box, keyframes, Flex } from '@modulz/design-system';
+import { styled, Box, keyframes, Flex } from '@modulz/design-system';
+import * as Tabs from '@radix-ui/react-tabs';
+
+const StyledTabs = styled(Tabs.Root, {
+  display: 'flex',
+  '&[data-orientation="horizontal"]': {
+    flexDirection: 'column',
+  },
+});
+
+const StyledList = styled(Tabs.List, {
+  flexShrink: 0,
+  display: 'flex',
+  '&[data-orientation="horizontal"]': {
+    borderBottom: '1px solid gainsboro',
+  },
+  '&[data-orientation="vertical"]': {
+    flexDirection: 'column',
+    borderRight: '1px solid gainsboro',
+  },
+});
+
+const StyledTab = styled(Tabs.Tab, {
+  flexShrink: 0,
+  padding: '10px 20px',
+  color: 'slategray',
+  userSelect: 'none',
+
+  '&:hover': { color: 'black' },
+
+  '&[data-state="active"]': {
+    color: 'black',
+    '&[data-orientation="horizontal"]': {
+      boxShadow: 'inset 0 -1px 0 0 currentColor, 0 1px 0 0 currentColor',
+    },
+    '&[data-orientation="vertical"]': {
+      boxShadow: 'inset -1px 0 0 currentColor, 1px 0 0 currentColor',
+    },
+  },
+});
+
+const StyledPanel = styled(Tabs.Panel, {
+  flexGrow: 1,
+
+  '&[data-orientation="horizontal"]': {
+    padding: 20,
+  },
+  '&[data-orientation="vertical"]': {
+    padding: '10px 20px',
+  },
+});
+
+export const TabsDemo = (props) => (
+  <StyledTabs defaultValue="tab1" {...props}>
+    <StyledList aria-label="tabs example">
+      <StyledTab value="tab1">One</StyledTab>
+      <StyledTab value="tab2">Two</StyledTab>
+      <StyledTab value="tab3">Three</StyledTab>
+    </StyledList>
+    <StyledPanel value="tab1">Tab one content</StyledPanel>
+    <StyledPanel value="tab2">Tab two content</StyledPanel>
+    <StyledPanel value="tab3">Tab three content</StyledPanel>
+  </StyledTabs>
+);
 
 const tab1 = keyframes({
   '0%': { opacity: '1' },
@@ -58,7 +121,7 @@ const click = keyframes({
   // '90%': { transform: 'translate(30px, 30px)' },
 });
 
-const TabsContainer = () => {
+export const TabsHero = () => {
   return (
     <Box css={{ position: 'relative' }}>
       <Box
@@ -203,8 +266,4 @@ const TabsContainer = () => {
       </Box>
     </Box>
   );
-};
-
-export const TabsHero = () => {
-  return <TabsContainer />;
 };

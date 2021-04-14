@@ -10,8 +10,6 @@ features:
   - Full keyboard navigation.
 ---
 
-import { TabsHero } from '../../../../../../components/Hero/TabsHero';
-
 <HeroSlot>
   <TabsHero />
 </HeroSlot>
@@ -45,8 +43,12 @@ export default () => (
 
 Create your styled tabs component from the primitive parts.
 
-```jsx manual
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <TabsDemo />
+</Preview>
+
+```jsx
+import { styled } from 'path-to/stitches.config';
 import * as Tabs from '@radix-ui/react-tabs';
 
 const StyledTabs = styled(Tabs.Root, {
@@ -118,19 +120,6 @@ Contains all the tabs component parts.
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-tabs',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
-    },
-    {
       name: 'defaultValue',
       required: false,
       type: 'string',
@@ -162,6 +151,15 @@ Contains all the tabs component parts.
       typeSimple: 'enum',
       default: '"horizontal"',
       description: 'The orientation of the component.',
+    },
+    {
+      name: 'dir',
+      required: false,
+      type: '"ltr" | "rtl"',
+      typeSimple: 'enum',
+      default: '"ltr"',
+      description:
+        'The reading direction of the tabs. If omitted, assumes LTR (left-to-right) reading mode.',
     },
     {
       name: 'activationMode',
@@ -196,19 +194,6 @@ Contains the tabs aligned along the edge of the active panel.
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-tabs-list',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
-    },
-    {
       name: 'loop',
       required: false,
       type: 'boolean',
@@ -237,19 +222,6 @@ The button that activates its associated panel.
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-tabs-tab',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
     },
     {
       name: 'value',
@@ -289,19 +261,6 @@ Contains the content associated with each tab.
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-tabs-panel',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
-        </span>
-      ),
-    },
-    {
       name: 'value',
       required: true,
       type: 'string',
@@ -317,8 +276,12 @@ Contains the content associated with each tab.
 
 You can create a vertical tab by using the `orientation` prop.
 
-```jsx manual compact
-// import { styled } from 'path-to/stitches.config';
+<Preview>
+  <TabsDemo orientation="vertical" />
+</Preview>
+
+```jsx collapsed
+import { styled } from 'path-to/stitches.config';
 import * as Tabs from '@radix-ui/react-tabs';
 
 const StyledTabs = styled(Tabs.Root, {
