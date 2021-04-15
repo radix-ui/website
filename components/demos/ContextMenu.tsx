@@ -34,6 +34,11 @@ const itemStyles = {
 
 const StyledItem = styled(ContextMenu.Item, itemStyles as any);
 
+const StyledIndentedItem = styled(ContextMenu.Item, {
+  ...(itemStyles as any),
+  padding: '5px 10px 5px 25px',
+});
+
 const StyledCheckboxItem = styled(ContextMenu.CheckboxItem, {
   ...(itemStyles as any),
   padding: '5px 10px 5px 25px',
@@ -114,8 +119,12 @@ export const ContextMenuCheckboxDemo = () => {
         </div>
       </ContextMenu.Trigger>
       <StyledContent>
-        <StyledItem onSelect={() => console.log('radix-ui')}>About Radix UI</StyledItem>
-        <StyledItem onSelect={() => console.log('check-for-updates')}>Check for updates</StyledItem>
+        <StyledIndentedItem onSelect={() => console.log('radix-ui')}>
+          About Radix UI
+        </StyledIndentedItem>
+        <StyledIndentedItem onSelect={() => console.log('check-for-updates')}>
+          Check for updates
+        </StyledIndentedItem>
         <StyledSeparator />
         <StyledCheckboxItem checked={checked} onCheckedChange={setChecked}>
           <StyledItemIndicator>

@@ -34,6 +34,11 @@ const itemStyles = {
 
 const StyledItem = styled(DropdownMenu.Item, itemStyles as any);
 
+const StyledIndentedItem = styled(DropdownMenu.Item, {
+  ...(itemStyles as any),
+  padding: '5px 10px 5px 25px',
+});
+
 const StyledCheckboxItem = styled(DropdownMenu.CheckboxItem, {
   ...(itemStyles as any),
   padding: '5px 10px 5px 25px',
@@ -99,8 +104,12 @@ export const DropdownMenuCheckboxDemo = () => {
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
       <StyledContent>
-        <StyledItem onSelect={() => console.log('radix-ui')}>About Radix UI</StyledItem>
-        <StyledItem onSelect={() => console.log('check-for-updates')}>Check for updates</StyledItem>
+        <StyledIndentedItem onSelect={() => console.log('radix-ui')}>
+          About Radix UI
+        </StyledIndentedItem>
+        <StyledIndentedItem onSelect={() => console.log('check-for-updates')}>
+          Check for updates
+        </StyledIndentedItem>
         <StyledSeparator />
         <StyledCheckboxItem checked={checked} onCheckedChange={setChecked}>
           <StyledItemIndicator>
