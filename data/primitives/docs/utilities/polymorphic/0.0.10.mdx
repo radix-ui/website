@@ -1,0 +1,76 @@
+---
+title: Polymorphic
+name: polymorphic
+description: Creates strongly typed polymorphic components
+features:
+  - Typed attributes based on the `as` prop
+  - Typed props based on the `as` prop
+  - Typed events based on the `as` prop
+---
+
+## Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-polymorphic
+```
+
+## Import
+
+Import the component.
+
+```jsx
+import type * as Polymorphic from '@radix-ui/react-polymorphic';
+```
+
+## Basic example
+
+Make a polymorphic `Box` component.
+
+```tsx
+import React from 'react';
+import type * as Polymorphic from '@radix-ui/react-polymorphic';
+
+const DEFAULT_TAG = 'div';
+type BoxComponent = Polymorphic.ForwardRefComponent<
+  typeof DEFAULT_TAG,
+  {}
+>;
+
+const Box = React.forwardRef((props, forwardedRef) => {
+  const { as: Comp = DEFAULT_TAG, ...boxProps } = props;
+  return <Comp {...boxProps} ref={forwardedRef} />;
+}) as BoxComponent;
+
+export default () => <Box>
+  <Box as="h1">This is a h1></Box>
+  <Box as="button">This is a button</Box>
+</Box>
+```
+
+## API Reference
+
+### Root
+
+Contains the content for the label.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'span',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'htmlFor',
+      type: 'string',
+      description:
+        'The id of the element the label is associated with.',
+    },
+  ]}
+/>
