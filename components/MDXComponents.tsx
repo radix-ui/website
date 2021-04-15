@@ -10,6 +10,7 @@ import { Preview } from './Preview';
 import { PackageRelease, PRLink } from './releaseHelpers';
 import * as gettingStartedDemos from './demos/GettingStarted';
 import * as accessibleIconDemos from './demos/AccessibleIcon';
+import * as aspectRatioDemos from './demos/AspectRatio';
 import * as accordionDemos from './demos/Accordion';
 import * as alertDialogDemos from './demos/AlertDialog';
 import * as avatarDemos from './demos/Avatar';
@@ -288,6 +289,7 @@ export const components = {
   PackageRelease,
   PRLink,
   ...accessibleIconDemos,
+  ...aspectRatioDemos,
   ...gettingStartedDemos,
   ...accordionDemos,
   ...alertDialogDemos,
