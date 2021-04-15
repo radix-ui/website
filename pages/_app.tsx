@@ -2,8 +2,7 @@ import React from 'react';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
-import { global, darkTheme } from '@modulz/design-system';
-import { IdProvider } from '@radix-ui/react-id';
+import { global, darkTheme, DesignSystemProvider } from '@modulz/design-system';
 import { Footer } from '@components/Footer';
 import { DocsPage } from '@components/DocsPage';
 import { useAnalytics } from '@lib/analytics';
@@ -47,7 +46,7 @@ function App({ Component, pageProps }: AppProps) {
   const isDocs = router.pathname.includes('/docs');
 
   return (
-    <IdProvider>
+    <DesignSystemProvider>
       <ThemeProvider
         disableTransitionOnChange
         attribute="class"
@@ -63,7 +62,7 @@ function App({ Component, pageProps }: AppProps) {
         )}
         {!isDocs && <Footer />}
       </ThemeProvider>
-    </IdProvider>
+    </DesignSystemProvider>
   );
 }
 
