@@ -12,26 +12,25 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const [isOpen, setIsOpen] = React.useState(false);
 
-  let currentPath;
-  let version;
+  let currentPageSlug;
 
-  const slug = router.query.slug;
-  if (typeof slug === 'string') {
-    currentPath = router.pathname.replace('[slug]', slug);
-  } else {
-    currentPath = router.pathname.replace('[...slug]', slug.join('/'));
-    version = slug[1];
-  }
-
-  const currentPageId = currentPath.substr(1);
-  const currentPageIndex = allDocsRoutes.findIndex((page) => page.slug === currentPageId);
-
-  const previous = allDocsRoutes[currentPageIndex - 1];
-  const next = allDocsRoutes[currentPageIndex + 1];
+  const routerSlug = router.query.slug;
 
   const GITHUB_URL = 'https://github.com';
   const REPO_NAME = 'radix-ui/website';
-  const editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/master/data${currentPath}.mdx`;
+  let editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/master/data/${currentPageSlug}.mdx`;
+
+  if (typeof routerSlug === 'string') {
+    currentPageSlug = router.pathname.substr(1).replace('[slug]', routerSlug);
+    editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/master/data/${currentPageSlug}.mdx`;
+  } else {
+    currentPageSlug = router.pathname.substr(1).replace('[...slug]', routerSlug[0]);
+    editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/master/data/${currentPageSlug}/${routerSlug[1]}.mdx`;
+  }
+
+  const currentPageIndex = allDocsRoutes.findIndex((page) => page.slug === currentPageSlug);
+  const previous = allDocsRoutes[currentPageIndex - 1];
+  const next = allDocsRoutes[currentPageIndex + 1];
 
   React.useEffect(() => {
     const handleRouteChange = () => setIsOpen(false);
@@ -134,7 +133,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
                       key={page.slug}
                       href={`/${page.slug}`}
                       disabled={isDraft}
-                      active={currentPath.substr(1).replace(`/${version}`, '') === page.slug}
+                      active={currentPageSlug === page.slug}
                     >
                       <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                         {page.title}

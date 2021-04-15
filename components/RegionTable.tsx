@@ -18,7 +18,6 @@ export function RegionTable({
         overflow: 'auto',
         '&:focus': {
           outline: 0,
-          boxShadow: '0 0 0 3px $colors$gray700',
         },
       }}
     >
