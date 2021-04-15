@@ -118,6 +118,7 @@ export default function Doc({ frontmatter, source }: Doc) {
         <ComponentInfo
           version={frontmatter.version}
           versions={frontmatter.versions || []}
+          name={frontmatter.name}
           aria={frontmatter.aria}
         />
       </Flex>
@@ -197,7 +198,7 @@ export async function getStaticProps(context) {
   };
 }
 
-const ComponentInfo = ({ version, versions, aria }) => {
+const ComponentInfo = ({ version, versions, name, aria }) => {
   const router = useRouter();
   const [componentName] = router.query.slug as string[];
 
@@ -228,7 +229,7 @@ const ComponentInfo = ({ version, versions, aria }) => {
       <Box css={{ mb: '$2' }}>
         <Link
           variant="blue"
-          href={`https://github.com/radix-ui/primitives/tree/main/packages/react/${componentName}/src`}
+          href={`https://github.com/radix-ui/primitives/tree/main/packages/react/${name}/src`}
           target="_blank"
         >
           <Flex css={{ display: 'inline-flex', position: 'relative' }}>
@@ -244,7 +245,7 @@ const ComponentInfo = ({ version, versions, aria }) => {
       <Box css={{ mb: '$2' }}>
         <Link
           variant="blue"
-          href={`https://www.npmjs.com/package/@radix-ui/react-${componentName}`}
+          href={`https://www.npmjs.com/package/@radix-ui/react-${name}`}
           target="_blank"
         >
           <Flex css={{ display: 'inline-flex', position: 'relative' }}>
