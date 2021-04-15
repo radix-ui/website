@@ -6,9 +6,11 @@ export const Pre = styled('pre', {
   $$outline: '0 0 0 1px $colors$slate500',
   $$syntax1: '$colors$blue900',
   $$syntax2: '$colors$cyan900',
-  $$syntax3: '$colors$slate800',
-  $$syntax4: '$colors$red900',
-  $$syntax5: '$colors$green900',
+  $$syntax3: '$colors$blue900',
+  $$syntax4: '$colors$blue900',
+  $$comment: '$colors$slate800',
+  $$removed: '$colors$red900',
+  $$added: '$colors$green900',
   $$lineNumbers: '$colors$indigo300',
   $$fadedLines: '$colors$slate800',
   $$highlightedWord1Bg: '$colors$violet200',
@@ -46,20 +48,20 @@ export const Pre = styled('pre', {
     color: '$$syntax1',
   },
 
-  '.token.attr-name, .token.keyword, .token.rule, .token.operator, .token.pseudo-class, .token.important': {
-    color: '$$syntax1',
-  },
-
   '.token.attr-value, .token.class, .token.string, .token.number, .token.unit, .token.color': {
     color: '$$syntax2',
   },
 
+  '.token.attr-name, .token.keyword, .token.rule, .token.operator, .token.pseudo-class, .token.important': {
+    color: '$$syntax3',
+  },
+
   '.token.punctuation, .token.module, .token.property': {
-    color: '$$syntax1',
+    color: '$$syntax4',
   },
 
   '.token.comment': {
-    color: '$$syntax3',
+    color: '$$comment',
   },
 
   '.token.atapply .token:not(.rule):not(.important)': {
@@ -81,11 +83,11 @@ export const Pre = styled('pre', {
   },
 
   '.token.deleted:not(.prefix)': {
-    color: '$$syntax4',
+    color: '$$removed',
   },
 
   '.token.inserted:not(.prefix)': {
-    color: '$$syntax5',
+    color: '$$added',
   },
 
   '.token.deleted.prefix, .token.inserted.prefix': {
@@ -169,16 +171,16 @@ export const Pre = styled('pre', {
       violet: {
         $$background: theme.colors.quartz1000.value,
         $$text: theme.colors.gray300.value,
-        $$syntax2: theme.colors.violet600.value,
-        $$fadedLines: theme.colors.slate900.value,
-        $$syntax1: theme.colors.cyan600.value,
-        $$syntax3: theme.colors.quartz700.value,
-
-
         $$outline: 'none',
-        $$syntax4: '$colors$red700',
-        $$syntax5: '$colors$green700',
+        $$syntax1: theme.colors.cyan600.value,
+        $$syntax2: theme.colors.violet600.value,
+        $$syntax3: theme.colors.cyan600.value,
+        $$syntax4: theme.colors.cyan600.value,
+        $$comment: theme.colors.quartz700.value,
+        $$removed: '$colors$red700',
+        $$added: '$colors$green700',
         $$lineNumbers: 'hsl(210 37% 35%)',
+        $$fadedLines: theme.colors.slate900.value,
         $$highlightedWord1Bg: '$colors$indigo1000',
         $$highlightedWord1BgActive: '$colors$indigo900',
         $$highlightedWord1Text: '$colors$indigo200',
@@ -192,15 +194,16 @@ export const Pre = styled('pre', {
       cyan: {
         $$background: theme.colors.slate1000.value,
         $$text: theme.colors.gray300.value,
-        $$syntax2: theme.colors.cyan600.value,
-        $$fadedLines: theme.colors.slate900.value,
-        $$syntax1: theme.colors.yellow500.value,
-        $$syntax3: theme.colors.slate800.value,
-
         $$outline: 'none',
-        $$syntax4: '$colors$red700',
-        $$syntax5: '$colors$green700',
+        $$syntax1: theme.colors.yellow500.value,
+        $$syntax2: theme.colors.cyan600.value,
+        $$syntax3: theme.colors.yellow500.value,
+        $$syntax4: theme.colors.yellow500.value,
+        $$comment: theme.colors.slate800.value,
+        $$removed: '$colors$red700',
+        $$added: '$colors$green700',
         $$lineNumbers: 'hsl(210 37% 35%)',
+        $$fadedLines: theme.colors.slate900.value,
         $$highlightedWord1Bg: '$colors$indigo1000',
         $$highlightedWord1BgActive: '$colors$indigo900',
         $$highlightedWord1Text: '$colors$indigo200',
@@ -214,15 +217,16 @@ export const Pre = styled('pre', {
       yellow: {
         $$background: 'hsl(50 10% 5%)',
         $$text: theme.colors.gray300.value,
-        $$syntax2: theme.colors.yellow500.value,
-        $$fadedLines: theme.colors.sand900.value,
-        $$syntax1: theme.colors.red700.value,
-        $$syntax3: theme.colors.sand700.value,
-
         $$outline: 'none',
-        $$syntax4: '$colors$red700',
-        $$syntax5: '$colors$green700',
+        $$syntax1: theme.colors.red700.value,
+        $$syntax2: theme.colors.yellow500.value,
+        $$syntax3: theme.colors.red700.value,
+        $$syntax4: theme.colors.red700.value,
+        $$comment: theme.colors.sand700.value,
+        $$removed: '$colors$red700',
+        $$added: '$colors$green700',
         $$lineNumbers: theme.colors.yellow800.value,
+        $$fadedLines: theme.colors.sand900.value,
         $$highlightedWord1Bg: '$colors$indigo1000',
         $$highlightedWord1BgActive: '$colors$indigo900',
         $$highlightedWord1Text: '$colors$indigo200',
@@ -236,15 +240,16 @@ export const Pre = styled('pre', {
       blue: {
         $$background: theme.colors.slate1000.value,
         $$text: theme.colors.gray300.value,
-        $$syntax2: theme.colors.pink600.value,
-        $$fadedLines: theme.colors.slate900.value,
-        $$syntax1: theme.colors.blue600.value,
-        $$syntax3: theme.colors.slate700.value,
-        
         $$outline: 'none',
-        $$syntax4: '$colors$red700',
-        $$syntax5: '$colors$green700',
+        $$syntax1: theme.colors.blue600.value,
+        $$syntax2: theme.colors.pink600.value,
+        $$syntax3: theme.colors.blue600.value,
+        $$syntax4: theme.colors.blue600.value,
+        $$comment: theme.colors.slate700.value,
+        $$removed: '$colors$red700',
+        $$added: '$colors$green700',
         $$lineNumbers: 'hsl(210 37% 35%)',
+        $$fadedLines: theme.colors.slate900.value,
         $$highlightedWord1Bg: '$colors$indigo1000',
         $$highlightedWord1BgActive: '$colors$indigo900',
         $$highlightedWord1Text: '$colors$indigo200',
