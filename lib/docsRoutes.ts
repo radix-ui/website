@@ -20,7 +20,7 @@ export const docsRoutes = [
       { title: 'Avatar', slug: 'primitives/docs/components/avatar' },
       { title: 'Carousel', slug: 'primitives/docs/components/carousel', draft: true },
       { title: 'Checkbox', slug: 'primitives/docs/components/checkbox' },
-      { title: 'Collpasible', slug: 'primitives/docs/components/collpasible' },
+      { title: 'Collapsible', slug: 'primitives/docs/components/collapsible' },
       { title: 'Context Menu', slug: 'primitives/docs/components/context-menu' },
       { title: 'Dialog', slug: 'primitives/docs/components/dialog' },
       { title: 'Dropdown Menu', slug: 'primitives/docs/components/dropdown-menu' },
