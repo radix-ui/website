@@ -105,7 +105,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
               Alpha
             </Badge>
             <ThemeToggle css={{ ml: 'auto' }} />
-            <Box css={{ ml: 'auto', mr: '$6', '@bp2': { display: 'none' } }}>
+            <Box css={{ ml: '$2', '@bp2': { display: 'none' } }}>
               <IconButton
                 variant="ghost"
                 onClick={() => setIsOpen(!isOpen)}

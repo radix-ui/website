@@ -119,7 +119,6 @@ export default function Doc({ frontmatter, source }: Doc) {
         <ComponentInfo
           version={frontmatter.version}
           versions={frontmatter.versions || []}
-          name={frontmatter.name}
           aria={frontmatter.aria}
         />
       </Flex>
@@ -199,8 +198,9 @@ export async function getStaticProps(context) {
   };
 }
 
-const ComponentInfo = ({ version, versions, name, aria }) => {
+const ComponentInfo = ({ version, versions, aria }) => {
   const router = useRouter();
+  const [componentName] = router.query.slug as string[];
 
   return (
     <Box css={{ width: 'fit-content' }} as="nav" aria-labelledby="site-component-info-heading">
@@ -210,7 +210,10 @@ const ComponentInfo = ({ version, versions, name, aria }) => {
       <Separator size="2" css={{ mb: '$4', display: 'block', '@bp1': { display: 'none' } }} />
       <Flex css={{ mb: '$4', alignItems: 'baseline' }}>
         <Box css={{ mx: -5 }}>
-          <Select value={version} onChange={(e) => router.push(`./${name}/${e.target.value}`)}>
+          <Select
+            value={version}
+            onChange={(e) => router.push(`./${componentName}/${e.target.value}`)}
+          >
             {versions.map((v, i) => {
               return (
                 <option key={v} value={v}>
@@ -226,7 +229,7 @@ const ComponentInfo = ({ version, versions, name, aria }) => {
       <Box css={{ mb: '$2' }}>
         <Link
           variant="blue"
-          href={`https://github.com/radix-ui/primitives/tree/main/packages/react/${name}/src`}
+          href={`https://github.com/radix-ui/primitives/tree/main/packages/react/${componentName}/src`}
           target="_blank"
         >
           <Flex css={{ display: 'inline-flex', position: 'relative' }}>
@@ -242,7 +245,7 @@ const ComponentInfo = ({ version, versions, name, aria }) => {
       <Box css={{ mb: '$2' }}>
         <Link
           variant="blue"
-          href={`https://www.npmjs.com/package/@radix-ui/react-${name}`}
+          href={`https://www.npmjs.com/package/@radix-ui/react-${componentName}`}
           target="_blank"
         >
           <Flex css={{ display: 'inline-flex', position: 'relative' }}>
