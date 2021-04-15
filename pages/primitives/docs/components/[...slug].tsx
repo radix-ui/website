@@ -2,17 +2,9 @@ import React from 'react';
 import NextLink from 'next/link';
 import renderToString from 'next-mdx-remote/render-to-string';
 import hydrate from 'next-mdx-remote/hydrate';
-import {
-  Text,
-  Box,
-  Flex,
-  Heading,
-  Separator,
-  Link,
-  DesignSystemProvider,
-} from '@modulz/design-system';
+import { Text, Box, Flex, Heading, Separator, Link } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { components } from '@components/MDXComponents';
+import { provider, components } from '@components/MDXComponents';
 import { getAllFrontmatter, getAllVersionsFromPath, getDocBySlug } from '@lib/mdx';
 import rehypeHighlightCode from '@lib/rehype-highlight-code';
 import remarkAutolinkHeadings from 'remark-autolink-headings';
@@ -25,23 +17,8 @@ import { useRouter } from 'next/router';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { CheckIcon } from '@radix-ui/react-icons';
 import { ExternalIcon } from '@components/ExternalIcon';
-import { RadioGroupDemo } from '@components/demos/RadioGroup';
 import type { PrimitivesFrontmatter } from 'types/primitives';
 import type { MdxRemote } from 'next-mdx-remote/types';
-import { IdProvider } from '@radix-ui/react-id';
-
-function Provider({ children }) {
-  return (
-    <IdProvider>
-      <DesignSystemProvider>{children}</DesignSystemProvider>
-    </IdProvider>
-  );
-}
-
-const provider = {
-  component: Provider,
-  props: {},
-};
 
 type Doc = {
   frontmatter: PrimitivesFrontmatter;

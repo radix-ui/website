@@ -2,6 +2,7 @@ import * as React from 'react';
 import NextLink from 'next/link';
 import * as DS from '@modulz/design-system';
 import { ChevronDownIcon, Link2Icon } from '@radix-ui/react-icons';
+import { IdProvider } from '@radix-ui/react-id';
 import { PropsTable } from './PropsTable';
 import { KeyboardTable } from './KeyboardTable';
 import { HeroSlot } from './HeroSlot';
@@ -312,4 +313,19 @@ export const components = {
   ...toggleGroupDemos,
   ...toolbarDemos,
   ...tooltipDemos,
+};
+
+// Custom provider for next-mdx-remote
+// https://github.com/hashicorp/next-mdx-remote#using-providers
+function Provider({ children }) {
+  return (
+    <IdProvider>
+      <DS.DesignSystemProvider>{children}</DS.DesignSystemProvider>
+    </IdProvider>
+  );
+}
+
+export const provider = {
+  component: Provider,
+  props: {},
 };

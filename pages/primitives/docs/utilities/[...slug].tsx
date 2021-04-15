@@ -4,7 +4,7 @@ import renderToString from 'next-mdx-remote/render-to-string';
 import hydrate from 'next-mdx-remote/hydrate';
 import { Text, Box, Flex, Heading, Separator, Link } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { components } from '@components/MDXComponents';
+import { provider, components } from '@components/MDXComponents';
 import { getAllFrontmatter, getAllVersionsFromPath, getDocBySlug } from '@lib/mdx';
 import rehypeHighlightCode from '@lib/rehype-highlight-code';
 import remarkAutolinkHeadings from 'remark-autolink-headings';
@@ -27,7 +27,7 @@ type Doc = {
 };
 
 export default function Doc({ frontmatter, source }: Doc) {
-  const content = hydrate(source, { components });
+  const content = hydrate(source, { components, provider });
   const heroSlotRef = React.useRef<HTMLDivElement>(null);
 
   return (
@@ -178,6 +178,7 @@ export async function getStaticProps(context) {
 
   const mdxContent = await renderToString(content, {
     components,
+    provider,
     mdxOptions: {
       remarkPlugins: [remarkAutolinkHeadings, remarkSlug],
       rehypePlugins: [rehypeHighlightCode],
