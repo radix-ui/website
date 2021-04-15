@@ -26,7 +26,7 @@ type Doc = {
   source: MdxRemote.Source;
 };
 
-export default function Doc({ frontmatter, source }: Doc) {
+export default function UtilitiesDoc({ frontmatter, source }: Doc) {
   const content = hydrate(source, { components, provider });
   const heroSlotRef = React.useRef<HTMLDivElement>(null);
 

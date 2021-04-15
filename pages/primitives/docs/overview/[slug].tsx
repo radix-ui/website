@@ -19,7 +19,7 @@ type Doc = {
   source: MdxRemote.Source;
 };
 
-export default function Doc({ frontmatter, source }: Doc) {
+export default function OverviewDoc({ frontmatter, source }: Doc) {
   const content = hydrate(source, { components, provider });
 
   return (
