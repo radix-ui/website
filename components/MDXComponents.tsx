@@ -9,6 +9,7 @@ import { Pre } from './Pre';
 import { Preview } from './Preview';
 import { PackageRelease, PRLink } from './releaseHelpers';
 import * as gettingStartedDemos from './demos/GettingStarted';
+import * as accessibleIconDemos from './demos/AccessibleIcon';
 import * as accordionDemos from './demos/Accordion';
 import * as alertDialogDemos from './demos/AlertDialog';
 import * as avatarDemos from './demos/Avatar';
@@ -286,6 +287,7 @@ export const components = {
   HeroSlot,
   PackageRelease,
   PRLink,
+  ...accessibleIconDemos,
   ...gettingStartedDemos,
   ...accordionDemos,
   ...alertDialogDemos,
