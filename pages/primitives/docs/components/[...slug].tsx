@@ -37,8 +37,6 @@ export default function Doc({ frontmatter, source }: Doc) {
         poster={frontmatter.poster}
       />
 
-      {/* <RadioGroupDemo /> */}
-
       <Text as="h1" size="8" css={{ fontWeight: 500, mb: '$2', lineHeight: '40px' }}>
         {frontmatter.title}
       </Text>
