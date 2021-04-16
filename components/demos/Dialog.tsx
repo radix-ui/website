@@ -147,7 +147,7 @@ export const DialogHero = () => {
                 boxShadow: '0 0 0 3px black',
                 opacity: '0',
                 transform: 'scale(.5)',
-                animation: ` 8000ms infinite`,
+                animation: `${click} 8000ms infinite`,
                 animationDelay: `1000ms`,
                 animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
               }}
@@ -167,7 +167,7 @@ export const DialogHero = () => {
               'hsla(252, 4%, 9%, 0.35) 0px 10px 38px -10px, hsla(252, 4%, 9%, 0.2) 0px 10px 20px -15px',
             transform: 'scale(.9) translate(-50%, -50%)',
             opacity: '0',
-            animation: ` 8000ms infinite`,
+            animation: `${dialog} 8000ms infinite`,
             animationDelay: `1000ms`,
             animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
             transformOrigin: 'left',

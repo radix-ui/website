@@ -105,7 +105,7 @@ export const RadioGroupHero = () => {
             <Box
               css={{
                 opacity: '0',
-                animation: ` 5000ms infinite`,
+                animation: `${check1} 5000ms infinite`,
                 animationDirection: 'alternate',
               }}
             >
@@ -123,7 +123,7 @@ export const RadioGroupHero = () => {
                 position: 'absolute',
                 bottom: -15,
                 right: -10,
-                animation: ` 5000ms infinite`,
+                animation: `${cursor} 5000ms infinite`,
                 animationDirection: 'alternate',
                 zIndex: '1',
               }}
@@ -195,7 +195,7 @@ export const RadioGroupHero = () => {
                   boxShadow: '0 0 0 3px black',
                   opacity: '0',
                   transform: 'scale(.5)',
-                  animation: ` 5000ms infinite`,
+                  animation: `${click} 5000ms infinite`,
                   animationDirection: 'alternate',
                   animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
                 }}
@@ -235,7 +235,7 @@ export const RadioGroupHero = () => {
             <Box
               css={{
                 opacity: '0',
-                animation: ` 5000ms infinite`,
+                animation: `${check2} 5000ms infinite`,
                 animationDirection: 'alternate',
               }}
             >

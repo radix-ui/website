@@ -123,7 +123,7 @@ export const ScrollAreaHero = () => {
         >
           <Box
             css={{
-              animation: ` 8000ms infinite`,
+              animation: `${scrollarea} 8000ms infinite`,
             }}
           >
             <Box
@@ -287,7 +287,7 @@ export const ScrollAreaHero = () => {
             top: 5,
             right: 5,
             borderRadius: '9999px',
-            animation: ` 8000ms infinite`,
+            animation: `${scrollbar} 8000ms infinite`,
           }}
         ></Box>
         <Box
@@ -296,7 +296,7 @@ export const ScrollAreaHero = () => {
             top: 25,
             right: -13,
             transform: 'translate(30px, 30px)',
-            animation: ` 8000ms infinite`,
+            animation: `${cursor} 8000ms infinite`,
             //   animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
             zIndex: '1',
           }}

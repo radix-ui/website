@@ -97,7 +97,7 @@ export const SliderHero = () => {
             width: 140,
             transform: 'ScaleX(.5)',
             transformOrigin: 'left',
-            animation: ` 5000ms infinite`,
+            animation: `${scale} 5000ms infinite`,
             animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
             animationDelay: '1000ms',
           }}
@@ -112,7 +112,7 @@ export const SliderHero = () => {
             marginTop: -7,
             marginLeft: -8,
             transform: 'translateX(70px)',
-            animation: ` 5000ms infinite`,
+            animation: `${anim} 5000ms infinite`,
             animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
             animationDelay: '1000ms',
           }}

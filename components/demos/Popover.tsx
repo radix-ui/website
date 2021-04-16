@@ -67,7 +67,7 @@ export const PopoverHero = () => {
             top: 18,
             right: 0,
             transform: 'translate(30px, 30px)',
-            animation: ` 6000ms infinite`,
+            animation: `${cursor} 6000ms infinite`,
             animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
             zIndex: '1',
           }}
@@ -131,7 +131,7 @@ export const PopoverHero = () => {
               boxShadow: '0 0 0 3px black',
               opacity: '0',
               transform: 'scale(.5)',
-              animation: ` 6000ms infinite`,
+              animation: `${click} 6000ms infinite`,
               animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
             }}
           ></Box>
@@ -160,7 +160,7 @@ export const PopoverHero = () => {
               bottom: 30,
               left: '50%',
               ml: -100,
-              animation: ` 6000ms infinite`,
+              animation: `${popover} 6000ms infinite`,
               animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
               boxShadow:
                 'hsla(252, 4%, 9%, 0.35) 0px 10px 38px -10px, hsla(252, 4%, 9%, 0.2) 0px 10px 20px -15px',

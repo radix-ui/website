@@ -64,7 +64,7 @@ export const TooltipHero = () => {
             top: 18,
             right: 0,
             transform: 'translate(30px, 30px)',
-            animation: ` 6000ms infinite`,
+            animation: `${cursor} 6000ms infinite`,
             animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
             zIndex: '1',
           }}
@@ -144,7 +144,7 @@ export const TooltipHero = () => {
               width: 120,
               top: -25,
               left: -30,
-              animation: ` 6000ms infinite`,
+              animation: `${tooltip} 6000ms infinite`,
               animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
             }}
           >

@@ -132,7 +132,7 @@ export const TabsHero = () => {
             top: 18,
             right: 88,
             transform: 'translate(30px, 30px)',
-            animation: ` 6000ms infinite`,
+            animation: `${cursor} 6000ms infinite`,
             animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
             zIndex: '1',
           }}
@@ -196,7 +196,7 @@ export const TabsHero = () => {
               boxShadow: '0 0 0 3px black',
               opacity: '0',
               transform: 'scale(.5)',
-              animation: ` 6000ms infinite`,
+              animation: `${click} 6000ms infinite`,
               animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
             }}
           ></Box>
@@ -212,7 +212,7 @@ export const TabsHero = () => {
               borderRadius: '5px 5px 0 0 5px',
               width: 50,
               mr: 2,
-              animation: ` 6000ms infinite`,
+              animation: `${tab1} 6000ms infinite`,
             }}
           >
             <Box css={{ backgroundColor: 'hsl(206,10%,70%)', height: 4, width: '100%' }}></Box>
@@ -228,7 +228,7 @@ export const TabsHero = () => {
               borderRadius: '5px 5px 0 0 5px',
               width: 50,
               opacity: '.75',
-              animation: ` 6000ms infinite`,
+              animation: `${tab2} 6000ms infinite`,
             }}
           >
             <Box css={{ backgroundColor: 'hsl(206,10%,70%)', height: 4, width: '100%' }}></Box>
@@ -253,7 +253,7 @@ export const TabsHero = () => {
           <Box css={{ backgroundColor: 'hsl(206,10%,70%)', height: 4, width: '50%', mb: 12 }}></Box>
           <Box
             css={{
-              animation: ` 6000ms infinite`,
+              animation: `${text} 6000ms infinite`,
               backgroundColor: 'hsl(206,10%,70%)',
               height: 4,
               width: '75%',
@@ -262,7 +262,7 @@ export const TabsHero = () => {
           ></Box>
           <Box
             css={{
-              animation: ` 6000ms infinite`,
+              animation: `${text} 6000ms infinite`,
               backgroundColor: 'hsl(206,10%,70%)',
               height: 4,
               width: '50%',

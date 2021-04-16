@@ -62,7 +62,7 @@ export const ProgressHero = () => {
             width: '100%',
             transform: 'ScaleX(0)',
             transformOrigin: 'left',
-            animation: ` 9s infinite`,
+            animation: `${scale} 9s infinite`,
             animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
           }}
         ></Box>

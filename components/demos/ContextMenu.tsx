@@ -312,7 +312,7 @@ export const ContextMenuHero = () => {
             display: 'flex',
             alignItems: 'center',
             px: '$3',
-            animation: ` 5000ms infinite`,
+            animation: `${menuitem} 5000ms infinite`,
             animationDelay: '1000ms',
           }}
         ></Box>

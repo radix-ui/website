@@ -73,7 +73,7 @@ export const ToggleHero = () => {
             top: 18,
             right: 0,
             transform: 'translate(30px, 30px)',
-            animation: ` 6000ms infinite`,
+            animation: `${cursor} 6000ms infinite`,
             animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
             zIndex: '1',
           }}
@@ -137,7 +137,7 @@ export const ToggleHero = () => {
               boxShadow: '0 0 0 3px black',
               opacity: '0',
               transform: 'scale(.5)',
-              animation: ` 6000ms infinite`,
+              animation: `${click} 6000ms infinite`,
               animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
             }}
           ></Box>
@@ -153,7 +153,7 @@ export const ToggleHero = () => {
               borderRadius: '5px',
               width: 50,
               mr: 2,
-              animation: ` 6000ms infinite`,
+              animation: `${tab1} 6000ms infinite`,
             }}
           >
             <Box css={{ backgroundColor: 'hsl(206,10%,70%)', height: 4, width: '100%' }}></Box>

@@ -57,7 +57,7 @@ export const CollapsibleHero = () => {
             top: 5,
             right: -10,
             transform: 'translate(30px, 30px)',
-            animation: ` 6000ms infinite`,
+            animation: `${cursor} 6000ms infinite`,
             animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
             zIndex: '1',
           }}
@@ -121,7 +121,7 @@ export const CollapsibleHero = () => {
               boxShadow: '0 0 0 3px black',
               opacity: '0',
               transform: 'scale(.5)',
-              animation: ` 6000ms infinite`,
+              animation: `${click} 6000ms infinite`,
               animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
             }}
           ></Box>
@@ -139,7 +139,7 @@ export const CollapsibleHero = () => {
         >
           <Box
             css={{
-              animation: ` 6000ms infinite`,
+              animation: `${tab1} 6000ms infinite`,
               position: 'absolute',
               bottom: -30,
               left: 0,
