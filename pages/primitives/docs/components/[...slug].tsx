@@ -1,16 +1,17 @@
 import React from 'react';
-import NextLink from 'next/link';
 import renderToString from 'next-mdx-remote/render-to-string';
 import hydrate from 'next-mdx-remote/hydrate';
 import { Box, Link } from '@modulz/design-system';
-import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { components, FrontmatterContext, createProvider } from '@components/MDXComponents';
-import { getAllFrontmatter, getAllVersionsFromPath, getDocBySlug } from '@lib/mdx';
-import rehypeHighlightCode from '@lib/rehype-highlight-code';
 import remarkAutolinkHeadings from 'remark-autolink-headings';
 import remarkSlug from 'remark-slug';
 import { RemoveScroll } from 'react-remove-scroll';
+import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
+import { components, createProvider } from '@components/MDXComponents';
 import { QuickNav } from '@components/QuickNav';
+import { OldVersionNote } from '@components/OldVersionNote';
+import { getAllFrontmatter, getAllVersionsFromPath, getDocBySlug } from '@lib/mdx';
+import rehypeHighlightCode from '@lib/rehype-highlight-code';
+
 import type { PrimitivesFrontmatter } from 'types/primitives';
 import type { MdxRemote } from 'next-mdx-remote/types';
 
@@ -31,41 +32,10 @@ export default function ComponentsDoc({ frontmatter, source }: Doc) {
       />
 
       {frontmatter.version !== frontmatter.versions?.[0] && (
-        <Box
-          as="aside"
-          css={{
-            my: '$6',
-            py: '$2',
-            px: '$3',
-            bc: '$yellow100',
-            border: '1px solid $yellow400',
-            borderRadius: '$2',
-            '& p': {
-              fontSize: '$3',
-              color: '$yellow900',
-              lineHeight: '21px',
-              margin: 0,
-            },
-          }}
-        >
-          <p>
-            A newer version of{' '}
-            <Box as="span" css={{ fontWeight: 500 }}>
-              {frontmatter.metaTitle}
-            </Box>{' '}
-            is available.{' '}
-            <NextLink
-              href={`/primitives/docs/components/${frontmatter.slug.replace(
-                frontmatter.version,
-                ''
-              )}`}
-              passHref
-            >
-              <Link variant="blue">Learn more</Link>
-            </NextLink>
-            .
-          </p>
-        </Box>
+        <OldVersionNote
+          name={frontmatter.metaTitle}
+          href={`/primitives/docs/components/${frontmatter.slug.replace(frontmatter.version, '')}`}
+        />
       )}
 
       {content}

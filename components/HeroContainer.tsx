@@ -8,24 +8,20 @@ export function HeroContainer({ children }) {
       // from the a11y tree since this is a presentational component.
       role="presentation"
       css={{
-        marginBottom: 45,
-        marginLeft: -25,
-        marginRight: -25,
-        bp4: {
-          marginLeft: -65,
-          marginRight: -65,
-        },
+        mb: '$7',
+        mx: '-$5',
+        '@bp2': { mx: 0 },
+        '@bp4': { mx: '-$8' },
       }}
     >
       <Box
         css={{
           height: 0,
           overflow: 'hidden',
-          // paddingTop: 'calc(591.44px / 1127.34px * 100%)',
           paddingTop: '40%',
           position: 'relative',
-
           background: 'linear-gradient(330deg, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%)',
+          '@bp2': { borderRadius: '$3' },
         }}
       >
         <Box
