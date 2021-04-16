@@ -34,47 +34,19 @@ import * as toggleGroupDemos from './demos/ToggleGroup';
 import * as toolbarDemos from './demos/Toolbar';
 import * as tooltipDemos from './demos/Tooltip';
 
-const LinkHeading = ({
-  id,
-  children,
-  css,
-}: {
-  id: string;
-  children: React.ReactNode;
-  css?: any;
-}) => (
-  <DS.Box css={{ ...css }}>
-    <DS.Box
-      as="a"
-      href={`#${id}`}
-      // used by `scrollToUrlHash`
-      // not using the `id` attribute for that because we may get ids that start with a number
-      // and that is not a valid css selector
-      data-id={id}
-      css={{
-        textDecoration: 'none',
-        color: 'inherit',
-        display: 'inline-flex',
-        alignItems: 'center',
-        svg: {
-          opacity: 0,
-        },
-        '&:hover svg': {
-          opacity: 1,
-        },
-      }}
-    >
-      {children}
-      <DS.Box as="span" css={{ ml: '$2', color: '$slate500' }}>
-        <Link2Icon aria-hidden />
-      </DS.Box>
-    </DS.Box>
-  </DS.Box>
-);
-
 export const components = {
   ...DS,
-  h1: (props) => <DS.Text size="6" {...props} css={{ mb: '$8', fontWeight: 500 }} as="h1" />,
+  h1: (props) => (
+    <DS.Text {...props} as="h1" size="8" css={{ fontWeight: 500, mb: '$2', lineHeight: '40px' }} />
+  ),
+  Description: (props) => (
+    <DS.Text
+      {...props}
+      as="p"
+      size="6"
+      css={{ mt: '$2', mb: '$4', color: '$slate900', lineHeight: '30px' }}
+    />
+  ),
   h2: ({ children, id, ...props }) => (
     <LinkHeading id={id} css={{ mt: '$7', mb: '$5' }}>
       <DS.Heading
@@ -170,14 +142,16 @@ export const components = {
       </Pre>
     );
   },
-  p: (props) => (
-    <DS.Text
-      size="4"
-      {...props}
-      css={{ mb: '$3', lineHeight: '27px', letterSpacing: 0, ...props.css }}
-      as="p"
-    />
-  ),
+  p: (props) => {
+    return (
+      <DS.Text
+        size="4"
+        {...props}
+        css={{ mb: '$3', lineHeight: '27px', letterSpacing: 0 }}
+        as="p"
+      />
+    );
+  },
   a: ({ href = '', ...props }) => {
     if (href.startsWith('http')) {
       return (
@@ -185,10 +159,7 @@ export const components = {
           variant="blue"
           href={href}
           {...props}
-          css={{
-            fontSize: 'inherit',
-            ...props.css,
-          }}
+          css={{ fontSize: 'inherit' }}
           target="_blank"
           rel="noopener"
         />
@@ -196,35 +167,21 @@ export const components = {
     }
     return (
       <NextLink href={href} passHref>
-        <DS.Link
-          {...props}
-          css={{
-            color: 'inherit',
-            fontSize: 'inherit',
-            ...props.css,
-          }}
-        />
+        <DS.Link {...props} css={{ color: 'inherit', fontSize: 'inherit' }} />
       </NextLink>
     );
   },
-  hr: (props) => <DS.Separator size="2" {...props} css={{ my: '$6', mx: 'auto', ...props.css }} />,
+  hr: (props) => <DS.Separator size="2" {...props} css={{ my: '$6', mx: 'auto' }} />,
   inlineCode: (props) => <DS.Code {...props} />,
-  ul: (props) => (
-    <DS.Box {...props} css={{ color: '$hiContrast', mb: '$3', ...props.css }} as="ul" />
-  ),
-  ol: (props) => (
-    <DS.Box {...props} css={{ color: '$hiContrast', mb: '$3', ...props.css }} as="ol" />
-  ),
+  ul: (props) => <DS.Box {...props} css={{ color: '$hiContrast', mb: '$3' }} as="ul" />,
+  ol: (props) => <DS.Box {...props} css={{ color: '$hiContrast', mb: '$3' }} as="ol" />,
   li: (props) => (
     <li>
-      <DS.Text size="4" {...props} css={{ lineHeight: '30px', letterSpacing: 0, ...props.css }} />
+      <DS.Text size="4" {...props} css={{ lineHeight: '30px', letterSpacing: 0 }} />
     </li>
   ),
   strong: (props) => (
-    <DS.Text
-      {...props}
-      css={{ ...props.css, display: 'inline', fontSize: 'inherit', fontWeight: 500 }}
-    />
+    <DS.Text {...props} css={{ display: 'inline', fontSize: 'inherit', fontWeight: 500 }} />
   ),
   img: ({ ...props }) => (
     <DS.Box css={{ my: '$6' }}>
@@ -314,6 +271,44 @@ export const components = {
   ...toolbarDemos,
   ...tooltipDemos,
 };
+
+const LinkHeading = ({
+  id,
+  children,
+  css,
+}: {
+  id: string;
+  children: React.ReactNode;
+  css?: any;
+}) => (
+  <DS.Box css={{ ...css }}>
+    <DS.Box
+      as="a"
+      href={`#${id}`}
+      // used by `scrollToUrlHash`
+      // not using the `id` attribute for that because we may get ids that start with a number
+      // and that is not a valid css selector
+      data-id={id}
+      css={{
+        textDecoration: 'none',
+        color: 'inherit',
+        display: 'inline-flex',
+        alignItems: 'center',
+        svg: {
+          opacity: 0,
+        },
+        '&:hover svg': {
+          opacity: 1,
+        },
+      }}
+    >
+      {children}
+      <DS.Box as="span" css={{ ml: '$2', color: '$slate500' }}>
+        <Link2Icon aria-hidden />
+      </DS.Box>
+    </DS.Box>
+  </DS.Box>
+);
 
 // Custom provider for next-mdx-remote
 // https://github.com/hashicorp/next-mdx-remote#using-providers

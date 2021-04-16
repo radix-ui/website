@@ -25,25 +25,12 @@ export default function OverviewDoc({ frontmatter, source }: Doc) {
   return (
     <>
       <TitleAndMetaTags
-        title={`${frontmatter.title} — Radix UI`}
-        description={frontmatter.description}
-        poster={frontmatter.poster}
+        title={`${frontmatter.metaTitle} — Radix UI`}
+        description={frontmatter.metaDescription}
+        image={frontmatter.metaImage}
       />
 
-      <Text as="h1" size="8" css={{ fontWeight: 500, mb: '$2', lineHeight: '40px' }}>
-        {frontmatter.title}
-      </Text>
-
-      <Text
-        role="doc-subtitle"
-        as="p"
-        size="6"
-        css={{ mt: '$2', mb: '$4', color: '$slate900', lineHeight: '30px' }}
-      >
-        {frontmatter.description}
-      </Text>
-
-      <Box>{content}</Box>
+      {content}
 
       <Box
         as="aside"
