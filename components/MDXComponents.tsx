@@ -60,21 +60,17 @@ export const components = {
   ),
   h3: ({ children, id, ...props }) => (
     <LinkHeading id={id} css={{ mt: '$7', mb: '$1' }}>
-      <DS.Heading
+      <DS.Subheading
         {...props}
         id={id}
-        size="7"
         css={{
-          fontSize: '19px',
-          lineHeight: '23px',
-          fontWeight: 500,
           scrollMarginTop: '$6',
         }}
         as={'h3' as any}
         data-heading
       >
         {children}
-      </DS.Heading>
+      </DS.Subheading>
     </LinkHeading>
   ),
   h4: (props) => (
