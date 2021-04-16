@@ -200,7 +200,7 @@ export const components = {
         px: '$3',
         bc: '$blue100',
         border: '1px solid $blue500',
-        borderRadius: '$2',
+        borderRadius: '$3',
         '& p': {
           fontSize: '$3',
           color: '$slate900',
