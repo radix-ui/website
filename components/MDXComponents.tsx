@@ -42,7 +42,7 @@ export const components = {
   ),
   Description: (props) => <DS.Subtitle {...props} as="p" css={{ mt: '$2', mb: '$7' }} />,
   h2: ({ children, id, ...props }) => (
-    <LinkHeading id={id} css={{ mt: '$7', mb: '$5' }}>
+    <LinkHeading id={id} css={{ mt: '$7', mb: '$2' }}>
       <DS.Heading
         {...props}
         id={id}
