@@ -1,6 +1,7 @@
 import React from 'react';
 import { styled, Box, keyframes } from '@modulz/design-system';
 import * as Slider from '@radix-ui/react-slider';
+import { HeroContainer } from '@components/HeroContainer';
 
 const StyledSlider = styled(Slider.Root, {
   position: 'relative',
@@ -74,47 +75,49 @@ const scale = keyframes({
 
 export const SliderHero = () => {
   return (
-    <Box
-      css={{
-        position: 'relative',
-        height: '2px',
-        backgroundColor: 'hsla(0,0%,0%,.35)',
-        borderRadius: '9999px',
-        flexShrink: 0,
-        width: 140,
-        display: 'flex',
-      }}
-    >
+    <HeroContainer>
       <Box
         css={{
-          position: 'absolute',
+          position: 'relative',
           height: '2px',
-          backgroundColor: 'white',
+          backgroundColor: 'hsla(0,0%,0%,.35)',
           borderRadius: '9999px',
           flexShrink: 0,
           width: 140,
-          transform: 'ScaleX(.5)',
-          transformOrigin: 'left',
-          animation: `${scale} 5000ms infinite`,
-          animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
-          animationDelay: '1000ms',
+          display: 'flex',
         }}
-      ></Box>
-      <Box
-        css={{
-          backgroundColor: 'white',
-          borderRadius: '50%',
-          flexShrink: 0,
-          width: 16,
-          height: 16,
-          marginTop: -7,
-          marginLeft: -8,
-          transform: 'translateX(70px)',
-          animation: `${anim} 5000ms infinite`,
-          animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
-          animationDelay: '1000ms',
-        }}
-      ></Box>
-    </Box>
+      >
+        <Box
+          css={{
+            position: 'absolute',
+            height: '2px',
+            backgroundColor: 'white',
+            borderRadius: '9999px',
+            flexShrink: 0,
+            width: 140,
+            transform: 'ScaleX(.5)',
+            transformOrigin: 'left',
+            animation: ` 5000ms infinite`,
+            animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+            animationDelay: '1000ms',
+          }}
+        ></Box>
+        <Box
+          css={{
+            backgroundColor: 'white',
+            borderRadius: '50%',
+            flexShrink: 0,
+            width: 16,
+            height: 16,
+            marginTop: -7,
+            marginLeft: -8,
+            transform: 'translateX(70px)',
+            animation: ` 5000ms infinite`,
+            animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+            animationDelay: '1000ms',
+          }}
+        ></Box>
+      </Box>
+    </HeroContainer>
   );
 };

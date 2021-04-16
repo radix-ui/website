@@ -2,6 +2,7 @@ import React from 'react';
 import { styled, Box, keyframes } from '@modulz/design-system';
 import { CheckIcon } from '@radix-ui/react-icons';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import { HeroContainer } from '@components/HeroContainer';
 
 const StyledContent = styled(DropdownMenu.Content, {
   minWidth: 130,
@@ -199,104 +200,105 @@ const menuitem = keyframes({
 
 export const DropdownMenuHero = () => {
   return (
-    <Box>
-      <Box
-        css={{
-          backgroundColor: 'white',
-          borderRadius: '5px',
-          height: 20,
-          width: 60,
-          px: '$2',
-          mb: 2,
-          display: 'inline-flex',
-          alignItems: 'center',
-        }}
-      ></Box>
-
-      <Box
-        css={{
-          position: 'relative',
-          backgroundColor: 'white',
-          borderRadius: '5px',
-          width: 120,
-          py: '$1',
-          boxShadow:
-            'hsla(252, 4%, 9%, 0.35) 0px 10px 38px -10px, hsla(252, 4%, 9%, 0.2) 0px 10px 20px -15px',
-        }}
-      >
+    <HeroContainer>
+      <Box>
         <Box
           css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'hsl(206,10%,70%)',
-            height: 4,
-            width: '25%',
-            mt: 8,
-            mb: 16,
-            mx: '$4',
-          }}
-        ></Box>
-        <Box
-          css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'hsl(206,10%,70%)',
-            height: 4,
-            width: '50%',
-            mb: 16,
-            mx: '$4',
-          }}
-        ></Box>
-        <Box
-          css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'hsl(206,10%,70%)',
-            height: 4,
-            width: '25%',
-            mb: 16,
-            mx: '$4',
-          }}
-        ></Box>
-        <Box
-          css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'hsl(206,10%,70%)',
-            height: 4,
-            width: '50%',
-            mb: 16,
-            mx: '$4',
-          }}
-        ></Box>
-        <Box
-          css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'hsl(206,10%,70%)',
-            height: 4,
-            width: '25%',
-            mb: 8,
-            mx: '$4',
-          }}
-        ></Box>
-        <Box
-          css={{
-            position: 'absolute',
-            top: 5,
-            left: 0,
-            right: 0,
-            zIndex: '0',
+            backgroundColor: 'white',
+            borderRadius: '5px',
             height: 20,
-            backgroundColor: 'hsl(206,10%,92%)',
-            display: 'flex',
+            width: 60,
+            px: '$2',
+            mb: 2,
+            display: 'inline-flex',
             alignItems: 'center',
-            px: '$3',
-            animation: `${menuitem} 5000ms infinite`,
-            animationDelay: '1000ms',
           }}
         ></Box>
+        <Box
+          css={{
+            position: 'relative',
+            backgroundColor: 'white',
+            borderRadius: '5px',
+            width: 120,
+            py: '$1',
+            boxShadow:
+              'hsla(252, 4%, 9%, 0.35) 0px 10px 38px -10px, hsla(252, 4%, 9%, 0.2) 0px 10px 20px -15px',
+          }}
+        >
+          <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'hsl(206,10%,70%)',
+              height: 4,
+              width: '25%',
+              mt: 8,
+              mb: 16,
+              mx: '$4',
+            }}
+          ></Box>
+          <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'hsl(206,10%,70%)',
+              height: 4,
+              width: '50%',
+              mb: 16,
+              mx: '$4',
+            }}
+          ></Box>
+          <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'hsl(206,10%,70%)',
+              height: 4,
+              width: '25%',
+              mb: 16,
+              mx: '$4',
+            }}
+          ></Box>
+          <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'hsl(206,10%,70%)',
+              height: 4,
+              width: '50%',
+              mb: 16,
+              mx: '$4',
+            }}
+          ></Box>
+          <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'hsl(206,10%,70%)',
+              height: 4,
+              width: '25%',
+              mb: 8,
+              mx: '$4',
+            }}
+          ></Box>
+          <Box
+            css={{
+              position: 'absolute',
+              top: 5,
+              left: 0,
+              right: 0,
+              zIndex: '0',
+              height: 20,
+              backgroundColor: 'hsl(206,10%,92%)',
+              display: 'flex',
+              alignItems: 'center',
+              px: '$3',
+              animation: ` 5000ms infinite`,
+              animationDelay: '1000ms',
+            }}
+          ></Box>
+        </Box>
       </Box>
-    </Box>
+    </HeroContainer>
   );
 };

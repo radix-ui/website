@@ -5,7 +5,6 @@ import { ChevronDownIcon, Link2Icon } from '@radix-ui/react-icons';
 import { IdProvider } from '@radix-ui/react-id';
 import { PropsTable } from './PropsTable';
 import { KeyboardTable } from './KeyboardTable';
-import { HeroSlot } from './HeroSlot';
 import { Pre } from './Pre';
 import { Preview } from './Preview';
 import { PackageRelease, PRLink } from './releaseHelpers';
@@ -243,7 +242,6 @@ export const components = {
     </DS.Box>
   ),
   Preview,
-  HeroSlot,
   PackageRelease,
   PRLink,
   ...accessibleIconDemos,

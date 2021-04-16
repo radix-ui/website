@@ -2,6 +2,7 @@ import React from 'react';
 import { styled, Box, keyframes, Flex } from '@modulz/design-system';
 import * as Checkbox from '@radix-ui/react-checkbox';
 import { CheckIcon, DividerHorizontalIcon } from '@radix-ui/react-icons';
+import { HeroContainer } from '@components/HeroContainer';
 
 const StyledCheckbox = styled(Checkbox.Root, {
   appearance: 'none',
@@ -93,196 +94,198 @@ const click = keyframes({
 
 export const CheckboxHero = () => {
   return (
-    <Box>
-      <Flex
-        css={{
-          alignItems: 'center',
-          my: '$3',
-        }}
-      >
-        <Box
+    <HeroContainer>
+      <Box>
+        <Flex
           css={{
-            position: 'relative',
-            borderRadius: '5px',
-            height: 25,
-            width: 25,
-            display: 'inline-flex',
             alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: 'inset 0 0 0 2px white',
-            color: 'white',
+            my: '$3',
           }}
         >
           <Box
             css={{
-              opacity: '0',
-              animation: `${check1} 5000ms infinite`,
-              animationDirection: 'alternate',
+              position: 'relative',
+              borderRadius: '5px',
+              height: 25,
+              width: 25,
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: 'inset 0 0 0 2px white',
+              color: 'white',
             }}
           >
-            <svg
-              width="15"
-              height="15"
-              viewBox="0 0 15 15"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            <Box
+              css={{
+                opacity: '0',
+                animation: ` 5000ms infinite`,
+                animationDirection: 'alternate',
+              }}
             >
-              <path
-                d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z"
-                fill="currentColor"
-                fillRule="evenodd"
-                clipRule="evenodd"
-              ></path>
-            </svg>
-          </Box>
-          <Box
-            css={{
-              position: 'absolute',
-              bottom: -15,
-              right: -10,
-              animation: `${cursor} 5000ms infinite`,
-              animationDirection: 'alternate',
-              zIndex: '1',
-            }}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="25"
-              height="25"
-              viewBox="0 0 25 25"
-              fill="none"
-            >
-              <g clipPath="url(#clip0)">
-                <g filter="url(#filter0_d)">
-                  <path
-                    d="M7.5 23.1865L4.79423 0.5L23.0885 14.1865L13.5442 15.6554L7.5 23.1865Z"
-                    fill="black"
-                  />
-                  <path
-                    d="M7.5 23.1865L4.79423 0.5L23.0885 14.1865L13.5442 15.6554L7.5 23.1865Z"
-                    stroke="white"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </g>
-              </g>
-              <defs>
-                <filter
-                  id="filter0_d"
-                  x="-5.68303"
-                  y="-5.68302"
-                  width="31.4545"
-                  height="32.5526"
-                  filterUnits="userSpaceOnUse"
-                  colorInterpolationFilters="sRGB"
-                >
-                  <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                  <feColorMatrix
-                    in="SourceAlpha"
-                    type="matrix"
-                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                  />
-                  <feOffset dy="1" />
-                  <feGaussianBlur stdDeviation="1" />
-                  <feColorMatrix
-                    type="matrix"
-                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-                  />
-                  <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
-                  <feBlend
-                    mode="normal"
-                    in="SourceGraphic"
-                    in2="effect1_dropShadow"
-                    result="shape"
-                  />
-                </filter>
-                <clipPath id="clip0">
-                  <rect width="25" height="25" fill="white" />
-                </clipPath>
-              </defs>
-            </svg>
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 15 15"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z"
+                  fill="currentColor"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
+            </Box>
             <Box
               css={{
                 position: 'absolute',
-                top: -12,
-                right: 0,
-                bottom: 0,
-                left: -12,
-                borderRadius: '50%',
-                boxShadow: '0 0 0 3px black',
-                opacity: '0',
-                transform: 'scale(.5)',
-                animation: `${click} 5000ms infinite`,
+                bottom: -15,
+                right: -10,
+                animation: ` 5000ms infinite`,
                 animationDirection: 'alternate',
-                animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+                zIndex: '1',
               }}
-            ></Box>
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                viewBox="0 0 25 25"
+                fill="none"
+              >
+                <g clipPath="url(#clip0)">
+                  <g filter="url(#filter0_d)">
+                    <path
+                      d="M7.5 23.1865L4.79423 0.5L23.0885 14.1865L13.5442 15.6554L7.5 23.1865Z"
+                      fill="black"
+                    />
+                    <path
+                      d="M7.5 23.1865L4.79423 0.5L23.0885 14.1865L13.5442 15.6554L7.5 23.1865Z"
+                      stroke="white"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </g>
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_d"
+                    x="-5.68303"
+                    y="-5.68302"
+                    width="31.4545"
+                    height="32.5526"
+                    filterUnits="userSpaceOnUse"
+                    colorInterpolationFilters="sRGB"
+                  >
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                    />
+                    <feOffset dy="1" />
+                    <feGaussianBlur stdDeviation="1" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect1_dropShadow"
+                      result="shape"
+                    />
+                  </filter>
+                  <clipPath id="clip0">
+                    <rect width="25" height="25" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+              <Box
+                css={{
+                  position: 'absolute',
+                  top: -12,
+                  right: 0,
+                  bottom: 0,
+                  left: -12,
+                  borderRadius: '50%',
+                  boxShadow: '0 0 0 3px black',
+                  opacity: '0',
+                  transform: 'scale(.5)',
+                  animation: ` 5000ms infinite`,
+                  animationDirection: 'alternate',
+                  animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+                }}
+              ></Box>
+            </Box>
           </Box>
-        </Box>
-        <Box
+          <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'white',
+              height: 3,
+              width: 100,
+              ml: '$3',
+            }}
+          ></Box>
+        </Flex>
+        <Flex
           css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'white',
-            height: 3,
-            width: 100,
-            ml: '$3',
-          }}
-        ></Box>
-      </Flex>
-      <Flex
-        css={{
-          alignItems: 'center',
-          my: '$3',
-        }}
-      >
-        <Box
-          css={{
-            position: 'relative',
-            borderRadius: '5px',
-            height: 25,
-            width: 25,
-            display: 'inline-flex',
             alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: 'inset 0 0 0 2px white',
-            color: 'white',
+            my: '$3',
           }}
         >
           <Box
             css={{
-              opacity: '0',
-              animation: `${check2} 5000ms infinite`,
-              animationDirection: 'alternate',
+              position: 'relative',
+              borderRadius: '5px',
+              height: 25,
+              width: 25,
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: 'inset 0 0 0 2px white',
+              color: 'white',
             }}
           >
-            <svg
-              width="15"
-              height="15"
-              viewBox="0 0 15 15"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            <Box
+              css={{
+                opacity: '0',
+                animation: ` 5000ms infinite`,
+                animationDirection: 'alternate',
+              }}
             >
-              <path
-                d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z"
-                fill="currentColor"
-                fillRule="evenodd"
-                clipRule="evenodd"
-              ></path>
-            </svg>
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 15 15"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z"
+                  fill="currentColor"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
+            </Box>
           </Box>
-        </Box>
-        <Box
-          css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'white',
-            height: 3,
-            width: 50,
-            ml: '$3',
-          }}
-        ></Box>
-      </Flex>
-    </Box>
+          <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'white',
+              height: 3,
+              width: 50,
+              ml: '$3',
+            }}
+          ></Box>
+        </Flex>
+      </Box>
+    </HeroContainer>
   );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { styled, Box, keyframes } from '@modulz/design-system';
 import * as Progress from '@radix-ui/react-progress';
+import { HeroContainer } from '@components/HeroContainer';
 
 const StyledProgress = styled(Progress.Root, {
   position: 'relative',
@@ -39,31 +40,33 @@ const scale = keyframes({
 
 export const ProgressHero = () => {
   return (
-    <Box
-      css={{
-        position: 'relative',
-        height: 8,
-        backgroundColor: 'hsla(0,0%,0%,.35)',
-        borderRadius: '9999px',
-        flexShrink: 0,
-        width: 200,
-        display: 'flex',
-        overflow: 'hidden',
-      }}
-    >
+    <HeroContainer>
       <Box
         css={{
-          position: 'absolute',
-          height: '100%',
-          backgroundColor: 'white',
+          position: 'relative',
+          height: 8,
+          backgroundColor: 'hsla(0,0%,0%,.35)',
+          borderRadius: '9999px',
           flexShrink: 0,
-          width: '100%',
-          transform: 'ScaleX(0)',
-          transformOrigin: 'left',
-          animation: `${scale} 9s infinite`,
-          animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+          width: 200,
+          display: 'flex',
+          overflow: 'hidden',
         }}
-      ></Box>
-    </Box>
+      >
+        <Box
+          css={{
+            position: 'absolute',
+            height: '100%',
+            backgroundColor: 'white',
+            flexShrink: 0,
+            width: '100%',
+            transform: 'ScaleX(0)',
+            transformOrigin: 'left',
+            animation: ` 9s infinite`,
+            animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+          }}
+        ></Box>
+      </Box>
+    </HeroContainer>
   );
 };
