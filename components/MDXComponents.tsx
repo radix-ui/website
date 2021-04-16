@@ -46,9 +46,7 @@ export const components = {
       <DS.Heading
         {...props}
         id={id}
-        size="7"
         css={{
-          fontWeight: 500,
           scrollMarginTop: '$6',
         }}
         as={'h2' as any}
