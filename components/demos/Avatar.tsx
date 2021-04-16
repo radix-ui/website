@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, Flex, styled } from '@modulz/design-system';
 import * as Avatar from '@radix-ui/react-avatar';
 import * as Tooltip from '@radix-ui/react-tooltip';
+import { HeroContainer } from '@components/HeroContainer';
 
 const StyledAvatar = styled(Avatar.Root, {
   display: 'inline-flex',
@@ -80,22 +81,24 @@ const AvatarSkeleton = styled('div', {
 
 export function AvatarHero() {
   return (
-    <Flex>
-      <AvatarSkeleton>
-        <Text size="5" color="gray" css={{ fontWeight: 500, letterSpacing: '-.5px' }}>
-          CT
-        </Text>
-      </AvatarSkeleton>
-      <AvatarSkeleton>
-        <Text size="5" color="gray" css={{ fontWeight: 500, letterSpacing: '-.5px' }}>
-          AV
-        </Text>
-      </AvatarSkeleton>
-      <AvatarSkeleton>
-        <Text size="5" color="gray" css={{ fontWeight: 500, letterSpacing: '-.5px' }}>
-          PD
-        </Text>
-      </AvatarSkeleton>
-    </Flex>
+    <HeroContainer>
+      <Flex>
+        <AvatarSkeleton>
+          <Text size="5" color="gray" css={{ fontWeight: 500, letterSpacing: '-.5px' }}>
+            CT
+          </Text>
+        </AvatarSkeleton>
+        <AvatarSkeleton>
+          <Text size="5" color="gray" css={{ fontWeight: 500, letterSpacing: '-.5px' }}>
+            AV
+          </Text>
+        </AvatarSkeleton>
+        <AvatarSkeleton>
+          <Text size="5" color="gray" css={{ fontWeight: 500, letterSpacing: '-.5px' }}>
+            PD
+          </Text>
+        </AvatarSkeleton>
+      </Flex>
+    </HeroContainer>
   );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled, Box, keyframes, Flex } from '@modulz/design-system';
-
 import * as RadioGroup from '@radix-ui/react-radio-group';
+import { HeroContainer } from '@components/HeroContainer';
 
 const StyledRadio = styled(RadioGroup.Item, {
   appearance: 'none',
@@ -81,184 +81,186 @@ const click = keyframes({
 
 export const RadioGroupHero = () => {
   return (
-    <Box>
-      <Flex
-        css={{
-          alignItems: 'center',
-          my: '$3',
-        }}
-      >
-        <Box
+    <HeroContainer>
+      <Box>
+        <Flex
           css={{
-            position: 'relative',
-            borderRadius: '50%',
-            height: 25,
-            width: 25,
-            display: 'inline-flex',
             alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: 'inset 0 0 0 2px white',
-            color: 'white',
+            my: '$3',
           }}
         >
           <Box
             css={{
-              opacity: '0',
-              animation: `${check1} 5000ms infinite`,
-              animationDirection: 'alternate',
+              position: 'relative',
+              borderRadius: '50%',
+              height: 25,
+              width: 25,
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: 'inset 0 0 0 2px white',
+              color: 'white',
             }}
           >
             <Box
               css={{
-                backgroundColor: 'white',
-                borderRadius: '50%',
-                height: 11,
-                width: 11,
+                opacity: '0',
+                animation: ` 5000ms infinite`,
+                animationDirection: 'alternate',
               }}
-            ></Box>
-          </Box>
-          <Box
-            css={{
-              position: 'absolute',
-              bottom: -15,
-              right: -10,
-              animation: `${cursor} 5000ms infinite`,
-              animationDirection: 'alternate',
-              zIndex: '1',
-            }}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="25"
-              height="25"
-              viewBox="0 0 25 25"
-              fill="none"
             >
-              <g clipPath="url(#clip0)">
-                <g filter="url(#filter0_d)">
-                  <path
-                    d="M7.5 23.1865L4.79423 0.5L23.0885 14.1865L13.5442 15.6554L7.5 23.1865Z"
-                    fill="black"
-                  />
-                  <path
-                    d="M7.5 23.1865L4.79423 0.5L23.0885 14.1865L13.5442 15.6554L7.5 23.1865Z"
-                    stroke="white"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </g>
-              </g>
-              <defs>
-                <filter
-                  id="filter0_d"
-                  x="-5.68303"
-                  y="-5.68302"
-                  width="31.4545"
-                  height="32.5526"
-                  filterUnits="userSpaceOnUse"
-                  colorInterpolationFilters="sRGB"
-                >
-                  <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                  <feColorMatrix
-                    in="SourceAlpha"
-                    type="matrix"
-                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                  />
-                  <feOffset dy="1" />
-                  <feGaussianBlur stdDeviation="1" />
-                  <feColorMatrix
-                    type="matrix"
-                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-                  />
-                  <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
-                  <feBlend
-                    mode="normal"
-                    in="SourceGraphic"
-                    in2="effect1_dropShadow"
-                    result="shape"
-                  />
-                </filter>
-                <clipPath id="clip0">
-                  <rect width="25" height="25" fill="white" />
-                </clipPath>
-              </defs>
-            </svg>
+              <Box
+                css={{
+                  backgroundColor: 'white',
+                  borderRadius: '50%',
+                  height: 11,
+                  width: 11,
+                }}
+              ></Box>
+            </Box>
             <Box
               css={{
                 position: 'absolute',
-                top: -12,
-                right: 0,
-                bottom: 0,
-                left: -12,
-                borderRadius: '50%',
-                boxShadow: '0 0 0 3px black',
-                opacity: '0',
-                transform: 'scale(.5)',
-                animation: `${click} 5000ms infinite`,
+                bottom: -15,
+                right: -10,
+                animation: ` 5000ms infinite`,
                 animationDirection: 'alternate',
-                animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+                zIndex: '1',
               }}
-            ></Box>
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                viewBox="0 0 25 25"
+                fill="none"
+              >
+                <g clipPath="url(#clip0)">
+                  <g filter="url(#filter0_d)">
+                    <path
+                      d="M7.5 23.1865L4.79423 0.5L23.0885 14.1865L13.5442 15.6554L7.5 23.1865Z"
+                      fill="black"
+                    />
+                    <path
+                      d="M7.5 23.1865L4.79423 0.5L23.0885 14.1865L13.5442 15.6554L7.5 23.1865Z"
+                      stroke="white"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </g>
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_d"
+                    x="-5.68303"
+                    y="-5.68302"
+                    width="31.4545"
+                    height="32.5526"
+                    filterUnits="userSpaceOnUse"
+                    colorInterpolationFilters="sRGB"
+                  >
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                    />
+                    <feOffset dy="1" />
+                    <feGaussianBlur stdDeviation="1" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                    />
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect1_dropShadow"
+                      result="shape"
+                    />
+                  </filter>
+                  <clipPath id="clip0">
+                    <rect width="25" height="25" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+              <Box
+                css={{
+                  position: 'absolute',
+                  top: -12,
+                  right: 0,
+                  bottom: 0,
+                  left: -12,
+                  borderRadius: '50%',
+                  boxShadow: '0 0 0 3px black',
+                  opacity: '0',
+                  transform: 'scale(.5)',
+                  animation: ` 5000ms infinite`,
+                  animationDirection: 'alternate',
+                  animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+                }}
+              ></Box>
+            </Box>
           </Box>
-        </Box>
-        <Box
+          <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'white',
+              height: 3,
+              width: 100,
+              ml: '$3',
+            }}
+          ></Box>
+        </Flex>
+        <Flex
           css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'white',
-            height: 3,
-            width: 100,
-            ml: '$3',
-          }}
-        ></Box>
-      </Flex>
-      <Flex
-        css={{
-          alignItems: 'center',
-          my: '$3',
-        }}
-      >
-        <Box
-          css={{
-            position: 'relative',
-            borderRadius: '50%',
-            height: 25,
-            width: 25,
-            display: 'inline-flex',
             alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: 'inset 0 0 0 2px white',
-            color: 'white',
+            my: '$3',
           }}
         >
           <Box
             css={{
-              opacity: '0',
-              animation: `${check2} 5000ms infinite`,
-              animationDirection: 'alternate',
+              position: 'relative',
+              borderRadius: '50%',
+              height: 25,
+              width: 25,
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: 'inset 0 0 0 2px white',
+              color: 'white',
             }}
           >
             <Box
               css={{
-                backgroundColor: 'white',
-                borderRadius: '50%',
-                height: 11,
-                width: 11,
+                opacity: '0',
+                animation: ` 5000ms infinite`,
+                animationDirection: 'alternate',
               }}
-            ></Box>
+            >
+              <Box
+                css={{
+                  backgroundColor: 'white',
+                  borderRadius: '50%',
+                  height: 11,
+                  width: 11,
+                }}
+              ></Box>
+            </Box>
           </Box>
-        </Box>
-        <Box
-          css={{
-            position: 'relative',
-            zIndex: '1',
-            backgroundColor: 'white',
-            height: 3,
-            width: 50,
-            ml: '$3',
-          }}
-        ></Box>
-      </Flex>
-    </Box>
+          <Box
+            css={{
+              position: 'relative',
+              zIndex: '1',
+              backgroundColor: 'white',
+              height: 3,
+              width: 50,
+              ml: '$3',
+            }}
+          ></Box>
+        </Flex>
+      </Box>
+    </HeroContainer>
   );
 };

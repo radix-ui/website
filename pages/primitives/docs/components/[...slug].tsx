@@ -10,7 +10,6 @@ import rehypeHighlightCode from '@lib/rehype-highlight-code';
 import remarkAutolinkHeadings from 'remark-autolink-headings';
 import remarkSlug from 'remark-slug';
 import { RemoveScroll } from 'react-remove-scroll';
-import { HeroContext } from '@components/HeroSlot';
 import { Select } from '@components/Select';
 import { QuickNav } from '@components/QuickNav';
 import { useRouter } from 'next/router';
@@ -27,7 +26,6 @@ type Doc = {
 
 export default function ComponentsDoc({ frontmatter, source }: Doc) {
   const content = hydrate(source, { components, provider });
-  const heroSlotRef = React.useRef<HTMLDivElement>(null);
 
   return (
     <>
@@ -75,8 +73,6 @@ export default function ComponentsDoc({ frontmatter, source }: Doc) {
         </Box>
       )}
 
-      <div ref={heroSlotRef} />
-
       <Flex
         css={{
           fd: 'column',
@@ -110,7 +106,7 @@ export default function ComponentsDoc({ frontmatter, source }: Doc) {
         />
       </Flex>
 
-      <HeroContext.Provider value={heroSlotRef}>{content}</HeroContext.Provider>
+      {content}
 
       <Box
         as="aside"
