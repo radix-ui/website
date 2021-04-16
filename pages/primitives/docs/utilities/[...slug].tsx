@@ -111,7 +111,7 @@ export default function UtilitiesDoc({ frontmatter, source }: Doc) {
         />
       </Flex>
 
-      <HeroContext.Provider value={heroSlotRef}>content</HeroContext.Provider>
+      <HeroContext.Provider value={heroSlotRef}>{content}</HeroContext.Provider>
 
       <Box
         as="aside"
