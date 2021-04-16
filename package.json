@@ -56,6 +56,7 @@
     "next-transpile-modules": "^6.4.0",
     "next-videos": "^1.4.0",
     "parse-numeric-range": "^1.2.0",
+    "pretty-quick": "^3.1.0",
     "prism-react-renderer": "^1.2.0",
     "prismjs": "^1.23.0",
     "react": "17.0.2",
@@ -78,10 +79,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "pretty-quick --staged"
     }
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,css,md,mdx}": "prettier --write"
   }
 }
