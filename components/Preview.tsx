@@ -11,6 +11,7 @@ export const Preview = ({ css, ...props }) => (
       borderTopRightRadius: '$3',
       padding: '$3',
       position: 'relative',
+      mt: '$5',
       ...css,
     }}
   />
