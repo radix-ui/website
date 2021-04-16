@@ -3,7 +3,7 @@ import renderToString from 'next-mdx-remote/render-to-string';
 import hydrate from 'next-mdx-remote/hydrate';
 import { Text, Box } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { provider, components } from '@components/MDXComponents';
+import { createProvider, components } from '@components/MDXComponents';
 import { getAllFrontmatter, getDocBySlug } from '@lib/mdx';
 import rehypeHighlightCode from '@lib/rehype-highlight-code';
 import remarkAutolinkHeadings from 'remark-autolink-headings';
@@ -20,7 +20,7 @@ type Doc = {
 };
 
 export default function OverviewDoc({ frontmatter, source }: Doc) {
-  const content = hydrate(source, { components, provider });
+  const content = hydrate(source, { components, provider: createProvider(frontmatter) });
 
   return (
     <>
@@ -79,7 +79,7 @@ export async function getStaticProps(context) {
 
   const mdxContent = await renderToString(content, {
     components,
-    provider,
+    provider: createProvider(frontmatter),
     mdxOptions: {
       remarkPlugins: [remarkAutolinkHeadings, remarkSlug],
       rehypePlugins: [rehypeHighlightCode],

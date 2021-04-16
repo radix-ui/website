@@ -4,7 +4,7 @@ import renderToString from 'next-mdx-remote/render-to-string';
 import hydrate from 'next-mdx-remote/hydrate';
 import { Text, Box, Flex, Heading, Separator, Link } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { provider, components } from '@components/MDXComponents';
+import { createProvider, components } from '@components/MDXComponents';
 import { getAllFrontmatter, getAllVersionsFromPath, getDocBySlug } from '@lib/mdx';
 import rehypeHighlightCode from '@lib/rehype-highlight-code';
 import remarkAutolinkHeadings from 'remark-autolink-headings';
@@ -26,7 +26,7 @@ type Doc = {
 };
 
 export default function UtilitiesDoc({ frontmatter, source }: Doc) {
-  const content = hydrate(source, { components, provider });
+  const content = hydrate(source, { components, provider: createProvider(frontmatter) });
 
   return (
     <>
@@ -157,24 +157,26 @@ export async function getStaticProps(context) {
     context.params.slug.join('/')
   );
 
+  const [componentName, componentVersion] = context.params.slug;
+
+  const extendedFrontmatter = {
+    ...frontmatter,
+    version: componentVersion,
+    versions: getAllVersionsFromPath(`primitives/docs/components/${componentName}`),
+  };
+
   const mdxContent = await renderToString(content, {
     components,
-    provider,
+    provider: createProvider(extendedFrontmatter),
     mdxOptions: {
       remarkPlugins: [remarkAutolinkHeadings, remarkSlug],
       rehypePlugins: [rehypeHighlightCode],
     },
   });
 
-  const [componentName, componentVersion] = context.params.slug;
-
   return {
     props: {
-      frontmatter: {
-        ...frontmatter,
-        version: componentVersion,
-        versions: getAllVersionsFromPath(`primitives/docs/utilities/${componentName}`),
-      },
+      frontmatter: extendedFrontmatter,
       source: mdxContent,
     },
   };

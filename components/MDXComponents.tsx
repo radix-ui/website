@@ -7,6 +7,7 @@ import { PropsTable } from './PropsTable';
 import { KeyboardTable } from './KeyboardTable';
 import { Pre } from './Pre';
 import { Preview } from './Preview';
+import { Highlights } from './Highlights';
 import { PackageRelease, PRLink } from './releaseHelpers';
 import * as gettingStartedDemos from './demos/GettingStarted';
 import * as accessibleIconDemos from './demos/AccessibleIcon';
@@ -32,6 +33,7 @@ import * as toggleDemos from './demos/Toggle';
 import * as toggleGroupDemos from './demos/ToggleGroup';
 import * as toolbarDemos from './demos/Toolbar';
 import * as tooltipDemos from './demos/Tooltip';
+import { PrimitivesFrontmatter } from 'types/primitives';
 
 export const components = {
   ...DS,
@@ -229,6 +231,7 @@ export const components = {
       {...props}
     />
   ),
+  Highlights,
   Kbd: DS.Kbd,
   Code: DS.Code,
   PropsTable: (props) => (
@@ -308,17 +311,24 @@ const LinkHeading = ({
   </DS.Box>
 );
 
+export const FrontmatterContext = React.createContext<PrimitivesFrontmatter>({} as any);
+
 // Custom provider for next-mdx-remote
 // https://github.com/hashicorp/next-mdx-remote#using-providers
-function Provider({ children }) {
+function Provider(props) {
+  const { frontmatter, children } = props;
   return (
     <IdProvider>
-      <DS.DesignSystemProvider>{children}</DS.DesignSystemProvider>
+      <DS.DesignSystemProvider>
+        <FrontmatterContext.Provider value={frontmatter}>{children}</FrontmatterContext.Provider>
+      </DS.DesignSystemProvider>
     </IdProvider>
   );
 }
 
-export const provider = {
-  component: Provider,
-  props: {},
+export const createProvider = (frontmatter) => {
+  return {
+    component: Provider,
+    props: { frontmatter },
+  };
 };

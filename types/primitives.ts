@@ -7,5 +7,6 @@ export type PrimitivesFrontmatter = {
   versions?: string[];
   aria?: string;
   name?: string;
+  publishedName?: string;
   slug: string;
 };

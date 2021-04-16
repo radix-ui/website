@@ -3,11 +3,6 @@ metaTitle: Alert Dialog
 metaDescription: A modal dialog that interrupts the user with important content and expects a response.
 name: alert-dialog
 aria: https://www.w3.org/TR/wai-aria-practices-1.2/#alertdialog
-features:
-  - Focus is automatically trapped.
-  - Can be controlled or uncontrolled.
-  - Manages screen reader announcements with `Title` and `Description` components.
-  - Esc closes the component automatically.
 ---
 
 # Alert Dialog
@@ -18,6 +13,18 @@ features:
 </Description>
 
 <AlertDialogHero />
+
+<Highlights
+  features={[
+    'Focus is automatically trapped.',
+    'Can be controlled or uncontrolled.',
+    <span>
+      Manages screen reader announcements with <Code>Title</Code> and{' '}
+      <Code>Description</Code> components.
+    </span>,
+    'Esc closes the component automatically.',
+  ]}
+/>
 
 ## Installation
 
