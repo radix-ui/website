@@ -40,14 +40,7 @@ export const components = {
   h1: (props) => (
     <DS.Text {...props} as="h1" size="8" css={{ fontWeight: 500, mb: '$2', lineHeight: '40px' }} />
   ),
-  Description: (props) => (
-    <DS.Text
-      {...props}
-      as="p"
-      size="6"
-      css={{ mt: '$2', mb: '$4', color: '$slate900', lineHeight: '30px' }}
-    />
-  ),
+  Description: (props) => <DS.Subtitle {...props} as="p" css={{ mt: '$2', mb: '$7' }} />,
   h2: ({ children, id, ...props }) => (
     <LinkHeading id={id} css={{ mt: '$7', mb: '$5' }}>
       <DS.Heading
