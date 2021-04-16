@@ -46,6 +46,7 @@ export function QuickNav({ content }) {
         aria-labelledby="site-quick-nav-heading"
         css={{
           padding: '$5',
+          py: 68,
           display: headings.length === 0 ? 'none' : 'block',
         }}
       >
