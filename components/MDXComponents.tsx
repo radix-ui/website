@@ -131,14 +131,7 @@ export const components = {
     );
   },
   p: (props) => {
-    return (
-      <DS.Text
-        size="4"
-        {...props}
-        css={{ mb: '$3', lineHeight: '27px', letterSpacing: 0 }}
-        as="p"
-      />
-    );
+    return <DS.Paragraph {...props} css={{ mb: '$3' }} as="p" />;
   },
   a: ({ href = '', ...props }) => {
     if (href.startsWith('http')) {
