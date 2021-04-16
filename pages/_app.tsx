@@ -3,7 +3,6 @@ import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
 import { global, darkTheme, DesignSystemProvider } from '@modulz/design-system';
-import { IdProvider } from '@radix-ui/react-id';
 import { Footer } from '@components/Footer';
 import { DocsPage } from '@components/DocsPage';
 import { useAnalytics } from '@lib/analytics';
