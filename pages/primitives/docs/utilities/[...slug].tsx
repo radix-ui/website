@@ -74,39 +74,6 @@ export default function UtilitiesDoc({ frontmatter, source }: Doc) {
         </Box>
       )}
 
-      <Flex
-        css={{
-          fd: 'column',
-          '@bp1': {
-            fd: 'row',
-          },
-        }}
-      >
-        <Box
-          css={{
-            mb: '$5',
-            '@bp1': {
-              flex: '1',
-              mr: '$5',
-            },
-          }}
-        >
-          {Boolean(frontmatter.features) && (
-            <FeatureList>
-              {frontmatter.features.map((feature, i) => (
-                <Feature key={i}>{feature}</Feature>
-              ))}
-            </FeatureList>
-          )}
-        </Box>
-        <ComponentInfo
-          version={frontmatter.version}
-          versions={frontmatter.versions || []}
-          name={frontmatter.name}
-          aria={frontmatter.aria}
-        />
-      </Flex>
-
       {content}
 
       <Box
@@ -162,7 +129,7 @@ export async function getStaticProps(context) {
   const extendedFrontmatter = {
     ...frontmatter,
     version: componentVersion,
-    versions: getAllVersionsFromPath(`primitives/docs/components/${componentName}`),
+    versions: getAllVersionsFromPath(`primitives/docs/utilities/${componentName}`),
   };
 
   const mdxContent = await renderToString(content, {
@@ -181,132 +148,3 @@ export async function getStaticProps(context) {
     },
   };
 }
-
-const ComponentInfo = ({ version, versions, name, aria }) => {
-  const router = useRouter();
-  const [componentName] = router.query.slug as string[];
-
-  return (
-    <Box css={{ width: 'fit-content' }} as="nav" aria-labelledby="site-component-info-heading">
-      <VisuallyHidden as="h2" id="site-component-info-heading">
-        Component Reference Links
-      </VisuallyHidden>
-      <Separator size="2" css={{ mb: '$4', display: 'block', '@bp1': { display: 'none' } }} />
-      <Flex css={{ mb: '$4', alignItems: 'baseline' }}>
-        <Box css={{ mx: -5 }}>
-          <Select
-            value={version}
-            onChange={(e) => router.push(`./${componentName}/${e.target.value}`)}
-          >
-            {versions.map((v, i) => {
-              return (
-                <option key={v} value={v}>
-                  {v}
-                  {i === 0 && ' (latest)'}
-                </option>
-              );
-            })}
-          </Select>
-        </Box>
-      </Flex>
-      <Separator size="2" css={{ mb: '$4', display: 'none', '@bp1': { display: 'block' } }} />
-      <Box css={{ mb: '$2' }}>
-        <Link
-          variant="blue"
-          href={`https://github.com/radix-ui/primitives/tree/main/packages/react/${name}/src`}
-          target="_blank"
-        >
-          <Flex css={{ display: 'inline-flex', position: 'relative' }}>
-            <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
-              View source
-            </Text>
-            <Box as="span" css={{ ml: '$1', color: '$gray700' }}>
-              <ExternalIcon />
-            </Box>
-          </Flex>
-        </Link>
-      </Box>
-      <Box css={{ mb: '$2' }}>
-        <Link
-          variant="blue"
-          href={`https://www.npmjs.com/package/@radix-ui/react-${name}`}
-          target="_blank"
-        >
-          <Flex css={{ display: 'inline-flex', position: 'relative' }}>
-            <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
-              View on npm
-            </Text>
-            <Box as="span" css={{ ml: '$1', color: '$gray700' }}>
-              <ExternalIcon />
-            </Box>
-          </Flex>
-        </Link>
-      </Box>
-      <Box css={{ mb: '$2' }}>
-        <Link
-          variant="blue"
-          href="https://github.com/radix-ui/primitives/issues/new/choose"
-          target="_blank"
-        >
-          <Flex css={{ display: 'inline-flex', position: 'relative' }}>
-            <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
-              Report an issue
-            </Text>
-            <Box as="span" css={{ ml: '$1', color: '$gray700' }}>
-              <ExternalIcon />
-            </Box>
-          </Flex>
-        </Link>
-      </Box>
-      {aria && (
-        <Box css={{ mb: '$2' }}>
-          <Link variant="blue" href={aria} target="_blank">
-            <Flex css={{ display: 'inline-flex', position: 'relative' }}>
-              <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
-                ARIA design pattern
-              </Text>
-              <Box as="span" css={{ ml: '$1', color: '$gray700' }}>
-                <ExternalIcon />
-              </Box>
-            </Flex>
-          </Link>
-        </Box>
-      )}
-    </Box>
-  );
-};
-
-const FeatureList = ({ children }) => (
-  <Box>
-    <Heading css={{ mb: '$4' }} as={'h2' as any}>
-      Features
-    </Heading>
-    <Box as="ul" css={{ p: 0, m: 0 }}>
-      {children}
-    </Box>
-  </Box>
-);
-
-const Feature = ({ children, ...props }) => (
-  <Flex as="li" {...props} css={{ mt: '$2' }}>
-    <Box
-      css={{
-        width: '25px',
-        height: '25px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '$green200',
-        borderRadius: '50%',
-        color: '$green900',
-        marginRight: '15px',
-        flexShrink: 0,
-      }}
-    >
-      <CheckIcon />
-    </Box>
-    <Text size="3" css={{ lineHeight: '25px' }}>
-      {children}
-    </Text>
-  </Flex>
-);
