@@ -1,13 +1,13 @@
 import * as React from 'react';
 import NextLink from 'next/link';
 import * as DS from '@modulz/design-system';
-import { ChevronDownIcon, Link2Icon } from '@radix-ui/react-icons';
+import { Link2Icon } from '@radix-ui/react-icons';
 import { IdProvider } from '@radix-ui/react-id';
 import { PropsTable } from './PropsTable';
 import { KeyboardTable } from './KeyboardTable';
-import { Pre } from './Pre';
 import { Preview } from './Preview';
 import { Highlights } from './Highlights';
+import { DocCodeBlock } from './DocCodeBlock';
 import { PackageRelease, PRLink } from './releaseHelpers';
 import * as gettingStartedDemos from './demos/GettingStarted';
 import * as accessibleIconDemos from './demos/AccessibleIcon';
@@ -61,9 +61,7 @@ export const components = {
       <DS.Subheading
         {...props}
         id={id}
-        css={{
-          scrollMarginTop: '$6',
-        }}
+        css={{ scrollMarginTop: '$6' }}
         as={'h3' as any}
         data-heading
       >
@@ -74,72 +72,14 @@ export const components = {
   h4: (props) => (
     <DS.Text as="h4" {...props} size="4" css={{ mb: '$3', lineHeight: '27px', fontWeight: 500 }} />
   ),
-  pre: ({ children }) => <>{children}</>,
-  code: ({ className, children, id, showLineNumbers = false, collapsed = false }) => {
-    const [isCollapsed, setIsCollapsed] = React.useState(collapsed);
-    const collapsedStyles = {
-      height: '100px',
-      position: 'relative',
-      overflow: 'hidden',
-      '&::after': {
-        content: `''`,
-        position: 'absolute',
-        inset: 0,
-        width: '100%',
-        height: '100%',
-        backgroundImage: 'linear-gradient(to bottom, transparent 30%, $loContrast)',
-      },
-    };
-    return (
-      <Pre
-        as="pre"
-        // variant="blue"
-        css={{
-          my: '$5',
-          ...(isCollapsed ? (collapsedStyles as any) : {}),
-          '[data-preview] + &': {
-            marginTop: 1,
-            borderTopLeftRadius: 0,
-            borderTopRightRadius: 0,
-          },
-        }}
-        className={className}
-        id={id}
-        data-line-numbers={showLineNumbers}
-      >
-        {isCollapsed && (
-          <DS.Box
-            css={{
-              position: 'absolute',
-              left: 0,
-              zIndex: 1,
-              bottom: '$2',
-              width: '100%',
-              textAlign: 'center',
-            }}
-          >
-            <DS.Button onClick={() => setIsCollapsed(false)}>
-              <ChevronDownIcon />{' '}
-              <DS.Box as="span" css={{ ml: '$2' }}>
-                Show code
-              </DS.Box>
-            </DS.Button>
-          </DS.Box>
-        )}
-        <code className={className} children={children} />
-      </Pre>
-    );
-  },
-  p: (props) => {
-    return <DS.Paragraph {...props} css={{ mb: '$3' }} as="p" />;
-  },
+  p: (props) => <DS.Paragraph {...props} css={{ mb: '$3' }} as="p" />,
   a: ({ href = '', ...props }) => {
     if (href.startsWith('http')) {
       return (
         <DS.Link
+          {...props}
           variant="blue"
           href={href}
-          {...props}
           css={{ fontSize: 'inherit' }}
           target="_blank"
           rel="noopener"
@@ -153,7 +93,6 @@ export const components = {
     );
   },
   hr: (props) => <DS.Separator size="2" {...props} css={{ my: '$6', mx: 'auto' }} />,
-  inlineCode: (props) => <DS.Code {...props} />,
   ul: (props) => <DS.Box {...props} css={{ color: '$hiContrast', mb: '$3' }} as="ul" />,
   ol: (props) => <DS.Box {...props} css={{ color: '$hiContrast', mb: '$3' }} as="ol" />,
   li: (props) => (
@@ -190,6 +129,9 @@ export const components = {
       {...props}
     />
   ),
+  pre: ({ children }) => <>{children}</>,
+  code: DocCodeBlock,
+  inlineCode: (props) => <DS.Code {...props} />,
   Note: (props) => (
     <DS.Box
       as="aside"
