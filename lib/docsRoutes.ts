@@ -59,6 +59,6 @@ export const docsRoutes = [
 ];
 
 export const allDocsRoutes = docsRoutes.reduce((acc, curr) => {
-  acc = [...acc, ...curr.pages];
+  acc = [...acc, ...curr.pages.filter((p) => p.draft !== true)];
   return acc;
 }, []);
