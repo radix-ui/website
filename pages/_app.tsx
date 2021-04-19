@@ -9,10 +9,6 @@ import { useAnalytics } from '@lib/analytics';
 import { scrollToUrlHash } from '@lib/scrollToUrlHash';
 
 const globalStyles = global({
-  html: {
-    overflowX: 'hidden',
-  },
-
   body: {
     margin: 0,
     backgroundColor: '$loContrast',
@@ -31,6 +27,11 @@ const globalStyles = global({
 
   '::selection': {
     backgroundColor: '$violet300',
+  },
+
+  '#__next': {
+    position: 'relative',
+    zIndex: 0,
   },
 });
 
