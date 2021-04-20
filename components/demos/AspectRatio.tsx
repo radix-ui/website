@@ -1,8 +1,8 @@
 import React from 'react';
 import * as AspectRatio from '@radix-ui/react-aspect-ratio';
 
-export const AspectRatioDemo = () => (
-  <AspectRatio.Root>
+export const AspectRatioDemo = (props) => (
+  <AspectRatio.Root {...props}>
     <img
       src="https://images.unsplash.com/photo-1605030753481-bb38b08c384a"
       alt="mountain view"

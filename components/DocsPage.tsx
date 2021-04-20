@@ -18,14 +18,14 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
 
   const GITHUB_URL = 'https://github.com';
   const REPO_NAME = 'radix-ui/website';
-  let editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/master/data/${currentPageSlug}.mdx`;
+  let editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/main/data/${currentPageSlug}.mdx`;
 
   if (typeof routerSlug === 'string') {
     currentPageSlug = router.pathname.substr(1).replace('[slug]', routerSlug);
-    editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/master/data/${currentPageSlug}.mdx`;
+    editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/main/data/${currentPageSlug}.mdx`;
   } else {
     currentPageSlug = router.pathname.substr(1).replace('[...slug]', routerSlug[0]);
-    editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/master/data/${currentPageSlug}/${routerSlug[1]}.mdx`;
+    editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/main/data/${currentPageSlug}/${routerSlug[1]}.mdx`;
   }
 
   const currentPageIndex = allDocsRoutes.findIndex((page) => page.slug === currentPageSlug);

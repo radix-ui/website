@@ -94,6 +94,10 @@ Contains the content for the label.
 
 Use the `htmlfor` attribute to connect the label with the input's id.
 
+<Preview>
+  <LabelInputDemo />
+</Preview>
+
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
 import * as Label from '@radix-ui/react-label';
@@ -117,6 +121,10 @@ export default () => (
 ### Custom control with label support
 
 Add an `aria-labelledby` attribute to your custom controls using the `useLabelContext` hook to add support for label nesting.
+
+<Preview>
+  <LabelCheckboxDemo />
+</Preview>
 
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
