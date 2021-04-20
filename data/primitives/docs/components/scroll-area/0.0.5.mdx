@@ -1,0 +1,515 @@
+---
+metaTitle: Scroll Area
+metaDescription: Augments native scroll functionality for custom, cross-browser styling.
+name: scroll-area
+---
+
+# Scroll Area
+
+<Description>
+  Augments native scroll functionality for custom, cross-browser
+  styling.
+</Description>
+
+<ScrollAreaHero />
+
+<Highlights
+  features={[
+    'Track sits on top of the scrollable content, taking up no space.',
+    'Scrolling is native; no underlying position movements via CSS transformations.',
+    'Shims pointer behaviors only when interacting with the controls, so keyboard controls are unaffected.',
+    "Progressively enhanced so that content is avalaible on devices where custom controls aren't supported.",
+  ]}
+/>
+
+## Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-scroll-area
+```
+
+## Anatomy
+
+Import the components and piece the parts together.
+
+```jsx
+import * as ScrollArea from '@radix-ui/react-scroll-area';
+
+export default () => (
+  <ScrollArea.Root>
+    <ScrollArea.Viewport />
+
+    <ScrollArea.ScrollbarX>
+      <ScrollArea.ScrollTrack>
+        <ScrollArea.ButtonStart />
+        <ScrollArea.ScrollThumb />
+        <ScrollArea.ButtonEnd />
+      </ScrollArea.ScrollTrack>
+    </ScrollArea.ScrollbarX>
+
+    <ScrollArea.ScrollbarY>
+      <ScrollArea.ScrollTrack>
+        <ScrollArea.ButtonStart />
+        <ScrollArea.ScrollThumb />
+        <ScrollArea.ButtonEnd />
+      </ScrollArea.ScrollTrack>
+    </ScrollArea.ScrollbarY>
+
+    <ScrollArea.Corner />
+  </ScrollArea.Root>
+);
+```
+
+## Basic example
+
+Create your styled scroll area component from the primitive parts.
+
+```jsx
+import { styled } from 'path-to/stitches.config';
+import * as ScrollArea from '@radix-ui/react-scroll-area';
+
+const { SCROLL_AREA_CSS_PROPS } = ScrollArea;
+
+const StyledScrollArea = styled(ScrollArea.Root, {
+  position: 'relative',
+  zIndex: 0,
+  maxWidth: '100%',
+  maxHeight: '100%',
+  '& [data-radix-scroll-area-viewport-position]::-webkit-scrollbar': {
+    display: 'none',
+  },
+});
+
+const StyledViewport = styled(ScrollArea.Viewport, {
+  zIndex: 1,
+  position: 'relative',
+});
+
+const StyledScrollbarY = styled(ScrollArea.ScrollbarY, {
+  zIndex: 2,
+  position: 'absolute',
+  userSelect: 'none',
+  transition: '300ms opacity ease',
+  width: 8,
+  right: 0,
+  top: 0,
+  bottom: 0,
+});
+
+const StyledScrollTrack = styled(ScrollArea.Track, {
+  zIndex: -1,
+  position: 'relative',
+  width: '100%',
+  height: '100%',
+});
+
+const StyledScrollThumb = styled(ScrollArea.Thumb, {
+  backgroundColor: 'gainsboro',
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  userSelect: 'none',
+  borderRadius: 9999,
+  willChange: `var(${SCROLL_AREA_CSS_PROPS.scrollbarThumbWillChange})`,
+  height: `var(${SCROLL_AREA_CSS_PROPS.scrollbarThumbHeight})`,
+  width: `var(${SCROLL_AREA_CSS_PROPS.scrollbarThumbWidth})`,
+});
+
+export default () => (
+  <div style={{ height: 250 }}>
+    <StyledScrollArea>
+      <StyledViewport>
+        <div
+          style={{
+            height: 1000,
+            backgroundImage:
+              'repeating-linear-gradient(0deg, dodgerblue, dodgerblue 10px, transparent 10px, transparent 20px)',
+          }}
+        />
+      </StyledViewport>
+
+      <StyledScrollbarY>
+        <StyledScrollTrack>
+          <StyledScrollThumb />
+        </StyledScrollTrack>
+      </StyledScrollbarY>
+    </StyledScrollArea>
+  </div>
+);
+```
+
+<Note>
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
+
+</Note>
+
+## API Reference
+
+### Root
+
+Contains all the parts of a scroll area.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-scroll-area',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
+    {
+      name: 'overflowX',
+      type: '"auto" | "hidden" | "scroll" | "visible"',
+      typeSimple: 'enum',
+      default: '"auto"',
+      description: (
+        <span>
+          Overflow behavior for the x-axis. Mirrors the{' '}
+          <Code>overflow-x</Code> CSS property.
+        </span>
+      ),
+    },
+    {
+      name: 'overflowY',
+      type: '"auto" | "hidden" | "scroll" | "visible"',
+      typeSimple: 'enum',
+      default: '"auto"',
+      description: (
+        <span>
+          Overflow behavior for the y-axis. Mirrors the{' '}
+          <Code>overflow-y</Code> CSS property.
+        </span>
+      ),
+    },
+    {
+      name: 'scrollbarVisibility',
+      type: '"always" | "scroll" | "hover"',
+      typeSimple: 'enum',
+      default: '"hover"',
+      description: (
+        <span>
+          Describes the nature of scrollbar visibility, similar to how
+          the scrollbar preferences in MacOS control visibility of
+          native scrollbars.
+          <br />
+          <br />
+          <Code>"always"</Code> means that scrollbars are always visible
+          when content is overflowing on a given axis.
+          <br />
+          <Code>"scroll"</Code> means that scrollbars are visible when
+          the user is scrolling along its corresponding axis.
+          <br />
+          <Code>"hover"</Code> when the user is scrolling along its corresponding
+          axis and when the user is hovering over scrollable area.
+        </span>
+      ),
+    },
+    {
+      name: 'scrollbarVisibilityRestTimeout',
+      type: 'number',
+      default: '600',
+      description: (
+        <span>
+          If <Code>scrollbarVisibility</Code> is set to either{' '}
+          <Code>"scroll"</Code> or <Code>"hover"</Code>, this prop
+          determines the length of time, in milliseconds, before the
+          scrollbars are hidden after the user stops interacting with
+          scrollbars.
+        </span>
+      ),
+    },
+    {
+      name: 'trackClickBehavior',
+      type: '"page" | "relative"',
+      typeSimple: 'emum',
+      default: '"relative"',
+      description: (
+        <span>
+          Describes the action that occurs when a user clicks on the{' '}
+          <Code>Track</Code>. When <Code>"relative"</Code>, the{' '}
+          <Code>ScrollArea</Code> will jump to a spot relative to
+          where the user has clicked in relation to the{' '}
+          <Code>Track</Code>. When <Code>"page"</Code>, the{' '}
+          <Code>ScrollArea</Code> will initially jump to the next or
+          previous page of the viewable area, depending on which
+          direction on the <Code>Track</Code> is clicked.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### Viewport
+
+The viewport area of the scroll area.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-scroll-area-viewport',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### ScrollbarX
+
+The horizontal scrollbar.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-scroll-area-scrollbar-x',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### ScrollbarY
+
+The vertical scrollbar.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-scroll-area-scrollbar-y',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### ButtonStart
+
+The start button to be used in `ScrollArea.ScrollbarX` and `ScrollArea.ScrollbarY`.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-scroll-area-button-start',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### ButtonEnd
+
+The end button to be used in `ScrollArea.ScrollbarX` and `ScrollArea.ScrollbarY`.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-scroll-area-button-end',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### Track
+
+The track to be used in `ScrollArea.ScrollbarX` and `ScrollArea.ScrollbarY`.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-scroll-area-track',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### Thumb
+
+The thumb to be used in `ScrollArea.ScrollbarX` and `ScrollArea.ScrollbarY`.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-scroll-area-thumb',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### Corner
+
+The corner where both vertical and horizontal scrollbars meet.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-scroll-area-corner',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+## Accessibility
+
+In most cases, it's best to rely on native scrolling and work with the customization options available in CSS. When that isn't enough, `ScrollArea` provides additional customizability while maintaining the browser's native scroll behavior (as well as accessibiliy features, like keyboard scrolling).
+
+### Keyboard Interactions
+
+Scrolling via keyboard is supported by default because the component relies on native scrolling. Specific keyboard interactions may differ between platforms, so we do not specify them here or add specific event listeners to handle scrolling via key events.

@@ -1,0 +1,334 @@
+---
+metaTitle: Radio Group
+metaDescription: A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.
+name: radio-group
+aria: https://www.w3.org/TR/wai-aria-practices-1.2/#radiobutton
+---
+
+# Radio Group
+
+<Description>
+  A set of checkable buttons—known as radio buttons—where no more than
+  one of the buttons can be checked at a time.
+</Description>
+
+<RadioGroupHero />
+
+<Highlights
+  features={[
+    'Full keyboard navigation.',
+    'Can be controlled or uncontrolled.',
+  ]}
+/>
+
+## Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-radio-group
+```
+
+## Anatomy
+
+Import the components and piece the parts together.
+
+```jsx
+import * as RadioGroup from '@radix-ui/react-radio-group';
+
+export default () => (
+  <RadioGroup.Root>
+    <RadioGroup.Item>
+      <RadioGroup.Indicator />
+    </RadioGroup.Item>
+  </RadioGroup.Root>
+);
+```
+
+## Basic example
+
+Create your styled radio group component from the primitive parts.
+
+```jsx
+import { styled } from 'path-to/stitches.config';
+import * as RadioGroup from '@radix-ui/react-radio-group';
+
+const StyledRadio = styled(RadioGroup.Item, {
+  appearance: 'none',
+  backgroundColor: 'transparent',
+  border: 'none',
+  padding: 0,
+  borderRadius: '50%',
+  boxShadow: 'inset 0 0 0 1px gainsboro',
+  width: 15,
+  height: 15,
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  verticalAlign: 'middle',
+
+  '& ~ &': { marginLeft: 5 },
+
+  '&:focus': {
+    outline: 'none',
+    boxShadow: 'inset 0 0 0 1px dodgerblue, 0 0 0 1px dodgerblue',
+  },
+});
+
+const StyledIndicator = styled(RadioGroup.Indicator, {
+  width: 7,
+  height: 7,
+  borderRadius: '50%',
+  backgroundColor: 'dodgerblue',
+});
+
+export default () => (
+  <RadioGroup.Root>
+    <StyledRadio value="cat">
+      <StyledIndicator />
+    </StyledRadio>
+    <StyledRadio value="dog">
+      <StyledIndicator />
+    </StyledRadio>
+    <StyledRadio value="rabbit">
+      <StyledIndicator />
+    </StyledRadio>
+  </RadioGroup.Root>
+);
+```
+
+<Note>
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
+
+</Note>
+
+## API Reference
+
+### RadioGroup
+
+Contains all the parts of a radio group.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-radio-group',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
+    {
+      name: 'defaultValue',
+      type: 'string',
+      description:
+        'The value of the radio item that should be checked when initially rendered. Use when you do not need to control the state of the radio items.',
+    },
+    {
+      name: 'value',
+      type: 'string',
+      description: (
+        <span>
+          The controlled value of the radio item to check. Should be
+          used in conjunction with <Code>onValueChange</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onValueChange',
+      type: '(value: string) => void',
+      typeSimple: 'function',
+      description: 'Event handler called when the value changes.',
+    },
+    {
+      name: 'required',
+      type: 'boolean',
+      description: (
+        <span>
+          When <Code>true</Code>, indicates that the user must check a
+          radio item before the owning form can be submitted.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### Item
+
+An item in the group that can be checked.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'button',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-radio-group-item',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
+    {
+      name: 'name',
+      type: 'string',
+      description:
+        'The name of the radio item. Submitted with its owning form as part of a name/value pair.',
+    },
+    {
+      name: 'value',
+      type: 'string',
+      description: (
+        <span>
+          The value given as data when submitted with a{' '}
+          <Code>name</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onCheckedChange',
+      type: '(event: React.ChangeEvent<HTMLInputElement>) => void',
+      typeSimple: 'function',
+      description:
+        'Event handler called when the checked state of the radio item changes.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      description: (
+        <span>
+          When <Code>true</Code>, prevents the user from interacting
+          with the radio item.
+        </span>
+      ),
+    },
+    {
+      name: 'required',
+      type: 'boolean',
+      description: (
+        <span>
+          When <Code>true</Code>, indicates that the user must check
+          the radio item before the owning form can be submitted.
+        </span>
+      ),
+    },
+    {
+      name: 'readOnly',
+      type: 'boolean',
+      description: (
+        <span>
+          When <Code>true</Code>, makes the radio item not mutable,
+          meaning the user cannot check the checkbox.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### Indicator
+
+Renders when the radio item is in a checked state. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'span',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'selector',
+      required: false,
+      type: 'string | null',
+      default: 'radix-radio-group-indicator',
+      description: (
+        <span>
+          A string to use as the component selector for CSS purposes.
+          It will be added as a data attribute. Pass <Code>null</Code>{' '}
+          to remove selector.
+        </span>
+      ),
+    },
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description:
+        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+    },
+  ]}
+/>
+
+## Accessibility
+
+Adheres to the [Radio Group WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#radiobutton) and uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/radio/radio-1/radio-1.html) to manage focus movement among radio items.
+
+### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Tab'],
+      description:
+        'Moves focus to either the checked radio item or the first radio item in the group.',
+    },
+    {
+      keys: ['Space'],
+      description:
+        'When focus is on an unchecked radio item, checks it.',
+    },
+    {
+      keys: ['Enter'],
+      description:
+        'When focus is on an unchecked radio item, checks it.',
+    },
+    {
+      keys: ['ArrowDown'],
+      description: 'Moves focus to the next radio item in the group.',
+    },
+    {
+      keys: ['ArrowRight'],
+      description: 'Moves focus to the next radio item in the group.',
+    },
+    {
+      keys: ['ArrowUp'],
+      description:
+        'Moves focus to the previous radio item in the group.',
+    },
+    {
+      keys: ['ArrowLeft'],
+      description:
+        'Moves focus to the previous radio item in the group.',
+    },
+  ]}
+/>

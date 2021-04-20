@@ -16,7 +16,7 @@ export const Footer = () => {
             gridTemplateColumns: 'repeat(1, 1fr)',
             gap: '$6',
             '& ul': { listStyle: 'none', margin: '0', padding: '0' },
-            bp2: {
+            '@bp2': {
               gridTemplateColumns: 'repeat(4, 1fr)',
               gap: '$3',
             },
@@ -25,7 +25,7 @@ export const Footer = () => {
           <Flex
             css={{
               alignItems: 'center',
-              bp2: {
+              '@bp2': {
                 flexDirection: 'column',
                 alignItems: 'start',
               },
@@ -37,7 +37,7 @@ export const Footer = () => {
                 css={{
                   color: '$hiContrast',
                   display: 'inline-flex',
-                  ':focus': {
+                  '&:focus': {
                     boxShadow: 'none',
                   },
                 }}
@@ -53,7 +53,7 @@ export const Footer = () => {
                 ml: '$4',
                 color: '$gray800',
                 pr: '$8',
-                bp2: { mt: '$5', ml: '0' },
+                '@bp2': { mt: '$5', ml: '0' },
               }}
             >
               Radix is maintained by{' '}

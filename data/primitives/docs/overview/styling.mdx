@@ -1,0 +1,237 @@
+---
+metaTitle: Styling
+metaDescription: Radix Primitives are unstyled—and compatible with any styling solution—giving you complete control over styling.
+---
+
+# Styling
+
+<Description>
+  Radix Primitives are unstyled—and compatible with any styling
+  solution—giving you complete control over styling.
+</Description>
+
+## Styling overview
+
+### Functional styles
+
+You are in control of all aspects of styling, including functional styles. For example—by default—a [Dialog Overlay](../components/dialog) won't cover the entire viewport. You're responsible for adding those styles, plus any presentation styles.
+
+### Classes
+
+All components and their parts accept a `className` prop. This class will be passed through to the DOM element. You can use it in CSS as expected.
+
+### Data attributes
+
+When components are stateful, their state will be exposed in a `data-state` attribute. For example, when an [Accordion Item](../components/dialog) is opened, it includes a `data-state="open"` attribute.
+
+## Styling with CSS
+
+### Styling a part
+
+You can style a component part by targeting the `className` that you provide. The primitives can be wrapped to add your class.
+
+```jsx
+import * as React from 'react';
+import * as AccordionPrimitive from '@radix-ui/react-accordion';
+
+const AccordionItem = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Item>,
+  React.ComponentProps<typeof AccordionPrimitive.Item>
+>((props, forwardedRef) => {
+  const { className, ...itemProps } = props;
+  return (
+    <AccordionPrimitive.Item
+      {...itemProps}
+      ref={forwardedRef}
+      className={'accordion-item ' + className}
+    />
+  );
+});
+```
+
+If you would like to retain support for the `as` prop (polymorphism), you can use our `react-polymorphic` types when wrapping.
+
+```jsx
+import * as React from 'react';
+import * as AccordionPrimitive from '@radix-ui/react-accordion';
+import type * as Polymorphic from '@radix-ui/react-polymorphic';
+
+type AccordionItemComponent = Polymorphic.ForwardRefComponent<
+  Polymorphic.IntrinsicElement<typeof AccordionPrimitive.Item>,
+  Polymorphic.OwnProps<typeof AccordionPrimitive.Item>,
+>;
+
+const AccordionItem = React.forwardRef((props, forwardedRef) => {
+  const { className, ...itemProps } = props;
+  return (
+    <AccordionPrimitive.Item
+      {...itemProps}
+      ref={forwardedRef}
+      className={'accordion-item ' + className}
+    />
+  );
+}) as AccordionItemComponent;
+```
+
+Alternatively, we expose an `extendPrimitive` utility as a convenience for adding default props while retaining polymoprhism. It can be useful if your preference is to style data attributes as they needn't be composed like class names.
+
+```jsx
+import { extendPrimitive } from '@radix-ui/react-primitive';
+import * as AccordionPrimitive from '@radix-ui/react-accordion';
+
+const AccordionItem = extendPrimitive(AccordionPrimitive.Item, {
+  defaultProps: { 'data-accordion-item': '' },
+});
+
+const AccordionPanel = extendPrimitive(AccordionPrimitive.Panel, {
+  defaultProps: { 'data-accordion-panel': '' },
+});
+```
+
+```css
+[data-accordion-item] {
+  border-bottom: 1px solid gainsboro;
+}
+
+[data-accordion-panel] {
+  padding: 10px;
+}
+```
+
+### Styling a state
+
+You can style a component state by targeting its `data-state` attribute.
+
+```css
+.accordion-item {
+  border-bottom: 1px solid gainsboro;
+}
+
+.accordion-item[data-state='open'] {
+  border-bottom-width: 2px;
+}
+```
+
+## Styling with CSS-in-JS
+
+The examples below are using [Stitches](https://stitches.dev), but you can use any CSS-in-JS library of your choice.
+
+### Styling a part
+
+You can style a component part by wrapping it in a `styled` function (or equivalent).
+
+```jsx
+import { styled } from 'path-to/stitches.config';
+import * as Accordion from '@radix-ui/react-accordion';
+
+const StyledItem = styled(Accordion.Item, {
+  borderBottom: '1px solid gainsboro',
+});
+
+const StyledPanel = styled(Accordion.Panel, {
+  padding: 10,
+});
+```
+
+### Styling a state
+
+You can style a component state by targeting its `data-state` attribute.
+
+```jsx
+import { styled } from 'path-to/stitches.config';
+import * as Accordion from '@radix-ui/react-accordion';
+
+const StyledItem = styled(Accordion.Item, {
+  borderBottom: '1px solid gainsboro',
+
+  '&[data-state=open]': {
+    borderBottomWidth: '2px',
+  },
+});
+```
+
+### Demo
+
+Here's an example of how you can style the [Accordion](../components/accordion) component with CSS-in-JS.
+
+<Preview>
+  <AccordionDemo />
+</Preview>
+
+```jsx collapsed
+import { styled } from 'path-to/stitches.config';
+import * as Accordion from '@radix-ui/react-accordion';
+
+const StyledAccordion = styled(Accordion.Root, {
+  borderTop: '1px solid hsl(210,15%,70%)',
+});
+
+const StyledItem = styled(Accordion.Item, {
+  borderBottom: '1px solid hsl(210,15%,70%)',
+});
+
+const StyledHeader = styled(Accordion.Header, {
+  margin: 0,
+  display: 'flex',
+});
+
+const StyledButton = styled(Accordion.Button, {
+  appearance: 'none',
+  border: 'none',
+  backgroundColor: 'transparent',
+  color: 'hsl(210,10%,48%)',
+  padding: '10px 15px',
+  flex: 1,
+  textAlign: 'left',
+
+  '&:focus': {
+    outline: 'none',
+    boxShadow:
+      '0 0 0 1px hsl(272,62%,44%), 0 0 0 3px hsl(272,100%,96%)',
+  },
+});
+
+const StyledPanel = styled(Accordion.Panel, {
+  padding: '10px 15px',
+  color: 'hsl(272,62%,44%)',
+});
+
+export default () => (
+  <StyledAccordion type="single">
+    <StyledItem value="item-1">
+      <StyledHeader>
+        <StyledButton>Item 1</StyledButton>
+      </StyledHeader>
+      <StyledPanel>
+        Here goes the content for the accordion item 1.
+      </StyledPanel>
+    </StyledItem>
+
+    <StyledItem value="item-2">
+      <StyledHeader>
+        <StyledButton>Item 2</StyledButton>
+      </StyledHeader>
+      <StyledPanel>
+        Here goes the content for the accordion item 2.
+      </StyledPanel>
+    </StyledItem>
+
+    <StyledItem value="item-3">
+      <StyledHeader>
+        <StyledButton>Item 3</StyledButton>
+      </StyledHeader>
+      <StyledPanel>
+        Here goes the content for the accordion item 3.
+      </StyledPanel>
+    </StyledItem>
+  </StyledAccordion>
+);
+```
+
+---
+
+## Summary
+
+Radix Primitives were designed to encapsulate accessibility concerns and other complex functionalities, while ensuring you retain complete control over styling.
+
+For convenience, stateful components include a `data-state` attribute.

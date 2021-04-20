@@ -1,0 +1,56 @@
+---
+metaTitle: Polymorphic
+metaDescription: Creates strongly typed polymorphic components.
+name: polymorphic
+---
+
+# Polymorphic
+
+<Description>
+  Creates strongly typed polymorphic components.
+</Description>
+
+<Highlights
+  features={[
+    'Typed attributes based on the `as` prop',
+    'Typed props based on the `as` prop',
+    'Typed events based on the `as` prop',
+  ]}
+/>
+
+## Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-polymorphic
+```
+
+## Import
+
+Import the component.
+
+```jsx
+import type * as Polymorphic from '@radix-ui/react-polymorphic';
+```
+
+## Basic example
+
+Make a polymorphic `Box` component.
+
+```tsx
+import React from 'react';
+import type * as Polymorphic from '@radix-ui/react-polymorphic';
+
+type BoxComponent = Polymorphic.ForwardRefComponent<'div', {}>;
+
+const Box = React.forwardRef((props, forwardedRef) => {
+  const { as: Comp = 'div', ...boxProps } = props;
+  return <Comp {...boxProps} ref={forwardedRef} />;
+}) as BoxComponent;
+
+export default () => <Box>
+  <Box as="h1">This is a h1></Box>
+  <Box as="button">This is a button</Box>
+</Box>
+```
