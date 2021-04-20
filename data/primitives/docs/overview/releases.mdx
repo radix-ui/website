@@ -9,179 +9,43 @@ metaDescription: Radix Primitives releases and their changelogs.
   Radix Primitives releases and their changelogs.
 </Description>
 
-<Grid
-  css={{
-    gridTemplateColumns: '1fr 1fr',
-    gap: '$7',
-  }}
->
-  <Box>
-    <Heading>
-      New ToggleGroup and Toolbar primitives, improved tree-shaking,
-      and bug fixes.
-    </Heading>
-    <Text size="2" variant="gray" css={{ mt: '$3' }}>
-      26/03/2021
-    </Text>
-  </Box>
-  <Box>
-    <Subheading css={{ mb: '$1' }}>Global</Subheading>
-    <Box as="ul" css={{ margin: 0 }}>
-      <li>
-        <Text css={{ lineHeight: '23px' }}>
-          <Text variant="gray" css={{ display: 'inline' }}>
-            [Enhancement]
-          </Text>{' '}
-          Improve tree-shaking{' '}
-          <Link
-            variant="subtle"
-            href="#"
-            css={{ display: 'inline-flex' }}
-            target="_blank"
-          >
-            <Text size="1" variant="gray">
-              #577
-            </Text>
-          </Link>
-        </Text>
-      </li>
-      <li>
-        <Text css={{ lineHeight: '23px' }}>
-          <Text variant="gray" css={{ display: 'inline' }}>
-            [New]
-          </Text>{' '}
-          ToggleGroup{' '}
-          <Link
-            variant="subtle"
-            href="#"
-            css={{ display: 'inline-flex' }}
-            target="_blank"
-          >
-            <Text size="1" variant="gray">
-              #376
-            </Text>
-          </Link>
-        </Text>
-      </li>
-      <li>
-        <Text css={{ lineHeight: '23px' }}>
-          <Text variant="gray" css={{ display: 'inline' }}>
-            [New]
-          </Text>{' '}
-          Toolbar{' '}
-          <Link
-            variant="subtle"
-            href="#"
-            css={{ display: 'inline-flex' }}
-            target="_blank"
-          >
-            <Text size="1" variant="gray">
-              #412
-            </Text>
-          </Link>{' '}
-          <Link
-            variant="subtle"
-            href="#"
-            css={{ display: 'inline-flex' }}
-            target="_blank"
-          >
-            <Text size="1" variant="gray">
-              #451
-            </Text>
-          </Link>{' '}
-          <Link
-            variant="subtle"
-            href="#"
-            css={{ display: 'inline-flex' }}
-            target="_blank"
-          >
-            <Text size="1" variant="gray">
-              #545
-            </Text>
-          </Link>
-        </Text>
-      </li>
-    </Box>
-    <Flex css={{ ai: 'center', mt: '$4', mb: '$1' }}>
-      <Subheading>Context Menu</Subheading>
-      <Badge variant="blue" css={{ ml: '$1' }}>
-        0.0.17
-      </Badge>
-    </Flex>
-    <Box as="ul" css={{ margin: 0 }}>
-      <li>
-        <Text css={{ lineHeight: '23px' }}>
-          [Bug] Ensure you can open a context menu when one is already
-          open #565
-        </Text>
-      </li>
-    </Box>
-    <Subheading css={{ mt: '$4', mb: '$1' }}>
-      Dropdown Menu
-    </Subheading>
-    <Box as="ul" css={{ margin: 0 }}>
-      <li>
-        <Text css={{ lineHeight: '23px' }}>
-          [Bug] Fix potential overlap issue #541
-        </Text>
-      </li>
-    </Box>
-    <Subheading css={{ mt: '$4', mb: '$1' }}>Popover</Subheading>
-    <Box as="ul" css={{ margin: 0 }}>
-      <li>
-        <Text css={{ lineHeight: '23px' }}>
-          [Bug] Ensure <Code>Content</Code> closes when it has
-          multiple close animations #571
-        </Text>
-      </li>
-    </Box>
-    <Subheading css={{ mt: '$4', mb: '$1' }}>Toggle</Subheading>
-    <Box as="ul" css={{ margin: 0 }}>
-      <li>
-        <Text css={{ lineHeight: '23px' }}>
-          Rename <Code>ToggleButton</Code> primitive to{' '}
-          <Code>Toggle</Code> #546
-        </Text>
-      </li>
-      <li>
-        <Text css={{ lineHeight: '23px' }}>
-          Rename <Code>toggled</Code> prop to <Code>pressed</Code>{' '}
-          #546
-        </Text>
-      </li>
-      <li>
-        <Text css={{ lineHeight: '23px' }}>
-          Rename <Code>defaultToggled</Code> prop to{' '}
-          <Code>defaultPressed</Code> #546
-        </Text>
-      </li>
-      <li>
-        <Text css={{ lineHeight: '23px' }}>
-          Rename <Code>onToggledChange</Code> prop to{' '}
-          <Code>onPressedChange</Code> #546
-        </Text>
-      </li>
-    </Box>
-    <Subheading css={{ mt: '$4', mb: '$1' }}>
-      Dropdown Menu
-    </Subheading>
-    <Text css={{ lineHeight: '23px' }}>
-      Fix potential overlap issue #541
-    </Text>
-    <Subheading css={{ mt: '$4', mb: '$1' }}>ToggleGroup</Subheading>
-    <Text css={{ lineHeight: '23px' }}>
-      Rename <Code>ToggleButton</Code> primitive to{' '}
-      <Code>Toggle</Code> #546
-    </Text>
-    <Subheading css={{ mt: '$4', mb: '$1' }}>Tooltip</Subheading>
-    <Text css={{ lineHeight: '23px' }}>
-      Add custom timing support #550 #551 #554 #558
-    </Text>
-    <Text css={{ lineHeight: '23px' }}>
-      Add unmount animation support #558
-    </Text>
-  </Box>
-</Grid>
+## 26/03/2021
+
+**All Primitives**
+
+- ✨ Improve tree-shaking <PRLink id={577} />
+
+<PackageRelease name="Context Menu" version="0.0.17" />
+
+- 🐛 Ensure you can open a context menu when one is already open <PRLink id={565} />
+
+<PackageRelease name="Dropdown Menu" version="0.0.17" />
+
+- 🐛 Fix potential overlap issue <PRLink id={541} />
+
+<PackageRelease name="Popover" version="0.0.15" />
+
+- 🐛 Ensure `Content` closes when it has multiple close animations <PRLink id={571} />
+
+<PackageRelease name="Toggle" version="0.0.6" />
+
+- 🔥 Rename `ToggleButton` primitive to `Toggle` <PRLink id={546} />
+- 🔥 Rename `toggled` prop to `pressed` <PRLink id={546} />
+- 🔥 Rename `defaultToggled` prop to `defaultPressed` <PRLink id={546} />
+- 🔥 Rename `onToggledChange` prop to `onPressedChange` <PRLink id={546} />
+
+<PackageRelease name="Toggle Group" version="0.0.6" />
+
+- 🎉 New primitive <PRLink id={376} />
+
+<PackageRelease name="Toolbar" version="0.0.9" />
+
+- 🎉 New primitive <PRLink id={[412,451,545]} />
+
+<PackageRelease name="Tooltip" version="0.0.16" />
+
+- ✨ Add custom timing support <PRLink id={[550,551,554,558]} />
+- ✨ Add unmount animation support <PRLink id={558} />
 
 ## 05/03/2021
 
