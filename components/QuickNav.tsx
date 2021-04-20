@@ -23,7 +23,7 @@ const QuickNavText = styled(Text, {
   lineHeight: '20px',
 });
 
-export function QuickNav({ content }) {
+export function QuickNav() {
   const [headings, setHeadings] = React.useState<HTMLHeadingElement[]>([]);
 
   React.useEffect(() => {
@@ -32,7 +32,7 @@ export function QuickNav({ content }) {
     );
 
     setHeadings(headingElements);
-  }, [content]);
+  }, []);
 
   // Function to determine the Heading Level based on `nodeName` (H2, H3, etc)
   const getLevel = (nodeName) => {

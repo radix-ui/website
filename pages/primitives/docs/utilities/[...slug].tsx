@@ -1,27 +1,28 @@
 import React from 'react';
-import renderToString from 'next-mdx-remote/render-to-string';
-import hydrate from 'next-mdx-remote/hydrate';
+import useMDXContent from 'next-mdx-thing/useMDXContent';
+import createMDXContent from 'next-mdx-thing/createMDXContent';
+import { IdProvider } from '@radix-ui/react-id';
 import { Box } from '@modulz/design-system';
 import remarkAutolinkHeadings from 'remark-autolink-headings';
 import remarkSlug from 'remark-slug';
 import { RemoveScroll } from 'react-remove-scroll';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { components, createProvider } from '@components/MDXComponents';
+import { components } from '@components/MDXComponents';
 import { QuickNav } from '@components/QuickNav';
 import { OldVersionNote } from '@components/OldVersionNote';
+import { FrontmatterContext } from '@components/FrontmatterContext';
 import { getAllFrontmatter, getAllVersionsFromPath, getDocBySlug } from '@lib/mdx';
 import rehypeHighlightCode from '@lib/rehype-highlight-code';
 
 import type { PrimitivesFrontmatter } from 'types/primitives';
-import type { MdxRemote } from 'next-mdx-remote/types';
 
 type Doc = {
   frontmatter: PrimitivesFrontmatter;
-  source: MdxRemote.Source;
+  source: string[];
 };
 
 export default function UtilitiesDoc({ frontmatter, source }: Doc) {
-  const content = hydrate(source, { components, provider: createProvider(frontmatter) });
+  const MDXContent = useMDXContent(source, components);
 
   return (
     <>
@@ -38,7 +39,11 @@ export default function UtilitiesDoc({ frontmatter, source }: Doc) {
         />
       )}
 
-      {content}
+      <IdProvider>
+        <FrontmatterContext.Provider value={frontmatter}>
+          <MDXContent />
+        </FrontmatterContext.Provider>
+      </IdProvider>
 
       <Box
         as="aside"
@@ -64,7 +69,7 @@ export default function UtilitiesDoc({ frontmatter, source }: Doc) {
           },
         }}
       >
-        <QuickNav content={content} />
+        <QuickNav key={content} />
       </Box>
     </>
   );
@@ -95,13 +100,10 @@ export async function getStaticProps(context) {
     versions: getAllVersionsFromPath(`primitives/docs/utilities/${componentName}`),
   };
 
-  const mdxContent = await renderToString(content, {
+  const mdxContent = await createMDXContent(content, {
     components,
-    provider: createProvider(extendedFrontmatter),
-    mdxOptions: {
-      remarkPlugins: [remarkAutolinkHeadings, remarkSlug],
-      rehypePlugins: [rehypeHighlightCode],
-    },
+    remarkPlugins: [remarkAutolinkHeadings, remarkSlug],
+    rehypePlugins: [rehypeHighlightCode],
   });
 
   return {

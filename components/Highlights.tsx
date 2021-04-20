@@ -5,7 +5,7 @@ import { ExternalIcon } from '@components/ExternalIcon';
 import { Select } from '@components/Select';
 import { useRouter } from 'next/router';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
-import { FrontmatterContext } from './MDXComponents';
+import { FrontmatterContext } from '@components/FrontmatterContext';
 
 export function Highlights({ features }) {
   const router = useRouter();

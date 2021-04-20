@@ -2,7 +2,6 @@ import * as React from 'react';
 import NextLink from 'next/link';
 import * as DS from '@modulz/design-system';
 import { Link2Icon } from '@radix-ui/react-icons';
-import { IdProvider } from '@radix-ui/react-id';
 import { PropsTable } from './PropsTable';
 import { KeyboardTable } from './KeyboardTable';
 import { Preview } from './Preview';
@@ -33,7 +32,6 @@ import * as toggleDemos from './demos/Toggle';
 import * as toggleGroupDemos from './demos/ToggleGroup';
 import * as toolbarDemos from './demos/Toolbar';
 import * as tooltipDemos from './demos/Tooltip';
-import { PrimitivesFrontmatter } from 'types/primitives';
 
 export const components = {
   ...DS,
@@ -232,25 +230,3 @@ const LinkHeading = ({
     </DS.Box>
   </DS.Box>
 );
-
-export const FrontmatterContext = React.createContext<PrimitivesFrontmatter>({} as any);
-
-// Custom provider for next-mdx-remote
-// https://github.com/hashicorp/next-mdx-remote#using-providers
-function Provider(props) {
-  const { frontmatter, children } = props;
-  return (
-    <IdProvider>
-      <DS.DesignSystemProvider>
-        <FrontmatterContext.Provider value={frontmatter}>{children}</FrontmatterContext.Provider>
-      </DS.DesignSystemProvider>
-    </IdProvider>
-  );
-}
-
-export const createProvider = (frontmatter) => {
-  return {
-    component: Provider,
-    props: { frontmatter },
-  };
-};
