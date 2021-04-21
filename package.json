@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@mdx-js/loader": "^1.6.22",
-    "@modulz/design-system": "0.1.4",
+    "@modulz/design-system": "0.1.7",
     "@radix-ui/react-accessible-icon": "0.0.12",
     "@radix-ui/react-accordion": "0.0.13",
     "@radix-ui/react-alert-dialog": "0.0.15",
