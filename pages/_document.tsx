@@ -17,6 +17,15 @@ export default class Document extends NextDocument {
             as="font"
             crossOrigin="anonymous"
           />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+window.requestIdleCallback = function(cb) {
+  return cb()
+}
+          `,
+            }}
+          />
         </Head>
         <body>
           <Main />
