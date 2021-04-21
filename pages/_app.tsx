@@ -47,6 +47,7 @@ function App({ Component, pageProps }: AppProps) {
 
   const isPrimitivesDocs = router.pathname.includes('/primitives/docs');
   const isDesignSystemDocs = router.pathname.includes('/design-system/docs');
+  const shouldShowFooter = !isPrimitivesDocs || !isDesignSystemDocs;
 
   return (
     <DesignSystemProvider>
@@ -67,7 +68,7 @@ function App({ Component, pageProps }: AppProps) {
         ) : (
           <Component {...pageProps} />
         )}
-        {!isPrimitivesDocs && <Footer />}
+        {!shouldShowFooter && <Footer />}
       </ThemeProvider>
     </DesignSystemProvider>
   );
