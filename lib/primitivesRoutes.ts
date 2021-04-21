@@ -1,4 +1,4 @@
-export const docsRoutes = [
+export const primitivesRoutes = [
   {
     label: 'Overview',
     pages: [
@@ -58,7 +58,7 @@ export const docsRoutes = [
   },
 ];
 
-export const allDocsRoutes = docsRoutes.reduce((acc, curr) => {
+export const allPrimitivesRoutes = primitivesRoutes.reduce((acc, curr) => {
   acc = [...acc, ...curr.pages.filter((p) => p.draft !== true)];
   return acc;
 }, []);
