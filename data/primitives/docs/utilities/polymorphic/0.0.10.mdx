@@ -42,15 +42,111 @@ Make a polymorphic `Box` component.
 import React from 'react';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
-type BoxComponent = Polymorphic.ForwardRefComponent<'div', {}>;
-
 const Box = React.forwardRef((props, forwardedRef) => {
   const { as: Comp = 'div', ...boxProps } = props;
   return <Comp {...boxProps} ref={forwardedRef} />;
-}) as BoxComponent;
+}) as Polymorphic.ForwardRefComponent<'div', {}>;
 
 export default () => <Box>
   <Box as="h1">This is a h1></Box>
   <Box as="button">This is a button</Box>
 </Box>
+```
+
+## API Reference
+
+### ForwardRefComponent
+
+Cast your `forwardRef` component to this type to enable polymorphism.
+
+```tsx line=1,4
+Polymorphic.ForwardRefComponent<
+  keyof JSX.IntrinsicElements,
+  OwnProps
+>
+```
+
+The [`OwnProps`](/primitives/docs/utilities/polymorphic#ownprops) should not contain DOM attributes. These will be added for you. Use the `Polymorphic.OwnProps` utility to extract these from existing polymorphic components.
+
+#### Usage
+
+```tsx
+Polymorphic.ForwardRefComponent<
+  'button',
+  { variant: 'solid' | 'outline' }
+>
+```
+
+### OwnProps
+
+Extract props from a polymorphic component, excluding its DOM props.
+
+```tsx line=1,3
+Polymorphic.OwnProps<
+  Polymorphic.ForwardRefComponent
+>;
+```
+
+#### Usage
+
+```tsx
+Polymorphic.OwnProps<typeof Button>;
+// { variant: 'solid' | 'outline' }
+```
+
+### InstrinsicElement
+
+Extract the `JSX.IntrinsicElements` key from a polymorphic component.
+
+```tsx line=1,3
+Polymorphic.InstrinsicElement<
+  Polymorphic.ForwardRefComponent
+>;
+```
+
+#### Usage
+
+```tsx
+Polymorphic.InstrinsicElement<typeof Button>;
+// 'button'
+```
+
+## Examples
+
+### Extending a Polymorphic component
+
+Maintain polymorphism when wrapping a polymorphic component in your own custom component by combining the above utilities.
+
+```tsx
+import React from 'react';
+import * as Dialog from '@radix-ui/react-dialog';
+import type * as Polymorphic from '@radix-ui/react-polymorphic';
+
+type PolymorphicDialogContent = Polymorphic.ForwardRefComponent<
+  Polymorphic.IntrinsicElement<typeof Dialog.Content>,
+  Polymorphic.OwnProps<typeof Dialog.Content> & {
+    size?: 'small' | 'large';
+  }
+>;
+
+const DialogContent = React.forwardRef((props, forwardedRef) => {
+  const { size = 'small', ...contentProps } = props;
+  return (
+    <Dialog.Content
+      {...contentProps}
+      className={size}
+      ref={forwardedRef}
+    />
+  );
+}) as PolymorphicDialogContent;
+
+export default () => (
+  <Dialog.Root>
+    <Dialog.Trigger>Open</Dialog.Trigger>
+    <Dialog.Overlay />
+    <DialogContent as="article">
+      <p>This is an article</p>
+    </DialogContent>
+  </Dialog.Root>
+);
 ```
