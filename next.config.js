@@ -65,11 +65,18 @@ module.exports = withPlugins([withTM, withOptimizedImages, withVideos], {
     const utilitiesPaths = getPaths(utilitiesDirectory);
     const latestUtilitiesPaths = getPathOfLatestVersion(utilitiesPaths);
 
-    return [...latestPrimitivesPaths, ...latestUtilitiesPaths].reduce((redirects, paths, index) => {
-      const [, destination] = paths.split('/data');
-      const [, source] = path.join(paths, '..').split('/data');
-      redirects.push({ source, destination });
-      return redirects;
-    }, []);
+    const designSystemDirectory = path.join(__dirname, 'data/design-system/docs/components');
+    const designSystemPaths = getPaths(designSystemDirectory);
+    const latestDesignSystemPaths = getPathOfLatestVersion(designSystemPaths);
+
+    return [...latestPrimitivesPaths, ...latestUtilitiesPaths, ...latestDesignSystemPaths].reduce(
+      (redirects, paths, index) => {
+        const [, destination] = paths.split('/data');
+        const [, source] = path.join(paths, '..').split('/data');
+        redirects.push({ source, destination });
+        return redirects;
+      },
+      []
+    );
   },
 });
