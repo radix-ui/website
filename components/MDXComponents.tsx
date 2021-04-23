@@ -33,14 +33,17 @@ import * as toggleDemos from './demos/Toggle';
 import * as toggleGroupDemos from './demos/ToggleGroup';
 import * as toolbarDemos from './demos/Toolbar';
 import * as tooltipDemos from './demos/Tooltip';
-import { PrimitivesFrontmatter } from 'types/primitives';
+import { Frontmatter } from 'types/frontmatter';
 
 export const components = {
   ...DS,
   h1: (props) => (
     <DS.Text {...props} as="h1" size="8" css={{ fontWeight: 500, mb: '$2', lineHeight: '40px' }} />
   ),
-  Description: (props) => <DS.Subtitle {...props} as="p" css={{ mt: '$2', mb: '$7' }} />,
+  Description: ({ children, ...props }) => {
+    const childText = typeof children === 'string' ? children : children.props.children;
+    return <DS.Subtitle {...props} as="p" css={{ mt: '$2', mb: '$7' }} children={childText} />;
+  },
   h2: ({ children, id, ...props }) => (
     <LinkHeading id={id} css={{ mt: '$7', mb: '$2' }}>
       <DS.Heading
@@ -130,8 +133,14 @@ export const components = {
     />
   ),
   pre: ({ children }) => <>{children}</>,
-  code: DocCodeBlock,
-  inlineCode: (props) => <DS.Code {...props} />,
+  code: ({ className, collapsed, ...props }) => {
+    const isInlineCode = !className;
+    return isInlineCode ? (
+      <DS.Code {...props} />
+    ) : (
+      <DocCodeBlock className={className} collapsed={collapsed !== undefined} {...(props as any)} />
+    );
+  },
   Note: (props) => (
     <DS.Box
       as="aside"
@@ -233,24 +242,15 @@ const LinkHeading = ({
   </DS.Box>
 );
 
-export const FrontmatterContext = React.createContext<PrimitivesFrontmatter>({} as any);
+export const FrontmatterContext = React.createContext<Frontmatter>({} as any);
 
 // Custom provider for next-mdx-remote
 // https://github.com/hashicorp/next-mdx-remote#using-providers
-function Provider(props) {
+export function MDXProvider(props) {
   const { frontmatter, children } = props;
   return (
     <IdProvider>
-      <DS.DesignSystemProvider>
-        <FrontmatterContext.Provider value={frontmatter}>{children}</FrontmatterContext.Provider>
-      </DS.DesignSystemProvider>
+      <FrontmatterContext.Provider value={frontmatter}>{children}</FrontmatterContext.Provider>
     </IdProvider>
   );
 }
-
-export const createProvider = (frontmatter) => {
-  return {
-    component: Provider,
-    props: { frontmatter },
-  };
-};

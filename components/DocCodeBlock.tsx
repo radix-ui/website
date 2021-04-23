@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Button } from '@modulz/design-system';
-import { ChevronDownIcon } from '@radix-ui/react-icons';
 import { Pre } from './Pre';
 
 export function DocCodeBlock({

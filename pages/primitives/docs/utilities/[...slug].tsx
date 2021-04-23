@@ -1,27 +1,22 @@
 import React from 'react';
-import renderToString from 'next-mdx-remote/render-to-string';
-import hydrate from 'next-mdx-remote/hydrate';
+import { getMDXComponent } from 'mdx-bundler/client';
 import { Box } from '@modulz/design-system';
-import remarkAutolinkHeadings from 'remark-autolink-headings';
-import remarkSlug from 'remark-slug';
 import { RemoveScroll } from 'react-remove-scroll';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { components, createProvider } from '@components/MDXComponents';
+import { MDXProvider, components } from '@components/MDXComponents';
 import { QuickNav } from '@components/QuickNav';
 import { OldVersionNote } from '@components/OldVersionNote';
-import { getAllFrontmatter, getAllVersionsFromPath, getDocBySlug } from '@lib/mdx';
-import rehypeHighlightCode from '@lib/rehype-highlight-code';
+import { getAllFrontmatter, getAllVersionsFromPath, getMdxBySlug } from '@lib/mdx';
 
-import type { PrimitivesFrontmatter } from 'types/primitives';
-import type { MdxRemote } from 'next-mdx-remote/types';
+import type { Frontmatter } from 'types/frontmatter';
 
 type Doc = {
-  frontmatter: PrimitivesFrontmatter;
-  source: MdxRemote.Source;
+  frontmatter: Frontmatter;
+  code: any;
 };
 
-export default function UtilitiesDoc({ frontmatter, source }: Doc) {
-  const content = hydrate(source, { components, provider: createProvider(frontmatter) });
+export default function UtilitiesDoc({ frontmatter, code }: Doc) {
+  const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
   return (
     <>
@@ -38,7 +33,9 @@ export default function UtilitiesDoc({ frontmatter, source }: Doc) {
         />
       )}
 
-      {content}
+      <MDXProvider frontmatter={frontmatter}>
+        <Component components={components as any} />
+      </MDXProvider>
 
       <Box
         as="aside"
@@ -64,7 +61,7 @@ export default function UtilitiesDoc({ frontmatter, source }: Doc) {
           },
         }}
       >
-        <QuickNav content={content} />
+        <QuickNav key={frontmatter.slug} />
       </Box>
     </>
   );
@@ -82,11 +79,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const { frontmatter, content } = getDocBySlug(
-    'primitives/docs/utilities',
+  const { frontmatter, code } = await getMdxBySlug(
+    'primitives/docs/utilities/',
     context.params.slug.join('/')
   );
-
   const [componentName, componentVersion] = context.params.slug;
 
   const extendedFrontmatter = {
@@ -95,19 +91,5 @@ export async function getStaticProps(context) {
     versions: getAllVersionsFromPath(`primitives/docs/utilities/${componentName}`),
   };
 
-  const mdxContent = await renderToString(content, {
-    components,
-    provider: createProvider(extendedFrontmatter),
-    mdxOptions: {
-      remarkPlugins: [remarkAutolinkHeadings, remarkSlug],
-      rehypePlugins: [rehypeHighlightCode],
-    },
-  });
-
-  return {
-    props: {
-      frontmatter: extendedFrontmatter,
-      source: mdxContent,
-    },
-  };
+  return { props: { frontmatter: extendedFrontmatter, code } };
 }

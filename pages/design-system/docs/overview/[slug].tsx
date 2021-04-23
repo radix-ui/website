@@ -1,26 +1,21 @@
 import React from 'react';
-import renderToString from 'next-mdx-remote/render-to-string';
-import hydrate from 'next-mdx-remote/hydrate';
-import { Text, Box } from '@modulz/design-system';
+import { getMDXComponent } from 'mdx-bundler/client';
+import { Box } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { createProvider, components } from '@components/MDXComponents';
-import { getAllFrontmatter, getDocBySlug } from '@lib/mdx';
-import rehypeHighlightCode from '@lib/rehype-highlight-code';
-import remarkAutolinkHeadings from 'remark-autolink-headings';
-import remarkSlug from 'remark-slug';
+import { MDXProvider, components } from '@components/MDXComponents';
+import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { RemoveScroll } from 'react-remove-scroll';
 import { QuickNav } from '@components/QuickNav';
 
-import type { PrimitivesFrontmatter } from 'types/primitives';
-import type { MdxRemote } from 'next-mdx-remote/types';
+import type { Frontmatter } from 'types/frontmatter';
 
 type Doc = {
-  frontmatter: PrimitivesFrontmatter;
-  source: MdxRemote.Source;
+  frontmatter: Frontmatter;
+  code: any;
 };
 
-export default function DesignSystemOverviewDoc({ frontmatter, source }: Doc) {
-  const content = hydrate(source, { components, provider: createProvider(frontmatter) });
+export default function DesignSystemOverviewDoc({ frontmatter, code }: Doc) {
+  const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
   return (
     <>
@@ -30,7 +25,9 @@ export default function DesignSystemOverviewDoc({ frontmatter, source }: Doc) {
         image={frontmatter.metaImage}
       />
 
-      {content}
+      <MDXProvider frontmatter={frontmatter}>
+        <Component components={components as any} />
+      </MDXProvider>
 
       <Box
         as="aside"
@@ -56,7 +53,7 @@ export default function DesignSystemOverviewDoc({ frontmatter, source }: Doc) {
           },
         }}
       >
-        <QuickNav content={content} />
+        <QuickNav key={frontmatter.slug} />
       </Box>
     </>
   );
@@ -74,16 +71,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const { frontmatter, content } = getDocBySlug('design-system/docs/overview', context.params.slug);
-
-  const mdxContent = await renderToString(content, {
-    components,
-    provider: createProvider(frontmatter),
-    mdxOptions: {
-      remarkPlugins: [remarkAutolinkHeadings, remarkSlug],
-      rehypePlugins: [rehypeHighlightCode],
-    },
-  });
-
-  return { props: { frontmatter, source: mdxContent } };
+  const { frontmatter, code } = await getMdxBySlug(
+    'design-system/docs/overview/',
+    context.params.slug
+  );
+  return { props: { frontmatter, code } };
 }

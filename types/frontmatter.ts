@@ -1,4 +1,4 @@
-export type PrimitivesFrontmatter = {
+export type Frontmatter = {
   metaTitle: string;
   metaDescription?: string;
   metaImage?: string;

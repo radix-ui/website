@@ -2,8 +2,13 @@ import fs from 'fs';
 import path from 'path';
 import glob from 'glob';
 import matter from 'gray-matter';
-const compareVersions = require('compare-versions');
-import type { PrimitivesFrontmatter } from 'types/primitives';
+import compareVersions from 'compare-versions';
+import { bundleMDX } from 'mdx-bundler';
+import remarkSlug from 'remark-slug';
+import rehypeHighlightCode from '@lib/rehype-highlight-code';
+import rehypeMetaAttribute from '@lib/rehype-meta-attribute';
+
+import type { Frontmatter } from 'types/frontmatter';
 
 const ROOT_PATH = process.cwd();
 export const DATA_PATH = path.join(ROOT_PATH, 'data');
@@ -18,22 +23,33 @@ export const getAllFrontmatter = (fromPath) => {
     const { data } = matter(source);
 
     return {
-      ...(data as PrimitivesFrontmatter),
+      ...(data as Frontmatter),
       slug: filePath.replace(`${DATA_PATH}/`, '').replace('.mdx', ''),
-    } as PrimitivesFrontmatter;
+    } as Frontmatter;
   });
 };
 
-export const getDocBySlug = (basePath, slug) => {
+export const getMdxBySlug = async (basePath, slug) => {
   const source = fs.readFileSync(path.join(DATA_PATH, basePath, `${slug}.mdx`), 'utf8');
-  const { data, content } = matter(source);
+  const { frontmatter, code } = await bundleMDX(source, {
+    xdmOptions(input, options) {
+      options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkSlug];
+      options.rehypePlugins = [
+        ...(options.rehypePlugins ?? []),
+        rehypeMetaAttribute,
+        rehypeHighlightCode,
+      ];
+
+      return options;
+    },
+  });
 
   return {
     frontmatter: {
-      ...(data as PrimitivesFrontmatter),
+      ...(frontmatter as Frontmatter),
       slug,
-    } as PrimitivesFrontmatter,
-    content,
+    } as Frontmatter,
+    code,
   };
 };
 
