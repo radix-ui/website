@@ -83,7 +83,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const { frontmatter, code } = await getMdxBySlug(
-    'design-system/docs/utilities/',
+    'design-system/docs/components/',
     context.params.slug.join('/')
   );
   const [componentName, componentVersion] = context.params.slug;
@@ -91,7 +91,7 @@ export async function getStaticProps(context) {
   const extendedFrontmatter = {
     ...frontmatter,
     version: componentVersion,
-    versions: getAllVersionsFromPath(`design-system/docs/utilities/${componentName}`),
+    versions: getAllVersionsFromPath(`design-system/docs/components/${componentName}`),
   };
 
   return { props: { frontmatter: extendedFrontmatter, code } };
