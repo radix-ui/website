@@ -6,9 +6,9 @@ import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import { ScrollArea } from '../components/ScrollArea';
 import { RadixLogo } from './RadixLogo';
 import { ThemeToggle } from '@components/ThemeToggle';
-import { allPrimitivesRoutes, primitivesRoutes } from '@lib/primitivesRoutes';
+import { allDesignSystemRoutes, designSystemRoutes } from '@lib/designSystemRoutes';
 
-export function DocsPage({ children }: { children: React.ReactNode }) {
+export function DesignSystemPage({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -28,9 +28,9 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
     editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/main/data/${currentPageSlug}/${routerSlug[1]}.mdx`;
   }
 
-  const currentPageIndex = allPrimitivesRoutes.findIndex((page) => page.slug === currentPageSlug);
-  const previous = allPrimitivesRoutes[currentPageIndex - 1];
-  const next = allPrimitivesRoutes[currentPageIndex + 1];
+  const currentPageIndex = allDesignSystemRoutes.findIndex((page) => page.slug === currentPageSlug);
+  const previous = allDesignSystemRoutes[currentPageIndex - 1];
+  const next = allDesignSystemRoutes[currentPageIndex + 1];
 
   React.useEffect(() => {
     const handleRouteChange = () => setIsOpen(false);
@@ -123,7 +123,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
               },
             }}
           >
-            {primitivesRoutes.map((section) => (
+            {designSystemRoutes.map((section) => (
               <Box key={section.label} css={{ mb: '$4' }}>
                 <NavHeading>{section.label}</NavHeading>
                 {section.pages.map((page) => {

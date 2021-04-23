@@ -5,6 +5,7 @@ import { ThemeProvider } from 'next-themes';
 import { global, darkTheme, DesignSystemProvider } from '@modulz/design-system';
 import { Footer } from '@components/Footer';
 import { DocsPage } from '@components/DocsPage';
+import { DesignSystemPage } from '@components/DesignSystemPage';
 import { useAnalytics } from '@lib/analytics';
 import { scrollToUrlHash } from '@lib/scrollToUrlHash';
 
@@ -44,7 +45,9 @@ function App({ Component, pageProps }: AppProps) {
     scrollToUrlHash(router.asPath);
   }, []);
 
-  const isDocs = router.pathname.includes('/docs');
+  const isPrimitivesDocs = router.pathname.includes('/primitives/docs');
+  const isDesignSystemDocs = router.pathname.includes('/design-system/docs');
+  const shouldShowFooter = !isPrimitivesDocs || !isDesignSystemDocs;
 
   return (
     <DesignSystemProvider>
@@ -54,14 +57,18 @@ function App({ Component, pageProps }: AppProps) {
         value={{ light: 'light-theme', dark: darkTheme.className }}
         defaultTheme="system"
       >
-        {isDocs ? (
+        {isPrimitivesDocs ? (
           <DocsPage>
             <Component {...pageProps} />
           </DocsPage>
+        ) : isDesignSystemDocs ? (
+          <DesignSystemPage>
+            <Component {...pageProps} />
+          </DesignSystemPage>
         ) : (
           <Component {...pageProps} />
         )}
-        {!isDocs && <Footer />}
+        {!shouldShowFooter && <Footer />}
       </ThemeProvider>
     </DesignSystemProvider>
   );
