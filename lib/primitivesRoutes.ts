@@ -50,7 +50,7 @@ export const primitivesRoutes = [
       { title: 'Aspect Ratio', slug: 'primitives/docs/utilities/aspect-ratio' },
       { title: 'Id Provider', slug: 'primitives/docs/utilities/id-provider' },
       { title: 'Label', slug: 'primitives/docs/utilities/label' },
-      // { title: 'Polymorphic', slug: 'primitives/docs/utilities/polymorphic' },
+      { title: 'Polymorphic', slug: 'primitives/docs/utilities/polymorphic' },
       { title: 'Portal', slug: 'primitives/docs/utilities/portal' },
       { title: 'Slot', slug: 'primitives/docs/utilities/slot' },
       { title: 'Visually Hidden', slug: 'primitives/docs/utilities/visually-hidden' },
