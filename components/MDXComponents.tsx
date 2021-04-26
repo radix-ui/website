@@ -41,6 +41,8 @@ export const components = {
     <DS.Text {...props} as="h1" size="8" css={{ fontWeight: 500, mb: '$2', lineHeight: '40px' }} />
   ),
   Description: ({ children, ...props }) => {
+    // takes the text even if it's wrapped in `<p>`
+    // https://github.com/wooorm/xdm/issues/47
     const childText = typeof children === 'string' ? children : children.props.children;
     return <DS.Subtitle {...props} as="p" css={{ mt: '$2', mb: '$7' }} children={childText} />;
   },
