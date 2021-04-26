@@ -83,7 +83,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const { frontmatter, code } = await getMdxBySlug(
-    'design-system/docs/utilities/',
+    'design-system/docs/components/',
     context.params.slug.join('/')
   );
   const [componentName, componentVersion] = context.params.slug;
