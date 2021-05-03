@@ -19,7 +19,7 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#menubutton
     'Can be controlled or uncontrolled.',
     'Supports items, labels, groups of items.',
     'Supports checkable items (single or multiple).',
-    'Customise side, alignment, offsets, collision handling.',
+    'Customize side, alignment, offsets, collision handling.',
     'Optionally render a pointing arrow.',
     'Focus is fully managed.',
     'Full keyboard navigation.',
@@ -326,24 +326,13 @@ The component that pops out when the dropdown menu is open.
       ),
     },
     {
-      name: 'anchorRef',
-      type: 'React.RefObject<MeasurableElement>',
-      typeSimple: 'ref',
-      description: (
-        <span>
-          An optional ref of an element to position against. By
-          default, it will use <Code>DropdownMenu.Trigger</Code>.
-        </span>
-      ),
-    },
-    {
       name: 'side',
       type: '"top" | "right" | "bottom" | "left"',
       typeSimple: 'enum',
       default: '"bottom"',
       description: (
         <span>
-          The preferred side of the anchor to render against when
+          The preferred side of the trigger to render against when
           open. Will be reversed when collisions occur and{' '}
           <Code>avoidCollisions</Code> is enabled.
         </span>
@@ -354,7 +343,7 @@ The component that pops out when the dropdown menu is open.
       type: 'number',
       default: '0',
       description: (
-        <span>The distance in pixels from the anchor.</span>
+        <span>The distance in pixels from the trigger.</span>
       ),
     },
     {
@@ -364,7 +353,7 @@ The component that pops out when the dropdown menu is open.
       default: '"center"',
       description: (
         <span>
-          The preferred alignment against the anchor. May change when
+          The preferred alignment against the trigger. May change when
           collisions occur.
         </span>
       ),
@@ -408,7 +397,7 @@ The component that pops out when the dropdown menu is open.
 
 ### Arrow
 
-An optional arrow element to render alongside the dropdown menu. This can be used to help visually link the anchor with the `DropdownMenu.Content`. Must be rendered inside `DropdownMenu.Content`.
+An optional arrow element to render alongside the dropdown menu. This can be used to help visually link the trigger with the `DropdownMenu.Content`. Must be rendered inside `DropdownMenu.Content`.
 
 <PropsTable
   data={[
