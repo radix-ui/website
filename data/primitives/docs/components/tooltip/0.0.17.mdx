@@ -204,24 +204,13 @@ The component that pops out when the tooltip is open.
       ),
     },
     {
-      name: 'anchorRef',
-      type: 'React.RefObject<MeasurableElement>',
-      typeSimple: 'ref',
-      description: (
-        <span>
-          An optional ref of an element to position against. By
-          default, it will use <Code>Tooltip.Trigger</Code>.
-        </span>
-      ),
-    },
-    {
       name: 'side',
       type: '"top" | "right" | "bottom" | "left"',
       typeSimple: 'enum',
       default: '"bottom"',
       description: (
         <span>
-          The preferred side of the anchor to render against when
+          The preferred side of the trigger to render against when
           open. Will be reversed when collisions occur and{' '}
           <Code>avoidCollisions</Code> is enabled.
         </span>
@@ -233,7 +222,7 @@ The component that pops out when the tooltip is open.
       default: '0',
       description: (
         <span>
-          <span>The distance in pixels from the anchor.</span>
+          <span>The distance in pixels from the trigger.</span>
         </span>
       ),
     },
@@ -244,7 +233,7 @@ The component that pops out when the tooltip is open.
       default: '"center"',
       description: (
         <span>
-          The preferred alignment against the anchor. May change when
+          The preferred alignment against the trigger. May change when
           collisions occur.
         </span>
       ),
@@ -288,7 +277,7 @@ The component that pops out when the tooltip is open.
 
 ### Arrow
 
-An optional arrow element to render alongside the tooltip. This can be used to help visually link the anchor with the `Tooltip.Content`. Must be rendered inside `Tooltip.Content`.
+An optional arrow element to render alongside the tooltip. This can be used to help visually link the trigger with the `Tooltip.Content`. Must be rendered inside `Tooltip.Content`.
 
 <PropsTable
   data={[
