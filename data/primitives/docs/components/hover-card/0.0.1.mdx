@@ -1,25 +1,23 @@
 ---
-metaTitle: Tooltip
-metaDescription: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
-name: tooltip
-aria: https://www.w3.org/TR/wai-aria-practices-1.2/#tooltip
+metaTitle: HoverCard
+metaDescription: For sighted users to preview content available behind a link.
+name: hover-card
 ---
 
-# Tooltip
+# HoverCard
 
 <Description>
-  A popup that displays information related to an element when the
-  element receives keyboard focus or the mouse hovers over it.
+  For sighted users to preview content available behind a link.
 </Description>
-
-<TooltipHero />
 
 <Highlights
   features={[
-    'Built-in state machine to control display delay.',
-    'Opens when the trigger is focused or hovered.',
-    'Closes when the trigger is activated or when pressing escape.',
-    'Supports custom timings.',
+    'Can be controlled or uncontrolled.',
+    'Customize side, alignment, offsets, collision handling.',
+    'Optionally render a pointing arrow.',
+    'Supports custom open and close delays.',
+    'Opens on hover only.',
+    'Ignored by screen readers.',
   ]}
 />
 
@@ -28,7 +26,7 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#tooltip
 Install the component from your command line.
 
 ```bash
-npm install @radix-ui/react-tooltip
+npm install @radix-ui/react-hover-card
 ```
 
 ## Anatomy
@@ -36,53 +34,59 @@ npm install @radix-ui/react-tooltip
 Import the components and piece the parts together.
 
 ```jsx
-import * as Tooltip from '@radix-ui/react-tooltip';
+import * as HoverCard from '@radix-ui/react-hover-card';
 
 export default () => (
-  <Tooltip.Root>
-    <Tooltip.Trigger />
-    <Tooltip.Content>
-      <Tooltip.Arrow />
-    </Tooltip.Content>
-  </Tooltip.Root>
+  <HoverCard.Root>
+    <HoverCard.Trigger />
+    <HoverCard.Content>
+      <HoverCard.Arrow />
+    </HoverCard.Content>
+  </HoverCard.Root>
 );
 ```
 
 ## Basic example
 
-Create your styled tooltip component from the primitive parts.
+Create your styled hover card component from the primitive parts.
 
 <Preview>
-  <TooltipDemo />
+  <HoverCardDemo />
 </Preview>
 
 ```jsx
 import { styled } from 'path-to/stitches.config';
-import * as Tooltip from '@radix-ui/react-tooltip';
-import { BlendingModeIcon } from '@radix-ui/react-icons';
+import * as HoverCard from '@radix-ui/react-hover-card';
 
-const StyledContent = styled(Tooltip.Content, {
+const StyledContent = styled(HoverCard.Content, {
   borderRadius: 3,
-  padding: '5px 10px',
+  padding: '20px',
   fontSize: 14,
   backgroundColor: 'gainsboro',
   color: 'black',
 });
 
-const StyledArrow = styled(Tooltip.Arrow, {
+const StyledArrow = styled(HoverCard.Arrow, {
   fill: 'gainsboro',
 });
 
 export default () => (
-  <Tooltip.Root>
-    <Tooltip.Trigger>
-      <BlendingModeIcon />
-    </Tooltip.Trigger>
-    <StyledContent>
-      Blending mode
+  <HoverCard.Root>
+    <HoverCard.Trigger href="http://twitter.com/twitter">
+      @twitter
+    </HoverCard.Trigger>
+    <StyledContent side="top" sideOffset={5}>
+      <dl>
+        <dt>Bio</dt>
+        <dd>What's happening?!</dd>
+        <dt>Following</dt>
+        <dd>35</dd>
+        <dt>Followers</dt>
+        <dd>59.5M</dd>
+      </dl>
       <StyledArrow />
     </StyledContent>
-  </Tooltip.Root>
+  </HoverCard.Root>
 );
 ```
 
@@ -96,7 +100,7 @@ export default () => (
 
 ### Root
 
-Contains all the parts of a tooltip.
+Contains all the parts of a hover card.
 
 <PropsTable
   data={[
@@ -105,8 +109,9 @@ Contains all the parts of a tooltip.
       type: 'boolean',
       description: (
         <span>
-          The open state of the tooltip when it is initially rendered.
-          Use when you do not need to control its open state.
+          The open state of the hover card when it is initially
+          rendered. Use when you do not need to control its open
+          state.
         </span>
       ),
     },
@@ -115,7 +120,7 @@ Contains all the parts of a tooltip.
       type: 'boolean',
       description: (
         <span>
-          The controlled open state of the tooltip. Must be used in
+          The controlled open state of the hover card. Must be used in
           conjunction with <Code>onOpenChange</Code>.
         </span>
       ),
@@ -126,31 +131,31 @@ Contains all the parts of a tooltip.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the open state of the tooltip
+          Event handler called when the open state of the hover card
           changes.
         </span>
       ),
     },
     {
-      name: 'delayDuration',
+      name: 'openDelay',
       type: 'number',
       default: 700,
       description:
-        'The duration from when the mouse enters the trigger until the tooltip opens.',
+        'The duration from when the mouse enters the trigger until the hover card opens.',
     },
     {
-      name: 'skipDelayDuration',
+      name: 'closeDelay',
       type: 'number',
       default: 300,
       description:
-        'How much time a user has to enter another trigger without incurring a delay again.',
+        'The duration from when the mouse leaves the trigger or content until the hover card closes.',
     },
   ]}
 />
 
 ### Trigger
 
-The button that toggles the tooltip. By default, the `Tooltip.Content` will position itself against the trigger.
+The link that opens the hover card when hovered.
 
 <PropsTable
   data={[
@@ -159,7 +164,7 @@ The button that toggles the tooltip. By default, the `Tooltip.Content` will posi
       required: false,
       type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
       typeSimple: 'enum',
-      default: 'button',
+      default: 'a',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
@@ -168,7 +173,7 @@ The button that toggles the tooltip. By default, the `Tooltip.Content` will posi
 
 ### Content
 
-The component that pops out when the tooltip is open.
+The component that pops out when the hover card is open.
 
 <PropsTable
   data={[
@@ -182,14 +187,12 @@ The component that pops out when the tooltip is open.
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
-      name: 'aria-label',
-      type: 'string',
+      name: 'forceMount',
+      type: 'boolean',
       description: (
         <span>
-          By default, screenreaders will announce the content inside
-          the component. If this is not descriptive enough, or you
-          have content that cannot be announced, use{' '}
-          <Code>aria-label</Code> as a more descriptive label.
+          Used to force mounting when more control is needed. Useful
+          when controlling animation with React animation libraries.
         </span>
       ),
     },
@@ -277,7 +280,7 @@ The component that pops out when the tooltip is open.
 
 ### Arrow
 
-An optional arrow element to render alongside the tooltip. This can be used to help visually link the trigger with the `Tooltip.Content`. Must be rendered inside `Tooltip.Content`.
+An optional arrow element to render alongside the hover card. This can be used to help visually link the trigger with the `HoverCard.Content`. Must be rendered inside `HoverCard.Content`.
 
 <PropsTable
   data={[
@@ -309,7 +312,7 @@ An optional arrow element to render alongside the tooltip. This can be used to h
       description: (
         <span>
           The distance in pixels to render from the{' '}
-          <Code>Tooltip.Content</Code> edge.
+          <Code>HoverCard.Content</Code> edge.
         </span>
       ),
     },
@@ -320,7 +323,7 @@ An optional arrow element to render alongside the tooltip. This can be used to h
 
 ### Origin-aware animations
 
-We expose a CSS custom property `--radix-tooltip-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
+We expose a CSS custom property `--radix-hover-card-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
 ```jsx
 const scaleIn = keyframes({
@@ -328,8 +331,8 @@ const scaleIn = keyframes({
   '100%': { opacity: 1, transform: 'scale(1)' },
 });
 
-const StyledContent = styled(Tooltip.Content, {
-  transformOrigin: 'var(--radix-tooltip-content-transform-origin)',
+const StyledContent = styled(HoverCard.Content, {
+  transformOrigin: 'var(--radix-hover-card-content-transform-origin)',
   animation: `${scaleIn} 0.5s ease-out`,
 });
 ```
@@ -349,7 +352,7 @@ const slideUp = keyframes({
   '100%': { opacity: 1, transform: 'translateY(0)' },
 });
 
-const StyledContent = styled(Tooltip.Content, {
+const StyledContent = styled(HoverCard.Content, {
   '&[data-side="top"]': { animationName: slideUp },
   '&[data-side="bottom"]': { animationName: slideDown },
   animationDuration: '0.6s',
@@ -359,87 +362,48 @@ const StyledContent = styled(Tooltip.Content, {
 
 ## Examples
 
-### Displaying a tooltip from a disabled button
-
-A disabled button will not fire events so adding a tooltip to a disabled trigger requires a little more work.
-
-Render the trigger as a wrapper (`span` for example) and place your disabled button inside with some CSS to disable pointer events. This allows the tooltip to receive all mouse and keyboard events instead of being blocked by the button.
-
-<Preview>
-  <TooltipDemo disabled />
-</Preview>
-
-```jsx collapsed
-import { styled } from 'path-to/stitches.config';
-import * as Tooltip from '@radix-ui/react-tooltip';
-import { BlendingModeIcon } from '@radix-ui/react-icons';
-
-const StyledContent = styled(Tooltip.Content, {
-  borderRadius: 3,
-  padding: '5px 10px',
-  fontSize: 14,
-  backgroundColor: 'gainsboro',
-  color: 'black',
-});
-
-const StyledArrow = styled(Tooltip.Arrow, {
-  fill: 'gainsboro',
-});
-
-export default () => (
-  <Tooltip.Root>
-    <Tooltip.Trigger as="span">
-      <button
-        type="button"
-        disabled
-        style={{ pointerEvents: 'none' }}
-      >
-        <BlendingModeIcon />
-      </button>
-    </Tooltip.Trigger>
-    <StyledContent>
-      Blending mode
-      <StyledArrow />
-    </StyledContent>
-  </Tooltip.Root>
-);
-```
-
 ### Show instantly
 
-Use the `delayDuration` prop to control the time it takes for the tooltip to open. We recommend wrapping the tooltip in your own component with a default value for the prop for consistent timings across your app. You will still be able to override the prop per-instance.
+Use the `openDelay` prop to control the time it takes for the hover card to open.
 
 <Preview>
-  <TooltipDemo delayDuration={0} />
+  <HoverCardDemo openDelay={0} />
 </Preview>
 
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
-import * as Tooltip from '@radix-ui/react-tooltip';
+import * as HoverCard from '@radix-ui/react-hover-card';
 import { BlendingModeIcon } from '@radix-ui/react-icons';
 
-const StyledContent = styled(Tooltip.Content, {
+const StyledContent = styled(HoverCard.Content, {
   borderRadius: 3,
-  padding: '5px 10px',
+  padding: '20px',
   fontSize: 14,
   backgroundColor: 'gainsboro',
   color: 'black',
 });
 
-const StyledArrow = styled(Tooltip.Arrow, {
+const StyledArrow = styled(HoverCard.Arrow, {
   fill: 'gainsboro',
 });
 
 export default () => (
-  <Tooltip.Root delayDuration={0}>
-    <Tooltip.Trigger>
-      <BlendingModeIcon />
-    </Tooltip.Trigger>
-    <StyledContent>
-      Blending mode
+  <HoverCard.Root openDelay={0}>
+    <HoverCard.Trigger href="http://twitter.com/twitter">
+      @twitter
+    </HoverCard.Trigger>
+    <StyledContent side="top" sideOffset={5}>
+      <dl>
+        <dt>Bio</dt>
+        <dd>What's happening?!</dd>
+        <dt>Following</dt>
+        <dd>35</dd>
+        <dt>Followers</dt>
+        <dd>59.5M</dd>
+      </dl>
       <StyledArrow />
     </StyledContent>
-  </Tooltip.Root>
+  </HoverCard.Root>
 );
 ```
 
@@ -447,79 +411,4 @@ export default () => (
 
 ### Keyboard Interactions
 
-<KeyboardTable
-  data={[
-    {
-      keys: ['Tab'],
-      description: 'Opens/closes the tooltip without delay.',
-    },
-    {
-      keys: ['Space'],
-      description: 'If open, closes the tooltip without delay.',
-    },
-    {
-      keys: ['Enter'],
-      description: 'If open, closes the tooltip without delay.',
-    },
-    {
-      keys: ['Escape'],
-      description: 'If open, closes the tooltip without delay.',
-    },
-  ]}
-/>
-
-## Custom APIs
-
-Create your own API by abstracting the primitive parts into your own component.
-
-### Abstract parts and introduce a content prop
-
-This example abstracts all of the `Tooltip` parts and introduces a new `content` prop.
-
-#### Usage
-
-```jsx
-import { Tooltip } from './your-tooltip';
-
-export default () => (
-  <Tooltip content="Tooltip content">
-    <button>Tooltip trigger</button>
-  </Tooltip>
-);
-```
-
-#### Implementation
-
-Use the [`Slot` utility](../../utilities/slot) to convert the trigger part into a slottable area. It will replace the trigger with the child that gets passed to it.
-
-```jsx
-// your-tooltip.jsx
-import React from 'react';
-import * as TooltipPrimitive from '@radix-ui/react-tooltip';
-import { Slot } from '@radix-ui/react-slot';
-
-export function Tooltip({
-  children,
-  content,
-  open,
-  defaultOpen,
-  onOpenChange,
-  ...props
-}) {
-  return (
-    <TooltipPrimitive.Root
-      open={open}
-      defaultOpen={defaultOpen}
-      onOpenChange={onOpenChange}
-    >
-      <TooltipPrimitive.Trigger as={Slot}>
-        {children}
-      </TooltipPrimitive.Trigger>
-      <TooltipPrimitive.Content side="top" align="center" {...props}>
-        {content}
-        <TooltipPrimitive.Arrow offset={5} width={11} height={5} />
-      </TooltipPrimitive.Content>
-    </TooltipPrimitive.Root>
-  );
-}
-```
+The hover card is intended for mouse users only so will not respond to keyboard navigation.

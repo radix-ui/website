@@ -20,6 +20,7 @@ import * as collapsibleDemos from './demos/Collapsible';
 import * as contextMenuDemos from './demos/ContextMenu';
 import * as dialogDemos from './demos/Dialog';
 import * as dropdownMenuDemos from './demos/DropdownMenu';
+import * as hoverCardDemos from './demos/HoverCard';
 import * as labelDemos from './demos/Label';
 import * as popoverDemos from './demos/Popover';
 import * as progressDemos from './demos/Progress';
@@ -191,6 +192,7 @@ export const components = {
   ...contextMenuDemos,
   ...dialogDemos,
   ...dropdownMenuDemos,
+  ...hoverCardDemos,
   ...labelDemos,
   ...popoverDemos,
   ...progressDemos,
