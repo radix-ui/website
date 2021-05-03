@@ -17,6 +17,7 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#radiobutton
 <Highlights
   features={[
     'Full keyboard navigation.',
+    'Supports horizontal/vertical orientation.',
     'Can be controlled or uncontrolled.',
   ]}
 />
@@ -48,6 +49,10 @@ export default () => (
 ## Basic example
 
 Create your styled radio group component from the primitive parts.
+
+<Preview>
+  <RadioGroupDemo />
+</Preview>
 
 ```jsx
 import { styled } from 'path-to/stitches.config';
@@ -152,6 +157,35 @@ Contains all the parts of a radio group.
         </span>
       ),
     },
+    {
+      name: 'orientation',
+      required: false,
+      type: '"horizontal" | "vertical" | undefined',
+      typeSimple: 'enum',
+      default: 'undefined',
+      description: 'The orientation of the component.',
+    },
+    {
+      name: 'dir',
+      required: false,
+      type: '"ltr" | "rtl"',
+      typeSimple: 'enum',
+      default: '"ltr"',
+      description:
+        'The reading direction of the radio group. If omitted, assumes LTR (left-to-right) reading mode.',
+    },
+    {
+      name: 'loop',
+      required: false,
+      type: 'boolean',
+      default: 'true',
+      description: (
+        <span>
+          When <Code>true</Code>, keyboard navigation will loop from
+          last item to first, and vice versa.
+        </span>
+      ),
+    },
   ]}
 />
 
@@ -210,16 +244,6 @@ An item in the group that can be checked.
         <span>
           When <Code>true</Code>, indicates that the user must check
           the radio item before the owning form can be submitted.
-        </span>
-      ),
-    },
-    {
-      name: 'readOnly',
-      type: 'boolean',
-      description: (
-        <span>
-          When <Code>true</Code>, makes the radio item not mutable,
-          meaning the user cannot check the checkbox.
         </span>
       ),
     },

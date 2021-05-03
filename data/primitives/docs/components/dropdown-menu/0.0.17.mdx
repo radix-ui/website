@@ -19,7 +19,7 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#menubutton
     'Can be controlled or uncontrolled.',
     'Supports items, labels, groups of items.',
     'Supports checkable items (single or multiple).',
-    'Customise side, alignment, offsets, collision handling.',
+    'Customize side, alignment, offsets, collision handling.',
     'Optionally render a pointing arrow.',
     'Focus is fully managed.',
     'Full keyboard navigation.',
@@ -75,10 +75,6 @@ export default () => (
 ## Basic example
 
 Create your styled dropdown menu component from the primitive parts.
-
-<Preview>
-  <DropdownMenuDemo />
-</Preview>
 
 ```jsx
 import { styled } from 'path-to/stitches.config';
@@ -794,10 +790,6 @@ const StyledContent = styled(DropdownMenu.Content, {
 
 You can add special styles to disabled items via the `data-disabled` attribute.
 
-<Preview>
-  <DropdownMenuDemo showDisabled />
-</Preview>
-
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
@@ -853,10 +845,6 @@ export default () => (
 ### With separators
 
 Use the `Separator` part to add a separator between items.
-
-<Preview>
-  <DropdownMenuDemo showSeparator />
-</Preview>
 
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
@@ -916,10 +904,6 @@ export default () => (
 ### With labels
 
 Use the `Label` part to help label a section.
-
-<Preview>
-  <DropdownMenuDemo showLabel />
-</Preview>
 
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
@@ -986,10 +970,6 @@ export default () => (
 ### With checkbox items
 
 Use the `CheckboxItem` part to add an item that can be checked.
-
-<Preview>
-  <DropdownMenuCheckboxDemo />
-</Preview>
 
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
@@ -1074,10 +1054,6 @@ export default () => {
 
 Use the `RadioGroup` and `RadioItem` parts to add an item that can be checked amongst others.
 
-<Preview>
-  <DropdownMenuRadioDemo />
-</Preview>
-
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
@@ -1155,10 +1131,6 @@ export default () => {
 ```
 
 ### With complex items
-
-<Preview>
-  <DropdownMenuComplexDemo />
-</Preview>
 
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
