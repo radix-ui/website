@@ -52,6 +52,10 @@ export default () => (
 
 Create your styled tooltip component from the primitive parts.
 
+<Preview>
+  <TooltipDemo />
+</Preview>
+
 ```jsx
 import { styled } from 'path-to/stitches.config';
 import * as Tooltip from '@radix-ui/react-tooltip';
@@ -200,24 +204,13 @@ The component that pops out when the tooltip is open.
       ),
     },
     {
-      name: 'anchorRef',
-      type: 'React.RefObject<MeasurableElement>',
-      typeSimple: 'ref',
-      description: (
-        <span>
-          An optional ref of an element to position against. By
-          default, it will use <Code>Tooltip.Trigger</Code>.
-        </span>
-      ),
-    },
-    {
       name: 'side',
       type: '"top" | "right" | "bottom" | "left"',
       typeSimple: 'enum',
       default: '"bottom"',
       description: (
         <span>
-          The preferred side of the anchor to render against when
+          The preferred side of the trigger to render against when
           open. Will be reversed when collisions occur and{' '}
           <Code>avoidCollisions</Code> is enabled.
         </span>
@@ -229,7 +222,7 @@ The component that pops out when the tooltip is open.
       default: '0',
       description: (
         <span>
-          <span>The distance in pixels from the anchor.</span>
+          <span>The distance in pixels from the trigger.</span>
         </span>
       ),
     },
@@ -240,7 +233,7 @@ The component that pops out when the tooltip is open.
       default: '"center"',
       description: (
         <span>
-          The preferred alignment against the anchor. May change when
+          The preferred alignment against the trigger. May change when
           collisions occur.
         </span>
       ),
@@ -284,7 +277,7 @@ The component that pops out when the tooltip is open.
 
 ### Arrow
 
-An optional arrow element to render alongside the tooltip. This can be used to help visually link the anchor with the `Tooltip.Content`. Must be rendered inside `Tooltip.Content`.
+An optional arrow element to render alongside the tooltip. This can be used to help visually link the trigger with the `Tooltip.Content`. Must be rendered inside `Tooltip.Content`.
 
 <PropsTable
   data={[
@@ -372,6 +365,10 @@ A disabled button will not fire events so adding a tooltip to a disabled trigger
 
 Render the trigger as a wrapper (`span` for example) and place your disabled button inside with some CSS to disable pointer events. This allows the tooltip to receive all mouse and keyboard events instead of being blocked by the button.
 
+<Preview>
+  <TooltipDemo disabled />
+</Preview>
+
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
 import * as Tooltip from '@radix-ui/react-tooltip';
@@ -411,6 +408,10 @@ export default () => (
 ### Show instantly
 
 Use the `delayDuration` prop to control the time it takes for the tooltip to open. We recommend wrapping the tooltip in your own component with a default value for the prop for consistent timings across your app. You will still be able to override the prop per-instance.
+
+<Preview>
+  <TooltipDemo delayDuration={0} />
+</Preview>
 
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';

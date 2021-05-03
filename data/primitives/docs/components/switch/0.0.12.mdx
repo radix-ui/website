@@ -47,6 +47,10 @@ export default () => (
 
 Create your styled switch component from the primitive parts.
 
+<Preview>
+  <SwitchDemo />
+</Preview>
+
 ```jsx
 import { styled } from 'path-to/stitches.config';
 import * as Switch from '@radix-ui/react-switch';
@@ -156,16 +160,6 @@ Contains all the parts of a switch.
         <span>
           When <Code>true</Code>, indicates that the user must check
           the switch before the owning form can be submitted.
-        </span>
-      ),
-    },
-    {
-      name: 'readOnly',
-      type: 'boolean',
-      description: (
-        <span>
-          When <Code>true</Code>, makes the switch not mutable,
-          meaning the user cannot check the switch.
         </span>
       ),
     },

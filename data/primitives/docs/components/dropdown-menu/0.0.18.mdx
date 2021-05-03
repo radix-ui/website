@@ -76,6 +76,10 @@ export default () => (
 
 Create your styled dropdown menu component from the primitive parts.
 
+<Preview>
+  <DropdownMenuDemo />
+</Preview>
+
 ```jsx
 import { styled } from 'path-to/stitches.config';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
@@ -229,6 +233,18 @@ The component that pops out when the dropdown menu is open.
       ),
     },
     {
+      name: 'onCloseAutoFocus',
+      type: '(event: Event) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when focus moves to the trigger after
+          closing. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
       name: 'disableOutsidePointerEvents',
       type: 'boolean',
       default: 'true',
@@ -310,24 +326,13 @@ The component that pops out when the dropdown menu is open.
       ),
     },
     {
-      name: 'anchorRef',
-      type: 'React.RefObject<MeasurableElement>',
-      typeSimple: 'ref',
-      description: (
-        <span>
-          An optional ref of an element to position against. By
-          default, it will use <Code>DropdownMenu.Trigger</Code>.
-        </span>
-      ),
-    },
-    {
       name: 'side',
       type: '"top" | "right" | "bottom" | "left"',
       typeSimple: 'enum',
       default: '"bottom"',
       description: (
         <span>
-          The preferred side of the anchor to render against when
+          The preferred side of the trigger to render against when
           open. Will be reversed when collisions occur and{' '}
           <Code>avoidCollisions</Code> is enabled.
         </span>
@@ -338,7 +343,7 @@ The component that pops out when the dropdown menu is open.
       type: 'number',
       default: '0',
       description: (
-        <span>The distance in pixels from the anchor.</span>
+        <span>The distance in pixels from the trigger.</span>
       ),
     },
     {
@@ -348,7 +353,7 @@ The component that pops out when the dropdown menu is open.
       default: '"center"',
       description: (
         <span>
-          The preferred alignment against the anchor. May change when
+          The preferred alignment against the trigger. May change when
           collisions occur.
         </span>
       ),
@@ -392,7 +397,7 @@ The component that pops out when the dropdown menu is open.
 
 ### Arrow
 
-An optional arrow element to render alongside the dropdown menu. This can be used to help visually link the anchor with the `DropdownMenu.Content`. Must be rendered inside `DropdownMenu.Content`.
+An optional arrow element to render alongside the dropdown menu. This can be used to help visually link the trigger with the `DropdownMenu.Content`. Must be rendered inside `DropdownMenu.Content`.
 
 <PropsTable
   data={[
@@ -778,7 +783,11 @@ const StyledContent = styled(DropdownMenu.Content, {
 
 You can add special styles to disabled items via the `data-disabled` attribute.
 
-```jsx
+<Preview>
+  <DropdownMenuDemo showDisabled />
+</Preview>
+
+```jsx collapsed
 import { styled } from 'path-to/stitches.config';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
@@ -834,7 +843,11 @@ export default () => (
 
 Use the `Separator` part to add a separator between items.
 
-```jsx
+<Preview>
+  <DropdownMenuDemo showSeparator />
+</Preview>
+
+```jsx collapsed
 import { styled } from 'path-to/stitches.config';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
@@ -873,21 +886,17 @@ export default () => (
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
     <StyledContent>
-      <StyledItem onSelect={() => console.log('undo')}>
-        Undo
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('redo')}>
-        Redo
+      <StyledItem disabled onSelect={() => console.log('cut')}>
+        Cut
       </StyledItem>
       <StyledSeparator />
-      <StyledItem onSelect={() => console.log('cut')}>Cut</StyledItem>
       <StyledItem onSelect={() => console.log('copy')}>
         Copy
       </StyledItem>
+      <StyledSeparator />
       <StyledItem onSelect={() => console.log('paste')}>
         Paste
       </StyledItem>
-      <StyledArrow />
     </StyledContent>
   </DropdownMenu.Root>
 );
@@ -897,7 +906,11 @@ export default () => (
 
 Use the `Label` part to help label a section.
 
-```jsx
+<Preview>
+  <DropdownMenuDemo showLabel />
+</Preview>
+
+```jsx collapsed
 import { styled } from 'path-to/stitches.config';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
@@ -943,23 +956,15 @@ export default () => (
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
     <StyledContent>
-      <StyledLabel>Recently Closed</StyledLabel>
-      <StyledItem onSelect={() => console.log('modulz')}>
-        Modulz
+      <StyledLabel>Actions</StyledLabel>
+      <StyledItem disabled onSelect={() => console.log('cut')}>
+        Cut
       </StyledItem>
-      <StyledItem onSelect={() => console.log('radix-ui')}>
-        Radix-ui
+      <StyledItem onSelect={() => console.log('copy')}>
+        Copy
       </StyledItem>
-      <StyledItem onSelect={() => console.log('stitches')}>
-        Stitches
-      </StyledItem>
-      <StyledSeparator />
-      <StyledLabel>Recently Visited</StyledLabel>
-      <StyledItem onSelect={() => console.log('github')}>
-        GitHub
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('modulz')}>
-        Modulz
+      <StyledItem onSelect={() => console.log('paste')}>
+        Paste
       </StyledItem>
       <StyledArrow />
     </StyledContent>
@@ -971,7 +976,11 @@ export default () => (
 
 Use the `CheckboxItem` part to add an item that can be checked.
 
-```jsx
+<Preview>
+  <DropdownMenuCheckboxDemo />
+</Preview>
+
+```jsx collapsed
 import { styled } from 'path-to/stitches.config';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { CheckIcon } from '@radix-ui/react-icons';
@@ -1054,7 +1063,11 @@ export default () => {
 
 Use the `RadioGroup` and `RadioItem` parts to add an item that can be checked amongst others.
 
-```jsx
+<Preview>
+  <DropdownMenuRadioDemo />
+</Preview>
+
+```jsx collapsed
 import { styled } from 'path-to/stitches.config';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { CheckIcon } from '@radix-ui/react-icons';
@@ -1132,7 +1145,11 @@ export default () => {
 
 ### With complex items
 
-```jsx
+<Preview>
+  <DropdownMenuComplexDemo />
+</Preview>
+
+```jsx collapsed
 import { styled } from 'path-to/stitches.config';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
@@ -1211,7 +1228,14 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-a
     },
     {
       keys: ['Enter'],
-      description: 'Activates the focused item.',
+      description: (
+        <span>
+          When focus is on <Code>DropdownMenu.Trigger</Code>, opens
+          the dropdown menu.
+          <br />
+          When focus is on an item, activates the focused item.
+        </span>
+      ),
     },
     {
       keys: ['ArrowDown'],
@@ -1285,7 +1309,7 @@ export default () => (
       <DropdownMenuRadioItem>RadioItem</DropdownMenuRadioItem>
       <DropdownMenuSeparator>Separator</DropdownMenuSeparator>
     </DropdownMenuContent>
-  </Dialog>
+  </DropdownMenu>
 );
 ```
 

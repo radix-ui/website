@@ -15,9 +15,29 @@ const StyledArrow = styled(Popover.Arrow, {
   fill: 'gainsboro',
 });
 
+const StyledAnchor = styled(Popover.Anchor, {
+  background: 'gainsboro',
+  padding: 20,
+});
+
 export const PopoverDemo = () => (
   <Popover.Root>
     <Popover.Trigger>Trigger</Popover.Trigger>
+    <StyledContent>
+      <h3>Popover content</h3>
+      <p>Are you sure you wanna do this?</p>
+      <Popover.Close>Yes</Popover.Close>
+      <StyledArrow />
+    </StyledContent>
+  </Popover.Root>
+);
+
+export const PopoverAnchorDemo = () => (
+  <Popover.Root>
+    <StyledAnchor>
+      Row as anchor <Popover.Trigger>Trigger</Popover.Trigger>
+    </StyledAnchor>
+
     <StyledContent>
       <h3>Popover content</h3>
       <p>Are you sure you wanna do this?</p>

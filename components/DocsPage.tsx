@@ -138,7 +138,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
                       <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                         {page.title}
                       </Text>
-                      {isDraft && <Badge css={{ ml: '$2' }}>Coming soon</Badge>}
+                      {isDraft ? <Badge css={{ ml: '$2' }}>Coming soon</Badge> : null}
                     </NavItem>
                   );
                 })}

@@ -9,6 +9,7 @@ export * as ContextMenu from '@radix-ui/react-context-menu';
 export * as Checkbox from '@radix-ui/react-checkbox';
 export * as Dialog from '@radix-ui/react-dialog';
 export * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+export * as HoverCard from '@radix-ui/react-hover-card';
 export * as Label from '@radix-ui/react-label';
 export { useLabelContext } from '@radix-ui/react-label';
 export * as Popover from '@radix-ui/react-popover';

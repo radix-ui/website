@@ -41,6 +41,7 @@ import * as Popover from '@radix-ui/react-popover';
 export default () => (
   <Popover.Root>
     <Popover.Trigger />
+    <Popover.Anchor />
     <Popover.Content>
       <Popover.Close />
       <Popover.Arrow />
@@ -52,6 +53,10 @@ export default () => (
 ## Basic example
 
 Create your styled popover component from the primitive parts.
+
+<Preview>
+  <PopoverDemo />
+</Preview>
 
 ```jsx
 import { styled } from 'path-to/stitches.config';
@@ -142,6 +147,24 @@ The button that toggles the popover. By default, the `Popover.Content` will posi
       type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
       typeSimple: 'enum',
       default: 'button',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Anchor
+
+An optional element to position the `Popover.Content` against. If this part is not used, the content will position alongside the <Code>Popover.Trigger</Code>.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
@@ -288,17 +311,6 @@ The component that pops out when the popover is open.
         <span>
           Used to force mounting when more control is needed. Useful
           when controlling animation with React animation libraries.
-        </span>
-      ),
-    },
-    {
-      name: 'anchorRef',
-      type: 'React.RefObject<MeasurableElement>',
-      typeSimple: 'ref',
-      description: (
-        <span>
-          An optional ref of an element to position against. By
-          default, it will use <Code>Popover.Trigger</Code>.
         </span>
       ),
     },
@@ -472,6 +484,73 @@ const StyledContent = styled(Popover.Content, {
 });
 ```
 
+## Examples
+
+### With custom anchor
+
+You can anchor the content to another element if you do not want to use the trigger as the anchor.
+
+<Preview>
+  <PopoverAnchorDemo />
+</Preview>
+
+```jsx collapsed
+import { styled } from 'path-to/stitches.config';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+
+const StyledContent = styled(DropdownMenu.Content, {
+  minWidth: 130,
+  backgroundColor: 'white',
+  borderRadius: 6,
+  padding: 5,
+  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
+});
+
+const StyledItem = styled(DropdownMenu.Item, {
+  fontSize: 13,
+  padding: '5px 10px',
+  borderRadius: 3,
+  cursor: 'default',
+
+  '&[data-disabled]': {
+    color: 'gainsboro',
+  },
+
+  '&:focus': {
+    outline: 'none',
+    backgroundColor: 'dodgerblue',
+    color: 'white',
+  },
+});
+
+const StyledArrow = styled(DropdownMenu.Arrow, {
+  fill: 'white',
+});
+
+const StyledAnchor = styled(Popover.Anchor, {
+  background: 'gainsboro',
+  padding: 20,
+});
+
+export default () => (
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
+    <StyledContent>
+      <StyledItem disabled onSelect={() => console.log('cut')}>
+        Cut
+      </StyledItem>
+      <StyledItem onSelect={() => console.log('copy')}>
+        Copy
+      </StyledItem>
+      <StyledItem onSelect={() => console.log('paste')}>
+        Paste
+      </StyledItem>
+      <StyledArrow />
+    </StyledContent>
+  </DropdownMenu.Root>
+);
+```
+
 ## Accessibility
 
 Adheres to the [Dialog WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal).
@@ -514,7 +593,7 @@ Create your own API by abstracting the primitive parts into your own component.
 
 #### Abstract the arrow and set default configuration
 
-This example abstracts the `Popover.Arrow` part and set a default `sideOffset` configuration.
+This example abstracts the `Popover.Arrow` part and sets a default `sideOffset` configuration.
 
 #### Usage
 
