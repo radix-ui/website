@@ -18,7 +18,7 @@ export function PRLink({ id }: { id: number | number[] }) {
     <Text css={{ display: 'inline', fontSize: '$2' }}>
       –{' '}
       {ids.map((id, i, arr) => (
-        <>
+        <React.Fragment key={id}>
           <Link
             variant="subtle"
             href={`https://github.com/radix-ui/primitives/pull/${id}`}
@@ -29,7 +29,7 @@ export function PRLink({ id }: { id: number | number[] }) {
             #{id}
           </Link>
           {i < arr.length - 1 ? ' ' : null}
-        </>
+        </React.Fragment>
       ))}
     </Text>
   );
