@@ -31,14 +31,14 @@ const StyledScrollbarY = styled(ScrollArea.ScrollbarY, {
   bottom: 0,
 });
 
-const StyledScrollTrack = styled(ScrollArea.Track, {
+const StyledTrack = styled(ScrollArea.Track, {
   zIndex: -1,
   position: 'relative',
   width: '100%',
   height: '100%',
 });
 
-const StyledScrollThumb = styled(ScrollArea.Thumb, {
+const StyledThumb = styled(ScrollArea.Thumb, {
   backgroundColor: 'gainsboro',
   position: 'absolute',
   top: 0,
@@ -64,9 +64,9 @@ export const ScrollAreaDemo = () => (
       </StyledViewport>
 
       <StyledScrollbarY>
-        <StyledScrollTrack>
-          <StyledScrollThumb />
-        </StyledScrollTrack>
+        <StyledTrack>
+          <StyledThumb />
+        </StyledTrack>
       </StyledScrollbarY>
     </StyledScrollArea>
   </div>
