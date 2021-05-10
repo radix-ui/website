@@ -6,6 +6,7 @@ import { global, darkTheme, DesignSystemProvider } from '@modulz/design-system';
 import { Footer } from '@components/Footer';
 import { DocsPage } from '@components/DocsPage';
 import { DesignSystemPage } from '@components/DesignSystemPage';
+import { ColorsPage } from '@components/ColorsPage';
 import { useAnalytics } from '@lib/analytics';
 import { scrollToUrlHash } from '@lib/scrollToUrlHash';
 
@@ -47,6 +48,7 @@ function App({ Component, pageProps }: AppProps) {
 
   const isPrimitivesDocs = router.pathname.includes('/primitives/docs');
   const isDesignSystemDocs = router.pathname.includes('/design-system/docs');
+  const isColorsDocs = router.pathname.includes('/colors/docs');
   const shouldShowFooter = !isPrimitivesDocs || !isDesignSystemDocs;
 
   return (
@@ -65,6 +67,10 @@ function App({ Component, pageProps }: AppProps) {
           <DesignSystemPage>
             <Component {...pageProps} />
           </DesignSystemPage>
+        ) : isColorsDocs ? (
+          <ColorsPage>
+            <Component {...pageProps} />
+          </ColorsPage>
         ) : (
           <Component {...pageProps} />
         )}
