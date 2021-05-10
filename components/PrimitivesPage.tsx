@@ -3,12 +3,12 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { Box, Flex, Badge, Text, Link, Container, IconButton } from '@modulz/design-system';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
-import { ScrollArea } from '../components/ScrollArea';
+import { ScrollArea } from './ScrollArea';
 import { RadixLogo } from './RadixLogo';
 import { ThemeToggle } from '@components/ThemeToggle';
 import { allPrimitivesRoutes, primitivesRoutes } from '@lib/primitivesRoutes';
 
-export function DocsPage({ children }: { children: React.ReactNode }) {
+export function PrimitivesPage({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const [isOpen, setIsOpen] = React.useState(false);
 
