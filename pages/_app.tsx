@@ -4,8 +4,9 @@ import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
 import { global, darkTheme, DesignSystemProvider } from '@modulz/design-system';
 import { Footer } from '@components/Footer';
-import { DocsPage } from '@components/DocsPage';
+import { PrimitivesPage } from '@components/PrimitivesPage';
 import { DesignSystemPage } from '@components/DesignSystemPage';
+import { ColorsPage } from '@components/ColorsPage';
 import { useAnalytics } from '@lib/analytics';
 import { scrollToUrlHash } from '@lib/scrollToUrlHash';
 
@@ -47,7 +48,8 @@ function App({ Component, pageProps }: AppProps) {
 
   const isPrimitivesDocs = router.pathname.includes('/primitives/docs');
   const isDesignSystemDocs = router.pathname.includes('/design-system/docs');
-  const shouldShowFooter = !isPrimitivesDocs || !isDesignSystemDocs;
+  const isColorsDocs = router.pathname.includes('/colors/docs');
+  const shouldShowFooter = !isPrimitivesDocs || !isDesignSystemDocs || !isColorsDocs;
 
   return (
     <DesignSystemProvider>
@@ -58,13 +60,17 @@ function App({ Component, pageProps }: AppProps) {
         defaultTheme="system"
       >
         {isPrimitivesDocs ? (
-          <DocsPage>
+          <PrimitivesPage>
             <Component {...pageProps} />
-          </DocsPage>
+          </PrimitivesPage>
         ) : isDesignSystemDocs ? (
           <DesignSystemPage>
             <Component {...pageProps} />
           </DesignSystemPage>
+        ) : isColorsDocs ? (
+          <ColorsPage>
+            <Component {...pageProps} />
+          </ColorsPage>
         ) : (
           <Component {...pageProps} />
         )}

@@ -32,6 +32,11 @@ module.exports = withPlugins([withTM, withOptimizedImages, withVideos], {
         destination: '/design-system/docs/overview/introduction',
         permanent: false,
       },
+      {
+        source: '/colors/docs',
+        destination: '/colors/docs/overview/introduction',
+        permanent: false,
+      },
     ];
   },
 

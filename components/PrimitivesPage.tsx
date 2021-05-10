@@ -3,13 +3,13 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { Box, Flex, Badge, Text, Link, Container, IconButton } from '@modulz/design-system';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
-import { ScrollArea } from '../components/ScrollArea';
+import { ScrollArea } from './ScrollArea';
 import { RadixLogo } from './RadixLogo';
 import { ThemeToggle } from '@components/ThemeToggle';
-import { allDesignSystemRoutes, designSystemRoutes } from '@lib/designSystemRoutes';
+import { allPrimitivesRoutes, primitivesRoutes } from '@lib/primitivesRoutes';
 import { NavHeading, NavItem } from './DocNav';
 
-export function DesignSystemPage({ children }: { children: React.ReactNode }) {
+export function PrimitivesPage({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -29,9 +29,9 @@ export function DesignSystemPage({ children }: { children: React.ReactNode }) {
     editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/main/data/${currentPageSlug}/${routerSlug[1]}.mdx`;
   }
 
-  const currentPageIndex = allDesignSystemRoutes.findIndex((page) => page.slug === currentPageSlug);
-  const previous = allDesignSystemRoutes[currentPageIndex - 1];
-  const next = allDesignSystemRoutes[currentPageIndex + 1];
+  const currentPageIndex = allPrimitivesRoutes.findIndex((page) => page.slug === currentPageSlug);
+  const previous = allPrimitivesRoutes[currentPageIndex - 1];
+  const next = allPrimitivesRoutes[currentPageIndex + 1];
 
   React.useEffect(() => {
     const handleRouteChange = () => setIsOpen(false);
@@ -124,7 +124,7 @@ export function DesignSystemPage({ children }: { children: React.ReactNode }) {
               },
             }}
           >
-            {designSystemRoutes.map((section) => (
+            {primitivesRoutes.map((section) => (
               <Box key={section.label} css={{ mb: '$4' }}>
                 <NavHeading>{section.label}</NavHeading>
                 {section.pages.map((page) => {
@@ -139,7 +139,7 @@ export function DesignSystemPage({ children }: { children: React.ReactNode }) {
                       <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                         {page.title}
                       </Text>
-                      {isDraft && <Badge css={{ ml: '$2' }}>Coming soon</Badge>}
+                      {isDraft ? <Badge css={{ ml: '$2' }}>Coming soon</Badge> : null}
                     </NavItem>
                   );
                 })}

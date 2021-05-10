@@ -6,9 +6,10 @@ import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import { ScrollArea } from '../components/ScrollArea';
 import { RadixLogo } from './RadixLogo';
 import { ThemeToggle } from '@components/ThemeToggle';
-import { allPrimitivesRoutes, primitivesRoutes } from '@lib/primitivesRoutes';
+import { allColorsRoutes, colorsRoutes } from '@lib/colorsRoutes';
+import { NavHeading, NavItem } from './DocNav';
 
-export function DocsPage({ children }: { children: React.ReactNode }) {
+export function ColorsPage({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -28,9 +29,9 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
     editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/main/data/${currentPageSlug}/${routerSlug[1]}.mdx`;
   }
 
-  const currentPageIndex = allPrimitivesRoutes.findIndex((page) => page.slug === currentPageSlug);
-  const previous = allPrimitivesRoutes[currentPageIndex - 1];
-  const next = allPrimitivesRoutes[currentPageIndex + 1];
+  const currentPageIndex = allColorsRoutes.findIndex((page) => page.slug === currentPageSlug);
+  const previous = allColorsRoutes[currentPageIndex - 1];
+  const next = allColorsRoutes[currentPageIndex + 1];
 
   React.useEffect(() => {
     const handleRouteChange = () => setIsOpen(false);
@@ -123,7 +124,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
               },
             }}
           >
-            {primitivesRoutes.map((section) => (
+            {colorsRoutes.map((section) => (
               <Box key={section.label} css={{ mb: '$4' }}>
                 <NavHeading>{section.label}</NavHeading>
                 {section.pages.map((page) => {
@@ -138,7 +139,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
                       <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                         {page.title}
                       </Text>
-                      {isDraft ? <Badge css={{ ml: '$2' }}>Coming soon</Badge> : null}
+                      {isDraft && <Badge css={{ ml: '$2' }}>Coming soon</Badge>}
                     </NavItem>
                   );
                 })}
@@ -238,67 +239,5 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
         </Container>
       </Box>
     </Flex>
-  );
-}
-
-function NavHeading({ children }: { children: React.ReactNode }) {
-  return (
-    <Text
-      as="h4"
-      size="3"
-      css={{
-        fontWeight: 500,
-        px: '$5',
-        py: '$2',
-      }}
-    >
-      {children}
-    </Text>
-  );
-}
-
-type NavItemProps = {
-  children: React.ReactNode;
-  active?: boolean;
-  disabled?: boolean;
-  href: string;
-};
-
-function NavItem({ children, active, disabled, href, ...props }: NavItemProps) {
-  const isExternal = href.startsWith('http');
-
-  return (
-    <Box
-      as={isExternal || disabled ? 'span' : (NextLink as any)}
-      {...(isExternal || disabled ? {} : { href, passHref: true })}
-    >
-      <Box
-        {...props}
-        {...(isExternal ? { href, target: '_blank' } : {})}
-        as={disabled ? 'div' : 'a'}
-        css={{
-          display: 'flex',
-          alignItems: 'center',
-          textDecoration: 'none',
-          color: disabled ? '$gray800' : '$hiContrast',
-          py: '$2',
-          px: '$5',
-          backgroundColor: active ? '$violet300' : 'transparent',
-          userSelect: 'none',
-          minHeight: '$6',
-          transition: 'background-color 50ms linear',
-          ...(disabled ? { pointerEvents: 'none' } : {}),
-          '&:hover': {
-            backgroundColor: active ? '$violet300' : '$violet200',
-          },
-          '&:focus': {
-            outline: 'none',
-            boxShadow: '0 0 0 1px $colors$violet500',
-          },
-        }}
-      >
-        {children}
-      </Box>
-    </Box>
   );
 }
