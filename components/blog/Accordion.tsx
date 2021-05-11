@@ -1,13 +1,14 @@
 import React from 'react';
-import { styled, keyframes, Box, darkTheme } from '@modulz/design-system';
+import { styled, Text, Box, Switch, Flex } from '@modulz/design-system';
 import * as Accordion from '@radix-ui/react-accordion';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
-import { HeroContainer } from '@components/HeroContainer';
+import { Label } from '@radix-ui/react-label';
 
 const StyledAccordion = styled(Accordion.Root, {
   backgroundColor: 'white',
   padding: '$2',
   borderRadius: '$3',
+  width: 300,
 });
 
 const StyledItem = styled(Accordion.Item, {});
@@ -57,36 +58,87 @@ const AccordionChevron = styled(ChevronDownIcon, {
   },
 });
 
-export const AccordionDemo = ({
-  isHero,
-  showChevrons,
-  preventClose,
-  initialValue = null,
-  ...props
-}) => {
-  const [value, setValue] = React.useState(initialValue);
+export const AccordionDemo = (props) => {
+  const [value, setValue] = React.useState<string | string[]>('item-1');
+
+  const [showChevrons, setShowChevrons] = React.useState(false);
+  const [allowMultiple, setAllowMultiple] = React.useState(false);
+  const [preventClose, setPreventClose] = React.useState(false);
 
   return (
     <Box
       css={{
-        $$borderColor: isHero ? '$colors$loContrast' : '$colors$violet900',
+        background: 'linear-gradient(330deg, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%)',
+        position: 'relative',
+        display: 'flex',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        minHeight: 500,
+        py: 120,
+        mx: '-$5',
 
-        padding: isHero ? '$9 $8' : '$8',
-        borderRadius: '$2',
-        mb: '$4',
-        mx: isHero ? '-$8' : 0,
-        background: isHero
-          ? 'linear-gradient(330deg, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%)'
-          : '$violet200',
+        '@bp2': {
+          mx: '-$8',
+          borderRadius: '$2',
+        },
       }}
-      // className={isHero ? 'hero' : darkTheme}
     >
+      <Box
+        css={{
+          borderRadius: '$1',
+          px: '$2',
+          position: 'absolute',
+          top: '$4',
+          right: '$4',
+          backgroundColor: '$violet900',
+          width: 200,
+        }}
+      >
+        <Flex as="label" css={{ my: '$2', alignItems: 'center' }}>
+          <Text size="2" css={{ userSelect: 'none', color: '$violet100', flex: '1' }}>
+            Show chevrons
+          </Text>
+          <Switch
+            checked={showChevrons}
+            onCheckedChange={(event) => setShowChevrons(event.target.checked)}
+          />
+        </Flex>
+        <Flex as="label" css={{ my: '$2', alignItems: 'center' }}>
+          <Text size="2" css={{ userSelect: 'none', color: '$violet100', flex: '1' }}>
+            Allow multiple
+          </Text>
+          <Switch
+            checked={allowMultiple}
+            onCheckedChange={(event) => {
+              setValue(['item-1', 'item-2']);
+              setAllowMultiple(event.target.checked);
+            }}
+          />
+        </Flex>
+        <Flex as="label" css={{ my: '$2', alignItems: 'center' }}>
+          <Text size="2" css={{ userSelect: 'none', color: '$violet100', flex: '1' }}>
+            Prevent closing
+          </Text>
+          <Switch
+            checked={preventClose}
+            onCheckedChange={(event) => {
+              if (value === '' || value.length === 0) {
+                setValue('item-1');
+              }
+              setPreventClose(event.target.checked);
+            }}
+          />
+        </Flex>
+      </Box>
+
       <StyledAccordion
-        type="single"
+        type={allowMultiple ? 'multiple' : 'single'}
         {...props}
         value={value}
         onValueChange={(newValue) => {
-          if (preventClose && newValue === undefined) {
+          console.log(preventClose);
+          console.log(newValue);
+          if (preventClose && (newValue === '' || newValue.length === 0)) {
             return;
           }
           setValue(newValue);
