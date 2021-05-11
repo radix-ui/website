@@ -5,12 +5,12 @@ import { ChevronDownIcon } from '@radix-ui/react-icons';
 import { HeroContainer } from '@components/HeroContainer';
 
 const StyledAccordion = styled(Accordion.Root, {
-  borderTop: '1px solid $$borderColor',
+  backgroundColor: 'white',
+  padding: '$2',
+  borderRadius: '$3',
 });
 
-const StyledItem = styled(Accordion.Item, {
-  borderBottom: '1px solid $$borderColor',
-});
+const StyledItem = styled(Accordion.Item, {});
 
 const StyledHeader = styled(Accordion.Header, {
   margin: 0,
@@ -18,36 +18,39 @@ const StyledHeader = styled(Accordion.Header, {
 });
 
 const StyledButton = styled(Accordion.Button, {
-  backgroundColor: 'transparent',
+  backgroundColor: '$violet300',
   border: 'none',
   padding: '$2',
   flex: 1,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
+  borderRadius: '$2',
   fontSize: '$3',
-  color: '$loContrast',
+  color: '$violet900',
   fontWeight: '500',
+  mb: '$2',
+
+  '&:hover': {
+    backgroundColor: `$violet400`,
+  },
 
   '&:focus': {
     outline: 'none',
-    backgroundColor: `$violet900`,
-    // background: 'linear-gradient(330deg, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%)',
-    '.hero &': {
-      backgroundColor: 'rgba(255 255 255 / 0.2)',
-    },
+    backgroundColor: `$violet400`,
+    boxShadow: '0 0 0 2px $colors$violet800',
   },
 });
 
 const StyledPanel = styled(Accordion.Panel, {
   padding: '$2 $2 $4',
   fontSize: '$3',
-  color: '$loContrast',
+  color: '$hiContrast',
 });
 
 const AccordionChevron = styled(ChevronDownIcon, {
   transition: 'transform 300ms',
-  color: '$loContrast',
+  color: '$violet800',
 
   '[data-state=open] &': {
     transform: 'rotate(180deg)',
@@ -74,9 +77,9 @@ export const AccordionDemo = ({
         mx: isHero ? '-$8' : 0,
         background: isHero
           ? 'linear-gradient(330deg, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%)'
-          : '$violet1000',
+          : '$violet200',
       }}
-      className={isHero ? 'hero' : darkTheme}
+      // className={isHero ? 'hero' : darkTheme}
     >
       <StyledAccordion
         type="single"
