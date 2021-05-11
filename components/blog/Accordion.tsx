@@ -1,15 +1,15 @@
 import React from 'react';
-import { styled, keyframes, Box } from '@modulz/design-system';
+import { styled, keyframes, Box, darkTheme } from '@modulz/design-system';
 import * as Accordion from '@radix-ui/react-accordion';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 import { HeroContainer } from '@components/HeroContainer';
 
 const StyledAccordion = styled(Accordion.Root, {
-  borderTop: '1px solid rgba(255 255 255 / 0.8)',
+  borderTop: '1px solid $$borderColor',
 });
 
 const StyledItem = styled(Accordion.Item, {
-  borderBottom: '1px solid rgba(255 255 255 / 0.8)',
+  borderBottom: '1px solid $$borderColor',
 });
 
 const StyledHeader = styled(Accordion.Header, {
@@ -31,7 +31,11 @@ const StyledButton = styled(Accordion.Button, {
 
   '&:focus': {
     outline: 'none',
-    backgroundColor: 'rgba(255 255 255 / 0.2)',
+    backgroundColor: `$violet900`,
+    // background: 'linear-gradient(330deg, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%)',
+    '.hero &': {
+      backgroundColor: 'rgba(255 255 255 / 0.2)',
+    },
   },
 });
 
@@ -50,16 +54,29 @@ const AccordionChevron = styled(ChevronDownIcon, {
   },
 });
 
-export const AccordionDemo = ({ showChevrons, preventClose, initialValue = null, ...props }) => {
+export const AccordionDemo = ({
+  isHero,
+  showChevrons,
+  preventClose,
+  initialValue = null,
+  ...props
+}) => {
   const [value, setValue] = React.useState(initialValue);
 
   return (
     <Box
       css={{
-        p: '$8',
+        $$borderColor: isHero ? '$colors$loContrast' : '$colors$violet900',
+
+        padding: isHero ? '$9 $8' : '$8',
         borderRadius: '$2',
-        background: 'linear-gradient(330deg, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%)',
+        mb: '$4',
+        mx: isHero ? '-$8' : 0,
+        background: isHero
+          ? 'linear-gradient(330deg, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%)'
+          : '$violet1000',
       }}
+      className={isHero ? 'hero' : darkTheme}
     >
       <StyledAccordion
         type="single"
