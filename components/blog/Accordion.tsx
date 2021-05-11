@@ -46,7 +46,7 @@ const StyledButton = styled(Accordion.Button, {
 const StyledPanel = styled(Accordion.Panel, {
   padding: '$2 $2 $4',
   fontSize: '$3',
-  color: '$hiContrast',
+  color: '$violet900',
 });
 
 const AccordionChevron = styled(ChevronDownIcon, {
