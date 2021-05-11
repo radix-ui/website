@@ -1,8 +1,7 @@
 import React from 'react';
-import { styled, Text, Box, Switch, Flex } from '@modulz/design-system';
+import { theme, styled, Text, Box, Switch, Flex } from '@modulz/design-system';
 import * as Accordion from '@radix-ui/react-accordion';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
-import { Label } from '@radix-ui/react-label';
 
 const StyledAccordion = styled(Accordion.Root, {
   backgroundColor: 'white',
@@ -19,7 +18,7 @@ const StyledHeader = styled(Accordion.Header, {
 });
 
 const StyledButton = styled(Accordion.Button, {
-  backgroundColor: '$violet300',
+  backgroundColor: theme.colors.violet300.value,
   border: 'none',
   padding: '$2',
   flex: 1,
@@ -28,7 +27,7 @@ const StyledButton = styled(Accordion.Button, {
   justifyContent: 'space-between',
   borderRadius: '$2',
   fontSize: '$3',
-  color: '$violet900',
+  color: theme.colors.violet900.value,
   fontWeight: '500',
   mb: '$2',
 
@@ -39,14 +38,14 @@ const StyledButton = styled(Accordion.Button, {
   '&:focus': {
     outline: 'none',
     backgroundColor: `$violet400`,
-    boxShadow: '0 0 0 2px $colors$violet800',
+    boxShadow: `0 0 0 2px ${theme.colors.violet800.value}`,
   },
 });
 
 const StyledPanel = styled(Accordion.Panel, {
   padding: '$2 $2 $4',
   fontSize: '$3',
-  color: '$violet900',
+  color: theme.colors.violet900.value,
 });
 
 const AccordionChevron = styled(ChevronDownIcon, {
@@ -89,25 +88,27 @@ export const AccordionDemo = (props) => {
           px: '$2',
           position: 'absolute',
           top: '$4',
-          right: '$4',
-          backgroundColor: '$violet900',
+          left: '$4',
+          backgroundColor: 'rgba(0 0 0 / 0.2)',
           width: 200,
         }}
       >
         <Flex as="label" css={{ my: '$2', alignItems: 'center' }}>
-          <Text size="2" css={{ userSelect: 'none', color: '$violet100', flex: '1' }}>
+          <Text size="2" css={{ userSelect: 'none', color: 'white', flex: '1' }}>
             Show chevrons
           </Text>
           <Switch
+            css={{ border: 'none' }}
             checked={showChevrons}
             onCheckedChange={(event) => setShowChevrons(event.target.checked)}
           />
         </Flex>
         <Flex as="label" css={{ my: '$2', alignItems: 'center' }}>
-          <Text size="2" css={{ userSelect: 'none', color: '$violet100', flex: '1' }}>
+          <Text size="2" css={{ userSelect: 'none', color: 'white', flex: '1' }}>
             Allow multiple
           </Text>
           <Switch
+            css={{ border: 'none' }}
             checked={allowMultiple}
             onCheckedChange={(event) => {
               setValue(['item-1', 'item-2']);
@@ -116,10 +117,11 @@ export const AccordionDemo = (props) => {
           />
         </Flex>
         <Flex as="label" css={{ my: '$2', alignItems: 'center' }}>
-          <Text size="2" css={{ userSelect: 'none', color: '$violet100', flex: '1' }}>
+          <Text size="2" css={{ userSelect: 'none', color: 'white', flex: '1' }}>
             Prevent closing
           </Text>
           <Switch
+            css={{ border: 'none' }}
             checked={preventClose}
             onCheckedChange={(event) => {
               if (value === '' || value.length === 0) {
