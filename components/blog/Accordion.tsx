@@ -43,6 +43,7 @@ const StyledPanel = styled(Accordion.Panel, {
 
 const AccordionChevron = styled(ChevronDownIcon, {
   transition: 'transform 300ms',
+  color: '$loContrast',
 
   '[data-state=open] &': {
     transform: 'rotate(180deg)',
