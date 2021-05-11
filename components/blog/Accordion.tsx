@@ -5,12 +5,13 @@ import { ChevronDownIcon } from '@radix-ui/react-icons';
 
 const StyledAccordion = styled(Accordion.Root, {
   backgroundColor: 'white',
-  padding: '$2',
   borderRadius: '$3',
   width: 300,
 });
 
-const StyledItem = styled(Accordion.Item, {});
+const StyledItem = styled(Accordion.Item, {
+  margin: '$2',
+});
 
 const StyledHeader = styled(Accordion.Header, {
   margin: 0,
@@ -29,7 +30,6 @@ const StyledButton = styled(Accordion.Button, {
   fontSize: '$3',
   color: theme.colors.violet900.value,
   fontWeight: '500',
-  mb: '$2',
 
   '&:hover': {
     backgroundColor: theme.colors.violet400.value,
@@ -43,7 +43,7 @@ const StyledButton = styled(Accordion.Button, {
 });
 
 const StyledPanel = styled(Accordion.Panel, {
-  padding: '$2 $2 $4',
+  padding: '$2',
   fontSize: '$3',
   color: theme.colors.violet900.value,
 });
