@@ -32,12 +32,12 @@ const StyledButton = styled(Accordion.Button, {
   mb: '$2',
 
   '&:hover': {
-    backgroundColor: `$violet400`,
+    backgroundColor: theme.colors.violet400.value,
   },
 
   '&:focus': {
     outline: 'none',
-    backgroundColor: `$violet400`,
+    backgroundColor: theme.colors.violet400.value,
     boxShadow: `0 0 0 2px ${theme.colors.violet800.value}`,
   },
 });
@@ -50,7 +50,7 @@ const StyledPanel = styled(Accordion.Panel, {
 
 const AccordionChevron = styled(ChevronDownIcon, {
   transition: 'transform 300ms',
-  color: '$violet800',
+  color: theme.colors.violet800.value,
 
   '[data-state=open] &': {
     transform: 'rotate(180deg)',
