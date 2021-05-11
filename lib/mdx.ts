@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import glob from 'glob';
 import matter from 'gray-matter';
+import readingTime from 'reading-time';
 import compareVersions from 'compare-versions';
 import { bundleMDX } from 'mdx-bundler';
 import remarkSlug from 'remark-slug';
@@ -20,11 +21,12 @@ export const getAllFrontmatter = (fromPath) => {
 
   return paths.map((filePath) => {
     const source = fs.readFileSync(path.join(filePath), 'utf8');
-    const { data } = matter(source);
+    const { data, content } = matter(source);
 
     return {
       ...(data as Frontmatter),
       slug: filePath.replace(`${DATA_PATH}/`, '').replace('.mdx', ''),
+      readingTime: readingTime(content),
     } as Frontmatter;
   });
 };
@@ -48,6 +50,7 @@ export const getMdxBySlug = async (basePath, slug) => {
     frontmatter: {
       ...(frontmatter as Frontmatter),
       slug,
+      readingTime: readingTime(code),
     } as Frontmatter,
     code,
   };
