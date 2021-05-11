@@ -7,12 +7,19 @@ import { parseISO, format } from 'date-fns';
 import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { authors } from '@data/authors';
 import { Color } from '@components/Color';
+import { AccordionDemo } from '@components/blog/Accordion';
 
 import type { Frontmatter } from 'types/frontmatter';
 
 type Doc = {
   frontmatter: Frontmatter;
   code: any;
+};
+
+const mdxComponents = {
+  ...components,
+  Color,
+  AccordionDemo,
 };
 
 export default function BlogPostPage({ frontmatter, code }: Doc) {
@@ -38,9 +45,6 @@ export default function BlogPostPage({ frontmatter, code }: Doc) {
           <Text as="h1" size="8" css={{ fontWeight: 500, mb: '$2', lineHeight: '40px' }}>
             {frontmatter.metaTitle}
           </Text>
-          <Subtitle as="p" css={{ mt: '$2', mb: '$7' }}>
-            {frontmatter.metaDescription}
-          </Subtitle>
 
           <Flex css={{ mt: '$4', mb: '$7', alignItems: 'center' }}>
             <Text as="p" size="3" css={{ color: '$slate900', lineHeight: 0, whiteSpace: 'nowrap' }}>
@@ -69,7 +73,7 @@ export default function BlogPostPage({ frontmatter, code }: Doc) {
           </Flex>
 
           <MDXProvider frontmatter={frontmatter}>
-            <Component components={{ ...components, Color } as any} />
+            <Component components={mdxComponents as any} />
           </MDXProvider>
         </Container>
       </Box>
