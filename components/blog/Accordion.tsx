@@ -26,7 +26,12 @@ const StyledItem = styled(Accordion.Item, {
   overflow: 'hidden',
 
   '&:focus-within': {
-    boxShadow: `0 0 0 2px ${theme.colors.violet700.value}`,
+    '&[data-state="open"]': {
+      boxShadow: `0 0 0 2px ${theme.colors.violet700.value}`,
+    },
+    '&[data-state="closed"]': {
+      boxShadow: `0 0 0 2px ${theme.colors.slate700.value}`,
+    },
   },
 });
 
@@ -94,10 +99,10 @@ const AccordionChevron = styled(ChevronDownIcon, {
 });
 
 export const AccordionDemo = (props) => {
-  const [value, setValue] = React.useState<string | string[]>('item-1');
+  const [value, setValue] = React.useState<string | string[]>(['item-1', 'item-3']);
 
-  const [showChevrons, setShowChevrons] = React.useState(false);
-  const [allowMultiple, setAllowMultiple] = React.useState(false);
+  const [showChevrons, setShowChevrons] = React.useState(true);
+  const [allowMultiple, setAllowMultiple] = React.useState(true);
   const [preventClose, setPreventClose] = React.useState(false);
   const [withAnimation, setWithAnimation] = React.useState(true);
 
