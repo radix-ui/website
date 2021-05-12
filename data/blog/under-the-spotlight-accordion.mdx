@@ -47,11 +47,46 @@ Keyboard navigation helps users with motor disabilities navigate across the item
 
 Every Radix Primitive supports keyboard accessibility. So you can do anything you need without using your mouse.
 
-When you focus the Accordtion, you can:
-
-- Press <Kbd>Up</Kbd> and <Kbd>Down</Kbd> to navigate across items
-- Press <Kbd>Space</Kbd> to open/close a panel
-- Press <Kbd>Enter</Kbd> to open/close a panel
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space'],
+      description:
+        'When focus is on an Accordion Button of a collapsed section, expands the section.',
+    },
+    {
+      keys: ['Enter'],
+      description:
+        'When focus is on an Accordion Button of a collapsed section, expands the section.',
+    },
+    {
+      keys: ['Tab'],
+      description: 'Moves focus to the next focusable element.',
+    },
+    {
+      keys: ['Shift + Tab'],
+      description: 'Moves focus to the previous focusable element.',
+    },
+    {
+      keys: ['ArrowDown'],
+      description: 'Moves focus to the next Accordion Button.',
+    },
+    {
+      keys: ['ArrowUp'],
+      description: 'Moves focus to the previous Accordion Button.',
+    },
+    {
+      keys: ['Home'],
+      description:
+        'When focus is on an Accordion Button, moves focus to the first Accordion Button.',
+    },
+    {
+      keys: ['End'],
+      description:
+        'When focus is on an Accordion Button, moves focus to the last Accordion Button.',
+    },
+  ]}
+/>
 
 ---
 
