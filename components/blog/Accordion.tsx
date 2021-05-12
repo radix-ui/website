@@ -1,5 +1,5 @@
 import React from 'react';
-import { theme, styled, keyframes, Text, Box, Switch, Flex } from '@modulz/design-system';
+import { theme, styled, keyframes, Text, Box, Switch, Flex, Link } from '@modulz/design-system';
 import * as Accordion from '@radix-ui/react-accordion';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 
@@ -161,6 +161,18 @@ export const AccordionDemo = (props) => {
         </Flex>
         <Flex as="label" css={{ my: '$2', alignItems: 'center' }}>
           <Text size="2" css={{ userSelect: 'none', color: 'white', flex: '1' }}>
+            With animation
+          </Text>
+          <Switch
+            css={{ border: 'none' }}
+            checked={withAnimation}
+            onCheckedChange={(event) => {
+              setWithAnimation(event.target.checked);
+            }}
+          />
+        </Flex>
+        <Flex as="label" css={{ my: '$2', alignItems: 'center' }}>
+          <Text size="2" css={{ userSelect: 'none', color: 'white', flex: '1' }}>
             Prevent closing
           </Text>
           <Switch
@@ -171,18 +183,6 @@ export const AccordionDemo = (props) => {
                 setValue('item-1');
               }
               setPreventClose(event.target.checked);
-            }}
-          />
-        </Flex>
-        <Flex as="label" css={{ my: '$2', alignItems: 'center' }}>
-          <Text size="2" css={{ userSelect: 'none', color: 'white', flex: '1' }}>
-            With animation
-          </Text>
-          <Switch
-            css={{ border: 'none' }}
-            checked={withAnimation}
-            onCheckedChange={(event) => {
-              setWithAnimation(event.target.checked);
             }}
           />
         </Flex>
@@ -198,8 +198,6 @@ export const AccordionDemo = (props) => {
           {...props}
           value={value}
           onValueChange={(newValue) => {
-            console.log(preventClose);
-            console.log(newValue);
             if (preventClose && (newValue === '' || newValue.length === 0)) {
               return;
             }
@@ -215,7 +213,14 @@ export const AccordionDemo = (props) => {
             <StyledPanel>
               <Box css={{ padding: '$2 $3' }}>
                 <Text size="3" css={{ color: 'inherit', lineHeight: 'inherit' }}>
-                  Yes. The Radix Accordion component adheres to the WAI-ARAI design patterns.
+                  Yes. The Radix Accordion component adheres to the{' '}
+                  <Link
+                    variant="blue"
+                    href="https://www.w3.org/TR/wai-aria-practices-1.2/#accordion"
+                  >
+                    WAI-ARAI
+                  </Link>{' '}
+                  design pattern.
                 </Text>
               </Box>
             </StyledPanel>
@@ -224,14 +229,13 @@ export const AccordionDemo = (props) => {
           <StyledItem value="item-2">
             <StyledHeader>
               <StyledButton>
-                Does it come with styling? {showChevrons && <AccordionChevron aria-hidden />}
+                Is it unstyled? {showChevrons && <AccordionChevron aria-hidden />}
               </StyledButton>
             </StyledHeader>
             <StyledPanel>
               <Box css={{ padding: '$2 $3' }}>
                 <Text size="3" css={{ color: 'inherit', lineHeight: 'inherit' }}>
-                  No. The Radix Accordion is unstyled by default, giving you full freedom over the
-                  look and feel.
+                  Yes. It's unstyled by default, giving you full freedom over the look and feel.
                 </Text>
               </Box>
             </StyledPanel>
@@ -254,13 +258,13 @@ export const AccordionDemo = (props) => {
           <StyledItem value="item-4">
             <StyledHeader>
               <StyledButton>
-                Is it customizable? {showChevrons && <AccordionChevron aria-hidden />}
+                Can it be extended? {showChevrons && <AccordionChevron aria-hidden />}
               </StyledButton>
             </StyledHeader>
             <StyledPanel>
               <Box css={{ padding: '$2 $3' }}>
                 <Text size="3" css={{ color: 'inherit', lineHeight: 'inherit' }}>
-                  Absolutely. You can customise it to fit your needs.
+                  Absolutely. You can extend it to fit your product's needs.
                 </Text>
               </Box>
             </StyledPanel>
