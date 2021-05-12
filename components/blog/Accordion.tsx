@@ -16,7 +16,7 @@ const slideUp = keyframes({
 const StyledAccordion = styled(Accordion.Root, {
   backgroundColor: 'white',
   borderRadius: '$3',
-  width: 300,
+  width: 320,
 });
 
 const StyledItem = styled(Accordion.Item, {
@@ -199,48 +199,51 @@ export const AccordionDemo = (props) => {
       >
         <StyledItem value="item-1">
           <StyledHeader>
-            <StyledButton>Item 1 {showChevrons && <AccordionChevron aria-hidden />}</StyledButton>
+            <StyledButton>
+              Is it accessible? {showChevrons && <AccordionChevron aria-hidden />}
+            </StyledButton>
           </StyledHeader>
           <StyledPanel>
-            <Box css={{ padding: '$2 $2 $2' }}>
-              The Radix accordion has been carefully built to ensure you, and your users, have the
-              best possible experience.
+            <Box css={{ padding: '$2' }}>
+              Yes. The Radix Accordion component adheres to the WAI-ARAI design patterns.
             </Box>
           </StyledPanel>
         </StyledItem>
 
         <StyledItem value="item-2">
           <StyledHeader>
-            <StyledButton>Item 2 {showChevrons && <AccordionChevron aria-hidden />}</StyledButton>
+            <StyledButton>
+              Does it come with styling? {showChevrons && <AccordionChevron aria-hidden />}
+            </StyledButton>
           </StyledHeader>
           <StyledPanel>
-            <Box css={{ padding: '$2 $2 $2' }}>
-              The Radix accordion has been carefully built to ensure you, and your users, have the
-              best possible experience.
+            <Box css={{ padding: '$2' }}>
+              No. The Radix Accordion is unstyled by default, giving you full freedom over the look
+              and feel.
             </Box>
           </StyledPanel>
         </StyledItem>
 
         <StyledItem value="item-3">
           <StyledHeader>
-            <StyledButton>Item 3 {showChevrons && <AccordionChevron aria-hidden />}</StyledButton>
+            <StyledButton>
+              Can it be animated? {showChevrons && <AccordionChevron aria-hidden />}
+            </StyledButton>
           </StyledHeader>
           <StyledPanel>
-            <Box css={{ padding: '$2 $2 $2' }}>
-              The Radix accordion has been carefully built to ensure you, and your users, have the
-              best possible experience.
+            <Box css={{ padding: '$2' }}>
+              Yes! You can animate the Accordion with CSS or JavaScript.
             </Box>
           </StyledPanel>
         </StyledItem>
         <StyledItem value="item-4">
           <StyledHeader>
-            <StyledButton>Item 4 {showChevrons && <AccordionChevron aria-hidden />}</StyledButton>
+            <StyledButton>
+              Is it customizable? {showChevrons && <AccordionChevron aria-hidden />}
+            </StyledButton>
           </StyledHeader>
           <StyledPanel>
-            <Box css={{ padding: '$2 $2 $2' }}>
-              The Radix accordion has been carefully built to ensure you, and your users, have the
-              best possible experience.
-            </Box>
+            <Box css={{ padding: '$2' }}>Absolutely. You can customise it to fit your needs.</Box>
           </StyledPanel>
         </StyledItem>
       </StyledAccordion>
