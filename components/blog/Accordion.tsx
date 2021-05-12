@@ -23,13 +23,6 @@ const StyledItem = styled(Accordion.Item, {
   margin: '$2',
   borderRadius: '$2',
   overflow: 'hidden',
-  // backgroundColor: theme.colors.slate200.value,
-
-  // transition: 'all 150ms ease-out',
-
-  '&[data-state="open"]': {
-    // backgroundColor: theme.colors.violet100.value,
-  },
 
   '&:focus-within': {
     boxShadow: `0 0 0 2px ${theme.colors.violet700.value}`,
@@ -56,20 +49,16 @@ const StyledButton = styled(Accordion.Button, {
 
   '&[data-state="closed"]': {
     backgroundColor: theme.colors.slate200.value,
-    // transition: 'all 300ms ease-out',
   },
 
   '&[data-state="open"]': {
-    // transition: 'all 300ms ease-out',
     backgroundColor: theme.colors.violet200.value,
     color: theme.colors.violet900.value,
   },
 
   '&:hover': {
-    // transition: 'none',
     backgroundColor: theme.colors.slate400.value,
     '&[data-state="open"]': {
-      // backgroundColor: theme.colors.violet300.value,
       backgroundColor: theme.colors.violet200.value,
     },
   },
