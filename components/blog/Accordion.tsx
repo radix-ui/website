@@ -21,6 +21,24 @@ const StyledAccordion = styled(Accordion.Root, {
 
 const StyledItem = styled(Accordion.Item, {
   margin: '$2',
+  borderRadius: '$2',
+  overflow: 'hidden',
+  backgroundColor: theme.colors.slate200.value,
+
+  '&[data-state="open"]': {
+    backgroundColor: theme.colors.violet200.value,
+  },
+
+  '&:hover': {
+    backgroundColor: theme.colors.slate400.value,
+    '&[data-state="open"]': {
+      backgroundColor: theme.colors.violet200.value,
+    },
+  },
+
+  '&:focus-within': {
+    boxShadow: `0 0 0 2px ${theme.colors.violet700.value}`,
+  },
 });
 
 const StyledHeader = styled(Accordion.Header, {
@@ -29,26 +47,24 @@ const StyledHeader = styled(Accordion.Header, {
 });
 
 const StyledButton = styled(Accordion.Button, {
-  backgroundColor: theme.colors.violet300.value,
+  backgroundColor: 'transparent',
   border: 'none',
   padding: '$2',
   flex: 1,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  borderRadius: '$2',
+
   fontSize: '$3',
-  color: theme.colors.violet900.value,
+  color: theme.colors.slate1000.value,
   fontWeight: '500',
 
-  '&:hover': {
-    backgroundColor: theme.colors.violet400.value,
+  '&[data-state="open"]': {
+    color: theme.colors.violet900.value,
   },
 
   '&:focus': {
     outline: 'none',
-    backgroundColor: theme.colors.violet400.value,
-    boxShadow: `0 0 0 2px ${theme.colors.violet800.value}`,
   },
 });
 
@@ -184,7 +200,7 @@ export const AccordionDemo = (props) => {
             <StyledButton>Item 1 {showChevrons && <AccordionChevron aria-hidden />}</StyledButton>
           </StyledHeader>
           <StyledPanel>
-            <Box css={{ padding: '$2' }}>
+            <Box css={{ padding: '0 $2 $2' }}>
               The Radix accordion has been carefully built to ensure you, and your users, have the
               best possible experience.
             </Box>
@@ -196,7 +212,7 @@ export const AccordionDemo = (props) => {
             <StyledButton>Item 2 {showChevrons && <AccordionChevron aria-hidden />}</StyledButton>
           </StyledHeader>
           <StyledPanel>
-            <Box css={{ padding: '$2' }}>
+            <Box css={{ padding: '0 $2 $2' }}>
               The Radix accordion has been carefully built to ensure you, and your users, have the
               best possible experience.
             </Box>
@@ -208,7 +224,7 @@ export const AccordionDemo = (props) => {
             <StyledButton>Item 3 {showChevrons && <AccordionChevron aria-hidden />}</StyledButton>
           </StyledHeader>
           <StyledPanel>
-            <Box css={{ padding: '$2' }}>
+            <Box css={{ padding: '0 $2 $2' }}>
               The Radix accordion has been carefully built to ensure you, and your users, have the
               best possible experience.
             </Box>
@@ -219,7 +235,7 @@ export const AccordionDemo = (props) => {
             <StyledButton>Item 4 {showChevrons && <AccordionChevron aria-hidden />}</StyledButton>
           </StyledHeader>
           <StyledPanel>
-            <Box css={{ padding: '$2' }}>
+            <Box css={{ padding: '0 $2 $2' }}>
               The Radix accordion has been carefully built to ensure you, and your users, have the
               best possible experience.
             </Box>
