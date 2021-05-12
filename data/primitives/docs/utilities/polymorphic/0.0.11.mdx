@@ -93,12 +93,12 @@ Polymorphic.OwnProps<typeof Button>;
 // { variant: 'solid' | 'outline' }
 ```
 
-### InstrinsicElement
+### IntrinsicElement
 
 Extract the `JSX.IntrinsicElements` key from a polymorphic component.
 
 ```tsx line=1,3
-Polymorphic.InstrinsicElement<
+Polymorphic.IntrinsicElement<
   Polymorphic.ForwardRefComponent
 >;
 ```
@@ -106,7 +106,7 @@ Polymorphic.InstrinsicElement<
 #### Usage
 
 ```tsx
-Polymorphic.InstrinsicElement<typeof Button>;
+Polymorphic.IntrinsicElement<typeof Button>;
 // 'button'
 ```
 
