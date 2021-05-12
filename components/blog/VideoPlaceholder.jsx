@@ -5,7 +5,7 @@ export const VideoPlaceholder = (props) => {
   return (
     <Box
       css={{
-        border: '1px solid',
+        border: '1px solid $slate700',
         position: 'relative',
         display: 'flex',
         alignItems: 'center',
