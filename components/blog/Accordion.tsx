@@ -1,7 +1,17 @@
 import React from 'react';
-import { theme, styled, Text, Box, Switch, Flex } from '@modulz/design-system';
+import { theme, styled, keyframes, Text, Box, Switch, Flex } from '@modulz/design-system';
 import * as Accordion from '@radix-ui/react-accordion';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
+
+const slideDown = keyframes({
+  from: { height: 0 },
+  to: { height: 'var(--radix-accordion-panel-height)' },
+});
+
+const slideUp = keyframes({
+  from: { height: 'var(--radix-accordion-panel-height)' },
+  to: { height: 0 },
+});
 
 const StyledAccordion = styled(Accordion.Root, {
   backgroundColor: 'white',
@@ -43,13 +53,22 @@ const StyledButton = styled(Accordion.Button, {
 });
 
 const StyledPanel = styled(Accordion.Panel, {
-  padding: '$2',
+  overflow: 'hidden',
   fontSize: '$3',
-  color: theme.colors.violet900.value,
+  color: theme.colors.slate1000.value,
+
+  '.with-animation &': {
+    '&[data-state="open"]': {
+      animation: `${slideDown} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
+    },
+    '&[data-state="closed"]': {
+      animation: `${slideUp} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
+    },
+  },
 });
 
 const AccordionChevron = styled(ChevronDownIcon, {
-  transition: 'transform 300ms',
+  transition: 'transform 300ms cubic-bezier(0.87, 0, 0.13, 1)',
   color: theme.colors.violet800.value,
 
   '[data-state=open] &': {
@@ -63,18 +82,20 @@ export const AccordionDemo = (props) => {
   const [showChevrons, setShowChevrons] = React.useState(false);
   const [allowMultiple, setAllowMultiple] = React.useState(false);
   const [preventClose, setPreventClose] = React.useState(false);
+  const [withAnimation, setWithAnimation] = React.useState(true);
 
   return (
     <Box
+      className={withAnimation ? 'with-animation' : ''}
       css={{
         background: 'linear-gradient(330deg, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%)',
         position: 'relative',
         display: 'flex',
         alignItems: 'flex-start',
         justifyContent: 'center',
-        minHeight: 500,
-        py: 120,
+        py: '$9',
         mx: '-$5',
+        height: 600,
 
         '@bp2': {
           mx: '-$8',
@@ -131,6 +152,18 @@ export const AccordionDemo = (props) => {
             }}
           />
         </Flex>
+        <Flex as="label" css={{ my: '$2', alignItems: 'center' }}>
+          <Text size="2" css={{ userSelect: 'none', color: 'white', flex: '1' }}>
+            With animation
+          </Text>
+          <Switch
+            css={{ border: 'none' }}
+            checked={withAnimation}
+            onCheckedChange={(event) => {
+              setWithAnimation(event.target.checked);
+            }}
+          />
+        </Flex>
       </Box>
 
       <StyledAccordion
@@ -151,8 +184,10 @@ export const AccordionDemo = (props) => {
             <StyledButton>Item 1 {showChevrons && <AccordionChevron aria-hidden />}</StyledButton>
           </StyledHeader>
           <StyledPanel>
-            The Radix accordion has been carefully built to ensure you, and your users, have the
-            best possible experience.
+            <Box css={{ padding: '$2' }}>
+              The Radix accordion has been carefully built to ensure you, and your users, have the
+              best possible experience.
+            </Box>
           </StyledPanel>
         </StyledItem>
 
@@ -161,8 +196,10 @@ export const AccordionDemo = (props) => {
             <StyledButton>Item 2 {showChevrons && <AccordionChevron aria-hidden />}</StyledButton>
           </StyledHeader>
           <StyledPanel>
-            The Radix accordion has been carefully built to ensure you, and your users, have the
-            best possible experience.
+            <Box css={{ padding: '$2' }}>
+              The Radix accordion has been carefully built to ensure you, and your users, have the
+              best possible experience.
+            </Box>
           </StyledPanel>
         </StyledItem>
 
@@ -171,8 +208,21 @@ export const AccordionDemo = (props) => {
             <StyledButton>Item 3 {showChevrons && <AccordionChevron aria-hidden />}</StyledButton>
           </StyledHeader>
           <StyledPanel>
-            The Radix accordion has been carefully built to ensure you, and your users, have the
-            best possible experience.
+            <Box css={{ padding: '$2' }}>
+              The Radix accordion has been carefully built to ensure you, and your users, have the
+              best possible experience.
+            </Box>
+          </StyledPanel>
+        </StyledItem>
+        <StyledItem value="item-4">
+          <StyledHeader>
+            <StyledButton>Item 4 {showChevrons && <AccordionChevron aria-hidden />}</StyledButton>
+          </StyledHeader>
+          <StyledPanel>
+            <Box css={{ padding: '$2' }}>
+              The Radix accordion has been carefully built to ensure you, and your users, have the
+              best possible experience.
+            </Box>
           </StyledPanel>
         </StyledItem>
       </StyledAccordion>
