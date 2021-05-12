@@ -28,6 +28,7 @@ export const VideoPlaceholder = (props) => {
           background: '-webkit-linear-gradient(330deg, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
+          userSelect: 'none',
         }}
       >
         Video placeholder
