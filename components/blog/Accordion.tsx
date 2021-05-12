@@ -23,17 +23,12 @@ const StyledItem = styled(Accordion.Item, {
   margin: '$2',
   borderRadius: '$2',
   overflow: 'hidden',
-  backgroundColor: theme.colors.slate200.value,
+  // backgroundColor: theme.colors.slate200.value,
+
+  // transition: 'all 150ms ease-out',
 
   '&[data-state="open"]': {
-    backgroundColor: theme.colors.violet200.value,
-  },
-
-  '&:hover': {
-    backgroundColor: theme.colors.slate400.value,
-    '&[data-state="open"]': {
-      backgroundColor: theme.colors.violet200.value,
-    },
+    // backgroundColor: theme.colors.violet100.value,
   },
 
   '&:focus-within': {
@@ -59,8 +54,24 @@ const StyledButton = styled(Accordion.Button, {
   color: theme.colors.slate1000.value,
   fontWeight: '500',
 
+  '&[data-state="closed"]': {
+    backgroundColor: theme.colors.slate200.value,
+    // transition: 'all 300ms ease-out',
+  },
+
   '&[data-state="open"]': {
+    // transition: 'all 300ms ease-out',
+    backgroundColor: theme.colors.violet200.value,
     color: theme.colors.violet900.value,
+  },
+
+  '&:hover': {
+    // transition: 'none',
+    backgroundColor: theme.colors.slate400.value,
+    '&[data-state="open"]': {
+      // backgroundColor: theme.colors.violet300.value,
+      backgroundColor: theme.colors.violet200.value,
+    },
   },
 
   '&:focus': {
@@ -72,6 +83,7 @@ const StyledPanel = styled(Accordion.Panel, {
   overflow: 'hidden',
   fontSize: '$3',
   color: theme.colors.slate1000.value,
+  backgroundColor: theme.colors.violet100.value,
 
   '.with-animation &': {
     '&[data-state="open"]': {
@@ -85,10 +97,11 @@ const StyledPanel = styled(Accordion.Panel, {
 
 const AccordionChevron = styled(ChevronDownIcon, {
   transition: 'transform 300ms cubic-bezier(0.87, 0, 0.13, 1)',
-  color: theme.colors.violet800.value,
+  color: theme.colors.slate1000.value,
 
   '[data-state=open] &': {
     transform: 'rotate(180deg)',
+    color: theme.colors.violet800.value,
   },
 });
 
@@ -200,7 +213,7 @@ export const AccordionDemo = (props) => {
             <StyledButton>Item 1 {showChevrons && <AccordionChevron aria-hidden />}</StyledButton>
           </StyledHeader>
           <StyledPanel>
-            <Box css={{ padding: '0 $2 $2' }}>
+            <Box css={{ padding: '$2 $2 $2' }}>
               The Radix accordion has been carefully built to ensure you, and your users, have the
               best possible experience.
             </Box>
@@ -212,7 +225,7 @@ export const AccordionDemo = (props) => {
             <StyledButton>Item 2 {showChevrons && <AccordionChevron aria-hidden />}</StyledButton>
           </StyledHeader>
           <StyledPanel>
-            <Box css={{ padding: '0 $2 $2' }}>
+            <Box css={{ padding: '$2 $2 $2' }}>
               The Radix accordion has been carefully built to ensure you, and your users, have the
               best possible experience.
             </Box>
@@ -224,7 +237,7 @@ export const AccordionDemo = (props) => {
             <StyledButton>Item 3 {showChevrons && <AccordionChevron aria-hidden />}</StyledButton>
           </StyledHeader>
           <StyledPanel>
-            <Box css={{ padding: '0 $2 $2' }}>
+            <Box css={{ padding: '$2 $2 $2' }}>
               The Radix accordion has been carefully built to ensure you, and your users, have the
               best possible experience.
             </Box>
@@ -235,7 +248,7 @@ export const AccordionDemo = (props) => {
             <StyledButton>Item 4 {showChevrons && <AccordionChevron aria-hidden />}</StyledButton>
           </StyledHeader>
           <StyledPanel>
-            <Box css={{ padding: '0 $2 $2' }}>
+            <Box css={{ padding: '$2 $2 $2' }}>
               The Radix accordion has been carefully built to ensure you, and your users, have the
               best possible experience.
             </Box>
