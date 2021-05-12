@@ -39,8 +39,7 @@ export default function BlogPostPage({ frontmatter, code }: Doc) {
         css={{
           py: '$5',
 
-          '@bp2': { pt: '$8', pb: '$9', pl: '250px' },
-          '@bp3': { pr: '250px' },
+          '@bp2': { pt: '$8', pb: '$9' },
         }}
       >
         <Container size="3" css={{ maxWidth: '780px', position: 'relative' }}>

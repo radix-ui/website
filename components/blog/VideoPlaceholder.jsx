@@ -5,23 +5,24 @@ export const VideoPlaceholder = (props) => {
   return (
     <Box
       css={{
-        border: '1px solid $slate700',
+        boxShadow: '0 0 0 1px $colors$slate700',
         position: 'relative',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         py: '$9',
         mx: '-$5',
-        height: 600,
+        height: 400,
 
-        '@bp2': {
+        '@bp2': { borderRadius: '$2' },
+        '@bp3': {
           mx: '-$8',
-          borderRadius: '$2',
+          height: 600,
         },
       }}
     >
       <Text
-        size="9"
+        size={{ '@initial': '7', '@bp2': '9' }}
         css={{
           fontWeight: 500,
           transform: 'rotate(-25deg)',

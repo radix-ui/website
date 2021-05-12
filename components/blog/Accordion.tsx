@@ -119,10 +119,8 @@ export const AccordionDemo = (props) => {
         mx: '-$5',
         height: 600,
 
-        '@bp2': {
-          mx: '-$8',
-          borderRadius: '$2',
-        },
+        '@bp2': { borderRadius: '$2' },
+        '@bp3': { mx: '-$8' },
       }}
     >
       <Box
