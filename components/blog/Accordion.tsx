@@ -17,6 +17,7 @@ const StyledAccordion = styled(Accordion.Root, {
   backgroundColor: 'white',
   borderRadius: '$3',
   width: 320,
+  overflow: 'hidden',
 });
 
 const StyledItem = styled(Accordion.Item, {
@@ -37,15 +38,13 @@ const StyledHeader = styled(Accordion.Header, {
 const StyledButton = styled(Accordion.Button, {
   backgroundColor: 'transparent',
   border: 'none',
-  padding: '$2',
+  padding: '$2 $3',
   flex: 1,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-
   fontSize: '$3',
   color: theme.colors.slate1000.value,
-  fontWeight: '500',
 
   '&[data-state="closed"]': {
     backgroundColor: theme.colors.slate200.value,
@@ -70,8 +69,8 @@ const StyledButton = styled(Accordion.Button, {
 
 const StyledPanel = styled(Accordion.Panel, {
   overflow: 'hidden',
-  fontSize: '$3',
-  color: theme.colors.slate1000.value,
+  lineHeight: '19px',
+  color: theme.colors.slate900.value,
   backgroundColor: theme.colors.violet100.value,
 
   '.with-animation &': {
@@ -126,9 +125,9 @@ export const AccordionDemo = (props) => {
           borderRadius: '$1',
           px: '$2',
           position: 'absolute',
-          top: '$4',
-          left: '$4',
-          backgroundColor: 'rgba(0 0 0 / 0.2)',
+          top: '$3',
+          left: '$3',
+          backgroundColor: 'rgba(0 0 0 / 0.1)',
           width: 200,
         }}
       >
@@ -184,69 +183,85 @@ export const AccordionDemo = (props) => {
         </Flex>
       </Box>
 
-      <StyledAccordion
-        type={allowMultiple ? 'multiple' : 'single'}
-        {...props}
-        value={value}
-        onValueChange={(newValue) => {
-          console.log(preventClose);
-          console.log(newValue);
-          if (preventClose && (newValue === '' || newValue.length === 0)) {
-            return;
-          }
-          setValue(newValue);
-        }}
-      >
-        <StyledItem value="item-1">
-          <StyledHeader>
-            <StyledButton>
-              Is it accessible? {showChevrons && <AccordionChevron aria-hidden />}
-            </StyledButton>
-          </StyledHeader>
-          <StyledPanel>
-            <Box css={{ padding: '$2' }}>
-              Yes. The Radix Accordion component adheres to the WAI-ARAI design patterns.
-            </Box>
-          </StyledPanel>
-        </StyledItem>
+      <Box>
+        <Text size="3" css={{ color: 'white', fontWeight: 500, mb: '$3', textAlign: 'center' }}>
+          Radix Accordion Mini FAQ
+        </Text>
 
-        <StyledItem value="item-2">
-          <StyledHeader>
-            <StyledButton>
-              Does it come with styling? {showChevrons && <AccordionChevron aria-hidden />}
-            </StyledButton>
-          </StyledHeader>
-          <StyledPanel>
-            <Box css={{ padding: '$2' }}>
-              No. The Radix Accordion is unstyled by default, giving you full freedom over the look
-              and feel.
-            </Box>
-          </StyledPanel>
-        </StyledItem>
+        <StyledAccordion
+          type={allowMultiple ? 'multiple' : 'single'}
+          {...props}
+          value={value}
+          onValueChange={(newValue) => {
+            console.log(preventClose);
+            console.log(newValue);
+            if (preventClose && (newValue === '' || newValue.length === 0)) {
+              return;
+            }
+            setValue(newValue);
+          }}
+        >
+          <StyledItem value="item-1">
+            <StyledHeader>
+              <StyledButton>
+                Is it accessible? {showChevrons && <AccordionChevron aria-hidden />}
+              </StyledButton>
+            </StyledHeader>
+            <StyledPanel>
+              <Box css={{ padding: '$2 $3' }}>
+                <Text size="3" css={{ color: 'inherit', lineHeight: 'inherit' }}>
+                  Yes. The Radix Accordion component adheres to the WAI-ARAI design patterns.
+                </Text>
+              </Box>
+            </StyledPanel>
+          </StyledItem>
 
-        <StyledItem value="item-3">
-          <StyledHeader>
-            <StyledButton>
-              Can it be animated? {showChevrons && <AccordionChevron aria-hidden />}
-            </StyledButton>
-          </StyledHeader>
-          <StyledPanel>
-            <Box css={{ padding: '$2' }}>
-              Yes! You can animate the Accordion with CSS or JavaScript.
-            </Box>
-          </StyledPanel>
-        </StyledItem>
-        <StyledItem value="item-4">
-          <StyledHeader>
-            <StyledButton>
-              Is it customizable? {showChevrons && <AccordionChevron aria-hidden />}
-            </StyledButton>
-          </StyledHeader>
-          <StyledPanel>
-            <Box css={{ padding: '$2' }}>Absolutely. You can customise it to fit your needs.</Box>
-          </StyledPanel>
-        </StyledItem>
-      </StyledAccordion>
+          <StyledItem value="item-2">
+            <StyledHeader>
+              <StyledButton>
+                Does it come with styling? {showChevrons && <AccordionChevron aria-hidden />}
+              </StyledButton>
+            </StyledHeader>
+            <StyledPanel>
+              <Box css={{ padding: '$2 $3' }}>
+                <Text size="3" css={{ color: 'inherit', lineHeight: 'inherit' }}>
+                  No. The Radix Accordion is unstyled by default, giving you full freedom over the
+                  look and feel.
+                </Text>
+              </Box>
+            </StyledPanel>
+          </StyledItem>
+
+          <StyledItem value="item-3">
+            <StyledHeader>
+              <StyledButton>
+                Can it be animated? {showChevrons && <AccordionChevron aria-hidden />}
+              </StyledButton>
+            </StyledHeader>
+            <StyledPanel>
+              <Box css={{ padding: '$2 $3' }}>
+                <Text size="3" css={{ color: 'inherit', lineHeight: 'inherit' }}>
+                  Yes! You can animate the Accordion with CSS or JavaScript.
+                </Text>
+              </Box>
+            </StyledPanel>
+          </StyledItem>
+          <StyledItem value="item-4">
+            <StyledHeader>
+              <StyledButton>
+                Is it customizable? {showChevrons && <AccordionChevron aria-hidden />}
+              </StyledButton>
+            </StyledHeader>
+            <StyledPanel>
+              <Box css={{ padding: '$2 $3' }}>
+                <Text size="3" css={{ color: 'inherit', lineHeight: 'inherit' }}>
+                  Absolutely. You can customise it to fit your needs.
+                </Text>
+              </Box>
+            </StyledPanel>
+          </StyledItem>
+        </StyledAccordion>
+      </Box>
     </Box>
   );
 };
