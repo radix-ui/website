@@ -5,29 +5,53 @@ publishedAt: '2021-05-06'
 author: 'pedro'
 ---
 
-An accordion component is a list of clickable headings that reveal a section of content.
+An Accordion component is a list of clickable headings that reveal a section of content.
 
-On the surface, building an accordion from scratch seems straight-forward. But there are many cases to consider. Such as accessibility concerns, keyboard navigation, animation of dynamic section heights and the ability to expand only one or multiple at a time.
+On the surface, building an Accordion from scratch seems straight-forward. But there are many cases to consider. Such as accessibility concerns, keyboard navigation, animation of dynamic section heights and the ability to expand only one or multiple at a time.
 
-The Radix accordion has been carefully built to ensure you, and your users, have the best possible experience.
+The Radix Accordion has been carefully built to ensure you—and your users—have the best possible experience.
 
 ---
 
 ## A closer look
 
-Our goal is to ensure the accordion component adheres to the [WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#accordion) while providing the best possible developer and user experiences.
-
-This is the most common example of an Accordion component. By default, all sections are collpased. You can click on a heading to exapand its content. If you click on a different heading,
+Our goal is to ensure the Accordion component adheres to the [WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#accordion) while providing the best possible developer and user experiences.
 
 Below is a list of all the features we've built into our Accordion, they all work out of the box.
+
+### Sensible defaults
+
+By default, all sections are collpased. You can click on a heading to expant its content.
 
 ### Open multiple
 
 The Radix Accordion allows you to have multiple sections revealed at once.
 
-### Extendable
+### Customisable
 
-Built with extensibility in mind, you have full control over its aesthethics. For example, you could add chevrons to further illustrate the headers.
+Built with customisation in mind, you have full control over its aesthethics. For example, you could add chevrons to further illustrate the open state of the headers. You can also control some of its behaviour, such as preventing all panels to be closed.
+
+You can shape it to fit your product's needs.
+
+### Screen reader
+
+A screen reader is a software that interprets things on the screen and converts them to a format that visually impaired people can consume and interact with.
+
+Our Accordion component follows the [WAI-ARIA]() authoring specification. This ensures it's accessible to screen reader users.
+
+Every Radix Primitive works with screen readers. One less thing for you to worry about.
+
+### Keyboard navigation
+
+Keyboard navigation helps users with motor disabilities navigate across the items in the Accordion. Blind users rely on keyboard for navigation. It also improves the experience for people without disabilities.
+
+Every Radix Primitive supports keyboard accessibility. So you can do anything you need without using your mouse.
+
+When you focus the Accordtion, you can:
+
+- Press <Kbd>Up</Kbd> and <Kbd>Down</Kbd> to navigate across items
+- Press <Kbd>Space</Kbd> to open/close a panel
+- Press <Kbd>Enter</Kbd> to open/close a panel
 
 ---
 

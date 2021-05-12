@@ -190,7 +190,7 @@ export const AccordionDemo = (props) => {
 
       <Box>
         <Text size="3" css={{ color: 'white', fontWeight: 500, mb: '$3', textAlign: 'center' }}>
-          Radix Accordion Mini FAQ
+          Radix Accordion FAQ
         </Text>
 
         <StyledAccordion
