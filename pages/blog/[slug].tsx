@@ -8,6 +8,7 @@ import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { authors } from '@data/authors';
 import { Color } from '@components/Color';
 import { AccordionDemo } from '@components/blog/Accordion';
+import { VideoPlaceholder } from '@components/blog/VideoPlaceholder';
 
 import type { Frontmatter } from 'types/frontmatter';
 
@@ -20,6 +21,7 @@ const mdxComponents = {
   ...components,
   Color,
   AccordionDemo,
+  VideoPlaceholder,
 };
 
 export default function BlogPostPage({ frontmatter, code }: Doc) {
