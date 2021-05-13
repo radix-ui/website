@@ -9,7 +9,7 @@ A Popover component is an overlay containing rich content. It's positioned relat
 
 At a glance, building a custom Popover may seem trivial. But there are many cases to consider. Such as accessibility concerns, collision-aware positioning and focus trapping. Because of this complexity, custom-built Popovers components leave a lot to be desired.
 
-This article highlights how we overcame all the challenges presented when building a world-class Popover component.
+This article highlights how we overcame the challenges presented when building a world-class Popover component.
 
 ---
 
@@ -63,12 +63,6 @@ Every Radix Primitive supports keyboard accessibility. So you can do anything yo
 
 <VideoPlaceholder />
 
-### Configurable
-
-The Radix Popover offers common configuration options via props.
-
-For example, you can configure it so it appears on above or below the trigger, as well as to the left or right of it. You choose the alignment of the tooltip against the trigger. You can configure its offsets, collision tollerance, whether the outside scroll is enabled or disabed, and much more.
-
 <VideoPlaceholder />
 
 ### Positioning
@@ -79,21 +73,35 @@ For example, if you have configured the Popover to appear above the trigger, and
 
 <VideoPlaceholder />
 
-### Customisable
+### Focus management
 
-Built with customisation in mind, you have full control over the Tooltip's look and feel. You can also control some of its behaviour, such displaying the tooltip from a disabled trigger.
+The Popover comes with fully focus management out-of-the-box. When it opens, it'll automatically focus the first focusable element. When it closes, the focus will return to the trigger.
 
-You can shape it to fit your product's needs.
+The focus is also trapped within the Popover content. This means if you keep pressing <kbd>Tab</Kbd> the focus will not leave its bounds.
 
-<VideoPlaceholder />
+Dismissing and layering behavior is highly customizable.
 
 ### Animation
 
-The ability add animation is essential. The Radix Tooltip has been built with animation support in mind. You can animate with CSS or with an animation library, such as Framer Motion.
+The ability add animation is essential. The Radix Popover has been built with animation support in mind. You can animate with CSS or with an animation library, such as Framer Motion.
 
-Our Tooltip component exposes its transform origin via a CSS Custom Property. This enables you to add origin-aware animation in an elegant manner.
+Our Popover component exposes its transform origin via a CSS Custom Property. This enables you to add origin-aware animation in an elegant manner.
 
 <VideoPlaceholder />
+
+### Nesting
+
+Some advanced interfaces, such as design tools, may require nesting of Popovers. The Radix Popover ensures you can customise its layering and dismissing behaviour.
+
+### Customisable
+
+Built with customisation in mind, you have full control over the Tooltip's look and feel. Shape it to fit your product's needs.
+
+### Configurable
+
+The Radix Popover offers common configuration options via props.
+
+For example, you can configure it so it appears on above or below the trigger, as well as to the left or right of it. You choose the alignment of the tooltip against the trigger. You can configure its offsets, collision tollerance, whether the outside scroll is enabled or disabed, and much more.
 
 ---
 
