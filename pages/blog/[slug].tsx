@@ -11,6 +11,7 @@ import { AccordionDemo } from '@components/blog/Accordion';
 import { VideoPlaceholder } from '@components/blog/VideoPlaceholder';
 
 import type { Frontmatter } from 'types/frontmatter';
+import { Header } from '@components/Header';
 
 type Doc = {
   frontmatter: Frontmatter;
@@ -34,6 +35,8 @@ export default function BlogPostPage({ frontmatter, code }: Doc) {
         description={frontmatter.metaDescription}
         image={frontmatter.metaImage}
       />
+
+      <Header />
 
       <Box
         css={{
