@@ -17,7 +17,7 @@ export const VideoPlaceholder = (props) => {
         '@bp2': { borderRadius: '$2' },
         '@bp3': {
           mx: '-$8',
-          height: 600,
+          height: 500,
         },
       }}
     >
