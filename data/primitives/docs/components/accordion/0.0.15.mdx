@@ -597,7 +597,7 @@ export default () => {
       type="single"
       value={value}
       onValueChange={(newValue) => {
-        if (newValue === '' || newValue.length === 0) {
+        if (newValue === '') {
           return;
         }
         setValue(newValue);
