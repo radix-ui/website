@@ -496,35 +496,18 @@ You can anchor the content to another element if you do not want to use the trig
 
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import * as Popover from '@radix-ui/react-popover';
 
-const StyledContent = styled(DropdownMenu.Content, {
-  minWidth: 130,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 5,
-  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
-});
-
-const StyledItem = styled(DropdownMenu.Item, {
-  fontSize: 13,
-  padding: '5px 10px',
+const StyledContent = styled(Popover.Content, {
   borderRadius: 3,
-  cursor: 'default',
-
-  '&[data-disabled]': {
-    color: 'gainsboro',
-  },
-
-  '&:focus': {
-    outline: 'none',
-    backgroundColor: 'dodgerblue',
-    color: 'white',
-  },
+  padding: '20px',
+  fontSize: 14,
+  backgroundColor: 'gainsboro',
+  color: 'black',
 });
 
-const StyledArrow = styled(DropdownMenu.Arrow, {
-  fill: 'white',
+const StyledArrow = styled(Popover.Arrow, {
+  fill: 'gainsboro',
 });
 
 const StyledAnchor = styled(Popover.Anchor, {
@@ -533,21 +516,18 @@ const StyledAnchor = styled(Popover.Anchor, {
 });
 
 export default () => (
-  <DropdownMenu.Root>
-    <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
+  <Popover.Root>
+    <StyledAnchor>
+      Row as anchor <Popover.Trigger>Trigger</Popover.Trigger>
+    </StyledAnchor>
+
     <StyledContent>
-      <StyledItem disabled onSelect={() => console.log('cut')}>
-        Cut
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('copy')}>
-        Copy
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('paste')}>
-        Paste
-      </StyledItem>
+      <h3>Popover content</h3>
+      <p>Are you sure you wanna do this?</p>
+      <Popover.Close>Yes</Popover.Close>
       <StyledArrow />
     </StyledContent>
-  </DropdownMenu.Root>
+  </Popover.Root>
 );
 ```
 
