@@ -1,0 +1,125 @@
+---
+metaTitle: 'Under the spotlight: Tooltip'
+metaDescription: 'A closer look at the features of the Tooltip component.'
+publishedAt: '2021-05-13'
+author: 'pedro'
+---
+
+A Tooltip component is a brief and helpful message associated with an interactive element. It appears when the element receives keyboard focus or the mouse hovers over it.
+
+It's possible to build a CSS only Tooltip. But chances are, it'll lack essential funcionalities.
+
+There are many cases to consider. Such as accessibility concerns, control of delay and collision-aware positioning. Unfortunately, because of this complexity, custom-built Tooltip components aren't up to the task.
+
+The Radix Tooltip has been carefully built to ensure you—and your users—have the best possible experience.
+
+---
+
+## A closer look
+
+Our goal is to ensure the Tooltip component adheres to the [WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#tooltip) while providing the best possible developer and user experiences.
+
+Below is a list of all the features we've built into our Tooltip, they all work out of the box.
+
+### Screen reader
+
+A screen reader is a software that interprets things on the screen and converts them to a format that visually impaired people can consume and interact with.
+
+Our Tooltip component follows the [WAI-ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/#tooltip) authoring specification. This ensures it's accessible to screen reader users.
+
+Every Radix Primitive works with screen readers. One less thing for you to worry about.
+
+<VideoPlaceholder />
+
+### Keyboard navigation
+
+Keyboard navigation helps users with motor disabilities navigate across the items in the Accordion. Blind users rely on keyboard for navigation. It also improves the experience for people without disabilities.
+
+Every Radix Primitive supports keyboard accessibility. So you can do anything you need without using your mouse.
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space'],
+      description:
+        'When focus is on an Accordion Button of a collapsed section, expands the section.',
+    },
+    {
+      keys: ['Enter'],
+      description:
+        'When focus is on an Accordion Button of a collapsed section, expands the section.',
+    },
+    {
+      keys: ['Tab'],
+      description: 'Moves focus to the next focusable element.',
+    },
+    {
+      keys: ['Shift + Tab'],
+      description: 'Moves focus to the previous focusable element.',
+    },
+    {
+      keys: ['ArrowDown'],
+      description: 'Moves focus to the next Accordion Button.',
+    },
+    {
+      keys: ['ArrowUp'],
+      description: 'Moves focus to the previous Accordion Button.',
+    },
+    {
+      keys: ['Home'],
+      description:
+        'When focus is on an Accordion Button, moves focus to the first Accordion Button.',
+    },
+    {
+      keys: ['End'],
+      description:
+        'When focus is on an Accordion Button, moves focus to the last Accordion Button.',
+    },
+  ]}
+/>
+
+<VideoPlaceholder />
+
+### Sensible defaults
+
+By default, all sections are collpased. You can click on a heading to expant its content.
+
+<VideoPlaceholder />
+
+### Configurable
+
+The Radix Accordion offers common configuration options via props. For example, you can configure it to allow multiple panels to be opened at the same time.
+
+<VideoPlaceholder />
+
+### Roving focus
+
+The Accordion component implements roving focus (aka roving tabindex) in order to maintain focus state. This provides a more accessible naviation for all types of users.
+
+With roving focus, you can press <Kbd>ArrowLeft</Kbd>/<Kbd>ArrowRight</Kbd> to move focus across the Accordion Buttons. This allows the focus to loop. Pressing <Kbd>Tab</Kbd> will move the focus to the Accordion Panel.
+
+<VideoPlaceholder />
+
+### Customisable
+
+Built with customisation in mind, you have full control over its aesthethics. For example, you could add chevrons to further illustrate the open state of the headers. You can also control some of its behaviour, such as preventing all panels to be closed.
+
+You can shape it to fit your product's needs.
+
+<VideoPlaceholder />
+
+### Animation
+
+The ability to animate certain elements is essential. The Radix Accordion has been built with animation support in mind. You can animate with CSS or with an animation library, such as Framer Motion.
+
+Our Accordion component exposes the height of each panel via a CSS Custom Property. This enables you to have animate dynamic heights without compromises.
+
+<VideoPlaceholder />
+
+---
+
+## Live demo
+
+One last thing. Here's an interactive, live demo of the Radix Accordion. Feel free to play around!
+
+<AccordionDemo />
