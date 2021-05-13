@@ -48,7 +48,7 @@ export const AccordionDemo = ({ showChevrons, preventClose, initialValue = null,
       {...props}
       value={value}
       onValueChange={(newValue) => {
-        if (preventClose && newValue === undefined) {
+        if ((preventClose && newValue === '') || newValue.length === 0) {
           return;
         }
         setValue(newValue);

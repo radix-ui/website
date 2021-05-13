@@ -596,7 +596,15 @@ export default () => {
     <StyledAccordion
       type="single"
       value={value}
-      onValueChange={(value) => value && setValue(value)}
+      onValueChange={(newValue) => {
+        if (
+          (preventClose && newValue === '') ||
+          newValue.length === 0
+        ) {
+          return;
+        }
+        setValue(newValue);
+      }}
     >
       <StyledItem value="item-1">
         <StyledHeader>
