@@ -3,14 +3,9 @@ import { theme, styled, keyframes, Text, Box, Switch, Flex, Link } from '@modulz
 import * as Tooltip from '@radix-ui/react-tooltip';
 import { PlusIcon } from '@radix-ui/react-icons';
 
-const slideDown = keyframes({
-  from: { height: 0 },
-  to: { height: 'var(--radix-accordion-panel-height)' },
-});
-
-const slideUp = keyframes({
-  from: { height: 'var(--radix-accordion-panel-height)' },
-  to: { height: 0 },
+const scaleIn = keyframes({
+  '0%': { opacity: 0, transform: 'scale(0)' },
+  '100%': { opacity: 1, transform: 'scale(1)' },
 });
 
 const StyledButton = styled(Tooltip.Trigger, {
@@ -43,12 +38,20 @@ const StyledContent = styled(Tooltip.Content, {
   backgroundColor: theme.colors.violet1000.value,
   boxShadow:
     '0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2)',
+
+  '&.with-animation': {
+    transformOrigin: 'var(--radix-tooltip-content-transform-origin)',
+    animation: `${scaleIn} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
+  },
 });
+
 const StyledArrow = styled(Tooltip.Arrow, {
   fill: theme.colors.violet1000.value,
 });
 
 export const TooltipDemo = (props) => {
+  const [withAnimation, setWithAnimation] = React.useState(true);
+
   return (
     <Box
       css={{
@@ -65,7 +68,7 @@ export const TooltipDemo = (props) => {
         '@bp3': { mx: '-$8' },
       }}
     >
-      {/* <Box
+      <Box
         css={{
           borderRadius: '$1',
           px: '$2',
@@ -78,27 +81,27 @@ export const TooltipDemo = (props) => {
       >
         <Flex as="label" css={{ my: '$2', alignItems: 'center' }}>
           <Text size="2" css={{ userSelect: 'none', color: 'white', flex: '1' }}>
-            Show chevrons
+            With animation
           </Text>
           <Switch
             css={{ border: 'none' }}
-            checked={showChevrons}
-            onCheckedChange={(event) => setShowChevrons(event.target.checked)}
+            checked={withAnimation}
+            onCheckedChange={(event) => {
+              setWithAnimation(event.target.checked);
+            }}
           />
         </Flex>
-      </Box> */}
-
-      <Box>
-        <Tooltip.Root>
-          <StyledButton>
-            <PlusIcon />
-          </StyledButton>
-          <StyledContent>
-            Add to library.
-            <StyledArrow />
-          </StyledContent>
-        </Tooltip.Root>
       </Box>
+
+      <Tooltip.Root>
+        <StyledButton>
+          <PlusIcon />
+        </StyledButton>
+        <StyledContent className={withAnimation ? 'with-animation' : ''}>
+          Add to library.
+          <StyledArrow />
+        </StyledContent>
+      </Tooltip.Root>
     </Box>
   );
 };
