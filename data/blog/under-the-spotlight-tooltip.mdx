@@ -40,79 +40,53 @@ Every Radix Primitive supports keyboard accessibility. So you can do anything yo
 <KeyboardTable
   data={[
     {
+      keys: ['Tab'],
+      description: 'Opens/closes the tooltip without delay.',
+    },
+    {
       keys: ['Space'],
-      description:
-        'When focus is on an Accordion Button of a collapsed section, expands the section.',
+      description: 'If open, closes the tooltip without delay.',
     },
     {
       keys: ['Enter'],
-      description:
-        'When focus is on an Accordion Button of a collapsed section, expands the section.',
+      description: 'If open, closes the tooltip without delay.',
     },
     {
-      keys: ['Tab'],
-      description: 'Moves focus to the next focusable element.',
-    },
-    {
-      keys: ['Shift + Tab'],
-      description: 'Moves focus to the previous focusable element.',
-    },
-    {
-      keys: ['ArrowDown'],
-      description: 'Moves focus to the next Accordion Button.',
-    },
-    {
-      keys: ['ArrowUp'],
-      description: 'Moves focus to the previous Accordion Button.',
-    },
-    {
-      keys: ['Home'],
-      description:
-        'When focus is on an Accordion Button, moves focus to the first Accordion Button.',
-    },
-    {
-      keys: ['End'],
-      description:
-        'When focus is on an Accordion Button, moves focus to the last Accordion Button.',
+      keys: ['Escape'],
+      description: 'If open, closes the tooltip without delay.',
     },
   ]}
 />
 
 <VideoPlaceholder />
 
-### Sensible defaults
-
-By default, all sections are collpased. You can click on a heading to expant its content.
-
-<VideoPlaceholder />
-
 ### Configurable
 
-The Radix Accordion offers common configuration options via props. For example, you can configure it to allow multiple panels to be opened at the same time.
+The Radix Tooltip offers common configuration options via props.
+
+For example, you can configure it so it appears on above or below the trigger, as well as to the left or right of it. You choose the alignment of the tooltip against the trigger. You can even control the timings, such as delay duration.
 
 <VideoPlaceholder />
 
-### Roving focus
+### Positioning
 
-The Accordion component implements roving focus (aka roving tabindex) in order to maintain focus state. This provides a more accessible naviation for all types of users.
+When you open the Tooltip, it'll be positioned relatively to the trigger element. In the unlikely scenario where there's not enough space (a collision), the position will be adjusted.
 
-With roving focus, you can press <Kbd>ArrowLeft</Kbd>/<Kbd>ArrowRight</Kbd> to move focus across the Accordion Buttons. This allows the focus to loop. Pressing <Kbd>Tab</Kbd> will move the focus to the Accordion Panel.
+For example, if you have configured the Tooltip to appear above the trigger, and there's not enough space to fully display the Tooltip, it'll appear below instead.
 
 <VideoPlaceholder />
 
 ### Customisable
 
-Built with customisation in mind, you have full control over its aesthethics. For example, you could add chevrons to further illustrate the open state of the headers. You can also control some of its behaviour, such as preventing all panels to be closed.
+Built with customisation in mind, you have full control over the Tooltip's look and feel. You can also control some of its behaviour, such displaying the tooltip from a disabled trigger.
 
 You can shape it to fit your product's needs.
 
-<VideoPlaceholder />
-
 ### Animation
 
-The ability to animate certain elements is essential. The Radix Accordion has been built with animation support in mind. You can animate with CSS or with an animation library, such as Framer Motion.
+The ability add animation is essential. The Radix Tooltip has been built with animation support in mind. You can animate with CSS or with an animation library, such as Framer Motion.
 
-Our Accordion component exposes the height of each panel via a CSS Custom Property. This enables you to have animate dynamic heights without compromises.
+Our Tooltip component exposes its transform origin via a CSS Custom Property. This enables you to add origin-aware animation in an elegant manner.
 
 <VideoPlaceholder />
 
@@ -122,4 +96,4 @@ Our Accordion component exposes the height of each panel via a CSS Custom Proper
 
 One last thing. Here's an interactive, live demo of the Radix Accordion. Feel free to play around!
 
-<AccordionDemo />
+<TooltipDemo />
