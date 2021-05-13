@@ -19,16 +19,18 @@ export const getAllFrontmatter = (fromPath) => {
   const PATH = path.join(DATA_PATH, fromPath);
   const paths = glob.sync(`${PATH}/**/*.mdx`);
 
-  return paths.map((filePath) => {
-    const source = fs.readFileSync(path.join(filePath), 'utf8');
-    const { data, content } = matter(source);
+  return paths
+    .map((filePath) => {
+      const source = fs.readFileSync(path.join(filePath), 'utf8');
+      const { data, content } = matter(source);
 
-    return {
-      ...(data as Frontmatter),
-      slug: filePath.replace(`${DATA_PATH}/`, '').replace('.mdx', ''),
-      readingTime: readingTime(content),
-    } as Frontmatter;
-  });
+      return {
+        ...(data as Frontmatter),
+        slug: filePath.replace(`${DATA_PATH}/`, '').replace('.mdx', ''),
+        readingTime: readingTime(content),
+      } as Frontmatter;
+    })
+    .sort((a, b) => Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)));
 };
 
 export const getMdxBySlug = async (basePath, slug) => {
