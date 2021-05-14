@@ -1,12 +1,12 @@
 import React from 'react';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { Box } from '@modulz/design-system';
-import { RemoveScroll } from 'react-remove-scroll';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { MDXProvider, components } from '@components/MDXComponents';
+import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
+import { RemoveScroll } from 'react-remove-scroll';
 import { QuickNav } from '@components/QuickNav';
-import { OldVersionNote } from '@components/OldVersionNote';
-import { getAllFrontmatter, getAllVersionsFromPath, getMdxBySlug } from '@lib/mdx';
+import { Color } from '@components/Color';
 
 import type { Frontmatter } from 'types/frontmatter';
 
@@ -15,7 +15,7 @@ type Doc = {
   code: any;
 };
 
-export default function ComponentsDoc({ frontmatter, code }: Doc) {
+export default function ColorsTestDoc({ frontmatter, code }: Doc) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
   return (
@@ -26,15 +26,8 @@ export default function ComponentsDoc({ frontmatter, code }: Doc) {
         image={frontmatter.metaImage}
       />
 
-      {frontmatter.version !== frontmatter.versions?.[0] && (
-        <OldVersionNote
-          name={frontmatter.metaTitle}
-          href={`/primitives/docs/components/${frontmatter.slug.replace(frontmatter.version, '')}`}
-        />
-      )}
-
       <MDXProvider frontmatter={frontmatter}>
-        <Component components={components as any} />
+        <Component components={{ ...components, Color } as any} />
       </MDXProvider>
 
       <Box
@@ -68,28 +61,17 @@ export default function ComponentsDoc({ frontmatter, code }: Doc) {
 }
 
 export async function getStaticPaths() {
-  const frontmatters = getAllFrontmatter('primitives/components');
+  const frontmatters = getAllFrontmatter('colors/test');
 
   return {
     paths: frontmatters.map((frontmatter) => ({
-      params: { slug: frontmatter.slug.replace('primitives/components/', '').split('/') },
+      params: { slug: frontmatter.slug.replace('colors/test/', '') },
     })),
     fallback: false,
   };
 }
 
 export async function getStaticProps(context) {
-  const { frontmatter, code } = await getMdxBySlug(
-    'primitives/components/',
-    context.params.slug.join('/')
-  );
-  const [componentName, componentVersion] = context.params.slug;
-
-  const extendedFrontmatter = {
-    ...frontmatter,
-    version: componentVersion,
-    versions: getAllVersionsFromPath(`primitives/components/${componentName}`),
-  };
-
-  return { props: { frontmatter: extendedFrontmatter, code } };
+  const { frontmatter, code } = await getMdxBySlug('colors/test/', context.params.slug);
+  return { props: { frontmatter, code } };
 }

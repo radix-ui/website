@@ -71,11 +71,11 @@ export default function DesignSystemDoc({ frontmatter, code }: Doc) {
 }
 
 export async function getStaticPaths() {
-  const frontmatters = getAllFrontmatter('design-system/docs/components');
+  const frontmatters = getAllFrontmatter('design-system/components');
 
   return {
     paths: frontmatters.map((frontmatter) => ({
-      params: { slug: frontmatter.slug.replace('design-system/docs/components/', '').split('/') },
+      params: { slug: frontmatter.slug.replace('design-system/components/', '').split('/') },
     })),
     fallback: false,
   };
@@ -83,7 +83,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const { frontmatter, code } = await getMdxBySlug(
-    'design-system/docs/components/',
+    'design-system/components/',
     context.params.slug.join('/')
   );
   const [componentName, componentVersion] = context.params.slug;
@@ -91,7 +91,7 @@ export async function getStaticProps(context) {
   const extendedFrontmatter = {
     ...frontmatter,
     version: componentVersion,
-    versions: getAllVersionsFromPath(`design-system/docs/utilities/${componentName}`),
+    versions: getAllVersionsFromPath(`design-system/components/${componentName}`),
   };
 
   return { props: { frontmatter: extendedFrontmatter, code } };
