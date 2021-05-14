@@ -60,20 +60,17 @@ export default function DesignSystemOverviewDoc({ frontmatter, code }: Doc) {
 }
 
 export async function getStaticPaths() {
-  const frontmatters = getAllFrontmatter('design-system/docs/overview');
+  const frontmatters = getAllFrontmatter('design-system/overview');
 
   return {
     paths: frontmatters.map((frontmatter) => ({
-      params: { slug: frontmatter.slug.replace('design-system/docs/overview/', '') },
+      params: { slug: frontmatter.slug.replace('design-system/overview/', '') },
     })),
     fallback: false,
   };
 }
 
 export async function getStaticProps(context) {
-  const { frontmatter, code } = await getMdxBySlug(
-    'design-system/docs/overview/',
-    context.params.slug
-  );
+  const { frontmatter, code } = await getMdxBySlug('design-system/overview/', context.params.slug);
   return { props: { frontmatter, code } };
 }

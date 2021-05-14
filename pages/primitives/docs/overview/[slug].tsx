@@ -60,20 +60,17 @@ export default function OverviewDoc({ frontmatter, code }: Doc) {
 }
 
 export async function getStaticPaths() {
-  const frontmatters = getAllFrontmatter('primitives/docs/overview');
+  const frontmatters = getAllFrontmatter('primitives/overview');
 
   return {
     paths: frontmatters.map((frontmatter) => ({
-      params: { slug: frontmatter.slug.replace('primitives/docs/overview/', '') },
+      params: { slug: frontmatter.slug.replace('primitives/overview/', '') },
     })),
     fallback: false,
   };
 }
 
 export async function getStaticProps(context) {
-  const { frontmatter, code } = await getMdxBySlug(
-    'primitives/docs/overview/',
-    context.params.slug
-  );
+  const { frontmatter, code } = await getMdxBySlug('primitives/overview/', context.params.slug);
   return { props: { frontmatter, code } };
 }
