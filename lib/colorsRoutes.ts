@@ -8,7 +8,7 @@ export const colorsRoutes = [
     label: 'Test',
     pages: [
       { title: 'Page1', slug: 'colors/docs/test/page1', draft: false },
-      { title: 'Page1', slug: 'colors/docs/test/page2', draft: false },
+      { title: 'Page2', slug: 'colors/docs/test/page2', draft: false },
     ],
   },
 ];
