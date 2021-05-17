@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const glob = require('glob');
 const compareVersions = require('compare-versions');
 const readingTime = require('reading-time');
 const withPlugins = require('next-compose-plugins');
@@ -43,45 +44,53 @@ module.exports = withPlugins([withTM, withOptimizedImages, withVideos], {
   // Generate URL rewrites for components and utilities
   // So navigating to /tooltip rewrites to /tooltip/[latestVersion]
   async rewrites() {
-    const isDirectory = (fileName) => fs.lstatSync(fileName).isDirectory();
-    const getPaths = (dir) =>
-      fs
-        .readdirSync(dir)
-        .map((file) => path.join(dir, file))
-        .filter(isDirectory);
+    const DATA_PATH = path.join(__dirname, 'data');
 
-    const getPathOfLatestVersion = (dir) => {
-      return dir.map((currDir) => {
-        const [lastVersion] = fs
-          .readdirSync(currDir)
-          .map((file) => file.replace('.mdx', ''))
-          .sort(compareVersions)
-          .map((file) => path.join(currDir, file))
-          .reverse();
-        return lastVersion;
+    function getLatestVersionFromPath(fromPath) {
+      const paths = glob.sync(`${DATA_PATH}/${fromPath}/**/*.mdx`);
+      const components = {};
+
+      paths.forEach((p) => {
+        const [name, version] = p
+          .replace(DATA_PATH, '')
+          .replace(`/${fromPath}/`, '')
+          .replace('.mdx', '')
+          .split('/');
+
+        components[name] = [...(components[name] || [version]), version];
       });
-    };
 
-    const primitivesDirectory = path.join(__dirname, 'data/primitives/docs/components');
-    const primitivesPaths = getPaths(primitivesDirectory);
-    const latestPrimitivesPaths = getPathOfLatestVersion(primitivesPaths);
+      const latest = Object.entries(components).reduce((acc, curr) => {
+        const [name, versions] = curr;
+        const [latestVersion] = versions.sort(compareVersions).reverse();
+        acc[name] = latestVersion;
+        return acc;
+      }, {});
 
-    const utilitiesDirectory = path.join(__dirname, 'data/primitives/docs/utilities');
-    const utilitiesPaths = getPaths(utilitiesDirectory);
-    const latestUtilitiesPaths = getPathOfLatestVersion(utilitiesPaths);
+      return latest;
+    }
 
-    const designSystemDirectory = path.join(__dirname, 'data/design-system/docs/components');
-    const designSystemPaths = getPaths(designSystemDirectory);
-    const latestDesignSystemPaths = getPathOfLatestVersion(designSystemPaths);
-
-    return [...latestPrimitivesPaths, ...latestUtilitiesPaths, ...latestDesignSystemPaths].reduce(
-      (redirects, paths, index) => {
-        const [, destination] = paths.split('/data');
-        const [, source] = path.join(paths, '..').split('/data');
-        redirects.push({ source, destination });
+    function createRewrites(latestVersionMap, url) {
+      return [...Object.entries(latestVersionMap)].reduce((redirects, curr) => {
+        const [name, version] = curr;
+        redirects.push({ source: `${url}${name}`, destination: `${url}${name}/${version}` });
         return redirects;
-      },
-      []
-    );
+      }, []);
+    }
+
+    return [
+      ...createRewrites(
+        getLatestVersionFromPath('primitives/components'),
+        '/primitives/docs/components/'
+      ),
+      ...createRewrites(
+        getLatestVersionFromPath('primitives/utilities'),
+        '/primitives/docs/utilities/'
+      ),
+      ...createRewrites(
+        getLatestVersionFromPath('design-system/components'),
+        '/design-system/docs/components/'
+      ),
+    ];
   },
 });

@@ -68,11 +68,11 @@ export default function UtilitiesDoc({ frontmatter, code }: Doc) {
 }
 
 export async function getStaticPaths() {
-  const frontmatters = getAllFrontmatter('primitives/docs/utilities');
+  const frontmatters = getAllFrontmatter('primitives/utilities');
 
   return {
     paths: frontmatters.map((frontmatter) => ({
-      params: { slug: frontmatter.slug.replace('primitives/docs/utilities/', '').split('/') },
+      params: { slug: frontmatter.slug.replace('primitives/utilities/', '').split('/') },
     })),
     fallback: false,
   };
@@ -80,7 +80,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const { frontmatter, code } = await getMdxBySlug(
-    'primitives/docs/utilities/',
+    'primitives/utilities/',
     context.params.slug.join('/')
   );
   const [componentName, componentVersion] = context.params.slug;
@@ -88,7 +88,7 @@ export async function getStaticProps(context) {
   const extendedFrontmatter = {
     ...frontmatter,
     version: componentVersion,
-    versions: getAllVersionsFromPath(`primitives/docs/utilities/${componentName}`),
+    versions: getAllVersionsFromPath(`primitives/utilities/${componentName}`),
   };
 
   return { props: { frontmatter: extendedFrontmatter, code } };

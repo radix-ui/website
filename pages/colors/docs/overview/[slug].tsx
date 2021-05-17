@@ -61,17 +61,17 @@ export default function ColorsOverviewDoc({ frontmatter, code }: Doc) {
 }
 
 export async function getStaticPaths() {
-  const frontmatters = getAllFrontmatter('colors/docs/overview');
+  const frontmatters = getAllFrontmatter('colors/overview');
 
   return {
     paths: frontmatters.map((frontmatter) => ({
-      params: { slug: frontmatter.slug.replace('colors/docs/overview/', '') },
+      params: { slug: frontmatter.slug.replace('colors/overview/', '') },
     })),
     fallback: false,
   };
 }
 
 export async function getStaticProps(context) {
-  const { frontmatter, code } = await getMdxBySlug('colors/docs/overview/', context.params.slug);
+  const { frontmatter, code } = await getMdxBySlug('colors/overview/', context.params.slug);
   return { props: { frontmatter, code } };
 }
