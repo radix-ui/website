@@ -1,14 +1,17 @@
 export const colorsRoutes = [
   {
     label: 'Overview',
-    pages: [{ title: 'Introduction', slug: 'colors/docs/overview/introduction', draft: false }],
+    pages: [
+      { title: 'Installation', slug: 'colors/docs/overview/installation', draft: false },
+      { title: 'Usage', slug: 'colors/docs/overview/usage', draft: false },
+    ],
   },
 
   {
     label: 'Test',
     pages: [
-      { title: 'Page1', slug: 'colors/docs/test/page1', draft: false },
-      { title: 'Page2', slug: 'colors/docs/test/page2', draft: false },
+      { title: 'Page 1', slug: 'colors/docs/test/page1', draft: false },
+      { title: 'Page 2', slug: 'colors/docs/test/page2', draft: false },
     ],
   },
 ];

@@ -1,0 +1,68 @@
+---
+metaTitle: Usage
+metaDescription: How to use Radix Colors.
+---
+
+# Usage
+
+<Description>How to use Radix Colors.</Description>
+
+Radix Colors is available as an npm package.
+
+## Import scales
+
+Radix Colors provides 26 scales, each with both light and dark variations. Import just the scales you need.
+
+```jsx
+import {
+  blue,
+  green,
+  yellow,
+  red,
+  blueDark,
+  greenDark,
+  yellowDark,
+  redDark,
+} from '@radix-ui/colors';
+```
+
+## Add scales to your theme
+
+To install and save in your package.json dependencies, run:
+
+```jsx
+import { createCss } from '@stitches/react';
+
+export const lightMode { theme } = createCss({
+  theme: {
+    colors: {
+      blue,
+      green,
+      yellow,
+      red,
+    },
+  },
+});
+
+export const darkMode = theme({
+  colors: {
+    blueDark,
+    greenDark,
+    yellowDark,
+    redDark,
+  },
+});
+```
+
+## Use a color in your styles
+
+To install and save in your package.json dependencies, run:
+
+```jsx
+import { styled } from 'path-to/stitches.config';
+
+const Button = styled('button', {
+  backgroundColor: '$blue200',
+  color: '$blue900',
+});
+```
