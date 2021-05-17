@@ -8,6 +8,7 @@ import { RemoveScroll } from 'react-remove-scroll';
 import { QuickNav } from '@components/QuickNav';
 import { Color } from '@components/Color';
 import { ColorFigure } from '@components/ColorFigure';
+import { UseCasesTable } from '@components/UseCasesTable';
 
 import type { Frontmatter } from 'types/frontmatter';
 
@@ -28,7 +29,7 @@ export default function ColorsOverviewDoc({ frontmatter, code }: Doc) {
       />
 
       <MDXProvider frontmatter={frontmatter}>
-        <Component components={{ ...components, Color, ColorFigure } as any} />
+        <Component components={{ ...components, Color, ColorFigure, UseCasesTable } as any} />
       </MDXProvider>
 
       <Box
