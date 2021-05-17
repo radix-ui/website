@@ -4,6 +4,7 @@ export const colorsRoutes = [
     pages: [
       { title: 'Installation', slug: 'colors/docs/overview/installation', draft: false },
       { title: 'Usage', slug: 'colors/docs/overview/usage', draft: false },
+      { title: 'Use Cases', slug: 'colors/docs/overview/use-cases', draft: false },
     ],
   },
 

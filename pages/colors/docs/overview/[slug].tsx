@@ -7,6 +7,7 @@ import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { RemoveScroll } from 'react-remove-scroll';
 import { QuickNav } from '@components/QuickNav';
 import { Color } from '@components/Color';
+import { ColorFigure } from '@components/ColorFigure';
 
 import type { Frontmatter } from 'types/frontmatter';
 
@@ -27,7 +28,7 @@ export default function ColorsOverviewDoc({ frontmatter, code }: Doc) {
       />
 
       <MDXProvider frontmatter={frontmatter}>
-        <Component components={{ ...components, Color } as any} />
+        <Component components={{ ...components, Color, ColorFigure } as any} />
       </MDXProvider>
 
       <Box
