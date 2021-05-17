@@ -45,11 +45,14 @@ export const components = {
     // takes the text even if it's wrapped in `<p>`
     // https://github.com/wooorm/xdm/issues/47
     const childText = typeof children === 'string' ? children : children.props.children;
-    return <DS.Subtitle {...props} as="p" css={{ mt: '$2', mb: '$7' }} children={childText} />;
+    return (
+      <DS.Paragraph size="2" {...props} as="p" css={{ mt: '$2', mb: '$7' }} children={childText} />
+    );
   },
   h2: ({ children, id, ...props }) => (
     <LinkHeading id={id} css={{ mt: '$7', mb: '$2' }}>
       <DS.Heading
+        size="2"
         {...props}
         id={id}
         css={{
@@ -64,15 +67,9 @@ export const components = {
   ),
   h3: ({ children, id, ...props }) => (
     <LinkHeading id={id} css={{ mt: '$7', mb: '$1' }}>
-      <DS.Subheading
-        {...props}
-        id={id}
-        css={{ scrollMarginTop: '$6' }}
-        as={'h3' as any}
-        data-heading
-      >
+      <DS.Heading {...props} id={id} css={{ scrollMarginTop: '$6' }} as={'h3' as any} data-heading>
         {children}
-      </DS.Subheading>
+      </DS.Heading>
     </LinkHeading>
   ),
   h4: (props) => (

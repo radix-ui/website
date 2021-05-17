@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Box, Subheading, Link, Skeleton, styled } from '@modulz/design-system';
+import { Text, Box, Link, Heading, Skeleton, styled } from '@modulz/design-system';
 import { ScrollArea } from '@components/ScrollArea';
 
 const QuickNavUl = styled('ul', {
@@ -50,9 +50,9 @@ export function QuickNav() {
           display: headings.length === 0 ? 'none' : 'block',
         }}
       >
-        <Subheading css={{ mb: '$3' }} id="site-quick-nav-heading">
+        <Heading css={{ mb: '$3' }} id="site-quick-nav-heading">
           Quick nav
-        </Subheading>
+        </Heading>
         <QuickNavUl>
           {headings.length === 0 && (
             <Box as="li">

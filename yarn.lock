@@ -323,10 +323,10 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.22.tgz#219dfd89ae5b97a8801f015323ffa4b62f45718b"
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
 
-"@modulz/design-system@0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.1.4.tgz#d060b713baf2350c2461faa785f3bd4eb8354e7d"
-  integrity sha512-OFIxLVxNc9oHp8V4jo/oWonwZG45W8ZnWBpYtBLjWxlAKvKdIU2cADlTaVKxD9NatpL8PHmTWx8tr4CetbUGYA==
+"@modulz/design-system@0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.2.0.tgz#d71c7365ac252d41f10e707d1e14cc3b506b284c"
+  integrity sha512-Kk9+jEXFm+GdWXNtSztttGfQbAtBxdhoFqn/MIfx7dalVXEZ0WEcMu2Q9BqRd+ogqROdwOunXxz2CZsi/1SGfg==
   dependencies:
     "@radix-ui/react-accordion" "0.0.7"
     "@radix-ui/react-alert-dialog" "0.0.8"
@@ -341,6 +341,7 @@
     "@radix-ui/react-menu" "0.0.9"
     "@radix-ui/react-polymorphic" "0.0.6"
     "@radix-ui/react-popover" "0.0.8"
+    "@radix-ui/react-portal" "0.0.6"
     "@radix-ui/react-progress" "0.0.6"
     "@radix-ui/react-radio-group" "0.0.8"
     "@radix-ui/react-separator" "0.0.6"
@@ -351,7 +352,7 @@
     "@radix-ui/react-toggle-button" "0.0.6"
     "@radix-ui/react-tooltip" "0.0.9"
     "@radix-ui/react-use-layout-effect" "^0.0.1"
-    "@stitches/react" "0.1.4"
+    "@stitches/react" "0.1.9"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -1592,17 +1593,17 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
   integrity sha512-ONhaKPIufzzrlNbqtWFFd+jlnemX6lJAgq9ZeiZtS7I1PIf/la7CW4m83rTXRnVnsMbW2k56pGYu7AUFJD9Pow==
 
-"@stitches/core@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@stitches/core/-/core-0.1.4.tgz#1b33c3ef55c044f006049d8310b784720d669798"
-  integrity sha512-jFZMpw6uD7BRvkPp3n0JsUlLO6d7oRwBgInEHDB1xlsRLqB4yaepyEyJ1CqMx8HidyW5QeLXH6IYPzERxCUM/Q==
+"@stitches/core@^0.1.9":
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/@stitches/core/-/core-0.1.9.tgz#6cc42ae6052f6900f9add164232449ff8d62c4ba"
+  integrity sha512-70gVb0uhgV6BOJmloirWEGZmofk/Hzr5yWlub1rtm4CvimD3Xl5xr9fVkjcTu+REC6ILCJCnlEP4WmilTfXNOA==
 
-"@stitches/react@0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@stitches/react/-/react-0.1.4.tgz#f1a37911683cfc192906b0710c9685bddb316abc"
-  integrity sha512-/YI/cuyd8tCGaq5ewDF2goGVa/LuIQZbb4SKQM/DroluOrZ4W1Pwczk/vkijhP3pH11ssEHtD9/v8VzXb01nvw==
+"@stitches/react@0.1.9":
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/@stitches/react/-/react-0.1.9.tgz#b16e05c9ee7e34369bb3b051b92a997ab379863f"
+  integrity sha512-yK4ZAdkuOiOum+bfPYlDNS9UI/Tm9JYsYNMUWLB3uAy+7tvSYfB4cVYkXwFuiKxis03woATTZTe6IlTb+LXm+A==
   dependencies:
-    "@stitches/core" "^0.1.4"
+    "@stitches/core" "^0.1.9"
 
 "@types/anymatch@*":
   version "1.3.1"

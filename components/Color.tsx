@@ -5,9 +5,9 @@ import {
   Container,
   Grid,
   Code,
+  Heading,
   Flex,
   Paragraph,
-  Title,
 } from '@modulz/design-system';
 
 export function Color() {
@@ -1576,7 +1576,9 @@ export function Color() {
       </Box>
 
       <Box css={{ backgroundColor: '$red800', height: '100vh', p: '$9', mt: '$9' }}>
-        <Title css={{ color: 'white' }}>This should look good and pass contrast ratio.</Title>
+        <Heading size="4" css={{ color: 'white' }}>
+          This should look good and pass contrast ratio.
+        </Heading>
       </Box>
     </Section>
   );
