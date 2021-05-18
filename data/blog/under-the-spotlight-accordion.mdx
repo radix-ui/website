@@ -15,17 +15,15 @@ The Radix Accordion has been carefully built to ensure you—and your users—ha
 
 ## A closer look
 
-Our goal is to ensure the Accordion component adheres to the [WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#accordion) while providing the best possible developer and user experiences.
+Our goal is to ensure the Accordion component is accessible while providing the best possible developer and user experiences.
 
 Below is a list of all the features we've built into our Accordion, they all work out of the box.
 
 ### Screen reader
 
-A screen reader is a software that interprets things on the screen and converts them to a format that visually impaired people can consume and interact with.
-
 Our Accordion component follows the [WAI-ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/#accordion) authoring specification. This ensures it's accessible to screen reader users.
 
-Every Radix Primitive works with screen readers. One less thing for you to worry about.
+For example, each Accordion trigger correctly implements the `aria-controls`, `aria-disabled` and `aria-expanded` attributes. While each Accordion content references its trigger with `aria-labelledby`.
 
 <VideoPlaceholder />
 
@@ -33,7 +31,7 @@ Every Radix Primitive works with screen readers. One less thing for you to worry
 
 Keyboard navigation helps users with motor disabilities navigate across the items in the Accordion. Blind users rely on keyboard for navigation. It also improves the experience for people without disabilities.
 
-Every Radix Primitive supports keyboard accessibility. So you can do anything you need without using your mouse.
+The Radix Accordion was built to be fully functional without using your mouse.
 
 <KeyboardTable
   data={[
@@ -78,17 +76,9 @@ Every Radix Primitive supports keyboard accessibility. So you can do anything yo
 
 <VideoPlaceholder />
 
-### Sensible defaults
-
-By default, all sections are collpased. You can click on a heading to expant its content.
-
-<VideoPlaceholder />
-
 ### Configurable
 
-The Radix Accordion offers common configuration options via props.
-
-For example, you can configure it to allow multiple panels to be opened at the same time. Or you can configure it to always keep at least one panel opened, whilst adhering to the accessibility spec.
+You can configure the Radix accordion to your needs. For example, set specific content to be opened by default, allow multiple contents to open, or even prevent a single content from closing.
 
 <VideoPlaceholder />
 
@@ -100,12 +90,6 @@ With roving focus, you can press <Kbd>ArrowLeft</Kbd>/<Kbd>ArrowRight</Kbd> to m
 
 <VideoPlaceholder />
 
-### Customisable
-
-Built with customisation in mind, you have full control over its aesthethics. For example, you could add chevrons to further illustrate the open state of the headers. You can also control some of its behaviour, such as preventing all panels to be closed.
-
-You can shape it to fit your product's needs.
-
 <VideoPlaceholder />
 
 ### Animation
@@ -115,6 +99,10 @@ The ability to animate certain elements is essential. The Radix Accordion has be
 Our Accordion component exposes the height of each panel via a CSS Custom Property. This enables you to have animate dynamic heights without compromises.
 
 <VideoPlaceholder />
+
+### Styling
+
+Radix Accordions ship with zero styles, so you have full control over the its look and feel.
 
 ---
 
