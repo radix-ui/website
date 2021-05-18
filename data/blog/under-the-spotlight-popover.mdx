@@ -15,17 +15,16 @@ This article highlights how we overcame the challenges presented when building a
 
 ## A closer look
 
-Our goal is to ensure the Popover component adheres to the [WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal) while providing the best possible developer and user experiences.
+Our goal is to ensure the Popover component is accessible while providing the best possible developer and user experiences.
 
 Below is a list of all the features we've built into our Popover, they all work out of the box.
 
 ### Screen reader
 
-A screen reader is a software that interprets things on the screen and converts them to a format that visually impaired people can consume and interact with.
+Our Popover component follows the [WAI-ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal) authoring specification. This ensures it's accessible to screen reader users.
 
-Our Tooltip component follows the [WAI-ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal) authoring specification. This ensures it's accessible to screen reader users.
-
-Every Radix Primitive works with screen readers. One less thing for you to worry about.
+For example, the Popover element has the `role="dialog"` and `aria-modal` attributes. The Popover trigger has the `aria-haspopup`, `aria-expanded` and `aria-controls` attributes.
+When the Popover is opened, all other elements are hidden from screen readers.
 
 <VideoPlaceholder />
 
@@ -65,7 +64,9 @@ Every Radix Primitive supports keyboard accessibility. So you can do anything yo
 
 ### Positioning
 
-When you open the Popover, it'll be positioned relatively to the trigger element. In the event where there's not enough space (a collision), the position will be adjusted.
+You can configure the Popover so it appears on above or below the trigger, as well as to the left or right of it. You can also choose the alignment of the Popover against the trigger.
+
+When you open the Popover, it'll be positioned relatively to the trigger element. In the unlikely scenario where there's not enough space (a collision), the position will be adjusted.
 
 For example, if you have configured the Popover to appear above the trigger, and there's not enough space to fully display the Popover, it'll appear below instead.
 
@@ -91,15 +92,9 @@ Our Popover component exposes its transform origin via a CSS Custom Property. Th
 
 Some advanced interfaces, such as design tools, may require nesting of Popovers. The Radix Popover ensures you can customise its layering and dismissing behaviour.
 
-### Customisable
+### Styling
 
-Built with customisation in mind, you have full control over the Tooltip's look and feel. Shape it to fit your product's needs.
-
-### Configurable
-
-The Radix Popover offers common configuration options via props.
-
-For example, you can configure it so it appears on above or below the trigger, as well as to the left or right of it. You choose the alignment of the tooltip against the trigger. You can configure its offsets, collision tollerance, whether the outside scroll is enabled or disabed, and much more.
+Radix Tooltips ship with zero styles, so you have full control over the Tooltip's look and feel.
 
 ---
 
@@ -107,4 +102,4 @@ For example, you can configure it so it appears on above or below the trigger, a
 
 One last thing. Here's an interactive, live demo of the Radix Popover. Feel free to play around!
 
-<TooltipDemo />
+<PopoverDemo />
