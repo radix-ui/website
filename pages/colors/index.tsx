@@ -1,5 +1,5 @@
 import React from 'react';
-import { Section, Container, Title, Subtitle, Box, Grid, Text } from '@modulz/design-system';
+import { Section, Container, Heading, Paragraph, Box, Grid, Text } from '@modulz/design-system';
 
 export default function ColorsHome() {
   return (
@@ -17,7 +17,8 @@ export default function ColorsHome() {
         }}
       >
         <Container size="3">
-          <Title
+          <Heading
+            size="4"
             css={{
               mb: '$3',
               '@bp1': {
@@ -33,8 +34,9 @@ export default function ColorsHome() {
             }}
           >
             Colors Title
-          </Title>
-          <Subtitle
+          </Heading>
+          <Paragraph
+            size="2"
             as="p"
             css={{
               mb: '$6',
@@ -46,7 +48,7 @@ export default function ColorsHome() {
             }}
           >
             Colors description
-          </Subtitle>
+          </Paragraph>
         </Container>
       </Section>
 
