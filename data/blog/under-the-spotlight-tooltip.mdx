@@ -17,25 +17,23 @@ The Radix Tooltip has been carefully built to ensure you—and your users—have
 
 ## A closer look
 
-Our goal is to ensure the Tooltip component adheres to the [WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#tooltip) while providing the best possible developer and user experiences.
+Our goal is to ensure the Tooltip component is accessible while providing the best possible developer and user experiences.
 
 Below is a list of all the features we've built into our Tooltip, they all work out of the box.
 
 ### Screen reader
 
-A screen reader is a software that interprets things on the screen and converts them to a format that visually impaired people can consume and interact with.
-
 Our Tooltip component follows the [WAI-ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/#tooltip) authoring specification. This ensures it's accessible to screen reader users.
 
-Every Radix Primitive works with screen readers. One less thing for you to worry about.
+For example, the Tooltip element has the `role="tooltip"` attribute and the Tooltip trigger references it with `aria-describedby`.
 
 <VideoPlaceholder />
 
 ### Keyboard navigation
 
-Keyboard navigation helps users with motor disabilities navigate across the items in the Accordion. Blind users rely on keyboard for navigation. It also improves the experience for people without disabilities.
+Keyboard navigation helps users with motor disabilities and blind users rely on keyboard for navigation. It also improves the experience for people without disabilities.
 
-Every Radix Primitive supports keyboard accessibility. So you can do anything you need without using your mouse.
+The Radix Tooltip was built to be fully functional without using your mouse.
 
 <KeyboardTable
   data={[
@@ -60,7 +58,7 @@ Every Radix Primitive supports keyboard accessibility. So you can do anything yo
 
 <VideoPlaceholder />
 
-### Smart delays
+### Configurable delays
 
 The Radix Tooltip uses a built-in state machine to control display delay. This enables you to have full control over the delays, based on different interaction methods.
 
@@ -68,27 +66,13 @@ For example, you can control the delay duration from when the mouse enters the t
 
 <VideoPlaceholder />
 
-### Configurable
-
-The Radix Tooltip offers common configuration options via props.
-
-For example, you can configure it so it appears on above or below the trigger, as well as to the left or right of it. You choose the alignment of the tooltip against the trigger. You can even control the timings, such as delay duration.
-
-<VideoPlaceholder />
-
 ### Positioning
+
+You can configure the Tooltip so it appears on above or below the trigger, as well as to the left or right of it. You choose the alignment of the tooltip against the trigger.
 
 When you open the Tooltip, it'll be positioned relatively to the trigger element. In the unlikely scenario where there's not enough space (a collision), the position will be adjusted.
 
 For example, if you have configured the Tooltip to appear above the trigger, and there's not enough space to fully display the Tooltip, it'll appear below instead.
-
-<VideoPlaceholder />
-
-### Customisable
-
-Built with customisation in mind, you have full control over the Tooltip's look and feel. You can also control some of its behaviour, such displaying the tooltip from a disabled trigger.
-
-You can shape it to fit your product's needs.
 
 <VideoPlaceholder />
 
@@ -99,6 +83,10 @@ The ability add animation is essential. The Radix Tooltip has been built with an
 Our Tooltip component exposes its transform origin via a CSS Custom Property. This enables you to add origin-aware animation in an elegant manner.
 
 <VideoPlaceholder />
+
+### Styling
+
+Radix Tooltips ship with zero styles, so you have full control over the Tooltip's look and feel.
 
 ---
 
