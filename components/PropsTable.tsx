@@ -102,15 +102,15 @@ export function PropsTable({
                       verticalAlign: 'middle',
                       color: '$gray900',
                       display: 'none',
-                      bp1: { display: 'inline-flex' },
+                      '@bp1': { display: 'inline-flex' },
                     }}
                   >
                     <AccessibleIcon label="See full type">
                       <InfoCircledIcon />
                     </AccessibleIcon>
                   </PopoverTrigger>
-                  <PopoverContent side="top">
-                    <Box css={{ py: '$2', px: '$2', height: '38px', whiteSpace: 'nowrap' }}>
+                  <PopoverContent side="top" css={{ maxWidth: 'max-content' }}>
+                    <Box css={{ py: '$2', px: '$2', whiteSpace: 'nowrap' }}>
                       <Code>{type}</Code>
                     </Box>
                   </PopoverContent>
