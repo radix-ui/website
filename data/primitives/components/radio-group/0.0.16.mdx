@@ -110,7 +110,7 @@ export default () => (
 
 ## API Reference
 
-### RadioGroup
+### Root
 
 Contains all the parts of a radio group.
 
@@ -146,6 +146,12 @@ Contains all the parts of a radio group.
       type: '(value: string) => void',
       typeSimple: 'function',
       description: 'Event handler called when the value changes.',
+    },
+    {
+      name: 'name',
+      type: 'string',
+      description:
+        'The name of the group. Submitted with its owning form as part of a name/value pair.',
     },
     {
       name: 'required',
