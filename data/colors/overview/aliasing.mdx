@@ -1,24 +1,150 @@
 ---
-metaTitle: Usage
+metaTitle: Aliasing
 metaDescription: How to use Radix Colors.
 ---
 
-# Usage
+# Aliasing
 
-<Description>How to use Radix Colors.</Description>
+<Description>Aliasing colors .</Description>
 
-## Aliasing
+## Renaming imports
 
-Each scale has 12 steps. The variables will be the scale name suffixed with `0` through `11`.
+Maybe you want to rename to a scale to fit your brand. Maybe you want
 
 ```jsx
-const Button = styled('button', {
-  backgroundColor: '$blue2',
-  color: '$blue9',
-  borderColor: '$blue6',
-  '&:hover': {
-    backgroundColor: '$blue3',
-    borderColor: '$blue7',
+import {
+  slate as gray,
+  grass as green,
+  sky as blue,
+  orange as sunset,
+} from '@radix-ui/colors';
+```
+
+## Semantic aliases
+
+Maybe you want to rename to a scale to fit your brand. Maybe you want
+
+```jsx
+const { styled, theme } = createCss({
+  theme: {
+    colors: {
+      ...blue,
+      ...green,
+      ...yellow,
+      ...red,
+
+      accent0: '$blue0',
+      accent1: '$blue1',
+      accent2: '$blue2',
+      accent3: '$blue3',
+      accent4: '$blue4',
+      accent5: '$blue5',
+      accent6: '$blue6',
+      accent7: '$blue7',
+      accent8: '$blue8',
+      accent9: '$blue9',
+      accent10: '$blue10',
+      accent11: '$blue11',
+
+      success0: '$green0',
+      success1: '$green1',
+      // repeat for all steps
+
+      warning0: '$yellow0',
+      warning1: '$yellow1',
+      // repeat for all steps
+
+      danger0: '$red0',
+      danger1: '$red1',
+      // repeat for all steps
+    },
   },
 });
 ```
+
+## Use case aliases
+
+Maybe you want to rename to a scale to fit your brand. Maybe you want
+
+```jsx
+const { styled, theme } = createCss({
+  theme: {
+    colors: {
+      ...blue,
+      ...green,
+      ...yellow,
+      ...red,
+
+      accentBase: '$blue0',
+      accentBgSubtle: '$blue1',
+      accentBg: '$blue2',
+      accentBgHover: '$blue3',
+      accentBgActive: '$blue4',
+      accentLine: '$blue5',
+      accentBorder: '$blue6',
+      accentBorderHover: '$blue7',
+      accentSolid: '$blue8',
+      accentSolidHover: '$blue9',
+      accentText: '$blue10',
+      accentTextContrast: '$blue11',
+      accent12: '$blue12',
+
+      successBase: '$green0',
+      successBgSubtle: '$green1',
+      // repeat for all steps
+
+      warningBase: '$yellow0',
+      warningBgSubtle: '$yellow1',
+      // repeat for all steps
+
+      dangerBase: '$red0',
+      dangerBgSubtle: '$red1',
+      // repeat for all steps
+    },
+  },
+});
+```
+
+## Mutable aliases
+
+When designing for both light and dark modes, you sometimes need to map a variable to one color in light mode, and another color in dark mode. Common examples include:
+
+- Components that have a white background in light mode and a subtle gray background in dark mode. For example, Card, Popover, DropdownMenu, HoverCard, Dialog etc.
+- Components that have a transparent black background in light mode and a transparent white background in dark mode. For example, Tooltip.
+- Shadows that are saturated, transparent gray in light mode, and pure black in dark mode.
+- An overlay that is light transparent black in light mode, and a darker transparent black in dark mode.
+
+```jsx
+const { styled, theme } = createCss({
+  theme: {
+    colors: {
+      ...slate,
+      ...slateA,
+      ...whiteA,
+      ...blackA,
+
+      panel: 'white',
+      panelContrast: '$blackA11',
+      shadow: '$slateA3',
+      overlay: '$blackA3',
+    },
+  },
+});
+
+const darkTheme = theme({
+  colors: {
+    ...slateDark,
+    ...slateDarkA,
+    ...whiteA,
+    ...blackA,
+
+    // Remap your colors for dark mode
+    panel: '$slate2',
+    panelContrast: '$whiteA11',
+    shadow: 'black',
+    overlay: '$blackA6',
+  },
+});
+```
+
+Avoid using specific variable names like "CardBg", or "Tooltip", because you will likely need to use each variable for multiple use cases.
