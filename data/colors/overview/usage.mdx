@@ -7,62 +7,106 @@ metaDescription: How to use Radix Colors.
 
 <Description>How to use Radix Colors.</Description>
 
-Radix Colors is available as an npm package.
-
 ## Import scales
 
-Radix Colors provides 26 scales, each with both light and dark variations. Import just the scales you need.
+Radix Colors provides 26 scales, each with both light and dark variations. Import only the scales you need.
 
 ```jsx
 import {
-  blue,
-  green,
-  yellow,
+  gray,
+  mauve,
+  slate,
+  sage,
+  olive,
+  sand,
+  tomato,
   red,
+  crimson,
+  pink,
+  plum,
+  purple,
+  violet,
+  indigo,
+  blue,
+  sky,
+  mint,
+  cyan,
+  teal,
+  green,
+  grass,
+  lime,
+  yellow,
+  amber,
+  orange,
+  brown,
+  bronze,
+  gold,
+
+  // All scales have a Dark variant for dark mode.
+  grayDark,
+  redDark,
   blueDark,
   greenDark,
   yellowDark,
-  redDark,
+
+  // All scales have an A variant for alpha transparency in light mode.
+  grayA,
+  redA,
+  blueA,
+  greenA,
+  yellowA,
+
+  // All scales have a DarkA variant for alpha transparency in dark mode.
+  grayDarkA,
+  redDarkA,
+  blueDarkA,
+  greenDarkA,
+  yellowDarkA,
 } from '@radix-ui/colors';
 ```
 
-## Add scales to your theme
+## Define color themes
 
-To install and save in your package.json dependencies, run:
+Once you've imported your scales, spread them in your themes.
 
 ```jsx
 import { createCss } from '@stitches/react';
 
-export const lightMode { theme } = createCss({
+const { styled, theme } = createCss({
   theme: {
     colors: {
-      blue,
-      green,
-      yellow,
-      red,
+      ...gray,
+      ...red,
+      ...blue,
+      ...green,
+      ...yellow,
     },
   },
 });
 
-export const darkMode = theme({
+const darkTheme = theme({
   colors: {
-    blueDark,
-    greenDark,
-    yellowDark,
-    redDark,
+    ...grayDark,
+    ...redDark,
+    ...blueDark,
+    ...greenDark,
+    ...yellowDark,
   },
 });
 ```
 
 ## Use a color in your styles
 
-To install and save in your package.json dependencies, run:
+Each scale has 12 steps, from lowest to highest contrast. The variables will be the scale name suffixed with `0` through `11`.
 
 ```jsx
-import { styled } from 'path-to/stitches.config';
-
 const Button = styled('button', {
-  backgroundColor: '$blue200',
-  color: '$blue900',
+  backgroundColor: '$blue2',
+  color: '$blue9',
+  borderColor: '$blue6',
+  '&:hover': {
+    backgroundColor: '$blue3',
+    borderColor: '$blue7',
+  },
 });
 ```

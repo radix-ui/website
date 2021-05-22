@@ -1,0 +1,24 @@
+---
+metaTitle: Usage
+metaDescription: How to use Radix Colors.
+---
+
+# Usage
+
+<Description>How to use Radix Colors.</Description>
+
+## Aliasing
+
+Each scale has 12 steps. The variables will be the scale name suffixed with `0` through `11`.
+
+```jsx
+const Button = styled('button', {
+  backgroundColor: '$blue2',
+  color: '$blue9',
+  borderColor: '$blue6',
+  '&:hover': {
+    backgroundColor: '$blue3',
+    borderColor: '$blue7',
+  },
+});
+```
