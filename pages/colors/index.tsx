@@ -1,5 +1,15 @@
 import React from 'react';
-import { Section, Container, Heading, Paragraph, Box, Grid, Text } from '@modulz/design-system';
+import NextLink from 'next/link';
+import {
+  Section,
+  Container,
+  Heading,
+  Link,
+  Paragraph,
+  Box,
+  Grid,
+  Text,
+} from '@modulz/design-system';
 
 export default function ColorsHome() {
   return (
@@ -49,6 +59,9 @@ export default function ColorsHome() {
           >
             Colors description
           </Paragraph>
+          <NextLink href="/colors/docs/overview/installation" passHref>
+            <Link variant="blue">Documentation</Link>
+          </NextLink>
         </Container>
       </Section>
 
