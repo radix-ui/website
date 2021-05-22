@@ -10,6 +10,11 @@ export const colorsRoutes = [
   },
 
   {
+    label: 'Palette Composition',
+    pages: [{ title: 'Brand', slug: 'colors/docs/palette-composition/brand', draft: false }],
+  },
+
+  {
     label: 'Test',
     pages: [
       { title: 'Page 1', slug: 'colors/docs/test/page1', draft: false },
