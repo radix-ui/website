@@ -100,7 +100,7 @@ export const components = {
   ol: (props) => <DS.Box {...props} css={{ color: '$hiContrast', mb: '$3' }} as="ol" />,
   li: (props) => (
     <li>
-      <DS.Text size="4" {...props} css={{ lineHeight: '30px', letterSpacing: 0 }} />
+      <DS.Paragraph {...props} />
     </li>
   ),
   strong: (props) => (
