@@ -17,7 +17,7 @@ type Doc = {
   code: any;
 };
 
-export default function ColorsOverviewDoc({ frontmatter, code }: Doc) {
+export default function ColorsGettingStartedDoc({ frontmatter, code }: Doc) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
   return (
@@ -63,17 +63,17 @@ export default function ColorsOverviewDoc({ frontmatter, code }: Doc) {
 }
 
 export async function getStaticPaths() {
-  const frontmatters = getAllFrontmatter('colors/overview');
+  const frontmatters = getAllFrontmatter('colors/getting-started');
 
   return {
     paths: frontmatters.map((frontmatter) => ({
-      params: { slug: frontmatter.slug.replace('colors/overview/', '') },
+      params: { slug: frontmatter.slug.replace('colors/getting-started/', '') },
     })),
     fallback: false,
   };
 }
 
 export async function getStaticProps(context) {
-  const { frontmatter, code } = await getMdxBySlug('colors/overview/', context.params.slug);
+  const { frontmatter, code } = await getMdxBySlug('colors/getting-started/', context.params.slug);
   return { props: { frontmatter, code } };
 }
