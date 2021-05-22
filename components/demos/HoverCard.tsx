@@ -19,8 +19,8 @@ const StyledArrow = styled(HoverCard.Arrow, {
 export const HoverCardDemo = (props) => (
   <HoverCard.Root {...props}>
     <HoverCard.Trigger href="https://twitter.com">@twitter</HoverCard.Trigger>
-    <StyledContent sideOffset={5}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 15 }}>
+    <StyledContent>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
         <img
           src="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_bigger.jpg"
           width="45"
