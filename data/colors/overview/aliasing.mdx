@@ -5,18 +5,26 @@ metaDescription: How to use Radix Colors.
 
 # Aliasing
 
-<Description>Aliasing colors .</Description>
+<Description>
+  A guide to providing semantic aliases for colors.
+</Description>
 
 ## Renaming imports
 
-Maybe you want to rename to a scale to fit your brand. Maybe you want
+You can rename scales at import using `as`. Reasons might include:
+
+- Rename a saturated gray to "gray" to keep things simple.
+- Rename "sky" or "grass" to "blue" or "green" to keep things standard.
+- Rename a scale to match your brand, like how Discord use "Blurple".
+- Just to have some fun :)
 
 ```jsx
 import {
   slate as gray,
-  grass as green,
   sky as blue,
-  orange as sunset,
+  grass as green,
+  violet as blurple,
+  crimson as caribbeanSunset,
 } from '@radix-ui/colors';
 ```
 
@@ -64,7 +72,7 @@ const { styled, theme } = createCss({
 
 ## Use case aliases
 
-Maybe you want to rename to a scale to fit your brand. Maybe you want
+Each step in Radix Colors scales is designed for a specific use case. To help your developers know which step to use, you can provide aliases based on the designed use cases.
 
 ```jsx
 const { styled, theme } = createCss({
@@ -87,7 +95,6 @@ const { styled, theme } = createCss({
       accentSolidHover: '$blue9',
       accentText: '$blue10',
       accentTextContrast: '$blue11',
-      accent12: '$blue12',
 
       successBase: '$green0',
       successBgSubtle: '$green1',
@@ -104,6 +111,35 @@ const { styled, theme } = createCss({
   },
 });
 ```
+
+Again, with this approach, you will likely run into issues where you need to use the same step for multiple use cases. Common examples include:
+
+- Step 8 is designed for solid backgrounds, but it also works well for input placeholder text.
+- Step 7 is designed for hovered component borders, but it also works well for focus rings.
+
+In these cases, you can choose to define multiple aliases which map to the same color.
+
+```jsx
+const { styled, theme } = createCss({
+  theme: {
+    colors: {
+      ...gray,
+      ...blue,
+      ...green,
+      ...yellow,
+      ...red,
+
+      graySolid: '$gray8',
+      grayPlaceholderText: '$gray8',
+
+      accentBorderHover: '$blue7',
+      accentFocusRing: '$blue7',
+    },
+  },
+});
+```
+
+Or you can simply recommend that developers defer to the original step number for cases where the use cases doesn't have an alias.
 
 ## Mutable aliases
 
