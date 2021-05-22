@@ -70,9 +70,47 @@ const { styled, theme } = createCss({
 });
 ```
 
+With this approach, you will likely run into issues where you need to use the same scale for multiple semantics. Common examples include:
+
+- If you map `yellow` to "warning", you might also need `yellow` to communicate "pending".
+- If you map `red` to "danger", you might also need `red` to communicate "error" or "rejected".
+- If you map `green` to "success", you might also need `green` to communicate "valid".
+- If you map `blue` to "accent", you might also need `blue` to communicate "info".
+
+In this scenario, you can choose to define multiple semantic aliases which map to the same scale.
+
+```jsx
+const { styled, theme } = createCss({
+  theme: {
+    colors: {
+      ...blue,
+      ...green,
+      ...yellow,
+
+      accent0: '$blue0',
+      accent1: '$blue1',
+      info0: '$blue0',
+      info1: '$blue1',
+
+      success0: '$green0',
+      success1: '$green1',
+      valid0: '$green0',
+      valid1: '$green1',
+
+      warning0: '$yellow0',
+      warning1: '$yellow1',
+      pending0: '$yellow0',
+      pending1: '$yellow1',
+    },
+  },
+});
+```
+
+Or you can simply recommend that your teammates defer to the original scale name for situations where there is no appropriate semantic alias.
+
 ## Use case aliases
 
-Each step in Radix Colors scales is designed for a specific use case. To help your developers know which step to use, you can provide aliases based on the designed use cases.
+Each step in Radix Colors scales is designed for a specific use case. To help your team know which step to use, you can provide aliases based on the designed use cases.
 
 ```jsx
 const { styled, theme } = createCss({
@@ -117,7 +155,7 @@ Again, with this approach, you will likely run into issues where you need to use
 - Step 8 is designed for solid backgrounds, but it also works well for input placeholder text.
 - Step 7 is designed for hovered component borders, but it also works well for focus rings.
 
-In these cases, you can choose to define multiple aliases which map to the same color.
+In these cases, you can choose to define multiple aliases which map to the same step.
 
 ```jsx
 const { styled, theme } = createCss({
@@ -139,7 +177,7 @@ const { styled, theme } = createCss({
 });
 ```
 
-Or you can simply recommend that developers defer to the original step number for cases where the use cases doesn't have an alias.
+Or you can simply recommend that your teammates defer to the original step number for situations where use cases don't have an alias.
 
 ## Mutable aliases
 
