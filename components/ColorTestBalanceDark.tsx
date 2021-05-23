@@ -18,7 +18,6 @@ export function ColorTestBalanceDark() {
           gridTemplateColumns: 'repeat(6, minmax(0, 1fr))',
           ai: 'center',
           filter: 'grayscale(1)',
-          columnGap: 2,
         }}
       >
         <Box></Box>
