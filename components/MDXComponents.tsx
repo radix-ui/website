@@ -145,13 +145,13 @@ export const components = {
     <DS.Box
       as="aside"
       css={{
-        mt: '$6',
-        mb: '$3',
+        mt: '$5',
+        mb: '$5',
         borderRadius: '$3',
         '& p': {
           fontSize: '$3',
           color: '$slate900',
-          lineHeight: '21px',
+          lineHeight: '23px',
           margin: 0,
         },
       }}

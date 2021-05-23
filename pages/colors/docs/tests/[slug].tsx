@@ -10,6 +10,9 @@ import { ColorTestText } from '@components/ColorTestText';
 import { ColorTestTextLarge } from '@components/ColorTestTextLarge';
 import { ColorTestTextLargeBright } from '@components/ColorTestTextLargeBright';
 import { ColorTestBalanceLight } from '@components/ColorTestBalanceLight';
+import { ColorTestBalanceDark } from '@components/ColorTestBalanceDark';
+import { ColorTestSaturationLight } from '@components/ColorTestSaturationLight';
+import { ColorTestSaturationDark } from '@components/ColorTestSaturationDark';
 
 import type { Frontmatter } from 'types/frontmatter';
 
@@ -35,6 +38,9 @@ export default function ColorsTestDoc({ frontmatter, code }: Doc) {
             {
               ...components,
               ColorTestBalanceLight,
+              ColorTestBalanceDark,
+              ColorTestSaturationLight,
+              ColorTestSaturationDark,
               ColorTestText,
               ColorTestTextLarge,
               ColorTestTextLargeBright,
