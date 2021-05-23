@@ -6,7 +6,9 @@ import { MDXProvider, components } from '@components/MDXComponents';
 import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { RemoveScroll } from 'react-remove-scroll';
 import { QuickNav } from '@components/QuickNav';
-import { Color } from '@components/Color';
+import { ColorTestText } from '@components/ColorTestText';
+import { ColorTestTextLarge } from '@components/ColorTestTextLarge';
+import { ColorTestTextLargeBright } from '@components/ColorTestTextLargeBright';
 
 import type { Frontmatter } from 'types/frontmatter';
 
@@ -27,7 +29,11 @@ export default function ColorsTestDoc({ frontmatter, code }: Doc) {
       />
 
       <MDXProvider frontmatter={frontmatter}>
-        <Component components={{ ...components, Color } as any} />
+        <Component
+          components={
+            { ...components, ColorTestText, ColorTestTextLarge, ColorTestTextLargeBright } as any
+          }
+        />
       </MDXProvider>
 
       <Box
@@ -61,17 +67,17 @@ export default function ColorsTestDoc({ frontmatter, code }: Doc) {
 }
 
 export async function getStaticPaths() {
-  const frontmatters = getAllFrontmatter('colors/test');
+  const frontmatters = getAllFrontmatter('colors/tests');
 
   return {
     paths: frontmatters.map((frontmatter) => ({
-      params: { slug: frontmatter.slug.replace('colors/test/', '') },
+      params: { slug: frontmatter.slug.replace('colors/tests/', '') },
     })),
     fallback: false,
   };
 }
 
 export async function getStaticProps(context) {
-  const { frontmatter, code } = await getMdxBySlug('colors/test/', context.params.slug);
+  const { frontmatter, code } = await getMdxBySlug('colors/tests/', context.params.slug);
   return { props: { frontmatter, code } };
 }

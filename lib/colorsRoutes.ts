@@ -16,10 +16,10 @@ export const colorsRoutes = [
   },
 
   {
-    label: 'Test',
+    label: 'Tests',
     pages: [
-      { title: 'Page 1', slug: 'colors/docs/test/page1', draft: false },
-      { title: 'Page 2', slug: 'colors/docs/test/page2', draft: false },
+      { title: 'Balance', slug: 'colors/docs/tests/balance', draft: false },
+      { title: 'Contrast', slug: 'colors/docs/tests/contrast', draft: false },
     ],
   },
 ];
