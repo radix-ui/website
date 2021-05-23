@@ -9,6 +9,9 @@ import { QuickNav } from '@components/QuickNav';
 import { ColorGrid } from '@components/ColorGrid';
 import { ColorFigure } from '@components/ColorFigure';
 import { UseCasesTable } from '@components/UseCasesTable';
+import { ColorGrays } from '@components/ColorGrays';
+import { ColorGrayPairs } from '@components/ColorGrayPairs';
+import { ColorGrayPairsComplementary } from '@components/ColorGrayPairsComplementary';
 
 import type { Frontmatter } from 'types/frontmatter';
 
@@ -29,7 +32,19 @@ export default function ColorsPaletteCompostionDoc({ frontmatter, code }: Doc) {
       />
 
       <MDXProvider frontmatter={frontmatter}>
-        <Component components={{ ...components, ColorGrid, ColorFigure, UseCasesTable } as any} />
+        <Component
+          components={
+            {
+              ...components,
+              ColorGrid,
+              ColorFigure,
+              UseCasesTable,
+              ColorGrays,
+              ColorGrayPairs,
+              ColorGrayPairsComplementary,
+            } as any
+          }
+        />
       </MDXProvider>
 
       <Box

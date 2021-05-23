@@ -11,106 +11,42 @@ metaDescription: How to use Radix Colors.
 
 ## Choosing a brand scale
 
-You can rename scales at import using `as`. Reasons might include:
+Radix provides 20 scales you could use for your brand or accent color.
 
-- Rename a saturated gray to "gray" to keep things simple.
-- Rename "sky" or "grass" to "blue" or "green" to keep things standard.
-- Rename a scale to match your brand, like how Discord use "Blurple".
-- Just to have some fun :)
+15 scales designed for white foreground text.
 
-```jsx
-import {
-  slate as gray,
-  sky as blue,
-  grass as green,
-  violet as blurple,
-  crimson as caribbeanSunset,
-} from '@radix-ui/colors';
-```
+<ColorGrayPairsComplementary />
 
 ## Choosing a gray scale
 
-For most websites and apps, gray will be the most commonly used color. Text, borders, backgrounds.
+For most websites and apps, grays are commonly used for text, borders, and backgrounds.
 
-Radix Colors offers 6 gray hues.
+Radix Colors provides 6 gray scales.
 
-List the grays.
+<ColorGrays />
 
-- The `gray` scale is pure gray.
-- The `mauve` scale is based on a desaturated violet/purple hue.
-- The `slate` scale is based on a desaturated blue hue.
-- The `sage` scale is based on a desaturated green/teal.
-- The `olive` scale is based on a desaturated green/lime.
-- The `sand` scale is based on a desaturated yellow hue.
+- `Gray` is pure gray.
+- `Mauve` is based on a desaturated purple hue.
+- `Slate` is based on a desaturated blue hue.
+- `Sage` is based on a desaturated green hue.
+- `Olive` is based on a desaturated lime hue.
+- `Sand` is based on a desaturated yellow hue.
+
+### Neutral pairing
+
+If you want a neutral vibe, or you want to keep things simple, `Gray` will work well with any hue or palette.
+
+### Natural pairing
+
+Alternatively, choose the gray scale which is saturated with the hue closest to your accent hue. The difference is subtle, but this will create a more colorful and harmonius vibe.
+
+<ColorGrayPairs />
 
 Explain how you can choose a gray to complement your accent color.
-
-```jsx
-import {
-  slate as gray,
-  slateDark as grayDark,
-  blue,
-  blueDark,
-} from '@radix-ui/colors';
-
-const { styled, theme } = createCss({
-  theme: {
-    colors: {
-      ...gray,
-      ...blue,
-    },
-  },
-});
-
-const darkTheme = theme({
-  colors: {
-    ...grayDark,
-    ...blueDark,
-  },
-});
-```
 
 ## Choosing semantic scales
 
 Each step in Radix Colors scales is designed for a specific use case. To help your team know which step to use, you can provide aliases based on the designed use cases.
-
-```jsx
-const { styled, theme } = createCss({
-  theme: {
-    colors: {
-      ...blue,
-      ...green,
-      ...yellow,
-      ...red,
-
-      accentBase: '$blue0',
-      accentBgSubtle: '$blue1',
-      accentBg: '$blue2',
-      accentBgHover: '$blue3',
-      accentBgActive: '$blue4',
-      accentLine: '$blue5',
-      accentBorder: '$blue6',
-      accentBorderHover: '$blue7',
-      accentSolid: '$blue8',
-      accentSolidHover: '$blue9',
-      accentText: '$blue10',
-      accentTextContrast: '$blue11',
-
-      successBase: '$green0',
-      successBgSubtle: '$green1',
-      // repeat for all steps
-
-      warningBase: '$yellow0',
-      warningBgSubtle: '$yellow1',
-      // repeat for all steps
-
-      dangerBase: '$red0',
-      dangerBgSubtle: '$red1',
-      // repeat for all steps
-    },
-  },
-});
-```
 
 ## Choosing text scales
 
@@ -120,38 +56,5 @@ When designing for both light and dark modes, you sometimes need to map a variab
 - Components that have a transparent black background in light mode and a transparent white background in dark mode. For example, Tooltip.
 - Shadows that are saturated, transparent gray in light mode, and pure black in dark mode.
 - An overlay that is light transparent black in light mode, and a darker transparent black in dark mode.
-
-```jsx
-const { styled, theme } = createCss({
-  theme: {
-    colors: {
-      ...slate,
-      ...slateA,
-      ...whiteA,
-      ...blackA,
-
-      panel: 'white',
-      panelContrast: '$blackA11',
-      shadow: '$slateA3',
-      overlay: '$blackA3',
-    },
-  },
-});
-
-const darkTheme = theme({
-  colors: {
-    ...slateDark,
-    ...slateDarkA,
-    ...whiteA,
-    ...blackA,
-
-    // Remap your colors for dark mode
-    panel: '$slate2',
-    panelContrast: '$whiteA11',
-    shadow: 'black',
-    overlay: '$blackA6',
-  },
-});
-```
 
 Avoid using specific variable names like "CardBg", or "Tooltip", because you will likely need to use each variable for multiple use cases.
