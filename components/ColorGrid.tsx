@@ -10,7 +10,7 @@ import {
   Paragraph,
 } from '@modulz/design-system';
 
-export function Color() {
+export function ColorGrid() {
   return (
     <Section size="3">
       <Box>

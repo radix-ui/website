@@ -9,6 +9,7 @@ import { QuickNav } from '@components/QuickNav';
 import { ColorTestText } from '@components/ColorTestText';
 import { ColorTestTextLarge } from '@components/ColorTestTextLarge';
 import { ColorTestTextLargeBright } from '@components/ColorTestTextLargeBright';
+import { ColorTestBalanceLight } from '@components/ColorTestBalanceLight';
 
 import type { Frontmatter } from 'types/frontmatter';
 
@@ -31,7 +32,13 @@ export default function ColorsTestDoc({ frontmatter, code }: Doc) {
       <MDXProvider frontmatter={frontmatter}>
         <Component
           components={
-            { ...components, ColorTestText, ColorTestTextLarge, ColorTestTextLargeBright } as any
+            {
+              ...components,
+              ColorTestBalanceLight,
+              ColorTestText,
+              ColorTestTextLarge,
+              ColorTestTextLargeBright,
+            } as any
           }
         />
       </MDXProvider>

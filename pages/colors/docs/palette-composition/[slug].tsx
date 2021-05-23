@@ -6,7 +6,7 @@ import { MDXProvider, components } from '@components/MDXComponents';
 import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { RemoveScroll } from 'react-remove-scroll';
 import { QuickNav } from '@components/QuickNav';
-import { Color } from '@components/Color';
+import { ColorGrid } from '@components/ColorGrid';
 import { ColorFigure } from '@components/ColorFigure';
 import { UseCasesTable } from '@components/UseCasesTable';
 
@@ -29,7 +29,7 @@ export default function ColorsPaletteCompostionDoc({ frontmatter, code }: Doc) {
       />
 
       <MDXProvider frontmatter={frontmatter}>
-        <Component components={{ ...components, Color, ColorFigure, UseCasesTable } as any} />
+        <Component components={{ ...components, ColorGrid, ColorFigure, UseCasesTable } as any} />
       </MDXProvider>
 
       <Box
