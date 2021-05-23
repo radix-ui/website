@@ -59,7 +59,7 @@ export default function ColorsHome() {
           >
             Colors description
           </Paragraph>
-          <NextLink href="/colors/docs/overview/installation" passHref>
+          <NextLink href="/colors/docs/getting-started/installation" passHref>
             <Link variant="blue">Documentation</Link>
           </NextLink>
         </Container>
