@@ -15,20 +15,14 @@ Maybe you want to rename to a scale to fit your brand. Maybe you want
 
 {
 
-<Tabs>
+<Tabs defaultValue="1">
   <TabsList>
     <TabsTab value="1">Stitches</TabsTab>
     <TabsTab value="2">Styled Components</TabsTab>
     <TabsTab value="3">CSS</TabsTab>
   </TabsList>
-  <TabsPanel value="1">fwe ueowiiofwejo</TabsPanel>
-  <TabsPanel value="2">fewfewfw</TabsPanel>
-  <TabsPanel value="3">fewfewfw few fewf ewf we f</TabsPanel>
-</Tabs>
-}
-
-    ```jsx
-    const { styled, theme } = createCss({
+  <TabsPanel value="1">
+    <CodeBlock language="jsx" value={`const { styled, theme } = createCss({
       theme: {
         colors: {
           ...blue,
@@ -62,8 +56,87 @@ Maybe you want to rename to a scale to fit your brand. Maybe you want
           // repeat for all steps
         },
       },
-    });
-    ```
+    });`}/>
+
+  </TabsPanel>
+  <TabsPanel value="2">
+    <CodeBlock language="jsx" value={`const { styled, theme } = createCss({
+      theme: {
+        colors: {
+          ...blue,
+          ...green,
+          ...yellow,
+          ...red,
+
+          accent0: '$blue0',
+          accent1: '$blue1',
+          accent2: '$blue2',
+          accent3: '$blue3',
+          accent4: '$blue4',
+          accent5: '$blue5',
+          accent6: '$blue6',
+          accent7: '$blue7',
+          accent8: '$blue8',
+          accent9: '$blue9',
+          accent10: '$blue10',
+          accent11: '$blue11',
+
+          success0: '$green0',
+          success1: '$green1',
+          // repeat for all steps
+
+          warning0: '$yellow0',
+          warning1: '$yellow1',
+          // repeat for all steps
+
+          danger0: '$red0',
+          danger1: '$red1',
+          // repeat for all steps
+        },
+      },
+    });`}/>
+
+  </TabsPanel>
+  <TabsPanel value="3">   
+    <CodeBlock language="jsx" value={`const { styled, theme } = createCss({
+      theme: {
+        colors: {
+          ...blue,
+          ...green,
+          ...yellow,
+          ...red,
+
+          accent0: '$blue0',
+          accent1: '$blue1',
+          accent2: '$blue2',
+          accent3: '$blue3',
+          accent4: '$blue4',
+          accent5: '$blue5',
+          accent6: '$blue6',
+          accent7: '$blue7',
+          accent8: '$blue8',
+          accent9: '$blue9',
+          accent10: '$blue10',
+          accent11: '$blue11',
+
+          success0: '$green0',
+          success1: '$green1',
+          // repeat for all steps
+
+          warning0: '$yellow0',
+          warning1: '$yellow1',
+          // repeat for all steps
+
+          danger0: '$red0',
+          danger1: '$red1',
+          // repeat for all steps
+        },
+      },
+    });`}/>
+    </TabsPanel>
+
+</Tabs>
+}
 
 With this approach, you will likely run into issues where you need to use the same scale for multiple semantics. Common examples include:
 

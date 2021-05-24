@@ -8,6 +8,7 @@ import { KeyboardTable } from './KeyboardTable';
 import { Preview } from './Preview';
 import { Highlights } from './Highlights';
 import { DocCodeBlock } from './DocCodeBlock';
+import { CodeBlock } from './CodeBlock';
 import { PackageRelease, PRLink } from './releaseHelpers';
 import * as gettingStartedDemos from './demos/GettingStarted';
 import * as accessibleIconDemos from './demos/AccessibleIcon';
@@ -38,6 +39,14 @@ import { Frontmatter } from 'types/frontmatter';
 
 export const components = {
   ...DS,
+  Tabs: (props) => (
+    <DS.Tabs
+      {...props}
+      css={{ mb: '$2', '[role="separator"]': { display: 'none' }, ...props.css }}
+    />
+  ),
+  TabsList: (props) => <DS.TabsList {...props} css={{ ...props.css, mx: '$2' }} />,
+  CodeBlock,
   h1: (props) => (
     <DS.Text {...props} as="h1" size="8" css={{ fontWeight: 500, mb: '$2', lineHeight: '40px' }} />
   ),
