@@ -6,13 +6,19 @@ export const colorsRoutes = [
       { title: 'Usage', slug: 'colors/docs/getting-started/usage', draft: false },
       { title: 'Aliasing', slug: 'colors/docs/getting-started/aliasing', draft: false },
       { title: 'Accessibility', slug: 'colors/docs/getting-started/accessibility', draft: false },
-      { title: 'Use Cases', slug: 'colors/docs/getting-started/use-cases', draft: false },
     ],
   },
 
   {
     label: 'Palette Composition',
-    pages: [{ title: 'Brand', slug: 'colors/docs/palette-composition/brand', draft: false }],
+    pages: [
+      {
+        title: 'Composing a palette',
+        slug: 'colors/docs/palette-composition/composing-a-palette',
+        draft: false,
+      },
+      { title: 'Use Cases', slug: 'colors/docs/palette-composition/use-cases', draft: false },
+    ],
   },
 
   {
