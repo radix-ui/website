@@ -26,7 +26,11 @@ export const colorsRoutes = [
         slug: 'colors/docs/palette-composition/composing-a-palette',
         draft: false,
       },
-      { title: 'Use Cases', slug: 'colors/docs/palette-composition/use-cases', draft: false },
+      {
+        title: 'Understanding the scale',
+        slug: 'colors/docs/palette-composition/understanding-the-scale',
+        draft: false,
+      },
     ],
   },
 

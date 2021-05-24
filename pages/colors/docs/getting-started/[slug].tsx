@@ -7,7 +7,7 @@ import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { RemoveScroll } from 'react-remove-scroll';
 import { QuickNav } from '@components/QuickNav';
 import { ColorGrid } from '@components/ColorGrid';
-import { ColorFigure } from '@components/ColorFigure';
+import { ColorScale01 } from '@components/ColorScales';
 import { UseCasesTable } from '@components/UseCasesTable';
 
 import type { Frontmatter } from 'types/frontmatter';
@@ -29,7 +29,7 @@ export default function ColorsGettingStartedDoc({ frontmatter, code }: Doc) {
       />
 
       <MDXProvider frontmatter={frontmatter}>
-        <Component components={{ ...components, ColorGrid, ColorFigure, UseCasesTable } as any} />
+        <Component components={{ ...components, ColorGrid, ColorScale01, UseCasesTable } as any} />
       </MDXProvider>
 
       <Box

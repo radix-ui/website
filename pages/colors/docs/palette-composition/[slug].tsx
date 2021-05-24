@@ -7,7 +7,14 @@ import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { RemoveScroll } from 'react-remove-scroll';
 import { QuickNav } from '@components/QuickNav';
 import { ColorGrid } from '@components/ColorGrid';
-import { ColorFigure } from '@components/ColorFigure';
+import {
+  ColorScale01,
+  ColorScale02,
+  ColorScale03,
+  ColorScale04,
+  ColorScale05,
+  ColorExample04,
+} from '@components/ColorScales';
 import { UseCasesTable } from '@components/UseCasesTable';
 import { ColorGrays } from '@components/ColorGrays';
 import { ColorGrayPairs } from '@components/ColorGrayPairs';
@@ -37,11 +44,16 @@ export default function ColorsPaletteCompostionDoc({ frontmatter, code }: Doc) {
             {
               ...components,
               ColorGrid,
-              ColorFigure,
+              ColorScale01,
+              ColorScale02,
+              ColorScale03,
+              ColorScale04,
+              ColorScale05,
               UseCasesTable,
               ColorGrays,
               ColorGrayPairs,
               ColorGrayPairsComplementary,
+              ColorExample04,
             } as any
           }
         />
