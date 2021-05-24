@@ -9,25 +9,6 @@ metaDescription: How to use Radix Colors.
   A guide to providing semantic aliases for colors.
 </Description>
 
-## Renaming imports
-
-You can rename scales at import using `as`. Reasons might include:
-
-- Rename a saturated gray to "gray" to keep things simple.
-- Rename "sky" or "grass" to "blue" or "green" to keep things standard.
-- Rename a scale to match your brand, like how Discord use "Blurple".
-- Just to have some fun :)
-
-```jsx
-import {
-  slate as gray,
-  sky as blue,
-  grass as green,
-  violet as blurple,
-  crimson as caribbeanSunset,
-} from '@radix-ui/colors';
-```
-
 ## Semantic aliases
 
 Maybe you want to rename to a scale to fit your brand. Maybe you want
@@ -222,3 +203,40 @@ const darkTheme = theme({
 ```
 
 Avoid using specific variable names like "CardBg", or "Tooltip", because you will likely need to use each variable for multiple use cases.
+
+## Renaming scales
+
+If you wish, you can rename scales. Reasons might include:
+
+- Rename a saturated gray to "gray" to keep things simple.
+- Rename "sky" or "grass" to "blue" or "green" to keep things standard.
+- Rename a scale to match your brand, like how Discord use "Blurple".
+- Just to have some fun :)
+
+```jsx
+import { slate, sky, grass, violet, crimson } from '@radix-ui/colors';
+
+const { styled, theme } = createCss({
+  theme: {
+    colors: {
+      gray1: slate.slate1,
+      gray2: slate.slate2,
+
+      blue1: sky.sky1,
+      blue2: sky.sky2,
+
+      green1: grass.grass1,
+      green2: grass.grass2,
+
+      blurple1: violet.violet1,
+      blurple2: violet.violet2,
+
+      blurple1: violet.violet1,
+      blurple2: violet.violet2,
+
+      caribbeanSunset1: crimson.crimson1,
+      caribbeanSunset2: crimson.crimson2,
+    },
+  },
+});
+```
