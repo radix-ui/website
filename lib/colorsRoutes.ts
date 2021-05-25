@@ -3,16 +3,10 @@ export const colorsRoutes = [
     label: 'Getting Started',
     pages: [
       {
-        title: 'Usage with Stitches',
-        slug: 'colors/docs/getting-started/usage-with-stitches',
+        title: 'Installation',
+        slug: 'colors/docs/getting-started/installation',
         draft: false,
       },
-      {
-        title: 'Usage with CSS-in-JS',
-        slug: 'colors/docs/getting-started/usage-with-css-in-js',
-        draft: false,
-      },
-      { title: 'Usage with CSS', slug: 'colors/docs/getting-started/usage-with-css', draft: false },
       { title: 'Aliasing', slug: 'colors/docs/getting-started/aliasing', draft: false },
       { title: 'Accessibility', slug: 'colors/docs/getting-started/accessibility', draft: false },
     ],
