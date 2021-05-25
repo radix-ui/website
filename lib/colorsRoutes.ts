@@ -13,7 +13,6 @@ export const colorsRoutes = [
         draft: false,
       },
       { title: 'Aliasing', slug: 'colors/docs/getting-started/aliasing', draft: false },
-      { title: 'Accessibility', slug: 'colors/docs/getting-started/accessibility', draft: false },
     ],
   },
 
