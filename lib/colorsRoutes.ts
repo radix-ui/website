@@ -7,6 +7,11 @@ export const colorsRoutes = [
         slug: 'colors/docs/getting-started/installation',
         draft: false,
       },
+      {
+        title: 'Usage',
+        slug: 'colors/docs/getting-started/usage',
+        draft: false,
+      },
       { title: 'Aliasing', slug: 'colors/docs/getting-started/aliasing', draft: false },
       { title: 'Accessibility', slug: 'colors/docs/getting-started/accessibility', draft: false },
     ],
