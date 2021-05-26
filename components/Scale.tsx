@@ -10,6 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuContent,
   DropdownMenuGroup,
+  Tooltip,
 } from '@modulz/design-system';
 import { CopyIcon } from '@radix-ui/react-icons';
 import * as Colors from '@radix-ui/colors';
@@ -85,9 +86,11 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
       })}
       <Flex align="center" justify="center" css={{ height: '$6' }}>
         <DropdownMenu>
-          <DropdownMenuTrigger as={IconButton}>
-            <CopyIcon />
-          </DropdownMenuTrigger>
+          <Tooltip content="Copy to Clipboard">
+            <DropdownMenuTrigger as={IconButton}>
+              <CopyIcon />
+            </DropdownMenuTrigger>
+          </Tooltip>
           <DropdownMenuContent align="end">
             <DropdownMenuGroup>
               <DropdownMenuItem
