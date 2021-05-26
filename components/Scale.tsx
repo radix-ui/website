@@ -69,61 +69,98 @@ const scaleToSvg = (
     )
     .join('')}</svg>`;
 };
+// pulling  the first scale and getting the keys from it
+const colorKeys = Object.keys(Object.values(Colors)[0]);
 
 export const ColorScaleGroup = ({ children }: { children: any }) => {
-  return <Grid css={{ gridTemplateColumns: 'repeat(13, 1fr)', my: '$5', gap: 2 }}>{children}</Grid>;
+  return (
+    <>
+      <Flex css={{ width: '100%' }}>
+        <Box css={{ height: '$6', width: 105 }} />
+        {colorKeys.map((key, i) => (
+          <Box css={{ height: '$6', flex: 1 }}>
+            <Code variant="gray" css={{ bc: 'transparent', fontSize: '$2' }}>
+              {i + 1}00
+            </Code>
+          </Box>
+        ))}
+        <Box />
+      </Flex>
+      {children}
+    </>
+  );
 };
 
 export const ColorScale = ({ label, name }: { label: string; name: keyof typeof Colors }) => {
   const scale = Colors[name];
+  const [isHovered, setIsHovered] = React.useState(false);
+  const [dropdownMenuIsOpen, setDropdownMenuIsOpen] = React.useState(false);
 
   return (
-    <>
-      <Flex align="center" css={{ height: '$6', width: 105 }}>
-        <Code variant="gray" css={{ bc: 'transparent', fontSize: '$2' }}>
-          {label}
-        </Code>
+    <Flex
+      css={{ position: 'relative', marginRight: -25 }}
+      onMouseMove={(e) => setIsHovered(true)}
+      onMouseLeave={(e) => setIsHovered(false)}
+    >
+      <Flex css={{ width: 'calc(100% - 25px)' }}>
+        <Flex align="center" css={{ height: '$6', width: 105 }}>
+          <Code variant="gray" css={{ bc: 'transparent', fontSize: '$2' }}>
+            {label}
+          </Code>
+        </Flex>
+        {Object.values(scale).map((value) => {
+          return <Box css={{ height: '$6', bc: value, flex: 1 }}></Box>;
+        })}
       </Flex>
-      {Object.values(scale).map((value) => {
-        return <Box css={{ height: '$6', bc: value }}></Box>;
-      })}
-      <Flex align="center" justify="center" css={{ height: '$6' }}>
-        <DropdownMenu>
-          <Tooltip content="Copy to Clipboard">
-            <DropdownMenuTrigger as={IconButton}>
-              <CopyIcon />
-            </DropdownMenuTrigger>
-          </Tooltip>
-          <DropdownMenuContent align="end">
-            <DropdownMenuGroup>
-              <DropdownMenuItem
-                onSelect={(e) => navigator.clipboard.writeText(scaleToHSLObject(name, scale))}
-              >
-                Copy as Object (HSL)
-              </DropdownMenuItem>
-              <DropdownMenuItem
-                onSelect={(e) => navigator.clipboard.writeText(scaleToHexObject(name, scale))}
-              >
-                Copy as Object (Hex)
-              </DropdownMenuItem>
-              <DropdownMenuItem
-                onSelect={(e) => navigator.clipboard.writeText(scaleToCSS(name, scale))}
-              >
-                Copy as CSS
-              </DropdownMenuItem>
-              <DropdownMenuItem onSelect={(e) => navigator.clipboard.writeText(scaleToLESS(scale))}>
-                Copy as LESS
-              </DropdownMenuItem>
-              <DropdownMenuItem onSelect={(e) => navigator.clipboard.writeText(scaleToSASS(scale))}>
-                Copy as Sass
-              </DropdownMenuItem>
-              <DropdownMenuItem onSelect={(e) => navigator.clipboard.writeText(scaleToSvg(scale))}>
-                Copy as SVG
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </Flex>
-    </>
+      {(isHovered || dropdownMenuIsOpen) && (
+        <Flex
+          align="center"
+          justify="center"
+          css={{ height: '$6', position: 'absolute', right: 0 }}
+        >
+          <DropdownMenu onOpenChange={(isOpen) => setDropdownMenuIsOpen(isOpen)}>
+            <Tooltip content="Copy to Clipboard">
+              <DropdownMenuTrigger as={IconButton}>
+                <CopyIcon />
+              </DropdownMenuTrigger>
+            </Tooltip>
+            <DropdownMenuContent align="end">
+              <DropdownMenuGroup>
+                <DropdownMenuItem
+                  onSelect={(e) => navigator.clipboard.writeText(scaleToHSLObject(name, scale))}
+                >
+                  Copy as Object (HSL)
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onSelect={(e) => navigator.clipboard.writeText(scaleToHexObject(name, scale))}
+                >
+                  Copy as Object (Hex)
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onSelect={(e) => navigator.clipboard.writeText(scaleToCSS(name, scale))}
+                >
+                  Copy as CSS
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onSelect={(e) => navigator.clipboard.writeText(scaleToLESS(scale))}
+                >
+                  Copy as LESS
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onSelect={(e) => navigator.clipboard.writeText(scaleToSASS(scale))}
+                >
+                  Copy as Sass
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onSelect={(e) => navigator.clipboard.writeText(scaleToSvg(scale))}
+                >
+                  Copy as SVG
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </Flex>
+      )}
+    </Flex>
   );
 };
