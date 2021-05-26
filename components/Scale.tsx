@@ -89,7 +89,7 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
       })}
       <Flex align="center" justify="center" css={{ height: '$6' }}>
         <DropdownMenu>
-          <Tooltip content="Copy to Clipboard">
+          <Tooltip content="Copy Scale to Clipboard">
             <DropdownMenuTrigger as={IconButton}>
               <CopyIcon />
             </DropdownMenuTrigger>
