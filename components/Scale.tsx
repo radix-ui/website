@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   Box,
   Grid,
+  Code,
   Flex,
   Text,
   IconButton,
@@ -78,10 +79,10 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
 
   return (
     <>
-      <Flex align="center" css={{ height: '$6', pr: '$3' }}>
-        <Text size="1" css={{ fontFamily: '$mono' }}>
+      <Flex align="center" css={{ height: '$6', width: 105 }}>
+        <Code variant="gray" css={{ bc: 'transparent', fontSize: '$2' }}>
           {label}
-        </Text>
+        </Code>
       </Flex>
       {Object.values(scale).map((value) => {
         return <Box css={{ height: '$6', bc: value }}></Box>;
