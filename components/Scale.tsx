@@ -112,7 +112,7 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
                 Copy as LESS
               </DropdownMenuItem>
               <DropdownMenuItem onSelect={(e) => navigator.clipboard.writeText(scaleToSASS(scale))}>
-                Copy as SASS
+                Copy as Sass
               </DropdownMenuItem>
               <DropdownMenuItem onSelect={(e) => navigator.clipboard.writeText(scaleToSvg(scale))}>
                 Copy as SVG
