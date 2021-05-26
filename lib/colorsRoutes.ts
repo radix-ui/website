@@ -4,18 +4,18 @@ export const colorsRoutes = [
     pages: [
       {
         title: 'Installation',
-        slug: 'colors/docs/getting-started/installation',
+        slug: 'docs/colors/getting-started/installation',
         draft: false,
       },
       {
         title: 'Usage',
-        slug: 'colors/docs/getting-started/usage',
+        slug: 'docs/colors/getting-started/usage',
         draft: false,
       },
-      { title: 'Aliasing', slug: 'colors/docs/getting-started/aliasing', draft: false },
+      { title: 'Aliasing', slug: 'docs/colors/getting-started/aliasing', draft: false },
       {
         title: 'The Scales',
-        slug: 'colors/docs/getting-started/the-scales',
+        slug: 'docs/colors/getting-started/the-scales',
         draft: false,
       },
     ],
@@ -26,12 +26,12 @@ export const colorsRoutes = [
     pages: [
       {
         title: 'Composing a palette',
-        slug: 'colors/docs/palette-composition/composing-a-palette',
+        slug: 'docs/colors/palette-composition/composing-a-palette',
         draft: false,
       },
       {
         title: 'Understanding the scale',
-        slug: 'colors/docs/palette-composition/understanding-the-scale',
+        slug: 'docs/colors/palette-composition/understanding-the-scale',
         draft: false,
       },
     ],
@@ -40,8 +40,8 @@ export const colorsRoutes = [
   {
     label: 'Tests',
     pages: [
-      { title: 'Balance', slug: 'colors/docs/tests/balance', draft: false },
-      { title: 'Contrast', slug: 'colors/docs/tests/contrast', draft: false },
+      { title: 'Balance', slug: 'docs/colors/tests/balance', draft: false },
+      { title: 'Contrast', slug: 'docs/colors/tests/contrast', draft: false },
     ],
   },
 ];

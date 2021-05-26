@@ -46,9 +46,9 @@ function App({ Component, pageProps }: AppProps) {
     scrollToUrlHash(router.asPath);
   }, []);
 
-  const isPrimitivesDocs = router.pathname.includes('/primitives/docs');
-  const isDesignSystemDocs = router.pathname.includes('/design-system/docs');
-  const isColorsDocs = router.pathname.includes('/colors/docs');
+  const isPrimitivesDocs = router.pathname.includes('/docs/primitives');
+  const isDesignSystemDocs = router.pathname.includes('/docs/design-system');
+  const isColorsDocs = router.pathname.includes('/docs/colors');
   const shouldShowFooter = !isPrimitivesDocs || !isDesignSystemDocs || !isColorsDocs;
 
   return (
