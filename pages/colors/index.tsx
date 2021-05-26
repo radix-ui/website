@@ -59,7 +59,7 @@ export default function ColorsHome() {
           >
             Colors description
           </Paragraph>
-          <NextLink href="/colors/docs/getting-started/usage-with-stitches" passHref>
+          <NextLink href="/docs/colors" passHref>
             <Link variant="blue">Documentation</Link>
           </NextLink>
         </Container>
