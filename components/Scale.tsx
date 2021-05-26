@@ -78,8 +78,10 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
 
   return (
     <>
-      <Flex align="center" css={{ height: '$6' }}>
-        <Text size="1">{label}</Text>
+      <Flex align="center" css={{ height: '$6', pr: '$3' }}>
+        <Text size="1" css={{ fontFamily: '$mono' }}>
+          {label}
+        </Text>
       </Flex>
       {Object.values(scale).map((value) => {
         return <Box css={{ height: '$6', bc: value }}></Box>;
