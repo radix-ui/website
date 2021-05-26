@@ -80,7 +80,7 @@ export const ColorScaleGroup = ({ children }: { children: any }) => {
         {colorKeys.map((key, i) => (
           <Box css={{ flex: 1 }}>
             <Text variant="gray" css={{ bc: 'transparent', fontSize: '$2', ta: 'center' }}>
-              {i + 1}00
+              {i + 1}
             </Text>
           </Box>
         ))}
@@ -102,7 +102,7 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
       onMouseMove={(e) => setIsHovered(true)}
       onMouseLeave={(e) => setIsHovered(false)}
     >
-      <Flex css={{ width: 'calc(100% - 25px)' }}>
+      <Flex css={{ width: 'calc(100% - 25px)', gap: 2, mb: 2 }}>
         <Flex align="center" css={{ height: '$6', width: 105 }}>
           <Code variant="gray" css={{ bc: 'transparent', fontSize: '$2' }}>
             {label}
