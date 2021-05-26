@@ -66,7 +66,8 @@
     "refractor": "^3.3.1",
     "rehype": "^11.0.0",
     "remark-autolink-headings": "^6.0.1",
-    "remark-slug": "^6.0.0"
+    "remark-slug": "^6.0.0",
+    "tinycolor2": "^1.4.2"
   },
   "devDependencies": {
     "@types/node": "^14.14.37",

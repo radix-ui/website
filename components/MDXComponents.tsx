@@ -36,8 +36,10 @@ import * as toggleGroupDemos from './demos/ToggleGroup';
 import * as toolbarDemos from './demos/Toolbar';
 import * as tooltipDemos from './demos/Tooltip';
 import { Frontmatter } from 'types/frontmatter';
-
+import { ColorScale, ColorScaleGroup } from './Scale';
 export const components = {
+  ColorScale,
+  ColorScaleGroup,
   ...DS,
   Tabs: (props) => (
     <DS.Tabs
