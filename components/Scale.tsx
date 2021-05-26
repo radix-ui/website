@@ -76,12 +76,12 @@ export const ColorScaleGroup = ({ children }: { children: any }) => {
   return (
     <>
       <Flex css={{ width: '100%' }}>
-        <Box css={{ height: '$6', width: 105 }} />
+        <Box css={{ height: '$5', width: 105 }} />
         {colorKeys.map((key, i) => (
-          <Box css={{ height: '$6', flex: 1 }}>
-            <Code variant="gray" css={{ bc: 'transparent', fontSize: '$2' }}>
+          <Box css={{ flex: 1 }}>
+            <Text variant="gray" css={{ bc: 'transparent', fontSize: '$2', ta: 'center' }}>
               {i + 1}00
-            </Code>
+            </Text>
           </Box>
         ))}
         <Box />
@@ -116,7 +116,7 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
         <Flex
           align="center"
           justify="center"
-          css={{ height: '$6', position: 'absolute', right: 0 }}
+          css={{ height: '$6', position: 'absolute', right: '-$1' }}
         >
           <DropdownMenu onOpenChange={(isOpen) => setDropdownMenuIsOpen(isOpen)}>
             <Tooltip content="Copy to Clipboard">
