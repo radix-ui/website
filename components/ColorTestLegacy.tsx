@@ -22,19 +22,19 @@ export function ColorTestBalanceDark() {
         >
           <Box></Box>
           <Box css={{ ta: 'center', pb: '$2' }}>
-            <Text css={{ fontSize: '$2', color: '$slate900' }}>600</Text>
+            <Text css={{ fontSize: '$2', color: '$slate11' }}>600</Text>
           </Box>
           <Box css={{ ta: 'center', pb: '$2' }}>
-            <Text css={{ fontSize: '$2', color: '$slate900' }}>700</Text>
+            <Text css={{ fontSize: '$2', color: '$slate11' }}>700</Text>
           </Box>
           <Box css={{ ta: 'center', pb: '$2' }}>
-            <Text css={{ fontSize: '$2', color: '$slate900' }}>800</Text>
+            <Text css={{ fontSize: '$2', color: '$slate11' }}>800</Text>
           </Box>
           <Box css={{ ta: 'center', pb: '$2' }}>
-            <Text css={{ fontSize: '$2', color: '$slate900' }}>900</Text>
+            <Text css={{ fontSize: '$2', color: '$slate11' }}>900</Text>
           </Box>
           <Box css={{ ta: 'center', pb: '$2' }}>
-            <Text css={{ fontSize: '$2', color: '$slate900' }}>1000</Text>
+            <Text css={{ fontSize: '$2', color: '$slate11' }}>1000</Text>
           </Box>
 
           <Box>
@@ -42,243 +42,243 @@ export function ColorTestBalanceDark() {
           </Box>
           <Box css={{ height: 35, backgroundColor: '$gray600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$gray700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gray800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gray900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gray1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gray0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gray11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gray12' }}></Box>
 
           <Box>
-            <Text css={{ fontSize: '$2' }}>Quartz</Text>
+            <Text css={{ fontSize: '$2' }}>Mauve</Text>
           </Box>
-          <Box css={{ height: 35, backgroundColor: '$quartz600' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$quartz700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$quartz800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$quartz900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$quartz1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$mauve600' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$mauve700' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$mauve0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$mauve11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$mauve12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Slate</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$slate600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$slate700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$slate800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$slate900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$slate1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$slate0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$slate11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$slate12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Sage</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$sage600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$sage700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$sage800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$sage900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$sage1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$sage0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$sage11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$sage12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Olive</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$olive600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$olive700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$olive800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$olive900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$olive1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$olive0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$olive11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$olive12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Sand</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$sand600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$sand700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$sand800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$sand900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$sand1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$sand0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$sand11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$sand12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Tomato</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$tomato600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$tomato700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$tomato800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$tomato900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$tomato1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$tomato0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$tomato11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$tomato12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Red</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$red600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$red700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$red800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$red900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$red1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$red0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$red11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$red12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Crimson</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$crimson600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$crimson700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$crimson800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$crimson900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$crimson1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$crimson0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$crimson11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$crimson12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Pink</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$pink600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$pink700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$pink800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$pink900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$pink1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$pink0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$pink11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$pink12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Plum</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$plum600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$plum700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$plum800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$plum900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$plum1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$plum0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$plum11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$plum12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Purple</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$purple600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$purple700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$purple800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$purple900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$purple1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$purple0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$purple11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$purple12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Violet</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$violet600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$violet700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$violet800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$violet900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$violet1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$violet0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$violet11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$violet12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Indigo</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$indigo600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$indigo700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$indigo800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$indigo900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$indigo1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$indigo0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$indigo11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$indigo12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Blue</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$blue600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$blue700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$blue800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$blue900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$blue1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$blue0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$blue11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$blue12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Cyan</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$cyan600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$cyan700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$cyan800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$cyan900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$cyan1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$cyan0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$cyan11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$cyan12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Teal</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$teal600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$teal700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$teal800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$teal900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$teal1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$teal0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$teal11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$teal12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Green</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$green600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$green700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$green800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$green900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$green1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$green0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$green11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$green12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Orange</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$orange600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$orange700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$orange800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$orange900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$orange1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$orange0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$orange11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$orange12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Brown</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$brown600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$brown700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$brown800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$brown900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$brown1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$brown0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$brown11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$brown12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Bronze</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$bronze600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$bronze700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$bronze800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$bronze900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$bronze1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$bronze0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$bronze11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$bronze12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Gold</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$gold600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$gold700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gold800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gold900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gold1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gold0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gold11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gold12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Sky</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$sky600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$sky700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$sky800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$sky900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$sky1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$sky0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$sky11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$sky12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Mint</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$mint600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$mint700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$mint800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$mint900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$mint1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$mint0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$mint11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$mint12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Lime</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$lime600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$lime700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$lime800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$lime900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$lime1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$lime0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$lime11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$lime12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Yellow</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$yellow600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$yellow700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$yellow800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$yellow900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$yellow1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$yellow0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$yellow11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$yellow12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Amber</Text>
           </Box>
           <Box css={{ height: 35, backgroundColor: '$amber600' }}></Box>
           <Box css={{ height: 35, backgroundColor: '$amber700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$amber800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$amber900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$amber1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$amber0' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$amber11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$amber12' }}></Box>
         </Grid>
       </Box>
 
@@ -301,7 +301,7 @@ export function ColorTestBalanceDark() {
           }}
         >
           <Flex css={{ ai: 'center', jc: 'center', height: 100 }}>
-            <Text size="3" css={{ color: '$slate900' }}>
+            <Text size="3" css={{ color: '$slate11' }}>
               Warm
             </Text>
           </Flex>
@@ -310,7 +310,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$yellow800',
+              backgroundColor: '$yellow0',
             }}
           ></Flex>
           <Flex
@@ -318,7 +318,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$orange800',
+              backgroundColor: '$orange0',
             }}
           ></Flex>
           <Flex
@@ -326,7 +326,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$gold800',
+              backgroundColor: '$gold0',
             }}
           ></Flex>
           <Flex
@@ -334,7 +334,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$brown800',
+              backgroundColor: '$brown0',
             }}
           ></Flex>
           <Flex
@@ -342,7 +342,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$bronze800',
+              backgroundColor: '$bronze0',
             }}
           ></Flex>
           <Flex
@@ -350,7 +350,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$red800',
+              backgroundColor: '$red0',
             }}
           ></Flex>
           <Flex
@@ -358,7 +358,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$crimson800',
+              backgroundColor: '$crimson0',
             }}
           ></Flex>
           <Flex
@@ -366,11 +366,11 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$pink800',
+              backgroundColor: '$pink0',
             }}
           ></Flex>
           <Flex css={{ ai: 'center', jc: 'center', height: 100 }}>
-            <Text size="3" css={{ color: '$slate900' }}>
+            <Text size="3" css={{ color: '$slate11' }}>
               Cool
             </Text>
           </Flex>
@@ -379,7 +379,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$purple800',
+              backgroundColor: '$purple0',
             }}
           ></Flex>
           <Flex
@@ -387,7 +387,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$violet800',
+              backgroundColor: '$violet0',
             }}
           ></Flex>
           <Flex
@@ -395,7 +395,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$indigo800',
+              backgroundColor: '$indigo0',
             }}
           ></Flex>
           <Flex
@@ -403,7 +403,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$blue800',
+              backgroundColor: '$blue0',
             }}
           ></Flex>
           <Flex
@@ -411,7 +411,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$cyan800',
+              backgroundColor: '$cyan0',
             }}
           ></Flex>
           <Flex
@@ -419,7 +419,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$teal800',
+              backgroundColor: '$teal0',
             }}
           ></Flex>
           <Flex
@@ -427,7 +427,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$green800',
+              backgroundColor: '$green0',
             }}
           ></Flex>
           <Flex
@@ -435,7 +435,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$lime800',
+              backgroundColor: '$lime0',
             }}
           ></Flex>
         </Grid>
@@ -457,7 +457,7 @@ export function ColorTestBalanceDark() {
           }}
         >
           <Flex css={{ ai: 'center', jc: 'center', height: 100 }}>
-            <Text size="3" css={{ color: '$slate900' }}>
+            <Text size="3" css={{ color: '$slate11' }}>
               Warm
             </Text>
           </Flex>
@@ -466,7 +466,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$yellow200',
+              backgroundColor: '$yellow4',
             }}
           ></Flex>
           <Flex
@@ -474,7 +474,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$orange200',
+              backgroundColor: '$orange4',
             }}
           ></Flex>
           <Flex
@@ -482,7 +482,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$gold200',
+              backgroundColor: '$gold4',
             }}
           ></Flex>
           <Flex
@@ -490,7 +490,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$brown200',
+              backgroundColor: '$brown4',
             }}
           ></Flex>
           <Flex
@@ -498,7 +498,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$bronze200',
+              backgroundColor: '$bronze4',
             }}
           ></Flex>
           <Flex
@@ -506,7 +506,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$red200',
+              backgroundColor: '$red4',
             }}
           ></Flex>
           <Flex
@@ -514,7 +514,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$crimson200',
+              backgroundColor: '$crimson4',
             }}
           ></Flex>
           <Flex
@@ -522,11 +522,11 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$pink200',
+              backgroundColor: '$pink4',
             }}
           ></Flex>
           <Flex css={{ ai: 'center', jc: 'center', height: 100 }}>
-            <Text size="3" css={{ color: '$slate900' }}>
+            <Text size="3" css={{ color: '$slate11' }}>
               Cool
             </Text>
           </Flex>
@@ -535,7 +535,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$purple200',
+              backgroundColor: '$purple4',
             }}
           ></Flex>
           <Flex
@@ -543,7 +543,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$violet200',
+              backgroundColor: '$violet4',
             }}
           ></Flex>
           <Flex
@@ -551,7 +551,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$indigo200',
+              backgroundColor: '$indigo4',
             }}
           ></Flex>
           <Flex
@@ -559,7 +559,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$blue200',
+              backgroundColor: '$blue4',
             }}
           ></Flex>
           <Flex
@@ -567,7 +567,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$cyan200',
+              backgroundColor: '$cyan4',
             }}
           ></Flex>
           <Flex
@@ -575,7 +575,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$teal200',
+              backgroundColor: '$teal4',
             }}
           ></Flex>
           <Flex
@@ -583,7 +583,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$green200',
+              backgroundColor: '$green4',
             }}
           ></Flex>
           <Flex
@@ -591,7 +591,7 @@ export function ColorTestBalanceDark() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$lime200',
+              backgroundColor: '$lime4',
             }}
           ></Flex>
         </Grid>
@@ -617,7 +617,7 @@ export function ColorTestBalanceDark() {
             }}
           ></Box>
           <Box css={{ fb: '0', fg: '1', height: 160, backgroundColor: '$slate100' }}></Box>
-          <Box css={{ fb: '0', fg: '1', height: 160, backgroundColor: '$slate200' }}></Box>
+          <Box css={{ fb: '0', fg: '1', height: 160, backgroundColor: '$slate4' }}></Box>
           <Box css={{ fb: '0', fg: '1', height: 160, backgroundColor: '$slate300' }}></Box>
           <Box css={{ fb: '0', fg: '1', height: 160, backgroundColor: '$slate400' }}></Box>
           <Box
@@ -627,7 +627,7 @@ export function ColorTestBalanceDark() {
               left: '0',
               width: '100%',
               height: 1,
-              backgroundColor: '$slate500',
+              backgroundColor: '$slate6',
             }}
           ></Box>
         </Flex>
@@ -653,10 +653,10 @@ export function ColorTestBalanceDark() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$red100',
-              border: '1px solid $red500',
+              border: '1px solid $red6',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$red900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$red11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -665,10 +665,10 @@ export function ColorTestBalanceDark() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$crimson100',
-              border: '1px solid $red500',
+              border: '1px solid $red6',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$crimson900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$crimson11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -677,10 +677,10 @@ export function ColorTestBalanceDark() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$pink100',
-              border: '1px solid $pink500',
+              border: '1px solid $pink6',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$pink900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$pink11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -689,10 +689,10 @@ export function ColorTestBalanceDark() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$purple100',
-              border: '1px solid $purple500',
+              border: '1px solid $purple6',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$purple900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$purple11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -701,10 +701,10 @@ export function ColorTestBalanceDark() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$violet100',
-              border: '1px solid $violet500',
+              border: '1px solid $violet6',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$violet900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$violet11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -713,10 +713,10 @@ export function ColorTestBalanceDark() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$indigo100',
-              border: '1px solid $indigo500',
+              border: '1px solid $indigo6',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$indigo900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$indigo11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -725,10 +725,10 @@ export function ColorTestBalanceDark() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$blue100',
-              border: '1px solid $blue500',
+              border: '1px solid $blue6',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$blue900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$blue11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -737,10 +737,10 @@ export function ColorTestBalanceDark() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$cyan100',
-              border: '1px solid $cyan500',
+              border: '1px solid $cyan6',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$cyan900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$cyan11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -749,10 +749,10 @@ export function ColorTestBalanceDark() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$teal100',
-              border: '1px solid $teal500',
+              border: '1px solid $teal6',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$teal900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$teal11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -761,10 +761,10 @@ export function ColorTestBalanceDark() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$green100',
-              border: '1px solid $green500',
+              border: '1px solid $green6',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$green900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$green11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -773,10 +773,10 @@ export function ColorTestBalanceDark() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$lime100',
-              border: '1px solid $lime500',
+              border: '1px solid $lime6',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$lime900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$lime11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -785,10 +785,10 @@ export function ColorTestBalanceDark() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$yellow100',
-              border: '1px solid $yellow500',
+              border: '1px solid $yellow6',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$yellow900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$yellow11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -797,10 +797,10 @@ export function ColorTestBalanceDark() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$orange100',
-              border: '1px solid $orange500',
+              border: '1px solid $orange6',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$orange900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$orange11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -809,10 +809,10 @@ export function ColorTestBalanceDark() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$bronze100',
-              border: '1px solid $bronze500',
+              border: '1px solid $bronze6',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$bronze900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$bronze11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -821,17 +821,17 @@ export function ColorTestBalanceDark() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$gold100',
-              border: '1px solid $gold500',
+              border: '1px solid $gold6',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$gold900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$gold11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
         </Grid>
       </Box>
 
-      <Box css={{ backgroundColor: '$red800', height: '100vh', p: '$9', mt: '$9' }}>
+      <Box css={{ backgroundColor: '$red0', height: '100vh', p: '$9', mt: '$9' }}>
         <Heading size="4" css={{ color: 'white' }}>
           This should look good and pass contrast ratio.
         </Heading>

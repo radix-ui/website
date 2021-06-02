@@ -56,7 +56,7 @@ export function PrimitivesPage({ children }: { children: React.ReactNode }) {
           width: '100%',
           maxHeight: 'auto',
           borderBottom: '1px solid',
-          borderColor: '$slate500',
+          borderColor: '$slate6',
           WebkitOverflowScrolling: 'touch',
           overflowX: 'hidden',
 
@@ -68,7 +68,7 @@ export function PrimitivesPage({ children }: { children: React.ReactNode }) {
             width: '250px',
             borderRight: '1px solid',
             borderBottom: '0',
-            borderColor: '$slate500',
+            borderColor: '$slate6',
           },
         }}
       >
@@ -180,13 +180,13 @@ export function PrimitivesPage({ children }: { children: React.ReactNode }) {
                       as="a"
                       aria-label={`Previous page: ${previous.title}`}
                       css={{
-                        color: '$blue900',
+                        color: '$blue11',
                         textDecoration: 'none',
                         alignItems: 'center',
                       }}
                     >
                       <Box css={{ mb: '$2' }}>
-                        <Text size="3" css={{ color: '$slate900' }}>
+                        <Text size="3" css={{ color: '$slate11' }}>
                           Previous
                         </Text>
                       </Box>
@@ -204,13 +204,13 @@ export function PrimitivesPage({ children }: { children: React.ReactNode }) {
                       as="a"
                       aria-label={`Previous page: ${next.title}`}
                       css={{
-                        color: '$blue900',
+                        color: '$blue11',
                         textDecoration: 'none',
                         textAlign: 'right',
                       }}
                     >
                       <Box css={{ mb: '$2' }}>
-                        <Text size="3" css={{ color: '$slate900' }}>
+                        <Text size="3" css={{ color: '$slate11' }}>
                           Next
                         </Text>
                       </Box>

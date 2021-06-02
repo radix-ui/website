@@ -25,7 +25,7 @@ export function ColorTestTextLargeBright() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$sky800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$sky10' }}
         >
           <Text
             css={{
@@ -39,7 +39,7 @@ export function ColorTestTextLargeBright() {
           </Text>
           <Flex
             css={{
-              bc: '$sky900',
+              bc: '$sky11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -54,7 +54,7 @@ export function ColorTestTextLargeBright() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$mint800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$mint10' }}
         >
           <Text
             css={{
@@ -68,7 +68,7 @@ export function ColorTestTextLargeBright() {
           </Text>
           <Flex
             css={{
-              bc: '$mint900',
+              bc: '$mint11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -83,7 +83,7 @@ export function ColorTestTextLargeBright() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$lime800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$lime10' }}
         >
           <Text
             css={{
@@ -97,7 +97,7 @@ export function ColorTestTextLargeBright() {
           </Text>
           <Flex
             css={{
-              bc: '$lime900',
+              bc: '$lime11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -112,7 +112,7 @@ export function ColorTestTextLargeBright() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$yellow800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$yellow10' }}
         >
           <Text
             css={{
@@ -126,7 +126,7 @@ export function ColorTestTextLargeBright() {
           </Text>
           <Flex
             css={{
-              bc: '$yellow900',
+              bc: '$yellow11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -141,7 +141,7 @@ export function ColorTestTextLargeBright() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$amber800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$amber10' }}
         >
           <Text
             css={{
@@ -155,7 +155,7 @@ export function ColorTestTextLargeBright() {
           </Text>
           <Flex
             css={{
-              bc: '$amber900',
+              bc: '$amber11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',

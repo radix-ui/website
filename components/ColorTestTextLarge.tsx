@@ -25,7 +25,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$gray800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$gray10' }}
         >
           <Text
             css={{
@@ -39,7 +39,7 @@ export function ColorTestTextLarge() {
           </Text>
           <Flex
             css={{
-              bc: '$gray900',
+              bc: '$gray11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -54,7 +54,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$quartz800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$mauve10' }}
         >
           <Text
             css={{
@@ -64,11 +64,11 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Quartz200
+            White text on Mauve200
           </Text>
           <Flex
             css={{
-              bc: '$quartz900',
+              bc: '$mauve11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -83,7 +83,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$slate800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$slate10' }}
         >
           <Text
             css={{
@@ -97,7 +97,7 @@ export function ColorTestTextLarge() {
           </Text>
           <Flex
             css={{
-              bc: '$slate900',
+              bc: '$slate11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -112,7 +112,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$sage800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$sage10' }}
         >
           <Text
             css={{
@@ -126,7 +126,7 @@ export function ColorTestTextLarge() {
           </Text>
           <Flex
             css={{
-              bc: '$sage900',
+              bc: '$sage11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -141,7 +141,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$olive800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$olive10' }}
         >
           <Text
             css={{
@@ -155,7 +155,7 @@ export function ColorTestTextLarge() {
           </Text>
           <Flex
             css={{
-              bc: '$olive900',
+              bc: '$olive11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -170,7 +170,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$sand800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$sand10' }}
         >
           <Text
             css={{
@@ -184,7 +184,7 @@ export function ColorTestTextLarge() {
           </Text>
           <Flex
             css={{
-              bc: '$sand900',
+              bc: '$sand11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -199,7 +199,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$tomato800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$tomato10' }}
         >
           <Text
             css={{
@@ -213,7 +213,7 @@ export function ColorTestTextLarge() {
           </Text>
           <Flex
             css={{
-              bc: '$tomato900',
+              bc: '$tomato11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -228,7 +228,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$red800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$red10' }}
         >
           <Text
             css={{
@@ -242,7 +242,7 @@ export function ColorTestTextLarge() {
           </Text>
           <Flex
             css={{
-              bc: '$red900',
+              bc: '$red11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -257,7 +257,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$crimson800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$crimson10' }}
         >
           <Text
             css={{
@@ -271,7 +271,7 @@ export function ColorTestTextLarge() {
           </Text>
           <Flex
             css={{
-              bc: '$crimson900',
+              bc: '$crimson11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -286,7 +286,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$pink800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$pink10' }}
         >
           <Text
             css={{
@@ -300,7 +300,7 @@ export function ColorTestTextLarge() {
           </Text>
           <Flex
             css={{
-              bc: '$pink900',
+              bc: '$pink11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -315,7 +315,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$plum800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$plum10' }}
         >
           <Text
             css={{
@@ -329,7 +329,7 @@ export function ColorTestTextLarge() {
           </Text>
           <Flex
             css={{
-              bc: '$plum900',
+              bc: '$plum11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -344,7 +344,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$purple800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$purple10' }}
         >
           <Text
             css={{
@@ -358,7 +358,7 @@ export function ColorTestTextLarge() {
           </Text>
           <Flex
             css={{
-              bc: '$purple900',
+              bc: '$purple11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -373,7 +373,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$violet800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$violet10' }}
         >
           <Text
             css={{
@@ -387,7 +387,7 @@ export function ColorTestTextLarge() {
           </Text>
           <Flex
             css={{
-              bc: '$violet900',
+              bc: '$violet11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -402,7 +402,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$indigo800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$indigo10' }}
         >
           <Text
             css={{
@@ -416,7 +416,7 @@ export function ColorTestTextLarge() {
           </Text>
           <Flex
             css={{
-              bc: '$indigo900',
+              bc: '$indigo11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -431,7 +431,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$blue800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$blue10' }}
         >
           <Text
             css={{
@@ -445,7 +445,7 @@ export function ColorTestTextLarge() {
           </Text>
           <Flex
             css={{
-              bc: '$blue900',
+              bc: '$blue11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -460,7 +460,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$cyan800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$cyan10' }}
         >
           <Text
             css={{
@@ -474,7 +474,7 @@ export function ColorTestTextLarge() {
           </Text>
           <Flex
             css={{
-              bc: '$cyan900',
+              bc: '$cyan11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -489,7 +489,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$teal800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$teal10' }}
         >
           <Text
             css={{
@@ -503,7 +503,7 @@ export function ColorTestTextLarge() {
           </Text>
           <Flex
             css={{
-              bc: '$teal900',
+              bc: '$teal11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -518,7 +518,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$green800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$green10' }}
         >
           <Text
             css={{
@@ -532,7 +532,7 @@ export function ColorTestTextLarge() {
           </Text>
           <Flex
             css={{
-              bc: '$green900',
+              bc: '$green11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -547,7 +547,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$orange800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$orange10' }}
         >
           <Text
             css={{
@@ -561,7 +561,7 @@ export function ColorTestTextLarge() {
           </Text>
           <Flex
             css={{
-              bc: '$orange900',
+              bc: '$orange11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -576,7 +576,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$brown800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$brown10' }}
         >
           <Text
             css={{
@@ -590,7 +590,7 @@ export function ColorTestTextLarge() {
           </Text>
           <Flex
             css={{
-              bc: '$brown900',
+              bc: '$brown11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -605,7 +605,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$bronze800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$bronze10' }}
         >
           <Text
             css={{
@@ -619,7 +619,7 @@ export function ColorTestTextLarge() {
           </Text>
           <Flex
             css={{
-              bc: '$bronze900',
+              bc: '$bronze11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',
@@ -634,7 +634,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$gold800' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$gold10' }}
         >
           <Text
             css={{
@@ -648,7 +648,7 @@ export function ColorTestTextLarge() {
           </Text>
           <Flex
             css={{
-              bc: '$gold900',
+              bc: '$gold11',
               color: '$loContrast',
               ai: 'center',
               jc: 'center',

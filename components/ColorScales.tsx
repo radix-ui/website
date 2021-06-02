@@ -30,7 +30,7 @@ export function ColorScale01() {
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet200', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet4', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2' }}>3</Text> */}
         </Flex>
@@ -51,7 +51,7 @@ export function ColorScale01() {
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet500', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet7', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2' }}>6</Text> */}
         </Flex>
@@ -65,35 +65,35 @@ export function ColorScale01() {
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet700', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet9', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2' }}>8</Text> */}
         </Flex>
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet800', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet10', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2', color: '$loContrast' }}>9</Text> */}
         </Flex>
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet900', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet11', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2', color: '$loContrast' }}>10</Text> */}
         </Flex>
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet1000', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet12', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2', color: '$loContrast' }}>11</Text> */}
         </Flex>
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet1000', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet12', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2', color: '$loContrast' }}>12</Text> */}
         </Flex>
@@ -127,7 +127,7 @@ export function ColorScale02() {
         >
           {/* <Text css={{ fontSize: '$2' }}>2</Text> */}
         </Flex>
-        <Flex align="center" justify="center" css={{ height: 35, backgroundColor: '$violet200' }}>
+        <Flex align="center" justify="center" css={{ height: 35, backgroundColor: '$violet4' }}>
           <Text css={{ fontSize: '$2' }}>3</Text>
         </Flex>
         <Flex align="center" justify="center" css={{ height: 35, backgroundColor: '$violet300' }}>
@@ -139,7 +139,7 @@ export function ColorScale02() {
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet500', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet7', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2' }}>6</Text> */}
         </Flex>
@@ -153,35 +153,35 @@ export function ColorScale02() {
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet700', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet9', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2' }}>8</Text> */}
         </Flex>
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet800', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet10', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2', color: '$loContrast' }}>9</Text> */}
         </Flex>
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet900', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet11', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2', color: '$loContrast' }}>10</Text> */}
         </Flex>
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet1000', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet12', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2', color: '$loContrast' }}>11</Text> */}
         </Flex>
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet1000', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet12', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2', color: '$loContrast' }}>12</Text> */}
         </Flex>
@@ -218,7 +218,7 @@ export function ColorScale03() {
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet200', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet4', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2' }}>3</Text> */}
         </Flex>
@@ -236,40 +236,40 @@ export function ColorScale03() {
         >
           {/* <Text css={{ fontSize: '$2' }}>5</Text> */}
         </Flex>
-        <Flex align="center" justify="center" css={{ height: 35, backgroundColor: '$violet500' }}>
+        <Flex align="center" justify="center" css={{ height: 35, backgroundColor: '$violet7' }}>
           <Text css={{ fontSize: '$2' }}>6</Text>
         </Flex>
         <Flex align="center" justify="center" css={{ height: 35, backgroundColor: '$violet600' }}>
           <Text css={{ fontSize: '$2' }}>7</Text>
         </Flex>
-        <Flex align="center" justify="center" css={{ height: 35, backgroundColor: '$violet700' }}>
+        <Flex align="center" justify="center" css={{ height: 35, backgroundColor: '$violet9' }}>
           <Text css={{ fontSize: '$2' }}>8</Text>
         </Flex>
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet800', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet10', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2', color: '$loContrast' }}>9</Text> */}
         </Flex>
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet900', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet11', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2', color: '$loContrast' }}>10</Text> */}
         </Flex>
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet1000', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet12', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2', color: '$loContrast' }}>11</Text> */}
         </Flex>
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet1000', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet12', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2', color: '$loContrast' }}>12</Text> */}
         </Flex>
@@ -306,7 +306,7 @@ export function ColorScale04() {
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet200', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet4', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2' }}>3</Text> */}
         </Flex>
@@ -327,7 +327,7 @@ export function ColorScale04() {
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet500', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet7', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2' }}>6</Text> */}
         </Flex>
@@ -341,27 +341,27 @@ export function ColorScale04() {
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet700', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet9', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2' }}>8</Text> */}
         </Flex>
-        <Flex align="center" justify="center" css={{ height: 35, backgroundColor: '$violet800' }}>
+        <Flex align="center" justify="center" css={{ height: 35, backgroundColor: '$violet10' }}>
           <Text css={{ fontSize: '$2', color: '$loContrast' }}>9</Text>
         </Flex>
-        <Flex align="center" justify="center" css={{ height: 35, backgroundColor: '$violet900' }}>
+        <Flex align="center" justify="center" css={{ height: 35, backgroundColor: '$violet11' }}>
           <Text css={{ fontSize: '$2', color: '$loContrast' }}>10</Text>
         </Flex>
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet1000', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet12', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2', color: '$loContrast' }}>11</Text> */}
         </Flex>
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet1000', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet12', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2', color: '$loContrast' }}>12</Text> */}
         </Flex>
@@ -398,7 +398,7 @@ export function ColorScale05() {
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet200', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet4', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2' }}>3</Text> */}
         </Flex>
@@ -419,7 +419,7 @@ export function ColorScale05() {
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet500', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet7', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2' }}>6</Text> */}
         </Flex>
@@ -433,28 +433,28 @@ export function ColorScale05() {
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet700', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet9', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2' }}>8</Text> */}
         </Flex>
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet800', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet10', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2', color: '$loContrast' }}>9</Text> */}
         </Flex>
         <Flex
           align="center"
           justify="center"
-          css={{ height: 35, backgroundColor: '$violet900', filter: 'grayscale(1)' }}
+          css={{ height: 35, backgroundColor: '$violet11', filter: 'grayscale(1)' }}
         >
           {/* <Text css={{ fontSize: '$2', color: '$loContrast' }}>10</Text> */}
         </Flex>
-        <Flex align="center" justify="center" css={{ height: 35, backgroundColor: '$violet1000' }}>
+        <Flex align="center" justify="center" css={{ height: 35, backgroundColor: '$violet12' }}>
           <Text css={{ fontSize: '$2', color: '$loContrast' }}>11</Text>
         </Flex>
-        <Flex align="center" justify="center" css={{ height: 35, backgroundColor: '$violet1000' }}>
+        <Flex align="center" justify="center" css={{ height: 35, backgroundColor: '$violet12' }}>
           <Text css={{ fontSize: '$2', color: '$loContrast' }}>12</Text>
         </Flex>
       </Grid>
@@ -481,9 +481,9 @@ export function ColorExample04() {
               cursor: 'default',
               px: '$3',
               height: 35,
-              backgroundColor: '$violet800',
+              backgroundColor: '$violet10',
               borderRadius: '$2',
-              '&:hover': { backgroundColor: '$violet900' },
+              '&:hover': { backgroundColor: '$violet11' },
             }}
           >
             <Text css={{ fontSize: '$3', color: 'white', fontWeight: 500 }}>Button</Text>
@@ -495,7 +495,7 @@ export function ColorExample04() {
               jc: 'flex-end',
               p: 2,
               width: 50,
-              backgroundColor: '$violet800',
+              backgroundColor: '$violet10',
               borderRadius: '9999px',
             }}
           >
@@ -508,7 +508,7 @@ export function ColorExample04() {
               position: 'relative',
               width: 125,
               height: 2,
-              backgroundColor: '$quartz300',
+              backgroundColor: '$mauve300',
               borderRadius: '9999px',
             }}
           >
@@ -516,7 +516,7 @@ export function ColorExample04() {
               css={{
                 width: '50%',
                 height: '100%',
-                backgroundColor: '$violet800',
+                backgroundColor: '$violet10',
                 borderRadius: '9999px 0 0 9999px',
               }}
             >

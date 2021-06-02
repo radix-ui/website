@@ -136,7 +136,7 @@ export const components = {
         color: 'orange',
         '& p': {
           fontSize: '$3',
-          color: '$gray900',
+          color: '$gray11',
           lineHeight: '25px',
         },
       }}
@@ -161,7 +161,7 @@ export const components = {
         borderRadius: '$3',
         '& p': {
           fontSize: '$3',
-          color: '$slate900',
+          color: '$slate11',
           lineHeight: '23px',
           margin: 0,
         },
@@ -243,7 +243,7 @@ const LinkHeading = ({
       }}
     >
       {children}
-      <DS.Box as="span" css={{ ml: '$2', color: '$slate800' }}>
+      <DS.Box as="span" css={{ ml: '$2', color: '$slate10' }}>
         <Link2Icon aria-hidden />
       </DS.Box>
     </DS.Box>

@@ -29,7 +29,7 @@ export const HoverCardDemo = (props) => (
         />
         <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
           <span style={{ fontWeight: 500 }}>Colm Tuite</span>
-          <span style={{ color: '$gray900' }}>@colmtuite</span>
+          <span style={{ color: '$gray11' }}>@colmtuite</span>
         </div>
       </div>
       <div>
@@ -39,11 +39,11 @@ export const HoverCardDemo = (props) => (
         <div style={{ display: 'flex' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 5, flexGrow: 1 }}>
             <span style={{ fontWeight: 500 }}>Following</span>
-            <span style={{ color: '$gray900' }}>35</span>
+            <span style={{ color: '$gray11' }}>35</span>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 5, flexGrow: 1 }}>
             <span style={{ fontWeight: 500 }}>Followers</span>
-            <span style={{ color: '$gray900' }}>59M</span>
+            <span style={{ color: '$gray11' }}>59M</span>
           </div>
         </div>
       </div>

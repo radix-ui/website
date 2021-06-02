@@ -20,22 +20,22 @@ export function ColorGrays() {
           gap: 2,
         }}
       >
-        <Flex css={{ ai: 'center', jc: 'center', height: 35, backgroundColor: '$gray800' }}>
+        <Flex css={{ ai: 'center', jc: 'center', height: 35, backgroundColor: '$gray10' }}>
           <Text css={{ color: 'white' }}>Gray</Text>
         </Flex>
-        <Flex css={{ ai: 'center', jc: 'center', height: 35, backgroundColor: '$quartz800' }}>
+        <Flex css={{ ai: 'center', jc: 'center', height: 35, backgroundColor: '$mauve10' }}>
           <Text css={{ color: 'white' }}>Mauve</Text>
         </Flex>
-        <Flex css={{ ai: 'center', jc: 'center', height: 35, backgroundColor: '$slate800' }}>
+        <Flex css={{ ai: 'center', jc: 'center', height: 35, backgroundColor: '$slate10' }}>
           <Text css={{ color: 'white' }}>Slate</Text>
         </Flex>
-        <Flex css={{ ai: 'center', jc: 'center', height: 35, backgroundColor: '$sage800' }}>
+        <Flex css={{ ai: 'center', jc: 'center', height: 35, backgroundColor: '$sage10' }}>
           <Text css={{ color: 'white' }}>Sage</Text>
         </Flex>
-        <Flex css={{ ai: 'center', jc: 'center', height: 35, backgroundColor: '$olive800' }}>
+        <Flex css={{ ai: 'center', jc: 'center', height: 35, backgroundColor: '$olive10' }}>
           <Text css={{ color: 'white' }}>Olive</Text>
         </Flex>
-        <Flex css={{ ai: 'center', jc: 'center', height: 35, backgroundColor: '$sand800' }}>
+        <Flex css={{ ai: 'center', jc: 'center', height: 35, backgroundColor: '$sand10' }}>
           <Text css={{ color: 'white' }}>Sand</Text>
         </Flex>
       </Grid>

@@ -22,322 +22,368 @@ export function ColorGrid() {
       <Box css={{ py: '$7' }}>
         <Grid
           css={{
-            gridTemplateColumns: 'repeat(11, minmax(0, 1fr))',
+            gridTemplateColumns: 'repeat(12, minmax(0, 1fr))',
             gap: 2,
             ai: 'center',
           }}
         >
           <Box></Box>
           <Box css={{ ta: 'center', pb: '$2' }}>
-            <Text css={{ fontSize: '$2', color: '$slate900' }}>100</Text>
+            <Text css={{ fontSize: '$2', color: '$slate11' }}>1</Text>
           </Box>
           <Box css={{ ta: 'center', pb: '$2' }}>
-            <Text css={{ fontSize: '$2', color: '$slate900' }}>200</Text>
+            <Text css={{ fontSize: '$2', color: '$slate11' }}>2</Text>
           </Box>
           <Box css={{ ta: 'center', pb: '$2' }}>
-            <Text css={{ fontSize: '$2', color: '$slate900' }}>300</Text>
+            <Text css={{ fontSize: '$2', color: '$slate11' }}>3</Text>
           </Box>
           <Box css={{ ta: 'center', pb: '$2' }}>
-            <Text css={{ fontSize: '$2', color: '$slate900' }}>400</Text>
+            <Text css={{ fontSize: '$2', color: '$slate11' }}>4</Text>
           </Box>
           <Box css={{ ta: 'center', pb: '$2' }}>
-            <Text css={{ fontSize: '$2', color: '$slate900' }}>500</Text>
+            <Text css={{ fontSize: '$2', color: '$slate11' }}>5</Text>
           </Box>
           <Box css={{ ta: 'center', pb: '$2' }}>
-            <Text css={{ fontSize: '$2', color: '$slate900' }}>600</Text>
+            <Text css={{ fontSize: '$2', color: '$slate11' }}>6</Text>
           </Box>
           <Box css={{ ta: 'center', pb: '$2' }}>
-            <Text css={{ fontSize: '$2', color: '$slate900' }}>700</Text>
+            <Text css={{ fontSize: '$2', color: '$slate11' }}>7</Text>
           </Box>
           <Box css={{ ta: 'center', pb: '$2' }}>
-            <Text css={{ fontSize: '$2', color: '$slate900' }}>800</Text>
+            <Text css={{ fontSize: '$2', color: '$slate11' }}>8</Text>
           </Box>
           <Box css={{ ta: 'center', pb: '$2' }}>
-            <Text css={{ fontSize: '$2', color: '$slate900' }}>900</Text>
+            <Text css={{ fontSize: '$2', color: '$slate11' }}>9</Text>
           </Box>
           <Box css={{ ta: 'center', pb: '$2' }}>
-            <Text css={{ fontSize: '$2', color: '$slate900' }}>1000</Text>
+            <Text css={{ fontSize: '$2', color: '$slate11' }}>10</Text>
+          </Box>
+          <Box css={{ ta: 'center', pb: '$2' }}>
+            <Text css={{ fontSize: '$2', color: '$slate11' }}>11</Text>
+          </Box>
+          <Box css={{ ta: 'center', pb: '$2' }}>
+            <Text css={{ fontSize: '$2', color: '$slate11' }}>12</Text>
           </Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Gray</Text>
           </Box>
-          <Box css={{ height: 35, backgroundColor: '$gray100' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gray200' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gray300' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gray400' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gray500' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gray600' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gray700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gray800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gray900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gray1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gray1' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gray2' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gray3' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gray4' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gray5' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gray6' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gray7' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gray8' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gray9' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gray10' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gray11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gray12' }}></Box>
 
           <Box>
-            <Text css={{ fontSize: '$2' }}>Quartz</Text>
+            <Text css={{ fontSize: '$2' }}>Mauve</Text>
           </Box>
-          <Box css={{ height: 35, backgroundColor: '$quartz100' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$quartz200' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$quartz300' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$quartz400' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$quartz500' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$quartz600' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$quartz700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$quartz800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$quartz900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$quartz1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$mauve1' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$mauve2' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$mauve3' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$mauve4' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$mauve5' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$mauve6' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$mauve7' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$mauve8' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$mauve9' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$mauve10' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$mauve11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$mauve12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Slate</Text>
           </Box>
-          <Box css={{ height: 35, backgroundColor: '$slate100' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$slate200' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$slate300' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$slate400' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$slate500' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$slate600' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$slate700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$slate800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$slate900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$slate1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$slate1' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$slate2' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$slate3' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$slate4' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$slate5' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$slate6' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$slate7' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$slate8' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$slate9' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$slate10' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$slate11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$slate12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Sand</Text>
           </Box>
-          <Box css={{ height: 35, backgroundColor: '$sand100' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$sand200' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$sand300' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$sand400' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$sand500' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$sand600' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$sand700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$sand800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$sand900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$sand1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$sand1' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$sand2' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$sand3' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$sand4' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$sand5' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$sand6' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$sand7' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$sand8' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$sand9' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$sand10' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$sand11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$sand12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Red</Text>
           </Box>
-          <Box css={{ height: 35, backgroundColor: '$red100' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$red200' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$red300' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$red400' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$red500' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$red600' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$red700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$red800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$red900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$red1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$red1' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$red2' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$red3' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$red4' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$red5' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$red6' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$red7' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$red8' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$red9' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$red10' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$red11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$red12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Crimson</Text>
           </Box>
-          <Box css={{ height: 35, backgroundColor: '$crimson100' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$crimson200' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$crimson300' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$crimson400' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$crimson500' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$crimson600' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$crimson700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$crimson800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$crimson900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$crimson1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$crimson1' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$crimson2' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$crimson3' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$crimson4' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$crimson5' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$crimson6' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$crimson7' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$crimson8' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$crimson9' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$crimson10' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$crimson11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$crimson12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Pink</Text>
           </Box>
-          <Box css={{ height: 35, backgroundColor: '$pink100' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$pink200' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$pink300' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$pink400' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$pink500' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$pink600' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$pink700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$pink800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$pink900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$pink1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$pink1' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$pink2' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$pink3' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$pink4' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$pink5' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$pink6' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$pink7' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$pink8' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$pink9' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$pink10' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$pink11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$pink12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Purple</Text>
           </Box>
-          <Box css={{ height: 35, backgroundColor: '$purple100' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$purple200' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$purple300' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$purple400' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$purple500' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$purple600' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$purple700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$purple800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$purple900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$purple1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$purple1' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$purple2' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$purple3' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$purple4' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$purple5' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$purple6' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$purple7' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$purple8' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$purple9' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$purple10' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$purple11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$purple12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Violet</Text>
           </Box>
-          <Box css={{ height: 35, backgroundColor: '$violet100' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$violet200' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$violet300' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$violet400' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$violet500' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$violet600' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$violet700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$violet800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$violet900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$violet1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$violet1' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$violet2' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$violet3' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$violet4' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$violet5' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$violet6' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$violet7' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$violet8' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$violet9' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$violet10' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$violet11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$violet12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Indigo</Text>
           </Box>
-          <Box css={{ height: 35, backgroundColor: '$indigo100' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$indigo200' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$indigo300' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$indigo400' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$indigo500' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$indigo600' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$indigo700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$indigo800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$indigo900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$indigo1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$indigo1' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$indigo2' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$indigo3' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$indigo4' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$indigo5' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$indigo6' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$indigo7' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$indigo8' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$indigo9' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$indigo10' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$indigo11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$indigo12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Blue</Text>
           </Box>
-          <Box css={{ height: 35, backgroundColor: '$blue100' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$blue200' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$blue300' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$blue400' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$blue500' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$blue600' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$blue700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$blue800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$blue900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$blue1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$blue1' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$blue2' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$blue3' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$blue4' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$blue5' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$blue6' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$blue7' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$blue8' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$blue9' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$blue10' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$blue11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$blue12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Cyan</Text>
           </Box>
-          <Box css={{ height: 35, backgroundColor: '$cyan100' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$cyan200' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$cyan300' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$cyan400' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$cyan500' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$cyan600' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$cyan700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$cyan800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$cyan900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$cyan1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$cyan1' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$cyan2' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$cyan3' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$cyan4' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$cyan5' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$cyan6' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$cyan7' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$cyan8' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$cyan9' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$cyan10' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$cyan11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$cyan12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Teal</Text>
           </Box>
-          <Box css={{ height: 35, backgroundColor: '$teal100' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$teal200' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$teal300' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$teal400' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$teal500' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$teal600' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$teal700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$teal800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$teal900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$teal1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$teal1' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$teal2' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$teal3' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$teal4' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$teal5' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$teal6' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$teal7' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$teal8' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$teal9' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$teal10' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$teal11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$teal12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Green</Text>
           </Box>
-          <Box css={{ height: 35, backgroundColor: '$green100' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$green200' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$green300' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$green400' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$green500' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$green600' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$green700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$green800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$green900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$green1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$green1' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$green2' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$green3' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$green4' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$green5' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$green6' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$green7' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$green8' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$green9' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$green10' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$green11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$green12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Lime</Text>
           </Box>
-          <Box css={{ height: 35, backgroundColor: '$lime100' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$lime200' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$lime300' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$lime400' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$lime500' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$lime600' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$lime700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$lime800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$lime900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$lime1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$lime1' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$lime2' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$lime3' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$lime4' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$lime5' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$lime6' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$lime7' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$lime8' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$lime9' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$lime10' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$lime11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$lime12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Yellow</Text>
           </Box>
-          <Box css={{ height: 35, backgroundColor: '$yellow100' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$yellow200' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$yellow300' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$yellow400' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$yellow500' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$yellow600' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$yellow700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$yellow800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$yellow900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$yellow1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$yellow1' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$yellow2' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$yellow3' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$yellow4' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$yellow5' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$yellow6' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$yellow7' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$yellow8' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$yellow9' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$yellow10' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$yellow11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$yellow12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Orange</Text>
           </Box>
-          <Box css={{ height: 35, backgroundColor: '$orange100' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$orange200' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$orange300' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$orange400' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$orange500' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$orange600' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$orange700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$orange800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$orange900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$orange1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$orange1' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$orange2' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$orange3' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$orange4' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$orange5' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$orange6' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$orange7' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$orange8' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$orange9' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$orange10' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$orange11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$orange12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Gold</Text>
           </Box>
-          <Box css={{ height: 35, backgroundColor: '$gold100' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gold200' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gold300' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gold400' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gold500' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gold600' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gold700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gold800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gold900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$gold1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gold1' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gold2' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gold3' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gold4' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gold5' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gold6' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gold7' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gold8' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gold9' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gold10' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gold11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$gold12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Brown</Text>
           </Box>
-          <Box css={{ height: 35, backgroundColor: '$brown100' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$brown200' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$brown300' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$brown400' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$brown500' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$brown600' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$brown700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$brown800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$brown900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$brown1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$brown1' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$brown2' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$brown3' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$brown4' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$brown5' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$brown6' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$brown7' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$brown8' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$brown9' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$brown10' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$brown11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$brown12' }}></Box>
 
           <Box>
             <Text css={{ fontSize: '$2' }}>Bronze</Text>
           </Box>
-          <Box css={{ height: 35, backgroundColor: '$bronze100' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$bronze200' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$bronze300' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$bronze400' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$bronze500' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$bronze600' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$bronze700' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$bronze800' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$bronze900' }}></Box>
-          <Box css={{ height: 35, backgroundColor: '$bronze1000' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$bronze1' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$bronze2' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$bronze3' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$bronze4' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$bronze5' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$bronze6' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$bronze7' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$bronze8' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$bronze9' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$bronze10' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$bronze11' }}></Box>
+          <Box css={{ height: 35, backgroundColor: '$bronze12' }}></Box>
         </Grid>
       </Box>
 
@@ -395,7 +441,7 @@ export function ColorGrid() {
           }}
         >
           <Flex css={{ ai: 'center', jc: 'center', height: 100 }}>
-            <Text size="3" css={{ color: '$slate900' }}>
+            <Text size="3" css={{ color: '$slate11' }}>
               Warm
             </Text>
           </Flex>
@@ -404,7 +450,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$yellow800',
+              backgroundColor: '$yellow10',
             }}
           ></Flex>
           <Flex
@@ -412,7 +458,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$orange800',
+              backgroundColor: '$orange10',
             }}
           ></Flex>
           <Flex
@@ -420,7 +466,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$gold800',
+              backgroundColor: '$gold10',
             }}
           ></Flex>
           <Flex
@@ -428,7 +474,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$brown800',
+              backgroundColor: '$brown10',
             }}
           ></Flex>
           <Flex
@@ -436,7 +482,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$bronze800',
+              backgroundColor: '$bronze10',
             }}
           ></Flex>
           <Flex
@@ -444,7 +490,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$red800',
+              backgroundColor: '$red10',
             }}
           ></Flex>
           <Flex
@@ -452,7 +498,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$crimson800',
+              backgroundColor: '$crimson10',
             }}
           ></Flex>
           <Flex
@@ -460,11 +506,11 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$pink800',
+              backgroundColor: '$pink10',
             }}
           ></Flex>
           <Flex css={{ ai: 'center', jc: 'center', height: 100 }}>
-            <Text size="3" css={{ color: '$slate900' }}>
+            <Text size="3" css={{ color: '$slate11' }}>
               Cool
             </Text>
           </Flex>
@@ -473,7 +519,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$purple800',
+              backgroundColor: '$purple10',
             }}
           ></Flex>
           <Flex
@@ -481,7 +527,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$violet800',
+              backgroundColor: '$violet10',
             }}
           ></Flex>
           <Flex
@@ -489,7 +535,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$indigo800',
+              backgroundColor: '$indigo10',
             }}
           ></Flex>
           <Flex
@@ -497,7 +543,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$blue800',
+              backgroundColor: '$blue10',
             }}
           ></Flex>
           <Flex
@@ -505,7 +551,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$cyan800',
+              backgroundColor: '$cyan10',
             }}
           ></Flex>
           <Flex
@@ -513,7 +559,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$teal800',
+              backgroundColor: '$teal10',
             }}
           ></Flex>
           <Flex
@@ -521,7 +567,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$green800',
+              backgroundColor: '$green10',
             }}
           ></Flex>
           <Flex
@@ -529,7 +575,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$lime800',
+              backgroundColor: '$lime10',
             }}
           ></Flex>
         </Grid>
@@ -551,7 +597,7 @@ export function ColorGrid() {
           }}
         >
           <Flex css={{ ai: 'center', jc: 'center', height: 100 }}>
-            <Text size="3" css={{ color: '$slate900' }}>
+            <Text size="3" css={{ color: '$slate11' }}>
               Warm
             </Text>
           </Flex>
@@ -560,7 +606,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$yellow200',
+              backgroundColor: '$yellow4',
             }}
           ></Flex>
           <Flex
@@ -568,7 +614,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$orange200',
+              backgroundColor: '$orange4',
             }}
           ></Flex>
           <Flex
@@ -576,7 +622,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$gold200',
+              backgroundColor: '$gold4',
             }}
           ></Flex>
           <Flex
@@ -584,7 +630,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$brown200',
+              backgroundColor: '$brown4',
             }}
           ></Flex>
           <Flex
@@ -592,7 +638,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$bronze200',
+              backgroundColor: '$bronze4',
             }}
           ></Flex>
           <Flex
@@ -600,7 +646,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$red200',
+              backgroundColor: '$red4',
             }}
           ></Flex>
           <Flex
@@ -608,7 +654,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$crimson200',
+              backgroundColor: '$crimson4',
             }}
           ></Flex>
           <Flex
@@ -616,11 +662,11 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$pink200',
+              backgroundColor: '$pink4',
             }}
           ></Flex>
           <Flex css={{ ai: 'center', jc: 'center', height: 100 }}>
-            <Text size="3" css={{ color: '$slate900' }}>
+            <Text size="3" css={{ color: '$slate11' }}>
               Cool
             </Text>
           </Flex>
@@ -629,7 +675,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$purple200',
+              backgroundColor: '$purple4',
             }}
           ></Flex>
           <Flex
@@ -637,7 +683,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$violet200',
+              backgroundColor: '$violet4',
             }}
           ></Flex>
           <Flex
@@ -645,7 +691,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$indigo200',
+              backgroundColor: '$indigo4',
             }}
           ></Flex>
           <Flex
@@ -653,7 +699,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$blue200',
+              backgroundColor: '$blue4',
             }}
           ></Flex>
           <Flex
@@ -661,7 +707,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$cyan200',
+              backgroundColor: '$cyan4',
             }}
           ></Flex>
           <Flex
@@ -669,7 +715,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$teal200',
+              backgroundColor: '$teal4',
             }}
           ></Flex>
           <Flex
@@ -677,7 +723,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$green200',
+              backgroundColor: '$green4',
             }}
           ></Flex>
           <Flex
@@ -685,7 +731,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$lime200',
+              backgroundColor: '$lime4',
             }}
           ></Flex>
         </Grid>
@@ -710,7 +756,7 @@ export function ColorGrid() {
           }}
         >
           <Flex css={{ ai: 'center', jc: 'center', height: 100 }}>
-            <Text size="3" css={{ color: '$red900' }}>
+            <Text size="3" css={{ color: '$red11' }}>
               Red
             </Text>
           </Flex>
@@ -722,7 +768,7 @@ export function ColorGrid() {
               backgroundColor: '$red100',
             }}
           >
-            <Text size="3" css={{ color: '$red900' }}>
+            <Text size="3" css={{ color: '$red11' }}>
               Red
             </Text>
           </Flex>
@@ -731,10 +777,10 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$red200',
+              backgroundColor: '$red4',
             }}
           >
-            <Text size="3" css={{ color: '$red900' }}>
+            <Text size="3" css={{ color: '$red11' }}>
               Red
             </Text>
           </Flex>
@@ -743,7 +789,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$red800',
+              backgroundColor: '$red10',
             }}
           >
             <Text size="3" css={{ color: 'white' }}>
@@ -752,7 +798,7 @@ export function ColorGrid() {
           </Flex>
 
           <Flex css={{ ai: 'center', jc: 'center', height: 100 }}>
-            <Text size="3" css={{ color: '$crimson900' }}>
+            <Text size="3" css={{ color: '$crimson11' }}>
               Crimson
             </Text>
           </Flex>
@@ -764,7 +810,7 @@ export function ColorGrid() {
               backgroundColor: '$crimson100',
             }}
           >
-            <Text size="3" css={{ color: '$crimson900' }}>
+            <Text size="3" css={{ color: '$crimson11' }}>
               Crimson
             </Text>
           </Flex>
@@ -773,10 +819,10 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$crimson200',
+              backgroundColor: '$crimson4',
             }}
           >
-            <Text size="3" css={{ color: '$crimson900' }}>
+            <Text size="3" css={{ color: '$crimson11' }}>
               Crimson
             </Text>
           </Flex>
@@ -785,7 +831,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$crimson800',
+              backgroundColor: '$crimson10',
             }}
           >
             <Text size="3" css={{ color: 'white' }}>
@@ -794,7 +840,7 @@ export function ColorGrid() {
           </Flex>
 
           <Flex css={{ ai: 'center', jc: 'center', height: 100 }}>
-            <Text size="3" css={{ color: '$pink900' }}>
+            <Text size="3" css={{ color: '$pink11' }}>
               Pink
             </Text>
           </Flex>
@@ -806,7 +852,7 @@ export function ColorGrid() {
               backgroundColor: '$pink100',
             }}
           >
-            <Text size="3" css={{ color: '$pink900' }}>
+            <Text size="3" css={{ color: '$pink11' }}>
               Pink
             </Text>
           </Flex>
@@ -815,10 +861,10 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$pink200',
+              backgroundColor: '$pink4',
             }}
           >
-            <Text size="3" css={{ color: '$pink900' }}>
+            <Text size="3" css={{ color: '$pink11' }}>
               Pink
             </Text>
           </Flex>
@@ -827,7 +873,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$pink800',
+              backgroundColor: '$pink10',
             }}
           >
             <Text size="3" css={{ color: 'white' }}>
@@ -836,7 +882,7 @@ export function ColorGrid() {
           </Flex>
 
           <Flex css={{ ai: 'center', jc: 'center', height: 100 }}>
-            <Text size="3" css={{ color: '$purple900' }}>
+            <Text size="3" css={{ color: '$purple11' }}>
               Purple
             </Text>
           </Flex>
@@ -848,7 +894,7 @@ export function ColorGrid() {
               backgroundColor: '$purple100',
             }}
           >
-            <Text size="3" css={{ color: '$purple900' }}>
+            <Text size="3" css={{ color: '$purple11' }}>
               Purple
             </Text>
           </Flex>
@@ -857,10 +903,10 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$purple200',
+              backgroundColor: '$purple4',
             }}
           >
-            <Text size="3" css={{ color: '$purple900' }}>
+            <Text size="3" css={{ color: '$purple11' }}>
               Purple
             </Text>
           </Flex>
@@ -869,7 +915,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$purple800',
+              backgroundColor: '$purple10',
             }}
           >
             <Text size="3" css={{ color: 'white' }}>
@@ -878,7 +924,7 @@ export function ColorGrid() {
           </Flex>
 
           <Flex css={{ ai: 'center', jc: 'center', height: 100 }}>
-            <Text size="3" css={{ color: '$violet900' }}>
+            <Text size="3" css={{ color: '$violet11' }}>
               Violet
             </Text>
           </Flex>
@@ -890,7 +936,7 @@ export function ColorGrid() {
               backgroundColor: '$violet100',
             }}
           >
-            <Text size="3" css={{ color: '$violet900' }}>
+            <Text size="3" css={{ color: '$violet11' }}>
               Violet
             </Text>
           </Flex>
@@ -899,10 +945,10 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$violet200',
+              backgroundColor: '$violet4',
             }}
           >
-            <Text size="3" css={{ color: '$violet900' }}>
+            <Text size="3" css={{ color: '$violet11' }}>
               Violet
             </Text>
           </Flex>
@@ -911,7 +957,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$violet800',
+              backgroundColor: '$violet10',
             }}
           >
             <Text size="3" css={{ color: 'white' }}>
@@ -920,7 +966,7 @@ export function ColorGrid() {
           </Flex>
 
           <Flex css={{ ai: 'center', jc: 'center', height: 100 }}>
-            <Text size="3" css={{ color: '$indigo900' }}>
+            <Text size="3" css={{ color: '$indigo11' }}>
               Indigo
             </Text>
           </Flex>
@@ -932,7 +978,7 @@ export function ColorGrid() {
               backgroundColor: '$indigo100',
             }}
           >
-            <Text size="3" css={{ color: '$indigo900' }}>
+            <Text size="3" css={{ color: '$indigo11' }}>
               Indigo
             </Text>
           </Flex>
@@ -941,10 +987,10 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$indigo200',
+              backgroundColor: '$indigo4',
             }}
           >
-            <Text size="3" css={{ color: '$indigo900' }}>
+            <Text size="3" css={{ color: '$indigo11' }}>
               Indigo
             </Text>
           </Flex>
@@ -953,7 +999,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$indigo800',
+              backgroundColor: '$indigo10',
             }}
           >
             <Text size="3" css={{ color: 'white' }}>
@@ -962,7 +1008,7 @@ export function ColorGrid() {
           </Flex>
 
           <Flex css={{ ai: 'center', jc: 'center', height: 100 }}>
-            <Text size="3" css={{ color: '$blue900' }}>
+            <Text size="3" css={{ color: '$blue11' }}>
               Blue
             </Text>
           </Flex>
@@ -974,7 +1020,7 @@ export function ColorGrid() {
               backgroundColor: '$blue100',
             }}
           >
-            <Text size="3" css={{ color: '$blue900' }}>
+            <Text size="3" css={{ color: '$blue11' }}>
               Blue
             </Text>
           </Flex>
@@ -983,10 +1029,10 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$blue200',
+              backgroundColor: '$blue4',
             }}
           >
-            <Text size="3" css={{ color: '$blue900' }}>
+            <Text size="3" css={{ color: '$blue11' }}>
               Blue
             </Text>
           </Flex>
@@ -995,7 +1041,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$blue800',
+              backgroundColor: '$blue10',
             }}
           >
             <Text size="3" css={{ color: 'white' }}>
@@ -1004,7 +1050,7 @@ export function ColorGrid() {
           </Flex>
 
           <Flex css={{ ai: 'center', jc: 'center', height: 100 }}>
-            <Text size="3" css={{ color: '$cyan900' }}>
+            <Text size="3" css={{ color: '$cyan11' }}>
               cyan
             </Text>
           </Flex>
@@ -1016,7 +1062,7 @@ export function ColorGrid() {
               backgroundColor: '$cyan100',
             }}
           >
-            <Text size="3" css={{ color: '$cyan900' }}>
+            <Text size="3" css={{ color: '$cyan11' }}>
               cyan
             </Text>
           </Flex>
@@ -1025,10 +1071,10 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$cyan200',
+              backgroundColor: '$cyan4',
             }}
           >
-            <Text size="3" css={{ color: '$cyan900' }}>
+            <Text size="3" css={{ color: '$cyan11' }}>
               cyan
             </Text>
           </Flex>
@@ -1037,7 +1083,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$cyan800',
+              backgroundColor: '$cyan10',
             }}
           >
             <Text size="3" css={{ color: 'white' }}>
@@ -1046,7 +1092,7 @@ export function ColorGrid() {
           </Flex>
 
           <Flex css={{ ai: 'center', jc: 'center', height: 100 }}>
-            <Text size="3" css={{ color: '$teal900' }}>
+            <Text size="3" css={{ color: '$teal11' }}>
               Teal
             </Text>
           </Flex>
@@ -1058,7 +1104,7 @@ export function ColorGrid() {
               backgroundColor: '$teal100',
             }}
           >
-            <Text size="3" css={{ color: '$teal900' }}>
+            <Text size="3" css={{ color: '$teal11' }}>
               Teal
             </Text>
           </Flex>
@@ -1067,10 +1113,10 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$teal200',
+              backgroundColor: '$teal4',
             }}
           >
-            <Text size="3" css={{ color: '$teal900' }}>
+            <Text size="3" css={{ color: '$teal11' }}>
               Teal
             </Text>
           </Flex>
@@ -1079,7 +1125,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$teal800',
+              backgroundColor: '$teal10',
             }}
           >
             <Text size="3" css={{ color: 'white' }}>
@@ -1088,7 +1134,7 @@ export function ColorGrid() {
           </Flex>
 
           <Flex css={{ ai: 'center', jc: 'center', height: 100 }}>
-            <Text size="3" css={{ color: '$green900' }}>
+            <Text size="3" css={{ color: '$green11' }}>
               Green
             </Text>
           </Flex>
@@ -1100,7 +1146,7 @@ export function ColorGrid() {
               backgroundColor: '$green100',
             }}
           >
-            <Text size="3" css={{ color: '$green900' }}>
+            <Text size="3" css={{ color: '$green11' }}>
               Green
             </Text>
           </Flex>
@@ -1109,10 +1155,10 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$green200',
+              backgroundColor: '$green4',
             }}
           >
-            <Text size="3" css={{ color: '$green900' }}>
+            <Text size="3" css={{ color: '$green11' }}>
               Green
             </Text>
           </Flex>
@@ -1121,7 +1167,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$green800',
+              backgroundColor: '$green10',
             }}
           >
             <Text size="3" css={{ color: 'white' }}>
@@ -1130,7 +1176,7 @@ export function ColorGrid() {
           </Flex>
 
           <Flex css={{ ai: 'center', jc: 'center', height: 100 }}>
-            <Text size="3" css={{ color: '$lime900' }}>
+            <Text size="3" css={{ color: '$lime11' }}>
               Lime
             </Text>
           </Flex>
@@ -1142,7 +1188,7 @@ export function ColorGrid() {
               backgroundColor: '$lime100',
             }}
           >
-            <Text size="3" css={{ color: '$lime900' }}>
+            <Text size="3" css={{ color: '$lime11' }}>
               Lime
             </Text>
           </Flex>
@@ -1151,10 +1197,10 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$lime200',
+              backgroundColor: '$lime4',
             }}
           >
-            <Text size="3" css={{ color: '$lime900' }}>
+            <Text size="3" css={{ color: '$lime11' }}>
               Lime
             </Text>
           </Flex>
@@ -1163,7 +1209,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$lime800',
+              backgroundColor: '$lime10',
             }}
           >
             <Text size="3" css={{ color: 'black' }}>
@@ -1172,7 +1218,7 @@ export function ColorGrid() {
           </Flex>
 
           <Flex css={{ ai: 'center', jc: 'center', height: 100 }}>
-            <Text size="3" css={{ color: '$yellow900' }}>
+            <Text size="3" css={{ color: '$yellow11' }}>
               Yellow
             </Text>
           </Flex>
@@ -1184,7 +1230,7 @@ export function ColorGrid() {
               backgroundColor: '$yellow100',
             }}
           >
-            <Text size="3" css={{ color: '$yellow900' }}>
+            <Text size="3" css={{ color: '$yellow11' }}>
               Yellow
             </Text>
           </Flex>
@@ -1193,10 +1239,10 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$yellow200',
+              backgroundColor: '$yellow4',
             }}
           >
-            <Text size="3" css={{ color: '$yellow900' }}>
+            <Text size="3" css={{ color: '$yellow11' }}>
               Yellow
             </Text>
           </Flex>
@@ -1205,7 +1251,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$yellow800',
+              backgroundColor: '$yellow10',
             }}
           >
             <Text size="3" css={{ color: 'black' }}>
@@ -1214,7 +1260,7 @@ export function ColorGrid() {
           </Flex>
 
           <Flex css={{ ai: 'center', jc: 'center', height: 100 }}>
-            <Text size="3" css={{ color: '$orange900' }}>
+            <Text size="3" css={{ color: '$orange11' }}>
               Orange
             </Text>
           </Flex>
@@ -1226,7 +1272,7 @@ export function ColorGrid() {
               backgroundColor: '$orange100',
             }}
           >
-            <Text size="3" css={{ color: '$orange900' }}>
+            <Text size="3" css={{ color: '$orange11' }}>
               Orange
             </Text>
           </Flex>
@@ -1235,10 +1281,10 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$orange200',
+              backgroundColor: '$orange4',
             }}
           >
-            <Text size="3" css={{ color: '$orange900' }}>
+            <Text size="3" css={{ color: '$orange11' }}>
               Orange
             </Text>
           </Flex>
@@ -1247,7 +1293,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$orange800',
+              backgroundColor: '$orange10',
             }}
           >
             <Text size="3" css={{ color: 'white' }}>
@@ -1256,7 +1302,7 @@ export function ColorGrid() {
           </Flex>
 
           <Flex css={{ ai: 'center', jc: 'center', height: 100 }}>
-            <Text size="3" css={{ color: '$bronze900' }}>
+            <Text size="3" css={{ color: '$bronze11' }}>
               Bronze
             </Text>
           </Flex>
@@ -1268,7 +1314,7 @@ export function ColorGrid() {
               backgroundColor: '$bronze100',
             }}
           >
-            <Text size="3" css={{ color: '$bronze900' }}>
+            <Text size="3" css={{ color: '$bronze11' }}>
               Bronze
             </Text>
           </Flex>
@@ -1277,10 +1323,10 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$bronze200',
+              backgroundColor: '$bronze4',
             }}
           >
-            <Text size="3" css={{ color: '$bronze900' }}>
+            <Text size="3" css={{ color: '$bronze11' }}>
               Bronze
             </Text>
           </Flex>
@@ -1289,7 +1335,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$bronze800',
+              backgroundColor: '$bronze10',
             }}
           >
             <Text size="3" css={{ color: 'white' }}>
@@ -1298,7 +1344,7 @@ export function ColorGrid() {
           </Flex>
 
           <Flex css={{ ai: 'center', jc: 'center', height: 100 }}>
-            <Text size="3" css={{ color: '$gold900' }}>
+            <Text size="3" css={{ color: '$gold11' }}>
               Gold
             </Text>
           </Flex>
@@ -1310,7 +1356,7 @@ export function ColorGrid() {
               backgroundColor: '$gold100',
             }}
           >
-            <Text size="3" css={{ color: '$gold900' }}>
+            <Text size="3" css={{ color: '$gold11' }}>
               Gold
             </Text>
           </Flex>
@@ -1319,10 +1365,10 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$gold200',
+              backgroundColor: '$gold4',
             }}
           >
-            <Text size="3" css={{ color: '$gold900' }}>
+            <Text size="3" css={{ color: '$gold11' }}>
               Gold
             </Text>
           </Flex>
@@ -1331,7 +1377,7 @@ export function ColorGrid() {
               ai: 'center',
               jc: 'center',
               height: 100,
-              backgroundColor: '$gold800',
+              backgroundColor: '$gold10',
             }}
           >
             <Text size="3" css={{ color: 'white' }}>
@@ -1360,18 +1406,18 @@ export function ColorGrid() {
               backgroundColor: '$loContrast',
             }}
           ></Box>
-          <Box css={{ fb: '0', fg: '1', height: 160, backgroundColor: '$slate100' }}></Box>
-          <Box css={{ fb: '0', fg: '1', height: 160, backgroundColor: '$slate200' }}></Box>
-          <Box css={{ fb: '0', fg: '1', height: 160, backgroundColor: '$slate300' }}></Box>
-          <Box css={{ fb: '0', fg: '1', height: 160, backgroundColor: '$slate400' }}></Box>
+          <Box css={{ fb: '0', fg: '1', height: 160, backgroundColor: '$slate1' }}></Box>
+          <Box css={{ fb: '0', fg: '1', height: 160, backgroundColor: '$slate2' }}></Box>
+          <Box css={{ fb: '0', fg: '1', height: 160, backgroundColor: '$slate3' }}></Box>
+          <Box css={{ fb: '0', fg: '1', height: 160, backgroundColor: '$slate4' }}></Box>
           <Box
             css={{
-              position: 'absolute',
-              top: '50%',
-              left: '0',
+              sition: 'absolute',
+              p: '50%',
+              ft: '0',
               width: '100%',
               height: 1,
-              backgroundColor: '$slate500',
+              backgroundColor: '$slate7',
             }}
           ></Box>
         </Flex>
@@ -1397,10 +1443,10 @@ export function ColorGrid() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$red100',
-              border: '1px solid $red500',
+              border: '1px solid $red7',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$red900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$red11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -1409,10 +1455,10 @@ export function ColorGrid() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$crimson100',
-              border: '1px solid $red500',
+              border: '1px solid $red7',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$crimson900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$crimson11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -1421,10 +1467,10 @@ export function ColorGrid() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$pink100',
-              border: '1px solid $pink500',
+              border: '1px solid $pink7',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$pink900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$pink11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -1433,10 +1479,10 @@ export function ColorGrid() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$purple100',
-              border: '1px solid $purple500',
+              border: '1px solid $purple7',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$purple900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$purple11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -1445,10 +1491,10 @@ export function ColorGrid() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$violet100',
-              border: '1px solid $violet500',
+              border: '1px solid $violet7',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$violet900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$violet11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -1457,10 +1503,10 @@ export function ColorGrid() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$indigo100',
-              border: '1px solid $indigo500',
+              border: '1px solid $indigo7',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$indigo900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$indigo11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -1469,10 +1515,10 @@ export function ColorGrid() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$blue100',
-              border: '1px solid $blue500',
+              border: '1px solid $blue7',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$blue900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$blue11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -1481,10 +1527,10 @@ export function ColorGrid() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$cyan100',
-              border: '1px solid $cyan500',
+              border: '1px solid $cyan7',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$cyan900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$cyan11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -1493,10 +1539,10 @@ export function ColorGrid() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$teal100',
-              border: '1px solid $teal500',
+              border: '1px solid $teal7',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$teal900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$teal11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -1505,10 +1551,10 @@ export function ColorGrid() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$green100',
-              border: '1px solid $green500',
+              border: '1px solid $green7',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$green900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$green11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -1517,10 +1563,10 @@ export function ColorGrid() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$lime100',
-              border: '1px solid $lime500',
+              border: '1px solid $lime7',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$lime900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$lime11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -1529,10 +1575,10 @@ export function ColorGrid() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$yellow100',
-              border: '1px solid $yellow500',
+              border: '1px solid $yellow7',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$yellow900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$yellow11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -1541,10 +1587,10 @@ export function ColorGrid() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$orange100',
-              border: '1px solid $orange500',
+              border: '1px solid $orange7',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$orange900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$orange11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -1553,10 +1599,10 @@ export function ColorGrid() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$bronze100',
-              border: '1px solid $bronze500',
+              border: '1px solid $bronze7',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$bronze900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$bronze11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
@@ -1565,17 +1611,17 @@ export function ColorGrid() {
               p: '$3',
               borderRadius: '$3',
               backgroundColor: '$gold100',
-              border: '1px solid $gold500',
+              border: '1px solid $gold7',
             }}
           >
-            <Text size="3" as="p" css={{ color: '$gold900', lineHeight: '23px' }}>
+            <Text size="3" as="p" css={{ color: '$gold11', lineHeight: '23px' }}>
               Warning: obsessing over color is a terrible idea. Chill down ffs.
             </Text>
           </Box>
         </Grid>
       </Box>
 
-      <Box css={{ backgroundColor: '$red800', height: '100vh', p: '$9', mt: '$9' }}>
+      <Box css={{ backgroundColor: '$red10', height: '100vh', p: '$9', mt: '$9' }}>
         <Heading size="4" css={{ color: 'white' }}>
           This should look good and pass contrast ratio.
         </Heading>
