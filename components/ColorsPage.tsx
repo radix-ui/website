@@ -19,7 +19,7 @@ export function ColorsPage({ children }: { children: React.ReactNode }) {
 
   const GITHUB_URL = 'https://github.com';
   const REPO_NAME = 'radix-ui/website';
-  let editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/main/data/${currentPageSlug}.mdx`;
+  let editUrl;
 
   if (typeof routerSlug === 'string') {
     currentPageSlug = router.pathname.substr(1).replace('[slug]', routerSlug);
@@ -227,7 +227,7 @@ export function ColorsPage({ children }: { children: React.ReactNode }) {
         <Container size="3" css={{ maxWidth: '780px', my: '$9' }}>
           <Text size="3">
             <Link
-              href={editUrl}
+              href={editUrl.replace('docs/', '')}
               title="Edit this page on GitHub."
               rel="noopener noreferrer"
               target="_blank"
