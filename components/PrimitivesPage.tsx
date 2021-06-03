@@ -19,7 +19,7 @@ export function PrimitivesPage({ children }: { children: React.ReactNode }) {
 
   const GITHUB_URL = 'https://github.com';
   const REPO_NAME = 'radix-ui/website';
-  let editUrl;
+  let editUrl: string = '';
 
   if (typeof routerSlug === 'string') {
     currentPageSlug = router.pathname.substr(1).replace('[slug]', routerSlug);
