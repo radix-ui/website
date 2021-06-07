@@ -28,6 +28,7 @@ export function ColorsPage({ children }: { children: React.ReactNode }) {
     currentPageSlug = router.pathname.substr(1).replace('[...slug]', routerSlug[0]);
     editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/main/data/${currentPageSlug}/${routerSlug[1]}.mdx`;
   }
+  editUrl = editUrl.replace('/docs', '');
 
   const currentPageIndex = allColorsRoutes.findIndex((page) => page.slug === currentPageSlug);
   const previous = allColorsRoutes[currentPageIndex - 1];
@@ -227,7 +228,7 @@ export function ColorsPage({ children }: { children: React.ReactNode }) {
         <Container size="3" css={{ maxWidth: '780px', my: '$9' }}>
           <Text size="3">
             <Link
-              href={editUrl.replace('docs/', '')}
+              href={editUrl}
               title="Edit this page on GitHub."
               rel="noopener noreferrer"
               target="_blank"
