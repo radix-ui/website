@@ -19,7 +19,7 @@ export function ColorsPage({ children }: { children: React.ReactNode }) {
 
   const GITHUB_URL = 'https://github.com';
   const REPO_NAME = 'radix-ui/website';
-  let editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/main/data/${currentPageSlug}.mdx`;
+  let editUrl: string = '';
 
   if (typeof routerSlug === 'string') {
     currentPageSlug = router.pathname.substr(1).replace('[slug]', routerSlug);
@@ -28,6 +28,7 @@ export function ColorsPage({ children }: { children: React.ReactNode }) {
     currentPageSlug = router.pathname.substr(1).replace('[...slug]', routerSlug[0]);
     editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/main/data/${currentPageSlug}/${routerSlug[1]}.mdx`;
   }
+  editUrl = editUrl.replace('/docs', '');
 
   const currentPageIndex = allColorsRoutes.findIndex((page) => page.slug === currentPageSlug);
   const previous = allColorsRoutes[currentPageIndex - 1];
