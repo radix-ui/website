@@ -248,7 +248,7 @@ The component that pops out when the popover is open.
     },
     {
       name: 'onPointerDownOutside',
-      type: '(event: MouseEvent | TouchEvent) => void',
+      type: '(event: PointerDownOutsideEvent) => void',
       typeSimple: 'function',
       description: (
         <span>
@@ -260,7 +260,7 @@ The component that pops out when the popover is open.
     },
     {
       name: 'onFocusOutside',
-      type: '(event: React.FocusEvent) => void',
+      type: '(event: FocusOutsideEvent) => void',
       typeSimple: 'function',
       description: (
         <span>
@@ -273,7 +273,7 @@ The component that pops out when the popover is open.
     {
       name: 'onInteractOutside',
       type:
-        '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
+        '(event: PointerDownOutsideEvent | FocusOutsideEvent) => void',
       typeSimple: 'function',
       description: (
         <span>
