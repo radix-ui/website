@@ -124,7 +124,7 @@ Contains all the parts of a checkbox.
     },
     {
       name: 'onCheckedChange',
-      type: '(event: React.ChangeEvent<HTMLInputElement>) => void',
+      type: `(event: boolean | 'indeterminate') => void`,
       typeSimple: 'function',
       description:
         'Event handler called when the checked state of the checkbox changes.',
@@ -231,10 +231,7 @@ export default () => {
 
   return (
     <>
-      <StyledCheckbox
-        checked={checked}
-        onCheckedChange={(event) => setChecked(event.target.checked)}
-      >
+      <StyledCheckbox checked={checked} onCheckedChange={setChecked}>
         <Checkbox.Indicator>
           {checked === 'indeterminate' && <DividerHorizontalIcon />}
           {checked === true && <CheckIcon />}
