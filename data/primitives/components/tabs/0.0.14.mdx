@@ -1,6 +1,6 @@
 ---
 metaTitle: Tabs
-metaDescription: A set of layered sections of content—known as tab panels—that display one panel of content at a time.
+metaDescription: A set of layered sections of content—known as tab panels—that are displayed one at a time.
 name: tabs
 aria: https://www.w3.org/TR/wai-aria-practices-1.2/#tabpanel
 ---
@@ -8,8 +8,8 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#tabpanel
 # Tabs
 
 <Description>
-  A set of layered sections of content—known as tab panels—that
-  display one panel of content at a time.
+  A set of layered sections of content—known as tab panels—that are
+  displayed one at a time.
 </Description>
 
 <TabsHero />
@@ -41,9 +41,9 @@ import * as Tabs from '@radix-ui/react-tabs';
 export default () => (
   <Tabs.Root>
     <Tabs.List>
-      <Tabs.Tab />
+      <Tabs.Trigger />
     </Tabs.List>
-    <Tabs.Panel />
+    <Tabs.Content />
   </Tabs.Root>
 );
 ```
@@ -51,6 +51,10 @@ export default () => (
 ## Basic example
 
 Create your styled tabs component from the primitive parts.
+
+<Preview>
+  <TabsDemo />
+</Preview>
 
 ```jsx
 import { styled } from 'path-to/stitches.config';
@@ -67,7 +71,7 @@ const StyledList = styled(Tabs.List, {
   borderBottom: '1px solid gainsboro',
 });
 
-const StyledTab = styled(Tabs.Tab, {
+const StyledTrigger = styled(Tabs.Trigger, {
   flexShrink: 0,
   padding: '10px 20px',
   color: 'slategray',
@@ -82,7 +86,7 @@ const StyledTab = styled(Tabs.Tab, {
   },
 });
 
-const StyledPanel = styled(Tabs.Panel, {
+const StyledContent = styled(Tabs.Content, {
   flexGrow: 1,
   padding: 20,
 });
@@ -90,13 +94,13 @@ const StyledPanel = styled(Tabs.Panel, {
 export default () => (
   <StyledTabs defaultValue="tab1">
     <StyledList aria-label="tabs example">
-      <StyledTab value="tab1">One</StyledTab>
-      <StyledTab value="tab2">Two</StyledTab>
-      <StyledTab value="tab3">Three</StyledTab>
+      <StyledTrigger value="tab1">One</StyledTrigger>
+      <StyledTrigger value="tab2">Two</StyledTrigger>
+      <StyledTrigger value="tab3">Three</StyledTrigger>
     </StyledList>
-    <StyledPanel value="tab1">Tab one content</StyledPanel>
-    <StyledPanel value="tab2">Tab two content</StyledPanel>
-    <StyledPanel value="tab3">Tab three content</StyledPanel>
+    <StyledContent value="tab1">Tab one content</StyledContent>
+    <StyledContent value="tab2">Tab two content</StyledContent>
+    <StyledContent value="tab3">Tab three content</StyledContent>
   </StyledTabs>
 );
 ```
@@ -185,7 +189,7 @@ Contains all the tabs component parts.
 
 ### List
 
-Contains the tabs aligned along the edge of the active panel.
+Contains the triggers that are aligned along the edge of the active content.
 
 <PropsTable
   data={[
@@ -213,9 +217,9 @@ Contains the tabs aligned along the edge of the active panel.
   ]}
 />
 
-### Tab
+### Trigger
 
-The button that activates its associated panel.
+The button that activates its associated content.
 
 <PropsTable
   data={[
@@ -233,7 +237,7 @@ The button that activates its associated panel.
       required: true,
       type: 'string',
       description:
-        'A unique value that associates the tab with a panel.',
+        'A unique value that associates the trigger with a content.',
     },
     {
       name: 'disabled',
@@ -250,9 +254,9 @@ The button that activates its associated panel.
   ]}
 />
 
-### Panel
+### Content
 
-Contains the content associated with each tab.
+Contains the content associated with each trigger.
 
 <PropsTable
   data={[
@@ -270,7 +274,7 @@ Contains the content associated with each tab.
       required: true,
       type: 'string',
       description:
-        'A unique value that associates the panel with a tab.',
+        'A unique value that associates the content with a trigger.',
     },
   ]}
 />
@@ -279,7 +283,11 @@ Contains the content associated with each tab.
 
 ### Vertical
 
-You can create a vertical tab by using the `orientation` prop.
+You can create vertical tabs by using the `orientation` prop.
+
+<Preview>
+  <TabsDemo orientation="vertical" />
+</Preview>
 
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
@@ -296,7 +304,7 @@ const StyledList = styled(Tabs.List, {
   borderRight: '1px solid gainsboro',
 });
 
-const StyledTab = styled(Tabs.Tab, {
+const StyledTrigger = styled(Tabs.Trigger, {
   flexShrink: 0,
   padding: '10px 20px',
   color: 'slategray',
@@ -310,7 +318,7 @@ const StyledTab = styled(Tabs.Tab, {
   },
 });
 
-const StyledPanel = styled(Tabs.Panel, {
+const StyledContent = styled(Tabs.Content, {
   flexGrow: 1,
   padding: 20,
 });
@@ -318,13 +326,13 @@ const StyledPanel = styled(Tabs.Panel, {
 export default () => (
   <StyledTabs defaultValue="tab1" orientation="vertical">
     <StyledList aria-label="tabs example">
-      <StyledTab value="tab1">One</StyledTab>
-      <StyledTab value="tab2">Two</StyledTab>
-      <StyledTab value="tab3">Three</StyledTab>
+      <StyledTrigger value="tab1">One</StyledTrigger>
+      <StyledTrigger value="tab2">Two</StyledTrigger>
+      <StyledTrigger value="tab3">Three</StyledTrigger>
     </StyledList>
-    <StyledPanel value="tab1">Tab one content</StyledPanel>
-    <StyledPanel value="tab2">Tab two content</StyledPanel>
-    <StyledPanel value="tab3">Tab three content</StyledPanel>
+    <StyledContent value="tab1">Tab one content</StyledContent>
+    <StyledContent value="tab2">Tab two content</StyledContent>
+    <StyledContent value="tab3">Tab three content</StyledContent>
   </StyledTabs>
 );
 ```
@@ -341,8 +349,9 @@ Adheres to the [Tabs WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       keys: ['Tab'],
       description: (
         <span>
-          When focus moves onto the tabs, focuses the active tab. When
-          a tab contains focus, moves focus to the active panel.
+          When focus moves onto the tabs, focuses the active trigger.
+          When a trigger is focused, moves focus to the active
+          content.
         </span>
       ),
     },
@@ -350,8 +359,9 @@ Adheres to the [Tabs WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       keys: ['ArrowDown'],
       description: (
         <span>
-          Moves focus to the next tab depending on{' '}
-          <Code>orientation</Code> and activates its associated panel.
+          Moves focus to the next trigger depending on{' '}
+          <Code>orientation</Code> and activates its associated
+          content.
         </span>
       ),
     },
@@ -359,8 +369,9 @@ Adheres to the [Tabs WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       keys: ['ArrowRight'],
       description: (
         <span>
-          Moves focus to the next tab depending on{' '}
-          <Code>orientation</Code> and activates its associated panel.
+          Moves focus to the next trigger depending on{' '}
+          <Code>orientation</Code> and activates its associated
+          content.
         </span>
       ),
     },
@@ -368,8 +379,9 @@ Adheres to the [Tabs WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       keys: ['ArrowUp'],
       description: (
         <span>
-          Moves focus to the previous tab depending on{' '}
-          <Code>orientation</Code> and activates its associated panel.
+          Moves focus to the previous trigger depending on{' '}
+          <Code>orientation</Code> and activates its associated
+          content.
         </span>
       ),
     },
@@ -377,8 +389,9 @@ Adheres to the [Tabs WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       keys: ['ArrowLeft'],
       description: (
         <span>
-          Moves focus to the previous tab depending on{' '}
-          <Code>orientation</Code> and activates its associated panel.
+          Moves focus to the previous trigger depending on{' '}
+          <Code>orientation</Code> and activates its associated
+          content.
         </span>
       ),
     },
@@ -386,8 +399,8 @@ Adheres to the [Tabs WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       keys: ['Home'],
       description: (
         <span>
-          Moves focus to the first tab and activates its associated{' '}
-          panel.
+          Moves focus to the first trigger and activates its
+          associated content.
         </span>
       ),
     },
@@ -395,8 +408,8 @@ Adheres to the [Tabs WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-pra
       keys: ['End'],
       description: (
         <span>
-          Moves focus to the last tab and activates its associated{' '}
-          panel.
+          Moves focus to the last trigger and activates its associated{' '}
+          content.
         </span>
       ),
     },

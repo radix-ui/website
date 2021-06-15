@@ -22,7 +22,7 @@ const StyledList = styled(Tabs.List, {
   },
 });
 
-const StyledTab = styled(Tabs.Tab, {
+const StyledTrigger = styled(Tabs.Trigger, {
   flexShrink: 0,
   padding: '10px 20px',
   color: 'slategray',
@@ -41,7 +41,7 @@ const StyledTab = styled(Tabs.Tab, {
   },
 });
 
-const StyledPanel = styled(Tabs.Panel, {
+const StyledContent = styled(Tabs.Content, {
   flexGrow: 1,
 
   '&[data-orientation="horizontal"]': {
@@ -55,13 +55,13 @@ const StyledPanel = styled(Tabs.Panel, {
 export const TabsDemo = (props) => (
   <StyledTabs defaultValue="tab1" {...props}>
     <StyledList aria-label="tabs example">
-      <StyledTab value="tab1">One</StyledTab>
-      <StyledTab value="tab2">Two</StyledTab>
-      <StyledTab value="tab3">Three</StyledTab>
+      <StyledTrigger value="tab1">One</StyledTrigger>
+      <StyledTrigger value="tab2">Two</StyledTrigger>
+      <StyledTrigger value="tab3">Three</StyledTrigger>
     </StyledList>
-    <StyledPanel value="tab1">Tab one content</StyledPanel>
-    <StyledPanel value="tab2">Tab two content</StyledPanel>
-    <StyledPanel value="tab3">Tab three content</StyledPanel>
+    <StyledContent value="tab1">Tab one content</StyledContent>
+    <StyledContent value="tab2">Tab two content</StyledContent>
+    <StyledContent value="tab3">Tab three content</StyledContent>
   </StyledTabs>
 );
 

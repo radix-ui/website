@@ -52,6 +52,10 @@ export default () => (
 
 Create your styled dialog component from the dialog primitives.
 
+<Preview>
+  <DialogDemo />
+</Preview>
+
 ```jsx
 import { styled } from 'path-to/stitches.config';
 import * as Dialog from '@radix-ui/react-dialog';
@@ -255,7 +259,7 @@ Contains content to be rendered in the open dialog.
     },
     {
       name: 'onPointerDownOutside',
-      type: '(event: MouseEvent | TouchEvent) => void',
+      type: '(event: PointerDownOutsideEvent) => void',
       typeSimple: 'function',
       description: (
         <span>

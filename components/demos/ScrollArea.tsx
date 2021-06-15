@@ -3,51 +3,52 @@ import { styled, Box, keyframes } from '@modulz/design-system';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
 import { HeroContainer } from '@components/HeroContainer';
 
-const { SCROLL_AREA_CSS_PROPS } = ScrollArea;
+const SCROLLBAR_SIZE = 8;
 
 const StyledScrollArea = styled(ScrollArea.Root, {
-  position: 'relative',
-  zIndex: 0,
-  maxWidth: '100%',
-  maxHeight: '100%',
-  '& [data-radix-scroll-area-viewport-position]::-webkit-scrollbar': {
-    display: 'none',
-  },
-});
-
-const StyledViewport = styled(ScrollArea.Viewport, {
-  zIndex: 1,
-  position: 'relative',
-});
-
-const StyledScrollbarY = styled(ScrollArea.ScrollbarY, {
-  zIndex: 2,
-  position: 'absolute',
-  userSelect: 'none',
-  transition: '300ms opacity ease',
-  width: 8,
-  right: 0,
-  top: 0,
-  bottom: 0,
-});
-
-const StyledTrack = styled(ScrollArea.Track, {
-  zIndex: -1,
-  position: 'relative',
   width: '100%',
   height: '100%',
 });
 
-const StyledThumb = styled(ScrollArea.Thumb, {
-  backgroundColor: 'gainsboro',
-  position: 'absolute',
-  top: 0,
-  left: 0,
+const StyledViewport = styled(ScrollArea.Viewport, {
+  width: '100%',
+  height: '100%',
+});
+
+const StyledScrollbar = styled(ScrollArea.Scrollbar, {
+  display: 'flex',
+  // ensures no selection
   userSelect: 'none',
-  borderRadius: 9999,
-  willChange: `var(${SCROLL_AREA_CSS_PROPS.scrollbarThumbWillChange})`,
-  height: `var(${SCROLL_AREA_CSS_PROPS.scrollbarThumbHeight})`,
-  width: `var(${SCROLL_AREA_CSS_PROPS.scrollbarThumbWidth})`,
+  // disable browser handling of all panning and zooming gestures on touch devices
+  touchAction: 'none',
+
+  width: SCROLLBAR_SIZE,
+  padding: 2,
+  background: 'rgba(0, 0, 0, 0.3)',
+  '&:hover': {
+    background: 'rgba(0, 0, 0, 0.5)',
+  },
+  transition: 'background 160ms ease-out',
+});
+
+const StyledThumb = styled(ScrollArea.Thumb, {
+  flex: 1,
+  background: 'black',
+  borderRadius: SCROLLBAR_SIZE,
+
+  // increase target size for touch devices https://www.w3.org/WAI/WCAG21/Understanding/target-size.html
+  position: 'relative',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '100%',
+    height: '100%',
+    minWidth: 44,
+    minHeight: 44,
+  },
 });
 
 export const ScrollAreaDemo = () => (
@@ -63,11 +64,9 @@ export const ScrollAreaDemo = () => (
         />
       </StyledViewport>
 
-      <StyledScrollbarY>
-        <StyledTrack>
-          <StyledThumb />
-        </StyledTrack>
-      </StyledScrollbarY>
+      <StyledScrollbar>
+        <StyledThumb />
+      </StyledScrollbar>
     </StyledScrollArea>
   </div>
 );

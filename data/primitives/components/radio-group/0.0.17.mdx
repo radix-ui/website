@@ -50,6 +50,10 @@ export default () => (
 
 Create your styled radio group component from the primitive parts.
 
+<Preview>
+  <RadioGroupDemo />
+</Preview>
+
 ```jsx
 import { styled } from 'path-to/stitches.config';
 import * as RadioGroup from '@radix-ui/react-radio-group';
@@ -215,13 +219,6 @@ An item in the group that can be checked.
           <Code>name</Code>.
         </span>
       ),
-    },
-    {
-      name: 'onCheckedChange',
-      type: '(event: React.ChangeEvent<HTMLInputElement>) => void',
-      typeSimple: 'function',
-      description:
-        'Event handler called when the checked state of the radio item changes.',
     },
     {
       name: 'disabled',
