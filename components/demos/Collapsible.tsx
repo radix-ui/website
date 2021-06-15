@@ -12,8 +12,8 @@ const StyledContent = styled(Collapsible.CollapsibleContent, {
 
 export const CollapsibleDemo = () => (
   <Collapsible.Root>
-    <Collapsible.Button>Button</Collapsible.Button>
-    <StyledContent>Content 1</StyledContent>
+    <Collapsible.Trigger>Trigger</Collapsible.Trigger>
+    <StyledContent>Content</StyledContent>
   </Collapsible.Root>
 );
 
