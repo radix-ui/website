@@ -38,7 +38,7 @@ metaDescription: Radix Primitives releases and their changelogs.
 
 - 🔥 Rename `Collapsible.Button` to `Collapsible.Trigger` <PRLink id={651} />
 
-<PackageRelease name="Context Menu" version="0.0.20" />
+<PackageRelease name="Context Menu" version="0.0.21" />
 
 - ✨ Add submenu support <PRLink id={682} />
 - ✨ Add `ContextMenu.TriggerItem` <PRLink id={682} />
@@ -46,9 +46,8 @@ metaDescription: Radix Primitives releases and their changelogs.
 - ✨ Add `dir` prop for RTL support with submenus <PRLink id={682} />
 - 🔥 Allow preventing default in `onPointerDownOutside` without inadvertently preventing focus <PRLink id={654} />
 - 🔥 Remove `ContextMenu.Content` `side` prop <PRLink id={658} />
-- 🔥 Remove `ContextMenu.Content` `sideOffset` prop <PRLink id={658} />
 - 🔥 Remove `ContextMenu.Content` `align` prop <PRLink id={658} />
-- 🔥 Remove `ContextMenu.Content` `alignOffset` prop <PRLink id={658} />
+- 🔥 If you had `sideOffset` on `ContextMenu.Content` before, you should now use `alignOffset`. This is to standardize vertical alignment for both root and sub-menus. <PRLink id={712} />
 - 🔥 `onFocusOutside` is now a custom event <PRLink id={671} />
 - 🐛 Improve support of content and item with no padding <PRLink id={658} />
 - 🐛 Align with WAI-ARIA spec by focusing first item when opening via keyboard <PRLink id={694} />

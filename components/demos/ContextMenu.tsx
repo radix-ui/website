@@ -90,7 +90,7 @@ export const ContextMenuDemo = ({ showDisabled, showSeparator, showLabel }) => (
         Right click anywhere
       </div>
     </ContextMenu.Trigger>
-    <StyledContent>
+    <StyledContent alignOffset={-5}>
       {showLabel && <StyledLabel>Actions</StyledLabel>}
       <StyledItem disabled={showDisabled} onSelect={() => console.log('cut')}>
         Cut
@@ -119,7 +119,7 @@ export const ContextMenuCheckboxDemo = () => {
           Right click anywhere
         </div>
       </ContextMenu.Trigger>
-      <StyledContent>
+      <StyledContent alignOffset={-5}>
         <StyledIndentedItem onSelect={() => console.log('radix-ui')}>
           About Radix UI
         </StyledIndentedItem>
@@ -154,7 +154,7 @@ export const ContextMenuRadioDemo = () => {
           Right click anywhere
         </div>
       </ContextMenu.Trigger>
-      <StyledContent>
+      <StyledContent alignOffset={-5}>
         <StyledRadioGroup value={color} onValueChange={setColor}>
           <StyledRadioItem value="red">
             <StyledItemIndicator>
@@ -193,7 +193,7 @@ export const ContextMenuComplexDemo = () => (
         Right click anywhere
       </div>
     </ContextMenu.Trigger>
-    <StyledContent>
+    <StyledContent alignOffset={-5}>
       <StyledItem onSelect={() => console.log('adolfo-hess')}>
         <Image src="https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=facearea&facepad=3&w=24&h=24&dpr=2&q=80" />
         Adolfo Hess

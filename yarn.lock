@@ -693,10 +693,10 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
-"@radix-ui/react-context-menu@0.0.20":
-  version "0.0.20"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-context-menu/-/react-context-menu-0.0.20.tgz#3d818f98af9cfa53ed4b8862ec7247b5a758ddd5"
-  integrity sha512-bqsYjjpw4e/F9zpDwo+dtjSWwrXrChbxT1xsAg4872kvvnBIIM5S8RmddI6PlzcThRWqwaijAloXWiPjkDPCEw==
+"@radix-ui/react-context-menu@0.0.21":
+  version "0.0.21"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-context-menu/-/react-context-menu-0.0.21.tgz#b080c8e515b9a0d18fcda9b02f34b7a94347ef08"
+  integrity sha512-snRhgVDtdxBNwds2ULd7RQAB97PfSeKlrL5rRudlj4YTlLq7y/Jr0oJ7FTnu9EylfH2ii0uKcW5dEVhrbzr5YQ==
   dependencies:
     "@babel/runtime" "^7.13.10"
     "@radix-ui/primitive" "0.0.5"
