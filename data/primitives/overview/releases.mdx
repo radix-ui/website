@@ -9,6 +9,112 @@ metaDescription: Radix Primitives releases and their changelogs.
   Radix Primitives releases and their changelogs.
 </Description>
 
+## 15/06/2021
+
+**All Primitives**
+
+- ✨ Improve polymorphic types <PRLink id={648} />
+
+<PackageRelease name="Accordion" version="0.0.16" />
+
+- 🔥 Rename `Accordion.Button` to `Accordion.Trigger` <PRLink id={651} />
+- 🔥 Rename `Accordion.Panel` to `Accordion.Content` <PRLink id={651} />
+- 🔥 Rename custom property accordingly (`--radix-accordion-content-height`) <PRLink id={651} />
+- 🔥 `type=“single”` `Accordion` now has a new `collapsible` prop which is `false` by default. This means that the default behaviour has now changed. By default a user cannot close all items. <PRLink id={651} />
+
+<PackageRelease name="Alert Dialog" version="0.0.18" />
+
+- 🔥 Allow preventing default in `onPointerDownOutside` without inadvertently preventing focus <PRLink id={654} />
+
+<PackageRelease name="Checkbox" version="0.0.16" />
+
+- 🔥 `onCheckedChange(event)` is now `onCheckedChange(checked: CheckedState)` <PRLink id={672} />
+- 🐛 Improve compatibility with native form validation <PRLink id={650} />
+- 🐛 Allow stopping propagation on `Checkbox` `onClick` <PRLink id={672} />
+- 🐛 Improve compatibility with native `label` <PRLink id={672} />
+- 🐛 Improve accessibility when wrapped in native `label` <PRLink id={672} />
+
+<PackageRelease name="Collapsible" version="0.0.16" />
+
+- 🔥 Rename `Collapsible.Button` to `Collapsible.Trigger` <PRLink id={651} />
+
+<PackageRelease name="Context Menu" version="0.0.20" />
+
+- ✨ Add submenu support <PRLink id={682} />
+- ✨ Add `ContextMenu.TriggerItem` <PRLink id={682} />
+- ✨ Add `ContextMenu.Arrow` <PRLink id={682} />
+- ✨ Add `dir` prop for RTL support with submenus <PRLink id={682} />
+- 🔥 Allow preventing default in `onPointerDownOutside` without inadvertently preventing focus <PRLink id={654} />
+- 🔥 Remove `ContextMenu.Content` `side` prop <PRLink id={658} />
+- 🔥 Remove `ContextMenu.Content` `sideOffset` prop <PRLink id={658} />
+- 🔥 Remove `ContextMenu.Content` `align` prop <PRLink id={658} />
+- 🔥 Remove `ContextMenu.Content` `alignOffset` prop <PRLink id={658} />
+- 🔥 `onFocusOutside` is now a custom event <PRLink id={671} />
+- 🐛 Improve support of content and item with no padding <PRLink id={658} />
+- 🐛 Align with WAI-ARIA spec by focusing first item when opening via keyboard <PRLink id={694} />
+
+<PackageRelease name="Dialog" version="0.0.18" />
+
+- 🔥 Allow preventing default in `onPointerDownOutside` without inadvertently preventing focus <PRLink id={654} />
+
+<PackageRelease name="Dropdown Menu" version="0.0.20" />
+
+- ✨ Add submenu support <PRLink id={682} />
+- ✨ Add `DropdownMenu.TriggerItem` <PRLink id={682} />
+- ✨ Add `dir` prop for RTL support with submenus <PRLink id={682} />
+- 🔥 Allow preventing default in `onPointerDownOutside` without inadvertently preventing focus <PRLink id={654} />
+- 🔥 `onFocusOutside` is now a custom event <PRLink id={671} />
+- 🔥 The up arrow no longer opens the menu <PRLink id={702} />
+- 🐛 Align with WAI-ARIA spec by focusing first item when opening via keyboard <PRLink id={694} />
+
+<PackageRelease name="Popover" version="0.0.18" />
+
+- 🔥 Allow preventing default in `onPointerDownOutside` without inadvertently preventing focus <PRLink id={654} />
+- 🔥 `onFocusOutside` is now a custom event <PRLink id={671} />
+
+<PackageRelease name="Radio Group" version="0.0.17" />
+
+- 🔥 `onValueChange(event)` is now `onValueChange(value: string)` <PRLink id={685} />
+- 🔥 Remove `RadioGroup.Item` `onCheckedChange` prop <PRLink id={685} />
+- 🐛 Improve compatibility with native form validation <PRLink id={650} />
+- 🐛 Improve usage within forms <PRLink id={685} />
+
+<PackageRelease name="ScrollArea" version="0.0.14" />
+
+- 🎉 Brand new version with a simpler API <PRLink id={624} />
+- ✨ Improve Safari support <PRLink id={624} />
+- ✨ Improve RTL support <PRLink id={624} />
+- ✨ Improve touch support <PRLink id={624} />
+- ✨ `Scrollbar` mount/unmount can now be animated <PRLink id={624} />
+- ✨ Add minimum width/height to thumb so it's always grabbable <PRLink id={624} />
+- ✨ Move functional CSS into component to improve DX <PRLink id={624} />
+- ✨ Bundle size significantly reduced <PRLink id={624} />
+- 🔥 Remove `overflowX` and `overflowY` props <PRLink id={624} />
+- 🔥 Remove `ScrollAreaButtonStart`, `ScrollAreaButtonEnd` and `ScrollAreaTrack` <PRLink id={624} />
+- 🔥 Rename `scrollbarVisibility` prop to `type`. The values are `auto`, `always`, `scroll` or `hover` <PRLink id={624} />
+- 🔥 Rename `scrollbarVisibilityRestTimeout` prop to `scrollHideDelay` <PRLink id={624} />
+- 🔥 Remove `trackClickBehavior` prop as we've removed built-in animation. Clicking on track always snaps to pointer position <PRLink id={624} />
+- 🔥 `ScrollAreaScrollbarX` and `ScrollAreaScrollbarY` are now `<ScrollAreaScrollbar orientation="horizontal" />` and `<ScrollAreaScrollbar orientation="vertical" />` <PRLink id={624} />
+- 🐛 Ensure no scrollbars are shown when scrolling is disabled <PRLink id={624} />
+- 🐛 Ensure children event handlers don't break <PRLink id={624} />
+- 🐛 Ensure scroll area updates when children content size changes <PRLink id={624} />
+
+<PackageRelease name="Slider" version="0.0.14" />
+
+- 🐛 Improve usage within forms <PRLink id={678} />
+
+<PackageRelease name="Switch" version="0.0.14" />
+
+- 🔥 `onCheckedChange(event)` is now `onCheckedChange(checked: boolean)` <PRLink id={679} />
+- 🐛 Improve compatibility with native form validation <PRLink id={650} />
+- 🐛 Improve usage within forms <PRLink id={679} />
+- 🐛 Improve accessibility when wrapped in native `label` <PRLink id={679} />
+
+<PackageRelease name="Tabs" version="0.0.14" />
+
+- 🔥 Rename `Tabs.Tab` to `Tabs.Trigger` <PRLink id={652} />
+- 🔥 Rename `Tabs.Panel` to `Tabs.Content` <PRLink id={652} />
+
 ## 03/05/2021
 
 **All Primitives**
@@ -33,8 +139,8 @@ metaDescription: Radix Primitives releases and their changelogs.
 
 <PackageRelease name="Dropdown Menu" version="0.0.18" />
 
-- 🔥 Remove `anchorRef` prop <PRLink id={580} />
 - ✨ Take into account non-visible items <PRLink id={618} />
+- 🔥 Remove `anchorRef` prop <PRLink id={580} />
 - 🐛 Prevent page from scrolling when selecting an item with space key <PRLink id={626} />
 
 <PackageRelease name="Hover Card" version="0.0.1" />
@@ -47,8 +153,8 @@ metaDescription: Radix Primitives releases and their changelogs.
 
 <PackageRelease name="Radio Group" version="0.0.15" />
 
-- 🔥 Remove `readOnly` prop <PRLink id={600} />
 - ✨ Add optional `orientation`, `dir`, `loop` props <PRLink id={618} />
+- 🔥 Remove `readOnly` prop <PRLink id={600} />
 
 <PackageRelease name="Switch" version="0.0.12" />
 
