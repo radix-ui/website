@@ -35,6 +35,14 @@ const itemStyles = {
 
 const StyledItem = styled(ContextMenu.Item, itemStyles as any);
 
+const StyledTriggerItem = styled(ContextMenu.TriggerItem, {
+  '&[data-state="open"]': {
+    backgroundColor: 'hsl(206,10%,80%)',
+    color: 'black',
+  },
+  ...(itemStyles as any),
+});
+
 const StyledIndentedItem = styled(ContextMenu.Item, {
   ...(itemStyles as any),
   padding: '5px 10px 5px 25px',
@@ -55,6 +63,10 @@ const StyledRadioItem = styled(ContextMenu.RadioItem, {
 const StyledItemIndicator = styled(ContextMenu.ItemIndicator, {
   position: 'absolute',
   left: 5,
+});
+
+const StyledArrow = styled(ContextMenu.Arrow, {
+  fill: 'white',
 });
 
 const StyledSeparator = styled(ContextMenu.Separator, {
@@ -209,6 +221,41 @@ export const ContextMenuComplexDemo = () => (
     </StyledContent>
   </ContextMenu.Root>
 );
+
+export const ContextMenuSubmenuDemo = () => {
+  return (
+    <ContextMenu.Root>
+      <ContextMenu.Trigger>
+        <div
+          style={{
+            backgroundColor: 'gainsboro',
+            padding: 50,
+            textAlign: 'center',
+          }}
+        >
+          Right click anywhere
+        </div>
+      </ContextMenu.Trigger>
+      <StyledContent>
+        <StyledItem onSelect={() => console.log('command-palette')}>Command Palette…</StyledItem>
+        <StyledItem onSelect={() => console.log('open-view')}>Open View…</StyledItem>
+        <StyledSeparator />
+        <ContextMenu.Root>
+          <StyledTriggerItem>Editor Layout →</StyledTriggerItem>
+          <StyledContent offset={12} alignOffset={-5}>
+            <StyledItem onSelect={() => console.log('split-up')}>Split Up</StyledItem>
+            <StyledItem onSelect={() => console.log('split-left')}>Split Left</StyledItem>
+            <StyledSeparator />
+            <StyledItem onSelect={() => console.log('two-columns')}>Two Columns</StyledItem>
+            <StyledArrow offset={13} />
+          </StyledContent>
+        </ContextMenu.Root>
+        <StyledSeparator />
+        <StyledItem onSelect={() => console.log('explorer')}>Explorer</StyledItem>
+      </StyledContent>
+    </ContextMenu.Root>
+  );
+};
 
 const menuitem = keyframes({
   '0%': { transform: 'translateY(0)' },
