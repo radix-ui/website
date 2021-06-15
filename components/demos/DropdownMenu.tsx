@@ -35,6 +35,14 @@ const itemStyles = {
 
 const StyledItem = styled(DropdownMenu.Item, itemStyles as any);
 
+const StyledTriggerItem = styled(DropdownMenu.TriggerItem, {
+  '&[data-state="open"]': {
+    backgroundColor: 'hsl(206,10%,80%)',
+    color: 'black',
+  },
+  ...(itemStyles as any),
+});
+
 const StyledIndentedItem = styled(DropdownMenu.Item, {
   ...(itemStyles as any),
   padding: '5px 10px 5px 25px',
@@ -177,6 +185,32 @@ export const DropdownMenuComplexDemo = () => (
     </StyledContent>
   </DropdownMenu.Root>
 );
+
+export const DropdownMenuSubmenuDemo = () => {
+  return (
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
+      <StyledContent>
+        <StyledItem onSelect={() => console.log('command-palette')}>Command Palette…</StyledItem>
+        <StyledItem onSelect={() => console.log('open-view')}>Open View…</StyledItem>
+        <StyledSeparator />
+        <DropdownMenu.Root>
+          <StyledTriggerItem>Editor Layout →</StyledTriggerItem>
+          <StyledContent sideOffset={12}>
+            <StyledItem onSelect={() => console.log('split-up')}>Split Up</StyledItem>
+            <StyledItem onSelect={() => console.log('split-left')}>Split Left</StyledItem>
+            <StyledSeparator />
+            <StyledItem onSelect={() => console.log('two-columns')}>Two Columns</StyledItem>
+            <StyledArrow offset={10} />
+          </StyledContent>
+        </DropdownMenu.Root>
+        <StyledSeparator />
+        <StyledItem onSelect={() => console.log('explorer')}>Explorer</StyledItem>
+        <StyledArrow />
+      </StyledContent>
+    </DropdownMenu.Root>
+  );
+};
 
 const menuitem = keyframes({
   '0%': { transform: 'translateY(0)' },
