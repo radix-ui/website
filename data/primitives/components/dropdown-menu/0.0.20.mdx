@@ -66,6 +66,11 @@ export default () => (
         </DropdownMenu.RadioItem>
       </DropdownMenu.RadioGroup>
 
+      <DropdownMenu.Root>
+        <DropdownMenu.TriggerItem />
+        <DropdownMenu.Content />
+      </DropdownMenu.Root>
+
       <DropdownMenu.Separator />
       <DropdownMenu.Arrow />
     </DropdownMenu.Content>
@@ -285,7 +290,7 @@ The component that pops out when the dropdown menu is open.
     },
     {
       name: 'onPointerDownOutside',
-      type: '(event: MouseEvent | TouchEvent) => void',
+      type: '(event: PointerDownOutsideEvent) => void',
       typeSimple: 'function',
       description: (
         <span>
@@ -296,9 +301,21 @@ The component that pops out when the dropdown menu is open.
       ),
     },
     {
+      name: 'onFocusOutside',
+      type: '(event: FocusOutsideEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when focus moves outside the bounds of
+          the component. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
       name: 'onInteractOutside',
       type:
-        '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
+        '(event: PointerDownOutsideEvent | FocusOutsideEvent) => void',
       typeSimple: 'function',
       description: (
         <span>

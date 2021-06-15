@@ -196,12 +196,12 @@ export const DropdownMenuSubmenuDemo = () => {
         <StyledSeparator />
         <DropdownMenu.Root>
           <StyledTriggerItem>Editor Layout →</StyledTriggerItem>
-          <StyledContent sideOffset={12}>
+          <StyledContent sideOffset={12} alignOffset={-5}>
             <StyledItem onSelect={() => console.log('split-up')}>Split Up</StyledItem>
             <StyledItem onSelect={() => console.log('split-left')}>Split Left</StyledItem>
             <StyledSeparator />
             <StyledItem onSelect={() => console.log('two-columns')}>Two Columns</StyledItem>
-            <StyledArrow offset={10} />
+            <StyledArrow offset={13} />
           </StyledContent>
         </DropdownMenu.Root>
         <StyledSeparator />
