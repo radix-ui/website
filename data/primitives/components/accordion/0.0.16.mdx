@@ -53,6 +53,10 @@ export default () => (
 
 Create your styled accordion component from the primitive parts.
 
+<Preview>
+  <AccordionDemo />
+</Preview>
+
 ```jsx
 import { styled } from 'path-to/stitches.config';
 import * as Accordion from '@radix-ui/react-accordion';
@@ -369,6 +373,10 @@ const StyledPanel = styled(Accordion.Panel, {
 
 ### With chevrons
 
+<Preview>
+  <AccordionDemo showChevrons />
+</Preview>
+
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
 import * as Accordion from '@radix-ui/react-accordion';
@@ -452,6 +460,10 @@ export default () => (
 
 ### Expanded by default
 
+<Preview>
+  <AccordionDemo initialValue="item-2" />
+</Preview>
+
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
 import * as Accordion from '@radix-ui/react-accordion';
@@ -533,6 +545,10 @@ export default () => (
 ```
 
 ### Controlled to prevent closing
+
+<Preview>
+  <AccordionDemo preventClose initialValue="item-2" />
+</Preview>
 
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
@@ -628,6 +644,13 @@ export default () => {
 ```
 
 ### Multiple panels open at the same time
+
+<Preview>
+  <AccordionDemo
+    type="multiple"
+    initialValue={['item-2', 'item-3']}
+  />
+</Preview>
 
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
