@@ -236,7 +236,7 @@ export const ContextMenuSubmenuDemo = () => {
           Right click anywhere
         </div>
       </ContextMenu.Trigger>
-      <StyledContent>
+      <StyledContent alignOffset={-5}>
         <StyledItem onSelect={() => console.log('command-palette')}>Command Palette…</StyledItem>
         <StyledItem onSelect={() => console.log('open-view')}>Open View…</StyledItem>
         <StyledSeparator />
