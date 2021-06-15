@@ -922,7 +922,7 @@ export default () => (
       <StyledSeparator />
       <DropdownMenu.Root>
         <StyledTriggerItem>Editor Layout →</StyledTriggerItem>
-        <StyledContent sideOffset={12}>
+        <StyledContent sideOffset={12} alignOffset={-5}>
           <StyledItem onSelect={() => console.log('split-up')}>
             Split Up
           </StyledItem>
@@ -933,7 +933,7 @@ export default () => (
           <StyledItem onSelect={() => console.log('two-columns')}>
             Two Columns
           </StyledItem>
-          <StyledArrow offset={10} />
+          <StyledArrow offset={13} />
         </StyledContent>
       </DropdownMenu.Root>
       <StyledSeparator />
