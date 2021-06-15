@@ -15,6 +15,7 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#menu
 
 <Highlights
   features={[
+    'Supports submenus with configurable reading direction.',
     'Supports items, labels, groups of items.',
     'Supports checkable items (single or multiple).',
     'Customize side, alignment, offsets, collision handling.',
@@ -61,6 +62,11 @@ export default () => (
           <ContextMenu.ItemIndicator />
         </ContextMenu.RadioItem>
       </ContextMenu.RadioGroup>
+
+      <ContextMenu.Root>
+        <ContextMenu.TriggerItem />
+        <ContextMenu.Content />
+      </ContextMenu.Root>
 
       <ContextMenu.Separator />
     </ContextMenu.Content>
@@ -199,6 +205,15 @@ The component that pops out in an open context menu.
       ),
     },
     {
+      name: 'dir',
+      required: false,
+      type: '"ltr" | "rtl"',
+      typeSimple: 'enum',
+      default: '"ltr"',
+      description:
+        'The reading direction of submenus when applicable. If omitted, assumes LTR (left-to-right) reading mode.',
+    },
+    {
       name: 'onCloseAutoFocus',
       type: '(event: Event) => void',
       typeSimple: 'function',
@@ -207,6 +222,8 @@ The component that pops out in an open context menu.
           Event handler called when focus moves back after closing. It
           can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
+          <br />
+          This prop is ignored within submenus.
         </span>
       ),
     },
@@ -221,6 +238,8 @@ The component that pops out in an open context menu.
           Users will need to click twice on outside elements to
           interact with them: Once to close the context menu, and
           again to activate the element.
+          <br />
+          This prop is ignored within submenus.
         </span>
       ),
     },
@@ -237,7 +256,7 @@ The component that pops out in an open context menu.
     },
     {
       name: 'onPointerDownOutside',
-      type: '(event: MouseEvent | TouchEvent) => void',
+      type: '(event: PointerDownOutsideEvent) => void',
       typeSimple: 'function',
       description: (
         <span>
@@ -248,9 +267,21 @@ The component that pops out in an open context menu.
       ),
     },
     {
+      name: 'onFocusOutside',
+      type: '(event: FocusOutsideEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when focus moves outside the bounds of
+          the component. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
       name: 'onInteractOutside',
       type:
-        '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
+        '(event: PointerDownOutsideEvent | FocusOutsideEvent) => void',
       typeSimple: 'function',
       description: (
         <span>
@@ -267,35 +298,14 @@ The component that pops out in an open context menu.
         'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
     },
     {
-      name: 'side',
-      type: '"top" | "right" | "bottom" | "left"',
-      typeSimple: 'enum',
-      default: '"bottom"',
-      description: (
-        <span>
-          The preferred side of the anchor to render against when
-          open. Will be reversed when collisions occur and{' '}
-          <Code>avoidCollisions</Code> is enabled.
-        </span>
-      ),
-    },
-    {
       name: 'sideOffset',
       type: 'number',
       default: '0',
       description: (
-        <span>The distance in pixels from the anchor.</span>
-      ),
-    },
-    {
-      name: 'align',
-      type: '"start" | "center" | "end"',
-      typeSimple: 'enum',
-      default: '"center"',
-      description: (
         <span>
-          The preferred alignment against the anchor. May change when
-          collisions occur.
+          The horizontal distance in pixels from the anchor.
+          <br />
+          This only applies within submenus.
         </span>
       ),
     },
@@ -304,10 +314,7 @@ The component that pops out in an open context menu.
       type: 'number',
       default: '0',
       description: (
-        <span>
-          An offset in pixels from the <Code>"start"</Code> or{' '}
-          <Code>"end"</Code> alignment options.
-        </span>
+        <span>The vertical distance in pixels from the anchor.</span>
       ),
     },
     {
@@ -330,6 +337,47 @@ The component that pops out in an open context menu.
         <span>
           The distance in pixels from window edges where collision
           detection should occur.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### Arrow
+
+An optional arrow element to render alongside a submenu. This can be used to help visually link the trigger item with the `ContextMenu.Content`. Must be rendered inside `ContextMenu.Content`.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'svg',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the entire SVG and all of its paths.',
+    },
+    {
+      name: 'width',
+      type: 'number',
+      default: 10,
+      description: <span>The width of the arrow in pixels.</span>,
+    },
+    {
+      name: 'height',
+      type: 'number',
+      default: 5,
+      description: <span>The height of the arrow in pixels.</span>,
+    },
+    {
+      name: 'offset',
+      type: 'number',
+      default: 0,
+      description: (
+        <span>
+          The distance in pixels to render from the{' '}
+          <Code>ContextMenu.Content</Code> edge.
         </span>
       ),
     },
@@ -372,6 +420,46 @@ The component that contains the context menu items.
           <Code>event.preventDefault</Code> in this handler will
           prevent the context menu from closing when selecting that
           item.
+        </span>
+      ),
+    },
+    {
+      name: 'textValue',
+      type: 'string',
+      description: (
+        <span>
+          Optional text used for typeahead purposes. By default the
+          typeahead behavior will use the <Code>.textContent</Code> of{' '}
+          the item. Use this when the content is complex, or you have
+          non-textual content inside.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### TriggerItem
+
+An item that opens a submenu. Used in combination with a nested `ContextMenu`. Must be rendered inside `ContextMenu.Root`.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      description: (
+        <span>
+          When <Code>true</Code>, prevents the user from interacting
+          with the item.
         </span>
       ),
     },
@@ -678,6 +766,95 @@ const StyledContent = styled(ContextMenu.Content, {
 ```
 
 ## Examples
+
+### With submenus
+
+You can create submenus by nesting `ContextMenu`s and using a `TriggerItem` in place of a `Trigger`.
+
+<Preview>
+  <ContextMenuSubmenuDemo />
+</Preview>
+
+```jsx collapsed
+import { styled } from 'path-to/stitches.config';
+import * as ContextMenu from '@radix-ui/react-context-menu';
+const StyledContent = styled(ContextMenu.Content, {
+  minWidth: 130,
+  backgroundColor: 'white',
+  borderRadius: 6,
+  padding: 5,
+  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
+});
+const itemStyles = {
+  fontSize: 13,
+  padding: '5px 10px',
+  borderRadius: 3,
+  cursor: 'default',
+  '&[data-disabled]': {
+    color: 'gainsboro',
+  },
+  '&:focus': {
+    outline: 'none',
+    backgroundColor: 'dodgerblue',
+    color: 'white',
+  },
+};
+const StyledItem = styled(ContextMenu.Item, itemStyles);
+const StyledTriggerItem = styled(ContextMenu.TriggerItem, {
+  '&[data-state="open"]': {
+    backgroundColor: 'hsl(206,10%,80%)',
+    color: 'black',
+  },
+  ...itemStyles,
+});
+const StyledArrow = styled(ContextMenu.Arrow, {
+  fill: 'white',
+});
+export default () => (
+  <ContextMenu.Root>
+    <ContextMenu.Trigger>
+      <div
+        style={{
+          backgroundColor: 'gainsboro',
+          padding: 50,
+          textAlign: 'center',
+        }}
+      >
+        Right click anywhere
+      </div>
+    </ContextMenu.Trigger>
+    <StyledContent alignOffset={-5}>
+      <StyledItem onSelect={() => console.log('command-palette')}>
+        Command Palette…
+      </StyledItem>
+      <StyledItem onSelect={() => console.log('open-view')}>
+        Open View…
+      </StyledItem>
+      <StyledSeparator />
+      <ContextMenu.Root>
+        <StyledTriggerItem>Editor Layout →</StyledTriggerItem>
+        <StyledContent sideOffset={12} alignOffset={-5}>
+          <StyledItem onSelect={() => console.log('split-up')}>
+            Split Up
+          </StyledItem>
+          <StyledItem onSelect={() => console.log('split-left')}>
+            Split Left
+          </StyledItem>
+          <StyledSeparator />
+          <StyledItem onSelect={() => console.log('two-columns')}>
+            Two Columns
+          </StyledItem>
+          <StyledArrow offset={13} />
+        </StyledContent>
+      </ContextMenu.Root>
+      <StyledSeparator />
+      <StyledItem onSelect={() => console.log('explorer')}>
+        Explorer
+      </StyledItem>
+    </StyledContent>
+  </ContextMenu.Root>
+);
+```
 
 ### With disabled items
 
@@ -1162,6 +1339,15 @@ Uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/#kbd_roving_
     {
       keys: ['ArrowUp'],
       description: <span>Moves focus to the previous item.</span>,
+    },
+    {
+      keys: ['ArrowRight', 'ArrowLeft'],
+      description: (
+        <span>
+          When focus is on <Code>ContextMenu.TriggerItem</Code>, opens
+          or closes the submenu depending on reading direction.
+        </span>
+      ),
     },
     {
       keys: ['Esc'],
