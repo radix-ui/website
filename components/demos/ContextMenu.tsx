@@ -242,7 +242,7 @@ export const ContextMenuSubmenuDemo = () => {
         <StyledSeparator />
         <ContextMenu.Root>
           <StyledTriggerItem>Editor Layout →</StyledTriggerItem>
-          <StyledContent offset={12} alignOffset={-5}>
+          <StyledContent sideOffset={12} alignOffset={-5}>
             <StyledItem onSelect={() => console.log('split-up')}>Split Up</StyledItem>
             <StyledItem onSelect={() => console.log('split-left')}>Split Left</StyledItem>
             <StyledSeparator />
