@@ -28,7 +28,7 @@ const globalStyles = global({
   'pre, code': { margin: 0, fontFamily: '$mono' },
 
   '::selection': {
-    backgroundColor: '$violet300',
+    backgroundColor: '$violet5',
   },
 
   '#__next': {
