@@ -41,7 +41,6 @@
     "@radix-ui/react-toolbar": "0.0.12",
     "@radix-ui/react-tooltip": "0.0.19",
     "@radix-ui/react-visually-hidden": "0.0.14",
-    "@segment/snippet": "^4.13.2",
     "copy-to-clipboard": "^3.3.1",
     "date-fns": "^2.20.0",
     "glob": "^7.1.6",

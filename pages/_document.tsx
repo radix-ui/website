@@ -1,7 +1,7 @@
 import React from 'react';
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
 import { getCssString } from '@modulz/design-system';
-import { renderSnippet } from '@lib/analytics';
+import { renderSnippet, gtagUrl } from '@lib/analytics';
 
 export default class Document extends NextDocument {
   render() {
@@ -80,6 +80,7 @@ export default class Document extends NextDocument {
           />
           <link rel="icon" href="/favicon.png" />
           <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+          <script async src={gtagUrl} />
           <script dangerouslySetInnerHTML={{ __html: renderSnippet() }} />
         </Head>
         <body>
