@@ -1,6 +1,6 @@
 ---
 metaTitle: Context Menu
-metaDescription: Displays a menu located at the pointer, triggered by a right-click.
+metaDescription: Displays a menu located at the pointer, triggered by a right-click or a long-press.
 name: context-menu
 aria: https://www.w3.org/TR/wai-aria-practices-1.2/#menu
 ---
@@ -8,7 +8,8 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#menu
 # Context Menu
 
 <Description>
-  Displays a menu located at the pointer, triggered by a right-click.
+  Displays a menu located at the pointer, triggered by a right-click
+  or a long-press.
 </Description>
 
 <ContextMenuHero />
@@ -23,6 +24,7 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#menu
     'Full keyboard navigation.',
     'Typeahead support.',
     'Dismissing and layering behavior is highly customizable.',
+    'Triggers with a long-press on touch devices',
   ]}
 />
 
@@ -77,6 +79,10 @@ export default () => (
 ## Basic example
 
 Create your styled context menu component from the primitive parts.
+
+<Preview>
+  <ContextMenuDemo />
+</Preview>
 
 ```jsx
 import { styled } from 'path-to/stitches.config';
@@ -767,6 +773,10 @@ const StyledContent = styled(ContextMenu.Content, {
 
 You can create submenus by nesting `ContextMenu`s and using a `TriggerItem` in place of a `Trigger`.
 
+<Preview>
+  <ContextMenuSubmenuDemo />
+</Preview>
+
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
@@ -864,6 +874,10 @@ export default () => (
 
 You can add special styles to disabled items via the `data-disabled` attribute.
 
+<Preview>
+  <ContextMenuDemo showDisabled />
+</Preview>
+
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
@@ -924,6 +938,10 @@ export default () => (
 ### With separators
 
 Use the `Separator` part to add a separator between items.
+
+<Preview>
+  <ContextMenuDemo showSeparator />
+</Preview>
 
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
@@ -989,6 +1007,10 @@ export default () => (
 ### With labels
 
 Use the `Label` part to help label a section.
+
+<Preview>
+  <ContextMenuDemo showLabel />
+</Preview>
 
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
@@ -1060,6 +1082,10 @@ export default () => (
 ### With checkbox items
 
 Use the `CheckboxItem` part to add an item that can be checked.
+
+<Preview>
+  <ContextMenuCheckboxDemo />
+</Preview>
 
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
@@ -1149,6 +1175,10 @@ export default () => {
 
 Use the `RadioGroup` and `RadioItem` parts to add an item that can be checked amongst others.
 
+<Preview>
+  <ContextMenuRadioDemo />
+</Preview>
+
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
@@ -1231,6 +1261,10 @@ export default () => {
 ```
 
 ### With complex items
+
+<Preview>
+  <ContextMenuComplexDemo />
+</Preview>
 
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';

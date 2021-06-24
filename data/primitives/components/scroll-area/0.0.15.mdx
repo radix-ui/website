@@ -55,6 +55,10 @@ export default () => (
 
 Create your styled scroll area component from the primitive parts.
 
+<Preview>
+  <ScrollAreaDemo />
+</Preview>
+
 ```jsx
 import { styled } from 'path-to/stitches.config';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
@@ -73,13 +77,19 @@ const StyledViewport = styled(ScrollArea.Viewport, {
 
 const StyledScrollbar = styled(ScrollArea.Scrollbar, {
   display: 'flex',
-  width: SCROLLBAR_SIZE,
   padding: 2,
   background: 'rgba(0, 0, 0, 0.3)',
   '&:hover': {
     background: 'rgba(0, 0, 0, 0.5)',
   },
   transition: 'background 160ms ease-out',
+  '&[data-orientation="vertical"]': {
+    width: SCROLLBAR_SIZE,
+  },
+  '&[data-orientation="horizontal"]': {
+    flexDirection: 'column',
+    height: SCROLLBAR_SIZE,
+  },
 });
 
 const StyledThumb = styled(ScrollArea.Thumb, {
@@ -88,22 +98,33 @@ const StyledThumb = styled(ScrollArea.Thumb, {
   borderRadius: SCROLLBAR_SIZE,
 });
 
+const StyledCorner = styled(ScrollArea.Corner, {
+  background: 'rgba(0, 0, 0, 0.3)',
+});
+
 export default () => (
   <div style={{ height: 250 }}>
     <StyledScrollArea>
       <StyledViewport>
         <div
           style={{
+            width: '300vw',
             height: 1000,
             backgroundImage:
-              'repeating-linear-gradient(0deg, dodgerblue, dodgerblue 10px, transparent 10px, transparent 20px)',
+              'repeating-linear-gradient(-45deg, dodgerblue, dodgerblue 10px, transparent 10px, transparent 20px)',
           }}
         />
       </StyledViewport>
 
-      <StyledScrollbar>
+      <StyledScrollbar orientation="vertical">
         <StyledThumb />
       </StyledScrollbar>
+
+      <StyledScrollbar orientation="horizontal">
+        <StyledThumb />
+      </StyledScrollbar>
+
+      <StyledCorner />
     </StyledScrollArea>
   </div>
 );
