@@ -19,6 +19,7 @@ import { UseCasesTable } from '@components/UseCasesTable';
 import { ColorGrays } from '@components/ColorGrays';
 import { ColorGrayPairs } from '@components/ColorGrayPairs';
 import { ColorGrayPairsComplementary } from '@components/ColorGrayPairsComplementary';
+import { PlusIcon } from '@radix-ui/react-icons';
 
 import type { Frontmatter } from 'types/frontmatter';
 
@@ -54,6 +55,7 @@ export default function ColorsPaletteCompostionDoc({ frontmatter, code }: Doc) {
               ColorGrayPairs,
               ColorGrayPairsComplementary,
               ColorExample04,
+              PlusIcon,
             } as any
           }
         />

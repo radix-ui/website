@@ -21,9 +21,24 @@ This table is a simple overview of the most common use case for each step. Howev
 
 <ColorScale01 />
 
-Radix Colors provides 26 scales, each with both light and dark variations. Import just the scales you need.
+Steps `1` and `2` are designed for app backgrounds and subtle component backgrounds. You can use them interchangeably, depending on the vibe you're going for.
 
-<ColorExample04 />
+Appropriate applications include:
+
+- Main app background
+- Striped table background
+- Code block background
+- Card background
+- Sidebar background
+- Canvas area background
+
+<Note>
+  You may want to use white for your app background in light mode, and
+  Step `1` or `2` from a gray or coloured scale in dark mode. In this
+  case, set up a [mutable
+  alias](/docs/colors/getting-started/aliasing#mutable-aliases) for
+  `AppBg` and map it to a different color for each color mode.
+</Note>
 
 ## Steps 3–5: Component backgrounds
 
@@ -35,13 +50,245 @@ Steps `3`, `4`, and `5` are designed for UI component backgrounds.
 - Step `4` is for hover states.
 - Step `5` is for pressed or selected states.
 
+{
+
+<Grid columns="4" gap="5" css={{ my: '$5' }}>
+  <Box>
+    <Box
+      css={{
+        display: 'inline-flex',
+        ai: 'center',
+        cursor: 'default',
+        px: '$3',
+        height: 35,
+        backgroundColor: '$blue3',
+        borderRadius: '$2',
+        '&:hover': { backgroundColor: '$blue4' },
+        '&:active': { backgroundColor: '$blue5' },
+      }}
+    >
+      <Text
+        css={{ fontSize: '$3', color: '$blue11', fontWeight: 500 }}
+      >
+        Button
+      </Text>
+    </Box>
+  </Box>
+
+{' '}
+<Box>
+  <Box
+    css={{
+      display: 'inline-flex',
+      ai: 'center',
+      jc: 'center',
+      cursor: 'default',
+      width: '$6',
+      height: '$6',
+      backgroundColor: '$slate3',
+      borderRadius: '$2',
+      color: '$slate11',
+      '&:hover': { backgroundColor: '$slate4' },
+      '&:active': { backgroundColor: '$slate5' },
+    }}
+  >
+    <PlusIcon />
+  </Box>
+</Box>
+
+  <Box>
+    <Box
+      css={{
+        display: 'flex',
+        ai: 'center',
+        cursor: 'default',
+        height: '$6',
+        backgroundColor: '$blue5',
+        color: '$slate11',
+        px: '$3',
+      }}
+    >
+      <Text
+        css={{ fontSize: '$2', color: '$slate12' }}
+      >
+        Menu item
+      </Text>
+    </Box>
+    <Box
+      css={{
+        display: 'flex',
+        ai: 'center',
+        cursor: 'default',
+        height: '$6',
+        backgroundColor: 'transparent',
+        color: '$slate11',
+        px: '$3',
+        '&:hover': { backgroundColor: '$blue4' },
+        '&:active': { backgroundColor: '$blue5' },
+      }}
+    >
+      <Text
+        css={{ fontSize: '$2', color: '$slate12' }}
+      >
+        Menu item
+      </Text>
+    </Box>
+    <Box
+      css={{
+        display: 'flex',
+        ai: 'center',
+        cursor: 'default',
+        height: '$6',
+        backgroundColor: 'transparent',
+        color: '$slate11',
+        px: '$3',
+        '&:hover': { backgroundColor: '$blue4' },
+        '&:active': { backgroundColor: '$blue5' },
+      }}
+    >
+      <Text
+        css={{ fontSize: '$2', color: '$slate12' }}
+      >
+        Menu item
+      </Text>
+    </Box>
+  </Box>
+</Grid>
+
+}
+
+Even if your component has a transparent background in its default state, you should skip Step `3` and use Step `4` for its hover state.
+
+{
+
+<Box
+  css={{
+    display: 'inline-flex',
+    ai: 'center',
+    jc: 'center',
+    cursor: 'default',
+    width: '$6',
+    height: '$6',
+    backgroundColor: 'transparent',
+    borderRadius: '$2',
+    color: '$slate11',
+    mt: '$3',
+    mb: '$5',
+    '&:hover': { backgroundColor: '$slate4' },
+    '&:active': { backgroundColor: '$slate5' },
+  }}
+>
+  <PlusIcon />
+</Box>
+
+}
+
+For call-to-action components that you want to draw particular attention to, you can bump each color one step higher to steps `4`, `5`, and `6`.
+
+{
+
+<Box
+  css={{
+    display: 'inline-flex',
+    ai: 'center',
+    cursor: 'default',
+    px: '$3',
+    height: 35,
+    backgroundColor: '$orange4',
+    borderRadius: '$2',
+    mt: '$3',
+    mb: '$5',
+    '&:hover': { backgroundColor: '$orange5' },
+    '&:active': { backgroundColor: '$orange6' },
+  }}
+>
+  <Text css={{ fontSize: '$3', color: '$orange11', fontWeight: 500 }}>
+    Button
+  </Text>
+</Box>
+
+}
+
+For complex components where you need many subtle colors to communicate different meanings, you can get creative and do something like:
+
+- Step 3 for hovered backgrounds.
+- Step 4 for selected / pressed backgrounds.
+- Step 5 for "unread" backgrounds.
+- Step 6 for hovered "unread" backgrounds.
+
+{
+
+<Box css={{ maxWidth: 250, my: '$5' }}>
+  <Box
+    css={{
+      display: 'flex',
+      ai: 'center',
+      cursor: 'default',
+      height: '$6',
+      backgroundColor: '$blue5',
+      px: '$3',
+      '&:hover': { backgroundColor: '$blue6' },
+    }}
+  >
+    <Text css={{ fontSize: '$2', color: '$slate12' }}>
+      New unread email
+    </Text>
+  </Box>
+  <Box
+    css={{
+      display: 'flex',
+      ai: 'center',
+      cursor: 'default',
+      height: '$6',
+      backgroundColor: '$blue4',
+      px: '$3',
+    }}
+  >
+    <Text css={{ fontSize: '$2', color: '$slate12' }}>
+      Selected email
+    </Text>
+  </Box>
+  <Box
+    css={{
+      display: 'flex',
+      ai: 'center',
+      cursor: 'default',
+      height: '$6',
+      backgroundColor: 'transparent',
+      px: '$3',
+      '&:hover': { backgroundColor: '$blue3' },
+      '&:active': { backgroundColor: '$blue4' },
+    }}
+  >
+    <Text css={{ fontSize: '$2', color: '$slate12' }}>
+      Email menu item
+    </Text>
+  </Box>
+  <Box
+    css={{
+      display: 'flex',
+      ai: 'center',
+      cursor: 'default',
+      height: '$6',
+      backgroundColor: 'transparent',
+      px: '$3',
+      '&:hover': { backgroundColor: '$blue3' },
+      '&:active': { backgroundColor: '$blue4' },
+    }}
+  >
+    <Text css={{ fontSize: '$2', color: '$slate12' }}>
+      Email menu item
+    </Text>
+  </Box>
+</Box>
+
+}
+
 <Note>
   Steps `11` and `12`—which are designed for text—are guaranteed to
   pass 4.5:1 contrast ratio on top of a step `3` background from the
   same scale.
 </Note>
-
-<ColorExample04 />
 
 ## Steps 6–8: Borders
 
