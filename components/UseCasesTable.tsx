@@ -19,57 +19,117 @@ import {
 
 export function UseCasesTable() {
   return (
-    <Table striped>
+    <Table striped css={{ my: '$5' }}>
       <Thead>
         <Tr>
-          <Td>Step</Td>
-          <Td>Use Case</Td>
+          <Th css={{ px: '$4' }}>
+            <Text size="2" css={{ color: 'inherit' }}>
+              Step
+            </Text>
+          </Th>
+          <Th css={{ px: '$4' }}>
+            <Text size="2" css={{ color: 'inherit' }}>
+              Use Case
+            </Text>
+          </Th>
         </Tr>
       </Thead>
       <Tbody>
         <Tr>
-          <Td>000</Td>
-          <Td>App background</Td>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">1</Text>
+          </Td>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">App background</Text>
+          </Td>
         </Tr>
         <Tr>
-          <Td>100</Td>
-          <Td>Subtle background</Td>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">2</Text>
+          </Td>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">Subtle background</Text>
+          </Td>
         </Tr>
         <Tr>
-          <Td>200</Td>
-          <Td>UI element background</Td>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">3</Text>
+          </Td>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">UI element background</Text>
+          </Td>
         </Tr>
         <Tr>
-          <Td>300</Td>
-          <Td>Hovered UI element background.</Td>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">4</Text>
+          </Td>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">Hovered UI element background.</Text>
+          </Td>
         </Tr>
         <Tr>
-          <Td>400</Td>
-          <Td>Active / Selected UI element background.</Td>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">5</Text>
+          </Td>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">Active / Selected UI element background.</Text>
+          </Td>
         </Tr>
         <Tr>
-          <Td>500</Td>
-          <Td>Subtle borders and separators.</Td>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">6</Text>
+          </Td>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">Subtle borders and separators.</Text>
+          </Td>
         </Tr>
         <Tr>
-          <Td>600</Td>
-          <Td>UI element border</Td>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">7</Text>
+          </Td>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">UI element border</Text>
+          </Td>
         </Tr>
         <Tr>
-          <Td>700</Td>
-          <Td>Hovered UI element border</Td>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">8</Text>
+          </Td>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">Hovered UI element border</Text>
+          </Td>
         </Tr>
         <Tr>
-          <Td>800</Td>
-          <Td>Solid backgrounds.</Td>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">9</Text>
+          </Td>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">Solid backgrounds.</Text>
+          </Td>
         </Tr>
         <Tr>
-          <Td>900</Td>
-          <Td>Low contrast text.</Td>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">10</Text>
+          </Td>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">Hovered solid backgrounds.</Text>
+          </Td>
         </Tr>
         <Tr>
-          <Td>1000</Td>
-          <Td>High contrast text.</Td>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">11</Text>
+          </Td>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">Low-contrast text.</Text>
+          </Td>
+        </Tr>
+        <Tr>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">12</Text>
+          </Td>
+          <Td css={{ px: '$4' }}>
+            <Text size="2">High-contrast text.</Text>
+          </Td>
         </Tr>
       </Tbody>
     </Table>
