@@ -13,17 +13,17 @@ export const colorsRoutes = [
         draft: false,
       },
       { title: 'Aliasing', slug: 'docs/colors/getting-started/aliasing', draft: false },
-      {
-        title: 'The Scales',
-        slug: 'docs/colors/getting-started/the-scales',
-        draft: false,
-      },
     ],
   },
 
   {
     label: 'Palette Composition',
     pages: [
+      {
+        title: 'The Scales',
+        slug: 'docs/colors/palette-composition/the-scales',
+        draft: false,
+      },
       {
         title: 'Composing a palette',
         slug: 'docs/colors/palette-composition/composing-a-palette',
