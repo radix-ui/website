@@ -35,7 +35,10 @@ export const DialogDemo = () => (
     <Dialog.Trigger>Open</Dialog.Trigger>
     <StyledOverlay />
     <StyledContent>
-      <p>Dialog content</p>
+      <Dialog.Title>Booking a flight</Dialog.Title>
+      <Dialog.Description>
+        Please enter your information below in order to book the flight.
+      </Dialog.Description>
       <Dialog.Close>Close</Dialog.Close>
     </StyledContent>
   </Dialog.Root>

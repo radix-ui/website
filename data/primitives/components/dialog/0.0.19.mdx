@@ -42,6 +42,8 @@ export default () => (
     <Dialog.Trigger />
     <Dialog.Overlay />
     <Dialog.Content>
+      <Dialog.Title />
+      <Dialog.Description />
       <Dialog.Close />
     </Dialog.Content>
   </Dialog.Root>
@@ -92,7 +94,11 @@ export default () => (
     <Dialog.Trigger>Open</Dialog.Trigger>
     <StyledOverlay />
     <StyledContent>
-      <p>Dialog content</p>
+      <Dialog.Title>Booking a flight</Dialog.Title>
+      <Dialog.Description>
+        Please enter your information below in order to book the
+        flight.
+      </Dialog.Description>
       <Dialog.Close>Close</Dialog.Close>
     </StyledContent>
   </Dialog.Root>
@@ -284,6 +290,42 @@ The button that closes the dialog.
       type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
       typeSimple: 'enum',
       default: 'button',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Title
+
+An accessible name to be announced when the dialog is opened. Alternatively, you can provide `aria-label` or `aria-labelledby` to `Dialog.Content` and exclude this component.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'h2',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Description
+
+An accessible description to be announced when the dialog is opened. Alternatively, you can provide `aria-describedby` to `Dialog.Content` and exclude this component.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'p',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
