@@ -22,13 +22,20 @@ const StyledScrollbar = styled(ScrollArea.Scrollbar, {
   // disable browser handling of all panning and zooming gestures on touch devices
   touchAction: 'none',
 
-  width: SCROLLBAR_SIZE,
   padding: 2,
   background: 'rgba(0, 0, 0, 0.3)',
   '&:hover': {
     background: 'rgba(0, 0, 0, 0.5)',
   },
   transition: 'background 160ms ease-out',
+
+  '&[data-orientation="vertical"]': {
+    width: SCROLLBAR_SIZE,
+  },
+  '&[data-orientation="horizontal"]': {
+    flexDirection: 'column',
+    height: SCROLLBAR_SIZE,
+  },
 });
 
 const StyledThumb = styled(ScrollArea.Thumb, {
@@ -51,22 +58,33 @@ const StyledThumb = styled(ScrollArea.Thumb, {
   },
 });
 
+const StyledCorner = styled(ScrollArea.Corner, {
+  background: 'rgba(0, 0, 0, 0.5)',
+});
+
 export const ScrollAreaDemo = () => (
   <div style={{ height: 250 }}>
     <StyledScrollArea>
       <StyledViewport>
         <div
           style={{
+            width: '300vw',
             height: 1000,
             backgroundImage:
-              'repeating-linear-gradient(0deg, dodgerblue, dodgerblue 10px, transparent 10px, transparent 20px)',
+              'repeating-linear-gradient(-45deg, dodgerblue, dodgerblue 10px, transparent 10px, transparent 20px)',
           }}
         />
       </StyledViewport>
 
-      <StyledScrollbar>
+      <StyledScrollbar orientation="vertical">
         <StyledThumb />
       </StyledScrollbar>
+
+      <StyledScrollbar orientation="horizontal">
+        <StyledThumb />
+      </StyledScrollbar>
+
+      <StyledCorner />
     </StyledScrollArea>
   </div>
 );
