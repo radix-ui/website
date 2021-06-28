@@ -16,9 +16,6 @@ import { RadixLogo } from '../components/RadixLogo';
 export default function Home() {
   return (
     <Box>
-      <Box as="header" css={{ p: '$4' }}>
-        <RadixLogo label="Radix Homepage" />
-      </Box>
       <Section size="2">
         <Container size="2">
           <Heading size="4" css={{ ta: 'center', mb: '$3' }}>
