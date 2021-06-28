@@ -38,6 +38,8 @@ const globalStyles = global({
     position: 'relative',
     zIndex: 0,
   },
+
+  'h1, h2, h3, h4, h5': { fontWeight: 500 },
 });
 
 function App({ Component, pageProps }: AppProps) {
