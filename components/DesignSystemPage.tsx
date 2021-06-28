@@ -60,7 +60,7 @@ export function DesignSystemPage({ children }: { children: React.ReactNode }) {
 
           '@bp2': {
             position: 'fixed',
-            top: '$sizes$8',
+            top: '$sizes$7',
             left: 0,
             bottom: 0,
             width: '250px',

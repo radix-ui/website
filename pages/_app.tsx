@@ -78,7 +78,7 @@ function App({ Component, pageProps }: AppProps) {
         >
           <Header />
         </Box>
-        <Box css={{ pt: '$8', position: 'relative', zIndex: 1 }}>
+        <Box css={{ pt: '$7', position: 'relative', zIndex: 1 }}>
           {isPrimitivesDocs ? (
             <PrimitivesPage>
               <Component {...pageProps} />

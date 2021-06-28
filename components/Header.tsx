@@ -27,7 +27,7 @@ export const Header = (props) => {
   return (
     <Box as="header">
       <Container size="4">
-        <Flex css={{ height: '$8', alignItems: 'center' }}>
+        <Flex css={{ height: '$7', alignItems: 'center' }}>
           <NextLink href="/" passHref>
             <Box
               as="a"
@@ -55,19 +55,20 @@ export const Header = (props) => {
               <RadixLogo label="Radix Homepage" />
             </Box>
           </NextLink>
-          {isPrimitives && (
-            <>
-              <Text>Primitives</Text>
-              <Badge css={{ ml: '$2' }}>Alpha</Badge>
-            </>
-          )}
-          {isColors && (
-            <>
-              <Text>Colors</Text>
-              <Badge css={{ ml: '$2' }}>Alpha</Badge>
-            </>
-          )}
-
+          <Flex align="center" css={{ ml: '$4' }}>
+            {isPrimitives && (
+              <>
+                <Text>Primitives</Text>
+                <Badge css={{ ml: '$2' }}>Alpha</Badge>
+              </>
+            )}
+            {isColors && (
+              <>
+                <Text>Colors</Text>
+                <Badge css={{ ml: '$2' }}>Alpha</Badge>
+              </>
+            )}
+          </Flex>
           <Flex gap="6" align="center" css={{ ml: 'auto' }}>
             <DropdownMenu>
               <DropdownMenuTrigger
