@@ -65,7 +65,7 @@ function App({ Component, pageProps }: AppProps) {
         value={{ light: 'light-theme', dark: darkTheme.toString() }}
         defaultTheme="system"
       >
-        {!isPrimitivesDocs && <Header />}
+        <Header />
         {isPrimitivesDocs ? (
           <PrimitivesPage>
             <Component {...pageProps} />

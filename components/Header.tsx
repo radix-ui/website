@@ -1,22 +1,33 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Box, Container, Grid, Text, Flex, Separator, Link } from '@modulz/design-system';
+import {
+  Box,
+  Container,
+  Grid,
+  Text,
+  Flex,
+  Button,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuCheckboxItem,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  Separator,
+  Link,
+} from '@modulz/design-system';
 import { RadixLogo } from './RadixLogo';
-import { ExternalIcon } from './ExternalIcon';
+import { PlusIcon } from '@radix-ui/react-icons';
 
 export const Header = () => {
   return (
-    <Box as="header" css={{ pb: '$3' }}>
+    <Box as="header" css={{ py: '$3' }}>
       <Container size="4">
-        <Flex
-          css={{
-            alignItems: 'center',
-            '@bp2': {
-              flexDirection: 'column',
-              alignItems: 'start',
-            },
-          }}
-        >
+        <Flex justify="between">
           <NextLink href="/" passHref>
             <Box
               as="a"
@@ -31,34 +42,27 @@ export const Header = () => {
               <RadixLogo label="Radix Homepage" />
             </Box>
           </NextLink>
-          <Box>
-            <Text as="h6" size="3" css={{ fontWeight: 500, lineHeight: '20px' }}>
-              Primitives
-            </Text>
-            <ul>
-              <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/primitives/docs/overview/introduction" passHref>
-                    <Link variant="subtle">Introduction</Link>
-                  </NextLink>
-                </Text>
-              </li>
-              <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/primitives/docs/overview/introduction" passHref>
-                    <Link variant="subtle">Styling</Link>
-                  </NextLink>
-                </Text>
-              </li>
-              <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/primitives/docs/overview/accessibility" passHref>
-                    <Link variant="subtle">Accessibility</Link>
-                  </NextLink>
-                </Text>
-              </li>
-            </ul>
-          </Box>
+          <Flex gap="6" align="center">
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                as={Button}
+                size="2"
+                ghost
+                css={{ gap: '$1', fontWeight: 400, color: '$slate11' }}
+              >
+                Product
+                <PlusIcon />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem>Primitives</DropdownMenuItem>
+                <DropdownMenuItem>Colors</DropdownMenuItem>
+                <DropdownMenuItem>Icons</DropdownMenuItem>
+                <DropdownMenuItem>Resets</DropdownMenuItem>
+                <DropdownMenuItem>Stitches</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <Separator orientation="vertical" />
+          </Flex>
         </Flex>
       </Container>
     </Box>
