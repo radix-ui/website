@@ -55,17 +55,18 @@ export const Header = (props) => {
               <RadixLogo label="Radix Homepage" />
             </Box>
           </NextLink>
-          <Flex align="center" css={{ ml: '$4' }}>
+          <Flex align="center" css={{ ml: '$3' }}>
             {isPrimitives && (
               <>
-                <Text>Primitives</Text>
-                <Badge css={{ ml: '$2' }}>Alpha</Badge>
+                <Text size="2">Primitives</Text>
+                <Badge variant="yellow" css={{ ml: '$2' }}>
+                  Alpha
+                </Badge>
               </>
             )}
             {isColors && (
               <>
-                <Text>Colors</Text>
-                <Badge css={{ ml: '$2' }}>Alpha</Badge>
+                <Text size="2">Colors</Text>
               </>
             )}
           </Flex>
