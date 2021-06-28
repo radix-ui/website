@@ -2,7 +2,7 @@ import React from 'react';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
-import { global, darkTheme, DesignSystemProvider } from '@modulz/design-system';
+import { global, darkTheme, DesignSystemProvider, Box } from '@modulz/design-system';
 import { Header } from '@components/Header';
 import { Footer } from '@components/Footer';
 import { PrimitivesPage } from '@components/PrimitivesPage';
@@ -55,7 +55,7 @@ function App({ Component, pageProps }: AppProps) {
   const isPrimitivesDocs = router.pathname.includes('/docs/primitives');
   const isDesignSystemDocs = router.pathname.includes('/docs/design-system');
   const isColorsDocs = router.pathname.includes('/docs/colors');
-  const shouldShowFooter = !isPrimitivesDocs || !isDesignSystemDocs || !isColorsDocs;
+  const IsNotADocPage = !isPrimitivesDocs && !isDesignSystemDocs && !isColorsDocs;
 
   return (
     <DesignSystemProvider>
@@ -65,23 +65,37 @@ function App({ Component, pageProps }: AppProps) {
         value={{ light: 'light-theme', dark: darkTheme.toString() }}
         defaultTheme="system"
       >
-        <Header />
-        {isPrimitivesDocs ? (
-          <PrimitivesPage>
+        <Box
+          css={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            backgroundColor: '$loContrast',
+            boxShadow: IsNotADocPage ? 'none' : '0 0 0 1px $colors$slate5',
+            zIndex: 2,
+          }}
+        >
+          <Header />
+        </Box>
+        <Box css={{ pt: '$8', position: 'relative', zIndex: 1 }}>
+          {isPrimitivesDocs ? (
+            <PrimitivesPage>
+              <Component {...pageProps} />
+            </PrimitivesPage>
+          ) : isDesignSystemDocs ? (
+            <DesignSystemPage>
+              <Component {...pageProps} />
+            </DesignSystemPage>
+          ) : isColorsDocs ? (
+            <ColorsPage>
+              <Component {...pageProps} />
+            </ColorsPage>
+          ) : (
             <Component {...pageProps} />
-          </PrimitivesPage>
-        ) : isDesignSystemDocs ? (
-          <DesignSystemPage>
-            <Component {...pageProps} />
-          </DesignSystemPage>
-        ) : isColorsDocs ? (
-          <ColorsPage>
-            <Component {...pageProps} />
-          </ColorsPage>
-        ) : (
-          <Component {...pageProps} />
-        )}
-        {!shouldShowFooter && <Footer />}
+          )}
+        </Box>
+        {IsNotADocPage && <Footer />}
       </ThemeProvider>
     </DesignSystemProvider>
   );

@@ -1,55 +1,74 @@
 import React from 'react';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import {
   Box,
   Container,
-  Grid,
   Text,
+  Badge,
   Flex,
   Button,
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
-  DropdownMenuCheckboxItem,
-  DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuSeparator,
   Separator,
   Link,
 } from '@modulz/design-system';
 import { RadixLogo } from './RadixLogo';
 import { PlusIcon } from '@radix-ui/react-icons';
+import { ThemeToggle } from '@components/ThemeToggle';
 
-export const Header = () => {
+export const Header = (props) => {
+  const router = useRouter();
+  const isPrimitives = router.pathname.includes('/primitives');
+  const isColors = router.pathname.includes('/colors');
+
   return (
-    <Box as="header" css={{ py: '$3' }}>
+    <Box as="header">
       <Container size="4">
-        <Flex justify="between">
+        <Flex css={{ height: '$8', alignItems: 'center' }}>
           <NextLink href="/" passHref>
             <Box
               as="a"
               css={{
                 color: '$hiContrast',
                 display: 'inline-flex',
-                '&:focus': {
-                  boxShadow: 'none',
-                },
+                '&:focus': { boxShadow: 'none' },
               }}
             >
+              <span
+                style={{
+                  position: 'absolute',
+                  width: 1,
+                  height: 1,
+                  padding: 0,
+                  margin: -1,
+                  overflow: 'hidden',
+                  clip: 'rect(0, 0, 0, 0)',
+                  whiteSpace: 'nowrap',
+                  border: 0,
+                }}
+              >
+                Radix homepage
+              </span>
               <RadixLogo label="Radix Homepage" />
-              {/* Make this shit work */}
-              {/* {isPrimitivesDocs ? (
-                <Text>Primitives</Text>
-                <Badge>Alpha</Badge>
-              ) : isColorsDocs ? (
-                <Text>Colors</Text>
-              )} */}
             </Box>
           </NextLink>
-          <Flex gap="6" align="center">
+          {isPrimitives && (
+            <>
+              <Text>Primitives</Text>
+              <Badge css={{ ml: '$2' }}>Alpha</Badge>
+            </>
+          )}
+          {isColors && (
+            <>
+              <Text>Colors</Text>
+              <Badge css={{ ml: '$2' }}>Alpha</Badge>
+            </>
+          )}
+
+          <Flex gap="6" align="center" css={{ ml: 'auto' }}>
             <DropdownMenu>
               <DropdownMenuTrigger
                 as={Button}
@@ -61,17 +80,21 @@ export const Header = () => {
                 <PlusIcon />
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuItem>Primitives</DropdownMenuItem>
-                <DropdownMenuItem>Colors</DropdownMenuItem>
-                <DropdownMenuItem>Icons</DropdownMenuItem>
+                <DropdownMenuItem onSelect={() => router.push('/docs/primitives')}>
+                  Primitives
+                </DropdownMenuItem>
+                <DropdownMenuItem onSelect={() => router.push('/colors')}>Colors</DropdownMenuItem>
+                <DropdownMenuItem onSelect={() => router.push('https://icons.modulz.app')}>
+                  Icons
+                </DropdownMenuItem>
                 <DropdownMenuItem>Resets</DropdownMenuItem>
-                <DropdownMenuItem>Stitches</DropdownMenuItem>
+                <DropdownMenuItem onSelect={() => router.push('https://stitches.dev')}>
+                  Stitches
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
             <Separator orientation="vertical" css={{ mx: '-$5' }} />
-            <Button ghost size="2" css={{ fontWeight: 400, color: '$slate11' }}>
-              Mode
-            </Button>
+            <ThemeToggle css={{ ml: 'auto' }} />
           </Flex>
         </Flex>
       </Container>
