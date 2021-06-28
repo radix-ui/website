@@ -40,6 +40,13 @@ export const Header = () => {
               }}
             >
               <RadixLogo label="Radix Homepage" />
+              {/* Make this shit work */}
+              {/* {isPrimitivesDocs ? (
+                <Text>Primitives</Text>
+                <Badge>Alpha</Badge>
+              ) : isColorsDocs ? (
+                <Text>Colors</Text>
+              )} */}
             </Box>
           </NextLink>
           <Flex gap="6" align="center">
@@ -61,7 +68,10 @@ export const Header = () => {
                 <DropdownMenuItem>Stitches</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            <Separator orientation="vertical" />
+            <Separator orientation="vertical" css={{ mx: '-$5' }} />
+            <Button ghost size="2" css={{ fontWeight: 400, color: '$slate11' }}>
+              Mode
+            </Button>
           </Flex>
         </Flex>
       </Container>
