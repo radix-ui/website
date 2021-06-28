@@ -11,19 +11,22 @@ import { useAnalytics } from '@lib/analytics';
 import { scrollToUrlHash } from '@lib/scrollToUrlHash';
 
 const globalStyles = global({
+  '*, *::before, *::after': {
+    boxSizing: 'border-box',
+  },
+
   body: {
     margin: 0,
     backgroundColor: '$loContrast',
     fontFamily: '$untitled',
+    WebkitFontSmoothing: 'antialiased',
+    MozOsxFontSmoothing: 'grayscale',
   },
 
-  'h1, h2, h3, h4, h5': { fontWeight: 500 },
-
-  'body, button': {
-    fontFamily: '$untitled',
+  svg: {
+    display: 'block',
+    verticalAlign: 'middle',
   },
-
-  svg: { display: 'block' },
 
   'pre, code': { margin: 0, fontFamily: '$mono' },
 
