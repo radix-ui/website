@@ -3,6 +3,7 @@ import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
 import { global, darkTheme, DesignSystemProvider } from '@modulz/design-system';
+import { Header } from '@components/Header';
 import { Footer } from '@components/Footer';
 import { PrimitivesPage } from '@components/PrimitivesPage';
 import { DesignSystemPage } from '@components/DesignSystemPage';
@@ -64,6 +65,7 @@ function App({ Component, pageProps }: AppProps) {
         value={{ light: 'light-theme', dark: darkTheme.toString() }}
         defaultTheme="system"
       >
+        {!isPrimitivesDocs && <Header />}
         {isPrimitivesDocs ? (
           <PrimitivesPage>
             <Component {...pageProps} />
