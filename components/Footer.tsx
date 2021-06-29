@@ -144,7 +144,7 @@ export const Footer = () => {
                     href="https://github.com/radix-ui"
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                   >
-                    Github
+                    GitHub
                     <Flex as="span" css={{ ml: '$1', color: '$gray6' }}>
                       <ExternalIcon />
                     </Flex>
