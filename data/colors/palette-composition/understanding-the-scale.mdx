@@ -295,22 +295,35 @@ For complex components where you need many subtle colors to communicate differen
 
 <ColorScale03 />
 
-Step `6` is designed for subtle lines and borders on components which are not interactive.
+Steps `6`, `7`, and `8` are designed for borders.
 
-- Sidebar borders
-- Header borders
-- Card borders
-- Alert borders
+- Step `6` is designed for subtle borders on components which are not interactive. For example sidebars, headers, cards, alerts, and separators.
+- Step `7` is designed for borders on interactive components, but can also be used for focus rings.
+- Step `8` is designed for borders on interactive components in their hover state.
 
-Step `7` is designed for borders on interactive components.
+{
 
-- Button borders
-- Text input borders
-- Card borders
+<Box
+  css={{
+    display: 'inline-flex',
+    ai: 'center',
+    cursor: 'default',
+    px: '$3',
+    height: 35,
+    backgroundColor: '$blue1',
+    border: '1px solid $blue7',
+    borderRadius: '$2',
+    mt: '$3',
+    mb: '$5',
+    '&:hover': { borderColor: '$blue8' },
+  }}
+>
+  <Text css={{ fontSize: '$3', color: '$blue11', fontWeight: 500 }}>
+    Button
+  </Text>
+</Box>
 
-Step `8` is designed for borders on interactive components in their hover state.
-
-<ColorExample04 />
+}
 
 ## Steps 9–10: Solid backgrounds
 

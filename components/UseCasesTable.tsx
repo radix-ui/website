@@ -88,7 +88,7 @@ export function UseCasesTable() {
             <Text size="2">7</Text>
           </Td>
           <Td css={{ px: '$4' }}>
-            <Text size="2">UI element border</Text>
+            <Text size="2">UI element border and focus rings</Text>
           </Td>
         </Tr>
         <Tr>
