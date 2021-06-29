@@ -56,7 +56,7 @@ export const Footer = () => {
                 '@bp2': { mt: '$5', ml: '0' },
               }}
             >
-              Radix is maintained by{' '}
+              Radix is a project by{' '}
               <Link variant="subtle" href="https://modulz.app">
                 Modulz
               </Link>
@@ -144,7 +144,7 @@ export const Footer = () => {
                     href="https://github.com/radix-ui"
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                   >
-                    GitHub
+                    Github
                     <Flex as="span" css={{ ml: '$1', color: '$gray6' }}>
                       <ExternalIcon />
                     </Flex>

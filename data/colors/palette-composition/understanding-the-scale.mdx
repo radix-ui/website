@@ -482,4 +482,30 @@ Step `10` is designed for component hover states, where step `9` is the componen
 
 Steps `11` and `12` are designed for text.
 
-<ColorExample04 />
+- Step `11` is designed for low-contrast text.
+- Step `12` is designed for high-contrast text.
+
+{
+
+<Flex gap="4" direction="column" css={{ mt: '$5' }}>
+  <Text size="4" css={{ fontWeight: 500, color: '$gray12' }}>
+    This text is Gray12
+  </Text>
+  <Text size="4" css={{ color: '$gray11' }}>
+    This text is Gray11
+  </Text>
+  <Text size="4" css={{ fontWeight: 500, color: '$slate12' }}>
+    This text is Slate12
+  </Text>
+  <Text size="4" css={{ color: '$slate11' }}>
+    This text is Slate11
+  </Text>
+  <Text size="4" css={{ fontWeight: 500, color: '$blue12' }}>
+    This text is Blue12
+  </Text>
+  <Text size="4" css={{ color: '$blue11' }}>
+    This text is Blue11
+  </Text>
+</Flex>
+
+}
