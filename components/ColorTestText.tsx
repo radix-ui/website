@@ -30,7 +30,7 @@ export function ColorTestText() {
           <Text css={{ color: '$gray11', fontSize: '$3' }}>Gray11 on Gray3</Text>
           <Flex
             css={{
-              bc: '$gray400',
+              bc: '$gray5',
               color: '$gray11',
               ai: 'center',
               jc: 'center',
@@ -50,7 +50,7 @@ export function ColorTestText() {
           <Text css={{ color: '$mauve11', fontSize: '$3' }}>Mauve11 on Mauve3</Text>
           <Flex
             css={{
-              bc: '$mauve400',
+              bc: '$mauve5',
               color: '$mauve11',
               ai: 'center',
               jc: 'center',
@@ -70,7 +70,7 @@ export function ColorTestText() {
           <Text css={{ color: '$slate11', fontSize: '$3' }}>Slate11 on Slate3</Text>
           <Flex
             css={{
-              bc: '$slate400',
+              bc: '$slate5',
               color: '$slate11',
               ai: 'center',
               jc: 'center',
@@ -90,7 +90,7 @@ export function ColorTestText() {
           <Text css={{ color: '$sage11', fontSize: '$3' }}>Sage11 on Sage3</Text>
           <Flex
             css={{
-              bc: '$sage400',
+              bc: '$sage5',
               color: '$sage11',
               ai: 'center',
               jc: 'center',
@@ -110,7 +110,7 @@ export function ColorTestText() {
           <Text css={{ color: '$olive11', fontSize: '$3' }}>Olive11 on Olive3</Text>
           <Flex
             css={{
-              bc: '$olive400',
+              bc: '$olive5',
               color: '$olive11',
               ai: 'center',
               jc: 'center',
@@ -130,7 +130,7 @@ export function ColorTestText() {
           <Text css={{ color: '$sand11', fontSize: '$3' }}>Sand11 on Sand3</Text>
           <Flex
             css={{
-              bc: '$sand400',
+              bc: '$sand5',
               color: '$sand11',
               ai: 'center',
               jc: 'center',
@@ -150,7 +150,7 @@ export function ColorTestText() {
           <Text css={{ color: '$tomato11', fontSize: '$3' }}>Tomato11 on Tomato3</Text>
           <Flex
             css={{
-              bc: '$tomato400',
+              bc: '$tomato5',
               color: '$tomato11',
               ai: 'center',
               jc: 'center',
@@ -170,7 +170,7 @@ export function ColorTestText() {
           <Text css={{ color: '$red11', fontSize: '$3' }}>Red11 on Red3</Text>
           <Flex
             css={{
-              bc: '$red400',
+              bc: '$red5',
               color: '$red11',
               ai: 'center',
               jc: 'center',
@@ -190,7 +190,7 @@ export function ColorTestText() {
           <Text css={{ color: '$crimson11', fontSize: '$3' }}>Crimson11 on Crimson3</Text>
           <Flex
             css={{
-              bc: '$crimson400',
+              bc: '$crimson5',
               color: '$crimson11',
               ai: 'center',
               jc: 'center',
@@ -210,7 +210,7 @@ export function ColorTestText() {
           <Text css={{ color: '$pink11', fontSize: '$3' }}>Pink11 on Pink3</Text>
           <Flex
             css={{
-              bc: '$pink400',
+              bc: '$pink5',
               color: '$pink11',
               ai: 'center',
               jc: 'center',
@@ -230,7 +230,7 @@ export function ColorTestText() {
           <Text css={{ color: '$plum11', fontSize: '$3' }}>Plum11 on Plum3</Text>
           <Flex
             css={{
-              bc: '$plum400',
+              bc: '$plum5',
               color: '$plum11',
               ai: 'center',
               jc: 'center',
@@ -250,7 +250,7 @@ export function ColorTestText() {
           <Text css={{ color: '$purple11', fontSize: '$3' }}>Purple11 on Purple3</Text>
           <Flex
             css={{
-              bc: '$purple400',
+              bc: '$purple5',
               color: '$purple11',
               ai: 'center',
               jc: 'center',
@@ -270,7 +270,7 @@ export function ColorTestText() {
           <Text css={{ color: '$violet11', fontSize: '$3' }}>Violet11 on Violet3</Text>
           <Flex
             css={{
-              bc: '$violet400',
+              bc: '$violet5',
               color: '$violet11',
               ai: 'center',
               jc: 'center',
@@ -290,7 +290,7 @@ export function ColorTestText() {
           <Text css={{ color: '$indigo11', fontSize: '$3' }}>Indigo11 on Indigo3</Text>
           <Flex
             css={{
-              bc: '$indigo400',
+              bc: '$indigo5',
               color: '$indigo11',
               ai: 'center',
               jc: 'center',
@@ -310,7 +310,7 @@ export function ColorTestText() {
           <Text css={{ color: '$blue11', fontSize: '$3' }}>Blue11 on Blue3</Text>
           <Flex
             css={{
-              bc: '$blue400',
+              bc: '$blue5',
               color: '$blue11',
               ai: 'center',
               jc: 'center',
@@ -330,7 +330,7 @@ export function ColorTestText() {
           <Text css={{ color: '$sky11', fontSize: '$3' }}>Sky11 on Sky3</Text>
           <Flex
             css={{
-              bc: '$sky400',
+              bc: '$sky5',
               color: '$sky11',
               ai: 'center',
               jc: 'center',
@@ -350,7 +350,7 @@ export function ColorTestText() {
           <Text css={{ color: '$cyan11', fontSize: '$3' }}>Cyan11 on Cyan3</Text>
           <Flex
             css={{
-              bc: '$cyan400',
+              bc: '$cyan5',
               color: '$cyan11',
               ai: 'center',
               jc: 'center',
@@ -370,7 +370,7 @@ export function ColorTestText() {
           <Text css={{ color: '$teal11', fontSize: '$3' }}>Teal11 on Teal3</Text>
           <Flex
             css={{
-              bc: '$teal400',
+              bc: '$teal5',
               color: '$teal11',
               ai: 'center',
               jc: 'center',
@@ -390,7 +390,7 @@ export function ColorTestText() {
           <Text css={{ color: '$mint11', fontSize: '$3' }}>Mint11 on Mint3</Text>
           <Flex
             css={{
-              bc: '$mint400',
+              bc: '$mint5',
               color: '$mint11',
               ai: 'center',
               jc: 'center',
@@ -410,7 +410,7 @@ export function ColorTestText() {
           <Text css={{ color: '$green11', fontSize: '$3' }}>Green11 on Green3</Text>
           <Flex
             css={{
-              bc: '$green400',
+              bc: '$green5',
               color: '$green11',
               ai: 'center',
               jc: 'center',
@@ -430,7 +430,7 @@ export function ColorTestText() {
           <Text css={{ color: '$lime11', fontSize: '$3' }}>Lime11 on Lime3</Text>
           <Flex
             css={{
-              bc: '$lime400',
+              bc: '$lime5',
               color: '$lime11',
               ai: 'center',
               jc: 'center',
@@ -450,7 +450,7 @@ export function ColorTestText() {
           <Text css={{ color: '$yellow11', fontSize: '$3' }}>Yellow11 on Yellow3</Text>
           <Flex
             css={{
-              bc: '$yellow400',
+              bc: '$yellow5',
               color: '$yellow11',
               ai: 'center',
               jc: 'center',
@@ -470,7 +470,7 @@ export function ColorTestText() {
           <Text css={{ color: '$amber11', fontSize: '$3' }}>Amber11 on Amber3</Text>
           <Flex
             css={{
-              bc: '$amber400',
+              bc: '$amber5',
               color: '$amber11',
               ai: 'center',
               jc: 'center',
@@ -490,7 +490,7 @@ export function ColorTestText() {
           <Text css={{ color: '$orange11', fontSize: '$3' }}>Orange11 on Orange3</Text>
           <Flex
             css={{
-              bc: '$orange400',
+              bc: '$orange5',
               color: '$orange11',
               ai: 'center',
               jc: 'center',
@@ -510,7 +510,7 @@ export function ColorTestText() {
           <Text css={{ color: '$brown11', fontSize: '$3' }}>Brown11 on Brown3</Text>
           <Flex
             css={{
-              bc: '$brown400',
+              bc: '$brown5',
               color: '$brown11',
               ai: 'center',
               jc: 'center',
@@ -530,7 +530,7 @@ export function ColorTestText() {
           <Text css={{ color: '$bronze11', fontSize: '$3' }}>Bronze11 on Bronze3</Text>
           <Flex
             css={{
-              bc: '$bronze400',
+              bc: '$bronze5',
               color: '$bronze11',
               ai: 'center',
               jc: 'center',
@@ -550,7 +550,7 @@ export function ColorTestText() {
           <Text css={{ color: '$gold11', fontSize: '$3' }}>Gold11 on Gold3</Text>
           <Flex
             css={{
-              bc: '$gold400',
+              bc: '$gold5',
               color: '$gold11',
               ai: 'center',
               jc: 'center',
