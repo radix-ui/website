@@ -329,6 +329,8 @@ Steps `6`, `7`, and `8` are designed for borders.
 
 <ColorScale04 />
 
+Steps `9` and `10` are designed for solid backgrounds.
+
 Step `9` has the highest chroma of all steps in the scale. In other words, it's the purest step, the step mixed with the least amount of white or black. Because `9` is the purest step, it has a wide range of applications:
 
 - Website/App backgrounds
@@ -342,23 +344,16 @@ Step `9` has the highest chroma of all steps in the scale. In other words, it's 
 
 Step `10` is designed for component hover states, where step `9` is the component's normal state background.
 
-{
-
-<Box>
-  <Paragraph>
-    <Box css={{ fontWeight: 500 }}>Examples</Box>
-  </Paragraph>
-</Box>
-
-}
+<Note>
+  Most step 9 colors are designed for white foreground text. `Sky`,
+  `Mint`, `Lime`, `Yellow`, and `Amber` are designed for black
+  foreground text and steps `9` and `10`.
+</Note>
 
 {
 
-<Grid columns="4">
+<Flex gap="5" align="center" wrap="wrap" css={{ my: '$5' }}>
   <Box>
-    <Text css={{ color: '$gray11', fontSize: '$2', mb: '$3' }}>
-      Violet9 background
-    </Text>
     <Box
       css={{
         display: 'inline-flex',
@@ -366,53 +361,379 @@ Step `10` is designed for component hover states, where step `9` is the componen
         cursor: 'default',
         px: '$3',
         height: 35,
-        backgroundColor: '$violet10',
+        backgroundColor: '$tomato9',
         borderRadius: '$2',
-        '&:hover': { backgroundColor: '$violet11' },
+        '&:hover': { backgroundColor: '$tomato10' },
       }}
     >
       <Text
         css={{ fontSize: '$3', color: 'white', fontWeight: 500 }}
       >
-        Button
+        Tomato
       </Text>
     </Box>
   </Box>
 
 {' '}
-
 <Box>
-  <Text css={{ color: '$gray11', fontSize: '$2', mb: '$3' }}>
-    Violet9 background
-  </Text>
   <Box
     css={{
       display: 'inline-flex',
       ai: 'center',
-      jc: 'flex-end',
-      p: 2,
-      width: 50,
-      backgroundColor: '$green10',
-      borderRadius: '9999px',
+      cursor: 'default',
+      px: '$3',
+      height: 35,
+      backgroundColor: '$red9',
+      borderRadius: '$2',
+      '&:hover': { backgroundColor: '$red10' },
     }}
   >
-    <Box
-      css={{
-        height: 21,
-        width: 21,
-        backgroundColor: 'white',
-        borderRadius: '50%',
-      }}
-    ></Box>
+    <Text css={{ fontSize: '$3', color: 'white', fontWeight: 500 }}>
+      Red
+    </Text>
   </Box>
 </Box>
 
 {' '}
-
 <Box>
-  <Text css={{ color: '$gray11', fontSize: '$2', mb: '$3' }}>
-    Violet9 background
-  </Text>
+  <Box
+    css={{
+      display: 'inline-flex',
+      ai: 'center',
+      cursor: 'default',
+      px: '$3',
+      height: 35,
+      backgroundColor: '$crimson9',
+      borderRadius: '$2',
+      '&:hover': { backgroundColor: '$crimson10' },
+    }}
+  >
+    <Text css={{ fontSize: '$3', color: 'white', fontWeight: 500 }}>
+      Crimson
+    </Text>
+  </Box>
+</Box>
+
+{' '}
+<Box>
+  <Box
+    css={{
+      display: 'inline-flex',
+      ai: 'center',
+      cursor: 'default',
+      px: '$3',
+      height: 35,
+      backgroundColor: '$pink9',
+      borderRadius: '$2',
+      '&:hover': { backgroundColor: '$pink10' },
+    }}
+  >
+    <Text css={{ fontSize: '$3', color: 'white', fontWeight: 500 }}>
+      Pink
+    </Text>
+  </Box>
+</Box>
+
+{' '}
+<Box>
+  <Box
+    css={{
+      display: 'inline-flex',
+      ai: 'center',
+      cursor: 'default',
+      px: '$3',
+      height: 35,
+      backgroundColor: '$plum9',
+      borderRadius: '$2',
+      '&:hover': { backgroundColor: '$plum10' },
+    }}
+  >
+    <Text css={{ fontSize: '$3', color: 'white', fontWeight: 500 }}>
+      Plum
+    </Text>
+  </Box>
+</Box>
+
+{' '}
+<Box>
+  <Box
+    css={{
+      display: 'inline-flex',
+      ai: 'center',
+      cursor: 'default',
+      px: '$3',
+      height: 35,
+      backgroundColor: '$purple9',
+      borderRadius: '$2',
+      '&:hover': { backgroundColor: '$purple10' },
+    }}
+  >
+    <Text css={{ fontSize: '$3', color: 'white', fontWeight: 500 }}>
+      Purple
+    </Text>
+  </Box>
+</Box>
+
+{' '}
+<Box>
+  <Box
+    css={{
+      display: 'inline-flex',
+      ai: 'center',
+      cursor: 'default',
+      px: '$3',
+      height: 35,
+      backgroundColor: '$violet9',
+      borderRadius: '$2',
+      '&:hover': { backgroundColor: '$violet10' },
+    }}
+  >
+    <Text css={{ fontSize: '$3', color: 'white', fontWeight: 500 }}>
+      Violet
+    </Text>
+  </Box>
+</Box>
+
+{' '}
+<Box>
+  <Box
+    css={{
+      display: 'inline-flex',
+      ai: 'center',
+      cursor: 'default',
+      px: '$3',
+      height: 35,
+      backgroundColor: '$indigo9',
+      borderRadius: '$2',
+      '&:hover': { backgroundColor: '$indigo10' },
+    }}
+  >
+    <Text css={{ fontSize: '$3', color: 'white', fontWeight: 500 }}>
+      Indigo
+    </Text>
+  </Box>
+</Box>
+
+{' '}
+<Box>
+  <Box
+    css={{
+      display: 'inline-flex',
+      ai: 'center',
+      cursor: 'default',
+      px: '$3',
+      height: 35,
+      backgroundColor: '$blue9',
+      borderRadius: '$2',
+      '&:hover': { backgroundColor: '$blue10' },
+    }}
+  >
+    <Text css={{ fontSize: '$3', color: 'white', fontWeight: 500 }}>
+      Blue
+    </Text>
+  </Box>
+</Box>
+
+{' '}
+<Box>
+  <Box
+    css={{
+      display: 'inline-flex',
+      ai: 'center',
+      cursor: 'default',
+      px: '$3',
+      height: 35,
+      backgroundColor: '$cyan9',
+      borderRadius: '$2',
+      '&:hover': { backgroundColor: '$cyan10' },
+    }}
+  >
+    <Text css={{ fontSize: '$3', color: 'white', fontWeight: 500 }}>
+      Cyan
+    </Text>
+  </Box>
+</Box>
+
+{' '}
+<Box>
+  <Box
+    css={{
+      display: 'inline-flex',
+      ai: 'center',
+      cursor: 'default',
+      px: '$3',
+      height: 35,
+      backgroundColor: '$sky9',
+      borderRadius: '$2',
+      '&:hover': { backgroundColor: '$sky10' },
+    }}
+  >
+    <Text css={{ fontSize: '$3', color: 'black', fontWeight: 500 }}>
+      Sky
+    </Text>
+  </Box>
+</Box>
+<Box>
+  <Box
+    css={{
+      display: 'inline-flex',
+      ai: 'center',
+      cursor: 'default',
+      px: '$3',
+      height: 35,
+      backgroundColor: '$teal9',
+      borderRadius: '$2',
+      '&:hover': { backgroundColor: '$teal10' },
+    }}
+  >
+    <Text css={{ fontSize: '$3', color: 'white', fontWeight: 500 }}>
+      Teal
+    </Text>
+  </Box>
+</Box>
+
+{' '}
+<Box>
+  <Box
+    css={{
+      display: 'inline-flex',
+      ai: 'center',
+      cursor: 'default',
+      px: '$3',
+      height: 35,
+      backgroundColor: '$mint9',
+      borderRadius: '$2',
+      '&:hover': { backgroundColor: '$mint10' },
+    }}
+  >
+    <Text css={{ fontSize: '$3', color: 'black', fontWeight: 500 }}>
+      Mint
+    </Text>
+  </Box>
+</Box>
+
+{' '}
+<Box>
+  <Box
+    css={{
+      display: 'inline-flex',
+      ai: 'center',
+      cursor: 'default',
+      px: '$3',
+      height: 35,
+      backgroundColor: '$green9',
+      borderRadius: '$2',
+      '&:hover': { backgroundColor: '$green10' },
+    }}
+  >
+    <Text css={{ fontSize: '$3', color: 'white', fontWeight: 500 }}>
+      Green
+    </Text>
+  </Box>
+</Box>
+
+{' '}
+<Box>
+  <Box
+    css={{
+      display: 'inline-flex',
+      ai: 'center',
+      cursor: 'default',
+      px: '$3',
+      height: 35,
+      backgroundColor: '$grass9',
+      borderRadius: '$2',
+      '&:hover': { backgroundColor: '$grass10' },
+    }}
+  >
+    <Text css={{ fontSize: '$3', color: 'white', fontWeight: 500 }}>
+      Grass
+    </Text>
+  </Box>
+</Box>
+
+{' '}
+<Box>
+  <Box
+    css={{
+      display: 'inline-flex',
+      ai: 'center',
+      cursor: 'default',
+      px: '$3',
+      height: 35,
+      backgroundColor: '$lime9',
+      borderRadius: '$2',
+      '&:hover': { backgroundColor: '$lime10' },
+    }}
+  >
+    <Text css={{ fontSize: '$3', color: 'black', fontWeight: 500 }}>
+      Lime
+    </Text>
+  </Box>
+</Box>
+
+{' '}
+<Box>
+  <Box
+    css={{
+      display: 'inline-flex',
+      ai: 'center',
+      cursor: 'default',
+      px: '$3',
+      height: 35,
+      backgroundColor: '$yellow9',
+      borderRadius: '$2',
+      '&:hover': { backgroundColor: '$yellow10' },
+    }}
+  >
+    <Text css={{ fontSize: '$3', color: 'black', fontWeight: 500 }}>
+      Button
+    </Text>
+  </Box>
+</Box>
+
+{' '}
+<Box>
+  <Box
+    css={{
+      display: 'inline-flex',
+      ai: 'center',
+      cursor: 'default',
+      px: '$3',
+      height: 35,
+      backgroundColor: '$amber9',
+      borderRadius: '$2',
+      '&:hover': { backgroundColor: '$amber10' },
+    }}
+  >
+    <Text css={{ fontSize: '$3', color: 'black', fontWeight: 500 }}>
+      Amber
+    </Text>
+  </Box>
+</Box>
+
+{' '}
+<Box>
+  <Box
+    css={{
+      display: 'inline-flex',
+      ai: 'center',
+      cursor: 'default',
+      px: '$3',
+      height: 35,
+      backgroundColor: '$orange9',
+      borderRadius: '$2',
+      '&:hover': { backgroundColor: '$orange10' },
+    }}
+  >
+    <Text css={{ fontSize: '$3', color: 'white', fontWeight: 500 }}>
+      Orange
+    </Text>
+  </Box>
+</Box>
+
+{' '}
+<Box>
   <Box
     css={{
       display: 'inline-flex',
@@ -420,7 +741,7 @@ Step `10` is designed for component hover states, where step `9` is the componen
       jc: 'flex-end',
       p: 2,
       width: 50,
-      backgroundColor: '$crimson10',
+      backgroundColor: '$blue10',
       borderRadius: '9999px',
     }}
   >
@@ -436,13 +757,10 @@ Step `10` is designed for component hover states, where step `9` is the componen
 </Box>
 
   <Box>
-    <Text css={{ color: '$gray11', fontSize: '$2', mb: '$3' }}>
-      Violet9 background
-    </Text>
     <Box
       css={{
         position: 'relative',
-        width: 125,
+        width: 150,
         height: 2,
         backgroundColor: '$mauve300',
         borderRadius: '9999px',
@@ -466,13 +784,13 @@ Step `10` is designed for component hover states, where step `9` is the componen
             mt: -8,
             ml: -8,
             borderRadius: '50%',
-            boxShadow: '0 2px 5px rgba(0,0,0,.1)',
+            boxShadow: '0 1px 3px rgba(0,0,0,.2)',
           }}
         ></Box>
       </Box>
     </Box>
   </Box>
-</Grid>
+</Flex>
 
 }
 
