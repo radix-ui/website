@@ -25,7 +25,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$gray10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$gray9' }}
         >
           <Text
             css={{
@@ -35,7 +35,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Gray200
+            White text on Gray9
           </Text>
           <Flex
             css={{
@@ -54,7 +54,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$mauve10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$mauve9' }}
         >
           <Text
             css={{
@@ -64,7 +64,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Mauve200
+            White text on Mauve9
           </Text>
           <Flex
             css={{
@@ -83,7 +83,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$slate10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$slate9' }}
         >
           <Text
             css={{
@@ -93,7 +93,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Slate200
+            White text on Slate9
           </Text>
           <Flex
             css={{
@@ -112,7 +112,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$sage10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$sage9' }}
         >
           <Text
             css={{
@@ -122,7 +122,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Sage200
+            White text on Sage9
           </Text>
           <Flex
             css={{
@@ -141,7 +141,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$olive10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$olive9' }}
         >
           <Text
             css={{
@@ -151,7 +151,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Olive200
+            White text on Olive9
           </Text>
           <Flex
             css={{
@@ -170,7 +170,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$sand10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$sand9' }}
         >
           <Text
             css={{
@@ -180,7 +180,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Sand200
+            White text on Sand9
           </Text>
           <Flex
             css={{
@@ -199,7 +199,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$tomato10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$tomato9' }}
         >
           <Text
             css={{
@@ -209,7 +209,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Tomato200
+            White text on Tomato9
           </Text>
           <Flex
             css={{
@@ -228,7 +228,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$red10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$red9' }}
         >
           <Text
             css={{
@@ -238,7 +238,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Red200
+            White text on Red9
           </Text>
           <Flex
             css={{
@@ -257,7 +257,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$crimson10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$crimson9' }}
         >
           <Text
             css={{
@@ -267,7 +267,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Crimson200
+            White text on Crimson9
           </Text>
           <Flex
             css={{
@@ -286,7 +286,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$pink10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$pink9' }}
         >
           <Text
             css={{
@@ -296,7 +296,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Pink200
+            White text on Pink9
           </Text>
           <Flex
             css={{
@@ -315,7 +315,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$plum10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$plum9' }}
         >
           <Text
             css={{
@@ -325,7 +325,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Plum200
+            White text on Plum9
           </Text>
           <Flex
             css={{
@@ -344,7 +344,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$purple10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$purple9' }}
         >
           <Text
             css={{
@@ -354,7 +354,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Purple200
+            White text on Purple9
           </Text>
           <Flex
             css={{
@@ -373,7 +373,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$violet10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$violet9' }}
         >
           <Text
             css={{
@@ -383,7 +383,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Violet200
+            White text on Violet9
           </Text>
           <Flex
             css={{
@@ -402,7 +402,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$indigo10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$indigo9' }}
         >
           <Text
             css={{
@@ -412,7 +412,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Indigo200
+            White text on Indigo9
           </Text>
           <Flex
             css={{
@@ -431,7 +431,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$blue10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$blue9' }}
         >
           <Text
             css={{
@@ -441,7 +441,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Blue200
+            White text on Blue9
           </Text>
           <Flex
             css={{
@@ -460,7 +460,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$cyan10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$cyan9' }}
         >
           <Text
             css={{
@@ -470,7 +470,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Cyan200
+            White text on Cyan9
           </Text>
           <Flex
             css={{
@@ -489,7 +489,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$teal10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$teal9' }}
         >
           <Text
             css={{
@@ -499,7 +499,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Teal200
+            White text on Teal9
           </Text>
           <Flex
             css={{
@@ -518,7 +518,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$green10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$green9' }}
         >
           <Text
             css={{
@@ -528,7 +528,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Green200
+            White text on Green9
           </Text>
           <Flex
             css={{
@@ -547,7 +547,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$orange10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$orange9' }}
         >
           <Text
             css={{
@@ -557,7 +557,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Orange200
+            White text on Orange9
           </Text>
           <Flex
             css={{
@@ -576,7 +576,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$brown10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$brown9' }}
         >
           <Text
             css={{
@@ -586,7 +586,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Brown200
+            White text on Brown9
           </Text>
           <Flex
             css={{
@@ -605,7 +605,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$bronze10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$bronze9' }}
         >
           <Text
             css={{
@@ -615,7 +615,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Bronze200
+            White text on Bronze9
           </Text>
           <Flex
             css={{
@@ -634,7 +634,7 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$gold10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$gold9' }}
         >
           <Text
             css={{
@@ -644,7 +644,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Gold200
+            White text on Gold9
           </Text>
           <Flex
             css={{

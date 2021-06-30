@@ -25,7 +25,7 @@ export function ColorTestTextLargeBright() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$sky10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$sky9' }}
         >
           <Text
             css={{
@@ -35,7 +35,7 @@ export function ColorTestTextLargeBright() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            Black text on Sky200
+            Black text on Sky9
           </Text>
           <Flex
             css={{
@@ -54,7 +54,7 @@ export function ColorTestTextLargeBright() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$mint10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$mint9' }}
         >
           <Text
             css={{
@@ -64,7 +64,7 @@ export function ColorTestTextLargeBright() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            Black text on Mint200
+            Black text on Mint9
           </Text>
           <Flex
             css={{
@@ -83,7 +83,7 @@ export function ColorTestTextLargeBright() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$lime10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$lime9' }}
         >
           <Text
             css={{
@@ -93,7 +93,7 @@ export function ColorTestTextLargeBright() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            Black text on Lime200
+            Black text on Lime9
           </Text>
           <Flex
             css={{
@@ -112,7 +112,7 @@ export function ColorTestTextLargeBright() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$yellow10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$yellow9' }}
         >
           <Text
             css={{
@@ -122,7 +122,7 @@ export function ColorTestTextLargeBright() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            Black text on Yellow200
+            Black text on Yellow9
           </Text>
           <Flex
             css={{
@@ -141,7 +141,7 @@ export function ColorTestTextLargeBright() {
         <Flex
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$amber10' }}
+          css={{ height: '$7', px: '$3', backgroundColor: '$amber9' }}
         >
           <Text
             css={{
@@ -151,7 +151,7 @@ export function ColorTestTextLargeBright() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            Black text on Amber200
+            Black text on Amber9
           </Text>
           <Flex
             css={{
