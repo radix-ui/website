@@ -30,7 +30,7 @@ import {
   red
 } from '@radix-ui/colors';
 
-const { styled, theme } = createCss({
+const { styled } = createCss({
   theme: {
     colors: {
       ...blue,
@@ -38,7 +38,6 @@ const { styled, theme } = createCss({
       ...yellow,
       ...red,
 
-      accent0: '$blue0',
       accent1: '$blue1',
       accent2: '$blue2',
       accent3: '$blue3',
@@ -50,17 +49,18 @@ const { styled, theme } = createCss({
       accent9: '$blue9',
       accent10: '$blue10',
       accent11: '$blue11',
+      accent12: '$blue12',
 
-      success0: '$green0',
       success1: '$green1',
+      success2: '$green2',
       // repeat for all steps
 
-      warning0: '$yellow0',
       warning1: '$yellow1',
+      warning2: '$yellow2',
       // repeat for all steps
 
-      danger0: '$red0',
       danger1: '$red1',
+      danger2: '$red2',
       // repeat for all steps
     },
   },
@@ -83,29 +83,29 @@ const theme = {
   ...yellow,
   ...red,
 
-  accent0: '$blue0',
-  accent1: '$blue1',
-  accent2: '$blue2',
-  accent3: '$blue3',
-  accent4: '$blue4',
-  accent5: '$blue5',
-  accent6: '$blue6',
-  accent7: '$blue7',
-  accent8: '$blue8',
-  accent9: '$blue9',
-  accent10: '$blue10',
-  accent11: '$blue11',
+  accent1: blue.blue1,
+  accent2: blue.blue2,
+  accent3: blue.blue3,
+  accent4: blue.blue4,
+  accent5: blue.blue5,
+  accent6: blue.blue6,
+  accent7: blue.blue7,
+  accent8: blue.blue8,
+  accent9: blue.blue9,
+  accent10: blue.blue10,
+  accent11: blue.blue11,
+  accent12: blue.blue12,
 
-  success0: '$green0',
-  success1: '$green1',
+  success1: green.green1,
+  success2: green.green2,
   // repeat for all steps
 
-  warning0: '$yellow0',
-  warning1: '$yellow1',
+  warning1: yellow.yellow1,
+  warning2: yellow.yellow2,
   // repeat for all steps
 
-  danger0: '$red0',
-  danger1: '$red1',
+  danger1: red.red1,
+  danger2: red.red2,
   // repeat for all steps
 };
 
@@ -124,7 +124,6 @@ It's intended for prototyping only. */
 @import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/red.css';
 
 :root {
-  --accent0: var(--blue0);
   --accent1: var(--blue1);
   --accent2: var(--blue2);
   --accent3: var(--blue3);
@@ -136,17 +135,18 @@ It's intended for prototyping only. */
   --accent9: var(--blue9);
   --accent10: var(--blue10);
   --accent11: var(--blue11);
+  --accent12: var(--blue12);
 
-  success0: var(--green0);
-  success1: var(--green1);
+  --success1: var(--green1);
+  --success2: var(--green2);
   /* repeat for all steps */
   
-  warning0: var(--yellow0);
-  warning1: var(--yellow1);
+  --warning1: var(--yellow1);
+  --warning2: var(--yellow2);
   /* repeat for all steps */
   
-  danger0: var(--red0);
-  danger1: var(--red1);
+  --danger1: var(--red1);
+  --danger2: var(--red2);
   /* repeat for all steps */
 }
 `}/>
@@ -164,32 +164,113 @@ With this approach, you will likely run into issues where you need to use the sa
 
 In this scenario, you can choose to define multiple semantic aliases which map to the same scale.
 
-```jsx
-const { styled, theme } = createCss({
+{
+
+<Tabs defaultValue="1" css={{ my: '$5' }}>
+  <TabsList>
+    <TabsTab value="1">Stitches</TabsTab>
+    <TabsTab value="2">Styled Components</TabsTab>
+    <TabsTab value="3">CSS</TabsTab>
+  </TabsList>
+  <TabsPanel value="1">
+    <CodeBlock language="jsx" value={`import { createCss } from '@stitches/react';
+import {
+  blue,
+  green,
+  yellow,
+  red
+} from '@radix-ui/colors';
+
+const { styled } = createCss({
   theme: {
     colors: {
       ...blue,
       ...green,
       ...yellow,
 
-      accent0: '$blue0',
       accent1: '$blue1',
-      info0: '$blue0',
+      accent2: '$blue2',
       info1: '$blue1',
+      info2: '$blue2',
 
-      success0: '$green0',
       success1: '$green1',
-      valid0: '$green0',
+      success2: '$green2',
       valid1: '$green1',
+      valid2: '$green2',
 
-      warning0: '$yellow0',
       warning1: '$yellow1',
-      pending0: '$yellow0',
+      warning2: '$yellow2',
       pending1: '$yellow1',
+      pending2: '$yellow2',
     },
   },
 });
-```
+`}/>
+
+  </TabsPanel>
+  <TabsPanel value="2">
+    <CodeBlock language="jsx" value={`import styled, { ThemeProvider } from 'styled-components';
+import {
+  blue,
+  green,
+  yellow
+} from '@radix-ui/colors';
+
+const theme = {
+  ...blue,
+  ...green,
+  ...yellow,
+
+  accent1: blue.blue1,
+  accent2: blue.blue2,
+  info1: blue.blue1,
+  info2: blue.blue2,
+
+  success1: green.green1,
+  success2: green.green2,
+  valid1: green.green1,
+  valid2: green.green2,
+
+  warning1: yellow.yellow1,
+  warning2: yellow.yellow2,
+  pending1: yellow.yellow1,
+  pending2: yellow.yellow2,
+};
+
+<ThemeProvider theme={theme}>
+  // your app
+</ThemeProvider>
+`}/>
+
+  </TabsPanel>
+  <TabsPanel value="3">   
+    <CodeBlock language="css" value={`/* Note: Using the CDN approach in production is not recommended.
+It's intended for prototyping only. */
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue.css';
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green.css';
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/yellow.css';
+
+:root {
+  --accent1: var(--blue1);
+  --accent2: var(--blue2);
+  --info1: var(--blue1);
+  --info2: var(--blue2);
+
+  --success1: var(--green1);
+  --success2: var(--green2);
+  --valid1: var(--green1);
+  --valid2: var(--green2);
+
+  --warning1: var(--yellow1);
+  --warning2: var(--yellow2);
+  --pending1: var(--yellow1);
+  --pending2: var(--yellow2);
+}
+`}/>
+    </TabsPanel>
+</Tabs>
+}
+
 
 Or you can simply recommend that your teammates defer to the original scale name for situations where there is no appropriate semantic alias.
 
@@ -197,8 +278,24 @@ Or you can simply recommend that your teammates defer to the original scale name
 
 Each step in Radix Colors scales is designed for a specific use case. To help your team know which step to use, you can provide aliases based on the designed use cases.
 
-```jsx
-const { styled, theme } = createCss({
+{
+
+<Tabs defaultValue="1" css={{ my: '$5' }}>
+  <TabsList>
+    <TabsTab value="1">Stitches</TabsTab>
+    <TabsTab value="2">Styled Components</TabsTab>
+    <TabsTab value="3">CSS</TabsTab>
+  </TabsList>
+  <TabsPanel value="1">
+    <CodeBlock language="jsx" value={`import { createCss } from '@stitches/react';
+import {
+  blue,
+  green,
+  yellow,
+  red
+} from '@radix-ui/colors';
+
+const { styled } = createCss({
   theme: {
     colors: {
       ...blue,
@@ -206,34 +303,121 @@ const { styled, theme } = createCss({
       ...yellow,
       ...red,
 
-      accentBase: '$blue0',
-      accentBgSubtle: '$blue1',
-      accentBg: '$blue2',
-      accentBgHover: '$blue3',
-      accentBgActive: '$blue4',
-      accentLine: '$blue5',
-      accentBorder: '$blue6',
-      accentBorderHover: '$blue7',
-      accentSolid: '$blue8',
-      accentSolidHover: '$blue9',
-      accentText: '$blue10',
-      accentTextContrast: '$blue11',
+      accentBase: '$blue1',
+      accentBgSubtle: '$blue2',
+      accentBg: '$blue3',
+      accentBgHover: '$blue4',
+      accentBgActive: '$blue5',
+      accentLine: '$blue6',
+      accentBorder: '$blue7',
+      accentBorderHover: '$blue8',
+      accentSolid: '$blue9',
+      accentSolidHover: '$blue10',
+      accentText: '$blue11',
+      accentTextContrast: '$blue12',
 
-      successBase: '$green0',
-      successBgSubtle: '$green1',
+      successBase: '$green1',
+      successBgSubtle: '$green2',
       // repeat for all steps
 
-      warningBase: '$yellow0',
-      warningBgSubtle: '$yellow1',
+      warningBase: '$yellow1',
+      warningBgSubtle: '$yellow2',
       // repeat for all steps
 
-      dangerBase: '$red0',
-      dangerBgSubtle: '$red1',
+      dangerBase: '$red1',
+      dangerBgSubtle: '$red2',
       // repeat for all steps
     },
   },
-});
-```
+})
+`}/>
+
+  </TabsPanel>
+  <TabsPanel value="2">
+    <CodeBlock language="jsx" value={`import styled, { ThemeProvider } from 'styled-components';
+import {
+  blue,
+  green,
+  yellow,
+  red
+} from '@radix-ui/colors';
+
+const theme = {
+  ...blue,
+  ...green,
+  ...yellow,
+  ...red,
+
+  accentBase: blue.blue1,
+  accentBgSubtle: blue.blue2,
+  accentBg: blue.blue3,
+  accentBgHover: blue.blue4,
+  accentBgActive: blue.blue5,
+  accentLine: blue.blue6,
+  accentBorder: blue.blue7,
+  accentBorderHover: blue.blue8,
+  accentSolid: blue.blue9,
+  accentSolidHover: blue2.blue10,
+  accentText: blue.blue11,
+  accentTextContrast: blue.blue12,
+
+  successBase: green.green1,
+  successBgSubtle: green.green2,
+  // repeat for all steps
+
+  warningBase: yellow.yellow1,
+  warningBgSubtle: yellow.yellow2,
+  // repeat for all steps
+
+  dangerBase: red.red1,
+  dangerBgSubtle: red.red2,
+  // repeat for all steps
+};
+
+<ThemeProvider theme={theme}>
+  // your app
+</ThemeProvider>
+`}/>
+
+  </TabsPanel>
+  <TabsPanel value="3">   
+    <CodeBlock language="css" value={`/* Note: Using the CDN approach in production is not recommended.
+It's intended for prototyping only. */
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue.css';
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green.css';
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/yellow.css';
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/red.css';
+
+:root {
+  --accentBase: var(--blue1);
+  --accentBgSubtle: var(--blue2);
+  --accentBg: var(--blue3);
+  --accentBgHover: var(--blue4);
+  --accentBgActive: var(--blue5);
+  --accentLine: var(--blue6);
+  --accentBorder: var(--blue7);
+  --accentBorderHover: var(--blue8);
+  --accentSolid: var(--blue9);
+  --accentSolidHover: var(--blue10);
+  --accentText: var(--blue11);
+  --accentTextContrast: var(--blue12);
+
+  --successBase: var(--green1);
+  --successBgSubtle: var(--green2);
+  /* repeat for all steps */
+
+  --warningBase: var(--yellow1);
+  --warningBgSubtle: var(--yellow2);
+  /* repeat for all steps */
+
+  --dangerBase: var(--red1);
+  --dangerBgSubtle: var(--red2);
+  /* repeat for all steps */
+}
+`}/>
+    </TabsPanel>
+</Tabs>
+}
 
 Again, with this approach, you will likely run into issues where you need to use the same step for multiple use cases. Common examples include:
 
@@ -242,7 +426,24 @@ Again, with this approach, you will likely run into issues where you need to use
 
 In these cases, you can choose to define multiple aliases which map to the same step.
 
-```jsx
+{
+
+<Tabs defaultValue="1" css={{ my: '$5' }}>
+  <TabsList>
+    <TabsTab value="1">Stitches</TabsTab>
+    <TabsTab value="2">Styled Components</TabsTab>
+    <TabsTab value="3">CSS</TabsTab>
+  </TabsList>
+  <TabsPanel value="1">
+    <CodeBlock language="jsx" value={`import { createCss } from '@stitches/react';
+import {
+  gray,
+  blue,
+  green,
+  yellow,
+  red
+} from '@radix-ui/colors';
+
 const { styled, theme } = createCss({
   theme: {
     colors: {
@@ -260,7 +461,59 @@ const { styled, theme } = createCss({
     },
   },
 });
-```
+`}/>
+
+  </TabsPanel>
+  <TabsPanel value="2">
+    <CodeBlock language="jsx" value={`import styled, { ThemeProvider } from 'styled-components';
+import {
+  gray,
+  blue,
+  green,
+  yellow,
+  red
+} from '@radix-ui/colors';
+
+const theme = {
+  ...gray,
+  ...blue,
+  ...green,
+  ...yellow,
+  ...red,
+
+  graySolid: gray.gray8,
+  grayPlaceholderText: gray.gray8,
+
+  accentBorderHover: blue.blue7,
+  accentFocusRing: blue.blue7,
+};
+
+<ThemeProvider theme={theme}>
+  // your app
+</ThemeProvider>
+`}/>
+
+  </TabsPanel>
+  <TabsPanel value="3">   
+    <CodeBlock language="css" value={`/* Note: Using the CDN approach in production is not recommended.
+It's intended for prototyping only. */
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/gray.css';
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue.css';
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green.css';
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/yellow.css';
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/red.css';
+
+:root {
+  --graySolid: var(--gray8);
+  --grayPlaceholderText: var(--gray8);
+
+  --accentBorderHover: var(--blue7);
+  --accentFocusRing: var(--blue7);
+}
+`}/>
+    </TabsPanel>
+</Tabs>
+}
 
 Or you can simply recommend that your teammates defer to the original step number for situations where use cases don't have an alias.
 
@@ -273,7 +526,23 @@ When designing for both light and dark modes, you sometimes need to map a variab
 - Shadows that are saturated, transparent gray in light mode, and pure black in dark mode.
 - An overlay that is light transparent black in light mode, and a darker transparent black in dark mode.
 
-```jsx
+{
+
+<Tabs defaultValue="1" css={{ my: '$5' }}>
+  <TabsList>
+    <TabsTab value="1">Stitches</TabsTab>
+    <TabsTab value="2">Styled Components</TabsTab>
+    <TabsTab value="3">CSS</TabsTab>
+  </TabsList>
+  <TabsPanel value="1">
+    <CodeBlock language="jsx" value={`import { createCss } from '@stitches/react';
+import {
+  slate,
+  slateA,
+  whiteA,
+  blackA
+} from '@radix-ui/colors';
+
 const { styled, theme } = createCss({
   theme: {
     colors: {
@@ -304,7 +573,76 @@ const darkTheme = theme({
     overlay: '$blackA6',
   },
 });
-```
+`}/>
+
+  </TabsPanel>
+  <TabsPanel value="2">
+    <CodeBlock language="jsx" value={`import styled, { ThemeProvider } from 'styled-components';
+import {
+  slate,
+  slateA,
+  whiteA,
+  blackA
+} from '@radix-ui/colors';
+
+const theme = {
+  ...slate,
+  ...slateA,
+  ...whiteA,
+  ...blackA,
+
+  panel: 'white',
+  panelContrast: black.blackA11,
+  shadow: slate.slateA3,
+  overlay: slate.blackA3,  
+};
+
+const darkTheme = {
+  ...slateDark,
+  ...slateDarkA,
+  ...whiteA,
+  ...blackA,
+
+  // Remap your colors for dark mode
+  panel: slate.slate2,
+  panelContrast: whiteA.whiteA11,
+  shadow: 'black',
+  overlay: blackA.blackA6,
+}
+
+<ThemeProvider theme={darkTheme}>
+  // your app
+</ThemeProvider>
+`}/>
+
+  </TabsPanel>
+  <TabsPanel value="3">   
+    <CodeBlock language="css" value={`/* Note: Using the CDN approach in production is not recommended.
+It's intended for prototyping only. */
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/slate.css';
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/slateA.css';
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/whiteA.css';
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blackA.css';
+
+:root {
+  --panel: white;
+  --panelContrast: var(--blackA11);
+  --shadow: var(--slateA3);
+  --overlay: var(--blackA3);
+}
+
+.dark-theme {
+  /* Remap your colors for dark mode */
+  --panel: var(--slate2);
+  --panelContrast: var(--whiteA11);
+  --shadow: 'black';
+  --overlay: var(--blackA6);
+}
+`}/>
+    </TabsPanel>
+</Tabs>
+}
+
 
 Avoid using specific variable names like "CardBg", or "Tooltip", because you will likely need to use each variable for multiple use cases.
 
@@ -317,10 +655,19 @@ If you wish, you can rename scales. Reasons might include:
 - Rename a scale to match your brand, like how Discord use "Blurple".
 - Just to have some fun :)
 
-```jsx
+{
+
+<Tabs defaultValue="1" css={{ my: '$5' }}>
+  <TabsList>
+    <TabsTab value="1">Stitches</TabsTab>
+    <TabsTab value="2">Styled Components</TabsTab>
+    <TabsTab value="3">CSS</TabsTab>
+  </TabsList>
+  <TabsPanel value="1">
+    <CodeBlock language="jsx" value={`import { createCss } from '@stitches/react';
 import { slate, sky, grass, violet, crimson } from '@radix-ui/colors';
 
-const { styled, theme } = createCss({
+const { styled } = createCss({
   theme: {
     colors: {
       gray1: slate.slate1,
@@ -335,12 +682,67 @@ const { styled, theme } = createCss({
       blurple1: violet.violet1,
       blurple2: violet.violet2,
 
-      blurple1: violet.violet1,
-      blurple2: violet.violet2,
-
       caribbeanSunset1: crimson.crimson1,
       caribbeanSunset2: crimson.crimson2,
     },
   },
 });
-```
+`}/>
+
+  </TabsPanel>
+  <TabsPanel value="2">
+    <CodeBlock language="jsx" value={`import styled, { ThemeProvider } from 'styled-components';
+import { slate, sky, grass, violet, crimson } from '@radix-ui/colors';
+
+const theme = {
+  gray1: slate.slate1,
+  gray2: slate.slate2,
+
+  blue1: sky.sky1,
+  blue2: sky.sky2,
+
+  green1: grass.grass1,
+  green2: grass.grass2,
+
+  blurple1: violet.violet1,
+  blurple2: violet.violet2,
+
+  caribbeanSunset1: crimson.crimson1,
+  caribbeanSunset2: crimson.crimson2,
+};
+
+<ThemeProvider theme={theme}>
+  // your app
+</ThemeProvider>
+`}/>
+
+  </TabsPanel>
+  <TabsPanel value="3">   
+    <CodeBlock language="css" value={`/* Note: Using the CDN approach in production is not recommended.
+It's intended for prototyping only. */
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/slate.css';
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/sky.css';
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/grass.css';
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/violet.css';
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/crimson.css';
+
+:root {
+  --gray1: (var--slate1);
+  --gray2: (var--slate2);
+
+  --blue1: (var--sky1);
+  --blue2: (var--sky2);
+
+  --green1: (var--grass1);
+  --green2: (var--grass2);
+
+  --blurple1: (var--violet1);
+  --blurple2: (var--violet2);
+
+  --caribbeanSunset1: (var--crimson1);
+  --caribbeanSunset2: (var--crimson2);
+}
+`}/>
+    </TabsPanel>
+</Tabs>
+}
