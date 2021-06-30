@@ -89,7 +89,6 @@ export const Header = (props) => {
                 <DropdownMenuItem onSelect={() => router.push('https://icons.modulz.app')}>
                   Icons
                 </DropdownMenuItem>
-                <DropdownMenuItem>Resets</DropdownMenuItem>
                 <DropdownMenuItem onSelect={() => router.push('https://stitches.dev')}>
                   Stitches
                 </DropdownMenuItem>
