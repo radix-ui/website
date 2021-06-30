@@ -45,9 +45,9 @@ export function Highlights({ features }) {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: '$green200',
+                  backgroundColor: '$green4',
                   borderRadius: '50%',
-                  color: '$green900',
+                  color: '$green11',
                   marginRight: '15px',
                   flexShrink: 0,
                 }}
@@ -95,7 +95,7 @@ export function Highlights({ features }) {
               <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
                 View source
               </Text>
-              <Box as="span" css={{ ml: '$1', color: '$gray700' }}>
+              <Box as="span" css={{ ml: '$1', color: '$gray9' }}>
                 <ExternalIcon />
               </Box>
             </Flex>
@@ -111,7 +111,7 @@ export function Highlights({ features }) {
               <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
                 View on npm
               </Text>
-              <Box as="span" css={{ ml: '$1', color: '$gray700' }}>
+              <Box as="span" css={{ ml: '$1', color: '$gray9' }}>
                 <ExternalIcon />
               </Box>
             </Flex>
@@ -127,7 +127,7 @@ export function Highlights({ features }) {
               <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
                 Report an issue
               </Text>
-              <Box as="span" css={{ ml: '$1', color: '$gray700' }}>
+              <Box as="span" css={{ ml: '$1', color: '$gray9' }}>
                 <ExternalIcon />
               </Box>
             </Flex>
@@ -141,7 +141,7 @@ export function Highlights({ features }) {
                 <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
                   ARIA design pattern
                 </Text>
-                <Box as="span" css={{ ml: '$1', color: '$gray700' }}>
+                <Box as="span" css={{ ml: '$1', color: '$gray9' }}>
                   <ExternalIcon />
                 </Box>
               </Flex>

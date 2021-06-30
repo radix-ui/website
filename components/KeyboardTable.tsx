@@ -25,13 +25,13 @@ export function KeyboardTable({
     >
       <thead>
         <tr>
-          <Box as="th" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
-            <Text size="2" css={{ color: '$gray900' }}>
+          <Box as="th" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4' }}>
+            <Text size="2" css={{ color: '$gray11' }}>
               Key
             </Text>
           </Box>
-          <Box as="th" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
-            <Text size="2" css={{ color: '$gray900' }}>
+          <Box as="th" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4' }}>
+            <Text size="2" css={{ color: '$gray11' }}>
               Description
             </Text>
           </Box>
@@ -43,7 +43,7 @@ export function KeyboardTable({
             <Box
               as="td"
               css={{
-                borderBottom: '1px solid $gray500',
+                borderBottom: '1px solid $gray6',
                 py: '$3',
                 pr: '$4',
                 whiteSpace: 'nowrap',
@@ -55,7 +55,7 @@ export function KeyboardTable({
                 </Kbd>
               ))}
             </Box>
-            <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3' }}>
+            <Box as="td" css={{ borderBottom: '1px solid $gray6', py: '$3' }}>
               <Text size="3" css={{ lineHeight: '25px' }}>
                 {description}
               </Text>

@@ -2,7 +2,8 @@ import React from 'react';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
-import { global, darkTheme, DesignSystemProvider } from '@modulz/design-system';
+import { global, darkTheme, DesignSystemProvider, Box } from '@modulz/design-system';
+import { Header } from '@components/Header';
 import { Footer } from '@components/Footer';
 import { PrimitivesPage } from '@components/PrimitivesPage';
 import { DesignSystemPage } from '@components/DesignSystemPage';
@@ -11,30 +12,35 @@ import { useAnalytics } from '@lib/analytics';
 import { scrollToUrlHash } from '@lib/scrollToUrlHash';
 
 const globalStyles = global({
+  '*, *::before, *::after': {
+    boxSizing: 'border-box',
+  },
+
   body: {
     margin: 0,
     backgroundColor: '$loContrast',
     fontFamily: '$untitled',
+    WebkitFontSmoothing: 'antialiased',
+    MozOsxFontSmoothing: 'grayscale',
   },
 
-  'h1, h2, h3, h4, h5': { fontWeight: 500 },
-
-  'body, button': {
-    fontFamily: '$untitled',
+  svg: {
+    display: 'block',
+    verticalAlign: 'middle',
   },
-
-  svg: { display: 'block' },
 
   'pre, code': { margin: 0, fontFamily: '$mono' },
 
   '::selection': {
-    backgroundColor: '$violet300',
+    backgroundColor: '$violet5',
   },
 
   '#__next': {
     position: 'relative',
     zIndex: 0,
   },
+
+  'h1, h2, h3, h4, h5': { fontWeight: 500 },
 });
 
 function App({ Component, pageProps }: AppProps) {
@@ -46,35 +52,50 @@ function App({ Component, pageProps }: AppProps) {
     scrollToUrlHash(router.asPath);
   }, []);
 
-  const isPrimitivesDocs = router.pathname.includes('/primitives/docs');
-  const isDesignSystemDocs = router.pathname.includes('/design-system/docs');
-  const isColorsDocs = router.pathname.includes('/colors/docs');
-  const shouldShowFooter = !isPrimitivesDocs || !isDesignSystemDocs || !isColorsDocs;
+  const isPrimitivesDocs = router.pathname.includes('/docs/primitives');
+  const isDesignSystemDocs = router.pathname.includes('/docs/design-system');
+  const isColorsDocs = router.pathname.includes('/docs/colors');
+  const IsNotADocPage = !isPrimitivesDocs && !isDesignSystemDocs && !isColorsDocs;
 
   return (
     <DesignSystemProvider>
       <ThemeProvider
         disableTransitionOnChange
         attribute="class"
-        value={{ light: 'light-theme', dark: darkTheme.className }}
+        value={{ light: 'light-theme', dark: darkTheme.toString() }}
         defaultTheme="system"
       >
-        {isPrimitivesDocs ? (
-          <PrimitivesPage>
+        <Box
+          css={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            backgroundColor: '$loContrast',
+            boxShadow: IsNotADocPage ? 'none' : '0 0 0 1px $colors$slate5',
+            zIndex: 2,
+          }}
+        >
+          <Header />
+        </Box>
+        <Box css={{ pt: '$7', position: 'relative', zIndex: 1 }}>
+          {isPrimitivesDocs ? (
+            <PrimitivesPage>
+              <Component {...pageProps} />
+            </PrimitivesPage>
+          ) : isDesignSystemDocs ? (
+            <DesignSystemPage>
+              <Component {...pageProps} />
+            </DesignSystemPage>
+          ) : isColorsDocs ? (
+            <ColorsPage>
+              <Component {...pageProps} />
+            </ColorsPage>
+          ) : (
             <Component {...pageProps} />
-          </PrimitivesPage>
-        ) : isDesignSystemDocs ? (
-          <DesignSystemPage>
-            <Component {...pageProps} />
-          </DesignSystemPage>
-        ) : isColorsDocs ? (
-          <ColorsPage>
-            <Component {...pageProps} />
-          </ColorsPage>
-        ) : (
-          <Component {...pageProps} />
-        )}
-        {!shouldShowFooter && <Footer />}
+          )}
+        </Box>
+        {IsNotADocPage && <Footer />}
       </ThemeProvider>
     </DesignSystemProvider>
   );

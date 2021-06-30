@@ -39,18 +39,18 @@ export function PropsTable({
     >
       <thead>
         <tr>
-          <Box as="th" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
-            <Text size="2" css={{ color: '$gray900' }}>
+          <Box as="th" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4' }}>
+            <Text size="2" css={{ color: '$gray11' }}>
               Prop
             </Text>
           </Box>
-          <Box as="th" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
-            <Text size="2" css={{ color: '$gray900' }}>
+          <Box as="th" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4' }}>
+            <Text size="2" css={{ color: '$gray11' }}>
               Type
             </Text>
           </Box>
-          <Box as="th" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
-            <Text size="2" css={{ color: '$gray900' }}>
+          <Box as="th" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4' }}>
+            <Text size="2" css={{ color: '$gray11' }}>
               Default
             </Text>
           </Box>
@@ -61,7 +61,7 @@ export function PropsTable({
           <tr key={`${name}-${i}`}>
             <Box
               as="td"
-              css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4', whiteSpace: 'nowrap' }}
+              css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4', whiteSpace: 'nowrap' }}
             >
               <Code>
                 {name}
@@ -72,7 +72,7 @@ export function PropsTable({
                   <PopoverTrigger
                     as={IconButton}
                     variant="ghost"
-                    css={{ ml: '$1', verticalAlign: 'middle', color: '$gray900' }}
+                    css={{ ml: '$1', verticalAlign: 'middle', color: '$gray11' }}
                   >
                     <AccessibleIcon label="Prop description">
                       <InfoCircledIcon />
@@ -88,8 +88,8 @@ export function PropsTable({
                 </Popover>
               )}
             </Box>
-            <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
-              <Code css={{ bc: '$gray200', color: '$gray900' }}>
+            <Box as="td" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4' }}>
+              <Code css={{ bc: '$gray4', color: '$gray11' }}>
                 {Boolean(typeSimple) ? typeSimple : type}
               </Code>
               {Boolean(typeSimple) && (
@@ -100,7 +100,7 @@ export function PropsTable({
                     css={{
                       ml: '$1',
                       verticalAlign: 'middle',
-                      color: '$gray900',
+                      color: '$gray11',
                       display: 'none',
                       '@bp1': { display: 'inline-flex' },
                     }}
@@ -117,11 +117,11 @@ export function PropsTable({
                 </Popover>
               )}
             </Box>
-            <Box as="td" css={{ borderBottom: '1px solid $gray500', py: '$3', pr: '$4' }}>
+            <Box as="td" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4' }}>
               {Boolean(defaultValue) ? (
-                <Code css={{ bc: '$gray200', color: '$gray900' }}>{defaultValue}</Code>
+                <Code css={{ bc: '$gray4', color: '$gray11' }}>{defaultValue}</Code>
               ) : (
-                <Box as={AccessibleIcon} label="No default value" css={{ color: '$gray600' }}>
+                <Box as={AccessibleIcon} label="No default value" css={{ color: '$gray8' }}>
                   <DividerHorizontalIcon />
                 </Box>
               )}

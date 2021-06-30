@@ -7,18 +7,18 @@ export const RadixLogo = ({
   <AccessibleIcon label={label || 'Radix Logo'}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="35"
-      height="35"
-      viewBox="0 0 35 35"
+      width="25"
+      height="25"
+      viewBox="0 0 25 25"
       fill="none"
       {...props}
     >
+      <path d="M12 25C7.58173 25 4 21.4183 4 17C4 12.5817 7.58173 9 12 9V25Z" fill="currentColor" />
+      <path d="M12 0H4V8H12V0Z" fill="currentColor" />
       <path
-        d="M17 35C10.3726 35 5 30.0751 5 24C5 17.9249 10.3726 13 17 13L17 35Z"
+        d="M17 8C19.2091 8 21 6.20914 21 4C21 1.79086 19.2091 0 17 0C14.7909 0 13 1.79086 13 4C13 6.20914 14.7909 8 17 8Z"
         fill="currentColor"
       />
-      <rect x="5" width="12" height="12" fill="currentColor" />
-      <circle cx="24" cy="6" r="6" fill="currentColor" />
     </svg>
   </AccessibleIcon>
 );

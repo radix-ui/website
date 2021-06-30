@@ -1,11 +1,9 @@
 import * as React from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { Box, Flex, Badge, Text, Link, Container, IconButton } from '@modulz/design-system';
+import { Box, Flex, Badge, Text, Link, Container, Button } from '@modulz/design-system';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import { ScrollArea } from './ScrollArea';
-import { RadixLogo } from './RadixLogo';
-import { ThemeToggle } from '@components/ThemeToggle';
 import { allPrimitivesRoutes, primitivesRoutes } from '@lib/primitivesRoutes';
 import { NavHeading, NavItem } from './DocNav';
 
@@ -47,9 +45,7 @@ export function PrimitivesPage({ children }: { children: React.ReactNode }) {
     <Flex
       css={{
         flexDirection: 'column',
-        '@bp2': {
-          flexDirection: 'row',
-        },
+        '@bp2': { flexDirection: 'row' },
       }}
     >
       <Box
@@ -57,72 +53,40 @@ export function PrimitivesPage({ children }: { children: React.ReactNode }) {
           width: '100%',
           maxHeight: 'auto',
           borderBottom: '1px solid',
-          borderColor: '$slate500',
+          borderColor: '$slate6',
           WebkitOverflowScrolling: 'touch',
           overflowX: 'hidden',
 
           '@bp2': {
             position: 'fixed',
-            top: 0,
+            top: '$sizes$7',
             left: 0,
             bottom: 0,
             width: '250px',
             borderRight: '1px solid',
             borderBottom: '0',
-            borderColor: '$slate500',
+            borderColor: '$slate6',
           },
         }}
       >
         <ScrollArea>
-          <Flex css={{ alignItems: 'center', p: '$4' }}>
-            <NextLink href="/" passHref>
-              <Box
-                as="a"
-                css={{
-                  color: '$hiContrast',
-                  display: 'inline-flex',
-                  '&:focus': { boxShadow: 'none' },
-                }}
-              >
-                <span
-                  style={{
-                    position: 'absolute',
-                    width: 1,
-                    height: 1,
-                    padding: 0,
-                    margin: -1,
-                    overflow: 'hidden',
-                    clip: 'rect(0, 0, 0, 0)',
-                    whiteSpace: 'nowrap',
-                    border: 0,
-                  }}
-                >
-                  Radix homepage
-                </span>
-                <RadixLogo />
-              </Box>
-            </NextLink>
-            <Badge variant="yellow" css={{ ml: '$3' }}>
-              Alpha
-            </Badge>
-            <ThemeToggle css={{ ml: 'auto' }} />
-            <Box css={{ ml: '$2', '@bp2': { display: 'none' } }}>
-              <IconButton
-                variant="ghost"
+          <Flex css={{ alignItems: 'center', p: '$4', '@bp2': { display: 'none' } }}>
+            <Box css={{ ml: '-$1' }}>
+              <Button
+                ghost
                 onClick={() => setIsOpen(!isOpen)}
                 state={isOpen ? 'active' : undefined}
               >
                 <HamburgerMenuIcon />
-              </IconButton>
+                <Box css={{ ml: '$2' }}>Menu</Box>
+              </Button>
             </Box>
           </Flex>
 
           <Box
             css={{
               display: isOpen ? 'block' : 'none',
-              '@bp2': {
-                display: 'block',
-              },
+              '@bp2': { display: 'block', mt: '$4' },
             }}
           >
             {primitivesRoutes.map((section) => (
@@ -181,13 +145,13 @@ export function PrimitivesPage({ children }: { children: React.ReactNode }) {
                       as="a"
                       aria-label={`Previous page: ${previous.title}`}
                       css={{
-                        color: '$blue900',
+                        color: '$blue11',
                         textDecoration: 'none',
                         alignItems: 'center',
                       }}
                     >
                       <Box css={{ mb: '$2' }}>
-                        <Text size="3" css={{ color: '$slate900' }}>
+                        <Text size="3" css={{ color: '$slate11' }}>
                           Previous
                         </Text>
                       </Box>
@@ -205,13 +169,13 @@ export function PrimitivesPage({ children }: { children: React.ReactNode }) {
                       as="a"
                       aria-label={`Previous page: ${next.title}`}
                       css={{
-                        color: '$blue900',
+                        color: '$blue11',
                         textDecoration: 'none',
                         textAlign: 'right',
                       }}
                     >
                       <Box css={{ mb: '$2' }}>
-                        <Text size="3" css={{ color: '$slate900' }}>
+                        <Text size="3" css={{ color: '$slate11' }}>
                           Next
                         </Text>
                       </Box>
