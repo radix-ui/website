@@ -50,10 +50,6 @@ export default () => (
 
 Create your styled radio group component from the primitive parts.
 
-<Preview>
-  <RadioGroupDemo />
-</Preview>
-
 ```jsx
 import { styled } from 'path-to/stitches.config';
 import * as RadioGroup from '@radix-ui/react-radio-group';
@@ -110,7 +106,7 @@ export default () => (
 
 ## API Reference
 
-### RadioGroup
+### Root
 
 Contains all the parts of a radio group.
 
@@ -146,6 +142,12 @@ Contains all the parts of a radio group.
       type: '(value: string) => void',
       typeSimple: 'function',
       description: 'Event handler called when the value changes.',
+    },
+    {
+      name: 'name',
+      type: 'string',
+      description:
+        'The name of the group. Submitted with its owning form as part of a name/value pair.',
     },
     {
       name: 'required',
@@ -203,12 +205,6 @@ An item in the group that can be checked.
       default: 'button',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'name',
-      type: 'string',
-      description:
-        'The name of the radio item. Submitted with its owning form as part of a name/value pair.',
     },
     {
       name: 'value',

@@ -17,7 +17,7 @@ const StyledHeader = styled(Accordion.Header, {
   display: 'flex',
 });
 
-const StyledButton = styled(Accordion.Button, {
+const StyledTrigger = styled(Accordion.Trigger, {
   backgroundColor: 'transparent',
   border: 'none',
   padding: 10,
@@ -27,7 +27,7 @@ const StyledButton = styled(Accordion.Button, {
   justifyContent: 'space-between',
 });
 
-const StyledPanel = styled(Accordion.Panel, {
+const StyledContent = styled(Accordion.Content, {
   padding: 10,
 });
 
@@ -39,40 +39,28 @@ const AccordionChevron = styled(ChevronDownIcon, {
   },
 });
 
-export const AccordionDemo = ({ showChevrons, preventClose, initialValue = null, ...props }) => {
-  const [value, setValue] = React.useState(initialValue);
-
+export const AccordionDemo = ({ showChevrons, ...props }) => {
   return (
-    <StyledAccordion
-      type="single"
-      {...props}
-      value={value}
-      onValueChange={(newValue) => {
-        if ((preventClose && newValue === '') || newValue.length === 0) {
-          return;
-        }
-        setValue(newValue);
-      }}
-    >
+    <StyledAccordion type="single" {...props}>
       <StyledItem value="item-1">
         <StyledHeader>
-          <StyledButton>Item 1 {showChevrons && <AccordionChevron aria-hidden />}</StyledButton>
+          <StyledTrigger>Item 1 {showChevrons && <AccordionChevron aria-hidden />}</StyledTrigger>
         </StyledHeader>
-        <StyledPanel>Here goes the content for the accordion item 1.</StyledPanel>
+        <StyledContent>Here goes the content for the accordion item 1.</StyledContent>
       </StyledItem>
 
       <StyledItem value="item-2">
         <StyledHeader>
-          <StyledButton>Item 2 {showChevrons && <AccordionChevron aria-hidden />}</StyledButton>
+          <StyledTrigger>Item 2 {showChevrons && <AccordionChevron aria-hidden />}</StyledTrigger>
         </StyledHeader>
-        <StyledPanel>Here goes the content for the accordion item 2.</StyledPanel>
+        <StyledContent>Here goes the content for the accordion item 2.</StyledContent>
       </StyledItem>
 
       <StyledItem value="item-3">
         <StyledHeader>
-          <StyledButton>Item 3 {showChevrons && <AccordionChevron aria-hidden />}</StyledButton>
+          <StyledTrigger>Item 3 {showChevrons && <AccordionChevron aria-hidden />}</StyledTrigger>
         </StyledHeader>
-        <StyledPanel>Here goes the content for the accordion item 3.</StyledPanel>
+        <StyledContent>Here goes the content for the accordion item 3.</StyledContent>
       </StyledItem>
     </StyledAccordion>
   );

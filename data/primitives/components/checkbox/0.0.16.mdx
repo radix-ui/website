@@ -48,6 +48,10 @@ export default () => (
 
 Create your styled checkbox component from the primitive parts.
 
+<Preview>
+  <CheckboxDemo />
+</Preview>
+
 ```jsx
 import { styled } from 'path-to/stitches.config';
 import * as Checkbox from '@radix-ui/react-checkbox';
@@ -120,7 +124,7 @@ Contains all the parts of a checkbox.
     },
     {
       name: 'onCheckedChange',
-      type: '(event: React.ChangeEvent<HTMLInputElement>) => void',
+      type: `(checked: boolean | 'indeterminate') => void`,
       typeSimple: 'function',
       description:
         'Event handler called when the checked state of the checkbox changes.',
@@ -193,6 +197,10 @@ Renders when the checkbox is in a checked or indeterminate state. You can style 
 
 ### Indeterminate
 
+<Preview>
+  <CheckboxIndeterminateDemo />
+</Preview>
+
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
 import * as Checkbox from '@radix-ui/react-checkbox';
@@ -223,10 +231,7 @@ export default () => {
 
   return (
     <>
-      <StyledCheckbox
-        checked={checked}
-        onCheckedChange={(event) => setChecked(event.target.checked)}
-      >
+      <StyledCheckbox checked={checked} onCheckedChange={setChecked}>
         <Checkbox.Indicator>
           {checked === 'indeterminate' && <DividerHorizontalIcon />}
           {checked === true && <CheckIcon />}
