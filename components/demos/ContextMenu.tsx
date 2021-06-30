@@ -35,6 +35,14 @@ const itemStyles = {
 
 const StyledItem = styled(ContextMenu.Item, itemStyles as any);
 
+const StyledTriggerItem = styled(ContextMenu.TriggerItem, {
+  '&[data-state="open"]': {
+    backgroundColor: 'hsl(206,10%,80%)',
+    color: 'black',
+  },
+  ...(itemStyles as any),
+});
+
 const StyledIndentedItem = styled(ContextMenu.Item, {
   ...(itemStyles as any),
   padding: '5px 10px 5px 25px',
@@ -55,6 +63,10 @@ const StyledRadioItem = styled(ContextMenu.RadioItem, {
 const StyledItemIndicator = styled(ContextMenu.ItemIndicator, {
   position: 'absolute',
   left: 5,
+});
+
+const StyledArrow = styled(ContextMenu.Arrow, {
+  fill: 'white',
 });
 
 const StyledSeparator = styled(ContextMenu.Separator, {
@@ -90,7 +102,7 @@ export const ContextMenuDemo = ({ showDisabled, showSeparator, showLabel }) => (
         Right click anywhere
       </div>
     </ContextMenu.Trigger>
-    <StyledContent>
+    <StyledContent alignOffset={-5}>
       {showLabel && <StyledLabel>Actions</StyledLabel>}
       <StyledItem disabled={showDisabled} onSelect={() => console.log('cut')}>
         Cut
@@ -119,7 +131,7 @@ export const ContextMenuCheckboxDemo = () => {
           Right click anywhere
         </div>
       </ContextMenu.Trigger>
-      <StyledContent>
+      <StyledContent alignOffset={-5}>
         <StyledIndentedItem onSelect={() => console.log('radix-ui')}>
           About Radix UI
         </StyledIndentedItem>
@@ -154,7 +166,7 @@ export const ContextMenuRadioDemo = () => {
           Right click anywhere
         </div>
       </ContextMenu.Trigger>
-      <StyledContent>
+      <StyledContent alignOffset={-5}>
         <StyledRadioGroup value={color} onValueChange={setColor}>
           <StyledRadioItem value="red">
             <StyledItemIndicator>
@@ -193,7 +205,7 @@ export const ContextMenuComplexDemo = () => (
         Right click anywhere
       </div>
     </ContextMenu.Trigger>
-    <StyledContent>
+    <StyledContent alignOffset={-5}>
       <StyledItem onSelect={() => console.log('adolfo-hess')}>
         <Image src="https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=facearea&facepad=3&w=24&h=24&dpr=2&q=80" />
         Adolfo Hess
@@ -209,6 +221,41 @@ export const ContextMenuComplexDemo = () => (
     </StyledContent>
   </ContextMenu.Root>
 );
+
+export const ContextMenuSubmenuDemo = () => {
+  return (
+    <ContextMenu.Root>
+      <ContextMenu.Trigger>
+        <div
+          style={{
+            backgroundColor: 'gainsboro',
+            padding: 50,
+            textAlign: 'center',
+          }}
+        >
+          Right click anywhere
+        </div>
+      </ContextMenu.Trigger>
+      <StyledContent alignOffset={-5}>
+        <StyledItem onSelect={() => console.log('command-palette')}>Command Palette…</StyledItem>
+        <StyledItem onSelect={() => console.log('open-view')}>Open View…</StyledItem>
+        <StyledSeparator />
+        <ContextMenu.Root>
+          <StyledTriggerItem>Editor Layout →</StyledTriggerItem>
+          <StyledContent sideOffset={12} alignOffset={-5}>
+            <StyledItem onSelect={() => console.log('split-up')}>Split Up</StyledItem>
+            <StyledItem onSelect={() => console.log('split-left')}>Split Left</StyledItem>
+            <StyledSeparator />
+            <StyledItem onSelect={() => console.log('two-columns')}>Two Columns</StyledItem>
+            <StyledArrow offset={13} />
+          </StyledContent>
+        </ContextMenu.Root>
+        <StyledSeparator />
+        <StyledItem onSelect={() => console.log('explorer')}>Explorer</StyledItem>
+      </StyledContent>
+    </ContextMenu.Root>
+  );
+};
 
 const menuitem = keyframes({
   '0%': { transform: 'translateY(0)' },

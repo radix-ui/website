@@ -54,6 +54,10 @@ export default () => (
 
 Create your styled popover component from the primitive parts.
 
+<Preview>
+  <PopoverDemo />
+</Preview>
+
 ```jsx
 import { styled } from 'path-to/stitches.config';
 import * as Popover from '@radix-ui/react-popover';
@@ -244,7 +248,7 @@ The component that pops out when the popover is open.
     },
     {
       name: 'onPointerDownOutside',
-      type: '(event: MouseEvent | TouchEvent) => void',
+      type: '(event: PointerDownOutsideEvent) => void',
       typeSimple: 'function',
       description: (
         <span>
@@ -256,7 +260,7 @@ The component that pops out when the popover is open.
     },
     {
       name: 'onFocusOutside',
-      type: '(event: React.FocusEvent) => void',
+      type: '(event: FocusOutsideEvent) => void',
       typeSimple: 'function',
       description: (
         <span>
@@ -269,7 +273,7 @@ The component that pops out when the popover is open.
     {
       name: 'onInteractOutside',
       type:
-        '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
+        '(event: PointerDownOutsideEvent | FocusOutsideEvent) => void',
       typeSimple: 'function',
       description: (
         <span>
@@ -485,6 +489,10 @@ const StyledContent = styled(Popover.Content, {
 ### With custom anchor
 
 You can anchor the content to another element if you do not want to use the trigger as the anchor.
+
+<Preview>
+  <PopoverAnchorDemo />
+</Preview>
 
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';

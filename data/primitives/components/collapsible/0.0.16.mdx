@@ -37,7 +37,7 @@ import * as Collapsible from '@radix-ui/react-collapsible';
 
 export default () => (
   <Collapsible.Root>
-    <Collapsible.Button />
+    <Collapsible.Trigger />
     <Collapsible.Content />
   </Collapsible.Root>
 );
@@ -46,6 +46,10 @@ export default () => (
 ## Basic example
 
 Create your styled collapsible component from the primitive parts.
+
+<Preview>
+  <CollapsibleDemo />
+</Preview>
 
 ```jsx
 import { styled } from 'path-to/stitches.config';
@@ -60,7 +64,7 @@ const StyledContent = styled(Collapsible.CollapsibleContent, {
 
 export default () => (
   <Collapsible.Root>
-    <Collapsible.Button>Button</Collapsible.Button>
+    <Collapsible.Trigger>Trigger</Collapsible.Trigger>
     <StyledContent>Content 1</StyledContent>
   </Collapsible.Root>
 );
@@ -125,7 +129,7 @@ Contains all the parts of a collapsible.
   ]}
 />
 
-### Button
+### Trigger
 
 The button that toggles the collapsible.
 

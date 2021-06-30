@@ -14,10 +14,16 @@ import {
   Text,
 } from '@modulz/design-system';
 import { ArrowBottomRightIcon, ArrowRightIcon, ExternalLinkIcon } from '@radix-ui/react-icons';
+import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 
 export default function ColorsHome() {
   return (
     <Box css={{ py: '$4', mt: '$2' }}>
+      <TitleAndMetaTags
+        title="Colors — Radix UI"
+        description="An open-source color system for designing beautiful, accessible websites and apps."
+        image="colors.png"
+      />
       <Section
         size={{
           '@initial': '2',
