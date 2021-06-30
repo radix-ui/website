@@ -96,12 +96,6 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
 
   const scale = Colors[name];
 
-  let scaleValues = Object.values(scale);
-
-  if (name.includes('Dark')) {
-    scaleValues = [...scaleValues].reverse();
-  }
-
   return (
     <Flex
       css={{ position: 'relative', marginRight: -25 }}
@@ -114,7 +108,7 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
             {label}
           </Code>
         </Flex>
-        {scaleValues.map((value, i) => {
+        {Object.values(scale).map((value, i) => {
           return <Box key={i} css={{ height: '$6', bc: value, flex: 1 }}></Box>;
         })}
       </Flex>
