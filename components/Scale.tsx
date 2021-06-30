@@ -16,7 +16,6 @@ import {
 import { CopyIcon } from '@radix-ui/react-icons';
 import * as Colors from '@radix-ui/colors';
 import tinycolor from 'tinycolor2';
-
 type Scale = Record<string, string>;
 
 const scaleToHSLObject = (name: string, scale: Scale) => {
@@ -78,7 +77,7 @@ export const ColorScaleGroup = ({ children }: { children: any }) => {
       <Flex css={{ width: '100%' }}>
         <Box css={{ height: '$5', width: 105 }} />
         {colorKeys.map((key, i) => (
-          <Box css={{ flex: 1 }}>
+          <Box key={key} css={{ flex: 1 }}>
             <Text variant="gray" css={{ bc: 'transparent', fontSize: '$2', ta: 'center' }}>
               {i + 1}
             </Text>
@@ -92,9 +91,10 @@ export const ColorScaleGroup = ({ children }: { children: any }) => {
 };
 
 export const ColorScale = ({ label, name }: { label: string; name: keyof typeof Colors }) => {
-  const scale = Colors[name];
   const [isHovered, setIsHovered] = React.useState(false);
   const [dropdownMenuIsOpen, setDropdownMenuIsOpen] = React.useState(false);
+
+  const scale = Colors[name];
 
   return (
     <Flex
@@ -108,8 +108,8 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
             {label}
           </Code>
         </Flex>
-        {Object.values(scale).map((value) => {
-          return <Box css={{ height: '$6', bc: value, flex: 1 }}></Box>;
+        {Object.values(scale).map((value, i) => {
+          return <Box key={i} css={{ height: '$6', bc: value, flex: 1 }}></Box>;
         })}
       </Flex>
       {(isHovered || dropdownMenuIsOpen) && (
