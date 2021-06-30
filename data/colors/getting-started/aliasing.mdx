@@ -539,7 +539,6 @@ When designing for both light and dark modes, you sometimes need to map a variab
 import {
   slate,
   slateA,
-  whiteA,
   grayA
 } from '@radix-ui/colors';
 
@@ -551,9 +550,8 @@ const { styled, theme } = createCss({
       ...grayA,
 
       panel: 'white',
-      panelContrast: '$blackA11',
+      panelContrast: '$grayA12',
       shadow: '$slateA3',
-      overlay: '$grayA3',
     },
   },
 });
@@ -566,9 +564,8 @@ const darkTheme = theme({
 
     // Remap your colors for dark mode
     panel: '$slate2',
-    panelContrast: '$grayA11',
+    panelContrast: '$grayA3',
     shadow: 'black',
-    overlay: '$blackA6',
   },
 });
 `}/>

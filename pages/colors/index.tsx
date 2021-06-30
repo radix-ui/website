@@ -34,7 +34,7 @@ export default function ColorsHome() {
           pb: '$7',
           '@bp2': {
             pt: '$6',
-            pb: '$9',
+            pb: '$8',
           },
         }}
       >
@@ -121,6 +121,21 @@ export default function ColorsHome() {
               Github
               <ExternalLinkIcon />
             </Button>
+          </Flex>
+
+          <Flex justify={{ '@initial': 'start', '@bp2': 'center' }} css={{ mt: '$7' }}>
+            <Box css={{ bc: '$slate2', py: '$2', px: '$3', borderRadius: '9999px' }}>
+              <Text>
+                Radix Colors is on Product Hunt.{' '}
+                <Link
+                  variant="blue"
+                  href="https://www.producthunt.com/posts/radix-colors"
+                  target="_blank"
+                >
+                  Go vote!
+                </Link>
+              </Text>
+            </Box>
           </Flex>
 
           {/* <Flex justify="center" css={{ mt: '$8' }}>
