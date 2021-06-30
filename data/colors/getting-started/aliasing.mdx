@@ -453,11 +453,11 @@ const { styled, theme } = createCss({
       ...yellow,
       ...red,
 
-      graySolid: '$gray8',
-      grayPlaceholderText: '$gray8',
+      graySolid: '$gray9',
+      grayPlaceholderText: '$gray9',
 
-      accentBorderHover: '$blue7',
-      accentFocusRing: '$blue7',
+      accentBorderHover: '$blue8',
+      accentFocusRing: '$blue8',
     },
   },
 });
@@ -481,11 +481,11 @@ const theme = {
   ...yellow,
   ...red,
 
-  graySolid: gray.gray8,
-  grayPlaceholderText: gray.gray8,
+  graySolid: gray.gray9,
+  grayPlaceholderText: gray.gray9,
 
-  accentBorderHover: blue.blue7,
-  accentFocusRing: blue.blue7,
+  accentBorderHover: blue.blue8,
+  accentFocusRing: blue.blue8,
 };
 
 <ThemeProvider theme={theme}>
@@ -504,11 +504,11 @@ It's intended for prototyping only. */
 @import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/red.css';
 
 :root {
-  --graySolid: var(--gray8);
-  --grayPlaceholderText: var(--gray8);
+  --graySolid: var(--gray9);
+  --grayPlaceholderText: var(--gray9);
 
-  --accentBorderHover: var(--blue7);
-  --accentFocusRing: var(--blue7);
+  --accentBorderHover: var(--blue8);
+  --accentFocusRing: var(--blue8);
 }
 `}/>
     </TabsPanel>
@@ -540,7 +540,7 @@ import {
   slate,
   slateA,
   whiteA,
-  blackA
+  grayA
 } from '@radix-ui/colors';
 
 const { styled, theme } = createCss({
@@ -548,13 +548,12 @@ const { styled, theme } = createCss({
     colors: {
       ...slate,
       ...slateA,
-      ...whiteA,
-      ...blackA,
+      ...grayA,
 
       panel: 'white',
       panelContrast: '$blackA11',
       shadow: '$slateA3',
-      overlay: '$blackA3',
+      overlay: '$grayA3',
     },
   },
 });
@@ -563,12 +562,11 @@ const darkTheme = theme({
   colors: {
     ...slateDark,
     ...slateDarkA,
-    ...whiteA,
-    ...blackA,
+    ...grayDarkA,
 
     // Remap your colors for dark mode
     panel: '$slate2',
-    panelContrast: '$whiteA11',
+    panelContrast: '$grayA11',
     shadow: 'black',
     overlay: '$blackA6',
   },
