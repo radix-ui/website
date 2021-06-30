@@ -94,8 +94,8 @@ export const Header = (props) => {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            <Separator orientation="vertical" css={{ mx: '-$5' }} />
-            <ThemeToggle css={{ ml: 'auto' }} />
+            <Separator orientation="vertical" css={{ ml: '-$5', mr: '-$3' }} />
+            <ThemeToggle />
           </Flex>
         </Flex>
       </Container>
