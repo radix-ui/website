@@ -106,6 +106,8 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
 
   const isAlpha = name.endsWith('A');
   const isDarkAlpha = name.endsWith('DarkA');
+  const isWhiteA = name.endsWith('whiteA');
+  const isBlackA = name.endsWith('blackA');
 
   return (
     <Flex
@@ -127,6 +129,18 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
                 height: '$6',
                 flex: 1,
                 bc: isDarkAlpha ? getBgColorForDarkCell(name) : isAlpha ? 'white' : 'transparent',
+
+                // Show transparency grid for whiteA and blackA
+                ...((isWhiteA || isBlackA) && {
+                  backgroundColor: 'transparent',
+                  backgroundSize: '12px 12px',
+                  backgroundPosition: '0px 0px, 6px 0px, 6px -6px, 0px 6px',
+                  backgroundImage: `
+                      linear-gradient(45deg, $gray6 25%, transparent 25%),
+                      linear-gradient(135deg, $gray6 25%, transparent 25%),
+                      linear-gradient(45deg, transparent 75%, $gray6 75%),
+                      linear-gradient(135deg, transparent 75%, $gray6 75%)`,
+                }),
               }}
             >
               <Box key={i} css={{ height: '100%', width: '100%', bc: value }} />
