@@ -29,7 +29,7 @@ export default function ColorsTestDoc({ frontmatter, code }: Doc) {
       <TitleAndMetaTags
         title={`${frontmatter.metaTitle} — Radix UI`}
         description={frontmatter.metaDescription}
-        image={frontmatter.metaImage}
+        image="colors.png"
       />
 
       <MDXProvider frontmatter={frontmatter}>
