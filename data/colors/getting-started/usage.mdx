@@ -54,10 +54,10 @@ const darkTheme = theme({
 const Button = styled('button', {
   backgroundColor: '$blue4',
   color: '$blue11',
-  borderColor: '$blue600',
+  borderColor: '$blue7',
   '&:hover': {
-    backgroundColor: '$blue300',
-    borderColor: '$blue9',
+    backgroundColor: '$blue5',
+    borderColor: '$blue8',
   },
 });
 ```
@@ -100,10 +100,10 @@ const darkTheme = {
 // Use the colors in your styles
 const Button = styled.button`
   background-color: ${(props) => props.theme.colors.blue200};
-  color: ${(props) => props.theme.colors.blue900};
-  border-color: ${(props) => props.theme.colors.blue600};
+  color: ${(props) => props.theme.colors.blue800};
+  border-color: ${(props) => props.theme.colors.blue7};
   &:hover {
-    background-color: ${(props) => props.theme.colors.blue300};
+    background-color: ${(props) => props.theme.colors.blue5};
     border-color: ${(props) => props.theme.colors.blue700};
   }
 `;
@@ -154,13 +154,13 @@ import "@radix-ui/colors/redDark.css";
 
 // Use the colors as CSS variables
 .button {
-  background-color: var(--blue200);
-  color: var(--blue900);
-  border-color: var(--blue600);
+  background-color: var(--blue4);
+  color: var(--blue11);
+  border-color: var(--blue7);
 }
 .button:hover {
-  background-color: var(--blue300);
-  border-color: var(--blue700);
+  background-color: var(--blue5);
+  border-color: var(--blue8);
 }
 
 // For dark mode, apply a `.dark-theme` class to <body> or a parent.
