@@ -121,7 +121,7 @@ export function PropsTable({
               {Boolean(defaultValue) ? (
                 <Code css={{ bc: '$gray4', color: '$gray11' }}>{defaultValue}</Code>
               ) : (
-                <Box as={AccessibleIcon} label="No default value" css={{ color: '$gray600' }}>
+                <Box as={AccessibleIcon} label="No default value" css={{ color: '$gray8' }}>
                   <DividerHorizontalIcon />
                 </Box>
               )}

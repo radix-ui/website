@@ -427,7 +427,7 @@ export function ColorGrid() {
           Warm & cool hues
         </Text>
         <Paragraph css={{ mb: '$7' }}>
-          There are 8 warm hues and 8 cool hues. All <Code>800</Code> colors should be balanced
+          There are 8 warm hues and 8 cool hues. All <Code>9</Code> colors should be balanced
           optically, especially if they are adjacent on the spectrum.
         </Paragraph>
       </Box>
@@ -742,8 +742,8 @@ export function ColorGrid() {
           Text color test
         </Text>
         <Paragraph css={{ mb: '$7' }}>
-          The <Code>900</Code> text color should look good and pass AA on all background colors.
-          Text should also pass on the <Code>800</Code> backgrounds.
+          The <Code>11</Code> text color should look good and pass AA on all background colors. Text
+          should also pass on the <Code>9</Code> backgrounds.
         </Paragraph>
       </Box>
 
