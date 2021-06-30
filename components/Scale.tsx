@@ -68,8 +68,15 @@ const scaleToSvg = (
     )
     .join('')}</svg>`;
 };
+
 // pulling  the first scale and getting the keys from it
 const colorKeys = Object.keys(Object.values(Colors)[0]);
+
+const getBgColorForDarkCell = (name) => {
+  const baseScale = name.replace('DarkA', 'Dark');
+  const scale = Colors[baseScale];
+  return Object.values(scale)[0];
+};
 
 export const ColorScaleGroup = ({ children }: { children: any }) => {
   return (
@@ -96,6 +103,8 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
 
   const scale = Colors[name];
 
+  const isDarkA = name.includes('DarkA');
+
   return (
     <Flex
       css={{ position: 'relative', marginRight: -25 }}
@@ -109,7 +118,18 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
           </Code>
         </Flex>
         {Object.values(scale).map((value, i) => {
-          return <Box key={i} css={{ height: '$6', bc: value, flex: 1 }}></Box>;
+          return (
+            <Box
+              key={i}
+              css={{
+                height: '$6',
+                flex: 1,
+                bc: isDarkA ? getBgColorForDarkCell(name) : 'transparent',
+              }}
+            >
+              <Box key={i} css={{ height: '100%', width: '100%', bc: value }} />
+            </Box>
+          );
         })}
       </Flex>
       {(isHovered || dropdownMenuIsOpen) && (
