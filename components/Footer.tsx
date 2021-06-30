@@ -65,28 +65,36 @@ export const Footer = () => {
           </Flex>
           <Box>
             <Text as="h6" size="3" css={{ fontWeight: 500, lineHeight: '20px' }}>
-              Primitives
+              Products
             </Text>
             <ul>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/primitives/docs/overview/introduction" passHref>
-                    <Link variant="subtle">Introduction</Link>
+                  <NextLink href="/docs/primitives/overview/introduction" passHref>
+                    <Link variant="subtle">Primitives</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/primitives/docs/overview/introduction" passHref>
-                    <Link variant="subtle">Styling</Link>
+                  <NextLink href="/docs/colors/getting-started/installation" passHref>
+                    <Link variant="subtle">Colors</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/primitives/docs/overview/accessibility" passHref>
-                    <Link variant="subtle">Accessibility</Link>
-                  </NextLink>
+                  <Link
+                    variant="subtle"
+                    href="https://icons.modulz.app/"
+                    target="_blank"
+                    css={{ display: 'inline-flex', alignItems: 'center' }}
+                  >
+                    Icons
+                    <Flex as="span" css={{ ml: '$1', color: '$gray8' }}>
+                      <ExternalIcon />
+                    </Flex>
+                  </Link>
                 </Text>
               </li>
             </ul>
@@ -133,19 +141,14 @@ export const Footer = () => {
             <ul>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/blog" passHref>
-                    <Link variant="subtle">Blog</Link>
-                  </NextLink>
-                </Text>
-              </li>
-              <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <Link
                     href="https://github.com/radix-ui"
+                    variant="subtle"
+                    target="_blank"
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                   >
                     GitHub
-                    <Flex as="span" css={{ ml: '$1', color: '$gray6' }}>
+                    <Flex as="span" css={{ ml: '$1', color: '$gray8' }}>
                       <ExternalIcon />
                     </Flex>
                   </Link>
@@ -155,10 +158,12 @@ export const Footer = () => {
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <Link
                     href="https://twitter.com/radix_ui"
+                    variant="subtle"
+                    target="_blank"
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                   >
                     Twitter
-                    <Flex as="span" css={{ ml: '$1', color: '$gray6' }}>
+                    <Flex as="span" css={{ ml: '$1', color: '$gray8' }}>
                       <ExternalIcon />
                     </Flex>
                   </Link>
@@ -168,10 +173,12 @@ export const Footer = () => {
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <Link
                     href="https://discord.com/invite/7Xb99uG"
+                    variant="subtle"
+                    target="_blank"
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                   >
                     Discord
-                    <Flex as="span" css={{ ml: '$1', color: '$gray6' }}>
+                    <Flex as="span" css={{ ml: '$1', color: '$gray8' }}>
                       <ExternalIcon />
                     </Flex>
                   </Link>
