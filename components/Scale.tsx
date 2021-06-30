@@ -16,6 +16,7 @@ import {
 import { CopyIcon } from '@radix-ui/react-icons';
 import * as Colors from '@radix-ui/colors';
 import tinycolor from 'tinycolor2';
+
 type Scale = Record<string, string>;
 
 const scaleToHSLObject = (name: string, scale: Scale) => {
@@ -103,7 +104,8 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
 
   const scale = Colors[name];
 
-  const isDarkA = name.includes('DarkA');
+  const isAlpha = name.endsWith('A');
+  const isDarkAlpha = name.endsWith('DarkA');
 
   return (
     <Flex
@@ -124,7 +126,7 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
               css={{
                 height: '$6',
                 flex: 1,
-                bc: isDarkA ? getBgColorForDarkCell(name) : 'transparent',
+                bc: isDarkAlpha ? getBgColorForDarkCell(name) : isAlpha ? 'white' : 'transparent',
               }}
             >
               <Box key={i} css={{ height: '100%', width: '100%', bc: value }} />
