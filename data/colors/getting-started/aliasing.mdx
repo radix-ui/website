@@ -539,7 +539,8 @@ When designing for both light and dark modes, you sometimes need to map a variab
 import {
   slate,
   slateA,
-  grayA
+  grayA,
+  blackA
 } from '@radix-ui/colors';
 
 const { styled, theme } = createCss({
@@ -548,6 +549,7 @@ const { styled, theme } = createCss({
       ...slate,
       ...slateA,
       ...grayA,
+      ...blackA,
 
       panel: 'white',
       panelContrast: '$grayA12',
