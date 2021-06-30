@@ -33,18 +33,7 @@ export default function ColorsHome() {
         }}
       >
         <Container size="3">
-          <Heading
-            size="4"
-            css={{
-              color: '$sage12',
-              mb: '$3',
-              '@bp1': {},
-              '@bp2': {
-                ta: 'center',
-              },
-              '@bp3': {},
-            }}
-          >
+          <Heading size="4" css={{ mb: '$3', '@bp2': { ta: 'center' } }}>
             A gorgeous, accessible <br />
             color system
           </Heading>
