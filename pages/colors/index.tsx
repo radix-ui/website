@@ -8,12 +8,12 @@ import {
   Flex,
   Button,
   Paragraph,
+  Separator,
   Box,
   Grid,
   Text,
 } from '@modulz/design-system';
 import { ArrowBottomRightIcon, ArrowRightIcon, ExternalLinkIcon } from '@radix-ui/react-icons';
-import { Separator } from '@radix-ui/react-context-menu';
 
 export default function ColorsHome() {
   return (
@@ -25,8 +25,10 @@ export default function ColorsHome() {
         }}
         css={{
           pt: '$3',
+          pb: '$7',
           '@bp2': {
             pt: '$6',
+            pb: '$9',
           },
         }}
       >
@@ -36,16 +38,11 @@ export default function ColorsHome() {
             css={{
               color: '$sage12',
               mb: '$3',
-              '@bp1': {
-                // pr: 100,
-              },
+              '@bp1': {},
               '@bp2': {
                 ta: 'center',
-                // px: 180,
               },
-              '@bp3': {
-                // px: 200,
-              },
+              '@bp3': {},
             }}
           >
             A gorgeous, accessible <br />
@@ -66,7 +63,7 @@ export default function ColorsHome() {
           >
             An open-source color system for designing beautiful, accessible websites and apps.
           </Paragraph>
-          <Flex justify="center" gap="5" css={{ mt: '$7' }}>
+          <Flex justify={{ '@initial': 'start', '@bp2': 'center' }} gap="5" css={{ mt: '$7' }}>
             <NextLink href="/docs/colors" passHref>
               <Button
                 as="a"
@@ -78,10 +75,24 @@ export default function ColorsHome() {
                   px: '$3',
                   bc: 'white',
                   boxShadow:
-                    '-15px 0 30px -10px $colors$pinkA8, 0 0 30px -10px $colors$plumA8, 15px 0 30px -10px $colors$violetA8',
+                    '-15px 0 30px -10px $colors$orangeA7, 0 0 30px -10px $colors$pinkA7, 15px 0 30px -10px $colors$violetA7',
                   cursor: 'pointer',
                   color: 'black',
                   gap: '$2',
+                  transition: 'all 200ms ease',
+                  '&:hover': {
+                    boxShadow:
+                      '-15px 0 30px -10px $colors$orangeA8, 0 0 30px -10px $colors$pinkA8, 15px 0 30px -10px $colors$violetA8',
+                  },
+                  '&:active': {
+                    bc: 'white',
+                    boxShadow:
+                      '-15px 0 20px -10px $colors$orangeA8, 0 0 20px -10px $colors$pinkA8, 15px 0 20px -10px $colors$violetA8',
+                  },
+                  '&:focus': {
+                    boxShadow:
+                      '-15px 0 30px -10px $colors$orangeA7, 0 0 30px -10px $colors$pinkA7, 15px 0 30px -10px $colors$violetA7, inset 0 0 0 1px $colors$pinkA7, 0 0 0 1px $colors$pinkA7',
+                  },
                 }}
               >
                 Documentation
@@ -680,6 +691,10 @@ export default function ColorsHome() {
         </Container>
       </Section>
 
+      <Flex css={{ justifyContent: 'center' }}>
+        <Separator size="2" />
+      </Flex>
+
       <Section
         size={{
           '@initial': '2',
@@ -687,26 +702,26 @@ export default function ColorsHome() {
         }}
       >
         <Container size="3">
-          <Grid columns="3" gap="6">
+          <Grid columns={{ '@bp2': '3' }} gap="7">
             <Box>
               <Heading size="1">Accessibility made easy</Heading>
-              <Text size="3" css={{ lineHeight: '21px' }}>
+              <Text variant="gray" size="3" css={{ lineHeight: '25px', mt: '$2' }}>
                 Each step is designed for a specific use case, with multiple combinations guaranteed
                 to pass WCAG contrast ratio.
               </Text>
             </Box>
             <Box>
               <Heading size="1">Automatic dark mode</Heading>
-              <Text size="3" css={{ lineHeight: '21px' }}>
-                Each step is designed for a specific use case, with multiple combinations guaranteed
-                to pass WCAG contrast ratio.
+              <Text variant="gray" size="3" css={{ lineHeight: '25px', mt: '$2' }}>
+                Switching to dark theme is as simple as applying a class to a container. Dark mode
+                Just Works™.
               </Text>
             </Box>
             <Box>
               <Heading size="1">Transparent variants</Heading>
-              <Text size="3" css={{ lineHeight: '21px' }}>
-                Each step is designed for a specific use case, with multiple combinations guaranteed
-                to pass WCAG contrast ratio.
+              <Text variant="gray" size="3" css={{ lineHeight: '25px', mt: '$2' }}>
+                Each scale has a matching transparent variant, which is handy for UI components that
+                need to blend into colored backgrounds.
               </Text>
             </Box>
           </Grid>
