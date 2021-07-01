@@ -32,7 +32,7 @@ export const getAllFrontmatter = (fromPath) => {
 export const getMdxBySlug = async (basePath, slug) => {
   const source = fs.readFileSync(path.join(DATA_PATH, basePath, `${slug}.mdx`), 'utf8');
   const { frontmatter, code } = await bundleMDX(source, {
-    xdmOptions(input, options) {
+    xdmOptions(options) {
       options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkSlug];
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
