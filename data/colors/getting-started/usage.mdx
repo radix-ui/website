@@ -17,14 +17,12 @@ Radix Colors scales are just simple JavaScript objects, so you can use them with
 import {
   gray,
   blue,
-  green,
   red,
-  yellow,
+  green,
   grayDark,
   blueDark,
-  greenDark,
   redDark,
-  yellowDark,
+  greenDark,
 } from '@radix-ui/colors';
 
 // Spread the scales in your light and dark themes
@@ -34,10 +32,9 @@ const { styled, theme } = createCss({
   theme: {
     colors: {
       ...gray,
-      ...red,
       ...blue,
+      ...red,
       ...green,
-      ...yellow,
     },
   },
 });
@@ -45,10 +42,9 @@ const { styled, theme } = createCss({
 const darkTheme = theme({
   colors: {
     ...grayDark,
-    ...redDark,
     ...blueDark,
+    ...redDark,
     ...greenDark,
-    ...yellowDark,
   },
 });
 
