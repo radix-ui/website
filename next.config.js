@@ -6,10 +6,10 @@ const readingTime = require('reading-time');
 const withPlugins = require('next-compose-plugins');
 const withVideos = require('next-videos');
 const withOptimizedImages = require('next-optimized-images');
-
 const withTM = require('next-transpile-modules')(['@modulz/design-system']);
+const { withContentlayer } = require('next-contentlayer');
 
-module.exports = withPlugins([withTM, withOptimizedImages, withVideos], {
+module.exports = withPlugins([withContentlayer(), withTM, withOptimizedImages, withVideos], {
   // Next.js config
   async redirects() {
     return [
