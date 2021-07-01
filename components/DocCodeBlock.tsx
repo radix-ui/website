@@ -19,7 +19,7 @@ export function DocCodeBlock({
           css={{
             p: '$3',
             mt: 1,
-            boxShadow: '0 0 0 1px $colors$slate500',
+            boxShadow: '0 0 0 1px $colors$slate6',
             textAlign: 'right',
             ...(isCollapsed ? { borderBottomLeftRadius: '$3', borderBottomRightRadius: '$3' } : {}),
           }}

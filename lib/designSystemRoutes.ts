@@ -2,13 +2,13 @@ export const designSystemRoutes = [
   {
     label: 'Overview',
     pages: [
-      { title: 'Introduction', slug: 'design-system/docs/overview/introduction', draft: false },
+      { title: 'Introduction', slug: 'docs/design-system/overview/introduction', draft: false },
     ],
   },
 
   {
     label: 'Components',
-    pages: [{ title: 'Button', slug: 'design-system/docs/components/button', draft: false }],
+    pages: [{ title: 'Button', slug: 'docs/design-system/components/button', draft: false }],
   },
 ];
 

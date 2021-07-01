@@ -216,7 +216,7 @@ export const AlertDialogHero = () => {
             ></Box>
             <Box
               css={{
-                backgroundColor: '$blue800',
+                backgroundColor: '$blue10',
                 borderRadius: '5px',
                 height: 25,
                 width: 65,

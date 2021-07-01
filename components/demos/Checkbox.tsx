@@ -34,11 +34,7 @@ export const CheckboxIndeterminateDemo = () => {
 
   return (
     <>
-      <StyledCheckbox
-        css={{ mb: '$2' }}
-        checked={checked}
-        onCheckedChange={(event) => setChecked(event.target.checked)}
-      >
+      <StyledCheckbox css={{ mb: '$2' }} checked={checked} onCheckedChange={setChecked}>
         <Checkbox.Indicator>
           {checked === 'indeterminate' && <DividerHorizontalIcon />}
           {checked === true && <CheckIcon />}

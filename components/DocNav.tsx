@@ -41,20 +41,20 @@ export function NavItem({ children, active, disabled, href, ...props }: NavItemP
           display: 'flex',
           alignItems: 'center',
           textDecoration: 'none',
-          color: disabled ? '$gray800' : '$hiContrast',
+          color: disabled ? '$gray10' : '$hiContrast',
           py: '$2',
           px: '$5',
-          backgroundColor: active ? '$violet300' : 'transparent',
+          backgroundColor: active ? '$violet5' : 'transparent',
           userSelect: 'none',
           minHeight: '$6',
           transition: 'background-color 50ms linear',
           ...(disabled ? { pointerEvents: 'none' } : {}),
           '&:hover': {
-            backgroundColor: active ? '$violet300' : '$violet200',
+            backgroundColor: active ? '$violet5' : '$violet4',
           },
           '&:focus': {
             outline: 'none',
-            boxShadow: '0 0 0 1px $colors$violet500',
+            boxShadow: '0 0 0 1px $colors$violet7',
           },
         }}
       >

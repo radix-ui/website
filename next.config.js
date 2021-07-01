@@ -14,28 +14,23 @@ module.exports = withPlugins([withTM, withOptimizedImages, withVideos], {
   async redirects() {
     return [
       {
-        source: '/',
-        destination: '/primitives/docs/overview/introduction',
+        source: '/primitives/docs/:slug*',
+        destination: '/docs/primitives/:slug*',
+        permanent: true,
+      },
+      {
+        source: '/docs/primitives',
+        destination: '/docs/primitives/overview/introduction',
         permanent: false,
       },
       {
-        source: '/primitives',
-        destination: '/primitives/docs/overview/introduction',
+        source: '/design/docs-system',
+        destination: '/design/docs-system/overview/introduction',
         permanent: false,
       },
       {
-        source: '/primitives/docs',
-        destination: '/primitives/docs/overview/introduction',
-        permanent: false,
-      },
-      {
-        source: '/design-system/docs',
-        destination: '/design-system/docs/overview/introduction',
-        permanent: false,
-      },
-      {
-        source: '/colors/docs',
-        destination: '/colors/docs/overview/introduction',
+        source: '/docs/colors',
+        destination: '/docs/colors/getting-started/installation',
         permanent: false,
       },
     ];
@@ -81,15 +76,15 @@ module.exports = withPlugins([withTM, withOptimizedImages, withVideos], {
     return [
       ...createRewrites(
         getLatestVersionFromPath('primitives/components'),
-        '/primitives/docs/components/'
+        '/docs/primitives/components/'
       ),
       ...createRewrites(
         getLatestVersionFromPath('primitives/utilities'),
-        '/primitives/docs/utilities/'
+        '/docs/primitives/utilities/'
       ),
       ...createRewrites(
         getLatestVersionFromPath('design-system/components'),
-        '/design-system/docs/components/'
+        '/design-docs/system/components/'
       ),
     ];
   },

@@ -33,7 +33,7 @@ export function OldVersionNote({ name, href }) {
         },
         '& p': {
           fontSize: '$3',
-          color: '$yellow900',
+          color: '$yellow11',
           lineHeight: '21px',
           margin: 0,
         },
