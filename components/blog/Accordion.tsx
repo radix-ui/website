@@ -5,11 +5,11 @@ import { ChevronDownIcon } from '@radix-ui/react-icons';
 
 const slideDown = keyframes({
   from: { height: 0 },
-  to: { height: 'var(--radix-accordion-panel-height)' },
+  to: { height: 'var(--radix-accordion-content-height)' },
 });
 
 const slideUp = keyframes({
-  from: { height: 'var(--radix-accordion-panel-height)' },
+  from: { height: 'var(--radix-accordion-content-height)' },
   to: { height: 0 },
 });
 
@@ -27,10 +27,10 @@ const StyledItem = styled(Accordion.Item, {
 
   '&:focus-within': {
     '&[data-state="open"]': {
-      boxShadow: `0 0 0 2px ${theme.colors.violet700.value}`,
+      boxShadow: `0 0 0 2px ${theme.colors.violet7.value}`,
     },
     '&[data-state="closed"]': {
-      boxShadow: `0 0 0 2px ${theme.colors.slate700.value}`,
+      boxShadow: `0 0 0 2px ${theme.colors.slate7.value}`,
     },
   },
 });
@@ -40,7 +40,7 @@ const StyledHeader = styled(Accordion.Header, {
   display: 'flex',
 });
 
-const StyledButton = styled(Accordion.Button, {
+const StyledButton = styled(Accordion.Trigger, {
   backgroundColor: 'transparent',
   border: 'none',
   padding: '$2 $3',
@@ -49,21 +49,21 @@ const StyledButton = styled(Accordion.Button, {
   alignItems: 'center',
   justifyContent: 'space-between',
   fontSize: '$3',
-  color: theme.colors.slate1000.value,
+  color: theme.colors.slate11.value,
 
   '&[data-state="closed"]': {
-    backgroundColor: theme.colors.slate200.value,
+    backgroundColor: theme.colors.slate3.value,
   },
 
   '&[data-state="open"]': {
-    backgroundColor: theme.colors.violet200.value,
-    color: theme.colors.violet900.value,
+    backgroundColor: theme.colors.violet3.value,
+    color: theme.colors.violet11.value,
   },
 
   '&:hover': {
-    backgroundColor: theme.colors.slate400.value,
+    backgroundColor: theme.colors.slate4.value,
     '&[data-state="open"]': {
-      backgroundColor: theme.colors.violet200.value,
+      backgroundColor: theme.colors.violet4.value,
     },
   },
 
@@ -72,11 +72,11 @@ const StyledButton = styled(Accordion.Button, {
   },
 });
 
-const StyledPanel = styled(Accordion.Panel, {
+const StyledPanel = styled(Accordion.Content, {
   overflow: 'hidden',
   lineHeight: '19px',
-  color: theme.colors.slate900.value,
-  backgroundColor: theme.colors.violet100.value,
+  color: theme.colors.slate11.value,
+  backgroundColor: theme.colors.violet2.value,
 
   '.with-animation &': {
     '&[data-state="open"]': {
@@ -90,11 +90,11 @@ const StyledPanel = styled(Accordion.Panel, {
 
 const AccordionChevron = styled(ChevronDownIcon, {
   transition: 'transform 300ms cubic-bezier(0.87, 0, 0.13, 1)',
-  color: theme.colors.slate1000.value,
+  color: theme.colors.slate10.value,
 
   '[data-state=open] &': {
     transform: 'rotate(180deg)',
-    color: theme.colors.violet800.value,
+    color: theme.colors.violet10.value,
   },
 });
 

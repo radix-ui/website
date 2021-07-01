@@ -1,18 +1,16 @@
 import React from 'react';
 import { getMDXComponent } from 'mdx-bundler/client';
-import { Box, Container, Text, Subtitle, Flex, Link, Separator } from '@modulz/design-system';
+import { Box, Container, Text, Heading, Flex, Link, Separator } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { MDXProvider, components } from '@components/MDXComponents';
 import { parseISO, format } from 'date-fns';
 import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { authors } from '@data/authors';
-import { Color } from '@components/Color';
 import { AccordionDemo } from '@components/blog/Accordion';
 import { TooltipDemo } from '@components/blog/Tooltip';
 import { VideoPlaceholder } from '@components/blog/VideoPlaceholder';
 
 import type { Frontmatter } from 'types/frontmatter';
-import { Header } from '@components/Header';
 
 type Doc = {
   frontmatter: Frontmatter;
@@ -21,7 +19,6 @@ type Doc = {
 
 const mdxComponents = {
   ...components,
-  Color,
   AccordionDemo,
   TooltipDemo,
   VideoPlaceholder,
@@ -38,8 +35,6 @@ export default function BlogPostPage({ frontmatter, code }: Doc) {
         image={frontmatter.metaImage}
       />
 
-      <Header />
-
       <Box
         css={{
           py: '$5',
@@ -48,9 +43,7 @@ export default function BlogPostPage({ frontmatter, code }: Doc) {
         }}
       >
         <Container size="3" css={{ maxWidth: '780px', position: 'relative' }}>
-          <Text as="h1" size="8" css={{ fontWeight: 500, mb: '$2', lineHeight: '40px' }}>
-            {frontmatter.metaTitle}
-          </Text>
+          <Heading>{frontmatter.metaTitle}</Heading>
 
           <Flex css={{ mt: '$4', mb: '$7', alignItems: 'center' }}>
             <Text as="p" size="3" css={{ color: '$slate900', lineHeight: 0, whiteSpace: 'nowrap' }}>

@@ -18,14 +18,14 @@ const StyledButton = styled(Tooltip.Trigger, {
   alignItems: 'center',
   justifyContent: 'center',
   fontSize: '$3',
-  backgroundColor: theme.colors.violet300.value,
-  color: theme.colors.violet900.value,
+  backgroundColor: theme.colors.violet3.value,
+  color: theme.colors.violet10.value,
 
   '&:hover': {
-    backgroundColor: theme.colors.violet100.value,
+    backgroundColor: theme.colors.violet4.value,
   },
   '&:focus': {
-    boxShadow: `0 0 0 2px ${theme.colors.violet700.value}`,
+    boxShadow: `0 0 0 2px ${theme.colors.violet8.value}`,
   },
 });
 
@@ -35,7 +35,7 @@ const StyledContent = styled(Tooltip.Content, {
   fontSize: '$3',
   lineHeight: '19px',
   color: 'white',
-  backgroundColor: theme.colors.violet1000.value,
+  backgroundColor: theme.colors.violet9.value,
   boxShadow:
     '0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2)',
 
@@ -46,7 +46,7 @@ const StyledContent = styled(Tooltip.Content, {
 });
 
 const StyledArrow = styled(Tooltip.Arrow, {
-  fill: theme.colors.violet1000.value,
+  fill: theme.colors.violet9.value,
 });
 
 export const TooltipDemo = (props) => {
@@ -97,7 +97,7 @@ export const TooltipDemo = (props) => {
         <StyledButton>
           <PlusIcon />
         </StyledButton>
-        <StyledContent className={withAnimation ? 'with-animation' : ''}>
+        <StyledContent sideOffset={5} className={withAnimation ? 'with-animation' : ''}>
           Add to library.
           <StyledArrow />
         </StyledContent>

@@ -3,8 +3,8 @@ import {
   Box,
   Text,
   Container,
-  Title,
-  Subtitle,
+  Heading,
+  Paragraph,
   Section,
   Flex,
   Separator,
@@ -33,27 +33,15 @@ export default function BlogPage({ posts }: { posts: Frontmatter[] }) {
         }}
       >
         <Container size="3">
-          <Title
-            css={{
-              mb: '$3',
-              '@bp1': {
-                pr: 100,
-              },
-              '@bp2': {
-                ta: 'center',
-                px: 180,
-              },
-              '@bp3': {
-                px: 200,
-              },
-            }}
-          >
+          <Heading size="4" css={{ mb: '$3', '@bp2': { ta: 'center' } }}>
             Blog
-          </Title>
-          <Subtitle
+          </Heading>
+          <Paragraph
+            size="2"
             as="p"
             css={{
               mb: '$6',
+              color: '$sage11',
               '@bp2': {
                 mx: 230,
                 ta: 'center',
@@ -62,7 +50,7 @@ export default function BlogPage({ posts }: { posts: Frontmatter[] }) {
             }}
           >
             More about what we're doing.
-          </Subtitle>
+          </Paragraph>
         </Container>
       </Section>
 
