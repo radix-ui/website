@@ -114,7 +114,7 @@ export const AccordionHero = (props) => {
       }}
     >
       <Box>
-        <StyledAccordion type="single" {...props}>
+        <StyledAccordion type="single" defaultValue="item-1" {...props}>
           <StyledItem value="item-1">
             <StyledHeader>
               <StyledButton>
