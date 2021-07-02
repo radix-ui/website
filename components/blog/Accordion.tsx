@@ -98,7 +98,7 @@ const AccordionChevron = styled(ChevronDownIcon, {
   },
 });
 
-export const AccordionDemo = (props) => {
+export const AccordionHero = (props) => {
   const [value, setValue] = React.useState<string | string[]>(['item-1', 'item-3']);
 
   const [showChevrons, setShowChevrons] = React.useState(true);
@@ -119,8 +119,8 @@ export const AccordionDemo = (props) => {
         mx: '-$5',
         height: 600,
 
-        '@bp2': { borderRadius: '$2' },
-        '@bp3': { mx: '-$8' },
+        '@bp2': { mx: 0, borderRadius: '$2' },
+        '@bp4': { mx: '-$8' },
       }}
     >
       <Box
@@ -188,7 +188,7 @@ export const AccordionDemo = (props) => {
 
       <Box>
         <Text size="3" css={{ color: 'white', fontWeight: 500, mb: '$3', textAlign: 'center' }}>
-          Radix Accordion FAQ
+          Accordion Demo: FAQ
         </Text>
 
         <StyledAccordion

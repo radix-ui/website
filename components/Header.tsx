@@ -94,12 +94,12 @@ export const Header = (props) => {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            <Separator orientation="vertical" />
+            {/* <Separator orientation="vertical" />
             <NextLink href="/blog" passHref>
               <Link variant="subtle" css={{ fontSize: '$3' }}>
                 Blog
               </Link>
-            </NextLink>
+            </NextLink> */}
             <Separator orientation="vertical" />
             <ThemeToggle />
           </Flex>

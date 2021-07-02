@@ -22,6 +22,9 @@ const globalStyles = global({
     fontFamily: '$untitled',
     WebkitFontSmoothing: 'antialiased',
     MozOsxFontSmoothing: 'grayscale',
+    '.dark-theme &': {
+      backgroundColor: '$mauve1',
+    },
   },
 
   svg: {
