@@ -366,30 +366,25 @@ export default () => {
 
 ### Animating content height
 
-We expose a CSS custom property `--radix-accordion-content-height`.<br />Use it to animate the height of the content when it opens/closes.
+You can use the `--radix-accordion-content-height` CSS variable to animate the height of the content when it opens/closes. Here's a demo using Stitches:
 
 ```jsx
-const slideDown = keyframes({
+import { styled, keyframes } from '@stitches/react';
+import * as Accordion from '@radix-ui/react-accordion';
+
+const open = keyframes({
   from: { height: 0 },
-  to: {
-    height: 'var(--radix-accordion-content-height)',
-  },
+  to: { height: 'var(--radix-accordion-content-height)' },
 });
 
-const slideUp = keyframes({
-  from: {
-    height: 'var(--radix-accordion-content-height)',
-  },
+const close = keyframes({
+  from: { height: 'var(--radix-accordion-content-height)' },
   to: { height: 0 },
 });
 
 const StyledContent = styled(Accordion.Content, {
-  '&[data-state="open"]': {
-    animation: `${slideDown} 300ms ease-out`,
-  },
-  '&[data-state="closed"]': {
-    animation: `${slideUp} 300ms ease-out`,
-  },
+  '&[data-state="open"]': { animation: `${open} 300ms ease-out` },
+  '&[data-state="closed"]': { animation: `${close} 300ms ease-out` },
 });
 ```
 
