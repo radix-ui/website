@@ -30,7 +30,7 @@ const StyledItem = styled(Accordion.Item, {
       boxShadow: `0 0 0 2px $colors$violet7`,
     },
     '&[data-state="closed"]': {
-      boxShadow: `0 0 0 2px $colors$slate7`,
+      boxShadow: `0 0 0 2px $colors$mauve7`,
     },
   },
 });
@@ -49,10 +49,10 @@ const StyledButton = styled(Accordion.Trigger, {
   alignItems: 'center',
   justifyContent: 'space-between',
   fontSize: '$3',
-  color: '$slate11',
+  color: '$mauve11',
 
   '&[data-state="closed"]': {
-    backgroundColor: '$slate3',
+    backgroundColor: '$mauve3',
   },
 
   '&[data-state="open"]': {
@@ -61,7 +61,7 @@ const StyledButton = styled(Accordion.Trigger, {
   },
 
   '&:hover': {
-    backgroundColor: '$slate4',
+    backgroundColor: '$mauve4',
     '&[data-state="open"]': {
       backgroundColor: '$violet4',
     },
@@ -75,7 +75,7 @@ const StyledButton = styled(Accordion.Trigger, {
 const StyledPanel = styled(Accordion.Content, {
   overflow: 'hidden',
   lineHeight: '19px',
-  color: '$slate11',
+  color: '$mauve11',
   backgroundColor: '$violet2',
 
   '&[data-state="open"]': {
@@ -88,7 +88,7 @@ const StyledPanel = styled(Accordion.Content, {
 
 const AccordionChevron = styled(ChevronDownIcon, {
   transition: 'transform 300ms cubic-bezier(0.87, 0, 0.13, 1)',
-  color: '$slate10',
+  color: '$mauve10',
 
   '[data-state=open] &': {
     transform: 'rotate(180deg)',

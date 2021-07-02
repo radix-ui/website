@@ -98,7 +98,7 @@ const AccordionChevron = styled(ChevronDownIcon, {
   },
 });
 
-export const AccordionHero = (props) => {
+export const AccordionDemo = (props) => {
   const [value, setValue] = React.useState<string | string[]>(['item-1', 'item-3']);
 
   const [showChevrons, setShowChevrons] = React.useState(true);
