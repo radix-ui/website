@@ -109,7 +109,7 @@ export function DocCodeBlock({
             position: 'absolute',
             top: '$1',
             right: '$1',
-            backgroundColor: '$slateA2',
+            backgroundColor: '$violetA2',
             '@bp1': { display: 'inline-flex' },
           }}
           onClick={() => setIsCopied(true)}
