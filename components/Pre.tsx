@@ -169,7 +169,7 @@ export const Pre = styled('pre', {
       backgroundColor: '$violet3',
       mx: '-$5',
       px: '$5',
-      boxShadow: 'inset 3px 0 0 0 $colors$violet6',
+      boxShadow: 'inset 1px 0 0 0 $colors$violet4, inset -1px 0 0 0 $colors$violet4',
     },
   },
 
@@ -185,7 +185,6 @@ export const Pre = styled('pre', {
         $$outline: 'inset 0 0 0 1px $colors$violet4',
         $$syntax2: '$colors$pink11',
         $$highlightedWord1Bg: '$colors$violet4',
-        // $$highlightedWord1Text: '$colors$violet11',
         $$comment: '$colors$mauve9',
         $$fadedLines: '$colors$mauveA8',
       },

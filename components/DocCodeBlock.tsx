@@ -27,7 +27,7 @@ export function DocCodeBlock({
   }, [preRef, isCopied]);
 
   return (
-    <>
+    <Box>
       {isCollapsible && (
         <Box
           css={{
@@ -36,6 +36,7 @@ export function DocCodeBlock({
             padding: '$2',
             backgroundColor: '$violet2',
             mx: '-$5',
+
             '@bp1': { display: 'none' },
             '@bp2': { mx: 0 },
             '@bp4': { mx: '-$8' },
@@ -46,14 +47,21 @@ export function DocCodeBlock({
           </Button>
         </Box>
       )}
+
       <Box
         css={{
           my: '$5',
           overflow: 'auto',
-          mx: '-$5',
-          '@bp2': { mx: 0 },
-          '@bp4': { mx: '-$8' },
-          ...(isCollapsible ? { marginTop: 0 } : {}),
+          position: 'relative',
+
+          ...(isCollapsible
+            ? {
+                marginTop: 0,
+                mx: '-$5',
+                '@bp2': { mx: 0 },
+                '@bp4': { mx: '-$8' },
+              }
+            : {}),
         }}
       >
         <Pre
@@ -65,10 +73,11 @@ export function DocCodeBlock({
             position: 'relative',
             float: 'left',
             minWidth: '100%',
-            borderRadius: 0,
+
             ...(isShowingCode ? { display: 'none' } : {}),
             ...(isCollapsible
               ? {
+                  borderRadius: 0,
                   maxHeight: 400,
                   '@bp1': { display: 'block !important' },
                   '@bp2': {
@@ -87,25 +96,25 @@ export function DocCodeBlock({
           id={id}
           data-line-numbers={showLineNumbers}
         >
-          <Tooltip content={isCopied ? 'Copied!' : 'Copy'}>
-            <IconButton
-              css={{
-                display: 'none',
-                position: 'absolute',
-                top: '$2',
-                right: '$2',
-                '@bp1': { display: 'inline-flex' },
-              }}
-              onClick={() => setIsCopied(true)}
-            >
-              {isCopied ? <CheckIcon /> : <ClipboardCopyIcon />}
-            </IconButton>
-          </Tooltip>
           <div>
             <code className={className} children={children} />
           </div>
         </Pre>
+        <Button
+          ghost
+          css={{
+            display: 'none',
+            position: 'absolute',
+            top: '$1',
+            right: '$1',
+            backgroundColor: '$slateA2',
+            '@bp1': { display: 'inline-flex' },
+          }}
+          onClick={() => setIsCopied(true)}
+        >
+          {isCopied ? 'Copied!' : 'Copy'}
+        </Button>
       </Box>
-    </>
+    </Box>
   );
 }
