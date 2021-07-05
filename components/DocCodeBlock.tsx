@@ -14,26 +14,27 @@ export function DocCodeBlock({
 
   return (
     <>
-      <Box
-        data-code-toggle
-        css={{
-          textAlign: 'right',
-          ...(collapsed ? {} : { display: 'none' }),
-          ...(isCollapsed ? { boxShadow: '0 0 0 1px $colors$violet4' } : {}),
-          padding: '$2',
-          backgroundColor: '$violet2',
-          mx: '-$5',
+      {collapsed && (
+        <Box
+          data-code-toggle
+          css={{
+            textAlign: 'right',
+            ...(collapsed ? {} : { display: 'none' }),
+            ...(isCollapsed ? { boxShadow: '0 0 0 1px $colors$violet4' } : {}),
+            padding: '$2',
+            backgroundColor: '$violet2',
+            mx: '-$5',
 
-          '@bp1': { display: 'none' },
-          '@bp2': { mx: 0 },
-          '@bp4': { mx: '-$8' },
-        }}
-      >
-        <Button ghost onClick={() => setIsCollapsed(!isCollapsed)}>
-          {isCollapsed ? 'Show' : 'Hide'} code
-        </Button>
-      </Box>
-
+            '@bp1': { display: 'none' },
+            '@bp2': { mx: 0 },
+            '@bp4': { mx: '-$8' },
+          }}
+        >
+          <Button ghost onClick={() => setIsCollapsed(!isCollapsed)}>
+            {isCollapsed ? 'Show' : 'Hide'} code
+          </Button>
+        </Box>
+      )}
       <Pre
         as="pre"
         variant={variant}
