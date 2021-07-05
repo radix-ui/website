@@ -40,7 +40,7 @@ import * as Accordion from '@radix-ui/react-accordion';
 
 ## Anatomy
 
-Import the components and piece the parts together.
+Piece the parts together.
 
 ```html
 <Accordion.Root>
@@ -315,20 +315,18 @@ const StyledAccordion = styled(Accordion.Root, {});
 const StyledItem = styled(Accordion.Item, {});
 const StyledHeader = styled(Accordion.Header, {});
 const StyledTrigger = styled(Accordion.Trigger, {});
-const StyledPanel = styled(Accordion.Content, {});
+const StyledContent = styled(Accordion.Content, {});
 
-export default () => {
-  return (
-    <StyledAccordion type="single">
-      <StyledItem value="item-1">
-        <StyledHeader>
-          <StyledTrigger>Trigger text</StyledTrigger>
-        </StyledHeader>
-        <StyledPanel>Panel content</StyledPanel>
-      </StyledItem>
-    </StyledAccordion>
-  );
-};
+export default () => (
+  <StyledAccordion type="single">
+    <StyledItem value="item-1">
+      <StyledHeader>
+        <StyledTrigger>Trigger</StyledTrigger>
+      </StyledHeader>
+      <StyledContent>Content</StyledContent>
+    </StyledItem>
+  </StyledAccordion>
+);
 ```
 
 ### With CSS
@@ -346,22 +344,20 @@ The CSS is in a comment for brevity, but you can use any solution, such as CSS M
 
 import * as Accordion from '@radix-ui/react-accordion';
 
-export default () => {
-  return (
-    <Accordion.Root className="accordion" type="single">
-      <Accordion.Item className="accordion-item" value="item-1">
-        <Accordion.Header className="accordion-header">
-          <Accordion.Trigger className="accordion-trigger">
-            Trigger
-          </Accordion.Trigger>
-        </Accordion.Header>
-        <Accordion.Content className="accordion-content">
-          Content
-        </Accordion.Panel>
-      </Accordion.Item>
-    </Accordion.Root>
-  );
-};
+export default () => (
+  <Accordion.Root className="accordion" type="single">
+    <Accordion.Item className="accordion-item" value="item-1">
+      <Accordion.Header className="accordion-header">
+        <Accordion.Trigger className="accordion-trigger">
+          Trigger
+        </Accordion.Trigger>
+      </Accordion.Header>
+      <Accordion.Content className="accordion-content">
+        Content
+      </Accordion.Panel>
+    </Accordion.Item>
+  </Accordion.Root>
+);
 ```
 
 ### Animating content height
