@@ -1,26 +1,27 @@
 import React from 'react';
 import { styled, keyframes, Box, Text, Link, theme } from '@modulz/design-system';
-import * as Accordion from '@radix-ui/react-accordion';
+import * as AccordionPrimitive from '@radix-ui/react-accordion';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
+import * as Polymorphic from '@radix-ui/react-polymorphic';
 
-const slideDown = keyframes({
+const open = keyframes({
   from: { height: 0 },
   to: { height: 'var(--radix-accordion-content-height)' },
 });
 
-const slideUp = keyframes({
+const close = keyframes({
   from: { height: 'var(--radix-accordion-content-height)' },
   to: { height: 0 },
 });
 
-const StyledAccordion = styled(Accordion.Root, {
+const StyledAccordion = styled(AccordionPrimitive.Root, {
   backgroundColor: 'white',
   borderRadius: '$3',
   width: 320,
   overflow: 'hidden',
 });
 
-const StyledItem = styled(Accordion.Item, {
+const StyledItem = styled(AccordionPrimitive.Item, {
   margin: '$2',
   borderRadius: '$2',
   overflow: 'hidden',
@@ -35,12 +36,12 @@ const StyledItem = styled(Accordion.Item, {
   },
 });
 
-const StyledHeader = styled(Accordion.Header, {
+const StyledHeader = styled(AccordionPrimitive.Header, {
   margin: 0,
   display: 'flex',
 });
 
-const StyledTrigger = styled(Accordion.Trigger, {
+const StyledTrigger = styled(AccordionPrimitive.Trigger, {
   backgroundColor: 'transparent',
   border: 'none',
   padding: '$2 $3',
@@ -73,21 +74,25 @@ const StyledTrigger = styled(Accordion.Trigger, {
   },
 });
 
-const StyledPanel = styled(Accordion.Content, {
+const StyledContent = styled(AccordionPrimitive.Content, {
   overflow: 'hidden',
   lineHeight: '19px',
   color: '$mauve11',
   backgroundColor: '$violet2',
 
   '&[data-state="open"]': {
-    animation: `${slideDown} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
+    animation: `${open} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
   },
   '&[data-state="closed"]': {
-    animation: `${slideUp} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
+    animation: `${close} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
   },
 });
 
-const AccordionChevron = styled(ChevronDownIcon, {
+const StyledContentText = styled(Text, {
+  padding: '$2 $3',
+});
+
+const StyledChevron = styled(ChevronDownIcon, {
   transition: 'transform 300ms cubic-bezier(0.87, 0, 0.13, 1)',
   color: '$mauve10',
 
@@ -97,10 +102,48 @@ const AccordionChevron = styled(ChevronDownIcon, {
   },
 });
 
+// Exports
+export const Accordion = StyledAccordion;
+export const AccordionItem = StyledItem;
+
+type AccordionTriggerOwnProps = Polymorphic.OwnProps<typeof AccordionPrimitive.Trigger> & {
+  css?: any;
+};
+
+type AccordionTriggerComponent = Polymorphic.ForwardRefComponent<
+  Polymorphic.IntrinsicElement<typeof AccordionPrimitive.Trigger>,
+  AccordionTriggerOwnProps
+>;
+
+export const AccordionTrigger = React.forwardRef(({ children, ...props }, forwardedRef) => (
+  <StyledHeader>
+    <StyledTrigger {...props} ref={forwardedRef}>
+      {children}
+      <StyledChevron aria-hidden />
+    </StyledTrigger>
+  </StyledHeader>
+)) as AccordionTriggerComponent;
+
+type AccordionContentOwnProps = Polymorphic.OwnProps<typeof AccordionPrimitive.Content> & {
+  css?: any;
+};
+
+type AccordionContentComponent = Polymorphic.ForwardRefComponent<
+  Polymorphic.IntrinsicElement<typeof AccordionPrimitive.Content>,
+  AccordionContentOwnProps
+>;
+
+export const AccordionContent = React.forwardRef(({ children, ...props }, forwardedRef) => (
+  <StyledContent {...props} ref={forwardedRef}>
+    <StyledContentText size="3" css={{ color: 'inherit', lineHeight: 'inherit' }}>
+      {children}
+    </StyledContentText>
+  </StyledContent>
+)) as AccordionContentComponent;
+
 export const AccordionHero = (props) => {
   return (
     <Box
-      data-hero
       className={`${theme}`}
       css={{
         background: 'linear-gradient(330deg, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%)',
@@ -116,59 +159,32 @@ export const AccordionHero = (props) => {
       }}
     >
       <Box>
-        <StyledAccordion type="single" defaultValue="item-1" {...props}>
-          <StyledItem value="item-1">
-            <StyledHeader>
-              <StyledTrigger>
-                Is it accessible? <AccordionChevron aria-hidden />
-              </StyledTrigger>
-            </StyledHeader>
-            <StyledPanel>
-              <Box css={{ padding: '$2 $3' }}>
-                <Text size="3" css={{ color: 'inherit', lineHeight: 'inherit' }}>
-                  Yes. It adheres to the{' '}
-                  <Link
-                    variant="blue"
-                    href="https://www.w3.org/TR/wai-aria-practices-1.2/#accordion"
-                  >
-                    WAI-ARAI
-                  </Link>{' '}
-                  design pattern.
-                </Text>
-              </Box>
-            </StyledPanel>
-          </StyledItem>
+        <Accordion type="single" defaultValue="item-1" {...props}>
+          <AccordionItem value="item-1">
+            <AccordionTrigger>Is it accessible?</AccordionTrigger>
+            <AccordionContent>
+              Yes. It adheres to the{' '}
+              <Link variant="blue" href="https://www.w3.org/TR/wai-aria-practices-1.2/#accordion">
+                WAI-ARAI
+              </Link>
+              design pattern.
+            </AccordionContent>
+          </AccordionItem>
 
-          <StyledItem value="item-2">
-            <StyledHeader>
-              <StyledTrigger>
-                Is it unstyled? <AccordionChevron aria-hidden />
-              </StyledTrigger>
-            </StyledHeader>
-            <StyledPanel>
-              <Box css={{ padding: '$2 $3' }}>
-                <Text size="3" css={{ color: 'inherit', lineHeight: 'inherit' }}>
-                  Yes. It's unstyled by default, giving you full freedom over the look and feel.
-                </Text>
-              </Box>
-            </StyledPanel>
-          </StyledItem>
+          <AccordionItem value="item-2">
+            <AccordionTrigger>Is it unstyled?</AccordionTrigger>
+            <AccordionContent>
+              Yes. It's unstyled by default, giving you full freedom over the look and feel.
+            </AccordionContent>
+          </AccordionItem>
 
-          <StyledItem value="item-3">
-            <StyledHeader>
-              <StyledTrigger>
-                Can it be animated? <AccordionChevron aria-hidden />
-              </StyledTrigger>
-            </StyledHeader>
-            <StyledPanel>
-              <Box css={{ padding: '$2 $3' }}>
-                <Text size="3" css={{ color: 'inherit', lineHeight: 'inherit' }}>
-                  Yes! You can animate the Accordion with CSS or JavaScript.
-                </Text>
-              </Box>
-            </StyledPanel>
-          </StyledItem>
-        </StyledAccordion>
+          <AccordionItem value="item-3">
+            <AccordionTrigger>Can it be animated?</AccordionTrigger>
+            <AccordionContent>
+              Yes! You can animate the Accordion with CSS or JavaScript.
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </Box>
     </Box>
   );
