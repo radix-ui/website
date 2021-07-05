@@ -428,7 +428,7 @@ Contains the collapsible content for an item.
 
 Use the `defaultValue` prop to define the open item by default.
 
-```jsx
+```jsx line=1
 <Accordion.Root type="single" __defaultValue__="item-2">
   <Accordion.Item value="item-1">…</Accordion.Item>
   <Accordion.Item value="item-2">…</Accordion.Item>
@@ -439,7 +439,7 @@ Use the `defaultValue` prop to define the open item by default.
 
 Use the `collapsible` prop to allow all items to close.
 
-```jsx
+```jsx line=1
 <Accordion.Root type="single" __collapsible__>
   <Accordion.Item value="item-1">…</Accordion.Item>
   <Accordion.Item value="item-2">…</Accordion.Item>
@@ -450,7 +450,7 @@ Use the `collapsible` prop to allow all items to close.
 
 Set the `type` prop to `multiple` to enable opening multiple items at once.
 
-```jsx
+```jsx line=1
 <Accordion.Root type="__multiple__">
   <Accordion.Item value="item-1">…</Accordion.Item>
   <Accordion.Item value="item-2">…</Accordion.Item>
@@ -461,12 +461,12 @@ Set the `type` prop to `multiple` to enable opening multiple items at once.
 
 You can add extra decorative elements, such as chevrons, and rotate it when the item is open.
 
-```jsx
+```jsx line=3,5-8,16
 import { styled } from '@stitches/react';
 import * as Accordion from '@radix-ui/react-accordion';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 
-const __AccordionChevron__ = styled(ChevronDownIcon, {
+const AccordionChevron = styled(ChevronDownIcon, {
   transition: 'transform 300ms',
   '[data-state=open] &': { transform: 'rotate(180deg)' },
 });

@@ -3,7 +3,7 @@ import { styled, theme } from '@modulz/design-system';
 export const Pre = styled('pre', {
   $$background: '$loContrast',
   $$text: '$colors$hiContrast',
-  $$outline: '0 0 0 1px $colors$slate6',
+  $$outline: 'inset 0 0 0 1px $colors$slate6',
   $$syntax1: '$colors$blue11',
   $$syntax2: '$colors$cyan11',
   $$syntax3: '$colors$blue11',
@@ -151,7 +151,7 @@ export const Pre = styled('pre', {
   },
 
   // Styles for highlighted lines
-  '.highlight-line': {
+  '&[data-invert-line-highlight=false] .highlight-line': {
     '&, *': {
       transition: 'color 150ms ease',
     },
@@ -159,6 +159,17 @@ export const Pre = styled('pre', {
       '&, *': {
         color: '$$fadedLines',
       },
+    },
+  },
+
+  // data-invert-line-highlight
+  // Styles for inverted line highlighting
+  '&[data-invert-line-highlight=true] .highlight-line': {
+    '&[data-highlighted=true]': {
+      backgroundColor: '$violet3',
+      mx: '-$5',
+      px: '$5',
+      boxShadow: 'inset 3px 0 0 0 $colors$violet6',
     },
   },
 
@@ -171,10 +182,10 @@ export const Pre = styled('pre', {
     variant: {
       violet: {
         $$background: '$colors$violet2',
-        $$outline: '0 0 0 1px $colors$violet4',
+        $$outline: 'inset 0 0 0 1px $colors$violet4',
         $$syntax2: '$colors$pink11',
         $$highlightedWord1Bg: '$colors$violet4',
-        $$highlightedWord1Text: '$colors$violet11',
+        // $$highlightedWord1Text: '$colors$violet11',
         $$comment: '$colors$mauve9',
         $$fadedLines: '$colors$mauveA8',
       },

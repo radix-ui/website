@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Button } from '@modulz/design-system';
+import { Box, Button, IconButton, Tooltip } from '@modulz/design-system';
+import { ClipboardCopyIcon, CheckIcon } from '@radix-ui/react-icons';
 import copy from 'copy-to-clipboard';
 import { Pre } from './Pre';
 
@@ -8,10 +9,11 @@ export function DocCodeBlock({
   children,
   id,
   showLineNumbers = false,
-  collapsed = false,
+  isCollapsible = false,
   variant,
+  isHighlightingLines,
 }) {
-  const [isCollapsed, setIsCollapsed] = React.useState(collapsed);
+  const [isShowingCode, setisShowingCode] = React.useState(isCollapsible);
   const [isCopied, setIsCopied] = React.useState(false);
   const preRef = React.useRef(null);
 
@@ -26,73 +28,84 @@ export function DocCodeBlock({
 
   return (
     <>
-      {collapsed && (
+      {isCollapsible && (
         <Box
-          data-code-toggle
           css={{
             textAlign: 'right',
-            ...(collapsed ? {} : { display: 'none' }),
-            ...(isCollapsed ? { boxShadow: '0 0 0 1px $colors$violet4' } : {}),
+            ...(isShowingCode ? { boxShadow: '0 0 0 1px $colors$violet4' } : {}),
             padding: '$2',
             backgroundColor: '$violet2',
             mx: '-$5',
-
             '@bp1': { display: 'none' },
             '@bp2': { mx: 0 },
             '@bp4': { mx: '-$8' },
           }}
         >
-          <Button ghost onClick={() => setIsCollapsed(!isCollapsed)}>
-            {isCollapsed ? 'Show' : 'Hide'} code
+          <Button ghost onClick={() => setisShowingCode(!isShowingCode)}>
+            {isShowingCode ? 'Show' : 'Hide'} code
           </Button>
         </Box>
       )}
-      <Pre
-        ref={preRef}
-        as="pre"
-        variant={variant}
+      <Box
         css={{
           my: '$5',
-          position: 'relative',
-          ...(isCollapsed ? { display: 'none' } : {}),
-          '[data-code-toggle] + &': {
-            maxHeight: 400,
-            overflow: 'auto',
-            marginTop: 0,
-
-            mx: '-$5',
-            ...(isCollapsed ? { borderRadius: 0 } : {}),
-            '@bp1': { display: 'block !important' },
-            '@bp2': {
-              $$outline: 'inset 0 0 0 1px $colors$violet4',
-              mx: 0,
-              borderBottomLeftRadius: '$3',
-              borderBottomRightRadius: '$3',
-            },
-            '@bp4': { mx: '-$8' },
-          },
+          overflow: 'auto',
+          mx: '-$5',
+          '@bp2': { mx: 0 },
+          '@bp4': { mx: '-$8' },
+          ...(isCollapsible ? { marginTop: 0 } : {}),
         }}
-        className={className}
-        id={id}
-        data-line-numbers={showLineNumbers}
       >
-        <Button
-          ghost
+        <Pre
+          data-invert-line-highlight={isHighlightingLines}
+          ref={preRef}
+          as="pre"
+          variant={variant}
           css={{
-            display: 'none',
-            position: 'absolute',
-            top: '$2',
-            right: '$2',
-            '@bp1': {
-              display: 'block',
-            },
+            position: 'relative',
+            float: 'left',
+            minWidth: '100%',
+            borderRadius: 0,
+            ...(isShowingCode ? { display: 'none' } : {}),
+            ...(isCollapsible
+              ? {
+                  maxHeight: 400,
+                  '@bp1': { display: 'block !important' },
+                  '@bp2': {
+                    $$outline: 'inset 0 0 0 1px $colors$violet4',
+                    borderTopLeftRadius: '0',
+                    borderTopRightRadius: '0',
+                    borderBottomLeftRadius: '$3',
+                    borderBottomRightRadius: '$3',
+                  },
+                }
+              : {
+                  '@bp2': { borderRadius: '$3' },
+                }),
           }}
-          onClick={() => setIsCopied(true)}
+          className={className}
+          id={id}
+          data-line-numbers={showLineNumbers}
         >
-          {isCopied ? 'Copied!' : 'Copy'}
-        </Button>
-        <code className={className} children={children} />
-      </Pre>
+          <Tooltip content={isCopied ? 'Copied!' : 'Copy'}>
+            <IconButton
+              css={{
+                display: 'none',
+                position: 'absolute',
+                top: '$2',
+                right: '$2',
+                '@bp1': { display: 'inline-flex' },
+              }}
+              onClick={() => setIsCopied(true)}
+            >
+              {isCopied ? <CheckIcon /> : <ClipboardCopyIcon />}
+            </IconButton>
+          </Tooltip>
+          <div>
+            <code className={className} children={children} />
+          </div>
+        </Pre>
+      </Box>
     </>
   );
 }
