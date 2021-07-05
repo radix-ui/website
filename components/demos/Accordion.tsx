@@ -155,6 +155,7 @@ export const AccordionHero = (props) => {
         mx: '-$5',
 
         '@bp2': { mx: 0, borderTopLeftRadius: '$3', borderTopRightRadius: '$3' },
+        '@bp3': { mx: '-$7' },
         '@bp4': { mx: '-$8' },
       }}
     >

@@ -39,6 +39,7 @@ export function DocCodeBlock({
 
             '@bp1': { display: 'none' },
             '@bp2': { mx: 0 },
+            '@bp3': { mx: '-$7' },
             '@bp4': { mx: '-$8' },
           }}
         >
@@ -59,6 +60,7 @@ export function DocCodeBlock({
                 marginTop: 0,
                 mx: '-$5',
                 '@bp2': { mx: 0 },
+                '@bp3': { mx: '-$7' },
                 '@bp4': { mx: '-$8' },
               }
             : {}),
