@@ -25,7 +25,7 @@ export const Pre = styled('pre', {
 
   boxSizing: 'border-box',
   borderRadius: '$3',
-  padding: '$3',
+  padding: '$4 $5',
   overflow: 'auto',
   fontFamily: '$mono',
   fontSize: '$2',

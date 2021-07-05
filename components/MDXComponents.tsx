@@ -145,17 +145,16 @@ export const components = {
     />
   ),
   pre: ({ children }) => <>{children}</>,
-  code: ({ className, collapsed, scrollable, showLineNumbers, ...props }) => {
+  code: ({ className, hero, showLineNumbers, ...props }) => {
     const isInlineCode = !className;
     return isInlineCode ? (
       <DS.Code {...props} />
     ) : (
       <DocCodeBlock
         variant="violet"
-        showLineNumbers={showLineNumbers}
         className={className}
-        collapsed={collapsed !== undefined}
-        scrollable={scrollable !== undefined}
+        collapsed={hero !== undefined}
+        showLineNumbers={showLineNumbers !== undefined}
         {...(props as any)}
       />
     );

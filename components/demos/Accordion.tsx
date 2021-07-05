@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled, keyframes, Box, Text, Flex, Link, Switch, theme } from '@modulz/design-system';
+import { styled, keyframes, Box, Text, Link, theme } from '@modulz/design-system';
 import * as Accordion from '@radix-ui/react-accordion';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 
@@ -40,7 +40,7 @@ const StyledHeader = styled(Accordion.Header, {
   display: 'flex',
 });
 
-const StyledButton = styled(Accordion.Trigger, {
+const StyledTrigger = styled(Accordion.Trigger, {
   backgroundColor: 'transparent',
   border: 'none',
   padding: '$2 $3',
@@ -49,6 +49,7 @@ const StyledButton = styled(Accordion.Trigger, {
   alignItems: 'center',
   justifyContent: 'space-between',
   fontSize: '$3',
+  fontFamily: '$untitled',
   color: '$mauve11',
 
   '&[data-state="closed"]': {
@@ -99,6 +100,7 @@ const AccordionChevron = styled(ChevronDownIcon, {
 export const AccordionHero = (props) => {
   return (
     <Box
+      data-hero
       className={`${theme}`}
       css={{
         background: 'linear-gradient(330deg, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%)',
@@ -109,7 +111,7 @@ export const AccordionHero = (props) => {
         py: '$8',
         mx: '-$5',
 
-        '@bp2': { mx: 0, borderRadius: '$2' },
+        '@bp2': { mx: 0, borderTopLeftRadius: '$3', borderTopRightRadius: '$3' },
         '@bp4': { mx: '-$8' },
       }}
     >
@@ -117,9 +119,9 @@ export const AccordionHero = (props) => {
         <StyledAccordion type="single" defaultValue="item-1" {...props}>
           <StyledItem value="item-1">
             <StyledHeader>
-              <StyledButton>
+              <StyledTrigger>
                 Is it accessible? <AccordionChevron aria-hidden />
-              </StyledButton>
+              </StyledTrigger>
             </StyledHeader>
             <StyledPanel>
               <Box css={{ padding: '$2 $3' }}>
@@ -139,9 +141,9 @@ export const AccordionHero = (props) => {
 
           <StyledItem value="item-2">
             <StyledHeader>
-              <StyledButton>
+              <StyledTrigger>
                 Is it unstyled? <AccordionChevron aria-hidden />
-              </StyledButton>
+              </StyledTrigger>
             </StyledHeader>
             <StyledPanel>
               <Box css={{ padding: '$2 $3' }}>
@@ -154,9 +156,9 @@ export const AccordionHero = (props) => {
 
           <StyledItem value="item-3">
             <StyledHeader>
-              <StyledButton>
+              <StyledTrigger>
                 Can it be animated? <AccordionChevron aria-hidden />
-              </StyledButton>
+              </StyledTrigger>
             </StyledHeader>
             <StyledPanel>
               <Box css={{ padding: '$2 $3' }}>
