@@ -152,9 +152,9 @@ export const AccordionHero = (props) => {
         alignItems: 'flex-start',
         justifyContent: 'center',
         py: '$8',
-        mx: '-$5',
+        borderTopLeftRadius: '$3',
+        borderTopRightRadius: '$3',
 
-        '@bp2': { mx: 0, borderTopLeftRadius: '$3', borderTopRightRadius: '$3' },
         '@bp3': { mx: '-$7' },
         '@bp4': { mx: '-$8' },
       }}

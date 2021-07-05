@@ -145,7 +145,7 @@ export const components = {
     />
   ),
   pre: ({ children }) => <>{children}</>,
-  code: ({ className, hero, showLineNumbers, line, ...props }) => {
+  code: ({ className, hero, showLineNumbers, collapsed, line, ...props }) => {
     const isInlineCode = !className;
     return isInlineCode ? (
       <DS.Code {...props} />
@@ -154,7 +154,8 @@ export const components = {
         variant="violet"
         isHighlightingLines={line !== undefined}
         className={className}
-        isCollapsible={hero !== undefined}
+        isHero={hero !== undefined}
+        isCollapsible={hero !== undefined || collapsed !== undefined}
         showLineNumbers={showLineNumbers !== undefined}
         {...(props as any)}
       />
