@@ -66,7 +66,6 @@ export function DocCodeBlock({
           my: '$5',
           overflow: 'auto',
           position: 'relative',
-          // boxShadow: 'inset 0 0 0 1px $colors$violet4',
           borderRadius: '$3',
           ...(isCollapsible && !isCollapsed
             ? {
@@ -106,12 +105,18 @@ export function DocCodeBlock({
         <Button
           ghost
           css={{
-            display: 'none',
+            opacity: 0,
             position: 'absolute',
-            top: '$1',
-            right: '$1',
-            backgroundColor: '$violetA2',
-            '@bp1': { display: 'inline-flex' },
+            transition: '100ms ease',
+            ...(isHero
+              ? { top: '$2', right: '$2' }
+              : { top: '$1', right: '$1', backgroundColor: '$violetA2' }),
+
+            '@bp1': {
+              'pre:hover + &, &:hover, &:focus': {
+                opacity: 1,
+              },
+            },
           }}
           onClick={() => setIsCopied(true)}
         >
