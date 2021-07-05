@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Button } from '@modulz/design-system';
+import copy from 'copy-to-clipboard';
 import { Pre } from './Pre';
 
 export function DocCodeBlock({
@@ -11,6 +12,17 @@ export function DocCodeBlock({
   variant,
 }) {
   const [isCollapsed, setIsCollapsed] = React.useState(collapsed);
+  const [isCopied, setIsCopied] = React.useState(false);
+  const preRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (isCopied && preRef.current) {
+      const codeElement = preRef.current.querySelector('code');
+      const codeToCopy = codeElement.innerText.replace(/\n+/g, '\n');
+      copy(codeToCopy);
+    }
+    setTimeout(() => setIsCopied(false), 1000);
+  }, [preRef, isCopied]);
 
   return (
     <>
@@ -36,10 +48,12 @@ export function DocCodeBlock({
         </Box>
       )}
       <Pre
+        ref={preRef}
         as="pre"
         variant={variant}
         css={{
           my: '$5',
+          position: 'relative',
           ...(isCollapsed ? { display: 'none' } : {}),
           '[data-code-toggle] + &': {
             maxHeight: 400,
@@ -62,6 +76,21 @@ export function DocCodeBlock({
         id={id}
         data-line-numbers={showLineNumbers}
       >
+        <Button
+          ghost
+          css={{
+            display: 'none',
+            position: 'absolute',
+            top: '$2',
+            right: '$2',
+            '@bp1': {
+              display: 'block',
+            },
+          }}
+          onClick={() => setIsCopied(true)}
+        >
+          {isCopied ? 'Copied!' : 'Copy'}
+        </Button>
         <code className={className} children={children} />
       </Pre>
     </>
