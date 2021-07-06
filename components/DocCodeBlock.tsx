@@ -45,10 +45,15 @@ export function DocCodeBlock({
                   boxShadow: 'inset 0 -1px 0 0 $colors$violet5',
                 }),
 
-            ...(isHero
+            ...(isCollapsible
               ? {
                   borderTopLeftRadius: 0,
                   borderTopRightRadius: 0,
+                }
+              : {}),
+
+            ...(isHero
+              ? {
                   '@bp3': { mx: '-$7' },
                   '@bp4': { mx: '-$8' },
                 }

@@ -11,9 +11,10 @@ import { DocCodeBlock } from './DocCodeBlock';
 import { CodeBlock } from './CodeBlock';
 import { PackageRelease, PRLink } from './releaseHelpers';
 import { HeroContainer } from './HeroContainer';
-import * as HeroDemos from './hero';
 import { Frontmatter } from 'types/frontmatter';
 import { ColorScale, ColorScaleGroup } from './Scale';
+import * as HeroDemos from './hero';
+import { GettingStartedDemo } from './demo/GettingStarted';
 
 export const components = {
   ColorScale,
@@ -170,34 +171,9 @@ export const components = {
   Preview,
   PackageRelease,
   PRLink,
-  // ...accessibleIconDemos,
-  // ...aspectRatioDemos,
-  // ...gettingStartedDemos,
-  // // ...accordionDemos,
-  // // AccordionHero,
-  // ...alertDialogDemos,
-  // ...avatarDemos,
-  // ...checkboxDemos,
-  // ...collapsibleDemos,
-  // ...contextMenuDemos,
-  // ...dialogDemos,
-  // ...dropdownMenuDemos,
-  // ...hoverCardDemos,
-  // ...labelDemos,
-  // ...popoverDemos,
-  // ...progressDemos,
-  // ...radioGroupDemos,
-  // ...scrollAreaDemos,
-  // ...separatorDemos,
-  // ...sliderDemos,
-  // ...switchDemos,
-  // ...tabsDemos,
-  // ...toggleDemos,
-  // ...toggleGroupDemos,
-  // ...toolbarDemos,
-  // ...tooltipDemos,
   HeroContainer,
   ...HeroDemos,
+  GettingStartedDemo,
 };
 
 const LinkHeading = ({

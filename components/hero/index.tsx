@@ -1,4 +1,3 @@
-export * as gettingStartedDemos from './GettingStarted';
 export * as accessibleIconDemos from './AccessibleIcon';
 export * as aspectRatioDemos from './AspectRatio';
 export { AccordionHero } from './Accordion';
