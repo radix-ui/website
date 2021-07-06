@@ -36,32 +36,6 @@ import * as Label from '@radix-ui/react-label';
 export default () => <Label.Root />;
 ```
 
-## Basic example
-
-Create your styled label component.
-
-<Preview>
-  <LabelDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Label from '@radix-ui/react-label';
-
-const StyledLabel = styled(Label.Root, {
-  fontSize: '16px',
-  fontFamily: 'system-ui',
-});
-
-export default () => <StyledLabel>First name</StyledLabel>;
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
-
-</Note>
-
 ## API Reference
 
 ### Root
@@ -94,11 +68,7 @@ Contains the content for the label.
 
 Use the `htmlfor` attribute to connect the label with the input's id.
 
-<Preview>
-  <LabelInputDemo />
-</Preview>
-
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as Label from '@radix-ui/react-label';
 
@@ -122,11 +92,7 @@ export default () => (
 
 Add an `aria-labelledby` attribute to your custom controls using the `useLabelContext` hook to add support for label nesting.
 
-<Preview>
-  <LabelCheckboxDemo />
-</Preview>
-
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as Label from '@radix-ui/react-label';
 import { useLabelContext } from '@radix-ui/react-label';
