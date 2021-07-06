@@ -12,8 +12,6 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#checkbox
   checked.
 </Description>
 
-<CheckboxHero />
-
 <Highlights
   features={[
     'Supports indeterminate state.',
@@ -43,51 +41,6 @@ export default () => (
   </Checkbox.Root>
 );
 ```
-
-## Basic example
-
-Create your styled checkbox component from the primitive parts.
-
-<Preview>
-  <CheckboxDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Checkbox from '@radix-ui/react-checkbox';
-import { CheckIcon } from '@radix-ui/react-icons';
-
-const StyledCheckbox = styled(Checkbox.Root, {
-  appearance: 'none',
-  backgroundColor: 'transparent',
-  border: 'none',
-  padding: 0,
-  boxShadow: 'inset 0 0 0 1px gainsboro',
-  width: 15,
-  height: 15,
-  borderRadius: 2,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-
-  '&:focus': {
-    outline: 'none',
-    boxShadow: 'inset 0 0 0 1px dodgerblue, 0 0 0 1px dodgerblue',
-  },
-});
-
-export default () => (
-  <StyledCheckbox defaultChecked>
-    <Checkbox.Indicator as={CheckIcon} />
-  </StyledCheckbox>
-);
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
-
-</Note>
 
 ## API Reference
 
@@ -196,10 +149,6 @@ Renders when the checkbox is in a checked or indeterminate state. You can style 
 ## Examples
 
 ### Indeterminate
-
-<Preview>
-  <CheckboxIndeterminateDemo />
-</Preview>
 
 ```jsx collapsed
 import { styled } from 'path-to/stitches.config';
