@@ -28,7 +28,16 @@ const scaleToHSLObject = (name: string, scale: Scale) => {
 
 const scaleToHexObject = (name: string, scale: Scale) => {
   const values = Object.entries(scale)
-    .map(([key, val]) => `  ${key}: '${tinycolor(val).toHexString()}',`)
+    .map(([key, value]) => {
+      // tinycolor doesn't know to parse alpha from the newer hsl syntax, so we extract it ourselves
+      const alpha = value.match(/\/\s*((\d|\.)+)/)?.[1] ?? '1';
+      // Convert the alpha number to a hex string
+      const hexAlpha = Math.round(+alpha * 255)
+        .toString(16)
+        .padStart(2, '0');
+
+      return `  ${key}: '${tinycolor(value).toHexString()}${hexAlpha === 'ff' ? '' : hexAlpha}',`;
+    })
     .join('\n');
   return `const ${name} = {\n${values}\n}`;
 };
@@ -61,12 +70,13 @@ const scaleToSvg = (
   return `<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${
     values.length * valueWidth
   } ${valueHeight}">${values
-    .map(
-      (value, i) =>
-        `<rect x="${
-          i * valueWidth
-        }" width="${valueWidth}" height="${valueHeight}" fill="${value}"/>`
-    )
+    .map((value, i) => {
+      const x = i * valueWidth;
+      const hex = tinycolor(value).toHexString();
+      // tinycolor doesn't know to parse alpha from the newer hsl syntax, so we extract it ourselves
+      const alpha = value.match(/\/\s*((\d|\.)+)/)?.[1] ?? '1';
+      return `<rect x="${x}" width="${valueWidth}" height="${valueHeight}" fill="${hex}" fill-opacity="${alpha}" />`;
+    })
     .join('')}</svg>`;
 };
 
