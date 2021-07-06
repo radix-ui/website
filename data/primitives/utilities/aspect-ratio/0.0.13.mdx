@@ -28,28 +28,6 @@ import * as AspectRatio from '@radix-ui/react-aspect-ratio';
 export default () => <AspectRatio.Root />;
 ```
 
-## Basic example
-
-Use the aspect ratio primitive.
-
-<Preview>
-  <AspectRatioDemo />
-</Preview>
-
-```jsx
-import * as AspectRatio from '@radix-ui/react-aspect-ratio';
-
-export default () => (
-  <AspectRatio.Root>
-    <img
-      src="https://images.unsplash.com/photo-1605030753481-bb38b08c384a"
-      alt="mountain view"
-      style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-    />
-  </AspectRatio.Root>
-);
-```
-
 ## API Reference
 
 ### Root
@@ -80,11 +58,7 @@ Contains the content you want to constrain to a given ratio.
 
 ### 16 x 9 ratio
 
-<Preview>
-  <AspectRatioDemo ratio={19 / 9} />
-</Preview>
-
-```jsx collapsed
+```jsx
 import * as AspectRatio from '@radix-ui/react-aspect-ratio';
 
 export default () => (
