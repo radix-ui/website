@@ -2,7 +2,7 @@ export * as accessibleIconDemos from './AccessibleIcon';
 export * as aspectRatioDemos from './AspectRatio';
 export { AccordionHero } from './Accordion';
 export { AlertDialogHero } from './AlertDialog';
-export * as avatarDemos from './Avatar';
+export { AvatarHero } from './Avatar';
 export * as checkboxDemos from './Checkbox';
 export * as collapsibleDemos from './Collapsible';
 export * as contextMenuDemos from './ContextMenu';
