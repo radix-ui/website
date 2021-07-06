@@ -11,8 +11,6 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal
   Displays rich content in a portal, triggered by a button.
 </Description>
 
-<PopoverHero />
-
 <Highlights
   features={[
     'Can be controlled or uncontrolled.',
@@ -49,49 +47,6 @@ export default () => (
   </Popover.Root>
 );
 ```
-
-## Basic example
-
-Create your styled popover component from the primitive parts.
-
-<Preview>
-  <PopoverDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Popover from '@radix-ui/react-popover';
-
-const StyledContent = styled(Popover.Content, {
-  borderRadius: 3,
-  padding: '20px',
-  fontSize: 14,
-  backgroundColor: 'gainsboro',
-  color: 'black',
-});
-
-const StyledArrow = styled(Popover.Arrow, {
-  fill: 'gainsboro',
-});
-
-export default () => (
-  <Popover.Root>
-    <Popover.Trigger>Trigger</Popover.Trigger>
-    <StyledContent>
-      <h3>Popover content</h3>
-      <p>Are you sure you wanna do this?</p>
-      <Popover.Close>Yes</Popover.Close>
-      <StyledArrow />
-    </StyledContent>
-  </Popover.Root>
-);
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
-
-</Note>
 
 ## API Reference
 
@@ -490,11 +445,7 @@ const StyledContent = styled(Popover.Content, {
 
 You can anchor the content to another element if you do not want to use the trigger as the anchor.
 
-<Preview>
-  <PopoverAnchorDemo />
-</Preview>
-
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as Popover from '@radix-ui/react-popover';
 
