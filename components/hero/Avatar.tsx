@@ -36,7 +36,7 @@ export const AvatarImage = StyledImage;
 export const AvatarFallback = StyledFallback;
 
 export const AvatarHero = () => (
-  <HeroContainer>
+  <HeroContainer css={{ py: '$9' }}>
     <Flex css={{ gap: '$4' }}>
       <Avatar>
         <AvatarFallback>UI</AvatarFallback>
