@@ -46,51 +46,6 @@ export default () => (
 );
 ```
 
-## Basic example
-
-Create your styled hover card component from the primitive parts.
-
-<Preview>
-  <HoverCardDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as HoverCard from '@radix-ui/react-hover-card';
-
-const StyledContent = styled(HoverCard.Content, {
-  borderRadius: 3,
-  padding: '20px',
-  fontSize: 14,
-  backgroundColor: '$panel',
-  color: '$hiContrast',
-  filter: 'drop-shadow(0 6px 12px rgba(0,0,0,.2))',
-  width: 300,
-});
-
-const StyledArrow = styled(HoverCard.Arrow, {
-  fill: 'gainsboro',
-});
-
-export default () => (
-  <HoverCard.Root>
-    <HoverCard.Trigger href="http://twitter.com/twitter">
-      @twitter
-    </HoverCard.Trigger>
-    <StyledContent>
-      // Put your content here
-      <StyledArrow />
-    </StyledContent>
-  </HoverCard.Root>
-);
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
-
-</Note>
-
 ## API Reference
 
 ### Root
@@ -361,11 +316,7 @@ const StyledContent = styled(HoverCard.Content, {
 
 Use the `openDelay` prop to control the time it takes for the hover card to open.
 
-<Preview>
-  <HoverCardDemo openDelay={0} />
-</Preview>
-
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as HoverCard from '@radix-ui/react-hover-card';
 import { BlendingModeIcon } from '@radix-ui/react-icons';
