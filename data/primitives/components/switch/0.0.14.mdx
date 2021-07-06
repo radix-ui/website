@@ -12,8 +12,6 @@ aria: https://www.w3.org/TR/wai-aria-1.2/#switch
   checked.
 </Description>
 
-<SwitchHero />
-
 <Highlights
   features={[
     'Full keyboard navigation.',
@@ -42,66 +40,6 @@ export default () => (
   </Switch.Root>
 );
 ```
-
-## Basic example
-
-Create your styled switch component from the primitive parts.
-
-<Preview>
-  <SwitchDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Switch from '@radix-ui/react-switch';
-
-const StyledSwitch = styled(Switch.Root, {
-  appearance: 'none',
-  backgroundColor: 'transparent',
-  border: 'none',
-  padding: 0,
-  width: 25,
-  height: 15,
-  backgroundColor: 'gainsboro',
-  borderRadius: 25,
-  position: 'relative',
-  '&:focus': {
-    outline: 'none',
-    boxShadow: '0 0 0 2px royalblue',
-  },
-  '&[data-state="checked"]': {
-    backgroundColor: 'dodgerblue',
-  },
-});
-
-const StyledThumb = styled(Switch.Thumb, {
-  display: 'block',
-  width: 13,
-  height: 13,
-  backgroundColor: 'white',
-  borderRadius: '$round',
-  boxShadow: 'rgba(0, 0, 0, 0.3) 0px 0px 2px',
-  transition: 'transform 100ms',
-  transform: 'translateX(1px)',
-  willChange: 'transform',
-
-  '&[data-state="checked"]': {
-    transform: 'translateX(11px)',
-  },
-});
-
-export default () => (
-  <StyledSwitch>
-    <StyledThumb />
-  </StyledSwitch>
-);
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
-
-</Note>
 
 ## API Reference
 
