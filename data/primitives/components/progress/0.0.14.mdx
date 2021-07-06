@@ -12,8 +12,6 @@ aria: https://www.w3.org/TR/wai-aria-1.2/#progressbar
   typically displayed as a progress bar.
 </Description>
 
-<ProgressHero />
-
 <Highlights
   features={[
     'Provides context for assistive technology to read the progress of a task.',
@@ -39,40 +37,6 @@ export default () => (
   <Progress.Root>
     <Progress.Indicator />
   </Progress.Root>
-);
-```
-
-## Basic example
-
-Create your styled progress component from the primitive parts.
-
-<Preview>
-  <ProgressDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Progress from '@radix-ui/react-progress';
-
-const StyledProgress = styled(Progress.Root, {
-  position: 'relative',
-  height: 10,
-  overflow: 'hidden',
-  borderRadius: 5,
-  background: 'gainsboro',
-});
-
-const StyledIndicator = styled(Progress.Indicator, {
-  boxSizing: 'border-box',
-  position: 'absolute',
-  backgroundColor: 'dodgerblue',
-  height: '100%',
-});
-
-export default () => (
-  <StyledProgress value={50}>
-    <StyledIndicator style={{ width: '50%' }} />
-  </StyledProgress>
 );
 ```
 
