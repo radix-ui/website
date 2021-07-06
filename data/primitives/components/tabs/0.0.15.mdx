@@ -12,8 +12,6 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#tabpanel
   displayed one at a time.
 </Description>
 
-<TabsHero />
-
 <Highlights
   features={[
     'Can be controlled or uncontrolled.',
@@ -47,69 +45,6 @@ export default () => (
   </Tabs.Root>
 );
 ```
-
-## Basic example
-
-Create your styled tabs component from the primitive parts.
-
-<Preview>
-  <TabsDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Tabs from '@radix-ui/react-tabs';
-
-const StyledTabs = styled(Tabs.Root, {
-  display: 'flex',
-  flexDirection: 'column',
-});
-
-const StyledList = styled(Tabs.List, {
-  flexShrink: 0,
-  display: 'flex',
-  borderBottom: '1px solid gainsboro',
-});
-
-const StyledTrigger = styled(Tabs.Trigger, {
-  flexShrink: 0,
-  padding: '10px 20px',
-  color: 'slategray',
-  userSelect: 'none',
-
-  '&:hover': { color: 'black' },
-
-  '&[data-state="active"]': {
-    color: 'black',
-    boxShadow:
-      'inset 0 -1px 0 0 currentColor, 0 1px 0 0 currentColor',
-  },
-});
-
-const StyledContent = styled(Tabs.Content, {
-  flexGrow: 1,
-  padding: 20,
-});
-
-export default () => (
-  <StyledTabs defaultValue="tab1">
-    <StyledList aria-label="tabs example">
-      <StyledTrigger value="tab1">One</StyledTrigger>
-      <StyledTrigger value="tab2">Two</StyledTrigger>
-      <StyledTrigger value="tab3">Three</StyledTrigger>
-    </StyledList>
-    <StyledContent value="tab1">Tab one content</StyledContent>
-    <StyledContent value="tab2">Tab two content</StyledContent>
-    <StyledContent value="tab3">Tab three content</StyledContent>
-  </StyledTabs>
-);
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
-
-</Note>
 
 ## API Reference
 
@@ -285,11 +220,7 @@ Contains the content associated with each trigger.
 
 You can create vertical tabs by using the `orientation` prop.
 
-<Preview>
-  <TabsDemo orientation="vertical" />
-</Preview>
-
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as Tabs from '@radix-ui/react-tabs';
 
