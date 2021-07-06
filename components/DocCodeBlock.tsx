@@ -42,7 +42,6 @@ export function DocCodeBlock({
               : {
                   borderTopLeftRadius: '$3',
                   borderTopRightRadius: '$3',
-                  boxShadow: 'inset 0 -1px 0 0 $colors$violet5',
                 }),
 
             ...(isCollapsible
