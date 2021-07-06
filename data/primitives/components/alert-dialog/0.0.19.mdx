@@ -12,8 +12,6 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#alertdialog
   expects a response.
 </Description>
 
-<AlertDialogHero />
-
 <Highlights
   features={[
     'Focus is automatically trapped.',
@@ -54,60 +52,6 @@ export default () => (
   </AlertDialog.Root>
 );
 ```
-
-## Basic example
-
-Create your styled alert dialog component from the primitive parts.
-
-<Preview>
-  <AlertDialogDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as AlertDialog from '@radix-ui/react-alert-dialog';
-
-const StyledOverlay = styled(AlertDialog.Overlay, {
-  backgroundColor: 'rgba(0, 0, 0, .15)',
-  position: 'fixed',
-  top: 0,
-  right: 0,
-  bottom: 0,
-  left: 0,
-});
-
-const StyledContent = styled(AlertDialog.Content, {
-  position: 'fixed',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 360,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 20,
-});
-
-export default () => (
-  <AlertDialog.Root>
-    <AlertDialog.Trigger>Open</AlertDialog.Trigger>
-    <StyledOverlay />
-    <StyledContent>
-      <AlertDialog.Title>Alert title</AlertDialog.Title>
-      <AlertDialog.Description>
-        Alert description.
-      </AlertDialog.Description>
-      <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-      <AlertDialog.Action>Accept</AlertDialog.Action>
-    </StyledContent>
-  </AlertDialog.Root>
-);
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
-
-</Note>
 
 ## API Reference
 
