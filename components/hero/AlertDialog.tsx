@@ -1,233 +1,150 @@
 import React from 'react';
-import { styled, Box, keyframes, Flex } from '@modulz/design-system';
-import * as AlertDialog from '@radix-ui/react-alert-dialog';
+import { styled, keyframes, theme } from '@modulz/design-system';
+import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 import { HeroContainer } from '@components/HeroContainer';
 
-const StyledOverlay = styled(AlertDialog.Overlay, {
-  backgroundColor: 'rgba(0, 0, 0, .15)',
-  position: 'fixed',
-  top: 0,
-  right: 0,
-  bottom: 0,
-  left: 0,
+import type * as Polymorphic from '@radix-ui/react-polymorphic';
+
+const fadeIn = keyframes({
+  from: { opacity: 0 },
+  to: { opacity: 1 },
 });
 
-const StyledContent = styled(AlertDialog.Content, {
+const fadeOut = keyframes({
+  from: { opacity: 1 },
+  to: { opacity: 0 },
+});
+
+const StyledButton = styled('button', {
+  all: 'unset',
+  borderRadius: '$2',
+  padding: '$2 $3',
+  height: '$4',
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontSize: '$3',
+
+  variants: {
+    variant: {
+      violet: {
+        backgroundColor: '$violet3',
+        color: '$violet10',
+        '&:hover': { backgroundColor: '$violet4' },
+        '&:focus': { boxShadow: `0 0 0 2px $colors$violet8` },
+      },
+      red: {
+        backgroundColor: '$red3',
+        color: '$red10',
+        '&:hover': { backgroundColor: '$red4' },
+        '&:focus': { boxShadow: `0 0 0 2px $colors$red8` },
+      },
+      ghost: {
+        backgroundColor: 'transparent',
+        color: '$mauve10',
+        '&:hover': { backgroundColor: '$mauve4' },
+        '&:focus': { boxShadow: `0 0 0 2px $colors$mauve8` },
+      },
+    },
+  },
+
+  defaultVariants: {
+    variant: 'violet',
+  },
+});
+
+const StyledOverlay = styled(AlertDialogPrimitive.Overlay, {
+  backgroundColor: '$slateA9',
+  position: 'fixed',
+  inset: 0,
+  '&[data-state=open]': { animation: `${fadeIn} 300ms ease-out` },
+  '&[data-state=closed]': { animation: `${fadeOut} 300ms ease-out` },
+});
+
+type AlertDialogProps = React.ComponentProps<typeof AlertDialogPrimitive.Root> & {
+  children: React.ReactNode;
+};
+
+function AlertDialog({ children, ...props }: AlertDialogProps) {
+  return (
+    <AlertDialogPrimitive.Root {...props}>
+      <StyledOverlay className={`${theme}`} />
+      {children}
+    </AlertDialogPrimitive.Root>
+  );
+}
+
+const StyledContent = styled(AlertDialogPrimitive.Content, {
+  backgroundColor: 'white',
+  borderRadius: '$3',
+  boxShadow: 'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
   position: 'fixed',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 360,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 20,
+  minWidth: 200,
+  maxHeight: '85vh',
+  padding: '$4',
+  marginTop: '-5vh',
+
+  '&[data-state=open]': { animation: `${fadeIn} 200ms ease-out` },
+  '&[data-state=closed]': { animation: `${fadeOut} 100ms ease-out` },
+
+  '&:focus': { outline: 'none' },
 });
 
-export const AlertDialogDemo = () => (
-  <AlertDialog.Root>
-    <AlertDialog.Trigger>Open</AlertDialog.Trigger>
-    <StyledOverlay />
-    <StyledContent>
-      <AlertDialog.Title>Alert title</AlertDialog.Title>
-      <AlertDialog.Description>Alert description.</AlertDialog.Description>
-      <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-      <AlertDialog.Action>Accept</AlertDialog.Action>
-    </StyledContent>
-  </AlertDialog.Root>
-);
-
-const dialog = keyframes({
-  '20%': { transform: 'scale(.92) translate(-50%, -50%)', opacity: '0' },
-  '22%': { transform: 'scale(1) translate(-50%, -50%)', opacity: '1' },
-  '78%': { transform: 'scale(1) translate(-50%, -50%)', opacity: '1' },
-  '80%': { transform: 'scale(.92) translate(-50%, -50%)', opacity: '0' },
-});
-
-const click = keyframes({
-  '0%': { boxShadow: '0 0 0 2px black', transform: 'scale(.5)', opacity: '0' },
-  '14%': { boxShadow: '0 0 0 3px black', transform: 'scale(.5)', opacity: '0' },
-  '16%': { boxShadow: '0 0 0 2px black', opacity: '1' },
-  '18%': { boxShadow: '0 0 0 2px black', transform: 'scale(1)', opacity: '0' },
-  '100%': { boxShadow: '0 0 0 2px black', transform: 'scale(.5)', opacity: '0' },
-});
-
-export const AlertDialogHero = () => {
-  return (
-    <HeroContainer>
-      <Box>
-        <Box
-          css={{
-            position: 'relative',
-            backgroundColor: 'white',
-            borderRadius: '5px',
-            height: 25,
-            width: 65,
-            px: '$2',
-            mb: 2,
-            display: 'inline-flex',
-            alignItems: 'center',
-          }}
-        >
-          <Box
-            css={{
-              position: 'absolute',
-              bottom: -15,
-              right: -10,
-            }}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="25"
-              height="25"
-              viewBox="0 0 25 25"
-              fill="none"
-            >
-              <g clipPath="url(#clip0)">
-                <g filter="url(#filter0_d)">
-                  <path
-                    d="M7.5 23.1865L4.79423 0.5L23.0885 14.1865L13.5442 15.6554L7.5 23.1865Z"
-                    fill="black"
-                  />
-                  <path
-                    d="M7.5 23.1865L4.79423 0.5L23.0885 14.1865L13.5442 15.6554L7.5 23.1865Z"
-                    stroke="white"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </g>
-              </g>
-              <defs>
-                <filter
-                  id="filter0_d"
-                  x="-5.68303"
-                  y="-5.68302"
-                  width="31.4545"
-                  height="32.5526"
-                  filterUnits="userSpaceOnUse"
-                  colorInterpolationFilters="sRGB"
-                >
-                  <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                  <feColorMatrix
-                    in="SourceAlpha"
-                    type="matrix"
-                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                  />
-                  <feOffset dy="1" />
-                  <feGaussianBlur stdDeviation="1" />
-                  <feColorMatrix
-                    type="matrix"
-                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-                  />
-                  <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
-                  <feBlend
-                    mode="normal"
-                    in="SourceGraphic"
-                    in2="effect1_dropShadow"
-                    result="shape"
-                  />
-                </filter>
-                <clipPath id="clip0">
-                  <rect width="25" height="25" fill="white" />
-                </clipPath>
-              </defs>
-            </svg>
-            <Box
-              css={{
-                position: 'absolute',
-                top: -12,
-                right: 0,
-                bottom: 0,
-                left: -12,
-                borderRadius: '50%',
-                boxShadow: '0 0 0 3px black',
-                opacity: '0',
-                transform: 'scale(.5)',
-                animation: `${click} 8000ms infinite`,
-                animationDelay: `1000ms`,
-                animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
-              }}
-            ></Box>
-          </Box>
-        </Box>
-        <Box
-          css={{
-            position: 'absolute',
-            backgroundColor: 'white',
-            borderRadius: '5px',
-            width: 250,
-            p: '$3',
-            top: '50%',
-            left: '50%',
-            boxShadow:
-              'hsla(252, 4%, 9%, 0.35) 0px 10px 38px -10px, hsla(252, 4%, 9%, 0.2) 0px 10px 20px -15px',
-            transform: 'scale(.9) translate(-50%, -50%)',
-            opacity: '0',
-            animation: `${dialog} 8000ms infinite`,
-            animationDelay: `1000ms`,
-            animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
-            transformOrigin: 'left',
-          }}
-        >
-          <Box
-            css={{
-              position: 'relative',
-              zIndex: '1',
-              backgroundColor: 'hsl(206,10%,70%)',
-              height: 12,
-              width: '45%',
-              mb: 12,
-            }}
-          ></Box>
-          <Box
-            css={{
-              position: 'relative',
-              zIndex: '1',
-              backgroundColor: 'hsl(206,10%,70%)',
-              height: 4,
-              width: '60%',
-              mb: 12,
-            }}
-          ></Box>
-          <Box
-            css={{
-              position: 'relative',
-              zIndex: '1',
-              backgroundColor: 'hsl(206,10%,70%)',
-              height: 4,
-              width: '30%',
-              mb: 12,
-            }}
-          ></Box>
-          <Flex
-            css={{
-              justifyContent: 'flex-end',
-              mt: '$4',
-            }}
-          >
-            <Box
-              css={{
-                backgroundColor: 'hsl(206,10%,70%)',
-                borderRadius: '5px',
-                height: 25,
-                width: 65,
-                display: 'inline-flex',
-                alignItems: 'center',
-              }}
-            ></Box>
-            <Box
-              css={{
-                backgroundColor: '$blue10',
-                borderRadius: '5px',
-                height: 25,
-                width: 65,
-                ml: '$2',
-                display: 'inline-flex',
-                alignItems: 'center',
-              }}
-            ></Box>
-          </Flex>
-        </Box>
-      </Box>
-    </HeroContainer>
-  );
+type AlertDialogContentOwnProps = Polymorphic.OwnProps<typeof AlertDialogPrimitive.Content> & {
+  css?: any;
 };
+type AlertDialogContentComponent = Polymorphic.ForwardRefComponent<
+  Polymorphic.IntrinsicElement<typeof AlertDialogPrimitive.Content>,
+  AlertDialogContentOwnProps
+>;
+
+const AlertDialogContent = React.forwardRef(({ children, ...props }, forwardedRef) => (
+  <StyledContent {...props} ref={forwardedRef}>
+    {children}
+  </StyledContent>
+)) as AlertDialogContentComponent;
+
+const StyledTitle = styled(AlertDialogPrimitive.Title, {
+  margin: 0,
+  fontFamily: '$untitled',
+  fontWeight: 500,
+  color: '$mauve12',
+  fontSize: '$4',
+});
+
+const StyledDescription = styled(AlertDialogPrimitive.Description, {
+  margin: '$2 0 $4',
+  fontFamily: '$untitled',
+  color: '$mauve11',
+  fontSize: '$3',
+});
+
+const AlertDialogTrigger = AlertDialogPrimitive.Trigger;
+const AlertDialogTitle = StyledTitle;
+const AlertDialogDescription = StyledDescription;
+const AlertDialogAction = AlertDialogPrimitive.Action;
+const AlertDialogCancel = AlertDialogPrimitive.Cancel;
+
+export const AlertDialogHero = () => (
+  <HeroContainer css={{ py: '$9' }}>
+    <AlertDialog>
+      <AlertDialogTrigger as={StyledButton}>Delete account</AlertDialogTrigger>
+      <AlertDialogContent className={`${theme}`} css={{ width: '90vw', maxWidth: '500px' }}>
+        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+        <AlertDialogDescription>
+          This action cannot be undone. This will permanently delete your account and remove your
+          data from our servers.
+        </AlertDialogDescription>
+        <AlertDialogCancel as={StyledButton} variant="ghost" css={{ marginRight: '$2' }}>
+          Cancel
+        </AlertDialogCancel>
+        <AlertDialogAction as={StyledButton} variant="red">
+          I uderstand, delete account
+        </AlertDialogAction>
+      </AlertDialogContent>
+    </AlertDialog>
+  </HeroContainer>
+);
