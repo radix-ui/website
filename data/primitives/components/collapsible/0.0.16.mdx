@@ -11,8 +11,6 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#disclosure
   An interactive component which expands/collapses a panel.
 </Description>
 
-<CollapsibleHero />
-
 <Highlights
   features={[
     'Full keyboard navigation.',
@@ -42,39 +40,6 @@ export default () => (
   </Collapsible.Root>
 );
 ```
-
-## Basic example
-
-Create your styled collapsible component from the primitive parts.
-
-<Preview>
-  <CollapsibleDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Collapsible from '@radix-ui/react-collapsible';
-
-const StyledContent = styled(Collapsible.CollapsibleContent, {
-  padding: 10,
-  marginTop: 10,
-  backgroundColor: 'gainsboro',
-  borderRadius: 6,
-});
-
-export default () => (
-  <Collapsible.Root>
-    <Collapsible.Trigger>Trigger</Collapsible.Trigger>
-    <StyledContent>Content 1</StyledContent>
-  </Collapsible.Root>
-);
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
-
-</Note>
 
 ## API Reference
 
