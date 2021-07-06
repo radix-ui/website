@@ -11,8 +11,6 @@ name: scroll-area
   styling.
 </Description>
 
-<ScrollAreaHero />
-
 <Highlights
   features={[
     'Scrollbar sits on top of the scrollable content, taking up no space.',
@@ -50,91 +48,6 @@ export default () => (
   </ScrollArea.Root>
 );
 ```
-
-## Basic example
-
-Create your styled scroll area component from the primitive parts.
-
-<Preview>
-  <ScrollAreaDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as ScrollArea from '@radix-ui/react-scroll-area';
-
-const SCROLLBAR_SIZE = 8;
-
-const StyledScrollArea = styled(ScrollArea.Root, {
-  width: '100%',
-  height: '100%',
-});
-
-const StyledViewport = styled(ScrollArea.Viewport, {
-  width: '100%',
-  height: '100%',
-});
-
-const StyledScrollbar = styled(ScrollArea.Scrollbar, {
-  display: 'flex',
-  padding: 2,
-  background: 'rgba(0, 0, 0, 0.3)',
-  '&:hover': {
-    background: 'rgba(0, 0, 0, 0.5)',
-  },
-  transition: 'background 160ms ease-out',
-  '&[data-orientation="vertical"]': {
-    width: SCROLLBAR_SIZE,
-  },
-  '&[data-orientation="horizontal"]': {
-    flexDirection: 'column',
-    height: SCROLLBAR_SIZE,
-  },
-});
-
-const StyledThumb = styled(ScrollArea.Thumb, {
-  flex: 1,
-  background: 'black',
-  borderRadius: SCROLLBAR_SIZE,
-});
-
-const StyledCorner = styled(ScrollArea.Corner, {
-  background: 'rgba(0, 0, 0, 0.3)',
-});
-
-export default () => (
-  <div style={{ height: 250 }}>
-    <StyledScrollArea>
-      <StyledViewport>
-        <div
-          style={{
-            width: '300vw',
-            height: 1000,
-            backgroundImage:
-              'repeating-linear-gradient(-45deg, dodgerblue, dodgerblue 10px, transparent 10px, transparent 20px)',
-          }}
-        />
-      </StyledViewport>
-
-      <StyledScrollbar orientation="vertical">
-        <StyledThumb />
-      </StyledScrollbar>
-
-      <StyledScrollbar orientation="horizontal">
-        <StyledThumb />
-      </StyledScrollbar>
-
-      <StyledCorner />
-    </StyledScrollArea>
-  </div>
-);
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
-
-</Note>
 
 ## API Reference
 
