@@ -30,7 +30,7 @@ const scaleToHexObject = (name: string, scale: Scale) => {
   const values = Object.entries(scale)
     .map(([key, value]) => {
       // tinycolor doesn't know to parse alpha from the newer hsl syntax, so we extract it ourselves
-      const alpha = value.match(/\/\s?((\w|\.)+)/)?.[1] ?? '1';
+      const alpha = value.match(/\/\s?((\d|\.)+)/)?.[1] ?? '1';
       // Convert the alpha number to a hex string
       const hexAlpha = Math.round(+alpha * 255)
         .toString(16)
@@ -74,7 +74,7 @@ const scaleToSvg = (
       const x = i * valueWidth;
       const hex = tinycolor(value).toHexString();
       // tinycolor doesn't know to parse alpha from the newer hsl syntax, so we extract it ourselves
-      const alpha = value.match(/\/\s?((\w|\.)+)/)?.[1] ?? '1';
+      const alpha = value.match(/\/\s?((\d|\.)+)/)?.[1] ?? '1';
       return `<rect x="${x}" width="${valueWidth}" height="${valueHeight}" fill="${hex}" fill-opacity="${alpha}" />`;
     })
     .join('')}</svg>`;
