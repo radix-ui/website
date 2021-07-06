@@ -11,8 +11,6 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#menu
   Displays a menu located at the pointer, triggered by a right-click.
 </Description>
 
-<ContextMenuHero />
-
 <Highlights
   features={[
     'Supports items, labels, groups of items.',
@@ -679,7 +677,7 @@ const StyledContent = styled(ContextMenu.Content, {
 
 You can add special styles to disabled items via the `data-disabled` attribute.
 
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
@@ -740,7 +738,7 @@ export default () => (
 
 Use the `Separator` part to add a separator between items.
 
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
@@ -805,7 +803,7 @@ export default () => (
 
 Use the `Label` part to help label a section.
 
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
@@ -876,7 +874,7 @@ export default () => (
 
 Use the `CheckboxItem` part to add an item that can be checked.
 
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 import { CheckIcon } from '@radix-ui/react-icons';
@@ -964,7 +962,7 @@ export default () => {
 
 Use the `RadioGroup` and `RadioItem` parts to add an item that can be checked amongst others.
 
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 import { CheckIcon } from '@radix-ui/react-icons';
@@ -1047,7 +1045,7 @@ export default () => {
 
 ### With complex items
 
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 

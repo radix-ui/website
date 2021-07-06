@@ -12,8 +12,6 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#menu
   or a long-press.
 </Description>
 
-<ContextMenuHero />
-
 <Highlights
   features={[
     'Supports submenus with configurable reading direction.',
@@ -75,71 +73,6 @@ export default () => (
   </ContextMenu.Root>
 );
 ```
-
-## Basic example
-
-Create your styled context menu component from the primitive parts.
-
-<Preview>
-  <ContextMenuDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as ContextMenu from '@radix-ui/react-context-menu';
-
-const StyledContent = styled(ContextMenu.Content, {
-  minWidth: 130,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 5,
-  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
-});
-
-const StyledItem = styled(ContextMenu.Item, {
-  fontSize: 13,
-  padding: '5px 10px',
-  borderRadius: 3,
-  cursor: 'default',
-
-  '&:focus': {
-    outline: 'none',
-    backgroundColor: 'dodgerblue',
-    color: 'white',
-  },
-});
-
-export default () => (
-  <ContextMenu.Root>
-    <ContextMenu.Trigger>
-      <div
-        style={{
-          backgroundColor: 'gainsboro',
-          padding: 50,
-          textAlign: 'center',
-        }}
-      >
-        Right click anywhere
-      </div>
-    </ContextMenu.Trigger>
-    <StyledContent alignOffset={-5}>
-      <StyledItem onSelect={() => console.log('cut')}>Cut</StyledItem>
-      <StyledItem onSelect={() => console.log('copy')}>
-        Copy
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('paste')}>
-        Paste
-      </StyledItem>
-    </StyledContent>
-  </ContextMenu.Root>
-);
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
-
-</Note>
 
 ## API Reference
 
@@ -773,11 +706,7 @@ const StyledContent = styled(ContextMenu.Content, {
 
 You can create submenus by nesting `ContextMenu`s and using a `TriggerItem` in place of a `Trigger`.
 
-<Preview>
-  <ContextMenuSubmenuDemo />
-</Preview>
-
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
@@ -874,11 +803,7 @@ export default () => (
 
 You can add special styles to disabled items via the `data-disabled` attribute.
 
-<Preview>
-  <ContextMenuDemo showDisabled />
-</Preview>
-
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
@@ -939,11 +864,7 @@ export default () => (
 
 Use the `Separator` part to add a separator between items.
 
-<Preview>
-  <ContextMenuDemo showSeparator />
-</Preview>
-
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
@@ -1008,11 +929,7 @@ export default () => (
 
 Use the `Label` part to help label a section.
 
-<Preview>
-  <ContextMenuDemo showLabel />
-</Preview>
-
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
@@ -1083,11 +1000,7 @@ export default () => (
 
 Use the `CheckboxItem` part to add an item that can be checked.
 
-<Preview>
-  <ContextMenuCheckboxDemo />
-</Preview>
-
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 import { CheckIcon } from '@radix-ui/react-icons';
@@ -1175,11 +1088,7 @@ export default () => {
 
 Use the `RadioGroup` and `RadioItem` parts to add an item that can be checked amongst others.
 
-<Preview>
-  <ContextMenuRadioDemo />
-</Preview>
-
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 import { CheckIcon } from '@radix-ui/react-icons';
@@ -1262,11 +1171,7 @@ export default () => {
 
 ### With complex items
 
-<Preview>
-  <ContextMenuComplexDemo />
-</Preview>
-
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
