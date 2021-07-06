@@ -10,8 +10,6 @@ name: avatar
   An image element with a fallback for representing the user.
 </Description>
 
-<AvatarHero />
-
 <Highlights
   features={[
     'Automatic and manual control over when the image renders.',
@@ -42,59 +40,6 @@ export default () => (
   </Avatar.Root>
 );
 ```
-
-## Basic example
-
-Create your styled avatar component from the primitive parts.
-
-<Preview>
-  <AvararDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Avatar from '@radix-ui/react-avatar';
-
-const StyledAvatar = styled(Avatar.Root, {
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  verticalAlign: 'middle',
-  overflow: 'hidden',
-  userSelect: 'none',
-  width: 48,
-  height: 48,
-  borderRadius: 24,
-});
-
-const StyledImage = styled(Avatar.Image, {
-  width: '100%',
-  height: '100%',
-  objectFit: 'cover',
-});
-
-const StyledFallback = styled(Avatar.Fallback, {
-  width: '100%',
-  height: '100%',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: 'dodgerblue',
-});
-
-export default () => (
-  <StyledAvatar>
-    <StyledImage src="https://picsum.photos/id/1005/400/400" />
-    <StyledFallback>UI</StyledFallback>
-  </StyledAvatar>
-);
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
-
-</Note>
 
 ## API Reference
 
@@ -170,11 +115,7 @@ An element that renders when the image hasn't loaded. This means whilst it's loa
 
 ### Initials only
 
-<Preview>
-  <AvararDemo initialsOnly />
-</Preview>
-
-```jsx collapsed
+```jsx
 import * as Avatar from '@radix-ui/react-avatar';
 
 const StyledAvatar = styled(Avatar.Root, {
@@ -208,11 +149,7 @@ export default () => (
 
 ### Clickable Avatar with tooltip
 
-<Preview>
-  <AvatarTooltipDemo />
-</Preview>
-
-```jsx collapsed
+```jsx
 import * as Avatar from '@radix-ui/react-avatar';
 import * as Tooltip from '@radix-ui/react-tooltip';
 
