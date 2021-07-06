@@ -70,7 +70,7 @@ export function PrimitivesPage({ children }: { children: React.ReactNode }) {
         }}
       >
         <ScrollArea>
-          <Flex css={{ alignItems: 'center', p: '$4', '@bp2': { display: 'none' } }}>
+          <Flex css={{ alignItems: 'center', py: '$2', px: '$4', '@bp2': { display: 'none' } }}>
             <Box css={{ ml: '-$1' }}>
               <Button
                 ghost

@@ -1,8 +1,9 @@
 import React from 'react';
-import { styled, keyframes, Box, Text, Link, theme } from '@modulz/design-system';
+import { styled, keyframes, Text, Link } from '@modulz/design-system';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 import * as Polymorphic from '@radix-ui/react-polymorphic';
+import { HeroContainer } from '@components/HeroContainer';
 
 const open = keyframes({
   from: { height: 0 },
@@ -141,52 +142,35 @@ export const AccordionContent = React.forwardRef(({ children, ...props }, forwar
   </StyledContent>
 )) as AccordionContentComponent;
 
-export const AccordionHero = (props) => {
+export const AccordionHero = () => {
   return (
-    <Box
-      className={`${theme}`}
-      css={{
-        background: 'linear-gradient(330deg, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%)',
-        position: 'relative',
-        display: 'flex',
-        alignItems: 'flex-start',
-        justifyContent: 'center',
-        py: '$8',
-        borderTopLeftRadius: '$3',
-        borderTopRightRadius: '$3',
+    <HeroContainer>
+      <Accordion type="single" defaultValue="item-1">
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Is it accessible?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It adheres to the{' '}
+            <Link variant="blue" href="https://www.w3.org/TR/wai-aria-practices-1.2/#accordion">
+              WAI-ARAI
+            </Link>{' '}
+            design pattern.
+          </AccordionContent>
+        </AccordionItem>
 
-        '@bp3': { mx: '-$7' },
-        '@bp4': { mx: '-$8' },
-      }}
-    >
-      <Box>
-        <Accordion type="single" defaultValue="item-1" {...props}>
-          <AccordionItem value="item-1">
-            <AccordionTrigger>Is it accessible?</AccordionTrigger>
-            <AccordionContent>
-              Yes. It adheres to the{' '}
-              <Link variant="blue" href="https://www.w3.org/TR/wai-aria-practices-1.2/#accordion">
-                WAI-ARAI
-              </Link>
-              design pattern.
-            </AccordionContent>
-          </AccordionItem>
+        <AccordionItem value="item-2">
+          <AccordionTrigger>Is it unstyled?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It's unstyled by default, giving you full freedom over the look and feel.
+          </AccordionContent>
+        </AccordionItem>
 
-          <AccordionItem value="item-2">
-            <AccordionTrigger>Is it unstyled?</AccordionTrigger>
-            <AccordionContent>
-              Yes. It's unstyled by default, giving you full freedom over the look and feel.
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem value="item-3">
-            <AccordionTrigger>Can it be animated?</AccordionTrigger>
-            <AccordionContent>
-              Yes! You can animate the Accordion with CSS or JavaScript.
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-      </Box>
-    </Box>
+        <AccordionItem value="item-3">
+          <AccordionTrigger>Can it be animated?</AccordionTrigger>
+          <AccordionContent>
+            Yes! You can animate the Accordion with CSS or JavaScript.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </HeroContainer>
   );
 };

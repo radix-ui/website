@@ -12,8 +12,6 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#tooltip
   element receives keyboard focus or the mouse hovers over it.
 </Description>
 
-<TooltipHero />
-
 <Highlights
   features={[
     'Built-in state machine to control display delay.',
@@ -34,7 +32,7 @@ npm install @radix-ui/react-tooltip
 
 Import the components and piece the parts together.
 
-```jsx
+```jsx scrollable
 import * as Tooltip from '@radix-ui/react-tooltip';
 
 export default () => (
@@ -51,7 +49,7 @@ export default () => (
 
 Create your styled tooltip component from the primitive parts.
 
-```jsx
+```jsx scrollable
 import { styled } from 'path-to/stitches.config';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import { BlendingModeIcon } from '@radix-ui/react-icons';
@@ -314,7 +312,7 @@ An optional arrow element to render alongside the tooltip. This can be used to h
 
 We expose a CSS custom property `--radix-tooltip-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
-```jsx
+```jsx scrollable
 const scaleIn = keyframes({
   '0%': { opacity: 0, transform: 'scale(0)' },
   '100%': { opacity: 1, transform: 'scale(1)' },
@@ -330,7 +328,7 @@ const StyledContent = styled(Tooltip.Content, {
 
 We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
 
-```jsx
+```jsx scrollable
 const slideDown = keyframes({
   '0%': { opacity: 0, transform: 'translateY(-10px)' },
   '100%': { opacity: 1, transform: 'translateY(0)' },
@@ -357,7 +355,7 @@ A disabled button will not fire events so adding a tooltip to a disabled trigger
 
 Render the trigger as a wrapper (`span` for example) and place your disabled button inside with some CSS to disable pointer events. This allows the tooltip to receive all mouse and keyboard events instead of being blocked by the button.
 
-```jsx
+```jsx scrollable
 import { styled } from 'path-to/stitches.config';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import { BlendingModeIcon } from '@radix-ui/react-icons';
@@ -424,7 +422,7 @@ This example abstracts all of the `Tooltip` parts and introduces a new `content`
 
 #### Usage
 
-```jsx
+```jsx scrollable
 import { Tooltip } from './your-tooltip';
 
 export default () => (
@@ -436,7 +434,7 @@ export default () => (
 
 #### Implementation
 
-```jsx
+```jsx scrollable
 // your-tooltip.jsx
 import React from 'react';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';

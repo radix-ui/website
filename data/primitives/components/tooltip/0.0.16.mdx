@@ -12,8 +12,6 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#tooltip
   element receives keyboard focus or the mouse hovers over it.
 </Description>
 
-<TooltipHero />
-
 <Highlights
   features={[
     'Built-in state machine to control display delay.',
@@ -35,7 +33,7 @@ npm install @radix-ui/react-tooltip
 
 Import the components and piece the parts together.
 
-```jsx
+```jsx scrollable
 import * as Tooltip from '@radix-ui/react-tooltip';
 
 export default () => (
@@ -52,7 +50,7 @@ export default () => (
 
 Create your styled tooltip component from the primitive parts.
 
-```jsx
+```jsx scrollable
 import { styled } from 'path-to/stitches.config';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import { BlendingModeIcon } from '@radix-ui/react-icons';
@@ -372,7 +370,7 @@ A disabled button will not fire events so adding a tooltip to a disabled trigger
 
 Render the trigger as a wrapper (`span` for example) and place your disabled button inside with some CSS to disable pointer events. This allows the tooltip to receive all mouse and keyboard events instead of being blocked by the button.
 
-```jsx collapsed
+```jsx scrollable
 import { styled } from 'path-to/stitches.config';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import { BlendingModeIcon } from '@radix-ui/react-icons';
@@ -412,7 +410,7 @@ export default () => (
 
 Use the `delayDuration` prop to control the time it takes for the tooltip to open. We recommend wrapping the tooltip in your own component with a default value for the prop for consistent timings across your app. You will still be able to override the prop per-instance.
 
-```jsx collapsed
+```jsx scrollable
 import { styled } from 'path-to/stitches.config';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import { BlendingModeIcon } from '@radix-ui/react-icons';

@@ -14,6 +14,10 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#tooltip
 
 <TooltipHero />
 
+```jsx hero
+
+```
+
 <Highlights
   features={[
     'Built-in state machine to control display delay.',
@@ -47,50 +51,6 @@ export default () => (
   </Tooltip.Root>
 );
 ```
-
-## Basic example
-
-Create your styled tooltip component from the primitive parts.
-
-<Preview>
-  <TooltipDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Tooltip from '@radix-ui/react-tooltip';
-import { BlendingModeIcon } from '@radix-ui/react-icons';
-
-const StyledContent = styled(Tooltip.Content, {
-  borderRadius: 3,
-  padding: '5px 10px',
-  fontSize: 14,
-  backgroundColor: 'gainsboro',
-  color: 'black',
-});
-
-const StyledArrow = styled(Tooltip.Arrow, {
-  fill: 'gainsboro',
-});
-
-export default () => (
-  <Tooltip.Root>
-    <Tooltip.Trigger>
-      <BlendingModeIcon />
-    </Tooltip.Trigger>
-    <StyledContent>
-      Blending mode
-      <StyledArrow />
-    </StyledContent>
-  </Tooltip.Root>
-);
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
-
-</Note>
 
 ## API Reference
 
@@ -316,29 +276,79 @@ An optional arrow element to render alongside the tooltip. This can be used to h
   ]}
 />
 
-## Styling
+## Examples
+
+### Show instantly
+
+Use the `delayDuration` prop to control the time it takes for the tooltip to open.
+
+```jsx line=4
+import * as Tooltip from '@radix-ui/react-tooltip';
+
+export default () => (
+  <Tooltip.Root __delayDuration__={0}>
+    <Tooltip.Trigger>…</Tooltip.Trigger>
+    <Tooltip.Content>…</Tooltip.Content>
+  </Tooltip.Root>
+);
+```
+
+### Displaying a tooltip from a disabled button
+
+Since disabled buttons don't fire events, you need to:
+
+- Render the `Trigger` as `span`.
+- Ensure the `button` has no `pointerEvents`.
+
+```jsx line=5-9
+import * as Tooltip from '@radix-ui/react-tooltip';
+
+export default () => (
+  <Tooltip.Root>
+    <Tooltip.Trigger as="__span__">
+      <button disabled style={{ __pointerEvents__: 'none' }}>
+        …
+      </button>
+    </Tooltip.Trigger>
+    <Tooltip.Content>…</Tooltip.Content>
+  </Tooltip.Root>
+);
+```
 
 ### Origin-aware animations
 
 We expose a CSS custom property `--radix-tooltip-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
-```jsx
+```jsx line=4-7,9-12,17
+import { styled, keyframes } from '@stitches/react';
+import * as Tooltip from '@radix-ui/react-tooltip';
+
 const scaleIn = keyframes({
   '0%': { opacity: 0, transform: 'scale(0)' },
   '100%': { opacity: 1, transform: 'scale(1)' },
 });
 
-const StyledContent = styled(Tooltip.Content, {
+const TooltipContent = styled(Tooltip.Content, {
   transformOrigin: 'var(--radix-tooltip-content-transform-origin)',
   animation: `${scaleIn} 0.5s ease-out`,
 });
+
+export default () => (
+  <Tooltip.Root>
+    <Tooltip.Trigger>…</Tooltip.Trigger>
+    <TooltipContent>…</TooltipContent>
+  </Tooltip.Root>
+);
 ```
 
 ### Collision-aware animations
 
 We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
 
-```jsx
+```jsx line=4-7,9-12,14-19,24
+import { styled, keyframes } from '@stitches/react';
+import * as Tooltip from '@radix-ui/react-tooltip';
+
 const slideDown = keyframes({
   '0%': { opacity: 0, transform: 'translateY(-10px)' },
   '100%': { opacity: 1, transform: 'translateY(0)' },
@@ -349,96 +359,17 @@ const slideUp = keyframes({
   '100%': { opacity: 1, transform: 'translateY(0)' },
 });
 
-const StyledContent = styled(Tooltip.Content, {
+const TooltipContent = styled(Tooltip.Content, {
   '&[data-side="top"]': { animationName: slideUp },
   '&[data-side="bottom"]': { animationName: slideDown },
   animationDuration: '0.6s',
   animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
 });
-```
-
-## Examples
-
-### Displaying a tooltip from a disabled button
-
-A disabled button will not fire events so adding a tooltip to a disabled trigger requires a little more work.
-
-Render the trigger as a wrapper (`span` for example) and place your disabled button inside with some CSS to disable pointer events. This allows the tooltip to receive all mouse and keyboard events instead of being blocked by the button.
-
-<Preview>
-  <TooltipDemo disabled />
-</Preview>
-
-```jsx collapsed
-import { styled } from 'path-to/stitches.config';
-import * as Tooltip from '@radix-ui/react-tooltip';
-import { BlendingModeIcon } from '@radix-ui/react-icons';
-
-const StyledContent = styled(Tooltip.Content, {
-  borderRadius: 3,
-  padding: '5px 10px',
-  fontSize: 14,
-  backgroundColor: 'gainsboro',
-  color: 'black',
-});
-
-const StyledArrow = styled(Tooltip.Arrow, {
-  fill: 'gainsboro',
-});
 
 export default () => (
   <Tooltip.Root>
-    <Tooltip.Trigger as="span">
-      <button
-        type="button"
-        disabled
-        style={{ pointerEvents: 'none' }}
-      >
-        <BlendingModeIcon />
-      </button>
-    </Tooltip.Trigger>
-    <StyledContent>
-      Blending mode
-      <StyledArrow />
-    </StyledContent>
-  </Tooltip.Root>
-);
-```
-
-### Show instantly
-
-Use the `delayDuration` prop to control the time it takes for the tooltip to open. We recommend wrapping the tooltip in your own component with a default value for the prop for consistent timings across your app. You will still be able to override the prop per-instance.
-
-<Preview>
-  <TooltipDemo delayDuration={0} />
-</Preview>
-
-```jsx collapsed
-import { styled } from 'path-to/stitches.config';
-import * as Tooltip from '@radix-ui/react-tooltip';
-import { BlendingModeIcon } from '@radix-ui/react-icons';
-
-const StyledContent = styled(Tooltip.Content, {
-  borderRadius: 3,
-  padding: '5px 10px',
-  fontSize: 14,
-  backgroundColor: 'gainsboro',
-  color: 'black',
-});
-
-const StyledArrow = styled(Tooltip.Arrow, {
-  fill: 'gainsboro',
-});
-
-export default () => (
-  <Tooltip.Root delayDuration={0}>
-    <Tooltip.Trigger>
-      <BlendingModeIcon />
-    </Tooltip.Trigger>
-    <StyledContent>
-      Blending mode
-      <StyledArrow />
-    </StyledContent>
+    <Tooltip.Trigger>…</Tooltip.Trigger>
+    <TooltipContent>…</TooltipContent>
   </Tooltip.Root>
 );
 ```

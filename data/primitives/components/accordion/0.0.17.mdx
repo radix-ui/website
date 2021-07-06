@@ -472,17 +472,17 @@ const AccordionChevron = styled(ChevronDownIcon, {
 });
 
 export default () => (
-  <StyledAccordion type="single">
-    <StyledItem value="item-1">
-      <StyledHeader>
-        <StyledTrigger>
+  <Accordion.Root type="single">
+    <Accordion.Item value="item-1">
+      <Accordion.Header>
+        <Accordion.Trigger>
           <span>Trigger text</span>
           <AccordionChevron aria-hidden />
-        </StyledTrigger>
-      </StyledHeader>
-      <StyledPanel>Panel content</StyledPanel>
-    </StyledItem>
-  </StyledAccordion>
+        </Accordion.Trigger>
+      </Accordion.Header>
+      <Accordion.Content>…</Accordion.Content>
+    </Accordion.Item>
+  </Accordion.Root>
 );
 ```
 
@@ -490,7 +490,7 @@ export default () => (
 
 You can use the `--radix-accordion-content-height` CSS variable to animate the height of the content when it opens/closes. Here's a demo using Stitches:
 
-```jsx
+```jsx line=4-7,9-12,14-17,23
 import { styled, keyframes } from '@stitches/react';
 import * as Accordion from '@radix-ui/react-accordion';
 
@@ -504,10 +504,19 @@ const close = keyframes({
   to: { height: 0 },
 });
 
-const StyledContent = styled(Accordion.Content, {
+const AccordionContent = styled(Accordion.Content, {
   '&[data-state="open"]': { animation: `${open} 300ms ease-out` },
   '&[data-state="closed"]': { animation: `${close} 300ms ease-out` },
 });
+
+export default () => (
+  <Accordion.Root type="single">
+    <Accordion.Item value="item-1">
+      <Accordion.Header>…</Accordion.Header>
+      <AccordionContent>…</AccordionContent>
+    </Accordion.Item>
+  </Accordion.Root>
+);
 ```
 
 ## Accessibility

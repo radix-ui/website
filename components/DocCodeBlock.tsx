@@ -10,21 +10,22 @@ export function DocCodeBlock({
   showLineNumbers = false,
   isHero = false,
   isCollapsible = false,
+  isScrollable = false,
   variant,
   isHighlightingLines,
 }) {
   const [isCollapsed, setIsCollapsed] = React.useState(isCollapsible);
-  const [isCopied, setIsCopied] = React.useState(false);
+  const [hasCopied, setHasCopied] = React.useState(false);
   const preRef = React.useRef(null);
 
   React.useEffect(() => {
-    if (isCopied && preRef.current) {
+    if (hasCopied && preRef.current) {
       const codeElement = preRef.current.querySelector('code');
       const codeToCopy = codeElement.innerText.replace(/\n+/g, '\n');
       copy(codeToCopy);
     }
-    setTimeout(() => setIsCopied(false), 1000);
-  }, [preRef, isCopied]);
+    setTimeout(() => setHasCopied(false), 1500);
+  }, [preRef, hasCopied]);
 
   return (
     <Box>
@@ -35,7 +36,6 @@ export function DocCodeBlock({
             textAlign: 'right',
             padding: '$2',
             backgroundColor: '$violet3',
-            // boxShadow: 'inset 0 0 0 1px $colors$violet4',
 
             ...(isCollapsed
               ? { borderRadius: '$3' }
@@ -95,7 +95,7 @@ export function DocCodeBlock({
             minWidth: '100%',
             $$outline: 'none',
             borderRadius: 0,
-            ...(isHero ? { maxHeight: 400 } : {}),
+            ...(isHero || isScrollable ? { maxHeight: 400 } : {}),
           }}
         >
           <div>
@@ -118,9 +118,9 @@ export function DocCodeBlock({
               },
             },
           }}
-          onClick={() => setIsCopied(true)}
+          onClick={() => setHasCopied(true)}
         >
-          {isCopied ? 'Copied!' : 'Copy'}
+          {hasCopied ? 'Copied!' : 'Copy'}
         </Button>
       </Box>
     </Box>

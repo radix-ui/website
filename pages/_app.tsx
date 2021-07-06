@@ -9,7 +9,6 @@ import { PrimitivesPage } from '@components/PrimitivesPage';
 import { DesignSystemPage } from '@components/DesignSystemPage';
 import { ColorsPage } from '@components/ColorsPage';
 import { useAnalytics } from '@lib/analytics';
-import { scrollToUrlHash } from '@lib/scrollToUrlHash';
 
 const globalStyles = global({
   '*, *::before, *::after': {
@@ -51,10 +50,6 @@ function App({ Component, pageProps }: AppProps) {
   globalStyles();
   useAnalytics();
   const router = useRouter();
-
-  React.useEffect(() => {
-    scrollToUrlHash(router.asPath);
-  }, []);
 
   const isPrimitivesDocs = router.pathname.includes('/docs/primitives');
   const isDesignSystemDocs = router.pathname.includes('/docs/design-system');
