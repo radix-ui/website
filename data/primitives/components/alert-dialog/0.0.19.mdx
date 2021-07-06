@@ -15,7 +15,143 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#alertdialog
 <AlertDialogHero />
 
 ```jsx hero
+import React from 'react';
+import { styled, keyframes } from '@stitches/react';
+import { violet, red, mauve } from '@radix-ui/colors';
+import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 
+const fadeIn = keyframes({
+  from: { opacity: 0 },
+  to: { opacity: 1 },
+});
+
+const fadeOut = keyframes({
+  from: { opacity: 1 },
+  to: { opacity: 0 },
+});
+
+const StyledOverlay = styled(AlertDialogPrimitive.Overlay, {
+  backgroundColor: 'hsla(0 0% 0% / 10%)',
+  position: 'fixed',
+  inset: 0,
+  '&[data-state=open]': { animation: `${fadeIn} 300ms ease-out` },
+  '&[data-state=closed]': { animation: `${fadeOut} 300ms ease-out` },
+});
+
+function Root({ children, ...props }) {
+  return (
+    <AlertDialogPrimitive.Root {...props}>
+      <StyledOverlay />
+      {children}
+    </AlertDialogPrimitive.Root>
+  );
+}
+
+const StyledContent = styled(AlertDialogPrimitive.Content, {
+  backgroundColor: 'white',
+  borderRadius: '8px',
+  boxShadow:
+    'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
+  position: 'fixed',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: '90vw',
+  maxWidth: '500px',
+  maxHeight: '85vh',
+  padding: '20px',
+  marginTop: '-5vh',
+  '&[data-state=open]': { animation: `${fadeIn} 200ms ease-out` },
+  '&[data-state=closed]': { animation: `${fadeOut} 100ms ease-out` },
+
+  '&:focus': { outline: 'none' },
+});
+
+const StyledTitle = styled(AlertDialogPrimitive.Title, {
+  margin: 0,
+  fontWeight: 500,
+  color: mauve.mauve12,
+  fontSize: '17px',
+});
+
+const StyledDescription = styled(AlertDialogPrimitive.Description, {
+  margin: '10px 0 20px',
+  color: mauve.mauve11,
+  fontSize: '15px',
+});
+
+// Exports
+const AlertDialog = Root;
+const AlertDialogTrigger = AlertDialogPrimitive.Trigger;
+const AlertDialogContent = StyledContent;
+const AlertDialogTitle = StyledTitle;
+const AlertDialogDescription = StyledDescription;
+const AlertDialogAction = AlertDialogPrimitive.Action;
+const AlertDialogCancel = AlertDialogPrimitive.Cancel;
+
+// On your app...
+const Button = styled('button', {
+  all: 'unset',
+  borderRadius: '10px',
+  padding: '10px 15px',
+  height: '20px',
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontSize: '15px',
+
+  variants: {
+    variant: {
+      violet: {
+        backgroundColor: violet.violet3,
+        color: violet.violet10,
+        '&:hover': { backgroundColor: violet.violetA9 },
+        '&:focus': { boxShadow: `0 0 0 2px ${violet.violet8}` },
+      },
+      red: {
+        backgroundColor: red.red3,
+        color: red.red10,
+        '&:hover': { backgroundColor: red.red4 },
+        '&:focus': { boxShadow: `0 0 0 2px ${red.red8}` },
+      },
+      ghost: {
+        backgroundColor: 'transparent',
+        color: mauve.mauve10,
+        '&:hover': { backgroundColor: mauve.mauve4 },
+        '&:focus': { boxShadow: `0 0 0 2px ${mauve.mauve8}` },
+      },
+    },
+  },
+
+  defaultVariants: {
+    variant: 'violet',
+  },
+});
+
+export default () => (
+  <AlertDialog>
+    <AlertDialogTrigger as={Button}>
+      Delete account
+    </AlertDialogTrigger>
+    <AlertDialogContent>
+      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+      <AlertDialogDescription>
+        This action cannot be undone. This will permanently delete
+        your account and remove your data from our servers.
+      </AlertDialogDescription>
+      <AlertDialogCancel
+        as={Button}
+        variant="ghost"
+        css={{ marginRight: '10px' }}
+      >
+        Cancel
+      </AlertDialogCancel>
+      <AlertDialogAction as={Button} variant="red">
+        Yes, delete account
+      </AlertDialogAction>
+    </AlertDialogContent>
+  </AlertDialog>
+);
 ```
 
 <Highlights
@@ -325,78 +461,3 @@ Adheres to the [Alert and Message Dialogs WAI-ARIA design pattern](https://www.w
     },
   ]}
 />
-
-## Custom APIs
-
-Create your own API by abstracting the primitive parts into your own component.
-
-### Abstract the overlay and prevent close
-
-This example abstracts the `AlertDialog.Overlay` part and prevents the dialog from closing when clicking outside, or when pressing <Kbd>ESC</Kbd>.
-
-#### Usage
-
-```jsx
-import {
-  AlertDialog,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogTitle,
-  AlertDialogDescription,
-  AlertDialogCancel,
-  AlertDialogAction,
-} from './your-alert-dialog';
-
-export default () => (
-  <AlertDialog>
-    <AlertDialogTrigger>AlertDialog trigger</AlertDialogTrigger>
-    <AlertDialogContent>
-      <AlertDialogTitle>AlertDialog title</AlertDialogTitle>
-      <AlertDialogDescription>
-        AlertDialog description
-      </AlertDialogDescription>
-      <AlertDialogCancel>Cancel</AlertDialogCancel>
-      <AlertDialogAction>Action</AlertDialogAction>
-    </AlertDialogContent>
-  </AlertDialog>
-);
-```
-
-#### Implementation
-
-```jsx
-// your-alert-dialog.js
-import React from 'react';
-import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
-
-export function AlertDialog({ children, ...props }) {
-  return (
-    <AlertDialogPrimitive.Root {...props}>
-      <AlertDialogPrimitive.Overlay />
-      {children}
-    </AlertDialogPrimitive.Root>
-  );
-}
-
-export const AlertDialogContent = React.forwardRef(
-  ({ children, ...props }, forwardedRef) => (
-    <AlertDialogPrimitive.Content
-      {...props}
-      ref={forwardedRef}
-      // Don't close the Alert Dialog when pressing ESC
-      onEscapeKeyDown={(event) => event.preventDefault()}
-      // Don't close the Alert Dialog when clicking outside
-      onPointerDownOutside={(event) => event.preventDefault()}
-    >
-      {children}
-    </>
-  )
-);
-
-export const AlertDialogTrigger = AlertDialogPrimitive.Trigger;
-export const AlertDialogTitle = AlertDialogPrimitive.Title;
-export const AlertDialogDescription =
-  AlertDialogPrimitive.Description;
-export const AlertDialogCancel = AlertDialogPrimitive.Cancel;
-export const AlertDialogAction = AlertDialogPrimitive.Action;
-```
