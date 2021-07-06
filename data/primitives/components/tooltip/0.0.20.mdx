@@ -15,7 +15,66 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#tooltip
 <TooltipHero />
 
 ```jsx hero
+import React from 'react';
+import { styled, keyframes } from '@stitches/react';
+import { violet } from '@radix-ui/colors';
+import { PlusIcon } from '@radix-ui/react-icons';
+import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 
+const scaleIn = keyframes({
+  '0%': { opacity: 0, transform: 'scale(0)' },
+  '100%': { opacity: 1, transform: 'scale(1)' },
+});
+
+const StyledContent = styled(TooltipPrimitive.Content, {
+  borderRadius: '6px',
+  padding: '10px 15px',
+  fontSize: '15px',
+  color: 'white',
+  backgroundColor: violet.violet12,
+  boxShadow:
+    '0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2)',
+  transformOrigin: 'var(--radix-tooltip-content-transform-origin)',
+  animation: `${scaleIn} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
+});
+
+const StyledArrow = styled(TooltipPrimitive.Arrow, {
+  fill: violet.violet12,
+});
+
+export const Tooltip = TooltipPrimitive.Root;
+export const TooltipTrigger = TooltipPrimitive.Trigger;
+export const TooltipContent = StyledContent;
+
+const Button = styled('button', {
+  all: 'unset',
+  borderRadius: '20px',
+  padding: '10px',
+  width: '20px',
+  height: '20px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontSize: '15px',
+  backgroundColor: violet.violet8,
+  color: violet.violet1,
+  '&:hover': { backgroundColor: violet.violet9 },
+  '&:focus': { boxShadow: `0 0 0 2px ${violet.violet8}` },
+});
+
+export default () => {
+  return (
+    <Tooltip>
+      <TooltipTrigger as={Button}>
+        <PlusIcon />
+      </TooltipTrigger>
+      <StyledContent sideOffset={5}>
+        Add to library.
+        <StyledArrow offset={15} />
+      </StyledContent>
+    </Tooltip>
+  );
+};
 ```
 
 <Highlights
