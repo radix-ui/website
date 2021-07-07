@@ -13,8 +13,7 @@ import { PackageRelease, PRLink } from './releaseHelpers';
 import { HeroContainer } from './HeroContainer';
 import { Frontmatter } from 'types/frontmatter';
 import { ColorScale, ColorScaleGroup } from './Scale';
-import * as HeroDemos from './hero';
-import { GettingStartedDemo } from './demo/GettingStarted';
+import * as Demos from './demos';
 
 export const components = {
   ColorScale,
@@ -172,8 +171,7 @@ export const components = {
   PackageRelease,
   PRLink,
   HeroContainer,
-  ...HeroDemos,
-  GettingStartedDemo,
+  ...Demos,
 };
 
 const LinkHeading = ({

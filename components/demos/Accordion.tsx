@@ -142,7 +142,7 @@ export const AccordionContent = React.forwardRef(({ children, ...props }, forwar
   </StyledContent>
 )) as AccordionContentComponent;
 
-export const AccordionHero = () => {
+const AccordionDemo = () => {
   return (
     <HeroContainer>
       <Accordion type="single" defaultValue="item-1">
@@ -174,3 +174,5 @@ export const AccordionHero = () => {
     </HeroContainer>
   );
 };
+
+export default AccordionDemo;

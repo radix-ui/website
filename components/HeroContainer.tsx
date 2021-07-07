@@ -15,8 +15,9 @@ export function HeroContainer({ css, children }: { css?: any; children?: React.R
         alignItems: 'flex-start',
         justifyContent: 'center',
         py: '$8',
-        borderTopLeftRadius: '$3',
-        borderTopRightRadius: '$3',
+        borderRadius: '$3',
+        // borderTopLeftRadius: '$3',
+        // borderTopRightRadius: '$3',
         ...(css as any),
 
         '@bp3': { mx: '-$7' },

@@ -1,8 +1,8 @@
 import React from 'react';
 import { styled, keyframes } from '@modulz/design-system';
 import { PlusIcon } from '@radix-ui/react-icons';
+import { violet, violetA } from '@radix-ui/colors';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
-import { HeroContainer } from '@components/HeroContainer';
 
 const scaleIn = keyframes({
   '0%': { opacity: 0, transform: 'scale(0)' },
@@ -10,12 +10,12 @@ const scaleIn = keyframes({
 });
 
 const StyledContent = styled(TooltipPrimitive.Content, {
-  borderRadius: '$2',
-  padding: '$2 $3',
-  fontSize: '$3',
-  lineHeight: '19px',
+  borderRadius: '4px',
+  padding: '10px 15px',
+  fontSize: '15px',
+  lineHeight: '1',
   color: 'white',
-  backgroundColor: '$violetA12',
+  backgroundColor: violetA.violetA12,
   boxShadow:
     '0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2)',
   transformOrigin: 'var(--radix-tooltip-content-transform-origin)',
@@ -23,41 +23,48 @@ const StyledContent = styled(TooltipPrimitive.Content, {
 });
 
 const StyledArrow = styled(TooltipPrimitive.Arrow, {
-  fill: '$violetA12',
+  fill: violetA.violetA12,
 });
 
+// Exports
 export const Tooltip = TooltipPrimitive.Root;
 export const TooltipTrigger = TooltipPrimitive.Trigger;
 export const TooltipContent = StyledContent;
 
+// On your app...
 const Button = styled('button', {
   all: 'unset',
-  borderRadius: '$round',
-  padding: '$2',
-  width: '$4',
-  height: '$4',
+  borderRadius: '100%',
+  width: 45,
+  height: 45,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  fontSize: '$3',
-  backgroundColor: '$violetA8',
-  color: '$violet1',
-  '&:hover': { backgroundColor: '$violetA9' },
-  '&:focus': { boxShadow: `0 0 0 2px $colors$violet8` },
+  fontSize: 15,
+  backgroundColor: violetA.violetA9,
+  color: violet.violet1,
+  '&:hover': { backgroundColor: violetA.violetA10 },
+  '&:active': { backgroundColor: violetA.violetA11 },
+  '&:focus': { boxShadow: `0 0 0 2px ${violetA.violetA7}` },
 });
 
-export const TooltipHero = () => {
+const Icon = styled(PlusIcon, {
+  width: 20,
+  height: 20,
+});
+
+const TooltipDemo = () => {
   return (
-    <HeroContainer css={{ py: '$9' }}>
-      <Tooltip>
-        <TooltipTrigger as={Button}>
-          <PlusIcon />
-        </TooltipTrigger>
-        <StyledContent sideOffset={5}>
-          Add to library.
-          <StyledArrow />
-        </StyledContent>
-      </Tooltip>
-    </HeroContainer>
+    <Tooltip>
+      <TooltipTrigger as={Button}>
+        <Icon />
+      </TooltipTrigger>
+      <StyledContent sideOffset={5}>
+        Add to library.
+        <StyledArrow />
+      </StyledContent>
+    </Tooltip>
   );
 };
+
+export default TooltipDemo;
