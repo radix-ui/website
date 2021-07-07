@@ -31,7 +31,7 @@ export const Tooltip = TooltipPrimitive.Root;
 export const TooltipTrigger = TooltipPrimitive.Trigger;
 export const TooltipContent = StyledContent;
 
-// On your app...
+// Your app...
 const Button = styled('button', {
   all: 'unset',
   borderRadius: '100%',
@@ -45,7 +45,7 @@ const Button = styled('button', {
   color: violet.violet1,
   '&:hover': { backgroundColor: violetA.violetA10 },
   '&:active': { backgroundColor: violetA.violetA11 },
-  '&:focus': { boxShadow: `0 0 0 2px ${violetA.violetA7}` },
+  '&:focus': { boxShadow: `0 0 0 2px ${violet.violet7}` },
 });
 
 const Icon = styled(PlusIcon, {
