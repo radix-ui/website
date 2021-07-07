@@ -21,6 +21,7 @@ const globalStyles = global({
     fontFamily: '$untitled',
     WebkitFontSmoothing: 'antialiased',
     MozOsxFontSmoothing: 'grayscale',
+    WebkitTextSizeAdjust: '100%',
 
     '.dark-theme &': {
       backgroundColor: '$mauve1',

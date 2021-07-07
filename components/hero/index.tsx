@@ -3,7 +3,7 @@ export * as aspectRatioDemos from './AspectRatio';
 export { AccordionHero } from './Accordion';
 export { AlertDialogHero } from './AlertDialog';
 export { AvatarHero } from './Avatar';
-export * as checkboxDemos from './Checkbox';
+export { CheckboxHero } from './Checkbox';
 export * as collapsibleDemos from './Collapsible';
 export * as contextMenuDemos from './ContextMenu';
 export * as dialogDemos from './Dialog';

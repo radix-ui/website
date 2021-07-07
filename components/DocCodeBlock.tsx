@@ -71,6 +71,13 @@ export function DocCodeBlock({
           overflow: 'auto',
           position: 'relative',
           borderRadius: '$3',
+          // hacks
+          backgroundColor: '$violet2',
+          '& > pre': {
+            backgroundColor: 'transparent',
+            overflow: 'visible',
+          },
+          // end hacks
           ...(isCollapsible && !isCollapsed
             ? {
                 borderTopLeftRadius: '0',
