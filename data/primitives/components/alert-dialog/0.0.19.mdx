@@ -93,8 +93,8 @@ const AlertDialogCancel = AlertDialogPrimitive.Cancel;
 const Button = styled('button', {
   all: 'unset',
   borderRadius: '10px',
-  padding: '10px 15px',
-  height: '20px',
+  padding: '0 20px',
+  height: '35px',
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -104,21 +104,24 @@ const Button = styled('button', {
     variant: {
       violet: {
         backgroundColor: violet.violet3,
-        color: violet.violet10,
-        '&:hover': { backgroundColor: violet.violetA9 },
-        '&:focus': { boxShadow: `0 0 0 2px ${violet.violet8}` },
+        color: violet.violet11,
+        '&:hover': { backgroundColor: violet.violet4 },
+        '&:active': { backgroundColor: violet.violet5 },
+        '&:focus': { boxShadow: `0 0 0 2px ${violet.violet7}` },
       },
       red: {
         backgroundColor: red.red3,
-        color: red.red10,
+        color: red.red11,
         '&:hover': { backgroundColor: red.red4 },
-        '&:focus': { boxShadow: `0 0 0 2px ${red.red8}` },
+        '&:active': { backgroundColor: red.red5 },
+        '&:focus': { boxShadow: `0 0 0 2px ${red.red7}` },
       },
-      ghost: {
-        backgroundColor: 'transparent',
-        color: mauve.mauve10,
+      mauve: {
+        backgroundColor: mauve.mauve3,
+        color: mauve.mauve11,
         '&:hover': { backgroundColor: mauve.mauve4 },
-        '&:focus': { boxShadow: `0 0 0 2px ${mauve.mauve8}` },
+        '&:active': { backgroundColor: mauve.mauve5 },
+        '&:focus': { boxShadow: `0 0 0 2px ${mauve.mauve7}` },
       },
     },
   },
@@ -141,8 +144,8 @@ export default () => (
       </AlertDialogDescription>
       <AlertDialogCancel
         as={Button}
-        variant="ghost"
-        css={{ marginRight: '10px' }}
+        variant="mauve"
+        css={{ marginRight: '20px' }}
       >
         Cancel
       </AlertDialogCancel>

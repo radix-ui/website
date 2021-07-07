@@ -91,22 +91,25 @@ const Button = styled('button', {
   variants: {
     variant: {
       violet: {
-        backgroundColor: '$violetA8',
+        backgroundColor: '$violetA9',
         color: '$violet1',
-        '&:hover': { backgroundColor: '$violetA9' },
-        '&:focus': { boxShadow: `0 0 0 2px $colors$violet8` },
+        '&:hover': { backgroundColor: '$violetA10' },
+        '&:active': { backgroundColor: '$violetA11' },
+        '&:focus': { boxShadow: `0 0 0 2px $colors$violet7` },
       },
       red: {
         backgroundColor: '$red3',
-        color: '$red10',
+        color: '$red11',
         '&:hover': { backgroundColor: '$red4' },
-        '&:focus': { boxShadow: `0 0 0 2px $colors$red8` },
+        '&:active': { backgroundColor: '$red5' },
+        '&:focus': { boxShadow: `0 0 0 2px $colors$red7` },
       },
-      ghost: {
-        backgroundColor: 'transparent',
-        color: '$mauve10',
+      mauve: {
+        backgroundColor: '$mauve3',
+        color: '$mauve11',
         '&:hover': { backgroundColor: '$mauve4' },
-        '&:focus': { boxShadow: `0 0 0 2px $colors$mauve8` },
+        '&:active': { backgroundColor: '$mauve5' },
+        '&:focus': { boxShadow: `0 0 0 2px $colors$mauve7` },
       },
     },
   },
@@ -126,7 +129,7 @@ export const AlertDialogHero = () => (
           This action cannot be undone. This will permanently delete your account and remove your
           data from our servers.
         </AlertDialogDescription>
-        <AlertDialogCancel as={Button} variant="ghost" css={{ marginRight: '$2' }}>
+        <AlertDialogCancel as={Button} variant="mauve" css={{ marginRight: '$4' }}>
           Cancel
         </AlertDialogCancel>
         <AlertDialogAction as={Button} variant="red">
