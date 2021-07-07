@@ -22,15 +22,17 @@ const StyledCheckbox = styled(Checkbox.Root, {
   },
 });
 
-const StyledCheckIon = styled(Checkbox.Indicator, {
-  width: '$6',
-  height: '$6',
+const StyledCheckIon = styled(CheckIcon, {
+  width: '$5',
+  height: '$5',
 });
 
 export const CheckboxHero = () => (
   <HeroContainer>
     <StyledCheckbox defaultChecked>
-      <Checkbox.Indicator as={CheckIcon} />
+      <Checkbox.Indicator>
+        <StyledCheckIon as={CheckIcon} />
+      </Checkbox.Indicator>
     </StyledCheckbox>
   </HeroContainer>
 );
