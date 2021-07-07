@@ -81,8 +81,8 @@ const AlertDialogCancel = AlertDialogPrimitive.Cancel;
 const Button = styled('button', {
   all: 'unset',
   borderRadius: '$2',
-  padding: '$2 $3',
-  height: '$4',
+  padding: '0 $4',
+  height: '$7',
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
