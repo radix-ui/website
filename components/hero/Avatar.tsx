@@ -25,6 +25,7 @@ const StyledImage = styled(AvatarPrimitive.Image, {
   width: '100%',
   height: '100%',
   objectFit: 'cover',
+  borderRadius: 'inherit',
   animation: `${fadeIn} 200ms ease-out`,
 });
 
