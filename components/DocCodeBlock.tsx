@@ -1,3 +1,4 @@
+import ReactDOMServer from 'react-dom/server';
 import React from 'react';
 import { Box, Button, IconButton, Tooltip } from '@modulz/design-system';
 import copy from 'copy-to-clipboard';
@@ -134,10 +135,11 @@ ReactDOM.render(<App />, document.getElementById('root'));`,
           </Box>
         )}
 
-        <Collapsible.Content>
+        <Collapsible.Content forceMount>
           <Box
             css={{
               position: 'relative',
+              ...(isCollapsed ? { display: 'none' } : {}),
               ...(isCollapsible ? { top: '$2' } : { my: '$5' }),
             }}
           >
