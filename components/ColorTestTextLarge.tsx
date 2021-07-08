@@ -547,6 +547,35 @@ export function ColorTestTextLarge() {
         <Flex
           align="center"
           justify="between"
+          css={{ height: '$7', px: '$3', backgroundColor: '$grass9' }}
+        >
+          <Text
+            css={{
+              color: 'white',
+              fontSize: '$5',
+              fontWeight: 600,
+              fontFamily: 'system-ui, helvetica, sans-serif',
+            }}
+          >
+            White text on Grass9
+          </Text>
+          <Flex
+            css={{
+              bc: '$grass11',
+              color: '$loContrast',
+              ai: 'center',
+              jc: 'center',
+              width: '$5',
+              height: '$5',
+              borderRadius: '50%',
+            }}
+          >
+            <CheckIcon />
+          </Flex>
+        </Flex>
+        <Flex
+          align="center"
+          justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$orange9' }}
         >
           <Text
