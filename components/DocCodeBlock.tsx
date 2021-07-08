@@ -73,7 +73,6 @@ export function DocCodeBlock({
                 css={{
                   display: 'none',
                   color: '$whiteA12',
-                  verticalAlign: 'middle',
                   '@bp2': { display: 'inline-block' },
                 }}
                 action="https://codesandbox.io/api/v1/sandboxes/define"

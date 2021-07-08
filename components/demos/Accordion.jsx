@@ -2,7 +2,6 @@ import React from 'react';
 import { styled, keyframes, Text, Link } from '@modulz/design-system';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
-import * as Polymorphic from '@radix-ui/react-polymorphic';
 import { HeroContainer } from '@components/HeroContainer';
 
 const open = keyframes({
@@ -107,15 +106,6 @@ const StyledChevron = styled(ChevronDownIcon, {
 export const Accordion = StyledAccordion;
 export const AccordionItem = StyledItem;
 
-type AccordionTriggerOwnProps = Polymorphic.OwnProps<typeof AccordionPrimitive.Trigger> & {
-  css?: any;
-};
-
-type AccordionTriggerComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof AccordionPrimitive.Trigger>,
-  AccordionTriggerOwnProps
->;
-
 export const AccordionTrigger = React.forwardRef(({ children, ...props }, forwardedRef) => (
   <StyledHeader>
     <StyledTrigger {...props} ref={forwardedRef}>
@@ -123,16 +113,7 @@ export const AccordionTrigger = React.forwardRef(({ children, ...props }, forwar
       <StyledChevron aria-hidden />
     </StyledTrigger>
   </StyledHeader>
-)) as AccordionTriggerComponent;
-
-type AccordionContentOwnProps = Polymorphic.OwnProps<typeof AccordionPrimitive.Content> & {
-  css?: any;
-};
-
-type AccordionContentComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof AccordionPrimitive.Content>,
-  AccordionContentOwnProps
->;
+));
 
 export const AccordionContent = React.forwardRef(({ children, ...props }, forwardedRef) => (
   <StyledContent {...props} ref={forwardedRef}>
@@ -140,7 +121,7 @@ export const AccordionContent = React.forwardRef(({ children, ...props }, forwar
       {children}
     </StyledContentText>
   </StyledContent>
-)) as AccordionContentComponent;
+));
 
 const AccordionDemo = () => {
   return (

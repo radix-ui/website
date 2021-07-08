@@ -1,5 +1,6 @@
 import React from 'react';
-import { Flex, styled, keyframes } from '@modulz/design-system';
+import { styled, keyframes } from '@modulz/design-system';
+import {} from '@radix-ui/colors';
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
 
 const fadeIn = keyframes({
@@ -40,9 +41,13 @@ const StyledFallback = styled(AvatarPrimitive.Fallback, {
   fontWeight: 500,
 });
 
+// Exports
 export const Avatar = StyledAvatar;
 export const AvatarImage = StyledImage;
 export const AvatarFallback = StyledFallback;
+
+// Your app...
+const Flex = styled('div', { display: 'flex' });
 
 const AvatarDemo = () => (
   <Flex css={{ gap: '$4' }}>
@@ -59,4 +64,5 @@ const AvatarDemo = () => (
     </Avatar>
   </Flex>
 );
+
 export default AvatarDemo;
