@@ -108,6 +108,7 @@ const Shape = styled('div', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  userSelect: 'none',
 });
 
 const RightSlot = styled('div', {
@@ -142,7 +143,7 @@ const COLORS = {
 export const ContextMenuDemo = () => {
   const [color, setColor] = React.useState('mint');
   const [size, setSize] = React.useState(200);
-  const [isHidingName, setIsHidingName] = React.useState(true);
+  const [isHidingName, setIsHidingName] = React.useState(false);
   const [isHidingValue, setIsHidingValue] = React.useState(true);
 
   return (
@@ -150,7 +151,7 @@ export const ContextMenuDemo = () => {
       <Instruction>Right click the shape below.</Instruction>
       <ContextMenu>
         <ContextMenuTrigger>
-          <Shape style={{ backgroundColor: COLORS[color].value, width: size, height: size }}>
+          <Shape style={{ backgroundColor: COLORS[color].value, width: size, height: 100 }}>
             {!isHidingName && <Box>{COLORS[color].name}</Box>}
             {!isHidingValue && (
               <Box css={{ fontSize: 15, fontVariantNumeric: 'tabular-nums' }}>
@@ -174,10 +175,10 @@ export const ContextMenuDemo = () => {
           <ContextMenuSeparator />
           <ContextMenuLabel>Size</ContextMenuLabel>
           <ContextMenuItem disabled={size >= 300} onSelect={() => setSize(size + 50)}>
-            Make bigger
+            Increase width
           </ContextMenuItem>
           <ContextMenuItem disabled={size <= 200} onSelect={() => setSize(size - 50)}>
-            Make smaller
+            Decrease width
           </ContextMenuItem>
           <ContextMenuSeparator />
           <ContextMenu>
