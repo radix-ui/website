@@ -1,4 +1,3 @@
-import ReactDOMServer from 'react-dom/server';
 import React from 'react';
 import { Box, Button, IconButton, Tooltip } from '@modulz/design-system';
 import copy from 'copy-to-clipboard';
@@ -35,51 +34,9 @@ export function DocCodeBlock({
   }, [preRef]);
 
   React.useEffect(() => {
-    if (hasCopied) {
-      copy(code);
-    }
+    if (hasCopied) copy(code);
     setTimeout(() => setHasCopied(false), 1500);
   }, [hasCopied]);
-
-  const css =
-    '*{ margin:0;padding:0;}body{font-family:system-ui;width:100vw;height:100vh;background-image:linear-gradient(330deg, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%);display:flex;align-items:center;justify-content:center;}';
-
-  const parameters = getParameters({
-    files: {
-      'package.json': {
-        content: {
-          dependencies: {
-            react: 'latest',
-            'react-dom': 'latest',
-            '@stitches/react': 'latest',
-            '@radix-ui/colors': 'latest',
-            '@radix-ui/react-icons': 'latest',
-            [`@radix-ui/react-${frontmatter.name}`]: 'latest',
-          },
-        } as any,
-        isBinary: false,
-      },
-      'App.js': {
-        content: code,
-        isBinary: false,
-      },
-      'index.js': {
-        content: `import React from 'react';
-import ReactDOM from 'react-dom';
-
-import App from './App';
-import './styles.css';
-
-ReactDOM.render(<App />, document.getElementById('root'));`,
-        isBinary: false,
-      },
-      'styles.css': {
-        content: css,
-        isBinary: false,
-      },
-    },
-    template: 'create-react-app',
-  });
 
   return (
     <Box
@@ -124,7 +81,11 @@ ReactDOM.render(<App />, document.getElementById('root'));`,
                 target="_blank"
               >
                 <input type="hidden" name="query" value="module=App.js" />
-                <input type="hidden" name="parameters" value={parameters} />
+                <input
+                  type="hidden"
+                  name="parameters"
+                  value={makeCodeSandboxParams(frontmatter.name, code)}
+                />
                 <Tooltip content="Open demo in CodeSandbox">
                   <IconButton type="submit" css={{ color: '$whiteA12' }}>
                     <CodeSandboxLogoIcon />
@@ -154,8 +115,13 @@ ReactDOM.render(<App />, document.getElementById('root'));`,
                   backgroundColor: 'transparent',
                   overflow: 'visible',
                   py: 0,
+                  float: 'left',
+                  minWidth: '100%',
+                  $$outline: 'none',
+                  borderRadius: 0,
                 },
                 // end hacks
+                ...(isHero || isScrollable ? { maxHeight: 400 } : {}),
               }}
             >
               <Pre
@@ -165,17 +131,8 @@ ReactDOM.render(<App />, document.getElementById('root'));`,
                 variant={variant}
                 className={className}
                 id={id}
-                css={{
-                  float: 'left',
-                  minWidth: '100%',
-                  $$outline: 'none',
-                  borderRadius: 0,
-                  ...(isHero || isScrollable ? { maxHeight: 400 } : {}),
-                }}
               >
-                <div>
-                  <code className={className} children={children} />
-                </div>
+                <code className={className} children={children} />
               </Pre>
             </Box>
             <IconButton
@@ -185,7 +142,6 @@ ReactDOM.render(<App />, document.getElementById('root'));`,
                 right: '$2',
                 display: 'inline-flex',
                 opacity: 0,
-
                 '*:hover > &, &:focus': { opacity: 1, transition: '150ms linear' },
               }}
               onClick={() => setHasCopied(true)}
@@ -198,3 +154,47 @@ ReactDOM.render(<App />, document.getElementById('root'));`,
     </Box>
   );
 }
+
+const makeCodeSandboxParams = (name, code) => {
+  const css =
+    '*{ margin:0;padding:0;}body{font-family:system-ui;width:100vw;height:100vh;background-image:linear-gradient(330deg, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%);display:flex;align-items:center;justify-content:center;}';
+
+  const parameters = getParameters({
+    files: {
+      'package.json': {
+        content: {
+          dependencies: {
+            react: 'latest',
+            'react-dom': 'latest',
+            '@stitches/react': 'latest',
+            '@radix-ui/colors': 'latest',
+            '@radix-ui/react-icons': 'latest',
+            [`@radix-ui/react-${name}`]: 'latest',
+          },
+        } as any,
+        isBinary: false,
+      },
+      'App.js': {
+        content: code,
+        isBinary: false,
+      },
+      'index.js': {
+        content: `import React from 'react';
+import ReactDOM from 'react-dom';
+
+import App from './App';
+import './styles.css';
+
+ReactDOM.render(<App />, document.getElementById('root'));`,
+        isBinary: false,
+      },
+      'styles.css': {
+        content: css,
+        isBinary: false,
+      },
+    },
+    template: 'create-react-app',
+  });
+
+  return parameters;
+};
