@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled, keyframes } from '@modulz/design-system';
 import * as colors from '@radix-ui/colors';
-import { DotFilledIcon, CheckIcon } from '@radix-ui/react-icons';
+import { DotFilledIcon, CheckIcon, ChevronRightIcon } from '@radix-ui/react-icons';
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 
 const { violet, violetA } = colors;
@@ -38,6 +38,13 @@ const itemStyles = {
 const StyledItem = styled(ContextMenuPrimitive.Item, { ...itemStyles });
 const StyledCheckboxItem = styled(ContextMenuPrimitive.CheckboxItem, { ...itemStyles });
 const StyledRadioItem = styled(ContextMenuPrimitive.RadioItem, { ...itemStyles });
+const StyledTriggerItem = styled(ContextMenuPrimitive.TriggerItem, {
+  ...itemStyles,
+  '&[data-state="open"]': {
+    backgroundColor: violet.violet9,
+    color: violet.violet1,
+  },
+});
 
 const StyledSeparator = styled(ContextMenuPrimitive.Separator, {
   height: 1,
@@ -63,6 +70,7 @@ export const ContextMenuCheckboxItem = StyledCheckboxItem;
 export const ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup;
 export const ContextMenuRadioItem = StyledRadioItem;
 export const ContextMenuItemIndicator = StyledItemIndicator;
+export const ContextMenuTriggerItem = StyledTriggerItem;
 export const ContextMenuSeparator = StyledSeparator;
 
 // Your app...
@@ -153,18 +161,34 @@ export const ContextMenuDemo = () => {
             ))}
           </ContextMenuRadioGroup>
           <ContextMenuSeparator />
-          <ContextMenuCheckboxItem checked={isShowingName} onCheckedChange={setIsShowingName}>
-            <ContextMenuItemIndicator>
-              <CheckIcon />
-            </ContextMenuItemIndicator>
-            Display color name
-          </ContextMenuCheckboxItem>
-          <ContextMenuCheckboxItem checked={isShowingValue} onCheckedChange={setIsShowingValue}>
-            <ContextMenuItemIndicator>
-              <CheckIcon />
-            </ContextMenuItemIndicator>
-            Display color value
-          </ContextMenuCheckboxItem>
+          <ContextMenu>
+            <ContextMenuTriggerItem>
+              View
+              <Box
+                css={{
+                  width: 15,
+                  height: 15,
+                  marginLeft: 'auto',
+                }}
+              >
+                <ChevronRightIcon />
+              </Box>
+            </ContextMenuTriggerItem>
+            <ContextMenuContent sideOffset={2} alignOffset={-5}>
+              <ContextMenuCheckboxItem checked={isShowingName} onCheckedChange={setIsShowingName}>
+                <ContextMenuItemIndicator>
+                  <CheckIcon />
+                </ContextMenuItemIndicator>
+                Show name
+              </ContextMenuCheckboxItem>
+              <ContextMenuCheckboxItem checked={isShowingValue} onCheckedChange={setIsShowingValue}>
+                <ContextMenuItemIndicator>
+                  <CheckIcon />
+                </ContextMenuItemIndicator>
+                Show value
+              </ContextMenuCheckboxItem>
+            </ContextMenuContent>
+          </ContextMenu>
         </ContextMenuContent>
       </ContextMenu>
     </Box>
