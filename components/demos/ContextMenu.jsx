@@ -19,6 +19,7 @@ const StyledContent = styled(ContextMenuPrimitive.Content, {
 const itemStyles = {
   all: 'unset',
   fontSize: 13,
+  lineHeight: 1,
   color: violet.violet11,
   borderRadius: 4,
   display: 'flex',
@@ -38,6 +39,12 @@ const StyledItem = styled(ContextMenuPrimitive.Item, { ...itemStyles });
 const StyledCheckboxItem = styled(ContextMenuPrimitive.CheckboxItem, { ...itemStyles });
 const StyledRadioItem = styled(ContextMenuPrimitive.RadioItem, { ...itemStyles });
 
+const StyledSeparator = styled(ContextMenuPrimitive.Separator, {
+  height: 1,
+  backgroundColor: violet.violet6,
+  margin: 5,
+});
+
 const StyledItemIndicator = styled(ContextMenuPrimitive.ItemIndicator, {
   position: 'absolute',
   left: 0,
@@ -52,12 +59,15 @@ export const ContextMenu = ContextMenuPrimitive.Root;
 export const ContextMenuTrigger = ContextMenuPrimitive.Trigger;
 export const ContextMenuContent = StyledContent;
 export const ContextMenuItem = StyledItem;
-export const ContextMenuItemIndicator = StyledItemIndicator;
 export const ContextMenuCheckboxItem = StyledCheckboxItem;
 export const ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup;
 export const ContextMenuRadioItem = StyledRadioItem;
+export const ContextMenuItemIndicator = StyledItemIndicator;
+export const ContextMenuSeparator = StyledSeparator;
 
 // Your app...
+const Box = styled('div', {});
+
 const Instruction = styled('div', {
   color: 'rgba(255 255 255 / .5)',
   fontSize: 15,
@@ -66,10 +76,18 @@ const Instruction = styled('div', {
   top: 20,
 });
 
-const Box = styled('div', {
+const Shape = styled('div', {
   width: 200,
   height: 200,
+  fontSize: 17,
+  fontWeight: 500,
+  color: 'black',
   borderRadius: '100%',
+  flexDirection: 'column',
+  gap: '$1',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
 });
 
 const COLORS = {
@@ -80,6 +98,10 @@ const COLORS = {
   amber: {
     name: 'Amber',
     value: colors.amber.amber9,
+  },
+  lime: {
+    name: 'Lime',
+    value: colors.lime.lime9,
   },
   mint: {
     name: 'Mint',
@@ -93,13 +115,22 @@ const COLORS = {
 
 export const ContextMenuDemo = () => {
   const [color, setColor] = React.useState('mint');
+  const [isShowingName, setIsShowingName] = React.useState(false);
+  const [isShowingValue, setIsShowingValue] = React.useState(false);
 
   return (
-    <>
+    <Box>
       <Instruction>Right click the shape below.</Instruction>
       <ContextMenu>
         <ContextMenuTrigger>
-          <Box style={{ backgroundColor: COLORS[color].value }} />
+          <Shape style={{ backgroundColor: COLORS[color].value }}>
+            {isShowingName && <Box>{COLORS[color].name}</Box>}
+            {isShowingValue && (
+              <Box css={{ fontSize: 15, fontVariantNumeric: 'tabular-nums' }}>
+                {COLORS[color].value}
+              </Box>
+            )}
+          </Shape>
         </ContextMenuTrigger>
         <ContextMenuContent>
           <ContextMenuRadioGroup value={color} onValueChange={setColor}>
@@ -121,9 +152,22 @@ export const ContextMenuDemo = () => {
               </ContextMenuRadioItem>
             ))}
           </ContextMenuRadioGroup>
+          <ContextMenuSeparator />
+          <ContextMenuCheckboxItem checked={isShowingName} onCheckedChange={setIsShowingName}>
+            <ContextMenuItemIndicator>
+              <CheckIcon />
+            </ContextMenuItemIndicator>
+            Display color name
+          </ContextMenuCheckboxItem>
+          <ContextMenuCheckboxItem checked={isShowingValue} onCheckedChange={setIsShowingValue}>
+            <ContextMenuItemIndicator>
+              <CheckIcon />
+            </ContextMenuItemIndicator>
+            Display color value
+          </ContextMenuCheckboxItem>
         </ContextMenuContent>
       </ContextMenu>
-    </>
+    </Box>
   );
 };
 
