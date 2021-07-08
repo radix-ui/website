@@ -28,6 +28,12 @@ const itemStyles = {
   padding: '0 5px',
   position: 'relative',
   paddingLeft: 25,
+  userSelect: 'none',
+
+  '&[data-disabled]': {
+    color: violet.violet6,
+    pointerEvents: 'none',
+  },
 
   '&:hover, &:focus': {
     backgroundColor: violet.violet9,
@@ -85,8 +91,6 @@ const Instruction = styled('div', {
 });
 
 const Shape = styled('div', {
-  width: 200,
-  height: 200,
   fontSize: 17,
   fontWeight: 500,
   color: 'black',
@@ -123,6 +127,7 @@ const COLORS = {
 
 export const ContextMenuDemo = () => {
   const [color, setColor] = React.useState('mint');
+  const [size, setSize] = React.useState(200);
   const [isShowingName, setIsShowingName] = React.useState(false);
   const [isShowingValue, setIsShowingValue] = React.useState(false);
 
@@ -131,7 +136,7 @@ export const ContextMenuDemo = () => {
       <Instruction>Right click the shape below.</Instruction>
       <ContextMenu>
         <ContextMenuTrigger>
-          <Shape style={{ backgroundColor: COLORS[color].value }}>
+          <Shape style={{ backgroundColor: COLORS[color].value, width: size, height: size }}>
             {isShowingName && <Box>{COLORS[color].name}</Box>}
             {isShowingValue && (
               <Box css={{ fontSize: 15, fontVariantNumeric: 'tabular-nums' }}>
@@ -160,6 +165,13 @@ export const ContextMenuDemo = () => {
               </ContextMenuRadioItem>
             ))}
           </ContextMenuRadioGroup>
+          <ContextMenuSeparator />
+          <ContextMenuItem disabled={size >= 300} onSelect={() => setSize(size + 50)}>
+            Make bigger
+          </ContextMenuItem>
+          <ContextMenuItem disabled={size <= 200} onSelect={() => setSize(size - 50)}>
+            Make smaller
+          </ContextMenuItem>
           <ContextMenuSeparator />
           <ContextMenu>
             <ContextMenuTriggerItem>
