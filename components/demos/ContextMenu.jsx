@@ -109,6 +109,14 @@ const Shape = styled('div', {
   alignItems: 'center',
   justifyContent: 'center',
   userSelect: 'none',
+  height: 100,
+  variants: {
+    open: {
+      true: {
+        boxShadow: `0 0 0 2px ${colors.violetA.violetA9}`,
+      },
+    },
+  },
 });
 
 const RightSlot = styled('div', {
@@ -141,6 +149,7 @@ const COLORS = {
 };
 
 export const ContextMenuDemo = () => {
+  const [open, setOpen] = React.useState(false);
   const [color, setColor] = React.useState('mint');
   const [size, setSize] = React.useState(200);
   const [isShowingName, setIsShowingName] = React.useState(true);
@@ -149,9 +158,9 @@ export const ContextMenuDemo = () => {
   return (
     <Box>
       <Instruction>Right click the shape below.</Instruction>
-      <ContextMenu>
+      <ContextMenu onOpenChange={setOpen}>
         <ContextMenuTrigger>
-          <Shape style={{ backgroundColor: COLORS[color].value, width: size, height: 100 }}>
+          <Shape open={open} style={{ backgroundColor: COLORS[color].value, width: size }}>
             {isShowingName && <Box>{COLORS[color].name}</Box>}
             {isShowingValue && (
               <Box css={{ fontSize: 15, fontVariantNumeric: 'tabular-nums' }}>
