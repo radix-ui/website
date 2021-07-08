@@ -16,44 +16,8 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#checkbox
   <CheckboxDemo />
 </HeroContainer>
 
-```jsx hero
-import React from 'react';
-import { styled } from '@stitches/react';
-import { CheckIcon } from '@radix-ui/react-icons';
-import { violet } from '@radix-ui/colors';
-import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
+```jsx hero template=Checkbox
 
-const StyledCheckbox = styled(CheckboxPrimitive.Root, {
-  appearance: 'none',
-  border: 'none',
-  padding: 0,
-  width: '25px',
-  height: '25px',
-  borderRadius: '4px',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: violet.violet3,
-  color: violet.violet11,
-
-  '&:hover': { backgroundColor: violet.violet4 },
-  '&:focus': {
-    outline: 'none',
-    boxShadow: `inset 0 0 0 1px ${violet.violet7}, 0 0 0 1px ${violet.violet7}`,
-  },
-});
-
-// Exports
-export const Checkbox = React.forwardRef((props, forwardedRef) => (
-  <StyledCheckbox {...props} ref={forwardedRef}>
-    <CheckboxPrimitive.Indicator>
-      <CheckIcon />
-    </CheckboxPrimitive.Indicator>
-  </StyledCheckbox>
-));
-
-// Your app...
-export default () => <Checkbox defaultChecked />;
 ```
 
 <Highlights

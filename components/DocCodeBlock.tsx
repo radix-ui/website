@@ -73,7 +73,7 @@ export function DocCodeBlock({
                 css={{
                   display: 'none',
                   color: '$whiteA12',
-                  '@bp2': { display: 'inline-block' },
+                  '@bp1': { display: 'inline-block' },
                 }}
                 action="https://codesandbox.io/api/v1/sandboxes/define"
                 method="POST"
@@ -156,7 +156,7 @@ export function DocCodeBlock({
 
 const makeCodeSandboxParams = (name, code) => {
   const css =
-    '*{ margin:0;padding:0;}body{font-family:system-ui;width:100vw;height:100vh;background-image:linear-gradient(330deg, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%);display:flex;align-items:center;justify-content:center;}';
+    '*{ margin:0;padding:0;}body{font-family:system-ui;width:100vw;height:100vh;background-image:linear-gradient(330deg, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%);display:flex;align-items:center;justify-content:center;}svg{display:block;}';
 
   const parameters = getParameters({
     files: {

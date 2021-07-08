@@ -51,7 +51,7 @@ export const AvatarFallback = StyledFallback;
 const Flex = styled('div', { display: 'flex' });
 
 const AvatarDemo = () => (
-  <Flex css={{ gap: '$4' }}>
+  <Flex css={{ gap: 20 }}>
     <Avatar>
       <AvatarImage src="https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=128&h=128&dpr=2&q=80" />
       <AvatarFallback delayMs={600}>PD</AvatarFallback>

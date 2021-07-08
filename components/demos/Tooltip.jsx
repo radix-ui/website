@@ -41,6 +41,7 @@ const Button = styled('button', {
   alignItems: 'center',
   justifyContent: 'center',
   fontSize: 15,
+  lineHeight: 1,
   backgroundColor: violetA.violetA9,
   color: violet.violet1,
   '&:hover': { backgroundColor: violetA.violetA10 },
