@@ -45,11 +45,11 @@ const StyledItem = styled(ContextMenuPrimitive.Item, { ...itemStyles });
 const StyledCheckboxItem = styled(ContextMenuPrimitive.CheckboxItem, { ...itemStyles });
 const StyledRadioItem = styled(ContextMenuPrimitive.RadioItem, { ...itemStyles });
 const StyledTriggerItem = styled(ContextMenuPrimitive.TriggerItem, {
-  ...itemStyles,
   '&[data-state="open"]': {
     backgroundColor: violet.violet4,
     color: violet.violet11,
   },
+  ...itemStyles,
 });
 
 const StyledLabel = styled(ContextMenuPrimitive.Label, {
