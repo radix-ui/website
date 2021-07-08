@@ -4,7 +4,7 @@ import * as colors from '@radix-ui/colors';
 import { DotFilledIcon, CheckIcon, ChevronRightIcon } from '@radix-ui/react-icons';
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 
-const { violet, violetA } = colors;
+const { violet, mauve } = colors;
 
 const StyledContent = styled(ContextMenuPrimitive.Content, {
   width: 180,
@@ -31,7 +31,7 @@ const itemStyles = {
   userSelect: 'none',
 
   '&[data-disabled]': {
-    color: violet.violet6,
+    color: mauve.mauve8,
     pointerEvents: 'none',
   },
 
@@ -50,6 +50,13 @@ const StyledTriggerItem = styled(ContextMenuPrimitive.TriggerItem, {
     backgroundColor: violet.violet4,
     color: violet.violet11,
   },
+});
+
+const StyledLabel = styled(ContextMenuPrimitive.Label, {
+  paddingLeft: 25,
+  fontSize: 13,
+  lineHeight: '25px',
+  color: violet.violet8,
 });
 
 const StyledSeparator = styled(ContextMenuPrimitive.Separator, {
@@ -77,6 +84,7 @@ export const ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup;
 export const ContextMenuRadioItem = StyledRadioItem;
 export const ContextMenuItemIndicator = StyledItemIndicator;
 export const ContextMenuTriggerItem = StyledTriggerItem;
+export const ContextMenuLabel = StyledLabel;
 export const ContextMenuSeparator = StyledSeparator;
 
 // Your app...
@@ -86,20 +94,26 @@ const Instruction = styled('div', {
   color: 'rgba(255 255 255 / .5)',
   fontSize: 15,
   userSelect: 'none',
-  position: 'absolute',
-  top: 20,
+  marginBottom: 20,
+  textAlign: 'center',
 });
 
 const Shape = styled('div', {
   fontSize: 17,
   fontWeight: 500,
   color: 'black',
-  borderRadius: '100%',
+  borderRadius: 8,
   flexDirection: 'column',
   gap: '$1',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+});
+
+const RightSlot = styled('div', {
+  width: 15,
+  height: 15,
+  marginLeft: 'auto',
 });
 
 const COLORS = {
@@ -128,8 +142,8 @@ const COLORS = {
 export const ContextMenuDemo = () => {
   const [color, setColor] = React.useState('mint');
   const [size, setSize] = React.useState(200);
-  const [isShowingName, setIsShowingName] = React.useState(false);
-  const [isShowingValue, setIsShowingValue] = React.useState(false);
+  const [isHidingName, setIsHidingName] = React.useState(true);
+  const [isHidingValue, setIsHidingValue] = React.useState(true);
 
   return (
     <Box>
@@ -137,8 +151,8 @@ export const ContextMenuDemo = () => {
       <ContextMenu>
         <ContextMenuTrigger>
           <Shape style={{ backgroundColor: COLORS[color].value, width: size, height: size }}>
-            {isShowingName && <Box>{COLORS[color].name}</Box>}
-            {isShowingValue && (
+            {!isHidingName && <Box>{COLORS[color].name}</Box>}
+            {!isHidingValue && (
               <Box css={{ fontSize: 15, fontVariantNumeric: 'tabular-nums' }}>
                 {COLORS[color].value}
               </Box>
@@ -153,19 +167,12 @@ export const ContextMenuDemo = () => {
                   <DotFilledIcon />
                 </ContextMenuItemIndicator>
                 {COLORS[colorName].name}
-                <Box
-                  css={{
-                    width: 15,
-                    height: 15,
-                    borderRadius: 2,
-                    marginLeft: 'auto',
-                    backgroundColor: COLORS[colorName].value,
-                  }}
-                />
+                <RightSlot css={{ borderRadius: 2, backgroundColor: COLORS[colorName].value }} />
               </ContextMenuRadioItem>
             ))}
           </ContextMenuRadioGroup>
           <ContextMenuSeparator />
+          <ContextMenuLabel>Size</ContextMenuLabel>
           <ContextMenuItem disabled={size >= 300} onSelect={() => setSize(size + 50)}>
             Make bigger
           </ContextMenuItem>
@@ -175,29 +182,23 @@ export const ContextMenuDemo = () => {
           <ContextMenuSeparator />
           <ContextMenu>
             <ContextMenuTriggerItem>
-              View
-              <Box
-                css={{
-                  width: 15,
-                  height: 15,
-                  marginLeft: 'auto',
-                }}
-              >
+              Details
+              <RightSlot>
                 <ChevronRightIcon />
-              </Box>
+              </RightSlot>
             </ContextMenuTriggerItem>
             <ContextMenuContent sideOffset={2} alignOffset={-5}>
-              <ContextMenuCheckboxItem checked={isShowingName} onCheckedChange={setIsShowingName}>
+              <ContextMenuCheckboxItem checked={isHidingName} onCheckedChange={setIsHidingName}>
                 <ContextMenuItemIndicator>
                   <CheckIcon />
                 </ContextMenuItemIndicator>
-                Show name
+                Hide name
               </ContextMenuCheckboxItem>
-              <ContextMenuCheckboxItem checked={isShowingValue} onCheckedChange={setIsShowingValue}>
+              <ContextMenuCheckboxItem checked={isHidingValue} onCheckedChange={setIsHidingValue}>
                 <ContextMenuItemIndicator>
                   <CheckIcon />
                 </ContextMenuItemIndicator>
-                Show value
+                Hide value
               </ContextMenuCheckboxItem>
             </ContextMenuContent>
           </ContextMenu>
