@@ -143,8 +143,8 @@ const COLORS = {
 export const ContextMenuDemo = () => {
   const [color, setColor] = React.useState('mint');
   const [size, setSize] = React.useState(200);
-  const [isHidingName, setIsHidingName] = React.useState(false);
-  const [isHidingValue, setIsHidingValue] = React.useState(true);
+  const [isShowingName, setIsShowingName] = React.useState(true);
+  const [isShowingValue, setIsShowingValue] = React.useState(false);
 
   return (
     <Box>
@@ -152,8 +152,8 @@ export const ContextMenuDemo = () => {
       <ContextMenu>
         <ContextMenuTrigger>
           <Shape style={{ backgroundColor: COLORS[color].value, width: size, height: 100 }}>
-            {!isHidingName && <Box>{COLORS[color].name}</Box>}
-            {!isHidingValue && (
+            {isShowingName && <Box>{COLORS[color].name}</Box>}
+            {isShowingValue && (
               <Box css={{ fontSize: 15, fontVariantNumeric: 'tabular-nums' }}>
                 {COLORS[color].value}
               </Box>
@@ -189,17 +189,17 @@ export const ContextMenuDemo = () => {
               </RightSlot>
             </ContextMenuTriggerItem>
             <ContextMenuContent sideOffset={2} alignOffset={-5}>
-              <ContextMenuCheckboxItem checked={isHidingName} onCheckedChange={setIsHidingName}>
+              <ContextMenuCheckboxItem checked={isShowingName} onCheckedChange={setIsShowingName}>
                 <ContextMenuItemIndicator>
                   <CheckIcon />
                 </ContextMenuItemIndicator>
-                Hide name
+                Show name
               </ContextMenuCheckboxItem>
-              <ContextMenuCheckboxItem checked={isHidingValue} onCheckedChange={setIsHidingValue}>
+              <ContextMenuCheckboxItem checked={isShowingValue} onCheckedChange={setIsShowingValue}>
                 <ContextMenuItemIndicator>
                   <CheckIcon />
                 </ContextMenuItemIndicator>
-                Hide value
+                Show value
               </ContextMenuCheckboxItem>
             </ContextMenuContent>
           </ContextMenu>
