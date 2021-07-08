@@ -72,13 +72,13 @@ const AlertDialogCancel = AlertDialogPrimitive.Cancel;
 // Your app...
 const Button = styled('button', {
   all: 'unset',
-  borderRadius: 4,
-  padding: '0 20px',
-  height: 45,
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
+  borderRadius: 4,
+  padding: '0 20px',
   fontSize: 15,
+  lineHeight: 1,
 
   variants: {
     variant: {
@@ -104,16 +104,23 @@ const Button = styled('button', {
         '&:focus': { boxShadow: `0 0 0 2px ${mauve.mauve7}` },
       },
     },
+    size: {
+      medium: { height: 35 },
+      large: { height: 45 },
+    },
   },
 
   defaultVariants: {
+    size: 'medium',
     variant: 'violet',
   },
 });
 
 const AlertDialogDemo = () => (
   <AlertDialog>
-    <AlertDialogTrigger as={Button}>Delete account</AlertDialogTrigger>
+    <AlertDialogTrigger as={Button} size="large">
+      Delete account
+    </AlertDialogTrigger>
     <AlertDialogContent className={`${theme}`}>
       <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
       <AlertDialogDescription>

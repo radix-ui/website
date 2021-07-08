@@ -1,8 +1,9 @@
 import React from 'react';
-import { Box, Button, IconButton } from '@modulz/design-system';
+import { Box, Button, IconButton, Tooltip } from '@modulz/design-system';
 import copy from 'copy-to-clipboard';
 import { getParameters } from 'codesandbox/lib/api/define';
 import { ClipboardIcon, CodeSandboxLogoIcon, CheckIcon } from '@radix-ui/react-icons';
+import * as Collapsible from '@radix-ui/react-collapsible';
 import { Pre } from './Pre';
 import { FrontmatterContext } from './MDXComponents';
 
@@ -80,135 +81,118 @@ ReactDOM.render(<App />, document.getElementById('root'));`,
   });
 
   return (
-    <Box>
-      {isCollapsible && (
-        <Box
-          css={{
-            textAlign: 'right',
-            padding: '$2',
-            position: 'relative',
-            marginTop: '-$7',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'flex-end',
-            gap: '$1',
-
-            ...(isCollapsed
-              ? { borderRadius: '$3' }
-              : {
-                  borderTopLeftRadius: '$3',
-                  borderTopRightRadius: '$3',
-                }),
-
-            ...(isCollapsible
-              ? {
-                  borderTopLeftRadius: 0,
-                  borderTopRightRadius: 0,
-                }
-              : {}),
-
-            ...(isHero
-              ? {
-                  '@bp3': { mx: '-$7' },
-                  '@bp4': { mx: '-$8' },
-                }
-              : {}),
-          }}
-        >
-          <Button ghost onClick={() => setIsCollapsed(!isCollapsed)} css={{ color: '$whiteA12' }}>
-            {isCollapsed ? 'Show' : 'Hide'} code
-          </Button>
+    <Box
+      css={{
+        position: 'relative',
+        ...(isHero
+          ? {
+              '@bp3': { mx: '-$7' },
+              '@bp4': { mx: '-$8' },
+            }
+          : {}),
+      }}
+    >
+      <Collapsible.Root open={!isCollapsed} onOpenChange={(isOpen) => setIsCollapsed(!isOpen)}>
+        {isCollapsible && (
           <Box
-            as="form"
             css={{
-              display: 'none',
-              color: '$whiteA12',
-              verticalAlign: 'middle',
-              '@bp2': {
-                display: 'inline-block',
-              },
+              position: 'absolute',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'flex-end',
+              gap: '$1',
+              top: '-$6',
+              right: '$2',
             }}
-            action="https://codesandbox.io/api/v1/sandboxes/define"
-            method="POST"
-            target="_blank"
           >
-            <input type="hidden" name="query" value="module=App.js" />
-            <input type="hidden" name="parameters" value={parameters} />
-            <IconButton type="submit" css={{ color: '$whiteA12' }}>
-              <CodeSandboxLogoIcon />
+            <Collapsible.Trigger as={Button} ghost css={{ color: '$whiteA12' }}>
+              {isCollapsed ? 'Show' : 'Hide'} code
+            </Collapsible.Trigger>
+
+            {isHero && (
+              <Box
+                as="form"
+                css={{
+                  display: 'none',
+                  color: '$whiteA12',
+                  verticalAlign: 'middle',
+                  '@bp2': { display: 'inline-block' },
+                }}
+                action="https://codesandbox.io/api/v1/sandboxes/define"
+                method="POST"
+                target="_blank"
+              >
+                <input type="hidden" name="query" value="module=App.js" />
+                <input type="hidden" name="parameters" value={parameters} />
+                <Tooltip content="Open demo in CodeSandbox">
+                  <IconButton type="submit" css={{ color: '$whiteA12' }}>
+                    <CodeSandboxLogoIcon />
+                  </IconButton>
+                </Tooltip>
+              </Box>
+            )}
+          </Box>
+        )}
+
+        <Collapsible.Content>
+          <Box
+            css={{
+              position: 'relative',
+              ...(isCollapsible ? { top: '$2' } : { my: '$5' }),
+            }}
+          >
+            <Box
+              css={{
+                overflow: 'auto',
+                borderRadius: '$3',
+                // hacks
+                backgroundColor: '$violet2',
+                py: '$4',
+                '& > pre': {
+                  backgroundColor: 'transparent',
+                  overflow: 'visible',
+                  py: 0,
+                },
+                // end hacks
+              }}
+            >
+              <Pre
+                ref={preRef}
+                data-invert-line-highlight={isHighlightingLines}
+                data-line-numbers={showLineNumbers}
+                variant={variant}
+                className={className}
+                id={id}
+                css={{
+                  float: 'left',
+                  minWidth: '100%',
+                  $$outline: 'none',
+                  borderRadius: 0,
+                  ...(isHero || isScrollable ? { maxHeight: 400 } : {}),
+                }}
+              >
+                <div>
+                  <code className={className} children={children} />
+                </div>
+              </Pre>
+            </Box>
+            <IconButton
+              css={{
+                position: 'absolute',
+                top: '$2',
+                right: '$2',
+                display: 'inline-flex',
+                opacity: 0,
+
+                '*:hover > &, &:focus': { opacity: 1, transition: '150ms linear' },
+              }}
+              onClick={() => setHasCopied(true)}
+            >
+              {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
             </IconButton>
           </Box>
-        </Box>
-      )}
-
-      <Box
-        css={{
-          position: 'relative',
-          ...(isHero
-            ? {
-                mt: '$2',
-                '@bp3': { mx: '-$7' },
-                '@bp4': { mx: '-$8' },
-              }
-            : { my: '$5' }),
-          ...(isCollapsed ? { display: 'none' } : {}),
-        }}
-      >
-        <IconButton
-          css={{
-            display: 'none',
-            '@bp2': {
-              position: 'absolute',
-              zIndex: 3,
-              opacity: 0,
-              top: '$2',
-              right: '$2',
-              display: 'inline-flex',
-
-              '*:hover > &': { opacity: 1, transition: '150ms linear' },
-            },
-          }}
-          onClick={() => setHasCopied(true)}
-        >
-          {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
-        </IconButton>
-        <Box
-          css={{
-            overflow: 'auto',
-            borderRadius: '$3',
-            position: 'relative',
-            // hacks
-            backgroundColor: '$violet2',
-            py: '$4',
-            '& > pre': {
-              backgroundColor: 'transparent',
-              overflow: 'visible',
-              py: 0,
-            },
-            // end hacks
-          }}
-        >
-          <Pre
-            ref={preRef}
-            data-invert-line-highlight={isHighlightingLines}
-            data-line-numbers={showLineNumbers}
-            variant={variant}
-            className={className}
-            id={id}
-            css={{
-              float: 'left',
-              minWidth: '100%',
-              $$outline: 'none',
-              borderRadius: 0,
-              ...(isHero || isScrollable ? { maxHeight: 400 } : {}),
-            }}
-          >
-            <div>
-              <code className={className} children={children} />
-            </div>
-          </Pre>
-        </Box>
-      </Box>
+        </Collapsible.Content>
+      </Collapsible.Root>
     </Box>
   );
 }
