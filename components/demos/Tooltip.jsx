@@ -10,12 +10,12 @@ const scaleIn = keyframes({
 });
 
 const StyledContent = styled(TooltipPrimitive.Content, {
-  borderRadius: '4px',
+  borderRadius: 4,
   padding: '10px 15px',
-  fontSize: '15px',
-  lineHeight: '1',
-  color: 'white',
-  backgroundColor: violetA.violetA12,
+  fontSize: 15,
+  lineHeight: 1,
+  color: violet.violet11,
+  backgroundColor: 'white',
   boxShadow:
     '0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2)',
   transformOrigin: 'var(--radix-tooltip-content-transform-origin)',
@@ -23,7 +23,7 @@ const StyledContent = styled(TooltipPrimitive.Content, {
 });
 
 const StyledArrow = styled(TooltipPrimitive.Arrow, {
-  fill: violetA.violetA12,
+  fill: 'white',
 });
 
 // Exports
