@@ -21,8 +21,10 @@ const StyledAccordion = styled(AccordionPrimitive.Root, {
 
 const StyledItem = styled(AccordionPrimitive.Item, {
   overflow: 'hidden',
+  borderTop: `1px solid ${violet.violet11}`,
 
   '&:first-child': {
+    borderTop: 'none',
     borderTopLeftRadius: 4,
     borderTopRightRadius: 4,
   },
@@ -40,49 +42,36 @@ const StyledItem = styled(AccordionPrimitive.Item, {
 });
 
 const StyledHeader = styled(AccordionPrimitive.Header, {
-  margin: 0,
+  all: 'unset',
   display: 'flex',
 });
 
 const StyledTrigger = styled(AccordionPrimitive.Trigger, {
+  all: 'unset',
   fontFamily: 'inherit',
   backgroundColor: 'transparent',
-  border: 'none',
-  padding: '10px 15px',
+  padding: '0 20px',
+  height: 45,
   flex: 1,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  fontSize: '15px',
-  color: mauve.mauve11,
+  fontSize: 15,
+  lineHeight: 1,
+  color: violet.violet1,
 
-  '&[data-state="closed"]': {
-    backgroundColor: violetA.violetA9,
-    color: violet.violet1,
-  },
+  '&[data-state="closed"]': { backgroundColor: violetA.violetA9 },
+  '&[data-state="open"]': { backgroundColor: violetA.violetA10 },
 
-  '&[data-state="open"]': {
-    backgroundColor: violetA.violetA11,
-    color: violet.violet1,
-  },
-
-  '&:hover': {
-    backgroundColor: violetA.violetA10,
-
-    '&[data-state="open"]': {
-      // backgroundColor: violetA.violetA12,
-    },
-  },
-
-  '&:focus': { outline: 'none' },
+  '&:hover': { backgroundColor: violetA.violetA10 },
+  '&:active': { backgroundColor: violetA.violetA11 },
 });
 
 const StyledContent = styled(AccordionPrimitive.Content, {
   overflow: 'hidden',
   fontSize: 15,
-  // lineHeight: '19px',
   color: violet.violet5,
-  backgroundColor: violetA.violetA11,
+  backgroundColor: violetA.violetA10,
 
   '&[data-state="open"]': {
     animation: `${slideDown} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
@@ -93,7 +82,8 @@ const StyledContent = styled(AccordionPrimitive.Content, {
 });
 
 const StyledContentText = styled('div', {
-  padding: '10px 15px 20px',
+  padding: '0 20px 20px',
+  color: violet.violet5,
 });
 
 const StyledChevron = styled(ChevronDownIcon, {
@@ -130,7 +120,7 @@ export const AccordionDemo = () => (
     <AccordionItem value="item-2">
       <AccordionTrigger>Is it unstyled?</AccordionTrigger>
       <AccordionContent>
-        Yes. It's unstyled by default, giving you full freedom over the look and feel.
+        Yes. It's unstyled by default, giving you freedom over the look and feel.
       </AccordionContent>
     </AccordionItem>
 
