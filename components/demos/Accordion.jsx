@@ -1,38 +1,41 @@
 import React from 'react';
-import { styled, keyframes, Text, Link } from '@modulz/design-system';
-import * as AccordionPrimitive from '@radix-ui/react-accordion';
+import { styled, keyframes } from '@modulz/design-system';
+import { violet, violetA, mauve } from '@radix-ui/colors';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
-import { HeroContainer } from '@components/HeroContainer';
+import * as AccordionPrimitive from '@radix-ui/react-accordion';
 
-const open = keyframes({
+const slideDown = keyframes({
   from: { height: 0 },
   to: { height: 'var(--radix-accordion-content-height)' },
 });
 
-const close = keyframes({
+const slideUp = keyframes({
   from: { height: 'var(--radix-accordion-content-height)' },
   to: { height: 0 },
 });
 
 const StyledAccordion = styled(AccordionPrimitive.Root, {
-  backgroundColor: 'white',
-  borderRadius: '$3',
-  width: 320,
-  overflow: 'hidden',
+  borderRadius: 6,
+  width: 300,
 });
 
 const StyledItem = styled(AccordionPrimitive.Item, {
-  margin: '$2',
-  borderRadius: '$2',
   overflow: 'hidden',
 
+  '&:first-child': {
+    borderTopLeftRadius: 4,
+    borderTopRightRadius: 4,
+  },
+
+  '&:last-child': {
+    borderBottomLeftRadius: 4,
+    borderBottomRightRadius: 4,
+  },
+
   '&:focus-within': {
-    '&[data-state="open"]': {
-      boxShadow: `0 0 0 2px $colors$violet7`,
-    },
-    '&[data-state="closed"]': {
-      boxShadow: `0 0 0 2px $colors$mauve7`,
-    },
+    position: 'relative',
+    zIndex: 1,
+    boxShadow: `0 0 0 2px ${violet.violet7}`,
   },
 });
 
@@ -42,70 +45,66 @@ const StyledHeader = styled(AccordionPrimitive.Header, {
 });
 
 const StyledTrigger = styled(AccordionPrimitive.Trigger, {
+  fontFamily: 'inherit',
   backgroundColor: 'transparent',
   border: 'none',
-  padding: '$2 $3',
+  padding: '10px 15px',
   flex: 1,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  fontSize: '$3',
-  fontFamily: '$untitled',
-  color: '$mauve11',
+  fontSize: '15px',
+  color: mauve.mauve11,
 
   '&[data-state="closed"]': {
-    backgroundColor: '$mauve3',
+    backgroundColor: violetA.violetA9,
+    color: violet.violet1,
   },
 
   '&[data-state="open"]': {
-    backgroundColor: '$violet4',
-    color: '$violet11',
+    backgroundColor: violetA.violetA11,
+    color: violet.violet1,
   },
 
   '&:hover': {
-    backgroundColor: '$mauve4',
+    backgroundColor: violetA.violetA10,
+
     '&[data-state="open"]': {
-      backgroundColor: '$violet4',
+      // backgroundColor: violetA.violetA12,
     },
   },
 
-  '&:focus': {
-    outline: 'none',
-  },
+  '&:focus': { outline: 'none' },
 });
 
 const StyledContent = styled(AccordionPrimitive.Content, {
   overflow: 'hidden',
-  lineHeight: '19px',
-  color: '$mauve11',
-  backgroundColor: '$violet2',
+  fontSize: 15,
+  // lineHeight: '19px',
+  color: violet.violet5,
+  backgroundColor: violetA.violetA11,
 
   '&[data-state="open"]': {
-    animation: `${open} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
+    animation: `${slideDown} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
   },
   '&[data-state="closed"]': {
-    animation: `${close} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
+    animation: `${slideUp} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
   },
 });
 
-const StyledContentText = styled(Text, {
-  padding: '$2 $3',
+const StyledContentText = styled('div', {
+  padding: '10px 15px 20px',
 });
 
 const StyledChevron = styled(ChevronDownIcon, {
   transition: 'transform 300ms cubic-bezier(0.87, 0, 0.13, 1)',
-  color: '$mauve10',
-
-  '[data-state=open] &': {
-    transform: 'rotate(180deg)',
-    color: '$violet10',
-  },
+  color: violet.violet1,
+  '[data-state=open] &': { transform: 'rotate(180deg)' },
 });
 
 // Exports
 export const Accordion = StyledAccordion;
 export const AccordionItem = StyledItem;
-
 export const AccordionTrigger = React.forwardRef(({ children, ...props }, forwardedRef) => (
   <StyledHeader>
     <StyledTrigger {...props} ref={forwardedRef}>
@@ -114,46 +113,34 @@ export const AccordionTrigger = React.forwardRef(({ children, ...props }, forwar
     </StyledTrigger>
   </StyledHeader>
 ));
-
 export const AccordionContent = React.forwardRef(({ children, ...props }, forwardedRef) => (
   <StyledContent {...props} ref={forwardedRef}>
-    <StyledContentText size="3" css={{ color: 'inherit', lineHeight: 'inherit' }}>
-      {children}
-    </StyledContentText>
+    <StyledContentText>{children}</StyledContentText>
   </StyledContent>
 ));
 
-const AccordionDemo = () => {
-  return (
-    <HeroContainer>
-      <Accordion type="single" defaultValue="item-1">
-        <AccordionItem value="item-1">
-          <AccordionTrigger>Is it accessible?</AccordionTrigger>
-          <AccordionContent>
-            Yes. It adheres to the{' '}
-            <Link variant="blue" href="https://www.w3.org/TR/wai-aria-practices-1.2/#accordion">
-              WAI-ARAI
-            </Link>{' '}
-            design pattern.
-          </AccordionContent>
-        </AccordionItem>
+// Your app...
+export const AccordionDemo = () => (
+  <Accordion type="single" defaultValue="item-1" collapsible>
+    <AccordionItem value="item-1">
+      <AccordionTrigger>Is it accessible?</AccordionTrigger>
+      <AccordionContent>Yes. It adheres to the WAI-ARAI design pattern.</AccordionContent>
+    </AccordionItem>
 
-        <AccordionItem value="item-2">
-          <AccordionTrigger>Is it unstyled?</AccordionTrigger>
-          <AccordionContent>
-            Yes. It's unstyled by default, giving you full freedom over the look and feel.
-          </AccordionContent>
-        </AccordionItem>
+    <AccordionItem value="item-2">
+      <AccordionTrigger>Is it unstyled?</AccordionTrigger>
+      <AccordionContent>
+        Yes. It's unstyled by default, giving you full freedom over the look and feel.
+      </AccordionContent>
+    </AccordionItem>
 
-        <AccordionItem value="item-3">
-          <AccordionTrigger>Can it be animated?</AccordionTrigger>
-          <AccordionContent>
-            Yes! You can animate the Accordion with CSS or JavaScript.
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-    </HeroContainer>
-  );
-};
+    <AccordionItem value="item-3">
+      <AccordionTrigger>Can it be animated?</AccordionTrigger>
+      <AccordionContent>
+        Yes! You can animate the Accordion with CSS or JavaScript.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+);
 
 export default AccordionDemo;
