@@ -229,6 +229,16 @@ export function ColorTestSaturationDark() {
         <Box css={{ height: 35, backgroundColor: '$green12' }}></Box>
 
         <Box>
+          <Text css={{ fontSize: '$2' }}>Grass</Text>
+        </Box>
+        <Box css={{ height: 35, backgroundColor: '$grass7' }}></Box>
+        <Box css={{ height: 35, backgroundColor: '$grass8' }}></Box>
+        <Box css={{ height: 35, backgroundColor: '$grass9' }}></Box>
+        <Box css={{ height: 35, backgroundColor: '$grass10' }}></Box>
+        <Box css={{ height: 35, backgroundColor: '$grass11' }}></Box>
+        <Box css={{ height: 35, backgroundColor: '$grass12' }}></Box>
+
+        <Box>
           <Text css={{ fontSize: '$2' }}>Orange</Text>
         </Box>
         <Box css={{ height: 35, backgroundColor: '$orange7' }}></Box>
