@@ -1,25 +1,33 @@
 import React from 'react';
-import { styled } from '@modulz/design-system';
-import { violet, violetA, mauve } from '@radix-ui/colors';
+import { styled, keyframes } from '@modulz/design-system';
+import { violet, violetA } from '@radix-ui/colors';
 import { RowSpacingIcon, Cross2Icon } from '@radix-ui/react-icons';
 import * as CollapsiblePrimitive from '@radix-ui/react-collapsible';
+
+const fadeIn = keyframes({
+  from: { opacity: 0 },
+  to: { opacity: 1 },
+});
 
 const StyledCollapsible = styled(CollapsiblePrimitive.Root, {
   width: 300,
 });
 
+const StyledContent = styled(CollapsiblePrimitive.Content, {
+  '&[data-state=open]': { animation: `${fadeIn} 200ms ease-out` },
+});
+
 // Exports
 export const Collapsible = StyledCollapsible;
 export const CollapsibleTrigger = CollapsiblePrimitive.Trigger;
-export const CollapsibleContent = CollapsiblePrimitive.Content;
+export const CollapsibleContent = StyledContent;
 
 // Your app...
-const Box = styled('div', {});
 const Flex = styled('div', { display: 'flex' });
 const Text = styled('span', {
   color: violet.violet1,
   fontSize: 15,
-  lineHeight: 1,
+  lineHeight: '25px',
 });
 
 const IconButton = styled('button', {
@@ -42,7 +50,7 @@ const IconButton = styled('button', {
 });
 
 const Repository = styled('div', {
-  backgroundColor: violetA.violetA8,
+  backgroundColor: violetA.violetA7,
   borderRadius: 4,
   margin: '10px 0',
   padding: 10,
@@ -52,7 +60,7 @@ export const CollapsibleDemo = () => {
   const [open, setOpen] = React.useState(false);
   return (
     <Collapsible open={open} onOpenChange={setOpen}>
-      <Flex css={{ justifyContent: 'space-between' }}>
+      <Flex css={{ alignItems: 'center', justifyContent: 'space-between' }}>
         <Text>@peduarte starred 3 repositories</Text>
         <CollapsibleTrigger as={IconButton}>
           {open ? <Cross2Icon /> : <RowSpacingIcon />}

@@ -150,25 +150,31 @@ The component that contains the collapsible content.
 
 We expose a CSS custom property `--radix-collapsible-content-height`.<br />Use it to animate the height of the content when it opens/closes.
 
-```jsx
-const slideDown = keyframes({
+```jsx line=4-7,9-12,14-17,22
+import { styled, keyframes } from '@stitches/react';
+import * as Collapsible from '@radix-ui/react-collapsible';
+
+const open = keyframes({
   from: { height: 0 },
   to: { height: 'var(--radix-collapsible-content-height)' },
 });
 
-const slideUp = keyframes({
+const close = keyframes({
   from: { height: 'var(--radix-collapsible-content-height)' },
   to: { height: 0 },
 });
 
-const StyledContent = styled(Collapsible.Content, {
-  '&[data-state="open"]': {
-    animation: `${slideDown} 300ms ease-out`,
-  },
-  '&[data-state="closed"]': {
-    animation: `${slideUp} 300ms ease-out`,
-  },
+const CollapsibleContent = styled(Collapsible.Content, {
+  '&[data-state="open"]': { animation: `${open} 300ms ease-out` },
+  '&[data-state="closed"]': { animation: `${close} 300ms ease-out` },
 });
+
+export default () => (
+  <Collapsible.Root>
+    <Collapsible.Trigger>…</Collapsible.Trigger>
+    <CollapsibleContent>…</CollapsibleContent>
+  </Collapsible.Root>
+);
 ```
 
 ## Accessibility
