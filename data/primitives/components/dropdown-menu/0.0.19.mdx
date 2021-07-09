@@ -8,8 +8,8 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#menubutton
 # Dropdown Menu
 
 <Description>
-  Displays a menu to the user—such as a set of actions or
-  functions—triggered by a button.
+  Displays a menu to the user—such as a set of actions or functions—triggered by
+  a button.
 </Description>
 
 <Highlights
@@ -108,12 +108,8 @@ export default () => (
     <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
     <StyledContent>
       <StyledItem onSelect={() => console.log('cut')}>Cut</StyledItem>
-      <StyledItem onSelect={() => console.log('copy')}>
-        Copy
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('paste')}>
-        Paste
-      </StyledItem>
+      <StyledItem onSelect={() => console.log('copy')}>Copy</StyledItem>
+      <StyledItem onSelect={() => console.log('paste')}>Paste</StyledItem>
       <StyledArrow />
     </StyledContent>
   </DropdownMenu.Root>
@@ -139,9 +135,8 @@ Contains all the parts of a dropdown menu.
       type: 'boolean',
       description: (
         <span>
-          The open state of the dropdown menu when it is initially
-          rendered. Use when you do not need to control its open
-          state.
+          The open state of the dropdown menu when it is initially rendered. Use
+          when you do not need to control its open state.
         </span>
       ),
     },
@@ -150,8 +145,8 @@ Contains all the parts of a dropdown menu.
       type: 'boolean',
       description: (
         <span>
-          The controlled open state of the dropdown menu. Must be used
-          in conjunction with <Code>onOpenChange</Code>.
+          The controlled open state of the dropdown menu. Must be used in
+          conjunction with <Code>onOpenChange</Code>.
         </span>
       ),
     },
@@ -161,8 +156,7 @@ Contains all the parts of a dropdown menu.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the open state of the dropdown
-          menu changes.
+          Event handler called when the open state of the dropdown menu changes.
         </span>
       ),
     },
@@ -171,10 +165,9 @@ Contains all the parts of a dropdown menu.
       type: 'string',
       description: (
         <span>
-          A unique identifier for the component. The <Code>id</Code>{' '}
-          is used to generate <Code>id</Code> attributes for nested
-          components. If no <Code>id</Code> prop is provided, a
-          generated id will be used.
+          A unique identifier for the component. The <Code>id</Code> is used to
+          generate <Code>id</Code> attributes for nested components. If no{' '}
+          <Code>id</Code> prop is provided, a generated id will be used.
         </span>
       ),
     },
@@ -221,8 +214,8 @@ The component that pops out when the dropdown menu is open.
       default: 'false',
       description: (
         <span>
-          When <Code>true</Code>, keyboard navigation will loop from
-          last item to first, and vice versa.
+          When <Code>true</Code>, keyboard navigation will loop from last item
+          to first, and vice versa.
         </span>
       ),
     },
@@ -232,9 +225,8 @@ The component that pops out when the dropdown menu is open.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when focus moves to the trigger after
-          closing. It can be prevented by calling{' '}
-          <Code>event.preventDefault</Code>.
+          Event handler called when focus moves to the trigger after closing. It
+          can be prevented by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -244,11 +236,10 @@ The component that pops out when the dropdown menu is open.
       default: 'true',
       description: (
         <span>
-          When <Code>true</Code>, hover/focus/click interactions will
-          be disabled on elements outside the bounds of the component.
-          Users will need to click twice on outside elements to
-          interact with them: Once to close the dropdown menu, and
-          again to activate the element.
+          When <Code>true</Code>, hover/focus/click interactions will be
+          disabled on elements outside the bounds of the component. Users will
+          need to click twice on outside elements to interact with them: Once to
+          close the dropdown menu, and again to activate the element.
         </span>
       ),
     },
@@ -258,8 +249,8 @@ The component that pops out when the dropdown menu is open.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the escape key is down. It can be
-          prevented by calling <Code>event.preventDefault</Code>
+          Event handler called when the escape key is down. It can be prevented
+          by calling <Code>event.preventDefault</Code>
         </span>
       ),
     },
@@ -269,22 +260,21 @@ The component that pops out when the dropdown menu is open.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when a pointer event occurs outside the
-          bounds of the component. It can be prevented by calling{' '}
+          Event handler called when a pointer event occurs outside the bounds of
+          the component. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
         </span>
       ),
     },
     {
       name: 'onInteractOutside',
-      type:
-        '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
+      type: '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when an interaction (pointer or focus
-          event) happens outside the bounds of the component. It can
-          be prevented by calling <Code>event.preventDefault</Code>.
+          Event handler called when an interaction (pointer or focus event)
+          happens outside the bounds of the component. It can be prevented by
+          calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -294,8 +284,8 @@ The component that pops out when the dropdown menu is open.
       default: 'true',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from scrolling
-          outside the bounds of the component.
+          When <Code>true</Code>, prevents the user from scrolling outside the
+          bounds of the component.
         </span>
       ),
     },
@@ -314,8 +304,8 @@ The component that pops out when the dropdown menu is open.
       type: 'boolean',
       description: (
         <span>
-          Used to force mounting when more control is needed. Useful
-          when controlling animation with React animation libraries.
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries.
         </span>
       ),
     },
@@ -326,9 +316,9 @@ The component that pops out when the dropdown menu is open.
       default: '"bottom"',
       description: (
         <span>
-          The preferred side of the trigger to render against when
-          open. Will be reversed when collisions occur and{' '}
-          <Code>avoidCollisions</Code> is enabled.
+          The preferred side of the trigger to render against when open. Will be
+          reversed when collisions occur and <Code>avoidCollisions</Code> is
+          enabled.
         </span>
       ),
     },
@@ -336,9 +326,7 @@ The component that pops out when the dropdown menu is open.
       name: 'sideOffset',
       type: 'number',
       default: '0',
-      description: (
-        <span>The distance in pixels from the trigger.</span>
-      ),
+      description: <span>The distance in pixels from the trigger.</span>,
     },
     {
       name: 'align',
@@ -370,8 +358,7 @@ The component that pops out when the dropdown menu is open.
       description: (
         <span>
           When <Code>true</Code>, overrides the <Code>side</Code> and
-          <Code>align</Code> preferences to prevent collisions with window
-          edges.
+          <Code>align</Code> preferences to prevent collisions with window edges.
         </span>
       ),
     },
@@ -381,8 +368,8 @@ The component that pops out when the dropdown menu is open.
       default: '0',
       description: (
         <span>
-          The distance in pixels from window edges where collision
-          detection should occur.
+          The distance in pixels from window edges where collision detection
+          should occur.
         </span>
       ),
     },
@@ -450,8 +437,8 @@ The component that contains the dropdown menu items.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the item.
+          When <Code>true</Code>, prevents the user from interacting with the
+          item.
         </span>
       ),
     },
@@ -461,11 +448,9 @@ The component that contains the dropdown menu items.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the user selects an item (via
-          mouse of keyboard). Calling{' '}
-          <Code>event.preventDefault</Code> in this handler will
-          prevent the dropdown menu from closing when selecting that
-          item.
+          Event handler called when the user selects an item (via mouse of
+          keyboard). Calling <Code>event.preventDefault</Code> in this handler
+          will prevent the dropdown menu from closing when selecting that item.
         </span>
       ),
     },
@@ -474,10 +459,9 @@ The component that contains the dropdown menu items.
       type: 'string',
       description: (
         <span>
-          Optional text used for typeahead purposes. By default the
-          typeahead behavior will use the <Code>.textContent</Code> of{' '}
-          the item. Use this when the content is complex, or you have
-          non-textual content inside.
+          Optional text used for typeahead purposes. By default the typeahead
+          behavior will use the <Code>.textContent</Code> of the item. Use this
+          when the content is complex, or you have non-textual content inside.
         </span>
       ),
     },
@@ -540,8 +524,8 @@ An item that can be controlled and rendered like a checkbox.
       type: 'boolean',
       description: (
         <span>
-          The controlled checked state of the item. Must be used in
-          conjunction with <Code>onCheckedChange</Code>.
+          The controlled checked state of the item. Must be used in conjunction
+          with <Code>onCheckedChange</Code>.
         </span>
       ),
     },
@@ -550,9 +534,7 @@ An item that can be controlled and rendered like a checkbox.
       type: '(checked: boolean) => void',
       typeSimple: 'function',
       description: (
-        <span>
-          Event handler called when the checked state changes.
-        </span>
+        <span>Event handler called when the checked state changes.</span>
       ),
     },
     {
@@ -560,8 +542,8 @@ An item that can be controlled and rendered like a checkbox.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the item.
+          When <Code>true</Code>, prevents the user from interacting with the
+          item.
         </span>
       ),
     },
@@ -571,11 +553,9 @@ An item that can be controlled and rendered like a checkbox.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the user selects an item (via
-          mouse of keyboard). Calling{' '}
-          <Code>event.preventDefault</Code> in this handler will
-          prevent the dropdown menu from closing when selecting that
-          item.
+          Event handler called when the user selects an item (via mouse of
+          keyboard). Calling <Code>event.preventDefault</Code> in this handler
+          will prevent the dropdown menu from closing when selecting that item.
         </span>
       ),
     },
@@ -584,10 +564,9 @@ An item that can be controlled and rendered like a checkbox.
       type: 'string',
       description: (
         <span>
-          Optional text used for typeahead purposes. By default the
-          typeahead behavior will use the <Code>.textContent</Code> of{' '}
-          the item. Use this when the content is complex, or you have
-          non-textual content inside.
+          Optional text used for typeahead purposes. By default the typeahead
+          behavior will use the <Code>.textContent</Code> of the item. Use this
+          when the content is complex, or you have non-textual content inside.
         </span>
       ),
     },
@@ -649,8 +628,8 @@ An item that can be controlled and rendered like a radio.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the item.
+          When <Code>true</Code>, prevents the user from interacting with the
+          item.
         </span>
       ),
     },
@@ -660,11 +639,9 @@ An item that can be controlled and rendered like a radio.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the user selects an item (via
-          mouse of keyboard). Calling{' '}
-          <Code>event.preventDefault</Code> in this handler will
-          prevent the dropdown menu from closing when selecting that
-          item.
+          Event handler called when the user selects an item (via mouse of
+          keyboard). Calling <Code>event.preventDefault</Code> in this handler
+          will prevent the dropdown menu from closing when selecting that item.
         </span>
       ),
     },
@@ -673,10 +650,9 @@ An item that can be controlled and rendered like a radio.
       type: 'string',
       description: (
         <span>
-          Optional text used for typeahead purposes. By default the
-          typeahead behavior will use the <Code>.textContent</Code> of{' '}
-          the item. Use this when the content is complex, or you have
-          non-textual content inside.
+          Optional text used for typeahead purposes. By default the typeahead
+          behavior will use the <Code>.textContent</Code> of the item. Use this
+          when the content is complex, or you have non-textual content inside.
         </span>
       ),
     },
@@ -703,8 +679,8 @@ Renders when the parent `DropdownMenu.CheckboxItem` or `DropdownMenu.RadioItem` 
       type: 'boolean',
       description: (
         <span>
-          Used to force mounting when more control is needed. Useful
-          when controlling animation with React animation libraries.
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries.
         </span>
       ),
     },
@@ -742,8 +718,7 @@ const scaleIn = keyframes({
 });
 
 const StyledContent = styled(DropdownMenu.Content, {
-  transformOrigin:
-    'var(--radix-dropdown-menu-content-transform-origin)',
+  transformOrigin: 'var(--radix-dropdown-menu-content-transform-origin)',
   animation: `${scaleIn} 0.5s ease-out`,
 });
 ```
@@ -817,12 +792,8 @@ export default () => (
       <StyledItem disabled onSelect={() => console.log('cut')}>
         Cut
       </StyledItem>
-      <StyledItem onSelect={() => console.log('copy')}>
-        Copy
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('paste')}>
-        Paste
-      </StyledItem>
+      <StyledItem onSelect={() => console.log('copy')}>Copy</StyledItem>
+      <StyledItem onSelect={() => console.log('paste')}>Paste</StyledItem>
       <StyledArrow />
     </StyledContent>
   </DropdownMenu.Root>
@@ -876,13 +847,9 @@ export default () => (
         Cut
       </StyledItem>
       <StyledSeparator />
-      <StyledItem onSelect={() => console.log('copy')}>
-        Copy
-      </StyledItem>
+      <StyledItem onSelect={() => console.log('copy')}>Copy</StyledItem>
       <StyledSeparator />
-      <StyledItem onSelect={() => console.log('paste')}>
-        Paste
-      </StyledItem>
+      <StyledItem onSelect={() => console.log('paste')}>Paste</StyledItem>
     </StyledContent>
   </DropdownMenu.Root>
 );
@@ -942,12 +909,8 @@ export default () => (
       <StyledItem disabled onSelect={() => console.log('cut')}>
         Cut
       </StyledItem>
-      <StyledItem onSelect={() => console.log('copy')}>
-        Copy
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('paste')}>
-        Paste
-      </StyledItem>
+      <StyledItem onSelect={() => console.log('copy')}>Copy</StyledItem>
+      <StyledItem onSelect={() => console.log('paste')}>Paste</StyledItem>
       <StyledArrow />
     </StyledContent>
   </DropdownMenu.Root>
@@ -987,10 +950,7 @@ const itemStyles = {
 
 const StyledItem = styled(DropdownMenu.Item, itemStyles);
 
-const StyledCheckboxItem = styled(
-  DropdownMenu.CheckboxItem,
-  itemStyles
-);
+const StyledCheckboxItem = styled(DropdownMenu.CheckboxItem, itemStyles);
 
 const StyledItemIndicator = styled(DropdownMenu.ItemIndicator, {
   position: 'absolute',
@@ -1021,10 +981,7 @@ export default () => {
           Check for updates
         </StyledItem>
         <StyledSeparator />
-        <StyledCheckboxItem
-          checked={checked}
-          onCheckedChange={setChecked}
-        >
+        <StyledCheckboxItem checked={checked} onCheckedChange={setChecked}>
           <StyledItemIndicator>
             <CheckIcon />
           </StyledItemIndicator>
@@ -1189,8 +1146,8 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-a
       keys: ['Space'],
       description: (
         <span>
-          When focus is on <Code>DropdownMenu.Trigger</Code>, opens
-          the dropdown menu.
+          When focus is on <Code>DropdownMenu.Trigger</Code>, opens the dropdown
+          menu.
           <br />
           When focus is on an item, activates the focused item.
         </span>
@@ -1200,8 +1157,8 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-a
       keys: ['Enter'],
       description: (
         <span>
-          When focus is on <Code>DropdownMenu.Trigger</Code>, opens
-          the dropdown menu.
+          When focus is on <Code>DropdownMenu.Trigger</Code>, opens the dropdown
+          menu.
           <br />
           When focus is on an item, activates the focused item.
         </span>
@@ -1211,8 +1168,8 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-a
       keys: ['ArrowDown'],
       description: (
         <span>
-          When focus is on <Code>DropdownMenu.Trigger</Code>, opens
-          the dropdown menu.
+          When focus is on <Code>DropdownMenu.Trigger</Code>, opens the dropdown
+          menu.
           <br />
           When focus is on an item, moves focus to the next item.
         </span>
@@ -1222,8 +1179,8 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-a
       keys: ['ArrowUp'],
       description: (
         <span>
-          When focus is on <Code>DropdownMenu.Trigger</Code>, opens
-          the dropdown menu.
+          When focus is on <Code>DropdownMenu.Trigger</Code>, opens the dropdown
+          menu.
           <br />
           When focus is on an item, moves focus to the previous item.
         </span>
@@ -1272,9 +1229,7 @@ export default () => (
       <DropdownMenuItem>Item</DropdownMenuItem>
       <DropdownMenuLabel>Label</DropdownMenuLabel>
       <DropdownMenuGroup>Group</DropdownMenuGroup>
-      <DropdownMenuCheckboxItem>
-        CheckboxItem
-      </DropdownMenuCheckboxItem>
+      <DropdownMenuCheckboxItem>CheckboxItem</DropdownMenuCheckboxItem>
       <DropdownMenuRadioGroup>RadioGroup</DropdownMenuRadioGroup>
       <DropdownMenuRadioItem>RadioItem</DropdownMenuRadioItem>
       <DropdownMenuSeparator>Separator</DropdownMenuSeparator>
@@ -1312,10 +1267,7 @@ export const DropdownMenuGroup = DropdownMenuPrimitive.Group;
 export const DropdownMenuCheckboxItem = React.forwardRef(
   ({ children, ...props }, forwardedRef) => {
     return (
-      <DropdownMenuPrimitive.CheckboxItem
-        {...props}
-        ref={forwardedRef}
-      >
+      <DropdownMenuPrimitive.CheckboxItem {...props} ref={forwardedRef}>
         {children}
         <DropdownMenuPrimitive.ItemIndicator>
           <CheckIcon />
@@ -1325,8 +1277,7 @@ export const DropdownMenuCheckboxItem = React.forwardRef(
   }
 );
 
-export const DropdownMenuRadioGroup =
-  DropdownMenuPrimitive.RadioGroup;
+export const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
 
 export const DropdownMenuRadioItem = React.forwardRef(
   ({ children, ...props }, forwardedRef) => {

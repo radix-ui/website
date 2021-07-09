@@ -8,8 +8,8 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#tooltip
 # Tooltip
 
 <Description>
-  A popup that displays information related to an element when the
-  element receives keyboard focus or the mouse hovers over it.
+  A popup that displays information related to an element when the element
+  receives keyboard focus or the mouse hovers over it.
 </Description>
 
 <Highlights
@@ -98,8 +98,8 @@ Contains all the parts of a tooltip.
       type: 'boolean',
       description: (
         <span>
-          The open state of the tooltip when it is initially rendered.
-          Use when you do not need to control its open state.
+          The open state of the tooltip when it is initially rendered. Use when
+          you do not need to control its open state.
         </span>
       ),
     },
@@ -108,8 +108,8 @@ Contains all the parts of a tooltip.
       type: 'boolean',
       description: (
         <span>
-          The controlled open state of the tooltip. Must be used in
-          conjunction with <Code>onOpenChange</Code>.
+          The controlled open state of the tooltip. Must be used in conjunction
+          with <Code>onOpenChange</Code>.
         </span>
       ),
     },
@@ -119,8 +119,7 @@ Contains all the parts of a tooltip.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the open state of the tooltip
-          changes.
+          Event handler called when the open state of the tooltip changes.
         </span>
       ),
     },
@@ -165,10 +164,10 @@ The component that pops out when the tooltip is open.
       type: 'string',
       description: (
         <span>
-          By default, screenreaders will announce the content inside
-          the component. If this is not descriptive enough, or you
-          have content that cannot be announced, use{' '}
-          <Code>aria-label</Code> as a more descriptive label.
+          By default, screenreaders will announce the content inside the
+          component. If this is not descriptive enough, or you have content that
+          cannot be announced, use <Code>aria-label</Code> as a more descriptive
+          label.
         </span>
       ),
     },
@@ -188,8 +187,8 @@ The component that pops out when the tooltip is open.
       typeSimple: 'ref',
       description: (
         <span>
-          An optional ref of an element to position against. By
-          default, it will use <Code>Tooltip.Trigger</Code>.
+          An optional ref of an element to position against. By default, it will
+          use <Code>Tooltip.Trigger</Code>.
         </span>
       ),
     },
@@ -200,9 +199,9 @@ The component that pops out when the tooltip is open.
       default: '"bottom"',
       description: (
         <span>
-          The preferred side of the anchor to render against when
-          open. Will be reversed when collisions occur and{' '}
-          <Code>avoidCollisions</Code> is enabled.
+          The preferred side of the anchor to render against when open. Will be
+          reversed when collisions occur and <Code>avoidCollisions</Code> is
+          enabled.
         </span>
       ),
     },
@@ -223,8 +222,8 @@ The component that pops out when the tooltip is open.
       default: '"center"',
       description: (
         <span>
-          The preferred alignment against the anchor. May change when
-          collisions occur.
+          The preferred alignment against the anchor. May change when collisions
+          occur.
         </span>
       ),
     },
@@ -246,8 +245,7 @@ The component that pops out when the tooltip is open.
       description: (
         <span>
           When <Code>true</Code>, overrides the <Code>side</Code> and
-          <Code>align</Code> preferences to prevent collisions with window
-          edges.
+          <Code>align</Code> preferences to prevent collisions with window edges.
         </span>
       ),
     },
@@ -257,8 +255,8 @@ The component that pops out when the tooltip is open.
       default: '0',
       description: (
         <span>
-          The distance in pixels from window edges where collision
-          detection should occur.
+          The distance in pixels from window edges where collision detection
+          should occur.
         </span>
       ),
     },
@@ -298,8 +296,8 @@ An optional arrow element to render alongside the tooltip. This can be used to h
       default: 0,
       description: (
         <span>
-          The distance in pixels to render from the{' '}
-          <Code>Tooltip.Content</Code> edge.
+          The distance in pixels to render from the <Code>Tooltip.Content</Code>{' '}
+          edge.
         </span>
       ),
     },
@@ -375,11 +373,7 @@ const StyledArrow = styled(Tooltip.Arrow, {
 export default () => (
   <Tooltip.Root>
     <Tooltip.Trigger as="span">
-      <button
-        type="button"
-        disabled
-        style={{ pointerEvents: 'none' }}
-      >
+      <button type="button" disabled style={{ pointerEvents: 'none' }}>
         <BlendingModeIcon />
       </button>
     </Tooltip.Trigger>

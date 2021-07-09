@@ -60,9 +60,7 @@ function Tooltip({
       defaultOpen={defaultOpen}
       onOpenChange={onOpenChange}
     >
-      <TooltipPrimitive.Trigger as={Slot}>
-        {children}
-      </TooltipPrimitive.Trigger>
+      <TooltipPrimitive.Trigger as={Slot}>{children}</TooltipPrimitive.Trigger>
       <TooltipPrimitive.Content side="top" align="center" {...props}>
         {content}
         <TooltipPrimitive.Arrow offset={5} width={11} height={5} />

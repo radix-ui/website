@@ -13,7 +13,7 @@
     {
       "files": "data/**/*.mdx",
       "options": {
-        "printWidth": 70
+        "printWidth": 80
       }
     }
   ]

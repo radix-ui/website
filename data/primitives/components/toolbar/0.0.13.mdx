@@ -8,8 +8,8 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#toolbar
 # Toolbar
 
 <Description>
-  A container for grouping a set of controls, such as buttons, toggle
-  groups or dropdown menus.
+  A container for grouping a set of controls, such as buttons, toggle groups or
+  dropdown menus.
 </Description>
 
 <Highlights features={['Full keyboard navigation.']} />
@@ -82,8 +82,8 @@ Contains all the toolbar component parts.
       default: 'true',
       description: (
         <span>
-          When <Code>true</Code>, keyboard navigation will loop from
-          last tab to first, and vice versa.
+          When <Code>true</Code>, keyboard navigation will loop from last tab to
+          first, and vice versa.
         </span>
       ),
     },
@@ -148,8 +148,8 @@ A set of two-state buttons that can be toggled on or off.
       typeSimple: 'enum',
       description: (
         <span>
-          Determines whether a single or multiple items can be pressed
-          at a time.
+          Determines whether a single or multiple items can be pressed at a
+          time.
         </span>
       ),
     },
@@ -159,9 +159,9 @@ A set of two-state buttons that can be toggled on or off.
       type: 'string',
       description: (
         <span>
-          The controlled value of the pressed item when{' '}
-          <Code>type</Code> is <Code>"single"</Code>. Must be used in
-          conjunction with <Code>onValueChange</Code>.
+          The controlled value of the pressed item when <Code>type</Code> is{' '}
+          <Code>"single"</Code>. Must be used in conjunction with{' '}
+          <Code>onValueChange</Code>.
         </span>
       ),
     },
@@ -171,9 +171,9 @@ A set of two-state buttons that can be toggled on or off.
       type: 'string',
       description: (
         <span>
-          The value of the item to show as pressed when initially
-          rendered and <Code>type</Code> is <Code>"single"</Code>. Use
-          when you do not need to control the state of the items.
+          The value of the item to show as pressed when initially rendered and{' '}
+          <Code>type</Code> is <Code>"single"</Code>. Use when you do not need
+          to control the state of the items.
         </span>
       ),
     },
@@ -184,8 +184,8 @@ A set of two-state buttons that can be toggled on or off.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the pressed state of an item
-          changes and <Code>type</Code> is <Code>"single"</Code>.
+          Event handler called when the pressed state of an item changes and{' '}
+          <Code>type</Code> is <Code>"single"</Code>.
         </span>
       ),
     },
@@ -196,9 +196,9 @@ A set of two-state buttons that can be toggled on or off.
       type: 'string[]',
       description: (
         <span>
-          The controlled value of the pressed items when{' '}
-          <Code>type</Code> is <Code>"multiple"</Code>. Must be used
-          in conjunction with <Code>onValueChange</Code>.
+          The controlled value of the pressed items when <Code>type</Code> is{' '}
+          <Code>"multiple"</Code>. Must be used in conjunction with{' '}
+          <Code>onValueChange</Code>.
         </span>
       ),
     },
@@ -209,9 +209,9 @@ A set of two-state buttons that can be toggled on or off.
       type: 'string[]',
       description: (
         <span>
-          The values of the items to show as pressed when initially
-          rendered and <Code>type</Code> is <Code>"multiple"</Code>.
-          Use when you do not need to control the state of the items.
+          The values of the items to show as pressed when initially rendered and{' '}
+          <Code>type</Code> is <Code>"multiple"</Code>. Use when you do not need
+          to control the state of the items.
         </span>
       ),
     },
@@ -222,8 +222,8 @@ A set of two-state buttons that can be toggled on or off.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the pressed state of an item
-          changes and <Code>type</Code> is <Code>"multiple"</Code>.
+          Event handler called when the pressed state of an item changes and{' '}
+          <Code>type</Code> is <Code>"multiple"</Code>.
         </span>
       ),
     },
@@ -234,8 +234,8 @@ A set of two-state buttons that can be toggled on or off.
       default: 'false',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the toggle group and all its items.
+          When <Code>true</Code>, prevents the user from interacting with the
+          toggle group and all its items.
         </span>
       ),
     },
@@ -268,8 +268,8 @@ An item in the group.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the item.
+          When <Code>true</Code>, prevents the user from interacting with the
+          item.
         </span>
       ),
     },
@@ -414,8 +414,7 @@ Uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/rad
       keys: ['ArrowDown'],
       description: (
         <span>
-          Moves focus to the next item depending on{' '}
-          <Code>orientation</Code>.
+          Moves focus to the next item depending on <Code>orientation</Code>.
         </span>
       ),
     },
@@ -423,8 +422,7 @@ Uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/rad
       keys: ['ArrowRight'],
       description: (
         <span>
-          Moves focus to the next item depending on{' '}
-          <Code>orientation</Code>.
+          Moves focus to the next item depending on <Code>orientation</Code>.
         </span>
       ),
     },
@@ -432,8 +430,8 @@ Uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/rad
       keys: ['ArrowUp'],
       description: (
         <span>
-          Moves focus to the previous item depending on{' '}
-          <Code>orientation</Code>.
+          Moves focus to the previous item depending on <Code>orientation</Code>
+          .
         </span>
       ),
     },
@@ -441,8 +439,8 @@ Uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/rad
       keys: ['ArrowLeft'],
       description: (
         <span>
-          Moves focus to the previous item depending on{' '}
-          <Code>orientation</Code>.
+          Moves focus to the previous item depending on <Code>orientation</Code>
+          .
         </span>
       ),
     },

@@ -6,9 +6,7 @@ name: label
 
 # Label
 
-<Description>
-  Renders an accessible label associated with controls.
-</Description>
+<Description>Renders an accessible label associated with controls.</Description>
 
 <Highlights
   features={[
@@ -82,17 +80,15 @@ Contains the content for the label.
       default: 'radix-label',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
     {
       name: 'htmlFor',
       type: 'string',
-      description:
-        'The id of the element the label is associated with.',
+      description: 'The id of the element the label is associated with.',
     },
   ]}
 />
@@ -142,11 +138,7 @@ const StyledLabel = styled(Label.Root, {
 const CustomCheckbox = () => {
   const id = useLabelContext();
   return (
-    <CustomCheckboxPart
-      aria-labelledby={id}
-      tabIndex={0}
-      role="checkbox"
-    />
+    <CustomCheckboxPart aria-labelledby={id} tabIndex={0} role="checkbox" />
   );
 };
 

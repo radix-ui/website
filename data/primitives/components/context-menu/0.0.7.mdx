@@ -110,12 +110,8 @@ export default () => (
     </ContextMenu.Trigger>
     <StyledContent>
       <StyledItem onSelect={() => console.log('cut')}>Cut</StyledItem>
-      <StyledItem onSelect={() => console.log('copy')}>
-        Copy
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('paste')}>
-        Paste
-      </StyledItem>
+      <StyledItem onSelect={() => console.log('copy')}>Copy</StyledItem>
+      <StyledItem onSelect={() => console.log('paste')}>Paste</StyledItem>
     </StyledContent>
   </ContextMenu.Root>
 );
@@ -157,9 +153,8 @@ The area that opens the context menu. Wrap it around the target you want the con
       default: 'radix-context-menu-trigger',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
@@ -188,9 +183,8 @@ The component that pops out in an open context menu.
       default: 'radix-context-menu-content',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
@@ -201,8 +195,8 @@ The component that pops out in an open context menu.
       default: 'false',
       description: (
         <span>
-          When <Code>true</Code>, keyboard navigation will loop from
-          last item to first, and vice versa.
+          When <Code>true</Code>, keyboard navigation will loop from last item
+          to first, and vice versa.
         </span>
       ),
     },
@@ -212,11 +206,10 @@ The component that pops out in an open context menu.
       default: 'true',
       description: (
         <span>
-          When <Code>true</Code>, hover/focus/click interactions will
-          be disabled on elements outside the bounds of the component.
-          Users will need to click twice on outside elements to
-          interact with them: Once to close the context menu, and
-          again to activate the element.
+          When <Code>true</Code>, hover/focus/click interactions will be
+          disabled on elements outside the bounds of the component. Users will
+          need to click twice on outside elements to interact with them: Once to
+          close the context menu, and again to activate the element.
         </span>
       ),
     },
@@ -226,8 +219,8 @@ The component that pops out in an open context menu.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the escape key is down. It can be
-          prevented by calling <Code>event.preventDefault</Code>.
+          Event handler called when the escape key is down. It can be prevented
+          by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -237,22 +230,21 @@ The component that pops out in an open context menu.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when a pointer event occurs outside the
-          bounds of the component. It can be prevented by calling{' '}
+          Event handler called when a pointer event occurs outside the bounds of
+          the component. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
         </span>
       ),
     },
     {
       name: 'onInteractOutside',
-      type:
-        '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
+      type: '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when an interaction (pointer or focus
-          event) happens outside the bounds of the component. It can
-          be prevented by calling <Code>event.preventDefault</Code>.
+          Event handler called when an interaction (pointer or focus event)
+          happens outside the bounds of the component. It can be prevented by
+          calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -269,9 +261,9 @@ The component that pops out in an open context menu.
       default: '"bottom"',
       description: (
         <span>
-          The preferred side of the anchor to render against when
-          open. Will be reversed when collisions occur and{' '}
-          <Code>avoidCollisions</Code> is enabled.
+          The preferred side of the anchor to render against when open. Will be
+          reversed when collisions occur and <Code>avoidCollisions</Code> is
+          enabled.
         </span>
       ),
     },
@@ -279,9 +271,7 @@ The component that pops out in an open context menu.
       name: 'sideOffset',
       type: 'number',
       default: '0',
-      description: (
-        <span>The distance in pixels from the anchor.</span>
-      ),
+      description: <span>The distance in pixels from the anchor.</span>,
     },
     {
       name: 'align',
@@ -290,8 +280,8 @@ The component that pops out in an open context menu.
       default: '"center"',
       description: (
         <span>
-          The preferred alignment against the anchor. May change when
-          collisions occur.
+          The preferred alignment against the anchor. May change when collisions
+          occur.
         </span>
       ),
     },
@@ -313,8 +303,7 @@ The component that pops out in an open context menu.
       description: (
         <span>
           When <Code>true</Code>, overrides the <Code>side</Code> and
-          <Code>align</Code> preferences to prevent collisions with window
-          edges.
+          <Code>align</Code> preferences to prevent collisions with window edges.
         </span>
       ),
     },
@@ -324,8 +313,8 @@ The component that pops out in an open context menu.
       default: '0',
       description: (
         <span>
-          The distance in pixels from window edges where collision
-          detection should occur.
+          The distance in pixels from window edges where collision detection
+          should occur.
         </span>
       ),
     },
@@ -354,9 +343,8 @@ The component that contains the context menu items.
       default: 'radix-context-menu-item',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
@@ -365,8 +353,8 @@ The component that contains the context menu items.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the item.
+          When <Code>true</Code>, prevents the user from interacting with the
+          item.
         </span>
       ),
     },
@@ -376,11 +364,9 @@ The component that contains the context menu items.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the user selects an item (via
-          mouse of keyboard). Calling{' '}
-          <Code>event.preventDefault</Code> in this handler will
-          prevent the context menu from closing when selecting that
-          item.
+          Event handler called when the user selects an item (via mouse of
+          keyboard). Calling <Code>event.preventDefault</Code> in this handler
+          will prevent the context menu from closing when selecting that item.
         </span>
       ),
     },
@@ -389,10 +375,9 @@ The component that contains the context menu items.
       type: 'string',
       description: (
         <span>
-          Optional text used for typeahead purposes. By default the
-          typeahead behavior will use the <Code>.textContent</Code> of{' '}
-          the item. Use this when the content is complex, or you have
-          non-textual content inside.
+          Optional text used for typeahead purposes. By default the typeahead
+          behavior will use the <Code>.textContent</Code> of the item. Use this
+          when the content is complex, or you have non-textual content inside.
         </span>
       ),
     },
@@ -421,9 +406,8 @@ Used to group multiple `ContextMenu.Item`s.
       default: 'radix-context-menu-group',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
@@ -452,9 +436,8 @@ Used to render a label. It won't be focusable using arrow keys.
       default: 'radix-context-menu-label',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
@@ -483,9 +466,8 @@ An item that can be controlled and rendered like a checkbox.
       default: 'radix-context-menu-checkbox-item',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
@@ -494,8 +476,8 @@ An item that can be controlled and rendered like a checkbox.
       type: 'boolean',
       description: (
         <span>
-          The controlled checked state of the item. Must be used in
-          conjunction with <Code>onCheckedChange</Code>.
+          The controlled checked state of the item. Must be used in conjunction
+          with <Code>onCheckedChange</Code>.
         </span>
       ),
     },
@@ -504,9 +486,7 @@ An item that can be controlled and rendered like a checkbox.
       type: '(checked: boolean) => void',
       typeSimple: 'function',
       description: (
-        <span>
-          Event handler called when the checked state changes.
-        </span>
+        <span>Event handler called when the checked state changes.</span>
       ),
     },
     {
@@ -514,8 +494,8 @@ An item that can be controlled and rendered like a checkbox.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the item.
+          When <Code>true</Code>, prevents the user from interacting with the
+          item.
         </span>
       ),
     },
@@ -525,11 +505,9 @@ An item that can be controlled and rendered like a checkbox.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the user selects an item (via
-          mouse of keyboard). Calling{' '}
-          <Code>event.preventDefault</Code> in this handler will
-          prevent the context menu from closing when selecting that
-          item.
+          Event handler called when the user selects an item (via mouse of
+          keyboard). Calling <Code>event.preventDefault</Code> in this handler
+          will prevent the context menu from closing when selecting that item.
         </span>
       ),
     },
@@ -538,10 +516,9 @@ An item that can be controlled and rendered like a checkbox.
       type: 'string',
       description: (
         <span>
-          Optional text used for typeahead purposes. By default the
-          typeahead behavior will use the <Code>.textContent</Code> of{' '}
-          the item. Use this when the content is complex, or you have
-          non-textual content inside.
+          Optional text used for typeahead purposes. By default the typeahead
+          behavior will use the <Code>.textContent</Code> of the item. Use this
+          when the content is complex, or you have non-textual content inside.
         </span>
       ),
     },
@@ -570,9 +547,8 @@ Used to group multiple `ContextMenu.RadioItem`s.
       default: 'radix-context-menu-radio-group',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
@@ -612,9 +588,8 @@ An item that can be controlled and rendered like a radio.
       default: 'radix-context-menu-radio-item',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
@@ -629,8 +604,8 @@ An item that can be controlled and rendered like a radio.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the item.
+          When <Code>true</Code>, prevents the user from interacting with the
+          item.
         </span>
       ),
     },
@@ -640,11 +615,9 @@ An item that can be controlled and rendered like a radio.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the user selects an item (via
-          mouse of keyboard). Calling{' '}
-          <Code>event.preventDefault</Code> in this handler will
-          prevent the context menu from closing when selecting that
-          item.
+          Event handler called when the user selects an item (via mouse of
+          keyboard). Calling <Code>event.preventDefault</Code> in this handler
+          will prevent the context menu from closing when selecting that item.
         </span>
       ),
     },
@@ -653,10 +626,9 @@ An item that can be controlled and rendered like a radio.
       type: 'string',
       description: (
         <span>
-          Optional text used for typeahead purposes. By default the
-          typeahead behavior will use the <Code>.textContent</Code> of{' '}
-          the item. Use this when the content is complex, or you have
-          non-textual content inside.
+          Optional text used for typeahead purposes. By default the typeahead
+          behavior will use the <Code>.textContent</Code> of the item. Use this
+          when the content is complex, or you have non-textual content inside.
         </span>
       ),
     },
@@ -685,9 +657,8 @@ Renders when the parent `ContextMenu.CheckboxItem` or `ContextMenu.RadioItem` is
       default: 'radix-context-menu-item-indicator',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
@@ -696,8 +667,8 @@ Renders when the parent `ContextMenu.CheckboxItem` or `ContextMenu.RadioItem` is
       type: 'boolean',
       description: (
         <span>
-          Used to force mounting when more control is needed. Useful
-          when controlling animation with React animation libraries.
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries.
         </span>
       ),
     },
@@ -726,9 +697,8 @@ Used to visually separate items in the context menu.
       default: 'radix-context-menu-separator',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
@@ -748,8 +718,7 @@ const scaleIn = keyframes({
 });
 
 const StyledContent = styled(ContextMenu.Content, {
-  transformOrigin:
-    'var(--radix-context-menu-content-transform-origin)',
+  transformOrigin: 'var(--radix-context-menu-content-transform-origin)',
   animation: `${scaleIn} 0.5s ease-out`,
 });
 ```
@@ -829,12 +798,8 @@ export default () => (
       <StyledItem disabled onSelect={() => console.log('cut')}>
         Cut
       </StyledItem>
-      <StyledItem onSelect={() => console.log('copy')}>
-        Copy
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('paste')}>
-        Paste
-      </StyledItem>
+      <StyledItem onSelect={() => console.log('copy')}>Copy</StyledItem>
+      <StyledItem onSelect={() => console.log('paste')}>Paste</StyledItem>
     </StyledContent>
   </ContextMenu.Root>
 );
@@ -889,20 +854,12 @@ export default () => (
       </div>
     </ContextMenu.Trigger>
     <StyledContent>
-      <StyledItem onSelect={() => console.log('undo')}>
-        Undo
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('redo')}>
-        Redo
-      </StyledItem>
+      <StyledItem onSelect={() => console.log('undo')}>Undo</StyledItem>
+      <StyledItem onSelect={() => console.log('redo')}>Redo</StyledItem>
       <StyledSeparator />
       <StyledItem onSelect={() => console.log('cut')}>Cut</StyledItem>
-      <StyledItem onSelect={() => console.log('copy')}>
-        Copy
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('paste')}>
-        Paste
-      </StyledItem>
+      <StyledItem onSelect={() => console.log('copy')}>Copy</StyledItem>
+      <StyledItem onSelect={() => console.log('paste')}>Paste</StyledItem>
     </StyledContent>
   </ContextMenu.Root>
 );
@@ -965,23 +922,13 @@ export default () => (
     </ContextMenu.Trigger>
     <StyledContent>
       <StyledLabel>Recently Closed</StyledLabel>
-      <StyledItem onSelect={() => console.log('modulz')}>
-        Modulz
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('radix-ui')}>
-        Radix-ui
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('stitches')}>
-        Stitches
-      </StyledItem>
+      <StyledItem onSelect={() => console.log('modulz')}>Modulz</StyledItem>
+      <StyledItem onSelect={() => console.log('radix-ui')}>Radix-ui</StyledItem>
+      <StyledItem onSelect={() => console.log('stitches')}>Stitches</StyledItem>
       <StyledSeparator />
       <StyledLabel>Recently Visited</StyledLabel>
-      <StyledItem onSelect={() => console.log('github')}>
-        GitHub
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('modulz')}>
-        Modulz
-      </StyledItem>
+      <StyledItem onSelect={() => console.log('github')}>GitHub</StyledItem>
+      <StyledItem onSelect={() => console.log('modulz')}>Modulz</StyledItem>
     </StyledContent>
   </ContextMenu.Root>
 );
@@ -1020,10 +967,7 @@ const itemStyles = {
 
 const StyledItem = styled(ContextMenu.Item, itemStyles);
 
-const StyledCheckboxItem = styled(
-  ContextMenu.CheckboxItem,
-  itemStyles
-);
+const StyledCheckboxItem = styled(ContextMenu.CheckboxItem, itemStyles);
 
 const StyledItemIndicator = styled(ContextMenu.ItemIndicator, {
   position: 'absolute',
@@ -1060,10 +1004,7 @@ export default () => {
           Check for updates
         </StyledItem>
         <StyledSeparator />
-        <StyledCheckboxItem
-          checked={checked}
-          onCheckedChange={setChecked}
-        >
+        <StyledCheckboxItem checked={checked} onCheckedChange={setChecked}>
           <StyledItemIndicator>
             <CheckIcon />
           </StyledItemIndicator>

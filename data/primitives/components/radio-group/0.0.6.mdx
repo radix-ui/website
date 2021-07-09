@@ -8,15 +8,12 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#radiobutton
 # Radio Group
 
 <Description>
-  A set of checkable buttons—known as radio buttons—where no more than
-  one of the buttons can be checked at a time.
+  A set of checkable buttons—known as radio buttons—where no more than one of
+  the buttons can be checked at a time.
 </Description>
 
 <Highlights
-  features={[
-    'Full keyboard navigation.',
-    'Can be controlled or uncontrolled.',
-  ]}
+  features={['Full keyboard navigation.', 'Can be controlled or uncontrolled.']}
 />
 
 ## Installation
@@ -125,9 +122,8 @@ Contains all the parts of a radio group.
       default: 'radix-radio-group',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
@@ -142,8 +138,8 @@ Contains all the parts of a radio group.
       type: 'string',
       description: (
         <span>
-          The controlled value of the radio item to check. Should be
-          used in conjunction with <Code>onValueChange</Code>.
+          The controlled value of the radio item to check. Should be used in
+          conjunction with <Code>onValueChange</Code>.
         </span>
       ),
     },
@@ -158,8 +154,8 @@ Contains all the parts of a radio group.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, indicates that the user must check a
-          radio item before the owning form can be submitted.
+          When <Code>true</Code>, indicates that the user must check a radio
+          item before the owning form can be submitted.
         </span>
       ),
     },
@@ -188,9 +184,8 @@ An item in the group that can be checked.
       default: 'radix-radio-group-item',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
@@ -205,8 +200,7 @@ An item in the group that can be checked.
       type: 'string',
       description: (
         <span>
-          The value given as data when submitted with a{' '}
-          <Code>name</Code>.
+          The value given as data when submitted with a <Code>name</Code>.
         </span>
       ),
     },
@@ -222,8 +216,8 @@ An item in the group that can be checked.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the radio item.
+          When <Code>true</Code>, prevents the user from interacting with the
+          radio item.
         </span>
       ),
     },
@@ -232,8 +226,8 @@ An item in the group that can be checked.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, indicates that the user must check
-          the radio item before the owning form can be submitted.
+          When <Code>true</Code>, indicates that the user must check the radio
+          item before the owning form can be submitted.
         </span>
       ),
     },
@@ -242,8 +236,8 @@ An item in the group that can be checked.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, makes the radio item not mutable,
-          meaning the user cannot check the checkbox.
+          When <Code>true</Code>, makes the radio item not mutable, meaning the
+          user cannot check the checkbox.
         </span>
       ),
     },
@@ -272,9 +266,8 @@ Renders when the radio item is in a checked state. You can style this element di
       default: 'radix-radio-group-indicator',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
@@ -302,13 +295,11 @@ Adheres to the [Radio Group WAI-ARIA design pattern](https://www.w3.org/TR/wai-a
     },
     {
       keys: ['Space'],
-      description:
-        'When focus is on an unchecked radio item, checks it.',
+      description: 'When focus is on an unchecked radio item, checks it.',
     },
     {
       keys: ['Enter'],
-      description:
-        'When focus is on an unchecked radio item, checks it.',
+      description: 'When focus is on an unchecked radio item, checks it.',
     },
     {
       keys: ['ArrowDown'],
@@ -320,13 +311,11 @@ Adheres to the [Radio Group WAI-ARIA design pattern](https://www.w3.org/TR/wai-a
     },
     {
       keys: ['ArrowUp'],
-      description:
-        'Moves focus to the previous radio item in the group.',
+      description: 'Moves focus to the previous radio item in the group.',
     },
     {
       keys: ['ArrowLeft'],
-      description:
-        'Moves focus to the previous radio item in the group.',
+      description: 'Moves focus to the previous radio item in the group.',
     },
   ]}
 />

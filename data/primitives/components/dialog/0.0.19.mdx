@@ -8,8 +8,8 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal
 # Dialog
 
 <Description>
-  A window overlaid on either the primary window or another dialog
-  window, rendering the content underneath inert.
+  A window overlaid on either the primary window or another dialog window,
+  rendering the content underneath inert.
 </Description>
 
 <Highlights
@@ -61,8 +61,8 @@ Contains all the parts of a dialog.
       type: 'boolean',
       description: (
         <span>
-          The open state of the dialog when it is initially rendered.
-          Use when you do not need to control its open state.
+          The open state of the dialog when it is initially rendered. Use when
+          you do not need to control its open state.
         </span>
       ),
     },
@@ -71,8 +71,8 @@ Contains all the parts of a dialog.
       type: 'boolean',
       description: (
         <span>
-          The controlled open state of the dialog. Must be used in
-          conjunction with <Code>onOpenChange</Code>.
+          The controlled open state of the dialog. Must be used in conjunction
+          with <Code>onOpenChange</Code>.
         </span>
       ),
     },
@@ -82,8 +82,7 @@ Contains all the parts of a dialog.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the open state of the dialog
-          changes.
+          Event handler called when the open state of the dialog changes.
         </span>
       ),
     },
@@ -92,10 +91,9 @@ Contains all the parts of a dialog.
       type: 'string',
       description: (
         <span>
-          A unique identifier for the component. The <Code>id</Code>{' '}
-          is used to generate <Code>id</Code> attributes for nested
-          components. If no <Code>id</Code> prop is provided, a
-          generated id will be used.
+          A unique identifier for the component. The <Code>id</Code> is used to
+          generate <Code>id</Code> attributes for nested components. If no{' '}
+          <Code>id</Code> prop is provided, a generated id will be used.
         </span>
       ),
     },
@@ -171,8 +169,8 @@ Contains content to be rendered in the open dialog.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when focus moves into the component
-          after opening. It can be prevented by calling{' '}
+          Event handler called when focus moves into the component after
+          opening. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
         </span>
       ),
@@ -183,9 +181,8 @@ Contains content to be rendered in the open dialog.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when focus moves to the trigger after
-          closing. It can be prevented by calling{' '}
-          <Code>event.preventDefault</Code>.
+          Event handler called when focus moves to the trigger after closing. It
+          can be prevented by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -195,8 +192,8 @@ Contains content to be rendered in the open dialog.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the escape key is down. It can be
-          prevented by calling <Code>event.preventDefault</Code>.
+          Event handler called when the escape key is down. It can be prevented
+          by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -206,8 +203,8 @@ Contains content to be rendered in the open dialog.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when a pointer event occurs outside the
-          bounds of the component. It can be prevented by calling{' '}
+          Event handler called when a pointer event occurs outside the bounds of
+          the component. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
         </span>
       ),
@@ -297,8 +294,7 @@ Adheres to the [Dialog WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-p
       keys: ['Esc'],
       description: (
         <span>
-          Closes the dialog and moves focus to{' '}
-          <Code>Dialog.Trigger</Code>.
+          Closes the dialog and moves focus to <Code>Dialog.Trigger</Code>.
         </span>
       ),
     },
