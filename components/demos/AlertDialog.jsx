@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled, keyframes, theme } from '@modulz/design-system';
-import { violet, blackA, red, mauve, mauveA } from '@radix-ui/colors';
+import { violet, blackA, red, mauve } from '@radix-ui/colors';
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 
 const fadeIn = keyframes({
@@ -14,7 +14,7 @@ const fadeOut = keyframes({
 });
 
 const StyledOverlay = styled(AlertDialogPrimitive.Overlay, {
-  backgroundColor: mauveA.mauveA9,
+  backgroundColor: blackA.blackA9,
   position: 'fixed',
   inset: 0,
   '&[data-state=open]': { animation: `${fadeIn} 300ms ease-out` },
