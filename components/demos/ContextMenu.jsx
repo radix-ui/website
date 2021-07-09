@@ -54,7 +54,8 @@ const StyledTriggerItem = styled(ContextMenuPrimitive.TriggerItem, {
 
 const StyledLabel = styled(ContextMenuPrimitive.Label, {
   paddingLeft: 25,
-  fontSize: 13,
+  fontSize: 11,
+  fontWeight: 500,
   lineHeight: '25px',
   color: violet.violet8,
 });
@@ -113,7 +114,7 @@ const Shape = styled('div', {
   variants: {
     open: {
       true: {
-        boxShadow: `0 0 0 2px ${colors.violetA.violetA9}`,
+        boxShadow: 'inset 0 0 0 1px $$shadowColor',
       },
     },
   },
@@ -128,23 +129,28 @@ const RightSlot = styled('div', {
 const COLORS = {
   red: {
     name: 'Red',
-    value: colors.red.red9,
+    bg: colors.red.red9,
+    focus: colors.red.red4,
   },
   amber: {
     name: 'Amber',
-    value: colors.amber.amber9,
+    bg: colors.amber.amber9,
+    focus: colors.amber.amber4,
   },
   lime: {
     name: 'Lime',
-    value: colors.lime.lime9,
+    bg: colors.lime.lime9,
+    focus: colors.lime.lime4,
   },
   mint: {
     name: 'Mint',
-    value: colors.mint.mint9,
+    bg: colors.mint.mint9,
+    focus: colors.mint.mint4,
   },
   sky: {
     name: 'Sky',
-    value: colors.sky.sky9,
+    bg: colors.sky.sky9,
+    focus: colors.sky.sky4,
   },
 };
 
@@ -160,7 +166,14 @@ export const ContextMenuDemo = () => {
       <Instruction>Right click the shape below.</Instruction>
       <ContextMenu onOpenChange={setOpen}>
         <ContextMenuTrigger>
-          <Shape open={open} style={{ backgroundColor: COLORS[color].value, width: size }}>
+          <Shape
+            open={open}
+            css={{
+              $$shadowColor: COLORS[color].focus,
+              backgroundColor: COLORS[color].bg,
+              width: size,
+            }}
+          >
             {isShowingName && <Box>{COLORS[color].name}</Box>}
             {isShowingValue && (
               <Box css={{ fontSize: 15, fontVariantNumeric: 'tabular-nums' }}>
@@ -177,7 +190,7 @@ export const ContextMenuDemo = () => {
                   <DotFilledIcon />
                 </ContextMenuItemIndicator>
                 {COLORS[colorName].name}
-                <RightSlot css={{ borderRadius: 2, backgroundColor: COLORS[colorName].value }} />
+                <RightSlot css={{ borderRadius: 2, backgroundColor: COLORS[colorName].bg }} />
               </ContextMenuRadioItem>
             ))}
           </ContextMenuRadioGroup>
