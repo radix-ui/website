@@ -1,6 +1,6 @@
 import React from 'react';
-import { styled, keyframes } from '@modulz/design-system';
-import { violet, mauve, amber, lime, mint, blackA } from '@radix-ui/colors';
+import { styled } from '@modulz/design-system';
+import { violet, mauve, blackA } from '@radix-ui/colors';
 import {
   HamburgerMenuIcon,
   DotFilledIcon,
