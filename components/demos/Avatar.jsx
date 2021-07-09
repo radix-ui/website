@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled, keyframes } from '@modulz/design-system';
-import { violet, violetA } from '@radix-ui/colors';
+import { violet, blackA } from '@radix-ui/colors';
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
 
 const fadeIn = keyframes({
@@ -18,7 +18,7 @@ const StyledAvatar = styled(AvatarPrimitive.Root, {
   width: 45,
   height: 45,
   borderRadius: '100%',
-  backgroundColor: violetA.violetA8,
+  backgroundColor: blackA.blackA3,
 });
 
 const StyledImage = styled(AvatarPrimitive.Image, {
@@ -35,8 +35,8 @@ const StyledFallback = styled(AvatarPrimitive.Fallback, {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  backgroundColor: violet.violet2,
-  color: violet.violet10,
+  backgroundColor: violet.violet1,
+  color: violet.violet11,
   fontSize: 15,
   lineHeight: 1,
   fontWeight: 500,

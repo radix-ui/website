@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled, keyframes } from '@modulz/design-system';
-import { violet, violetA } from '@radix-ui/colors';
+import { violet, blackA } from '@radix-ui/colors';
 import { RowSpacingIcon, Cross2Icon } from '@radix-ui/react-icons';
 import * as CollapsiblePrimitive from '@radix-ui/react-collapsible';
 
@@ -39,18 +39,17 @@ const IconButton = styled('button', {
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
-  color: violet.violet1,
+  color: 'white',
 
-  '&[data-state="closed"]': { backgroundColor: violetA.violetA9 },
-  '&[data-state="open"]': { backgroundColor: violetA.violetA10 },
+  '&[data-state="closed"]': { backgroundColor: blackA.blackA9 },
+  '&[data-state="open"]': { backgroundColor: blackA.blackA10 },
 
-  '&:hover': { backgroundColor: violetA.violetA10 },
-  '&:active': { backgroundColor: violetA.violetA11 },
+  '&:hover': { backgroundColor: blackA.blackA10 },
   '&:focus': { boxShadow: `0 0 0 2px ${violet.violet7}` },
 });
 
 const Repository = styled('div', {
-  backgroundColor: violetA.violetA7,
+  backgroundColor: blackA.blackA7,
   borderRadius: 4,
   margin: '10px 0',
   padding: 10,

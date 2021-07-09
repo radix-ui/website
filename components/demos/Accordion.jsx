@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled, keyframes } from '@modulz/design-system';
-import { violet, violetA } from '@radix-ui/colors';
+import { violet, blackA } from '@radix-ui/colors';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
 
@@ -21,10 +21,10 @@ const StyledAccordion = styled(AccordionPrimitive.Root, {
 
 const StyledItem = styled(AccordionPrimitive.Item, {
   overflow: 'hidden',
-  borderTop: `1px solid ${violet.violet11}`,
+  marginTop: 1,
 
   '&:first-child': {
-    borderTop: 'none',
+    marginTop: 0,
     borderTopLeftRadius: 4,
     borderTopRightRadius: 4,
   },
@@ -58,39 +58,34 @@ const StyledTrigger = styled(AccordionPrimitive.Trigger, {
   justifyContent: 'space-between',
   fontSize: 15,
   lineHeight: 1,
-  color: violet.violet1,
+  fontWeight: 500,
+  color: 'white',
 
-  '&[data-state="closed"]': {
-    backgroundColor: violetA.violetA9,
-    '&:hover': { backgroundColor: violetA.violetA10 },
-    '&:active': { backgroundColor: violetA.violetA11 },
-  },
-  '&[data-state="open"]': { backgroundColor: violetA.violetA11 },
+  '&[data-state="closed"]': { backgroundColor: blackA.blackA9 },
+  '&[data-state="open"]': { backgroundColor: blackA.blackA10 },
+  '&:hover': { backgroundColor: blackA.blackA10 },
 });
 
 const StyledContent = styled(AccordionPrimitive.Content, {
   overflow: 'hidden',
   fontSize: 15,
-  color: violet.violet5,
+  color: 'white',
+  backgroundColor: blackA.blackA10,
 
   '&[data-state="open"]': {
     animation: `${slideDown} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
-    backgroundColor: violetA.violetA11,
   },
   '&[data-state="closed"]': {
-    backgroundColor: violetA.violetA10,
     animation: `${slideUp} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
   },
 });
 
 const StyledContentText = styled('div', {
   padding: '0 20px 20px',
-  color: violet.violet5,
 });
 
 const StyledChevron = styled(ChevronDownIcon, {
   transition: 'transform 300ms cubic-bezier(0.87, 0, 0.13, 1)',
-  color: violet.violet1,
   '[data-state=open] &': { transform: 'rotate(180deg)' },
 });
 

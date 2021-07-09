@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled, keyframes, theme } from '@modulz/design-system';
-import { violet, violetA, red, mauve, mauveA } from '@radix-ui/colors';
+import { violet, blackA, red, mauve, mauveA } from '@radix-ui/colors';
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 
 const fadeIn = keyframes({
@@ -79,28 +79,26 @@ const Button = styled('button', {
   padding: '0 20px',
   fontSize: 15,
   lineHeight: 1,
+  fontWeight: 500,
 
   variants: {
     variant: {
       violet: {
-        backgroundColor: violetA.violetA9,
-        color: violet.violet1,
-        '&:hover': { backgroundColor: violetA.violetA10 },
-        '&:active': { backgroundColor: violetA.violetA11 },
+        backgroundColor: blackA.blackA9,
+        color: 'white',
+        '&:hover': { backgroundColor: blackA.blackA10 },
         '&:focus': { boxShadow: `0 0 0 2px ${violet.violet7}` },
       },
       red: {
         backgroundColor: red.red3,
         color: red.red11,
         '&:hover': { backgroundColor: red.red4 },
-        '&:active': { backgroundColor: red.red5 },
         '&:focus': { boxShadow: `0 0 0 2px ${red.red7}` },
       },
       mauve: {
         backgroundColor: mauve.mauve3,
         color: mauve.mauve11,
         '&:hover': { backgroundColor: mauve.mauve4 },
-        '&:active': { backgroundColor: mauve.mauve5 },
         '&:focus': { boxShadow: `0 0 0 2px ${mauve.mauve7}` },
       },
     },

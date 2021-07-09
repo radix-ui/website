@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled, keyframes } from '@modulz/design-system';
-import { violet, violetA } from '@radix-ui/colors';
+import { violet, blackA } from '@radix-ui/colors';
 import { CheckIcon } from '@radix-ui/react-icons';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 
@@ -11,8 +11,8 @@ const scaleIn = keyframes({
 
 const StyledCheckbox = styled(CheckboxPrimitive.Root, {
   all: 'unset',
-  backgroundColor: violetA.violetA9,
-  color: violet.violet1,
+  backgroundColor: blackA.blackA9,
+  color: 'white',
   width: 45,
   height: 45,
   borderRadius: 4,
@@ -20,8 +20,7 @@ const StyledCheckbox = styled(CheckboxPrimitive.Root, {
   alignItems: 'center',
   justifyContent: 'center',
 
-  '&:hover': { backgroundColor: violetA.violetA10 },
-  '&:active': { backgroundColor: violetA.violetA11 },
+  '&:hover': { backgroundColor: blackA.blackA10 },
   '&:focus': { boxShadow: `0 0 0 2px ${violet.violet7}` },
 });
 
