@@ -177,7 +177,7 @@ export const ContextMenuDemo = () => {
             {isShowingName && <Box>{COLORS[color].name}</Box>}
             {isShowingValue && (
               <Box css={{ fontSize: 15, fontVariantNumeric: 'tabular-nums' }}>
-                {COLORS[color].value}
+                {COLORS[color].bg}
               </Box>
             )}
           </Shape>
