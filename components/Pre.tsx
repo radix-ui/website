@@ -149,6 +149,13 @@ export const Pre = styled('pre', {
         color: '$$lineNumbers',
       },
     },
+    '&[data-invert-line-highlight=true]': {
+      '.highlight-line': {
+        '&::before': {
+          left: 10,
+        },
+      },
+    },
   },
 
   // Styles for highlighted lines
@@ -166,10 +173,10 @@ export const Pre = styled('pre', {
   // data-invert-line-highlight
   // Styles for inverted line highlighting
   '&[data-invert-line-highlight=true] .highlight-line': {
+    mx: '-$5',
+    px: '$5',
     '&[data-highlighted=true]': {
       backgroundColor: '$$highlightedLineBg',
-      mx: '-$5',
-      px: '$5',
     },
   },
 
