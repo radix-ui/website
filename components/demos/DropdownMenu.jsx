@@ -138,25 +138,11 @@ export const DropdownMenuDemo = () => {
           <DropdownMenuItem>
             New Private Window <RightSlot>⇧+⌘+N</RightSlot>
           </DropdownMenuItem>
-          <DropdownMenu>
-            <DropdownMenuTriggerItem>
-              History{' '}
-              <RightSlot>
-                <ChevronRightIcon />
-              </RightSlot>
-            </DropdownMenuTriggerItem>
-            <DropdownMenuContent sideOffset={2} alignOffset={-5}>
-              <DropdownMenuItem>Stitches</DropdownMenuItem>
-              <DropdownMenuItem>Radix</DropdownMenuItem>
-              <DropdownMenuItem>Modulz</DropdownMenuItem>
-              <DropdownMenuItem>Twitter</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
           <DropdownMenuSeparator />
           <DropdownMenuLabel>Edit</DropdownMenuLabel>
           <DropdownMenuItem>Cut</DropdownMenuItem>
           <DropdownMenuItem>Copy</DropdownMenuItem>
-          <DropdownMenuItem>Paste</DropdownMenuItem>
+          <DropdownMenuItem disabled>Paste</DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
             Print… <RightSlot>⌘+P</RightSlot>
@@ -175,7 +161,7 @@ export const DropdownMenuDemo = () => {
               <DropdownMenuItem>
                 Save Page As… <RightSlot>⌘+S</RightSlot>
               </DropdownMenuItem>
-              <DropdownMenuItem>Create RightSlot… </DropdownMenuItem>
+              <DropdownMenuItem>Create Shortcut… </DropdownMenuItem>
               <DropdownMenuItem>Name Window… </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Developer Tools</DropdownMenuItem>
@@ -198,6 +184,7 @@ export const DropdownMenuDemo = () => {
             Show Full URLs
           </DropdownMenuCheckboxItem>
           <DropdownMenuSeparator />
+          <DropdownMenuLabel>People</DropdownMenuLabel>
           <DropdownMenuRadioGroup value={person} onValueChange={setPerson}>
             <DropdownMenuRadioItem value="pedro">
               <DropdownMenuItemIndicator>
