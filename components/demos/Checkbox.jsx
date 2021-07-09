@@ -13,8 +13,8 @@ const StyledCheckbox = styled(CheckboxPrimitive.Root, {
   all: 'unset',
   backgroundColor: blackA.blackA9,
   color: 'white',
-  width: 45,
-  height: 45,
+  width: 35,
+  height: 35,
   borderRadius: 4,
   display: 'flex',
   alignItems: 'center',
@@ -25,8 +25,6 @@ const StyledCheckbox = styled(CheckboxPrimitive.Root, {
 });
 
 const StyledCheckIon = styled(CheckIcon, {
-  width: 20,
-  height: 20,
   animation: `${scaleIn} 100ms cubic-bezier(0.87, 0, 0.13, 1)`,
 });
 

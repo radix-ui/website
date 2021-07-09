@@ -15,8 +15,8 @@ const StyledAvatar = styled(AvatarPrimitive.Root, {
   verticalAlign: 'middle',
   overflow: 'hidden',
   userSelect: 'none',
-  width: 45,
-  height: 45,
+  width: 35,
+  height: 35,
   borderRadius: '100%',
   backgroundColor: blackA.blackA3,
 });
@@ -36,8 +36,8 @@ const StyledFallback = styled(AvatarPrimitive.Fallback, {
   alignItems: 'center',
   justifyContent: 'center',
   backgroundColor: violet.violet1,
-  color: violet.violet11,
-  fontSize: 15,
+  color: violet.violet12,
+  fontSize: 13,
   lineHeight: 1,
   fontWeight: 500,
 });
