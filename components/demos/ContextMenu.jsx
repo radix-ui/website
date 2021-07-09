@@ -114,7 +114,7 @@ const Shape = styled('div', {
   variants: {
     open: {
       true: {
-        boxShadow: 'inset 0 0 0 1px $$shadowColor',
+        boxShadow: '0 0 0 2px $$shadowColor',
       },
     },
   },
@@ -130,27 +130,27 @@ const COLORS = {
   red: {
     name: 'Red',
     bg: colors.red.red9,
-    focus: colors.red.red4,
+    focus: colors.red.red3,
   },
   amber: {
     name: 'Amber',
     bg: colors.amber.amber9,
-    focus: colors.amber.amber4,
+    focus: colors.amber.amber3,
   },
   lime: {
     name: 'Lime',
     bg: colors.lime.lime9,
-    focus: colors.lime.lime4,
+    focus: colors.lime.lime3,
   },
   mint: {
     name: 'Mint',
     bg: colors.mint.mint9,
-    focus: colors.mint.mint4,
+    focus: colors.mint.mint3,
   },
   sky: {
     name: 'Sky',
     bg: colors.sky.sky9,
-    focus: colors.sky.sky4,
+    focus: colors.sky.sky3,
   },
 };
 
