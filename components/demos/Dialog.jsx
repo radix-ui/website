@@ -151,7 +151,7 @@ const Input = styled('input', {
   alignItems: 'center',
   justifyContent: 'center',
   borderRadius: 4,
-  padding: '0 20px',
+  padding: '0 10px',
   fontSize: 15,
   lineHeight: 1,
   color: violet.violet11,
