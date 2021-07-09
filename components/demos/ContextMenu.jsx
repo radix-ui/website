@@ -1,10 +1,8 @@
 import React from 'react';
 import { styled, keyframes } from '@modulz/design-system';
-import * as colors from '@radix-ui/colors';
+import { violet, mauve, amber, lime, mint } from '@radix-ui/colors';
 import { DotFilledIcon, CheckIcon, ChevronRightIcon } from '@radix-ui/react-icons';
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
-
-const { violet, mauve } = colors;
 
 const StyledContent = styled(ContextMenuPrimitive.Content, {
   width: 180,
@@ -127,30 +125,20 @@ const RightSlot = styled('div', {
 });
 
 const COLORS = {
-  red: {
-    name: 'Red',
-    bg: colors.red.red9,
-    focus: colors.red.red3,
-  },
   amber: {
     name: 'Amber',
-    bg: colors.amber.amber9,
-    focus: colors.amber.amber3,
+    bg: amber.amber9,
+    focus: amber.amber3,
   },
   lime: {
     name: 'Lime',
-    bg: colors.lime.lime9,
-    focus: colors.lime.lime3,
+    bg: lime.lime9,
+    focus: lime.lime3,
   },
   mint: {
     name: 'Mint',
-    bg: colors.mint.mint9,
-    focus: colors.mint.mint3,
-  },
-  sky: {
-    name: 'Sky',
-    bg: colors.sky.sky9,
-    focus: colors.sky.sky3,
+    bg: mint.mint9,
+    focus: mint.mint3,
   },
 };
 
@@ -185,7 +173,7 @@ export const ContextMenuDemo = () => {
         <ContextMenuContent>
           <ContextMenuRadioGroup value={color} onValueChange={setColor}>
             {Object.keys(COLORS).map((colorName) => (
-              <ContextMenuRadioItem value={colorName}>
+              <ContextMenuRadioItem value={colorName} key={colorName}>
                 <ContextMenuItemIndicator>
                   <DotFilledIcon />
                 </ContextMenuItemIndicator>
