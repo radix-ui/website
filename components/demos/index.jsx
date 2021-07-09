@@ -5,4 +5,5 @@ export { default as AvatarDemo } from './Avatar';
 export { default as CheckboxDemo } from './Checkbox';
 export { default as CollapsibleDemo } from './Collapsible';
 export { default as ContextMenuDemo } from './ContextMenu';
+export { default as DialogDemo } from './Dialog';
 export { default as TooltipDemo } from './Tooltip';
