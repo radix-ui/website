@@ -145,15 +145,8 @@ export const DropdownMenuDemo = () => {
           <DropdownMenuItem>
             New Window <RightSlot>⌘+N</RightSlot>
           </DropdownMenuItem>
-          <DropdownMenuItem>
+          <DropdownMenuItem disabled>
             New Private Window <RightSlot>⇧+⌘+N</RightSlot>
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            Print… <RightSlot>⌘+P</RightSlot>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            Find… <RightSlot>⌘+F</RightSlot>
           </DropdownMenuItem>
           <DropdownMenu>
             <DropdownMenuTriggerItem>
