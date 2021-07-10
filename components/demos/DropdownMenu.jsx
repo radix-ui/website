@@ -125,9 +125,19 @@ export const DropdownMenuDemo = () => {
   return (
     <Box>
       <DropdownMenu>
-        <DropdownMenuTrigger as={IconButton}>
-          <HamburgerMenuIcon />
-        </DropdownMenuTrigger>
+        <Box
+          css={{
+            backgroundColor: blackA.blackA5,
+            borderRadius: 4,
+            padding: 10,
+            textAlign: 'right',
+            width: 300,
+          }}
+        >
+          <DropdownMenuTrigger as={IconButton}>
+            <HamburgerMenuIcon />
+          </DropdownMenuTrigger>
+        </Box>
         <DropdownMenuContent sideOffset={5} align="end">
           <DropdownMenuItem>
             New Tab <RightSlot>⌘+T</RightSlot>
@@ -138,11 +148,6 @@ export const DropdownMenuDemo = () => {
           <DropdownMenuItem>
             New Private Window <RightSlot>⇧+⌘+N</RightSlot>
           </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuLabel>Edit</DropdownMenuLabel>
-          <DropdownMenuItem>Cut</DropdownMenuItem>
-          <DropdownMenuItem>Copy</DropdownMenuItem>
-          <DropdownMenuItem disabled>Paste</DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
             Print… <RightSlot>⌘+P</RightSlot>
@@ -161,8 +166,8 @@ export const DropdownMenuDemo = () => {
               <DropdownMenuItem>
                 Save Page As… <RightSlot>⌘+S</RightSlot>
               </DropdownMenuItem>
-              <DropdownMenuItem>Create Shortcut… </DropdownMenuItem>
-              <DropdownMenuItem>Name Window… </DropdownMenuItem>
+              <DropdownMenuItem>Create Shortcut…</DropdownMenuItem>
+              <DropdownMenuItem>Name Window…</DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Developer Tools</DropdownMenuItem>
             </DropdownMenuContent>
