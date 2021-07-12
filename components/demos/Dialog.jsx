@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled, keyframes, theme } from '@modulz/design-system';
 import { violet, blackA, mauve, green } from '@radix-ui/colors';
-import { Cross1Icon } from '@radix-ui/react-icons';
+import { Cross2Icon } from '@radix-ui/react-icons';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 
 const fadeIn = keyframes({
@@ -187,7 +187,7 @@ const DialogDemo = () => (
         Save changes
       </DialogClose>
       <DialogClose as={IconButton}>
-        <Cross1Icon />
+        <Cross2Icon />
       </DialogClose>
     </DialogContent>
   </Dialog>
