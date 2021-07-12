@@ -7,4 +7,5 @@ export { default as CollapsibleDemo } from './Collapsible';
 export { default as ContextMenuDemo } from './ContextMenu';
 export { default as DialogDemo } from './Dialog';
 export { default as DropdownMenuDemo } from './DropdownMenu';
+export { default as HoverCardDemo } from './HoverCard';
 export { default as TooltipDemo } from './Tooltip';
