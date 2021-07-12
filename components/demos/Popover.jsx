@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled, keyframes } from '@modulz/design-system';
 import { violet, mauve, blackA } from '@radix-ui/colors';
-import { MixerVerticalIcon, Cross2Icon } from '@radix-ui/react-icons';
+import { MixerHorizontalIcon, Cross2Icon } from '@radix-ui/react-icons';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 
 const show = keyframes({
@@ -19,6 +19,10 @@ const StyledContent = styled(PopoverPrimitive.Content, {
   '&:focus': {
     boxShadow: `0 0 0 2px ${violet.violet7}`,
   },
+});
+
+const StyledArrow = styled(PopoverPrimitive.Arrow, {
+  fill: 'white',
 });
 
 const StyledClose = styled(PopoverPrimitive.Close, {
@@ -46,6 +50,7 @@ const StyledClose = styled(PopoverPrimitive.Close, {
 export const Popover = PopoverPrimitive.Root;
 export const PopoverTrigger = PopoverPrimitive.Trigger;
 export const PopoverContent = StyledContent;
+export const PopoverArrow = StyledArrow;
 export const PopoverClose = StyledClose;
 
 // Your app...
@@ -79,11 +84,12 @@ const Fieldset = styled('fieldset', {
 const Label = styled('label', {
   fontSize: 13,
   color: violet.violet11,
-  width: 60,
+  width: 75,
 });
 
 const Input = styled('input', {
   all: 'unset',
+  width: '100%',
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -118,18 +124,18 @@ const PopoverDemo = () => (
   <Popover>
     <Flex
       css={{
-        borderLeft: `2px solid ${blackA.blackA5}`,
-        paddingLeft: 10,
-        height: 100,
-        alignItems: 'center',
-        marginLeft: 36,
+        borderBottom: `2px solid ${blackA.blackA5}`,
+        paddingBottom: 10,
+        width: 260,
+        justifyContent: 'center',
+        marginBottom: 36,
       }}
     >
       <PopoverTrigger as={IconButton}>
-        <MixerVerticalIcon />
+        <MixerHorizontalIcon />
       </PopoverTrigger>
     </Flex>
-    <PopoverContent side="left" sideOffset={10}>
+    <PopoverContent sideOffset={5}>
       <Flex css={{ flexDirection: 'column', gap: 10 }}>
         <Text bold css={{ marginBottom: 10 }}>
           Dimensions
@@ -139,10 +145,19 @@ const PopoverDemo = () => (
           <Input value={100} />
         </Fieldset>
         <Fieldset>
+          <Label>Max. width</Label>
+          <Input value={500} />
+        </Fieldset>
+        <Fieldset>
           <Label>Height</Label>
+          <Input value={25} />
+        </Fieldset>
+        <Fieldset>
+          <Label>Max. height</Label>
           <Input value={100} />
         </Fieldset>
       </Flex>
+      <PopoverArrow />
       <PopoverClose>
         <Cross2Icon />
       </PopoverClose>
