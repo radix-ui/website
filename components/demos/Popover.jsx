@@ -142,19 +142,19 @@ const PopoverDemo = () => (
         </Text>
         <Fieldset>
           <Label>Width</Label>
-          <Input value={100} />
+          <Input value="100%" />
         </Fieldset>
         <Fieldset>
           <Label>Max. width</Label>
-          <Input value={500} />
+          <Input value="300px" />
         </Fieldset>
         <Fieldset>
           <Label>Height</Label>
-          <Input value={25} />
+          <Input value="25px" />
         </Fieldset>
         <Fieldset>
           <Label>Max. height</Label>
-          <Input value={100} />
+          <Input value="none" />
         </Fieldset>
       </Flex>
       <PopoverArrow />
