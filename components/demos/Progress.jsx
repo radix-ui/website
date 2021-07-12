@@ -26,7 +26,7 @@ export const ProgressIndicator = StyledIndicator;
 
 // Your app...
 const ProgressDemo = () => {
-  const [progress, setProgress] = React.useState(0);
+  const [progress, setProgress] = React.useState(13);
   React.useEffect(() => setTimeout(() => setProgress(66), 500), []);
   return (
     <Progress value={66}>
