@@ -9,20 +9,17 @@ const StyledRadio = styled(RadioGroupPrimitive.Item, {
   width: 25,
   height: 25,
   borderRadius: '100%',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
   boxShadow: `0 2px 10px ${blackA.blackA7}`,
   '&:hover': { backgroundColor: violet.violet3 },
   '&:focus': { boxShadow: `0 0 0 2px black` },
 });
 
 const StyledIndicator = styled(RadioGroupPrimitive.Indicator, {
-  alignItems: 'center',
   display: 'flex',
-  height: '100%',
+  alignItems: 'center',
   justifyContent: 'center',
   width: '100%',
+  height: '100%',
   position: 'relative',
   '&::after': {
     content: '""',
