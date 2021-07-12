@@ -1,11 +1,11 @@
 import React from 'react';
 import { styled, keyframes } from '@modulz/design-system';
-import { violet, mauve, amber, lime, mint } from '@radix-ui/colors';
+import { violet, mauve, blackA } from '@radix-ui/colors';
 import { DotFilledIcon, CheckIcon, ChevronRightIcon } from '@radix-ui/react-icons';
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 
 const StyledContent = styled(ContextMenuPrimitive.Content, {
-  width: 180,
+  width: 220,
   backgroundColor: violet.violet1,
   borderRadius: 6,
   overflow: 'hidden',
@@ -90,129 +90,89 @@ export const ContextMenuSeparator = StyledSeparator;
 const Box = styled('div', {});
 
 const Instruction = styled('div', {
+  backgroundColor: blackA.blackA5,
+  borderRadius: 4,
   color: 'rgba(255 255 255 / .5)',
   fontSize: 15,
   userSelect: 'none',
-  marginBottom: 20,
+  padding: '45px 0',
+  width: 300,
   textAlign: 'center',
 });
 
-const Shape = styled('div', {
-  fontSize: 17,
-  fontWeight: 500,
-  color: 'black',
-  borderRadius: 8,
-  flexDirection: 'column',
-  gap: '$1',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  userSelect: 'none',
-  height: 100,
-  variants: {
-    open: {
-      true: {
-        boxShadow: '0 0 0 2px $$shadowColor',
-      },
-    },
-  },
-});
-
 const RightSlot = styled('div', {
-  width: 15,
-  height: 15,
   marginLeft: 'auto',
+  paddingLeft: 20,
+  color: violet.violet8,
 });
-
-const COLORS = {
-  amber: {
-    name: 'Amber',
-    bg: amber.amber9,
-    focus: amber.amber3,
-  },
-  lime: {
-    name: 'Lime',
-    bg: lime.lime9,
-    focus: lime.lime3,
-  },
-  mint: {
-    name: 'Mint',
-    bg: mint.mint9,
-    focus: mint.mint3,
-  },
-};
 
 export const ContextMenuDemo = () => {
-  const [open, setOpen] = React.useState(false);
-  const [color, setColor] = React.useState('mint');
-  const [size, setSize] = React.useState(200);
-  const [isShowingName, setIsShowingName] = React.useState(true);
-  const [isShowingValue, setIsShowingValue] = React.useState(false);
+  const [bookmarksChecked, setBookmarksChecked] = React.useState(true);
+  const [urlsChecked, setUrlsChecked] = React.useState(false);
+  const [person, setPerson] = React.useState('pedro');
 
   return (
     <Box>
-      <Instruction>Right click the shape below.</Instruction>
-      <ContextMenu onOpenChange={setOpen}>
+      <ContextMenu>
         <ContextMenuTrigger>
-          <Shape
-            open={open}
-            css={{
-              $$shadowColor: COLORS[color].focus,
-              backgroundColor: COLORS[color].bg,
-              width: size,
-            }}
-          >
-            {isShowingName && <Box>{COLORS[color].name}</Box>}
-            {isShowingValue && (
-              <Box css={{ fontSize: 15, fontVariantNumeric: 'tabular-nums' }}>
-                {COLORS[color].bg}
-              </Box>
-            )}
-          </Shape>
+          <Instruction>Right click here.</Instruction>
         </ContextMenuTrigger>
-        <ContextMenuContent>
-          <ContextMenuRadioGroup value={color} onValueChange={setColor}>
-            {Object.keys(COLORS).map((colorName) => (
-              <ContextMenuRadioItem value={colorName} key={colorName}>
-                <ContextMenuItemIndicator>
-                  <DotFilledIcon />
-                </ContextMenuItemIndicator>
-                {COLORS[colorName].name}
-                <RightSlot css={{ borderRadius: 2, backgroundColor: COLORS[colorName].bg }} />
-              </ContextMenuRadioItem>
-            ))}
-          </ContextMenuRadioGroup>
-          <ContextMenuSeparator />
-          <ContextMenuLabel>Size</ContextMenuLabel>
-          <ContextMenuItem disabled={size >= 300} onSelect={() => setSize(size + 50)}>
-            Increase width
+        <ContextMenuContent sideOffset={5} align="end">
+          <ContextMenuItem>
+            New Tab <RightSlot>⌘+T</RightSlot>
           </ContextMenuItem>
-          <ContextMenuItem disabled={size <= 200} onSelect={() => setSize(size - 50)}>
-            Decrease width
+          <ContextMenuItem>
+            New Window <RightSlot>⌘+N</RightSlot>
           </ContextMenuItem>
-          <ContextMenuSeparator />
+          <ContextMenuItem disabled>
+            New Private Window <RightSlot>⇧+⌘+N</RightSlot>
+          </ContextMenuItem>
           <ContextMenu>
             <ContextMenuTriggerItem>
-              Details
+              More Tools
               <RightSlot>
                 <ChevronRightIcon />
               </RightSlot>
             </ContextMenuTriggerItem>
             <ContextMenuContent sideOffset={2} alignOffset={-5}>
-              <ContextMenuCheckboxItem checked={isShowingName} onCheckedChange={setIsShowingName}>
-                <ContextMenuItemIndicator>
-                  <CheckIcon />
-                </ContextMenuItemIndicator>
-                Show name
-              </ContextMenuCheckboxItem>
-              <ContextMenuCheckboxItem checked={isShowingValue} onCheckedChange={setIsShowingValue}>
-                <ContextMenuItemIndicator>
-                  <CheckIcon />
-                </ContextMenuItemIndicator>
-                Show value
-              </ContextMenuCheckboxItem>
+              <ContextMenuItem>
+                Save Page As… <RightSlot>⌘+S</RightSlot>
+              </ContextMenuItem>
+              <ContextMenuItem>Create Shortcut…</ContextMenuItem>
+              <ContextMenuItem>Name Window…</ContextMenuItem>
+              <ContextMenuSeparator />
+              <ContextMenuItem>Developer Tools</ContextMenuItem>
             </ContextMenuContent>
           </ContextMenu>
+          <ContextMenuSeparator />
+          <ContextMenuCheckboxItem checked={bookmarksChecked} onCheckedChange={setBookmarksChecked}>
+            <ContextMenuItemIndicator>
+              <CheckIcon />
+            </ContextMenuItemIndicator>
+            Show Bookmarks <RightSlot>⌘+B</RightSlot>
+          </ContextMenuCheckboxItem>
+          <ContextMenuCheckboxItem checked={urlsChecked} onCheckedChange={setUrlsChecked}>
+            <ContextMenuItemIndicator>
+              <CheckIcon />
+            </ContextMenuItemIndicator>
+            Show Full URLs
+          </ContextMenuCheckboxItem>
+          <ContextMenuSeparator />
+          <ContextMenuLabel>People</ContextMenuLabel>
+          <ContextMenuRadioGroup value={person} onValueChange={setPerson}>
+            <ContextMenuRadioItem value="pedro">
+              <ContextMenuItemIndicator>
+                <DotFilledIcon />
+              </ContextMenuItemIndicator>
+              Pedro Duarte
+            </ContextMenuRadioItem>
+            <ContextMenuRadioItem value="colm">
+              <ContextMenuItemIndicator>
+                <DotFilledIcon />
+              </ContextMenuItemIndicator>
+              Colm Tuite
+            </ContextMenuRadioItem>
+          </ContextMenuRadioGroup>
         </ContextMenuContent>
       </ContextMenu>
     </Box>
