@@ -1,31 +1,22 @@
 import React from 'react';
-import { styled, keyframes } from '@modulz/design-system';
+import { styled } from '@modulz/design-system';
 import { violet, blackA } from '@radix-ui/colors';
 import { RowSpacingIcon, Cross2Icon } from '@radix-ui/react-icons';
 import * as CollapsiblePrimitive from '@radix-ui/react-collapsible';
-
-const fadeIn = keyframes({
-  from: { opacity: 0 },
-  to: { opacity: 1 },
-});
 
 const StyledCollapsible = styled(CollapsiblePrimitive.Root, {
   width: 300,
 });
 
-const StyledContent = styled(CollapsiblePrimitive.Content, {
-  '&[data-state=open]': { animation: `${fadeIn} 200ms ease-out` },
-});
-
 // Exports
 export const Collapsible = StyledCollapsible;
 export const CollapsibleTrigger = CollapsiblePrimitive.Trigger;
-export const CollapsibleContent = StyledContent;
+export const CollapsibleContent = CollapsiblePrimitive.Content;
 
 // Your app...
 const Flex = styled('div', { display: 'flex' });
 const Text = styled('span', {
-  color: violet.violet1,
+  color: violet.violet11,
   fontSize: 15,
   lineHeight: '25px',
 });
@@ -39,20 +30,20 @@ const IconButton = styled('button', {
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
-  color: 'white',
-
-  '&[data-state="closed"]': { backgroundColor: blackA.blackA9 },
-  '&[data-state="open"]': { backgroundColor: blackA.blackA10 },
-
-  '&:hover': { backgroundColor: blackA.blackA10 },
-  '&:focus': { boxShadow: `0 0 0 2px ${violet.violet7}` },
+  color: violet.violet11,
+  boxShadow: `0 2px 10px ${blackA.blackA7}`,
+  '&[data-state="closed"]': { backgroundColor: 'white' },
+  '&[data-state="open"]': { backgroundColor: violet.violet3 },
+  '&:hover': { backgroundColor: violet.violet3 },
+  '&:focus': { boxShadow: `0 0 0 2px black` },
 });
 
 const Repository = styled('div', {
-  backgroundColor: blackA.blackA7,
+  backgroundColor: 'white',
   borderRadius: 4,
   margin: '10px 0',
   padding: 10,
+  boxShadow: `0 2px 10px ${blackA.blackA7}`,
 });
 
 export const CollapsibleDemo = () => {
@@ -60,7 +51,7 @@ export const CollapsibleDemo = () => {
   return (
     <Collapsible open={open} onOpenChange={setOpen}>
       <Flex css={{ alignItems: 'center', justifyContent: 'space-between' }}>
-        <Text>@peduarte starred 3 repositories</Text>
+        <Text css={{ color: 'white' }}>@peduarte starred 3 repositories</Text>
         <CollapsibleTrigger as={IconButton}>
           {open ? <Cross2Icon /> : <RowSpacingIcon />}
         </CollapsibleTrigger>

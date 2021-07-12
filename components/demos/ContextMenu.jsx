@@ -5,8 +5,8 @@ import { DotFilledIcon, CheckIcon, ChevronRightIcon } from '@radix-ui/react-icon
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 
 const StyledContent = styled(ContextMenuPrimitive.Content, {
-  width: 220,
-  backgroundColor: violet.violet1,
+  minWidth: 220,
+  backgroundColor: 'white',
   borderRadius: 6,
   overflow: 'hidden',
   padding: 5,
@@ -19,7 +19,7 @@ const itemStyles = {
   fontSize: 13,
   lineHeight: 1,
   color: violet.violet11,
-  borderRadius: 4,
+  borderRadius: 3,
   display: 'flex',
   alignItems: 'center',
   height: 25,
@@ -33,7 +33,7 @@ const itemStyles = {
     pointerEvents: 'none',
   },
 
-  '&:hover, &:focus': {
+  '&:focus': {
     backgroundColor: violet.violet9,
     color: violet.violet1,
   },
@@ -52,10 +52,9 @@ const StyledTriggerItem = styled(ContextMenuPrimitive.TriggerItem, {
 
 const StyledLabel = styled(ContextMenuPrimitive.Label, {
   paddingLeft: 25,
-  fontSize: 11,
-  fontWeight: 500,
+  fontSize: 12,
   lineHeight: '25px',
-  color: violet.violet8,
+  color: mauve.mauve11,
 });
 
 const StyledSeparator = styled(ContextMenuPrimitive.Separator, {
@@ -90,9 +89,9 @@ export const ContextMenuSeparator = StyledSeparator;
 const Box = styled('div', {});
 
 const Instruction = styled('div', {
-  backgroundColor: blackA.blackA5,
+  border: `2px white dashed`,
+  color: 'white',
   borderRadius: 4,
-  color: 'rgba(255 255 255 / .5)',
   fontSize: 15,
   userSelect: 'none',
   padding: '45px 0',
@@ -103,7 +102,9 @@ const Instruction = styled('div', {
 const RightSlot = styled('div', {
   marginLeft: 'auto',
   paddingLeft: 20,
-  color: violet.violet8,
+  color: mauve.mauve11,
+  ':focus > &': { color: 'white' },
+  '[data-disabled] &': { color: mauve.mauve8 },
 });
 
 export const ContextMenuDemo = () => {

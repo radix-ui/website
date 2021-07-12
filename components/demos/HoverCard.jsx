@@ -9,18 +9,23 @@ const show = keyframes({
 });
 
 const StyledContent = styled(HoverCardPrimitive.Content, {
-  borderRadius: 4,
-  padding: 15,
+  borderRadius: 6,
+  padding: 20,
   width: 300,
   backgroundColor: 'white',
   boxShadow: 'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
   animation: `${show} 100ms linear`,
 });
 
+const StyledArrow = styled(HoverCardPrimitive.Arrow, {
+  fill: 'white',
+});
+
 // Exports
 export const HoverCard = HoverCardPrimitive.Root;
 export const HoverCardTrigger = HoverCardPrimitive.Trigger;
 export const HoverCardContent = StyledContent;
+export const HoverCardArrow = StyledArrow;
 
 // Your app...
 const Flex = styled('div', { display: 'flex' });
@@ -42,7 +47,7 @@ const Text = styled('div', {
   margin: 0,
   color: mauve.mauve12,
   fontSize: 15,
-  lineHeight: '19px',
+  lineHeight: 1.5,
   variants: {
     faded: {
       true: { color: mauve.mauve10 },
@@ -83,6 +88,7 @@ const HoverCardDemo = () => (
           </Flex>
         </Flex>
       </Flex>
+      <HoverCardArrow />
     </HoverCardContent>
   </HoverCard>
 );

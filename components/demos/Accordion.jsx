@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled, keyframes } from '@modulz/design-system';
-import { violet, blackA } from '@radix-ui/colors';
+import { violet, blackA, mauve } from '@radix-ui/colors';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
 
@@ -17,6 +17,8 @@ const slideUp = keyframes({
 const StyledAccordion = styled(AccordionPrimitive.Root, {
   borderRadius: 6,
   width: 300,
+  backgroundColor: mauve.mauve6,
+  boxShadow: `0 2px 10px ${blackA.blackA4}`,
 });
 
 const StyledItem = styled(AccordionPrimitive.Item, {
@@ -37,7 +39,7 @@ const StyledItem = styled(AccordionPrimitive.Item, {
   '&:focus-within': {
     position: 'relative',
     zIndex: 1,
-    boxShadow: `0 0 0 2px ${violet.violet7}`,
+    boxShadow: `0 0 0 2px ${mauve.mauve12}`,
   },
 });
 
@@ -58,19 +60,20 @@ const StyledTrigger = styled(AccordionPrimitive.Trigger, {
   justifyContent: 'space-between',
   fontSize: 15,
   lineHeight: 1,
-  fontWeight: 500,
-  color: 'white',
-
-  '&[data-state="closed"]': { backgroundColor: blackA.blackA9 },
-  '&[data-state="open"]': { backgroundColor: blackA.blackA10 },
-  '&:hover': { backgroundColor: blackA.blackA10 },
+  color: violet.violet11,
+  boxShadow: `0 1px 0 ${mauve.mauve6}`,
+  '&[data-state="closed"]': { backgroundColor: 'white' },
+  '&[data-state="open"]': {
+    backgroundColor: 'white',
+  },
+  '&:hover': { backgroundColor: mauve.mauve2 },
 });
 
 const StyledContent = styled(AccordionPrimitive.Content, {
   overflow: 'hidden',
   fontSize: 15,
-  color: 'white',
-  backgroundColor: blackA.blackA10,
+  color: mauve.mauve11,
+  backgroundColor: mauve.mauve2,
 
   '&[data-state="open"]': {
     animation: `${slideDown} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
@@ -81,10 +84,11 @@ const StyledContent = styled(AccordionPrimitive.Content, {
 });
 
 const StyledContentText = styled('div', {
-  padding: '0 20px 20px',
+  padding: 20,
 });
 
 const StyledChevron = styled(ChevronDownIcon, {
+  color: violet.violet10,
   transition: 'transform 300ms cubic-bezier(0.87, 0, 0.13, 1)',
   '[data-state=open] &': { transform: 'rotate(180deg)' },
 });

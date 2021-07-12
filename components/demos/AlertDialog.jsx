@@ -41,7 +41,7 @@ const StyledContent = styled(AlertDialogPrimitive.Content, {
   width: '90vw',
   maxWidth: '500px',
   maxHeight: '85vh',
-  padding: 20,
+  padding: 25,
   '&[data-state=open]': { animation: `${fadeIn} 200ms ease-out` },
   '&[data-state=closed]': { animation: `${fadeOut} 100ms ease-out` },
   '&:focus': { outline: 'none' },
@@ -49,15 +49,16 @@ const StyledContent = styled(AlertDialogPrimitive.Content, {
 
 const StyledTitle = styled(AlertDialogPrimitive.Title, {
   margin: 0,
-  fontWeight: 500,
   color: mauve.mauve12,
   fontSize: 17,
+  fontWeight: 500,
 });
 
 const StyledDescription = styled(AlertDialogPrimitive.Description, {
-  margin: '10px 0 20px',
+  marginBottom: 20,
   color: mauve.mauve11,
   fontSize: 15,
+  lineHeight: 1.5,
 });
 
 // Exports
@@ -70,67 +71,66 @@ const AlertDialogAction = AlertDialogPrimitive.Action;
 const AlertDialogCancel = AlertDialogPrimitive.Cancel;
 
 // Your app...
+const Flex = styled('div', { display: 'flex' });
+
 const Button = styled('button', {
   all: 'unset',
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
   borderRadius: 4,
-  padding: '0 20px',
+  padding: '0 15px',
   fontSize: 15,
   lineHeight: 1,
   fontWeight: 500,
+  height: 35,
 
   variants: {
     variant: {
       violet: {
-        backgroundColor: blackA.blackA9,
-        color: 'white',
-        '&:hover': { backgroundColor: blackA.blackA10 },
-        '&:focus': { boxShadow: `0 0 0 2px ${violet.violet7}` },
+        backgroundColor: 'white',
+        color: violet.violet11,
+        boxShadow: `0 2px 10px ${blackA.blackA7}`,
+        '&:hover': { backgroundColor: mauve.mauve3 },
+        '&:focus': { boxShadow: `0 0 0 2px black` },
       },
       red: {
-        backgroundColor: red.red3,
+        backgroundColor: red.red4,
         color: red.red11,
-        '&:hover': { backgroundColor: red.red4 },
+        '&:hover': { backgroundColor: red.red5 },
         '&:focus': { boxShadow: `0 0 0 2px ${red.red7}` },
       },
       mauve: {
-        backgroundColor: mauve.mauve3,
+        backgroundColor: mauve.mauve4,
         color: mauve.mauve11,
-        '&:hover': { backgroundColor: mauve.mauve4 },
+        '&:hover': { backgroundColor: mauve.mauve5 },
         '&:focus': { boxShadow: `0 0 0 2px ${mauve.mauve7}` },
       },
-    },
-    size: {
-      medium: { height: 35 },
-      large: { height: 45 },
     },
   },
 
   defaultVariants: {
-    size: 'medium',
     variant: 'violet',
   },
 });
 
 const AlertDialogDemo = () => (
   <AlertDialog>
-    <AlertDialogTrigger as={Button} size="large">
-      Delete account
-    </AlertDialogTrigger>
+    <AlertDialogTrigger as={Button}>Delete account</AlertDialogTrigger>
     <AlertDialogContent className={`${theme}`}>
       <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
       <AlertDialogDescription>
         This action cannot be undone. This will permanently delete your account and remove your data
         from our servers.
       </AlertDialogDescription>
-      <AlertDialogCancel as={Button} variant="mauve" css={{ marginRight: '20px' }}>
-        Cancel
-      </AlertDialogCancel>
-      <AlertDialogAction as={Button} variant="red">
-        Yes, delete account
-      </AlertDialogAction>
+      <Flex css={{ justifyContent: 'flex-end' }}>
+        <AlertDialogCancel as={Button} variant="mauve" css={{ marginRight: 25 }}>
+          Cancel
+        </AlertDialogCancel>
+        <AlertDialogAction as={Button} variant="red">
+          Yes, delete account
+        </AlertDialogAction>
+      </Flex>
     </AlertDialogContent>
   </AlertDialog>
 );

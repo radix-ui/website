@@ -11,13 +11,13 @@ const show = keyframes({
 
 const StyledContent = styled(PopoverPrimitive.Content, {
   borderRadius: 4,
-  padding: 15,
+  padding: 20,
   width: 260,
   backgroundColor: 'white',
   boxShadow: 'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
   animation: `${show} 100ms linear`,
   '&:focus': {
-    boxShadow: `0 0 0 2px ${violet.violet7}`,
+    boxShadow: `hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px, 0 0 0 2px ${violet.violet7}`,
   },
 });
 
@@ -36,13 +36,10 @@ const StyledClose = styled(PopoverPrimitive.Close, {
   justifyContent: 'center',
   color: violet.violet11,
   position: 'absolute',
-  top: 10,
-  right: 10,
+  top: 5,
+  right: 5,
 
-  '&:hover': {
-    backgroundColor: violet.violet10,
-    color: 'white',
-  },
+  '&:hover': { backgroundColor: violet.violet4 },
   '&:focus': { boxShadow: `0 0 0 2px ${violet.violet7}` },
 });
 
@@ -60,20 +57,18 @@ const IconButton = styled('button', {
   all: 'unset',
   fontFamily: 'inherit',
   borderRadius: '100%',
-  height: 25,
-  width: 25,
+  height: 35,
+  width: 35,
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
-  color: 'white',
+  color: violet.violet11,
+  marginLeft: 20,
+  backgroundColor: 'white',
 
-  '&[data-state="closed"]': { backgroundColor: blackA.blackA9 },
-  '&[data-state="open"]': { backgroundColor: blackA.blackA10 },
-
-  '&:hover': { backgroundColor: blackA.blackA10 },
-  '&:focus': { boxShadow: `0 0 0 2px ${violet.violet7}` },
+  '&:hover': { backgroundColor: violet.violet3 },
+  '&:focus': { boxShadow: `0 0 0 2px black` },
 });
-
 const Fieldset = styled('fieldset', {
   all: 'unset',
   display: 'flex',
@@ -122,19 +117,9 @@ const Text = styled('div', {
 
 const PopoverDemo = () => (
   <Popover>
-    <Flex
-      css={{
-        borderBottom: `2px solid ${blackA.blackA5}`,
-        paddingBottom: 10,
-        width: 260,
-        justifyContent: 'center',
-        marginBottom: 36,
-      }}
-    >
-      <PopoverTrigger as={IconButton}>
-        <MixerHorizontalIcon />
-      </PopoverTrigger>
-    </Flex>
+    <PopoverTrigger as={IconButton}>
+      <MixerHorizontalIcon />
+    </PopoverTrigger>
     <PopoverContent sideOffset={5}>
       <Flex css={{ flexDirection: 'column', gap: 10 }}>
         <Text bold css={{ marginBottom: 10 }}>

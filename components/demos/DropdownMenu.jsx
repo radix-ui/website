@@ -11,7 +11,7 @@ import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 
 const StyledContent = styled(DropdownMenuPrimitive.Content, {
   minWidth: 220,
-  backgroundColor: violet.violet1,
+  backgroundColor: 'white',
   borderRadius: 6,
   overflow: 'hidden',
   padding: 5,
@@ -24,7 +24,7 @@ const itemStyles = {
   fontSize: 13,
   lineHeight: 1,
   color: violet.violet11,
-  borderRadius: 4,
+  borderRadius: 3,
   display: 'flex',
   alignItems: 'center',
   height: 25,
@@ -38,7 +38,7 @@ const itemStyles = {
     pointerEvents: 'none',
   },
 
-  '&:hover, &:focus': {
+  '&:focus': {
     backgroundColor: violet.violet9,
     color: violet.violet1,
   },
@@ -57,10 +57,9 @@ const StyledTriggerItem = styled(DropdownMenuPrimitive.TriggerItem, {
 
 const StyledLabel = styled(DropdownMenuPrimitive.Label, {
   paddingLeft: 25,
-  fontSize: 11,
-  fontWeight: 500,
+  fontSize: 12,
   lineHeight: '25px',
-  color: violet.violet8,
+  color: mauve.mauve11,
 });
 
 const StyledSeparator = styled(DropdownMenuPrimitive.Separator, {
@@ -78,6 +77,10 @@ const StyledItemIndicator = styled(DropdownMenuPrimitive.ItemIndicator, {
   justifyContent: 'center',
 });
 
+const StyledArrow = styled(DropdownMenuPrimitive.Arrow, {
+  fill: 'white',
+});
+
 // Exports
 export const DropdownMenu = DropdownMenuPrimitive.Root;
 export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
@@ -90,6 +93,7 @@ export const DropdownMenuItemIndicator = StyledItemIndicator;
 export const DropdownMenuTriggerItem = StyledTriggerItem;
 export const DropdownMenuLabel = StyledLabel;
 export const DropdownMenuSeparator = StyledSeparator;
+export const DropdownMenuArrow = StyledArrow;
 
 // Your app...
 const Box = styled('div', {});
@@ -97,7 +101,9 @@ const Box = styled('div', {});
 const RightSlot = styled('div', {
   marginLeft: 'auto',
   paddingLeft: 20,
-  color: violet.violet8,
+  color: mauve.mauve11,
+  ':focus > &': { color: 'white' },
+  '[data-disabled] &': { color: mauve.mauve8 },
 });
 
 const IconButton = styled('button', {
@@ -109,12 +115,12 @@ const IconButton = styled('button', {
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
-  color: 'white',
+  color: violet.violet11,
   marginLeft: 20,
-  backgroundColor: blackA.blackA10,
+  backgroundColor: 'white',
 
-  '&:hover': { backgroundColor: blackA.blackA11 },
-  '&:focus': { boxShadow: `0 0 0 2px ${violet.violet7}` },
+  '&:hover': { backgroundColor: violet.violet3 },
+  '&:focus': { boxShadow: `0 0 0 2px black` },
 });
 
 export const DropdownMenuDemo = () => {
@@ -125,20 +131,11 @@ export const DropdownMenuDemo = () => {
   return (
     <Box>
       <DropdownMenu>
-        <Box
-          css={{
-            backgroundColor: blackA.blackA5,
-            borderRadius: 4,
-            padding: 10,
-            textAlign: 'right',
-            width: 300,
-          }}
-        >
-          <DropdownMenuTrigger as={IconButton}>
-            <HamburgerMenuIcon />
-          </DropdownMenuTrigger>
-        </Box>
-        <DropdownMenuContent sideOffset={5} align="end">
+        <DropdownMenuTrigger as={IconButton}>
+          <HamburgerMenuIcon />
+        </DropdownMenuTrigger>
+
+        <DropdownMenuContent sideOffset={5}>
           <DropdownMenuItem>
             New Tab <RightSlot>⌘+T</RightSlot>
           </DropdownMenuItem>
@@ -197,6 +194,7 @@ export const DropdownMenuDemo = () => {
               Colm Tuite
             </DropdownMenuRadioItem>
           </DropdownMenuRadioGroup>
+          <DropdownMenuArrow />
         </DropdownMenuContent>
       </DropdownMenu>
     </Box>
