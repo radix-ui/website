@@ -4,9 +4,9 @@ import { PlusIcon } from '@radix-ui/react-icons';
 import { violet, violetA } from '@radix-ui/colors';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 
-const scaleIn = keyframes({
-  '0%': { opacity: 0, transform: 'scale(0)' },
-  '100%': { opacity: 1, transform: 'scale(1)' },
+const show = keyframes({
+  '0%': { opacity: 0 },
+  '100%': { opacity: 1 },
 });
 
 const StyledContent = styled(TooltipPrimitive.Content, {
@@ -18,8 +18,7 @@ const StyledContent = styled(TooltipPrimitive.Content, {
   backgroundColor: 'white',
   boxShadow:
     '0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2)',
-  transformOrigin: 'var(--radix-tooltip-content-transform-origin)',
-  animation: `${scaleIn} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
+  animation: `${show} 100ms linear`,
 });
 
 const StyledArrow = styled(TooltipPrimitive.Arrow, {
