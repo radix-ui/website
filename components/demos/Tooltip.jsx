@@ -1,7 +1,7 @@
 import React from 'react';
-import { styled, keyframes } from '@modulz/design-system';
+import { styled, keyframes, theme } from '@modulz/design-system';
 import { PlusIcon } from '@radix-ui/react-icons';
-import { violet, violetA } from '@radix-ui/colors';
+import { violet, blackA } from '@radix-ui/colors';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 
 const show = keyframes({
@@ -30,35 +30,29 @@ export const TooltipTrigger = TooltipPrimitive.Trigger;
 export const TooltipContent = StyledContent;
 
 // Your app...
-const Button = styled('button', {
+const IconButton = styled('button', {
   all: 'unset',
+  fontFamily: 'inherit',
   borderRadius: '100%',
-  width: 45,
-  height: 45,
-  display: 'flex',
+  height: 35,
+  width: 35,
+  display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
-  fontSize: 15,
-  lineHeight: 1,
-  backgroundColor: violetA.violetA9,
-  color: violet.violet1,
-  '&:hover': { backgroundColor: violetA.violetA10 },
-  '&:active': { backgroundColor: violetA.violetA11 },
-  '&:focus': { boxShadow: `0 0 0 2px ${violet.violet7}` },
-});
-
-const Icon = styled(PlusIcon, {
-  width: 20,
-  height: 20,
+  color: violet.violet11,
+  backgroundColor: 'white',
+  boxShadow: `0 2px 10px ${blackA.blackA7}`,
+  '&:hover': { backgroundColor: violet.violet3 },
+  '&:focus': { boxShadow: `0 0 0 2px black` },
 });
 
 const TooltipDemo = () => {
   return (
     <Tooltip>
-      <TooltipTrigger as={Button}>
-        <Icon />
+      <TooltipTrigger as={IconButton}>
+        <PlusIcon />
       </TooltipTrigger>
-      <StyledContent sideOffset={5}>
+      <StyledContent sideOffset={5} className={`${theme}`}>
         Add to library.
         <StyledArrow />
       </StyledContent>

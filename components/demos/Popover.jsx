@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled, keyframes } from '@modulz/design-system';
+import { styled, keyframes, theme } from '@modulz/design-system';
 import { violet, mauve, blackA } from '@radix-ui/colors';
 import { MixerHorizontalIcon, Cross2Icon } from '@radix-ui/react-icons';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
@@ -120,7 +120,7 @@ const PopoverDemo = () => (
     <PopoverTrigger as={IconButton}>
       <MixerHorizontalIcon />
     </PopoverTrigger>
-    <PopoverContent sideOffset={5}>
+    <PopoverContent sideOffset={5} className={`${theme}`}>
       <Flex css={{ flexDirection: 'column', gap: 10 }}>
         <Text bold css={{ marginBottom: 10 }}>
           Dimensions
