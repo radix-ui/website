@@ -16,9 +16,8 @@ const StyledContent = styled(TooltipPrimitive.Content, {
   lineHeight: 1,
   color: violet.violet11,
   backgroundColor: 'white',
-  boxShadow:
-    '0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2)',
   animation: `${show} 100ms linear`,
+  boxShadow: 'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
 });
 
 const StyledArrow = styled(TooltipPrimitive.Arrow, {
