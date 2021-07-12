@@ -4,8 +4,8 @@ import { violet, mauve, blackA } from '@radix-ui/colors';
 import * as HoverCardPrimitive from '@radix-ui/react-hover-card';
 
 const show = keyframes({
-  '0%': { opacity: 0, transform: 'translate(0, -5px)' },
-  '100%': { opacity: 1, transform: 'translate(0, 0)' },
+  '0%': { opacity: 0 },
+  '100%': { opacity: 1 },
 });
 
 const StyledContent = styled(HoverCardPrimitive.Content, {
@@ -18,8 +18,7 @@ const StyledContent = styled(HoverCardPrimitive.Content, {
   width: 300,
   boxShadow:
     '0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2)',
-  transformOrigin: 'var(--radix-hover-card-content-transform-origin)',
-  animation: `${show} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
+  animation: `${show} 100ms linear`,
 });
 
 // Exports
