@@ -11,10 +11,6 @@ const show = keyframes({
 const StyledContent = styled(HoverCardPrimitive.Content, {
   borderRadius: 4,
   padding: 15,
-  fontSize: 15,
-  lineHeight: 1,
-  color: violet.violet11,
-  backgroundColor: 'white',
   width: 300,
   boxShadow:
     '0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2)',
