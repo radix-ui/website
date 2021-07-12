@@ -12,8 +12,8 @@ const StyledContent = styled(HoverCardPrimitive.Content, {
   borderRadius: 4,
   padding: 15,
   width: 300,
-  boxShadow:
-    '0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2)',
+  backgroundColor: 'white',
+  boxShadow: 'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
   animation: `${show} 100ms linear`,
 });
 
