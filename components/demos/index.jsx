@@ -9,4 +9,5 @@ export { default as DialogDemo } from './Dialog';
 export { default as DropdownMenuDemo } from './DropdownMenu';
 export { default as HoverCardDemo } from './HoverCard';
 export { default as PopoverDemo } from './Popover';
+export { default as ProgressDemo } from './Progress';
 export { default as TooltipDemo } from './Tooltip';
