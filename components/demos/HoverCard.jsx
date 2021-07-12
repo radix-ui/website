@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled, keyframes } from '@modulz/design-system';
-import { violet, mauve, blackA } from '@radix-ui/colors';
+import { mauve } from '@radix-ui/colors';
 import * as HoverCardPrimitive from '@radix-ui/react-hover-card';
 
 const show = keyframes({
