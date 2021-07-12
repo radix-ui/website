@@ -63,9 +63,7 @@ const StyledTrigger = styled(AccordionPrimitive.Trigger, {
   color: violet.violet11,
   boxShadow: `0 1px 0 ${mauve.mauve6}`,
   '&[data-state="closed"]': { backgroundColor: 'white' },
-  '&[data-state="open"]': {
-    backgroundColor: 'white',
-  },
+  '&[data-state="open"]': { backgroundColor: 'white' },
   '&:hover': { backgroundColor: mauve.mauve2 },
 });
 
