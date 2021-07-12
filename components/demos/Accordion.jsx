@@ -84,7 +84,7 @@ const StyledContent = styled(AccordionPrimitive.Content, {
 });
 
 const StyledContentText = styled('div', {
-  padding: 20,
+  padding: '15px 20px',
 });
 
 const StyledChevron = styled(ChevronDownIcon, {
