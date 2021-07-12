@@ -1,6 +1,6 @@
 import React from 'react';
-import { styled, keyframes } from '@modulz/design-system';
-import { violet, blackA } from '@radix-ui/colors';
+import { styled } from '@modulz/design-system';
+import { blackA } from '@radix-ui/colors';
 import * as ProgressPrimitive from '@radix-ui/react-progress';
 
 const StyledProgress = styled(ProgressPrimitive.Root, {
