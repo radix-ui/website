@@ -43,7 +43,7 @@ export const CheckboxDemo = () => (
         <CheckIcon />
       </CheckboxIndicator>
     </Checkbox>
-    <Label css={{ marginLeft: 15 }} htmlFor="c1">
+    <Label css={{ paddingLeft: 15 }} htmlFor="c1">
       Accept terms and conditions.
     </Label>
   </Flex>
