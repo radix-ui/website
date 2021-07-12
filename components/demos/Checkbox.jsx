@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled } from '@modulz/design-system';
-import { violet } from '@radix-ui/colors';
+import { violet, blackA } from '@radix-ui/colors';
 import { CheckIcon } from '@radix-ui/react-icons';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 
@@ -13,6 +13,7 @@ const StyledCheckbox = styled(CheckboxPrimitive.Root, {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  boxShadow: `0 2px 10px ${blackA.blackA7}`,
   '&:hover': { backgroundColor: violet.violet3 },
   '&:focus': { boxShadow: `0 0 0 2px black` },
 });
