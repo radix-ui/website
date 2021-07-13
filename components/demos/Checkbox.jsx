@@ -28,7 +28,6 @@ const CheckboxIndicator = StyledIndicator;
 
 // Your app...
 const Flex = styled('div', { display: 'flex' });
-
 const Label = styled('label', {
   color: 'white',
   fontSize: 15,
