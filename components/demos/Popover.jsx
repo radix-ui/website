@@ -63,7 +63,6 @@ const IconButton = styled('button', {
   alignItems: 'center',
   justifyContent: 'center',
   color: violet.violet11,
-  marginLeft: 20,
   backgroundColor: 'white',
   boxShadow: `0 2px 10px ${blackA.blackA7}`,
   '&:hover': { backgroundColor: violet.violet3 },
