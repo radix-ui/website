@@ -1,6 +1,6 @@
 import React from 'react';
-import { styled, keyframes } from '@modulz/design-system';
-import { violet, mauve, indigo, blackA } from '@radix-ui/colors';
+import { styled } from '@modulz/design-system';
+import { mauve, blackA } from '@radix-ui/colors';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 
 const SCROLLBAR_SIZE = 10;
