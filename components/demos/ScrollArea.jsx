@@ -1,14 +1,14 @@
 import React from 'react';
-import { styled, Box, keyframes } from '@modulz/design-system';
-import { violet, mauve, blackA } from '@radix-ui/colors';
+import { styled, keyframes } from '@modulz/design-system';
+import { violet, mauve, indigo, blackA } from '@radix-ui/colors';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 
 const SCROLLBAR_SIZE = 10;
 
 const StyledScrollArea = styled(ScrollAreaPrimitive.Root, {
   width: 300,
-  height: 200,
-  borderRadius: 8,
+  height: 300,
+  borderRadius: 4,
   overflow: 'hidden',
   boxShadow: `0 2px 10px ${blackA.blackA7}`,
 });
@@ -67,66 +67,80 @@ const ScrollAreaThumb = StyledThumb;
 const ScrollAreaCorner = StyledCorner;
 
 // Your app...
-export const Flex = styled('div', { display: 'flex' });
-
-export const Skeleton = styled('div', {
-  backgroundColor: violet.violet12,
-  position: 'relative',
-  overflow: 'hidden',
-  flex: '0 0 auto',
+const Box = styled('div', {});
+const Text = styled('div', {
+  color: mauve.mauve12,
   marginBottom: 10,
+  lineHeight: 1.5,
   variants: {
-    variant: {
-      avatar: { height: 45, width: 45, borderRadius: '100%' },
-      title: { height: 20, borderRadius: '999px' },
-      heading: { height: 15, borderRadius: '999px' },
-      text: { height: 10, borderRadius: '999px' },
-      button: { borderRadius: 4, height: 25, width: 70 },
+    size: {
+      small: { fontSize: 13 },
+      medium: { fontSize: 15 },
+      large: { fontSize: 17 },
+    },
+    bold: {
+      true: { fontWeight: 500 },
+    },
+    faded: {
+      true: { color: mauve.mauve11 },
     },
   },
   defaultVariants: {
-    variant: 'text',
+    size: 'small',
   },
 });
-
-const FakeCardContent = () => (
-  <Flex>
-    {Array.from({ length: 4 }, (_, i) => (
-      <Flex css={{ paddingRight: 20, margin: '20px 0' }} key={i}>
-        <Skeleton variant="avatar" css={{ marginRight: 15 }} />
-        <div>
-          <Skeleton css={{ width: 80 }} />
-          <Skeleton css={{ width: 100 }} />
-          <Skeleton variant="button" />
-        </div>
-      </Flex>
-    ))}
-  </Flex>
-);
-
-const FakeContent = () => (
-  <div style={{ backgroundColor: 'white', padding: 20 }}>
-    {Array.from({ length: 8 }, (_, i) => (
-      <div key={i}>
-        <Skeleton variant="title" css={{ width: 100 }} />
-        <Skeleton variant="heading" css={{ width: 150 }} />
-        <Skeleton css={{ width: 200 }} />
-        <Skeleton css={{ width: 200 }} />
-        <FakeCardContent />
-        <Skeleton css={{ width: 550 }} />
-        <Skeleton css={{ width: 450 }} />
-        <Skeleton css={{ width: 500 }} />
-        <Skeleton css={{ width: 500 }} />
-        <FakeCardContent />
-      </div>
-    ))}
-  </div>
-);
 
 const ScrollAreaDemo = () => (
   <ScrollArea>
     <ScrollAreaViewport>
-      <FakeContent />
+      <Box css={{ background: 'white', padding: 20 }}>
+        <Text size="large" bold>
+          Scroll Area
+        </Text>
+        <Text size="medium" faded>
+          Augments native scroll functionality for custom, cross-browser styling.
+        </Text>
+        <Box
+          css={{
+            width: '100%',
+            paddingTop: '50%',
+            backgroundColor: violet.violet9,
+            borderRadius: 4,
+            margin: '20px 0',
+          }}
+        />
+        <Text size="medium" bold>
+          Features
+        </Text>
+        <Box as="ul" css={{ paddingLeft: 20 }}>
+          <Text as="li">Scrollbar sits on top of the scrollable content, taking up no space.</Text>
+          <Text as="li">
+            Scrolling is native; no underlying position movements via CSS transformations.
+          </Text>
+          <Text as="li">
+            Shims pointer behaviors only when interacting with the controls, so keyboard controls
+            are unaffected.
+          </Text>
+          <Text as="li">Supports RTL</Text>
+        </Box>
+        <Text size="medium" bold css={{ marginTop: 20 }}>
+          Accessibility
+        </Text>
+        <Text>
+          In most cases, it's best to rely on native scrolling and work with the customization
+          options available in CSS. When that isn't enough, ScrollArea provides additional
+          customizability while maintaining the browser's native scroll behavior (as well as
+          accessibiliy features, like keyboard scrolling).
+        </Text>
+        <Text size="medium" bold css={{ marginTop: 20 }}>
+          Keyboard Interactions
+        </Text>
+        <Text>
+          Scrolling via keyboard is supported by default because the component relies on native
+          scrolling. Specific keyboard interactions may differ between platforms, so we do not
+          specify them here or add specific event listeners to handle scrolling via key events.
+        </Text>
+      </Box>
     </ScrollAreaViewport>
     <ScrollAreaScrollbar orientation="vertical">
       <ScrollAreaThumb />
