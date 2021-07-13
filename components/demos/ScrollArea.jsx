@@ -1,14 +1,14 @@
 import React from 'react';
 import { styled } from '@modulz/design-system';
-import { mauve, blackA } from '@radix-ui/colors';
+import { violet, mauve, blackA } from '@radix-ui/colors';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 
 const SCROLLBAR_SIZE = 10;
 
 const StyledScrollArea = styled(ScrollAreaPrimitive.Root, {
-  width: 300,
-  height: 200,
-  borderRadius: 8,
+  width: 200,
+  height: 225,
+  borderRadius: 4,
   overflow: 'hidden',
   boxShadow: `0 2px 10px ${blackA.blackA7}`,
 });
@@ -67,74 +67,33 @@ const ScrollAreaThumb = StyledThumb;
 const ScrollAreaCorner = StyledCorner;
 
 // Your app...
-export const Box = styled('div', {});
-export const Flex = styled('div', { display: 'flex' });
-export const Skeleton = styled('div', {
-  backgroundColor: mauve.mauve8,
-  position: 'relative',
-  overflow: 'hidden',
-  flex: '0 0 auto',
-  marginBottom: 10,
-  variants: {
-    variant: {
-      avatar: { height: 65, width: 65, borderRadius: '100%' },
-      title: { height: 15, borderRadius: '999px' },
-      heading: { height: 10, borderRadius: '999px' },
-      text: { height: 5, borderRadius: '999px' },
-      button: { borderRadius: 4, height: 25, width: 70 },
-    },
-  },
-  defaultVariants: {
-    variant: 'text',
-  },
+const Box = styled('div', {});
+const Text = styled('div', {
+  color: violet.violet11,
+  fontSize: 15,
+  lineHeight: '18px',
+  fontWeight: 500,
+});
+const Tag = styled('div', {
+  color: mauve.mauve12,
+  fontSize: 13,
+  lineHeight: '18px',
+  marginTop: 10,
+  borderTop: `1px solid ${mauve.mauve6}`,
+  paddingTop: 10,
 });
 
-const FakeContent = () => (
-  <div style={{ backgroundColor: 'white', padding: 20 }}>
-    <Box
-      css={{
-        backgroundColor: mauve.mauve8,
-        borderRadius: 4,
-        height: 100,
-        marginBottom: 20,
-        resize: 'both',
-        overflow: 'auto',
-      }}
-    />
-    <Flex css={{ alignItems: 'center', marginBottom: 10 }}>
-      <Skeleton variant="avatar" />
-      <Box css={{ marginLeft: 15, flex: 1 }}>
-        <Skeleton variant="heading" css={{ width: 100 }} />
-        <Skeleton variant="text" css={{ width: '80%' }} />
-        <Skeleton variant="button" />
-      </Box>
-    </Flex>
-    <Skeleton variant="title" css={{ width: 100 }} />
-    <Skeleton variant="heading" css={{ width: 80 }} />
-    <Skeleton variant="text" css={{ width: '100%' }} />
-    <Skeleton variant="text" css={{ width: '100%' }} />
-    <Skeleton variant="text" css={{ width: '100%' }} />
-    <Skeleton variant="text" css={{ width: '100%' }} />
-    <Skeleton variant="text" css={{ width: 150 }} />
-    <Skeleton variant="text" css={{ width: 150 }} />
-    <Skeleton variant="text" css={{ width: 150 }} />
-    <Skeleton variant="text" css={{ width: 150 }} />
-    <Skeleton variant="text" css={{ width: 100 }} />
-    <Skeleton variant="text" css={{ width: 100 }} />
-    <Skeleton variant="heading" css={{ marginTop: 20, width: 120 }} />
-    <Skeleton variant="text" css={{ width: '100%' }} />
-    <Skeleton variant="text" css={{ width: '100%' }} />
-    <Skeleton variant="text" css={{ width: '100%' }} />
-    <Skeleton variant="text" css={{ width: 150 }} />
-    <Skeleton variant="text" css={{ width: 100 }} />
-    <Skeleton variant="text" css={{ width: 100 }} />
-  </div>
-);
+const TAGS = Array.from({ length: 50 }).map((_, i, a) => `v1.2.0-beta.${a.length - i}`);
 
 const ScrollAreaDemo = () => (
   <ScrollArea>
     <ScrollAreaViewport>
-      <FakeContent />
+      <Box style={{ backgroundColor: 'white', padding: '15px 20px' }}>
+        <Text>Tags</Text>
+        {TAGS.map((tag) => (
+          <Tag key={tag}>{tag}</Tag>
+        ))}
+      </Box>
     </ScrollAreaViewport>
     <ScrollAreaScrollbar orientation="vertical">
       <ScrollAreaThumb />
