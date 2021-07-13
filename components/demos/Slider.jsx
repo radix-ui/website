@@ -52,7 +52,7 @@ const StyledThumb = styled(SliderPrimitive.Thumb, {
 });
 
 const SliderDemo = () => (
-  <StyledSlider disabled defaultValue={[50]} max={100} step={1}>
+  <StyledSlider defaultValue={[50]} max={100} step={1}>
     <StyledTrack>
       <StyledRange />
     </StyledTrack>
