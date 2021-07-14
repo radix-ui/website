@@ -25,27 +25,10 @@ const StyledToggle = styled(TogglePrimitive.Root, {
 const Toggle = StyledToggle;
 
 // Your app...
-const Box = styled('div', {});
-const Flex = styled('div', { display: 'flex' });
-
 const ToggleDemo = () => (
-  <Flex>
-    <Box>
-      <Toggle>
-        <FontBoldIcon />
-      </Toggle>
-    </Box>
-    <Box css={{ margin: '0 5px' }}>
-      <Toggle>
-        <FontItalicIcon />
-      </Toggle>
-    </Box>
-    <Box>
-      <Toggle>
-        <StrikethroughIcon />
-      </Toggle>
-    </Box>
-  </Flex>
+  <Toggle>
+    <FontItalicIcon />
+  </Toggle>
 );
 
 export default ToggleDemo;
