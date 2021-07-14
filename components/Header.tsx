@@ -55,7 +55,14 @@ export const Header = (props) => {
               <RadixLogo label="Radix Homepage" />
             </Box>
           </NextLink>
-          <Flex css={{ ml: '$3', alignItems: 'center' }}>
+          <Flex
+            css={{
+              ml: '$3',
+              alignItems: 'center',
+              display: 'none',
+              '@bp2': { display: 'flex' },
+            }}
+          >
             {isPrimitives && (
               <>
                 <Text size="2">Primitives</Text>
@@ -94,12 +101,12 @@ export const Header = (props) => {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            <Separator orientation="vertical" />
+            {/* <Separator orientation="vertical" />
             <NextLink href="/blog" passHref>
               <Link variant="subtle" css={{ fontSize: '$3' }}>
                 Blog
               </Link>
-            </NextLink>
+            </NextLink> */}
             <Separator orientation="vertical" />
             <ThemeToggle />
           </Flex>
