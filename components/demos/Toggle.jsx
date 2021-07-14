@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from '@modulz/design-system';
 import { violet, blackA } from '@radix-ui/colors';
-import { FontBoldIcon, FontItalicIcon, StrikethroughIcon } from '@radix-ui/react-icons';
+import { FontItalicIcon } from '@radix-ui/react-icons';
 import * as TogglePrimitive from '@radix-ui/react-toggle';
 
 const StyledToggle = styled(TogglePrimitive.Root, {
