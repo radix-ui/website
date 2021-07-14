@@ -1,30 +1,33 @@
 import React from 'react';
 import { styled } from '@modulz/design-system';
-import { violet, blackA } from '@radix-ui/colors';
+import { violet, blackA, mauve } from '@radix-ui/colors';
 import { TextAlignLeftIcon, TextAlignCenterIcon, TextAlignRightIcon } from '@radix-ui/react-icons';
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
 
 const StyledToggleGroup = styled(ToggleGroupPrimitive.Root, {
-  display: 'flex',
+  display: 'inline-flex',
+  backgroundColor: mauve.mauve6,
+  borderRadius: 4,
+  boxShadow: `0 2px 10px ${blackA.blackA7}`,
 });
 
 const StyledItem = styled(ToggleGroupPrimitive.Item, {
   all: 'unset',
   backgroundColor: 'white',
+  color: mauve.mauve11,
   height: 35,
   width: 35,
-  borderRadius: 4,
   display: 'flex',
   fontSize: 15,
   lineHeight: 1,
   alignItems: 'center',
   justifyContent: 'center',
-  boxShadow: `0 2px 10px ${blackA.blackA7}`,
-  marginLeft: 5,
-  '&:first-child': { marginLeft: 0 },
+  marginLeft: 1,
+  '&:first-child': { marginLeft: 0, borderTopLeftRadius: 4, borderBottomLeftRadius: 4 },
+  '&:last-child': { borderTopRightRadius: 4, borderBottomRightRadius: 4 },
   '&:hover': { backgroundColor: violet.violet3 },
-  '&[data-state=on]': { backgroundColor: blackA.blackA10, color: 'white', boxShadow: 'none' },
-  '&:focus': { boxShadow: `0 0 0 2px black` },
+  '&[data-state=on]': { backgroundColor: violet.violet5, color: violet.violet11 },
+  '&:focus': { position: 'relative', boxShadow: `0 0 0 2px black` },
 });
 
 // Exports
