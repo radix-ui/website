@@ -17,4 +17,5 @@ export { default as SliderDemo } from './Slider';
 export { default as SwitchDemo } from './Switch';
 export { default as TabsDemo } from './Tabs';
 export { default as ToggleDemo } from './Toggle';
+export { default as ToggleGroupDemo } from './ToggleGroup';
 export { default as TooltipDemo } from './Tooltip';
