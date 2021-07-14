@@ -37,7 +37,7 @@ const StyledTrigger = styled(TabsPrimitive.Trigger, {
     color: violet.violet11,
     boxShadow: 'inset 0 -1px 0 0 currentColor, 0 1px 0 0 currentColor',
   },
-  '&:focus-within': { position: 'relative', boxShadow: `0 0 0 2px black` },
+  '&:focus': { position: 'relative', boxShadow: `0 0 0 2px black` },
 });
 
 const StyledContent = styled(TabsPrimitive.Content, {
