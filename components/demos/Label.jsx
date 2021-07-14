@@ -14,7 +14,7 @@ const StyledLabel = styled(LabelPrimitive.Root, {
 const Label = StyledLabel;
 
 // Your app...
-const Box = styled('div', {});
+const Flex = styled('div', { display: 'flex' });
 const Input = styled('input', {
   all: 'unset',
   width: 200,
@@ -33,10 +33,12 @@ const Input = styled('input', {
 });
 
 const LabelDemo = () => (
-  <Box>
-    <Label htmlFor="firstName">First name</Label>
-    <Input type="text" id="firstName" value="Pedro Duarte" css={{ marginLeft: 15 }} />
-  </Box>
+  <Flex css={{ padding: '0 20px', flexWrap: 'wrap', alignItems: 'center' }}>
+    <Label htmlFor="firstName" css={{ lineHeight: '35px', marginRight: 15 }}>
+      First name
+    </Label>
+    <Input type="text" id="firstName" value="Pedro Duarte" />
+  </Flex>
 );
 
 export default LabelDemo;
