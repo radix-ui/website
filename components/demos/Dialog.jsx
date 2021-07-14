@@ -4,8 +4,6 @@ import { violet, blackA, mauve, green } from '@radix-ui/colors';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 
-import * as colors from '@radix-ui/colors';
-
 const fadeIn = keyframes({
   from: { opacity: 0 },
   to: { opacity: 1 },
