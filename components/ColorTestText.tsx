@@ -425,6 +425,26 @@ export function ColorTestText() {
         <Flex
           align="center"
           justify="between"
+          css={{ height: '$7', px: '$3', backgroundColor: '$grass3' }}
+        >
+          <Text css={{ color: '$grass11', fontSize: '$3' }}>Grass11 on Grass3</Text>
+          <Flex
+            css={{
+              bc: '$grass5',
+              color: '$grass11',
+              ai: 'center',
+              jc: 'center',
+              width: '$5',
+              height: '$5',
+              borderRadius: '50%',
+            }}
+          >
+            <CheckIcon />
+          </Flex>
+        </Flex>
+        <Flex
+          align="center"
+          justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$lime3' }}
         >
           <Text css={{ color: '$lime11', fontSize: '$3' }}>Lime11 on Lime3</Text>
