@@ -12,6 +12,14 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#tabpanel
   one at a time.
 </Description>
 
+<HeroContainer>
+  <TabsDemo />
+</HeroContainer>
+
+```jsx hero template=Tabs
+
+```
+
 <Highlights
   features={[
     'Can be controlled or uncontrolled.',
@@ -217,51 +225,20 @@ Contains the content associated with each trigger.
 
 You can create vertical tabs by using the `orientation` prop.
 
-```jsx
-import { styled } from 'path-to/stitches.config';
+```jsx line=4
 import * as Tabs from '@radix-ui/react-tabs';
 
-const StyledTabs = styled(Tabs.Root, {
-  display: 'flex',
-});
-
-const StyledList = styled(Tabs.List, {
-  flexShrink: 0,
-  flexDirection: 'column',
-  display: 'flex',
-  borderRight: '1px solid gainsboro',
-});
-
-const StyledTrigger = styled(Tabs.Trigger, {
-  flexShrink: 0,
-  padding: '10px 20px',
-  color: 'slategray',
-  userSelect: 'none',
-
-  '&:hover': { color: 'black' },
-
-  '&[data-state="active"]': {
-    color: 'black',
-    boxShadow: 'inset -1px 0 0 currentColor, 1px 0 0 currentColor',
-  },
-});
-
-const StyledContent = styled(Tabs.Content, {
-  flexGrow: 1,
-  padding: 20,
-});
-
 export default () => (
-  <StyledTabs defaultValue="tab1" orientation="vertical">
-    <StyledList aria-label="tabs example">
-      <StyledTrigger value="tab1">One</StyledTrigger>
-      <StyledTrigger value="tab2">Two</StyledTrigger>
-      <StyledTrigger value="tab3">Three</StyledTrigger>
-    </StyledList>
-    <StyledContent value="tab1">Tab one content</StyledContent>
-    <StyledContent value="tab2">Tab two content</StyledContent>
-    <StyledContent value="tab3">Tab three content</StyledContent>
-  </StyledTabs>
+  <Tabs.Root defaultValue="tab1" __orientation__="vertical">
+    <Tabs.List aria-label="tabs example">
+      <Tabs.Trigger value="tab1">One</Tabs.Trigger>
+      <Tabs.Trigger value="tab2">Two</Tabs.Trigger>
+      <Tabs.Trigger value="tab3">Three</Tabs.Trigger>
+    </Tabs.List>
+    <Tabs.Content value="tab1">Tab one content</Tabs.Content>
+    <Tabs.Content value="tab2">Tab two content</Tabs.Content>
+    <Tabs.Content value="tab3">Tab three content</Tabs.Content>
+  </Tabs.Root>
 );
 ```
 
