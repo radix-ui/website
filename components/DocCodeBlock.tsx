@@ -135,6 +135,7 @@ export function DocCodeBlock({
               </Pre>
             </Box>
             <IconButton
+              aria-label="Copy code to clipboard"
               css={{
                 position: 'absolute',
                 top: '$2',
