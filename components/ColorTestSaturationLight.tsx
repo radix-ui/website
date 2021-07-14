@@ -229,6 +229,16 @@ export function ColorTestSaturationLight() {
         <Box css={{ height: 35, backgroundColor: '$green6' }}></Box>
 
         <Box>
+          <Text css={{ fontSize: '$2' }}>Grass</Text>
+        </Box>
+        <Box css={{ height: 35, backgroundColor: '$grass1' }}></Box>
+        <Box css={{ height: 35, backgroundColor: '$grass2' }}></Box>
+        <Box css={{ height: 35, backgroundColor: '$grass3' }}></Box>
+        <Box css={{ height: 35, backgroundColor: '$grass4' }}></Box>
+        <Box css={{ height: 35, backgroundColor: '$grass5' }}></Box>
+        <Box css={{ height: 35, backgroundColor: '$grass6' }}></Box>
+
+        <Box>
           <Text css={{ fontSize: '$2' }}>Orange</Text>
         </Box>
         <Box css={{ height: 35, backgroundColor: '$orange1' }}></Box>
