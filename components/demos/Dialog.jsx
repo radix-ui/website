@@ -171,12 +171,12 @@ const DialogDemo = () => (
         Make changes to your profile here. Click save when you're done.
       </DialogDescription>
       <Fieldset>
-        <Label>Name</Label>
-        <Input value="Pedro Duarte" />
+        <Label htmlFor="name">Name</Label>
+        <Input id="name" value="Pedro Duarte" />
       </Fieldset>
       <Fieldset>
-        <Label>Username</Label>
-        <Input value="@peduarte" />
+        <Label htmlFor="username">Username</Label>
+        <Input id="username" value="@peduarte" />
       </Fieldset>
       <Flex css={{ marginTop: 25, justifyContent: 'flex-end' }}>
         <DialogClose as={Button} aria-label="Close" variant="green">
