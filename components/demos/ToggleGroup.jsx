@@ -36,7 +36,7 @@ const ToggleGroupItem = StyledItem;
 
 // Your app...
 const ToggleGroupDemo = () => (
-  <ToggleGroup type="single" aria-label="Text alignment">
+  <ToggleGroup type="single" defaultValue="center" aria-label="Text alignment">
     <ToggleGroupItem value="left" aria-label="Left aligned">
       <TextAlignLeftIcon />
     </ToggleGroupItem>
