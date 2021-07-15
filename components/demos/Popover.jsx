@@ -116,7 +116,7 @@ const Text = styled('div', {
 
 const PopoverDemo = () => (
   <Popover>
-    <PopoverTrigger as={IconButton}>
+    <PopoverTrigger as={IconButton} aria-label="Update dimensions">
       <MixerHorizontalIcon />
     </PopoverTrigger>
     <PopoverContent sideOffset={5} className={`${theme}`}>
