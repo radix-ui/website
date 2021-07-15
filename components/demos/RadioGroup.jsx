@@ -48,8 +48,8 @@ const Label = styled('label', {
 });
 
 export const CheckboxDemo = () => (
-  <RadioGroup defaultValue="default">
-    <Flex css={{ my: 10, alignItems: 'center' }}>
+  <RadioGroup defaultValue="default" aria-label="View density">
+    <Flex css={{ margin: '10px 0', alignItems: 'center' }}>
       <RadioGroupRadio value="default" id="r1">
         <RadioGroupIndicator />
       </RadioGroupRadio>
