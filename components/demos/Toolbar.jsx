@@ -91,27 +91,27 @@ export const ToolbarToggleGroup = StyledToggleGroup;
 export const ToolbarToggleItem = StyledToggleItem;
 
 const ToolbarDemo = () => (
-  <Toolbar>
-    <ToolbarToggleGroup type="multiple">
-      <ToolbarToggleItem value="bold">
+  <Toolbar aria-label="Formatting options">
+    <ToolbarToggleGroup type="multiple" aria-label="Text formatting">
+      <ToolbarToggleItem value="bold" aria-label="Bold">
         <FontBoldIcon />
       </ToolbarToggleItem>
-      <ToolbarToggleItem value="italic">
+      <ToolbarToggleItem value="italic" aria-label="Italic">
         <FontItalicIcon />
       </ToolbarToggleItem>
-      <ToolbarToggleItem value="strikethrough">
+      <ToolbarToggleItem value="strikethrough" aria-label="Strike through">
         <StrikethroughIcon />
       </ToolbarToggleItem>
     </ToolbarToggleGroup>
     <ToolbarSeparator />
-    <ToolbarToggleGroup type="single" defaultValue="center">
-      <ToolbarToggleItem value="left">
+    <ToolbarToggleGroup type="single" defaultValue="center" aria-label="Text alignment">
+      <ToolbarToggleItem value="left" aria-label="Left aligned">
         <TextAlignLeftIcon />
       </ToolbarToggleItem>
-      <ToolbarToggleItem value="center">
+      <ToolbarToggleItem value="center" aria-label="Center aligned">
         <TextAlignCenterIcon />
       </ToolbarToggleItem>
-      <ToolbarToggleItem value="right">
+      <ToolbarToggleItem value="right" aria-label="Right aligned">
         <TextAlignRightIcon />
       </ToolbarToggleItem>
     </ToolbarToggleGroup>
