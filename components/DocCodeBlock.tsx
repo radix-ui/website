@@ -157,7 +157,7 @@ export function DocCodeBlock({
 
 const makeCodeSandboxParams = (name, code) => {
   const css =
-    '*{box-sizing:border-box;margin:0;padding:0;}body{font-family:system-ui;width:100vw;height:100vh;background-image:linear-gradient(330deg, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%);display:flex;align-items:flex-start;justify-content:center;padding-top:120px}svg{display:block;}';
+    '*{box-sizing:border-box;margin:0;padding:0;}body{font-family:system-ui;width:100vw;height:100vh;background-image:linear-gradient(330deg, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%);display:flex;align-items:flex-start;justify-content:center;}body>div{padding-top:120px}svg{display:block;}';
 
   const parameters = getParameters({
     files: {
@@ -185,7 +185,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './styles.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));`,
+ReactDOM.render(<div><App /></div>, document.getElementById('root'));`,
         isBinary: false,
       },
       'styles.css': {
