@@ -172,11 +172,11 @@ const DialogDemo = () => (
       </DialogDescription>
       <Fieldset>
         <Label htmlFor="name">Name</Label>
-        <Input id="name" value="Pedro Duarte" />
+        <Input id="name" defaultValue="Pedro Duarte" />
       </Fieldset>
       <Fieldset>
         <Label htmlFor="username">Username</Label>
-        <Input id="username" value="@peduarte" />
+        <Input id="username" defaultValue="@peduarte" />
       </Fieldset>
       <Flex css={{ marginTop: 25, justifyContent: 'flex-end' }}>
         <DialogClose as={Button} aria-label="Close" variant="green">
