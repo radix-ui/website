@@ -87,8 +87,8 @@ const TAGS = Array.from({ length: 50 }).map((_, i, a) => `v1.2.0-beta.${a.length
 
 const ScrollAreaDemo = () => (
   <ScrollArea>
-    <ScrollAreaViewport>
-      <Box style={{ backgroundColor: 'white', padding: '15px 20px' }}>
+    <ScrollAreaViewport css={{ backgroundColor: 'white' }}>
+      <Box style={{ padding: '15px 20px' }}>
         <Text>Tags</Text>
         {TAGS.map((tag) => (
           <Tag key={tag}>{tag}</Tag>
