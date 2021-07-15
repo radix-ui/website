@@ -179,7 +179,7 @@ const DialogDemo = () => (
         <Input value="@peduarte" />
       </Fieldset>
       <Flex css={{ marginTop: 25, justifyContent: 'flex-end' }}>
-        <DialogClose as={Button} variant="green">
+        <DialogClose as={Button} aria-label="Close" variant="green">
           Save changes
         </DialogClose>
       </Flex>
