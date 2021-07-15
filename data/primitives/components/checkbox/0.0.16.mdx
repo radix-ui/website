@@ -156,30 +156,11 @@ Renders when the checkbox is in a checked or indeterminate state. You can style 
 
 ### Indeterminate
 
-```jsx collapsed
-import { styled } from 'path-to/stitches.config';
+You can set the checkbox to `indeterminate` by taking control of its state.
+
+```jsx line=5,9-14,16
+import { DividerHorizontalIcon, CheckIcon } from '@radix-ui/react-icons';
 import * as Checkbox from '@radix-ui/react-checkbox';
-import { DividerHorizontalIcon } from '@radix-ui/react-icons';
-
-const StyledCheckbox = styled(Checkbox.Root, {
-  appearance: 'none',
-  backgroundColor: 'transparent',
-  border: 'none',
-  padding: 0,
-  boxShadow: 'inset 0 0 0 1px gainsboro',
-  width: 15,
-  height: 15,
-  borderRadius: 2,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  marginBottom: 10,
-
-  '&:focus': {
-    outline: 'none',
-    boxShadow: 'inset 0 0 0 1px dodgerblue, 0 0 0 1px dodgerblue',
-  },
-});
 
 export default () => {
   const [checked, setChecked] = React.useState('indeterminate');
