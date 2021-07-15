@@ -130,7 +130,7 @@ export const DropdownMenuDemo = () => {
   return (
     <Box>
       <DropdownMenu>
-        <DropdownMenuTrigger as={IconButton}>
+        <DropdownMenuTrigger as={IconButton} aria-label="Customise options">
           <HamburgerMenuIcon />
         </DropdownMenuTrigger>
 
