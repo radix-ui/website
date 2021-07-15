@@ -12,7 +12,7 @@ const Img = styled('img', {
   objectFit: 'cover',
   width: '100%',
   height: '100%',
-  objectPosition: 'bottom',
+  objectPosition: 'center 30%',
 });
 
 const AspectRatioDemo = () => (
