@@ -48,11 +48,11 @@ const StyledThumb = styled(SliderPrimitive.Thumb, {
   boxShadow: `0 2px 10px ${blackA.blackA7}`,
   borderRadius: 10,
   '&:hover': { backgroundColor: violet.violet3 },
-  '&:focus': { boxShadow: `0 0 0 5px ${blackA.blackA7}` },
+  '&:focus': { boxShadow: `0 0 0 5px ${blackA.blackA8}` },
 });
 
 const SliderDemo = () => (
-  <StyledSlider defaultValue={[50]} max={100} step={1}>
+  <StyledSlider defaultValue={[50]} max={100} step={1} aria-label="Volume">
     <StyledTrack>
       <StyledRange />
     </StyledTrack>
