@@ -6,13 +6,14 @@ export const Preview = ({ css, ...props }) => (
     className={`${theme}`}
     data-preview
     css={{
-      margin: 0,
-      backgroundColor: '$violet9',
-      borderRadius: '$3',
-      padding: '$3',
+      backgroundColor: '$purple9',
       position: 'relative',
-      mt: '$5',
-      ...css,
+      display: 'flex',
+      alignItems: 'flex-start',
+      justifyContent: 'center',
+      py: 100,
+      borderRadius: '$3',
+      ...(css as any),
     }}
   />
 );
