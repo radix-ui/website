@@ -37,7 +37,7 @@ const LabelDemo = () => (
     <Label htmlFor="firstName" css={{ lineHeight: '35px', marginRight: 15 }}>
       First name
     </Label>
-    <Input type="text" id="firstName" value="Pedro Duarte" />
+    <Input type="text" id="firstName" defaultValue="Pedro Duarte" />
   </Flex>
 );
 
