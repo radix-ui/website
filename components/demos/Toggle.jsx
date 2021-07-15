@@ -27,7 +27,7 @@ const Toggle = StyledToggle;
 
 // Your app...
 const ToggleDemo = () => (
-  <Toggle>
+  <Toggle aria-label="Toggle italic">
     <FontItalicIcon />
   </Toggle>
 );
