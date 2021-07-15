@@ -142,7 +142,7 @@ const PopoverDemo = () => (
         </Fieldset>
       </Flex>
       <PopoverArrow />
-      <PopoverClose>
+      <PopoverClose aria-label="Close">
         <Cross2Icon />
       </PopoverClose>
     </PopoverContent>
