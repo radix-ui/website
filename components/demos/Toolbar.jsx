@@ -33,7 +33,7 @@ const itemStyles = {
   lineHeight: 1,
   alignItems: 'center',
   justifyContent: 'center',
-  '&:hover': { backgroundColor: violet.violet4, color: violet.violet11 },
+  '&:hover': { backgroundColor: violet.violet3, color: violet.violet11 },
   '&:focus': { position: 'relative', boxShadow: `0 0 0 2px ${violet.violet7}` },
 };
 
