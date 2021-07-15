@@ -12,7 +12,7 @@ const Img = styled('img', {
   objectFit: 'cover',
   width: '100%',
   height: '100%',
-  objectPosition: 'center 30%',
+  objectPosition: 'center center',
 });
 
 const AspectRatioDemo = () => (
@@ -26,8 +26,8 @@ const AspectRatioDemo = () => (
   >
     <AspectRatio.Root ratio={16 / 9}>
       <Img
-        src="https://images.unsplash.com/photo-1623695727630-4b31fa99b836?w=300&dpr=2&q=80"
-        alt="Moon"
+        src="https://images.unsplash.com/photo-1535025183041-0991a977e25b?w=300&dpr=2&q=80"
+        alt="Landscape photo by Tobias Tullius"
       />
     </AspectRatio.Root>
   </Box>
