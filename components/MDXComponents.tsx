@@ -123,7 +123,7 @@ export const components = {
   code: ({ className, hero, showLineNumbers, collapsed, scrollable, line, ...props }) => {
     const isInlineCode = !className;
     return isInlineCode ? (
-      <DS.Code {...props} />
+      <DS.Code {...props} css={{ whiteSpace: 'break-spaces' }} />
     ) : (
       <DocCodeBlock
         variant="violet"
