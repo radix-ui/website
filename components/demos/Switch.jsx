@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled } from '@modulz/design-system';
-import { violet, mint, mauve, blackA, whiteA } from '@radix-ui/colors';
+import { violet, mauve, blackA, whiteA } from '@radix-ui/colors';
 import * as SwitchPrimitive from '@radix-ui/react-switch';
 
 const StyledSwitch = styled(SwitchPrimitive.Root, {
@@ -13,7 +13,7 @@ const StyledSwitch = styled(SwitchPrimitive.Root, {
   boxShadow: `0 2px 10px ${blackA.blackA7}`,
   WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
   '&:focus': { boxShadow: `0 0 0 2px black` },
-  '&[data-state="checked"]': { backgroundColor: mint.mint9 },
+  '&[data-state="checked"]': { backgroundColor: 'black' },
 });
 
 const StyledThumb = styled(SwitchPrimitive.Thumb, {

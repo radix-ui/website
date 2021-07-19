@@ -3,22 +3,23 @@ import { styled, keyframes, theme } from '@modulz/design-system';
 import { violet, blackA, red, mauve } from '@radix-ui/colors';
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 
-const fadeIn = keyframes({
-  from: { opacity: 0 },
-  to: { opacity: 1 },
+const overlayShow = keyframes({
+  '0%': { opacity: 0 },
+  '100%': { opacity: 1 },
 });
 
-const fadeOut = keyframes({
-  from: { opacity: 1 },
-  to: { opacity: 0 },
+const contentShow = keyframes({
+  '0%': { opacity: 0, transform: 'translate(-50%, -48%) scale(.96)' },
+  '100%': { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
 });
 
 const StyledOverlay = styled(AlertDialogPrimitive.Overlay, {
   backgroundColor: blackA.blackA9,
   position: 'fixed',
   inset: 0,
-  '&[data-state=open]': { animation: `${fadeIn} 300ms ease-out` },
-  '&[data-state=closed]': { animation: `${fadeOut} 300ms ease-out` },
+  '@media (prefers-reduced-motion: no-preference)': {
+    animation: `${overlayShow} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
+  },
 });
 
 function Root({ children, ...props }) {
@@ -42,8 +43,10 @@ const StyledContent = styled(AlertDialogPrimitive.Content, {
   maxWidth: '500px',
   maxHeight: '85vh',
   padding: 25,
-  '&[data-state=open]': { animation: `${fadeIn} 200ms ease-out` },
-  '&[data-state=closed]': { animation: `${fadeOut} 100ms ease-out` },
+  '@media (prefers-reduced-motion: no-preference)': {
+    animation: `${contentShow} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
+    willChange: 'transform',
+  },
   '&:focus': { outline: 'none' },
 });
 

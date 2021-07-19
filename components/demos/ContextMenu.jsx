@@ -120,13 +120,13 @@ export const ContextMenuDemo = () => {
         </ContextMenuTrigger>
         <ContextMenuContent sideOffset={5} align="end">
           <ContextMenuItem>
-            New Tab <RightSlot>⌘+T</RightSlot>
-          </ContextMenuItem>
-          <ContextMenuItem>
-            New Window <RightSlot>⌘+N</RightSlot>
+            Back <RightSlot>⌘+[</RightSlot>
           </ContextMenuItem>
           <ContextMenuItem disabled>
-            New Private Window <RightSlot>⇧+⌘+N</RightSlot>
+            Foward <RightSlot>⌘+]</RightSlot>
+          </ContextMenuItem>
+          <ContextMenuItem>
+            Reload <RightSlot>⌘+R</RightSlot>
           </ContextMenuItem>
           <ContextMenu>
             <ContextMenuTriggerItem>

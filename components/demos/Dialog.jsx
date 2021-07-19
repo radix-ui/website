@@ -4,22 +4,23 @@ import { violet, blackA, mauve, green } from '@radix-ui/colors';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 
-const fadeIn = keyframes({
-  from: { opacity: 0 },
-  to: { opacity: 1 },
+const overlayShow = keyframes({
+  '0%': { opacity: 0 },
+  '100%': { opacity: 1 },
 });
 
-const fadeOut = keyframes({
-  from: { opacity: 1 },
-  to: { opacity: 0 },
+const contentShow = keyframes({
+  '0%': { opacity: 0, transform: 'translate(-50%, -48%) scale(.96)' },
+  '100%': { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
 });
 
 const StyledOverlay = styled(DialogPrimitive.Overlay, {
   backgroundColor: blackA.blackA9,
   position: 'fixed',
   inset: 0,
-  '&[data-state=open]': { animation: `${fadeIn} 300ms ease-out` },
-  '&[data-state=closed]': { animation: `${fadeOut} 300ms ease-out` },
+  '@media (prefers-reduced-motion: no-preference)': {
+    animation: `${overlayShow} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
+  },
 });
 
 function Root({ children, ...props }) {
@@ -43,8 +44,10 @@ const StyledContent = styled(DialogPrimitive.Content, {
   maxWidth: '450px',
   maxHeight: '85vh',
   padding: 25,
-  '&[data-state=open]': { animation: `${fadeIn} 200ms ease-out` },
-  '&[data-state=closed]': { animation: `${fadeOut} 100ms ease-out` },
+  '@media (prefers-reduced-motion: no-preference)': {
+    animation: `${contentShow} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
+    willChange: 'transform',
+  },
   '&:focus': { outline: 'none' },
 });
 

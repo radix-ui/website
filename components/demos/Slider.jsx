@@ -28,8 +28,8 @@ const StyledTrack = styled(SliderPrimitive.Track, {
   flexGrow: 1,
   borderRadius: '9999px',
 
-  '&[data-orientation="horizontal"]': { height: 5 },
-  '&[data-orientation="vertical"]': { width: 5 },
+  '&[data-orientation="horizontal"]': { height: 3 },
+  '&[data-orientation="vertical"]': { width: 3 },
 });
 
 const StyledRange = styled(SliderPrimitive.Range, {

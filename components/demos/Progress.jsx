@@ -9,14 +9,12 @@ const StyledProgress = styled(ProgressPrimitive.Root, {
   background: blackA.blackA9,
   borderRadius: '99999px',
   width: 300,
-  padding: 2,
   height: 25,
 });
 
 const StyledIndicator = styled(ProgressPrimitive.Indicator, {
   backgroundColor: 'white',
   height: '100%',
-  borderRadius: 'inherit',
   transition: 'width 660ms cubic-bezier(0.65, 0, 0.35, 1)',
 });
 

@@ -63,7 +63,11 @@ export function DocCodeBlock({
               right: '$2',
             }}
           >
-            <Collapsible.Trigger as={Button} ghost css={{ color: '$whiteA12' }}>
+            <Collapsible.Trigger
+              as={Button}
+              ghost
+              css={{ color: '$whiteA12', textShadow: '0 2px 2px rgb(0 0 0 / 12%)' }}
+            >
               {isCollapsed ? 'Show' : 'Hide'} code
             </Collapsible.Trigger>
 
