@@ -8,11 +8,17 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#alertdialog
 # Alert Dialog
 
 <Description>
-  A modal dialog that interrupts the user with important content and
-  expects a response.
+  A modal dialog that interrupts the user with important content and expects a
+  response.
 </Description>
 
-<AlertDialogHero />
+<HeroContainer>
+  <AlertDialogDemo />
+</HeroContainer>
+
+```jsx hero template=AlertDialog
+
+```
 
 <Highlights
   features={[
@@ -36,7 +42,7 @@ npm install @radix-ui/react-alert-dialog
 
 ## Anatomy
 
-Import the components and piece the parts together.
+Import all parts and piece them together.
 
 ```jsx
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
@@ -54,60 +60,6 @@ export default () => (
   </AlertDialog.Root>
 );
 ```
-
-## Basic example
-
-Create your styled alert dialog component from the primitive parts.
-
-<Preview>
-  <AlertDialogDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as AlertDialog from '@radix-ui/react-alert-dialog';
-
-const StyledOverlay = styled(AlertDialog.Overlay, {
-  backgroundColor: 'rgba(0, 0, 0, .15)',
-  position: 'fixed',
-  top: 0,
-  right: 0,
-  bottom: 0,
-  left: 0,
-});
-
-const StyledContent = styled(AlertDialog.Content, {
-  position: 'fixed',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 360,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 20,
-});
-
-export default () => (
-  <AlertDialog.Root>
-    <AlertDialog.Trigger>Open</AlertDialog.Trigger>
-    <StyledOverlay />
-    <StyledContent>
-      <AlertDialog.Title>Alert title</AlertDialog.Title>
-      <AlertDialog.Description>
-        Alert description.
-      </AlertDialog.Description>
-      <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-      <AlertDialog.Action>Accept</AlertDialog.Action>
-    </StyledContent>
-  </AlertDialog.Root>
-);
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
-
-</Note>
 
 ## API Reference
 
@@ -128,8 +80,8 @@ Contains all the parts of an alert dialog.
       type: 'boolean',
       description: (
         <span>
-          The controlled open state of the dialog. Must be used in
-          conjunction with <Code>onOpenChange</Code>.
+          The controlled open state of the dialog. Must be used in conjunction
+          with <Code>onOpenChange</Code>.
         </span>
       ),
     },
@@ -145,10 +97,9 @@ Contains all the parts of an alert dialog.
       type: 'string',
       description: (
         <span>
-          A unique identifier for the component. The <Code>id</Code>{' '}
-          is used to generate <Code>id</Code> attributes for nested
-          components. If no <Code>id</Code> prop is provided, a
-          generated id will be used.
+          A unique identifier for the component. The <Code>id</Code> is used to
+          generate <Code>id</Code> attributes for nested components. If no{' '}
+          <Code>id</Code> prop is provided, a generated id will be used.
         </span>
       ),
     },
@@ -224,8 +175,8 @@ Contains content to be rendered when the dialog is open.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when focus moves to the destructive
-          action after opening. It can be prevented by calling{' '}
+          Event handler called when focus moves to the destructive action after
+          opening. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
         </span>
       ),
@@ -236,9 +187,8 @@ Contains content to be rendered when the dialog is open.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when focus moves to the trigger after
-          closing. It can be prevented by calling{' '}
-          <Code>event.preventDefault</Code>.
+          Event handler called when focus moves to the trigger after closing. It
+          can be prevented by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -248,8 +198,8 @@ Contains content to be rendered when the dialog is open.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the escape key is down. It can be
-          prevented by calling <Code>event.preventDefault</Code>.
+          Event handler called when the escape key is down. It can be prevented
+          by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -259,8 +209,8 @@ Contains content to be rendered when the dialog is open.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when a pointer event occurs outside the
-          bounds of the component. It can be prevented by calling{' '}
+          Event handler called when a pointer event occurs outside the bounds of
+          the component. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
         </span>
       ),
@@ -368,85 +318,9 @@ Adheres to the [Alert and Message Dialogs WAI-ARIA design pattern](https://www.w
       keys: ['Esc'],
       description: (
         <span>
-          Closes the dialog and moves focus to{' '}
-          <Code>AlertDialog.Trigger</Code>.
+          Closes the dialog and moves focus to <Code>AlertDialog.Trigger</Code>.
         </span>
       ),
     },
   ]}
 />
-
-## Custom APIs
-
-Create your own API by abstracting the primitive parts into your own component.
-
-### Abstract the overlay and prevent close
-
-This example abstracts the `AlertDialog.Overlay` part and prevents the dialog from closing when clicking outside, or when pressing <Kbd>ESC</Kbd>.
-
-#### Usage
-
-```jsx
-import {
-  AlertDialog,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogTitle,
-  AlertDialogDescription,
-  AlertDialogCancel,
-  AlertDialogAction,
-} from './your-alert-dialog';
-
-export default () => (
-  <AlertDialog>
-    <AlertDialogTrigger>AlertDialog trigger</AlertDialogTrigger>
-    <AlertDialogContent>
-      <AlertDialogTitle>AlertDialog title</AlertDialogTitle>
-      <AlertDialogDescription>
-        AlertDialog description
-      </AlertDialogDescription>
-      <AlertDialogCancel>Cancel</AlertDialogCancel>
-      <AlertDialogAction>Action</AlertDialogAction>
-    </AlertDialogContent>
-  </AlertDialog>
-);
-```
-
-#### Implementation
-
-```jsx
-// your-alert-dialog.js
-import React from 'react';
-import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
-
-export function AlertDialog({ children, ...props }) {
-  return (
-    <AlertDialogPrimitive.Root {...props}>
-      <AlertDialogPrimitive.Overlay />
-      {children}
-    </AlertDialogPrimitive.Root>
-  );
-}
-
-export const AlertDialogContent = React.forwardRef(
-  ({ children, ...props }, forwardedRef) => (
-    <AlertDialogPrimitive.Content
-      {...props}
-      ref={forwardedRef}
-      // Don't close the Alert Dialog when pressing ESC
-      onEscapeKeyDown={(event) => event.preventDefault()}
-      // Don't close the Alert Dialog when clicking outside
-      onPointerDownOutside={(event) => event.preventDefault()}
-    >
-      {children}
-    </>
-  )
-);
-
-export const AlertDialogTrigger = AlertDialogPrimitive.Trigger;
-export const AlertDialogTitle = AlertDialogPrimitive.Title;
-export const AlertDialogDescription =
-  AlertDialogPrimitive.Description;
-export const AlertDialogCancel = AlertDialogPrimitive.Cancel;
-export const AlertDialogAction = AlertDialogPrimitive.Action;
-```

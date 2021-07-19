@@ -11,13 +11,16 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#disclosure
   An interactive component which expands/collapses a panel.
 </Description>
 
-<CollapsibleHero />
+<HeroContainer>
+  <CollapsibleDemo />
+</HeroContainer>
+
+```jsx hero template=Collapsible
+
+```
 
 <Highlights
-  features={[
-    'Full keyboard navigation.',
-    'Can be controlled or uncontrolled.',
-  ]}
+  features={['Full keyboard navigation.', 'Can be controlled or uncontrolled.']}
 />
 
 ## Installation
@@ -42,39 +45,6 @@ export default () => (
   </Collapsible.Root>
 );
 ```
-
-## Basic example
-
-Create your styled collapsible component from the primitive parts.
-
-<Preview>
-  <CollapsibleDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Collapsible from '@radix-ui/react-collapsible';
-
-const StyledContent = styled(Collapsible.CollapsibleContent, {
-  padding: 10,
-  marginTop: 10,
-  backgroundColor: 'gainsboro',
-  borderRadius: 6,
-});
-
-export default () => (
-  <Collapsible.Root>
-    <Collapsible.Trigger>Trigger</Collapsible.Trigger>
-    <StyledContent>Content 1</StyledContent>
-  </Collapsible.Root>
-);
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
-
-</Note>
 
 ## API Reference
 
@@ -104,8 +74,8 @@ Contains all the parts of a collapsible.
       type: 'boolean',
       description: (
         <span>
-          The controlled open state of the collapsible. Must be used
-          in conjunction with <Code>onOpenChange</Code>.
+          The controlled open state of the collapsible. Must be used in
+          conjunction with <Code>onOpenChange</Code>.
         </span>
       ),
     },
@@ -121,8 +91,8 @@ Contains all the parts of a collapsible.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the collapsible.
+          When <Code>true</Code>, prevents the user from interacting with the
+          collapsible.
         </span>
       ),
     },
@@ -171,31 +141,37 @@ The component that contains the collapsible content.
   ]}
 />
 
-## Styling
+## Examples
 
 ### Animating content height
 
 We expose a CSS custom property `--radix-collapsible-content-height`.<br />Use it to animate the height of the content when it opens/closes.
 
-```jsx
-const slideDown = keyframes({
+```jsx line=4-7,9-12,14-17,22
+import { styled, keyframes } from '@stitches/react';
+import * as Collapsible from '@radix-ui/react-collapsible';
+
+const open = keyframes({
   from: { height: 0 },
   to: { height: 'var(--radix-collapsible-content-height)' },
 });
 
-const slideUp = keyframes({
+const close = keyframes({
   from: { height: 'var(--radix-collapsible-content-height)' },
   to: { height: 0 },
 });
 
-const StyledContent = styled(Collapsible.Content, {
-  '&[data-state="open"]': {
-    animation: `${slideDown} 300ms ease-out`,
-  },
-  '&[data-state="closed"]': {
-    animation: `${slideUp} 300ms ease-out`,
-  },
+const CollapsibleContent = styled(Collapsible.Content, {
+  '&[data-state="open"]': { animation: `${open} 300ms ease-out` },
+  '&[data-state="closed"]': { animation: `${close} 300ms ease-out` },
 });
+
+export default () => (
+  <Collapsible.Root>
+    <Collapsible.Trigger>…</Collapsible.Trigger>
+    <CollapsibleContent>…</CollapsibleContent>
+  </Collapsible.Root>
+);
 ```
 
 ## Accessibility

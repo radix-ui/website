@@ -12,11 +12,8 @@ features:
 # Checkbox
 
 <Description>
-  A control that allows the user to toggle between checked and not
-  checked.
+  A control that allows the user to toggle between checked and not checked.
 </Description>
-
-<CheckboxHero />
 
 <Highlights
   features={[
@@ -85,7 +82,7 @@ export default () => (
 
 <Note>
 
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/docs/primitives/overview/styling).
 
 </Note>
 
@@ -113,9 +110,8 @@ Contains all the parts of a checkbox.
       default: 'radix-checkbox',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
@@ -130,8 +126,8 @@ Contains all the parts of a checkbox.
       type: 'boolean',
       description: (
         <span>
-          The controlled checked state of the checkbox. Must be used
-          in conjunction with <Code>onCheckedChange</Code>.
+          The controlled checked state of the checkbox. Must be used in
+          conjunction with <Code>onCheckedChange</Code>.
         </span>
       ),
     },
@@ -147,8 +143,8 @@ Contains all the parts of a checkbox.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the checkbox.
+          When <Code>true</Code>, prevents the user from interacting with the
+          checkbox.
         </span>
       ),
     },
@@ -157,8 +153,8 @@ Contains all the parts of a checkbox.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, indicates that the user must check
-          the checkbox before the owning form can be submitted.
+          When <Code>true</Code>, indicates that the user must check the
+          checkbox before the owning form can be submitted.
         </span>
       ),
     },
@@ -167,8 +163,8 @@ Contains all the parts of a checkbox.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, makes the checkbox not mutable,
-          meaning the user cannot check the checkbox.
+          When <Code>true</Code>, makes the checkbox not mutable, meaning the
+          user cannot check the checkbox.
         </span>
       ),
     },
@@ -184,8 +180,7 @@ Contains all the parts of a checkbox.
       default: 'on',
       description: (
         <span>
-          The value given as data when submitted with a{' '}
-          <Code>name</Code>.
+          The value given as data when submitted with a <Code>name</Code>.
         </span>
       ),
     },
@@ -214,9 +209,8 @@ Renders when the checkbox is in a checked or indeterminate state. You can style 
       default: 'radix-checkbox-indicator',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
@@ -277,9 +271,7 @@ export default () => {
         type="button"
         onClick={() =>
           setChecked((prevIsChecked) =>
-            prevIsChecked === 'indeterminate'
-              ? false
-              : 'indeterminate'
+            prevIsChecked === 'indeterminate' ? false : 'indeterminate'
           )
         }
       >

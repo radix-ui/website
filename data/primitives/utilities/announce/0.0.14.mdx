@@ -66,11 +66,11 @@ Contains the content to announce.
       typeSimple: 'enum',
       description: (
         <span>
-          Mirrors the <Code>aria-atomic</Code> DOM attribute for live
-          regions. It is an optional attribute that indicates whether
-          assistive technologies will present all, or only parts of,
-          the changed region based on the change notifications defined
-          by the <Code>aria-relevant</Code> attribute.
+          Mirrors the <Code>aria-atomic</Code> DOM attribute for live regions.
+          It is an optional attribute that indicates whether assistive
+          technologies will present all, or only parts of, the changed region
+          based on the change notifications defined by the{' '}
+          <Code>aria-relevant</Code> attribute.
         </span>
       ),
     },
@@ -80,18 +80,17 @@ Contains the content to announce.
       typeSimple: 'enum',
       description: (
         <span>
-          Mirrors the <Code>aria-relevant</Code> DOM attribute for
-          live regions. It is an optional attribute used to describe
-          what types of changes have occurred to the region, and which
-          changes are relevant and should be announced. Any change
-          that is not relevant acts in the same manner it would if the{' '}
-          <Code>aria-live</Code> attribute were set to off.
+          Mirrors the <Code>aria-relevant</Code> DOM attribute for live regions.
+          It is an optional attribute used to describe what types of changes
+          have occurred to the region, and which changes are relevant and should
+          be announced. Any change that is not relevant acts in the same manner
+          it would if the <Code>aria-live</Code> attribute were set to off.
           <br />
           <br />
-          Unfortunately, <Code>aria-relevant</Code> doesn't behave as expected
-          across all device/screen reader combinations. It's important
-          to test its implementation before relying on it to work for your
-          users. The attribute is omitted by default.
+          Unfortunately, <Code>aria-relevant</Code> doesn't behave as expected across
+          all device/screen reader combinations. It's important to test its implementation
+          before relying on it to work for your users. The attribute is omitted by
+          default.
         </span>
       ),
     },
@@ -100,20 +99,21 @@ Contains the content to announce.
       type: 'string',
       description: (
         <span>
-          An optional unique identifier for the live region. By
-          default, <Code>Announce</Code> components create, at most,
-          two unique <Code>aria-live</Code> regions in the document
-          (one for all <Code>polite</Code> notifications, one for all{' '}
-          <Code>assertive</Code> notifications).
+          An optional unique identifier for the live region. By default,{' '}
+          <Code>Announce</Code> components create, at most, two unique{' '}
+          <Code>aria-live</Code> regions in the document (one for all{' '}
+          <Code>polite</Code> notifications, one for all <Code>assertive</Code>{' '}
+          notifications).
           <br />
           <br />
           In some cases you may wish to append additional <Code>
             aria-live
-          </Code> regions for distinct purposes (for example, simple status
-          updates may need to be separated from a stack of toast-style
-          notifications). By passing an id, you indicate that any content
-          rendered by components with the same identifier should be mirrored
-          in a separate <Code>aria-live</Code> region.
+          </Code> regions for distinct purposes (for example, simple status updates
+          may need to be separated from a stack of toast-style notifications). By
+          passing an id, you indicate that any content rendered by components with
+          the same identifier should be mirrored in a separate <Code>
+            aria-live
+          </Code> region.
         </span>
       ),
     },
@@ -123,10 +123,9 @@ Contains the content to announce.
       typeSimple: 'enum',
       description: (
         <span>
-          Mirrors the <Code>role</Code> DOM attribute. This is
-          optional and may be useful as an override in some cases. By
-          default, the role is determined by the <Code>type</Code>{' '}
-          prop.
+          Mirrors the <Code>role</Code> DOM attribute. This is optional and may
+          be useful as an override in some cases. By default, the role is
+          determined by the <Code>type</Code> prop.
         </span>
       ),
     },
@@ -137,9 +136,8 @@ Contains the content to announce.
       description: (
         <span>
           Mirrors the <Code>aria-live</Code> DOM attribute. The{' '}
-          <Code>aria-live=POLITENESS_SETTING</Code> is used to set the
-          priority with which screen reader should treat updates to
-          live regions.
+          <Code>aria-live=POLITENESS_SETTING</Code> is used to set the priority
+          with which screen reader should treat updates to live regions.
         </span>
       ),
       default: '"polite"',

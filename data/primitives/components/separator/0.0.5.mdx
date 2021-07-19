@@ -9,9 +9,7 @@ aria: https://www.w3.org/TR/wai-aria-1.2/#separator
 
 <Description>Visually or semantically separates content.</Description>
 
-<Highlights
-  features={['Supports horizontal and vertical orientations.']}
-/>
+<Highlights features={['Supports horizontal and vertical orientations.']} />
 
 ## Installation
 
@@ -50,7 +48,7 @@ export default () => <StyledSeparator />;
 
 <Note>
 
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/docs/primitives/overview/styling).
 
 </Note>
 
@@ -78,9 +76,8 @@ The separator.
       default: 'radix-separator',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
@@ -96,9 +93,9 @@ The separator.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, signifies that it is purely visual,
-          carries no semantic meaning, and ensures it is not present
-          in the accessibility tree.
+          When <Code>true</Code>, signifies that it is purely visual, carries no
+          semantic meaning, and ensures it is not present in the accessibility
+          tree.
         </span>
       ),
     },

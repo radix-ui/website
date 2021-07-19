@@ -11,8 +11,6 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#menu
   Displays a menu located at the pointer, triggered by a right-click.
 </Description>
 
-<ContextMenuHero />
-
 <Highlights
   features={[
     'Supports items, labels, groups of items.',
@@ -112,12 +110,8 @@ export default () => (
     </ContextMenu.Trigger>
     <StyledContent>
       <StyledItem onSelect={() => console.log('cut')}>Cut</StyledItem>
-      <StyledItem onSelect={() => console.log('copy')}>
-        Copy
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('paste')}>
-        Paste
-      </StyledItem>
+      <StyledItem onSelect={() => console.log('copy')}>Copy</StyledItem>
+      <StyledItem onSelect={() => console.log('paste')}>Paste</StyledItem>
     </StyledContent>
   </ContextMenu.Root>
 );
@@ -125,7 +119,7 @@ export default () => (
 
 <Note>
 
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/docs/primitives/overview/styling).
 
 </Note>
 
@@ -189,8 +183,8 @@ The component that pops out in an open context menu.
       default: 'false',
       description: (
         <span>
-          When <Code>true</Code>, keyboard navigation will loop from
-          last item to first, and vice versa.
+          When <Code>true</Code>, keyboard navigation will loop from last item
+          to first, and vice versa.
         </span>
       ),
     },
@@ -200,9 +194,8 @@ The component that pops out in an open context menu.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when focus moves back after closing. It
-          can be prevented by calling{' '}
-          <Code>event.preventDefault</Code>.
+          Event handler called when focus moves back after closing. It can be
+          prevented by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -212,11 +205,10 @@ The component that pops out in an open context menu.
       default: 'true',
       description: (
         <span>
-          When <Code>true</Code>, hover/focus/click interactions will
-          be disabled on elements outside the bounds of the component.
-          Users will need to click twice on outside elements to
-          interact with them: Once to close the context menu, and
-          again to activate the element.
+          When <Code>true</Code>, hover/focus/click interactions will be
+          disabled on elements outside the bounds of the component. Users will
+          need to click twice on outside elements to interact with them: Once to
+          close the context menu, and again to activate the element.
         </span>
       ),
     },
@@ -226,8 +218,8 @@ The component that pops out in an open context menu.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the escape key is down. It can be
-          prevented by calling <Code>event.preventDefault</Code>.
+          Event handler called when the escape key is down. It can be prevented
+          by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -237,22 +229,21 @@ The component that pops out in an open context menu.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when a pointer event occurs outside the
-          bounds of the component. It can be prevented by calling{' '}
+          Event handler called when a pointer event occurs outside the bounds of
+          the component. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
         </span>
       ),
     },
     {
       name: 'onInteractOutside',
-      type:
-        '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
+      type: '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when an interaction (pointer or focus
-          event) happens outside the bounds of the component. It can
-          be prevented by calling <Code>event.preventDefault</Code>.
+          Event handler called when an interaction (pointer or focus event)
+          happens outside the bounds of the component. It can be prevented by
+          calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -269,9 +260,9 @@ The component that pops out in an open context menu.
       default: '"bottom"',
       description: (
         <span>
-          The preferred side of the anchor to render against when
-          open. Will be reversed when collisions occur and{' '}
-          <Code>avoidCollisions</Code> is enabled.
+          The preferred side of the anchor to render against when open. Will be
+          reversed when collisions occur and <Code>avoidCollisions</Code> is
+          enabled.
         </span>
       ),
     },
@@ -279,9 +270,7 @@ The component that pops out in an open context menu.
       name: 'sideOffset',
       type: 'number',
       default: '0',
-      description: (
-        <span>The distance in pixels from the anchor.</span>
-      ),
+      description: <span>The distance in pixels from the anchor.</span>,
     },
     {
       name: 'align',
@@ -290,8 +279,8 @@ The component that pops out in an open context menu.
       default: '"center"',
       description: (
         <span>
-          The preferred alignment against the anchor. May change when
-          collisions occur.
+          The preferred alignment against the anchor. May change when collisions
+          occur.
         </span>
       ),
     },
@@ -313,8 +302,7 @@ The component that pops out in an open context menu.
       description: (
         <span>
           When <Code>true</Code>, overrides the <Code>side</Code> and
-          <Code>align</Code> preferences to prevent collisions with window
-          edges.
+          <Code>align</Code> preferences to prevent collisions with window edges.
         </span>
       ),
     },
@@ -324,8 +312,8 @@ The component that pops out in an open context menu.
       default: '0',
       description: (
         <span>
-          The distance in pixels from window edges where collision
-          detection should occur.
+          The distance in pixels from window edges where collision detection
+          should occur.
         </span>
       ),
     },
@@ -352,8 +340,8 @@ The component that contains the context menu items.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the item.
+          When <Code>true</Code>, prevents the user from interacting with the
+          item.
         </span>
       ),
     },
@@ -363,11 +351,9 @@ The component that contains the context menu items.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the user selects an item (via
-          mouse of keyboard). Calling{' '}
-          <Code>event.preventDefault</Code> in this handler will
-          prevent the context menu from closing when selecting that
-          item.
+          Event handler called when the user selects an item (via mouse of
+          keyboard). Calling <Code>event.preventDefault</Code> in this handler
+          will prevent the context menu from closing when selecting that item.
         </span>
       ),
     },
@@ -376,10 +362,9 @@ The component that contains the context menu items.
       type: 'string',
       description: (
         <span>
-          Optional text used for typeahead purposes. By default the
-          typeahead behavior will use the <Code>.textContent</Code> of{' '}
-          the item. Use this when the content is complex, or you have
-          non-textual content inside.
+          Optional text used for typeahead purposes. By default the typeahead
+          behavior will use the <Code>.textContent</Code> of the item. Use this
+          when the content is complex, or you have non-textual content inside.
         </span>
       ),
     },
@@ -442,8 +427,8 @@ An item that can be controlled and rendered like a checkbox.
       type: 'boolean',
       description: (
         <span>
-          The controlled checked state of the item. Must be used in
-          conjunction with <Code>onCheckedChange</Code>.
+          The controlled checked state of the item. Must be used in conjunction
+          with <Code>onCheckedChange</Code>.
         </span>
       ),
     },
@@ -452,9 +437,7 @@ An item that can be controlled and rendered like a checkbox.
       type: '(checked: boolean) => void',
       typeSimple: 'function',
       description: (
-        <span>
-          Event handler called when the checked state changes.
-        </span>
+        <span>Event handler called when the checked state changes.</span>
       ),
     },
     {
@@ -462,8 +445,8 @@ An item that can be controlled and rendered like a checkbox.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the item.
+          When <Code>true</Code>, prevents the user from interacting with the
+          item.
         </span>
       ),
     },
@@ -473,11 +456,9 @@ An item that can be controlled and rendered like a checkbox.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the user selects an item (via
-          mouse of keyboard). Calling{' '}
-          <Code>event.preventDefault</Code> in this handler will
-          prevent the context menu from closing when selecting that
-          item.
+          Event handler called when the user selects an item (via mouse of
+          keyboard). Calling <Code>event.preventDefault</Code> in this handler
+          will prevent the context menu from closing when selecting that item.
         </span>
       ),
     },
@@ -486,10 +467,9 @@ An item that can be controlled and rendered like a checkbox.
       type: 'string',
       description: (
         <span>
-          Optional text used for typeahead purposes. By default the
-          typeahead behavior will use the <Code>.textContent</Code> of{' '}
-          the item. Use this when the content is complex, or you have
-          non-textual content inside.
+          Optional text used for typeahead purposes. By default the typeahead
+          behavior will use the <Code>.textContent</Code> of the item. Use this
+          when the content is complex, or you have non-textual content inside.
         </span>
       ),
     },
@@ -551,8 +531,8 @@ An item that can be controlled and rendered like a radio.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the item.
+          When <Code>true</Code>, prevents the user from interacting with the
+          item.
         </span>
       ),
     },
@@ -562,11 +542,9 @@ An item that can be controlled and rendered like a radio.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the user selects an item (via
-          mouse of keyboard). Calling{' '}
-          <Code>event.preventDefault</Code> in this handler will
-          prevent the context menu from closing when selecting that
-          item.
+          Event handler called when the user selects an item (via mouse of
+          keyboard). Calling <Code>event.preventDefault</Code> in this handler
+          will prevent the context menu from closing when selecting that item.
         </span>
       ),
     },
@@ -575,10 +553,9 @@ An item that can be controlled and rendered like a radio.
       type: 'string',
       description: (
         <span>
-          Optional text used for typeahead purposes. By default the
-          typeahead behavior will use the <Code>.textContent</Code> of{' '}
-          the item. Use this when the content is complex, or you have
-          non-textual content inside.
+          Optional text used for typeahead purposes. By default the typeahead
+          behavior will use the <Code>.textContent</Code> of the item. Use this
+          when the content is complex, or you have non-textual content inside.
         </span>
       ),
     },
@@ -605,8 +582,8 @@ Renders when the parent `ContextMenu.CheckboxItem` or `ContextMenu.RadioItem` is
       type: 'boolean',
       description: (
         <span>
-          Used to force mounting when more control is needed. Useful
-          when controlling animation with React animation libraries.
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries.
         </span>
       ),
     },
@@ -644,8 +621,7 @@ const scaleIn = keyframes({
 });
 
 const StyledContent = styled(ContextMenu.Content, {
-  transformOrigin:
-    'var(--radix-context-menu-content-transform-origin)',
+  transformOrigin: 'var(--radix-context-menu-content-transform-origin)',
   animation: `${scaleIn} 0.5s ease-out`,
 });
 ```
@@ -679,7 +655,7 @@ const StyledContent = styled(ContextMenu.Content, {
 
 You can add special styles to disabled items via the `data-disabled` attribute.
 
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
@@ -725,12 +701,8 @@ export default () => (
       <StyledItem disabled onSelect={() => console.log('cut')}>
         Cut
       </StyledItem>
-      <StyledItem onSelect={() => console.log('copy')}>
-        Copy
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('paste')}>
-        Paste
-      </StyledItem>
+      <StyledItem onSelect={() => console.log('copy')}>Copy</StyledItem>
+      <StyledItem onSelect={() => console.log('paste')}>Paste</StyledItem>
     </StyledContent>
   </ContextMenu.Root>
 );
@@ -740,7 +712,7 @@ export default () => (
 
 Use the `Separator` part to add a separator between items.
 
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
@@ -789,13 +761,9 @@ export default () => (
         Cut
       </StyledItem>
       <StyledSeparator />
-      <StyledItem onSelect={() => console.log('copy')}>
-        Copy
-      </StyledItem>
+      <StyledItem onSelect={() => console.log('copy')}>Copy</StyledItem>
       <StyledSeparator />
-      <StyledItem onSelect={() => console.log('paste')}>
-        Paste
-      </StyledItem>
+      <StyledItem onSelect={() => console.log('paste')}>Paste</StyledItem>
     </StyledContent>
   </ContextMenu.Root>
 );
@@ -805,7 +773,7 @@ export default () => (
 
 Use the `Label` part to help label a section.
 
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
@@ -861,12 +829,8 @@ export default () => (
       <StyledItem disabled onSelect={() => console.log('cut')}>
         Cut
       </StyledItem>
-      <StyledItem onSelect={() => console.log('copy')}>
-        Copy
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('paste')}>
-        Paste
-      </StyledItem>
+      <StyledItem onSelect={() => console.log('copy')}>Copy</StyledItem>
+      <StyledItem onSelect={() => console.log('paste')}>Paste</StyledItem>
     </StyledContent>
   </ContextMenu.Root>
 );
@@ -876,7 +840,7 @@ export default () => (
 
 Use the `CheckboxItem` part to add an item that can be checked.
 
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 import { CheckIcon } from '@radix-ui/react-icons';
@@ -905,10 +869,7 @@ const itemStyles = {
 
 const StyledItem = styled(ContextMenu.Item, itemStyles);
 
-const StyledCheckboxItem = styled(
-  ContextMenu.CheckboxItem,
-  itemStyles
-);
+const StyledCheckboxItem = styled(ContextMenu.CheckboxItem, itemStyles);
 
 const StyledItemIndicator = styled(ContextMenu.ItemIndicator, {
   position: 'absolute',
@@ -945,10 +906,7 @@ export default () => {
           Check for updates
         </StyledItem>
         <StyledSeparator />
-        <StyledCheckboxItem
-          checked={checked}
-          onCheckedChange={setChecked}
-        >
+        <StyledCheckboxItem checked={checked} onCheckedChange={setChecked}>
           <StyledItemIndicator>
             <CheckIcon />
           </StyledItemIndicator>
@@ -964,7 +922,7 @@ export default () => {
 
 Use the `RadioGroup` and `RadioItem` parts to add an item that can be checked amongst others.
 
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 import { CheckIcon } from '@radix-ui/react-icons';
@@ -1047,7 +1005,7 @@ export default () => {
 
 ### With complex items
 
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 

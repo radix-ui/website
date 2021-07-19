@@ -3,7 +3,7 @@ import { styled, theme } from '@modulz/design-system';
 export const Pre = styled('pre', {
   $$background: '$loContrast',
   $$text: '$colors$hiContrast',
-  $$outline: '0 0 0 1px $colors$slate6',
+  $$outline: 'inset 0 0 0 1px $colors$slate6',
   $$syntax1: '$colors$blue11',
   $$syntax2: '$colors$cyan11',
   $$syntax3: '$colors$blue11',
@@ -13,6 +13,7 @@ export const Pre = styled('pre', {
   $$added: '$colors$green11',
   $$lineNumbers: '$colors$indigo5',
   $$fadedLines: '$colors$slate10',
+  $$highlightedLineBg: '$colors$violet3',
   $$highlightedWord1Bg: '$colors$violet4',
   $$highlightedWord1BgActive: '$colors$violet6',
   $$highlightedWord1Text: '$colors$violet11',
@@ -25,7 +26,7 @@ export const Pre = styled('pre', {
 
   boxSizing: 'border-box',
   borderRadius: '$3',
-  padding: '$3',
+  padding: '$4 $5',
   overflow: 'auto',
   fontFamily: '$mono',
   fontSize: '$2',
@@ -97,11 +98,12 @@ export const Pre = styled('pre', {
   // Styles for highlighted word
   '.highlight-word': {
     $$bgAndShadow: '$$highlightedWord1Bg',
-    $$xOffset: '1px',
+    $$xOffset: '0px',
     color: '$$highlightedWord1Text',
     backgroundColor: '$$bgAndShadow',
     display: 'inline-block',
     boxShadow: '$$xOffset 0 0 0 $$bgAndShadow, -$$xOffset 0 0 0 $$bgAndShadow',
+    borderRadius: '2px',
 
     // reset the color for tokens inside highlighted words
     '.token': {
@@ -147,10 +149,17 @@ export const Pre = styled('pre', {
         color: '$$lineNumbers',
       },
     },
+    '&[data-invert-line-highlight=true]': {
+      '.highlight-line': {
+        '&::before': {
+          left: 10,
+        },
+      },
+    },
   },
 
   // Styles for highlighted lines
-  '.highlight-line': {
+  '&[data-invert-line-highlight=false] .highlight-line': {
     '&, *': {
       transition: 'color 150ms ease',
     },
@@ -158,6 +167,16 @@ export const Pre = styled('pre', {
       '&, *': {
         color: '$$fadedLines',
       },
+    },
+  },
+
+  // data-invert-line-highlight
+  // Styles for inverted line highlighting
+  '&[data-invert-line-highlight=true] .highlight-line': {
+    mx: '-$5',
+    px: '$5',
+    '&[data-highlighted=true]': {
+      backgroundColor: '$$highlightedLineBg',
     },
   },
 
@@ -169,6 +188,15 @@ export const Pre = styled('pre', {
   variants: {
     variant: {
       violet: {
+        $$background: '$colors$violet2',
+        $$text: '$colors$violet11',
+        $$outline: 'inset 0 0 0 1px $colors$violet4',
+        $$syntax1: '$colors$blue10',
+        $$syntax2: '$colors$pink11',
+        $$comment: '$colors$mauve9',
+        $$fadedLines: '$colors$mauveA8',
+      },
+      violetOld: {
         $$background: theme.colors.mauve12.value,
         $$text: theme.colors.gray5.value,
         $$outline: 'none',

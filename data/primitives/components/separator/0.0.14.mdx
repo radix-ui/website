@@ -9,9 +9,15 @@ aria: https://www.w3.org/TR/wai-aria-1.2/#separator
 
 <Description>Visually or semantically separates content.</Description>
 
-<Highlights
-  features={['Supports horizontal and vertical orientations.']}
-/>
+<HeroContainer>
+  <SeparatorDemo />
+</HeroContainer>
+
+```jsx hero template=Separator
+
+```
+
+<Highlights features={['Supports horizontal and vertical orientations.']} />
 
 ## Installation
 
@@ -23,40 +29,13 @@ npm install @radix-ui/react-separator
 
 ## Anatomy
 
-Import the components and piece the parts together.
+Import all parts and piece them together.
 
 ```jsx
 import * as Separator from '@radix-ui/react-separator';
 
 export default () => <Separator.Root />;
 ```
-
-## Basic example
-
-Create your styled separator component from the primitive part.
-
-<Preview>
-  <SeparatorDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Separator from '@radix-ui/react-separator';
-
-const StyledSeparator = styled(Separator.Root, {
-  backgroundColor: 'gainsboro',
-  height: 1,
-  margin: '20px 0',
-});
-
-export default () => <StyledSeparator />;
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
-
-</Note>
 
 ## API Reference
 
@@ -87,9 +66,9 @@ The separator.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, signifies that it is purely visual,
-          carries no semantic meaning, and ensures it is not present
-          in the accessibility tree.
+          When <Code>true</Code>, signifies that it is purely visual, carries no
+          semantic meaning, and ensures it is not present in the accessibility
+          tree.
         </span>
       ),
     },

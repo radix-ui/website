@@ -8,11 +8,16 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#checkbox
 # Checkbox
 
 <Description>
-  A control that allows the user to toggle between checked and not
-  checked.
+  A control that allows the user to toggle between checked and not checked.
 </Description>
 
-<CheckboxHero />
+<HeroContainer>
+  <CheckboxDemo />
+</HeroContainer>
+
+```jsx hero template=Checkbox
+
+```
 
 <Highlights
   features={[
@@ -32,7 +37,7 @@ npm install @radix-ui/react-checkbox
 
 ## Anatomy
 
-Import the components and piece the parts together.
+Import all parts and piece them together.
 
 ```jsx
 import * as Checkbox from '@radix-ui/react-checkbox';
@@ -43,51 +48,6 @@ export default () => (
   </Checkbox.Root>
 );
 ```
-
-## Basic example
-
-Create your styled checkbox component from the primitive parts.
-
-<Preview>
-  <CheckboxDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Checkbox from '@radix-ui/react-checkbox';
-import { CheckIcon } from '@radix-ui/react-icons';
-
-const StyledCheckbox = styled(Checkbox.Root, {
-  appearance: 'none',
-  backgroundColor: 'transparent',
-  border: 'none',
-  padding: 0,
-  boxShadow: 'inset 0 0 0 1px gainsboro',
-  width: 15,
-  height: 15,
-  borderRadius: 2,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-
-  '&:focus': {
-    outline: 'none',
-    boxShadow: 'inset 0 0 0 1px dodgerblue, 0 0 0 1px dodgerblue',
-  },
-});
-
-export default () => (
-  <StyledCheckbox defaultChecked>
-    <Checkbox.Indicator as={CheckIcon} />
-  </StyledCheckbox>
-);
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
-
-</Note>
 
 ## API Reference
 
@@ -117,8 +77,8 @@ Contains all the parts of a checkbox.
       type: 'boolean',
       description: (
         <span>
-          The controlled checked state of the checkbox. Must be used
-          in conjunction with <Code>onCheckedChange</Code>.
+          The controlled checked state of the checkbox. Must be used in
+          conjunction with <Code>onCheckedChange</Code>.
         </span>
       ),
     },
@@ -134,8 +94,8 @@ Contains all the parts of a checkbox.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the checkbox.
+          When <Code>true</Code>, prevents the user from interacting with the
+          checkbox.
         </span>
       ),
     },
@@ -144,8 +104,8 @@ Contains all the parts of a checkbox.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, indicates that the user must check
-          the checkbox before the owning form can be submitted.
+          When <Code>true</Code>, indicates that the user must check the
+          checkbox before the owning form can be submitted.
         </span>
       ),
     },
@@ -161,8 +121,7 @@ Contains all the parts of a checkbox.
       default: 'on',
       description: (
         <span>
-          The value given as data when submitted with a{' '}
-          <Code>name</Code>.
+          The value given as data when submitted with a <Code>name</Code>.
         </span>
       ),
     },
@@ -197,34 +156,11 @@ Renders when the checkbox is in a checked or indeterminate state. You can style 
 
 ### Indeterminate
 
-<Preview>
-  <CheckboxIndeterminateDemo />
-</Preview>
+You can set the checkbox to `indeterminate` by taking control of its state.
 
-```jsx collapsed
-import { styled } from 'path-to/stitches.config';
+```jsx line=5,9-14,16
+import { DividerHorizontalIcon, CheckIcon } from '@radix-ui/react-icons';
 import * as Checkbox from '@radix-ui/react-checkbox';
-import { DividerHorizontalIcon } from '@radix-ui/react-icons';
-
-const StyledCheckbox = styled(Checkbox.Root, {
-  appearance: 'none',
-  backgroundColor: 'transparent',
-  border: 'none',
-  padding: 0,
-  boxShadow: 'inset 0 0 0 1px gainsboro',
-  width: 15,
-  height: 15,
-  borderRadius: 2,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  marginBottom: 10,
-
-  '&:focus': {
-    outline: 'none',
-    boxShadow: 'inset 0 0 0 1px dodgerblue, 0 0 0 1px dodgerblue',
-  },
-});
 
 export default () => {
   const [checked, setChecked] = React.useState('indeterminate');
@@ -242,9 +178,7 @@ export default () => {
         type="button"
         onClick={() =>
           setChecked((prevIsChecked) =>
-            prevIsChecked === 'indeterminate'
-              ? false
-              : 'indeterminate'
+            prevIsChecked === 'indeterminate' ? false : 'indeterminate'
           )
         }
       >

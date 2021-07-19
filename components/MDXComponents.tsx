@@ -10,33 +10,11 @@ import { Highlights } from './Highlights';
 import { DocCodeBlock } from './DocCodeBlock';
 import { CodeBlock } from './CodeBlock';
 import { PackageRelease, PRLink } from './releaseHelpers';
-import * as gettingStartedDemos from './demos/GettingStarted';
-import * as accessibleIconDemos from './demos/AccessibleIcon';
-import * as aspectRatioDemos from './demos/AspectRatio';
-import * as accordionDemos from './demos/Accordion';
-import * as alertDialogDemos from './demos/AlertDialog';
-import * as avatarDemos from './demos/Avatar';
-import * as checkboxDemos from './demos/Checkbox';
-import * as collapsibleDemos from './demos/Collapsible';
-import * as contextMenuDemos from './demos/ContextMenu';
-import * as dialogDemos from './demos/Dialog';
-import * as dropdownMenuDemos from './demos/DropdownMenu';
-import * as hoverCardDemos from './demos/HoverCard';
-import * as labelDemos from './demos/Label';
-import * as popoverDemos from './demos/Popover';
-import * as progressDemos from './demos/Progress';
-import * as radioGroupDemos from './demos/RadioGroup';
-import * as scrollAreaDemos from './demos/ScrollArea';
-import * as separatorDemos from './demos/Separator';
-import * as sliderDemos from './demos/Slider';
-import * as switchDemos from './demos/Switch';
-import * as tabsDemos from './demos/Tabs';
-import * as toggleDemos from './demos/Toggle';
-import * as toggleGroupDemos from './demos/ToggleGroup';
-import * as toolbarDemos from './demos/Toolbar';
-import * as tooltipDemos from './demos/Tooltip';
+import { HeroContainer } from './HeroContainer';
 import { Frontmatter } from 'types/frontmatter';
 import { ColorScale, ColorScaleGroup } from './Scale';
+import * as Demos from './demos';
+
 export const components = {
   ColorScale,
   ColorScaleGroup,
@@ -66,10 +44,8 @@ export const components = {
         size="2"
         {...props}
         id={id}
-        css={{
-          scrollMarginTop: '$6',
-        }}
         as={'h2' as any}
+        css={{ scrollMarginTop: '$8' }}
         data-heading
       >
         {children}
@@ -78,7 +54,7 @@ export const components = {
   ),
   h3: ({ children, id, ...props }) => (
     <LinkHeading id={id} css={{ mt: '$7', mb: '$1' }}>
-      <DS.Heading {...props} id={id} css={{ scrollMarginTop: '$6' }} as={'h3' as any} data-heading>
+      <DS.Heading {...props} id={id} as={'h3' as any} css={{ scrollMarginTop: '$8' }} data-heading>
         {children}
       </DS.Heading>
     </LinkHeading>
@@ -144,12 +120,21 @@ export const components = {
     />
   ),
   pre: ({ children }) => <>{children}</>,
-  code: ({ className, collapsed, ...props }) => {
+  code: ({ className, hero, showLineNumbers, collapsed, scrollable, line, ...props }) => {
     const isInlineCode = !className;
     return isInlineCode ? (
       <DS.Code {...props} />
     ) : (
-      <DocCodeBlock className={className} collapsed={collapsed !== undefined} {...(props as any)} />
+      <DocCodeBlock
+        variant="violet"
+        isHighlightingLines={line !== undefined}
+        className={className}
+        isHero={hero !== undefined}
+        isCollapsible={hero !== undefined || collapsed !== undefined}
+        isScrollable={scrollable !== undefined}
+        showLineNumbers={showLineNumbers !== undefined}
+        {...(props as any)}
+      />
     );
   },
   Note: (props) => (
@@ -185,31 +170,8 @@ export const components = {
   Preview,
   PackageRelease,
   PRLink,
-  ...accessibleIconDemos,
-  ...aspectRatioDemos,
-  ...gettingStartedDemos,
-  ...accordionDemos,
-  ...alertDialogDemos,
-  ...avatarDemos,
-  ...checkboxDemos,
-  ...collapsibleDemos,
-  ...contextMenuDemos,
-  ...dialogDemos,
-  ...dropdownMenuDemos,
-  ...hoverCardDemos,
-  ...labelDemos,
-  ...popoverDemos,
-  ...progressDemos,
-  ...radioGroupDemos,
-  ...scrollAreaDemos,
-  ...separatorDemos,
-  ...sliderDemos,
-  ...switchDemos,
-  ...tabsDemos,
-  ...toggleDemos,
-  ...toggleGroupDemos,
-  ...toolbarDemos,
-  ...tooltipDemos,
+  HeroContainer,
+  ...Demos,
 };
 
 const LinkHeading = ({
@@ -225,15 +187,13 @@ const LinkHeading = ({
     <DS.Box
       as="a"
       href={`#${id}`}
-      // used by `scrollToUrlHash`
-      // not using the `id` attribute for that because we may get ids that start with a number
-      // and that is not a valid css selector
-      data-id={id}
+      // data-id={id}
       css={{
         textDecoration: 'none',
         color: 'inherit',
         display: 'inline-flex',
         alignItems: 'center',
+
         svg: {
           opacity: 0,
         },

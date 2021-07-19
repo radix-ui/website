@@ -42,7 +42,7 @@
     "@radix-ui/react-toolbar": "0.0.13",
     "@radix-ui/react-tooltip": "0.0.20",
     "@radix-ui/react-visually-hidden": "0.0.14",
-    "@types/tinycolor2": "^1.4.3",
+    "codesandbox": "^2.2.3",
     "copy-to-clipboard": "^3.3.1",
     "date-fns": "^2.20.0",
     "glob": "^7.1.6",
@@ -73,6 +73,7 @@
   "devDependencies": {
     "@types/node": "^14.14.37",
     "@types/react": "^17.0.3",
+    "@types/tinycolor2": "^1.4.3",    
     "compare-versions": "^3.6.0",
     "husky": "4.3.6",
     "lint-staged": "10.5.3",

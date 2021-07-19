@@ -29,6 +29,16 @@ module.exports = withPlugins([withTM, withOptimizedImages, withVideos], {
         permanent: false,
       },
       {
+        source: '/docs/primitives/utilities/aspect-ratio/:slug*',
+        destination: '/docs/primitives/components/aspect-ratio/:slug*',
+        permanent: false,
+      },
+      {
+        source: '/docs/primitives/utilities/label/:slug*',
+        destination: '/docs/primitives/components/label/:slug*',
+        permanent: false,
+      },
+      {
         source: '/design/docs-system',
         destination: '/design/docs-system/overview/introduction',
         permanent: false,

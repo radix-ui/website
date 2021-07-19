@@ -12,8 +12,6 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#accordion
   associated section of content.
 </Description>
 
-<AccordionHero />
-
 <Highlights
   features={[
     'Full keyboard navigation.',
@@ -88,27 +86,21 @@ export default () => (
       <StyledHeader>
         <StyledButton>Item 1</StyledButton>
       </StyledHeader>
-      <StyledPanel>
-        Here goes the content for the accordion item 1.
-      </StyledPanel>
+      <StyledPanel>Here goes the content for the accordion item 1.</StyledPanel>
     </StyledItem>
 
     <StyledItem value="item-2">
       <StyledHeader>
         <StyledButton>Item 2</StyledButton>
       </StyledHeader>
-      <StyledPanel>
-        Here goes the content for the accordion item 2.
-      </StyledPanel>
+      <StyledPanel>Here goes the content for the accordion item 2.</StyledPanel>
     </StyledItem>
 
     <StyledItem value="item-3">
       <StyledHeader>
         <StyledButton>Item 3</StyledButton>
       </StyledHeader>
-      <StyledPanel>
-        Here goes the content for the accordion item 3.
-      </StyledPanel>
+      <StyledPanel>Here goes the content for the accordion item 3.</StyledPanel>
     </StyledItem>
   </StyledAccordion>
 );
@@ -116,7 +108,7 @@ export default () => (
 
 <Note>
 
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/docs/primitives/overview/styling).
 
 </Note>
 
@@ -144,9 +136,8 @@ Contains all the parts of an accordion.
       default: 'radix-accordion',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
@@ -175,8 +166,8 @@ Contains all the parts of an accordion.
       default: 'false',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the accordion and all its items.
+          When <Code>true</Code>, prevents the user from interacting with the
+          accordion and all its items.
         </span>
       ),
     },
@@ -213,9 +204,8 @@ Contains all the parts of a collapsible section.
       default: 'radix-accordion-item',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
@@ -226,8 +216,8 @@ Contains all the parts of a collapsible section.
       default: 'false',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the item.
+          When <Code>true</Code>, prevents the user from interacting with the
+          item.
         </span>
       ),
     },
@@ -262,9 +252,8 @@ Wraps an `Accordion.Button`. Use the `as` prop to update it to the appropriate h
       default: 'radix-accordion-header',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
@@ -293,9 +282,8 @@ Toggles the collapsed state of its associated item. It should be nested inside o
       default: 'radix-accordion-button',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
@@ -324,9 +312,8 @@ Contains the collapsible content for an item.
       default: 'radix-accordion-panel',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
@@ -335,8 +322,8 @@ Contains the collapsible content for an item.
       type: 'boolean',
       description: (
         <span>
-          Used to force mounting when more control is needed. Useful
-          when controlling animation with React animation libraries.
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries.
         </span>
       ),
     },
@@ -396,9 +383,7 @@ export default () => (
           <AccordionChevron aria-hidden />
         </StyledButton>
       </StyledHeader>
-      <StyledPanel>
-        Here goes the content for the accordion item 1.
-      </StyledPanel>
+      <StyledPanel>Here goes the content for the accordion item 1.</StyledPanel>
     </StyledItem>
 
     <StyledItem value="item-2">
@@ -408,9 +393,7 @@ export default () => (
           <AccordionChevron aria-hidden />
         </StyledButton>
       </StyledHeader>
-      <StyledPanel>
-        Here goes the content for the accordion item 2.
-      </StyledPanel>
+      <StyledPanel>Here goes the content for the accordion item 2.</StyledPanel>
     </StyledItem>
 
     <StyledItem value="item-3">
@@ -420,9 +403,7 @@ export default () => (
           <AccordionChevron aria-hidden />
         </StyledButton>
       </StyledHeader>
-      <StyledPanel>
-        Here goes the content for the accordion item 3.
-      </StyledPanel>
+      <StyledPanel>Here goes the content for the accordion item 3.</StyledPanel>
     </StyledItem>
   </StyledAccordion>
 );
@@ -479,9 +460,7 @@ export default () => (
           <AccordionChevron aria-hidden />
         </StyledButton>
       </StyledHeader>
-      <StyledPanel>
-        Here goes the content for the accordion item 1.
-      </StyledPanel>
+      <StyledPanel>Here goes the content for the accordion item 1.</StyledPanel>
     </StyledItem>
 
     <StyledItem value="item-2">
@@ -491,9 +470,7 @@ export default () => (
           <AccordionChevron aria-hidden />
         </StyledButton>
       </StyledHeader>
-      <StyledPanel>
-        Here goes the content for the accordion item 2.
-      </StyledPanel>
+      <StyledPanel>Here goes the content for the accordion item 2.</StyledPanel>
     </StyledItem>
 
     <StyledItem value="item-3">
@@ -503,9 +480,7 @@ export default () => (
           <AccordionChevron aria-hidden />
         </StyledButton>
       </StyledHeader>
-      <StyledPanel>
-        Here goes the content for the accordion item 3.
-      </StyledPanel>
+      <StyledPanel>Here goes the content for the accordion item 3.</StyledPanel>
     </StyledItem>
   </StyledAccordion>
 );
@@ -523,8 +498,8 @@ Adheres to the [Accordion WAI-ARIA design pattern](https://www.w3.org/TR/wai-ari
       keys: ['Space'],
       description: (
         <span>
-          When focus is on an <Code>Accordion.Button</Code> of a
-          collapsed section, expands the section.
+          When focus is on an <Code>Accordion.Button</Code> of a collapsed
+          section, expands the section.
         </span>
       ),
     },
@@ -532,8 +507,8 @@ Adheres to the [Accordion WAI-ARIA design pattern](https://www.w3.org/TR/wai-ari
       keys: ['Enter'],
       description: (
         <span>
-          When focus is on an <Code>Accordion.Button</Code> of a
-          collapsed section, expands the section.
+          When focus is on an <Code>Accordion.Button</Code> of a collapsed
+          section, expands the section.
         </span>
       ),
     },
@@ -565,8 +540,8 @@ Adheres to the [Accordion WAI-ARIA design pattern](https://www.w3.org/TR/wai-ari
       keys: ['Home'],
       description: (
         <span>
-          When focus is on an <Code>Accordion.Button</Code>, moves
-          focus to the first <Code>Accordion.Button</Code>.
+          When focus is on an <Code>Accordion.Button</Code>, moves focus to the
+          first <Code>Accordion.Button</Code>.
         </span>
       ),
     },
@@ -574,8 +549,8 @@ Adheres to the [Accordion WAI-ARIA design pattern](https://www.w3.org/TR/wai-ari
       keys: ['End'],
       description: (
         <span>
-          When focus is on an <Code>Accordion.Button</Code>, moves
-          focus to the last <Code>Accordion.Button</Code>.
+          When focus is on an <Code>Accordion.Button</Code>, moves focus to the
+          last <Code>Accordion.Button</Code>.
         </span>
       ),
     },

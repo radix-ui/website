@@ -8,9 +8,29 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#toolbar
 # Toolbar
 
 <Description>
-  A container for grouping a set of controls, such as buttons, toggle
-  groups or dropdown menus.
+  A container for grouping a set of controls, such as buttons, toggle groups or
+  dropdown menus.
 </Description>
+
+<HeroContainer
+  css={{
+    justifyContent: 'flex-start',
+    overflow: 'auto',
+    '@bp2': {
+      justifyContent: 'center',
+    },
+  }}
+>
+  <Box css={{ flex: '0 0 20px', '@bp1': { flex: '0 0 60px' } }} />
+  <Box css={{ flex: 1 }}>
+    <ToolbarDemo />
+  </Box>
+  <Box css={{ flex: '0 0 20px', '@bp1': { flex: '0 0 60px' } }} />
+</HeroContainer>
+
+```jsx hero template=Toolbar
+
+```
 
 <Highlights features={['Full keyboard navigation.']} />
 
@@ -40,85 +60,6 @@ export default () => (
   </Toolbar.Root>
 );
 ```
-
-## Basic example
-
-Create your styled toolbar component from the primitive parts.
-
-<Preview>
-  <ToolbarDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Toolbar from '@radix-ui/react-toolbar';
-
-const StyledToolbar = styled(Toolbar.Root, {
-  display: 'flex',
-});
-
-const itemStyles = {
-  appearance: 'none',
-  backgroundColor: 'transparent',
-  border: 'none',
-  padding: '5px 10px',
-  margin: '0 1px',
-  boxShadow: 'inset 0 0 0 1px gainsboro',
-  overflow: 'hidden',
-  borderRadius: 3,
-  fontSize: 13,
-
-  '&:focus': {
-    outline: 'none',
-    boxShadow: 'inset 0 0 0 1px dodgerblue, 0 0 0 1px dodgerblue',
-  },
-};
-
-const StyledButton = styled(Toolbar.Button, itemStyles);
-
-const StyledLink = styled(Toolbar.Link, {
-  ...itemStyles,
-  display: 'inline-flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-});
-
-const StyledSeparator = styled(Toolbar.Separator, {
-  width: 1,
-  margin: 5,
-  backgroundColor: 'gainsboro',
-});
-
-const StyledToggleItem = styled(Toolbar.ToggleItem, {
-  ...itemStyles,
-  '&[data-state=on]': {
-    backgroundColor: 'gainsboro',
-  },
-});
-
-export default () => (
-  <StyledToolbar>
-    <StyledButton>Action 1</StyledButton>
-    <StyledButton>Action 2</StyledButton>
-    <StyledSeparator />
-    <StyledLink href="https://modulz.app" target="_blank">
-      Link
-    </StyledLink>
-    <StyledSeparator />
-    <Toolbar.ToggleGroup type="single" defaultValue="center">
-      <StyledToggleItem value="left">Left</StyledToggleItem>
-      <StyledToggleItem value="center">Center</StyledToggleItem>
-      <StyledToggleItem value="right">Right</StyledToggleItem>
-    </Toolbar.ToggleGroup>
-  </StyledToolbar>
-);
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
-
-</Note>
 
 ## API Reference
 
@@ -161,8 +102,8 @@ Contains all the toolbar component parts.
       default: 'true',
       description: (
         <span>
-          When <Code>true</Code>, keyboard navigation will loop from
-          last tab to first, and vice versa.
+          When <Code>true</Code>, keyboard navigation will loop from last tab to
+          first, and vice versa.
         </span>
       ),
     },
@@ -227,8 +168,8 @@ A set of two-state buttons that can be toggled on or off.
       typeSimple: 'enum',
       description: (
         <span>
-          Determines whether a single or multiple items can be pressed
-          at a time.
+          Determines whether a single or multiple items can be pressed at a
+          time.
         </span>
       ),
     },
@@ -238,9 +179,9 @@ A set of two-state buttons that can be toggled on or off.
       type: 'string',
       description: (
         <span>
-          The controlled value of the pressed item when{' '}
-          <Code>type</Code> is <Code>"single"</Code>. Must be used in
-          conjunction with <Code>onValueChange</Code>.
+          The controlled value of the pressed item when <Code>type</Code> is{' '}
+          <Code>"single"</Code>. Must be used in conjunction with{' '}
+          <Code>onValueChange</Code>.
         </span>
       ),
     },
@@ -250,9 +191,9 @@ A set of two-state buttons that can be toggled on or off.
       type: 'string',
       description: (
         <span>
-          The value of the item to show as pressed when initially
-          rendered and <Code>type</Code> is <Code>"single"</Code>. Use
-          when you do not need to control the state of the items.
+          The value of the item to show as pressed when initially rendered and{' '}
+          <Code>type</Code> is <Code>"single"</Code>. Use when you do not need
+          to control the state of the items.
         </span>
       ),
     },
@@ -263,8 +204,8 @@ A set of two-state buttons that can be toggled on or off.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the pressed state of an item
-          changes and <Code>type</Code> is <Code>"single"</Code>.
+          Event handler called when the pressed state of an item changes and{' '}
+          <Code>type</Code> is <Code>"single"</Code>.
         </span>
       ),
     },
@@ -275,9 +216,9 @@ A set of two-state buttons that can be toggled on or off.
       type: 'string[]',
       description: (
         <span>
-          The controlled value of the pressed items when{' '}
-          <Code>type</Code> is <Code>"multiple"</Code>. Must be used
-          in conjunction with <Code>onValueChange</Code>.
+          The controlled value of the pressed items when <Code>type</Code> is{' '}
+          <Code>"multiple"</Code>. Must be used in conjunction with{' '}
+          <Code>onValueChange</Code>.
         </span>
       ),
     },
@@ -288,9 +229,9 @@ A set of two-state buttons that can be toggled on or off.
       type: 'string[]',
       description: (
         <span>
-          The values of the items to show as pressed when initially
-          rendered and <Code>type</Code> is <Code>"multiple"</Code>.
-          Use when you do not need to control the state of the items.
+          The values of the items to show as pressed when initially rendered and{' '}
+          <Code>type</Code> is <Code>"multiple"</Code>. Use when you do not need
+          to control the state of the items.
         </span>
       ),
     },
@@ -301,8 +242,8 @@ A set of two-state buttons that can be toggled on or off.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the pressed state of an item
-          changes and <Code>type</Code> is <Code>"multiple"</Code>.
+          Event handler called when the pressed state of an item changes and{' '}
+          <Code>type</Code> is <Code>"multiple"</Code>.
         </span>
       ),
     },
@@ -313,8 +254,8 @@ A set of two-state buttons that can be toggled on or off.
       default: 'false',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the toggle group and all its items.
+          When <Code>true</Code>, prevents the user from interacting with the
+          toggle group and all its items.
         </span>
       ),
     },
@@ -347,8 +288,8 @@ An item in the group.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the item.
+          When <Code>true</Code>, prevents the user from interacting with the
+          item.
         </span>
       ),
     },
@@ -381,95 +322,19 @@ All our primitives which expose a `Trigger` part, such as `Dialog`, `AlertDialog
 
 Here is an example using our `DropdownMenu` primitive.
 
-<Preview>
-  <ToolbarExtraDemo />
-</Preview>
-
-```jsx collapsed
-import { styled } from 'path-to/stitches.config';
+```jsx line=9
 import * as Toolbar from '@radix-ui/react-toolbar';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
-const StyledToolbar = styled(Toolbar.Root, {
-  display: 'flex',
-});
-
-const itemStyles = {
-  appearance: 'none',
-  backgroundColor: 'transparent',
-  color: 'black',
-  border: 'none',
-  padding: '5px 10px',
-  margin: '0 1px',
-  boxShadow: 'inset 0 0 0 1px gainsboro',
-  overflow: 'hidden',
-  borderRadius: 3,
-  fontSize: 13,
-
-  '&:focus': {
-    outline: 'none',
-    boxShadow: 'inset 0 0 0 1px dodgerblue, 0 0 0 1px dodgerblue',
-  },
-};
-
-const StyledButton = styled(Toolbar.Button, itemStyles);
-
-const StyledSeparator = styled(Toolbar.Separator, {
-  width: 1,
-  margin: 5,
-  backgroundColor: 'gainsboro',
-});
-
-const StyledMenuContent = styled(DropdownMenu.Content, {
-  minWidth: 130,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 5,
-  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
-});
-
-const StyledMenuTrigger = styled(DropdownMenu.Trigger, itemStyles);
-
-const StyledMenuItem = styled(DropdownMenu.Item, {
-  fontSize: 13,
-  padding: '5px 10px',
-  borderRadius: 3,
-  cursor: 'default',
-
-  '&:focus': {
-    outline: 'none',
-    backgroundColor: 'dodgerblue',
-    color: 'white',
-  },
-});
-
-const StyledArrow = styled(DropdownMenu.Arrow, {
-  fill: 'white',
-});
-
 export default () => (
-  <StyledToolbar>
-    <StyledButton>Action 1</StyledButton>
-    <StyledButton>Action 2</StyledButton>
-    <StyledSeparator />
+  <Toolbar.Root>
+    <Toolbar.Button>Action 1</Toolbar.Button>
+    <Toolbar.Separator />
     <DropdownMenu.Root>
-      <Toolbar.Button as={StyledMenuTrigger}>Trigger</Toolbar.Button>
-        Trigger
-      </Toolbar.Button>
-      <StyledMenuContent>
-        <StyledMenuItem onSelect={() => console.log('cut')}>
-          Cut
-        </StyledMenuItem>
-        <StyledMenuItem onSelect={() => console.log('copy')}>
-          Copy
-        </StyledMenuItem>
-        <StyledMenuItem onSelect={() => console.log('paste')}>
-          Paste
-        </StyledMenuItem>
-        <StyledArrow />
-      </StyledMenuContent>
+      <Toolbar.Button as={DropdownMenu.Trigger}>Trigger</Toolbar.Button>
+      <DropdownMenu.Content>…</DropdownMenu.Content>
     </DropdownMenu.Root>
-  </StyledToolbar>
+  </Toolbar.Root>
 );
 ```
 
@@ -497,8 +362,7 @@ Uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/rad
       keys: ['ArrowDown'],
       description: (
         <span>
-          Moves focus to the next item depending on{' '}
-          <Code>orientation</Code>.
+          Moves focus to the next item depending on <Code>orientation</Code>.
         </span>
       ),
     },
@@ -506,8 +370,7 @@ Uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/rad
       keys: ['ArrowRight'],
       description: (
         <span>
-          Moves focus to the next item depending on{' '}
-          <Code>orientation</Code>.
+          Moves focus to the next item depending on <Code>orientation</Code>.
         </span>
       ),
     },
@@ -515,8 +378,8 @@ Uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/rad
       keys: ['ArrowUp'],
       description: (
         <span>
-          Moves focus to the previous item depending on{' '}
-          <Code>orientation</Code>.
+          Moves focus to the previous item depending on <Code>orientation</Code>
+          .
         </span>
       ),
     },
@@ -524,8 +387,8 @@ Uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/rad
       keys: ['ArrowLeft'],
       description: (
         <span>
-          Moves focus to the previous item depending on{' '}
-          <Code>orientation</Code>.
+          Moves focus to the previous item depending on <Code>orientation</Code>
+          .
         </span>
       ),
     },

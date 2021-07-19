@@ -11,7 +11,13 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal
   Displays rich content in a portal, triggered by a button.
 </Description>
 
-<PopoverHero />
+<HeroContainer>
+  <PopoverDemo />
+</HeroContainer>
+
+```jsx hero template=Popover
+
+```
 
 <Highlights
   features={[
@@ -33,7 +39,7 @@ npm install @radix-ui/react-popover
 
 ## Anatomy
 
-Import the components and piece the parts together.
+Import all parts and piece them together.
 
 ```jsx
 import * as Popover from '@radix-ui/react-popover';
@@ -50,49 +56,6 @@ export default () => (
 );
 ```
 
-## Basic example
-
-Create your styled popover component from the primitive parts.
-
-<Preview>
-  <PopoverDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Popover from '@radix-ui/react-popover';
-
-const StyledContent = styled(Popover.Content, {
-  borderRadius: 3,
-  padding: '20px',
-  fontSize: 14,
-  backgroundColor: 'gainsboro',
-  color: 'black',
-});
-
-const StyledArrow = styled(Popover.Arrow, {
-  fill: 'gainsboro',
-});
-
-export default () => (
-  <Popover.Root>
-    <Popover.Trigger>Trigger</Popover.Trigger>
-    <StyledContent>
-      <h3>Popover content</h3>
-      <p>Are you sure you wanna do this?</p>
-      <Popover.Close>Yes</Popover.Close>
-      <StyledArrow />
-    </StyledContent>
-  </Popover.Root>
-);
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
-
-</Note>
-
 ## API Reference
 
 ### Root
@@ -106,8 +69,8 @@ Contains all the parts of a popover.
       type: 'boolean',
       description: (
         <span>
-          The open state of the popover when it is initially rendered.
-          Use when you do not need to control its open state.
+          The open state of the popover when it is initially rendered. Use when
+          you do not need to control its open state.
         </span>
       ),
     },
@@ -116,8 +79,8 @@ Contains all the parts of a popover.
       type: 'boolean',
       description: (
         <span>
-          The controlled open state of the popover. Must be used in
-          conjunction with <Code>onOpenChange</Code>.
+          The controlled open state of the popover. Must be used in conjunction
+          with <Code>onOpenChange</Code>.
         </span>
       ),
     },
@@ -127,8 +90,7 @@ Contains all the parts of a popover.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the open state of the popover
-          changes.
+          Event handler called when the open state of the popover changes.
         </span>
       ),
     },
@@ -192,8 +154,8 @@ The component that pops out when the popover is open.
       default: 'true',
       description: (
         <span>
-          When <Code>true</Code>, focus will be trapped within the
-          component bounds.
+          When <Code>true</Code>, focus will be trapped within the component
+          bounds.
         </span>
       ),
     },
@@ -203,8 +165,8 @@ The component that pops out when the popover is open.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when focus moves into the component
-          after opening. It can be prevented by calling{' '}
+          Event handler called when focus moves into the component after
+          opening. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
         </span>
       ),
@@ -215,9 +177,8 @@ The component that pops out when the popover is open.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when focus moves to the trigger after
-          closing. It can be prevented by calling{' '}
-          <Code>event.preventDefault</Code>.
+          Event handler called when focus moves to the trigger after closing. It
+          can be prevented by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -227,11 +188,10 @@ The component that pops out when the popover is open.
       default: 'false',
       description: (
         <span>
-          When <Code>true</Code>, hover/focus/click interactions will
-          be disabled on elements outside the bounds of the component.
-          Users will need to click twice on outside elements to
-          interact with them: Once to close the popover, and again to
-          activate the element.
+          When <Code>true</Code>, hover/focus/click interactions will be
+          disabled on elements outside the bounds of the component. Users will
+          need to click twice on outside elements to interact with them: Once to
+          close the popover, and again to activate the element.
         </span>
       ),
     },
@@ -241,8 +201,8 @@ The component that pops out when the popover is open.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the escape key is down. It can be
-          prevented by calling <Code>event.preventDefault</Code>.
+          Event handler called when the escape key is down. It can be prevented
+          by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -252,8 +212,8 @@ The component that pops out when the popover is open.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when a pointer event occurs outside the
-          bounds of the component. It can be prevented by calling{' '}
+          Event handler called when a pointer event occurs outside the bounds of
+          the component. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
         </span>
       ),
@@ -264,22 +224,21 @@ The component that pops out when the popover is open.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when focus moves outside the bounds of
-          the component. It can be prevented by calling{' '}
+          Event handler called when focus moves outside the bounds of the
+          component. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
         </span>
       ),
     },
     {
       name: 'onInteractOutside',
-      type:
-        '(event: PointerDownOutsideEvent | FocusOutsideEvent) => void',
+      type: '(event: PointerDownOutsideEvent | FocusOutsideEvent) => void',
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when an interaction (pointer or focus
-          event) happens outside the bounds of the component. It can
-          be prevented by calling <Code>event.preventDefault</Code>.
+          Event handler called when an interaction (pointer or focus event)
+          happens outside the bounds of the component. It can be prevented by
+          calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -289,8 +248,8 @@ The component that pops out when the popover is open.
       default: 'false',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from scrolling
-          outside the bounds of the component.
+          When <Code>true</Code>, prevents the user from scrolling outside the
+          bounds of the component.
         </span>
       ),
     },
@@ -309,8 +268,8 @@ The component that pops out when the popover is open.
       type: 'boolean',
       description: (
         <span>
-          Used to force mounting when more control is needed. Useful
-          when controlling animation with React animation libraries.
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries.
         </span>
       ),
     },
@@ -321,9 +280,9 @@ The component that pops out when the popover is open.
       default: '"bottom"',
       description: (
         <span>
-          The preferred side of the anchor to render against when
-          open. Will be reversed when collisions occur and{' '}
-          <Code>avoidCollisions</Code> is enabled.
+          The preferred side of the anchor to render against when open. Will be
+          reversed when collisions occur and <Code>avoidCollisions</Code> is
+          enabled.
         </span>
       ),
     },
@@ -331,9 +290,7 @@ The component that pops out when the popover is open.
       name: 'sideOffset',
       type: 'number',
       default: '0',
-      description: (
-        <span>The distance in pixels from the anchor.</span>
-      ),
+      description: <span>The distance in pixels from the anchor.</span>,
     },
     {
       name: 'align',
@@ -342,8 +299,8 @@ The component that pops out when the popover is open.
       default: '"center"',
       description: (
         <span>
-          The preferred alignment against the anchor. May change when
-          collisions occur.
+          The preferred alignment against the anchor. May change when collisions
+          occur.
         </span>
       ),
     },
@@ -365,8 +322,7 @@ The component that pops out when the popover is open.
       description: (
         <span>
           When <Code>true</Code>, overrides the <Code>side</Code> and
-          <Code>align</Code> preferences to prevent collisions with window
-          edges.
+          <Code>align</Code> preferences to prevent collisions with window edges.
         </span>
       ),
     },
@@ -376,8 +332,8 @@ The component that pops out when the popover is open.
       default: '0',
       description: (
         <span>
-          The distance in pixels from window edges where collision
-          detection should occur.
+          The distance in pixels from window edges where collision detection
+          should occur.
         </span>
       ),
     },
@@ -417,8 +373,8 @@ An optional arrow element to render alongside the popover. This can be used to h
       default: 0,
       description: (
         <span>
-          The distance in pixels to render from the{' '}
-          <Code>Popover.Content</Code> edge.
+          The distance in pixels to render from the <Code>Popover.Content</Code>{' '}
+          edge.
         </span>
       ),
     },
@@ -443,13 +399,16 @@ The button that closes an open popover.
   ]}
 />
 
-## Styling
+## Examples
 
 ### Origin-aware animations
 
 We expose a CSS custom property `--radix-popover-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
-```jsx
+```jsx line=4-7,9-12,17
+import { styled, keyframes } from '@stitches/react';
+import * as Popover from '@radix-ui/react-popover';
+
 const scaleIn = keyframes({
   '0%': { opacity: 0, transform: 'scale(0)' },
   '100%': { opacity: 1, transform: 'scale(1)' },
@@ -459,13 +418,23 @@ const StyledContent = styled(Popover.Content, {
   transformOrigin: 'var(--radix-popover-content-transform-origin)',
   animation: `${scaleIn} 0.5s ease-out`,
 });
+
+export default () => (
+  <Popover.Root>
+    <Popover.Trigger>…</Popover.Trigger>
+    <StyledContent>…</StyledContent>
+  </Popover.Root>
+);
 ```
 
 ### Collision-aware animations
 
 We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
 
-```jsx
+```jsx line=4-7,9,12-14-19,24
+import { styled, keyframes } from '@stitches/react';
+import * as Popover from '@radix-ui/react-popover';
+
 const slideDown = keyframes({
   '0%': { opacity: 0, transform: 'translateY(-10px)' },
   '100%': { opacity: 1, transform: 'translateY(0)' },
@@ -477,11 +446,18 @@ const slideUp = keyframes({
 });
 
 const StyledContent = styled(Popover.Content, {
-  '&[data-side="top"]': { animationName: slideUp },
-  '&[data-side="bottom"]': { animationName: slideDown },
   animationDuration: '0.6s',
   animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+  '&[data-side="top"]': { animationName: slideUp },
+  '&[data-side="bottom"]': { animationName: slideDown },
 });
+
+export default () => (
+  <Popover.Root>
+    <Popover.Trigger>…</Popover.Trigger>
+    <StyledContent>…</StyledContent>
+  </Popover.Root>
+);
 ```
 
 ## Examples
@@ -490,11 +466,7 @@ const StyledContent = styled(Popover.Content, {
 
 You can anchor the content to another element if you do not want to use the trigger as the anchor.
 
-<Preview>
-  <PopoverAnchorDemo />
-</Preview>
-
-```jsx collapsed
+```jsx
 import { styled } from 'path-to/stitches.config';
 import * as Popover from '@radix-ui/react-popover';
 
@@ -559,8 +531,7 @@ Adheres to the [Dialog WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-p
       keys: ['Esc'],
       description: (
         <span>
-          Closes the popover and moves focus to{' '}
-          <Code>Popover.Trigger</Code>.
+          Closes the popover and moves focus to <Code>Popover.Trigger</Code>.
         </span>
       ),
     },
@@ -578,11 +549,7 @@ This example abstracts the `Popover.Arrow` part and sets a default `sideOffset` 
 #### Usage
 
 ```jsx
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-} from './your-popover';
+import { Popover, PopoverTrigger, PopoverContent } from './your-popover';
 
 export default () => (
   <Popover>
@@ -604,11 +571,7 @@ export const PopoverTrigger = PopoverPrimitive.Trigger;
 
 export const PopoverContent = React.forwardRef(
   ({ children, ...props }, forwardedRef) => (
-    <PopoverPrimitive.Content
-      sideOffset={5}
-      {...props}
-      ref={forwardedRef}
-    >
+    <PopoverPrimitive.Content sideOffset={5} {...props} ref={forwardedRef}>
       {children}
       <PopoverPrimitive.Arrow />
     </PopoverPrimitive.Content>

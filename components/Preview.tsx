@@ -1,18 +1,19 @@
-import { Box } from '@modulz/design-system';
+import { Box, theme } from '@modulz/design-system';
 
 export const Preview = ({ css, ...props }) => (
   <Box
     {...props}
+    className={`${theme}`}
     data-preview
     css={{
-      margin: 0,
-      boxShadow: '0 0 0 1px $colors$slate6',
-      borderTopLeftRadius: '$3',
-      borderTopRightRadius: '$3',
-      padding: '$3',
+      backgroundColor: '$purple9',
       position: 'relative',
-      mt: '$5',
-      ...css,
+      display: 'flex',
+      alignItems: 'flex-start',
+      justifyContent: 'center',
+      py: 100,
+      borderRadius: '$3',
+      ...(css as any),
     }}
   />
 );

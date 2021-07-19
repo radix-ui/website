@@ -38,9 +38,9 @@ export default () => (
 
 ## Basic example
 
-Uses the `as` prop to convert the tooltip trigger into a slottable area. It will render the button passed as children for the trigger.
+Uses the `as` prop to convert the `TooltipTrigger` into a slottable area. It will render the `button` passed as children for the trigger.
 
-```jsx
+```jsx line=9
 // your-tooltip.jsx
 import React from 'react';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
@@ -60,7 +60,7 @@ function Tooltip({
       defaultOpen={defaultOpen}
       onOpenChange={onOpenChange}
     >
-      <TooltipPrimitive.Trigger as={Slot}>
+      <TooltipPrimitive.Trigger __as__={Slot}>
         {children}
       </TooltipPrimitive.Trigger>
       <TooltipPrimitive.Content side="top" align="center" {...props}>

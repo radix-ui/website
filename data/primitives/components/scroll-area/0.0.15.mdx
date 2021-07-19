@@ -7,11 +7,16 @@ name: scroll-area
 # Scroll Area
 
 <Description>
-  Augments native scroll functionality for custom, cross-browser
-  styling.
+  Augments native scroll functionality for custom, cross-browser styling.
 </Description>
 
-<ScrollAreaHero />
+<HeroContainer css={{ py: '$8' }}>
+  <ScrollAreaDemo />
+</HeroContainer>
+
+```jsx hero template=ScrollArea
+
+```
 
 <Highlights
   features={[
@@ -32,7 +37,7 @@ npm install @radix-ui/react-scroll-area
 
 ## Anatomy
 
-Import the components and piece the parts together.
+Import all parts and piece them together.
 
 ```jsx
 import * as ScrollArea from '@radix-ui/react-scroll-area';
@@ -50,91 +55,6 @@ export default () => (
   </ScrollArea.Root>
 );
 ```
-
-## Basic example
-
-Create your styled scroll area component from the primitive parts.
-
-<Preview>
-  <ScrollAreaDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as ScrollArea from '@radix-ui/react-scroll-area';
-
-const SCROLLBAR_SIZE = 8;
-
-const StyledScrollArea = styled(ScrollArea.Root, {
-  width: '100%',
-  height: '100%',
-});
-
-const StyledViewport = styled(ScrollArea.Viewport, {
-  width: '100%',
-  height: '100%',
-});
-
-const StyledScrollbar = styled(ScrollArea.Scrollbar, {
-  display: 'flex',
-  padding: 2,
-  background: 'rgba(0, 0, 0, 0.3)',
-  '&:hover': {
-    background: 'rgba(0, 0, 0, 0.5)',
-  },
-  transition: 'background 160ms ease-out',
-  '&[data-orientation="vertical"]': {
-    width: SCROLLBAR_SIZE,
-  },
-  '&[data-orientation="horizontal"]': {
-    flexDirection: 'column',
-    height: SCROLLBAR_SIZE,
-  },
-});
-
-const StyledThumb = styled(ScrollArea.Thumb, {
-  flex: 1,
-  background: 'black',
-  borderRadius: SCROLLBAR_SIZE,
-});
-
-const StyledCorner = styled(ScrollArea.Corner, {
-  background: 'rgba(0, 0, 0, 0.3)',
-});
-
-export default () => (
-  <div style={{ height: 250 }}>
-    <StyledScrollArea>
-      <StyledViewport>
-        <div
-          style={{
-            width: '300vw',
-            height: 1000,
-            backgroundImage:
-              'repeating-linear-gradient(-45deg, dodgerblue, dodgerblue 10px, transparent 10px, transparent 20px)',
-          }}
-        />
-      </StyledViewport>
-
-      <StyledScrollbar orientation="vertical">
-        <StyledThumb />
-      </StyledScrollbar>
-
-      <StyledScrollbar orientation="horizontal">
-        <StyledThumb />
-      </StyledScrollbar>
-
-      <StyledCorner />
-    </StyledScrollArea>
-  </div>
-);
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
-
-</Note>
 
 ## API Reference
 
@@ -160,19 +80,19 @@ Contains all the parts of a scroll area.
       default: '"hover"',
       description: (
         <span>
-          Describes the nature of scrollbar visibility, similar to how
-          the scrollbar preferences in MacOS control visibility of
-          native scrollbars.
+          Describes the nature of scrollbar visibility, similar to how the
+          scrollbar preferences in MacOS control visibility of native
+          scrollbars.
           <br />
           <br />
-          <Code>"auto"</Code> means that scrollbars are visible when content
-          is overflowing on the corresponding orientation.
+          <Code>"auto"</Code> means that scrollbars are visible when content is overflowing
+          on the corresponding orientation.
           <br />
-          <Code>"always"</Code> means that scrollbars are always visible
-          regardless of whether the content is overflowing.
+          <Code>"always"</Code> means that scrollbars are always visible regardless
+          of whether the content is overflowing.
           <br />
-          <Code>"scroll"</Code> means that scrollbars are visible when
-          the user is scrolling along its corresponding orientation.
+          <Code>"scroll"</Code> means that scrollbars are visible when the user is
+          scrolling along its corresponding orientation.
           <br />
           <Code>"hover"</Code> when the user is scrolling along its corresponding
           orientation and when the user is hovering over the scroll area.
@@ -185,10 +105,10 @@ Contains all the parts of a scroll area.
       default: '600',
       description: (
         <span>
-          If <Code>type</Code> is set to either <Code>"scroll"</Code>{' '}
-          or <Code>"hover"</Code>, this prop determines the length of
-          time, in milliseconds, before the scrollbars are hidden
-          after the user stops interacting with scrollbars.
+          If <Code>type</Code> is set to either <Code>"scroll"</Code> or{' '}
+          <Code>"hover"</Code>, this prop determines the length of time, in
+          milliseconds, before the scrollbars are hidden after the user stops
+          interacting with scrollbars.
         </span>
       ),
     },
@@ -241,8 +161,8 @@ The horizontal scrollbar.
       type: 'boolean',
       description: (
         <span>
-          Used to force mounting when more control is needed. Useful
-          when controlling animation with React animation libraries.
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries.
         </span>
       ),
     },

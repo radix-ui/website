@@ -8,17 +8,19 @@ aria: https://www.w3.org/TR/wai-aria-1.2/#switch
 # Switch
 
 <Description>
-  A control that allows the user to toggle between checked and not
-  checked.
+  A control that allows the user to toggle between checked and not checked.
 </Description>
 
-<SwitchHero />
+<HeroContainer>
+  <SwitchDemo />
+</HeroContainer>
+
+```jsx hero template=Switch
+
+```
 
 <Highlights
-  features={[
-    'Full keyboard navigation.',
-    'Can be controlled or uncontrolled.',
-  ]}
+  features={['Full keyboard navigation.', 'Can be controlled or uncontrolled.']}
 />
 
 ## Installation
@@ -31,7 +33,7 @@ npm install @radix-ui/react-switch
 
 ## Anatomy
 
-Import the components and piece the parts together.
+Import all parts and piece them together.
 
 ```jsx
 import * as Switch from '@radix-ui/react-switch';
@@ -42,66 +44,6 @@ export default () => (
   </Switch.Root>
 );
 ```
-
-## Basic example
-
-Create your styled switch component from the primitive parts.
-
-<Preview>
-  <SwitchDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Switch from '@radix-ui/react-switch';
-
-const StyledSwitch = styled(Switch.Root, {
-  appearance: 'none',
-  backgroundColor: 'transparent',
-  border: 'none',
-  padding: 0,
-  width: 25,
-  height: 15,
-  backgroundColor: 'gainsboro',
-  borderRadius: 25,
-  position: 'relative',
-  '&:focus': {
-    outline: 'none',
-    boxShadow: '0 0 0 2px royalblue',
-  },
-  '&[data-state="checked"]': {
-    backgroundColor: 'dodgerblue',
-  },
-});
-
-const StyledThumb = styled(Switch.Thumb, {
-  display: 'block',
-  width: 13,
-  height: 13,
-  backgroundColor: 'white',
-  borderRadius: '$round',
-  boxShadow: 'rgba(0, 0, 0, 0.3) 0px 0px 2px',
-  transition: 'transform 100ms',
-  transform: 'translateX(1px)',
-  willChange: 'transform',
-
-  '&[data-state="checked"]': {
-    transform: 'translateX(11px)',
-  },
-});
-
-export default () => (
-  <StyledSwitch>
-    <StyledThumb />
-  </StyledSwitch>
-);
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
-
-</Note>
 
 ## API Reference
 
@@ -131,8 +73,8 @@ Contains all the parts of a switch.
       type: 'boolean',
       description: (
         <span>
-          The controlled state of the switch. Must be used in
-          conjunction with <Code>onCheckedChange</Code>.
+          The controlled state of the switch. Must be used in conjunction with{' '}
+          <Code>onCheckedChange</Code>.
         </span>
       ),
     },
@@ -140,16 +82,15 @@ Contains all the parts of a switch.
       name: 'onCheckedChange',
       type: '(checked: boolean) => void',
       typeSimple: 'function',
-      description:
-        'Event handler called when the state of the switch changes.',
+      description: 'Event handler called when the state of the switch changes.',
     },
     {
       name: 'disabled',
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the switch.
+          When <Code>true</Code>, prevents the user from interacting with the
+          switch.
         </span>
       ),
     },
@@ -158,8 +99,8 @@ Contains all the parts of a switch.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, indicates that the user must check
-          the switch before the owning form can be submitted.
+          When <Code>true</Code>, indicates that the user must check the switch
+          before the owning form can be submitted.
         </span>
       ),
     },
@@ -175,8 +116,7 @@ Contains all the parts of a switch.
       default: 'on',
       description: (
         <span>
-          The value given as data when submitted with a{' '}
-          <Code>name</Code>.
+          The value given as data when submitted with a <Code>name</Code>.
         </span>
       ),
     },

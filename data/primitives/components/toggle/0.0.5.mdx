@@ -8,17 +8,10 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#button
 
 # Toggle Button
 
-<Description>
-  A two-state button that can be either on or off.
-</Description>
-
-<ToggleHero />
+<Description>A two-state button that can be either on or off.</Description>
 
 <Highlights
-  features={[
-    'Full keyboard navigation.',
-    'Can be controlled or uncontrolled.',
-  ]}
+  features={['Full keyboard navigation.', 'Can be controlled or uncontrolled.']}
 />
 
 ## Installation
@@ -71,7 +64,7 @@ export default () => <StyledToggleButton>Toggle</StyledToggleButton>;
 
 <Note>
 
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/docs/primitives/overview/styling).
 
 </Note>
 
@@ -99,9 +92,8 @@ The toggle button.
       default: 'radix-toggle-button',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
@@ -116,9 +108,8 @@ The toggle button.
       type: 'boolean',
       description: (
         <span>
-          The controlled toggled state of the toggle button. Must be
-          used in conjunction with in conjunction with{' '}
-          <Code>onToggledChange</Code>.
+          The controlled toggled state of the toggle button. Must be used in
+          conjunction with in conjunction with <Code>onToggledChange</Code>.
         </span>
       ),
     },
@@ -134,8 +125,8 @@ The toggle button.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the toggle button.
+          When <Code>true</Code>, prevents the user from interacting with the
+          toggle button.
         </span>
       ),
     },

@@ -11,8 +11,6 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#slidertwothumb
   An input where the user selects a value from within a given range.
 </Description>
 
-<SliderHero />
-
 <Highlights
   features={[
     'Can be controlled or uncontrolled.',
@@ -105,7 +103,7 @@ export default () => (
 
 <Note>
 
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/docs/primitives/overview/styling).
 
 </Note>
 
@@ -139,8 +137,8 @@ Contains all the parts of a slider.
       type: 'number[]',
       description: (
         <span>
-          The controlled value of the slider. Must be used in
-          conjunction with <Code>onValueChange</Code>.
+          The controlled value of the slider. Must be used in conjunction with{' '}
+          <Code>onValueChange</Code>.
         </span>
       ),
     },
@@ -158,8 +156,8 @@ Contains all the parts of a slider.
       default: 'false',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the slider.
+          When <Code>true</Code>, prevents the user from interacting with the
+          slider.
         </span>
       ),
     },
@@ -215,8 +213,7 @@ Contains all the parts of a slider.
       default: '0',
       description: (
         <span>
-          The minimum permitted <Code>step</Code>s between multiple
-          thumbs.
+          The minimum permitted <Code>step</Code>s between multiple thumbs.
         </span>
       ),
     },
@@ -489,11 +486,7 @@ const StyledThumb = styled(Slider.Thumb, {
 });
 
 export default () => (
-  <StyledSlider
-    defaultValue={[25, 75]}
-    minStepsBetweenThumbs={1}
-    step={5}
-  >
+  <StyledSlider defaultValue={[25, 75]} minStepsBetweenThumbs={1} step={5}>
     <StyledTrack>
       <StyledRange />
     </StyledTrack>
@@ -515,8 +508,8 @@ Adheres to the [Slider WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-p
       keys: ['ArrowRight'],
       description: (
         <span>
-          Increments/decrements by the <Code>step</Code> value
-          depending on <Code>orientation</Code>.
+          Increments/decrements by the <Code>step</Code> value depending on{' '}
+          <Code>orientation</Code>.
         </span>
       ),
     },
@@ -524,8 +517,8 @@ Adheres to the [Slider WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-p
       keys: ['ArrowLeft'],
       description: (
         <span>
-          Increments/decrements by the <Code>step</Code> value
-          depending on <Code>orientation</Code>.
+          Increments/decrements by the <Code>step</Code> value depending on{' '}
+          <Code>orientation</Code>.
         </span>
       ),
     },

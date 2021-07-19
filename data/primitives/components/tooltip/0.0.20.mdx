@@ -8,11 +8,17 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#tooltip
 # Tooltip
 
 <Description>
-  A popup that displays information related to an element when the
-  element receives keyboard focus or the mouse hovers over it.
+  A popup that displays information related to an element when the element
+  receives keyboard focus or the mouse hovers over it.
 </Description>
 
-<TooltipHero />
+<HeroContainer>
+  <TooltipDemo />
+</HeroContainer>
+
+```jsx hero template=Tooltip
+
+```
 
 <Highlights
   features={[
@@ -33,7 +39,7 @@ npm install @radix-ui/react-tooltip
 
 ## Anatomy
 
-Import the components and piece the parts together.
+Import all parts and piece them together.
 
 ```jsx
 import * as Tooltip from '@radix-ui/react-tooltip';
@@ -48,50 +54,6 @@ export default () => (
 );
 ```
 
-## Basic example
-
-Create your styled tooltip component from the primitive parts.
-
-<Preview>
-  <TooltipDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Tooltip from '@radix-ui/react-tooltip';
-import { BlendingModeIcon } from '@radix-ui/react-icons';
-
-const StyledContent = styled(Tooltip.Content, {
-  borderRadius: 3,
-  padding: '5px 10px',
-  fontSize: 14,
-  backgroundColor: 'gainsboro',
-  color: 'black',
-});
-
-const StyledArrow = styled(Tooltip.Arrow, {
-  fill: 'gainsboro',
-});
-
-export default () => (
-  <Tooltip.Root>
-    <Tooltip.Trigger>
-      <BlendingModeIcon />
-    </Tooltip.Trigger>
-    <StyledContent>
-      Blending mode
-      <StyledArrow />
-    </StyledContent>
-  </Tooltip.Root>
-);
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
-
-</Note>
-
 ## API Reference
 
 ### Root
@@ -105,8 +67,8 @@ Contains all the parts of a tooltip.
       type: 'boolean',
       description: (
         <span>
-          The open state of the tooltip when it is initially rendered.
-          Use when you do not need to control its open state.
+          The open state of the tooltip when it is initially rendered. Use when
+          you do not need to control its open state.
         </span>
       ),
     },
@@ -115,8 +77,8 @@ Contains all the parts of a tooltip.
       type: 'boolean',
       description: (
         <span>
-          The controlled open state of the tooltip. Must be used in
-          conjunction with <Code>onOpenChange</Code>.
+          The controlled open state of the tooltip. Must be used in conjunction
+          with <Code>onOpenChange</Code>.
         </span>
       ),
     },
@@ -126,8 +88,7 @@ Contains all the parts of a tooltip.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the open state of the tooltip
-          changes.
+          Event handler called when the open state of the tooltip changes.
         </span>
       ),
     },
@@ -186,10 +147,10 @@ The component that pops out when the tooltip is open.
       type: 'string',
       description: (
         <span>
-          By default, screenreaders will announce the content inside
-          the component. If this is not descriptive enough, or you
-          have content that cannot be announced, use{' '}
-          <Code>aria-label</Code> as a more descriptive label.
+          By default, screenreaders will announce the content inside the
+          component. If this is not descriptive enough, or you have content that
+          cannot be announced, use <Code>aria-label</Code> as a more descriptive
+          label.
         </span>
       ),
     },
@@ -210,9 +171,9 @@ The component that pops out when the tooltip is open.
       default: '"bottom"',
       description: (
         <span>
-          The preferred side of the trigger to render against when
-          open. Will be reversed when collisions occur and{' '}
-          <Code>avoidCollisions</Code> is enabled.
+          The preferred side of the trigger to render against when open. Will be
+          reversed when collisions occur and <Code>avoidCollisions</Code> is
+          enabled.
         </span>
       ),
     },
@@ -256,8 +217,7 @@ The component that pops out when the tooltip is open.
       description: (
         <span>
           When <Code>true</Code>, overrides the <Code>side</Code> and
-          <Code>align</Code> preferences to prevent collisions with window
-          edges.
+          <Code>align</Code> preferences to prevent collisions with window edges.
         </span>
       ),
     },
@@ -267,8 +227,8 @@ The component that pops out when the tooltip is open.
       default: '0',
       description: (
         <span>
-          The distance in pixels from window edges where collision
-          detection should occur.
+          The distance in pixels from window edges where collision detection
+          should occur.
         </span>
       ),
     },
@@ -308,37 +268,87 @@ An optional arrow element to render alongside the tooltip. This can be used to h
       default: 0,
       description: (
         <span>
-          The distance in pixels to render from the{' '}
-          <Code>Tooltip.Content</Code> edge.
+          The distance in pixels to render from the <Code>Tooltip.Content</Code>{' '}
+          edge.
         </span>
       ),
     },
   ]}
 />
 
-## Styling
+## Examples
+
+### Show instantly
+
+Use the `delayDuration` prop to control the time it takes for the tooltip to open.
+
+```jsx line=4
+import * as Tooltip from '@radix-ui/react-tooltip';
+
+export default () => (
+  <Tooltip.Root __delayDuration__={0}>
+    <Tooltip.Trigger>…</Tooltip.Trigger>
+    <Tooltip.Content>…</Tooltip.Content>
+  </Tooltip.Root>
+);
+```
+
+### Displaying a tooltip from a disabled button
+
+Since disabled buttons don't fire events, you need to:
+
+- Render the `Trigger` as `span`.
+- Ensure the `button` has no `pointerEvents`.
+
+```jsx line=5-9
+import * as Tooltip from '@radix-ui/react-tooltip';
+
+export default () => (
+  <Tooltip.Root>
+    <Tooltip.Trigger as="__span__">
+      <button disabled style={{ __pointerEvents__: 'none' }}>
+        …
+      </button>
+    </Tooltip.Trigger>
+    <Tooltip.Content>…</Tooltip.Content>
+  </Tooltip.Root>
+);
+```
 
 ### Origin-aware animations
 
 We expose a CSS custom property `--radix-tooltip-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
-```jsx
+```jsx line=4-7,9-12,17
+import { styled, keyframes } from '@stitches/react';
+import * as Tooltip from '@radix-ui/react-tooltip';
+
 const scaleIn = keyframes({
   '0%': { opacity: 0, transform: 'scale(0)' },
   '100%': { opacity: 1, transform: 'scale(1)' },
 });
 
-const StyledContent = styled(Tooltip.Content, {
+const TooltipContent = styled(Tooltip.Content, {
   transformOrigin: 'var(--radix-tooltip-content-transform-origin)',
   animation: `${scaleIn} 0.5s ease-out`,
 });
+
+export default () => (
+  <Tooltip.Root>
+    <Tooltip.Trigger>…</Tooltip.Trigger>
+    <TooltipContent>…</TooltipContent>
+  </Tooltip.Root>
+);
 ```
 
 ### Collision-aware animations
 
 We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
 
-```jsx
+```jsx line=4-7,9-12,14-19,24
+import { styled, keyframes } from '@stitches/react';
+import * as Tooltip from '@radix-ui/react-tooltip';
+
 const slideDown = keyframes({
   '0%': { opacity: 0, transform: 'translateY(-10px)' },
   '100%': { opacity: 1, transform: 'translateY(0)' },
@@ -349,96 +359,17 @@ const slideUp = keyframes({
   '100%': { opacity: 1, transform: 'translateY(0)' },
 });
 
-const StyledContent = styled(Tooltip.Content, {
+const TooltipContent = styled(Tooltip.Content, {
   '&[data-side="top"]': { animationName: slideUp },
   '&[data-side="bottom"]': { animationName: slideDown },
   animationDuration: '0.6s',
   animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
 });
-```
-
-## Examples
-
-### Displaying a tooltip from a disabled button
-
-A disabled button will not fire events so adding a tooltip to a disabled trigger requires a little more work.
-
-Render the trigger as a wrapper (`span` for example) and place your disabled button inside with some CSS to disable pointer events. This allows the tooltip to receive all mouse and keyboard events instead of being blocked by the button.
-
-<Preview>
-  <TooltipDemo disabled />
-</Preview>
-
-```jsx collapsed
-import { styled } from 'path-to/stitches.config';
-import * as Tooltip from '@radix-ui/react-tooltip';
-import { BlendingModeIcon } from '@radix-ui/react-icons';
-
-const StyledContent = styled(Tooltip.Content, {
-  borderRadius: 3,
-  padding: '5px 10px',
-  fontSize: 14,
-  backgroundColor: 'gainsboro',
-  color: 'black',
-});
-
-const StyledArrow = styled(Tooltip.Arrow, {
-  fill: 'gainsboro',
-});
 
 export default () => (
   <Tooltip.Root>
-    <Tooltip.Trigger as="span">
-      <button
-        type="button"
-        disabled
-        style={{ pointerEvents: 'none' }}
-      >
-        <BlendingModeIcon />
-      </button>
-    </Tooltip.Trigger>
-    <StyledContent>
-      Blending mode
-      <StyledArrow />
-    </StyledContent>
-  </Tooltip.Root>
-);
-```
-
-### Show instantly
-
-Use the `delayDuration` prop to control the time it takes for the tooltip to open. We recommend wrapping the tooltip in your own component with a default value for the prop for consistent timings across your app. You will still be able to override the prop per-instance.
-
-<Preview>
-  <TooltipDemo delayDuration={0} />
-</Preview>
-
-```jsx collapsed
-import { styled } from 'path-to/stitches.config';
-import * as Tooltip from '@radix-ui/react-tooltip';
-import { BlendingModeIcon } from '@radix-ui/react-icons';
-
-const StyledContent = styled(Tooltip.Content, {
-  borderRadius: 3,
-  padding: '5px 10px',
-  fontSize: 14,
-  backgroundColor: 'gainsboro',
-  color: 'black',
-});
-
-const StyledArrow = styled(Tooltip.Arrow, {
-  fill: 'gainsboro',
-});
-
-export default () => (
-  <Tooltip.Root delayDuration={0}>
-    <Tooltip.Trigger>
-      <BlendingModeIcon />
-    </Tooltip.Trigger>
-    <StyledContent>
-      Blending mode
-      <StyledArrow />
-    </StyledContent>
+    <Tooltip.Trigger>…</Tooltip.Trigger>
+    <TooltipContent>…</TooltipContent>
   </Tooltip.Root>
 );
 ```
@@ -490,7 +421,7 @@ export default () => (
 
 #### Implementation
 
-Use the [`Slot` utility](../utilities/slot) to convert the trigger part into a slottable area. It will replace the trigger with the child that gets passed to it.
+Use the [`Slot` utility](/docs/primitives/utilities/slot) to convert the trigger part into a slottable area. It will replace the trigger with the child that gets passed to it.
 
 ```jsx
 // your-tooltip.jsx
@@ -512,9 +443,7 @@ export function Tooltip({
       defaultOpen={defaultOpen}
       onOpenChange={onOpenChange}
     >
-      <TooltipPrimitive.Trigger as={Slot}>
-        {children}
-      </TooltipPrimitive.Trigger>
+      <TooltipPrimitive.Trigger as={Slot}>{children}</TooltipPrimitive.Trigger>
       <TooltipPrimitive.Content side="top" align="center" {...props}>
         {content}
         <TooltipPrimitive.Arrow offset={5} width={11} height={5} />

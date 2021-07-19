@@ -6,9 +6,7 @@ name: polymorphic
 
 # Polymorphic
 
-<Description>
-  Creates strongly typed polymorphic components.
-</Description>
+<Description>Creates strongly typed polymorphic components.</Description>
 
 <Highlights
   features={[
@@ -44,14 +42,18 @@ import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
 type PolymorphicBox = Polymorphic.ForwardRefComponent<'div', {}>;
 
-const Box: PolymorphicBox = React.forwardRef(({ as: Comp = 'div', ...props }, forwardedRef) => (
-  <Comp {...props} ref={forwardedRef} />
-));
+const Box: PolymorphicBox = React.forwardRef(
+  ({ as: Comp = 'div', ...props }, forwardedRef) => (
+    <Comp {...props} ref={forwardedRef} />
+  )
+);
 
-export default () => <Box>
-  <Box as="h1">This is a h1</Box>
-  <Box as="button">This is a button</Box>
-</Box>
+export default () => (
+  <Box>
+    <Box as="h1">This is a h1</Box>
+    <Box as="button">This is a button</Box>
+  </Box>
+);
 ```
 
 ## API Reference
@@ -67,7 +69,7 @@ Polymorphic.ForwardRefComponent<
 >
 ```
 
-The [`OwnProps`](/primitives/docs/utilities/polymorphic#ownprops) should not contain DOM attributes. These will be added for you. Use the `Polymorphic.OwnProps` utility to extract these from existing polymorphic components.
+The [`OwnProps`](/docs/primitivesutilities/polymorphic#ownprops) should not contain DOM attributes. These will be added for you. Use the `Polymorphic.OwnProps` utility to extract these from existing polymorphic components.
 
 #### Usage
 

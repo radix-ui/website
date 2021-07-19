@@ -17,6 +17,7 @@ export const primitivesRoutes = [
     pages: [
       { title: 'Accordion', slug: 'docs/primitives/components/accordion' },
       { title: 'Alert Dialog', slug: 'docs/primitives/components/alert-dialog' },
+      { title: 'Aspect Ratio', slug: 'docs/primitives/components/aspect-ratio' },
       { title: 'Avatar', slug: 'docs/primitives/components/avatar' },
       { title: 'Carousel', slug: 'docs/primitives/components/carousel', draft: true },
       { title: 'Checkbox', slug: 'docs/primitives/components/checkbox' },
@@ -25,6 +26,7 @@ export const primitivesRoutes = [
       { title: 'Dialog', slug: 'docs/primitives/components/dialog' },
       { title: 'Dropdown Menu', slug: 'docs/primitives/components/dropdown-menu' },
       { title: 'Hover Card', slug: 'docs/primitives/components/hover-card' },
+      { title: 'Label', slug: 'docs/primitives/components/label' },
       { title: 'Menubar', slug: 'docs/primitives/components/menubar', draft: true },
       { title: 'Popover', slug: 'docs/primitives/components/popover' },
       { title: 'Progress', slug: 'docs/primitives/components/progress' },
@@ -47,9 +49,7 @@ export const primitivesRoutes = [
     pages: [
       { title: 'Accessible Icon', slug: 'docs/primitives/utilities/accessible-icon' },
       { title: 'Announce', slug: 'docs/primitives/utilities/announce' },
-      { title: 'Aspect Ratio', slug: 'docs/primitives/utilities/aspect-ratio' },
       { title: 'Id Provider', slug: 'docs/primitives/utilities/id-provider' },
-      { title: 'Label', slug: 'docs/primitives/utilities/label' },
       { title: 'Polymorphic', slug: 'docs/primitives/utilities/polymorphic' },
       { title: 'Portal', slug: 'docs/primitives/utilities/portal' },
       { title: 'Slot', slug: 'docs/primitives/utilities/slot' },

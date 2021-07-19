@@ -10,8 +10,6 @@ name: avatar
   An image element with a fallback for representing the user.
 </Description>
 
-<AvatarHero />
-
 <Highlights
   features={[
     'Automatic and manual control over when the image renders.',
@@ -88,7 +86,7 @@ export default () => (
 
 <Note>
 
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/docs/primitives/overview/styling).
 
 </Note>
 
@@ -129,8 +127,7 @@ The image to render. By default it will only render when it has loaded. You can 
     },
     {
       name: 'onLoadingStatusChange',
-      type:
-        '(status: "idle" | "loading" | "loaded" | "error") => void',
+      type: '(status: "idle" | "loading" | "loaded" | "error") => void',
       typeSimple: 'function',
       description:
         'A callback providing information about the loading status of the image. This is useful in case you want to control more precisely what to render as the image is loading.',

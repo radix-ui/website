@@ -8,17 +8,11 @@ aria: https://www.w3.org/TR/wai-aria-1.2/#switch
 # Switch
 
 <Description>
-  A control that allows the user to toggle between checked and not
-  checked.
+  A control that allows the user to toggle between checked and not checked.
 </Description>
 
-<SwitchHero />
-
 <Highlights
-  features={[
-    'Full keyboard navigation.',
-    'Can be controlled or uncontrolled.',
-  ]}
+  features={['Full keyboard navigation.', 'Can be controlled or uncontrolled.']}
 />
 
 ## Installation
@@ -95,7 +89,7 @@ export default () => (
 
 <Note>
 
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/docs/primitives/overview/styling).
 
 </Note>
 
@@ -123,9 +117,8 @@ Contains all the parts of a switch.
       default: 'radix-switch',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },
@@ -140,8 +133,8 @@ Contains all the parts of a switch.
       type: 'boolean',
       description: (
         <span>
-          The controlled state of the switch. Must be used in
-          conjunction with <Code>onCheckedChange</Code>.
+          The controlled state of the switch. Must be used in conjunction with{' '}
+          <Code>onCheckedChange</Code>.
         </span>
       ),
     },
@@ -149,16 +142,15 @@ Contains all the parts of a switch.
       name: 'onCheckedChange',
       type: '(event: React.ChangeEvent<HTMLInputElement>) => void',
       typeSimple: 'function',
-      description:
-        'Event handler called when the state of the switch changes.',
+      description: 'Event handler called when the state of the switch changes.',
     },
     {
       name: 'disabled',
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the switch.
+          When <Code>true</Code>, prevents the user from interacting with the
+          switch.
         </span>
       ),
     },
@@ -167,8 +159,8 @@ Contains all the parts of a switch.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, indicates that the user must check
-          the switch before the owning form can be submitted.
+          When <Code>true</Code>, indicates that the user must check the switch
+          before the owning form can be submitted.
         </span>
       ),
     },
@@ -177,8 +169,8 @@ Contains all the parts of a switch.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, makes the switch not mutable,
-          meaning the user cannot check the switch.
+          When <Code>true</Code>, makes the switch not mutable, meaning the user
+          cannot check the switch.
         </span>
       ),
     },
@@ -194,8 +186,7 @@ Contains all the parts of a switch.
       default: 'on',
       description: (
         <span>
-          The value given as data when submitted with a{' '}
-          <Code>name</Code>.
+          The value given as data when submitted with a <Code>name</Code>.
         </span>
       ),
     },
@@ -224,9 +215,8 @@ The thumb that is used to visually indicate whether the switch is on or off.
       default: 'radix-switch-thumb',
       description: (
         <span>
-          A string to use as the component selector for CSS purposes.
-          It will be added as a data attribute. Pass <Code>null</Code>{' '}
-          to remove selector.
+          A string to use as the component selector for CSS purposes. It will be
+          added as a data attribute. Pass <Code>null</Code> to remove selector.
         </span>
       ),
     },

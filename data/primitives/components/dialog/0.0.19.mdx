@@ -8,17 +8,27 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal
 # Dialog
 
 <Description>
-  A window overlaid on either the primary window or another dialog
-  window, rendering the content underneath inert.
+  A window overlaid on either the primary window or another dialog window,
+  rendering the content underneath inert.
 </Description>
 
-<DialogHero />
+<HeroContainer>
+  <DialogDemo />
+</HeroContainer>
+
+```jsx hero template=Dialog
+
+```
 
 <Highlights
   features={[
     'Focus is automatically trapped.',
-    'Works in an uncontrolled way by default.',
-    'Can also be controlled.',
+    'Can be controlled or uncontrolled.',
+    <span>
+      Manages screen reader announcements with <Code>Title</Code> and{' '}
+      <Code>Description</Code> components.
+    </span>,
+    'Esc closes the component automatically.',
   ]}
 />
 
@@ -32,7 +42,7 @@ npm install @radix-ui/react-dialog
 
 ## Anatomy
 
-Import the components and piece the parts together.
+Import all parts and piece them together.
 
 ```jsx
 import * as Dialog from '@radix-ui/react-dialog';
@@ -50,67 +60,6 @@ export default () => (
 );
 ```
 
-## Basic example
-
-Create your styled dialog component from the dialog primitives.
-
-<Preview>
-  <DialogDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Dialog from '@radix-ui/react-dialog';
-
-const StyledOverlay = styled(Dialog.Overlay, {
-  backgroundColor: 'rgba(0, 0, 0, .15)',
-  position: 'fixed',
-  top: 0,
-  right: 0,
-  bottom: 0,
-  left: 0,
-});
-
-const StyledContent = styled(Dialog.Content, {
-  position: 'fixed',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  minWidth: 200,
-  maxWidth: 'fit-content',
-  maxHeight: '85vh',
-  padding: 20,
-  marginTop: '-5vh',
-  backgroundColor: 'white',
-  borderRadius: 6,
-
-  '&:focus': {
-    outline: 'none',
-  },
-});
-
-export default () => (
-  <Dialog.Root>
-    <Dialog.Trigger>Open</Dialog.Trigger>
-    <StyledOverlay />
-    <StyledContent>
-      <Dialog.Title>Booking a flight</Dialog.Title>
-      <Dialog.Description>
-        Please enter your information below in order to book the
-        flight.
-      </Dialog.Description>
-      <Dialog.Close>Close</Dialog.Close>
-    </StyledContent>
-  </Dialog.Root>
-);
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
-
-</Note>
-
 ## API Reference
 
 ### Root
@@ -124,8 +73,8 @@ Contains all the parts of a dialog.
       type: 'boolean',
       description: (
         <span>
-          The open state of the dialog when it is initially rendered.
-          Use when you do not need to control its open state.
+          The open state of the dialog when it is initially rendered. Use when
+          you do not need to control its open state.
         </span>
       ),
     },
@@ -134,8 +83,8 @@ Contains all the parts of a dialog.
       type: 'boolean',
       description: (
         <span>
-          The controlled open state of the dialog. Must be used in
-          conjunction with <Code>onOpenChange</Code>.
+          The controlled open state of the dialog. Must be used in conjunction
+          with <Code>onOpenChange</Code>.
         </span>
       ),
     },
@@ -145,8 +94,7 @@ Contains all the parts of a dialog.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the open state of the dialog
-          changes.
+          Event handler called when the open state of the dialog changes.
         </span>
       ),
     },
@@ -155,10 +103,9 @@ Contains all the parts of a dialog.
       type: 'string',
       description: (
         <span>
-          A unique identifier for the component. The <Code>id</Code>{' '}
-          is used to generate <Code>id</Code> attributes for nested
-          components. If no <Code>id</Code> prop is provided, a
-          generated id will be used.
+          A unique identifier for the component. The <Code>id</Code> is used to
+          generate <Code>id</Code> attributes for nested components. If no{' '}
+          <Code>id</Code> prop is provided, a generated id will be used.
         </span>
       ),
     },
@@ -234,8 +181,8 @@ Contains content to be rendered in the open dialog.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when focus moves into the component
-          after opening. It can be prevented by calling{' '}
+          Event handler called when focus moves into the component after
+          opening. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
         </span>
       ),
@@ -246,9 +193,8 @@ Contains content to be rendered in the open dialog.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when focus moves to the trigger after
-          closing. It can be prevented by calling{' '}
-          <Code>event.preventDefault</Code>.
+          Event handler called when focus moves to the trigger after closing. It
+          can be prevented by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -258,8 +204,8 @@ Contains content to be rendered in the open dialog.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the escape key is down. It can be
-          prevented by calling <Code>event.preventDefault</Code>.
+          Event handler called when the escape key is down. It can be prevented
+          by calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -269,8 +215,8 @@ Contains content to be rendered in the open dialog.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when a pointer event occurs outside the
-          bounds of the component. It can be prevented by calling{' '}
+          Event handler called when a pointer event occurs outside the bounds of
+          the component. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
         </span>
       ),
@@ -360,8 +306,7 @@ Adheres to the [Dialog WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-p
       keys: ['Esc'],
       description: (
         <span>
-          Closes the dialog and moves focus to{' '}
-          <Code>Dialog.Trigger</Code>.
+          Closes the dialog and moves focus to <Code>Dialog.Trigger</Code>.
         </span>
       ),
     },

@@ -7,11 +7,8 @@ name: scroll-area
 # Scroll Area
 
 <Description>
-  Augments native scroll functionality for custom, cross-browser
-  styling.
+  Augments native scroll functionality for custom, cross-browser styling.
 </Description>
-
-<ScrollAreaHero />
 
 <Highlights
   features={[
@@ -111,7 +108,7 @@ export default () => (
 
 <Note>
 
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/docs/primitives/overview/styling).
 
 </Note>
 
@@ -139,19 +136,19 @@ Contains all the parts of a scroll area.
       default: '"hover"',
       description: (
         <span>
-          Describes the nature of scrollbar visibility, similar to how
-          the scrollbar preferences in MacOS control visibility of
-          native scrollbars.
+          Describes the nature of scrollbar visibility, similar to how the
+          scrollbar preferences in MacOS control visibility of native
+          scrollbars.
           <br />
           <br />
-          <Code>"auto"</Code> means that scrollbars are visible when content
-          is overflowing on the corresponding orientation.
+          <Code>"auto"</Code> means that scrollbars are visible when content is overflowing
+          on the corresponding orientation.
           <br />
-          <Code>"always"</Code> means that scrollbars are always visible
-          regardless of whether the content is overflowing.
+          <Code>"always"</Code> means that scrollbars are always visible regardless
+          of whether the content is overflowing.
           <br />
-          <Code>"scroll"</Code> means that scrollbars are visible when
-          the user is scrolling along its corresponding orientation.
+          <Code>"scroll"</Code> means that scrollbars are visible when the user is
+          scrolling along its corresponding orientation.
           <br />
           <Code>"hover"</Code> when the user is scrolling along its corresponding
           orientation and when the user is hovering over the scroll area.
@@ -164,10 +161,10 @@ Contains all the parts of a scroll area.
       default: '600',
       description: (
         <span>
-          If <Code>type</Code> is set to either <Code>"scroll"</Code>{' '}
-          or <Code>"hover"</Code>, this prop determines the length of
-          time, in milliseconds, before the scrollbars are hidden
-          after the user stops interacting with scrollbars.
+          If <Code>type</Code> is set to either <Code>"scroll"</Code> or{' '}
+          <Code>"hover"</Code>, this prop determines the length of time, in
+          milliseconds, before the scrollbars are hidden after the user stops
+          interacting with scrollbars.
         </span>
       ),
     },
@@ -220,8 +217,8 @@ The horizontal scrollbar.
       type: 'boolean',
       description: (
         <span>
-          Used to force mounting when more control is needed. Useful
-          when controlling animation with React animation libraries.
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries.
         </span>
       ),
     },

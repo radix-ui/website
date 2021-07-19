@@ -1,0 +1,150 @@
+---
+metaTitle: Label
+metaDescription: Renders an accessible label associated with controls.
+name: label
+---
+
+# Label
+
+<Description>Renders an accessible label associated with controls.</Description>
+
+<Highlights
+  features={[
+    'Text selection is prevented when double clicking label.',
+    'Supports nested controls.',
+    'Supports custom controls.',
+  ]}
+/>
+
+## Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-label
+```
+
+## Anatomy
+
+Import the component.
+
+```jsx
+import * as Label from '@radix-ui/react-label';
+
+export default () => <Label.Root />;
+```
+
+## Basic example
+
+Create your styled label component.
+
+```jsx
+import { styled } from 'path-to/stitches.config';
+import * as Label from '@radix-ui/react-label';
+
+const StyledLabel = styled(Label.Root, {
+  fontSize: '16px',
+  fontFamily: 'system-ui',
+});
+
+export default () => <StyledLabel>First name</StyledLabel>;
+```
+
+<Note>
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/docs/primitives/overview/styling).
+
+</Note>
+
+## API Reference
+
+### Root
+
+Contains the content for the label.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'span',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'htmlFor',
+      type: 'string',
+      description: 'The id of the element the label is associated with.',
+    },
+  ]}
+/>
+
+## Examples
+
+### Focus input when clicking on label
+
+Use the `htmlfor` attribute to connect the label with the input's id.
+
+```jsx
+import { styled } from 'path-to/stitches.config';
+import * as Label from '@radix-ui/react-label';
+
+const StyledLabel = styled(Label.Root, {
+  fontSize: '16px',
+  fontFamily: 'system-ui',
+  cursor: 'default',
+});
+
+const Input = styled('input', {});
+
+export default () => (
+  <>
+    <StyledLabel htmlFor="firstName">First name</StyledLabel>
+    <Input type="text" id="firstName" css={{ ml: 10 }} />
+  </>
+);
+```
+
+### Custom control with label support
+
+Add an `aria-labelledby` attribute to your custom controls using the `useLabelContext` hook to add support for label nesting.
+
+```jsx
+import { styled } from 'path-to/stitches.config';
+import * as Label from '@radix-ui/react-label';
+import { useLabelContext } from '@radix-ui/react-label';
+
+const StyledLabel = styled(Label.Root, {
+  fontSize: '16px',
+  fontFamily: 'system-ui',
+  cursor: 'default',
+});
+
+/* A custom form control you have built */
+const CustomCheckbox = () => {
+  const id = useLabelContext();
+  return (
+    <CustomCheckboxPart aria-labelledby={id} tabIndex={0} role="checkbox" />
+  );
+};
+
+const CustomCheckboxPart = styled('span', {
+  display: 'inline-block',
+  verticalAlign: 'middle',
+  border: '1px solid black',
+  width: 15,
+  height: 15,
+});
+
+export default () => (
+  <StyledLabel>
+    <CustomCheckbox /> I agree to the terms and conditions
+  </StyledLabel>
+);
+```
+
+## Accessibility
+
+Using this component with our primitives, will automatically get you the correct labelling using `id` and `aria-labelledby`. You can also use the provided `useLabelContext` hook to support this in your own controls.

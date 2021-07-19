@@ -97,6 +97,21 @@ export const Footer = () => {
                   </Link>
                 </Text>
               </li>
+              <li>
+                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+                  <Link
+                    variant="subtle"
+                    href="https://stitches.dev/"
+                    target="_blank"
+                    css={{ display: 'inline-flex', alignItems: 'center' }}
+                  >
+                    Stitches
+                    <Flex as="span" css={{ ml: '$1', color: '$gray8' }}>
+                      <ExternalIcon />
+                    </Flex>
+                  </Link>
+                </Text>
+              </li>
             </ul>
           </Box>
           {/* <Box>

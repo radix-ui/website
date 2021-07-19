@@ -9,7 +9,6 @@ import { PrimitivesPage } from '@components/PrimitivesPage';
 import { DesignSystemPage } from '@components/DesignSystemPage';
 import { ColorsPage } from '@components/ColorsPage';
 import { useAnalytics } from '@lib/analytics';
-import { scrollToUrlHash } from '@lib/scrollToUrlHash';
 
 const globalStyles = global({
   '*, *::before, *::after': {
@@ -22,6 +21,11 @@ const globalStyles = global({
     fontFamily: '$untitled',
     WebkitFontSmoothing: 'antialiased',
     MozOsxFontSmoothing: 'grayscale',
+    WebkitTextSizeAdjust: '100%',
+
+    '.dark-theme &': {
+      backgroundColor: '$mauve1',
+    },
   },
 
   svg: {
@@ -33,6 +37,7 @@ const globalStyles = global({
 
   '::selection': {
     backgroundColor: '$violet5',
+    color: '$violet12',
   },
 
   '#__next': {
@@ -47,10 +52,6 @@ function App({ Component, pageProps }: AppProps) {
   globalStyles();
   useAnalytics();
   const router = useRouter();
-
-  React.useEffect(() => {
-    scrollToUrlHash(router.asPath);
-  }, []);
 
   const isPrimitivesDocs = router.pathname.includes('/docs/primitives');
   const isDesignSystemDocs = router.pathname.includes('/docs/design-system');
@@ -71,9 +72,13 @@ function App({ Component, pageProps }: AppProps) {
             top: 0,
             left: 0,
             width: '100%',
-            backgroundColor: '$loContrast',
-            boxShadow: IsNotADocPage ? 'none' : '0 0 0 1px $colors$slate5',
+            boxShadow: IsNotADocPage ? 'none' : '0 0 0 1px $colors$mauve5',
             zIndex: 2,
+            backgroundColor: '$loContrast',
+
+            '.dark-theme &': {
+              backgroundColor: '$mauve1',
+            },
           }}
         >
           <Header />

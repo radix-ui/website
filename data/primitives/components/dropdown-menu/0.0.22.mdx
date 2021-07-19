@@ -8,11 +8,17 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#menubutton
 # Dropdown Menu
 
 <Description>
-  Displays a menu to the user—such as a set of actions or
-  functions—triggered by a button.
+  Displays a menu to the user—such as a set of actions or functions—triggered by
+  a button.
 </Description>
 
-<DropdownMenuHero />
+<HeroContainer>
+  <DropdownMenuDemo />
+</HeroContainer>
+
+```jsx hero template=DropdownMenu
+
+```
 
 <Highlights
   features={[
@@ -39,7 +45,7 @@ npm install @radix-ui/react-dropdown-menu
 
 ## Anatomy
 
-Import the components and piece the parts together.
+Import all parts and piece them together.
 
 ```jsx
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
@@ -78,66 +84,6 @@ export default () => (
 );
 ```
 
-## Basic example
-
-Create your styled dropdown menu component from the primitive parts.
-
-<Preview>
-  <DropdownMenuDemo />
-</Preview>
-
-```jsx
-import { styled } from 'path-to/stitches.config';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-
-const StyledContent = styled(DropdownMenu.Content, {
-  minWidth: 130,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 5,
-  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
-});
-
-const StyledItem = styled(DropdownMenu.Item, {
-  fontSize: 13,
-  padding: '5px 10px',
-  borderRadius: 3,
-  cursor: 'default',
-
-  '&:focus': {
-    outline: 'none',
-    backgroundColor: 'dodgerblue',
-    color: 'white',
-  },
-});
-
-const StyledArrow = styled(DropdownMenu.Arrow, {
-  fill: 'white',
-});
-
-export default () => (
-  <DropdownMenu.Root>
-    <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
-    <StyledContent>
-      <StyledItem onSelect={() => console.log('cut')}>Cut</StyledItem>
-      <StyledItem onSelect={() => console.log('copy')}>
-        Copy
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('paste')}>
-        Paste
-      </StyledItem>
-      <StyledArrow />
-    </StyledContent>
-  </DropdownMenu.Root>
-);
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/overview/styling).
-
-</Note>
-
 ## API Reference
 
 ### Root
@@ -151,9 +97,8 @@ Contains all the parts of a dropdown menu.
       type: 'boolean',
       description: (
         <span>
-          The open state of the dropdown menu when it is initially
-          rendered. Use when you do not need to control its open
-          state.
+          The open state of the dropdown menu when it is initially rendered. Use
+          when you do not need to control its open state.
         </span>
       ),
     },
@@ -162,8 +107,8 @@ Contains all the parts of a dropdown menu.
       type: 'boolean',
       description: (
         <span>
-          The controlled open state of the dropdown menu. Must be used
-          in conjunction with <Code>onOpenChange</Code>.
+          The controlled open state of the dropdown menu. Must be used in
+          conjunction with <Code>onOpenChange</Code>.
         </span>
       ),
     },
@@ -173,8 +118,7 @@ Contains all the parts of a dropdown menu.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the open state of the dropdown
-          menu changes.
+          Event handler called when the open state of the dropdown menu changes.
         </span>
       ),
     },
@@ -192,10 +136,9 @@ Contains all the parts of a dropdown menu.
       type: 'string',
       description: (
         <span>
-          A unique identifier for the component. The <Code>id</Code>{' '}
-          is used to generate <Code>id</Code> attributes for nested
-          components. If no <Code>id</Code> prop is provided, a
-          generated id will be used.
+          A unique identifier for the component. The <Code>id</Code> is used to
+          generate <Code>id</Code> attributes for nested components. If no{' '}
+          <Code>id</Code> prop is provided, a generated id will be used.
         </span>
       ),
     },
@@ -242,8 +185,8 @@ The component that pops out when the dropdown menu is open.
       default: 'false',
       description: (
         <span>
-          When <Code>true</Code>, keyboard navigation will loop from
-          last item to first, and vice versa.
+          When <Code>true</Code>, keyboard navigation will loop from last item
+          to first, and vice versa.
         </span>
       ),
     },
@@ -253,9 +196,8 @@ The component that pops out when the dropdown menu is open.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when focus moves to the trigger after
-          closing. It can be prevented by calling{' '}
-          <Code>event.preventDefault</Code>.
+          Event handler called when focus moves to the trigger after closing. It
+          can be prevented by calling <Code>event.preventDefault</Code>.
           <br />
           This prop is ignored within submenus.
         </span>
@@ -267,11 +209,10 @@ The component that pops out when the dropdown menu is open.
       default: 'true',
       description: (
         <span>
-          When <Code>true</Code>, hover/focus/click interactions will
-          be disabled on elements outside the bounds of the component.
-          Users will need to click twice on outside elements to
-          interact with them: Once to close the dropdown menu, and
-          again to activate the element.
+          When <Code>true</Code>, hover/focus/click interactions will be
+          disabled on elements outside the bounds of the component. Users will
+          need to click twice on outside elements to interact with them: Once to
+          close the dropdown menu, and again to activate the element.
           <br />
           This prop is ignored within submenus.
         </span>
@@ -283,8 +224,8 @@ The component that pops out when the dropdown menu is open.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the escape key is down. It can be
-          prevented by calling <Code>event.preventDefault</Code>
+          Event handler called when the escape key is down. It can be prevented
+          by calling <Code>event.preventDefault</Code>
         </span>
       ),
     },
@@ -294,8 +235,8 @@ The component that pops out when the dropdown menu is open.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when a pointer event occurs outside the
-          bounds of the component. It can be prevented by calling{' '}
+          Event handler called when a pointer event occurs outside the bounds of
+          the component. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
         </span>
       ),
@@ -306,22 +247,21 @@ The component that pops out when the dropdown menu is open.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when focus moves outside the bounds of
-          the component. It can be prevented by calling{' '}
+          Event handler called when focus moves outside the bounds of the
+          component. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
         </span>
       ),
     },
     {
       name: 'onInteractOutside',
-      type:
-        '(event: PointerDownOutsideEvent | FocusOutsideEvent) => void',
+      type: '(event: PointerDownOutsideEvent | FocusOutsideEvent) => void',
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when an interaction (pointer or focus
-          event) happens outside the bounds of the component. It can
-          be prevented by calling <Code>event.preventDefault</Code>.
+          Event handler called when an interaction (pointer or focus event)
+          happens outside the bounds of the component. It can be prevented by
+          calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
@@ -331,8 +271,8 @@ The component that pops out when the dropdown menu is open.
       default: 'true',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from scrolling
-          outside the bounds of the component.
+          When <Code>true</Code>, prevents the user from scrolling outside the
+          bounds of the component.
           <br />
           This prop is ignored within submenus.
         </span>
@@ -355,8 +295,8 @@ The component that pops out when the dropdown menu is open.
       type: 'boolean',
       description: (
         <span>
-          Used to force mounting when more control is needed. Useful
-          when controlling animation with React animation libraries.
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries.
         </span>
       ),
     },
@@ -367,9 +307,9 @@ The component that pops out when the dropdown menu is open.
       default: '"bottom"',
       description: (
         <span>
-          The preferred side of the trigger to render against when
-          open. Will be reversed when collisions occur and{' '}
-          <Code>avoidCollisions</Code> is enabled.
+          The preferred side of the trigger to render against when open. Will be
+          reversed when collisions occur and <Code>avoidCollisions</Code> is
+          enabled.
           <br />
           This prop is ignored within submenus.
         </span>
@@ -379,9 +319,7 @@ The component that pops out when the dropdown menu is open.
       name: 'sideOffset',
       type: 'number',
       default: '0',
-      description: (
-        <span>The distance in pixels from the trigger.</span>
-      ),
+      description: <span>The distance in pixels from the trigger.</span>,
     },
     {
       name: 'align',
@@ -415,8 +353,7 @@ The component that pops out when the dropdown menu is open.
       description: (
         <span>
           When <Code>true</Code>, overrides the <Code>side</Code> and
-          <Code>align</Code> preferences to prevent collisions with window
-          edges.
+          <Code>align</Code> preferences to prevent collisions with window edges.
         </span>
       ),
     },
@@ -426,8 +363,8 @@ The component that pops out when the dropdown menu is open.
       default: '0',
       description: (
         <span>
-          The distance in pixels from window edges where collision
-          detection should occur.
+          The distance in pixels from window edges where collision detection
+          should occur.
         </span>
       ),
     },
@@ -495,8 +432,8 @@ The component that contains the dropdown menu items.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the item.
+          When <Code>true</Code>, prevents the user from interacting with the
+          item.
         </span>
       ),
     },
@@ -506,11 +443,9 @@ The component that contains the dropdown menu items.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the user selects an item (via
-          mouse of keyboard). Calling{' '}
-          <Code>event.preventDefault</Code> in this handler will
-          prevent the dropdown menu from closing when selecting that
-          item.
+          Event handler called when the user selects an item (via mouse of
+          keyboard). Calling <Code>event.preventDefault</Code> in this handler
+          will prevent the dropdown menu from closing when selecting that item.
         </span>
       ),
     },
@@ -519,10 +454,9 @@ The component that contains the dropdown menu items.
       type: 'string',
       description: (
         <span>
-          Optional text used for typeahead purposes. By default the
-          typeahead behavior will use the <Code>.textContent</Code> of{' '}
-          the item. Use this when the content is complex, or you have
-          non-textual content inside.
+          Optional text used for typeahead purposes. By default the typeahead
+          behavior will use the <Code>.textContent</Code> of the item. Use this
+          when the content is complex, or you have non-textual content inside.
         </span>
       ),
     },
@@ -549,8 +483,8 @@ An item that opens a submenu. Used in combination with a nested `DropdownMenu`. 
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the item.
+          When <Code>true</Code>, prevents the user from interacting with the
+          item.
         </span>
       ),
     },
@@ -559,10 +493,9 @@ An item that opens a submenu. Used in combination with a nested `DropdownMenu`. 
       type: 'string',
       description: (
         <span>
-          Optional text used for typeahead purposes. By default the
-          typeahead behavior will use the <Code>.textContent</Code> of{' '}
-          the item. Use this when the content is complex, or you have
-          non-textual content inside.
+          Optional text used for typeahead purposes. By default the typeahead
+          behavior will use the <Code>.textContent</Code> of the item. Use this
+          when the content is complex, or you have non-textual content inside.
         </span>
       ),
     },
@@ -625,8 +558,8 @@ An item that can be controlled and rendered like a checkbox.
       type: 'boolean',
       description: (
         <span>
-          The controlled checked state of the item. Must be used in
-          conjunction with <Code>onCheckedChange</Code>.
+          The controlled checked state of the item. Must be used in conjunction
+          with <Code>onCheckedChange</Code>.
         </span>
       ),
     },
@@ -635,9 +568,7 @@ An item that can be controlled and rendered like a checkbox.
       type: '(checked: boolean) => void',
       typeSimple: 'function',
       description: (
-        <span>
-          Event handler called when the checked state changes.
-        </span>
+        <span>Event handler called when the checked state changes.</span>
       ),
     },
     {
@@ -645,8 +576,8 @@ An item that can be controlled and rendered like a checkbox.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the item.
+          When <Code>true</Code>, prevents the user from interacting with the
+          item.
         </span>
       ),
     },
@@ -656,11 +587,9 @@ An item that can be controlled and rendered like a checkbox.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the user selects an item (via
-          mouse of keyboard). Calling{' '}
-          <Code>event.preventDefault</Code> in this handler will
-          prevent the dropdown menu from closing when selecting that
-          item.
+          Event handler called when the user selects an item (via mouse of
+          keyboard). Calling <Code>event.preventDefault</Code> in this handler
+          will prevent the dropdown menu from closing when selecting that item.
         </span>
       ),
     },
@@ -669,10 +598,9 @@ An item that can be controlled and rendered like a checkbox.
       type: 'string',
       description: (
         <span>
-          Optional text used for typeahead purposes. By default the
-          typeahead behavior will use the <Code>.textContent</Code> of{' '}
-          the item. Use this when the content is complex, or you have
-          non-textual content inside.
+          Optional text used for typeahead purposes. By default the typeahead
+          behavior will use the <Code>.textContent</Code> of the item. Use this
+          when the content is complex, or you have non-textual content inside.
         </span>
       ),
     },
@@ -734,8 +662,8 @@ An item that can be controlled and rendered like a radio.
       type: 'boolean',
       description: (
         <span>
-          When <Code>true</Code>, prevents the user from interacting
-          with the item.
+          When <Code>true</Code>, prevents the user from interacting with the
+          item.
         </span>
       ),
     },
@@ -745,11 +673,9 @@ An item that can be controlled and rendered like a radio.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the user selects an item (via
-          mouse of keyboard). Calling{' '}
-          <Code>event.preventDefault</Code> in this handler will
-          prevent the dropdown menu from closing when selecting that
-          item.
+          Event handler called when the user selects an item (via mouse of
+          keyboard). Calling <Code>event.preventDefault</Code> in this handler
+          will prevent the dropdown menu from closing when selecting that item.
         </span>
       ),
     },
@@ -758,10 +684,9 @@ An item that can be controlled and rendered like a radio.
       type: 'string',
       description: (
         <span>
-          Optional text used for typeahead purposes. By default the
-          typeahead behavior will use the <Code>.textContent</Code> of{' '}
-          the item. Use this when the content is complex, or you have
-          non-textual content inside.
+          Optional text used for typeahead purposes. By default the typeahead
+          behavior will use the <Code>.textContent</Code> of the item. Use this
+          when the content is complex, or you have non-textual content inside.
         </span>
       ),
     },
@@ -788,8 +713,8 @@ Renders when the parent `DropdownMenu.CheckboxItem` or `DropdownMenu.RadioItem` 
       type: 'boolean',
       description: (
         <span>
-          Used to force mounting when more control is needed. Useful
-          when controlling animation with React animation libraries.
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries.
         </span>
       ),
     },
@@ -814,30 +739,232 @@ Used to visually separate items in the dropdown menu.
   ]}
 />
 
-## Styling
+## Examples
+
+### With submenus
+
+You can create submenus by nesting `DropdownMenu`s and using a `TriggerItem` in place of a `Trigger`.
+
+```jsx line=7-14
+<DropdownMenu.Root>
+  <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+  <DropdownMenu.Content>
+    <DropdownMenu.Item>…</DropdownMenu.Item>
+    <DropdownMenu.Item>…</DropdownMenu.Item>
+    <DropdownMenu.Separator />
+    <DropdownMenu.Root>
+      <DropdownMenu.TriggerItem>Sub menu →</DropdownMenu.TriggerItem>
+      <DropdownMenu.Content>
+        <DropdownMenu.Item>Sub menu item</DropdownMenu.Item>
+        <DropdownMenu.Item>Sub menu item</DropdownMenu.Item>
+        <DropdownMenu.Arrow />
+      </DropdownMenu.Content>
+    </DropdownMenu.Root>
+    <DropdownMenu.Separator />
+    <DropdownMenu.Item>…</DropdownMenu.Item>
+  </DropdownMenu.Content>
+</DropdownMenu.Root>
+```
+
+### With disabled items
+
+You can add special styles to disabled items via the `data-disabled` attribute.
+
+```jsx line=4-6,12
+import { styled } from '@stitches/react';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+
+const StyledItem = styled(DropdownMenu.Item, {
+  '&[data-disabled]': { color: 'gainsboro' },
+});
+
+export default () => (
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+    <DropdownMenu.Content>
+      <StyledItem __disabled__>…</StyledItem>
+      <StyledItem>…</StyledItem>
+      <StyledItem>…</StyledItem>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+);
+```
+
+### With separators
+
+Use the `Separator` part to add a separator between items.
+
+```jsx line=5,7
+<DropdownMenu.Root>
+  <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+  <DropdownMenu.Content>
+    <DropdownMenu.Item>…</DropdownMenu.Item>
+    <DropdownMenu.Separator />
+    <DropdownMenu.Item>…</DropdownMenu.Item>
+    <DropdownMenu.Separator />
+    <DropdownMenu.Item>…</DropdownMenu.Item>
+  </DropdownMenu.Content>
+</DropdownMenu.Root>
+```
+
+### With labels
+
+Use the `Label` part to help label a section.
+
+```jsx line=4
+<DropdownMenu.Root>
+  <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+  <DropdownMenu.Content>
+    <DropdownMenu.Label>Label</DropdownMenu.Label>
+    <DropdownMenu.Item>…</DropdownMenu.Item>
+    <DropdownMenu.Item>…</DropdownMenu.Item>
+    <DropdownMenu.Item>…</DropdownMenu.Item>
+  </DropdownMenu.Content>
+</DropdownMenu.Root>
+```
+
+### With checkbox items
+
+Use the `CheckboxItem` part to add an item that can be checked.
+
+```jsx line=6,15-20
+import React from 'react';
+import { CheckIcon } from '@radix-ui/react-icons';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+
+export default () => {
+  const [checked, setChecked] = React.useState(true);
+
+  return (
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+      <DropdownMenu.Content>
+        <DropdownMenu.Item>…</DropdownMenu.Item>
+        <DropdownMenu.Item>…</DropdownMenu.Item>
+        <DropdownMenu.Separator />
+        <DropdownMenu.CheckboxItem
+          checked={checked}
+          onCheckedChange={setChecked}
+        >
+          <DropdownMenu.ItemIndicator>
+            <CheckIcon />
+          </DropdownMenu.ItemIndicator>
+          Checkbox item
+        </DropdownMenu.CheckboxItem>
+      </DropdownMenu.Content>
+    </DropdownMenu.Root>
+  );
+};
+```
+
+### With radio items
+
+Use the `RadioGroup` and `RadioItem` parts to add an item that can be checked amongst others.
+
+```jsx line=6,12-31
+import React from 'react';
+import { CheckIcon } from '@radix-ui/react-icons';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+
+export default () => {
+  const [color, setColor] = React.useState('blue');
+
+  return (
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+      <DropdownMenu.Content>
+        <DropdownMenu.RadioGroup value={color} onValueChange={setColor}>
+          <DropdownMenu.RadioItem value="red">
+            <DropdownMenu.ItemIndicator>
+              <CheckIcon />
+            </DropdownMenu.ItemIndicator>
+            Red
+          </DropdownMenu.RadioItem>
+          <DropdownMenu.RadioItem value="blue">
+            <DropdownMenu.ItemIndicator>
+              <CheckIcon />
+            </DropdownMenu.ItemIndicator>
+            Blue
+          </DropdownMenu.RadioItem>
+          <DropdownMenu.RadioItem value="green">
+            <DropdownMenu.ItemIndicator>
+              <CheckIcon />
+            </DropdownMenu.ItemIndicator>
+            Green
+          </DropdownMenu.RadioItem>
+        </DropdownMenu.RadioGroup>
+      </DropdownMenu.Content>
+    </DropdownMenu.Root>
+  );
+};
+```
+
+### With complex items
+
+```jsx line=4-7,14,18,22
+import { styled } from '@stitches/react';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+
+const Image = styled('img', {
+  width: 24,
+  height: 24,
+});
+
+export default () => (
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+    <DropdownMenu.Content>
+      <DropdownMenu.Item>
+        <Image src="…" />
+        Adolfo Hess
+      </DropdownMenu.Item>
+      <DropdownMenu.Item>
+        <Image src="…" />
+        Miyah Myles
+      </DropdownMenu.Item>
+      <DropdownMenu.Item>
+        <Image src="…" />
+        Sylvia Reynolds
+      </DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+);
+```
 
 ### Origin-aware animations
 
 We expose a CSS custom property `--radix-dropdown-menu-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
-```jsx
+```jsx line=4-7,9-12,17
+import { styled, keyframes } from '@stitches/react';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+
 const scaleIn = keyframes({
   '0%': { opacity: 0, transform: 'scale(0)' },
   '100%': { opacity: 1, transform: 'scale(1)' },
 });
 
 const StyledContent = styled(DropdownMenu.Content, {
-  transformOrigin:
-    'var(--radix-dropdown-menu-content-transform-origin)',
+  transformOrigin: 'var(--radix-dropdown-menu-content-transform-origin)',
   animation: `${scaleIn} 0.5s ease-out`,
 });
+
+export default () => (
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+    <StyledContent>…</StyledContent>
+  </DropdownMenu.Root>
+);
 ```
 
 ### Collision-aware animations
 
 We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
 
-```jsx
+```jsx line=4-7,9,12-14-19,24
+import { styled, keyframes } from '@stitches/react';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+
 const slideDown = keyframes({
   '0%': { opacity: 0, transform: 'translateY(-10px)' },
   '100%': { opacity: 1, transform: 'translateY(0)' },
@@ -849,533 +976,16 @@ const slideUp = keyframes({
 });
 
 const StyledContent = styled(DropdownMenu.Content, {
-  '&[data-side="top"]': { animationName: slideUp },
-  '&[data-side="bottom"]': { animationName: slideDown },
   animationDuration: '0.6s',
   animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
-});
-```
-
-## Examples
-
-### With submenus
-
-You can create submenus by nesting `DropdownMenu`s and using a `TriggerItem` in place of a `Trigger`.
-
-<Preview>
-  <DropdownMenuSubmenuDemo />
-</Preview>
-
-```jsx collapsed
-import { styled } from 'path-to/stitches.config';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-
-const StyledContent = styled(DropdownMenu.Content, {
-  minWidth: 130,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 5,
-  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
-});
-
-const itemStyles = {
-  fontSize: 13,
-  padding: '5px 10px',
-  borderRadius: 3,
-  cursor: 'default',
-
-  '&[data-disabled]': {
-    color: 'gainsboro',
-  },
-
-  '&:focus': {
-    outline: 'none',
-    backgroundColor: 'dodgerblue',
-    color: 'white',
-  },
-};
-
-const StyledItem = styled(DropdownMenu.Item, itemStyles);
-
-const StyledTriggerItem = styled(DropdownMenu.TriggerItem, {
-  '&[data-state="open"]': {
-    backgroundColor: 'hsl(206,10%,80%)',
-    color: 'black',
-  },
-  ...itemStyles,
-});
-
-const StyledSeparator = styled(DropdownMenu.Separator, {
-  height: 1,
-  backgroundColor: 'gainsboro',
-  margin: 5,
-});
-
-const StyledArrow = styled(DropdownMenu.Arrow, {
-  fill: 'white',
+  '&[data-side="top"]': { animationName: slideUp },
+  '&[data-side="bottom"]': { animationName: slideDown },
 });
 
 export default () => (
   <DropdownMenu.Root>
-    <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
-    <StyledContent>
-      <StyledItem onSelect={() => console.log('command-palette')}>
-        Command Palette…
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('open-view')}>
-        Open View…
-      </StyledItem>
-      <StyledSeparator />
-      <DropdownMenu.Root>
-        <StyledTriggerItem>Editor Layout →</StyledTriggerItem>
-        <StyledContent sideOffset={12} alignOffset={-5}>
-          <StyledItem onSelect={() => console.log('split-up')}>
-            Split Up
-          </StyledItem>
-          <StyledItem onSelect={() => console.log('split-left')}>
-            Split Left
-          </StyledItem>
-          <StyledSeparator />
-          <StyledItem onSelect={() => console.log('two-columns')}>
-            Two Columns
-          </StyledItem>
-          <StyledArrow offset={13} />
-        </StyledContent>
-      </DropdownMenu.Root>
-      <StyledSeparator />
-      <StyledItem onSelect={() => console.log('explorer')}>
-        Explorer
-      </StyledItem>
-      <StyledArrow />
-    </StyledContent>
-  </DropdownMenu.Root>
-);
-```
-
-### With disabled items
-
-You can add special styles to disabled items via the `data-disabled` attribute.
-
-<Preview>
-  <DropdownMenuDemo showDisabled />
-</Preview>
-
-```jsx collapsed
-import { styled } from 'path-to/stitches.config';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-
-const StyledContent = styled(DropdownMenu.Content, {
-  minWidth: 130,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 5,
-  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
-});
-
-const StyledItem = styled(DropdownMenu.Item, {
-  fontSize: 13,
-  padding: '5px 10px',
-  borderRadius: 3,
-  cursor: 'default',
-
-  '&[data-disabled]': {
-    color: 'gainsboro',
-  },
-
-  '&:focus': {
-    outline: 'none',
-    backgroundColor: 'dodgerblue',
-    color: 'white',
-  },
-});
-
-const StyledArrow = styled(DropdownMenu.Arrow, {
-  fill: 'white',
-});
-
-export default () => (
-  <DropdownMenu.Root>
-    <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
-    <StyledContent>
-      <StyledItem disabled onSelect={() => console.log('cut')}>
-        Cut
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('copy')}>
-        Copy
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('paste')}>
-        Paste
-      </StyledItem>
-      <StyledArrow />
-    </StyledContent>
-  </DropdownMenu.Root>
-);
-```
-
-### With separators
-
-Use the `Separator` part to add a separator between items.
-
-<Preview>
-  <DropdownMenuDemo showSeparator />
-</Preview>
-
-```jsx collapsed
-import { styled } from 'path-to/stitches.config';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-
-const StyledContent = styled(DropdownMenu.Content, {
-  minWidth: 130,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 5,
-  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
-});
-
-const StyledItem = styled(DropdownMenu.Item, {
-  fontSize: 13,
-  padding: '5px 10px',
-  borderRadius: 3,
-  cursor: 'default',
-
-  '&:focus': {
-    outline: 'none',
-    backgroundColor: 'dodgerblue',
-    color: 'white',
-  },
-});
-
-const StyledSeparator = styled(DropdownMenu.Separator, {
-  height: 1,
-  backgroundColor: 'gainsboro',
-  margin: 5,
-});
-
-const StyledArrow = styled(DropdownMenu.Arrow, {
-  fill: 'white',
-});
-
-export default () => (
-  <DropdownMenu.Root>
-    <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
-    <StyledContent>
-      <StyledItem disabled onSelect={() => console.log('cut')}>
-        Cut
-      </StyledItem>
-      <StyledSeparator />
-      <StyledItem onSelect={() => console.log('copy')}>
-        Copy
-      </StyledItem>
-      <StyledSeparator />
-      <StyledItem onSelect={() => console.log('paste')}>
-        Paste
-      </StyledItem>
-    </StyledContent>
-  </DropdownMenu.Root>
-);
-```
-
-### With labels
-
-Use the `Label` part to help label a section.
-
-<Preview>
-  <DropdownMenuDemo showLabel />
-</Preview>
-
-```jsx collapsed
-import { styled } from 'path-to/stitches.config';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-
-const StyledContent = styled(DropdownMenu.Content, {
-  minWidth: 130,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 5,
-  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
-});
-
-const StyledItem = styled(DropdownMenu.Item, {
-  fontSize: 13,
-  padding: '5px 10px',
-  borderRadius: 3,
-  cursor: 'default',
-
-  '&:focus': {
-    outline: 'none',
-    backgroundColor: 'dodgerblue',
-    color: 'white',
-  },
-});
-
-const StyledLabel = styled(DropdownMenu.Label, {
-  color: 'slategray',
-  fontSize: 13,
-  padding: '5px 10px',
-  cursor: 'default',
-});
-
-const StyledSeparator = styled(DropdownMenu.Separator, {
-  height: 1,
-  backgroundColor: 'gainsboro',
-  margin: 5,
-});
-
-const StyledArrow = styled(DropdownMenu.Arrow, {
-  fill: 'white',
-});
-
-export default () => (
-  <DropdownMenu.Root>
-    <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
-    <StyledContent>
-      <StyledLabel>Actions</StyledLabel>
-      <StyledItem disabled onSelect={() => console.log('cut')}>
-        Cut
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('copy')}>
-        Copy
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('paste')}>
-        Paste
-      </StyledItem>
-      <StyledArrow />
-    </StyledContent>
-  </DropdownMenu.Root>
-);
-```
-
-### With checkbox items
-
-Use the `CheckboxItem` part to add an item that can be checked.
-
-<Preview>
-  <DropdownMenuCheckboxDemo />
-</Preview>
-
-```jsx collapsed
-import { styled } from 'path-to/stitches.config';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { CheckIcon } from '@radix-ui/react-icons';
-
-const StyledContent = styled(DropdownMenu.Content, {
-  minWidth: 130,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 5,
-  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
-});
-
-const itemStyles = {
-  fontSize: 13,
-  padding: '5px 10px 5px 25px',
-  borderRadius: 3,
-  cursor: 'default',
-  position: 'relative',
-
-  '&:focus': {
-    outline: 'none',
-    backgroundColor: 'dodgerblue',
-    color: 'white',
-  },
-};
-
-const StyledItem = styled(DropdownMenu.Item, itemStyles);
-
-const StyledCheckboxItem = styled(
-  DropdownMenu.CheckboxItem,
-  itemStyles
-);
-
-const StyledItemIndicator = styled(DropdownMenu.ItemIndicator, {
-  position: 'absolute',
-  left: 5,
-});
-
-const StyledSeparator = styled(DropdownMenu.Separator, {
-  height: 1,
-  backgroundColor: 'gainsboro',
-  margin: 5,
-});
-
-const StyledArrow = styled(DropdownMenu.Arrow, {
-  fill: 'white',
-});
-
-export default () => {
-  const [checked, setChecked] = React.useState(true);
-
-  return (
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
-      <StyledContent>
-        <StyledItem onSelect={() => console.log('radix-ui')}>
-          About Radix UI
-        </StyledItem>
-        <StyledItem onSelect={() => console.log('check-for-updates')}>
-          Check for updates
-        </StyledItem>
-        <StyledSeparator />
-        <StyledCheckboxItem
-          checked={checked}
-          onCheckedChange={setChecked}
-        >
-          <StyledItemIndicator>
-            <CheckIcon />
-          </StyledItemIndicator>
-          Show hidden files
-        </StyledCheckboxItem>
-        <StyledArrow />
-      </StyledContent>
-    </DropdownMenu.Root>
-  );
-};
-```
-
-### With radio items
-
-Use the `RadioGroup` and `RadioItem` parts to add an item that can be checked amongst others.
-
-<Preview>
-  <DropdownMenuRadioDemo />
-</Preview>
-
-```jsx collapsed
-import { styled } from 'path-to/stitches.config';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { CheckIcon } from '@radix-ui/react-icons';
-
-const StyledContent = styled(DropdownMenu.Content, {
-  minWidth: 130,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 5,
-  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
-});
-
-const itemStyles = {
-  fontSize: 13,
-  padding: '5px 10px 5px 25px',
-  borderRadius: 3,
-  cursor: 'default',
-  position: 'relative',
-
-  '&:focus': {
-    outline: 'none',
-    backgroundColor: 'dodgerblue',
-    color: 'white',
-  },
-};
-
-const StyledItem = styled(DropdownMenu.Item, itemStyles);
-
-const StyledRadioGroup = styled(DropdownMenu.RadioGroup, {});
-
-const StyledRadioItem = styled(DropdownMenu.RadioItem, itemStyles);
-
-const StyledItemIndicator = styled(DropdownMenu.ItemIndicator, {
-  position: 'absolute',
-  left: 5,
-});
-
-const StyledArrow = styled(DropdownMenu.Arrow, {
-  fill: 'white',
-});
-
-export default () => {
-  const [color, setColor] = React.useState('blue');
-
-  return (
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
-      <StyledContent>
-        <StyledRadioGroup value={color} onValueChange={setColor}>
-          <StyledRadioItem value="red">
-            <StyledItemIndicator>
-              <CheckIcon />
-            </StyledItemIndicator>
-            Red
-          </StyledRadioItem>
-          <StyledRadioItem value="blue">
-            <StyledItemIndicator>
-              <CheckIcon />
-            </StyledItemIndicator>
-            Blue
-          </StyledRadioItem>
-          <StyledRadioItem value="green">
-            <StyledItemIndicator>
-              <CheckIcon />
-            </StyledItemIndicator>
-            Green
-          </StyledRadioItem>
-        </StyledRadioGroup>
-        <StyledArrow />
-      </StyledContent>
-    </DropdownMenu.Root>
-  );
-};
-```
-
-### With complex items
-
-<Preview>
-  <DropdownMenuComplexDemo />
-</Preview>
-
-```jsx collapsed
-import { styled } from 'path-to/stitches.config';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-
-const StyledContent = styled(DropdownMenu.Content, {
-  minWidth: 130,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 5,
-  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
-});
-
-const StyledItem = styled(DropdownMenu.Item, {
-  fontSize: 13,
-  padding: '5px 10px',
-  borderRadius: 3,
-  cursor: 'default',
-
-  '&:focus': {
-    outline: 'none',
-    backgroundColor: 'dodgerblue',
-    color: 'white',
-  },
-});
-
-const StyledArrow = styled(DropdownMenu.Arrow, {
-  fill: 'white',
-});
-
-const Image = styled('img', {
-  width: 24,
-  height: 24,
-  borderRadius: 9999,
-  marginRight: 10,
-});
-
-export default () => (
-  <DropdownMenu.Root>
-    <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
-    <StyledContent>
-      <StyledItem onSelect={() => console.log('adolfo-hess')}>
-        <Image src="https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=facearea&facepad=3&w=24&h=24&dpr=2&q=80" />
-        Adolfo Hess
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('miyah-myles')}>
-        <Image src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=facearea&facepad=3&w=24&h=24&dpr=2&q=80" />
-        Miyah Myles
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('sylvia-reynolds')}>
-        <Image src="https://images.unsplash.com/photo-1508186225823-0963cf9ab0de?auto=format&fit=facearea&facepad=3&w=24&h=24&dpr=2&q=80" />
-        Sylvia Reynolds
-      </StyledItem>
-      <StyledArrow />
-    </StyledContent>
+    <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+    <StyledContent>…</StyledContent>
   </DropdownMenu.Root>
 );
 ```
@@ -1392,8 +1002,8 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-a
       keys: ['Space'],
       description: (
         <span>
-          When focus is on <Code>DropdownMenu.Trigger</Code>, opens
-          the dropdown menu and focuses the first item.
+          When focus is on <Code>DropdownMenu.Trigger</Code>, opens the dropdown
+          menu and focuses the first item.
           <br />
           When focus is on an item, activates the focused item.
         </span>
@@ -1403,8 +1013,8 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-a
       keys: ['Enter'],
       description: (
         <span>
-          When focus is on <Code>DropdownMenu.Trigger</Code>, opens
-          the dropdown menu and focuses the first item.
+          When focus is on <Code>DropdownMenu.Trigger</Code>, opens the dropdown
+          menu and focuses the first item.
           <br />
           When focus is on an item, activates the focused item.
         </span>
@@ -1414,8 +1024,8 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-a
       keys: ['ArrowDown'],
       description: (
         <span>
-          When focus is on <Code>DropdownMenu.Trigger</Code>, opens
-          the dropdown menu.
+          When focus is on <Code>DropdownMenu.Trigger</Code>, opens the dropdown
+          menu.
           <br />
           When focus is on an item, moves focus to the next item.
         </span>
@@ -1425,8 +1035,8 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-a
       keys: ['ArrowRight', 'ArrowLeft'],
       description: (
         <span>
-          When focus is on <Code>DropdownMenu.TriggerItem</Code>,
-          opens or closes the submenu depending on reading direction.
+          When focus is on <Code>DropdownMenu.TriggerItem</Code>, opens or
+          closes the submenu depending on reading direction.
         </span>
       ),
     },
@@ -1473,12 +1083,12 @@ export default () => (
       <DropdownMenuItem>Item</DropdownMenuItem>
       <DropdownMenuLabel>Label</DropdownMenuLabel>
       <DropdownMenuGroup>Group</DropdownMenuGroup>
-      <DropdownMenuCheckboxItem>
-        CheckboxItem
-      </DropdownMenuCheckboxItem>
-      <DropdownMenuRadioGroup>RadioGroup</DropdownMenuRadioGroup>
-      <DropdownMenuRadioItem>RadioItem</DropdownMenuRadioItem>
+      <DropdownMenuCheckboxItem>CheckboxItem</DropdownMenuCheckboxItem>
       <DropdownMenuSeparator>Separator</DropdownMenuSeparator>
+      <DropdownMenuRadioGroup>
+        <DropdownMenuRadioItem>RadioItem</DropdownMenuRadioItem>
+        <DropdownMenuRadioItem>RadioItem</DropdownMenuRadioItem>
+      </DropdownMenuRadioGroup>
     </DropdownMenuContent>
   </DropdownMenu>
 );
@@ -1513,10 +1123,7 @@ export const DropdownMenuGroup = DropdownMenuPrimitive.Group;
 export const DropdownMenuCheckboxItem = React.forwardRef(
   ({ children, ...props }, forwardedRef) => {
     return (
-      <DropdownMenuPrimitive.CheckboxItem
-        {...props}
-        ref={forwardedRef}
-      >
+      <DropdownMenuPrimitive.CheckboxItem {...props} ref={forwardedRef}>
         {children}
         <DropdownMenuPrimitive.ItemIndicator>
           <CheckIcon />
@@ -1526,8 +1133,7 @@ export const DropdownMenuCheckboxItem = React.forwardRef(
   }
 );
 
-export const DropdownMenuRadioGroup =
-  DropdownMenuPrimitive.RadioGroup;
+export const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
 
 export const DropdownMenuRadioItem = React.forwardRef(
   ({ children, ...props }, forwardedRef) => {
