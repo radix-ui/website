@@ -56,11 +56,14 @@ export function PrimitivesPage({ children }: { children: React.ReactNode }) {
           borderColor: '$slate6',
           WebkitOverflowScrolling: 'touch',
           overflowX: 'hidden',
+          left: 0,
+          top: '$sizes$7',
+          position: 'fixed',
+          backgroundColor: '$loContrast',
+          zIndex: 1,
+          ...(isOpen ? { bottom: 0 } : {}),
 
           '@bp2': {
-            position: 'fixed',
-            top: '$sizes$7',
-            left: 0,
             bottom: 0,
             width: '250px',
             borderRight: '1px solid',
@@ -119,9 +122,10 @@ export function PrimitivesPage({ children }: { children: React.ReactNode }) {
         css={{
           maxWidth: '100%',
           flex: 1,
-          py: '$5',
+          pt: '$8',
+          pb: '$5',
 
-          '@bp2': { pt: '$8', pb: '$9', pl: '250px' },
+          '@bp2': { pb: '$9', pl: '250px' },
           '@media (min-width: 1440px)': { pr: '250px' },
         }}
       >
