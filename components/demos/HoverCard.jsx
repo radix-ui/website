@@ -57,6 +57,7 @@ const Flex = styled('div', { display: 'flex' });
 
 const ImageTrigger = styled('a', {
   all: 'unset',
+  cursor: 'pointer',
   borderRadius: '100%',
   display: 'inline-block',
   '&:focus': { boxShadow: `0 0 0 2px white` },
@@ -93,7 +94,12 @@ const Text = styled('div', {
 
 const HoverCardDemo = () => (
   <HoverCard>
-    <HoverCardTrigger as={ImageTrigger} href="https://twitter.com/radix_ui">
+    <HoverCardTrigger
+      as={ImageTrigger}
+      href="https://twitter.com/radix_ui"
+      target="_blank"
+      rel="noreferrer noopener"
+    >
       <Img src="https://pbs.twimg.com/profile_images/1337055608613253126/r_eiMp2H_400x400.png" />
     </HoverCardTrigger>
     <HoverCardContent sideOffset={5}>
