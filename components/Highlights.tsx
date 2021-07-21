@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Box, Flex, Heading, Separator, Link, Badge } from '@modulz/design-system';
+import { Text, Box, Flex, Heading, Separator, Link } from '@modulz/design-system';
 import { CheckIcon } from '@radix-ui/react-icons';
 import { ExternalIcon } from '@components/ExternalIcon';
 import { Select } from '@components/Select';
