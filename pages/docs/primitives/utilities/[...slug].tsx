@@ -7,6 +7,7 @@ import { MDXProvider, components } from '@components/MDXComponents';
 import { QuickNav } from '@components/QuickNav';
 import { OldVersionNote } from '@components/OldVersionNote';
 import { getAllFrontmatter, getAllVersionsFromPath, getMdxBySlug } from '@lib/mdx';
+import { getPackageData, formatBytes } from '@lib/bundlephobia';
 
 import type { Frontmatter } from 'types/frontmatter';
 
@@ -85,10 +86,13 @@ export async function getStaticProps(context) {
   );
   const [componentName, componentVersion] = context.params.slug;
 
+  const { gzip } = await getPackageData(frontmatter.name, componentVersion);
+
   const extendedFrontmatter = {
     ...frontmatter,
     version: componentVersion,
     versions: getAllVersionsFromPath(`primitives/utilities/${componentName}`),
+    gzip: typeof gzip === 'number' ? formatBytes(gzip) : null,
   };
 
   return { props: { frontmatter: extendedFrontmatter, code } };

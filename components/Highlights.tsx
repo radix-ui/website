@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Box, Flex, Heading, Separator, Link } from '@modulz/design-system';
+import { Text, Box, Flex, Heading, Separator, Link, Badge } from '@modulz/design-system';
 import { CheckIcon } from '@radix-ui/react-icons';
 import { ExternalIcon } from '@components/ExternalIcon';
 import { Select } from '@components/Select';
@@ -69,7 +69,7 @@ export function Highlights({ features }) {
           Component Reference Links
         </VisuallyHidden>
         <Separator size="2" css={{ mb: '$4', display: 'block', '@bp1': { display: 'none' } }} />
-        <Flex css={{ mb: '$4', alignItems: 'baseline' }}>
+        <Flex css={{ mb: '$1', alignItems: 'center' }}>
           <Box css={{ mx: -5 }}>
             <Select
               value={frontmatter.version}
@@ -86,8 +86,23 @@ export function Highlights({ features }) {
             </Select>
           </Box>
         </Flex>
-        <Separator size="2" css={{ mb: '$4', display: 'none', '@bp1': { display: 'block' } }} />
-        <Box css={{ mb: '$2' }}>
+
+        {frontmatter.gzip && (
+          <Text size="1" css={{ color: '$slate11', lineHeight: '15px' }}>
+            Size:{' '}
+            <Link
+              variant="subtle"
+              href={`https://bundlephobia.com/package/@radix-ui/react-${frontmatter.name}@${frontmatter.version}`}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              {frontmatter.gzip}
+            </Link>
+          </Text>
+        )}
+
+        <Separator size="2" css={{ my: '$4', display: 'none', '@bp1': { display: 'block' } }} />
+        <Box css={{ mb: '$4' }}>
           <Link
             variant="blue"
             href={`https://github.com/radix-ui/primitives/tree/main/packages/react/${publishedName}/src`}
