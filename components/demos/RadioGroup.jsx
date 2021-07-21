@@ -55,13 +55,13 @@ export const CheckboxDemo = () => (
       </RadioGroupRadio>
       <Label htmlFor="r1">Default</Label>
     </Flex>
-    <Flex css={{ my: 10, alignItems: 'center' }}>
+    <Flex css={{ margin: '10px 0', alignItems: 'center' }}>
       <RadioGroupRadio value="comfortable" id="r2">
         <RadioGroupIndicator />
       </RadioGroupRadio>
       <Label htmlFor="r2">Comfortable</Label>
     </Flex>
-    <Flex css={{ my: 10, alignItems: 'center' }}>
+    <Flex css={{ margin: '10px 0', alignItems: 'center' }}>
       <RadioGroupRadio value="compact" id="r3">
         <RadioGroupIndicator />
       </RadioGroupRadio>
