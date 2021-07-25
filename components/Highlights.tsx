@@ -69,7 +69,7 @@ export function Highlights({ features }) {
           Component Reference Links
         </VisuallyHidden>
         <Separator size="2" css={{ mb: '$4', display: 'block', '@bp1': { display: 'none' } }} />
-        <Flex css={{ mb: '$1', alignItems: 'center' }}>
+        <Flex css={{ mb: '$2', alignItems: 'center' }}>
           <Box css={{ mx: -5 }}>
             <Select
               value={frontmatter.version}
@@ -88,7 +88,7 @@ export function Highlights({ features }) {
         </Flex>
 
         {frontmatter.gzip && (
-          <Text size="1" css={{ color: '$slate11', lineHeight: '15px' }}>
+          <Text size="2" css={{ color: '$slate11', lineHeight: '15px' }}>
             Size:{' '}
             <Link
               variant="subtle"
@@ -102,7 +102,7 @@ export function Highlights({ features }) {
         )}
 
         <Separator size="2" css={{ my: '$4', display: 'none', '@bp1': { display: 'block' } }} />
-        <Box css={{ mb: '$4' }}>
+        <Box css={{ mb: '$2' }}>
           <Link
             variant="blue"
             href={`https://github.com/radix-ui/primitives/tree/main/packages/react/${publishedName}/src`}
