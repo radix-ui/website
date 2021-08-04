@@ -12,6 +12,14 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#menu
   long-press.
 </Description>
 
+<HeroContainer>
+  <ContextMenuDemo />
+</HeroContainer>
+
+```jsx hero template=ContextMenu
+
+```
+
 <Highlights
   features={[
     'Supports submenus with configurable reading direction.',
@@ -149,6 +157,21 @@ The component that pops out in an open context menu.
         'The reading direction of submenus when applicable. If omitted, assumes LTR (left-to-right) reading mode.',
     },
     {
+      name: 'modal',
+      required: false,
+      type: 'boolean',
+      default: 'true',
+      description: (
+        <span>
+          The modality of the context menu. When set to <Code>true</Code>,
+          interaction with outside elements will be disabled and only menu
+          content will be visible to screen readers.
+          <br />
+          This prop is ignored within submenus.
+        </span>
+      ),
+    },
+    {
       name: 'onCloseAutoFocus',
       type: '(event: Event) => void',
       typeSimple: 'function',
@@ -156,21 +179,6 @@ The component that pops out in an open context menu.
         <span>
           Event handler called when focus moves back after closing. It can be
           prevented by calling <Code>event.preventDefault</Code>.
-          <br />
-          This prop is ignored within submenus.
-        </span>
-      ),
-    },
-    {
-      name: 'disableOutsidePointerEvents',
-      type: 'boolean',
-      default: 'true',
-      description: (
-        <span>
-          When <Code>true</Code>, hover/focus/click interactions will be
-          disabled on elements outside the bounds of the component. Users will
-          need to click twice on outside elements to interact with them: Once to
-          close the context menu, and again to activate the element.
           <br />
           This prop is ignored within submenus.
         </span>

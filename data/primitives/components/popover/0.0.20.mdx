@@ -11,6 +11,14 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal
   Displays rich content in a portal, triggered by a button.
 </Description>
 
+<HeroContainer>
+  <PopoverDemo />
+</HeroContainer>
+
+```jsx hero template=Popover
+
+```
+
 <Highlights
   features={[
     'Can be controlled or uncontrolled.',
@@ -141,13 +149,15 @@ The component that pops out when the popover is open.
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
-      name: 'trapFocus',
+      name: 'modal',
+      required: false,
       type: 'boolean',
-      default: 'true',
+      default: 'false',
       description: (
         <span>
-          When <Code>true</Code>, focus will be trapped within the component
-          bounds.
+          The modality of the popover. When set to <Code>true</Code>,
+          interaction with outside elements will be disabled and only popover
+          content will be visible to screen readers.
         </span>
       ),
     },
@@ -171,19 +181,6 @@ The component that pops out when the popover is open.
         <span>
           Event handler called when focus moves to the trigger after closing. It
           can be prevented by calling <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'disableOutsidePointerEvents',
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <span>
-          When <Code>true</Code>, hover/focus/click interactions will be
-          disabled on elements outside the bounds of the component. Users will
-          need to click twice on outside elements to interact with them: Once to
-          close the popover, and again to activate the element.
         </span>
       ),
     },
@@ -231,17 +228,6 @@ The component that pops out when the popover is open.
           Event handler called when an interaction (pointer or focus event)
           happens outside the bounds of the component. It can be prevented by
           calling <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'disableOutsideScroll',
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <span>
-          When <Code>true</Code>, prevents the user from scrolling outside the
-          bounds of the component.
         </span>
       ),
     },
