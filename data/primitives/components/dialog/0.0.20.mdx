@@ -176,6 +176,19 @@ Contains content to be rendered in the open dialog.
         'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
     },
     {
+      name: 'modal',
+      required: false,
+      type: 'boolean',
+      default: 'true',
+      description: (
+        <span>
+          The modality of the dialog. When set to <Code>true</Code>, interaction
+          with outside elements will be disabled and only dialog content will be
+          visible to screen readers.
+        </span>
+      ),
+    },
+    {
       name: 'onOpenAutoFocus',
       type: '(event: Event) => void',
       typeSimple: 'function',
@@ -218,6 +231,18 @@ Contains content to be rendered in the open dialog.
           Event handler called when a pointer event occurs outside the bounds of
           the component. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onInteractOutside',
+      type: '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when an interaction (pointer or focus event)
+          happens outside the bounds of the component. It can be prevented by
+          calling <Code>event.preventDefault</Code>.
         </span>
       ),
     },
