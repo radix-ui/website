@@ -42,11 +42,9 @@ import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
 type PolymorphicBox = Polymorphic.ForwardRefComponent<'div', {}>;
 
-const Box: PolymorphicBox = React.forwardRef(
-  ({ as: Comp = 'div', ...props }, forwardedRef) => (
-    <Comp {...props} ref={forwardedRef} />
-  )
-);
+const Box = React.forwardRef(({ as: Comp = 'div', ...props }, forwardedRef) => (
+  <Comp {...props} ref={forwardedRef} />
+)) as PolymorphicBox;
 
 export default () => (
   <Box>
@@ -132,11 +130,11 @@ type PolymorphicDialogContent = Polymorphic.ForwardRefComponent<
   }
 >;
 
-const DialogContent: PolymorphicDialogContent = React.forwardRef(
+const DialogContent = React.forwardRef(
   ({ size = 'small', ...props }, forwardedRef) => (
     <Dialog.Content {...props} className={size} ref={forwardedRef} />
   )
-);
+) as PolymorphicDialogContent;
 
 export default () => (
   <Dialog.Root>
