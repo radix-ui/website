@@ -95,6 +95,19 @@ Contains all the parts of a popover.
         </span>
       ),
     },
+    {
+      name: 'modal',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description: (
+        <span>
+          The modality of the popover. When set to <Code>true</Code>,
+          interaction with outside elements will be disabled and only popover
+          content will be visible to screen readers.
+        </span>
+      ),
+    },
   ]}
 />
 
@@ -148,19 +161,6 @@ The component that pops out when the popover is open.
       default: 'div',
       description:
         'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'modal',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <span>
-          The modality of the popover. When set to <Code>true</Code>,
-          interaction with outside elements will be disabled and only popover
-          content will be visible to screen readers.
-        </span>
-      ),
     },
     {
       name: 'onOpenAutoFocus',

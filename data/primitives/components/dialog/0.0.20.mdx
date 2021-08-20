@@ -100,6 +100,19 @@ Contains all the parts of a dialog.
       ),
     },
     {
+      name: 'modal',
+      required: false,
+      type: 'boolean',
+      default: 'true',
+      description: (
+        <span>
+          The modality of the dialog. When set to <Code>true</Code>, interaction
+          with outside elements will be disabled and only dialog content will be
+          visible to screen readers.
+        </span>
+      ),
+    },
+    {
       name: 'id',
       type: 'string',
       description: (
@@ -175,19 +188,6 @@ Contains content to be rendered in the open dialog.
       type: 'boolean',
       description:
         'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
-    },
-    {
-      name: 'modal',
-      required: false,
-      type: 'boolean',
-      default: 'true',
-      description: (
-        <span>
-          The modality of the dialog. When set to <Code>true</Code>, interaction
-          with outside elements will be disabled and only dialog content will be
-          visible to screen readers.
-        </span>
-      ),
     },
     {
       name: 'onOpenAutoFocus',
