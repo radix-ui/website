@@ -100,6 +100,21 @@ Contains all the parts of a context menu.
       description:
         'Event handler called when the open state of the context menu changes.',
     },
+    {
+      name: 'modal',
+      required: false,
+      type: 'boolean',
+      default: 'true',
+      description: (
+        <span>
+          The modality of the context menu. When set to <Code>true</Code>,
+          interaction with outside elements will be disabled and only menu
+          content will be visible to screen readers.
+          <br />
+          This prop is ignored within submenus.
+        </span>
+      ),
+    },
   ]}
 />
 
@@ -156,21 +171,6 @@ The component that pops out in an open context menu.
       default: '"ltr"',
       description:
         'The reading direction of submenus when applicable. If omitted, assumes LTR (left-to-right) reading mode.',
-    },
-    {
-      name: 'modal',
-      required: false,
-      type: 'boolean',
-      default: 'true',
-      description: (
-        <span>
-          The modality of the context menu. When set to <Code>true</Code>,
-          interaction with outside elements will be disabled and only menu
-          content will be visible to screen readers.
-          <br />
-          This prop is ignored within submenus.
-        </span>
-      ),
     },
     {
       name: 'onCloseAutoFocus',
