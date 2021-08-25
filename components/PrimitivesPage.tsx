@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { Box, Flex, Badge, Text, Link, Container, Button } from '@modulz/design-system';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import { ScrollArea } from './ScrollArea';
-import { allPrimitivesRoutes, primitivesRoutes } from '@lib/primitivesRoutes';
+import { allPrimitivesRoutes, primitivesRoutes, RouteProps } from '@lib/primitivesRoutes';
 import { NavHeading, NavItem } from './DocNav';
 
 export function PrimitivesPage({ children }: { children: React.ReactNode }) {
@@ -92,11 +92,12 @@ export function PrimitivesPage({ children }: { children: React.ReactNode }) {
               '@bp2': { display: 'block', mt: '$4' },
             }}
           >
-            {primitivesRoutes.map((section) => (
+            {primitivesRoutes.map((section: RouteProps) => (
               <Box key={section.label} css={{ mb: '$4' }}>
                 <NavHeading>{section.label}</NavHeading>
                 {section.pages.map((page) => {
                   const isDraft = page.draft;
+                  const isDeprecated = page.deprecated;
                   return (
                     <NavItem
                       key={page.slug}
@@ -108,6 +109,11 @@ export function PrimitivesPage({ children }: { children: React.ReactNode }) {
                         {page.title}
                       </Text>
                       {isDraft ? <Badge css={{ ml: '$2' }}>Coming soon</Badge> : null}
+                      {isDeprecated ? (
+                        <Badge variant="yellow" css={{ ml: '$2' }}>
+                          Deprecated
+                        </Badge>
+                      ) : null}
                     </NavItem>
                   );
                 })}
