@@ -64,13 +64,12 @@ Contains all the parts of a slider.
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'span',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
       name: 'defaultValue',
@@ -175,13 +174,12 @@ The track that contains the `Slider.Range`.
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'span',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
   ]}
 />
@@ -193,13 +191,12 @@ The range part. Must live inside `Slider.Track`.
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'span',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
   ]}
 />
@@ -211,13 +208,12 @@ A draggable thumb. You can render multiple thumbs.
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'span',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
   ]}
 />

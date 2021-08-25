@@ -118,13 +118,12 @@ The button that toggles the popover. By default, the `Popover.Content` will posi
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'button',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
   ]}
 />
@@ -136,13 +135,12 @@ An optional element to position the `Popover.Content` against. If this part is n
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
   ]}
 />
@@ -154,13 +152,12 @@ The component that pops out when the popover is open.
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
       name: 'onOpenAutoFocus',
@@ -326,13 +323,12 @@ An optional arrow element to render alongside the popover. This can be used to h
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'svg',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the entire SVG and all of its paths.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
       name: 'width',
@@ -367,13 +363,12 @@ The button that closes an open popover.
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'button',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
   ]}
 />

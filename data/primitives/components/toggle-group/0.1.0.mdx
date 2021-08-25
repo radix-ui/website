@@ -59,13 +59,12 @@ Contains all the parts of a toggle group.
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
       name: 'type',
@@ -217,13 +216,12 @@ An item in the group.
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'button',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
       name: 'value',
