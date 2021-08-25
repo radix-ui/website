@@ -67,7 +67,7 @@ export const Header = (props) => {
               <>
                 <Text size="2">Primitives</Text>
                 <Badge variant="yellow" css={{ ml: '$2' }}>
-                  Alpha
+                  Beta
                 </Badge>
               </>
             )}
