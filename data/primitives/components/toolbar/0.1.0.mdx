@@ -312,7 +312,7 @@ Used to visually separate items in the toolbar.
 
 ### Use with other primitives
 
-All our primitives which expose a `Trigger` part, such as `Dialog`, `AlertDialog`, `Popover`, `DropdownMenu` can be composed within a toolbar by using the `as` prop.
+All our primitives which expose a `Trigger` part, such as `Dialog`, `AlertDialog`, `Popover`, `DropdownMenu` can be composed within a toolbar by using the `asChild` prop.
 
 Here is an example using our `DropdownMenu` primitive.
 
@@ -325,7 +325,9 @@ export default () => (
     <Toolbar.Button>Action 1</Toolbar.Button>
     <Toolbar.Separator />
     <DropdownMenu.Root>
-      <Toolbar.Button as={DropdownMenu.Trigger}>Trigger</Toolbar.Button>
+      <Toolbar.Button asChild>
+        <DropdownMenu.Trigger>Trigger<DropdownMenu.Trigger>
+      </Toolbar.Button>
       <DropdownMenu.Content>…</DropdownMenu.Content>
     </DropdownMenu.Root>
   </Toolbar.Root>
@@ -372,8 +374,7 @@ Uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/rad
       keys: ['ArrowUp'],
       description: (
         <span>
-          Moves focus to the previous item depending on <Code>orientation</Code>
-          .
+          Moves focus to the previous item depending on <Code>orientation</Code>.
         </span>
       ),
     },
@@ -381,8 +382,7 @@ Uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/rad
       keys: ['ArrowLeft'],
       description: (
         <span>
-          Moves focus to the previous item depending on <Code>orientation</Code>
-          .
+          Moves focus to the previous item depending on <Code>orientation</Code>.
         </span>
       ),
     },
