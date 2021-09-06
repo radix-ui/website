@@ -65,8 +65,8 @@ export function Highlights({ features }) {
       </Box>
 
       <Box css={{ width: 'fit-content' }} as="nav" aria-labelledby="site-component-info-heading">
-        <VisuallyHidden asChild id="site-component-info-heading">
-          <h2>Component Reference Links</h2>
+        <VisuallyHidden asChild>
+          <h2 id="site-component-info-heading">Component Reference Links</h2>
         </VisuallyHidden>
         <Separator size="2" css={{ mb: '$4', display: 'block', '@bp1': { display: 'none' } }} />
         <Flex css={{ mb: '$2', alignItems: 'center' }}>
