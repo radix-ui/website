@@ -140,8 +140,10 @@ const Text = styled('div', {
 
 const PopoverDemo = () => (
   <Popover>
-    <PopoverTrigger as={IconButton} aria-label="Update dimensions">
-      <MixerHorizontalIcon />
+    <PopoverTrigger asChild>
+      <IconButton aria-label="Update dimensions">
+        <MixerHorizontalIcon />
+      </IconButton>
     </PopoverTrigger>
     <PopoverContent sideOffset={5} className={`${theme}`}>
       <Flex css={{ flexDirection: 'column', gap: 10 }}>

@@ -119,7 +119,9 @@ const Button = styled('button', {
 
 const AlertDialogDemo = () => (
   <AlertDialog>
-    <AlertDialogTrigger as={Button}>Delete account</AlertDialogTrigger>
+    <AlertDialogTrigger asChild>
+      <Button>Delete account</Button>
+    </AlertDialogTrigger>
     <AlertDialogContent className={`${theme}`}>
       <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
       <AlertDialogDescription>
@@ -127,11 +129,13 @@ const AlertDialogDemo = () => (
         from our servers.
       </AlertDialogDescription>
       <Flex css={{ justifyContent: 'flex-end' }}>
-        <AlertDialogCancel as={Button} variant="mauve" css={{ marginRight: 25 }}>
-          Cancel
+        <AlertDialogCancel asChild>
+          <Button variant="mauve" css={{ marginRight: 25 }}>
+            Cancel
+          </Button>
         </AlertDialogCancel>
-        <AlertDialogAction as={Button} variant="red">
-          Yes, delete account
+        <AlertDialogAction asChild>
+          <Button variant="red">Yes, delete account</Button>
         </AlertDialogAction>
       </Flex>
     </AlertDialogContent>
