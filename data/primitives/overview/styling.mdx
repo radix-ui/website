@@ -131,29 +131,20 @@ export default () => {
 
 ## Extending a primitive
 
-We expose an `extendPrimitive` utility as a convenience for adding default props. It can be useful if your preference is to style data attributes as they needn't be composed like class names.
+Extending a primitive is done the same way you extend any React component. One minor difference is the use of `Radix.ComponentPropsWithoutRef` instead of `React.ComponentPropsWithoutRef` which is just a workaround until [the fixed types are released](https://github.com/DefinitelyTyped/DefinitelyTyped/pull/55396).
 
-```jsx
-import { extendPrimitive } from '@radix-ui/react-primitive';
+```tsx
+import * as React from 'react';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
+import type * as Radix from '@radix-ui/react-primitive';
 
-const AccordionItem = extendPrimitive(AccordionPrimitive.Item, {
-  defaultProps: { 'data-accordion-item': '' },
-});
-
-const AccordionPanel = extendPrimitive(AccordionPrimitive.Panel, {
-  defaultProps: { 'data-accordion-panel': '' },
-});
-```
-
-```css
-[data-accordion-item] {
-  border-bottom: 1px solid gainsboro;
-}
-
-[data-accordion-panel] {
-  padding: 10px;
-}
+const AccordionItem = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Item>,
+  Radix.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
+>((props, forwardedRef) => (
+  <AccordionPrimitive.Item {...props} ref={forwardedRef} />
+));
+AccordionItem.displayName = 'AccordionItem';
 ```
 
 ## Changing the rendered element
