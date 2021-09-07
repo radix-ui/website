@@ -2,7 +2,7 @@ import React from 'react';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
-import { global, darkTheme, DesignSystemProvider, Box } from '@modulz/design-system';
+import { globalCss, darkTheme, DesignSystemProvider, Box } from '@modulz/design-system';
 import { Header } from '@components/Header';
 import { Footer } from '@components/Footer';
 import { PrimitivesPage } from '@components/PrimitivesPage';
@@ -10,7 +10,7 @@ import { DesignSystemPage } from '@components/DesignSystemPage';
 import { ColorsPage } from '@components/ColorsPage';
 import { useAnalytics } from '@lib/analytics';
 
-const globalStyles = global({
+const globalStyles = globalCss({
   '*, *::before, *::after': {
     boxSizing: 'border-box',
   },
@@ -63,7 +63,7 @@ function App({ Component, pageProps }: AppProps) {
       <ThemeProvider
         disableTransitionOnChange
         attribute="class"
-        value={{ light: 'light-theme', dark: darkTheme.toString() }}
+        value={{ light: 'light-theme', dark: darkTheme.className }}
         defaultTheme="system"
       >
         <Box

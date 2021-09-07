@@ -165,8 +165,8 @@ const Input = styled('input', {
 
 const DialogDemo = () => (
   <Dialog>
-    <DialogTrigger as={Button} size="large">
-      Edit profile
+    <DialogTrigger asChild>
+      <Button size="large">Edit profile</Button>
     </DialogTrigger>
     <DialogContent className={`${theme}`}>
       <DialogTitle>Edit profile</DialogTitle>
@@ -182,12 +182,16 @@ const DialogDemo = () => (
         <Input id="username" defaultValue="@peduarte" />
       </Fieldset>
       <Flex css={{ marginTop: 25, justifyContent: 'flex-end' }}>
-        <DialogClose as={Button} aria-label="Close" variant="green">
-          Save changes
+        <DialogClose asChild>
+          <Button aria-label="Close" variant="green">
+            Save changes
+          </Button>
         </DialogClose>
       </Flex>
-      <DialogClose as={IconButton}>
-        <Cross2Icon />
+      <DialogClose asChild>
+        <IconButton>
+          <Cross2Icon />
+        </IconButton>
       </DialogClose>
     </DialogContent>
   </Dialog>

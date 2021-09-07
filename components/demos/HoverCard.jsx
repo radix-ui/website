@@ -94,13 +94,10 @@ const Text = styled('div', {
 
 const HoverCardDemo = () => (
   <HoverCard>
-    <HoverCardTrigger
-      as={ImageTrigger}
-      href="https://twitter.com/radix_ui"
-      target="_blank"
-      rel="noreferrer noopener"
-    >
-      <Img src="https://pbs.twimg.com/profile_images/1337055608613253126/r_eiMp2H_400x400.png" />
+    <HoverCardTrigger asChild>
+      <ImageTrigger href="https://twitter.com/radix_ui" target="_blank" rel="noreferrer noopener">
+        <Img src="https://pbs.twimg.com/profile_images/1337055608613253126/r_eiMp2H_400x400.png" />
+      </ImageTrigger>
     </HoverCardTrigger>
     <HoverCardContent sideOffset={5}>
       <Flex css={{ flexDirection: 'column', gap: 7 }}>

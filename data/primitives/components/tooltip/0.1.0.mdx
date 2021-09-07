@@ -297,15 +297,17 @@ Since disabled buttons don't fire events, you need to:
 - Render the `Trigger` as `span`.
 - Ensure the `button` has no `pointerEvents`.
 
-```jsx line=5-9
+```jsx line=5-11
 import * as Tooltip from '@radix-ui/react-tooltip';
 
 export default () => (
   <Tooltip.Root>
-    <Tooltip.Trigger as="__span__">
-      <button disabled style={{ __pointerEvents__: 'none' }}>
-        …
-      </button>
+    <Tooltip.Trigger __asChild__>
+      <span>
+        <button disabled style={{ __pointerEvents__: 'none' }}>
+          …
+        </button>
+      </span>
     </Tooltip.Trigger>
     <Tooltip.Content>…</Tooltip.Content>
   </Tooltip.Root>
@@ -418,13 +420,12 @@ export default () => (
 
 #### Implementation
 
-Use the [`Slot` utility](/docs/primitives/utilities/slot) to convert the trigger part into a slottable area. It will replace the trigger with the child that gets passed to it.
+Use the [`asChild` prop](/docs/primitives/overview/styling#changing-the-rendered-element) to convert the trigger part into a slottable area. It will replace the trigger with the child that gets passed to it.
 
-```jsx
+```jsx line=8-10
 // your-tooltip.jsx
 import React from 'react';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
-import { Slot } from '@radix-ui/react-slot';
 
 export function Tooltip({
   children,
@@ -440,7 +441,9 @@ export function Tooltip({
       defaultOpen={defaultOpen}
       onOpenChange={onOpenChange}
     >
-      <TooltipPrimitive.Trigger as={Slot}>{children}</TooltipPrimitive.Trigger>
+      <TooltipPrimitive.Trigger __asChild__>
+        {children}
+      </TooltipPrimitive.Trigger>
       <TooltipPrimitive.Content side="top" align="center" {...props}>
         {content}
         <TooltipPrimitive.Arrow offset={5} width={11} height={5} />

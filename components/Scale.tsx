@@ -138,7 +138,11 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
               css={{
                 height: '$6',
                 flex: 1,
-                bc: isDarkAlpha ? getBgColorForDarkCell(name) : isAlpha ? 'white' : 'transparent',
+                bc: isDarkAlpha
+                  ? (getBgColorForDarkCell(name) as string)
+                  : isAlpha
+                  ? 'white'
+                  : 'transparent',
 
                 // Show transparency grid for whiteA and blackA
                 ...((isWhiteA || isBlackA) && {
@@ -166,8 +170,10 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
         >
           <DropdownMenu onOpenChange={(isOpen) => setDropdownMenuIsOpen(isOpen)}>
             <Tooltip content="Copy to Clipboard">
-              <DropdownMenuTrigger as={IconButton}>
-                <CopyIcon />
+              <DropdownMenuTrigger asChild>
+                <IconButton>
+                  <CopyIcon />
+                </IconButton>
               </DropdownMenuTrigger>
             </Tooltip>
             <DropdownMenuContent align="end">

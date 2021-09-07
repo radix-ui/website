@@ -1,5 +1,5 @@
 import React from 'react';
-import { theme, styled, keyframes, Text, Box, Switch, Flex, Link } from '@modulz/design-system';
+import { theme, styled, keyframes, Text, Box, Switch, Flex } from '@modulz/design-system';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import { PlusIcon } from '@radix-ui/react-icons';
 
@@ -86,8 +86,8 @@ export const TooltipDemo = (props) => {
           <Switch
             css={{ border: 'none' }}
             checked={withAnimation}
-            onCheckedChange={(event) => {
-              setWithAnimation(event.target.checked);
+            onCheckedChange={(checked) => {
+              setWithAnimation(checked);
             }}
           />
         </Flex>

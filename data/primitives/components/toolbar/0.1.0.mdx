@@ -312,11 +312,11 @@ Used to visually separate items in the toolbar.
 
 ### Use with other primitives
 
-All our primitives which expose a `Trigger` part, such as `Dialog`, `AlertDialog`, `Popover`, `DropdownMenu` can be composed within a toolbar by using the `as` prop.
+All our primitives which expose a `Trigger` part, such as `Dialog`, `AlertDialog`, `Popover`, `DropdownMenu` can be composed within a toolbar by using the [`asChild` prop](/docs/primitives/overview/styling#changing-the-rendered-element).
 
 Here is an example using our `DropdownMenu` primitive.
 
-```jsx line=9
+```jsx line=9-11
 import * as Toolbar from '@radix-ui/react-toolbar';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
@@ -325,7 +325,9 @@ export default () => (
     <Toolbar.Button>Action 1</Toolbar.Button>
     <Toolbar.Separator />
     <DropdownMenu.Root>
-      <Toolbar.Button as={DropdownMenu.Trigger}>Trigger</Toolbar.Button>
+      <Toolbar.Button __asChild__>
+        <DropdownMenu.Trigger>Trigger<DropdownMenu.Trigger>
+      </Toolbar.Button>
       <DropdownMenu.Content>…</DropdownMenu.Content>
     </DropdownMenu.Root>
   </Toolbar.Root>

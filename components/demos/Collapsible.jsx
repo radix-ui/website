@@ -52,8 +52,8 @@ export const CollapsibleDemo = () => {
     <Collapsible open={open} onOpenChange={setOpen}>
       <Flex css={{ alignItems: 'center', justifyContent: 'space-between' }}>
         <Text css={{ color: 'white' }}>@peduarte starred 3 repositories</Text>
-        <CollapsibleTrigger as={IconButton}>
-          {open ? <Cross2Icon /> : <RowSpacingIcon />}
+        <CollapsibleTrigger asChild>
+          <IconButton>{open ? <Cross2Icon /> : <RowSpacingIcon />}</IconButton>
         </CollapsibleTrigger>
       </Flex>
 
