@@ -74,8 +74,10 @@ const IconButton = styled('button', {
 const TooltipDemo = () => {
   return (
     <Tooltip>
-      <TooltipTrigger as={IconButton}>
-        <PlusIcon />
+      <TooltipTrigger asChild>
+        <IconButton>
+          <PlusIcon />
+        </IconButton>
       </TooltipTrigger>
       <StyledContent sideOffset={5} className={`${theme}`}>
         Add to library

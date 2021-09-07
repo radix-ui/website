@@ -141,7 +141,7 @@ export const AccordionDemo = (props) => {
           <Switch
             css={{ border: 'none' }}
             checked={showChevrons}
-            onCheckedChange={(event) => setShowChevrons(event.target.checked)}
+            onCheckedChange={(checked) => setShowChevrons(checked)}
           />
         </Flex>
         <Flex as="label" css={{ my: '$2', alignItems: 'center' }}>
@@ -151,9 +151,9 @@ export const AccordionDemo = (props) => {
           <Switch
             css={{ border: 'none' }}
             checked={allowMultiple}
-            onCheckedChange={(event) => {
+            onCheckedChange={(checked) => {
               setValue(['item-1', 'item-2']);
-              setAllowMultiple(event.target.checked);
+              setAllowMultiple(checked);
             }}
           />
         </Flex>
@@ -164,8 +164,8 @@ export const AccordionDemo = (props) => {
           <Switch
             css={{ border: 'none' }}
             checked={withAnimation}
-            onCheckedChange={(event) => {
-              setWithAnimation(event.target.checked);
+            onCheckedChange={(checked) => {
+              setWithAnimation(checked);
             }}
           />
         </Flex>
@@ -176,11 +176,11 @@ export const AccordionDemo = (props) => {
           <Switch
             css={{ border: 'none' }}
             checked={preventClose}
-            onCheckedChange={(event) => {
+            onCheckedChange={(checked) => {
               if (value === '' || value.length === 0) {
                 setValue('item-1');
               }
-              setPreventClose(event.target.checked);
+              setPreventClose(checked);
             }}
           />
         </Flex>

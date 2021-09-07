@@ -160,8 +160,10 @@ export const DropdownMenuDemo = () => {
   return (
     <Box>
       <DropdownMenu>
-        <DropdownMenuTrigger as={IconButton} aria-label="Customise options">
-          <HamburgerMenuIcon />
+        <DropdownMenuTrigger asChild>
+          <IconButton aria-label="Customise options">
+            <HamburgerMenuIcon />
+          </IconButton>
         </DropdownMenuTrigger>
 
         <DropdownMenuContent sideOffset={5}>

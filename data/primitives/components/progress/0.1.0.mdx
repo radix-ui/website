@@ -1,0 +1,112 @@
+---
+metaTitle: Progress
+metaDescription: Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+name: progress
+aria: https://www.w3.org/TR/wai-aria-1.2/#progressbar
+---
+
+# Progress
+
+<Description>
+  Displays an indicator showing the completion progress of a task, typically
+  displayed as a progress bar.
+</Description>
+
+<HeroContainer>
+  <ProgressDemo />
+</HeroContainer>
+
+```jsx hero template=Progress
+
+```
+
+<Highlights
+  features={[
+    'Provides context for assistive technology to read the progress of a task.',
+  ]}
+/>
+
+## Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-progress
+```
+
+### Anatomy
+
+Import all parts and piece them together.
+
+```jsx
+import * as Progress from '@radix-ui/react-progress';
+
+export default () => (
+  <Progress.Root>
+    <Progress.Indicator />
+  </Progress.Root>
+);
+```
+
+## Accessibility
+
+Adheres to the [`progressbar` role requirements](https://www.w3.org/TR/wai-aria-1.2/#progressbar).
+
+<Note>
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/docs/primitives/overview/styling).
+
+</Note>
+
+## API Reference
+
+### Root
+
+Contains all of the progress parts.
+
+<PropsTable
+  data={[
+    {
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'value',
+      type: 'number | null',
+      description: 'The progress value.',
+    },
+    {
+      name: 'max',
+      type: 'number',
+      description: 'The maximum progress value.',
+    },
+    {
+      name: 'getValueLabel',
+      type: '(value: number, max: number) => string',
+      typeSimple: 'function',
+      description:
+        'A function to get the accessible label text representing the current value in a human-readable format. If not provided, the value label will be read as the numeric value as a percentage of the max value.',
+    },
+  ]}
+/>
+
+### Indicator
+
+Used to show the progress visually. It also makes progress accessible to assistive technologies.
+
+<PropsTable
+  data={[
+    {
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>

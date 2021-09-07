@@ -1,0 +1,62 @@
+---
+metaTitle: Aspect Ratio
+metaDescription: Displays content within a desired ratio.
+name: aspect-ratio
+---
+
+# Aspect Ratio
+
+<Description>Displays content within a desired ratio.</Description>
+
+<HeroContainer>
+  <AspectRatioDemo />
+</HeroContainer>
+
+```jsx hero template=AspectRatio
+
+```
+
+<Highlights features={['Accepts any custom ratio.']} />
+
+## Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-aspect-ratio
+```
+
+## Anatomy
+
+Import the component.
+
+```jsx
+import * as AspectRatio from '@radix-ui/react-aspect-ratio';
+
+export default () => <AspectRatio.Root />;
+```
+
+## API Reference
+
+### Root
+
+Contains the content you want to constrain to a given ratio.
+
+<PropsTable
+  data={[
+    {
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'ratio',
+      type: 'number',
+      default: '1',
+      description: 'The desired ratio',
+    },
+  ]}
+/>

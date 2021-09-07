@@ -144,12 +144,33 @@ export const components = {
         mt: '$5',
         mb: '$5',
         borderRadius: '$3',
-        '& p': {
+        '&, & p': {
           fontSize: '$3',
           color: '$slate11',
           lineHeight: '23px',
           margin: 0,
         },
+      }}
+      {...props}
+    />
+  ),
+  Alert: (props) => (
+    <DS.Box
+      as="aside"
+      css={{
+        display: 'block',
+        my: '$6',
+        py: '$2',
+        px: '$5',
+        borderRadius: '$3',
+        bc: '$yellow2',
+        boxShadow: '0 0 0 1px $colors$yellow5',
+        '&, & p': {
+          fontSize: '$3',
+          color: '$yellow11',
+          lineHeight: '23px',
+        },
+        '& p': { margin: 0 },
       }}
       {...props}
     />

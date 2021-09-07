@@ -1,0 +1,79 @@
+---
+metaTitle: Separator
+metaDescription: Visually or semantically separates content.
+name: separator
+aria: https://www.w3.org/TR/wai-aria-1.2/#separator
+---
+
+# Separator
+
+<Description>Visually or semantically separates content.</Description>
+
+<HeroContainer>
+  <SeparatorDemo />
+</HeroContainer>
+
+```jsx hero template=Separator
+
+```
+
+<Highlights features={['Supports horizontal and vertical orientations.']} />
+
+## Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-separator
+```
+
+## Anatomy
+
+Import all parts and piece them together.
+
+```jsx
+import * as Separator from '@radix-ui/react-separator';
+
+export default () => <Separator.Root />;
+```
+
+## API Reference
+
+### Root
+
+The separator.
+
+<PropsTable
+  data={[
+    {
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'orientation',
+      type: '"horizontal" | "vertical"',
+      typeSimple: 'enum',
+      default: '"horizontal"',
+      description: 'The orientation of the separator.',
+    },
+    {
+      name: 'decorative',
+      type: 'boolean',
+      description: (
+        <span>
+          When <Code>true</Code>, signifies that it is purely visual, carries no
+          semantic meaning, and ensures it is not present in the accessibility
+          tree.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+## Accessibility
+
+Adheres to the [`separator` role requirements](https://www.w3.org/TR/wai-aria-1.2/#separator).

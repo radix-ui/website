@@ -67,7 +67,7 @@ export const Header = (props) => {
               <>
                 <Text size="2">Primitives</Text>
                 <Badge variant="yellow" css={{ ml: '$2' }}>
-                  Alpha
+                  Beta
                 </Badge>
               </>
             )}
@@ -79,14 +79,15 @@ export const Header = (props) => {
           </Flex>
           <Flex css={{ ml: 'auto', gap: '$4', alignItems: 'center' }}>
             <DropdownMenu>
-              <DropdownMenuTrigger
-                as={Button}
-                size="2"
-                ghost
-                css={{ gap: '$1', fontWeight: 400, color: '$slate11', mr: '-$2' }}
-              >
-                Product
-                <PlusIcon />
+              <DropdownMenuTrigger asChild>
+                <Button
+                  size="2"
+                  ghost
+                  css={{ gap: '$1', fontWeight: 400, color: '$slate11', mr: '-$2' }}
+                >
+                  Product
+                  <PlusIcon />
+                </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem onSelect={() => router.push('/docs/primitives')}>
