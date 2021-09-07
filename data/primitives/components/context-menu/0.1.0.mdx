@@ -125,13 +125,12 @@ The area that opens the context menu. Wrap it around the target you want the con
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'span',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
   ]}
 />
@@ -143,13 +142,12 @@ The component that pops out in an open context menu.
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
       name: 'loop',
@@ -290,13 +288,12 @@ An optional arrow element to render alongside a submenu. This can be used to hel
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'svg',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the entire SVG and all of its paths.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
       name: 'width',
@@ -331,13 +328,12 @@ The component that contains the context menu items.
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
       name: 'disabled',
@@ -382,13 +378,12 @@ An item that opens a submenu. Used in combination with a nested `ContextMenu`. M
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
       name: 'disabled',
@@ -421,13 +416,12 @@ Used to group multiple `ContextMenu.Item`s.
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
   ]}
 />
@@ -439,13 +433,12 @@ Used to render a label. It won't be focusable using arrow keys.
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
   ]}
 />
@@ -457,13 +450,12 @@ An item that can be controlled and rendered like a checkbox.
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
       name: 'checked',
@@ -526,13 +518,12 @@ Used to group multiple `ContextMenu.RadioItem`s.
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
       name: 'value',
@@ -555,13 +546,12 @@ An item that can be controlled and rendered like a radio.
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
       name: 'value',
@@ -612,13 +602,12 @@ Renders when the parent `ContextMenu.CheckboxItem` or `ContextMenu.RadioItem` is
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'span',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
       name: 'forceMount',
@@ -640,13 +629,12 @@ Used to visually separate items in the context menu.
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
   ]}
 />

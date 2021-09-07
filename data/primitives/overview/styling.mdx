@@ -49,55 +49,6 @@ const AccordionItem = React.forwardRef<
 });
 ```
 
-If you would like to retain support for the `as` prop (polymorphism), you can use our `react-polymorphic` types when wrapping.
-
-```jsx
-import * as React from 'react';
-import * as AccordionPrimitive from '@radix-ui/react-accordion';
-import type * as Polymorphic from '@radix-ui/react-polymorphic';
-
-type AccordionItemComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof AccordionPrimitive.Item>,
-  Polymorphic.OwnProps<typeof AccordionPrimitive.Item>,
->;
-
-const AccordionItem = React.forwardRef((props, forwardedRef) => {
-  const { className, ...itemProps } = props;
-  return (
-    <AccordionPrimitive.Item
-      {...itemProps}
-      ref={forwardedRef}
-      className={'accordion-item ' + className}
-    />
-  );
-}) as AccordionItemComponent;
-```
-
-Alternatively, we expose an `extendPrimitive` utility as a convenience for adding default props while retaining polymorphism. It can be useful if your preference is to style data attributes as they needn't be composed like class names.
-
-```jsx
-import { extendPrimitive } from '@radix-ui/react-primitive';
-import * as AccordionPrimitive from '@radix-ui/react-accordion';
-
-const AccordionItem = extendPrimitive(AccordionPrimitive.Item, {
-  defaultProps: { 'data-accordion-item': '' },
-});
-
-const AccordionPanel = extendPrimitive(AccordionPrimitive.Panel, {
-  defaultProps: { 'data-accordion-panel': '' },
-});
-```
-
-```css
-[data-accordion-item] {
-  border-bottom: 1px solid gainsboro;
-}
-
-[data-accordion-panel] {
-  padding: 10px;
-}
-```
-
 ### Styling a state
 
 You can style a component state by targeting its `data-state` attribute.
@@ -174,6 +125,58 @@ export default () => {
         <StyledPanel>Panel content</StyledPanel>
       </StyledItem>
     </StyledAccordion>
+  );
+};
+```
+
+## Extending a primitive
+
+We expose an `extendPrimitive` utility as a convenience for adding default props. It can be useful if your preference is to style data attributes as they needn't be composed like class names.
+
+```jsx
+import { extendPrimitive } from '@radix-ui/react-primitive';
+import * as AccordionPrimitive from '@radix-ui/react-accordion';
+
+const AccordionItem = extendPrimitive(AccordionPrimitive.Item, {
+  defaultProps: { 'data-accordion-item': '' },
+});
+
+const AccordionPanel = extendPrimitive(AccordionPrimitive.Panel, {
+  defaultProps: { 'data-accordion-panel': '' },
+});
+```
+
+```css
+[data-accordion-item] {
+  border-bottom: 1px solid gainsboro;
+}
+
+[data-accordion-panel] {
+  padding: 10px;
+}
+```
+
+## Changing the rendered element
+
+All component parts that render a DOM element have an `asChild` prop. This is useful when you want to change the rendered element.
+
+Here's an example of how you can use a custom `Button` as the trigger for a `Dialog.Trigger`:
+
+```jsx
+import { styled } from '@stitches/react';
+import * as Dialog from '@radix-ui/react-dialog';
+
+// This is a generic button, eg: from your design system
+const Button = styled('button', {...});
+
+export default () => {
+  return (
+    <Dialog.Root>
+      <Dialog.Trigger __asChild__>
+        <Button>Open dialog</Button>
+      </Dialog.Trigger>
+      <Dialog.Content>...</Dialog.Content>
+    </Dialog.Root>
   );
 };
 ```

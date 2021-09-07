@@ -58,13 +58,12 @@ Contains all the parts of an avatar.
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'span',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
   ]}
 />
@@ -76,13 +75,12 @@ The image to render. By default it will only render when it has loaded. You can 
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'img',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
       name: 'onLoadingStatusChange',
@@ -101,13 +99,12 @@ An element that renders when the image hasn't loaded. This means whilst it's loa
 <PropsTable
   data={[
     {
-      name: 'as',
+      name: 'asChild',
       required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'span',
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
       name: 'delayMs',
