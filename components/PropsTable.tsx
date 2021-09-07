@@ -69,14 +69,15 @@ export function PropsTable({
               </Code>
               {description && (
                 <Popover>
-                  <PopoverTrigger
-                    as={IconButton}
-                    variant="ghost"
-                    css={{ ml: '$1', verticalAlign: 'middle', color: '$gray11' }}
-                  >
-                    <AccessibleIcon label="Prop description">
-                      <InfoCircledIcon />
-                    </AccessibleIcon>
+                  <PopoverTrigger asChild>
+                    <IconButton
+                      variant="ghost"
+                      css={{ ml: '$1', verticalAlign: 'middle', color: '$gray11' }}
+                    >
+                      <AccessibleIcon label="Prop description">
+                        <InfoCircledIcon />
+                      </AccessibleIcon>
+                    </IconButton>
                   </PopoverTrigger>
                   <PopoverContent side="top">
                     <Box css={{ py: '$2', px: '$3' }}>
@@ -94,20 +95,21 @@ export function PropsTable({
               </Code>
               {Boolean(typeSimple) && (
                 <Popover>
-                  <PopoverTrigger
-                    as={IconButton}
-                    variant="ghost"
-                    css={{
-                      ml: '$1',
-                      verticalAlign: 'middle',
-                      color: '$gray11',
-                      display: 'none',
-                      '@bp1': { display: 'inline-flex' },
-                    }}
-                  >
-                    <AccessibleIcon label="See full type">
-                      <InfoCircledIcon />
-                    </AccessibleIcon>
+                  <PopoverTrigger asChild>
+                    <IconButton
+                      variant="ghost"
+                      css={{
+                        ml: '$1',
+                        verticalAlign: 'middle',
+                        color: '$gray11',
+                        display: 'none',
+                        '@bp1': { display: 'inline-flex' },
+                      }}
+                    >
+                      <AccessibleIcon label="See full type">
+                        <InfoCircledIcon />
+                      </AccessibleIcon>
+                    </IconButton>
                   </PopoverTrigger>
                   <PopoverContent side="top" css={{ maxWidth: 'max-content' }}>
                     <Box css={{ py: '$2', px: '$2', whiteSpace: 'nowrap' }}>
