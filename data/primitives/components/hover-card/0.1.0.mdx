@@ -1,0 +1,357 @@
+---
+metaTitle: Hover Card
+metaDescription: For sighted users to preview content available behind a link.
+name: hover-card
+---
+
+# Hover Card
+
+<Description>
+  For sighted users to preview content available behind a link.
+</Description>
+
+<HeroContainer>
+  <HoverCardDemo />
+</HeroContainer>
+
+```jsx hero template=HoverCard
+
+```
+
+<Highlights
+  features={[
+    'Can be controlled or uncontrolled.',
+    'Customize side, alignment, offsets, collision handling.',
+    'Optionally render a pointing arrow.',
+    'Supports custom open and close delays.',
+    'Opens on hover only.',
+    'Ignored by screen readers.',
+  ]}
+/>
+
+## Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-hover-card
+```
+
+## Anatomy
+
+Import all parts and piece them together.
+
+```jsx
+import * as HoverCard from '@radix-ui/react-hover-card';
+
+export default () => (
+  <HoverCard.Root>
+    <HoverCard.Trigger />
+    <HoverCard.Content>
+      <HoverCard.Arrow />
+    </HoverCard.Content>
+  </HoverCard.Root>
+);
+```
+
+## API Reference
+
+### Root
+
+Contains all the parts of a hover card.
+
+<PropsTable
+  data={[
+    {
+      name: 'defaultOpen',
+      type: 'boolean',
+      description: (
+        <span>
+          The open state of the hover card when it is initially rendered. Use
+          when you do not need to control its open state.
+        </span>
+      ),
+    },
+    {
+      name: 'open',
+      type: 'boolean',
+      description: (
+        <span>
+          The controlled open state of the hover card. Must be used in
+          conjunction with <Code>onOpenChange</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onOpenChange',
+      type: '(open: boolean) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when the open state of the hover card changes.
+        </span>
+      ),
+    },
+    {
+      name: 'openDelay',
+      type: 'number',
+      default: 700,
+      description:
+        'The duration from when the mouse enters the trigger until the hover card opens.',
+    },
+    {
+      name: 'closeDelay',
+      type: 'number',
+      default: 300,
+      description:
+        'The duration from when the mouse leaves the trigger or content until the hover card closes.',
+    },
+  ]}
+/>
+
+### Trigger
+
+The link that opens the hover card when hovered.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'a',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Content
+
+The component that pops out when the hover card is open.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description: (
+        <span>
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries.
+        </span>
+      ),
+    },
+    {
+      name: 'portalled',
+      type: 'boolean',
+      default: 'true',
+      description: (
+        <span>
+          Whether to render in a <Code>Portal</Code> when open.
+        </span>
+      ),
+    },
+    {
+      name: 'side',
+      type: '"top" | "right" | "bottom" | "left"',
+      typeSimple: 'enum',
+      default: '"bottom"',
+      description: (
+        <span>
+          The preferred side of the trigger to render against when open. Will be
+          reversed when collisions occur and <Code>avoidCollisions</Code> is
+          enabled.
+        </span>
+      ),
+    },
+    {
+      name: 'sideOffset',
+      type: 'number',
+      default: '0',
+      description: (
+        <span>
+          <span>The distance in pixels from the trigger.</span>
+        </span>
+      ),
+    },
+    {
+      name: 'align',
+      type: '"start" | "center" | "end"',
+      typeSimple: 'enum',
+      default: '"center"',
+      description: (
+        <span>
+          The preferred alignment against the trigger. May change when
+          collisions occur.
+        </span>
+      ),
+    },
+    {
+      name: 'alignOffset',
+      type: 'number',
+      default: '0',
+      description: (
+        <span>
+          An offset in pixels from the <Code>"start"</Code> or{' '}
+          <Code>"end"</Code> alignment options.
+        </span>
+      ),
+    },
+    {
+      name: 'avoidCollisions',
+      type: 'boolean',
+      default: 'true',
+      description: (
+        <span>
+          When <Code>true</Code>, overrides the <Code>side</Code> and
+          <Code>align</Code> preferences to prevent collisions with window edges.
+        </span>
+      ),
+    },
+    {
+      name: 'collisionTolerance',
+      type: 'number',
+      default: '0',
+      description: (
+        <span>
+          The distance in pixels from window edges where collision detection
+          should occur.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### Arrow
+
+An optional arrow element to render alongside the hover card. This can be used to help visually link the trigger with the `HoverCard.Content`. Must be rendered inside `HoverCard.Content`.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'svg',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the entire SVG and all of its paths.',
+    },
+    {
+      name: 'width',
+      type: 'number',
+      default: 10,
+      description: <span>The width of the arrow in pixels.</span>,
+    },
+    {
+      name: 'height',
+      type: 'number',
+      default: 5,
+      description: <span>The height of the arrow in pixels.</span>,
+    },
+    {
+      name: 'offset',
+      type: 'number',
+      default: 0,
+      description: (
+        <span>
+          The distance in pixels to render from the{' '}
+          <Code>HoverCard.Content</Code> edge.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+## Examples
+
+### Show instantly
+
+Use the `openDelay` prop to control the time it takes for the hover card to open.
+
+```jsx line=4
+import * as HoverCard from '@radix-ui/react-hover-card';
+
+export default () => (
+  <HoverCard.Root __delayDuration__={0}>
+    <HoverCard.Trigger>…</HoverCard.Trigger>
+    <HoverCard.Content>…</HoverCard.Content>
+  </HoverCard.Root>
+);
+```
+
+### Origin-aware animations
+
+We expose a CSS custom property `--radix-hover-card-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
+
+```jsx line=4-7,9-12,17
+import { styled, keyframes } from '@stitches/react';
+import * as HoverCard from '@radix-ui/react-hover-card';
+
+const scaleIn = keyframes({
+  '0%': { opacity: 0, transform: 'scale(0)' },
+  '100%': { opacity: 1, transform: 'scale(1)' },
+});
+
+const HoverCardContent = styled(HoverCard.Content, {
+  transformOrigin: 'var(--radix-hover-card-content-transform-origin)',
+  animation: `${scaleIn} 0.5s ease-out`,
+});
+
+export default () => (
+  <HoverCard.Root>
+    <HoverCard.Trigger>…</HoverCard.Trigger>
+    <HoverCardContent>…</HoverCardContent>
+  </HoverCard.Root>
+);
+```
+
+### Collision-aware animations
+
+We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
+
+```jsx line=4-7,9-12,14-19,24
+import { styled, keyframes } from '@stitches/react';
+import * as HoverCard from '@radix-ui/react-hover-card';
+
+const slideDown = keyframes({
+  '0%': { opacity: 0, transform: 'translateY(-10px)' },
+  '100%': { opacity: 1, transform: 'translateY(0)' },
+});
+
+const slideUp = keyframes({
+  '0%': { opacity: 0, transform: 'translateY(10px)' },
+  '100%': { opacity: 1, transform: 'translateY(0)' },
+});
+
+const HoverCardContent = styled(HoverCard.Content, {
+  '&[data-side="top"]': { animationName: slideUp },
+  '&[data-side="bottom"]': { animationName: slideDown },
+  animationDuration: '0.6s',
+  animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+});
+
+export default () => (
+  <HoverCard.Root>
+    <HoverCard.Trigger>…</HoverCard.Trigger>
+    <HoverCardContent>…</HoverCardContent>
+  </HoverCard.Root>
+);
+```
+
+## Accessibility
+
+### Keyboard Interactions
+
+The hover card is intended for mouse users only so will not respond to keyboard navigation.

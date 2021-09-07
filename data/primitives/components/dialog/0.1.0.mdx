@@ -1,0 +1,393 @@
+---
+metaTitle: Dialog
+metaDescription: A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
+name: dialog
+aria: https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal
+---
+
+# Dialog
+
+<Description>
+  A window overlaid on either the primary window or another dialog window,
+  rendering the content underneath inert.
+</Description>
+
+<HeroContainer>
+  <DialogDemo />
+</HeroContainer>
+
+```jsx hero template=Dialog
+
+```
+
+<Highlights
+  features={[
+    'Supports modal and non-modal modes.',
+    'Focus is automatically trapped when modal.',
+    'Can be controlled or uncontrolled.',
+    <span>
+      Manages screen reader announcements with <Code>Title</Code> and{' '}
+      <Code>Description</Code> components.
+    </span>,
+    'Esc closes the component automatically.',
+  ]}
+/>
+
+## Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-dialog
+```
+
+## Anatomy
+
+Import all parts and piece them together.
+
+```jsx
+import * as Dialog from '@radix-ui/react-dialog';
+
+export default () => (
+  <Dialog.Root>
+    <Dialog.Trigger />
+    <Dialog.Overlay />
+    <Dialog.Content>
+      <Dialog.Title />
+      <Dialog.Description />
+      <Dialog.Close />
+    </Dialog.Content>
+  </Dialog.Root>
+);
+```
+
+## API Reference
+
+### Root
+
+Contains all the parts of a dialog.
+
+<PropsTable
+  data={[
+    {
+      name: 'defaultOpen',
+      type: 'boolean',
+      description: (
+        <span>
+          The open state of the dialog when it is initially rendered. Use when
+          you do not need to control its open state.
+        </span>
+      ),
+    },
+    {
+      name: 'open',
+      type: 'boolean',
+      description: (
+        <span>
+          The controlled open state of the dialog. Must be used in conjunction
+          with <Code>onOpenChange</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onOpenChange',
+      type: '(open: boolean) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when the open state of the dialog changes.
+        </span>
+      ),
+    },
+    {
+      name: 'modal',
+      required: false,
+      type: 'boolean',
+      default: 'true',
+      description: (
+        <span>
+          The modality of the dialog. When set to <Code>true</Code>, interaction
+          with outside elements will be disabled and only dialog content will be
+          visible to screen readers.
+        </span>
+      ),
+    },
+    {
+      name: 'id',
+      type: 'string',
+      description: (
+        <span>
+          A unique identifier for the component. The <Code>id</Code> is used to
+          generate <Code>id</Code> attributes for nested components. If no{' '}
+          <Code>id</Code> prop is provided, a generated id will be used.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### Trigger
+
+The button that opens the dialog.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'button',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Overlay
+
+A layer that covers the inert portion of the view when the dialog is open.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description:
+        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+    },
+  ]}
+/>
+
+### Content
+
+Contains content to be rendered in the open dialog.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'div',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description:
+        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+    },
+    {
+      name: 'onOpenAutoFocus',
+      type: '(event: Event) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when focus moves into the component after
+          opening. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onCloseAutoFocus',
+      type: '(event: Event) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when focus moves to the trigger after closing. It
+          can be prevented by calling <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onEscapeKeyDown',
+      type: '(event: KeyboardEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when the escape key is down. It can be prevented
+          by calling <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onPointerDownOutside',
+      type: '(event: PointerDownOutsideEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when a pointer event occurs outside the bounds of
+          the component. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onInteractOutside',
+      type: '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when an interaction (pointer or focus event)
+          happens outside the bounds of the component. It can be prevented by
+          calling <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### Close
+
+The button that closes the dialog.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'button',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Title
+
+An accessible name to be announced when the dialog is opened. Alternatively, you can provide `aria-label` or `aria-labelledby` to `Dialog.Content` and exclude this component.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'h2',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Description
+
+An accessible description to be announced when the dialog is opened. Alternatively, you can provide `aria-describedby` to `Dialog.Content` and exclude this component.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'p',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+## Accessibility
+
+Adheres to the [Dialog WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal).
+
+### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space'],
+      description: 'Opens/closes the dialog.',
+    },
+    {
+      keys: ['Enter'],
+      description: 'Opens/closes the dialog.',
+    },
+    {
+      keys: ['Tab'],
+      description: 'Moves focus to the next focusable element.',
+    },
+    {
+      keys: ['Shift + Tab'],
+      description: 'Moves focus to the previous focusable element.',
+    },
+    {
+      keys: ['Esc'],
+      description: (
+        <span>
+          Closes the dialog and moves focus to <Code>Dialog.Trigger</Code>.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+## Custom APIs
+
+Create your own API by abstracting the primitive parts into your own component.
+
+### Abstract the overlay and the close button
+
+This example abstracts the `Dialog.Overlay` and `Dialog.Close` parts.
+
+#### Usage
+
+```jsx
+import { Dialog, DialogTrigger, DialogContent } from './your-dialog';
+
+export default () => (
+  <Dialog>
+    <DialogTrigger>Dialog trigger</DialogTrigger>
+    <DialogContent>Dialog Content</DialogContent>
+  </Dialog>
+);
+```
+
+#### Implementation
+
+```jsx
+// your-dialog.js
+import React from 'react';
+import * as DialogPrimitive from '@radix-ui/react-dialog';
+import { Cross1Icon } from '@radix-ui/react-icons';
+
+export function Dialog({ children, ...props }) {
+  return (
+    <DialogPrimitive.Root {...props}>
+      <DialogPrimitive.Overlay />
+      {children}
+    </DialogPrimitive.Root>
+  );
+}
+
+export const DialogContent = React.forwardRef(
+  ({ children, ...props }, forwardedRef) => (
+    <DialogPrimitive.Content {...props} ref={forwardedRef}>
+      {children}
+      <DialogPrimitive.Close>
+        <Cross1Icon />
+      </DialogPrimitive.Close>
+    </DialogPrimitive.Content>
+  )
+);
+
+export const DialogTrigger = DialogPrimitive.Trigger;
+export const DialogClose = DialogPrimitive.Close;
+```

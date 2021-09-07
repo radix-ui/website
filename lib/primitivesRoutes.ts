@@ -50,15 +50,27 @@ export const primitivesRoutes = [
       { title: 'Accessible Icon', slug: 'docs/primitives/utilities/accessible-icon' },
       { title: 'Announce', slug: 'docs/primitives/utilities/announce' },
       { title: 'Id Provider', slug: 'docs/primitives/utilities/id-provider' },
-      { title: 'Polymorphic', slug: 'docs/primitives/utilities/polymorphic' },
+      { title: 'Polymorphic', slug: 'docs/primitives/utilities/polymorphic', deprecated: true },
       { title: 'Portal', slug: 'docs/primitives/utilities/portal' },
-      { title: 'Slot', slug: 'docs/primitives/utilities/slot' },
+      { title: 'Slot', slug: 'docs/primitives/utilities/slot', deprecated: true },
       { title: 'Visually Hidden', slug: 'docs/primitives/utilities/visually-hidden' },
     ],
   },
 ];
 
-export const allPrimitivesRoutes = primitivesRoutes.reduce((acc, curr) => {
+export type PageProps = {
+  title: string;
+  slug: string;
+  draft?: boolean;
+  deprecated?: boolean;
+};
+
+export type RouteProps = {
+  label: string;
+  pages: PageProps[];
+};
+
+export const allPrimitivesRoutes = primitivesRoutes.reduce((acc, curr: RouteProps) => {
   acc = [...acc, ...curr.pages.filter((p) => p.draft !== true)];
   return acc;
 }, []);
