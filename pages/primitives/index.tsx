@@ -473,6 +473,56 @@ export default function ColorsHome() {
       >
         <Container size="3">
           <Text size="3" as="h2" css={{ mb: '$2', color: '$teal11', fontWeight: 500 }}>
+            a11y
+          </Text>
+          <Heading size="3" css={{ mb: '$3' }}>
+            Accessbility
+          </Heading>
+
+          <Grid columns="3" gap="7">
+            <Box>
+              <Heading size="1">Save time and cost</Heading>
+              <Text size="3" css={{ color: '$slate11' }}>
+                Primitives are engineered for top performance and a tiny footprint. Shared
+                functionality is done with internal utility packages, so common code isn’t
+                duplicated in your final bundle.
+              </Text>
+            </Box>
+            <Box>
+              <Heading size="1">Focus on differentiated work</Heading>
+              <Text size="3" css={{ color: '$slate11' }}>
+                New components can be added alongside your existing code. No need to disrupt feature
+                work with a huge rewrite – you can start small and add more primitives one by one.
+              </Text>
+            </Box>
+            <Box>
+              <Heading size="1">Inaccessible</Heading>
+              <Text size="3" css={{ color: '$slate11' }}>
+                Real-world examples, extensive API reference, accessibility details, and full
+                TypeScript support. All components share a similar API, creating a consistent
+                experience. You will love working with Radix Primitives.
+              </Text>
+            </Box>
+          </Grid>
+        </Container>
+      </Section>
+
+      <Section
+        size={{
+          '@initial': '2',
+          '@bp1': '3',
+        }}
+        css={{
+          pt: '$3',
+          pb: '$7',
+          '@bp2': {
+            pt: '$6',
+            pb: '$8',
+          },
+        }}
+      >
+        <Container size="3">
+          <Text size="3" as="h2" css={{ mb: '$2', color: '$teal11', fontWeight: 500 }}>
             Incremental adoption
           </Text>
           <Heading size="3" css={{ mb: '$3' }}>
@@ -507,6 +557,120 @@ export default function ColorsHome() {
               </Text>
             </Box>
           </Grid>
+        </Container>
+      </Section>
+
+      <Section
+        size={{
+          '@initial': '2',
+          '@bp1': '3',
+        }}
+        css={{
+          pt: '$3',
+          pb: '$7',
+          '@bp2': {
+            pt: '$6',
+            pb: '$8',
+          },
+        }}
+      >
+        <Container size="3">
+          <Text size="3" as="h2" css={{ mb: '$2', color: '$teal11', fontWeight: 500 }}>
+            DX
+          </Text>
+          <Heading size="3" css={{ mb: '$3' }}>
+            How awesome the developer experience is
+          </Heading>
+          <Link variant="blue" href="https://github.com/radix-ui/colors">
+            Documentation
+          </Link>
+
+          <Grid columns="3" gap="7">
+            <Box>
+              <Heading size="1">Save time and cost</Heading>
+              <Text size="3" css={{ color: '$slate11' }}>
+                Primitives are engineered for top performance and a tiny footprint. Shared
+                functionality is done with internal utility packages, so common code isn’t
+                duplicated in your final bundle.
+              </Text>
+            </Box>
+            <Box>
+              <Heading size="1">Focus on differentiated work</Heading>
+              <Text size="3" css={{ color: '$slate11' }}>
+                New components can be added alongside your existing code. No need to disrupt feature
+                work with a huge rewrite – you can start small and add more primitives one by one.
+              </Text>
+            </Box>
+            <Box>
+              <Heading size="1">Inaccessible</Heading>
+              <Text size="3" css={{ color: '$slate11' }}>
+                Real-world examples, extensive API reference, accessibility details, and full
+                TypeScript support. All components share a similar API, creating a consistent
+                experience. You will love working with Radix Primitives.
+              </Text>
+            </Box>
+          </Grid>
+        </Container>
+      </Section>
+
+      <Section
+        size={{
+          '@initial': '2',
+          '@bp1': '3',
+        }}
+        css={{
+          pt: '$3',
+          pb: '$7',
+          '@bp2': {
+            pt: '$6',
+            pb: '$8',
+          },
+        }}
+      >
+        <Container size="3">
+          <Text size="3" css={{ color: '$slate11' }}>
+            "We've been able to focus on building solid user experiences on top of Radix Primitives.
+            With UI components, there are just too many angles and rabbit holes to cover for product
+            teams that wish to move quickly.”
+          </Text>
+        </Container>
+      </Section>
+
+      <Section
+        size={{
+          '@initial': '2',
+          '@bp1': '3',
+        }}
+        css={{
+          pt: '$3',
+          pb: '$7',
+          '@bp2': {
+            pt: '$6',
+            pb: '$8',
+          },
+        }}
+      >
+        <Container size="3">
+          <Heading size="3">Community</Heading>
+        </Container>
+      </Section>
+
+      <Section
+        size={{
+          '@initial': '2',
+          '@bp1': '3',
+        }}
+        css={{
+          pt: '$3',
+          pb: '$7',
+          '@bp2': {
+            pt: '$6',
+            pb: '$8',
+          },
+        }}
+      >
+        <Container size="3">
+          <Heading size="3">Products</Heading>
         </Container>
       </Section>
     </Box>
