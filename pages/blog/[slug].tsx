@@ -19,7 +19,6 @@ type Doc = {
 
 const mdxComponents = {
   ...components,
-  AccordionDemo,
   TooltipDemo,
   VideoPlaceholder,
 };
