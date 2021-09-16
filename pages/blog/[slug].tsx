@@ -6,8 +6,6 @@ import { MDXProvider, components } from '@components/MDXComponents';
 import { parseISO, format } from 'date-fns';
 import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { authors } from '@data/authors';
-import { AccordionDemo } from '@components/blog/Accordion';
-import { TooltipDemo } from '@components/blog/Tooltip';
 import { VideoPlaceholder } from '@components/blog/VideoPlaceholder';
 
 import type { Frontmatter } from 'types/frontmatter';
@@ -19,7 +17,6 @@ type Doc = {
 
 const mdxComponents = {
   ...components,
-  TooltipDemo,
   VideoPlaceholder,
 };
 
