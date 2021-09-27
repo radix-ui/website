@@ -1,6 +1,12 @@
 import React from 'react';
 import * as SliderPrimitive from '@radix-ui/react-slider';
-import { Flex, styled } from '@modulz/design-system';
+import { Flex, globalCss, styled } from '@modulz/design-system';
+
+const setGlobalStyles = globalCss({
+  body: {
+    bc: 'transparent',
+  },
+});
 
 const StyledSlider = styled(SliderPrimitive.Root, {
   position: 'relative',
@@ -54,6 +60,8 @@ const StyledThumb = styled(SliderPrimitive.Thumb, {
 });
 
 export default function SliderDemo() {
+  setGlobalStyles();
+
   return (
     <Flex
       css={{
@@ -62,7 +70,6 @@ export default function SliderDemo() {
         position: 'relative',
         height: '100vh',
         width: '100vw',
-        background: 'linear-gradient(120deg, $gray3, $sky4)',
       }}
     >
       <StyledSlider defaultValue={[50]} max={100} step={1} aria-label="Volume">

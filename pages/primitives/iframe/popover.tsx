@@ -1,8 +1,14 @@
 import React from 'react';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
-import { Flex, Text, styled, Grid, TextField } from '@modulz/design-system';
+import { Flex, Text, styled, Grid, TextField, globalCss } from '@modulz/design-system';
 import { DemoButton } from '@components/marketing/DemoButton';
 import { DemoIconButton } from '@components/marketing/DemoIconButton';
+
+const setGlobalStyles = globalCss({
+  body: {
+    bc: 'transparent',
+  },
+});
 
 const PopoverContent = styled(PopoverPrimitive.Content, {
   position: 'relative',
@@ -23,6 +29,8 @@ const PopoverArrow = styled(PopoverPrimitive.Arrow, {
 });
 
 export default function PopoverDemo() {
+  setGlobalStyles();
+
   // We prevent the initial auto focus because it's a demo rather than a real UI,
   // so the parent page focus is not stolen.
   const initialAutoFocusPrevented = React.useRef(false);
@@ -35,7 +43,6 @@ export default function PopoverDemo() {
         position: 'relative',
         height: '100vh',
         width: '100vw',
-        background: 'linear-gradient(to bottom right, $colors$lime3, $colors$cyan5)',
       }}
     >
       <PopoverPrimitive.Root modal={false} defaultOpen>

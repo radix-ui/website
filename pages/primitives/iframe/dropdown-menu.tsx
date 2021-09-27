@@ -1,6 +1,6 @@
 import React from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { Flex, styled } from '@modulz/design-system';
+import { Flex, globalCss, styled } from '@modulz/design-system';
 import {
   CaretDownIcon,
   CaretRightIcon,
@@ -10,6 +10,12 @@ import {
   StitchesLogoIcon,
 } from '@radix-ui/react-icons';
 import { DemoButton } from '@components/marketing/DemoButton';
+
+const setGlobalStyles = globalCss({
+  body: {
+    bc: 'transparent',
+  },
+});
 
 const DropdownMenuArrow = styled(DropdownMenuPrimitive.Arrow, {
   fill: '$loContrast',
@@ -62,6 +68,8 @@ const DropdownMenuTriggerItem = styled(DropdownMenuPrimitive.TriggerItem, itemCs
 const DropdownMenuCheckboxItem = styled(DropdownMenuPrimitive.CheckboxItem, itemCss);
 
 export default function DropdownMenuDemo() {
+  setGlobalStyles();
+
   // We prevent the initial auto focus because it's a demo rather than a real UI,
   // so the parent page focus is not stolen.
   const initialAutoFocusPrevented = React.useRef(false);
@@ -76,7 +84,6 @@ export default function DropdownMenuDemo() {
         position: 'relative',
         height: '100vh',
         width: '100vw',
-        background: 'linear-gradient(to bottom right,  $colors$crimson4, $colors$blue5)',
       }}
     >
       <DropdownMenuPrimitive.Root modal={false} defaultOpen>

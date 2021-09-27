@@ -54,6 +54,7 @@ export const MainHero = () => {
           <Box>
             <IFrame
               tabIndex={-1}
+              allowTransparency={true}
               src="/primitives/iframe/dialog"
               css={{ background: 'linear-gradient(to bottom right, $indigo4, $violet5)' }}
             />
@@ -69,6 +70,7 @@ export const MainHero = () => {
           <Box>
             <IFrame
               tabIndex={-1}
+              allowTransparency={true}
               src="/primitives/iframe/dropdown-menu"
               css={{ background: 'linear-gradient(to bottom right,  $crimson4, $blue5)' }}
             />
@@ -84,6 +86,7 @@ export const MainHero = () => {
           <Box>
             <IFrame
               tabIndex={-1}
+              allowTransparency={true}
               src="/primitives/iframe/popover"
               css={{ background: 'linear-gradient(to bottom right, $lime3, $cyan5)' }}
             />
@@ -99,8 +102,9 @@ export const MainHero = () => {
           <Box>
             <IFrame
               tabIndex={-1}
+              allowTransparency={true}
               src="/primitives/iframe/slider"
-              css={{ background: 'linear-gradient(to bottom right, $indigo4, $violet5)' }}
+              css={{ background: 'linear-gradient(120deg, $gray3, $sky4)' }}
             />
             <Text size="4" css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
               Slider
@@ -114,6 +118,7 @@ export const MainHero = () => {
           <Box>
             <IFrame
               tabIndex={-1}
+              allowTransparency={true}
               src="/primitives/iframe/dialog"
               css={{ background: 'linear-gradient(to bottom right, $indigo4, $violet5)' }}
             />

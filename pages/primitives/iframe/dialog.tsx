@@ -1,8 +1,14 @@
 import React from 'react';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
-import { Flex, Text, styled, keyframes, Box } from '@modulz/design-system';
+import { Flex, Text, styled, keyframes, Box, globalCss } from '@modulz/design-system';
 import { DemoButton } from '@components/marketing/DemoButton';
 import { DemoIconButton } from '@components/marketing/DemoIconButton';
+
+const setGlobalStyles = globalCss({
+  body: {
+    bc: 'transparent',
+  },
+});
 
 const DialogContent = styled(DialogPrimitive.Content, {
   position: 'fixed',
@@ -23,6 +29,8 @@ const DialogContent = styled(DialogPrimitive.Content, {
 });
 
 export default function DialogDemo() {
+  setGlobalStyles();
+
   // We prevent the initial auto focus because it's a demo rather than a real UI,
   // so the parent page focus is not stolen.
   const initialAutoFocusPrevented = React.useRef(false);
@@ -35,7 +43,6 @@ export default function DialogDemo() {
         position: 'relative',
         height: '100vh',
         width: '100vw',
-        background: 'linear-gradient(to bottom right, $colors$indigo4, $colors$violet5)',
       }}
     >
       <DialogPrimitive.Root modal={false} defaultOpen>
