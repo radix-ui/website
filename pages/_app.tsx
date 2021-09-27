@@ -36,7 +36,7 @@ const globalStyles = globalCss({
   'pre, code': { margin: 0, fontFamily: '$mono' },
 
   '::selection': {
-    backgroundColor: '$violet5',
+    backgroundColor: '$violetA5',
     color: '$violet12',
   },
 
@@ -56,7 +56,23 @@ function App({ Component, pageProps }: AppProps) {
   const isPrimitivesDocs = router.pathname.includes('/docs/primitives');
   const isDesignSystemDocs = router.pathname.includes('/docs/design-system');
   const isColorsDocs = router.pathname.includes('/docs/colors');
-  const IsNotADocPage = !isPrimitivesDocs && !isDesignSystemDocs && !isColorsDocs;
+  const isIFrame = router.pathname.includes('/iframe');
+  const IsNotADocPage = !isPrimitivesDocs && !isDesignSystemDocs && !isColorsDocs && !isIFrame;
+
+  if (isIFrame) {
+    return (
+      <DesignSystemProvider>
+        <ThemeProvider
+          disableTransitionOnChange
+          attribute="class"
+          value={{ light: 'light-theme', dark: darkTheme.className }}
+          defaultTheme="system"
+        >
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </DesignSystemProvider>
+    );
+  }
 
   return (
     <DesignSystemProvider>
