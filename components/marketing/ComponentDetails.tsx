@@ -58,9 +58,9 @@ const ThickCaretDown = (props: React.ComponentProps<'svg'>) => {
       <path
         d="M3.5 6.5L7.5 10.25L11.5 6.5"
         stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
