@@ -15,11 +15,6 @@ import {
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { MarketingButton } from './MarketingButton';
 
-const pulse = keyframes({
-  '0%': { backgroundColor: '$slateA2' },
-  '100%': { backgroundColor: '$slateA4' },
-});
-
 const IFrameSkeleton = styled('div', {
   borderRadius: '$3',
   mb: '$2',
@@ -27,11 +22,7 @@ const IFrameSkeleton = styled('div', {
   variants: {
     active: {
       true: {
-        animationName: `${pulse}`,
-        animationDuration: '500ms',
-        animationDirection: 'alternate',
-        animationIterationCount: 'infinite',
-        animationTimingFunction: 'ease-in-out',
+        bc: '$slateA3',
       },
     },
   },
