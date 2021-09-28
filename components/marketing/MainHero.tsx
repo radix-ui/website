@@ -5,6 +5,7 @@ import {
   Grid,
   Text,
   styled,
+  keyframes,
   Container,
   Flex,
   Heading,
@@ -14,9 +15,26 @@ import {
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { MarketingButton } from './MarketingButton';
 
-const IFrameWrapper = styled('div', {
+const pulse = keyframes({
+  '0%': { backgroundColor: '$slateA2' },
+  '100%': { backgroundColor: '$slateA4' },
+});
+
+const IFrameSkeleton = styled('div', {
   borderRadius: '$3',
   mb: '$2',
+
+  variants: {
+    active: {
+      true: {
+        animationName: `${pulse}`,
+        animationDuration: '500ms',
+        animationDirection: 'alternate',
+        animationIterationCount: 'infinite',
+        animationTimingFunction: 'ease-in-out',
+      },
+    },
+  },
 });
 
 const IFrame = styled('iframe', {
@@ -43,13 +61,14 @@ const IFrame = styled('iframe', {
 // TODO check with screen reader
 // TODO review section spacing
 export const MainHero = () => {
+  // We synchronise when the first few iframes are visible as they load
+  const [iFramesReady, setIFramesReady] = React.useState(false);
   const iFrameStates = React.useRef({
     dialog: 'loading',
     'dropdown-menu': 'loading',
     popover: 'loading',
     slider: 'loading',
   });
-  const [iFramesReady, setIFramesReady] = React.useState(false);
 
   React.useEffect(() => {
     const iFrameListener = (event: MessageEvent) => {
@@ -88,11 +107,14 @@ export const MainHero = () => {
         </Box>
         <Grid gap="5" css={{ gridAutoFlow: 'column' }}>
           <Box>
-            <IFrameWrapper
-              css={{ background: 'linear-gradient(to bottom right, $indigo4, $violet5)' }}
-            >
-              <IFrame visible={iFramesReady} tabIndex={-1} src="/primitives/iframe/dialog" />
-            </IFrameWrapper>
+            <IFrameSkeleton active={!iFramesReady}>
+              <IFrame
+                visible={iFramesReady}
+                tabIndex={-1}
+                src="/primitives/iframe/dialog"
+                css={{ background: 'linear-gradient(to bottom right, $indigo4, $violet5)' }}
+              />
+            </IFrameSkeleton>
             <Text size="4" css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
               Dialog
             </Text>
@@ -103,11 +125,14 @@ export const MainHero = () => {
           </Box>
 
           <Box>
-            <IFrameWrapper
-              css={{ background: 'linear-gradient(to bottom right,  $crimson4, $blue5)' }}
-            >
-              <IFrame visible={iFramesReady} tabIndex={-1} src="/primitives/iframe/dropdown-menu" />
-            </IFrameWrapper>
+            <IFrameSkeleton active={!iFramesReady}>
+              <IFrame
+                visible={iFramesReady}
+                tabIndex={-1}
+                src="/primitives/iframe/dropdown-menu"
+                css={{ background: 'linear-gradient(to bottom right,  $crimson4, $blue5)' }}
+              />
+            </IFrameSkeleton>
             <Text size="4" css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
               Dropdown Menu
             </Text>
@@ -118,9 +143,14 @@ export const MainHero = () => {
           </Box>
 
           <Box>
-            <IFrameWrapper css={{ background: 'linear-gradient(to bottom right, $lime3, $cyan5)' }}>
-              <IFrame visible={iFramesReady} tabIndex={-1} src="/primitives/iframe/popover" />
-            </IFrameWrapper>
+            <IFrameSkeleton active={!iFramesReady}>
+              <IFrame
+                visible={iFramesReady}
+                tabIndex={-1}
+                src="/primitives/iframe/popover"
+                css={{ background: 'linear-gradient(to bottom right, $lime3, $cyan5)' }}
+              />
+            </IFrameSkeleton>
             <Text size="4" css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
               Popover
             </Text>
@@ -131,9 +161,14 @@ export const MainHero = () => {
           </Box>
 
           <Box>
-            <IFrameWrapper css={{ background: 'linear-gradient(120deg, $gray3, $sky4)' }}>
-              <IFrame visible={iFramesReady} tabIndex={-1} src="/primitives/iframe/slider" />
-            </IFrameWrapper>
+            <IFrameSkeleton active={!iFramesReady}>
+              <IFrame
+                visible={iFramesReady}
+                tabIndex={-1}
+                src="/primitives/iframe/slider"
+                css={{ background: 'linear-gradient(120deg, $gray3, $sky4)' }}
+              />
+            </IFrameSkeleton>
             <Text size="4" css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
               Slider
             </Text>
@@ -144,11 +179,14 @@ export const MainHero = () => {
           </Box>
 
           <Box>
-            <IFrameWrapper
-              css={{ background: 'linear-gradient(to bottom right, $indigo4, $violet5)' }}
-            >
-              <IFrame visible={iFramesReady} tabIndex={-1} src="/primitives/iframe/dialog" />
-            </IFrameWrapper>
+            <IFrameSkeleton active={!iFramesReady}>
+              <IFrame
+                visible={iFramesReady}
+                tabIndex={-1}
+                src="/primitives/iframe/dialog"
+                css={{ background: 'linear-gradient(to bottom right, $indigo4, $violet5)' }}
+              />
+            </IFrameSkeleton>
             <Text size="4" css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
               Tooltip
             </Text>
