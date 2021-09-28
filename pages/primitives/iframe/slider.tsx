@@ -62,6 +62,11 @@ const StyledThumb = styled(SliderPrimitive.Thumb, {
 export default function SliderDemo() {
   setGlobalStyles();
 
+  // Let upstream document know that we are ready
+  React.useEffect(() => {
+    window.top.postMessage({ name: 'slider' }, '*');
+  }, []);
+
   return (
     <Flex
       css={{

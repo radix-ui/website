@@ -35,6 +35,11 @@ export default function PopoverDemo() {
   // so the parent page focus is not stolen.
   const initialAutoFocusPrevented = React.useRef(false);
 
+  // Let upstream document know that we are ready
+  React.useEffect(() => {
+    window.top.postMessage({ name: 'popover' }, '*');
+  }, []);
+
   return (
     <Flex
       css={{

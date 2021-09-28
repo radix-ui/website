@@ -76,6 +76,11 @@ export default function DropdownMenuDemo() {
   const [showToolbar, setShowToolbar] = React.useState(true);
   const [showUrls, setShowUrls] = React.useState(false);
 
+  // Let upstream document know that we are ready
+  React.useEffect(() => {
+    window.top.postMessage({ name: 'dropdown-menu' }, '*');
+  }, []);
+
   return (
     <Flex
       css={{

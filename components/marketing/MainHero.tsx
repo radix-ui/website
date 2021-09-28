@@ -14,13 +14,28 @@ import {
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { MarketingButton } from './MarketingButton';
 
+const IFrameWrapper = styled('div', {
+  borderRadius: '$3',
+  mb: '$2',
+});
+
 const IFrame = styled('iframe', {
   border: 0,
   width: 400,
   height: 400,
   overflow: 'hidden',
   borderRadius: '$3',
-  mb: '$2',
+
+  variants: {
+    visible: {
+      true: {
+        opacity: 1,
+      },
+      false: {
+        opacity: 0,
+      },
+    },
+  },
 });
 
 // TODO test safari
@@ -28,6 +43,27 @@ const IFrame = styled('iframe', {
 // TODO check with screen reader
 // TODO review section spacing
 export const MainHero = () => {
+  const iFrameStates = React.useRef({
+    dialog: 'loading',
+    'dropdown-menu': 'loading',
+    popover: 'loading',
+    slider: 'loading',
+  });
+  const [iFramesReady, setIFramesReady] = React.useState(false);
+
+  React.useEffect(() => {
+    const iFrameListener = (event: MessageEvent) => {
+      if (event.data.name in iFrameStates.current) {
+        iFrameStates.current[event.data.name] = 'ready';
+        if (Object.values(iFrameStates.current).every((state) => state === 'ready')) {
+          setIFramesReady(true);
+        }
+      }
+    };
+    addEventListener('message', iFrameListener);
+    return () => removeEventListener('message', iFrameListener);
+  }, []);
+
   return (
     <Section>
       <Container size="3">
@@ -52,12 +88,11 @@ export const MainHero = () => {
         </Box>
         <Grid gap="5" css={{ gridAutoFlow: 'column' }}>
           <Box>
-            <IFrame
-              tabIndex={-1}
-              allowTransparency={true}
-              src="/primitives/iframe/dialog"
+            <IFrameWrapper
               css={{ background: 'linear-gradient(to bottom right, $indigo4, $violet5)' }}
-            />
+            >
+              <IFrame visible={iFramesReady} tabIndex={-1} src="/primitives/iframe/dialog" />
+            </IFrameWrapper>
             <Text size="4" css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
               Dialog
             </Text>
@@ -68,12 +103,11 @@ export const MainHero = () => {
           </Box>
 
           <Box>
-            <IFrame
-              tabIndex={-1}
-              allowTransparency={true}
-              src="/primitives/iframe/dropdown-menu"
+            <IFrameWrapper
               css={{ background: 'linear-gradient(to bottom right,  $crimson4, $blue5)' }}
-            />
+            >
+              <IFrame visible={iFramesReady} tabIndex={-1} src="/primitives/iframe/dropdown-menu" />
+            </IFrameWrapper>
             <Text size="4" css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
               Dropdown Menu
             </Text>
@@ -84,12 +118,9 @@ export const MainHero = () => {
           </Box>
 
           <Box>
-            <IFrame
-              tabIndex={-1}
-              allowTransparency={true}
-              src="/primitives/iframe/popover"
-              css={{ background: 'linear-gradient(to bottom right, $lime3, $cyan5)' }}
-            />
+            <IFrameWrapper css={{ background: 'linear-gradient(to bottom right, $lime3, $cyan5)' }}>
+              <IFrame visible={iFramesReady} tabIndex={-1} src="/primitives/iframe/popover" />
+            </IFrameWrapper>
             <Text size="4" css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
               Popover
             </Text>
@@ -100,12 +131,9 @@ export const MainHero = () => {
           </Box>
 
           <Box>
-            <IFrame
-              tabIndex={-1}
-              allowTransparency={true}
-              src="/primitives/iframe/slider"
-              css={{ background: 'linear-gradient(120deg, $gray3, $sky4)' }}
-            />
+            <IFrameWrapper css={{ background: 'linear-gradient(120deg, $gray3, $sky4)' }}>
+              <IFrame visible={iFramesReady} tabIndex={-1} src="/primitives/iframe/slider" />
+            </IFrameWrapper>
             <Text size="4" css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
               Slider
             </Text>
@@ -116,12 +144,11 @@ export const MainHero = () => {
           </Box>
 
           <Box>
-            <IFrame
-              tabIndex={-1}
-              allowTransparency={true}
-              src="/primitives/iframe/dialog"
+            <IFrameWrapper
               css={{ background: 'linear-gradient(to bottom right, $indigo4, $violet5)' }}
-            />
+            >
+              <IFrame visible={iFramesReady} tabIndex={-1} src="/primitives/iframe/dialog" />
+            </IFrameWrapper>
             <Text size="4" css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
               Tooltip
             </Text>
