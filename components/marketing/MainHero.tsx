@@ -88,7 +88,7 @@ export const MainHero = () => {
             </Paragraph>
           </Box>
           <Flex justify={{ '@initial': 'start' }} gap="5">
-            <NextLink href="/primitives/overview/getting-started" passHref>
+            <NextLink href="/primitives/docs/overview/getting-started" passHref>
               <MarketingButton as="a" gap="1">
                 Install Primitives
                 <ArrowRightIcon />

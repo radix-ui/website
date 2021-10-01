@@ -20,8 +20,9 @@ import { ComponentDetails } from '@components/marketing/ComponentDetails';
 import { CaseStudiesHero } from '@components/marketing/CaseStudiesHero';
 import { MainBackground } from '@components/marketing/MainBackground';
 import { BenefitsHero } from '@components/marketing/BenefitsHero';
-import { DeveloperObjectionsHero } from '@components/marketing/DeveloperObjectionsHero';
+import { AccessibilityHero } from '@components/marketing/AccessibilityHero';
 import { DeveloperExperienceHero } from '@components/marketing/DeveloperExperienceHero';
+import { DeveloperObjectionsHero } from '@components/marketing/DeveloperObjectionsHero';
 import { CommunityLinks } from '@components/marketing/CommunityLinks';
 import { ProductsLinks } from '@components/marketing/ProductsLinks';
 
@@ -40,6 +41,7 @@ export default function PrimitivesHome() {
       <CaseStudiesHero />
       <BenefitsHero />
       <ComponentDetails />
+      <AccessibilityHero />
       <DeveloperExperienceHero />
       <DeveloperObjectionsHero />
       <CommunityLinks />
