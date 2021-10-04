@@ -262,6 +262,7 @@ export const AccessibilityHero = () => {
               height: '100%',
               br: '$3',
               overflow: 'hidden',
+              boxShadow: '0 0 1px $colors$slateA7',
               '& > *': {
                 gridTemplateRows: 'auto 1fr',
                 p: '$3',
@@ -578,7 +579,7 @@ const keyPressAnimation = keyframes({
 
 const Key = styled(Text, {
   display: 'flex',
-  bc: '$panel',
+  bc: '$mauve1',
   ai: 'center',
   jc: 'center',
   br: 5,
