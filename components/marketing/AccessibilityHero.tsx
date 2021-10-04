@@ -39,14 +39,14 @@ const animationStates: Array<AnimationKeyframe> = [
     typeahead: '',
     dropdown: 'item1',
     animateSpeaker: true,
-    duration: 300,
+    duration: 1000,
   },
   {
     key: '',
     typeahead: '',
     dropdown: 'item1',
     animateSpeaker: true,
-    duration: 1700,
+    duration: 1500,
   },
   {
     key: 'g',
@@ -124,7 +124,7 @@ export const AccessibilityHero = () => {
   const [keyframe, setKeyframe] = React.useState(0);
   const [isIntersecting, setIsIntersecting] = React.useState(false);
 
-  const showMockScreenReader = iterationRef.current > 0 || keyframe > animationStates.length - 3;
+  const showMockScreenReader = iterationRef.current > 0 || keyframe > 3;
   const showMockKeyboard = iterationRef.current > 0 || keyframe > 0;
 
   React.useEffect(() => {
@@ -341,7 +341,7 @@ export const AccessibilityHero = () => {
                 }}
               >
                 <Text variant="gray" size="2">
-                  Screen reader {showMockScreenReader ? '' : 'off'}
+                  Screen reader
                 </Text>
                 <AccessibilityIcon />
               </Flex>
@@ -461,6 +461,14 @@ const ScreenReaderOutput = ({ dropdownState }: { dropdownState: MockDropdownStat
   return null;
 };
 
+const MockDropdownSeparator = styled('div', {
+  height: 1,
+  ml: 30,
+  mr: 10,
+  my: 5,
+  bc: '$mauve5',
+});
+
 const MockDropdown = ({ state }: { state: MockDropdownState }) => {
   return (
     <Box css={{ mt: '$1' }}>
@@ -471,6 +479,7 @@ const MockDropdown = ({ state }: { state: MockDropdownState }) => {
         <MockDropdownCheckboxItem checked focused={state === 'item1'}>
           Show Minimap
         </MockDropdownCheckboxItem>
+        <MockDropdownSeparator />
         <MockDropdownItem focused={state === 'item2'}>Go to Symbol</MockDropdownItem>
         <MockDropdownItem focused={state === 'item3'}>Go to Definition</MockDropdownItem>
         <MockDropdownItem focused={state === 'item4'}>Go to References</MockDropdownItem>
