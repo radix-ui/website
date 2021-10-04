@@ -272,7 +272,12 @@ export const AccessibilityHero = () => {
               },
             }}
           >
-            <Grid css={{ bc: '$mauve2', transition: 'background-color 290ms' }}>
+            <Grid
+              css={{
+                bc: showMockKeyboard ? '$mauve1' : '$mauve2',
+                transition: 'background-color 300ms',
+              }}
+            >
               <Flex
                 align="center"
                 gap="1"
@@ -321,7 +326,12 @@ export const AccessibilityHero = () => {
               </Flex>
             </Grid>
 
-            <Grid css={{ bc: '$mauve2', transition: 'background-color 300ms' }}>
+            <Grid
+              css={{
+                bc: showMockScreenReader ? '$mauve1' : '$mauve2',
+                transition: 'background-color 300ms',
+              }}
+            >
               <Flex
                 align="center"
                 gap="1"
@@ -504,7 +514,7 @@ const MockTypeaheadOutput = styled(Text, {
   pb: 2,
   bc: '$indigo4',
   border: '1px solid $colors$indigo6',
-  transition: 'opacity 290ms',
+  transition: 'opacity 300ms',
   lineHeight: '18px',
   whiteSpace: 'pre',
   '&:empty': {
@@ -579,7 +589,7 @@ const keyPressAnimation = keyframes({
 
 const Key = styled(Text, {
   display: 'flex',
-  bc: '$mauve1',
+  bc: '$panel',
   ai: 'center',
   jc: 'center',
   br: 5,
@@ -636,6 +646,7 @@ const MockDropdownButton = styled(Box, {
 const MockDropdownContent = styled(Box, {
   p: '$1',
   br: '$2',
+  bc: '$panel',
   willChange: 'transform, opacity',
   transformOrigin: 'top center',
   transitionDuration: '150ms',
