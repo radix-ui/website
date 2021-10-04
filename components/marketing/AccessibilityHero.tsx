@@ -23,8 +23,6 @@ import {
 } from '@radix-ui/react-icons';
 import { MarketingCaption } from './MarketingCaption';
 
-// TODO check that all paragraphs are P tags
-
 type MockDropdownState = 'closed' | 'item1' | 'item2' | 'item3' | 'item4';
 
 type AnimationKeyframe = {
@@ -32,57 +30,36 @@ type AnimationKeyframe = {
   typeahead: string;
   dropdown: MockDropdownState;
   animateSpeaker: boolean;
-  screenreader?: JSX.Element;
   duration: number;
 };
 
-const animationState: Array<AnimationKeyframe> = [
+const animationStates: Array<AnimationKeyframe> = [
   {
     key: '',
     typeahead: '',
-    dropdown: 'closed',
-    animateSpeaker: false,
-    screenreader: (
-      <span>
-        Navigation, menu <span style={{ whiteSpace: 'nowrap' }}>pop-up</span>, button
-      </span>
-    ),
-    duration: 1000,
+    dropdown: 'item1',
+    animateSpeaker: true,
+    duration: 300,
   },
   {
-    key: ' ',
+    key: '',
     typeahead: '',
     dropdown: 'item1',
     animateSpeaker: true,
-    screenreader: (
-      <span>
-        Show Minimap, ticked, <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
-      </span>
-    ),
-    duration: 2000,
+    duration: 1700,
   },
   {
     key: 'g',
     typeahead: 'g',
     dropdown: 'item2',
     animateSpeaker: true,
-    screenreader: (
-      <span>
-        Go to Symbol, <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
-      </span>
-    ),
-    duration: 900,
+    duration: 700,
   },
   {
     key: 'o',
     typeahead: 'go',
     dropdown: 'item2',
     animateSpeaker: false,
-    screenreader: (
-      <span>
-        Go to Symbol, <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
-      </span>
-    ),
     duration: 180,
   },
   {
@@ -90,23 +67,13 @@ const animationState: Array<AnimationKeyframe> = [
     typeahead: 'go ',
     dropdown: 'item2',
     animateSpeaker: false,
-    screenreader: (
-      <span>
-        Go to Symbol, <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
-      </span>
-    ),
-    duration: 180,
+    duration: 300,
   },
   {
     key: 't',
     typeahead: 'go t',
     dropdown: 'item2',
     animateSpeaker: false,
-    screenreader: (
-      <span>
-        Go to Symbol, <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
-      </span>
-    ),
     duration: 180,
   },
   {
@@ -114,11 +81,6 @@ const animationState: Array<AnimationKeyframe> = [
     typeahead: 'go to',
     dropdown: 'item2',
     animateSpeaker: false,
-    screenreader: (
-      <span>
-        Go to Symbol, <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
-      </span>
-    ),
     duration: 180,
   },
   {
@@ -126,66 +88,101 @@ const animationState: Array<AnimationKeyframe> = [
     typeahead: 'go to ',
     dropdown: 'item2',
     animateSpeaker: false,
-    screenreader: (
-      <span>
-        Go to Symbol, <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
-      </span>
-    ),
-    duration: 180,
+    duration: 300,
   },
   {
     key: 'r',
     typeahead: 'go to r',
     dropdown: 'item4',
     animateSpeaker: true,
-    screenreader: (
-      <span>
-        Go to References, <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
-      </span>
-    ),
-    duration: 3000,
+    duration: 1500,
   },
   {
     key: ' ',
     typeahead: '',
     dropdown: 'closed',
     animateSpeaker: true,
-    screenreader: (
-      <span>
-        Navigation, menu <span style={{ whiteSpace: 'nowrap' }}>pop-up</span>, button
-      </span>
-    ),
-    duration: 1000,
+    duration: 1500,
+  },
+  {
+    key: ' ',
+    typeahead: '',
+    dropdown: 'item1',
+    animateSpeaker: true,
+    duration: 200,
   },
 ];
 
 // TODO think how to label the animation for AT
 export const AccessibilityHero = () => {
+  const keyframeRef = React.useRef(0);
+  const iterationRef = React.useRef(0);
+  const timeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const intersectingRef = React.useRef(false);
+
   const [keyframe, setKeyframe] = React.useState(0);
+  const [isIntersecting, setIsIntersecting] = React.useState(false);
+
+  const showMockScreenReader = iterationRef.current > 0 || keyframe > animationStates.length - 3;
+  const showMockKeyboard = iterationRef.current > 0 || keyframe > 0;
 
   React.useEffect(() => {
-    let currentKeyframe = keyframe;
-    let timeout: ReturnType<typeof setTimeout>;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Intersection flag is disabled once less than 10% of the container is visible in the viewport,
+        // and enabled once more than 90% of the container is visible in the viewport.
+        const newIsIntersecting = entry.intersectionRatio > (intersectingRef.current ? 0.1 : 0.9);
 
-    const updateKeyframe = () => {
-      // Increment keyframe counter, loop when last keyframe is reached
-      currentKeyframe = currentKeyframe < animationState.length - 1 ? currentKeyframe + 1 : 0;
-      setKeyframe(currentKeyframe);
+        if (newIsIntersecting === false) {
+          iterationRef.current = 0;
+          keyframeRef.current = 0;
+          clearTimeout(timeoutRef.current);
+          setKeyframe(0);
+        }
 
-      // Request animation frame when next keyframe is due
-      timeout = setTimeout(
-        () => requestAnimationFrame(() => updateKeyframe()),
-        animationState[currentKeyframe].duration
-      );
-    };
-
-    timeout = setTimeout(
-      () => requestAnimationFrame(() => updateKeyframe()),
-      animationState[currentKeyframe].duration
+        intersectingRef.current = newIsIntersecting;
+        setIsIntersecting(newIsIntersecting);
+      },
+      { threshold: [0.1, 0.9] }
     );
 
-    return () => clearTimeout(timeout);
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
   }, []);
+
+  React.useEffect(() => {
+    const updateKeyframe = () => {
+      // Increment keyframe counter, or loop when last keyframe is reached
+      keyframeRef.current =
+        keyframeRef.current < animationStates.length - 1 ? keyframeRef.current + 1 : 0;
+
+      // Increment iteration counter when starting keyframe is reached
+      if (keyframeRef.current === 0) {
+        iterationRef.current++;
+      }
+
+      setKeyframe(keyframeRef.current);
+
+      // If visible in the viewport request animation frame when next keyframe is due
+      if (intersectingRef.current) {
+        timeoutRef.current = setTimeout(
+          () => requestAnimationFrame(() => updateKeyframe()),
+          animationStates[keyframeRef.current].duration
+        );
+      }
+    };
+
+    // Start the animation in 1s once the container is visible in the viewport
+    if (isIntersecting) {
+      timeoutRef.current = setTimeout(() => requestAnimationFrame(() => updateKeyframe()), 1000);
+    }
+
+    return () => clearTimeout(timeoutRef.current);
+  }, [isIntersecting]);
 
   return (
     <Section
@@ -247,6 +244,7 @@ export const AccessibilityHero = () => {
         </Box>
 
         <Box
+          ref={containerRef}
           css={{
             br: '$4',
             bc: '$slateA3',
@@ -264,33 +262,58 @@ export const AccessibilityHero = () => {
               width: '100%',
               height: '100%',
               br: '$3',
+              overflow: 'hidden',
               '& > *': {
                 gridTemplateRows: 'auto 1fr',
                 p: '$3',
               },
+              '& > :nth-child(n+1)': {
+                boxShadow: '-1px 0 $colors$grayA4',
+              },
             }}
           >
-            <Grid>
+            <Grid
+              css={{
+                bc: showMockKeyboard ? 'transparent' : '$mauve2',
+                transition: 'background-color 290ms',
+              }}
+            >
               <Flex
                 align="center"
                 gap="1"
-                css={{ color: '$slate11', mb: '$1', position: 'relative' }}
+                css={{
+                  color: '$slate11',
+                  mb: '$1',
+                  position: 'relative',
+                  opacity: showMockKeyboard ? 1 : 0.6,
+                  transition: 'opacity 300ms',
+                }}
               >
                 <Text variant="gray" size="2">
                   Keyboard input
                 </Text>
                 <KeyboardIcon />
 
-                <Box css={{ position: 'absolute', top: -4, right: 0 }}>
-                  <MockTypeaheadOutput>{animationState[keyframe].typeahead}</MockTypeaheadOutput>
-                </Box>
+                <MockTypeaheadOutput
+                  visible={showMockKeyboard}
+                  css={{ position: 'absolute', top: -4, right: 0 }}
+                >
+                  {animationStates[keyframe].typeahead}
+                </MockTypeaheadOutput>
               </Flex>
-              <Flex align="center" justify="center">
+              <Flex
+                align="center"
+                justify="center"
+                css={{
+                  opacity: showMockKeyboard ? 1 : 0,
+                  transition: 'opacity 300ms',
+                }}
+              >
                 {/* Adding React key so that the mock keyboards animates correctly on repeat key presses */}
-                <MockKeyboard key={keyframe} currentKey={animationState[keyframe].key} />
+                <MockKeyboard key={keyframe} currentKey={animationStates[keyframe].key} />
               </Flex>
             </Grid>
-            <Grid css={{ boxShadow: '1px 0 $colors$grayA4, -1px 0 $colors$grayA4' }}>
+            <Grid>
               <Flex align="center" gap="1" css={{ color: '$slate11', mb: '$1' }}>
                 <Text variant="gray" size="2">
                   Radix component
@@ -298,19 +321,43 @@ export const AccessibilityHero = () => {
                 <TransformIcon />
               </Flex>
               <Flex align="center" justify="center">
-                <MockDropdown state={animationState[keyframe].dropdown} />
+                <MockDropdown state={animationStates[keyframe].dropdown} />
               </Flex>
             </Grid>
-            <Grid>
-              <Flex align="center" gap="1" css={{ color: '$slate11', mb: '$1' }}>
+            <Grid
+              css={{
+                bc: showMockScreenReader ? 'transparent' : '$mauve2',
+                transition: 'background-color 300ms',
+              }}
+            >
+              <Flex
+                align="center"
+                gap="1"
+                css={{
+                  color: '$slate11',
+                  mb: '$1',
+                  opacity: showMockScreenReader ? 1 : 0.6,
+                  transition: 'opacity 300ms',
+                }}
+              >
                 <Text variant="gray" size="2">
-                  Screen reader
+                  Screen reader {showMockScreenReader ? '' : 'off'}
                 </Text>
                 <AccessibilityIcon />
               </Flex>
               <Flex direction="column" justify="between" css={{ pt: '$3' }}>
-                <MockScreenReader>{animationState[keyframe].screenreader}</MockScreenReader>
-                <SpeakerIcon animating={animationState[keyframe].animateSpeaker} />
+                <MockScreenReader
+                  css={{
+                    opacity: showMockScreenReader ? 1 : 0,
+                    transition: 'opacity 300ms',
+                  }}
+                >
+                  <ScreenReaderOutput dropdownState={animationStates[keyframe].dropdown} />
+                </MockScreenReader>
+                <SpeakerIcon
+                  faded={showMockScreenReader === false}
+                  animating={showMockScreenReader && animationStates[keyframe].animateSpeaker}
+                />
               </Flex>
             </Grid>
           </Grid>
@@ -382,6 +429,38 @@ export const AccessibilityHero = () => {
   );
 };
 
+const ScreenReaderOutput = ({ dropdownState }: { dropdownState: MockDropdownState }) => {
+  if (dropdownState === 'closed') {
+    return (
+      <span>
+        Navigation, menu <span style={{ whiteSpace: 'nowrap' }}>pop-up</span>, button
+      </span>
+    );
+  }
+  if (dropdownState === 'item1') {
+    return (
+      <span>
+        Show Minimap, ticked, <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
+      </span>
+    );
+  }
+  if (dropdownState === 'item2') {
+    return (
+      <span>
+        Go to Symbol, <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
+      </span>
+    );
+  }
+  if (dropdownState === 'item4') {
+    return (
+      <span>
+        Go to References, <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
+      </span>
+    );
+  }
+  return null;
+};
+
 const MockDropdown = ({ state }: { state: MockDropdownState }) => {
   return (
     <Box css={{ mt: '$1' }}>
@@ -400,7 +479,7 @@ const MockDropdown = ({ state }: { state: MockDropdownState }) => {
   );
 };
 
-const MockScreenReader: React.FC = ({ children }) => {
+const MockScreenReader = ({ css, ...props }: React.ComponentProps<typeof Heading>) => {
   return (
     <Heading
       size="3"
@@ -410,10 +489,10 @@ const MockScreenReader: React.FC = ({ children }) => {
         WebkitBackgroundClip: 'text',
         userSelect: 'none',
         backgroundImage: 'linear-gradient(to bottom right, #4F4B59, #545685)',
+        ...css,
       }}
-    >
-      {children}
-    </Heading>
+      {...props}
+    />
   );
 };
 
@@ -422,8 +501,9 @@ const MockTypeaheadOutput = styled(Text, {
   px: '$1',
   br: '$1',
   pb: 2,
-  bc: '$indigo3',
-  border: '1px solid $colors$indigo5',
+  bc: '$indigo4',
+  border: '1px solid $colors$indigo6',
+  transition: 'opacity 290ms',
   lineHeight: '18px',
   whiteSpace: 'pre',
   '&:empty': {
@@ -436,8 +516,14 @@ const MockTypeaheadOutput = styled(Text, {
         color: '$indigo12',
       },
     },
+    visible: {
+      false: {
+        opacity: 0,
+      },
+    },
   },
   defaultVariants: {
+    visible: true,
     variant: 'contrast',
     size: '2',
   },
@@ -506,7 +592,7 @@ const Key = styled(Text, {
     variant: {}, // Including as a workaround for TS bugs with defaultVariants
     pressed: {
       true: {
-        animation: `${keyPressAnimation} 100ms`,
+        animation: `${keyPressAnimation} 120ms`,
         animationTimingFunction: 'steps(1, end)',
       },
     },
@@ -706,6 +792,9 @@ const wave1 = keyframes({
   '12.5%, 37.5%': {
     opacity: 1,
   },
+  '75%': {
+    transform: 'scale(1.1) translateX(1px)',
+  },
 });
 
 const wave2 = keyframes({
@@ -714,6 +803,9 @@ const wave2 = keyframes({
   },
   '25%, 50%': {
     opacity: 1,
+  },
+  '87.5%': {
+    transform: 'scale(1.1) translateX(1px)',
   },
 });
 
@@ -724,78 +816,106 @@ const wave3 = keyframes({
   '37.5%, 62.5%': {
     opacity: 1,
   },
+  '100%': {
+    transform: 'scale(1.1) translateX(1px)',
+  },
 });
 
-const SpeakerIcon = ({ animating = false }: { animating?: boolean }) => {
+type SpeakerIconProps = {
+  faded?: boolean;
+  animating?: boolean;
+};
+
+const SpeakerIcon = ({ faded = false, animating = false }: SpeakerIconProps) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const shouldPauseAnimation = React.useRef(animating);
+  const [currentlyAnimating, setCurrentlyAnimating] = React.useState(animating);
 
   React.useEffect(() => {
     shouldPauseAnimation.current = !animating;
 
     if (animating) {
-      containerRef.current
-        ?.querySelectorAll('path')
-        ?.forEach((path) => path.style.removeProperty('animation-play-state'));
+      setCurrentlyAnimating(true);
     }
   }, [animating]);
 
   return (
-    <Box
+    <SpeakerIconWrapper
       ref={containerRef}
-      onAnimationIteration={(event) => {
+      faded={faded}
+      animating={currentlyAnimating}
+      onAnimationIteration={() => {
+        // Check whether we need to pause the animation whenever an iteration is done
         if (shouldPauseAnimation.current) {
-          containerRef.current
-            ?.querySelectorAll('path')
-            ?.forEach((path) => (path.style.animationPlayState = 'paused'));
+          setCurrentlyAnimating(false);
         }
-      }}
-      css={{
-        color: '$slate11',
-        '.speaker-icon-line-1': {
-          opacity: 0,
-          animation: `1500ms ${wave1} linear infinite`,
-        },
-        '.speaker-icon-line-2': {
-          opacity: 0,
-          animation: `1500ms ${wave2} linear infinite`,
-        },
-        '.speaker-icon-line-3': {
-          opacity: 0,
-          animation: `1500ms ${wave3} linear infinite`,
-        },
       }}
     >
       <svg
-        width="30"
-        height="20"
-        viewBox="0 0 30 20"
+        width="40"
+        height="30"
+        viewBox="0 0 40 30"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M2.95898 13.9871H5.95703C6.08398 13.9871 6.18164 14.0261 6.25977 14.0945L10.9668 18.3035C11.3477 18.6453 11.6797 18.8308 12.0898 18.8308C12.6562 18.8308 13.0469 18.4109 13.0469 17.8542V2.31714C13.0469 1.7605 12.6562 1.30151 12.0703 1.30151C11.6699 1.30151 11.3867 1.49683 10.9668 1.86792L6.25977 6.09644C6.18164 6.16479 6.08398 6.20386 5.95703 6.20386H2.95898C1.75781 6.20386 1.17188 6.79956 1.17188 8.05933V12.1316C1.17188 13.3914 1.75781 13.9871 2.95898 13.9871ZM2.99805 12.8445C2.55859 12.8445 2.37305 12.6589 2.37305 12.2195V7.97144C2.37305 7.53198 2.55859 7.34644 2.99805 7.34644H6.23047C6.51367 7.34644 6.70898 7.30737 6.95312 7.08276L11.4844 2.9519C11.543 2.90308 11.6016 2.85425 11.6895 2.85425C11.7773 2.85425 11.8359 2.91284 11.8359 3.0105V17.1121C11.8359 17.2097 11.7871 17.2781 11.6895 17.2781C11.6309 17.2781 11.5625 17.2488 11.4844 17.1804L6.95312 13.1082C6.71875 12.8933 6.51367 12.8445 6.23047 12.8445H2.99805Z"
+          d="M2.95898 18.9871H5.95703C6.08398 18.9871 6.18164 19.0261 6.25977 19.0945L10.9668 23.3035C11.3477 23.6453 11.6797 23.8308 12.0898 23.8308C12.6562 23.8308 13.0469 23.4109 13.0469 22.8542V7.31714C13.0469 6.7605 12.6562 6.30151 12.0703 6.30151C11.6699 6.30151 11.3867 6.49683 10.9668 6.86792L6.25977 11.0964C6.18164 11.1648 6.08398 11.2039 5.95703 11.2039H2.95898C1.75781 11.2039 1.17188 11.7996 1.17188 13.0593V17.1316C1.17188 18.3914 1.75781 18.9871 2.95898 18.9871ZM2.99805 17.8445C2.55859 17.8445 2.37305 17.6589 2.37305 17.2195V12.9714C2.37305 12.532 2.55859 12.3464 2.99805 12.3464H6.23047C6.51367 12.3464 6.70898 12.3074 6.95312 12.0828L11.4844 7.9519C11.543 7.90308 11.6016 7.85425 11.6895 7.85425C11.7773 7.85425 11.8359 7.91284 11.8359 8.0105V22.1121C11.8359 22.2097 11.7871 22.2781 11.6895 22.2781C11.6309 22.2781 11.5625 22.2488 11.4844 22.1804L6.95312 18.1082C6.71875 17.8933 6.51367 17.8445 6.23047 17.8445H2.99805Z"
           fill="currentcolor"
         />
         <path
           fillOpacity="0.5"
-          className="speaker-icon-line-1"
-          d="M17.5984 14.2507C17.8523 14.4363 18.2136 14.3777 18.4285 14.0847C19.1902 13.0788 19.6687 11.6042 19.6687 10.0613C19.6687 8.50853 19.1902 7.05345 18.4285 6.03782C18.2136 5.74485 17.8621 5.68626 17.5984 5.87181C17.2859 6.09642 17.2273 6.46751 17.4714 6.78978C18.0671 7.61009 18.4675 8.80149 18.4675 10.0613C18.4675 11.3308 18.0574 12.532 17.4519 13.3523C17.2273 13.6648 17.2859 14.0261 17.5984 14.2507Z"
+          className="speaker-line-1"
+          d="M17.5984 19.2507C17.8523 19.4363 18.2136 19.3777 18.4285 19.0847C19.1902 18.0788 19.6687 16.6042 19.6687 15.0613C19.6687 13.5085 19.1902 12.0534 18.4285 11.0378C18.2136 10.7449 17.8621 10.6863 17.5984 10.8718C17.2859 11.0964 17.2273 11.4675 17.4714 11.7898C18.0671 12.6101 18.4675 13.8015 18.4675 15.0613C18.4675 16.3308 18.0574 17.532 17.4519 18.3523C17.2273 18.6648 17.2859 19.0261 17.5984 19.2507Z"
           fill="currentcolor"
         />
         <path
           fillOpacity="0.5"
-          className="speaker-icon-line-2"
-          d="M21.4556 16.8679C21.7486 17.0632 22.1001 16.9851 22.315 16.6921C23.6236 14.9148 24.3658 12.5808 24.3658 10.0613C24.3658 7.54173 23.6431 5.18821 22.315 3.42064C22.1001 3.12767 21.7486 3.05931 21.4556 3.25462C21.1724 3.44993 21.1333 3.81126 21.3482 4.13353C22.4322 5.76439 23.1548 7.8054 23.1548 10.0613C23.1548 12.3171 22.4908 14.407 21.3384 15.9988C21.1236 16.3113 21.1724 16.6726 21.4556 16.8679Z"
+          className="speaker-line-2"
+          d="M21.4556 21.8679C21.7486 22.0632 22.1001 21.9851 22.315 21.6921C23.6236 19.9148 24.3658 17.5808 24.3658 15.0613C24.3658 12.5417 23.6431 10.1882 22.315 8.42064C22.1001 8.12767 21.7486 8.05931 21.4556 8.25462C21.1724 8.44993 21.1333 8.81126 21.3482 9.13353C22.4322 10.7644 23.1548 12.8054 23.1548 15.0613C23.1548 17.3171 22.4908 19.407 21.3384 20.9988C21.1236 21.3113 21.1724 21.6726 21.4556 21.8679Z"
           fill="currentcolor"
         />
         <path
           fillOpacity="0.5"
-          className="speaker-icon-line-3"
-          d="M25.3514 19.5144C25.6248 19.7098 25.9959 19.6316 26.2108 19.3289C28.0076 16.7801 29.0526 13.5574 29.0526 10.0613C29.0526 6.56522 27.9881 3.34257 26.2108 0.793739C25.9959 0.481239 25.6346 0.403114 25.3514 0.598426C25.0682 0.803504 25.0194 1.1746 25.2342 1.49686C26.8162 3.87968 27.8612 6.81913 27.8612 10.0613C27.8612 13.3035 26.9139 16.3406 25.2244 18.6355C25.0096 18.948 25.0584 19.3094 25.3514 19.5144Z"
+          className="speaker-line-3"
+          d="M25.3514 24.5144C25.6248 24.7098 25.9959 24.6316 26.2108 24.3289C28.0076 21.7801 29.0526 18.5574 29.0526 15.0613C29.0526 11.5652 27.9881 8.34257 26.2108 5.79374C25.9959 5.48124 25.6346 5.40311 25.3514 5.59843C25.0682 5.8035 25.0194 6.1746 25.2342 6.49686C26.8162 8.87968 27.8612 11.8191 27.8612 15.0613C27.8612 18.3035 26.9139 21.3406 25.2244 23.6355C25.0096 23.948 25.0584 24.3094 25.3514 24.5144Z"
           fill="currentcolor"
         />
       </svg>
-    </Box>
+    </SpeakerIconWrapper>
   );
 };
+
+const SpeakerIconWrapper = styled('div', {
+  color: '$slate11',
+
+  '&& path': {
+    transformOrigin: 'left center',
+  },
+  '.speaker-line-1': {
+    opacity: 0,
+    animation: `1500ms ${wave1} linear infinite`,
+  },
+  '.speaker-line-2': {
+    opacity: 0,
+    animation: `1500ms ${wave2} linear infinite`,
+  },
+  '.speaker-line-3': {
+    opacity: 0,
+    animation: `1500ms ${wave3} linear infinite`,
+  },
+
+  variants: {
+    faded: {
+      true: {
+        opacity: 0.4,
+      },
+    },
+    animating: {
+      false: {
+        '&& path': {
+          animationPlayState: 'paused',
+        },
+      },
+    },
+  },
+});
