@@ -258,7 +258,6 @@ export const AccessibilityHero = () => {
           <Grid
             columns="3"
             css={{
-              bc: '$mauve1',
               width: '100%',
               height: '100%',
               br: '$3',
@@ -272,12 +271,7 @@ export const AccessibilityHero = () => {
               },
             }}
           >
-            <Grid
-              css={{
-                bc: showMockKeyboard ? 'transparent' : '$mauve2',
-                transition: 'background-color 290ms',
-              }}
-            >
+            <Grid css={{ bc: '$mauve2', transition: 'background-color 290ms' }}>
               <Flex
                 align="center"
                 gap="1"
@@ -313,7 +307,8 @@ export const AccessibilityHero = () => {
                 <MockKeyboard key={keyframe} currentKey={animationStates[keyframe].key} />
               </Flex>
             </Grid>
-            <Grid>
+
+            <Grid css={{ bc: '$mauve1' }}>
               <Flex align="center" gap="1" css={{ color: '$slate11', mb: '$1' }}>
                 <Text variant="gray" size="2">
                   Radix component
@@ -324,12 +319,8 @@ export const AccessibilityHero = () => {
                 <MockDropdown state={animationStates[keyframe].dropdown} />
               </Flex>
             </Grid>
-            <Grid
-              css={{
-                bc: showMockScreenReader ? 'transparent' : '$mauve2',
-                transition: 'background-color 300ms',
-              }}
-            >
+
+            <Grid css={{ bc: '$mauve2', transition: 'background-color 300ms' }}>
               <Flex
                 align="center"
                 gap="1"
