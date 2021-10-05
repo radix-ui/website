@@ -32,7 +32,7 @@ export const DeveloperExperienceSection = () => {
   return (
     <Section css={{ background: 'linear-gradient(to bottom right, $sky3, $cyan4, $blue6)' }}>
       <Container size="3">
-        <Grid css={{ mb: '$7', gridTemplateColumns: '420px 1fr', gridGap: '$9' }}>
+        <Grid css={{ gridTemplateColumns: '420px 1fr', gridGap: '$9' }}>
           <Box>
             <MarketingCaption css={{ mb: '$1' }}>Developer experience to love</MarketingCaption>
             <Heading as="h2" size="3" css={{ mb: '$4' }}>
@@ -114,7 +114,7 @@ export const DeveloperExperienceSection = () => {
             </Flex>
           </Box>
 
-          <CodeWindow css={{ height: 640, mt: '-$4' }}>
+          <CodeWindow css={{ height: 640 }}>
             <CodeDemo
               language="jsx"
               line={activeHighlight}
@@ -181,7 +181,7 @@ const BlendedCard = styled(Card, {
       active: {
         backgroundColor: '$sky1',
         '&::before': {
-          boxShadow: '0px 8px 16px -12px $colors$blackA11',
+          boxShadow: '0px 4px 16px -12px $colors$skyA12',
         },
         '&:active': {
           transition: 'transform 150ms cubic-bezier(0.22, 1, 0.36, 1)',
@@ -198,7 +198,7 @@ const BlendedCard = styled(Card, {
       },
       ghost: {
         '&::before': {
-          boxShadow: '0px 8px 16px -12px $colors$blackA11',
+          boxShadow: '0px 4px 16px -12px $colors$skyA12',
         },
         '@hover': {
           '&:hover': {
