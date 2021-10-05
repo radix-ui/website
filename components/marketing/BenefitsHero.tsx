@@ -22,7 +22,6 @@ export const BenefitsHero = () => {
     <Section
       css={{
         bc: '$cyan2',
-        boxShadow: 'inset 0 1px $colors$grayA3',
         position: 'relative',
         pb: '$7',
       }}

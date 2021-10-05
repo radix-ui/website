@@ -188,7 +188,6 @@ export const AccessibilityHero = () => {
     <Section
       css={{
         background: 'linear-gradient(to bottom, $mauve2, $loContrast)',
-        boxShadow: '0 -1px $colors$grayA3',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -267,9 +266,6 @@ export const AccessibilityHero = () => {
                 gridTemplateRows: 'auto 1fr',
                 p: '$3',
               },
-              '& > :nth-child(n+1)': {
-                boxShadow: '-1px 0 $colors$grayA4',
-              },
             }}
           >
             <Grid
@@ -314,7 +310,13 @@ export const AccessibilityHero = () => {
               </Flex>
             </Grid>
 
-            <Grid css={{ bc: '$mauve1' }}>
+            <Grid
+              css={{
+                bc: '$mauve1',
+                boxShadow: showMockKeyboard ? '-1px 0 $colors$grayA4' : 'none',
+                transition: 'box-shadow 300ms',
+              }}
+            >
               <Flex align="center" gap="1" css={{ color: '$slate11', mb: '$1' }}>
                 <Text variant="gray" size="2">
                   Radix component
@@ -329,7 +331,8 @@ export const AccessibilityHero = () => {
             <Grid
               css={{
                 bc: showMockScreenReader ? '$mauve1' : '$mauve2',
-                transition: 'background-color 300ms',
+                boxShadow: showMockScreenReader ? 'inset 1px 0 $colors$grayA4' : 'none',
+                transition: 'background-color 300ms, box-shadow 300ms',
               }}
             >
               <Flex

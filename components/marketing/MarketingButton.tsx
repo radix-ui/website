@@ -1,6 +1,7 @@
-import { styled } from '@modulz/design-system';
+import { Box, styled } from '@modulz/design-system';
+import React from 'react';
 
-export const MarketingButton = styled('button', {
+export const StyledButton = styled('button', {
   all: 'unset',
   alignItems: 'center',
   boxSizing: 'border-box',
@@ -13,8 +14,8 @@ export const MarketingButton = styled('button', {
   px: '$3',
   fontFamily: '$untitled',
   fontWeight: 500,
-  borderRadius: '$1',
-  fontSize: '$2',
+  borderRadius: '$2',
+  fontSize: '$3',
   lineHeight: '$sizes$6',
 
   '&:disabled': {
@@ -55,28 +56,12 @@ export const MarketingButton = styled('button', {
           },
         },
         '&:active': {
-          bc: '$teal11',
+          bc: '$teal4',
+          color: '$teal12',
         },
         '&:focus-visible': {
           boxShadow: '0 0 0 2px $colors$teal9',
         },
-      },
-    },
-    gap: {
-      1: {
-        gap: '$1',
-      },
-      2: {
-        gap: '$2',
-      },
-      3: {
-        gap: '$3',
-      },
-      4: {
-        gap: '$4',
-      },
-      5: {
-        gap: '$5',
       },
     },
   },
@@ -84,3 +69,23 @@ export const MarketingButton = styled('button', {
     variant: 'contrast',
   },
 });
+
+type MarketingButtonProps = {
+  as: any;
+  icon?: React.ComponentType<any>;
+} & React.ComponentProps<typeof StyledButton>;
+
+export const MarketingButton = React.forwardRef<HTMLButtonElement, MarketingButtonProps>(
+  ({ children, icon: Icon, ...props }, forwardedRef) => {
+    return (
+      <StyledButton ref={forwardedRef} {...props}>
+        {children}
+        {Icon && (
+          <Box as="span" css={{ ml: 8, mr: -3 }}>
+            <Icon />
+          </Box>
+        )}
+      </StyledButton>
+    );
+  }
+);

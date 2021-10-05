@@ -33,9 +33,8 @@ export const DeveloperObjectionsHero = () => {
             Easy to introduce to your team
           </Heading>
           <NextLink href="/docs/primitives" passHref>
-            <MarketingButton as="a" gap="1">
+            <MarketingButton as="a" icon={ArrowRightIcon}>
               Go to docs
-              <ArrowRightIcon />
             </MarketingButton>
           </NextLink>
         </Box>

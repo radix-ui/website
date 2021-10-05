@@ -20,7 +20,7 @@ const DialogContent = styled(DialogPrimitive.Content, {
   br: '$2',
   py: 10,
   px: 10,
-  marginTop: '-5vh',
+  marginTop: '-3vh',
   boxShadow: '0px 5px 30px -5px rgba(0, 0, 0, 0.1)',
 
   '& ::selection': {

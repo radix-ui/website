@@ -22,13 +22,14 @@ const IFrameSkeleton = styled('div', {
   variants: {
     active: {
       true: {
-        bc: '$slateA3',
+        bc: '$slateA4',
       },
     },
   },
 });
 
 const IFrame = styled('iframe', {
+  display: 'block',
   border: 0,
   width: 400,
   height: 400,
@@ -76,22 +77,39 @@ export const MainHero = () => {
 
   return (
     <Section>
+      <Background />
       <Container size="3">
         <Box css={{ mb: '$6' }}>
-          <Heading size="4" css={{ mb: '$5', lineHeight: '1.05 !important' }}>
-            Unstyled, accessible UI components with&nbsp;incredible developer experience
-          </Heading>
-          <Box css={{ maxWidth: 660, mb: '$4' }}>
+          <Text
+            as="h1"
+            css={{
+              fontSize: '80px',
+              fontWeight: 500,
+              lineHeight: '0.85 !important',
+              letterSpacing: '-0.07em',
+              mb: '$5',
+              WebkitBackgroundClip: 'text',
+              color: 'transparent',
+              backgroundImage: 'radial-gradient(circle, $hiContrast, $colors$indigo12)',
+              pb: '0.1em', // Otherwise some descenders may be clipped with WebkitBackgroundClip: 'text'
+            }}
+          >
+            Don’t waste
+            <br />
+            time reinventing
+            <br />
+            UI components.
+          </Text>
+          <Box css={{ maxWidth: 580, mb: '$4' }}>
             <Paragraph size="2" as="p">
-              Radix Primitives is an open-source UI component library for building high-quality,
-              accessible design systems and web apps in React.
+              Radix Primitives is an accessible component library for building high‑quality design
+              systems and web apps in React.
             </Paragraph>
           </Box>
           <Flex justify={{ '@initial': 'start' }} gap="5">
             <NextLink href="/primitives/docs/overview/getting-started" passHref>
-              <MarketingButton as="a" gap="1">
+              <MarketingButton as="a" icon={ArrowRightIcon}>
                 Install Primitives
-                <ArrowRightIcon />
               </MarketingButton>
             </NextLink>
           </Flex>
@@ -102,14 +120,14 @@ export const MainHero = () => {
               <IFrame
                 visible={iFramesReady}
                 tabIndex={-1}
-                src="/primitives/iframe/dialog"
+                // src="/primitives/iframe/dialog"
                 css={{ background: 'linear-gradient(to bottom right, $indigo4, $violet5)' }}
               />
             </IFrameSkeleton>
-            <Text size="4" css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
+            <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
               Dialog
             </Text>
-            <Text size="3" variant="gray" css={{ lineHeight: '23px' }}>
+            <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
               With modal and non-modal modes, fine-grained focus&nbsp;control, accessible to screen
               readers.
             </Text>
@@ -120,14 +138,14 @@ export const MainHero = () => {
               <IFrame
                 visible={iFramesReady}
                 tabIndex={-1}
-                src="/primitives/iframe/dropdown-menu"
+                // src="/primitives/iframe/dropdown-menu"
                 css={{ background: 'linear-gradient(to bottom right,  $crimson4, $blue5)' }}
               />
             </IFrameSkeleton>
-            <Text size="4" css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
+            <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
               Dropdown Menu
             </Text>
-            <Text size="3" variant="gray" css={{ lineHeight: '23px' }}>
+            <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
               With submenus, checkable items, collision handling, full keyboard navigation, and
               typeahead support.
             </Text>
@@ -138,14 +156,14 @@ export const MainHero = () => {
               <IFrame
                 visible={iFramesReady}
                 tabIndex={-1}
-                src="/primitives/iframe/popover"
+                // src="/primitives/iframe/popover"
                 css={{ background: 'linear-gradient(to bottom right, $lime3, $cyan5)' }}
               />
             </IFrameSkeleton>
-            <Text size="4" css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
+            <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
               Popover
             </Text>
-            <Text size="3" variant="gray" css={{ lineHeight: '23px' }}>
+            <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
               With fine-grained focus control, collision handling, origin-aware and collision-aware
               animations.
             </Text>
@@ -156,14 +174,14 @@ export const MainHero = () => {
               <IFrame
                 visible={iFramesReady}
                 tabIndex={-1}
-                src="/primitives/iframe/slider"
+                // src="/primitives/iframe/slider"
                 css={{ background: 'linear-gradient(120deg, $gray3, $sky4)' }}
               />
             </IFrameSkeleton>
-            <Text size="4" css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
+            <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
               Slider
             </Text>
-            <Text size="3" variant="gray" css={{ lineHeight: '23px' }}>
+            <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
               Supports keyboard and touch input, step interval, multiple thumbs for value ranges,
               and RTL direction.
             </Text>
@@ -174,14 +192,14 @@ export const MainHero = () => {
               <IFrame
                 visible={iFramesReady}
                 tabIndex={-1}
-                src="/primitives/iframe/dialog"
+                // src="/primitives/iframe/dialog"
                 css={{ background: 'linear-gradient(to bottom right, $indigo4, $violet5)' }}
               />
             </IFrameSkeleton>
-            <Text size="4" css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
+            <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
               Tooltip
             </Text>
-            <Text size="3" variant="gray" css={{ lineHeight: '23px' }}>
+            <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
               Opens when the trigger is focused or hovered, supports custom timings and positioning,
               handles collisions.
             </Text>
@@ -189,5 +207,65 @@ export const MainHero = () => {
         </Grid>
       </Container>
     </Section>
+  );
+};
+
+const Background = () => {
+  return (
+    <Box
+      css={{
+        position: 'absolute',
+        bc: '$slate1',
+        zIndex: -1,
+        width: '100vw',
+        overflow: 'hidden',
+        minWidth: 1500,
+        left: '50%',
+        transform: 'translateX(-50%)',
+        top: 0,
+        bottom: 0,
+      }}
+    >
+      <Box
+        css={{
+          position: 'absolute',
+          top: -800,
+          left: -300,
+          backgroundImage: 'radial-gradient(circle, white, #FBFCFD00 70%)',
+          width: 2000,
+          height: 2000,
+        }}
+      />
+      <Box
+        css={{
+          position: 'absolute',
+          top: -800,
+          right: -500,
+          backgroundImage: 'radial-gradient(circle, $mint3, #FBFCFD00 70%)',
+          width: 1500,
+          height: 1500,
+        }}
+      />
+      <Box
+        css={{
+          position: 'absolute',
+          top: -200,
+          right: -1000,
+          backgroundImage: 'radial-gradient(circle, $sky2, #FBFCFD00 70%)',
+          width: 1500,
+          height: 1500,
+        }}
+      />
+      <Box
+        css={{
+          position: 'absolute',
+          top: 500,
+          left: 'calc(50% - 1000px)',
+          backgroundImage: 'radial-gradient(circle, $pink3, #FBFCFD00 70%)',
+          width: 1200,
+          height: 1200,
+        }}
+      />
+    </Box>
   );
 };

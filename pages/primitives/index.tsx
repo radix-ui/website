@@ -18,7 +18,6 @@ import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { MainHero } from '@components/marketing/MainHero';
 import { ComponentDetails } from '@components/marketing/ComponentDetails';
 import { CaseStudiesHero } from '@components/marketing/CaseStudiesHero';
-import { MainBackground } from '@components/marketing/MainBackground';
 import { BenefitsHero } from '@components/marketing/BenefitsHero';
 import { AccessibilityHero } from '@components/marketing/AccessibilityHero';
 import { DeveloperExperienceHero } from '@components/marketing/DeveloperExperienceHero';
@@ -26,6 +25,7 @@ import { DeveloperObjectionsHero } from '@components/marketing/DeveloperObjectio
 import { CommunityLinks } from '@components/marketing/CommunityLinks';
 import { ProductsLinks } from '@components/marketing/ProductsLinks';
 
+// TODO check that all paragraphs are P tags
 export default function PrimitivesHome() {
   return (
     <Box css={{ width: '100vw', overflowX: 'hidden' }}>
@@ -35,8 +35,6 @@ export default function PrimitivesHome() {
         // TODO meta image
         image="colors.png"
       />
-
-      <MainBackground />
       <MainHero />
       <CaseStudiesHero />
       <BenefitsHero />

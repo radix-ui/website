@@ -110,7 +110,7 @@ type Components =
 export const ComponentDetails = () => {
   const [component, setComponent] = React.useState<Components>('dropdown');
   return (
-    <Section css={{ backgroundColor: '$slate1' }}>
+    <Section css={{ backgroundImage: 'linear-gradient(to bottom, $slate1, $loContrast)' }}>
       <Container size="3">
         <Flex direction="column" align="center" css={{ textAlign: 'center', mb: '$9' }}>
           <MarketingCaption css={{ mb: '$1' }}>Case in point</MarketingCaption>
