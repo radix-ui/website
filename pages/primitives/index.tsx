@@ -26,17 +26,19 @@ import { CommunityLinks } from '@components/marketing/CommunityLinks';
 import { ProductsLinks } from '@components/marketing/ProductsLinks';
 import { Footer } from '@components/Footer';
 import { Header } from '@components/Header';
+import { Background } from '@components/marketing/Background';
 
 // TODO check that all paragraphs are P tags
 export default function PrimitivesHome() {
   return (
-    <Box css={{ width: '100vw', overflowX: 'hidden' }}>
+    <Box>
       <TitleAndMetaTags
         title="Primitives — Radix UI"
         description="An open-source React component library for building high-quality, accessible design systems and web apps."
         // TODO meta image
         image="colors.png"
       />
+      <Background />
       <Header />
       <MainHero />
       <CaseStudiesHero />
