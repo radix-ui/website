@@ -120,7 +120,7 @@ export const MainHero = () => {
               <IFrame
                 visible={iFramesReady}
                 tabIndex={-1}
-                // src="/primitives/iframe/dialog"
+                src="/primitives/iframe/dialog"
                 css={{ background: 'linear-gradient(to bottom right, $indigo4, $violet5)' }}
               />
             </IFrameSkeleton>
@@ -138,7 +138,7 @@ export const MainHero = () => {
               <IFrame
                 visible={iFramesReady}
                 tabIndex={-1}
-                // src="/primitives/iframe/dropdown-menu"
+                src="/primitives/iframe/dropdown-menu"
                 css={{ background: 'linear-gradient(to bottom right,  $crimson4, $blue5)' }}
               />
             </IFrameSkeleton>
@@ -156,7 +156,7 @@ export const MainHero = () => {
               <IFrame
                 visible={iFramesReady}
                 tabIndex={-1}
-                // src="/primitives/iframe/popover"
+                src="/primitives/iframe/popover"
                 css={{ background: 'linear-gradient(to bottom right, $lime3, $cyan5)' }}
               />
             </IFrameSkeleton>
@@ -174,7 +174,7 @@ export const MainHero = () => {
               <IFrame
                 visible={iFramesReady}
                 tabIndex={-1}
-                // src="/primitives/iframe/slider"
+                src="/primitives/iframe/slider"
                 css={{ background: 'linear-gradient(120deg, $gray3, $sky4)' }}
               />
             </IFrameSkeleton>
@@ -192,7 +192,7 @@ export const MainHero = () => {
               <IFrame
                 visible={iFramesReady}
                 tabIndex={-1}
-                // src="/primitives/iframe/dialog"
+                src="/primitives/iframe/dialog"
                 css={{ background: 'linear-gradient(to bottom right, $indigo4, $violet5)' }}
               />
             </IFrameSkeleton>
