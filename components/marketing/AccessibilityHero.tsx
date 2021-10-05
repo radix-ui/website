@@ -1,5 +1,4 @@
 import React from 'react';
-import NextLink from 'next/link';
 import {
   Box,
   Grid,
@@ -18,6 +17,7 @@ import {
   CheckCircledIcon,
   CheckIcon,
   ChevronDownIcon,
+  CodeIcon,
   EyeClosedIcon,
   InputIcon,
 } from '@radix-ui/react-icons';
@@ -35,18 +35,12 @@ type AnimationKeyframe = {
 
 const animationStates: Array<AnimationKeyframe> = [
   {
+    // Note: first keyframe is skipped on second and later iterations
     key: '',
     typeahead: '',
     dropdown: 'item1',
     animateSpeaker: true,
-    duration: 1000,
-  },
-  {
-    key: '',
-    typeahead: '',
-    dropdown: 'item1',
-    animateSpeaker: true,
-    duration: 1500,
+    duration: 2500,
   },
   {
     key: 'g',
@@ -98,18 +92,81 @@ const animationStates: Array<AnimationKeyframe> = [
     duration: 1500,
   },
   {
+    key: 'g',
+    typeahead: 'g',
+    dropdown: 'item2',
+    animateSpeaker: true,
+    duration: 700,
+  },
+  {
+    key: 'o',
+    typeahead: 'go',
+    dropdown: 'item2',
+    animateSpeaker: false,
+    duration: 180,
+  },
+  {
     key: ' ',
-    typeahead: '',
-    dropdown: 'closed',
+    typeahead: 'go ',
+    dropdown: 'item2',
+    animateSpeaker: false,
+    duration: 300,
+  },
+  {
+    key: 't',
+    typeahead: 'go t',
+    dropdown: 'item2',
+    animateSpeaker: false,
+    duration: 180,
+  },
+  {
+    key: 'o',
+    typeahead: 'go to',
+    dropdown: 'item2',
+    animateSpeaker: false,
+    duration: 180,
+  },
+  {
+    key: ' ',
+    typeahead: 'go to ',
+    dropdown: 'item2',
+    animateSpeaker: false,
+    duration: 300,
+  },
+  {
+    key: 'd',
+    typeahead: 'go to d',
+    dropdown: 'item3',
     animateSpeaker: true,
     duration: 1500,
   },
   {
-    key: ' ',
-    typeahead: '',
+    key: 's',
+    typeahead: 's',
     dropdown: 'item1',
     animateSpeaker: true,
-    duration: 200,
+    duration: 180,
+  },
+  {
+    key: 'h',
+    typeahead: 'sh',
+    dropdown: 'item1',
+    animateSpeaker: false,
+    duration: 180,
+  },
+  {
+    key: 'o',
+    typeahead: 'sho',
+    dropdown: 'item1',
+    animateSpeaker: false,
+    duration: 180,
+  },
+  {
+    key: 'w',
+    typeahead: 'show',
+    dropdown: 'item1',
+    animateSpeaker: false,
+    duration: 2500,
   },
 ];
 
@@ -120,12 +177,8 @@ export const AccessibilityHero = () => {
   const timeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
   const containerRef = React.useRef<HTMLDivElement>(null);
   const intersectingRef = React.useRef(false);
-
   const [keyframe, setKeyframe] = React.useState(0);
   const [isIntersecting, setIsIntersecting] = React.useState(false);
-
-  const showMockScreenReader = iterationRef.current > 0 || keyframe > 3;
-  const showMockKeyboard = iterationRef.current > 0 || keyframe > 0;
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -156,9 +209,9 @@ export const AccessibilityHero = () => {
 
   React.useEffect(() => {
     const updateKeyframe = () => {
-      // Increment keyframe counter, or loop when last keyframe is reached
+      // Increment keyframe counter, or loop from 1st when last keyframe is reached
       keyframeRef.current =
-        keyframeRef.current < animationStates.length - 1 ? keyframeRef.current + 1 : 0;
+        keyframeRef.current < animationStates.length - 1 ? keyframeRef.current + 1 : 1;
 
       // Increment iteration counter when starting keyframe is reached
       if (keyframeRef.current === 0) {
@@ -261,19 +314,14 @@ export const AccessibilityHero = () => {
               height: '100%',
               br: '$3',
               overflow: 'hidden',
-              boxShadow: '0 0 1px $colors$slateA7',
+              bc: '$mauve1',
               '& > *': {
                 gridTemplateRows: 'auto 1fr',
                 p: '$3',
               },
             }}
           >
-            <Grid
-              css={{
-                bc: showMockKeyboard ? '$mauve1' : '$mauve2',
-                transition: 'background-color 300ms',
-              }}
-            >
+            <Grid>
               <Flex
                 align="center"
                 gap="1"
@@ -281,8 +329,6 @@ export const AccessibilityHero = () => {
                   color: '$slate11',
                   mb: '$1',
                   position: 'relative',
-                  opacity: showMockKeyboard ? 1 : 0.6,
-                  transition: 'opacity 300ms',
                 }}
               >
                 <Text variant="gray" size="2">
@@ -290,79 +336,40 @@ export const AccessibilityHero = () => {
                 </Text>
                 <KeyboardIcon />
 
-                <MockTypeaheadOutput
-                  visible={showMockKeyboard}
-                  css={{ position: 'absolute', top: -4, right: 0 }}
-                >
+                <MockTypeaheadOutput css={{ position: 'absolute', top: -4, right: 0 }}>
                   {animationStates[keyframe].typeahead}
                 </MockTypeaheadOutput>
               </Flex>
-              <Flex
-                align="center"
-                justify="center"
-                css={{
-                  opacity: showMockKeyboard ? 1 : 0,
-                  transition: 'opacity 300ms',
-                }}
-              >
+              <Flex align="center" justify="center">
                 {/* Adding React key so that the mock keyboards animates correctly on repeat key presses */}
                 <MockKeyboard key={keyframe} currentKey={animationStates[keyframe].key} />
               </Flex>
             </Grid>
 
-            <Grid
-              css={{
-                bc: '$mauve1',
-                boxShadow: showMockKeyboard ? '-1px 0 $colors$grayA4' : 'none',
-                transition: 'box-shadow 300ms',
-              }}
-            >
+            <Grid css={{ boxShadow: '-1px 0 $colors$grayA4, 1px 0 $colors$grayA4' }}>
               <Flex align="center" gap="1" css={{ color: '$slate11', mb: '$1' }}>
                 <Text variant="gray" size="2">
                   Radix component
                 </Text>
-                <TransformIcon />
+                <CodeIcon />
               </Flex>
               <Flex align="center" justify="center">
                 <MockDropdown state={animationStates[keyframe].dropdown} />
               </Flex>
             </Grid>
 
-            <Grid
-              css={{
-                bc: showMockScreenReader ? '$mauve1' : '$mauve2',
-                boxShadow: showMockScreenReader ? 'inset 1px 0 $colors$grayA4' : 'none',
-                transition: 'background-color 300ms, box-shadow 300ms',
-              }}
-            >
-              <Flex
-                align="center"
-                gap="1"
-                css={{
-                  color: '$slate11',
-                  mb: '$1',
-                  opacity: showMockScreenReader ? 1 : 0.6,
-                  transition: 'opacity 300ms',
-                }}
-              >
+            <Grid>
+              <Flex align="center" gap="1" css={{ color: '$slate11', mb: '$1' }}>
                 <Text variant="gray" size="2">
                   Screen reader
                 </Text>
                 <AccessibilityIcon />
               </Flex>
               <Flex direction="column" justify="between" css={{ pt: '$3' }}>
-                <MockScreenReader
-                  css={{
-                    opacity: showMockScreenReader ? 1 : 0,
-                    transition: 'opacity 300ms',
-                  }}
-                >
+                <MockScreenReader>
                   <ScreenReaderOutput dropdownState={animationStates[keyframe].dropdown} />
                 </MockScreenReader>
-                <SpeakerIcon
-                  faded={showMockScreenReader === false}
-                  animating={showMockScreenReader && animationStates[keyframe].animateSpeaker}
-                />
+                <SpeakerIcon animating={animationStates[keyframe].animateSpeaker} />
               </Flex>
             </Grid>
           </Grid>
@@ -456,6 +463,13 @@ const ScreenReaderOutput = ({ dropdownState }: { dropdownState: MockDropdownStat
       </span>
     );
   }
+  if (dropdownState === 'item3') {
+    return (
+      <span>
+        Go to Definition, <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
+      </span>
+    );
+  }
   if (dropdownState === 'item4') {
     return (
       <span>
@@ -517,7 +531,6 @@ const MockTypeaheadOutput = styled(Text, {
   pb: 2,
   bc: '$indigo4',
   border: '1px solid $colors$indigo6',
-  transition: 'opacity 300ms',
   lineHeight: '18px',
   whiteSpace: 'pre',
   '&:empty': {
@@ -530,14 +543,8 @@ const MockTypeaheadOutput = styled(Text, {
         color: '$indigo12',
       },
     },
-    visible: {
-      false: {
-        opacity: 0,
-      },
-    },
   },
   defaultVariants: {
-    visible: true,
     variant: 'contrast',
     size: '2',
   },
@@ -592,7 +599,7 @@ const keyPressAnimation = keyframes({
 
 const Key = styled(Text, {
   display: 'flex',
-  bc: '$panel',
+  bc: '$mauve1',
   ai: 'center',
   jc: 'center',
   br: 5,
@@ -627,6 +634,7 @@ const MockDropdownButton = styled(Box, {
   mb: '$1',
   px: '$2',
   color: '$hiContrast',
+  bc: '$loContrast',
   fontFamily: '$untitled',
   fontSize: '$2',
   userSelect: 'none',
@@ -639,8 +647,8 @@ const MockDropdownButton = styled(Box, {
         transition: 'none',
       },
       false: {
-        boxShadow: 'inset 0 0 0 1px #FFFFFF00, 0 0 0 3px #FFFFFF00',
-        bc: '$mauve4',
+        boxShadow: 'inset 0 0 0 1px $colors$slate5, 0 0 0 3px #FFFFFF00',
+        bc: '$mauve3',
       },
     },
   },
@@ -837,11 +845,10 @@ const wave3 = keyframes({
 });
 
 type SpeakerIconProps = {
-  faded?: boolean;
   animating?: boolean;
 };
 
-const SpeakerIcon = ({ faded = false, animating = false }: SpeakerIconProps) => {
+const SpeakerIcon = ({ animating = false }: SpeakerIconProps) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const shouldPauseAnimation = React.useRef(animating);
   const [currentlyAnimating, setCurrentlyAnimating] = React.useState(animating);
@@ -857,7 +864,6 @@ const SpeakerIcon = ({ faded = false, animating = false }: SpeakerIconProps) => 
   return (
     <SpeakerIconWrapper
       ref={containerRef}
-      faded={faded}
       animating={currentlyAnimating}
       onAnimationIteration={() => {
         // Check whether we need to pause the animation whenever an iteration is done
@@ -920,11 +926,6 @@ const SpeakerIconWrapper = styled('div', {
   },
 
   variants: {
-    faded: {
-      true: {
-        opacity: 0.4,
-      },
-    },
     animating: {
       false: {
         '&& path': {
