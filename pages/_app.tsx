@@ -57,7 +57,7 @@ function App({ Component, pageProps }: AppProps) {
   const isDesignSystemDocs = router.pathname.includes('/docs/design-system');
   const isColorsDocs = router.pathname.includes('/docs/colors');
   const isIFrame = router.pathname.includes('/iframe');
-  const IsNotADocPage = !isPrimitivesDocs && !isDesignSystemDocs && !isColorsDocs && !isIFrame;
+  const isDocsPage = isPrimitivesDocs || isDesignSystemDocs || isColorsDocs || isIFrame;
 
   if (isIFrame) {
     return (
@@ -82,41 +82,45 @@ function App({ Component, pageProps }: AppProps) {
         value={{ light: 'light-theme', dark: darkTheme.className }}
         defaultTheme="system"
       >
-        <Box
-          css={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            boxShadow: IsNotADocPage ? 'none' : '0 0 0 1px $colors$mauve5',
-            zIndex: 2,
-            backgroundColor: '$loContrast',
+        {!isDocsPage && <Component {...pageProps} />}
+        {isDocsPage && (
+          <>
+            <Box
+              css={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100%',
+                boxShadow: '0 0 0 1px $colors$mauve5',
+                zIndex: 2,
+                backgroundColor: '$loContrast',
 
-            '.dark-theme &': {
-              backgroundColor: '$mauve1',
-            },
-          }}
-        >
-          <Header />
-        </Box>
-        <Box css={{ pt: '$7', position: 'relative', zIndex: 1 }}>
-          {isPrimitivesDocs ? (
-            <PrimitivesPage>
-              <Component {...pageProps} />
-            </PrimitivesPage>
-          ) : isDesignSystemDocs ? (
-            <DesignSystemPage>
-              <Component {...pageProps} />
-            </DesignSystemPage>
-          ) : isColorsDocs ? (
-            <ColorsPage>
-              <Component {...pageProps} />
-            </ColorsPage>
-          ) : (
-            <Component {...pageProps} />
-          )}
-        </Box>
-        {IsNotADocPage && <Footer />}
+                '.dark-theme &': {
+                  backgroundColor: '$mauve1',
+                },
+              }}
+            >
+              <Header />
+            </Box>
+            <Box css={{ pt: '$7', position: 'relative', zIndex: 1 }}>
+              {isPrimitivesDocs && (
+                <PrimitivesPage>
+                  <Component {...pageProps} />
+                </PrimitivesPage>
+              )}
+              {isDesignSystemDocs && (
+                <DesignSystemPage>
+                  <Component {...pageProps} />
+                </DesignSystemPage>
+              )}
+              {isColorsDocs && (
+                <ColorsPage>
+                  <Component {...pageProps} />
+                </ColorsPage>
+              )}
+            </Box>
+          </>
+        )}
       </ThemeProvider>
     </DesignSystemProvider>
   );

@@ -10,12 +10,18 @@ import {
   Grid,
   Card,
   Text,
+  Flex,
+  Separator,
 } from '@modulz/design-system';
 import { RadixLogo } from '../components/RadixLogo';
+import { Footer } from '@components/Footer';
+import { Header } from '@components/Header';
 
 export default function Home() {
   return (
     <Box>
+      <Header />
+
       <Section
         size={{ '@initial': '2', '@bp2': '3' }}
         css={{
@@ -85,6 +91,12 @@ export default function Home() {
           </Grid>
         </Container>
       </Section>
+
+      <Flex css={{ justifyContent: 'center', mb: '$9' }}>
+        <Separator size="2" />
+      </Flex>
+
+      <Footer />
     </Box>
   );
 }

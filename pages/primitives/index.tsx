@@ -24,6 +24,8 @@ import { DeveloperExperienceHero } from '@components/marketing/DeveloperExperien
 import { DeveloperObjectionsHero } from '@components/marketing/DeveloperObjectionsHero';
 import { CommunityLinks } from '@components/marketing/CommunityLinks';
 import { ProductsLinks } from '@components/marketing/ProductsLinks';
+import { Footer } from '@components/Footer';
+import { Header } from '@components/Header';
 
 // TODO check that all paragraphs are P tags
 export default function PrimitivesHome() {
@@ -35,6 +37,7 @@ export default function PrimitivesHome() {
         // TODO meta image
         image="colors.png"
       />
+      <Header />
       <MainHero />
       <CaseStudiesHero />
       <BenefitsHero />
@@ -44,6 +47,7 @@ export default function PrimitivesHome() {
       <DeveloperObjectionsHero />
       <CommunityLinks />
       <ProductsLinks />
+      <Footer />
     </Box>
   );
 }

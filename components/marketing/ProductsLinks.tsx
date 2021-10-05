@@ -19,7 +19,7 @@ import { MarketingCaption } from './MarketingCaption';
 
 export const ProductsLinks = () => {
   return (
-    <Section css={{ boxShadow: 'inset 0 -1px $colors$grayA3' }}>
+    <Section>
       <Container size="3">
         <Box css={{ mb: '$5' }}>
           <MarketingCaption css={{ mb: '$1' }}>More from the Radix team</MarketingCaption>
@@ -28,7 +28,7 @@ export const ProductsLinks = () => {
           </Heading>
         </Box>
 
-        <Grid gap="3" css={{ gridAutoColumns: '220px', gridAutoFlow: 'column' }}>
+        <Grid gap="3" css={{ gridAutoColumns: '220px', gridAutoFlow: 'column', mb: '$8' }}>
           <Card as="a" target="_blank" href="https://stitches.dev" variant="interactive">
             <Box css={{ p: '$3' }}>
               <Box css={{ mb: '$3' }}>
@@ -84,6 +84,8 @@ export const ProductsLinks = () => {
             </Box>
           </Card>
         </Grid>
+
+        <Separator size="2" />
       </Container>
     </Section>
   );
