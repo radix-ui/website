@@ -18,7 +18,7 @@ import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { MarketingCaption } from './MarketingCaption';
 import { MarketingButton } from './MarketingButton';
 
-export const DeveloperObjectionsHero = () => {
+export const AdoptionSection = () => {
   return (
     <Section
       css={{

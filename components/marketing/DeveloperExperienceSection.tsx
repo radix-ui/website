@@ -26,7 +26,7 @@ enum Highlights {
   Consistent = '43, 47',
 }
 
-export const DeveloperExperienceHero = () => {
+export const DeveloperExperienceSection = () => {
   const [activeHighlight, setActiveHighlight] = React.useState<Highlights>(Highlights.Unstyled);
 
   return (

@@ -17,7 +17,7 @@ import {
 import { MixIcon, StitchesLogoIcon } from '@radix-ui/react-icons';
 import { MarketingCaption } from './MarketingCaption';
 
-export const ProductsLinks = () => {
+export const OtherProductsSection = () => {
   return (
     <Section>
       <Container size="3">

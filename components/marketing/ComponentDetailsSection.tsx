@@ -107,7 +107,7 @@ type Components =
   | 'hover card'
   | 'tooltip';
 
-export const ComponentDetails = () => {
+export const ComponentDetailsSection = () => {
   const [component, setComponent] = React.useState<Components>('dropdown');
   return (
     <Section css={{ backgroundImage: 'linear-gradient(to bottom, $slate1, $loContrast)' }}>

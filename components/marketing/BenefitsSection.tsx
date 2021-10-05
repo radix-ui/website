@@ -17,7 +17,7 @@ import {
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { MarketingCaption } from './MarketingCaption';
 
-export const BenefitsHero = () => {
+export const BenefitsSection = () => {
   return (
     <Section
       css={{

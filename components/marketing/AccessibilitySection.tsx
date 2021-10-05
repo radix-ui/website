@@ -171,7 +171,7 @@ const animationStates: Array<AnimationKeyframe> = [
 ];
 
 // TODO think how to label the animation for AT
-export const AccessibilityHero = () => {
+export const AccessibilitySection = () => {
   const keyframeRef = React.useRef(0);
   const iterationRef = React.useRef(0);
   const timeoutRef = React.useRef<ReturnType<typeof setTimeout>>();

@@ -17,7 +17,7 @@ import { MarketingButton } from './MarketingButton';
 import { MarketingCaption } from './MarketingCaption';
 import { Root as AccessibleIcon } from '@radix-ui/react-accessible-icon';
 
-export const CaseStudiesHero = () => {
+export const CaseStudiesSection = () => {
   return (
     <Section css={{ background: '$loContrast' }}>
       <Container size="3">

@@ -1,29 +1,15 @@
 import React from 'react';
-import NextLink from 'next/link';
-import {
-  Section,
-  Container,
-  Heading,
-  Link,
-  Avatar,
-  Flex,
-  Button,
-  Paragraph,
-  Separator,
-  Box,
-  Grid,
-  Text,
-} from '@modulz/design-system';
+import { Box } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { MainHero } from '@components/marketing/MainHero';
-import { ComponentDetails } from '@components/marketing/ComponentDetails';
-import { CaseStudiesHero } from '@components/marketing/CaseStudiesHero';
-import { BenefitsHero } from '@components/marketing/BenefitsHero';
-import { AccessibilityHero } from '@components/marketing/AccessibilityHero';
-import { DeveloperExperienceHero } from '@components/marketing/DeveloperExperienceHero';
-import { DeveloperObjectionsHero } from '@components/marketing/DeveloperObjectionsHero';
-import { CommunityLinks } from '@components/marketing/CommunityLinks';
-import { ProductsLinks } from '@components/marketing/ProductsLinks';
+import { ComponentDetailsSection } from '@components/marketing/ComponentDetailsSection';
+import { CaseStudiesSection } from '@components/marketing/CaseStudiesSection';
+import { BenefitsSection } from '@components/marketing/BenefitsSection';
+import { AccessibilitySection } from '@components/marketing/AccessibilitySection';
+import { DeveloperExperienceSection } from '@components/marketing/DeveloperExperienceSection';
+import { AdoptionSection } from '@components/marketing/AdoptionSection';
+import { CommunitySection } from '@components/marketing/CommunitySection';
+import { OtherProductsSection } from '@components/marketing/OtherProductsSection';
 import { Footer } from '@components/Footer';
 import { Header } from '@components/Header';
 import { Background } from '@components/marketing/Background';
@@ -41,14 +27,14 @@ export default function PrimitivesHome() {
       <Background />
       <Header />
       <MainHero />
-      <CaseStudiesHero />
-      <BenefitsHero />
-      <ComponentDetails />
-      <AccessibilityHero />
-      <DeveloperExperienceHero />
-      <DeveloperObjectionsHero />
-      <CommunityLinks />
-      <ProductsLinks />
+      <CaseStudiesSection />
+      <BenefitsSection />
+      <ComponentDetailsSection />
+      <AccessibilitySection />
+      <DeveloperExperienceSection />
+      <AdoptionSection />
+      <CommunitySection />
+      <OtherProductsSection />
       <Footer />
     </Box>
   );

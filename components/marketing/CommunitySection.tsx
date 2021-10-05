@@ -1,23 +1,17 @@
 import React from 'react';
-import NextLink from 'next/link';
 import {
   Box,
   Grid,
   Text,
-  styled,
   Container,
-  Flex,
   Heading,
-  Paragraph,
   Section,
   Card,
-  Avatar,
   Separator,
 } from '@modulz/design-system';
-import { ArrowRightIcon, CardStackIcon } from '@radix-ui/react-icons';
 import { MarketingCaption } from './MarketingCaption';
 
-export const CommunityLinks = () => {
+export const CommunitySection = () => {
   return (
     <Section css={{ pb: 0 }}>
       <Container size="3">
