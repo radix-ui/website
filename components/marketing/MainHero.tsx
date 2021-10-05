@@ -53,7 +53,7 @@ const IFrame = styled('iframe', {
 // TODO check with screen reader
 // TODO review section spacing
 export const MainHero = () => {
-  // We synchronise when the first few iframes are visible as they load
+  // We synchronise the visibility of the first few iframes as they are loaded
   const [iFramesReady, setIFramesReady] = React.useState(false);
   const iFrameStates = React.useRef({
     dialog: 'loading',
@@ -76,7 +76,7 @@ export const MainHero = () => {
   }, []);
 
   return (
-    <Section>
+    <Section css={{ position: 'relative' }}>
       <Background />
       <Container size="3">
         <Box css={{ mb: '$6' }}>
@@ -215,13 +215,22 @@ const Background = () => {
     <Box
       css={{
         position: 'absolute',
+        top: '-$7',
+        bottom: 0,
+        left: 0,
+        right: 0,
         bc: '$slate1',
         zIndex: -1,
-        width: '100vw',
         overflow: 'hidden',
+      }}
+    >
+      <Box
+        css={{
+          width: '100vw',
         minWidth: 1500,
         left: '50%',
         transform: 'translateX(-50%)',
+          position: 'absolute',
         top: 0,
         bottom: 0,
       }}
@@ -266,6 +275,7 @@ const Background = () => {
           height: 1200,
         }}
       />
+      </Box>
     </Box>
   );
 };
