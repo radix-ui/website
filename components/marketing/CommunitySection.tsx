@@ -24,7 +24,11 @@ export const CommunitySection = () => {
           </Heading>
         </Box>
 
-        <Grid gap="3" css={{ gridAutoColumns: '220px', gridAutoFlow: 'column', mb: '$8' }}>
+        <Grid
+          gap="3"
+          flow={{ '@initial': 'row', '@bp2': 'column' }}
+          css={{ justifyContent: 'start', '@bp2': { gridAutoColumns: '220px' }, mb: '$8' }}
+        >
           <Card as="a" target="_blank" href="https://twitter.com/radix_ui" variant="interactive">
             <Box css={{ p: '$3' }}>
               <Box css={{ mb: '$3' }}>

@@ -1,20 +1,15 @@
 import React from 'react';
-import NextLink from 'next/link';
 import {
   Box,
   Grid,
   Text,
-  styled,
   Container,
   Flex,
   Heading,
   Paragraph,
   Section,
-  Card,
-  Avatar,
   Separator,
 } from '@modulz/design-system';
-import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { MarketingCaption } from './MarketingCaption';
 
 export const BenefitsSection = () => {
@@ -24,18 +19,24 @@ export const BenefitsSection = () => {
         bc: '$cyan2',
         position: 'relative',
         pb: '$7',
+        width: '100vw',
+        overflow: 'hidden',
       }}
     >
       <FancyBackgroundChart />
       <Container size="3" css={{ position: 'relative' }}>
         <Box css={{ mb: '$7' }}>
           <MarketingCaption css={{ mb: '$1' }}>Why Radix Primitives</MarketingCaption>
-          <Heading as="h2" size="3" css={{ mb: '$4' }}>
+          <Heading as="h2" size="3">
             Take the pain out of UI work
           </Heading>
         </Box>
 
-        <Grid columns="2" gap="9" css={{ mb: '$9' }}>
+        <Grid
+          columns={{ '@initial': 1, '@bp1': 2 }}
+          gap={{ '@initial': 4, '@bp1': 7, '@bp2': 9 }}
+          css={{ mb: '$5', '@bp1': { mb: '$7' }, '@bp2': { mb: '$9' } }}
+        >
           <Box>
             <Text
               as="h3"
@@ -68,44 +69,80 @@ export const BenefitsSection = () => {
           </Box>
         </Grid>
 
-        <Grid align="stretch" justify="start" gap="6" css={{ gridAutoFlow: 'column' }}>
+        <Grid
+          align="stretch"
+          justify="start"
+          flow={{ '@initial': 'row', '@bp1': 'column' }}
+          gap={{ '@initial': 4, '@bp1': 5, '@bp2': 6 }}
+          css={{ whiteSpace: 'nowrap' }}
+        >
+          <Separator size="2" decorative css={{ mb: '$3', '@bp1': { display: 'none' } }} />
           <Box>
-            <Heading as="span" size="4" css={{ mb: '$2', textIndent: '-0.08em' }}>
+            <Text
+              css={{
+                fontSize: '$9',
+                '@bp1': { fontSize: '$8' },
+                '@bp2': { fontSize: '$9' },
+                fontWeight: 500,
+                fontVariantNumeric: 'proportional-nums',
+                letterSpacing: '-.031em',
+                mb: '$2',
+                textIndent: '-0.08em',
+              }}
+            >
               450K
-            </Heading>
-            <Text variant="gray" size="4">
+            </Text>
+            <Text variant="gray" size={{ '@initial': 3, '@bp2': 4 }}>
               Monthly downloads
             </Text>
           </Box>
           <Box css={{ backgroundColor: '$slateA6', width: 1 }} />
           <Box>
-            <Heading
-              as="span"
-              size="4"
-              css={{ display: 'flex', alignItems: 'center', mb: '$2', textIndent: '-0.12em' }}
+            <Text
+              css={{
+                fontSize: '$9',
+                '@bp1': { fontSize: '$8' },
+                '@bp2': { fontSize: '$9' },
+                fontWeight: 500,
+                fontVariantNumeric: 'proportional-nums',
+                letterSpacing: '-.031em',
+                display: 'flex',
+                alignItems: 'center',
+                mb: '$2',
+                textIndent: '-0.12em',
+              }}
             >
               1100
               <Box as="span" css={{ fontSize: '75%', ml: '0.25em' }}>
                 +
               </Box>
-            </Heading>
-            <Text variant="gray" size="4">
+            </Text>
+            <Text variant="gray" size={{ '@initial': 3, '@bp2': 4 }}>
               Discord members
             </Text>
           </Box>
           <Box css={{ backgroundColor: '$slateA6', width: 1 }} />
           <Box>
-            <Heading
-              as="span"
-              size="4"
-              css={{ display: 'flex', alignItems: 'center', mb: '$2', textIndent: '-0.12em' }}
+            <Text
+              css={{
+                fontSize: '$9',
+                '@bp1': { fontSize: '$8' },
+                '@bp2': { fontSize: '$9' },
+                fontWeight: 500,
+                fontVariantNumeric: 'proportional-nums',
+                letterSpacing: '-.031em',
+                display: 'flex',
+                alignItems: 'center',
+                mb: '$2',
+                textIndent: '-0.12em',
+              }}
             >
               1300
               <Box as="span" css={{ fontSize: '75%', ml: '0.25em' }}>
                 +
               </Box>
-            </Heading>
-            <Text variant="gray" size="4">
+            </Text>
+            <Text variant="gray" size={{ '@initial': 3, '@bp2': 4 }}>
               GitHub stars
             </Text>
           </Box>

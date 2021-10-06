@@ -31,7 +31,7 @@ export const Background = () => {
             position: 'absolute',
             top: -800,
             left: -300,
-            backgroundImage: 'radial-gradient(circle, white, #FBFCFD00 70%)',
+            backgroundImage: 'radial-gradient(circle, $purple2, #FBFCFD00 70%)',
             width: 2000,
             height: 2000,
           }}
@@ -39,11 +39,11 @@ export const Background = () => {
         <Box
           css={{
             position: 'absolute',
-            top: -800,
-            right: -500,
-            backgroundImage: 'radial-gradient(circle, $mint3, #FBFCFD00 70%)',
-            width: 1500,
-            height: 1500,
+            top: -300,
+            right: -300,
+            backgroundImage: 'radial-gradient(circle, $mint4, #FBFCFD00 70%)',
+            width: 1200,
+            height: 1200,
           }}
         />
         <Box
@@ -59,11 +59,11 @@ export const Background = () => {
         <Box
           css={{
             position: 'absolute',
-            top: 500,
+            top: 600,
             left: 'calc(50% - 1000px)',
             backgroundImage: 'radial-gradient(circle, $pink3, #FBFCFD00 70%)',
-            width: 1200,
-            height: 1200,
+            width: 800,
+            height: 800,
           }}
         />
       </Box>

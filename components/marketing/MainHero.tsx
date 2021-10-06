@@ -81,16 +81,22 @@ export const MainHero = () => {
         <Box css={{ mb: '$6' }}>
           <Text
             as="h1"
+            size={{ '@initial': 8, '@bp1': 9 }}
             css={{
-              fontSize: '80px',
               fontWeight: 500,
-              lineHeight: '0.85 !important',
-              letterSpacing: '-0.07em',
-              mb: '$5',
               WebkitBackgroundClip: 'text',
               color: 'transparent',
               backgroundImage: 'radial-gradient(circle, $hiContrast, $colors$indigo12)',
               pb: '0.1em', // Otherwise some descenders may be clipped with WebkitBackgroundClip: 'text'
+
+              mb: '$3',
+
+              '@bp2': {
+                fontSize: '80px',
+                lineHeight: '0.85',
+                letterSpacing: '-0.07em',
+                mb: '$5',
+              },
             }}
           >
             Don’t waste

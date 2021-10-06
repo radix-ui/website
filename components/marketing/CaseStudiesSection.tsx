@@ -133,21 +133,28 @@ export const CaseStudiesSection = () => {
               </LogoLink>
             </NextLink>
           </Flex>
-          <NextLink href="/" passHref>
-            <LogoLink css={{ mb: -8 }}>
-              <AccessibleIcon label="Supabase Logo">
-                <LogoSvg variant="Supabase" width="140" />
-              </AccessibleIcon>
-            </LogoLink>
-          </NextLink>
           <Flex align="center" justify="center" wrap="wrap" gap="7">
-            <NextLink href="/" passHref>
-              <LogoLink css={{ mb: -12 }}>
-                <AccessibleIcon label="Magnetis Logo">
-                  <LogoSvg variant="Magnetis" width="111" />
-                </AccessibleIcon>
-              </LogoLink>
-            </NextLink>
+            <Flex
+              align="center"
+              justify="center"
+              wrap={{ '@initial': 'noWrap', '@bp1': 'wrap' }}
+              gap="7"
+            >
+              <NextLink href="/" passHref>
+                <LogoLink css={{ mb: -8 }}>
+                  <AccessibleIcon label="Supabase Logo">
+                    <LogoSvg variant="Supabase" width="140" />
+                  </AccessibleIcon>
+                </LogoLink>
+              </NextLink>
+              <NextLink href="/" passHref>
+                <LogoLink css={{ mb: -12 }}>
+                  <AccessibleIcon label="Magnetis Logo">
+                    <LogoSvg variant="Magnetis" width="111" />
+                  </AccessibleIcon>
+                </LogoLink>
+              </NextLink>
+            </Flex>
             <NextLink href="/" passHref>
               <LogoLink css={{ mb: -7 }}>
                 <AccessibleIcon label="University of Amsterdam Logo">

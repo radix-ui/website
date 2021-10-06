@@ -300,28 +300,41 @@ export const AccessibilitySection = () => {
           css={{
             br: '$4',
             bc: '$slateA3',
-            height: 320,
             p: '$5',
             mb: '$5',
             boxShadow: '0 0 1px $colors$slateA9',
             backdropFilter: 'blur(8px)',
+            p: '$3',
+            '@bp1': {
+              p: '$5',
+            },
           }}
         >
           <Grid
-            columns="3"
+            columns={{ '@bp1': 2, '@bp2': 3 }}
             css={{
               width: '100%',
               height: '100%',
               br: '$3',
               overflow: 'hidden',
               bc: '$mauve1',
+              gridTemplateRows: '270px auto',
+              '@bp1': {
+                gridTemplateRows: '270px',
+              },
               '& > *': {
                 gridTemplateRows: 'auto 1fr',
                 p: '$3',
               },
             }}
           >
-            <Grid>
+            <Grid
+              css={{
+                display: 'none',
+                '@bp2': { display: 'grid' },
+                boxShadow: '1px 0 $colors$grayA4',
+              }}
+            >
               <Flex
                 align="center"
                 gap="1"
@@ -346,7 +359,7 @@ export const AccessibilitySection = () => {
               </Flex>
             </Grid>
 
-            <Grid css={{ boxShadow: '-1px 0 $colors$grayA4, 1px 0 $colors$grayA4' }}>
+            <Grid>
               <Flex align="center" gap="1" css={{ color: '$slate11', mb: '$1' }}>
                 <Text variant="gray" size="2">
                   Radix component
@@ -358,14 +371,19 @@ export const AccessibilitySection = () => {
               </Flex>
             </Grid>
 
-            <Grid>
+            <Grid
+              css={{
+                boxShadow: '0 -1px $colors$grayA4',
+                '@bp1': { boxShadow: '-1px 0 $colors$grayA4' },
+              }}
+            >
               <Flex align="center" gap="1" css={{ color: '$slate11', mb: '$1' }}>
                 <Text variant="gray" size="2">
                   Screen reader
                 </Text>
                 <AccessibilityIcon />
               </Flex>
-              <Flex direction="column" justify="between" css={{ pt: '$3' }}>
+              <Flex direction="column" justify="between" css={{ pt: '$3', minHeight: 180 }}>
                 <MockScreenReader>
                   <ScreenReaderOutput dropdownState={animationStates[keyframe].dropdown} />
                 </MockScreenReader>
@@ -375,7 +393,7 @@ export const AccessibilitySection = () => {
           </Grid>
         </Box>
 
-        <Grid columns="4" gap="3">
+        <Grid columns={{ '@initial': 1, '@bp1': 2, '@bp2': 4 }} gap="3">
           <GlassCard>
             <Box css={{ p: '$3' }}>
               <Box css={{ mb: '$3' }}>
@@ -597,30 +615,37 @@ const keyPressAnimation = keyframes({
   },
 });
 
-const Key = styled(Text, {
+const Key = styled('span', {
   display: 'flex',
   bc: '$mauve1',
   ai: 'center',
   jc: 'center',
-  br: 5,
-  width: 26,
-  height: 34,
-  lineHeight: '34px',
+  fontFamily: '$untitled',
+  color: '$slate11',
   boxShadow: '0 0 0 1px $colors$slate7, 0 2px $colors$slate7',
   userSelect: 'none',
+
+  width: 22,
+  height: 32,
+  br: '$1',
+  lineHeight: '30px',
+  fontSize: '$3',
+
+  '@bp3': {
+    width: 26,
+    height: 34,
+    br: '$2',
+    lineHeight: '34px',
+    fontSize: '$3',
+  },
+
   variants: {
-    size: {}, // Including as a workaround for TS bugs with defaultVariants
-    variant: {}, // Including as a workaround for TS bugs with defaultVariants
     pressed: {
       true: {
         animation: `${keyPressAnimation} 120ms`,
         animationTimingFunction: 'steps(1, end)',
       },
     },
-  },
-  defaultVariants: {
-    size: '3',
-    variant: 'gray',
   },
 });
 

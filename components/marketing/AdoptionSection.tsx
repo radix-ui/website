@@ -1,19 +1,6 @@
 import React from 'react';
 import NextLink from 'next/link';
-import {
-  Box,
-  Grid,
-  Text,
-  styled,
-  Container,
-  Flex,
-  Heading,
-  Paragraph,
-  Section,
-  Card,
-  Avatar,
-  Separator,
-} from '@modulz/design-system';
+import { Box, Grid, Text, Container, Heading, Paragraph, Section } from '@modulz/design-system';
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { MarketingCaption } from './MarketingCaption';
 import { MarketingButton } from './MarketingButton';
@@ -39,7 +26,7 @@ export const AdoptionSection = () => {
           </NextLink>
         </Box>
 
-        <Grid columns="2" gap="9">
+        <Grid columns={{ '@initial': 1, '@bp1': 2 }} gap={{ '@initial': 4, '@bp1': 7, '@bp2': 9 }}>
           <Box>
             <Text
               as="h3"
