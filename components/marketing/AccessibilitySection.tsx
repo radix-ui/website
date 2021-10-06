@@ -251,7 +251,7 @@ export const AccessibilitySection = () => {
           css={{
             br: '$4',
             bc: '$slateA3',
-            p: '$5',
+            // p: '$5',
             mb: '$5',
             boxShadow: '0 0 1px $colors$slateA9',
             backdropFilter: 'blur(8px)',
