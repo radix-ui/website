@@ -72,77 +72,87 @@ export const CaseStudiesSection = () => {
           </Card>
         </Grid>
 
-        <Text variant="gray" css={{ mb: '$5', '@media (min-width: 1145px)': { mb: '$3' } }}>
+        <Text variant="gray" css={{ mb: '$3' }}>
           <Link href="#" variant="subtle" css={{ display: 'inline-flex', alignItems: 'center' }}>
             And dozens more companies
             <ArrowRightIcon />
           </Link>
         </Text>
+      </Container>
 
-        <Flex align="center" justify="start" wrap="wrap" gap="7">
-          <Flex align="center" justify="start" wrap="wrap" gap="7">
-            <NextLink href="/" passHref>
-              <LogoLink css={{ mb: -8 }}>
-                <AccessibleIcon label="GraphCMS Logo">
-                  <LogoSvg variant="GraphCMS" width="129" />
-                </AccessibleIcon>
-              </LogoLink>
-            </NextLink>
-            <NextLink href="/" passHref>
-              <LogoLink css={{ mb: -6 }}>
-                <AccessibleIcon label="Livepeer Logo">
-                  <LogoSvg variant="Livepeer" width="86" />
-                </AccessibleIcon>
-              </LogoLink>
-            </NextLink>
-          </Flex>
-          <Flex align="center" justify="start" wrap="wrap" gap="7">
-            <NextLink href="/" passHref>
-              <LogoLink css={{ mb: 4 }}>
-                <AccessibleIcon label="Atom Learning Logo">
-                  <LogoSvg variant="Atom Learning" width="86" />
-                </AccessibleIcon>
-              </LogoLink>
-            </NextLink>
-            <NextLink href="/" passHref>
-              <LogoLink css={{ mb: -2 }}>
-                <AccessibleIcon label="Placemark Logo">
-                  <LogoSvg variant="Placemark" width="121" />
-                </AccessibleIcon>
-              </LogoLink>
-            </NextLink>
-          </Flex>
-          <Flex align="center" justify="start" wrap="wrap" gap="7">
-            <Flex
-              align="center"
-              justify="start"
-              wrap={{ '@initial': 'noWrap', '@bp1': 'wrap' }}
-              gap="7"
-            >
-              <NextLink href="/" passHref>
-                <LogoLink css={{ mb: -8 }}>
-                  <AccessibleIcon label="Supabase Logo">
-                    <LogoSvg variant="Supabase" width="140" />
-                  </AccessibleIcon>
-                </LogoLink>
-              </NextLink>
-              <NextLink href="/" passHref>
-                <LogoLink css={{ mb: -12 }}>
-                  <AccessibleIcon label="Magnetis Logo">
-                    <LogoSvg variant="Magnetis" width="111" />
-                  </AccessibleIcon>
-                </LogoLink>
-              </NextLink>
-            </Flex>
-            <NextLink href="/" passHref>
-              <LogoLink css={{ mb: -7 }}>
-                <AccessibleIcon label="University of Amsterdam Logo">
-                  <LogoSvg variant="University of Amsterdam" width="152" />
-                </AccessibleIcon>
-              </LogoLink>
-            </NextLink>
-          </Flex>
-        </Flex>
+      <Container
+        size="3"
+        css={{
+          width: '100vw',
+          overflowX: 'scroll',
+          overflowY: 'hidden',
+          WebkitOverflowScrolling: 'touch',
+          MsOverflowStyle: 'none',
+          scrollbarWidth: 'none',
+          '&::-webkit-scrollbar': {
+            display: 'none',
+          },
+        }}
+      >
+        <Grid flow="column" align="center" justify="start" gap="6">
+          <NextLink href="/" passHref>
+            <LogoLink css={{ mb: -8 }}>
+              <AccessibleIcon label="GraphCMS Logo">
+                <LogoSvg variant="GraphCMS" width="129" />
+              </AccessibleIcon>
+            </LogoLink>
+          </NextLink>
+
+          <NextLink href="/" passHref>
+            <LogoLink css={{ mb: -6 }}>
+              <AccessibleIcon label="Livepeer Logo">
+                <LogoSvg variant="Livepeer" width="86" />
+              </AccessibleIcon>
+            </LogoLink>
+          </NextLink>
+
+          <NextLink href="/" passHref>
+            <LogoLink css={{ mb: 4 }}>
+              <AccessibleIcon label="Atom Learning Logo">
+                <LogoSvg variant="Atom Learning" width="86" />
+              </AccessibleIcon>
+            </LogoLink>
+          </NextLink>
+          <NextLink href="/" passHref>
+            <LogoLink css={{ mb: -2 }}>
+              <AccessibleIcon label="Placemark Logo">
+                <LogoSvg variant="Placemark" width="121" />
+              </AccessibleIcon>
+            </LogoLink>
+          </NextLink>
+
+          <NextLink href="/" passHref>
+            <LogoLink css={{ mb: -8 }}>
+              <AccessibleIcon label="Supabase Logo">
+                <LogoSvg variant="Supabase" width="140" />
+              </AccessibleIcon>
+            </LogoLink>
+          </NextLink>
+
+          <NextLink href="/" passHref>
+            <LogoLink css={{ mb: -12 }}>
+              <AccessibleIcon label="Magnetis Logo">
+                <LogoSvg variant="Magnetis" width="111" />
+              </AccessibleIcon>
+            </LogoLink>
+          </NextLink>
+
+          <NextLink href="/" passHref>
+            <LogoLink css={{ mt: 7 }}>
+              <AccessibleIcon label="University of Amsterdam Logo">
+                <LogoSvg variant="University of Amsterdam" width="152" />
+              </AccessibleIcon>
+            </LogoLink>
+          </NextLink>
+
+          {/* Horizontal scroll spacer */}
+          <Box css={{ width: 1, height: 1 }} />
+        </Grid>
       </Container>
     </Section>
   );
