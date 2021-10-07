@@ -11,6 +11,7 @@ import {
   Section,
   Card,
   Avatar,
+  Link,
 } from '@modulz/design-system';
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { MarketingButton } from './MarketingButton';
@@ -21,41 +22,12 @@ export const CaseStudiesSection = () => {
   return (
     <Section css={{ background: '$loContrast' }}>
       <Container size="3">
-        <Box css={{ mb: '$6' }}>
-          <MarketingCaption css={{ mb: '$1' }}>Case studies</MarketingCaption>
-          <Heading as="h2" size="3" css={{ mb: '$4', maxWidth: 500 }}>
-            See how world-class teams use Radix to power their products
-          </Heading>
-          <NextLink href="/primitives/case-studies" passHref>
-            <MarketingButton variant="gray" as="a" icon={ArrowRightIcon}>
-              Read case studies
-            </MarketingButton>
-          </NextLink>
-        </Box>
-
-        {/* TODO clear this up */}
-        {/* <Box css={{ mb: '$7' }}>
-          <MarketingCaption css={{ mb: '$1' }}>Case studies</MarketingCaption>
-          <Heading as="h2" size="3" css={{ mb: '$4', maxWidth: 500 }}>
-            See how world-class teams use Radix to power their products
-          </Heading>
-          <Text as="p" size="4" css={{ lineHeight: 1.5, maxWidth: 420, mb: '$5' }}>
-            Learn how teams behind everyone’s favorite products ship faster, boost quality and
-            accessibility.
-          </Text>
-          <NextLink href="/primitives/case-studies" passHref>
-            <MarketingButton variant="gray" as="a" icon={ArrowRightIcon}>
-              Read case studies
-            </MarketingButton>
-          </NextLink>
-        </Box> */}
-
-        {/* <Box css={{ mb: '$5' }}>
+        <Box css={{ mb: '$5' }}>
           <MarketingCaption css={{ mb: '$1' }}>Case studies</MarketingCaption>
           <Heading as="h2" size="3" css={{ maxWidth: 500 }}>
-            See how world-class teams use Radix to power their products
+            World-class teams use Radix to power their products
           </Heading>
-        </Box> */}
+        </Box>
 
         <Grid columns={{ '@bp2': 2 }} gap="5" css={{ mb: '$6' }}>
           <Card variant="interactive" as="a" href="#">
@@ -100,8 +72,15 @@ export const CaseStudiesSection = () => {
           </Card>
         </Grid>
 
-        <Flex align="center" justify="center" wrap="wrap" gap="7">
-          <Flex align="center" justify="center" wrap="wrap" gap="7">
+        <Text variant="gray" css={{ mb: '$5', '@media (min-width: 1145px)': { mb: '$3' } }}>
+          <Link href="#" variant="subtle" css={{ display: 'inline-flex', alignItems: 'center' }}>
+            And dozens more companies
+            <ArrowRightIcon />
+          </Link>
+        </Text>
+
+        <Flex align="center" justify="start" wrap="wrap" gap="7">
+          <Flex align="center" justify="start" wrap="wrap" gap="7">
             <NextLink href="/" passHref>
               <LogoLink css={{ mb: -8 }}>
                 <AccessibleIcon label="GraphCMS Logo">
@@ -117,7 +96,7 @@ export const CaseStudiesSection = () => {
               </LogoLink>
             </NextLink>
           </Flex>
-          <Flex align="center" justify="center" wrap="wrap" gap="7">
+          <Flex align="center" justify="start" wrap="wrap" gap="7">
             <NextLink href="/" passHref>
               <LogoLink css={{ mb: 4 }}>
                 <AccessibleIcon label="Atom Learning Logo">
@@ -133,10 +112,10 @@ export const CaseStudiesSection = () => {
               </LogoLink>
             </NextLink>
           </Flex>
-          <Flex align="center" justify="center" wrap="wrap" gap="7">
+          <Flex align="center" justify="start" wrap="wrap" gap="7">
             <Flex
               align="center"
-              justify="center"
+              justify="start"
               wrap={{ '@initial': 'noWrap', '@bp1': 'wrap' }}
               gap="7"
             >
@@ -171,8 +150,7 @@ export const CaseStudiesSection = () => {
 
 const LogoLink = styled('a', {
   display: 'block',
-  // color: '$slate8',
-  color: '$hiContrast',
+  color: '$slate9',
   transition: '120ms color',
   '&:hover': {
     color: '$hiContrast',
