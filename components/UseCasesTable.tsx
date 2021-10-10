@@ -64,7 +64,7 @@ export function UseCasesTable() {
             <Text size="2">4</Text>
           </Td>
           <Td css={{ px: '$4' }}>
-            <Text size="2">Hovered UI element background.</Text>
+            <Text size="2">Hovered UI element background</Text>
           </Td>
         </Tr>
         <Tr>
@@ -72,7 +72,7 @@ export function UseCasesTable() {
             <Text size="2">5</Text>
           </Td>
           <Td css={{ px: '$4' }}>
-            <Text size="2">Active / Selected UI element background.</Text>
+            <Text size="2">Active / Selected UI element background</Text>
           </Td>
         </Tr>
         <Tr>
@@ -80,7 +80,7 @@ export function UseCasesTable() {
             <Text size="2">6</Text>
           </Td>
           <Td css={{ px: '$4' }}>
-            <Text size="2">Subtle borders and separators.</Text>
+            <Text size="2">Subtle borders and separators</Text>
           </Td>
         </Tr>
         <Tr>
@@ -104,7 +104,7 @@ export function UseCasesTable() {
             <Text size="2">9</Text>
           </Td>
           <Td css={{ px: '$4' }}>
-            <Text size="2">Solid backgrounds.</Text>
+            <Text size="2">Solid backgrounds</Text>
           </Td>
         </Tr>
         <Tr>
@@ -112,7 +112,7 @@ export function UseCasesTable() {
             <Text size="2">10</Text>
           </Td>
           <Td css={{ px: '$4' }}>
-            <Text size="2">Hovered solid backgrounds.</Text>
+            <Text size="2">Hovered solid backgrounds</Text>
           </Td>
         </Tr>
         <Tr>
@@ -120,7 +120,7 @@ export function UseCasesTable() {
             <Text size="2">11</Text>
           </Td>
           <Td css={{ px: '$4' }}>
-            <Text size="2">Low-contrast text.</Text>
+            <Text size="2">Low-contrast text</Text>
           </Td>
         </Tr>
         <Tr>
@@ -128,7 +128,7 @@ export function UseCasesTable() {
             <Text size="2">12</Text>
           </Td>
           <Td css={{ px: '$4' }}>
-            <Text size="2">High-contrast text.</Text>
+            <Text size="2">High-contrast text</Text>
           </Td>
         </Tr>
       </Tbody>
