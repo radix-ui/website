@@ -83,18 +83,19 @@ export const MainHero = () => {
             as="h1"
             size={{ '@initial': 8, '@bp1': 9 }}
             css={{
-              fontWeight: 500,
-              WebkitBackgroundClip: 'text',
               color: 'transparent',
+              WebkitBackgroundClip: 'text',
               backgroundImage: 'radial-gradient(circle, $hiContrast, $colors$indigo12)',
               pb: '0.1em', // Otherwise some descenders may be clipped with WebkitBackgroundClip: 'text'
-
               mb: '$3',
+
+              fontWeight: 500,
+              fontSize: 'min(max($8, 11.5vw), $9)',
+              letterSpacing: 'max(min(-0.055em, -0.66vw), -0.07em)',
 
               '@bp2': {
                 fontSize: '80px',
                 lineHeight: '0.85',
-                letterSpacing: '-0.07em',
                 mb: '$5',
               },
             }}
