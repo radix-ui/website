@@ -83,7 +83,7 @@ export const CaseStudiesSection = () => {
       <Container
         size="3"
         css={{
-          width: '100vw',
+          position: 'relative',
           overflowX: 'scroll',
           overflowY: 'hidden',
           WebkitOverflowScrolling: 'touch',

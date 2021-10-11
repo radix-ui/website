@@ -76,7 +76,7 @@ export const MainHero = () => {
   }, []);
 
   return (
-    <Section css={{ width: '100vw', overflow: 'hidden' }}>
+    <Section css={{ overflow: 'hidden' }}>
       <Container size="3">
         <Box css={{ mb: '$6' }}>
           <Text

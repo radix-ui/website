@@ -110,18 +110,30 @@ type Components =
 export const ComponentDetailsSection = () => {
   const [component, setComponent] = React.useState<Components>('dropdown');
   return (
-    <Section css={{ backgroundImage: 'linear-gradient(to bottom, $slate1, $loContrast)' }}>
+    <Section
+      css={{
+        backgroundImage: 'linear-gradient(to bottom, $slate1, $loContrast)',
+        overflow: 'hidden',
+      }}
+    >
       <Container size="3">
-        <Flex direction="column" align="center" css={{ textAlign: 'center', mb: '$9' }}>
+        <Flex
+          direction="column"
+          align="center"
+          css={{ textAlign: 'center', position: 'relative', zIndex: 1, mb: '$6' }}
+        >
           <MarketingCaption css={{ mb: '$1' }}>Case in point</MarketingCaption>
           <DropdownMenuPrimitive.Root>
             <Heading as="h2" size="3" css={{ mb: '$3' }}>
-              So you think you can build a{' '}
-              <InlineDropdownTrigger>
-                {component}
-                <ThickCaretDown style={{ marginTop: 2, marginLeft: 5, marginRight: -1 }} />
-              </InlineDropdownTrigger>
-              ?
+              So you think you can{' '}
+              <span style={{ whiteSpace: 'nowrap' }}>
+                build a{' '}
+                <InlineDropdownTrigger>
+                  {component}
+                  <ThickCaretDown style={{ marginTop: 2, marginLeft: 5, marginRight: -1 }} />
+                </InlineDropdownTrigger>
+                ?
+              </span>
             </Heading>
             <InlineDropdownContent sideOffset={5}>
               <InlineDropdownArrow />
@@ -189,61 +201,71 @@ export const ComponentDetailsSection = () => {
           </Box>
         </Flex>
 
-        <Box css={{ height: 850, position: 'relative', mb: '$9' }}>
+        <Box css={{ position: 'relative', mb: '$9' }}>
           {/* Use guides to position things sanely */}
           {/* <Guides7 /> */}
           {/* <Guides8 /> */}
 
-          <Box>
-            <Circle
-              size={250}
-              angle={-45}
-              color1="var(--colors-slateA4)"
-              color2="var(--colors-indigoA6)"
-            />
-            <Circle
-              size={400}
-              angle={20}
-              color1="var(--colors-slateA3)"
-              color2="var(--colors-indigoA5)"
-            />
-            <Circle
-              size={550}
-              angle={35}
-              color1="var(--colors-slateA2)"
-              color2="var(--colors-indigoA4)"
-            />
-            <Circle
-              size={700}
-              angle={-50}
-              color1="var(--colors-slateA2)"
-              color2="var(--colors-indigoA3)"
-            />
-            <Circle
-              size={850}
-              angle={-70}
-              color1="var(--colors-slateA1)"
-              color2="var(--colors-indigoA2)"
-            />
+          <Box css={{ position: 'relative', mb: '$4' }}>
+            <Box
+              css={{
+                position: 'absolute',
+                height: '100%',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+              }}
+            >
+              <Circle
+                size={250}
+                angle={-45}
+                color1="var(--colors-slateA4)"
+                color2="var(--colors-indigoA6)"
+              />
+              <Circle
+                size={400}
+                angle={20}
+                color1="var(--colors-slateA3)"
+                color2="var(--colors-indigoA5)"
+              />
+              <Circle
+                size={550}
+                angle={35}
+                color1="var(--colors-slateA2)"
+                color2="var(--colors-indigoA4)"
+              />
+              <Circle
+                size={700}
+                angle={-50}
+                color1="var(--colors-slateA2)"
+                color2="var(--colors-indigoA3)"
+              />
+              <Circle
+                size={850}
+                angle={-70}
+                color1="var(--colors-slateA1)"
+                color2="var(--colors-indigoA2)"
+              />
+            </Box>
+            <Flex
+              align="center"
+              justify="center"
+              css={{ position: 'relative', '@bp3': { height: 850, mt: '$9' } }}
+            >
+              <img
+                src="/marketing/dropdown-menu.svg"
+                alt="A dropdown menu example with a checked item and a submenu"
+              />
+            </Flex>
           </Box>
 
           {component === 'dropdown' && (
-            <Box>
-              <Box
-                css={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                }}
-              >
-                <img
-                  src="/marketing/dropdown-menu.svg"
-                  alt="A dropdown menu example with a checked item and a submenu"
-                />
-              </Box>
-
-              <Box css={{ position: 'absolute', top: '-1%', left: '29%' }}>
+            <Grid
+              gap="7"
+              justify="center"
+              css={{ '@bp2': { gridTemplateColumns: 'auto auto', ml: '$5' } }}
+            >
+              <Box css={{ '@bp3': { position: 'absolute', top: '-1%', left: '27%' } }}>
                 <Flex gap="2" align="center" css={{ mb: '$1' }}>
                   <FancyCheckMark />
                   <Text
@@ -260,7 +282,7 @@ export const ComponentDetailsSection = () => {
                 </Text>
               </Box>
 
-              <Box css={{ position: 'absolute', top: '14%', left: '62%' }}>
+              <Box css={{ '@bp3': { position: 'absolute', top: '14%', left: '60%' } }}>
                 <Flex gap="2" align="center" css={{ mb: '$1' }}>
                   <FancyCheckMark />
                   <Text
@@ -276,7 +298,7 @@ export const ComponentDetailsSection = () => {
                 </Text>
               </Box>
 
-              <Box css={{ position: 'absolute', top: '40%', left: '76%' }}>
+              <Box css={{ '@bp3': { position: 'absolute', top: '40%', left: '74%' } }}>
                 <Flex gap="2" align="center" css={{ mb: '$1' }}>
                   <FancyCheckMark />
                   <Text
@@ -292,7 +314,7 @@ export const ComponentDetailsSection = () => {
                 </Text>
               </Box>
 
-              <Box css={{ position: 'absolute', top: '67%', left: '69%' }}>
+              <Box css={{ '@bp3': { position: 'absolute', top: '67%', left: '69%' } }}>
                 <Flex gap="2" align="center" css={{ mb: '$1' }}>
                   <FancyCheckMark />
                   <Text
@@ -309,7 +331,7 @@ export const ComponentDetailsSection = () => {
                 </Text>
               </Box>
 
-              <Box css={{ position: 'absolute', top: '94%', left: '41%' }}>
+              <Box css={{ '@bp3': { position: 'absolute', top: '94%', left: '39%' } }}>
                 <Flex gap="2" align="center" css={{ mb: '$1' }}>
                   <FancyCheckMark />
                   <Text
@@ -326,7 +348,7 @@ export const ComponentDetailsSection = () => {
                 </Text>
               </Box>
 
-              <Box css={{ position: 'absolute', top: '76%', left: '10%' }}>
+              <Box css={{ '@bp3': { position: 'absolute', top: '76%', left: '8%' } }}>
                 <Flex gap="2" align="center" css={{ mb: '$1' }}>
                   <FancyCheckMark />
                   <Text
@@ -343,7 +365,7 @@ export const ComponentDetailsSection = () => {
                 </Text>
               </Box>
 
-              <Box css={{ position: 'absolute', top: '49%', left: '1%' }}>
+              <Box css={{ '@bp3': { position: 'absolute', top: '49%', left: '-1%' } }}>
                 <Flex gap="2" align="center" css={{ mb: '$1' }}>
                   <FancyCheckMark />
                   <Text
@@ -360,7 +382,7 @@ export const ComponentDetailsSection = () => {
                 </Text>
               </Box>
 
-              <Box css={{ position: 'absolute', top: '19%', left: '6%' }}>
+              <Box css={{ '@bp3': { position: 'absolute', top: '19%', left: '4%' } }}>
                 <Flex gap="2" align="center" css={{ mb: '$1' }}>
                   <FancyCheckMark />
                   <Text
@@ -376,12 +398,16 @@ export const ComponentDetailsSection = () => {
                   controls.
                 </Text>
               </Box>
-            </Box>
+            </Grid>
           )}
 
           {component === 'dialog' && (
-            <Box>
-              <Box css={{ position: 'absolute', top: '-1%', left: '29%' }}>
+            <Grid
+              gap="7"
+              justify="center"
+              css={{ '@bp2': { gridTemplateColumns: 'auto auto', ml: '$5' } }}
+            >
+              <Box css={{ '@bp3': { position: 'absolute', top: '-1%', left: '29%' } }}>
                 <Flex gap="2" align="center" css={{ mb: '$1' }}>
                   <FancyCheckMark />
                   <Text
@@ -398,7 +424,7 @@ export const ComponentDetailsSection = () => {
                 </Text>
               </Box>
 
-              <Box css={{ position: 'absolute', top: '14%', left: '62%' }}>
+              <Box css={{ '@bp3': { position: 'absolute', top: '14%', left: '62%' } }}>
                 <Flex gap="2" align="center" css={{ mb: '$1' }}>
                   <FancyCheckMark />
                   <Text
@@ -414,7 +440,7 @@ export const ComponentDetailsSection = () => {
                 </Text>
               </Box>
 
-              <Box css={{ position: 'absolute', top: '40%', left: '76%' }}>
+              <Box css={{ '@bp3': { position: 'absolute', top: '40%', left: '76%' } }}>
                 <Flex gap="2" align="center" css={{ mb: '$1' }}>
                   <FancyCheckMark />
                   <Text
@@ -430,7 +456,7 @@ export const ComponentDetailsSection = () => {
                 </Text>
               </Box>
 
-              <Box css={{ position: 'absolute', top: '67%', left: '69%' }}>
+              <Box css={{ '@bp3': { position: 'absolute', top: '67%', left: '69%' } }}>
                 <Flex gap="2" align="center" css={{ mb: '$1' }}>
                   <FancyCheckMark />
                   <Text
@@ -447,7 +473,7 @@ export const ComponentDetailsSection = () => {
                 </Text>
               </Box>
 
-              <Box css={{ position: 'absolute', top: '94%', left: '41%' }}>
+              <Box css={{ '@bp3': { position: 'absolute', top: '94%', left: '41%' } }}>
                 <Flex gap="2" align="center" css={{ mb: '$1' }}>
                   <FancyCheckMark />
                   <Text
@@ -464,7 +490,7 @@ export const ComponentDetailsSection = () => {
                 </Text>
               </Box>
 
-              <Box css={{ position: 'absolute', top: '76%', left: '10%' }}>
+              <Box css={{ '@bp3': { position: 'absolute', top: '76%', left: '10%' } }}>
                 <Flex gap="2" align="center" css={{ mb: '$1' }}>
                   <FancyCheckMark />
                   <Text
@@ -481,7 +507,7 @@ export const ComponentDetailsSection = () => {
                 </Text>
               </Box>
 
-              <Box css={{ position: 'absolute', top: '49%', left: '1%' }}>
+              <Box css={{ '@bp3': { position: 'absolute', top: '49%', left: '1%' } }}>
                 <Flex gap="2" align="center" css={{ mb: '$1' }}>
                   <FancyCheckMark />
                   <Text
@@ -496,7 +522,7 @@ export const ComponentDetailsSection = () => {
                   Granularly control focus behavior when user opens or closes the dialog.
                 </Text>
               </Box>
-            </Box>
+            </Grid>
           )}
         </Box>
       </Container>

@@ -18,7 +18,6 @@ export const BenefitsSection = () => {
       css={{
         bc: '$cyan2',
         position: 'relative',
-        width: '100vw',
         overflow: 'hidden',
         pb: '$8',
         '@bp2': {

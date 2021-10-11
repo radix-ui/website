@@ -10,13 +10,13 @@ export const StyledButton = styled('button', {
   WebkitTapHighlightColor: 'rgba(0,0,0,0)',
 
   // Custom
-  height: '$6',
-  px: '$3',
+  height: '$7',
+  px: '$4',
   fontFamily: '$untitled',
   fontWeight: 500,
   borderRadius: '$2',
   fontSize: '$3',
-  lineHeight: '$sizes$6',
+  lineHeight: '$sizes$7',
 
   '&:disabled': {
     bc: '$slate2',
