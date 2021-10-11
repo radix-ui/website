@@ -1,0 +1,148 @@
+---
+metaTitle: 'Under the spotlight: Dropdown Menu'
+metaDescription: 'A closer look at the features of the Dropdown Menu component.'
+publishedAt: '2021-10-18'
+author: 'pedro'
+---
+
+A Dropdown Menu component is an overlay containing a set of actions or functions. It's positioned relatively to interactive trigger element. It appears when the trigger is clicked.
+
+It turns out that building a custom Dropdown Menu is very hard. There are many cases to consider. Such as accessibility concerns, collision-aware positioning and nesting of menus. Because of this complexity, custom-built Dropdown Menus fall short off the mark.
+
+This article highlights how we overcame the challenges presented when building a world-class Dropdown Menu component.
+
+---
+
+## A closer look
+
+Our goal is to ensure the Dropdown Menu component is accessible while providing the best possible developer and user experiences.
+
+Below is a list of all the features we've built into our Dropdown Menu, they all work out of the box.
+
+### Screen reader
+
+Our Dropdown Menu component follows the [WAI-ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/#menubutton) authoring specification. This ensures it's accessible to screen reader users.
+
+For example, the Dropdown Menu content has the `role="menu"` and `aria-labelledby` attributes. The Dropdown Menu trigger has the `aria-haspopup="menu"`, `aria-expanded` and `aria-controls` attributes.
+
+When the Dropdown Menu is opened, all other elements are hidden from screen readers.
+
+<VideoPlaceholder />
+
+### Keyboard navigation
+
+Keyboard navigation helps users with motor disabilities interact with the Dropdown Menu. Blind users rely on keyboard for navigation. It also improves the experience for people without disabilities.
+
+Every Radix Primitive supports keyboard accessibility. So you can do anything you need without using your mouse.
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space'],
+      description: (
+        <span>
+          When focus is on <Code>DropdownMenu.Trigger</Code>, opens the dropdown
+          menu and focuses the first item.
+          <br />
+          When focus is on an item, activates the focused item.
+        </span>
+      ),
+    },
+    {
+      keys: ['Enter'],
+      description: (
+        <span>
+          When focus is on <Code>DropdownMenu.Trigger</Code>, opens the dropdown
+          menu and focuses the first item.
+          <br />
+          When focus is on an item, activates the focused item.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowDown'],
+      description: (
+        <span>
+          When focus is on <Code>DropdownMenu.Trigger</Code>, opens the dropdown
+          menu.
+          <br />
+          When focus is on an item, moves focus to the next item.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowRight', 'ArrowLeft'],
+      description: (
+        <span>
+          When focus is on <Code>DropdownMenu.TriggerItem</Code>, opens or
+          closes the submenu depending on reading direction.
+        </span>
+      ),
+    },
+    {
+      keys: ['Esc'],
+      description: (
+        <span>
+          Closes the dropdown menu and moves focus to{' '}
+          <Code>DropdownMenu.Trigger</Code>.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+<VideoPlaceholder />
+
+### Positioning
+
+You can configure the Dropdown Menu so it appears on above or below the trigger, as well as to the left or right of it. You can also choose the alignment of the Dropdown Menu against the trigger.
+
+When you open the Dropdown Menu, it'll be positioned relatively to the trigger element. In the unlikely scenario where there's not enough space (a collision), the position will be adjusted.
+
+For example, if you have configured the Dropdown Menu to appear above the trigger, and there's not enough space to fully display the Dropdown Menu, it'll appear below instead.
+
+<VideoPlaceholder />
+
+### Focus management
+
+The Dropdown Menu comes with fully focus management out-of-the-box. When it opens, it'll automatically focus the content element. When it closes, the focus will return to the trigger.
+
+The focus is also trapped within the Dropdown Menu content. This means if you keep pressing <Kbd>Tab</Kbd> the focus will remain in place.
+
+<VideoPlaceholder />
+
+### Animation
+
+The ability add animation is essential. The Radix Dropdown Menu has been built with animation support in mind. You can animate with CSS or with an animation library, such as Framer Motion.
+
+Our Dropdown Menu component exposes its transform origin via a CSS Custom Property. This enables you to add origin-aware animation in an elegant manner.
+
+<VideoPlaceholder />
+
+### Nesting
+
+Some advanced interfaces, such as design tools, may require nesting of Dropdown Menu. The Radix Dropdown Menu ensures you can can nest menus while maintaining acccessibility and positioning behaviours.
+
+<VideoPlaceholder />
+
+### Highly customizable
+
+You can configure many different behaviours, such as positioning, checkbox items, radio items, groups and dividers.
+
+### Styling
+
+Radix Dropdown Menu ship with zero styles, so you have full control over the its look and feel.
+
+---
+
+## Live demo
+
+One last thing. Here's an interactive, live demo of the Radix DropdownMenu. Feel free to play around!
+
+<HeroContainer>
+  <DropdownMenuDemo />
+</HeroContainer>
+
+```jsx hero template=DropdownMenu
+
+```
