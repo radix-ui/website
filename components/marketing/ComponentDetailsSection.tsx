@@ -120,7 +120,13 @@ export const ComponentDetailsSection = () => {
         <Flex
           direction="column"
           align="center"
-          css={{ textAlign: 'center', position: 'relative', zIndex: 1, mb: '$6' }}
+          css={{
+            textAlign: 'center',
+            position: 'relative',
+            zIndex: 1,
+            mb: '$6',
+            '@bp3': { mb: 100 },
+          }}
         >
           <MarketingCaption css={{ mb: '$1' }}>Case in point</MarketingCaption>
           <DropdownMenuPrimitive.Root>
@@ -151,6 +157,7 @@ export const ComponentDetailsSection = () => {
               </DropdownMenuPrimitive.RadioGroup>
             </InlineDropdownContent>
           </DropdownMenuPrimitive.Root>
+
           <Box css={{ maxWidth: 480 }}>
             {component === 'dropdown' && (
               <Paragraph>
@@ -201,7 +208,7 @@ export const ComponentDetailsSection = () => {
           </Box>
         </Flex>
 
-        <Box css={{ position: 'relative', mb: '$9' }}>
+        <Box css={{ position: 'relative' }}>
           {/* Use guides to position things sanely */}
           {/* <Guides7 /> */}
           {/* <Guides8 /> */}
@@ -250,7 +257,7 @@ export const ComponentDetailsSection = () => {
             <Flex
               align="center"
               justify="center"
-              css={{ position: 'relative', '@bp3': { height: 850, mt: '$9' } }}
+              css={{ position: 'relative', '@bp3': { height: 850 } }}
             >
               <img
                 src="/marketing/dropdown-menu.svg"
@@ -259,271 +266,294 @@ export const ComponentDetailsSection = () => {
             </Flex>
           </Box>
 
-          {component === 'dropdown' && (
+          <Box
+            css={{
+              mx: '-$5',
+              pl: '$5',
+              position: 'relative',
+              overflowX: 'scroll',
+              overflowY: 'hidden',
+              WebkitOverflowScrolling: 'touch',
+              MsOverflowStyle: 'none',
+              scrollbarWidth: 'none',
+              '&::-webkit-scrollbar': {
+                display: 'none',
+              },
+              '@bp1': {
+                all: 'unset',
+              },
+            }}
+          >
             <Grid
-              gap="7"
-              justify="center"
-              css={{ '@bp2': { gridTemplateColumns: 'auto auto', ml: '$5' } }}
+              gap={{ '@initial': 5, '@bp2': 7 }}
+              flow={{ '@initial': 'column', '@bp1': 'row' }}
+              justify={{ '@initial': 'start', '@bp1': 'center' }}
+              css={{
+                gridAutoColumns: 'calc(100vw - 100px)',
+                '@bp1': { gridTemplateColumns: '1fr 1fr' },
+                '@bp2': { gridTemplateColumns: '315px 315px', ml: '$5' },
+                '@bp3': { mb: '$8', '& > *': { position: 'absolute', width: 315 } },
+              }}
             >
-              <Box css={{ '@bp3': { position: 'absolute', top: '-1%', left: '27%' } }}>
-                <Flex gap="2" align="center" css={{ mb: '$1' }}>
-                  <FancyCheckMark />
-                  <Text
-                    as="h3"
-                    size="4"
-                    css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
-                  >
-                    Full keyboard navigation
-                  </Text>
-                </Flex>
-                <Text size="3" variant="gray" css={{ lineHeight: 1.5, width: 280, ml: '$6' }}>
-                  Navigate the menu using arrow keys, Escape, and Enter hotkeys, or even via
-                  typeahead.
-                </Text>
-              </Box>
+              {component === 'dropdown' && (
+                <>
+                  <Box css={{ '@bp3': { top: '-1%', left: '27%' } }}>
+                    <Flex gap="2" align="start" css={{ mb: '$1' }}>
+                      <FancyCheckMark />
+                      <Text
+                        as="h3"
+                        size="4"
+                        css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
+                      >
+                        Full keyboard navigation
+                      </Text>
+                    </Flex>
+                    <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
+                      Navigate the menu using arrow keys, Escape, and Enter hotkeys, or even via
+                      typeahead.
+                    </Text>
+                  </Box>
 
-              <Box css={{ '@bp3': { position: 'absolute', top: '14%', left: '60%' } }}>
-                <Flex gap="2" align="center" css={{ mb: '$1' }}>
-                  <FancyCheckMark />
-                  <Text
-                    as="h3"
-                    size="4"
-                    css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
-                  >
-                    Modal and non-modal modes
-                  </Text>
-                </Flex>
-                <Text size="3" variant="gray" css={{ lineHeight: 1.5, width: 280, ml: '$6' }}>
-                  Configure whether the dropdown menu allows or blocks outside interactions.
-                </Text>
-              </Box>
+                  <Box css={{ '@bp3': { top: '14%', left: '60%' } }}>
+                    <Flex gap="2" align="start" css={{ mb: '$1' }}>
+                      <FancyCheckMark />
+                      <Text
+                        as="h3"
+                        size="4"
+                        css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
+                      >
+                        Modal and non-modal modes
+                      </Text>
+                    </Flex>
+                    <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
+                      Configure whether the dropdown menu allows or blocks outside interactions.
+                    </Text>
+                  </Box>
 
-              <Box css={{ '@bp3': { position: 'absolute', top: '40%', left: '74%' } }}>
-                <Flex gap="2" align="center" css={{ mb: '$1' }}>
-                  <FancyCheckMark />
-                  <Text
-                    as="h3"
-                    size="4"
-                    css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
-                  >
-                    Supports submenus
-                  </Text>
-                </Flex>
-                <Text size="3" variant="gray" css={{ lineHeight: 1.5, width: 280, ml: '$6' }}>
-                  Nest another level of fully functional submenus inside the drodpown menu.
-                </Text>
-              </Box>
+                  <Box css={{ '@bp3': { top: '40%', left: '74%' } }}>
+                    <Flex gap="2" align="start" css={{ mb: '$1' }}>
+                      <FancyCheckMark />
+                      <Text
+                        as="h3"
+                        size="4"
+                        css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
+                      >
+                        Supports submenus
+                      </Text>
+                    </Flex>
+                    <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
+                      Nest another level of fully functional submenus inside the drodpown menu.
+                    </Text>
+                  </Box>
 
-              <Box css={{ '@bp3': { position: 'absolute', top: '67%', left: '69%' } }}>
-                <Flex gap="2" align="center" css={{ mb: '$1' }}>
-                  <FancyCheckMark />
-                  <Text
-                    as="h3"
-                    size="4"
-                    css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
-                  >
-                    Supports assistive technology
-                  </Text>
-                </Flex>
-                <Text size="3" variant="gray" css={{ lineHeight: 1.5, width: 280, ml: '$6' }}>
-                  Implements correct semantics and behaviors, so it's accessible to people using
-                  assistive technology.
-                </Text>
-              </Box>
+                  <Box css={{ '@bp3': { top: '67%', left: '69%' } }}>
+                    <Flex gap="2" align="start" css={{ mb: '$1' }}>
+                      <FancyCheckMark />
+                      <Text
+                        as="h3"
+                        size="4"
+                        css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
+                      >
+                        Supports assistive technology
+                      </Text>
+                    </Flex>
+                    <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
+                      Implements correct semantics and behaviors, so it's accessible to people using
+                      assistive technology.
+                    </Text>
+                  </Box>
 
-              <Box css={{ '@bp3': { position: 'absolute', top: '94%', left: '39%' } }}>
-                <Flex gap="2" align="center" css={{ mb: '$1' }}>
-                  <FancyCheckMark />
-                  <Text
-                    as="h3"
-                    size="4"
-                    css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
-                  >
-                    Collision and origin-aware animations
-                  </Text>
-                </Flex>
-                <Text size="3" variant="gray" css={{ lineHeight: 1.5, width: 280, ml: '$6' }}>
-                  Create open and close animations that take the dropdown menu’s actual position
-                  into account.
-                </Text>
-              </Box>
+                  <Box css={{ '@bp3': { top: '94%', left: '39%' } }}>
+                    <Flex gap="2" align="start" css={{ mb: '$1' }}>
+                      <FancyCheckMark />
+                      <Text
+                        as="h3"
+                        size="4"
+                        css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
+                      >
+                        Collision and origin-aware animations
+                      </Text>
+                    </Flex>
+                    <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
+                      Create open and close animations that take the dropdown menu’s actual position
+                      into account.
+                    </Text>
+                  </Box>
 
-              <Box css={{ '@bp3': { position: 'absolute', top: '76%', left: '8%' } }}>
-                <Flex gap="2" align="center" css={{ mb: '$1' }}>
-                  <FancyCheckMark />
-                  <Text
-                    as="h3"
-                    size="4"
-                    css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
-                  >
-                    Control alignment and collisions
-                  </Text>
-                </Flex>
-                <Text size="3" variant="gray" css={{ lineHeight: 1.5, width: 280, ml: '$6' }}>
-                  Position the menu anywhere relative to the trigger, taking collisions with the
-                  screen into account.
-                </Text>
-              </Box>
+                  <Box css={{ '@bp3': { top: '76%', left: '8%' } }}>
+                    <Flex gap="2" align="start" css={{ mb: '$1' }}>
+                      <FancyCheckMark />
+                      <Text
+                        as="h3"
+                        size="4"
+                        css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
+                      >
+                        Control alignment and collisions
+                      </Text>
+                    </Flex>
+                    <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
+                      Position the menu anywhere relative to the trigger, taking collisions with the
+                      screen into account.
+                    </Text>
+                  </Box>
 
-              <Box css={{ '@bp3': { position: 'absolute', top: '49%', left: '-1%' } }}>
-                <Flex gap="2" align="center" css={{ mb: '$1' }}>
-                  <FancyCheckMark />
-                  <Text
-                    as="h3"
-                    size="4"
-                    css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
-                  >
-                    Fully managed focus
-                  </Text>
-                </Flex>
-                <Text size="3" variant="gray" css={{ lineHeight: 1.5, width: 280, ml: '$6' }}>
-                  Granularly control focus behavior when user closes the dropdown menu or focuses an
-                  outside element.
-                </Text>
-              </Box>
+                  <Box css={{ '@bp3': { top: '49%', left: '-1%' } }}>
+                    <Flex gap="2" align="start" css={{ mb: '$1' }}>
+                      <FancyCheckMark />
+                      <Text
+                        as="h3"
+                        size="4"
+                        css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
+                      >
+                        Fully managed focus
+                      </Text>
+                    </Flex>
+                    <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
+                      Granularly control focus behavior when user closes the dropdown menu or
+                      focuses an outside element.
+                    </Text>
+                  </Box>
 
-              <Box css={{ '@bp3': { position: 'absolute', top: '19%', left: '4%' } }}>
-                <Flex gap="2" align="center" css={{ mb: '$1' }}>
-                  <FancyCheckMark />
-                  <Text
-                    as="h3"
-                    size="4"
-                    css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
-                  >
-                    Supports checkable items
-                  </Text>
-                </Flex>
-                <Text size="3" variant="gray" css={{ lineHeight: 1.5, width: 280, ml: '$6' }}>
-                  Items can be used to perform actions, as well as act as checkbox or radiobutton
-                  controls.
-                </Text>
-              </Box>
+                  <Box css={{ '@bp3': { top: '19%', left: '4%' } }}>
+                    <Flex gap="2" align="start" css={{ mb: '$1' }}>
+                      <FancyCheckMark />
+                      <Text
+                        as="h3"
+                        size="4"
+                        css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
+                      >
+                        Supports checkable items
+                      </Text>
+                    </Flex>
+                    <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
+                      Items can be used to perform actions, as well as act as checkbox or
+                      radiobutton controls.
+                    </Text>
+                  </Box>
+                </>
+              )}
+
+              {component === 'dialog' && (
+                <>
+                  <Box css={{ '@bp3': { top: '-1%', left: '29%' } }}>
+                    <Flex gap="2" align="start" css={{ mb: '$1' }}>
+                      <FancyCheckMark />
+                      <Text
+                        as="h3"
+                        size="4"
+                        css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
+                      >
+                        Full keyboard navigation
+                      </Text>
+                    </Flex>
+                    <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
+                      The dialog traps focus so you can navigate it with Tab key. Close the dialog
+                      with Escape key.
+                    </Text>
+                  </Box>
+
+                  <Box css={{ '@bp3': { top: '14%', left: '62%' } }}>
+                    <Flex gap="2" align="start" css={{ mb: '$1' }}>
+                      <FancyCheckMark />
+                      <Text
+                        as="h3"
+                        size="4"
+                        css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
+                      >
+                        Modal and non-modal modes
+                      </Text>
+                    </Flex>
+                    <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
+                      Configure whether the dialog allows or blocks outside interactions.
+                    </Text>
+                  </Box>
+
+                  <Box css={{ '@bp3': { top: '40%', left: '76%' } }}>
+                    <Flex gap="2" align="start" css={{ mb: '$1' }}>
+                      <FancyCheckMark />
+                      <Text
+                        as="h3"
+                        size="4"
+                        css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
+                      >
+                        No janky scroll bugs
+                      </Text>
+                    </Flex>
+                    <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
+                      Content behind the dialog stays put while document scroll is disabled.
+                    </Text>
+                  </Box>
+
+                  <Box css={{ '@bp3': { top: '67%', left: '69%' } }}>
+                    <Flex gap="2" align="start" css={{ mb: '$1' }}>
+                      <FancyCheckMark />
+                      <Text
+                        as="h3"
+                        size="4"
+                        css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
+                      >
+                        Supports assistive technology
+                      </Text>
+                    </Flex>
+                    <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
+                      Implements correct semantics and behaviors, so it's accessible to people using
+                      assistive technology.
+                    </Text>
+                  </Box>
+
+                  <Box css={{ '@bp3': { top: '94%', left: '41%' } }}>
+                    <Flex gap="2" align="start" css={{ mb: '$1' }}>
+                      <FancyCheckMark />
+                      <Text
+                        as="h3"
+                        size="4"
+                        css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
+                      >
+                        Easy to animate
+                      </Text>
+                    </Flex>
+                    <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
+                      Provides control over mounting behavior for managing animations with CSS or
+                      animation libraries.
+                    </Text>
+                  </Box>
+
+                  <Box css={{ '@bp3': { top: '76%', left: '10%' } }}>
+                    <Flex gap="2" align="start" css={{ mb: '$1' }}>
+                      <FancyCheckMark />
+                      <Text
+                        as="h3"
+                        size="4"
+                        css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
+                      >
+                        Nesting just works
+                      </Text>
+                    </Flex>
+                    <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
+                      No gotchas if you need to nest another dialog or a component that manages
+                      focus behavior.
+                    </Text>
+                  </Box>
+
+                  <Box css={{ '@bp3': { top: '49%', left: '1%' } }}>
+                    <Flex gap="2" align="start" css={{ mb: '$1' }}>
+                      <FancyCheckMark />
+                      <Text
+                        as="h3"
+                        size="4"
+                        css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
+                      >
+                        Fully managed focus
+                      </Text>
+                    </Flex>
+                    <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
+                      Granularly control focus behavior when user opens or closes the dialog.
+                    </Text>
+                  </Box>
+                </>
+              )}
             </Grid>
-          )}
-
-          {component === 'dialog' && (
-            <Grid
-              gap="7"
-              justify="center"
-              css={{ '@bp2': { gridTemplateColumns: 'auto auto', ml: '$5' } }}
-            >
-              <Box css={{ '@bp3': { position: 'absolute', top: '-1%', left: '29%' } }}>
-                <Flex gap="2" align="center" css={{ mb: '$1' }}>
-                  <FancyCheckMark />
-                  <Text
-                    as="h3"
-                    size="4"
-                    css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
-                  >
-                    Full keyboard navigation
-                  </Text>
-                </Flex>
-                <Text size="3" variant="gray" css={{ lineHeight: 1.5, width: 280, ml: '$6' }}>
-                  The dialog traps focus so you can navigate it with Tab key. Close the dialog with
-                  Escape key.
-                </Text>
-              </Box>
-
-              <Box css={{ '@bp3': { position: 'absolute', top: '14%', left: '62%' } }}>
-                <Flex gap="2" align="center" css={{ mb: '$1' }}>
-                  <FancyCheckMark />
-                  <Text
-                    as="h3"
-                    size="4"
-                    css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
-                  >
-                    Modal and non-modal modes
-                  </Text>
-                </Flex>
-                <Text size="3" variant="gray" css={{ lineHeight: 1.5, width: 280, ml: '$6' }}>
-                  Configure whether the dialog allows or blocks outside interactions.
-                </Text>
-              </Box>
-
-              <Box css={{ '@bp3': { position: 'absolute', top: '40%', left: '76%' } }}>
-                <Flex gap="2" align="center" css={{ mb: '$1' }}>
-                  <FancyCheckMark />
-                  <Text
-                    as="h3"
-                    size="4"
-                    css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
-                  >
-                    No janky scroll bugs
-                  </Text>
-                </Flex>
-                <Text size="3" variant="gray" css={{ lineHeight: 1.5, width: 280, ml: '$6' }}>
-                  Content behind the dialog stays put while document scroll is disabled.
-                </Text>
-              </Box>
-
-              <Box css={{ '@bp3': { position: 'absolute', top: '67%', left: '69%' } }}>
-                <Flex gap="2" align="center" css={{ mb: '$1' }}>
-                  <FancyCheckMark />
-                  <Text
-                    as="h3"
-                    size="4"
-                    css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
-                  >
-                    Supports assistive technology
-                  </Text>
-                </Flex>
-                <Text size="3" variant="gray" css={{ lineHeight: 1.5, width: 280, ml: '$6' }}>
-                  Implements correct semantics and behaviors, so it's accessible to people using
-                  assistive technology.
-                </Text>
-              </Box>
-
-              <Box css={{ '@bp3': { position: 'absolute', top: '94%', left: '41%' } }}>
-                <Flex gap="2" align="center" css={{ mb: '$1' }}>
-                  <FancyCheckMark />
-                  <Text
-                    as="h3"
-                    size="4"
-                    css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
-                  >
-                    Easy to animate
-                  </Text>
-                </Flex>
-                <Text size="3" variant="gray" css={{ lineHeight: 1.5, width: 280, ml: '$6' }}>
-                  Provides control over mounting behavior for managing animations with CSS or
-                  animation libraries.
-                </Text>
-              </Box>
-
-              <Box css={{ '@bp3': { position: 'absolute', top: '76%', left: '10%' } }}>
-                <Flex gap="2" align="center" css={{ mb: '$1' }}>
-                  <FancyCheckMark />
-                  <Text
-                    as="h3"
-                    size="4"
-                    css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
-                  >
-                    Nesting just works
-                  </Text>
-                </Flex>
-                <Text size="3" variant="gray" css={{ lineHeight: 1.5, width: 280, ml: '$6' }}>
-                  No gotchas if you need to nest another dialog or a component that manages focus
-                  behavior.
-                </Text>
-              </Box>
-
-              <Box css={{ '@bp3': { position: 'absolute', top: '49%', left: '1%' } }}>
-                <Flex gap="2" align="center" css={{ mb: '$1' }}>
-                  <FancyCheckMark />
-                  <Text
-                    as="h3"
-                    size="4"
-                    css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
-                  >
-                    Fully managed focus
-                  </Text>
-                </Flex>
-                <Text size="3" variant="gray" css={{ lineHeight: 1.5, width: 280, ml: '$6' }}>
-                  Granularly control focus behavior when user opens or closes the dialog.
-                </Text>
-              </Box>
-            </Grid>
-          )}
+          </Box>
         </Box>
       </Container>
     </Section>
@@ -534,9 +564,11 @@ const FancyCheckMark = styled(CheckIcon, {
   color: '$teal11',
   backgroundColor: '$cyan4',
   padding: '$1',
+  mt: -2,
   width: '$5',
   height: '$5',
   borderRadius: '$round',
+  flex: 'none',
 });
 
 const Circle = ({

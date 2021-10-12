@@ -31,10 +31,14 @@ const IFrameSkeleton = styled('div', {
 const IFrame = styled('iframe', {
   display: 'block',
   border: 0,
-  width: 400,
+  width: 300,
   height: 400,
   overflow: 'hidden',
   borderRadius: '$3',
+
+  '@bp1': {
+    width: 400,
+  },
 
   variants: {
     visible: {
@@ -152,7 +156,7 @@ export const MainHero = () => {
               Dropdown Menu
             </Text>
             <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-              With submenus, checkable items, collision handling, full keyboard navigation, and
+              With submenus, checkable items, collision handling, full keyboard navigation, and
               typeahead support.
             </Text>
           </Box>
