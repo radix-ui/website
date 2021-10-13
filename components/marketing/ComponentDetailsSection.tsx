@@ -30,18 +30,20 @@ const InlineDropdownTrigger = styled(DropdownMenuPrimitive.Trigger, {
   pt: 0,
   pb: 2,
   mr: 2,
-  bc: '$slateA3',
-  border: '1px solid $slateA4',
+  bc: '$slate3',
+  border: '1px solid $slate5',
   borderRadius: '$3',
 
-  '&:hover': {
-    bc: '$slateA4',
-    borderColor: '$slateA5',
-  },
-  '&:focus': {
-    bc: '$tealA3',
-    borderColor: '$teal9',
-    boxShadow: '0 0 0 1px $colors$teal9',
+  '@hover': {
+    '&:hover': {
+      bc: '$slate4',
+      borderColor: '$slate6',
+    },
+    '&:focus': {
+      bc: '$tealA3',
+      borderColor: '$teal9',
+      boxShadow: '0 0 0 1px $colors$teal9',
+    },
   },
 });
 
@@ -87,12 +89,16 @@ const InlineDropdownRadioItem = styled(DropdownMenuPrimitive.RadioItem, {
   px: '$2',
   br: '$2',
   cursor: 'default',
-
-  '&:hover, &:focus': {
+  '@hover': {
+    '&:hover': {
+      bc: '$slate3',
+      outline: 0,
+    },
+  },
+  '&:focus': {
     bc: '$slate3',
     outline: 0,
   },
-
   '&[data-state="checked"]': {
     display: 'none',
   },
@@ -247,12 +253,17 @@ export const ComponentDetailsSection = () => {
                 color1="var(--colors-slateA2)"
                 color2="var(--colors-indigoA3)"
               />
-              <Circle
-                size={850}
-                angle={-70}
-                color1="var(--colors-slateA1)"
-                color2="var(--colors-indigoA2)"
-              />
+              {[850, 1000, 1150, 1300, 1450, 1600, 1750, 1900, 2050, 2200, 2350, 2500].map(
+                (size, i) => (
+                  <Circle
+                    size={size + i * i * 5}
+                    angle={-45 + i * 15}
+                    color1="var(--colors-slateA2)"
+                    color2="var(--colors-indigoA3)"
+                    opacity={1 - i * 0.08}
+                  />
+                )
+              )}
             </Box>
             <Flex
               align="center"
@@ -270,6 +281,7 @@ export const ComponentDetailsSection = () => {
             css={{
               mx: '-$5',
               pl: '$5',
+              pt: '$1',
               position: 'relative',
               overflowX: 'scroll',
               overflowY: 'hidden',
@@ -576,11 +588,13 @@ const Circle = ({
   color1,
   color2,
   angle = 90,
+  opacity = 1,
 }: {
   size: number;
   angle?: number;
   color1: string;
   color2: string;
+  opacity?: number;
 }) => {
   const [id] = React.useState(Math.random().toString());
   return (
@@ -592,6 +606,7 @@ const Circle = ({
         width: size,
         height: size,
         transform: `translate(-50%, -50%) rotate(${angle}deg)`,
+        opacity: opacity,
       }}
     >
       <svg

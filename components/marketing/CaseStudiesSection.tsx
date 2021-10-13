@@ -160,10 +160,13 @@ export const CaseStudiesSection = () => {
 
 const LogoLink = styled('a', {
   display: 'block',
-  color: '$slate9',
-  transition: '120ms color',
-  '&:hover': {
-    color: '$hiContrast',
+  color: '$hiContrast',
+  '@hover': {
+    color: '$slate9',
+    transition: '120ms color',
+    '&:hover': {
+      color: '$hiContrast',
+    },
   },
 });
 
