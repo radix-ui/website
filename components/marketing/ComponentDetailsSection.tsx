@@ -256,6 +256,7 @@ export const ComponentDetailsSection = () => {
               {[850, 1000, 1150, 1300, 1450, 1600, 1750, 1900, 2050, 2200, 2350, 2500].map(
                 (size, i) => (
                   <Circle
+                    key={i}
                     size={size + i * i * 5}
                     angle={-45 + i * 15}
                     color1="var(--colors-slateA2)"
@@ -596,7 +597,6 @@ const Circle = ({
   color2: string;
   opacity?: number;
 }) => {
-  const [id] = React.useState(Math.random().toString());
   return (
     <Box
       css={{
@@ -619,12 +619,19 @@ const Circle = ({
           cx="50"
           cy="50"
           r="49"
-          stroke={`url(#${id})`}
+          stroke={`url(#stroke-${size})`}
           strokeWidth="1"
           vectorEffect="non-scaling-stroke"
         />
         <defs>
-          <linearGradient id={id} gradientUnits="userSpaceOnUse" x1="50" y1="0" x2="50" y2="100">
+          <linearGradient
+            id={`stroke-${size}`}
+            gradientUnits="userSpaceOnUse"
+            x1="50"
+            y1="0"
+            x2="50"
+            y2="100"
+          >
             <stop style={{ stopColor: color1 }} />
             <stop style={{ stopColor: color2 }} offset="1" />
           </linearGradient>
