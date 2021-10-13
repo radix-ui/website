@@ -25,7 +25,7 @@
     "@radix-ui/react-dropdown-menu": "next",
     "@radix-ui/react-hover-card": "next",
     "@radix-ui/react-icons": "1.0.3",
-    "@radix-ui/react-id": "0.1.0",
+    "@radix-ui/react-id": "next",
     "@radix-ui/react-label": "next",
     "@radix-ui/react-popover": "next",
     "@radix-ui/react-primitive": "next",
