@@ -78,38 +78,36 @@ export function CodeDemo({ css, line, ...props }: CodeDemoProps) {
   // above bp2 we render the interactive stuff
   return (
     <>
-      <Box
+      <CodeBlock
+        ref={wrapperRef}
+        {...props}
+        line="0"
         css={{
           '@bp2': {
             display: 'none',
           },
+          ...css,
         }}
-      >
-        <CodeBlock ref={wrapperRef} {...props} line="0" />
-      </Box>
-      <Box
+      />
+      <CodeBlock
+        ref={wrapperRef}
+        {...props}
         css={{
           display: 'none',
           '@bp2': {
             display: 'block',
           },
+
+          overflowY: 'hidden',
+          userSelect: 'none',
+          ...css,
+          code: {
+            willChange: 'transform',
+            transition: 'transform 200ms ease-in-out',
+            ...css?.code,
+          },
         }}
-      >
-        <CodeBlock
-          ref={wrapperRef}
-          {...props}
-          css={{
-            overflowY: 'hidden',
-            userSelect: 'none',
-            ...css,
-            code: {
-              willChange: 'transform',
-              transition: 'transform 200ms ease-in-out',
-              ...css.code,
-            },
-          }}
-        />
-      </Box>
+      />
     </>
   );
 }
