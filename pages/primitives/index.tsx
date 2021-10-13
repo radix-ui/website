@@ -12,7 +12,7 @@ import { CommunitySection } from '@components/marketing/CommunitySection';
 import { OtherProductsSection } from '@components/marketing/OtherProductsSection';
 import { Footer } from '@components/Footer';
 import { Header } from '@components/Header';
-import { Background } from '@components/marketing/Background';
+import { FancyBackground } from '@components/marketing/FancyBackground';
 
 // TODO check that all paragraphs are P tags
 export default function PrimitivesHome() {
@@ -24,9 +24,10 @@ export default function PrimitivesHome() {
         // TODO meta image
         image="colors.png"
       />
-      <Background />
-      <Header />
-      <MainHero />
+      <FancyBackground>
+        <Header />
+        <MainHero />
+      </FancyBackground>
       <CaseStudiesSection />
       <BenefitsSection />
       <ComponentDetailsSection />

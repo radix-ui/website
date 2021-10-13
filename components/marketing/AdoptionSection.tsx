@@ -1,21 +1,25 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Box, Grid, Text, Container, Heading, Paragraph, Section } from '@modulz/design-system';
+import {
+  Box,
+  Grid,
+  Text,
+  Container,
+  Heading,
+  Paragraph,
+  Section,
+  Separator,
+} from '@modulz/design-system';
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { MarketingCaption } from './MarketingCaption';
 import { MarketingButton } from './MarketingButton';
 
 export const AdoptionSection = () => {
   return (
-    <Section
-      css={{
-        background: 'linear-gradient(to bottom, $mauve2, $loContrast)',
-        boxShadow: '0 1px $colors$grayA3',
-      }}
-    >
+    <Section css={{ pb: 0 }}>
       <Container size="3">
         <Box css={{ mb: '$7' }}>
-          <MarketingCaption css={{ mb: '$1' }}>Transition Radix Primitives</MarketingCaption>
+          <MarketingCaption css={{ mb: '$1' }}>Transition to Radix Primitives</MarketingCaption>
           <Heading as="h2" size="3" css={{ mb: '$4' }}>
             Easy to introduce to your team
           </Heading>
@@ -26,7 +30,11 @@ export const AdoptionSection = () => {
           </NextLink>
         </Box>
 
-        <Grid columns={{ '@initial': 1, '@bp1': 2 }} gap={{ '@initial': 4, '@bp1': 7, '@bp2': 9 }}>
+        <Grid
+          columns={{ '@initial': 1, '@bp1': 2 }}
+          gap={{ '@initial': 4, '@bp1': 7, '@bp2': 9 }}
+          css={{ mb: '$7' }}
+        >
           <Box>
             <Text
               as="h3"
@@ -58,6 +66,8 @@ export const AdoptionSection = () => {
             </Paragraph>
           </Box>
         </Grid>
+
+        <Separator size="2" />
       </Container>
     </Section>
   );
