@@ -160,7 +160,7 @@ const FancyBackgroundChart = () => {
         css={{
           // This is the left-hand line that connects to the chart
           height: 1,
-          backgroundColor: '$slateA3',
+          background: 'linear-gradient(to right, transparent, $slateA3)',
           flex: '0 0 auto',
           maxWidth: 1400,
           // flexGrow: 0.1,

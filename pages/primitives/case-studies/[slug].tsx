@@ -28,11 +28,11 @@ type CaseStudyPage = {
     metaTitle: string;
     metaDescription: string;
     author: string;
+    authorAvatarUrl: string;
     authorPosition: string;
     productsUsed: string;
     companyAbout: string;
     companyUrl: string;
-    companyDisplayUrl: string;
     companyFounded: string;
     companyLogoVariant: CaseStudyLogoVariant;
     companyLogoWidth: string;
@@ -75,7 +75,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                 <Component components={components as any} />
               </MDXProvider>
               <Flex align="center" gap="2" css={{ mt: '$7' }}>
-                <Avatar size="5" src="/marketing/avatar-generic.jpg" aria-describedby="person2" />
+                <Avatar size="5" src={frontmatter.authorAvatarUrl} aria-describedby="person2" />
                 <Box>
                   <Paragraph css={{ fontWeight: 500 }}>{frontmatter.author}</Paragraph>
                   <Paragraph>{frontmatter.authorPosition}</Paragraph>
@@ -84,19 +84,23 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
               <Separator size="2" css={{ mt: '$7', '@bp2': { mt: '$9' } }} />
             </Box>
 
-            <Box css={{ position: 'relative', mt: '$7', '@bp2': { mt: 115 } }}>
+            <Box css={{ position: 'relative', mt: '$7', '@bp2': { mt: 100 } }}>
               <Box css={{ position: 'sticky', top: '$7', left: 0 }}>
                 <Box
                   css={{
                     mb: '$6',
-                    maxWidth: '380px',
-                    svg: { width: frontmatter.companyLogoWidth, maxWidth: '100%' },
+                    svg: { width: '100%' },
                   }}
                 >
                   <a
                     target="_blank"
                     href={frontmatter.companyUrl}
-                    style={{ display: 'inline-block', color: 'inherit' }}
+                    style={{
+                      display: 'inline-block',
+                      width: frontmatter.companyLogoWidth,
+                      maxWidth: '380px',
+                      color: 'inherit',
+                    }}
                   >
                     <CaseStudyLogo variant={frontmatter.companyLogoVariant} />
                   </a>
@@ -107,8 +111,8 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                   </Paragraph>
                   <Paragraph css={{ mb: '$1' }}>{frontmatter.companyAbout}</Paragraph>
                   <Paragraph>
-                    <Link target="_blank" href={frontmatter.companyUrl}>
-                      {frontmatter.companyDisplayUrl}
+                    <Link target="_blank" href={`https://${frontmatter.companyUrl}`}>
+                      {frontmatter.companyUrl}
                     </Link>
                   </Paragraph>
                 </Box>
@@ -125,7 +129,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                   {frontmatter.productsUsed.split(', ').map((product) => {
                     if (product === 'Primitives') {
                       return (
-                        <Paragraph>
+                        <Paragraph key={product}>
                           <NextLink href="/primitives" passHref>
                             <Link>Primitives</Link>
                           </NextLink>
@@ -134,7 +138,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                     }
                     if (product === 'Colors') {
                       return (
-                        <Paragraph>
+                        <Paragraph key={product}>
                           <NextLink href="/colors" passHref>
                             <Link>Colors</Link>
                           </NextLink>
@@ -143,14 +147,14 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                     }
                     if (product === 'Stitches') {
                       return (
-                        <Paragraph>
+                        <Paragraph key={product}>
                           <Link href="https://stitches.dev">Stitches</Link>
                         </Paragraph>
                       );
                     }
                     if (product === 'Icons') {
                       return (
-                        <Paragraph>
+                        <Paragraph key={product}>
                           <Link href="https://icons.modulz.app">Icons</Link>
                         </Paragraph>
                       );
@@ -158,7 +162,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                     return null;
                   })}
                 </Box>
-                <Separator size="2" css={{ mb: '$5' }} />
+                <Separator size="2" css={{ my: '$7' }} />
                 <Box>
                   <Paragraph as="h4" css={{ fontWeight: 500 }}>
                     Next case study
