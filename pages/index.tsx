@@ -96,7 +96,9 @@ export default function Home() {
         <Separator size="2" />
       </Flex>
 
-      <Footer />
+      <Container size="3">
+        <Footer />
+      </Container>
     </Box>
   );
 }

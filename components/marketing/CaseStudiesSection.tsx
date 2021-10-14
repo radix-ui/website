@@ -143,7 +143,7 @@ export const CaseStudiesSection = () => {
             </LogoLink>
           </NextLink>
 
-          <NextLink href="/" passHref>
+          <NextLink href="/primitives/case-studies/university-of-amsterdam" passHref>
             <LogoLink css={{ mt: 7 }}>
               <AccessibleIcon label="University of Amsterdam Logo">
                 <CaseStudyLogo variant="University of Amsterdam" width="152" />

@@ -748,7 +748,9 @@ export default function ColorsHome() {
         <Separator size="2" />
       </Flex>
 
-      <Footer />
+      <Container size="3">
+        <Footer />
+      </Container>
     </Box>
   );
 }

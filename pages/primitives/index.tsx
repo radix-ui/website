@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '@modulz/design-system';
+import { Box, Container } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { MainHero } from '@components/marketing/MainHero';
 import { ComponentDetailsSection } from '@components/marketing/ComponentDetailsSection';
@@ -36,7 +36,9 @@ export default function PrimitivesHome() {
       <AdoptionSection />
       <CommunitySection />
       <OtherProductsSection />
-      <Footer />
+      <Container size="3">
+        <Footer />
+      </Container>
     </Box>
   );
 }

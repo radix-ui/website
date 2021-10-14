@@ -7,12 +7,10 @@ import {
   Container,
   Flex,
   Grid,
-  Heading,
   Link,
   Paragraph,
   Section,
   Separator,
-  Text,
 } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { MDXProvider, components } from '@components/MDXComponents';
@@ -34,8 +32,10 @@ type CaseStudyPage = {
     productsUsed: string;
     companyAbout: string;
     companyUrl: string;
+    companyDisplayUrl: string;
     companyFounded: string;
     companyLogoVariant: CaseStudyLogoVariant;
+    companyLogoWidth: string;
   };
   code: string;
 };
@@ -53,9 +53,20 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
 
       <Header />
 
-      <Section>
-        <Container size="3">
-          <Grid css={{ gridTemplateColumns: '1fr 350px', gap: 150 }}>
+      <Container size={{ '@initial': 2, '@bp2': 3 }}>
+        <Section>
+          <Grid
+            css={{
+              '@bp2': {
+                gap: '$9',
+                gridTemplateColumns: '1fr 330px',
+              },
+              '@bp3': {
+                gap: 120,
+                gridTemplateColumns: '1fr 380px',
+              },
+            }}
+          >
             <Box>
               <MarketingCaption as="a" href="/primitives/case-studies" css={{ mb: '$1' }}>
                 Case study
@@ -70,14 +81,21 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                   <Paragraph>{frontmatter.authorPosition}</Paragraph>
                 </Box>
               </Flex>
+              <Separator size="2" css={{ mt: '$7', '@bp2': { mt: '$9' } }} />
             </Box>
 
-            <Box css={{ position: 'relative', mt: 115 }}>
+            <Box css={{ position: 'relative', mt: '$7', '@bp2': { mt: 115 } }}>
               <Box css={{ position: 'sticky', top: '$7', left: 0 }}>
-                <Box css={{ mb: '$6' }}>
+                <Box
+                  css={{
+                    mb: '$6',
+                    maxWidth: '380px',
+                    svg: { width: frontmatter.companyLogoWidth, maxWidth: '100%' },
+                  }}
+                >
                   <a
                     target="_blank"
-                    href={`https://${frontmatter.companyUrl}`}
+                    href={frontmatter.companyUrl}
                     style={{ display: 'inline-block', color: 'inherit' }}
                   >
                     <CaseStudyLogo variant={frontmatter.companyLogoVariant} />
@@ -89,8 +107,8 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                   </Paragraph>
                   <Paragraph css={{ mb: '$1' }}>{frontmatter.companyAbout}</Paragraph>
                   <Paragraph>
-                    <Link target="_blank" href={`https://${frontmatter.companyUrl}`}>
-                      {frontmatter.companyUrl}
+                    <Link target="_blank" href={frontmatter.companyUrl}>
+                      {frontmatter.companyDisplayUrl}
                     </Link>
                   </Paragraph>
                 </Box>
@@ -140,7 +158,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                     return null;
                   })}
                 </Box>
-                <Separator size="1" css={{ mb: '$5' }} />
+                <Separator size="2" css={{ mb: '$5' }} />
                 <Box>
                   <Paragraph as="h4" css={{ fontWeight: 500 }}>
                     Next case study
@@ -150,11 +168,10 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
               </Box>
             </Box>
           </Grid>
-          <Separator size="2" css={{ mt: '$9' }} />
-        </Container>
-      </Section>
+        </Section>
 
-      <Footer />
+        <Footer />
+      </Container>
     </>
   );
 }

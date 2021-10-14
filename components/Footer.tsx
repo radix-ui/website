@@ -7,111 +7,110 @@ import { ExternalIcon } from './ExternalIcon';
 export const Footer = () => {
   return (
     <Box as="footer" css={{ pb: '$9' }}>
-      <Container size="3">
-        <Grid
+      <Grid
+        css={{
+          gridTemplateColumns: 'repeat(1, 1fr)',
+          gap: '$6',
+          '& ul': { listStyle: 'none', margin: '0', padding: '0' },
+          '@bp2': {
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: '$3',
+          },
+        }}
+      >
+        <Flex
           css={{
-            gridTemplateColumns: 'repeat(1, 1fr)',
-            gap: '$6',
-            '& ul': { listStyle: 'none', margin: '0', padding: '0' },
+            alignItems: 'center',
             '@bp2': {
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '$3',
+              flexDirection: 'column',
+              alignItems: 'start',
             },
           }}
         >
-          <Flex
-            css={{
-              alignItems: 'center',
-              '@bp2': {
-                flexDirection: 'column',
-                alignItems: 'start',
-              },
-            }}
-          >
-            <NextLink href="/" passHref>
-              <Box
-                as="a"
-                css={{
-                  color: '$hiContrast',
-                  display: 'inline-flex',
-                  '&:focus': {
-                    boxShadow: 'none',
-                  },
-                }}
-              >
-                <RadixLogo label="Radix Homepage" />
-              </Box>
-            </NextLink>
-            <Text
-              as="h6"
-              size="2"
+          <NextLink href="/" passHref>
+            <Box
+              as="a"
               css={{
-                lineHeight: '20px',
-                ml: '$4',
-                color: '$gray10',
-                pr: '$8',
-                '@bp2': { mt: '$5', ml: '0' },
+                color: '$hiContrast',
+                display: 'inline-flex',
+                '&:focus': {
+                  boxShadow: 'none',
+                },
               }}
             >
-              Radix is a project by{' '}
-              <Link variant="subtle" href="https://modulz.app">
-                Modulz
-              </Link>
-              .
-            </Text>
-          </Flex>
-          <Box>
-            <Text as="h6" size="3" css={{ fontWeight: 500, lineHeight: '20px' }}>
-              Products
-            </Text>
-            <ul>
-              <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/docs/primitives/overview/introduction" passHref>
-                    <Link variant="subtle">Primitives</Link>
-                  </NextLink>
-                </Text>
-              </li>
-              <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/docs/colors/getting-started/installation" passHref>
-                    <Link variant="subtle">Colors</Link>
-                  </NextLink>
-                </Text>
-              </li>
-              <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <Link
-                    variant="subtle"
-                    href="https://icons.modulz.app/"
-                    target="_blank"
-                    css={{ display: 'inline-flex', alignItems: 'center' }}
-                  >
-                    Icons
-                    <Flex as="span" css={{ ml: '$1', color: '$gray8' }}>
-                      <ExternalIcon />
-                    </Flex>
-                  </Link>
-                </Text>
-              </li>
-              <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <Link
-                    variant="subtle"
-                    href="https://stitches.dev/"
-                    target="_blank"
-                    css={{ display: 'inline-flex', alignItems: 'center' }}
-                  >
-                    Stitches
-                    <Flex as="span" css={{ ml: '$1', color: '$gray8' }}>
-                      <ExternalIcon />
-                    </Flex>
-                  </Link>
-                </Text>
-              </li>
-            </ul>
-          </Box>
-          {/* <Box>
+              <RadixLogo label="Radix Homepage" />
+            </Box>
+          </NextLink>
+          <Text
+            as="h6"
+            size="2"
+            css={{
+              lineHeight: '20px',
+              ml: '$4',
+              color: '$gray10',
+              pr: '$8',
+              '@bp2': { mt: '$5', ml: '0' },
+            }}
+          >
+            Radix is a project by{' '}
+            <Link variant="subtle" href="https://modulz.app">
+              Modulz
+            </Link>
+            .
+          </Text>
+        </Flex>
+        <Box>
+          <Text as="h6" size="3" css={{ fontWeight: 500, lineHeight: '20px' }}>
+            Products
+          </Text>
+          <ul>
+            <li>
+              <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+                <NextLink href="/docs/primitives/overview/introduction" passHref>
+                  <Link variant="subtle">Primitives</Link>
+                </NextLink>
+              </Text>
+            </li>
+            <li>
+              <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+                <NextLink href="/docs/colors/getting-started/installation" passHref>
+                  <Link variant="subtle">Colors</Link>
+                </NextLink>
+              </Text>
+            </li>
+            <li>
+              <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+                <Link
+                  variant="subtle"
+                  href="https://icons.modulz.app/"
+                  target="_blank"
+                  css={{ display: 'inline-flex', alignItems: 'center' }}
+                >
+                  Icons
+                  <Flex as="span" css={{ ml: '$1', color: '$gray8' }}>
+                    <ExternalIcon />
+                  </Flex>
+                </Link>
+              </Text>
+            </li>
+            <li>
+              <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+                <Link
+                  variant="subtle"
+                  href="https://stitches.dev/"
+                  target="_blank"
+                  css={{ display: 'inline-flex', alignItems: 'center' }}
+                >
+                  Stitches
+                  <Flex as="span" css={{ ml: '$1', color: '$gray8' }}>
+                    <ExternalIcon />
+                  </Flex>
+                </Link>
+              </Text>
+            </li>
+          </ul>
+        </Box>
+        {/* <Box>
             <Text as="h6" size="3" css={{ fontWeight: 500, lineHeight: '20px' }}>
               Docs
             </Text>
@@ -146,60 +145,59 @@ export const Footer = () => {
               </li>
             </ul>
           </Box> */}
-          <Box>
-            <Text as="h6" size="3" css={{ fontWeight: 500, lineHeight: '20px' }}>
-              Community
-            </Text>
-            <ul>
-              <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <Link
-                    href="https://github.com/radix-ui"
-                    variant="subtle"
-                    target="_blank"
-                    css={{ display: 'inline-flex', alignItems: 'center' }}
-                  >
-                    GitHub
-                    <Flex as="span" css={{ ml: '$1', color: '$gray8' }}>
-                      <ExternalIcon />
-                    </Flex>
-                  </Link>
-                </Text>
-              </li>
-              <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <Link
-                    href="https://twitter.com/radix_ui"
-                    variant="subtle"
-                    target="_blank"
-                    css={{ display: 'inline-flex', alignItems: 'center' }}
-                  >
-                    Twitter
-                    <Flex as="span" css={{ ml: '$1', color: '$gray8' }}>
-                      <ExternalIcon />
-                    </Flex>
-                  </Link>
-                </Text>
-              </li>
-              <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <Link
-                    href="https://discord.com/invite/7Xb99uG"
-                    variant="subtle"
-                    target="_blank"
-                    css={{ display: 'inline-flex', alignItems: 'center' }}
-                  >
-                    Discord
-                    <Flex as="span" css={{ ml: '$1', color: '$gray8' }}>
-                      <ExternalIcon />
-                    </Flex>
-                  </Link>
-                </Text>
-              </li>
-            </ul>
-          </Box>
-        </Grid>
-      </Container>
+        <Box>
+          <Text as="h6" size="3" css={{ fontWeight: 500, lineHeight: '20px' }}>
+            Community
+          </Text>
+          <ul>
+            <li>
+              <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+                <Link
+                  href="https://github.com/radix-ui"
+                  variant="subtle"
+                  target="_blank"
+                  css={{ display: 'inline-flex', alignItems: 'center' }}
+                >
+                  GitHub
+                  <Flex as="span" css={{ ml: '$1', color: '$gray8' }}>
+                    <ExternalIcon />
+                  </Flex>
+                </Link>
+              </Text>
+            </li>
+            <li>
+              <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+                <Link
+                  href="https://twitter.com/radix_ui"
+                  variant="subtle"
+                  target="_blank"
+                  css={{ display: 'inline-flex', alignItems: 'center' }}
+                >
+                  Twitter
+                  <Flex as="span" css={{ ml: '$1', color: '$gray8' }}>
+                    <ExternalIcon />
+                  </Flex>
+                </Link>
+              </Text>
+            </li>
+            <li>
+              <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+                <Link
+                  href="https://discord.com/invite/7Xb99uG"
+                  variant="subtle"
+                  target="_blank"
+                  css={{ display: 'inline-flex', alignItems: 'center' }}
+                >
+                  Discord
+                  <Flex as="span" css={{ ml: '$1', color: '$gray8' }}>
+                    <ExternalIcon />
+                  </Flex>
+                </Link>
+              </Text>
+            </li>
+          </ul>
+        </Box>
+      </Grid>
     </Box>
   );
 };
