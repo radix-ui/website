@@ -7,6 +7,76 @@ metaDescription: Radix Primitives releases and their changelogs.
 
 <Description>Radix Primitives releases and their changelogs.</Description>
 
+## 14/10/2021
+
+**All Primitives**
+
+- 🎉 All primitives moved to version <Badge size="1" variant="blue" css={{ fontFamily: '$mono' }}>0.1.1</Badge>
+- 🐛 Fixed component context scoping to improve composing multiple primitives <PRLink id={906} />
+- 🐛 Fixed CSS unmount animations <PRLink id={851} />
+
+<PackageRelease name="Accordion" version="0.1.1" />
+
+- ✨ Add new CSS variable to `Accordion.Content` to help with width animations <PRLink id={879} />
+
+<PackageRelease name="AlertDialog" version="0.1.1" />
+
+- ✨ Improve composability with `Dialog` <PRLink id={906} />
+- 🔥 Remove `AlertDialog.Content` `onInteractOutside` prop <PRLink id={846} />
+
+<PackageRelease name="Dialog" version="0.1.1" />
+
+- ✨ Improve composability with `AlertDialog` <PRLink id={906} />
+- ✨ Add pinch to zoom support to `DropdownMenu.Content` via `allowPinchZoom` prop <PRLink id={884} />
+
+<PackageRelease name="Context Menu" version="0.1.0" />
+
+- ✨ Add pinch to zoom support to `ContextMenu.Content` via `allowPinchZoom` prop <PRLink id={884} />
+- 🐛 Prevent scroll via arrow keypress on submenu triggers <PRLink id={908} />
+
+<PackageRelease name="Collapsible" version="0.1.1" />
+
+- ✨ Add new CSS variable to `Collapsible.Content` to help with width animations <PRLink id={879} />
+
+<PackageRelease name="Checkbox" version="0.1.1" />
+
+- 🐛 Prevent screen reader virtual cursor from accessing hidden input <PRLink id={870} />
+
+<PackageRelease name="Dropdown Menu" version="0.1.0" />
+
+- ✨ Improve composability with `Tooltip` <PRLink id={906} />
+- ✨ Add pinch to zoom support to `DropdownMenu.Content` via `allowPinchZoom` prop <PRLink id={884} />
+- 🐛 Prevent scroll via arrow keypress on submenu triggers <PRLink id={908} />
+
+<PackageRelease name="Hover Card" version="0.1.0" />
+
+- ✨ Open on focus to improve keyboard support <PRLink id={902} />
+- 🐛 Compose correct pointer events internally <PRLink id={893} />
+
+<PackageRelease name="Label" version="0.1.1" />
+
+- ✨ Allow its children to prevent event propagation <PRLink id={861} />
+
+<PackageRelease name="RadioGroup" version="0.1.1" />
+
+- 🐛 Prevent screen reader virtual cursor from accessing hidden inputs <PRLink id={870} />
+
+<PackageRelease name="Popover" version="0.1.1" />
+
+- ✨ Add pinch to zoom support to `Popover.Content` via `allowPinchZoom` prop <PRLink id={884} />
+
+<PackageRelease name="Slider" version="0.1.1" />
+
+- 🐛 Fix calculations when value is `0` <PRLink id={866} />
+
+<PackageRelease name="Switch" version="0.1.1" />
+
+- 🐛 Prevent screen reader virtual cursor from accessing hidden input <PRLink id={870} />
+
+<PackageRelease name="Tabs" version="0.1.1" />
+
+- 🔥 Unmount content within `Tabs.Content` when tab is inactive <PRLink id={859} />
+
 ## 07/09/2021
 
 **All Primitives**
