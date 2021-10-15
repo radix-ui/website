@@ -13,6 +13,10 @@ export async function getPackageData(name, version) {
   const bundlephobiaResponse = await fetch(
     `https://bundlephobia.com/api/size?package=@radix-ui/react-${name}@${version}`
   );
-  const bundlephobiaData = await bundlephobiaResponse.json();
-  return bundlephobiaData;
+  // sometimes we get an empty response body
+  try {
+    return await bundlephobiaResponse.json();
+  } catch (e) {
+    return {};
+  }
 }
