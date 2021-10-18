@@ -79,7 +79,13 @@ export function PropsTable({
                       </AccessibleIcon>
                     </IconButton>
                   </PopoverTrigger>
-                  <PopoverContent side="top">
+                  <PopoverContent
+                    side="top"
+                    onOpenAutoFocus={(event) => {
+                      event.preventDefault();
+                      (event.currentTarget as HTMLElement)?.focus();
+                    }}
+                  >
                     <Box css={{ py: '$2', px: '$3' }}>
                       <Text size="2" css={{ lineHeight: '20px' }}>
                         {description}

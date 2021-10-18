@@ -10,16 +10,13 @@ export function formatBytes(bytes, decimals = 2) {
 }
 
 export async function getPackageData(name, version) {
-  let bundlephobiaData: Record<string, any> = {};
+  const bundlephobiaResponse = await fetch(
+    `https://bundlephobia.com/api/size?package=@radix-ui/react-${name}@${version}`
+  );
+  // sometimes we get an empty response body
   try {
-    const bundlephobiaResponse = await fetch(
-      `https://bundlephobia.com/api/size?package=@radix-ui/react-${name}@${version}`
-    );
-    bundlephobiaData = await bundlephobiaResponse.json();
-  } catch {
-    console.warn(
-      `Can’t retrieve package data: https://bundlephobia.com/api/size?package=@radix-ui/react-${name}@${version}`
-    );
+    return await bundlephobiaResponse.json();
+  } catch (e) {
+    return {};
   }
-  return bundlephobiaData;
 }
