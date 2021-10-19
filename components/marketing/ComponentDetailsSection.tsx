@@ -69,11 +69,11 @@ const ThickCaretDown = (props: React.ComponentProps<'svg'>) => {
 };
 
 const InlineDropdownArrow = styled(DropdownMenuPrimitive.Arrow, {
-  fill: '$loContrast',
+  fill: '$panel',
 });
 
 const InlineDropdownContent = styled(DropdownMenuPrimitive.Content, {
-  bc: '$loContrast',
+  bc: '$panel',
   boxShadow: '0px 5px 30px -5px $colors$shadowDark',
   p: '$1',
   br: '$3',
@@ -91,12 +91,12 @@ const InlineDropdownRadioItem = styled(DropdownMenuPrimitive.RadioItem, {
   cursor: 'default',
   '@hover': {
     '&:hover': {
-      bc: '$slate3',
+      bc: '$slateA3',
       outline: 0,
     },
   },
   '&:focus': {
-    bc: '$slate3',
+    bc: '$slateA3',
     outline: 0,
   },
   '&[data-state="checked"]': {
@@ -230,37 +230,38 @@ export const ComponentDetailsSection = () => {
               }}
             >
               <Circle
-                size={250}
+                size={180}
                 angle={-45}
                 color1="var(--colors-slateA4)"
                 color2="var(--colors-indigoA6)"
               />
               <Circle
-                size={400}
+                size={300}
                 angle={20}
                 color1="var(--colors-slateA3)"
                 color2="var(--colors-indigoA5)"
               />
               <Circle
-                size={550}
+                size={420}
                 angle={35}
                 color1="var(--colors-slateA2)"
                 color2="var(--colors-indigoA4)"
               />
               <Circle
-                size={700}
+                size={540}
                 angle={-50}
                 color1="var(--colors-slateA2)"
                 color2="var(--colors-indigoA3)"
               />
-              {[850, 1000, 1150, 1300, 1450, 1600, 1750, 1900, 2050, 2200, 2350, 2500].map(
+              {[660, 780, 900, 1020, 1140, 1260, 1380, 1500, 1620, 1740, 1860, 1980, 2100].map(
                 (size, i) => (
                   <Circle
+                    key={i}
                     size={size + i * i * 5}
                     angle={-45 + i * 15}
                     color1="var(--colors-slateA2)"
                     color2="var(--colors-indigoA3)"
-                    opacity={1 - i * 0.08}
+                    opacity={1 - i * 0.1}
                   />
                 )
               )}

@@ -1,12 +1,15 @@
 import React from 'react';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
-import { Flex, Text, styled, Grid, TextField, globalCss } from '@modulz/design-system';
+import { Flex, Text, styled, Grid, TextField, globalCss, darkTheme } from '@modulz/design-system';
 import { DemoButton } from '@components/marketing/DemoButton';
 import { DemoIconButton } from '@components/marketing/DemoIconButton';
 
 const setGlobalStyles = globalCss({
   body: {
     bc: 'transparent',
+    [`.${darkTheme} &`]: {
+      bc: 'transparent',
+    },
   },
 });
 

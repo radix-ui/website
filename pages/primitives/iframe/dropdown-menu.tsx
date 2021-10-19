@@ -1,6 +1,6 @@
 import React from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { Flex, globalCss, styled } from '@modulz/design-system';
+import { darkTheme, Flex, globalCss, styled } from '@modulz/design-system';
 import {
   CaretDownIcon,
   CaretRightIcon,
@@ -14,6 +14,9 @@ import { DemoButton } from '@components/marketing/DemoButton';
 const setGlobalStyles = globalCss({
   body: {
     bc: 'transparent',
+    [`.${darkTheme} &`]: {
+      bc: 'transparent',
+    },
   },
 });
 

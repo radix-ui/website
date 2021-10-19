@@ -9,6 +9,7 @@ import {
   Paragraph,
   Section,
   Separator,
+  darkTheme,
 } from '@modulz/design-system';
 import { MarketingCaption } from './MarketingCaption';
 
@@ -16,9 +17,15 @@ export const BenefitsSection = () => {
   return (
     <Section
       css={{
-        bc: '$cyan2',
+        bc: '$cyan3',
         position: 'relative',
         overflow: 'hidden',
+        $$endColor: '$colors$cyan3',
+        backgroundImage: 'linear-gradient(to bottom right, $blue3, $$endColor 65%)',
+        [`.${darkTheme} &`]: {
+          $$endColor: '$colors$cyan2',
+          backgroundImage: 'linear-gradient(to bottom right, $teal8, $$endColor 65%)',
+        },
         pb: '$8',
         '@bp2': {
           pb: '$7',
@@ -205,7 +212,7 @@ const FancyBackgroundChart = () => {
         css={{
           // This is free space to the right
           height: 310,
-          background: 'linear-gradient(to bottom, $cyan2, $slate1)',
+          background: 'linear-gradient(to bottom, $$endColor, $slate1)',
           flex: '0 1 auto',
           flexGrow: 0,
 
@@ -261,7 +268,7 @@ const Chart = () => (
         y2="319"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stopColor="var(--colors-cyan2)" />
+        <stop stopColor="var(---endColor)" />
         <stop offset="1" stopColor="var(--colors-slate1)" />
       </linearGradient>
       <linearGradient

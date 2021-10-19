@@ -12,6 +12,7 @@ import {
   Card,
   Avatar,
   keyframes,
+  darkTheme,
 } from '@modulz/design-system';
 import {
   CheckCircledIcon,
@@ -199,41 +200,66 @@ export const AccessibilitySection = () => {
       <Box
         css={{
           position: 'absolute',
-          width: 1550,
-          height: 680,
-          bottom: -300,
           left: '50%',
           transform: 'translateX(-50%)',
+          width: 500,
+          height: 1200,
+          bottom: -200,
+          '@bp1': {
+            width: 1550,
+            height: 680,
+            bottom: -300,
+          },
         }}
       >
         <Box
           css={{
-            width: 520,
-            height: 520,
-            left: 55,
             position: 'absolute',
-            border: '10px solid $colors$orangeA3',
+            border: '10px solid $colors$sageA3',
             transform: 'rotate(-15deg)',
+            width: 320,
+            height: 320,
+            top: 0,
+            left: 50,
+            '@bp1': {
+              width: 520,
+              height: 520,
+              top: 0,
+              left: 55,
+            },
           }}
         />
         <Triangle
           css={{
-            color: '$skyA3',
+            color: '$slateA3',
             position: 'absolute',
-            left: 535,
-            top: 65,
-            transform: 'rotate(135deg)',
+            transform: 'rotate(10deg)',
+            width: 420,
+            left: 100,
+            top: 300,
+            '@bp1': {
+              transform: 'rotate(135deg)',
+              width: 674,
+              left: 535,
+              top: 65,
+            },
           }}
         />
         <Box
           css={{
             position: 'absolute',
-            top: -55,
-            left: 935,
-            width: 610,
-            height: 610,
             br: '$round',
-            border: '10px solid $colors$pinkA3',
+            border: '10px solid $colors$mauveA3',
+            top: 700,
+            left: 0,
+            width: 400,
+            height: 400,
+            '@bp1': {
+              top: -55,
+              left: 935,
+              width: 610,
+              height: 610,
+            },
           }}
         />
       </Box>
@@ -482,10 +508,16 @@ const MockScreenReader = ({ css, ...props }: React.ComponentProps<typeof Heading
       size="3"
       as="span"
       css={{
+        $$textBgStop1: '#4F4B59',
+        $$textBgStop2: '#545685',
         color: 'transparent',
         WebkitBackgroundClip: 'text',
         userSelect: 'none',
-        backgroundImage: 'linear-gradient(to bottom right, #4F4B59, #545685)',
+        backgroundImage: 'linear-gradient(to bottom right, $$textBgStop1, $$textBgStop2)',
+        [`.${darkTheme} &`]: {
+          $$textBgStop1: '$colors$indigo12',
+          $$textBgStop2: '$colors$whiteA11',
+        },
         ...css,
       }}
       {...props}
@@ -505,11 +537,17 @@ const MockTypeaheadOutput = styled(Text, {
   '&:empty': {
     display: 'none',
   },
+  [`.${darkTheme} &`]: {
+    bc: '$indigo3',
+  },
   variants: {
     size: {}, // Including as a workaround for TS bugs with defaultVariants
     variant: {
       contrast: {
         color: '$indigo12',
+        [`.${darkTheme} &`]: {
+          color: '$indigo11',
+        },
       },
     },
   },
@@ -676,11 +714,19 @@ const MockDropdownItem = styled(Box, {
   color: '$hiContrast',
   br: 5,
 
+  [`.${darkTheme} &`]: {
+    color: '$slate11',
+  },
+
   variants: {
     focused: {
       true: {
         backgroundColor: '$indigo11',
         color: 'white',
+        [`.${darkTheme} &`]: {
+          color: 'white',
+          backgroundColor: '$indigo7',
+        },
       },
     },
   },
@@ -710,19 +756,23 @@ const MockDropdownCheckboxItem = ({
 const GlassCard = styled(Card, {
   bc: '$whiteA9',
   backdropFilter: 'blur(8px)',
+  [`.${darkTheme} &`]: {
+    bc: '$whiteA2',
+    boxShadow: 'inset 0 0 0 1px $colors$whiteA4',
+  },
 });
 
 const Triangle = (props: React.ComponentProps<typeof Box>) => (
   <Box {...props}>
     <svg
-      width="674"
-      height="584"
       viewBox="0 0 674 584"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style={{ width: '100%' }}
     >
       <path
         d="M9.64854 578.265L337.465 10.47L665.282 578.265H9.64854Z"
+        vectorEffect="non-scaling-stroke"
         stroke="currentcolor"
         strokeWidth="10"
       />
@@ -743,24 +793,6 @@ const KeyboardIcon = (props: React.ComponentProps<'svg'>) => (
       fillRule="evenodd"
       clipRule="evenodd"
       d="M13.5 4H1.5C1.22386 4 1 4.22386 1 4.5V10.5C1 10.7761 1.22386 11 1.5 11H13.5C13.7761 11 14 10.7761 14 10.5V4.5C14 4.22386 13.7761 4 13.5 4ZM1.5 3C0.671573 3 0 3.67157 0 4.5V10.5C0 11.3284 0.671573 12 1.5 12H13.5C14.3284 12 15 11.3284 15 10.5V4.5C15 3.67157 14.3284 3 13.5 3H1.5ZM2 5H3V6H2V5ZM5 5H4V6H5V5ZM6 5H7V6H6V5ZM9 5H8V6H9V5ZM10 5H11V6H10V5ZM13 5H12V6H13V5ZM11 7H12V8H11V7ZM13 9H12V10H13V9ZM9 7H10V8H9V7ZM8 7H7V8H8V7ZM5 7H6V8H5V7ZM4 7H3V8H4V7ZM2 9H3V10H2V9ZM11 9H4V10H11V9Z"
-      fill="currentcolor"
-    />
-  </svg>
-);
-
-const TransformIcon = (props: React.ComponentProps<'svg'>) => (
-  <svg
-    width="15"
-    height="15"
-    viewBox="0 0 15 15"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M0.849609 1.74998C0.849609 1.25292 1.25255 0.849976 1.74961 0.849976H3.24961C3.74667 0.849976 4.14961 1.25292 4.14961 1.74998V2.04998H10.8496V1.74998C10.8496 1.25292 11.2526 0.849976 11.7496 0.849976H13.2496C13.7467 0.849976 14.1496 1.25292 14.1496 1.74998V3.24998C14.1496 3.74703 13.7467 4.14998 13.2496 4.14998H12.9496V10.85H13.2496C13.7467 10.85 14.1496 11.2529 14.1496 11.75V13.25C14.1496 13.747 13.7467 14.15 13.2496 14.15H11.7496C11.2526 14.15 10.8496 13.747 10.8496 13.25V12.95H4.14961V13.25C4.14961 13.747 3.74667 14.15 3.24961 14.15H1.74961C1.25255 14.15 0.849609 13.747 0.849609 13.25V11.75C0.849609 11.2529 1.25255 10.85 1.74961 10.85H2.04961V4.14998H1.74961C1.25255 4.14998 0.849609 3.74703 0.849609 3.24998V1.74998ZM2.94961 4.14998V10.85H3.24961C3.74667 10.85 4.14961 11.2529 4.14961 11.75V12.05H10.8496V11.75C10.8496 11.2529 11.2526 10.85 11.7496 10.85H12.0496V4.14998H11.7496C11.2526 4.14998 10.8496 3.74703 10.8496 3.24998V2.94998H4.14961V3.24998C4.14961 3.74703 3.74667 4.14998 3.24961 4.14998H2.94961ZM2.34961 1.74998H1.74961V2.34998V2.64998V3.24998H2.34961H2.64961H3.24961V2.64998V2.34998V1.74998H2.64961H2.34961ZM5.09961 5.99998C5.09961 5.50292 5.50255 5.09998 5.99961 5.09998H6.99961C7.49667 5.09998 7.89961 5.50292 7.89961 5.99998V6.99998C7.89961 7.03591 7.8975 7.07134 7.89341 7.10618C7.92824 7.10208 7.96368 7.09998 7.99961 7.09998H8.99961C9.49667 7.09998 9.89961 7.50292 9.89961 7.99998V8.99998C9.89961 9.49703 9.49667 9.89998 8.99961 9.89998H7.99961C7.50255 9.89998 7.09961 9.49703 7.09961 8.99998V7.99998C7.09961 7.96405 7.10171 7.92861 7.10581 7.89378C7.07098 7.89787 7.03554 7.89998 6.99961 7.89998H5.99961C5.50255 7.89998 5.09961 7.49703 5.09961 6.99998V5.99998ZM6.09961 5.99998H5.99961V6.09998V6.89998V6.99998H6.09961H6.89961H6.99961V6.89998V6.09998V5.99998H6.89961H6.09961ZM7.99961 7.99998H8.09961H8.89961H8.99961V8.09998V8.89998V8.99998H8.89961H8.09961H7.99961V8.89998V8.09998V7.99998ZM2.64961 11.75H2.34961H1.74961V12.35V12.65V13.25H2.34961H2.64961H3.24961V12.65V12.35V11.75H2.64961ZM11.7496 1.74998H12.3496H12.6496H13.2496V2.34998V2.64998V3.24998H12.6496H12.3496H11.7496V2.64998V2.34998V1.74998ZM12.6496 11.75H12.3496H11.7496V12.35V12.65V13.25H12.3496H12.6496H13.2496V12.65V12.35V11.75H12.6496Z"
       fill="currentcolor"
     />
   </svg>

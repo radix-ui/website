@@ -1,5 +1,4 @@
 import React from 'react';
-import NextLink from 'next/link';
 import {
   Box,
   Grid,
@@ -11,20 +10,16 @@ import {
   Paragraph,
   Section,
   Card,
-  Avatar,
-  Separator,
   darkTheme,
 } from '@modulz/design-system';
-import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { MarketingCaption } from './MarketingCaption';
-import { MarketingButton } from './MarketingButton';
 import { CodeDemo } from './CodeDemo';
 
 enum Highlights {
-  Unstyled = '1-20',
-  Composable = '22-34',
-  Customizable = '35-43',
-  Consistent = '43, 47',
+  Unstyled = '1-18',
+  Composable = '20-36',
+  Customizable = '37-53',
+  Consistent = '54-70',
 }
 
 export const DeveloperExperienceSection = () => {
@@ -34,7 +29,12 @@ export const DeveloperExperienceSection = () => {
     <Section
       // className={darkTheme}
       css={{
-        background: 'linear-gradient(to bottom right, $sky3, $cyan4, $blue6)',
+        overflow: 'hidden',
+        backgroundColor: '$sky6',
+        background: `
+          radial-gradient(ellipse at 100% 100%, hsl(254 100% 6% / 0.07), $violetA1, transparent),
+          linear-gradient(to bottom right, $mint2, $indigo2, $pink3, $cyan3)
+        `,
         [`&.${darkTheme}`]: {
           background: 'linear-gradient(to bottom right, $sky2, $cyan2, $cyan6)',
         },
@@ -86,12 +86,12 @@ export const DeveloperExperienceSection = () => {
                 flow="column"
                 css={{
                   gridTemplateColumns: 'repeat(4, 1fr) 1px',
-                  gridTemplateRows: 'auto auto',
+                  gridTemplateRows: '420px auto',
                 }}
               >
-                <BlendedCard>
-                  <StyledCodeDemo value={code1} language="jsx" css={{ p: '$2', height: '100%' }} />
-                </BlendedCard>
+                <CodeWindow className={darkTheme}>
+                  <StyledCodeDemo value={code.unstyled} language="jsx" css={{ p: '$2' }} />
+                </CodeWindow>
                 <Box>
                   <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>
                     Unstyled
@@ -101,9 +101,9 @@ export const DeveloperExperienceSection = () => {
                   </Text>
                 </Box>
 
-                <BlendedCard>
-                  <StyledCodeDemo value={code2} language="jsx" css={{ p: '$2', height: '100%' }} />
-                </BlendedCard>
+                <CodeWindow className={darkTheme}>
+                  <StyledCodeDemo value={code.composable} language="jsx" css={{ p: '$2' }} />
+                </CodeWindow>
                 <Box>
                   <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>
                     Composable
@@ -113,9 +113,9 @@ export const DeveloperExperienceSection = () => {
                   </Text>
                 </Box>
 
-                <BlendedCard>
-                  <StyledCodeDemo value={code3} language="jsx" css={{ p: '$2', height: '100%' }} />
-                </BlendedCard>
+                <CodeWindow className={darkTheme}>
+                  <StyledCodeDemo value={code.customizable} language="jsx" css={{ p: '$2' }} />
+                </CodeWindow>
                 <Box>
                   <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>
                     Customizable
@@ -125,9 +125,9 @@ export const DeveloperExperienceSection = () => {
                   </Text>
                 </Box>
 
-                <BlendedCard>
-                  <StyledCodeDemo value={code4} language="jsx" css={{ p: '$2', height: '100%' }} />
-                </BlendedCard>
+                <CodeWindow className={darkTheme}>
+                  <StyledCodeDemo value={code.consistent} language="jsx" css={{ p: '$2' }} />
+                </CodeWindow>
                 <Box>
                   <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>
                     Consistent
@@ -219,10 +219,14 @@ export const DeveloperExperienceSection = () => {
               '@bp2': { display: 'block' },
             }}
           >
-            <CodeWindow css={{ position: 'absolute', inset: 0 }}>
+            <CodeWindow
+              withChrome
+              className={darkTheme}
+              css={{ position: 'absolute', inset: 0, overflow: 'hidden' }}
+            >
               <StyledCodeDemo
                 language="jsx"
-                value={code}
+                value={allCode}
                 line={activeHighlight}
                 data-invert-line-highlight="false"
                 css={{
@@ -281,58 +285,70 @@ const StyledCodeDemo = React.forwardRef<HTMLPreElement, React.ComponentProps<typ
 
 const CodeWindow = styled('div', {
   $$bgColor: '$colors$sky1',
-  [`.${darkTheme} &`]: {
-    $$bgColor: '$colors$whiteA4',
+  [`&.${darkTheme}`]: {
+    $$bgColor: '$colors$sky2',
+  },
+  [`.${darkTheme} &.${darkTheme}`]: {
+    $$bgColor: '$colors$violet1',
   },
 
   position: 'relative',
-  px: '$2',
-  // py: '$2',
-  pt: '$6',
-  pb: '$2',
   bc: '$$bgColor',
   br: '$4',
-  overflow: 'hidden',
-  boxShadow: `
-    0 0 1px $colors$blackA8,
-    0 30px 40px -50px $colors$blackA8,
-    0 15px 60px -40px $colors$blackA9
-  `,
-  '&::before': {
-    position: 'absolute',
-    top: 10,
-    left: 10,
-    width: 52,
-    height: 12,
-    content: '""',
-    background: `
-    radial-gradient(circle closest-side at 6px, $slateA7 90%, #FFFFFF00),
-    radial-gradient(circle closest-side at 24px, $slateA7 90%, #FFFFFF00),
-    radial-gradient(circle closest-side at 42px, $slateA7 90%, #FFFFFF00)
-    `,
-  },
-  '&::after': {
-    position: 'absolute',
-    top: 8,
-    left: 0,
-    right: 0,
-    fontFamily: '$untitled',
-    fontSize: '$1',
-    textAlign: 'center',
-    color: '$slate9',
-    content: '"ActiveDeploymentPopover.jsx"',
+
+  variants: {
+    withChrome: {
+      true: {
+        px: '$2',
+        // py: '$2',
+        pt: '$6',
+        pb: '$2',
+        // boxShadow: `
+        //   0 0 1px $colors$blackA8,
+        //   0 30px 40px -50px $colors$blackA8,
+        //   0 15px 60px -40px $colors$blackA9
+        // `,
+        boxShadow: '0 50px 100px -50px hsl(254 100% 6% / 0.7)',
+        '&::before': {
+          position: 'absolute',
+          top: 10,
+          left: 10,
+          width: 52,
+          height: 12,
+          content: '""',
+          background: `
+        radial-gradient(circle closest-side at 6px, $slateA7 90%, #FFFFFF00),
+        radial-gradient(circle closest-side at 24px, $slateA7 90%, #FFFFFF00),
+        radial-gradient(circle closest-side at 42px, $slateA7 90%, #FFFFFF00)
+        `,
+        },
+        '&::after': {
+          position: 'absolute',
+          top: 8,
+          left: 0,
+          right: 0,
+          fontFamily: '$untitled',
+          fontSize: '$1',
+          textAlign: 'center',
+          color: '$slate9',
+          content: '"DeploymentDetail.jsx"',
+        },
+      },
+    },
   },
 });
 
 const BlendedCard = styled(Card, {
   $$shadowColor: '$colors$skyA12',
-  $$bgColor: '$colors$sky1',
+  $$bgColor: '$colors$plum1',
   [`.${darkTheme} &`]: {
     $$shadowColor: '$colors$blackA12',
     $$bgColor: '$colors$whiteA4',
   },
 
   cursor: 'default',
+  position: 'relative',
+  zIndex: 1,
   willChange: 'transform',
   backgroundColor: '$$bgColor',
   '&:before': {
@@ -381,7 +397,8 @@ const BlendedCard = styled(Card, {
   },
 });
 
-const code1 = `// Add styles with your preferred CSS technology
+const code = {
+  unstyled: `// Add styles with your preferred CSS technology
 const TooltipContent = styled(Tooltip.Content, {
   backgroundColor: 'black',
   borderRadius: '3px',
@@ -392,146 +409,80 @@ const PopoverContent = styled(Popover.Content, {
   backgroundColor: 'white',
   boxShadow: '0 2px 10px -3px rgb(0 0 0 / 20%)',
   borderRadius: '3px',
-  padding: '5px'
 });
 
 const DialogContent = styled(Dialog.Content, {
   backgroundColor: 'white',
   boxShadow: '0 3px 15px -4px rgb(0 0 0 / 30%)',
   borderRadius: '5px',
-  padding: '20px'
-});
-`;
+});`,
 
-const code2 = `// Compose a custom Tooltip
-export const StatusTooltip = ({ state, text, ...props }) => (
-  <Tooltip.Root>
-    <Tooltip.Trigger asChild>
-      <Status variant={state} />
-    </Tooltip.Trigger>
-    <TooltipContent {...props}>
-      <Tooltip.Arrow />
-      {text}
-    </TooltipContent>
-  </Tooltip.Root>
-);
-`;
+  composable: `// Compose a custom Tooltip component
+export const StatusTooltip = ({ state, label }) => {
+  return (
+    <Tooltip.Root>
+      <Tooltip.Trigger asChild>
+        <Text>
+          <Status variant={state} />
+        </Text>
+      </Tooltip.Trigger>
+      <TooltipContent>
+        <Tooltip.Arrow />
+        {label}
+      </TooltipContent>
+    </Tooltip.Root>
+  );
+};`,
 
-const code3 = `// Compose a custom Popover and Dialog
-export const ActiveDeployment = () => {
+  customizable: `// Compose a Popover with custom focus and positioning
+export const DeploymentPopover = ({ children }) => {
   const popoverCloseButton = React.useRef(null);
-  const dialogCloseButton = React.useRef(null);
 
   return (
     <Popover.Root>
       <Popover.Trigger>View deployment</Popover.Trigger>
       <PopoverContent
-        side="top"
-        sideOffset={5}
+        align="start"
+        alignOffset={-10}
+        collisionTolerance={10}
+        portalled={false}
         onOpenAutoFocus={(event) => {
           // Focus the close button when popover opens
           event.preventDefault();
           popoverCloseButton.current?.focus();
         }}
       >
-`;
-
-const code4 = `<PopoverContent
-  side="top"
-  sideOffset={5}
-  onOpenAutoFocus={(event) => {
-    // Focus the close button when popover opens
-    event.preventDefault();
-    popoverCloseButton.current?.focus();
-  }}
->
-  <Dialog.Root>
-    <Dialog.Trigger>Manage deployment</Dialog.Trigger>
-    <Dialog.Overlay />
-    <DialogContent
-      onOpenAutoFocus={(event) => {
-        // Focus the close button when dialog opens
-        event.preventDefault();
-        dialogCloseButton.current?.focus();
-      }}
-    >
-`;
-
-const code = `// Add styles with your preferred CSS technology
-const TooltipContent = styled(Tooltip.Content, {
-  backgroundColor: 'black',
-  borderRadius: '3px',
-  padding: '5px'
-});
-
-const PopoverContent = styled(Popover.Content, {
-  backgroundColor: 'white',
-  boxShadow: '0 2px 10px -3px rgb(0 0 0 / 20%)',
-  borderRadius: '3px',
-  padding: '5px'
-});
-
-const DialogContent = styled(Dialog.Content, {
-  backgroundColor: 'white',
-  boxShadow: '0 3px 15px -4px rgb(0 0 0 / 30%)',
-  borderRadius: '5px',
-  padding: '20px'
-});
-
-// Compose a custom Tooltip
-export const StatusTooltip = ({ state, text, ...props }) => (
-  <Tooltip.Root>
-    <Tooltip.Trigger asChild>
-      <Status variant={state} />
-    </Tooltip.Trigger>
-    <TooltipContent {...props}>
-      <Tooltip.Arrow />
-      {text}
-    </TooltipContent>
-  </Tooltip.Root>
-);
-
-// Compose a custom Popover and Dialog
-export const ActiveDeployment = () => {
-  const popoverCloseButton = React.useRef(null);
-  const dialogCloseButton = React.useRef(null);
-
-  return (
-    <Popover.Root>
-      <Popover.Trigger>View deployment</Popover.Trigger>
-      <PopoverContent
-        side="top"
-        sideOffset={5}
-        onOpenAutoFocus={(event) => {
-          // Focus the close button when popover opens
-          event.preventDefault();
-          popoverCloseButton.current?.focus();
-        }}
-      >
-        <Dialog.Root>
-          <Dialog.Trigger>Manage deployment</Dialog.Trigger>
-          <Dialog.Overlay />
-          <DialogContent
-            onOpenAutoFocus={(event) => {
-              // Focus the close button when dialog opens
-              event.preventDefault();
-              dialogCloseButton.current?.focus();
-            }}
-          >
-            <Button>Promote to Production</Button>
-            <Button>Redeploy</Button>
-            <Button>Copy URL</Button>
-            <Dialog.Close ref={dialogCloseButton}>
-              Close
-            </Dialog.Close>
-          </DialogContent>
-        </Dialog.Root>
-
+        {children}
         <Popover.Close ref={popoverCloseButton}>
           Close
         </Popover.Close>
       </PopoverContent>
     </Popover.Root>
   );
+};`,
+
+  consistent: `// Compose a Dialog with custom focus management
+export const InfoDialog = ({ children }) => {
+  const dialogCloseButton = React.useRef(null);
+  return (
+    <Dialog.Root>
+      <Dialog.Trigger>View details</Dialog.Trigger>
+      <Dialog.Overlay />
+      <DialogContent
+        onOpenAutoFocus={(event) => {
+          // Focus the close button when dialog opens
+          event.preventDefault();
+          dialogCloseButton.current?.focus();
+        }}
+      >
+        {children}
+        <Dialog.Close ref={dialogCloseButton}>
+          Close
+        </Dialog.Close>
+      </DialogContent>
+    </Dialog.Root>
+  );
+};`,
 };
-`;
+
+const allCode = [code.unstyled, code.composable, code.customizable, code.consistent].join('\n\n');

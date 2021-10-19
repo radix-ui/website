@@ -1,4 +1,4 @@
-import { styled } from '@modulz/design-system';
+import { darkTheme, styled } from '@modulz/design-system';
 
 export const DemoButton = styled('button', {
   // Reset
@@ -25,15 +25,23 @@ export const DemoButton = styled('button', {
             bc: '$whiteA12',
           },
         },
+        [`.${darkTheme} &`]: {
+          backgroundColor: '$whiteA5',
+          '@hover': {
+            '&:hover': {
+              bc: '$whiteA6',
+            },
+          },
+        },
         '&:focus-visible': {
           boxShadow: '0 0 0 2px $colors$grayA6',
         },
       },
       gray: {
-        backgroundColor: '$grayA3',
+        backgroundColor: '$grayA4',
         '@hover': {
           '&:hover': {
-            bc: '$grayA4',
+            bc: '$grayA5',
           },
         },
         '&:focus-visible': {

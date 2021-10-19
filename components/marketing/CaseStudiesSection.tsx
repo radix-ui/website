@@ -21,7 +21,7 @@ import { CaseStudyLogo } from './CaseStudyLogo';
 
 export const CaseStudiesSection = () => {
   return (
-    <Section css={{ background: '$loContrast' }}>
+    <Section>
       <Container size="3">
         <Box css={{ mb: '$5' }}>
           <MarketingCaption css={{ mb: '$1' }}>Case studies</MarketingCaption>

@@ -1,10 +1,13 @@
 import React from 'react';
 import * as SliderPrimitive from '@radix-ui/react-slider';
-import { Flex, globalCss, styled } from '@modulz/design-system';
+import { darkTheme, Flex, globalCss, styled } from '@modulz/design-system';
 
 const setGlobalStyles = globalCss({
   body: {
     bc: 'transparent',
+    [`.${darkTheme} &`]: {
+      bc: 'transparent',
+    },
   },
 });
 

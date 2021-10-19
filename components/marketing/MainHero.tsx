@@ -5,10 +5,9 @@ import {
   Grid,
   Text,
   styled,
-  keyframes,
+  darkTheme,
   Container,
   Flex,
-  Heading,
   Paragraph,
   Section,
 } from '@modulz/design-system';
@@ -131,7 +130,12 @@ export const MainHero = () => {
                 visible={iFramesReady}
                 tabIndex={-1}
                 src="/primitives/iframe/dialog"
-                css={{ background: 'linear-gradient(to bottom right, $indigo4, $violet5)' }}
+                css={{
+                  background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                  [`.${darkTheme} &`]: {
+                    background: 'linear-gradient(to bottom right, $indigo2, $plum3)',
+                  },
+                }}
               />
             </IFrameSkeleton>
             <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
@@ -149,7 +153,12 @@ export const MainHero = () => {
                 visible={iFramesReady}
                 tabIndex={-1}
                 src="/primitives/iframe/dropdown-menu"
-                css={{ background: 'linear-gradient(to bottom right,  $crimson4, $blue5)' }}
+                css={{
+                  background: 'linear-gradient(to bottom right,  $crimson4, $blue5)',
+                  [`.${darkTheme} &`]: {
+                    background: 'linear-gradient(to bottom right,  $crimson3, $blue3)',
+                  },
+                }}
               />
             </IFrameSkeleton>
             <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
@@ -167,7 +176,12 @@ export const MainHero = () => {
                 visible={iFramesReady}
                 tabIndex={-1}
                 src="/primitives/iframe/popover"
-                css={{ background: 'linear-gradient(to bottom right, $lime3, $cyan5)' }}
+                css={{
+                  background: 'linear-gradient(to bottom right, $lime3, $cyan5)',
+                  [`.${darkTheme} &`]: {
+                    background: 'linear-gradient(to bottom right, $mint3, $sand2)',
+                  },
+                }}
               />
             </IFrameSkeleton>
             <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
@@ -185,7 +199,12 @@ export const MainHero = () => {
                 visible={iFramesReady}
                 tabIndex={-1}
                 src="/primitives/iframe/slider"
-                css={{ background: 'linear-gradient(120deg, $gray3, $sky4)' }}
+                css={{
+                  background: 'linear-gradient(120deg, $gray3, $sky4)',
+                  [`.${darkTheme} &`]: {
+                    background: 'linear-gradient(120deg, $mauve4, $sky4)',
+                  },
+                }}
               />
             </IFrameSkeleton>
             <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
@@ -203,7 +222,12 @@ export const MainHero = () => {
                 visible={iFramesReady}
                 tabIndex={-1}
                 src="/primitives/iframe/dialog"
-                css={{ background: 'linear-gradient(to bottom right, $indigo4, $violet5)' }}
+                css={{
+                  background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                  [`.${darkTheme} &`]: {
+                    background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                  },
+                }}
               />
             </IFrameSkeleton>
             <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>

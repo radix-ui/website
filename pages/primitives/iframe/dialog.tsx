@@ -1,12 +1,15 @@
 import React from 'react';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
-import { Flex, Text, styled, keyframes, Box, globalCss } from '@modulz/design-system';
+import { Flex, Text, styled, keyframes, Box, globalCss, darkTheme } from '@modulz/design-system';
 import { DemoButton } from '@components/marketing/DemoButton';
 import { DemoIconButton } from '@components/marketing/DemoIconButton';
 
 const setGlobalStyles = globalCss({
   body: {
     bc: 'transparent',
+    [`.${darkTheme} &`]: {
+      bc: 'transparent',
+    },
   },
 });
 
