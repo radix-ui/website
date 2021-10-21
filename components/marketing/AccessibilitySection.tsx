@@ -117,7 +117,7 @@ const animations: Record<SequenceType, AnimationKeyframe[]> = {
       key: '',
       typeahead: '',
       dropdown: 'item1',
-      duration: 2500,
+      duration: 2400,
     },
     {
       key: 'g',
@@ -159,7 +159,7 @@ const animations: Record<SequenceType, AnimationKeyframe[]> = {
       key: 'r',
       typeahead: 'go to r',
       dropdown: 'item4',
-      duration: 1500,
+      duration: 1600,
     },
     {
       key: 's',
@@ -183,7 +183,7 @@ const animations: Record<SequenceType, AnimationKeyframe[]> = {
       key: 'w',
       typeahead: 'show',
       dropdown: 'item1',
-      duration: 2500,
+      duration: 2400,
     },
   ],
 
@@ -191,7 +191,7 @@ const animations: Record<SequenceType, AnimationKeyframe[]> = {
     {
       key: '',
       dropdown: 'item1',
-      duration: 2500,
+      duration: 2400,
     },
     {
       key: 'left',
@@ -236,22 +236,12 @@ const animations: Record<SequenceType, AnimationKeyframe[]> = {
     {
       key: 'down',
       dropdown: 'item4',
-      duration: 1200,
+      duration: 800,
     },
     {
-      key: 'up',
-      dropdown: 'item3',
-      duration: 400,
-    },
-    {
-      key: 'up',
-      dropdown: 'item2',
-      duration: 400,
-    },
-    {
-      key: 'up',
+      key: 'down',
       dropdown: 'item1',
-      duration: 2000,
+      duration: 1200,
     },
   ],
 };
@@ -327,7 +317,6 @@ export const AccessibilitySection = () => {
 
   React.useEffect(() => {
     const updateKeyframe = () => {
-      console.log('updateKeyframe');
       // Increment keyframe counter, or loop from 1st when last keyframe is reached
       keyframeRef.current =
         keyframeRef.current < animations[currentSequence].length - 1 ? keyframeRef.current + 1 : 1;
@@ -445,7 +434,6 @@ export const AccessibilitySection = () => {
           css={{
             br: '$4',
             bc: '$slateA3',
-            // p: '$5',
             mb: '$5',
             boxShadow: '0 0 1px $colors$slateA9',
             backdropFilter: 'blur(8px)',
@@ -463,59 +451,75 @@ export const AccessibilitySection = () => {
               br: '$3',
               overflow: 'hidden',
               bc: '$mauve1',
-              gridTemplateRows: '270px auto',
+              gridTemplateRows: 'auto',
+              gridAutoRows: '270px',
+              '& > *:nth-child(2)': {
+                boxShadow: '0 1px $colors$grayA4',
+              },
               '@bp1': {
+                '& > *:nth-child(2)': {
+                  boxShadow: '1px 0 $colors$grayA4',
+                },
+              },
+              '@bp2': {
                 gridTemplateRows: '270px',
+                '& > *:nth-child(2)': {
+                  boxShadow: '1px 0 $colors$grayA4, -1px 0 $colors$grayA4',
+                },
               },
               '& > *': {
                 gridTemplateRows: 'auto 1fr',
-                p: '$3',
-              },
-              '& > *:nth-child(2)': {
-                boxShadow: '1px 0 $colors$grayA4, -1px 0 $colors$grayA4',
+                gap: '$1',
               },
             }}
           >
-            <Flex direction="column" align="center" justify="center" css={{ bc: '$grayA1' }}>
-              <AnimationStateButton
-                active={currentSequence === 'screenReader'}
-                onClick={() => updateSequence('screenReader')}
-              >
-                Screen reader support
-              </AnimationStateButton>
-              <AnimationStateButton
-                active={currentSequence === 'typeahead'}
-                onClick={() => updateSequence('typeahead')}
-              >
-                Typeahead support
-              </AnimationStateButton>
-              <AnimationStateButton
-                active={currentSequence === 'keyboardNavigation'}
-                onClick={() => updateSequence('keyboardNavigation')}
-              >
-                Keyboard navigation
-              </AnimationStateButton>
-              <AnimationStateButton
-                active={currentSequence === 'rtl'}
-                onClick={() => updateSequence('rtl')}
-              >
-                RTL support
-              </AnimationStateButton>
+            <Flex
+              align="center"
+              justify="center"
+              css={{
+                py: '$5',
+                bc: '$grayA1',
+                gridColumn: '1 / -1',
+                boxShadow: '0 1px $colors$grayA4',
+                '@bp2': {
+                  boxShadow: 'none',
+                  gridColumn: '1 / 2',
+                },
+              }}
+            >
+              <Flex direction="column" align="start" css={{ mb: '$1' }}>
+                <AnimationStateButton
+                  active={currentSequence === 'screenReader'}
+                  onClick={() => updateSequence('screenReader')}
+                >
+                  Screen reader support
+                </AnimationStateButton>
+                <AnimationStateButton
+                  active={currentSequence === 'typeahead'}
+                  onClick={() => updateSequence('typeahead')}
+                >
+                  Typeahead support
+                </AnimationStateButton>
+                <AnimationStateButton
+                  active={currentSequence === 'keyboardNavigation'}
+                  onClick={() => updateSequence('keyboardNavigation')}
+                >
+                  Keyboard navigation
+                </AnimationStateButton>
+                <AnimationStateButton
+                  active={currentSequence === 'rtl'}
+                  onClick={() => updateSequence('rtl')}
+                >
+                  RTL support
+                </AnimationStateButton>
+              </Flex>
             </Flex>
 
             {(currentSequence === 'typeahead' ||
               currentSequence === 'keyboardNavigation' ||
               currentSequence === 'rtl') && (
-              <Grid css={{ overflow: 'hidden' }}>
-                <Flex
-                  align="center"
-                  gap="1"
-                  css={{
-                    color: '$slate11',
-                    mb: '$1',
-                    position: 'relative',
-                  }}
-                >
+              <Grid css={{ overflow: 'hidden', p: '$3' }}>
+                <Flex align="center" gap="1" css={{ color: '$slate11', position: 'relative' }}>
                   <Text variant="gray" size="2">
                     Keyboard input
                   </Text>
@@ -527,32 +531,38 @@ export const AccessibilitySection = () => {
                     </MockTypeaheadOutput>
                   )}
                 </Flex>
-                <Flex align="center" justify="center">
-                  {(currentSequence === 'keyboardNavigation' || currentSequence === 'rtl') && (
-                    // 1. React's key prop is needed so that the mock keyboards animates correctly on repeat key press.
-                    // 2. We don't animate the key when switching sequence to avoid unneeded motion
+                {(currentSequence === 'keyboardNavigation' || currentSequence === 'rtl') && (
+                  // 1. React's key prop is needed so that the mock keyboards animates correctly on repeat key press.
+                  // 2. We don't animate the key when switching sequence to avoid unneeded motion
+                  <Flex
+                    align="center"
+                    justify="end"
+                    css={{ minWidth: 0, mr: '$3', '@bp3': { mr: '$5' } }}
+                  >
                     <MockArrowKeyboard
                       key={keyframe}
                       currentKey={
                         playKeypressAnimation.current && animations[currentSequence][keyframe].key
                       }
                     />
-                  )}
-                  {currentSequence === 'typeahead' && (
+                  </Flex>
+                )}
+                {currentSequence === 'typeahead' && (
+                  <Flex align="center" justify="center">
                     <MockQwertyKeyboard
                       key={keyframe}
                       currentKey={
                         playKeypressAnimation.current && animations[currentSequence][keyframe].key
                       }
                     />
-                  )}
-                </Flex>
+                  </Flex>
+                )}
               </Grid>
             )}
 
             {currentSequence === 'screenReader' && (
-              <Grid>
-                <Flex align="center" gap="1" css={{ color: '$slate11', mb: '$1' }}>
+              <Grid css={{ p: '$3' }}>
+                <Flex align="center" gap="1" css={{ color: '$slate11' }}>
                   <Text variant="gray" size="2">
                     Screen reader
                   </Text>
@@ -569,8 +579,8 @@ export const AccessibilitySection = () => {
               </Grid>
             )}
 
-            <Grid>
-              <Flex align="center" gap="1" css={{ color: '$slate11', mb: '$1' }}>
+            <Grid css={{ p: '$3' }}>
+              <Flex align="center" gap="1" css={{ color: '$slate11' }}>
                 <Text variant="gray" size="2">
                   Radix component
                 </Text>
@@ -849,7 +859,7 @@ const MockTypeaheadOutput = styled(Text, {
 const MockQwertyKeyboard = ({ currentKey }: { currentKey?: string }) => {
   return (
     <Flex direction="column" align="center" gap="2">
-      <Grid gap="1" flow="column" justify="start">
+      <Flex gap="1" justify="start">
         <Key pressed={currentKey === 'q'}>Q</Key>
         <Key pressed={currentKey === 'w'}>W</Key>
         <Key pressed={currentKey === 'e'}>E</Key>
@@ -860,8 +870,8 @@ const MockQwertyKeyboard = ({ currentKey }: { currentKey?: string }) => {
         <Key pressed={currentKey === 'i'}>I</Key>
         <Key pressed={currentKey === 'o'}>O</Key>
         <Key pressed={currentKey === 'p'}>P</Key>
-      </Grid>
-      <Grid gap="1" flow="column" justify="start">
+      </Flex>
+      <Flex gap="1" justify="start">
         <Key pressed={currentKey === 'a'}>A</Key>
         <Key pressed={currentKey === 's'}>S</Key>
         <Key pressed={currentKey === 'd'}>D</Key>
@@ -871,8 +881,8 @@ const MockQwertyKeyboard = ({ currentKey }: { currentKey?: string }) => {
         <Key pressed={currentKey === 'j'}>J</Key>
         <Key pressed={currentKey === 'k'}>K</Key>
         <Key pressed={currentKey === 'l'}>L</Key>
-      </Grid>
-      <Grid gap="1" flow="column" justify="start">
+      </Flex>
+      <Flex gap="1" justify="start">
         <Key pressed={currentKey === 'z'}>Z</Key>
         <Key pressed={currentKey === 'x'}>X</Key>
         <Key pressed={currentKey === 'c'}>C</Key>
@@ -880,7 +890,7 @@ const MockQwertyKeyboard = ({ currentKey }: { currentKey?: string }) => {
         <Key pressed={currentKey === 'b'}>B</Key>
         <Key pressed={currentKey === 'n'}>N</Key>
         <Key pressed={currentKey === 'm'}>M</Key>
-      </Grid>
+      </Flex>
       <Key pressed={currentKey === ' '} css={{ width: 150 }} />
     </Flex>
   );
@@ -888,37 +898,41 @@ const MockQwertyKeyboard = ({ currentKey }: { currentKey?: string }) => {
 
 const MockArrowKeyboard = ({ currentKey }: { currentKey?: string }) => {
   return (
-    <Flex direction="column" align="end" css={{ gap: 7, marginLeft: -120 }}>
-      <Grid flow="column" justify="start" css={{ gap: 6 }}>
+    <Flex direction="column" align="end" css={{ gap: 7 }}>
+      <Flex justify="start" css={{ gap: 6 }}>
         <Key size="2" />
         <Key size="2" />
         <Key size="2" />
         <Key size="2" />
-        <Key size="2" pressed={currentKey === 'return'} css={{ width: 76 }}>
+        <Key size="2" />
+        <Key size="2" />
+        <Key size="2" />
+        <Key size="2" />
+        <Key size="2" />
+        <Key size="2" pressed={currentKey === 'return'} css={{ width: 80, ai: 'end', jc: 'end' }}>
           return
         </Key>
-      </Grid>
-      <Grid flow="column" justify="start" css={{ gap: 6 }}>
+      </Flex>
+      <Flex justify="start" css={{ gap: 6 }}>
+        <Key size="2" />
+        <Key size="2" />
+        <Key size="2" />
         <Key size="2" />
         <Key size="2" />
         <Key size="2" />
         <Key size="2" />
         <Key size="2" css={{ width: 102 }} />
-      </Grid>
-      <Grid flow="column" justify="start" css={{ gap: 6 }}>
-        <Key size="2" />
-        <Key size="2" />
+      </Flex>
+      <Flex justify="start" css={{ gap: 6 }}>
+        <Key size="2" css={{ width: 252 }} />
+        <Key size="2" css={{ width: 54 }} />
         <Key size="2" />
         <Grid
           css={{
+            rowGap: 2,
+            columnGap: 6,
             gridTemplateRows: '20px 20px',
             gridTemplateColumns: 'repeat(3, 42px)',
-            rowGap: 2,
-            columnGap: 7,
-            '& *': {
-              ai: 'center',
-              jc: 'center',
-            },
           }}
         >
           <div />
@@ -936,7 +950,7 @@ const MockArrowKeyboard = ({ currentKey }: { currentKey?: string }) => {
             <TriangleArrow style={{ transform: 'rotate(90deg)' }} />
           </Key>
         </Grid>
-      </Grid>
+      </Flex>
     </Flex>
   );
 };
@@ -955,8 +969,11 @@ const Key = styled('span', {
   color: '$slate11',
   boxShadow: '0 0 0 1px $colors$slate7, 0 2px $colors$slate7',
   userSelect: 'none',
+  flex: 'none',
   maxWidth: '100%',
   maxHeight: '100%',
+  ai: 'center',
+  jc: 'center',
 
   [`.${darkTheme} &`]: {
     bc: '$slate2',
@@ -971,8 +988,6 @@ const Key = styled('span', {
     },
     size: {
       1: {
-        ai: 'center',
-        jc: 'center',
         width: 22,
         height: 32,
         br: '$1',
@@ -988,8 +1003,6 @@ const Key = styled('span', {
         },
       },
       2: {
-        ai: 'end',
-        jc: 'end',
         p: '$1',
         width: 42,
         height: 42,
@@ -1310,15 +1323,15 @@ const SpeakerIconWrapper = styled('div', {
   },
   '.speaker-line-1': {
     opacity: 0,
-    animation: `1500ms ${wave1} linear infinite`,
+    animation: `1600ms ${wave1} linear infinite`,
   },
   '.speaker-line-2': {
     opacity: 0,
-    animation: `1500ms ${wave2} linear infinite`,
+    animation: `1600ms ${wave2} linear infinite`,
   },
   '.speaker-line-3': {
     opacity: 0,
-    animation: `1500ms ${wave3} linear infinite`,
+    animation: `1600ms ${wave3} linear infinite`,
   },
 
   variants: {
@@ -1348,6 +1361,7 @@ const AnimationStateButton = styled('button', {
   letterSpacing: '-0.015em',
   height: 30,
   px: '$1',
+  position: 'relative',
   cursor: 'pointer',
   br: '$1',
 
@@ -1359,6 +1373,12 @@ const AnimationStateButton = styled('button', {
     active: {
       true: {
         color: '$hiContrast',
+        '&::before': {
+          content: '▶',
+          position: 'absolute',
+          fontSize: '80%',
+          left: '-0.9em',
+        },
       },
       false: {
         color: '$slate9',
