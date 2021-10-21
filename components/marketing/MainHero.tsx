@@ -145,7 +145,6 @@ export const MainHero = () => {
               oy: 'hidden',
               py: '$1',
               WebkitoverflowScrolling: 'touch',
-              scrollSnapType: 'x mandatory',
 
               // calculate the left and right padding to apply to the scrolling list
               // so that the carousel starts aligned with the container component
