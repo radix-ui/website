@@ -263,9 +263,9 @@ export const AccessibilitySection = () => {
   const timeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
   const containerRef = React.useRef<HTMLDivElement>(null);
   const intersectingRef = React.useRef(false);
+  const playKeypressAnimation = React.useRef(true);
   const [keyframe, setKeyframe] = React.useState(0);
   const [isIntersecting, setIsIntersecting] = React.useState(false);
-
   const [currentSequence, setCurrentSequence] = React.useState<SequenceType>('screenReader');
 
   // Fancy function to update the animation state when changing sequence.
@@ -288,9 +288,11 @@ export const AccessibilitySection = () => {
         );
         const newKeyframe = Math.max(0, keyframeWithSimilarDropdownState);
 
+        // Update all animation state pieces
         keyframeRef.current = newKeyframe;
         setKeyframe(newKeyframe);
         setCurrentSequence(newSequence);
+        playKeypressAnimation.current = false;
       }
     },
     [currentSequence, setKeyframe, setCurrentSequence]
@@ -325,6 +327,7 @@ export const AccessibilitySection = () => {
 
   React.useEffect(() => {
     const updateKeyframe = () => {
+      console.log('updateKeyframe');
       // Increment keyframe counter, or loop from 1st when last keyframe is reached
       keyframeRef.current =
         keyframeRef.current < animations[currentSequence].length - 1 ? keyframeRef.current + 1 : 1;
@@ -348,6 +351,7 @@ export const AccessibilitySection = () => {
     // Start the animation in 1s once the container is visible in the viewport
     if (isIntersecting) {
       timeoutRef.current = setTimeout(() => requestAnimationFrame(() => updateKeyframe()), 1000);
+      playKeypressAnimation.current = true;
     }
 
     return () => clearTimeout(timeoutRef.current);
@@ -525,16 +529,21 @@ export const AccessibilitySection = () => {
                 </Flex>
                 <Flex align="center" justify="center">
                   {(currentSequence === 'keyboardNavigation' || currentSequence === 'rtl') && (
-                    // React's key prop is needed so that the mock keyboards animates correctly on repeat key presses
+                    // 1. React's key prop is needed so that the mock keyboards animates correctly on repeat key press.
+                    // 2. We don't animate the key when switching sequence to avoid unneeded motion
                     <MockArrowKeyboard
                       key={keyframe}
-                      currentKey={animations[currentSequence][keyframe].key}
+                      currentKey={
+                        playKeypressAnimation.current && animations[currentSequence][keyframe].key
+                      }
                     />
                   )}
                   {currentSequence === 'typeahead' && (
                     <MockQwertyKeyboard
                       key={keyframe}
-                      currentKey={animations[currentSequence][keyframe].key}
+                      currentKey={
+                        playKeypressAnimation.current && animations[currentSequence][keyframe].key
+                      }
                     />
                   )}
                 </Flex>
@@ -721,13 +730,13 @@ const MockRtlDropdown = ({ state }: { state: MockDropdownState }) => {
   return (
     <Box css={{ mt: '$1', direction: 'rtl' }}>
       <MockDropdownButton focused={state === 'closed'}>
-        صيغة
+        التنسيق
         <CaretDownIcon style={{ marginLeft: -5 }} />
       </MockDropdownButton>
       <Box css={{ position: 'relative' }}>
         <MockDropdownContent animated open={state !== 'closed'}>
           <MockDropdownItem focused={state === 'item1'} focusWithin={state === 'item1-submenu'}>
-            محاذاة
+            المحاذاة
             <CaretLeftIcon style={{ marginLeft: -5, marginRight: 10 }} />
           </MockDropdownItem>
           <MockDropdownItem focused={state === 'item2'} focusWithin={state === 'item2-submenu'}>
@@ -735,37 +744,47 @@ const MockRtlDropdown = ({ state }: { state: MockDropdownState }) => {
             <CaretLeftIcon style={{ marginLeft: -5, marginRight: 10 }} />
           </MockDropdownItem>
           <MockDropdownItem focused={state === 'item3'} focusWithin={state === 'item3-submenu'}>
-            المسافة الفارغة
+            المسافة البادئة
             <CaretLeftIcon style={{ marginLeft: -5, marginRight: 10 }} />
           </MockDropdownItem>
-          <MockDropdownItem focused={state === 'item4'}>إعادة ضبط</MockDropdownItem>
+          <MockDropdownSeparator css={{ ml: 10 }} />
+          <MockDropdownItem focused={state === 'item4'}>أعاد للوضع السابق</MockDropdownItem>
         </MockDropdownContent>
 
         <MockDropdownContent
           open={state === 'item1-submenu'}
           css={{ position: 'absolute', top: 0, left: 0, transform: 'translateX(-100%)' }}
         >
-          <MockDropdownItem focused={state === 'item1-submenu'}>اليسار</MockDropdownItem>
-          <MockDropdownItem>حق</MockDropdownItem>
-          <MockDropdownItem>مركز</MockDropdownItem>
-          <MockDropdownItem>يبرر</MockDropdownItem>
+          <MockDropdownItem focused={state === 'item1-submenu'}>يسار</MockDropdownItem>
+          <MockDropdownItem>يمين</MockDropdownItem>
+          <MockDropdownItem>وسط</MockDropdownItem>
         </MockDropdownContent>
 
         <MockDropdownContent
           open={state === 'item2-submenu'}
-          css={{ position: 'absolute', top: 30, left: 0, transform: 'translateX(-100%)' }}
+          css={{
+            position: 'absolute',
+            top: '$$itemHeight',
+            left: 0,
+            transform: 'translateX(-100%)',
+          }}
         >
           <MockDropdownItem focused={state === 'item2-submenu'}>عريض</MockDropdownItem>
           <MockDropdownItem>مائل</MockDropdownItem>
-          <MockDropdownItem>تسطير</MockDropdownItem>
+          <MockDropdownItem>مسطّر</MockDropdownItem>
         </MockDropdownContent>
 
         <MockDropdownContent
           open={state === 'item3-submenu'}
-          css={{ position: 'absolute', bottom: 0, left: 0, transform: 'translateX(-100%)' }}
+          css={{
+            position: 'absolute',
+            top: 'calc($$itemHeight * 2)',
+            left: 0,
+            transform: 'translateX(-100%)',
+          }}
         >
-          <MockDropdownItem focused={state === 'item3-submenu'}>يزيد</MockDropdownItem>
-          <MockDropdownItem>ينقص</MockDropdownItem>
+          <MockDropdownItem focused={state === 'item3-submenu'}>زيادة</MockDropdownItem>
+          <MockDropdownItem>تقليل</MockDropdownItem>
         </MockDropdownContent>
       </Box>
     </Box>
@@ -936,9 +955,12 @@ const Key = styled('span', {
   color: '$slate11',
   boxShadow: '0 0 0 1px $colors$slate7, 0 2px $colors$slate7',
   userSelect: 'none',
-
   maxWidth: '100%',
   maxHeight: '100%',
+
+  [`.${darkTheme} &`]: {
+    bc: '$slate2',
+  },
 
   variants: {
     pressed: {
@@ -1013,6 +1035,8 @@ const MockDropdownButton = styled(Box, {
 });
 
 const MockDropdownContent = styled(Box, {
+  $$itemHeight: '30px',
+
   p: '$1',
   br: '$2',
   bc: '$panel',
@@ -1055,8 +1079,8 @@ const MockDropdownItem = styled(Box, {
   cursor: 'default',
   userSelect: 'none',
   whiteSpace: 'nowrap',
-  height: 30,
-  lineHeight: '30px',
+  height: '$$itemHeight',
+  lineHeight: '$$itemHeight',
   position: 'relative',
   color: '$hiContrast',
   br: 5,
