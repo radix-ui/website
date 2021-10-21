@@ -1,18 +1,12 @@
-import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
+import React from 'react';
+import { Flex, Heading } from '@modulz/design-system';
 
 export const RadixLogo = ({
   label,
   ...props
 }: React.ComponentPropsWithoutRef<'svg'> & { label?: string }) => (
-  <AccessibleIcon label={label || 'Radix Logo'}>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="25"
-      height="25"
-      viewBox="0 0 25 25"
-      fill="none"
-      {...props}
-    >
+  <Flex align="center">
+    <svg xmlns="http://www.w3.org/2000/svg" width="25" viewBox="0 0 25 25" fill="none" {...props}>
       <path d="M12 25C7.58173 25 4 21.4183 4 17C4 12.5817 7.58173 9 12 9V25Z" fill="currentColor" />
       <path d="M12 0H4V8H12V0Z" fill="currentColor" />
       <path
@@ -20,5 +14,8 @@ export const RadixLogo = ({
         fill="currentColor"
       />
     </svg>
-  </AccessibleIcon>
+    <Heading size="1" as="span" css={{ ml: '$1' }}>
+      Radix
+    </Heading>
+  </Flex>
 );

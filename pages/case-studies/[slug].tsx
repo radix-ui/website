@@ -68,7 +68,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
             }}
           >
             <Box>
-              <MarketingCaption as="a" href="/primitives/case-studies" css={{ mb: '$1' }}>
+              <MarketingCaption as="a" href="/case-studies" css={{ mb: '$1' }}>
                 Case study
               </MarketingCaption>
               <MDXProvider frontmatter={frontmatter}>

@@ -31,7 +31,7 @@ export const CaseStudiesSection = () => {
         </Box>
 
         <Grid columns={{ '@bp2': 2 }} gap="5" css={{ mb: '$6' }}>
-          <Card variant="interactive" as="a" href="/primitives/case-studies/vercel">
+          <Card variant="interactive" as="a" href="/case-studies/vercel">
             <Box css={{ p: '$5' }}>
               <Box css={{ mb: '$4' }}>
                 <AccessibleIcon label="Vercel Logo">
@@ -51,7 +51,7 @@ export const CaseStudiesSection = () => {
               </Flex>
             </Box>
           </Card>
-          <Card variant="interactive" as="a" href="/primitives/case-studies/codesandbox">
+          <Card variant="interactive" as="a" href="/case-studies/codesandbox">
             <Box css={{ p: '$5' }}>
               <Box css={{ mb: '$4' }}>
                 <AccessibleIcon label="CodeSandbox Logo">
@@ -75,7 +75,7 @@ export const CaseStudiesSection = () => {
 
         <Text variant="gray" css={{ mb: '$3' }}>
           <Link
-            href="/primitives/case-studies"
+            href="/case-studies"
             variant="subtle"
             css={{ display: 'inline-flex', alignItems: 'center' }}
           >
@@ -100,7 +100,7 @@ export const CaseStudiesSection = () => {
         }}
       >
         <Grid flow="column" align="center" justify="start" gap="6">
-          <NextLink href="/primitives/case-studies/graphcms" passHref>
+          <NextLink href="/case-studies/graphcms" passHref>
             <LogoLink css={{ mb: -8 }}>
               <AccessibleIcon label="GraphCMS Logo">
                 <CaseStudyLogo variant="GraphCMS" width="129" />
@@ -108,7 +108,7 @@ export const CaseStudiesSection = () => {
             </LogoLink>
           </NextLink>
 
-          <NextLink href="/primitives/case-studies/livepeer" passHref>
+          <NextLink href="/case-studies/livepeer" passHref>
             <LogoLink css={{ mb: -6 }}>
               <AccessibleIcon label="Livepeer Logo">
                 <CaseStudyLogo variant="Livepeer" width="86" />
@@ -116,7 +116,7 @@ export const CaseStudiesSection = () => {
             </LogoLink>
           </NextLink>
 
-          <NextLink href="/primitives/case-studies/atom-learning" passHref>
+          <NextLink href="/case-studies/atom-learning" passHref>
             <LogoLink css={{ mb: 4 }}>
               <AccessibleIcon label="Atom Learning Logo">
                 <CaseStudyLogo variant="Atom Learning" width="86" />
@@ -124,7 +124,7 @@ export const CaseStudiesSection = () => {
             </LogoLink>
           </NextLink>
 
-          <NextLink href="/primitives/case-studies/placemark" passHref>
+          <NextLink href="/case-studies/placemark" passHref>
             <LogoLink css={{ mb: -2 }}>
               <AccessibleIcon label="Placemark Logo">
                 <CaseStudyLogo variant="Placemark" width="121" />
@@ -132,7 +132,7 @@ export const CaseStudiesSection = () => {
             </LogoLink>
           </NextLink>
 
-          <NextLink href="/primitives/case-studies/supabase" passHref>
+          <NextLink href="/case-studies/supabase" passHref>
             <LogoLink css={{ mb: -8 }}>
               <AccessibleIcon label="Supabase Logo">
                 <CaseStudyLogo variant="Supabase" width="140" />
@@ -140,7 +140,7 @@ export const CaseStudiesSection = () => {
             </LogoLink>
           </NextLink>
 
-          <NextLink href="/primitives/case-studies/magnetis" passHref>
+          <NextLink href="/case-studies/magnetis" passHref>
             <LogoLink css={{ mb: -12 }}>
               <AccessibleIcon label="Magnetis Logo">
                 <CaseStudyLogo variant="Magnetis" width="111" />
@@ -148,7 +148,7 @@ export const CaseStudiesSection = () => {
             </LogoLink>
           </NextLink>
 
-          <NextLink href="/primitives/case-studies/university-of-amsterdam" passHref>
+          <NextLink href="/case-studies/university-of-amsterdam" passHref>
             <LogoLink css={{ mt: 7 }}>
               <AccessibleIcon label="University of Amsterdam Logo">
                 <CaseStudyLogo variant="University of Amsterdam" width="152" />
