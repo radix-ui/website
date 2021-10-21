@@ -10,8 +10,9 @@ import {
   Flex,
   Paragraph,
   Section,
+  Button,
 } from '@modulz/design-system';
-import { ArrowRightIcon } from '@radix-ui/react-icons';
+import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons';
 import { MarketingButton } from './MarketingButton';
 import {
   Carousel,
@@ -64,7 +65,7 @@ const IFrame = styled('iframe', {
 // TODO review section spacing
 export const MainHero = () => {
   // We synchronise the visibility of the first few iframes as they are loaded
-  const [iFramesReady, setIFramesReady] = React.useState(true);
+  const [iFramesReady, setIFramesReady] = React.useState(false);
   const iFrameStates = React.useRef({
     dialog: 'loading',
     'dropdown-menu': 'loading',
@@ -132,151 +133,240 @@ export const MainHero = () => {
         </Box>
       </Container>
 
-      <Carousel>
-        <CarouselSlideList
-          css={{
-            display: 'grid',
-            gridAutoFlow: 'column',
-            gap: '$5',
+      <Box css={{ position: 'relative' }}>
+        <Carousel>
+          <CarouselSlideList
+            css={{
+              display: 'grid',
+              gridAutoFlow: 'column',
+              gap: '$5',
 
-            ox: 'auto',
-            oy: 'hidden',
-            py: '$1',
-            WebkitoverflowScrolling: 'touch',
-            scrollSnapType: 'x mandatory',
+              ox: 'auto',
+              oy: 'hidden',
+              py: '$1',
+              WebkitoverflowScrolling: 'touch',
+              scrollSnapType: 'x mandatory',
 
-            // calculate the left and right padding to apply to the scrolling list
-            // so that the carousel starts aligned with the container component
-            // the "1145" and "$5" values comes from the <Container /> component
-            '$$scroll-padding': 'max($space$5, calc((100vw - 1145px) / 2 + $space$5))',
-            scrollPadding: '0 $$scroll-padding 0 $$scroll-padding',
-            px: '$$scroll-padding',
+              // calculate the left and right padding to apply to the scrolling list
+              // so that the carousel starts aligned with the container component
+              // the "1145" and "$5" values comes from the <Container /> component
+              '$$scroll-padding': 'max($space$5, calc((100vw - 1145px) / 2 + $space$5))',
+              scrollPadding: '0 $$scroll-padding 0 $$scroll-padding',
+              px: '$$scroll-padding',
 
-            // hide scrollbar
-            MsOverflowStyle: 'none',
-            scrollbarWidth: 'none',
+              // hide scrollbar
+              MsOverflowStyle: 'none',
+              scrollbarWidth: 'none',
 
-            '&::-webkit-scrollbar': {
-              display: 'none',
-            },
-          }}
-        >
-          <CarouselSlide>
-            <IFrameSkeleton active={!iFramesReady}>
-              <IFrame
-                visible={iFramesReady}
-                tabIndex={-1}
-                src="/primitives/iframe/dialog"
-                css={{
-                  background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
-                  [`.${darkTheme} &`]: {
-                    background: 'linear-gradient(to bottom right, $indigo2, $plum3)',
-                  },
-                }}
-              />
-            </IFrameSkeleton>
-            <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-              Dialog
-            </Text>
-            <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-              With modal and non-modal modes, fine-grained focus&nbsp;control, accessible to screen
-              readers.
-            </Text>
-          </CarouselSlide>
-
-          <CarouselSlide>
-            <IFrameSkeleton active={!iFramesReady}>
-              <IFrame
-                visible={iFramesReady}
-                tabIndex={-1}
-                src="/primitives/iframe/dropdown-menu"
-                css={{
-                  background: 'linear-gradient(to bottom right,  $crimson4, $blue5)',
-                  [`.${darkTheme} &`]: {
-                    background: 'linear-gradient(to bottom right,  $crimson3, $blue3)',
-                  },
-                }}
-              />
-            </IFrameSkeleton>
-            <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-              Dropdown Menu
-            </Text>
-            <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-              With submenus, checkable items, collision handling, full keyboard navigation, and
-              typeahead support.
-            </Text>
-          </CarouselSlide>
-
-          <CarouselSlide>
-            <IFrameSkeleton active={!iFramesReady}>
-              <IFrame
-                visible={iFramesReady}
-                tabIndex={-1}
-                src="/primitives/iframe/popover"
-                css={{
-                  background: 'linear-gradient(to bottom right, $lime3, $cyan5)',
-                  [`.${darkTheme} &`]: {
-                    background: 'linear-gradient(to bottom right, $mint3, $sand2)',
-                  },
-                }}
-              />
-            </IFrameSkeleton>
-            <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-              Popover
-            </Text>
-            <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-              With fine-grained focus control, collision handling, origin-aware and collision-aware
-              animations.
-            </Text>
-          </CarouselSlide>
-
-          <CarouselSlide>
-            <IFrameSkeleton active={!iFramesReady}>
-              <IFrame
-                visible={iFramesReady}
-                tabIndex={-1}
-                src="/primitives/iframe/slider"
-                css={{
-                  background: 'linear-gradient(120deg, $gray3, $sky4)',
-                  [`.${darkTheme} &`]: {
-                    background: 'linear-gradient(120deg, $mauve4, $sky4)',
-                  },
-                }}
-              />
-            </IFrameSkeleton>
-            <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-              Slider
-            </Text>
-            <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-              Supports keyboard and touch input, step interval, multiple thumbs for value ranges,
-              and RTL direction.
-            </Text>
-          </CarouselSlide>
-
-          <CarouselSlide>
-            <IFrameSkeleton active={!iFramesReady}>
-              <IFrame
-                visible={iFramesReady}
-                tabIndex={-1}
-                src="/primitives/iframe/dialog"
-                css={{
-                  background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
-                  [`.${darkTheme} &`]: {
+              '&::-webkit-scrollbar': {
+                display: 'none',
+              },
+            }}
+          >
+            <CarouselSlide>
+              <IFrameSkeleton active={!iFramesReady}>
+                <IFrame
+                  visible={iFramesReady}
+                  tabIndex={-1}
+                  src="/primitives/iframe/dialog"
+                  css={{
                     background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
-                  },
-                }}
-              />
-            </IFrameSkeleton>
-            <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-              Tooltip
-            </Text>
-            <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-              Opens when the trigger is focused or hovered, supports custom timings and positioning,
-              handles collisions.
-            </Text>
-          </CarouselSlide>
-        </CarouselSlideList>
-      </Carousel>
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(to bottom right, $indigo2, $plum3)',
+                    },
+                  }}
+                />
+              </IFrameSkeleton>
+              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                Dialog
+              </Text>
+              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                With modal and non-modal modes, fine-grained focus&nbsp;control, accessible to
+                screen readers.
+              </Text>
+            </CarouselSlide>
+
+            <CarouselSlide>
+              <IFrameSkeleton active={!iFramesReady}>
+                <IFrame
+                  visible={iFramesReady}
+                  tabIndex={-1}
+                  src="/primitives/iframe/dropdown-menu"
+                  css={{
+                    background: 'linear-gradient(to bottom right,  $crimson4, $blue5)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(to bottom right,  $crimson3, $blue3)',
+                    },
+                  }}
+                />
+              </IFrameSkeleton>
+              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                Dropdown Menu
+              </Text>
+              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                With submenus, checkable items, collision handling, full keyboard navigation, and
+                typeahead support.
+              </Text>
+            </CarouselSlide>
+
+            <CarouselSlide>
+              <IFrameSkeleton active={!iFramesReady}>
+                <IFrame
+                  visible={iFramesReady}
+                  tabIndex={-1}
+                  src="/primitives/iframe/popover"
+                  css={{
+                    background: 'linear-gradient(to bottom right, $lime3, $cyan5)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(to bottom right, $mint3, $sand2)',
+                    },
+                  }}
+                />
+              </IFrameSkeleton>
+              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                Popover
+              </Text>
+              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                With fine-grained focus control, collision handling, origin-aware and
+                collision-aware animations.
+              </Text>
+            </CarouselSlide>
+
+            <CarouselSlide>
+              <IFrameSkeleton active={!iFramesReady}>
+                <IFrame
+                  visible={iFramesReady}
+                  tabIndex={-1}
+                  src="/primitives/iframe/slider"
+                  css={{
+                    background: 'linear-gradient(120deg, $gray3, $sky4)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(120deg, $mauve4, $sky4)',
+                    },
+                  }}
+                />
+              </IFrameSkeleton>
+              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                Slider
+              </Text>
+              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                Supports keyboard and touch input, step interval, multiple thumbs for value ranges,
+                and RTL direction.
+              </Text>
+            </CarouselSlide>
+
+            <CarouselSlide>
+              <IFrameSkeleton active={!iFramesReady}>
+                <IFrame
+                  visible={iFramesReady}
+                  tabIndex={-1}
+                  src="/primitives/iframe/dialog"
+                  css={{
+                    background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                    },
+                  }}
+                />
+              </IFrameSkeleton>
+              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                Tooltip
+              </Text>
+              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                Opens when the trigger is focused or hovered, supports custom timings and
+                positioning, handles collisions.
+              </Text>
+            </CarouselSlide>
+          </CarouselSlideList>
+
+          <Box
+            css={{
+              position: 'absolute',
+              top: '50%',
+              left: '15px',
+              transform: 'translateY(-50%)',
+            }}
+          >
+            <CarouselPrevious
+              as={Button}
+              css={{
+                width: '$7',
+                height: '$7',
+                borderRadius: '$round',
+                backgroundColor: '$loContrast',
+                boxShadow:
+                  '$colors$shadowLight 0px 5px 25px -5px, $colors$shadowDark 0px 5px 15px -10px',
+                willChange: 'transform',
+                transition: 'all 100ms ease',
+                '&:hover': {
+                  boxShadow:
+                    '$colors$shadowLight 0px 10px 35px -5px, $colors$shadowDark 0px 10px 20px -5px',
+                  transform: 'translateY(-2px)',
+                },
+                '&:focus': {
+                  boxShadow:
+                    '0 0 0 1px $colors$slate700, inset 0 0 0 1px $colors$slate700, $colors$shadowLight 0px 5px 25px -5px, $colors$shadowDark 0px 5px 15px -10px',
+                },
+                '&:active': {
+                  transform: 'none',
+                  transition: 'none',
+                },
+                '&:disabled': {
+                  opacity: 0,
+                },
+                '@media (hover: none) and (pointer: coarse)': {
+                  display: 'none',
+                },
+              }}
+            >
+              <ArrowLeftIcon />
+            </CarouselPrevious>
+          </Box>
+          <Box
+            css={{
+              position: 'absolute',
+              top: '50%',
+              right: '15px',
+              transform: 'translateY(-50%)',
+            }}
+          >
+            <CarouselNext
+              as={Button}
+              css={{
+                width: '$7',
+                height: '$7',
+                borderRadius: '$round',
+                backgroundColor: '$loContrast',
+                boxShadow:
+                  '$colors$shadowLight 0px 5px 25px -5px, $colors$shadowDark 0px 5px 15px -10px',
+                willChange: 'transform',
+                transition: 'all 100ms ease',
+                '&:hover': {
+                  boxShadow:
+                    '$colors$shadowLight 0px 10px 35px -5px, $colors$shadowDark 0px 10px 20px -5px',
+                  transform: 'translateY(-2px)',
+                },
+                '&:focus': {
+                  boxShadow:
+                    '0 0 0 1px $colors$slate700, inset 0 0 0 1px $colors$slate700, $colors$shadowLight 0px 5px 25px -5px, $colors$shadowDark 0px 5px 15px -10px',
+                },
+                '&:active': {
+                  transform: 'none',
+                  transition: 'none',
+                },
+                '&:disabled': {
+                  opacity: 0,
+                },
+                '@media (hover: none) and (pointer: coarse)': {
+                  display: 'none',
+                },
+              }}
+            >
+              <ArrowRightIcon />
+            </CarouselNext>
+          </Box>
+        </Carousel>
+      </Box>
     </Section>
   );
 };
