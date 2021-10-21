@@ -13,13 +13,13 @@ import { OtherProductsSection } from '@components/marketing/OtherProductsSection
 import { Footer } from '@components/Footer';
 import { Header } from '@components/Header';
 import { FancyBackground } from '@components/marketing/FancyBackground';
-import { elementScrollIntoViewPolyfill } from 'seamless-scroll-polyfill';
+import smoothscroll from 'smoothscroll-polyfill';
 
 // TODO check that all paragraphs are P tags
 export default function PrimitivesHome() {
   useEffect(() => {
-    elementScrollIntoViewPolyfill();
-  }, [elementScrollIntoViewPolyfill]);
+    smoothscroll.polyfill();
+  }, [smoothscroll.polyfill]);
 
   return (
     <Box>

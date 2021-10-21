@@ -70,13 +70,14 @@
     "rehype": "^11.0.0",
     "remark-autolink-headings": "^6.0.1",
     "remark-slug": "^6.0.0",
-    "seamless-scroll-polyfill": "^2.1.4",
+    "smoothscroll-polyfill": "^0.4.4",
     "tinycolor2": "^1.4.2"
   },
   "devDependencies": {
     "@types/lodash.debounce": "^4.0.6",
     "@types/node": "^14.14.37",
     "@types/react": "^17.0.3",
+    "@types/smoothscroll-polyfill": "^0.3.1",
     "@types/tinycolor2": "^1.4.3",
     "compare-versions": "^3.6.0",
     "husky": "4.3.6",
