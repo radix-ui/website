@@ -109,10 +109,10 @@ export const MainHero = () => {
             <br />
             UI components.
           </Text>
-          <Box css={{ maxWidth: 580, mb: '$4' }}>
+          <Box css={{ maxWidth: 500, mb: '$4' }}>
             <Paragraph size="2" as="p">
-              Radix Primitives is an accessible component library for building high‑quality design
-              systems and web apps in React.
+              Unstyled, acessible components for building high‑quality design systems and web apps
+              in React.
             </Paragraph>
           </Box>
           <Flex justify={{ '@initial': 'start' }} gap="5">

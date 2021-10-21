@@ -145,7 +145,7 @@ export const BenefitsSection = () => {
                 textIndent: '-0.12em',
               }}
             >
-              1300
+              1700
               <Box as="span" css={{ fontSize: '75%', ml: '0.25em' }}>
                 +
               </Box>
