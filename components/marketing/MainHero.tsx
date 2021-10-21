@@ -13,6 +13,13 @@ import {
 } from '@modulz/design-system';
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { MarketingButton } from './MarketingButton';
+import {
+  Carousel,
+  CarouselSlideList,
+  CarouselSlide,
+  CarouselNext,
+  CarouselPrevious,
+} from './Carousel';
 
 const IFrameSkeleton = styled('div', {
   borderRadius: '$3',
@@ -57,7 +64,7 @@ const IFrame = styled('iframe', {
 // TODO review section spacing
 export const MainHero = () => {
   // We synchronise the visibility of the first few iframes as they are loaded
-  const [iFramesReady, setIFramesReady] = React.useState(false);
+  const [iFramesReady, setIFramesReady] = React.useState(true);
   const iFrameStates = React.useRef({
     dialog: 'loading',
     'dropdown-menu': 'loading',
@@ -123,8 +130,38 @@ export const MainHero = () => {
             </NextLink>
           </Flex>
         </Box>
-        <Grid gap="5" css={{ gridAutoFlow: 'column' }}>
-          <Box>
+      </Container>
+
+      <Carousel>
+        <CarouselSlideList
+          css={{
+            display: 'grid',
+            gridAutoFlow: 'column',
+            gap: '$5',
+
+            ox: 'auto',
+            oy: 'hidden',
+            py: '$1',
+            WebkitoverflowScrolling: 'touch',
+            scrollSnapType: 'x mandatory',
+
+            // calculate the left and right padding to apply to the scrolling list
+            // so that the carousel starts aligned with the container component
+            // the "1145" and "$5" values comes from the <Container /> component
+            '$$scroll-padding': 'max($space$5, calc((100vw - 1145px) / 2 + $space$5))',
+            scrollPadding: '0 $$scroll-padding 0 $$scroll-padding',
+            px: '$$scroll-padding',
+
+            // hide scrollbar
+            MsOverflowStyle: 'none',
+            scrollbarWidth: 'none',
+
+            '&::-webkit-scrollbar': {
+              display: 'none',
+            },
+          }}
+        >
+          <CarouselSlide>
             <IFrameSkeleton active={!iFramesReady}>
               <IFrame
                 visible={iFramesReady}
@@ -145,9 +182,9 @@ export const MainHero = () => {
               With modal and non-modal modes, fine-grained focus&nbsp;control, accessible to screen
               readers.
             </Text>
-          </Box>
+          </CarouselSlide>
 
-          <Box>
+          <CarouselSlide>
             <IFrameSkeleton active={!iFramesReady}>
               <IFrame
                 visible={iFramesReady}
@@ -168,9 +205,9 @@ export const MainHero = () => {
               With submenus, checkable items, collision handling, full keyboard navigation, and
               typeahead support.
             </Text>
-          </Box>
+          </CarouselSlide>
 
-          <Box>
+          <CarouselSlide>
             <IFrameSkeleton active={!iFramesReady}>
               <IFrame
                 visible={iFramesReady}
@@ -191,9 +228,9 @@ export const MainHero = () => {
               With fine-grained focus control, collision handling, origin-aware and collision-aware
               animations.
             </Text>
-          </Box>
+          </CarouselSlide>
 
-          <Box>
+          <CarouselSlide>
             <IFrameSkeleton active={!iFramesReady}>
               <IFrame
                 visible={iFramesReady}
@@ -214,9 +251,9 @@ export const MainHero = () => {
               Supports keyboard and touch input, step interval, multiple thumbs for value ranges,
               and RTL direction.
             </Text>
-          </Box>
+          </CarouselSlide>
 
-          <Box>
+          <CarouselSlide>
             <IFrameSkeleton active={!iFramesReady}>
               <IFrame
                 visible={iFramesReady}
@@ -237,9 +274,9 @@ export const MainHero = () => {
               Opens when the trigger is focused or hovered, supports custom timings and positioning,
               handles collisions.
             </Text>
-          </Box>
-        </Grid>
-      </Container>
+          </CarouselSlide>
+        </CarouselSlideList>
+      </Carousel>
     </Section>
   );
 };
