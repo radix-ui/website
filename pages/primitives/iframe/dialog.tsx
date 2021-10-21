@@ -59,6 +59,7 @@ export default function DialogDemo() {
         </DialogPrimitive.Trigger>
 
         <DialogContent
+          onInteractOutside={(event) => event.preventDefault()}
           onOpenAutoFocus={(event) => {
             // We prevent the initial auto focus because it's a demo rather than a real UI,
             // so the parent page focus is not stolen.

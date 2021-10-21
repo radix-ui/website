@@ -102,6 +102,7 @@ export default function DropdownMenuDemo() {
         </DropdownMenuPrimitive.Trigger>
         <DropdownMenuContent
           sideOffset={5}
+          onInteractOutside={(event) => event.preventDefault()}
           onOpenAutoFocus={(event) => {
             // We prevent the initial auto focus because it's a demo rather than a real UI,
             // so the parent page focus is not stolen.
