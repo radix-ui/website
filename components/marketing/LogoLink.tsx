@@ -1,8 +1,7 @@
 import { styled } from '@modulz/design-system';
 
 export const LogoLink = styled('a', {
-  display: 'flex',
-  justifyContent: 'center',
+  display: 'block',
   color: '$hiContrast',
   '@hover': {
     color: '$slate9',
