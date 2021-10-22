@@ -13,23 +13,18 @@ export const Footer = () => {
     <Box as="footer" css={{ pb: '$9' }}>
       <Grid
         css={{
-          gridTemplateColumns: 'repeat(1, 1fr)',
-          gap: '$6',
+          rowGap: '$7',
+          columnGap: '$3',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          '@bp1': { gridTemplateColumns: 'repeat(3, 1fr)' },
+          '@bp2': { gridTemplateColumns: 'repeat(4, 1fr)' },
           '& ul': { listStyle: 'none', margin: '0', padding: '0' },
-          '@bp2': {
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '$3',
-          },
         }}
       >
         <Flex
-          css={{
-            alignItems: 'center',
-            '@bp2': {
-              flexDirection: 'column',
-              alignItems: 'start',
-            },
-          }}
+          align="start"
+          direction="column"
+          css={{ gridColumn: '1 / -1', '@bp2': { gridColumn: 'auto' } }}
         >
           <NextLink href="/" passHref>
             <Box
@@ -51,13 +46,12 @@ export const Footer = () => {
             size="2"
             css={{
               lineHeight: '20px',
-              ml: '$4',
               color: '$gray10',
               pr: '$8',
-              '@bp2': { mt: '$5', ml: '0' },
+              mt: '$5',
             }}
           >
-            Radix is a project by{' '}
+            A project by{' '}
             <Link variant="subtle" href="https://modulz.app">
               Modulz
             </Link>
