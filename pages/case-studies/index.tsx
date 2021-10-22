@@ -55,63 +55,63 @@ export default function CaseStudy() {
             }}
           >
             <NextLink href="/case-studies/atom-learning" passHref>
-              <LogoLink>
+              <LogoLink targetSize="normal">
                 <Flex justify="center" css={{ height: '100%' }}>
                   <CaseStudyLogo variant="Atom Learning" />
                 </Flex>
               </LogoLink>
             </NextLink>
             <NextLink href="/case-studies/codesandbox" passHref>
-              <LogoLink>
+              <LogoLink targetSize="normal">
                 <Flex justify="center" css={{ height: '100%' }}>
                   <CaseStudyLogo variant="CodeSandbox (Wide)" />
                 </Flex>
               </LogoLink>
             </NextLink>
             <NextLink href="/case-studies/graphcms" passHref>
-              <LogoLink>
+              <LogoLink targetSize="normal">
                 <Flex justify="center" css={{ height: '100%' }}>
                   <CaseStudyLogo variant="GraphCMS" />
                 </Flex>
               </LogoLink>
             </NextLink>
             <NextLink href="/case-studies/livepeer" passHref>
-              <LogoLink>
+              <LogoLink targetSize="normal">
                 <Flex justify="center" css={{ height: '100%' }}>
                   <CaseStudyLogo variant="Livepeer" />
                 </Flex>
               </LogoLink>
             </NextLink>
             <NextLink href="/case-studies/magnetis" passHref>
-              <LogoLink>
+              <LogoLink targetSize="normal">
                 <Flex justify="center" css={{ height: '100%' }}>
                   <CaseStudyLogo variant="Magnetis" />
                 </Flex>
               </LogoLink>
             </NextLink>
             <NextLink href="/case-studies/placemark" passHref>
-              <LogoLink>
+              <LogoLink targetSize="normal">
                 <Flex justify="center" css={{ height: '100%' }}>
                   <CaseStudyLogo variant="Placemark" />
                 </Flex>
               </LogoLink>
             </NextLink>
             <NextLink href="/case-studies/supabase" passHref>
-              <LogoLink>
+              <LogoLink targetSize="normal">
                 <Flex justify="center" css={{ height: '100%' }}>
                   <CaseStudyLogo variant="Supabase" />
                 </Flex>
               </LogoLink>
             </NextLink>
             <NextLink href="/case-studies/university-of-amsterdam" passHref>
-              <LogoLink>
+              <LogoLink targetSize="normal">
                 <Flex justify="center" css={{ height: '100%' }}>
                   <CaseStudyLogo variant="University of Amsterdam" />
                 </Flex>
               </LogoLink>
             </NextLink>
             <NextLink href="/case-studies/vercel" passHref>
-              <LogoLink>
+              <LogoLink targetSize="normal">
                 <Flex justify="center" css={{ height: '100%' }}>
                   <CaseStudyLogo variant="Vercel" />
                 </Flex>

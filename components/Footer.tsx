@@ -2,8 +2,9 @@ import React from 'react';
 import NextLink from 'next/link';
 import { Box, Container, Grid, Text, Flex, Separator, Link } from '@modulz/design-system';
 import { RadixLogo } from './RadixLogo';
-import { ExternalIcon } from './ExternalIcon';
 import { useRouter } from 'next/router';
+import { BoxLink } from './BoxLink';
+import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 
 export const Footer = () => {
   const router = useRouter();
@@ -26,20 +27,10 @@ export const Footer = () => {
           direction="column"
           css={{ gridColumn: '1 / -1', '@bp2': { gridColumn: 'auto' } }}
         >
-          <NextLink href="/" passHref>
-            <Box
-              as="a"
-              css={{
-                color: '$hiContrast',
-                display: 'inline-flex',
-                textDecoration: 'none',
-                '&:focus': {
-                  boxShadow: 'none',
-                },
-              }}
-            >
+          <NextLink href={isColors ? '/colors' : '/'} passHref>
+            <BoxLink>
               <RadixLogo label={isColors ? 'Colors' : 'Radix'} />
-            </Box>
+            </BoxLink>
           </NextLink>
           <Text
             as="h6"
@@ -86,8 +77,8 @@ export const Footer = () => {
                   css={{ display: 'inline-flex', alignItems: 'center' }}
                 >
                   Icons
-                  <Flex as="span" css={{ ml: '$1', color: '$gray8' }}>
-                    <ExternalIcon />
+                  <Flex as="span" css={{ color: '$slate8' }}>
+                    <ArrowTopRightIcon />
                   </Flex>
                 </Link>
               </Text>
@@ -101,8 +92,8 @@ export const Footer = () => {
                   css={{ display: 'inline-flex', alignItems: 'center' }}
                 >
                   Stitches
-                  <Flex as="span" css={{ ml: '$1', color: '$gray8' }}>
-                    <ExternalIcon />
+                  <Flex as="span" css={{ color: '$slate8' }}>
+                    <ArrowTopRightIcon />
                   </Flex>
                 </Link>
               </Text>
@@ -200,8 +191,8 @@ export const Footer = () => {
                   css={{ display: 'inline-flex', alignItems: 'center' }}
                 >
                   GitHub
-                  <Flex as="span" css={{ ml: '$1', color: '$gray8' }}>
-                    <ExternalIcon />
+                  <Flex as="span" css={{ color: '$slate8' }}>
+                    <ArrowTopRightIcon />
                   </Flex>
                 </Link>
               </Text>
@@ -215,8 +206,8 @@ export const Footer = () => {
                   css={{ display: 'inline-flex', alignItems: 'center' }}
                 >
                   Twitter
-                  <Flex as="span" css={{ ml: '$1', color: '$gray8' }}>
-                    <ExternalIcon />
+                  <Flex as="span" css={{ color: '$slate8' }}>
+                    <ArrowTopRightIcon />
                   </Flex>
                 </Link>
               </Text>
@@ -230,8 +221,8 @@ export const Footer = () => {
                   css={{ display: 'inline-flex', alignItems: 'center' }}
                 >
                   Discord
-                  <Flex as="span" css={{ ml: '$1', color: '$gray8' }}>
-                    <ExternalIcon />
+                  <Flex as="span" css={{ color: '$slate8' }}>
+                    <ArrowTopRightIcon />
                   </Flex>
                 </Link>
               </Text>

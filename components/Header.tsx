@@ -16,9 +16,10 @@ import {
   Heading,
   styled,
 } from '@modulz/design-system';
-import { RadixLogo } from './RadixLogo';
+import { RadixLogo } from '@components/RadixLogo';
 import { PlusIcon, MixIcon, StitchesLogoIcon } from '@radix-ui/react-icons';
 import { ThemeToggle } from '@components/ThemeToggle';
+import { BoxLink } from '@components/BoxLink';
 
 export const Header = () => {
   const router = useRouter();
@@ -29,41 +30,16 @@ export const Header = () => {
       <Container size="4">
         <Flex align="center" justify="between" css={{ height: '$8' }}>
           <NextLink href={isColors ? '/colors' : '/'} passHref>
-            <Box
-              as="a"
-              css={{
-                color: '$hiContrast',
-                display: 'inline-flex',
-                textDecoration: 'none',
-                '&:focus': { boxShadow: 'none' },
-              }}
-            >
-              <span
-                style={{
-                  position: 'absolute',
-                  width: 1,
-                  height: 1,
-                  padding: 0,
-                  margin: -1,
-                  overflow: 'hidden',
-                  clip: 'rect(0, 0, 0, 0)',
-                  whiteSpace: 'nowrap',
-                  border: 0,
-                }}
-              >
-                Radix homepage
-              </span>
+            <BoxLink>
               <RadixLogo label={isColors ? 'Colors' : 'Radix'} />
-            </Box>
+            </BoxLink>
           </NextLink>
 
           <Flex
             align="center"
             gap={{ '@initial': 4, '@bp2': 5 }}
-            css={{
-              // Baseline align with the logo
-              mb: -2,
-            }}
+            // Baseline align with the logo
+            css={{ mb: -2 }}
           >
             <Box css={{ display: 'none', '@bp1': { display: 'contents' } }}>
               {isColors && (
@@ -120,7 +96,7 @@ export const Header = () => {
                 <Box css={{ p: '$1' }}>
                   {isColors && (
                     <NextLink href="/" passHref>
-                      <BoxLink>
+                      <HighlightLink>
                         <Flex gap="3">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -153,11 +129,11 @@ export const Header = () => {
                             </Text>
                           </Box>
                         </Flex>
-                      </BoxLink>
+                      </HighlightLink>
                     </NextLink>
                   )}
 
-                  <BoxLink href="https://stitches.dev">
+                  <HighlightLink href="https://stitches.dev">
                     <Flex gap="3">
                       <StitchesLogoIcon
                         width="25"
@@ -177,11 +153,11 @@ export const Header = () => {
                         </Text>
                       </Box>
                     </Flex>
-                  </BoxLink>
+                  </HighlightLink>
 
                   {isColors === false && (
                     <NextLink href="/colors" passHref>
-                      <BoxLink>
+                      <HighlightLink>
                         <Flex gap="3">
                           <svg
                             width="25"
@@ -211,11 +187,11 @@ export const Header = () => {
                             </Text>
                           </Box>
                         </Flex>
-                      </BoxLink>
+                      </HighlightLink>
                     </NextLink>
                   )}
 
-                  <BoxLink href="https://icons.modulz.app">
+                  <HighlightLink href="https://icons.modulz.app">
                     <Flex gap="3">
                       <MixIcon width="25" height="25" style={{ flex: 'none', marginTop: 2 }} />
                       <Box>
@@ -231,7 +207,7 @@ export const Header = () => {
                         </Text>
                       </Box>
                     </Flex>
-                  </BoxLink>
+                  </HighlightLink>
                 </Box>
               </PopoverContent>
             </Popover>
@@ -244,7 +220,7 @@ export const Header = () => {
   );
 };
 
-const BoxLink = styled('a', {
+const HighlightLink = styled('a', {
   display: 'block',
   color: '$hiContrast',
   textDecoration: 'none',

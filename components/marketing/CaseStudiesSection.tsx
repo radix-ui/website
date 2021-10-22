@@ -35,7 +35,7 @@ export const CaseStudiesSection = () => {
           <Card variant="interactive" as="a" href="/case-studies/vercel">
             <Box css={{ p: '$5' }}>
               <Box css={{ mb: '$4' }}>
-                <AccessibleIcon label="Vercel Logo">
+                <AccessibleIcon label="Vercel homepage">
                   <CaseStudyLogo variant="Vercel" />
                 </AccessibleIcon>
               </Box>
@@ -55,7 +55,7 @@ export const CaseStudiesSection = () => {
           <Card variant="interactive" as="a" href="/case-studies/codesandbox">
             <Box css={{ p: '$5' }}>
               <Box css={{ mb: '$4' }}>
-                <AccessibleIcon label="CodeSandbox Logo">
+                <AccessibleIcon label="CodeSandbox homepage">
                   <CaseStudyLogo variant="CodeSandbox (Wide)" />
                 </AccessibleIcon>
               </Box>
@@ -98,12 +98,16 @@ export const CaseStudiesSection = () => {
           '&::-webkit-scrollbar': {
             display: 'none',
           },
+
+          // Add some padding so that logos aren't clipped when focused.
+          py: '$3',
+          my: '-$3',
         }}
       >
         <Grid flow="column" align="center" justify="start" gap="6">
           <NextLink href="/case-studies/graphcms" passHref>
             <LogoLink css={{ mb: -8 }}>
-              <AccessibleIcon label="GraphCMS Logo">
+              <AccessibleIcon label="GraphCMS homepage">
                 <CaseStudyLogo variant="GraphCMS" width="129" />
               </AccessibleIcon>
             </LogoLink>
@@ -111,7 +115,7 @@ export const CaseStudiesSection = () => {
 
           <NextLink href="/case-studies/livepeer" passHref>
             <LogoLink css={{ mb: -6 }}>
-              <AccessibleIcon label="Livepeer Logo">
+              <AccessibleIcon label="Livepeer homepage">
                 <CaseStudyLogo variant="Livepeer" width="86" />
               </AccessibleIcon>
             </LogoLink>
@@ -119,7 +123,7 @@ export const CaseStudiesSection = () => {
 
           <NextLink href="/case-studies/atom-learning" passHref>
             <LogoLink css={{ mb: 4 }}>
-              <AccessibleIcon label="Atom Learning Logo">
+              <AccessibleIcon label="Atom Learning homepage">
                 <CaseStudyLogo variant="Atom Learning" width="86" />
               </AccessibleIcon>
             </LogoLink>
@@ -127,7 +131,7 @@ export const CaseStudiesSection = () => {
 
           <NextLink href="/case-studies/placemark" passHref>
             <LogoLink css={{ mb: -2 }}>
-              <AccessibleIcon label="Placemark Logo">
+              <AccessibleIcon label="Placemark homepage">
                 <CaseStudyLogo variant="Placemark" width="121" />
               </AccessibleIcon>
             </LogoLink>
@@ -135,7 +139,7 @@ export const CaseStudiesSection = () => {
 
           <NextLink href="/case-studies/supabase" passHref>
             <LogoLink css={{ mb: -8 }}>
-              <AccessibleIcon label="Supabase Logo">
+              <AccessibleIcon label="Supabase homepage">
                 <CaseStudyLogo variant="Supabase" width="140" />
               </AccessibleIcon>
             </LogoLink>
@@ -143,7 +147,7 @@ export const CaseStudiesSection = () => {
 
           <NextLink href="/case-studies/magnetis" passHref>
             <LogoLink css={{ mb: -12 }}>
-              <AccessibleIcon label="Magnetis Logo">
+              <AccessibleIcon label="Magnetis homepage">
                 <CaseStudyLogo variant="Magnetis" width="111" />
               </AccessibleIcon>
             </LogoLink>
@@ -151,7 +155,7 @@ export const CaseStudiesSection = () => {
 
           <NextLink href="/case-studies/university-of-amsterdam" passHref>
             <LogoLink css={{ mt: 7 }}>
-              <AccessibleIcon label="University of Amsterdam Logo">
+              <AccessibleIcon label="University of Amsterdam homepage">
                 <CaseStudyLogo variant="University of Amsterdam" width="152" />
               </AccessibleIcon>
             </LogoLink>

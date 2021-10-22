@@ -31,18 +31,17 @@ const InlineDropdownTrigger = styled(DropdownMenuPrimitive.Trigger, {
   pb: 2,
   mr: 2,
   bc: '$slate3',
-  border: '1px solid $slate5',
+  border: '1px solid $slateA5',
   borderRadius: '$3',
+  outline: 0,
 
   '@hover': {
     '&:hover': {
-      bc: '$slate4',
-      borderColor: '$slate6',
+      borderColor: '$slateA8',
     },
     '&:focus': {
-      bc: '$tealA3',
-      borderColor: '$teal9',
-      boxShadow: '0 0 0 1px $colors$teal9',
+      borderColor: '$slateA8',
+      boxShadow: '0 0 0 1px $colors$slateA8',
     },
   },
 });
@@ -113,7 +112,7 @@ type Components =
   | 'hover card'
   | 'tooltip';
 
-export const ComponentDetailsSection = () => {
+export const ComponentHighlightsSection = () => {
   const [component, setComponent] = React.useState<Components>('dropdown');
   return (
     <Section

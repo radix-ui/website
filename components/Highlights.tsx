@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text, Box, Flex, Heading, Separator, Link } from '@modulz/design-system';
-import { CheckIcon } from '@radix-ui/react-icons';
-import { ExternalIcon } from '@components/ExternalIcon';
+import { ArrowTopRightIcon, CheckIcon } from '@radix-ui/react-icons';
 import { Select } from '@components/Select';
 import { useRouter } from 'next/router';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
@@ -113,7 +112,7 @@ export function Highlights({ features }) {
                 View source
               </Text>
               <Box as="span" css={{ ml: '$1', color: '$gray9' }}>
-                <ExternalIcon />
+                <ArrowTopRightIcon />
               </Box>
             </Flex>
           </Link>
@@ -129,7 +128,7 @@ export function Highlights({ features }) {
                 View on npm
               </Text>
               <Box as="span" css={{ ml: '$1', color: '$gray9' }}>
-                <ExternalIcon />
+                <ArrowTopRightIcon />
               </Box>
             </Flex>
           </Link>
@@ -145,7 +144,7 @@ export function Highlights({ features }) {
                 Report an issue
               </Text>
               <Box as="span" css={{ ml: '$1', color: '$gray9' }}>
-                <ExternalIcon />
+                <ArrowTopRightIcon />
               </Box>
             </Flex>
           </Link>
@@ -159,7 +158,7 @@ export function Highlights({ features }) {
                   ARIA design pattern
                 </Text>
                 <Box as="span" css={{ ml: '$1', color: '$gray9' }}>
-                  <ExternalIcon />
+                  <ArrowTopRightIcon />
                 </Box>
               </Flex>
             </Link>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Container } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { MainHero } from '@components/marketing/MainHero';
-import { ComponentDetailsSection } from '@components/marketing/ComponentDetailsSection';
+import { ComponentHighlightsSection } from '@components/marketing/ComponentHighlightsSection';
 import { CaseStudiesSection } from '@components/marketing/CaseStudiesSection';
 import { BenefitsSection } from '@components/marketing/BenefitsSection';
 import { AccessibilitySection } from '@components/marketing/AccessibilitySection';
@@ -29,7 +29,7 @@ export default function PrimitivesHome() {
       </FancyBackground>
       <CaseStudiesSection />
       <BenefitsSection />
-      <ComponentDetailsSection />
+      <ComponentHighlightsSection />
       <AccessibilitySection />
       <DeveloperExperienceSection />
       <AdoptionSection />

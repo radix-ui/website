@@ -1379,7 +1379,7 @@ const AnimationStateButton = styled('button', {
   br: '$1',
 
   '&:focus-visible': {
-    boxShadow: '0 0 0 2px $colors$blue11',
+    boxShadow: '0 0 0 2px $colors$slate8',
   },
 
   variants: {

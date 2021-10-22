@@ -19,6 +19,8 @@ import { Header } from '@components/Header';
 import { MarketingCaption } from '@components/marketing/MarketingCaption';
 import { CaseStudyLogo, CaseStudyLogoVariant } from '@components/marketing/CaseStudyLogo';
 import { Footer } from '@components/Footer';
+import { BoxLink } from '@components/BoxLink';
+import { Root as AccessibleIcon } from '@radix-ui/react-accessible-icon';
 
 // TODO meta image?
 
@@ -70,9 +72,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
             }}
           >
             <Box>
-              <MarketingCaption as="a" href="/case-studies" css={{ mb: '$1' }}>
-                Case study
-              </MarketingCaption>
+              <MarketingCaption css={{ mb: '$1' }}>Case study</MarketingCaption>
               <MDXProvider frontmatter={frontmatter}>
                 <Component components={components as any} />
               </MDXProvider>
@@ -94,18 +94,19 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                     svg: { width: '100%' },
                   }}
                 >
-                  <a
+                  <BoxLink
                     target="_blank"
-                    href={frontmatter.companyUrl}
+                    href={`https://${frontmatter.companyUrl}`}
                     style={{
                       display: 'inline-block',
                       width: frontmatter.companyLogoWidth,
                       maxWidth: '380px',
-                      color: 'inherit',
                     }}
                   >
-                    <CaseStudyLogo variant={frontmatter.companyLogoVariant} />
-                  </a>
+                    <AccessibleIcon label={`${frontmatter.metaTitle} homepage`}>
+                      <CaseStudyLogo variant={frontmatter.companyLogoVariant} />
+                    </AccessibleIcon>
+                  </BoxLink>
                 </Box>
                 <Box css={{ mb: '$5' }}>
                   <Paragraph as="h4" css={{ fontWeight: 500 }}>

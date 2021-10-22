@@ -27,7 +27,6 @@ export const DeveloperExperienceSection = () => {
 
   return (
     <Section
-      // className={darkTheme}
       css={{
         overflow: 'hidden',
         backgroundColor: '$sky6',
@@ -364,14 +363,8 @@ const BlendedCard = styled(Card, {
         '&:active': {
           transition: 'transform 150ms cubic-bezier(0.22, 1, 0.36, 1)',
         },
-        '&:focus': {
-          boxShadow: 'inset 0 0 0 1px $colors$teal8, 0 0 0 1px $colors$teal8',
-        },
         '&:focus:not(:focus-visible)': {
           boxShadow: 'none',
-        },
-        '&:focus-visible': {
-          boxShadow: 'inset 0 0 0 1px $colors$teal8, 0 0 0 1px $colors$teal8',
         },
       },
       ghost: {
@@ -383,14 +376,8 @@ const BlendedCard = styled(Card, {
             backgroundColor: '$$bgColor',
           },
         },
-        '&:focus': {
-          boxShadow: 'inset 0 0 0 1px $colors$teal8, 0 0 0 1px $colors$teal8',
-        },
         '&:focus:not(:focus-visible)': {
           boxShadow: 'none',
-        },
-        '&:focus-visible': {
-          boxShadow: 'inset 0 0 0 1px $colors$teal8, 0 0 0 1px $colors$teal8',
         },
       },
     },
