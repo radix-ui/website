@@ -33,6 +33,7 @@ export const Carousel = (props) => {
 
   const handleNextClick = useCallback(() => {
     const nextSlide = getSlideInDirection(1);
+    // @ts-ignore
     const padding = parseFloat(window.getComputedStyle(slideListRef.current).scrollPaddingLeft);
     if (nextSlide) {
       slideListRef.current.scrollTo({ left: nextSlide.offsetLeft - padding, behavior: 'smooth' });
@@ -41,6 +42,7 @@ export const Carousel = (props) => {
 
   const handlePrevClick = useCallback(() => {
     const prevSlide = getSlideInDirection(-1);
+    // @ts-ignore
     const padding = parseFloat(window.getComputedStyle(slideListRef.current).scrollPaddingLeft);
     if (prevSlide) {
       slideListRef.current.scrollTo({
