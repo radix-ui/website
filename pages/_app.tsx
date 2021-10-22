@@ -17,6 +17,7 @@ const globalStyles = globalCss({
 
   body: {
     margin: 0,
+    color: '$hiContrast',
     backgroundColor: '$loContrast',
     fontFamily: '$untitled',
     WebkitFontSmoothing: 'antialiased',
