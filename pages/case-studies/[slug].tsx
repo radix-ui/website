@@ -36,6 +36,8 @@ type CaseStudyPage = {
     companyFounded: string;
     companyLogoVariant: CaseStudyLogoVariant;
     companyLogoWidth: string;
+    nextCaseStudyTitle: string;
+    nextCaseStudySlug: string;
   };
   code: string;
 };
@@ -46,7 +48,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
   return (
     <>
       <TitleAndMetaTags
-        title={`${frontmatter.metaTitle} — Radix UI`}
+        title={`${frontmatter.metaTitle} — Case studies — Radix UI`}
         description={frontmatter.metaDescription}
         // image={frontmatter.metaImage}
       />
@@ -164,10 +166,14 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                 </Box>
                 <Separator size="2" css={{ my: '$7' }} />
                 <Box>
-                  <Paragraph as="h4" css={{ fontWeight: 500 }}>
+                  <Paragraph as="span" css={{ fontWeight: 500 }}>
                     Next case study
                   </Paragraph>
-                  <Paragraph>Vercel</Paragraph>
+                  <Paragraph as="span">
+                    <NextLink href={`/${frontmatter.nextCaseStudySlug}`} passHref>
+                      <Link>{frontmatter.nextCaseStudyTitle}</Link>
+                    </NextLink>
+                  </Paragraph>
                 </Box>
               </Box>
             </Box>
@@ -181,17 +187,23 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
 }
 
 export async function getStaticPaths() {
-  const frontmatters = getAllFrontmatter('primitives/case-studies');
+  const frontmatters = getAllFrontmatter('case-studies');
 
   return {
     paths: frontmatters.map((frontmatter) => ({
-      params: { slug: frontmatter.slug.replace('primitives/case-studies/', '') },
+      params: { slug: frontmatter.slug.replace('case-studies/', '') },
     })),
     fallback: false,
   };
 }
 
 export async function getStaticProps(context) {
-  const { frontmatter, code } = await getMdxBySlug('primitives/case-studies/', context.params.slug);
+  const { frontmatter, code } = await getMdxBySlug('case-studies/', context.params.slug);
+  const frontmatters = getAllFrontmatter('case-studies');
+  const thisIndex = frontmatters.findIndex((data) => data.slug.includes(frontmatter.slug));
+  const nextIndex = thisIndex + 1 < frontmatters.length ? thisIndex + 1 : 0;
+  const nextCaseStudy = frontmatters[nextIndex];
+  (frontmatter as any).nextCaseStudyTitle = nextCaseStudy.metaTitle;
+  (frontmatter as any).nextCaseStudySlug = nextCaseStudy.slug;
   return { props: { frontmatter, code } };
 }
