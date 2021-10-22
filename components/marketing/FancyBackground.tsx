@@ -25,55 +25,22 @@ export const FancyBackground: React.FC = ({ children }) => {
             position: 'absolute',
             top: 0,
             bottom: 0,
+            backgroundRepeat: 'no-repeat',
+            backgroundImage: `
+              radial-gradient(circle 800px at 700px 200px, $purple2, $$transparent),
+              radial-gradient(circle 600px at calc(100% - 300px) 300px, $mint4, $$transparent),
+              radial-gradient(circle 800px at right center, $sky3, $$transparent),
+              radial-gradient(circle 800px at right bottom, $sky1, $$transparent),
+              radial-gradient(circle 800px at calc(50% - 600px) calc(100% - 100px), $pink3, $pink1, $$transparent)
+            `,
 
             // Safari transparency bug workaround
-            $$transparent: '#FFFFFF00',
+            $$transparent: '#FDFCFD00',
             [`.${darkTheme} &`]: {
-              $$transparent: '#00000000',
+              $$transparent: '#16161800',
             },
           }}
-        >
-          <Box
-            css={{
-              position: 'absolute',
-              top: -800,
-              left: -300,
-              backgroundImage: 'radial-gradient(circle, $purple2, $$transparent 70%)',
-              width: 2000,
-              height: 2000,
-            }}
-          />
-          <Box
-            css={{
-              position: 'absolute',
-              top: -300,
-              right: -300,
-              backgroundImage: 'radial-gradient(circle, $mint4, $$transparent 70%)',
-              width: 1200,
-              height: 1200,
-            }}
-          />
-          <Box
-            css={{
-              position: 'absolute',
-              top: -200,
-              right: -1000,
-              backgroundImage: 'radial-gradient(circle, $sky2, $$transparent 70%)',
-              width: 1500,
-              height: 1500,
-            }}
-          />
-          <Box
-            css={{
-              position: 'absolute',
-              top: 600,
-              left: 'calc(50% - 1000px)',
-              backgroundImage: 'radial-gradient(circle, $pink3, $$transparent 70%)',
-              width: 800,
-              height: 800,
-            }}
-          />
-        </Box>
+        />
       </Box>
       {children}
     </Box>
