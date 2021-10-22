@@ -167,7 +167,7 @@ export const MainHero = () => {
                 <IFrame
                   visible={iFramesReady}
                   tabIndex={-1}
-                  src="/primitives/iframe/dialog"
+                  // src="/primitives/iframe/dialog"
                   css={{
                     background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
                     [`.${darkTheme} &`]: {
@@ -190,7 +190,7 @@ export const MainHero = () => {
                 <IFrame
                   visible={iFramesReady}
                   tabIndex={-1}
-                  src="/primitives/iframe/dropdown-menu"
+                  // src="/primitives/iframe/dropdown-menu"
                   css={{
                     background: 'linear-gradient(to bottom right,  $crimson4, $blue5)',
                     [`.${darkTheme} &`]: {
@@ -213,7 +213,7 @@ export const MainHero = () => {
                 <IFrame
                   visible={iFramesReady}
                   tabIndex={-1}
-                  src="/primitives/iframe/popover"
+                  // src="/primitives/iframe/popover"
                   css={{
                     background: 'linear-gradient(to bottom right, $lime3, $cyan5)',
                     [`.${darkTheme} &`]: {
@@ -236,7 +236,7 @@ export const MainHero = () => {
                 <IFrame
                   visible={iFramesReady}
                   tabIndex={-1}
-                  src="/primitives/iframe/slider"
+                  // src="/primitives/iframe/slider"
                   css={{
                     background: 'linear-gradient(120deg, $gray3, $sky4)',
                     [`.${darkTheme} &`]: {
@@ -259,7 +259,121 @@ export const MainHero = () => {
                 <IFrame
                   visible={iFramesReady}
                   tabIndex={-1}
-                  src="/primitives/iframe/dialog"
+                  // src="/primitives/iframe/dialog"
+                  css={{
+                    background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                    },
+                  }}
+                />
+              </IFrameSkeleton>
+              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                Tooltip
+              </Text>
+              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                Opens when the trigger is focused or hovered, supports custom timings and
+                positioning, handles collisions.
+              </Text>
+            </CarouselSlide>
+            <CarouselSlide>
+              <IFrameSkeleton active={!iFramesReady}>
+                <IFrame
+                  visible={iFramesReady}
+                  tabIndex={-1}
+                  // src="/primitives/iframe/dialog"
+                  css={{
+                    background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(to bottom right, $indigo2, $plum3)',
+                    },
+                  }}
+                />
+              </IFrameSkeleton>
+              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                Dialog
+              </Text>
+              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                With modal and non-modal modes, fine-grained focus&nbsp;control, accessible to
+                screen readers.
+              </Text>
+            </CarouselSlide>
+
+            <CarouselSlide>
+              <IFrameSkeleton active={!iFramesReady}>
+                <IFrame
+                  visible={iFramesReady}
+                  tabIndex={-1}
+                  // src="/primitives/iframe/dropdown-menu"
+                  css={{
+                    background: 'linear-gradient(to bottom right,  $crimson4, $blue5)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(to bottom right,  $crimson3, $blue3)',
+                    },
+                  }}
+                />
+              </IFrameSkeleton>
+              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                Dropdown Menu
+              </Text>
+              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                With submenus, checkable items, collision handling, full keyboard navigation, and
+                typeahead support.
+              </Text>
+            </CarouselSlide>
+
+            <CarouselSlide>
+              <IFrameSkeleton active={!iFramesReady}>
+                <IFrame
+                  visible={iFramesReady}
+                  tabIndex={-1}
+                  // src="/primitives/iframe/popover"
+                  css={{
+                    background: 'linear-gradient(to bottom right, $lime3, $cyan5)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(to bottom right, $mint3, $sand2)',
+                    },
+                  }}
+                />
+              </IFrameSkeleton>
+              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                Popover
+              </Text>
+              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                With fine-grained focus control, collision handling, origin-aware and
+                collision-aware animations.
+              </Text>
+            </CarouselSlide>
+
+            <CarouselSlide>
+              <IFrameSkeleton active={!iFramesReady}>
+                <IFrame
+                  visible={iFramesReady}
+                  tabIndex={-1}
+                  // src="/primitives/iframe/slider"
+                  css={{
+                    background: 'linear-gradient(120deg, $gray3, $sky4)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(120deg, $mauve4, $sky4)',
+                    },
+                  }}
+                />
+              </IFrameSkeleton>
+              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                Slider
+              </Text>
+              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                Supports keyboard and touch input, step interval, multiple thumbs for value ranges,
+                and RTL direction.
+              </Text>
+            </CarouselSlide>
+
+            <CarouselSlide>
+              <IFrameSkeleton active={!iFramesReady}>
+                <IFrame
+                  visible={iFramesReady}
+                  tabIndex={-1}
+                  // src="/primitives/iframe/dialog"
                   css={{
                     background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
                     [`.${darkTheme} &`]: {

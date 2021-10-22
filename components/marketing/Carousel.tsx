@@ -33,21 +33,24 @@ export const Carousel = (props) => {
 
   const handleNextClick = useCallback(() => {
     const nextSlide = getSlideInDirection(1);
-    // @ts-ignore
-    const padding = parseFloat(window.getComputedStyle(slideListRef.current).scrollPaddingLeft);
+    const gap = parseFloat(window.getComputedStyle(slideListRef.current).gap);
+    const itemWidth = nextSlide.clientWidth + gap;
+    const nextPos = Math.floor(slideListRef.current.scrollLeft / itemWidth) * itemWidth + itemWidth;
+
     if (nextSlide) {
-      slideListRef.current.scrollTo({ left: nextSlide.offsetLeft - padding, behavior: 'smooth' });
+      slideListRef.current.scrollTo({ left: nextPos, behavior: 'smooth' });
     }
   }, [getSlideInDirection]);
 
   const handlePrevClick = useCallback(() => {
     const prevSlide = getSlideInDirection(-1);
-    // @ts-ignore
-    const padding = parseFloat(window.getComputedStyle(slideListRef.current).scrollPaddingLeft);
+    const gap = parseFloat(window.getComputedStyle(slideListRef.current).gap);
+    const itemWidth = prevSlide.clientWidth + gap;
+    const nextPos = Math.ceil(slideListRef.current.scrollLeft / itemWidth) * itemWidth - itemWidth;
+
     if (prevSlide) {
       slideListRef.current.scrollTo({
-        left:
-          prevSlide.offsetLeft + padding - slideListRef.current.clientWidth + prevSlide.clientWidth,
+        left: nextPos,
         behavior: 'smooth',
       });
     }
