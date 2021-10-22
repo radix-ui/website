@@ -16,6 +16,13 @@ export const DemoButton = styled('button', {
   height: '$5',
   br: '$2',
 
+  '&:focus': {
+    boxShadow: '0 0 0 2px $colors$grayA8',
+  },
+  '&:focus:not(:focus-visible)': {
+    boxShadow: 'none',
+  },
+
   variants: {
     variant: {
       white: {
@@ -33,9 +40,6 @@ export const DemoButton = styled('button', {
             },
           },
         },
-        '&:focus-visible': {
-          boxShadow: '0 0 0 2px $colors$grayA6',
-        },
       },
       gray: {
         backgroundColor: '$grayA4',
@@ -43,9 +47,6 @@ export const DemoButton = styled('button', {
           '&:hover': {
             bc: '$grayA5',
           },
-        },
-        '&:focus-visible': {
-          boxShadow: '0 0 0 2px $colors$grayA6',
         },
       },
     },

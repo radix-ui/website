@@ -31,22 +31,6 @@ export const StyledButton = styled('button', {
 
   variants: {
     variant: {
-      gray: {
-        bc: '$slateA3',
-        color: '$hiContrast',
-        '@hover': {
-          '&:hover': {
-            bc: '$slateA4',
-          },
-        },
-        '&:active': {
-          bc: '$slateA5',
-        },
-        '&:focus-visible': {
-          bc: '$tealA3',
-          boxShadow: '0 0 0 2px $colors$blue8',
-        },
-      },
       contrast: {
         bc: '$hiContrast',
         color: '$loContrast',
@@ -59,26 +43,27 @@ export const StyledButton = styled('button', {
           bc: '$teal4',
           color: '$teal12',
         },
-        '&:focus-visible': {
+        '&:focus': {
           boxShadow: '0 0 0 2px $colors$blue8',
         },
+        '&:focus:not(:focus-visible)': {
+          boxShadow: 'none',
+        },
         [`.${darkTheme} &`]: {
-          color: '$hiContrast',
-          bc: 'hsl(0 0% 6%)',
-          boxShadow: `
+          $$backlight: `
             0 0 0 2px $colors$plumA3,
             -15px 0 30px -15px $colors$orangeA8,
             0 0 30px -15px $colors$pinkA8,
             15px 0 30px -15px $colors$violetA8
           `,
-          '&:focus-visible': {
-            boxShadow: `
-              0 0 0 2px $colors$plumA3,
-              -15px 0 30px -15px $colors$orangeA8,
-              0 0 30px -15px $colors$pinkA8,
-              15px 0 30px -15px $colors$violetA8,
-              0 0 0 2px $colors$blueA8
-            `,
+          color: '$hiContrast',
+          bc: 'hsl(0 0% 6%)',
+          boxShadow: '$$backlight',
+          '&:focus': {
+            boxShadow: '$$backlight, 0 0 0 2px $colors$blueA8',
+          },
+          '&:focus:not(:focus-visible)': {
+            boxShadow: '$$backlight',
           },
         },
       },

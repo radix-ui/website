@@ -4,6 +4,7 @@ export const LogoLink = styled('a', {
   display: 'block',
   outline: 0,
   color: '$hiContrast',
+
   '@hover': {
     color: '$slate9',
     transition: '120ms color',
@@ -15,10 +16,10 @@ export const LogoLink = styled('a', {
   '&:focus': {
     zIndex: 1,
     color: '$hiContrast',
-  },
-
-  '&:focus-visible': {
     boxShadow: '0 0 0 2px $colors$blue8',
+  },
+  '&:focus:not(:focus-visible)': {
+    boxShadow: 'none',
   },
 
   variants: {

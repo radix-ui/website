@@ -13,6 +13,7 @@ export const DemoIconButton = styled('button', {
   background: 'none',
   padding: 0,
   margin: 0,
+  outline: 0,
   borderRadius: '$2',
 
   // Make it larger than it looks
@@ -27,8 +28,11 @@ export const DemoIconButton = styled('button', {
   '&:active': {
     bc: '$grayA5',
   },
-  '&:focus-visible': {
-    borderColor: '$indigo9',
-    outline: 0,
+
+  '&:focus': {
+    borderColor: '$blue8',
+  },
+  '&:focus:not(:focus-visible)': {
+    borderColor: 'transparent',
   },
 });

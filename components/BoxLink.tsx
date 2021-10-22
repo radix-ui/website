@@ -8,7 +8,10 @@ export const BoxLink = styled('a', {
   p: '$1',
   m: '-$1',
   br: '$1',
-  '&:focus-visible': {
+  '&:focus': {
     boxShadow: '0 0 0 2px $colors$blue8',
+  },
+  '&:focus:not(:focus-visible)': {
+    boxShadow: 'none',
   },
 });

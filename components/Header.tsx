@@ -224,6 +224,7 @@ const HighlightLink = styled('a', {
   display: 'block',
   color: '$hiContrast',
   textDecoration: 'none',
+  outline: 0,
   p: '$2',
   br: '$2',
   '@hover': {
@@ -232,9 +233,9 @@ const HighlightLink = styled('a', {
     },
   },
   '&:focus': {
-    outline: 0,
-  },
-  '&:focus-visible': {
     boxShadow: '0 0 0 2px $colors$slateA8',
+  },
+  '&:focus:not(:focus-visible)': {
+    boxShadow: 'none',
   },
 });
