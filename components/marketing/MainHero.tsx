@@ -127,6 +127,7 @@ export const MainHero = () => {
           <Box>
             <IFrameSkeleton active={!iFramesReady}>
               <IFrame
+                data-demo-iframe
                 visible={iFramesReady}
                 tabIndex={-1}
                 src="/iframe/dialog"
@@ -150,6 +151,7 @@ export const MainHero = () => {
           <Box>
             <IFrameSkeleton active={!iFramesReady}>
               <IFrame
+                data-demo-iframe
                 visible={iFramesReady}
                 tabIndex={-1}
                 src="/iframe/dropdown-menu"
@@ -173,6 +175,7 @@ export const MainHero = () => {
           <Box>
             <IFrameSkeleton active={!iFramesReady}>
               <IFrame
+                data-demo-iframe
                 visible={iFramesReady}
                 tabIndex={-1}
                 src="/iframe/popover"
@@ -196,6 +199,7 @@ export const MainHero = () => {
           <Box>
             <IFrameSkeleton active={!iFramesReady}>
               <IFrame
+                data-demo-iframe
                 visible={iFramesReady}
                 tabIndex={-1}
                 src="/iframe/slider"
@@ -219,6 +223,7 @@ export const MainHero = () => {
           <Box>
             <IFrameSkeleton active={!iFramesReady}>
               <IFrame
+                data-demo-iframe
                 visible={iFramesReady}
                 tabIndex={-1}
                 src="/iframe/dialog"
