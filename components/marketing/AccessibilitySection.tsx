@@ -433,7 +433,7 @@ export const AccessibilitySection = () => {
           ref={containerRef}
           css={{
             br: '$4',
-            bc: '$slateA3',
+            bc: '$mauveA3',
             mb: '$5',
             boxShadow: '0 0 1px $colors$slateA9',
             backdropFilter: 'blur(8px)',
@@ -470,6 +470,11 @@ export const AccessibilitySection = () => {
               '& > *': {
                 gridTemplateRows: 'auto 1fr',
                 gap: '$1',
+              },
+
+              $$subpanel: 'transparent',
+              [`.${darkTheme} &`]: {
+                $$subpanel: '$colors$mauveA2',
               },
             }}
           >
@@ -518,7 +523,7 @@ export const AccessibilitySection = () => {
             {(currentSequence === 'typeahead' ||
               currentSequence === 'keyboardNavigation' ||
               currentSequence === 'rtl') && (
-              <Grid css={{ overflow: 'hidden', p: '$3' }}>
+              <Grid css={{ overflow: 'hidden', p: '$3', bc: '$$subpanel' }}>
                 <Flex align="center" gap="1" css={{ color: '$slate11', position: 'relative' }}>
                   <Text variant="gray" size="2">
                     Keyboard input
@@ -561,7 +566,7 @@ export const AccessibilitySection = () => {
             )}
 
             {currentSequence === 'screenReader' && (
-              <Grid css={{ p: '$3' }}>
+              <Grid css={{ p: '$3', bc: '$$subpanel' }}>
                 <Flex align="center" gap="1" css={{ color: '$slate11' }}>
                   <Text variant="gray" size="2">
                     Screen reader
@@ -579,7 +584,7 @@ export const AccessibilitySection = () => {
               </Grid>
             )}
 
-            <Grid css={{ p: '$3' }}>
+            <Grid css={{ p: '$3', bc: '$$subpanel' }}>
               <Flex align="center" gap="1" css={{ color: '$slate11' }}>
                 <Text variant="gray" size="2">
                   Radix component
