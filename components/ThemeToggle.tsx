@@ -20,12 +20,12 @@ export const ThemeToggle = (props) => {
             if (iframe.contentDocument) {
               iframe.contentDocument.documentElement.classList.toggle(darkTheme.className);
               iframe.contentDocument.documentElement.classList.toggle('light-theme');
-              iframe.contentDocument.documentElement.style.colorScheme = newTheme;
+              iframe.contentDocument.documentElement.style.setProperty('color-scheme', newTheme);
             }
           });
           document.documentElement.classList.toggle(darkTheme.className);
           document.documentElement.classList.toggle('light-theme');
-          document.documentElement.style.colorScheme = newTheme;
+          document.documentElement.style.setProperty('color-scheme', newTheme);
 
           // Finally, we still need to let `next-themes` know of the theme change so that it saves it to local storage.
           setTheme(newTheme);
