@@ -33,7 +33,7 @@ export default function CaseStudy() {
 
       <Container size={{ '@initial': 2, '@bp2': 3 }}>
         <Section>
-          <Flex direction="column" align="center" css={{ textAlign: 'center', mb: '$7' }}>
+          <Flex direction="column" align="center" css={{ textAlign: 'center', mb: '$5' }}>
             <Heading size="3" css={{ mb: '$2' }}>
               Case studies
             </Heading>
@@ -44,7 +44,7 @@ export default function CaseStudy() {
           </Flex>
           <Grid
             align="center"
-            columns="3"
+            columns={{ '@initial': '1', '@bp1': '2', '@bp2': '3' }}
             css={{
               gap: '1px',
               placeItems: 'stretch',
