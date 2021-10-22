@@ -18,8 +18,8 @@ import { CodeDemo } from './CodeDemo';
 enum Highlights {
   Unstyled = '1-18',
   Composable = '20-36',
-  Customizable = '37-53',
-  Consistent = '54-70',
+  Customizable = '37-51',
+  Consistent = '52-68',
 }
 
 export const DeveloperExperienceSection = () => {
@@ -85,8 +85,8 @@ export const DeveloperExperienceSection = () => {
                 gapY={3}
                 flow="column"
                 css={{
-                  gridTemplateColumns: 'repeat(4, 1fr) 1px',
-                  gridTemplateRows: '420px auto',
+                  gridTemplateColumns: 'repeat(4, max-content) 1px',
+                  gridTemplateRows: '410px auto',
                 }}
               >
                 <CodeWindow className={darkTheme}>
@@ -437,13 +437,11 @@ export const StatusTooltip = ({ state, label }) => {
   customizable: `// Compose a Popover with custom focus and positioning
 export const DeploymentPopover = ({ children }) => {
   const popoverCloseButton = React.useRef(null);
-
   return (
     <Popover.Root>
       <Popover.Trigger>View deployment</Popover.Trigger>
       <PopoverContent
         align="start"
-        alignOffset={-10}
         collisionTolerance={10}
         portalled={false}
         onOpenAutoFocus={(event) => {
