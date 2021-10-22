@@ -1,4 +1,4 @@
-import { Box, styled } from '@modulz/design-system';
+import { Box, darkTheme, styled } from '@modulz/design-system';
 import React from 'react';
 
 export const StyledButton = styled('button', {
@@ -61,6 +61,16 @@ export const StyledButton = styled('button', {
         },
         '&:focus-visible': {
           boxShadow: '0 0 0 2px $colors$teal9',
+        },
+        [`.${darkTheme} &`]: {
+          color: '$hiContrast',
+          bc: 'hsl(0 0% 6%)',
+          boxShadow: `
+            0 0 0 2px $colors$plumA3,
+            -15px 0 30px -15px $colors$orangeA8,
+            0 0 30px -15px $colors$pinkA8,
+            15px 0 30px -15px $colors$violetA8
+          `,
         },
       },
     },

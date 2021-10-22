@@ -115,16 +115,16 @@ export const MainHero = () => {
             <br />
             time reinventing
             <br />
-            UI components.
+            UI components.
           </Text>
-          <Box css={{ maxWidth: 580, mb: '$4' }}>
+          <Box css={{ maxWidth: 500, mb: '$4' }}>
             <Paragraph size="2" as="p">
-              Radix Primitives is an accessible component library for building high‑quality design
-              systems and web apps in React.
+              Unstyled, acessible components for building high‑quality design systems and web apps
+              in React.
             </Paragraph>
           </Box>
           <Flex justify={{ '@initial': 'start' }} gap="5">
-            <NextLink href="/primitives/docs/overview/getting-started" passHref>
+            <NextLink href="/docs/primitives/overview/getting-started" passHref>
               <MarketingButton as="a" icon={ArrowRightIcon}>
                 Install Primitives
               </MarketingButton>
@@ -132,7 +132,6 @@ export const MainHero = () => {
           </Flex>
         </Box>
       </Container>
-
       <Box css={{ position: 'relative' }}>
         <Carousel>
           <CarouselSlideList
@@ -165,9 +164,10 @@ export const MainHero = () => {
             <CarouselSlide>
               <IFrameSkeleton active={!iFramesReady}>
                 <IFrame
+                  data-demo-iframe
                   visible={iFramesReady}
                   tabIndex={-1}
-                  src="/primitives/iframe/dialog"
+                  src="/iframe/dialog"
                   css={{
                     background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
                     [`.${darkTheme} &`]: {
@@ -188,9 +188,10 @@ export const MainHero = () => {
             <CarouselSlide>
               <IFrameSkeleton active={!iFramesReady}>
                 <IFrame
+                  data-demo-iframe
                   visible={iFramesReady}
                   tabIndex={-1}
-                  src="/primitives/iframe/dropdown-menu"
+                  src="/iframe/dropdown-menu"
                   css={{
                     background: 'linear-gradient(to bottom right,  $crimson4, $blue5)',
                     [`.${darkTheme} &`]: {
@@ -203,7 +204,7 @@ export const MainHero = () => {
                 Dropdown Menu
               </Text>
               <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                With submenus, checkable items, collision handling, full keyboard navigation, and
+                With submenus, checkable items, collision handling, full keyboard navigation, and
                 typeahead support.
               </Text>
             </CarouselSlide>
@@ -211,9 +212,10 @@ export const MainHero = () => {
             <CarouselSlide>
               <IFrameSkeleton active={!iFramesReady}>
                 <IFrame
+                  data-demo-iframe
                   visible={iFramesReady}
                   tabIndex={-1}
-                  src="/primitives/iframe/popover"
+                  src="/iframe/popover"
                   css={{
                     background: 'linear-gradient(to bottom right, $lime3, $cyan5)',
                     [`.${darkTheme} &`]: {
@@ -234,9 +236,10 @@ export const MainHero = () => {
             <CarouselSlide>
               <IFrameSkeleton active={!iFramesReady}>
                 <IFrame
+                  data-demo-iframe
                   visible={iFramesReady}
                   tabIndex={-1}
-                  src="/primitives/iframe/slider"
+                  src="/iframe/slider"
                   css={{
                     background: 'linear-gradient(120deg, $gray3, $sky4)',
                     [`.${darkTheme} &`]: {
@@ -257,9 +260,10 @@ export const MainHero = () => {
             <CarouselSlide>
               <IFrameSkeleton active={!iFramesReady}>
                 <IFrame
+                  data-demo-iframe
                   visible={iFramesReady}
                   tabIndex={-1}
-                  src="/primitives/iframe/dialog"
+                  src="/iframe/dialog"
                   css={{
                     background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
                     [`.${darkTheme} &`]: {

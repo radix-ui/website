@@ -59,7 +59,7 @@ export function ColorsPage({ children }: { children: React.ReactNode }) {
 
           '@bp2': {
             position: 'fixed',
-            top: '$sizes$7',
+            top: '$sizes$8',
             left: 0,
             bottom: 0,
             width: '250px',

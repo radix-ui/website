@@ -50,6 +50,7 @@ const itemCss = {
   userSelect: 'none',
   whiteSpace: 'nowrap',
   height: '$5',
+  color: '$hiContrast',
   minWidth: 90,
   pl: '$4',
   pr: '$3',
@@ -90,6 +91,7 @@ export default function DropdownMenuDemo() {
         ai: 'center',
         jc: 'center',
         position: 'relative',
+        color: '$hiContrast',
         height: '100vh',
         width: '100vw',
       }}
@@ -102,6 +104,7 @@ export default function DropdownMenuDemo() {
         </DropdownMenuPrimitive.Trigger>
         <DropdownMenuContent
           sideOffset={5}
+          onInteractOutside={(event) => event.preventDefault()}
           onOpenAutoFocus={(event) => {
             // We prevent the initial auto focus because it's a demo rather than a real UI,
             // so the parent page focus is not stolen.

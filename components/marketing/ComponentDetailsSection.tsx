@@ -597,7 +597,6 @@ const Circle = ({
   color2: string;
   opacity?: number;
 }) => {
-  const [id] = React.useState(Math.random().toString());
   return (
     <Box
       css={{
@@ -620,12 +619,19 @@ const Circle = ({
           cx="50"
           cy="50"
           r="49"
-          stroke={`url(#${id})`}
+          stroke={`url(#circle-${size})`}
           strokeWidth="1"
           vectorEffect="non-scaling-stroke"
         />
         <defs>
-          <linearGradient id={id} gradientUnits="userSpaceOnUse" x1="50" y1="0" x2="50" y2="100">
+          <linearGradient
+            id={`circle-${size}`}
+            gradientUnits="userSpaceOnUse"
+            x1="50"
+            y1="0"
+            x2="50"
+            y2="100"
+          >
             <stop style={{ stopColor: color1 }} />
             <stop style={{ stopColor: color2 }} offset="1" />
           </linearGradient>

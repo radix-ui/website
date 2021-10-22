@@ -15,112 +15,236 @@ import {
   darkTheme,
 } from '@modulz/design-system';
 import {
+  CaretLeftIcon,
   CheckCircledIcon,
   CheckIcon,
-  ChevronDownIcon,
   CodeIcon,
   EyeClosedIcon,
   InputIcon,
+  CaretDownIcon,
 } from '@radix-ui/react-icons';
 import { MarketingCaption } from './MarketingCaption';
 
-type MockDropdownState = 'closed' | 'item1' | 'item2' | 'item3' | 'item4';
+type SequenceType = 'screenReader' | 'keyboardNavigation' | 'typeahead' | 'rtl';
+type MockDropdownState =
+  | 'closed'
+  | 'item1'
+  | 'item2'
+  | 'item3'
+  | 'item4'
+  | 'item1-submenu'
+  | 'item2-submenu'
+  | 'item3-submenu';
 
 type AnimationKeyframe = {
-  key: string;
-  typeahead: string;
+  key?: string;
+  typeahead?: string;
   dropdown: MockDropdownState;
-  animateSpeaker: boolean;
   duration: number;
 };
+// TODO sync drodpown states when sequence changes
 
-const animationStates: Array<AnimationKeyframe> = [
-  {
-    // Note: first keyframe is skipped on second and later iterations
-    key: '',
-    typeahead: '',
-    dropdown: 'item1',
-    animateSpeaker: true,
-    duration: 2500,
-  },
-  {
-    key: 'g',
-    typeahead: 'g',
-    dropdown: 'item2',
-    animateSpeaker: true,
-    duration: 700,
-  },
-  {
-    key: 'o',
-    typeahead: 'go',
-    dropdown: 'item2',
-    animateSpeaker: false,
-    duration: 180,
-  },
-  {
-    key: ' ',
-    typeahead: 'go ',
-    dropdown: 'item2',
-    animateSpeaker: false,
-    duration: 300,
-  },
-  {
-    key: 't',
-    typeahead: 'go t',
-    dropdown: 'item2',
-    animateSpeaker: false,
-    duration: 180,
-  },
-  {
-    key: 'o',
-    typeahead: 'go to',
-    dropdown: 'item2',
-    animateSpeaker: false,
-    duration: 180,
-  },
-  {
-    key: ' ',
-    typeahead: 'go to ',
-    dropdown: 'item2',
-    animateSpeaker: false,
-    duration: 300,
-  },
-  {
-    key: 'r',
-    typeahead: 'go to r',
-    dropdown: 'item4',
-    animateSpeaker: true,
-    duration: 1500,
-  },
-  {
-    key: 's',
-    typeahead: 's',
-    dropdown: 'item1',
-    animateSpeaker: true,
-    duration: 180,
-  },
-  {
-    key: 'h',
-    typeahead: 'sh',
-    dropdown: 'item1',
-    animateSpeaker: false,
-    duration: 180,
-  },
-  {
-    key: 'o',
-    typeahead: 'sho',
-    dropdown: 'item1',
-    animateSpeaker: false,
-    duration: 180,
-  },
-  {
-    key: 'w',
-    typeahead: 'show',
-    dropdown: 'item1',
-    animateSpeaker: false,
-    duration: 2500,
-  },
-];
+// Note that for all animations the first keyframe is skipped on the second and subsequent
+// iterations so that how animation ends is easy to connect with how it starts.
+
+const animations: Record<SequenceType, AnimationKeyframe[]> = {
+  screenReader: [
+    {
+      dropdown: 'item1',
+      duration: 3000,
+    },
+    {
+      dropdown: 'item2',
+      duration: 1200,
+    },
+    {
+      dropdown: 'item3',
+      duration: 1200,
+    },
+    {
+      dropdown: 'item4',
+      duration: 1200,
+    },
+    {
+      dropdown: 'item1',
+      duration: 2000,
+    },
+  ],
+  keyboardNavigation: [
+    {
+      key: '',
+      dropdown: 'item1',
+      duration: 2400,
+    },
+    {
+      key: 'down',
+      dropdown: 'item2',
+      duration: 400,
+    },
+    {
+      key: 'down',
+      dropdown: 'item3',
+      duration: 400,
+    },
+    {
+      key: 'down',
+      dropdown: 'item4',
+      duration: 1200,
+    },
+    {
+      key: 'up',
+      dropdown: 'item3',
+      duration: 400,
+    },
+    {
+      key: 'up',
+      dropdown: 'item2',
+      duration: 1200,
+    },
+    {
+      key: 'return',
+      dropdown: 'closed',
+      duration: 2000,
+    },
+    {
+      key: 'return',
+      dropdown: 'item1',
+      duration: 2000,
+    },
+  ],
+  typeahead: [
+    {
+      key: '',
+      typeahead: '',
+      dropdown: 'item1',
+      duration: 2400,
+    },
+    {
+      key: 'g',
+      typeahead: 'g',
+      dropdown: 'item2',
+      duration: 700,
+    },
+    {
+      key: 'o',
+      typeahead: 'go',
+      dropdown: 'item2',
+      duration: 180,
+    },
+    {
+      key: ' ',
+      typeahead: 'go ',
+      dropdown: 'item2',
+      duration: 300,
+    },
+    {
+      key: 't',
+      typeahead: 'go t',
+      dropdown: 'item2',
+      duration: 180,
+    },
+    {
+      key: 'o',
+      typeahead: 'go to',
+      dropdown: 'item2',
+      duration: 180,
+    },
+    {
+      key: ' ',
+      typeahead: 'go to ',
+      dropdown: 'item2',
+      duration: 300,
+    },
+    {
+      key: 'r',
+      typeahead: 'go to r',
+      dropdown: 'item4',
+      duration: 1600,
+    },
+    {
+      key: 's',
+      typeahead: 's',
+      dropdown: 'item1',
+      duration: 180,
+    },
+    {
+      key: 'h',
+      typeahead: 'sh',
+      dropdown: 'item1',
+      duration: 180,
+    },
+    {
+      key: 'o',
+      typeahead: 'sho',
+      dropdown: 'item1',
+      duration: 180,
+    },
+    {
+      key: 'w',
+      typeahead: 'show',
+      dropdown: 'item1',
+      duration: 2400,
+    },
+  ],
+
+  rtl: [
+    {
+      key: '',
+      dropdown: 'item1',
+      duration: 2400,
+    },
+    {
+      key: 'left',
+      dropdown: 'item1-submenu',
+      duration: 1200,
+    },
+    {
+      key: 'right',
+      dropdown: 'item1',
+      duration: 400,
+    },
+    {
+      key: 'down',
+      dropdown: 'item2',
+      duration: 400,
+    },
+    {
+      key: 'left',
+      dropdown: 'item2-submenu',
+      duration: 1200,
+    },
+    {
+      key: 'right',
+      dropdown: 'item2',
+      duration: 400,
+    },
+    {
+      key: 'down',
+      dropdown: 'item3',
+      duration: 400,
+    },
+    {
+      key: 'left',
+      dropdown: 'item3-submenu',
+      duration: 1200,
+    },
+    {
+      key: 'right',
+      dropdown: 'item3',
+      duration: 400,
+    },
+    {
+      key: 'down',
+      dropdown: 'item4',
+      duration: 800,
+    },
+    {
+      key: 'down',
+      dropdown: 'item1',
+      duration: 1200,
+    },
+  ],
+};
 
 // TODO think how to label the animation for AT
 export const AccessibilitySection = () => {
@@ -129,8 +253,40 @@ export const AccessibilitySection = () => {
   const timeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
   const containerRef = React.useRef<HTMLDivElement>(null);
   const intersectingRef = React.useRef(false);
+  const playKeypressAnimation = React.useRef(true);
   const [keyframe, setKeyframe] = React.useState(0);
   const [isIntersecting, setIsIntersecting] = React.useState(false);
+  const [currentSequence, setCurrentSequence] = React.useState<SequenceType>('screenReader');
+
+  // Fancy function to update the animation state when changing sequence.
+  // When user changes sequence, we attempt to pick the new keyframe intelligently
+  // so that the animation feels continious, rather than starts from scratch.
+  const updateSequence = React.useCallback(
+    (newSequence: SequenceType) => {
+      if (currentSequence !== newSequence) {
+        let desiredDropdownState = animations[currentSequence][keyframeRef.current].dropdown;
+
+        // If current sequence is the RTL animation, it might include the submenu state.
+        // We need to pick nth dropdown item without the submenu as other animations don't have it.
+        if (desiredDropdownState.includes('submenu')) {
+          const length = '-submenu'.length * -1;
+          desiredDropdownState = desiredDropdownState.slice(0, length) as MockDropdownState;
+        }
+
+        let keyframeWithSimilarDropdownState = animations[newSequence].findIndex(
+          ({ dropdown }) => dropdown === desiredDropdownState
+        );
+        const newKeyframe = Math.max(0, keyframeWithSimilarDropdownState);
+
+        // Update all animation state pieces
+        keyframeRef.current = newKeyframe;
+        setKeyframe(newKeyframe);
+        setCurrentSequence(newSequence);
+        playKeypressAnimation.current = false;
+      }
+    },
+    [currentSequence, setKeyframe, setCurrentSequence]
+  );
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -163,7 +319,7 @@ export const AccessibilitySection = () => {
     const updateKeyframe = () => {
       // Increment keyframe counter, or loop from 1st when last keyframe is reached
       keyframeRef.current =
-        keyframeRef.current < animationStates.length - 1 ? keyframeRef.current + 1 : 1;
+        keyframeRef.current < animations[currentSequence].length - 1 ? keyframeRef.current + 1 : 1;
 
       // Increment iteration counter when starting keyframe is reached
       if (keyframeRef.current === 0) {
@@ -176,7 +332,7 @@ export const AccessibilitySection = () => {
       if (intersectingRef.current) {
         timeoutRef.current = setTimeout(
           () => requestAnimationFrame(() => updateKeyframe()),
-          animationStates[keyframeRef.current].duration
+          animations[currentSequence][keyframeRef.current].duration
         );
       }
     };
@@ -184,10 +340,11 @@ export const AccessibilitySection = () => {
     // Start the animation in 1s once the container is visible in the viewport
     if (isIntersecting) {
       timeoutRef.current = setTimeout(() => requestAnimationFrame(() => updateKeyframe()), 1000);
+      playKeypressAnimation.current = true;
     }
 
     return () => clearTimeout(timeoutRef.current);
-  }, [isIntersecting]);
+  }, [currentSequence, isIntersecting]);
 
   return (
     <Section
@@ -215,7 +372,7 @@ export const AccessibilitySection = () => {
         <Box
           css={{
             position: 'absolute',
-            border: '10px solid $colors$sageA3',
+            border: '10px solid $colors$greenA3',
             transform: 'rotate(-15deg)',
             width: 320,
             height: 320,
@@ -231,7 +388,7 @@ export const AccessibilitySection = () => {
         />
         <Triangle
           css={{
-            color: '$slateA3',
+            color: '$blueA3',
             position: 'absolute',
             transform: 'rotate(10deg)',
             width: 420,
@@ -249,7 +406,7 @@ export const AccessibilitySection = () => {
           css={{
             position: 'absolute',
             br: '$round',
-            border: '10px solid $colors$mauveA3',
+            border: '10px solid $colors$tomatoA3',
             top: 700,
             left: 0,
             width: 400,
@@ -276,8 +433,7 @@ export const AccessibilitySection = () => {
           ref={containerRef}
           css={{
             br: '$4',
-            bc: '$slateA3',
-            // p: '$5',
+            bc: '$mauveA3',
             mb: '$5',
             boxShadow: '0 0 1px $colors$slateA9',
             backdropFilter: 'blur(8px)',
@@ -295,76 +451,153 @@ export const AccessibilitySection = () => {
               br: '$3',
               overflow: 'hidden',
               bc: '$mauve1',
-              gridTemplateRows: '270px auto',
+              gridTemplateRows: 'auto',
+              gridAutoRows: '270px',
+              '& > *:nth-child(2)': {
+                boxShadow: '0 1px $colors$grayA4',
+              },
               '@bp1': {
+                '& > *:nth-child(2)': {
+                  boxShadow: '1px 0 $colors$grayA4',
+                },
+              },
+              '@bp2': {
                 gridTemplateRows: '270px',
+                '& > *:nth-child(2)': {
+                  boxShadow: '1px 0 $colors$grayA4, -1px 0 $colors$grayA4',
+                },
               },
               '& > *': {
                 gridTemplateRows: 'auto 1fr',
-                p: '$3',
+                gap: '$1',
+              },
+
+              $$subpanel: 'transparent',
+              [`.${darkTheme} &`]: {
+                $$subpanel: '$colors$mauveA2',
               },
             }}
           >
-            <Grid
+            <Flex
+              align="center"
+              justify="center"
               css={{
-                display: 'none',
-                '@bp2': { display: 'grid' },
-                boxShadow: '1px 0 $colors$grayA4',
+                py: '$5',
+                bc: '$grayA1',
+                gridColumn: '1 / -1',
+                boxShadow: '0 1px $colors$grayA4',
+                '@bp2': {
+                  boxShadow: 'none',
+                  gridColumn: '1 / 2',
+                },
               }}
             >
-              <Flex
-                align="center"
-                gap="1"
-                css={{
-                  color: '$slate11',
-                  mb: '$1',
-                  position: 'relative',
-                }}
-              >
-                <Text variant="gray" size="2">
-                  Keyboard input
-                </Text>
-                <KeyboardIcon />
-
-                <MockTypeaheadOutput css={{ position: 'absolute', top: -4, right: 0 }}>
-                  {animationStates[keyframe].typeahead}
-                </MockTypeaheadOutput>
+              <Flex direction="column" align="start" css={{ mb: '$1' }}>
+                <AnimationStateButton
+                  active={currentSequence === 'screenReader'}
+                  onClick={() => updateSequence('screenReader')}
+                >
+                  Screen reader support
+                </AnimationStateButton>
+                <AnimationStateButton
+                  active={currentSequence === 'typeahead'}
+                  onClick={() => updateSequence('typeahead')}
+                >
+                  Typeahead support
+                </AnimationStateButton>
+                <AnimationStateButton
+                  active={currentSequence === 'keyboardNavigation'}
+                  onClick={() => updateSequence('keyboardNavigation')}
+                >
+                  Keyboard navigation
+                </AnimationStateButton>
+                <AnimationStateButton
+                  active={currentSequence === 'rtl'}
+                  onClick={() => updateSequence('rtl')}
+                >
+                  RTL support
+                </AnimationStateButton>
               </Flex>
-              <Flex align="center" justify="center">
-                {/* Adding React key so that the mock keyboards animates correctly on repeat key presses */}
-                <MockKeyboard key={keyframe} currentKey={animationStates[keyframe].key} />
-              </Flex>
-            </Grid>
+            </Flex>
 
-            <Grid>
-              <Flex align="center" gap="1" css={{ color: '$slate11', mb: '$1' }}>
+            {(currentSequence === 'typeahead' ||
+              currentSequence === 'keyboardNavigation' ||
+              currentSequence === 'rtl') && (
+              <Grid css={{ overflow: 'hidden', p: '$3', bc: '$$subpanel' }}>
+                <Flex align="center" gap="1" css={{ color: '$slate11', position: 'relative' }}>
+                  <Text variant="gray" size="2">
+                    Keyboard input
+                  </Text>
+                  <KeyboardIcon />
+
+                  {currentSequence === 'typeahead' && (
+                    <MockTypeaheadOutput css={{ position: 'absolute', top: -4, right: 0 }}>
+                      {animations[currentSequence][keyframe]?.typeahead}
+                    </MockTypeaheadOutput>
+                  )}
+                </Flex>
+                {(currentSequence === 'keyboardNavigation' || currentSequence === 'rtl') && (
+                  // 1. React's key prop is needed so that the mock keyboards animates correctly on repeat key press.
+                  // 2. We don't animate the key when switching sequence to avoid unneeded motion
+                  <Flex
+                    align="center"
+                    justify="end"
+                    css={{ minWidth: 0, mr: '$3', '@bp3': { mr: '$5' } }}
+                  >
+                    <MockArrowKeyboard
+                      key={keyframe}
+                      currentKey={
+                        playKeypressAnimation.current && animations[currentSequence][keyframe]?.key
+                      }
+                    />
+                  </Flex>
+                )}
+                {currentSequence === 'typeahead' && (
+                  <Flex align="center" justify="center">
+                    <MockQwertyKeyboard
+                      key={keyframe}
+                      currentKey={
+                        playKeypressAnimation.current && animations[currentSequence][keyframe]?.key
+                      }
+                    />
+                  </Flex>
+                )}
+              </Grid>
+            )}
+
+            {currentSequence === 'screenReader' && (
+              <Grid css={{ p: '$3', bc: '$$subpanel' }}>
+                <Flex align="center" gap="1" css={{ color: '$slate11' }}>
+                  <Text variant="gray" size="2">
+                    Screen reader
+                  </Text>
+                  <AccessibilityIcon />
+                </Flex>
+                <Flex direction="column" justify="between" css={{ pt: '$3', minHeight: 180 }}>
+                  <MockScreenReader>
+                    <ScreenReaderOutput
+                      dropdownState={animations[currentSequence][keyframe]?.dropdown}
+                    />
+                  </MockScreenReader>
+                  <SpeakerIcon />
+                </Flex>
+              </Grid>
+            )}
+
+            <Grid css={{ p: '$3', bc: '$$subpanel' }}>
+              <Flex align="center" gap="1" css={{ color: '$slate11' }}>
                 <Text variant="gray" size="2">
                   Radix component
                 </Text>
                 <CodeIcon />
               </Flex>
               <Flex align="center" justify="center">
-                <MockDropdown state={animationStates[keyframe].dropdown} />
-              </Flex>
-            </Grid>
-
-            <Grid
-              css={{
-                boxShadow: '0 -1px $colors$grayA4',
-                '@bp1': { boxShadow: '-1px 0 $colors$grayA4' },
-              }}
-            >
-              <Flex align="center" gap="1" css={{ color: '$slate11', mb: '$1' }}>
-                <Text variant="gray" size="2">
-                  Screen reader
-                </Text>
-                <AccessibilityIcon />
-              </Flex>
-              <Flex direction="column" justify="between" css={{ pt: '$3', minHeight: 180 }}>
-                <MockScreenReader>
-                  <ScreenReaderOutput dropdownState={animationStates[keyframe].dropdown} />
-                </MockScreenReader>
-                <SpeakerIcon animating={animationStates[keyframe].animateSpeaker} />
+                {currentSequence !== 'rtl' && (
+                  <MockDropdown state={animations[currentSequence][keyframe]?.dropdown} />
+                )}
+                {currentSequence === 'rtl' && (
+                  <MockRtlDropdown state={animations[currentSequence][keyframe]?.dropdown} />
+                )}
               </Flex>
             </Grid>
           </Grid>
@@ -483,21 +716,92 @@ const MockDropdownSeparator = styled('div', {
   bc: '$mauve5',
 });
 
-const MockDropdown = ({ state }: { state: MockDropdownState }) => {
+const MockDropdown = ({ state }: { state?: MockDropdownState }) => {
   return (
     <Box css={{ mt: '$1' }}>
       <MockDropdownButton focused={state === 'closed'}>
-        Navigation <ChevronDownIcon />
+        Navigation <CaretDownIcon style={{ marginRight: -5 }} />
       </MockDropdownButton>
-      <MockDropdownContent open={state !== 'closed'}>
-        <MockDropdownCheckboxItem checked focused={state === 'item1'}>
+      <MockDropdownContent animated open={state !== 'closed'}>
+        <MockDropdownCheckboxItem indent="1" checked focused={state === 'item1'}>
           Show Minimap
         </MockDropdownCheckboxItem>
         <MockDropdownSeparator />
-        <MockDropdownItem focused={state === 'item2'}>Go to Symbol</MockDropdownItem>
-        <MockDropdownItem focused={state === 'item3'}>Go to Definition</MockDropdownItem>
-        <MockDropdownItem focused={state === 'item4'}>Go to References</MockDropdownItem>
+        <MockDropdownItem indent="1" focused={state === 'item2'}>
+          Go to Symbol
+        </MockDropdownItem>
+        <MockDropdownItem indent="1" focused={state === 'item3'}>
+          Go to Definition
+        </MockDropdownItem>
+        <MockDropdownItem indent="1" focused={state === 'item4'}>
+          Go to References
+        </MockDropdownItem>
       </MockDropdownContent>
+    </Box>
+  );
+};
+
+const MockRtlDropdown = ({ state }: { state?: MockDropdownState }) => {
+  return (
+    <Box css={{ mt: '$1', direction: 'rtl' }}>
+      <MockDropdownButton focused={state === 'closed'}>
+        التنسيق
+        <CaretDownIcon style={{ marginLeft: -5 }} />
+      </MockDropdownButton>
+      <Box css={{ position: 'relative' }}>
+        <MockDropdownContent animated open={state !== 'closed'}>
+          <MockDropdownItem focused={state === 'item1'} focusWithin={state === 'item1-submenu'}>
+            المحاذاة
+            <CaretLeftIcon style={{ marginLeft: -5, marginRight: 10 }} />
+          </MockDropdownItem>
+          <MockDropdownItem focused={state === 'item2'} focusWithin={state === 'item2-submenu'}>
+            الخط
+            <CaretLeftIcon style={{ marginLeft: -5, marginRight: 10 }} />
+          </MockDropdownItem>
+          <MockDropdownItem focused={state === 'item3'} focusWithin={state === 'item3-submenu'}>
+            المسافة البادئة
+            <CaretLeftIcon style={{ marginLeft: -5, marginRight: 10 }} />
+          </MockDropdownItem>
+          <MockDropdownSeparator css={{ ml: 10 }} />
+          <MockDropdownItem focused={state === 'item4'}>أعاد للوضع السابق</MockDropdownItem>
+        </MockDropdownContent>
+
+        <MockDropdownContent
+          open={state === 'item1-submenu'}
+          css={{ position: 'absolute', top: 0, left: 0, transform: 'translateX(-100%)' }}
+        >
+          <MockDropdownItem focused={state === 'item1-submenu'}>يسار</MockDropdownItem>
+          <MockDropdownItem>يمين</MockDropdownItem>
+          <MockDropdownItem>وسط</MockDropdownItem>
+        </MockDropdownContent>
+
+        <MockDropdownContent
+          open={state === 'item2-submenu'}
+          css={{
+            position: 'absolute',
+            top: '$$itemHeight',
+            left: 0,
+            transform: 'translateX(-100%)',
+          }}
+        >
+          <MockDropdownItem focused={state === 'item2-submenu'}>عريض</MockDropdownItem>
+          <MockDropdownItem>مائل</MockDropdownItem>
+          <MockDropdownItem>مسطّر</MockDropdownItem>
+        </MockDropdownContent>
+
+        <MockDropdownContent
+          open={state === 'item3-submenu'}
+          css={{
+            position: 'absolute',
+            top: 'calc($$itemHeight * 2)',
+            left: 0,
+            transform: 'translateX(-100%)',
+          }}
+        >
+          <MockDropdownItem focused={state === 'item3-submenu'}>زيادة</MockDropdownItem>
+          <MockDropdownItem>تقليل</MockDropdownItem>
+        </MockDropdownContent>
+      </Box>
     </Box>
   );
 };
@@ -557,10 +861,10 @@ const MockTypeaheadOutput = styled(Text, {
   },
 });
 
-const MockKeyboard = ({ currentKey }: { currentKey?: string }) => {
+const MockQwertyKeyboard = ({ currentKey }: { currentKey?: string }) => {
   return (
     <Flex direction="column" align="center" gap="2">
-      <Grid gap="1" flow="column" justify="start">
+      <Flex gap="1" justify="start">
         <Key pressed={currentKey === 'q'}>Q</Key>
         <Key pressed={currentKey === 'w'}>W</Key>
         <Key pressed={currentKey === 'e'}>E</Key>
@@ -571,8 +875,8 @@ const MockKeyboard = ({ currentKey }: { currentKey?: string }) => {
         <Key pressed={currentKey === 'i'}>I</Key>
         <Key pressed={currentKey === 'o'}>O</Key>
         <Key pressed={currentKey === 'p'}>P</Key>
-      </Grid>
-      <Grid gap="1" flow="column" justify="start">
+      </Flex>
+      <Flex gap="1" justify="start">
         <Key pressed={currentKey === 'a'}>A</Key>
         <Key pressed={currentKey === 's'}>S</Key>
         <Key pressed={currentKey === 'd'}>D</Key>
@@ -582,8 +886,8 @@ const MockKeyboard = ({ currentKey }: { currentKey?: string }) => {
         <Key pressed={currentKey === 'j'}>J</Key>
         <Key pressed={currentKey === 'k'}>K</Key>
         <Key pressed={currentKey === 'l'}>L</Key>
-      </Grid>
-      <Grid gap="1" flow="column" justify="start">
+      </Flex>
+      <Flex gap="1" justify="start">
         <Key pressed={currentKey === 'z'}>Z</Key>
         <Key pressed={currentKey === 'x'}>X</Key>
         <Key pressed={currentKey === 'c'}>C</Key>
@@ -591,8 +895,71 @@ const MockKeyboard = ({ currentKey }: { currentKey?: string }) => {
         <Key pressed={currentKey === 'b'}>B</Key>
         <Key pressed={currentKey === 'n'}>N</Key>
         <Key pressed={currentKey === 'm'}>M</Key>
-      </Grid>
+      </Flex>
       <Key pressed={currentKey === ' '} css={{ width: 150 }} />
+    </Flex>
+  );
+};
+
+const MockArrowKeyboard = ({ currentKey }: { currentKey?: string }) => {
+  return (
+    <Flex direction="column" align="end" css={{ gap: 7 }}>
+      <Flex justify="start" css={{ gap: 6 }}>
+        <Key size="2" />
+        <Key size="2" />
+        <Key size="2" />
+        <Key size="2" />
+        <Key size="2" />
+        <Key size="2" />
+        <Key size="2" />
+        <Key size="2" />
+        <Key size="2" />
+        <Key
+          size="2"
+          pressed={currentKey === 'return'}
+          css={{ width: 80, ai: 'flex-end', jc: 'flex-end' }}
+        >
+          return
+        </Key>
+      </Flex>
+      <Flex justify="start" css={{ gap: 6 }}>
+        <Key size="2" />
+        <Key size="2" />
+        <Key size="2" />
+        <Key size="2" />
+        <Key size="2" />
+        <Key size="2" />
+        <Key size="2" />
+        <Key size="2" css={{ width: 102 }} />
+      </Flex>
+      <Flex justify="start" css={{ gap: 6 }}>
+        <Key size="2" css={{ width: 252 }} />
+        <Key size="2" css={{ width: 54 }} />
+        <Key size="2" />
+        <Grid
+          css={{
+            rowGap: 2,
+            columnGap: 6,
+            gridTemplateRows: '20px 20px',
+            gridTemplateColumns: 'repeat(3, 42px)',
+          }}
+        >
+          <div />
+          <Key size="2" pressed={currentKey === 'up'} css={{ bblr: '$1', bbrr: '$1' }}>
+            <Box css={{ fontSize: '75%', opacity: 0.8, mb: 1 }}>▲</Box>
+          </Key>
+          <div />
+          <Key size="2" pressed={currentKey === 'left'}>
+            <Box css={{ fontSize: '75%', opacity: 0.8, mb: 1 }}>◀</Box>
+          </Key>
+          <Key size="2" pressed={currentKey === 'down'} css={{ btlr: '$1', btrr: '$1' }}>
+            <Box css={{ fontSize: '75%', opacity: 0.8, mb: 1 }}>▼</Box>
+          </Key>
+          <Key size="2" pressed={currentKey === 'right'}>
+            <Box css={{ fontSize: '75%', opacity: 0.8, mb: 1 }}>▶</Box>
+          </Key>
+        </Grid>
+      </Flex>
     </Flex>
   );
 };
@@ -607,25 +974,18 @@ const keyPressAnimation = keyframes({
 const Key = styled('span', {
   display: 'flex',
   bc: '$mauve1',
-  ai: 'center',
-  jc: 'center',
   fontFamily: '$untitled',
   color: '$slate11',
-  boxShadow: '0 0 0 1px $colors$slate7, 0 2px $colors$slate7',
+  boxShadow: '0 0 0 1px $colors$mauveA6, 0 2px $colors$mauveA6',
   userSelect: 'none',
+  flex: 'none',
+  maxWidth: '100%',
+  maxHeight: '100%',
+  ai: 'center',
+  jc: 'center',
 
-  width: 22,
-  height: 32,
-  br: '$1',
-  lineHeight: '30px',
-  fontSize: '$3',
-
-  '@bp3': {
-    width: 26,
-    height: 34,
-    br: '$2',
-    lineHeight: '34px',
-    fontSize: '$3',
+  [`.${darkTheme} &`]: {
+    bc: '$mauve1',
   },
 
   variants: {
@@ -635,6 +995,38 @@ const Key = styled('span', {
         animationTimingFunction: 'steps(1, end)',
       },
     },
+    size: {
+      1: {
+        width: 22,
+        height: 32,
+        br: '$1',
+        lineHeight: '30px',
+        fontSize: '$3',
+
+        '@bp3': {
+          width: 27,
+          height: 34,
+          br: '$2',
+          lineHeight: '34px',
+          fontSize: '$3',
+        },
+      },
+      2: {
+        p: '$1',
+        width: 42,
+        height: 42,
+        br: '$2',
+        fontSize: '$1',
+        [`.${darkTheme} &`]: {
+          color: '$slate12',
+          textShadow: '0 0 5px $colors$slateA10, 0 0 1px $colors$slateA11',
+        },
+      },
+    },
+  },
+
+  defaultVariants: {
+    size: 1,
   },
 });
 
@@ -662,20 +1054,18 @@ const MockDropdownButton = styled(Box, {
       },
       false: {
         boxShadow: 'inset 0 0 0 1px $colors$slate5, 0 0 0 3px #FFFFFF00',
-        bc: '$mauve3',
+        bc: '$mauve1',
       },
     },
   },
 });
 
 const MockDropdownContent = styled(Box, {
+  $$itemHeight: '30px',
+
   p: '$1',
   br: '$2',
   bc: '$panel',
-  willChange: 'transform, opacity',
-  transformOrigin: 'top center',
-  transitionDuration: '150ms',
-  transitionProperty: 'transform, opacity',
   boxShadow: `
     0 0px 1px $colors$blackA8,
     0 2px 4px -1px $colors$blackA5,
@@ -690,6 +1080,14 @@ const MockDropdownContent = styled(Box, {
       false: {
         opacity: 0,
         transform: 'scale(0.95)',
+      },
+    },
+    animated: {
+      true: {
+        willChange: 'transform, opacity',
+        transformOrigin: 'top center',
+        transitionDuration: '150ms',
+        transitionProperty: 'transform, opacity',
       },
     },
   },
@@ -707,9 +1105,8 @@ const MockDropdownItem = styled(Box, {
   cursor: 'default',
   userSelect: 'none',
   whiteSpace: 'nowrap',
-  height: 30,
-  lineHeight: '30px',
-  px: 30,
+  height: '$$itemHeight',
+  lineHeight: '$$itemHeight',
   position: 'relative',
   color: '$hiContrast',
   br: 5,
@@ -719,6 +1116,14 @@ const MockDropdownItem = styled(Box, {
   },
 
   variants: {
+    indent: {
+      0: {
+        px: 10,
+      },
+      1: {
+        px: 30,
+      },
+    },
     focused: {
       true: {
         backgroundColor: '$indigo11',
@@ -729,6 +1134,15 @@ const MockDropdownItem = styled(Box, {
         },
       },
     },
+    focusWithin: {
+      true: {
+        backgroundColor: '$slateA4',
+      },
+    },
+  },
+
+  defaultVariants: {
+    indent: 0,
   },
 });
 
@@ -856,7 +1270,7 @@ type SpeakerIconProps = {
   animating?: boolean;
 };
 
-const SpeakerIcon = ({ animating = false }: SpeakerIconProps) => {
+const SpeakerIcon = ({ animating = true }: SpeakerIconProps) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const shouldPauseAnimation = React.useRef(animating);
   const [currentlyAnimating, setCurrentlyAnimating] = React.useState(animating);
@@ -922,15 +1336,15 @@ const SpeakerIconWrapper = styled('div', {
   },
   '.speaker-line-1': {
     opacity: 0,
-    animation: `1500ms ${wave1} linear infinite`,
+    animation: `1600ms ${wave1} linear infinite`,
   },
   '.speaker-line-2': {
     opacity: 0,
-    animation: `1500ms ${wave2} linear infinite`,
+    animation: `1600ms ${wave2} linear infinite`,
   },
   '.speaker-line-3': {
     opacity: 0,
-    animation: `1500ms ${wave3} linear infinite`,
+    animation: `1600ms ${wave3} linear infinite`,
   },
 
   variants: {
@@ -941,5 +1355,56 @@ const SpeakerIconWrapper = styled('div', {
         },
       },
     },
+  },
+});
+
+const AnimationStateButton = styled('button', {
+  all: 'unset',
+  alignItems: 'center',
+  boxSizing: 'border-box',
+  display: 'inline-flex',
+  flexShrink: 0,
+  justifyContent: 'center',
+  WebkitTapHighlightColor: 'transparent',
+
+  fontSize: '$4',
+  fontFamily: '$untitled',
+  fontWeight: 500,
+  lineHeight: 1,
+  letterSpacing: '-0.015em',
+  height: 30,
+  px: '$1',
+  position: 'relative',
+  cursor: 'pointer',
+  br: '$1',
+
+  '&:focus-visible': {
+    boxShadow: '0 0 0 2px $colors$blue11',
+  },
+
+  variants: {
+    active: {
+      true: {
+        color: '$hiContrast',
+        '&::before': {
+          content: '▶',
+          position: 'absolute',
+          fontSize: '80%',
+          left: '-0.9em',
+        },
+      },
+      false: {
+        color: '$slate9',
+        '@hover': {
+          '&:hover': {
+            color: '$hiContrast',
+          },
+        },
+      },
+    },
+  },
+
+  defaultVariants: {
+    active: false,
   },
 });

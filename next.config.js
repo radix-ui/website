@@ -14,6 +14,11 @@ module.exports = withPlugins([withTM, withOptimizedImages, withVideos], {
   async redirects() {
     return [
       {
+        source: '/primitives',
+        destination: '/',
+        permanent: true,
+      },
+      {
         source: '/primitives/docs/:slug*',
         destination: '/docs/primitives/:slug*',
         permanent: true,

@@ -3,6 +3,7 @@ import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { Flex, Text, styled, keyframes, Box, globalCss, darkTheme } from '@modulz/design-system';
 import { DemoButton } from '@components/marketing/DemoButton';
 import { DemoIconButton } from '@components/marketing/DemoIconButton';
+import { Cross2Icon } from '@radix-ui/react-icons';
 
 const setGlobalStyles = globalCss({
   body: {
@@ -59,6 +60,7 @@ export default function DialogDemo() {
         </DialogPrimitive.Trigger>
 
         <DialogContent
+          onInteractOutside={(event) => event.preventDefault()}
           onOpenAutoFocus={(event) => {
             // We prevent the initial auto focus because it's a demo rather than a real UI,
             // so the parent page focus is not stolen.
@@ -81,14 +83,7 @@ export default function DialogDemo() {
 
           <DialogPrimitive.Close asChild>
             <DemoIconButton>
-              <svg width="11" height="11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M9.52087 2.18681C9.71613 1.99154 9.71613 1.67496 9.52087 1.4797C9.32561 1.28444 9.00903 1.28444 8.81376 1.4797L5.50065 4.79281L2.18754 1.4797C1.99228 1.28444 1.67569 1.28444 1.48043 1.4797C1.28517 1.67496 1.28517 1.99154 1.48043 2.18681L4.79354 5.49992L1.48043 8.81303C1.28517 9.00829 1.28517 9.32488 1.48043 9.52014C1.67569 9.7154 1.99228 9.7154 2.18754 9.52014L5.50065 6.20703L8.81376 9.52014C9.00903 9.7154 9.32561 9.7154 9.52087 9.52014C9.71613 9.32488 9.71613 9.00829 9.52087 8.81303L6.20776 5.49992L9.52087 2.18681Z"
-                  fill="#11181C"
-                />
-              </svg>
+              <Cross2Icon />
             </DemoIconButton>
           </DialogPrimitive.Close>
 

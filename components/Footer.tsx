@@ -3,29 +3,28 @@ import NextLink from 'next/link';
 import { Box, Container, Grid, Text, Flex, Separator, Link } from '@modulz/design-system';
 import { RadixLogo } from './RadixLogo';
 import { ExternalIcon } from './ExternalIcon';
+import { useRouter } from 'next/router';
 
 export const Footer = () => {
+  const router = useRouter();
+  const isColors = router.pathname.includes('/colors');
+
   return (
     <Box as="footer" css={{ pb: '$9' }}>
       <Grid
         css={{
-          gridTemplateColumns: 'repeat(1, 1fr)',
-          gap: '$6',
+          rowGap: '$7',
+          columnGap: '$3',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          '@bp1': { gridTemplateColumns: 'repeat(3, 1fr)' },
+          '@bp2': { gridTemplateColumns: 'repeat(4, 1fr)' },
           '& ul': { listStyle: 'none', margin: '0', padding: '0' },
-          '@bp2': {
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '$3',
-          },
         }}
       >
         <Flex
-          css={{
-            alignItems: 'center',
-            '@bp2': {
-              flexDirection: 'column',
-              alignItems: 'start',
-            },
-          }}
+          align="start"
+          direction="column"
+          css={{ gridColumn: '1 / -1', '@bp2': { gridColumn: 'auto' } }}
         >
           <NextLink href="/" passHref>
             <Box
@@ -33,12 +32,13 @@ export const Footer = () => {
               css={{
                 color: '$hiContrast',
                 display: 'inline-flex',
+                textDecoration: 'none',
                 '&:focus': {
                   boxShadow: 'none',
                 },
               }}
             >
-              <RadixLogo label="Radix Homepage" />
+              <RadixLogo label={isColors ? 'Colors' : 'Radix'} />
             </Box>
           </NextLink>
           <Text
@@ -46,13 +46,12 @@ export const Footer = () => {
             size="2"
             css={{
               lineHeight: '20px',
-              ml: '$4',
               color: '$gray10',
               pr: '$8',
-              '@bp2': { mt: '$5', ml: '0' },
+              mt: '$5',
             }}
           >
-            Radix is a project by{' '}
+            A project by{' '}
             <Link variant="subtle" href="https://modulz.app">
               Modulz
             </Link>
@@ -66,14 +65,14 @@ export const Footer = () => {
           <ul>
             <li>
               <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                <NextLink href="/docs/primitives/overview/introduction" passHref>
+                <NextLink href="/" passHref>
                   <Link variant="subtle">Primitives</Link>
                 </NextLink>
               </Text>
             </li>
             <li>
               <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                <NextLink href="/docs/colors/getting-started/installation" passHref>
+                <NextLink href="/colors" passHref>
                   <Link variant="subtle">Colors</Link>
                 </NextLink>
               </Text>
@@ -110,41 +109,83 @@ export const Footer = () => {
             </li>
           </ul>
         </Box>
-        {/* <Box>
+        {isColors === false && (
+          <Box>
             <Text as="h6" size="3" css={{ fontWeight: 500, lineHeight: '20px' }}>
               Docs
             </Text>
             <ul>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/docs/introduction" passHref>
+                  <NextLink href="/docs/primitives/overview/introduction" passHref>
                     <Link variant="subtle">Introduction</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/docs/styling" passHref>
+                  <NextLink href="/docs/primitives/overview/styling" passHref>
                     <Link variant="subtle">Styling</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/docs/variants" passHref>
-                    <Link variant="subtle">Variants</Link>
+                  <NextLink href="/docs/primitives/overview/accessibility" passHref>
+                    <Link variant="subtle">Accessibility</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/docs/tokens" passHref>
-                    <Link variant="subtle">Configuration</Link>
+                  <NextLink href="/docs/primitives/overview/releases" passHref>
+                    <Link variant="subtle">Releases</Link>
                   </NextLink>
                 </Text>
               </li>
             </ul>
-          </Box> */}
+          </Box>
+        )}
+        {isColors && (
+          <Box>
+            <Text as="h6" size="3" css={{ fontWeight: 500, lineHeight: '20px' }}>
+              Docs
+            </Text>
+            <ul>
+              <li>
+                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+                  <NextLink href="/docs/colors/getting-started/installation" passHref>
+                    <Link variant="subtle">Installation</Link>
+                  </NextLink>
+                </Text>
+              </li>
+              <li>
+                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+                  <NextLink href="/docs/colors/palette-composition/the-scales" passHref>
+                    <Link variant="subtle">The scales</Link>
+                  </NextLink>
+                </Text>
+              </li>
+              <li>
+                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+                  <NextLink href="/docs/colors/palette-composition/composing-a-palette" passHref>
+                    <Link variant="subtle">Palette composition</Link>
+                  </NextLink>
+                </Text>
+              </li>
+              <li>
+                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+                  <NextLink
+                    href="/docs/colors/palette-composition/understanding-the-scale"
+                    passHref
+                  >
+                    <Link variant="subtle">Understanding the scale</Link>
+                  </NextLink>
+                </Text>
+              </li>
+            </ul>
+          </Box>
+        )}
         <Box>
           <Text as="h6" size="3" css={{ fontWeight: 500, lineHeight: '20px' }}>
             Community
