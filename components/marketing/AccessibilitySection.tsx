@@ -914,7 +914,11 @@ const MockArrowKeyboard = ({ currentKey }: { currentKey?: string }) => {
         <Key size="2" />
         <Key size="2" />
         <Key size="2" />
-        <Key size="2" pressed={currentKey === 'return'} css={{ width: 80, ai: 'end', jc: 'end' }}>
+        <Key
+          size="2"
+          pressed={currentKey === 'return'}
+          css={{ width: 80, ai: 'flex-end', jc: 'flex-end' }}
+        >
           return
         </Key>
       </Flex>
