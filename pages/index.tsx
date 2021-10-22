@@ -14,7 +14,6 @@ import { Footer } from '@components/Footer';
 import { Header } from '@components/Header';
 import { FancyBackground } from '@components/marketing/FancyBackground';
 
-// TODO check that all paragraphs are P tags
 export default function PrimitivesHome() {
   return (
     <Box>

@@ -18,6 +18,7 @@ import { MarketingButton } from './MarketingButton';
 import { MarketingCaption } from './MarketingCaption';
 import { Root as AccessibleIcon } from '@radix-ui/react-accessible-icon';
 import { CaseStudyLogo } from './CaseStudyLogo';
+import { LogoLink } from './LogoLink';
 
 export const CaseStudiesSection = () => {
   return (
@@ -163,18 +164,6 @@ export const CaseStudiesSection = () => {
     </Section>
   );
 };
-
-const LogoLink = styled('a', {
-  display: 'block',
-  color: '$hiContrast',
-  '@hover': {
-    color: '$slate9',
-    transition: '120ms color',
-    '&:hover': {
-      color: '$hiContrast',
-    },
-  },
-});
 
 const TestimonialText = styled(
   Text,
