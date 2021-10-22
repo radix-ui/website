@@ -19,7 +19,7 @@ export const Carousel = (props) => {
   const [_, force] = useState({});
 
   const getSlideInDirection = useCallbackRef((direction) => {
-    const slides = ref.current?.querySelectorAll('[data-slide-intersected]');
+    const slides = ref.current?.querySelectorAll<HTMLElement>('[data-slide-intersected]');
     if (slides) {
       return Array.from(slides.values()).find((slide: HTMLElement, index) => {
         const slideBefore = slides.item(index - direction) as HTMLElement;
@@ -33,21 +33,19 @@ export const Carousel = (props) => {
 
   const handleNextClick = useCallback(() => {
     const nextSlide = getSlideInDirection(1);
+    const padding = parseFloat(window.getComputedStyle(slideListRef.current).scrollPaddingLeft);
     if (nextSlide) {
-      nextSlide.scrollIntoView({
-        inline: 'start',
-        block: 'nearest',
-        behavior: 'smooth',
-      });
+      slideListRef.current.scrollTo({ left: nextSlide.offsetLeft - padding, behavior: 'smooth' });
     }
   }, [getSlideInDirection]);
 
   const handlePrevClick = useCallback(() => {
     const prevSlide = getSlideInDirection(-1);
+    const padding = parseFloat(window.getComputedStyle(slideListRef.current).scrollPaddingLeft);
     if (prevSlide) {
-      prevSlide.scrollIntoView({
-        inline: 'end',
-        block: 'nearest',
+      slideListRef.current.scrollTo({
+        left:
+          prevSlide.offsetLeft + padding - slideListRef.current.clientWidth + prevSlide.clientWidth,
         behavior: 'smooth',
       });
     }
