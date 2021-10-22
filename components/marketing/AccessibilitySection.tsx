@@ -532,7 +532,7 @@ export const AccessibilitySection = () => {
 
                   {currentSequence === 'typeahead' && (
                     <MockTypeaheadOutput css={{ position: 'absolute', top: -4, right: 0 }}>
-                      {animations[currentSequence][keyframe].typeahead}
+                      {animations[currentSequence][keyframe]?.typeahead}
                     </MockTypeaheadOutput>
                   )}
                 </Flex>
@@ -547,7 +547,7 @@ export const AccessibilitySection = () => {
                     <MockArrowKeyboard
                       key={keyframe}
                       currentKey={
-                        playKeypressAnimation.current && animations[currentSequence][keyframe].key
+                        playKeypressAnimation.current && animations[currentSequence][keyframe]?.key
                       }
                     />
                   </Flex>
@@ -557,7 +557,7 @@ export const AccessibilitySection = () => {
                     <MockQwertyKeyboard
                       key={keyframe}
                       currentKey={
-                        playKeypressAnimation.current && animations[currentSequence][keyframe].key
+                        playKeypressAnimation.current && animations[currentSequence][keyframe]?.key
                       }
                     />
                   </Flex>
@@ -576,7 +576,7 @@ export const AccessibilitySection = () => {
                 <Flex direction="column" justify="between" css={{ pt: '$3', minHeight: 180 }}>
                   <MockScreenReader>
                     <ScreenReaderOutput
-                      dropdownState={animations[currentSequence][keyframe].dropdown}
+                      dropdownState={animations[currentSequence][keyframe]?.dropdown}
                     />
                   </MockScreenReader>
                   <SpeakerIcon />
@@ -593,10 +593,10 @@ export const AccessibilitySection = () => {
               </Flex>
               <Flex align="center" justify="center">
                 {currentSequence !== 'rtl' && (
-                  <MockDropdown state={animations[currentSequence][keyframe].dropdown} />
+                  <MockDropdown state={animations[currentSequence][keyframe]?.dropdown} />
                 )}
                 {currentSequence === 'rtl' && (
-                  <MockRtlDropdown state={animations[currentSequence][keyframe].dropdown} />
+                  <MockRtlDropdown state={animations[currentSequence][keyframe]?.dropdown} />
                 )}
               </Flex>
             </Grid>
@@ -716,7 +716,7 @@ const MockDropdownSeparator = styled('div', {
   bc: '$mauve5',
 });
 
-const MockDropdown = ({ state }: { state: MockDropdownState }) => {
+const MockDropdown = ({ state }: { state?: MockDropdownState }) => {
   return (
     <Box css={{ mt: '$1' }}>
       <MockDropdownButton focused={state === 'closed'}>
@@ -741,7 +741,7 @@ const MockDropdown = ({ state }: { state: MockDropdownState }) => {
   );
 };
 
-const MockRtlDropdown = ({ state }: { state: MockDropdownState }) => {
+const MockRtlDropdown = ({ state }: { state?: MockDropdownState }) => {
   return (
     <Box css={{ mt: '$1', direction: 'rtl' }}>
       <MockDropdownButton focused={state === 'closed'}>
@@ -942,17 +942,17 @@ const MockArrowKeyboard = ({ currentKey }: { currentKey?: string }) => {
         >
           <div />
           <Key size="2" pressed={currentKey === 'up'} css={{ bblr: '$1', bbrr: '$1' }}>
-            <TriangleArrow />
+            <Box css={{ fontSize: '75%', opacity: 0.8, mb: 1 }}>▲</Box>
           </Key>
           <div />
           <Key size="2" pressed={currentKey === 'left'}>
-            <TriangleArrow style={{ transform: 'rotate(-90deg)' }} />
+            <Box css={{ fontSize: '75%', opacity: 0.8, mb: 1 }}>◀</Box>
           </Key>
           <Key size="2" pressed={currentKey === 'down'} css={{ btlr: '$1', btrr: '$1' }}>
-            <TriangleArrow style={{ transform: 'scaleY(-1)' }} />
+            <Box css={{ fontSize: '75%', opacity: 0.8, mb: 1 }}>▼</Box>
           </Key>
           <Key size="2" pressed={currentKey === 'right'}>
-            <TriangleArrow style={{ transform: 'rotate(90deg)' }} />
+            <Box css={{ fontSize: '75%', opacity: 0.8, mb: 1 }}>▶</Box>
           </Key>
         </Grid>
       </Flex>
@@ -972,7 +972,7 @@ const Key = styled('span', {
   bc: '$mauve1',
   fontFamily: '$untitled',
   color: '$slate11',
-  boxShadow: '0 0 0 1px $colors$slate7, 0 2px $colors$slate7',
+  boxShadow: '0 0 0 1px $colors$mauveA6, 0 2px $colors$mauveA6',
   userSelect: 'none',
   flex: 'none',
   maxWidth: '100%',
@@ -981,7 +981,7 @@ const Key = styled('span', {
   jc: 'center',
 
   [`.${darkTheme} &`]: {
-    bc: '$slate2',
+    bc: '$mauve1',
   },
 
   variants: {
@@ -1013,6 +1013,10 @@ const Key = styled('span', {
         height: 42,
         br: '$2',
         fontSize: '$1',
+        [`.${darkTheme} &`]: {
+          color: '$slate12',
+          textShadow: '0 0 5px $colors$slateA10, 0 0 1px $colors$slateA11',
+        },
       },
     },
   },
@@ -1400,18 +1404,3 @@ const AnimationStateButton = styled('button', {
     active: false,
   },
 });
-
-const TriangleArrow = (props: React.ComponentProps<'svg'>) => {
-  return (
-    <svg
-      width="14"
-      height="20"
-      viewBox="0 0 14 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
-      <path d="M3.73242 12H10.2658L6.99909 6L3.73242 12Z" fill="currentcolor" fillOpacity="0.7" />
-    </svg>
-  );
-};

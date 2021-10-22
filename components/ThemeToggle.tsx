@@ -7,7 +7,7 @@ export const ThemeToggle = (props) => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <Tooltip content="Toggle Theme" side="bottom" align="end">
+    <Tooltip content="Toggle theme" side="bottom" align="end">
       <IconButton
         variant="ghost"
         onClick={() => {

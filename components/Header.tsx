@@ -17,7 +17,7 @@ import {
   styled,
 } from '@modulz/design-system';
 import { RadixLogo } from './RadixLogo';
-import { CaretDownIcon, MixIcon, StitchesLogoIcon } from '@radix-ui/react-icons';
+import { PlusIcon, MixIcon, StitchesLogoIcon } from '@radix-ui/react-icons';
 import { ThemeToggle } from '@components/ThemeToggle';
 
 export const Header = () => {
@@ -107,11 +107,12 @@ export const Header = () => {
                     border: 0,
                     p: 0,
                     m: 0,
+                    mr: '-$1',
                   }}
                 >
                   <Text css={{ display: 'flex', gap: '$1', ai: 'center' }}>
                     Resources
-                    <CaretDownIcon style={{ margin: -3 }} />
+                    <PlusIcon />
                   </Text>
                 </Link>
               </PopoverTrigger>
