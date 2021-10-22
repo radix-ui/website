@@ -127,7 +127,7 @@ export const CarouselNext = (props) => {
   const slideList = (context.slideListRef.current || {}) as HTMLElement;
   const { scrollWidth, scrollLeft, clientWidth } = slideList;
   const remainder = scrollWidth - scrollLeft - clientWidth;
-  const disabled = remainder <= 0;
+  const disabled = context.slideListRef.current ? remainder <= 0 : true;
   return (
     <Comp {...nextProps} tabIndex={-1} onClick={() => context.onNextClick()} disabled={disabled} />
   );
@@ -137,7 +137,7 @@ export const CarouselPrevious = (props) => {
   const { as: Comp = 'button', ...prevProps } = props;
   const context = useCarouselContext('CarouselPrevious');
   const slideList = (context.slideListRef.current || {}) as HTMLElement;
-  const disabled = slideList?.scrollLeft <= 0;
+  const disabled = context.slideListRef.current ? slideList?.scrollLeft <= 0 : true;
   return (
     <Comp {...prevProps} tabIndex={-1} onClick={() => context.onPrevClick()} disabled={disabled} />
   );
