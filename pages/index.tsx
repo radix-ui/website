@@ -32,8 +32,10 @@ export default function PrimitivesHome() {
       <Container size="3">
         <Separator size="2" />
       </Container>
-      <BenefitsSection />
-      <StatsSection />
+      <Box css={{ overflow: 'hidden' }}>
+        <BenefitsSection />
+        <StatsSection />
+      </Box>
       <ComponentHighlightsSection />
       <AccessibilitySection />
       <DeveloperExperienceSection />

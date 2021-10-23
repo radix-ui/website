@@ -178,14 +178,21 @@ const FancyBackgroundChart = () => {
         css={{
           // This is free space to the right
           height: 310,
-          // background: 'linear-gradient(to bottom, $$chartTopColor, $$chartBottomColor)',
+          position: 'relative',
           flex: '0 1 auto',
           flexGrow: 0,
 
+          '@bp1': {
+            height: 150,
+          },
+          '@bp2': {
+            height: 'calc(150px + 2vw)',
+          },
           '@media (min-width: 1300px)': {
             flexGrow: 0,
           },
           '@media (min-width: 1500px)': {
+            height: 320,
             flexGrow: 1,
           },
           '@bp4': {
@@ -195,10 +202,11 @@ const FancyBackgroundChart = () => {
       >
         <svg
           preserveAspectRatio="none"
+          width="100"
           viewBox="0 0 100 100"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          style={{ width: '100%', height: '100%' }}
+          style={{ position: 'absolute', width: '100%', height: '100%' }}
         >
           <rect width="100" height="100" fill="url(#gradient-fill-space)" />
           <defs>
