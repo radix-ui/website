@@ -150,7 +150,7 @@ export const MainHero = () => {
               // calculate the left and right padding to apply to the scrolling list
               // so that the carousel starts aligned with the container component
               // the "1145" and "$5" values comes from the <Container /> component
-              '$$scroll-padding': 'max($space$5, calc((100vw - 1145px) / 2 + $space$5))',
+              '$$scroll-padding': 'max($space$5, calc((100% - 1145px) / 2 + $space$5))',
               scrollPadding: '0 $$scroll-padding 0 $$scroll-padding',
               px: '$$scroll-padding',
 
