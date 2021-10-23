@@ -310,8 +310,9 @@ export const MainHero = () => {
 
 const CarouselArrowButton = styled('button', {
   unset: 'all',
-  border: 0,
+  outline: 0,
   margin: 0,
+  border: 0,
   padding: 0,
 
   display: 'flex',
@@ -341,9 +342,21 @@ const CarouselArrowButton = styled('button', {
       },
     },
   },
-
-  '&:active': {
+  '&:focus': {
+    boxShadow: `
+      $colors$blackA10 0px 3px 16px -5px,
+      $colors$blackA5 0px 1px 3px,
+      $colors$blue8 0 0 0 2px
+    `,
+    transform: 'translateY(-1px)',
+  },
+  '&:focus:not(:focus-visible)': {
     boxShadow: '$colors$blackA11 0px 2px 12px -5px, $colors$blackA5 0px 1px 3px',
+  },
+  '&:active:not(:focus)': {
+    boxShadow: '$colors$blackA11 0px 2px 12px -5px, $colors$blackA5 0px 1px 3px',
+  },
+  '&:active': {
     transform: 'none',
     transition: 'none',
   },
