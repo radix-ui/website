@@ -299,14 +299,8 @@ const CodeWindow = styled('div', {
     withChrome: {
       true: {
         px: '$2',
-        // py: '$2',
         pt: '$6',
         pb: '$2',
-        // boxShadow: `
-        //   0 0 1px $colors$blackA8,
-        //   0 30px 40px -50px $colors$blackA8,
-        //   0 15px 60px -40px $colors$blackA9
-        // `,
         boxShadow: '0 50px 100px -50px hsl(254 100% 6% / 0.7)',
         '&::before': {
           position: 'absolute',
@@ -350,8 +344,17 @@ const BlendedCard = styled(Card, {
   zIndex: 1,
   willChange: 'transform',
   backgroundColor: '$$bgColor',
-  '&:before': {
+  '&::before': {
     boxShadow: '0 0 0 1px $colors$blackA3',
+  },
+
+  // Fix a bug when hovering at card edges would cause the card to jitter because of transform
+  '@hover': {
+    '&:hover::after': {
+      content: '',
+      inset: -3,
+      position: 'absolute',
+    },
   },
 
   variants: {

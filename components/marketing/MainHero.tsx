@@ -1,4 +1,3 @@
-// @refresh reset
 import React from 'react';
 import NextLink from 'next/link';
 import {
@@ -68,7 +67,7 @@ export const MainHero = () => {
     dropdown: 'loading',
     popover: 'loading',
     slider: 'loading',
-    tooltip: 'loading',
+    // tooltip: 'loading',
   });
 
   const allDemosReady = Object.values(demoStates).every((state) => state === 'ready');
@@ -256,13 +255,13 @@ export const MainHero = () => {
                 and RTL direction.
               </Text>
             </CarouselSlide>
-            <CarouselSlide>
+            {/* <CarouselSlide>
               <IFrameSkeleton active={!allDemosReady}>
                 <IFrame
                   data-demo-iframe
                   visible={allDemosReady}
                   tabIndex={-1}
-                  src="/iframe/tooltip"
+                  // src="/iframe/tooltip"
                   css={{
                     background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
                     [`.${darkTheme} &`]: {
@@ -278,92 +277,28 @@ export const MainHero = () => {
                 Opens when the trigger is focused or hovered, supports custom timings and
                 positioning, handles collisions.
               </Text>
-            </CarouselSlide>
+            </CarouselSlide> */}
           </CarouselSlideList>
 
           <Box
             css={{
               position: 'absolute',
-              top: '50%',
+              top: 'calc(50% - $7)',
               left: '15px',
-              transform: 'translateY(-50%)',
             }}
           >
-            <CarouselPrevious
-              as={Button}
-              css={{
-                width: '$7',
-                height: '$7',
-                borderRadius: '$round',
-                backgroundColor: '$loContrast',
-                boxShadow:
-                  '$colors$shadowLight 0px 5px 25px -5px, $colors$shadowDark 0px 5px 15px -10px',
-                willChange: 'transform',
-                transition: 'all 100ms ease',
-                '&:hover': {
-                  boxShadow:
-                    '$colors$shadowLight 0px 10px 35px -5px, $colors$shadowDark 0px 10px 20px -5px',
-                  transform: 'translateY(-2px)',
-                },
-                '&:focus': {
-                  boxShadow:
-                    '0 0 0 1px $colors$slate700, inset 0 0 0 1px $colors$slate700, $colors$shadowLight 0px 5px 25px -5px, $colors$shadowDark 0px 5px 15px -10px',
-                },
-                '&:active': {
-                  transform: 'none',
-                  transition: 'none',
-                },
-                '&:disabled': {
-                  opacity: 0,
-                },
-                '@media (hover: none) and (pointer: coarse)': {
-                  display: 'none',
-                },
-              }}
-            >
+            <CarouselPrevious as={CarouselArrowButton}>
               <ArrowLeftIcon />
             </CarouselPrevious>
           </Box>
           <Box
             css={{
               position: 'absolute',
-              top: '50%',
+              top: 'calc(50% - $7)',
               right: '15px',
-              transform: 'translateY(-50%)',
             }}
           >
-            <CarouselNext
-              as={Button}
-              css={{
-                width: '$7',
-                height: '$7',
-                borderRadius: '$round',
-                backgroundColor: '$loContrast',
-                boxShadow:
-                  '$colors$shadowLight 0px 5px 25px -5px, $colors$shadowDark 0px 5px 15px -10px',
-                willChange: 'transform',
-                transition: 'all 100ms ease',
-                '&:hover': {
-                  boxShadow:
-                    '$colors$shadowLight 0px 10px 35px -5px, $colors$shadowDark 0px 10px 20px -5px',
-                  transform: 'translateY(-2px)',
-                },
-                '&:focus': {
-                  boxShadow:
-                    '0 0 0 1px $colors$slate700, inset 0 0 0 1px $colors$slate700, $colors$shadowLight 0px 5px 25px -5px, $colors$shadowDark 0px 5px 15px -10px',
-                },
-                '&:active': {
-                  transform: 'none',
-                  transition: 'none',
-                },
-                '&:disabled': {
-                  opacity: 0,
-                },
-                '@media (hover: none) and (pointer: coarse)': {
-                  display: 'none',
-                },
-              }}
-            >
+            <CarouselNext as={CarouselArrowButton}>
               <ArrowRightIcon />
             </CarouselNext>
           </Box>
@@ -372,3 +307,50 @@ export const MainHero = () => {
     </Section>
   );
 };
+
+const CarouselArrowButton = styled('button', {
+  unset: 'all',
+  border: 0,
+  margin: 0,
+  padding: 0,
+
+  display: 'flex',
+  position: 'relative',
+  ai: 'center',
+  jc: 'center',
+  bc: '$panel',
+  br: '$round',
+  width: '$7',
+  height: '$7',
+
+  boxShadow: '$colors$blackA11 0px 2px 12px -5px, $colors$blackA5 0px 1px 3px',
+  willChange: 'transform, box-shadow',
+  transition: 'all 100ms ease',
+
+  '@hover': {
+    '&:hover': {
+      boxShadow: '$colors$blackA10 0px 3px 16px -5px, $colors$blackA5 0px 1px 3px',
+      transform: 'translateY(-1px)',
+
+      // Fix a bug when hovering at button edges would cause the button to jitter because of transform
+      '&::before': {
+        content: '',
+        inset: -2,
+        br: '$round',
+        position: 'absolute',
+      },
+    },
+  },
+
+  '&:active': {
+    boxShadow: '$colors$blackA11 0px 2px 12px -5px, $colors$blackA5 0px 1px 3px',
+    transform: 'none',
+    transition: 'none',
+  },
+  '&:disabled': {
+    opacity: 0,
+  },
+  '@media (hover: none) and (pointer: coarse)': {
+    display: 'none',
+  },
+});

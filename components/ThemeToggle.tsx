@@ -17,7 +17,7 @@ export const ThemeToggle = (props) => {
           // This is because `setTheme` hook depends on React component lifecycle to update things. We are toggling
           // styles manually so that the iframes and the parent page theme change is perfectly synced.
           document.querySelectorAll('[data-demo-iframe]').forEach((iframe: HTMLIFrameElement) => {
-            if (iframe.contentDocument) {
+            if (iframe.contentDocument?.documentElement) {
               iframe.contentDocument.documentElement.classList.toggle(darkTheme.className);
               iframe.contentDocument.documentElement.classList.toggle('light-theme');
               iframe.contentDocument.documentElement.style.setProperty('color-scheme', newTheme);
