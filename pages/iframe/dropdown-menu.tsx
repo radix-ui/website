@@ -82,7 +82,7 @@ export default function DropdownMenuDemo() {
 
   // Let upstream document know that we are ready
   React.useEffect(() => {
-    window.top.postMessage({ name: 'dropdown-menu' }, '*');
+    window.top.postMessage({ key: 'dropdown' }, '*');
   }, []);
 
   return (

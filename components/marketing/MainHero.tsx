@@ -1,3 +1,4 @@
+// @refresh reset
 import React from 'react';
 import NextLink from 'next/link';
 import {
@@ -51,31 +52,31 @@ const IFrame = styled('iframe', {
   },
 });
 
-// TODO test safari
-// TODO test focus visible
-// TODO check with screen reader
-// TODO review section spacing
+type DemoStates = Record<string, 'loading' | 'ready'>;
+
 export const MainHero = () => {
-  // We synchronise the visibility of the first few iframes as they are loaded
-  const [iFramesReady, setIFramesReady] = React.useState(false);
-  const iFrameStates = React.useRef({
+  const [demoStates, setDemoStates] = React.useState<DemoStates>({
     dialog: 'loading',
-    'dropdown-menu': 'loading',
+    dropdown: 'loading',
     popover: 'loading',
     slider: 'loading',
+    tooltip: 'loading',
   });
 
+  const allDemosReady = Object.values(demoStates).every((state) => state === 'ready');
+
+  // Listen to iframes that are ready and update the states accordingly
   React.useEffect(() => {
-    const iFrameListener = (event: MessageEvent) => {
-      if (event.data.name in iFrameStates.current) {
-        iFrameStates.current[event.data.name] = 'ready';
-        if (Object.values(iFrameStates.current).every((state) => state === 'ready')) {
-          setIFramesReady(true);
-        }
+    const listener = (event: MessageEvent) => {
+      if (event.data.key) {
+        setDemoStates((currentState) => ({
+          ...currentState,
+          [event.data.key]: 'ready',
+        }));
       }
     };
-    addEventListener('message', iFrameListener);
-    return () => removeEventListener('message', iFrameListener);
+    addEventListener('message', listener);
+    return () => removeEventListener('message', listener);
   }, []);
 
   return (
@@ -89,7 +90,8 @@ export const MainHero = () => {
               color: 'transparent',
               WebkitBackgroundClip: 'text',
               backgroundImage: 'radial-gradient(circle, $hiContrast, $colors$indigo12)',
-              pb: '0.1em', // Otherwise some descenders may be clipped with WebkitBackgroundClip: 'text'
+              // Otherwise some descenders may be clipped with WebkitBackgroundClip: 'text'
+              pb: '0.1em',
               mb: '$3',
 
               fontWeight: 500,
@@ -125,11 +127,11 @@ export const MainHero = () => {
         </Box>
         <Grid gap="5" css={{ gridAutoFlow: 'column' }}>
           <Box>
-            <IFrameSkeleton active={!iFramesReady}>
+            <IFrameSkeleton active={!allDemosReady}>
               <IFrame
-                data-demo-iframe
-                visible={iFramesReady}
+                visible={allDemosReady}
                 tabIndex={-1}
+                data-demo-iframe
                 src="/iframe/dialog"
                 css={{
                   background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
@@ -147,13 +149,12 @@ export const MainHero = () => {
               readers.
             </Text>
           </Box>
-
           <Box>
-            <IFrameSkeleton active={!iFramesReady}>
+            <IFrameSkeleton active={!allDemosReady}>
               <IFrame
-                data-demo-iframe
-                visible={iFramesReady}
+                visible={allDemosReady}
                 tabIndex={-1}
+                data-demo-iframe
                 src="/iframe/dropdown-menu"
                 css={{
                   background: 'linear-gradient(to bottom right,  $crimson4, $blue5)',
@@ -171,13 +172,12 @@ export const MainHero = () => {
               typeahead support.
             </Text>
           </Box>
-
           <Box>
-            <IFrameSkeleton active={!iFramesReady}>
+            <IFrameSkeleton active={!allDemosReady}>
               <IFrame
-                data-demo-iframe
-                visible={iFramesReady}
+                visible={allDemosReady}
                 tabIndex={-1}
+                data-demo-iframe
                 src="/iframe/popover"
                 css={{
                   background: 'linear-gradient(to bottom right, $lime3, $cyan5)',
@@ -195,13 +195,12 @@ export const MainHero = () => {
               animations.
             </Text>
           </Box>
-
           <Box>
-            <IFrameSkeleton active={!iFramesReady}>
+            <IFrameSkeleton active={!allDemosReady}>
               <IFrame
-                data-demo-iframe
-                visible={iFramesReady}
+                visible={allDemosReady}
                 tabIndex={-1}
+                data-demo-iframe
                 src="/iframe/slider"
                 css={{
                   background: 'linear-gradient(120deg, $gray3, $sky4)',
@@ -219,14 +218,13 @@ export const MainHero = () => {
               and RTL direction.
             </Text>
           </Box>
-
           <Box>
-            <IFrameSkeleton active={!iFramesReady}>
+            <IFrameSkeleton active={!allDemosReady}>
               <IFrame
                 data-demo-iframe
-                visible={iFramesReady}
+                visible={allDemosReady}
                 tabIndex={-1}
-                src="/iframe/dialog"
+                src="/iframe/tooltip"
                 css={{
                   background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
                   [`.${darkTheme} &`]: {

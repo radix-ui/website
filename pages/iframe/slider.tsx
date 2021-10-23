@@ -67,7 +67,7 @@ export default function SliderDemo() {
 
   // Let upstream document know that we are ready
   React.useEffect(() => {
-    window.top.postMessage({ name: 'slider' }, '*');
+    window.top.postMessage({ key: 'slider' }, '*');
   }, []);
 
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
-import * as PopoverPrimitive from '@radix-ui/react-popover';
-import { Flex, Text, styled, Grid, TextField, globalCss, darkTheme } from '@modulz/design-system';
+import * as TooltipPrimitive from '@radix-ui/react-dialog';
+import { Flex, Text, styled, keyframes, Box, globalCss, darkTheme } from '@modulz/design-system';
 import { DemoButton } from '@components/marketing/DemoButton';
 import { DemoIconButton } from '@components/marketing/DemoIconButton';
 import { Cross2Icon } from '@radix-ui/react-icons';
@@ -14,13 +14,17 @@ const setGlobalStyles = globalCss({
   },
 });
 
-const PopoverContent = styled(PopoverPrimitive.Content, {
-  position: 'relative',
-  width: 200,
+const TooltipContent = styled(TooltipPrimitive.Content, {
+  position: 'fixed',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: '80%',
   bc: '$loContrast',
   br: '$2',
   py: 10,
   px: 10,
+  marginTop: '-3vh',
   boxShadow: '0px 5px 30px -5px rgba(0, 0, 0, 0.1)',
 
   '& ::selection': {
@@ -28,11 +32,7 @@ const PopoverContent = styled(PopoverPrimitive.Content, {
   },
 });
 
-const PopoverArrow = styled(PopoverPrimitive.Arrow, {
-  fill: '$loContrast',
-});
-
-export default function PopoverDemo() {
+export default function TooltipDemo() {
   setGlobalStyles();
 
   // We prevent the initial auto focus because it's a demo rather than a real UI,
@@ -41,7 +41,7 @@ export default function PopoverDemo() {
 
   // Let upstream document know that we are ready
   React.useEffect(() => {
-    window.top.postMessage({ key: 'popover' }, '*');
+    window.top.postMessage({ key: 'tooltip' }, '*');
   }, []);
 
   return (
@@ -54,15 +54,12 @@ export default function PopoverDemo() {
         width: '100vw',
       }}
     >
-      <PopoverPrimitive.Root modal={false} defaultOpen>
-        <PopoverPrimitive.Trigger asChild>
-          <DemoButton css={{ mb: 120 }}>Dimensions</DemoButton>
-        </PopoverPrimitive.Trigger>
+      <TooltipPrimitive.Root modal={false} defaultOpen>
+        <TooltipPrimitive.Trigger asChild>
+          <DemoButton css={{ mb: 120 }}>Open Tooltip</DemoButton>
+        </TooltipPrimitive.Trigger>
 
-        <PopoverContent
-          side="bottom"
-          sideOffset={5}
-          avoidCollisions={false}
+        <TooltipContent
           onInteractOutside={(event) => event.preventDefault()}
           onOpenAutoFocus={(event) => {
             // We prevent the initial auto focus because it's a demo rather than a real UI,
@@ -73,33 +70,34 @@ export default function PopoverDemo() {
             }
           }}
         >
-          <PopoverArrow />
+          <TooltipPrimitive.Title asChild>
+            <Text as="h2" size="4" css={{ fontWeight: '500', mb: '$2', lineHeight: 1.2 }}>
+              Tooltip
+            </Text>
+          </TooltipPrimitive.Title>
 
-          <Text as="h2" size="3" css={{ fontWeight: '500', mb: '$2', lineHeight: 1.2 }}>
-            Popover
+          <Text size="2" css={{ lineHeight: 1.5, mb: '$2' }}>
+            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+            there live the blind texts.
           </Text>
 
-          <Grid
-            align="center"
-            css={{ gridTemplateColumns: 'auto 100px', columnGap: '$5', rowGap: '$1' }}
-          >
-            <Text size="1">Width</Text>
-            <TextField defaultValue="100%" />
-            <Text size="1">Height</Text>
-            <TextField defaultValue="20vh" />
-            <Text size="1">Margin</Text>
-            <TextField defaultValue="0" />
-            <Text size="1">Padding</Text>
-            <TextField defaultValue="10%" />
-          </Grid>
-
-          <PopoverPrimitive.Close asChild>
+          <TooltipPrimitive.Close asChild>
             <DemoIconButton>
               <Cross2Icon />
             </DemoIconButton>
-          </PopoverPrimitive.Close>
-        </PopoverContent>
-      </PopoverPrimitive.Root>
+          </TooltipPrimitive.Close>
+
+          <Flex justify="end" gap="2">
+            <TooltipPrimitive.Close asChild>
+              <DemoButton variant="gray">OK</DemoButton>
+            </TooltipPrimitive.Close>
+
+            <TooltipPrimitive.Close asChild>
+              <DemoButton variant="gray">Cancel</DemoButton>
+            </TooltipPrimitive.Close>
+          </Flex>
+        </TooltipContent>
+      </TooltipPrimitive.Root>
     </Flex>
   );
 }
