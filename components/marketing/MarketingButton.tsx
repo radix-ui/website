@@ -36,12 +36,11 @@ export const StyledButton = styled('button', {
         color: '$loContrast',
         '@hover': {
           '&:hover': {
-            bc: '$teal12',
+            opacity: 0.9,
           },
         },
         '&:active': {
-          bc: '$teal4',
-          color: '$teal12',
+          opacity: 0.8,
         },
         '&:focus': {
           boxShadow: '0 0 0 2px $colors$blue8',
