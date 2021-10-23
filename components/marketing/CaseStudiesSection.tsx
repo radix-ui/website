@@ -12,6 +12,7 @@ import {
   Card,
   Avatar,
   Link,
+  Separator,
 } from '@modulz/design-system';
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { MarketingButton } from './MarketingButton';

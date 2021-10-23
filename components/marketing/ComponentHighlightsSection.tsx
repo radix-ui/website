@@ -117,7 +117,8 @@ export const ComponentHighlightsSection = () => {
   return (
     <Section
       css={{
-        backgroundImage: 'linear-gradient(to bottom, $slate1, $loContrast)',
+        position: 'relative',
+        backgroundImage: 'linear-gradient(to bottom, $slate2, $loContrast)',
         overflow: 'hidden',
       }}
     >

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Container } from '@modulz/design-system';
+import { Box, Container, Separator } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { MainHero } from '@components/marketing/MainHero';
 import { ComponentHighlightsSection } from '@components/marketing/ComponentHighlightsSection';
@@ -13,6 +13,7 @@ import { OtherProductsSection } from '@components/marketing/OtherProductsSection
 import { Footer } from '@components/Footer';
 import { Header } from '@components/Header';
 import { FancyBackground } from '@components/marketing/FancyBackground';
+import { StatsSection } from '@components/marketing/StatsSection';
 
 export default function PrimitivesHome() {
   return (
@@ -28,12 +29,22 @@ export default function PrimitivesHome() {
         <MainHero />
       </FancyBackground>
       <CaseStudiesSection />
+      <Container size="3">
+        <Separator size="2" />
+      </Container>
       <BenefitsSection />
+      <StatsSection />
       <ComponentHighlightsSection />
       <AccessibilitySection />
       <DeveloperExperienceSection />
       <AdoptionSection />
+      <Container size="3">
+        <Separator size="2" />
+      </Container>
       <CommunitySection />
+      <Container size="3">
+        <Separator size="2" />
+      </Container>
       <OtherProductsSection />
       <Container size="3">
         <Footer />

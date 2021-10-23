@@ -13,7 +13,7 @@ import { MarketingCaption } from './MarketingCaption';
 
 export const CommunitySection = () => {
   return (
-    <Section css={{ pb: 0 }}>
+    <Section>
       <Container size="3">
         <Box css={{ mb: '$5' }}>
           <MarketingCaption css={{ mb: '$1' }}>
@@ -27,7 +27,7 @@ export const CommunitySection = () => {
         <Grid
           gap="3"
           flow={{ '@initial': 'row', '@bp2': 'column' }}
-          css={{ justifyContent: 'start', '@bp2': { gridAutoColumns: '220px' }, mb: '$8' }}
+          css={{ justifyContent: 'start', '@bp2': { gridAutoColumns: '220px' } }}
         >
           <Card as="a" target="_blank" href="https://twitter.com/radix_ui" variant="interactive">
             <Box css={{ p: '$3' }}>
@@ -115,8 +115,6 @@ export const CommunitySection = () => {
             </Box>
           </Card>
         </Grid>
-
-        <Separator size="2" />
       </Container>
     </Section>
   );

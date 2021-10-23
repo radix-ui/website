@@ -16,7 +16,7 @@ import { MarketingButton } from './MarketingButton';
 
 export const AdoptionSection = () => {
   return (
-    <Section css={{ pb: 0 }}>
+    <Section>
       <Container size="3">
         <Box css={{ mb: '$7' }}>
           <MarketingCaption css={{ mb: '$1' }}>Transition to Radix Primitives</MarketingCaption>
@@ -30,11 +30,7 @@ export const AdoptionSection = () => {
           </NextLink>
         </Box>
 
-        <Grid
-          columns={{ '@initial': 1, '@bp1': 2 }}
-          gap={{ '@initial': 4, '@bp1': 7, '@bp2': 9 }}
-          css={{ mb: '$7' }}
-        >
+        <Grid columns={{ '@initial': 1, '@bp1': 2 }} gap={{ '@initial': 4, '@bp1': 7, '@bp2': 9 }}>
           <Box>
             <Text
               as="h3"
@@ -43,7 +39,7 @@ export const AdoptionSection = () => {
             >
               Incremental adoption
             </Text>
-            <Paragraph css={{ mb: '$5' }}>
+            <Paragraph>
               Primitives have been designed for incremental adoption. Each is its own package that’s
               independently versioned, so new components can be added alongside your existing code.
               No need to disrupt feature work with a huge rewrite – you can start small and add more
@@ -59,15 +55,13 @@ export const AdoptionSection = () => {
             >
               Detailed docs and TypeScript support
             </Text>
-            <Paragraph css={{ mb: '$5' }}>
+            <Paragraph>
               Real-world examples, extensive API reference, accessibility details, and full
               TypeScript support. All components share a similar API, creating a consistent
               experience. You will love working with Radix Primitives.
             </Paragraph>
           </Box>
         </Grid>
-
-        <Separator size="2" />
       </Container>
     </Section>
   );
