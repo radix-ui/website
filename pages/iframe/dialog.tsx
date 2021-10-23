@@ -56,7 +56,7 @@ export default function DialogDemo() {
     >
       <DialogPrimitive.Root modal={false} defaultOpen>
         <DialogPrimitive.Trigger asChild>
-          <DemoButton css={{ mb: 120 }}>Open Dialog</DemoButton>
+          <DemoButton css={{ mb: 120 }}>Dialog</DemoButton>
         </DialogPrimitive.Trigger>
 
         <DialogContent

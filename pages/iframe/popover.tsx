@@ -56,7 +56,7 @@ export default function PopoverDemo() {
     >
       <PopoverPrimitive.Root modal={false} defaultOpen>
         <PopoverPrimitive.Trigger asChild>
-          <DemoButton css={{ mb: 120 }}>Dimensions</DemoButton>
+          <DemoButton css={{ mb: 120 }}>Popover</DemoButton>
         </PopoverPrimitive.Trigger>
 
         <PopoverContent
@@ -76,7 +76,7 @@ export default function PopoverDemo() {
           <PopoverArrow />
 
           <Text as="h2" size="3" css={{ fontWeight: '500', mb: '$2', lineHeight: 1.2 }}>
-            Popover
+            Dimensions
           </Text>
 
           <Grid

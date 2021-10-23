@@ -99,7 +99,7 @@ export default function DropdownMenuDemo() {
       <DropdownMenuPrimitive.Root modal={false} defaultOpen>
         <DropdownMenuPrimitive.Trigger asChild>
           <DemoButton css={{ marginBottom: 120, gap: 3 }}>
-            Options <CaretDownIcon style={{ marginRight: -5 }} />
+            Dropdown <CaretDownIcon style={{ marginRight: -5 }} />
           </DemoButton>
         </DropdownMenuPrimitive.Trigger>
         <DropdownMenuContent

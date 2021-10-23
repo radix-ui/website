@@ -30,7 +30,7 @@ export const DemoIconButton = styled('button', {
   },
 
   '&:focus': {
-    borderColor: '$blue8',
+    borderColor: '$slate8',
   },
   '&:focus:not(:focus-visible)': {
     borderColor: 'transparent',
