@@ -202,21 +202,21 @@ const FancyBackgroundChart = () => {
       >
         <svg
           preserveAspectRatio="none"
-          width="100"
-          viewBox="0 0 100 100"
+          width="320"
+          viewBox="0 0 320 320"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           style={{ position: 'absolute', width: '100%', height: '100%' }}
         >
-          <rect width="100" height="100" fill="url(#gradient-fill-space)" />
+          <rect y="10" width="320" height="310" fill="url(#gradient-fill-space)" />
           <defs>
             <linearGradient
               gradientUnits="userSpaceOnUse"
               id="gradient-fill-space"
-              x1="50"
-              y1="0"
-              x2="50"
-              y2="100"
+              x1="0"
+              y1="10"
+              x2="0"
+              y2="100%"
             >
               <stop offset="0" stopColor="var(---chartTopColor)" />
               <stop offset="0.7" stopColor="var(---chartBottomColor)" />
