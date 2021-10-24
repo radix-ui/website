@@ -82,8 +82,8 @@ export default function DropdownMenuDemo() {
 
   // Let upstream document know that we are ready
   React.useEffect(() => {
-    window.top.postMessage({ key: 'dropdown' }, '*');
-  }, []);
+    requestAnimationFrame(() => window.top.postMessage({ key: 'dropdown' }, '*'));
+  });
 
   return (
     <Flex

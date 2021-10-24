@@ -67,8 +67,8 @@ export default function SliderDemo() {
 
   // Let upstream document know that we are ready
   React.useEffect(() => {
-    window.top.postMessage({ key: 'slider' }, '*');
-  }, []);
+    requestAnimationFrame(() => window.top.postMessage({ key: 'slider' }, '*'));
+  });
 
   return (
     <Flex

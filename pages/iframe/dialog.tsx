@@ -41,8 +41,8 @@ export default function DialogDemo() {
 
   // Let upstream document know that we are ready
   React.useEffect(() => {
-    window.top.postMessage({ key: 'dialog' }, '*');
-  }, []);
+    requestAnimationFrame(() => window.top.postMessage({ key: 'dialog' }, '*'));
+  });
 
   return (
     <Flex

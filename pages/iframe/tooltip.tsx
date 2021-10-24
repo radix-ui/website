@@ -41,8 +41,8 @@ export default function TooltipDemo() {
 
   // Let upstream document know that we are ready
   React.useEffect(() => {
-    window.top.postMessage({ key: 'tooltip' }, '*');
-  }, []);
+    requestAnimationFrame(() => window.top.postMessage({ key: 'tooltip' }, '*'));
+  });
 
   return (
     <Flex

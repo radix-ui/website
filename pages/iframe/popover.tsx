@@ -41,8 +41,8 @@ export default function PopoverDemo() {
 
   // Let upstream document know that we are ready
   React.useEffect(() => {
-    window.top.postMessage({ key: 'popover' }, '*');
-  }, []);
+    requestAnimationFrame(() => window.top.postMessage({ key: 'popover' }, '*'));
+  });
 
   return (
     <Flex
