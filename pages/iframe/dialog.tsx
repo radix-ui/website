@@ -52,6 +52,7 @@ export default function DialogDemo() {
         position: 'relative',
         height: '100vh',
         width: '100vw',
+        pb: '3vh',
       }}
     >
       <DialogPrimitive.Root modal={false} defaultOpen>

@@ -79,10 +79,12 @@ export const Carousel = (props) => {
     }
     timeoutRef.current = setTimeout(() => {
       requestAnimationFrame(() => {
-        const { scrollLeft, scrollWidth, clientWidth } = slideListRef.current;
-        setPrevDisabled(scrollLeft <= 0);
-        setNextDisabled(scrollWidth - scrollLeft - clientWidth <= 0);
-        navigationUpdateDelay.current = 100;
+        if (slideListRef.current) {
+          const { scrollLeft, scrollWidth, clientWidth } = slideListRef.current;
+          setPrevDisabled(scrollLeft <= 0);
+          setNextDisabled(scrollWidth - scrollLeft - clientWidth <= 0);
+          navigationUpdateDelay.current = 100;
+        }
       });
     }, navigationUpdateDelay.current);
   });

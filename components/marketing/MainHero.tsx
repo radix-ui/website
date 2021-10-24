@@ -67,7 +67,12 @@ export const MainHero = () => {
     dropdown: 'loading',
     popover: 'loading',
     slider: 'loading',
-    // tooltip: 'loading',
+    'scroll-area': 'loading',
+    // tabs: 'loading',
+    // accordion: 'loading',
+    // 'radio-group': 'loading',
+    // 'toggle-group': 'loading',
+    // switch: 'loading',
   });
 
   console.log(...Object.values(demoStates));
@@ -78,7 +83,7 @@ export const MainHero = () => {
   React.useEffect(() => {
     console.log('setting up iframe message listener');
     const listener = (event: MessageEvent) => {
-      if (event.data.key) {
+      if (event.data.key in demoStates) {
         console.log(`${event.data.key} ready`);
         setDemoStates((currentState) => ({
           ...currentState,
@@ -193,6 +198,7 @@ export const MainHero = () => {
                 screen readers.
               </Text>
             </CarouselSlide>
+
             <CarouselSlide>
               <IFrameSkeleton active={!allDemosReady}>
                 <IFrame
@@ -212,10 +218,11 @@ export const MainHero = () => {
                 Dropdown Menu
               </Text>
               <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                With submenus, checkable items, collision handling, full keyboard navigation, and
+                With submenus, checkable items, collision handling, arrow key navigation, and
                 typeahead support.
               </Text>
             </CarouselSlide>
+
             <CarouselSlide>
               <IFrameSkeleton active={!allDemosReady}>
                 <IFrame
@@ -239,6 +246,7 @@ export const MainHero = () => {
                 collision-aware animations.
               </Text>
             </CarouselSlide>
+
             <CarouselSlide>
               <IFrameSkeleton active={!allDemosReady}>
                 <IFrame
@@ -262,13 +270,14 @@ export const MainHero = () => {
                 and RTL direction.
               </Text>
             </CarouselSlide>
-            {/* <CarouselSlide>
+
+            <CarouselSlide>
               <IFrameSkeleton active={!allDemosReady}>
                 <IFrame
                   data-demo-iframe
                   visible={allDemosReady}
                   tabIndex={-1}
-                  // src="/iframe/tooltip"
+                  src="/iframe/scroll-area"
                   css={{
                     background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
                     [`.${darkTheme} &`]: {
@@ -278,13 +287,132 @@ export const MainHero = () => {
                 />
               </IFrameSkeleton>
               <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-                Tooltip
+                Scroll Area
               </Text>
               <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                Opens when the trigger is focused or hovered, supports custom timings and
-                positioning, handles collisions.
+                Supports custom cross-browser styling while maintaining the browser's native scroll
+                behavior.
               </Text>
-            </CarouselSlide> */}
+            </CarouselSlide>
+
+            <CarouselSlide>
+              <IFrameSkeleton active={!allDemosReady}>
+                <IFrame
+                  data-demo-iframe
+                  visible={allDemosReady}
+                  tabIndex={-1}
+                  src="/iframe/tabs"
+                  css={{
+                    background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                    },
+                  }}
+                />
+              </IFrameSkeleton>
+              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                Tabs
+              </Text>
+              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                Supports arrow key navigation, horizontal/vertical orientation, controlled or
+                uncontrolled.
+              </Text>
+            </CarouselSlide>
+
+            <CarouselSlide>
+              <IFrameSkeleton active={!allDemosReady}>
+                <IFrame
+                  data-demo-iframe
+                  visible={allDemosReady}
+                  tabIndex={-1}
+                  src="/iframe/accordion"
+                  css={{
+                    background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                    },
+                  }}
+                />
+              </IFrameSkeleton>
+              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                Accordion
+              </Text>
+              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                Supports one or multiple items open at the same time, keyboard navigation, collapse
+                and expand animation.
+              </Text>
+            </CarouselSlide>
+
+            <CarouselSlide>
+              <IFrameSkeleton active={!allDemosReady}>
+                <IFrame
+                  data-demo-iframe
+                  visible={allDemosReady}
+                  tabIndex={-1}
+                  src="/iframe/radio-group"
+                  css={{
+                    background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                    },
+                  }}
+                />
+              </IFrameSkeleton>
+              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                Radio Group
+              </Text>
+              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                With arrow key navigation, horizontal/vertical orientation support, controlled or
+                uncontrolled.
+              </Text>
+            </CarouselSlide>
+
+            <CarouselSlide>
+              <IFrameSkeleton active={!allDemosReady}>
+                <IFrame
+                  data-demo-iframe
+                  visible={allDemosReady}
+                  tabIndex={-1}
+                  src="/iframe/toggle-group"
+                  css={{
+                    background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                    },
+                  }}
+                />
+              </IFrameSkeleton>
+              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                Toggle Group
+              </Text>
+              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                A set of two-state buttons that can be toggled on or off. Supports single and
+                multiple pressed buttons.
+              </Text>
+            </CarouselSlide>
+
+            <CarouselSlide>
+              <IFrameSkeleton active={!allDemosReady}>
+                <IFrame
+                  data-demo-iframe
+                  visible={allDemosReady}
+                  tabIndex={-1}
+                  src="/iframe/switch"
+                  css={{
+                    background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                    },
+                  }}
+                />
+              </IFrameSkeleton>
+              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                Switch
+              </Text>
+              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                Allows the user to toggle between checked and not checked.
+              </Text>
+            </CarouselSlide>
           </CarouselSlideList>
 
           <Box

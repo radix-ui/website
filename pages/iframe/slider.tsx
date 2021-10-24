@@ -42,7 +42,7 @@ const StyledTrack = styled(SliderPrimitive.Track, {
 
 const StyledRange = styled(SliderPrimitive.Range, {
   position: 'absolute',
-  backgroundColor: '$blue8',
+  backgroundColor: '$indigo9',
   borderRadius: '9999px',
   height: '100%',
 });
