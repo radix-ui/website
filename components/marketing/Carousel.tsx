@@ -1,15 +1,19 @@
+import React, { ReactType } from 'react';
 import { Box } from '@modulz/design-system';
 import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import { createContext } from '@radix-ui/react-context';
 import { useCallbackRef } from '@radix-ui/react-use-callback-ref';
 import debounce from 'lodash.debounce';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import smoothscroll from 'smoothscroll-polyfill';
 
 const [CarouselProvider, useCarouselContext] = createContext<{
   _: any;
   slideListRef: React.RefObject<HTMLElement>;
   onNextClick(): void;
   onPrevClick(): void;
+  nextDisabled: boolean;
+  prevDisabled: boolean;
 }>('Carousel');
 
 export const Carousel = (props) => {
@@ -17,6 +21,11 @@ export const Carousel = (props) => {
   const { children, ...carouselProps } = props;
   const slideListRef = useRef<HTMLElement>(null);
   const [_, force] = useState({});
+  const [nextDisabled, setNextDisabled] = useState(false);
+  const [prevDisabled, setPrevDisabled] = useState(true);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
+  const navigationUpdateDelay = useRef(100);
+  useEffect(() => smoothscroll.polyfill(), []);
 
   const getSlideInDirection = useCallbackRef((direction) => {
     const slides = ref.current?.querySelectorAll<HTMLElement>('[data-slide-intersected]');
@@ -33,28 +42,50 @@ export const Carousel = (props) => {
 
   const handleNextClick = useCallback(() => {
     const nextSlide = getSlideInDirection(1);
-    const gap = parseFloat(window.getComputedStyle(slideListRef.current).gap);
-    const itemWidth = nextSlide.clientWidth + gap;
-    const nextPos = Math.floor(slideListRef.current.scrollLeft / itemWidth) * itemWidth + itemWidth;
-
     if (nextSlide) {
+      const { scrollLeft, scrollWidth, clientWidth } = slideListRef.current;
+      const itemWidth = nextSlide.clientWidth;
+      const nextPos = Math.floor(scrollLeft / itemWidth) * itemWidth + itemWidth;
       slideListRef.current.scrollTo({ left: nextPos, behavior: 'smooth' });
+
+      // Disable previous & next buttons immediately
+      setPrevDisabled(nextPos <= 0);
+      setNextDisabled(scrollWidth - nextPos - clientWidth <= 0);
+      // Wait for scroll animation to finish before the buttons *might* show up again
+      navigationUpdateDelay.current = 500;
     }
-  }, [getSlideInDirection]);
+  }, [getSlideInDirection, setPrevDisabled]);
 
   const handlePrevClick = useCallback(() => {
     const prevSlide = getSlideInDirection(-1);
-    const gap = parseFloat(window.getComputedStyle(slideListRef.current).gap);
-    const itemWidth = prevSlide.clientWidth + gap;
-    const nextPos = Math.ceil(slideListRef.current.scrollLeft / itemWidth) * itemWidth - itemWidth;
-
     if (prevSlide) {
-      slideListRef.current.scrollTo({
-        left: nextPos,
-        behavior: 'smooth',
-      });
+      const { scrollLeft, scrollWidth, clientWidth } = slideListRef.current;
+      const itemWidth = prevSlide.clientWidth;
+      const nextPos = Math.ceil(scrollLeft / itemWidth) * itemWidth - itemWidth;
+      slideListRef.current.scrollTo({ left: nextPos, behavior: 'smooth' });
+
+      // Disable previous & next buttons immediately
+      setPrevDisabled(nextPos <= 0);
+      setNextDisabled(scrollWidth - nextPos - clientWidth <= 0);
+      // Wait for scroll animation to finish before the buttons *might* show up again
+      navigationUpdateDelay.current = 500;
     }
-  }, [getSlideInDirection]);
+  }, [getSlideInDirection, setPrevDisabled]);
+
+  useEffect(() => {
+    // Keep checking for whether we need to disable the navigation buttons, debounced
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    timeoutRef.current = setTimeout(() => {
+      requestAnimationFrame(() => {
+        const { scrollLeft, scrollWidth, clientWidth } = slideListRef.current;
+        setPrevDisabled(scrollLeft <= 0);
+        setNextDisabled(scrollWidth - scrollLeft - clientWidth <= 0);
+        navigationUpdateDelay.current = 100;
+      });
+    }, navigationUpdateDelay.current);
+  });
 
   useEffect(() => {
     const slidesList = slideListRef.current;
@@ -72,6 +103,8 @@ export const Carousel = (props) => {
   return (
     <CarouselProvider
       _={_}
+      nextDisabled={nextDisabled}
+      prevDisabled={prevDisabled}
       slideListRef={slideListRef}
       onNextClick={handleNextClick}
       onPrevClick={handlePrevClick}
@@ -124,17 +157,21 @@ export const CarouselSlide = (props) => {
 export const CarouselNext = (props) => {
   const { as: Comp = 'button', ...nextProps } = props;
   const context = useCarouselContext('CarouselNext');
-  const slideList = (context.slideListRef.current || {}) as HTMLElement;
-  const { scrollWidth, scrollLeft, clientWidth } = slideList;
-  const remainder = scrollWidth - scrollLeft - clientWidth;
-  const disabled = context.slideListRef.current ? remainder <= 0 : true;
-  return <Comp {...nextProps} onClick={() => context.onNextClick()} disabled={disabled} />;
+  // const slideList = (context.slideListRef.current || {}) as HTMLElement;
+  // const { scrollWidth, scrollLeft, clientWidth } = slideList;
+  // const remainder = scrollWidth - scrollLeft - clientWidth;
+  // const disabled = context.slideListRef.current ? remainder <= 0 : true;
+  return (
+    <Comp {...nextProps} onClick={() => context.onNextClick()} disabled={context.nextDisabled} />
+  );
 };
 
 export const CarouselPrevious = (props) => {
   const { as: Comp = 'button', ...prevProps } = props;
   const context = useCarouselContext('CarouselPrevious');
-  const slideList = (context.slideListRef.current || {}) as HTMLElement;
-  const disabled = context.slideListRef.current ? slideList?.scrollLeft <= 0 : true;
-  return <Comp {...prevProps} onClick={() => context.onPrevClick()} disabled={disabled} />;
+  // const slideList = (context.slideListRef.current || {}) as HTMLElement;
+  // const disabled = context.slideListRef.current ? slideList?.scrollLeft <= 0 : true;
+  return (
+    <Comp {...prevProps} onClick={() => context.onPrevClick()} disabled={context.prevDisabled} />
+  );
 };

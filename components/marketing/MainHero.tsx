@@ -140,26 +140,28 @@ export const MainHero = () => {
             css={{
               display: 'grid',
               gridAutoFlow: 'column',
-              gap: '$5',
-
               ox: 'auto',
               oy: 'hidden',
               py: '$1',
               WebkitoverflowScrolling: 'touch',
 
-              // calculate the left and right padding to apply to the scrolling list
+              // calculate the left padding to apply to the scrolling list
               // so that the carousel starts aligned with the container component
               // the "1145" and "$5" values comes from the <Container /> component
               '$$scroll-padding': 'max($space$5, calc((100% - 1145px) / 2 + $space$5))',
-              scrollPadding: '0 $$scroll-padding 0 $$scroll-padding',
-              px: '$$scroll-padding',
+              scrollPaddingLeft: '$$scroll-padding',
+              pl: '$$scroll-padding',
 
               // hide scrollbar
               MsOverflowStyle: 'none',
               scrollbarWidth: 'none',
-
               '&::-webkit-scrollbar': {
                 display: 'none',
+              },
+
+              // Can't have nice grid gap because Safari butchers scroll padding with it
+              '& > *': {
+                pr: '$5',
               },
             }}
           >
@@ -323,6 +325,7 @@ const CarouselArrowButton = styled('button', {
   br: '$round',
   width: '$7',
   height: '$7',
+  color: '$hiContrast',
 
   boxShadow: '$colors$blackA11 0px 2px 12px -5px, $colors$blackA5 0px 1px 3px',
   willChange: 'transform, box-shadow',
@@ -358,7 +361,7 @@ const CarouselArrowButton = styled('button', {
   },
   '&:active': {
     transform: 'none',
-    transition: 'none',
+    transitionProperty: 'opacity',
   },
   '&:disabled': {
     opacity: 0,
