@@ -19,8 +19,8 @@ export const RadixLogo = ({ label = 'Radix homepage' }: { label?: string }) => (
           fill="currentcolor"
         />
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M2.91317 17V11.0168H6.7986L10.4513 17H13.7006L9.68936 10.5686C11.5045 9.986 13.0955 8.507 13.0955 6.01961C13.0955 2.7479 10.7994 1 6.95714 1H0V17H2.91317ZM2.91317 3.35294V8.68628H6.82101C9.0395 8.68628 10.1599 7.76751 10.1599 6.01961C10.1599 4.27171 8.9395 3.35294 6.62101 3.35294H2.91317Z"
           fill="currentcolor"
         />

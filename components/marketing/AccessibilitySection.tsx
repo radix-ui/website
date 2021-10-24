@@ -263,7 +263,8 @@ export const AccessibilitySection = () => {
   const updateSequence = React.useCallback(
     (newSequence: SequenceType) => {
       if (currentSequence !== newSequence) {
-        let desiredDropdownState = animations[currentSequence][keyframeRef.current].dropdown;
+        let desiredDropdownState =
+          animations[currentSequence][keyframeRef.current]?.dropdown ?? 'item1';
 
         // If current sequence is the RTL animation, it might include the submenu state.
         // We need to pick nth dropdown item without the submenu as other animations don't have it.

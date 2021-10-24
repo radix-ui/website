@@ -70,12 +70,16 @@ export const MainHero = () => {
     // tooltip: 'loading',
   });
 
+  console.log(...Object.values(demoStates));
+
   const allDemosReady = Object.values(demoStates).every((state) => state === 'ready');
 
   // Listen to iframes that are ready and update the states accordingly
   React.useEffect(() => {
+    console.log('setting up iframe message listener');
     const listener = (event: MessageEvent) => {
       if (event.data.key) {
+        console.log(`${event.data.key} ready`);
         setDemoStates((currentState) => ({
           ...currentState,
           [event.data.key]: 'ready',
@@ -140,6 +144,7 @@ export const MainHero = () => {
             css={{
               display: 'grid',
               gridAutoFlow: 'column',
+              gridAutoColumns: 'min-content',
               ox: 'auto',
               oy: 'hidden',
               py: '$1',
