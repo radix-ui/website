@@ -95,7 +95,7 @@ export default function RadioGroupDemo() {
         width: '100vw',
       }}
     >
-      <RadioCardGroup>
+      <RadioCardGroup defaultValue="1">
         <StyledRadio value="1">
           <StyledRadioButton>
             <StyledRadioIndicator />
