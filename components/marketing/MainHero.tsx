@@ -159,7 +159,6 @@ export const MainHero = () => {
               // so that the carousel starts aligned with the container component
               // the "1145" and "$5" values comes from the <Container /> component
               '$$scroll-padding': 'max($space$5, calc((100% - 1145px) / 2 + $space$5))',
-              scrollPaddingLeft: '$$scroll-padding',
               pl: '$$scroll-padding',
 
               // hide scrollbar
