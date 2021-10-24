@@ -95,8 +95,12 @@ export const Carousel = (props) => {
         trailing: true,
       });
       slidesList.addEventListener('scroll', handleScrollStartAndEnd);
+      window.addEventListener('resize', handleScrollStartAndEnd);
       force({});
-      return () => slidesList.removeEventListener('scroll', handleScrollStartAndEnd);
+      return () => {
+        slidesList.removeEventListener('scroll', handleScrollStartAndEnd);
+        window.removeEventListener('resize', handleScrollStartAndEnd);
+      };
     }
   }, [slideListRef]);
 
