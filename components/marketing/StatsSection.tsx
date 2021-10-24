@@ -65,7 +65,7 @@ export const StatsSection = () => {
                 textIndent: '-0.08em',
               }}
             >
-              450K
+              700K
             </Text>
             <Text variant="gray" size={{ '@initial': 3, '@bp2': 4 }}>
               Monthly downloads
@@ -87,7 +87,7 @@ export const StatsSection = () => {
                 textIndent: '-0.12em',
               }}
             >
-              1100
+              1500
               <Box as="span" css={{ fontSize: '75%', ml: '0.25em' }}>
                 +
               </Box>
