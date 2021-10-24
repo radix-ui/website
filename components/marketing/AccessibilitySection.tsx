@@ -42,7 +42,6 @@ type AnimationKeyframe = {
   dropdown: MockDropdownState;
   duration: number;
 };
-// TODO sync drodpown states when sequence changes
 
 // Note that for all animations the first keyframe is skipped on the second and subsequent
 // iterations so that how animation ends is easy to connect with how it starts.

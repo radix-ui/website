@@ -29,7 +29,7 @@ export const Footer = () => {
         >
           <NextLink href={isColors ? '/colors' : '/'} passHref>
             <BoxLink>
-              <RadixLogo label={isColors ? 'Colors' : 'Radix'} />
+              <RadixLogo label={isColors && 'Radix Colors homepage'} />
             </BoxLink>
           </NextLink>
           <Text
