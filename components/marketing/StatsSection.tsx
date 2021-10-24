@@ -23,8 +23,8 @@ export const StatsSection = () => {
         $$chartTipColor: '$colors$slate7',
         $$chartLineStartColor: '$colors$teal5',
         $$chartLineEndColor: '$colors$slate7',
-        $$chartBottomColor: '$colors$slate2',
         $$chartTopColor: '#FFFFFF00',
+        $$chartBottomColor: '$colors$slate2',
         [`.${darkTheme} &`]: {
           $$transparent: '#16161800',
           $$chartTopColor: '#16161800',
@@ -39,7 +39,7 @@ export const StatsSection = () => {
           right: -200,
           height: 700,
           backgroundImage:
-            'radial-gradient(ellipse 75% 700px at 35% calc(100% + 100px), $teal8 20%, $cyan3, transparent)',
+            'radial-gradient(ellipse 75% 700px at 35% calc(100% + 100px), $teal8 20%, $cyan3, $$transparent)',
           transform: 'rotate(-10deg)',
         }}
       />
