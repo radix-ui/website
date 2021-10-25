@@ -77,9 +77,9 @@ export default function CaseStudy() {
             </NextLink>
             <NextLink href="/case-studies/basement-studio" passHref>
               <LogoLink variant="box">
-                <AccessibleIcon label="Basement Studio case study">
+                <AccessibleIcon label="basement.studio case study">
                   <Flex justify="center" css={{ height: '100%' }}>
-                    <CaseStudyLogo variant="Basement Studio" />
+                    <CaseStudyLogo variant="basement.studio" />
                   </Flex>
                 </AccessibleIcon>
               </LogoLink>

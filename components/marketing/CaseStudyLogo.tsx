@@ -4,7 +4,7 @@ export type CaseStudyLogoVariant =
   | 'Atom Learning'
   | 'Acid Tango'
   | 'Basedash'
-  | 'Basement Studio'
+  | 'basement.studio'
   | 'CodeSandbox'
   | 'CodeSandbox (Wide)'
   | 'GraphCMS'
@@ -101,7 +101,7 @@ export const CaseStudyLogo = ({ variant, ...props }: CaseStudyLogoProps) => {
     );
   }
 
-  if (variant === 'Basement Studio') {
+  if (variant === 'basement.studio') {
     return (
       <svg
         width="140"

@@ -16,6 +16,9 @@ export const DemoButton = styled('button', {
   height: '$5',
   br: '$2',
 
+  // For Safari layout shifts when interacting with positioned components
+  willChange: 'transform',
+
   '&:focus': {
     boxShadow: '0 0 0 2px $colors$grayA8',
   },
