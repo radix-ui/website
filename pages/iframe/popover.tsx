@@ -34,6 +34,7 @@ const PopoverArrow = styled(PopoverPrimitive.Arrow, {
 
 export default function PopoverDemo() {
   setGlobalStyles();
+  const refToFocus = React.useRef<HTMLInputElement>(null);
 
   // We prevent the initial auto focus because it's a demo rather than a real UI,
   // so the parent page focus is not stolen.
@@ -71,6 +72,25 @@ export default function PopoverDemo() {
               event.preventDefault();
               initialAutoFocusPrevented.current = true;
             }
+
+            // Some Safari “love”.
+            // When focus is changed programmatically in an iframe, Safari jerks parent page scroll position.
+            // This means there's a brutal scroll shift when interactive primitives focus stuff on open
+            // This is purely a Safari bug that's not related to how primitives are implemented.
+            if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+              // Cancel input focus
+              event.preventDefault();
+
+              // Refocus the input manually, updating scroll.
+              // iPhone Safari is unfixable, so we won't refocus the input for it.
+              // No huge harm done because it's just a demo and the user doesn't really mean to
+              if (!navigator.userAgent.includes('iPhone')) {
+                const { scrollTop } = parent.document.documentElement;
+                refToFocus.current?.focus();
+                refToFocus.current?.select();
+                parent.document.documentElement.scrollTop = scrollTop;
+              }
+            }
           }}
         >
           <PopoverArrow />
@@ -84,7 +104,7 @@ export default function PopoverDemo() {
             css={{ gridTemplateColumns: 'auto 100px', columnGap: '$5', rowGap: '$1' }}
           >
             <Text size="1">Width</Text>
-            <TextField defaultValue="100%" />
+            <TextField ref={refToFocus} defaultValue="100%" />
             <Text size="1">Height</Text>
             <TextField defaultValue="20vh" />
             <Text size="1">Margin</Text>
