@@ -92,7 +92,15 @@ export const MainHero = () => {
   }, []);
 
   return (
-    <Section css={{ overflow: 'hidden' }}>
+    <Section
+      css={{
+        paddingTop: '$4',
+        // Starting at 850px viewport height, grow the padding top from $5 until it's $9.
+        '@media (min-width: 900px) and (min-height: 850px)': {
+          paddingTop: 'min($9, calc($5 + 0.35 * (100vh - 850px)))',
+        },
+      }}
+    >
       <Container size="3">
         <Box css={{ mb: '$6' }}>
           <Text
@@ -102,18 +110,15 @@ export const MainHero = () => {
               color: 'transparent',
               WebkitBackgroundClip: 'text',
               backgroundImage: 'radial-gradient(circle, $hiContrast, $colors$indigo12)',
-              // Otherwise some descenders may be clipped with WebkitBackgroundClip: 'text'
-              pb: '0.1em',
-              mb: '$3',
-
+              // Use padding rather than margin, or otherwise some descenders
+              // may be clipped with WebkitBackgroundClip: 'text'
+              pb: '$4',
               fontWeight: 500,
-              fontSize: 'min(max($8, 11.5vw), $9)',
+              fontSize: 'min(max($8, 11.2vw), $9)',
               letterSpacing: 'max(min(-0.055em, -0.66vw), -0.07em)',
-
-              '@bp2': {
+              '@media (min-width: 900px) and (min-height: 850px)': {
                 fontSize: '80px',
                 lineHeight: '0.85',
-                mb: '$5',
               },
             }}
           >
@@ -123,7 +128,7 @@ export const MainHero = () => {
             <br />
             UI components<span style={{ fontSize: '90%' }}>?</span>
           </Text>
-          <Box css={{ maxWidth: 500, mb: '$4' }}>
+          <Box css={{ maxWidth: 500, mb: '$5' }}>
             <Paragraph size="2" as="p">
               Unstyled, acessible components for building high‑quality design systems and web apps
               in React.
