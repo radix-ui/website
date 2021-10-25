@@ -7,7 +7,6 @@ import { Cross2Icon } from '@radix-ui/react-icons';
 
 const setGlobalStyles = globalCss({
   body: {
-    color: '#010102',
     bc: 'transparent',
     [`.${darkTheme} &`]: {
       bc: 'transparent',
