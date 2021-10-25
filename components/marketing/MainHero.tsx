@@ -168,6 +168,15 @@ export const MainHero = () => {
                 display: 'none',
               },
 
+              '&[data-state="dragging"]': {
+                cursor: 'grabbing',
+                userSelect: 'none',
+              },
+
+              '&[data-state="dragging"] *': {
+                cursor: 'inherit',
+              },
+
               // Can't have nice grid gap because Safari butchers scroll padding with it
               '& > *': {
                 pr: '$5',

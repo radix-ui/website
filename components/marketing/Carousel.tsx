@@ -46,7 +46,7 @@ export const Carousel = (props) => {
     if (nextSlide) {
       const { scrollLeft, scrollWidth, clientWidth } = slideListRef.current;
       const itemWidth = nextSlide.clientWidth;
-      const nextPos = Math.floor(scrollLeft / itemWidth) * itemWidth + itemWidth;
+      const nextPos = Math.floor(scrollLeft / itemWidth) * itemWidth + itemWidth * 2;
       slideListRef.current.scrollTo({ left: nextPos, behavior: 'smooth' });
 
       // Disable previous & next buttons immediately
@@ -62,7 +62,7 @@ export const Carousel = (props) => {
     if (prevSlide) {
       const { scrollLeft, scrollWidth, clientWidth } = slideListRef.current;
       const itemWidth = prevSlide.clientWidth;
-      const nextPos = Math.ceil(scrollLeft / itemWidth) * itemWidth - itemWidth;
+      const nextPos = Math.ceil(scrollLeft / itemWidth) * itemWidth - itemWidth * 2;
       slideListRef.current.scrollTo({ left: nextPos, behavior: 'smooth' });
 
       // Disable previous & next buttons immediately
@@ -150,6 +150,7 @@ export const CarouselSlideList = (props) => {
       onMouseDownCapture={composeEventHandlers(props.onMouseDownCapture, (event: MouseEvent) => {
         // Drag only if main mouse button was clicked
         if (event.button === 0) {
+          console.log('mouse down capture');
           document.addEventListener('mousemove', handleMouseMove);
           document.addEventListener('mouseup', handleMouseUp);
           setDragStart({
@@ -159,11 +160,13 @@ export const CarouselSlideList = (props) => {
         }
       })}
       onPointerDown={composeEventHandlers(props.onPointerDown, (event: PointerEvent) => {
+        console.log('pointer down');
         const element = event.target as HTMLElement;
         element.setPointerCapture(event.pointerId);
       })}
       onPointerUp={composeEventHandlers(props.onPointerUp, (event: PointerEvent) => {
         const element = event.target as HTMLElement;
+        console.log('pointer up');
         element.releasePointerCapture(event.pointerId);
       })}
     />
