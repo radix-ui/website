@@ -117,11 +117,11 @@ export const MainHero = () => {
               },
             }}
           >
-            Don’t waste
+            Why waste
             <br />
             time reinventing
             <br />
-            UI components.
+            UI components<span style={{ fontSize: '90%' }}>?</span>
           </Text>
           <Box css={{ maxWidth: 500, mb: '$4' }}>
             <Paragraph size="2" as="p">
