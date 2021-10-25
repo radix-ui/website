@@ -1,7 +1,8 @@
-import React, { ReactType } from 'react';
+import React, { ElementRef, ReactType } from 'react';
 import { Box } from '@modulz/design-system';
 import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import { createContext } from '@radix-ui/react-context';
+import { composeEventHandlers } from '@radix-ui/primitive';
 import { useCallbackRef } from '@radix-ui/react-use-callback-ref';
 import debounce from 'lodash.debounce';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -124,38 +125,81 @@ export const Carousel = (props) => {
 
 export const CarouselSlideList = (props) => {
   const context = useCarouselContext('CarouselSlideList');
-  const ref = useRef<React.ElementRef<typeof Box>>(null);
+  const ref = React.useRef<React.ElementRef<typeof Box>>(null);
   const composedRefs = useComposedRefs(ref, context.slideListRef);
+  const [dragStart, setDragStart] = React.useState(null);
 
-  return <Box {...props} ref={composedRefs} />;
+  const handleMouseMove = useCallbackRef((event) => {
+    if (ref.current) {
+      const distanceX = event.clientX - dragStart.pointerX;
+      ref.current.scrollLeft = dragStart.scrollX - distanceX;
+    }
+  });
+
+  const handleMouseUp = useCallbackRef(() => {
+    document.removeEventListener('mousemove', handleMouseMove);
+    document.removeEventListener('mouseup', handleMouseUp);
+    setDragStart(null);
+  });
+
+  return (
+    <Box
+      {...props}
+      ref={composedRefs}
+      data-state={dragStart ? 'dragging' : undefined}
+      onMouseDownCapture={composeEventHandlers(props.onMouseDownCapture, (event: MouseEvent) => {
+        // Drag only if main mouse button was clicked
+        if (event.button === 0) {
+          document.addEventListener('mousemove', handleMouseMove);
+          document.addEventListener('mouseup', handleMouseUp);
+          setDragStart({
+            scrollX: (event.currentTarget as HTMLElement).scrollLeft,
+            pointerX: event.clientX,
+          });
+        }
+      })}
+      onPointerDown={composeEventHandlers(props.onPointerDown, (event: PointerEvent) => {
+        const element = event.target as HTMLElement;
+        element.setPointerCapture(event.pointerId);
+      })}
+      onPointerUp={composeEventHandlers(props.onPointerUp, (event: PointerEvent) => {
+        const element = event.target as HTMLElement;
+        element.releasePointerCapture(event.pointerId);
+      })}
+    />
+  );
 };
 
 export const CarouselSlide = (props) => {
   const { as: Comp = Box, ...slideProps } = props;
   const context = useCarouselContext('CarouselSlide');
-  const ref = useRef<React.ElementRef<typeof Box>>(null);
+  const ref = useRef<ElementRef<typeof Box>>(null);
   const [isIntersected, setIsIntersected] = useState(false);
+  const isDraggingRef = useRef(false);
 
   useEffect(() => {
-    if (ref.current) {
-      const observer = new IntersectionObserver(
-        ([entry]) => setIsIntersected(entry.isIntersecting),
-        {
-          root: context.slideListRef.current,
-          threshold: 1.0,
-        }
-      );
-      observer.observe(ref.current);
-      return () => observer.disconnect();
-    }
+    const observer = new IntersectionObserver(([entry]) => setIsIntersected(entry.isIntersecting), {
+      root: context.slideListRef.current,
+      threshold: 1.0,
+    });
+    observer.observe(ref.current);
+    return () => observer.disconnect();
   }, [context.slideListRef]);
 
   return (
     <Comp
       {...slideProps}
       ref={ref}
-      css={{ scrollSnapAlign: 'start' }}
       data-slide-intersected={isIntersected}
+      onDragStart={(event) => {
+        event.preventDefault();
+        isDraggingRef.current = true;
+      }}
+      onClick={(event) => {
+        if (isDraggingRef.current) {
+          event.preventDefault();
+        }
+      }}
     />
   );
 };
