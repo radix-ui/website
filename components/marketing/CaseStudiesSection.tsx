@@ -36,7 +36,7 @@ export const CaseStudiesSection = () => {
           <Card variant="interactive" as="a" href="/case-studies/vercel">
             <Box css={{ p: '$5' }}>
               <Box css={{ mb: '$4' }}>
-                <AccessibleIcon label="Vercel homepage">
+                <AccessibleIcon label="Vercel case study">
                   <CaseStudyLogo variant="Vercel" />
                 </AccessibleIcon>
               </Box>
@@ -46,9 +46,13 @@ export const CaseStudiesSection = () => {
                 cover for product teams that wish to move quickly.
               </TestimonialText>
               <Flex align="center" gap="2">
-                <Avatar size="3" src="/marketing/avatar-rauno.jpg" aria-describedby="person1" />
+                <Avatar
+                  size="3"
+                  src="/marketing/avatar-rauno-freiberg.jpg"
+                  aria-describedby="person1"
+                />
                 <Text variant="gray" size="3" id="person1" css={{ lineHeight: 1.5 }}>
-                  Rauno Freiberg, Product Engineer at Vercel
+                  Rauno Freiberg, UI Engineer at Vercel
                 </Text>
               </Flex>
             </Box>
@@ -56,7 +60,7 @@ export const CaseStudiesSection = () => {
           <Card variant="interactive" as="a" href="/case-studies/codesandbox">
             <Box css={{ p: '$5' }}>
               <Box css={{ mb: '$4' }}>
-                <AccessibleIcon label="CodeSandbox homepage">
+                <AccessibleIcon label="CodeSandbox case study">
                   <CaseStudyLogo variant="CodeSandbox (Wide)" />
                 </AccessibleIcon>
               </Box>
@@ -66,9 +70,13 @@ export const CaseStudiesSection = () => {
                 researching appropriate ARIA techniques for our components.
               </TestimonialText>
               <Flex align="center" gap="2">
-                <Avatar size="3" src="/marketing/avatar-generic.jpg" aria-describedby="person2" />
+                <Avatar
+                  size="3"
+                  src="/marketing/avatar-scott-hutcheson.png"
+                  aria-describedby="person2"
+                />
                 <Text variant="gray" size="3" id="person2" css={{ lineHeight: 1.5 }}>
-                  Jane Doe, Development Lead at CodeSandbox
+                  Scott Hutcheson, Product Engineer at CodeSandbox
                 </Text>
               </Flex>
             </Box>
@@ -106,49 +114,73 @@ export const CaseStudiesSection = () => {
         }}
       >
         <Grid flow="column" align="center" justify="start" gap="6">
-          <NextLink href="/case-studies/graphcms" passHref>
+          {/* <NextLink href="/case-studies/graphcms" passHref>
             <LogoLink css={{ mb: -8 }}>
-              <AccessibleIcon label="GraphCMS homepage">
+              <AccessibleIcon label="GraphCMS case study">
                 <CaseStudyLogo variant="GraphCMS" width="129" />
               </AccessibleIcon>
             </LogoLink>
-          </NextLink>
+          </NextLink> */}
 
-          <NextLink href="/case-studies/livepeer" passHref>
+          {/* <NextLink href="/case-studies/livepeer" passHref>
             <LogoLink css={{ mb: -6 }}>
-              <AccessibleIcon label="Livepeer homepage">
+              <AccessibleIcon label="Livepeer case study">
                 <CaseStudyLogo variant="Livepeer" width="86" />
+              </AccessibleIcon>
+            </LogoLink>
+          </NextLink> */}
+
+          <NextLink href="/case-studies/acid-tango" passHref>
+            <LogoLink css={{ mb: -8 }}>
+              <AccessibleIcon label="Acid Tango case study">
+                <CaseStudyLogo variant="Acid Tango" width="165" />
               </AccessibleIcon>
             </LogoLink>
           </NextLink>
 
           <NextLink href="/case-studies/atom-learning" passHref>
             <LogoLink css={{ mb: 4 }}>
-              <AccessibleIcon label="Atom Learning homepage">
+              <AccessibleIcon label="Atom Learning case study">
                 <CaseStudyLogo variant="Atom Learning" width="86" />
               </AccessibleIcon>
             </LogoLink>
           </NextLink>
 
-          <NextLink href="/case-studies/placemark" passHref>
+          <NextLink href="/case-studies/basedash" passHref>
             <LogoLink css={{ mb: -2 }}>
-              <AccessibleIcon label="Placemark homepage">
+              <AccessibleIcon label="Basedash case study">
+                <CaseStudyLogo variant="Basedash" width="135" />
+              </AccessibleIcon>
+            </LogoLink>
+          </NextLink>
+
+          <NextLink href="/case-studies/basement-studio" passHref>
+            <LogoLink css={{ mb: -2 }}>
+              <AccessibleIcon label="Basement Studio case study">
+                <CaseStudyLogo variant="Basement Studio" width="120" />
+              </AccessibleIcon>
+            </LogoLink>
+          </NextLink>
+
+          {/* <NextLink href="/case-studies/placemark" passHref>
+            <LogoLink css={{ mb: -2 }}>
+              <AccessibleIcon label="Placemark case study">
                 <CaseStudyLogo variant="Placemark" width="121" />
               </AccessibleIcon>
             </LogoLink>
-          </NextLink>
+          </NextLink> */}
 
-          <NextLink href="/case-studies/supabase" passHref>
+          {/* <NextLink href="/case-studies/supabase" passHref>
             <LogoLink css={{ mb: -8 }}>
-              <AccessibleIcon label="Supabase homepage">
+              <AccessibleIcon label="Supabase case study">
                 <CaseStudyLogo variant="Supabase" width="140" />
               </AccessibleIcon>
             </LogoLink>
-          </NextLink>
+          </NextLink> */}
 
           <NextLink href="/case-studies/magnetis" passHref>
             <LogoLink css={{ mb: -12 }}>
-              <AccessibleIcon label="Magnetis homepage">
+              <AccessibleIcon label="Magnetis case study">
                 <CaseStudyLogo variant="Magnetis" width="111" />
               </AccessibleIcon>
             </LogoLink>
@@ -156,7 +188,7 @@ export const CaseStudiesSection = () => {
 
           <NextLink href="/case-studies/university-of-amsterdam" passHref>
             <LogoLink css={{ mt: 7 }}>
-              <AccessibleIcon label="University of Amsterdam homepage">
+              <AccessibleIcon label="University of Amsterdam case study">
                 <CaseStudyLogo variant="University of Amsterdam" width="152" />
               </AccessibleIcon>
             </LogoLink>

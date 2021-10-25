@@ -77,8 +77,8 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                 <Component components={components as any} />
               </MDXProvider>
               <Flex align="center" gap="2" css={{ mt: '$7' }}>
-                <Avatar size="5" src={frontmatter.authorAvatarUrl} aria-describedby="person2" />
-                <Box>
+                <Avatar size="5" src={frontmatter.authorAvatarUrl} aria-describedby="author" />
+                <Box id="author">
                   <Paragraph css={{ fontWeight: 500 }}>{frontmatter.author}</Paragraph>
                   <Paragraph>{frontmatter.authorPosition}</Paragraph>
                 </Box>
@@ -133,7 +133,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                     if (product === 'Primitives') {
                       return (
                         <Paragraph key={product}>
-                          <NextLink href="/primitives" passHref>
+                          <NextLink href="/" passHref>
                             <Link>Primitives</Link>
                           </NextLink>
                         </Paragraph>
