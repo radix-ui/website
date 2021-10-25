@@ -101,7 +101,7 @@ export default function RadioGroupDemo() {
             <StyledRadioIndicator />
           </StyledRadioButton>
           <Text size="2" css={{ fontVariantNumeric: 'normal' }}>
-            Radio Item 1
+            Indigo Blue
           </Text>
         </StyledRadio>
         <StyledRadio value="2">
@@ -109,7 +109,7 @@ export default function RadioGroupDemo() {
             <StyledRadioIndicator />
           </StyledRadioButton>
           <Text size="2" css={{ fontVariantNumeric: 'normal' }}>
-            Radio Item 2
+            Taupe Brown
           </Text>
         </StyledRadio>
         <StyledRadio value="3">
@@ -117,7 +117,7 @@ export default function RadioGroupDemo() {
             <StyledRadioIndicator />
           </StyledRadioButton>
           <Text size="2" css={{ fontVariantNumeric: 'normal' }}>
-            Radio Item 3
+            Slate Gray
           </Text>
         </StyledRadio>
       </RadioCardGroup>

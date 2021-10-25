@@ -48,6 +48,9 @@ const StyledTrigger = styled(TabsPrimitive.Trigger, {
   '&:hover': { bc: '$slate2' },
   '&[data-state="active"]': {
     bc: '$slate2',
+    [`.${darkTheme} &`]: {
+      bc: '$panel',
+    },
   },
   '&:focus': {
     position: 'relative',

@@ -47,7 +47,7 @@ const StyledItem = styled(AccordionPrimitive.Item, {
   '&:focus-within': {
     position: 'relative',
     zIndex: 1,
-    boxShadow: '0 0 0 2px $slate12',
+    boxShadow: '0 0 0 2px $colors$indigoA8',
   },
 });
 
@@ -70,8 +70,8 @@ const StyledTrigger = styled(AccordionPrimitive.Trigger, {
   lineHeight: 1,
   color: '$hiContrast',
   boxShadow: '0 1px 0 $colors$slate6',
-  '&[data-state="closed"]': { backgroundColor: 'white' },
-  '&[data-state="open"]': { backgroundColor: 'white' },
+  '&[data-state="closed"]': { backgroundColor: '$panel' },
+  '&[data-state="open"]': { backgroundColor: '$panel' },
   '@hover': {
     '&:hover': {
       backgroundColor: '$slate2',
@@ -85,6 +85,9 @@ const StyledContent = styled(AccordionPrimitive.Content, {
   color: '$slateA11',
   backgroundColor: '$slate2',
   lineHeight: 1.5,
+  [`.${darkTheme} &`]: {
+    backgroundColor: '$loContrast',
+  },
 
   '&[data-state="open"]': {
     animation: `${slideDown} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,

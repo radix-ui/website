@@ -63,16 +63,12 @@ type DemoStates = Record<string, 'loading' | 'ready'>;
 
 export const MainHero = () => {
   const [demoStates, setDemoStates] = React.useState<DemoStates>({
+    // We'll sync loading states for the first few iframes that might be in viewport
     dialog: 'loading',
     dropdown: 'loading',
     popover: 'loading',
     slider: 'loading',
     'scroll-area': 'loading',
-    // tabs: 'loading',
-    // accordion: 'loading',
-    // 'radio-group': 'loading',
-    // 'toggle-group': 'loading',
-    // switch: 'loading',
   });
 
   console.log(...Object.values(demoStates));

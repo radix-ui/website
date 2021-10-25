@@ -106,11 +106,11 @@ export default function ScrollAreaDemo() {
         <ScrollAreaViewport>
           <Box css={{ padding: '15px 20px' }}>
             <Text size="2" css={{ lineHeight: 1.5, fontWeight: 500 }}>
-              Scroll Area
+              Tags
             </Text>
             {TAGS.map((tag) => (
               <Text
-                size="2"
+                size="1"
                 css={{
                   lineHeight: 1.5,
                   marginTop: 10,

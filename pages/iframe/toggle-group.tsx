@@ -28,8 +28,8 @@ const StyledToggleGroup = styled(ToggleGroupPrimitive.Root, {
 
 const StyledItem = styled(ToggleGroupPrimitive.Item, {
   all: 'unset',
-  backgroundColor: 'white',
-  color: '$mauve11',
+  backgroundColor: '$loContrast',
+  color: '$slate11',
   height: 35,
   width: 35,
   display: 'flex',
@@ -40,8 +40,8 @@ const StyledItem = styled(ToggleGroupPrimitive.Item, {
   marginLeft: 1,
   '&:first-child': { marginLeft: 0, borderTopLeftRadius: '$2', borderBottomLeftRadius: '$2' },
   '&:last-child': { borderTopRightRadius: '$2', borderBottomRightRadius: '$2' },
-  '&:hover': { backgroundColor: '$mauve2' },
-  '&[data-state=on]': { backgroundColor: '$mauve3', color: '$mauve12' },
+  '&:hover': { backgroundColor: '$slate2' },
+  '&[data-state=on]': { backgroundColor: '$slate3', color: '$slate12' },
   '&:focus': {
     zIndex: 1,
     boxShadow: '0 0 0 2px $colors$indigo8',
