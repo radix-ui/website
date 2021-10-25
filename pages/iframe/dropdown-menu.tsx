@@ -60,7 +60,8 @@ const itemCss = {
     backgroundColor: '$slate3',
   },
 
-  ' &:focus': {
+  // &:active for touch devices
+  '&:focus, &:active': {
     outline: 0,
     backgroundColor: '$indigo9',
     color: 'white',
@@ -73,6 +74,7 @@ const DropdownMenuCheckboxItem = styled(DropdownMenuPrimitive.CheckboxItem, item
 
 export default function DropdownMenuDemo() {
   setGlobalStyles();
+  const refToFocus = React.useRef<HTMLDivElement>(null);
 
   // We prevent the initial auto focus because it's a demo rather than a real UI,
   // so the parent page focus is not stolen.
@@ -103,6 +105,8 @@ export default function DropdownMenuDemo() {
           </DemoButton>
         </DropdownMenuPrimitive.Trigger>
         <DropdownMenuContent
+          data-test
+          ref={refToFocus}
           sideOffset={5}
           onInteractOutside={(event) => event.preventDefault()}
           onOpenAutoFocus={(event) => {
@@ -111,6 +115,25 @@ export default function DropdownMenuDemo() {
             if (initialAutoFocusPrevented.current === false) {
               event.preventDefault();
               initialAutoFocusPrevented.current = true;
+            }
+
+            // Some Safari “love”.
+            // When focus is changed programmatically in an iframe, Safari may jerk parent page scroll position.
+            // This means there's a brutal scroll shift when interactive primitives focus stuff on open.
+            // This is purely a Safari bug that's not related to how primitives are implemented.
+            if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+              // Cancel default focus
+              event.preventDefault();
+
+              // Refocus the element manually, updating scroll.
+              // iOS Safari is unfixable, so we won't refocus the element for it.
+              if (navigator.maxTouchPoints === 0) {
+                const { scrollTop } = parent.document.documentElement;
+                setTimeout(() => {
+                  refToFocus.current?.focus();
+                  parent.document.documentElement.scrollTop = scrollTop;
+                });
+              }
             }
           }}
         >

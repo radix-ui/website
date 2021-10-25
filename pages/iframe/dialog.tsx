@@ -82,12 +82,6 @@ export default function DialogDemo() {
             there live the blind texts.
           </Text>
 
-          <DialogPrimitive.Close asChild>
-            <DemoIconButton>
-              <Cross2Icon />
-            </DemoIconButton>
-          </DialogPrimitive.Close>
-
           <Flex justify="end" gap="2">
             <DialogPrimitive.Close asChild>
               <DemoButton variant="gray">OK</DemoButton>
@@ -95,6 +89,12 @@ export default function DialogDemo() {
 
             <DialogPrimitive.Close asChild>
               <DemoButton variant="gray">Cancel</DemoButton>
+            </DialogPrimitive.Close>
+
+            <DialogPrimitive.Close asChild>
+              <DemoIconButton>
+                <Cross2Icon />
+              </DemoIconButton>
             </DialogPrimitive.Close>
           </Flex>
         </DialogContent>

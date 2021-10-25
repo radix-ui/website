@@ -67,28 +67,29 @@ export default function PopoverDemo() {
           onInteractOutside={(event) => event.preventDefault()}
           onOpenAutoFocus={(event) => {
             // We prevent the initial auto focus because it's a demo rather than a real UI,
-            // so the parent page focus is not stolen.
+            // so that the parent page focus is not stolen.
             if (initialAutoFocusPrevented.current === false) {
               event.preventDefault();
               initialAutoFocusPrevented.current = true;
             }
 
             // Some Safari “love”.
-            // When focus is changed programmatically in an iframe, Safari jerks parent page scroll position.
-            // This means there's a brutal scroll shift when interactive primitives focus stuff on open
+            // When focus is changed programmatically in an iframe, Safari may jerk parent page scroll position.
+            // This means there's a brutal scroll shift when interactive primitives focus stuff on open.
             // This is purely a Safari bug that's not related to how primitives are implemented.
             if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-              // Cancel input focus
+              // Cancel default focus
               event.preventDefault();
 
-              // Refocus the input manually, updating scroll.
-              // iPhone Safari is unfixable, so we won't refocus the input for it.
-              // No huge harm done because it's just a demo and the user doesn't really mean to
-              if (!navigator.userAgent.includes('iPhone')) {
+              // Refocus the element manually, updating scroll.
+              // iOS Safari is unfixable, so we won't refocus the element for it.
+              if (navigator.maxTouchPoints === 0) {
                 const { scrollTop } = parent.document.documentElement;
-                refToFocus.current?.focus();
-                refToFocus.current?.select();
-                parent.document.documentElement.scrollTop = scrollTop;
+                setTimeout(() => {
+                  refToFocus.current?.focus();
+                  refToFocus.current?.select();
+                  parent.document.documentElement.scrollTop = scrollTop;
+                });
               }
             }
           }}
