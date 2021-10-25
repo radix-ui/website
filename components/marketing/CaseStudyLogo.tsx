@@ -30,7 +30,6 @@ export const CaseStudyLogo = ({ variant, ...props }: CaseStudyLogoProps) => {
             stroke="white"
             strokeWidth="2px"
             fill="currentcolor"
-            fill-opacity="1"
           ></path>
           <g transform="translate(2.971138 .08012)">
             <path

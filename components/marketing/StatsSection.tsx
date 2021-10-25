@@ -33,6 +33,7 @@ export const StatsSection = () => {
     >
       <Box
         css={{
+          pointerEvents: 'none',
           position: 'absolute',
           bottom: -200,
           left: -200,
