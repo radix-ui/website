@@ -45,7 +45,7 @@ export const Carousel = (props) => {
     if (nextSlide) {
       const { scrollLeft, scrollWidth, clientWidth } = slideListRef.current;
       const itemWidth = nextSlide.clientWidth;
-      const nextPos = Math.floor(scrollLeft / itemWidth) * itemWidth + itemWidth;
+      const nextPos = Math.floor(scrollLeft / itemWidth) * itemWidth + itemWidth * 2;
       slideListRef.current.scrollTo({ left: nextPos, behavior: 'smooth' });
 
       // Disable previous & next buttons immediately
@@ -61,7 +61,7 @@ export const Carousel = (props) => {
     if (prevSlide) {
       const { scrollLeft, scrollWidth, clientWidth } = slideListRef.current;
       const itemWidth = prevSlide.clientWidth;
-      const nextPos = Math.ceil(scrollLeft / itemWidth) * itemWidth - itemWidth;
+      const nextPos = Math.ceil(scrollLeft / itemWidth) * itemWidth - itemWidth * 2;
       slideListRef.current.scrollTo({ left: nextPos, behavior: 'smooth' });
 
       // Disable previous & next buttons immediately
@@ -150,14 +150,7 @@ export const CarouselSlide = (props) => {
     }
   }, [context.slideListRef]);
 
-  return (
-    <Comp
-      {...slideProps}
-      ref={ref}
-      css={{ scrollSnapAlign: 'start' }}
-      data-slide-intersected={isIntersected}
-    />
-  );
+  return <Comp {...slideProps} ref={ref} data-slide-intersected={isIntersected} />;
 };
 
 export const CarouselNext = (props) => {
