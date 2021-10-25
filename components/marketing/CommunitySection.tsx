@@ -20,7 +20,7 @@ export const CommunitySection = () => {
             An active and friendly community 👋
           </MarketingCaption>
           <Heading as="h2" size="3" css={{ mb: '$4' }}>
-            Join the fast-growing community
+            Join our fast-growing community
           </Heading>
         </Box>
 
