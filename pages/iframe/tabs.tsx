@@ -17,10 +17,11 @@ const StyledTabs = styled(TabsPrimitive.Root, {
 const StyledList = styled(TabsPrimitive.List, {
   flexShrink: 0,
   display: 'flex',
-  borderBottom: `1px solid $slate6`,
 });
 
 const StyledTrigger = styled(TabsPrimitive.Trigger, {
+  $$sideShadow: '0 0',
+  $$bottomShadow: 'inset 0 -1px $colors$slate6',
   all: 'unset',
   backgroundColor: '$loContrast',
   padding: '0 20px',
@@ -31,26 +32,34 @@ const StyledTrigger = styled(TabsPrimitive.Trigger, {
   justifyContent: 'center',
   lineHeight: 1,
   userSelect: 'none',
-  '&:first-child': { borderTopLeftRadius: '$3' },
-  '&:last-child': { borderTopRightRadius: '$3' },
-  '& + &': {
-    borderLeft: '1px solid $slate6',
+  bc: '$slate2',
+  color: '$slate11',
+  boxShadow: '$$bottomShadow, $$sideShadow',
+  '&:hover': {
+    bc: '$slate1',
   },
-  '&:hover': { bc: '$slate2' },
   '&[data-state="active"]': {
-    bc: '$slate2',
-    [`.${darkTheme} &`]: {
-      bc: '$panel',
-    },
+    fontWeight: 500,
+    color: '$slate12',
+    bc: '$loContrast',
+    $$bottomShadow: '0 0',
   },
   '&:focus': {
-    position: 'relative',
+    zIndex: 1,
     boxShadow: `0 0 0 2px $colors$indigo8`,
-    borderColor: '$slate2',
   },
   '&:focus:not(:focus-visible)': {
-    boxShadow: 'none',
-    borderColor: '$slate6',
+    zIndex: 'auto',
+    boxShadow: '$$bottomShadow, $$sideShadow',
+  },
+  '& + &': {
+    $$sideShadow: '-1px 0 $colors$slate6',
+  },
+  '&:first-child': {
+    borderTopLeftRadius: '$3',
+  },
+  '&:last-child': {
+    borderTopRightRadius: '$3',
   },
 });
 
@@ -98,16 +107,17 @@ export default function TabsDemo() {
       <Tabs defaultValue="tab1">
         <TabsList aria-Text="Manage your account">
           <TabsTrigger value="tab1">
-            <Text size="2">Account</Text>
+            <Text size="2" css={{ color: 'inherit' }}>
+              Account
+            </Text>
           </TabsTrigger>
           <TabsTrigger value="tab2">
-            <Text size="2">Password</Text>
+            <Text size="2" css={{ color: 'inherit' }}>
+              Password
+            </Text>
           </TabsTrigger>
         </TabsList>
         <TabsContent value="tab1">
-          <Text size="2" css={{ lineHeight: 1.5, mb: '$3' }}>
-            Make changes to your account here. Click save when you’re done.
-          </Text>
           <Fieldset>
             <Text size="1" variant="gray" as="label" htmlFor="name" css={{ mb: '$1' }}>
               Name
@@ -125,9 +135,6 @@ export default function TabsDemo() {
           </Flex>
         </TabsContent>
         <TabsContent value="tab2">
-          <Text size="2" css={{ lineHeight: 1.5, mb: '$3' }}>
-            Change your password here. After saving, you’ll be logged out.
-          </Text>
           <Fieldset>
             <Text size="1" variant="gray" as="label" htmlFor="currentPassword" css={{ mb: '$1' }}>
               Current password
