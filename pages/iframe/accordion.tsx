@@ -131,8 +131,6 @@ const AccordionContent = React.forwardRef<
 ));
 
 export default function AccordionDemo() {
-  setGlobalStyles();
-
   // Let upstream document know that we are ready
   React.useEffect(() => {
     requestAnimationFrame(() => window.top.postMessage({ key: 'accordion' }, '*'));

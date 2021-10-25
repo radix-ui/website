@@ -3,15 +3,6 @@ import { Box, darkTheme, Flex, globalCss, styled, Text, TextField } from '@modul
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import { DemoButton } from '@components/marketing/DemoButton';
 
-const setGlobalStyles = globalCss({
-  body: {
-    bc: 'transparent',
-    [`.${darkTheme} &`]: {
-      bc: 'transparent',
-    },
-  },
-});
-
 const StyledTabs = styled(TabsPrimitive.Root, {
   display: 'flex',
   flexDirection: 'column',
@@ -89,8 +80,6 @@ const Fieldset = styled('fieldset', {
 });
 
 export default function TabsDemo() {
-  setGlobalStyles();
-
   // Let upstream document know that we are ready
   React.useEffect(() => {
     requestAnimationFrame(() => window.top.postMessage({ key: 'tabs' }, '*'));

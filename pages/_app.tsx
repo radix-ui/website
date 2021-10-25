@@ -9,6 +9,7 @@ import { PrimitivesPage } from '@components/PrimitivesPage';
 import { DesignSystemPage } from '@components/DesignSystemPage';
 import { ColorsPage } from '@components/ColorsPage';
 import { useAnalytics } from '@lib/analytics';
+import Head from 'next/head';
 
 const globalStyles = globalCss({
   '*, *::before, *::after': {
@@ -69,6 +70,13 @@ function App({ Component, pageProps }: AppProps) {
           value={{ light: 'light-theme', dark: darkTheme.className }}
           defaultTheme="system"
         >
+          <Head>
+            <style>{`
+              body, .${darkTheme.className} body {
+                background-color: transparent;
+              }
+            `}</style>
+          </Head>
           <Component {...pageProps} />
         </ThemeProvider>
       </DesignSystemProvider>

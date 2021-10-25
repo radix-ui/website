@@ -5,15 +5,6 @@ import { DemoButton } from '@components/marketing/DemoButton';
 import { DemoIconButton } from '@components/marketing/DemoIconButton';
 import { Cross2Icon } from '@radix-ui/react-icons';
 
-const setGlobalStyles = globalCss({
-  body: {
-    bc: 'transparent',
-    [`.${darkTheme} &`]: {
-      bc: 'transparent',
-    },
-  },
-});
-
 const DialogContent = styled(DialogPrimitive.Content, {
   position: 'fixed',
   top: '50%',
@@ -33,8 +24,6 @@ const DialogContent = styled(DialogPrimitive.Content, {
 });
 
 export default function DialogDemo() {
-  setGlobalStyles();
-
   // We prevent the initial auto focus because it's a demo rather than a real UI,
   // so the parent page focus is not stolen.
   const initialAutoFocusPrevented = React.useRef(false);

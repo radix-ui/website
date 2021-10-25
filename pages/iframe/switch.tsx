@@ -2,15 +2,6 @@ import React from 'react';
 import * as SwitchPrimitive from '@radix-ui/react-switch';
 import { darkTheme, Flex, globalCss, styled } from '@modulz/design-system';
 
-const setGlobalStyles = globalCss({
-  body: {
-    bc: 'transparent',
-    [`.${darkTheme} &`]: {
-      bc: 'transparent',
-    },
-  },
-});
-
 const StyledSwitch = styled(SwitchPrimitive.Root, {
   all: 'unset',
   width: 42,
@@ -51,8 +42,6 @@ const Switch = StyledSwitch;
 const SwitchThumb = StyledThumb;
 
 export default function SwitchDemo() {
-  setGlobalStyles();
-
   // Let upstream document know that we are ready
   React.useEffect(() => {
     requestAnimationFrame(() => window.top.postMessage({ key: 'switch' }, '*'));

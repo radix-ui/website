@@ -5,15 +5,6 @@ import { DemoButton } from '@components/marketing/DemoButton';
 import { DemoIconButton } from '@components/marketing/DemoIconButton';
 import { Cross2Icon } from '@radix-ui/react-icons';
 
-const setGlobalStyles = globalCss({
-  body: {
-    bc: 'transparent',
-    [`.${darkTheme} &`]: {
-      bc: 'transparent',
-    },
-  },
-});
-
 const PopoverContent = styled(PopoverPrimitive.Content, {
   position: 'relative',
   width: 200,
@@ -33,7 +24,6 @@ const PopoverArrow = styled(PopoverPrimitive.Arrow, {
 });
 
 export default function PopoverDemo() {
-  setGlobalStyles();
   const refToFocus = React.useRef<HTMLInputElement>(null);
 
   // We prevent the initial auto focus because it's a demo rather than a real UI,

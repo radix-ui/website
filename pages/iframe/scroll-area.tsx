@@ -1,15 +1,6 @@
 import React from 'react';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
-import { Text, Flex, styled, globalCss, darkTheme, keyframes, Box } from '@modulz/design-system';
-
-const setGlobalStyles = globalCss({
-  body: {
-    bc: 'transparent',
-    [`.${darkTheme} &`]: {
-      bc: 'transparent',
-    },
-  },
-});
+import { Text, Flex, styled, Box } from '@modulz/design-system';
 
 const SCROLLBAR_SIZE = 10;
 
@@ -85,8 +76,6 @@ const ScrollAreaCorner = StyledCorner;
 const TAGS = Array.from({ length: 50 }).map((_, i, a) => `v1.2.0-beta.${a.length - i}`);
 
 export default function ScrollAreaDemo() {
-  setGlobalStyles();
-
   // Let upstream document know that we are ready
   React.useEffect(() => {
     requestAnimationFrame(() => window.top.postMessage({ key: 'scroll-area' }, '*'));

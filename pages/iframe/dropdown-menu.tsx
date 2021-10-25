@@ -11,15 +11,6 @@ import {
 } from '@radix-ui/react-icons';
 import { DemoButton } from '@components/marketing/DemoButton';
 
-const setGlobalStyles = globalCss({
-  body: {
-    bc: 'transparent',
-    [`.${darkTheme} &`]: {
-      bc: 'transparent',
-    },
-  },
-});
-
 const DropdownMenuArrow = styled(DropdownMenuPrimitive.Arrow, {
   fill: '$loContrast',
 });
@@ -73,7 +64,6 @@ const DropdownMenuTriggerItem = styled(DropdownMenuPrimitive.TriggerItem, itemCs
 const DropdownMenuCheckboxItem = styled(DropdownMenuPrimitive.CheckboxItem, itemCss);
 
 export default function DropdownMenuDemo() {
-  setGlobalStyles();
   const refToFocus = React.useRef<HTMLDivElement>(null);
 
   // We prevent the initial auto focus because it's a demo rather than a real UI,

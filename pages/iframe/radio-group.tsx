@@ -1,16 +1,6 @@
 import React from 'react';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 import { Text, Flex, styled, globalCss, darkTheme, keyframes } from '@modulz/design-system';
-import { ChevronDownIcon } from '@radix-ui/react-icons';
-
-const setGlobalStyles = globalCss({
-  body: {
-    bc: 'transparent',
-    [`.${darkTheme} &`]: {
-      bc: 'transparent',
-    },
-  },
-});
 
 export const RadioCardGroup = styled(RadioGroupPrimitive.Root, {
   display: 'flex',
@@ -78,8 +68,6 @@ const StyledRadio = styled(RadioGroupPrimitive.Item, {
 });
 
 export default function RadioGroupDemo() {
-  setGlobalStyles();
-
   // Let upstream document know that we are ready
   React.useEffect(() => {
     requestAnimationFrame(() => window.top.postMessage({ key: 'radio-group' }, '*'));
