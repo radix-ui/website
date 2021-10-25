@@ -444,7 +444,6 @@ export const AccessibilitySection = () => {
           }}
         >
           <Grid
-            columns={{ '@bp1': 2, '@bp2': 3 }}
             css={{
               width: '100%',
               height: '100%',
@@ -457,12 +456,14 @@ export const AccessibilitySection = () => {
                 boxShadow: '0 1px $colors$grayA4',
               },
               '@bp1': {
+                gridTemplateColumns: 'repeat(2, 1fr)',
                 '& > *:nth-child(2)': {
                   boxShadow: '1px 0 $colors$grayA4',
                 },
               },
               '@bp2': {
                 gridTemplateRows: '270px',
+                gridTemplateColumns: 'repeat(3, 1fr)',
                 '& > *:nth-child(2)': {
                   boxShadow: '1px 0 $colors$grayA4, -1px 0 $colors$grayA4',
                 },
