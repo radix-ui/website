@@ -15,6 +15,7 @@ export const DemoIconButton = styled('button', {
   margin: 0,
   outline: 0,
   borderRadius: '$2',
+  color: '$hiContrast',
 
   // Make it larger than it looks
   border: '2px solid transparent',
