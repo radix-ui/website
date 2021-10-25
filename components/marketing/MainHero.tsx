@@ -178,9 +178,9 @@ export const MainHero = () => {
                   data-demo-iframe
                   src="/iframe/dialog"
                   css={{
-                    background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                    background: 'linear-gradient(120deg, $indigo6, $crimson5)',
                     [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(to bottom right, $indigo2, $plum3)',
+                      background: 'linear-gradient(120deg, $indigo4, $plum3)',
                     },
                   }}
                 />
@@ -202,9 +202,9 @@ export const MainHero = () => {
                   data-demo-iframe
                   src="/iframe/dropdown-menu"
                   css={{
-                    background: 'linear-gradient(to bottom right,  $crimson4, $blue5)',
+                    background: 'linear-gradient(120deg,  $crimson5, $blue5)',
                     [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(to bottom right,  $crimson3, $blue3)',
+                      background: 'linear-gradient(120deg,  $plum3, $blue3)',
                     },
                   }}
                 />
@@ -226,9 +226,9 @@ export const MainHero = () => {
                   data-demo-iframe
                   src="/iframe/popover"
                   css={{
-                    background: 'linear-gradient(to bottom right, $lime3, $cyan5)',
+                    background: 'linear-gradient(120deg, $blue5, $lime3)',
                     [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(to bottom right, $mint3, $sand2)',
+                      background: 'linear-gradient(120deg, $blue3, $sand6)',
                     },
                   }}
                 />
@@ -250,9 +250,9 @@ export const MainHero = () => {
                   data-demo-iframe
                   src="/iframe/slider"
                   css={{
-                    background: 'linear-gradient(120deg, $gray3, $sky4)',
+                    background: 'linear-gradient(120deg, $lime3, $pink4)',
                     [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(120deg, $mauve4, $sky4)',
+                      background: 'linear-gradient(120deg, $sand6, $pink3)',
                     },
                   }}
                 />
@@ -274,9 +274,9 @@ export const MainHero = () => {
                   tabIndex={-1}
                   src="/iframe/scroll-area"
                   css={{
-                    background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                    background: 'linear-gradient(120deg, $pink4, $gold5)',
                     [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                      background: 'linear-gradient(120deg, $pink3, $gold4)',
                     },
                   }}
                 />
@@ -298,9 +298,9 @@ export const MainHero = () => {
                   tabIndex={-1}
                   src="/iframe/tabs"
                   css={{
-                    background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                    background: 'linear-gradient(120deg, $gold5, $tomato5)',
                     [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                      background: 'linear-gradient(120deg, $gold4, $crimson4)',
                     },
                   }}
                 />
@@ -322,9 +322,9 @@ export const MainHero = () => {
                   tabIndex={-1}
                   src="/iframe/accordion"
                   css={{
-                    background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                    background: 'linear-gradient(120deg, $tomato5, $indigo7)',
                     [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                      background: 'linear-gradient(120deg, $crimson4, $indigo5)',
                     },
                   }}
                 />
@@ -346,9 +346,9 @@ export const MainHero = () => {
                   tabIndex={-1}
                   src="/iframe/radio-group"
                   css={{
-                    background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                    background: 'linear-gradient(120deg, $indigo7, $cyan4)',
                     [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                      background: 'linear-gradient(120deg, $indigo5, $cyan7)',
                     },
                   }}
                 />
@@ -370,9 +370,9 @@ export const MainHero = () => {
                   tabIndex={-1}
                   src="/iframe/toggle-group"
                   css={{
-                    background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                    background: 'linear-gradient(120deg, $cyan4, $mint5)',
                     [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                      background: 'linear-gradient(120deg, $cyan7, $mint6)',
                     },
                   }}
                 />
@@ -394,9 +394,9 @@ export const MainHero = () => {
                   tabIndex={-1}
                   src="/iframe/switch"
                   css={{
-                    background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                    background: 'linear-gradient(120deg, $mint5, $red3)',
                     [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(to bottom right, $indigo4, $violet5)',
+                      background: 'linear-gradient(120deg, $mint6, $plum4)',
                     },
                   }}
                 />
