@@ -76,7 +76,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
               <MDXProvider frontmatter={frontmatter}>
                 <Component components={components as any} />
               </MDXProvider>
-              <Flex align="center" gap="2" css={{ mt: '$7' }}>
+              <Flex align="center" gap="3" css={{ mt: '$7' }}>
                 <Avatar size="5" src={frontmatter.authorAvatarUrl} aria-describedby="author" />
                 <Box id="author">
                   <Paragraph css={{ fontWeight: 500 }}>{frontmatter.author}</Paragraph>

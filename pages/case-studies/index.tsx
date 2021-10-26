@@ -129,15 +129,15 @@ export default function CaseStudy() {
               </AccessibleIcon>
               </LogoLink>
             </NextLink> */}
-            {/* <NextLink href="/case-studies/supabase" passHref>
+            <NextLink href="/case-studies/supabase" passHref>
               <LogoLink variant="box">
-              <AccessibleIcon label="Supabase case study">
-              <Flex justify="center" css={{ height: '100%' }}>
-              <CaseStudyLogo variant="Supabase" />
-              </Flex>
-              </AccessibleIcon>
+                <AccessibleIcon label="Supabase case study">
+                  <Flex justify="center" css={{ height: '100%' }}>
+                    <CaseStudyLogo variant="Supabase" />
+                  </Flex>
+                </AccessibleIcon>
               </LogoLink>
-            </NextLink> */}
+            </NextLink>
             <NextLink href="/case-studies/university-of-amsterdam" passHref>
               <LogoLink variant="box">
                 <AccessibleIcon label="University of Amsterdam case study">
