@@ -292,20 +292,25 @@ export const AccessibilitySection = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         // Intersection flag is disabled once less than 10% of the container is visible in the viewport,
-        // and enabled once more than 90% of the container is visible in the viewport.
-        const newIsIntersecting = entry.intersectionRatio > (intersectingRef.current ? 0.1 : 0.9);
+        // and enabled once more than 90% of the container is visible in the viewport. Alternatively,
+        // it's considered intersecting if the container takes up at least 70% of the viewport height.
+        const almostCoversViewport = entry.intersectionRect.height / entry.rootBounds.height > 0.7;
+        const newIsIntersecting =
+          entry.intersectionRatio > (intersectingRef.current ? 0.1 : 0.9) || almostCoversViewport;
 
-        if (newIsIntersecting === false) {
-          iterationRef.current = 0;
-          keyframeRef.current = 0;
-          clearTimeout(timeoutRef.current);
-          setKeyframe(0);
+        if (newIsIntersecting !== intersectingRef.current) {
+          if (newIsIntersecting === false) {
+            iterationRef.current = 0;
+            keyframeRef.current = 0;
+            clearTimeout(timeoutRef.current);
+            setKeyframe(0);
+          }
+
+          intersectingRef.current = newIsIntersecting;
+          setIsIntersecting(newIsIntersecting);
         }
-
-        intersectingRef.current = newIsIntersecting;
-        setIsIntersecting(newIsIntersecting);
       },
-      { threshold: [0.1, 0.9] }
+      { threshold: [0.1, 0.3, 0.5, 0.7, 0.9] }
     );
 
     if (containerRef.current) {
@@ -316,6 +321,8 @@ export const AccessibilitySection = () => {
   }, []);
 
   React.useEffect(() => {
+    clearTimeout(timeoutRef.current);
+
     const updateKeyframe = () => {
       // Increment keyframe counter, or loop from 1st when last keyframe is reached
       keyframeRef.current =
@@ -326,6 +333,7 @@ export const AccessibilitySection = () => {
         iterationRef.current++;
       }
 
+      clearTimeout(timeoutRef.current);
       setKeyframe(keyframeRef.current);
 
       // If visible in the viewport request animation frame when next keyframe is due
@@ -425,7 +433,7 @@ export const AccessibilitySection = () => {
         <Box css={{ mb: '$5' }}>
           <MarketingCaption css={{ mb: '$1' }}>Supports assistive technology</MarketingCaption>
           <Heading as="h2" size="3">
-            Accessibility out of the box
+            Accessibility out of the box
           </Heading>
         </Box>
 
@@ -499,7 +507,7 @@ export const AccessibilitySection = () => {
                 },
               }}
             >
-              <Flex direction="column" align="start" css={{ mb: '$1' }}>
+              <Flex direction="column" align="start">
                 <AnimationStateButton
                   active={currentSequence === 'screenReader'}
                   onClick={() => updateSequence('screenReader')}
@@ -1410,7 +1418,7 @@ const AnimationStateButton = styled('button', {
         cursor: 'default',
       },
       false: {
-        color: '$sage9',
+        color: '$slate9',
         '@hover': {
           '&:hover': {
             color: '$hiContrast',
