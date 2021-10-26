@@ -42,8 +42,8 @@ export const AdoptionSection = () => {
             <Paragraph>
               Primitives have been designed for incremental adoption. Each is its own package that’s
               independently versioned, so new components can be added alongside your existing code.
-              No need to disrupt feature work with a huge rewrite – you can start small and add more
-              primitives one by one.
+              No need to disrupt feature work with a huge rewrite{'\u2060'}—you can start small and
+              add more primitives one by one.
             </Paragraph>
           </Box>
 
