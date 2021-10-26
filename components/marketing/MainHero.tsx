@@ -72,7 +72,7 @@ export const MainHero = () => {
   const isRoving = React.useRef(false);
 
   const onDemoFocus = React.useCallback((event: React.FocusEvent<HTMLDivElement>) => {
-    if (isRoving.current === false) {
+    if (isRoving.current === false && event.target === event.currentTarget) {
       lastFocusedDemo.current?.focus();
     }
   }, []);
@@ -80,57 +80,72 @@ export const MainHero = () => {
   const onDemoKeyDown = React.useCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     const demo = '[data-demo-wrapper]';
 
-    // Simple roving tab index
-    if (event.key === 'ArrowRight') {
-      event.preventDefault();
-      const allDemos = Array.from(document.querySelectorAll<HTMLDivElement>(demo));
-      const thisIndex = allDemos.findIndex((el) => el === event.currentTarget);
-      const nextIndex = thisIndex + 1 < allDemos.length ? thisIndex + 1 : 0;
-      const nextDemo = allDemos[nextIndex];
-      isRoving.current = true;
-      nextDemo.focus();
-      lastFocusedDemo.current = nextDemo;
-      isRoving.current = false;
-    }
+    if (event.target === event.currentTarget) {
+      // Simple roving tab index
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        const allDemos = Array.from(document.querySelectorAll<HTMLDivElement>(demo));
+        const thisIndex = allDemos.findIndex((el) => el === event.currentTarget);
+        const nextIndex = thisIndex + 1 < allDemos.length ? thisIndex + 1 : 0;
+        const nextDemo = allDemos[nextIndex];
+        isRoving.current = true;
+        nextDemo.focus();
+        lastFocusedDemo.current = nextDemo;
+        isRoving.current = false;
+      }
 
-    if (event.key === 'ArrowLeft') {
-      event.preventDefault();
-      const allDemos = Array.from(document.querySelectorAll<HTMLDivElement>(demo));
-      const thisIndex = allDemos.findIndex((el) => el === event.currentTarget);
-      const prevIndex = thisIndex - 1 >= 0 ? thisIndex - 1 : allDemos.length - 1;
-      const prevDemo = allDemos[prevIndex];
-      isRoving.current = true;
-      prevDemo.focus();
-      lastFocusedDemo.current = prevDemo;
-      isRoving.current = false;
-    }
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        const allDemos = Array.from(document.querySelectorAll<HTMLDivElement>(demo));
+        const thisIndex = allDemos.findIndex((el) => el === event.currentTarget);
+        const prevIndex = thisIndex - 1 >= 0 ? thisIndex - 1 : allDemos.length - 1;
+        const prevDemo = allDemos[prevIndex];
+        isRoving.current = true;
+        prevDemo.focus();
+        lastFocusedDemo.current = prevDemo;
+        isRoving.current = false;
+      }
 
-    if (event.key === 'Tab' && event.shiftKey === false) {
-      event.preventDefault();
-      const selector =
-        'input:not([tabindex="-1"]), a:not([tabindex="-1"]), button:not([tabindex="-1"]), [data-demo-wrapper]';
-      let tabbable = Array.from(document.querySelectorAll<HTMLElement>(selector));
-      // Remove elements inside demos from our list
-      tabbable = tabbable.filter((el) => el.matches(demo) || el.closest(demo) === null);
-      tabbable.reverse();
-      const lastDemo = tabbable.find((el) => el.matches(demo));
-      tabbable.reverse();
-      const lastDemoIndex = tabbable.findIndex((el) => el === lastDemo);
-      const nextElement = tabbable[lastDemoIndex + 1];
-      nextElement?.focus();
-    }
+      if (event.key === 'Tab' && event.shiftKey === false) {
+        event.preventDefault();
+        const selector =
+          'input:not([tabindex="-1"]), a:not([tabindex="-1"]), button:not([tabindex="-1"]), [data-demo-wrapper]';
+        let tabbable = Array.from(document.querySelectorAll<HTMLElement>(selector));
+        // Remove elements inside demos from our list
+        tabbable = tabbable.filter((el) => el.matches(demo) || el.closest(demo) === null);
+        tabbable.reverse();
+        const lastDemo = tabbable.find((el) => el.matches(demo));
+        tabbable.reverse();
+        const lastDemoIndex = tabbable.findIndex((el) => el === lastDemo);
+        const nextElement = tabbable[lastDemoIndex + 1];
+        nextElement?.focus();
+      }
 
-    if (event.key === 'Tab' && event.shiftKey) {
-      event.preventDefault();
-      const selector =
-        'input:not([tabindex="-1"]), a:not([tabindex="-1"]), button:not([tabindex="-1"]), [data-demo-wrapper]';
-      let tabbable = Array.from(document.querySelectorAll<HTMLElement>(selector));
-      // Remove elements inside demos from our list
-      tabbable = tabbable.filter((el) => el.matches(demo) || el.closest(demo) === null);
-      const firstDemo = tabbable.find((el) => el.matches(demo));
-      const firstDemoIndex = tabbable.findIndex((el) => el === firstDemo);
-      const prevElement = tabbable[firstDemoIndex - 1];
-      prevElement?.focus();
+      if (event.key === 'Tab' && event.shiftKey) {
+        event.preventDefault();
+        const selector =
+          'input:not([tabindex="-1"]), a:not([tabindex="-1"]), button:not([tabindex="-1"]), [data-demo-wrapper]';
+        let tabbable = Array.from(document.querySelectorAll<HTMLElement>(selector));
+        // Remove elements inside demos from our list
+        tabbable = tabbable.filter((el) => el.matches(demo) || el.closest(demo) === null);
+        const firstDemo = tabbable.find((el) => el.matches(demo));
+        const firstDemoIndex = tabbable.findIndex((el) => el === firstDemo);
+        const prevElement = tabbable[firstDemoIndex - 1];
+        prevElement?.focus();
+      }
+
+      if (event.key === 'Enter') {
+        const tier1 =
+          '[role="menu"], [role="dialog"] input, [role="dialog"] button, [tabindex="0"]';
+        const tier2 = 'button, input, a';
+        const elementToFocus = event.currentTarget.querySelector<HTMLElement>(tier1);
+
+        if (elementToFocus) {
+          elementToFocus.focus();
+        } else {
+          event.currentTarget.querySelector<HTMLElement>(tier2)?.focus();
+        }
+      }
     }
   }, []);
 
