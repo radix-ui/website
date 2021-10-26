@@ -432,12 +432,18 @@ export const AccessibilitySection = () => {
         <Box
           ref={containerRef}
           css={{
-            br: '$4',
             bc: '$mauveA3',
             mb: '$5',
             boxShadow: '0 0 1px $colors$slateA9',
             backdropFilter: 'blur(8px)',
-            p: '$3',
+
+            // Horizontal spacing is really tight on iPhone SE
+            p: 1,
+            br: '$3',
+            '@media (min-width: 365px)': {
+              p: '$3',
+              br: '$4',
+            },
             '@bp1': {
               p: '$5',
             },
@@ -455,15 +461,15 @@ export const AccessibilitySection = () => {
               '& > *:nth-child(2)': {
                 boxShadow: '0 1px $colors$grayA4',
               },
-              '@bp1': {
-                gridTemplateColumns: 'repeat(2, 1fr)',
+              '@media (min-width: 620px)': {
+                gridTemplateColumns: 'repeat(2, minmax(min-content, 1fr))',
                 '& > *:nth-child(2)': {
                   boxShadow: '1px 0 $colors$grayA4',
                 },
               },
               '@bp2': {
                 gridTemplateRows: '270px',
-                gridTemplateColumns: 'repeat(3, 1fr)',
+                gridTemplateColumns: 'repeat(3, minmax(min-content, 1fr))',
                 '& > *:nth-child(2)': {
                   boxShadow: '1px 0 $colors$grayA4, -1px 0 $colors$grayA4',
                 },
@@ -524,15 +530,19 @@ export const AccessibilitySection = () => {
             {(currentSequence === 'typeahead' ||
               currentSequence === 'keyboardNavigation' ||
               currentSequence === 'rtl') && (
-              <Grid css={{ overflow: 'hidden', p: '$3', bc: '$$subpanel' }}>
-                <Flex align="center" gap="1" css={{ color: '$slate11', position: 'relative' }}>
+              <Grid css={{ overflow: 'hidden', py: '$3', bc: '$$subpanel' }}>
+                <Flex
+                  align="center"
+                  gap="1"
+                  css={{ color: '$slate11', px: '$3', position: 'relative' }}
+                >
                   <Text variant="gray" size="2">
                     Keyboard input
                   </Text>
                   <KeyboardIcon />
 
                   {currentSequence === 'typeahead' && (
-                    <MockTypeaheadOutput css={{ position: 'absolute', top: -4, right: 0 }}>
+                    <MockTypeaheadOutput css={{ position: 'absolute', top: -4, right: '$3' }}>
                       {animations[currentSequence][keyframe]?.typeahead}
                     </MockTypeaheadOutput>
                   )}
@@ -554,7 +564,7 @@ export const AccessibilitySection = () => {
                   </Flex>
                 )}
                 {currentSequence === 'typeahead' && (
-                  <Flex align="center" justify="center">
+                  <Flex align="center" justify="center" css={{ '@bp1': { px: '$3' } }}>
                     <MockQwertyKeyboard
                       key={keyframe}
                       currentKey={
@@ -567,14 +577,18 @@ export const AccessibilitySection = () => {
             )}
 
             {currentSequence === 'screenReader' && (
-              <Grid css={{ p: '$3', bc: '$$subpanel' }}>
-                <Flex align="center" gap="1" css={{ color: '$slate11' }}>
+              <Grid css={{ py: '$3', bc: '$$subpanel' }}>
+                <Flex align="center" gap="1" css={{ color: '$slate11', px: '$3' }}>
                   <Text variant="gray" size="2">
                     Screen reader
                   </Text>
                   <AccessibilityIcon />
                 </Flex>
-                <Flex direction="column" justify="between" css={{ pt: '$3', minHeight: 180 }}>
+                <Flex
+                  direction="column"
+                  justify="between"
+                  css={{ pt: '$3', px: '$3', minHeight: 180 }}
+                >
                   <MockScreenReader>
                     <ScreenReaderOutput
                       dropdownState={animations[currentSequence][keyframe]?.dropdown}
@@ -585,14 +599,14 @@ export const AccessibilitySection = () => {
               </Grid>
             )}
 
-            <Grid css={{ p: '$3', bc: '$$subpanel' }}>
-              <Flex align="center" gap="1" css={{ color: '$slate11' }}>
+            <Grid css={{ py: '$3', bc: '$$subpanel' }}>
+              <Flex align="center" gap="1" css={{ color: '$slate11', px: '$3' }}>
                 <Text variant="gray" size="2">
                   Radix component
                 </Text>
                 <CodeIcon />
               </Flex>
-              <Flex align="center" justify="center">
+              <Flex align="center" justify="center" css={{ px: '$3' }}>
                 {currentSequence !== 'rtl' && (
                   <MockDropdown state={animations[currentSequence][keyframe]?.dropdown} />
                 )}
@@ -998,7 +1012,7 @@ const Key = styled('span', {
     },
     size: {
       1: {
-        width: 22,
+        width: 21,
         height: 32,
         br: '$1',
         lineHeight: '30px',
@@ -1373,32 +1387,30 @@ const AnimationStateButton = styled('button', {
   fontWeight: 500,
   lineHeight: 1,
   letterSpacing: '-0.015em',
-  height: 30,
-  px: '$1',
+  height: '$6',
+  px: '$2',
   position: 'relative',
-  cursor: 'pointer',
-  br: '$1',
+  br: '$2',
+  $$outline: '0 0',
 
   '&:focus': {
-    boxShadow: '0 0 0 2px $colors$slate8',
+    boxShadow: '0 0 0 2px $colors$cyan8',
   },
   '&:focus:not(:focus-visible)': {
-    boxShadow: 'none',
+    boxShadow: '$$outline',
   },
 
   variants: {
     active: {
       true: {
+        $$outline: 'inset 0 0 0 1px $colors$cyan6',
+        boxShadow: '$$outline',
         color: '$hiContrast',
-        '&::before': {
-          content: '▶',
-          position: 'absolute',
-          fontSize: '80%',
-          left: '-0.9em',
-        },
+        backgroundColor: '$cyanA4',
+        cursor: 'default',
       },
       false: {
-        color: '$slate9',
+        color: '$sage9',
         '@hover': {
           '&:hover': {
             color: '$hiContrast',
