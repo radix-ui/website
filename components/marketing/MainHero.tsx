@@ -28,8 +28,9 @@ import { MainHeroAccordion } from './MainHeroAccordion';
 import { MainHeroRadioGroup } from './MainHeroRadioGroup';
 import { MainHeroToggleGroup } from './MainHeroToggleGroup';
 import { MainHeroSwitch } from './MainHeroSwitch';
+import { useComposedRefs } from '@radix-ui/react-compose-refs';
 
-const DemoWrapper = styled('div', {
+const StyledDemoWrapper = styled('div', {
   display: 'flex',
   position: 'relative',
   ai: 'center',
@@ -46,19 +47,93 @@ const DemoWrapper = styled('div', {
     width: 400,
   },
 
-  variants: {
-    visible: {
-      true: {
-        opacity: 1,
-      },
-      false: {
-        opacity: 0,
-      },
-    },
+  outline: 0,
+  '&:focus': {
+    boxShadow: '0 0 0 2px $colors$blue8',
+  },
+
+  '&:focus:not(:focus-visible)': {
+    boxShadow: 'none',
   },
 });
 
+const DemoWrapper = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<typeof StyledDemoWrapper>
+>((props, forwardedRef) => {
+  const ownRef = React.useRef<HTMLDivElement>(null);
+  const composedRef = useComposedRefs(ownRef, forwardedRef);
+
+  return <StyledDemoWrapper {...props} data-demo-wrapper ref={composedRef} tabIndex={0} />;
+});
+
 export const MainHero = () => {
+  const lastFocusedDemo = React.useRef<HTMLDivElement>(null);
+  const isRoving = React.useRef(false);
+
+  const onDemoFocus = React.useCallback((event: React.FocusEvent<HTMLDivElement>) => {
+    if (isRoving.current === false) {
+      lastFocusedDemo.current?.focus();
+    }
+  }, []);
+
+  const onDemoKeyDown = React.useCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
+    const demo = '[data-demo-wrapper]';
+
+    // Simple roving tab index
+    if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      const allDemos = Array.from(document.querySelectorAll<HTMLDivElement>(demo));
+      const thisIndex = allDemos.findIndex((el) => el === event.currentTarget);
+      const nextIndex = thisIndex + 1 < allDemos.length ? thisIndex + 1 : 0;
+      const nextDemo = allDemos[nextIndex];
+      isRoving.current = true;
+      nextDemo.focus();
+      lastFocusedDemo.current = nextDemo;
+      isRoving.current = false;
+    }
+
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      const allDemos = Array.from(document.querySelectorAll<HTMLDivElement>(demo));
+      const thisIndex = allDemos.findIndex((el) => el === event.currentTarget);
+      const prevIndex = thisIndex - 1 >= 0 ? thisIndex - 1 : allDemos.length - 1;
+      const prevDemo = allDemos[prevIndex];
+      isRoving.current = true;
+      prevDemo.focus();
+      lastFocusedDemo.current = prevDemo;
+      isRoving.current = false;
+    }
+
+    if (event.key === 'Tab' && event.shiftKey === false) {
+      event.preventDefault();
+      const selector =
+        'input:not([tabindex="-1"]), a:not([tabindex="-1"]), button:not([tabindex="-1"]), [data-demo-wrapper]';
+      let tabbable = Array.from(document.querySelectorAll<HTMLElement>(selector));
+      // Remove elements inside demos from our list
+      tabbable = tabbable.filter((el) => el.matches(demo) || el.closest(demo) === null);
+      tabbable.reverse();
+      const lastDemo = tabbable.find((el) => el.matches(demo));
+      tabbable.reverse();
+      const lastDemoIndex = tabbable.findIndex((el) => el === lastDemo);
+      const nextElement = tabbable[lastDemoIndex + 1];
+      nextElement?.focus();
+    }
+
+    if (event.key === 'Tab' && event.shiftKey) {
+      event.preventDefault();
+      const selector =
+        'input:not([tabindex="-1"]), a:not([tabindex="-1"]), button:not([tabindex="-1"]), [data-demo-wrapper]';
+      let tabbable = Array.from(document.querySelectorAll<HTMLElement>(selector));
+      // Remove elements inside demos from our list
+      tabbable = tabbable.filter((el) => el.matches(demo) || el.closest(demo) === null);
+      const firstDemo = tabbable.find((el) => el.matches(demo));
+      const firstDemoIndex = tabbable.findIndex((el) => el === firstDemo);
+      const prevElement = tabbable[firstDemoIndex - 1];
+      prevElement?.focus();
+    }
+  }, []);
+
   return (
     <Section
       css={{
@@ -145,7 +220,8 @@ export const MainHero = () => {
           >
             {/* <CarouselSlide>
               <DemoWrapper
-                tabIndex={-1}
+              onKeyDown={onDemoKeyDown}
+              onFocus={onDemoFocus}
                 css={{
                   background: 'linear-gradient(120deg, $indigo6, $crimson5)',
                   [`.${darkTheme} &`]: {
@@ -166,7 +242,8 @@ export const MainHero = () => {
 
             <CarouselSlide>
               <DemoWrapper
-                tabIndex={-1}
+                onKeyDown={onDemoKeyDown}
+                onFocus={onDemoFocus}
                 css={{
                   background: 'linear-gradient(120deg,  $crimson5, $blue5)',
                   [`.${darkTheme} &`]: {
@@ -187,7 +264,8 @@ export const MainHero = () => {
 
             <CarouselSlide>
               <DemoWrapper
-                tabIndex={-1}
+                onKeyDown={onDemoKeyDown}
+                onFocus={onDemoFocus}
                 css={{
                   background: 'linear-gradient(120deg, $blue5, $lime3)',
                   [`.${darkTheme} &`]: {
@@ -208,7 +286,8 @@ export const MainHero = () => {
 
             <CarouselSlide>
               <DemoWrapper
-                tabIndex={-1}
+                onKeyDown={onDemoKeyDown}
+                onFocus={onDemoFocus}
                 css={{
                   background: 'linear-gradient(120deg, $lime3, $pink4)',
                   [`.${darkTheme} &`]: {
@@ -229,6 +308,8 @@ export const MainHero = () => {
 
             <CarouselSlide>
               <DemoWrapper
+                onKeyDown={onDemoKeyDown}
+                onFocus={onDemoFocus}
                 css={{
                   background: 'linear-gradient(120deg, $pink4, $gold5)',
                   [`.${darkTheme} &`]: {
@@ -249,6 +330,8 @@ export const MainHero = () => {
 
             <CarouselSlide>
               <DemoWrapper
+                onKeyDown={onDemoKeyDown}
+                onFocus={onDemoFocus}
                 css={{
                   background: 'linear-gradient(120deg, $gold5, $tomato5)',
                   [`.${darkTheme} &`]: {
@@ -269,6 +352,8 @@ export const MainHero = () => {
 
             <CarouselSlide>
               <DemoWrapper
+                onKeyDown={onDemoKeyDown}
+                onFocus={onDemoFocus}
                 css={{
                   background: 'linear-gradient(120deg, $tomato5, $indigo7)',
                   [`.${darkTheme} &`]: {
@@ -289,6 +374,8 @@ export const MainHero = () => {
 
             <CarouselSlide>
               <DemoWrapper
+                onKeyDown={onDemoKeyDown}
+                onFocus={onDemoFocus}
                 css={{
                   background: 'linear-gradient(120deg, $indigo7, $cyan4)',
                   [`.${darkTheme} &`]: {
@@ -309,6 +396,8 @@ export const MainHero = () => {
 
             <CarouselSlide>
               <DemoWrapper
+                onKeyDown={onDemoKeyDown}
+                onFocus={onDemoFocus}
                 css={{
                   background: 'linear-gradient(120deg, $cyan4, $mint5)',
                   [`.${darkTheme} &`]: {
@@ -329,6 +418,8 @@ export const MainHero = () => {
 
             <CarouselSlide>
               <DemoWrapper
+                onKeyDown={onDemoKeyDown}
+                onFocus={onDemoFocus}
                 css={{
                   background: 'linear-gradient(120deg, $mint5, $red3)',
                   [`.${darkTheme} &`]: {
@@ -354,7 +445,7 @@ export const MainHero = () => {
               left: '15px',
             }}
           >
-            <CarouselPrevious as={CarouselArrowButton}>
+            <CarouselPrevious tabIndex={-1} as={CarouselArrowButton}>
               <ArrowLeftIcon />
             </CarouselPrevious>
           </Box>
@@ -365,7 +456,7 @@ export const MainHero = () => {
               right: '15px',
             }}
           >
-            <CarouselNext as={CarouselArrowButton}>
+            <CarouselNext tabIndex={-1} as={CarouselArrowButton}>
               <ArrowRightIcon />
             </CarouselNext>
           </Box>
