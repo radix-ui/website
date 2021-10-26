@@ -135,9 +135,13 @@ export const ComponentHighlightsSection = () => {
           }}
         >
           <MarketingCaption css={{ mb: '$1' }}>Case in point</MarketingCaption>
-          <DropdownMenuPrimitive.Root>
+          <Heading as="h2" size="3" css={{ mb: '$3' }}>
+            So, you think you can <span style={{ whiteSpace: 'nowrap' }}>build a dropdown?</span>
+          </Heading>
+
+          {/* <DropdownMenuPrimitive.Root>
             <Heading as="h2" size="3" css={{ mb: '$3' }}>
-              So you think you can{' '}
+              So, you think you can{' '}
               <span style={{ whiteSpace: 'nowrap' }}>
                 build a{' '}
                 <InlineDropdownTrigger>
@@ -162,53 +166,42 @@ export const ComponentHighlightsSection = () => {
                 <InlineDropdownRadioItem value="tooltip">tooltip</InlineDropdownRadioItem>
               </DropdownMenuPrimitive.RadioGroup>
             </InlineDropdownContent>
-          </DropdownMenuPrimitive.Root>
+          </DropdownMenuPrimitive.Root> */}
 
           <Box css={{ maxWidth: 480 }}>
             {component === 'dropdown' && (
               <Paragraph>
-                Here’s ours. 1,000 hours, 6 months, 4 code reviews, and about a million PR comments.
-                We agonise over API design, performance and accessibility so you don't need to.
+                We agonise over API design, performance, and accessibility so you don't need to.
               </Paragraph>
             )}
             {component === 'dialog' && (
               <Paragraph>
-                Here’s ours. 2,000 hours, 7 months, 5 code reviews, and about a million PR comments.
-                We agonise over API design, performance and accessibility so you don't need to.
+                We agonise over API design, performance, and accessibility so you don't need to.
               </Paragraph>
             )}
             {component === 'popover' && (
               <Paragraph>
-                Here’s ours. 4,000 hours, 9 months, 7 code reviews, and about a million PR comments.
-                We agonise over API design, performance and accessibility so you don't need to.
+                We agonise over API design, performance, and accessibility so you don't need to.
               </Paragraph>
             )}
             {component === 'slider' && (
               <Paragraph>
-                Here’s ours. 5,000 hours, 10 months, 8 code reviews, and about a million PR
-                comments. We agonise over API design, performance and accessibility so you don't
-                need to.
+                We agonise over API design, performance, and accessibility so you don't need to.
               </Paragraph>
             )}
             {component === 'scroll area' && (
               <Paragraph>
-                Here’s ours. 6,000 hours, 11 months, 9 code reviews, and about a million PR
-                comments. We agonise over API design, performance and accessibility so you don't
-                need to.
+                We agonise over API design, performance, and accessibility so you don't need to.
               </Paragraph>
             )}
             {component === 'hover card' && (
               <Paragraph>
-                Here’s ours. 7,000 hours, 12 months, 10 code reviews, and about a million PR
-                comments. We agonise over API design, performance and accessibility so you don't
-                need to.
+                We agonise over API design, performance, and accessibility so you don't need to.
               </Paragraph>
             )}
             {component === 'tooltip' && (
               <Paragraph>
-                Here’s ours. 8,000 hours, 13 months, 11 code reviews, and about a million PR
-                comments. We agonise over API design, performance and accessibility so you don't
-                need to.
+                We agonise over API design, performance, and accessibility so you don't need to.
               </Paragraph>
             )}
           </Box>
