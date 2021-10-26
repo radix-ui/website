@@ -25,7 +25,9 @@ export const BenefitsSection = () => {
         <Box css={{ mb: '$7' }}>
           <MarketingCaption css={{ mb: '$1' }}>Why Radix Primitives</MarketingCaption>
           <Heading as="h2" size="3">
-            Take the pain out of UI work
+            Spend less time on
+            <br />
+            undifferentiated work
           </Heading>
         </Box>
 
@@ -40,9 +42,9 @@ export const BenefitsSection = () => {
             </Text>
             <Paragraph css={{ mb: '$5' }}>
               It takes a <em style={{ fontFamily: 'Georgia, serif' }}>lot</em> of time to develop
-              and maintain robust UI components. From the ground up, we created Radix Primitives for
-              building high quality products, so that you can save time and money, and ship a better
-              product faster.
+              and maintain robust UI components, and it's mostly undifferentiated work. Building on
+              top of Radix components will save you time and money, so you can ship a better product
+              faster.
             </Paragraph>
           </Box>
 
@@ -55,9 +57,9 @@ export const BenefitsSection = () => {
               Focus on your product
             </Text>
             <Paragraph css={{ mb: '$5' }}>
-              It’s no secret that proper UI components are incredibly tricky to build. So if you can
-              actually build an excellent component library, is this the best use of your team’s
-              time? With Radix, you can focus on your unique engineering challenges instead.
+              It’s no secret that robust UI components are tricky to build. Nailing accessibility
+              details and complex logic sucks time away from product feature development. With
+              Radix, you can focus on your unique engineering challenges instead.
             </Paragraph>
           </Box>
         </Grid>

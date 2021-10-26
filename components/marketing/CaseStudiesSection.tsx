@@ -65,9 +65,9 @@ export const CaseStudiesSection = () => {
                 </AccessibleIcon>
               </Box>
               <TestimonialText css={{ mb: '$4' }}>
-                Radix has significantly improved the A11Y standard in our components. We spend far
-                less time discussing and implementing keyboard navigation, focus traps, and
-                researching appropriate ARIA techniques for our components.
+                Radix has significantly improved the accessibility standard in our components. We
+                spend far less time discussing and implementing keyboard navigation, focus traps,
+                and researching appropriate ARIA techniques for our components.
               </TestimonialText>
               <Flex align="center" gap="2">
                 <Avatar
