@@ -91,7 +91,7 @@ const Fieldset = styled('fieldset', {
 export function MainHeroTabs() {
   return (
     <Tabs defaultValue="tab1">
-      <TabsList aria-Text="Manage your account">
+      <TabsList aria-label="Manage your account">
         <TabsTrigger value="tab1">
           <Text size="2" css={{ color: 'inherit' }}>
             Account

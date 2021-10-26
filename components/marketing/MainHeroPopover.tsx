@@ -27,9 +27,11 @@ export function MainHeroPopover() {
   // We prevent the initial auto focus because it's a demo rather than a real UI,
   // so the parent page focus is not stolen.
   const initialAutoFocusPrevented = React.useRef(false);
+  const contentRef = React.useRef<HTMLDivElement>(null);
+  const [open, setOpen] = React.useState(true);
 
   return (
-    <PopoverPrimitive.Root modal={false} defaultOpen>
+    <PopoverPrimitive.Root modal={false} open={open} onOpenChange={setOpen}>
       <PopoverPrimitive.Trigger asChild>
         <DemoButton css={{ mb: 120 }}>Dimensions</DemoButton>
       </PopoverPrimitive.Trigger>
@@ -45,11 +47,18 @@ export function MainHeroPopover() {
         }}
       >
         <PopoverContent
+          ref={contentRef}
           portalled={false}
           side="bottom"
           sideOffset={5}
           avoidCollisions={false}
           onInteractOutside={(event) => event.preventDefault()}
+          onEscapeKeyDown={(event) => {
+            event.preventDefault();
+            if (event.target instanceof HTMLElement && contentRef.current?.contains(event.target)) {
+              setOpen(false);
+            }
+          }}
           onOpenAutoFocus={(event) => {
             // We prevent the initial auto focus because it's a demo rather than a real UI,
             // so that the parent page focus is not stolen.
