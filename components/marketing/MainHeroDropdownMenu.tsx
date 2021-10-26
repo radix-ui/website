@@ -1,6 +1,6 @@
 import React from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { styled } from '@modulz/design-system';
+import { Box, styled } from '@modulz/design-system';
 import {
   CaretDownIcon,
   CaretRightIcon,
@@ -78,64 +78,77 @@ export function MainHeroDropdownMenu() {
           Options <CaretDownIcon style={{ marginRight: -5 }} />
         </DemoButton>
       </DropdownMenuPrimitive.Trigger>
-      <DropdownMenuContent
-        sideOffset={5}
-        avoidCollisions={false}
-        onInteractOutside={(event) => {
-          if (event.target !== triggerRef.current) {
-            event.preventDefault();
-          }
-        }}
-        onOpenAutoFocus={(event) => {
-          // We prevent the initial auto focus because it's a demo rather than a real UI,
-          // so the parent page focus is not stolen.
-          if (initialAutoFocusPrevented.current === false) {
-            event.preventDefault();
-            initialAutoFocusPrevented.current = true;
-          }
+
+      <Box
+        // Position it manually because iOS Safari is buggy
+        // with transforms and horizontal scroll containers
+        css={{
+          '[data-radix-popper-content-wrapper]': {
+            left: '50% !important',
+            transform: 'translate(-50%, 155px) !important',
+          },
         }}
       >
-        <DropdownMenuArrow />
-        <DropdownMenuItem>New Tab</DropdownMenuItem>
-        <DropdownMenuItem>New Window</DropdownMenuItem>
-        <DropdownMenuSeparator />
+        <DropdownMenuContent
+          sideOffset={5}
+          portalled={false}
+          avoidCollisions={false}
+          onInteractOutside={(event) => {
+            if (event.target !== triggerRef.current) {
+              event.preventDefault();
+            }
+          }}
+          onOpenAutoFocus={(event) => {
+            // We prevent the initial auto focus because it's a demo rather than a real UI,
+            // so the parent page focus is not stolen.
+            if (initialAutoFocusPrevented.current === false) {
+              event.preventDefault();
+              initialAutoFocusPrevented.current = true;
+            }
+          }}
+        >
+          <DropdownMenuArrow />
+          <DropdownMenuItem>New Tab</DropdownMenuItem>
+          <DropdownMenuItem>New Window</DropdownMenuItem>
+          <DropdownMenuSeparator />
 
-        <DropdownMenuPrimitive.Root>
-          <DropdownMenuTriggerItem>
-            Favorites
-            <CaretRightIcon style={{ marginLeft: 'auto', marginRight: -5 }} />
-          </DropdownMenuTriggerItem>
-          <DropdownMenuContent>
-            <DropdownMenuItem>
-              <GitHubLogoIcon style={{ marginLeft: -15, marginRight: 10 }} />
-              GitHub
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <StitchesLogoIcon style={{ marginLeft: -15, marginRight: 10 }} />
-              Stitches
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <ModulzLogoIcon style={{ marginLeft: -15, marginRight: 10 }} />
-              Modulz
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenuPrimitive.Root>
+          <DropdownMenuPrimitive.Root>
+            <DropdownMenuTriggerItem>
+              Favorites
+              <CaretRightIcon style={{ marginLeft: 'auto', marginRight: -5 }} />
+            </DropdownMenuTriggerItem>
+            <DropdownMenuContent>
+              <DropdownMenuItem>
+                <GitHubLogoIcon style={{ marginLeft: -15, marginRight: 10 }} />
+                GitHub
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <StitchesLogoIcon style={{ marginLeft: -15, marginRight: 10 }} />
+                Stitches
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <ModulzLogoIcon style={{ marginLeft: -15, marginRight: 10 }} />
+                Modulz
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenuPrimitive.Root>
 
-        <DropdownMenuItem>Downloads</DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuCheckboxItem checked={showToolbar} onCheckedChange={setShowToolbar}>
-          <DropdownMenuPrimitive.ItemIndicator>
-            <CheckIcon style={{ marginLeft: -18, marginRight: 0 }} />
-          </DropdownMenuPrimitive.ItemIndicator>
-          Show Toolbar
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem checked={showUrls} onCheckedChange={setShowUrls}>
-          <DropdownMenuPrimitive.ItemIndicator>
-            <CheckIcon style={{ marginLeft: -18, marginRight: 0 }} />
-          </DropdownMenuPrimitive.ItemIndicator>
-          Show Full URLs
-        </DropdownMenuCheckboxItem>
-      </DropdownMenuContent>
+          <DropdownMenuItem>Downloads</DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuCheckboxItem checked={showToolbar} onCheckedChange={setShowToolbar}>
+            <DropdownMenuPrimitive.ItemIndicator>
+              <CheckIcon style={{ marginLeft: -18, marginRight: 0 }} />
+            </DropdownMenuPrimitive.ItemIndicator>
+            Show Toolbar
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem checked={showUrls} onCheckedChange={setShowUrls}>
+            <DropdownMenuPrimitive.ItemIndicator>
+              <CheckIcon style={{ marginLeft: -18, marginRight: 0 }} />
+            </DropdownMenuPrimitive.ItemIndicator>
+            Show Full URLs
+          </DropdownMenuCheckboxItem>
+        </DropdownMenuContent>
+      </Box>
     </DropdownMenuPrimitive.Root>
   );
 }
