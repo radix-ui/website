@@ -21,7 +21,7 @@ export const AdoptionSection = () => {
         <Box css={{ mb: '$7' }}>
           <MarketingCaption css={{ mb: '$1' }}>Transition to Radix Primitives</MarketingCaption>
           <Heading as="h2" size="3" css={{ mb: '$4' }}>
-            Easy to introduce to your team
+            Adoption made easy
           </Heading>
           <NextLink href="/docs/primitives" passHref>
             <MarketingButton as="a" icon={ArrowRightIcon}>
@@ -40,10 +40,9 @@ export const AdoptionSection = () => {
               Incremental adoption
             </Text>
             <Paragraph>
-              Primitives have been designed for incremental adoption. Each is its own package that’s
-              independently versioned, so new components can be added alongside your existing code.
-              No need to disrupt feature work with a huge rewrite{'\u2060'}—you can start small and
-              add more primitives one by one.
+              Each component is its own independently versioned package, so new components can be
+              added alongside your existing code. No need to disrupt feature work with a huge
+              rewrite{'\u2060'}—you can start small and add more components one by one.
             </Paragraph>
           </Box>
 
@@ -56,9 +55,10 @@ export const AdoptionSection = () => {
               Detailed docs and TypeScript support
             </Text>
             <Paragraph>
-              Real-world examples, extensive API reference, accessibility details, and full
-              TypeScript support. All components share a similar API, creating a consistent
-              experience. You will love working with Radix Primitives.
+              Radix documentation contains real-world examples, extensive API references,
+              accessibility details, and full TypeScript support. All components share a similar
+              API, creating a consistent developer experience. You will love working with Radix
+              Primitives.
             </Paragraph>
           </Box>
         </Grid>
