@@ -220,8 +220,8 @@ export const MainHero = () => {
           >
             {/* <CarouselSlide>
               <DemoWrapper
-              onKeyDown={onDemoKeyDown}
-              onFocus={onDemoFocus}
+                onKeyDown={onDemoKeyDown}
+                onFocus={onDemoFocus}
                 css={{
                   background: 'linear-gradient(120deg, $indigo6, $crimson5)',
                   [`.${darkTheme} &`]: {
@@ -245,9 +245,9 @@ export const MainHero = () => {
                 onKeyDown={onDemoKeyDown}
                 onFocus={onDemoFocus}
                 css={{
-                  background: 'linear-gradient(120deg,  $crimson5, $blue5)',
+                  background: 'linear-gradient(120deg, $indigo6, $crimson5)',
                   [`.${darkTheme} &`]: {
-                    background: 'linear-gradient(120deg,  $plum3, $blue3)',
+                    background: 'linear-gradient(120deg, $indigo4, $plum3)',
                   },
                 }}
               >
@@ -267,9 +267,9 @@ export const MainHero = () => {
                 onKeyDown={onDemoKeyDown}
                 onFocus={onDemoFocus}
                 css={{
-                  background: 'linear-gradient(120deg, $blue5, $lime3)',
+                  background: 'linear-gradient(120deg,  $crimson5, $blue5)',
                   [`.${darkTheme} &`]: {
-                    background: 'linear-gradient(120deg, $blue3, $sand6)',
+                    background: 'linear-gradient(120deg,  $plum3, $blue3)',
                   },
                 }}
               >
@@ -289,9 +289,9 @@ export const MainHero = () => {
                 onKeyDown={onDemoKeyDown}
                 onFocus={onDemoFocus}
                 css={{
-                  background: 'linear-gradient(120deg, $lime3, $pink4)',
+                  background: 'linear-gradient(120deg, $blue5, $lime3)',
                   [`.${darkTheme} &`]: {
-                    background: 'linear-gradient(120deg, $sand6, $pink3)',
+                    background: 'linear-gradient(120deg, $blue3, $sand6)',
                   },
                 }}
               >
@@ -311,9 +311,9 @@ export const MainHero = () => {
                 onKeyDown={onDemoKeyDown}
                 onFocus={onDemoFocus}
                 css={{
-                  background: 'linear-gradient(120deg, $pink4, $gold5)',
+                  background: 'linear-gradient(120deg, $lime3, $pink4)',
                   [`.${darkTheme} &`]: {
-                    background: 'linear-gradient(120deg, $pink3, $gold4)',
+                    background: 'linear-gradient(120deg, $sand6, $pink3)',
                   },
                 }}
               >
@@ -333,9 +333,9 @@ export const MainHero = () => {
                 onKeyDown={onDemoKeyDown}
                 onFocus={onDemoFocus}
                 css={{
-                  background: 'linear-gradient(120deg, $gold5, $tomato5)',
+                  background: 'linear-gradient(120deg, $pink4, $gold5)',
                   [`.${darkTheme} &`]: {
-                    background: 'linear-gradient(120deg, $gold4, $crimson4)',
+                    background: 'linear-gradient(120deg, $pink3, $gold4)',
                   },
                 }}
               >
@@ -355,9 +355,9 @@ export const MainHero = () => {
                 onKeyDown={onDemoKeyDown}
                 onFocus={onDemoFocus}
                 css={{
-                  background: 'linear-gradient(120deg, $tomato5, $indigo7)',
+                  background: 'linear-gradient(120deg, $gold5, $tomato5)',
                   [`.${darkTheme} &`]: {
-                    background: 'linear-gradient(120deg, $crimson4, $indigo5)',
+                    background: 'linear-gradient(120deg, $gold4, $crimson4)',
                   },
                 }}
               >
@@ -377,9 +377,9 @@ export const MainHero = () => {
                 onKeyDown={onDemoKeyDown}
                 onFocus={onDemoFocus}
                 css={{
-                  background: 'linear-gradient(120deg, $indigo7, $cyan4)',
+                  background: 'linear-gradient(120deg, $tomato5, $indigo7)',
                   [`.${darkTheme} &`]: {
-                    background: 'linear-gradient(120deg, $indigo5, $cyan7)',
+                    background: 'linear-gradient(120deg, $crimson4, $indigo5)',
                   },
                 }}
               >
@@ -399,9 +399,9 @@ export const MainHero = () => {
                 onKeyDown={onDemoKeyDown}
                 onFocus={onDemoFocus}
                 css={{
-                  background: 'linear-gradient(120deg, $cyan4, $mint5)',
+                  background: 'linear-gradient(120deg, $indigo7, $cyan4)',
                   [`.${darkTheme} &`]: {
-                    background: 'linear-gradient(120deg, $cyan7, $mint6)',
+                    background: 'linear-gradient(120deg, $indigo5, $cyan7)',
                   },
                 }}
               >
@@ -421,11 +421,17 @@ export const MainHero = () => {
                 onKeyDown={onDemoKeyDown}
                 onFocus={onDemoFocus}
                 css={{
-                  background: 'linear-gradient(120deg, $mint5, $red3)',
+                  background: 'linear-gradient(120deg, $cyan4, $mint5)',
                   [`.${darkTheme} &`]: {
-                    background: 'linear-gradient(120deg, $mint6, $plum4)',
+                    background: 'linear-gradient(120deg, $cyan7, $mint6)',
                   },
                 }}
+                // css={{
+                //   background: 'linear-gradient(120deg, $mint5, $red3)',
+                //   [`.${darkTheme} &`]: {
+                //     background: 'linear-gradient(120deg, $mint6, $plum4)',
+                //   },
+                // }}
               >
                 <MainHeroSwitch />
               </DemoWrapper>
