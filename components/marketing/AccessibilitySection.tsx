@@ -425,7 +425,7 @@ export const AccessibilitySection = () => {
         <Box css={{ mb: '$5' }}>
           <MarketingCaption css={{ mb: '$1' }}>Supports assistive technology</MarketingCaption>
           <Heading as="h2" size="3">
-            Your work can be accessible to everyone
+            Accessibility out of the box
           </Heading>
         </Box>
 
