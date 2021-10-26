@@ -11,6 +11,7 @@ import { DocCodeBlock } from './DocCodeBlock';
 import { CodeBlock } from './CodeBlock';
 import { PackageRelease, PRLink } from './releaseHelpers';
 import { HeroContainer } from './HeroContainer';
+import { HeroQuote } from './HeroQuote';
 import { Frontmatter } from 'types/frontmatter';
 import { ColorScale, ColorScaleGroup } from './Scale';
 import * as Demos from './demos';
@@ -192,6 +193,7 @@ export const components = {
   PackageRelease,
   PRLink,
   HeroContainer,
+  HeroQuote,
   ...Demos,
 };
 

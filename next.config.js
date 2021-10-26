@@ -15,8 +15,8 @@ module.exports = withPlugins([withTM, withOptimizedImages, withVideos], {
     return [
       {
         source: '/primitives',
-        destination: '/docs/primitives',
-        permanent: false,
+        destination: '/',
+        permanent: true,
       },
       {
         source: '/primitives/docs/:slug*',

@@ -57,7 +57,7 @@ export function PrimitivesPage({ children }: { children: React.ReactNode }) {
           WebkitOverflowScrolling: 'touch',
           overflowX: 'hidden',
           left: 0,
-          top: '$sizes$7',
+          top: '$sizes$8',
           position: 'fixed',
           backgroundColor: '$loContrast',
           zIndex: 1,

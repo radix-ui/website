@@ -50,6 +50,7 @@
     "hast-util-to-string": "^1.0.4",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
+    "lodash.debounce": "^4.0.8",
     "mdx-bundler": "^3.2.1",
     "next": "10.2.0",
     "next-compose-plugins": "^2.2.1",
@@ -69,11 +70,14 @@
     "rehype": "^11.0.0",
     "remark-autolink-headings": "^6.0.1",
     "remark-slug": "^6.0.0",
+    "smoothscroll-polyfill": "^0.4.4",
     "tinycolor2": "^1.4.2"
   },
   "devDependencies": {
+    "@types/lodash.debounce": "^4.0.6",
     "@types/node": "^14.14.37",
     "@types/react": "^17.0.3",
+    "@types/smoothscroll-polyfill": "^0.3.1",
     "@types/tinycolor2": "^1.4.3",
     "compare-versions": "^3.6.0",
     "husky": "4.3.6",

@@ -216,7 +216,7 @@ export const AccordionDemo = (props) => {
                     variant="blue"
                     href="https://www.w3.org/TR/wai-aria-practices-1.2/#accordion"
                   >
-                    WAI-ARAI
+                    WAI-ARIA
                   </Link>{' '}
                   design pattern.
                 </Text>

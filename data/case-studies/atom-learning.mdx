@@ -1,0 +1,51 @@
+---
+metaTitle: Atom Learning
+metaDescription: Radix Primitives allows Atom Learning to focus on optimising the usability of the UI rather than building from scratch or hacking inaccessible and prop-heavy UI libraries.
+author: Thomas Digby
+authorAvatarUrl: /marketing/avatar-thomas-digby.jpg
+authorPosition: Lead Developer at Atom Learning
+productsUsed: Primitives, Stitches
+companyAbout: Atom Learning is a fully adaptive online teaching platform for children.
+companyUrl: atomlearning.co.uk
+companyFounded: London, 2018
+companyLogoVariant: Atom Learning
+companyLogoWidth: 30%
+---
+
+# Atom Learning
+
+<HeroQuote>
+  Combined with Stitches in our design system, Radix Primitives allowed us to
+  focus on optimising the usability of our UI rather than building from scratch
+  or hacking our way through inaccessible and prop-heavy UI libraries.
+</HeroQuote>
+
+**Describe the type of project you are using Radix on?**
+
+We’re using Radix on our internal design system, it’s getting close to an initial 1.0 release and we’re starting the process of migrating our current monorepo over to it. It’s independent from our main application so we open-sourced it and are planning to use it across any web properties we need to create at Atom. We have a few core stakeholders from design and engineering but the long-term aim is to have contributions from members of both teams.
+
+**In what ways has Radix helped you and your company?**
+
+There are a bunch of things that have made Radix incredibly useful for us: the headless UI and composition model, the broad selection of primitives, and the fact that it’s built and tested for accessibility. It’s also far more lightweight than a lot of the other packages that we were previously using for our UI.
+
+It has been really simple for us to create complex interfaces and still rely on a good baseline of accessibility. Combined with Stitches in our design system, it has allowed us to focus on optimising the usability of our UI rather than building from scratch or hacking our way through inaccessible and prop-heavy UI libraries.
+
+Packages and libraries come and go, you can find yourself migrating from one API to another every year, inconsistencies abound from one to the next. So to find a large set of components that tackle a clear and well-defined problem is refreshing. It gives me confidence that adopting Radix will mean future components will match these same values and our UI primitives will continue to be consistent.
+
+**What are your thoughts on Radix developer experience?**
+
+The consistency across primitives is great, it’s easy to understand and move between them. We’ve had issues with configuring heavy libraries in the past so the composition model is great for how we like to build React applications. We tend to rely on the defaults set by Radix so I can’t comment on many of the props that are available.
+
+**What are your thoughts on Radix docs?**
+
+The documentation for the primitives is fantastic and was one of the main selling points for us to adopt it at Atom. The examples, live code, detailed prop explanations and high-level explanation of the “why” were stand-outs for us. Having a well written “Vision” front and center of the docs was especially important for us.
+
+**How has Stitches improved your developer experience and/or app performance?**
+
+Stitches has been great for us too, as it met our need for token driven styles and flexible contextual styling.
+
+Having tokens available for properties as Sass var style strings makes it super easy to write styled components, especially as we have worked with the Styled UI theme schema before, it was easy to set-up and migrate.
+
+The `css` prop has allowed us to remove side-effects and additional complex styling logic from our components; when creating UI at scale it has massively reduced the number of UI bugs and clashing styles in our product.
+
+Oh also, responsive prop manipulation is 🤌, it’s so much easier to handle responsive styles for reusable components when they’re prop driven, and those props can be changed on a breakpoint.
