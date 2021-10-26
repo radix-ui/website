@@ -1,10 +1,10 @@
 import React from 'react';
 import { Flex } from '@modulz/design-system';
 import { RadixLogoIcon } from './RadixLogoIcon';
-import * as AccessibleIcon from '@radix-ui/react-accessible-icon';
+import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
 
 export const RadixLogo = ({ label = 'Radix homepage' }: { label?: string }) => (
-  <AccessibleIcon.Root label={label}>
+  <AccessibleIcon label={label}>
     <Flex align="center">
       <RadixLogoIcon style={{ marginRight: 3 }} />
       <svg
@@ -26,5 +26,5 @@ export const RadixLogo = ({ label = 'Radix homepage' }: { label?: string }) => (
         />
       </svg>
     </Flex>
-  </AccessibleIcon.Root>
+  </AccessibleIcon>
 );

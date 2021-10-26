@@ -32,7 +32,7 @@ export const Header = () => {
         <Flex align="center" justify="between" css={{ height: '$8' }}>
           <NextLink href={isColors ? '/colors' : '/'} passHref>
             <BoxLink>
-              <RadixLogo label={isColors && 'Radix Colors homepage'} />
+              <RadixLogo label={isColors ? 'Radix Colors homepage' : 'Radix homepage'} />
             </BoxLink>
           </NextLink>
 
