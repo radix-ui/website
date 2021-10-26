@@ -70,9 +70,11 @@ export function MainHeroDropdownMenu() {
   const [showToolbar, setShowToolbar] = React.useState(true);
   const [showUrls, setShowUrls] = React.useState(false);
   const triggerRef = React.useRef<HTMLButtonElement>(null);
+  const contentRef = React.useRef<HTMLDivElement>(null);
+  const [open, setOpen] = React.useState(true);
 
   return (
-    <DropdownMenuPrimitive.Root modal={false} defaultOpen>
+    <DropdownMenuPrimitive.Root modal={false} open={open} onOpenChange={setOpen}>
       <DropdownMenuPrimitive.Trigger asChild>
         <DemoButton ref={triggerRef} css={{ marginBottom: 120, gap: 3 }}>
           Options <CaretDownIcon style={{ marginRight: -5 }} />
@@ -90,9 +92,16 @@ export function MainHeroDropdownMenu() {
         }}
       >
         <DropdownMenuContent
+          ref={contentRef}
           sideOffset={5}
           portalled={false}
           avoidCollisions={false}
+          onEscapeKeyDown={(event) => {
+            event.preventDefault();
+            if (event.target instanceof HTMLElement && contentRef.current?.contains(event.target)) {
+              setOpen(false);
+            }
+          }}
           onInteractOutside={(event) => {
             if (event.target !== triggerRef.current) {
               event.preventDefault();
