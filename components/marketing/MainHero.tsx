@@ -2,7 +2,6 @@ import React from 'react';
 import NextLink from 'next/link';
 import {
   Box,
-  Grid,
   Text,
   styled,
   darkTheme,
@@ -10,7 +9,6 @@ import {
   Flex,
   Paragraph,
   Section,
-  Button,
 } from '@modulz/design-system';
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons';
 import { MarketingButton } from './MarketingButton';
@@ -21,27 +19,28 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from './Carousel';
+import { MainHeroPopover } from './MainHeroPopover';
+import { MainHeroDropdownMenu } from './MainHeroDropdownMenu';
+import { MainHeroSlider } from './MainHeroSlider';
+import { MainHeroTabs } from './MainHeroTabs';
+import { MainHeroScrollArea } from './MainHeroScrollArea';
+import { MainHeroAccordion } from './MainHeroAccordion';
+import { MainHeroRadioGroup } from './MainHeroRadioGroup';
+import { MainHeroToggleGroup } from './MainHeroToggleGroup';
+import { MainHeroSwitch } from './MainHeroSwitch';
 
-const IFrameSkeleton = styled('div', {
+const DemoWrapper = styled('div', {
+  display: 'flex',
+  position: 'relative',
+  ai: 'center',
+  jc: 'center',
+  width: 300,
+  height: 400,
   borderRadius: '$3',
   mb: '$2',
 
-  variants: {
-    active: {
-      true: {
-        bc: '$slateA4',
-      },
-    },
-  },
-});
-
-const IFrame = styled('iframe', {
-  display: 'block',
-  border: 0,
-  width: 300,
-  height: 400,
-  overflow: 'hidden',
-  borderRadius: '$3',
+  // Content slightly above vertical center feels perfectly centred
+  pb: '$3',
 
   '@bp1': {
     width: 400,
@@ -59,38 +58,7 @@ const IFrame = styled('iframe', {
   },
 });
 
-type DemoStates = Record<string, 'loading' | 'ready'>;
-
 export const MainHero = () => {
-  const [demoStates, setDemoStates] = React.useState<DemoStates>({
-    // We'll sync loading states for the first few iframes that might be in viewport
-    dialog: 'loading',
-    dropdown: 'loading',
-    popover: 'loading',
-    slider: 'loading',
-    'scroll-area': 'loading',
-  });
-
-  console.log(...Object.values(demoStates));
-
-  const allDemosReady = Object.values(demoStates).every((state) => state === 'ready');
-
-  // Listen to iframes that are ready and update the states accordingly
-  React.useEffect(() => {
-    console.log('setting up iframe message listener');
-    const listener = (event: MessageEvent) => {
-      if (event.data.key in demoStates) {
-        console.log(`${event.data.key} ready`);
-        setDemoStates((currentState) => ({
-          ...currentState,
-          [event.data.key]: 'ready',
-        }));
-      }
-    };
-    addEventListener('message', listener);
-    return () => removeEventListener('message', listener);
-  }, []);
-
   return (
     <Section
       css={{
@@ -154,7 +122,7 @@ export const MainHero = () => {
               ox: 'auto',
               oy: 'hidden',
               py: '$1',
-              WebkitoverflowScrolling: 'touch',
+              WebkitOverflowScrolling: 'touch',
 
               // calculate the left padding to apply to the scrolling list
               // so that the carousel starts aligned with the container component
@@ -175,21 +143,18 @@ export const MainHero = () => {
               },
             }}
           >
-            <CarouselSlide>
-              <IFrameSkeleton active={!allDemosReady}>
-                <IFrame
-                  visible={allDemosReady}
-                  tabIndex={-1}
-                  data-demo-iframe
-                  src="/iframe/dialog"
-                  css={{
-                    background: 'linear-gradient(120deg, $indigo6, $crimson5)',
-                    [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(120deg, $indigo4, $plum3)',
-                    },
-                  }}
-                />
-              </IFrameSkeleton>
+            {/* <CarouselSlide>
+              <DemoWrapper
+                tabIndex={-1}
+                css={{
+                  background: 'linear-gradient(120deg, $indigo6, $crimson5)',
+                  [`.${darkTheme} &`]: {
+                    background: 'linear-gradient(120deg, $indigo4, $plum3)',
+                  },
+                }}
+              >
+                <MainHeroDialogDemo />
+              </DemoWrapper>
               <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
                 Dialog
               </Text>
@@ -197,23 +162,20 @@ export const MainHero = () => {
                 With modal and non-modal modes, fine-grained focus&nbsp;control, accessible to
                 screen readers.
               </Text>
-            </CarouselSlide>
+            </CarouselSlide> */}
 
             <CarouselSlide>
-              <IFrameSkeleton active={!allDemosReady}>
-                <IFrame
-                  visible={allDemosReady}
-                  tabIndex={-1}
-                  data-demo-iframe
-                  src="/iframe/dropdown-menu"
-                  css={{
-                    background: 'linear-gradient(120deg,  $crimson5, $blue5)',
-                    [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(120deg,  $plum3, $blue3)',
-                    },
-                  }}
-                />
-              </IFrameSkeleton>
+              <DemoWrapper
+                tabIndex={-1}
+                css={{
+                  background: 'linear-gradient(120deg,  $crimson5, $blue5)',
+                  [`.${darkTheme} &`]: {
+                    background: 'linear-gradient(120deg,  $plum3, $blue3)',
+                  },
+                }}
+              >
+                <MainHeroDropdownMenu />
+              </DemoWrapper>
               <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
                 Dropdown Menu
               </Text>
@@ -224,20 +186,17 @@ export const MainHero = () => {
             </CarouselSlide>
 
             <CarouselSlide>
-              <IFrameSkeleton active={!allDemosReady}>
-                <IFrame
-                  visible={allDemosReady}
-                  tabIndex={-1}
-                  data-demo-iframe
-                  src="/iframe/popover"
-                  css={{
-                    background: 'linear-gradient(120deg, $blue5, $lime3)',
-                    [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(120deg, $blue3, $sand6)',
-                    },
-                  }}
-                />
-              </IFrameSkeleton>
+              <DemoWrapper
+                tabIndex={-1}
+                css={{
+                  background: 'linear-gradient(120deg, $blue5, $lime3)',
+                  [`.${darkTheme} &`]: {
+                    background: 'linear-gradient(120deg, $blue3, $sand6)',
+                  },
+                }}
+              >
+                <MainHeroPopover />
+              </DemoWrapper>
               <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
                 Popover
               </Text>
@@ -248,20 +207,17 @@ export const MainHero = () => {
             </CarouselSlide>
 
             <CarouselSlide>
-              <IFrameSkeleton active={!allDemosReady}>
-                <IFrame
-                  visible={allDemosReady}
-                  tabIndex={-1}
-                  data-demo-iframe
-                  src="/iframe/slider"
-                  css={{
-                    background: 'linear-gradient(120deg, $lime3, $pink4)',
-                    [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(120deg, $sand6, $pink3)',
-                    },
-                  }}
-                />
-              </IFrameSkeleton>
+              <DemoWrapper
+                tabIndex={-1}
+                css={{
+                  background: 'linear-gradient(120deg, $lime3, $pink4)',
+                  [`.${darkTheme} &`]: {
+                    background: 'linear-gradient(120deg, $sand6, $pink3)',
+                  },
+                }}
+              >
+                <MainHeroSlider />
+              </DemoWrapper>
               <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
                 Slider
               </Text>
@@ -272,20 +228,16 @@ export const MainHero = () => {
             </CarouselSlide>
 
             <CarouselSlide>
-              <IFrameSkeleton active={!allDemosReady}>
-                <IFrame
-                  data-demo-iframe
-                  visible={allDemosReady}
-                  tabIndex={-1}
-                  src="/iframe/scroll-area"
-                  css={{
-                    background: 'linear-gradient(120deg, $pink4, $gold5)',
-                    [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(120deg, $pink3, $gold4)',
-                    },
-                  }}
-                />
-              </IFrameSkeleton>
+              <DemoWrapper
+                css={{
+                  background: 'linear-gradient(120deg, $pink4, $gold5)',
+                  [`.${darkTheme} &`]: {
+                    background: 'linear-gradient(120deg, $pink3, $gold4)',
+                  },
+                }}
+              >
+                <MainHeroScrollArea />
+              </DemoWrapper>
               <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
                 Scroll Area
               </Text>
@@ -296,20 +248,16 @@ export const MainHero = () => {
             </CarouselSlide>
 
             <CarouselSlide>
-              <IFrameSkeleton active={!allDemosReady}>
-                <IFrame
-                  data-demo-iframe
-                  visible={allDemosReady}
-                  tabIndex={-1}
-                  src="/iframe/tabs"
-                  css={{
-                    background: 'linear-gradient(120deg, $gold5, $tomato5)',
-                    [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(120deg, $gold4, $crimson4)',
-                    },
-                  }}
-                />
-              </IFrameSkeleton>
+              <DemoWrapper
+                css={{
+                  background: 'linear-gradient(120deg, $gold5, $tomato5)',
+                  [`.${darkTheme} &`]: {
+                    background: 'linear-gradient(120deg, $gold4, $crimson4)',
+                  },
+                }}
+              >
+                <MainHeroTabs />
+              </DemoWrapper>
               <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
                 Tabs
               </Text>
@@ -320,20 +268,16 @@ export const MainHero = () => {
             </CarouselSlide>
 
             <CarouselSlide>
-              <IFrameSkeleton active={!allDemosReady}>
-                <IFrame
-                  data-demo-iframe
-                  visible={allDemosReady}
-                  tabIndex={-1}
-                  src="/iframe/accordion"
-                  css={{
-                    background: 'linear-gradient(120deg, $tomato5, $indigo7)',
-                    [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(120deg, $crimson4, $indigo5)',
-                    },
-                  }}
-                />
-              </IFrameSkeleton>
+              <DemoWrapper
+                css={{
+                  background: 'linear-gradient(120deg, $tomato5, $indigo7)',
+                  [`.${darkTheme} &`]: {
+                    background: 'linear-gradient(120deg, $crimson4, $indigo5)',
+                  },
+                }}
+              >
+                <MainHeroAccordion />
+              </DemoWrapper>
               <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
                 Accordion
               </Text>
@@ -344,20 +288,16 @@ export const MainHero = () => {
             </CarouselSlide>
 
             <CarouselSlide>
-              <IFrameSkeleton active={!allDemosReady}>
-                <IFrame
-                  data-demo-iframe
-                  visible={allDemosReady}
-                  tabIndex={-1}
-                  src="/iframe/radio-group"
-                  css={{
-                    background: 'linear-gradient(120deg, $indigo7, $cyan4)',
-                    [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(120deg, $indigo5, $cyan7)',
-                    },
-                  }}
-                />
-              </IFrameSkeleton>
+              <DemoWrapper
+                css={{
+                  background: 'linear-gradient(120deg, $indigo7, $cyan4)',
+                  [`.${darkTheme} &`]: {
+                    background: 'linear-gradient(120deg, $indigo5, $cyan7)',
+                  },
+                }}
+              >
+                <MainHeroRadioGroup />
+              </DemoWrapper>
               <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
                 Radio Group
               </Text>
@@ -368,20 +308,16 @@ export const MainHero = () => {
             </CarouselSlide>
 
             <CarouselSlide>
-              <IFrameSkeleton active={!allDemosReady}>
-                <IFrame
-                  data-demo-iframe
-                  visible={allDemosReady}
-                  tabIndex={-1}
-                  src="/iframe/toggle-group"
-                  css={{
-                    background: 'linear-gradient(120deg, $cyan4, $mint5)',
-                    [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(120deg, $cyan7, $mint6)',
-                    },
-                  }}
-                />
-              </IFrameSkeleton>
+              <DemoWrapper
+                css={{
+                  background: 'linear-gradient(120deg, $cyan4, $mint5)',
+                  [`.${darkTheme} &`]: {
+                    background: 'linear-gradient(120deg, $cyan7, $mint6)',
+                  },
+                }}
+              >
+                <MainHeroToggleGroup />
+              </DemoWrapper>
               <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
                 Toggle Group
               </Text>
@@ -392,20 +328,16 @@ export const MainHero = () => {
             </CarouselSlide>
 
             <CarouselSlide>
-              <IFrameSkeleton active={!allDemosReady}>
-                <IFrame
-                  data-demo-iframe
-                  visible={allDemosReady}
-                  tabIndex={-1}
-                  src="/iframe/switch"
-                  css={{
-                    background: 'linear-gradient(120deg, $mint5, $red3)',
-                    [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(120deg, $mint6, $plum4)',
-                    },
-                  }}
-                />
-              </IFrameSkeleton>
+              <DemoWrapper
+                css={{
+                  background: 'linear-gradient(120deg, $mint5, $red3)',
+                  [`.${darkTheme} &`]: {
+                    background: 'linear-gradient(120deg, $mint6, $plum4)',
+                  },
+                }}
+              >
+                <MainHeroSwitch />
+              </DemoWrapper>
               <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
                 Switch
               </Text>
