@@ -530,7 +530,7 @@ export const AccessibilitySection = () => {
             {(currentSequence === 'typeahead' ||
               currentSequence === 'keyboardNavigation' ||
               currentSequence === 'rtl') && (
-              <Grid css={{ overflow: 'hidden', py: '$3', bc: '$$subpanel' }}>
+              <Grid css={{ overflow: 'hidden', py: '$3', bc: '$$subpanel' }} role="presentation">
                 <Flex
                   align="center"
                   gap="1"
@@ -577,7 +577,7 @@ export const AccessibilitySection = () => {
             )}
 
             {currentSequence === 'screenReader' && (
-              <Grid css={{ py: '$3', bc: '$$subpanel' }}>
+              <Grid css={{ py: '$3', bc: '$$subpanel' }} role="presentation">
                 <Flex align="center" gap="1" css={{ color: '$slate11', px: '$3' }}>
                   <Text variant="gray" size="2">
                     Screen reader
@@ -599,7 +599,7 @@ export const AccessibilitySection = () => {
               </Grid>
             )}
 
-            <Grid css={{ py: '$3', bc: '$$subpanel' }}>
+            <Grid css={{ py: '$3', bc: '$$subpanel' }} role="presentation">
               <Flex align="center" gap="1" css={{ color: '$slate11', px: '$3' }}>
                 <Text variant="gray" size="2">
                   Radix component
