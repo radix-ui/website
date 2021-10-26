@@ -188,7 +188,7 @@ export const MainHero = () => {
           </Text>
           <Box css={{ maxWidth: 500, mb: '$5' }}>
             <Paragraph size="2" as="p">
-              Unstyled, acessible components for building high‑quality design systems and web apps
+              Unstyled, accessible components for building high‑quality design systems and web apps
               in React.
             </Paragraph>
           </Box>
