@@ -45,7 +45,6 @@ const StyledContent = styled(AlertDialogPrimitive.Content, {
   padding: 25,
   '@media (prefers-reduced-motion: no-preference)': {
     animation: `${contentShow} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
-    willChange: 'transform',
   },
   '&:focus': { outline: 'none' },
 });
