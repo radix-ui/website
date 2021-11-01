@@ -30,7 +30,7 @@ import { MainHeroToggleGroup } from './MainHeroToggleGroup';
 import { MainHeroSwitch } from './MainHeroSwitch';
 import { useComposedRefs } from '@radix-ui/react-compose-refs';
 
-const StyledDemoWrapper = styled('div', {
+const DemoContainer = styled('div', {
   display: 'flex',
   position: 'relative',
   ai: 'center',
@@ -46,107 +46,190 @@ const StyledDemoWrapper = styled('div', {
   '@bp1': {
     width: 400,
   },
+});
 
+const StyledFocusArea = styled('div', {
   outline: 0,
+  borderRadius: '$3',
   '&:focus': {
     boxShadow: '0 0 0 2px $colors$blue8',
   },
-
   '&:focus:not(:focus-visible)': {
     boxShadow: 'none',
   },
 });
 
-const DemoWrapper = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<typeof StyledDemoWrapper>
->((props, forwardedRef) => {
-  const ownRef = React.useRef<HTMLDivElement>(null);
-  const composedRef = useComposedRefs(ownRef, forwardedRef);
+const FocusArea = React.forwardRef<HTMLDivElement, React.ComponentProps<typeof StyledFocusArea>>(
+  ({ children, onKeyDown, ...props }, forwardedRef) => {
+    const ownRef = React.useRef<HTMLDivElement>(null);
+    const composedRef = useComposedRefs(ownRef, forwardedRef);
 
-  return <StyledDemoWrapper {...props} data-demo-wrapper ref={composedRef} tabIndex={0} />;
-});
+    return (
+      <StyledFocusArea
+        {...props}
+        data-focus-area
+        ref={composedRef}
+        tabIndex={0}
+        onKeyDown={(event) => {
+          onKeyDown?.(event);
+
+          // Move focus inside the FocusArea when Enter or Spacebar is pressed
+          if (
+            event.target === event.currentTarget &&
+            (event.key === 'Enter' || event.key === ' ')
+          ) {
+            // We are looking for something obviously focusable
+            const tier1 =
+              '[role="menu"], [role="dialog"] input, [role="dialog"] button, [tabindex="0"]';
+            const tier2 = 'a, button, input, select, textarea';
+
+            // Search for tier 1 and tier 2 elements, prioritising
+            const elementToFocus = [
+              event.currentTarget.querySelector<HTMLElement>(tier1),
+              event.currentTarget.querySelector<HTMLElement>(tier2),
+            ].filter((el) => Boolean(el))[0];
+
+            if (elementToFocus) {
+              event.preventDefault();
+              elementToFocus.focus();
+            }
+          }
+
+          // Move focus onto the FocusArea when Escape is pressed, unless the focus is currently inside a modal
+          if (
+            event.key === 'Escape' &&
+            event.target instanceof HTMLElement &&
+            event.target !== event.currentTarget &&
+            event.target.closest('[role="dialog"], [role="menu"]') === null
+          ) {
+            event.currentTarget.focus();
+          }
+        }}
+      >
+        <div data-focus-area-entry />
+        {children}
+        <div data-focus-area-exit />
+      </StyledFocusArea>
+    );
+  }
+);
 
 export const MainHero = () => {
-  const lastFocusedDemo = React.useRef<HTMLDivElement>(null);
+  const lastUsedFocusArea = React.useRef<HTMLElement>(null);
   const isRoving = React.useRef(false);
 
-  const onDemoFocus = React.useCallback((event: React.FocusEvent<HTMLDivElement>) => {
-    if (isRoving.current === false && event.target === event.currentTarget) {
-      lastFocusedDemo.current?.focus();
+  React.useEffect(() => {
+    lastUsedFocusArea.current = document.querySelector('[data-focus-area]');
+  }, []);
+
+  const onFocusAreaFocus = React.useCallback((event: React.FocusEvent<HTMLElement>) => {
+    if (event.target === event.currentTarget || event.relatedTarget === null) {
+      if (isRoving.current === false) {
+        lastUsedFocusArea.current?.focus();
+      }
     }
   }, []);
 
-  const onDemoKeyDown = React.useCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
-    const demo = '[data-demo-wrapper]';
-
+  // We are implementing a simple roving tab index with some tweaks
+  const onFocusAreaKeyDown = React.useCallback((event: React.KeyboardEvent<HTMLElement>) => {
     if (event.target === event.currentTarget) {
-      // Simple roving tab index
       if (event.key === 'ArrowRight') {
         event.preventDefault();
-        const allDemos = Array.from(document.querySelectorAll<HTMLDivElement>(demo));
-        const thisIndex = allDemos.findIndex((el) => el === event.currentTarget);
-        const nextIndex = thisIndex + 1 < allDemos.length ? thisIndex + 1 : 0;
-        const nextDemo = allDemos[nextIndex];
+        const allAreas = Array.from(document.querySelectorAll<HTMLElement>('[data-focus-area]'));
+        const thisIndex = allAreas.findIndex((el) => el === event.currentTarget);
+        const nextIndex = Math.min(thisIndex + 1, allAreas.length - 1);
+        const nextDemo = allAreas[nextIndex];
         isRoving.current = true;
         nextDemo.focus();
-        lastFocusedDemo.current = nextDemo;
+        lastUsedFocusArea.current = nextDemo;
         isRoving.current = false;
       }
 
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
-        const allDemos = Array.from(document.querySelectorAll<HTMLDivElement>(demo));
-        const thisIndex = allDemos.findIndex((el) => el === event.currentTarget);
-        const prevIndex = thisIndex - 1 >= 0 ? thisIndex - 1 : allDemos.length - 1;
-        const prevDemo = allDemos[prevIndex];
+        const allAreas = Array.from(document.querySelectorAll<HTMLElement>('[data-focus-area]'));
+        const thisIndex = allAreas.findIndex((el) => el === event.currentTarget);
+        const prevIndex = Math.max(thisIndex - 1, 0); // thisIndex - 1 >= 0 ? thisIndex - 1 : allAreas.length - 1;
+        const prevDemo = allAreas[prevIndex];
         isRoving.current = true;
         prevDemo.focus();
-        lastFocusedDemo.current = prevDemo;
+        lastUsedFocusArea.current = prevDemo;
         isRoving.current = false;
       }
 
+      // Tab key press moves focus to the next element after the carousel
       if (event.key === 'Tab' && event.shiftKey === false) {
-        event.preventDefault();
-        const selector =
-          'input:not([tabindex="-1"]), a:not([tabindex="-1"]), button:not([tabindex="-1"]), [data-demo-wrapper]';
-        let tabbable = Array.from(document.querySelectorAll<HTMLElement>(selector));
-        // Remove elements inside demos from our list
-        tabbable = tabbable.filter((el) => el.matches(demo) || el.closest(demo) === null);
-        tabbable.reverse();
-        const lastDemo = tabbable.find((el) => el.matches(demo));
-        tabbable.reverse();
-        const lastDemoIndex = tabbable.findIndex((el) => el === lastDemo);
-        const nextElement = tabbable[lastDemoIndex + 1];
-        nextElement?.focus();
+        const selector = 'a, button, input, select, textarea, [data-focus-area-exit]';
+        const elements = Array.from(document.querySelectorAll<HTMLElement>(selector)).filter(
+          (element) => element.tabIndex !== -1 || element.hasAttribute('data-focus-area-exit')
+        );
+
+        // Find last exit guard
+        elements.reverse();
+        const lastExit = elements.find((el) => el.matches('[data-focus-area-exit]'));
+        elements.reverse();
+        const lastExitIndex = elements.indexOf(lastExit);
+        const nextElement = elements[lastExitIndex + 1];
+
+        if (nextElement) {
+          event.preventDefault();
+          nextElement.focus();
+        }
       }
 
+      // Shift + Tab key press moves focus to the previous element before the carousel
       if (event.key === 'Tab' && event.shiftKey) {
-        event.preventDefault();
-        const selector =
-          'input:not([tabindex="-1"]), a:not([tabindex="-1"]), button:not([tabindex="-1"]), [data-demo-wrapper]';
-        let tabbable = Array.from(document.querySelectorAll<HTMLElement>(selector));
-        // Remove elements inside demos from our list
-        tabbable = tabbable.filter((el) => el.matches(demo) || el.closest(demo) === null);
-        const firstDemo = tabbable.find((el) => el.matches(demo));
-        const firstDemoIndex = tabbable.findIndex((el) => el === firstDemo);
-        const prevElement = tabbable[firstDemoIndex - 1];
-        prevElement?.focus();
-      }
+        const selector = 'a, button, input, select, textarea, [data-focus-area-entry]';
+        const elements = Array.from(document.querySelectorAll<HTMLElement>(selector)).filter(
+          (element) => element.tabIndex !== -1 || element.hasAttribute('data-focus-area-entry')
+        );
 
-      if (event.key === 'Enter') {
-        const tier1 =
-          '[role="menu"], [role="dialog"] input, [role="dialog"] button, [tabindex="0"]';
-        const tier2 = 'button, input, a';
-        const elementToFocus = event.currentTarget.querySelector<HTMLElement>(tier1);
+        // Find first entry guard
+        const firstEntry = elements.find((el) => el.matches('[data-focus-area-entry]'));
+        const firstEntryIndex = elements.indexOf(firstEntry);
+        const prevElement = elements[firstEntryIndex - 1];
 
-        if (elementToFocus) {
-          elementToFocus.focus();
-        } else {
-          event.currentTarget.querySelector<HTMLElement>(tier2)?.focus();
+        if (prevElement) {
+          event.preventDefault();
+          prevElement.focus();
         }
       }
     }
+  }, []);
+
+  React.useEffect(() => {
+    // Catch that Shift + Tab that lands into carousel contents from
+    // elsewhere, and redirect focus to the nearest focus area
+    const shiftTabListener = (event: KeyboardEvent) => {
+      if (
+        event.key === 'Tab' &&
+        event.shiftKey &&
+        event.target instanceof HTMLElement &&
+        !event.target.hasAttribute('data-focus-area')
+      ) {
+        const selector = 'a, button, input, select, textarea, [data-focus-area-exit]';
+        const elements = Array.from(document.querySelectorAll<HTMLElement>(selector)).filter(
+          (element) =>
+            element.tabIndex !== -1 ||
+            element === event.target ||
+            element.hasAttribute('data-focus-area-exit')
+        );
+
+        // Find last exit guard
+        elements.reverse();
+        const lastExit = elements.find((el) => el.matches('[data-focus-area-exit]'));
+        elements.reverse();
+        const lastExitIndex = elements.indexOf(lastExit);
+
+        if (elements.indexOf(event.target) - 1 === lastExitIndex) {
+          event.preventDefault();
+          lastUsedFocusArea.current?.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', shiftTabListener);
+    return () => document.removeEventListener('keydown', shiftTabListener);
   }, []);
 
   return (
@@ -233,41 +316,54 @@ export const MainHero = () => {
               },
             }}
           >
-            {/* <CarouselSlide>
-              <DemoWrapper
-                onKeyDown={onDemoKeyDown}
-                onFocus={onDemoFocus}
-                css={{
-                  background: 'linear-gradient(120deg, $indigo6, $crimson5)',
-                  [`.${darkTheme} &`]: {
-                    background: 'linear-gradient(120deg, $indigo4, $plum3)',
-                  },
-                }}
+            {/*
+            <CarouselSlide>
+              <FocusArea
+                aria-label="Dialog component demo"
+                onKeyDown={onFocusAreaKeyDown}
+                onFocus={onFocusAreaFocus}
               >
-                <MainHeroDialogDemo />
-              </DemoWrapper>
-              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-                Dialog
-              </Text>
-              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                With modal and non-modal modes, fine-grained focus&nbsp;control, accessible to
-                screen readers.
-              </Text>
-            </CarouselSlide> */}
+                <DemoContainer
+                  aria-hidden
+                  css={{
+                    background: 'linear-gradient(120deg, $indigo6, $crimson5)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(120deg, $indigo4, $plum3)',
+                    },
+                  }}
+                >
+                  <MainHeroDialogDemo />
+                </DemoContainer>
+                </FocusArea>
+                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                  Dialog
+                </Text>
+                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                  With modal and non-modal modes, fine-grained focus&nbsp;control, accessible to
+                  screen readers.
+                </Text>
+
+            </CarouselSlide>
+            */}
 
             <CarouselSlide>
-              <DemoWrapper
-                onKeyDown={onDemoKeyDown}
-                onFocus={onDemoFocus}
-                css={{
-                  background: 'linear-gradient(120deg, $indigo6, $crimson5)',
-                  [`.${darkTheme} &`]: {
-                    background: 'linear-gradient(120deg, $indigo4, $plum3)',
-                  },
-                }}
+              <FocusArea
+                aria-label="Dropdown menu component demo"
+                onKeyDown={onFocusAreaKeyDown}
+                onFocus={onFocusAreaFocus}
               >
-                <MainHeroDropdownMenu />
-              </DemoWrapper>
+                <DemoContainer
+                  aria-hidden
+                  css={{
+                    background: 'linear-gradient(120deg, $indigo6, $crimson5)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(120deg, $indigo4, $plum3)',
+                    },
+                  }}
+                >
+                  <MainHeroDropdownMenu />
+                </DemoContainer>
+              </FocusArea>
               <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
                 Dropdown Menu
               </Text>
@@ -278,18 +374,23 @@ export const MainHero = () => {
             </CarouselSlide>
 
             <CarouselSlide>
-              <DemoWrapper
-                onKeyDown={onDemoKeyDown}
-                onFocus={onDemoFocus}
-                css={{
-                  background: 'linear-gradient(120deg,  $crimson5, $blue5)',
-                  [`.${darkTheme} &`]: {
-                    background: 'linear-gradient(120deg,  $plum3, $blue3)',
-                  },
-                }}
+              <FocusArea
+                aria-label="Popover component demo"
+                onKeyDown={onFocusAreaKeyDown}
+                onFocus={onFocusAreaFocus}
               >
-                <MainHeroPopover />
-              </DemoWrapper>
+                <DemoContainer
+                  aria-hidden
+                  css={{
+                    background: 'linear-gradient(120deg,  $crimson5, $blue5)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(120deg,  $plum3, $blue3)',
+                    },
+                  }}
+                >
+                  <MainHeroPopover />
+                </DemoContainer>
+              </FocusArea>
               <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
                 Popover
               </Text>
@@ -300,18 +401,23 @@ export const MainHero = () => {
             </CarouselSlide>
 
             <CarouselSlide>
-              <DemoWrapper
-                onKeyDown={onDemoKeyDown}
-                onFocus={onDemoFocus}
-                css={{
-                  background: 'linear-gradient(120deg, $blue5, $lime3)',
-                  [`.${darkTheme} &`]: {
-                    background: 'linear-gradient(120deg, $blue3, $sand6)',
-                  },
-                }}
+              <FocusArea
+                aria-label="Slider component demo"
+                onKeyDown={onFocusAreaKeyDown}
+                onFocus={onFocusAreaFocus}
               >
-                <MainHeroSlider />
-              </DemoWrapper>
+                <DemoContainer
+                  aria-hidden
+                  css={{
+                    background: 'linear-gradient(120deg, $blue5, $lime3)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(120deg, $blue3, $sand6)',
+                    },
+                  }}
+                >
+                  <MainHeroSlider />
+                </DemoContainer>
+              </FocusArea>
               <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
                 Slider
               </Text>
@@ -322,18 +428,23 @@ export const MainHero = () => {
             </CarouselSlide>
 
             <CarouselSlide>
-              <DemoWrapper
-                onKeyDown={onDemoKeyDown}
-                onFocus={onDemoFocus}
-                css={{
-                  background: 'linear-gradient(120deg, $lime3, $pink4)',
-                  [`.${darkTheme} &`]: {
-                    background: 'linear-gradient(120deg, $sand6, $pink3)',
-                  },
-                }}
+              <FocusArea
+                aria-label="Scroll area component demo"
+                onKeyDown={onFocusAreaKeyDown}
+                onFocus={onFocusAreaFocus}
               >
-                <MainHeroScrollArea />
-              </DemoWrapper>
+                <DemoContainer
+                  aria-hidden
+                  css={{
+                    background: 'linear-gradient(120deg, $lime3, $pink4)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(120deg, $sand6, $pink3)',
+                    },
+                  }}
+                >
+                  <MainHeroScrollArea />
+                </DemoContainer>
+              </FocusArea>
               <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
                 Scroll Area
               </Text>
@@ -344,18 +455,23 @@ export const MainHero = () => {
             </CarouselSlide>
 
             <CarouselSlide>
-              <DemoWrapper
-                onKeyDown={onDemoKeyDown}
-                onFocus={onDemoFocus}
-                css={{
-                  background: 'linear-gradient(120deg, $pink4, $gold5)',
-                  [`.${darkTheme} &`]: {
-                    background: 'linear-gradient(120deg, $pink3, $gold4)',
-                  },
-                }}
+              <FocusArea
+                aria-label="Tabs component demo"
+                onKeyDown={onFocusAreaKeyDown}
+                onFocus={onFocusAreaFocus}
               >
-                <MainHeroTabs />
-              </DemoWrapper>
+                <DemoContainer
+                  aria-hidden
+                  css={{
+                    background: 'linear-gradient(120deg, $pink4, $gold5)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(120deg, $pink3, $gold4)',
+                    },
+                  }}
+                >
+                  <MainHeroTabs />
+                </DemoContainer>
+              </FocusArea>
               <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
                 Tabs
               </Text>
@@ -366,18 +482,23 @@ export const MainHero = () => {
             </CarouselSlide>
 
             <CarouselSlide>
-              <DemoWrapper
-                onKeyDown={onDemoKeyDown}
-                onFocus={onDemoFocus}
-                css={{
-                  background: 'linear-gradient(120deg, $gold5, $tomato5)',
-                  [`.${darkTheme} &`]: {
-                    background: 'linear-gradient(120deg, $gold4, $crimson4)',
-                  },
-                }}
+              <FocusArea
+                aria-label="Accordion component demo"
+                onKeyDown={onFocusAreaKeyDown}
+                onFocus={onFocusAreaFocus}
               >
-                <MainHeroAccordion />
-              </DemoWrapper>
+                <DemoContainer
+                  aria-hidden
+                  css={{
+                    background: 'linear-gradient(120deg, $gold5, $tomato5)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(120deg, $gold4, $crimson4)',
+                    },
+                  }}
+                >
+                  <MainHeroAccordion />
+                </DemoContainer>
+              </FocusArea>
               <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
                 Accordion
               </Text>
@@ -388,18 +509,23 @@ export const MainHero = () => {
             </CarouselSlide>
 
             <CarouselSlide>
-              <DemoWrapper
-                onKeyDown={onDemoKeyDown}
-                onFocus={onDemoFocus}
-                css={{
-                  background: 'linear-gradient(120deg, $tomato5, $indigo7)',
-                  [`.${darkTheme} &`]: {
-                    background: 'linear-gradient(120deg, $crimson4, $indigo5)',
-                  },
-                }}
+              <FocusArea
+                aria-label="Radio group component demo"
+                onKeyDown={onFocusAreaKeyDown}
+                onFocus={onFocusAreaFocus}
               >
-                <MainHeroRadioGroup />
-              </DemoWrapper>
+                <DemoContainer
+                  aria-hidden
+                  css={{
+                    background: 'linear-gradient(120deg, $tomato5, $indigo7)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(120deg, $crimson4, $indigo5)',
+                    },
+                  }}
+                >
+                  <MainHeroRadioGroup />
+                </DemoContainer>
+              </FocusArea>
               <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
                 Radio Group
               </Text>
@@ -410,18 +536,23 @@ export const MainHero = () => {
             </CarouselSlide>
 
             <CarouselSlide>
-              <DemoWrapper
-                onKeyDown={onDemoKeyDown}
-                onFocus={onDemoFocus}
-                css={{
-                  background: 'linear-gradient(120deg, $indigo7, $cyan4)',
-                  [`.${darkTheme} &`]: {
-                    background: 'linear-gradient(120deg, $indigo5, $cyan7)',
-                  },
-                }}
+              <FocusArea
+                aria-label="Toggle group component demo"
+                onKeyDown={onFocusAreaKeyDown}
+                onFocus={onFocusAreaFocus}
               >
-                <MainHeroToggleGroup />
-              </DemoWrapper>
+                <DemoContainer
+                  aria-hidden
+                  css={{
+                    background: 'linear-gradient(120deg, $indigo7, $cyan4)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(120deg, $indigo5, $cyan7)',
+                    },
+                  }}
+                >
+                  <MainHeroToggleGroup />
+                </DemoContainer>
+              </FocusArea>
               <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
                 Toggle Group
               </Text>
@@ -432,24 +563,29 @@ export const MainHero = () => {
             </CarouselSlide>
 
             <CarouselSlide>
-              <DemoWrapper
-                onKeyDown={onDemoKeyDown}
-                onFocus={onDemoFocus}
-                css={{
-                  background: 'linear-gradient(120deg, $cyan4, $mint5)',
-                  [`.${darkTheme} &`]: {
-                    background: 'linear-gradient(120deg, $cyan7, $mint6)',
-                  },
-                }}
-                // css={{
-                //   background: 'linear-gradient(120deg, $mint5, $red3)',
-                //   [`.${darkTheme} &`]: {
-                //     background: 'linear-gradient(120deg, $mint6, $plum4)',
-                //   },
-                // }}
+              <FocusArea
+                aria-label="Switch component demo"
+                onKeyDown={onFocusAreaKeyDown}
+                onFocus={onFocusAreaFocus}
               >
-                <MainHeroSwitch />
-              </DemoWrapper>
+                <DemoContainer
+                  aria-hidden
+                  css={{
+                    background: 'linear-gradient(120deg, $cyan4, $mint5)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(120deg, $cyan7, $mint6)',
+                    },
+                  }}
+                  // css={{
+                  //   background: 'linear-gradient(120deg, $mint5, $red3)',
+                  //   [`.${darkTheme} &`]: {
+                  //     background: 'linear-gradient(120deg, $mint6, $plum4)',
+                  //   },
+                  // }}
+                >
+                  <MainHeroSwitch />
+                </DemoContainer>
+              </FocusArea>
               <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
                 Switch
               </Text>
@@ -466,7 +602,7 @@ export const MainHero = () => {
               left: '15px',
             }}
           >
-            <CarouselPrevious tabIndex={-1} as={CarouselArrowButton}>
+            <CarouselPrevious aria-label="Show next demo" tabIndex={-1} as={CarouselArrowButton}>
               <ArrowLeftIcon />
             </CarouselPrevious>
           </Box>
@@ -477,7 +613,7 @@ export const MainHero = () => {
               right: '15px',
             }}
           >
-            <CarouselNext tabIndex={-1} as={CarouselArrowButton}>
+            <CarouselNext aria-label="Show previous demo" tabIndex={-1} as={CarouselArrowButton}>
               <ArrowRightIcon />
             </CarouselNext>
           </Box>
