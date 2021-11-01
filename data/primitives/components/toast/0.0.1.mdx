@@ -8,8 +8,8 @@ aria: https://www.w3.org/TR/wai-aria/#aria-live
 # Toast
 
 <Description>
-  A succinct message that is displayed temporarily and does not insist on a user
-  response.
+  A succinct message that is displayed temporarily and does not require user
+  interaction.
 </Description>
 
 <Highlights
@@ -17,8 +17,8 @@ aria: https://www.w3.org/TR/wai-aria/#aria-live
     'Automatically closes.',
     'Pauses closing on hover, focus and window blur.',
     'Supports hotkey to jump to toast region.',
-    'Closes on swipe interaction',
-    'Exposes CSS properties to aid swipe animations',
+    'Supports closing via swipe gesture.',
+    'Exposes CSS variables for swipe gesture animations.',
     'Can be controlled or uncontrolled.',
   ]}
 />
@@ -65,7 +65,22 @@ The provider that wraps your toasts and toast region. It usually wraps the appli
       type: 'number',
       default: 5000,
       description:
-        'The time in milliseconds that should elapse before automatically closing the toasts.',
+        'The time in milliseconds that should elapse before automatically closing each toast.',
+    },
+    {
+      name: 'swipeDirection',
+      type: '"right" | "left" | "up" | "down"',
+      typeSimple: 'enum',
+      default: '"right"',
+      description:
+        'The direction of the pointer swipe that should close the toast.',
+    },
+    {
+      name: 'swipeThreshold',
+      type: 'number',
+      default: 50,
+      description:
+        'The distance in pixels that the swipe gesture must travel before a close is triggered.',
     },
   ]}
 />
@@ -77,12 +92,12 @@ The fixed area where toasts appear. Users can jump to the region by pressing a h
 <PropsTable
   data={[
     {
-      name: 'as',
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
       name: 'hotkey',
@@ -117,12 +132,12 @@ The toast.
 <PropsTable
   data={[
     {
-      name: 'as',
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
       name: 'type',
@@ -138,9 +153,9 @@ The toast.
           >
             sensitivity
           </Link>{' '}
-          of the toast for accessibility purposes. For toasts that are triggered
-          by the user, choose <Code>foreground</Code>. Toasts generated from
-          background tasks should use <Code>background</Code>.
+          of the toast for accessibility purposes. For toasts that are the
+          result of a user action, choose <Code>foreground</Code>. Toasts
+          generated from background tasks should use <Code>background</Code>.
         </span>
       ),
     },
@@ -153,6 +168,7 @@ The toast.
     {
       name: 'defaultOpen',
       type: 'boolean',
+      default: 'true',
       description:
         'The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.',
     },
@@ -189,12 +205,12 @@ An optional title for the toast.
 <PropsTable
   data={[
     {
-      name: 'as',
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
   ]}
 />
@@ -206,31 +222,31 @@ The toast message.
 <PropsTable
   data={[
     {
-      name: 'as',
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
   ]}
 />
 
 ### Action
 
-An action that does not require user interaction. Notifications that expect a response should use [`AlertDialog`](/docs/primitives/components/alert-dialog) instead.
+An action that is safe to ignore. Toasts that require an action should use an [`AlertDialog`](/docs/primitives/components/alert-dialog) that is styled to look like a toast instead.
 
 We recommend supplying only one action per toast.
 
 <PropsTable
   data={[
     {
-      name: 'as',
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'button',
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
       name: 'altText',
@@ -249,12 +265,12 @@ A button that allows users to dismiss the toast before its duration has elapsed.
 <PropsTable
   data={[
     {
-      name: 'as',
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'button',
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
       description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
   ]}
 />
@@ -263,7 +279,7 @@ A button that allows users to dismiss the toast before its duration has elapsed.
 
 ### Custom hotkey
 
-Override the default hotkey.
+Override the default hotkey using the `event.code` value for each key from [keycode.info](https://keycode.info/).
 
 ```jsx line=3
 <Toast.Provider>
@@ -277,18 +293,16 @@ Override the default hotkey.
 Customise the duration of a toast to override the provider value.
 
 ```jsx line=1
-<Toast.Root defaultOpen __duration__={3000}>
+<Toast.Root __duration__={3000}>
   <Toast.Description>Saved!</Toast.Description>
 </Toast.Root>
 ```
 
-### Consecutive toasts
+### Duplicate toasts
 
-When toasts must appear every time a user clicks a button, use state to generate multiple instances of the same toast. Add to an array of toast data or increment a count.
+When a toast must appear every time a user clicks a button, use state to render multiple instances of the same toast (see below). Alternatively, you can abstract the parts to create your own [imperative API](/docs/primitives/components/toast#imperative-api).
 
-Alternatively, you can abstract the parts to create your own [imperative API](/docs/primitives/components/toast#imperative-api).
-
-```jsx line=11-15
+```jsx line=6,11-15
 export default () => {
   const [savedCount, setSavedCount] = React.useState(0);
 
@@ -300,13 +314,47 @@ export default () => {
       </form>
 
       {Array.from({ length: savedCount }).map((_, index) => (
-        <Toast.Root key={index} defaultOpen>
+        <Toast.Root key={index}>
           <Toast.Description>Saved!</Toast.Description>
         </Toast.Root>
       ))}
     </div>
   );
 };
+```
+
+### Animating swipe gesture
+
+Combine `--radix-toast-swipe-move-[x|y]` and `--radix-toast-swipe-end-[x|y]` CSS variables with `data-swipe-[start|move|cancel|end]` attributes to animate a swipe to close gesture. Here's an example using Stitches:
+
+```jsx line=4-7,9-20,24
+import { styled, keyframes } from '@stitches/react';
+import * as ToastPrimitive from '@radix-ui/react-toast';
+
+const slideRight = css.keyframes({
+  from: { transform: 'translateX(var(--radix-toast-swipe-end-x))' },
+  to: { transform: 'translateX(100%)' },
+});
+
+const Toast = styled(ToastPrimitive.Root, {
+  '&[data-swipe="move"]': {
+    transform: 'translateX(var(--radix-toast-swipe-move-x))',
+  },
+  '&[data-swipe="cancel"]': {
+    transform: 'translateX(0)',
+    transition: 'transform 200ms ease-out',
+  },
+  '&[data-swipe="end"]': {
+    animation: `${slideRight} 300ms ease-out`,
+  },
+});
+
+export default () => (
+  <ToastPrimitive.Provider __swipeDirection__="right">
+    <Toast>...</Toast>
+    <ToastPrimitive.Region />
+  </ToastPrimitive.Provider>
+);
 ```
 
 ## Accessibility
@@ -317,7 +365,7 @@ Adheres to the [`aria-live` requirements](https://www.w3.org/TR/wai-aria/#aria-l
 
 Control the sensitivity of the toast for screen readers using the `type` prop.
 
-For toasts that are triggered by the user, choose `foreground`. Toasts generated from background tasks should use `background`.
+For toasts that are the result of a user action, choose `foreground`. Toasts generated from background tasks should use `background`.
 
 #### Foreground
 
@@ -325,7 +373,7 @@ Foreground toasts are announced immediately. Assistive technologies may choose t
 
 #### Background
 
-Background toasts are announced at the next graceful opportunity and do not clear queued messages. Overusing them can be perceived as a laggy user experience for screen reader users if used in response to a user interaction.
+Background toasts are announced at the next graceful opportunity (for example, when the screen reader has finished reading its current sentence) and do not clear queued messages. Overusing them can be perceived as a laggy user experience for screen reader users if used in response to a user interaction.
 
 ```jsx line=1,6
 <Toast.Root type="foreground">
@@ -341,7 +389,7 @@ Background toasts are announced at the next graceful opportunity and do not clea
 
 ### Alternative action
 
-Use the `altText` prop on the `Action` to instruct an alternative way of actioning the toast to screen readers.
+Use the `altText` prop on the `Action` to instruct an alternative way of actioning the toast to screen reader users.
 
 You can direct the user to a permanent place in your application where they can action it or implement your own custom hotkey logic. If implementing the latter, use `foreground` type to announce immediately and increase the duration to give the user ample time.
 
@@ -366,7 +414,7 @@ You can direct the user to a permanent place in your application where they can 
 
 ### Close icon button
 
-When providing an icon (or font icon), remember to label it correctly for screen readers.
+When providing an icon (or font icon), remember to label it correctly for screen reader users.
 
 ```jsx line=3-4
 <Toast.Root type="foreground">
@@ -426,11 +474,7 @@ Create your own API by abstracting the primitive parts into your own component.
 import { Toast } from './your-toast';
 
 export default () => (
-  <Toast
-    defaultOpen
-    title="Upgrade available"
-    content="We've just released Radix 3.0!"
-  >
+  <Toast title="Upgrade available" content="We've just released Radix 3.0!">
     <button onClick={handleUpgrade}>Upgrade</button>
   </Toast>
 );
@@ -461,7 +505,7 @@ export const Toast = ({ title, content, children, ...props }) => {
 
 ### Imperative API
 
-Create your own imperative API for [consecutive toasts](/docs/primitives/components/toast#consecutive-toasts) if preferred.
+Create your own imperative API to allow [toast duplication](/docs/primitives/components/toast#consecutive-toasts) if preferred.
 
 #### Usage
 
@@ -499,7 +543,7 @@ export const Toast = React.forwardRef((props, forwardedRef) => {
   return (
     <>
       {Array.from({ length: count }).map((_, index) => (
-        <ToastPrimitive.Root key={index} defaultOpen {...props}>
+        <ToastPrimitive.Root key={index} {...props}>
           <ToastPrimitive.Description>{children}</ToastPrimitive.Description>
           <ToastPrimitive.Close>Dismiss</ToastPrimitive.Close>
         </ToastPrimitive>
