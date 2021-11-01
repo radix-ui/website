@@ -254,6 +254,9 @@ export const MainHero = () => {
               // Use padding rather than margin, or otherwise some descenders
               // may be clipped with WebkitBackgroundClip: 'text'
               pb: '$4',
+              // Same issue, letters may be clipped horizontally
+              px: '$2',
+              mx: '-$2',
               fontWeight: 500,
               fontSize: 'min(max($8, 11.2vw), $9)',
               letterSpacing: 'max(min(-0.055em, -0.66vw), -0.07em)',
