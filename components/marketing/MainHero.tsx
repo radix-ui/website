@@ -635,6 +635,7 @@ const CarouselArrowButton = styled('button', {
 
   display: 'flex',
   position: 'relative',
+  zIndex: 1,
   ai: 'center',
   jc: 'center',
   bc: '$panel',
