@@ -348,7 +348,7 @@ export const ComponentHighlightsSection = () => {
                       </Text>
                     </Flex>
                     <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
-                      Nest another level of fully functional submenus inside the drodpown menu.
+                      Nest another level of fully functional submenus inside the dropdown menu.
                     </Text>
                   </Box>
 
