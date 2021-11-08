@@ -123,11 +123,7 @@ export const MainHero = () => {
   }, []);
 
   const onFocusAreaFocus = React.useCallback((event: React.FocusEvent<HTMLElement>) => {
-    if (event.target === event.currentTarget || event.relatedTarget === null) {
-      if (isRoving.current === false) {
-        lastUsedFocusArea.current?.focus();
-      }
-    }
+    lastUsedFocusArea.current = event.currentTarget;
   }, []);
 
   // We are implementing a simple roving tab index with some tweaks
@@ -198,9 +194,36 @@ export const MainHero = () => {
   }, []);
 
   React.useEffect(() => {
-    // Catch that Shift + Tab that lands into carousel contents from
-    // elsewhere, and redirect focus to the nearest focus area
-    const shiftTabListener = (event: KeyboardEvent) => {
+    const tabListener = (event: KeyboardEvent) => {
+      // Catch that Tab that lands into carousel contents from
+      // elsewhere, and redirect focus to the nearest focus area
+      if (
+        event.key === 'Tab' &&
+        event.shiftKey === false &&
+        event.target instanceof HTMLElement &&
+        !event.target.hasAttribute('data-focus-area')
+      ) {
+        const selector = 'a, button, input, select, textarea, [data-focus-area-entry]';
+        const elements = Array.from(document.querySelectorAll<HTMLElement>(selector)).filter(
+          (element) =>
+            element.tabIndex !== -1 ||
+            element === event.target ||
+            element.hasAttribute('data-focus-area-entry')
+        );
+
+        // Find first entry guard
+        const firstEntryIndex = elements.findIndex((el) =>
+          el.hasAttribute('data-focus-area-entry')
+        );
+
+        if (elements.indexOf(event.target) + 1 === firstEntryIndex) {
+          event.preventDefault();
+          lastUsedFocusArea.current?.focus();
+        }
+      }
+
+      // Catch that Shift + Tab that lands into carousel contents from
+      // elsewhere, and redirect focus to the nearest focus area
       if (
         event.key === 'Tab' &&
         event.shiftKey &&
@@ -217,7 +240,7 @@ export const MainHero = () => {
 
         // Find last exit guard
         elements.reverse();
-        const lastExit = elements.find((el) => el.matches('[data-focus-area-exit]'));
+        const lastExit = elements.find((el) => el.hasAttribute('data-focus-area-exit'));
         elements.reverse();
         const lastExitIndex = elements.indexOf(lastExit);
 
@@ -228,8 +251,8 @@ export const MainHero = () => {
       }
     };
 
-    document.addEventListener('keydown', shiftTabListener);
-    return () => document.removeEventListener('keydown', shiftTabListener);
+    document.addEventListener('keydown', tabListener);
+    return () => document.removeEventListener('keydown', tabListener);
   }, []);
 
   return (
