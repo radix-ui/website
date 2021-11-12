@@ -16,7 +16,7 @@ aria: https://www.w3.org/TR/wai-aria/#aria-live
   features={[
     'Automatically closes.',
     'Pauses closing on hover, focus and window blur.',
-    'Supports hotkey to jump to toast region.',
+    'Supports hotkey to jump to toast viewport.',
     'Supports closing via swipe gesture.',
     'Exposes CSS variables for swipe gesture animations.',
     'Can be controlled or uncontrolled.',
@@ -47,7 +47,7 @@ export default () => (
       <Toast.Close />
     </Toast.Root>
 
-    <Toast.Region />
+    <Toast.Viewport />
   </Toast.Provider>
 );
 ```
@@ -56,7 +56,7 @@ export default () => (
 
 ### Provider
 
-The provider that wraps your toasts and toast region. It usually wraps the application.
+The provider that wraps your toasts and toast viewport. It usually wraps the application.
 
 <PropsTable
   data={[
@@ -85,9 +85,9 @@ The provider that wraps your toasts and toast region. It usually wraps the appli
   ]}
 />
 
-### Region
+### Viewport
 
-The fixed area where toasts appear. Users can jump to the region by pressing a hotkey. It is up to you to ensure the discoverability of the hotkey for keyboard users.
+The fixed area where toasts appear. Users can jump to the viewport by pressing a hotkey. It is up to you to ensure the discoverability of the hotkey for keyboard users.
 
 <PropsTable
   data={[
@@ -106,7 +106,7 @@ The fixed area where toasts appear. Users can jump to the region by pressing a h
       description: (
         <span>
           The keys to use as the keyboard shortcut that will move focus to the
-          toast region. Use <Code>event.code</Code> value for each key from{' '}
+          toast viewport. Use <Code>event.code</Code> value for each key from{' '}
           <Link href="https://keycode.info/" variant="blue" target="_blank">
             keycode.info
           </Link>
@@ -120,7 +120,8 @@ The fixed area where toasts appear. Users can jump to the region by pressing a h
       name: 'label',
       type: 'string',
       default: '"Toasts"',
-      description: 'Text used to label the region for assistive technologies.',
+      description:
+        'Text used to label the viewport for assistive technologies.',
     },
   ]}
 />
@@ -284,7 +285,7 @@ Override the default hotkey using the `event.code` value for each key from [keyc
 ```jsx line=3
 <Toast.Provider>
   {/* ... */}
-  <Toast.Region __hotkey__={['altKey', 'KeyT']} />
+  <Toast.Viewport __hotkey__={['altKey', 'KeyT']} />
 </Toast.Provider>
 ```
 
@@ -352,7 +353,7 @@ const Toast = styled(ToastPrimitive.Root, {
 export default () => (
   <ToastPrimitive.Provider __swipeDirection__="right">
     <Toast>...</Toast>
-    <ToastPrimitive.Region />
+    <ToastPrimitive.Viewport />
   </ToastPrimitive.Provider>
 );
 ```
@@ -431,7 +432,7 @@ When providing an icon (or font icon), remember to label it correctly for screen
   data={[
     {
       keys: ['F6'],
-      description: 'Focuses toasts region.',
+      description: 'Focuses toasts viewport.',
     },
     {
       keys: ['Tab'],
