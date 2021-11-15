@@ -139,6 +139,7 @@ export const MainHero = () => {
         const nextDemo = allAreas[nextIndex];
         isRoving.current = true;
         nextDemo.focus();
+        (nextDemo as any).scrollIntoViewIfNeeded?.(true);
         lastUsedFocusArea.current = nextDemo;
         isRoving.current = false;
       }
@@ -151,6 +152,7 @@ export const MainHero = () => {
         const prevDemo = allAreas[prevIndex];
         isRoving.current = true;
         prevDemo.focus();
+        (prevDemo as any).scrollIntoViewIfNeeded?.(true);
         lastUsedFocusArea.current = prevDemo;
         isRoving.current = false;
       }
