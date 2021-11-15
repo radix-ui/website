@@ -323,10 +323,13 @@ export const MainHero = () => {
               py: '$1',
               WebkitOverflowScrolling: 'touch',
 
+              // Gap between slides
+              $$gap: '$space$5',
+
               // calculate the left padding to apply to the scrolling list
               // so that the carousel starts aligned with the container component
               // the "1145" and "$5" values comes from the <Container /> component
-              '$$scroll-padding': 'max($space$5, calc((100% - 1145px) / 2 + $space$5))',
+              '$$scroll-padding': 'max($$gap, calc((100% - 1145px) / 2 + $$gap))',
               pl: '$$scroll-padding',
 
               // hide scrollbar
@@ -338,7 +341,7 @@ export const MainHero = () => {
 
               // Can't have nice grid gap because Safari butchers scroll padding with it
               '& > *': {
-                pr: '$5',
+                pr: '$$gap',
               },
             }}
           >
@@ -360,13 +363,15 @@ export const MainHero = () => {
                   <MainHeroDialog />
                 </DemoContainer>
               </FocusArea>
-              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-                Dialog
-              </Text>
-              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                With modal and non-modal modes, fine-grained focus&nbsp;control, accessible to
-                screen readers.
-              </Text>
+              <GrabBox>
+                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                  Dialog
+                </Text>
+                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                  With modal and non-modal modes, fine-grained focus&nbsp;control, accessible to
+                  screen readers.
+                </Text>
+              </GrabBox>
             </CarouselSlide>
 
             <CarouselSlide>
@@ -387,13 +392,15 @@ export const MainHero = () => {
                   <MainHeroDropdownMenu />
                 </DemoContainer>
               </FocusArea>
-              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-                Dropdown Menu
-              </Text>
-              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                With submenus, checkable items, collision handling, arrow key navigation, and
-                typeahead support.
-              </Text>
+              <GrabBox>
+                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                  Dropdown Menu
+                </Text>
+                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                  With submenus, checkable items, collision handling, arrow key navigation, and
+                  typeahead support.
+                </Text>
+              </GrabBox>
             </CarouselSlide>
 
             <CarouselSlide>
@@ -414,13 +421,15 @@ export const MainHero = () => {
                   <MainHeroPopover />
                 </DemoContainer>
               </FocusArea>
-              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-                Popover
-              </Text>
-              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                With fine-grained focus control, collision handling, origin-aware and
-                collision-aware animations.
-              </Text>
+              <GrabBox>
+                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                  Popover
+                </Text>
+                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                  With fine-grained focus control, collision handling, origin-aware and
+                  collision-aware animations.
+                </Text>
+              </GrabBox>
             </CarouselSlide>
 
             <CarouselSlide>
@@ -441,13 +450,15 @@ export const MainHero = () => {
                   <MainHeroSlider />
                 </DemoContainer>
               </FocusArea>
-              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-                Slider
-              </Text>
-              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                Supports keyboard and touch input, step interval, multiple thumbs for value ranges,
-                and RTL direction.
-              </Text>
+              <GrabBox>
+                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                  Slider
+                </Text>
+                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                  Supports keyboard and touch input, step interval, multiple thumbs for value
+                  ranges, and RTL direction.
+                </Text>
+              </GrabBox>
             </CarouselSlide>
 
             <CarouselSlide>
@@ -468,13 +479,15 @@ export const MainHero = () => {
                   <MainHeroScrollArea />
                 </DemoContainer>
               </FocusArea>
-              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-                Scroll Area
-              </Text>
-              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                Supports custom cross-browser styling while maintaining the browser's native scroll
-                behavior.
-              </Text>
+              <GrabBox>
+                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                  Scroll Area
+                </Text>
+                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                  Supports custom cross-browser styling while maintaining the browser's native
+                  scroll behavior.
+                </Text>
+              </GrabBox>
             </CarouselSlide>
 
             <CarouselSlide>
@@ -495,13 +508,15 @@ export const MainHero = () => {
                   <MainHeroTabs />
                 </DemoContainer>
               </FocusArea>
-              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-                Tabs
-              </Text>
-              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                Supports arrow key navigation, horizontal/vertical orientation, controlled or
-                uncontrolled.
-              </Text>
+              <GrabBox>
+                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                  Tabs
+                </Text>
+                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                  Supports arrow key navigation, horizontal/vertical orientation, controlled or
+                  uncontrolled.
+                </Text>
+              </GrabBox>
             </CarouselSlide>
 
             <CarouselSlide>
@@ -522,13 +537,15 @@ export const MainHero = () => {
                   <MainHeroAccordion />
                 </DemoContainer>
               </FocusArea>
-              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-                Accordion
-              </Text>
-              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                Supports one or multiple items open at the same time, keyboard navigation, collapse
-                and expand animation.
-              </Text>
+              <GrabBox>
+                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                  Accordion
+                </Text>
+                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                  Supports one or multiple items open at the same time, keyboard navigation,
+                  collapse and expand animation.
+                </Text>
+              </GrabBox>
             </CarouselSlide>
 
             <CarouselSlide>
@@ -549,13 +566,15 @@ export const MainHero = () => {
                   <MainHeroRadioGroup />
                 </DemoContainer>
               </FocusArea>
-              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-                Radio Group
-              </Text>
-              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                With arrow key navigation, horizontal/vertical orientation support, controlled or
-                uncontrolled.
-              </Text>
+              <GrabBox>
+                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                  Radio Group
+                </Text>
+                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                  With arrow key navigation, horizontal/vertical orientation support, controlled or
+                  uncontrolled.
+                </Text>
+              </GrabBox>
             </CarouselSlide>
 
             <CarouselSlide>
@@ -576,13 +595,15 @@ export const MainHero = () => {
                   <MainHeroToggleGroup />
                 </DemoContainer>
               </FocusArea>
-              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-                Toggle Group
-              </Text>
-              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                A set of two-state buttons that can be toggled on or off. Supports single and
-                multiple pressed buttons.
-              </Text>
+              <GrabBox>
+                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                  Toggle Group
+                </Text>
+                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                  A set of two-state buttons that can be toggled on or off. Supports single and
+                  multiple pressed buttons.
+                </Text>
+              </GrabBox>
             </CarouselSlide>
 
             <CarouselSlide>
@@ -603,12 +624,14 @@ export const MainHero = () => {
                   <MainHeroSwitch />
                 </DemoContainer>
               </FocusArea>
-              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-                Switch
-              </Text>
-              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                Allows the user to toggle between checked and not checked.
-              </Text>
+              <GrabBox>
+                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                  Switch
+                </Text>
+                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                  Allows the user to toggle between checked and not checked.
+                </Text>
+              </GrabBox>
             </CarouselSlide>
 
             <CarouselSlide>
@@ -728,4 +751,13 @@ const CarouselArrowButton = styled('button', {
   '@media (hover: none) and (pointer: coarse)': {
     display: 'none',
   },
+});
+
+const GrabBox = styled('div', {
+  cursor: 'grab',
+  '&:active': { cursor: 'grabbing' },
+
+  // Fill in spaces between slides
+  mr: '-$$gap',
+  pr: '$$gap',
 });
