@@ -88,7 +88,7 @@ export const StatsSection = () => {
                 textIndent: '-0.12em',
               }}
             >
-              1500
+              1600
               <Box as="span" css={{ fontSize: '75%', ml: '0.25em' }}>
                 +
               </Box>
@@ -113,7 +113,7 @@ export const StatsSection = () => {
                 textIndent: '-0.12em',
               }}
             >
-              2000
+              2200
               <Box as="span" css={{ fontSize: '75%', ml: '0.25em' }}>
                 +
               </Box>
