@@ -6,7 +6,7 @@ import { DemoIconButton } from '@components/marketing/DemoIconButton';
 import { Cross2Icon } from '@radix-ui/react-icons';
 
 const DialogContent = styled(DialogPrimitive.Content, {
-  position: 'fixed',
+  position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
@@ -15,7 +15,7 @@ const DialogContent = styled(DialogPrimitive.Content, {
   br: '$2',
   py: 10,
   px: 10,
-  marginTop: '-3vh',
+  marginTop: -15,
   boxShadow: '0px 5px 30px -5px rgba(0, 0, 0, 0.1)',
 
   '& ::selection': {
@@ -31,7 +31,7 @@ export function MainHeroDialog() {
   return (
     <DialogPrimitive.Root modal={false} defaultOpen>
       <DialogPrimitive.Trigger asChild>
-        <DemoButton css={{ mb: 120 }}>Dialog</DemoButton>
+        <DemoButton>Open Dialog</DemoButton>
       </DialogPrimitive.Trigger>
 
       <DialogContent

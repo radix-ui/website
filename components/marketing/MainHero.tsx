@@ -20,6 +20,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from './Carousel';
+import { MainHeroDialog } from './MainHeroDialog';
 import { MainHeroPopover } from './MainHeroPopover';
 import { MainHeroDropdownMenu } from './MainHeroDropdownMenu';
 import { MainHeroSlider } from './MainHeroSlider';
@@ -341,7 +342,6 @@ export const MainHero = () => {
               },
             }}
           >
-            {/*
             <CarouselSlide>
               <FocusArea
                 aria-label="Dialog component demo"
@@ -357,19 +357,17 @@ export const MainHero = () => {
                     },
                   }}
                 >
-                  <MainHeroDialogDemo />
+                  <MainHeroDialog />
                 </DemoContainer>
-                </FocusArea>
-                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-                  Dialog
-                </Text>
-                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                  With modal and non-modal modes, fine-grained focus&nbsp;control, accessible to
-                  screen readers.
-                </Text>
-
+              </FocusArea>
+              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                Dialog
+              </Text>
+              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                With modal and non-modal modes, fine-grained focus&nbsp;control, accessible to
+                screen readers.
+              </Text>
             </CarouselSlide>
-            */}
 
             <CarouselSlide>
               <FocusArea
@@ -380,9 +378,9 @@ export const MainHero = () => {
                 <DemoContainer
                   aria-hidden
                   css={{
-                    background: 'linear-gradient(120deg, $indigo6, $crimson5)',
+                    background: 'linear-gradient(120deg,  $crimson5, $blue5)',
                     [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(120deg, $indigo4, $plum3)',
+                      background: 'linear-gradient(120deg,  $plum3, $blue3)',
                     },
                   }}
                 >
@@ -407,9 +405,9 @@ export const MainHero = () => {
                 <DemoContainer
                   aria-hidden
                   css={{
-                    background: 'linear-gradient(120deg,  $crimson5, $blue5)',
+                    background: 'linear-gradient(120deg, $blue5, $lime3)',
                     [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(120deg,  $plum3, $blue3)',
+                      background: 'linear-gradient(120deg, $blue3, $sand6)',
                     },
                   }}
                 >
@@ -434,9 +432,9 @@ export const MainHero = () => {
                 <DemoContainer
                   aria-hidden
                   css={{
-                    background: 'linear-gradient(120deg, $blue5, $lime3)',
+                    background: 'linear-gradient(120deg, $lime3, $pink4)',
                     [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(120deg, $blue3, $sand6)',
+                      background: 'linear-gradient(120deg, $sand6, $pink3)',
                     },
                   }}
                 >
@@ -461,9 +459,9 @@ export const MainHero = () => {
                 <DemoContainer
                   aria-hidden
                   css={{
-                    background: 'linear-gradient(120deg, $lime3, $pink4)',
+                    background: 'linear-gradient(120deg, $pink4, $gold5)',
                     [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(120deg, $sand6, $pink3)',
+                      background: 'linear-gradient(120deg, $pink3, $gold4)',
                     },
                   }}
                 >
@@ -488,9 +486,9 @@ export const MainHero = () => {
                 <DemoContainer
                   aria-hidden
                   css={{
-                    background: 'linear-gradient(120deg, $pink4, $gold5)',
+                    background: 'linear-gradient(120deg, $gold5, $tomato5)',
                     [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(120deg, $pink3, $gold4)',
+                      background: 'linear-gradient(120deg, $gold4, $crimson4)',
                     },
                   }}
                 >
@@ -515,9 +513,9 @@ export const MainHero = () => {
                 <DemoContainer
                   aria-hidden
                   css={{
-                    background: 'linear-gradient(120deg, $gold5, $tomato5)',
+                    background: 'linear-gradient(120deg, $tomato5, $indigo7)',
                     [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(120deg, $gold4, $crimson4)',
+                      background: 'linear-gradient(120deg, $crimson4, $indigo5)',
                     },
                   }}
                 >
@@ -542,9 +540,9 @@ export const MainHero = () => {
                 <DemoContainer
                   aria-hidden
                   css={{
-                    background: 'linear-gradient(120deg, $tomato5, $indigo7)',
+                    background: 'linear-gradient(120deg, $indigo7, $cyan3)',
                     [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(120deg, $crimson4, $indigo5)',
+                      background: 'linear-gradient(120deg, $indigo5, $cyan7)',
                     },
                   }}
                 >
@@ -569,9 +567,9 @@ export const MainHero = () => {
                 <DemoContainer
                   aria-hidden
                   css={{
-                    background: 'linear-gradient(120deg, $indigo7, $cyan4)',
+                    background: 'linear-gradient(120deg, $cyan3, $mint5)',
                     [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(120deg, $indigo5, $cyan7)',
+                      background: 'linear-gradient(120deg, $cyan7, $teal6)',
                     },
                   }}
                 >
@@ -596,17 +594,11 @@ export const MainHero = () => {
                 <DemoContainer
                   aria-hidden
                   css={{
-                    background: 'linear-gradient(120deg, $cyan4, $mint5)',
+                    background: 'linear-gradient(120deg, $mint5, $red3)',
                     [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(120deg, $cyan7, $mint6)',
+                      background: 'linear-gradient(120deg, $teal6, $plum4)',
                     },
                   }}
-                  // css={{
-                  //   background: 'linear-gradient(120deg, $mint5, $red3)',
-                  //   [`.${darkTheme} &`]: {
-                  //     background: 'linear-gradient(120deg, $mint6, $plum4)',
-                  //   },
-                  // }}
                 >
                   <MainHeroSwitch />
                 </DemoContainer>
@@ -623,7 +615,7 @@ export const MainHero = () => {
               <FocusArea onKeyDown={onFocusAreaKeyDown} onFocus={onFocusAreaFocus}>
                 <DemoContainer
                   css={{
-                    backgroundColor: '$whiteA9',
+                    backgroundColor: '$whiteA6',
                     boxShadow: '0 0 0 1px $colors$slateA5',
                     [`.${darkTheme} &`]: {
                       backgroundColor: '$blackA4',
