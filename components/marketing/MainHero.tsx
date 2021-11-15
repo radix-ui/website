@@ -45,6 +45,10 @@ const DemoContainer = styled('div', {
   // Content slightly above vertical center feels perfectly centred
   pb: '$3',
 
+  // Can't select text because the carousel is draggable
+  userSelect: 'none',
+  cursor: 'default',
+
   '@bp1': {
     width: 400,
   },
