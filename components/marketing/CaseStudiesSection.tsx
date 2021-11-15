@@ -84,14 +84,12 @@ export const CaseStudiesSection = () => {
         </Grid>
 
         <Text variant="gray" css={{ mb: '$3' }}>
-          <Link
-            href="/case-studies"
-            variant="subtle"
-            css={{ display: 'inline-flex', alignItems: 'center' }}
-          >
-            And dozens more companies
-            <ArrowRightIcon />
-          </Link>
+          <NextLink href="/case-studies" passHref>
+            <Link variant="subtle" css={{ display: 'inline-flex', alignItems: 'center' }}>
+              And dozens more companies
+              <ArrowRightIcon />
+            </Link>
+          </NextLink>
         </Text>
       </Container>
 

@@ -9,6 +9,7 @@ import {
   Flex,
   Paragraph,
   Section,
+  Link,
 } from '@modulz/design-system';
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons';
 import { MarketingButton } from './MarketingButton';
@@ -301,13 +302,11 @@ export const MainHero = () => {
               in React.
             </Paragraph>
           </Box>
-          <Flex justify={{ '@initial': 'start' }} gap="5">
-            <NextLink href="/docs/primitives/overview/getting-started" passHref>
-              <MarketingButton as="a" icon={ArrowRightIcon}>
-                Install Primitives
-              </MarketingButton>
-            </NextLink>
-          </Flex>
+          <NextLink href="/docs/primitives/overview/getting-started" passHref>
+            <MarketingButton as="a" icon={ArrowRightIcon}>
+              Install Primitives
+            </MarketingButton>
+          </NextLink>
         </Box>
       </Container>
 
@@ -618,6 +617,34 @@ export const MainHero = () => {
               <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
                 Allows the user to toggle between checked and not checked.
               </Text>
+            </CarouselSlide>
+
+            <CarouselSlide>
+              <FocusArea onKeyDown={onFocusAreaKeyDown} onFocus={onFocusAreaFocus}>
+                <DemoContainer
+                  css={{
+                    backgroundColor: '$whiteA9',
+                    boxShadow: '0 0 0 1px $colors$slateA5',
+                    [`.${darkTheme} &`]: {
+                      backgroundColor: '$blackA4',
+                    },
+                  }}
+                >
+                  <Flex align="center" direction="column" gap="2">
+                    <Text size="2" variant="gray">
+                      See more components in the docs
+                    </Text>
+                    <Text size="3">
+                      <NextLink href="/docs/primitives/overview/getting-started" passHref>
+                        <Link css={{ display: 'inline-flex', alignItems: 'center' }}>
+                          View docs
+                          <ArrowRightIcon />
+                        </Link>
+                      </NextLink>
+                    </Text>
+                  </Flex>
+                </DemoContainer>
+              </FocusArea>
             </CarouselSlide>
           </CarouselSlideList>
 
