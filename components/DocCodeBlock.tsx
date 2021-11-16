@@ -168,6 +168,7 @@ const makeCodeSandboxParams = (name, code) => {
           dependencies: {
             react: 'latest',
             'react-dom': 'latest',
+            'react-scripts': 'latest',
             '@stitches/react': 'latest',
             '@radix-ui/colors': 'latest',
             '@radix-ui/react-icons': 'latest',
