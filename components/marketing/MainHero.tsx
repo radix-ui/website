@@ -9,6 +9,7 @@ import {
   Flex,
   Paragraph,
   Section,
+  Link,
 } from '@modulz/design-system';
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons';
 import { MarketingButton } from './MarketingButton';
@@ -19,6 +20,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from './Carousel';
+import { MainHeroDialog } from './MainHeroDialog';
 import { MainHeroPopover } from './MainHeroPopover';
 import { MainHeroDropdownMenu } from './MainHeroDropdownMenu';
 import { MainHeroSlider } from './MainHeroSlider';
@@ -42,6 +44,10 @@ const DemoContainer = styled('div', {
 
   // Content slightly above vertical center feels perfectly centred
   pb: '$3',
+
+  // Can't select text because the carousel is draggable
+  userSelect: 'none',
+  cursor: 'default',
 
   '@bp1': {
     width: 400,
@@ -137,6 +143,7 @@ export const MainHero = () => {
         const nextDemo = allAreas[nextIndex];
         isRoving.current = true;
         nextDemo.focus();
+        (nextDemo as any).scrollIntoViewIfNeeded?.(true);
         lastUsedFocusArea.current = nextDemo;
         isRoving.current = false;
       }
@@ -149,6 +156,7 @@ export const MainHero = () => {
         const prevDemo = allAreas[prevIndex];
         isRoving.current = true;
         prevDemo.focus();
+        (prevDemo as any).scrollIntoViewIfNeeded?.(true);
         lastUsedFocusArea.current = prevDemo;
         isRoving.current = false;
       }
@@ -301,13 +309,11 @@ export const MainHero = () => {
               in React.
             </Paragraph>
           </Box>
-          <Flex justify={{ '@initial': 'start' }} gap="5">
-            <NextLink href="/docs/primitives/overview/getting-started" passHref>
-              <MarketingButton as="a" icon={ArrowRightIcon}>
-                Install Primitives
-              </MarketingButton>
-            </NextLink>
-          </Flex>
+          <NextLink href="/docs/primitives/overview/getting-started" passHref>
+            <MarketingButton as="a" icon={ArrowRightIcon}>
+              Install Primitives
+            </MarketingButton>
+          </NextLink>
         </Box>
       </Container>
 
@@ -323,10 +329,13 @@ export const MainHero = () => {
               py: '$1',
               WebkitOverflowScrolling: 'touch',
 
+              // Gap between slides
+              $$gap: '$space$5',
+
               // calculate the left padding to apply to the scrolling list
               // so that the carousel starts aligned with the container component
               // the "1145" and "$5" values comes from the <Container /> component
-              '$$scroll-padding': 'max($space$5, calc((100% - 1145px) / 2 + $space$5))',
+              '$$scroll-padding': 'max($$gap, calc((100% - 1145px) / 2 + $$gap))',
               pl: '$$scroll-padding',
 
               // hide scrollbar
@@ -338,11 +347,10 @@ export const MainHero = () => {
 
               // Can't have nice grid gap because Safari butchers scroll padding with it
               '& > *': {
-                pr: '$5',
+                pr: '$$gap',
               },
             }}
           >
-            {/*
             <CarouselSlide>
               <FocusArea
                 aria-label="Dialog component demo"
@@ -358,9 +366,10 @@ export const MainHero = () => {
                     },
                   }}
                 >
-                  <MainHeroDialogDemo />
+                  <MainHeroDialog />
                 </DemoContainer>
-                </FocusArea>
+              </FocusArea>
+              <GrabBox>
                 <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
                   Dialog
                 </Text>
@@ -368,40 +377,12 @@ export const MainHero = () => {
                   With modal and non-modal modes, fine-grained focus&nbsp;control, accessible to
                   screen readers.
                 </Text>
-
+              </GrabBox>
             </CarouselSlide>
-            */}
 
             <CarouselSlide>
               <FocusArea
                 aria-label="Dropdown menu component demo"
-                onKeyDown={onFocusAreaKeyDown}
-                onFocus={onFocusAreaFocus}
-              >
-                <DemoContainer
-                  aria-hidden
-                  css={{
-                    background: 'linear-gradient(120deg, $indigo6, $crimson5)',
-                    [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(120deg, $indigo4, $plum3)',
-                    },
-                  }}
-                >
-                  <MainHeroDropdownMenu />
-                </DemoContainer>
-              </FocusArea>
-              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-                Dropdown Menu
-              </Text>
-              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                With submenus, checkable items, collision handling, arrow key navigation, and
-                typeahead support.
-              </Text>
-            </CarouselSlide>
-
-            <CarouselSlide>
-              <FocusArea
-                aria-label="Popover component demo"
                 onKeyDown={onFocusAreaKeyDown}
                 onFocus={onFocusAreaFocus}
               >
@@ -414,21 +395,23 @@ export const MainHero = () => {
                     },
                   }}
                 >
-                  <MainHeroPopover />
+                  <MainHeroDropdownMenu />
                 </DemoContainer>
               </FocusArea>
-              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-                Popover
-              </Text>
-              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                With fine-grained focus control, collision handling, origin-aware and
-                collision-aware animations.
-              </Text>
+              <GrabBox>
+                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                  Dropdown Menu
+                </Text>
+                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                  With submenus, checkable items, collision handling, arrow key navigation, and
+                  typeahead support.
+                </Text>
+              </GrabBox>
             </CarouselSlide>
 
             <CarouselSlide>
               <FocusArea
-                aria-label="Slider component demo"
+                aria-label="Popover component demo"
                 onKeyDown={onFocusAreaKeyDown}
                 onFocus={onFocusAreaFocus}
               >
@@ -441,21 +424,23 @@ export const MainHero = () => {
                     },
                   }}
                 >
-                  <MainHeroSlider />
+                  <MainHeroPopover />
                 </DemoContainer>
               </FocusArea>
-              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-                Slider
-              </Text>
-              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                Supports keyboard and touch input, step interval, multiple thumbs for value ranges,
-                and RTL direction.
-              </Text>
+              <GrabBox>
+                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                  Popover
+                </Text>
+                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                  With fine-grained focus control, collision handling, origin-aware and
+                  collision-aware animations.
+                </Text>
+              </GrabBox>
             </CarouselSlide>
 
             <CarouselSlide>
               <FocusArea
-                aria-label="Scroll area component demo"
+                aria-label="Slider component demo"
                 onKeyDown={onFocusAreaKeyDown}
                 onFocus={onFocusAreaFocus}
               >
@@ -468,21 +453,23 @@ export const MainHero = () => {
                     },
                   }}
                 >
-                  <MainHeroScrollArea />
+                  <MainHeroSlider />
                 </DemoContainer>
               </FocusArea>
-              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-                Scroll Area
-              </Text>
-              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                Supports custom cross-browser styling while maintaining the browser's native scroll
-                behavior.
-              </Text>
+              <GrabBox>
+                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                  Slider
+                </Text>
+                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                  Supports keyboard and touch input, step interval, multiple thumbs for value
+                  ranges, and RTL direction.
+                </Text>
+              </GrabBox>
             </CarouselSlide>
 
             <CarouselSlide>
               <FocusArea
-                aria-label="Tabs component demo"
+                aria-label="Scroll area component demo"
                 onKeyDown={onFocusAreaKeyDown}
                 onFocus={onFocusAreaFocus}
               >
@@ -495,21 +482,23 @@ export const MainHero = () => {
                     },
                   }}
                 >
-                  <MainHeroTabs />
+                  <MainHeroScrollArea />
                 </DemoContainer>
               </FocusArea>
-              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-                Tabs
-              </Text>
-              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                Supports arrow key navigation, horizontal/vertical orientation, controlled or
-                uncontrolled.
-              </Text>
+              <GrabBox>
+                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                  Scroll Area
+                </Text>
+                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                  Supports custom cross-browser styling while maintaining the browser's native
+                  scroll behavior.
+                </Text>
+              </GrabBox>
             </CarouselSlide>
 
             <CarouselSlide>
               <FocusArea
-                aria-label="Accordion component demo"
+                aria-label="Tabs component demo"
                 onKeyDown={onFocusAreaKeyDown}
                 onFocus={onFocusAreaFocus}
               >
@@ -522,21 +511,23 @@ export const MainHero = () => {
                     },
                   }}
                 >
-                  <MainHeroAccordion />
+                  <MainHeroTabs />
                 </DemoContainer>
               </FocusArea>
-              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-                Accordion
-              </Text>
-              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                Supports one or multiple items open at the same time, keyboard navigation, collapse
-                and expand animation.
-              </Text>
+              <GrabBox>
+                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                  Tabs
+                </Text>
+                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                  Supports arrow key navigation, horizontal/vertical orientation, controlled or
+                  uncontrolled.
+                </Text>
+              </GrabBox>
             </CarouselSlide>
 
             <CarouselSlide>
               <FocusArea
-                aria-label="Radio group component demo"
+                aria-label="Accordion component demo"
                 onKeyDown={onFocusAreaKeyDown}
                 onFocus={onFocusAreaFocus}
               >
@@ -549,16 +540,47 @@ export const MainHero = () => {
                     },
                   }}
                 >
+                  <MainHeroAccordion />
+                </DemoContainer>
+              </FocusArea>
+              <GrabBox>
+                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                  Accordion
+                </Text>
+                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                  Supports one or multiple items open at the same time, keyboard navigation,
+                  collapse and expand animation.
+                </Text>
+              </GrabBox>
+            </CarouselSlide>
+
+            <CarouselSlide>
+              <FocusArea
+                aria-label="Radio group component demo"
+                onKeyDown={onFocusAreaKeyDown}
+                onFocus={onFocusAreaFocus}
+              >
+                <DemoContainer
+                  aria-hidden
+                  css={{
+                    background: 'linear-gradient(120deg, $indigo7, $cyan3)',
+                    [`.${darkTheme} &`]: {
+                      background: 'linear-gradient(120deg, $indigo5, $cyan7)',
+                    },
+                  }}
+                >
                   <MainHeroRadioGroup />
                 </DemoContainer>
               </FocusArea>
-              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-                Radio Group
-              </Text>
-              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                With arrow key navigation, horizontal/vertical orientation support, controlled or
-                uncontrolled.
-              </Text>
+              <GrabBox>
+                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                  Radio Group
+                </Text>
+                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                  With arrow key navigation, horizontal/vertical orientation support, controlled or
+                  uncontrolled.
+                </Text>
+              </GrabBox>
             </CarouselSlide>
 
             <CarouselSlide>
@@ -570,22 +592,24 @@ export const MainHero = () => {
                 <DemoContainer
                   aria-hidden
                   css={{
-                    background: 'linear-gradient(120deg, $indigo7, $cyan4)',
+                    background: 'linear-gradient(120deg, $cyan3, $mint5)',
                     [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(120deg, $indigo5, $cyan7)',
+                      background: 'linear-gradient(120deg, $cyan7, $teal6)',
                     },
                   }}
                 >
                   <MainHeroToggleGroup />
                 </DemoContainer>
               </FocusArea>
-              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-                Toggle Group
-              </Text>
-              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                A set of two-state buttons that can be toggled on or off. Supports single and
-                multiple pressed buttons.
-              </Text>
+              <GrabBox>
+                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                  Toggle Group
+                </Text>
+                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                  A set of two-state buttons that can be toggled on or off. Supports single and
+                  multiple pressed buttons.
+                </Text>
+              </GrabBox>
             </CarouselSlide>
 
             <CarouselSlide>
@@ -597,27 +621,51 @@ export const MainHero = () => {
                 <DemoContainer
                   aria-hidden
                   css={{
-                    background: 'linear-gradient(120deg, $cyan4, $mint5)',
+                    background: 'linear-gradient(120deg, $mint5, $red3)',
                     [`.${darkTheme} &`]: {
-                      background: 'linear-gradient(120deg, $cyan7, $mint6)',
+                      background: 'linear-gradient(120deg, $teal6, $plum4)',
                     },
                   }}
-                  // css={{
-                  //   background: 'linear-gradient(120deg, $mint5, $red3)',
-                  //   [`.${darkTheme} &`]: {
-                  //     background: 'linear-gradient(120deg, $mint6, $plum4)',
-                  //   },
-                  // }}
                 >
                   <MainHeroSwitch />
                 </DemoContainer>
               </FocusArea>
-              <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
-                Switch
-              </Text>
-              <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
-                Allows the user to toggle between checked and not checked.
-              </Text>
+              <GrabBox>
+                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                  Switch
+                </Text>
+                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                  Allows the user to toggle between checked and not checked.
+                </Text>
+              </GrabBox>
+            </CarouselSlide>
+
+            <CarouselSlide>
+              <FocusArea onKeyDown={onFocusAreaKeyDown} onFocus={onFocusAreaFocus}>
+                <DemoContainer
+                  css={{
+                    backgroundColor: '$whiteA6',
+                    boxShadow: '0 0 0 1px $colors$slateA5',
+                    [`.${darkTheme} &`]: {
+                      backgroundColor: '$blackA4',
+                    },
+                  }}
+                >
+                  <Flex align="center" direction="column" gap="2">
+                    <Text size="2" variant="gray">
+                      See more components in the docs
+                    </Text>
+                    <Text size="3">
+                      <NextLink href="/docs/primitives/overview/getting-started" passHref>
+                        <Link css={{ display: 'inline-flex', alignItems: 'center' }}>
+                          View docs
+                          <ArrowRightIcon />
+                        </Link>
+                      </NextLink>
+                    </Text>
+                  </Flex>
+                </DemoContainer>
+              </FocusArea>
             </CarouselSlide>
           </CarouselSlideList>
 
@@ -709,4 +757,13 @@ const CarouselArrowButton = styled('button', {
   '@media (hover: none) and (pointer: coarse)': {
     display: 'none',
   },
+});
+
+const GrabBox = styled('div', {
+  cursor: 'grab',
+  '&:active': { cursor: 'grabbing' },
+
+  // Fill in spaces between slides
+  mr: '-$$gap',
+  pr: '$$gap',
 });
