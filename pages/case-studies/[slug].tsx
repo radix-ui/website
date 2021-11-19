@@ -21,6 +21,7 @@ import { CaseStudyLogo, CaseStudyLogoVariant } from '@components/marketing/CaseS
 import { Footer } from '@components/Footer';
 import { BoxLink } from '@components/BoxLink';
 import { Root as AccessibleIcon } from '@radix-ui/react-accessible-icon';
+import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 
 type CaseStudyPage = {
   frontmatter: {
@@ -112,8 +113,13 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                   </Paragraph>
                   <Paragraph css={{ mb: '$1' }}>{frontmatter.companyAbout}</Paragraph>
                   <Paragraph>
-                    <Link target="_blank" href={`https://${frontmatter.companyUrl}`}>
+                    <Link
+                      target="_blank"
+                      href={`https://${frontmatter.companyUrl}`}
+                      css={{ display: 'inline-flex' }}
+                    >
                       {frontmatter.companyUrl}
+                      <ArrowTopRightIcon style={{ marginLeft: -1, marginBottom: -2 }} />
                     </Link>
                   </Paragraph>
                 </Box>
@@ -179,8 +185,13 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                     Submit your case study
                   </Paragraph>
                   <Paragraph as="span">
-                    <Link href="https://modulz.typeform.com/to/wplAbXHK" target="_blank">
+                    <Link
+                      href="https://modulz.typeform.com/to/wplAbXHK"
+                      target="_blank"
+                      css={{ display: 'inline-flex' }}
+                    >
                       Tell us how you use Radix
+                      <ArrowTopRightIcon style={{ marginLeft: -1, marginBottom: -2 }} />
                     </Link>
                   </Paragraph>
                 </Box>

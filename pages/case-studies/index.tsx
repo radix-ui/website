@@ -19,6 +19,7 @@ import { CaseStudyLogo } from '@components/marketing/CaseStudyLogo';
 import { Footer } from '@components/Footer';
 import { LogoLink } from '@components/marketing/LogoLink';
 import { Root as AccessibleIcon } from '@radix-ui/react-accessible-icon';
+import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 
 export default function CaseStudy() {
   return (
@@ -45,7 +46,7 @@ export default function CaseStudy() {
           <Grid
             align="center"
             columns={{ '@initial': 1, '@bp1': 2, '@bp2': 3 }}
-            css={{ gap: 1, placeItems: 'stretch', gridAutoRows: '200px' }}
+            css={{ gap: 1, placeItems: 'stretch', gridAutoRows: '200px', mb: '$8' }}
           >
             <NextLink href="/case-studies/acid-tango" passHref>
               <LogoLink variant="box">
@@ -156,6 +157,26 @@ export default function CaseStudy() {
               </LogoLink>
             </NextLink>
           </Grid>
+
+          <Separator size="2" css={{ mb: '$8', mx: 'auto' }} />
+
+          <Box css={{ ta: 'center', maxWidth: 480, mb: '$5', mx: 'auto' }}>
+            <Heading size="1" as="h2" css={{ mb: '$2' }}>
+              Do you use Radix at your company?
+            </Heading>
+
+            <Paragraph css={{ ta: 'center' }}>
+              We’d love to hear how you use Radix or Stitches.{' '}
+              <Link
+                href="https://modulz.typeform.com/to/wplAbXHK"
+                target="_blank"
+                css={{ display: 'inline-flex' }}
+              >
+                Submit your case study
+                <ArrowTopRightIcon style={{ marginLeft: -1, marginBottom: -2 }} />
+              </Link>
+            </Paragraph>
+          </Box>
         </Section>
 
         <Footer />
