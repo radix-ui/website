@@ -24,10 +24,9 @@ export default function CaseStudy() {
   return (
     <>
       <TitleAndMetaTags
-        title={'Case studies'}
-        // TODO meta
-        // description={frontmatter.metaDescription}
-        // image={frontmatter.metaImage}
+        title="Case studies — Radix UI"
+        description="An open-source React component library for building high-quality, accessible design systems and web apps."
+        image="default.png"
       />
 
       <Header />

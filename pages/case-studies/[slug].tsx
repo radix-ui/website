@@ -22,8 +22,6 @@ import { Footer } from '@components/Footer';
 import { BoxLink } from '@components/BoxLink';
 import { Root as AccessibleIcon } from '@radix-ui/react-accessible-icon';
 
-// TODO meta image?
-
 type CaseStudyPage = {
   frontmatter: {
     slug: string;
@@ -52,7 +50,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
       <TitleAndMetaTags
         title={`${frontmatter.metaTitle} — Case studies — Radix UI`}
         description={frontmatter.metaDescription}
-        // image={frontmatter.metaImage}
+        image="default.png"
       />
 
       <Header />
@@ -166,7 +164,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                   })}
                 </Box>
                 <Separator size="2" css={{ my: '$7' }} />
-                <Box>
+                <Box css={{ mb: '$5' }}>
                   <Paragraph as="span" css={{ fontWeight: 500 }}>
                     Next case study
                   </Paragraph>
@@ -174,6 +172,16 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                     <NextLink href={`/${frontmatter.nextCaseStudySlug}`} passHref>
                       <Link>{frontmatter.nextCaseStudyTitle}</Link>
                     </NextLink>
+                  </Paragraph>
+                </Box>
+                <Box>
+                  <Paragraph as="span" css={{ fontWeight: 500 }}>
+                    Submit your case study
+                  </Paragraph>
+                  <Paragraph as="span">
+                    <Link href="https://modulz.typeform.com/to/wplAbXHK" target="_blank">
+                      Tell us how you use Radix
+                    </Link>
                   </Paragraph>
                 </Box>
               </Box>
