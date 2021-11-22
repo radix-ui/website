@@ -21,7 +21,6 @@ export default function PrimitivesHome() {
       <TitleAndMetaTags
         title="Primitives — Radix UI"
         description="An open-source React component library for building high-quality, accessible design systems and web apps."
-        // TODO meta image
         image="default.png"
       />
       <FancyBackground>
