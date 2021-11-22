@@ -37,7 +37,7 @@ export function ColorTestSaturationDark() {
           <Text css={{ fontSize: '$2', color: '$slate11' }}>11</Text>
         </Box>
         <Box css={{ ta: 'center', pb: '$2' }}>
-          <Text css={{ fontSize: '$2', color: '$slate11' }}>11</Text>
+          <Text css={{ fontSize: '$2', color: '$slate11' }}>12</Text>
         </Box>
 
         <Box>
