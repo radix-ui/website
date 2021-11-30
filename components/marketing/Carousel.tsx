@@ -28,25 +28,27 @@ export const Carousel = (props) => {
   const navigationUpdateDelay = useRef(100);
   useEffect(() => smoothscroll.polyfill(), []);
 
-  const getSlideInDirection = useCallbackRef((direction) => {
-    const slides = ref.current?.querySelectorAll<HTMLElement>('[data-slide-intersected]');
+  const getSlideInDirection = useCallbackRef((direction: 1 | -1) => {
+    const slides = ref.current?.querySelectorAll<HTMLElement>('[data-slide-intersection-ratio]');
     if (slides) {
-      return Array.from(slides.values()).find((slide: HTMLElement, index) => {
-        const slideBefore = slides.item(index - direction) as HTMLElement;
-        return (
-          slide.dataset.slideIntersected === 'false' &&
-          slideBefore?.dataset.slideIntersected === 'true'
-        );
-      });
+      const slidesArray = Array.from(slides.values());
+
+      if (direction === 1) {
+        slidesArray.reverse();
+      }
+
+      return slidesArray.find((slide) => slide.dataset.slideIntersectionRatio !== '0');
     }
   });
 
   const handleNextClick = useCallback(() => {
     const nextSlide = getSlideInDirection(1);
+
     if (nextSlide) {
       const { scrollLeft, scrollWidth, clientWidth } = slideListRef.current;
       const itemWidth = nextSlide.clientWidth;
-      const nextPos = Math.floor(scrollLeft / itemWidth) * itemWidth + itemWidth * 2;
+      const itemsToScroll = itemWidth * 2.5 < document.documentElement.offsetWidth ? 2 : 1;
+      const nextPos = Math.floor(scrollLeft / itemWidth) * itemWidth + itemWidth * itemsToScroll;
       slideListRef.current.scrollTo({ left: nextPos, behavior: 'smooth' });
 
       // Disable previous & next buttons immediately
@@ -62,7 +64,8 @@ export const Carousel = (props) => {
     if (prevSlide) {
       const { scrollLeft, scrollWidth, clientWidth } = slideListRef.current;
       const itemWidth = prevSlide.clientWidth;
-      const nextPos = Math.ceil(scrollLeft / itemWidth) * itemWidth - itemWidth * 2;
+      const itemsToScroll = itemWidth * 2.5 < document.documentElement.offsetWidth ? 2 : 1;
+      const nextPos = Math.ceil(scrollLeft / itemWidth) * itemWidth - itemWidth * itemsToScroll;
       slideListRef.current.scrollTo({ left: nextPos, behavior: 'smooth' });
 
       // Disable previous & next buttons immediately
@@ -176,14 +179,14 @@ export const CarouselSlide = (props) => {
   const { as: Comp = Box, ...slideProps } = props;
   const context = useCarouselContext('CarouselSlide');
   const ref = useRef<React.ElementRef<typeof Box>>(null);
-  const [isIntersected, setIsIntersected] = useState(false);
+  const [intersectionRatio, setIntersectionRatio] = useState(0);
   const isDraggingRef = useRef(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => setIsIntersected(entry.isIntersecting), {
-      root: context.slideListRef.current,
-      threshold: 1.0,
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => setIntersectionRatio(entry.intersectionRatio),
+      { root: context.slideListRef.current, threshold: [0, 0.5, 1] }
+    );
     observer.observe(ref.current);
     return () => observer.disconnect();
   }, [context.slideListRef]);
@@ -192,7 +195,7 @@ export const CarouselSlide = (props) => {
     <Comp
       {...slideProps}
       ref={ref}
-      data-slide-intersected={isIntersected}
+      data-slide-intersection-ratio={intersectionRatio}
       onDragStart={(event) => {
         event.preventDefault();
         isDraggingRef.current = true;
