@@ -1,6 +1,6 @@
 import React from 'react';
 import * as DialogPrimitive from '@radix-ui/react-dialog-rc';
-import { Flex, Text, styled } from '@modulz/design-system';
+import { Flex, Text, styled, TextField, Grid } from '@modulz/design-system';
 import { DemoButton } from '@components/marketing/DemoButton';
 import { DemoIconButton } from '@components/marketing/DemoIconButton';
 import { Cross2Icon } from '@radix-ui/react-icons';
@@ -10,7 +10,7 @@ const DialogContent = styled(DialogPrimitive.Content, {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: '80%',
+  width: '70%',
   bc: '$loContrast',
   br: '$2',
   py: 10,
@@ -31,7 +31,7 @@ export function MainHeroDialog() {
   return (
     <DialogPrimitive.Root modal={false} defaultOpen>
       <DialogPrimitive.Trigger asChild>
-        <DemoButton>Open Dialog</DemoButton>
+        <DemoButton>Edit Profile</DemoButton>
       </DialogPrimitive.Trigger>
 
       <DialogContent
@@ -47,30 +47,35 @@ export function MainHeroDialog() {
       >
         <DialogPrimitive.Title asChild>
           <Text as="h2" size="4" css={{ fontWeight: '500', mb: '$2', lineHeight: 1.2 }}>
-            Dialog
+            Edit Profile
           </Text>
         </DialogPrimitive.Title>
 
-        <Text size="2" css={{ lineHeight: 1.5, mb: '$2' }}>
-          Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-          there live the blind texts.
+        <Text size="2" variant="gray" as="p" css={{ lineHeight: 1.5, mb: '$2' }}>
+          Make changes to your profile here. Click save when you’re done.
         </Text>
+
+        <Grid
+          align="center"
+          css={{ gridTemplateColumns: 'auto 1fr', columnGap: '$5', rowGap: '$1', mb: '$2' }}
+        >
+          <Text size="1">Name</Text>
+          <TextField defaultValue="Pedro Duarte" />
+          <Text size="1">Username</Text>
+          <TextField defaultValue="@peduarte" />
+        </Grid>
 
         <Flex justify="end" gap="2">
           <DialogPrimitive.Close asChild>
-            <DemoButton variant="gray">OK</DemoButton>
-          </DialogPrimitive.Close>
-
-          <DialogPrimitive.Close asChild>
-            <DemoButton variant="gray">Cancel</DemoButton>
-          </DialogPrimitive.Close>
-
-          <DialogPrimitive.Close asChild>
-            <DemoIconButton>
-              <Cross2Icon />
-            </DemoIconButton>
+            <DemoButton variant="gray">Save</DemoButton>
           </DialogPrimitive.Close>
         </Flex>
+
+        <DialogPrimitive.Close asChild>
+          <DemoIconButton>
+            <Cross2Icon />
+          </DemoIconButton>
+        </DialogPrimitive.Close>
       </DialogContent>
     </DialogPrimitive.Root>
   );
