@@ -323,10 +323,10 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.22.tgz#219dfd89ae5b97a8801f015323ffa4b62f45718b"
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
 
-"@modulz/design-system@0.6.1":
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.6.1.tgz#ffd5c711beb9d4987b061af79d8e41070a088e79"
-  integrity sha512-uStfQlYA6y7yts/hJAUKGRLyb/etcfAyS2cOdyykAjuRaQ0enQmjMTkbzdfnswrpVXZj5A6HaNnhlf02WBfgKQ==
+"@modulz/design-system@0.6.2-0":
+  version "0.6.2-0"
+  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.6.2-0.tgz#c060c0ff2583b67143717a961d8b5431c7180e77"
+  integrity sha512-V+rT5DTsUgsI9U5gqzs0OESV5IniALV8jQ43HwsKw+H9T1h3KGnm1Ya7t8+82qfolv0IaKHD/Proe9TgFORdpw==
   dependencies:
     "@radix-ui/colors" "0.1.7"
     "@radix-ui/react-accordion" "0.1.1"
@@ -351,7 +351,7 @@
     "@radix-ui/react-toggle" "0.1.1"
     "@radix-ui/react-tooltip" "0.1.1"
     "@radix-ui/react-use-layout-effect" "0.1.0"
-    "@stitches/react" "1.2.5"
+    "@stitches/react" "1.2.6-0"
     lodash.merge "^4.6.2"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
@@ -1068,10 +1068,10 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
   integrity sha512-ONhaKPIufzzrlNbqtWFFd+jlnemX6lJAgq9ZeiZtS7I1PIf/la7CW4m83rTXRnVnsMbW2k56pGYu7AUFJD9Pow==
 
-"@stitches/react@1.2.5":
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/@stitches/react/-/react-1.2.5.tgz#2353343c220f0c59ba388a26fdd9ff7962cb6031"
-  integrity sha512-95Wwjp5cvoYQjg616OBiHZM1PnIF51pnFQIgSPxPzS/xXBrer9sNO1tfpVfLYfOifvuotse2IFNbypJ92BXzvg==
+"@stitches/react@1.2.6-0":
+  version "1.2.6-0"
+  resolved "https://registry.yarnpkg.com/@stitches/react/-/react-1.2.6-0.tgz#ea7a1d35940f96337d18f5afd41aee60cbdcede7"
+  integrity sha512-hws7FTFTatR5RhLkg6lFWzvGXpZYNA9OqAA8HC/jCJDDvfEpN/8+9DjTX7k7/4oEWyaZBOfALAyHj/YrgScjxQ==
 
 "@types/anymatch@*":
   version "1.3.1"
