@@ -123,7 +123,7 @@ export default function ColorsHome() {
                   },
                 }}
               >
-                Github
+                GitHub
                 <ExternalLinkIcon />
               </Button>
             </Flex>
