@@ -168,11 +168,13 @@ const makeCodeSandboxParams = (name, code) => {
           dependencies: {
             react: 'latest',
             'react-dom': 'latest',
-            'react-scripts': 'latest',
             '@stitches/react': 'latest',
             '@radix-ui/colors': 'latest',
             '@radix-ui/react-icons': 'latest',
             [`@radix-ui/react-${name}`]: 'latest',
+          },
+          devDependencies: {
+            'react-scripts': 'latest',
           },
         } as any,
         isBinary: false,
@@ -196,7 +198,6 @@ ReactDOM.render(<div><App /></div>, document.getElementById('root'));`,
         isBinary: false,
       },
     },
-    template: 'create-react-app',
   });
 
   return parameters;
