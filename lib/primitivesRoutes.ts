@@ -7,6 +7,7 @@ export const primitivesRoutes = [
       { title: 'Styling', slug: 'docs/primitives/overview/styling' },
       { title: 'Animation', slug: 'docs/primitives/overview/animation' },
       { title: 'Accessibility', slug: 'docs/primitives/overview/accessibility' },
+      { title: 'Server side rendering', slug: 'docs/primitives/overview/server-side-rendering' },
       { title: 'Releases', slug: 'docs/primitives/overview/releases' },
     ],
   },
@@ -50,7 +51,7 @@ export const primitivesRoutes = [
     pages: [
       { title: 'Accessible Icon', slug: 'docs/primitives/utilities/accessible-icon' },
       { title: 'Announce', slug: 'docs/primitives/utilities/announce' },
-      { title: 'Id Provider', slug: 'docs/primitives/utilities/id-provider' },
+      { title: 'Id Provider', slug: 'docs/primitives/utilities/id-provider', deprecated: true },
       { title: 'Polymorphic', slug: 'docs/primitives/utilities/polymorphic', deprecated: true },
       { title: 'Portal', slug: 'docs/primitives/utilities/portal' },
       { title: 'Slot', slug: 'docs/primitives/utilities/slot' },
