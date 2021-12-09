@@ -1,24 +1,29 @@
 ---
-metaTitle: Alert Dialog
-metaDescription: A modal dialog that interrupts the user with important content and expects a response.
-name: alert-dialog
-aria: https://www.w3.org/TR/wai-aria-practices-1.2/#alertdialog
+metaTitle: Dialog
+metaDescription: A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
+name: dialog
+aria: https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal
 ---
 
-# Alert Dialog
+# Dialog
 
 <Description>
-  A modal dialog that interrupts the user with important content and expects a
-  response.
+  A window overlaid on either the primary window or another dialog window,
+  rendering the content underneath inert.
 </Description>
 
-```jsx hero template=AlertDialog
+<HeroContainer>
+  <DialogDemo />
+</HeroContainer>
+
+```jsx hero template=Dialog
 
 ```
 
 <Highlights
   features={[
-    'Focus is automatically trapped.',
+    'Supports modal and non-modal modes.',
+    'Focus is automatically trapped when modal.',
     'Can be controlled or uncontrolled.',
     <span>
       Manages screen reader announcements with <Code>Title</Code> and{' '}
@@ -33,7 +38,7 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#alertdialog
 Install the component from your command line.
 
 ```bash
-npm install @radix-ui/react-alert-dialog
+npm install @radix-ui/react-dialog
 ```
 
 ## Anatomy
@@ -41,19 +46,18 @@ npm install @radix-ui/react-alert-dialog
 Import all parts and piece them together.
 
 ```jsx
-import * as AlertDialog from '@radix-ui/react-alert-dialog';
+import * as Dialog from '@radix-ui/react-dialog';
 
 export default () => (
-  <AlertDialog.Root>
-    <AlertDialog.Trigger />
-    <AlertDialog.Overlay />
-    <AlertDialog.Content>
-      <AlertDialog.Title />
-      <AlertDialog.Description />
-      <AlertDialog.Cancel />
-      <AlertDialog.Action />
-    </AlertDialog.Content>
-  </AlertDialog.Root>
+  <Dialog.Root>
+    <Dialog.Trigger />
+    <Dialog.Overlay />
+    <Dialog.Content>
+      <Dialog.Title />
+      <Dialog.Description />
+      <Dialog.Close />
+    </Dialog.Content>
+  </Dialog.Root>
 );
 ```
 
@@ -61,15 +65,19 @@ export default () => (
 
 ### Root
 
-Contains all the parts of an alert dialog.
+Contains all the parts of a dialog.
 
 <PropsTable
   data={[
     {
       name: 'defaultOpen',
       type: 'boolean',
-      description:
-        'The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.',
+      description: (
+        <span>
+          The open state of the dialog when it is initially rendered. Use when
+          you do not need to control its open state.
+        </span>
+      ),
     },
     {
       name: 'open',
@@ -85,8 +93,24 @@ Contains all the parts of an alert dialog.
       name: 'onOpenChange',
       type: '(open: boolean) => void',
       typeSimple: 'function',
-      description:
-        'Event handler called when the open state of the dialog changes.',
+      description: (
+        <span>
+          Event handler called when the open state of the dialog changes.
+        </span>
+      ),
+    },
+    {
+      name: 'modal',
+      required: false,
+      type: 'boolean',
+      default: 'true',
+      description: (
+        <span>
+          The modality of the dialog. When set to <Code>true</Code>, interaction
+          with outside elements will be disabled and only dialog content will be
+          visible to screen readers.
+        </span>
+      ),
     },
     {
       name: 'id',
@@ -104,7 +128,7 @@ Contains all the parts of an alert dialog.
 
 ### Trigger
 
-A button that opens the dialog.
+The button that opens the dialog.
 
 <PropsTable
   data={[
@@ -144,7 +168,7 @@ A layer that covers the inert portion of the view when the dialog is open.
 
 ### Content
 
-Contains content to be rendered when the dialog is open.
+Contains content to be rendered in the open dialog.
 
 <PropsTable
   data={[
@@ -155,6 +179,31 @@ Contains content to be rendered when the dialog is open.
       default: 'false',
       description:
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'allowPinchZoom',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description: (
+        <span>
+          The <Code>allowPinchZoom</Code> prop from{' '}
+          <Link
+            variant="blue"
+            href="https://github.com/theKashey/react-remove-scroll"
+            target="_blank"
+          >
+            react-remove-scroll
+          </Link>
+          . See <Link
+            variant="blue"
+            href="https://github.com/theKashey/react-remove-scroll#usage"
+            target="_blank"
+          >
+            their docs
+          </Link> for information on functionality and limitations.
+        </span>
+      ),
     },
     {
       name: 'forceMount',
@@ -168,7 +217,7 @@ Contains content to be rendered when the dialog is open.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when focus moves to the destructive action after
+          Event handler called when focus moves into the component after
           opening. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
         </span>
@@ -196,29 +245,36 @@ Contains content to be rendered when the dialog is open.
         </span>
       ),
     },
-  ]}
-/>
-
-### Cancel
-
-A button that closes the dialog. This button should be distinguished visually from `AlertDialog.Action` buttons.
-
-<PropsTable
-  data={[
     {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description:
-        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+      name: 'onPointerDownOutside',
+      type: '(event: PointerDownOutsideEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when a pointer event occurs outside the bounds of
+          the component. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onInteractOutside',
+      type: '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when an interaction (pointer or focus event)
+          happens outside the bounds of the component. It can be prevented by
+          calling <Code>event.preventDefault</Code>.
+        </span>
+      ),
     },
   ]}
 />
 
-### Action
+### Close
 
-A button that closes the dialog. These buttons should be distinguished visually from the `AlertDialog.Cancel` button.
+The button that closes the dialog.
 
 <PropsTable
   data={[
@@ -235,7 +291,7 @@ A button that closes the dialog. These buttons should be distinguished visually 
 
 ### Title
 
-An accessible name to be announced when the dialog is opened. Alternatively, you can provide `aria-label` or `aria-labelledby` to `AlertDialog.Content` and exclude this component.
+An accessible name to be announced when the dialog is opened. Alternatively, you can provide `aria-label` or `aria-labelledby` to `Dialog.Content` and exclude this component.
 
 <PropsTable
   data={[
@@ -252,7 +308,7 @@ An accessible name to be announced when the dialog is opened. Alternatively, you
 
 ### Description
 
-An accessible description to be announced when the dialog is opened. Alternatively, you can provide `aria-describedby` to `AlertDialog.Content` and exclude this component.
+An accessible description to be announced when the dialog is opened. Alternatively, you can provide `aria-describedby` to `Dialog.Content` and exclude this component.
 
 <PropsTable
   data={[
@@ -269,7 +325,7 @@ An accessible description to be announced when the dialog is opened. Alternative
 
 ## Accessibility
 
-Adheres to the [Alert and Message Dialogs WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#alertdialog).
+Adheres to the [Dialog WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal).
 
 ### Keyboard Interactions
 
@@ -295,9 +351,62 @@ Adheres to the [Alert and Message Dialogs WAI-ARIA design pattern](https://www.w
       keys: ['Esc'],
       description: (
         <span>
-          Closes the dialog and moves focus to <Code>AlertDialog.Trigger</Code>.
+          Closes the dialog and moves focus to <Code>Dialog.Trigger</Code>.
         </span>
       ),
     },
   ]}
 />
+
+## Custom APIs
+
+Create your own API by abstracting the primitive parts into your own component.
+
+### Abstract the overlay and the close button
+
+This example abstracts the `Dialog.Overlay` and `Dialog.Close` parts.
+
+#### Usage
+
+```jsx
+import { Dialog, DialogTrigger, DialogContent } from './your-dialog';
+
+export default () => (
+  <Dialog>
+    <DialogTrigger>Dialog trigger</DialogTrigger>
+    <DialogContent>Dialog Content</DialogContent>
+  </Dialog>
+);
+```
+
+#### Implementation
+
+```jsx
+// your-dialog.js
+import React from 'react';
+import * as DialogPrimitive from '@radix-ui/react-dialog';
+import { Cross1Icon } from '@radix-ui/react-icons';
+
+export function Dialog({ children, ...props }) {
+  return (
+    <DialogPrimitive.Root {...props}>
+      <DialogPrimitive.Overlay />
+      {children}
+    </DialogPrimitive.Root>
+  );
+}
+
+export const DialogContent = React.forwardRef(
+  ({ children, ...props }, forwardedRef) => (
+    <DialogPrimitive.Content {...props} ref={forwardedRef}>
+      {children}
+      <DialogPrimitive.Close>
+        <Cross1Icon />
+      </DialogPrimitive.Close>
+    </DialogPrimitive.Content>
+  )
+);
+
+export const DialogTrigger = DialogPrimitive.Trigger;
+export const DialogClose = DialogPrimitive.Close;
+```
