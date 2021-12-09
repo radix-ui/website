@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled, keyframes, theme } from '@modulz/design-system';
-import { PlusIcon } from '@radix-ui/react-icons';
+import { PlusIcon, MinusIcon } from '@radix-ui/react-icons';
 import { violet, blackA } from '@radix-ui/colors';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 
@@ -50,6 +50,7 @@ const StyledArrow = styled(TooltipPrimitive.Arrow, {
 });
 
 // Exports
+export const Provider = TooltipPrimitive.Provider;
 export const Tooltip = TooltipPrimitive.Root;
 export const TooltipTrigger = TooltipPrimitive.Trigger;
 export const TooltipContent = StyledContent;
@@ -73,17 +74,30 @@ const IconButton = styled('button', {
 
 const TooltipDemo = () => {
   return (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <IconButton>
-          <PlusIcon />
-        </IconButton>
-      </TooltipTrigger>
-      <StyledContent sideOffset={5} className={`${theme}`}>
-        Add to library
-        <StyledArrow />
-      </StyledContent>
-    </Tooltip>
+    <Provider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <IconButton>
+            <PlusIcon />
+          </IconButton>
+        </TooltipTrigger>
+        <StyledContent sideOffset={5} className={`${theme}`}>
+          Add to library
+          <StyledArrow />
+        </StyledContent>
+      </Tooltip>
+      <Tooltip>
+        <TooltipTrigger asChild css={{ marginLeft: 5 }}>
+          <IconButton>
+            <MinusIcon />
+          </IconButton>
+        </TooltipTrigger>
+        <StyledContent sideOffset={5} className={`${theme}`}>
+          Remove from library
+          <StyledArrow />
+        </StyledContent>
+      </Tooltip>
+    </Provider>
   );
 };
 

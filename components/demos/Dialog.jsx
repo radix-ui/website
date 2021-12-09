@@ -23,15 +23,6 @@ const StyledOverlay = styled(DialogPrimitive.Overlay, {
   },
 });
 
-function Root({ children, ...props }) {
-  return (
-    <DialogPrimitive.Root {...props}>
-      <StyledOverlay className={`${theme}`} />
-      {children}
-    </DialogPrimitive.Root>
-  );
-}
-
 const StyledContent = styled(DialogPrimitive.Content, {
   backgroundColor: 'white',
   borderRadius: 6,
@@ -50,6 +41,15 @@ const StyledContent = styled(DialogPrimitive.Content, {
   '&:focus': { outline: 'none' },
 });
 
+function Content({ children, ...props }) {
+  return (
+    <DialogPrimitive.Portal>
+      <StyledOverlay className={`${theme}`} />
+      <StyledContent {...props}>{children}</StyledContent>
+    </DialogPrimitive.Portal>
+  );
+}
+
 const StyledTitle = styled(DialogPrimitive.Title, {
   margin: 0,
   fontWeight: 500,
@@ -65,9 +65,9 @@ const StyledDescription = styled(DialogPrimitive.Description, {
 });
 
 // Exports
-const Dialog = Root;
+const Dialog = DialogPrimitive.Root;
 const DialogTrigger = DialogPrimitive.Trigger;
-const DialogContent = StyledContent;
+const DialogContent = Content;
 const DialogTitle = StyledTitle;
 const DialogDescription = StyledDescription;
 const DialogClose = DialogPrimitive.Close;

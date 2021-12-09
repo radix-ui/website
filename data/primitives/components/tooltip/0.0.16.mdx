@@ -387,7 +387,7 @@ const StyledArrow = styled(Tooltip.Arrow, {
 
 export default () => (
   <Tooltip.Root>
-    <Tooltip.Trigger as="span">
+    <Tooltip.Trigger as="span" tabIndex={0}>
       <button type="button" disabled style={{ pointerEvents: 'none' }}>
         <BlendingModeIcon />
       </button>

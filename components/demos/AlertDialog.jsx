@@ -22,15 +22,6 @@ const StyledOverlay = styled(AlertDialogPrimitive.Overlay, {
   },
 });
 
-function Root({ children, ...props }) {
-  return (
-    <AlertDialogPrimitive.Root {...props}>
-      <StyledOverlay className={`${theme}`} />
-      {children}
-    </AlertDialogPrimitive.Root>
-  );
-}
-
 const StyledContent = styled(AlertDialogPrimitive.Content, {
   backgroundColor: 'white',
   borderRadius: 6,
@@ -49,6 +40,15 @@ const StyledContent = styled(AlertDialogPrimitive.Content, {
   '&:focus': { outline: 'none' },
 });
 
+function Content({ children, ...props }) {
+  return (
+    <AlertDialogPrimitive.Portal>
+      <StyledOverlay className={`${theme}`} />
+      <StyledContent {...props}>{children}</StyledContent>
+    </AlertDialogPrimitive.Portal>
+  );
+}
+
 const StyledTitle = styled(AlertDialogPrimitive.Title, {
   margin: 0,
   color: mauve.mauve12,
@@ -64,9 +64,9 @@ const StyledDescription = styled(AlertDialogPrimitive.Description, {
 });
 
 // Exports
-const AlertDialog = Root;
+const AlertDialog = AlertDialogPrimitive.Root;
 const AlertDialogTrigger = AlertDialogPrimitive.Trigger;
-const AlertDialogContent = StyledContent;
+const AlertDialogContent = Content;
 const AlertDialogTitle = StyledTitle;
 const AlertDialogDescription = StyledDescription;
 const AlertDialogAction = AlertDialogPrimitive.Action;

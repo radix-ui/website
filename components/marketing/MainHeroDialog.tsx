@@ -1,5 +1,5 @@
 import React from 'react';
-import * as DialogPrimitive from '@radix-ui/react-dialog-rc';
+import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { Flex, Text, styled, TextField, Grid } from '@modulz/design-system';
 import { DemoButton } from '@components/marketing/DemoButton';
 import { DemoIconButton } from '@components/marketing/DemoIconButton';
