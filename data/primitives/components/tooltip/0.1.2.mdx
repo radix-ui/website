@@ -293,6 +293,27 @@ An optional arrow element to render alongside the tooltip. This can be used to h
 
 ## Examples
 
+### Configure globally
+
+Use the `Provider` to control `delayDuration` and `skipDelayDuration` globally. Without the provider, tooltips will always delay before opening when moving from one tooltip trigger to another (e.g. `skipDelayDuration={0}`).
+
+```jsx line=4
+import * as Tooltip from '@radix-ui/react-tooltip';
+
+export default () => (
+  <Tooltip.Provider __delayDuration__={800} __skipDelayDuration__={500}>
+    <Tooltip.Root>
+      <Tooltip.Trigger>…</Tooltip.Trigger>
+      <Tooltip.Content>…</Tooltip.Content>
+    </Tooltip.Root>
+    <Tooltip.Root>
+      <Tooltip.Trigger>…</Tooltip.Trigger>
+      <Tooltip.Content>…</Tooltip.Content>
+    </Tooltip.Root>
+  </Tooltip.Provider>
+);
+```
+
 ### Show instantly
 
 Use the `delayDuration` prop to control the time it takes for the tooltip to open.

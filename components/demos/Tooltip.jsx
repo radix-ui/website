@@ -74,30 +74,17 @@ const IconButton = styled('button', {
 
 const TooltipDemo = () => {
   return (
-    <Provider>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <IconButton>
-            <PlusIcon />
-          </IconButton>
-        </TooltipTrigger>
-        <StyledContent sideOffset={5} className={`${theme}`}>
-          Add to library
-          <StyledArrow />
-        </StyledContent>
-      </Tooltip>
-      <Tooltip>
-        <TooltipTrigger asChild css={{ marginLeft: 5 }}>
-          <IconButton>
-            <MinusIcon />
-          </IconButton>
-        </TooltipTrigger>
-        <StyledContent sideOffset={5} className={`${theme}`}>
-          Remove from library
-          <StyledArrow />
-        </StyledContent>
-      </Tooltip>
-    </Provider>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <IconButton>
+          <PlusIcon />
+        </IconButton>
+      </TooltipTrigger>
+      <StyledContent sideOffset={5} className={`${theme}`}>
+        Add to library
+        <StyledArrow />
+      </StyledContent>
+    </Tooltip>
   );
 };
 
