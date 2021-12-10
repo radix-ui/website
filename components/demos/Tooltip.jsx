@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled, keyframes, theme } from '@modulz/design-system';
-import { PlusIcon, MinusIcon } from '@radix-ui/react-icons';
+import { PlusIcon } from '@radix-ui/react-icons';
 import { violet, blackA } from '@radix-ui/colors';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 

@@ -1321,10 +1321,10 @@
     "@radix-ui/react-use-rect" "0.1.1"
     "@radix-ui/react-visually-hidden" "0.1.1"
 
-"@radix-ui/react-tooltip@0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-tooltip/-/react-tooltip-0.1.3.tgz#89c0665fe95d7a804651e151ae03ee2667b10aa3"
-  integrity sha512-cSIuEoS7F6py5D04iABUNVQLiTyFI5MU8stj3XyB5T+Yrd0zCwj4aqsxpe/6EYiiFsqdpUz6+88Lhv70RMSHeg==
+"@radix-ui/react-tooltip@0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-tooltip/-/react-tooltip-0.1.4.tgz#d3638363d71b6b52a7a2aacc70f8c5b3c83f3e36"
+  integrity sha512-VRRrd30Rons/1RSF8BuHTJnw31IZrQwmO0NcctAKUlxc8ImN/4aZn0GJNjP8Ox790ulSnrQejPGr/il4OKDvRg==
   dependencies:
     "@babel/runtime" "^7.13.10"
     "@radix-ui/primitive" "0.1.0"
