@@ -1,0 +1,60 @@
+---
+metaTitle: Slot
+metaDescription: Merges its props onto its immediate child.
+name: slot
+---
+
+# Slot
+
+<Description>Merges its props onto its immediate child.</Description>
+
+<Highlights features={['Can be used to support your own `asChild` prop.']} />
+
+## Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-slot
+```
+
+## Anatomy
+
+Import the component.
+
+```jsx
+import { Slot } from '@radix-ui/react-slot';
+
+export default () => (
+  <Slot>
+    <div>Hello</div>
+  </Slot>
+);
+```
+
+## Basic example
+
+Use to create your own `asChild` API.
+
+```jsx line=9
+// your-button.jsx
+import React from 'react';
+import { Slot } from '@radix-ui/react-slot';
+
+function Button({ asChild, ...props }) {
+  const Comp = asChild ? Slot : 'button';
+  return <Comp {...props} />;
+}
+```
+
+### Usage
+
+```jsx
+import { Button } from './your-button';
+
+export default () => (
+  <Button asChild>
+    <a href="/contact">Contact</a>
+  </Button>
+);
+```
