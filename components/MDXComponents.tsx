@@ -2,7 +2,6 @@ import * as React from 'react';
 import NextLink from 'next/link';
 import * as DS from '@modulz/design-system';
 import { Link2Icon } from '@radix-ui/react-icons';
-import { IdProvider } from '@radix-ui/react-id';
 import { PropsTable } from './PropsTable';
 import { KeyboardTable } from './KeyboardTable';
 import { Preview } from './Preview';
@@ -239,9 +238,5 @@ export const FrontmatterContext = React.createContext<Frontmatter>({} as any);
 // https://github.com/hashicorp/next-mdx-remote#using-providers
 export function MDXProvider(props) {
   const { frontmatter, children } = props;
-  return (
-    <IdProvider>
-      <FrontmatterContext.Provider value={frontmatter}>{children}</FrontmatterContext.Provider>
-    </IdProvider>
-  );
+  return <FrontmatterContext.Provider value={frontmatter}>{children}</FrontmatterContext.Provider>;
 }

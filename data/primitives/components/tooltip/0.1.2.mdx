@@ -22,7 +22,7 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#tooltip
 
 <Highlights
   features={[
-    'Built-in state machine to control display delay.',
+    'Provider to control display delay globally.',
     'Opens when the trigger is focused or hovered.',
     'Closes when the trigger is activated or when pressing escape.',
     'Supports custom timings.',
@@ -45,16 +45,41 @@ Import all parts and piece them together.
 import * as Tooltip from '@radix-ui/react-tooltip';
 
 export default () => (
-  <Tooltip.Root>
-    <Tooltip.Trigger />
-    <Tooltip.Content>
-      <Tooltip.Arrow />
-    </Tooltip.Content>
-  </Tooltip.Root>
+  <Tooltip.Provider>
+    <Tooltip.Root>
+      <Tooltip.Trigger />
+      <Tooltip.Content>
+        <Tooltip.Arrow />
+      </Tooltip.Content>
+    </Tooltip.Root>
+  </Tooltip.Provider>
 );
 ```
 
 ## API Reference
+
+### Provider
+
+Wraps your app to provide global functionality to your tooltips.
+
+<PropsTable
+  data={[
+    {
+      name: 'delayDuration',
+      type: 'number',
+      default: 700,
+      description:
+        'The duration from when the mouse enters a tooltip trigger until the tooltip opens.',
+    },
+    {
+      name: 'skipDelayDuration',
+      type: 'number',
+      default: 300,
+      description:
+        'How much time a user has to enter another trigger without incurring a delay again.',
+    },
+  ]}
+/>
 
 ### Root
 
@@ -97,14 +122,7 @@ Contains all the parts of a tooltip.
       type: 'number',
       default: 700,
       description:
-        'The duration from when the mouse enters the trigger until the tooltip opens.',
-    },
-    {
-      name: 'skipDelayDuration',
-      type: 'number',
-      default: 300,
-      description:
-        'How much time a user has to enter another trigger without incurring a delay again.',
+        'Override the duration given to the `Provider` to customise the open delay for a specific tooltip.',
     },
   ]}
 />
@@ -275,6 +293,27 @@ An optional arrow element to render alongside the tooltip. This can be used to h
 
 ## Examples
 
+### Configure globally
+
+Use the `Provider` to control `delayDuration` and `skipDelayDuration` globally. Without the provider, tooltips will always delay before opening when moving from one tooltip trigger to another (e.g. `skipDelayDuration={0}`).
+
+```jsx line=4
+import * as Tooltip from '@radix-ui/react-tooltip';
+
+export default () => (
+  <Tooltip.Provider __delayDuration__={800} __skipDelayDuration__={500}>
+    <Tooltip.Root>
+      <Tooltip.Trigger>…</Tooltip.Trigger>
+      <Tooltip.Content>…</Tooltip.Content>
+    </Tooltip.Root>
+    <Tooltip.Root>
+      <Tooltip.Trigger>…</Tooltip.Trigger>
+      <Tooltip.Content>…</Tooltip.Content>
+    </Tooltip.Root>
+  </Tooltip.Provider>
+);
+```
+
 ### Show instantly
 
 Use the `delayDuration` prop to control the time it takes for the tooltip to open.
@@ -303,7 +342,7 @@ import * as Tooltip from '@radix-ui/react-tooltip';
 export default () => (
   <Tooltip.Root>
     <Tooltip.Trigger __asChild__>
-      <span>
+      <span tabIndex={0}>
         <button disabled style={{ __pointerEvents__: 'none' }}>
           …
         </button>

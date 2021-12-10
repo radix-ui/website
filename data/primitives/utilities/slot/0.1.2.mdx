@@ -1,24 +1,14 @@
 ---
 metaTitle: Slot
-metaDescription: Converts a primitive part into a slot.
+metaDescription: Merges its props onto its immediate child.
 name: slot
 ---
 
 # Slot
 
-<Description>Converts a primitive part into a slot.</Description>
+<Description>Merges its props onto its immediate child.</Description>
 
-<Highlights
-  features={[
-    'Can be passed into the `as` prop of any primitive part to convert it to a slottable area.',
-  ]}
-/>
-
-<Alert>
-  This package has been deprecated in favour of the `asChild` prop. Learn more
-  about how to [change the rendered element
-  here](/docs/primitives/overview/styling#changing-the-rendered-element).
-</Alert>
+<Highlights features={['Can be used to support your own `asChild` prop.']} />
 
 ## Installation
 
@@ -44,48 +34,27 @@ export default () => (
 
 ## Basic example
 
-Uses the `as` prop to convert the `TooltipTrigger` into a slottable area. It will render the `button` passed as children for the trigger.
+Use to create your own `asChild` API.
 
 ```jsx line=9
-// your-tooltip.jsx
+// your-button.jsx
 import React from 'react';
-import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import { Slot } from '@radix-ui/react-slot';
 
-function Tooltip({
-  children,
-  content,
-  open,
-  defaultOpen,
-  onOpenChange,
-  ...props
-}) {
-  return (
-    <TooltipPrimitive.Root
-      open={open}
-      defaultOpen={defaultOpen}
-      onOpenChange={onOpenChange}
-    >
-      <TooltipPrimitive.Trigger __as__={Slot}>
-        {children}
-      </TooltipPrimitive.Trigger>
-      <TooltipPrimitive.Content side="top" align="center" {...props}>
-        {content}
-        <TooltipPrimitive.Arrow offset={5} width={11} height={5} />
-      </TooltipPrimitive.Content>
-    </TooltipPrimitive.Root>
-  );
+function Button({ asChild, ...props }) {
+  const Comp = asChild ? Slot : 'button';
+  return <Comp {...props} />;
 }
 ```
 
 ### Usage
 
 ```jsx
-import { Tooltip } from './your-tooltip';
+import { Button } from './your-button';
 
 export default () => (
-  <Tooltip content="Tooltip content">
-    <button>Tooltip trigger</button>
-  </Tooltip>
+  <Button asChild>
+    <a href="/contact">Contact</a>
+  </Button>
 );
 ```

@@ -51,12 +51,14 @@ import * as Dialog from '@radix-ui/react-dialog';
 export default () => (
   <Dialog.Root>
     <Dialog.Trigger />
-    <Dialog.Overlay />
-    <Dialog.Content>
-      <Dialog.Title />
-      <Dialog.Description />
-      <Dialog.Close />
-    </Dialog.Content>
+    <Dialog.Portal>
+      <Dialog.Overlay />
+      <Dialog.Content>
+        <Dialog.Title />
+        <Dialog.Description />
+        <Dialog.Close />
+      </Dialog.Content>
+    </Dialog.Portal>
   </Dialog.Root>
 );
 ```
@@ -113,6 +115,31 @@ Contains all the parts of a dialog.
       ),
     },
     {
+      name: 'allowPinchZoom',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description: (
+        <span>
+          The <Code>allowPinchZoom</Code> prop from{' '}
+          <Link
+            variant="blue"
+            href="https://github.com/theKashey/react-remove-scroll"
+            target="_blank"
+          >
+            react-remove-scroll
+          </Link>
+          . See <Link
+            variant="blue"
+            href="https://github.com/theKashey/react-remove-scroll#usage"
+            target="_blank"
+          >
+            their docs
+          </Link> for information on functionality and limitations.
+        </span>
+      ),
+    },
+    {
       name: 'id',
       type: 'string',
       description: (
@@ -139,6 +166,27 @@ The button that opens the dialog.
       default: 'false',
       description:
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Portal
+
+When used, portals your overlay and content parts into the `body`.
+
+<PropsTable
+  data={[
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description:
+        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+    },
+    {
+      name: 'container',
+      type: 'HTMLElement',
+      default: 'document.body',
+      description: 'Specify a container element to portal the content into.',
     },
   ]}
 />
@@ -179,31 +227,6 @@ Contains content to be rendered in the open dialog.
       default: 'false',
       description:
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'allowPinchZoom',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <span>
-          The <Code>allowPinchZoom</Code> prop from{' '}
-          <Link
-            variant="blue"
-            href="https://github.com/theKashey/react-remove-scroll"
-            target="_blank"
-          >
-            react-remove-scroll
-          </Link>
-          . See <Link
-            variant="blue"
-            href="https://github.com/theKashey/react-remove-scroll#usage"
-            target="_blank"
-          >
-            their docs
-          </Link> for information on functionality and limitations.
-        </span>
-      ),
     },
     {
       name: 'forceMount',
@@ -322,6 +345,31 @@ An accessible description to be announced when the dialog is opened. Alternative
     },
   ]}
 />
+
+## Examples
+
+### Custom portal container
+
+Customise the element that your dialog portals into.
+
+```jsx line=2,13
+export default () => {
+  const [container, setContainer] = React.useState(null);
+  return (
+    <div>
+      <Dialog.Root>
+        <Dialog.Trigger />
+        <Dialog.Portal __container__={container}>
+          <Dialog.Overlay />
+          <Dialog.Content>...</Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
+
+      <div ref={setContainer} />
+    </div>
+  );
+};
+```
 
 ## Accessibility
 
