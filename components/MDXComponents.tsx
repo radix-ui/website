@@ -83,7 +83,13 @@ export const components = {
     );
   },
   hr: (props) => <DS.Separator size="2" {...props} css={{ my: '$6', mx: 'auto' }} />,
-  ul: (props) => <DS.Box {...props} css={{ color: '$hiContrast', mb: '$3' }} as="ul" />,
+  ul: (props) => (
+    <DS.Box
+      {...props}
+      css={{ color: '$hiContrast', pl: '1.15em', mb: '$3', listStyleType: 'circle' }}
+      as="ul"
+    />
+  ),
   ol: (props) => <DS.Box {...props} css={{ color: '$hiContrast', mb: '$3' }} as="ol" />,
   li: (props) => (
     <li>
