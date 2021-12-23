@@ -13,7 +13,7 @@ This release focuses on React 18 support and introduces a number breaking change
 
 <PackageRelease name="All primitives" />
 
-- **Breaking** – Remove `IdProvider` and improve React 18 support for generated ids <PRLink id={1006} />
+- **Breaking** – Deprecate `IdProvider`. Improves support for React 18 going forward and is no longer needed in older versions. Remove from your app to avoid deprecation warnings. <PRLink id={1006} />
 
 <PackageRelease name="Accordion" version="0.1.5" major />
 
@@ -23,7 +23,7 @@ This release focuses on React 18 support and introduces a number breaking change
 
 <PackageRelease name="Alert Dialog" version="0.1.5" major />
 
-- **Breaking** – Add new `Portal` part that allows portalling into custom container <PRLink id={936} />
+- **Breaking** – Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. <PRLink id={936} />
 - **Breaking** – Support scrolling within `AlertDialog.Overlay`. Move `allowPinchZoom` to root. <PRLink id={963} />
 - Fix `asChild` TypeScript error <PRLink id={924} />
 
@@ -33,8 +33,8 @@ This release focuses on React 18 support and introduces a number breaking change
 
 <PackageRelease name="Dialog" version="0.1.5" major />
 
-- Add new `Portal` part that allows portalling into custom container <PRLink id={936} />
-- Support scrolling within `Dialog.Overlay`. Move `allowPinchZoom` to root. <PRLink id={963} />
+- **Breaking** – Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. <PRLink id={936} />
+- **Breaking** – Support scrolling within `Dialog.Overlay`. Move `allowPinchZoom` to root. <PRLink id={963} />
 
 <PackageRelease name="Dropdown Menu" version="0.1.4" />
 
@@ -64,7 +64,7 @@ This release focuses on React 18 support and introduces a number breaking change
 
 <PackageRelease name="Tooltip" version="0.1.6" major />
 
-- **Breaking** – Improve React 18 support with new `TooltipProvider` part <PRLink id={1007} />
+- **Breaking** – Add new `TooltipProvider` part. You must wrap your app to avoid regressions. <PRLink id={1007} />
 - **Breaking** – Remove `type=button` attribute from `Tooltip.Trigger` <PRLink id={1011} />
 - Fix tooltip activation regression <PRLink id={1035} />
 
