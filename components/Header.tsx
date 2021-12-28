@@ -27,7 +27,7 @@ export const Header = () => {
   const isColors = router.pathname.includes('/colors') || router.pathname.includes('/docs/colors');
 
   return (
-    <Box as="header">
+    <Box as="header" className="width-before-scroll-bar">
       <Container size="4">
         <Flex align="center" justify="between" css={{ height: '$8' }}>
           <NextLink href={isColors ? '/colors' : '/'} passHref>
