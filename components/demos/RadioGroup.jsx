@@ -47,7 +47,7 @@ const Label = styled('label', {
   paddingLeft: 15,
 });
 
-export const CheckboxDemo = () => (
+export const RadioGroupDemo = () => (
   <form>
     <RadioGroup defaultValue="default" aria-label="View density">
       <Flex css={{ margin: '10px 0', alignItems: 'center' }}>
@@ -72,4 +72,4 @@ export const CheckboxDemo = () => (
   </form>
 );
 
-export default CheckboxDemo;
+export default RadioGroupDemo;
