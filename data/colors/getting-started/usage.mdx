@@ -28,7 +28,7 @@ import {
 // Spread the scales in your light and dark themes
 import { createStitches } from '@stitches/react';
 
-const { styled, theme } = createStitches({
+const { styled, createTheme } = createStitches({
   theme: {
     colors: {
       ...gray,
@@ -39,7 +39,7 @@ const { styled, theme } = createStitches({
   },
 });
 
-const darkTheme = theme({
+const darkTheme = createTheme({
   colors: {
     ...grayDark,
     ...blueDark,
