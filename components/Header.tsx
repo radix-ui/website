@@ -21,13 +21,14 @@ import { PlusIcon, MixIcon, StitchesLogoIcon } from '@radix-ui/react-icons';
 import { ThemeToggle } from '@components/ThemeToggle';
 import { BoxLink } from '@components/BoxLink';
 import { RadixLogoIcon } from './RadixLogoIcon';
+import { RemoveScroll } from 'react-remove-scroll';
 
 export const Header = () => {
   const router = useRouter();
   const isColors = router.pathname.includes('/colors') || router.pathname.includes('/docs/colors');
 
   return (
-    <Box as="header">
+    <Box as="header" className={RemoveScroll.classNames.fullWidth}>
       <Container size="4">
         <Flex align="center" justify="between" css={{ height: '$8' }}>
           <NextLink href={isColors ? '/colors' : '/'} passHref>
