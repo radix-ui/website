@@ -242,6 +242,41 @@ An item in the group.
   ]}
 />
 
+## Examples
+
+### Ensuring there is always a value
+
+You can control the component to ensure a value.
+
+```jsx line=5,8
+import * as React from 'react';
+import * as ToggleGroup from '@radix-ui/react-toggle-group';
+
+export default () => {
+  const [value, setValue] = React.useState('left');
+
+  return (
+    <ToggleGroup.Root
+      type="single"
+      value={value}
+      onValueChange={(value) => {
+        if (value) setValue(value);
+      }}
+    >
+      <ToggleGroup.Item value="left">
+        <TextAlignLeftIcon />
+      </ToggleGroup.Item>
+      <ToggleGroup.Item value="center">
+        <TextAlignCenterIcon />
+      </ToggleGroup.Item>
+      <ToggleGroup.Item value="right">
+        <TextAlignRightIcon />
+      </ToggleGroup.Item>
+    </ToggleGroup.Root>
+  );
+};
+```
+
 ## Accessibility
 
 Uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/radio/radio-1/radio-1.html) to manage focus movement among items.
