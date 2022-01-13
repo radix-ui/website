@@ -144,7 +144,7 @@ The component that contains the collapsible content.
 
 Use the `--radix-collapsible-content-width` and/or `--radix-collapsible-content-height` CSS variables to animate the size of the content when it opens/closes. Here's a demo using Stitches:
 
-```jsx line=4-7,9-12,14-17,22
+```jsx line=4-7,9-12,14-18,23
 import { styled, keyframes } from '@stitches/react';
 import * as Collapsible from '@radix-ui/react-collapsible';
 
@@ -159,6 +159,7 @@ const close = keyframes({
 });
 
 const CollapsibleContent = styled(Collapsible.Content, {
+  overflow: 'hidden',
   '&[data-state="open"]': { animation: `${open} 300ms ease-out` },
   '&[data-state="closed"]': { animation: `${close} 300ms ease-out` },
 });
