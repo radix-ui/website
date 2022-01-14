@@ -348,7 +348,7 @@ export default () => (
 
 Use the `--radix-accordion-content-width` and/or `--radix-accordion-content-height` CSS variables to animate the size of the content when it opens/closes. Here's a demo using Stitches:
 
-```jsx line=4-7,9-12,14-17,23
+```jsx line=4-7,9-12,20-21,28
 import { styled, keyframes } from '@stitches/react';
 import * as Accordion from '@radix-ui/react-accordion';
 
@@ -362,7 +362,12 @@ const close = keyframes({
   to: { height: 0 },
 });
 
+const AccordionHeader = styled(Accordion.Header, {
+  margin: 0,
+});
+
 const AccordionContent = styled(Accordion.Content, {
+  overflow: 'hidden',
   '&[data-state="open"]': { animation: `${open} 300ms ease-out` },
   '&[data-state="closed"]': { animation: `${close} 300ms ease-out` },
 });
@@ -370,7 +375,7 @@ const AccordionContent = styled(Accordion.Content, {
 export default () => (
   <Accordion.Root type="single">
     <Accordion.Item value="item-1">
-      <Accordion.Header>…</Accordion.Header>
+      <AccordionHeader>…</AccordionHeader>
       <AccordionContent>…</AccordionContent>
     </Accordion.Item>
   </Accordion.Root>
