@@ -149,7 +149,9 @@ AccordionItem.displayName = 'AccordionItem';
 
 ## Changing the rendered element
 
-All component parts that render a DOM element have an `asChild` prop. This is useful when you want to change the rendered element.
+All component parts that render a DOM element have an `asChild` prop. This is useful when you want a part to attach its accessibility and functional requirements onto your own element instead.
+
+If you decide to change the underlying node rendered by Radix (e.g. change a `button` to a `div`) then it is up to you to ensure the correct accessibility and functionality of your chosen node type.
 
 Here's an example of how you can use a custom `Button` as the trigger for a `Dialog.Trigger`:
 
