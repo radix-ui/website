@@ -199,6 +199,28 @@ export const components = {
   PRLink,
   HeroContainer,
   HeroQuote,
+  Accordion: DS.Accordion,
+  AccordionItem: DS.AccordionItem,
+  AccordionTrigger: ({ children, ...props }) => {
+    // takes the text even if it's wrapped in `<p>`
+    // https://github.com/wooorm/xdm/issues/47
+    const childText = typeof children === 'string' ? children : children.props.children;
+    return (
+      <DS.AccordionTrigger {...props}>
+        <DS.Text size="3" children={childText} css={{ lineHeight: '25px', fontWeight: 500 }} />
+      </DS.AccordionTrigger>
+    );
+  },
+  AccordionContent: ({ children, ...props }) => {
+    // takes the text even if it's wrapped in `<p>`
+    // https://github.com/wooorm/xdm/issues/47
+    const childText = typeof children === 'string' ? children : children.props.children;
+    return (
+      <DS.AccordionContent {...props}>
+        <DS.Text size="3" children={childText} css={{ lineHeight: '25px' }} />
+      </DS.AccordionContent>
+    );
+  },
   ...Demos,
 };
 
