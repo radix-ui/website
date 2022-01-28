@@ -370,11 +370,11 @@ For toasts that are the result of a user action, choose `foreground`. Toasts gen
 
 #### Foreground
 
-Foreground toasts are announced immediately. Assistive technologies may choose to clear previously queued messages when a foreground toast appears. Try to avoid stacking multiple foreground toasts at the same time.
+Foreground toasts are announced immediately. Assistive technologies may choose to clear previously queued messages when a foreground toast appears. Try to avoid stacking distinct foreground toasts at the same time.
 
 #### Background
 
-Background toasts are announced at the next graceful opportunity (for example, when the screen reader has finished reading its current sentence) and do not clear queued messages. Overusing them can be perceived as a laggy user experience for screen reader users if used in response to a user interaction.
+Background toasts are announced at the next graceful opportunity, for example, when the screen reader has finished reading its current sentence. They do not clear queued messages so overusing them can be perceived as a laggy user experience for screen reader users when used in response to a user interaction.
 
 ```jsx line=1,6
 <Toast.Root type="foreground">
@@ -407,7 +407,7 @@ You can direct the user to a permanent place in your application where they can 
 <Toast.Root __type__="foreground" __duration__={10000}>
   <Toast.Description>File removed successfully.</Toast.Description>
   <Toast.Action altText="Undo (Alt+U)">
-    Undo
+    Undo <kbd>Alt</kbd>+<kbd>U</kbd>
   </Toast.Action>
   <Toast.Close>Dismiss</Toast.Close>
 </Toast.Root>
