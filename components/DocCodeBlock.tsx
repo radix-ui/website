@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRunner } from 'react-runner';
 import { Box, Button, IconButton, Tooltip } from '@modulz/design-system';
 import copy from 'copy-to-clipboard';
 import { getParameters } from 'codesandbox/lib/api/define';
@@ -6,11 +7,15 @@ import { ClipboardIcon, CodeSandboxLogoIcon, CheckIcon } from '@radix-ui/react-i
 import * as Collapsible from '@radix-ui/react-collapsible';
 import { Pre } from './Pre';
 import { FrontmatterContext } from './MDXComponents';
+import { HeroContainer } from './HeroContainer';
+import { CodeEditor } from './CodeEditor';
+import { scope } from './scope';
 
 export function DocCodeBlock({
   className,
   children,
   id,
+  code: initialCode = '',
   showLineNumbers = false,
   isHero = false,
   isCollapsible = false,
@@ -20,18 +25,10 @@ export function DocCodeBlock({
 }) {
   const [isCollapsed, setIsCollapsed] = React.useState(isCollapsible);
   const [hasCopied, setHasCopied] = React.useState(false);
-  const [code, setCode] = React.useState(undefined);
-  const preRef = React.useRef(null);
   const frontmatter = React.useContext(FrontmatterContext);
 
-  React.useEffect(() => {
-    if (preRef.current) {
-      const codeElement = preRef.current.querySelector('code');
-      // remove double line breaks
-      const code = codeElement.innerText.replace(/\n{3,}/g, '\n');
-      setCode(code);
-    }
-  }, [preRef]);
+  const [code, setCode] = React.useState(initialCode);
+  const { element, error } = useRunner({ code, scope });
 
   React.useEffect(() => {
     if (hasCopied) copy(code);
@@ -39,121 +36,153 @@ export function DocCodeBlock({
   }, [hasCopied]);
 
   return (
-    <Box
-      css={{
-        position: 'relative',
-        ...(isHero
-          ? {
-              '@bp3': { mx: '-$7' },
-              '@bp4': { mx: '-$8' },
-            }
-          : {}),
-      }}
-    >
-      <Collapsible.Root open={!isCollapsed} onOpenChange={(isOpen) => setIsCollapsed(!isOpen)}>
-        {isCollapsible && (
-          <Box
-            css={{
-              position: 'absolute',
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'flex-end',
-              gap: '$1',
-              top: '-$6',
-              right: '$2',
-            }}
-          >
-            <Collapsible.Trigger asChild>
-              <Button ghost css={{ color: '$whiteA12', textShadow: '0 2px 2px rgb(0 0 0 / 12%)' }}>
-                {isCollapsed ? 'Show' : 'Hide'} code
-              </Button>
-            </Collapsible.Trigger>
-
-            {isHero && (
-              <Box
-                as="form"
-                css={{
-                  display: 'none',
-                  color: '$whiteA12',
-                  '@bp1': { display: 'inline-block' },
-                }}
-                action="https://codesandbox.io/api/v1/sandboxes/define"
-                method="POST"
-                target="_blank"
-              >
-                <input type="hidden" name="query" value="module=App.js" />
-                <input
-                  type="hidden"
-                  name="parameters"
-                  value={makeCodeSandboxParams(frontmatter.name, code)}
-                />
-                <Tooltip content="Open demo in CodeSandbox">
-                  <IconButton type="submit" css={{ color: '$whiteA12' }}>
-                    <CodeSandboxLogoIcon />
-                  </IconButton>
-                </Tooltip>
-              </Box>
-            )}
-          </Box>
-        )}
-
-        <Collapsible.Content forceMount>
-          <Box
-            css={{
-              position: 'relative',
-              ...(isCollapsed ? { display: 'none' } : {}),
-              ...(isCollapsible ? { top: '$2' } : { my: '$5' }),
-            }}
-          >
+    <>
+      {isHero && (
+        <HeroContainer>
+          {element}
+          {error && (
             <Box
               css={{
-                overflow: 'auto',
-                borderRadius: '$3',
-                // hacks
-                backgroundColor: '$violet2',
-                py: '$4',
-                '& > pre': {
-                  backgroundColor: 'transparent',
-                  overflow: 'visible',
-                  py: 0,
-                  float: 'left',
-                  minWidth: '100%',
-                  $$outline: 'none',
-                  borderRadius: 0,
-                },
-                // end hacks
-                ...(isHero || isScrollable ? { maxHeight: 400 } : {}),
+                position: 'absolute',
+                left: '$5',
+                bottom: '$3',
+                right: 120,
+                color: '$orange9',
               }}
             >
-              <Pre
-                ref={preRef}
-                data-invert-line-highlight={isHighlightingLines}
-                data-line-numbers={showLineNumbers}
-                variant={variant}
-                className={className}
-                id={id}
-              >
-                <code className={className} children={children} />
-              </Pre>
+              {error}
             </Box>
-            <IconButton
-              aria-label="Copy code to clipboard"
+          )}
+        </HeroContainer>
+      )}
+      <Box
+        css={{
+          position: 'relative',
+          ...(isHero
+            ? {
+                '@bp3': { mx: '-$7' },
+                '@bp4': { mx: '-$8' },
+              }
+            : {}),
+        }}
+      >
+        <Collapsible.Root open={!isCollapsed} onOpenChange={(isOpen) => setIsCollapsed(!isOpen)}>
+          {isCollapsible && (
+            <Box
               css={{
                 position: 'absolute',
-                top: '$2',
-                right: '$2',
                 display: 'inline-flex',
-                opacity: 0,
-                '*:hover > &, &:focus': { opacity: 1, transition: '150ms linear' },
+                alignItems: 'center',
+                justifyContent: 'flex-end',
+                gap: '$1',
+                top: '-$6',
+                right: '$2',
               }}
-              onClick={() => setHasCopied(true)}
             >
-              {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
-            </IconButton>
-          </Box>
-        </Collapsible.Content>
-      </Collapsible.Root>
-    </Box>
+              <Collapsible.Trigger asChild>
+                <Button
+                  ghost
+                  css={{ color: '$whiteA12', textShadow: '0 2px 2px rgb(0 0 0 / 12%)' }}
+                >
+                  {isCollapsed ? 'Show' : 'Hide'} code
+                </Button>
+              </Collapsible.Trigger>
+
+              {isHero && (
+                <Box
+                  as="form"
+                  css={{
+                    display: 'none',
+                    color: '$whiteA12',
+                    '@bp1': { display: 'inline-block' },
+                  }}
+                  action="https://codesandbox.io/api/v1/sandboxes/define"
+                  method="POST"
+                  target="_blank"
+                >
+                  <input type="hidden" name="query" value="module=App.js" />
+                  <input
+                    type="hidden"
+                    name="parameters"
+                    value={makeCodeSandboxParams(frontmatter.name, code)}
+                  />
+                  <Tooltip content="Open demo in CodeSandbox">
+                    <IconButton type="submit" css={{ color: '$whiteA12' }}>
+                      <CodeSandboxLogoIcon />
+                    </IconButton>
+                  </Tooltip>
+                </Box>
+              )}
+            </Box>
+          )}
+
+          <Collapsible.Content forceMount>
+            <Box
+              css={{
+                position: 'relative',
+                ...(isCollapsed ? { display: 'none' } : {}),
+                ...(isCollapsible ? { top: '$2' } : { my: '$5' }),
+              }}
+            >
+              <Box
+                css={{
+                  overflow: 'auto',
+                  borderRadius: '$3',
+                  // hacks
+                  backgroundColor: '$violet2',
+                  py: '$4',
+                  '& > pre': {
+                    backgroundColor: 'transparent',
+                    overflow: 'visible',
+                    py: 0,
+                    float: 'left',
+                    minWidth: '100%',
+                    $$outline: 'none',
+                    borderRadius: 0,
+                  },
+                  // end hacks
+                  ...(isHero || isScrollable ? { maxHeight: 400 } : {}),
+                }}
+              >
+                {isHero ? (
+                  <Pre variant={variant} className={className} id={id}>
+                    <CodeEditor value={code} onValueChange={setCode} />
+                  </Pre>
+                ) : (
+                  <Pre
+                    data-invert-line-highlight={isHighlightingLines}
+                    data-line-numbers={showLineNumbers}
+                    variant={variant}
+                    className={className}
+                    id={id}
+                  >
+                    {isHero ? (
+                      <CodeEditor value={code} onValueChange={setCode} />
+                    ) : (
+                      <code className={className} children={children} />
+                    )}
+                  </Pre>
+                )}
+              </Box>
+              <IconButton
+                aria-label="Copy code to clipboard"
+                css={{
+                  position: 'absolute',
+                  top: '$2',
+                  right: '$2',
+                  display: 'inline-flex',
+                  opacity: 0,
+                  '*:hover > &, &:focus': { opacity: 1, transition: '150ms linear' },
+                }}
+                onClick={() => setHasCopied(true)}
+              >
+                {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
+              </IconButton>
+            </Box>
+          </Collapsible.Content>
+        </Collapsible.Root>
+      </Box>
+    </>
   );
 }
 

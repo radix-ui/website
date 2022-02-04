@@ -126,7 +126,7 @@ export const components = {
     />
   ),
   pre: ({ children }) => <>{children}</>,
-  code: ({ className, hero, showLineNumbers, collapsed, scrollable, line, ...props }) => {
+  code: ({ className, hero, code, showLineNumbers, collapsed, scrollable, line, ...props }) => {
     const isInlineCode = !className;
     return isInlineCode ? (
       <DS.Code {...props} css={{ whiteSpace: 'break-spaces' }} />
@@ -139,6 +139,7 @@ export const components = {
         isCollapsible={hero !== undefined || collapsed !== undefined}
         isScrollable={scrollable !== undefined}
         showLineNumbers={showLineNumbers !== undefined}
+        code={code}
         {...(props as any)}
       />
     );
@@ -197,7 +198,8 @@ export const components = {
   Preview,
   PackageRelease,
   PRLink,
-  HeroContainer,
+  // Remove it after we remove the Demo from mdx files
+  HeroContainer: () => null,
   HeroQuote,
   ...Demos,
 };
