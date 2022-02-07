@@ -199,7 +199,7 @@ export const components = {
   PRLink,
   HeroContainer,
   HeroQuote,
-  Accordion: DS.Accordion,
+  Accordion: (props) => <DS.Accordion type="single" {...props} css={{ mt: '$4', ...props.css }} />,
   AccordionItem: DS.AccordionItem,
   AccordionTrigger: ({ children, ...props }) => {
     // takes the text even if it's wrapped in `<p>`

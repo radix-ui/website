@@ -412,6 +412,32 @@ export default () => (
 );
 ```
 
+## Questions and answers
+
+<Accordion>
+  <AccordionItem value="1">
+    <AccordionTrigger>
+      What if the content needs to appear on click?
+    </AccordionTrigger>
+    <AccordionContent>
+      Use [Popover](popover) instead, which is accessible on click. By
+      comparison, Tooltip is displayed on mouse hover and keyboard focus.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="3">
+    <AccordionTrigger>
+      How is Tooltip different from Hover Card?
+    </AccordionTrigger>
+    <AccordionContent>
+      [Tooltip](tooltip) contents can’t have rich interactions within, such as
+      hover, click, or text selection. However, you may use the Tooltip to
+      provide additional information that might not be accessible otherwise.
+      Tooltip contents are announced to screen readers when the trigger is
+      focused, while Hover Card is accessible to sighted users only.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
 ## Accessibility
 
 ### Keyboard Interactions

@@ -29,45 +29,6 @@ name: hover-card
   ]}
 />
 
-## When to use
-
-Use Hover Card to preview information when the user hovers over an interactive element, saving them an extra click.
-
-<Accordion type="single">
-  <AccordionItem value="1">
-    <AccordionTrigger>
-      What if the content needs to appear on click?
-    </AccordionTrigger>
-    <AccordionContent>
-      Use [Popover](popover) instead, which is accessible both on click and via
-      keyboard interactions. By comparison, Hover Card is displayed on mouse
-      hover only.
-    </AccordionContent>
-  </AccordionItem>
-  <AccordionItem value="2">
-    <AccordionTrigger>
-      Can I use Hover Card to build an interactive menu?
-    </AccordionTrigger>
-    <AccordionContent>
-      Consider the [Dropdown Menu](dropdown-menu) component instead, which is
-      designed for building menus. It’s displayed on click or via keyboard
-      focus.
-    </AccordionContent>
-  </AccordionItem>
-  <AccordionItem value="3">
-    <AccordionTrigger>
-      How is Hover Card different from Tooltip?
-    </AccordionTrigger>
-    <AccordionContent>
-      [Tooltip](tooltip) contents can’t have rich interactions within, such as
-      hover, click, or text selection. However, you may use the Tooltip to
-      provide additional information that might not be accessible otherwise.
-      Tooltip contents are announced to screen readers when the trigger is
-      focused.
-    </AccordionContent>
-  </AccordionItem>
-</Accordion>
-
 ## Installation
 
 Install the component from your command line.
@@ -385,6 +346,43 @@ export default () => (
   </HoverCard.Root>
 );
 ```
+
+## Questions and answers
+
+<Accordion>
+  <AccordionItem value="1">
+    <AccordionTrigger>
+      What if the content needs to appear on click?
+    </AccordionTrigger>
+    <AccordionContent>
+      Use [Popover](popover) instead, which is accessible both on click and via
+      keyboard interactions. By comparison, Hover Card is displayed on mouse
+      hover only.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="2">
+    <AccordionTrigger>
+      Can I use Hover Card to build an interactive menu?
+    </AccordionTrigger>
+    <AccordionContent>
+      Consider the [Dropdown Menu](dropdown-menu) component instead, which is
+      designed for building menus. It’s displayed on click or via keyboard
+      focus.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="3">
+    <AccordionTrigger>
+      How is Hover Card different from Tooltip?
+    </AccordionTrigger>
+    <AccordionContent>
+      [Tooltip](tooltip) contents can’t have rich interactions within, such as
+      hover, click, or text selection. However, you may use the Tooltip to
+      provide additional information that might not be accessible otherwise.
+      Tooltip contents are announced to screen readers when the trigger is
+      focused, while Hover Card is accessible to sighted users only.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
 
 ## Accessibility
 

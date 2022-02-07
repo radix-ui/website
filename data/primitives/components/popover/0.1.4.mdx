@@ -30,33 +30,6 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal
   ]}
 />
 
-## When to use
-
-Use Hover Card to preview information when the user hovers over an interactive element, saving them an extra click.
-
-<Accordion type="single">
-  <AccordionItem value="1">
-    <AccordionTrigger>
-      What if the content needs to appear on hover?
-    </AccordionTrigger>
-    <AccordionContent>
-      Use [Hover Card](hover-card) or [Tooltip](tooltip) instead. Popover is
-      designed to show on click and via keyboard interactions only.
-    </AccordionContent>
-  </AccordionItem>
-  <AccordionItem value="2">
-    <AccordionTrigger>
-      Can I use Popover to build an interactive menu?
-    </AccordionTrigger>
-    <AccordionContent>
-      You can use the Popover to build complex, interactive components. However,
-      if all content items are alike, consider the [Dropdown
-      Menu](dropdown-menu) component, which is specifically designed for
-      building menus.
-    </AccordionContent>
-  </AccordionItem>
-</Accordion>
-
 ## Installation
 
 Install the component from your command line.
@@ -528,6 +501,31 @@ export default () => (
   </Popover.Root>
 );
 ```
+
+## Questions and answers
+
+<Accordion>
+  <AccordionItem value="1">
+    <AccordionTrigger>
+      What if the content needs to appear on hover?
+    </AccordionTrigger>
+    <AccordionContent>
+      Use [Hover Card](hover-card) or [Tooltip](tooltip) instead. Popover is
+      designed to show on click and via keyboard interactions only.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="2">
+    <AccordionTrigger>
+      Can I use Popover to build an interactive menu?
+    </AccordionTrigger>
+    <AccordionContent>
+      You can use the Popover to build complex, interactive components. However,
+      if all content items are alike, the [Dropdown Menu](dropdown-menu)
+      component is a better fit, which is specifically designed for building
+      menus.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
 
 ## Accessibility
 

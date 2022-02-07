@@ -991,6 +991,33 @@ export default () => (
 );
 ```
 
+## Questions and answers
+
+<Accordion>
+  <AccordionItem value="1">
+    <AccordionTrigger>
+      How is Dropdown Menu different from Select?
+    </AccordionTrigger>
+    <AccordionContent>
+      Select lists options for a particular field, while Dropdown Menu displays
+      individual actions that are grouped together. While the toggle buttons
+      might be similar visually, the Select toggle displays the currently chosen
+      option, but the Dropdown Menu toggle doesn’t change normally.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="2">
+    <AccordionTrigger>
+      Can I use Popover to build an interactive menu?
+    </AccordionTrigger>
+    <AccordionContent>
+      You can use the [Popover](popover) to build complex, interactive
+      components. However, if all content items are alike, the Dropdown Menu
+      component is a better fit, which is specifically designed for building
+      menus.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
 ## Accessibility
 
 Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#menubutton) and uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/#kbd_roving_tabindex) to manage focus movement among menu items.
