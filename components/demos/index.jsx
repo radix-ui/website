@@ -14,6 +14,7 @@ export { default as PopoverDemo } from './Popover';
 export { default as ProgressDemo } from './Progress';
 export { default as RadioGroupDemo } from './RadioGroup';
 export { default as ScrollAreaDemo } from './ScrollArea';
+export { default as SelectDemo } from './Select';
 export { default as SeparatorDemo } from './Separator';
 export { default as SliderDemo } from './Slider';
 export { default as SwitchDemo } from './Switch';

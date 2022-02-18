@@ -1,0 +1,502 @@
+---
+metaTitle: Select
+metaDescription: Displays a list of options for the user to pick from—triggered by a button.
+name: select
+aria: https://www.w3.org/TR/wai-aria-practices-1.2/#Listbox
+---
+
+# Select
+
+<Description>
+  Displays a list of options for the user to pick from—triggered by a button.
+</Description>
+
+<HeroContainer>
+  <SelectDemo />
+</HeroContainer>
+
+```jsx hero template=Select
+
+```
+
+<Highlights
+  features={[
+    'Can be controlled or uncontrolled.',
+    'Supports items, labels, groups of items.',
+    'Focus is fully managed.',
+    'Full keyboard navigation.',
+    'Typeahead support.',
+    'Supports Right to Left direction.',
+  ]}
+/>
+
+## Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-select
+```
+
+## Anatomy
+
+Import all parts and piece them together.
+
+```jsx
+import * as Select from '@radix-ui/react-select';
+
+export default () => (
+  <Select.Root>
+    <Select.Trigger>
+      <Select.Value />
+      <Select.Icon />
+    </Select.Trigger>
+
+    <Select.Content>
+      <Select.ScrollUpButton />
+      <Select.Viewport>
+        <Select.Item>
+          <Select.ItemText />
+          <Select.ItemIndicator />
+        </Select.Item>
+
+        <Select.Group>
+          <Select.Label />
+          <Select.Item>
+            <Select.ItemText />
+            <Select.ItemIndicator />
+          </Select.Item>
+        </Select.Group>
+
+        <Select.Separator />
+      </Select.Viewport>
+      <Select.ScrollDownButton />
+    </Select.Content>
+  </Select.Root>
+);
+```
+
+## API Reference
+
+### Root
+
+Contains all the parts of a select.
+
+<PropsTable
+  data={[
+    {
+      name: 'defaultValue',
+      required: false,
+      type: 'string',
+      description:
+        'The value of the select when initially rendered. Use when you do not need to control the state of the select.',
+    },
+    {
+      name: 'value',
+      required: false,
+      type: 'string',
+      description: (
+        <span>
+          The controlled value of the select. Should be used in conjunction with{' '}
+          <Code>onValueChange</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onValueChange',
+      required: false,
+      type: '(value: string) => void',
+      typeSimple: 'function',
+      description: 'Event handler called when the value changes.',
+    },
+    {
+      name: 'defaultOpen',
+      type: 'boolean',
+      description:
+        'The open state of the select when it is initially rendered. Use when you do not need to control its open state.',
+    },
+    {
+      name: 'open',
+      type: 'boolean',
+      description: (
+        <span>
+          The controlled open state of the select. Must be used in conjunction
+          with <Code>onOpenChange</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onOpenChange',
+      type: '(open: boolean) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when the open state of the select changes.
+        </span>
+      ),
+    },
+    {
+      name: 'dir',
+      required: false,
+      type: '"ltr" | "rtl"',
+      typeSimple: 'enum',
+      default: '"ltr"',
+      description:
+        'The reading direction of the select when applicable. If omitted, assumes LTR (left-to-right) reading mode.',
+    },
+    {
+      name: 'name',
+      type: 'string',
+      description:
+        'The name of the select. Submitted with its owning form as part of a name/value pair.',
+    },
+  ]}
+/>
+
+### Trigger
+
+The button that toggles the select. The `Select.Content` will position itself by aligning over the trigger.
+
+<PropsTable
+  data={[
+    {
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Value
+
+The part that reflects the selected value. By default the selected item's text will be rendered. if you require more control, you can instead control the select and pass your own `children`. It should not be styled to ensure correct positioning.
+
+<PropsTable
+  data={[
+    {
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Icon
+
+A small icon often displayed next to the value as a visual affordance for the fact it can be open. By default renders ▼ but you can use your own icon via `asChild` or use `children`.
+
+<PropsTable
+  data={[
+    {
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Content
+
+The component that pops out when the select is open.
+
+<PropsTable
+  data={[
+    {
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'onCloseAutoFocus',
+      type: '(event: Event) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when focus moves to the trigger after closing. It
+          can be prevented by calling <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onEscapeKeyDown',
+      type: '(event: KeyboardEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when the escape key is down. It can be prevented
+          by calling <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onPointerDownOutside',
+      type: '(event: PointerDownOutsideEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when a pointer event occurs outside the bounds of
+          the component. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### Viewport
+
+The scrolling viewport that contains all of the items.
+
+<PropsTable
+  data={[
+    {
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Item
+
+The component that contains the select items.
+
+<PropsTable
+  data={[
+    {
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'value',
+      required: true,
+      type: 'string',
+      description: (
+        <span>
+          The value given as data when submitted with a <Code>name</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      description: (
+        <span>
+          When <Code>true</Code>, prevents the user from interacting with the
+          item.
+        </span>
+      ),
+    },
+    {
+      name: 'textValue',
+      type: 'string',
+      description: (
+        <span>
+          Optional text used for typeahead purposes. By default the typeahead
+          behavior will use the <Code>.textContent</Code> of the{' '}
+          <Code>Select.ItemText</Code> part. Use this when the content is
+          complex, or you have non-textual content inside.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### ItemText
+
+The textual part of the item. It should only contain the text you want to see in the trigger when that item is selected. It should not be styled to ensure correct positioning.
+
+<PropsTable
+  data={[
+    {
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### ItemIndicator
+
+Renders when the item is selected. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
+
+<PropsTable
+  data={[
+    {
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### ScrollUpButton
+
+An optional button used as an affordance to show the viewport overflow as well as functionaly enable scrolling upwards.
+
+<PropsTable
+  data={[
+    {
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### ScrollDownButton
+
+An optional button used as an affordance to show the viewport overflow as well as functionaly enable scrolling downwards.
+
+<PropsTable
+  data={[
+    {
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Group
+
+Used to group multiple items. use in conjunction with `Select.Label` to ensure good accessibility via automatic labelling.
+
+<PropsTable
+  data={[
+    {
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Label
+
+Used to render the label of a group. It won't be focusable using arrow keys.
+
+<PropsTable
+  data={[
+    {
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Separator
+
+Used to visually separate items in the select.
+
+<PropsTable
+  data={[
+    {
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+## Accessibility
+
+Adheres to the [ListBox WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#Listbox).
+
+### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['Space'],
+      description: (
+        <span>
+          When focus is on <Code>Select.Trigger</Code>, opens the select and
+          focuses the selected item.
+          <br />
+          When focus is on an item, selects the focused item.
+        </span>
+      ),
+    },
+    {
+      keys: ['Enter'],
+      description: (
+        <span>
+          When focus is on <Code>Select.Trigger</Code>, opens the select and
+          focuses the first item.
+          <br />
+          When focus is on an item, selects the focused item.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowDown'],
+      description: (
+        <span>
+          When focus is on <Code>Select.Trigger</Code>, opens the select.
+          <br />
+          When focus is on an item, moves focus to the next item.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowUp'],
+      description: (
+        <span>
+          When focus is on <Code>Select.Trigger</Code>, opens the select.
+          <br />
+          When focus is on an item, moves focus to the previous item.
+        </span>
+      ),
+    },
+    {
+      keys: ['Esc'],
+      description: (
+        <span>
+          Closes the select and moves focus to <Code>Select.Trigger</Code>.
+        </span>
+      ),
+    },
+  ]}
+/>

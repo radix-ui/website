@@ -33,7 +33,7 @@ export const primitivesRoutes = [
       { title: 'Progress', slug: 'docs/primitives/components/progress' },
       { title: 'Radio Group', slug: 'docs/primitives/components/radio-group' },
       { title: 'Scroll Area', slug: 'docs/primitives/components/scroll-area' },
-      { title: 'Select', slug: 'docs/primitives/components/select', draft: true },
+      { title: 'Select', slug: 'docs/primitives/components/select' },
       { title: 'Separator', slug: 'docs/primitives/components/separator' },
       { title: 'Slider', slug: 'docs/primitives/components/slider' },
       { title: 'Switch', slug: 'docs/primitives/components/switch' },
