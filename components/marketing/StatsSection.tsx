@@ -63,7 +63,6 @@ export const StatsSection = () => {
                 fontVariantNumeric: 'proportional-nums',
                 letterSpacing: '-.031em',
                 mb: '$2',
-                textIndent: '-0.08em',
               }}
             >
               2.6M
@@ -85,7 +84,6 @@ export const StatsSection = () => {
                 display: 'flex',
                 alignItems: 'center',
                 mb: '$2',
-                textIndent: '-0.12em',
               }}
             >
               2200
@@ -110,7 +108,6 @@ export const StatsSection = () => {
                 display: 'flex',
                 alignItems: 'center',
                 mb: '$2',
-                textIndent: '-0.12em',
               }}
             >
               3300
