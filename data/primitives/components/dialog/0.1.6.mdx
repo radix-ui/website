@@ -314,7 +314,9 @@ The button that closes the dialog.
 
 ### Title
 
-An accessible name to be announced when the dialog is opened. Alternatively, you can provide `aria-label` or `aria-labelledby` to `Dialog.Content` and exclude this component.
+An accessible title to be announced when the dialog is opened.
+
+If you don't want the title to be visible, wrap it inside `<VisuallyHidden asChild>`. Alternatively, you can provide `aria-label` or `aria-labelledby` to `Dialog.Content` and exclude this component.
 
 <PropsTable
   data={[
@@ -331,7 +333,9 @@ An accessible name to be announced when the dialog is opened. Alternatively, you
 
 ### Description
 
-An accessible description to be announced when the dialog is opened. Alternatively, you can provide `aria-describedby` to `Dialog.Content` and exclude this component.
+An optional accessible description to be announced when the dialog is opened. Alternatively, you can provide `aria-describedby` to `Dialog.Content` and exclude this component.
+
+If you do not want a description, pass `aria-describedby={undefined}` to `Dialog.Content` to silence the "missing description" warning.
 
 <PropsTable
   data={[
