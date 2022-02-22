@@ -18,7 +18,7 @@ const StyledOverlay = styled(AlertDialogPrimitive.Overlay, {
   position: 'fixed',
   inset: 0,
   '@media (prefers-reduced-motion: no-preference)': {
-    animation: `${overlayShow} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
+    animation: `${overlayShow} 150ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
   },
 });
 
@@ -35,7 +35,7 @@ const StyledContent = styled(AlertDialogPrimitive.Content, {
   maxHeight: '85vh',
   padding: 25,
   '@media (prefers-reduced-motion: no-preference)': {
-    animation: `${contentShow} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
+    animation: `${contentShow} 150ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
   },
   '&:focus': { outline: 'none' },
 });

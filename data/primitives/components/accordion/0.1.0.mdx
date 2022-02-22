@@ -343,8 +343,8 @@ const close = keyframes({
 });
 
 const AccordionContent = styled(Accordion.Content, {
-  '&[data-state="open"]': { animation: `${open} 300ms ease-out` },
-  '&[data-state="closed"]': { animation: `${close} 300ms ease-out` },
+  '&[data-state="open"]': { animation: `${open} 300ms ease-out forwards` },
+  '&[data-state="closed"]': { animation: `${close} 300ms ease-out forwards` },
 });
 
 export default () => (

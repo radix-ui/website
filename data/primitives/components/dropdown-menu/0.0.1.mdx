@@ -719,7 +719,7 @@ const scaleIn = keyframes({
 
 const StyledContent = styled(DropdownMenu.Content, {
   transformOrigin: 'var(--radix-dropdown-menu-content-transform-origin)',
-  animation: `${scaleIn} 0.5s ease-out`,
+  animation: `${scaleIn} 0.5s ease-out forwards`,
 });
 ```
 
@@ -739,10 +739,11 @@ const slideUp = keyframes({
 });
 
 const StyledContent = styled(DropdownMenu.Content, {
-  '&[data-side="top"]': { animationName: slideUp },
-  '&[data-side="bottom"]': { animationName: slideDown },
   animationDuration: '0.6s',
   animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+  animationFillMode: 'forwards',
+  '&[data-side="top"]': { animationName: slideUp },
+  '&[data-side="bottom"]': { animationName: slideDown },
 });
 ```
 
