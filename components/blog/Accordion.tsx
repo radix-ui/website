@@ -80,10 +80,10 @@ const StyledPanel = styled(Accordion.Content, {
 
   '.with-animation &': {
     '&[data-state="open"]': {
-      animation: `${slideDown} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
+      animation: `${slideDown} 300ms cubic-bezier(0.87, 0, 0.13, 1) forwards`,
     },
     '&[data-state="closed"]': {
-      animation: `${slideUp} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
+      animation: `${slideUp} 300ms cubic-bezier(0.87, 0, 0.13, 1) forwards`,
     },
   },
 });

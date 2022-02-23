@@ -41,7 +41,7 @@ const StyledContent = styled(Tooltip.Content, {
 
   '&.with-animation': {
     transformOrigin: 'var(--radix-tooltip-content-transform-origin)',
-    animation: `${scaleIn} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
+    animation: `${scaleIn} 300ms cubic-bezier(0.87, 0, 0.13, 1) forwards`,
   },
 });
 
