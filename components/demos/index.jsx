@@ -20,6 +20,7 @@ export { default as SeparatorDemo } from './Separator';
 export { default as SliderDemo } from './Slider';
 export { default as SwitchDemo } from './Switch';
 export { default as TabsDemo } from './Tabs';
+export { default as ToastDemo } from './Toast';
 export { default as ToggleDemo } from './Toggle';
 export { default as ToggleGroupDemo } from './ToggleGroup';
 export { default as ToolbarDemo } from './Toolbar';
