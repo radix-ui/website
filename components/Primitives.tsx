@@ -17,6 +17,7 @@ export * as PopoverPrimitive from '@radix-ui/react-popover';
 export * as Progress from '@radix-ui/react-progress';
 export * as RadioGroup from '@radix-ui/react-radio-group';
 export * as ScrollArea from '@radix-ui/react-scroll-area';
+export * as Select from '@radix-ui/react-select';
 export * as Separator from '@radix-ui/react-separator';
 export * as Slider from '@radix-ui/react-slider';
 export * as Switch from '@radix-ui/react-switch';
