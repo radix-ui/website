@@ -7,6 +7,72 @@ metaDescription: Radix Primitives releases and their changelogs.
 
 <Description>Radix Primitives releases and their changelogs.</Description>
 
+## February 23, 2022
+
+This release introduces 3 brand new primitives: `Select`, `Toast` and `NavigationMenu`, whilst also shipping a ton of fixes and improvements.
+
+<PackageRelease name="Accordion" version="0.1.6" />
+
+- Prevent form submission when pressing `Accordion.Trigger` <PRLink id={1085} />
+- Fix animation issue with React 18 <PRLink id={1125} />
+
+<PackageRelease name="Alert Dialog" version="0.1.6" />
+
+- Improve pointer-events management <PRLink id={1079} />
+
+<PackageRelease name="Checkbox" version="0.1.5" />
+
+- Prevent activation via enter key <PRLink id={1104} />
+
+<PackageRelease name="Collapsible" version="0.1.6" />
+
+- Fix animation issue with React 18 <PRLink id={1125} />
+
+<PackageRelease name="Context Menu" version="0.1.5" />
+
+- Prevent `DropdownMenu.TriggerItem` click from firing twice <PRLink id={1057} />
+- Improve idle performance <PRLink id={1040} />
+
+<PackageRelease name="Dialog" version="0.1.6" major />
+
+- Improve pointer-events management <PRLink id={1079} />
+- [**Breaking**] `Dialog.Title` is now a required part so will throw an error if not used. `aria-describedby={undefined}` must be passed to `Dialog.Content` if no description is needed. <PRLink id={1098} />
+
+<PackageRelease name="Dropdown Menu" version="0.1.5" />
+
+- Improve composability with `Dialog`/`AlertDialog` <PRLink id={1097} />
+- Prevent clicking trigger to close from immediately reopening in non-modal mode <PRLink id={1059} />
+- Prevent `DropdownMenu.TriggerItem` click from firing twice <PRLink id={1057} />
+- Improve idle performance <PRLink id={1040} />
+
+<PackageRelease name="Navigation Menu" version="0.0.1" />
+
+- New primitive <PRLink id={1172} />
+
+<PackageRelease name="Radio Group" version="0.1.5" />
+
+- Prevent activation via enter key <PRLink id={1104} />
+
+<PackageRelease name="Select" version="0.0.1" />
+
+- New primitive <PRLink id={1169} />
+
+<PackageRelease name="Slider" version="0.1.4" />
+
+- Prevent page scroll when using `Home` and `End` keys <PRLink id={1076} />
+
+<PackageRelease name="Tabs" version="0.1.5" />
+
+- Prevent accidental focus activation via right-click <PRLink id={1114} />
+
+<PackageRelease name="Toast" version="0.0.1" />
+
+- New primitive <PRLink id={1165} />
+
+<PackageRelease name="Toggle Group" version="0.1.5" />
+
+- Improve accessibility by using radio role for single toggle group <PRLink id={1118} />
+
 ## December 13, 2021
 
 This release focuses on React 18 support and introduces a number breaking changes to some packages, mostly related to portalling dialogs.
