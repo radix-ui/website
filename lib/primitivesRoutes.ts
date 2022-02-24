@@ -38,7 +38,7 @@ export const primitivesRoutes = [
       { title: 'Slider', slug: 'docs/primitives/components/slider' },
       { title: 'Switch', slug: 'docs/primitives/components/switch' },
       { title: 'Tabs', slug: 'docs/primitives/components/tabs' },
-      { title: 'Toast', slug: 'docs/primitives/components/toast', draft: true },
+      { title: 'Toast', slug: 'docs/primitives/components/toast', beta: true },
       { title: 'Toggle', slug: 'docs/primitives/components/toggle' },
       { title: 'Toggle Group', slug: 'docs/primitives/components/toggle-group' },
       { title: 'Toolbar', slug: 'docs/primitives/components/toolbar' },
