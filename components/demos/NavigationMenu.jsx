@@ -145,7 +145,7 @@ const StyledViewport = styled(NavigationMenuPrimitive.Viewport, {
     width: 'var(--radix-navigation-menu-viewport-width)',
   },
   '@media (prefers-reduced-motion: no-preference)': {
-    transition: 'width 300ms ease, height 300ms ease',
+    transition: 'width, height, 300ms ease',
     '&[data-state="open"]': { animation: `${scaleIn} 200ms ease` },
     '&[data-state="closed"]': { animation: `${scaleOut} 200ms ease` },
   },
