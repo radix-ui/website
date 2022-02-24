@@ -23,8 +23,8 @@ const StyledIndicator = styled(CheckboxPrimitive.Indicator, {
 });
 
 // Exports
-const Checkbox = StyledCheckbox;
-const CheckboxIndicator = StyledIndicator;
+export const Checkbox = StyledCheckbox;
+export const CheckboxIndicator = StyledIndicator;
 
 // Your app...
 const Flex = styled('div', { display: 'flex' });

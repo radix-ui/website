@@ -23,7 +23,7 @@ const StyledToggle = styled(TogglePrimitive.Root, {
 });
 
 // Exports
-const Toggle = StyledToggle;
+export const Toggle = StyledToggle;
 
 // Your app...
 const ToggleDemo = () => (

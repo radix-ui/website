@@ -31,8 +31,8 @@ const StyledItem = styled(ToggleGroupPrimitive.Item, {
 });
 
 // Exports
-const ToggleGroup = StyledToggleGroup;
-const ToggleGroupItem = StyledItem;
+export const ToggleGroup = StyledToggleGroup;
+export const ToggleGroupItem = StyledItem;
 
 // Your app...
 const ToggleGroupDemo = () => (

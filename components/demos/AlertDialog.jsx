@@ -64,13 +64,13 @@ const StyledDescription = styled(AlertDialogPrimitive.Description, {
 });
 
 // Exports
-const AlertDialog = AlertDialogPrimitive.Root;
-const AlertDialogTrigger = AlertDialogPrimitive.Trigger;
-const AlertDialogContent = Content;
-const AlertDialogTitle = StyledTitle;
-const AlertDialogDescription = StyledDescription;
-const AlertDialogAction = AlertDialogPrimitive.Action;
-const AlertDialogCancel = AlertDialogPrimitive.Cancel;
+export const AlertDialog = AlertDialogPrimitive.Root;
+export const AlertDialogTrigger = AlertDialogPrimitive.Trigger;
+export const AlertDialogContent = Content;
+export const AlertDialogTitle = StyledTitle;
+export const AlertDialogDescription = StyledDescription;
+export const AlertDialogAction = AlertDialogPrimitive.Action;
+export const AlertDialogCancel = AlertDialogPrimitive.Cancel;
 
 // Your app...
 const Flex = styled('div', { display: 'flex' });

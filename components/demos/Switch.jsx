@@ -30,8 +30,8 @@ const StyledThumb = styled(SwitchPrimitive.Thumb, {
 });
 
 // Exports
-const Switch = StyledSwitch;
-const SwitchThumb = StyledThumb;
+export const Switch = StyledSwitch;
+export const SwitchThumb = StyledThumb;
 
 // Your app...
 const Flex = styled('div', { display: 'flex' });

@@ -87,13 +87,13 @@ const StyledAction = styled(ToastPrimitive.Action, {
 });
 
 // Exports
-const ToastProvider = ToastPrimitive.Provider;
-const ToastViewport = StyledViewport;
-const Toast = StyledToast;
-const ToastTitle = StyledTitle;
-const ToastDescription = StyledDescription;
-const ToastAction = StyledAction;
-const ToastClose = ToastPrimitive.Close;
+export const ToastProvider = ToastPrimitive.Provider;
+export const ToastViewport = StyledViewport;
+export const Toast = StyledToast;
+export const ToastTitle = StyledTitle;
+export const ToastDescription = StyledDescription;
+export const ToastAction = StyledAction;
+export const ToastClose = ToastPrimitive.Close;
 
 // Your app...
 const Box = styled('div', {});

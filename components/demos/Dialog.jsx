@@ -65,12 +65,12 @@ const StyledDescription = styled(DialogPrimitive.Description, {
 });
 
 // Exports
-const Dialog = DialogPrimitive.Root;
-const DialogTrigger = DialogPrimitive.Trigger;
-const DialogContent = Content;
-const DialogTitle = StyledTitle;
-const DialogDescription = StyledDescription;
-const DialogClose = DialogPrimitive.Close;
+export const Dialog = DialogPrimitive.Root;
+export const DialogTrigger = DialogPrimitive.Trigger;
+export const DialogContent = Content;
+export const DialogTitle = StyledTitle;
+export const DialogDescription = StyledDescription;
+export const DialogClose = DialogPrimitive.Close;
 
 // Your app...
 const Flex = styled('div', { display: 'flex' });

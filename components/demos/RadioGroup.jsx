@@ -32,9 +32,9 @@ const StyledIndicator = styled(RadioGroupPrimitive.Indicator, {
 });
 
 // Exports
-const RadioGroup = RadioGroupPrimitive.Root;
-const RadioGroupRadio = StyledRadio;
-const RadioGroupIndicator = StyledIndicator;
+export const RadioGroup = RadioGroupPrimitive.Root;
+export const RadioGroupRadio = StyledRadio;
+export const RadioGroupIndicator = StyledIndicator;
 
 // Your app...
 const Flex = styled('div', { display: 'flex' });
