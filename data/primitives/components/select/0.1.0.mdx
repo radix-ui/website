@@ -694,6 +694,31 @@ See the W3C [Select-Only Combobox](https://www.w3.org/TR/wai-aria-practices/exam
   ]}
 />
 
+### Labelling
+
+Use our [Label](label) component in order to offer a visual and accessible label for the select.
+
+```jsx line=6,9,13
+import * as Select from '@radix-ui/react-select';
+import { Label } from '@radix-ui/react-label';
+
+export default () => (
+  <>
+    <Label>
+      Country
+      <Select.Root>…</Select.Root>
+    </Label>
+
+    {/* or */}
+
+    <Label htmlFor="country">Country</Label>
+    <Select.Root>
+      <Select.Trigger __id__="country">…</Select.Trigger>…
+    </Select.Root>
+  </>
+);
+```
+
 ## Custom APIs
 
 Create your own API by abstracting the primitive parts into your own component.
