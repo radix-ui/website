@@ -65,6 +65,7 @@ export type PageProps = {
   slug: string;
   draft?: boolean;
   deprecated?: boolean;
+  beta?: boolean;
 };
 
 export type RouteProps = {
