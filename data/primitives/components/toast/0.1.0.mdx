@@ -338,7 +338,7 @@ export default () => {
 
 ### Animating swipe gesture
 
-Combine `--radix-toast-swipe-move-[x|y]` and `--radix-toast-swipe-end-[x|y]` CSS variables with `data-swipe-[start|move|cancel|end]` attributes to animate a swipe to close gesture. Here's an example using Stitches:
+Combine `--radix-toast-swipe-move-[x|y]` and `--radix-toast-swipe-end-[x|y]` CSS variables with `data-swipe="[start|move|cancel|end]"` attributes to animate a swipe to close gesture. Here's an example using Stitches:
 
 ```jsx line=4-7,9-20,24
 import { styled, keyframes } from '@stitches/react';
@@ -527,7 +527,7 @@ export const Toast = ({ title, content, children, ...props }) => {
 
 ### Imperative API
 
-Create your own imperative API to allow [toast duplication](/docs/primitives/components/toast#consecutive-toasts) if preferred.
+Create your own imperative API to allow [toast duplication](/docs/primitives/components/toast#duplicate-toasts) if preferred.
 
 #### Usage
 
