@@ -136,6 +136,7 @@ export function PrimitivesPage({ children }: { children: React.ReactNode }) {
           flex: 1,
           pt: '$8',
           pb: '$5',
+          zIndex: 0,
 
           '@bp2': { pb: '$9', pl: '250px' },
           '@media (min-width: 1440px)': { pr: '250px' },
