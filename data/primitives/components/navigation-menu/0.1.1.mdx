@@ -419,13 +419,13 @@ You can create a vertical menu by using the `orientation` prop.
 </NavigationMenu.Root>
 ```
 
-### Render content outside of the list
+### Flexible layouts
 
 Use the `Viewport` part when you need extra control over where `Content` is rendered. This can be helpful when your design
-requires an adjusted DOM structure or if you need flexibility to achieve animation.
+requires an adjusted DOM structure or if you need flexibility to achieve [advanced animation](/docs/primitives/components/navigation-menu#advanced-animation).
 Tab focus will be maintained automatically.
 
-```jsx line=13
+```jsx line=14
 <NavigationMenu.Root>
   <NavigationMenu.List>
     <NavigationMenu.Item>
@@ -438,14 +438,53 @@ Tab focus will be maintained automatically.
     </NavigationMenu.Item>
   </NavigationMenu.List>
 
+  {/* NavigationMenu.Content will be rendered here when active */}
   <NavigationMenu.Viewport />
 </NavigationMenu.Root>
+```
+
+### With indicator
+
+You can use the optional `Indicator` part to highlight the currently active `Trigger`, this is useful when you want to provide
+an animated visual cue such as an arrow or highlight to accompany the `Viewport`.
+
+```jsx line=4-11,25
+import { styled } from '@stitches/react';
+import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+
+const StyledIndicator = styled(NavigationMenu.Link, {
+  backgroundColor: 'grey',
+
+  '&[data-orientation="horizontal"]': { height: 3 },
+  '@media (prefers-reduced-motion: no-preference)': {
+    transition: 'width, transform, 250ms ease',
+  },
+});
+
+export default () => (
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
+        <NavigationMenu.Content>Item one content</NavigationMenu.Content>
+      </NavigationMenu.Item>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
+        <NavigationMenu.Content>Item two content</NavigationMenu.Content>
+      </NavigationMenu.Item>
+
+      <StyledIndicator />
+    </NavigationMenu.List>
+
+    <NavigationMenu.Viewport />
+  </NavigationMenu.Root>
+);
 ```
 
 ### With submenus
 
 Create a submenu by nesting your `NavigationMenu` and using the `Sub` part in place of its `Root`.
-Submenus work differently to `Root` navigation menus and are similar to `Tabs` in that one item should always be active, so be
+Submenus work differently to `Root` navigation menus and are similar to [`Tabs`](/docs/primitives/components/tabs) in that one item should always be active, so be
 sure to assign and set a `defaultValue`.
 
 ```jsx line=10,25
@@ -478,6 +517,53 @@ sure to assign and set a `defaultValue`.
     </NavigationMenu.Item>
   </NavigationMenu.List>
 </NavigationMenu.Root>
+```
+
+### With router links
+
+If you need to use a `Link` provided by your routing package then we recommend composing with `NavigationMenu.Link` via a custom component.
+This will ensure accessibility and consistent keyboard control is maintained. Here's an example using Stitches and React Router:
+
+```jsx line=14-26,32,35
+import {
+  useMatch,
+  useResolvedPath,
+  Link as RouterLink,
+} from 'react-router-dom';
+import { styled } from '@stitches/react';
+import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+
+const StyledLink = styled(NavigationMenu.Link, {
+  textDecoration: 'none',
+  '&[data-active]': { textDecoration: 'underline' },
+});
+
+const CustomLink = ({ children, to, ...props }) => {
+  const resolved = useResolvedPath(to);
+  const match = useMatch({ path: resolved.pathname, end: true });
+  const isActive = Boolean(match);
+
+  return (
+    <StyledLink active={isActive} asChild>
+      <RouterLink to={to} {...props}>
+        {children}
+      </RouterLink>
+    </StyledLink>
+  );
+};
+
+export default () => (
+  <NavigationMenu.Root>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <CustomLink to="/">Home</CustomLink>
+      </NavigationMenu.Item>
+      <NavigationMenu.Item>
+        <CustomLink to="/about">About</CustomLink>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+);
 ```
 
 ### Advanced animation
@@ -559,12 +645,21 @@ export default () => (
 
 Adheres to the [`navigation` role requirements](https://www.w3.org/TR/wai-aria-1.2/#navigation).
 
+### Differences to menubar
+
 `NavigationMenu` should not be confused with `menubar`, although this primitive shares the name `menu` in the colloquial sense to refer to a set of navigation links, it does not use the WAI-ARIA `menu` role.
 This is because `menu` and `menubars` behave like native operating system menus most commonly found in desktop application windows, as such they feature complex functionality like composite focus management and first-character navigation.
 
 These features are often considered [unnecessary for website navigation](https://github.com/w3c/aria-practices/issues/353) and at worst can confuse users who are familiar with established website patterns.
 
 See the W3C [Disclosure Navigation Menu](https://w3c.github.io/aria-practices/examples/disclosure/disclosure-navigation.html) example for more information.
+
+### Link usage and aria-current
+
+It's important to use `NavigationMenu.Link` for all navigational links within a menu, this not only applies to the main list
+but also within any content rendered via `NavigationMenu.Content`. This will ensure consistent keyboard interactions and accessibility
+while also giving access to the `active` prop for setting `aria-current` and the active styles.
+See [this example](/docs/primitives/components/navigation-menu#with-router-links) for more information on usage with third party routing components.
 
 ### Keyboard Interactions
 
