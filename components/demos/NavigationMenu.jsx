@@ -25,13 +25,23 @@ const exitToLeft = keyframes({
 });
 
 const scaleIn = keyframes({
-  from: { transform: 'translateY(5px) rotateX(-20deg) scale(0.97)', opacity: 0 },
-  to: { transform: 'translateY(0px) rotateX(0deg) scale(1)', opacity: 1 },
+  from: { transform: 'rotateX(-30deg) scale(0.9)', opacity: 0 },
+  to: { transform: 'rotateX(0deg) scale(1)', opacity: 1 },
 });
 
 const scaleOut = keyframes({
-  from: { transform: 'translateY(0px) rotateX(0deg) ', opacity: 1 },
-  to: { transform: 'translateY(5px) rotateX(-10deg)', opacity: 0 },
+  from: { transform: 'rotateX(0deg) scale(1)', opacity: 1 },
+  to: { transform: 'rotateX(-10deg) scale(0.95)', opacity: 0 },
+});
+
+const fadeIn = keyframes({
+  from: { opacity: 0 },
+  to: { opacity: 1 },
+});
+
+const fadeOut = keyframes({
+  from: { opacity: 1 },
+  to: { opacity: 0 },
 });
 
 const StyledMenu = styled(NavigationMenuPrimitive.Root, {
@@ -62,7 +72,8 @@ const itemStyles = {
   borderRadius: 4,
   fontSize: 15,
   color: violet.violet11,
-  '&:focus': { boxShadow: `0 0 0 2px ${violet.violet7}` },
+  '&:focus': { position: 'relative', boxShadow: `0 0 0 2px ${violet.violet7}` },
+  '&:hover': { backgroundColor: violet.violet3 },
 };
 
 const StyledTrigger = styled(NavigationMenuPrimitive.Trigger, {
@@ -119,16 +130,33 @@ const StyledIndicator = styled(NavigationMenuPrimitive.Indicator, {
   display: 'flex',
   alignItems: 'flex-end',
   justifyContent: 'center',
-  height: 2,
-  bottom: 0,
-  borderTopLeftRadius: 10,
-  borderTopRightRadius: 10,
-  backgroundColor: violet.violet8,
+  height: 14,
+  top: '100%',
+  overflow: 'hidden',
+  zIndex: 1,
 
   '@media (prefers-reduced-motion: no-preference)': {
     transition: 'width, transform 250ms ease',
+    '&[data-state="visible"]': { animation: `${fadeIn} 200ms ease` },
+    '&[data-state="hidden"]': { animation: `${fadeOut} 200ms ease` },
   },
 });
+
+const StyledArrow = styled('div', {
+  position: 'relative',
+  top: '70%',
+  backgroundColor: 'white',
+  width: 14,
+  height: 14,
+  transform: 'rotate(45deg)',
+  borderTopLeftRadius: 2,
+});
+
+const StyledIndicatorWithArrow = React.forwardRef((props, forwardedRef) => (
+  <StyledIndicator {...props} ref={forwardedRef}>
+    <StyledArrow />
+  </StyledIndicator>
+));
 
 const StyledViewport = styled(NavigationMenuPrimitive.Viewport, {
   position: 'relative',
@@ -159,7 +187,7 @@ const NavigationMenuTrigger = StyledTriggerWithCaret;
 const NavigationMenuLink = StyledLink;
 const NavigationMenuContent = StyledContent;
 const NavigationMenuViewport = StyledViewport;
-const NavigationMenuIndicator = StyledIndicator;
+const NavigationMenuIndicator = StyledIndicatorWithArrow;
 
 // Your app...
 const ContentList = styled('ul', {
