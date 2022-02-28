@@ -96,6 +96,7 @@ export function PrimitivesPage({ children }: { children: React.ReactNode }) {
               <Box key={section.label} css={{ mb: '$4' }}>
                 <NavHeading>{section.label}</NavHeading>
                 {section.pages.map((page) => {
+                  const isBeta = page.beta;
                   const isDraft = page.draft;
                   const isDeprecated = page.deprecated;
                   return (
@@ -108,6 +109,11 @@ export function PrimitivesPage({ children }: { children: React.ReactNode }) {
                       <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                         {page.title}
                       </Text>
+                      {isBeta ? (
+                        <Badge css={{ ml: '$2' }} variant="blue">
+                          Beta
+                        </Badge>
+                      ) : null}
                       {isDraft ? <Badge css={{ ml: '$2' }}>Coming soon</Badge> : null}
                       {isDeprecated ? (
                         <Badge variant="yellow" css={{ ml: '$2' }}>

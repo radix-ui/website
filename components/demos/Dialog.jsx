@@ -19,7 +19,7 @@ const StyledOverlay = styled(DialogPrimitive.Overlay, {
   position: 'fixed',
   inset: 0,
   '@media (prefers-reduced-motion: no-preference)': {
-    animation: `${overlayShow} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
+    animation: `${overlayShow} 150ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
   },
 });
 
@@ -36,7 +36,7 @@ const StyledContent = styled(DialogPrimitive.Content, {
   maxHeight: '85vh',
   padding: 25,
   '@media (prefers-reduced-motion: no-preference)': {
-    animation: `${contentShow} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
+    animation: `${contentShow} 150ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
   },
   '&:focus': { outline: 'none' },
 });
@@ -65,12 +65,12 @@ const StyledDescription = styled(DialogPrimitive.Description, {
 });
 
 // Exports
-const Dialog = DialogPrimitive.Root;
-const DialogTrigger = DialogPrimitive.Trigger;
-const DialogContent = Content;
-const DialogTitle = StyledTitle;
-const DialogDescription = StyledDescription;
-const DialogClose = DialogPrimitive.Close;
+export const Dialog = DialogPrimitive.Root;
+export const DialogTrigger = DialogPrimitive.Trigger;
+export const DialogContent = Content;
+export const DialogTitle = StyledTitle;
+export const DialogDescription = StyledDescription;
+export const DialogClose = DialogPrimitive.Close;
 
 // Your app...
 const Flex = styled('div', { display: 'flex' });

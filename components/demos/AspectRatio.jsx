@@ -4,7 +4,7 @@ import { blackA } from '@radix-ui/colors';
 import * as AspectRatioPrimitive from '@radix-ui/react-aspect-ratio';
 
 // Exports
-const AspectRatio = AspectRatioPrimitive;
+export const AspectRatio = AspectRatioPrimitive;
 
 // Your app...
 const Box = styled('div', {});

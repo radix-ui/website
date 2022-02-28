@@ -60,11 +60,11 @@ const StyledCorner = styled(ScrollAreaPrimitive.Corner, {
 });
 
 // Exports
-const ScrollArea = StyledScrollArea;
-const ScrollAreaViewport = StyledViewport;
-const ScrollAreaScrollbar = StyledScrollbar;
-const ScrollAreaThumb = StyledThumb;
-const ScrollAreaCorner = StyledCorner;
+export const ScrollArea = StyledScrollArea;
+export const ScrollAreaViewport = StyledViewport;
+export const ScrollAreaScrollbar = StyledScrollbar;
+export const ScrollAreaThumb = StyledThumb;
+export const ScrollAreaCorner = StyledCorner;
 
 // Your app...
 const Box = styled('div', {});
