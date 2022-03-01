@@ -313,7 +313,7 @@ export const NavigationMenuDemo = () => {
           <NavigationMenuContent>
             <ContentList layout="one">
               <ContentListItemCallout />
-              <ContentListItem href="https:/stitches.dev/" title="Stitches">
+              <ContentListItem href="https://stitches.dev/" title="Stitches">
                 CSS-in-JS with best-in-class developer experience.
               </ContentListItem>
               <ContentListItem href="/colors" title="Colors">
