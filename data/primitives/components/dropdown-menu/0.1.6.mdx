@@ -147,17 +147,6 @@ Contains all the parts of a dropdown menu.
       description:
         'The reading direction of submenus when applicable. If omitted, assumes LTR (left-to-right) reading mode.',
     },
-    {
-      name: 'id',
-      type: 'string',
-      description: (
-        <span>
-          A unique identifier for the component. The <Code>id</Code> is used to
-          generate <Code>id</Code> attributes for nested components. If no{' '}
-          <Code>id</Code> prop is provided, a generated id will be used.
-        </span>
-      ),
-    },
   ]}
 />
 
@@ -376,6 +365,17 @@ The component that pops out when the dropdown menu is open.
         <span>
           The distance in pixels from window edges where collision detection
           should occur.
+        </span>
+      ),
+    },
+    {
+      name: 'id',
+      type: 'string',
+      description: (
+        <span>
+          A unique identifier for the component. The <Code>id</Code> is used to
+          generate <Code>id</Code> attributes for nested components. If no{' '}
+          <Code>id</Code> prop is provided, a generated id will be used.
         </span>
       ),
     },
