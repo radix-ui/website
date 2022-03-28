@@ -520,7 +520,7 @@ export const Toast = ({ title, content, children, ...props }) => {
       <ToastPrimitive.Close aria-label="Close">
         <span aria-hidden>×</span>
       </ToastPrimitive.Close>
-    </ToastPrimitive>
+    </ToastPrimitive.Root>
   );
 };
 ```
@@ -569,7 +569,7 @@ export const Toast = React.forwardRef((props, forwardedRef) => {
         <ToastPrimitive.Root key={index} {...toastProps}>
           <ToastPrimitive.Description>{children}</ToastPrimitive.Description>
           <ToastPrimitive.Close>Dismiss</ToastPrimitive.Close>
-        </ToastPrimitive>
+        </ToastPrimitive.Root>
       ))}
     </>
   );
