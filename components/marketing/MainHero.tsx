@@ -676,7 +676,7 @@ export const MainHero = () => {
               left: '15px',
             }}
           >
-            <CarouselPrevious aria-label="Show next demo" tabIndex={-1} as={CarouselArrowButton}>
+            <CarouselPrevious aria-label="Show previous demo" tabIndex={-1} as={CarouselArrowButton}>
               <ArrowLeftIcon />
             </CarouselPrevious>
           </Box>
@@ -687,7 +687,7 @@ export const MainHero = () => {
               right: '15px',
             }}
           >
-            <CarouselNext aria-label="Show previous demo" tabIndex={-1} as={CarouselArrowButton}>
+            <CarouselNext aria-label="Show next demo" tabIndex={-1} as={CarouselArrowButton}>
               <ArrowRightIcon />
             </CarouselNext>
           </Box>
