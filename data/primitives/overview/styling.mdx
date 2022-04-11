@@ -131,16 +131,15 @@ export default () => {
 
 ## Extending a primitive
 
-Extending a primitive is done the same way you extend any React component. One minor difference is the use of `Radix.ComponentPropsWithoutRef` instead of `React.ComponentPropsWithoutRef` which is just a workaround until [the fixed types are released](https://github.com/DefinitelyTyped/DefinitelyTyped/pull/55396).
+Extending a primitive is done the same way you extend any React component.
 
 ```tsx
 import * as React from 'react';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
-import type * as Radix from '@radix-ui/react-primitive';
 
 const AccordionItem = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,
-  Radix.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
 >((props, forwardedRef) => (
   <AccordionPrimitive.Item {...props} ref={forwardedRef} />
 ));
