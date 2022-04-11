@@ -97,7 +97,7 @@ export default function CaseStudy() {
               <LogoLink variant="box">
                 <AccessibleIcon label="Linear case study">
                   <Flex justify="center" css={{ height: '100%' }}>
-                    <CaseStudyLogo variant="Linear (Wide)" />
+                    <CaseStudyLogo variant="Linear (Wide)" width="100" />
                   </Flex>
                 </AccessibleIcon>
               </LogoLink>
