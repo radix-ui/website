@@ -226,7 +226,7 @@ export const DropdownMenuDemo = () => {
               Colm Tuite
             </DropdownMenuRadioItem>
           </DropdownMenuRadioGroup>
-          <DropdownMenuArrow />
+          <DropdownMenuArrow offset={12} />
         </DropdownMenuContent>
       </DropdownMenu>
     </Box>
