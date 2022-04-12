@@ -12,6 +12,14 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#menubutton
   a button.
 </Description>
 
+<HeroContainer>
+  <DropdownMenuDemo />
+</HeroContainer>
+
+```jsx hero template=DropdownMenu
+
+```
+
 <Highlights
   features={[
     'Can be controlled or uncontrolled.',
@@ -135,9 +143,13 @@ Contains all the parts of a dropdown menu.
       required: false,
       type: '"ltr" | "rtl"',
       typeSimple: 'enum',
-      default: '"ltr"',
-      description:
-        'The reading direction of submenus when applicable. If omitted, assumes LTR (left-to-right) reading mode.',
+      description: (
+        <span>
+          The reading direction of submenus when applicable. If omitted,
+          inherits globally from <Code>DirectionProvider</Code> or assumes LTR
+          (left-to-right) reading mode.
+        </span>
+      ),
     },
   ]}
 />
@@ -433,7 +445,7 @@ The component that contains the dropdown menu items.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the user selects an item (via mouse or
+          Event handler called when the user selects an item (via mouse of
           keyboard). Calling <Code>event.preventDefault</Code> in this handler
           will prevent the dropdown menu from closing when selecting that item.
         </span>
@@ -573,7 +585,7 @@ An item that can be controlled and rendered like a checkbox.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the user selects an item (via mouse or
+          Event handler called when the user selects an item (via mouse of
           keyboard). Calling <Code>event.preventDefault</Code> in this handler
           will prevent the dropdown menu from closing when selecting that item.
         </span>
@@ -657,7 +669,7 @@ An item that can be controlled and rendered like a radio.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the user selects an item (via mouse or
+          Event handler called when the user selects an item (via mouse of
           keyboard). Calling <Code>event.preventDefault</Code> in this handler
           will prevent the dropdown menu from closing when selecting that item.
         </span>

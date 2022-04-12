@@ -12,6 +12,14 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#radiobutton
   the buttons can be checked at a time.
 </Description>
 
+<HeroContainer>
+  <RadioGroupDemo />
+</HeroContainer>
+
+```jsx hero template=RadioGroup
+
+```
+
 <Highlights
   features={[
     'Full keyboard navigation.',
@@ -111,9 +119,13 @@ Contains all the parts of a radio group.
       required: false,
       type: '"ltr" | "rtl"',
       typeSimple: 'enum',
-      default: '"ltr"',
-      description:
-        'The reading direction of the radio group. If omitted, assumes LTR (left-to-right) reading mode.',
+      description: (
+        <span>
+          The reading direction of the radio group. If omitted, inherits
+          globally from <Code>DirectionProvider</Code> or assumes LTR
+          (left-to-right) reading mode.
+        </span>
+      ),
     },
     {
       name: 'loop',
@@ -214,6 +226,10 @@ Adheres to the [Radio Group WAI-ARIA design pattern](https://www.w3.org/TR/wai-a
     },
     {
       keys: ['Space'],
+      description: 'When focus is on an unchecked radio item, checks it.',
+    },
+    {
+      keys: ['Enter'],
       description: 'When focus is on an unchecked radio item, checks it.',
     },
     {
