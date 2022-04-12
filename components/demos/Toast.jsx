@@ -33,6 +33,7 @@ const StyledViewport = styled(ToastPrimitive.Viewport, {
   margin: 0,
   listStyle: 'none',
   zIndex: 2147483647,
+  outline: 'none',
 });
 
 const StyledToast = styled(ToastPrimitive.Root, {
