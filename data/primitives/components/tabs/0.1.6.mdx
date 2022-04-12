@@ -12,6 +12,14 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#tabpanel
   one at a time.
 </Description>
 
+<HeroContainer>
+  <TabsDemo />
+</HeroContainer>
+
+```jsx hero template=Tabs
+
+```
+
 <Highlights
   features={[
     'Can be controlled or uncontrolled.',
@@ -100,9 +108,13 @@ Contains all the tabs component parts.
       required: false,
       type: '"ltr" | "rtl"',
       typeSimple: 'enum',
-      default: '"ltr"',
-      description:
-        'The reading direction of the tabs. If omitted, assumes LTR (left-to-right) reading mode.',
+      description: (
+        <span>
+          The reading direction of the tabs. If omitted, inherits globally from{' '}
+          <Code>DirectionProvider</Code> or assumes LTR (left-to-right) reading
+          mode.
+        </span>
+      ),
     },
     {
       name: 'activationMode',
