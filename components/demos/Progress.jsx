@@ -14,8 +14,9 @@ const StyledProgress = styled(ProgressPrimitive.Root, {
 
 const StyledIndicator = styled(ProgressPrimitive.Indicator, {
   backgroundColor: 'white',
+  width: '100%',
   height: '100%',
-  transition: 'width 660ms cubic-bezier(0.65, 0, 0.35, 1)',
+  transition: 'transform 660ms cubic-bezier(0.65, 0, 0.35, 1)',
 });
 
 // Exports
@@ -28,7 +29,7 @@ const ProgressDemo = () => {
   React.useEffect(() => setTimeout(() => setProgress(66), 500), []);
   return (
     <Progress value={66}>
-      <ProgressIndicator style={{ width: `${progress}%` }} />
+      <ProgressIndicator style={{ transform: `translateX(-${100 - progress}%)` }} />
     </Progress>
   );
 };
