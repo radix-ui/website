@@ -12,6 +12,14 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal
   rendering the content underneath inert.
 </Description>
 
+<HeroContainer>
+  <DialogDemo />
+</HeroContainer>
+
+```jsx hero template=Dialog
+
+```
+
 <Highlights
   features={[
     'Supports modal and non-modal modes.',
@@ -171,8 +179,14 @@ When used, portals your overlay and content parts into the `body`.
     {
       name: 'forceMount',
       type: 'boolean',
-      description:
-        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+      description: (
+        <span>
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries. If used on this
+          part, it will be inherited by <Code>Dialog.Overlay</Code> and{' '}
+          <Code>Dialog.Content</Code>.
+        </span>
+      ),
     },
     {
       name: 'container',
@@ -200,8 +214,13 @@ A layer that covers the inert portion of the view when the dialog is open.
     {
       name: 'forceMount',
       type: 'boolean',
-      description:
-        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+      description: (
+        <span>
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries. It inherits from{' '}
+          <Code>Dialog.Portal</Code>.
+        </span>
+      ),
     },
   ]}
 />
@@ -223,8 +242,13 @@ Contains content to be rendered in the open dialog.
     {
       name: 'forceMount',
       type: 'boolean',
-      description:
-        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+      description: (
+        <span>
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries. It inherits from{' '}
+          <Code>Dialog.Portal</Code>.
+        </span>
+      ),
     },
     {
       name: 'onOpenAutoFocus',
