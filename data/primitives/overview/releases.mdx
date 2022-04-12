@@ -7,6 +7,35 @@ metaDescription: Radix Primitives releases and their changelogs.
 
 <Description>Radix Primitives releases and their changelogs.</Description>
 
+## ???
+
+<PackageRelease name="All primitives" />
+
+- [**Breaking**] Improve RTL performance. You need to use [`DirectionProvider`](../utilities/direction-provider) if you were relying on `dir` attribute inheritance from document (or any element). <PRLink id={1119} />
+
+<PackageRelease name="Alert Dialog" version="0.1.8" />
+
+- Improve compatibility with JS animation libraries with `forceMount` on `AlertDialog.Portal` <PRLink id={1075} />
+
+<PackageRelease name="Dialog" version="0.1.8" />
+
+- Improve compatibility with JS animation libraries with `forceMount` on `Dialog.Portal` <PRLink id={1075} />
+
+<PackageRelease name="Select" version="0.1.2" />
+
+- Fix position breaking when using `asChild` on `Select.Content` <PRLink id={1245} />
+- Improve trigger/content alignment when `Select.Content` has padding <PRLink id={1312} />
+
+<PackageRelease name="Toast" version="0.1.2" />
+
+- Improve Typescript types when using `asChild` <PRLink id={1300} />
+- Fix issue with toast reordering when updating React's `key` prop <PRLink id={1283} />
+
+<PackageRelease name="Tooltip" version="0.1.8" />
+
+- Improve layering of tooltip with other primitives <PRLink id={1314} />
+- Fix tooltip closing when transforming/animation trigger <PRLink id={937} />
+
 ## February 28, 2022
 
 This release introduces 3 brand new primitives: [`Select`](../components/select), [`Toast`](../components/toast) and [`NavigationMenu`](../components/navigation-menu), whilst also shipping a ton of fixes and improvements.
