@@ -12,6 +12,26 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#toolbar
   dropdown menus.
 </Description>
 
+<HeroContainer
+  css={{
+    justifyContent: 'flex-start',
+    overflow: 'auto',
+    '@bp2': {
+      justifyContent: 'center',
+    },
+  }}
+>
+  <Box css={{ flex: '0 0 20px', '@bp1': { flex: '0 0 60px' } }} />
+  <Box css={{ flex: 1 }}>
+    <ToolbarDemo />
+  </Box>
+  <Box css={{ flex: '0 0 20px', '@bp1': { flex: '0 0 60px' } }} />
+</HeroContainer>
+
+```jsx hero template=Toolbar
+
+```
+
 <Highlights features={['Full keyboard navigation.']} />
 
 ## Installation
@@ -70,9 +90,13 @@ Contains all the toolbar component parts.
       required: false,
       type: '"ltr" | "rtl"',
       typeSimple: 'enum',
-      default: '"ltr"',
-      description:
-        'The reading direction of the toolbar. If omitted, assumes LTR (left-to-right) reading mode.',
+      description: (
+        <span>
+          The reading direction of the toolbar. If omitted, inherits globally
+          from <Code>DirectionProvider</Code> or assumes LTR (left-to-right)
+          reading mode.
+        </span>
+      ),
     },
     {
       name: 'loop',
