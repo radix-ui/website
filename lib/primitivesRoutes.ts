@@ -51,6 +51,7 @@ export const primitivesRoutes = [
     pages: [
       { title: 'Accessible Icon', slug: 'docs/primitives/utilities/accessible-icon' },
       { title: 'Announce', slug: 'docs/primitives/utilities/announce' },
+      { title: 'Direction Provider', slug: 'docs/primitives/utilities/direction-provider' },
       { title: 'Id Provider', slug: 'docs/primitives/utilities/id-provider', deprecated: true },
       { title: 'Polymorphic', slug: 'docs/primitives/utilities/polymorphic', deprecated: true },
       { title: 'Portal', slug: 'docs/primitives/utilities/portal' },
