@@ -180,21 +180,6 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                     </NextLink>
                   </Paragraph>
                 </Box>
-                <Box>
-                  <Paragraph as="span" css={{ fontWeight: 500 }}>
-                    Submit your case study
-                  </Paragraph>
-                  <Paragraph as="span">
-                    <Link
-                      href="https://modulz.typeform.com/to/wplAbXHK"
-                      target="_blank"
-                      css={{ display: 'inline-flex' }}
-                    >
-                      Tell us how you use Radix
-                      <ArrowTopRightIcon style={{ marginLeft: -1, marginBottom: -2 }} />
-                    </Link>
-                  </Paragraph>
-                </Box>
               </Box>
             </Box>
           </Grid>
