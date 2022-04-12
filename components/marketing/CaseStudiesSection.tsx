@@ -168,7 +168,7 @@ export const CaseStudiesSection = () => {
             </LogoLink>
           </NextLink> */}
 
-          <NextLink href="/case-studies/Linear" passHref>
+          <NextLink href="/case-studies/linear" passHref>
             <LogoLink css={{ mb: -3 }}>
               <AccessibleIcon label="Linear case study">
                 <CaseStudyLogo variant="Linear (Wide)" width="105" />
