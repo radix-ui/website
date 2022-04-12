@@ -1,29 +1,38 @@
 ---
-metaTitle: Context Menu
-metaDescription: Displays a menu located at the pointer, triggered by a right-click or a long-press.
-name: context-menu
-aria: https://www.w3.org/TR/wai-aria-practices-1.2/#menu
+metaTitle: Dropdown Menu
+metaDescription: Displays a menu to the user—such as a set of actions or functions—triggered by a button.
+name: dropdown-menu
+aria: https://www.w3.org/TR/wai-aria-practices-1.2/#menubutton
 ---
 
-# Context Menu
+# Dropdown Menu
 
 <Description>
-  Displays a menu located at the pointer, triggered by a right-click or a
-  long-press.
+  Displays a menu to the user—such as a set of actions or functions—triggered by
+  a button.
 </Description>
+
+<HeroContainer>
+  <DropdownMenuDemo />
+</HeroContainer>
+
+```jsx hero template=DropdownMenu
+
+```
 
 <Highlights
   features={[
+    'Can be controlled or uncontrolled.',
     'Supports submenus with configurable reading direction.',
     'Supports items, labels, groups of items.',
     'Supports checkable items (single or multiple).',
     'Supports modal and non-modal modes.',
     'Customize side, alignment, offsets, collision handling.',
+    'Optionally render a pointing arrow.',
     'Focus is fully managed.',
     'Full keyboard navigation.',
     'Typeahead support.',
     'Dismissing and layering behavior is highly customizable.',
-    'Triggers with a long-press on touch devices',
   ]}
 />
 
@@ -32,7 +41,7 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#menu
 Install the component from your command line.
 
 ```bash
-npm install @radix-ui/react-context-menu
+npm install @radix-ui/react-dropdown-menu
 ```
 
 ## Anatomy
@@ -40,57 +49,79 @@ npm install @radix-ui/react-context-menu
 Import all parts and piece them together.
 
 ```jsx
-import * as ContextMenu from '@radix-ui/react-context-menu';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 export default () => (
-  <ContextMenu.Root>
-    <ContextMenu.Trigger />
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger />
 
-    <ContextMenu.Content>
-      <ContextMenu.Label />
-      <ContextMenu.Item />
+    <DropdownMenu.Content>
+      <DropdownMenu.Label />
+      <DropdownMenu.Item />
 
-      <ContextMenu.Group>
-        <ContextMenu.Item />
-      </ContextMenu.Group>
+      <DropdownMenu.Group>
+        <DropdownMenu.Item />
+      </DropdownMenu.Group>
 
-      <ContextMenu.CheckboxItem>
-        <ContextMenu.ItemIndicator />
-      </ContextMenu.CheckboxItem>
+      <DropdownMenu.CheckboxItem>
+        <DropdownMenu.ItemIndicator />
+      </DropdownMenu.CheckboxItem>
 
-      <ContextMenu.RadioGroup>
-        <ContextMenu.RadioItem>
-          <ContextMenu.ItemIndicator />
-        </ContextMenu.RadioItem>
-      </ContextMenu.RadioGroup>
+      <DropdownMenu.RadioGroup>
+        <DropdownMenu.RadioItem>
+          <DropdownMenu.ItemIndicator />
+        </DropdownMenu.RadioItem>
+      </DropdownMenu.RadioGroup>
 
-      <ContextMenu.Root>
-        <ContextMenu.TriggerItem />
-        <ContextMenu.Content />
-      </ContextMenu.Root>
+      <DropdownMenu.Root>
+        <DropdownMenu.TriggerItem />
+        <DropdownMenu.Content />
+      </DropdownMenu.Root>
 
-      <ContextMenu.Separator />
-    </ContextMenu.Content>
-  </ContextMenu.Root>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Arrow />
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
 );
 ```
 
 ## API Reference
 
-Adheres to the [Menu WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#menu) and uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/menu-button/menu-button-actions.html) to manage focus movement among menu items.
-
 ### Root
 
-Contains all the parts of a context menu.
+Contains all the parts of a dropdown menu.
 
 <PropsTable
   data={[
     {
+      name: 'defaultOpen',
+      type: 'boolean',
+      description: (
+        <span>
+          The open state of the dropdown menu when it is initially rendered. Use
+          when you do not need to control its open state.
+        </span>
+      ),
+    },
+    {
+      name: 'open',
+      type: 'boolean',
+      description: (
+        <span>
+          The controlled open state of the dropdown menu. Must be used in
+          conjunction with <Code>onOpenChange</Code>.
+        </span>
+      ),
+    },
+    {
       name: 'onOpenChange',
       type: '(open: boolean) => void',
       typeSimple: 'function',
-      description:
-        'Event handler called when the open state of the context menu changes.',
+      description: (
+        <span>
+          Event handler called when the open state of the dropdown menu changes.
+        </span>
+      ),
     },
     {
       name: 'modal',
@@ -99,11 +130,24 @@ Contains all the parts of a context menu.
       default: 'true',
       description: (
         <span>
-          The modality of the context menu. When set to <Code>true</Code>,
+          The modality of the dropdown menu. When set to <Code>true</Code>,
           interaction with outside elements will be disabled and only menu
           content will be visible to screen readers.
           <br />
           This prop is ignored within submenus.
+        </span>
+      ),
+    },
+    {
+      name: 'dir',
+      required: false,
+      type: '"ltr" | "rtl"',
+      typeSimple: 'enum',
+      description: (
+        <span>
+          The reading direction of submenus when applicable. If omitted,
+          inherits globally from <Code>DirectionProvider</Code> or assumes LTR
+          (left-to-right) reading mode.
         </span>
       ),
     },
@@ -112,7 +156,7 @@ Contains all the parts of a context menu.
 
 ### Trigger
 
-The area that opens the context menu. Wrap it around the target you want the context menu to open from when right-clicking (or using the relevant keyboard shortcuts).
+The button that toggles the dropdown menu. By default, the `DropdownMenu.Content` will position itself against the trigger.
 
 <PropsTable
   data={[
@@ -129,7 +173,7 @@ The area that opens the context menu. Wrap it around the target you want the con
 
 ### Content
 
-The component that pops out in an open context menu.
+The component that pops out when the dropdown menu is open.
 
 <PropsTable
   data={[
@@ -179,22 +223,13 @@ The component that pops out in an open context menu.
       ),
     },
     {
-      name: 'dir',
-      required: false,
-      type: '"ltr" | "rtl"',
-      typeSimple: 'enum',
-      default: '"ltr"',
-      description:
-        'The reading direction of submenus when applicable. If omitted, assumes LTR (left-to-right) reading mode.',
-    },
-    {
       name: 'onCloseAutoFocus',
       type: '(event: Event) => void',
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when focus moves back after closing. It can be
-          prevented by calling <Code>event.preventDefault</Code>.
+          Event handler called when focus moves to the trigger after closing. It
+          can be prevented by calling <Code>event.preventDefault</Code>.
           <br />
           This prop is ignored within submenus.
         </span>
@@ -207,7 +242,7 @@ The component that pops out in an open context menu.
       description: (
         <span>
           Event handler called when the escape key is down. It can be prevented
-          by calling <Code>event.preventDefault</Code>.
+          by calling <Code>event.preventDefault</Code>
         </span>
       ),
     },
@@ -248,20 +283,59 @@ The component that pops out in an open context menu.
       ),
     },
     {
+      name: 'portalled',
+      type: 'boolean',
+      default: 'true',
+      description: (
+        <span>
+          Whether to render in a <Code>Portal</Code> when open.
+          <br />
+          This prop is ignored within submenus.
+        </span>
+      ),
+    },
+    {
       name: 'forceMount',
       type: 'boolean',
-      description:
-        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+      description: (
+        <span>
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries.
+        </span>
+      ),
+    },
+    {
+      name: 'side',
+      type: '"top" | "right" | "bottom" | "left"',
+      typeSimple: 'enum',
+      default: '"bottom"',
+      description: (
+        <span>
+          The preferred side of the trigger to render against when open. Will be
+          reversed when collisions occur and <Code>avoidCollisions</Code> is
+          enabled.
+          <br />
+          This prop is ignored within submenus.
+        </span>
+      ),
     },
     {
       name: 'sideOffset',
       type: 'number',
       default: '0',
+      description: <span>The distance in pixels from the trigger.</span>,
+    },
+    {
+      name: 'align',
+      type: '"start" | "center" | "end"',
+      typeSimple: 'enum',
+      default: '"center"',
       description: (
         <span>
-          The horizontal distance in pixels from the anchor.
+          The preferred alignment against the trigger. May change when
+          collisions occur.
           <br />
-          This only applies within submenus.
+          This prop is ignored within submenus.
         </span>
       ),
     },
@@ -270,7 +344,10 @@ The component that pops out in an open context menu.
       type: 'number',
       default: '0',
       description: (
-        <span>The vertical distance in pixels from the anchor.</span>
+        <span>
+          An offset in pixels from the <Code>"start"</Code> or{' '}
+          <Code>"end"</Code> alignment options.
+        </span>
       ),
     },
     {
@@ -300,7 +377,7 @@ The component that pops out in an open context menu.
 
 ### Arrow
 
-An optional arrow element to render alongside a submenu. This can be used to help visually link the trigger item with the `ContextMenu.Content`. Must be rendered inside `ContextMenu.Content`.
+An optional arrow element to render alongside the dropdown menu. This can be used to help visually link the trigger with the `DropdownMenu.Content`. Must be rendered inside `DropdownMenu.Content`.
 
 <PropsTable
   data={[
@@ -331,7 +408,7 @@ An optional arrow element to render alongside a submenu. This can be used to hel
       description: (
         <span>
           The distance in pixels to render from the{' '}
-          <Code>ContextMenu.Content</Code> edge.
+          <Code>DropdownMenu.Content</Code> edge.
         </span>
       ),
     },
@@ -340,7 +417,7 @@ An optional arrow element to render alongside a submenu. This can be used to hel
 
 ### Item
 
-The component that contains the context menu items.
+The component that contains the dropdown menu items.
 
 <PropsTable
   data={[
@@ -370,7 +447,7 @@ The component that contains the context menu items.
         <span>
           Event handler called when the user selects an item (via mouse of
           keyboard). Calling <Code>event.preventDefault</Code> in this handler
-          will prevent the context menu from closing when selecting that item.
+          will prevent the dropdown menu from closing when selecting that item.
         </span>
       ),
     },
@@ -390,7 +467,7 @@ The component that contains the context menu items.
 
 ### TriggerItem
 
-An item that opens a submenu. Used in combination with a nested `ContextMenu`. Must be rendered inside `ContextMenu.Root`.
+An item that opens a submenu. Used in combination with a nested `DropdownMenu`. Must be rendered inside `DropdownMenu.Root`.
 
 <PropsTable
   data={[
@@ -428,7 +505,7 @@ An item that opens a submenu. Used in combination with a nested `ContextMenu`. M
 
 ### Group
 
-Used to group multiple `ContextMenu.Item`s.
+Used to group multiple `DropdownMenu.Item`s.
 
 <PropsTable
   data={[
@@ -510,7 +587,7 @@ An item that can be controlled and rendered like a checkbox.
         <span>
           Event handler called when the user selects an item (via mouse of
           keyboard). Calling <Code>event.preventDefault</Code> in this handler
-          will prevent the context menu from closing when selecting that item.
+          will prevent the dropdown menu from closing when selecting that item.
         </span>
       ),
     },
@@ -530,7 +607,7 @@ An item that can be controlled and rendered like a checkbox.
 
 ### RadioGroup
 
-Used to group multiple `ContextMenu.RadioItem`s.
+Used to group multiple `DropdownMenu.RadioItem`s.
 
 <PropsTable
   data={[
@@ -594,7 +671,7 @@ An item that can be controlled and rendered like a radio.
         <span>
           Event handler called when the user selects an item (via mouse of
           keyboard). Calling <Code>event.preventDefault</Code> in this handler
-          will prevent the context menu from closing when selecting that item.
+          will prevent the dropdown menu from closing when selecting that item.
         </span>
       ),
     },
@@ -614,7 +691,7 @@ An item that can be controlled and rendered like a radio.
 
 ### ItemIndicator
 
-Renders when the parent `ContextMenu.CheckboxItem` or `ContextMenu.RadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
+Renders when the parent `DropdownMenu.CheckboxItem` or `DropdownMenu.RadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
 
 <PropsTable
   data={[
@@ -641,7 +718,7 @@ Renders when the parent `ContextMenu.CheckboxItem` or `ContextMenu.RadioItem` is
 
 ### Separator
 
-Used to visually separate items in the context menu.
+Used to visually separate items in the dropdown menu.
 
 <PropsTable
   data={[
@@ -660,27 +737,27 @@ Used to visually separate items in the context menu.
 
 ### With submenus
 
-You can create submenus by nesting `ContextMenu`s and using a `TriggerItem` in place of a `Trigger`.
+You can create submenus by nesting `DropdownMenu`s and using a `TriggerItem` in place of a `Trigger`.
 
 ```jsx line=7-14
-<ContextMenu.Root>
-  <ContextMenu.Trigger>…</ContextMenu.Trigger>
-  <ContextMenu.Content>
-    <ContextMenu.Item>…</ContextMenu.Item>
-    <ContextMenu.Item>…</ContextMenu.Item>
-    <ContextMenu.Separator />
-    <ContextMenu.Root>
-      <ContextMenu.TriggerItem>Sub menu →</ContextMenu.TriggerItem>
-      <ContextMenu.Content>
-        <ContextMenu.Item>Sub menu item</ContextMenu.Item>
-        <ContextMenu.Item>Sub menu item</ContextMenu.Item>
-        <ContextMenu.Arrow />
-      </ContextMenu.Content>
-    </ContextMenu.Root>
-    <ContextMenu.Separator />
-    <ContextMenu.Item>…</ContextMenu.Item>
-  </ContextMenu.Content>
-</ContextMenu.Root>
+<DropdownMenu.Root>
+  <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+  <DropdownMenu.Content>
+    <DropdownMenu.Item>…</DropdownMenu.Item>
+    <DropdownMenu.Item>…</DropdownMenu.Item>
+    <DropdownMenu.Separator />
+    <DropdownMenu.Root>
+      <DropdownMenu.TriggerItem>Sub menu →</DropdownMenu.TriggerItem>
+      <DropdownMenu.Content>
+        <DropdownMenu.Item>Sub menu item</DropdownMenu.Item>
+        <DropdownMenu.Item>Sub menu item</DropdownMenu.Item>
+        <DropdownMenu.Arrow />
+      </DropdownMenu.Content>
+    </DropdownMenu.Root>
+    <DropdownMenu.Separator />
+    <DropdownMenu.Item>…</DropdownMenu.Item>
+  </DropdownMenu.Content>
+</DropdownMenu.Root>
 ```
 
 ### With disabled items
@@ -689,21 +766,21 @@ You can add special styles to disabled items via the `data-disabled` attribute.
 
 ```jsx line=4-6,12
 import { styled } from '@stitches/react';
-import * as ContextMenu from '@radix-ui/react-context-menu';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
-const StyledItem = styled(ContextMenu.Item, {
+const StyledItem = styled(DropdownMenu.Item, {
   '&[data-disabled]': { color: 'gainsboro' },
 });
 
 export default () => (
-  <ContextMenu.Root>
-    <ContextMenu.Trigger>…</ContextMenu.Trigger>
-    <ContextMenu.Content>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+    <DropdownMenu.Content>
       <StyledItem __disabled__>…</StyledItem>
       <StyledItem>…</StyledItem>
       <StyledItem>…</StyledItem>
-    </ContextMenu.Content>
-  </ContextMenu.Root>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
 );
 ```
 
@@ -712,16 +789,16 @@ export default () => (
 Use the `Separator` part to add a separator between items.
 
 ```jsx line=5,7
-<ContextMenu.Root>
-  <ContextMenu.Trigger>…</ContextMenu.Trigger>
-  <ContextMenu.Content>
-    <ContextMenu.Item>…</ContextMenu.Item>
-    <ContextMenu.Separator />
-    <ContextMenu.Item>…</ContextMenu.Item>
-    <ContextMenu.Separator />
-    <ContextMenu.Item>…</ContextMenu.Item>
-  </ContextMenu.Content>
-</ContextMenu.Root>
+<DropdownMenu.Root>
+  <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+  <DropdownMenu.Content>
+    <DropdownMenu.Item>…</DropdownMenu.Item>
+    <DropdownMenu.Separator />
+    <DropdownMenu.Item>…</DropdownMenu.Item>
+    <DropdownMenu.Separator />
+    <DropdownMenu.Item>…</DropdownMenu.Item>
+  </DropdownMenu.Content>
+</DropdownMenu.Root>
 ```
 
 ### With labels
@@ -729,15 +806,15 @@ Use the `Separator` part to add a separator between items.
 Use the `Label` part to help label a section.
 
 ```jsx line=4
-<ContextMenu.Root>
-  <ContextMenu.Trigger>…</ContextMenu.Trigger>
-  <ContextMenu.Content>
-    <ContextMenu.Label>Label</ContextMenu.Label>
-    <ContextMenu.Item>…</ContextMenu.Item>
-    <ContextMenu.Item>…</ContextMenu.Item>
-    <ContextMenu.Item>…</ContextMenu.Item>
-  </ContextMenu.Content>
-</ContextMenu.Root>
+<DropdownMenu.Root>
+  <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+  <DropdownMenu.Content>
+    <DropdownMenu.Label>Label</DropdownMenu.Label>
+    <DropdownMenu.Item>…</DropdownMenu.Item>
+    <DropdownMenu.Item>…</DropdownMenu.Item>
+    <DropdownMenu.Item>…</DropdownMenu.Item>
+  </DropdownMenu.Content>
+</DropdownMenu.Root>
 ```
 
 ### With checkbox items
@@ -747,29 +824,29 @@ Use the `CheckboxItem` part to add an item that can be checked.
 ```jsx line=6,15-20
 import React from 'react';
 import { CheckIcon } from '@radix-ui/react-icons';
-import * as ContextMenu from '@radix-ui/react-context-menu';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 export default () => {
   const [checked, setChecked] = React.useState(true);
 
   return (
-    <ContextMenu.Root>
-      <ContextMenu.Trigger>…</ContextMenu.Trigger>
-      <ContextMenu.Content>
-        <ContextMenu.Item>…</ContextMenu.Item>
-        <ContextMenu.Item>…</ContextMenu.Item>
-        <ContextMenu.Separator />
-        <ContextMenu.CheckboxItem
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+      <DropdownMenu.Content>
+        <DropdownMenu.Item>…</DropdownMenu.Item>
+        <DropdownMenu.Item>…</DropdownMenu.Item>
+        <DropdownMenu.Separator />
+        <DropdownMenu.CheckboxItem
           checked={checked}
           onCheckedChange={setChecked}
         >
-          <ContextMenu.ItemIndicator>
+          <DropdownMenu.ItemIndicator>
             <CheckIcon />
-          </ContextMenu.ItemIndicator>
+          </DropdownMenu.ItemIndicator>
           Checkbox item
-        </ContextMenu.CheckboxItem>
-      </ContextMenu.Content>
-    </ContextMenu.Root>
+        </DropdownMenu.CheckboxItem>
+      </DropdownMenu.Content>
+    </DropdownMenu.Root>
   );
 };
 ```
@@ -781,48 +858,46 @@ Use the `RadioGroup` and `RadioItem` parts to add an item that can be checked am
 ```jsx line=6,12-31
 import React from 'react';
 import { CheckIcon } from '@radix-ui/react-icons';
-import * as ContextMenu from '@radix-ui/react-context-menu';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 export default () => {
   const [color, setColor] = React.useState('blue');
 
   return (
-    <ContextMenu.Root>
-      <ContextMenu.Trigger>…</ContextMenu.Trigger>
-      <ContextMenu.Content>
-        <ContextMenu.RadioGroup value={color} onValueChange={setColor}>
-          <ContextMenu.RadioItem value="red">
-            <ContextMenu.ItemIndicator>
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+      <DropdownMenu.Content>
+        <DropdownMenu.RadioGroup value={color} onValueChange={setColor}>
+          <DropdownMenu.RadioItem value="red">
+            <DropdownMenu.ItemIndicator>
               <CheckIcon />
-            </ContextMenu.ItemIndicator>
+            </DropdownMenu.ItemIndicator>
             Red
-          </ContextMenu.RadioItem>
-          <ContextMenu.RadioItem value="blue">
-            <ContextMenu.ItemIndicator>
+          </DropdownMenu.RadioItem>
+          <DropdownMenu.RadioItem value="blue">
+            <DropdownMenu.ItemIndicator>
               <CheckIcon />
-            </ContextMenu.ItemIndicator>
+            </DropdownMenu.ItemIndicator>
             Blue
-          </ContextMenu.RadioItem>
-          <ContextMenu.RadioItem value="green">
-            <ContextMenu.ItemIndicator>
+          </DropdownMenu.RadioItem>
+          <DropdownMenu.RadioItem value="green">
+            <DropdownMenu.ItemIndicator>
               <CheckIcon />
-            </ContextMenu.ItemIndicator>
+            </DropdownMenu.ItemIndicator>
             Green
-          </ContextMenu.RadioItem>
-        </ContextMenu.RadioGroup>
-      </ContextMenu.Content>
-    </ContextMenu.Root>
+          </DropdownMenu.RadioItem>
+        </DropdownMenu.RadioGroup>
+      </DropdownMenu.Content>
+    </DropdownMenu.Root>
   );
 };
 ```
 
 ### With complex items
 
-You can add extra decorative elements in the `Item` parts, such as images.
-
 ```jsx line=4-7,14,18,22
 import { styled } from '@stitches/react';
-import * as ContextMenu from '@radix-ui/react-context-menu';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 const Image = styled('img', {
   width: 24,
@@ -830,49 +905,49 @@ const Image = styled('img', {
 });
 
 export default () => (
-  <ContextMenu.Root>
-    <ContextMenu.Trigger>…</ContextMenu.Trigger>
-    <ContextMenu.Content>
-      <ContextMenu.Item>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+    <DropdownMenu.Content>
+      <DropdownMenu.Item>
         <Image src="…" />
         Adolfo Hess
-      </ContextMenu.Item>
-      <ContextMenu.Item>
+      </DropdownMenu.Item>
+      <DropdownMenu.Item>
         <Image src="…" />
         Miyah Myles
-      </ContextMenu.Item>
-      <ContextMenu.Item>
+      </DropdownMenu.Item>
+      <DropdownMenu.Item>
         <Image src="…" />
         Sylvia Reynolds
-      </ContextMenu.Item>
-    </ContextMenu.Content>
-  </ContextMenu.Root>
+      </DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
 );
 ```
 
 ### Origin-aware animations
 
-We expose a CSS custom property `--radix-context-menu-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
+We expose a CSS custom property `--radix-dropdown-menu-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
 ```jsx line=4-7,9-12,17
 import { styled, keyframes } from '@stitches/react';
-import * as ContextMenu from '@radix-ui/react-context-menu';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 const scaleIn = keyframes({
   '0%': { opacity: 0, transform: 'scale(0)' },
   '100%': { opacity: 1, transform: 'scale(1)' },
 });
 
-const StyledContent = styled(ContextMenu.Content, {
-  transformOrigin: 'var(--radix-context-menu-content-transform-origin)',
+const StyledContent = styled(DropdownMenu.Content, {
+  transformOrigin: 'var(--radix-dropdown-menu-content-transform-origin)',
   animation: `${scaleIn} 0.5s ease-out forwards`,
 });
 
 export default () => (
-  <ContextMenu.Root>
-    <ContextMenu.Trigger>…</ContextMenu.Trigger>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
     <StyledContent>…</StyledContent>
-  </ContextMenu.Root>
+  </DropdownMenu.Root>
 );
 ```
 
@@ -882,7 +957,7 @@ We expose `data-side` and `data-align` attributes. Their values will change at r
 
 ```jsx line=4-7,9,12-14-19,24
 import { styled, keyframes } from '@stitches/react';
-import * as ContextMenu from '@radix-ui/react-context-menu';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 const slideDown = keyframes({
   '0%': { opacity: 0, transform: 'translateY(-10px)' },
@@ -894,7 +969,7 @@ const slideUp = keyframes({
   '100%': { opacity: 1, transform: 'translateY(0)' },
 });
 
-const StyledContent = styled(ContextMenu.Content, {
+const StyledContent = styled(DropdownMenu.Content, {
   animationDuration: '0.6s',
   animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
   animationFillMode: 'forwards',
@@ -903,16 +978,16 @@ const StyledContent = styled(ContextMenu.Content, {
 });
 
 export default () => (
-  <ContextMenu.Root>
-    <ContextMenu.Trigger>…</ContextMenu.Trigger>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
     <StyledContent>…</StyledContent>
-  </ContextMenu.Root>
+  </DropdownMenu.Root>
 );
 ```
 
 ## Accessibility
 
-Uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/#kbd_roving_tabindex) to manage focus movement among menu items.
+Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#menubutton) and uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/#kbd_roving_tabindex) to manage focus movement among menu items.
 
 ### Keyboard Interactions
 
@@ -920,32 +995,159 @@ Uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/#kbd_roving_
   data={[
     {
       keys: ['Space'],
-      description: <span>Activates the focused item.</span>,
+      description: (
+        <span>
+          When focus is on <Code>DropdownMenu.Trigger</Code>, opens the dropdown
+          menu and focuses the first item.
+          <br />
+          When focus is on an item, activates the focused item.
+        </span>
+      ),
     },
     {
       keys: ['Enter'],
-      description: <span>Activates the focused item.</span>,
+      description: (
+        <span>
+          When focus is on <Code>DropdownMenu.Trigger</Code>, opens the dropdown
+          menu and focuses the first item.
+          <br />
+          When focus is on an item, activates the focused item.
+        </span>
+      ),
     },
     {
       keys: ['ArrowDown'],
-      description: <span>Moves focus to the next item.</span>,
+      description: (
+        <span>
+          When focus is on <Code>DropdownMenu.Trigger</Code>, opens the dropdown
+          menu.
+          <br />
+          When focus is on an item, moves focus to the next item.
+        </span>
+      ),
     },
     {
       keys: ['ArrowUp'],
-      description: <span>Moves focus to the previous item.</span>,
+      description: (
+        <span>When focus is on an item, moves focus to the previous item.</span>
+      ),
     },
     {
       keys: ['ArrowRight', 'ArrowLeft'],
       description: (
         <span>
-          When focus is on <Code>ContextMenu.TriggerItem</Code>, opens or closes
-          the submenu depending on reading direction.
+          When focus is on <Code>DropdownMenu.TriggerItem</Code>, opens or
+          closes the submenu depending on reading direction.
         </span>
       ),
     },
     {
       keys: ['Esc'],
-      description: 'Closes the context menu',
+      description: (
+        <span>
+          Closes the dropdown menu and moves focus to{' '}
+          <Code>DropdownMenu.Trigger</Code>.
+        </span>
+      ),
     },
   ]}
 />
+
+## Custom APIs
+
+Create your own API by abstracting the primitive parts into your own component.
+
+### Abstract the arrow and item indicators
+
+This example abstracts the `DropdownMenu.Arrow` and `DropdownMenu.ItemIndicator` parts.
+
+#### Usage
+
+```jsx
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuItem,
+  DropdownMenuGroup,
+  DropdownMenuCheckboxItem,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+} from './your-dropdown-menu';
+
+export default () => (
+  <DropdownMenu>
+    <DropdownMenuTrigger>DropdownMenu trigger</DropdownMenuTrigger>
+    <DropdownMenuContent>
+      <DropdownMenuItem>Item</DropdownMenuItem>
+      <DropdownMenuLabel>Label</DropdownMenuLabel>
+      <DropdownMenuGroup>Group</DropdownMenuGroup>
+      <DropdownMenuCheckboxItem>CheckboxItem</DropdownMenuCheckboxItem>
+      <DropdownMenuSeparator>Separator</DropdownMenuSeparator>
+      <DropdownMenuRadioGroup>
+        <DropdownMenuRadioItem>RadioItem</DropdownMenuRadioItem>
+        <DropdownMenuRadioItem>RadioItem</DropdownMenuRadioItem>
+      </DropdownMenuRadioGroup>
+    </DropdownMenuContent>
+  </DropdownMenu>
+);
+```
+
+#### Implementation
+
+```jsx
+// your-dropdown-menu.js
+import React from 'react';
+import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
+import { CheckIcon } from '@radix-ui/react-icons';
+
+export const DropdownMenu = DropdownMenuPrimitive.Root;
+export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
+
+export const DropdownMenuContent = React.forwardRef(
+  ({ children, ...props }, forwardedRef) => {
+    return (
+      <DropdownMenuPrimitive.Content ref={forwardedRef}>
+        {children}
+        <DropdownMenuPrimitive.Arrow />
+      </DropdownMenuPrimitive.Content>
+    );
+  }
+);
+
+export const DropdownMenuLabel = DropdownMenuPrimitive.Label;
+export const DropdownMenuItem = DropdownMenuPrimitive.Item;
+export const DropdownMenuGroup = DropdownMenuPrimitive.Group;
+
+export const DropdownMenuCheckboxItem = React.forwardRef(
+  ({ children, ...props }, forwardedRef) => {
+    return (
+      <DropdownMenuPrimitive.CheckboxItem {...props} ref={forwardedRef}>
+        {children}
+        <DropdownMenuPrimitive.ItemIndicator>
+          <CheckIcon />
+        </DropdownMenuPrimitive.ItemIndicator>
+      </DropdownMenuPrimitive.CheckboxItem>
+    );
+  }
+);
+
+export const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
+
+export const DropdownMenuRadioItem = React.forwardRef(
+  ({ children, ...props }, forwardedRef) => {
+    return (
+      <DropdownMenuPrimitive.RadioItem {...props} ref={forwardedRef}>
+        {children}
+        <DropdownMenuPrimitive.ItemIndicator>
+          <CheckIcon />
+        </DropdownMenuPrimitive.ItemIndicator>
+      </DropdownMenuPrimitive.RadioItem>
+    );
+  }
+);
+
+export const DropdownMenuSeparator = DropdownMenuPrimitive.Separator;
+```
