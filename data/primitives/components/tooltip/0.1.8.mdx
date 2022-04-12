@@ -12,6 +12,14 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#tooltip
   receives keyboard focus or the mouse hovers over it.
 </Description>
 
+<HeroContainer>
+  <TooltipDemo />
+</HeroContainer>
+
+```jsx hero template=Tooltip
+
+```
+
 <Highlights
   features={[
     'Provider to control display delay globally.',
@@ -169,6 +177,29 @@ The component that pops out when the tooltip is open.
       description: (
         <span>
           Whether to render in a <Code>Portal</Code> when open.
+        </span>
+      ),
+    },
+    {
+      name: 'onEscapeKeyDown',
+      type: '(event: KeyboardEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when the escape key is down. It can be prevented
+          by calling <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onPointerDownOutside',
+      type: '(event: PointerDownOutsideEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when a pointer event occurs outside the bounds of
+          the component. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
         </span>
       ),
     },
