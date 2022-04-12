@@ -11,6 +11,14 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#button
   A set of two-state buttons that can be toggled on or off.
 </Description>
 
+<HeroContainer>
+  <ToggleGroupDemo />
+</HeroContainer>
+
+```jsx hero template=ToggleGroup
+
+```
+
 <Highlights
   features={[
     'Full keyboard navigation.',
@@ -181,9 +189,13 @@ Contains all the parts of a toggle group.
       required: false,
       type: '"ltr" | "rtl"',
       typeSimple: 'enum',
-      default: '"ltr"',
-      description:
-        'The reading direction of the toggle group. If omitted, assumes LTR (left-to-right) reading mode.',
+      description: (
+        <span>
+          The reading direction of the toggle group. If omitted, inherits
+          globally from <Code>DirectionProvider</Code> or assumes LTR
+          (left-to-right) reading mode.
+        </span>
+      ),
     },
     {
       name: 'loop',

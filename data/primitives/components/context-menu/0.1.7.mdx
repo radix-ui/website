@@ -12,6 +12,14 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#menu
   long-press.
 </Description>
 
+<HeroContainer>
+  <ContextMenuDemo />
+</HeroContainer>
+
+```jsx hero template=ContextMenu
+
+```
+
 <Highlights
   features={[
     'Supports submenus with configurable reading direction.',
@@ -85,6 +93,19 @@ Contains all the parts of a context menu.
 
 <PropsTable
   data={[
+    {
+      name: 'dir',
+      required: false,
+      type: '"ltr" | "rtl"',
+      typeSimple: 'enum',
+      description: (
+        <span>
+          The reading direction of submenus when applicable. If omitted,
+          inherits globally from <Code>DirectionProvider</Code> or assumes LTR
+          (left-to-right) reading mode.
+        </span>
+      ),
+    },
     {
       name: 'onOpenChange',
       type: '(open: boolean) => void',
@@ -177,15 +198,6 @@ The component that pops out in an open context menu.
           to first, and vice versa.
         </span>
       ),
-    },
-    {
-      name: 'dir',
-      required: false,
-      type: '"ltr" | "rtl"',
-      typeSimple: 'enum',
-      default: '"ltr"',
-      description:
-        'The reading direction of submenus when applicable. If omitted, assumes LTR (left-to-right) reading mode.',
     },
     {
       name: 'onCloseAutoFocus',

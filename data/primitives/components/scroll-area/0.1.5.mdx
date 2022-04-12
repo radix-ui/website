@@ -10,6 +10,14 @@ name: scroll-area
   Augments native scroll functionality for custom, cross-browser styling.
 </Description>
 
+<HeroContainer css={{ py: '$8' }}>
+  <ScrollAreaDemo />
+</HeroContainer>
+
+```jsx hero template=ScrollArea
+
+```
+
 <Highlights
   features={[
     'Scrollbar sits on top of the scrollable content, taking up no space.',
@@ -108,8 +116,13 @@ Contains all the parts of a scroll area.
       required: false,
       type: '"ltr" | "rtl"',
       typeSimple: 'enum',
-      description:
-        'The reading direction of the scroll area. If omitted, assumes LTR (left-to-right) reading mode.',
+      description: (
+        <span>
+          The reading direction of the scroll area. If omitted, inherits
+          globally from <Code>DirectionProvider</Code> or assumes LTR
+          (left-to-right) reading mode.
+        </span>
+      ),
     },
   ]}
 />
