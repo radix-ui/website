@@ -176,6 +176,14 @@ export const CaseStudiesSection = () => {
             </LogoLink>
           </NextLink>
 
+          <NextLink href="/case-studies/liveblocks" passHref>
+            <LogoLink css={{ mb: -3 }}>
+              <AccessibleIcon label="Liveblocks case study">
+                <CaseStudyLogo variant="Liveblocks (Wide)" width="125" />
+              </AccessibleIcon>
+            </LogoLink>
+          </NextLink>
+
           <NextLink href="/case-studies/supabase" passHref>
             <LogoLink css={{ mb: -8 }}>
               <AccessibleIcon label="Supabase case study">
