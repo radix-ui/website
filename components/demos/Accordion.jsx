@@ -113,7 +113,7 @@ export const AccordionDemo = () => (
   <Accordion type="single" defaultValue="item-1" collapsible>
     <AccordionItem value="item-1">
       <AccordionTrigger>Is it accessible?</AccordionTrigger>
-      <AccordionContent>Yes. It adheres to the WAI-ARAI design pattern.</AccordionContent>
+      <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
     </AccordionItem>
 
     <AccordionItem value="item-2">
