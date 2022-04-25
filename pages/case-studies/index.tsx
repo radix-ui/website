@@ -106,7 +106,7 @@ export default function CaseStudy() {
               <LogoLink variant="box">
                 <AccessibleIcon label="Liveblocks case study">
                   <Flex justify="center" css={{ height: '100%' }}>
-                    <CaseStudyLogo variant="Liveblocks" width="150" />
+                    <CaseStudyLogo variant="Liveblocks (Wide)" width="150" />
                   </Flex>
                 </AccessibleIcon>
               </LogoLink>
