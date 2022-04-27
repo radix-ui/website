@@ -160,8 +160,8 @@ const close = keyframes({
 
 const CollapsibleContent = styled(Collapsible.Content, {
   overflow: 'hidden',
-  '&[data-state="open"]': { animation: `${open} 300ms ease-out forwards` },
-  '&[data-state="closed"]': { animation: `${close} 300ms ease-out forwards` },
+  '&[data-state="open"]': { animation: `${open} 300ms ease-out` },
+  '&[data-state="closed"]': { animation: `${close} 300ms ease-out` },
 });
 
 export default () => (
