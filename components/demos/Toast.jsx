@@ -52,7 +52,7 @@ const StyledToast = styled(ToastPrimitive.Root, {
       animation: `${slideIn} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
     },
     '&[data-state="closed"]': {
-      animation: `${hide} 100ms ease-in forwards`,
+      animation: `${hide} 100ms ease-in`,
     },
     '&[data-swipe="move"]': {
       transform: 'translateX(var(--radix-toast-swipe-move-x))',
@@ -62,7 +62,7 @@ const StyledToast = styled(ToastPrimitive.Root, {
       transition: 'transform 200ms ease-out',
     },
     '&[data-swipe="end"]': {
-      animation: `${swipeOut} 100ms ease-out forwards`,
+      animation: `${swipeOut} 100ms ease-out`,
     },
   },
 });
