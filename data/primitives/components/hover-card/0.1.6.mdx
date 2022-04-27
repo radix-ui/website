@@ -10,6 +10,14 @@ name: hover-card
   For sighted users to preview content available behind a link.
 </Description>
 
+<HeroContainer>
+  <HoverCardDemo />
+</HeroContainer>
+
+```jsx hero template=HoverCard
+
+```
+
 <Highlights
   features={[
     'Can be controlled or uncontrolled.',
@@ -295,7 +303,7 @@ const scaleIn = keyframes({
 
 const HoverCardContent = styled(HoverCard.Content, {
   transformOrigin: 'var(--radix-hover-card-content-transform-origin)',
-  animation: `${scaleIn} 0.5s ease-out forwards`,
+  animation: `${scaleIn} 0.5s ease-out`,
 });
 
 export default () => (
@@ -327,7 +335,6 @@ const slideUp = keyframes({
 const HoverCardContent = styled(HoverCard.Content, {
   animationDuration: '0.6s',
   animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
-  animationFillMode: 'forwards',
   '&[data-side="top"]': { animationName: slideUp },
   '&[data-side="bottom"]': { animationName: slideDown },
 });
