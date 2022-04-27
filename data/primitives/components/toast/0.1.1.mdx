@@ -9,14 +9,6 @@ aria: https://www.w3.org/TR/wai-aria/#aria-live
 
 <Description>A succinct message that is displayed temporarily.</Description>
 
-<HeroContainer>
-  <ToastDemo />
-</HeroContainer>
-
-```jsx hero template=Toast
-
-```
-
 <Highlights
   features={[
     'Automatically closes.',
@@ -359,7 +351,7 @@ const Toast = styled(ToastPrimitive.Root, {
       transition: 'transform 200ms ease-out',
     },
     '&[data-swipe="end"]': {
-      animation: `${slideRight} 100ms ease-out`,
+      animation: `${slideRight} 100ms ease-out forwards`,
     },
   },
 });
