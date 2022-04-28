@@ -399,18 +399,18 @@ Customise the element that your dialog portals into.
 
 ```jsx line=2,13
 export default () => {
-  const [container, setContainer] = React.useState(null);
+  const container = React.useRef(null);
   return (
     <div>
       <Dialog.Root>
         <Dialog.Trigger />
-        <Dialog.Portal __container__={container}>
+        <Dialog.Portal __container__={container.current}>
           <Dialog.Overlay />
           <Dialog.Content>...</Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>
 
-      <div ref={setContainer} />
+      <div ref={container} />
     </div>
   );
 };
