@@ -112,30 +112,6 @@ export const CaseStudiesSection = () => {
         }}
       >
         <Grid flow="column" align="center" justify="start" gap="6">
-          {/* <NextLink href="/case-studies/graphcms" passHref>
-            <LogoLink css={{ mb: -8 }}>
-              <AccessibleIcon label="GraphCMS case study">
-                <CaseStudyLogo variant="GraphCMS" width="129" />
-              </AccessibleIcon>
-            </LogoLink>
-          </NextLink> */}
-
-          {/* <NextLink href="/case-studies/livepeer" passHref>
-            <LogoLink css={{ mb: -6 }}>
-              <AccessibleIcon label="Livepeer case study">
-                <CaseStudyLogo variant="Livepeer" width="86" />
-              </AccessibleIcon>
-            </LogoLink>
-          </NextLink> */}
-
-          <NextLink href="/case-studies/acid-tango" passHref>
-            <LogoLink css={{ mb: -8 }}>
-              <AccessibleIcon label="Acid Tango case study">
-                <CaseStudyLogo variant="Acid Tango" width="165" />
-              </AccessibleIcon>
-            </LogoLink>
-          </NextLink>
-
           <NextLink href="/case-studies/atom-learning" passHref>
             <LogoLink css={{ mb: 4 }}>
               <AccessibleIcon label="Atom Learning case study">
@@ -159,22 +135,6 @@ export const CaseStudiesSection = () => {
               </AccessibleIcon>
             </LogoLink>
           </NextLink>
-
-          <NextLink href="/case-studies/compound" passHref>
-            <LogoLink>
-              <AccessibleIcon label="Compound case study">
-                <CaseStudyLogo variant="Compound (Wide)" width="120" />
-              </AccessibleIcon>
-            </LogoLink>
-          </NextLink>
-
-          {/* <NextLink href="/case-studies/placemark" passHref>
-            <LogoLink css={{ mb: -2 }}>
-              <AccessibleIcon label="Placemark case study">
-                <CaseStudyLogo variant="Placemark" width="121" />
-              </AccessibleIcon>
-            </LogoLink>
-          </NextLink> */}
 
           <NextLink href="/case-studies/linear" passHref>
             <LogoLink css={{ mb: -3 }}>
