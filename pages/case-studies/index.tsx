@@ -93,6 +93,15 @@ export default function CaseStudy() {
                 </AccessibleIcon>
               </LogoLink>
             </NextLink>
+            <NextLink href="/case-studies/compound" passHref>
+              <LogoLink variant="box">
+                <AccessibleIcon label="Compound case study">
+                  <Flex justify="center" css={{ height: '100%' }}>
+                    <CaseStudyLogo variant="Compound (Wide)" />
+                  </Flex>
+                </AccessibleIcon>
+              </LogoLink>
+            </NextLink>
             <NextLink href="/case-studies/linear" passHref>
               <LogoLink variant="box">
                 <AccessibleIcon label="Linear case study">
