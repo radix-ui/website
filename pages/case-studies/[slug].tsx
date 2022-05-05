@@ -49,7 +49,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
   return (
     <>
       <TitleAndMetaTags
-        title={`${frontmatter.metaTitle} — Case studies — Radix UI`}
+        title={`${frontmatter.metaTitle} – Case studies – Radix UI`}
         description={frontmatter.metaDescription}
         image="default.png"
       />

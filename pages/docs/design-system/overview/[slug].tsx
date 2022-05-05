@@ -20,7 +20,7 @@ export default function DesignSystemOverviewDoc({ frontmatter, code }: Doc) {
   return (
     <>
       <TitleAndMetaTags
-        title={`${frontmatter.metaTitle} — Radix UI`}
+        title={`${frontmatter.metaTitle} – Radix UI`}
         description={frontmatter.metaDescription}
         image={frontmatter.metaImage}
       />

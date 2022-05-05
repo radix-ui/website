@@ -25,7 +25,7 @@ export default function ColorsHome() {
 
       <Box css={{ py: '$4', mt: '$2' }}>
         <TitleAndMetaTags
-          title="Colors — Radix UI"
+          title="Colors – Radix UI"
           description="An open-source color system for designing beautiful, accessible websites and apps."
           image="colors.png"
         />
