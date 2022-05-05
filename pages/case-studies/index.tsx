@@ -106,7 +106,7 @@ export default function CaseStudy() {
               <LogoLink variant="box">
                 <AccessibleIcon label="Linear case study">
                   <Flex justify="center" css={{ height: '100%' }}>
-                    <CaseStudyLogo variant="Linear (Wide)" />
+                    <CaseStudyLogo variant="Linear" />
                   </Flex>
                 </AccessibleIcon>
               </LogoLink>
@@ -115,29 +115,11 @@ export default function CaseStudy() {
               <LogoLink variant="box">
                 <AccessibleIcon label="Liveblocks case study">
                   <Flex justify="center" css={{ height: '100%' }}>
-                    <CaseStudyLogo variant="Liveblocks (Wide)" width="150" />
+                    <CaseStudyLogo variant="Liveblocks" />
                   </Flex>
                 </AccessibleIcon>
               </LogoLink>
             </NextLink>
-            {/* <NextLink href="/case-studies/graphcms" passHref>
-              <LogoLink variant="box">
-              <AccessibleIcon label="GraphCMS case study">
-              <Flex justify="center" css={{ height: '100%' }}>
-              <CaseStudyLogo variant="GraphCMS" />
-              </Flex>
-              </AccessibleIcon>
-              </LogoLink>
-            </NextLink> */}
-            {/* <NextLink href="/case-studies/livepeer" passHref>
-              <LogoLink variant="box">
-              <AccessibleIcon label="Livepeer case study">
-              <Flex justify="center" css={{ height: '100%' }}>
-              <CaseStudyLogo variant="Livepeer" />
-              </Flex>
-              </AccessibleIcon>
-              </LogoLink>
-            </NextLink> */}
             <NextLink href="/case-studies/magnetis" passHref>
               <LogoLink variant="box">
                 <AccessibleIcon label="Magnetis case study">
@@ -147,15 +129,6 @@ export default function CaseStudy() {
                 </AccessibleIcon>
               </LogoLink>
             </NextLink>
-            {/* <NextLink href="/case-studies/placemark" passHref>
-              <LogoLink variant="box">
-              <AccessibleIcon label="Placemark case study">
-              <Flex justify="center" css={{ height: '100%' }}>
-              <CaseStudyLogo variant="Placemark" />
-              </Flex>
-              </AccessibleIcon>
-              </LogoLink>
-            </NextLink> */}
             <NextLink href="/case-studies/supabase" passHref>
               <LogoLink variant="box">
                 <AccessibleIcon label="Supabase case study">

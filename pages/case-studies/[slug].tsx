@@ -37,7 +37,6 @@ type CaseStudyPage = {
     companyFounded: string;
     companyLogoVariant: CaseStudyLogoVariant;
     companyLogoWidth: string;
-    companyLogoIndent: string;
     nextCaseStudyTitle: string;
     nextCaseStudySlug: string;
   };
@@ -91,7 +90,6 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                 <Box
                   css={{
                     mb: '$6',
-                    textIndent: frontmatter.companyLogoIndent ?? '0px',
                     svg: { width: '100%' },
                   }}
                 >
