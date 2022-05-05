@@ -90,7 +90,6 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                 <Box
                   css={{
                     mb: '$6',
-                    svg: { width: '100%' },
                   }}
                 >
                   <BoxLink
