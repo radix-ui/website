@@ -61,7 +61,7 @@ export const CaseStudiesSection = () => {
             <Box css={{ p: '$5' }}>
               <Box css={{ mb: '$4' }}>
                 <AccessibleIcon label="CodeSandbox case study">
-                  <CaseStudyLogo variant="CodeSandbox (Wide)" />
+                  <CaseStudyLogo variant="CodeSandbox" />
                 </AccessibleIcon>
               </Box>
               <TestimonialText css={{ mb: '$4' }}>
@@ -147,7 +147,7 @@ export const CaseStudiesSection = () => {
           <NextLink href="/case-studies/liveblocks" passHref>
             <LogoLink css={{ mb: -3 }}>
               <AccessibleIcon label="Liveblocks case study">
-                <CaseStudyLogo variant="Liveblocks (Wide)" width="125" />
+                <CaseStudyLogo variant="Liveblocks (Wide)" width="120" />
               </AccessibleIcon>
             </LogoLink>
           </NextLink>

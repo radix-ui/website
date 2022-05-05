@@ -88,7 +88,7 @@ export default function CaseStudy() {
               <LogoLink variant="box">
                 <AccessibleIcon label="CodeSandbox case study">
                   <Flex justify="center" css={{ height: '100%' }}>
-                    <CaseStudyLogo variant="CodeSandbox (Wide)" />
+                    <CaseStudyLogo variant="CodeSandbox" />
                   </Flex>
                 </AccessibleIcon>
               </LogoLink>
@@ -97,7 +97,7 @@ export default function CaseStudy() {
               <LogoLink variant="box">
                 <AccessibleIcon label="Compound case study">
                   <Flex justify="center" css={{ height: '100%' }}>
-                    <CaseStudyLogo variant="Compound (Wide)" />
+                    <CaseStudyLogo variant="Compound" />
                   </Flex>
                 </AccessibleIcon>
               </LogoLink>
@@ -106,7 +106,7 @@ export default function CaseStudy() {
               <LogoLink variant="box">
                 <AccessibleIcon label="Linear case study">
                   <Flex justify="center" css={{ height: '100%' }}>
-                    <CaseStudyLogo variant="Linear (Wide)" width="100" />
+                    <CaseStudyLogo variant="Linear (Wide)" />
                   </Flex>
                 </AccessibleIcon>
               </LogoLink>
