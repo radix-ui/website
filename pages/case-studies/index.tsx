@@ -25,7 +25,7 @@ export default function CaseStudy() {
   return (
     <>
       <TitleAndMetaTags
-        title="Case studies — Radix UI"
+        title="Case studies – Radix UI"
         description="An open-source React component library for building high-quality, accessible design systems and web apps."
         image="default.png"
       />
@@ -88,7 +88,16 @@ export default function CaseStudy() {
               <LogoLink variant="box">
                 <AccessibleIcon label="CodeSandbox case study">
                   <Flex justify="center" css={{ height: '100%' }}>
-                    <CaseStudyLogo variant="CodeSandbox (Wide)" />
+                    <CaseStudyLogo variant="CodeSandbox" />
+                  </Flex>
+                </AccessibleIcon>
+              </LogoLink>
+            </NextLink>
+            <NextLink href="/case-studies/compound" passHref>
+              <LogoLink variant="box">
+                <AccessibleIcon label="Compound case study">
+                  <Flex justify="center" css={{ height: '100%' }}>
+                    <CaseStudyLogo variant="Compound" />
                   </Flex>
                 </AccessibleIcon>
               </LogoLink>
@@ -97,7 +106,7 @@ export default function CaseStudy() {
               <LogoLink variant="box">
                 <AccessibleIcon label="Linear case study">
                   <Flex justify="center" css={{ height: '100%' }}>
-                    <CaseStudyLogo variant="Linear (Wide)" width="100" />
+                    <CaseStudyLogo variant="Linear" />
                   </Flex>
                 </AccessibleIcon>
               </LogoLink>
@@ -106,29 +115,11 @@ export default function CaseStudy() {
               <LogoLink variant="box">
                 <AccessibleIcon label="Liveblocks case study">
                   <Flex justify="center" css={{ height: '100%' }}>
-                    <CaseStudyLogo variant="Liveblocks (Wide)" width="150" />
+                    <CaseStudyLogo variant="Liveblocks" />
                   </Flex>
                 </AccessibleIcon>
               </LogoLink>
             </NextLink>
-            {/* <NextLink href="/case-studies/graphcms" passHref>
-              <LogoLink variant="box">
-              <AccessibleIcon label="GraphCMS case study">
-              <Flex justify="center" css={{ height: '100%' }}>
-              <CaseStudyLogo variant="GraphCMS" />
-              </Flex>
-              </AccessibleIcon>
-              </LogoLink>
-            </NextLink> */}
-            {/* <NextLink href="/case-studies/livepeer" passHref>
-              <LogoLink variant="box">
-              <AccessibleIcon label="Livepeer case study">
-              <Flex justify="center" css={{ height: '100%' }}>
-              <CaseStudyLogo variant="Livepeer" />
-              </Flex>
-              </AccessibleIcon>
-              </LogoLink>
-            </NextLink> */}
             <NextLink href="/case-studies/magnetis" passHref>
               <LogoLink variant="box">
                 <AccessibleIcon label="Magnetis case study">
@@ -138,15 +129,6 @@ export default function CaseStudy() {
                 </AccessibleIcon>
               </LogoLink>
             </NextLink>
-            {/* <NextLink href="/case-studies/placemark" passHref>
-              <LogoLink variant="box">
-              <AccessibleIcon label="Placemark case study">
-              <Flex justify="center" css={{ height: '100%' }}>
-              <CaseStudyLogo variant="Placemark" />
-              </Flex>
-              </AccessibleIcon>
-              </LogoLink>
-            </NextLink> */}
             <NextLink href="/case-studies/supabase" passHref>
               <LogoLink variant="box">
                 <AccessibleIcon label="Supabase case study">

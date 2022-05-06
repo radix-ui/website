@@ -61,7 +61,7 @@ export const CaseStudiesSection = () => {
             <Box css={{ p: '$5' }}>
               <Box css={{ mb: '$4' }}>
                 <AccessibleIcon label="CodeSandbox case study">
-                  <CaseStudyLogo variant="CodeSandbox (Wide)" />
+                  <CaseStudyLogo variant="CodeSandbox" />
                 </AccessibleIcon>
               </Box>
               <TestimonialText css={{ mb: '$4' }}>
@@ -112,32 +112,8 @@ export const CaseStudiesSection = () => {
         }}
       >
         <Grid flow="column" align="center" justify="start" gap="6">
-          {/* <NextLink href="/case-studies/graphcms" passHref>
-            <LogoLink css={{ mb: -8 }}>
-              <AccessibleIcon label="GraphCMS case study">
-                <CaseStudyLogo variant="GraphCMS" width="129" />
-              </AccessibleIcon>
-            </LogoLink>
-          </NextLink> */}
-
-          {/* <NextLink href="/case-studies/livepeer" passHref>
-            <LogoLink css={{ mb: -6 }}>
-              <AccessibleIcon label="Livepeer case study">
-                <CaseStudyLogo variant="Livepeer" width="86" />
-              </AccessibleIcon>
-            </LogoLink>
-          </NextLink> */}
-
-          <NextLink href="/case-studies/acid-tango" passHref>
-            <LogoLink css={{ mb: -8 }}>
-              <AccessibleIcon label="Acid Tango case study">
-                <CaseStudyLogo variant="Acid Tango" width="165" />
-              </AccessibleIcon>
-            </LogoLink>
-          </NextLink>
-
           <NextLink href="/case-studies/atom-learning" passHref>
-            <LogoLink css={{ mb: 4 }}>
+            <LogoLink>
               <AccessibleIcon label="Atom Learning case study">
                 <CaseStudyLogo variant="Atom Learning" width="86" />
               </AccessibleIcon>
@@ -145,7 +121,7 @@ export const CaseStudiesSection = () => {
           </NextLink>
 
           <NextLink href="/case-studies/basedash" passHref>
-            <LogoLink css={{ mb: -2 }}>
+            <LogoLink>
               <AccessibleIcon label="Basedash case study">
                 <CaseStudyLogo variant="Basedash" width="135" />
               </AccessibleIcon>
@@ -153,25 +129,17 @@ export const CaseStudiesSection = () => {
           </NextLink>
 
           <NextLink href="/case-studies/basement-studio" passHref>
-            <LogoLink css={{ mb: -2 }}>
+            <LogoLink css={{ mb: -6 }}>
               <AccessibleIcon label="basement.studio case study">
                 <CaseStudyLogo variant="basement.studio" width="120" />
               </AccessibleIcon>
             </LogoLink>
           </NextLink>
 
-          {/* <NextLink href="/case-studies/placemark" passHref>
-            <LogoLink css={{ mb: -2 }}>
-              <AccessibleIcon label="Placemark case study">
-                <CaseStudyLogo variant="Placemark" width="121" />
-              </AccessibleIcon>
-            </LogoLink>
-          </NextLink> */}
-
           <NextLink href="/case-studies/linear" passHref>
-            <LogoLink css={{ mb: -3 }}>
+            <LogoLink>
               <AccessibleIcon label="Linear case study">
-                <CaseStudyLogo variant="Linear (Wide)" width="105" />
+                <CaseStudyLogo variant="Linear" width="105" />
               </AccessibleIcon>
             </LogoLink>
           </NextLink>
@@ -179,13 +147,13 @@ export const CaseStudiesSection = () => {
           <NextLink href="/case-studies/liveblocks" passHref>
             <LogoLink css={{ mb: -3 }}>
               <AccessibleIcon label="Liveblocks case study">
-                <CaseStudyLogo variant="Liveblocks (Wide)" width="125" />
+                <CaseStudyLogo variant="Liveblocks" width="135" />
               </AccessibleIcon>
             </LogoLink>
           </NextLink>
 
           <NextLink href="/case-studies/supabase" passHref>
-            <LogoLink css={{ mb: -8 }}>
+            <LogoLink css={{ mb: -2 }}>
               <AccessibleIcon label="Supabase case study">
                 <CaseStudyLogo variant="Supabase" width="140" />
               </AccessibleIcon>
@@ -193,7 +161,7 @@ export const CaseStudiesSection = () => {
           </NextLink>
 
           <NextLink href="/case-studies/university-of-amsterdam" passHref>
-            <LogoLink css={{ mt: 7 }}>
+            <LogoLink css={{ mt: 2 }}>
               <AccessibleIcon label="University of Amsterdam case study">
                 <CaseStudyLogo variant="University of Amsterdam" width="152" />
               </AccessibleIcon>

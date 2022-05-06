@@ -54,7 +54,7 @@ export default function BlogPage({ posts }: { posts: Frontmatter[] }) {
         </Container>
       </Section>
 
-      <TitleAndMetaTags title="Blog — Radix UI" description="Blog articles about Radix" />
+      <TitleAndMetaTags title="Blog – Radix UI" description="Blog articles about Radix" />
 
       <Container size="3" css={{ maxWidth: '780px', position: 'relative' }}>
         {posts.map((frontmatter) => (

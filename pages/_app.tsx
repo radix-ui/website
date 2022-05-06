@@ -33,6 +33,7 @@ const globalStyles = globalCss({
   svg: {
     display: 'block',
     verticalAlign: 'middle',
+    overflow: 'visible',
   },
 
   'pre, code': { margin: 0, fontFamily: '$mono' },

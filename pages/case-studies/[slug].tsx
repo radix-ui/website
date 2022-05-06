@@ -49,7 +49,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
   return (
     <>
       <TitleAndMetaTags
-        title={`${frontmatter.metaTitle} — Case studies — Radix UI`}
+        title={`${frontmatter.metaTitle} – Case studies – Radix UI`}
         description={frontmatter.metaDescription}
         image="default.png"
       />
@@ -90,7 +90,6 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                 <Box
                   css={{
                     mb: '$6',
-                    svg: { width: '100%' },
                   }}
                 >
                   <BoxLink
@@ -98,7 +97,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                     href={`https://${frontmatter.companyUrl}`}
                     style={{
                       display: 'inline-block',
-                      width: frontmatter.companyLogoWidth,
+                      width: frontmatter.companyLogoWidth ?? 'auto',
                       maxWidth: '380px',
                     }}
                   >
