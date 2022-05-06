@@ -345,6 +345,19 @@ A navigational link.
       default: 'false',
       description: 'Used to identify the link as the currently active page.',
     },
+    {
+      name: 'onSelect',
+      type: '(event: Event) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when the user selects a link (via mouse or
+          keyboard). Calling <Code>event.preventDefault</Code> in this handler
+          will prevent the navigation menu from closing when selecting that
+          link.
+        </span>
+      ),
+    },
   ]}
 />
 
@@ -523,36 +536,30 @@ sure to assign and set a `defaultValue`.
 </NavigationMenu.Root>
 ```
 
-### With router links
+### With client side routing
 
-If you need to use a `Link` provided by your routing package then we recommend composing with `NavigationMenu.Link` via a custom component.
-This will ensure accessibility and consistent keyboard control is maintained. Here's an example using Stitches and React Router:
+If you need to use the `Link` component provided by your routing package then we recommend composing with `NavigationMenu.Link` via a custom component.
+This will ensure accessibility and consistent keyboard control is maintained. Here's an example using Stitches and Next.js:
 
-```jsx line=14-26,32,35
-import {
-  useMatch,
-  useResolvedPath,
-  Link as RouterLink,
-} from 'react-router-dom';
+```jsx line=11-20,26,29
 import { styled } from '@stitches/react';
+import { useRouter } from 'next/router'
+import Link as NextLink from 'next/link';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 
-const StyledLink = styled(NavigationMenu.Link, {
+const StyledNavigationMenuLink = styled(NavigationMenu.Link, {
   textDecoration: 'none',
   '&[data-active]': { textDecoration: 'underline' },
 });
 
-const CustomLink = ({ children, to, ...props }) => {
-  const resolved = useResolvedPath(to);
-  const match = useMatch({ path: resolved.pathname, end: true });
-  const isActive = Boolean(match);
+const Link = ({ href, ...props }) => {
+  const router = useRouter();
+  const isActive = router.asPath === href;
 
   return (
-    <StyledLink active={isActive} asChild>
-      <RouterLink to={to} {...props}>
-        {children}
-      </RouterLink>
-    </StyledLink>
+    <NextLink href={href} passHref>
+      <StyledNavigationMenuLink active={isActive} {...props} />
+    </NextLink>
   );
 };
 
@@ -560,10 +567,10 @@ export default () => (
   <NavigationMenu.Root>
     <NavigationMenu.List>
       <NavigationMenu.Item>
-        <CustomLink to="/">Home</CustomLink>
+        <Link href="/">Home</Link>
       </NavigationMenu.Item>
       <NavigationMenu.Item>
-        <CustomLink to="/about">About</CustomLink>
+        <Link href="/about">About</Link>
       </NavigationMenu.Item>
     </NavigationMenu.List>
   </NavigationMenu.Root>
