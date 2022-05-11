@@ -25,6 +25,7 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#Listbox
     'Supports items, labels, groups of items.',
     'Focus is fully managed.',
     'Full keyboard navigation.',
+    'Supports custom placeholder.',
     'Typeahead support.',
     'Supports Right to Left direction.',
   ]}
@@ -176,7 +177,7 @@ The button that toggles the select. The `Select.Content` will position itself by
 
 ### Value
 
-The part that reflects the selected value. By default the selected item's text will be rendered. if you require more control, you can instead control the select and pass your own `children`. It should not be styled to ensure correct positioning.
+The part that reflects the selected value. By default the selected item's text will be rendered. if you require more control, you can instead control the select and pass your own `children`. It should not be styled to ensure correct positioning. An optional `placeholder` prop is also available for when the select has no value.
 
 <PropsTable
   data={[
@@ -187,6 +188,17 @@ The part that reflects the selected value. By default the selected item's text w
       default: 'false',
       description:
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'placeholder',
+      required: false,
+      type: 'ReactNode',
+      description: (
+        <>
+          The content that will be rendered inside the <Code>Select.Value</Code>{' '}
+          when no <Code>value</Code> or <Code>defaultValue</Code> is set.
+        </>
+      ),
     },
   ]}
 />
