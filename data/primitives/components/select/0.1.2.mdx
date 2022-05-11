@@ -25,6 +25,7 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#Listbox
     'Supports items, labels, groups of items.',
     'Focus is fully managed.',
     'Full keyboard navigation.',
+    'Supports custom placeholder.'
     'Typeahead support.',
     'Supports Right to Left direction.',
   ]}
@@ -187,6 +188,13 @@ The part that reflects the selected value. By default the selected item's text w
       default: 'false',
       description:
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'placeholder',
+      required: false,
+      type: 'ReactNode',
+      description:
+        'The content that will be rendered inside the `Select.Value` when no `value` or `defaultValue` is set.',
     },
   ]}
 />
