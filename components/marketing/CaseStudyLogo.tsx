@@ -169,7 +169,7 @@ export const CaseStudyLogo = ({ variant, ...props }: CaseStudyLogoProps) => {
   if (variant === 'Composer') {
     return (
       <svg
-        width="120"
+        width="110"
         viewBox="0 0 179 99"
         fill="currentcolor"
         xmlns="http://www.w3.org/2000/svg"
