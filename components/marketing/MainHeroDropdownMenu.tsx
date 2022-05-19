@@ -15,12 +15,14 @@ const DropdownMenuArrow = styled(DropdownMenuPrimitive.Arrow, {
   fill: '$loContrast',
 });
 
-const DropdownMenuContent: any = styled(DropdownMenuPrimitive.Content, {
+const contentCss = {
   bc: '$loContrast',
   br: '$2',
   p: '$1',
   boxShadow: '0px 5px 30px -5px rgba(0, 0, 0, 0.1), 0 1px 3px -1px rgba(0, 0, 0, 0.2)',
-});
+};
+
+const DropdownMenuContent: any = styled(DropdownMenuPrimitive.Content, contentCss);
 
 const DropdownMenuSeparator = styled(DropdownMenuPrimitive.Separator, {
   bc: '$slate4',
@@ -60,8 +62,10 @@ const itemCss = {
 };
 
 const DropdownMenuItem = styled(DropdownMenuPrimitive.Item, itemCss);
-const DropdownMenuTriggerItem = styled(DropdownMenuPrimitive.TriggerItem, itemCss);
 const DropdownMenuCheckboxItem = styled(DropdownMenuPrimitive.CheckboxItem, itemCss);
+
+const DropdownMenuSubTrigger = styled(DropdownMenuPrimitive.SubTrigger, itemCss);
+const DropdownMenuSubContent: any = styled(DropdownMenuPrimitive.SubContent, contentCss);
 
 export function MainHeroDropdownMenu() {
   // We prevent the initial auto focus because it's a demo rather than a real UI,
@@ -121,12 +125,12 @@ export function MainHeroDropdownMenu() {
           <DropdownMenuItem>New Window</DropdownMenuItem>
           <DropdownMenuSeparator />
 
-          <DropdownMenuPrimitive.Root>
-            <DropdownMenuTriggerItem>
+          <DropdownMenuPrimitive.Sub>
+            <DropdownMenuSubTrigger>
               Favorites
               <CaretRightIcon style={{ marginLeft: 'auto', marginRight: -5 }} />
-            </DropdownMenuTriggerItem>
-            <DropdownMenuContent>
+            </DropdownMenuSubTrigger>
+            <DropdownMenuSubContent>
               <DropdownMenuItem>
                 <GitHubLogoIcon style={{ marginLeft: -15, marginRight: 10 }} />
                 GitHub
@@ -139,8 +143,8 @@ export function MainHeroDropdownMenu() {
                 <ModulzLogoIcon style={{ marginLeft: -15, marginRight: 10 }} />
                 Modulz
               </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenuPrimitive.Root>
+            </DropdownMenuSubContent>
+          </DropdownMenuPrimitive.Sub>
 
           <DropdownMenuItem>Downloads</DropdownMenuItem>
           <DropdownMenuSeparator />
