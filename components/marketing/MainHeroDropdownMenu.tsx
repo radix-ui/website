@@ -52,7 +52,7 @@ const itemCss = {
   },
 
   // &:active for touch devices
-  '&:focus, &:active': {
+  '&[data-highlighted], &:active': {
     outline: 0,
     backgroundColor: '$indigo9',
     color: 'white',
