@@ -68,7 +68,7 @@ const itemStyles = {
     pointerEvents: 'none',
   },
 
-  '&:focus': {
+  '&[data-highlighted]': {
     backgroundColor: violet.violet9,
     color: violet.violet1,
   },
@@ -132,7 +132,7 @@ const RightSlot = styled('div', {
   marginLeft: 'auto',
   paddingLeft: 20,
   color: mauve.mauve11,
-  ':focus > &': { color: 'white' },
+  '[data-highlighted] > &': { color: 'white' },
   '[data-disabled] &': { color: mauve.mauve8 },
 });
 
