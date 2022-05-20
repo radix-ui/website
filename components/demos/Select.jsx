@@ -20,7 +20,7 @@ const StyledTrigger = styled(SelectPrimitive.SelectTrigger, {
   boxShadow: `0 2px 10px ${blackA.blackA7}`,
   '&:hover': { backgroundColor: mauve.mauve3 },
   '&:focus': { boxShadow: `0 0 0 2px black` },
-  '&[data-placeholder]': { color: violet.violet8 },
+  '&[data-placeholder]': { color: violet.violet9 },
 });
 
 const StyledIcon = styled(SelectPrimitive.SelectIcon, {
