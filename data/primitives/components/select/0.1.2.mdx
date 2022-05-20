@@ -484,6 +484,29 @@ export default () => (
 );
 ```
 
+### With a placeholder
+
+You can use the `placeholder` prop on `Value` for when the select has no value. There's also a `data-placeholder` attribute on `Trigger` to help with styling.
+
+```jsx line=4-6,13
+import { styled } from '@stitches/react';
+import * as Select from '@radix-ui/react-select';
+
+const StyledTrigger = styled(Select.Trigger, {
+  '&[data-placeholder]': { color: 'gainsboro' },
+});
+
+export default () => (
+  <Select.Root>
+    <SelectTrigger>
+      <Select.Value __placeholder__="Pick an option" />
+      <Select.Icon />
+    </SelectTrigger>
+    <Select.Content>…</Select.Content>
+  </Select.Root>
+);
+```
+
 ### With separators
 
 Use the `Separator` part to add a separator between items.

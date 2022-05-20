@@ -20,6 +20,11 @@ const StyledTrigger = styled(SelectPrimitive.SelectTrigger, {
   boxShadow: `0 2px 10px ${blackA.blackA7}`,
   '&:hover': { backgroundColor: mauve.mauve3 },
   '&:focus': { boxShadow: `0 0 0 2px black` },
+  '&[data-placeholder]': { color: violet.violet8 },
+});
+
+const StyledIcon = styled(SelectPrimitive.SelectIcon, {
+  color: violet.violet11,
 });
 
 const StyledContent = styled(SelectPrimitive.Content, {
@@ -52,7 +57,7 @@ const StyledItem = styled(SelectPrimitive.Item, {
     pointerEvents: 'none',
   },
 
-  '&:focus': {
+  '&[data-highlighted]': {
     backgroundColor: violet.violet9,
     color: violet.violet1,
   },
@@ -98,7 +103,7 @@ const StyledScrollDownButton = styled(SelectPrimitive.ScrollDownButton, scrollBu
 export const Select = SelectPrimitive.Root;
 export const SelectTrigger = StyledTrigger;
 export const SelectValue = SelectPrimitive.Value;
-export const SelectIcon = SelectPrimitive.Icon;
+export const SelectIcon = StyledIcon;
 export const SelectContent = StyledContent;
 export const SelectViewport = StyledViewport;
 export const SelectGroup = SelectPrimitive.Group;
@@ -115,9 +120,9 @@ const Box = styled('div', {});
 
 export const SelectDemo = () => (
   <Box>
-    <Select defaultValue="blueberry">
+    <Select>
       <SelectTrigger aria-label="Food">
-        <SelectValue />
+        <SelectValue placeholder="Select a fruit…" />
         <SelectIcon>
           <ChevronDownIcon />
         </SelectIcon>
