@@ -73,10 +73,10 @@ export default () => (
         </DropdownMenu.RadioItem>
       </DropdownMenu.RadioGroup>
 
-      <DropdownMenu.Root>
-        <DropdownMenu.TriggerItem />
-        <DropdownMenu.Content />
-      </DropdownMenu.Root>
+      <DropdownMenu.Sub>
+        <DropdownMenu.SubTrigger />
+        <DropdownMenu.SubContent />
+      </DropdownMenu.Sub>
 
       <DropdownMenu.Separator />
       <DropdownMenu.Arrow />
@@ -133,8 +133,31 @@ Contains all the parts of a dropdown menu.
           The modality of the dropdown menu. When set to <Code>true</Code>,
           interaction with outside elements will be disabled and only menu
           content will be visible to screen readers.
-          <br />
-          This prop is ignored within submenus.
+        </span>
+      ),
+    },
+    {
+      name: 'allowPinchZoom',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description: (
+        <span>
+          The <Code>allowPinchZoom</Code> prop from{' '}
+          <Link
+            variant="blue"
+            href="https://github.com/theKashey/react-remove-scroll"
+            target="_blank"
+          >
+            react-remove-scroll
+          </Link>
+          . See <Link
+            variant="blue"
+            href="https://github.com/theKashey/react-remove-scroll#usage"
+            target="_blank"
+          >
+            their docs
+          </Link> for information on functionality and limitations.
         </span>
       ),
     },
@@ -186,31 +209,6 @@ The component that pops out when the dropdown menu is open.
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
-      name: 'allowPinchZoom',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <span>
-          The <Code>allowPinchZoom</Code> prop from{' '}
-          <Link
-            variant="blue"
-            href="https://github.com/theKashey/react-remove-scroll"
-            target="_blank"
-          >
-            react-remove-scroll
-          </Link>
-          . See <Link
-            variant="blue"
-            href="https://github.com/theKashey/react-remove-scroll#usage"
-            target="_blank"
-          >
-            their docs
-          </Link> for information on functionality and limitations.
-        </span>
-      ),
-    },
-    {
       name: 'loop',
       required: false,
       type: 'boolean',
@@ -230,8 +228,6 @@ The component that pops out when the dropdown menu is open.
         <span>
           Event handler called when focus moves to the trigger after closing. It
           can be prevented by calling <Code>event.preventDefault</Code>.
-          <br />
-          This prop is ignored within submenus.
         </span>
       ),
     },
@@ -289,8 +285,6 @@ The component that pops out when the dropdown menu is open.
       description: (
         <span>
           Whether to render in a <Code>Portal</Code> when open.
-          <br />
-          This prop is ignored within submenus.
         </span>
       ),
     },
@@ -314,8 +308,6 @@ The component that pops out when the dropdown menu is open.
           The preferred side of the trigger to render against when open. Will be
           reversed when collisions occur and <Code>avoidCollisions</Code> is
           enabled.
-          <br />
-          This prop is ignored within submenus.
         </span>
       ),
     },
@@ -334,8 +326,6 @@ The component that pops out when the dropdown menu is open.
         <span>
           The preferred alignment against the trigger. May change when
           collisions occur.
-          <br />
-          This prop is ignored within submenus.
         </span>
       ),
     },
@@ -448,44 +438,6 @@ The component that contains the dropdown menu items.
           Event handler called when the user selects an item (via mouse of
           keyboard). Calling <Code>event.preventDefault</Code> in this handler
           will prevent the dropdown menu from closing when selecting that item.
-        </span>
-      ),
-    },
-    {
-      name: 'textValue',
-      type: 'string',
-      description: (
-        <span>
-          Optional text used for typeahead purposes. By default the typeahead
-          behavior will use the <Code>.textContent</Code> of the item. Use this
-          when the content is complex, or you have non-textual content inside.
-        </span>
-      ),
-    },
-  ]}
-/>
-
-### TriggerItem
-
-An item that opens a submenu. Used in combination with a nested `DropdownMenu`. Must be rendered inside `DropdownMenu.Root`.
-
-<PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description:
-        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'disabled',
-      type: 'boolean',
-      description: (
-        <span>
-          When <Code>true</Code>, prevents the user from interacting with the
-          item.
         </span>
       ),
     },
@@ -733,11 +685,213 @@ Used to visually separate items in the dropdown menu.
   ]}
 />
 
+### Sub
+
+Contains all the parts of a submenu.
+
+<PropsTable
+  data={[
+    {
+      name: 'defaultOpen',
+      type: 'boolean',
+      description: (
+        <span>
+          The open state of the submenu when it is initially rendered. Use when
+          you do not need to control its open state.
+        </span>
+      ),
+    },
+    {
+      name: 'open',
+      type: 'boolean',
+      description: (
+        <span>
+          The controlled open state of the submenu. Must be used in conjunction
+          with <Code>onOpenChange</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onOpenChange',
+      type: '(open: boolean) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when the open state of the submenu changes.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### SubTrigger
+
+An item that opens a submenu. Must be rendered inside `DropdownMenu.Sub`.
+
+<PropsTable
+  data={[
+    {
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      description: (
+        <span>
+          When <Code>true</Code>, prevents the user from interacting with the
+          item.
+        </span>
+      ),
+    },
+    {
+      name: 'textValue',
+      type: 'string',
+      description: (
+        <span>
+          Optional text used for typeahead purposes. By default the typeahead
+          behavior will use the <Code>.textContent</Code> of the item. Use this
+          when the content is complex, or you have non-textual content inside.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### SubContent
+
+The component that pops out when a submenu is open. Must be rendered inside `DropdownMenu.Sub`.
+
+<PropsTable
+  data={[
+    {
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'loop',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description: (
+        <span>
+          When <Code>true</Code>, keyboard navigation will loop from last item
+          to first, and vice versa.
+        </span>
+      ),
+    },
+    {
+      name: 'onEscapeKeyDown',
+      type: '(event: KeyboardEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when the escape key is down. It can be prevented
+          by calling <Code>event.preventDefault</Code>
+        </span>
+      ),
+    },
+    {
+      name: 'onPointerDownOutside',
+      type: '(event: PointerDownOutsideEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when a pointer event occurs outside the bounds of
+          the component. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onFocusOutside',
+      type: '(event: FocusOutsideEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when focus moves outside the bounds of the
+          component. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onInteractOutside',
+      type: '(event: PointerDownOutsideEvent | FocusOutsideEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when an interaction (pointer or focus event)
+          happens outside the bounds of the component. It can be prevented by
+          calling <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description: (
+        <span>
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries.
+        </span>
+      ),
+    },
+    {
+      name: 'sideOffset',
+      type: 'number',
+      default: '0',
+      description: <span>The distance in pixels from the trigger.</span>,
+    },
+    {
+      name: 'alignOffset',
+      type: 'number',
+      default: '0',
+      description: (
+        <span>
+          An offset in pixels from the <Code>"start"</Code> or{' '}
+          <Code>"end"</Code> alignment options.
+        </span>
+      ),
+    },
+    {
+      name: 'avoidCollisions',
+      type: 'boolean',
+      default: 'true',
+      description: (
+        <span>
+          When <Code>true</Code>, overrides the <Code>side</Code> and
+          <Code>align</Code> preferences to prevent collisions with window edges.
+        </span>
+      ),
+    },
+    {
+      name: 'collisionTolerance',
+      type: 'number',
+      default: '0',
+      description: (
+        <span>
+          The distance in pixels from window edges where collision detection
+          should occur.
+        </span>
+      ),
+    },
+  ]}
+/>
+
 ## Examples
 
 ### With submenus
 
-You can create submenus by nesting `DropdownMenu`s and using a `TriggerItem` in place of a `Trigger`.
+You can create submenus by using `DropdownMenu.Sub` in combination with its parts.
 
 ```jsx line=7-14
 <DropdownMenu.Root>
@@ -746,14 +900,14 @@ You can create submenus by nesting `DropdownMenu`s and using a `TriggerItem` in 
     <DropdownMenu.Item>…</DropdownMenu.Item>
     <DropdownMenu.Item>…</DropdownMenu.Item>
     <DropdownMenu.Separator />
-    <DropdownMenu.Root>
-      <DropdownMenu.TriggerItem>Sub menu →</DropdownMenu.TriggerItem>
-      <DropdownMenu.Content>
+    <DropdownMenu.Sub>
+      <DropdownMenu.SubTrigger>Sub menu →</DropdownMenu.SubTrigger>
+      <DropdownMenu.SubContent>
         <DropdownMenu.Item>Sub menu item</DropdownMenu.Item>
         <DropdownMenu.Item>Sub menu item</DropdownMenu.Item>
         <DropdownMenu.Arrow />
-      </DropdownMenu.Content>
-    </DropdownMenu.Root>
+      </DropdownMenu.SubContent>
+    </DropdownMenu.Sub>
     <DropdownMenu.Separator />
     <DropdownMenu.Item>…</DropdownMenu.Item>
   </DropdownMenu.Content>
@@ -1035,8 +1189,8 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/TR/wai-a
       keys: ['ArrowRight', 'ArrowLeft'],
       description: (
         <span>
-          When focus is on <Code>DropdownMenu.TriggerItem</Code>, opens or
-          closes the submenu depending on reading direction.
+          When focus is on <Code>DropdownMenu.SubTrigger</Code>, opens or closes
+          the submenu depending on reading direction.
         </span>
       ),
     },
