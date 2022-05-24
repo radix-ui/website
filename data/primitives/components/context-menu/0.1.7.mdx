@@ -72,10 +72,10 @@ export default () => (
         </ContextMenu.RadioItem>
       </ContextMenu.RadioGroup>
 
-      <ContextMenu.Root>
-        <ContextMenu.TriggerItem />
-        <ContextMenu.Content />
-      </ContextMenu.Root>
+      <ContextMenu.Sub>
+        <ContextMenu.SubTrigger />
+        <ContextMenu.SubContent />
+      </ContextMenu.Sub>
 
       <ContextMenu.Separator />
     </ContextMenu.Content>
@@ -123,8 +123,31 @@ Contains all the parts of a context menu.
           The modality of the context menu. When set to <Code>true</Code>,
           interaction with outside elements will be disabled and only menu
           content will be visible to screen readers.
-          <br />
-          This prop is ignored within submenus.
+        </span>
+      ),
+    },
+    {
+      name: 'allowPinchZoom',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description: (
+        <span>
+          The <Code>allowPinchZoom</Code> prop from{' '}
+          <Link
+            variant="blue"
+            href="https://github.com/theKashey/react-remove-scroll"
+            target="_blank"
+          >
+            react-remove-scroll
+          </Link>
+          . See <Link
+            variant="blue"
+            href="https://github.com/theKashey/react-remove-scroll#usage"
+            target="_blank"
+          >
+            their docs
+          </Link> for information on functionality and limitations.
         </span>
       ),
     },
@@ -163,31 +186,6 @@ The component that pops out in an open context menu.
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
     {
-      name: 'allowPinchZoom',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <span>
-          The <Code>allowPinchZoom</Code> prop from{' '}
-          <Link
-            variant="blue"
-            href="https://github.com/theKashey/react-remove-scroll"
-            target="_blank"
-          >
-            react-remove-scroll
-          </Link>
-          . See <Link
-            variant="blue"
-            href="https://github.com/theKashey/react-remove-scroll#usage"
-            target="_blank"
-          >
-            their docs
-          </Link> for information on functionality and limitations.
-        </span>
-      ),
-    },
-    {
       name: 'loop',
       required: false,
       type: 'boolean',
@@ -207,8 +205,6 @@ The component that pops out in an open context menu.
         <span>
           Event handler called when focus moves back after closing. It can be
           prevented by calling <Code>event.preventDefault</Code>.
-          <br />
-          This prop is ignored within submenus.
         </span>
       ),
     },
@@ -264,18 +260,6 @@ The component that pops out in an open context menu.
       type: 'boolean',
       description:
         'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
-    },
-    {
-      name: 'sideOffset',
-      type: 'number',
-      default: '0',
-      description: (
-        <span>
-          The horizontal distance in pixels from the anchor.
-          <br />
-          This only applies within submenus.
-        </span>
-      ),
     },
     {
       name: 'alignOffset',
@@ -383,44 +367,6 @@ The component that contains the context menu items.
           Event handler called when the user selects an item (via mouse of
           keyboard). Calling <Code>event.preventDefault</Code> in this handler
           will prevent the context menu from closing when selecting that item.
-        </span>
-      ),
-    },
-    {
-      name: 'textValue',
-      type: 'string',
-      description: (
-        <span>
-          Optional text used for typeahead purposes. By default the typeahead
-          behavior will use the <Code>.textContent</Code> of the item. Use this
-          when the content is complex, or you have non-textual content inside.
-        </span>
-      ),
-    },
-  ]}
-/>
-
-### TriggerItem
-
-An item that opens a submenu. Used in combination with a nested `ContextMenu`. Must be rendered inside `ContextMenu.Root`.
-
-<PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description:
-        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'disabled',
-      type: 'boolean',
-      description: (
-        <span>
-          When <Code>true</Code>, prevents the user from interacting with the
-          item.
         </span>
       ),
     },
@@ -668,11 +614,213 @@ Used to visually separate items in the context menu.
   ]}
 />
 
+### Sub
+
+Contains all the parts of a submenu.
+
+<PropsTable
+  data={[
+    {
+      name: 'defaultOpen',
+      type: 'boolean',
+      description: (
+        <span>
+          The open state of the submenu when it is initially rendered. Use when
+          you do not need to control its open state.
+        </span>
+      ),
+    },
+    {
+      name: 'open',
+      type: 'boolean',
+      description: (
+        <span>
+          The controlled open state of the submenu. Must be used in conjunction
+          with <Code>onOpenChange</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onOpenChange',
+      type: '(open: boolean) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when the open state of the submenu changes.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### SubTrigger
+
+An item that opens a submenu. Must be rendered inside `ContextMenu.Sub`.
+
+<PropsTable
+  data={[
+    {
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      description: (
+        <span>
+          When <Code>true</Code>, prevents the user from interacting with the
+          item.
+        </span>
+      ),
+    },
+    {
+      name: 'textValue',
+      type: 'string',
+      description: (
+        <span>
+          Optional text used for typeahead purposes. By default the typeahead
+          behavior will use the <Code>.textContent</Code> of the item. Use this
+          when the content is complex, or you have non-textual content inside.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### SubContent
+
+The component that pops out when a submenu is open. Must be rendered inside `ContextMenu.Sub`.
+
+<PropsTable
+  data={[
+    {
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'loop',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description: (
+        <span>
+          When <Code>true</Code>, keyboard navigation will loop from last item
+          to first, and vice versa.
+        </span>
+      ),
+    },
+    {
+      name: 'onEscapeKeyDown',
+      type: '(event: KeyboardEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when the escape key is down. It can be prevented
+          by calling <Code>event.preventDefault</Code>
+        </span>
+      ),
+    },
+    {
+      name: 'onPointerDownOutside',
+      type: '(event: PointerDownOutsideEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when a pointer event occurs outside the bounds of
+          the component. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onFocusOutside',
+      type: '(event: FocusOutsideEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when focus moves outside the bounds of the
+          component. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onInteractOutside',
+      type: '(event: PointerDownOutsideEvent | FocusOutsideEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when an interaction (pointer or focus event)
+          happens outside the bounds of the component. It can be prevented by
+          calling <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description: (
+        <span>
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries.
+        </span>
+      ),
+    },
+    {
+      name: 'sideOffset',
+      type: 'number',
+      default: '0',
+      description: <span>The distance in pixels from the trigger.</span>,
+    },
+    {
+      name: 'alignOffset',
+      type: 'number',
+      default: '0',
+      description: (
+        <span>
+          An offset in pixels from the <Code>"start"</Code> or{' '}
+          <Code>"end"</Code> alignment options.
+        </span>
+      ),
+    },
+    {
+      name: 'avoidCollisions',
+      type: 'boolean',
+      default: 'true',
+      description: (
+        <span>
+          When <Code>true</Code>, overrides the <Code>side</Code> and
+          <Code>align</Code> preferences to prevent collisions with window edges.
+        </span>
+      ),
+    },
+    {
+      name: 'collisionTolerance',
+      type: 'number',
+      default: '0',
+      description: (
+        <span>
+          The distance in pixels from window edges where collision detection
+          should occur.
+        </span>
+      ),
+    },
+  ]}
+/>
+
 ## Examples
 
 ### With submenus
 
-You can create submenus by nesting `ContextMenu`s and using a `TriggerItem` in place of a `Trigger`.
+You can create submenus by using `ContextMenu.Sub` in combination with its parts.
 
 ```jsx line=7-14
 <ContextMenu.Root>
@@ -681,14 +829,14 @@ You can create submenus by nesting `ContextMenu`s and using a `TriggerItem` in p
     <ContextMenu.Item>…</ContextMenu.Item>
     <ContextMenu.Item>…</ContextMenu.Item>
     <ContextMenu.Separator />
-    <ContextMenu.Root>
-      <ContextMenu.TriggerItem>Sub menu →</ContextMenu.TriggerItem>
-      <ContextMenu.Content>
+    <ContextMenu.Sub>
+      <ContextMenu.SubTrigger>Sub menu →</ContextMenu.SubTrigger>
+      <ContextMenu.SubContent>
         <ContextMenu.Item>Sub menu item</ContextMenu.Item>
         <ContextMenu.Item>Sub menu item</ContextMenu.Item>
         <ContextMenu.Arrow />
-      </ContextMenu.Content>
-    </ContextMenu.Root>
+      </ContextMenu.SubContent>
+    </ContextMenu.Sub>
     <ContextMenu.Separator />
     <ContextMenu.Item>…</ContextMenu.Item>
   </ContextMenu.Content>
@@ -949,7 +1097,7 @@ Uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/#kbd_roving_
       keys: ['ArrowRight', 'ArrowLeft'],
       description: (
         <span>
-          When focus is on <Code>ContextMenu.TriggerItem</Code>, opens or closes
+          When focus is on <Code>ContextMenu.SubTrigger</Code>, opens or closes
           the submenu depending on reading direction.
         </span>
       ),
