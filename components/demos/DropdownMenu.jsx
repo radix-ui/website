@@ -29,7 +29,7 @@ const slideLeftAndFade = keyframes({
   '100%': { opacity: 1, transform: 'translateX(0)' },
 });
 
-const StyledContent = styled(DropdownMenuPrimitive.Content, {
+const contentStyles = {
   minWidth: 220,
   backgroundColor: 'white',
   borderRadius: 6,
@@ -47,7 +47,10 @@ const StyledContent = styled(DropdownMenuPrimitive.Content, {
       '&[data-side="left"]': { animationName: slideRightAndFade },
     },
   },
-});
+};
+
+const StyledContent = styled(DropdownMenuPrimitive.Content, { ...contentStyles });
+const StyledSubContent = styled(DropdownMenuPrimitive.SubContent, { ...contentStyles });
 
 const itemStyles = {
   all: 'unset',
@@ -77,7 +80,7 @@ const itemStyles = {
 const StyledItem = styled(DropdownMenuPrimitive.Item, { ...itemStyles });
 const StyledCheckboxItem = styled(DropdownMenuPrimitive.CheckboxItem, { ...itemStyles });
 const StyledRadioItem = styled(DropdownMenuPrimitive.RadioItem, { ...itemStyles });
-const StyledTriggerItem = styled(DropdownMenuPrimitive.TriggerItem, {
+const StyledSubTrigger = styled(DropdownMenuPrimitive.SubTrigger, {
   '&[data-state="open"]': {
     backgroundColor: violet.violet4,
     color: violet.violet11,
@@ -120,10 +123,12 @@ export const DropdownMenuCheckboxItem = StyledCheckboxItem;
 export const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
 export const DropdownMenuRadioItem = StyledRadioItem;
 export const DropdownMenuItemIndicator = StyledItemIndicator;
-export const DropdownMenuTriggerItem = StyledTriggerItem;
 export const DropdownMenuLabel = StyledLabel;
 export const DropdownMenuSeparator = StyledSeparator;
 export const DropdownMenuArrow = StyledArrow;
+export const DropdownMenuSub = DropdownMenuPrimitive.Sub;
+export const DropdownMenuSubTrigger = StyledSubTrigger;
+export const DropdownMenuSubContent = StyledSubContent;
 
 // Your app...
 const Box = styled('div', {});
@@ -176,14 +181,14 @@ export const DropdownMenuDemo = () => {
           <DropdownMenuItem disabled>
             New Private Window <RightSlot>⇧+⌘+N</RightSlot>
           </DropdownMenuItem>
-          <DropdownMenu>
-            <DropdownMenuTriggerItem>
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger>
               More Tools
               <RightSlot>
                 <ChevronRightIcon />
               </RightSlot>
-            </DropdownMenuTriggerItem>
-            <DropdownMenuContent sideOffset={2} alignOffset={-5}>
+            </DropdownMenuSubTrigger>
+            <DropdownMenuSubContent sideOffset={2} alignOffset={-5}>
               <DropdownMenuItem>
                 Save Page As… <RightSlot>⌘+S</RightSlot>
               </DropdownMenuItem>
@@ -191,8 +196,8 @@ export const DropdownMenuDemo = () => {
               <DropdownMenuItem>Name Window…</DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Developer Tools</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+            </DropdownMenuSubContent>
+          </DropdownMenuSub>
           <DropdownMenuSeparator />
           <DropdownMenuCheckboxItem
             checked={bookmarksChecked}
