@@ -12,6 +12,14 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#tabpanel
   one at a time.
 </Description>
 
+<HeroContainer>
+  <TabsDemo />
+</HeroContainer>
+
+```jsx hero template=Tabs
+
+```
+
 <Highlights
   features={[
     'Can be controlled or uncontrolled.',
@@ -207,6 +215,16 @@ Contains the content associated with each trigger.
       required: true,
       type: 'string',
       description: 'A unique value that associates the content with a trigger.',
+    },
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description: (
+        <span>
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries.
+        </span>
+      ),
     },
   ]}
 />
