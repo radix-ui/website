@@ -74,7 +74,7 @@ export const OtherProductsSection = () => {
             </Box>
           </Card>
 
-          <Card as="a" target="_blank" href="https://icons.modulz.app/" variant="interactive">
+          <Card as="a" target="_blank" href="https://icons.radix-ui.com/" variant="interactive">
             <Box css={{ p: '$3' }}>
               <Box css={{ mb: '$3' }}>
                 <MixIcon width="30" height="30" />

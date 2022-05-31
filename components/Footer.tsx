@@ -72,7 +72,7 @@ export const Footer = () => {
               <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                 <Link
                   variant="subtle"
-                  href="https://icons.modulz.app/"
+                  href="https://icons.radix-ui.com/"
                   target="_blank"
                   css={{ display: 'inline-flex', alignItems: 'center' }}
                 >
