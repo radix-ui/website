@@ -319,7 +319,7 @@ export const NavigationMenuDemo = () => {
               <ContentListItem href="/colors" title="Colors">
                 Beautiful, thought-out palettes with auto dark mode.
               </ContentListItem>
-              <ContentListItem href="https://icons.modulz.app/" title="Icons">
+              <ContentListItem href="https://icons.radix-ui.com/" title="Icons">
                 A crisp set of 15x15 icons, balanced and consistent.
               </ContentListItem>
             </ContentList>

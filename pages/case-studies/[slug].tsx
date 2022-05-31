@@ -161,7 +161,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                     if (product === 'Icons') {
                       return (
                         <Paragraph key={product}>
-                          <Link href="https://icons.modulz.app">Icons</Link>
+                          <Link href="https://icons.radix-ui.com">Icons</Link>
                         </Paragraph>
                       );
                     }

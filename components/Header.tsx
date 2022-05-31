@@ -180,7 +180,7 @@ export const Header = () => {
                     </NextLink>
                   )}
 
-                  <HighlightLink href="https://icons.modulz.app">
+                  <HighlightLink href="https://icons.radix-ui.com">
                     <Flex gap="3">
                       <MixIcon width="25" height="25" style={{ flex: 'none', marginTop: 2 }} />
                       <Box>
