@@ -30,12 +30,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Authors
 
-- Pedro Duarte ([@peduarte](https://twitter.com/peduarte)) - [Modulz](https://modulz.app)
-- Benoit Grelard ([@benoitgrelard](https://twitter.com/benoitgrelard)) - [Modulz](https://modulz.app)
-- Jenna Smith ([@jjenzz](https://twitter.com/jjenzz)) - [Modulz](https://modulz.app)
-- Colm Tuite ([@colmtuite](https://twitter.com/colmtuite)) - [Modulz](https://modulz.app)
+- Pedro Duarte ([@peduarte](https://twitter.com/peduarte))
+- Benoit Grelard ([@benoitgrelard](https://twitter.com/benoitgrelard)) - [WorkOS](https://workos.com)
+- Jenna Smith ([@jjenzz](https://twitter.com/jjenzz))
+- Colm Tuite ([@colmtuite](https://twitter.com/colmtuite)) - [WorkOS](https://workos.com)
 - Chance Strickland ([@chancethedev](https://twitter.com/chancethedev))
 
 ---
 
-Copyright © 2020-present [Modulz](https://modulz.app).
+Copyright © 2022-present [WorkOS](https://workos.com).

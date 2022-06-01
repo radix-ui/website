@@ -6,8 +6,8 @@ import {
   CaretRightIcon,
   CheckIcon,
   GitHubLogoIcon,
-  ModulzLogoIcon,
   StitchesLogoIcon,
+  TwitterLogoIcon,
 } from '@radix-ui/react-icons';
 import { DemoButton } from '@components/marketing/DemoButton';
 
@@ -136,8 +136,8 @@ export function MainHeroDropdownMenu() {
                 Stitches
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <ModulzLogoIcon style={{ marginLeft: -15, marginRight: 10 }} />
-                Modulz
+                <TwitterLogoIcon style={{ marginLeft: -15, marginRight: 10 }} />
+                Twitter
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenuPrimitive.Root>

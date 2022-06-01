@@ -43,8 +43,8 @@ export const Footer = () => {
             }}
           >
             A project by{' '}
-            <Link variant="subtle" href="https://modulz.app">
-              Modulz
+            <Link variant="subtle" href="https://workos.com">
+              WorkOS
             </Link>
             .
           </Text>
