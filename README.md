@@ -38,4 +38,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ---
 
-Copyright © 2020-present [WorkOS](https://workos.com).
+Copyright © 2022-present [WorkOS](https://workos.com).
