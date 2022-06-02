@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
 import { globalCss, darkTheme, DesignSystemProvider, Box } from '@modulz/design-system';
 import { Header } from '@components/Header';
-import { Footer } from '@components/Footer';
 import { PrimitivesPage } from '@components/PrimitivesPage';
 import { DesignSystemPage } from '@components/DesignSystemPage';
 import { ColorsPage } from '@components/ColorsPage';
