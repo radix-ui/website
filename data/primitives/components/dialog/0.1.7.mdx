@@ -162,6 +162,15 @@ The button that opens the dialog.
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: '"open" | "closed"',
+    },
+  ]}
+/>
+
 ### Portal
 
 When used, portals your overlay and content parts into the `body`.
@@ -202,6 +211,15 @@ A layer that covers the inert portion of the view when the dialog is open.
       type: 'boolean',
       description:
         'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: '"open" | "closed"',
     },
   ]}
 />
@@ -283,6 +301,15 @@ Contains content to be rendered in the open dialog.
           calling <Code>event.preventDefault</Code>.
         </span>
       ),
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: '"open" | "closed"',
     },
   ]}
 />
