@@ -286,7 +286,7 @@ export const CaseStudyLogo = ({ variant, ...props }: CaseStudyLogoProps) => {
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width={135}
+        width={150}
         viewBox="0 0 135 40"
         fill="currentcolor"
         {...props}
