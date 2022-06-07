@@ -185,13 +185,9 @@ export const components = {
   Highlights,
   Kbd: DS.Kbd,
   Code: DS.Code,
-  DataAttributesTable: (props) => (
-    <DS.Box css={{ mb: '$5' }}>
-      <DataAttributesTable {...props} />
-    </DS.Box>
-  ),
+  DataAttributesTable: (props) => <DataAttributesTable {...props} />,
   PropsTable: (props) => (
-    <DS.Box css={{ mb: '$5' }}>
+    <DS.Box css={{ mb: '$2' }}>
       <PropsTable {...props} />
     </DS.Box>
   ),

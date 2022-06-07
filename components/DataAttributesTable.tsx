@@ -19,18 +19,18 @@ export function DataAttributesTable({
   const hasAriaLabel = !!(ariaLabel || ariaLabelledBy);
   return (
     <RegionTable
-      css={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse', mt: '$2' }}
+      css={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}
       aria-label={hasAriaLabel ? ariaLabel : 'Keyboard Interactions'}
       aria-labelledby={ariaLabelledBy}
     >
       <thead>
         <tr>
-          <Box as="th" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4' }}>
+          <Box as="th" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4', width: '40%' }}>
             <Text size="2" css={{ color: '$gray11' }}>
               Data Attribute
             </Text>
           </Box>
-          <Box as="th" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4' }}>
+          <Box as="th" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4', width: '60%' }}>
             <Text size="2" css={{ color: '$gray11' }}>
               Values
             </Text>
@@ -53,7 +53,17 @@ export function DataAttributesTable({
             </Box>
 
             <Box as="td" css={{ borderBottom: '1px solid $gray6', py: '$3' }}>
-              <Code css={{ bc: '$gray4', color: '$gray11' }}>{values}</Code>
+              {Array.isArray(values) ? (
+                <Code css={{ bc: '$gray4', color: '$gray11' }}>
+                  {values.map(
+                    (value, index) => `"${value}" ${values.length !== index + 1 ? ' | ' : ''}`
+                  )}
+                </Code>
+              ) : (
+                <Text size="3" css={{ lineHeight: '25px' }}>
+                  {values}
+                </Text>
+              )}
             </Box>
           </tr>
         ))}
