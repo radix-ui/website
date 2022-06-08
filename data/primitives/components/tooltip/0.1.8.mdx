@@ -48,9 +48,11 @@ export default () => (
   <Tooltip.Provider>
     <Tooltip.Root>
       <Tooltip.Trigger />
-      <Tooltip.Content>
-        <Tooltip.Arrow />
-      </Tooltip.Content>
+      <Tooltip.Portal>
+        <Tooltip.Content>
+          <Tooltip.Arrow />
+        </Tooltip.Content>
+      </Tooltip.Portal>
     </Tooltip.Root>
   </Tooltip.Provider>
 );
@@ -144,6 +146,32 @@ The button that toggles the tooltip. By default, the `Tooltip.Content` will posi
   ]}
 />
 
+### Portal
+
+When used, portals the content part into the `body`.
+
+<PropsTable
+  data={[
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description: (
+        <span>
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries. If used on this
+          part, it will be inherited by <Code>Tooltip.Content</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'container',
+      type: 'HTMLElement',
+      default: 'document.body',
+      description: 'Specify a container element to portal the content into.',
+    },
+  ]}
+/>
+
 ### Content
 
 The component that pops out when the tooltip is open.
@@ -171,16 +199,6 @@ The component that pops out when the tooltip is open.
       ),
     },
     {
-      name: 'portalled',
-      type: 'boolean',
-      default: 'true',
-      description: (
-        <span>
-          Whether to render in a <Code>Portal</Code> when open.
-        </span>
-      ),
-    },
-    {
       name: 'onEscapeKeyDown',
       type: '(event: KeyboardEvent) => void',
       typeSimple: 'function',
@@ -200,6 +218,17 @@ The component that pops out when the tooltip is open.
           Event handler called when a pointer event occurs outside the bounds of
           the component. It can be prevented by calling{' '}
           <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description: (
+        <span>
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries. It inherits from{' '}
+          <Code>Tooltip.Portal</Code>.
         </span>
       ),
     },
