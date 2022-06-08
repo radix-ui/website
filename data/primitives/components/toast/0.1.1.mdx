@@ -73,6 +73,13 @@ The provider that wraps your toasts and toast viewport. It usually wraps the app
         'The time in milliseconds that should elapse before automatically closing each toast.',
     },
     {
+      name: 'label',
+      type: 'string',
+      default: '"Notification"',
+      description:
+        'An author-localized label for each toast. Used to help screen reader users associate the interruption with a toast.',
+    },
+    {
       name: 'swipeDirection',
       type: '"right" | "left" | "up" | "down"',
       typeSimple: 'enum',
