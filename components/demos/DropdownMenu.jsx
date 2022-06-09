@@ -50,7 +50,31 @@ const contentStyles = {
 };
 
 const StyledContent = styled(DropdownMenuPrimitive.Content, { ...contentStyles });
+
+const StyledArrow = styled(DropdownMenuPrimitive.Arrow, {
+  fill: 'white',
+});
+
+function Content({ children, arrowOffset, ...props }) {
+  return (
+    <DropdownMenuPrimitive.Portal>
+      <StyledContent {...props}>
+        {children}
+        <StyledArrow offset={arrowOffset} />
+      </StyledContent>
+    </DropdownMenuPrimitive.Portal>
+  );
+}
+
 const StyledSubContent = styled(DropdownMenuPrimitive.SubContent, { ...contentStyles });
+
+function SubContent(props) {
+  return (
+    <DropdownMenuPrimitive.Portal>
+      <StyledSubContent {...props} />
+    </DropdownMenuPrimitive.Portal>
+  );
+}
 
 const itemStyles = {
   all: 'unset',
@@ -110,14 +134,10 @@ const StyledItemIndicator = styled(DropdownMenuPrimitive.ItemIndicator, {
   justifyContent: 'center',
 });
 
-const StyledArrow = styled(DropdownMenuPrimitive.Arrow, {
-  fill: 'white',
-});
-
 // Exports
 export const DropdownMenu = DropdownMenuPrimitive.Root;
 export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
-export const DropdownMenuContent = StyledContent;
+export const DropdownMenuContent = Content;
 export const DropdownMenuItem = StyledItem;
 export const DropdownMenuCheckboxItem = StyledCheckboxItem;
 export const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
@@ -125,10 +145,9 @@ export const DropdownMenuRadioItem = StyledRadioItem;
 export const DropdownMenuItemIndicator = StyledItemIndicator;
 export const DropdownMenuLabel = StyledLabel;
 export const DropdownMenuSeparator = StyledSeparator;
-export const DropdownMenuArrow = StyledArrow;
 export const DropdownMenuSub = DropdownMenuPrimitive.Sub;
 export const DropdownMenuSubTrigger = StyledSubTrigger;
-export const DropdownMenuSubContent = StyledSubContent;
+export const DropdownMenuSubContent = SubContent;
 
 // Your app...
 const Box = styled('div', {});
@@ -171,7 +190,7 @@ export const DropdownMenuDemo = () => {
           </IconButton>
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent sideOffset={5}>
+        <DropdownMenuContent sideOffset={5} arrowOffset={12}>
           <DropdownMenuItem>
             New Tab <RightSlot>⌘+T</RightSlot>
           </DropdownMenuItem>
@@ -230,7 +249,6 @@ export const DropdownMenuDemo = () => {
               Colm Tuite
             </DropdownMenuRadioItem>
           </DropdownMenuRadioGroup>
-          <DropdownMenuArrow offset={12} />
         </DropdownMenuContent>
       </DropdownMenu>
     </Box>
