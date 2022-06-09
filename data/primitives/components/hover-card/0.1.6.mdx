@@ -47,9 +47,11 @@ import * as HoverCard from '@radix-ui/react-hover-card';
 export default () => (
   <HoverCard.Root>
     <HoverCard.Trigger />
-    <HoverCard.Content>
-      <HoverCard.Arrow />
-    </HoverCard.Content>
+    <HoverCard.Portal>
+      <HoverCard.Content>
+        <HoverCard.Arrow />
+      </HoverCard.Content>
+    </HoverCard.Portal>
   </HoverCard.Root>
 );
 ```
@@ -126,6 +128,32 @@ The link that opens the hover card when hovered.
   ]}
 />
 
+### Portal
+
+When used, portals the content part into the `body`.
+
+<PropsTable
+  data={[
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description: (
+        <span>
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries. If used on this
+          part, it will be inherited by <Code>HoverCard.Content</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'container',
+      type: 'HTMLElement',
+      default: 'document.body',
+      description: 'Specify a container element to portal the content into.',
+    },
+  ]}
+/>
+
 ### Content
 
 The component that pops out when the hover card is open.
@@ -146,17 +174,8 @@ The component that pops out when the hover card is open.
       description: (
         <span>
           Used to force mounting when more control is needed. Useful when
-          controlling animation with React animation libraries.
-        </span>
-      ),
-    },
-    {
-      name: 'portalled',
-      type: 'boolean',
-      default: 'true',
-      description: (
-        <span>
-          Whether to render in a <Code>Portal</Code> when open.
+          controlling animation with React animation libraries. It inherits from{' '}
+          <Code>HoverCard.Portal</Code>.
         </span>
       ),
     },

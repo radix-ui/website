@@ -46,11 +46,21 @@ const StyledArrow = styled(HoverCardPrimitive.Arrow, {
   fill: 'white',
 });
 
+function Content({ children, ...props }) {
+  return (
+    <HoverCardPrimitive.Portal>
+      <StyledContent {...props}>
+        {children}
+        <StyledArrow />
+      </StyledContent>
+    </HoverCardPrimitive.Portal>
+  );
+}
+
 // Exports
 export const HoverCard = HoverCardPrimitive.Root;
 export const HoverCardTrigger = HoverCardPrimitive.Trigger;
-export const HoverCardContent = StyledContent;
-export const HoverCardArrow = StyledArrow;
+export const HoverCardContent = Content;
 
 // Your app...
 const Flex = styled('div', { display: 'flex' });
@@ -124,7 +134,6 @@ const HoverCardDemo = () => (
           </Flex>
         </Flex>
       </Flex>
-      <HoverCardArrow />
     </HoverCardContent>
   </HoverCard>
 );

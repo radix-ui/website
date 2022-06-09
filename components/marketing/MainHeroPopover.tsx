@@ -48,7 +48,6 @@ export function MainHeroPopover() {
       >
         <PopoverContent
           ref={contentRef}
-          portalled={false}
           side="bottom"
           sideOffset={5}
           avoidCollisions={false}

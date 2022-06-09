@@ -55,32 +55,36 @@ export default () => (
   <DropdownMenu.Root>
     <DropdownMenu.Trigger />
 
-    <DropdownMenu.Content>
-      <DropdownMenu.Label />
-      <DropdownMenu.Item />
-
-      <DropdownMenu.Group>
+    <DropdownMenu.Portal>
+      <DropdownMenu.Content>
+        <DropdownMenu.Label />
         <DropdownMenu.Item />
-      </DropdownMenu.Group>
 
-      <DropdownMenu.CheckboxItem>
-        <DropdownMenu.ItemIndicator />
-      </DropdownMenu.CheckboxItem>
+        <DropdownMenu.Group>
+          <DropdownMenu.Item />
+        </DropdownMenu.Group>
 
-      <DropdownMenu.RadioGroup>
-        <DropdownMenu.RadioItem>
+        <DropdownMenu.CheckboxItem>
           <DropdownMenu.ItemIndicator />
-        </DropdownMenu.RadioItem>
-      </DropdownMenu.RadioGroup>
+        </DropdownMenu.CheckboxItem>
 
-      <DropdownMenu.Sub>
-        <DropdownMenu.SubTrigger />
-        <DropdownMenu.SubContent />
-      </DropdownMenu.Sub>
+        <DropdownMenu.RadioGroup>
+          <DropdownMenu.RadioItem>
+            <DropdownMenu.ItemIndicator />
+          </DropdownMenu.RadioItem>
+        </DropdownMenu.RadioGroup>
 
-      <DropdownMenu.Separator />
-      <DropdownMenu.Arrow />
-    </DropdownMenu.Content>
+        <DropdownMenu.Sub>
+          <DropdownMenu.SubTrigger />
+          <DropdownMenu.Portal>
+            <DropdownMenu.SubContent />
+          </DropdownMenu.Portal>
+        </DropdownMenu.Sub>
+
+        <DropdownMenu.Separator />
+        <DropdownMenu.Arrow />
+      </DropdownMenu.Content>
+    </DropdownMenu.Portal>
   </DropdownMenu.Root>
 );
 ```
@@ -194,6 +198,33 @@ The button that toggles the dropdown menu. By default, the `DropdownMenu.Content
   ]}
 />
 
+### Portal
+
+When used, portals the content part into the `body`.
+
+<PropsTable
+  data={[
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description: (
+        <span>
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries. If used on this
+          part, it will be inherited by <Code>DropdownMenu.Content</Code> and{' '}
+          <Code>DropdownMenu.SubContent</Code> respectively.
+        </span>
+      ),
+    },
+    {
+      name: 'container',
+      type: 'HTMLElement',
+      default: 'document.body',
+      description: 'Specify a container element to portal the content into.',
+    },
+  ]}
+/>
+
 ### Content
 
 The component that pops out when the dropdown menu is open.
@@ -279,22 +310,13 @@ The component that pops out when the dropdown menu is open.
       ),
     },
     {
-      name: 'portalled',
-      type: 'boolean',
-      default: 'true',
-      description: (
-        <span>
-          Whether to render in a <Code>Portal</Code> when open.
-        </span>
-      ),
-    },
-    {
       name: 'forceMount',
       type: 'boolean',
       description: (
         <span>
           Used to force mounting when more control is needed. Useful when
-          controlling animation with React animation libraries.
+          controlling animation with React animation libraries. It inherits from{' '}
+          <Code>DropdownMenu.Portal</Code>.
         </span>
       ),
     },
@@ -841,7 +863,8 @@ The component that pops out when a submenu is open. Must be rendered inside `Dro
       description: (
         <span>
           Used to force mounting when more control is needed. Useful when
-          controlling animation with React animation libraries.
+          controlling animation with React animation libraries. It inherits from{' '}
+          <Code>DropdownMenu.Portal</Code>.
         </span>
       ),
     },
