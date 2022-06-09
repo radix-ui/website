@@ -49,6 +49,17 @@ const StyledArrow = styled(PopoverPrimitive.Arrow, {
   fill: 'white',
 });
 
+function Content({ children, ...props }) {
+  return (
+    <PopoverPrimitive.Portal>
+      <StyledContent {...props}>
+        {children}
+        <StyledArrow />
+      </StyledContent>
+    </PopoverPrimitive.Portal>
+  );
+}
+
 const StyledClose = styled(PopoverPrimitive.Close, {
   all: 'unset',
   fontFamily: 'inherit',
@@ -70,8 +81,7 @@ const StyledClose = styled(PopoverPrimitive.Close, {
 // Exports
 export const Popover = PopoverPrimitive.Root;
 export const PopoverTrigger = PopoverPrimitive.Trigger;
-export const PopoverContent = StyledContent;
-export const PopoverArrow = StyledArrow;
+export const PopoverContent = Content;
 export const PopoverClose = StyledClose;
 
 // Your app...
@@ -167,7 +177,6 @@ const PopoverDemo = () => (
           <Input id="maxHeight" defaultValue="none" />
         </Fieldset>
       </Flex>
-      <PopoverArrow />
       <PopoverClose aria-label="Close">
         <Cross2Icon />
       </PopoverClose>

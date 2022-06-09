@@ -49,11 +49,22 @@ const StyledArrow = styled(TooltipPrimitive.Arrow, {
   fill: 'white',
 });
 
+function Content({ children, ...props }) {
+  return (
+    <TooltipPrimitive.Portal>
+      <StyledContent {...props}>
+        {children}
+        <StyledArrow />
+      </StyledContent>
+    </TooltipPrimitive.Portal>
+  );
+}
+
 // Exports
 export const Provider = TooltipPrimitive.Provider;
 export const Tooltip = TooltipPrimitive.Root;
 export const TooltipTrigger = TooltipPrimitive.Trigger;
-export const TooltipContent = StyledContent;
+export const TooltipContent = Content;
 
 // Your app...
 const IconButton = styled('button', {
@@ -80,10 +91,9 @@ const TooltipDemo = () => {
           <PlusIcon />
         </IconButton>
       </TooltipTrigger>
-      <StyledContent sideOffset={5} className={`${theme}`}>
+      <TooltipContent sideOffset={5} className={`${theme}`}>
         Add to library
-        <StyledArrow />
-      </StyledContent>
+      </TooltipContent>
     </Tooltip>
   );
 };
