@@ -17,9 +17,9 @@ import { CodeDemo } from './CodeDemo';
 
 enum Highlights {
   Unstyled = '1-18',
-  Composable = '20-36',
-  Customizable = '37-51',
-  Consistent = '52-68',
+  Composable = '20-37',
+  Customizable = '39-55',
+  Consistent = '57-74',
 }
 
 export const DeveloperExperienceSection = () => {
@@ -416,10 +416,12 @@ export const StatusTooltip = ({ state, label }) => {
           <Status variant={state} />
         </Text>
       </Tooltip.Trigger>
-      <TooltipContent>
-        <Tooltip.Arrow />
-        {label}
-      </TooltipContent>
+      <Tooltip.Portal>
+        <TooltipContent>
+          <Tooltip.Arrow />
+          {label}
+        </TooltipContent>
+      </Tooltip.Portal>
     </Tooltip.Root>
   );
 };`,
@@ -430,21 +432,22 @@ export const DeploymentPopover = ({ children }) => {
   return (
     <Popover.Root>
       <Popover.Trigger>View deployment</Popover.Trigger>
-      <PopoverContent
-        align="start"
-        collisionTolerance={10}
-        portalled={false}
-        onOpenAutoFocus={(event) => {
-          // Focus the close button when popover opens
-          event.preventDefault();
-          popoverCloseButton.current?.focus();
-        }}
-      >
-        {children}
-        <Popover.Close ref={popoverCloseButton}>
-          Close
-        </Popover.Close>
-      </PopoverContent>
+      <Popover.Portal>
+        <PopoverContent
+          align="start"
+          collisionTolerance={10}
+          onOpenAutoFocus={(event) => {
+            // Focus the close button when popover opens
+            popoverCloseButton.current?.focus();
+            event.preventDefault();
+          }}
+        >
+          {children}
+          <Popover.Close ref={popoverCloseButton}>
+            Close
+          </Popover.Close>
+        </PopoverContent>
+      </Popover.Portal>
     </Popover.Root>
   );
 };`,
@@ -456,18 +459,20 @@ export const InfoDialog = ({ children }) => {
     <Dialog.Root>
       <Dialog.Trigger>View details</Dialog.Trigger>
       <Dialog.Overlay />
-      <DialogContent
-        onOpenAutoFocus={(event) => {
-          // Focus the close button when dialog opens
-          event.preventDefault();
-          dialogCloseButton.current?.focus();
-        }}
-      >
-        {children}
-        <Dialog.Close ref={dialogCloseButton}>
-          Close
-        </Dialog.Close>
-      </DialogContent>
+      <Dialog.Portal>
+        <DialogContent
+          onOpenAutoFocus={(event) => {
+            // Focus the close button when dialog opens
+            dialogCloseButton.current?.focus();
+            event.preventDefault();
+          }}
+        >
+          {children}
+          <Dialog.Close ref={dialogCloseButton}>
+            Close
+          </Dialog.Close>
+        </DialogContent>
+      </Dialog.Portal>
     </Dialog.Root>
   );
 };`,

@@ -49,10 +49,12 @@ export default () => (
   <Popover.Root>
     <Popover.Trigger />
     <Popover.Anchor />
-    <Popover.Content>
-      <Popover.Close />
-      <Popover.Arrow />
-    </Popover.Content>
+    <Popover.Portal>
+      <Popover.Content>
+        <Popover.Close />
+        <Popover.Arrow />
+      </Popover.Content>
+    </Popover.Portal>
   </Popover.Root>
 );
 ```
@@ -170,6 +172,32 @@ An optional element to position the `Popover.Content` against. If this part is n
   ]}
 />
 
+### Portal
+
+When used, portals the content part into the `body`.
+
+<PropsTable
+  data={[
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description: (
+        <span>
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries. If used on this
+          part, it will be inherited by <Code>Popover.Content</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'container',
+      type: 'HTMLElement',
+      default: 'document.body',
+      description: 'Specify a container element to portal the content into.',
+    },
+  ]}
+/>
+
 ### Content
 
 The component that pops out when the popover is open.
@@ -255,22 +283,13 @@ The component that pops out when the popover is open.
       ),
     },
     {
-      name: 'portalled',
-      type: 'boolean',
-      default: 'true',
-      description: (
-        <span>
-          Whether to render in a <Code>Portal</Code> when open.
-        </span>
-      ),
-    },
-    {
       name: 'forceMount',
       type: 'boolean',
       description: (
         <span>
           Used to force mounting when more control is needed. Useful when
-          controlling animation with React animation libraries.
+          controlling animation with React animation libraries. It inherits from{' '}
+          <Code>Popover.Portal</Code>.
         </span>
       ),
     },

@@ -98,7 +98,6 @@ export function MainHeroDropdownMenu() {
         <DropdownMenuContent
           ref={contentRef}
           sideOffset={5}
-          portalled={false}
           avoidCollisions={false}
           onEscapeKeyDown={(event) => {
             event.preventDefault();

@@ -15,7 +15,24 @@ const contentStyles = {
 };
 
 const StyledContent = styled(ContextMenuPrimitive.Content, { ...contentStyles });
+
+function Content(props) {
+  return (
+    <ContextMenuPrimitive.Portal>
+      <StyledContent {...props} />
+    </ContextMenuPrimitive.Portal>
+  );
+}
+
 const StyledSubContent = styled(ContextMenuPrimitive.SubContent, { ...contentStyles });
+
+function SubContent(props) {
+  return (
+    <ContextMenuPrimitive.Portal>
+      <StyledSubContent {...props} />
+    </ContextMenuPrimitive.Portal>
+  );
+}
 
 const itemStyles = {
   all: 'unset',
@@ -78,7 +95,7 @@ const StyledItemIndicator = styled(ContextMenuPrimitive.ItemIndicator, {
 // Exports
 export const ContextMenu = ContextMenuPrimitive.Root;
 export const ContextMenuTrigger = ContextMenuPrimitive.Trigger;
-export const ContextMenuContent = StyledContent;
+export const ContextMenuContent = Content;
 export const ContextMenuItem = StyledItem;
 export const ContextMenuCheckboxItem = StyledCheckboxItem;
 export const ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup;
@@ -88,7 +105,7 @@ export const ContextMenuLabel = StyledLabel;
 export const ContextMenuSeparator = StyledSeparator;
 export const ContextMenuSub = ContextMenuPrimitive.Sub;
 export const ContextMenuSubTrigger = StyledSubTrigger;
-export const ContextMenuSubContent = StyledSubContent;
+export const ContextMenuSubContent = SubContent;
 
 // Your app...
 const Box = styled('div', {});
