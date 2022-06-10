@@ -49,16 +49,23 @@ export default () => <Portal.Root>Content</Portal.Root>;
 
 ### Root
 
-Anything you put inside this component will be rendered in a separate `<div data-radix-portal>` element. By default, this element will be appended to `document.body` but you can choose a different container by using the `containerRef` prop.
+Anything you put inside this component will be rendered in a separate `<div>` element. By default, this element will be appended to `document.body` but you can choose a different container by using the `container` prop.
 
 <PropsTable
   data={[
     {
-      name: 'containerRef',
-      type: 'React.RefObject<HTMLElement>',
-      typeSimple: 'ref',
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
       description:
-        'A optional ref to a different container where the portaled content should be appended.',
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'container',
+      type: 'HTMLElement',
+      description:
+        'A optional different container where the portaled content should be appended.',
     },
   ]}
 />
