@@ -202,15 +202,6 @@ When used, portals the content part into the `body`.
   ]}
 />
 
-<DataAttributesTable
-  data={[
-    {
-      attribute: '[data-state]',
-      values: ['open', 'closed'],
-    },
-  ]}
-/>
-
 ### Content
 
 The component that pops out in an open context menu.
@@ -344,6 +335,14 @@ The component that pops out in an open context menu.
     {
       attribute: '[data-state]',
       values: ['open', 'closed'],
+    },
+    {
+      attribute: '[data-side]',
+      values: ['left', 'right', 'bottom', 'top'],
+    },
+    {
+      attribute: '[data-align]',
+      values: ['start', 'end', 'center'],
     },
   ]}
 />
@@ -540,6 +539,15 @@ An item that can be controlled and rendered like a checkbox.
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['checked', 'unchecked'],
+    },
+  ]}
+/>
+
 ### RadioGroup
 
 Used to group multiple `ContextMenu.RadioItem`s.
@@ -624,6 +632,15 @@ An item that can be controlled and rendered like a radio.
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['checked', 'unchecked'],
+    },
+  ]}
+/>
+
 ### ItemIndicator
 
 Renders when the parent `ContextMenu.CheckboxItem` or `ContextMenu.RadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
@@ -647,6 +664,15 @@ Renders when the parent `ContextMenu.CheckboxItem` or `ContextMenu.RadioItem` is
           controlling animation with React animation libraries.
         </span>
       ),
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['checked', 'unchecked'],
     },
   ]}
 />
@@ -867,6 +893,23 @@ The component that pops out when a submenu is open. Must be rendered inside `Con
           should occur.
         </span>
       ),
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['open', 'closed'],
+    },
+    {
+      attribute: '[data-side]',
+      values: ['left', 'right', 'bottom', 'top'],
+    },
+    {
+      attribute: '[data-align]',
+      values: ['start', 'end', 'center'],
     },
   ]}
 />

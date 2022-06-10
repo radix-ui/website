@@ -406,6 +406,18 @@ The component that pops out when the dropdown menu is open.
       attribute: '[data-state]',
       values: ['open', 'closed'],
     },
+    {
+      attribute: '[data-side]',
+      values: ['left', 'right', 'bottom', 'top'],
+    },
+    {
+      attribute: '[data-align]',
+      values: ['start', 'end', 'center'],
+    },
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
+    },
   ]}
 />
 
@@ -495,6 +507,15 @@ The component that contains the dropdown menu items.
           when the content is complex, or you have non-textual content inside.
         </span>
       ),
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
     },
   ]}
 />
@@ -601,6 +622,15 @@ An item that can be controlled and rendered like a checkbox.
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['checked', 'unchecked'],
+    },
+  ]}
+/>
+
 ### RadioGroup
 
 Used to group multiple `DropdownMenu.RadioItem`s.
@@ -685,6 +715,15 @@ An item that can be controlled and rendered like a radio.
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['checked', 'unchecked'],
+    },
+  ]}
+/>
+
 ### ItemIndicator
 
 Renders when the parent `DropdownMenu.CheckboxItem` or `DropdownMenu.RadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
@@ -708,6 +747,15 @@ Renders when the parent `DropdownMenu.CheckboxItem` or `DropdownMenu.RadioItem` 
           controlling animation with React animation libraries.
         </span>
       ),
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['checked', 'unchecked'],
     },
   ]}
 />
@@ -802,6 +850,19 @@ An item that opens a submenu. Must be rendered inside `DropdownMenu.Sub`.
           when the content is complex, or you have non-textual content inside.
         </span>
       ),
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['open', 'closed'],
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
     },
   ]}
 />
@@ -928,6 +989,27 @@ The component that pops out when a submenu is open. Must be rendered inside `Dro
           should occur.
         </span>
       ),
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['open', 'closed'],
+    },
+    {
+      attribute: '[data-side]',
+      values: ['left', 'right', 'bottom', 'top'],
+    },
+    {
+      attribute: '[data-align]',
+      values: ['start', 'end', 'center'],
+    },
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
     },
   ]}
 />

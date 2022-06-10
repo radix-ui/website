@@ -170,6 +170,15 @@ Contains the triggers that are aligned along the edge of the active content.
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
+    },
+  ]}
+/>
+
 ### Trigger
 
 The button that activates its associated content.
@@ -214,6 +223,10 @@ The button that activates its associated content.
     {
       attribute: '[data-disabled]',
       values: 'Present when disabled',
+    },
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
     },
   ]}
 />

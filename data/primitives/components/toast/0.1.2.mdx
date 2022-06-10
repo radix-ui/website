@@ -214,12 +214,16 @@ The toast that automatically closes. It should not be held open to [acquire a us
 <DataAttributesTable
   data={[
     {
-      attribute: '[data-swipe]',
-      values: ['up', 'down', 'left', 'right'],
-    },
-    {
       attribute: '[data-state]',
       values: ['open', 'closed'],
+    },
+    {
+      attribute: '[data-swipe]',
+      values: ['start', 'move', 'cancel', 'end'],
+    },
+    {
+      attribute: '[data-swipe-direction]',
+      values: ['up', 'down', 'left', 'right'],
     },
   ]}
 />

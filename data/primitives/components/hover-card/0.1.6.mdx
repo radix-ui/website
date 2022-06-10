@@ -128,6 +128,15 @@ The link that opens the hover card when hovered.
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['open', 'closed'],
+    },
+  ]}
+/>
+
 ### Portal
 
 When used, portals the content part into the `body`.
@@ -150,15 +159,6 @@ When used, portals the content part into the `body`.
       type: 'HTMLElement',
       default: 'document.body',
       description: 'Specify a container element to portal the content into.',
-    },
-  ]}
-/>
-
-<DataAttributesTable
-  data={[
-    {
-      attribute: '[data-state]',
-      values: ['open', 'closed'],
     },
   ]}
 />
@@ -264,6 +264,14 @@ The component that pops out when the hover card is open.
     {
       attribute: '[data-state]',
       values: ['open', 'closed'],
+    },
+    {
+      attribute: '[data-side]',
+      values: ['left', 'right', 'bottom', 'top'],
+    },
+    {
+      attribute: '[data-align]',
+      values: ['start', 'end', 'center'],
     },
   ]}
 />

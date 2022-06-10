@@ -146,6 +146,15 @@ The button that toggles the tooltip. By default, the `Tooltip.Content` will posi
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['closed', 'delayed-open', 'instant-open'],
+    },
+  ]}
+/>
+
 ### Portal
 
 When used, portals the content part into the `body`.
@@ -168,15 +177,6 @@ When used, portals the content part into the `body`.
       type: 'HTMLElement',
       default: 'document.body',
       description: 'Specify a container element to portal the content into.',
-    },
-  ]}
-/>
-
-<DataAttributesTable
-  data={[
-    {
-      attribute: '[data-state]',
-      values: ['closed', 'delayed-open', 'instant-open'],
     },
   ]}
 />
@@ -308,6 +308,23 @@ The component that pops out when the tooltip is open.
           should occur.
         </span>
       ),
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['closed', 'delayed-open', 'instant-open'],
+    },
+    {
+      attribute: '[data-side]',
+      values: ['left', 'right', 'bottom', 'top'],
+    },
+    {
+      attribute: '[data-align]',
+      values: ['start', 'end', 'center'],
     },
   ]}
 />
