@@ -53,26 +53,28 @@ export default () => (
       <Select.Icon />
     </Select.Trigger>
 
-    <Select.Content>
-      <Select.ScrollUpButton />
-      <Select.Viewport>
-        <Select.Item>
-          <Select.ItemText />
-          <Select.ItemIndicator />
-        </Select.Item>
-
-        <Select.Group>
-          <Select.Label />
+    <Select.Portal>
+      <Select.Content>
+        <Select.ScrollUpButton />
+        <Select.Viewport>
           <Select.Item>
             <Select.ItemText />
             <Select.ItemIndicator />
           </Select.Item>
-        </Select.Group>
 
-        <Select.Separator />
-      </Select.Viewport>
-      <Select.ScrollDownButton />
-    </Select.Content>
+          <Select.Group>
+            <Select.Label />
+            <Select.Item>
+              <Select.ItemText />
+              <Select.ItemIndicator />
+            </Select.Item>
+          </Select.Group>
+
+          <Select.Separator />
+        </Select.Viewport>
+        <Select.ScrollDownButton />
+      </Select.Content>
+    </Select.Portal>
   </Select.Root>
 );
 ```
@@ -216,6 +218,21 @@ A small icon often displayed next to the value as a visual affordance for the fa
       default: 'false',
       description:
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Portal
+
+When used, portals the content part into the `body`.
+
+<PropsTable
+  data={[
+    {
+      name: 'container',
+      type: 'HTMLElement',
+      default: 'document.body',
+      description: 'Specify a container element to portal the content into.',
     },
   ]}
 />
@@ -462,7 +479,7 @@ Used to visually separate items in the select.
 
 You can add special styles to disabled items via the `data-disabled` attribute.
 
-```jsx line=4-6,13
+```jsx line=4-6,14
 import { styled } from '@stitches/react';
 import * as Select from '@radix-ui/react-select';
 
@@ -473,13 +490,15 @@ const StyledItem = styled(Select.Item, {
 export default () => (
   <Select.Root>
     <Select.Trigger>…</Select.Trigger>
-    <Select.Content>
-      <Select.Viewport>
-        <StyledItem __disabled__>…</StyledItem>
-        <StyledItem>…</StyledItem>
-        <StyledItem>…</StyledItem>
-      </Select.Viewport>
-    </Select.Content>
+    <Select.Portal>
+      <Select.Content>
+        <Select.Viewport>
+          <StyledItem __disabled__>…</StyledItem>
+          <StyledItem>…</StyledItem>
+          <StyledItem>…</StyledItem>
+        </Select.Viewport>
+      </Select.Content>
+    </Select.Portal>
   </Select.Root>
 );
 ```
@@ -502,7 +521,9 @@ export default () => (
       <Select.Value __placeholder__="Pick an option" />
       <Select.Icon />
     </SelectTrigger>
-    <Select.Content>…</Select.Content>
+    <Select.Portal>
+      <Select.Content>…</Select.Content>
+    </Select.Portal>
   </Select.Root>
 );
 ```
@@ -511,19 +532,21 @@ export default () => (
 
 Use the `Separator` part to add a separator between items.
 
-```jsx line=8
+```jsx line=9
 <Select.Root>
   <Select.Trigger>…</Select.Trigger>
-  <Select.Content>
-    <Select.Viewport>
-      <Select.Item>…</Select.Item>
-      <Select.Item>…</Select.Item>
-      <Select.Item>…</Select.Item>
-      <Select.Separator />
-      <Select.Item>…</Select.Item>
-      <Select.Item>…</Select.Item>
-    </Select.Viewport>
-  </Select.Content>
+  <Select.Portal>
+    <Select.Content>
+      <Select.Viewport>
+        <Select.Item>…</Select.Item>
+        <Select.Item>…</Select.Item>
+        <Select.Item>…</Select.Item>
+        <Select.Separator />
+        <Select.Item>…</Select.Item>
+        <Select.Item>…</Select.Item>
+      </Select.Viewport>
+    </Select.Content>
+  </Select.Portal>
 </Select.Root>
 ```
 
@@ -531,19 +554,21 @@ Use the `Separator` part to add a separator between items.
 
 Use the `Group` and `Label` parts to group items in a section.
 
-```jsx line=5-6,10
+```jsx line=6-7,11
 <Select.Root>
   <Select.Trigger>…</Select.Trigger>
-  <Select.Content>
-    <Select.Viewport>
-      <Select.Group>
-        <Select.Label>Label</Select.Label>
-        <Select.Item>…</Select.Item>
-        <Select.Item>…</Select.Item>
-        <Select.Item>…</Select.Item>
-      </Select.Group>
-    </Select.Viewport>
-  </Select.Content>
+  <Select.Portal>
+    <Select.Content>
+      <Select.Viewport>
+        <Select.Group>
+          <Select.Label>Label</Select.Label>
+          <Select.Item>…</Select.Item>
+          <Select.Item>…</Select.Item>
+          <Select.Item>…</Select.Item>
+        </Select.Group>
+      </Select.Viewport>
+    </Select.Content>
+  </Select.Portal>
 </Select.Root>
 ```
 
@@ -551,7 +576,7 @@ Use the `Group` and `Label` parts to group items in a section.
 
 You can use custom content in your items.
 
-```jsx line=4-7,16
+```jsx line=4-7,17
 import { styled } from '@stitches/react';
 import * as Select from '@radix-ui/react-select';
 
@@ -563,19 +588,21 @@ const Image = styled('img', {
 export default () => (
   <Select.Root>
     <Select.Trigger>…</Select.Trigger>
-    <Select.Content>
-      <Select.Viewport>
-        <Select.Item>
-          <Select.ItemText>
-            <Image src="…" />
-            Adolfo Hess
-          </Select.ItemText>
-          <Select.ItemIndicator>…</Select.ItemIndicator>
-        </Select.Item>
-        <Select.Item>…</Select.Item>
-        <Select.Item>…</Select.Item>
-      </Select.Viewport>
-    </Select.Content>
+    <Select.Portal>
+      <Select.Content>
+        <Select.Viewport>
+          <Select.Item>
+            <Select.ItemText>
+              <Image src="…" />
+              Adolfo Hess
+            </Select.ItemText>
+            <Select.ItemIndicator>…</Select.ItemIndicator>
+          </Select.Item>
+          <Select.Item>…</Select.Item>
+          <Select.Item>…</Select.Item>
+        </Select.Viewport>
+      </Select.Content>
+    </Select.Portal>
   </Select.Root>
 );
 ```
@@ -599,6 +626,7 @@ export default () => {
         </Select.Value>
         <Select.Icon />
       </Select.Trigger>
+      <Select.Portal>
       <Select.Content>
         <Select.Viewport>
           <Select.Item value="france">
@@ -615,6 +643,7 @@ export default () => {
           </Select.Item>
         </Select.Viewport>
       </Select.Content>
+      </Select.Portal>
     </Select.Root>
   );
 };
@@ -624,7 +653,7 @@ export default () => {
 
 The native scrollbar is hidden by default as we recommend using the `ScrollUpButton` and `ScrollDownButton` parts for the best UX. If you do not want to use these parts, compose your select with our [Scroll Area](scroll-area) primitive.
 
-```jsx line=5-8,10-13,15-18,20-23,29,31,35,37-40
+```jsx line=5-8,10-13,15-18,20-23,30,32,36,38-41
 import { styled } from '@stitches/react';
 import * as Select from '@radix-ui/react-select';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
@@ -652,20 +681,22 @@ const ScrollAreaThumb = styled(ScrollAreaPrimitive.Thumb, {
 export default () => (
   <Select.Root>
     <Select.Trigger>…</Select.Trigger>
-    <Select.Content>
-      <ScrollArea type="auto">
-        <Select.Viewport __asChild__>
-          <ScrollAreaViewport>
-            <StyledItem>…</StyledItem>
-            <StyledItem>…</StyledItem>
-            <StyledItem>…</StyledItem>
-          </ScrollAreaViewport>
-        </Select.Viewport>
-        <ScrollAreaScrollbar orientation="vertical">
-          <ScrollAreaThumb />
-        </ScrollAreaScrollbar>
-      </ScrollArea>
-    </Select.Content>
+    <Select.Portal>
+      <Select.Content>
+        <ScrollArea type="auto">
+          <Select.Viewport __asChild__>
+            <ScrollAreaViewport>
+              <StyledItem>…</StyledItem>
+              <StyledItem>…</StyledItem>
+              <StyledItem>…</StyledItem>
+            </ScrollAreaViewport>
+          </Select.Viewport>
+          <ScrollAreaScrollbar orientation="vertical">
+            <ScrollAreaThumb />
+          </ScrollAreaScrollbar>
+        </ScrollArea>
+      </Select.Content>
+    </Select.Portal>
   </Select.Root>
 );
 ```
@@ -752,7 +783,10 @@ export default () => (
 
     <Label htmlFor="country">Country</Label>
     <Select.Root>
-      <Select.Trigger __id__="country">…</Select.Trigger>…
+      <Select.Trigger __id__="country">…</Select.Trigger>
+      <Select.Portal>
+        <Select.Content>…</Select.Content>
+      </Select.Portal>
     </Select.Root>
   </>
 );
@@ -802,15 +836,17 @@ export const Select = React.forwardRef(
             <ChevronDownIcon />
           </SelectPrimitive.Icon>
         </SelectPrimitive.Trigger>
-        <SelectPrimitive.Content>
-          <SelectPrimitive.ScrollUpButton>
-            <ChevronUpIcon />
-          </SelectPrimitive.ScrollUpButton>
-          <SelectPrimitive.Viewport>{children}</SelectPrimitive.Viewport>
-          <SelectPrimitive.ScrollDownButton>
-            <ChevronDownIcon />
-          </SelectPrimitive.ScrollDownButton>
-        </SelectPrimitive.Content>
+        <SelectPrimitive.Portal>
+          <SelectPrimitive.Content>
+            <SelectPrimitive.ScrollUpButton>
+              <ChevronUpIcon />
+            </SelectPrimitive.ScrollUpButton>
+            <SelectPrimitive.Viewport>{children}</SelectPrimitive.Viewport>
+            <SelectPrimitive.ScrollDownButton>
+              <ChevronDownIcon />
+            </SelectPrimitive.ScrollDownButton>
+          </SelectPrimitive.Content>
+        </SelectPrimitive.Portal>
       </SelectPrimitive.Root>
     );
   }
