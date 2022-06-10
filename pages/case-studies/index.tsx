@@ -177,7 +177,7 @@ export default function CaseStudy() {
             <Paragraph css={{ ta: 'center' }}>
               We’d love to hear how you use Radix or Stitches.{' '}
               <Link
-                href="https://modulz.typeform.com/to/wplAbXHK"
+                href="https://modulz.typeform.com/to/FxOiONsk"
                 target="_blank"
                 css={{ display: 'inline-flex' }}
               >
