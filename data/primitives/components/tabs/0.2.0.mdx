@@ -132,6 +132,15 @@ Contains all the tabs component parts.
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
+    },
+  ]}
+/>
+
 ### List
 
 Contains the triggers that are aligned along the edge of the active content.
@@ -196,6 +205,19 @@ The button that activates its associated content.
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['active', 'inactive'],
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
+    },
+  ]}
+/>
+
 ### Content
 
 Contains the content associated with each trigger.
@@ -225,6 +247,19 @@ Contains the content associated with each trigger.
           controlling animation with React animation libraries.
         </span>
       ),
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['active', 'inactive'],
+    },
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
     },
   ]}
 />

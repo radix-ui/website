@@ -120,15 +120,6 @@ Contains all the tabs component parts.
   ]}
 />
 
-<DataAttributesTable
-  data={[
-    {
-      attribute: '[data-orientation]',
-      values: ['vertical', 'horizontal'],
-    },
-  ]}
-/>
-
 ### List
 
 Contains the triggers that are aligned along the edge of the active content.
@@ -193,19 +184,6 @@ The button that activates its associated content.
   ]}
 />
 
-<DataAttributesTable
-  data={[
-    {
-      attribute: '[data-state]',
-      values: ['active', 'inactive'],
-    },
-    {
-      attribute: '[data-disabled]',
-      values: 'Present when disabled',
-    },
-  ]}
-/>
-
 ### Content
 
 Contains the content associated with each trigger.
@@ -225,19 +203,6 @@ Contains the content associated with each trigger.
       required: true,
       type: 'string',
       description: 'A unique value that associates the content with a trigger.',
-    },
-  ]}
-/>
-
-<DataAttributesTable
-  data={[
-    {
-      attribute: '[data-state]',
-      values: ['active', 'inactive'],
-    },
-    {
-      attribute: '[data-orientation]',
-      values: ['vertical', 'horizontal'],
     },
   ]}
 />

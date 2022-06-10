@@ -162,23 +162,6 @@ The button that toggles the select. The `Select.Content` will position itself by
   ]}
 />
 
-<DataAttributesTable
-  data={[
-    {
-      attribute: '[data-state]',
-      values: ['open', 'closed'],
-    },
-    {
-      attribute: '[data-disabled]',
-      values: 'Present when disabled',
-    },
-    {
-      attribute: '[data-placeholder]',
-      values: 'Present when has placeholder',
-    },
-  ]}
-/>
-
 ### Value
 
 The part that reflects the selected value. By default the selected item's text will be rendered. if you require more control, you can instead control the select and pass your own `children`. It should not be styled to ensure correct positioning.
@@ -264,15 +247,6 @@ The component that pops out when the select is open.
   ]}
 />
 
-<DataAttributesTable
-  data={[
-    {
-      attribute: '[data-state]',
-      values: ['open', 'closed'],
-    },
-  ]}
-/>
-
 ### Viewport
 
 The scrolling viewport that contains all of the items.
@@ -335,23 +309,6 @@ The component that contains the select items.
           complex, or you have non-textual content inside.
         </span>
       ),
-    },
-  ]}
-/>
-
-<DataAttributesTable
-  data={[
-    {
-      attribute: '[data-state]',
-      values: ['checked', 'unchecked'],
-    },
-    {
-      attribute: '[data-highlighted]',
-      values: 'Present when highlighted',
-    },
-    {
-      attribute: '[data-disabled]',
-      values: 'Present when disabled',
     },
   ]}
 />

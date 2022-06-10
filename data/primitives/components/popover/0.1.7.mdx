@@ -155,6 +155,15 @@ The button that toggles the popover. By default, the `Popover.Content` will posi
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['open', 'closed'],
+    },
+  ]}
+/>
+
 ### Anchor
 
 An optional element to position the `Popover.Content` against. If this part is not used, the content will position alongside the <Code>Popover.Trigger</Code>.
@@ -356,6 +365,15 @@ The component that pops out when the popover is open.
           should occur.
         </span>
       ),
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['open', 'closed'],
     },
   ]}
 />
