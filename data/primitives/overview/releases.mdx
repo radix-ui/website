@@ -55,6 +55,10 @@ metaDescription: Radix Primitives releases and their changelogs.
 - [**Breaking**] Move `allowPinchZoom` to root <PRLink id={1400} />
 - [**Breaking**] Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1425} />
 
+<PackageRelease name="Portal" version="0.1.5" />
+
+- [**Breaking**] Note that `z-index` isn't managed anymore so you have full control of layering. The prop to provide a custom container evolves from `containerRef` (ref) to `container` (element). The `data-radix-portal` was removed because you can use `asChild` to control the element. <PRLink id={1463} />
+
 <PackageRelease name="RadioGroup" version="0.1.6" />
 
 - Add `aria-required` to root <PRLink id={1422} />
