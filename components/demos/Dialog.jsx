@@ -182,13 +182,11 @@ const DialogDemo = () => (
       </Fieldset>
       <Flex css={{ marginTop: 25, justifyContent: 'flex-end' }}>
         <DialogClose asChild>
-          <Button aria-label="Close" variant="green">
-            Save changes
-          </Button>
+          <Button variant="green">Save changes</Button>
         </DialogClose>
       </Flex>
       <DialogClose asChild>
-        <IconButton>
+        <IconButton aria-label="Close">
           <Cross2Icon />
         </IconButton>
       </DialogClose>
