@@ -175,6 +175,19 @@ The area that opens the context menu. Wrap it around the target you want the con
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['open', 'closed'],
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
+    },
+  ]}
+/>
+
 ### Portal
 
 When used, portals the content part into the `body`.
@@ -437,6 +450,19 @@ The component that contains the context menu items.
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-highlighted]',
+      values: 'Present when highlighted',
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
+    },
+  ]}
+/>
+
 ### Group
 
 Used to group multiple `ContextMenu.Item`s.
@@ -545,6 +571,14 @@ An item that can be controlled and rendered like a checkbox.
       attribute: '[data-state]',
       values: ['checked', 'unchecked'],
     },
+    {
+      attribute: '[data-highlighted]',
+      values: 'Present when highlighted',
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
+    },
   ]}
 />
 
@@ -637,6 +671,14 @@ An item that can be controlled and rendered like a radio.
     {
       attribute: '[data-state]',
       values: ['checked', 'unchecked'],
+    },
+    {
+      attribute: '[data-highlighted]',
+      values: 'Present when highlighted',
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
     },
   ]}
 />
@@ -767,6 +809,23 @@ An item that opens a submenu. Must be rendered inside `ContextMenu.Sub`.
           when the content is complex, or you have non-textual content inside.
         </span>
       ),
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['checked', 'unchecked'],
+    },
+    {
+      attribute: '[data-highlighted]',
+      values: 'Present when highlighted',
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
     },
   ]}
 />
