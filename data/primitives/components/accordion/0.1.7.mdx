@@ -219,6 +219,19 @@ Contains all the parts of a collapsible section.
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['open', 'closed'],
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
+    },
+  ]}
+/>
+
 ### Header
 
 Wraps an `Accordion.Trigger`. Use the `asChild` prop to update it to the appropriate heading level for your page.
@@ -236,6 +249,19 @@ Wraps an `Accordion.Trigger`. Use the `asChild` prop to update it to the appropr
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['open', 'closed'],
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
+    },
+  ]}
+/>
+
 ### Trigger
 
 Toggles the collapsed state of its associated item. It should be nested inside of an `Accordion.Header`.
@@ -249,6 +275,19 @@ Toggles the collapsed state of its associated item. It should be nested inside o
       default: 'false',
       description:
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['open', 'closed'],
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
     },
   ]}
 />
@@ -276,6 +315,19 @@ Contains the collapsible content for an item.
           controlling animation with React animation libraries.
         </span>
       ),
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['open', 'closed'],
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
     },
   ]}
 />

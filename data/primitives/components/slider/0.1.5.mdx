@@ -171,6 +171,19 @@ Contains all the parts of a slider. It will render an `input` for each thumb whe
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
+    },
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
+    },
+  ]}
+/>
+
 ### Track
 
 The track that contains the `Slider.Range`.
@@ -184,6 +197,19 @@ The track that contains the `Slider.Range`.
       default: 'false',
       description:
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
+    },
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
     },
   ]}
 />
@@ -205,6 +231,19 @@ The range part. Must live inside `Slider.Track`.
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
+    },
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
+    },
+  ]}
+/>
+
 ### Thumb
 
 A draggable thumb. You can render multiple thumbs.
@@ -218,6 +257,19 @@ A draggable thumb. You can render multiple thumbs.
       default: 'false',
       description:
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
+    },
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
     },
   ]}
 />
