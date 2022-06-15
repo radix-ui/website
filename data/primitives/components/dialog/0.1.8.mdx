@@ -529,7 +529,7 @@ export const DialogContent = React.forwardRef(
       <DialogPrimitive.Overlay />
       <DialogPrimitive.Content {...props} ref={forwardedRef}>
         {children}
-        <DialogPrimitive.Close>
+        <DialogPrimitive.Close aria-label="Close">
           <Cross1Icon />
         </DialogPrimitive.Close>
       </DialogPrimitive.Content>
