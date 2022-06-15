@@ -179,6 +179,19 @@ The vertical scrollbar. Add a second `Scrollbar` with an `orientation` prop to e
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['visible', 'hidden'],
+    },
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
+    },
+  ]}
+/>
+
 ### Thumb
 
 The thumb to be used in `ScrollArea.Scrollbar`.
@@ -192,6 +205,15 @@ The thumb to be used in `ScrollArea.Scrollbar`.
       default: 'false',
       description:
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['visible', 'hidden'],
     },
   ]}
 />

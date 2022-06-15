@@ -213,6 +213,15 @@ Contains all the parts of a toggle group.
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
+    },
+  ]}
+/>
+
 ### Item
 
 An item in the group.
@@ -242,6 +251,23 @@ An item in the group.
           item.
         </span>
       ),
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['on', 'off'],
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
+    },
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
     },
   ]}
 />

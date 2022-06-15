@@ -175,6 +175,15 @@ The area that opens the context menu. Wrap it around the target you want the con
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['open', 'closed'],
+    },
+  ]}
+/>
+
 ### Portal
 
 When used, portals the content part into the `body`.
@@ -330,6 +339,23 @@ The component that pops out in an open context menu.
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['open', 'closed'],
+    },
+    {
+      attribute: '[data-side]',
+      values: ['left', 'right', 'bottom', 'top'],
+    },
+    {
+      attribute: '[data-align]',
+      values: ['start', 'end', 'center'],
+    },
+  ]}
+/>
+
 ### Arrow
 
 An optional arrow element to render alongside a submenu. This can be used to help visually link the trigger item with the `ContextMenu.Content`. Must be rendered inside `ContextMenu.Content`.
@@ -416,6 +442,19 @@ The component that contains the context menu items.
           when the content is complex, or you have non-textual content inside.
         </span>
       ),
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-highlighted]',
+      values: 'Present when highlighted',
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
     },
   ]}
 />
@@ -522,6 +561,23 @@ An item that can be controlled and rendered like a checkbox.
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['checked', 'unchecked'],
+    },
+    {
+      attribute: '[data-highlighted]',
+      values: 'Present when highlighted',
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
+    },
+  ]}
+/>
+
 ### RadioGroup
 
 Used to group multiple `ContextMenu.RadioItem`s.
@@ -606,6 +662,23 @@ An item that can be controlled and rendered like a radio.
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['checked', 'unchecked'],
+    },
+    {
+      attribute: '[data-highlighted]',
+      values: 'Present when highlighted',
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
+    },
+  ]}
+/>
+
 ### ItemIndicator
 
 Renders when the parent `ContextMenu.CheckboxItem` or `ContextMenu.RadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
@@ -629,6 +702,15 @@ Renders when the parent `ContextMenu.CheckboxItem` or `ContextMenu.RadioItem` is
           controlling animation with React animation libraries.
         </span>
       ),
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['checked', 'unchecked'],
     },
   ]}
 />
@@ -723,6 +805,23 @@ An item that opens a submenu. Must be rendered inside `ContextMenu.Sub`.
           when the content is complex, or you have non-textual content inside.
         </span>
       ),
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['open', 'closed'],
+    },
+    {
+      attribute: '[data-highlighted]',
+      values: 'Present when highlighted',
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
     },
   ]}
 />
@@ -849,6 +948,23 @@ The component that pops out when a submenu is open. Must be rendered inside `Con
           should occur.
         </span>
       ),
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['open', 'closed'],
+    },
+    {
+      attribute: '[data-side]',
+      values: ['left', 'right', 'bottom', 'top'],
+    },
+    {
+      attribute: '[data-align]',
+      values: ['start', 'end', 'center'],
     },
   ]}
 />
