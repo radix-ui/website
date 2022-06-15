@@ -94,6 +94,23 @@ Contains all of the progress parts.
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['complete', 'indeterminate', 'loading'],
+    },
+    {
+      attribute: '[data-value]',
+      values: 'The current value',
+    },
+    {
+      attribute: '[data-max]',
+      values: 'The max value',
+    },
+  ]}
+/>
+
 ### Indicator
 
 Used to show the progress visually. It also makes progress accessible to assistive technologies.
@@ -107,6 +124,23 @@ Used to show the progress visually. It also makes progress accessible to assisti
       default: 'false',
       description:
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['complete', 'indeterminate', 'loading'],
+    },
+    {
+      attribute: '[data-value]',
+      values: 'The current value',
+    },
+    {
+      attribute: '[data-max]',
+      values: 'The max value',
     },
   ]}
 />

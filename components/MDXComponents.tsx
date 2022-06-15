@@ -14,6 +14,7 @@ import { HeroQuote } from './HeroQuote';
 import { Frontmatter } from 'types/frontmatter';
 import { ColorScale, ColorScaleGroup } from './Scale';
 import * as Demos from './demos';
+import { DataAttributesTable } from './DataAttributesTable';
 
 export const components = {
   ColorScale,
@@ -184,8 +185,9 @@ export const components = {
   Highlights,
   Kbd: DS.Kbd,
   Code: DS.Code,
+  DataAttributesTable: (props) => <DataAttributesTable {...props} />,
   PropsTable: (props) => (
-    <DS.Box css={{ mb: '$5' }}>
+    <DS.Box css={{ mb: '$2' }}>
       <PropsTable {...props} />
     </DS.Box>
   ),

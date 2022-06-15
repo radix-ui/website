@@ -122,6 +122,19 @@ Contains all the parts of a switch. An `input` will also render when used within
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['checked', 'unchecked'],
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
+    },
+  ]}
+/>
+
 ### Thumb
 
 The thumb that is used to visually indicate whether the switch is on or off.
@@ -135,6 +148,19 @@ The thumb that is used to visually indicate whether the switch is on or off.
       default: 'false',
       description:
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['checked', 'unchecked'],
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
     },
   ]}
 />
