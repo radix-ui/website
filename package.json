@@ -37,7 +37,7 @@
     "@radix-ui/react-slot": "0.1.3-rc.22",
     "@radix-ui/react-switch": "0.1.6-rc.22",
     "@radix-ui/react-tabs": "0.2.0-rc.2",
-    "@radix-ui/react-toast": "0.1.2-rc.37",
+    "@radix-ui/react-toast": "0.1.2-rc.50",
     "@radix-ui/react-toggle": "0.1.5-rc.22",
     "@radix-ui/react-toggle-group": "0.1.6-rc.25",
     "@radix-ui/react-toolbar": "0.1.6-rc.25",
