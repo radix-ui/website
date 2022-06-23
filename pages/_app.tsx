@@ -8,6 +8,7 @@ import { PrimitivesPage } from '@components/PrimitivesPage';
 import { DesignSystemPage } from '@components/DesignSystemPage';
 import { ColorsPage } from '@components/ColorsPage';
 import { useAnalytics } from '@lib/analytics';
+import { searchStyles } from '@components/Search';
 import Head from 'next/head';
 
 const globalStyles = globalCss({
@@ -52,6 +53,7 @@ const globalStyles = globalCss({
 
 function App({ Component, pageProps }: AppProps) {
   globalStyles();
+  searchStyles();
   useAnalytics();
   const router = useRouter();
 

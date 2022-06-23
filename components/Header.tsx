@@ -22,6 +22,7 @@ import { ThemeToggle } from '@components/ThemeToggle';
 import { BoxLink } from '@components/BoxLink';
 import { RadixLogoIcon } from './RadixLogoIcon';
 import { RemoveScroll } from 'react-remove-scroll';
+import { Search } from '@components/Search';
 
 export const Header = () => {
   const router = useRouter();
@@ -60,7 +61,6 @@ export const Header = () => {
                       <Text>Documentation</Text>
                     </Link>
                   </NextLink>
-
                   <NextLink href="/case-studies" passHref>
                     <Link
                       variant={router.pathname.includes('/case-studies') ? 'contrast' : 'subtle'}
@@ -200,6 +200,8 @@ export const Header = () => {
                 </Box>
               </PopoverContent>
             </Popover>
+
+            <Search />
 
             <ThemeToggle />
           </Flex>

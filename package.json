@@ -9,6 +9,7 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
+    "@docsearch/react": "3",
     "@mdx-js/loader": "1.6.22",
     "@modulz/design-system": "1.0.0",
     "@radix-ui/colors": "0.1.8",
