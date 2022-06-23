@@ -27,6 +27,7 @@ import { Search } from '@components/Search';
 export const Header = () => {
   const router = useRouter();
   const isColors = router.pathname.includes('/colors') || router.pathname.includes('/docs/colors');
+  const isPrimitives = router.pathname.includes('/primitives');
 
   return (
     <Box as="header" className={RemoveScroll.classNames.fullWidth}>
@@ -201,7 +202,7 @@ export const Header = () => {
               </PopoverContent>
             </Popover>
 
-            <Search />
+            {isPrimitives ? <Search /> : null}
 
             <ThemeToggle />
           </Flex>
