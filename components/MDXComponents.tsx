@@ -14,6 +14,7 @@ import { HeroQuote } from './HeroQuote';
 import { Frontmatter } from 'types/frontmatter';
 import { ColorScale, ColorScaleGroup } from './Scale';
 import * as Demos from './demos';
+import { CssVariablesTable } from './CssVariablesTable';
 import { DataAttributesTable } from './DataAttributesTable';
 
 export const components = {
@@ -185,6 +186,11 @@ export const components = {
   Highlights,
   Kbd: DS.Kbd,
   Code: DS.Code,
+  CssVariablesTable: (props) => (
+    <DS.Box css={{ mt: '$2' }}>
+      <CssVariablesTable {...props} />
+    </DS.Box>
+  ),
   DataAttributesTable: (props) => <DataAttributesTable {...props} />,
   PropsTable: (props) => (
     <DS.Box css={{ mb: '$2' }}>

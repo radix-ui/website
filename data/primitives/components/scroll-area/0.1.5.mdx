@@ -192,6 +192,19 @@ The vertical scrollbar. Add a second `Scrollbar` with an `orientation` prop to e
   ]}
 />
 
+<CssVariablesTable
+  data={[
+    {
+      cssVariable: '--radix-scroll-area-corner-width',
+      description: 'The width of the scrollbar when is visible/hidden',
+    },
+    {
+      cssVariable: '--radix-scroll-area-corner-height',
+      description: 'The height of the scrollbar when is visible/hidden',
+    },
+  ]}
+/>
+
 ### Thumb
 
 The thumb to be used in `ScrollArea.Scrollbar`.
@@ -214,6 +227,19 @@ The thumb to be used in `ScrollArea.Scrollbar`.
     {
       attribute: '[data-state]',
       values: ['visible', 'hidden'],
+    },
+  ]}
+/>
+
+<CssVariablesTable
+  data={[
+    {
+      cssVariable: '--radix-scroll-area-thumb-width',
+      description: 'The width of the thumb when is visible/hidden',
+    },
+    {
+      cssVariable: '--radix-scroll-area-thumb-height',
+      description: 'The height of the thumb when is visible/hidden',
     },
   ]}
 />
