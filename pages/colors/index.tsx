@@ -128,21 +128,6 @@ export default function ColorsHome() {
               </Button>
             </Flex>
 
-            <Flex justify={{ '@initial': 'start', '@bp2': 'center' }} css={{ mt: '$7' }}>
-              <Box css={{ bc: '$slate2', py: '$2', px: '$3', borderRadius: '9999px' }}>
-                <Text>
-                  Radix Colors is on Product Hunt.{' '}
-                  <Link
-                    variant="blue"
-                    href="https://www.producthunt.com/posts/radix-colors"
-                    target="_blank"
-                  >
-                    Go vote!
-                  </Link>
-                </Text>
-              </Box>
-            </Flex>
-
             {/* <Flex justify="center" css={{ mt: '$8' }}>
             <Box css={{
               width: '75%',
