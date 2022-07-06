@@ -46,7 +46,7 @@ export function CssVariablesTable({
                 borderBottom: '1px solid $gray6',
                 py: '$3',
                 pr: '$4',
-                whiteSpace: 'nowrap',
+                whiteSpace: 'normal',
               }}
             >
               <Code>{cssVariable}</Code>
