@@ -44,12 +44,18 @@ export function PropsTable({
               Prop
             </Text>
           </Box>
-          <Box as="th" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4', width: '27%' }}>
+          <Box
+            as="th"
+            css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4', width: '27.5%' }}
+          >
             <Text size="2" css={{ color: '$gray11' }}>
               Type
             </Text>
           </Box>
-          <Box as="th" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4', width: '27%' }}>
+          <Box
+            as="th"
+            css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4', width: '27.5%' }}
+          >
             <Text size="2" css={{ color: '$gray11' }}>
               Default
             </Text>
