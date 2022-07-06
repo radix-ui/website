@@ -4,7 +4,7 @@ import { RegionTable } from './RegionTable';
 
 type KeyboardDef = {
   cssVariable: string;
-  description: string;
+  description: React.ReactNode;
 };
 
 export function CssVariablesTable({
@@ -46,10 +46,16 @@ export function CssVariablesTable({
                 borderBottom: '1px solid $gray6',
                 py: '$3',
                 pr: '$4',
-                whiteSpace: 'normal',
+                whiteSpace: 'nowrap',
               }}
             >
-              <Code>{cssVariable}</Code>
+              <Code
+                css={{
+                  whiteSpace: 'normal',
+                }}
+              >
+                {cssVariable}
+              </Code>
             </Box>
 
             <Box as="td" css={{ borderBottom: '1px solid $gray6', py: '$3' }}>
