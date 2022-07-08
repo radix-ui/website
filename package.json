@@ -41,7 +41,7 @@
     "@radix-ui/react-toggle": "0.1.5-rc.22",
     "@radix-ui/react-toggle-group": "0.1.6-rc.25",
     "@radix-ui/react-toolbar": "0.1.6-rc.25",
-    "@radix-ui/react-tooltip": "0.1.8-rc.39",
+    "@radix-ui/react-tooltip": "0.1.8-rc.48",
     "@radix-ui/react-visually-hidden": "0.1.5-rc.22",
     "codesandbox": "^2.2.3",
     "copy-to-clipboard": "^3.3.1",

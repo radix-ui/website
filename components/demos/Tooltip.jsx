@@ -32,6 +32,7 @@ const StyledContent = styled(TooltipPrimitive.Content, {
   color: violet.violet11,
   backgroundColor: 'white',
   boxShadow: 'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
+  userSelect: 'none',
   '@media (prefers-reduced-motion: no-preference)': {
     animationDuration: '400ms',
     animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
@@ -85,16 +86,18 @@ const IconButton = styled('button', {
 
 const TooltipDemo = () => {
   return (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <IconButton>
-          <PlusIcon />
-        </IconButton>
-      </TooltipTrigger>
-      <TooltipContent sideOffset={5} className={`${theme}`}>
-        Add to library
-      </TooltipContent>
-    </Tooltip>
+    <Provider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <IconButton>
+            <PlusIcon />
+          </IconButton>
+        </TooltipTrigger>
+        <TooltipContent sideOffset={5} className={`${theme}`}>
+          Add to library
+        </TooltipContent>
+      </Tooltip>
+    </Provider>
   );
 };
 
