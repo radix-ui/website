@@ -386,6 +386,20 @@ The component that pops out when the popover is open.
   ]}
 />
 
+<CssVariablesTable
+  data={[
+    {
+      cssVariable: '--radix-popover-content-transform-origin',
+      description: (
+        <>
+          The <Code>transform-origin</Code> computed from the content and arrow
+          positions/offsets
+        </>
+      ),
+    },
+  ]}
+/>
+
 ### Arrow
 
 An optional arrow element to render alongside the popover. This can be used to help visually link the anchor with the `Popover.Content`. Must be rendered inside `Popover.Content`.
