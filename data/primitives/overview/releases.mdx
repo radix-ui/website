@@ -18,13 +18,14 @@ metaDescription: Radix Primitives releases and their changelogs.
 
 - Improve compatibility with JS animation libraries with `forceMount` on `AlertDialog.Portal` <PRLink id={1075} />
 - Fix regressions with page interactivity while/after closing dialog <PRLink id={1401} />
+- [**Breaking**] Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
 
 <PackageRelease name="Context Menu" version="0.1.7" />
 
 - Fix issue with native context menu appearing in React 18 <PRLink id={1378} />
 - Add `data-highlighted` attribute to support styling <PRLink id={1388} />
 - [**Breaking**] Improve indirect nesting of context menus. Submenus must now be created using explicit parts. <PRLink id={1394} />
-- [**Breaking**] Move `allowPinchZoom` to root. <PRLink id={1400} />
+- [**Breaking**] Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
 - [**Breaking**] Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1429} />
 - Add `data-state` attribute to `Trigger` part <PRLink id={1455} />
 
@@ -32,12 +33,13 @@ metaDescription: Radix Primitives releases and their changelogs.
 
 - Improve compatibility with JS animation libraries with `forceMount` on `Dialog.Portal` <PRLink id={1075} />
 - Fix regressions with page interactivity while/after closing dialog <PRLink id={1401} />
+- [**Breaking**] Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
 
 <PackageRelease name="Dropdown Menu" version="0.1.7" />
 
 - Add `data-highlighted` attribute to support styling <PRLink id={1388} />
 - [**Breaking**] Improve indirect nesting of dropdown menus. Submenus must now be created using explicit parts. <PRLink id={1394} />
-- [**Breaking**] Move `allowPinchZoom` to root <PRLink id={1400} />
+- [**Breaking**] Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
 - Prevent escape key from exiting fullscreen mode in Firefox & Safari <PRLink id={1423} />
 - [**Breaking**] Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1429} />
 
@@ -52,7 +54,7 @@ metaDescription: Radix Primitives releases and their changelogs.
 
 <PackageRelease name="Popover" version="0.1.7" />
 
-- [**Breaking**] Move `allowPinchZoom` to root <PRLink id={1400} />
+- [**Breaking**] Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
 - [**Breaking**] Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1425} />
 
 <PackageRelease name="Portal" version="0.1.5" />
@@ -78,7 +80,6 @@ metaDescription: Radix Primitives releases and their changelogs.
 - Add support for placeholder via `placeholder` prop on `Select.Value` <PRLink id={1384} />
 - Resolve value mismatch with underlying native select <PRLink id={1421} />
 - [**Breaking**] Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1459} />
-- Add pinch to zoom support via `allowPinchZoom` prop on `Select.Root` <PRLink id={1459} />
 
 <PackageRelease name="Slot" version="0.1.3" />
 
