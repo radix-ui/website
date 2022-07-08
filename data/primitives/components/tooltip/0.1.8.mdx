@@ -80,6 +80,16 @@ Wraps your app to provide global functionality to your tooltips.
       description:
         'How much time a user has to enter another trigger without incurring a delay again.',
     },
+    {
+      name: 'disableHoverableContent',
+      type: 'boolean',
+      description: (
+        <span>
+          Prevents <Code>Tooltip.Content</Code> from remaining open when
+          hovering. Disabling this has accessibility consequences.
+        </span>
+      ),
+    },
   ]}
 />
 
@@ -125,6 +135,18 @@ Contains all the parts of a tooltip.
       default: 700,
       description:
         'Override the duration given to the `Provider` to customise the open delay for a specific tooltip.',
+    },
+    {
+      name: 'disableHoverableContent',
+      type: 'boolean',
+      default: false,
+      description: (
+        <span>
+          Prevents <Code>Tooltip.Content</Code> from remaining open when
+          hovering. Disabling this has accessibility consequences. Inherits from{' '}
+          <Code>Tooltip.Provider</Code>.
+        </span>
+      ),
     },
   ]}
 />
@@ -245,7 +267,7 @@ The component that pops out when the tooltip is open.
       name: 'side',
       type: '"top" | "right" | "bottom" | "left"',
       typeSimple: 'enum',
-      default: '"bottom"',
+      default: '"top"',
       description: (
         <span>
           The preferred side of the trigger to render against when open. Will be
@@ -387,7 +409,7 @@ An optional arrow element to render alongside the tooltip. This can be used to h
 
 ### Configure globally
 
-Use the `Provider` to control `delayDuration` and `skipDelayDuration` globally. Without the provider, tooltips will always delay before opening when moving from one tooltip trigger to another (e.g. `skipDelayDuration={0}`).
+Use the `Provider` to control `delayDuration` and `skipDelayDuration` globally.
 
 ```jsx line=4
 import * as Tooltip from '@radix-ui/react-tooltip';
