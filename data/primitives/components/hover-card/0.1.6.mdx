@@ -276,6 +276,20 @@ The component that pops out when the hover card is open.
   ]}
 />
 
+<CssVariablesTable
+  data={[
+    {
+      cssVariable: '--radix-hover-card-content-transform-origin',
+      description: (
+        <>
+          The <Code>transform-origin</Code> computed from the content and arrow
+          positions/offsets
+        </>
+      ),
+    },
+  ]}
+/>
+
 ### Arrow
 
 An optional arrow element to render alongside the hover card. This can be used to help visually link the trigger with the `HoverCard.Content`. Must be rendered inside `HoverCard.Content`.
