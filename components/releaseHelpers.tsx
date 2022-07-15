@@ -5,11 +5,13 @@ export function PackageRelease({
   major,
   name,
   version,
+  beta,
 }: {
   id: string;
   major?: boolean;
   name: string;
   version?: string;
+  beta?: boolean;
 }) {
   return (
     <Flex align="center" gap="1" css={{ mt: '$5', mb: '$2', '& + ul': { mt: '0' } }}>
@@ -24,6 +26,11 @@ export function PackageRelease({
       {major && (
         <Text size="1" variant="gray">
           Major
+        </Text>
+      )}
+      {beta && (
+        <Text size="1" variant="gray">
+          Beta
         </Text>
       )}
     </Flex>
