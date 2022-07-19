@@ -55,12 +55,12 @@ const StyledArrow = styled(DropdownMenuPrimitive.Arrow, {
   fill: 'white',
 });
 
-function Content({ children, arrowOffset, ...props }) {
+function Content({ children, ...props }) {
   return (
     <DropdownMenuPrimitive.Portal>
       <StyledContent {...props}>
         {children}
-        <StyledArrow offset={arrowOffset} />
+        <StyledArrow />
       </StyledContent>
     </DropdownMenuPrimitive.Portal>
   );
@@ -190,7 +190,7 @@ export const DropdownMenuDemo = () => {
           </IconButton>
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent sideOffset={5} arrowOffset={12}>
+        <DropdownMenuContent sideOffset={5}>
           <DropdownMenuItem>
             New Tab <RightSlot>⌘+T</RightSlot>
           </DropdownMenuItem>
