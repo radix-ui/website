@@ -75,9 +75,7 @@ export default () => (
 
         <ContextMenu.Sub>
           <ContextMenu.SubTrigger />
-          <Contextmenu.Portal>
-            <ContextMenu.SubContent />
-          </Contextmenu.Portal>
+          <ContextMenu.SubContent />
         </ContextMenu.Sub>
 
         <ContextMenu.Separator />
@@ -1021,24 +1019,26 @@ The component that pops out when a submenu is open. Must be rendered inside `Con
 
 You can create submenus by using `ContextMenu.Sub` in combination with its parts.
 
-```jsx line=7-14
+```jsx line=8-15
 <ContextMenu.Root>
   <ContextMenu.Trigger>…</ContextMenu.Trigger>
-  <ContextMenu.Content>
-    <ContextMenu.Item>…</ContextMenu.Item>
-    <ContextMenu.Item>…</ContextMenu.Item>
-    <ContextMenu.Separator />
-    <ContextMenu.Sub>
-      <ContextMenu.SubTrigger>Sub menu →</ContextMenu.SubTrigger>
-      <ContextMenu.SubContent>
-        <ContextMenu.Item>Sub menu item</ContextMenu.Item>
-        <ContextMenu.Item>Sub menu item</ContextMenu.Item>
-        <ContextMenu.Arrow />
-      </ContextMenu.SubContent>
-    </ContextMenu.Sub>
-    <ContextMenu.Separator />
-    <ContextMenu.Item>…</ContextMenu.Item>
-  </ContextMenu.Content>
+  <ContextMenu.Portal>
+    <ContextMenu.Content>
+      <ContextMenu.Item>…</ContextMenu.Item>
+      <ContextMenu.Item>…</ContextMenu.Item>
+      <ContextMenu.Separator />
+      <ContextMenu.Sub>
+        <ContextMenu.SubTrigger>Sub menu →</ContextMenu.SubTrigger>
+        <ContextMenu.SubContent>
+          <ContextMenu.Item>Sub menu item</ContextMenu.Item>
+          <ContextMenu.Item>Sub menu item</ContextMenu.Item>
+          <ContextMenu.Arrow />
+        </ContextMenu.SubContent>
+      </ContextMenu.Sub>
+      <ContextMenu.Separator />
+      <ContextMenu.Item>…</ContextMenu.Item>
+    </ContextMenu.Content>
+  </ContextMenu.Portal>
 </ContextMenu.Root>
 ```
 
@@ -1046,7 +1046,7 @@ You can create submenus by using `ContextMenu.Sub` in combination with its parts
 
 You can add special styles to disabled items via the `data-disabled` attribute.
 
-```jsx line=4-6,12
+```jsx line=4-6,13
 import { styled } from '@stitches/react';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
@@ -1057,11 +1057,13 @@ const StyledItem = styled(ContextMenu.Item, {
 export default () => (
   <ContextMenu.Root>
     <ContextMenu.Trigger>…</ContextMenu.Trigger>
-    <ContextMenu.Content>
-      <StyledItem __disabled__>…</StyledItem>
-      <StyledItem>…</StyledItem>
-      <StyledItem>…</StyledItem>
-    </ContextMenu.Content>
+    <ContextMenu.Portal>
+      <ContextMenu.Content>
+        <StyledItem __disabled__>…</StyledItem>
+        <StyledItem>…</StyledItem>
+        <StyledItem>…</StyledItem>
+      </ContextMenu.Content>
+    </ContextMenu.Portal>
   </ContextMenu.Root>
 );
 ```
@@ -1070,16 +1072,18 @@ export default () => (
 
 Use the `Separator` part to add a separator between items.
 
-```jsx line=5,7
+```jsx line=6,8
 <ContextMenu.Root>
   <ContextMenu.Trigger>…</ContextMenu.Trigger>
-  <ContextMenu.Content>
-    <ContextMenu.Item>…</ContextMenu.Item>
-    <ContextMenu.Separator />
-    <ContextMenu.Item>…</ContextMenu.Item>
-    <ContextMenu.Separator />
-    <ContextMenu.Item>…</ContextMenu.Item>
-  </ContextMenu.Content>
+  <ContextMenu.Portal>
+    <ContextMenu.Content>
+      <ContextMenu.Item>…</ContextMenu.Item>
+      <ContextMenu.Separator />
+      <ContextMenu.Item>…</ContextMenu.Item>
+      <ContextMenu.Separator />
+      <ContextMenu.Item>…</ContextMenu.Item>
+    </ContextMenu.Content>
+  </ContextMenu.Portal>
 </ContextMenu.Root>
 ```
 
@@ -1087,15 +1091,17 @@ Use the `Separator` part to add a separator between items.
 
 Use the `Label` part to help label a section.
 
-```jsx line=4
+```jsx line=5
 <ContextMenu.Root>
   <ContextMenu.Trigger>…</ContextMenu.Trigger>
-  <ContextMenu.Content>
-    <ContextMenu.Label>Label</ContextMenu.Label>
-    <ContextMenu.Item>…</ContextMenu.Item>
-    <ContextMenu.Item>…</ContextMenu.Item>
-    <ContextMenu.Item>…</ContextMenu.Item>
-  </ContextMenu.Content>
+  <ContextMenu.Portal>
+    <ContextMenu.Content>
+      <ContextMenu.Label>Label</ContextMenu.Label>
+      <ContextMenu.Item>…</ContextMenu.Item>
+      <ContextMenu.Item>…</ContextMenu.Item>
+      <ContextMenu.Item>…</ContextMenu.Item>
+    </ContextMenu.Content>
+  </ContextMenu.Portal>
 </ContextMenu.Root>
 ```
 
@@ -1103,7 +1109,7 @@ Use the `Label` part to help label a section.
 
 Use the `CheckboxItem` part to add an item that can be checked.
 
-```jsx line=6,15-20
+```jsx line=6,16-21
 import React from 'react';
 import { CheckIcon } from '@radix-ui/react-icons';
 import * as ContextMenu from '@radix-ui/react-context-menu';
@@ -1114,20 +1120,22 @@ export default () => {
   return (
     <ContextMenu.Root>
       <ContextMenu.Trigger>…</ContextMenu.Trigger>
-      <ContextMenu.Content>
-        <ContextMenu.Item>…</ContextMenu.Item>
-        <ContextMenu.Item>…</ContextMenu.Item>
-        <ContextMenu.Separator />
-        <ContextMenu.CheckboxItem
-          checked={checked}
-          onCheckedChange={setChecked}
-        >
-          <ContextMenu.ItemIndicator>
-            <CheckIcon />
-          </ContextMenu.ItemIndicator>
-          Checkbox item
-        </ContextMenu.CheckboxItem>
-      </ContextMenu.Content>
+      <ContextMenu.Portal>
+        <ContextMenu.Content>
+          <ContextMenu.Item>…</ContextMenu.Item>
+          <ContextMenu.Item>…</ContextMenu.Item>
+          <ContextMenu.Separator />
+          <ContextMenu.CheckboxItem
+            checked={checked}
+            onCheckedChange={setChecked}
+          >
+            <ContextMenu.ItemIndicator>
+              <CheckIcon />
+            </ContextMenu.ItemIndicator>
+            Checkbox item
+          </ContextMenu.CheckboxItem>
+        </ContextMenu.Content>
+      </ContextMenu.Portal>
     </ContextMenu.Root>
   );
 };
@@ -1137,7 +1145,7 @@ export default () => {
 
 Use the `RadioGroup` and `RadioItem` parts to add an item that can be checked amongst others.
 
-```jsx line=6,12-31
+```jsx line=6,13-32
 import React from 'react';
 import { CheckIcon } from '@radix-ui/react-icons';
 import * as ContextMenu from '@radix-ui/react-context-menu';
@@ -1148,28 +1156,30 @@ export default () => {
   return (
     <ContextMenu.Root>
       <ContextMenu.Trigger>…</ContextMenu.Trigger>
-      <ContextMenu.Content>
-        <ContextMenu.RadioGroup value={color} onValueChange={setColor}>
-          <ContextMenu.RadioItem value="red">
-            <ContextMenu.ItemIndicator>
-              <CheckIcon />
-            </ContextMenu.ItemIndicator>
-            Red
-          </ContextMenu.RadioItem>
-          <ContextMenu.RadioItem value="blue">
-            <ContextMenu.ItemIndicator>
-              <CheckIcon />
-            </ContextMenu.ItemIndicator>
-            Blue
-          </ContextMenu.RadioItem>
-          <ContextMenu.RadioItem value="green">
-            <ContextMenu.ItemIndicator>
-              <CheckIcon />
-            </ContextMenu.ItemIndicator>
-            Green
-          </ContextMenu.RadioItem>
-        </ContextMenu.RadioGroup>
-      </ContextMenu.Content>
+      <ContextMenu.Portal>
+        <ContextMenu.Content>
+          <ContextMenu.RadioGroup value={color} onValueChange={setColor}>
+            <ContextMenu.RadioItem value="red">
+              <ContextMenu.ItemIndicator>
+                <CheckIcon />
+              </ContextMenu.ItemIndicator>
+              Red
+            </ContextMenu.RadioItem>
+            <ContextMenu.RadioItem value="blue">
+              <ContextMenu.ItemIndicator>
+                <CheckIcon />
+              </ContextMenu.ItemIndicator>
+              Blue
+            </ContextMenu.RadioItem>
+            <ContextMenu.RadioItem value="green">
+              <ContextMenu.ItemIndicator>
+                <CheckIcon />
+              </ContextMenu.ItemIndicator>
+              Green
+            </ContextMenu.RadioItem>
+          </ContextMenu.RadioGroup>
+        </ContextMenu.Content>
+      </ContextMenu.Portal>
     </ContextMenu.Root>
   );
 };
@@ -1179,7 +1189,7 @@ export default () => {
 
 You can add extra decorative elements in the `Item` parts, such as images.
 
-```jsx line=4-7,14,18,22
+```jsx line=4-7,15,19,23
 import { styled } from '@stitches/react';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
@@ -1191,20 +1201,22 @@ const Image = styled('img', {
 export default () => (
   <ContextMenu.Root>
     <ContextMenu.Trigger>…</ContextMenu.Trigger>
-    <ContextMenu.Content>
-      <ContextMenu.Item>
-        <Image src="…" />
-        Adolfo Hess
-      </ContextMenu.Item>
-      <ContextMenu.Item>
-        <Image src="…" />
-        Miyah Myles
-      </ContextMenu.Item>
-      <ContextMenu.Item>
-        <Image src="…" />
-        Sylvia Reynolds
-      </ContextMenu.Item>
-    </ContextMenu.Content>
+    <ContextMenu.Portal>
+      <ContextMenu.Content>
+        <ContextMenu.Item>
+          <Image src="…" />
+          Adolfo Hess
+        </ContextMenu.Item>
+        <ContextMenu.Item>
+          <Image src="…" />
+          Miyah Myles
+        </ContextMenu.Item>
+        <ContextMenu.Item>
+          <Image src="…" />
+          Sylvia Reynolds
+        </ContextMenu.Item>
+      </ContextMenu.Content>
+    </ContextMenu.Portal>
   </ContextMenu.Root>
 );
 ```
@@ -1213,7 +1225,7 @@ export default () => (
 
 We expose a CSS custom property `--radix-context-menu-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
-```jsx line=4-7,9-12,17
+```jsx line=4-7,9-12,18
 import { styled, keyframes } from '@stitches/react';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
@@ -1230,7 +1242,9 @@ const StyledContent = styled(ContextMenu.Content, {
 export default () => (
   <ContextMenu.Root>
     <ContextMenu.Trigger>…</ContextMenu.Trigger>
-    <StyledContent>…</StyledContent>
+    <ContextMenu.Portal>
+      <StyledContent>…</StyledContent>
+    </ContextMenu.Portal>
   </ContextMenu.Root>
 );
 ```
@@ -1239,7 +1253,7 @@ export default () => (
 
 We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
 
-```jsx line=4-7,9,12-14-19,24
+```jsx line=4-7,9-12,14-19,25
 import { styled, keyframes } from '@stitches/react';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
@@ -1263,7 +1277,9 @@ const StyledContent = styled(ContextMenu.Content, {
 export default () => (
   <ContextMenu.Root>
     <ContextMenu.Trigger>…</ContextMenu.Trigger>
-    <StyledContent>…</StyledContent>
+    <ContextMenu.Portal>
+      <StyledContent>…</StyledContent>
+    </ContextMenu.Portal>
   </ContextMenu.Root>
 );
 ```

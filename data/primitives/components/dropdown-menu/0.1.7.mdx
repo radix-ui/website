@@ -76,9 +76,7 @@ export default () => (
 
         <DropdownMenu.Sub>
           <DropdownMenu.SubTrigger />
-          <DropdownMenu.Portal>
-            <DropdownMenu.SubContent />
-          </DropdownMenu.Portal>
+          <DropdownMenu.SubContent />
         </DropdownMenu.Sub>
 
         <DropdownMenu.Separator />
@@ -1106,24 +1104,26 @@ The component that pops out when a submenu is open. Must be rendered inside `Dro
 
 You can create submenus by using `DropdownMenu.Sub` in combination with its parts.
 
-```jsx line=7-14
+```jsx line=8-15
 <DropdownMenu.Root>
   <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
-  <DropdownMenu.Content>
-    <DropdownMenu.Item>…</DropdownMenu.Item>
-    <DropdownMenu.Item>…</DropdownMenu.Item>
-    <DropdownMenu.Separator />
-    <DropdownMenu.Sub>
-      <DropdownMenu.SubTrigger>Sub menu →</DropdownMenu.SubTrigger>
-      <DropdownMenu.SubContent>
-        <DropdownMenu.Item>Sub menu item</DropdownMenu.Item>
-        <DropdownMenu.Item>Sub menu item</DropdownMenu.Item>
-        <DropdownMenu.Arrow />
-      </DropdownMenu.SubContent>
-    </DropdownMenu.Sub>
-    <DropdownMenu.Separator />
-    <DropdownMenu.Item>…</DropdownMenu.Item>
-  </DropdownMenu.Content>
+  <DropdownMenu.Portal>
+    <DropdownMenu.Content>
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Sub>
+        <DropdownMenu.SubTrigger>Sub menu →</DropdownMenu.SubTrigger>
+        <DropdownMenu.SubContent>
+          <DropdownMenu.Item>Sub menu item</DropdownMenu.Item>
+          <DropdownMenu.Item>Sub menu item</DropdownMenu.Item>
+          <DropdownMenu.Arrow />
+        </DropdownMenu.SubContent>
+      </DropdownMenu.Sub>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Portal>
 </DropdownMenu.Root>
 ```
 
@@ -1131,7 +1131,7 @@ You can create submenus by using `DropdownMenu.Sub` in combination with its part
 
 You can add special styles to disabled items via the `data-disabled` attribute.
 
-```jsx line=4-6,12
+```jsx line=4-6,13
 import { styled } from '@stitches/react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
@@ -1142,11 +1142,13 @@ const StyledItem = styled(DropdownMenu.Item, {
 export default () => (
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
-    <DropdownMenu.Content>
-      <StyledItem __disabled__>…</StyledItem>
-      <StyledItem>…</StyledItem>
-      <StyledItem>…</StyledItem>
-    </DropdownMenu.Content>
+    <DropdownMenu.Portal>
+      <DropdownMenu.Content>
+        <StyledItem __disabled__>…</StyledItem>
+        <StyledItem>…</StyledItem>
+        <StyledItem>…</StyledItem>
+      </DropdownMenu.Content>
+    </DropdownMenu.Portal>
   </DropdownMenu.Root>
 );
 ```
@@ -1155,16 +1157,18 @@ export default () => (
 
 Use the `Separator` part to add a separator between items.
 
-```jsx line=5,7
+```jsx line=6,8
 <DropdownMenu.Root>
   <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
-  <DropdownMenu.Content>
-    <DropdownMenu.Item>…</DropdownMenu.Item>
-    <DropdownMenu.Separator />
-    <DropdownMenu.Item>…</DropdownMenu.Item>
-    <DropdownMenu.Separator />
-    <DropdownMenu.Item>…</DropdownMenu.Item>
-  </DropdownMenu.Content>
+  <DropdownMenu.Portal>
+    <DropdownMenu.Content>
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Portal>
 </DropdownMenu.Root>
 ```
 
@@ -1172,15 +1176,17 @@ Use the `Separator` part to add a separator between items.
 
 Use the `Label` part to help label a section.
 
-```jsx line=4
+```jsx line=5
 <DropdownMenu.Root>
   <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
-  <DropdownMenu.Content>
-    <DropdownMenu.Label>Label</DropdownMenu.Label>
-    <DropdownMenu.Item>…</DropdownMenu.Item>
-    <DropdownMenu.Item>…</DropdownMenu.Item>
-    <DropdownMenu.Item>…</DropdownMenu.Item>
-  </DropdownMenu.Content>
+  <DropdownMenu.Portal>
+    <DropdownMenu.Content>
+      <DropdownMenu.Label>Label</DropdownMenu.Label>
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Portal>
 </DropdownMenu.Root>
 ```
 
@@ -1188,7 +1194,7 @@ Use the `Label` part to help label a section.
 
 Use the `CheckboxItem` part to add an item that can be checked.
 
-```jsx line=6,15-20
+```jsx line=6,16-21
 import React from 'react';
 import { CheckIcon } from '@radix-ui/react-icons';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
@@ -1199,20 +1205,22 @@ export default () => {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
-      <DropdownMenu.Content>
-        <DropdownMenu.Item>…</DropdownMenu.Item>
-        <DropdownMenu.Item>…</DropdownMenu.Item>
-        <DropdownMenu.Separator />
-        <DropdownMenu.CheckboxItem
-          checked={checked}
-          onCheckedChange={setChecked}
-        >
-          <DropdownMenu.ItemIndicator>
-            <CheckIcon />
-          </DropdownMenu.ItemIndicator>
-          Checkbox item
-        </DropdownMenu.CheckboxItem>
-      </DropdownMenu.Content>
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content>
+          <DropdownMenu.Item>…</DropdownMenu.Item>
+          <DropdownMenu.Item>…</DropdownMenu.Item>
+          <DropdownMenu.Separator />
+          <DropdownMenu.CheckboxItem
+            checked={checked}
+            onCheckedChange={setChecked}
+          >
+            <DropdownMenu.ItemIndicator>
+              <CheckIcon />
+            </DropdownMenu.ItemIndicator>
+            Checkbox item
+          </DropdownMenu.CheckboxItem>
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
     </DropdownMenu.Root>
   );
 };
@@ -1222,7 +1230,7 @@ export default () => {
 
 Use the `RadioGroup` and `RadioItem` parts to add an item that can be checked amongst others.
 
-```jsx line=6,12-31
+```jsx line=6,13-32
 import React from 'react';
 import { CheckIcon } from '@radix-ui/react-icons';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
@@ -1233,28 +1241,30 @@ export default () => {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
-      <DropdownMenu.Content>
-        <DropdownMenu.RadioGroup value={color} onValueChange={setColor}>
-          <DropdownMenu.RadioItem value="red">
-            <DropdownMenu.ItemIndicator>
-              <CheckIcon />
-            </DropdownMenu.ItemIndicator>
-            Red
-          </DropdownMenu.RadioItem>
-          <DropdownMenu.RadioItem value="blue">
-            <DropdownMenu.ItemIndicator>
-              <CheckIcon />
-            </DropdownMenu.ItemIndicator>
-            Blue
-          </DropdownMenu.RadioItem>
-          <DropdownMenu.RadioItem value="green">
-            <DropdownMenu.ItemIndicator>
-              <CheckIcon />
-            </DropdownMenu.ItemIndicator>
-            Green
-          </DropdownMenu.RadioItem>
-        </DropdownMenu.RadioGroup>
-      </DropdownMenu.Content>
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content>
+          <DropdownMenu.RadioGroup value={color} onValueChange={setColor}>
+            <DropdownMenu.RadioItem value="red">
+              <DropdownMenu.ItemIndicator>
+                <CheckIcon />
+              </DropdownMenu.ItemIndicator>
+              Red
+            </DropdownMenu.RadioItem>
+            <DropdownMenu.RadioItem value="blue">
+              <DropdownMenu.ItemIndicator>
+                <CheckIcon />
+              </DropdownMenu.ItemIndicator>
+              Blue
+            </DropdownMenu.RadioItem>
+            <DropdownMenu.RadioItem value="green">
+              <DropdownMenu.ItemIndicator>
+                <CheckIcon />
+              </DropdownMenu.ItemIndicator>
+              Green
+            </DropdownMenu.RadioItem>
+          </DropdownMenu.RadioGroup>
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
     </DropdownMenu.Root>
   );
 };
@@ -1262,7 +1272,7 @@ export default () => {
 
 ### With complex items
 
-```jsx line=4-7,14,18,22
+```jsx line=4-7,15,19,23
 import { styled } from '@stitches/react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
@@ -1274,20 +1284,22 @@ const Image = styled('img', {
 export default () => (
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
-    <DropdownMenu.Content>
-      <DropdownMenu.Item>
-        <Image src="…" />
-        Adolfo Hess
-      </DropdownMenu.Item>
-      <DropdownMenu.Item>
-        <Image src="…" />
-        Miyah Myles
-      </DropdownMenu.Item>
-      <DropdownMenu.Item>
-        <Image src="…" />
-        Sylvia Reynolds
-      </DropdownMenu.Item>
-    </DropdownMenu.Content>
+    <DropdownMenu.Portal>
+      <DropdownMenu.Content>
+        <DropdownMenu.Item>
+          <Image src="…" />
+          Adolfo Hess
+        </DropdownMenu.Item>
+        <DropdownMenu.Item>
+          <Image src="…" />
+          Miyah Myles
+        </DropdownMenu.Item>
+        <DropdownMenu.Item>
+          <Image src="…" />
+          Sylvia Reynolds
+        </DropdownMenu.Item>
+      </DropdownMenu.Content>
+    </DropdownMenu.Portal>
   </DropdownMenu.Root>
 );
 ```
@@ -1296,7 +1308,7 @@ export default () => (
 
 We expose a CSS custom property `--radix-dropdown-menu-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
-```jsx line=4-7,9-12,17
+```jsx line=4-7,9-12,18
 import { styled, keyframes } from '@stitches/react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
@@ -1313,7 +1325,9 @@ const StyledContent = styled(DropdownMenu.Content, {
 export default () => (
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
-    <StyledContent>…</StyledContent>
+    <DropdownMenu.Portal>
+      <StyledContent>…</StyledContent>
+    </DropdownMenu.Portal>
   </DropdownMenu.Root>
 );
 ```
@@ -1322,7 +1336,7 @@ export default () => (
 
 We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
 
-```jsx line=4-7,9,12-14-19,24
+```jsx line=4-7,9-12,14-19,25
 import { styled, keyframes } from '@stitches/react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
@@ -1346,7 +1360,9 @@ const StyledContent = styled(DropdownMenu.Content, {
 export default () => (
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
-    <StyledContent>…</StyledContent>
+    <DropdownMenu.Portal>
+      <StyledContent>…</StyledContent>
+    </DropdownMenu.Portal>
   </DropdownMenu.Root>
 );
 ```
@@ -1475,10 +1491,12 @@ export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
 export const DropdownMenuContent = React.forwardRef(
   ({ children, ...props }, forwardedRef) => {
     return (
-      <DropdownMenuPrimitive.Content ref={forwardedRef}>
-        {children}
-        <DropdownMenuPrimitive.Arrow />
-      </DropdownMenuPrimitive.Content>
+      <DropdownMenuPrimitive.Portal>
+        <DropdownMenuPrimitive.Content ref={forwardedRef}>
+          {children}
+          <DropdownMenuPrimitive.Arrow />
+        </DropdownMenuPrimitive.Content>
+      </DropdownMenuPrimitive.Portal>
     );
   }
 );
