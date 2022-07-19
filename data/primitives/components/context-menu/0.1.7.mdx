@@ -296,18 +296,46 @@ The component that pops out in an open context menu.
       description: (
         <span>
           When <Code>true</Code>, overrides the <Code>side</Code> and
-          <Code>align</Code> preferences to prevent collisions with window edges.
+          <Code>align</Code> preferences to prevent collisions with boundary edges.
         </span>
       ),
     },
     {
-      name: 'collisionTolerance',
-      type: 'number',
+      name: 'collisionPadding',
+      type: 'number | Partial<Record<Side, number>>',
+      typeSimple: 'number | Padding',
       default: '0',
       description: (
         <span>
-          The distance in pixels from window edges where collision detection
-          should occur.
+          The distance in pixels from the boundary edges where collision
+          detection should occur. Accepts a number (same for all sides), or a
+          partial padding object, for example: <Code>{`{ top: 20, left: 20 }`}</Code>
+          .
+        </span>
+      ),
+    },
+    {
+      name: 'sticky',
+      type: '"partial" | "always"',
+      typeSimple: 'enum',
+      default: '"partial"',
+      description: (
+        <span>
+          The sticky behaviour on the align axis. <Code>"partial"</Code> will
+          keep the content in the boundary as long as the trigger is at least
+          partially in the boundary whilst <Code>"always"</Code> will keep the
+          content in the boundary regardless.
+        </span>
+      ),
+    },
+    {
+      name: 'hideWhenDetached',
+      type: 'boolean',
+      default: 'false',
+      description: (
+        <span>
+          Whether the content is hidden when it becomes detached from the
+          trigger.
         </span>
       ),
     },
@@ -370,17 +398,6 @@ An optional arrow element to render alongside a submenu. This can be used to hel
       type: 'number',
       default: 5,
       description: <span>The height of the arrow in pixels.</span>,
-    },
-    {
-      name: 'offset',
-      type: 'number',
-      default: 0,
-      description: (
-        <span>
-          The distance in pixels to render from the{' '}
-          <Code>ContextMenu.Content</Code> edge.
-        </span>
-      ),
     },
   ]}
 />
@@ -923,18 +940,58 @@ The component that pops out when a submenu is open. Must be rendered inside `Con
       description: (
         <span>
           When <Code>true</Code>, overrides the <Code>side</Code> and
-          <Code>align</Code> preferences to prevent collisions with window edges.
+          <Code>align</Code> preferences to prevent collisions with boundary edges.
         </span>
       ),
     },
     {
-      name: 'collisionTolerance',
+      name: 'collisionPadding',
+      type: 'number | Partial<Record<Side, number>>',
+      typeSimple: 'number | Padding',
+      default: '0',
+      description: (
+        <span>
+          The distance in pixels from the boundary edges where collision
+          detection should occur. Accepts a number (same for all sides), or a
+          partial padding object, for example: <Code>{`{ top: 20, left: 20 }`}</Code>
+          .
+        </span>
+      ),
+    },
+    {
+      name: 'arrowPadding',
       type: 'number',
       default: '0',
       description: (
         <span>
-          The distance in pixels from window edges where collision detection
-          should occur.
+          The padding between the arrow and the edges of the content. If your
+          content has <Code>border-radius</Code>, this will prevent it from
+          overflowing the corners.
+        </span>
+      ),
+    },
+    {
+      name: 'sticky',
+      type: '"partial" | "always"',
+      typeSimple: 'enum',
+      default: '"partial"',
+      description: (
+        <span>
+          The sticky behaviour on the align axis. <Code>"partial"</Code> will
+          keep the content in the boundary as long as the trigger is at least
+          partially in the boundary whilst <Code>"always"</Code> will keep the
+          content in the boundary regardless.
+        </span>
+      ),
+    },
+    {
+      name: 'hideWhenDetached',
+      type: 'boolean',
+      default: 'false',
+      description: (
+        <span>
+          Whether the content is hidden when it becomes detached from the
+          trigger.
         </span>
       ),
     },
