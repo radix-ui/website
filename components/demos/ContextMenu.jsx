@@ -24,15 +24,7 @@ function Content(props) {
   );
 }
 
-const StyledSubContent = styled(ContextMenuPrimitive.SubContent, { ...contentStyles });
-
-function SubContent(props) {
-  return (
-    <ContextMenuPrimitive.Portal>
-      <StyledSubContent {...props} />
-    </ContextMenuPrimitive.Portal>
-  );
-}
+const SubContent = styled(ContextMenuPrimitive.SubContent, { ...contentStyles });
 
 const itemStyles = {
   all: 'unset',
