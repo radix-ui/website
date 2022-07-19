@@ -85,16 +85,7 @@ export function MainHeroDropdownMenu() {
         </DemoButton>
       </DropdownMenuPrimitive.Trigger>
 
-      <Box
-        // Position it manually because iOS Safari is buggy
-        // with transforms and horizontal scroll containers
-        css={{
-          '[data-radix-popper-content-wrapper]': {
-            left: '50% !important',
-            transform: 'translate(-50%, 155px) !important',
-          },
-        }}
-      >
+      <DropdownMenuPrimitive.Portal>
         <DropdownMenuContent
           ref={contentRef}
           sideOffset={5}
@@ -160,7 +151,7 @@ export function MainHeroDropdownMenu() {
             Show Full URLs
           </DropdownMenuCheckboxItem>
         </DropdownMenuContent>
-      </Box>
+      </DropdownMenuPrimitive.Portal>
     </DropdownMenuPrimitive.Root>
   );
 }

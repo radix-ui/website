@@ -36,16 +36,7 @@ export function MainHeroPopover() {
         <DemoButton css={{ mb: 120 }}>Dimensions</DemoButton>
       </PopoverPrimitive.Trigger>
 
-      <Box
-        css={{
-          // Position it manually because iOS Safari is buggy
-          // with transforms and horizontal scroll containers
-          '[data-radix-popper-content-wrapper]': {
-            left: '50% !important',
-            transform: 'translate(-50%, 155px) !important',
-          },
-        }}
-      >
+      <PopoverPrimitive.Portal>
         <PopoverContent
           ref={contentRef}
           side="bottom"
@@ -102,7 +93,7 @@ export function MainHeroPopover() {
             </DemoIconButton>
           </PopoverPrimitive.Close>
         </PopoverContent>
-      </Box>
+      </PopoverPrimitive.Portal>
     </PopoverPrimitive.Root>
   );
 }
