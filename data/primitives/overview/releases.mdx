@@ -7,24 +7,24 @@ metaDescription: Radix Primitives releases and their changelogs.
 
 <Description>Radix Primitives releases and their changelogs.</Description>
 
-## July 21st, 2022
+## July 21, 2022
 
-With this release, we start following semantic versioning strictly. All primitives are now versioned <Badge size="1" variant="blue" css={{ fontFamily: '$mono' }}>1.0.0</Badge>.
+With this release, we start following semantic versioning strictly. All primitives are now versioned <Badge size="1" variant="yellow" css={{ fontFamily: '$mono' }}>1.0.0</Badge>.
 
 We also move the [`Select`](../components/select), [`Toast`](../components/toast) and [`NavigationMenu`](../components/navigation-menu) from beta to stable.
 
 <PackageRelease name="All primitives" />
 
-- [**Breaking**] Improve RTL performance. You need to use [`DirectionProvider`](../utilities/direction-provider) if you were relying on `dir` attribute inheritance from document (or any element). <PRLink id={1119} />
 - Improve support for React 18 <PRLink id={1329} />
+- [**Breaking**] Improve RTL performance. You need to use [`DirectionProvider`](../utilities/direction-provider) if you were relying on `dir` attribute inheritance from document (or any element). <PRLink id={1119} />
 
-<PackageRelease name="Alert Dialog" version="1.0.0" />
+<PackageRelease name="Alert Dialog" version="1.0.0" major />
 
 - [**Breaking**] Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
 - Improve compatibility with JS animation libraries with `forceMount` on `AlertDialog.Portal` <PRLink id={1075} />
 - Fix regressions with page interactivity while/after closing dialog <PRLink id={1401} />
 
-<PackageRelease name="Context Menu" version="1.0.0" />
+<PackageRelease name="Context Menu" version="1.0.0" major />
 
 - [**Breaking**] Improve indirect nesting of context menus. Submenus must now be created using explicit parts. <PRLink id={1394} />
 - [**Breaking**] Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
@@ -36,13 +36,13 @@ We also move the [`Select`](../components/select), [`Toast`](../components/toast
 - Add `data-state` attribute to `Trigger` part <PRLink id={1455} />
 - Add `collisionBoundary`, `arrowPadding`, `sticky`, `hideWhenDetached` props on `Content` part <PRLink id={1531} />
 
-<PackageRelease name="Dialog" version="1.0.0" />
+<PackageRelease name="Dialog" version="1.0.0" major />
 
 - [**Breaking**] Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
 - Improve compatibility with JS animation libraries with `forceMount` on `Dialog.Portal` <PRLink id={1075} />
 - Fix regressions with page interactivity while/after closing dialog <PRLink id={1401} />
 
-<PackageRelease name="Dropdown Menu" version="1.0.0" />
+<PackageRelease name="Dropdown Menu" version="1.0.0" major />
 
 - [**Breaking**] Improve indirect nesting of dropdown menus. Submenus must now be created using explicit parts. <PRLink id={1394} />
 - [**Breaking**] Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
@@ -53,19 +53,19 @@ We also move the [`Select`](../components/select), [`Toast`](../components/toast
 - Prevent escape key from exiting fullscreen mode in Firefox & Safari <PRLink id={1423} />
 - Add `collisionBoundary`, `arrowPadding`, `sticky`, `hideWhenDetached` props on `Content` part <PRLink id={1531} />
 
-<PackageRelease name="Hover Card" version="1.0.0" />
+<PackageRelease name="Hover Card" version="1.0.0" major />
 
 - [**Breaking**] Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1426} />
 - [**Breaking**] Remove `offset` on `Arrow` part <PRLink id={1531} />
 - [**Breaking**] Rename `collisionTolerance` to `collisionPadding` on `Content` part and accepts a number or a padding object <PRLink id={1531} />
 - Add `collisionBoundary`, `arrowPadding`, `sticky`, `hideWhenDetached` props on `Content` part <PRLink id={1531} />
 
-<PackageRelease name="Navigation Menu" version="1.0.0" />
+<PackageRelease name="Navigation Menu" version="1.0.0" major />
 
 - Ensure menu closes after clicking `NavigationMenu.Link` <PRLink id={1347} />
 - Add `onSelect` prop to `NavigationMenu.Link` <PRLink id={1372} />
 
-<PackageRelease name="Popover" version="1.0.0" />
+<PackageRelease name="Popover" version="1.0.0" major />
 
 - [**Breaking**] Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
 - [**Breaking**] Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1425} />
@@ -73,19 +73,19 @@ We also move the [`Select`](../components/select), [`Toast`](../components/toast
 - [**Breaking**] Rename `collisionTolerance` to `collisionPadding` on `Content` part and accepts a number or a padding object <PRLink id={1531} />
 - Add `collisionBoundary`, `arrowPadding`, `sticky`, `hideWhenDetached` props on `Content` part <PRLink id={1531} />
 
-<PackageRelease name="Portal" version="1.0.0" />
+<PackageRelease name="Portal" version="1.0.0" major />
 
 - [**Breaking**] Note that `z-index` isn't managed anymore so you have full control of layering. The prop to provide a custom container evolves from `containerRef` (ref) to `container` (element). The `data-radix-portal` was removed because you can use `asChild` to control the element. <PRLink id={1463} />
 
-<PackageRelease name="RadioGroup" version="1.0.0" />
+<PackageRelease name="RadioGroup" version="1.0.0" major />
 
 - Add `aria-required` to root <PRLink id={1422} />
 
-<PackageRelease name="Scroll Area" version="1.0.0" />
+<PackageRelease name="Scroll Area" version="1.0.0" major />
 
 - `ScrollArea.Thumb` is now animatable <PRLink id={1392} />
 
-<PackageRelease name="Select" version="1.0.0" />
+<PackageRelease name="Select" version="1.0.0" major />
 
 - [**Breaking**] Renamed `data-state` values from `active|inactive` to `checked|unchecked` <PRLink id={1388} />
 - [**Breaking**] Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1459} />
@@ -97,22 +97,22 @@ We also move the [`Select`](../components/select), [`Toast`](../components/toast
 - Add support for placeholder via `placeholder` prop on `Select.Value` <PRLink id={1384} />
 - Resolve value mismatch with underlying native select <PRLink id={1421} />
 
-<PackageRelease name="Slot" version="1.0.0" />
+<PackageRelease name="Slot" version="1.0.0" major />
 
 - Fix issue with children ordering when using `Slottable` <PRLink id={1376} />
 
-<PackageRelease name="Tabs" version="1.0.0" />
+<PackageRelease name="Tabs" version="1.0.0" major />
 
 - Add support for lifecycle animation to `Tabs.Content` <PRLink id={1346} />
 
-<PackageRelease name="Toast" version="1.0.0" />
+<PackageRelease name="Toast" version="1.0.0" major />
 
 - [**Breaking**] The default toast order has changed, they now render top to bottom from oldest to newest <PRLink id={1469} />
 - Improve Typescript types when using `asChild` <PRLink id={1300} />
 - Fix issue with toast reordering when updating React's `key` prop <PRLink id={1283} />
 - Improve compatability with animation libraries <PRLink id={1468} />
 
-<PackageRelease name="Tooltip" version="1.0.0" />
+<PackageRelease name="Tooltip" version="1.0.0" major />
 
 - [**Breaking**] Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1427} />
 - [**Breaking**] By default `Tooltip.Content` will remain open when hovering (WCAG 2.1 Content on Hover compliance). `disableHoverableContent` can be supplied to `Tooltip.Provider` to restore previous behavior <PRLink id={1490} />
