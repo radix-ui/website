@@ -7,9 +7,126 @@ metaDescription: Radix Primitives releases and their changelogs.
 
 <Description>Radix Primitives releases and their changelogs.</Description>
 
+## July 21, 2022
+
+With this release, we start following semantic versioning strictly. All primitives are now versioned <Badge size="1" variant="yellow" css={{ fontFamily: '$mono' }}>1.0.0</Badge>.
+
+We also move the [`Select`](../components/select), [`Toast`](../components/toast) and [`NavigationMenu`](../components/navigation-menu) from beta to stable.
+
+<PackageRelease name="All primitives" />
+
+- Improve support for React 18 <PRLink id={1329} />
+- [**Breaking**] Improve RTL performance. You need to use [`DirectionProvider`](../utilities/direction-provider) if you were relying on `dir` attribute inheritance from document (or any element). <PRLink id={1119} />
+
+<PackageRelease name="Alert Dialog" version="1.0.0" major />
+
+- [**Breaking**] Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
+- Improve compatibility with JS animation libraries with `forceMount` on `AlertDialog.Portal` <PRLink id={1075} />
+- Fix regressions with page interactivity while/after closing dialog <PRLink id={1401} />
+
+<PackageRelease name="Context Menu" version="1.0.0" major />
+
+- [**Breaking**] Improve indirect nesting of context menus. Submenus must now be created using explicit parts. <PRLink id={1394} />
+- [**Breaking**] Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
+- [**Breaking**] Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1429} />
+- [**Breaking**] Remove `offset` on `Arrow` part <PRLink id={1531} />
+- [**Breaking**] Rename `collisionTolerance` to `collisionPadding` on `Content` part and accepts a number or a padding object <PRLink id={1531} />
+- Fix issue with native context menu appearing in React 18 <PRLink id={1378} />
+- Add `data-highlighted` attribute to support styling <PRLink id={1388} />
+- Add `data-state` attribute to `Trigger` part <PRLink id={1455} />
+- Add `collisionBoundary`, `arrowPadding`, `sticky`, `hideWhenDetached` props on `Content` part <PRLink id={1531} />
+
+<PackageRelease name="Dialog" version="1.0.0" major />
+
+- [**Breaking**] Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
+- Improve compatibility with JS animation libraries with `forceMount` on `Dialog.Portal` <PRLink id={1075} />
+- Fix regressions with page interactivity while/after closing dialog <PRLink id={1401} />
+
+<PackageRelease name="Dropdown Menu" version="1.0.0" major />
+
+- [**Breaking**] Improve indirect nesting of dropdown menus. Submenus must now be created using explicit parts. <PRLink id={1394} />
+- [**Breaking**] Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
+- [**Breaking**] Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1429} />
+- [**Breaking**] Remove `offset` on `Arrow` part <PRLink id={1531} />
+- [**Breaking**] Rename `collisionTolerance` to `collisionPadding` on `Content` part and accepts a number or a padding object <PRLink id={1531} />
+- Add `data-highlighted` attribute to support styling <PRLink id={1388} />
+- Prevent escape key from exiting fullscreen mode in Firefox & Safari <PRLink id={1423} />
+- Add `collisionBoundary`, `arrowPadding`, `sticky`, `hideWhenDetached` props on `Content` part <PRLink id={1531} />
+
+<PackageRelease name="Hover Card" version="1.0.0" major />
+
+- [**Breaking**] Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1426} />
+- [**Breaking**] Remove `offset` on `Arrow` part <PRLink id={1531} />
+- [**Breaking**] Rename `collisionTolerance` to `collisionPadding` on `Content` part and accepts a number or a padding object <PRLink id={1531} />
+- Add `collisionBoundary`, `arrowPadding`, `sticky`, `hideWhenDetached` props on `Content` part <PRLink id={1531} />
+
+<PackageRelease name="Navigation Menu" version="1.0.0" major />
+
+- Ensure menu closes after clicking `NavigationMenu.Link` <PRLink id={1347} />
+- Add `onSelect` prop to `NavigationMenu.Link` <PRLink id={1372} />
+
+<PackageRelease name="Popover" version="1.0.0" major />
+
+- [**Breaking**] Remove `allowPinchZoom` prop, now defaults to `true` <PRLink id={1514} />
+- [**Breaking**] Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1425} />
+- [**Breaking**] Remove `offset` on `Arrow` part <PRLink id={1531} />
+- [**Breaking**] Rename `collisionTolerance` to `collisionPadding` on `Content` part and accepts a number or a padding object <PRLink id={1531} />
+- Add `collisionBoundary`, `arrowPadding`, `sticky`, `hideWhenDetached` props on `Content` part <PRLink id={1531} />
+
+<PackageRelease name="Portal" version="1.0.0" major />
+
+- [**Breaking**] Note that `z-index` isn't managed anymore so you have full control of layering. The prop to provide a custom container evolves from `containerRef` (ref) to `container` (element). The `data-radix-portal` was removed because you can use `asChild` to control the element. <PRLink id={1463} />
+
+<PackageRelease name="RadioGroup" version="1.0.0" major />
+
+- Add `aria-required` to root <PRLink id={1422} />
+
+<PackageRelease name="Scroll Area" version="1.0.0" major />
+
+- `ScrollArea.Thumb` is now animatable <PRLink id={1392} />
+
+<PackageRelease name="Select" version="1.0.0" major />
+
+- [**Breaking**] Renamed `data-state` values from `active|inactive` to `checked|unchecked` <PRLink id={1388} />
+- [**Breaking**] Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1459} />
+- Fix position breaking when using `asChild` on `Select.Content` <PRLink id={1245} />
+- Improve trigger/content alignment when `Select.Content` has padding <PRLink id={1312} />
+- Fix trigger/content alignment when there are less than 5 items <PRLink id={1355} />
+- Support trigger/content alignment when no value is provided <PRLink id={1379} />
+- Add `data-highlighted` attribute to support styling <PRLink id={1388} />
+- Add support for placeholder via `placeholder` prop on `Select.Value` <PRLink id={1384} />
+- Resolve value mismatch with underlying native select <PRLink id={1421} />
+
+<PackageRelease name="Slot" version="1.0.0" major />
+
+- Fix issue with children ordering when using `Slottable` <PRLink id={1376} />
+
+<PackageRelease name="Tabs" version="1.0.0" major />
+
+- Add support for lifecycle animation to `Tabs.Content` <PRLink id={1346} />
+
+<PackageRelease name="Toast" version="1.0.0" major />
+
+- [**Breaking**] The default toast order has changed, they now render top to bottom from oldest to newest <PRLink id={1469} />
+- Improve Typescript types when using `asChild` <PRLink id={1300} />
+- Fix issue with toast reordering when updating React's `key` prop <PRLink id={1283} />
+- Improve compatability with animation libraries <PRLink id={1468} />
+
+<PackageRelease name="Tooltip" version="1.0.0" major />
+
+- [**Breaking**] Add new `Portal` part. To avoid regressions, use this part if you want portalling behavior. Note that `z-index` isn't managed anymore so you have full control of layering. <PRLink id={1427} />
+- [**Breaking**] By default `Tooltip.Content` will remain open when hovering (WCAG 2.1 Content on Hover compliance). `disableHoverableContent` can be supplied to `Tooltip.Provider` to restore previous behavior <PRLink id={1490} />
+- [**Breaking**] `side` on `Tooltip.Content` now defaults to `top` <PRLink id={1490} />
+- [**Breaking**] `Tooltip.Provider` is now required, you must wrap your app to avoid regressions. <PRLink id={1490} />
+- [**Breaking**] Remove `offset` on `Arrow` part <PRLink id={1531} />
+- [**Breaking**] Rename `collisionTolerance` to `collisionPadding` on `Content` part and accepts a number or a padding object <PRLink id={1531} />
+- Improve layering of tooltip with other primitives <PRLink id={1314} />
+- Fix tooltip closing when transforming/animation trigger <PRLink id={937} />
+- Add `collisionBoundary`, `arrowPadding`, `sticky`, `hideWhenDetached` props on `Content` part <PRLink id={1531} />
+
 ## February 28, 2022
 
-This release introduces 3 brand new primitives: [`Select`](../components/select), [`Toast`](../components/toast) and [`NavigationMenu`](../components/navigation-menu), whilst also shipping a ton of fixes and improvements.
+This release introduces 3 brand new primitives in beta: [`Select`](../components/select), [`Toast`](../components/toast) and [`NavigationMenu`](../components/navigation-menu), whilst also shipping a ton of fixes and improvements.
 
 <PackageRelease name="Accordion" version="0.1.6" />
 
@@ -45,7 +162,7 @@ This release introduces 3 brand new primitives: [`Select`](../components/select)
 - Prevent `DropdownMenu.TriggerItem` click from firing twice <PRLink id={1057} />
 - Improve idle performance <PRLink id={1040} />
 
-<PackageRelease name="Navigation Menu" version="0.1.2" />
+<PackageRelease name="Navigation Menu" version="0.1.2" beta />
 
 - New primitive <PRLink id={1172} />
 
@@ -53,7 +170,7 @@ This release introduces 3 brand new primitives: [`Select`](../components/select)
 
 - Prevent activation via enter key <PRLink id={1104} />
 
-<PackageRelease name="Select" version="0.1.1" />
+<PackageRelease name="Select" version="0.1.1" beta />
 
 - New primitive <PRLink id={1169} />
 
@@ -65,7 +182,7 @@ This release introduces 3 brand new primitives: [`Select`](../components/select)
 
 - Prevent accidental focus activation via right-click <PRLink id={1114} />
 
-<PackageRelease name="Toast" version="0.1.1" />
+<PackageRelease name="Toast" version="0.1.1" beta />
 
 - New primitive <PRLink id={1165} />
 
@@ -245,18 +362,18 @@ This release focuses on React 18 support and introduces a number breaking change
 
 <PackageRelease name="Alert Dialog" version="0.0.20" major />
 
-- [**Breaking**] Remove `AlertDialog.Content` `onPointerDownOutside` prop <PRLink id={700} />
+- [**Breaking**] Remove `AlertDialog.Content` `onPointerDownOutside` prop <PRLink id={700} />
 - Prevent outside pointer events triggering prematurely on touch devices <PRLink id={767} />
 
 <PackageRelease name="Context Menu" version="0.0.24" major />
 
-- Add modality support via `modal` prop <PRLink id={700} />
-- [**Breaking**] Remove `ContextMenu.Content` `disableOutsidePointerEvents` prop <PRLink id={700} />
+- Add modality support via `modal` prop <PRLink id={700} />
+- [**Breaking**] Remove `ContextMenu.Content` `disableOutsidePointerEvents` prop <PRLink id={700} />
 - Prevent outside pointer events triggering prematurely on touch devices <PRLink id={767} />
 
 <PackageRelease name="Dialog" version="0.0.20" />
 
-- Add modality support via `modal` prop <PRLink id={700} />
+- Add modality support via `modal` prop <PRLink id={700} />
 - Improve animation rendering in React 18 <PRLink id={776} />
 - Ensure focus is restored to trigger on close when using the `autofocus` attribute on a child element <PRLink id={739} />
 - Prevent outside pointer events triggering prematurely on touch devices <PRLink id={767} />
@@ -264,17 +381,17 @@ This release focuses on React 18 support and introduces a number breaking change
 
 <PackageRelease name="Dropdown Menu" version="0.0.23" major />
 
-- Add modality support via `modal` prop <PRLink id={700} />
-- [**Breaking**] Remove `DropdownMenu.Content` `disableOutsideScroll` prop <PRLink id={700} />
-- [**Breaking**] Remove `DropdownMenu.Content` `disableOutsidePointerEvents` prop <PRLink id={700} />
+- Add modality support via `modal` prop <PRLink id={700} />
+- [**Breaking**] Remove `DropdownMenu.Content` `disableOutsideScroll` prop <PRLink id={700} />
+- [**Breaking**] Remove `DropdownMenu.Content` `disableOutsidePointerEvents` prop <PRLink id={700} />
 - Prevent outside pointer events triggering prematurely on touch devices <PRLink id={767} />
 
 <PackageRelease name="Popover" version="0.0.20" major />
 
-- Add modality support via `modal` prop <PRLink id={700} />
-- [**Breaking**] Remove `Popover.Content` `disableOutsideScroll` prop <PRLink id={700} />
-- [**Breaking**] Remove `Popover.Content` `disableOutsidePointerEvents` prop <PRLink id={700} />
-- [**Breaking**] Remove `Popover.Content` `trapFocus` prop <PRLink id={700} />
+- Add modality support via `modal` prop <PRLink id={700} />
+- [**Breaking**] Remove `Popover.Content` `disableOutsideScroll` prop <PRLink id={700} />
+- [**Breaking**] Remove `Popover.Content` `disableOutsidePointerEvents` prop <PRLink id={700} />
+- [**Breaking**] Remove `Popover.Content` `trapFocus` prop <PRLink id={700} />
 - Improve animation rendering in React 18 <PRLink id={776} />
 - Ensure focus is restored to trigger on close when using the `autofocus` attribute on a child element <PRLink id={739} />
 - Prevent outside pointer events triggering prematurely on touch devices <PRLink id={767} />
@@ -318,7 +435,7 @@ This release focuses on React 18 support and introduces a number breaking change
 <PackageRelease name="Toggle Group" version="0.0.10" />
 
 - Ensure only one click is needed to toggle a single controlled toggle group <PRLink id={722} />
-- Ensure focus behaviour is consistent on Safari <PRLink id={727} />
+- Ensure focus behavior is consistent on Safari <PRLink id={727} />
 
 <Separator css={{ mt: '$7' }} />
 
@@ -332,8 +449,8 @@ This release focuses on React 18 support and introduces a number breaking change
 
 - [**Breaking**] Rename `Accordion.Button` to `Accordion.Trigger` <PRLink id={651} />
 - [**Breaking**] Rename `Accordion.Panel` to `Accordion.Content` <PRLink id={651} />
-- [**Breaking**] Rename custom property accordingly (`--radix-accordion-content-height`) <PRLink id={651} />
-- [**Breaking**] `type=“single”` `Accordion` now has a new `collapsible` prop which is `false` by default. This means that the default behaviour has now changed. By default a user cannot close all items. <PRLink id={651} />
+- [**Breaking**] Rename custom property accordingly (`--radix-accordion-content-height`) <PRLink id={651} />
+- [**Breaking**] `type=“single”` `Accordion` now has a new `collapsible` prop which is `false` by default. This means that the default behavior has now changed. By default a user cannot close all items. <PRLink id={651} />
 
 <PackageRelease name="Alert Dialog" version="0.0.18" major />
 

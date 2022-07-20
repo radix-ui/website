@@ -32,7 +32,6 @@ const StyledContent = styled(PopoverPrimitive.Content, {
   '@media (prefers-reduced-motion: no-preference)': {
     animationDuration: '400ms',
     animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
-    animationFillMode: 'forwards',
     willChange: 'transform, opacity',
     '&[data-state="open"]': {
       '&[data-side="top"]': { animationName: slideDownAndFade },
@@ -49,6 +48,17 @@ const StyledContent = styled(PopoverPrimitive.Content, {
 const StyledArrow = styled(PopoverPrimitive.Arrow, {
   fill: 'white',
 });
+
+function Content({ children, ...props }) {
+  return (
+    <PopoverPrimitive.Portal>
+      <StyledContent {...props}>
+        {children}
+        <StyledArrow />
+      </StyledContent>
+    </PopoverPrimitive.Portal>
+  );
+}
 
 const StyledClose = styled(PopoverPrimitive.Close, {
   all: 'unset',
@@ -71,8 +81,7 @@ const StyledClose = styled(PopoverPrimitive.Close, {
 // Exports
 export const Popover = PopoverPrimitive.Root;
 export const PopoverTrigger = PopoverPrimitive.Trigger;
-export const PopoverContent = StyledContent;
-export const PopoverArrow = StyledArrow;
+export const PopoverContent = Content;
 export const PopoverClose = StyledClose;
 
 // Your app...
@@ -168,7 +177,6 @@ const PopoverDemo = () => (
           <Input id="maxHeight" defaultValue="none" />
         </Fieldset>
       </Flex>
-      <PopoverArrow />
       <PopoverClose aria-label="Close">
         <Cross2Icon />
       </PopoverClose>

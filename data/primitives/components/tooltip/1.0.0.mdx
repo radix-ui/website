@@ -12,6 +12,14 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#tooltip
   receives keyboard focus or the mouse hovers over it.
 </Description>
 
+<HeroContainer>
+  <TooltipDemo />
+</HeroContainer>
+
+```jsx hero template=Tooltip
+
+```
+
 <Highlights
   features={[
     'Provider to control display delay globally.',
@@ -40,9 +48,11 @@ export default () => (
   <Tooltip.Provider>
     <Tooltip.Root>
       <Tooltip.Trigger />
-      <Tooltip.Content>
-        <Tooltip.Arrow />
-      </Tooltip.Content>
+      <Tooltip.Portal>
+        <Tooltip.Content>
+          <Tooltip.Arrow />
+        </Tooltip.Content>
+      </Tooltip.Portal>
     </Tooltip.Root>
   </Tooltip.Provider>
 );
@@ -69,6 +79,16 @@ Wraps your app to provide global functionality to your tooltips.
       default: 300,
       description:
         'How much time a user has to enter another trigger without incurring a delay again.',
+    },
+    {
+      name: 'disableHoverableContent',
+      type: 'boolean',
+      description: (
+        <span>
+          Prevents <Code>Tooltip.Content</Code> from remaining open when
+          hovering. Disabling this has accessibility consequences.
+        </span>
+      ),
     },
   ]}
 />
@@ -116,6 +136,18 @@ Contains all the parts of a tooltip.
       description:
         'Override the duration given to the `Provider` to customise the open delay for a specific tooltip.',
     },
+    {
+      name: 'disableHoverableContent',
+      type: 'boolean',
+      default: false,
+      description: (
+        <span>
+          Prevents <Code>Tooltip.Content</Code> from remaining open when
+          hovering. Disabling this has accessibility consequences. Inherits from{' '}
+          <Code>Tooltip.Provider</Code>.
+        </span>
+      ),
+    },
   ]}
 />
 
@@ -132,6 +164,41 @@ The button that toggles the tooltip. By default, the `Tooltip.Content` will posi
       default: 'false',
       description:
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['closed', 'delayed-open', 'instant-open'],
+    },
+  ]}
+/>
+
+### Portal
+
+When used, portals the content part into the `body`.
+
+<PropsTable
+  data={[
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description: (
+        <span>
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries. If used on this
+          part, it will be inherited by <Code>Tooltip.Content</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'container',
+      type: 'HTMLElement',
+      default: 'document.body',
+      description: 'Specify a container element to portal the content into.',
     },
   ]}
 />
@@ -163,12 +230,36 @@ The component that pops out when the tooltip is open.
       ),
     },
     {
-      name: 'portalled',
-      type: 'boolean',
-      default: 'true',
+      name: 'onEscapeKeyDown',
+      type: '(event: KeyboardEvent) => void',
+      typeSimple: 'function',
       description: (
         <span>
-          Whether to render in a <Code>Portal</Code> when open.
+          Event handler called when the escape key is down. It can be prevented
+          by calling <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onPointerDownOutside',
+      type: '(event: PointerDownOutsideEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when a pointer event occurs outside the bounds of
+          the component. It can be prevented by calling{' '}
+          <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'forceMount',
+      type: 'boolean',
+      description: (
+        <span>
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries. It inherits from{' '}
+          <Code>Tooltip.Portal</Code>.
         </span>
       ),
     },
@@ -176,7 +267,7 @@ The component that pops out when the tooltip is open.
       name: 'side',
       type: '"top" | "right" | "bottom" | "left"',
       typeSimple: 'enum',
-      default: '"bottom"',
+      default: '"top"',
       description: (
         <span>
           The preferred side of the trigger to render against when open. Will be
@@ -225,19 +316,102 @@ The component that pops out when the tooltip is open.
       description: (
         <span>
           When <Code>true</Code>, overrides the <Code>side</Code> and
-          <Code>align</Code> preferences to prevent collisions with window edges.
+          <Code>align</Code> preferences to prevent collisions with boundary edges.
         </span>
       ),
     },
     {
-      name: 'collisionTolerance',
+      name: 'collisionBoundary',
+      type: 'Element | null | Array<Element | null>',
+      typeSimple: 'Boundary',
+      default: '[]',
+      description: (
+        <span>
+          The element used as the collision boundary. By default this is the
+          viewport, though you can provide additional element(s) to be included
+          in this check.
+        </span>
+      ),
+    },
+    {
+      name: 'collisionPadding',
+      type: 'number | Partial<Record<Side, number>>',
+      typeSimple: 'number | Padding',
+      default: '0',
+      description: (
+        <span>
+          The distance in pixels from the boundary edges where collision
+          detection should occur. Accepts a number (same for all sides), or a
+          partial padding object, for example: <Code>{`{ top: 20, left: 20 }`}</Code>
+          .
+        </span>
+      ),
+    },
+    {
+      name: 'arrowPadding',
       type: 'number',
       default: '0',
       description: (
         <span>
-          The distance in pixels from window edges where collision detection
-          should occur.
+          The padding between the arrow and the edges of the content. If your
+          content has <Code>border-radius</Code>, this will prevent it from
+          overflowing the corners.
         </span>
+      ),
+    },
+    {
+      name: 'sticky',
+      type: '"partial" | "always"',
+      typeSimple: 'enum',
+      default: '"partial"',
+      description: (
+        <span>
+          The sticky behavior on the align axis. <Code>"partial"</Code> will
+          keep the content in the boundary as long as the trigger is at least
+          partially in the boundary whilst <Code>"always"</Code> will keep the
+          content in the boundary regardless.
+        </span>
+      ),
+    },
+    {
+      name: 'hideWhenDetached',
+      type: 'boolean',
+      default: 'false',
+      description: (
+        <span>
+          Whether to hide the content when the trigger becomes fully occluded.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['closed', 'delayed-open', 'instant-open'],
+    },
+    {
+      attribute: '[data-side]',
+      values: ['left', 'right', 'bottom', 'top'],
+    },
+    {
+      attribute: '[data-align]',
+      values: ['start', 'end', 'center'],
+    },
+  ]}
+/>
+
+<CssVariablesTable
+  data={[
+    {
+      cssVariable: '--radix-tooltip-content-transform-origin',
+      description: (
+        <>
+          The <Code>transform-origin</Code> computed from the content and arrow
+          positions/offsets
+        </>
       ),
     },
   ]}
@@ -269,17 +443,6 @@ An optional arrow element to render alongside the tooltip. This can be used to h
       default: 5,
       description: <span>The height of the arrow in pixels.</span>,
     },
-    {
-      name: 'offset',
-      type: 'number',
-      default: 0,
-      description: (
-        <span>
-          The distance in pixels to render from the <Code>Tooltip.Content</Code>{' '}
-          edge.
-        </span>
-      ),
-    },
   ]}
 />
 
@@ -287,7 +450,7 @@ An optional arrow element to render alongside the tooltip. This can be used to h
 
 ### Configure globally
 
-Use the `Provider` to control `delayDuration` and `skipDelayDuration` globally. Without the provider, tooltips will always delay before opening when moving from one tooltip trigger to another (e.g. `skipDelayDuration={0}`).
+Use the `Provider` to control `delayDuration` and `skipDelayDuration` globally.
 
 ```jsx line=4
 import * as Tooltip from '@radix-ui/react-tooltip';
@@ -360,7 +523,7 @@ const scaleIn = keyframes({
 
 const TooltipContent = styled(Tooltip.Content, {
   transformOrigin: 'var(--radix-tooltip-content-transform-origin)',
-  animation: `${scaleIn} 0.5s ease-out forwards`,
+  animation: `${scaleIn} 0.5s ease-out`,
 });
 
 export default () => (
@@ -392,7 +555,6 @@ const slideUp = keyframes({
 const TooltipContent = styled(Tooltip.Content, {
   animationDuration: '0.6s',
   animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
-  animationFillMode: 'forwards',
   '&[data-side="top"]': { animationName: slideUp },
   '&[data-side="bottom"]': { animationName: slideDown },
 });
@@ -478,7 +640,7 @@ export function Tooltip({
       </TooltipPrimitive.Trigger>
       <TooltipPrimitive.Content side="top" align="center" {...props}>
         {content}
-        <TooltipPrimitive.Arrow offset={5} width={11} height={5} />
+        <TooltipPrimitive.Arrow width={11} height={5} />
       </TooltipPrimitive.Content>
     </TooltipPrimitive.Root>
   );

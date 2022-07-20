@@ -32,7 +32,6 @@ const StyledContent = styled(HoverCardPrimitive.Content, {
   '@media (prefers-reduced-motion: no-preference)': {
     animationDuration: '400ms',
     animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
-    animationFillMode: 'forwards',
     willChange: 'transform, opacity',
     '&[data-state="open"]': {
       '&[data-side="top"]': { animationName: slideDownAndFade },
@@ -47,11 +46,21 @@ const StyledArrow = styled(HoverCardPrimitive.Arrow, {
   fill: 'white',
 });
 
+function Content({ children, ...props }) {
+  return (
+    <HoverCardPrimitive.Portal>
+      <StyledContent {...props}>
+        {children}
+        <StyledArrow />
+      </StyledContent>
+    </HoverCardPrimitive.Portal>
+  );
+}
+
 // Exports
 export const HoverCard = HoverCardPrimitive.Root;
 export const HoverCardTrigger = HoverCardPrimitive.Trigger;
-export const HoverCardContent = StyledContent;
-export const HoverCardArrow = StyledArrow;
+export const HoverCardContent = Content;
 
 // Your app...
 const Flex = styled('div', { display: 'flex' });
@@ -125,7 +134,6 @@ const HoverCardDemo = () => (
           </Flex>
         </Flex>
       </Flex>
-      <HoverCardArrow />
     </HoverCardContent>
   </HoverCard>
 );

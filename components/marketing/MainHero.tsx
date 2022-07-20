@@ -676,7 +676,11 @@ export const MainHero = () => {
               left: '15px',
             }}
           >
-            <CarouselPrevious aria-label="Show previous demo" tabIndex={-1} as={CarouselArrowButton}>
+            <CarouselPrevious
+              aria-label="Show previous demo"
+              tabIndex={-1}
+              as={CarouselArrowButton}
+            >
               <ArrowLeftIcon />
             </CarouselPrevious>
           </Box>

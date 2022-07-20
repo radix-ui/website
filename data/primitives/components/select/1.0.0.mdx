@@ -11,12 +11,21 @@ aria: https://www.w3.org/TR/wai-aria-practices-1.2/#Listbox
   Displays a list of options for the user to pick from—triggered by a button.
 </Description>
 
+<HeroContainer>
+  <SelectDemo />
+</HeroContainer>
+
+```jsx hero template=Select
+
+```
+
 <Highlights
   features={[
     'Can be controlled or uncontrolled.',
     'Supports items, labels, groups of items.',
     'Focus is fully managed.',
     'Full keyboard navigation.',
+    'Supports custom placeholder.',
     'Typeahead support.',
     'Supports Right to Left direction.',
   ]}
@@ -44,26 +53,28 @@ export default () => (
       <Select.Icon />
     </Select.Trigger>
 
-    <Select.Content>
-      <Select.ScrollUpButton />
-      <Select.Viewport>
-        <Select.Item>
-          <Select.ItemText />
-          <Select.ItemIndicator />
-        </Select.Item>
-
-        <Select.Group>
-          <Select.Label />
+    <Select.Portal>
+      <Select.Content>
+        <Select.ScrollUpButton />
+        <Select.Viewport>
           <Select.Item>
             <Select.ItemText />
             <Select.ItemIndicator />
           </Select.Item>
-        </Select.Group>
 
-        <Select.Separator />
-      </Select.Viewport>
-      <Select.ScrollDownButton />
-    </Select.Content>
+          <Select.Group>
+            <Select.Label />
+            <Select.Item>
+              <Select.ItemText />
+              <Select.ItemIndicator />
+            </Select.Item>
+          </Select.Group>
+
+          <Select.Separator />
+        </Select.Viewport>
+        <Select.ScrollDownButton />
+      </Select.Content>
+    </Select.Portal>
   </Select.Root>
 );
 ```
@@ -132,9 +143,13 @@ Contains all the parts of a select.
       required: false,
       type: '"ltr" | "rtl"',
       typeSimple: 'enum',
-      default: '"ltr"',
-      description:
-        'The reading direction of the select when applicable. If omitted, assumes LTR (left-to-right) reading mode.',
+      description: (
+        <span>
+          The reading direction of the select when applicable. If omitted,
+          inherits globally from <Code>DirectionProvider</Code> or assumes LTR
+          (left-to-right) reading mode.
+        </span>
+      ),
     },
     {
       name: 'name',
@@ -162,9 +177,26 @@ The button that toggles the select. The `Select.Content` will position itself by
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['open', 'closed'],
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
+    },
+    {
+      attribute: '[data-placeholder]',
+      values: 'Present when has placeholder',
+    },
+  ]}
+/>
+
 ### Value
 
-The part that reflects the selected value. By default the selected item's text will be rendered. if you require more control, you can instead control the select and pass your own `children`. It should not be styled to ensure correct positioning.
+The part that reflects the selected value. By default the selected item's text will be rendered. if you require more control, you can instead control the select and pass your own `children`. It should not be styled to ensure correct positioning. An optional `placeholder` prop is also available for when the select has no value.
 
 <PropsTable
   data={[
@@ -175,6 +207,17 @@ The part that reflects the selected value. By default the selected item's text w
       default: 'false',
       description:
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'placeholder',
+      required: false,
+      type: 'ReactNode',
+      description: (
+        <>
+          The content that will be rendered inside the <Code>Select.Value</Code>{' '}
+          when no <Code>value</Code> or <Code>defaultValue</Code> is set.
+        </>
+      ),
     },
   ]}
 />
@@ -192,6 +235,21 @@ A small icon often displayed next to the value as a visual affordance for the fa
       default: 'false',
       description:
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Portal
+
+When used, portals the content part into the `body`.
+
+<PropsTable
+  data={[
+    {
+      name: 'container',
+      type: 'HTMLElement',
+      default: 'document.body',
+      description: 'Specify a container element to portal the content into.',
     },
   ]}
 />
@@ -243,6 +301,15 @@ The component that pops out when the select is open.
           <Code>event.preventDefault</Code>.
         </span>
       ),
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['open', 'closed'],
     },
   ]}
 />
@@ -309,6 +376,23 @@ The component that contains the select items.
           complex, or you have non-textual content inside.
         </span>
       ),
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['checked', 'unchecked'],
+    },
+    {
+      attribute: '[data-highlighted]',
+      values: 'Present when highlighted',
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
     },
   ]}
 />
@@ -438,7 +522,7 @@ Used to visually separate items in the select.
 
 You can add special styles to disabled items via the `data-disabled` attribute.
 
-```jsx line=4-6,13
+```jsx line=4-6,14
 import { styled } from '@stitches/react';
 import * as Select from '@radix-ui/react-select';
 
@@ -449,13 +533,40 @@ const StyledItem = styled(Select.Item, {
 export default () => (
   <Select.Root>
     <Select.Trigger>…</Select.Trigger>
-    <Select.Content>
-      <Select.Viewport>
-        <StyledItem __disabled__>…</StyledItem>
-        <StyledItem>…</StyledItem>
-        <StyledItem>…</StyledItem>
-      </Select.Viewport>
-    </Select.Content>
+    <Select.Portal>
+      <Select.Content>
+        <Select.Viewport>
+          <StyledItem __disabled__>…</StyledItem>
+          <StyledItem>…</StyledItem>
+          <StyledItem>…</StyledItem>
+        </Select.Viewport>
+      </Select.Content>
+    </Select.Portal>
+  </Select.Root>
+);
+```
+
+### With a placeholder
+
+You can use the `placeholder` prop on `Value` for when the select has no value. There's also a `data-placeholder` attribute on `Trigger` to help with styling.
+
+```jsx line=4-6,11
+import { styled } from '@stitches/react';
+import * as Select from '@radix-ui/react-select';
+
+const StyledTrigger = styled(Select.Trigger, {
+  '&[data-placeholder]': { color: 'gainsboro' },
+});
+
+export default () => (
+  <Select.Root>
+    <SelectTrigger>
+      <Select.Value __placeholder__="Pick an option" />
+      <Select.Icon />
+    </SelectTrigger>
+    <Select.Portal>
+      <Select.Content>…</Select.Content>
+    </Select.Portal>
   </Select.Root>
 );
 ```
@@ -464,19 +575,21 @@ export default () => (
 
 Use the `Separator` part to add a separator between items.
 
-```jsx line=8
+```jsx line=9
 <Select.Root>
   <Select.Trigger>…</Select.Trigger>
-  <Select.Content>
-    <Select.Viewport>
-      <Select.Item>…</Select.Item>
-      <Select.Item>…</Select.Item>
-      <Select.Item>…</Select.Item>
-      <Select.Separator />
-      <Select.Item>…</Select.Item>
-      <Select.Item>…</Select.Item>
-    </Select.Viewport>
-  </Select.Content>
+  <Select.Portal>
+    <Select.Content>
+      <Select.Viewport>
+        <Select.Item>…</Select.Item>
+        <Select.Item>…</Select.Item>
+        <Select.Item>…</Select.Item>
+        <Select.Separator />
+        <Select.Item>…</Select.Item>
+        <Select.Item>…</Select.Item>
+      </Select.Viewport>
+    </Select.Content>
+  </Select.Portal>
 </Select.Root>
 ```
 
@@ -484,19 +597,21 @@ Use the `Separator` part to add a separator between items.
 
 Use the `Group` and `Label` parts to group items in a section.
 
-```jsx line=5-6,10
+```jsx line=6-7,11
 <Select.Root>
   <Select.Trigger>…</Select.Trigger>
-  <Select.Content>
-    <Select.Viewport>
-      <Select.Group>
-        <Select.Label>Label</Select.Label>
-        <Select.Item>…</Select.Item>
-        <Select.Item>…</Select.Item>
-        <Select.Item>…</Select.Item>
-      </Select.Group>
-    </Select.Viewport>
-  </Select.Content>
+  <Select.Portal>
+    <Select.Content>
+      <Select.Viewport>
+        <Select.Group>
+          <Select.Label>Label</Select.Label>
+          <Select.Item>…</Select.Item>
+          <Select.Item>…</Select.Item>
+          <Select.Item>…</Select.Item>
+        </Select.Group>
+      </Select.Viewport>
+    </Select.Content>
+  </Select.Portal>
 </Select.Root>
 ```
 
@@ -504,7 +619,7 @@ Use the `Group` and `Label` parts to group items in a section.
 
 You can use custom content in your items.
 
-```jsx line=4-7,16
+```jsx line=4-7,17
 import { styled } from '@stitches/react';
 import * as Select from '@radix-ui/react-select';
 
@@ -516,19 +631,21 @@ const Image = styled('img', {
 export default () => (
   <Select.Root>
     <Select.Trigger>…</Select.Trigger>
-    <Select.Content>
-      <Select.Viewport>
-        <Select.Item>
-          <Select.ItemText>
-            <Image src="…" />
-            Adolfo Hess
-          </Select.ItemText>
-          <Select.ItemIndicator>…</Select.ItemIndicator>
-        </Select.Item>
-        <Select.Item>…</Select.Item>
-        <Select.Item>…</Select.Item>
-      </Select.Viewport>
-    </Select.Content>
+    <Select.Portal>
+      <Select.Content>
+        <Select.Viewport>
+          <Select.Item>
+            <Select.ItemText>
+              <Image src="…" />
+              Adolfo Hess
+            </Select.ItemText>
+            <Select.ItemIndicator>…</Select.ItemIndicator>
+          </Select.Item>
+          <Select.Item>…</Select.Item>
+          <Select.Item>…</Select.Item>
+        </Select.Viewport>
+      </Select.Content>
+    </Select.Portal>
   </Select.Root>
 );
 ```
@@ -552,6 +669,7 @@ export default () => {
         </Select.Value>
         <Select.Icon />
       </Select.Trigger>
+      <Select.Portal>
       <Select.Content>
         <Select.Viewport>
           <Select.Item value="france">
@@ -568,6 +686,7 @@ export default () => {
           </Select.Item>
         </Select.Viewport>
       </Select.Content>
+      </Select.Portal>
     </Select.Root>
   );
 };
@@ -577,7 +696,7 @@ export default () => {
 
 The native scrollbar is hidden by default as we recommend using the `ScrollUpButton` and `ScrollDownButton` parts for the best UX. If you do not want to use these parts, compose your select with our [Scroll Area](scroll-area) primitive.
 
-```jsx line=5-8,10-13,15-18,20-23,29,31,35,37-40
+```jsx line=5-8,10-13,15-18,20-23,30,32,36,38-41
 import { styled } from '@stitches/react';
 import * as Select from '@radix-ui/react-select';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
@@ -605,20 +724,22 @@ const ScrollAreaThumb = styled(ScrollAreaPrimitive.Thumb, {
 export default () => (
   <Select.Root>
     <Select.Trigger>…</Select.Trigger>
-    <Select.Content>
-      <ScrollArea type="auto">
-        <Select.Viewport __asChild__>
-          <ScrollAreaViewport>
-            <StyledItem>…</StyledItem>
-            <StyledItem>…</StyledItem>
-            <StyledItem>…</StyledItem>
-          </ScrollAreaViewport>
-        </Select.Viewport>
-        <ScrollAreaScrollbar orientation="vertical">
-          <ScrollAreaThumb />
-        </ScrollAreaScrollbar>
-      </ScrollArea>
-    </Select.Content>
+    <Select.Portal>
+      <Select.Content>
+        <ScrollArea type="auto">
+          <Select.Viewport __asChild__>
+            <ScrollAreaViewport>
+              <StyledItem>…</StyledItem>
+              <StyledItem>…</StyledItem>
+              <StyledItem>…</StyledItem>
+            </ScrollAreaViewport>
+          </Select.Viewport>
+          <ScrollAreaScrollbar orientation="vertical">
+            <ScrollAreaThumb />
+          </ScrollAreaScrollbar>
+        </ScrollArea>
+      </Select.Content>
+    </Select.Portal>
   </Select.Root>
 );
 ```
@@ -705,7 +826,10 @@ export default () => (
 
     <Label htmlFor="country">Country</Label>
     <Select.Root>
-      <Select.Trigger __id__="country">…</Select.Trigger>…
+      <Select.Trigger __id__="country">…</Select.Trigger>
+      <Select.Portal>
+        <Select.Content>…</Select.Content>
+      </Select.Portal>
     </Select.Root>
   </>
 );
@@ -755,15 +879,17 @@ export const Select = React.forwardRef(
             <ChevronDownIcon />
           </SelectPrimitive.Icon>
         </SelectPrimitive.Trigger>
-        <SelectPrimitive.Content>
-          <SelectPrimitive.ScrollUpButton>
-            <ChevronUpIcon />
-          </SelectPrimitive.ScrollUpButton>
-          <SelectPrimitive.Viewport>{children}</SelectPrimitive.Viewport>
-          <SelectPrimitive.ScrollDownButton>
-            <ChevronDownIcon />
-          </SelectPrimitive.ScrollDownButton>
-        </SelectPrimitive.Content>
+        <SelectPrimitive.Portal>
+          <SelectPrimitive.Content>
+            <SelectPrimitive.ScrollUpButton>
+              <ChevronUpIcon />
+            </SelectPrimitive.ScrollUpButton>
+            <SelectPrimitive.Viewport>{children}</SelectPrimitive.Viewport>
+            <SelectPrimitive.ScrollDownButton>
+              <ChevronDownIcon />
+            </SelectPrimitive.ScrollDownButton>
+          </SelectPrimitive.Content>
+        </SelectPrimitive.Portal>
       </SelectPrimitive.Root>
     );
   }

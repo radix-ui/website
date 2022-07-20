@@ -9,6 +9,14 @@ aria: https://www.w3.org/TR/wai-aria/#navigation
 
 <Description>A collection of links for navigating websites.</Description>
 
+<HeroContainer>
+  <NavigationMenuDemo />
+</HeroContainer>
+
+```jsx hero template=NavigationMenu
+
+```
+
 <Highlights
   features={[
     'Can be controlled or uncontrolled.',
@@ -105,9 +113,13 @@ Contains all the parts of a navigation menu.
       required: false,
       type: '"ltr" | "rtl"',
       typeSimple: 'enum',
-      default: '"ltr"',
-      description:
-        'The reading direction of the menu when applicable. If omitted, assumes LTR (left-to-right) reading mode.',
+      description: (
+        <span>
+          The reading direction of the menu when applicable. If omitted,
+          inherits globally from <Code>DirectionProvider</Code> or assumes LTR
+          (left-to-right) reading mode.
+        </span>
+      ),
     },
     {
       name: 'orientation',
@@ -116,6 +128,15 @@ Contains all the parts of a navigation menu.
       typeSimple: 'enum',
       default: '"horizontal"',
       description: 'The orientation of the menu.',
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
     },
   ]}
 />
@@ -162,6 +183,15 @@ Signifies a submenu. Use it in place of the root part when nested to create a su
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
+    },
+  ]}
+/>
+
 ### List
 
 Contains the top level menu items.
@@ -175,6 +205,15 @@ Contains the top level menu items.
       default: 'false',
       description:
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
     },
   ]}
 />
@@ -221,6 +260,19 @@ The button that toggles the content.
       default: 'false',
       description:
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['open', 'closed'],
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
     },
   ]}
 />
@@ -312,6 +364,23 @@ Contains the content associated with each trigger.
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['open', 'closed'],
+    },
+    {
+      attribute: '[data-motion]',
+      values: ['to-start', 'to-end', 'from-start', 'from-end'],
+    },
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
+    },
+  ]}
+/>
+
 ### Link
 
 A navigational link.
@@ -332,6 +401,28 @@ A navigational link.
       type: 'boolean',
       default: 'false',
       description: 'Used to identify the link as the currently active page.',
+    },
+    {
+      name: 'onSelect',
+      type: '(event: Event) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when the user selects a link (via mouse or
+          keyboard). Calling <Code>event.preventDefault</Code> in this handler
+          will prevent the navigation menu from closing when selecting that
+          link.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-active]',
+      values: 'Present when active',
     },
   ]}
 />
@@ -363,6 +454,19 @@ An optional indicator element that renders below the list, is used to highlight 
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['visible', 'hidden'],
+    },
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
+    },
+  ]}
+/>
+
 ### Viewport
 
 An optional viewport element that is used to render active content outside of the list.
@@ -386,6 +490,34 @@ An optional viewport element that is used to render active content outside of th
           controlling animation with React animation libraries.
         </span>
       ),
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['visible', 'hidden'],
+    },
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
+    },
+  ]}
+/>
+
+<CssVariablesTable
+  data={[
+    {
+      cssVariable: '--radix-navigation-menu-viewport-width',
+      description:
+        'The width of the viewport when visible/hidden, computed from the active content',
+    },
+    {
+      cssVariable: '--radix-navigation-menu-viewport-height',
+      description:
+        'The height of the viewport when visible/hidden, computed from the active content',
     },
   ]}
 />
@@ -511,36 +643,30 @@ sure to assign and set a `defaultValue`.
 </NavigationMenu.Root>
 ```
 
-### With router links
+### With client side routing
 
-If you need to use a `Link` provided by your routing package then we recommend composing with `NavigationMenu.Link` via a custom component.
-This will ensure accessibility and consistent keyboard control is maintained. Here's an example using Stitches and React Router:
+If you need to use the `Link` component provided by your routing package then we recommend composing with `NavigationMenu.Link` via a custom component.
+This will ensure accessibility and consistent keyboard control is maintained. Here's an example using Stitches and Next.js:
 
-```jsx line=14-26,32,35
-import {
-  useMatch,
-  useResolvedPath,
-  Link as RouterLink,
-} from 'react-router-dom';
+```jsx line=11-20,26,29
 import { styled } from '@stitches/react';
+import { useRouter } from 'next/router'
+import Link as NextLink from 'next/link';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 
-const StyledLink = styled(NavigationMenu.Link, {
+const StyledNavigationMenuLink = styled(NavigationMenu.Link, {
   textDecoration: 'none',
   '&[data-active]': { textDecoration: 'underline' },
 });
 
-const CustomLink = ({ children, to, ...props }) => {
-  const resolved = useResolvedPath(to);
-  const match = useMatch({ path: resolved.pathname, end: true });
-  const isActive = Boolean(match);
+const Link = ({ href, ...props }) => {
+  const router = useRouter();
+  const isActive = router.asPath === href;
 
   return (
-    <StyledLink active={isActive} asChild>
-      <RouterLink to={to} {...props}>
-        {children}
-      </RouterLink>
-    </StyledLink>
+    <NextLink href={href} passHref>
+      <StyledNavigationMenuLink active={isActive} {...props} />
+    </NextLink>
   );
 };
 
@@ -548,10 +674,10 @@ export default () => (
   <NavigationMenu.Root>
     <NavigationMenu.List>
       <NavigationMenu.Item>
-        <CustomLink to="/">Home</CustomLink>
+        <Link href="/">Home</Link>
       </NavigationMenu.Item>
       <NavigationMenu.Item>
-        <CustomLink to="/about">About</CustomLink>
+        <Link href="/about">About</Link>
       </NavigationMenu.Item>
     </NavigationMenu.List>
   </NavigationMenu.Root>

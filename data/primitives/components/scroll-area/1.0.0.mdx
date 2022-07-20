@@ -10,6 +10,14 @@ name: scroll-area
   Augments native scroll functionality for custom, cross-browser styling.
 </Description>
 
+<HeroContainer css={{ py: '$8' }}>
+  <ScrollAreaDemo />
+</HeroContainer>
+
+```jsx hero template=ScrollArea
+
+```
+
 <Highlights
   features={[
     'Scrollbar sits on top of the scrollable content, taking up no space.',
@@ -108,8 +116,13 @@ Contains all the parts of a scroll area.
       required: false,
       type: '"ltr" | "rtl"',
       typeSimple: 'enum',
-      description:
-        'The reading direction of the scroll area. If omitted, assumes LTR (left-to-right) reading mode.',
+      description: (
+        <span>
+          The reading direction of the scroll area. If omitted, inherits
+          globally from <Code>DirectionProvider</Code> or assumes LTR
+          (left-to-right) reading mode.
+        </span>
+      ),
     },
   ]}
 />
@@ -166,6 +179,19 @@ The vertical scrollbar. Add a second `Scrollbar` with an `orientation` prop to e
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['visible', 'hidden'],
+    },
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
+    },
+  ]}
+/>
+
 ### Thumb
 
 The thumb to be used in `ScrollArea.Scrollbar`.
@@ -179,6 +205,15 @@ The thumb to be used in `ScrollArea.Scrollbar`.
       default: 'false',
       description:
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['visible', 'hidden'],
     },
   ]}
 />

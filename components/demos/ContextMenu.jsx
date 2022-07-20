@@ -1,10 +1,10 @@
 import React from 'react';
-import { styled, keyframes } from '@modulz/design-system';
-import { violet, mauve, blackA } from '@radix-ui/colors';
+import { styled } from '@modulz/design-system';
+import { violet, mauve } from '@radix-ui/colors';
 import { DotFilledIcon, CheckIcon, ChevronRightIcon } from '@radix-ui/react-icons';
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
 
-const StyledContent = styled(ContextMenuPrimitive.Content, {
+const contentStyles = {
   minWidth: 220,
   backgroundColor: 'white',
   borderRadius: 6,
@@ -12,7 +12,27 @@ const StyledContent = styled(ContextMenuPrimitive.Content, {
   padding: 5,
   boxShadow:
     '0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2)',
-});
+};
+
+const StyledContent = styled(ContextMenuPrimitive.Content, { ...contentStyles });
+
+function Content(props) {
+  return (
+    <ContextMenuPrimitive.Portal>
+      <StyledContent {...props} />
+    </ContextMenuPrimitive.Portal>
+  );
+}
+
+const StyledSubContent = styled(ContextMenuPrimitive.SubContent, { ...contentStyles });
+
+function SubContent(props) {
+  return (
+    <ContextMenuPrimitive.Portal>
+      <StyledSubContent {...props} />
+    </ContextMenuPrimitive.Portal>
+  );
+}
 
 const itemStyles = {
   all: 'unset',
@@ -33,7 +53,7 @@ const itemStyles = {
     pointerEvents: 'none',
   },
 
-  '&:focus': {
+  '&[data-highlighted]': {
     backgroundColor: violet.violet9,
     color: violet.violet1,
   },
@@ -42,7 +62,7 @@ const itemStyles = {
 const StyledItem = styled(ContextMenuPrimitive.Item, { ...itemStyles });
 const StyledCheckboxItem = styled(ContextMenuPrimitive.CheckboxItem, { ...itemStyles });
 const StyledRadioItem = styled(ContextMenuPrimitive.RadioItem, { ...itemStyles });
-const StyledTriggerItem = styled(ContextMenuPrimitive.TriggerItem, {
+const StyledSubTrigger = styled(ContextMenuPrimitive.SubTrigger, {
   '&[data-state="open"]': {
     backgroundColor: violet.violet4,
     color: violet.violet11,
@@ -75,15 +95,17 @@ const StyledItemIndicator = styled(ContextMenuPrimitive.ItemIndicator, {
 // Exports
 export const ContextMenu = ContextMenuPrimitive.Root;
 export const ContextMenuTrigger = ContextMenuPrimitive.Trigger;
-export const ContextMenuContent = StyledContent;
+export const ContextMenuContent = Content;
 export const ContextMenuItem = StyledItem;
 export const ContextMenuCheckboxItem = StyledCheckboxItem;
 export const ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup;
 export const ContextMenuRadioItem = StyledRadioItem;
 export const ContextMenuItemIndicator = StyledItemIndicator;
-export const ContextMenuTriggerItem = StyledTriggerItem;
 export const ContextMenuLabel = StyledLabel;
 export const ContextMenuSeparator = StyledSeparator;
+export const ContextMenuSub = ContextMenuPrimitive.Sub;
+export const ContextMenuSubTrigger = StyledSubTrigger;
+export const ContextMenuSubContent = SubContent;
 
 // Your app...
 const Box = styled('div', {});
@@ -103,7 +125,7 @@ const RightSlot = styled('div', {
   marginLeft: 'auto',
   paddingLeft: 20,
   color: mauve.mauve11,
-  ':focus > &': { color: 'white' },
+  '[data-highlighted] > &': { color: 'white' },
   '[data-disabled] &': { color: mauve.mauve8 },
 });
 
@@ -128,14 +150,14 @@ export const ContextMenuDemo = () => {
           <ContextMenuItem>
             Reload <RightSlot>⌘+R</RightSlot>
           </ContextMenuItem>
-          <ContextMenu>
-            <ContextMenuTriggerItem>
+          <ContextMenuSub>
+            <ContextMenuSubTrigger>
               More Tools
               <RightSlot>
                 <ChevronRightIcon />
               </RightSlot>
-            </ContextMenuTriggerItem>
-            <ContextMenuContent sideOffset={2} alignOffset={-5}>
+            </ContextMenuSubTrigger>
+            <ContextMenuSubContent sideOffset={2} alignOffset={-5}>
               <ContextMenuItem>
                 Save Page As… <RightSlot>⌘+S</RightSlot>
               </ContextMenuItem>
@@ -143,8 +165,8 @@ export const ContextMenuDemo = () => {
               <ContextMenuItem>Name Window…</ContextMenuItem>
               <ContextMenuSeparator />
               <ContextMenuItem>Developer Tools</ContextMenuItem>
-            </ContextMenuContent>
-          </ContextMenu>
+            </ContextMenuSubContent>
+          </ContextMenuSub>
           <ContextMenuSeparator />
           <ContextMenuCheckboxItem checked={bookmarksChecked} onCheckedChange={setBookmarksChecked}>
             <ContextMenuItemIndicator>

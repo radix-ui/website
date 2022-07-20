@@ -38,6 +38,7 @@ const StyledContent = styled(Tooltip.Content, {
   backgroundColor: theme.colors.violet9.value,
   boxShadow:
     '0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2)',
+  userSelect: 'none',
 
   '&.with-animation': {
     transformOrigin: 'var(--radix-tooltip-content-transform-origin)',
@@ -93,15 +94,19 @@ export const TooltipDemo = (props) => {
         </Flex>
       </Box>
 
-      <Tooltip.Root>
-        <StyledButton>
-          <PlusIcon />
-        </StyledButton>
-        <StyledContent sideOffset={5} className={withAnimation ? 'with-animation' : ''}>
-          Add to library.
-          <StyledArrow />
-        </StyledContent>
-      </Tooltip.Root>
+      <Tooltip.Provider>
+        <Tooltip.Root>
+          <StyledButton>
+            <PlusIcon />
+          </StyledButton>
+          <Tooltip.Portal>
+            <StyledContent sideOffset={5} className={withAnimation ? 'with-animation' : ''}>
+              Add to library.
+              <StyledArrow />
+            </StyledContent>
+          </Tooltip.Portal>
+        </Tooltip.Root>
+      </Tooltip.Provider>
     </Box>
   );
 };

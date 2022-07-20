@@ -98,6 +98,19 @@ Contains all the parts of a collapsible.
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['open', 'closed'],
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
+    },
+  ]}
+/>
+
 ### Trigger
 
 The button that toggles the collapsible.
@@ -111,6 +124,19 @@ The button that toggles the collapsible.
       default: 'false',
       description:
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['open', 'closed'],
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
     },
   ]}
 />
@@ -138,6 +164,32 @@ The component that contains the collapsible content.
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['open', 'closed'],
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
+    },
+  ]}
+/>
+
+<CssVariablesTable
+  data={[
+    {
+      cssVariable: '--radix-collapsible-content-width',
+      description: 'The width of the content when it opens/closes',
+    },
+    {
+      cssVariable: '--radix-collapsible-content-height',
+      description: 'The height of the content when it opens/closes',
+    },
+  ]}
+/>
+
 ## Examples
 
 ### Animating content size
@@ -160,8 +212,8 @@ const close = keyframes({
 
 const CollapsibleContent = styled(Collapsible.Content, {
   overflow: 'hidden',
-  '&[data-state="open"]': { animation: `${open} 300ms ease-out forwards` },
-  '&[data-state="closed"]': { animation: `${close} 300ms ease-out forwards` },
+  '&[data-state="open"]': { animation: `${open} 300ms ease-out` },
+  '&[data-state="closed"]': { animation: `${close} 300ms ease-out` },
 });
 
 export default () => (

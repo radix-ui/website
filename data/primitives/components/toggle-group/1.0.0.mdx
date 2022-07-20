@@ -1,25 +1,39 @@
 ---
-metaTitle: Toolbar
-metaDescription: A container for grouping a set of controls, such as buttons, toggle groups or dropdown menus.
-name: toolbar
-aria: https://www.w3.org/TR/wai-aria-practices-1.2/#toolbar
+metaTitle: Toggle Group
+metaDescription: A set of two-state buttons that can be toggled on or off.
+name: toggle-group
+aria: https://www.w3.org/TR/wai-aria-practices-1.2/#button
 ---
 
-# Toolbar
+# Toggle Group
 
 <Description>
-  A container for grouping a set of controls, such as buttons, toggle groups or
-  dropdown menus.
+  A set of two-state buttons that can be toggled on or off.
 </Description>
 
-<Highlights features={['Full keyboard navigation.']} />
+<HeroContainer>
+  <ToggleGroupDemo />
+</HeroContainer>
+
+```jsx hero template=ToggleGroup
+
+```
+
+<Highlights
+  features={[
+    'Full keyboard navigation.',
+    'Supports horizontal/vertical orientation.',
+    'Support single and multiple pressed buttons.',
+    'Can be controlled or uncontrolled.',
+  ]}
+/>
 
 ## Installation
 
 Install the component from your command line.
 
 ```bash
-npm install @radix-ui/react-toolbar
+npm install @radix-ui/react-toggle-group
 ```
 
 ## Anatomy
@@ -27,17 +41,12 @@ npm install @radix-ui/react-toolbar
 Import the component.
 
 ```jsx
-import * as Toolbar from '@radix-ui/react-toolbar';
+import * as ToggleGroup from '@radix-ui/react-toggle-group';
 
 export default () => (
-  <Toolbar.Root>
-    <Toolbar.Button />
-    <Toolbar.Separator />
-    <Toolbar.Link />
-    <Toolbar.ToggleGroup>
-      <Toolbar.ToggleItem />
-    </Toolbar.ToggleGroup>
-  </Toolbar.Root>
+  <ToggleGroup.Root>
+    <ToggleGroup.Item />
+  </ToggleGroup.Root>
 );
 ```
 
@@ -45,87 +54,7 @@ export default () => (
 
 ### Root
 
-Contains all the toolbar component parts.
-
-<PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description:
-        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'orientation',
-      required: false,
-      type: '"horizontal" | "vertical" | undefined',
-      typeSimple: 'enum',
-      default: '"horizontal"',
-      description: 'The orientation of the toolbar.',
-    },
-    {
-      name: 'dir',
-      required: false,
-      type: '"ltr" | "rtl"',
-      typeSimple: 'enum',
-      default: '"ltr"',
-      description:
-        'The reading direction of the toolbar. If omitted, assumes LTR (left-to-right) reading mode.',
-    },
-    {
-      name: 'loop',
-      required: false,
-      type: 'boolean',
-      default: 'true',
-      description: (
-        <span>
-          When <Code>true</Code>, keyboard navigation will loop from last tab to
-          first, and vice versa.
-        </span>
-      ),
-    },
-  ]}
-/>
-
-### Button
-
-A button item.
-
-<PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description:
-        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-  ]}
-/>
-
-### Link
-
-A link item.
-
-<PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description:
-        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-  ]}
-/>
-
-### ToggleGroup
-
-A set of two-state buttons that can be toggled on or off.
+Contains all the parts of a toggle group.
 
 <PropsTable
   data={[
@@ -235,10 +164,65 @@ A set of two-state buttons that can be toggled on or off.
         </span>
       ),
     },
+    {
+      name: 'rovingFocus',
+      required: false,
+      type: 'boolean',
+      default: 'true',
+      description: (
+        <span>
+          When <Code>false</Code>, navigating through the items using arrow keys
+          will be disabled.
+        </span>
+      ),
+    },
+    {
+      name: 'orientation',
+      required: false,
+      type: '"horizontal" | "vertical" | undefined',
+      typeSimple: 'enum',
+      default: 'undefined',
+      description: 'The orientation of the component.',
+    },
+    {
+      name: 'dir',
+      required: false,
+      type: '"ltr" | "rtl"',
+      typeSimple: 'enum',
+      description: (
+        <span>
+          The reading direction of the toggle group. If omitted, inherits
+          globally from <Code>DirectionProvider</Code> or assumes LTR
+          (left-to-right) reading mode.
+        </span>
+      ),
+    },
+    {
+      name: 'loop',
+      required: false,
+      type: 'boolean',
+      default: 'true',
+      description: (
+        <span>
+          When <Code>true</Code> and <Code>rovingFocus</Code> is{' '}
+          <Code>true</Code>, keyboard navigation will loop from last item to
+          first, and vice versa.
+        </span>
+      ),
+    },
   ]}
 />
 
-### ToggleItem
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
+    },
+  ]}
+/>
+
+### Item
 
 An item in the group.
 
@@ -271,47 +255,56 @@ An item in the group.
   ]}
 />
 
-### Separator
-
-Used to visually separate items in the toolbar.
-
-<PropsTable
+<DataAttributesTable
   data={[
     {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description:
-        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+      attribute: '[data-state]',
+      values: ['on', 'off'],
+    },
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
+    },
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
     },
   ]}
 />
 
 ## Examples
 
-### Use with other primitives
+### Ensuring there is always a value
 
-All our primitives which expose a `Trigger` part, such as `Dialog`, `AlertDialog`, `Popover`, `DropdownMenu` can be composed within a toolbar by using the [`asChild` prop](/docs/primitives/overview/styling#changing-the-rendered-element).
+You can control the component to ensure a value.
 
-Here is an example using our `DropdownMenu` primitive.
+```jsx line=5,8
+import * as React from 'react';
+import * as ToggleGroup from '@radix-ui/react-toggle-group';
 
-```jsx line=9-11
-import * as Toolbar from '@radix-ui/react-toolbar';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+export default () => {
+  const [value, setValue] = React.useState('left');
 
-export default () => (
-  <Toolbar.Root>
-    <Toolbar.Button>Action 1</Toolbar.Button>
-    <Toolbar.Separator />
-    <DropdownMenu.Root>
-      <Toolbar.Button __asChild__>
-        <DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
-      </Toolbar.Button>
-      <DropdownMenu.Content>…</DropdownMenu.Content>
-    </DropdownMenu.Root>
-  </Toolbar.Root>
-);
+  return (
+    <ToggleGroup.Root
+      type="single"
+      value={value}
+      onValueChange={(value) => {
+        if (value) setValue(value);
+      }}
+    >
+      <ToggleGroup.Item value="left">
+        <TextAlignLeftIcon />
+      </ToggleGroup.Item>
+      <ToggleGroup.Item value="center">
+        <TextAlignCenterIcon />
+      </ToggleGroup.Item>
+      <ToggleGroup.Item value="right">
+        <TextAlignRightIcon />
+      </ToggleGroup.Item>
+    </ToggleGroup.Root>
+  );
+};
 ```
 
 ## Accessibility
@@ -324,7 +317,8 @@ Uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/rad
   data={[
     {
       keys: ['Tab'],
-      description: 'Moves focus to the first item in the group.',
+      description:
+        'Moves focus to either the pressed item or the first item in the group.',
     },
     {
       keys: ['Space'],
@@ -336,43 +330,27 @@ Uses [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.2/examples/rad
     },
     {
       keys: ['ArrowDown'],
-      description: (
-        <span>
-          Moves focus to the next item depending on <Code>orientation</Code>.
-        </span>
-      ),
+      description: 'Moves focus to the next item in the group.',
     },
     {
       keys: ['ArrowRight'],
-      description: (
-        <span>
-          Moves focus to the next item depending on <Code>orientation</Code>.
-        </span>
-      ),
+      description: 'Moves focus to the next item in the group.',
     },
     {
       keys: ['ArrowUp'],
-      description: (
-        <span>
-          Moves focus to the previous item depending on <Code>orientation</Code>.
-        </span>
-      ),
+      description: 'Moves focus to the previous item in the group.',
     },
     {
       keys: ['ArrowLeft'],
-      description: (
-        <span>
-          Moves focus to the previous item depending on <Code>orientation</Code>.
-        </span>
-      ),
+      description: 'Moves focus to the previous item in the group.',
     },
     {
       keys: ['Home'],
-      description: <span>Moves focus to the first item.</span>,
+      description: 'Moves focus to the first item.',
     },
     {
       keys: ['End'],
-      description: <span>Moves focus to the last item.</span>,
+      description: 'Moves focus to the last item.',
     },
   ]}
 />

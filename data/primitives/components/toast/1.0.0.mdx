@@ -9,6 +9,14 @@ aria: https://www.w3.org/TR/wai-aria/#aria-live
 
 <Description>A succinct message that is displayed temporarily.</Description>
 
+<HeroContainer>
+  <ToastDemo />
+</HeroContainer>
+
+```jsx hero template=Toast
+
+```
+
 <Highlights
   features={[
     'Automatically closes.',
@@ -63,6 +71,14 @@ The provider that wraps your toasts and toast viewport. It usually wraps the app
       default: 5000,
       description:
         'The time in milliseconds that should elapse before automatically closing each toast.',
+    },
+    {
+      name: 'label',
+      required: true,
+      type: 'string',
+      default: '"Notification"',
+      description:
+        'An author-localized label for each toast. Used to help screen reader users associate the interruption with a toast.',
     },
     {
       name: 'swipeDirection',
@@ -192,6 +208,46 @@ The toast that automatically closes. It should not be held open to [acquire a us
       type: 'boolean',
       description:
         'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-state]',
+      values: ['open', 'closed'],
+    },
+    {
+      attribute: '[data-swipe]',
+      values: ['start', 'move', 'cancel', 'end'],
+    },
+    {
+      attribute: '[data-swipe-direction]',
+      values: ['up', 'down', 'left', 'right'],
+    },
+  ]}
+/>
+
+<CssVariablesTable
+  data={[
+    {
+      cssVariable: '--radix-toast-swipe-move-x',
+      description: 'The offset position of the toast when horizontally swiping',
+    },
+    {
+      cssVariable: '--radix-toast-swipe-move-y',
+      description: 'The offset position of the toast when vertically swiping',
+    },
+    {
+      cssVariable: '--radix-toast-swipe-end-x',
+      description:
+        'The offset end position of the toast after horizontally swiping',
+    },
+    {
+      cssVariable: '--radix-toast-swipe-end-y',
+      description:
+        'The offset end position of the toast after vertically swiping',
     },
   ]}
 />
@@ -351,7 +407,7 @@ const Toast = styled(ToastPrimitive.Root, {
       transition: 'transform 200ms ease-out',
     },
     '&[data-swipe="end"]': {
-      animation: `${slideRight} 100ms ease-out forwards`,
+      animation: `${slideRight} 100ms ease-out`,
     },
   },
 });
