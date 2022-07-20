@@ -50,7 +50,7 @@ export const primitivesRoutes = [
     label: 'Utilities',
     pages: [
       { title: 'Accessible Icon', slug: 'docs/primitives/utilities/accessible-icon' },
-      { title: 'Announce', slug: 'docs/primitives/utilities/announce' },
+      { title: 'Announce', slug: 'docs/primitives/utilities/announce', deprecated: true },
       { title: 'Direction Provider', slug: 'docs/primitives/utilities/direction-provider' },
       { title: 'Id Provider', slug: 'docs/primitives/utilities/id-provider', deprecated: true },
       { title: 'Polymorphic', slug: 'docs/primitives/utilities/polymorphic', deprecated: true },
