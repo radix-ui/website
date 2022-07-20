@@ -65,7 +65,7 @@ export const StatsSection = () => {
                 mb: '$2',
               }}
             >
-              2.6M
+              5M+
             </Text>
             <Text variant="gray" size={{ '@initial': 3, '@bp2': 4 }}>
               Monthly downloads
@@ -86,7 +86,7 @@ export const StatsSection = () => {
                 mb: '$2',
               }}
             >
-              2200
+              3000
               <Box as="span" css={{ fontSize: '75%', ml: '0.25em' }}>
                 +
               </Box>
@@ -110,7 +110,7 @@ export const StatsSection = () => {
                 mb: '$2',
               }}
             >
-              3300
+              5k
               <Box as="span" css={{ fontSize: '75%', ml: '0.25em' }}>
                 +
               </Box>
