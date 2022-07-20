@@ -299,6 +299,19 @@ The component that pops out in an open context menu.
       ),
     },
     {
+      name: 'collisionBoundary',
+      type: 'Element | null | Array<Element | null>',
+      typeSimple: 'Boundary',
+      default: '[]',
+      description: (
+        <span>
+          The element used as the collision boundary. By default this is the
+          viewport, though you can provide additional element(s) to be included
+          in this check.
+        </span>
+      ),
+    },
+    {
       name: 'collisionPadding',
       type: 'number | Partial<Record<Side, number>>',
       typeSimple: 'number | Padding',
@@ -939,6 +952,19 @@ The component that pops out when a submenu is open. Must be rendered inside `Con
         <span>
           When <Code>true</Code>, overrides the <Code>side</Code> and
           <Code>align</Code> preferences to prevent collisions with boundary edges.
+        </span>
+      ),
+    },
+    {
+      name: 'collisionBoundary',
+      type: 'Element | null | Array<Element | null>',
+      typeSimple: 'Boundary',
+      default: '[]',
+      description: (
+        <span>
+          The element used as the collision boundary. By default this is the
+          viewport, though you can provide additional element(s) to be included
+          in this check.
         </span>
       ),
     },

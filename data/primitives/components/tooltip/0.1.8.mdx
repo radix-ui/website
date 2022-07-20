@@ -321,6 +321,19 @@ The component that pops out when the tooltip is open.
       ),
     },
     {
+      name: 'collisionBoundary',
+      type: 'Element | null | Array<Element | null>',
+      typeSimple: 'Boundary',
+      default: '[]',
+      description: (
+        <span>
+          The element used as the collision boundary. By default this is the
+          viewport, though you can provide additional element(s) to be included
+          in this check.
+        </span>
+      ),
+    },
+    {
       name: 'collisionPadding',
       type: 'number | Partial<Record<Side, number>>',
       typeSimple: 'number | Padding',
