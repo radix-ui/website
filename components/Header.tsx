@@ -94,7 +94,7 @@ export const Header = () => {
                   </Text>
                 </Link>
               </PopoverTrigger>
-              <PopoverContent hideArrow sideOffset={15} alignOffset={-15}>
+              <PopoverContent hideArrow sideOffset={15} align="end" alignOffset={-15}>
                 <Box css={{ p: '$1' }}>
                   {isColors && (
                     <NextLink href="/" passHref>
