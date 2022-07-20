@@ -76,7 +76,9 @@ export default () => (
 
         <DropdownMenu.Sub>
           <DropdownMenu.SubTrigger />
-          <DropdownMenu.SubContent />
+          <Dropdown.Portal>
+            <DropdownMenu.SubContent />
+          </Dropdown.Portal>
         </DropdownMenu.Sub>
 
         <DropdownMenu.Separator />
@@ -1130,7 +1132,7 @@ The component that pops out when a submenu is open. Must be rendered inside `Dro
 
 You can create submenus by using `DropdownMenu.Sub` in combination with its parts.
 
-```jsx line=8-15
+```jsx line=8-17
 <DropdownMenu.Root>
   <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
   <DropdownMenu.Portal>
@@ -1140,11 +1142,13 @@ You can create submenus by using `DropdownMenu.Sub` in combination with its part
       <DropdownMenu.Separator />
       <DropdownMenu.Sub>
         <DropdownMenu.SubTrigger>Sub menu →</DropdownMenu.SubTrigger>
-        <DropdownMenu.SubContent>
-          <DropdownMenu.Item>Sub menu item</DropdownMenu.Item>
-          <DropdownMenu.Item>Sub menu item</DropdownMenu.Item>
-          <DropdownMenu.Arrow />
-        </DropdownMenu.SubContent>
+        <DropdownMenu.Portal>
+          <DropdownMenu.SubContent>
+            <DropdownMenu.Item>Sub menu item</DropdownMenu.Item>
+            <DropdownMenu.Item>Sub menu item</DropdownMenu.Item>
+            <DropdownMenu.Arrow />
+          </DropdownMenu.SubContent>
+        </DropdownMenu.Portal>
       </DropdownMenu.Sub>
       <DropdownMenu.Separator />
       <DropdownMenu.Item>…</DropdownMenu.Item>

@@ -75,7 +75,9 @@ export default () => (
 
         <ContextMenu.Sub>
           <ContextMenu.SubTrigger />
-          <ContextMenu.SubContent />
+          <ContextMenu.Portal>
+            <ContextMenu.SubContent />
+          </ContextMenu.Portal>
         </ContextMenu.Sub>
 
         <ContextMenu.Separator />
@@ -1045,7 +1047,7 @@ The component that pops out when a submenu is open. Must be rendered inside `Con
 
 You can create submenus by using `ContextMenu.Sub` in combination with its parts.
 
-```jsx line=8-15
+```jsx line=8-17
 <ContextMenu.Root>
   <ContextMenu.Trigger>…</ContextMenu.Trigger>
   <ContextMenu.Portal>
@@ -1055,11 +1057,13 @@ You can create submenus by using `ContextMenu.Sub` in combination with its parts
       <ContextMenu.Separator />
       <ContextMenu.Sub>
         <ContextMenu.SubTrigger>Sub menu →</ContextMenu.SubTrigger>
-        <ContextMenu.SubContent>
-          <ContextMenu.Item>Sub menu item</ContextMenu.Item>
-          <ContextMenu.Item>Sub menu item</ContextMenu.Item>
-          <ContextMenu.Arrow />
-        </ContextMenu.SubContent>
+        <ContextMenu.Portal>
+          <ContextMenu.SubContent>
+            <ContextMenu.Item>Sub menu item</ContextMenu.Item>
+            <ContextMenu.Item>Sub menu item</ContextMenu.Item>
+            <ContextMenu.Arrow />
+          </ContextMenu.SubContent>
+        </ContextMenu.Portal>
       </ContextMenu.Sub>
       <ContextMenu.Separator />
       <ContextMenu.Item>…</ContextMenu.Item>
