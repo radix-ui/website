@@ -66,7 +66,15 @@ function Content({ children, ...props }) {
   );
 }
 
-const SubContent = styled(DropdownMenuPrimitive.SubContent, { ...contentStyles });
+const StyledSubContent = styled(DropdownMenuPrimitive.SubContent, { ...contentStyles });
+
+function SubContent(props) {
+  return (
+    <DropdownMenuPrimitive.Portal>
+      <StyledSubContent {...props} />
+    </DropdownMenuPrimitive.Portal>
+  );
+}
 
 const itemStyles = {
   all: 'unset',
