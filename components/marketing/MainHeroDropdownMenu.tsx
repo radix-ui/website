@@ -85,82 +85,71 @@ export function MainHeroDropdownMenu() {
         </DemoButton>
       </DropdownMenuPrimitive.Trigger>
 
-      <Box
-        // Position it manually because iOS Safari is buggy
-        // with transforms and horizontal scroll containers
-        css={{
-          '[data-radix-popper-content-wrapper]': {
-            left: '50% !important',
-            transform: 'translate(-50%, 155px) !important',
-          },
+      <DropdownMenuContent
+        ref={contentRef}
+        sideOffset={5}
+        avoidCollisions={false}
+        onEscapeKeyDown={(event) => {
+          event.preventDefault();
+          if (event.target instanceof HTMLElement && contentRef.current?.contains(event.target)) {
+            setOpen(false);
+          }
+        }}
+        onInteractOutside={(event) => {
+          if (event.target !== triggerRef.current) {
+            event.preventDefault();
+          }
+        }}
+        onOpenAutoFocus={(event) => {
+          // We prevent the initial auto focus because it's a demo rather than a real UI,
+          // so the parent page focus is not stolen.
+          if (initialAutoFocusPrevented.current === false) {
+            event.preventDefault();
+            initialAutoFocusPrevented.current = true;
+          }
         }}
       >
-        <DropdownMenuContent
-          ref={contentRef}
-          sideOffset={5}
-          avoidCollisions={false}
-          onEscapeKeyDown={(event) => {
-            event.preventDefault();
-            if (event.target instanceof HTMLElement && contentRef.current?.contains(event.target)) {
-              setOpen(false);
-            }
-          }}
-          onInteractOutside={(event) => {
-            if (event.target !== triggerRef.current) {
-              event.preventDefault();
-            }
-          }}
-          onOpenAutoFocus={(event) => {
-            // We prevent the initial auto focus because it's a demo rather than a real UI,
-            // so the parent page focus is not stolen.
-            if (initialAutoFocusPrevented.current === false) {
-              event.preventDefault();
-              initialAutoFocusPrevented.current = true;
-            }
-          }}
-        >
-          <DropdownMenuArrow />
-          <DropdownMenuItem>New Tab</DropdownMenuItem>
-          <DropdownMenuItem>New Window</DropdownMenuItem>
-          <DropdownMenuSeparator />
+        <DropdownMenuArrow />
+        <DropdownMenuItem>New Tab</DropdownMenuItem>
+        <DropdownMenuItem>New Window</DropdownMenuItem>
+        <DropdownMenuSeparator />
 
-          <DropdownMenuPrimitive.Sub>
-            <DropdownMenuSubTrigger>
-              Favorites
-              <CaretRightIcon style={{ marginLeft: 'auto', marginRight: -5 }} />
-            </DropdownMenuSubTrigger>
-            <DropdownMenuSubContent>
-              <DropdownMenuItem>
-                <GitHubLogoIcon style={{ marginLeft: -15, marginRight: 10 }} />
-                GitHub
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <StitchesLogoIcon style={{ marginLeft: -15, marginRight: 10 }} />
-                Stitches
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <TwitterLogoIcon style={{ marginLeft: -15, marginRight: 10 }} />
-                Twitter
-              </DropdownMenuItem>
-            </DropdownMenuSubContent>
-          </DropdownMenuPrimitive.Sub>
+        <DropdownMenuPrimitive.Sub>
+          <DropdownMenuSubTrigger>
+            Favorites
+            <CaretRightIcon style={{ marginLeft: 'auto', marginRight: -5 }} />
+          </DropdownMenuSubTrigger>
+          <DropdownMenuSubContent>
+            <DropdownMenuItem>
+              <GitHubLogoIcon style={{ marginLeft: -15, marginRight: 10 }} />
+              GitHub
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <StitchesLogoIcon style={{ marginLeft: -15, marginRight: 10 }} />
+              Stitches
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <TwitterLogoIcon style={{ marginLeft: -15, marginRight: 10 }} />
+              Twitter
+            </DropdownMenuItem>
+          </DropdownMenuSubContent>
+        </DropdownMenuPrimitive.Sub>
 
-          <DropdownMenuItem>Downloads</DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuCheckboxItem checked={showToolbar} onCheckedChange={setShowToolbar}>
-            <DropdownMenuPrimitive.ItemIndicator>
-              <CheckIcon style={{ marginLeft: -18, marginRight: 0 }} />
-            </DropdownMenuPrimitive.ItemIndicator>
-            Show Toolbar
-          </DropdownMenuCheckboxItem>
-          <DropdownMenuCheckboxItem checked={showUrls} onCheckedChange={setShowUrls}>
-            <DropdownMenuPrimitive.ItemIndicator>
-              <CheckIcon style={{ marginLeft: -18, marginRight: 0 }} />
-            </DropdownMenuPrimitive.ItemIndicator>
-            Show Full URLs
-          </DropdownMenuCheckboxItem>
-        </DropdownMenuContent>
-      </Box>
+        <DropdownMenuItem>Downloads</DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuCheckboxItem checked={showToolbar} onCheckedChange={setShowToolbar}>
+          <DropdownMenuPrimitive.ItemIndicator>
+            <CheckIcon style={{ marginLeft: -18, marginRight: 0 }} />
+          </DropdownMenuPrimitive.ItemIndicator>
+          Show Toolbar
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem checked={showUrls} onCheckedChange={setShowUrls}>
+          <DropdownMenuPrimitive.ItemIndicator>
+            <CheckIcon style={{ marginLeft: -18, marginRight: 0 }} />
+          </DropdownMenuPrimitive.ItemIndicator>
+          Show Full URLs
+        </DropdownMenuCheckboxItem>
+      </DropdownMenuContent>
     </DropdownMenuPrimitive.Root>
   );
 }

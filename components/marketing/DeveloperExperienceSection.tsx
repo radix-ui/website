@@ -435,7 +435,7 @@ export const DeploymentPopover = ({ children }) => {
       <Popover.Portal>
         <PopoverContent
           align="start"
-          collisionTolerance={10}
+          collisionPadding={10}
           onOpenAutoFocus={(event) => {
             // Focus the close button when popover opens
             popoverCloseButton.current?.focus();

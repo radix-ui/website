@@ -75,9 +75,9 @@ export default () => (
 
         <ContextMenu.Sub>
           <ContextMenu.SubTrigger />
-          <Contextmenu.Portal>
+          <ContextMenu.Portal>
             <ContextMenu.SubContent />
-          </Contextmenu.Portal>
+          </ContextMenu.Portal>
         </ContextMenu.Sub>
 
         <ContextMenu.Separator />
@@ -296,18 +296,58 @@ The component that pops out in an open context menu.
       description: (
         <span>
           When <Code>true</Code>, overrides the <Code>side</Code> and
-          <Code>align</Code> preferences to prevent collisions with window edges.
+          <Code>align</Code> preferences to prevent collisions with boundary edges.
         </span>
       ),
     },
     {
-      name: 'collisionTolerance',
-      type: 'number',
+      name: 'collisionBoundary',
+      type: 'Element | null | Array<Element | null>',
+      typeSimple: 'Boundary',
+      default: '[]',
+      description: (
+        <span>
+          The element used as the collision boundary. By default this is the
+          viewport, though you can provide additional element(s) to be included
+          in this check.
+        </span>
+      ),
+    },
+    {
+      name: 'collisionPadding',
+      type: 'number | Partial<Record<Side, number>>',
+      typeSimple: 'number | Padding',
       default: '0',
       description: (
         <span>
-          The distance in pixels from window edges where collision detection
-          should occur.
+          The distance in pixels from the boundary edges where collision
+          detection should occur. Accepts a number (same for all sides), or a
+          partial padding object, for example: <Code>{`{ top: 20, left: 20 }`}</Code>
+          .
+        </span>
+      ),
+    },
+    {
+      name: 'sticky',
+      type: '"partial" | "always"',
+      typeSimple: 'enum',
+      default: '"partial"',
+      description: (
+        <span>
+          The sticky behavior on the align axis. <Code>"partial"</Code> will
+          keep the content in the boundary as long as the trigger is at least
+          partially in the boundary whilst <Code>"always"</Code> will keep the
+          content in the boundary regardless.
+        </span>
+      ),
+    },
+    {
+      name: 'hideWhenDetached',
+      type: 'boolean',
+      default: 'false',
+      description: (
+        <span>
+          Whether to hide the content when the trigger becomes fully occluded.
         </span>
       ),
     },
@@ -370,17 +410,6 @@ An optional arrow element to render alongside a submenu. This can be used to hel
       type: 'number',
       default: 5,
       description: <span>The height of the arrow in pixels.</span>,
-    },
-    {
-      name: 'offset',
-      type: 'number',
-      default: 0,
-      description: (
-        <span>
-          The distance in pixels to render from the{' '}
-          <Code>ContextMenu.Content</Code> edge.
-        </span>
-      ),
     },
   ]}
 />
@@ -923,18 +952,70 @@ The component that pops out when a submenu is open. Must be rendered inside `Con
       description: (
         <span>
           When <Code>true</Code>, overrides the <Code>side</Code> and
-          <Code>align</Code> preferences to prevent collisions with window edges.
+          <Code>align</Code> preferences to prevent collisions with boundary edges.
         </span>
       ),
     },
     {
-      name: 'collisionTolerance',
+      name: 'collisionBoundary',
+      type: 'Element | null | Array<Element | null>',
+      typeSimple: 'Boundary',
+      default: '[]',
+      description: (
+        <span>
+          The element used as the collision boundary. By default this is the
+          viewport, though you can provide additional element(s) to be included
+          in this check.
+        </span>
+      ),
+    },
+    {
+      name: 'collisionPadding',
+      type: 'number | Partial<Record<Side, number>>',
+      typeSimple: 'number | Padding',
+      default: '0',
+      description: (
+        <span>
+          The distance in pixels from the boundary edges where collision
+          detection should occur. Accepts a number (same for all sides), or a
+          partial padding object, for example: <Code>{`{ top: 20, left: 20 }`}</Code>
+          .
+        </span>
+      ),
+    },
+    {
+      name: 'arrowPadding',
       type: 'number',
       default: '0',
       description: (
         <span>
-          The distance in pixels from window edges where collision detection
-          should occur.
+          The padding between the arrow and the edges of the content. If your
+          content has <Code>border-radius</Code>, this will prevent it from
+          overflowing the corners.
+        </span>
+      ),
+    },
+    {
+      name: 'sticky',
+      type: '"partial" | "always"',
+      typeSimple: 'enum',
+      default: '"partial"',
+      description: (
+        <span>
+          The sticky behavior on the align axis. <Code>"partial"</Code> will
+          keep the content in the boundary as long as the trigger is at least
+          partially in the boundary whilst <Code>"always"</Code> will keep the
+          content in the boundary regardless.
+        </span>
+      ),
+    },
+    {
+      name: 'hideWhenDetached',
+      type: 'boolean',
+      default: 'false',
+      description: (
+        <span>
+          Whether to hide the content when the trigger becomes fully occluded.
         </span>
       ),
     },
@@ -964,24 +1045,28 @@ The component that pops out when a submenu is open. Must be rendered inside `Con
 
 You can create submenus by using `ContextMenu.Sub` in combination with its parts.
 
-```jsx line=7-14
+```jsx line=8-17
 <ContextMenu.Root>
   <ContextMenu.Trigger>…</ContextMenu.Trigger>
-  <ContextMenu.Content>
-    <ContextMenu.Item>…</ContextMenu.Item>
-    <ContextMenu.Item>…</ContextMenu.Item>
-    <ContextMenu.Separator />
-    <ContextMenu.Sub>
-      <ContextMenu.SubTrigger>Sub menu →</ContextMenu.SubTrigger>
-      <ContextMenu.SubContent>
-        <ContextMenu.Item>Sub menu item</ContextMenu.Item>
-        <ContextMenu.Item>Sub menu item</ContextMenu.Item>
-        <ContextMenu.Arrow />
-      </ContextMenu.SubContent>
-    </ContextMenu.Sub>
-    <ContextMenu.Separator />
-    <ContextMenu.Item>…</ContextMenu.Item>
-  </ContextMenu.Content>
+  <ContextMenu.Portal>
+    <ContextMenu.Content>
+      <ContextMenu.Item>…</ContextMenu.Item>
+      <ContextMenu.Item>…</ContextMenu.Item>
+      <ContextMenu.Separator />
+      <ContextMenu.Sub>
+        <ContextMenu.SubTrigger>Sub menu →</ContextMenu.SubTrigger>
+        <ContextMenu.Portal>
+          <ContextMenu.SubContent>
+            <ContextMenu.Item>Sub menu item</ContextMenu.Item>
+            <ContextMenu.Item>Sub menu item</ContextMenu.Item>
+            <ContextMenu.Arrow />
+          </ContextMenu.SubContent>
+        </ContextMenu.Portal>
+      </ContextMenu.Sub>
+      <ContextMenu.Separator />
+      <ContextMenu.Item>…</ContextMenu.Item>
+    </ContextMenu.Content>
+  </ContextMenu.Portal>
 </ContextMenu.Root>
 ```
 
@@ -989,7 +1074,7 @@ You can create submenus by using `ContextMenu.Sub` in combination with its parts
 
 You can add special styles to disabled items via the `data-disabled` attribute.
 
-```jsx line=4-6,12
+```jsx line=4-6,13
 import { styled } from '@stitches/react';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
@@ -1000,11 +1085,13 @@ const StyledItem = styled(ContextMenu.Item, {
 export default () => (
   <ContextMenu.Root>
     <ContextMenu.Trigger>…</ContextMenu.Trigger>
-    <ContextMenu.Content>
-      <StyledItem __disabled__>…</StyledItem>
-      <StyledItem>…</StyledItem>
-      <StyledItem>…</StyledItem>
-    </ContextMenu.Content>
+    <ContextMenu.Portal>
+      <ContextMenu.Content>
+        <StyledItem __disabled__>…</StyledItem>
+        <StyledItem>…</StyledItem>
+        <StyledItem>…</StyledItem>
+      </ContextMenu.Content>
+    </ContextMenu.Portal>
   </ContextMenu.Root>
 );
 ```
@@ -1013,16 +1100,18 @@ export default () => (
 
 Use the `Separator` part to add a separator between items.
 
-```jsx line=5,7
+```jsx line=6,8
 <ContextMenu.Root>
   <ContextMenu.Trigger>…</ContextMenu.Trigger>
-  <ContextMenu.Content>
-    <ContextMenu.Item>…</ContextMenu.Item>
-    <ContextMenu.Separator />
-    <ContextMenu.Item>…</ContextMenu.Item>
-    <ContextMenu.Separator />
-    <ContextMenu.Item>…</ContextMenu.Item>
-  </ContextMenu.Content>
+  <ContextMenu.Portal>
+    <ContextMenu.Content>
+      <ContextMenu.Item>…</ContextMenu.Item>
+      <ContextMenu.Separator />
+      <ContextMenu.Item>…</ContextMenu.Item>
+      <ContextMenu.Separator />
+      <ContextMenu.Item>…</ContextMenu.Item>
+    </ContextMenu.Content>
+  </ContextMenu.Portal>
 </ContextMenu.Root>
 ```
 
@@ -1030,15 +1119,17 @@ Use the `Separator` part to add a separator between items.
 
 Use the `Label` part to help label a section.
 
-```jsx line=4
+```jsx line=5
 <ContextMenu.Root>
   <ContextMenu.Trigger>…</ContextMenu.Trigger>
-  <ContextMenu.Content>
-    <ContextMenu.Label>Label</ContextMenu.Label>
-    <ContextMenu.Item>…</ContextMenu.Item>
-    <ContextMenu.Item>…</ContextMenu.Item>
-    <ContextMenu.Item>…</ContextMenu.Item>
-  </ContextMenu.Content>
+  <ContextMenu.Portal>
+    <ContextMenu.Content>
+      <ContextMenu.Label>Label</ContextMenu.Label>
+      <ContextMenu.Item>…</ContextMenu.Item>
+      <ContextMenu.Item>…</ContextMenu.Item>
+      <ContextMenu.Item>…</ContextMenu.Item>
+    </ContextMenu.Content>
+  </ContextMenu.Portal>
 </ContextMenu.Root>
 ```
 
@@ -1046,7 +1137,7 @@ Use the `Label` part to help label a section.
 
 Use the `CheckboxItem` part to add an item that can be checked.
 
-```jsx line=6,15-20
+```jsx line=6,16-21
 import React from 'react';
 import { CheckIcon } from '@radix-ui/react-icons';
 import * as ContextMenu from '@radix-ui/react-context-menu';
@@ -1057,20 +1148,22 @@ export default () => {
   return (
     <ContextMenu.Root>
       <ContextMenu.Trigger>…</ContextMenu.Trigger>
-      <ContextMenu.Content>
-        <ContextMenu.Item>…</ContextMenu.Item>
-        <ContextMenu.Item>…</ContextMenu.Item>
-        <ContextMenu.Separator />
-        <ContextMenu.CheckboxItem
-          checked={checked}
-          onCheckedChange={setChecked}
-        >
-          <ContextMenu.ItemIndicator>
-            <CheckIcon />
-          </ContextMenu.ItemIndicator>
-          Checkbox item
-        </ContextMenu.CheckboxItem>
-      </ContextMenu.Content>
+      <ContextMenu.Portal>
+        <ContextMenu.Content>
+          <ContextMenu.Item>…</ContextMenu.Item>
+          <ContextMenu.Item>…</ContextMenu.Item>
+          <ContextMenu.Separator />
+          <ContextMenu.CheckboxItem
+            checked={checked}
+            onCheckedChange={setChecked}
+          >
+            <ContextMenu.ItemIndicator>
+              <CheckIcon />
+            </ContextMenu.ItemIndicator>
+            Checkbox item
+          </ContextMenu.CheckboxItem>
+        </ContextMenu.Content>
+      </ContextMenu.Portal>
     </ContextMenu.Root>
   );
 };
@@ -1080,7 +1173,7 @@ export default () => {
 
 Use the `RadioGroup` and `RadioItem` parts to add an item that can be checked amongst others.
 
-```jsx line=6,12-31
+```jsx line=6,13-32
 import React from 'react';
 import { CheckIcon } from '@radix-ui/react-icons';
 import * as ContextMenu from '@radix-ui/react-context-menu';
@@ -1091,28 +1184,30 @@ export default () => {
   return (
     <ContextMenu.Root>
       <ContextMenu.Trigger>…</ContextMenu.Trigger>
-      <ContextMenu.Content>
-        <ContextMenu.RadioGroup value={color} onValueChange={setColor}>
-          <ContextMenu.RadioItem value="red">
-            <ContextMenu.ItemIndicator>
-              <CheckIcon />
-            </ContextMenu.ItemIndicator>
-            Red
-          </ContextMenu.RadioItem>
-          <ContextMenu.RadioItem value="blue">
-            <ContextMenu.ItemIndicator>
-              <CheckIcon />
-            </ContextMenu.ItemIndicator>
-            Blue
-          </ContextMenu.RadioItem>
-          <ContextMenu.RadioItem value="green">
-            <ContextMenu.ItemIndicator>
-              <CheckIcon />
-            </ContextMenu.ItemIndicator>
-            Green
-          </ContextMenu.RadioItem>
-        </ContextMenu.RadioGroup>
-      </ContextMenu.Content>
+      <ContextMenu.Portal>
+        <ContextMenu.Content>
+          <ContextMenu.RadioGroup value={color} onValueChange={setColor}>
+            <ContextMenu.RadioItem value="red">
+              <ContextMenu.ItemIndicator>
+                <CheckIcon />
+              </ContextMenu.ItemIndicator>
+              Red
+            </ContextMenu.RadioItem>
+            <ContextMenu.RadioItem value="blue">
+              <ContextMenu.ItemIndicator>
+                <CheckIcon />
+              </ContextMenu.ItemIndicator>
+              Blue
+            </ContextMenu.RadioItem>
+            <ContextMenu.RadioItem value="green">
+              <ContextMenu.ItemIndicator>
+                <CheckIcon />
+              </ContextMenu.ItemIndicator>
+              Green
+            </ContextMenu.RadioItem>
+          </ContextMenu.RadioGroup>
+        </ContextMenu.Content>
+      </ContextMenu.Portal>
     </ContextMenu.Root>
   );
 };
@@ -1122,7 +1217,7 @@ export default () => {
 
 You can add extra decorative elements in the `Item` parts, such as images.
 
-```jsx line=4-7,14,18,22
+```jsx line=4-7,15,19,23
 import { styled } from '@stitches/react';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
@@ -1134,20 +1229,22 @@ const Image = styled('img', {
 export default () => (
   <ContextMenu.Root>
     <ContextMenu.Trigger>…</ContextMenu.Trigger>
-    <ContextMenu.Content>
-      <ContextMenu.Item>
-        <Image src="…" />
-        Adolfo Hess
-      </ContextMenu.Item>
-      <ContextMenu.Item>
-        <Image src="…" />
-        Miyah Myles
-      </ContextMenu.Item>
-      <ContextMenu.Item>
-        <Image src="…" />
-        Sylvia Reynolds
-      </ContextMenu.Item>
-    </ContextMenu.Content>
+    <ContextMenu.Portal>
+      <ContextMenu.Content>
+        <ContextMenu.Item>
+          <Image src="…" />
+          Adolfo Hess
+        </ContextMenu.Item>
+        <ContextMenu.Item>
+          <Image src="…" />
+          Miyah Myles
+        </ContextMenu.Item>
+        <ContextMenu.Item>
+          <Image src="…" />
+          Sylvia Reynolds
+        </ContextMenu.Item>
+      </ContextMenu.Content>
+    </ContextMenu.Portal>
   </ContextMenu.Root>
 );
 ```
@@ -1156,7 +1253,7 @@ export default () => (
 
 We expose a CSS custom property `--radix-context-menu-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
-```jsx line=4-7,9-12,17
+```jsx line=4-7,9-12,18
 import { styled, keyframes } from '@stitches/react';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
@@ -1173,7 +1270,9 @@ const StyledContent = styled(ContextMenu.Content, {
 export default () => (
   <ContextMenu.Root>
     <ContextMenu.Trigger>…</ContextMenu.Trigger>
-    <StyledContent>…</StyledContent>
+    <ContextMenu.Portal>
+      <StyledContent>…</StyledContent>
+    </ContextMenu.Portal>
   </ContextMenu.Root>
 );
 ```
@@ -1182,7 +1281,7 @@ export default () => (
 
 We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
 
-```jsx line=4-7,9,12-14-19,24
+```jsx line=4-7,9-12,14-19,25
 import { styled, keyframes } from '@stitches/react';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 
@@ -1206,7 +1305,9 @@ const StyledContent = styled(ContextMenu.Content, {
 export default () => (
   <ContextMenu.Root>
     <ContextMenu.Trigger>…</ContextMenu.Trigger>
-    <StyledContent>…</StyledContent>
+    <ContextMenu.Portal>
+      <StyledContent>…</StyledContent>
+    </ContextMenu.Portal>
   </ContextMenu.Root>
 );
 ```
