@@ -188,6 +188,50 @@ The toast that automatically closes. It should not be held open to [acquire a us
         'Event handler called when the open state of the dialog changes.',
     },
     {
+      name: 'onEscapeKeyDown',
+      type: '(event: KeyboardEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when the escape key is down. It can be prevented
+          by calling <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onSwipeStart',
+      type: '(event: SwipeEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when starting a swipe interaction. It can be
+          prevented by calling <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onSwipeMove',
+      type: '(event: SwipeEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called during a swipe interaction. It can be prevented
+          by calling <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onSwipeEnd',
+      type: '(event: SwipeEvent) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called at the end of a swipe interaction. It can be
+          prevented by calling <Code>event.preventDefault</Code>.
+        </span>
+      ),
+    },
+    {
       name: 'forceMount',
       type: 'boolean',
       description:
