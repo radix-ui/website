@@ -6,9 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "scraper:setup": "docker run -it --name radix_algolia --env-file=./algolia/.env -e \"CONFIG=$(cat ./algolia/config.development.json | jq -r tostring)\" algolia/docsearch-scraper",
+    "scraper:reset": "docker rm radix_algolia && yarn scraper:setup",
+    "scraper:run": "docker start radix_algolia"
   },
   "dependencies": {
+    "@algolia/autocomplete-core": "^1.7.1",
     "@mdx-js/loader": "1.6.22",
     "@modulz/design-system": "1.0.0",
     "@radix-ui/colors": "0.1.8",
@@ -42,6 +46,7 @@
     "@radix-ui/react-toolbar": "1.0.0",
     "@radix-ui/react-tooltip": "1.0.0",
     "@radix-ui/react-visually-hidden": "1.0.0",
+    "algoliasearch": "^4.14.1",
     "codesandbox": "^2.2.3",
     "copy-to-clipboard": "^3.3.1",
     "date-fns": "^2.20.0",

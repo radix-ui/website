@@ -92,39 +92,48 @@ export function PrimitivesPage({ children }: { children: React.ReactNode }) {
               '@bp2': { display: 'block', mt: '$4' },
             }}
           >
-            {primitivesRoutes.map((section: RouteProps) => (
-              <Box key={section.label} css={{ mb: '$4' }}>
-                <NavHeading>{section.label}</NavHeading>
-                {section.pages.map((page) => {
-                  const isBeta = page.beta;
-                  const isDraft = page.draft;
-                  const isDeprecated = page.deprecated;
-                  return (
-                    <NavItem
-                      key={page.slug}
-                      href={`/${page.slug}`}
-                      disabled={isDraft}
-                      active={currentPageSlug === page.slug}
-                    >
-                      <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
-                        {page.title}
-                      </Text>
-                      {isBeta ? (
-                        <Badge css={{ ml: '$2' }} variant="blue">
-                          Beta
-                        </Badge>
-                      ) : null}
-                      {isDraft ? <Badge css={{ ml: '$2' }}>Coming soon</Badge> : null}
-                      {isDeprecated ? (
-                        <Badge variant="yellow" css={{ ml: '$2' }}>
-                          Deprecated
-                        </Badge>
-                      ) : null}
-                    </NavItem>
-                  );
-                })}
-              </Box>
-            ))}
+            {primitivesRoutes.map((section: RouteProps) => {
+              const isActiveSection = section.pages
+                .map((page) => page.slug)
+                .includes(currentPageSlug);
+
+              return (
+                <Box key={section.label} css={{ mb: '$4' }}>
+                  <NavHeading data-algolia-lvl0={isActiveSection ? '' : undefined}>
+                    {section.label}
+                  </NavHeading>
+                  {section.pages.map((page) => {
+                    const isBeta = page.beta;
+                    const isDraft = page.draft;
+                    const isDeprecated = page.deprecated;
+                    return (
+                      <NavItem
+                        key={page.slug}
+                        href={`/${page.slug}`}
+                        disabled={isDraft}
+                        active={currentPageSlug === page.slug}
+                      >
+                        <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
+                          {page.title}
+                        </Text>
+                        {isBeta ? (
+                          <Badge css={{ ml: '$2' }} variant="blue">
+                            Beta
+                          </Badge>
+                        ) : null}
+                        {isDraft ? <Badge css={{ ml: '$2' }}>Coming soon</Badge> : null}
+                        {isDeprecated ? (
+                          <Badge variant="yellow" css={{ ml: '$2' }}>
+                            Deprecated
+                          </Badge>
+                        ) : null}
+                      </NavItem>
+                    );
+                  })}
+                </Box>
+              );
+            })}
+
             <Box css={{ height: '$5', '@bp2': { height: '$8' } }} />
           </Box>
         </ScrollArea>
@@ -142,7 +151,11 @@ export function PrimitivesPage({ children }: { children: React.ReactNode }) {
           '@media (min-width: 1440px)': { pr: '250px' },
         }}
       >
-        <Container size="3" css={{ maxWidth: '780px', position: 'relative' }}>
+        <Container
+          size="3"
+          css={{ maxWidth: '780px', position: 'relative' }}
+          data-algolia-page-scope
+        >
           {children}
         </Container>
 

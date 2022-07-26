@@ -2,7 +2,7 @@ import React from 'react';
 import NextLink from 'next/link';
 import { Text, Box } from '@modulz/design-system';
 
-export function NavHeading({ children }: { children: React.ReactNode }) {
+export function NavHeading({ children, ...props }: { children: React.ReactNode }) {
   return (
     <Text
       as="h4"
@@ -12,6 +12,7 @@ export function NavHeading({ children }: { children: React.ReactNode }) {
         px: '$5',
         py: '$2',
       }}
+      {...props}
     >
       {children}
     </Text>

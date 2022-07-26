@@ -22,6 +22,7 @@ import { ThemeToggle } from '@components/ThemeToggle';
 import { BoxLink } from '@components/BoxLink';
 import { RadixLogoIcon } from './RadixLogoIcon';
 import { RemoveScroll } from 'react-remove-scroll';
+import { Search } from '@components/Search';
 
 export const Header = () => {
   const router = useRouter();
@@ -36,7 +37,7 @@ export const Header = () => {
               <RadixLogo label={isColors ? 'Radix Colors homepage' : 'Radix homepage'} />
             </BoxLink>
           </NextLink>
-
+          <Search />
           <Flex
             align="center"
             gap={{ '@initial': 4, '@bp2': 5 }}
