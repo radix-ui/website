@@ -78,6 +78,7 @@ const Box = styled('div', {});
 
 const Button = styled('button', {
   all: 'unset',
+  cursor: 'pointer',
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -113,6 +114,7 @@ const Button = styled('button', {
 
 const IconButton = styled('button', {
   all: 'unset',
+  cursor: 'pointer',
   fontFamily: 'inherit',
   borderRadius: '100%',
   height: 25,
@@ -146,6 +148,7 @@ const Label = styled('label', {
 
 const Input = styled('input', {
   all: 'unset',
+  cursor: 'text',
   width: '100%',
   flex: '1',
   display: 'inline-flex',
