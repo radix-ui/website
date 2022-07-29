@@ -10,6 +10,10 @@ const StyledProgress = styled(ProgressPrimitive.Root, {
   borderRadius: '99999px',
   width: 300,
   height: 25,
+
+  // Fix overflow clipping in Safari
+  // https://gist.github.com/domske/b66047671c780a238b51c51ffde8d3a0
+  transform: 'translateZ(0)',
 });
 
 const StyledIndicator = styled(ProgressPrimitive.Indicator, {
