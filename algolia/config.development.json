@@ -1,7 +1,9 @@
 {
   "index_name": "development_docs",
-  "start_urls": ["https://d099-92-28-230-172.eu.ngrok.io/docs/primitives"],
-  "stop_urls": ["https://d099-92-28-230-172.eu.ngrok.io/docs/primitives/overview/releases"],
+  "start_urls": ["https://644e-2a01-e0a-a7e-f0b0-f8b4-fd31-b669-5c95.eu.ngrok.io/docs/primitives"],
+  "stop_urls": [
+    "https://644e-2a01-e0a-a7e-f0b0-f8b4-fd31-b669-5c95.eu.ngrok.io/docs/primitives/overview/releases"
+  ],
   "selectors": {
     "lvl0": { "selector": "[data-algolia-lvl0]", "global": true },
     "lvl1": "[data-algolia-page-scope] h1",
