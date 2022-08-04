@@ -19,11 +19,11 @@ import type {
 } from '@algolia/autocomplete-core';
 import type { Hit } from '@algolia/client-search';
 
-const APP_ID = 'VXVOLU3YVQ';
-const API_KEY = '13f199c3bdc37a5a17ab03d8760d03ae';
-const INDEX_NAME = 'development_docs';
+const ALGOLIA_APP_ID = 'VXVOLU3YVQ';
+const ALGOLIA_PUBLIC_API_KEY = '9d44395c1b7b172ac84b7e5ab80bf8c5';
+const ALGOLIA_INDEX_NAME = 'development_docs';
 
-const searchClient = algoliasearch(APP_ID, API_KEY);
+const searchClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_PUBLIC_API_KEY);
 
 const SNIPPET_LENGTH = 15;
 const SUPPORTED_LEVELS = ['lvl0', 'lvl1', 'lvl2', 'lvl3', 'lvl4'] as const;
@@ -84,7 +84,7 @@ export function Search() {
           return searchClient
             .search<SearchItem>([
               {
-                indexName: INDEX_NAME,
+                indexName: ALGOLIA_INDEX_NAME,
                 query,
                 params: {
                   hitsPerPage: 100,
