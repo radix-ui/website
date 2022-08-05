@@ -56,3 +56,11 @@ export function NavItem({ children, active, disabled, href, ...props }: NavItemP
     </Box>
   );
 }
+
+export function NavItemTitle({ children }) {
+  return (
+    <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
+      {children}
+    </Text>
+  );
+}
