@@ -21,6 +21,10 @@ export default function ComponentsDoc({ frontmatter, code }: Doc) {
 
   return (
     <>
+      <div data-algolia-lvl0 style={{ display: 'none' }}>
+        Components
+      </div>
+
       <TitleAndMetaTags
         title={`${frontmatter.metaTitle} – Radix UI`}
         description={frontmatter.metaDescription}

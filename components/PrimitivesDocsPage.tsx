@@ -53,41 +53,33 @@ export function PrimitivesDocsPage({ children }: { children: React.ReactNode }) 
           </Box>
 
           <Box css={{ display: isSearchOpen ? 'none' : undefined, mt: '$4' }}>
-            {primitivesRoutes.map((section: RouteProps) => {
-              const isActiveSection = section.pages
-                .map((page) => page.slug)
-                .includes(currentPageSlug);
+            {primitivesRoutes.map((section: RouteProps) => (
+              <Box key={section.label} css={{ mb: '$4' }}>
+                <NavHeading>{section.label}</NavHeading>
 
-              return (
-                <Box key={section.label} css={{ mb: '$4' }}>
-                  <NavHeading data-algolia-lvl0={isActiveSection ? '' : undefined}>
-                    {section.label}
-                  </NavHeading>
-
-                  {section.pages.map((page) => (
-                    <NavItem
-                      key={page.slug}
-                      href={`/${page.slug}`}
-                      disabled={page.draft}
-                      active={currentPageSlug === page.slug}
-                    >
-                      <NavItemTitle>{page.title}</NavItemTitle>
-                      {page.beta && (
-                        <Badge css={{ ml: '$2' }} variant="blue">
-                          Beta
-                        </Badge>
-                      )}
-                      {page.draft && <Badge css={{ ml: '$2' }}>Coming soon</Badge>}
-                      {page.deprecated && (
-                        <Badge variant="yellow" css={{ ml: '$2' }}>
-                          Deprecated
-                        </Badge>
-                      )}
-                    </NavItem>
-                  ))}
-                </Box>
-              );
-            })}
+                {section.pages.map((page) => (
+                  <NavItem
+                    key={page.slug}
+                    href={`/${page.slug}`}
+                    disabled={page.draft}
+                    active={currentPageSlug === page.slug}
+                  >
+                    <NavItemTitle>{page.title}</NavItemTitle>
+                    {page.beta && (
+                      <Badge css={{ ml: '$2' }} variant="blue">
+                        Beta
+                      </Badge>
+                    )}
+                    {page.draft && <Badge css={{ ml: '$2' }}>Coming soon</Badge>}
+                    {page.deprecated && (
+                      <Badge variant="yellow" css={{ ml: '$2' }}>
+                        Deprecated
+                      </Badge>
+                    )}
+                  </NavItem>
+                ))}
+              </Box>
+            ))}
 
             <Box css={{ mt: '$8' }}>
               <NavHeading>Resources</NavHeading>
