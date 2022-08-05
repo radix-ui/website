@@ -151,7 +151,7 @@ function EditPageLink() {
 }
 
 function useCurrentPageSlug() {
-  return useRouter().asPath.substring(1);
+  return useRouter().asPath.substring(1).split('#')[0];
 }
 
 export {
