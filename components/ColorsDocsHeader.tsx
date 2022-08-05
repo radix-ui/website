@@ -43,6 +43,8 @@ export const ColorsDocsHeader = (props: ColorsDocsHeaderProps) => {
               </ResourcesPopover>
             </Box>
 
+            <ThemeToggle />
+
             <Box css={{ '@bp2': { display: 'none' } }}>
               <Tooltip content="Menu">
                 <IconButton
@@ -54,8 +56,6 @@ export const ColorsDocsHeader = (props: ColorsDocsHeaderProps) => {
                 </IconButton>
               </Tooltip>
             </Box>
-
-            <ThemeToggle />
           </Flex>
         </Flex>
       </Container>

@@ -38,6 +38,7 @@ export const PrimitivesDocsHeader = (props: PrimitivesDocsHeaderProps) => {
           </Box>
 
           <Flex css={{ position: 'absolute', right: '$5', gap: '$2' }}>
+            <ThemeToggle />
             <Tooltip content="Menu">
               <IconButton
                 onClick={onMobileMenuButtonClick}
@@ -47,7 +48,6 @@ export const PrimitivesDocsHeader = (props: PrimitivesDocsHeaderProps) => {
                 <HamburgerMenuIcon />
               </IconButton>
             </Tooltip>
-            <ThemeToggle />
           </Flex>
         </Flex>
       </Container>
