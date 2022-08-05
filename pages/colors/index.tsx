@@ -16,12 +16,12 @@ import {
 import { ArrowBottomRightIcon, ArrowRightIcon, ExternalLinkIcon } from '@radix-ui/react-icons';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { Footer } from '@components/Footer';
-import { Header } from '@components/Header';
+import { DefaultHeader } from '@components/DefaultHeader';
 
 export default function ColorsHome() {
   return (
     <Box>
-      <Header />
+      <DefaultHeader />
 
       <Box css={{ py: '$4', mt: '$2' }}>
         <TitleAndMetaTags

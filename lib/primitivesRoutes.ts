@@ -9,6 +9,7 @@ export const primitivesRoutes = [
       { title: 'Accessibility', slug: 'docs/primitives/overview/accessibility' },
       { title: 'Server side rendering', slug: 'docs/primitives/overview/server-side-rendering' },
       { title: 'Releases', slug: 'docs/primitives/overview/releases' },
+      { title: 'Case studies', slug: 'case-studies' },
     ],
   },
 

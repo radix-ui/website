@@ -15,7 +15,7 @@ import {
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { MDXProvider, components } from '@components/MDXComponents';
 import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
-import { Header } from '@components/Header';
+import { DefaultHeader } from '@components/DefaultHeader';
 import { MarketingCaption } from '@components/marketing/MarketingCaption';
 import { CaseStudyLogo, CaseStudyLogoVariant } from '@components/marketing/CaseStudyLogo';
 import { Footer } from '@components/Footer';
@@ -54,7 +54,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
         image="default.png"
       />
 
-      <Header />
+      <DefaultHeader />
 
       <Container size={{ '@initial': 2, '@bp2': 3 }}>
         <Section>

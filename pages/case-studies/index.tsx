@@ -14,7 +14,7 @@ import {
   Separator,
 } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { Header } from '@components/Header';
+import { DefaultHeader } from '@components/DefaultHeader';
 import { CaseStudyLogo } from '@components/marketing/CaseStudyLogo';
 import { Footer } from '@components/Footer';
 import { LogoLink } from '@components/marketing/LogoLink';
@@ -30,7 +30,7 @@ export default function CaseStudy() {
         image="default.png"
       />
 
-      <Header />
+      <DefaultHeader />
 
       <Container size={{ '@initial': 2, '@bp2': 3 }}>
         <Section>

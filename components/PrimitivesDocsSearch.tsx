@@ -25,7 +25,6 @@ const ALGOLIA_INDEX_NAME = 'development_docs';
 
 const searchClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_PUBLIC_API_KEY);
 
-const SNIPPET_LENGTH = 15;
 const SUPPORTED_LEVELS = ['lvl0', 'lvl1', 'lvl2', 'lvl3', 'lvl4'] as const;
 type LevelContentType = typeof SUPPORTED_LEVELS[number];
 type ContentType = LevelContentType | 'content';
@@ -51,7 +50,17 @@ type AutocompleteApi = InternalAutocompleteApi<
 
 const SLASH_COMMAND_MESSAGE = 'Press Slash to start searching';
 
-export function Search() {
+type PrimitivesDocsSearchProps = {
+  variant?: 'mobile' | 'desktop';
+  onOpenChange?: (open: boolean) => void;
+};
+
+export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
+  const { variant = 'desktop', onOpenChange } = props;
+  const isMobile = variant === 'mobile';
+  const snippetLength = isMobile ? 7 : 15;
+  const hitsPerPage = isMobile ? 20 : 50;
+
   const inputRef = React.useRef<HTMLInputElement>(null);
   const formRef = React.useRef<HTMLFormElement>(null);
   const panelRef = React.useRef<HTMLDivElement>(null);
@@ -78,7 +87,10 @@ export function Search() {
         openOnFocus: false,
         debug: false,
         shouldPanelOpen: ({ state }) => Boolean(state.query),
-        onStateChange: ({ state }) => setSearchState(state),
+        onStateChange: ({ state }) => {
+          setSearchState(state);
+          onOpenChange?.(state.isOpen);
+        },
         getSources: ({ query, setStatus, state }) => {
           if (!query) return [];
           return searchClient
@@ -87,7 +99,7 @@ export function Search() {
                 indexName: ALGOLIA_INDEX_NAME,
                 query,
                 params: {
-                  hitsPerPage: 100,
+                  hitsPerPage,
                   attributesToRetrieve: [
                     'type',
                     'url',
@@ -99,12 +111,12 @@ export function Search() {
                     'content',
                   ],
                   attributesToSnippet: [
-                    `hierarchy.lvl0:${SNIPPET_LENGTH}`,
-                    `hierarchy.lvl1:${SNIPPET_LENGTH}`,
-                    `hierarchy.lvl2:${SNIPPET_LENGTH}`,
-                    `hierarchy.lvl3:${SNIPPET_LENGTH}`,
-                    `hierarchy.lvl4:${SNIPPET_LENGTH}`,
-                    `content:${SNIPPET_LENGTH}`,
+                    `hierarchy.lvl0:${snippetLength}`,
+                    `hierarchy.lvl1:${snippetLength}`,
+                    `hierarchy.lvl2:${snippetLength}`,
+                    `hierarchy.lvl3:${snippetLength}`,
+                    `hierarchy.lvl4:${snippetLength}`,
+                    `content:${snippetLength}`,
                   ],
                   snippetEllipsisText: '…',
                   highlightPreTag: '__aa-highlight__',
@@ -143,8 +155,8 @@ export function Search() {
     []
   );
 
+  // slash command to focus search
   React.useEffect(() => {
-    console.log('setup');
     const handleKeydown = (event: KeyboardEvent) => {
       if (!isEditingContent(event) && event.key === '/') {
         inputRef.current.focus();
@@ -155,88 +167,110 @@ export function Search() {
     return () => document.removeEventListener('keydown', handleKeydown);
   }, []);
 
-  const { getEnvironmentProps } = autocomplete;
+  // dismiss mobile keyboard when scrolling
   React.useEffect(() => {
-    if (formRef.current && panelRef.current && inputRef.current) {
-      const { onTouchStart, onTouchMove } = getEnvironmentProps({
-        formElement: formRef.current,
-        inputElement: inputRef.current,
-        panelElement: panelRef.current,
-      });
-
-      window.addEventListener('touchstart', onTouchStart);
-      window.addEventListener('touchmove', onTouchMove);
-
-      return () => {
-        window.removeEventListener('touchstart', onTouchStart);
-        window.removeEventListener('touchmove', onTouchMove);
-      };
-    }
-  }, [getEnvironmentProps, formRef, inputRef, panelRef]);
+    const onTouchMove = (event: TouchEvent) => {
+      const input = inputRef.current;
+      if (input === document.activeElement && event.target !== input) input.blur();
+    };
+    window.addEventListener('touchmove', onTouchMove);
+    return () => {
+      window.removeEventListener('touchmove', onTouchMove);
+    };
+  }, []);
 
   return (
-    <div {...autocomplete.getRootProps({})}>
+    <Box
+      {...autocomplete.getRootProps({})}
+      css={{
+        // for the panel to be positioned correctly without needing popper
+        position: 'relative',
+
+        '@bp2': { mr: '$7' },
+        '@media (min-width: 1130px)': { mr: 0 },
+      }}
+    >
       <Box
-        ref={formRef}
-        {...autocomplete.getFormProps({ inputElement: inputRef.current })}
-        as="form"
-        css={{ position: 'relative', width: 730 }}
+        css={
+          isMobile
+            ? { position: 'sticky', top: 0, pt: '$5', pb: '$2', backgroundColor: '$loContrast' }
+            : {}
+        }
       >
         <Box
-          {...autocomplete.getLabelProps({})}
-          as="label"
-          css={{ position: 'absolute', top: '$2', left: 'calc($3 - 3px)' }}
+          as="form"
+          ref={formRef}
+          {...autocomplete.getFormProps({ inputElement: inputRef.current })}
+          css={{ position: 'relative' }}
         >
-          <MagnifyingGlassIcon />
-          <VisuallyHidden>{SLASH_COMMAND_MESSAGE}.</VisuallyHidden>
-        </Box>
+          <Box
+            {...autocomplete.getLabelProps({})}
+            as="label"
+            css={{ position: 'absolute', top: '$2', left: 'calc($3 - 3px)' }}
+          >
+            <MagnifyingGlassIcon />
+            <VisuallyHidden>{SLASH_COMMAND_MESSAGE}.</VisuallyHidden>
+          </Box>
 
-        <TextField
-          ref={inputRef}
-          {...autocomplete.getInputProps({ inputElement: inputRef.current })}
-          type="search"
-          size="2"
-          css={{
-            px: '$6',
-            backgroundColor: '$gray3',
-            boxShadow: 'none',
+          <TextField
+            ref={inputRef}
+            {...autocomplete.getInputProps({ inputElement: inputRef.current })}
+            type="search"
+            size="2"
+            css={{
+              px: '$6',
+              backgroundColor: '$gray3',
+              boxShadow: 'none',
+              // we need at least 16px to prevent iOS safari from zooming in when focusing the input
+              fontSize: isMobile ? 16 : undefined,
 
-            '&:focus': {
-              boxShadow: 'inset 0px 0px 0px 1px $colors$gray8, 0px 0px 0px 1px $colors$gray8',
-            },
-
-            '&[type="search"]': {
-              /* clears the 'X' from Internet Explorer */
-              '&::-ms-clear, &::-ms-reveal': { display: 'none', width: 0, height: 0 },
-
-              /* clears the 'X' from Chrome */
-              [`&::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration`]: {
-                display: 'none',
+              '&:focus': {
+                boxShadow: 'inset 0px 0px 0px 1px $colors$gray8, 0px 0px 0px 1px $colors$gray8',
               },
-            },
-          }}
-        />
 
-        <Box css={{ position: 'absolute', top: '$1', right: '$1' }}>
+              '&[type="search"]': {
+                /* clears the 'X' from Internet Explorer */
+                '&::-ms-clear, &::-ms-reveal': { display: 'none', width: 0, height: 0 },
+
+                /* clears the 'X' from Chrome */
+                [`&::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration`]: {
+                  display: 'none',
+                },
+              },
+            }}
+          />
+
           {searchState.query ? (
             // show the clear button when there's a query in the input
-            <Tooltip content="Clear">
-              <IconButton type="reset">
-                <Cross2Icon />
-              </IconButton>
-            </Tooltip>
+            <Box css={{ position: 'absolute', top: '$1', right: '$1' }}>
+              <Tooltip content="Clear">
+                <IconButton type="reset">
+                  <Cross2Icon />
+                </IconButton>
+              </Tooltip>
+            </Box>
           ) : (
             // show the slash command info when there's no query in the input
-            <Tooltip content={SLASH_COMMAND_MESSAGE}>
-              <IconButton
-                css={{ boxShadow: 'inset 0px 0px 0px 1px $colors$gray6', color: '$gray11' }}
-                onClick={() => requestAnimationFrame(() => inputRef.current.focus())}
-                // we can take make it unreachable via keyboard as we have the same message for the SR label
-                tabIndex={-1}
-              >
-                <kbd aria-hidden>/</kbd>
-              </IconButton>
-            </Tooltip>
+            <Box
+              css={{
+                position: 'absolute',
+                top: '$1',
+                right: '$1',
+                display: 'none',
+                '@bp1': { display: 'block' },
+              }}
+            >
+              <Tooltip content={SLASH_COMMAND_MESSAGE}>
+                <IconButton
+                  css={{ boxShadow: 'inset 0px 0px 0px 1px $colors$gray6', color: '$gray11' }}
+                  onClick={() => requestAnimationFrame(() => inputRef.current.focus())}
+                  // we can take make it unreachable via keyboard as we have the same message for the SR label
+                  tabIndex={-1}
+                >
+                  <kbd aria-hidden>/</kbd>
+                </IconButton>
+              </Tooltip>
+            </Box>
           )}
         </Box>
       </Box>
@@ -244,43 +278,54 @@ export function Search() {
       {searchState.isOpen && (
         <DismissableLayer
           asChild
-          disableOutsidePointerEvents
-          onPointerDownOutside={() => autocomplete.setIsOpen(false)}
+          disableOutsidePointerEvents={!isMobile}
+          onPointerDownOutside={() => {
+            if (!isMobile) autocomplete.setIsOpen(false);
+          }}
         >
-          <Panel
-            ref={panelRef}
-            {...autocomplete.getPanelProps({})}
-            css={{
-              position: 'absolute',
-              mt: '$1',
-              width: 730,
-              maxHeight: '80vh',
-              overflow: 'auto',
-              p: '$2',
+          {isMobile ? (
+            <Box
+              ref={panelRef}
+              {...autocomplete.getPanelProps({})}
+              css={{
+                py: '$2',
+                // ensure padding when scrolling via keyboard
+                scrollPaddingTop: '$2',
+                scrollPaddingBottom: '$2',
+              }}
+            >
+              <SearchResults searchState={searchState} autocomplete={autocomplete} />
+            </Box>
+          ) : (
+            <Panel
+              ref={panelRef}
+              {...autocomplete.getPanelProps({})}
+              css={{
+                position: 'absolute',
+                left: 0,
+                right: 0,
+                mt: '$1',
+                maxHeight: '80vh',
+                overflow: 'auto',
+                p: '$2',
 
-              // ensure padding when scrolling via keyboard
-              scrollPaddingTop: '$2',
-              scrollPaddingBottom: '$2',
+                // ensure padding when scrolling via keyboard
+                scrollPaddingTop: '$2',
+                scrollPaddingBottom: '$2',
 
-              // hide native scrollbar
-              scrollbarWidth: 'none',
-              MsOverflowStyle: 'none',
-              WebkitOverflowScrolling: 'touch',
-              '&::-webkit-scrollbar': { display: 'none' },
-
-              // bold any highlights
-              mark: {
-                backgroundColor: 'transparent',
-                color: 'inherit',
-                fontWeight: '500',
-              },
-            }}
-          >
-            <SearchResults searchState={searchState} autocomplete={autocomplete} />
-          </Panel>
+                // hide native scrollbar
+                scrollbarWidth: 'none',
+                MsOverflowStyle: 'none',
+                WebkitOverflowScrolling: 'touch',
+                '&::-webkit-scrollbar': { display: 'none' },
+              }}
+            >
+              <SearchResults searchState={searchState} autocomplete={autocomplete} />
+            </Panel>
+          )}
         </DismissableLayer>
       )}
-    </div>
+    </Box>
   );
 }
 
@@ -298,7 +343,7 @@ const SearchResults = React.memo(
           >
             <ExclamationTriangleIcon />
           </Box>
-          <mark>Unable to fetch results.</mark> You might want to check your network connection.
+          <Mark>Unable to fetch results.</Mark> You might want to check your network connection.
         </ItemTitle>
       );
     }
@@ -306,7 +351,7 @@ const SearchResults = React.memo(
     if (!hasResults) {
       return (
         <ItemTitle size="3" css={{ p: '$2' }}>
-          No results for <mark>“{searchState.query}”</mark>
+          No results for <Mark>“{searchState.query}”</Mark>
         </ItemTitle>
       );
     }
@@ -314,7 +359,7 @@ const SearchResults = React.memo(
     return (
       <>
         {searchState.collections.map((collection, index) => (
-          <>
+          <React.Fragment key={collection.source.sourceId}>
             {index > 0 && (
               <Box
                 as="hr"
@@ -322,7 +367,7 @@ const SearchResults = React.memo(
               />
             )}
 
-            <section key={collection.source.sourceId}>
+            <section>
               {collection.items.length > 0 && (
                 <Box
                   as="ul"
@@ -333,7 +378,7 @@ const SearchResults = React.memo(
                     p: 0,
                     li: {
                       borderRadius: '$1',
-                      '&[aria-selected="true"]': { backgroundColor: '$violet3' },
+                      '&[aria-selected="true"], &:active': { backgroundColor: '$violet3' },
                     },
                   }}
                 >
@@ -348,7 +393,7 @@ const SearchResults = React.memo(
                 </Box>
               )}
             </section>
-          </>
+          </React.Fragment>
         ))}
       </>
     );
@@ -420,11 +465,17 @@ function Highlight<THit>({ hit, attribute }: { hit: THit; attribute: keyof THit 
   return (
     <>
       {parseAlgoliaHitSnippet<THit>({ hit, attribute }).map(({ value, isHighlighted }, index) =>
-        isHighlighted ? <mark key={index}>{value}</mark> : value
+        isHighlighted ? <Mark key={index}>{value}</Mark> : value
       )}
     </>
   );
 }
+
+const Mark = styled('mark', {
+  backgroundColor: 'transparent',
+  color: 'inherit',
+  fontWeight: '500',
+});
 
 function groupBy<TValue extends Record<string, unknown>>(
   values: TValue[],
