@@ -151,7 +151,13 @@ function EditPageLink() {
 }
 
 function useCurrentPageSlug() {
-  return useRouter().asPath.substring(1).split('#')[0];
+  const router = useRouter();
+  const routerSlug = router.query.slug;
+  let currentPageSlug = router.pathname.substring(1);
+  if (Array.isArray(routerSlug)) {
+    return currentPageSlug.replace('[...slug]', routerSlug[0]);
+  }
+  return currentPageSlug.replace('[slug]', routerSlug);
 }
 
 export {
