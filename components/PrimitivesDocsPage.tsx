@@ -25,8 +25,8 @@ export function PrimitivesDocsPage({ children }: { children: React.ReactNode }) 
 
   React.useEffect(() => {
     const handleRouteChange = () => setIsMobileMenuOpen(false);
-    router.events.on('routeChangeComplete', handleRouteChange);
-    return () => router.events.off('routeChangeComplete', handleRouteChange);
+    router.events.on('routeChangeStart', handleRouteChange);
+    return () => router.events.off('routeChangeStart', handleRouteChange);
   }, []);
 
   return (
@@ -49,7 +49,11 @@ export function PrimitivesDocsPage({ children }: { children: React.ReactNode }) 
               '@bp2': { display: 'none' },
             }}
           >
-            <PrimitivesDocsSearch variant="mobile" onOpenChange={setIsSearchOpen} />
+            <PrimitivesDocsSearch
+              variant="mobile"
+              onOpenChange={setIsSearchOpen}
+              onSelect={() => setIsMobileMenuOpen(false)}
+            />
           </Box>
 
           <Box css={{ display: isSearchOpen ? 'none' : undefined, mt: '$4' }}>

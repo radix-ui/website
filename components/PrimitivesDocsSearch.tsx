@@ -16,6 +16,7 @@ import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import type {
   AutocompleteState as InternalAutocompleteState,
   AutocompleteApi as InternalAutocompleteApi,
+  AutocompleteSource as InternalAutocompleteSource,
 } from '@algolia/autocomplete-core';
 import type { Hit } from '@algolia/client-search';
 
@@ -47,16 +48,18 @@ type AutocompleteApi = InternalAutocompleteApi<
   React.MouseEvent,
   React.KeyboardEvent
 >;
+type AutocompleteSource = InternalAutocompleteSource<SearchItem>;
 
 const SLASH_COMMAND_MESSAGE = 'Press Slash to start searching';
 
 type PrimitivesDocsSearchProps = {
   variant?: 'mobile' | 'desktop';
   onOpenChange?: (open: boolean) => void;
+  onSelect?: AutocompleteSource['onSelect'];
 };
 
 export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
-  const { variant = 'desktop', onOpenChange } = props;
+  const { variant = 'desktop', onOpenChange, onSelect } = props;
   const isMobile = variant === 'mobile';
   const snippetLength = isMobile ? 7 : 15;
   const hitsPerPage = isMobile ? 20 : 50;
@@ -141,14 +144,18 @@ export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
               const sources = groupBy(hits, (hit) => hit.hierarchy.lvl0);
               return Object.entries(sources)
                 .sort(sortSources)
-                .map(([lvl0, items]) => {
-                  return {
-                    sourceId: lvl0,
-                    getItemUrl: ({ item }) => item.url,
-                    getItems: () => items,
-                    // getItems: () => Object.values(groupBy(items, (item) => item.hierarchy.lvl1)),
-                  };
-                });
+                .map(([lvl0, items]) => ({
+                  onSelect: (params) => {
+                    // dismiss keyboard on mobile
+                    if (isMobile) inputRef.current.blur();
+                    params.setIsOpen(false);
+                    onSelect?.(params);
+                  },
+                  sourceId: lvl0,
+                  getItemUrl: ({ item }) => item.url,
+                  getItems: () => items,
+                  // getItems: () => Object.values(groupBy(items, (item) => item.hierarchy.lvl1)),
+                }));
             });
         },
       }),
