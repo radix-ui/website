@@ -271,7 +271,7 @@ export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
                 <IconButton
                   css={{ boxShadow: 'inset 0px 0px 0px 1px $colors$gray6', color: '$gray11' }}
                   onClick={() => requestAnimationFrame(() => inputRef.current.focus())}
-                  // we can take make it unreachable via keyboard as we have the same message for the SR label
+                  // we can make it unreachable via keyboard as we have the same message for the SR label
                   tabIndex={-1}
                 >
                   <kbd aria-hidden>/</kbd>
