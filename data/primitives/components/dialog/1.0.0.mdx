@@ -383,7 +383,7 @@ const mockPromise = async () =>
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
 export default () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = React.useState(false);
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
