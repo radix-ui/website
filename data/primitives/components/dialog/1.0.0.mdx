@@ -393,7 +393,7 @@ export default () => {
           <Dialog.Content>
             <form
               onSubmit={async () => {
-                mockPromise().then(() => setFormDialogOpenState(false));
+                mockPromise().then(() => setOpen(false));
               }}
             >
               {/** some inputs */}
