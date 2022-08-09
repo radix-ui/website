@@ -208,7 +208,12 @@ export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
           as="form"
           ref={formRef}
           {...autocomplete.getFormProps({ inputElement: inputRef.current })}
-          css={{ position: 'relative' }}
+          css={{
+            position: 'relative',
+
+            // Allow immediate interaction with input controls when autcomplete is open
+            pointerEvents: 'auto',
+          }}
         >
           <Box
             {...autocomplete.getLabelProps({})}
@@ -286,8 +291,10 @@ export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
         <DismissableLayer
           asChild
           disableOutsidePointerEvents={!isMobile}
-          onPointerDownOutside={() => {
-            if (!isMobile) autocomplete.setIsOpen(false);
+          onPointerDownOutside={(event) => {
+            const target = event.target as HTMLElement;
+            const isPointerDownInForm = formRef.current.contains(target);
+            if (!isMobile && !isPointerDownInForm) autocomplete.setIsOpen(false);
           }}
         >
           {isMobile ? (
