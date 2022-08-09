@@ -21,7 +21,6 @@ export function ColorsDocsPage({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const currentPageSlug = useCurrentPageSlug();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
-  //
 
   React.useEffect(() => {
     const handleRouteChange = () => setIsMobileMenuOpen(false);

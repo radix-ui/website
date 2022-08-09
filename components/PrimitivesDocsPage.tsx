@@ -24,17 +24,6 @@ export function PrimitivesDocsPage({ children }: { children: React.ReactNode }) 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   React.useEffect(() => {
-    const mediaQueryList = window.matchMedia('(min-width: 900px)');
-
-    const handleChange = () => {
-      if (mediaQueryList.matches) setIsMobileMenuOpen(false);
-    };
-
-    mediaQueryList.addEventListener('change', handleChange);
-    return () => mediaQueryList.removeEventListener('change', handleChange);
-  }, []);
-
-  React.useEffect(() => {
     const handleRouteChange = () => setIsMobileMenuOpen(false);
     router.events.on('routeChangeStart', handleRouteChange);
     return () => router.events.off('routeChangeStart', handleRouteChange);

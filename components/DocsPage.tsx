@@ -29,8 +29,21 @@ function MainWrapper(props) {
 }
 
 function NavWrapper({ children, isMobileMenuOpen }) {
+  const [isMobileLayout, setIsMobileLayout] = React.useState(false);
+
+  React.useEffect(() => {
+    // Match @bp2
+    const mediaQueryList = window.matchMedia('(min-width: 900px)');
+
+    const handleChange = () => setIsMobileLayout(!mediaQueryList.matches);
+    handleChange();
+
+    mediaQueryList.addEventListener('change', handleChange);
+    return () => mediaQueryList.removeEventListener('change', handleChange);
+  }, []);
+
   return (
-    <RemoveScroll as={Slot} allowPinchZoom enabled={isMobileMenuOpen}>
+    <RemoveScroll as={Slot} allowPinchZoom enabled={isMobileLayout && isMobileMenuOpen}>
       <Box
         css={{
           position: 'fixed',
