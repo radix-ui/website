@@ -9,7 +9,6 @@ import {
   CaretRightIcon,
 } from '@radix-ui/react-icons';
 import { RemoveScroll } from 'react-remove-scroll';
-import Link from 'next/link';
 import { Box, TextField, Panel, IconButton, Tooltip, Text, styled } from '@modulz/design-system';
 import { DismissableLayer } from '@radix-ui/react-dismissable-layer';
 import { Slot } from '@radix-ui/react-slot';
@@ -437,19 +436,21 @@ const SearchResults = React.memo(
 
 function ItemLink({ item }: { item: SearchItem }) {
   return (
-    <Link href={item.url} passHref>
-      <Box as="a" css={{ display: 'block', p: '$2', textDecoration: 'none', color: 'inherit' }}>
-        <ItemTitle as="p" variant="violet" size="3" css={{ mb: '$1' }}>
-          <Highlight
-            hit={item}
-            attribute={item.type === 'content' ? 'content' : ['hierarchy', item.type]}
-          />
-        </ItemTitle>
-        {/* Adding a semi-colon to insert a break in the speech flow */}
-        <VisuallyHidden>; </VisuallyHidden>
-        <ItemBreadcrumb item={item} levels={SUPPORTED_LEVELS} />
-      </Box>
-    </Link>
+    <Box
+      href={item.url}
+      as="a"
+      css={{ display: 'block', p: '$2', textDecoration: 'none', color: 'inherit' }}
+    >
+      <ItemTitle as="p" variant="violet" size="3" css={{ mb: '$1' }}>
+        <Highlight
+          hit={item}
+          attribute={item.type === 'content' ? 'content' : ['hierarchy', item.type]}
+        />
+      </ItemTitle>
+      {/* Adding a semi-colon to insert a break in the speech flow */}
+      <VisuallyHidden>; </VisuallyHidden>
+      <ItemBreadcrumb item={item} levels={SUPPORTED_LEVELS} />
+    </Box>
   );
 }
 
