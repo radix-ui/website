@@ -231,7 +231,6 @@ export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
           <TextField
             ref={inputRef}
             {...autocomplete.getInputProps({ inputElement: inputRef.current })}
-            type="search"
             size="2"
             css={{
               px: '$6',
