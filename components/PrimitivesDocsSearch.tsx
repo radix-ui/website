@@ -329,12 +329,6 @@ export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
                   // ensure padding when scrolling via keyboard
                   scrollPaddingTop: '$2',
                   scrollPaddingBottom: '$2',
-
-                  // hide native scrollbar
-                  scrollbarWidth: 'none',
-                  MsOverflowStyle: 'none',
-                  WebkitOverflowScrolling: 'touch',
-                  '&::-webkit-scrollbar': { display: 'none' },
                 }}
               >
                 <SearchResults searchState={searchState} autocomplete={autocomplete} />
