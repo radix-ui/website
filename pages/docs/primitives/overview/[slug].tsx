@@ -19,6 +19,10 @@ export default function OverviewDoc({ frontmatter, code }: Doc) {
 
   return (
     <>
+      <div data-algolia-lvl0 style={{ display: 'none' }}>
+        Overview
+      </div>
+
       <TitleAndMetaTags
         title={`${frontmatter.metaTitle} – Radix UI`}
         description={frontmatter.metaDescription}

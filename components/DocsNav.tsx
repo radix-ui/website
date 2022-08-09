@@ -2,17 +2,9 @@ import React from 'react';
 import NextLink from 'next/link';
 import { Text, Box } from '@modulz/design-system';
 
-export function NavHeading({ children }: { children: React.ReactNode }) {
+export function NavHeading({ children, ...props }: { children: React.ReactNode }) {
   return (
-    <Text
-      as="h4"
-      size="3"
-      css={{
-        fontWeight: 500,
-        px: '$5',
-        py: '$2',
-      }}
-    >
+    <Text as="h4" size="3" css={{ fontWeight: 500, px: '$3', py: '$2' }} {...props}>
       {children}
     </Text>
   );
@@ -43,8 +35,9 @@ export function NavItem({ children, active, disabled, href, ...props }: NavItemP
           textDecoration: 'none',
           color: disabled ? '$gray10' : '$hiContrast',
           py: '$2',
-          px: '$5',
+          px: '$3',
           backgroundColor: active ? '$violet5' : 'transparent',
+          borderRadius: 9999,
           userSelect: 'none',
           minHeight: '$6',
           transition: 'background-color 50ms linear',
@@ -61,5 +54,13 @@ export function NavItem({ children, active, disabled, href, ...props }: NavItemP
         {children}
       </Box>
     </Box>
+  );
+}
+
+export function NavItemTitle({ children }) {
+  return (
+    <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
+      {children}
+    </Text>
   );
 }

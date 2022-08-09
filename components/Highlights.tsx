@@ -63,7 +63,12 @@ export function Highlights({ features }) {
         </Box>
       </Box>
 
-      <Box css={{ width: 'fit-content' }} as="nav" aria-labelledby="site-component-info-heading">
+      <Box
+        css={{ width: 'fit-content' }}
+        as="nav"
+        aria-labelledby="site-component-info-heading"
+        data-algolia-exclude
+      >
         <VisuallyHidden asChild>
           <h2 id="site-component-info-heading">Component Reference Links</h2>
         </VisuallyHidden>

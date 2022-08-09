@@ -30,7 +30,12 @@ export const components = {
   TabsList: (props) => <DS.TabsList {...props} css={{ ...props.css, mx: '$2' }} />,
   CodeBlock,
   h1: (props) => (
-    <DS.Text {...props} as="h1" size="8" css={{ fontWeight: 500, mb: '$2', lineHeight: '40px' }} />
+    <DS.Text
+      {...props}
+      as="h1"
+      size="8"
+      css={{ scrollMarginTop: '$9', fontWeight: 500, mb: '$2', lineHeight: '40px' }}
+    />
   ),
   Description: ({ children, ...props }) => {
     // takes the text even if it's wrapped in `<p>`
@@ -47,7 +52,7 @@ export const components = {
         {...props}
         id={id}
         as={'h2' as any}
-        css={{ scrollMarginTop: '$8' }}
+        css={{ scrollMarginTop: '$9' }}
         data-heading
       >
         {children}
@@ -56,13 +61,18 @@ export const components = {
   ),
   h3: ({ children, id, ...props }) => (
     <LinkHeading id={id} css={{ mt: '$7', mb: '$1' }}>
-      <DS.Heading {...props} id={id} as={'h3' as any} css={{ scrollMarginTop: '$8' }} data-heading>
+      <DS.Heading {...props} id={id} as={'h3' as any} css={{ scrollMarginTop: '$9' }} data-heading>
         {children}
       </DS.Heading>
     </LinkHeading>
   ),
   h4: (props) => (
-    <DS.Text as="h4" {...props} size="4" css={{ mb: '$3', lineHeight: '27px', fontWeight: 500 }} />
+    <DS.Text
+      as="h4"
+      {...props}
+      size="4"
+      css={{ scrollMarginTop: '$9', mb: '$3', lineHeight: '27px', fontWeight: 500 }}
+    />
   ),
   p: (props) => <DS.Paragraph {...props} css={{ mb: '$3' }} as="p" />,
   a: ({ href = '', ...props }) => {

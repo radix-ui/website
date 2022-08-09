@@ -2,11 +2,9 @@ import React from 'react';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
-import { globalCss, darkTheme, DesignSystemProvider, Box } from '@modulz/design-system';
-import { Header } from '@components/Header';
-import { PrimitivesPage } from '@components/PrimitivesPage';
-import { DesignSystemPage } from '@components/DesignSystemPage';
-import { ColorsPage } from '@components/ColorsPage';
+import { globalCss, darkTheme, DesignSystemProvider } from '@modulz/design-system';
+import { PrimitivesDocsPage } from '@components/PrimitivesDocsPage';
+import { ColorsDocsPage } from '@components/ColorsDocsPage';
 import { useAnalytics } from '@lib/analytics';
 import Head from 'next/head';
 
@@ -56,10 +54,9 @@ function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   const isPrimitivesDocs = router.pathname.includes('/docs/primitives');
-  const isDesignSystemDocs = router.pathname.includes('/docs/design-system');
   const isColorsDocs = router.pathname.includes('/docs/colors');
   const isIFrame = router.pathname.includes('/iframe');
-  const isDocsPage = isPrimitivesDocs || isDesignSystemDocs || isColorsDocs || isIFrame;
+  const isDocsPage = isPrimitivesDocs || isColorsDocs || isIFrame;
 
   if (isIFrame) {
     return (
@@ -91,44 +88,16 @@ function App({ Component, pageProps }: AppProps) {
         value={{ light: 'light-theme', dark: darkTheme.className }}
         defaultTheme="system"
       >
-        {!isDocsPage && <Component {...pageProps} />}
-        {isDocsPage && (
-          <>
-            <Box
-              css={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: '100%',
-                boxShadow: '0 0 0 1px $colors$mauve5',
-                zIndex: 2,
-                backgroundColor: '$loContrast',
-
-                '.dark-theme &': {
-                  backgroundColor: '$mauve1',
-                },
-              }}
-            >
-              <Header />
-            </Box>
-            <Box css={{ pt: '$8', position: 'relative', zIndex: 1 }}>
-              {isPrimitivesDocs && (
-                <PrimitivesPage>
-                  <Component {...pageProps} />
-                </PrimitivesPage>
-              )}
-              {isDesignSystemDocs && (
-                <DesignSystemPage>
-                  <Component {...pageProps} />
-                </DesignSystemPage>
-              )}
-              {isColorsDocs && (
-                <ColorsPage>
-                  <Component {...pageProps} />
-                </ColorsPage>
-              )}
-            </Box>
-          </>
+        {isPrimitivesDocs ? (
+          <PrimitivesDocsPage>
+            <Component {...pageProps} />
+          </PrimitivesDocsPage>
+        ) : isColorsDocs ? (
+          <ColorsDocsPage>
+            <Component {...pageProps} />
+          </ColorsDocsPage>
+        ) : (
+          <Component {...pageProps} />
         )}
       </ThemeProvider>
     </DesignSystemProvider>

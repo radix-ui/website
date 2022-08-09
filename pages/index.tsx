@@ -11,7 +11,7 @@ import { AdoptionSection } from '@components/marketing/AdoptionSection';
 import { CommunitySection } from '@components/marketing/CommunitySection';
 import { OtherProductsSection } from '@components/marketing/OtherProductsSection';
 import { Footer } from '@components/Footer';
-import { Header } from '@components/Header';
+import { DefaultHeader } from '@components/DefaultHeader';
 import { FancyBackground } from '@components/marketing/FancyBackground';
 import { StatsSection } from '@components/marketing/StatsSection';
 
@@ -24,7 +24,7 @@ export default function PrimitivesHome() {
         image="default.png"
       />
       <FancyBackground>
-        <Header />
+        <DefaultHeader />
         <MainHero />
       </FancyBackground>
       <CaseStudiesSection />

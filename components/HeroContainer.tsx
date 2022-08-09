@@ -4,6 +4,7 @@ import { Box, theme } from '@modulz/design-system';
 export function HeroContainer({ css, children }: { css?: any; children?: React.ReactNode }) {
   return (
     <Box
+      data-algolia-exclude
       // In case any semantic content sneaks through in a hero, let's hide it
       // from the a11y tree since this is a presentational component.
       role="presentation"

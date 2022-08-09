@@ -21,6 +21,10 @@ export default function UtilitiesDoc({ frontmatter, code }: Doc) {
 
   return (
     <>
+      <div data-algolia-lvl0 style={{ display: 'none' }}>
+        Utilities
+      </div>
+
       <TitleAndMetaTags
         title={`${frontmatter.metaTitle} – Radix UI`}
         description={frontmatter.metaDescription}
