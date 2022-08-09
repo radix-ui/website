@@ -166,6 +166,21 @@ export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
     []
   );
 
+  // Reset autocomplete state when transitioning between mobile and desktop
+  // This avoids persisting global layout changes when switching
+  React.useEffect(() => {
+    // Match @bp2
+    const mediaQueryList = window.matchMedia('(min-width: 900px)');
+
+    const handleChange = () => {
+      formRef.current.reset();
+      autocomplete.setIsOpen(false);
+    };
+
+    mediaQueryList.addEventListener('change', handleChange);
+    return () => mediaQueryList.removeEventListener('change', handleChange);
+  }, [autocomplete.setIsOpen]);
+
   // slash command to focus search
   React.useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
