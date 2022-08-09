@@ -89,6 +89,8 @@ export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
       >({
         // Provide deterministic id to prevent client / server mismatch warning
         id: 'radix-autocomplete',
+        // Always highlight the first result
+        defaultActiveItemId: 0,
         placeholder: 'Search Radix Primitives',
         openOnFocus: false,
         debug: false,
