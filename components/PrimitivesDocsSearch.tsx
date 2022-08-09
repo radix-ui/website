@@ -8,9 +8,11 @@ import {
   ExclamationTriangleIcon,
   CaretRightIcon,
 } from '@radix-ui/react-icons';
+import { RemoveScroll } from 'react-remove-scroll';
 import Link from 'next/link';
 import { Box, TextField, Panel, IconButton, Tooltip, Text, styled } from '@modulz/design-system';
 import { DismissableLayer } from '@radix-ui/react-dismissable-layer';
+import { Slot } from '@radix-ui/react-slot';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
 import type {
@@ -288,56 +290,58 @@ export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
       </Box>
 
       {searchState.isOpen && (
-        <DismissableLayer
-          asChild
-          disableOutsidePointerEvents={!isMobile}
-          onPointerDownOutside={(event) => {
-            const target = event.target as HTMLElement;
-            const isPointerDownInForm = formRef.current.contains(target);
-            if (!isMobile && !isPointerDownInForm) autocomplete.setIsOpen(false);
-          }}
-        >
-          {isMobile ? (
-            <Box
-              ref={panelRef}
-              {...autocomplete.getPanelProps({})}
-              css={{
-                py: '$2',
-                // ensure padding when scrolling via keyboard
-                scrollPaddingTop: '$2',
-                scrollPaddingBottom: '$2',
-              }}
-            >
-              <SearchResults searchState={searchState} autocomplete={autocomplete} />
-            </Box>
-          ) : (
-            <Panel
-              ref={panelRef}
-              {...autocomplete.getPanelProps({})}
-              css={{
-                position: 'absolute',
-                left: 0,
-                right: 0,
-                mt: '$1',
-                maxHeight: '80vh',
-                overflow: 'auto',
-                p: '$2',
+        <RemoveScroll as={Slot} allowPinchZoom enabled={!isMobile}>
+          <DismissableLayer
+            asChild
+            disableOutsidePointerEvents={!isMobile}
+            onPointerDownOutside={(event) => {
+              const target = event.target as HTMLElement;
+              const isPointerDownInForm = formRef.current.contains(target);
+              if (!isMobile && !isPointerDownInForm) autocomplete.setIsOpen(false);
+            }}
+          >
+            {isMobile ? (
+              <Box
+                ref={panelRef}
+                {...autocomplete.getPanelProps({})}
+                css={{
+                  py: '$2',
+                  // ensure padding when scrolling via keyboard
+                  scrollPaddingTop: '$2',
+                  scrollPaddingBottom: '$2',
+                }}
+              >
+                <SearchResults searchState={searchState} autocomplete={autocomplete} />
+              </Box>
+            ) : (
+              <Panel
+                ref={panelRef}
+                {...autocomplete.getPanelProps({})}
+                css={{
+                  position: 'absolute',
+                  left: 0,
+                  right: 0,
+                  mt: '$1',
+                  maxHeight: '80vh',
+                  overflow: 'auto',
+                  p: '$2',
 
-                // ensure padding when scrolling via keyboard
-                scrollPaddingTop: '$2',
-                scrollPaddingBottom: '$2',
+                  // ensure padding when scrolling via keyboard
+                  scrollPaddingTop: '$2',
+                  scrollPaddingBottom: '$2',
 
-                // hide native scrollbar
-                scrollbarWidth: 'none',
-                MsOverflowStyle: 'none',
-                WebkitOverflowScrolling: 'touch',
-                '&::-webkit-scrollbar': { display: 'none' },
-              }}
-            >
-              <SearchResults searchState={searchState} autocomplete={autocomplete} />
-            </Panel>
-          )}
-        </DismissableLayer>
+                  // hide native scrollbar
+                  scrollbarWidth: 'none',
+                  MsOverflowStyle: 'none',
+                  WebkitOverflowScrolling: 'touch',
+                  '&::-webkit-scrollbar': { display: 'none' },
+                }}
+              >
+                <SearchResults searchState={searchState} autocomplete={autocomplete} />
+              </Panel>
+            )}
+          </DismissableLayer>
+        </RemoveScroll>
       )}
     </Box>
   );
