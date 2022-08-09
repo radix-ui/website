@@ -22,7 +22,6 @@ import type { Hit } from '@algolia/client-search';
 
 const ALGOLIA_APP_ID = 'VXVOLU3YVQ';
 const ALGOLIA_PUBLIC_API_KEY = '9d44395c1b7b172ac84b7e5ab80bf8c5';
-const ALGOLIA_INDEX_NAME = 'development_docs';
 
 const searchClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_PUBLIC_API_KEY);
 
@@ -86,6 +85,8 @@ export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
         React.MouseEvent,
         React.KeyboardEvent
       >({
+        // Provide deterministic id to prevent client / server mismatch warning
+        id: 'radix-autocomplete',
         placeholder: 'Search Radix Primitives',
         openOnFocus: false,
         debug: false,
@@ -99,7 +100,7 @@ export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
           return searchClient
             .search<SearchItem>([
               {
-                indexName: ALGOLIA_INDEX_NAME,
+                indexName: process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME,
                 query,
                 params: {
                   hitsPerPage,
@@ -154,7 +155,6 @@ export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
                   sourceId: lvl0,
                   getItemUrl: ({ item }) => item.url,
                   getItems: () => items,
-                  // getItems: () => Object.values(groupBy(items, (item) => item.hierarchy.lvl1)),
                 }));
             });
         },
