@@ -437,7 +437,7 @@ const SearchResults = React.memo(
 
 function ItemLink({ item }: { item: SearchItem }) {
   return (
-    <Link href={item.url} passHref>
+    <Link href={item.url} passHref prefetch={false}>
       <Box as="a" css={{ display: 'block', p: '$2', textDecoration: 'none', color: 'inherit' }}>
         <ItemTitle as="p" variant="violet" size="3" css={{ mb: '$1' }}>
           <Highlight
