@@ -33,8 +33,8 @@ const Input = styled('input', {
 });
 
 const LabelDemo = () => (
-  <Flex css={{ padding: '0 20px', flexWrap: 'wrap', alignItems: 'center' }}>
-    <Label htmlFor="firstName" css={{ lineHeight: '35px', marginRight: 15 }}>
+  <Flex css={{ padding: '0 20px', flexWrap: 'wrap', gap: 15, alignItems: 'center' }}>
+    <Label htmlFor="firstName" css={{ lineHeight: '35px' }}>
       First name
     </Label>
     <Input type="text" id="firstName" defaultValue="Pedro Duarte" />
