@@ -215,6 +215,20 @@ The toast that automatically closes. It should not be held open to [acquire a us
       ),
     },
     {
+      name: 'onPause',
+      type: '() => void',
+      typeSimple: 'function',
+      description:
+        'Event handler called when the dismiss timer is paused. This occurs when the pointer is moved over the viewport, the viewport is focused or when the window is blurred.',
+    },
+    {
+      name: 'onResume',
+      type: '() => void',
+      typeSimple: 'function',
+      description:
+        'Event handler called when the dismiss timer is resumed. This occurs when the pointer is moved away from the viewport, the viewport is blurred or when the window is focused.',
+    },
+    {
       name: 'onSwipeStart',
       type: '(event: SwipeEvent) => void',
       typeSimple: 'function',
