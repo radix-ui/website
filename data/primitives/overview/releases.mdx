@@ -7,6 +7,30 @@ metaDescription: Radix Primitives releases and their changelogs.
 
 <Description>Radix Primitives releases and their changelogs.</Description>
 
+## ???, 2022
+
+<PackageRelease name="Alert Dialog" version="1.0.1" />
+
+- Fix issue with textarea elements not being scrollable in Firefox <PRLink id={1550} />
+
+<PackageRelease name="Dialog" version="1.0.1" />
+
+- Fix issue with textarea elements not being scrollable in Firefox <PRLink id={1550} />
+
+<PackageRelease name="Dropdown Menu" version="1.0.1" />
+
+- Correctly pair `DropdownMenu.Trigger` open state with `aria-expanded` when closed <PRLink id={1644} />
+
+<PackageRelease name="Toast" version="1.1.0" />
+
+- Fix regression with screen readers announcing as "group" rather than "status" <PRLink id={1556} />
+- Fix regression with `ref` assignments on child elements returning `null` <PRLink id={1668} />
+- Add `onPause` and `onResume` props to `Toast.Root` <PRLink id={1669} />
+
+<PackageRelease name="Toolbar" version="1.0.1" />
+
+- Prevent `Toolbar.Item` click handlers firing twice <PRLink id={1526} />
+
 ## July 21, 2022
 
 With this release, we start following semantic versioning strictly. All primitives are now versioned <Badge size="1" variant="yellow" css={{ fontFamily: '$mono' }}>1.0.0</Badge>.
