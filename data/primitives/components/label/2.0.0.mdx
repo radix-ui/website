@@ -8,11 +8,18 @@ name: label
 
 <Description>Renders an accessible label associated with controls.</Description>
 
+<HeroContainer>
+  <LabelDemo />
+</HeroContainer>
+
+```jsx hero template=Label
+
+```
+
 <Highlights
   features={[
     'Text selection is prevented when double clicking label.',
     'Supports nested controls.',
-    'Supports custom controls.',
   ]}
 />
 
@@ -60,4 +67,4 @@ Contains the content for the label.
 
 ## Accessibility
 
-Using this component with our primitives, will automatically get you the correct labelling using `id` and `aria-labelledby`. You can also use the provided `useLabelContext` hook to support this in your own controls.
+This component is based on the native `label` element, it will automatically apply the correct labelling when wrapping controls or using the `htmlFor` attribute. For your own custom controls to work correctly, ensure they use native elements such as `button` or `input` as a base.

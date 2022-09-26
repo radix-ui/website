@@ -22,6 +22,11 @@ metaDescription: Radix Primitives releases and their changelogs.
 - Correctly pair `DropdownMenu.Trigger` open state with `aria-expanded` when closed <PRLink id={1644} />
 - Fix issue with eager selection of items when using `asChild` <PRLink id={1647} />
 
+<PackageRelease name="Label" version="2.0.0" major />
+
+- [**Breaking**] Remove `useLabelContext` and support for fully custom controls. For native labelling to work, ensure your custom controls are based on native elements such as `button` or `input`. <PRLink id={1686} />
+- Improve native behavior by using the native `label` element <PRLink id={1686} />
+
 <PackageRelease name="Toast" version="1.1.0" />
 
 - Fix regression with screen readers announcing as "group" rather than "status" <PRLink id={1556} />
