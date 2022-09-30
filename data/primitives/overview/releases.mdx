@@ -21,11 +21,16 @@ metaDescription: Radix Primitives releases and their changelogs.
 
 - Correctly pair `DropdownMenu.Trigger` open state with `aria-expanded` when closed <PRLink id={1644} />
 - Fix issue with eager selection of items when using `asChild` <PRLink id={1647} />
+- Fix issue with dismissing when the component is used in a separate popup window <PRLink id={1677} />
 
 <PackageRelease name="Label" version="2.0.0" major />
 
 - [**Breaking**] Remove `useLabelContext` and support for fully custom controls. For native labelling to work, ensure your custom controls are based on native elements such as `button` or `input`. <PRLink id={1686} />
 - Improve native behavior by using the native `label` element <PRLink id={1686} />
+
+<PackageRelease name="Navigation Menu" version="1.0.1" />
+
+- Prevent menu from re-opening with the pointer after being dismissed with escape <PRLink id={1579} />
 
 <PackageRelease name="Slider" version="1.0.1" />
 
