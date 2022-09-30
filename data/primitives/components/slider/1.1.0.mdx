@@ -11,6 +11,14 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/slidertwothumb
   An input where the user selects a value from within a given range.
 </Description>
 
+<HeroContainer>
+  <SliderDemo />
+</HeroContainer>
+
+```jsx hero template=Slider
+
+```
+
 <Highlights
   features={[
     'Can be controlled or uncontrolled.',
@@ -113,9 +121,20 @@ Contains all the parts of a slider. It will render an `input` for each thumb whe
       required: false,
       type: '"ltr" | "rtl"',
       typeSimple: 'enum',
-      default: '"ltr"',
-      description:
-        'The reading direction of the slider. If omitted, assumes LTR (left-to-right) reading mode.',
+      description: (
+        <span>
+          The reading direction of the slider. If omitted, inherits globally
+          from <Code>DirectionProvider</Code> or assumes LTR (left-to-right)
+          reading mode.
+        </span>
+      ),
+    },
+    {
+      name: 'inverted',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description: 'Whether the slider is visually inverted.',
     },
     {
       name: 'min',
@@ -159,6 +178,19 @@ Contains all the parts of a slider. It will render an `input` for each thumb whe
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
+    },
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
+    },
+  ]}
+/>
+
 ### Track
 
 The track that contains the `Slider.Range`.
@@ -172,6 +204,19 @@ The track that contains the `Slider.Range`.
       default: 'false',
       description:
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
+    },
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
     },
   ]}
 />
@@ -193,6 +238,19 @@ The range part. Must live inside `Slider.Track`.
   ]}
 />
 
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
+    },
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
+    },
+  ]}
+/>
+
 ### Thumb
 
 A draggable thumb. You can render multiple thumbs.
@@ -206,6 +264,19 @@ A draggable thumb. You can render multiple thumbs.
       default: 'false',
       description:
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
+    },
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
     },
   ]}
 />
