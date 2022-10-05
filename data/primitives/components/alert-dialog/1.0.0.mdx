@@ -339,6 +339,45 @@ An accessible description to be announced when the dialog is opened. Alternative
 
 ## Examples
 
+### Close after asynchronous form submission
+
+Use the controlled props to programmatically close the Alert Dialog after an async operation has completed.
+
+```jsx
+import React from 'react';
+import { styled } from '@stitches/react';
+import * as AlertDialog from '@radix-ui/react-alert-dialog';
+
+const mockPromise = async () =>
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+export default () => {
+  const [open, setOpen] = React.useState(false);
+
+  return (
+    <AlertDialog.Root open={open} onOpenChange={setOpen}>
+      <AlertDialog.Trigger />
+      <AlertDialog.Portal>
+        <AlertDialog.Overlay>
+          <AlertDialog.Content>
+            <form
+              onSubmit={async () => {
+                mockPromise().then(() => setOpen(false));
+              }}
+            >
+              {/** some inputs */}
+              <AlertDialog.Action asChild>
+                <button type="submit">Submit</button>
+              </AlertDialog.Action>
+            </form>
+          </AlertDialog.Content>
+        </AlertDialog.Overlay>
+      </AlertDialog.Portal>
+    </AlertDialog.Root>
+  );
+};
+```
+
 ### Custom portal container
 
 Customise the element that your alert dialog portals into.
