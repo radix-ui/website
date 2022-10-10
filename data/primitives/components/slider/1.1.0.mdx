@@ -90,6 +90,21 @@ Contains all the parts of a slider. It will render an `input` for each thumb whe
       ),
     },
     {
+      name: 'onValueChange',
+      required: false,
+      type: 'onValueChange?(value: number[]): void',
+      typeSimple: 'function',
+      description: 'Event handler called when the value changes.',
+    },
+    {
+      name: 'onValueCommit',
+      required: false,
+      type: 'onValueCommit?(value: number[]): void',
+      typeSimple: 'function',
+      description:
+        'Event handler called when the value changes at the end of an interaction. This can be useful to avoid constantly syncing the value to a server while sliding.',
+    },
+    {
       name: 'name',
       required: false,
       type: 'string',
@@ -156,13 +171,6 @@ Contains all the parts of a slider. It will render an `input` for each thumb whe
       type: 'number',
       default: '1',
       description: 'The stepping interval.',
-    },
-    {
-      name: 'onValueChange',
-      required: false,
-      type: 'onValueChange?(value: number[]): void',
-      typeSimple: 'function',
-      description: 'Event handler called when the value changes.',
     },
     {
       name: 'minStepsBetweenThumbs',
