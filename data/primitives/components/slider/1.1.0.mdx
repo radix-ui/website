@@ -102,7 +102,7 @@ Contains all the parts of a slider. It will render an `input` for each thumb whe
       type: 'onValueCommit?(value: number[]): void',
       typeSimple: 'function',
       description:
-        'Event handler called when the value changes at the end of an interaction. This can be useful to avoid constantly syncing the value to a server while sliding.',
+        'Event handler called when the value changes at the end of an interaction. Useful when you only need to capture a final value e.g. to update a backend service.',
     },
     {
       name: 'name',
