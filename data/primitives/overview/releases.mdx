@@ -21,12 +21,17 @@ metaDescription: Radix Primitives releases and their changelogs.
 
 - Fix initial animation playback in Firefox and Safari <PRLink id={1710} />
 
+<PackageRelease name="Context Menu" version="2.0.0" major />
+
+- [**Breaking**] Add support for indeterminate state on `ContextMenu.CheckboxItem`. Note that this is only a breaking if you are currently using the `CheckboxItem` part and your codebase is written in TypeScript. <PRLink id={1624} />
+
 <PackageRelease name="Dialog" version="1.0.1" />
 
 - Fix issue with textarea elements not being scrollable in Firefox <PRLink id={1550} />
 
-<PackageRelease name="Dropdown Menu" version="1.0.1" />
+<PackageRelease name="Dropdown Menu" version="2.0.0" major />
 
+- [**Breaking**] Add support for indeterminate state on `DropdownMenu.CheckboxItem`. Note that this is only a breaking if you are currently using the `CheckboxItem` part and your codebase is written in TypeScript. <PRLink id={1624} />
 - Correctly pair `DropdownMenu.Trigger` open state with `aria-expanded` when closed <PRLink id={1644} />
 - Fix issue with eager selection of items when using `asChild` <PRLink id={1647} />
 - Fix issue with dismissing when the component is used in a separate popup window <PRLink id={1677} />
