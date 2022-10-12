@@ -24,7 +24,7 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/menu
   features={[
     'Supports submenus with configurable reading direction.',
     'Supports items, labels, groups of items.',
-    'Supports checkable items (single or multiple).',
+    'Supports checkable items (single or multiple), can be indeterminate too.',
     'Supports modal and non-modal modes.',
     'Customize side, alignment, offsets, collision handling.',
     'Focus is fully managed.',
@@ -527,7 +527,7 @@ An item that can be controlled and rendered like a checkbox.
     },
     {
       name: 'checked',
-      type: 'boolean',
+      type: `boolean | 'indeterminate'`,
       description: (
         <span>
           The controlled checked state of the item. Must be used in conjunction
@@ -537,7 +537,7 @@ An item that can be controlled and rendered like a checkbox.
     },
     {
       name: 'onCheckedChange',
-      type: '(checked: boolean) => void',
+      type: `(checked: boolean | 'indeterminate') => void`,
       typeSimple: 'function',
       description: (
         <span>Event handler called when the checked state changes.</span>
@@ -583,7 +583,7 @@ An item that can be controlled and rendered like a checkbox.
   data={[
     {
       attribute: '[data-state]',
-      values: ['checked', 'unchecked'],
+      values: ['checked', 'unchecked', 'indeterminate'],
     },
     {
       attribute: '[data-highlighted]',
@@ -684,7 +684,7 @@ An item that can be controlled and rendered like a radio.
   data={[
     {
       attribute: '[data-state]',
-      values: ['checked', 'unchecked'],
+      values: ['checked', 'unchecked', 'indeterminate'],
     },
     {
       attribute: '[data-highlighted]',
@@ -728,7 +728,7 @@ Renders when the parent `ContextMenu.CheckboxItem` or `ContextMenu.RadioItem` is
   data={[
     {
       attribute: '[data-state]',
-      values: ['checked', 'unchecked'],
+      values: ['checked', 'unchecked', 'indeterminate'],
     },
   ]}
 />

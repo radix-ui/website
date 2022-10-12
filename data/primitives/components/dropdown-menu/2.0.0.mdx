@@ -25,7 +25,7 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/menubutton
     'Can be controlled or uncontrolled.',
     'Supports submenus with configurable reading direction.',
     'Supports items, labels, groups of items.',
-    'Supports checkable items (single or multiple).',
+    'Supports checkable items (single or multiple), can be indeterminate too.',
     'Supports modal and non-modal modes.',
     'Customize side, alignment, offsets, collision handling.',
     'Optionally render a pointing arrow.',
@@ -608,7 +608,7 @@ An item that can be controlled and rendered like a checkbox.
     },
     {
       name: 'checked',
-      type: 'boolean',
+      type: `boolean | 'indeterminate'`,
       description: (
         <span>
           The controlled checked state of the item. Must be used in conjunction
@@ -618,7 +618,7 @@ An item that can be controlled and rendered like a checkbox.
     },
     {
       name: 'onCheckedChange',
-      type: '(checked: boolean) => void',
+      type: `(checked: boolean | 'indeterminate') => void`,
       typeSimple: 'function',
       description: (
         <span>Event handler called when the checked state changes.</span>
@@ -664,7 +664,7 @@ An item that can be controlled and rendered like a checkbox.
   data={[
     {
       attribute: '[data-state]',
-      values: ['checked', 'unchecked'],
+      values: ['checked', 'unchecked', 'indeterminate'],
     },
     {
       attribute: '[data-highlighted]',
@@ -765,7 +765,7 @@ An item that can be controlled and rendered like a radio.
   data={[
     {
       attribute: '[data-state]',
-      values: ['checked', 'unchecked'],
+      values: ['checked', 'unchecked', 'indeterminate'],
     },
     {
       attribute: '[data-highlighted]',
@@ -809,7 +809,7 @@ Renders when the parent `DropdownMenu.CheckboxItem` or `DropdownMenu.RadioItem` 
   data={[
     {
       attribute: '[data-state]',
-      values: ['checked', 'unchecked'],
+      values: ['checked', 'unchecked', 'indeterminate'],
     },
   ]}
 />
@@ -1469,7 +1469,7 @@ Create your own API by abstracting the primitive parts into your own component.
 
 ### Abstract the arrow and item indicators
 
-This example abstracts the `DropdownMenu.Arrow` and `DropdownMenu.ItemIndicator` parts.
+This example abstracts the `DropdownMenu.Arrow` and `DropdownMenu.ItemIndicator` parts. It also wraps implementation details for `CheckboxItem` and `RadioItem`.
 
 #### Usage
 
@@ -1511,7 +1511,7 @@ export default () => (
 // your-dropdown-menu.js
 import React from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { CheckIcon } from '@radix-ui/react-icons';
+import { CheckIcon, DividerHorizontalIcon } from '@radix-ui/react-icons';
 
 export const DropdownMenu = DropdownMenuPrimitive.Root;
 export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
@@ -1539,7 +1539,8 @@ export const DropdownMenuCheckboxItem = React.forwardRef(
       <DropdownMenuPrimitive.CheckboxItem {...props} ref={forwardedRef}>
         {children}
         <DropdownMenuPrimitive.ItemIndicator>
-          <CheckIcon />
+          {props.checked === 'indeterminate' && <DividerHorizontalIcon />}
+          {props.checked === true && <CheckIcon />}
         </DropdownMenuPrimitive.ItemIndicator>
       </DropdownMenuPrimitive.CheckboxItem>
     );
