@@ -42,6 +42,9 @@ export function NavItem({ children, active, disabled, href, ...props }: NavItemP
           minHeight: '$6',
           transition: 'background-color 50ms linear',
           ...(disabled ? { pointerEvents: 'none' } : {}),
+          '&:not(:last-of-type)': {
+            mb: '$1',
+          },
           '&:hover': {
             backgroundColor: active ? '$violet5' : '$violet4',
           },
