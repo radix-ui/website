@@ -43,14 +43,14 @@ export function NavItem({ children, active, disabled, href, ...props }: NavItemP
           transition: 'background-color 50ms linear',
           ...(disabled ? { pointerEvents: 'none' } : {}),
           '&:not(:last-of-type)': {
-            mb: '$1',
+            mb: 1,
           },
           '&:hover': {
             backgroundColor: active ? '$violet5' : '$violet4',
           },
           '&:focus': {
             outline: 'none',
-            boxShadow: '0 0 0 1px $colors$violet7',
+            boxShadow: 'inset 0 0 1px $colors$violet7',
           },
         }}
       >
