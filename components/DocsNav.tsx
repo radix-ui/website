@@ -50,7 +50,7 @@ export function NavItem({ children, active, disabled, href, ...props }: NavItemP
           },
           '&:focus': {
             outline: 'none',
-            boxShadow: 'inset 0 0 1px $colors$violet7',
+            boxShadow: 'inset 0 0 0 1px $colors$violet7',
           },
         }}
       >
