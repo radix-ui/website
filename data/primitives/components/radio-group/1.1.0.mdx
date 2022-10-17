@@ -12,6 +12,14 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/radiobutton
   the buttons can be checked at a time.
 </Description>
 
+<HeroContainer>
+  <RadioGroupDemo />
+</HeroContainer>
+
+```jsx hero template=RadioGroup
+
+```
+
 <Highlights
   features={[
     'Full keyboard navigation.',
@@ -83,6 +91,16 @@ Contains all the parts of a radio group.
       description: 'Event handler called when the value changes.',
     },
     {
+      name: 'disabled',
+      type: 'boolean',
+      description: (
+        <span>
+          When <Code>true</Code>, prevents the user from interacting with radio
+          items.
+        </span>
+      ),
+    },
+    {
       name: 'name',
       type: 'string',
       description:
@@ -130,6 +148,15 @@ Contains all the parts of a radio group.
           to first, and vice versa.
         </span>
       ),
+    },
+  ]}
+/>
+
+<DataAttributesTable
+  data={[
+    {
+      attribute: '[data-disabled]',
+      values: 'Present when disabled',
     },
   ]}
 />

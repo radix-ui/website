@@ -7,6 +7,83 @@ metaDescription: Radix Primitives releases and their changelogs.
 
 <Description>Radix Primitives releases and their changelogs.</Description>
 
+## October 17, 2022
+
+<PackageRelease name="Accordion" version="1.0.1" />
+
+- Fix initial animation playback in Firefox and Safari <PRLink id={1710} />
+
+<PackageRelease name="Alert Dialog" version="1.0.1" />
+
+- Fix issue with textarea elements not being scrollable in Firefox <PRLink id={1550} />
+
+<PackageRelease name="Collapsible" version="1.0.1" />
+
+- Fix initial animation playback in Firefox and Safari <PRLink id={1710} />
+
+<PackageRelease name="Context Menu" version="2.0.0" major />
+
+- [**Breaking**] Add support for indeterminate state on `ContextMenu.CheckboxItem`. Note that this is only a breaking change if you are currently using the `CheckboxItem` part and your codebase is written in TypeScript. <PRLink id={1624} />
+
+<PackageRelease name="Dialog" version="1.0.1" />
+
+- Fix issue with textarea elements not being scrollable in Firefox <PRLink id={1550} />
+
+<PackageRelease name="Dropdown Menu" version="2.0.0" major />
+
+- [**Breaking**] Add support for indeterminate state on `DropdownMenu.CheckboxItem`. Note that this is only a breaking change if you are currently using the `CheckboxItem` part and your codebase is written in TypeScript. <PRLink id={1624} />
+- Correctly pair `DropdownMenu.Trigger` open state with `aria-expanded` when closed <PRLink id={1644} />
+- Fix issue with eager selection of items when using `asChild` <PRLink id={1647} />
+- Fix issue with dismissing when the component is used in a separate popup window <PRLink id={1677} />
+
+<PackageRelease name="Hover Card" version="1.0.1" />
+
+- Improve text selection experience <PRLink id={1692} />
+
+<PackageRelease name="Label" version="2.0.0" major />
+
+- [**Breaking**] Remove `useLabelContext` and support for fully custom controls. For native labelling to work, ensure your custom controls are based on native elements such as `button` or `input`. <PRLink id={1686} />
+- Improve native behavior by using the native `label` element <PRLink id={1686} />
+
+<PackageRelease name="Navigation Menu" version="1.1.0" />
+
+- Prevent menu from re-opening with the pointer after being dismissed with escape <PRLink id={1579} />
+- Add `delayDuration` and `skipDelayDuration` props to `NavigationMenu.Root`. Note that by default, triggers now have a brief delay before opening in order to improve UX, this can be modified using the props provided. <PRLink id={1716} />
+
+<PackageRelease name="Radio Group" version="1.1.0" />
+
+- Add `disabled` prop to `RadioGroup.Root` <PRLink id={1530} />
+- Fix issue where `RadioGroup.Root` was focusable when all items were disabled <PRLink id={1530} />
+
+<PackageRelease name="Select" version="1.1.0" />
+
+- Add `disabled` prop to `Select.Root` <PRLink id={1699} />
+- Add `required` prop to `Select.Root` <PRLink id={1598} />
+
+<PackageRelease name="Slider" version="1.1.0" />
+
+- Add ability to visually invert the slider using the new `inverted` prop on `Slider.Root` <PRLink id={1695} />
+- Add `onValueCommit` prop to `Slider.Root` to better handle discrete value changes <PRLink id={1696} />
+
+<PackageRelease name="Slot" version="1.0.1" />
+
+- Stop eagerly creating callback props <PRLink id={1713} />
+
+<PackageRelease name="Toast" version="1.1.0" />
+
+- Fix regression with screen readers announcing as "group" rather than "status" <PRLink id={1556} />
+- Fix regression with `ref` assignments on child elements returning `null` <PRLink id={1668} />
+- Add `onPause` and `onResume` props to `Toast.Root` <PRLink id={1669} />
+- Fix timer reset issue which would cause toasts to dismiss early in some cases <PRLink id={1682} />
+
+<PackageRelease name="Toolbar" version="1.0.1" />
+
+- Prevent `Toolbar.Item` click handlers firing twice <PRLink id={1526} />
+
+<PackageRelease name="Tooltip" version="1.0.1" />
+
+- Ensure tooltip doesn't open if interacting with the trigger before the open timer expires <PRLink id={1693} />
+
 ## July 21, 2022
 
 With this release, we start following semantic versioning strictly. All primitives are now versioned <Badge size="1" variant="yellow" css={{ fontFamily: '$mono' }}>1.0.0</Badge>.
