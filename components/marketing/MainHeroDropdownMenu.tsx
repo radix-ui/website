@@ -71,8 +71,8 @@ export function MainHeroDropdownMenu() {
   // We prevent the initial auto focus because it's a demo rather than a real UI,
   // so the parent page focus is not stolen.
   const initialAutoFocusPrevented = React.useRef(false);
-  const [showToolbar, setShowToolbar] = React.useState(true);
-  const [showUrls, setShowUrls] = React.useState(false);
+  const [showToolbar, setShowToolbar] = React.useState<boolean | 'indeterminate'>(true);
+  const [showUrls, setShowUrls] = React.useState<boolean | 'indeterminate'>(false);
   const triggerRef = React.useRef<HTMLButtonElement>(null);
   const contentRef = React.useRef<HTMLDivElement>(null);
   const [open, setOpen] = React.useState(true);
