@@ -6,8 +6,9 @@ import readingTime from 'reading-time';
 import compareVersions from 'compare-versions';
 import { bundleMDX } from 'mdx-bundler';
 import remarkSlug from 'remark-slug';
-import rehypeHighlightCode from '@lib/rehype-highlight-code';
+import rehypeHeroCodeBlock from '@lib/rehype-hero-code-block';
 import rehypeMetaAttribute from '@lib/rehype-meta-attribute';
+import rehypeHighlightCode from '@lib/rehype-highlight-code';
 import remarkHeroTemplate from '@lib/remark-hero-template';
 
 import type { Frontmatter } from 'types/frontmatter';
@@ -41,8 +42,8 @@ export const getMdxBySlug = async (basePath, slug) => {
       options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkSlug, remarkHeroTemplate];
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
+        rehypeHeroCodeBlock,
         rehypeMetaAttribute,
-
         rehypeHighlightCode,
       ];
 

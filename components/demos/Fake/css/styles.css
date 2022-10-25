@@ -1,0 +1,28 @@
+@import '@radix-ui/colors/violet.css';
+@import '@radix-ui/colors/mauve.css';
+@import '@radix-ui/colors/blackA.css';
+
+.button {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 0 15px;
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 500;
+  height: 35px;
+}
+
+.button.violet {
+  background-color: white;
+  color: var(--violet11);
+  box-shadow: 0 2px 10px var(--blackA7);
+}
+.button.violet:hover {
+  background-color: var(--mauve3);
+}
+.button.violet:focus {
+  box-shadow: 0 0 0 2px black;
+}

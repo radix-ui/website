@@ -6,7 +6,7 @@ import { PropsTable } from './PropsTable';
 import { KeyboardTable } from './KeyboardTable';
 import { Preview } from './Preview';
 import { Highlights } from './Highlights';
-import { DocCodeBlock } from './DocCodeBlock';
+import { HeroCodeBlock } from './HeroCodeBlock';
 import { CodeBlock } from './CodeBlock';
 import { PackageRelease, PRLink } from './releaseHelpers';
 import { HeroContainer } from './HeroContainer';
@@ -16,6 +16,7 @@ import { ColorScale, ColorScaleGroup } from './Scale';
 import * as Demos from './demos';
 import { CssVariablesTable } from './CssVariablesTable';
 import { DataAttributesTable } from './DataAttributesTable';
+import { PreWithCopyButton } from './PreWithCopyButton';
 
 export const components = {
   ColorScale,
@@ -29,6 +30,7 @@ export const components = {
   ),
   TabsList: (props) => <DS.TabsList {...props} css={{ ...props.css, mx: '$2' }} />,
   CodeBlock,
+  HeroCodeBlock,
   h1: (props) => (
     <DS.Text
       {...props}
@@ -137,22 +139,13 @@ export const components = {
       {...props}
     />
   ),
-  pre: ({ children }) => <>{children}</>,
-  code: ({ className, hero, showLineNumbers, collapsed, scrollable, line, ...props }) => {
+  pre: PreWithCopyButton,
+  code: ({ className, line, ...props }) => {
     const isInlineCode = !className;
     return isInlineCode ? (
-      <DS.Code {...props} css={{ whiteSpace: 'break-spaces' }} />
+      <DS.Code className={className} {...props} css={{ whiteSpace: 'break-spaces' }} />
     ) : (
-      <DocCodeBlock
-        variant="violet"
-        isHighlightingLines={line !== undefined}
-        className={className}
-        isHero={hero !== undefined}
-        isCollapsible={hero !== undefined || collapsed !== undefined}
-        isScrollable={scrollable !== undefined}
-        showLineNumbers={showLineNumbers !== undefined}
-        {...(props as any)}
-      />
+      <code className={className} {...props} data-invert-line-highlight={line !== undefined} />
     );
   },
   Note: (props) => (

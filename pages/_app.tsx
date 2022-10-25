@@ -1,12 +1,13 @@
 import React from 'react';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import { ThemeProvider } from 'next-themes';
 import { globalCss, darkTheme, DesignSystemProvider } from '@modulz/design-system';
 import { PrimitivesDocsPage } from '@components/PrimitivesDocsPage';
 import { ColorsDocsPage } from '@components/ColorsDocsPage';
 import { useAnalytics } from '@lib/analytics';
-import Head from 'next/head';
+import { StylingSolutionProvider } from '@components/StylingSolutionContext';
 
 const globalStyles = globalCss({
   '*, *::before, *::after': {
@@ -55,51 +56,29 @@ function App({ Component, pageProps }: AppProps) {
 
   const isPrimitivesDocs = router.pathname.includes('/docs/primitives');
   const isColorsDocs = router.pathname.includes('/docs/colors');
-  const isIFrame = router.pathname.includes('/iframe');
-  const isDocsPage = isPrimitivesDocs || isColorsDocs || isIFrame;
 
-  if (isIFrame) {
-    return (
-      <DesignSystemProvider>
+  return (
+    <DesignSystemProvider>
+      <StylingSolutionProvider>
         <ThemeProvider
           disableTransitionOnChange
           attribute="class"
           value={{ light: 'light-theme', dark: darkTheme.className }}
           defaultTheme="system"
         >
-          <Head>
-            <style>{`
-              body, .${darkTheme.className} body {
-                background-color: transparent;
-              }
-            `}</style>
-          </Head>
-          <Component {...pageProps} />
+          {isPrimitivesDocs ? (
+            <PrimitivesDocsPage>
+              <Component {...pageProps} />
+            </PrimitivesDocsPage>
+          ) : isColorsDocs ? (
+            <ColorsDocsPage>
+              <Component {...pageProps} />
+            </ColorsDocsPage>
+          ) : (
+            <Component {...pageProps} />
+          )}
         </ThemeProvider>
-      </DesignSystemProvider>
-    );
-  }
-
-  return (
-    <DesignSystemProvider>
-      <ThemeProvider
-        disableTransitionOnChange
-        attribute="class"
-        value={{ light: 'light-theme', dark: darkTheme.className }}
-        defaultTheme="system"
-      >
-        {isPrimitivesDocs ? (
-          <PrimitivesDocsPage>
-            <Component {...pageProps} />
-          </PrimitivesDocsPage>
-        ) : isColorsDocs ? (
-          <ColorsDocsPage>
-            <Component {...pageProps} />
-          </ColorsDocsPage>
-        ) : (
-          <Component {...pageProps} />
-        )}
-      </ThemeProvider>
+      </StylingSolutionProvider>
     </DesignSystemProvider>
   );
 }
