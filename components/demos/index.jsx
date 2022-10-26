@@ -24,4 +24,4 @@ export { default as ToastDemo } from './Toast';
 export { default as ToggleDemo } from './Toggle';
 export { default as ToggleGroupDemo } from './ToggleGroup';
 export { default as ToolbarDemo } from './Toolbar';
-export { default as TooltipDemo } from './Tooltip';
+export { default as TooltipDemo } from './Tooltip/stitches';
