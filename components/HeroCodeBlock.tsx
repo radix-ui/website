@@ -4,16 +4,16 @@ import * as Tabs from '@radix-ui/react-tabs';
 import * as Collapsible from '@radix-ui/react-collapsible';
 import { getParameters } from 'codesandbox/lib/api/define';
 import { CodeSandboxLogoIcon } from '@radix-ui/react-icons';
-import { isValidStylingSolution, useStylingSolution } from './StylingSolutionContext';
-import type { StylingSolution } from './StylingSolutionContext';
+import { isValidCssLib, useCssLibPreference } from './CssLibPreference';
 import { FrontmatterContext } from './MDXComponents';
 import { Pre } from './Pre';
 import { CopyCodeButton } from './CopyCodeButton';
-import { STYLING_SOLUTION_NAMES } from '@lib/constants';
+import { CSS_LIB_NAMES } from '@lib/constants';
+import type { CssLib } from '@lib/constants';
 
 export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
   const frontmatter = React.useContext(FrontmatterContext);
-  const [stylingSolution, setStylingSolution] = useStylingSolution();
+  const [preferredCssLib, setPreferredCssLib] = useCssLibPreference();
   const [collapsed, setCollapsed] = React.useState(true);
 
   const snippets = React.Children.toArray(children).map((pre) => {
@@ -21,18 +21,15 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
       return {
         id: pre.props.title,
         title: pre.props.title,
-        stylingSolution: pre.props.stylingSolution,
+        cssLib: pre.props.cssLib,
         children: React.Children.only(pre.props.children).props?.children,
         source: pre.props.source,
       };
     }
   });
 
-  const availableStylingSolutions = snippets
-    .map(({ stylingSolution }) => stylingSolution)
-    .filter(onlyUnique);
-
-  const currentTabs = snippets.filter((snippet) => snippet.stylingSolution === stylingSolution);
+  const availableCssLibs = snippets.map(({ cssLib }) => cssLib).filter(onlyUnique);
+  const currentTabs = snippets.filter(({ cssLib }) => cssLib === preferredCssLib);
   const sources = currentTabs.reduce((sources, tab) => {
     return { ...sources, [tab.title]: tab.source };
   }, {});
@@ -85,11 +82,9 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
             <input
               type="hidden"
               name="parameters"
-              value={makeCodeSandboxParams(stylingSolution, frontmatter.name, sources)}
+              value={makeCodeSandboxParams(frontmatter.name, sources, preferredCssLib)}
             />
-            <Tooltip
-              content={`Open ${STYLING_SOLUTION_NAMES[stylingSolution]} demo in CodeSandbox`}
-            >
+            <Tooltip content={`Open ${CSS_LIB_NAMES[preferredCssLib]} demo in CodeSandbox`}>
               <IconButton type="submit" css={{ color: '$whiteA12' }}>
                 <CodeSandboxLogoIcon />
               </IconButton>
@@ -109,20 +104,18 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
                   ))}
                 </Tabs.List>
 
-                {availableStylingSolutions.length > 1 ? (
+                {availableCssLibs.length > 1 ? (
                   <select
-                    value={stylingSolution}
+                    value={preferredCssLib}
                     onChange={(event) => {
-                      const stylingSolution = event.target.value;
-                      if (isValidStylingSolution(stylingSolution)) {
-                        setStylingSolution(stylingSolution);
-                      }
+                      const lib = event.target.value;
+                      if (isValidCssLib(lib)) setPreferredCssLib(lib);
                     }}
                     style={{ marginLeft: 'auto' }}
                   >
-                    {availableStylingSolutions.map((stylingSolution) => (
-                      <option key={stylingSolution} value={stylingSolution}>
-                        {STYLING_SOLUTION_NAMES[stylingSolution]}
+                    {availableCssLibs.map((lib) => (
+                      <option key={lib} value={lib}>
+                        {CSS_LIB_NAMES[lib]}
                       </option>
                     ))}
                   </select>
@@ -159,9 +152,9 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
 const onlyUnique = <T,>(value: T, index: number, self: T[]) => self.indexOf(value) === index;
 
 const makeCodeSandboxParams = (
-  stylingSolution: StylingSolution,
   componentName: string,
-  sources: Record<string, string>
+  sources: Record<string, string>,
+  cssLib: CssLib
 ) => {
   const globalCss = `* {
   box-sizing: border-box;
@@ -193,11 +186,11 @@ svg {
     [`@radix-ui/react-${componentName}`]: 'latest',
   };
 
-  if (stylingSolution === 'css') {
+  if (cssLib === 'css') {
     dependencies['classnames'] = 'latest';
   }
 
-  if (stylingSolution === 'stitches') {
+  if (cssLib === 'stitches') {
     dependencies['@stitches/react'] = 'latest';
   }
 
@@ -232,7 +225,7 @@ root.render(<App />);`,
     },
   };
 
-  if (stylingSolution === 'css') {
+  if (cssLib === 'css') {
     files['styles.css'] = {
       content: sources['styles.css'],
       isBinary: false,

@@ -7,7 +7,7 @@ import { globalCss, darkTheme, DesignSystemProvider } from '@modulz/design-syste
 import { PrimitivesDocsPage } from '@components/PrimitivesDocsPage';
 import { ColorsDocsPage } from '@components/ColorsDocsPage';
 import { useAnalytics } from '@lib/analytics';
-import { StylingSolutionProvider } from '@components/StylingSolutionContext';
+import { CssLibPreferenceProvider } from '@components/CssLibPreference';
 
 const globalStyles = globalCss({
   '*, *::before, *::after': {
@@ -59,7 +59,7 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <DesignSystemProvider>
-      <StylingSolutionProvider>
+      <CssLibPreferenceProvider>
         <ThemeProvider
           disableTransitionOnChange
           attribute="class"
@@ -78,7 +78,7 @@ function App({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
           )}
         </ThemeProvider>
-      </StylingSolutionProvider>
+      </CssLibPreferenceProvider>
     </DesignSystemProvider>
   );
 }

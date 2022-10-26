@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import visit from 'unist-util-visit';
 import { UnistNode, UnistTree } from './unist';
-import { SUPPORTED_STYLING_SOLUTIONS } from './constants';
+import { SUPPORTED_CSS_LIBS } from './constants';
 import { mdxElement } from './unist-mdx-element';
 
 const rehypeHeroCodeBlock = () => (tree: UnistTree) => {
@@ -13,9 +13,9 @@ const rehypeHeroCodeBlock = () => (tree: UnistTree) => {
       if (typeof folder === 'string') {
         node.children = [];
 
-        SUPPORTED_STYLING_SOLUTIONS.forEach((stylingSolution) => {
+        SUPPORTED_CSS_LIBS.forEach((lib) => {
           ['index.jsx', 'styles.css'].forEach((file) => {
-            const filePath = `${process.cwd()}/components/demos/${folder}/${stylingSolution}/${file}`;
+            const filePath = `${process.cwd()}/components/demos/${folder}/${lib}/${file}`;
             if (fileExists(filePath)) {
               const [, extension] = file.split('.');
               const syntax = getSyntax(extension);
@@ -25,7 +25,7 @@ const rehypeHeroCodeBlock = () => (tree: UnistTree) => {
                 mdxElement({
                   name: 'pre',
                   props: {
-                    stylingSolution,
+                    cssLib: lib,
                     title: file,
                     file: filePath,
                     syntax,
