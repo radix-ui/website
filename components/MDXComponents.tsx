@@ -141,6 +141,7 @@ export const components = {
   ),
   pre: PreWithCopyButton,
   code: ({ className, line, ...props }) => {
+    // if it's a codeblock (``` block in markdown), it'll have a className from prism
     const isInlineCode = !className;
     return isInlineCode ? (
       <DS.Code className={className} {...props} css={{ whiteSpace: 'break-spaces' }} />

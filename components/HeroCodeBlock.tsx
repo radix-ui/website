@@ -193,6 +193,10 @@ svg {
     [`@radix-ui/react-${componentName}`]: 'latest',
   };
 
+  if (stylingSolution === 'css') {
+    dependencies['classnames'] = 'latest';
+  }
+
   if (stylingSolution === 'stitches') {
     dependencies['@stitches/react'] = 'latest';
   }
