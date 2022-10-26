@@ -61,12 +61,6 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
             right: '$2',
           }}
         >
-          <Collapsible.Trigger asChild>
-            <Button ghost css={{ color: '$whiteA12', textShadow: '0 2px 2px rgb(0 0 0 / 12%)' }}>
-              {collapsed ? 'Show' : 'Hide'} code
-            </Button>
-          </Collapsible.Trigger>
-
           <Box
             as="form"
             css={{
@@ -92,10 +86,10 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
           </Box>
         </Box>
 
-        <Collapsible.Content asChild>
-          <Box css={{ position: 'relative', top: '$2' }}>
+        <Collapsible.Content asChild forceMount>
+          <Box css={{ position: 'relative' }}>
             <Tabs.Root value={currentTabValue} onValueChange={setCurrentTabValue}>
-              <Flex>
+              <Flex css={{ backgroundColor: '$violet3', padding: '$2' }}>
                 <Tabs.List>
                   {currentTabs.map((tab) => (
                     <Tabs.Trigger key={tab.id} value={tab.id}>
@@ -127,14 +121,22 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
                   <Box
                     css={{
                       position: 'relative',
-                      borderRadius: '$3',
+                      borderBottomLeftRadius: '$3',
+                      borderBottomRightRadius: '$3',
                       '&:focus': {
                         outline: 'none',
                         boxShadow: '0 0 0 2px $colors$slateA8',
                       },
                     }}
                   >
-                    <Pre variant="violet" css={{ maxHeight: 400 }}>
+                    <Pre
+                      variant="violet"
+                      css={{
+                        borderTopLeftRadius: 0,
+                        borderTopRightRadius: 0,
+                        maxHeight: collapsed ? 100 : 600,
+                      }}
+                    >
                       <code>{tab.children}</code>
                     </Pre>
                     <CopyCodeButton code={sources[tab.id]} />
@@ -142,6 +144,33 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
                 </Tabs.Content>
               ))}
             </Tabs.Root>
+
+            <Flex
+              css={{
+                position: 'absolute',
+                bottom: 0,
+                width: '100%',
+                padding: '$2',
+                backgroundColor: '$violet2',
+                borderBottomLeftRadius: '$3',
+                borderBottomRightRadius: '$3',
+                '&::after': {
+                  content: '',
+                  display: 'block',
+                  width: '100%',
+                  height: '$8',
+                  bottom: '100%',
+                  position: 'absolute',
+                  backgroundImage: 'linear-gradient(transparent, $violet2)',
+                  pointerEvents: 'none',
+                },
+              }}
+              justify="center"
+            >
+              <Collapsible.Trigger asChild>
+                <Button ghost>{collapsed ? 'Expand' : 'Collapse'} code</Button>
+              </Collapsible.Trigger>
+            </Flex>
           </Box>
         </Collapsible.Content>
       </Collapsible.Root>
