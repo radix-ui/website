@@ -1,6 +1,6 @@
 export { GettingStartedDemo } from './GettingStarted';
 export { default as AccordionDemo } from './Accordion/stitches';
-export { default as AlertDialogDemo } from './AlertDialog';
+export { default as AlertDialogDemo } from './AlertDialog/stitches';
 export { default as AspectRatioDemo } from './AspectRatio';
 export { default as AvatarDemo } from './Avatar';
 export { default as CheckboxDemo } from './Checkbox';
