@@ -1,60 +1,55 @@
 import React from 'react';
 import classNames from 'classnames';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
-import * as AccordionPrimitive from '@radix-ui/react-accordion';
+import * as Accordion from '@radix-ui/react-accordion';
 import './styles.css';
 
 const AccordionDemo = () => (
-  <AccordionPrimitive.Root
-    className="AccordionRoot"
-    type="single"
-    defaultValue="item-1"
-    collapsible
-  >
-    <AccordionPrimitive.Item className="AccordionItem" value="item-1">
+  <Accordion.Root className="AccordionRoot" type="single" defaultValue="item-1" collapsible>
+    <Accordion.Item className="AccordionItem" value="item-1">
       <AccordionTrigger>Is it accessible?</AccordionTrigger>
       <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
-    </AccordionPrimitive.Item>
+    </Accordion.Item>
 
-    <AccordionPrimitive.Item className="AccordionItem" value="item-2">
+    <Accordion.Item className="AccordionItem" value="item-2">
       <AccordionTrigger>Is it unstyled?</AccordionTrigger>
       <AccordionContent>
         Yes. It's unstyled by default, giving you freedom over the look and feel.
       </AccordionContent>
-    </AccordionPrimitive.Item>
+    </Accordion.Item>
 
-    <AccordionPrimitive.Item className="AccordionItem" value="item-3">
+    <Accordion.Item className="AccordionItem" value="item-3">
       <AccordionTrigger>Can it be animated?</AccordionTrigger>
-      <AccordionPrimitive.Content className="AccordionContent">
+      <Accordion.Content className="AccordionContent">
         <div className="AccordionContentText">
           Yes! You can animate the Accordion with CSS or JavaScript.
         </div>
-      </AccordionPrimitive.Content>
-    </AccordionPrimitive.Item>
-  </AccordionPrimitive.Root>
+      </Accordion.Content>
+    </Accordion.Item>
+  </Accordion.Root>
 );
 
 const AccordionTrigger = React.forwardRef(({ children, className, ...props }, forwardedRef) => (
-  <AccordionPrimitive.Header className="AccordionHeader">
-    <AccordionPrimitive.Trigger
+  <Accordion.Header className="AccordionHeader">
+    <Accordion.Trigger
       className={classNames('AccordionTrigger', className)}
       {...props}
       ref={forwardedRef}
     >
       {children}
       <ChevronDownIcon className="AccordionChevron" aria-hidden />
-    </AccordionPrimitive.Trigger>
-  </AccordionPrimitive.Header>
+    </Accordion.Trigger>
+  </Accordion.Header>
 ));
 
 const AccordionContent = React.forwardRef(({ children, className, ...props }, forwardedRef) => (
-  <AccordionPrimitive.Content
+  <Accordion.Content
     className={classNames('AccordionContent', className)}
     {...props}
     ref={forwardedRef}
   >
     <div className="AccordionContentText">{children}</div>
-  </AccordionPrimitive.Content>
+  </Accordion.Content>
 ));
 
 export default AccordionDemo;
