@@ -16,9 +16,7 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/tooltip
   <TooltipDemo />
 </HeroContainer>
 
-```jsx hero template=Tooltip
-
-```
+<HeroCodeBlock folder="Tooltip" />
 
 <Highlights
   features={[
@@ -512,59 +510,87 @@ export default () => (
 
 We expose a CSS custom property `--radix-tooltip-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
-```jsx line=4-7,9-12,17
-import { styled, keyframes } from '@stitches/react';
+```jsx line=7
+// index.jsx
 import * as Tooltip from '@radix-ui/react-tooltip';
-
-const scaleIn = keyframes({
-  '0%': { opacity: 0, transform: 'scale(0)' },
-  '100%': { opacity: 1, transform: 'scale(1)' },
-});
-
-const TooltipContent = styled(Tooltip.Content, {
-  transformOrigin: 'var(--radix-tooltip-content-transform-origin)',
-  animation: `${scaleIn} 0.5s ease-out`,
-});
 
 export default () => (
   <Tooltip.Root>
     <Tooltip.Trigger>…</Tooltip.Trigger>
-    <TooltipContent>…</TooltipContent>
+    <Tooltip.Content __className__="TooltipContent">…</Tooltip.Content>
   </Tooltip.Root>
 );
+```
+
+```css line=3-4
+/* styles.css */
+.TooltipContent {
+  transform-origin: var(--radix-tooltip-content-transform-origin);
+  animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 ```
 
 ### Collision-aware animations
 
 We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
 
-```jsx line=4-7,9-12,14-19,24
-import { styled, keyframes } from '@stitches/react';
+```jsx line=7
+// index.jsx
 import * as Tooltip from '@radix-ui/react-tooltip';
-
-const slideDown = keyframes({
-  '0%': { opacity: 0, transform: 'translateY(-10px)' },
-  '100%': { opacity: 1, transform: 'translateY(0)' },
-});
-
-const slideUp = keyframes({
-  '0%': { opacity: 0, transform: 'translateY(10px)' },
-  '100%': { opacity: 1, transform: 'translateY(0)' },
-});
-
-const TooltipContent = styled(Tooltip.Content, {
-  animationDuration: '0.6s',
-  animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
-  '&[data-side="top"]': { animationName: slideUp },
-  '&[data-side="bottom"]': { animationName: slideDown },
-});
 
 export default () => (
   <Tooltip.Root>
     <Tooltip.Trigger>…</Tooltip.Trigger>
-    <TooltipContent>…</TooltipContent>
+    <Tooltip.Content __className__="TooltipContent">…</Tooltip.Content>
   </Tooltip.Root>
 );
+```
+
+```css line=6,9
+/* styles.css */
+.TooltipContent {
+  animation-duration: 0.6s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+.TooltipContent[data-side='top'] {
+  animation-name: slideUp;
+}
+.TooltipContent[data-side='bottom'] {
+  animation-name: slideDown;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 ```
 
 ## Accessibility

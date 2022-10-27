@@ -1,8 +1,34 @@
 import React from 'react';
-import { styled, keyframes, theme } from '@modulz/design-system';
-import { PlusIcon } from '@radix-ui/react-icons';
+import * as Tooltip from '@radix-ui/react-tooltip';
+import { styled, keyframes } from '@stitches/react';
 import { violet, blackA } from '@radix-ui/colors';
-import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+import { PlusIcon } from '@radix-ui/react-icons';
+
+const TooltipDemo = () => {
+  return (
+    <Tooltip.Provider>
+      <Tooltip.Root>
+        <Tooltip.Trigger asChild>
+          <IconButton>
+            <PlusIcon />
+          </IconButton>
+        </Tooltip.Trigger>
+        <TooltipContent sideOffset={5}>Add to library</TooltipContent>
+      </Tooltip.Root>
+    </Tooltip.Provider>
+  );
+};
+
+const TooltipContent = React.forwardRef(({ children, ...props }, forwardedRef) => {
+  return (
+    <Tooltip.Portal>
+      <StyledContent {...props} ref={forwardedRef}>
+        {children}
+        <StyledArrow />
+      </StyledContent>
+    </Tooltip.Portal>
+  );
+});
 
 const slideUpAndFade = keyframes({
   '0%': { opacity: 0, transform: 'translateY(2px)' },
@@ -24,7 +50,7 @@ const slideLeftAndFade = keyframes({
   '100%': { opacity: 1, transform: 'translateX(0)' },
 });
 
-const StyledContent = styled(TooltipPrimitive.Content, {
+const StyledContent = styled(Tooltip.Content, {
   borderRadius: 4,
   padding: '10px 15px',
   fontSize: 15,
@@ -46,28 +72,10 @@ const StyledContent = styled(TooltipPrimitive.Content, {
   },
 });
 
-const StyledArrow = styled(TooltipPrimitive.Arrow, {
+const StyledArrow = styled(Tooltip.Arrow, {
   fill: 'white',
 });
 
-function Content({ children, ...props }) {
-  return (
-    <TooltipPrimitive.Portal>
-      <StyledContent {...props}>
-        {children}
-        <StyledArrow />
-      </StyledContent>
-    </TooltipPrimitive.Portal>
-  );
-}
-
-// Exports
-export const Provider = TooltipPrimitive.Provider;
-export const Tooltip = TooltipPrimitive.Root;
-export const TooltipTrigger = TooltipPrimitive.Trigger;
-export const TooltipContent = Content;
-
-// Your app...
 const IconButton = styled('button', {
   all: 'unset',
   fontFamily: 'inherit',
@@ -83,22 +91,5 @@ const IconButton = styled('button', {
   '&:hover': { backgroundColor: violet.violet3 },
   '&:focus': { boxShadow: `0 0 0 2px black` },
 });
-
-const TooltipDemo = () => {
-  return (
-    <Provider>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <IconButton>
-            <PlusIcon />
-          </IconButton>
-        </TooltipTrigger>
-        <TooltipContent sideOffset={5} className={`${theme}`}>
-          Add to library
-        </TooltipContent>
-      </Tooltip>
-    </Provider>
-  );
-};
 
 export default TooltipDemo;
