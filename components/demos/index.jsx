@@ -23,5 +23,5 @@ export { default as TabsDemo } from './Tabs';
 export { default as ToastDemo } from './Toast';
 export { default as ToggleDemo } from './Toggle';
 export { default as ToggleGroupDemo } from './ToggleGroup';
-export { default as ToolbarDemo } from './Toolbar';
+export { default as ToolbarDemo } from './Toolbar/stitches';
 export { default as TooltipDemo } from './Tooltip/stitches';
