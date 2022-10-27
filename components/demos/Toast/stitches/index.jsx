@@ -1,9 +1,67 @@
 import * as React from 'react';
-import { styled, keyframes } from '@modulz/design-system';
+import * as Toast from '@radix-ui/react-toast';
+import { styled, keyframes } from '@stitches/react';
 import { violet, blackA, mauve, slate, green } from '@radix-ui/colors';
-import * as ToastPrimitive from '@radix-ui/react-toast';
+
+const ToastDemo = () => {
+  const [open, setOpen] = React.useState(false);
+  const eventDateRef = React.useRef(new Date());
+  const timerRef = React.useRef(0);
+
+  React.useEffect(() => {
+    return () => clearTimeout(timerRef.current);
+  }, []);
+
+  return (
+    <Toast.Provider swipeDirection="right">
+      <Button
+        onClick={() => {
+          setOpen(false);
+          window.clearTimeout(timerRef.current);
+          timerRef.current = window.setTimeout(() => {
+            eventDateRef.current = oneWeekAway();
+            setOpen(true);
+          }, 100);
+        }}
+      >
+        Add to calendar
+      </Button>
+
+      <ToastRoot open={open} onOpenChange={setOpen}>
+        <ToastTitle>Scheduled: Catch up</ToastTitle>
+        <ToastDescription asChild>
+          <time dateTime={eventDateRef.current.toISOString()}>
+            {prettyDate(eventDateRef.current)}
+          </time>
+        </ToastDescription>
+        <ToastAction asChild altText="Goto schedule to undo">
+          <Button size="small" variant="green">
+            Undo
+          </Button>
+        </ToastAction>
+      </ToastRoot>
+      <ToastViewport />
+    </Toast.Provider>
+  );
+};
 
 const VIEWPORT_PADDING = 25;
+
+const ToastViewport = styled(Toast.Viewport, {
+  position: 'fixed',
+  bottom: 0,
+  right: 0,
+  display: 'flex',
+  flexDirection: 'column',
+  padding: VIEWPORT_PADDING,
+  gap: 10,
+  width: 390,
+  maxWidth: '100vw',
+  margin: 0,
+  listStyle: 'none',
+  zIndex: 2147483647,
+  outline: 'none',
+});
 
 const hide = keyframes({
   '0%': { opacity: 1 },
@@ -20,23 +78,7 @@ const swipeOut = keyframes({
   to: { transform: `translateX(calc(100% + ${VIEWPORT_PADDING}px))` },
 });
 
-const StyledViewport = styled(ToastPrimitive.Viewport, {
-  position: 'fixed',
-  bottom: 0,
-  right: 0,
-  display: 'flex',
-  flexDirection: 'column',
-  padding: VIEWPORT_PADDING,
-  gap: 10,
-  width: 390,
-  maxWidth: '100vw',
-  margin: 0,
-  listStyle: 'none',
-  zIndex: 2147483647,
-  outline: 'none',
-});
-
-const StyledToast = styled(ToastPrimitive.Root, {
+const ToastRoot = styled(Toast.Root, {
   backgroundColor: 'white',
   borderRadius: 6,
   boxShadow: 'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
@@ -67,7 +109,7 @@ const StyledToast = styled(ToastPrimitive.Root, {
   },
 });
 
-const StyledTitle = styled(ToastPrimitive.Title, {
+const ToastTitle = styled(Toast.Title, {
   gridArea: 'title',
   marginBottom: 5,
   fontWeight: 500,
@@ -75,7 +117,7 @@ const StyledTitle = styled(ToastPrimitive.Title, {
   fontSize: 15,
 });
 
-const StyledDescription = styled(ToastPrimitive.Description, {
+const ToastDescription = styled(Toast.Description, {
   gridArea: 'description',
   margin: 0,
   color: slate.slate11,
@@ -83,32 +125,17 @@ const StyledDescription = styled(ToastPrimitive.Description, {
   lineHeight: 1.3,
 });
 
-const StyledAction = styled(ToastPrimitive.Action, {
+const ToastAction = styled(Toast.Action, {
   gridArea: 'action',
 });
 
-// Exports
-export const ToastProvider = ToastPrimitive.Provider;
-export const ToastViewport = StyledViewport;
-export const Toast = StyledToast;
-export const ToastTitle = StyledTitle;
-export const ToastDescription = StyledDescription;
-export const ToastAction = StyledAction;
-export const ToastClose = ToastPrimitive.Close;
-
-// Your app...
-const Box = styled('div', {});
 const Button = styled('button', {
   all: 'unset',
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
   borderRadius: 4,
-  padding: '0 15px',
-  fontSize: 15,
-  lineHeight: 1,
   fontWeight: 500,
-  height: 35,
 
   variants: {
     size: {
@@ -117,6 +144,12 @@ const Button = styled('button', {
         padding: '0 10px',
         lineHeight: '25px',
         height: 25,
+      },
+      large: {
+        fontSize: 15,
+        padding: '0 15px',
+        lineHeight: '35px',
+        height: 35,
       },
     },
     variant: {
@@ -138,51 +171,10 @@ const Button = styled('button', {
   },
 
   defaultVariants: {
+    size: 'large',
     variant: 'violet',
   },
 });
-
-const ToastDemo = () => {
-  const [open, setOpen] = React.useState(false);
-  const eventDateRef = React.useRef(new Date());
-  const timerRef = React.useRef(0);
-
-  React.useEffect(() => {
-    return () => clearTimeout(timerRef.current);
-  }, []);
-
-  return (
-    <ToastProvider swipeDirection="right">
-      <Button
-        onClick={() => {
-          setOpen(false);
-          window.clearTimeout(timerRef.current);
-          timerRef.current = window.setTimeout(() => {
-            eventDateRef.current = oneWeekAway();
-            setOpen(true);
-          }, 100);
-        }}
-      >
-        Add to calendar
-      </Button>
-
-      <Toast open={open} onOpenChange={setOpen}>
-        <ToastTitle>Scheduled: Catch up</ToastTitle>
-        <ToastDescription asChild>
-          <time dateTime={eventDateRef.current.toISOString()}>
-            {prettyDate(eventDateRef.current)}
-          </time>
-        </ToastDescription>
-        <ToastAction asChild altText="Goto schedule to undo">
-          <Button variant="green" size="small">
-            Undo
-          </Button>
-        </ToastAction>
-      </Toast>
-      <ToastViewport />
-    </ToastProvider>
-  );
-};
 
 function oneWeekAway(date) {
   const now = new Date();
