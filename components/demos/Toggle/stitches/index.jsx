@@ -1,10 +1,16 @@
 import React from 'react';
-import { styled } from '@modulz/design-system';
+import * as Toggle from '@radix-ui/react-toggle';
+import { styled } from '@stitches/react';
 import { violet, mauve, blackA } from '@radix-ui/colors';
 import { FontItalicIcon } from '@radix-ui/react-icons';
-import * as TogglePrimitive from '@radix-ui/react-toggle';
 
-const StyledToggle = styled(TogglePrimitive.Root, {
+const ToggleDemo = () => (
+  <ToggleRoot aria-label="Toggle italic">
+    <FontItalicIcon />
+  </ToggleRoot>
+);
+
+const ToggleRoot = styled(Toggle.Root, {
   all: 'unset',
   backgroundColor: 'white',
   color: mauve.mauve11,
@@ -21,15 +27,5 @@ const StyledToggle = styled(TogglePrimitive.Root, {
   '&[data-state=on]': { backgroundColor: violet.violet6, color: violet.violet12 },
   '&:focus': { boxShadow: `0 0 0 2px black` },
 });
-
-// Exports
-export const Toggle = StyledToggle;
-
-// Your app...
-const ToggleDemo = () => (
-  <Toggle aria-label="Toggle italic">
-    <FontItalicIcon />
-  </Toggle>
-);
 
 export default ToggleDemo;
