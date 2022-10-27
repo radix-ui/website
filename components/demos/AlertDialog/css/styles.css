@@ -50,7 +50,7 @@
   line-height: 1.5;
 }
 
-.AlertDialogButton {
+.Button {
   all: unset;
   display: inline-flex;
   align-items: center;
@@ -62,35 +62,35 @@
   font-weight: 500;
   height: 35px;
 }
-.AlertDialogButton.violet {
+.Button.violet {
   background-color: white;
   color: var(--violet11);
   box-shadow: 0 2px 10px var(--blackA7);
 }
-.AlertDialogButton.violet:hover {
+.Button.violet:hover {
   background-color: var(--mauve3);
 }
-.AlertDialogButton.violet:focus {
+.Button.violet:focus {
   box-shadow: 0 0 0 2px black;
 }
-.AlertDialogButton.red {
+.Button.red {
   background-color: var(--red4);
   color: var(--red11);
 }
-.AlertDialogButton.red:hover {
+.Button.red:hover {
   background-color: var(--red5);
 }
-.AlertDialogButton.red:focus {
+.Button.red:focus {
   box-shadow: 0 0 0 2px var(--red7);
 }
-.AlertDialogButton.mauve {
+.Button.mauve {
   background-color: var(--mauve4);
   color: var(--mauve11);
 }
-.AlertDialogButton.mauve:hover {
+.Button.mauve:hover {
   background-color: var(--mauve5);
 }
-.AlertDialogButton.mauve:focus {
+.Button.mauve:focus {
   box-shadow: 0 0 0 2px var(--mauve7);
 }
 
