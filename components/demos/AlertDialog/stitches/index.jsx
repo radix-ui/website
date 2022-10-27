@@ -1,7 +1,43 @@
 import React from 'react';
-import { styled, keyframes, theme } from '@modulz/design-system';
+import * as AlertDialog from '@radix-ui/react-alert-dialog';
+import { styled, keyframes } from '@stitches/react';
 import { violet, blackA, red, mauve } from '@radix-ui/colors';
-import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
+
+const AlertDialogDemo = () => (
+  <AlertDialog.Root>
+    <AlertDialog.Trigger asChild>
+      <Button>Delete account</Button>
+    </AlertDialog.Trigger>
+    <AlertDialogContent>
+      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+      <AlertDialogDescription>
+        This action cannot be undone. This will permanently delete your account and remove your data
+        from our servers.
+      </AlertDialogDescription>
+      <Flex css={{ justifyContent: 'flex-end' }}>
+        <AlertDialog.Cancel asChild>
+          <Button variant="mauve" css={{ marginRight: 25 }}>
+            Cancel
+          </Button>
+        </AlertDialog.Cancel>
+        <AlertDialog.Action asChild>
+          <Button variant="red">Yes, delete account</Button>
+        </AlertDialog.Action>
+      </Flex>
+    </AlertDialogContent>
+  </AlertDialog.Root>
+);
+
+const AlertDialogContent = React.forwardRef(({ children, ...props }, forwardedRef) => {
+  return (
+    <AlertDialog.Portal>
+      <StyledOverlay />
+      <StyledContent {...props} ref={forwardedRef}>
+        {children}
+      </StyledContent>
+    </AlertDialog.Portal>
+  );
+});
 
 const overlayShow = keyframes({
   '0%': { opacity: 0 },
@@ -13,7 +49,7 @@ const contentShow = keyframes({
   '100%': { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
 });
 
-const StyledOverlay = styled(AlertDialogPrimitive.Overlay, {
+const StyledOverlay = styled(AlertDialog.Overlay, {
   backgroundColor: blackA.blackA9,
   position: 'fixed',
   inset: 0,
@@ -22,7 +58,7 @@ const StyledOverlay = styled(AlertDialogPrimitive.Overlay, {
   },
 });
 
-const StyledContent = styled(AlertDialogPrimitive.Content, {
+const StyledContent = styled(AlertDialog.Content, {
   backgroundColor: 'white',
   borderRadius: 6,
   boxShadow: 'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
@@ -40,39 +76,20 @@ const StyledContent = styled(AlertDialogPrimitive.Content, {
   '&:focus': { outline: 'none' },
 });
 
-function Content({ children, ...props }) {
-  return (
-    <AlertDialogPrimitive.Portal>
-      <StyledOverlay className={`${theme}`} />
-      <StyledContent {...props}>{children}</StyledContent>
-    </AlertDialogPrimitive.Portal>
-  );
-}
-
-const StyledTitle = styled(AlertDialogPrimitive.Title, {
+const AlertDialogTitle = styled(AlertDialog.Title, {
   margin: 0,
   color: mauve.mauve12,
   fontSize: 17,
   fontWeight: 500,
 });
 
-const StyledDescription = styled(AlertDialogPrimitive.Description, {
+const AlertDialogDescription = styled(AlertDialog.Description, {
   marginBottom: 20,
   color: mauve.mauve11,
   fontSize: 15,
   lineHeight: 1.5,
 });
 
-// Exports
-export const AlertDialog = AlertDialogPrimitive.Root;
-export const AlertDialogTrigger = AlertDialogPrimitive.Trigger;
-export const AlertDialogContent = Content;
-export const AlertDialogTitle = StyledTitle;
-export const AlertDialogDescription = StyledDescription;
-export const AlertDialogAction = AlertDialogPrimitive.Action;
-export const AlertDialogCancel = AlertDialogPrimitive.Cancel;
-
-// Your app...
 const Flex = styled('div', { display: 'flex' });
 
 const Button = styled('button', {
@@ -115,30 +132,5 @@ const Button = styled('button', {
     variant: 'violet',
   },
 });
-
-const AlertDialogDemo = () => (
-  <AlertDialog>
-    <AlertDialogTrigger asChild>
-      <Button>Delete account</Button>
-    </AlertDialogTrigger>
-    <AlertDialogContent className={`${theme}`}>
-      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-      <AlertDialogDescription>
-        This action cannot be undone. This will permanently delete your account and remove your data
-        from our servers.
-      </AlertDialogDescription>
-      <Flex css={{ justifyContent: 'flex-end' }}>
-        <AlertDialogCancel asChild>
-          <Button variant="mauve" css={{ marginRight: 25 }}>
-            Cancel
-          </Button>
-        </AlertDialogCancel>
-        <AlertDialogAction asChild>
-          <Button variant="red">Yes, delete account</Button>
-        </AlertDialogAction>
-      </Flex>
-    </AlertDialogContent>
-  </AlertDialog>
-);
 
 export default AlertDialogDemo;
