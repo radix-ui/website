@@ -50,13 +50,6 @@
   line-height: 1;
   color: var(--violet11);
   box-shadow: 0 1px 0 var(--mauve6);
-}
-
-.AccordionTrigger[data-state='open'] {
-  background-color: white;
-}
-
-.AccordionTrigger[data-state='closed'] {
   background-color: white;
 }
 
