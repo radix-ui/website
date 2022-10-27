@@ -13,7 +13,7 @@ import {
 
 const ToolbarDemo = () => (
   <ToolbarRoot aria-label="Formatting options">
-    <ToolbarToggleGroup type="multiple" aria-label="Text formatting">
+    <Toolbar.ToggleGroup type="multiple" aria-label="Text formatting">
       <ToolbarToggleItem value="bold" aria-label="Bold">
         <FontBoldIcon />
       </ToolbarToggleItem>
@@ -23,9 +23,9 @@ const ToolbarDemo = () => (
       <ToolbarToggleItem value="strikethrough" aria-label="Strike through">
         <StrikethroughIcon />
       </ToolbarToggleItem>
-    </ToolbarToggleGroup>
+    </Toolbar.ToggleGroup>
     <ToolbarSeparator />
-    <ToolbarToggleGroup type="single" defaultValue="center" aria-label="Text alignment">
+    <Toolbar.ToggleGroup type="single" defaultValue="center" aria-label="Text alignment">
       <ToolbarToggleItem value="left" aria-label="Left aligned">
         <TextAlignLeftIcon />
       </ToolbarToggleItem>
@@ -35,7 +35,7 @@ const ToolbarDemo = () => (
       <ToolbarToggleItem value="right" aria-label="Right aligned">
         <TextAlignRightIcon />
       </ToolbarToggleItem>
-    </ToolbarToggleGroup>
+    </Toolbar.ToggleGroup>
     <ToolbarSeparator />
     <ToolbarLink href="#" target="_blank" css={{ marginRight: 10 }}>
       Edited 2 hours ago
@@ -70,14 +70,8 @@ const itemStyles = {
   '&:focus': { position: 'relative', boxShadow: `0 0 0 2px ${violet.violet7}` },
 };
 
-const ToolbarToggleGroup = styled(Toolbar.ToggleGroup, {
-  display: 'inline-flex',
-  borderRadius: 4,
-});
-
 const ToolbarToggleItem = styled(Toolbar.ToggleItem, {
   ...itemStyles,
-  boxShadow: 0,
   backgroundColor: 'white',
   marginLeft: 2,
   '&:first-child': { marginLeft: 0 },

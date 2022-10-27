@@ -12,11 +12,7 @@ import './styles.css';
 
 const ToolbarDemo = () => (
   <Toolbar.Root className="ToolbarRoot" aria-label="Formatting options">
-    <Toolbar.ToggleGroup
-      className="ToolbarToggleGroup"
-      type="multiple"
-      aria-label="Text formatting"
-    >
+    <Toolbar.ToggleGroup type="multiple" aria-label="Text formatting">
       <Toolbar.ToggleItem className="ToolbarToggleItem" value="bold" aria-label="Bold">
         <FontBoldIcon />
       </Toolbar.ToggleItem>

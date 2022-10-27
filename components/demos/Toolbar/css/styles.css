@@ -1,6 +1,6 @@
-@import '@radix-ui/colors/violet.css';
-@import '@radix-ui/colors/mauve.css';
 @import '@radix-ui/colors/blackA.css';
+@import '@radix-ui/colors/mauve.css';
+@import '@radix-ui/colors/violet.css';
 
 .ToolbarRoot {
   display: flex;
@@ -40,13 +40,7 @@
   box-shadow: 0 0 0 2px var(--violet7);
 }
 
-.ToolbarToggleGroup {
-  display: inline-flex;
-  border-radius: 4px;
-}
-
 .ToolbarToggleItem {
-  box-shadow: 0;
   background-color: white;
   margin-left: 2px;
 }
