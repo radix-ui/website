@@ -1,8 +1,8 @@
 import React from 'react';
+import * as Accordion from '@radix-ui/react-accordion';
 import { styled, keyframes } from '@stitches/react';
 import { violet, blackA, mauve } from '@radix-ui/colors';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
-import * as Accordion from '@radix-ui/react-accordion';
 
 const AccordionDemo = () => (
   <AccordionRoot type="single" defaultValue="item-1" collapsible>
