@@ -19,7 +19,7 @@ export { default as SelectDemo } from './Select';
 export { default as SeparatorDemo } from './Separator';
 export { default as SliderDemo } from './Slider';
 export { default as SwitchDemo } from './Switch';
-export { default as TabsDemo } from './Tabs';
+export { default as TabsDemo } from './Tabs/stitches';
 export { default as ToastDemo } from './Toast';
 export { default as ToggleDemo } from './Toggle/stitches';
 export { default as ToggleGroupDemo } from './ToggleGroup/stitches';
