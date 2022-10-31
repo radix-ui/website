@@ -442,9 +442,10 @@ export default () => {
 
 ### Animating swipe gesture
 
-Combine `--radix-toast-swipe-move-[x|y]` and `--radix-toast-swipe-end-[x|y]` CSS variables with `data-swipe="[start|move|cancel|end]"` attributes to animate a swipe to close gesture. Here's an example using vanilla CSS:
+Combine `--radix-toast-swipe-move-[x|y]` and `--radix-toast-swipe-end-[x|y]` CSS variables with `data-swipe="[start|move|cancel|end]"` attributes to animate a swipe to close gesture. Here's an example:
 
-```jsx line=4,5
+```jsx line=5,6
+// index.jsx
 import * as Toast from '@radix-ui/react-toast';
 
 export default () => (
@@ -455,7 +456,8 @@ export default () => (
 );
 ```
 
-```css line=2,3,5,9,16
+```css line=3,4,6,10,17
+/* styles.css */
 @media (prefers-reduced-motion: no-preference) {
   .ToastRoot[__data-swipe__='move'] {
     transform: translateX(var(__--radix-toast-swipe-move-x__));
