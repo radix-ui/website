@@ -18,7 +18,7 @@ export { default as ScrollAreaDemo } from './ScrollArea';
 export { default as SelectDemo } from './Select';
 export { default as SeparatorDemo } from './Separator';
 export { default as SliderDemo } from './Slider';
-export { default as SwitchDemo } from './Switch';
+export { default as SwitchDemo } from './Switch/stitches';
 export { default as TabsDemo } from './Tabs/stitches';
 export { default as ToastDemo } from './Toast/stitches';
 export { default as ToggleDemo } from './Toggle/stitches';
