@@ -182,7 +182,13 @@ Contains all the parts of a toggle group.
       type: '"horizontal" | "vertical" | undefined',
       typeSimple: 'enum',
       default: 'undefined',
-      description: 'The orientation of the component.',
+      description: (
+        <span>
+          The orientation of the component, which determines how focus moves:{' '}
+          <Code>horizontal</Code> for left/right arrows and{' '}
+          <Code>vertical</Code> for up/down arrows.
+        </span>
+      ),
     },
     {
       name: 'dir',
