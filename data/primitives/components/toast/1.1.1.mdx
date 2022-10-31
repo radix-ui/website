@@ -13,9 +13,7 @@ aria: https://www.w3.org/TR/wai-aria/#aria-live
   <ToastDemo />
 </HeroContainer>
 
-```jsx hero template=Toast
-
-```
+<HeroCodeBlock folder="Toast" />
 
 <Highlights
   features={[
@@ -444,38 +442,43 @@ export default () => {
 
 ### Animating swipe gesture
 
-Combine `--radix-toast-swipe-move-[x|y]` and `--radix-toast-swipe-end-[x|y]` CSS variables with `data-swipe="[start|move|cancel|end]"` attributes to animate a swipe to close gesture. Here's an example using Stitches:
+Combine `--radix-toast-swipe-move-[x|y]` and `--radix-toast-swipe-end-[x|y]` CSS variables with `data-swipe="[start|move|cancel|end]"` attributes to animate a swipe to close gesture. Here's an example:
 
-```jsx line=4-7,9-20,24
-import { styled, keyframes } from '@stitches/react';
-import * as ToastPrimitive from '@radix-ui/react-toast';
-
-const slideRight = css.keyframes({
-  from: { transform: 'translateX(var(--radix-toast-swipe-end-x))' },
-  to: { transform: 'translateX(100%)' },
-});
-
-const Toast = styled(ToastPrimitive.Root, {
-  '@media (prefers-reduced-motion: no-preference)': {
-    '&[data-swipe="move"]': {
-      transform: 'translateX(var(--radix-toast-swipe-move-x))',
-    },
-    '&[data-swipe="cancel"]': {
-      transform: 'translateX(0)',
-      transition: 'transform 200ms ease-out',
-    },
-    '&[data-swipe="end"]': {
-      animation: `${slideRight} 100ms ease-out`,
-    },
-  },
-});
+```jsx line=5,6
+// index.jsx
+import * as Toast from '@radix-ui/react-toast';
 
 export default () => (
-  <ToastPrimitive.Provider __swipeDirection__="right">
-    <Toast>...</Toast>
-    <ToastPrimitive.Viewport />
-  </ToastPrimitive.Provider>
+  <Toast.Provider __swipeDirection__="right">
+    <Toast.Root __className__="ToastRoot">...</Toast.Root>
+    <Toast.Viewport />
+  </Toast.Provider>
 );
+```
+
+```css line=3,4,6,10,17
+/* styles.css */
+@media (prefers-reduced-motion: no-preference) {
+  .ToastRoot[__data-swipe__='move'] {
+    transform: translateX(var(__--radix-toast-swipe-move-x__));
+  }
+  .ToastRoot[__data-swipe__='cancel'] {
+    transform: translateX(0);
+    transition: transform 200ms ease-out;
+  }
+  .ToastRoot[__data-swipe__='end'] {
+    animation: slideRight 100ms ease-out;
+  }
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(var(__--radix-toast-swipe-end-x__));
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
 ```
 
 ## Accessibility
