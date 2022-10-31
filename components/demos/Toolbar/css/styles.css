@@ -2,6 +2,12 @@
 @import '@radix-ui/colors/mauve.css';
 @import '@radix-ui/colors/violet.css';
 
+/* reset */
+a,
+button {
+  all: unset;
+}
+
 .ToolbarRoot {
   display: flex;
   padding: 10px;
@@ -15,7 +21,6 @@
 .ToolbarToggleItem,
 .ToolbarLink,
 .ToolbarButton {
-  all: unset;
   flex: 0 0 auto;
   color: var(--mauve11);
   height: 25px;

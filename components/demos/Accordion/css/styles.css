@@ -2,6 +2,12 @@
 @import '@radix-ui/colors/mauve.css';
 @import '@radix-ui/colors/violet.css';
 
+/* reset */
+button,
+h3 {
+  all: unset;
+}
+
 .AccordionRoot {
   border-radius: 6px;
   width: 300px;
@@ -32,12 +38,10 @@
 }
 
 .AccordionHeader {
-  all: unset;
   display: flex;
 }
 
 .AccordionTrigger {
-  all: unset;
   font-family: inherit;
   background-color: transparent;
   padding: 0 20px;

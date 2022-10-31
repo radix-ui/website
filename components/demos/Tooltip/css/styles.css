@@ -1,6 +1,11 @@
 @import '@radix-ui/colors/blackA.css';
 @import '@radix-ui/colors/violet.css';
 
+/* reset */
+button {
+  all: unset;
+}
+
 .TooltipContent {
   border-radius: 4px;
   padding: 10px 15px;
@@ -37,7 +42,6 @@
 }
 
 .IconButton {
-  all: unset;
   font-family: inherit;
   border-radius: 100%;
   height: 35px;

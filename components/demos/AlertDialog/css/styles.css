@@ -3,6 +3,11 @@
 @import '@radix-ui/colors/red.css';
 @import '@radix-ui/colors/violet.css';
 
+/* reset */
+button {
+  all: unset;
+}
+
 .AlertDialogOverlay {
   background-color: var(--blackA9);
   position: fixed;
@@ -51,7 +56,6 @@
 }
 
 .Button {
-  all: unset;
   display: inline-flex;
   align-items: center;
   justify-content: center;
