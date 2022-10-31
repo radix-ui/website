@@ -1,9 +1,22 @@
 import React from 'react';
-import { styled } from '@modulz/design-system';
-import { violet, mauve, blackA, whiteA } from '@radix-ui/colors';
-import * as SwitchPrimitive from '@radix-ui/react-switch';
+import * as Switch from '@radix-ui/react-switch';
+import { styled } from '@stitches/react';
+import { blackA } from '@radix-ui/colors';
 
-const StyledSwitch = styled(SwitchPrimitive.Root, {
+const SwitchDemo = () => (
+  <form>
+    <Flex css={{ alignItems: 'center' }}>
+      <Label htmlFor="airplane-mode" css={{ paddingRight: 15 }}>
+        Airplane mode
+      </Label>
+      <SwitchRoot id="airplane-mode">
+        <SwitchThumb />
+      </SwitchRoot>
+    </Flex>
+  </form>
+);
+
+const SwitchRoot = styled(Switch.Root, {
   all: 'unset',
   width: 42,
   height: 25,
@@ -16,7 +29,7 @@ const StyledSwitch = styled(SwitchPrimitive.Root, {
   '&[data-state="checked"]': { backgroundColor: 'black' },
 });
 
-const StyledThumb = styled(SwitchPrimitive.Thumb, {
+const SwitchThumb = styled(Switch.Thumb, {
   display: 'block',
   width: 21,
   height: 21,
@@ -29,11 +42,6 @@ const StyledThumb = styled(SwitchPrimitive.Thumb, {
   '&[data-state="checked"]': { transform: 'translateX(19px)' },
 });
 
-// Exports
-export const Switch = StyledSwitch;
-export const SwitchThumb = StyledThumb;
-
-// Your app...
 const Flex = styled('div', { display: 'flex' });
 const Label = styled('label', {
   color: 'white',
@@ -41,18 +49,5 @@ const Label = styled('label', {
   lineHeight: 1,
   userSelect: 'none',
 });
-
-const SwitchDemo = () => (
-  <form>
-    <Flex css={{ alignItems: 'center' }}>
-      <Label htmlFor="s1" css={{ paddingRight: 15 }}>
-        Airplane mode
-      </Label>
-      <Switch defaultChecked id="s1">
-        <SwitchThumb />
-      </Switch>
-    </Flex>
-  </form>
-);
 
 export default SwitchDemo;
