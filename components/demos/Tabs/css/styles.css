@@ -3,6 +3,13 @@
 @import '@radix-ui/colors/mauve.css';
 @import '@radix-ui/colors/violet.css';
 
+/* reset */
+button,
+fieldset,
+input {
+  all: unset;
+}
+
 .TabsRoot {
   display: flex;
   flex-direction: column;
@@ -17,7 +24,6 @@
 }
 
 .TabsTrigger {
-  all: unset;
   font-family: inherit;
   background-color: white;
   padding: 0 20px;
@@ -70,7 +76,6 @@
 }
 
 .Fieldset {
-  all: unset;
   margin-bottom: 15px;
   width: 100%;
   display: flex;
@@ -87,7 +92,6 @@
 }
 
 .Input {
-  all: unset;
   flex: 1 0 auto;
   border-radius: 4px;
   padding: 0 10px;
@@ -102,7 +106,6 @@
 }
 
 .Button {
-  all: unset;
   display: inline-flex;
   align-items: center;
   justify-content: center;
