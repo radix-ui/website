@@ -1217,7 +1217,7 @@ export default () => {
 
 ### With complex items
 
-You can add extra decorative elements in the `Item` parts, such as icons.
+You can add extra decorative elements in the `Item` parts, such as images.
 
 ```jsx line=10,14
 import * as ContextMenu from '@radix-ui/react-context-menu';
@@ -1229,12 +1229,12 @@ export default () => (
     <ContextMenu.Portal>
       <ContextMenu.Content>
         <ContextMenu.Item>
-          <TransformIcon />
-          Transform
+          <img src="…" />
+          Adolfo Hess
         </ContextMenu.Item>
         <ContextMenu.Item>
-          <CropIcon />
-          Crop
+          <img src="…" />
+          Miyah Myles
         </ContextMenu.Item>
       </ContextMenu.Content>
     </ContextMenu.Portal>

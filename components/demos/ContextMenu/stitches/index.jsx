@@ -42,7 +42,9 @@ const ContextMenuDemo = () => {
               </ContextMenuSubContent>
             </ContextMenu.Portal>
           </ContextMenu.Sub>
+
           <ContextMenuSeparator />
+
           <ContextMenuCheckboxItem checked={bookmarksChecked} onCheckedChange={setBookmarksChecked}>
             <ContextMenuItemIndicator>
               <CheckIcon />
@@ -55,7 +57,9 @@ const ContextMenuDemo = () => {
             </ContextMenuItemIndicator>
             Show Full URLs
           </ContextMenuCheckboxItem>
+
           <ContextMenuSeparator />
+
           <ContextMenuLabel>People</ContextMenuLabel>
           <ContextMenu.RadioGroup value={person} onValueChange={setPerson}>
             <ContextMenuRadioItem value="pedro">
@@ -99,8 +103,8 @@ const contentStyles = {
     '0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2)',
 };
 
-const ContextMenuContent = styled(ContextMenu.Content, { ...contentStyles });
-const ContextMenuSubContent = styled(ContextMenu.SubContent, { ...contentStyles });
+const ContextMenuContent = styled(ContextMenu.Content, contentStyles);
+const ContextMenuSubContent = styled(ContextMenu.SubContent, contentStyles);
 
 const itemStyles = {
   fontSize: 13,
@@ -127,9 +131,9 @@ const itemStyles = {
   },
 };
 
-const ContextMenuItem = styled(ContextMenu.Item, { ...itemStyles });
-const ContextMenuCheckboxItem = styled(ContextMenu.CheckboxItem, { ...itemStyles });
-const ContextMenuRadioItem = styled(ContextMenu.RadioItem, { ...itemStyles });
+const ContextMenuItem = styled(ContextMenu.Item, itemStyles);
+const ContextMenuCheckboxItem = styled(ContextMenu.CheckboxItem, itemStyles);
+const ContextMenuRadioItem = styled(ContextMenu.RadioItem, itemStyles);
 const ContextMenuSubTrigger = styled(ContextMenu.SubTrigger, {
   '&[data-state="open"]': {
     backgroundColor: violet.violet4,

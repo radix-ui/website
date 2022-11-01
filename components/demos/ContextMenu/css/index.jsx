@@ -45,7 +45,9 @@ const ContextMenuDemo = () => {
               </ContextMenu.SubContent>
             </ContextMenu.Portal>
           </ContextMenu.Sub>
+
           <ContextMenu.Separator className="ContextMenuSeparator" />
+
           <ContextMenu.CheckboxItem
             className="ContextMenuCheckboxItem"
             checked={bookmarksChecked}
@@ -66,7 +68,9 @@ const ContextMenuDemo = () => {
             </ContextMenu.ItemIndicator>
             Show Full URLs
           </ContextMenu.CheckboxItem>
+
           <ContextMenu.Separator className="ContextMenuSeparator" />
+
           <ContextMenu.Label className="ContextMenuLabel">People</ContextMenu.Label>
           <ContextMenu.RadioGroup value={person} onValueChange={setPerson}>
             <ContextMenu.RadioItem className="ContextMenuRadioItem" value="pedro">
