@@ -16,9 +16,7 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/menu
   <ContextMenuDemo />
 </HeroContainer>
 
-```jsx hero template=ContextMenu
-
-```
+<HeroCodeBlock folder="ContextMenu" />
 
 <Highlights
   features={[
@@ -1074,26 +1072,30 @@ You can create submenus by using `ContextMenu.Sub` in combination with its parts
 
 You can add special styles to disabled items via the `data-disabled` attribute.
 
-```jsx line=4-6,13
-import { styled } from '@stitches/react';
+```jsx line=9
+// index.jsx
 import * as ContextMenu from '@radix-ui/react-context-menu';
-
-const StyledItem = styled(ContextMenu.Item, {
-  '&[data-disabled]': { color: 'gainsboro' },
-});
 
 export default () => (
   <ContextMenu.Root>
     <ContextMenu.Trigger>…</ContextMenu.Trigger>
     <ContextMenu.Portal>
       <ContextMenu.Content>
-        <StyledItem __disabled__>…</StyledItem>
-        <StyledItem>…</StyledItem>
-        <StyledItem>…</StyledItem>
+        <ContextMenu.Item __className__="ContextMenuItem" __disabled__>
+          …
+        </ContextMenu.Item>
+        <ContextMenu.Item className="ContextMenuItem">…</ContextMenu.Item>
       </ContextMenu.Content>
     </ContextMenu.Portal>
   </ContextMenu.Root>
 );
+```
+
+```css line=2
+/* styles.css */
+.ContextMenuItem[__data-disabled__] {
+  color: gainsboro;
+}
 ```
 
 ### With separators
@@ -1215,16 +1217,11 @@ export default () => {
 
 ### With complex items
 
-You can add extra decorative elements in the `Item` parts, such as images.
+You can add extra decorative elements in the `Item` parts, such as icons.
 
-```jsx line=4-7,15,19,23
-import { styled } from '@stitches/react';
+```jsx line=10,14
 import * as ContextMenu from '@radix-ui/react-context-menu';
-
-const Image = styled('img', {
-  width: 24,
-  height: 24,
-});
+import { CropIcon, TransformIcon } from '@radix-ui/react-icons';
 
 export default () => (
   <ContextMenu.Root>
@@ -1232,16 +1229,12 @@ export default () => (
     <ContextMenu.Portal>
       <ContextMenu.Content>
         <ContextMenu.Item>
-          <Image src="…" />
-          Adolfo Hess
+          <TransformIcon />
+          Transform
         </ContextMenu.Item>
         <ContextMenu.Item>
-          <Image src="…" />
-          Miyah Myles
-        </ContextMenu.Item>
-        <ContextMenu.Item>
-          <Image src="…" />
-          Sylvia Reynolds
+          <CropIcon />
+          Crop
         </ContextMenu.Item>
       </ContextMenu.Content>
     </ContextMenu.Portal>
@@ -1253,63 +1246,95 @@ export default () => (
 
 We expose a CSS custom property `--radix-context-menu-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
-```jsx line=4-7,9-12,18
-import { styled, keyframes } from '@stitches/react';
+```jsx line=8
+// index.jsx
 import * as ContextMenu from '@radix-ui/react-context-menu';
-
-const scaleIn = keyframes({
-  '0%': { opacity: 0, transform: 'scale(0)' },
-  '100%': { opacity: 1, transform: 'scale(1)' },
-});
-
-const StyledContent = styled(ContextMenu.Content, {
-  transformOrigin: 'var(--radix-context-menu-content-transform-origin)',
-  animation: `${scaleIn} 0.5s ease-out`,
-});
 
 export default () => (
   <ContextMenu.Root>
     <ContextMenu.Trigger>…</ContextMenu.Trigger>
     <ContextMenu.Portal>
-      <StyledContent>…</StyledContent>
+      <ContextMenu.Content __className__="ContextMenuContent">
+        …
+      </ContextMenu.Content>
     </ContextMenu.Portal>
   </ContextMenu.Root>
 );
+```
+
+```css line=3
+/* styles.css */
+.ContextMenuContent {
+  transform-origin: var(__--radix-context-menu-content-transform-origin__);
+  animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 ```
 
 ### Collision-aware animations
 
 We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
 
-```jsx line=4-7,9-12,14-19,25
-import { styled, keyframes } from '@stitches/react';
+```jsx line=8
+// index.jsx
 import * as ContextMenu from '@radix-ui/react-context-menu';
-
-const slideDown = keyframes({
-  '0%': { opacity: 0, transform: 'translateY(-10px)' },
-  '100%': { opacity: 1, transform: 'translateY(0)' },
-});
-
-const slideUp = keyframes({
-  '0%': { opacity: 0, transform: 'translateY(10px)' },
-  '100%': { opacity: 1, transform: 'translateY(0)' },
-});
-
-const StyledContent = styled(ContextMenu.Content, {
-  animationDuration: '0.6s',
-  animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
-  '&[data-side="top"]': { animationName: slideUp },
-  '&[data-side="bottom"]': { animationName: slideDown },
-});
 
 export default () => (
   <ContextMenu.Root>
     <ContextMenu.Trigger>…</ContextMenu.Trigger>
     <ContextMenu.Portal>
-      <StyledContent>…</StyledContent>
+      <ContextMenu.Content __className__="ContextMenuContent">
+        …
+      </ContextMenu.Content>
     </ContextMenu.Portal>
   </ContextMenu.Root>
 );
+```
+
+```css line=6-11
+/* styles.css */
+.ContextMenuContent {
+  animation-duration: 0.6s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ContextMenuContent[__data-side='top'__] {
+  animation-name: slideUp;
+}
+.ContextMenuContent[__data-side='bottom'__] {
+  animation-name: slideDown;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 ```
 
 ## Accessibility

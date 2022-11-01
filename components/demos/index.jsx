@@ -5,7 +5,7 @@ export { default as AspectRatioDemo } from './AspectRatio/stitches';
 export { default as AvatarDemo } from './Avatar/stitches';
 export { default as CheckboxDemo } from './Checkbox/stitches';
 export { default as CollapsibleDemo } from './Collapsible/stitches';
-export { default as ContextMenuDemo } from './ContextMenu';
+export { default as ContextMenuDemo } from './ContextMenu/stitches';
 export { default as DialogDemo } from './Dialog';
 export { default as DropdownMenuDemo } from './DropdownMenu';
 export { default as HoverCardDemo } from './HoverCard';
