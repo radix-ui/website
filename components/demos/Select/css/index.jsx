@@ -1,0 +1,84 @@
+import React from 'react';
+import * as Select from '@radix-ui/react-select';
+import classnames from 'classnames';
+import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
+import './styles.css';
+
+export const SelectDemo = () => (
+  <Select.Root>
+    <Select.Trigger className="SelectTrigger" aria-label="Food">
+      <Select.Value placeholder="Select a fruit…" />
+      <Select.Icon className="SelectIcon">
+        <ChevronDownIcon />
+      </Select.Icon>
+    </Select.Trigger>
+    <SelectContent>
+      <Select.ScrollUpButton className="SelectScrollButton">
+        <ChevronUpIcon />
+      </Select.ScrollUpButton>
+      <Select.Viewport className="SelectViewport">
+        <Select.Group>
+          <Select.Label className="SelectLabel">Fruits</Select.Label>
+          <SelectItem value="apple">Apple</SelectItem>
+          <SelectItem value="banana">Banana</SelectItem>
+          <SelectItem value="blueberry">Blueberry</SelectItem>
+          <SelectItem value="grapes">Grapes</SelectItem>
+          <SelectItem value="pineapple">Pineapple</SelectItem>
+        </Select.Group>
+
+        <Select.Separator className="SelectSeparator" />
+
+        <Select.Group>
+          <Select.Label className="SelectLabel">Vegetables</Select.Label>
+          <SelectItem value="aubergine">Aubergine</SelectItem>
+          <SelectItem value="broccoli">Broccoli</SelectItem>
+          <SelectItem value="carrot" disabled>
+            Carrot
+          </SelectItem>
+          <SelectItem value="courgette">Courgette</SelectItem>
+          <SelectItem value="leek">leek</SelectItem>
+        </Select.Group>
+
+        <Select.Separator className="SelectSeparator" />
+
+        <Select.Group>
+          <Select.Label className="SelectLabel">Meat</Select.Label>
+          <SelectItem value="beef">Beef</SelectItem>
+          <SelectItem value="chicken">Chicken</SelectItem>
+          <SelectItem value="lamb">Lamb</SelectItem>
+          <SelectItem value="pork">Pork</SelectItem>
+        </Select.Group>
+      </Select.Viewport>
+      <Select.ScrollDownButton className="SelectScrollButton">
+        <ChevronDownIcon />
+      </Select.ScrollDownButton>
+    </SelectContent>
+  </Select.Root>
+);
+
+const SelectContent = React.forwardRef(({ children, className, ...props }, forwardedRef) => {
+  return (
+    <Select.Portal>
+      <Select.Content
+        {...props}
+        ref={forwardedRef}
+        className={classnames('SelectContent', className)}
+      >
+        {children}
+      </Select.Content>
+    </Select.Portal>
+  );
+});
+
+const SelectItem = React.forwardRef(({ children, className, ...props }, forwardedRef) => {
+  return (
+    <Select.Item {...props} ref={forwardedRef} className={classnames('SelectItem', className)}>
+      <Select.ItemText>{children}</Select.ItemText>
+      <Select.ItemIndicator>
+        <CheckIcon />
+      </Select.ItemIndicator>
+    </Select.Item>
+  );
+});
+
+export default SelectDemo;
