@@ -550,11 +550,11 @@ export default () => (
     <Select.Portal>
       <Select.Content>
         <Select.Viewport>
-          <StyledItem __className__="SelectItem" __disabled__>
+          <Select.Item __className__="SelectItem" __disabled__>
             …
-          </StyledItem>
-          <StyledItem>…</StyledItem>
-          <StyledItem>…</StyledItem>
+          </Select.Item>
+          <Select.Item>…</Select.Item>
+          <Select.Item>…</Select.Item>
         </Select.Viewport>
       </Select.Content>
     </Select.Portal>
@@ -579,10 +579,10 @@ import * as Select from '@radix-ui/react-select';
 
 export default () => (
   <Select.Root>
-    <SelectTrigger __className__="SelectTrigger">
+    <Select.Trigger __className__="SelectTrigger">
       <Select.Value __placeholder__="Pick an option" />
       <Select.Icon />
-    </SelectTrigger>
+    </Select.Trigger>
     <Select.Portal>
       <Select.Content>…</Select.Content>
     </Select.Portal>

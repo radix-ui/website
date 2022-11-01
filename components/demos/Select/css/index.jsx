@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
 import './styles.css';
 
-export const SelectDemo = () => (
+const SelectDemo = () => (
   <Select.Root>
     <Select.Trigger className="SelectTrigger" aria-label="Food">
       <Select.Value placeholder="Select a fruit…" />
@@ -60,9 +60,9 @@ const SelectContent = React.forwardRef(({ children, className, ...props }, forwa
   return (
     <Select.Portal>
       <Select.Content
+        className={classnames('SelectContent', className)}
         {...props}
         ref={forwardedRef}
-        className={classnames('SelectContent', className)}
       >
         {children}
       </Select.Content>
@@ -72,9 +72,9 @@ const SelectContent = React.forwardRef(({ children, className, ...props }, forwa
 
 const SelectItem = React.forwardRef(({ children, className, ...props }, forwardedRef) => {
   return (
-    <Select.Item {...props} ref={forwardedRef} className={classnames('SelectItem', className)}>
+    <Select.Item className={classnames('SelectItem', className)} {...props} ref={forwardedRef}>
       <Select.ItemText>{children}</Select.ItemText>
-      <Select.ItemIndicator>
+      <Select.ItemIndicator className="SelectItemIndicator">
         <CheckIcon />
       </Select.ItemIndicator>
     </Select.Item>
