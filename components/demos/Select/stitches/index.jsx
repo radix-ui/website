@@ -12,47 +12,49 @@ export const SelectDemo = () => (
         <ChevronDownIcon />
       </SelectIcon>
     </SelectTrigger>
-    <SelectContent>
-      <SelectScrollUpButton>
-        <ChevronUpIcon />
-      </SelectScrollUpButton>
-      <SelectViewport>
-        <Select.Group>
-          <SelectLabel>Fruits</SelectLabel>
-          <SelectItem value="apple">Apple</SelectItem>
-          <SelectItem value="banana">Banana</SelectItem>
-          <SelectItem value="blueberry">Blueberry</SelectItem>
-          <SelectItem value="grapes">Grapes</SelectItem>
-          <SelectItem value="pineapple">Pineapple</SelectItem>
-        </Select.Group>
+    <Select.Portal>
+      <SelectContent>
+        <SelectScrollUpButton>
+          <ChevronUpIcon />
+        </SelectScrollUpButton>
+        <SelectViewport>
+          <Select.Group>
+            <SelectLabel>Fruits</SelectLabel>
+            <SelectItem value="apple">Apple</SelectItem>
+            <SelectItem value="banana">Banana</SelectItem>
+            <SelectItem value="blueberry">Blueberry</SelectItem>
+            <SelectItem value="grapes">Grapes</SelectItem>
+            <SelectItem value="pineapple">Pineapple</SelectItem>
+          </Select.Group>
 
-        <SelectSeparator />
+          <SelectSeparator />
 
-        <Select.Group>
-          <SelectLabel>Vegetables</SelectLabel>
-          <SelectItem value="aubergine">Aubergine</SelectItem>
-          <SelectItem value="broccoli">Broccoli</SelectItem>
-          <SelectItem value="carrot" disabled>
-            Carrot
-          </SelectItem>
-          <SelectItem value="courgette">Courgette</SelectItem>
-          <SelectItem value="leek">leek</SelectItem>
-        </Select.Group>
+          <Select.Group>
+            <SelectLabel>Vegetables</SelectLabel>
+            <SelectItem value="aubergine">Aubergine</SelectItem>
+            <SelectItem value="broccoli">Broccoli</SelectItem>
+            <SelectItem value="carrot" disabled>
+              Carrot
+            </SelectItem>
+            <SelectItem value="courgette">Courgette</SelectItem>
+            <SelectItem value="leek">leek</SelectItem>
+          </Select.Group>
 
-        <SelectSeparator />
+          <SelectSeparator />
 
-        <Select.Group>
-          <SelectLabel>Meat</SelectLabel>
-          <SelectItem value="beef">Beef</SelectItem>
-          <SelectItem value="chicken">Chicken</SelectItem>
-          <SelectItem value="lamb">Lamb</SelectItem>
-          <SelectItem value="pork">Pork</SelectItem>
-        </Select.Group>
-      </SelectViewport>
-      <SelectScrollDownButton>
-        <ChevronDownIcon />
-      </SelectScrollDownButton>
-    </SelectContent>
+          <Select.Group>
+            <SelectLabel>Meat</SelectLabel>
+            <SelectItem value="beef">Beef</SelectItem>
+            <SelectItem value="chicken">Chicken</SelectItem>
+            <SelectItem value="lamb">Lamb</SelectItem>
+            <SelectItem value="pork">Pork</SelectItem>
+          </Select.Group>
+        </SelectViewport>
+        <SelectScrollDownButton>
+          <ChevronDownIcon />
+        </SelectScrollDownButton>
+      </SelectContent>
+    </Select.Portal>
   </Select.Root>
 );
 
@@ -79,17 +81,7 @@ const SelectIcon = styled(Select.SelectIcon, {
   color: violet.violet11,
 });
 
-const SelectContent = React.forwardRef(({ children, ...props }, forwardedRef) => {
-  return (
-    <Select.Portal>
-      <StyledContent {...props} ref={forwardedRef}>
-        {children}
-      </StyledContent>
-    </Select.Portal>
-  );
-});
-
-const StyledContent = styled(Select.Content, {
+const SelectContent = styled(Select.Content, {
   overflow: 'hidden',
   backgroundColor: 'white',
   borderRadius: 6,
