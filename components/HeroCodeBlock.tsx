@@ -90,35 +90,91 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
           <Box css={{ position: 'relative' }}>
             <Tabs.Root value={currentTabValue} onValueChange={setCurrentTabValue}>
               <Flex
+                align="center"
+                justify="between"
                 css={{
+                  height: 40,
+                  boxShadow: 'inset 0 -1px 0 0 $colors$violet5',
                   backgroundColor: '$violet2',
-                  borderBottom: '1px solid $violet5',
-                  padding: '$2',
+                  paddingRight: '$2',
                 }}
               >
-                <Tabs.List>
+                <Tabs.List
+                  style={{
+                    height: '100%',
+                  }}
+                >
                   {currentTabs.map((tab) => (
-                    <Tabs.Trigger key={tab.id} value={tab.id}>
-                      {tab.title}
+                    <Tabs.Trigger key={tab.id} value={tab.id} asChild>
+                      <Box
+                        as="button"
+                        css={{
+                          appearance: 'none',
+                          backgroundColor: 'transparent',
+                          border: 'none',
+                          lineHeight: '1',
+                          fontFamily: 'inherit',
+                          boxSizing: 'border-box',
+                          flexShrink: 0,
+                          position: 'relative',
+                          userSelect: 'none',
+                          paddingLeft: '$2',
+                          paddingRight: '$2',
+                          gap: '$2',
+                          fontSize: '$2',
+                          height: '100%',
+                          outline: 'none',
+                          '&[data-state="active"]': {
+                            fontWeight: 500,
+                            letterSpacing: '-.025em',
+                            '&::before': {
+                              boxSizing: 'border-box',
+                              content: '""',
+                              height: '2px',
+                              position: 'absolute',
+                              bottom: '0',
+                              left: '0',
+                              right: '0',
+                              backgroundColor: '$violet9',
+                            },
+                          },
+                        }}
+                      >
+                        {tab.title}
+                      </Box>
                     </Tabs.Trigger>
                   ))}
                 </Tabs.List>
 
                 {availableCssLibs.length > 1 ? (
-                  <select
-                    value={preferredCssLib}
-                    onChange={(event) => {
-                      const lib = event.target.value;
-                      if (isValidCssLib(lib)) setPreferredCssLib(lib);
-                    }}
-                    style={{ marginLeft: 'auto' }}
-                  >
-                    {availableCssLibs.map((lib) => (
-                      <option key={lib} value={lib}>
-                        {CSS_LIB_NAMES[lib]}
-                      </option>
-                    ))}
-                  </select>
+                  <Box>
+                    <select
+                      value={preferredCssLib}
+                      onChange={(event) => {
+                        const lib = event.target.value;
+                        if (isValidCssLib(lib)) setPreferredCssLib(lib);
+                      }}
+                      style={{
+                        appearance: 'none',
+                        height: 25,
+                        fontFamily: 'inherit',
+                        backgroundColor: 'transparent',
+                        border: 'none',
+                        boxShadow: 'inset 0 0 0 1px gainsboro',
+                        color: '$gray11',
+                        paddingLeft: 10,
+                        paddingRight: 10,
+                        borderRadius: 4,
+                        outline: 'none',
+                      }}
+                    >
+                      {availableCssLibs.map((lib) => (
+                        <option key={lib} value={lib}>
+                          {CSS_LIB_NAMES[lib]}
+                        </option>
+                      ))}
+                    </select>
+                  </Box>
                 ) : null}
               </Flex>
 
