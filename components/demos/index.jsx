@@ -14,7 +14,7 @@ export { default as NavigationMenuDemo } from './NavigationMenu';
 export { default as PopoverDemo } from './Popover';
 export { default as ProgressDemo } from './Progress';
 export { default as RadioGroupDemo } from './RadioGroup/stitches';
-export { default as ScrollAreaDemo } from './ScrollArea';
+export { default as ScrollAreaDemo } from './ScrollArea/stitches';
 export { default as SelectDemo } from './Select/stitches';
 export { default as SeparatorDemo } from './Separator/stitches';
 export { default as SliderDemo } from './Slider/stitches';
