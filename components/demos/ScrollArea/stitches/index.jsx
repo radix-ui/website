@@ -1,25 +1,48 @@
 import React from 'react';
-import { styled } from '@modulz/design-system';
+import * as ScrollArea from '@radix-ui/react-scroll-area';
+import { styled } from '@stitches/react';
 import { violet, mauve, blackA } from '@radix-ui/colors';
-import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
+
+const TAGS = Array.from({ length: 50 }).map((_, i, a) => `v1.2.0-beta.${a.length - i}`);
+
+const ScrollAreaDemo = () => (
+  <ScrollAreaRoot>
+    <ScrollAreaViewport>
+      <Box style={{ padding: '15px 20px' }}>
+        <Text>Tags</Text>
+        {TAGS.map((tag) => (
+          <Tag key={tag}>{tag}</Tag>
+        ))}
+      </Box>
+    </ScrollAreaViewport>
+    <ScrollAreaScrollbar orientation="vertical">
+      <ScrollAreaThumb />
+    </ScrollAreaScrollbar>
+    <ScrollAreaScrollbar orientation="horizontal">
+      <ScrollAreaThumb />
+    </ScrollAreaScrollbar>
+    <ScrollAreaCorner />
+  </ScrollAreaRoot>
+);
 
 const SCROLLBAR_SIZE = 10;
 
-const StyledScrollArea = styled(ScrollAreaPrimitive.Root, {
+const ScrollAreaRoot = styled(ScrollArea.Root, {
   width: 200,
   height: 225,
   borderRadius: 4,
   overflow: 'hidden',
   boxShadow: `0 2px 10px ${blackA.blackA7}`,
+  backgroundColor: 'white',
 });
 
-const StyledViewport = styled(ScrollAreaPrimitive.Viewport, {
+const ScrollAreaViewport = styled(ScrollArea.Viewport, {
   width: '100%',
   height: '100%',
   borderRadius: 'inherit',
 });
 
-const StyledScrollbar = styled(ScrollAreaPrimitive.Scrollbar, {
+const ScrollAreaScrollbar = styled(ScrollArea.Scrollbar, {
   display: 'flex',
   // ensures no selection
   userSelect: 'none',
@@ -36,7 +59,7 @@ const StyledScrollbar = styled(ScrollAreaPrimitive.Scrollbar, {
   },
 });
 
-const StyledThumb = styled(ScrollAreaPrimitive.Thumb, {
+const ScrollAreaThumb = styled(ScrollArea.Thumb, {
   flex: 1,
   background: mauve.mauve10,
   borderRadius: SCROLLBAR_SIZE,
@@ -55,18 +78,10 @@ const StyledThumb = styled(ScrollAreaPrimitive.Thumb, {
   },
 });
 
-const StyledCorner = styled(ScrollAreaPrimitive.Corner, {
+const ScrollAreaCorner = styled(ScrollArea.Corner, {
   background: blackA.blackA8,
 });
 
-// Exports
-export const ScrollArea = StyledScrollArea;
-export const ScrollAreaViewport = StyledViewport;
-export const ScrollAreaScrollbar = StyledScrollbar;
-export const ScrollAreaThumb = StyledThumb;
-export const ScrollAreaCorner = StyledCorner;
-
-// Your app...
 const Box = styled('div', {});
 const Text = styled('div', {
   color: violet.violet11,
@@ -82,27 +97,5 @@ const Tag = styled('div', {
   borderTop: `1px solid ${mauve.mauve6}`,
   paddingTop: 10,
 });
-
-const TAGS = Array.from({ length: 50 }).map((_, i, a) => `v1.2.0-beta.${a.length - i}`);
-
-const ScrollAreaDemo = () => (
-  <ScrollArea>
-    <ScrollAreaViewport css={{ backgroundColor: 'white' }}>
-      <Box style={{ padding: '15px 20px' }}>
-        <Text>Tags</Text>
-        {TAGS.map((tag) => (
-          <Tag key={tag}>{tag}</Tag>
-        ))}
-      </Box>
-    </ScrollAreaViewport>
-    <ScrollAreaScrollbar orientation="vertical">
-      <ScrollAreaThumb />
-    </ScrollAreaScrollbar>
-    <ScrollAreaScrollbar orientation="horizontal">
-      <ScrollAreaThumb />
-    </ScrollAreaScrollbar>
-    <ScrollAreaCorner />
-  </ScrollArea>
-);
 
 export default ScrollAreaDemo;
