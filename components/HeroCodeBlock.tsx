@@ -89,7 +89,13 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
         <Collapsible.Content asChild forceMount>
           <Box css={{ position: 'relative' }}>
             <Tabs.Root value={currentTabValue} onValueChange={setCurrentTabValue}>
-              <Flex css={{ backgroundColor: '$violet3', padding: '$2' }}>
+              <Flex
+                css={{
+                  backgroundColor: '$violet2',
+                  borderBottom: '1px solid $violet5',
+                  padding: '$2',
+                }}
+              >
                 <Tabs.List>
                   {currentTabs.map((tab) => (
                     <Tabs.Trigger key={tab.id} value={tab.id}>
@@ -151,19 +157,6 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
                 bottom: 0,
                 width: '100%',
                 padding: '$2',
-                backgroundColor: '$violet2',
-                borderBottomLeftRadius: '$3',
-                borderBottomRightRadius: '$3',
-                '&::after': {
-                  content: '',
-                  display: 'block',
-                  width: '100%',
-                  height: '$8',
-                  bottom: '100%',
-                  position: 'absolute',
-                  backgroundImage: 'linear-gradient(transparent, $violet2)',
-                  pointerEvents: 'none',
-                },
               }}
               justify="center"
             >
