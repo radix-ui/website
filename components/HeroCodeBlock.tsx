@@ -10,6 +10,7 @@ import { Pre } from './Pre';
 import { CopyCodeButton } from './CopyCodeButton';
 import { CSS_LIB_NAMES } from '@lib/constants';
 import type { CssLib } from '@lib/constants';
+import { Select } from '@components/Select';
 
 export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
   const frontmatter = React.useContext(FrontmatterContext);
@@ -148,24 +149,11 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
 
                 {availableCssLibs.length > 1 ? (
                   <Box>
-                    <select
+                    <Select
                       value={preferredCssLib}
                       onChange={(event) => {
                         const lib = event.target.value;
                         if (isValidCssLib(lib)) setPreferredCssLib(lib);
-                      }}
-                      style={{
-                        appearance: 'none',
-                        height: 25,
-                        fontFamily: 'inherit',
-                        backgroundColor: 'transparent',
-                        border: 'none',
-                        boxShadow: 'inset 0 0 0 1px gainsboro',
-                        color: '$gray11',
-                        paddingLeft: 10,
-                        paddingRight: 10,
-                        borderRadius: 4,
-                        outline: 'none',
                       }}
                     >
                       {availableCssLibs.map((lib) => (
@@ -173,7 +161,7 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
                           {CSS_LIB_NAMES[lib]}
                         </option>
                       ))}
-                    </select>
+                    </Select>
                   </Box>
                 ) : null}
               </Flex>
@@ -213,11 +201,14 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
                 bottom: 0,
                 width: '100%',
                 padding: '$2',
+                background: 'linear-gradient(180deg, transparent, $colors$violet2)',
               }}
               justify="center"
             >
               <Collapsible.Trigger asChild>
-                <Button ghost>{collapsed ? 'Expand' : 'Collapse'} code</Button>
+                <Button ghost css={{}}>
+                  {collapsed ? 'Expand' : 'Collapse'} code
+                </Button>
               </Collapsible.Trigger>
             </Flex>
           </Box>
