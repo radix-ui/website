@@ -1,7 +1,51 @@
 import React from 'react';
-import { styled, keyframes } from '@modulz/design-system';
+import * as HoverCard from '@radix-ui/react-hover-card';
+import { styled, keyframes } from '@stitches/react';
 import { mauve } from '@radix-ui/colors';
-import * as HoverCardPrimitive from '@radix-ui/react-hover-card';
+
+const HoverCardDemo = () => (
+  <HoverCard.Root>
+    <HoverCard.Trigger asChild>
+      <ImageTrigger href="https://twitter.com/radix_ui" target="_blank" rel="noreferrer noopener">
+        <Img
+          src="https://pbs.twimg.com/profile_images/1337055608613253126/r_eiMp2H_400x400.png"
+          alt="Radix UI"
+        />
+      </ImageTrigger>
+    </HoverCard.Trigger>
+    <HoverCard.Portal>
+      <HoverCardContent sideOffset={5}>
+        <Flex css={{ flexDirection: 'column', gap: 7 }}>
+          <Img
+            size="large"
+            src="https://pbs.twimg.com/profile_images/1337055608613253126/r_eiMp2H_400x400.png"
+            alt="Radix UI"
+          />
+          <Flex css={{ flexDirection: 'column', gap: 15 }}>
+            <div>
+              <Text bold>Radix</Text>
+              <Text faded>@radix_ui</Text>
+            </div>
+            <Text>
+              Components, icons, colors, and templates for building high-quality, accessible UI.
+              Free and open-source.
+            </Text>
+            <Flex css={{ gap: 15 }}>
+              <Flex css={{ gap: 5 }}>
+                <Text bold>0</Text> <Text faded>Following</Text>
+              </Flex>
+              <Flex css={{ gap: 5 }}>
+                <Text bold>2,900</Text> <Text faded>Followers</Text>
+              </Flex>
+            </Flex>
+          </Flex>
+        </Flex>
+
+        <HoverCardArrow />
+      </HoverCardContent>
+    </HoverCard.Portal>
+  </HoverCard.Root>
+);
 
 const slideUpAndFade = keyframes({
   '0%': { opacity: 0, transform: 'translateY(2px)' },
@@ -23,7 +67,7 @@ const slideLeftAndFade = keyframes({
   '100%': { opacity: 1, transform: 'translateX(0)' },
 });
 
-const StyledContent = styled(HoverCardPrimitive.Content, {
+const HoverCardContent = styled(HoverCard.Content, {
   borderRadius: 6,
   padding: 20,
   width: 300,
@@ -42,28 +86,9 @@ const StyledContent = styled(HoverCardPrimitive.Content, {
   },
 });
 
-const StyledArrow = styled(HoverCardPrimitive.Arrow, {
+const HoverCardArrow = styled(HoverCard.Arrow, {
   fill: 'white',
 });
-
-function Content({ children, ...props }) {
-  return (
-    <HoverCardPrimitive.Portal>
-      <StyledContent {...props}>
-        {children}
-        <StyledArrow />
-      </StyledContent>
-    </HoverCardPrimitive.Portal>
-  );
-}
-
-// Exports
-export const HoverCard = HoverCardPrimitive.Root;
-export const HoverCardTrigger = HoverCardPrimitive.Trigger;
-export const HoverCardContent = Content;
-
-// Your app...
-const Flex = styled('div', { display: 'flex' });
 
 const ImageTrigger = styled('a', {
   all: 'unset',
@@ -102,40 +127,6 @@ const Text = styled('div', {
   },
 });
 
-const HoverCardDemo = () => (
-  <HoverCard>
-    <HoverCardTrigger asChild>
-      <ImageTrigger href="https://twitter.com/radix_ui" target="_blank" rel="noreferrer noopener">
-        <Img src="https://pbs.twimg.com/profile_images/1337055608613253126/r_eiMp2H_400x400.png" />
-      </ImageTrigger>
-    </HoverCardTrigger>
-    <HoverCardContent sideOffset={5}>
-      <Flex css={{ flexDirection: 'column', gap: 7 }}>
-        <Img
-          size="large"
-          src="https://pbs.twimg.com/profile_images/1337055608613253126/r_eiMp2H_400x400.png"
-        />
-        <Flex css={{ flexDirection: 'column', gap: 15 }}>
-          <Text>
-            <Text bold>Radix</Text>
-            <Text faded>@radix_ui</Text>
-          </Text>
-          <Text>
-            Components, icons, colors, and templates for building high-quality, accessible UI. Free
-            and open-source.
-          </Text>
-          <Flex css={{ gap: 15 }}>
-            <Flex css={{ gap: 5 }}>
-              <Text bold>0</Text> <Text faded>Following</Text>
-            </Flex>
-            <Flex css={{ gap: 5 }}>
-              <Text bold>2,900</Text> <Text faded>Followers</Text>
-            </Flex>
-          </Flex>
-        </Flex>
-      </Flex>
-    </HoverCardContent>
-  </HoverCard>
-);
+const Flex = styled('div', { display: 'flex' });
 
 export default HoverCardDemo;

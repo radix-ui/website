@@ -14,9 +14,7 @@ name: hover-card
   <HoverCardDemo />
 </HeroContainer>
 
-```jsx hero template=HoverCard
-
-```
+<HeroCodeBlock folder="HoverCard" />
 
 <Highlights
   features={[
@@ -392,59 +390,87 @@ export default () => (
 
 We expose a CSS custom property `--radix-hover-card-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
-```jsx line=4-7,9-12,17
-import { styled, keyframes } from '@stitches/react';
+```jsx line=7
+// index.jsx
 import * as HoverCard from '@radix-ui/react-hover-card';
-
-const scaleIn = keyframes({
-  '0%': { opacity: 0, transform: 'scale(0)' },
-  '100%': { opacity: 1, transform: 'scale(1)' },
-});
-
-const HoverCardContent = styled(HoverCard.Content, {
-  transformOrigin: 'var(--radix-hover-card-content-transform-origin)',
-  animation: `${scaleIn} 0.5s ease-out`,
-});
 
 export default () => (
   <HoverCard.Root>
     <HoverCard.Trigger>…</HoverCard.Trigger>
-    <HoverCardContent>…</HoverCardContent>
+    <HoverCard.Content __className__="HoverCardContent">…</HoverCard.Content>
   </HoverCard.Root>
 );
+```
+
+```css line=3
+/* styles.css */
+.HoverCardContent {
+  transform-origin: var(__--radix-hover-card-content-transform-origin__);
+  animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 ```
 
 ### Collision-aware animations
 
 We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
 
-```jsx line=4-7,9-12,14-19,24
-import { styled, keyframes } from '@stitches/react';
+```jsx line=7
+// index.jsx
 import * as HoverCard from '@radix-ui/react-hover-card';
-
-const slideDown = keyframes({
-  '0%': { opacity: 0, transform: 'translateY(-10px)' },
-  '100%': { opacity: 1, transform: 'translateY(0)' },
-});
-
-const slideUp = keyframes({
-  '0%': { opacity: 0, transform: 'translateY(10px)' },
-  '100%': { opacity: 1, transform: 'translateY(0)' },
-});
-
-const HoverCardContent = styled(HoverCard.Content, {
-  animationDuration: '0.6s',
-  animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
-  '&[data-side="top"]': { animationName: slideUp },
-  '&[data-side="bottom"]': { animationName: slideDown },
-});
 
 export default () => (
   <HoverCard.Root>
     <HoverCard.Trigger>…</HoverCard.Trigger>
-    <HoverCardContent>…</HoverCardContent>
+    <HoverCard.Content __className__="HoverCardContent">…</HoverCard.Content>
   </HoverCard.Root>
 );
+```
+
+```css line=6-11
+/* styles.css */
+.HoverCardContent {
+  animation-duration: 0.6s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+.HoverCardContent[__data-side='top'__] {
+  animation-name: slideUp;
+}
+.HoverCardContent[__data-side='bottom'__] {
+  animation-name: slideDown;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 ```
 
 ## Accessibility
