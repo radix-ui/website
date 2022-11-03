@@ -374,7 +374,6 @@ Use the controlled props to programmatically close the Dialog after an async ope
 
 ```jsx
 import React from 'react';
-import { styled } from '@stitches/react';
 import * as Dialog from '@radix-ui/react-dialog';
 
 const mockPromise = async () =>
@@ -410,47 +409,53 @@ export default () => {
 Move the content inside the overlay to render a dialog with overflow.
 
 ```jsx
-import { styled } from '@stitches/react';
+// index.jsx
 import * as Dialog from '@radix-ui/react-dialog';
-
-const Overlay = styled(Dialog.Overlay, {
-  background: 'rgba(0 0 0 / 0.5)',
-  position: 'fixed',
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  display: 'grid',
-  placeItems: 'center',
-  overflowY: 'auto',
-});
-
-const Content = styled(Dialog.Content, {
-  minWidth: 300,
-  background: 'white',
-  padding: 30,
-  borderRadius: 4,
-});
 
 export default () => {
   return (
     <Dialog.Root>
       <Dialog.Trigger />
       <Dialog.Portal>
-        <Overlay>
-          <Content>...</Content>
-        </Overlay>
+        <Dialog.Overlay className="DialogOverlay">
+          <Dialog.Content className="DialogContent">...</Dialog.Content>
+        </Dialog.Overlay>
       </Dialog.Portal>
     </Dialog.Root>
   );
 };
 ```
 
+```css
+/* styles.css */
+.DialogOverlay {
+  background: rgba(0 0 0 / 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+}
+
+.DialogContent {
+  min-width: 300px;
+  background: white;
+  padding: 30px;
+  border-radius: 4px;
+}
+```
+
 ### Custom portal container
 
 Customise the element that your dialog portals into.
 
-```jsx line=2,13
+```jsx line=5,10,16
+import React from 'react';
+import * as Dialog from '@radix-ui/react-dialog';
+
 export default () => {
   const [container, setContainer] = React.useState(null);
   return (
@@ -463,7 +468,7 @@ export default () => {
         </Dialog.Portal>
       </Dialog.Root>
 
-      <div ref={setContainer} />
+      <div ref={__setContainer__} />
     </div>
   );
 };
