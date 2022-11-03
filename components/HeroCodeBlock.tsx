@@ -128,18 +128,15 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
                           '&[data-state="active"]': {
                             fontWeight: 500,
                             letterSpacing: '-.025em',
-                            '&::before': {
-                              boxSizing: 'border-box',
-                              content: '""',
-                              height: '2px',
-                              position: 'absolute',
-                              bottom: '0',
-                              left: '0',
-                              right: '0',
-                              backgroundColor: '$slate9',
-                            },
                             '&:focus': {
                               '&::before': {
+                                boxSizing: 'border-box',
+                                content: '""',
+                                height: '2px',
+                                position: 'absolute',
+                                bottom: '0',
+                                left: '0',
+                                right: '0',
                                 backgroundColor: '$violet9',
                               },
                             },
