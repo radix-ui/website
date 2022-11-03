@@ -9,13 +9,13 @@ import { FrontmatterContext } from './MDXComponents';
 import { Pre } from './Pre';
 import { CopyCodeButton } from './CopyCodeButton';
 import { CSS_LIB_NAMES } from '@lib/constants';
-import type { CssLib } from '@lib/constants';
 import { Select } from '@components/Select';
+import type { CssLib } from '@lib/constants';
 
 export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
   const frontmatter = React.useContext(FrontmatterContext);
   const [preferredCssLib, setPreferredCssLib] = useCssLibPreference();
-  const [collapsed, setCollapsed] = React.useState(true);
+  const [isCodeExpanded, setIsCodeExpanded] = React.useState(false);
 
   const snippets = React.Children.toArray(children).map((pre) => {
     if (pre && typeof pre === 'object' && 'props' in pre) {
@@ -43,14 +43,9 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
     if (!tabExists) setCurrentTabValue(currentTabs[0]?.id);
   }, [currentTabValue, currentTabs]);
 
-  React.useEffect(() => {
-    // Reset to first tab when collapsed
-    if (collapsed) setCurrentTabValue(currentTabs[0]?.id);
-  }, [collapsed, currentTabs]);
-
   return (
     <Box css={{ position: 'relative', '@bp3': { mx: '-$7' }, '@bp4': { mx: '-$8' } }}>
-      <Collapsible.Root open={!collapsed} onOpenChange={(isOpen) => setCollapsed(!isOpen)}>
+      <Collapsible.Root open={isCodeExpanded} onOpenChange={setIsCodeExpanded}>
         <Box
           css={{
             position: 'absolute',
@@ -89,7 +84,13 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
 
         <Collapsible.Content asChild forceMount>
           <Box css={{ position: 'relative' }}>
-            <Tabs.Root value={currentTabValue} onValueChange={setCurrentTabValue}>
+            <Tabs.Root
+              value={currentTabValue}
+              onValueChange={(value) => {
+                setCurrentTabValue(value);
+                setIsCodeExpanded(true);
+              }}
+            >
               <Flex
                 align="center"
                 justify="between"
@@ -184,7 +185,7 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
                       css={{
                         borderTopLeftRadius: 0,
                         borderTopRightRadius: 0,
-                        maxHeight: collapsed ? 100 : 600,
+                        maxHeight: isCodeExpanded ? 600 : 100,
                       }}
                     >
                       <code>{tab.children}</code>
@@ -207,7 +208,7 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
             >
               <Collapsible.Trigger asChild>
                 <Button ghost css={{}}>
-                  {collapsed ? 'Expand' : 'Collapse'} code
+                  {isCodeExpanded ? 'Collapse' : 'Expand'} code
                 </Button>
               </Collapsible.Trigger>
             </Flex>
