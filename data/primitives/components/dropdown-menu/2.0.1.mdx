@@ -16,9 +16,7 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/menubutton
   <DropdownMenuDemo />
 </HeroContainer>
 
-```jsx hero template=DropdownMenu
-
-```
+<HeroCodeBlock folder="DropdownMenu" />
 
 <Highlights
   features={[
@@ -1159,26 +1157,30 @@ You can create submenus by using `DropdownMenu.Sub` in combination with its part
 
 You can add special styles to disabled items via the `data-disabled` attribute.
 
-```jsx line=4-6,13
-import { styled } from '@stitches/react';
+```jsx line=9
+// index.jsx
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-
-const StyledItem = styled(DropdownMenu.Item, {
-  '&[data-disabled]': { color: 'gainsboro' },
-});
 
 export default () => (
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
     <DropdownMenu.Portal>
       <DropdownMenu.Content>
-        <StyledItem __disabled__>…</StyledItem>
-        <StyledItem>…</StyledItem>
-        <StyledItem>…</StyledItem>
+        <DropdownMenu.Item __className__="DropdownMenuItem" __disabled__>
+          …
+        </DropdownMenu.Item>
+        <DropdownMenu.Item className="DropdownMenuItem">…</DropdownMenu.Item>
       </DropdownMenu.Content>
     </DropdownMenu.Portal>
   </DropdownMenu.Root>
 );
+```
+
+```css line=2
+/* styles.css */
+.DropdownMenuItem[__data-disabled__] {
+  color: gainsboro;
+}
 ```
 
 ### With separators
@@ -1300,14 +1302,10 @@ export default () => {
 
 ### With complex items
 
-```jsx line=4-7,15,19,23
-import { styled } from '@stitches/react';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+You can add extra decorative elements in the `Item` parts, such as images.
 
-const Image = styled('img', {
-  width: 24,
-  height: 24,
-});
+```jsx line=9,13
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 export default () => (
   <DropdownMenu.Root>
@@ -1315,16 +1313,12 @@ export default () => (
     <DropdownMenu.Portal>
       <DropdownMenu.Content>
         <DropdownMenu.Item>
-          <Image src="…" />
+          <img src="…" />
           Adolfo Hess
         </DropdownMenu.Item>
         <DropdownMenu.Item>
-          <Image src="…" />
+          <img src="…" />
           Miyah Myles
-        </DropdownMenu.Item>
-        <DropdownMenu.Item>
-          <Image src="…" />
-          Sylvia Reynolds
         </DropdownMenu.Item>
       </DropdownMenu.Content>
     </DropdownMenu.Portal>
@@ -1336,63 +1330,95 @@ export default () => (
 
 We expose a CSS custom property `--radix-dropdown-menu-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
-```jsx line=4-7,9-12,18
-import { styled, keyframes } from '@stitches/react';
+```jsx line=8
+// index.jsx
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-
-const scaleIn = keyframes({
-  '0%': { opacity: 0, transform: 'scale(0)' },
-  '100%': { opacity: 1, transform: 'scale(1)' },
-});
-
-const StyledContent = styled(DropdownMenu.Content, {
-  transformOrigin: 'var(--radix-dropdown-menu-content-transform-origin)',
-  animation: `${scaleIn} 0.5s ease-out`,
-});
 
 export default () => (
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
     <DropdownMenu.Portal>
-      <StyledContent>…</StyledContent>
+      <DropdownMenu.Content __className__="DropdownMenuContent">
+        …
+      </DropdownMenu.Content>
     </DropdownMenu.Portal>
   </DropdownMenu.Root>
 );
+```
+
+```css line=3
+/* styles.css */
+.DropdownMenuContent {
+  transform-origin: var(__--radix-dropdown-menu-content-transform-origin__);
+  animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 ```
 
 ### Collision-aware animations
 
 We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
 
-```jsx line=4-7,9-12,14-19,25
-import { styled, keyframes } from '@stitches/react';
+```jsx line=8
+// index.jsx
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-
-const slideDown = keyframes({
-  '0%': { opacity: 0, transform: 'translateY(-10px)' },
-  '100%': { opacity: 1, transform: 'translateY(0)' },
-});
-
-const slideUp = keyframes({
-  '0%': { opacity: 0, transform: 'translateY(10px)' },
-  '100%': { opacity: 1, transform: 'translateY(0)' },
-});
-
-const StyledContent = styled(DropdownMenu.Content, {
-  animationDuration: '0.6s',
-  animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
-  '&[data-side="top"]': { animationName: slideUp },
-  '&[data-side="bottom"]': { animationName: slideDown },
-});
 
 export default () => (
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
     <DropdownMenu.Portal>
-      <StyledContent>…</StyledContent>
+      <DropdownMenu.Content __className__="DropdownMenuContent">
+        …
+      </DropdownMenu.Content>
     </DropdownMenu.Portal>
   </DropdownMenu.Root>
 );
+```
+
+```css line=6-11
+/* styles.css */
+.DropdownMenuContent {
+  animation-duration: 0.6s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+.DropdownMenuContent[__data-side='top'__] {
+  animation-name: slideUp;
+}
+.DropdownMenuContent[__data-side='bottom'__] {
+  animation-name: slideDown;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 ```
 
 ## Accessibility
