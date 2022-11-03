@@ -136,7 +136,12 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
                               bottom: '0',
                               left: '0',
                               right: '0',
-                              backgroundColor: '$violet9',
+                              backgroundColor: '$slate9',
+                            },
+                            '&:focus': {
+                              '&::before': {
+                                backgroundColor: '$violet9',
+                              },
                             },
                           },
                         }}
