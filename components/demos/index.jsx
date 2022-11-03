@@ -12,7 +12,7 @@ export { default as HoverCardDemo } from './HoverCard';
 export { default as LabelDemo } from './Label';
 export { default as NavigationMenuDemo } from './NavigationMenu';
 export { default as PopoverDemo } from './Popover';
-export { default as ProgressDemo } from './Progress';
+export { default as ProgressDemo } from './Progress/stitches';
 export { default as RadioGroupDemo } from './RadioGroup/stitches';
 export { default as ScrollAreaDemo } from './ScrollArea/stitches';
 export { default as SelectDemo } from './Select/stitches';
