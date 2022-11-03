@@ -207,6 +207,7 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
                 width: '100%',
                 padding: '$2',
                 background: 'linear-gradient(180deg, transparent, $colors$violet2)',
+                borderRadius: '0 0 $2 $2',
               }}
               justify="center"
             >
