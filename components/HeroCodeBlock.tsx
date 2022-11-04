@@ -194,7 +194,7 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
                       borderBottomRightRadius: '$3',
                       '&:focus': {
                         outline: 'none',
-                        boxShadow: '0 0 0 2px $colors$violet7',
+                        boxShadow: '0 0 0 2px $colors$violetA7',
                       },
                     }}
                   >
@@ -203,7 +203,8 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
                       css={{
                         borderTopLeftRadius: 0,
                         borderTopRightRadius: 0,
-                        maxHeight: isCodeExpanded ? 600 : 100,
+                        maxHeight: isCodeExpanded ? '80vh' : 150,
+                        paddingBottom: isCodeExpanded ? '$8' : undefined,
                       }}
                     >
                       <code>{tab.children}</code>
@@ -215,20 +216,20 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
             </Tabs.Root>
 
             <Flex
+              align="end"
               css={{
                 position: 'absolute',
                 bottom: 0,
+                height: '$9',
                 width: '100%',
                 padding: '$2',
-                background: 'linear-gradient(180deg, transparent, $colors$violet2)',
-                borderRadius: '0 0 $2 $2',
+                background: 'linear-gradient(180deg, transparent, $colors$violet2 70%)',
+                borderRadius: '0 0 $3 $3',
               }}
               justify="center"
             >
               <Collapsible.Trigger asChild>
-                <Button ghost css={{}}>
-                  {isCodeExpanded ? 'Collapse' : 'Expand'} code
-                </Button>
+                <Button>{isCodeExpanded ? 'Collapse' : 'Expand'} code</Button>
               </Collapsible.Trigger>
             </Flex>
           </Box>
