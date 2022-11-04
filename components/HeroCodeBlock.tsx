@@ -9,12 +9,13 @@ import { FrontmatterContext } from './MDXComponents';
 import { Pre } from './Pre';
 import { CopyCodeButton } from './CopyCodeButton';
 import { CSS_LIB_NAMES } from '@lib/constants';
+import { Select } from '@components/Select';
 import type { CssLib } from '@lib/constants';
 
 export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
   const frontmatter = React.useContext(FrontmatterContext);
   const [preferredCssLib, setPreferredCssLib] = useCssLibPreference();
-  const [collapsed, setCollapsed] = React.useState(true);
+  const [isCodeExpanded, setIsCodeExpanded] = React.useState(false);
 
   const snippets = React.Children.toArray(children).map((pre) => {
     if (pre && typeof pre === 'object' && 'props' in pre) {
@@ -42,14 +43,9 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
     if (!tabExists) setCurrentTabValue(currentTabs[0]?.id);
   }, [currentTabValue, currentTabs]);
 
-  React.useEffect(() => {
-    // Reset to first tab when collapsed
-    if (collapsed) setCurrentTabValue(currentTabs[0]?.id);
-  }, [collapsed, currentTabs]);
-
   return (
     <Box css={{ position: 'relative', '@bp3': { mx: '-$7' }, '@bp4': { mx: '-$8' } }}>
-      <Collapsible.Root open={!collapsed} onOpenChange={(isOpen) => setCollapsed(!isOpen)}>
+      <Collapsible.Root open={isCodeExpanded} onOpenChange={setIsCodeExpanded}>
         <Box
           css={{
             position: 'absolute',
@@ -88,31 +84,88 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
 
         <Collapsible.Content asChild forceMount>
           <Box css={{ position: 'relative' }}>
-            <Tabs.Root value={currentTabValue} onValueChange={setCurrentTabValue}>
-              <Flex css={{ backgroundColor: '$violet3', padding: '$2' }}>
-                <Tabs.List>
+            <Tabs.Root
+              value={currentTabValue}
+              onValueChange={(value) => {
+                setCurrentTabValue(value);
+                setIsCodeExpanded(true);
+              }}
+            >
+              <Flex
+                align="center"
+                justify="between"
+                css={{
+                  height: 40,
+                  boxShadow: 'inset 0 -1px 0 0 $colors$violet5',
+                  backgroundColor: '$violet2',
+                  paddingRight: '$2',
+                }}
+              >
+                <Tabs.List
+                  style={{
+                    height: '100%',
+                  }}
+                >
                   {currentTabs.map((tab) => (
-                    <Tabs.Trigger key={tab.id} value={tab.id}>
-                      {tab.title}
+                    <Tabs.Trigger key={tab.id} value={tab.id} asChild>
+                      <Box
+                        as="button"
+                        css={{
+                          appearance: 'none',
+                          backgroundColor: 'transparent',
+                          border: 'none',
+                          lineHeight: '1',
+                          fontFamily: 'inherit',
+                          boxSizing: 'border-box',
+                          flexShrink: 0,
+                          position: 'relative',
+                          userSelect: 'none',
+                          paddingLeft: '$2',
+                          paddingRight: '$2',
+                          gap: '$2',
+                          fontSize: '$2',
+                          height: '100%',
+                          outline: 'none',
+                          '&[data-state="active"]': {
+                            fontWeight: 500,
+                            letterSpacing: '-.025em',
+                            '&:focus': {
+                              '&::before': {
+                                boxSizing: 'border-box',
+                                content: '""',
+                                height: '2px',
+                                position: 'absolute',
+                                bottom: '0',
+                                left: '0',
+                                right: '0',
+                                backgroundColor: '$violet9',
+                              },
+                            },
+                          },
+                        }}
+                      >
+                        {tab.title}
+                      </Box>
                     </Tabs.Trigger>
                   ))}
                 </Tabs.List>
 
                 {availableCssLibs.length > 1 ? (
-                  <select
-                    value={preferredCssLib}
-                    onChange={(event) => {
-                      const lib = event.target.value;
-                      if (isValidCssLib(lib)) setPreferredCssLib(lib);
-                    }}
-                    style={{ marginLeft: 'auto' }}
-                  >
-                    {availableCssLibs.map((lib) => (
-                      <option key={lib} value={lib}>
-                        {CSS_LIB_NAMES[lib]}
-                      </option>
-                    ))}
-                  </select>
+                  <Box>
+                    <Select
+                      value={preferredCssLib}
+                      onChange={(event) => {
+                        const lib = event.target.value;
+                        if (isValidCssLib(lib)) setPreferredCssLib(lib);
+                      }}
+                    >
+                      {availableCssLibs.map((lib) => (
+                        <option key={lib} value={lib}>
+                          {CSS_LIB_NAMES[lib]}
+                        </option>
+                      ))}
+                    </Select>
+                  </Box>
                 ) : null}
               </Flex>
 
@@ -134,7 +187,7 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
                       css={{
                         borderTopLeftRadius: 0,
                         borderTopRightRadius: 0,
-                        maxHeight: collapsed ? 100 : 600,
+                        maxHeight: isCodeExpanded ? 600 : 100,
                       }}
                     >
                       <code>{tab.children}</code>
@@ -151,24 +204,15 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
                 bottom: 0,
                 width: '100%',
                 padding: '$2',
-                backgroundColor: '$violet2',
-                borderBottomLeftRadius: '$3',
-                borderBottomRightRadius: '$3',
-                '&::after': {
-                  content: '',
-                  display: 'block',
-                  width: '100%',
-                  height: '$8',
-                  bottom: '100%',
-                  position: 'absolute',
-                  backgroundImage: 'linear-gradient(transparent, $violet2)',
-                  pointerEvents: 'none',
-                },
+                background: 'linear-gradient(180deg, transparent, $colors$violet2)',
+                borderRadius: '0 0 $2 $2',
               }}
               justify="center"
             >
               <Collapsible.Trigger asChild>
-                <Button ghost>{collapsed ? 'Expand' : 'Collapse'} code</Button>
+                <Button ghost css={{}}>
+                  {isCodeExpanded ? 'Collapse' : 'Expand'} code
+                </Button>
               </Collapsible.Trigger>
             </Flex>
           </Box>
