@@ -240,7 +240,7 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
               justify="center"
             >
               <Collapsible.Trigger asChild>
-                <Button css={{ zIndex: 1 }}>{isCodeExpanded ? 'Collapse' : 'Expand'} code</Button>
+                <Button css={{ zIndex: 0 }}>{isCodeExpanded ? 'Collapse' : 'Expand'} code</Button>
               </Collapsible.Trigger>
             </Flex>
           </Box>
