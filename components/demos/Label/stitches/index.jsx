@@ -1,20 +1,23 @@
 import React from 'react';
-import { styled } from '@modulz/design-system';
+import * as Label from '@radix-ui/react-label';
+import { styled } from '@stitches/react';
 import { blackA } from '@radix-ui/colors';
-import * as LabelPrimitive from '@radix-ui/react-label';
 
-const StyledLabel = styled(LabelPrimitive.Root, {
+const LabelDemo = () => (
+  <Flex css={{ padding: '0 20px', flexWrap: 'wrap', gap: 15, alignItems: 'center' }}>
+    <LabelRoot htmlFor="firstName">First name</LabelRoot>
+    <Input type="text" id="firstName" defaultValue="Pedro Duarte" />
+  </Flex>
+);
+
+const LabelRoot = styled(Label.Root, {
   fontSize: 15,
   fontWeight: 500,
+  lineHeight: '35px',
   color: 'white',
   userSelect: 'none',
 });
 
-// Exports
-const Label = StyledLabel;
-
-// Your app...
-const Flex = styled('div', { display: 'flex' });
 const Input = styled('input', {
   all: 'unset',
   width: 200,
@@ -32,13 +35,6 @@ const Input = styled('input', {
   '&:focus': { boxShadow: `0 0 0 2px black` },
 });
 
-const LabelDemo = () => (
-  <Flex css={{ padding: '0 20px', flexWrap: 'wrap', gap: 15, alignItems: 'center' }}>
-    <Label htmlFor="firstName" css={{ lineHeight: '35px' }}>
-      First name
-    </Label>
-    <Input type="text" id="firstName" defaultValue="Pedro Duarte" />
-  </Flex>
-);
+const Flex = styled('div', { display: 'flex' });
 
 export default LabelDemo;
