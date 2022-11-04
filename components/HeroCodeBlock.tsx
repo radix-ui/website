@@ -204,7 +204,7 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
                         borderTopLeftRadius: 0,
                         borderTopRightRadius: 0,
                         maxHeight: isCodeExpanded ? '80vh' : 150,
-                        paddingBottom: isCodeExpanded ? '$8' : undefined,
+                        paddingBottom: isCodeExpanded ? '$9' : undefined,
                       }}
                     >
                       <code>{tab.children}</code>
