@@ -129,22 +129,37 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
                           '&[data-state="active"]': {
                             fontWeight: 500,
                             letterSpacing: '-.025em',
-                            '&:focus': {
-                              '&::before': {
-                                boxSizing: 'border-box',
-                                content: '""',
-                                height: '2px',
-                                position: 'absolute',
-                                bottom: '0',
-                                left: '0',
-                                right: '0',
-                                backgroundColor: '$violet9',
-                              },
+                            '&::before': {
+                              boxSizing: 'border-box',
+                              content: '""',
+                              height: '2px',
+                              position: 'absolute',
+                              bottom: '0',
+                              left: '0',
+                              right: '0',
+                              backgroundColor: '$violet9',
                             },
                           },
                         }}
                       >
-                        {tab.title}
+                        <Flex
+                          as="span"
+                          align="center"
+                          css={{
+                            height: '$5',
+                            paddingLeft: '$1',
+                            paddingRight: '$1',
+                            borderRadius: '$1',
+                            'button:hover &': {
+                              backgroundColor: '$blackA3',
+                            },
+                            'button:focus &': {
+                              boxShadow: '0 0 0 2px $colors$violet7',
+                            },
+                          }}
+                        >
+                          {tab.title}
+                        </Flex>
                       </Box>
                     </Tabs.Trigger>
                   ))}
@@ -153,6 +168,7 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
                 {availableCssLibs.length > 1 ? (
                   <Box>
                     <Select
+                      aria-label="Choose a styling solution"
                       value={preferredCssLib}
                       onChange={(event) => {
                         const lib = event.target.value;
@@ -178,7 +194,7 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
                       borderBottomRightRadius: '$3',
                       '&:focus': {
                         outline: 'none',
-                        boxShadow: '0 0 0 2px $colors$slateA8',
+                        boxShadow: '0 0 0 2px $colors$violet7',
                       },
                     }}
                   >
