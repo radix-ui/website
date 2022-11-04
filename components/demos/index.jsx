@@ -9,7 +9,7 @@ export { default as ContextMenuDemo } from './ContextMenu/stitches';
 export { default as DialogDemo } from './Dialog/stitches';
 export { default as DropdownMenuDemo } from './DropdownMenu/stitches';
 export { default as HoverCardDemo } from './HoverCard/stitches';
-export { default as LabelDemo } from './Label';
+export { default as LabelDemo } from './Label/stitches';
 export { default as NavigationMenuDemo } from './NavigationMenu';
 export { default as PopoverDemo } from './Popover';
 export { default as ProgressDemo } from './Progress/stitches';
