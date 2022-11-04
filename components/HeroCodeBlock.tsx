@@ -223,13 +223,24 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
                 height: '$9',
                 width: '100%',
                 padding: '$2',
-                background: 'linear-gradient(180deg, transparent, $colors$violet2 70%)',
+                overflow: 'hidden',
                 borderRadius: '0 0 $3 $3',
+                '&::before': {
+                  content: '',
+                  display: 'block',
+                  width: '100%',
+                  height: '100%',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  background: 'linear-gradient(180deg, transparent, $colors$violet2 70%)',
+                  opacity: 0.9,
+                },
               }}
               justify="center"
             >
               <Collapsible.Trigger asChild>
-                <Button>{isCodeExpanded ? 'Collapse' : 'Expand'} code</Button>
+                <Button css={{ zIndex: 1 }}>{isCodeExpanded ? 'Collapse' : 'Expand'} code</Button>
               </Collapsible.Trigger>
             </Flex>
           </Box>
