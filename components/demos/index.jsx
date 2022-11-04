@@ -11,7 +11,7 @@ export { default as DropdownMenuDemo } from './DropdownMenu/stitches';
 export { default as HoverCardDemo } from './HoverCard/stitches';
 export { default as LabelDemo } from './Label/stitches';
 export { default as NavigationMenuDemo } from './NavigationMenu';
-export { default as PopoverDemo } from './Popover';
+export { default as PopoverDemo } from './Popover/stitches';
 export { default as ProgressDemo } from './Progress/stitches';
 export { default as RadioGroupDemo } from './RadioGroup/stitches';
 export { default as ScrollAreaDemo } from './ScrollArea/stitches';

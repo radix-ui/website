@@ -15,9 +15,7 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal
   <PopoverDemo />
 </HeroContainer>
 
-```jsx hero template=Popover
-
-```
+<HeroCodeBlock folder="Popover" />
 
 <Highlights
   features={[
@@ -479,102 +477,122 @@ The button that closes an open popover.
 
 We expose a CSS custom property `--radix-popover-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
-```jsx line=4-7,9-12,17
-import { styled, keyframes } from '@stitches/react';
+```jsx line=8
+// index.jsx
 import * as Popover from '@radix-ui/react-popover';
-
-const scaleIn = keyframes({
-  '0%': { opacity: 0, transform: 'scale(0)' },
-  '100%': { opacity: 1, transform: 'scale(1)' },
-});
-
-const StyledContent = styled(Popover.Content, {
-  transformOrigin: 'var(--radix-popover-content-transform-origin)',
-  animation: `${scaleIn} 0.5s ease-out`,
-});
 
 export default () => (
   <Popover.Root>
     <Popover.Trigger>…</Popover.Trigger>
-    <StyledContent>…</StyledContent>
+    <Popover.Portal>
+      <Popover.Content __className__="PopoverContent">…</Popover.Content>
+    </Popover.Portal>
   </Popover.Root>
 );
+```
+
+```css line=3
+/* styles.css */
+.PopoverContent {
+  transform-origin: var(__--radix-popover-content-transform-origin__);
+  animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to: {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 ```
 
 ### Collision-aware animations
 
 We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
 
-```jsx line=4-7,9,12-14-19,24
-import { styled, keyframes } from '@stitches/react';
+```jsx line=8
+// index.jsx
 import * as Popover from '@radix-ui/react-popover';
-
-const slideDown = keyframes({
-  '0%': { opacity: 0, transform: 'translateY(-10px)' },
-  '100%': { opacity: 1, transform: 'translateY(0)' },
-});
-
-const slideUp = keyframes({
-  '0%': { opacity: 0, transform: 'translateY(10px)' },
-  '100%': { opacity: 1, transform: 'translateY(0)' },
-});
-
-const StyledContent = styled(Popover.Content, {
-  animationDuration: '0.6s',
-  animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
-  '&[data-side="top"]': { animationName: slideUp },
-  '&[data-side="bottom"]': { animationName: slideDown },
-});
 
 export default () => (
   <Popover.Root>
     <Popover.Trigger>…</Popover.Trigger>
-    <StyledContent>…</StyledContent>
+    <Popover.Portal>
+      <Popover.Content __className__="PopoverContent">…</Popover.Content>
+    </Popover.Portal>
   </Popover.Root>
 );
 ```
 
-## Examples
+```css line=6-11
+/* styles.css */
+.PopoverContent {
+  animation-duration: 0.6s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+.PopoverContent[__data-side__='top'] {
+  animation-name: slideUp;
+}
+.PopoverContent[__data-side__='bottom'] {
+  animation-name: slideDown;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+```
 
 ### With custom anchor
 
 You can anchor the content to another element if you do not want to use the trigger as the anchor.
 
-```jsx
-import { styled } from 'path-to/stitches.config';
+```jsx line=6-10
+// index.jsx
 import * as Popover from '@radix-ui/react-popover';
-
-const StyledContent = styled(Popover.Content, {
-  borderRadius: 3,
-  padding: '20px',
-  fontSize: 14,
-  backgroundColor: 'gainsboro',
-  color: 'black',
-});
-
-const StyledArrow = styled(Popover.Arrow, {
-  fill: 'gainsboro',
-});
-
-const StyledAnchor = styled(Popover.Anchor, {
-  background: 'gainsboro',
-  padding: 20,
-});
 
 export default () => (
   <Popover.Root>
-    <StyledAnchor>
-      Row as anchor <Popover.Trigger>Trigger</Popover.Trigger>
-    </StyledAnchor>
+    <Popover.Anchor __asChild__>
+      <div className="Row">
+        Row as anchor <Popover.Trigger>Trigger</Popover.Trigger>
+      </div>
+    </Popover.Anchor>
 
-    <StyledContent>
-      <h3>Popover content</h3>
-      <p>Are you sure you wanna do this?</p>
-      <Popover.Close>Yes</Popover.Close>
-      <StyledArrow />
-    </StyledContent>
+    <Popover.Portal>
+      <Popover.Content>…</Popover.Content>
+    </Popover.Portal>
   </Popover.Root>
 );
+```
+
+```css
+/* styles.css */
+.Row {
+  background-color: gainsboro;
+  padding: 20px;
+}
 ```
 
 ## Accessibility
@@ -645,10 +663,12 @@ export const PopoverTrigger = PopoverPrimitive.Trigger;
 
 export const PopoverContent = React.forwardRef(
   ({ children, ...props }, forwardedRef) => (
-    <PopoverPrimitive.Content sideOffset={5} {...props} ref={forwardedRef}>
-      {children}
-      <PopoverPrimitive.Arrow />
-    </PopoverPrimitive.Content>
+    <PopoverPrimitive.Portal>
+      <PopoverPrimitive.Content sideOffset={5} {...props} ref={forwardedRef}>
+        {children}
+        <PopoverPrimitive.Arrow />
+      </PopoverPrimitive.Content>
+    </PopoverPrimitive.Portal>
   )
 );
 ```
