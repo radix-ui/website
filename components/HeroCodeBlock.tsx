@@ -153,7 +153,7 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
                             'button:hover &': {
                               backgroundColor: '$blackA3',
                             },
-                            'button:focus &': {
+                            'button:focus-visible &': {
                               boxShadow: '0 0 0 2px $colors$violet7',
                             },
                           }}
