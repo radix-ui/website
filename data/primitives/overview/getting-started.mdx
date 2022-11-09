@@ -1,6 +1,7 @@
 ---
 metaTitle: Getting started
 metaDescription: A quick tutorial to get you up and running with Radix Primitives.
+name: popover
 ---
 
 # Getting started
@@ -11,7 +12,7 @@ metaDescription: A quick tutorial to get you up and running with Radix Primitive
 
 ## Implementing a Popover
 
-In this quick tutorial, we will install, style, and export a [Popover](../components/popover) component. This example uses [Stitches](https://stitches.dev), but any styling solution is compatible.
+In this quick tutorial, we will install and style the [Popover](../components/popover) component.
 
 ### 1. Install the primitive
 
@@ -21,53 +22,83 @@ Install the component from your command line.
 npm install @radix-ui/react-popover@latest -E
 ```
 
-### 2. Style each part
+### 2. Import the parts
 
-Import and export the parts. Add styles where desired.
+Import and structure the parts.
 
-```jsx
-// Popover.tsx
-import { styled } from '@stitches/react';
-import * as PopoverPrimitive from '@radix-ui/react-popover';
+```jsx line=3,6-14
+// index.jsx
+import * as React from 'React';
+import * as Popover from '@radix-ui/react-popover';
 
-export const Popover = PopoverPrimitive.Root;
-export const PopoverTrigger = PopoverPrimitive.Trigger;
-export const PopoverContent = styled(PopoverPrimitive.Content, {
-  // your styles
-});
+const PopoverDemo = () => (
+  <Popover.Root>
+    <Popover.Trigger>More info</Popover.Trigger>
+    <Popover.Portal>
+      <Popover.Content>
+        Some more info…
+        <Popover.Arrow />
+      </Popover.Content>
+    </Popover.Portal>
+  </Popover.Root>
+);
+
+export default PopoverDemo;
 ```
 
-### 3. Use it
+### 3. Add your styles
 
-Import each of the component parts into your app, then assemble your Popover.
+Add styles where desired.
 
-```jsx
-// App.tsx
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-} from 'your-components/Popover';
+```jsx line=4,8,10,12
+//index.jsx
+import * as React from 'React';
+import * as Popover from '@radix-ui/react-popover';
+import './styles.css';
 
-function App() {
-  return (
-    <Popover>
-      <PopoverTrigger>...</PopoverTrigger>
-      <PopoverContent>...</PopoverContent>
-    </Popover>
-  );
+const PopoverDemo = () => (
+  <Popover.Root>
+    <Popover.Trigger __className__="PopoverTrigger">Show info</Popover.Trigger>
+    <Popover.Portal>
+      <Popover.Content __className__="PopoverContent">
+        Some content
+        <Popover.Arrow __className__="PopoverArrow" />
+      </Popover.Content>
+    </Popover.Portal>
+  </Popover.Root>
+);
+
+export default PopoverDemo;
+```
+
+```css
+/* styles.css */
+.PopoverTrigger {
+  background-color: white;
+  border-radius: 4px;
+}
+
+.PopoverContent {
+  border-radius: 4px;
+  padding: 20px;
+  width: 260px;
+  background-color: white;
+}
+
+.PopoverArrow {
+  fill: white;
 }
 ```
 
 ### Demo
 
-Here's a live and interactive demo.
+Here's a complete demo.
 
-<Preview>
-  <PopoverDemo />
-</Preview>
+<HeroContainer>
+  <GettingStartedDemo />
+</HeroContainer>
 
-<HeroCodeBlock folder="Popover" />
+<HeroCodeBlock folder="GettingStarted" cssLib="css" />
 
 ## Summary
 

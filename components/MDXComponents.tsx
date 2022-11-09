@@ -4,7 +4,6 @@ import * as DS from '@modulz/design-system';
 import { Link2Icon } from '@radix-ui/react-icons';
 import { PropsTable } from './PropsTable';
 import { KeyboardTable } from './KeyboardTable';
-import { Preview } from './Preview';
 import { Highlights } from './Highlights';
 import { HeroCodeBlock } from './HeroCodeBlock';
 import { CodeBlock } from './CodeBlock';
@@ -206,7 +205,6 @@ export const components = {
       <KeyboardTable {...props} />
     </DS.Box>
   ),
-  Preview,
   PackageRelease,
   PRLink,
   HeroContainer,
