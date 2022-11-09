@@ -10,6 +10,7 @@ import { Pre } from './Pre';
 import { CopyCodeButton } from './CopyCodeButton';
 import { CSS_LIB_NAMES } from '@lib/constants';
 import { Select } from '@components/Select';
+import { ScrollArea } from '@components/ScrollArea';
 import type { CssLib } from '@lib/constants';
 
 export const HeroCodeBlock = ({
@@ -49,6 +50,8 @@ export const HeroCodeBlock = ({
     const tabExists = currentTabs.find((tab) => tab.id === currentTabValue);
     if (!tabExists) setCurrentTabValue(currentTabs[0]?.id);
   }, [currentTabValue, currentTabs]);
+
+  const ScrollWrapper = isCodeExpanded ? ScrollArea : React.Fragment;
 
   return (
     <Box css={{ position: 'relative', '@bp3': { mx: '-$7' }, '@bp4': { mx: '-$8' } }}>
@@ -205,18 +208,26 @@ export const HeroCodeBlock = ({
                       },
                     }}
                   >
-                    <Pre
-                      variant="violet"
+                    <ScrollArea
+                      disabled={!isCodeExpanded}
                       css={{
-                        borderTopLeftRadius: 0,
-                        borderTopRightRadius: 0,
+                        borderBottomLeftRadius: '$3',
+                        borderBottomRightRadius: '$3',
                         maxHeight: isCodeExpanded ? '80vh' : 150,
-                        paddingBottom: isCodeExpanded ? '$9' : undefined,
                       }}
                     >
-                      <code>{tab.children}</code>
-                    </Pre>
-                    <CopyCodeButton code={sources[tab.id]} />
+                      <Pre
+                        variant="violet"
+                        css={{
+                          borderTopLeftRadius: 0,
+                          borderTopRightRadius: 0,
+                          paddingBottom: isCodeExpanded ? '$9' : undefined,
+                        }}
+                      >
+                        <code>{tab.children}</code>
+                      </Pre>
+                    </ScrollArea>
+                    <CopyCodeButton code={sources[tab.id]} css={{ zIndex: 1 }} />
                   </Box>
                 </Tabs.Content>
               ))}

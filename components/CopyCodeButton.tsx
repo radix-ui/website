@@ -3,7 +3,7 @@ import copy from 'copy-to-clipboard';
 import { IconButton } from '@modulz/design-system';
 import { CheckIcon, ClipboardIcon } from '@radix-ui/react-icons';
 
-export const CopyCodeButton = ({ code }) => {
+export const CopyCodeButton = ({ code, ...props }) => {
   const [hasCopied, setHasCopied] = React.useState(false);
 
   React.useEffect(() => {
@@ -13,6 +13,11 @@ export const CopyCodeButton = ({ code }) => {
   return (
     <IconButton
       aria-label="Copy code to clipboard"
+      onClick={() => {
+        copy(code);
+        setHasCopied(true);
+      }}
+      {...props}
       css={{
         position: 'absolute',
         top: '$2',
@@ -20,10 +25,7 @@ export const CopyCodeButton = ({ code }) => {
         display: 'inline-flex',
         opacity: 0,
         '*:hover > &, &:focus': { opacity: 1, transition: '150ms linear' },
-      }}
-      onClick={() => {
-        copy(code);
-        setHasCopied(true);
+        ...props.css,
       }}
     >
       {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
