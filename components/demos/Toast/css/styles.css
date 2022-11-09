@@ -37,23 +37,21 @@ button {
   column-gap: 15px;
   align-items: center;
 }
-@media (prefers-reduced-motion: no-preference) {
-  .ToastRoot[data-state='open'] {
-    animation: slideIn 150ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .ToastRoot[data-state='closed'] {
-    animation: hide 100ms ease-in;
-  }
-  .ToastRoot[data-swipe='move'] {
-    transform: translateX(var(--radix-toast-swipe-move-x));
-  }
-  .ToastRoot[data-swipe='cancel'] {
-    transform: translateX(0);
-    transition: transform 200ms ease-out;
-  }
-  .ToastRoot[data-swipe='end'] {
-    animation: swipeOut 100ms ease-out;
-  }
+.ToastRoot[data-state='open'] {
+  animation: slideIn 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ToastRoot[data-state='closed'] {
+  animation: hide 100ms ease-in;
+}
+.ToastRoot[data-swipe='move'] {
+  transform: translateX(var(--radix-toast-swipe-move-x));
+}
+.ToastRoot[data-swipe='cancel'] {
+  transform: translateX(0);
+  transition: transform 200ms ease-out;
+}
+.ToastRoot[data-swipe='end'] {
+  animation: swipeOut 100ms ease-out;
 }
 
 @keyframes hide {

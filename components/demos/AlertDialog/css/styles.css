@@ -12,11 +12,7 @@ button {
   background-color: var(--blackA9);
   position: fixed;
   inset: 0;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .AlertDialogOverlay {
-    animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .AlertDialogContent {
@@ -31,14 +27,10 @@ button {
   max-width: 500px;
   max-height: 85vh;
   padding: 25px;
+  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 .AlertDialogContent:focus {
   outline: none;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .AlertDialogContent {
-    animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
 }
 
 .AlertDialogTitle {

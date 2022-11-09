@@ -67,15 +67,11 @@ h3 {
   color: var(--mauve11);
   background-color: var(--mauve2);
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .AccordionContent[data-state='open'] {
-    animation: slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1);
-  }
-
-  .AccordionContent[data-state='closed'] {
-    animation: slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1);
-  }
+.AccordionContent[data-state='open'] {
+  animation: slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1);
+}
+.AccordionContent[data-state='closed'] {
+  animation: slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1);
 }
 
 .AccordionContentText {
@@ -84,16 +80,10 @@ h3 {
 
 .AccordionChevron {
   color: var(--violet10);
+  transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
 }
-
 .AccordionTrigger[data-state='open'] > .AccordionChevron {
   transform: rotate(180deg);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .AccordionChevron {
-    transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
-  }
 }
 
 @keyframes slideDown {

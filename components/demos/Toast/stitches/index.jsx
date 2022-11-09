@@ -89,23 +89,21 @@ const ToastRoot = styled(Toast.Root, {
   columnGap: 15,
   alignItems: 'center',
 
-  '@media (prefers-reduced-motion: no-preference)': {
-    '&[data-state="open"]': {
-      animation: `${slideIn} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
-    },
-    '&[data-state="closed"]': {
-      animation: `${hide} 100ms ease-in`,
-    },
-    '&[data-swipe="move"]': {
-      transform: 'translateX(var(--radix-toast-swipe-move-x))',
-    },
-    '&[data-swipe="cancel"]': {
-      transform: 'translateX(0)',
-      transition: 'transform 200ms ease-out',
-    },
-    '&[data-swipe="end"]': {
-      animation: `${swipeOut} 100ms ease-out`,
-    },
+  '&[data-state="open"]': {
+    animation: `${slideIn} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
+  },
+  '&[data-state="closed"]': {
+    animation: `${hide} 100ms ease-in`,
+  },
+  '&[data-swipe="move"]': {
+    transform: 'translateX(var(--radix-toast-swipe-move-x))',
+  },
+  '&[data-swipe="cancel"]': {
+    transform: 'translateX(0)',
+    transition: 'transform 200ms ease-out',
+  },
+  '&[data-swipe="end"]': {
+    animation: `${swipeOut} 100ms ease-out`,
   },
 });
 

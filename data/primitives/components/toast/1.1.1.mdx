@@ -457,19 +457,17 @@ export default () => (
 );
 ```
 
-```css line=3,4,6,10,17
+```css line=2,3,5,9,15
 /* styles.css */
-@media (prefers-reduced-motion: no-preference) {
-  .ToastRoot[__data-swipe__='move'] {
-    transform: translateX(var(__--radix-toast-swipe-move-x__));
-  }
-  .ToastRoot[__data-swipe__='cancel'] {
-    transform: translateX(0);
-    transition: transform 200ms ease-out;
-  }
-  .ToastRoot[__data-swipe__='end'] {
-    animation: slideRight 100ms ease-out;
-  }
+.ToastRoot[__data-swipe__='move'] {
+  transform: translateX(var(__--radix-toast-swipe-move-x__));
+}
+.ToastRoot[__data-swipe__='cancel'] {
+  transform: translateX(0);
+  transition: transform 200ms ease-out;
+}
+.ToastRoot[__data-swipe__='end'] {
+  animation: slideRight 100ms ease-out;
 }
 
 @keyframes slideRight {

@@ -617,11 +617,7 @@ export default () => (
 }
 .NavigationMenuIndicator[data-orientation='horizontal'] {
   height: 3px;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .NavigationMenuIndicator {
-    transition: width, transform, 250ms ease;
-  }
+  transition: width, transform, 250ms ease;
 }
 ```
 
@@ -744,41 +740,33 @@ export default () => (
 );
 ```
 
-```css line=12-23,28,29
+```css line=9-20,24,25
 /* styles.css */
 .NavigationMenuContent {
   position: absolute;
   top: 0;
   left: 0;
+  animation-duration: 250ms;
+  animation-timing-function: ease;
 }
-@media (prefers-reduced-motion: no-preference) {
-  .NavigationMenuContent {
-    animation-duration: 250ms;
-    animation-timing-function: ease;
-  }
-  .NavigationMenuContent[__data-motion__='from-start'] {
-    animation-name: enterFromLeft;
-  }
-  .NavigationMenuContent[__data-motion__='from-end'] {
-    animation-name: enterFromRight;
-  }
-  .NavigationMenuContent[__data-motion__='to-start'] {
-    animation-name: exitToLeft;
-  }
-  .NavigationMenuContent[__data-motion__='to-end'] {
-    animation-name: exitToRight;
-  }
+.NavigationMenuContent[__data-motion__='from-start'] {
+  animation-name: enterFromLeft;
+}
+.NavigationMenuContent[__data-motion__='from-end'] {
+  animation-name: enterFromRight;
+}
+.NavigationMenuContent[__data-motion__='to-start'] {
+  animation-name: exitToLeft;
+}
+.NavigationMenuContent[__data-motion__='to-end'] {
+  animation-name: exitToRight;
 }
 
 .NavigationMenuViewport {
   position: relative;
   width: var(__--radix-navigation-menu-viewport-width__);
   height: var(__--radix-navigation-menu-viewport-height__);
-}
-@media (prefers-reduced-motion: no-preference) {
-  .NavigationMenuViewport {
-    transition: width, height, 250ms ease;
-  }
+  transition: width, height, 250ms ease;
 }
 
 @keyframes enterFromRight {

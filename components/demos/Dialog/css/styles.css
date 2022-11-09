@@ -14,11 +14,7 @@ input {
   background-color: var(--blackA9);
   position: fixed;
   inset: 0;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .DialogOverlay {
-    animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .DialogContent {
@@ -33,14 +29,10 @@ input {
   max-width: 450px;
   max-height: 85vh;
   padding: 25px;
+  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 .DialogContent:focus {
   outline: none;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .DialogContent {
-    animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
 }
 
 .DialogTitle {

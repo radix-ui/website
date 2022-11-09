@@ -68,24 +68,20 @@ p {
   top: 0;
   left: 0;
   width: 100%;
+  animation-duration: 250ms;
+  animation-timing-function: ease;
 }
-@media (prefers-reduced-motion: no-preference) {
-  .NavigationMenuContent {
-    animation-duration: 250ms;
-    animation-timing-function: ease;
-  }
-  .NavigationMenuContent[data-motion='from-start'] {
-    animation-name: enterFromLeft;
-  }
-  .NavigationMenuContent[data-motion='from-end'] {
-    animation-name: enterFromRight;
-  }
-  .NavigationMenuContent[data-motion='to-start'] {
-    animation-name: exitToLeft;
-  }
-  .NavigationMenuContent[data-motion='to-end'] {
-    animation-name: exitToRight;
-  }
+.NavigationMenuContent[data-motion='from-start'] {
+  animation-name: enterFromLeft;
+}
+.NavigationMenuContent[data-motion='from-end'] {
+  animation-name: enterFromRight;
+}
+.NavigationMenuContent[data-motion='to-start'] {
+  animation-name: exitToLeft;
+}
+.NavigationMenuContent[data-motion='to-end'] {
+  animation-name: exitToRight;
 }
 @media only screen and (min-width: 600px) {
   .NavigationMenuContent {
@@ -101,17 +97,13 @@ p {
   top: 100%;
   overflow: hidden;
   z-index: 1;
+  transition: width, transform 250ms ease;
 }
-@media (prefers-reduced-motion: no-preference) {
-  .NavigationMenuIndicator {
-    transition: width, transform 250ms ease;
-  }
-  .NavigationMenuIndicator[data-state='visible'] {
-    animation: fadeIn 200ms ease;
-  }
-  .NavigationMenuIndicator[data-state='hidden'] {
-    animation: fadeOut 200ms ease;
-  }
+.NavigationMenuIndicator[data-state='visible'] {
+  animation: fadeIn 200ms ease;
+}
+.NavigationMenuIndicator[data-state='hidden'] {
+  animation: fadeOut 200ms ease;
 }
 
 .NavigationMenuViewport {
@@ -124,17 +116,13 @@ p {
   overflow: hidden;
   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
   height: var(--radix-navigation-menu-viewport-height);
+  transition: width, height, 300ms ease;
 }
-@media (prefers-reduced-motion: no-preference) {
-  .NavigationMenuViewport {
-    transition: width, height, 300ms ease;
-  }
-  .NavigationMenuViewport[data-state='open'] {
-    animation: scaleIn 200ms ease;
-  }
-  .NavigationMenuViewport[data-state='closed'] {
-    animation: scaleOut 200ms ease;
-  }
+.NavigationMenuViewport[data-state='open'] {
+  animation: scaleIn 200ms ease;
+}
+.NavigationMenuViewport[data-state='closed'] {
+  animation: scaleOut 200ms ease;
 }
 @media only screen and (min-width: 600px) {
   .NavigationMenuViewport {
@@ -237,14 +225,10 @@ p {
   position: relative;
   color: var(--violet10);
   top: 1px;
+  transition: transform 250ms ease;
 }
 [data-state='open'] > .CaretDown {
   transform: rotate(-180deg);
-}
-@media (prefers-reduced-motion: no-preference) {
-  .CaretDown {
-    transition: transform 250ms ease;
-  }
 }
 
 .Arrow {

@@ -564,17 +564,14 @@ Tab focus will be maintained automatically.
 You can use the optional `Indicator` part to highlight the currently active `Trigger`, this is useful when you want to provide
 an animated visual cue such as an arrow or highlight to accompany the `Viewport`.
 
-```jsx line=4-11,25
+```jsx line=4-8,22
 import { styled } from '@stitches/react';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 
 const StyledIndicator = styled(NavigationMenu.Link, {
   backgroundColor: 'grey',
-
+  transition: 'width, transform, 250ms ease',
   '&[data-orientation="horizontal"]': { height: 3 },
-  '@media (prefers-reduced-motion: no-preference)': {
-    transition: 'width, transform, 250ms ease',
-  },
 });
 
 export default () => (
@@ -684,7 +681,7 @@ to allow you to animate `Viewport` size and `Content` position based on the ente
 Combining these with `position: absolute;` allows you to create smooth overlapping animation effects when moving between items.
 Here's an example using Stitches:
 
-```jsx line=30-35,45,54,58,62
+```jsx line=29-34,41,49,53,57
 import { styled, keyframes } from '@stitches/react';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 
@@ -713,24 +710,19 @@ const StyledContent = styled(NavigationMenu.Root, {
   top: 0,
   left: 0,
 
-  '@media (prefers-reduced-motion: no-preference)': {
-    animationDuration: '250ms',
-    animationTimingFunction: 'ease',
-    '&[data-motion="from-start"]': { animationName: enterFromLeft },
-    '&[data-motion="from-end"]': { animationName: enterFromRight },
-    '&[data-motion="to-start"]': { animationName: exitToLeft },
-    '&[data-motion="to-end"]': { animationName: exitToRight },
-  },
+  animationDuration: '250ms',
+  animationTimingFunction: 'ease',
+  '&[data-motion="from-start"]': { animationName: enterFromLeft },
+  '&[data-motion="from-end"]': { animationName: enterFromRight },
+  '&[data-motion="to-start"]': { animationName: exitToLeft },
+  '&[data-motion="to-end"]': { animationName: exitToRight },
 });
 
 const StyledViewport = styled(NavigationMenu.Viewport, {
   position: 'relative',
   width: 'var(--radix-hover-menu-viewport-width)',
   height: 'var(--radix-hover-menu-viewport-height)',
-
-  '@media (prefers-reduced-motion: no-preference)': {
-    transition: 'width, height, 250ms ease',
-  },
+  transition: 'width, height, 250ms ease',
 });
 
 export default () => (

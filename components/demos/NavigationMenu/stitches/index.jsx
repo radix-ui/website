@@ -180,14 +180,12 @@ const NavigationMenuContent = styled(NavigationMenu.Content, {
   left: 0,
   width: '100%',
   '@media only screen and (min-width: 600px)': { width: 'auto' },
-  '@media (prefers-reduced-motion: no-preference)': {
-    animationDuration: '250ms',
-    animationTimingFunction: 'ease',
-    '&[data-motion="from-start"]': { animationName: enterFromLeft },
-    '&[data-motion="from-end"]': { animationName: enterFromRight },
-    '&[data-motion="to-start"]': { animationName: exitToLeft },
-    '&[data-motion="to-end"]': { animationName: exitToRight },
-  },
+  animationDuration: '250ms',
+  animationTimingFunction: 'ease',
+  '&[data-motion="from-start"]': { animationName: enterFromLeft },
+  '&[data-motion="from-end"]': { animationName: enterFromRight },
+  '&[data-motion="to-start"]': { animationName: exitToLeft },
+  '&[data-motion="to-end"]': { animationName: exitToRight },
 });
 
 const NavigationMenuIndicator = styled(NavigationMenu.Indicator, {
@@ -198,12 +196,9 @@ const NavigationMenuIndicator = styled(NavigationMenu.Indicator, {
   top: '100%',
   overflow: 'hidden',
   zIndex: 1,
-
-  '@media (prefers-reduced-motion: no-preference)': {
-    transition: 'width, transform 250ms ease',
-    '&[data-state="visible"]': { animation: `${fadeIn} 200ms ease` },
-    '&[data-state="hidden"]': { animation: `${fadeOut} 200ms ease` },
-  },
+  transition: 'width, transform 250ms ease',
+  '&[data-state="visible"]': { animation: `${fadeIn} 200ms ease` },
+  '&[data-state="hidden"]': { animation: `${fadeOut} 200ms ease` },
 });
 
 const NavigationMenuViewport = styled(NavigationMenu.Viewport, {
@@ -216,14 +211,11 @@ const NavigationMenuViewport = styled(NavigationMenu.Viewport, {
   overflow: 'hidden',
   boxShadow: 'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
   height: 'var(--radix-navigation-menu-viewport-height)',
-
+  transition: 'width, height, 300ms ease',
+  '&[data-state="open"]': { animation: `${scaleIn} 200ms ease` },
+  '&[data-state="closed"]': { animation: `${scaleOut} 200ms ease` },
   '@media only screen and (min-width: 600px)': {
     width: 'var(--radix-navigation-menu-viewport-width)',
-  },
-  '@media (prefers-reduced-motion: no-preference)': {
-    transition: 'width, height, 300ms ease',
-    '&[data-state="open"]': { animation: `${scaleIn} 200ms ease` },
-    '&[data-state="closed"]': { animation: `${scaleOut} 200ms ease` },
   },
 });
 
@@ -338,10 +330,8 @@ const CaretDown = styled(CaretDownIcon, {
   position: 'relative',
   color: violet.violet10,
   top: 1,
+  transition: 'transform 250ms ease',
   '[data-state=open] &': { transform: 'rotate(-180deg)' },
-  '@media (prefers-reduced-motion: no-preference)': {
-    transition: 'transform 250ms ease',
-  },
 });
 
 const Arrow = styled('div', {
