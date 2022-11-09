@@ -122,6 +122,7 @@ export const HeroCodeBlock = ({
                       <Box
                         as="button"
                         css={{
+                          all: 'unset',
                           appearance: 'none',
                           backgroundColor: 'transparent',
                           border: 'none',

@@ -11,13 +11,18 @@ const ScrollArea = React.forwardRef<
   ScrollAreaProps
 >((props, forwardedRef) => {
   const { disabled = false, ...scrollAreaProps } = props;
+
   if (disabled) {
-    return <Box {...props} css={{ overflow: 'hidden', ...props.css }} />;
+    return <Box {...scrollAreaProps} css={{ overflow: 'hidden', ...scrollAreaProps.css }} />;
   }
+
   return (
     <ScrollAreaRoot>
       <ScrollAreaViewport {...scrollAreaProps} ref={forwardedRef} />
       <ScrollAreaScrollbar orientation="vertical">
+        <ScrollAreaThumb />
+      </ScrollAreaScrollbar>
+      <ScrollAreaScrollbar orientation="horizontal">
         <ScrollAreaThumb />
       </ScrollAreaScrollbar>
     </ScrollAreaRoot>
