@@ -585,9 +585,10 @@ Tab focus will be maintained automatically.
 You can use the optional `Indicator` part to highlight the currently active `Trigger`, this is useful when you want to provide
 an animated visual cue such as an arrow or highlight to accompany the `Viewport`.
 
-```jsx line=16
+```jsx line=17
 // index.jsx
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+import './styles.css';
 
 export default () => (
   <NavigationMenu.Root>
@@ -667,11 +668,12 @@ sure to assign and set a `defaultValue`.
 If you need to use the `Link` component provided by your routing package then we recommend composing with `NavigationMenu.Link` via a custom component.
 This will ensure accessibility and consistent keyboard control is maintained. Here's an example using Next.js:
 
-```jsx line=6-15,21,24
+```jsx line=7-16,22,25
 // index.jsx
 import { useRouter } from 'next/router'
 import Link as NextLink from 'next/link';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+import './styles.css';
 
 const Link = ({ href, ...props }) => {
   const router = useRouter();
@@ -715,9 +717,10 @@ to allow you to animate `Viewport` size and `Content` position based on the ente
 
 Combining these with `position: absolute;` allows you to create smooth overlapping animation effects when moving between items.
 
-```jsx line=9-11,15-17,21
+```jsx line=10-12,16-18,22
 // index.jsx
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+import './styles.css';
 
 export default () => (
   <NavigationMenu.Root>

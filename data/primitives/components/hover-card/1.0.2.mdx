@@ -390,9 +390,10 @@ export default () => (
 
 We expose a CSS custom property `--radix-hover-card-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
-```jsx line=7
+```jsx line=8
 // index.jsx
 import * as HoverCard from '@radix-ui/react-hover-card';
+import './styles.css';
 
 export default () => (
   <HoverCard.Root>
@@ -425,9 +426,10 @@ export default () => (
 
 We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
 
-```jsx line=7
+```jsx line=8
 // index.jsx
 import * as HoverCard from '@radix-ui/react-hover-card';
+import './styles.css';
 
 export default () => (
   <HoverCard.Root>

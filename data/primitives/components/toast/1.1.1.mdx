@@ -444,9 +444,10 @@ export default () => {
 
 Combine `--radix-toast-swipe-move-[x|y]` and `--radix-toast-swipe-end-[x|y]` CSS variables with `data-swipe="[start|move|cancel|end]"` attributes to animate a swipe to close gesture. Here's an example:
 
-```jsx line=5,6
+```jsx line=6,7
 // index.jsx
 import * as Toast from '@radix-ui/react-toast';
+import './styles.css';
 
 export default () => (
   <Toast.Provider __swipeDirection__="right">

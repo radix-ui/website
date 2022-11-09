@@ -1157,9 +1157,10 @@ You can create submenus by using `DropdownMenu.Sub` in combination with its part
 
 You can add special styles to disabled items via the `data-disabled` attribute.
 
-```jsx line=9
+```jsx line=10
 // index.jsx
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import './styles.css';
 
 export default () => (
   <DropdownMenu.Root>
@@ -1330,9 +1331,10 @@ export default () => (
 
 We expose a CSS custom property `--radix-dropdown-menu-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
-```jsx line=8
+```jsx line=9
 // index.jsx
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import './styles.css';
 
 export default () => (
   <DropdownMenu.Root>
@@ -1369,9 +1371,10 @@ export default () => (
 
 We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
 
-```jsx line=8
+```jsx line=9
 // index.jsx
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import './styles.css';
 
 export default () => (
   <DropdownMenu.Root>

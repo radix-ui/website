@@ -477,9 +477,10 @@ The button that closes an open popover.
 
 We expose a CSS custom property `--radix-popover-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
-```jsx line=8
+```jsx line=9
 // index.jsx
 import * as Popover from '@radix-ui/react-popover';
+import './styles.css';
 
 export default () => (
   <Popover.Root>
@@ -514,9 +515,10 @@ export default () => (
 
 We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
 
-```jsx line=8
+```jsx line=9
 // index.jsx
 import * as Popover from '@radix-ui/react-popover';
+import './styles.css';
 
 export default () => (
   <Popover.Root>
@@ -568,9 +570,10 @@ export default () => (
 
 You can anchor the content to another element if you do not want to use the trigger as the anchor.
 
-```jsx line=6-10
+```jsx line=7-11
 // index.jsx
 import * as Popover from '@radix-ui/react-popover';
+import './styles.css';
 
 export default () => (
   <Popover.Root>

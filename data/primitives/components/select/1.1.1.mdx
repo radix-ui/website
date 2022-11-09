@@ -540,9 +540,10 @@ Used to visually separate items in the select.
 
 You can add special styles to disabled items via the `data-disabled` attribute.
 
-```jsx line=10
+```jsx line=11
 // index.jsx
 import * as Select from '@radix-ui/react-select';
+import './styles.css';
 
 export default () => (
   <Select.Root>
@@ -573,9 +574,10 @@ export default () => (
 
 You can use the `placeholder` prop on `Value` for when the select has no value. There's also a `data-placeholder` attribute on `Trigger` to help with styling.
 
-```jsx line=6,7
+```jsx line=7,8
 // index.jsx
 import * as Select from '@radix-ui/react-select';
+import './styles.css';
 
 export default () => (
   <Select.Root>
@@ -716,10 +718,11 @@ export default () => {
 
 The native scrollbar is hidden by default as we recommend using the `ScrollUpButton` and `ScrollDownButton` parts for the best UX. If you do not want to use these parts, compose your select with our [Scroll Area](scroll-area) primitive.
 
-```jsx line=10,12,18-20
+```jsx line=11,13,19-21
 // index.jsx
 import * as Select from '@radix-ui/react-select';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
+import './styles.css';
 
 export default () => (
   <Select.Root>

@@ -382,10 +382,11 @@ Set the `type` prop to `multiple` to enable opening multiple items at once.
 
 You can add extra decorative elements, such as chevrons, and rotate it when the item is open.
 
-```jsx line=11
+```jsx line=12
 // index.jsx
 import * as Accordion from '@radix-ui/react-accordion';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
+import './styles.css';
 
 export default () => (
   <Accordion.Root type="single">
@@ -416,14 +417,15 @@ export default () => (
 
 Use the `--radix-accordion-content-width` and/or `--radix-accordion-content-height` CSS variables to animate the size of the content when it opens/closes:
 
-```jsx line=8
+```jsx line=9
 // index.jsx
 import * as Accordion from '@radix-ui/react-accordion';
+import './styles.css';
 
 export default () => (
   <Accordion.Root type="single">
     <Accordion.Item value="item-1">
-      <Accordion.Header className="AccordionHeader">…</Accordion.Header>
+      <Accordion.Header>…</Accordion.Header>
       <Accordion.Content __className__="AccordionContent">…</Accordion.Content>
     </Accordion.Item>
   </Accordion.Root>
@@ -432,10 +434,6 @@ export default () => (
 
 ```css line=21,27
 /* styles.css */
-.AccordionHeader {
-  margin: 0;
-}
-
 .AccordionContent {
   overflow: hidden;
 }
