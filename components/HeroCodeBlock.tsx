@@ -51,10 +51,11 @@ export const HeroCodeBlock = ({
     if (!tabExists) setCurrentTabValue(currentTabs[0]?.id);
   }, [currentTabValue, currentTabs]);
 
-  const ScrollWrapper = isCodeExpanded ? ScrollArea : React.Fragment;
-
   return (
-    <Box css={{ position: 'relative', '@bp3': { mx: '-$7' }, '@bp4': { mx: '-$8' } }}>
+    <Box
+      data-algolia-exclude
+      css={{ position: 'relative', '@bp3': { mx: '-$7' }, '@bp4': { mx: '-$8' } }}
+    >
       <Collapsible.Root open={isCodeExpanded} onOpenChange={setIsCodeExpanded}>
         <Box
           css={{
