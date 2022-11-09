@@ -12,9 +12,16 @@ import { CSS_LIB_NAMES } from '@lib/constants';
 import { Select } from '@components/Select';
 import type { CssLib } from '@lib/constants';
 
-export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
+export const HeroCodeBlock = ({
+  children,
+  cssLib: cssLibProp,
+}: {
+  children?: React.ReactNode;
+  cssLib: CssLib;
+}) => {
   const frontmatter = React.useContext(FrontmatterContext);
   const [preferredCssLib, setPreferredCssLib] = useCssLibPreference();
+  const usedCssLib = cssLibProp ?? preferredCssLib;
   const [isCodeExpanded, setIsCodeExpanded] = React.useState(false);
 
   const snippets = React.Children.toArray(children).map((pre) => {
@@ -30,7 +37,7 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
   });
 
   const availableCssLibs = snippets.map(({ cssLib }) => cssLib).filter(onlyUnique);
-  const currentTabs = snippets.filter(({ cssLib }) => cssLib === preferredCssLib);
+  const currentTabs = snippets.filter(({ cssLib }) => cssLib === usedCssLib);
   const sources = currentTabs.reduce((sources, tab) => {
     return { ...sources, [tab.title]: tab.source };
   }, {});
@@ -72,9 +79,9 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
             <input
               type="hidden"
               name="parameters"
-              value={makeCodeSandboxParams(frontmatter.name, sources, preferredCssLib)}
+              value={makeCodeSandboxParams(frontmatter.name, sources, usedCssLib)}
             />
-            <Tooltip content={`Open ${CSS_LIB_NAMES[preferredCssLib]} demo in CodeSandbox`}>
+            <Tooltip content={`Open ${CSS_LIB_NAMES[usedCssLib]} demo in CodeSandbox`}>
               <IconButton type="submit" css={{ color: '$whiteA12' }}>
                 <CodeSandboxLogoIcon />
               </IconButton>
@@ -165,7 +172,7 @@ export const HeroCodeBlock = ({ children }: { children?: React.ReactNode }) => {
                   ))}
                 </Tabs.List>
 
-                {availableCssLibs.length > 1 ? (
+                {cssLibProp === undefined && availableCssLibs.length > 1 ? (
                   <Box>
                     <Select
                       aria-label="Choose a styling solution"

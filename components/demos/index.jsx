@@ -1,4 +1,3 @@
-export { GettingStartedDemo } from './GettingStarted';
 export { default as AccordionDemo } from './Accordion/stitches';
 export { default as AlertDialogDemo } from './AlertDialog/stitches';
 export { default as AspectRatioDemo } from './AspectRatio/stitches';
@@ -25,3 +24,5 @@ export { default as ToggleDemo } from './Toggle/stitches';
 export { default as ToggleGroupDemo } from './ToggleGroup/stitches';
 export { default as ToolbarDemo } from './Toolbar/stitches';
 export { default as TooltipDemo } from './Tooltip/stitches';
+//
+export { default as GettingStartedDemo } from './GettingStarted/stitches';
