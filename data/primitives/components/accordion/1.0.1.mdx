@@ -16,9 +16,7 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/accordion
   <AccordionDemo />
 </HeroContainer>
 
-```jsx hero template=Accordion
-
-```
+<HeroCodeBlock folder="Accordion" />
 
 <Highlights
   features={[
@@ -384,23 +382,19 @@ Set the `type` prop to `multiple` to enable opening multiple items at once.
 
 You can add extra decorative elements, such as chevrons, and rotate it when the item is open.
 
-```jsx line=3,5-8,16
-import { styled } from '@stitches/react';
+```jsx line=12
+// index.jsx
 import * as Accordion from '@radix-ui/react-accordion';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
-
-const AccordionChevron = styled(ChevronDownIcon, {
-  transition: 'transform 300ms',
-  '[data-state=open] &': { transform: 'rotate(180deg)' },
-});
+import './styles.css';
 
 export default () => (
   <Accordion.Root type="single">
     <Accordion.Item value="item-1">
       <Accordion.Header>
-        <Accordion.Trigger>
+        <Accordion.Trigger className="AccordionTrigger">
           <span>Trigger text</span>
-          <AccordionChevron aria-hidden />
+          <ChevronDownIcon __className__="AccordionChevron" aria-hidden />
         </Accordion.Trigger>
       </Accordion.Header>
       <Accordion.Content>…</Accordion.Content>
@@ -409,42 +403,64 @@ export default () => (
 );
 ```
 
+```css line=5-7
+/* styles.css */
+.AccordionChevron {
+  transition: transform 300ms;
+}
+.AccordionTrigger[data-state='open'] > .AccordionChevron {
+  transform: rotate(180deg);
+}
+```
+
 ### Animating content size
 
-Use the `--radix-accordion-content-width` and/or `--radix-accordion-content-height` CSS variables to animate the size of the content when it opens/closes. Here's a demo using Stitches:
+Use the `--radix-accordion-content-width` and/or `--radix-accordion-content-height` CSS variables to animate the size of the content when it opens/closes:
 
-```jsx line=4-7,9-12,20-21,28
-import { styled, keyframes } from '@stitches/react';
+```jsx line=9
+// index.jsx
 import * as Accordion from '@radix-ui/react-accordion';
-
-const open = keyframes({
-  from: { height: 0 },
-  to: { height: 'var(--radix-accordion-content-height)' },
-});
-
-const close = keyframes({
-  from: { height: 'var(--radix-accordion-content-height)' },
-  to: { height: 0 },
-});
-
-const AccordionHeader = styled(Accordion.Header, {
-  margin: 0,
-});
-
-const AccordionContent = styled(Accordion.Content, {
-  overflow: 'hidden',
-  '&[data-state="open"]': { animation: `${open} 300ms ease-out` },
-  '&[data-state="closed"]': { animation: `${close} 300ms ease-out` },
-});
+import './styles.css';
 
 export default () => (
   <Accordion.Root type="single">
     <Accordion.Item value="item-1">
-      <AccordionHeader>…</AccordionHeader>
-      <AccordionContent>…</AccordionContent>
+      <Accordion.Header>…</Accordion.Header>
+      <Accordion.Content __className__="AccordionContent">…</Accordion.Content>
     </Accordion.Item>
   </Accordion.Root>
 );
+```
+
+```css line=21,27
+/* styles.css */
+.AccordionContent {
+  overflow: hidden;
+}
+.AccordionContent[data-state='open'] {
+  animation: slideDown 300ms ease-out;
+}
+.AccordionContent[data-state='closed'] {
+  animation: slideUp 300ms ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(__--radix-accordion-content-height__);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    height: var(__--radix-accordion-content-height__);
+  }
+  to {
+    height: 0;
+  }
+}
 ```
 
 ## Accessibility

@@ -15,9 +15,7 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/listbox
   <SelectDemo />
 </HeroContainer>
 
-```jsx hero template=Select
-
-```
+<HeroCodeBlock folder="Select" />
 
 <Highlights
   features={[
@@ -542,13 +540,10 @@ Used to visually separate items in the select.
 
 You can add special styles to disabled items via the `data-disabled` attribute.
 
-```jsx line=4-6,14
-import { styled } from '@stitches/react';
+```jsx line=11
+// index.jsx
 import * as Select from '@radix-ui/react-select';
-
-const StyledItem = styled(Select.Item, {
-  '&[data-disabled]': { color: 'gainsboro' },
-});
+import './styles.css';
 
 export default () => (
   <Select.Root>
@@ -556,9 +551,11 @@ export default () => (
     <Select.Portal>
       <Select.Content>
         <Select.Viewport>
-          <StyledItem __disabled__>…</StyledItem>
-          <StyledItem>…</StyledItem>
-          <StyledItem>…</StyledItem>
+          <Select.Item __className__="SelectItem" __disabled__>
+            …
+          </Select.Item>
+          <Select.Item>…</Select.Item>
+          <Select.Item>…</Select.Item>
         </Select.Viewport>
       </Select.Content>
     </Select.Portal>
@@ -566,29 +563,40 @@ export default () => (
 );
 ```
 
+```css line=2
+/* styles.css */
+.SelectItem[__data-disabled__] {
+  color: 'gainsboro';
+}
+```
+
 ### With a placeholder
 
 You can use the `placeholder` prop on `Value` for when the select has no value. There's also a `data-placeholder` attribute on `Trigger` to help with styling.
 
-```jsx line=4-6,11
-import { styled } from '@stitches/react';
+```jsx line=7,8
+// index.jsx
 import * as Select from '@radix-ui/react-select';
-
-const StyledTrigger = styled(Select.Trigger, {
-  '&[data-placeholder]': { color: 'gainsboro' },
-});
+import './styles.css';
 
 export default () => (
   <Select.Root>
-    <SelectTrigger>
+    <Select.Trigger __className__="SelectTrigger">
       <Select.Value __placeholder__="Pick an option" />
       <Select.Icon />
-    </SelectTrigger>
+    </Select.Trigger>
     <Select.Portal>
       <Select.Content>…</Select.Content>
     </Select.Portal>
   </Select.Root>
 );
+```
+
+```css line=2
+/* styles.css */
+.SelectTrigger[__data-placeholder__] {
+  color: 'gainsboro';
+}
 ```
 
 ### With separators
@@ -639,14 +647,8 @@ Use the `Group` and `Label` parts to group items in a section.
 
 You can use custom content in your items.
 
-```jsx line=4-7,17
-import { styled } from '@stitches/react';
+```jsx line=11
 import * as Select from '@radix-ui/react-select';
-
-const Image = styled('img', {
-  width: 24,
-  height: 24,
-});
 
 export default () => (
   <Select.Root>
@@ -656,7 +658,7 @@ export default () => (
         <Select.Viewport>
           <Select.Item>
             <Select.ItemText>
-              <Image src="…" />
+              <img src="…" />
               Adolfo Hess
             </Select.ItemText>
             <Select.ItemIndicator>…</Select.ItemIndicator>
@@ -716,52 +718,59 @@ export default () => {
 
 The native scrollbar is hidden by default as we recommend using the `ScrollUpButton` and `ScrollDownButton` parts for the best UX. If you do not want to use these parts, compose your select with our [Scroll Area](scroll-area) primitive.
 
-```jsx line=5-8,10-13,15-18,20-23,30,32,36,38-41
-import { styled } from '@stitches/react';
+```jsx line=11,13,19-21
+// index.jsx
 import * as Select from '@radix-ui/react-select';
-import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
-
-const ScrollArea = styled(ScrollAreaPrimitive.Root, {
-  width: '100%',
-  height: '100%',
-});
-
-const ScrollAreaViewport = styled(ScrollAreaPrimitive.Viewport, {
-  width: '100%',
-  height: '100%',
-});
-
-const ScrollAreaScrollbar = styled(ScrollAreaPrimitive.Scrollbar, {
-  width: 4,
-  padding: '5px 2px',
-});
-
-const ScrollAreaThumb = styled(ScrollAreaPrimitive.Thumb, {
-  background: 'rgba(0, 0, 0, 0.3)',
-  borderRadius: 3,
-});
+import * as ScrollArea from '@radix-ui/react-scroll-area';
+import './styles.css';
 
 export default () => (
   <Select.Root>
     <Select.Trigger>…</Select.Trigger>
     <Select.Portal>
       <Select.Content>
-        <ScrollArea type="auto">
+        <ScrollArea.Root __className__="ScrollAreaRoot" type="auto">
           <Select.Viewport __asChild__>
-            <ScrollAreaViewport>
+            <ScrollArea.Viewport __className__="ScrollAreaViewport">
               <StyledItem>…</StyledItem>
               <StyledItem>…</StyledItem>
               <StyledItem>…</StyledItem>
-            </ScrollAreaViewport>
+            </ScrollArea.Viewport>
           </Select.Viewport>
-          <ScrollAreaScrollbar orientation="vertical">
-            <ScrollAreaThumb />
-          </ScrollAreaScrollbar>
-        </ScrollArea>
+          <ScrollArea.Scrollbar
+            __className__="ScrollAreaScrollbar"
+            orientation="vertical"
+          >
+            <ScrollArea.Thumb __className__="ScrollAreaThumb" />
+          </ScrollArea.Scrollbar>
+        </ScrollArea.Root>
       </Select.Content>
     </Select.Portal>
   </Select.Root>
 );
+```
+
+```css
+/* styles.css */
+.ScrollAreaRoot {
+  width: 100%;
+  height: 100%;
+}
+
+.ScrollAreaViewport {
+  width: 100%;
+  height: 100%;
+}
+
+.ScrollAreaScrollbar {
+  width: 4px;
+  padding: 5px 2px;
+}
+
+.ScrollAreaThumb {
+  background: rgba(0, 0, 0, 0.3);
+  borderradius: 3px;
+}
 ```
 
 ## Accessibility
@@ -880,7 +889,7 @@ export default () => (
 #### Implementation
 
 ```jsx
-// your-select.js
+// your-select.jsx
 import React from 'react';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import {

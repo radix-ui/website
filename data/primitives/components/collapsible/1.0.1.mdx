@@ -15,9 +15,7 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/disclosure
   <CollapsibleDemo />
 </HeroContainer>
 
-```jsx hero template=Collapsible
-
-```
+<HeroCodeBlock folder="Collapsible" />
 
 <Highlights
   features={['Full keyboard navigation.', 'Can be controlled or uncontrolled.']}
@@ -194,34 +192,52 @@ The component that contains the collapsible content.
 
 ### Animating content size
 
-Use the `--radix-collapsible-content-width` and/or `--radix-collapsible-content-height` CSS variables to animate the size of the content when it opens/closes. Here's a demo using Stitches:
+Use the `--radix-collapsible-content-width` and/or `--radix-collapsible-content-height` CSS variables to animate the size of the content when it opens/closes. Here's a demo:
 
-```jsx line=4-7,9-12,14-18,23
-import { styled, keyframes } from '@stitches/react';
+```jsx line=8
+// index.jsx
 import * as Collapsible from '@radix-ui/react-collapsible';
-
-const open = keyframes({
-  from: { height: 0 },
-  to: { height: 'var(--radix-collapsible-content-height)' },
-});
-
-const close = keyframes({
-  from: { height: 'var(--radix-collapsible-content-height)' },
-  to: { height: 0 },
-});
-
-const CollapsibleContent = styled(Collapsible.Content, {
-  overflow: 'hidden',
-  '&[data-state="open"]': { animation: `${open} 300ms ease-out` },
-  '&[data-state="closed"]': { animation: `${close} 300ms ease-out` },
-});
+import './styles.css';
 
 export default () => (
   <Collapsible.Root>
     <Collapsible.Trigger>…</Collapsible.Trigger>
-    <CollapsibleContent>…</CollapsibleContent>
+    <Collapsible.Content __className__="CollapsibleContent">
+      …
+    </Collapsible.Content>
   </Collapsible.Root>
 );
+```
+
+```css line=17,23
+/* styles.css */
+.CollapsibleContent {
+  overflow: hidden;
+}
+.CollapsibleContent[data-state='open'] {
+  animate: slideDown 300ms ease-out;
+}
+.CollapsibleContent[data-state='closed'] {
+  animate: slideUp 300ms ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(__--radix-collapsible-content-height__);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    height: var(__--radix-collapsible-content-height__);
+  }
+  to {
+    height: 0;
+  }
+}
 ```
 
 ## Accessibility

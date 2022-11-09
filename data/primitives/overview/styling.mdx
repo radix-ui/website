@@ -28,25 +28,21 @@ When components are stateful, their state will be exposed in a `data-state` attr
 
 ### Styling a part
 
-You can style a component part by targeting the `className` that you provide. The primitives can be wrapped to add your class.
+You can style a component part by targeting the `className` that you provide.
 
-```jsx
+```jsx line=3,7
 import * as React from 'react';
-import * as AccordionPrimitive from '@radix-ui/react-accordion';
+import * as Accordion from '@radix-ui/react-accordion';
+import './styles.css';
 
-const AccordionItem = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Item>,
-  React.ComponentProps<typeof AccordionPrimitive.Item>
->((props, forwardedRef) => {
-  const { className, ...itemProps } = props;
-  return (
-    <AccordionPrimitive.Item
-      {...itemProps}
-      ref={forwardedRef}
-      className={'accordion-item ' + className}
-    />
-  );
-});
+const AccordionDemo = () => (
+  <Accordion.Root>
+    <Accordion.Item __className__="AccordionItem" value="item-1" />
+    {/* … */}
+  </Accordion.Root>
+);
+
+export default AccordionDemo;
 ```
 
 ### Styling a state
@@ -54,11 +50,11 @@ const AccordionItem = React.forwardRef<
 You can style a component state by targeting its `data-state` attribute.
 
 ```css
-.accordion-item {
+.AccordionItem {
   border-bottom: 1px solid gainsboro;
 }
 
-.accordion-item[data-state='open'] {
+.AccordionItem[__data-state__='open'] {
   border-bottom-width: 2px;
 }
 ```
@@ -71,17 +67,23 @@ The examples below are using [Stitches](https://stitches.dev), but you can use a
 
 You can style a component part by wrapping it in a `styled` function (or equivalent).
 
-```jsx
-import { styled } from '@stitches/react';
+```jsx line=5-7,11
+import * as React from 'react';
 import * as Accordion from '@radix-ui/react-accordion';
+import { styled } from '@stitches/react';
 
-const StyledItem = styled(Accordion.Item, {
+const StyledItem = __styled__(Accordion.Item, {
   borderBottom: '1px solid gainsboro',
 });
 
-const StyledPanel = styled(Accordion.Panel, {
-  padding: 10,
-});
+const AccordionDemo = () => (
+  <Accordion.Root>
+    <StyledItem value="item-1" />
+    {/* … */}
+  </Accordion.Root>
+);
+
+export default AccordionDemo;
 ```
 
 ### Styling a state
@@ -95,38 +97,10 @@ import * as Accordion from '@radix-ui/react-accordion';
 const StyledItem = styled(Accordion.Item, {
   borderBottom: '1px solid gainsboro',
 
-  '&[data-state=open]': {
+  '&[__data-state__=open]': {
     borderBottomWidth: '2px',
   },
 });
-```
-
-### Demo
-
-Here's an example of how you can style the [Accordion](../components/accordion) component with CSS-in-JS.
-
-```jsx
-import { styled } from '@stitches/react';
-import * as Accordion from '@radix-ui/react-accordion';
-
-const StyledAccordion = styled(Accordion.Root, {});
-const StyledItem = styled(Accordion.Item, {});
-const StyledHeader = styled(Accordion.Header, {});
-const StyledTrigger = styled(Accordion.Trigger, {});
-const StyledPanel = styled(Accordion.Content, {});
-
-export default () => {
-  return (
-    <StyledAccordion type="single">
-      <StyledItem value="item-1">
-        <StyledHeader>
-          <StyledTrigger>Trigger text</StyledTrigger>
-        </StyledHeader>
-        <StyledPanel>Panel content</StyledPanel>
-      </StyledItem>
-    </StyledAccordion>
-  );
-};
 ```
 
 ## Extending a primitive
@@ -152,20 +126,18 @@ All component parts that render a DOM element have an `asChild` prop. This is us
 
 If you decide to change the underlying node rendered by Radix (e.g. change a `button` to a `div`) then it is up to you to ensure the correct accessibility and functionality of your chosen node type.
 
-Here's an example of how you can use a custom `Button` as the trigger for a `Dialog.Trigger`:
+Here's an example of how you can use a custom button called `MyButton` as the trigger for a `Dialog.Trigger`:
 
 ```jsx
-import { styled } from '@stitches/react';
+import * as React from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
-
-// This is a generic button, eg: from your design system
-const Button = styled('button', {...});
+import { MyButton } from './my-button';
 
 export default () => {
   return (
     <Dialog.Root>
       <Dialog.Trigger __asChild__>
-        <Button>Open dialog</Button>
+        <MyButton>Open dialog</MyButton>
       </Dialog.Trigger>
       <Dialog.Content>...</Dialog.Content>
     </Dialog.Root>

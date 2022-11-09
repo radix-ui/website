@@ -424,7 +424,7 @@ export default () => {
 
 Combine `--radix-toast-swipe-move-[x|y]` and `--radix-toast-swipe-end-[x|y]` CSS variables with `data-swipe="[start|move|cancel|end]"` attributes to animate a swipe to close gesture. Here's an example using Stitches:
 
-```jsx line=4-7,9-20,24
+```jsx line=4-7,10-19,23
 import { styled, keyframes } from '@stitches/react';
 import * as ToastPrimitive from '@radix-ui/react-toast';
 
@@ -434,17 +434,15 @@ const slideRight = css.keyframes({
 });
 
 const Toast = styled(ToastPrimitive.Root, {
-  '@media (prefers-reduced-motion: no-preference)': {
-    '&[data-swipe="move"]': {
-      transform: 'translateX(var(--radix-toast-swipe-move-x))',
-    },
-    '&[data-swipe="cancel"]': {
-      transform: 'translateX(0)',
-      transition: 'transform 200ms ease-out',
-    },
-    '&[data-swipe="end"]': {
-      animation: `${slideRight} 100ms ease-out`,
-    },
+  '&[data-swipe="move"]': {
+    transform: 'translateX(var(--radix-toast-swipe-move-x))',
+  },
+  '&[data-swipe="cancel"]': {
+    transform: 'translateX(0)',
+    transition: 'transform 200ms ease-out',
+  },
+  '&[data-swipe="end"]': {
+    animation: `${slideRight} 100ms ease-out`,
   },
 });
 

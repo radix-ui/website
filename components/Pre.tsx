@@ -3,7 +3,6 @@ import { styled, theme } from '@modulz/design-system';
 export const Pre = styled('pre', {
   $$background: '$loContrast',
   $$text: '$colors$hiContrast',
-  $$outline: 'inset 0 0 0 1px $colors$slate6',
   $$syntax1: '$colors$blue11',
   $$syntax2: '$colors$cyan11',
   $$syntax3: '$colors$blue11',
@@ -35,7 +34,6 @@ export const Pre = styled('pre', {
   position: 'relative',
   backgroundColor: '$$background',
   color: '$$text',
-  boxShadow: '$$outline',
 
   '& > code': {
     display: 'block',
@@ -149,7 +147,7 @@ export const Pre = styled('pre', {
         color: '$$lineNumbers',
       },
     },
-    '&[data-invert-line-highlight=true]': {
+    '[data-invert-line-highlight=true]': {
       '.highlight-line': {
         '&::before': {
           left: 10,
@@ -159,7 +157,7 @@ export const Pre = styled('pre', {
   },
 
   // Styles for highlighted lines
-  '&[data-invert-line-highlight=false] .highlight-line': {
+  '[data-invert-line-highlight=false] .highlight-line': {
     '&, *': {
       transition: 'color 150ms ease',
     },
@@ -172,7 +170,7 @@ export const Pre = styled('pre', {
 
   // data-invert-line-highlight
   // Styles for inverted line highlighting
-  '&[data-invert-line-highlight=true] .highlight-line': {
+  '[data-invert-line-highlight=true] .highlight-line': {
     mx: '-$5',
     px: '$5',
     '&[data-highlighted=true]': {
@@ -190,7 +188,6 @@ export const Pre = styled('pre', {
       violet: {
         $$background: '$colors$violet2',
         $$text: '$colors$violet11',
-        $$outline: 'inset 0 0 0 1px $colors$violet4',
         $$syntax1: '$colors$blue10',
         $$syntax2: '$colors$pink11',
         $$comment: '$colors$mauve9',
@@ -199,7 +196,6 @@ export const Pre = styled('pre', {
       violetOld: {
         $$background: theme.colors.mauve12.value,
         $$text: theme.colors.gray5.value,
-        $$outline: 'none',
         $$syntax1: theme.colors.cyan8.value,
         $$syntax2: theme.colors.violet8.value,
         $$syntax3: theme.colors.cyan8.value,
@@ -222,7 +218,6 @@ export const Pre = styled('pre', {
       cyan: {
         $$background: theme.colors.slate12.value,
         $$text: theme.colors.gray5.value,
-        $$outline: 'none',
         $$syntax1: theme.colors.yellow7.value,
         $$syntax2: theme.colors.cyan8.value,
         $$syntax3: theme.colors.yellow7.value,
@@ -245,7 +240,6 @@ export const Pre = styled('pre', {
       yellow: {
         $$background: 'hsl(50 10% 5%)',
         $$text: theme.colors.gray5.value,
-        $$outline: 'none',
         $$syntax1: theme.colors.red9.value,
         $$syntax2: theme.colors.yellow7.value,
         $$syntax3: theme.colors.red9.value,
@@ -268,7 +262,6 @@ export const Pre = styled('pre', {
       blue: {
         $$background: theme.colors.slate12.value,
         $$text: theme.colors.gray5.value,
-        $$outline: 'none',
         $$syntax1: theme.colors.blue8.value,
         $$syntax2: theme.colors.pink8.value,
         $$syntax3: theme.colors.blue8.value,
