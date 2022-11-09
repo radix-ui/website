@@ -7,15 +7,21 @@ const RadioGroupDemo = () => (
   <form>
     <RadioGroupRoot defaultValue="default" aria-label="View density">
       <Flex css={{ alignItems: 'center' }}>
-        <RadioGroupItem value="default" id="r1" />
+        <RadioGroupItem value="default" id="r1">
+          <RadioGroupIndicator />
+        </RadioGroupItem>
         <Label htmlFor="r1">Default</Label>
       </Flex>
       <Flex css={{ alignItems: 'center' }}>
-        <RadioGroupItem value="comfortable" id="r2" />
+        <RadioGroupItem value="comfortable" id="r2">
+          <RadioGroupIndicator />
+        </RadioGroupItem>
         <Label htmlFor="r2">Comfortable</Label>
       </Flex>
       <Flex css={{ alignItems: 'center' }}>
-        <RadioGroupItem value="compact" id="r3" />
+        <RadioGroupItem value="compact" id="r3">
+          <RadioGroupIndicator />
+        </RadioGroupItem>
         <Label htmlFor="r3">Compact</Label>
       </Flex>
     </RadioGroupRoot>
@@ -28,15 +34,7 @@ const RadioGroupRoot = styled(RadioGroup.Root, {
   gap: 10,
 });
 
-const RadioGroupItem = React.forwardRef((props, forwardedRef) => {
-  return (
-    <StyledItem {...props} ref={forwardedRef}>
-      <StyledIndicator />
-    </StyledItem>
-  );
-});
-
-const StyledItem = styled(RadioGroup.Item, {
+const RadioGroupItem = styled(RadioGroup.Item, {
   all: 'unset',
   backgroundColor: 'white',
   width: 25,
@@ -47,7 +45,7 @@ const StyledItem = styled(RadioGroup.Item, {
   '&:focus': { boxShadow: `0 0 0 2px black` },
 });
 
-const StyledIndicator = styled(RadioGroup.Indicator, {
+const RadioGroupIndicator = styled(RadioGroup.Indicator, {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',

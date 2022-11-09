@@ -13,22 +13,16 @@ const TooltipDemo = () => {
             <PlusIcon />
           </IconButton>
         </Tooltip.Trigger>
-        <TooltipContent sideOffset={5}>Add to library</TooltipContent>
+        <Tooltip.Portal>
+          <TooltipContent sideOffset={5}>
+            Add to library
+            <TooltipArrow />
+          </TooltipContent>
+        </Tooltip.Portal>
       </Tooltip.Root>
     </Tooltip.Provider>
   );
 };
-
-const TooltipContent = React.forwardRef(({ children, ...props }, forwardedRef) => {
-  return (
-    <Tooltip.Portal>
-      <StyledContent {...props} ref={forwardedRef}>
-        {children}
-        <StyledArrow />
-      </StyledContent>
-    </Tooltip.Portal>
-  );
-});
 
 const slideUpAndFade = keyframes({
   '0%': { opacity: 0, transform: 'translateY(2px)' },
@@ -50,7 +44,7 @@ const slideLeftAndFade = keyframes({
   '100%': { opacity: 1, transform: 'translateX(0)' },
 });
 
-const StyledContent = styled(Tooltip.Content, {
+const TooltipContent = styled(Tooltip.Content, {
   borderRadius: 4,
   padding: '10px 15px',
   fontSize: 15,
@@ -72,7 +66,7 @@ const StyledContent = styled(Tooltip.Content, {
   },
 });
 
-const StyledArrow = styled(Tooltip.Arrow, {
+const TooltipArrow = styled(Tooltip.Arrow, {
   fill: 'white',
 });
 

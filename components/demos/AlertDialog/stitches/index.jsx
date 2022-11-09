@@ -8,36 +8,28 @@ const AlertDialogDemo = () => (
     <AlertDialog.Trigger asChild>
       <Button>Delete account</Button>
     </AlertDialog.Trigger>
-    <AlertDialogContent>
-      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-      <AlertDialogDescription>
-        This action cannot be undone. This will permanently delete your account and remove your data
-        from our servers.
-      </AlertDialogDescription>
-      <Flex css={{ justifyContent: 'flex-end' }}>
-        <AlertDialog.Cancel asChild>
-          <Button variant="mauve" css={{ marginRight: 25 }}>
-            Cancel
-          </Button>
-        </AlertDialog.Cancel>
-        <AlertDialog.Action asChild>
-          <Button variant="red">Yes, delete account</Button>
-        </AlertDialog.Action>
-      </Flex>
-    </AlertDialogContent>
+    <AlertDialog.Portal>
+      <AlertDialogOverlay />
+      <AlertDialogContent>
+        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+        <AlertDialogDescription>
+          This action cannot be undone. This will permanently delete your account and remove your
+          data from our servers.
+        </AlertDialogDescription>
+        <Flex css={{ justifyContent: 'flex-end' }}>
+          <AlertDialog.Cancel asChild>
+            <Button variant="mauve" css={{ marginRight: 25 }}>
+              Cancel
+            </Button>
+          </AlertDialog.Cancel>
+          <AlertDialog.Action asChild>
+            <Button variant="red">Yes, delete account</Button>
+          </AlertDialog.Action>
+        </Flex>
+      </AlertDialogContent>
+    </AlertDialog.Portal>
   </AlertDialog.Root>
 );
-
-const AlertDialogContent = React.forwardRef(({ children, ...props }, forwardedRef) => {
-  return (
-    <AlertDialog.Portal>
-      <StyledOverlay />
-      <StyledContent {...props} ref={forwardedRef}>
-        {children}
-      </StyledContent>
-    </AlertDialog.Portal>
-  );
-});
 
 const overlayShow = keyframes({
   '0%': { opacity: 0 },
@@ -49,7 +41,7 @@ const contentShow = keyframes({
   '100%': { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
 });
 
-const StyledOverlay = styled(AlertDialog.Overlay, {
+const AlertDialogOverlay = styled(AlertDialog.Overlay, {
   backgroundColor: blackA.blackA9,
   position: 'fixed',
   inset: 0,
@@ -58,7 +50,7 @@ const StyledOverlay = styled(AlertDialog.Overlay, {
   },
 });
 
-const StyledContent = styled(AlertDialog.Content, {
+const AlertDialogContent = styled(AlertDialog.Content, {
   backgroundColor: 'white',
   borderRadius: 6,
   boxShadow: 'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
