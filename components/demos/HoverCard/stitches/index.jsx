@@ -1,6 +1,6 @@
 import React from 'react';
 import * as HoverCard from '@radix-ui/react-hover-card';
-import { styled, keyframes } from '@stitches/react';
+import { styled, keyframes } from '@modulz/design-system';
 import { mauve } from '@radix-ui/colors';
 
 const HoverCardDemo = () => (

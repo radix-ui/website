@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as Toast from '@radix-ui/react-toast';
-import { styled, keyframes } from '@stitches/react';
+import { styled, keyframes } from '@modulz/design-system';
 import { violet, blackA, mauve, slate, green } from '@radix-ui/colors';
 
 const ToastDemo = () => {

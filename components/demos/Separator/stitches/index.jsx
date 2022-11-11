@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Separator from '@radix-ui/react-separator';
-import { styled } from '@stitches/react';
+import { styled } from '@modulz/design-system';
 import { violet } from '@radix-ui/colors';
 
 const SeparatorDemo = () => (

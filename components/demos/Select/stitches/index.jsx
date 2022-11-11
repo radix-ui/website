@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Select from '@radix-ui/react-select';
-import { styled } from '@stitches/react';
+import { styled } from '@modulz/design-system';
 import { violet, mauve, blackA } from '@radix-ui/colors';
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Tabs from '@radix-ui/react-tabs';
-import { styled } from '@stitches/react';
+import { styled } from '@modulz/design-system';
 import { violet, mauve, blackA, green } from '@radix-ui/colors';
 
 const TabsDemo = () => (

@@ -1,6 +1,6 @@
 import React from 'react';
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
-import { styled } from '@stitches/react';
+import { styled } from '@modulz/design-system';
 import { violet, blackA } from '@radix-ui/colors';
 
 const AvatarDemo = () => (

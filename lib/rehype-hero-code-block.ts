@@ -19,7 +19,13 @@ const rehypeHeroCodeBlock = () => (tree: UnistTree) => {
             if (fileExists(filePath)) {
               const [, extension] = file.split('.');
               const syntax = getSyntax(extension);
-              const source = fs.readFileSync(path.join(filePath), 'utf8');
+              let source = fs.readFileSync(path.join(filePath), 'utf8');
+
+              // We reference design-system in the original stitches demos to ensure
+              // styles are extracted in SSR when rendered to docs pages.
+              if (lib === 'stitches' && file === 'index.jsx') {
+                source = source.replace('@modulz/design-system', '@stitches/react');
+              }
 
               node.children.push(
                 mdxElement({

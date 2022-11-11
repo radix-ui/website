@@ -1,6 +1,6 @@
 import React from 'react';
 import * as RadioGroup from '@radix-ui/react-radio-group';
-import { styled } from '@stitches/react';
+import { styled } from '@modulz/design-system';
 import { violet, blackA } from '@radix-ui/colors';
 
 const RadioGroupDemo = () => (

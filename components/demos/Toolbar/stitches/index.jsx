@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Toolbar from '@radix-ui/react-toolbar';
-import { styled } from '@stitches/react';
+import { styled } from '@modulz/design-system';
 import { violet, blackA, mauve } from '@radix-ui/colors';
 import {
   StrikethroughIcon,

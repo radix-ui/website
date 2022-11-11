@@ -1,6 +1,6 @@
 import React from 'react';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
-import { styled } from '@stitches/react';
+import { styled } from '@modulz/design-system';
 import { violet, mauve, blackA } from '@radix-ui/colors';
 
 const TAGS = Array.from({ length: 50 }).map((_, i, a) => `v1.2.0-beta.${a.length - i}`);

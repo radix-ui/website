@@ -1,6 +1,6 @@
 import React from 'react';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
-import { styled } from '@stitches/react';
+import { styled } from '@modulz/design-system';
 import { violet, blackA, mauve } from '@radix-ui/colors';
 import { TextAlignLeftIcon, TextAlignCenterIcon, TextAlignRightIcon } from '@radix-ui/react-icons';
 
