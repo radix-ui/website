@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Progress from '@radix-ui/react-progress';
-import { styled } from '@stitches/react';
+import { styled } from '@modulz/design-system';
 import { blackA } from '@radix-ui/colors';
 
 const ProgressDemo = () => {

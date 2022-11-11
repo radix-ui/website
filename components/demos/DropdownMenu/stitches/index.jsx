@@ -1,6 +1,6 @@
 import React from 'react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { styled, keyframes } from '@stitches/react';
+import { styled, keyframes } from '@modulz/design-system';
 import { violet, mauve, blackA } from '@radix-ui/colors';
 import {
   HamburgerMenuIcon,

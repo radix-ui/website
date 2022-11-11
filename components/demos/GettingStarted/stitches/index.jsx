@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Popover from '@radix-ui/react-popover';
-import { styled, keyframes } from '@stitches/react';
+import { styled, keyframes } from '@modulz/design-system';
 import { violet, mauve, blackA } from '@radix-ui/colors';
 
 const PopoverDemo = () => (

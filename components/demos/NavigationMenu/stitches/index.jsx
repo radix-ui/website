@@ -1,6 +1,6 @@
 import React from 'react';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
-import { styled, keyframes } from '@stitches/react';
+import { styled, keyframes } from '@modulz/design-system';
 import { CaretDownIcon } from '@radix-ui/react-icons';
 import { violet, mauve, indigo, purple, blackA } from '@radix-ui/colors';
 

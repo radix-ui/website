@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Toggle from '@radix-ui/react-toggle';
-import { styled } from '@stitches/react';
+import { styled } from '@modulz/design-system';
 import { violet, mauve, blackA } from '@radix-ui/colors';
 import { FontItalicIcon } from '@radix-ui/react-icons';
 

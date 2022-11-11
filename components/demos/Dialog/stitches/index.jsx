@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
-import { styled, keyframes } from '@stitches/react';
+import { styled, keyframes } from '@modulz/design-system';
 import { violet, blackA, mauve, green } from '@radix-ui/colors';
 import { Cross2Icon } from '@radix-ui/react-icons';
 
