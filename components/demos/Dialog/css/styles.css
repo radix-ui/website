@@ -146,7 +146,7 @@ input {
 @keyframes contentShow {
   from {
     opacity: 0;
-    opacity: translate(-50%, -48%) scale(0.96);
+    transform: translate(-50%, -48%) scale(0.96);
   }
   to {
     opacity: 1;
