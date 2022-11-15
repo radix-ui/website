@@ -372,32 +372,31 @@ If you want to hide the description, wrap it inside our [Visually Hidden](../uti
 
 Use the controlled props to programmatically close the Dialog after an async operation has completed.
 
-```jsx
+```jsx line=4,7,10,15,17
 import React from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 
-const mockPromise = async () =>
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
 export default () => {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <Dialog.Root open={open} onOpenChange={setOpen}>
-      <Dialog.Trigger />
+    <Dialog.Root __open__={open} __onOpenChange__={setOpen}>
+      <Dialog.Trigger>Open</Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay>
-          <Dialog.Content>
-            <form
-              onSubmit={async () => {
-                mockPromise().then(() => setOpen(false));
-              }}
-            >
-              {/** some inputs */}
-              <button type="submit">Submit</button>
-            </form>
-          </Dialog.Content>
-        </Dialog.Overlay>
+        <Dialog.Overlay />
+        <Dialog.Content>
+          <form
+            onSubmit={(event) => {
+              wait().then(() => setOpen(false));
+              event.preventDefault();
+            }}
+          >
+            {/** some inputs */}
+            <button type="submit">Submit</button>
+          </form>
+        </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
   );

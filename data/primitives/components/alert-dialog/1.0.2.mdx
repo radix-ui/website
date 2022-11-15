@@ -341,32 +341,31 @@ An accessible description to be announced when the dialog is opened. Alternative
 
 Use the controlled props to programmatically close the Alert Dialog after an async operation has completed.
 
-```jsx
+```jsx line=4,7,10,15,17
 import React from 'react';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 
-const mockPromise = async () =>
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
 export default () => {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <AlertDialog.Root open={open} onOpenChange={setOpen}>
-      <AlertDialog.Trigger />
+    <AlertDialog.Root __open__={open} __onOpenChange__={setOpen}>
+      <AlertDialog.Trigger>Open</AlertDialog.Trigger>
       <AlertDialog.Portal>
-        <AlertDialog.Overlay>
-          <AlertDialog.Content>
-            <form
-              onSubmit={async () => {
-                mockPromise().then(() => setOpen(false));
-              }}
-            >
-              {/** some inputs */}
-              <AlertDialog.Action type="submit">Submit</AlertDialog.Action>
-            </form>
-          </AlertDialog.Content>
-        </AlertDialog.Overlay>
+        <AlertDialog.Overlay />
+        <AlertDialog.Content>
+          <form
+            onSubmit={(event) => {
+              wait().then(() => setOpen(false));
+              event.preventDefault();
+            }}
+          >
+            {/** some inputs */}
+            <button type="submit">Submit</button>
+          </form>
+        </AlertDialog.Content>
       </AlertDialog.Portal>
     </AlertDialog.Root>
   );
