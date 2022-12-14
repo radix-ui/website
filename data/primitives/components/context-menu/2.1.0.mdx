@@ -145,6 +145,19 @@ The area that opens the context menu. Wrap it around the target you want the con
       description:
         'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
     },
+    {
+      name: 'disabled',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description: (
+        <span>
+          When <Code>true</Code>, the context menu won't open when
+          right-clicking. Note that this will also restore the native context
+          menu.
+        </span>
+      ),
+    },
   ]}
 />
 
