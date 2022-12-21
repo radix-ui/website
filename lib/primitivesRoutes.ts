@@ -27,7 +27,7 @@ export const primitivesRoutes = [
       { title: 'Dropdown Menu', slug: 'docs/primitives/components/dropdown-menu' },
       { title: 'Hover Card', slug: 'docs/primitives/components/hover-card' },
       { title: 'Label', slug: 'docs/primitives/components/label' },
-      { title: 'Menubar', slug: 'docs/primitives/components/menubar', draft: true },
+      { title: 'Menubar', slug: 'docs/primitives/components/menubar' },
       { title: 'Navigation Menu', slug: 'docs/primitives/components/navigation-menu' },
       { title: 'Popover', slug: 'docs/primitives/components/popover' },
       { title: 'Progress', slug: 'docs/primitives/components/progress' },

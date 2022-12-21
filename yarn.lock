@@ -1044,6 +1044,48 @@
     aria-hidden "^1.1.1"
     react-remove-scroll "2.5.5"
 
+"@radix-ui/react-menu@2.0.2-rc.3":
+  version "2.0.2-rc.3"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-menu/-/react-menu-2.0.2-rc.3.tgz#9a9a5ba3cbd7154ba40097259d1892e2c261485c"
+  integrity sha512-nmKsbpTczPQvehYcTjqroGB71lXlnjOQl9d7XZp0dL5fCLc3KD3ap/iLCcFuc+iOS5KPQUElF2dBI0eHM6N6ng==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/primitive" "1.0.0"
+    "@radix-ui/react-collection" "1.0.1"
+    "@radix-ui/react-compose-refs" "1.0.0"
+    "@radix-ui/react-context" "1.0.0"
+    "@radix-ui/react-direction" "1.0.0"
+    "@radix-ui/react-dismissable-layer" "1.0.2"
+    "@radix-ui/react-focus-guards" "1.0.0"
+    "@radix-ui/react-focus-scope" "1.0.1"
+    "@radix-ui/react-id" "1.0.0"
+    "@radix-ui/react-popper" "1.1.0-rc.2"
+    "@radix-ui/react-portal" "1.0.1"
+    "@radix-ui/react-presence" "1.0.0"
+    "@radix-ui/react-primitive" "1.0.1"
+    "@radix-ui/react-roving-focus" "1.0.2-rc.1"
+    "@radix-ui/react-slot" "1.0.1"
+    "@radix-ui/react-use-callback-ref" "1.0.0"
+    aria-hidden "^1.1.1"
+    react-remove-scroll "2.5.5"
+
+"@radix-ui/react-menubar@^1.0.0-rc.1":
+  version "1.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-menubar/-/react-menubar-1.0.0-rc.1.tgz#90fb4cdf37682e6e05122a2547648a2cb4f48c70"
+  integrity sha512-Q7XMzok1vZG3dUP1hbga42Eb/+f9Yv4Hr6Goit8z+YgATDH+PNx9UW5s7mQJJfvvLogYX9FZD1XKpc5bh7mtEw==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/primitive" "1.0.0"
+    "@radix-ui/react-collection" "1.0.1"
+    "@radix-ui/react-compose-refs" "1.0.0"
+    "@radix-ui/react-context" "1.0.0"
+    "@radix-ui/react-direction" "1.0.0"
+    "@radix-ui/react-id" "1.0.0"
+    "@radix-ui/react-menu" "2.0.2-rc.3"
+    "@radix-ui/react-primitive" "1.0.1"
+    "@radix-ui/react-roving-focus" "1.0.2-rc.1"
+    "@radix-ui/react-use-controllable-state" "1.0.0"
+
 "@radix-ui/react-navigation-menu@1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-navigation-menu/-/react-navigation-menu-1.1.1.tgz#84f24d90e6448a0c83d3431c6eefbea73dc7522e"
@@ -1136,6 +1178,23 @@
     "@radix-ui/react-compose-refs" "1.0.0"
     "@radix-ui/react-context" "1.0.0"
     "@radix-ui/react-primitive" "1.0.1"
+    "@radix-ui/react-use-layout-effect" "1.0.0"
+    "@radix-ui/react-use-rect" "1.0.0"
+    "@radix-ui/react-use-size" "1.0.0"
+    "@radix-ui/rect" "1.0.0"
+
+"@radix-ui/react-popper@1.1.0-rc.2":
+  version "1.1.0-rc.2"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-popper/-/react-popper-1.1.0-rc.2.tgz#07a4f2fe207e5861c2222fad3f5eabaef4df0f8c"
+  integrity sha512-xbCBO6ZG7ItkZgftxzc9DvGjHcREO/rkPQdCtAGrW9+nRyPM1LbxL64mR/UVzOGtDk6OF6Cel+OnZl/TDT0iOg==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@floating-ui/react-dom" "0.7.2"
+    "@radix-ui/react-arrow" "1.0.1"
+    "@radix-ui/react-compose-refs" "1.0.0"
+    "@radix-ui/react-context" "1.0.0"
+    "@radix-ui/react-primitive" "1.0.1"
+    "@radix-ui/react-use-callback-ref" "1.0.0"
     "@radix-ui/react-use-layout-effect" "1.0.0"
     "@radix-ui/react-use-rect" "1.0.0"
     "@radix-ui/react-use-size" "1.0.0"
@@ -1255,6 +1314,22 @@
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-roving-focus/-/react-roving-focus-1.0.1.tgz#475621f63aee43faa183a5270f35d49e530de3d7"
   integrity sha512-TB76u5TIxKpqMpUAuYH2VqMhHYKa+4Vs1NHygo/llLvlffN6mLVsFhz0AnSFlSBAvTBYVHYAkHAyEt7x1gPJOA==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/primitive" "1.0.0"
+    "@radix-ui/react-collection" "1.0.1"
+    "@radix-ui/react-compose-refs" "1.0.0"
+    "@radix-ui/react-context" "1.0.0"
+    "@radix-ui/react-direction" "1.0.0"
+    "@radix-ui/react-id" "1.0.0"
+    "@radix-ui/react-primitive" "1.0.1"
+    "@radix-ui/react-use-callback-ref" "1.0.0"
+    "@radix-ui/react-use-controllable-state" "1.0.0"
+
+"@radix-ui/react-roving-focus@1.0.2-rc.1":
+  version "1.0.2-rc.1"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-roving-focus/-/react-roving-focus-1.0.2-rc.1.tgz#7d81bbea567b1a0735d1876e069bc6ffd4bbe09e"
+  integrity sha512-J8xcvXzTCEsb/k3J1bgVHh2ZWLP9z8ZHOjDrCGbPIApJLY8CqDv+ablQvrkStOmE3mC9hQvV8HO00o+68Ib53Q==
   dependencies:
     "@babel/runtime" "^7.13.10"
     "@radix-ui/primitive" "1.0.0"
