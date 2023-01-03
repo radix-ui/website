@@ -307,37 +307,44 @@ svg {
     [`@radix-ui/react-${componentName}`]: 'latest',
   };
 
+  const devDependencies = {};
+
   if (cssLib === 'css') {
     dependencies['classnames'] = 'latest';
+    devDependencies['react-scripts'] = 'latest';
   }
 
   if (cssLib === 'stitches') {
     dependencies['@stitches/react'] = 'latest';
+    devDependencies['react-scripts'] = 'latest';
   }
 
-  const files = {
-    'package.json': {
-      content: {
-        dependencies,
-        devDependencies: {
-          'react-scripts': 'latest',
-        },
-      } as any,
-      isBinary: false,
-    },
-    'App.js': {
-      content: sources['index.jsx'],
-      isBinary: false,
-    },
-    'index.js': {
-      content: `import { createRoot } from 'react-dom/client';
+  if (cssLib === 'tailwind') {
+    dependencies['classnames'] = 'latest';
+    devDependencies['vite'] = 'latest';
+    devDependencies['@vitejs/plugin-react'] = 'latest';
+    devDependencies['tailwindcss'] = 'latest';
+    devDependencies['postcss'] = 'latest';
+    devDependencies['autoprefixer'] = 'latest';
+  }
+
+  const appFileOptions = { content: sources['index.jsx'], isBinary: false };
+  const indexContent = `import { createRoot } from 'react-dom/client';
 import App from './App';
 import './global.css';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-root.render(<App />);`,
+root.render(<App />);`;
+  const indexFileOptions = { content: indexContent, isBinary: false };
+
+  const files = {
+    'package.json': {
+      content: {
+        dependencies,
+        devDependencies,
+      } as any,
       isBinary: false,
     },
     'global.css': {
@@ -347,11 +354,82 @@ root.render(<App />);`,
   };
 
   if (cssLib === 'css') {
+    files['App.js'] = appFileOptions;
+    files['index.js'] = indexFileOptions;
     files['styles.css'] = {
       content: sources['styles.css'],
       isBinary: false,
     };
   }
 
-  return getParameters({ files });
+  if (cssLib === 'stitches') {
+    files['App.js'] = appFileOptions;
+    files['index.js'] = indexFileOptions;
+  }
+
+  if (cssLib === 'tailwind') {
+    files['App.jsx'] = appFileOptions;
+    files['index.jsx'] = indexFileOptions;
+    files['tailwind.config.js'] = {
+      content: sources['tailwind.config.js'],
+      isBinary: false,
+    };
+    files['postcss.config.js'] = {
+      content: `module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  }
+}`,
+      isBinary: false,
+    };
+    files['package.json']['content']['scripts'] = {
+      start: 'vite',
+    };
+    files['global.css'] = {
+      content: `@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: system-ui;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(330deg, hsl(272, 53%, 50%) 0%, hsl(226, 68%, 56%) 100%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 120px;
+}`,
+      isBinary: false,
+    };
+    files['vite.config.js'] = {
+      content: `import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+})`,
+      isBinary: false,
+    };
+    files['index.html'] = {
+      content: `<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vite App</title>
+      </head>
+      <body>
+        <div id="root"></div>
+        <script type="module" src="/index.jsx"></script>
+      </body>
+    </html>`,
+      isBinary: false,
+    };
+  }
+
+  const template = cssLib === 'tailwind' ? 'node' : 'create-react-app';
+  return getParameters({ files, template });
 };
