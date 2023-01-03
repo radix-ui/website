@@ -15,7 +15,6 @@ const LabelRoot = styled(Label.Root, {
   fontWeight: 500,
   lineHeight: '35px',
   color: 'white',
-  userSelect: 'none',
 });
 
 const Input = styled('input', {
