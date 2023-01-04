@@ -5,7 +5,7 @@ import { ChevronDownIcon } from '@radix-ui/react-icons';
 
 const AccordionDemo = () => (
   <Accordion.Root
-    className="rounded-md w-[300px] bg-mauve6 shadow-[0_2px_10px] shadow-black/5"
+    className="bg-mauve6 w-[300px] rounded-md shadow-[0_2px_10px] shadow-black/5"
     type="single"
     defaultValue="item-1"
     collapsible
@@ -34,7 +34,7 @@ const AccordionDemo = () => (
 const AccordionItem = React.forwardRef(({ children, className, ...props }, forwardedRef) => (
   <Accordion.Item
     className={classNames(
-      'overflow-hidden mt-px first:mt-0 first:rounded-t last:rounded-b focus-within:relative focus-within:z-10 focus-within:shadow-[0_0_0_2px] focus-within:shadow-mauve12',
+      'focus-within:shadow-mauve12 mt-px overflow-hidden first:mt-0 first:rounded-t last:rounded-b focus-within:relative focus-within:z-10 focus-within:shadow-[0_0_0_2px]',
       className
     )}
     {...props}
@@ -48,7 +48,7 @@ const AccordionTrigger = React.forwardRef(({ children, className, ...props }, fo
   <Accordion.Header className="flex">
     <Accordion.Trigger
       className={classNames(
-        'bg-transparent px-5 h-[45px] flex-1 flex items-center justify-between text-[15px] leading-none text-violet11 bg-white shadow-[0_1px_0] shadow-mauve6 hover:bg-mauve2 group',
+        'text-violet11 shadow-mauve6 hover:bg-mauve2 group flex h-[45px] flex-1 cursor-default items-center justify-between bg-transparent bg-white px-5 text-[15px] leading-none shadow-[0_1px_0]',
         className
       )}
       {...props}
@@ -56,7 +56,7 @@ const AccordionTrigger = React.forwardRef(({ children, className, ...props }, fo
     >
       {children}
       <ChevronDownIcon
-        className="text-violet10 transition-transform duration-300 ease-[cubic-bezier(0.87, 0, 0.13, 1)] group-data-[state=open]:rotate-180"
+        className="text-violet10 ease-[cubic-bezier(0.87, 0, 0.13, 1)] transition-transform duration-300 group-data-[state=open]:rotate-180"
         aria-hidden
       />
     </Accordion.Trigger>
@@ -66,7 +66,7 @@ const AccordionTrigger = React.forwardRef(({ children, className, ...props }, fo
 const AccordionContent = React.forwardRef(({ children, className, ...props }, forwardedRef) => (
   <Accordion.Content
     className={classNames(
-      'overflow-hidden text-[15px] text-mauve11 bg-mauve2 data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp',
+      'text-mauve11 bg-mauve2 data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp overflow-hidden text-[15px]',
       className
     )}
     {...props}

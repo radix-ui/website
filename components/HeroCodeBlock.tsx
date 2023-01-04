@@ -24,6 +24,7 @@ export const HeroCodeBlock = ({
   const [preferredCssLib, setPreferredCssLib] = useCssLibPreference();
   const usedCssLib = cssLibProp ?? preferredCssLib;
   const [isCodeExpanded, setIsCodeExpanded] = React.useState(false);
+  const module = usedCssLib === 'tailwind' ? 'App.jsx' : 'App.js';
 
   const snippets = React.Children.toArray(children).map((pre) => {
     if (pre && typeof pre === 'object' && 'props' in pre) {
@@ -79,7 +80,7 @@ export const HeroCodeBlock = ({
             method="POST"
             target="_blank"
           >
-            <input type="hidden" name="query" value="module=App.js" />
+            <input type="hidden" name="query" value={`module=${module}`} />
             <input
               type="hidden"
               name="parameters"
