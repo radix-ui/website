@@ -67,8 +67,9 @@ export function MainHeroPopover() {
               // Restore default behaviour, but prevent the focus scroll
               // which happens when content wrapper has `position: absolute`
               setTimeout(() => {
-                const elementToFocus = contentRef.current.querySelector('input');
-                elementToFocus?.focus({ preventScroll: true });
+                const inputToFocus = contentRef.current.querySelector('input');
+                inputToFocus?.focus({ preventScroll: true });
+                inputToFocus?.select();
               });
             } else {
               initialAutoFocusPrevented.current = true;
