@@ -1,9 +1,18 @@
 import React from 'react';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
-import { Flex, Text, styled, Grid, TextField, Box } from '@modulz/design-system';
+import { Text, styled, Grid, TextField } from '@modulz/design-system';
 import { DemoButton } from '@components/marketing/DemoButton';
 import { DemoIconButton } from '@components/marketing/DemoIconButton';
 import { Cross2Icon } from '@radix-ui/react-icons';
+
+const PopoverContentWrapper = styled('div', {
+  // The default `position: fixed` is wobbly when scrolling with Mac touchpads,
+  // which is OK when using components for real, but looks awkward in the demos.
+  // `position: absolute` stays put as you scroll.
+  '& [data-radix-popper-content-wrapper]': {
+    position: 'absolute !important',
+  },
+});
 
 const PopoverContent = styled(PopoverPrimitive.Content, {
   position: 'relative',
@@ -36,62 +45,64 @@ export function MainHeroPopover() {
         <DemoButton css={{ mb: 120 }}>Dimensions</DemoButton>
       </PopoverPrimitive.Trigger>
 
-      <PopoverContent
-        ref={contentRef}
-        side="bottom"
-        sideOffset={5}
-        avoidCollisions={false}
-        onInteractOutside={(event) => event.preventDefault()}
-        onEscapeKeyDown={(event) => {
-          event.preventDefault();
-          if (event.target instanceof HTMLElement && contentRef.current?.contains(event.target)) {
-            setOpen(false);
-          }
-        }}
-        onOpenAutoFocus={(event) => {
-          // We prevent the initial auto focus because it's a demo rather than a real UI,
-          // so that the parent page focus is not stolen.
-          if (initialAutoFocusPrevented.current === false) {
+      <PopoverContentWrapper>
+        <PopoverContent
+          ref={contentRef}
+          side="bottom"
+          sideOffset={5}
+          avoidCollisions={false}
+          onInteractOutside={(event) => event.preventDefault()}
+          onEscapeKeyDown={(event) => {
             event.preventDefault();
-            initialAutoFocusPrevented.current = true;
-          } else {
-            // There's a brutal scroll shift bug with iOS Safari that we need to investigate.
-            // Cancelling input focus on open until we figure it out. Not related to the small input font size.
-            if (
-              /^((?!chrome|android).)*safari/i.test(navigator.userAgent) &&
-              navigator.maxTouchPoints > 0
-            ) {
-              event.preventDefault();
+            if (event.target instanceof HTMLElement && contentRef.current?.contains(event.target)) {
+              setOpen(false);
             }
-          }
-        }}
-      >
-        <PopoverArrow />
+          }}
+          onOpenAutoFocus={(event) => {
+            // We prevent the initial auto focus because it's a demo rather than a real UI,
+            // so that the parent page focus is not stolen.
+            event.preventDefault();
 
-        <Text as="h2" size="3" css={{ fontWeight: '500', mb: '$2', lineHeight: 1.2 }}>
-          Dimensions
-        </Text>
-
-        <Grid
-          align="center"
-          css={{ gridTemplateColumns: 'auto 100px', columnGap: '$5', rowGap: '$1' }}
+            if (initialAutoFocusPrevented.current) {
+              // Restore default behaviour, but prevent the focus scroll
+              // which happens when content wrapper has `position: absolute`
+              setTimeout(() => {
+                const inputToFocus = contentRef.current.querySelector('input');
+                inputToFocus?.focus({ preventScroll: true });
+                inputToFocus?.select();
+              });
+            } else {
+              initialAutoFocusPrevented.current = true;
+            }
+          }}
         >
-          <Text size="1">Width</Text>
-          <TextField defaultValue="100%" />
-          <Text size="1">Height</Text>
-          <TextField defaultValue="20vh" />
-          <Text size="1">Margin</Text>
-          <TextField defaultValue="0" />
-          <Text size="1">Padding</Text>
-          <TextField defaultValue="10%" />
-        </Grid>
+          <PopoverArrow />
 
-        <PopoverPrimitive.Close asChild>
-          <DemoIconButton>
-            <Cross2Icon />
-          </DemoIconButton>
-        </PopoverPrimitive.Close>
-      </PopoverContent>
+          <Text as="h2" size="3" css={{ fontWeight: '500', mb: '$2', lineHeight: 1.2 }}>
+            Dimensions
+          </Text>
+
+          <Grid
+            align="center"
+            css={{ gridTemplateColumns: 'auto 100px', columnGap: '$5', rowGap: '$1' }}
+          >
+            <Text size="1">Width</Text>
+            <TextField defaultValue="100%" />
+            <Text size="1">Height</Text>
+            <TextField defaultValue="20vh" />
+            <Text size="1">Margin</Text>
+            <TextField defaultValue="0" />
+            <Text size="1">Padding</Text>
+            <TextField defaultValue="10%" />
+          </Grid>
+
+          <PopoverPrimitive.Close asChild>
+            <DemoIconButton>
+              <Cross2Icon />
+            </DemoIconButton>
+          </PopoverPrimitive.Close>
+        </PopoverContent>
+      </PopoverContentWrapper>
     </PopoverPrimitive.Root>
   );
 }
