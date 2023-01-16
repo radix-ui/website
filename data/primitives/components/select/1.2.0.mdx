@@ -329,7 +329,11 @@ The component that pops out when the select is open.
       default: '"item-aligned"',
       description: (
         <span>
-          The positioning mode to use, <Code>item-aligned</Code> is the default and behaves similarly to a native MacOS menu by positioning content relative to the active item. <Code>popper</Code> positions content in the same way as our other primitives, for example <Code>Popover</Code> or <Code>DropdownMenu</Code>.
+          The positioning mode to use, <Code>item-aligned</Code> is the default
+          and behaves similarly to a native MacOS menu by positioning content
+          relative to the active item. <Code>popper</Code> positions content in
+          the same way as our other primitives, for example <Code>Popover</Code>{' '}
+          or <Code>DropdownMenu</Code>.
         </span>
       ),
     },
@@ -342,7 +346,8 @@ The component that pops out when the select is open.
         <span>
           The preferred side of the anchor to render against when open. Will be
           reversed when collisions occur and <Code>avoidCollisions</Code> is
-          enabled. Ignored when <Code>position</Code> isn't <Code>popper</Code>.
+          enabled. Only available when <Code>position</Code> is set to{' '}
+          <Code>popper</Code>.
         </span>
       ),
     },
@@ -352,8 +357,8 @@ The component that pops out when the select is open.
       default: '0',
       description: (
         <span>
-          The distance in pixels from the anchor. Ignored when{' '}
-          <Code>position</Code> isn't <Code>popper</Code>.
+          The distance in pixels from the anchor. Only available when{' '}
+          <Code>position</Code> is set to <Code>popper</Code>.
         </span>
       ),
     },
@@ -365,7 +370,8 @@ The component that pops out when the select is open.
       description: (
         <span>
           The preferred alignment against the anchor. May change when collisions
-          occur. Ignored when <Code>position</Code> isn't <Code>popper</Code>.
+          occur. Only available when <Code>position</Code> is set to{' '}
+          <Code>popper</Code>.
         </span>
       ),
     },
@@ -376,8 +382,8 @@ The component that pops out when the select is open.
       description: (
         <span>
           An offset in pixels from the <Code>"start"</Code> or{' '}
-          <Code>"end"</Code> alignment options. Ignored when{' '}
-          <Code>position</Code> isn't <Code>popper</Code>.
+          <Code>"end"</Code> alignment options. Only available when{' '}
+          <Code>position</Code> is set to <Code>popper</Code>.
         </span>
       ),
     },
@@ -389,7 +395,9 @@ The component that pops out when the select is open.
         <span>
           When <Code>true</Code>, overrides the <Code>side</Code> and
           <Code>align</Code> preferences to prevent collisions with boundary edges.
-          Ignored when <Code>position</Code> isn't <Code>popper</Code>.
+          Only available when <Code>position</Code> is set to <Code>
+            popper
+          </Code>.
         </span>
       ),
     },
@@ -402,7 +410,7 @@ The component that pops out when the select is open.
         <span>
           The element used as the collision boundary. By default this is the
           viewport, though you can provide additional element(s) to be included
-          in this check. Ignored when <Code>position</Code> isn't{' '}
+          in this check. Only available when <Code>position</Code> is set to{' '}
           <Code>popper</Code>.
         </span>
       ),
@@ -417,7 +425,9 @@ The component that pops out when the select is open.
           The distance in pixels from the boundary edges where collision
           detection should occur. Accepts a number (same for all sides), or a
           partial padding object, for example: <Code>{`{ top: 20, left: 20 }`}</Code>
-          . Ignored when <Code>position</Code> isn't <Code>popper</Code>.
+          . Only available when <Code>position</Code> is set to <Code>
+            popper
+          </Code>.
         </span>
       ),
     },
@@ -429,8 +439,8 @@ The component that pops out when the select is open.
         <span>
           The padding between the arrow and the edges of the content. If your
           content has <Code>border-radius</Code>, this will prevent it from
-          overflowing the corners. Ignored when <Code>position</Code> isn't{' '}
-          <Code>popper</Code>.
+          overflowing the corners. Only available when <Code>position</Code> is
+          set to <Code>popper</Code>.
         </span>
       ),
     },
@@ -444,8 +454,8 @@ The component that pops out when the select is open.
           The sticky behavior on the align axis. <Code>"partial"</Code> will
           keep the content in the boundary as long as the trigger is at least
           partially in the boundary whilst <Code>"always"</Code> will keep the
-          content in the boundary regardless. Ignored when <Code>position</Code>{' '}
-          isn't <Code>popper</Code>.
+          content in the boundary regardless. Only available when{' '}
+          <Code>position</Code> is set to <Code>popper</Code>.
         </span>
       ),
     },
@@ -456,7 +466,8 @@ The component that pops out when the select is open.
       description: (
         <span>
           Whether to hide the content when the trigger becomes fully occluded.
-          Ignored when <Code>position</Code> isn't <Code>popper</Code>.
+          Only available when <Code>position</Code> is set to{' '}
+          <Code>popper</Code>.
         </span>
       ),
     },
@@ -734,7 +745,7 @@ Used to visually separate items in the select.
 
 ### Arrow
 
-An optional arrow element to render alongside the content. This can be used to help visually link the trigger with the `Select.Content`. Must be rendered inside `Select.Content`. Ignored if `position` isn't `popper`.
+An optional arrow element to render alongside the content. This can be used to help visually link the trigger with the `Select.Content`. Must be rendered inside `Select.Content`. Only available when `position` is set to `popper`.
 
 <PropsTable
   data={[
@@ -765,7 +776,7 @@ An optional arrow element to render alongside the content. This can be used to h
 
 ### Change the positioning mode
 
-By default, `Select` will behave similarly to a native MacOS menu by positioning `Select.Content` relative to the active item. If you would prefer an alternative positioning approach similar to `Popover` or `DropdownMenu` then you can set `position` to `popper` and make use of additional alignment options such as `side`, `sideOffset` and more. 
+By default, `Select` will behave similarly to a native MacOS menu by positioning `Select.Content` relative to the active item. If you would prefer an alternative positioning approach similar to `Popover` or `DropdownMenu` then you can set `position` to `popper` and make use of additional alignment options such as `side`, `sideOffset` and more.
 
 ```jsx line=8
 // index.jsx
