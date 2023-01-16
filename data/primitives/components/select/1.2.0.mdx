@@ -329,12 +329,12 @@ The component that pops out when the select is open.
       default: '"item-aligned"',
       description: (
         <span>
-          The positioning mode to use. <Code>item-aligned</Code> will use some
-          heuristics based on the items to position the content over the trigger
-          trying to align it with the selected option at best (similar to what
-          MacOS does). <Code>popper</Code> uses the same engine as all other
-          components like <Code>Popover</Code> or <Code>DropdownMenu</Code> for
-          example.
+          The positioning mode to use. By default <Code>item-aligned</Code> will
+          use some heuristics based on the items to position the content over
+          the trigger trying to align it with the selected option at best
+          (similar to what MacOS does). <Code>popper</Code> uses the same engine
+          as all other components like <Code>Popover</Code> or{' '}
+          <Code>DropdownMenu</Code> for example.
         </span>
       ),
     },
@@ -767,6 +767,63 @@ An optional arrow element to render alongside the content. This can be used to h
 />
 
 ## Examples
+
+### Change the positioning mode
+
+By default (`position="item-aligned"`), will use some heuristics based on the items to position the content over the trigger trying to align it with the selected option at best (similar to what MacOS does). If you want the content to be positioned like `Popover` or `DropdownMenu` instead, use `position="popper"` on `Select.Content`.
+
+In doing so, you can use any of the usual props to control alignment like `side`, `sideOffset`, etc.
+
+```jsx line=8
+// index.jsx
+import * as Select from '@radix-ui/react-select';
+
+export default () => (
+  <Select.Root>
+    <Select.Trigger>…</Select.Trigger>
+    <Select.Portal>
+      <Select.Content __position__="popper" __sideOffset__={5}>
+        …
+      </Select.Content>
+    </Select.Portal>
+  </Select.Root>
+);
+```
+
+### Constrain the content size
+
+When using `position="popper"` on `Select.Content`, you may want to constrain the width of the content so it matches the trigger width. You may also want to constrain its height so it doesn't exceed the viewport.
+
+We expose a few CSS custom properties like `--radix-select-trigger-width` and `--radix-select-content-available-height`. Use them to constrain the content dimensions.
+
+```jsx line=9
+// index.jsx
+import * as Select from '@radix-ui/react-select';
+import './styles.css';
+
+export default () => (
+  <Select.Root>
+    <Select.Trigger>…</Select.Trigger>
+    <Select.Portal>
+      <Select.Content
+        __className__="SelectContent"
+        position="popper"
+        sideOffset={5}
+      >
+        …
+      </Select.Content>
+    </Select.Portal>
+  </Select.Root>
+);
+```
+
+```css
+/* styles.css */
+.SelectContent {
+  width: var(__--radix-select-trigger-width__);
+  max-height: var(__--radix-select-content-available-height__);
+}
+```
 
 ### With disabled items
 
