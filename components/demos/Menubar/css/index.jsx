@@ -97,9 +97,9 @@ const MenubarDemo = () => {
           >
             {CHECK_ITEMS.map((item) => (
               <Menubar.CheckboxItem
+                className="MenubarCheckboxItem inset"
                 key={item}
                 checked={checkedSelection.includes(item)}
-                variant="inset"
                 onCheckedChange={() =>
                   setCheckedSelection((current) =>
                     current.includes(item)
@@ -115,20 +115,16 @@ const MenubarDemo = () => {
               </Menubar.CheckboxItem>
             ))}
             <Menubar.Separator className="MenubarSeparator" />
-            <Menubar.Item className="MenubarItem inset" variant="inset">
+            <Menubar.Item className="MenubarItem inset">
               Reload <div className="RightSlot">⌘ R</div>
             </Menubar.Item>
-            <Menubar.Item className="MenubarItem inset" variant="inset" disabled>
+            <Menubar.Item className="MenubarItem inset" disabled>
               Force Reload <div className="RightSlot">⇧ ⌘ R</div>
             </Menubar.Item>
             <Menubar.Separator className="MenubarSeparator" />
-            <Menubar.Item className="MenubarItem inset" variant="inset">
-              Toggle Fullscreen
-            </Menubar.Item>
+            <Menubar.Item className="MenubarItem inset">Toggle Fullscreen</Menubar.Item>
             <Menubar.Separator className="MenubarSeparator" />
-            <Menubar.Item className="MenubarItem inset" variant="inset">
-              Hide Sidebar
-            </Menubar.Item>
+            <Menubar.Item className="MenubarItem inset">Hide Sidebar</Menubar.Item>
           </Menubar.Content>
         </Menubar.Portal>
       </Menubar.Menu>
@@ -144,7 +140,7 @@ const MenubarDemo = () => {
           >
             <Menubar.RadioGroup value={radioSelection} onValueChange={setRadioSelection}>
               {RADIO_ITEMS.map((item) => (
-                <Menubar.RadioItem key={item} value={item} variant="inset">
+                <Menubar.RadioItem className="MenubarRadioItem inset" key={item} value={item}>
                   <Menubar.ItemIndicator className="MenubarItemIndicator">
                     <DotFilledIcon />
                   </Menubar.ItemIndicator>
@@ -152,13 +148,9 @@ const MenubarDemo = () => {
                 </Menubar.RadioItem>
               ))}
               <Menubar.Separator className="MenubarSeparator" />
-              <Menubar.Item className="MenubarItem inset" variant="inset">
-                Edit…
-              </Menubar.Item>
+              <Menubar.Item className="MenubarItem inset">Edit…</Menubar.Item>
               <Menubar.Separator className="MenubarSeparator" />
-              <Menubar.Item className="MenubarItem inset" variant="inset">
-                Add Profile…
-              </Menubar.Item>
+              <Menubar.Item className="MenubarItem inset">Add Profile…</Menubar.Item>
             </Menubar.RadioGroup>
           </Menubar.Content>
         </Menubar.Portal>

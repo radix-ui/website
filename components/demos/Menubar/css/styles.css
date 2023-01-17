@@ -1,4 +1,5 @@
 @import '@radix-ui/colors/blackA.css';
+@import '@radix-ui/colors/mauve.css';
 @import '@radix-ui/colors/violet.css';
 
 /* reset */
@@ -63,8 +64,25 @@ button {
   user-select: none;
 }
 
-.MenubarItem.inset {
+.MenubarItem.inset,
+.MenubarSubTrigger.inset,
+.MenubarCheckboxItem.inset,
+.MenubarRadioItem.inset {
   padding-left: 20px;
+}
+
+.MenubarItem[data-state='open'],
+.MenubarSubTrigger[data-state='open'] {
+  background-color: var(--violet4);
+  color: var(--violet11);
+}
+
+.MenubarItem[data-highlighted],
+.MenubarSubTrigger[data-highlighted],
+.MenubarCheckboxItem[data-highlighted],
+.MenubarRadioItem[data-highlighted] {
+  background-image: linear-gradient(135deg, var(--violet9) 0%, var(--violet10) 100%);
+  color: var(--violet1);
 }
 
 .MenubarItem[data-disabled],
@@ -73,19 +91,6 @@ button {
 .MenubarRadioItem[data-disabled] {
   color: var(--mauve8);
   pointer-events: none;
-}
-
-.MenubarItem[data-highlighted],
-.MenubarSubTrigger[data-highlighted],
-.MenubarCheckboxItem[data-highlighted],
-.MenubarRadioItem[data-highlighted] {
-  background-image: linear-gradient(135deg, var(--violet9) 0%, var(--violet10) 100%);
-}
-
-.MenubarItem[data-state='open'],
-.MenubarSubTrigger[data-state='open'] {
-  background-color: var(--violet4);
-  color: var(--violet11);
 }
 
 .MenubarItemIndicator {
