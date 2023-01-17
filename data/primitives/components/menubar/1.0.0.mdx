@@ -72,12 +72,12 @@ export default () => (
             </Menubar.RadioItem>
           </Menubar.RadioGroup>
 
-          <Menubar.SubMenu>
+          <Menubar.Sub>
             <Menubar.SubTrigger />
             <Menubar.Portal>
               <Menubar.SubContent />
             </Menubar.Portal>
-          </Menubar.SubMenu>
+          </Menubar.Sub>
 
           <Menubar.Separator />
           <Menubar.Arrow />
@@ -861,7 +861,7 @@ Used to visually separate items in a menubar menu.
   ]}
 />
 
-### SubMenu
+### Sub
 
 Contains all the parts of a submenu.
 
@@ -902,7 +902,7 @@ Contains all the parts of a submenu.
 
 ### SubTrigger
 
-An item that opens a submenu. Must be rendered inside `Menubar.SubMenu`.
+An item that opens a submenu. Must be rendered inside `Menubar.Sub`.
 
 <PropsTable
   data={[
@@ -957,7 +957,7 @@ An item that opens a submenu. Must be rendered inside `Menubar.SubMenu`.
 
 ### SubContent
 
-The component that pops out when a submenu is open. Must be rendered inside `Menubar.SubMenu`.
+The component that pops out when a submenu is open. Must be rendered inside `Menubar.Sub`.
 
 <PropsTable
   data={[
@@ -1158,7 +1158,7 @@ The component that pops out when a submenu is open. Must be rendered inside `Men
 
 ### With submenus
 
-You can create submenus by using `Menubar.SubMenu` in combination with its parts.
+You can create submenus by using `Menubar.Sub` in combination with its parts.
 
 ```jsx line=9-18
 <Menubar.Root>
@@ -1169,7 +1169,7 @@ You can create submenus by using `Menubar.SubMenu` in combination with its parts
         <Menubar.Item>…</Menubar.Item>
         <Menubar.Item>…</Menubar.Item>
         <Menubar.Separator />
-        <Menubar.SubMenu>
+        <Menubar.Sub>
           <Menubar.SubTrigger>Sub menu →</Menubar.SubTrigger>
           <Menubar.Portal>
             <Menubar.SubContent>
@@ -1178,7 +1178,7 @@ You can create submenus by using `Menubar.SubMenu` in combination with its parts
               <Menubar.Arrow />
             </Menubar.SubContent>
           </Menubar.Portal>
-        </Menubar.SubMenu>
+        </Menubar.Sub>
         <Menubar.Separator />
         <Menubar.Item>…</Menubar.Item>
       </Menubar.Content>
