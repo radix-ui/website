@@ -26,7 +26,7 @@ const MenubarDemo = () => {
               New Incognito Window
             </Menubar.Item>
             <Menubar.Separator className="MenubarSeparator" />
-            <Menubar.SubMenu>
+            <Menubar.Sub>
               <Menubar.SubTrigger className="MenubarSubTrigger">
                 Share
                 <div className="RightSlot">
@@ -40,7 +40,7 @@ const MenubarDemo = () => {
                   <Menubar.Item className="MenubarItem">Notes</Menubar.Item>
                 </Menubar.SubContent>
               </Menubar.Portal>
-            </Menubar.SubMenu>
+            </Menubar.Sub>
             <Menubar.Separator className="MenubarSeparator" />
             <Menubar.Item className="MenubarItem">
               Print… <div className="RightSlot">⌘ P</div>
@@ -60,7 +60,7 @@ const MenubarDemo = () => {
               Redo <div className="RightSlot">⇧ ⌘ Z</div>
             </Menubar.Item>
             <Menubar.Separator className="MenubarSeparator" />
-            <Menubar.SubMenu>
+            <Menubar.Sub>
               <Menubar.SubTrigger className="MenubarSubTrigger">
                 Find
                 <div className="RightSlot">
@@ -77,7 +77,7 @@ const MenubarDemo = () => {
                   <Menubar.Item className="MenubarItem">Find Previous</Menubar.Item>
                 </Menubar.SubContent>
               </Menubar.Portal>
-            </Menubar.SubMenu>
+            </Menubar.Sub>
             <Menubar.Separator className="MenubarSeparator" />
             <Menubar.Item className="MenubarItem">Cut</Menubar.Item>
             <Menubar.Item className="MenubarItem">Copy</Menubar.Item>

@@ -25,7 +25,7 @@ const MenubarDemo = () => {
             </MenubarItem>
             <MenubarItem disabled> New Incognito Window</MenubarItem>
             <MenubarSeparator />
-            <Menubar.SubMenu>
+            <Menubar.Sub>
               <MenubarSubTrigger>
                 Share
                 <RightSlot>
@@ -39,7 +39,7 @@ const MenubarDemo = () => {
                   <MenubarItem>Notes</MenubarItem>
                 </MenubarSubContent>
               </Menubar.Portal>
-            </Menubar.SubMenu>
+            </Menubar.Sub>
             <MenubarSeparator />
             <MenubarItem>
               Print… <RightSlot>⌘ P</RightSlot>
@@ -59,7 +59,7 @@ const MenubarDemo = () => {
               Redo <RightSlot>⇧ ⌘ Z</RightSlot>
             </MenubarItem>
             <MenubarSeparator />
-            <Menubar.SubMenu>
+            <Menubar.Sub>
               <MenubarSubTrigger>
                 Find
                 <RightSlot>
@@ -76,7 +76,7 @@ const MenubarDemo = () => {
                   <MenubarItem>Find Previous</MenubarItem>
                 </MenubarSubContent>
               </Menubar.Portal>
-            </Menubar.SubMenu>
+            </Menubar.Sub>
             <MenubarSeparator />
             <MenubarItem>Cut</MenubarItem>
             <MenubarItem>Copy</MenubarItem>
