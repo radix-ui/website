@@ -19,7 +19,6 @@ export const primitivesRoutes = [
       { title: 'Alert Dialog', slug: 'docs/primitives/components/alert-dialog' },
       { title: 'Aspect Ratio', slug: 'docs/primitives/components/aspect-ratio' },
       { title: 'Avatar', slug: 'docs/primitives/components/avatar' },
-      { title: 'Carousel', slug: 'docs/primitives/components/carousel', draft: true },
       { title: 'Checkbox', slug: 'docs/primitives/components/checkbox' },
       { title: 'Collapsible', slug: 'docs/primitives/components/collapsible' },
       { title: 'Context Menu', slug: 'docs/primitives/components/context-menu' },
