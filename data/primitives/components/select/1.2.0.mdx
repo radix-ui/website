@@ -11,9 +11,16 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/listbox
   Displays a list of options for the user to pick from—triggered by a button.
 </Description>
 
+<HeroContainer>
+  <SelectDemo />
+</HeroContainer>
+
+<HeroCodeBlock folder="Select" />
+
 <Highlights
   features={[
     'Can be controlled or uncontrolled.',
+    'Offers 2 positioning modes.',
     'Supports items, labels, groups of items.',
     'Focus is fully managed.',
     'Full keyboard navigation.',
@@ -65,6 +72,7 @@ export default () => (
           <Select.Separator />
         </Select.Viewport>
         <Select.ScrollDownButton />
+        <Select.Arrow />
       </Select.Content>
     </Select.Portal>
   </Select.Root>
@@ -314,6 +322,155 @@ The component that pops out when the select is open.
         </span>
       ),
     },
+    {
+      name: 'position',
+      type: '"item-aligned" | "popper"',
+      typeSimple: 'enum',
+      default: '"item-aligned"',
+      description: (
+        <span>
+          The positioning mode to use, <Code>item-aligned</Code> is the default
+          and behaves similarly to a native MacOS menu by positioning content
+          relative to the active item. <Code>popper</Code> positions content in
+          the same way as our other primitives, for example <Code>Popover</Code>{' '}
+          or <Code>DropdownMenu</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'side',
+      type: '"top" | "right" | "bottom" | "left"',
+      typeSimple: 'enum',
+      default: '"bottom"',
+      description: (
+        <span>
+          The preferred side of the anchor to render against when open. Will be
+          reversed when collisions occur and <Code>avoidCollisions</Code> is
+          enabled. Only available when <Code>position</Code> is set to{' '}
+          <Code>popper</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'sideOffset',
+      type: 'number',
+      default: '0',
+      description: (
+        <span>
+          The distance in pixels from the anchor. Only available when{' '}
+          <Code>position</Code> is set to <Code>popper</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'align',
+      type: '"start" | "center" | "end"',
+      typeSimple: 'enum',
+      default: '"start"',
+      description: (
+        <span>
+          The preferred alignment against the anchor. May change when collisions
+          occur. Only available when <Code>position</Code> is set to{' '}
+          <Code>popper</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'alignOffset',
+      type: 'number',
+      default: '0',
+      description: (
+        <span>
+          An offset in pixels from the <Code>"start"</Code> or{' '}
+          <Code>"end"</Code> alignment options. Only available when{' '}
+          <Code>position</Code> is set to <Code>popper</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'avoidCollisions',
+      type: 'boolean',
+      default: 'true',
+      description: (
+        <span>
+          When <Code>true</Code>, overrides the <Code>side</Code> and
+          <Code>align</Code> preferences to prevent collisions with boundary edges.
+          Only available when <Code>position</Code> is set to <Code>
+            popper
+          </Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'collisionBoundary',
+      type: 'Element | null | Array<Element | null>',
+      typeSimple: 'Boundary',
+      default: '[]',
+      description: (
+        <span>
+          The element used as the collision boundary. By default this is the
+          viewport, though you can provide additional element(s) to be included
+          in this check. Only available when <Code>position</Code> is set to{' '}
+          <Code>popper</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'collisionPadding',
+      type: 'number | Partial<Record<Side, number>>',
+      typeSimple: 'number | Padding',
+      default: '10',
+      description: (
+        <span>
+          The distance in pixels from the boundary edges where collision
+          detection should occur. Accepts a number (same for all sides), or a
+          partial padding object, for example: <Code>{`{ top: 20, left: 20 }`}</Code>
+          . Only available when <Code>position</Code> is set to <Code>
+            popper
+          </Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'arrowPadding',
+      type: 'number',
+      default: '0',
+      description: (
+        <span>
+          The padding between the arrow and the edges of the content. If your
+          content has <Code>border-radius</Code>, this will prevent it from
+          overflowing the corners. Only available when <Code>position</Code> is
+          set to <Code>popper</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'sticky',
+      type: '"partial" | "always"',
+      typeSimple: 'enum',
+      default: '"partial"',
+      description: (
+        <span>
+          The sticky behavior on the align axis. <Code>"partial"</Code> will
+          keep the content in the boundary as long as the trigger is at least
+          partially in the boundary whilst <Code>"always"</Code> will keep the
+          content in the boundary regardless. Only available when{' '}
+          <Code>position</Code> is set to <Code>popper</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'hideWhenDetached',
+      type: 'boolean',
+      default: 'false',
+      description: (
+        <span>
+          Whether to hide the content when the trigger becomes fully occluded.
+          Only available when <Code>position</Code> is set to{' '}
+          <Code>popper</Code>.
+        </span>
+      ),
+    },
   ]}
 />
 
@@ -322,6 +479,64 @@ The component that pops out when the select is open.
     {
       attribute: '[data-state]',
       values: ['open', 'closed'],
+    },
+    {
+      attribute: '[data-side]',
+      values: ['left', 'right', 'bottom', 'top'],
+    },
+    {
+      attribute: '[data-align]',
+      values: ['start', 'end', 'center'],
+    },
+  ]}
+/>
+
+<CssVariablesTable
+  data={[
+    {
+      cssVariable: '--radix-select-content-transform-origin',
+      description: (
+        <>
+          The <Code>transform-origin</Code> computed from the content and arrow
+          positions/offsets. Only present when <Code>position="popper"</Code>.
+        </>
+      ),
+    },
+    {
+      cssVariable: '--radix-select-content-available-width',
+      description: (
+        <>
+          The remaining width between the trigger and the boundary edge. Only
+          present when <Code>position="popper"</Code>.
+        </>
+      ),
+    },
+    {
+      cssVariable: '--radix-select-content-available-height',
+      description: (
+        <>
+          The remaining height between the trigger and the boundary edge. Only
+          present when <Code>position="popper"</Code>.
+        </>
+      ),
+    },
+    {
+      cssVariable: '--radix-select-trigger-width',
+      description: (
+        <>
+          The width of the trigger. Only present when{' '}
+          <Code>position="popper"</Code>.
+        </>
+      ),
+    },
+    {
+      cssVariable: '--radix-select-trigger-height',
+      description: (
+        <>
+          The height of the trigger. Only present when{' '}
+          <Code>position="popper"</Code>.
+        </>
+      ),
     },
   ]}
 />
@@ -528,7 +743,91 @@ Used to visually separate items in the select.
   ]}
 />
 
+### Arrow
+
+An optional arrow element to render alongside the content. This can be used to help visually link the trigger with the `Select.Content`. Must be rendered inside `Select.Content`. Only available when `position` is set to `popper`.
+
+<PropsTable
+  data={[
+    {
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'width',
+      type: 'number',
+      default: 10,
+      description: <span>The width of the arrow in pixels.</span>,
+    },
+    {
+      name: 'height',
+      type: 'number',
+      default: 5,
+      description: <span>The height of the arrow in pixels.</span>,
+    },
+  ]}
+/>
+
 ## Examples
+
+### Change the positioning mode
+
+By default, `Select` will behave similarly to a native MacOS menu by positioning `Select.Content` relative to the active item. If you would prefer an alternative positioning approach similar to `Popover` or `DropdownMenu` then you can set `position` to `popper` and make use of additional alignment options such as `side`, `sideOffset` and more.
+
+```jsx line=8
+// index.jsx
+import * as Select from '@radix-ui/react-select';
+
+export default () => (
+  <Select.Root>
+    <Select.Trigger>…</Select.Trigger>
+    <Select.Portal>
+      <Select.Content __position__="popper" __sideOffset__={5}>
+        …
+      </Select.Content>
+    </Select.Portal>
+  </Select.Root>
+);
+```
+
+### Constrain the content size
+
+When using `position="popper"` on `Select.Content`, you may want to constrain the width of the content so that it matches the trigger width. You may also want to constrain its height to not exceed the viewport.
+
+We expose several CSS custom properties such as `--radix-select-trigger-width` and `--radix-select-content-available-height` to support this. Use them to constrain the content dimensions.
+
+```jsx line=9
+// index.jsx
+import * as Select from '@radix-ui/react-select';
+import './styles.css';
+
+export default () => (
+  <Select.Root>
+    <Select.Trigger>…</Select.Trigger>
+    <Select.Portal>
+      <Select.Content
+        __className__="SelectContent"
+        position="popper"
+        sideOffset={5}
+      >
+        …
+      </Select.Content>
+    </Select.Portal>
+  </Select.Root>
+);
+```
+
+```css
+/* styles.css */
+.SelectContent {
+  width: var(__--radix-select-trigger-width__);
+  max-height: var(__--radix-select-content-available-height__);
+}
+```
 
 ### With disabled items
 
