@@ -80,7 +80,13 @@ export const HeroCodeBlock = ({
             method="POST"
             target="_blank"
           >
-            <input type="hidden" name="query" value={`module=${module}`} />
+            <input type="hidden" name="query" value={`file=/${module}`} />
+            {usedCssLib === 'tailwind' && (
+              <>
+                <input type="hidden" name="environment" value="server" />
+                <input type="hidden" name="hidedevtools" value="1" />
+              </>
+            )}
             <input
               type="hidden"
               name="parameters"
