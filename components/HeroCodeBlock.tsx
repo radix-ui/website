@@ -310,36 +310,6 @@ svg {
 
   const devDependencies = {};
 
-  if (cssLib === 'css') {
-    dependencies['classnames'] = 'latest';
-    devDependencies['react-scripts'] = 'latest';
-  }
-
-  if (cssLib === 'stitches') {
-    dependencies['@stitches/react'] = 'latest';
-    devDependencies['react-scripts'] = 'latest';
-  }
-
-  if (cssLib === 'tailwind') {
-    dependencies['classnames'] = 'latest';
-    devDependencies['vite'] = 'latest';
-    devDependencies['@vitejs/plugin-react'] = 'latest';
-    devDependencies['tailwindcss'] = 'latest';
-    devDependencies['postcss'] = 'latest';
-    devDependencies['autoprefixer'] = 'latest';
-  }
-
-  const appFileOptions = { content: sources['index.jsx'], isBinary: false };
-  const indexContent = `import { createRoot } from 'react-dom/client';
-import App from './App';
-import './global.css';
-
-const container = document.getElementById('root');
-const root = createRoot(container);
-
-root.render(<App />);`;
-  const indexFileOptions = { content: indexContent, isBinary: false };
-
   const files = {
     'package.json': {
       content: {
@@ -354,41 +324,84 @@ root.render(<App />);`;
     },
   };
 
-  if (cssLib === 'css') {
-    files['App.js'] = appFileOptions;
-    files['index.js'] = indexFileOptions;
-    files['styles.css'] = {
-      content: sources['styles.css'],
-      isBinary: false,
-    };
-  }
+  if (cssLib === 'css') makeCssConfig(dependencies, devDependencies, sources, files);
+  if (cssLib === 'stitches') makeStitchesConfig(dependencies, devDependencies, sources, files);
+  if (cssLib === 'tailwind') makeTailwindConfig(dependencies, devDependencies, sources, files);
 
-  if (cssLib === 'stitches') {
-    files['App.js'] = appFileOptions;
-    files['index.js'] = indexFileOptions;
-  }
+  const template = cssLib === 'tailwind' ? 'node' : 'create-react-app';
+  return getParameters({ files, template });
+};
 
-  if (cssLib === 'tailwind') {
-    files['App.jsx'] = appFileOptions;
-    files['index.jsx'] = indexFileOptions;
-    files['tailwind.config.js'] = {
-      content: sources['tailwind.config.js'],
-      isBinary: false,
-    };
-    files['postcss.config.js'] = {
-      content: `module.exports = {
+const makeCssConfig = (
+  dependencies: Record<string, string>,
+  devDependencies: Record<string, string>,
+  sources: Record<string, string>,
+  files: Record<string, { content: string; isBinary: boolean }>
+) => {
+  dependencies['classnames'] = 'latest';
+  devDependencies['react-scripts'] = 'latest';
+
+  files['index.js'] = indexFileOptions;
+  files['App.js'] = {
+    content: sources['index.jsx'],
+    isBinary: false,
+  };
+  files['styles.css'] = {
+    content: sources['styles.css'],
+    isBinary: false,
+  };
+};
+
+const makeStitchesConfig = (
+  dependencies: Record<string, string>,
+  devDependencies: Record<string, string>,
+  sources: Record<string, string>,
+  files: Record<string, { content: string; isBinary: boolean }>
+) => {
+  dependencies['@stitches/react'] = 'latest';
+  devDependencies['react-scripts'] = 'latest';
+
+  files['index.js'] = indexFileOptions;
+  files['App.js'] = {
+    content: sources['index.jsx'],
+    isBinary: false,
+  };
+};
+
+const makeTailwindConfig = (
+  dependencies: Record<string, string>,
+  devDependencies: Record<string, string>,
+  sources: Record<string, string>,
+  files: Record<string, { content: string; isBinary: boolean }>
+) => {
+  dependencies['classnames'] = 'latest';
+  devDependencies['vite'] = 'latest';
+  devDependencies['@vitejs/plugin-react'] = 'latest';
+  devDependencies['tailwindcss'] = 'latest';
+  devDependencies['postcss'] = 'latest';
+  devDependencies['autoprefixer'] = 'latest';
+
+  files['index.jsx'] = indexFileOptions;
+  files['App.jsx'] = {
+    isBinary: false,
+    content: sources['index.jsx'],
+  };
+  files['tailwind.config.js'] = {
+    isBinary: false,
+    content: sources['tailwind.config.js'],
+  };
+  files['postcss.config.js'] = {
+    isBinary: false,
+    content: `module.exports = {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
   }
 }`,
-      isBinary: false,
-    };
-    files['package.json']['content']['scripts'] = {
-      start: 'vite',
-    };
-    files['global.css'] = {
-      content: `@tailwind base;
+  };
+  files['global.css'] = {
+    isBinary: false,
+    content: `@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -402,20 +415,27 @@ body {
   justify-content: center;
   margin-top: 120px;
 }`,
-      isBinary: false,
-    };
-    files['vite.config.js'] = {
-      content: `import { defineConfig } from 'vite'
+  };
+
+  makeViteConfig(files);
+};
+
+const makeViteConfig = (files: Record<string, { content: string; isBinary: boolean }>) => {
+  files['package.json']['content']['scripts'] = {
+    start: 'vite',
+  };
+  files['vite.config.js'] = {
+    isBinary: false,
+    content: `import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
 })`,
-      isBinary: false,
-    };
-    files['index.html'] = {
-      content: `<!DOCTYPE html>
+  };
+  files['index.html'] = {
+    isBinary: false,
+    content: `<!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="UTF-8" />
@@ -427,10 +447,15 @@ export default defineConfig({
         <script type="module" src="/index.jsx"></script>
       </body>
     </html>`,
-      isBinary: false,
-    };
-  }
-
-  const template = cssLib === 'tailwind' ? 'node' : 'create-react-app';
-  return getParameters({ files, template });
+  };
 };
+
+const indexFileContent = `import { createRoot } from 'react-dom/client';
+import App from './App';
+import './global.css';
+
+const container = document.getElementById('root');
+const root = createRoot(container);
+
+root.render(<App />);`;
+const indexFileOptions = { content: indexFileContent, isBinary: false };
