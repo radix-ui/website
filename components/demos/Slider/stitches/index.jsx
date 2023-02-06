@@ -47,7 +47,9 @@ const SliderRange = styled(Slider.Range, {
   position: 'absolute',
   backgroundColor: 'white',
   borderRadius: '9999px',
-  height: '100%',
+
+  '&[data-orientation="horizontal"]': { height: '100%' },
+  '&[data-orientation="vertical"]': { width: '100%' },
 });
 
 const SliderThumb = styled(Slider.Thumb, {
