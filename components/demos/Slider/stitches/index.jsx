@@ -21,16 +21,7 @@ const SliderRoot = styled(Slider.Root, {
   userSelect: 'none',
   touchAction: 'none',
   width: 200,
-
-  '&[data-orientation="horizontal"]': {
-    height: 20,
-  },
-
-  '&[data-orientation="vertical"]': {
-    flexDirection: 'column',
-    width: 20,
-    height: 100,
-  },
+  height: 20,
 });
 
 const SliderTrack = styled(Slider.Track, {
@@ -38,18 +29,14 @@ const SliderTrack = styled(Slider.Track, {
   position: 'relative',
   flexGrow: 1,
   borderRadius: '9999px',
-
-  '&[data-orientation="horizontal"]': { height: 3 },
-  '&[data-orientation="vertical"]': { width: 3 },
+  height: 3,
 });
 
 const SliderRange = styled(Slider.Range, {
   position: 'absolute',
   backgroundColor: 'white',
   borderRadius: '9999px',
-
-  '&[data-orientation="horizontal"]': { height: '100%' },
-  '&[data-orientation="vertical"]': { width: '100%' },
+  height: '100%',
 });
 
 const SliderThumb = styled(Slider.Thumb, {
