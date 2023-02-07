@@ -8,14 +8,7 @@
   user-select: none;
   touch-action: none;
   width: 200px;
-}
-.SliderRoot[data-orientation='horizontal'] {
   height: 20px;
-}
-.SliderRoot[data-orientation='vertical'] {
-  flex-direction: column;
-  width: 20px;
-  height: 100px;
 }
 
 .SliderTrack {
@@ -23,12 +16,7 @@
   position: relative;
   flex-grow: 1;
   border-radius: 9999px;
-}
-.SliderTrack[data-orientation='horizontal'] {
   height: 3px;
-}
-.SliderTrack[data-orientation='vertical'] {
-  width: 3px;
 }
 
 .SliderRange {

@@ -293,17 +293,61 @@ A draggable thumb. You can render multiple thumbs.
 
 Use the `orientation` prop to create a vertical slider.
 
-```jsx line=4
+```jsx line=6
+// index.jsx
 import * as Slider from '@radix-ui/react-slider';
+import './styles.css';
 
 export default () => (
-  <Slider.Root defaultValue={[50]} __orientation__="vertical">
-    <Slider.Track>
-      <Slider.Range />
+  <Slider.Root
+    className="SliderRoot"
+    defaultValue={[50]}
+    __orientation__="vertical"
+  >
+    <Slider.Track className="SliderTrack">
+      <Slider.Range className="SliderRange" />
     </Slider.Track>
-    <Slider.Thumb />
+    <Slider.Thumb className="SliderThumb" />
   </Slider.Root>
 );
+```
+
+```css line=7,18,26
+/* styles.css */
+.SliderRoot {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.SliderRoot[__data-orientation='vertical'__] {
+  flex-direction: column;
+  width: 20px;
+  height: 100px;
+}
+
+.SliderTrack {
+  position: relative;
+  flex-grow: 1;
+  background-color: grey;
+}
+.SliderTrack[__data-orientation='vertical'__] {
+  width: 3px;
+}
+
+.SliderRange {
+  position: absolute;
+  background-color: black;
+}
+.SliderRange[__data-orientation='vertical'__] {
+  width: 100%;
+}
+
+.SliderThumb {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: black;
+}
 ```
 
 ### Create a range
