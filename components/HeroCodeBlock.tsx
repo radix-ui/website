@@ -8,7 +8,7 @@ import { isValidCssLib, useCssLibPreference } from './CssLibPreference';
 import { FrontmatterContext } from './MDXComponents';
 import { Pre } from './Pre';
 import { CopyCodeButton } from './CopyCodeButton';
-import { CSS_LIB_NAMES } from '@lib/constants';
+import { CSS_LIB_NAMES, DEFAULT_CSS_LIB } from '@lib/constants';
 import { Select } from '@components/Select';
 import { ScrollArea } from '@components/ScrollArea';
 import type { CssLib } from '@lib/constants';
@@ -22,7 +22,7 @@ export const HeroCodeBlock = ({
 }) => {
   const frontmatter = React.useContext(FrontmatterContext);
   const [preferredCssLib, setPreferredCssLib] = useCssLibPreference();
-  const usedCssLib = cssLibProp ?? preferredCssLib;
+  const cssLibCandidate = cssLibProp ?? preferredCssLib;
   const [isCodeExpanded, setIsCodeExpanded] = React.useState(false);
 
   const snippets = React.Children.toArray(children).map((pre) => {
@@ -38,6 +38,7 @@ export const HeroCodeBlock = ({
   });
 
   const availableCssLibs = snippets.map(({ cssLib }) => cssLib).filter(onlyUnique);
+  const usedCssLib = availableCssLibs.includes(cssLibCandidate) ? cssLibCandidate : DEFAULT_CSS_LIB;
   const currentTabs = snippets.filter(({ cssLib }) => cssLib === usedCssLib);
   const sources = currentTabs.reduce((sources, tab) => {
     return { ...sources, [tab.title]: tab.source };
