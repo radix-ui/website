@@ -79,7 +79,9 @@ export const HeroCodeBlock = ({
             method="POST"
             target="_blank"
           >
-            <input type="hidden" name="query" value="module=App.js" />
+            <input type="hidden" name="query" value="file=/App.jsx" />
+            <input type="hidden" name="environment" value="server" />
+            <input type="hidden" name="hidedevtools" value="1" />
             <input
               type="hidden"
               name="parameters"
@@ -277,7 +279,64 @@ const makeCodeSandboxParams = (
   sources: Record<string, string>,
   cssLib: CssLib
 ) => {
-  const globalCss = `* {
+  let files = {};
+
+  switch (cssLib) {
+    case 'css':
+      files = makeCssConfig(componentName, sources);
+      break;
+    case 'stitches':
+      files = makeStitchesConfig(componentName, sources);
+      break;
+    case 'tailwind':
+      files = makeTailwindConfig(componentName, sources);
+  }
+
+  return getParameters({ files, template: 'node' });
+};
+
+const makeCssConfig = (componentName: string, sources: Record<string, string>) => {
+  const dependencies = {
+    react: 'latest',
+    'react-dom': 'latest',
+    '@radix-ui/colors': 'latest',
+    '@radix-ui/react-icons': 'latest',
+    [`@radix-ui/react-${componentName}`]: 'latest',
+    classnames: 'latest',
+  };
+
+  const devDependencies = {
+    vite: 'latest',
+    '@vitejs/plugin-react': 'latest',
+  };
+
+  const files = {
+    'package.json': {
+      content: {
+        scripts: { start: 'vite' },
+        dependencies,
+        devDependencies,
+      },
+      isBinary: false,
+    },
+    ...viteConfig,
+    'App.jsx': {
+      content: sources['index.jsx'],
+      isBinary: false,
+    },
+    'index.jsx': {
+      content: `import { createRoot } from 'react-dom/client';
+import App from './App';
+import './global.css';
+
+const container = document.getElementById('root');
+const root = createRoot(container);
+
+root.render(<App />);`,
+      isBinary: false,
+    },
+    'global.css': {
+      content: `* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -297,39 +356,48 @@ body {
 svg {
   display: block;
 }
-`;
+`,
+      isBinary: false,
+    },
+    'styles.css': {
+      content: sources['styles.css'],
+      isBinary: false,
+    },
+  };
 
+  return files;
+};
+
+const makeStitchesConfig = (componentName: string, sources: Record<string, string>) => {
   const dependencies = {
     react: 'latest',
     'react-dom': 'latest',
     '@radix-ui/colors': 'latest',
     '@radix-ui/react-icons': 'latest',
     [`@radix-ui/react-${componentName}`]: 'latest',
+    '@stitches/react': 'latest',
   };
 
-  if (cssLib === 'css') {
-    dependencies['classnames'] = 'latest';
-  }
-
-  if (cssLib === 'stitches') {
-    dependencies['@stitches/react'] = 'latest';
-  }
+  const devDependencies = {
+    vite: 'latest',
+    '@vitejs/plugin-react': 'latest',
+  };
 
   const files = {
     'package.json': {
       content: {
+        scripts: { start: 'vite' },
         dependencies,
-        devDependencies: {
-          'react-scripts': 'latest',
-        },
-      } as any,
+        devDependencies,
+      },
       isBinary: false,
     },
-    'App.js': {
+    ...viteConfig,
+    'App.jsx': {
       content: sources['index.jsx'],
       isBinary: false,
     },
-    'index.js': {
+    'index.jsx': {
       content: `import { createRoot } from 'react-dom/client';
 import App from './App';
 import './global.css';
@@ -341,17 +409,135 @@ root.render(<App />);`,
       isBinary: false,
     },
     'global.css': {
-      content: globalCss,
+      content: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(330deg, hsl(272, 53%, 50%) 0%, hsl(226, 68%, 56%) 100%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 120px;
+}
+
+svg {
+  display: block;
+}
+`,
       isBinary: false,
     },
   };
 
-  if (cssLib === 'css') {
-    files['styles.css'] = {
-      content: sources['styles.css'],
-      isBinary: false,
-    };
-  }
+  return files;
+};
 
-  return getParameters({ files });
+const makeTailwindConfig = (componentName: string, sources: Record<string, string>) => {
+  const dependencies = {
+    react: 'latest',
+    'react-dom': 'latest',
+    '@radix-ui/colors': 'latest',
+    '@radix-ui/react-icons': 'latest',
+    [`@radix-ui/react-${componentName}`]: 'latest',
+    classnames: 'latest',
+  };
+
+  const devDependencies = {
+    vite: 'latest',
+    '@vitejs/plugin-react': 'latest',
+    tailwindcss: 'latest',
+    postcss: 'latest',
+    autoprefixer: 'latest',
+  };
+
+  const files = {
+    'package.json': {
+      content: {
+        scripts: { start: 'vite' },
+        dependencies,
+        devDependencies,
+      },
+      isBinary: false,
+    },
+    ...viteConfig,
+    'tailwind.config.js': {
+      content: sources['tailwind.config.js'],
+      isBinary: false,
+    },
+    'postcss.config.js': {
+      content: `module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  }
+}`,
+      isBinary: false,
+    },
+    'index.jsx': {
+      content: `import { createRoot } from 'react-dom/client';
+import App from './App';
+import './global.css';
+
+const container = document.getElementById('root');
+const root = createRoot(container);
+
+root.render(<App />);`,
+      isBinary: false,
+    },
+    'App.jsx': {
+      isBinary: false,
+      content: sources['index.jsx'],
+    },
+    'global.css': {
+      content: `@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: system-ui;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(330deg, hsl(272, 53%, 50%) 0%, hsl(226, 68%, 56%) 100%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 120px;
+}`,
+      isBinary: false,
+    },
+  };
+
+  return files;
+};
+
+const viteConfig = {
+  'vite.config.js': {
+    content: `import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [react()],
+})`,
+    isBinary: false,
+  },
+  'index.html': {
+    content: `<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vite App</title>
+      </head>
+      <body>
+        <div id="root"></div>
+        <script type="module" src="/index.jsx"></script>
+      </body>
+    </html>`,
+    isBinary: false,
+  },
 };

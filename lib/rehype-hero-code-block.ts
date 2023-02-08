@@ -14,10 +14,10 @@ const rehypeHeroCodeBlock = () => (tree: UnistTree) => {
         node.children = [];
 
         SUPPORTED_CSS_LIBS.forEach((lib) => {
-          ['index.jsx', 'styles.css'].forEach((file) => {
+          ['index.jsx', 'styles.css', 'tailwind.config.js'].forEach((file) => {
             const filePath = `${process.cwd()}/components/demos/${folder}/${lib}/${file}`;
             if (fileExists(filePath)) {
-              const [, extension] = file.split('.');
+              const extension = file.split('.').pop();
               const syntax = getSyntax(extension);
               let source = fs.readFileSync(path.join(filePath), 'utf8');
 
