@@ -37,7 +37,7 @@ export const SelectDemo = () => (
               Carrot
             </SelectItem>
             <SelectItem value="courgette">Courgette</SelectItem>
-            <SelectItem value="leek">leek</SelectItem>
+            <SelectItem value="leek">Leek</SelectItem>
           </Select.Group>
 
           <SelectSeparator />
