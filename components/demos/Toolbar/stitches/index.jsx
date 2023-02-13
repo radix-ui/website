@@ -106,7 +106,7 @@ const ToolbarButton = styled(
     color: 'white',
     backgroundColor: violet.violet9,
   },
-  { '&:hover': { backgroundColor: violet.violet10 } }
+  { '&:hover': { backgroundColor: violet.violet10, color: 'white' } }
 );
 
 export default ToolbarDemo;

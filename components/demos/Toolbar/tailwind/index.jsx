@@ -71,7 +71,7 @@ const ToolbarDemo = () => (
       Edited 2 hours ago
     </Toolbar.Link>
     <Toolbar.Button
-      className="px-[10px] text-white bg-violet9 flex-shrink-0 flex-grow-0 basis-auto h-[25px] rounded inline-flex text-[13px] leading-none items-center justify-center outline-none hover:bg-violet10 hover:text-violet11 focus:relative focus:shadow-[0_0_0_2px] focus:shadow-violet7"
+      className="px-[10px] text-white bg-violet9 flex-shrink-0 flex-grow-0 basis-auto h-[25px] rounded inline-flex text-[13px] leading-none items-center justify-center outline-none hover:bg-violet10 focus:relative focus:shadow-[0_0_0_2px] focus:shadow-violet7"
       style={{ marginLeft: 'auto' }}
     >
       Share
