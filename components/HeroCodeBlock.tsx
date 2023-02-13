@@ -352,6 +352,8 @@ body {
   align-items: flex-start;
   justify-content: center;
   margin-top: 120px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 svg {
@@ -425,6 +427,8 @@ body {
   align-items: flex-start;
   justify-content: center;
   margin-top: 120px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 svg {
@@ -508,6 +512,8 @@ body {
   align-items: flex-start;
   justify-content: center;
   margin-top: 120px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }`,
       isBinary: false,
     },
