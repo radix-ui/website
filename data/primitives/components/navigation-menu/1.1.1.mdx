@@ -666,7 +666,7 @@ This will ensure accessibility and consistent keyboard control is maintained. He
 
 ```jsx line=7-16,22,25
 // index.jsx
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import './styles.css';
@@ -677,7 +677,11 @@ const Link = ({ href, ...props }) => {
 
   return (
     <NextLink href={href} passHref>
-      <NavigationMenu.Link className="NavigationMenuLink" active={isActive} {...props} />
+      <NavigationMenu.Link
+        className="NavigationMenuLink"
+        active={isActive}
+        {...props}
+      />
     </NextLink>
   );
 };
@@ -832,7 +836,7 @@ See the W3C [Disclosure Navigation Menu](https://w3c.github.io/aria-practices/ex
 It's important to use `NavigationMenu.Link` for all navigational links within a menu, this not only applies to the main list
 but also within any content rendered via `NavigationMenu.Content`. This will ensure consistent keyboard interactions and accessibility
 while also giving access to the `active` prop for setting `aria-current` and the active styles.
-See [this example](/docs/primitives/components/navigation-menu#with-router-links) for more information on usage with third party routing components.
+See [this example](/docs/primitives/components/navigation-menu#with-client-side-routing) for more information on usage with third party routing components.
 
 ### Keyboard Interactions
 
