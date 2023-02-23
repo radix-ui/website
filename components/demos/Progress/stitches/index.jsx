@@ -12,7 +12,7 @@ const ProgressDemo = () => {
   }, []);
 
   return (
-    <ProgressRoot value={66}>
+    <ProgressRoot value={progress}>
       <ProgressIndicator style={{ transform: `translateX(-${100 - progress}%)` }} />
     </ProgressRoot>
   );
