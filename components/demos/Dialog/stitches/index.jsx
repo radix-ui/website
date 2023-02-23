@@ -7,7 +7,7 @@ import { Cross2Icon } from '@radix-ui/react-icons';
 const DialogDemo = () => (
   <Dialog.Root>
     <Dialog.Trigger asChild>
-      <Button size="large">Edit profile</Button>
+      <Button>Edit profile</Button>
     </Dialog.Trigger>
     <Dialog.Portal>
       <DialogOverlay />
