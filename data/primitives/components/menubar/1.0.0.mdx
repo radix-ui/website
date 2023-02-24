@@ -14,12 +14,6 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/menu/
   access to a consistent set of commands.
 </Description>
 
-<HeroContainer>
-  <MenubarDemo />
-</HeroContainer>
-
-<HeroCodeBlock folder="Menubar" />
-
 <Highlights
   features={[
     'Can be controlled or uncontrolled.',
@@ -638,7 +632,7 @@ An item that can be controlled and rendered like a checkbox.
     },
     {
       name: 'checked',
-      type: 'boolean',
+      type: `boolean | 'indeterminate'`,
       description: (
         <span>
           The controlled checked state of the item. Must be used in conjunction
@@ -648,7 +642,7 @@ An item that can be controlled and rendered like a checkbox.
     },
     {
       name: 'onCheckedChange',
-      type: '(checked: boolean) => void',
+      type: `(checked: boolean | 'indeterminate') => void`,
       typeSimple: 'function',
       description: (
         <span>Event handler called when the checked state changes.</span>

@@ -11,6 +11,12 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal
   Displays rich content in a portal, triggered by a button.
 </Description>
 
+<HeroContainer>
+  <PopoverDemo />
+</HeroContainer>
+
+<HeroCodeBlock folder="Popover" />
+
 <Highlights
   features={[
     'Can be controlled or uncontrolled.',
@@ -416,6 +422,26 @@ The component that pops out when the popover is open.
         </>
       ),
     },
+    {
+      cssVariable: '--radix-popover-content-available-width',
+      description: (
+        <>The remaining width between the trigger and the boundary edge</>
+      ),
+    },
+    {
+      cssVariable: '--radix-popover-content-available-height',
+      description: (
+        <>The remaining height between the trigger and the boundary edge</>
+      ),
+    },
+    {
+      cssVariable: '--radix-popover-trigger-width',
+      description: <>The width of the trigger</>,
+    },
+    {
+      cssVariable: '--radix-popover-trigger-height',
+      description: <>The height of the trigger</>,
+    },
   ]}
 />
 
@@ -466,6 +492,37 @@ The button that closes an open popover.
 />
 
 ## Examples
+
+### Constrain the content size
+
+You may want to constrain the width of the content so that it matches the trigger width. You may also want to constrain its height to not exceed the viewport.
+
+We expose several CSS custom properties such as `--radix-popover-trigger-width` and `--radix-popover-content-available-height` to support this. Use them to constrain the content dimensions.
+
+```jsx line=9
+// index.jsx
+import * as Popover from '@radix-ui/react-popover';
+import './styles.css';
+
+export default () => (
+  <Popover.Root>
+    <Popover.Trigger>…</Popover.Trigger>
+    <Popover.Portal>
+      <Popover.Content __className__="PopoverContent" sideOffset={5}>
+        …
+      </Popover.Content>
+    </Popover.Portal>
+  </Popover.Root>
+);
+```
+
+```css
+/* styles.css */
+.PopoverContent {
+  width: var(__--radix-popover-trigger-width__);
+  max-height: var(__--radix-popover-content-available-height__);
+}
+```
 
 ### Origin-aware animations
 
