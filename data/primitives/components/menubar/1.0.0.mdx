@@ -642,7 +642,7 @@ An item that can be controlled and rendered like a checkbox.
     },
     {
       name: 'onCheckedChange',
-      type: '(checked: boolean) => void',
+      type: `(checked: boolean | 'indeterminate') => void`,
       typeSimple: 'function',
       description: (
         <span>Event handler called when the checked state changes.</span>
