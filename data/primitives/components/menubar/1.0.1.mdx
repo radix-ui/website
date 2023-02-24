@@ -493,6 +493,26 @@ The component that pops out when a menu is open.
         </>
       ),
     },
+    {
+      cssVariable: '--radix-menubar-content-available-width',
+      description: (
+        <>The remaining width between the trigger and the boundary edge</>
+      ),
+    },
+    {
+      cssVariable: '--radix-menubar-content-available-height',
+      description: (
+        <>The remaining height between the trigger and the boundary edge</>
+      ),
+    },
+    {
+      cssVariable: '--radix-menubar-trigger-width',
+      description: <>The width of the trigger</>,
+    },
+    {
+      cssVariable: '--radix-menubar-trigger-height',
+      description: <>The height of the trigger</>,
+    },
   ]}
 />
 
@@ -1154,6 +1174,40 @@ The component that pops out when a submenu is open. Must be rendered inside `Men
   ]}
 />
 
+<CssVariablesTable
+  data={[
+    {
+      cssVariable: '--radix-menubar-content-transform-origin',
+      description: (
+        <>
+          The <Code>transform-origin</Code> computed from the content and arrow
+          positions/offsets
+        </>
+      ),
+    },
+    {
+      cssVariable: '--radix-menubar-content-available-width',
+      description: (
+        <>The remaining width between the trigger and the boundary edge</>
+      ),
+    },
+    {
+      cssVariable: '--radix-menubar-content-available-height',
+      description: (
+        <>The remaining height between the trigger and the boundary edge</>
+      ),
+    },
+    {
+      cssVariable: '--radix-menubar-trigger-width',
+      description: <>The width of the trigger</>,
+    },
+    {
+      cssVariable: '--radix-menubar-trigger-height',
+      description: <>The height of the trigger</>,
+    },
+  ]}
+/>
+
 ## Examples
 
 ### With submenus
@@ -1365,6 +1419,37 @@ export default () => (
     </Menubar.Menu>
   </Menubar.Root>
 );
+```
+
+### Constrain the content/sub-content size
+
+You may want to constrain the width of the content (or sub-content) so that it matches the trigger (or sub-trigger) width. You may also want to constrain its height to not exceed the viewport.
+
+We expose several CSS custom properties such as `--radix-menubar-trigger-width` and `--radix-menubar-content-available-height` to support this. Use them to constrain the content dimensions.
+
+```jsx line=9
+// index.jsx
+import * as Menubar from '@radix-ui/react-menubar';
+import './styles.css';
+
+export default () => (
+  <Menubar.Root>
+    <Menubar.Trigger>…</Menubar.Trigger>
+    <Menubar.Portal>
+      <Menubar.Content __className__="MenubarContent" sideOffset={5}>
+        …
+      </Menubar.Content>
+    </Menubar.Portal>
+  </Menubar.Root>
+);
+```
+
+```css
+/* styles.css */
+.MenubarContent {
+  width: var(__--radix-menubar-trigger-width__);
+  max-height: var(__--radix-menubar-content-available-height__);
+}
 ```
 
 ### Origin-aware animations

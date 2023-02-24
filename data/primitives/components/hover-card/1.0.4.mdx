@@ -337,6 +337,26 @@ The component that pops out when the hover card is open.
         </>
       ),
     },
+    {
+      cssVariable: '--radix-hover-card-content-available-width',
+      description: (
+        <>The remaining width between the trigger and the boundary edge</>
+      ),
+    },
+    {
+      cssVariable: '--radix-hover-card-content-available-height',
+      description: (
+        <>The remaining height between the trigger and the boundary edge</>
+      ),
+    },
+    {
+      cssVariable: '--radix-hover-card-trigger-width',
+      description: <>The width of the trigger</>,
+    },
+    {
+      cssVariable: '--radix-hover-card-trigger-height',
+      description: <>The height of the trigger</>,
+    },
   ]}
 />
 
@@ -384,6 +404,37 @@ export default () => (
     <HoverCard.Content>…</HoverCard.Content>
   </HoverCard.Root>
 );
+```
+
+### Constrain the content size
+
+You may want to constrain the width of the content so that it matches the trigger width. You may also want to constrain its height to not exceed the viewport.
+
+We expose several CSS custom properties such as `--radix-hover-card-trigger-width` and `--radix-hover-card-content-available-height` to support this. Use them to constrain the content dimensions.
+
+```jsx line=9
+// index.jsx
+import * as HoverCard from '@radix-ui/react-hover-card';
+import './styles.css';
+
+export default () => (
+  <HoverCard.Root>
+    <HoverCard.Trigger>…</HoverCard.Trigger>
+    <HoverCard.Portal>
+      <HoverCard.Content __className__="HoverCardContent" sideOffset={5}>
+        …
+      </HoverCard.Content>
+    </HoverCard.Portal>
+  </HoverCard.Root>
+);
+```
+
+```css
+/* styles.css */
+.HoverCardContent {
+  width: var(__--radix-hover-card-trigger-width__);
+  max-height: var(__--radix-hover-card-content-available-height__);
+}
 ```
 
 ### Origin-aware animations

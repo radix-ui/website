@@ -457,6 +457,26 @@ The component that pops out when the dropdown menu is open.
         </>
       ),
     },
+    {
+      cssVariable: '--radix-dropdown-menu-content-available-width',
+      description: (
+        <>The remaining width between the trigger and the boundary edge</>
+      ),
+    },
+    {
+      cssVariable: '--radix-dropdown-menu-content-available-height',
+      description: (
+        <>The remaining height between the trigger and the boundary edge</>
+      ),
+    },
+    {
+      cssVariable: '--radix-dropdown-menu-trigger-width',
+      description: <>The width of the trigger</>,
+    },
+    {
+      cssVariable: '--radix-dropdown-menu-trigger-height',
+      description: <>The height of the trigger</>,
+    },
   ]}
 />
 
@@ -923,6 +943,40 @@ An item that opens a submenu. Must be rendered inside `DropdownMenu.Sub`.
   ]}
 />
 
+<CssVariablesTable
+  data={[
+    {
+      cssVariable: '--radix-dropdown-menu-content-transform-origin',
+      description: (
+        <>
+          The <Code>transform-origin</Code> computed from the content and arrow
+          positions/offsets
+        </>
+      ),
+    },
+    {
+      cssVariable: '--radix-dropdown-menu-content-available-width',
+      description: (
+        <>The remaining width between the trigger and the boundary edge</>
+      ),
+    },
+    {
+      cssVariable: '--radix-dropdown-menu-content-available-height',
+      description: (
+        <>The remaining height between the trigger and the boundary edge</>
+      ),
+    },
+    {
+      cssVariable: '--radix-dropdown-menu-trigger-width',
+      description: <>The width of the trigger</>,
+    },
+    {
+      cssVariable: '--radix-dropdown-menu-trigger-height',
+      description: <>The height of the trigger</>,
+    },
+  ]}
+/>
+
 ### SubContent
 
 The component that pops out when a submenu is open. Must be rendered inside `DropdownMenu.Sub`.
@@ -1325,6 +1379,37 @@ export default () => (
     </DropdownMenu.Portal>
   </DropdownMenu.Root>
 );
+```
+
+### Constrain the content/sub-content size
+
+You may want to constrain the width of the content (or sub-content) so that it matches the trigger (or sub-trigger) width. You may also want to constrain its height to not exceed the viewport.
+
+We expose several CSS custom properties such as `--radix-dropdown-menu-trigger-width` and `--radix-dropdown-menu-content-available-height` to support this. Use them to constrain the content dimensions.
+
+```jsx line=9
+// index.jsx
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import './styles.css';
+
+export default () => (
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+    <DropdownMenu.Portal>
+      <DropdownMenu.Content __className__="DropdownMenuContent" sideOffset={5}>
+        …
+      </DropdownMenu.Content>
+    </DropdownMenu.Portal>
+  </DropdownMenu.Root>
+);
+```
+
+```css
+/* styles.css */
+.DropdownMenuContent {
+  width: var(__--radix-dropdown-menu-trigger-width__);
+  max-height: var(__--radix-dropdown-menu-content-available-height__);
+}
 ```
 
 ### Origin-aware animations

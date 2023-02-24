@@ -412,6 +412,26 @@ The component that pops out when the tooltip is open.
         </>
       ),
     },
+    {
+      cssVariable: '--radix-tooltip-content-available-width',
+      description: (
+        <>The remaining width between the trigger and the boundary edge</>
+      ),
+    },
+    {
+      cssVariable: '--radix-tooltip-content-available-height',
+      description: (
+        <>The remaining height between the trigger and the boundary edge</>
+      ),
+    },
+    {
+      cssVariable: '--radix-tooltip-trigger-width',
+      description: <>The width of the trigger</>,
+    },
+    {
+      cssVariable: '--radix-tooltip-trigger-height',
+      description: <>The height of the trigger</>,
+    },
   ]}
 />
 
@@ -504,6 +524,37 @@ export default () => (
     <Tooltip.Content>…</Tooltip.Content>
   </Tooltip.Root>
 );
+```
+
+### Constrain the content size
+
+You may want to constrain the width of the content so that it matches the trigger width. You may also want to constrain its height to not exceed the viewport.
+
+We expose several CSS custom properties such as `--radix-tooltip-trigger-width` and `--radix-tooltip-content-available-height` to support this. Use them to constrain the content dimensions.
+
+```jsx line=9
+// index.jsx
+import * as Tooltip from '@radix-ui/react-tooltip';
+import './styles.css';
+
+export default () => (
+  <Tooltip.Root>
+    <Tooltip.Trigger>…</Tooltip.Trigger>
+    <Tooltip.Portal>
+      <Tooltip.Content __className__="TooltipContent" sideOffset={5}>
+        …
+      </Tooltip.Content>
+    </Tooltip.Portal>
+  </Tooltip.Root>
+);
+```
+
+```css
+/* styles.css */
+.TooltipContent {
+  width: var(__--radix-tooltip-trigger-width__);
+  max-height: var(__--radix-tooltip-content-available-height__);
+}
 ```
 
 ### Origin-aware animations
