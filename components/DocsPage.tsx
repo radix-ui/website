@@ -102,7 +102,7 @@ function Pagination({ allRoutes }) {
         >
           {previous && <PaginationLink route={previous} direction="Previous" />}
           {next && (
-            <Box css={{ textAlign: 'right' }}>
+            <Box css={{ textAlign: 'right', flexGrow: 1 }}>
               <PaginationLink route={next} direction="Next" />
             </Box>
           )}
