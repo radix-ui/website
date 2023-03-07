@@ -7,6 +7,7 @@ export { default as CollapsibleDemo } from './Collapsible/stitches';
 export { default as ContextMenuDemo } from './ContextMenu/stitches';
 export { default as DialogDemo } from './Dialog/stitches';
 export { default as DropdownMenuDemo } from './DropdownMenu/stitches';
+export { default as FormDemo } from './Form/stitches';
 export { default as HoverCardDemo } from './HoverCard/stitches';
 export { default as LabelDemo } from './Label/stitches';
 export { default as MenubarDemo } from './Menubar/stitches';

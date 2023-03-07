@@ -65,16 +65,14 @@ export function PrimitivesDocsPage({ children }: { children: React.ReactNode }) 
                   <NavItem
                     key={page.slug}
                     href={`/${page.slug}`}
-                    disabled={page.draft}
                     active={currentPageSlug === page.slug}
                   >
                     <NavItemTitle>{page.title}</NavItemTitle>
-                    {page.beta && (
-                      <Badge css={{ ml: '$2' }} variant="blue">
-                        Beta
+                    {page.preview && (
+                      <Badge variant="blue" css={{ ml: '$2' }}>
+                        Preview
                       </Badge>
                     )}
-                    {page.draft && <Badge css={{ ml: '$2' }}>Coming soon</Badge>}
                     {page.deprecated && (
                       <Badge variant="yellow" css={{ ml: '$2' }}>
                         Deprecated
