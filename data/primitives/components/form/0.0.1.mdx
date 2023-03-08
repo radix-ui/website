@@ -259,7 +259,8 @@ You can also pass a function to `match` to provide custom validation rules.
       type: 'string',
       description: (
         <>
-          Used to target a specific field by name when rendering outside of a <Code>Field</Code> part.
+          Used to target a specific field by name when rendering outside of a{' '}
+          <Code>Field</Code> part.
         </>
       ),
     },
@@ -286,8 +287,8 @@ Use this render-prop component to access a given field’s validity state in ren
       type: 'string',
       description: (
         <>
-          When used outside of a <Code>Field</Code> part, use this prop to
-          target a specific field by name.
+          Used to target a specific field by name when rendering outside of a{' '}
+          <Code>Field</Code> part.
         </>
       ),
     },
@@ -339,6 +340,8 @@ It can also be used to compose other types of controls, such as a `select`:
 </Form.Field>
 ```
 
+> Note: At then moment, it is not possible to compose `Form` with Radix's other form primitives such as `Checkbox`, `Select`, etc. We are working on a solution for this.
+
 ### Providing your own validation messages
 
 When no `children` are provided, `Form.Message` will render a default error message for the given `match`.
@@ -357,7 +360,7 @@ You can provide a more meaningful message by passing your own `children`. This i
 
 ### Custom validation
 
-On top of all the built-in client-side validation matches described above you can also provide your own custom validation whilst still making use of the platform's validation abilities. It uses the `customError` type present in the constraint validity API.
+On top of all the built-in client-side validation matches described above you can also provide your own custom validation whilst still making use of the platform's validation abilities. It uses the `customError` type present in the [constraint validition API](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation).
 
 You can pass your own validation function into the `match` prop on `Form.Message`. Here's an example:
 
@@ -372,7 +375,7 @@ You can pass your own validation function into the `match` prop on `Form.Message
 ```
 
 > `match` will be called with the current value of the control as first argument and the entire `FormData` as second argument.
-> `match` can also be an `async` function (or return a promise) to perform async validation (see type below):
+> `match` can also be an `async` function (or return a promise) to perform async validation.
 
 ### Styling based on validity
 
@@ -394,10 +397,13 @@ export default () => (
 );
 ```
 
-```css line=2
+```css line=2,5
 /* styles.css */
 .FormLabel[__data-invalid__] {
   color: red;
+}
+.FormLabel[__data-valid__] {
+  color: green;
 }
 ```
 
@@ -440,9 +446,8 @@ function Page() {
 
   return (
     <Form.Root
+      // `onSubmit` only triggered if it passes client-side validation
       onSubmit={(event) => {
-        // `onSubmit` only triggered if it passes client-side validation
-        event.preventDefault();
         const data = Object.fromEntries(new FormData(event.currentTarget));
 
         // Submit form data and catch errors in the response
@@ -453,6 +458,9 @@ function Page() {
            * In this case resulting in this object: `{ email: false, password: true }`
            */
           .catch((errors) => setServerErrors(mapServerErrors(errors)));
+
+        // prevent default form submission
+        event.preventDefault();
       }}
       onClearServerErrors={() =>
         setServerErrors({ email: false, password: false })
@@ -489,12 +497,9 @@ function Page() {
 }
 ```
 
-You should clear the server errors using the `onClearServerErrors` callback prop on the `Form.Root` part.
+You should clear the server errors using the `onClearServerErrors` callback prop on the `Form.Root` part. It will clear the server errors before the form is re-submitted, and when the form is reset.
 
-> This will clear the server errors before the form is re-submitted, and when the form is reset.
-
-In addition, this provides control over when to reset single server errors.
-For example you could reset the email server error as soon as the user edits it:
+In addition, this provides control over when to reset single server errors. For example you could reset the email server error as soon as the user edits it:
 
 ```jsx line=3
 <Form.Field name="email" serverInvalid={serverErrors.email}>
