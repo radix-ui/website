@@ -434,7 +434,7 @@ The field is marked as invalid by passing a `serverInvalid` boolean prop to the 
 
 Here's an example with server-side error handling:
 
-```jsx line=12,23,29-34
+```jsx line=5-8,13,23,28-30,49-54
 import * as React from 'react';
 import * as Form from '@radix-ui/react-form';
 
@@ -457,13 +457,13 @@ function Page() {
            * Map errors from your server response into a structure you'd like to work with.
            * In this case resulting in this object: `{ email: false, password: true }`
            */
-          .catch((errors) => setServerErrors(mapServerErrors(errors)));
+          .catch((errors) => __setServerErrors__(mapServerErrors(errors)));
 
         // prevent default form submission
         event.preventDefault();
       }}
       onClearServerErrors={() =>
-        setServerErrors({ email: false, password: false })
+        __setServerErrors__({ email: false, password: false })
       }
     >
       <Form.Field name="email" __serverInvalid__={serverErrors.email}>
