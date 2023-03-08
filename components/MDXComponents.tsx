@@ -127,7 +127,7 @@ export const components = {
         mt: '$6',
         mb: '$5',
         pl: '$4',
-        borderLeft: `1px solid $gray400`,
+        borderLeft: `1px solid $gray4`,
         color: 'orange',
         '& p': {
           fontSize: '$3',
