@@ -24,6 +24,7 @@ export const primitivesRoutes = [
       { title: 'Context Menu', slug: 'docs/primitives/components/context-menu' },
       { title: 'Dialog', slug: 'docs/primitives/components/dialog' },
       { title: 'Dropdown Menu', slug: 'docs/primitives/components/dropdown-menu' },
+      { title: 'Form', slug: 'docs/primitives/components/form', preview: true },
       { title: 'Hover Card', slug: 'docs/primitives/components/hover-card' },
       { title: 'Label', slug: 'docs/primitives/components/label' },
       { title: 'Menubar', slug: 'docs/primitives/components/menubar' },
@@ -63,9 +64,8 @@ export const primitivesRoutes = [
 export type PageProps = {
   title: string;
   slug: string;
-  draft?: boolean;
   deprecated?: boolean;
-  beta?: boolean;
+  preview?: boolean;
 };
 
 export type RouteProps = {
@@ -74,6 +74,5 @@ export type RouteProps = {
 };
 
 export const allPrimitivesRoutes = primitivesRoutes.reduce((acc, curr: RouteProps) => {
-  acc = [...acc, ...curr.pages.filter((p) => p.draft !== true)];
-  return acc;
+  return [...acc, ...curr.pages];
 }, []);

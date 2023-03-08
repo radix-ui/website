@@ -32,6 +32,7 @@ const Input = styled('input', {
   backgroundColor: blackA.blackA5,
   boxShadow: `0 0 0 1px ${blackA.blackA9}`,
   '&:focus': { boxShadow: `0 0 0 2px black` },
+  '&::selection': { backgroundColor: blackA.blackA9, color: 'white' },
 });
 
 const Flex = styled('div', { display: 'flex' });

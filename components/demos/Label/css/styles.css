@@ -29,3 +29,7 @@ input {
 .Input:focus {
   box-shadow: 0 0 0 2px black;
 }
+.Input::selection {
+  background-color: var(--blackA9);
+  color: white;
+}

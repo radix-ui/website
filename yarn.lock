@@ -947,6 +947,19 @@
     "@radix-ui/react-primitive" "1.0.1"
     "@radix-ui/react-use-callback-ref" "1.0.0"
 
+"@radix-ui/react-form@0.0.1-rc.1":
+  version "0.0.1-rc.1"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-form/-/react-form-0.0.1-rc.1.tgz#35262e9b12995e57ac1b439179ce1c965554de8d"
+  integrity sha512-aC/3YLwv25j+Z/b+NdJOfgWzj+NJBBYh+dOZGSqsUl8vlkJlTrnPbpqD89fZqlJGlSxcHe4YdRyRbN1wh1oUiQ==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/primitive" "1.0.0"
+    "@radix-ui/react-compose-refs" "1.0.0"
+    "@radix-ui/react-context" "1.0.0"
+    "@radix-ui/react-id" "1.0.0"
+    "@radix-ui/react-label" "2.0.1-rc.1"
+    "@radix-ui/react-primitive" "1.0.2-rc.1"
+
 "@radix-ui/react-hover-card@1.0.4":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-hover-card/-/react-hover-card-1.0.4.tgz#f921178dc16bfe158f56bb1a63d9a1d27e50367c"
@@ -994,6 +1007,14 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-primitive" "1.0.1"
+
+"@radix-ui/react-label@2.0.1-rc.1":
+  version "2.0.1-rc.1"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-label/-/react-label-2.0.1-rc.1.tgz#5e16219e1176a9bb878478da62ccb7a34303fa1a"
+  integrity sha512-sPr2YslJywQix5F/bGV7lnpeDd2ZhUVteD3b6c/3SvkDeIe3411jCARL0Aauf4p9HkxoXLlD42IZjhiRJvAPXw==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/react-primitive" "1.0.2-rc.1"
 
 "@radix-ui/react-menu@1.0.0":
   version "1.0.0"
@@ -1197,6 +1218,14 @@
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-primitive/-/react-primitive-1.0.1.tgz#c1ebcce283dd2f02e4fbefdaa49d1cb13dbc990a"
   integrity sha512-fHbmislWVkZaIdeF6GZxF0A/NH/3BjrGIYj+Ae6eTmTCr7EB0RQAAVEiqsXK6p3/JcRqVSBQoceZroj30Jj3XA==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/react-slot" "1.0.1"
+
+"@radix-ui/react-primitive@1.0.2-rc.1":
+  version "1.0.2-rc.1"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-primitive/-/react-primitive-1.0.2-rc.1.tgz#b8b2996409ed7c8cab49d0e3d9ef29b84d40a21c"
+  integrity sha512-7xElExg3IshQPL4mBhDRZQCL+HE/nMY9GilL0MUmKYedKzHtcWiJLSoLORlVaxT6QV8P51S0gncNsqY6DXzojg==
   dependencies:
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-slot" "1.0.1"
