@@ -947,10 +947,10 @@
     "@radix-ui/react-primitive" "1.0.2"
     "@radix-ui/react-use-callback-ref" "1.0.0"
 
-"@radix-ui/react-form@0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-form/-/react-form-0.0.1.tgz#f92552b5797758ec9f0095bb77e33edb227bf3ad"
-  integrity sha512-qrqIu/Icb1QVYYDY0Bqz7w2UKzizXKxzsyNUOYC9gbqN9emb6ICejVe+EQwwNTJEyZ/1yG0G9SdBHlu/e4N2Nw==
+"@radix-ui/react-form@0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-form/-/react-form-0.0.2.tgz#1ac64048c6297e77f37c222269b444f803ee4ac0"
+  integrity sha512-+WQU4Gs4MqjYsHwh5d19Ka4CMcWeXd7WPuWYCYGtNbDRMHFG2TtgM9PlEK4Yrk7wG1f5/da6Bgtteky2ggDXUg==
   dependencies:
     "@babel/runtime" "^7.13.10"
     "@radix-ui/primitive" "1.0.0"
