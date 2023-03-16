@@ -470,7 +470,7 @@ function Page() {
       <Form.Field name="email" __serverInvalid__={serverErrors.email}>
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" required />
-        <Form.Message match="missingValue">
+        <Form.Message match="valueMissing">
           Please enter your email.
         </Form.Message>
         <Form.Message match="typeMismatch" __forceMatch__={serverErrors.email}>
@@ -481,7 +481,7 @@ function Page() {
       <Form.Field name="password" __serverInvalid__={serverErrors.password}>
         <Form.Label>Password</Form.Label>
         <Form.Control type="password" required />
-        <Form.Message match="missingValue">
+        <Form.Message match="valueMissing">
           Please enter a password.
         </Form.Message>
         {serverErrors.password && (
