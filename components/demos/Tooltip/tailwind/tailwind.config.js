@@ -23,7 +23,7 @@ module.exports = {
           to: { opacity: 1, transform: 'translateY(0)' },
         },
         slideRightAndFade: {
-          from: { opacity: 0, transform: 'translateX(2px)' },
+          from: { opacity: 0, transform: 'translateX(-2px)' },
           to: { opacity: 1, transform: 'translateX(0)' },
         },
       },
