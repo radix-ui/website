@@ -242,11 +242,12 @@ export const HeroCodeBlock = ({
                 bottom: 0,
                 height: '$9',
                 width: '100%',
-                padding: '$2',
+                padding: '$3',
                 overflow: 'hidden',
                 borderRadius: '0 0 $3 $3',
                 '&::before': {
                   content: '',
+                  pointerEvents: 'none',
                   display: 'block',
                   width: '100%',
                   height: '100%',
