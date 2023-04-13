@@ -191,7 +191,7 @@ export const HeroCodeBlock = ({
                       }}
                     >
                       {availableCssLibs.map((lib) => (
-                        <option key={lib} value={lib}>
+                        <option key={lib} value={lib} style={{ color: '#11181c' }}>
                           {CSS_LIB_NAMES[lib]}
                         </option>
                       ))}
