@@ -63,18 +63,16 @@ const ScrollAreaThumb = styled(ScrollAreaPrimitive.Thumb, {
   zIndex: 1,
   // increase target size for touch devices https://www.w3.org/WAI/WCAG21/Understanding/target-size.html
   position: 'relative',
-  '@media (hover: none)': {
-    '&::before': {
-      content: '""',
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      width: '100%',
-      height: '100%',
-      minWidth: 44,
-      minHeight: 44,
-    },
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '100%',
+    height: '100%',
+    minWidth: 44,
+    minHeight: 44,
   },
 });
 
