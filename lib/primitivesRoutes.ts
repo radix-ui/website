@@ -8,6 +8,7 @@ export const primitivesRoutes = [
       { title: 'Animation', slug: 'docs/primitives/overview/animation' },
       { title: 'Accessibility', slug: 'docs/primitives/overview/accessibility' },
       { title: 'Server side rendering', slug: 'docs/primitives/overview/server-side-rendering' },
+      { title: 'asChild', slug: 'docs/primitives/overview/as-child-prop' },
       { title: 'Releases', slug: 'docs/primitives/overview/releases' },
     ],
   },

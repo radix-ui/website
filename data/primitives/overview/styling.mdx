@@ -120,33 +120,6 @@ const AccordionItem = React.forwardRef<
 AccordionItem.displayName = 'AccordionItem';
 ```
 
-## Changing the rendered element
-
-All component parts that render a DOM element have an `asChild` prop. This is useful when you want a part to attach its accessibility and functional requirements onto your own element instead.
-
-If you decide to change the underlying node rendered by Radix (e.g. change a `button` to a `div`) then it is up to you to ensure the correct accessibility and functionality of your chosen node type.
-
-Here's an example of how you can use a custom button called `MyButton` as the trigger for a `Dialog.Trigger`:
-
-```jsx
-import * as React from 'react';
-import * as Dialog from '@radix-ui/react-dialog';
-import { MyButton } from './my-button';
-
-export default () => {
-  return (
-    <Dialog.Root>
-      <Dialog.Trigger __asChild__>
-        <MyButton>Open dialog</MyButton>
-      </Dialog.Trigger>
-      <Dialog.Content>...</Dialog.Content>
-    </Dialog.Root>
-  );
-};
-```
-
----
-
 ## Summary
 
 Radix Primitives were designed to encapsulate accessibility concerns and other complex functionalities, while ensuring you retain complete control over styling.
