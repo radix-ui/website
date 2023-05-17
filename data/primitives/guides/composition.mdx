@@ -1,0 +1,110 @@
+---
+metaTitle: Composition
+metaDescription: Use the `asChild` prop to compose Radix's functionality onto alternative element types or your own React components.
+---
+
+# Composition
+
+<Description>
+  Use the `asChild` prop to compose Radix's functionality onto alternative
+  element types or your own React components.
+</Description>
+
+All Radix primitive parts that render a DOM element accept an `asChild` prop. By passing `asChild` to a part, Radix will not render the pre-defined DOM element but will instead clone the part's first child and pass it the props/event handlers required to make it work.
+
+## Changing the underlying element type
+
+Generally speaking, you shouldn't use a different element type than the one Radix renders by default. Radix has been designed to use the most appropriate type for each part, and changing it may result in unexpected behaviour.
+
+That being said, there are a few genuine cases where it can make sense to do so. One of those cases would be with `Tooltip.Trigger`. By default Radix renders a `button` as that is the most commonly used element that requires a tooltip. But you may want to add a tooltip to a link (`a` tag). Let's see how you would achive that using `asChild`:
+
+```jsx line=7
+import * as React from 'react';
+import * as Tooltip from '@radix-ui/react-tooltip';
+
+export default () => (
+  <Tooltip.Root>
+    <Tooltip.Trigger __asChild__>
+      <a href="https://www.radix-ui.com/">Radix UI</a>
+    </Tooltip.Trigger>
+    <Tooltip.Portal>…</Tooltip.Portal>
+  </Tooltip.Root>
+);
+```
+
+> If you decide to change the underlying element type, it is your responsibility to ensure it is compatible in terms of accessibility and functionality. In the case of `Tooltip.Trigger` for example, it needs to be a focusable element that can respond to pointer/keyboard events, etc. If you were to switch it to a `div` for some reason, it would no longer be accessible.
+
+In reality, you will very rarely modify the underlying DOM element directly like we've seen above. Instead you will most likely want to use your own React components. This is especially true for most `Trigger` parts, as you usually want to compose the functionality with your own button or link components from your design system.
+
+## Composing with your own React components
+
+This works exactly the same as above, you pass `asChild` to the part and then wrap your own component with it.
+However, there are a few gotchas to be aware of.
+
+### Your component needs to spread props
+
+When Radix clones your component, it will pass certain props and event handlers to it to make it functional and accessible. If your component doesn't support those props, then it will break.
+
+This is done by spreading all of the props onto the underlying DOM node.
+
+```jsx line=5
+// before
+const MyButton = () => <button />;
+
+// after
+const MyButton = (props) => <button {...__props__} />;
+```
+
+We recommend always doing it so that you are not concerned with implementation details (ie. which props/events to accept). This is also generally good practice anyway for "leaf" components.
+
+> Similarly to when changing the underlying element type directly, it is your responsibility to ensure the element type rendered by your custom component is compatible in terms of accessibility and functionality.
+
+### Your component needs to forward ref
+
+Additionally, Radix will sometimes need to attach a `ref` to your component (for example to measure its size). If your component doesn't accept a `ref`, then it will break.
+
+This is done using `React.forwardRef` (read more on [react.dev](https://react.dev/reference/react/forwardRef)).
+
+```jsx line=5-7
+// before
+const MyButton = (props) => <button {...props} />;
+
+// after
+const MyButton = __React.forwardRef__((props, __forwardedRef__) => (
+  <button {...props} __ref__={__forwardedRef__} />
+));
+```
+
+Whilst this isn't necessary for **all** parts, we recommend always doing it so that you are not concerned with implementation details. This is also generally good practice anyway for leaf components.
+
+## Composing multiple primitives
+
+`asChild` can be used as deeply as you need to. This means it is a great way to compose multiple primitive's behaviour together.
+Here is an example of how you can compose `Tooltip.Trigger` and `Dialog.Trigger` together with your own button:
+
+```jsx line=13-17
+import * as React from 'react';
+import * as Dialog from '@radix-ui/react-dialog';
+import * as Tooltip from '@radix-ui/react-tooltip';
+
+const MyButton = React.forwardRef((props, forwardedRef) => (
+  <button {...props} ref={forwardedRef} />
+));
+
+export default () => {
+  return (
+    <Dialog.Root>
+      <Tooltip.Root>
+        <Tooltip.Trigger __asChild__>
+          <Dialog.Trigger __asChild__>
+            <MyButton>Open dialog</MyButton>
+          </Dialog.Trigger>
+        </Tooltip.Trigger>
+        <Tooltip.Portal>…</Tooltip.Portal>
+      </Tooltip.Root>
+
+      <Dialog.Portal>...</Dialog.Portal>
+    </Dialog.Root>
+  );
+};
+```

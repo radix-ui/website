@@ -4,12 +4,18 @@ export const primitivesRoutes = [
     pages: [
       { title: 'Introduction', slug: 'docs/primitives/overview/introduction' },
       { title: 'Getting started', slug: 'docs/primitives/overview/getting-started' },
-      { title: 'Styling', slug: 'docs/primitives/overview/styling' },
-      { title: 'Animation', slug: 'docs/primitives/overview/animation' },
       { title: 'Accessibility', slug: 'docs/primitives/overview/accessibility' },
-      { title: 'Server side rendering', slug: 'docs/primitives/overview/server-side-rendering' },
-      { title: 'asChild', slug: 'docs/primitives/overview/as-child-prop' },
       { title: 'Releases', slug: 'docs/primitives/overview/releases' },
+    ],
+  },
+
+  {
+    label: 'Guides',
+    pages: [
+      { title: 'Styling', slug: 'docs/primitives/guides/styling' },
+      { title: 'Animation', slug: 'docs/primitives/guides/animation' },
+      { title: 'Composition', slug: 'docs/primitives/guides/composition' },
+      { title: 'Server side rendering', slug: 'docs/primitives/guides/server-side-rendering' },
     ],
   },
 
