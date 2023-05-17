@@ -195,8 +195,16 @@ Contains the top level menu items.
       required: false,
       type: 'boolean',
       default: 'false',
-      description:
-        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+      description: (
+        <>
+          Change the default rendered element for the one passed as a child,
+          merging their props and behavior.
+          <br />
+          <br />
+          Read our <a href="../guides/composition">Composition</a> guide for more
+          details.
+        </>
+      ),
     },
   ]}
 />
@@ -221,8 +229,16 @@ A top level menu item, contains a link or trigger with content combination.
       required: false,
       type: 'boolean',
       default: 'false',
-      description:
-        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+      description: (
+        <>
+          Change the default rendered element for the one passed as a child,
+          merging their props and behavior.
+          <br />
+          <br />
+          Read our <a href="../guides/composition">Composition</a> guide for more
+          details.
+        </>
+      ),
     },
     {
       name: 'value',
@@ -250,8 +266,16 @@ The button that toggles the content.
       required: false,
       type: 'boolean',
       default: 'false',
-      description:
-        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+      description: (
+        <>
+          Change the default rendered element for the one passed as a child,
+          merging their props and behavior.
+          <br />
+          <br />
+          Read our <a href="../guides/composition">Composition</a> guide for more
+          details.
+        </>
+      ),
     },
   ]}
 />
@@ -280,8 +304,16 @@ Contains the content associated with each trigger.
       required: false,
       type: 'boolean',
       default: 'false',
-      description:
-        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+      description: (
+        <>
+          Change the default rendered element for the one passed as a child,
+          merging their props and behavior.
+          <br />
+          <br />
+          Read our <a href="../guides/composition">Composition</a> guide for more
+          details.
+        </>
+      ),
     },
     {
       name: 'disableOutsidePointerEvents',
@@ -384,8 +416,16 @@ A navigational link.
       required: false,
       type: 'boolean',
       default: 'false',
-      description:
-        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+      description: (
+        <>
+          Change the default rendered element for the one passed as a child,
+          merging their props and behavior.
+          <br />
+          <br />
+          Read our <a href="../guides/composition">Composition</a> guide for more
+          details.
+        </>
+      ),
     },
     {
       name: 'active',
@@ -430,8 +470,16 @@ An optional indicator element that renders below the list, is used to highlight 
       required: false,
       type: 'boolean',
       default: 'false',
-      description:
-        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+      description: (
+        <>
+          Change the default rendered element for the one passed as a child,
+          merging their props and behavior.
+          <br />
+          <br />
+          Read our <a href="../guides/composition">Composition</a> guide for more
+          details.
+        </>
+      ),
     },
     {
       name: 'forceMount',
@@ -470,8 +518,16 @@ An optional viewport element that is used to render active content outside of th
       required: false,
       type: 'boolean',
       default: 'false',
-      description:
-        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+      description: (
+        <>
+          Change the default rendered element for the one passed as a child,
+          merging their props and behavior.
+          <br />
+          <br />
+          Read our <a href="../guides/composition">Composition</a> guide for more
+          details.
+        </>
+      ),
     },
     {
       name: 'forceMount',
@@ -639,7 +695,7 @@ This will ensure accessibility and consistent keyboard control is maintained. He
 
 ```jsx line=11-20,26,29
 import { styled } from '@stitches/react';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 

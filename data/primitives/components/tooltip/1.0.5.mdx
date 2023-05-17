@@ -160,8 +160,16 @@ The button that toggles the tooltip. By default, the `Tooltip.Content` will posi
       required: false,
       type: 'boolean',
       default: 'false',
-      description:
-        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+      description: (
+        <>
+          Change the default rendered element for the one passed as a child,
+          merging their props and behavior.
+          <br />
+          <br />
+          Read our <a href="../guides/composition">Composition</a> guide for more
+          details.
+        </>
+      ),
     },
   ]}
 />
@@ -212,8 +220,16 @@ The component that pops out when the tooltip is open.
       required: false,
       type: 'boolean',
       default: 'false',
-      description:
-        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+      description: (
+        <>
+          Change the default rendered element for the one passed as a child,
+          merging their props and behavior.
+          <br />
+          <br />
+          Read our <a href="../guides/composition">Composition</a> guide for more
+          details.
+        </>
+      ),
     },
     {
       name: 'aria-label',
@@ -446,8 +462,16 @@ An optional arrow element to render alongside the tooltip. This can be used to h
       required: false,
       type: 'boolean',
       default: 'false',
-      description:
-        'Change the component to the HTML tag or custom component of the only child. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+      description: (
+        <>
+          Change the default rendered element for the one passed as a child,
+          merging their props and behavior.
+          <br />
+          <br />
+          Read our <a href="../guides/composition">Composition</a> guide for more
+          details.
+        </>
+      ),
     },
     {
       name: 'width',
