@@ -557,3 +557,20 @@ export const Slider = React.forwardRef((props, forwardedRef) => {
   );
 });
 ```
+
+## Caveats
+
+### Mouse events are not fired
+
+Because of [a limitation](https://github.com/radix-ui/primitives/blob/83a8c13bf66f3d9f17d77caeb187a69eb146930b/packages/react/slider/src/Slider.tsx#L383-L384) we faced during implementation, the following example won't work as expected and the `onMouseDown` and `onMouseUp` event handlers won't be fired:
+
+```jsx
+<Slider.Root
+  onMouseDown={() => console.log('onMouseDown')}
+  onMouseUp={() => console.log('onMouseUp')}
+>
+  …
+</Slider.Root>
+```
+
+We recommend using pointer events instead (eg. `onPointerDown`, `onPointerUp`). Regardless of the above limitation, these events are better suited for cross-platform/device handling as they are fired for all pointer input types (mouse, touch, pen, etc.).
