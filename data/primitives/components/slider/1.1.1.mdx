@@ -439,6 +439,16 @@ export default () => (
 
 Adheres to the [Slider WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slidertwothumb).
 
+## Pointer Events and Cross-Device Support
+
+When using the `slider` component, it's important to note that the `onMouseDown` and `onMouseUp` event handlers **may not** be functional. Instead, we do recommend using the `onPointerDown` and `onPointerUp` event handlers as alternatives.
+
+The `onPointerDown` event is triggered when the user initiates a pointer (such as a mouse click or touch) interaction with the slider component. It can be used to handle the start of a dragging operation or any other action you want to perform when the user interacts with the slider.
+
+Similarly, the `onPointerUp` event is triggered when the user releases the pointer, indicating the end of the interaction. This event can be used to handle the completion of a dragging operation or to perform any necessary clean-up tasks.
+
+By using the `onPointerDown` and `onPointerUp` event handlers instead of `onMouseDown` and `onMouseUp`, you can ensure compatibility and consistent behavior across different input devices and browsers.
+
 ### Keyboard Interactions
 
 <KeyboardTable
