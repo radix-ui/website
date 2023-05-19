@@ -53,10 +53,10 @@ const NavigationMenuDemo = () => {
               <ListItem title="Getting started" href="/docs/primitives/overview/getting-started">
                 A quick tutorial to get you up and running with Radix Primitives.
               </ListItem>
-              <ListItem title="Styling" href="/docs/primitives/overview/styling">
+              <ListItem title="Styling" href="/docs/primitives/guides/styling">
                 Unstyled and compatible with any styling solution.
               </ListItem>
-              <ListItem title="Animation" href="/docs/primitives/overview/animation">
+              <ListItem title="Animation" href="/docs/primitives/guides/animation">
                 Use CSS keyframes or any animation library of your choice.
               </ListItem>
               <ListItem title="Accessibility" href="/docs/primitives/overview/accessibility">
