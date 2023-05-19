@@ -5,11 +5,11 @@ import { violet, blackA } from '@radix-ui/colors';
 
 const SliderDemo = () => (
   <form>
-    <SliderRoot defaultValue={[50]} max={100} step={1} aria-label="Volume">
+    <SliderRoot defaultValue={[50]} max={100} step={1}>
       <SliderTrack>
         <SliderRange />
       </SliderTrack>
-      <SliderThumb />
+      <SliderThumb aria-label="Volume" />
     </SliderRoot>
   </form>
 );
