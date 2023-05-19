@@ -20,7 +20,7 @@ const NavigationMenuDemo = () => {
               <li className="row-span-3 grid">
                 <NavigationMenu.Link asChild>
                   <a
-                    className="focus:shadow-violet7 from-purple9 to-indigo9 flex 
+                    className="focus:shadow-violet7 from-purple9 to-indigo9 flex
                     h-full w-full select-none flex-col justify-end rounded-[6px] bg-gradient-to-b p-[25px] no-underline outline-none focus:shadow-[0_0_0_2px]"
                     href="/"
                   >
@@ -68,10 +68,10 @@ const NavigationMenuDemo = () => {
               <ListItem title="Getting started" href="/docs/primitives/overview/getting-started">
                 A quick tutorial to get you up and running with Radix Primitives.
               </ListItem>
-              <ListItem title="Styling" href="/docs/primitives/overview/styling">
+              <ListItem title="Styling" href="/docs/primitives/guides/styling">
                 Unstyled and compatible with any styling solution.
               </ListItem>
-              <ListItem title="Animation" href="/docs/primitives/overview/animation">
+              <ListItem title="Animation" href="/docs/primitives/guides/animation">
                 Use CSS keyframes or any animation library of your choice.
               </ListItem>
               <ListItem title="Accessibility" href="/docs/primitives/overview/accessibility">
