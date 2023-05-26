@@ -10,6 +10,15 @@ const withOptimizedImages = require('next-optimized-images');
 const withTM = require('next-transpile-modules')(['@modulz/design-system']);
 
 module.exports = withPlugins([withTM, withOptimizedImages, withVideos], {
+  webpack: (config, options) => {
+    config.module.rules.push({
+      test: /\.mjs/,
+      include: /node_modules/,
+      type: 'javascript/auto',
+    });
+    return config;
+  },
+
   // Next.js config
   async redirects() {
     return [
