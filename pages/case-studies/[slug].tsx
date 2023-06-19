@@ -31,7 +31,7 @@ type CaseStudyPage = {
     author: string;
     authorAvatarUrl: string;
     authorPosition: string;
-    productsUsed: string;
+
     companyAbout: string;
     companyUrl: string;
     companyFounded: string;
@@ -127,46 +127,6 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                     Founded
                   </Paragraph>
                   <Paragraph>{frontmatter.companyFounded}</Paragraph>
-                </Box>
-                <Box css={{ mb: '$5' }}>
-                  <Paragraph as="h4" css={{ fontWeight: 500 }}>
-                    Products
-                  </Paragraph>
-                  {frontmatter.productsUsed.split(', ').map((product) => {
-                    if (product === 'Primitives') {
-                      return (
-                        <Paragraph key={product}>
-                          <NextLink href="/" passHref>
-                            <Link>Primitives</Link>
-                          </NextLink>
-                        </Paragraph>
-                      );
-                    }
-                    if (product === 'Colors') {
-                      return (
-                        <Paragraph key={product}>
-                          <NextLink href="/colors" passHref>
-                            <Link>Colors</Link>
-                          </NextLink>
-                        </Paragraph>
-                      );
-                    }
-                    if (product === 'Stitches') {
-                      return (
-                        <Paragraph key={product}>
-                          <Link href="https://stitches.dev">Stitches</Link>
-                        </Paragraph>
-                      );
-                    }
-                    if (product === 'Icons') {
-                      return (
-                        <Paragraph key={product}>
-                          <Link href="https://icons.radix-ui.com">Icons</Link>
-                        </Paragraph>
-                      );
-                    }
-                    return null;
-                  })}
                 </Box>
                 <Separator size="2" css={{ my: '$7' }} />
                 <Box css={{ mb: '$5' }}>

@@ -27,8 +27,8 @@ export const CaseStudiesSection = () => {
       <Container size="3">
         <Box css={{ mb: '$5' }}>
           <MarketingCaption css={{ mb: '$1' }}>Case studies</MarketingCaption>
-          <Heading as="h2" size="3" css={{ maxWidth: 500 }}>
-            World-class teams use Radix to power their products
+          <Heading as="h2" size="3" css={{ maxWidth: 540 }}>
+            World-class teams use Radix Primitives to power their products
           </Heading>
         </Box>
 

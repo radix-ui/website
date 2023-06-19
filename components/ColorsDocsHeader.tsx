@@ -6,7 +6,7 @@ import { RadixLogo } from '@components/RadixLogo';
 import { ThemeToggle } from '@components/ThemeToggle';
 import { BoxLink } from '@components/BoxLink';
 import { RemoveScroll } from 'react-remove-scroll';
-import { ResourcePrimitives, ResourceStitches, ResourceIcons, ResourcesPopover } from './Resources';
+import { ResourcePrimitives, ResourceIcons, ResourcesPopover } from './Resources';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 
 type ColorsDocsHeaderProps = {
@@ -38,7 +38,6 @@ export const ColorsDocsHeader = (props: ColorsDocsHeaderProps) => {
 
               <ResourcesPopover>
                 <ResourcePrimitives />
-                <ResourceStitches />
                 <ResourceIcons />
               </ResourcesPopover>
             </Box>

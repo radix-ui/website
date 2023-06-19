@@ -86,7 +86,6 @@ export function PrimitivesDocsPage({ children }: { children: React.ReactNode }) 
             <Box css={{ mt: '$8' }}>
               <NavHeading>Resources</NavHeading>
               <Box css={{ px: '$2' }}>
-                <ResourceStitches />
                 <ResourceColors />
                 <ResourceIcons />
               </Box>

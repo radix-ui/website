@@ -33,20 +33,6 @@ export const OtherProductsSection = () => {
           flow={{ '@initial': 'row', '@bp2': 'column' }}
           css={{ justifyContent: 'start', '@bp2': { gridAutoColumns: '220px' }, mb: '$8' }}
         >
-          <Card as="a" target="_blank" href="https://stitches.dev" variant="interactive">
-            <Box css={{ p: '$3' }}>
-              <Box css={{ mb: '$3' }}>
-                <StitchesLogoIcon width="30" height="30" />
-              </Box>
-              <Heading as="h3" css={{ mb: '$2' }}>
-                Stitches
-              </Heading>
-              <Text css={{ lineHeight: 1.5 }}>
-                CSS-in-JS with near-zero runtime, SSR support, and a best-in-class DX.
-              </Text>
-            </Box>
-          </Card>
-
           <Card as="a" target="_blank" href="/colors" variant="interactive">
             <Box css={{ p: '$3' }}>
               <Box css={{ mb: '$3' }}>

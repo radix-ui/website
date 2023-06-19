@@ -62,7 +62,6 @@ export function ColorsDocsPage({ children }: { children: React.ReactNode }) {
               <NavHeading>Resources</NavHeading>
               <Box css={{ px: '$2' }}>
                 <ResourcePrimitives />
-                <ResourceStitches />
                 <ResourceIcons />
               </Box>
             </Box>
