@@ -6,7 +6,6 @@ import {
   CaretRightIcon,
   CheckIcon,
   GitHubLogoIcon,
-  StitchesLogoIcon,
   TwitterLogoIcon,
 } from '@radix-ui/react-icons';
 import { DemoButton } from '@components/marketing/DemoButton';

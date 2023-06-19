@@ -10,7 +10,7 @@ import {
   Link,
   styled,
 } from '@modulz/design-system';
-import { PlusIcon, StitchesLogoIcon, MixIcon } from '@radix-ui/react-icons';
+import { PlusIcon, MixIcon } from '@radix-ui/react-icons';
 import { RadixLogoIcon } from './RadixLogoIcon';
 
 function ResourcePrimitives() {

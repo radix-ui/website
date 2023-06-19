@@ -15,7 +15,7 @@ import { ColorsDocsHeader } from '@components/ColorsDocsHeader';
 //
 import { allColorsRoutes, colorsRoutes } from '@lib/colorsRoutes';
 import { NavHeading, NavItem, NavItemTitle } from './DocsNav';
-import { ResourceIcons, ResourcePrimitives, ResourceStitches } from './Resources';
+import { ResourceIcons, ResourcePrimitives } from './Resources';
 
 export function ColorsDocsPage({ children }: { children: React.ReactNode }) {
   const router = useRouter();
