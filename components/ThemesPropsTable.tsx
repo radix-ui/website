@@ -16,6 +16,7 @@ const themeVariables = {
       default: formatValues([themes.defaultButtonColor]),
     },
     radius: {
+      values: formatValues(themes.buttonRadiusValues),
       default: formatValues([themes.defaultButtonRadius]),
     },
   },

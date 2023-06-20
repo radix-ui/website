@@ -12,64 +12,51 @@ metaDescription: Use to trigger an action or event, such as submitting a form or
 This component is based on the `button` element and supports common margin props `m`, `mx`, `my`, `ml`, `mr`, `mt`, `mb`.
 
 <ThemesPropsTable
-  data={(variables) => [
+  data={({ button }) => [
     {
       name: 'size',
       required: false,
-      type: variables.button.size.values,
-      default: variables.button.size.default,
+      type: button.size.values,
+      default: button.size.default,
       typeSimple: 'enum',
     },
     {
       name: 'variant',
       required: false,
-      type: variables.button.variant.values,
-      default: variables.button.variant.default,
+      type: button.variant.values,
+      default: button.variant.default,
       typeSimple: 'enum',
     },
     {
       name: 'color',
       required: false,
       typeSimple: 'enum',
-      default: variables.button.color.default,
-      description: <>Use to override the default color inherited from the global theme. Read our <a href="/TODO">theming guide</a> for more details.</>,
+      default: button.color.default,
+      description: (
+        <>
+          Use to override the default color inherited from the global theme.
+          Read our <a href="/TODO">theming guide</a> for more details.
+        </>
+      ),
     },
     {
       name: 'radius',
       required: false,
       typeSimple: 'enum',
-      default: variables.button.radius.default,
-      description: <>Use to override the default radius inherited from the global theme. Read our <a href="/TODO">theming guide</a> for more details.</>,
+      type: button.radius.values,
+      default: button.radius.default,
+      description: (
+        <>
+          Use to override the default radius inherited from the global theme.
+          Read our <a href="/TODO">theming guide</a> for more details.
+        </>
+      ),
     },
 
 ]}
 />
 
 ## Examples
-
-### Variant
-
-Use the `variant` prop to control the visual color variation.
-
-```jsx live=true
-<Flex direction="column" gap="3">
-  <Flex gap="2">
-    <Button variant="surface">Button</Button>
-    <Button variant="solid">Button</Button>
-    <Button variant="subtle">Button</Button>
-    <Button variant="outline">Button</Button>
-    <Button variant="ghost">Button</Button>
-  </Flex>
-
-  <Flex gap="2">
-    <Button variant="surface-mono">Button</Button>
-    <Button variant="solid-mono">Button</Button>
-    <Button variant="subtle-mono">Button</Button>
-    <Button variant="outline-mono">Button</Button>
-    <Button variant="ghost-mono">Button</Button>
-  </Flex>
-</Flex>
-```
 
 ### Size
 
@@ -80,5 +67,56 @@ Use the `size` prop to control the size.
   <Button size="1">Button</Button>
   <Button size="2">Button</Button>
   <Button size="3">Button</Button>
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style.
+
+```jsx live=true
+<Flex direction="column" gap="3">
+  <Flex gap="3">
+    <Button variant="surface">Surface</Button>
+    <Button variant="solid">Solid</Button>
+    <Button variant="subtle">Subtle</Button>
+    <Button variant="outline">Outline</Button>
+    <Button variant="ghost">Ghost</Button>
+  </Flex>
+
+  <Flex gap="3">
+    <Button variant="surface-mono">Surface</Button>
+    <Button variant="solid-mono">Solid</Button>
+    <Button variant="subtle-mono">Subtle</Button>
+    <Button variant="outline-mono">Outline</Button>
+    <Button variant="ghost-mono">Ghost</Button>
+  </Flex>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific color value, ignoring the global theme.
+
+```jsx live=true
+<Flex gap="2">
+  <Button color="crimson">Crimson</Button>
+  <Button color="indigo">Indigo</Button>
+  <Button color="grass">Grass</Button>
+  <Button color="orange">Orange</Button>
+</Flex>
+```
+
+### Radius
+
+Use the `radius` prop to assign a specific radius value, ignoring the global theme.
+
+```jsx live=true
+<Flex gap="2">
+  <Button radius="none">None</Button>
+  <Button radius="small">Small</Button>
+  <Button radius="medium">Medium</Button>
+  <Button radius="large">Large</Button>
+  <Button radius="full">Full</Button>
 </Flex>
 ```
