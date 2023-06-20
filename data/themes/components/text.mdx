@@ -1,0 +1,269 @@
+---
+metaTitle: Text
+metaDescription: Displays a basic text primitive.
+---
+
+```jsx live=true
+<Text>The quick brown fox jumps over the lazy dog.</Text>
+```
+
+## API Reference
+
+This component is based on the `p` element and supports common margin props `m`, `mx`, `my`, `ml`, `mr`, `mt`, `mb`.
+
+<ThemesPropsTable
+  data={({ text }) => [
+    {
+      name: 'asChild',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description: (
+        <>
+          Change the default rendered element for the one passed as a child,
+          merging their props and behavior.
+          <br />
+          <br />
+          Read our <a href="../guides/composition">Composition</a> guide for more
+          details.
+        </>
+      ),
+    },
+    {
+      name: 'size',
+      required: false,
+      type: text.size.values,
+      default: text.size.default,
+      typeSimple: 'enum',
+    },
+    {
+      name: 'weight',
+      required: false,
+      type: text.weight.values,
+      default: text.weight.default,
+      typeSimple: 'enum',
+    },
+    {
+      name: 'align',
+      required: false,
+      type: text.align.values,
+      default: text.align.default,
+      typeSimple: 'enum',
+    },
+    {
+      name: 'trim',
+      required: false,
+      type: text.trim.values,
+      default: text.trim.default,
+      typeSimple: 'enum',
+    },
+    {
+      name: 'color',
+      required: false,
+      default: text.color.default,
+      typeSimple: 'enum',
+    },
+  ]}
+/>
+
+## Examples
+
+### As another element
+
+Use the `asChild` prop to render text as a `div` or `span`. This prop is purely semantic and does not change the visual appearance of the text.
+
+```jsx live=true
+<>
+  <Text>This is a paragraph.</Text>
+  <Text asChild>
+    <div>This is a div.</div>
+  </Text>
+  <Text asChild>
+    <span>This is a span.</span>
+  </Text>
+</>
+```
+
+### Alignment
+
+Use the `align` prop to set text alignment. You can change the alignment across breakpoints using the object syntax.
+
+```jsx live="true"
+<Text align="left">Left-aligned</Text>
+<Text align="center">Center-aligned</Text>
+<Text align="right">Right-aligned</Text>
+```
+
+### Size
+
+Use the `size` prop to control the size of the text. The prop also provides correct line height and corrective letter spacing—as text size increases, the relative line height and letter spacing decrease.
+
+```jsx live=true
+<Flex direction="column" gap="3" width="max-content">
+  <Text size="9">The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="8">The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="7">The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="6">The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="5">The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="4">The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="3">The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="2">The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="1">The quick brown fox jumps over the lazy dog.</Text>
+</Flex>
+```
+
+Sizes 2–4 are designed to work well for long-form content.
+
+```jsx live=true
+<Text mb="5" size="4">
+  The goal of typography is to relate font size, line height, and line width in a proportional way that maximizes beauty and makes reading easier and more pleasant. The question is: What proportion(s) will give us the best results? The golden ratio is often observed in nature where beauty and utility intersect; perhaps we can use this “divine” proportion to enhance these attributes in our typography.
+</Text>
+
+<Text mb="5" size="3">
+  The goal of typography is to relate font size, line height, and line width in a proportional way that maximizes beauty and makes reading easier and more pleasant. The question is: What proportion(s) will give us the best results? The golden ratio is often observed in nature where beauty and utility intersect; perhaps we can use this “divine” proportion to enhance these attributes in our typography.
+</Text>
+
+<Text size="2" color="gray">
+  The goal of typography is to relate font size, line height, and line width in a proportional way that maximizes beauty and makes reading easier and more pleasant. The question is: What proportion(s) will give us the best results? The golden ratio is often observed in nature where beauty and utility intersect; perhaps we can use this “divine” proportion to enhance these attributes in our typography.
+</Text>
+```
+
+Sizes 1–3 are designed to work well for UI labels.
+
+```jsx live=true
+<Grid align="center" columns="2" gap="5" p="3">
+  <Flex direction="column">
+    <Text size="3" weight="bold">
+      Quick Look
+    </Text>
+    <Text color="gray" size="2">
+      Third-party extensions
+    </Text>
+  </Flex>
+
+  <Flex direction="column">
+    <Text size="2" weight="bold">
+      Quick Look
+    </Text>
+    <Text color="gray" size="2">
+      Third-party extensions
+    </Text>
+  </Flex>
+
+  <Flex direction="column">
+    <Text size="2" weight="bold">
+      Quick Look
+    </Text>
+    <Text color="gray" size="1">
+      Third-party extensions
+    </Text>
+  </Flex>
+
+  <Flex direction="column">
+    <Text size="1" weight="bold">
+      Quick Look
+    </Text>
+    <Text color="gray" size="1">
+      Third-party extensions
+    </Text>
+  </Flex>
+</Grid>
+```
+
+### Trim
+
+Use the `trim` prop to trim the leading space at the start, end, or both sides of the text box. You can change the leading trim across breakpoints using the object syntax.
+
+The prop works similarly to the upcoming [half-leading control](https://www.w3.org/TR/css-inline-3/#leading-trim) spec, but uses a common [negative margin workaround](https://seek-oss.github.io/capsize/) under the hood for cross-browser support.
+
+```jsx live="true"
+<Flex direction="column" gap="3">
+  <Text
+    trim="normal"
+    style={{
+      background: 'var(--monoA2)',
+      borderTop: '1px dashed var(--monoA7)',
+      borderBottom: '1px dashed var(--monoA7)',
+    }}
+  >
+    Without trim
+  </Text>
+  <Text
+    trim="both"
+    style={{
+      background: 'var(--monoA2)',
+      borderTop: '1px dashed var(--monoA7)',
+      borderBottom: '1px dashed var(--monoA7)',
+    }}
+  >
+    With trim
+  </Text>
+</Flex>
+```
+
+Trimming the leading is useful when dialing in vertical spacing in cards or other “boxy” components. Otherwise, padding looks larger on top and bottom than on the sides.
+
+```jsx live="true"
+<Flex direction="column" gap="3">
+  <Box
+    style={{
+      background: 'var(--monoA2)',
+      border: '1px dashed var(--monoA7)',
+    }}
+    p="4"
+  >
+    <Heading mb="1" size="3">
+      Without trim
+    </Heading>
+    <Text>
+      The goal of typography is to relate font size, line height, and line width
+      in a proportional way that maximizes beauty and makes reading easier and
+      more pleasant.
+    </Text>
+  </Box>
+
+  <Box
+    p="4"
+    style={{
+      background: 'var(--monoA2)',
+      border: '1px dashed var(--monoA7)',
+    }}
+  >
+    <Heading mb="1" size="3" trim="start">
+      With trim
+    </Heading>
+    <Text trim="end">
+      The goal of typography is to relate font size, line height, and line width
+      in a proportional way that maximizes beauty and makes reading easier and
+      more pleasant.
+    </Text>
+  </Box>
+</Flex>
+```
+
+### Weights
+
+Use the `weight` prop to set the weight of the text. You can change the weight across breakpoints using the object syntax.
+
+```jsx live="true"
+<Text weight="normal">
+  Ambiguous voice of a heart which prefers kiwi bowls to a zephyr.
+</Text>
+
+<Text weight="bold">
+  Ambiguous voice of a heart which prefers kiwi bowls to a zephyr.
+</Text>
+```
+
+### With formatting
+
+Text component works in tandem with the formatting components.
+
+```jsx live="true"
+<Text size="5">
+  Look, such a helpful <Link href="#">link</Link>, an
+  <Em>italic emphasis</Em>, a piece of computer <Code>code</Code>, and even a hotkey
+  combination <Kbd>⇧⌘A</Kbd> within the text.
+  <Sup>1</Sup>
+</Text>
+```

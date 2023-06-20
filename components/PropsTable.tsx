@@ -12,7 +12,7 @@ import { InfoCircledIcon, DividerHorizontalIcon } from '@radix-ui/react-icons';
 import { RegionTable } from './RegionTable';
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
 
-type PropDef = {
+export type PropDef = {
   name: string;
   required?: boolean;
   default?: string | boolean;
@@ -87,6 +87,7 @@ export function PropsTable({
                   </PopoverTrigger>
                   <PopoverContent
                     side="top"
+                    css={{ minWidth: 'auto' }}
                     onOpenAutoFocus={(event) => {
                       event.preventDefault();
                       (event.currentTarget as HTMLElement)?.focus();
@@ -105,7 +106,7 @@ export function PropsTable({
               <Code css={{ bc: '$gray4', color: '$gray11' }}>
                 {Boolean(typeSimple) ? typeSimple : type}
               </Code>
-              {Boolean(typeSimple) && (
+              {Boolean(typeSimple) && Boolean(type) && (
                 <Popover>
                   <PopoverTrigger asChild>
                     <IconButton
@@ -123,7 +124,7 @@ export function PropsTable({
                       </AccessibleIcon>
                     </IconButton>
                   </PopoverTrigger>
-                  <PopoverContent side="top" css={{ maxWidth: 'max-content' }}>
+                  <PopoverContent side="top" css={{ maxWidth: 'max-content', minWidth: 'auto' }}>
                     <Box css={{ py: '$2', px: '$2', whiteSpace: 'nowrap' }}>
                       <Code>{type}</Code>
                     </Box>

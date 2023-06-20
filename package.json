@@ -50,6 +50,7 @@
     "@radix-ui/react-toolbar": "1.0.4",
     "@radix-ui/react-tooltip": "1.0.6",
     "@radix-ui/react-visually-hidden": "1.0.3",
+    "@radix-ui/themes": "0.0.2",
     "algoliasearch": "^4.14.2",
     "codesandbox": "^2.2.3",
     "copy-to-clipboard": "^3.3.1",
@@ -93,11 +94,13 @@
     "lint-staged": "10.5.3",
     "prettier": "^2.2.1",
     "pretty-quick": "^3.1.0",
+    "sucrase": "3.29.0",
     "typescript": "^4.2.4"
   },
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
-  }
+  },
+  "packageManager": "yarn@1.22.18"
 }

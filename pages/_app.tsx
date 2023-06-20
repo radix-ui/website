@@ -8,6 +8,8 @@ import { PrimitivesDocsPage } from '@components/PrimitivesDocsPage';
 import { ColorsDocsPage } from '@components/ColorsDocsPage';
 import { useAnalytics } from '@lib/analytics';
 import { CssLibPreferenceProvider } from '@components/CssLibPreference';
+import { ThemesDocsPage } from '@components/ThemesDocsPage';
+import '@radix-ui/themes/dist/index.css';
 
 const globalStyles = globalCss({
   '*, *::before, *::after': {
@@ -56,6 +58,7 @@ function App({ Component, pageProps }: AppProps) {
 
   const isPrimitivesDocs = router.pathname.includes('/docs/primitives');
   const isColorsDocs = router.pathname.includes('/docs/colors');
+  const isThemesDocs = router.pathname.includes('/docs/themes');
 
   return (
     <DesignSystemProvider>
@@ -66,17 +69,33 @@ function App({ Component, pageProps }: AppProps) {
           value={{ light: 'light-theme', dark: darkTheme.className }}
           defaultTheme="system"
         >
-          {isPrimitivesDocs ? (
-            <PrimitivesDocsPage>
-              <Component {...pageProps} />
-            </PrimitivesDocsPage>
-          ) : isColorsDocs ? (
-            <ColorsDocsPage>
-              <Component {...pageProps} />
-            </ColorsDocsPage>
-          ) : (
-            <Component {...pageProps} />
-          )}
+          {(() => {
+            if (isPrimitivesDocs) {
+              return (
+                <PrimitivesDocsPage>
+                  <Component {...pageProps} />
+                </PrimitivesDocsPage>
+              );
+            }
+
+            if (isColorsDocs) {
+              return (
+                <ColorsDocsPage>
+                  <Component {...pageProps} />
+                </ColorsDocsPage>
+              );
+            }
+
+            if (isThemesDocs) {
+              return (
+                <ThemesDocsPage>
+                  <Component {...pageProps} />
+                </ThemesDocsPage>
+              );
+            }
+
+            return <Component {...pageProps} />;
+          })()}
         </ThemeProvider>
       </CssLibPreferenceProvider>
     </DesignSystemProvider>

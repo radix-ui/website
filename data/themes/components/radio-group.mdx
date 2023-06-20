@@ -1,0 +1,134 @@
+---
+metaTitle: Radio Group
+metaDescription: Use when only one choice may be selected from a given set of options.
+---
+
+```jsx live=true
+<RadioGroup.Root defaultValue="1">
+  <Flex gap="1" direction="column">
+    <label>
+      <Flex gap="2" align="center">
+        <RadioGroup.Item value="1" />
+        <Text>Default</Text>
+      </Flex>
+    </label>
+    <label>
+      <Flex gap="2" align="center">
+        <RadioGroup.Item value="2" />
+        <Text>Comfortable</Text>
+      </Flex>
+    </label>
+    <label>
+      <Flex gap="2" align="center">
+        <RadioGroup.Item value="3" />
+        <Text>Compact</Text>
+      </Flex>
+    </label>
+  </Flex>
+</RadioGroup.Root>
+```
+
+## API Reference
+
+This component inherits the props from the [Radix Radio Group](/docs/primitives/components/radio-group) primitive and supports common margin props `m`, `mx`, `my`, `ml`, `mr`, `mt`, `mb`.
+
+### Root
+
+Contains all the parts of a radio group.
+
+<ThemesPropsTable
+  data={(variables) => [
+    {
+      name: 'size',
+      required: false,
+      type: variables.radioGroup.size.values,
+      default: variables.radioGroup.size.default,
+      typeSimple: 'enum',
+    },
+    {
+      name: 'variant',
+      required: false,
+      type: variables.radioGroup.variant.values,
+      default: variables.radioGroup.variant.default,
+      typeSimple: 'enum',
+    },
+    {
+      name: 'color',
+      required: false,
+      typeSimple: 'enum',
+      default: variables.radioGroup.color.default,
+      description: (
+        <>
+          Use to override the default color inherited from the global theme.
+          Read our <a href="/TODO">theming guide</a> for more details.
+        </>
+      ),
+    },
+  ]}
+/>
+
+### Item
+
+An item in the group that can be checked. An input will also render when used within a form to ensure events propagate correctly.
+
+## Examples
+
+### Variant
+
+Use the `variant` prop to control the visual color variation.
+
+```jsx live=true
+<Flex gap="6">
+  <RadioGroup.Root variant="solid" defaultValue="1">
+    <Flex gap="1" direction="column">
+      <label>
+        <Flex gap="2" align="center">
+          <RadioGroup.Item value="1" />
+          <Text>Default</Text>
+        </Flex>
+      </label>
+    </Flex>
+  </RadioGroup.Root>
+
+  <RadioGroup.Root variant="solid-mono" defaultValue="1">
+    <Flex gap="1" direction="column">
+      <label>
+        <Flex gap="2" align="center">
+          <RadioGroup.Item value="1" />
+          <Text>Default</Text>
+        </Flex>
+      </label>
+    </Flex>
+  </RadioGroup.Root>
+</Flex>
+```
+
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Flex gap="5" align="center">
+  <RadioGroup.Root size="1" defaultValue="1">
+    <Flex gap="1" direction="column">
+      <label>
+        <Flex gap="2" align="center">
+          <RadioGroup.Item value="1" />
+          <Text>Default</Text>
+        </Flex>
+      </label>
+    </Flex>
+  </RadioGroup.Root>
+
+  <RadioGroup.Root size="2" defaultValue="1">
+    <Flex gap="1" direction="column">
+      <label>
+        <Flex gap="2" align="center">
+          <RadioGroup.Item value="1" />
+          <Text>Default</Text>
+        </Flex>
+      </label>
+    </Flex>
+  </RadioGroup.Root>
+</Flex>
+```

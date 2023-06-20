@@ -6,7 +6,15 @@ import { renderSnippet, gtagUrl } from '@lib/analytics';
 export default class Document extends NextDocument {
   render() {
     return (
-      <Html lang="en">
+      <Html
+        lang="en"
+        data-color-scale="violet"
+        data-background-feel="natural"
+        data-foreground-feel="natural"
+        data-gray-scale="natural"
+        data-button-radius="medium"
+        data-scaling="regular"
+      >
         <Head>
           <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
           <link
@@ -64,6 +72,13 @@ export default class Document extends NextDocument {
 @font-face {
   font-family: 'Untitled Sans';
   font-weight: 500;
+  font-display: swap;
+  src: url(/fonts/UntitledSansWeb-Medium.woff2) format('woff2'), url(/fonts/UntitledSansWeb-Medium.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Untitled Sans';
+  font-weight: 600;
   font-display: swap;
   src: url(/fonts/UntitledSansWeb-Medium.woff2) format('woff2'), url(/fonts/UntitledSansWeb-Medium.woff) format('woff');
 }

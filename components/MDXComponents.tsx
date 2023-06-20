@@ -3,6 +3,7 @@ import NextLink from 'next/link';
 import * as DS from '@modulz/design-system';
 import { Link2Icon } from '@radix-ui/react-icons';
 import { PropsTable } from './PropsTable';
+import { ThemesPropsTable } from './ThemesPropsTable';
 import { KeyboardTable } from './KeyboardTable';
 import { Highlights } from './Highlights';
 import { HeroCodeBlock } from './HeroCodeBlock';
@@ -16,6 +17,7 @@ import * as Demos from './demos';
 import { CssVariablesTable } from './CssVariablesTable';
 import { DataAttributesTable } from './DataAttributesTable';
 import { PreWithCopyButton } from './PreWithCopyButton';
+import { PreWithLivePreview } from './PreWithLivePreview';
 
 export const components = {
   ColorScale,
@@ -162,8 +164,13 @@ export const components = {
       {...props}
     />
   ),
-  pre: PreWithCopyButton,
-  code: ({ className, line, ...props }) => {
+  pre: (props) => {
+    if (props.children.props.live) {
+      return <PreWithLivePreview {...props} />;
+    }
+    return <PreWithCopyButton {...props} />;
+  },
+  code: ({ className, line, live, ...props }) => {
     // if it's a codeblock (``` block in markdown), it'll have a className from prism
     const isInlineCode = !className;
     return isInlineCode ? (
@@ -220,8 +227,13 @@ export const components = {
   ),
   DataAttributesTable: (props) => <DataAttributesTable {...props} />,
   PropsTable: (props) => (
-    <DS.Box css={{ mb: '$2' }}>
+    <DS.Box css={{ my: '$4' }}>
       <PropsTable {...props} />
+    </DS.Box>
+  ),
+  ThemesPropsTable: (props) => (
+    <DS.Box css={{ my: '$4' }}>
+      <ThemesPropsTable {...props} />
     </DS.Box>
   ),
   KeyboardTable: (props) => (
