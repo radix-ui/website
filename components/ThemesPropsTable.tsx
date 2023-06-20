@@ -33,6 +33,7 @@ const themeVariables = {
       default: formatValues([themes.defaultCheckboxColor]),
     },
     radius: {
+      values: formatValues(themes.buttonRadiusValues),
       default: formatValues([themes.defaultCheckboxRadius]),
     },
   },
@@ -49,6 +50,7 @@ const themeVariables = {
       default: formatValues([themes.defaultIconButtonColor]),
     },
     radius: {
+      values: formatValues(themes.buttonRadiusValues),
       default: formatValues([themes.defaultIconButtonRadius]),
     },
   },

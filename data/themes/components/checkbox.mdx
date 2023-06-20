@@ -12,70 +12,208 @@ metaDescription: Use to select one or more items from a set of values.
 This component inherits the props from the [Radix Checkbox](/docs/primitives/components/checkbox) primitive and supports common margin props `m`, `mx`, `my`, `ml`, `mr`, `mt`, `mb`.
 
 <ThemesPropsTable
-  data={(variables) => [
+  data={({ checkbox }) => [
     {
       name: 'size',
       required: false,
-      type: variables.checkbox.size.values,
-      default: variables.checkbox.size.default,
+      type: checkbox.size.values,
+      default: checkbox.size.default,
       typeSimple: 'enum',
     },
     {
       name: 'variant',
       required: false,
-      type: variables.checkbox.variant.values,
-      default: variables.checkbox.variant.default,
+      type: checkbox.variant.values,
+      default: checkbox.variant.default,
       typeSimple: 'enum',
     },
     {
       name: 'color',
       required: false,
       typeSimple: 'enum',
-      default: variables.checkbox.color.default,
-      description: <>Use to override the default color inherited from the global theme. Read our <a href="/TODO">theming guide</a> for more details.</>,
+      default: checkbox.color.default,
+      description: (
+        <>
+          Use to override the default color inherited from the global theme.
+          Read our <a href="/TODO">theming guide</a> for more details.
+        </>
+      ),
     },
     {
       name: 'radius',
       required: false,
       typeSimple: 'enum',
-      default: variables.checkbox.radius.default,
-      description: <>Use to override the default radius inherited from the global theme. Read our <a href="/TODO">theming guide</a> for more details.</>,
+      type: checkbox.radius.values,
+      default: checkbox.radius.default,
+      description: (
+        <>
+          Use to override the default radius inherited from the global theme.
+          Read our <a href="/TODO">theming guide</a> for more details.
+        </>
+      ),
     },
-
-]}
+  ]}
 />
 
 ## Examples
-
-### Variant
-
-Use the `variant` prop to control the visual style.
-
-```jsx live=true
-<Flex direction="column" gap="2">
-  <label>
-    <Flex gap="2" align="center">
-      <Checkbox variant="solid" defaultChecked />
-      <Text>Agree to Terms and Conditions</Text>
-    </Flex>
-  </label>
-
-  <label>
-    <Flex gap="2" align="center">
-      <Checkbox variant="solid-mono" defaultChecked />
-      <Text>Agree to Terms and Conditions</Text>
-    </Flex>
-  </label>
-</Flex>
-```
 
 ### Size
 
 Use the `size` prop to control the size.
 
 ```jsx live=true
-<Flex gap="3" align="center">
+<Flex gap="2" align="center">
   <Checkbox size="1" defaultChecked />
   <Checkbox size="2" defaultChecked />
 </Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style.
+
+```jsx live=true
+<Flex gap="2">
+  <Checkbox variant="solid" defaultChecked />
+  <Checkbox variant="solid-mono" defaultChecked />
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific color value, ignoring the global theme.
+
+```jsx live=true
+<Flex gap="2">
+  <Checkbox color="crimson" defaultChecked />
+  <Checkbox color="indigo" defaultChecked />
+  <Checkbox color="grass" defaultChecked />
+  <Checkbox color="orange" defaultChecked />
+</Flex>
+```
+
+### Radius
+
+Use the `radius` prop to assign a specific radius value, ignoring the global theme.
+
+```jsx live=true
+<Flex gap="2">
+  <Checkbox radius="none" defaultChecked />
+  <Checkbox radius="small" defaultChecked />
+  <Checkbox radius="medium" defaultChecked />
+  <Checkbox radius="large" defaultChecked />
+  <Checkbox radius="full" defaultChecked />
+</Flex>
+```
+
+### Alignment
+
+By default, the checkbox is vertically aligned when placed inline with Text size 2. This is the most common font size used with controls.
+
+```jsx live="true"
+<Flex direction="column" gap="3" style={{ maxWidth: 300 }}>
+  <Text size="2">
+    <label>
+      <Checkbox mr="1" /> Agree to Terms and Conditions
+    </label>
+  </Text>
+</Flex>
+```
+
+It is also well-aligned with Text size 2 in a default flex layout.
+
+```jsx live="true"
+<Box style={{ maxWidth: 300 }}>
+  <Text size="2">
+    <Flex gap="2">
+      <Checkbox id="checkbox-1" />
+      <label htmlFor="checkbox-1">
+        I understand that these documents are confidential and cannot be shared
+        with a third party.
+      </label>
+    </Flex>
+  </Text>
+</Box>
+```
+
+Use center alignment with other Text sizes.
+
+```jsx live="true"
+<Flex direction="column" gap="3" style={{ maxWidth: 300 }}>
+  <Text asChild size="1">
+    <Flex align="center" gap="2">
+      <Checkbox id="checkbox-2" />
+      <label htmlFor="checkbox-2">Agree to Terms and Conditions</label>
+    </Flex>
+  </Text>
+
+  <Text asChild size="2">
+    <Flex align="center" gap="2">
+      <Checkbox id="checkbox-3" />
+      <label htmlFor="checkbox-3">Agree to Terms and Conditions</label>
+    </Flex>
+  </Text>
+
+  <Text asChild size="3">
+    <Flex align="center" gap="2">
+      <Checkbox id="checkbox-4" />
+      <label htmlFor="checkbox-4">Agree to Terms and Conditions</label>
+    </Flex>
+  </Text>
+
+  <Text asChild size="4">
+    <Flex align="center" gap="2">
+      <Checkbox id="checkbox-5" />
+      <label htmlFor="checkbox-5">Agree to Terms and Conditions</label>
+    </Flex>
+  </Text>
+</Flex>
+```
+
+You can also nest Flex elements to reliably align the checkbox with the first line of text. In this case, the height of the second Flex container matches the text line height.
+
+```jsx live="true"
+<Box style={{ maxWidth: 500 }}>
+  <Text size="3">
+    <Flex align="start" gap="2">
+      <Flex align="center" height="5">
+        <Checkbox id="checkbox-6" />
+      </Flex>
+      <label htmlFor="checkbox-6">
+        I understand that these documents are confidential and cannot be shared
+        with a third party.
+      </label>
+    </Flex>
+  </Text>
+</Box>
+```
+
+### Disabled
+
+Use the native `disabled` attribute to create a disabled checkbox.
+
+```jsx live="true"
+<Text size="2">
+  <Flex direction="column" gap="2">
+    <Flex align="center" gap="2">
+      <Checkbox id="checkbox-7" />
+      <label htmlFor="checkbox-7">Not checked</label>
+    </Flex>
+
+    <Flex align="center" gap="2">
+      <Checkbox id="checkbox-8" defaultChecked />
+      <label htmlFor="checkbox-8">Checked</label>
+    </Flex>
+
+    <Flex align="center" gap="2">
+      <Checkbox id="checkbox-9" disabled />
+      <label htmlFor="checkbox-9">Disabled</label>
+    </Flex>
+
+    <Flex align="center" gap="2">
+      <Checkbox id="checkbox-10" defaultChecked disabled />
+      <label htmlFor="checkbox-10">Disabled checked</label>
+    </Flex>
+  </Flex>
+</Text>
 ```

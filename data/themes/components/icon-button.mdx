@@ -5,7 +5,7 @@ metaDescription: Use to present an icon within a button.
 
 ```jsx live=true
 <IconButton>
-  <PlusIcon />
+  <MagnifyingGlassIcon />
 </IconButton>
 ```
 
@@ -40,6 +40,7 @@ This component is based on the `button` element and supports common margin props
       name: 'radius',
       required: false,
       typeSimple: 'enum',
+      type: variables.iconButton.radius.values,
       default: variables.iconButton.radius.default,
       description: <>Use to override the default radius inherited from the global theme. Read our <a href="/TODO">theming guide</a> for more details.</>,
     },
@@ -49,50 +50,6 @@ This component is based on the `button` element and supports common margin props
 
 ## Examples
 
-### Variant
-
-Use the `variant` prop to control the visual style.
-
-```jsx live=true
-<Flex direction="column" gap="3">
-  <Flex gap="2">
-    <IconButton variant="surface">
-      <PlusIcon />
-    </IconButton>
-    <IconButton variant="solid">
-      <PlusIcon />
-    </IconButton>
-    <IconButton variant="subtle">
-      <PlusIcon />
-    </IconButton>
-    <IconButton variant="outline">
-      <PlusIcon />
-    </IconButton>
-    <IconButton variant="ghost">
-      <PlusIcon />
-    </IconButton>
-  </Flex>
-
-  <Flex gap="2">
-    <IconButton variant="surface-mono">
-      <PlusIcon />
-    </IconButton>
-    <IconButton variant="solid-mono">
-      <PlusIcon />
-    </IconButton>
-    <IconButton variant="subtle-mono">
-      <PlusIcon />
-    </IconButton>
-    <IconButton variant="outline-mono">
-      <PlusIcon />
-    </IconButton>
-    <IconButton variant="ghost-mono">
-      <PlusIcon />
-    </IconButton>
-  </Flex>
-</Flex>
-```
-
 ### Size
 
 Use the `size` prop to control the size.
@@ -100,13 +57,102 @@ Use the `size` prop to control the size.
 ```jsx live=true
 <Flex gap="3" align="center">
   <IconButton size="1">
-    <PlusIcon />
+    <MagnifyingGlassIcon />
   </IconButton>
   <IconButton size="2">
-    <PlusIcon width="17" height="17" />
+    <MagnifyingGlassIcon width="18" height="18" />
   </IconButton>
   <IconButton size="3">
-    <PlusIcon width="19" height="19" />
+    <MagnifyingGlassIcon width="22" height="22" />
+  </IconButton>
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style.
+
+```jsx live=true
+<Flex direction="column" gap="3">
+  <Flex gap="3">
+    <IconButton variant="surface">
+      <MagnifyingGlassIcon />
+    </IconButton>
+    <IconButton variant="solid">
+      <MagnifyingGlassIcon />
+    </IconButton>
+    <IconButton variant="subtle">
+      <MagnifyingGlassIcon />
+    </IconButton>
+    <IconButton variant="outline">
+      <MagnifyingGlassIcon />
+    </IconButton>
+    <IconButton variant="ghost">
+      <MagnifyingGlassIcon />
+    </IconButton>
+  </Flex>
+
+  <Flex gap="3">
+    <IconButton variant="surface-mono">
+      <MagnifyingGlassIcon />
+    </IconButton>
+    <IconButton variant="solid-mono">
+      <MagnifyingGlassIcon />
+    </IconButton>
+    <IconButton variant="subtle-mono">
+      <MagnifyingGlassIcon />
+    </IconButton>
+    <IconButton variant="outline-mono">
+      <MagnifyingGlassIcon />
+    </IconButton>
+    <IconButton variant="ghost-mono">
+      <MagnifyingGlassIcon />
+    </IconButton>
+  </Flex>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific color value, ignoring the global theme.
+
+```jsx live=true
+<Flex gap="3">
+  <IconButton color="crimson">
+    <MagnifyingGlassIcon />
+  </IconButton>
+  <IconButton color="indigo">
+    <MagnifyingGlassIcon />
+  </IconButton>
+  <IconButton color="grass">
+    <MagnifyingGlassIcon />
+  </IconButton>
+  <IconButton color="orange">
+    <MagnifyingGlassIcon />
+  </IconButton>
+</Flex>
+```
+
+### Radius
+
+Use the `radius` prop to assign a specific radius value, ignoring the global theme.
+
+```jsx live=true
+<Flex gap="3">
+  <IconButton radius="none">
+    <MagnifyingGlassIcon />
+  </IconButton>
+  <IconButton radius="small">
+    <MagnifyingGlassIcon />
+  </IconButton>
+  <IconButton radius="medium">
+    <MagnifyingGlassIcon />
+  </IconButton>
+  <IconButton radius="large">
+    <MagnifyingGlassIcon />
+  </IconButton>
+  <IconButton radius="full">
+    <MagnifyingGlassIcon />
   </IconButton>
 </Flex>
 ```
