@@ -80,6 +80,7 @@ const themeVariables = {
       default: formatValues([themes.defaultSliderColor]),
     },
     radius: {
+      values: formatValues(themes.buttonRadiusValues),
       default: formatValues([themes.defaultSliderRadius]),
     },
   },
@@ -96,6 +97,7 @@ const themeVariables = {
       default: formatValues([themes.defaultSwitchColor]),
     },
     radius: {
+      values: formatValues(themes.buttonRadiusValues),
       default: formatValues([themes.defaultSwitchRadius]),
     },
   },

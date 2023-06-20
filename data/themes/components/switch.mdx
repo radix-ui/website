@@ -43,6 +43,7 @@ This component inherits the props from the [Radix Switch](/docs/primitives/compo
       name: 'radius',
       required: false,
       typeSimple: 'enum',
+      type: variables.switch.radius.values,
       default: variables.switch.radius.default,
       description: (
         <>
@@ -56,6 +57,18 @@ This component inherits the props from the [Radix Switch](/docs/primitives/compo
 
 ## Examples
 
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Flex gap="3">
+  <Switch size="1" />
+  <Switch size="2" />
+  <Switch size="3" />
+</Flex>
+```
+
 ### Variant
 
 Use the `variant` prop to control the visual style.
@@ -67,14 +80,29 @@ Use the `variant` prop to control the visual style.
 </Flex>
 ```
 
-### Size
+### Color
 
-Use the `size` prop to control the size.
+Use the `color` prop to assign a specific color value, ignoring the global theme.
 
 ```jsx live=true
 <Flex gap="3">
-  <Switch size="1" />
-  <Switch size="2" />
-  <Switch size="3" />
+  <Switch color="crimson" defaultChecked />
+  <Switch color="indigo" defaultChecked />
+  <Switch color="grass" defaultChecked />
+  <Switch color="orange" defaultChecked />
+</Flex>
+```
+
+### Radius
+
+Use the `radius` prop to assign a specific radius value, ignoring the global theme.
+
+```jsx live=true
+<Flex gap="3">
+  <Switch radius="none" />
+  <Switch radius="small" />
+  <Switch radius="medium" />
+  <Switch radius="large" />
+  <Switch radius="full" />
 </Flex>
 ```

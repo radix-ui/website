@@ -37,26 +37,26 @@ This component inherits the props from the [Radix Radio Group](/docs/primitives/
 Contains all the parts of a radio group.
 
 <ThemesPropsTable
-  data={(variables) => [
+  data={({ radioGroup }) => [
     {
       name: 'size',
       required: false,
-      type: variables.radioGroup.size.values,
-      default: variables.radioGroup.size.default,
+      type: radioGroup.size.values,
+      default: radioGroup.size.default,
       typeSimple: 'enum',
     },
     {
       name: 'variant',
       required: false,
-      type: variables.radioGroup.variant.values,
-      default: variables.radioGroup.variant.default,
+      type: radioGroup.variant.values,
+      default: radioGroup.variant.default,
       typeSimple: 'enum',
     },
     {
       name: 'color',
       required: false,
       typeSimple: 'enum',
-      default: variables.radioGroup.color.default,
+      default: radioGroup.color.default,
       description: (
         <>
           Use to override the default color inherited from the global theme.
@@ -73,36 +73,6 @@ An item in the group that can be checked. An input will also render when used wi
 
 ## Examples
 
-### Variant
-
-Use the `variant` prop to control the visual style.
-
-```jsx live=true
-<Flex gap="6">
-  <RadioGroup.Root variant="solid" defaultValue="1">
-    <Flex gap="1" direction="column">
-      <label>
-        <Flex gap="2" align="center">
-          <RadioGroup.Item value="1" />
-          <Text>Default</Text>
-        </Flex>
-      </label>
-    </Flex>
-  </RadioGroup.Root>
-
-  <RadioGroup.Root variant="solid-mono" defaultValue="1">
-    <Flex gap="1" direction="column">
-      <label>
-        <Flex gap="2" align="center">
-          <RadioGroup.Item value="1" />
-          <Text>Default</Text>
-        </Flex>
-      </label>
-    </Flex>
-  </RadioGroup.Root>
-</Flex>
-```
-
 ### Size
 
 Use the `size` prop to control the size.
@@ -117,6 +87,12 @@ Use the `size` prop to control the size.
           <Text>Default</Text>
         </Flex>
       </label>
+      <label>
+        <Flex gap="2" align="center">
+          <RadioGroup.Item value="2" />
+          <Text>Comfortable</Text>
+        </Flex>
+      </label>
     </Flex>
   </RadioGroup.Root>
 
@@ -128,7 +104,99 @@ Use the `size` prop to control the size.
           <Text>Default</Text>
         </Flex>
       </label>
+      <label>
+        <Flex gap="2" align="center">
+          <RadioGroup.Item value="2" />
+          <Text>Comfortable</Text>
+        </Flex>
+      </label>
     </Flex>
+  </RadioGroup.Root>
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style.
+
+```jsx live=true
+<Flex gap="6">
+  <RadioGroup.Root variant="solid" defaultValue="1">
+    <Flex gap="1" direction="column">
+      <label>
+        <Flex gap="2" align="center">
+          <RadioGroup.Item value="1" />
+          <Text>Default</Text>
+        </Flex>
+      </label>
+      <label>
+        <Flex gap="2" align="center">
+          <RadioGroup.Item value="2" />
+          <Text>Comfortable</Text>
+        </Flex>
+      </label>
+    </Flex>
+  </RadioGroup.Root>
+
+  <RadioGroup.Root variant="solid-mono" defaultValue="1">
+    <Flex gap="1" direction="column">
+      <label>
+        <Flex gap="2" align="center">
+          <RadioGroup.Item value="1" />
+          <Text>Default</Text>
+        </Flex>
+      </label>
+      <label>
+        <Flex gap="2" align="center">
+          <RadioGroup.Item value="2" />
+          <Text>Comfortable</Text>
+        </Flex>
+      </label>
+    </Flex>
+  </RadioGroup.Root>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific color value, ignoring the global theme.
+
+```jsx live=true
+<Flex direction="column" gap="2">
+  <RadioGroup.Root color="crimson" defaultValue="1">
+    <label>
+      <Flex gap="2" align="center">
+        <RadioGroup.Item value="1" />
+        <Text>Crimson</Text>
+      </Flex>
+    </label>
+  </RadioGroup.Root>
+
+  <RadioGroup.Root color="indigo" defaultValue="1">
+    <label>
+      <Flex gap="2" align="center">
+        <RadioGroup.Item value="1" />
+        <Text>Indigo</Text>
+      </Flex>
+    </label>
+  </RadioGroup.Root>
+
+  <RadioGroup.Root color="grass" defaultValue="1">
+    <label>
+      <Flex gap="2" align="center">
+        <RadioGroup.Item value="1" />
+        <Text>Grass</Text>
+      </Flex>
+    </label>
+  </RadioGroup.Root>
+
+  <RadioGroup.Root color="orange" defaultValue="1">
+    <label>
+      <Flex gap="2" align="center">
+        <RadioGroup.Item value="1" />
+        <Text>Orange</Text>
+      </Flex>
+    </label>
   </RadioGroup.Root>
 </Flex>
 ```
