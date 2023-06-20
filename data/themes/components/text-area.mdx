@@ -44,6 +44,18 @@ This component is based on the `textarea` element and supports common margin pro
 
 ## Examples
 
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Grid gap="3">
+  <TextArea size="1" placeholder="The quick brown fox jumped" />
+  <TextArea size="2" placeholder="The quick brown fox jumped" />
+  <TextArea size="3" placeholder="The quick brown fox jumped" />
+</Grid>
+```
+
 ### Variant
 
 Use the `variant` prop to control the visual style.
@@ -56,14 +68,16 @@ Use the `variant` prop to control the visual style.
 </Grid>
 ```
 
-### Size
+### Radius
 
-Use the `size` prop to control the size.
+Use the `radius` prop to assign a specific radius value, ignoring the global theme.
 
 ```jsx live=true
-<Grid gap="3">
-  <TextArea size="1" placeholder="The quick brown fox jumped" />
-  <TextArea size="2" placeholder="The quick brown fox jumped" />
-  <TextArea size="3" placeholder="The quick brown fox jumped" />
+<Grid columns="5" gap="3">
+  <TextArea radius="none" placeholder="The quick brown fox jumped" />
+  <TextArea radius="small" placeholder="The quick brown fox jumped" />
+  <TextArea radius="medium" placeholder="The quick brown fox jumped" />
+  <TextArea radius="large" placeholder="The quick brown fox jumped" />
+  <TextArea radius="full" placeholder="The quick brown fox jumped" />
 </Grid>
 ```

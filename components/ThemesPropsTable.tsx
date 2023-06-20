@@ -111,6 +111,7 @@ const themeVariables = {
       default: formatValues([themes.defaultTextFieldVariant]),
     },
     radius: {
+      values: formatValues(themes.buttonRadiusValues),
       default: formatValues([themes.defaultTextFieldRadius]),
     },
   },
@@ -124,7 +125,8 @@ const themeVariables = {
       default: formatValues([themes.defaultTextAreaVariant]),
     },
     radius: {
-      default: formatValues([undefined]),
+      values: formatValues(themes.buttonRadiusValues),
+      default: formatValues([themes.defaultTextAreaRadius]),
     },
   },
   text: {

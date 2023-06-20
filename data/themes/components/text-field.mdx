@@ -31,6 +31,7 @@ This component is based on the `input` element and supports common margin props 
       name: 'radius',
       required: false,
       typeSimple: 'enum',
+      type: variables.textField.radius.values,
       default: variables.textField.radius.default,
       description: (
         <>
@@ -44,6 +45,18 @@ This component is based on the `input` element and supports common margin props 
 
 ## Examples
 
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Grid gap="3">
+  <TextField size="1" placeholder="The quick brown fox jumped" />
+  <TextField size="2" placeholder="The quick brown fox jumped" />
+  <TextField size="3" placeholder="The quick brown fox jumped" />
+</Grid>
+```
+
 ### Variant
 
 Use the `variant` prop to control the visual style.
@@ -56,14 +69,16 @@ Use the `variant` prop to control the visual style.
 </Grid>
 ```
 
-### Size
+### Radius
 
-Use the `size` prop to control the size.
+Use the `radius` prop to assign a specific radius value, ignoring the global theme.
 
 ```jsx live=true
-<Grid gap="3">
-  <TextField size="1" placeholder="The quick brown fox jumped" />
-  <TextField size="2" placeholder="The quick brown fox jumped" />
-  <TextField size="3" placeholder="The quick brown fox jumped" />
+<Grid columns="5" gap="3">
+  <TextField radius="none" placeholder="The quick brown fox jumped" />
+  <TextField radius="small" placeholder="The quick brown fox jumped" />
+  <TextField radius="medium" placeholder="The quick brown fox jumped" />
+  <TextField radius="large" placeholder="The quick brown fox jumped" />
+  <TextField radius="full" placeholder="The quick brown fox jumped" />
 </Grid>
 ```
