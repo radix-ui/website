@@ -1,12 +1,11 @@
 import React from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { Box, styled } from '@modulz/design-system';
+import { Box, Flex, styled } from '@modulz/design-system';
 import {
   CaretDownIcon,
   CaretRightIcon,
   CheckIcon,
   GitHubLogoIcon,
-  StitchesLogoIcon,
   TwitterLogoIcon,
 } from '@radix-ui/react-icons';
 import { DemoButton } from '@components/marketing/DemoButton';
@@ -142,8 +141,29 @@ export function MainHeroDropdownMenu() {
                 GitHub
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <StitchesLogoIcon style={{ marginLeft: -15, marginRight: 10 }} />
-                Stitches
+                <Flex
+                  css={{
+                    width: 15,
+                    height: 15,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginLeft: -15,
+                    marginRight: 10,
+                  }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 25 25"
+                    fill="currentcolor"
+                  >
+                    <path d="M12 25C7.58173 25 4 21.4183 4 17C4 12.5817 7.58173 9 12 9V25Z" />
+                    <path d="M12 0H4V8H12V0Z" />
+                    <path d="M17 8C19.2091 8 21 6.20914 21 4C21 1.79086 19.2091 0 17 0C14.7909 0 13 1.79086 13 4C13 6.20914 14.7909 8 17 8Z" />
+                  </svg>
+                </Flex>
+                Radix
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <TwitterLogoIcon style={{ marginLeft: -15, marginRight: 10 }} />

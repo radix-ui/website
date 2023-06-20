@@ -6,13 +6,7 @@ import { RadixLogo } from '@components/RadixLogo';
 import { ThemeToggle } from '@components/ThemeToggle';
 import { BoxLink } from '@components/BoxLink';
 import { RemoveScroll } from 'react-remove-scroll';
-import {
-  ResourcePrimitives,
-  ResourceStitches,
-  ResourceColors,
-  ResourceIcons,
-  ResourcesPopover,
-} from './Resources';
+import { ResourcePrimitives, ResourceColors, ResourceIcons, ResourcesPopover } from './Resources';
 
 export const DefaultHeader = () => {
   const router = useRouter();
@@ -49,7 +43,6 @@ export const DefaultHeader = () => {
 
             <ResourcesPopover>
               {isColors && <ResourcePrimitives />}
-              <ResourceStitches />
               {isColors === false && <ResourceColors />}
               <ResourceIcons />
             </ResourcesPopover>

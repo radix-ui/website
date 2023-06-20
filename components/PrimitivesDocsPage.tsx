@@ -15,7 +15,7 @@ import { PrimitivesDocsHeader } from '@components/PrimitivesDocsHeader';
 import { PrimitivesDocsSearch } from '@components/PrimitivesDocsSearch';
 import { allPrimitivesRoutes, primitivesRoutes, RouteProps } from '@lib/primitivesRoutes';
 import { NavHeading, NavItem, NavItemTitle } from './DocsNav';
-import { ResourceColors, ResourceIcons, ResourceStitches } from './Resources';
+import { ResourceColors, ResourceIcons } from './Resources';
 
 export function PrimitivesDocsPage({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -86,7 +86,6 @@ export function PrimitivesDocsPage({ children }: { children: React.ReactNode }) 
             <Box css={{ mt: '$8' }}>
               <NavHeading>Resources</NavHeading>
               <Box css={{ px: '$2' }}>
-                <ResourceStitches />
                 <ResourceColors />
                 <ResourceIcons />
               </Box>

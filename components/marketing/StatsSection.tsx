@@ -62,10 +62,15 @@ export const StatsSection = () => {
                 fontWeight: 500,
                 fontVariantNumeric: 'proportional-nums',
                 letterSpacing: '-.031em',
+                display: 'flex',
+                alignItems: 'center',
                 mb: '$2',
               }}
             >
-              20M+
+              20M
+              <Box as="span" css={{ fontSize: '75%', ml: '0.15em' }}>
+                +
+              </Box>
             </Text>
             <Text variant="gray" size={{ '@initial': 3, '@bp2': 4 }}>
               Monthly downloads
@@ -87,7 +92,7 @@ export const StatsSection = () => {
               }}
             >
               4000
-              <Box as="span" css={{ fontSize: '75%', ml: '0.25em' }}>
+              <Box as="span" css={{ fontSize: '75%', ml: '0.15em' }}>
                 +
               </Box>
             </Text>
@@ -110,8 +115,8 @@ export const StatsSection = () => {
                 mb: '$2',
               }}
             >
-              10k
-              <Box as="span" css={{ fontSize: '75%', ml: '0.25em' }}>
+              10K
+              <Box as="span" css={{ fontSize: '75%', ml: '0.15em' }}>
                 +
               </Box>
             </Text>

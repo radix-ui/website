@@ -10,7 +10,7 @@ import {
   Link,
   styled,
 } from '@modulz/design-system';
-import { PlusIcon, StitchesLogoIcon, MixIcon } from '@radix-ui/react-icons';
+import { PlusIcon, MixIcon } from '@radix-ui/react-icons';
 import { RadixLogoIcon } from './RadixLogoIcon';
 
 function ResourcePrimitives() {
@@ -34,28 +34,6 @@ function ResourcePrimitives() {
         </Flex>
       </HighlightLink>
     </NextLink>
-  );
-}
-
-function ResourceStitches() {
-  return (
-    <HighlightLink href="https://stitches.dev">
-      <Flex gap="3">
-        <StitchesLogoIcon width="25" height="25" style={{ flex: 'none', marginTop: 2 }} />
-        <Box>
-          <Text
-            size="3"
-            as="h3"
-            css={{ fontWeight: 500, lineHeight: 1.5, letterSpacing: '-0.02em' }}
-          >
-            Stitches
-          </Text>
-          <Text size="2" as="p" variant="gray" css={{ lineHeight: 1.4 }}>
-            CSS-in-JS with best-in-class developer experience.
-          </Text>
-        </Box>
-      </Flex>
-    </HighlightLink>
   );
 }
 
@@ -170,4 +148,4 @@ const HighlightLink = styled('a', {
   },
 });
 
-export { ResourcePrimitives, ResourceStitches, ResourceColors, ResourceIcons, ResourcesPopover };
+export { ResourcePrimitives, ResourceColors, ResourceIcons, ResourcesPopover };

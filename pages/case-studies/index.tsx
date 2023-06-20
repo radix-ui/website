@@ -184,9 +184,9 @@ export default function CaseStudy() {
             </Heading>
 
             <Paragraph css={{ ta: 'center' }}>
-              We’d love to hear how you use Radix or Stitches.{' '}
+              We’d love to hear how you use Radix Primitives.
               <Link
-                href="https://modulz.typeform.com/to/FxOiONsk"
+                href="https://form.typeform.com/to/FxOiONsk"
                 target="_blank"
                 css={{ display: 'inline-flex' }}
               >
