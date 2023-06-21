@@ -179,7 +179,7 @@ export const props: Record<string, PropDef[]> = {
       default: formatValues(themes.defaultTextFieldRadius),
     },
   ],
-  textArea: [
+  textarea: [
     {
       ...sizeProp,
       type: formatValues(themes.textAreaSizes),
