@@ -18,6 +18,8 @@ type Doc = {
 
 export default function GuidesDoc({ frontmatter, code }: Doc) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
+  const fileName = frontmatter.metaTitle.replace(/\s+/g, '-').toLowerCase();
+  const componentName = frontmatter.metaTitle.replace(/\s+/g, '');
 
   return (
     <>
@@ -45,7 +47,11 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
         </DS.Paragraph>
 
         <Flex gap="5" css={{ mt: '$5', pb: '$5', mb: '$5', borderBottom: '1px solid $gray6' }}>
-          <Link variant="blue" target="_blank">
+          <Link
+            variant="blue"
+            target="_blank"
+            href={`https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/${fileName}.tsx`}
+          >
             <Flex css={{ display: 'inline-flex', position: 'relative' }}>
               <Text size="3" css={{ display: 'inline', lineHeight: '15px' }}>
                 View source
@@ -55,7 +61,11 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
               </Box>
             </Flex>
           </Link>
-          <Link variant="blue" target="_blank">
+          <Link
+            variant="blue"
+            target="_blank"
+            href={`https://github.com/radix-ui/themes/issues/new?title=[${componentName}] Issue`}
+          >
             <Flex css={{ display: 'inline-flex', position: 'relative' }}>
               <Text size="3" css={{ display: 'inline', lineHeight: '15px' }}>
                 Report an issue
