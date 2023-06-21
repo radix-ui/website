@@ -2,22 +2,22 @@ export const themesRoutes = [
   {
     label: 'Overview',
     pages: [
-      { title: 'Introduction', slug: 'docs/themes/' },
-      { title: 'Getting started', slug: 'docs/themes/' },
-      { title: 'Design principles', slug: 'docs/themes/' },
-      { title: 'FAQs', slug: 'docs/themes/' },
-      { title: 'Releases', slug: 'docs/themes/' },
+      { title: 'Introduction', slug: 'docs/themes/overview/introduction' },
+      { title: 'Getting started', slug: 'docs/themes/overview/getting-started' },
+      { title: 'Design principles', slug: 'docs/themes/overview/design-principles' },
+      { title: 'FAQs', slug: 'docs/themes/overview/faqs' },
+      { title: 'Releases', slug: 'docs/themes/overview/releases' },
     ],
   },
   {
     label: 'Guides',
     pages: [
-      { title: 'Theme configuration', slug: 'docs/themes/' },
-      { title: 'Using tokens', slug: 'docs/themes/' },
+      { title: 'Theme configuration', slug: 'docs/themes/guides/theme-configuration' },
+      { title: 'Using tokens', slug: 'docs/themes/guides/using-tokens' },
     ],
   },
   {
-    label: 'All',
+    label: 'Todo',
     pages: [
       { title: 'Accessible Icon', slug: 'docs/themes/components/accessible-icon' },
       { title: 'Alert Dialog', slug: 'docs/themes/components/alert-dialog' },
@@ -36,7 +36,6 @@ export const themesRoutes = [
       { title: 'Grid', slug: 'docs/themes/components/grid' },
       { title: 'Hover Card', slug: 'docs/themes/components/hover-card' },
       { title: 'Kbd', slug: 'docs/themes/components/kbd' },
-      { title: 'Link', slug: 'docs/themes/components/link' },
       { title: 'Popover', slug: 'docs/themes/components/popover' },
       { title: 'Portal', slug: 'docs/themes/components/portal' },
       { title: 'Quote', slug: 'docs/themes/components/quote' },
@@ -54,7 +53,7 @@ export const themesRoutes = [
     ],
   },
   {
-    label: 'Forms',
+    label: 'Added',
     pages: [
       { title: 'Button', slug: 'docs/themes/components/button' },
       { title: 'Checkbox', slug: 'docs/themes/components/checkbox' },
@@ -64,13 +63,9 @@ export const themesRoutes = [
       { title: 'Switch', slug: 'docs/themes/components/switch' },
       { title: 'Text Field', slug: 'docs/themes/components/text-field' },
       { title: 'Text Area', slug: 'docs/themes/components/text-area' },
-    ],
-  },
-  {
-    label: 'Typography',
-    pages: [
       { title: 'Text', slug: 'docs/themes/components/text' },
       { title: 'Heading', slug: 'docs/themes/components/heading' },
+      { title: 'Link', slug: 'docs/themes/components/link' },
     ],
   },
 ];

@@ -17,7 +17,7 @@ const asChildProp = {
       behavior.
       <br />
       <br />
-      Read our <a href="../guides/composition">Composition</a> guide for more details.
+      Read our <a href="/docs/primitives/guides/composition">Composition</a> guide for more details.
     </>
   ),
 };
@@ -41,9 +41,15 @@ const colorProp = {
   description: (
     <>
       Use to override the default color inherited from the global theme. Read our{' '}
-      <a href="/TODO">theming guide</a> for more details.
+      <a href="/docs/themes/guides/theme-configuration">theme guide</a> for more details.
     </>
   ),
+};
+
+const weightProp = {
+  name: 'weight',
+  required: false,
+  typeSimple: 'enum',
 };
 
 const radiusProp = {
@@ -53,12 +59,12 @@ const radiusProp = {
   description: (
     <>
       Use to override the default radius inherited from the global theme. Read our{' '}
-      <a href="/TODO">theming guide</a> for more details.
+      <a href="/dosc/themes/guides/theme-configuration">theme guide</a> for more details.
     </>
   ),
 };
 
-export const props: Record<string, PropDef[]> = {
+const props: Record<string, PropDef[]> = {
   button: [
     {
       ...sizeProp,
@@ -204,11 +210,9 @@ export const props: Record<string, PropDef[]> = {
       default: formatValues(themes.defaultTextAreaSize),
     },
     {
-      name: 'weight',
-      required: false,
+      ...weightProp,
       type: formatValues(themes.textWeights),
       default: formatValues(themes.defaultTextWeight),
-      typeSimple: 'enum',
     },
     {
       name: 'align',
@@ -241,6 +245,35 @@ export const props: Record<string, PropDef[]> = {
       typeSimple: 'enum',
     },
     { ...colorProp, default: formatValues(themes.defaultTextColor) },
+  ],
+  link: [
+    asChildProp,
+    {
+      ...sizeProp,
+      type: formatValues(themes.linkSizes),
+      default: formatValues(themes.defaultLinkSize),
+    },
+    {
+      ...variantProp,
+      type: formatValues(themes.linkVariants),
+      default: formatValues(themes.defaultLinkVariant),
+    },
+    {
+      ...weightProp,
+      type: formatValues(themes.linkWeights),
+      default: formatValues(themes.defaultLinkWeight),
+    },
+    {
+      name: 'gap',
+      required: false,
+      typeSimple: 'enum',
+      type: formatValues(themes.linkGap),
+      default: formatValues(themes.defaultLinkGap),
+    },
+    {
+      ...colorProp,
+      default: formatValues(themes.defaultLinkColor),
+    },
   ],
 };
 
