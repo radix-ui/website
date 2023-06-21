@@ -34,7 +34,6 @@ export const themesRoutes = [
       { title: 'Em', slug: 'docs/themes/components/em' },
       { title: 'Flex', slug: 'docs/themes/components/flex' },
       { title: 'Grid', slug: 'docs/themes/components/grid' },
-      { title: 'Heading', slug: 'docs/themes/components/heading' },
       { title: 'Hover Card', slug: 'docs/themes/components/hover-card' },
       { title: 'Kbd', slug: 'docs/themes/components/kbd' },
       { title: 'Link', slug: 'docs/themes/components/link' },
@@ -69,7 +68,10 @@ export const themesRoutes = [
   },
   {
     label: 'Typography',
-    pages: [{ title: 'Text', slug: 'docs/themes/components/text' }],
+    pages: [
+      { title: 'Text', slug: 'docs/themes/components/text' },
+      { title: 'Heading', slug: 'docs/themes/components/heading' },
+    ],
   },
 ];
 

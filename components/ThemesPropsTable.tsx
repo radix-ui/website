@@ -150,6 +150,19 @@ const themeVariables = {
       default: formatValues([themes.defaultTextColor]),
     },
   },
+  heading: {
+    size: {
+      values: formatValues(themes.headingSizes),
+      default: formatValues([themes.defaultHeadingSize]),
+    },
+    trim: {
+      values: formatValues(themes.headingTrimValues),
+      default: formatValues([themes.defaultHeadingTrim]),
+    },
+    color: {
+      default: formatValues([themes.defaultHeadingColor]),
+    },
+  },
 };
 
 export function ThemesPropsTable({

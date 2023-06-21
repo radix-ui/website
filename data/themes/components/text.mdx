@@ -1,6 +1,6 @@
 ---
 metaTitle: Text
-metaDescription: Displays a basic text primitive.
+metaDescription: Displays a basic text element.
 ---
 
 ```jsx live=true
@@ -12,7 +12,7 @@ metaDescription: Displays a basic text primitive.
 This component is based on the `p` element and supports common margin props `m`, `mx`, `my`, `ml`, `mr`, `mt`, `mb`.
 
 <ThemesPropsTable
-  data={({ text }) => [
+  data={(variables) => [
     {
       name: 'asChild',
       required: false,
@@ -32,36 +32,42 @@ This component is based on the `p` element and supports common margin props `m`,
     {
       name: 'size',
       required: false,
-      type: text.size.values,
-      default: text.size.default,
+      type: variables.text.size.values,
+      default: variables.text.size.default,
       typeSimple: 'enum',
     },
     {
       name: 'weight',
       required: false,
-      type: text.weight.values,
-      default: text.weight.default,
+      type: variables.text.weight.values,
+      default: variables.text.weight.default,
       typeSimple: 'enum',
     },
     {
       name: 'align',
       required: false,
-      type: text.align.values,
-      default: text.align.default,
+      type: variables.text.align.values,
+      default: variables.text.align.default,
       typeSimple: 'enum',
     },
     {
       name: 'trim',
       required: false,
-      type: text.trim.values,
-      default: text.trim.default,
+      type: variables.text.trim.values,
+      default: variables.text.trim.default,
       typeSimple: 'enum',
     },
     {
       name: 'color',
       required: false,
-      default: text.color.default,
       typeSimple: 'enum',
+      default: variables.text.color.default,
+      description: (
+        <>
+          Use to override the default color inherited from the global theme.
+          Read our <a href="/TODO">theming guide</a> for more details.
+        </>
+      ),
     },
   ]}
 />
@@ -70,7 +76,7 @@ This component is based on the `p` element and supports common margin props `m`,
 
 ### As another element
 
-Use the `asChild` prop to render text as a `div` or `span`. This prop is purely semantic and does not change the visual appearance of the text.
+Use the `asChild` prop to render text as a `div` or `span`. This prop is purely semantic and does not change the visual appearance.
 
 ```jsx live=true
 <>
@@ -82,16 +88,6 @@ Use the `asChild` prop to render text as a `div` or `span`. This prop is purely 
     <span>This is a span.</span>
   </Text>
 </>
-```
-
-### Alignment
-
-Use the `align` prop to set text alignment. You can change the alignment across breakpoints using the object syntax.
-
-```jsx live="true"
-<Text align="left">Left-aligned</Text>
-<Text align="center">Center-aligned</Text>
-<Text align="right">Right-aligned</Text>
 ```
 
 ### Size
@@ -110,6 +106,30 @@ Use the `size` prop to control the size of the text. The prop also provides corr
   <Text size="2">The quick brown fox jumps over the lazy dog.</Text>
   <Text size="1">The quick brown fox jumps over the lazy dog.</Text>
 </Flex>
+```
+
+### Weight
+
+Use the `weight` prop to set the weight of the text. You can change the weight across breakpoints using the object syntax.
+
+```jsx live="true"
+<Text weight="normal">
+  Ambiguous voice of a heart which prefers kiwi bowls to a zephyr.
+</Text>
+
+<Text weight="bold">
+  Ambiguous voice of a heart which prefers kiwi bowls to a zephyr.
+</Text>
+```
+
+### Align
+
+Use the `align` prop to set text alignment. You can change the alignment across breakpoints using the object syntax.
+
+```jsx live="true"
+<Text align="left">Left-aligned</Text>
+<Text align="center">Center-aligned</Text>
+<Text align="right">Right-aligned</Text>
 ```
 
 Sizes 2–4 are designed to work well for long-form content.
@@ -241,18 +261,17 @@ Trimming the leading is useful when dialing in vertical spacing in cards or othe
 </Flex>
 ```
 
-### Weights
+### Color
 
-Use the `weight` prop to set the weight of the text. You can change the weight across breakpoints using the object syntax.
+Use the `color` prop to assign a specific color value, ignoring the global theme.
 
-```jsx live="true"
-<Text weight="normal">
-  Ambiguous voice of a heart which prefers kiwi bowls to a zephyr.
-</Text>
-
-<Text weight="bold">
-  Ambiguous voice of a heart which prefers kiwi bowls to a zephyr.
-</Text>
+```jsx live=true
+<Flex gap="3">
+  <Text color="crimson">Crimson</Text>
+  <Text color="indigo">Indigo</Text>
+  <Text color="grass">Grass</Text>
+  <Text color="orange">Orange</Text>
+</Flex>
 ```
 
 ### With formatting
