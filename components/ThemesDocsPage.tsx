@@ -16,6 +16,7 @@ import { PrimitivesDocsSearch } from '@components/PrimitivesDocsSearch';
 import { NavHeading, NavItem, NavItemTitle } from './DocsNav';
 // import { ResourceColors, ResourceIcons, ResourceStitches } from './Resources';
 import { RouteProps, allThemesRoutes, themesRoutes } from '@lib/themesRoutes';
+import { Provider } from '@radix-ui/themes';
 
 export function ThemesDocsPage({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -30,7 +31,7 @@ export function ThemesDocsPage({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <>
+    <Provider>
       <HeaderWrapper>
         <PrimitivesDocsHeader
           onMobileMenuButtonClick={() => setIsMobileMenuOpen((prevOpen) => !prevOpen)}
@@ -100,6 +101,6 @@ export function ThemesDocsPage({ children }: { children: React.ReactNode }) {
           <EditPageLink />
         </PageWrapper>
       </MainWrapper>
-    </>
+    </Provider>
   );
 }

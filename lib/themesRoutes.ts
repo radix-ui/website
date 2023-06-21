@@ -45,11 +45,11 @@ export const themesRoutes = [
       { title: 'Separator', slug: 'docs/themes/components/separator' },
       { title: 'Slot', slug: 'docs/themes/components/slot' },
       { title: 'Strong', slug: 'docs/themes/components/strong' },
-      { title: 'Sub', slug: 'docs/themes/components/sub' },
       { title: 'Sup', slug: 'docs/themes/components/sup' },
       { title: 'Tabs', slug: 'docs/themes/components/tabs' },
       { title: 'Tooltip', slug: 'docs/themes/components/tooltip' },
       { title: 'Visually Hidden', slug: 'docs/themes/components/visually-hidden' },
+      { title: 'Provider', slug: 'docs/themes/components/provider' },
     ],
   },
   {
