@@ -309,6 +309,19 @@ const props: Record<string, PropDef[]> = {
         'The global reading direction of your application. This will be inherited by all components.',
     },
   ],
+  badge: [
+    {
+      ...sizeProp,
+      type: formatValues(themes.badgeSizes),
+      default: formatValues(themes.defaultBadgeSize),
+    },
+    {
+      ...variantProp,
+      type: formatValues(themes.badgeVariants),
+      default: formatValues(themes.defaultBadgeVariant),
+    },
+    { ...colorProp, default: formatValues(themes.defaultBadgeColor) },
+  ],
 };
 
 function formatValues(values?: readonly string[] | string) {

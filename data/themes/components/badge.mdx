@@ -1,8 +1,52 @@
 ---
 metaTitle: Badge
-metaDescription: Description
+metaDescription: Displays a stylized badge element.
 ---
 
 ```jsx live=true
 <Badge>Badge</Badge>
+```
+
+## API Reference
+
+This component is based on the `span` element and supports common margin props `m`, `mx`, `my`, `ml`, `mr`, `mt`, `mb`.
+
+<ThemesPropsTable componentName="badge" />
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Flex gap="3" align="center">
+  <Badge size="1">Button</Badge>
+  <Badge size="2">Button</Badge>
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style.
+
+```jsx live=true
+<Flex gap="3">
+  <Badge variant="surface">Surface</Badge>
+  <Badge variant="subtle">Subtle</Badge>
+  <Badge variant="outline">Outline</Badge>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific color value, ignoring the global theme.
+
+```jsx live=true
+<Flex gap="3">
+  <Badge color="crimson">Crimson</Badge>
+  <Badge color="indigo">Indigo</Badge>
+  <Badge color="grass">Grass</Badge>
+  <Badge color="orange">Orange</Badge>
+</Flex>
 ```

@@ -23,7 +23,6 @@ export const themesRoutes = [
       { title: 'Alert Dialog', slug: 'docs/themes/components/alert-dialog' },
       { title: 'Aspect Ratio', slug: 'docs/themes/components/aspect-ratio' },
       { title: 'Avatar', slug: 'docs/themes/components/avatar' },
-      { title: 'Badge', slug: 'docs/themes/components/badge' },
       { title: 'Blockquote', slug: 'docs/themes/components/blockquote' },
       { title: 'Box', slug: 'docs/themes/components/box' },
       { title: 'Code', slug: 'docs/themes/components/code' },
@@ -63,6 +62,7 @@ export const themesRoutes = [
       { title: 'Heading', slug: 'docs/themes/components/heading' },
       { title: 'Link', slug: 'docs/themes/components/link' },
       { title: 'Separator', slug: 'docs/themes/components/separator' },
+      { title: 'Badge', slug: 'docs/themes/components/badge' },
     ],
   },
   {

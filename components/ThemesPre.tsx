@@ -34,7 +34,7 @@ export const ThemesPre = styled('pre', {
   position: 'relative',
   backgroundColor: 'var(--color1)',
   color: '$$text',
-  border: '1px solid var(--color4)',
+  border: '1px solid var(--color5)',
   borderTop: 0,
 
   '& > code': {
