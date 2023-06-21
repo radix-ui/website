@@ -1,6 +1,6 @@
 ---
 metaTitle: Alert Dialog
-metaDescription: Description
+metaDescription: Displays a confirmation window above the page contents.
 ---
 
 ```jsx live=true
@@ -29,3 +29,37 @@ metaDescription: Description
   </AlertDialogContent>
 </AlertDialogRoot>
 ```
+
+## API Reference
+
+This component inherits parts and props from the [Radix Alert Dialog](/docs/primitives/components/alert-dialog) primitive and is visually identical to [Dialog](./dialog), though with differing semantics and behavior. [View source](https://github.com/workos/workos/blob/main/packages/design-system/src/components/alert-dialog.tsx)
+
+### Root
+
+Contains all the parts of a dialog.
+
+### Trigger
+
+Wraps the control that will open the dialog.
+
+### Content
+
+Contains content to be rendered in the open dialog. This component is based on the div element.
+
+### Title
+
+An accessible title that is announced when the dialog is opened. This part is based on the [Heading](./heading) component with a pre-defined font size and leading trim on top.
+
+### Description
+
+An optional accessible description that is announced when the dialog is opened. This part is based on the [Text](./text) component with a pre-defined font size.
+
+If you want to remove the description entirely, remove this part and pass `aria-describedby={undefined}` to `Dialog.Content`.
+
+### Action
+
+Wraps the control that will close the dialog. This should be distinguished visually from the `Cancel` control.
+
+### Cancel
+
+Wraps the control that will close the dialog. This should be distinguished visually from the `Action` control.

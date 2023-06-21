@@ -20,7 +20,6 @@ export const themesRoutes = [
     label: 'Todo',
     pages: [
       { title: 'Accessible Icon', slug: 'docs/themes/components/accessible-icon' },
-      { title: 'Alert Dialog', slug: 'docs/themes/components/alert-dialog' },
       { title: 'Aspect Ratio', slug: 'docs/themes/components/aspect-ratio' },
       { title: 'Avatar', slug: 'docs/themes/components/avatar' },
       { title: 'Blockquote', slug: 'docs/themes/components/blockquote' },
@@ -63,6 +62,7 @@ export const themesRoutes = [
       { title: 'Separator', slug: 'docs/themes/components/separator' },
       { title: 'Badge', slug: 'docs/themes/components/badge' },
       { title: 'Dialog', slug: 'docs/themes/components/dialog' },
+      { title: 'Alert Dialog', slug: 'docs/themes/components/alert-dialog' },
     ],
   },
   {
