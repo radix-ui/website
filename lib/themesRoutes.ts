@@ -28,7 +28,6 @@ export const themesRoutes = [
       { title: 'Code', slug: 'docs/themes/components/code' },
       { title: 'Container', slug: 'docs/themes/components/container' },
       { title: 'Context Menu', slug: 'docs/themes/components/context-menu' },
-      { title: 'Dialog', slug: 'docs/themes/components/dialog' },
       { title: 'Dropdown Menu', slug: 'docs/themes/components/dropdown-menu' },
       { title: 'Em', slug: 'docs/themes/components/em' },
       { title: 'Flex', slug: 'docs/themes/components/flex' },
@@ -63,6 +62,7 @@ export const themesRoutes = [
       { title: 'Link', slug: 'docs/themes/components/link' },
       { title: 'Separator', slug: 'docs/themes/components/separator' },
       { title: 'Badge', slug: 'docs/themes/components/badge' },
+      { title: 'Dialog', slug: 'docs/themes/components/dialog' },
     ],
   },
   {

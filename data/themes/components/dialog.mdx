@@ -1,6 +1,6 @@
 ---
 metaTitle: Dialog
-metaDescription: Description
+metaDescription: Displays a modal window above the page contents.
 ---
 
 ```jsx live=true
@@ -30,3 +30,33 @@ metaDescription: Description
   </Dialog.Content>
 </Dialog.Root>
 ```
+
+## API Reference
+
+This component inherits the props from the [Radix Dialog](/docs/primitives/components/dialog) primitive.
+
+### Root
+
+Contains all the parts of a dialog.
+
+### Trigger
+
+Wraps the control that will open the dialog.
+
+### Content
+
+Contains content to be rendered in the open dialog. This component is based on the div element.
+
+### Title
+
+An accessible title that is announced when the dialog is opened. This part is based on the [Heading](./heading) component with a pre-defined font size and leading trim on top.
+
+### Description
+
+An optional accessible description that is announced when the dialog is opened. This part is based on the [Text](./text) component with a pre-defined font size.
+
+If you want to remove the description entirely, remove this part and pass `aria-describedby={undefined}` to `Dialog.Content`.
+
+### Close
+
+Wraps the control that will close the dialog.
