@@ -11,49 +11,7 @@ metaDescription: Use to provide selections from a range of values.
 
 This component inherits the props from the [Radix Slider](/docs/primitives/components/slider) primitive and supports common margin props `m`, `mx`, `my`, `ml`, `mr`, `mt`, `mb`.
 
-<ThemesPropsTable
-  data={({ slider }) => [
-    {
-      name: 'size',
-      required: false,
-      type: slider.size.values,
-      default: slider.size.default,
-      typeSimple: 'enum',
-    },
-    {
-      name: 'variant',
-      required: false,
-      type: slider.variant.values,
-      default: slider.variant.default,
-      typeSimple: 'enum',
-    },
-    {
-      name: 'color',
-      required: false,
-      typeSimple: 'enum',
-      default: slider.color.default,
-      description: (
-        <>
-          Use to override the default color inherited from the global theme.
-          Read our <a href="/TODO">theming guide</a> for more details.
-        </>
-      ),
-    },
-    {
-      name: 'radius',
-      required: false,
-      typeSimple: 'enum',
-      type: slider.radius.values,
-      default: slider.radius.default,
-      description: (
-        <>
-          Use to override the default radius inherited from the global theme.
-          Read our <a href="/TODO">theming guide</a> for more details.
-        </>
-      ),
-    },
-  ]}
-/>
+<ThemesPropsTable componentName="slider" />
 
 ## Examples
 

@@ -16,9 +16,9 @@ export type PropDef = {
   name: string;
   required?: boolean;
   default?: string | boolean;
-  type: string;
+  type?: string;
   typeSimple: string;
-  description?: string;
+  description?: string | React.ReactNode;
 };
 
 export function PropsTable({

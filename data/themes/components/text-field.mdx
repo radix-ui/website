@@ -11,37 +11,7 @@ metaDescription: Use to capture user input via a text field.
 
 This component is based on the `input` element and supports common margin props `m`, `mx`, `my`, `ml`, `mr`, `mt`, `mb`.
 
-<ThemesPropsTable
-  data={(variables) => [
-    {
-      name: 'size',
-      required: false,
-      type: variables.textField.size.values,
-      default: variables.textField.size.default,
-      typeSimple: 'enum',
-    },
-    {
-      name: 'variant',
-      required: false,
-      type: variables.textField.variant.values,
-      default: variables.textField.variant.default,
-      typeSimple: 'enum',
-    },
-    {
-      name: 'radius',
-      required: false,
-      typeSimple: 'enum',
-      type: variables.textField.radius.values,
-      default: variables.textField.radius.default,
-      description: (
-        <>
-          Use to override the default radius inherited from the global theme.
-          Read our <a href="/TODO">theming guide</a> for more details.
-        </>
-      ),
-    },
-  ]}
-/>
+<ThemesPropsTable componentName="textfield" />
 
 ## Examples
 

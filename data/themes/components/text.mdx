@@ -11,66 +11,7 @@ metaDescription: Displays a basic text element.
 
 This component is based on the `p` element and supports common margin props `m`, `mx`, `my`, `ml`, `mr`, `mt`, `mb`.
 
-<ThemesPropsTable
-  data={(variables) => [
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
-        </>
-      ),
-    },
-    {
-      name: 'size',
-      required: false,
-      type: variables.text.size.values,
-      default: variables.text.size.default,
-      typeSimple: 'enum',
-    },
-    {
-      name: 'weight',
-      required: false,
-      type: variables.text.weight.values,
-      default: variables.text.weight.default,
-      typeSimple: 'enum',
-    },
-    {
-      name: 'align',
-      required: false,
-      type: variables.text.align.values,
-      default: variables.text.align.default,
-      typeSimple: 'enum',
-    },
-    {
-      name: 'trim',
-      required: false,
-      type: variables.text.trim.values,
-      default: variables.text.trim.default,
-      typeSimple: 'enum',
-    },
-    {
-      name: 'color',
-      required: false,
-      typeSimple: 'enum',
-      default: variables.text.color.default,
-      description: (
-        <>
-          Use to override the default color inherited from the global theme.
-          Read our <a href="/TODO">theming guide</a> for more details.
-        </>
-      ),
-    },
-  ]}
-/>
+<ThemesPropsTable componentName="text" />
 
 ## Examples
 

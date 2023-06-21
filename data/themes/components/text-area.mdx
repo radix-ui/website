@@ -11,36 +11,7 @@ metaDescription: Use to capture multi-line user input via text area.
 
 This component is based on the `textarea` element and supports common margin props `m`, `mx`, `my`, `ml`, `mr`, `mt`, `mb`.
 
-<ThemesPropsTable
-  data={(variables) => [
-    {
-      name: 'size',
-      required: false,
-      type: variables.textArea.size.values,
-      default: variables.textArea.size.default,
-      typeSimple: 'enum',
-    },
-    {
-      name: 'variant',
-      required: false,
-      type: variables.textArea.variant.values,
-      default: variables.textArea.variant.default,
-      typeSimple: 'enum',
-    },
-    {
-      name: 'radius',
-      required: false,
-      typeSimple: 'enum',
-      default: variables.textArea.radius.default,
-      description: (
-        <>
-          Use to override the default radius inherited from the global theme.
-          Read our <a href="/TODO">theming guide</a> for more details.
-        </>
-      ),
-    },
-  ]}
-/>
+<ThemesPropsTable componentName="textarea" />
 
 ## Examples
 
