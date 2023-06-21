@@ -1,4 +1,45 @@
 ---
 metaTitle: Provider
-metaDescription: Description
+metaDescription: Wraps your app to provide global configuration.
 ---
+
+## API Reference
+
+This component combines the props from the [Radix Tooltip](/docs/primitives/components/tooltip#provider) and [Direction](/docs/primitives/utilities/direction-provider) providers.
+
+<ThemesPropsTable componentName="provider" />
+
+## Examples
+
+### Change the global reading direction
+
+Use the `dir` prop to invert the reading direction of all components.
+
+```jsx live=true
+<div direction="rtl">
+  <Provider dir="rtl">
+    <Slider variant="solid" defaultValue={[50]} dir="rtl" />
+  </Provider>
+</div>
+```
+
+### Change tooltip timings
+
+Use the `tooltipDelayDuration` prop to modify the global delay duration of all Tooltips.
+
+```jsx live=true
+<Provider tooltipDelayDuration="50">
+  <Flex gap="2">
+    <Tooltip content="Play">
+      <IconButton>
+        <PlayIcon />
+      </IconButton>
+    </Tooltip>
+    <Tooltip content="Pause">
+      <IconButton>
+        <PauseIcon />
+      </IconButton>
+    </Tooltip>
+  </Flex>
+</Provider>
+```

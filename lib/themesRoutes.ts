@@ -37,7 +37,6 @@ export const themesRoutes = [
       { title: 'Hover Card', slug: 'docs/themes/components/hover-card' },
       { title: 'Kbd', slug: 'docs/themes/components/kbd' },
       { title: 'Popover', slug: 'docs/themes/components/popover' },
-      { title: 'Portal', slug: 'docs/themes/components/portal' },
       { title: 'Quote', slug: 'docs/themes/components/quote' },
       { title: 'Scroll Area', slug: 'docs/themes/components/scroll-area' },
       { title: 'Section', slug: 'docs/themes/components/section' },
@@ -47,12 +46,10 @@ export const themesRoutes = [
       { title: 'Sup', slug: 'docs/themes/components/sup' },
       { title: 'Tabs', slug: 'docs/themes/components/tabs' },
       { title: 'Tooltip', slug: 'docs/themes/components/tooltip' },
-      { title: 'Visually Hidden', slug: 'docs/themes/components/visually-hidden' },
-      { title: 'Provider', slug: 'docs/themes/components/provider' },
     ],
   },
   {
-    label: 'Added',
+    label: 'Components',
     pages: [
       { title: 'Button', slug: 'docs/themes/components/button' },
       { title: 'Checkbox', slug: 'docs/themes/components/checkbox' },
@@ -66,6 +63,14 @@ export const themesRoutes = [
       { title: 'Heading', slug: 'docs/themes/components/heading' },
       { title: 'Link', slug: 'docs/themes/components/link' },
       { title: 'Separator', slug: 'docs/themes/components/separator' },
+    ],
+  },
+  {
+    label: 'Utilities',
+    pages: [
+      { title: 'Visually Hidden', slug: 'docs/themes/components/visually-hidden' },
+      { title: 'Portal', slug: 'docs/themes/components/portal' },
+      { title: 'Provider', slug: 'docs/themes/components/provider' },
     ],
   },
 ];

@@ -283,6 +283,32 @@ const props: Record<string, PropDef[]> = {
     },
     { ...colorProp, default: formatValues(themes.defaultSeparatorColor) },
   ],
+  provider: [
+    {
+      name: 'tooltipDelayDuration',
+      required: false,
+      default: '700',
+      typeSimple: 'number',
+      description:
+        'The duration from when the mouse enters a tooltip trigger until the tooltip opens.',
+    },
+    {
+      name: 'tooltipSkipDelayDuration',
+      required: false,
+      default: '300',
+      typeSimple: 'number',
+      description:
+        'How much time a user has to enter another trigger without incurring a delay again.',
+    },
+    {
+      name: 'dir',
+      required: false,
+      typeSimple: 'enum',
+      type: '"ltr" | "rtl"',
+      description:
+        'The global reading direction of your application. This will be inherited by all components.',
+    },
+  ],
 };
 
 function formatValues(values?: readonly string[] | string) {
