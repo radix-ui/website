@@ -1,8 +1,64 @@
 ---
 metaTitle: Separator
-metaDescription: Description
+metaDescription: Displays a vertical or a horizontal line.
 ---
 
 ```jsx live=true
 <Separator />
+```
+
+## API Reference
+
+This component inherits the props from the [Radix Separator](/docs/primitives/components/separator) primitive and supports common margin props `m`, `mx`, `my`, `ml`, `mr`, `mt`, `mb`.
+
+<ThemesPropsTable componentName="separator" />
+
+## Examples
+
+### Sizes
+
+Use the `size` prop to control the size of the separator. Size 3 separator takes full width or height of the container.
+
+You can change the separator size across breakpoints using the object syntax.
+
+```jsx live="true"
+<Flex direction="column" gap="4">
+  <Separator orientation="horizontal" size="4" />
+  <Separator orientation="horizontal" size="3" />
+  <Separator orientation="horizontal" size="2" />
+  <Separator orientation="horizontal" size="1" />
+</Flex>
+```
+
+```jsx live="true"
+<Flex align="center" gap="4" style={{ height: 96 }}>
+  <Separator orientation="vertical" size="4" />
+  <Separator orientation="vertical" size="3" />
+  <Separator orientation="vertical" size="2" />
+  <Separator orientation="vertical" size="1" />
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific color value, ignoring the global theme.
+
+```jsx live=true
+<Flex direction="column" gap="3">
+  <Separator color="crimson" size="4" />
+  <Separator color="indigo" size="4" />
+  <Separator color="grass" size="4" />
+  <Separator color="orange" size="4" />
+</Flex>
+```
+
+### Orientation
+
+Use the `orientation` prop to control whether the separator is horizontal or vertical.
+
+```jsx live="true"
+<Flex align="center" gap="4">
+  <Separator orientation="horizontal" />
+  <Separator orientation="vertical" />
+</Flex>
 ```

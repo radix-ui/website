@@ -275,6 +275,14 @@ const props: Record<string, PropDef[]> = {
       default: formatValues(themes.defaultLinkColor),
     },
   ],
+  separator: [
+    {
+      ...sizeProp,
+      type: formatValues(themes.separatorSizes),
+      default: formatValues(themes.defaultSeparatorSize),
+    },
+    { ...colorProp, default: formatValues(themes.defaultSeparatorColor) },
+  ],
 };
 
 function formatValues(values?: readonly string[] | string) {

@@ -42,7 +42,6 @@ export const themesRoutes = [
       { title: 'Scroll Area', slug: 'docs/themes/components/scroll-area' },
       { title: 'Section', slug: 'docs/themes/components/section' },
       { title: 'Select', slug: 'docs/themes/components/select' },
-      { title: 'Separator', slug: 'docs/themes/components/separator' },
       { title: 'Slot', slug: 'docs/themes/components/slot' },
       { title: 'Strong', slug: 'docs/themes/components/strong' },
       { title: 'Sup', slug: 'docs/themes/components/sup' },
@@ -66,6 +65,7 @@ export const themesRoutes = [
       { title: 'Text', slug: 'docs/themes/components/text' },
       { title: 'Heading', slug: 'docs/themes/components/heading' },
       { title: 'Link', slug: 'docs/themes/components/link' },
+      { title: 'Separator', slug: 'docs/themes/components/separator' },
     ],
   },
 ];
