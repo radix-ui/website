@@ -469,6 +469,7 @@ const props: Record<string, PropDef[]> = {
     },
   ],
   layout: [
+    asChildProp,
     {
       name: 'position',
       required: false,
