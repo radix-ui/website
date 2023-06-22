@@ -19,7 +19,6 @@ export const themesRoutes = [
   {
     label: 'Todo',
     pages: [
-      { title: 'Aspect Ratio', slug: 'docs/themes/components/aspect-ratio' },
       { title: 'Context Menu', slug: 'docs/themes/components/context-menu' },
       { title: 'Dropdown Menu', slug: 'docs/themes/components/dropdown-menu' },
       { title: 'Hover Card', slug: 'docs/themes/components/hover-card' },
@@ -47,6 +46,7 @@ export const themesRoutes = [
       { title: 'Dialog', slug: 'docs/themes/components/dialog' },
       { title: 'Alert Dialog', slug: 'docs/themes/components/alert-dialog' },
       { title: 'Avatar', slug: 'docs/themes/components/avatar' },
+      { title: 'Aspect Ratio', slug: 'docs/themes/components/aspect-ratio' },
     ],
   },
   {
