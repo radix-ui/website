@@ -21,7 +21,7 @@ export const themesRoutes = [
     pages: [
       { title: 'Accessible Icon', slug: 'docs/themes/components/accessible-icon' },
       { title: 'Aspect Ratio', slug: 'docs/themes/components/aspect-ratio' },
-      { title: 'Avatar', slug: 'docs/themes/components/avatar' },
+
       { title: 'Blockquote', slug: 'docs/themes/components/blockquote' },
       { title: 'Box', slug: 'docs/themes/components/box' },
       { title: 'Code', slug: 'docs/themes/components/code' },
@@ -63,6 +63,7 @@ export const themesRoutes = [
       { title: 'Badge', slug: 'docs/themes/components/badge' },
       { title: 'Dialog', slug: 'docs/themes/components/dialog' },
       { title: 'Alert Dialog', slug: 'docs/themes/components/alert-dialog' },
+      { title: 'Avatar', slug: 'docs/themes/components/avatar' },
     ],
   },
   {

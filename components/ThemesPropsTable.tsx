@@ -322,6 +322,30 @@ const props: Record<string, PropDef[]> = {
     },
     { ...colorProp, default: formatValues(themes.defaultBadgeColor) },
   ],
+  avatar: [
+    {
+      ...sizeProp,
+      type: formatValues(themes.avatarSizes),
+      default: formatValues(themes.defaultAvatarSize),
+    },
+    {
+      ...variantProp,
+      type: formatValues(themes.avatarVariants),
+      default: formatValues(themes.defaultAvatarVariant),
+    },
+    { ...colorProp, default: formatValues(themes.defaultAvatarColor) },
+    {
+      ...radiusProp,
+      type: formatValues(themes.buttonRadiusValues),
+      default: formatValues(undefined),
+    },
+    {
+      name: 'fallback',
+      required: false,
+      typeSimple: 'ReactNode',
+      description: 'The fallback element that is rendered when in an idle or error state.',
+    },
+  ],
 };
 
 function formatValues(values?: readonly string[] | string) {

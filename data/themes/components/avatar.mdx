@@ -1,8 +1,107 @@
 ---
 metaTitle: Avatar
-metaDescription: Description
+metaDescription: Used to represent user, and displays a profile picture, initials or fallback icon.
 ---
 
 ```jsx live=true
 <Avatar src="https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?&w=128&h=128&dpr=2&q=80" />
+```
+
+## API Reference
+
+This component inherits props from the [Radix Avatar](/docs/primitives/components/avatar) primitive.
+
+<ThemesPropsTable componentName="avatar" />
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Flex gap="3" align="center">
+  <Avatar
+    size="1"
+    src="https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?&w=128&h=128&dpr=2&q=80"
+  />
+  <Avatar
+    size="2"
+    src="https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?&w=128&h=128&dpr=2&q=80"
+  />
+  <Avatar
+    size="3"
+    src="https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?&w=128&h=128&dpr=2&q=80"
+  />
+  <Avatar
+    size="4"
+    src="https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?&w=128&h=128&dpr=2&q=80"
+  />
+  <Avatar
+    size="5"
+    src="https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?&w=128&h=128&dpr=2&q=80"
+  />
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style.
+
+```jsx live=true
+<Flex gap="3">
+  <Avatar variant="solid" />
+  <Avatar variant="solid-mono" />
+  <Avatar variant="subtle" />
+  <Avatar variant="subtle-mono" />
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific color value, ignoring the global theme.
+
+```jsx live=true
+<Flex gap="3">
+  <Avatar color="crimson" />
+  <Avatar color="indigo" />
+  <Avatar color="grass" />
+  <Avatar color="orange" />
+</Flex>
+```
+
+### Radius
+
+Use the `radius` prop to assign a specific radius value, ignoring the global theme.
+
+```jsx live=true
+<Flex gap="3">
+  <Avatar radius="none" />
+  <Avatar radius="small" />
+  <Avatar radius="medium" />
+  <Avatar radius="large" />
+  <Avatar radius="full" />
+</Flex>
+```
+
+### Fallback
+
+Use the `fallback` prop to modify the rendered fallback element.
+
+```jsx live=true
+<Flex gap="3">
+  <Avatar fallback="D" />
+  <Avatar fallback="BG" />
+  <Avatar
+    fallback={
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25
+          8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0
+          0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+        />
+      </svg>
+    }
+  />
+</Flex>
 ```
