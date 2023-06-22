@@ -21,7 +21,6 @@ export const themesRoutes = [
     pages: [
       { title: 'Accessible Icon', slug: 'docs/themes/components/accessible-icon' },
       { title: 'Aspect Ratio', slug: 'docs/themes/components/aspect-ratio' },
-      { title: 'Blockquote', slug: 'docs/themes/components/blockquote' },
       { title: 'Box', slug: 'docs/themes/components/box' },
       { title: 'Code', slug: 'docs/themes/components/code' },
       { title: 'Container', slug: 'docs/themes/components/container' },
@@ -33,11 +32,9 @@ export const themesRoutes = [
       { title: 'Hover Card', slug: 'docs/themes/components/hover-card' },
       { title: 'Kbd', slug: 'docs/themes/components/kbd' },
       { title: 'Popover', slug: 'docs/themes/components/popover' },
-      { title: 'Quote', slug: 'docs/themes/components/quote' },
       { title: 'Scroll Area', slug: 'docs/themes/components/scroll-area' },
       { title: 'Section', slug: 'docs/themes/components/section' },
       { title: 'Select', slug: 'docs/themes/components/select' },
-
       { title: 'Strong', slug: 'docs/themes/components/strong' },
       { title: 'Sup', slug: 'docs/themes/components/sup' },
       { title: 'Tabs', slug: 'docs/themes/components/tabs' },
@@ -55,14 +52,21 @@ export const themesRoutes = [
       { title: 'Switch', slug: 'docs/themes/components/switch' },
       { title: 'Text Field', slug: 'docs/themes/components/text-field' },
       { title: 'Text Area', slug: 'docs/themes/components/text-area' },
-      { title: 'Text', slug: 'docs/themes/components/text' },
-      { title: 'Heading', slug: 'docs/themes/components/heading' },
       { title: 'Link', slug: 'docs/themes/components/link' },
       { title: 'Separator', slug: 'docs/themes/components/separator' },
       { title: 'Badge', slug: 'docs/themes/components/badge' },
       { title: 'Dialog', slug: 'docs/themes/components/dialog' },
       { title: 'Alert Dialog', slug: 'docs/themes/components/alert-dialog' },
       { title: 'Avatar', slug: 'docs/themes/components/avatar' },
+    ],
+  },
+  {
+    label: 'Typography',
+    pages: [
+      { title: 'Text', slug: 'docs/themes/components/text' },
+      { title: 'Heading', slug: 'docs/themes/components/heading' },
+      { title: 'Blockquote', slug: 'docs/themes/components/blockquote' },
+      { title: 'Quote', slug: 'docs/themes/components/quote' },
     ],
   },
   {
