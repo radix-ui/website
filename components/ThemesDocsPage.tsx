@@ -11,29 +11,20 @@ import {
   EditPageLink,
   useCurrentPageSlug,
 } from '@components/DocsPage';
-import { PrimitivesDocsHeader } from '@components/PrimitivesDocsHeader';
-import { PrimitivesDocsSearch } from '@components/PrimitivesDocsSearch';
 import { NavHeading, NavItem, NavItemTitle } from './DocsNav';
 // import { ResourceColors, ResourceIcons, ResourceStitches } from './Resources';
 import { RouteProps, allThemesRoutes, themesRoutes } from '@lib/themesRoutes';
 import { Provider } from '@radix-ui/themes';
+import { ThemesDocsHeader } from './ThemesDocsHeader';
 
 export function ThemesDocsPage({ children }: { children: React.ReactNode }) {
-  const router = useRouter();
   const currentPageSlug = useCurrentPageSlug();
-  const [isSearchOpen, setIsSearchOpen] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
-
-  React.useEffect(() => {
-    const handleRouteChange = () => setIsMobileMenuOpen(false);
-    router.events.on('routeChangeStart', handleRouteChange);
-    return () => router.events.off('routeChangeStart', handleRouteChange);
-  }, []);
 
   return (
     <Provider>
       <HeaderWrapper>
-        <PrimitivesDocsHeader
+        <ThemesDocsHeader
           onMobileMenuButtonClick={() => setIsMobileMenuOpen((prevOpen) => !prevOpen)}
           isMenuActive={isMobileMenuOpen}
         />
@@ -41,23 +32,7 @@ export function ThemesDocsPage({ children }: { children: React.ReactNode }) {
 
       <MainWrapper>
         <NavWrapper isMobileMenuOpen={isMobileMenuOpen}>
-          <Box
-            css={{
-              position: 'sticky',
-              top: 0,
-              px: '$3',
-              backgroundColor: '$loContrast',
-              '@bp2': { display: 'none' },
-            }}
-          >
-            <PrimitivesDocsSearch
-              variant="mobile"
-              onOpenChange={setIsSearchOpen}
-              onSelect={() => setIsMobileMenuOpen(false)}
-            />
-          </Box>
-
-          <Box css={{ display: isSearchOpen ? 'none' : undefined, mt: '$4' }}>
+          <Box css={{ mt: '$4' }}>
             {themesRoutes.map((section: RouteProps) => (
               <Box key={section.label} css={{ mb: '$4' }}>
                 <NavHeading>{section.label}</NavHeading>
