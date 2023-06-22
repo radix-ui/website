@@ -276,13 +276,6 @@ const props: Record<string, PropDef[]> = {
       default: formatValues(themes.defaultLinkWeight),
     },
     {
-      name: 'gap',
-      required: false,
-      typeSimple: 'enum',
-      type: formatValues(themes.linkGap),
-      default: formatValues(themes.defaultLinkGap),
-    },
-    {
       ...colorProp,
       default: formatValues(themes.defaultLinkColor),
     },
