@@ -64,6 +64,18 @@ const radiusProp = {
   ),
 };
 
+const paddingProp = {
+  required: false,
+  typeSimple: 'enum',
+  type: formatValues(themes.paddingValues),
+};
+
+const positionEdgeProp = {
+  required: false,
+  typeSimple: 'enum',
+  type: formatValues(themes.positionEdgeValues),
+};
+
 const props: Record<string, PropDef[]> = {
   button: [
     {
@@ -352,7 +364,6 @@ const props: Record<string, PropDef[]> = {
       required: false,
       typeSimple: 'enum',
       type: formatValues(themes.boxDisplayValues),
-      description: '',
     },
   ],
   flex: [
@@ -362,7 +373,6 @@ const props: Record<string, PropDef[]> = {
       typeSimple: 'enum',
       type: formatValues(themes.flexDisplayValues),
       default: formatValues(themes.defaultFlexDisplay),
-      description: '',
     },
     {
       name: 'direction',
@@ -370,7 +380,6 @@ const props: Record<string, PropDef[]> = {
       typeSimple: 'enum',
       type: formatValues(themes.flexDirectionValues),
       default: formatValues(themes.defaultFlexDirection),
-      description: '',
     },
     {
       name: 'align',
@@ -378,7 +387,6 @@ const props: Record<string, PropDef[]> = {
       typeSimple: 'enum',
       type: formatValues(themes.flexAlignValues),
       default: formatValues(themes.defaultFlexAlign),
-      description: '',
     },
     {
       name: 'justify',
@@ -386,7 +394,6 @@ const props: Record<string, PropDef[]> = {
       typeSimple: 'enum',
       type: formatValues(themes.flexJustifyValues),
       default: formatValues(themes.defaultFlexJustify),
-      description: '',
     },
     {
       name: 'wrap',
@@ -394,7 +401,6 @@ const props: Record<string, PropDef[]> = {
       typeSimple: 'enum',
       type: formatValues(themes.flexWrapValues),
       default: formatValues(themes.defaultFlexWrap),
-      description: '',
     },
     {
       name: 'gap',
@@ -402,7 +408,6 @@ const props: Record<string, PropDef[]> = {
       typeSimple: 'enum',
       type: formatValues(themes.flexGapValues),
       default: formatValues(themes.defaultFlexGap),
-      description: '',
     },
   ],
   grid: [
@@ -412,7 +417,6 @@ const props: Record<string, PropDef[]> = {
       typeSimple: 'enum',
       type: formatValues(themes.gridDisplayValues),
       default: formatValues(themes.defaultGridDisplay),
-      description: '',
     },
     {
       name: 'columns',
@@ -420,7 +424,6 @@ const props: Record<string, PropDef[]> = {
       typeSimple: 'enum',
       type: formatValues(themes.gridColumnsValues),
       default: formatValues(themes.defaultGridColumns),
-      description: '',
     },
     {
       name: 'flow',
@@ -428,7 +431,6 @@ const props: Record<string, PropDef[]> = {
       typeSimple: 'enum',
       type: formatValues(themes.gridFlowValues),
       default: formatValues(themes.defaultGridFlow),
-      description: '',
     },
     {
       name: 'align',
@@ -436,7 +438,6 @@ const props: Record<string, PropDef[]> = {
       typeSimple: 'enum',
       type: formatValues(themes.gridAlignValues),
       default: formatValues(themes.defaultGridAlign),
-      description: '',
     },
     {
       name: 'justify',
@@ -444,7 +445,6 @@ const props: Record<string, PropDef[]> = {
       typeSimple: 'enum',
       type: formatValues(themes.gridJustifyValues),
       default: formatValues(themes.defaultGridJustify),
-      description: '',
     },
     {
       name: 'gap',
@@ -452,7 +452,6 @@ const props: Record<string, PropDef[]> = {
       typeSimple: 'enum',
       type: formatValues(themes.gridGapValues),
       default: formatValues(themes.defaultGridGap),
-      description: '',
     },
     {
       name: 'gapX',
@@ -460,7 +459,6 @@ const props: Record<string, PropDef[]> = {
       typeSimple: 'enum',
       type: formatValues(themes.gridGapValues),
       default: formatValues(themes.defaultGridGapX),
-      description: '',
     },
     {
       name: 'gapY',
@@ -468,7 +466,6 @@ const props: Record<string, PropDef[]> = {
       typeSimple: 'enum',
       type: formatValues(themes.gridGapValues),
       default: formatValues(themes.defaultGridGapY),
-      description: '',
     },
   ],
   layout: [
@@ -477,119 +474,78 @@ const props: Record<string, PropDef[]> = {
       required: false,
       typeSimple: 'enum',
       type: formatValues(themes.positionValues),
-      description: '',
     },
     {
+      ...positionEdgeProp,
       name: 'inset',
-      required: false,
-      typeSimple: 'enum',
-      type: formatValues(themes.positionEdgeValues),
-      description: '',
     },
     {
+      ...positionEdgeProp,
       name: 'top',
-      required: false,
-      typeSimple: 'enum',
-      type: formatValues(themes.positionEdgeValues),
-      description: '',
     },
     {
+      ...positionEdgeProp,
       name: 'bottom',
-      required: false,
-      typeSimple: 'enum',
-      type: formatValues(themes.positionEdgeValues),
-      description: '',
     },
     {
+      ...positionEdgeProp,
       name: 'left',
-      required: false,
-      typeSimple: 'enum',
-      type: formatValues(themes.positionEdgeValues),
-      description: '',
     },
     {
+      ...positionEdgeProp,
       name: 'right',
-      required: false,
-      typeSimple: 'enum',
-      type: formatValues(themes.positionEdgeValues),
-      description: '',
     },
     {
       name: 'width',
       required: false,
       typeSimple: 'enum',
       type: formatValues(themes.widthHeightValues),
-      description: '',
     },
     {
       name: 'height',
       required: false,
       typeSimple: 'enum',
       type: formatValues(themes.widthHeightValues),
-      description: '',
     },
     {
       name: 'shrink',
       required: false,
       typeSimple: 'enum',
       type: formatValues(themes.flexShrinkValues),
-      description: '',
     },
     {
       name: 'grow',
       required: false,
       typeSimple: 'enum',
       type: formatValues(themes.flexShrinkValues),
-      description: '',
     },
     {
+      ...paddingProp,
       name: 'p',
-      required: false,
-      typeSimple: 'enum',
-      type: formatValues(themes.paddingValues),
-      description: '',
     },
     {
+      ...paddingProp,
       name: 'py',
-      required: false,
-      typeSimple: 'enum',
-      type: formatValues(themes.paddingValues),
-      description: '',
     },
     {
+      ...paddingProp,
       name: 'px',
-      required: false,
-      typeSimple: 'enum',
-      type: formatValues(themes.paddingValues),
-      description: '',
     },
     {
+      ...paddingProp,
       name: 'pt',
-      required: false,
-      typeSimple: 'enum',
-      type: formatValues(themes.paddingValues),
-      description: '',
     },
     {
+      ...paddingProp,
       name: 'pb',
-      required: false,
-      typeSimple: 'enum',
-      type: formatValues(themes.paddingValues),
-      description: '',
     },
     {
+      ...paddingProp,
       name: 'pl',
-      required: false,
-      typeSimple: 'enum',
-      type: formatValues(themes.paddingValues),
-      description: '',
     },
     {
+      ...paddingProp,
       name: 'pr',
-      required: false,
-      typeSimple: 'enum',
-      type: formatValues(themes.paddingValues),
-      description: '',
     },
   ],
 };
