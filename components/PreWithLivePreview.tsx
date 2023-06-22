@@ -17,7 +17,7 @@ const PreWithLivePreview = (props) => {
         <Box
           css={{
             p: '$4 $4',
-            border: '1px solid var(--color5)',
+            border: '1px solid var(--monoA6)',
             borderRadius: '$3 $3 0 0',
             overflow: 'hidden',
           }}

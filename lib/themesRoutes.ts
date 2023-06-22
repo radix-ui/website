@@ -21,7 +21,6 @@ export const themesRoutes = [
     pages: [
       { title: 'Accessible Icon', slug: 'docs/themes/components/accessible-icon' },
       { title: 'Aspect Ratio', slug: 'docs/themes/components/aspect-ratio' },
-
       { title: 'Blockquote', slug: 'docs/themes/components/blockquote' },
       { title: 'Box', slug: 'docs/themes/components/box' },
       { title: 'Code', slug: 'docs/themes/components/code' },
@@ -38,7 +37,7 @@ export const themesRoutes = [
       { title: 'Scroll Area', slug: 'docs/themes/components/scroll-area' },
       { title: 'Section', slug: 'docs/themes/components/section' },
       { title: 'Select', slug: 'docs/themes/components/select' },
-      { title: 'Slot', slug: 'docs/themes/components/slot' },
+
       { title: 'Strong', slug: 'docs/themes/components/strong' },
       { title: 'Sup', slug: 'docs/themes/components/sup' },
       { title: 'Tabs', slug: 'docs/themes/components/tabs' },
@@ -72,6 +71,7 @@ export const themesRoutes = [
       { title: 'Visually Hidden', slug: 'docs/themes/components/visually-hidden' },
       { title: 'Portal', slug: 'docs/themes/components/portal' },
       { title: 'Provider', slug: 'docs/themes/components/provider' },
+      { title: 'Slot', slug: 'docs/themes/components/slot' },
     ],
   },
 ];
