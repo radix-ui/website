@@ -25,7 +25,6 @@ export const themesRoutes = [
       { title: 'Popover', slug: 'docs/themes/components/popover' },
       { title: 'Scroll Area', slug: 'docs/themes/components/scroll-area' },
       { title: 'Tabs', slug: 'docs/themes/components/tabs' },
-      { title: 'Tooltip', slug: 'docs/themes/components/tooltip' },
     ],
   },
   {
@@ -47,6 +46,7 @@ export const themesRoutes = [
       { title: 'Avatar', slug: 'docs/themes/components/avatar' },
       { title: 'Aspect Ratio', slug: 'docs/themes/components/aspect-ratio' },
       { title: 'Select', slug: 'docs/themes/components/select' },
+      { title: 'Tooltip', slug: 'docs/themes/components/tooltip' },
     ],
   },
   {

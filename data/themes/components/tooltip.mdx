@@ -1,12 +1,18 @@
 ---
 metaTitle: Tooltip
-metaDescription: Description
+metaDescription: A popup that displays information related to an element when that element receives keyboard focus or the mouse hovers over it.
 ---
 
 ```jsx live=true
-<Tooltip content="Open menu">
-  <IconButton>
-    <HamburgerMenuIcon />
+<Tooltip content="Add to library">
+  <IconButton radius="full">
+    <PlusIcon />
   </IconButton>
 </Tooltip>
 ```
+
+## API Reference
+
+This component inherits and merges props from the Radix [Tooltip.Root](/docs/primitives/components/tooltip#root) and [Tooltip.Content](/docs/primitives/components/tooltip#content) parts. It supports common margin props `m`, `mx`, `my`, `ml`, `mr`, `mt`, `mb`.
+
+<ThemesPropsTable componentName="tooltip" />

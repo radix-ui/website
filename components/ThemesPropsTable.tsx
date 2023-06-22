@@ -612,6 +612,20 @@ const props: Record<string, PropDef[]> = {
       default: formatValues(themes.defaultCodeColor),
     },
   ],
+  tooltip: [
+    {
+      name: 'content',
+      required: true,
+      typeSimple: 'ReactNode',
+      description: 'The content associated with the tooltip',
+    },
+    {
+      name: 'multiline',
+      required: false,
+      typeSimple: 'boolean',
+      description: 'Used when you need to format the content across multiple lines',
+    },
+  ],
 };
 
 function formatValues(values?: readonly string[] | string) {
