@@ -232,7 +232,7 @@ export const components = {
     </DS.Box>
   ),
   ThemesPropsTable: (props) => (
-    <DS.Box css={{ my: '$4' }}>
+    <DS.Box css={{ mt: '$4', mb: '$6' }}>
       <ThemesPropsTable {...props} />
     </DS.Box>
   ),

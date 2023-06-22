@@ -21,12 +21,9 @@ export const themesRoutes = [
     pages: [
       { title: 'Accessible Icon', slug: 'docs/themes/components/accessible-icon' },
       { title: 'Aspect Ratio', slug: 'docs/themes/components/aspect-ratio' },
-      { title: 'Box', slug: 'docs/themes/components/box' },
       { title: 'Container', slug: 'docs/themes/components/container' },
       { title: 'Context Menu', slug: 'docs/themes/components/context-menu' },
       { title: 'Dropdown Menu', slug: 'docs/themes/components/dropdown-menu' },
-      { title: 'Flex', slug: 'docs/themes/components/flex' },
-      { title: 'Grid', slug: 'docs/themes/components/grid' },
       { title: 'Hover Card', slug: 'docs/themes/components/hover-card' },
       { title: 'Popover', slug: 'docs/themes/components/popover' },
       { title: 'Scroll Area', slug: 'docs/themes/components/scroll-area' },
@@ -67,6 +64,14 @@ export const themesRoutes = [
       { title: 'Sup', slug: 'docs/themes/components/sup' },
       { title: 'Code', slug: 'docs/themes/components/code' },
       { title: 'Kbd', slug: 'docs/themes/components/kbd' },
+    ],
+  },
+  {
+    label: 'Layout',
+    pages: [
+      { title: 'Box', slug: 'docs/themes/components/box' },
+      { title: 'Flex', slug: 'docs/themes/components/flex' },
+      { title: 'Grid', slug: 'docs/themes/components/grid' },
     ],
   },
   {
