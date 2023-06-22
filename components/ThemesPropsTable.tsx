@@ -548,6 +548,20 @@ const props: Record<string, PropDef[]> = {
       name: 'pr',
     },
   ],
+  container: [
+    {
+      ...sizeProp,
+      type: formatValues(themes.containerSizes),
+      default: formatValues(themes.defaultContainerSize),
+    },
+  ],
+  section: [
+    {
+      ...sizeProp,
+      type: formatValues(themes.sectionSizes),
+      default: formatValues(themes.defaultSectionSize),
+    },
+  ],
 };
 
 function formatValues(values?: readonly string[] | string) {

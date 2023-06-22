@@ -6,7 +6,7 @@ export const themesRoutes = [
       { title: 'Getting started', slug: 'docs/themes/overview/getting-started' },
       { title: 'Design principles', slug: 'docs/themes/overview/design-principles' },
       { title: 'FAQs', slug: 'docs/themes/overview/faqs' },
-      { title: 'Releases', slug: 'docs/themes/overview/releases' },
+      // { title: 'Releases', slug: 'docs/themes/overview/releases' },
     ],
   },
   {
@@ -19,15 +19,12 @@ export const themesRoutes = [
   {
     label: 'Todo',
     pages: [
-      { title: 'Accessible Icon', slug: 'docs/themes/components/accessible-icon' },
       { title: 'Aspect Ratio', slug: 'docs/themes/components/aspect-ratio' },
-      { title: 'Container', slug: 'docs/themes/components/container' },
       { title: 'Context Menu', slug: 'docs/themes/components/context-menu' },
       { title: 'Dropdown Menu', slug: 'docs/themes/components/dropdown-menu' },
       { title: 'Hover Card', slug: 'docs/themes/components/hover-card' },
       { title: 'Popover', slug: 'docs/themes/components/popover' },
       { title: 'Scroll Area', slug: 'docs/themes/components/scroll-area' },
-      { title: 'Section', slug: 'docs/themes/components/section' },
       { title: 'Select', slug: 'docs/themes/components/select' },
       { title: 'Tabs', slug: 'docs/themes/components/tabs' },
       { title: 'Tooltip', slug: 'docs/themes/components/tooltip' },
@@ -72,11 +69,14 @@ export const themesRoutes = [
       { title: 'Box', slug: 'docs/themes/components/box' },
       { title: 'Flex', slug: 'docs/themes/components/flex' },
       { title: 'Grid', slug: 'docs/themes/components/grid' },
+      { title: 'Container', slug: 'docs/themes/components/container' },
+      { title: 'Section', slug: 'docs/themes/components/section' },
     ],
   },
   {
     label: 'Utilities',
     pages: [
+      { title: 'Accessible Icon', slug: 'docs/themes/components/accessible-icon' },
       { title: 'Visually Hidden', slug: 'docs/themes/components/visually-hidden' },
       { title: 'Portal', slug: 'docs/themes/components/portal' },
       { title: 'Provider', slug: 'docs/themes/components/provider' },

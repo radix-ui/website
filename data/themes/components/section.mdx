@@ -1,8 +1,22 @@
 ---
 metaTitle: Section
-metaDescription: Description
+metaDescription: Denotes sections of page content.
 ---
 
 ```jsx live=true
-<Section style={{ backgroundColor: 'var(--monoA3)' }}>Section</Section>
+<Box py="7" style={{ backgroundColor: 'var(--monoA2)' }}>
+  <Section
+    style={{
+      backgroundColor: 'var(--monoA2)',
+      borderTop: '1px dashed var(--monoA7)',
+      borderBottom: '1px dashed var(--monoA7)',
+    }}
+  />
+</Box>
 ```
+
+## API Reference
+
+This component is based on the `section` element and supports common margin props `m`, `mx`, `my`, `ml`, `mr`, `mt`, `mb`.
+
+<ThemesPropsTable componentName="section" />

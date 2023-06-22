@@ -1,10 +1,24 @@
 ---
 metaTitle: Container
-metaDescription: Description
+metaDescription: Constrains the maximum width of page content.
 ---
 
 ```jsx live=true
-<Container size="1" style={{ backgroundColor: 'var(--monoA3)' }}>
-  Container
-</Container>
+<Box style={{ background: 'var(--monoA2)' }}>
+  <Container
+    size="1"
+    style={{
+      background: 'var(--monoA2)',
+      borderLeft: '1px dashed var(--monoA7)',
+      borderRight: '1px dashed var(--monoA7)',
+      height: 50,
+    }}
+  />
+</Box>
 ```
+
+## API Reference
+
+This component is based on the `div` element and supports common margin props `m`, `mx`, `my`, `ml`, `mr`, `mt`, `mb`.
+
+<ThemesPropsTable componentName="container" />
