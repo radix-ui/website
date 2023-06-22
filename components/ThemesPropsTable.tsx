@@ -591,6 +591,27 @@ const props: Record<string, PropDef[]> = {
       default: formatValues(themes.defaultSelectRadius),
     },
   ],
+  code: [
+    {
+      ...sizeProp,
+      type: formatValues(themes.codeSizes),
+      default: formatValues(themes.defaultCodeSize),
+    },
+    {
+      ...variantProp,
+      type: formatValues(themes.codeVariants),
+      default: formatValues(themes.defaultCodeVariant),
+    },
+    {
+      ...weightProp,
+      type: formatValues(themes.codeWeights),
+      default: formatValues(themes.defaultCodeWeight),
+    },
+    {
+      ...colorProp,
+      default: formatValues(themes.defaultCodeColor),
+    },
+  ],
 };
 
 function formatValues(values?: readonly string[] | string) {
