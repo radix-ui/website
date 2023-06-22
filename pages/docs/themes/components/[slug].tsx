@@ -46,7 +46,7 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
           {frontmatter.metaDescription}
         </DS.Paragraph>
 
-        <Flex gap="5" css={{ mt: '$5', pb: '$5', mb: '$5', borderBottom: '1px solid $gray6' }}>
+        <Flex gap="5" css={{ mt: '$5' }}>
           <Link
             variant="blue"
             target="_blank"
