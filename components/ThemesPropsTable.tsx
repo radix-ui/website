@@ -562,6 +562,41 @@ const props: Record<string, PropDef[]> = {
       default: formatValues(themes.defaultSectionSize),
     },
   ],
+  select: [
+    {
+      name: 'placeholder',
+      required: false,
+      typeSimple: 'string',
+    },
+    {
+      ...sizeProp,
+      type: formatValues(themes.selectSizes),
+      default: formatValues(themes.defaultSelectSize),
+    },
+    {
+      name: 'triggerVariant',
+      required: false,
+      type: formatValues(themes.selectTriggerVariants),
+      default: formatValues(themes.defaultSelectTriggerVariant),
+      typeSimple: 'enum',
+    },
+    {
+      name: 'menuVariant',
+      required: false,
+      type: formatValues(themes.selectMenuVariants),
+      default: formatValues(themes.defaultSelectMenuVariant),
+      typeSimple: 'enum',
+    },
+    {
+      ...colorProp,
+      default: formatValues(themes.defaultSelectColor),
+    },
+    {
+      ...radiusProp,
+      type: formatValues(themes.buttonRadiusValues),
+      default: formatValues(themes.defaultSelectRadius),
+    },
+  ],
 };
 
 function formatValues(values?: readonly string[] | string) {

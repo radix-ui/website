@@ -1,6 +1,6 @@
 ---
 metaTitle: Select
-metaDescription: Description
+metaDescription: Displays a list of options for the user to pick from—triggered by a button.
 ---
 
 ```jsx live=true
@@ -22,4 +22,147 @@ metaDescription: Description
     <Select.Item value="potato">Potato</Select.Item>
   </Select.Group>
 </Select.Root>
+```
+
+## API Reference
+
+### Root
+
+Contains all the parts of a select. It inherits props from the Radix [Select.Root](/docs/primitives/components/select#root) and [Select.Content](/docs/primitives/components/select#content) parts. It supports common margin props `m`, `mx`, `my`, `ml`, `mr`, `mt`, `mb`.
+
+It's `ref` is forwarded to the trigger element.
+
+<ThemesPropsTable componentName="select" />
+
+### Item
+
+The component that contains the select items. It inherits props from the Radix [Select.Item](/docs/primitives/components/select#item) part.
+
+### Group
+
+Used to group multiple items. It inherits props from the Radix [Select.Group](/docs/primitives/components/select#group) part. Use in conjunction with `Select.Label` to ensure good accessibility via automatic labelling.
+
+### Label
+
+Used to render the label of a group, it isn't focusable using arrow keys. It inherits props from the Radix [Select.Label](/docs/primitives/components/select#label) part.
+
+### Separator
+
+Used to visually separate items in the Select. It inherits props from the Radix [Select.Separator](/docs/primitives/components/select#separator) part.
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Flex gap="3" align="center">
+  <Select.Root size="1" defaultValue="apple">
+    <Select.Item value="orange">Orange</Select.Item>
+    <Select.Item value="apple">Apple</Select.Item>
+    <Select.Item value="grape">Grape</Select.Item>
+  </Select.Root>
+
+  <Select.Root size="2" defaultValue="apple">
+    <Select.Item value="orange">Orange</Select.Item>
+    <Select.Item value="apple">Apple</Select.Item>
+    <Select.Item value="grape">Grape</Select.Item>
+  </Select.Root>
+</Flex>
+```
+
+### Variants
+
+Use the `triggerVariant` and `menuVariant` props to customize the visual style of the select.
+
+```jsx live=true
+<Flex gap="3" align="center">
+  <Select.Root triggerVariant="surface" defaultValue="apple">
+    <Select.Item value="orange">Orange</Select.Item>
+    <Select.Item value="apple">Apple</Select.Item>
+    <Select.Item value="grape">Grape</Select.Item>
+  </Select.Root>
+
+  <Select.Root
+    menuVariant="subtle"
+    triggerVariant="subtle"
+    defaultValue="apple"
+  >
+    <Select.Item value="orange">Orange</Select.Item>
+    <Select.Item value="apple">Apple</Select.Item>
+    <Select.Item value="grape">Grape</Select.Item>
+  </Select.Root>
+
+  <Select.Root
+    menuVariant="subtle-mono"
+    triggerVariant="ghost"
+    defaultValue="apple"
+  >
+    <Select.Item value="orange">Orange</Select.Item>
+    <Select.Item value="apple">Apple</Select.Item>
+    <Select.Item value="grape">Grape</Select.Item>
+  </Select.Root>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific color value, ignoring the global theme.
+
+```jsx live=true
+<Flex gap="3">
+  <Select.Root color="crimson" triggerVariant="outline" defaultValue="crimson">
+    <Select.Item value="crimson">Crimson</Select.Item>
+    <Select.Item value="other">Other</Select.Item>
+  </Select.Root>
+
+  <Select.Root color="indigo" triggerVariant="outline" defaultValue="indigo">
+    <Select.Item value="indigo">Indigo</Select.Item>
+    <Select.Item value="other">Other</Select.Item>
+  </Select.Root>
+
+  <Select.Root color="grass" triggerVariant="outline" defaultValue="grass">
+    <Select.Item value="grass">Grass</Select.Item>
+    <Select.Item value="other">Other</Select.Item>
+  </Select.Root>
+
+  <Select.Root color="orange" triggerVariant="outline" defaultValue="orange">
+    <Select.Item value="orange">Orange</Select.Item>
+    <Select.Item value="other">Other</Select.Item>
+  </Select.Root>
+</Flex>
+```
+
+### Radius
+
+Use the `radius` prop to assign a specific radius value, ignoring the global theme.
+
+```jsx live=true
+<Flex gap="3">
+  <Select.Root radius="none" defaultValue="none">
+    <Select.Item value="none">None</Select.Item>
+    <Select.Item value="other">Other</Select.Item>
+  </Select.Root>
+
+  <Select.Root radius="small" defaultValue="small">
+    <Select.Item value="small">Small</Select.Item>
+    <Select.Item value="other">Other</Select.Item>
+  </Select.Root>
+
+  <Select.Root radius="medium" defaultValue="medium">
+    <Select.Item value="medium">Medium</Select.Item>
+    <Select.Item value="other">Other</Select.Item>
+  </Select.Root>
+
+  <Select.Root radius="large" defaultValue="large">
+    <Select.Item value="large">Large</Select.Item>
+    <Select.Item value="other">Other</Select.Item>
+  </Select.Root>
+
+  <Select.Root radius="full" defaultValue="full">
+    <Select.Item value="full">Full</Select.Item>
+    <Select.Item value="other">Other</Select.Item>
+  </Select.Root>
+</Flex>
 ```
