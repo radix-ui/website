@@ -1,8 +1,6 @@
 import * as React from 'react';
 import {
   Box,
-  Grid,
-  Code,
   Flex,
   Text,
   IconButton,
@@ -93,7 +91,7 @@ export const ColorScaleGroup = ({ children }: { children: any }) => {
   return (
     <>
       <Flex css={{ width: '100%' }}>
-        <Box css={{ height: '$5', width: 105 }} />
+        <Box css={{ height: '$5', width: 140 }} />
         {colorKeys.map((key, i) => (
           <Box key={key} css={{ flex: 1 }}>
             <Text variant="gray" css={{ bc: 'transparent', fontSize: '$2', ta: 'center' }}>
@@ -125,11 +123,11 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
       onMouseMove={(e) => setIsHovered(true)}
       onMouseLeave={(e) => setIsHovered(false)}
     >
-      <Flex css={{ width: 'calc(100% - 25px)', gap: 2, mb: 2 }}>
-        <Flex align="center" css={{ height: '$6', width: 105 }}>
-          <Code variant="gray" css={{ bc: 'transparent', fontSize: '$2' }}>
+      <Flex css={{ width: 'calc(100% - 25px)', gap: 1, mb: 1 }}>
+        <Flex align="center" css={{ height: '$6', width: 140 }}>
+          <Text variant="gray" size="2">
             {label}
-          </Code>
+          </Text>
         </Flex>
         {Object.values(scale).map((value, i) => {
           return (

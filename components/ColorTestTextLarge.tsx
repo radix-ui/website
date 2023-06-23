@@ -35,7 +35,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Gray9
+            White text on Gray 9
           </Text>
           <Flex
             css={{
@@ -64,7 +64,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Mauve9
+            White text on Mauve 9
           </Text>
           <Flex
             css={{
@@ -93,7 +93,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Slate9
+            White text on Slate 9
           </Text>
           <Flex
             css={{
@@ -122,7 +122,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Sage9
+            White text on Sage 9
           </Text>
           <Flex
             css={{
@@ -151,7 +151,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Olive9
+            White text on Olive 9
           </Text>
           <Flex
             css={{
@@ -180,7 +180,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Sand9
+            White text on Sand 9
           </Text>
           <Flex
             css={{
@@ -209,7 +209,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Tomato9
+            White text on Tomato 9
           </Text>
           <Flex
             css={{
@@ -238,7 +238,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Red9
+            White text on Red 9
           </Text>
           <Flex
             css={{
@@ -267,7 +267,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Crimson9
+            White text on Crimson 9
           </Text>
           <Flex
             css={{
@@ -296,7 +296,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Pink9
+            White text on Pink 9
           </Text>
           <Flex
             css={{
@@ -325,7 +325,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Plum9
+            White text on Plum 9
           </Text>
           <Flex
             css={{
@@ -354,7 +354,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Purple9
+            White text on Purple 9
           </Text>
           <Flex
             css={{
@@ -383,7 +383,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Violet9
+            White text on Violet 9
           </Text>
           <Flex
             css={{
@@ -412,7 +412,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Indigo9
+            White text on Indigo 9
           </Text>
           <Flex
             css={{
@@ -441,7 +441,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Blue9
+            White text on Blue 9
           </Text>
           <Flex
             css={{
@@ -470,7 +470,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Cyan9
+            White text on Cyan 9
           </Text>
           <Flex
             css={{
@@ -499,7 +499,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Teal9
+            White text on Teal 9
           </Text>
           <Flex
             css={{
@@ -528,7 +528,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Green9
+            White text on Green 9
           </Text>
           <Flex
             css={{
@@ -557,7 +557,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Grass9
+            White text on Grass 9
           </Text>
           <Flex
             css={{
@@ -586,7 +586,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Orange9
+            White text on Orange 9
           </Text>
           <Flex
             css={{
@@ -615,7 +615,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Brown9
+            White text on Brown 9
           </Text>
           <Flex
             css={{
@@ -644,7 +644,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Bronze9
+            White text on Bronze 9
           </Text>
           <Flex
             css={{
@@ -673,7 +673,7 @@ export function ColorTestTextLarge() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            White text on Gold9
+            White text on Gold 9
           </Text>
           <Flex
             css={{

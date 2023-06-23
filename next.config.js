@@ -57,6 +57,11 @@ module.exports = withPlugins([withTM, withOptimizedImages, withVideos], {
         destination: '/docs/colors/getting-started/installation',
         permanent: false,
       },
+      {
+        source: '/docs/colors/palette-composition/the-scales',
+        destination: '/docs/colors/palette-composition/scales',
+        permanent: false,
+      },
     ];
   },
 

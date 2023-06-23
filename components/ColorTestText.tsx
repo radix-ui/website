@@ -27,7 +27,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$gray3' }}
         >
-          <Text css={{ color: '$gray11', fontSize: '$3' }}>Gray11 on Gray3</Text>
+          <Text css={{ color: '$gray11', fontSize: '$3' }}>Gray 11 on Gray 3</Text>
           <Flex
             css={{
               bc: '$gray5',
@@ -47,7 +47,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$mauve3' }}
         >
-          <Text css={{ color: '$mauve11', fontSize: '$3' }}>Mauve11 on Mauve3</Text>
+          <Text css={{ color: '$mauve11', fontSize: '$3' }}>Mauve 11 on Mauve 3</Text>
           <Flex
             css={{
               bc: '$mauve5',
@@ -67,7 +67,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$slate3' }}
         >
-          <Text css={{ color: '$slate11', fontSize: '$3' }}>Slate11 on Slate3</Text>
+          <Text css={{ color: '$slate11', fontSize: '$3' }}>Slate 11 on Slate 3</Text>
           <Flex
             css={{
               bc: '$slate5',
@@ -87,7 +87,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$sage3' }}
         >
-          <Text css={{ color: '$sage11', fontSize: '$3' }}>Sage11 on Sage3</Text>
+          <Text css={{ color: '$sage11', fontSize: '$3' }}>Sage 11 on Sage 3</Text>
           <Flex
             css={{
               bc: '$sage5',
@@ -107,7 +107,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$olive3' }}
         >
-          <Text css={{ color: '$olive11', fontSize: '$3' }}>Olive11 on Olive3</Text>
+          <Text css={{ color: '$olive11', fontSize: '$3' }}>Olive 11 on Olive 3</Text>
           <Flex
             css={{
               bc: '$olive5',
@@ -127,7 +127,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$sand3' }}
         >
-          <Text css={{ color: '$sand11', fontSize: '$3' }}>Sand11 on Sand3</Text>
+          <Text css={{ color: '$sand11', fontSize: '$3' }}>Sand 11 on Sand 3</Text>
           <Flex
             css={{
               bc: '$sand5',
@@ -147,7 +147,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$tomato3' }}
         >
-          <Text css={{ color: '$tomato11', fontSize: '$3' }}>Tomato11 on Tomato3</Text>
+          <Text css={{ color: '$tomato11', fontSize: '$3' }}>Tomato 11 on Tomato 3</Text>
           <Flex
             css={{
               bc: '$tomato5',
@@ -167,7 +167,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$red3' }}
         >
-          <Text css={{ color: '$red11', fontSize: '$3' }}>Red11 on Red3</Text>
+          <Text css={{ color: '$red11', fontSize: '$3' }}>Red 11 on Red 3</Text>
           <Flex
             css={{
               bc: '$red5',
@@ -187,7 +187,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$crimson3' }}
         >
-          <Text css={{ color: '$crimson11', fontSize: '$3' }}>Crimson11 on Crimson3</Text>
+          <Text css={{ color: '$crimson11', fontSize: '$3' }}>Crimson 11 on Crimson 3</Text>
           <Flex
             css={{
               bc: '$crimson5',
@@ -207,7 +207,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$pink3' }}
         >
-          <Text css={{ color: '$pink11', fontSize: '$3' }}>Pink11 on Pink3</Text>
+          <Text css={{ color: '$pink11', fontSize: '$3' }}>Pink 11 on Pink 3</Text>
           <Flex
             css={{
               bc: '$pink5',
@@ -227,7 +227,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$plum3' }}
         >
-          <Text css={{ color: '$plum11', fontSize: '$3' }}>Plum11 on Plum3</Text>
+          <Text css={{ color: '$plum11', fontSize: '$3' }}>Plum 11 on Plum 3</Text>
           <Flex
             css={{
               bc: '$plum5',
@@ -247,7 +247,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$purple3' }}
         >
-          <Text css={{ color: '$purple11', fontSize: '$3' }}>Purple11 on Purple3</Text>
+          <Text css={{ color: '$purple11', fontSize: '$3' }}>Purple 11 on Purple 3</Text>
           <Flex
             css={{
               bc: '$purple5',
@@ -267,7 +267,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$violet3' }}
         >
-          <Text css={{ color: '$violet11', fontSize: '$3' }}>Violet11 on Violet3</Text>
+          <Text css={{ color: '$violet11', fontSize: '$3' }}>Violet 11 on Violet 3</Text>
           <Flex
             css={{
               bc: '$violet5',
@@ -287,7 +287,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$indigo3' }}
         >
-          <Text css={{ color: '$indigo11', fontSize: '$3' }}>Indigo11 on Indigo3</Text>
+          <Text css={{ color: '$indigo11', fontSize: '$3' }}>Indigo 11 on Indigo 3</Text>
           <Flex
             css={{
               bc: '$indigo5',
@@ -307,7 +307,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$blue3' }}
         >
-          <Text css={{ color: '$blue11', fontSize: '$3' }}>Blue11 on Blue3</Text>
+          <Text css={{ color: '$blue11', fontSize: '$3' }}>Blue 11 on Blue 3</Text>
           <Flex
             css={{
               bc: '$blue5',
@@ -327,7 +327,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$sky3' }}
         >
-          <Text css={{ color: '$sky11', fontSize: '$3' }}>Sky11 on Sky3</Text>
+          <Text css={{ color: '$sky11', fontSize: '$3' }}>Sky 11 on Sky 3</Text>
           <Flex
             css={{
               bc: '$sky5',
@@ -347,7 +347,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$cyan3' }}
         >
-          <Text css={{ color: '$cyan11', fontSize: '$3' }}>Cyan11 on Cyan3</Text>
+          <Text css={{ color: '$cyan11', fontSize: '$3' }}>Cyan 11 on Cyan 3</Text>
           <Flex
             css={{
               bc: '$cyan5',
@@ -367,7 +367,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$teal3' }}
         >
-          <Text css={{ color: '$teal11', fontSize: '$3' }}>Teal11 on Teal3</Text>
+          <Text css={{ color: '$teal11', fontSize: '$3' }}>Teal 11 on Teal 3</Text>
           <Flex
             css={{
               bc: '$teal5',
@@ -387,7 +387,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$mint3' }}
         >
-          <Text css={{ color: '$mint11', fontSize: '$3' }}>Mint11 on Mint3</Text>
+          <Text css={{ color: '$mint11', fontSize: '$3' }}>Mint 11 on Mint 3</Text>
           <Flex
             css={{
               bc: '$mint5',
@@ -407,7 +407,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$green3' }}
         >
-          <Text css={{ color: '$green11', fontSize: '$3' }}>Green11 on Green3</Text>
+          <Text css={{ color: '$green11', fontSize: '$3' }}>Green 11 on Green 3</Text>
           <Flex
             css={{
               bc: '$green5',
@@ -427,7 +427,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$grass3' }}
         >
-          <Text css={{ color: '$grass11', fontSize: '$3' }}>Grass11 on Grass3</Text>
+          <Text css={{ color: '$grass11', fontSize: '$3' }}>Grass 11 on Grass 3</Text>
           <Flex
             css={{
               bc: '$grass5',
@@ -447,7 +447,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$lime3' }}
         >
-          <Text css={{ color: '$lime11', fontSize: '$3' }}>Lime11 on Lime3</Text>
+          <Text css={{ color: '$lime11', fontSize: '$3' }}>Lime 11 on Lime 3</Text>
           <Flex
             css={{
               bc: '$lime5',
@@ -467,7 +467,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$yellow3' }}
         >
-          <Text css={{ color: '$yellow11', fontSize: '$3' }}>Yellow11 on Yellow3</Text>
+          <Text css={{ color: '$yellow11', fontSize: '$3' }}>Yellow 11 on Yellow 3</Text>
           <Flex
             css={{
               bc: '$yellow5',
@@ -487,7 +487,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$amber3' }}
         >
-          <Text css={{ color: '$amber11', fontSize: '$3' }}>Amber11 on Amber3</Text>
+          <Text css={{ color: '$amber11', fontSize: '$3' }}>Amber 11 on Amber 3</Text>
           <Flex
             css={{
               bc: '$amber5',
@@ -507,7 +507,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$orange3' }}
         >
-          <Text css={{ color: '$orange11', fontSize: '$3' }}>Orange11 on Orange3</Text>
+          <Text css={{ color: '$orange11', fontSize: '$3' }}>Orange 11 on Orange 3</Text>
           <Flex
             css={{
               bc: '$orange5',
@@ -527,7 +527,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$brown3' }}
         >
-          <Text css={{ color: '$brown11', fontSize: '$3' }}>Brown11 on Brown3</Text>
+          <Text css={{ color: '$brown11', fontSize: '$3' }}>Brown 11 on Brown 3</Text>
           <Flex
             css={{
               bc: '$brown5',
@@ -547,7 +547,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$bronze3' }}
         >
-          <Text css={{ color: '$bronze11', fontSize: '$3' }}>Bronze11 on Bronze3</Text>
+          <Text css={{ color: '$bronze11', fontSize: '$3' }}>Bronze 11 on Bronze 3</Text>
           <Flex
             css={{
               bc: '$bronze5',
@@ -567,7 +567,7 @@ export function ColorTestText() {
           justify="between"
           css={{ height: '$7', px: '$3', backgroundColor: '$gold3' }}
         >
-          <Text css={{ color: '$gold11', fontSize: '$3' }}>Gold11 on Gold3</Text>
+          <Text css={{ color: '$gold11', fontSize: '$3' }}>Gold 11 on Gold 3</Text>
           <Flex
             css={{
               bc: '$gold5',

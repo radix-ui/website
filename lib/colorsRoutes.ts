@@ -20,8 +20,8 @@ export const colorsRoutes = [
     label: 'Palette Composition',
     pages: [
       {
-        title: 'The Scales',
-        slug: 'docs/colors/palette-composition/the-scales',
+        title: 'Scales',
+        slug: 'docs/colors/palette-composition/scales',
         draft: false,
       },
       {

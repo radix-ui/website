@@ -11,6 +11,44 @@ metaDescription: How to use Radix Colors.
 
 Radix Colors scales are just simple JavaScript objects, so you can use them with your preferred styling solution easily. Below you can find usage examples for popular styling solutions.
 
+## Vanilla CSS
+
+Radix Colors provides the colors bundled as raw CSS files. You can import them directly in your files when using a bundler, such as Parcel or Webpack.
+
+```js
+// Import only the scales you need
+@import "@radix-ui/colors/gray.css";
+@import "@radix-ui/colors/blue.css";
+@import "@radix-ui/colors/green.css";
+@import "@radix-ui/colors/red.css";
+@import "@radix-ui/colors/gray-dark.css";
+@import "@radix-ui/colors/blue-dark.css";
+@import "@radix-ui/colors/green-dark.css";
+@import "@radix-ui/colors/red-dark.css";
+
+// Use the colors as CSS variables
+.button {
+  background-color: var(--blue-4);
+  color: var(--blue-11);
+  border-color: var(--blue-7);
+}
+.button:hover {
+  background-color: var(--blue-5);
+  border-color: var(--blue-8);
+}
+
+// For dark mode, apply a `.dark-theme` class to <body> or a parent.
+<body class="dark-theme">
+  <button class="button">Button</button>
+</body>
+```
+
+<Note>
+  Light scales apply their CSS variables to the `:root` element and to the
+  `.light-theme` class. Dark scales apply their CSS variables to the
+  `.dark-theme` class.
+</Note>
+
 ## Stitches
 
 ```jsx
@@ -134,40 +172,3 @@ import {
 import { ThemeProvider } from '@emotion/react';
 import styled from '@emotion/styled';
 ```
-
-## Vanilla CSS
-
-Radix Colors provides the colors bundled as raw CSS files. You can import them directly in your files when using a bundler, such as Parcel or Webpack.
-
-```js
-// Import only the scales you need
-@import "@radix-ui/colors/gray.css";
-@import "@radix-ui/colors/blue.css";
-@import "@radix-ui/colors/green.css";
-@import "@radix-ui/colors/red.css";
-@import "@radix-ui/colors/grayDark.css";
-@import "@radix-ui/colors/blueDark.css";
-@import "@radix-ui/colors/greenDark.css";
-@import "@radix-ui/colors/redDark.css";
-
-// Use the colors as CSS variables
-.button {
-  background-color: var(--blue4);
-  color: var(--blue11);
-  border-color: var(--blue7);
-}
-.button:hover {
-  background-color: var(--blue5);
-  border-color: var(--blue8);
-}
-
-// For dark mode, apply a `.dark-theme` class to <body> or a parent.
-<body class="dark-theme">
-  <button class="button">Button</button>
-</body>
-```
-
-<Note>
-  Light scales apply their CSS variables to the `:root` element. Dark scales
-  apply their CSS variables to the `.dark-theme` class.
-</Note>
