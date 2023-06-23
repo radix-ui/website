@@ -2,8 +2,8 @@ import React from 'react';
 import { PropDef, PropsTable } from './PropsTable';
 import * as themes from '@radix-ui/themes';
 
-export function ThemesPropsTable({ componentName }: { componentName: string }) {
-  return <PropsTable data={props[componentName]} />;
+export function ThemesPropsTable({ name }: { name: string }) {
+  return <PropsTable data={props[name]} />;
 }
 
 const asChildProp = {
@@ -113,7 +113,7 @@ const props: Record<string, PropDef[]> = {
       default: formatValues(themes.defaultCheckboxRadius),
     },
   ],
-  iconbutton: [
+  iconButton: [
     {
       ...sizeProp,
       type: formatValues(themes.iconButtonSizes),
@@ -131,7 +131,7 @@ const props: Record<string, PropDef[]> = {
       default: formatValues(themes.defaultIconButtonRadius),
     },
   ],
-  radiogroup: [
+  radioGroup: [
     {
       ...sizeProp,
       type: formatValues(themes.radioGroupSizes),
@@ -180,7 +180,7 @@ const props: Record<string, PropDef[]> = {
       default: formatValues(themes.defaultSwitchRadius),
     },
   ],
-  textfield: [
+  textField: [
     {
       ...sizeProp,
       type: formatValues(themes.textFieldSizes),
@@ -197,7 +197,7 @@ const props: Record<string, PropDef[]> = {
       default: formatValues(themes.defaultTextFieldRadius),
     },
   ],
-  textarea: [
+  textArea: [
     {
       ...sizeProp,
       type: formatValues(themes.textAreaSizes),
@@ -556,7 +556,7 @@ const props: Record<string, PropDef[]> = {
       default: formatValues(themes.defaultSectionSize),
     },
   ],
-  selectroot: [
+  selectRoot: [
     {
       name: 'placeholder',
       required: false,
@@ -626,7 +626,7 @@ const props: Record<string, PropDef[]> = {
       description: 'Used when you need to format the content across multiple lines',
     },
   ],
-  scrollarea: [
+  scrollArea: [
     {
       ...sizeProp,
       type: formatValues(themes.scrollAreaSizes),
@@ -646,7 +646,7 @@ const props: Record<string, PropDef[]> = {
       description: 'Controls the scrollable axes',
     },
   ],
-  dropdownmenucontent: [
+  dropdownMenuContent: [
     {
       ...sizeProp,
       type: formatValues(themes.dropdownMenuSizes),
@@ -658,7 +658,7 @@ const props: Record<string, PropDef[]> = {
       default: formatValues(themes.defaultDropdownMenuVariant),
     },
   ],
-  dropdownmenuitem: [
+  dropdownMenuItem: [
     {
       name: 'shortcut',
       required: false,
@@ -666,7 +666,7 @@ const props: Record<string, PropDef[]> = {
       description: 'An optional shortcut command to associate with the item',
     },
   ],
-  contextmenucontent: [
+  contextMenuContent: [
     {
       ...sizeProp,
       type: formatValues(themes.contextMenuSizes),
@@ -678,7 +678,7 @@ const props: Record<string, PropDef[]> = {
       default: formatValues(themes.defaultContextMenuSize),
     },
   ],
-  contextmenuitem: [
+  contextMenuItem: [
     {
       name: 'shortcut',
       required: false,
