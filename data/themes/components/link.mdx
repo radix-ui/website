@@ -4,7 +4,7 @@ metaDescription: Accessible element for navigation between pages.
 ---
 
 ```jsx live=true
-<Link>The quick brown fox</Link>
+<Link>The quick brown fox jumps over the lazy dog.</Link>
 ```
 
 ## API Reference
@@ -39,8 +39,10 @@ Use the `variant` prop to control the visual style.
 
 ```jsx live=true
 <Flex direction="column" gap="1">
-  <Link variant="default">The quick brown fox</Link>
-  <Link variant="high-contrast">The quick brown fox</Link>
+  <Link variant="default">The quick brown fox jumps over the lazy dog</Link>
+  <Link variant="high-contrast">
+    The quick brown fox jumps over the lazy dog
+  </Link>
 </Flex>
 ```
 
@@ -50,8 +52,8 @@ Use the `weight` prop to set the weight of the link. You can change the weight a
 
 ```jsx live="true"
 <Flex direction="column" gap="1">
-  <Link weight="normal">The quick brown fox</Link>
-  <Link weight="bold">The quick brown fox</Link>
+  <Link weight="normal">The quick brown fox jumps over the lazy dog</Link>
+  <Link weight="bold">The quick brown fox jumps over the lazy dog</Link>
 </Flex>
 ```
 
@@ -61,9 +63,9 @@ Use the `color` prop to assign a specific color value, ignoring the global theme
 
 ```jsx live=true
 <Flex direction="column" gap="1">
-  <Link color="crimson">The quick brown fox</Link>
-  <Link color="indigo">The quick brown fox</Link>
-  <Link color="grass">The quick brown fox</Link>
-  <Link color="orange">The quick brown fox</Link>
+  <Link color="crimson">The quick brown fox jumps over the lazy dog</Link>
+  <Link color="indigo">The quick brown fox jumps over the lazy dog</Link>
+  <Link color="grass">The quick brown fox jumps over the lazy dog</Link>
+  <Link color="orange">The quick brown fox jumps over the lazy dog</Link>
 </Flex>
 ```

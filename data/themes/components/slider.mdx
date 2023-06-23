@@ -32,7 +32,7 @@ Use the `size` prop to control the size.
 Use the `variant` prop to control the visual style.
 
 ```jsx live=true
-<Grid columns="1" gap="4">
+<Grid columns="2" gap="4">
   <Slider variant="solid" defaultValue={[50]} />
   <Slider variant="solid-mono" defaultValue={[50]} />
   <Slider variant="subtle" defaultValue={[50]} />
@@ -46,10 +46,10 @@ Use the `color` prop to assign a specific color value, ignoring the global theme
 
 ```jsx live=true
 <Grid columns="1" gap="4">
-  <Slider color="crimson" defaultValue={[50]} />
-  <Slider color="indigo" defaultValue={[50]} />
-  <Slider color="grass" defaultValue={[50]} />
-  <Slider color="orange" defaultValue={[50]} />
+  <Slider color="crimson" defaultValue={[80]} />
+  <Slider color="indigo" defaultValue={[60]} />
+  <Slider color="grass" defaultValue={[40]} />
+  <Slider color="orange" defaultValue={[20]} />
 </Grid>
 ```
 
@@ -59,10 +59,10 @@ Use the `radius` prop to assign a specific radius value, ignoring the global the
 
 ```jsx live=true
 <Grid columns="5" gap="4">
-  <Slider radius="none" defaultValue={[75]} />
-  <Slider radius="small" defaultValue={[75]} />
-  <Slider radius="medium" defaultValue={[75]} />
-  <Slider radius="large" defaultValue={[75]} />
-  <Slider radius="full" defaultValue={[75]} />
+  <Slider radius="none" defaultValue={[0]} />
+  <Slider radius="small" defaultValue={[0]} />
+  <Slider radius="medium" defaultValue={[0]} />
+  <Slider radius="large" defaultValue={[0]} />
+  <Slider radius="full" defaultValue={[0]} />
 </Grid>
 ```
