@@ -1,23 +1,61 @@
 ---
 metaTitle: Tabs
-metaDescription: Description
+metaDescription: A set of layered sections of content—known as tab panels—that are displayed one at a time.
 ---
 
 ```jsx live=true
-<Tabs.Root defaultValue="account">
-  <Tabs.List>
-    <Tabs.Trigger value="account">Account</Tabs.Trigger>
-    <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
-    <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
-  </Tabs.List>
-  <Tabs.Content value="account">
-    <Box py="5">Account</Box>
-  </Tabs.Content>
-  <Tabs.Content value="documents">
-    <Box py="5">Documents</Box>
-  </Tabs.Content>
-  <Tabs.Content value="settings">
-    <Box py="5">Settings</Box>
-  </Tabs.Content>
-</Tabs.Root>
+<Box mt="0">
+  <Tabs.Root
+    defaultValue="account"
+    style={{ border: '1px solid var(--monoA5)', borderRadius: 'var(--brs-3)' }}
+  >
+    <Tabs.List>
+      <Tabs.Trigger value="account">Account</Tabs.Trigger>
+      <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+      <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+    </Tabs.List>
+
+    <Tabs.Content value="account">
+      <Box p="5">
+        <Text>
+          Make changes to your <Strong>account</Strong> here.
+        </Text>
+      </Box>
+    </Tabs.Content>
+    <Tabs.Content value="documents">
+      <Box p="5">
+        <Text>
+          Make changes to your <Strong>documents</Strong> here.
+        </Text>
+      </Box>
+    </Tabs.Content>
+    <Tabs.Content value="settings">
+      <Box p="5">
+        <Text>
+          Make changes to your <Strong>settings</Strong> here.
+        </Text>
+      </Box>
+    </Tabs.Content>
+  </Tabs.Root>
+</Box>
 ```
+
+## API Reference
+
+This component inherits the props from the [Radix Tabs](/docs/primitives/components/tabs) primitive and supports common margin props `m`, `mx`, `my`, `ml`, `mr`, `mt`, `mb`.
+
+### Root
+
+Contains all the tabs component parts.
+
+### List
+
+Contains the triggers that are aligned along the edge of the active content.
+
+### Trigger
+
+The button that activates its associated content.
+
+### Content
+
+Contains the content associated with each trigger.
