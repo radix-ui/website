@@ -5,13 +5,13 @@ metaDescription: Denotes a section of page content.
 
 ```jsx live=true
 <Box py="7" style={{ backgroundColor: 'var(--monoA2)' }}>
-  <Section
-    style={{
-      backgroundColor: 'var(--monoA2)',
-      borderTop: '1px dashed var(--monoA7)',
-      borderBottom: '1px dashed var(--monoA7)',
-    }}
-  />
+  <DecorativeBox asChild>
+    <Section>
+      <Text align="center" color="gray">
+        Content
+      </Text>
+    </Section>
+  </DecorativeBox>
 </Box>
 ```
 

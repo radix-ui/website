@@ -2,13 +2,12 @@ import * as React from 'react';
 import { Box } from '@modulz/design-system';
 import { CopyCodeButton } from './CopyCodeButton';
 import { LiveCode } from './LiveCode';
-import * as themeComponents from '@radix-ui/themes';
+import * as themes from '@radix-ui/themes';
 import * as icons from '@radix-ui/react-icons';
 import { ThemesPre } from './ThemesPre';
 
 const PreWithLivePreview = (props) => {
   const [code, setCode] = React.useState('');
-
   const liveCode = childrenText(props.children) ?? '';
 
   return (
@@ -22,7 +21,27 @@ const PreWithLivePreview = (props) => {
             overflow: 'hidden',
           }}
         >
-          <LiveCode code={liveCode} scope={{ ...themeComponents, ...icons }} />
+          <LiveCode
+            code={liveCode}
+            scope={{
+              ...themes,
+              ...icons,
+              DecorativeBox: (props) => (
+                <themes.Box
+                  {...props}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'var(--monoA3)',
+                    border: '1px dashed var(--monoA6)',
+                    borderRadius: 'var(--br-2)',
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.2' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E")`,
+                    ...props.style,
+                  }}
+                />
+              ),
+            }}
+          />
         </Box>
       </Box>
 

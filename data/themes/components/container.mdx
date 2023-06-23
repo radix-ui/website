@@ -5,15 +5,15 @@ metaDescription: Constrains the maximum width of page content.
 
 ```jsx live=true
 <Box style={{ background: 'var(--monoA2)' }}>
-  <Container
-    size="1"
-    style={{
-      background: 'var(--monoA2)',
-      borderLeft: '1px dashed var(--monoA7)',
-      borderRight: '1px dashed var(--monoA7)',
-      height: 50,
-    }}
-  />
+  <Container size="1">
+    <DecorativeBox>
+      <Box py="9">
+        <Text align="center" color="gray">
+          Content
+        </Text>
+      </Box>
+    </DecorativeBox>
+  </Container>
 </Box>
 ```
 
