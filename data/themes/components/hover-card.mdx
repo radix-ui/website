@@ -1,19 +1,51 @@
 ---
 metaTitle: Hover Card
-metaDescription: Description
+metaDescription: For sighted users to preview content available behind a link.
 ---
 
 ```jsx live=true
 <HoverCard.Root>
   <HoverCard.Trigger>
-    <Link>A fancy link</Link>
+    <Link>Typography</Link>
   </HoverCard.Trigger>
-  <HoverCard.Content style={{ width: 200 }}>
-    <Text size="2">
-      Jan Tschichold was a German calligrapher, typographer and book designer.
-      He played a significant role in the development of graphic design in the
-      20th century.
-    </Text>
+  <HoverCard.Content style={{ overflow: 'hidden' }}>
+    <Flex gap="3">
+      <Text size="2" style={{ maxWidth: 200 }}>
+        <Strong>Typography</Strong> is the art and technique of arranging type
+        to make written language legible, readable and appealing when displayed.
+        The arrangement of type involves selecting typefaces, point sizes, line
+        lengths, line-spacing (leading), and letter-spacing (tracking)...
+      </Text>
+
+      <Box asChild m="-3" ml="0">
+        <img
+          src="https://images.unsplash.com/photo-1596299786007-9974099be52b?&auto=format&fit=crop&w=300&q=80"
+          alt="A house in a forest"
+          style={{
+            display: 'block',
+            objectFit: 'cover',
+            width: 150,
+            height: '100%',
+          }}
+        />
+      </Box>
+    </Flex>
   </HoverCard.Content>
 </HoverCard.Root>
 ```
+
+## API Reference
+
+This component inherits the props from the [Radix Popover](/docs/primitives/components/hover-card) primitive.
+
+### Root
+
+Contains all the parts of a hover card.
+
+### Trigger
+
+Wraps the link that will open the hover card.
+
+### Content
+
+Contains content to be rendered in the open hover card. This component is based on the `div` element.

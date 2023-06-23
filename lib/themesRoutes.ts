@@ -21,7 +21,6 @@ export const themesRoutes = [
     pages: [
       { title: 'Context Menu', slug: 'docs/themes/components/context-menu' },
       { title: 'Dropdown Menu', slug: 'docs/themes/components/dropdown-menu' },
-      { title: 'Hover Card', slug: 'docs/themes/components/hover-card' },
       { title: 'Tabs', slug: 'docs/themes/components/tabs' },
     ],
   },
@@ -47,6 +46,7 @@ export const themesRoutes = [
       { title: 'Tooltip', slug: 'docs/themes/components/tooltip' },
       { title: 'Scroll Area', slug: 'docs/themes/components/scroll-area' },
       { title: 'Popover', slug: 'docs/themes/components/popover' },
+      { title: 'Hover Card', slug: 'docs/themes/components/hover-card' },
     ],
   },
   {
