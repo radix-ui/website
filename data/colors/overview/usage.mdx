@@ -15,16 +15,16 @@ Radix Colors scales are just simple JavaScript objects, so you can use them with
 
 Radix Colors provides the colors bundled as raw CSS files. You can import them directly in your files when using a bundler, such as Parcel or Webpack.
 
-```js
+```css
 // Import only the scales you need
-@import "@radix-ui/colors/gray.css";
-@import "@radix-ui/colors/blue.css";
-@import "@radix-ui/colors/green.css";
-@import "@radix-ui/colors/red.css";
-@import "@radix-ui/colors/gray-dark.css";
-@import "@radix-ui/colors/blue-dark.css";
-@import "@radix-ui/colors/green-dark.css";
-@import "@radix-ui/colors/red-dark.css";
+@import '@radix-ui/colors/gray.css';
+@import '@radix-ui/colors/blue.css';
+@import '@radix-ui/colors/green.css';
+@import '@radix-ui/colors/red.css';
+@import '@radix-ui/colors/gray-dark.css';
+@import '@radix-ui/colors/blue-dark.css';
+@import '@radix-ui/colors/green-dark.css';
+@import '@radix-ui/colors/red-dark.css';
 
 // Use the colors as CSS variables
 .button {
@@ -36,8 +36,10 @@ Radix Colors provides the colors bundled as raw CSS files. You can import them d
   background-color: var(--blue-5);
   border-color: var(--blue-8);
 }
+```
 
-// For dark mode, apply a `.dark-theme` class to <body> or a parent.
+```html
+<!-- For dark mode, apply a `.dark-theme` class to <body> or a parent. -->
 <body class="dark-theme">
   <button class="button">Button</button>
 </body>
