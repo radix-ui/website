@@ -17,6 +17,12 @@ import tinycolor from 'tinycolor2';
 
 type Scale = Record<string, string>;
 
+const toCssCasing = (str: string) =>
+  str
+    .replace(/([a-z])(\d)/, '$1-$2')
+    .replace(/([A-Z])/g, '-$1')
+    .toLowerCase();
+
 const scaleToHSLObject = (name: string, scale: Scale) => {
   const values = Object.entries(scale)
     .map(([key, val]) => `  ${key}: '${val}',`)
@@ -42,6 +48,7 @@ const scaleToHexObject = (name: string, scale: Scale) => {
 
 const scaleToCSS = (name, scale: Scale) => {
   const values = Object.entries(scale)
+    .map(([key, val]) => [toCssCasing(key), val])
     .map(([key, val]) => `  --${key}: ${val};`)
     .join('\n');
   return `.${name} {\n${values}\n}`;
@@ -49,12 +56,14 @@ const scaleToCSS = (name, scale: Scale) => {
 
 const scaleToSASS = (scale: Scale) => {
   return Object.entries(scale)
+    .map(([key, val]) => [toCssCasing(key), val])
     .map(([key, val]) => `$${key}: ${val};`)
     .join('\n');
 };
 
 const scaleToLESS = (scale: Scale) => {
   return Object.entries(scale)
+    .map(([key, val]) => [toCssCasing(key), val])
     .map(([key, val]) => `@${key}: ${val};`)
     .join('\n');
 };
