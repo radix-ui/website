@@ -6,7 +6,9 @@ metaDescription: Menu representing a set of actions, triggered by a button.
 ```jsx live=true
 <DropdownMenu.Root>
   <DropdownMenu.Trigger>
-    <Button>Open</Button>
+    <IconButton variant="subtle">
+      <DotsHorizontalIcon />
+    </IconButton>
   </DropdownMenu.Trigger>
   <DropdownMenu.Content>
     <DropdownMenu.Item shortcut="⌘+T">New Tab</DropdownMenu.Item>
@@ -114,7 +116,9 @@ Use the `size` prop to control the size.
 <Flex gap="3" align="center">
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <Button size="1">Open</Button>
+      <IconButton variant="subtle" size="1">
+        <DotsHorizontalIcon />
+      </IconButton>
     </DropdownMenu.Trigger>
     <DropdownMenu.Content size="1">
       <DropdownMenu.Item>New Tab</DropdownMenu.Item>
@@ -124,7 +128,9 @@ Use the `size` prop to control the size.
 
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <Button size="2">Open</Button>
+      <IconButton variant="subtle">
+        <DotsHorizontalIcon />
+      </IconButton>
     </DropdownMenu.Trigger>
     <DropdownMenu.Content size="2">
       <DropdownMenu.Item>New Tab</DropdownMenu.Item>
@@ -142,7 +148,9 @@ Use the `variant` prop to customize the visual style of the dropdown menu.
 <Flex gap="3" align="center">
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <Button variant="outline">Open</Button>
+      <IconButton variant="outline">
+        <DotsHorizontalIcon />
+      </IconButton>
     </DropdownMenu.Trigger>
     <DropdownMenu.Content variant="solid">
       <DropdownMenu.Item>New Tab</DropdownMenu.Item>
@@ -152,7 +160,9 @@ Use the `variant` prop to customize the visual style of the dropdown menu.
 
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <Button variant="subtle">Open</Button>
+      <IconButton variant="subtle">
+        <DotsHorizontalIcon />
+      </IconButton>
     </DropdownMenu.Trigger>
     <DropdownMenu.Content variant="subtle">
       <DropdownMenu.Item>New Tab</DropdownMenu.Item>
@@ -162,7 +172,9 @@ Use the `variant` prop to customize the visual style of the dropdown menu.
 
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <Button variant="ghost">Open</Button>
+      <IconButton variant="ghost">
+        <DotsHorizontalIcon />
+      </IconButton>
     </DropdownMenu.Trigger>
     <DropdownMenu.Content variant="subtle-mono">
       <DropdownMenu.Item>New Tab</DropdownMenu.Item>
