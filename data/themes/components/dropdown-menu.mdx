@@ -1,14 +1,12 @@
 ---
 metaTitle: Dropdown Menu
-metaDescription: Description
+metaDescription: Displays a menu to the user—such as a set of actions or functions—triggered by a button.
 ---
 
 ```jsx live=true
 <DropdownMenu.Root>
   <DropdownMenu.Trigger>
-    <Button variant="subtle-mono">
-      <DotsHorizontalIcon />
-    </Button>
+    <Button>Open</Button>
   </DropdownMenu.Trigger>
   <DropdownMenu.Content>
     <DropdownMenu.Item shortcut="⌘+T">New Tab</DropdownMenu.Item>
@@ -44,4 +42,132 @@ metaDescription: Description
     </DropdownMenuRadioGroup>
   </DropdownMenu.Content>
 </DropdownMenu.Root>
+```
+
+## API Reference
+
+This component inherits the props from the [Radix DropdownMenu](/docs/primitives/components/dropdown-menu) primitive.
+
+### Root
+
+Contains all the parts of a dropdown menu.
+
+### Trigger
+
+Wraps the control that will open the dropdown menu.
+
+### Content
+
+The component that pops out when the dropdown menu is open.
+
+<ThemesPropsTable componentName="dropdownmenucontent" />
+
+### Label
+
+Used to render a label. It won't be focusable using arrow keys.
+
+### Item
+
+The component that contains the dropdown menu items.
+
+<ThemesPropsTable componentName="dropdownmenuitem" />
+
+### Group
+
+Used to group multiple `DropdownMenu.Item`s.
+
+### RadioGroup
+
+Used to group multiple `DropdownMenu.RadioItem`s.
+
+### RadioItem
+
+An item that can be controlled and rendered like a radio.
+
+### CheckboxItem
+
+An item that can be controlled and rendered like a checkbox.
+
+<ThemesPropsTable componentName="dropdownmenuitem" />
+
+### Sub
+
+Contains all the parts of a submenu.
+
+### SubTrigger
+
+An item that opens a submenu. Must be rendered inside `DropdownMenu.Sub`.
+
+### SubContent
+
+The component that pops out when a submenu is open. Must be rendered inside `DropdownMenu.Sub`.
+
+<ThemesPropsTable componentName="dropdownmenucontent" />
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Flex gap="3" align="center">
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>
+      <Button size="1">Open</Button>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content size="1">
+      <DropdownMenu.Item shortcut="⌘+T">New Tab</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘+N">New Window</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>
+      <Button size="2">Open</Button>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content size="2">
+      <DropdownMenu.Item shortcut="⌘+T">New Tab</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘+N">New Window</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+</Flex>
+```
+
+### Variants
+
+Use the `variant` prop to customize the visual style of the dropdown menu.
+
+```jsx live=true
+<Flex gap="3" align="center">
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>
+      <Button variant="outline">Open</Button>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content variant="solid">
+      <DropdownMenu.Item>New Tab</DropdownMenu.Item>
+      <DropdownMenu.Item>New Window</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>
+      <Button variant="subtle">Open</Button>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content variant="subtle">
+      <DropdownMenu.Item>New Tab</DropdownMenu.Item>
+      <DropdownMenu.Item>New Window</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>
+      <Button variant="ghost">Open</Button>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content variant="subtle-mono">
+      <DropdownMenu.Item>New Tab</DropdownMenu.Item>
+      <DropdownMenu.Item>New Window</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+</Flex>
 ```

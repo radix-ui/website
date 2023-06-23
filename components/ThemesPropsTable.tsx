@@ -556,7 +556,7 @@ const props: Record<string, PropDef[]> = {
       default: formatValues(themes.defaultSectionSize),
     },
   ],
-  select: [
+  selectroot: [
     {
       name: 'placeholder',
       required: false,
@@ -644,6 +644,26 @@ const props: Record<string, PropDef[]> = {
       type: formatValues(themes.scrollAreaScrollbarsValues),
       default: formatValues(themes.defaultScrollAreaScrollbars),
       description: 'Controls the scrollable axes',
+    },
+  ],
+  dropdownmenucontent: [
+    {
+      ...sizeProp,
+      type: formatValues(themes.dropdownMenuSizes),
+      default: formatValues(themes.defaultDropdownMenuSize),
+    },
+    {
+      ...variantProp,
+      type: formatValues(themes.dropdownMenuVariants),
+      default: formatValues(themes.defaultDropdownMenuVariant),
+    },
+  ],
+  dropdownmenuitem: [
+    {
+      name: 'shortcut',
+      required: false,
+      typeSimple: 'string',
+      description: 'An optional shortcut command to associate with the item',
     },
   ],
 };
