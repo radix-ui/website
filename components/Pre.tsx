@@ -1,7 +1,7 @@
 import { styled, theme } from '@modulz/design-system';
 
 export const Pre = styled('pre', {
-  $$background: '$loContrast',
+  $$background: '$colors$loContrast',
   $$text: '$colors$hiContrast',
   $$syntax1: '$colors$blue11',
   $$syntax2: '$colors$cyan11',

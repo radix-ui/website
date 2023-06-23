@@ -27,7 +27,31 @@ export const components = {
       css={{ mb: '$2', '[role="separator"]': { display: 'none' }, ...props.css }}
     />
   ),
-  TabsList: (props) => <DS.TabsList {...props} css={{ ...props.css, mx: '$2' }} />,
+  TabsList: (props) => (
+    <DS.TabsList
+      {...props}
+      css={{
+        ...props.css,
+        button: {
+          fontFamily: '$untitled',
+          fontSize: '$2',
+          background: 'none',
+          border: 'none',
+          marginTop: 0,
+          marginBottom: '$2',
+          marginLeft: 0,
+          marginRight: '$1',
+          height: '$5',
+          br: 999,
+        },
+        'button[data-state="active"]': {
+          bc: '$violet3',
+          color: '$violet12',
+          boxShadow: '0 0 0 1px $colors$violet5',
+        },
+      }}
+    />
+  ),
   CodeBlock,
   HeroCodeBlock,
   h1: (props) => (

@@ -36,7 +36,7 @@ export const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
       line = '0',
       className = '',
       css,
-      variant,
+      variant = 'violet',
       showLineNumbers,
       ...props
     } = _props;

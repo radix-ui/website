@@ -35,7 +35,7 @@ export function ColorTestTextLargeBright() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            Black text on Sky9
+            Black text on Sky 9
           </Text>
           <Flex
             css={{
@@ -64,7 +64,7 @@ export function ColorTestTextLargeBright() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            Black text on Mint9
+            Black text on Mint 9
           </Text>
           <Flex
             css={{
@@ -93,7 +93,7 @@ export function ColorTestTextLargeBright() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            Black text on Lime9
+            Black text on Lime 9
           </Text>
           <Flex
             css={{
@@ -122,7 +122,7 @@ export function ColorTestTextLargeBright() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            Black text on Yellow9
+            Black text on Yellow 9
           </Text>
           <Flex
             css={{
@@ -151,7 +151,7 @@ export function ColorTestTextLargeBright() {
               fontFamily: 'system-ui, helvetica, sans-serif',
             }}
           >
-            Black text on Amber9
+            Black text on Amber 9
           </Text>
           <Flex
             css={{

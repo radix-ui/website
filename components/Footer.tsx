@@ -1,6 +1,6 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Box, Container, Grid, Text, Flex, Separator, Link } from '@modulz/design-system';
+import { Box, Grid, Text, Flex, Link } from '@modulz/design-system';
 import { RadixLogo } from './RadixLogo';
 import { useRouter } from 'next/router';
 import { BoxLink } from './BoxLink';
@@ -130,15 +130,15 @@ export const Footer = () => {
             <ul>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/docs/colors/getting-started/installation" passHref>
+                  <NextLink href="/docs/colors/overview/installation" passHref>
                     <Link variant="subtle">Installation</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/docs/colors/palette-composition/the-scales" passHref>
-                    <Link variant="subtle">The scales</Link>
+                  <NextLink href="/docs/colors/palette-composition/scales" passHref>
+                    <Link variant="subtle">Scales</Link>
                   </NextLink>
                 </Text>
               </li>
