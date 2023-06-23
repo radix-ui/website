@@ -342,7 +342,7 @@ const props: Record<string, PropDef[]> = {
     {
       ...radiusProp,
       type: formatValues(themes.buttonRadiusValues),
-      default: formatValues(undefined),
+      default: formatValues(themes.defaultAvatarRadius),
     },
     {
       name: 'fallback',
@@ -624,6 +624,26 @@ const props: Record<string, PropDef[]> = {
       required: false,
       typeSimple: 'boolean',
       description: 'Used when you need to format the content across multiple lines',
+    },
+  ],
+  scrollarea: [
+    {
+      ...sizeProp,
+      type: formatValues(themes.scrollAreaSizes),
+      default: formatValues(themes.defaultScrollAreaSize),
+    },
+    {
+      ...radiusProp,
+      type: formatValues(themes.buttonRadiusValues),
+      default: formatValues(themes.defaultScrollAreaRadius),
+    },
+    {
+      name: 'scrollbars',
+      required: false,
+      typeSimple: 'enum',
+      type: formatValues(themes.scrollAreaScrollbarsValues),
+      default: formatValues(themes.defaultScrollAreaScrollbars),
+      description: 'Controls the scrollable axes',
     },
   ],
 };
