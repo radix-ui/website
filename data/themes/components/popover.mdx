@@ -1,6 +1,6 @@
 ---
 metaTitle: Popover
-metaDescription: Description
+metaDescription: Displays rich content in a portal, triggered by a button.
 ---
 
 ```jsx live=true
@@ -9,16 +9,38 @@ metaDescription: Description
     <Button variant="solid">Popover</Button>
   </Popover.Trigger>
   <Popover.Content>
-    <Box p="4" style={{ width: 200 }}>
-      <Text size="2" mb="2">
+    <Box p="4" style={{ width: 300 }}>
+      <Text size="2" mb="3">
         Jan Tschichold was a German calligrapher, typographer and book designer.
         He played a significant role in the development of graphic design in the
         20th century.
       </Text>
-      <Button variant="solid" size="1">
-        Share <Share2Icon />
-      </Button>
+      <Popover.Close>
+        <Button variant="solid" size="1">
+          Share <Share2Icon />
+        </Button>
+      </Popover.Close>
     </Box>
   </Popover.Content>
 </Popover.Root>
 ```
+
+## API Reference
+
+This component inherits the props from the [Radix Popover](/docs/primitives/components/popover) primitive.
+
+### Root
+
+Contains all the parts of a popover.
+
+### Trigger
+
+Wraps the control that will open the popover.
+
+### Content
+
+Contains content to be rendered in the open popover. This component is based on the `div` element.
+
+### Close
+
+Wraps the control that will close the popover.
