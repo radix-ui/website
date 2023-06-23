@@ -1,0 +1,70 @@
+.Card {
+  position: relative;
+}
+
+.CardInner {
+  position: relative;
+  box-sizing: border-box;
+  border-radius: inherit;
+  overflow: hidden;
+  height: 100%;
+}
+
+.Card::after {
+  inset: 0;
+  position: absolute;
+  pointer-events: none;
+  border-radius: inherit;
+  content: '';
+}
+
+.Card.size-1 {
+  --card-padding: var(--space-3);
+  border-radius: var(--br-4);
+}
+
+.Card.size-2 {
+  --card-padding: var(--space-4);
+  border-radius: var(--br-4);
+}
+
+.Card.size-3 {
+  --card-padding: var(--space-5);
+  border-radius: var(--br-5);
+}
+
+.Card.size-4 {
+  --card-padding: var(--space-6);
+  border-radius: var(--br-5);
+}
+
+@media (--md) {
+  .Card.size-2 {
+    --card-padding: var(--space-5);
+  }
+
+  .Card.size-3 {
+    --card-padding: var(--space-6);
+  }
+
+  .Card.size-4 {
+    --card-padding: var(--space-8);
+    border-radius: var(--br-6);
+  }
+}
+
+.Card.solid {
+  background-color: var(--panel);
+}
+
+.Card.solid::after {
+  box-shadow: inset 0 0 0 1px var(--grayA5);
+}
+
+.Card.ghost {
+  background-color: transparent;
+}
+
+.CardInner {
+  padding: var(--card-padding);
+}

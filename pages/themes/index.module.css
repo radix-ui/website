@@ -1,0 +1,182 @@
+.PageRoot {
+  display: flex;
+  flex-direction: column;
+  color: var(--indigo12);
+  min-height: 100vh;
+
+  /* Scaling multiplier for the demo area */
+  --page-demo-width: calc(1664px * var(--page-demo-scale));
+  --page-demo-scale: 12 / 16;
+
+  /* 1em no smaller than 0.4px and no larger than 1px, 0.05vw, or 0.1vh */
+  font-size: max(0.4px, min(1px, 0.05vw, 0.1vh));
+
+  /* The hero width is between 320px and 800px */
+  --page-hero-width: 800em;
+
+  /* The position of the left edge of the hero content */
+  --page-hero-left: max(0px, calc(50vw - (var(--page-hero-width) + var(--page-demo-width)) / 2));
+
+  /* The position of the left edge of the page demo */
+  --page-demo-left: calc(var(--page-hero-left) + var(--page-hero-width));
+}
+
+@media (min-width: 1400px) {
+  .PageRoot {
+    --page-demo-scale: 13 / 16;
+  }
+}
+
+@media (min-width: 1500px) {
+  .PageRoot {
+    --page-demo-scale: 14 / 16;
+  }
+}
+
+@media (min-width: 1600px) {
+  .PageRoot {
+    --page-demo-scale: 1;
+  }
+}
+
+.PageRoot ::selection {
+  background-color: hsla(225, 98.6%, 46.4%, 0.15);
+}
+
+.PageRoot::before {
+  content: '';
+
+  /* Fill the entire document with dots grid */
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(var(--grayA7) 6%, transparent 10%);
+
+  /* Scale the dots together with the demo */
+  background-size: calc(16px * var(--page-demo-scale)) calc(16px * var(--page-demo-scale));
+
+  /*
+   * Position the first dot at the vertical center of the left edge of the demo container,
+   * so that we can align demo content with the dot grid reliably.
+   */
+  background-position: calc(0.5px - 8px * var(--page-demo-scale) + var(--page-demo-left))
+    calc(50% + 0.5px);
+}
+
+.PageContent {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.PageHero {
+  box-sizing: border-box;
+  width: var(--page-hero-width);
+  flex-shrink: 0;
+
+  /* The padding is between 25px and 62.5px */
+  padding: 62.5em;
+
+  /* Visually center the hero */
+  margin-bottom: calc(30em + 2vh);
+
+  /* Push self away from the left edge when there's space */
+  margin-left: auto;
+}
+
+.PageHeroTitle {
+  font-family: 'Untitled Sans', sans-serif;
+  font-size: 280em;
+  font-weight: 500;
+  letter-spacing: -0.09em;
+  line-height: 0.8;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: -0.075em;
+  background-image: linear-gradient(
+    180deg,
+    #6599ff 0%,
+    #b8adee 63.54%,
+    #aba9fc 83.85%,
+    #e787ff 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  /* Allow to break out of container padding */
+  /* margin-right: calc(-62.5em / 280); */
+}
+
+.PageHeroText {
+  font-size: max(30em, 22px);
+  font-weight: 500;
+  font-family: Untitled Sans, sans-serif;
+  letter-spacing: -0.03em;
+  line-height: 1.4;
+}
+
+.PageHeroButton {
+  font-size: max(20em, 15px);
+  font-weight: 500;
+  font-family: Untitled Sans, sans-serif;
+  align-items: center;
+  display: inline-flex;
+  gap: 1em;
+  height: 3em;
+  padding-left: 1.25em;
+  padding-right: 1.25em;
+  text-decoration: none;
+  border-radius: 0.5em;
+  user-select: none;
+  background-color: var(--indigo12);
+  color: white;
+}
+
+.PageHeroButtonArrow {
+  display: block;
+}
+
+.PageHeroButtonArrow::before {
+  content: '->';
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  margin-left: -0.3em;
+  margin-right: -0.3em;
+}
+
+.PageDemo {
+  /* Set static width so that we can center the hero and demo together in the viewport */
+  width: var(--page-demo-width);
+
+  /* Push self away from the right edge when there's space */
+  margin-right: auto;
+}
+
+.PageDemoContent {
+  /* Cut off page demo content at document edges */
+  overflow: hidden;
+  position: absolute;
+  pointer-events: none;
+  inset: 0;
+}
+
+.PageDemoContentInner {
+  pointer-events: auto;
+
+  /* Position the demo content to the right of the hero */
+  position: relative;
+  left: var(--page-demo-left);
+
+  /* Center the content vertically */
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  /* Scale the contents */
+  transform-origin: left center;
+  transform: scale(calc(var(--page-demo-scale)));
+}
