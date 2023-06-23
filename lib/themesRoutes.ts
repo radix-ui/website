@@ -17,10 +17,6 @@ export const themesRoutes = [
     ],
   },
   {
-    label: 'Todo',
-    pages: [{ title: 'Context Menu', slug: 'docs/themes/components/context-menu' }],
-  },
-  {
     label: 'Components',
     pages: [
       { title: 'Button', slug: 'docs/themes/components/button' },
@@ -45,6 +41,7 @@ export const themesRoutes = [
       { title: 'Hover Card', slug: 'docs/themes/components/hover-card' },
       { title: 'Tabs', slug: 'docs/themes/components/tabs' },
       { title: 'Dropdown Menu', slug: 'docs/themes/components/dropdown-menu' },
+      { title: 'Context Menu', slug: 'docs/themes/components/context-menu' },
     ],
   },
   {

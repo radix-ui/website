@@ -666,6 +666,26 @@ const props: Record<string, PropDef[]> = {
       description: 'An optional shortcut command to associate with the item',
     },
   ],
+  contextmenucontent: [
+    {
+      ...sizeProp,
+      type: formatValues(themes.contextMenuSizes),
+      default: formatValues(themes.defaultContextMenuSize),
+    },
+    {
+      ...variantProp,
+      type: formatValues(themes.contextMenuVariants),
+      default: formatValues(themes.defaultContextMenuSize),
+    },
+  ],
+  contextmenuitem: [
+    {
+      name: 'shortcut',
+      required: false,
+      typeSimple: 'string',
+      description: 'An optional shortcut command to associate with the item',
+    },
+  ],
 };
 
 function formatValues(values?: readonly string[] | string) {

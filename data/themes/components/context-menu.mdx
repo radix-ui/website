@@ -1,22 +1,22 @@
 ---
 metaTitle: Context Menu
-metaDescription: Description
+metaDescription: Displays a menu located at the pointer, triggered by a right-click or a long-press.
 ---
 
 ```jsx live=true
 <ContextMenu.Root>
   <ContextMenu.Trigger>
     <Grid
-      height="9"
       px="3"
       style={{
+        height: 100,
         placeItems: 'center',
         borderRadius: 'var(--br-3)',
         border: '1px dashed var(--color6)',
         cursor: 'default',
       }}
     >
-      <Text asChild size="1" color="color">
+      <Text asChild>
         <span>Right-click here</span>
       </Text>
     </Grid>
@@ -55,4 +55,202 @@ metaDescription: Description
     </ContextMenu.RadioGroup>
   </ContextMenu.Content>
 </ContextMenu.Root>
+```
+
+## API Reference
+
+This component inherits the props from the [Radix ContextMenu](/docs/primitives/components/context-menu) primitive.
+
+### Root
+
+Contains all the parts of a context menu.
+
+### Trigger
+
+Wraps the element that will open the context menu.
+
+### Content
+
+The component that pops out when the context menu is open.
+
+<ThemesPropsTable componentName="contextmenucontent" />
+
+### Label
+
+Used to render a label. It won't be focusable using arrow keys.
+
+### Item
+
+The component that contains the context menu items.
+
+<ThemesPropsTable componentName="contextmenuitem" />
+
+### Group
+
+Used to group multiple `ContextMenu.Item`s.
+
+### RadioGroup
+
+Used to group multiple `ContextMenu.RadioItem`s.
+
+### RadioItem
+
+An item that can be controlled and rendered like a radio.
+
+### CheckboxItem
+
+An item that can be controlled and rendered like a checkbox.
+
+<ThemesPropsTable componentName="contextmenuitem" />
+
+### Sub
+
+Contains all the parts of a submenu.
+
+### SubTrigger
+
+An item that opens a submenu. Must be rendered inside `ContextMenu.Sub`.
+
+### SubContent
+
+The component that pops out when a submenu is open. Must be rendered inside `ContextMenu.Sub`.
+
+<ThemesPropsTable componentName="contextmenucontent" />
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Grid columns="2" gap="3">
+  <ContextMenu.Root>
+    <ContextMenu.Trigger>
+      <Grid
+        height="9"
+        px="3"
+        style={{
+          height: 100,
+          placeItems: 'center',
+          borderRadius: 'var(--br-3)',
+          border: '1px dashed var(--color6)',
+          cursor: 'default',
+        }}
+      >
+        <Text asChild>
+          <span>Right-click here</span>
+        </Text>
+      </Grid>
+    </ContextMenu.Trigger>
+    <ContextMenu.Content size="1">
+      <ContextMenu.Item>New Tab</ContextMenu.Item>
+      <ContextMenu.Item>New Window</ContextMenu.Item>
+    </ContextMenu.Content>
+  </ContextMenu.Root>
+
+  <ContextMenu.Root>
+    <ContextMenu.Trigger>
+      <Grid
+        height="9"
+        px="3"
+        style={{
+          height: 100,
+          placeItems: 'center',
+          borderRadius: 'var(--br-3)',
+          border: '1px dashed var(--color6)',
+          cursor: 'default',
+        }}
+      >
+        <Text asChild>
+          <span>Right-click here</span>
+        </Text>
+      </Grid>
+    </ContextMenu.Trigger>
+    <ContextMenu.Content size="2">
+      <ContextMenu.Item>New Tab</ContextMenu.Item>
+      <ContextMenu.Item>New Window</ContextMenu.Item>
+    </ContextMenu.Content>
+  </ContextMenu.Root>
+</Grid>
+```
+
+### Variants
+
+Use the `variant` prop to customize the visual style of the context menu.
+
+```jsx live=true
+<Grid columns="3" gap="3">
+  <ContextMenu.Root>
+    <ContextMenu.Trigger>
+      <Grid
+        height="9"
+        px="3"
+        style={{
+          height: 100,
+          placeItems: 'center',
+          borderRadius: 'var(--br-3)',
+          border: '1px dashed var(--color6)',
+          cursor: 'default',
+        }}
+      >
+        <Text asChild>
+          <span>Right-click here</span>
+        </Text>
+      </Grid>
+    </ContextMenu.Trigger>
+    <ContextMenu.Content variant="solid">
+      <ContextMenu.Item>New Tab</ContextMenu.Item>
+      <ContextMenu.Item>New Window</ContextMenu.Item>
+    </ContextMenu.Content>
+  </ContextMenu.Root>
+
+  <ContextMenu.Root>
+    <ContextMenu.Trigger>
+      <Grid
+        height="9"
+        px="3"
+        style={{
+          height: 100,
+          placeItems: 'center',
+          borderRadius: 'var(--br-3)',
+          border: '1px dashed var(--color6)',
+          cursor: 'default',
+        }}
+      >
+        <Text asChild>
+          <span>Right-click here</span>
+        </Text>
+      </Grid>
+    </ContextMenu.Trigger>
+    <ContextMenu.Content variant="subtle">
+      <ContextMenu.Item>New Tab</ContextMenu.Item>
+      <ContextMenu.Item>New Window</ContextMenu.Item>
+    </ContextMenu.Content>
+  </ContextMenu.Root>
+
+  <ContextMenu.Root>
+    <ContextMenu.Trigger>
+      <Grid
+        height="9"
+        px="3"
+        style={{
+          height: 100,
+          placeItems: 'center',
+          borderRadius: 'var(--br-3)',
+          border: '1px dashed var(--color6)',
+          cursor: 'default',
+        }}
+      >
+        <Text asChild>
+          <span>Right-click here</span>
+        </Text>
+      </Grid>
+    </ContextMenu.Trigger>
+    <ContextMenu.Content variant="subtle-mono">
+      <ContextMenu.Item>New Tab</ContextMenu.Item>
+      <ContextMenu.Item>New Window</ContextMenu.Item>
+    </ContextMenu.Content>
+  </ContextMenu.Root>
+</Grid>
 ```
