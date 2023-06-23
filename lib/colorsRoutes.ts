@@ -1,18 +1,27 @@
 export const colorsRoutes = [
   {
-    label: 'Getting Started',
+    label: 'Overview',
     pages: [
       {
         title: 'Installation',
-        slug: 'docs/colors/getting-started/installation',
+        slug: 'docs/colors/overview/installation',
         draft: false,
       },
       {
         title: 'Usage',
-        slug: 'docs/colors/getting-started/usage',
+        slug: 'docs/colors/overview/usage',
         draft: false,
       },
-      { title: 'Aliasing', slug: 'docs/colors/getting-started/aliasing', draft: false },
+      {
+        title: 'Aliasing',
+        slug: 'docs/colors/overview/aliasing',
+        draft: false,
+      },
+      {
+        title: 'Releases',
+        slug: 'docs/colors/overview/releases',
+        draft: false,
+      },
     ],
   },
 

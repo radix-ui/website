@@ -54,12 +54,17 @@ module.exports = withPlugins([withTM, withOptimizedImages, withVideos], {
       },
       {
         source: '/docs/colors',
-        destination: '/docs/colors/getting-started/installation',
+        destination: '/docs/colors/overview/installation',
         permanent: false,
       },
       {
         source: '/docs/colors/palette-composition/the-scales',
         destination: '/docs/colors/palette-composition/scales',
+        permanent: false,
+      },
+      {
+        source: '/docs/colors/getting-started/:slug*',
+        destination: '/docs/colors/overview/:slug*',
         permanent: false,
       },
     ];

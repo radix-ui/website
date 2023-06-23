@@ -130,7 +130,7 @@ export const Footer = () => {
             <ul>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/docs/colors/getting-started/installation" passHref>
+                  <NextLink href="/docs/colors/overview/installation" passHref>
                     <Link variant="subtle">Installation</Link>
                   </NextLink>
                 </Text>
