@@ -5,23 +5,40 @@
   min-height: 100vh;
 
   /* Scaling multiplier for the demo area */
-  --page-demo-width: calc(1664px * var(--page-demo-scale));
-  --page-demo-scale: 11 / 16;
-
-  /* 1em no smaller than 0.4px and no larger than 1px, 0.05vw, or 0.1vh */
-  font-size: max(0.4px, min(1px, 0.05vw, 0.1vh));
-
-  /* The hero width is between 320px and 800px */
-  --page-hero-width: 800em;
-
-  /* The position of the left edge of the hero content */
-  --page-hero-left: max(0px, calc(50vw - (var(--page-hero-width) + var(--page-demo-width)) / 2));
-
-  /* The position of the left edge of the page demo */
-  --page-demo-left: calc(var(--page-hero-left) + var(--page-hero-width));
+  --page-demo-scale: 10 / 16;
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 500px) {
+  .PageRoot {
+    --page-demo-scale: 11 / 16;
+  }
+}
+
+@media (min-width: 500px) {
+  .PageRoot {
+    --page-demo-scale: 12 / 16;
+  }
+}
+
+@media (min-width: 600px) {
+  .PageRoot {
+    --page-demo-scale: 13 / 16;
+  }
+}
+
+@media (min-width: 700px) {
+  .PageRoot {
+    --page-demo-scale: 14 / 16;
+  }
+}
+
+@media (min-width: 800px) {
+  .PageRoot {
+    --page-demo-scale: 1;
+  }
+}
+
+@media (min-width: 1000px) {
   .PageRoot {
     --page-demo-scale: 12 / 16;
   }
@@ -51,18 +68,8 @@
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background-image: radial-gradient(var(--grayA7) 9%, transparent 10%);
+  background-image: radial-gradient(var(--grayA7) 9%, transparent 11%);
   background-color: var(--mauve1);
-
-  /* Scale the dots together with the demo */
-  background-size: calc(16px * var(--page-demo-scale)) calc(16px * var(--page-demo-scale));
-
-  /*
-   * Position the first dot at the vertical center of the left edge of the demo container,
-   * so that we can align demo content with the dot grid reliably.
-   */
-  background-position: calc(0.5px - 8px * var(--page-demo-scale) + var(--page-demo-left))
-    calc(50% + 0.5px);
 }
 
 .PageContent {
@@ -74,17 +81,6 @@
 
 .PageHero {
   box-sizing: border-box;
-  width: var(--page-hero-width);
-  flex-shrink: 0;
-
-  /* The padding is between 25px and 62.5px */
-  padding: 62.5em;
-
-  /* Visually center the hero */
-  margin-bottom: calc(30em + 2vh);
-
-  /* Push self away from the left edge when there's space */
-  margin-left: auto;
 }
 
 .PageHeroTitle {
@@ -106,9 +102,6 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-
-  /* Allow to break out of container padding */
-  /* margin-right: calc(-62.5em / 280); */
 }
 
 .PageHeroText {
@@ -134,6 +127,7 @@
   user-select: none;
   background-color: var(--indigo12);
   color: white;
+  white-space: nowrap;
 }
 
 .PageHeroButtonArrow {
@@ -149,36 +143,148 @@
   margin-right: -0.3em;
 }
 
-.PageDemo {
-  /* Set static width so that we can center the hero and demo together in the viewport */
-  width: var(--page-demo-width);
-
-  /* Push self away from the right edge when there's space */
-  margin-right: auto;
-}
-
-.PageDemoContent {
-  /* Cut off page demo content at document edges */
-  overflow: hidden;
-  position: absolute;
-  pointer-events: none;
-  inset: 0;
-}
-
 .PageDemoContentInner {
   user-select: none;
   pointer-events: auto;
-
-  /* Position the demo content to the right of the hero */
-  position: relative;
-  left: var(--page-demo-left);
-
-  /* Center the content vertically */
-  display: flex;
-  align-items: center;
-  height: 100%;
-
-  /* Scale the contents */
-  transform-origin: left center;
   transform: scale(calc(var(--page-demo-scale)));
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*            Before 1000px            */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+@media (max-width: 999.99px) {
+  .PageRoot {
+    font-size: 0.13vw;
+    overflow: hidden;
+  }
+
+  .PageRoot::before {
+    /* Scale the dots together with the demo */
+    background-size: calc(16px * var(--page-demo-scale)) calc(16px * var(--page-demo-scale));
+
+    /*
+     * Position the first dot at the vertical center of the left edge of the demo container,
+     * so that we can align demo content with the dot grid reliably.
+     */
+    background-position: calc(0.5px - 8px * var(--page-demo-scale) + var(--page-demo-left))
+      calc(50% + 0.5px);
+  }
+
+  .PageContent {
+    flex-direction: column;
+  }
+
+  .PageHero {
+    text-align: center;
+    padding: 4vw;
+  }
+
+  .PageDemo {
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    scrollbar-color: transparent;
+
+    position: relative;
+    width: 100vw;
+    height: calc(1300px * var(--page-demo-scale) + var(--page-demo-padding) * 2);
+
+    --page-demo-padding: 10vw;
+  }
+
+  .PageDemo::-webkit-scrollbar {
+    display: none;
+    width: 0;
+  }
+
+  .PageDemoContentInner {
+    padding: var(--page-demo-padding);
+    position: absolute;
+    transform-origin: left top;
+  }
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*            After 1000px             */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+@media (min-width: 1000px) {
+  .PageRoot {
+    --page-demo-width: calc(1744px * var(--page-demo-scale));
+
+    /* 1em no smaller than 0.4px and no larger than 1px, 0.05vw, or 0.1vh */
+    font-size: max(0.4px, min(1px, 0.05vw, 0.1vh));
+
+    /* The hero width is between 320px and 800px */
+    --page-hero-width: 800em;
+
+    /* The position of the left edge of the hero content */
+    --page-hero-left: max(0px, calc(50vw - (var(--page-hero-width) + var(--page-demo-width)) / 2));
+
+    /* The position of the left edge of the page demo */
+    --page-demo-left: calc(var(--page-hero-left) + var(--page-hero-width));
+  }
+
+  .PageRoot::before {
+    /* Scale the dots together with the demo */
+    background-size: calc(16px * var(--page-demo-scale)) calc(16px * var(--page-demo-scale));
+
+    /*
+     * Position the first dot at the vertical center of the left edge of the demo container,
+     * so that we can align demo content with the dot grid reliably.
+     */
+    background-position: calc(0.5px - 8px * var(--page-demo-scale) + var(--page-demo-left))
+      calc(50% + 0.5px);
+  }
+
+  .PageHero {
+    width: var(--page-hero-width);
+    flex-shrink: 0;
+
+    /* Push self away from the left edge when there's space */
+    margin-left: auto;
+
+    /* The padding is between 25px and 62.5px */
+    padding: 62.5em;
+
+    /* Visually center the hero */
+    margin-bottom: calc(30em + 2vh);
+  }
+
+  .PageDemo {
+    /* Set static width so that we can center the hero and demo together in the viewport */
+    width: var(--page-demo-width);
+
+    /* Push self away from the right edge when there's space */
+    margin-right: auto;
+  }
+
+  .PageDemoContent {
+    /* Cut off page demo content at document edges */
+    overflow: hidden;
+    position: absolute;
+    pointer-events: none;
+    inset: 0;
+  }
+
+  .PageDemoContentInner {
+    transform-origin: left center;
+
+    /* Position the demo content to the right of the hero */
+    position: relative;
+    left: var(--page-demo-left);
+
+    /* Center the content vertically */
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
 }

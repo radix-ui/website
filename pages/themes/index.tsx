@@ -35,10 +35,37 @@ import { allPeople, email } from '@components/themes/people';
 import styles from './index.module.css';
 import '@radix-ui/themes/dist/index.css';
 import { Label } from '@radix-ui/react-label';
+import * as React from 'react';
+import Head from 'next/head';
 
 export default function ThemesHome() {
+  const pageDemoRef = React.useRef<HTMLDivElement>(null);
+
+  React.useLayoutEffect(() => {
+    let currentWidth = 0;
+
+    const centerDemoScroll = () => {
+      const newWidth = window.innerWidth;
+      const container = pageDemoRef.current;
+
+      if (newWidth !== currentWidth && container) {
+        container.scrollLeft = container.scrollWidth / 2 - container.clientWidth / 2;
+        currentWidth = newWidth;
+      }
+    };
+
+    centerDemoScroll();
+    addEventListener('resize', centerDemoScroll);
+
+    return () => removeEventListener('resize', centerDemoScroll);
+  }, []);
+
   return (
     <>
+      <Head>
+        <meta name="theme-color" content="#FDFCFD" />
+      </Head>
+
       <div className={styles.PageRoot}>
         <div className={styles.PageContent}>
           <div className={styles.PageHero}>
@@ -46,21 +73,17 @@ export default function ThemesHome() {
 
             <p className={styles.PageHeroText}>
               Configurable component library from the Radix team. Move quickly with a suite of
-              beautiful, high-quality components and smooth DX.
+              beautiful, high‑quality components and smooth DX.
             </p>
             <a href="/docs/themes" className={styles.PageHeroButton}>
               Get started <span className={styles.PageHeroButtonArrow} />
             </a>
           </div>
 
-          <div className={styles.PageDemo}>
+          <div className={styles.PageDemo} ref={pageDemoRef}>
             <div className={styles.PageDemoContent}>
               <div className={styles.PageDemoContentInner}>
-                <div
-                  aria-hidden
-                  className="rui-reset-body"
-                  // ref={(node) => node && node.setAttribute('inert', '')}
-                >
+                <div aria-hidden className="rui-reset-body">
                   <Provider>
                     <DemoAppDashboard />
                   </Provider>
@@ -467,6 +490,8 @@ const DemoAppDashboard = () => (
       gap="6"
       direction="column"
       style={{
+        scrollSnapAlign: 'center',
+
         width: 400,
         // Space to align the vertically centered content with the dot grid
         marginBottom: 21,
@@ -547,7 +572,12 @@ const DemoAppDashboard = () => (
             </Text>
             <Box>
               <Flex align="center" gap="2" mb="1" mx="3">
-                <Text size="2">4929 3849 5027 1846</Text>
+                <Text size="2">
+                  4929 3849
+                  {/* An empty span prevents iOS Safari from thinking it's a telephone number */}
+                  <span> </span>
+                  5027 1846
+                </Text>
                 <IconButton tabIndex={-1} variant="ghost-mono" size="1">
                   <CopyIcon />
                 </IconButton>
@@ -566,6 +596,36 @@ const DemoAppDashboard = () => (
           </Button>
           <Button tabIndex={-1}>Done</Button>
         </Flex>
+      </Card>
+
+      <Card size="4">
+        <Box position="absolute" top="0" right="0" m="2">
+          <IconButton tabIndex={-1} variant="ghost-mono">
+            <Cross2Icon width="20" height="20" />
+          </IconButton>
+        </Box>
+
+        <Flex gap="2" direction="column" align="center">
+          <Marker height="8" width="8">
+            <CheckIcon width="32" height="32" />
+          </Marker>
+
+          <Heading size="6" mb="4">
+            Invoice paid
+          </Heading>
+        </Flex>
+
+        <Text size="3" align="center" mb="5">
+          You paid $17,975.30. We sent a receipt to <Strong>joe.wilson@example.com</Strong>
+        </Text>
+
+        <Button tabIndex={-1} mb="3" variant="surface" style={{ width: '100%' }}>
+          Done
+        </Button>
+
+        <Button tabIndex={-1} style={{ width: '100%' }}>
+          Next invoice
+        </Button>
       </Card>
 
       <Card size="4">
@@ -661,36 +721,6 @@ const DemoAppDashboard = () => (
           <Button tabIndex={-1}>Approve</Button>
         </Flex>
       </Card>
-
-      <Card size="4">
-        <Box position="absolute" top="0" right="0" m="2">
-          <IconButton tabIndex={-1} variant="ghost-mono">
-            <Cross2Icon width="20" height="20" />
-          </IconButton>
-        </Box>
-
-        <Flex gap="2" direction="column" align="center">
-          <Marker height="8" width="8">
-            <CheckIcon width="32" height="32" />
-          </Marker>
-
-          <Heading size="6" mb="4">
-            Invoice paid
-          </Heading>
-        </Flex>
-
-        <Text size="3" align="center" mb="5">
-          You paid $17,975.30. We sent a receipt to <Strong>joe.wilson@example.com</Strong>
-        </Text>
-
-        <Button tabIndex={-1} mb="3" variant="surface" style={{ width: '100%' }}>
-          Done
-        </Button>
-
-        <Button tabIndex={-1} style={{ width: '100%' }}>
-          Next invoice
-        </Button>
-      </Card>
     </Flex>
 
     <Flex
@@ -698,7 +728,7 @@ const DemoAppDashboard = () => (
       gap="6"
       direction="column"
       style={{
-        width: 560,
+        width: 640,
         // Space to align the vertically centered content with the dot grid
         marginBottom: -5,
       }}
