@@ -6,7 +6,7 @@
 
   /* Scaling multiplier for the demo area */
   --page-demo-width: calc(1664px * var(--page-demo-scale));
-  --page-demo-scale: 12 / 16;
+  --page-demo-scale: 11 / 16;
 
   /* 1em no smaller than 0.4px and no larger than 1px, 0.05vw, or 0.1vh */
   font-size: max(0.4px, min(1px, 0.05vw, 0.1vh));
@@ -23,13 +23,13 @@
 
 @media (min-width: 1400px) {
   .PageRoot {
-    --page-demo-scale: 13 / 16;
+    --page-demo-scale: 12 / 16;
   }
 }
 
 @media (min-width: 1500px) {
   .PageRoot {
-    --page-demo-scale: 14 / 16;
+    --page-demo-scale: 13 / 16;
   }
 }
 
@@ -51,7 +51,8 @@
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background-image: radial-gradient(var(--grayA7) 6%, transparent 10%);
+  background-image: radial-gradient(var(--grayA7) 9%, transparent 10%);
+  background-color: var(--mauve1);
 
   /* Scale the dots together with the demo */
   background-size: calc(16px * var(--page-demo-scale)) calc(16px * var(--page-demo-scale));
@@ -165,6 +166,7 @@
 }
 
 .PageDemoContentInner {
+  user-select: none;
   pointer-events: auto;
 
   /* Position the demo content to the right of the hero */
