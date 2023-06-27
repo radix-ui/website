@@ -557,7 +557,7 @@ const DemoAppDashboard = () => (
 
       <Card size="4">
         <Box position="absolute" top="0" right="0" m="2">
-          <IconButton tabIndex={-1} variant="ghost-mono">
+          <IconButton tabIndex={-1} variant="ghost" color="gray">
             <Cross2Icon width="20" height="20" />
           </IconButton>
         </Box>
@@ -601,7 +601,7 @@ const DemoAppDashboard = () => (
                   <span> </span>
                   5027 1846
                 </Text>
-                <IconButton tabIndex={-1} variant="ghost-mono" size="1">
+                <IconButton tabIndex={-1} variant="ghost" color="gray" size="1">
                   <CopyIcon />
                 </IconButton>
               </Flex>
@@ -623,7 +623,7 @@ const DemoAppDashboard = () => (
 
       <Card size="4">
         <Box position="absolute" top="0" right="0" m="2">
-          <IconButton tabIndex={-1} variant="ghost-mono">
+          <IconButton tabIndex={-1} variant="ghost" color="gray">
             <Cross2Icon width="20" height="20" />
           </IconButton>
         </Box>
@@ -653,7 +653,7 @@ const DemoAppDashboard = () => (
 
       <Card size="4">
         <Box position="absolute" top="0" right="0" m="2">
-          <IconButton tabIndex={-1} variant="ghost-mono">
+          <IconButton tabIndex={-1} variant="ghost" color="gray">
             <Cross2Icon width="20" height="20" />
           </IconButton>
         </Box>
@@ -764,10 +764,10 @@ const DemoAppDashboard = () => (
         </Box>
 
         <Flex gap="1" position="absolute" top="0" right="0" m="2">
-          <IconButton tabIndex={-1} variant="ghost-mono">
+          <IconButton tabIndex={-1} variant="ghost" color="gray">
             <Share2Icon width="20" height="20" />
           </IconButton>
-          <IconButton tabIndex={-1} variant="ghost-mono">
+          <IconButton tabIndex={-1} variant="ghost" color="gray">
             <PlusIcon width="20" height="20" />
           </IconButton>
         </Flex>
@@ -856,10 +856,10 @@ const DemoAppDashboard = () => (
         </Box>
 
         <Flex gap="1" position="absolute" top="0" right="0" m="2">
-          <IconButton tabIndex={-1} variant="ghost-mono">
+          <IconButton tabIndex={-1} variant="ghost" color="gray">
             <OpenInNewWindowIcon width="20" height="20" />
           </IconButton>
-          <IconButton tabIndex={-1} variant="subtle-mono">
+          <IconButton tabIndex={-1} variant="subtle" color="gray">
             <DrawingPinFilledIcon width="20" height="20" />
           </IconButton>
         </Flex>
@@ -1100,10 +1100,10 @@ const DemoAppDashboard = () => (
         </Box>
 
         <Flex gap="1" position="absolute" top="0" right="0" m="2">
-          <IconButton tabIndex={-1} variant="ghost-mono">
+          <IconButton tabIndex={-1} variant="ghost" color="gray">
             <OpenInNewWindowIcon width="20" height="20" />
           </IconButton>
-          <IconButton tabIndex={-1} variant="ghost-mono">
+          <IconButton tabIndex={-1} variant="ghost" color="gray">
             <DrawingPinIcon width="20" height="20" />
           </IconButton>
         </Flex>
