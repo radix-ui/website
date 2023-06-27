@@ -1,7 +1,6 @@
 .PageRoot {
   display: flex;
   flex-direction: column;
-  color: var(--indigo-12);
   min-height: 100vh;
 
   /* Prevent elements with `position: absolute` from adding scrollbars */
@@ -89,6 +88,7 @@
 }
 
 .PageHero {
+  color: var(--indigo-12);
   box-sizing: border-box;
   margin-top: 80px;
 }
