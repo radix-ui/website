@@ -97,16 +97,16 @@ export default function ThemesHome() {
             </div>
           </div>
 
-          <div className={styles.PageShowcase}>
+          <div className={styles.PageShowcase} aria-hidden>
             <div className={styles.PageShowcaseInner} ref={pageShowcaseScrollRef}>
               {/* An extra div is needed to have padding working as expected within the scroll container */}
               <div>
                 <div className={styles.PageShowcaseInnerScaled}>
-                  <div aria-hidden className="rui-reset-root">
+                  <ThemeConfig grayScale="mauve">
                     <Provider>
                       <DemoAppDashboard />
                     </Provider>
-                  </div>
+                  </ThemeConfig>
                 </div>
               </div>
             </div>
@@ -192,7 +192,7 @@ const DemoAppDashboard = () => (
                 </Marker>
                 <Text size="2">Email support</Text>
               </Flex>
-              <Button tabIndex={-1} mt="3" variant="surface">
+              <Button tabIndex={-1} mt="3" variant="outline">
                 Downgrade
               </Button>
             </Flex>
@@ -207,7 +207,7 @@ const DemoAppDashboard = () => (
             </Text>
             <Heading size="5" mb="4">
               $49
-              <Text size="5" weight="bold" asChild style={{ color: 'var(--gray-8)' }}>
+              <Text size="5" weight="bold" asChild style={{ color: 'var(--gray-a8)' }}>
                 <span> / mo</span>
               </Text>
             </Heading>
@@ -249,7 +249,7 @@ const DemoAppDashboard = () => (
                 </Marker>
                 <Text size="2">Phone support</Text>
               </Flex>
-              <Button tabIndex={-1} mt="3" variant="surface">
+              <Button tabIndex={-1} mt="3" variant="outline">
                 Go to Billing
               </Button>
             </Flex>
@@ -548,7 +548,7 @@ const DemoAppDashboard = () => (
         </Box>
 
         <Flex mt="6" justify="end" gap="3">
-          <Button tabIndex={-1} variant="surface">
+          <Button tabIndex={-1} variant="outline">
             Create an account
           </Button>
           <Button tabIndex={-1}>Sign in</Button>
@@ -575,7 +575,7 @@ const DemoAppDashboard = () => (
         <Box
           p="6"
           style={{
-            backgroundColor: 'var(--gray-3)',
+            backgroundColor: 'var(--gray-a3)',
             borderRadius: 'var(--br-4)',
           }}
         >
@@ -642,7 +642,7 @@ const DemoAppDashboard = () => (
           You paid $17,975.30. We sent a receipt to <Strong>joe.wilson@example.com</Strong>
         </Text>
 
-        <Button tabIndex={-1} mb="3" variant="surface" style={{ width: '100%' }}>
+        <Button tabIndex={-1} mb="3" variant="outline" style={{ width: '100%' }}>
           Done
         </Button>
 
