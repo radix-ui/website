@@ -8,31 +8,31 @@
   overflow: hidden;
 
   /* Scaling multiplier for the demo area */
-  --page-showcase-scale: 10 / 16;
+  --page-showcase-scale: calc(10 / 16);
   --page-showcase-base-width: 1760px;
 }
 
 @media (min-width: 500px) {
   .PageRoot {
-    --page-showcase-scale: 11 / 16;
+    --page-showcase-scale: calc(11 / 16);
   }
 }
 
 @media (min-width: 500px) {
   .PageRoot {
-    --page-showcase-scale: 12 / 16;
+    --page-showcase-scale: calc(12 / 16);
   }
 }
 
 @media (min-width: 600px) {
   .PageRoot {
-    --page-showcase-scale: 13 / 16;
+    --page-showcase-scale: calc(13 / 16);
   }
 }
 
 @media (min-width: 700px) {
   .PageRoot {
-    --page-showcase-scale: 14 / 16;
+    --page-showcase-scale: calc(14 / 16);
   }
 }
 
@@ -44,25 +44,25 @@
 
 @media (min-width: 1000px) {
   .PageRoot {
-    --page-showcase-scale: 10 / 16;
+    --page-showcase-scale: calc(10 / 16);
   }
 }
 
 @media (min-width: 1900px) and (min-height: 800px) {
   .PageRoot {
-    --page-showcase-scale: 12 / 16;
+    --page-showcase-scale: calc(12 / 16);
   }
 }
 
 @media (min-width: 2200px) and (min-height: 800px) {
   .PageRoot {
-    --page-showcase-scale: 13 / 16;
+    --page-showcase-scale: calc(13 / 16);
   }
 }
 
 @media (min-width: 2400px) and (min-height: 800px) {
   .PageRoot {
-    --page-showcase-scale: 15 / 16;
+    --page-showcase-scale: calc(15 / 16);
   }
 }
 
@@ -74,7 +74,7 @@
 
 @media (min-width: 3000px) and (min-height: 1000px) {
   .PageRoot {
-    --page-showcase-scale: 18 / 16;
+    --page-showcase-scale: calc(18 / 16);
   }
 }
 
@@ -175,8 +175,19 @@
   padding: 9999px;
   margin: -9999px;
 
+  /*
+   * Radii that define the dots in the pattern scale inversely to the showcase scaling
+   * factor with certain limits that maintain a balanced visual appearance.
+   */
+  --page-showcase-dot-r1: max(min(calc(10% / var(--page-showcase-scale)), 11%), 10%);
+  --page-showcase-dot-r2: max(min(calc(12% / var(--page-showcase-scale)), 14%), 12%);
+
   /* Render the dot pattern */
-  background-image: radial-gradient(var(--gray-a7) 9%, transparent 11%);
+  background-image: radial-gradient(
+    var(--mauve-a6) var(--page-showcase-dot-r1),
+    transparent var(--page-showcase-dot-r2)
+  );
+
   background-color: var(--mauve-a1);
 
   /* Scale the dots together with the demo */
@@ -184,7 +195,7 @@
 }
 
 .PageShowcaseInnerScaled {
-  transform: scale(calc(var(--page-showcase-scale)));
+  transform: scale(var(--page-showcase-scale));
 }
 
 /* * * * * * * * * * * * * * * * * * * */
@@ -218,13 +229,10 @@
   }
 
   .PageShowcase::before {
-    background-image: radial-gradient(var(--mauve-a7) 9%, transparent 11%);
-
     /* "Spread" the background pattern from top center of .PageShowcase element */
     top: 0;
     left: 50%;
     background-position-x: center;
-
     background-position-y: calc(
       (var(--page-showcase-padding) - 16px / 2) * var(--page-showcase-scale)
     );
