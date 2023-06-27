@@ -271,15 +271,13 @@
     margin-left: auto;
 
     /* The padding is between 25px and 62.5px */
-    padding: 62.5em;
-
-    /* Visually center the hero */
-    margin-bottom: calc(30em + 2vh + 80px);
+    padding-left: 62.5em;
+    padding-right: 62.5em;
+    margin-bottom: 62.5em;
   }
 
   .PageHero {
     display: flex;
-    align-items: center;
   }
 
   .PageShowcase {
@@ -310,5 +308,14 @@
     display: flex;
     align-items: center;
     transform-origin: center left;
+  }
+}
+
+@media (min-width: 1000px) and (min-height: 700px) {
+  .PageHero {
+    align-items: center;
+
+    /* Visually center the hero */
+    margin-bottom: calc(2vh + 80px);
   }
 }
