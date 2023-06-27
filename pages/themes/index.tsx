@@ -16,6 +16,7 @@ import {
   Switch,
   Text,
   TextField,
+  ThemeConfig,
 } from '@radix-ui/themes';
 import {
   ArrowDownIcon,
@@ -332,11 +333,14 @@ const DemoAppDashboard = () => (
         </Flex>
 
         <Flex direction="column">
-          {getRandomIndices(5, 29).map((number, i) => (
+          {[4, 2, 12, 20, 16].map((number, i) => (
             <Box key={number}>
               <Flex gap="4" align="center">
                 <Flex gap="3" align="center" style={{ width: 200, whiteSpace: 'nowrap' }}>
-                  <Avatar src={allPeople[number]?.image} />
+                  <Avatar
+                    src={allPeople[number]?.image}
+                    fallback={allPeople[number]?.name[0].toUpperCase()}
+                  />
                   <Link tabIndex={-1} size="2">
                     {allPeople[number]?.name}
                   </Link>
@@ -387,120 +391,122 @@ const DemoAppDashboard = () => (
           <Separator size="4" my="5" />
         </Box>
 
-        <Flex direction="column">
-          <Flex gap="9" align="start" justify="between">
-            <Box>
-              <Text size="3" weight="bold" mb="1">
-                Comments
-              </Text>
-              <Text size="2" color="gray">
-                Receive notifications when someone comments on your documents or mentions you.
-              </Text>
+        <ThemeConfig radius="full">
+          <Flex direction="column">
+            <Flex gap="9" align="start" justify="between">
+              <Box>
+                <Text size="3" weight="bold" mb="1">
+                  Comments
+                </Text>
+                <Text size="2" color="gray">
+                  Receive notifications when someone comments on your documents or mentions you.
+                </Text>
+              </Box>
+              <Flex direction="column" gap="4" mt="1">
+                <Label>
+                  <Flex align="center" gap="2">
+                    <Switch tabIndex={-1} defaultChecked />
+                    <Text size="2" weight="bold">
+                      Push
+                    </Text>
+                  </Flex>
+                </Label>
+
+                <Label>
+                  <Flex align="center" gap="2">
+                    <Switch tabIndex={-1} defaultChecked />
+                    <Text size="2" weight="bold">
+                      Email
+                    </Text>
+                  </Flex>
+                </Label>
+
+                <Label>
+                  <Flex align="center" gap="2">
+                    <Switch tabIndex={-1} />
+                    <Text size="2" weight="bold">
+                      Slack
+                    </Text>
+                  </Flex>
+                </Label>
+              </Flex>
+            </Flex>
+
+            <Box style={{ marginTop: -1 }}>
+              <Separator size="4" my="5" />
             </Box>
-            <Flex direction="column" gap="4" data-button-radius="full" mt="1">
-              <Label>
+
+            <Flex gap="9" align="start" justify="between">
+              <Box>
+                <Text size="3" weight="bold" mb="1">
+                  Favorites
+                </Text>
+                <Text size="2" color="gray">
+                  Receive notifications when there is activity related to your favorited items.
+                </Text>
+              </Box>
+              <Flex direction="column" gap="4" mt="1">
                 <Flex align="center" gap="2">
                   <Switch tabIndex={-1} defaultChecked />
                   <Text size="2" weight="bold">
                     Push
                   </Text>
                 </Flex>
-              </Label>
 
-              <Label>
+                <Flex align="center" gap="2">
+                  <Switch tabIndex={-1} />
+                  <Text size="2" weight="bold">
+                    Email
+                  </Text>
+                </Flex>
+
+                <Flex align="center" gap="2">
+                  <Switch tabIndex={-1} defaultChecked />
+                  <Text size="2" weight="bold">
+                    Slack
+                  </Text>
+                </Flex>
+              </Flex>
+            </Flex>
+
+            <Box style={{ marginTop: -1 }}>
+              <Separator size="4" my="5" />
+            </Box>
+
+            <Flex gap="9" align="start" justify="between">
+              <Box>
+                <Text size="3" weight="bold" mb="1">
+                  New documents
+                </Text>
+                <Text size="2" color="gray">
+                  Receive notifications whenever people on your team create new documents.
+                </Text>
+              </Box>
+              <Flex direction="column" gap="4" mt="1">
+                <Flex align="center" gap="2">
+                  <Switch tabIndex={-1} defaultChecked />
+                  <Text size="2" weight="bold">
+                    Push
+                  </Text>
+                </Flex>
+
                 <Flex align="center" gap="2">
                   <Switch tabIndex={-1} defaultChecked />
                   <Text size="2" weight="bold">
                     Email
                   </Text>
                 </Flex>
-              </Label>
 
-              <Label>
                 <Flex align="center" gap="2">
-                  <Switch tabIndex={-1} />
+                  <Switch tabIndex={-1} defaultChecked={false} />
                   <Text size="2" weight="bold">
                     Slack
                   </Text>
                 </Flex>
-              </Label>
-            </Flex>
-          </Flex>
-
-          <Box style={{ marginTop: -1 }}>
-            <Separator size="4" my="5" />
-          </Box>
-
-          <Flex gap="9" align="start" justify="between">
-            <Box>
-              <Text size="3" weight="bold" mb="1">
-                Favorites
-              </Text>
-              <Text size="2" color="gray">
-                Receive notifications when there is activity related to your favorited items.
-              </Text>
-            </Box>
-            <Flex direction="column" gap="4" data-button-radius="full" mt="1">
-              <Flex align="center" gap="2">
-                <Switch tabIndex={-1} defaultChecked />
-                <Text size="2" weight="bold">
-                  Push
-                </Text>
-              </Flex>
-
-              <Flex align="center" gap="2">
-                <Switch tabIndex={-1} />
-                <Text size="2" weight="bold">
-                  Email
-                </Text>
-              </Flex>
-
-              <Flex align="center" gap="2">
-                <Switch tabIndex={-1} defaultChecked />
-                <Text size="2" weight="bold">
-                  Slack
-                </Text>
               </Flex>
             </Flex>
           </Flex>
-
-          <Box style={{ marginTop: -1 }}>
-            <Separator size="4" my="5" />
-          </Box>
-
-          <Flex gap="9" align="start" justify="between">
-            <Box>
-              <Text size="3" weight="bold" mb="1">
-                New documents
-              </Text>
-              <Text size="2" color="gray">
-                Receive notifications whenever people on your team create new documents.
-              </Text>
-            </Box>
-            <Flex direction="column" gap="4" data-button-radius="full" mt="1">
-              <Flex align="center" gap="2">
-                <Switch tabIndex={-1} defaultChecked />
-                <Text size="2" weight="bold">
-                  Push
-                </Text>
-              </Flex>
-
-              <Flex align="center" gap="2">
-                <Switch tabIndex={-1} defaultChecked />
-                <Text size="2" weight="bold">
-                  Email
-                </Text>
-              </Flex>
-
-              <Flex align="center" gap="2">
-                <Switch tabIndex={-1} defaultChecked={false} />
-                <Text size="2" weight="bold">
-                  Slack
-                </Text>
-              </Flex>
-            </Flex>
-          </Flex>
-        </Flex>
+        </ThemeConfig>
       </Card>
     </Flex>
 
@@ -510,7 +516,6 @@ const DemoAppDashboard = () => (
       direction="column"
       style={{
         scrollSnapAlign: 'center',
-
         width: 416,
         // Space to align the vertically centered content with the dot grid
         marginBottom: 15,
@@ -572,7 +577,6 @@ const DemoAppDashboard = () => (
           style={{
             backgroundColor: 'var(--gray-3)',
             borderRadius: 'var(--br-4)',
-            // boxShadow: 'inset 0 1px 1px #7971E930, inset 0 0 3px #7971E920',
           }}
         >
           <Flex
@@ -749,7 +753,7 @@ const DemoAppDashboard = () => (
       style={{
         width: 640,
         // Space to align the vertically centered content with the dot grid
-        marginBottom: -5,
+        marginBottom: -13,
       }}
     >
       <Card size="4">
@@ -860,15 +864,19 @@ const DemoAppDashboard = () => (
           </IconButton>
         </Flex>
 
-        <Text size="2" mb="6" color="gray">
+        <Text size="2" mb="7" color="gray">
           Review what has happened over the past days.
         </Text>
 
         <Flex direction="column">
           <Flex direction="column" gap="3" mb="5">
             <Flex justify="between" align="center">
-              <Flex gap="2" align="center">
-                <Avatar size="2" src={allPeople[6].image} />
+              <Flex gap="3" align="center">
+                <Avatar
+                  size="3"
+                  src={allPeople[6].image}
+                  fallback={allPeople[6]?.name[0].toUpperCase()}
+                />
                 <Box>
                   <Text size="2" weight="bold">
                     {allPeople[6].name}
@@ -891,8 +899,12 @@ const DemoAppDashboard = () => (
 
           <Flex direction="column" gap="3" my="5">
             <Flex justify="between" align="center">
-              <Flex gap="2" align="center">
-                <Avatar size="2" src={allPeople[8].image} />
+              <Flex gap="3" align="center">
+                <Avatar
+                  size="3"
+                  src={allPeople[8].image}
+                  fallback={allPeople[8]?.name[0].toUpperCase()}
+                />
                 <Box>
                   <Text size="2" weight="bold">
                     {allPeople[8].name}
@@ -916,8 +928,12 @@ const DemoAppDashboard = () => (
 
           <Flex direction="column" gap="3" my="5">
             <Flex justify="between" align="center">
-              <Flex gap="2" align="center">
-                <Avatar size="2" src={allPeople[8].image} />
+              <Flex gap="3" align="center">
+                <Avatar
+                  size="3"
+                  src={allPeople[8].image}
+                  fallback={allPeople[8]?.name[0].toUpperCase()}
+                />
                 <Box>
                   <Text size="2" weight="bold">
                     {allPeople[8].name}
@@ -940,8 +956,12 @@ const DemoAppDashboard = () => (
 
           <Flex direction="column" gap="3" my="5">
             <Flex justify="between" align="center">
-              <Flex gap="2" align="center">
-                <Avatar size="2" src={allPeople[28].image} />
+              <Flex gap="3" align="center">
+                <Avatar
+                  size="3"
+                  src={allPeople[28].image}
+                  fallback={allPeople[28]?.name[0].toUpperCase()}
+                />
                 <Box>
                   <Text size="2" weight="bold">
                     {allPeople[28].name}
@@ -964,8 +984,12 @@ const DemoAppDashboard = () => (
 
           <Flex direction="column" gap="3" my="5">
             <Flex justify="between" align="center">
-              <Flex gap="2" align="center">
-                <Avatar size="2" src={allPeople[26].image} />
+              <Flex gap="3" align="center">
+                <Avatar
+                  size="3"
+                  src={allPeople[26].image}
+                  fallback={allPeople[26]?.name[0].toUpperCase()}
+                />
                 <Box>
                   <Text size="2" weight="bold">
                     {allPeople[26].name}
@@ -988,8 +1012,12 @@ const DemoAppDashboard = () => (
 
           <Flex direction="column" gap="3" my="5">
             <Flex justify="between" align="center">
-              <Flex gap="2" align="center">
-                <Avatar size="2" src={allPeople[25].image} />
+              <Flex gap="3" align="center">
+                <Avatar
+                  size="3"
+                  src={allPeople[25].image}
+                  fallback={allPeople[25]?.name[0].toUpperCase()}
+                />
                 <Box>
                   <Text size="2" weight="bold">
                     {allPeople[25].name}
@@ -1012,8 +1040,12 @@ const DemoAppDashboard = () => (
 
           <Flex direction="column" gap="3" my="5">
             <Flex justify="between" align="center">
-              <Flex gap="2" align="center">
-                <Avatar size="2" src={allPeople[25].image} />
+              <Flex gap="3" align="center">
+                <Avatar
+                  size="3"
+                  src={allPeople[25].image}
+                  fallback={allPeople[25]?.name[0].toUpperCase()}
+                />
                 <Box>
                   <Text size="2" weight="bold">
                     {allPeople[25].name}
@@ -1036,8 +1068,12 @@ const DemoAppDashboard = () => (
 
           <Flex direction="column" gap="3" mt="5">
             <Flex justify="between" align="center">
-              <Flex gap="2" align="center">
-                <Avatar size="2" src={allPeople[20].image} />
+              <Flex gap="3" align="center">
+                <Avatar
+                  size="3"
+                  src={allPeople[20].image}
+                  fallback={allPeople[20]?.name[0].toUpperCase()}
+                />
                 <Box>
                   <Text size="2" weight="bold">
                     {allPeople[20].name}
@@ -1215,23 +1251,6 @@ const DemoAppDashboard = () => (
     </Flex>
   </Flex>
 );
-
-function getRandomIndices(n: number, max: number) {
-  // Create an empty array to hold the random numbers
-  const arr = [];
-
-  // Keep generating random numbers until we have 5 unique ones
-  while (arr.length < n) {
-    // Generate a random integer between 1 and 30
-    const randInt = Math.floor(Math.random() * max);
-    // If the number isn't already in the array, add it
-    if (!arr.includes(randInt)) {
-      arr.push(randInt);
-    }
-  }
-
-  return arr;
-}
 
 const Marker = (props: React.ComponentPropsWithoutRef<typeof Flex>) => (
   <Flex

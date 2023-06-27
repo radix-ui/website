@@ -31,7 +31,7 @@ const person05: Person = {
 };
 const person06: Person = {
   image: avatar('1534528741775-53994a69daeb', { x: 0.55, y: 0.4, zoom: 1.35 }),
-  name: 'Mei T’ang',
+  name: 'Mei Tang',
 };
 const person07: Person = {
   image: avatar('1521119989659-a83eee488004', { x: 0.45, y: 0.37, zoom: 3.5 }),

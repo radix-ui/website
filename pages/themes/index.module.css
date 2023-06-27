@@ -90,6 +90,7 @@
 
 .PageHero {
   box-sizing: border-box;
+  margin-top: 80px;
 }
 
 .PageHeroTitle {
@@ -273,7 +274,7 @@
     padding: 62.5em;
 
     /* Visually center the hero */
-    margin-bottom: calc(30em + 2vh);
+    margin-bottom: calc(30em + 2vh + 80px);
   }
 
   .PageHero {
