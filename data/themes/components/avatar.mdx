@@ -4,7 +4,10 @@ metaDescription: A profile picture, user initials or fallback icon.
 ---
 
 ```jsx live=true
-<Avatar src="https://images.unsplash.com/photo-1620122303020-87ec826cf70d?&w=128&h=128&dpr=2&q=80" />
+<Avatar
+  src="https://images.unsplash.com/photo-1620122303020-87ec826cf70d?&w=128&h=128&dpr=2&q=80"
+  fallback="A"
+/>
 ```
 
 ## API Reference
@@ -24,22 +27,27 @@ Use the `size` prop to control the size.
   <Avatar
     size="1"
     src="https://images.unsplash.com/photo-1620122303020-87ec826cf70d?&w=128&h=128&dpr=2&q=80"
+    fallback="A"
   />
   <Avatar
     size="2"
     src="https://images.unsplash.com/photo-1620122303020-87ec826cf70d?&w=128&h=128&dpr=2&q=80"
+    fallback="A"
   />
   <Avatar
     size="3"
     src="https://images.unsplash.com/photo-1620122303020-87ec826cf70d?&w=128&h=128&dpr=2&q=80"
+    fallback="A"
   />
   <Avatar
     size="4"
     src="https://images.unsplash.com/photo-1620122303020-87ec826cf70d?&w=128&h=128&dpr=2&q=80"
+    fallback="A"
   />
   <Avatar
     size="5"
     src="https://images.unsplash.com/photo-1620122303020-87ec826cf70d?&w=128&h=128&dpr=2&q=80"
+    fallback="A"
   />
 </Flex>
 ```
@@ -50,10 +58,10 @@ Use the `variant` prop to control the visual style.
 
 ```jsx live=true
 <Flex gap="3">
-  <Avatar variant="solid" />
-  <Avatar variant="solid-mono" />
-  <Avatar variant="subtle" />
-  <Avatar variant="subtle-mono" />
+  <Avatar variant="solid" fallback="A" />
+  <Avatar variant="solid-mono" fallback="A" />
+  <Avatar variant="subtle" fallback="A" />
+  <Avatar variant="subtle-mono" fallback="A" />
 </Flex>
 ```
 
@@ -63,10 +71,10 @@ Use the `color` prop to assign a specific color value, ignoring the global theme
 
 ```jsx live=true
 <Flex gap="3">
-  <Avatar color="crimson" />
-  <Avatar color="indigo" />
-  <Avatar color="grass" />
-  <Avatar color="orange" />
+  <Avatar color="crimson" fallback="A" />
+  <Avatar color="indigo" fallback="A" />
+  <Avatar color="grass" fallback="A" />
+  <Avatar color="orange" fallback="A" />
 </Flex>
 ```
 
@@ -76,11 +84,11 @@ Use the `radius` prop to assign a specific radius value, ignoring the global the
 
 ```jsx live=true
 <Flex gap="3">
-  <Avatar radius="none" />
-  <Avatar radius="small" />
-  <Avatar radius="medium" />
-  <Avatar radius="large" />
-  <Avatar radius="full" />
+  <Avatar radius="none" fallback="A" />
+  <Avatar radius="small" fallback="A" />
+  <Avatar radius="medium" fallback="A" />
+  <Avatar radius="large" fallback="A" />
+  <Avatar radius="full" fallback="A" />
 </Flex>
 ```
 

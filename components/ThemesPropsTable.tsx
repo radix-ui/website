@@ -91,7 +91,7 @@ const props: Record<string, PropDef[]> = {
     { ...colorProp, default: formatValues(themes.defaultButtonColor) },
     {
       ...radiusProp,
-      type: formatValues(themes.buttonRadiusValues),
+      type: formatValues(themes.radiusValues),
       default: formatValues(themes.defaultButtonRadius),
     },
   ],
@@ -109,7 +109,7 @@ const props: Record<string, PropDef[]> = {
     { ...colorProp, default: formatValues(themes.defaultCheckboxColor) },
     {
       ...radiusProp,
-      type: formatValues(themes.buttonRadiusValues),
+      type: formatValues(themes.radiusValues),
       default: formatValues(themes.defaultCheckboxRadius),
     },
   ],
@@ -127,7 +127,7 @@ const props: Record<string, PropDef[]> = {
     { ...colorProp, default: formatValues(themes.defaultIconButtonColor) },
     {
       ...radiusProp,
-      type: formatValues(themes.buttonRadiusValues),
+      type: formatValues(themes.radiusValues),
       default: formatValues(themes.defaultIconButtonRadius),
     },
   ],
@@ -158,7 +158,7 @@ const props: Record<string, PropDef[]> = {
     { ...colorProp, default: formatValues(themes.defaultSliderColor) },
     {
       ...radiusProp,
-      type: formatValues(themes.buttonRadiusValues),
+      type: formatValues(themes.radiusValues),
       default: formatValues(themes.defaultSliderRadius),
     },
   ],
@@ -176,7 +176,7 @@ const props: Record<string, PropDef[]> = {
     { ...colorProp, default: formatValues(themes.defaultSwitchColor) },
     {
       ...radiusProp,
-      type: formatValues(themes.buttonRadiusValues),
+      type: formatValues(themes.radiusValues),
       default: formatValues(themes.defaultSwitchRadius),
     },
   ],
@@ -193,7 +193,7 @@ const props: Record<string, PropDef[]> = {
     },
     {
       ...radiusProp,
-      type: formatValues(themes.buttonRadiusValues),
+      type: formatValues(themes.radiusValues),
       default: formatValues(themes.defaultTextFieldRadius),
     },
   ],
@@ -210,7 +210,7 @@ const props: Record<string, PropDef[]> = {
     },
     {
       ...radiusProp,
-      type: formatValues(themes.buttonRadiusValues),
+      type: formatValues(themes.radiusValues),
       default: formatValues(themes.defaultTextAreaRadius),
     },
   ],
@@ -341,14 +341,15 @@ const props: Record<string, PropDef[]> = {
     { ...colorProp, default: formatValues(themes.defaultAvatarColor) },
     {
       ...radiusProp,
-      type: formatValues(themes.buttonRadiusValues),
+      type: formatValues(themes.radiusValues),
       default: formatValues(themes.defaultAvatarRadius),
     },
     {
       name: 'fallback',
-      required: false,
-      typeSimple: 'enum',
-      description: 'The fallback element that is rendered when in an idle or error state.',
+      required: true,
+      typeSimple: 'ReactNode',
+      description:
+        'The fallback element that is rendered when there is no image. It can be a 1 or 2 letter string, or a ReactNode (an icon for example).',
     },
   ],
   box: [
@@ -587,7 +588,7 @@ const props: Record<string, PropDef[]> = {
     },
     {
       ...radiusProp,
-      type: formatValues(themes.buttonRadiusValues),
+      type: formatValues(themes.radiusValues),
       default: formatValues(themes.defaultSelectRadius),
     },
   ],
@@ -634,7 +635,7 @@ const props: Record<string, PropDef[]> = {
     },
     {
       ...radiusProp,
-      type: formatValues(themes.buttonRadiusValues),
+      type: formatValues(themes.radiusValues),
       default: formatValues(themes.defaultScrollAreaRadius),
     },
     {

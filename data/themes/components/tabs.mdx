@@ -7,7 +7,10 @@ metaDescription: Set of content sections to be displayed one at a time.
 <Box mt="0">
   <Tabs.Root
     defaultValue="account"
-    style={{ border: '1px solid var(--monoA5)', borderRadius: 'var(--brs-3)' }}
+    style={{
+      border: '1px solid var(--gray-a5)',
+      borderRadius: 'min(var(--br-3), var(--br-3-raw))',
+    }}
   >
     <Tabs.List>
       <Tabs.Trigger value="account">Account</Tabs.Trigger>

@@ -32,9 +32,9 @@ export const ThemesPre = styled('pre', {
   lineHeight: '21px',
   whiteSpace: 'pre',
   position: 'relative',
-  backgroundColor: 'var(--color1)',
+  backgroundColor: 'var(--accent-1)',
   color: '$$text',
-  border: '1px solid var(--monoA6)',
+  border: '1px solid var(--gray-a6)',
   borderTop: 0,
 
   '& > code': {
