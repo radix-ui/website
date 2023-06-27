@@ -44,37 +44,37 @@
 
 @media (min-width: 1000px) {
   .PageRoot {
-    --page-showcase-scale: 12 / 16;
-  }
-}
-
-@media (min-width: 1500px) and (min-height: 700px) {
-  .PageRoot {
-    --page-showcase-scale: 13 / 16;
+    --page-showcase-scale: 10 / 16;
   }
 }
 
 @media (min-width: 1900px) and (min-height: 800px) {
   .PageRoot {
-    --page-showcase-scale: 14 / 16;
+    --page-showcase-scale: 12 / 16;
+  }
+}
+
+@media (min-width: 2200px) and (min-height: 800px) {
+  .PageRoot {
+    --page-showcase-scale: 13 / 16;
   }
 }
 
 @media (min-width: 2400px) and (min-height: 800px) {
   .PageRoot {
-    --page-showcase-scale: 1;
+    --page-showcase-scale: 15 / 16;
   }
 }
 
 @media (min-width: 2700px) and (min-height: 800px) {
   .PageRoot {
-    --page-showcase-scale: 18 / 16;
+    --page-showcase-scale: 1;
   }
 }
 
 @media (min-width: 3000px) and (min-height: 1000px) {
   .PageRoot {
-    --page-showcase-scale: 20 / 16;
+    --page-showcase-scale: 18 / 16;
   }
 }
 
