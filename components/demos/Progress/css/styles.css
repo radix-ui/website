@@ -1,9 +1,9 @@
-@import '@radix-ui/colors/blackA.css';
+@import '@radix-ui/colors/black-alpha.css';
 
 .ProgressRoot {
   position: relative;
   overflow: hidden;
-  background: var(--blackA9);
+  background: var(--black-a9);
   border-radius: 99999px;
   width: 300px;
   height: 25px;

@@ -1,4 +1,4 @@
-@import '@radix-ui/colors/blackA.css';
+@import '@radix-ui/colors/black-alpha.css';
 @import '@radix-ui/colors/mauve.css';
 @import '@radix-ui/colors/violet.css';
 
@@ -7,7 +7,7 @@
   height: 225px;
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 2px 10px var(--blackA7);
+  box-shadow: 0 2px 10px var(--black-a7);
   background-color: white;
   --scrollbar-size: 10px;
 }
@@ -25,11 +25,11 @@
   /* disable browser handling of all panning and zooming gestures on touch devices */
   touch-action: none;
   padding: 2px;
-  background: var(--blackA6);
+  background: var(--black-a6);
   transition: background 160ms ease-out;
 }
 .ScrollAreaScrollbar:hover {
-  background: var(--blackA8);
+  background: var(--black-a8);
 }
 .ScrollAreaScrollbar[data-orientation='vertical'] {
   width: var(--scrollbar-size);
@@ -41,7 +41,7 @@
 
 .ScrollAreaThumb {
   flex: 1;
-  background: var(--mauve10);
+  background: var(--mauve-10);
   border-radius: var(--scrollbar-size);
   position: relative;
 }
@@ -59,21 +59,21 @@
 }
 
 .ScrollAreaCorner {
-  background: var(--blackA8);
+  background: var(--black-a8);
 }
 
 .Text {
-  color: var(--violet11);
+  color: var(--violet-11);
   font-size: 15px;
   line-height: 18px;
   font-weight: 500;
 }
 
 .Tag {
-  color: var(--mauve12);
+  color: var(--mauve-12);
   font-size: 13px;
   line-height: 18px;
   margin-top: 10px;
-  border-top: 1px solid var(--mauve6);
+  border-top: 1px solid var(--mauve-6);
   padding-top: 10px;
 }

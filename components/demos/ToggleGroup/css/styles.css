@@ -1,4 +1,4 @@
-@import '@radix-ui/colors/blackA.css';
+@import '@radix-ui/colors/black-alpha.css';
 @import '@radix-ui/colors/mauve.css';
 @import '@radix-ui/colors/violet.css';
 
@@ -9,14 +9,14 @@ button {
 
 .ToggleGroup {
   display: inline-flex;
-  background-color: var(--mauve6);
+  background-color: var(--mauve-6);
   border-radius: 4px;
-  box-shadow: 0 2px 10px var(--blackA7);
+  box-shadow: 0 2px 10px var(--black-a7);
 }
 
 .ToggleGroupItem {
   background-color: white;
-  color: var(--mauve11);
+  color: var(--mauve-11);
   height: 35px;
   width: 35px;
   display: flex;
@@ -36,11 +36,11 @@ button {
   border-bottom-right-radius: 4px;
 }
 .ToggleGroupItem:hover {
-  background-color: var(--violet3);
+  background-color: var(--violet-3);
 }
 .ToggleGroupItem[data-state='on'] {
-  background-color: var(--violet5);
-  color: var(--violet11);
+  background-color: var(--violet-5);
+  color: var(--violet-11);
 }
 .ToggleGroupItem:focus {
   position: relative;

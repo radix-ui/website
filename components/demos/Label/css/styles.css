@@ -1,4 +1,4 @@
-@import '@radix-ui/colors/blackA.css';
+@import '@radix-ui/colors/black-alpha.css';
 
 /* reset */
 input {
@@ -23,13 +23,13 @@ input {
   font-size: 15px;
   line-height: 1;
   color: white;
-  background-color: var(--blackA5);
-  box-shadow: 0 0 0 1px var(--blackA9);
+  background-color: var(--black-a5);
+  box-shadow: 0 0 0 1px var(--black-a9);
 }
 .Input:focus {
   box-shadow: 0 0 0 2px black;
 }
 .Input::selection {
-  background-color: var(--blackA9);
+  background-color: var(--black-a9);
   color: white;
 }
