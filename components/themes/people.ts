@@ -1,6 +1,5 @@
 import seedrandom from 'seedrandom';
 import { allColors } from '@radix-ui/themes';
-
 import type { Color } from '@radix-ui/themes';
 
 const random = seedrandom('people');
@@ -223,7 +222,7 @@ function avatar(id: string, params?: { x?: number; y?: number; zoom?: number }) 
   return `https://images.unsplash.com/photo-${id}?&w=64&h=64&dpr=2&q=70&crop=${crop}&fit=crop`;
 }
 
-function get3RandomItemsInArray<T>(array: T[]) {
+function get3RandomItemsInArray<T>(array: T[] = []) {
   const copy = [...array];
   const result = [];
   for (let i = 0; i < 3; i++) {

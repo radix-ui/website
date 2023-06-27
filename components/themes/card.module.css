@@ -54,11 +54,11 @@
 }
 
 .Card.solid {
-  background-color: var(--panel);
+  background-color: var(--color-panel);
 }
 
 .Card.solid::after {
-  box-shadow: inset 0 0 0 1px var(--grayA6);
+  box-shadow: inset 0 0 0 1px var(--gray-a6);
 }
 
 .Card.ghost {

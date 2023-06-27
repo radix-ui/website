@@ -1,7 +1,7 @@
 .PageRoot {
   display: flex;
   flex-direction: column;
-  color: var(--indigo12);
+  color: var(--indigo-12);
   min-height: 100vh;
 
   /* Prevent elements with `position: absolute` from adding scrollbars */
@@ -134,13 +134,13 @@
   text-decoration: none;
   border-radius: 0.5em;
   user-select: none;
-  background-color: var(--indigo12);
+  background-color: var(--indigo-12);
   color: white;
   white-space: nowrap;
 }
 
 :global(.dark-theme) .PageHeroButton {
-  color: var(--blue1);
+  color: var(--blue-1);
 }
 
 .PageHeroButtonArrow {
@@ -175,8 +175,8 @@
   margin: -9999px;
 
   /* Render the dot pattern */
-  background-image: radial-gradient(var(--grayA7) 9%, transparent 11%);
-  background-color: var(--mauve1);
+  background-image: radial-gradient(var(--gray-a7) 9%, transparent 11%);
+  background-color: var(--mauve-a1);
 
   /* Scale the dots together with the demo */
   background-size: calc(16px * var(--page-showcase-scale)) calc(16px * var(--page-showcase-scale));
@@ -217,7 +217,7 @@
   }
 
   .PageShowcase::before {
-    background-image: radial-gradient(var(--grayA7) 9%, transparent 11%);
+    background-image: radial-gradient(var(--mauve-a7) 9%, transparent 11%);
 
     /* "Spread" the background pattern from top center of .PageShowcase element */
     top: 0;

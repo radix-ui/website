@@ -101,7 +101,7 @@ export default function ThemesHome() {
               {/* An extra div is needed to have padding working as expected within the scroll container */}
               <div>
                 <div className={styles.PageShowcaseInnerScaled}>
-                  <div aria-hidden className="rui-reset-body">
+                  <div aria-hidden className="rui-reset-root">
                     <Provider>
                       <DemoAppDashboard />
                     </Provider>
@@ -149,7 +149,7 @@ const DemoAppDashboard = () => (
             </Text>
             <Heading size="5" mb="4">
               $0
-              <Text size="5" weight="bold" asChild style={{ color: 'var(--mono8)' }}>
+              <Text size="5" weight="bold" asChild style={{ color: 'var(--gray-a8)' }}>
                 <span> / mo</span>
               </Text>
             </Heading>
@@ -263,7 +263,7 @@ const DemoAppDashboard = () => (
             </Text>
             <Heading size="5" mb="4">
               $99
-              <Text size="5" weight="bold" asChild style={{ color: 'var(--mono8)' }}>
+              <Text size="5" weight="bold" asChild style={{ color: 'var(--gray-a8)' }}>
                 <span> / mo</span>
               </Text>
             </Heading>
@@ -570,8 +570,8 @@ const DemoAppDashboard = () => (
         <Box
           p="6"
           style={{
-            backgroundColor: 'var(--color3)',
-            borderRadius: 'var(--brs-4)',
+            backgroundColor: 'var(--gray-3)',
+            borderRadius: 'var(--br-4)',
             // boxShadow: 'inset 0 1px 1px #7971E930, inset 0 0 3px #7971E920',
           }}
         >
@@ -581,9 +581,9 @@ const DemoAppDashboard = () => (
             justify="between"
             style={{
               height: 168,
-              background: 'linear-gradient(to top right, var(--color9), #E18BFF)',
+              background: 'linear-gradient(to top right, var(--accent-9), #E18BFF)',
               boxShadow: '0 1px 20px -5px #7971E9AA',
-              borderRadius: 'var(--brs-3)',
+              borderRadius: 'var(--br-3)',
             }}
           >
             <Text mt="3" mx="3" size="2">
@@ -1241,8 +1241,8 @@ const Marker = (props: React.ComponentPropsWithoutRef<typeof Flex>) => (
     height="4"
     {...props}
     style={{
-      color: 'var(--teal11)',
-      backgroundColor: 'var(--teal4)',
+      color: 'var(--teal-11)',
+      backgroundColor: 'var(--teal-4)',
       borderRadius: '100%',
       ...props.style,
     }}
