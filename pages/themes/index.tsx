@@ -37,6 +37,7 @@ import '@radix-ui/themes/dist/index.css';
 import { Label } from '@radix-ui/react-label';
 import * as React from 'react';
 import Head from 'next/head';
+import { ThemesHeader } from '@components/ThemesHeader';
 
 const useIsomorphicLayoutEffect =
   typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;
@@ -76,6 +77,8 @@ export default function ThemesHome() {
       <Head>
         <meta name="theme-color" content="#FDFCFD" />
       </Head>
+
+      <ThemesHeader />
 
       <div className={styles.PageRoot}>
         <div className={styles.PageContent}>

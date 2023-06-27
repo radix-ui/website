@@ -139,6 +139,10 @@
   white-space: nowrap;
 }
 
+:global(.dark-theme) .PageHeroButton {
+  color: var(--blue1);
+}
+
 .PageHeroButtonArrow {
   display: block;
 }
