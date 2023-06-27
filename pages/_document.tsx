@@ -6,7 +6,7 @@ import { renderSnippet, gtagUrl } from '@lib/analytics';
 export default class Document extends NextDocument {
   render() {
     return (
-      <Html lang="en" data-accent-scale="violet" data-radius="full">
+      <Html lang="en" data-accent-scale="violet">
         <Head>
           <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
           <link
