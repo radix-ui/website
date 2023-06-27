@@ -1,4 +1,4 @@
-@import '@radix-ui/colors/blackA.css';
+@import '@radix-ui/colors/black-alpha.css';
 @import '@radix-ui/colors/violet.css';
 
 .SliderRoot {
@@ -12,7 +12,7 @@
 }
 
 .SliderTrack {
-  background-color: var(--blackA10);
+  background-color: var(--black-a10);
   position: relative;
   flex-grow: 1;
   border-radius: 9999px;
@@ -31,13 +31,13 @@
   width: 20px;
   height: 20px;
   background-color: white;
-  box-shadow: 0 2px 10px var(--blackA7);
+  box-shadow: 0 2px 10px var(--black-a7);
   border-radius: 10px;
 }
 .SliderThumb:hover {
-  background-color: var(--violet3);
+  background-color: var(--violet-3);
 }
 .SliderThumb:focus {
   outline: none;
-  box-shadow: 0 0 0 5px var(--blackA8);
+  box-shadow: 0 0 0 5px var(--black-a8);
 }

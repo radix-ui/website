@@ -1,4 +1,4 @@
-@import '@radix-ui/colors/blackA.css';
+@import '@radix-ui/colors/black-alpha.css';
 @import '@radix-ui/colors/green.css';
 @import '@radix-ui/colors/mauve.css';
 @import '@radix-ui/colors/violet.css';
@@ -11,7 +11,7 @@ input {
 }
 
 .DialogOverlay {
-  background-color: var(--blackA9);
+  background-color: var(--black-a9);
   position: fixed;
   inset: 0;
   animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -38,13 +38,13 @@ input {
 .DialogTitle {
   margin: 0;
   font-weight: 500;
-  color: var(--mauve12);
+  color: var(--mauve-12);
   font-size: 17px;
 }
 
 .DialogDescription {
   margin: 10px 0 20px;
-  color: var(--mauve11);
+  color: var(--mauve-11);
   font-size: 15px;
   line-height: 1.5;
 }
@@ -62,24 +62,24 @@ input {
 }
 .Button.violet {
   background-color: white;
-  color: var(--violet11);
-  box-shadow: 0 2px 10px var(--blackA7);
+  color: var(--violet-11);
+  box-shadow: 0 2px 10px var(--black-a7);
 }
 .Button.violet:hover {
-  background-color: var(--mauve3);
+  background-color: var(--mauve-3);
 }
 .Button.violet:focus {
   box-shadow: 0 0 0 2px black;
 }
 .Button.green {
-  background-color: var(--green4);
-  color: var(--green11);
+  background-color: var(--green-4);
+  color: var(--green-11);
 }
 .Button.green:hover {
-  background-color: var(--green5);
+  background-color: var(--green-5);
 }
 .Button.green:focus {
-  box-shadow: 0 0 0 2px var(--green7);
+  box-shadow: 0 0 0 2px var(--green-7);
 }
 
 .IconButton {
@@ -90,16 +90,16 @@ input {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--violet11);
+  color: var(--violet-11);
   position: absolute;
   top: 10px;
   right: 10px;
 }
 .IconButton:hover {
-  background-color: var(--violet4);
+  background-color: var(--violet-4);
 }
 .IconButton:focus {
-  box-shadow: 0 0 0 2px var(--violet7);
+  box-shadow: 0 0 0 2px var(--violet-7);
 }
 
 .Fieldset {
@@ -111,7 +111,7 @@ input {
 
 .Label {
   font-size: 15px;
-  color: var(--violet11);
+  color: var(--violet-11);
   width: 90px;
   text-align: right;
 }
@@ -126,12 +126,12 @@ input {
   padding: 0 10px;
   font-size: 15px;
   line-height: 1;
-  color: var(--violet11);
-  box-shadow: 0 0 0 1px var(--violet7);
+  color: var(--violet-11);
+  box-shadow: 0 0 0 1px var(--violet-7);
   height: 35px;
 }
 .Input:focus {
-  box-shadow: 0 0 0 2px var(--violet8);
+  box-shadow: 0 0 0 2px var(--violet-8);
 }
 
 @keyframes overlayShow {

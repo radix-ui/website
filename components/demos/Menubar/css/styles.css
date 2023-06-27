@@ -1,4 +1,4 @@
-@import '@radix-ui/colors/blackA.css';
+@import '@radix-ui/colors/black-alpha.css';
 @import '@radix-ui/colors/mauve.css';
 @import '@radix-ui/colors/violet.css';
 
@@ -12,7 +12,7 @@ button {
   background-color: white;
   padding: 3px;
   border-radius: 6px;
-  box-shadow: 0 2px 10px var(--blackA7);
+  box-shadow: 0 2px 10px var(--black-a7);
 }
 
 .MenubarTrigger {
@@ -22,7 +22,7 @@ button {
   font-weight: 500;
   line-height: 1;
   border-radius: 4px;
-  color: var(--violet11);
+  color: var(--violet-11);
   font-size: 13px;
   display: flex;
   align-items: center;
@@ -32,7 +32,7 @@ button {
 
 .MenubarTrigger[data-highlighted],
 .MenubarTrigger[data-state='open'] {
-  background-color: var(--violet4);
+  background-color: var(--violet-4);
 }
 
 .MenubarContent,
@@ -54,7 +54,7 @@ button {
   all: unset;
   font-size: 13px;
   line-height: 1;
-  color: var(--violet11);
+  color: var(--violet-11);
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -73,23 +73,23 @@ button {
 
 .MenubarItem[data-state='open'],
 .MenubarSubTrigger[data-state='open'] {
-  background-color: var(--violet4);
-  color: var(--violet11);
+  background-color: var(--violet-4);
+  color: var(--violet-11);
 }
 
 .MenubarItem[data-highlighted],
 .MenubarSubTrigger[data-highlighted],
 .MenubarCheckboxItem[data-highlighted],
 .MenubarRadioItem[data-highlighted] {
-  background-image: linear-gradient(135deg, var(--violet9) 0%, var(--violet10) 100%);
-  color: var(--violet1);
+  background-image: linear-gradient(135deg, var(--violet-9) 0%, var(--violet-10) 100%);
+  color: var(--violet-1);
 }
 
 .MenubarItem[data-disabled],
 .MenubarSubTrigger[data-disabled],
 .MenubarCheckboxItem[data-disabled],
 .MenubarRadioItem[data-disabled] {
-  color: var(--mauve8);
+  color: var(--mauve-8);
   pointer-events: none;
 }
 
@@ -104,14 +104,14 @@ button {
 
 .MenubarSeparator {
   height: 1px;
-  background-color: var(--violet6);
+  background-color: var(--violet-6);
   margin: 5px;
 }
 
 .RightSlot {
   margin-left: auto;
   padding-left: 20px;
-  color: var(--mauve9);
+  color: var(--mauve-9);
 }
 
 [data-highlighted] > .RightSlot {
@@ -119,5 +119,5 @@ button {
 }
 
 [data-disabled] > .RightSlot {
-  color: var(--mauve8);
+  color: var(--mauve-8);
 }

@@ -1,4 +1,4 @@
-@import '@radix-ui/colors/blackA.css';
+@import '@radix-ui/colors/black-alpha.css';
 @import '@radix-ui/colors/mauve.css';
 @import '@radix-ui/colors/violet.css';
 
@@ -21,7 +21,7 @@ input {
 }
 .PopoverContent:focus {
   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px,
-    0 0 0 2px var(--violet7);
+    0 0 0 2px var(--violet-7);
 }
 .PopoverContent[data-state='open'][data-side='top'] {
   animation-name: slideDownAndFade;
@@ -48,16 +48,16 @@ input {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--violet11);
+  color: var(--violet-11);
   position: absolute;
   top: 5px;
   right: 5px;
 }
 .PopoverClose:hover {
-  background-color: var(--violet4);
+  background-color: var(--violet-4);
 }
 .PopoverClose:focus {
-  box-shadow: 0 0 0 2px var(--violet7);
+  box-shadow: 0 0 0 2px var(--violet-7);
 }
 
 .IconButton {
@@ -68,12 +68,12 @@ input {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--violet11);
+  color: var(--violet-11);
   background-color: white;
-  box-shadow: 0 2px 10px var(--blackA7);
+  box-shadow: 0 2px 10px var(--black-a7);
 }
 .IconButton:hover {
-  background-color: var(--violet3);
+  background-color: var(--violet-3);
 }
 .IconButton:focus {
   box-shadow: 0 0 0 2px black;
@@ -87,7 +87,7 @@ input {
 
 .Label {
   font-size: 13px;
-  color: var(--violet11);
+  color: var(--violet-11);
   width: 75px;
 }
 
@@ -101,17 +101,17 @@ input {
   padding: 0 10px;
   font-size: 13px;
   line-height: 1;
-  color: var(--violet11);
-  box-shadow: 0 0 0 1px var(--violet7);
+  color: var(--violet-11);
+  box-shadow: 0 0 0 1px var(--violet-7);
   height: 25px;
 }
 .Input:focus {
-  box-shadow: 0 0 0 2px var(--violet8);
+  box-shadow: 0 0 0 2px var(--violet-8);
 }
 
 .Text {
   margin: 0;
-  color: var(--mauve12);
+  color: var(--mauve-12);
   font-size: 15px;
   line-height: 19px;
   font-weight: 500;

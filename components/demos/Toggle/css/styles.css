@@ -1,4 +1,4 @@
-@import '@radix-ui/colors/blackA.css';
+@import '@radix-ui/colors/black-alpha.css';
 @import '@radix-ui/colors/mauve.css';
 @import '@radix-ui/colors/violet.css';
 
@@ -9,7 +9,7 @@ button {
 
 .Toggle {
   background-color: white;
-  color: var(--mauve11);
+  color: var(--mauve-11);
   height: 35px;
   width: 35px;
   border-radius: 4px;
@@ -18,14 +18,14 @@ button {
   line-height: 1;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 10px var(--blackA7);
+  box-shadow: 0 2px 10px var(--black-a7);
 }
 .Toggle:hover {
-  background-color: var(--violet3);
+  background-color: var(--violet-3);
 }
 .Toggle[data-state='on'] {
-  background-color: var(--violet6);
-  color: var(--violet12);
+  background-color: var(--violet-6);
+  color: var(--violet-12);
 }
 .Toggle:focus {
   box-shadow: 0 0 0 2px black;

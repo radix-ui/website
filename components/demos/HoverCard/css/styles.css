@@ -56,12 +56,12 @@ a {
 
 .Text {
   margin: 0;
-  color: var(--mauve12);
+  color: var(--mauve-12);
   font-size: 15px;
   line-height: 1.5;
 }
 .Text.faded {
-  color: var(--mauve10);
+  color: var(--mauve-10);
 }
 .Text.bold {
   font-weight: 500;

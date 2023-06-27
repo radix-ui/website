@@ -1,10 +1,10 @@
-@import '@radix-ui/colors/blackA.css';
+@import '@radix-ui/colors/black-alpha.css';
 
 .Container {
   width: 300px;
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 2px 10px var(--blackA7);
+  box-shadow: 0 2px 10px var(--black-a7);
 }
 
 .Image {

@@ -1,4 +1,4 @@
-@import '@radix-ui/colors/blackA.css';
+@import '@radix-ui/colors/black-alpha.css';
 
 /* reset */
 button {
@@ -8,10 +8,10 @@ button {
 .SwitchRoot {
   width: 42px;
   height: 25px;
-  background-color: var(--blackA9);
+  background-color: var(--black-a9);
   border-radius: 9999px;
   position: relative;
-  box-shadow: 0 2px 10px var(--blackA7);
+  box-shadow: 0 2px 10px var(--black-a7);
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 .SwitchRoot:focus {
@@ -27,7 +27,7 @@ button {
   height: 21px;
   background-color: white;
   border-radius: 9999px;
-  box-shadow: 0 2px 2px var(--blackA7);
+  box-shadow: 0 2px 2px var(--black-a7);
   transition: transform 100ms;
   transform: translateX(2px);
   will-change: transform;

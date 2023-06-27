@@ -1,4 +1,4 @@
-@import '@radix-ui/colors/blackA.css';
+@import '@radix-ui/colors/black-alpha.css';
 @import '@radix-ui/colors/violet.css';
 
 /* reset */
@@ -17,10 +17,10 @@ button {
   width: 25px;
   height: 25px;
   border-radius: 100%;
-  box-shadow: 0 2px 10px var(--blackA7);
+  box-shadow: 0 2px 10px var(--black-a7);
 }
 .RadioGroupItem:hover {
-  background-color: var(--violet3);
+  background-color: var(--violet-3);
 }
 .RadioGroupItem:focus {
   box-shadow: 0 0 0 2px black;
@@ -40,7 +40,7 @@ button {
   width: 11px;
   height: 11px;
   border-radius: 50%;
-  background-color: var(--violet11);
+  background-color: var(--violet-11);
 }
 
 .Label {

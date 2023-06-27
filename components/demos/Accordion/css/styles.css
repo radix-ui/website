@@ -1,4 +1,4 @@
-@import '@radix-ui/colors/blackA.css';
+@import '@radix-ui/colors/black-alpha.css';
 @import '@radix-ui/colors/mauve.css';
 @import '@radix-ui/colors/violet.css';
 
@@ -11,8 +11,8 @@ h3 {
 .AccordionRoot {
   border-radius: 6px;
   width: 300px;
-  background-color: var(--mauve6);
-  box-shadow: 0 2px 10px var(--blackA4);
+  background-color: var(--mauve-6);
+  box-shadow: 0 2px 10px var(--black-a4);
 }
 
 .AccordionItem {
@@ -34,7 +34,7 @@ h3 {
 .AccordionItem:focus-within {
   position: relative;
   z-index: 1;
-  box-shadow: 0 0 0 2px var(--mauve12);
+  box-shadow: 0 0 0 2px var(--mauve-12);
 }
 
 .AccordionHeader {
@@ -52,20 +52,20 @@ h3 {
   justify-content: space-between;
   font-size: 15px;
   line-height: 1;
-  color: var(--violet11);
-  box-shadow: 0 1px 0 var(--mauve6);
+  color: var(--violet-11);
+  box-shadow: 0 1px 0 var(--mauve-6);
   background-color: white;
 }
 
 .AccordionTrigger:hover {
-  background-color: var(--mauve2);
+  background-color: var(--mauve-2);
 }
 
 .AccordionContent {
   overflow: hidden;
   font-size: 15px;
-  color: var(--mauve11);
-  background-color: var(--mauve2);
+  color: var(--mauve-11);
+  background-color: var(--mauve-2);
 }
 .AccordionContent[data-state='open'] {
   animation: slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1);
@@ -79,7 +79,7 @@ h3 {
 }
 
 .AccordionChevron {
-  color: var(--violet10);
+  color: var(--violet-10);
   transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
 }
 .AccordionTrigger[data-state='open'] > .AccordionChevron {

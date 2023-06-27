@@ -1,4 +1,4 @@
-@import '@radix-ui/colors/blackA.css';
+@import '@radix-ui/colors/black-alpha.css';
 @import '@radix-ui/colors/violet.css';
 
 /* reset */
@@ -18,24 +18,24 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--violet11);
-  box-shadow: 0 2px 10px var(--blackA7);
+  color: var(--violet-11);
+  box-shadow: 0 2px 10px var(--black-a7);
 }
 .IconButton[data-state='closed'] {
   background-color: white;
 }
 .IconButton[data-state='open'] {
-  background-color: var(--violet3);
+  background-color: var(--violet-3);
 }
 .IconButton:hover {
-  background-color: var(--violet3);
+  background-color: var(--violet-3);
 }
 .IconButton:focus {
   box-shadow: 0 0 0 2px black;
 }
 
 .Text {
-  color: var(--violet11);
+  color: var(--violet-11);
   font-size: 15px;
   line-height: 25px;
 }
@@ -45,5 +45,5 @@ button {
   border-radius: 4px;
   margin: 10px 0;
   padding: 10px;
-  box-shadow: 0 2px 10px var(--blackA7);
+  box-shadow: 0 2px 10px var(--black-a7);
 }
