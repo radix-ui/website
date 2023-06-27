@@ -38,15 +38,24 @@ import { Label } from '@radix-ui/react-label';
 import * as React from 'react';
 import Head from 'next/head';
 
-export default function ThemesHome() {
-  const pageDemoRef = React.useRef<HTMLDivElement>(null);
+const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;
 
-  React.useLayoutEffect(() => {
+export default function ThemesHome() {
+  const pageShowcaseScrollRef = React.useRef<HTMLDivElement>(null);
+
+  useIsomorphicLayoutEffect(() => {
     let currentWidth = 0;
 
     const centerDemoScroll = () => {
       const newWidth = window.innerWidth;
-      const container = pageDemoRef.current;
+      const container = pageShowcaseScrollRef.current;
+
+      if (getComputedStyle(container).overflowX !== 'scroll') {
+        container.scrollLeft = 0;
+        currentWidth = 0;
+        return;
+      }
 
       if (newWidth !== currentWidth && container) {
         container.scrollLeft = container.scrollWidth / 2 - container.clientWidth / 2;
@@ -57,7 +66,9 @@ export default function ThemesHome() {
     centerDemoScroll();
     addEventListener('resize', centerDemoScroll);
 
-    return () => removeEventListener('resize', centerDemoScroll);
+    return () => {
+      removeEventListener('resize', centerDemoScroll);
+    };
   }, []);
 
   return (
@@ -69,24 +80,29 @@ export default function ThemesHome() {
       <div className={styles.PageRoot}>
         <div className={styles.PageContent}>
           <div className={styles.PageHero}>
-            <h1 className={styles.PageHeroTitle}>Build faster</h1>
+            <div className={styles.PageHeroInner}>
+              <h1 className={styles.PageHeroTitle}>Build faster</h1>
 
-            <p className={styles.PageHeroText}>
-              Configurable component library from the Radix team. Move quickly with a suite of
-              beautiful, high‑quality components and smooth DX.
-            </p>
-            <a href="/docs/themes" className={styles.PageHeroButton}>
-              Get started <span className={styles.PageHeroButtonArrow} />
-            </a>
+              <p className={styles.PageHeroText}>
+                Configurable component library from the Radix team. Move quickly with a suite of
+                beautiful, high-quality components and smooth DX.
+              </p>
+              <a href="/docs/themes" className={styles.PageHeroButton}>
+                Get started <span className={styles.PageHeroButtonArrow} />
+              </a>
+            </div>
           </div>
 
-          <div className={styles.PageDemo} ref={pageDemoRef}>
-            <div className={styles.PageDemoContent}>
-              <div className={styles.PageDemoContentInner}>
-                <div aria-hidden className="rui-reset-body">
-                  <Provider>
-                    <DemoAppDashboard />
-                  </Provider>
+          <div className={styles.PageShowcase}>
+            <div className={styles.PageShowcaseInner} ref={pageShowcaseScrollRef}>
+              {/* An extra div is needed to have padding working as expected within the scroll container */}
+              <div>
+                <div className={styles.PageShowcaseInnerScaled}>
+                  <div aria-hidden className="rui-reset-body">
+                    <Provider>
+                      <DemoAppDashboard />
+                    </Provider>
+                  </div>
                 </div>
               </div>
             </div>
@@ -492,9 +508,9 @@ const DemoAppDashboard = () => (
       style={{
         scrollSnapAlign: 'center',
 
-        width: 400,
+        width: 416,
         // Space to align the vertically centered content with the dot grid
-        marginBottom: 21,
+        marginBottom: 15,
       }}
     >
       <Card size="4" style={{ height: 320 }}>
@@ -605,14 +621,14 @@ const DemoAppDashboard = () => (
           </IconButton>
         </Box>
 
-        <Flex gap="2" direction="column" align="center">
+        <Flex gap="3" direction="column" align="center">
           <Marker height="8" width="8">
             <CheckIcon width="32" height="32" />
           </Marker>
 
-          <Heading size="6" mb="4">
-            Invoice paid
-          </Heading>
+          <Box height="8">
+            <Heading size="6">Invoice paid</Heading>
+          </Box>
         </Flex>
 
         <Text size="3" align="center" mb="5">

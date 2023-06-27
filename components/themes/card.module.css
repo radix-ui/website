@@ -58,7 +58,7 @@
 }
 
 .Card.solid::after {
-  box-shadow: inset 0 0 0 1px var(--grayA5);
+  box-shadow: inset 0 0 0 1px var(--grayA6);
 }
 
 .Card.ghost {

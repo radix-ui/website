@@ -4,55 +4,77 @@
   color: var(--indigo12);
   min-height: 100vh;
 
+  /* Prevent elements with `position: absolute` from adding scrollbars */
+  overflow: hidden;
+
   /* Scaling multiplier for the demo area */
-  --page-demo-scale: 10 / 16;
+  --page-showcase-scale: 10 / 16;
+  --page-showcase-base-width: 1760px;
 }
 
 @media (min-width: 500px) {
   .PageRoot {
-    --page-demo-scale: 11 / 16;
+    --page-showcase-scale: 11 / 16;
   }
 }
 
 @media (min-width: 500px) {
   .PageRoot {
-    --page-demo-scale: 12 / 16;
+    --page-showcase-scale: 12 / 16;
   }
 }
 
 @media (min-width: 600px) {
   .PageRoot {
-    --page-demo-scale: 13 / 16;
+    --page-showcase-scale: 13 / 16;
   }
 }
 
 @media (min-width: 700px) {
   .PageRoot {
-    --page-demo-scale: 14 / 16;
+    --page-showcase-scale: 14 / 16;
   }
 }
 
 @media (min-width: 800px) {
   .PageRoot {
-    --page-demo-scale: 1;
+    --page-showcase-scale: 1;
   }
 }
 
 @media (min-width: 1000px) {
   .PageRoot {
-    --page-demo-scale: 12 / 16;
+    --page-showcase-scale: 12 / 16;
   }
 }
 
-@media (min-width: 1500px) and (min-height: 800px) {
+@media (min-width: 1500px) and (min-height: 700px) {
   .PageRoot {
-    --page-demo-scale: 13 / 16;
+    --page-showcase-scale: 13 / 16;
   }
 }
 
-@media (min-width: 1600px) and (min-height: 800px) {
+@media (min-width: 1900px) and (min-height: 800px) {
   .PageRoot {
-    --page-demo-scale: 1;
+    --page-showcase-scale: 14 / 16;
+  }
+}
+
+@media (min-width: 2400px) and (min-height: 800px) {
+  .PageRoot {
+    --page-showcase-scale: 1;
+  }
+}
+
+@media (min-width: 2700px) and (min-height: 800px) {
+  .PageRoot {
+    --page-showcase-scale: 18 / 16;
+  }
+}
+
+@media (min-width: 3000px) and (min-height: 1000px) {
+  .PageRoot {
+    --page-showcase-scale: 20 / 16;
   }
 }
 
@@ -60,21 +82,8 @@
   background-color: hsla(225, 98.6%, 46.4%, 0.15);
 }
 
-.PageRoot::before {
-  content: '';
-
-  /* Fill the entire document with dots grid */
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background-image: radial-gradient(var(--grayA7) 9%, transparent 11%);
-  background-color: var(--mauve1);
-}
-
 .PageContent {
   display: flex;
-  align-items: center;
   flex-grow: 1;
   flex-shrink: 0;
 }
@@ -143,10 +152,34 @@
   margin-right: -0.3em;
 }
 
-.PageDemoContentInner {
+.PageShowcase {
+  position: relative;
   user-select: none;
-  pointer-events: auto;
-  transform: scale(calc(var(--page-demo-scale)));
+}
+
+.PageShowcase::before {
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  content: '';
+
+  /* Position the background relative to the content-box */
+  background-origin: content-box;
+
+  /* Extend the padding-box outwards without moving the content-box */
+  padding: 9999px;
+  margin: -9999px;
+
+  /* Render the dot pattern */
+  background-image: radial-gradient(var(--grayA7) 9%, transparent 11%);
+  background-color: var(--mauve1);
+
+  /* Scale the dots together with the demo */
+  background-size: calc(16px * var(--page-showcase-scale)) calc(16px * var(--page-showcase-scale));
+}
+
+.PageShowcaseInnerScaled {
+  transform: scale(calc(var(--page-showcase-scale)));
 }
 
 /* * * * * * * * * * * * * * * * * * * */
@@ -158,19 +191,6 @@
 @media (max-width: 999.99px) {
   .PageRoot {
     font-size: 0.13vw;
-    overflow: hidden;
-  }
-
-  .PageRoot::before {
-    /* Scale the dots together with the demo */
-    background-size: calc(16px * var(--page-demo-scale)) calc(16px * var(--page-demo-scale));
-
-    /*
-     * Position the first dot at the vertical center of the left edge of the demo container,
-     * so that we can align demo content with the dot grid reliably.
-     */
-    background-position: calc(0.5px - 8px * var(--page-demo-scale) + var(--page-demo-left))
-      calc(50% + 0.5px);
   }
 
   .PageContent {
@@ -182,31 +202,41 @@
     padding: 4vw;
   }
 
-  .PageDemo {
-    display: flex;
-    /* align-items: center; */
-    /* justify-content: center; */
-    overflow-x: scroll;
-    overflow-y: hidden;
-    scrollbar-width: none;
-    scrollbar-color: transparent;
-
+  .PageShowcase {
     position: relative;
-    width: 100vw;
-    height: calc(1300px * var(--page-demo-scale) + var(--page-demo-padding) * 2);
-
-    --page-demo-padding: 10vw;
+    --page-showcase-padding: 48px;
   }
 
-  .PageDemo::-webkit-scrollbar {
+  .PageShowcase::-webkit-scrollbar {
     display: none;
     width: 0;
   }
 
-  .PageDemoContentInner {
-    padding: var(--page-demo-padding);
-    position: absolute;
-    transform-origin: left top;
+  .PageShowcase::before {
+    background-image: radial-gradient(var(--grayA7) 9%, transparent 11%);
+
+    /* "Spread" the background pattern from top center of .PageShowcase element */
+    top: 0;
+    left: 50%;
+    background-position-x: center;
+
+    background-position-y: calc(
+      (var(--page-showcase-padding) - 16px / 2) * var(--page-showcase-scale)
+    );
+  }
+
+  .PageShowcaseInner {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+    height: calc((1550px + var(--page-showcase-padding) * 2) * var(--page-showcase-scale));
+  }
+
+  .PageShowcaseInnerScaled {
+    display: table;
+    padding: var(--page-showcase-padding);
+    transform-origin: top left;
   }
 }
 
@@ -218,36 +248,19 @@
 
 @media (min-width: 1000px) {
   .PageRoot {
-    --page-demo-width: calc(1744px * var(--page-demo-scale));
-
-    /* 1em no smaller than 0.4px and no larger than 1px, 0.05vw, or 0.1vh */
+    /* 1em is no smaller than 0.4px and no larger than 1px, 0.05vw, or 0.1vh */
     font-size: max(0.4px, min(1px, 0.05vw, 0.1vh));
-
-    /* The hero width is between 320px and 800px */
-    --page-hero-width: 800em;
-
-    /* The position of the left edge of the hero content */
-    --page-hero-left: max(0px, calc(50vw - (var(--page-hero-width) + var(--page-demo-width)) / 2));
-
-    /* The position of the left edge of the page demo */
-    --page-demo-left: calc(var(--page-hero-left) + var(--page-hero-width));
   }
 
-  .PageRoot::before {
-    /* Scale the dots together with the demo */
-    background-size: calc(16px * var(--page-demo-scale)) calc(16px * var(--page-demo-scale));
-
-    /*
-     * Position the first dot at the vertical center of the left edge of the demo container,
-     * so that we can align demo content with the dot grid reliably.
-     */
-    background-position: calc(0.5px - 8px * var(--page-demo-scale) + var(--page-demo-left))
-      calc(50% + 0.5px);
+  .PageContent {
+    align-items: stretch;
   }
 
   .PageHero {
-    width: var(--page-hero-width);
     flex-shrink: 0;
+
+    /* The hero width is between 320px and 800px */
+    width: 800em;
 
     /* Push self away from the left edge when there's space */
     margin-left: auto;
@@ -259,32 +272,38 @@
     margin-bottom: calc(30em + 2vh);
   }
 
-  .PageDemo {
-    /* Set static width so that we can center the hero and demo together in the viewport */
-    width: var(--page-demo-width);
+  .PageHero {
+    display: flex;
+    align-items: center;
+  }
+
+  .PageShowcase {
+    /* Set static width as actual content is positioned absolutely */
+    width: calc(var(--page-showcase-base-width) * var(--page-showcase-scale));
 
     /* Push self away from the right edge when there's space */
     margin-right: auto;
   }
 
-  .PageDemoContent {
-    /* Cut off page demo content at document edges */
-    overflow: hidden;
-    position: absolute;
-    pointer-events: none;
-    inset: 0;
+  .PageShowcase::before {
+    /* "Spread" the background pattern from center left of .PageShowcase element */
+    background-position: 50% calc(50% + 0.5px);
+    top: 50%;
+    left: 0;
   }
 
-  .PageDemoContentInner {
-    transform-origin: left center;
-
-    /* Position the demo content to the right of the hero */
+  .PageShowcaseInner {
+    overflow: hidden;
     position: relative;
-    left: var(--page-demo-left);
+    width: 100%;
+    height: 100%;
+  }
 
-    /* Center the content vertically */
+  .PageShowcaseInnerScaled {
+    position: absolute;
+    inset: 0;
     display: flex;
     align-items: center;
-    height: 100%;
+    transform-origin: center left;
   }
 }
