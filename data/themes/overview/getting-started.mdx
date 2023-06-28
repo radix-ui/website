@@ -4,3 +4,54 @@ metaDescription: Getting started
 ---
 
 # Getting started
+
+## Installation
+
+```bash
+npm install @radix-ui/themes
+```
+
+## Setting up
+
+### 1. Import the CSS file
+
+This may vary depending of your framework of choice, but generally you'll want to import the CSS file at the root of your application.
+
+```ts
+import '@radix-ui/themes/dist/index.css';
+```
+
+### 2. Wrap your app with our Provider
+
+The Provider component wraps a couple of Radix's primitives providers in one single component for ease of use.
+
+```tsx line=1,5,7
+import { Provider } from '@radix-ui/themes';
+
+export default function () {
+  return (
+    <Provider>
+      <YourApp />
+    </Provider>
+  );
+}
+```
+
+## Usage
+
+You are now ready to use Radix's components in your app:
+
+```tsx
+import { Flex, Text, Button } from '@radix-ui/themes';
+
+export default function MyApp() {
+  return (
+    <Flex direction="column" gap="2">
+      <Text>Hello from Radix Themes :)</Text>
+      <Button>Get started</Button>
+    </Flex>
+  );
+}
+```
+
+You can now take one step further and <Link href="/docs/themes/guides/theme-configuration">configure the theme</Link> to your liking.
