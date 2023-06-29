@@ -125,8 +125,8 @@ export function PropsTable({
                     </IconButton>
                   </PopoverTrigger>
                   <PopoverContent side="top" css={{ maxWidth: 'max-content', minWidth: 'auto' }}>
-                    <Box css={{ py: '$2', px: '$2', whiteSpace: 'nowrap' }}>
-                      <Code>{type}</Code>
+                    <Box css={{ py: '$2', px: '$2' }}>
+                      <Code css={{ whiteSpace: 'pre', display: 'block' }}>{type}</Code>
                     </Box>
                   </PopoverContent>
                 </Popover>

@@ -7,32 +7,46 @@ metaDescription: Getting started
 
 ## Installation
 
-```bash
-npm install @radix-ui/themes
-```
+<Tabs defaultValue="npm" css={{ my: '$5' }}>
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+  </TabsList>
+  <TabsContent value="npm">
+    <CodeBlock language="bash" value="npm install @radix-ui/themes" />
+  </TabsContent>
+  <TabsContent value="yarn">
+    <CodeBlock language="bash" value="yarn add @radix-ui/themes" />
+  </TabsContent>
+  <TabsContent value="pnpm">
+    <CodeBlock language="bash" value="pnpm install @radix-ui/themes" />
+  </TabsContent>
+</Tabs>
 
 ## Setting up
 
 ### 1. Import the CSS file
 
-This may vary depending of your framework of choice, but generally you'll want to import the CSS file at the root of your application.
+<Note>
+  Note: This may vary depending of your framework of choice, but generally
+  you'll want to import the CSS file at the root of your application.
+</Note>
 
 ```ts
 import '@radix-ui/themes/dist/index.css';
 ```
 
-### 2. Wrap your app with our Provider
+### 2. Wrap your app with the ThemeConfig
 
-The Provider component wraps a couple of Radix's primitives providers in one single component for ease of use.
-
-```tsx line=1,5,7
-import { Provider } from '@radix-ui/themes';
+```tsx
+import { ThemeConfig } from '@radix-ui/themes';
 
 export default function () {
   return (
-    <Provider>
+    <ThemeConfig>
       <YourApp />
-    </Provider>
+    </ThemeConfig>
   );
 }
 ```
@@ -53,5 +67,3 @@ export default function MyApp() {
   );
 }
 ```
-
-You can now take one step further and <Link href="/docs/themes/guides/theme-configuration">configure the theme</Link> to your liking.

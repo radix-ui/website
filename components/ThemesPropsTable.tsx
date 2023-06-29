@@ -687,10 +687,68 @@ const props: Record<string, PropDef[]> = {
       description: 'An optional shortcut command to associate with the item',
     },
   ],
+  themeConfig: [
+    asChildProp,
+    {
+      name: 'darkMode',
+      required: false,
+      typeSimple: 'boolean',
+      default: 'false',
+      description:
+        'Switches the color scale to a dark palette and applies a dark-theme to the child element of the ThemeConfig',
+    },
+    {
+      name: 'accentScale',
+      required: false,
+      typeSimple: 'enum',
+      type: formatValues(themes.allColorScales),
+      default: formatValues(themes.defaultThemeAccentScale),
+      description: 'Changes the main accent color of your app',
+    },
+    {
+      name: 'grayScale',
+      required: false,
+      typeSimple: 'enum',
+      type: formatValues(['auto', ...themes.allGrayScales]),
+      default: formatValues(themes.defaultThemeGrayScale),
+    },
+    {
+      name: 'backgroundColor',
+      required: false,
+      typeSimple: 'enum',
+      type: formatValues(themes.backgroundColorValues),
+      default: formatValues(themes.defaultThemeBackgroundColor),
+    },
+    {
+      name: 'textColor',
+      required: false,
+      typeSimple: 'enum',
+      type: formatValues(themes.textColorValues),
+      default: formatValues(themes.defaultThemeTextColor),
+    },
+    {
+      name: 'radius',
+      required: false,
+      typeSimple: 'enum',
+      type: formatValues(themes.radiusValues),
+      default: formatValues(themes.defaultThemeRadius),
+    },
+    {
+      name: 'scaling',
+      required: false,
+      typeSimple: 'enum',
+      type: formatValues(themes.scalingValues),
+      default: formatValues(themes.defaultThemeScaling),
+    },
+  ],
 };
 
 function formatValues(values?: readonly string[] | string) {
   if (Array.isArray(values)) {
+    if (values.length > 8) {
+      return formatToBalancedArray(values, 5);
+    }
+
     return values
       .filter((item) => Boolean(item))
       .map((v) => `"${v}"`)
@@ -702,4 +760,22 @@ function formatValues(values?: readonly string[] | string) {
   }
 
   return undefined;
+}
+
+function formatToBalancedArray(array: string[], columns = 5) {
+  const numberOfParts = Math.ceil(array.length / columns);
+
+  const balancedArray = array.map((value, i) => {
+    const matching = array.filter((v, j) => j % columns === i % columns);
+    const longestPart = Math.max(...matching.map((el) => el.length)) + 1;
+    return value.padEnd(longestPart, ' ');
+  });
+
+  const parts = [...Array(numberOfParts)].map((value, index) => {
+    return balancedArray.slice(index * columns, (index + 1) * columns);
+  });
+
+  const formatted = parts.map((part) => part.join(' | ')).join('\n| ');
+
+  return `| ${formatted}`;
 }
