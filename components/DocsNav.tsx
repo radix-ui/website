@@ -36,7 +36,7 @@ export function NavItem({ children, active, disabled, href, ...props }: NavItemP
           color: disabled ? '$gray10' : '$hiContrast',
           py: '$2',
           px: '$3',
-          backgroundColor: active ? '$violet5' : 'transparent',
+          backgroundColor: active ? 'var(--accent-5, $violet5)' : 'transparent',
           borderRadius: 9999,
           userSelect: 'none',
           minHeight: '$6',
@@ -46,11 +46,11 @@ export function NavItem({ children, active, disabled, href, ...props }: NavItemP
             mb: 1,
           },
           '&:hover': {
-            backgroundColor: active ? '$violet5' : '$violet4',
+            backgroundColor: active ? 'var(--accent-5, $violet5)' : 'var(--accent-4, $violet4)',
           },
           '&:focus': {
             outline: 'none',
-            boxShadow: 'inset 0 0 0 1px $colors$violet7',
+            boxShadow: 'inset 0 0 0 1px var(--accent-7, $colors$violet7)',
           },
         }}
       >

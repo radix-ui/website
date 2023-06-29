@@ -30,7 +30,7 @@ export function ThemesDocsPage({ children }: { children: React.ReactNode }) {
         />
       </HeaderWrapper>
 
-      <MainWrapper>
+      <MainWrapper data-accent-scale="crimson">
         <NavWrapper isMobileMenuOpen={isMobileMenuOpen}>
           <Box css={{ mt: '$4' }}>
             {themesRoutes.map((section: RouteProps) => (

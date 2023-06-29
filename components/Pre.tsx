@@ -12,10 +12,10 @@ export const Pre = styled('pre', {
   $$added: '$colors$green11',
   $$lineNumbers: '$colors$indigo5',
   $$fadedLines: '$colors$slate10',
-  $$highlightedLineBg: '$colors$violet3',
-  $$highlightedWord1Bg: '$colors$violet4',
-  $$highlightedWord1BgActive: '$colors$violet6',
-  $$highlightedWord1Text: '$colors$violet11',
+  $$highlightedLineBg: 'var(--accent-3, $colors$violet3)',
+  $$highlightedWord1Bg: 'var(--accent-4, $colors$violet4)',
+  $$highlightedWord1BgActive: 'var(--accent-6, $colors$violet6)',
+  $$highlightedWord1Text: 'var(--accent-11, $colors$violet11)',
   $$highlightedWord2Bg: '$colors$red3',
   $$highlightedWord2BgActive: '$colors$red5',
   $$highlightedWord2Text: '$colors$red11',
@@ -186,8 +186,8 @@ export const Pre = styled('pre', {
   variants: {
     variant: {
       violet: {
-        $$background: '$colors$violet2',
-        $$text: '$colors$violet11',
+        $$background: 'var(--accent-2, $colors$violet2)',
+        $$text: 'var(--accent-11, $colors$violet11)',
         $$syntax1: '$colors$blue10',
         $$syntax2: '$colors$pink11',
         $$comment: '$colors$mauve9',

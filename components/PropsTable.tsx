@@ -3,7 +3,6 @@ import {
   Box,
   IconButton,
   Text,
-  Code,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -11,6 +10,7 @@ import {
 import { InfoCircledIcon, DividerHorizontalIcon } from '@radix-ui/react-icons';
 import { RegionTable } from './RegionTable';
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
+import { Code } from './Code';
 
 export type PropDef = {
   name: string;
@@ -103,9 +103,7 @@ export function PropsTable({
               )}
             </Box>
             <Box as="td" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4' }}>
-              <Code css={{ bc: '$gray4', color: '$gray11' }}>
-                {Boolean(typeSimple) ? typeSimple : type}
-              </Code>
+              <Code variant="gray">{Boolean(typeSimple) ? typeSimple : type}</Code>
               {Boolean(typeSimple) && Boolean(type) && (
                 <Popover>
                   <PopoverTrigger asChild>
@@ -126,7 +124,9 @@ export function PropsTable({
                   </PopoverTrigger>
                   <PopoverContent side="top" css={{ maxWidth: 'max-content', minWidth: 'auto' }}>
                     <Box css={{ py: '$2', px: '$2' }}>
-                      <Code css={{ whiteSpace: 'pre', display: 'block' }}>{type}</Code>
+                      <Code variant="violet" css={{ whiteSpace: 'pre', display: 'block' }}>
+                        {type}
+                      </Code>
                     </Box>
                   </PopoverContent>
                 </Popover>
@@ -134,7 +134,7 @@ export function PropsTable({
             </Box>
             <Box as="td" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4' }}>
               {Boolean(defaultValue) ? (
-                <Code css={{ bc: '$gray4', color: '$gray11' }}>{defaultValue}</Code>
+                <Code variant="gray">{defaultValue}</Code>
               ) : (
                 <Box as={AccessibleIcon} label="No default value" css={{ color: '$gray8' }}>
                   <DividerHorizontalIcon />

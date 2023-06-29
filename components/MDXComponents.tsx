@@ -18,6 +18,7 @@ import { CssVariablesTable } from './CssVariablesTable';
 import { DataAttributesTable } from './DataAttributesTable';
 import { PreWithCopyButton } from './PreWithCopyButton';
 import { PreWithLivePreview } from './PreWithLivePreview';
+import { Code } from './Code';
 
 export const components = {
   ColorScale,
@@ -47,9 +48,9 @@ export const components = {
           br: 999,
         },
         'button[data-state="active"]': {
-          bc: '$violet3',
-          color: '$violet12',
-          boxShadow: '0 0 0 1px $colors$violet5',
+          bc: 'var(--accent-3, $violet3)',
+          color: 'var(--accent-12, $violet12)',
+          boxShadow: '0 0 0 1px var(--accent-5, $colors$violet5)',
         },
       }}
     />
@@ -109,7 +110,7 @@ export const components = {
           {...props}
           variant="blue"
           href={href}
-          css={{ fontSize: 'inherit' }}
+          css={{ fontSize: 'inherit', color: 'var(--accent-11)' }}
           target="_blank"
           rel="noopener"
         />
@@ -174,7 +175,15 @@ export const components = {
     // if it's a codeblock (``` block in markdown), it'll have a className from prism
     const isInlineCode = !className;
     return isInlineCode ? (
-      <DS.Code className={className} {...props} css={{ whiteSpace: 'break-spaces' }} />
+      <DS.Code
+        className={className}
+        {...props}
+        css={{
+          whiteSpace: 'break-spaces',
+          backgroundColor: 'var(--accent-3)',
+          color: 'var(--accent-11)',
+        }}
+      />
     ) : (
       <code className={className} {...props} data-invert-line-highlight={line !== undefined} />
     );
@@ -219,7 +228,7 @@ export const components = {
   ),
   Highlights,
   Kbd: DS.Kbd,
-  Code: DS.Code,
+  Code,
   CssVariablesTable: (props) => (
     <DS.Box css={{ mt: '$2' }}>
       <CssVariablesTable {...props} />
