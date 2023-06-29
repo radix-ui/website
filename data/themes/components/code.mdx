@@ -38,14 +38,61 @@ Use the `size` prop to control the size of the text. The prop also provides corr
 Use the `variant` prop to control the visual style.
 
 ```jsx live=true
-<Flex direction="column" gap="2" align="start">
+<Flex gap="3">
   <Code variant="solid">console.log()</Code>
-  <Code variant="solid-mono">console.log()</Code>
-  <Code variant="subtle">console.log()</Code>
-  <Code variant="subtle-mono">console.log()</Code>
+  <Code variant="soft">console.log()</Code>
   <Code variant="outline">console.log()</Code>
-  <Code variant="outline-mono">console.log()</Code>
   <Code variant="plain">console.log()</Code>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific color value, ignoring the global theme.
+
+```jsx live=true
+<Flex gap="3">
+  <Code color="crimson" variant="soft">
+    Crimson
+  </Code>
+  <Code color="indigo" variant="soft">
+    Indigo
+  </Code>
+  <Code color="grass" variant="soft">
+    Grass
+  </Code>
+  <Code color="orange" variant="soft">
+    Orange
+  </Code>
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to add contrast.
+
+```jsx live=true
+<Flex direction="column" gap="3">
+  <Flex gap="3">
+    <Code variant="solid">console.log()</Code>
+    <Code variant="soft">console.log()</Code>
+    <Code variant="outline">console.log()</Code>
+    <Code variant="plain">console.log()</Code>
+  </Flex>
+  <Flex gap="3">
+    <Code variant="solid" highContrast>
+      console.log()
+    </Code>
+    <Code variant="soft" highContrast>
+      console.log()
+    </Code>
+    <Code variant="outline" highContrast>
+      console.log()
+    </Code>
+    <Code variant="plain" highContrast>
+      console.log()
+    </Code>
+  </Flex>
 </Flex>
 ```
 
@@ -57,26 +104,5 @@ Use the `weight` prop to set the weight of the text. You can change the weight a
 <Flex direction="column" gap="2" align="start">
   <Code weight="normal">console.log()</Code>
   <Code weight="bold">console.log()</Code>
-</Flex>
-```
-
-### Color
-
-Use the `color` prop to assign a specific color value, ignoring the global theme.
-
-```jsx live=true
-<Flex gap="3">
-  <Code color="crimson" variant="subtle">
-    Crimson
-  </Code>
-  <Code color="indigo" variant="subtle">
-    Indigo
-  </Code>
-  <Code color="grass" variant="subtle">
-    Grass
-  </Code>
-  <Code color="orange" variant="subtle">
-    Orange
-  </Code>
 </Flex>
 ```

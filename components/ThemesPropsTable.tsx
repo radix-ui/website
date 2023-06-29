@@ -46,6 +46,13 @@ const colorProp = {
   ),
 };
 
+const highContrastProp = {
+  name: 'highContrast',
+  required: false,
+  typeSimple: 'boolean',
+  description: 'Use to render a high-contrast version of the component.',
+};
+
 const weightProp = {
   name: 'weight',
   required: false,
@@ -89,6 +96,7 @@ const props: Record<string, PropDef[]> = {
       default: formatValues(themes.defaultButtonVariant),
     },
     { ...colorProp, default: formatValues(themes.defaultButtonColor) },
+    { ...highContrastProp, default: themes.defaultButtonHighContrast },
     {
       ...radiusProp,
       type: formatValues(themes.radiusValues),
@@ -107,6 +115,7 @@ const props: Record<string, PropDef[]> = {
       default: formatValues(themes.defaultCheckboxVariant),
     },
     { ...colorProp, default: formatValues(themes.defaultCheckboxColor) },
+    { ...highContrastProp, default: themes.defaultCheckboxHighContrast },
     {
       ...radiusProp,
       type: formatValues(themes.radiusValues),
@@ -125,6 +134,7 @@ const props: Record<string, PropDef[]> = {
       default: formatValues(themes.defaultIconButtonVariant),
     },
     { ...colorProp, default: formatValues(themes.defaultIconButtonColor) },
+    { ...highContrastProp, default: themes.defaultIconButtonHighContrast },
     {
       ...radiusProp,
       type: formatValues(themes.radiusValues),
@@ -143,6 +153,7 @@ const props: Record<string, PropDef[]> = {
       default: formatValues(themes.defaultRadioGroupVariant),
     },
     { ...colorProp, default: formatValues(themes.defaultRadioGroupColor) },
+    { ...highContrastProp, default: themes.defaultRadioGroupHighContrast },
   ],
   slider: [
     {
@@ -156,6 +167,7 @@ const props: Record<string, PropDef[]> = {
       default: formatValues(themes.defaultSliderVariant),
     },
     { ...colorProp, default: formatValues(themes.defaultSliderColor) },
+    { ...highContrastProp, default: themes.defaultSliderHighContrast },
     {
       ...radiusProp,
       type: formatValues(themes.radiusValues),
@@ -174,6 +186,7 @@ const props: Record<string, PropDef[]> = {
       default: formatValues(themes.defaultSwitchVariant),
     },
     { ...colorProp, default: formatValues(themes.defaultSwitchColor) },
+    { ...highContrastProp, default: themes.defaultSwitchHighContrast },
     {
       ...radiusProp,
       type: formatValues(themes.radiusValues),
@@ -191,6 +204,7 @@ const props: Record<string, PropDef[]> = {
       type: formatValues(themes.textFieldVariants),
       default: formatValues(themes.defaultTextFieldVariant),
     },
+    { ...colorProp, default: formatValues(themes.defaultTextFieldColor) },
     {
       ...radiusProp,
       type: formatValues(themes.radiusValues),
@@ -208,6 +222,7 @@ const props: Record<string, PropDef[]> = {
       type: formatValues(themes.textAreaVariants),
       default: formatValues(themes.defaultTextAreaVariant),
     },
+    { ...colorProp, default: formatValues(themes.defaultTextAreaColor) },
     {
       ...radiusProp,
       type: formatValues(themes.radiusValues),
@@ -266,11 +281,6 @@ const props: Record<string, PropDef[]> = {
       default: formatValues(themes.defaultLinkSize),
     },
     {
-      ...variantProp,
-      type: formatValues(themes.linkVariants),
-      default: formatValues(themes.defaultLinkVariant),
-    },
-    {
       ...weightProp,
       type: formatValues(themes.linkWeights),
       default: formatValues(themes.defaultLinkWeight),
@@ -279,6 +289,7 @@ const props: Record<string, PropDef[]> = {
       ...colorProp,
       default: formatValues(themes.defaultLinkColor),
     },
+    { ...highContrastProp, default: themes.defaultLinkHighContrast },
   ],
   separator: [
     {
@@ -339,6 +350,7 @@ const props: Record<string, PropDef[]> = {
       default: formatValues(themes.defaultAvatarVariant),
     },
     { ...colorProp, default: formatValues(themes.defaultAvatarColor) },
+    { ...highContrastProp, default: themes.defaultAvatarHighContrast },
     {
       ...radiusProp,
       type: formatValues(themes.radiusValues),
@@ -558,39 +570,43 @@ const props: Record<string, PropDef[]> = {
     },
   ],
   selectRoot: [
-    {
-      name: 'placeholder',
-      required: false,
-      typeSimple: 'string',
-    },
+    // {
+    //   name: 'placeholder',
+    //   required: false,
+    //   typeSimple: 'string',
+    // },
     {
       ...sizeProp,
       type: formatValues(themes.selectSizes),
       default: formatValues(themes.defaultSelectSize),
     },
     {
-      name: 'triggerVariant',
+      ...radiusProp,
+      type: formatValues(themes.radiusValues),
+      default: formatValues(themes.defaultSelectRadius),
+    },
+  ],
+  selectTrigger: [
+    {
+      name: 'variant',
       required: false,
       type: formatValues(themes.selectTriggerVariants),
       default: formatValues(themes.defaultSelectTriggerVariant),
       typeSimple: 'enum',
     },
+    { ...colorProp, default: formatValues(themes.defaultSelectTriggerColor) },
+    { ...highContrastProp, default: themes.defaultSelectTriggerHighContrast },
+  ],
+  selectContent: [
     {
-      name: 'menuVariant',
+      name: 'variant',
       required: false,
-      type: formatValues(themes.selectMenuVariants),
-      default: formatValues(themes.defaultSelectMenuVariant),
+      type: formatValues(themes.selectContentVariants),
+      default: formatValues(themes.defaultSelectContentVariant),
       typeSimple: 'enum',
     },
-    {
-      ...colorProp,
-      default: formatValues(themes.defaultSelectColor),
-    },
-    {
-      ...radiusProp,
-      type: formatValues(themes.radiusValues),
-      default: formatValues(themes.defaultSelectRadius),
-    },
+    { ...colorProp, default: formatValues(themes.defaultSelectContentColor) },
+    { ...highContrastProp, default: themes.defaultSelectContentHighContrast },
   ],
   code: [
     {
@@ -603,14 +619,12 @@ const props: Record<string, PropDef[]> = {
       type: formatValues(themes.codeVariants),
       default: formatValues(themes.defaultCodeVariant),
     },
+    { ...colorProp, default: formatValues(themes.defaultCodeColor) },
+    { ...highContrastProp, default: themes.defaultCodeHighContrast },
     {
       ...weightProp,
       type: formatValues(themes.codeWeights),
       default: formatValues(themes.defaultCodeWeight),
-    },
-    {
-      ...colorProp,
-      default: formatValues(themes.defaultCodeColor),
     },
   ],
   tooltip: [
@@ -650,16 +664,19 @@ const props: Record<string, PropDef[]> = {
   dropdownMenuContent: [
     {
       ...sizeProp,
-      type: formatValues(themes.dropdownMenuSizes),
-      default: formatValues(themes.defaultDropdownMenuSize),
+      type: formatValues(themes.dropdownMenuContentSizes),
+      default: formatValues(themes.defaultDropdownMenuContentSize),
     },
     {
       ...variantProp,
-      type: formatValues(themes.dropdownMenuVariants),
-      default: formatValues(themes.defaultDropdownMenuVariant),
+      type: formatValues(themes.dropdownMenuContentVariants),
+      default: formatValues(themes.defaultDropdownMenuContentVariant),
     },
+    { ...colorProp, default: formatValues(themes.defaultDropdownMenuContentColor) },
+    { ...highContrastProp, default: themes.defaultDropdownMenuContentHighContrast },
   ],
   dropdownMenuItem: [
+    { ...colorProp, default: formatValues(themes.defaultDropdownMenuItemColor) },
     {
       name: 'shortcut',
       required: false,
@@ -670,16 +687,19 @@ const props: Record<string, PropDef[]> = {
   contextMenuContent: [
     {
       ...sizeProp,
-      type: formatValues(themes.contextMenuSizes),
-      default: formatValues(themes.defaultContextMenuSize),
+      type: formatValues(themes.contextMenuContentSizes),
+      default: formatValues(themes.defaultContextMenuContentSize),
     },
     {
       ...variantProp,
-      type: formatValues(themes.contextMenuVariants),
-      default: formatValues(themes.defaultContextMenuSize),
+      type: formatValues(themes.contextMenuContentVariants),
+      default: formatValues(themes.defaultContextMenuContentSize),
     },
+    { ...colorProp, default: formatValues(themes.defaultContextMenuContentColor) },
+    { ...highContrastProp, default: themes.defaultContextMenuContentHighContrast },
   ],
   contextMenuItem: [
+    { ...colorProp, default: formatValues(themes.defaultContextMenuItemColor) },
     {
       name: 'shortcut',
       required: false,

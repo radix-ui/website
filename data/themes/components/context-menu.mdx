@@ -6,32 +6,19 @@ metaDescription: Menu representing a set of actions, displayed at the origin of 
 ```jsx live=true
 <ContextMenu.Root>
   <ContextMenu.Trigger>
-    <Grid
-      px="3"
-      style={{
-        height: 100,
-        placeItems: 'center',
-        borderRadius: 'var(--br-3)',
-        border: '1px dashed var(--accent-6)',
-        cursor: 'default',
-      }}
-    >
-      <Text asChild>
-        <span>Right-click here</span>
-      </Text>
-    </Grid>
+    <RightClickZone />
   </ContextMenu.Trigger>
   <ContextMenu.Content>
-    <ContextMenu.Item shortcut="⌘+T">New Tab</ContextMenu.Item>
-    <ContextMenu.Item shortcut="⌘+N">New Window</ContextMenu.Item>
-    <ContextMenu.Item shortcut="⇧+⌘+N" disabled>
+    <ContextMenu.Item shortcut="⌘ T">New Tab</ContextMenu.Item>
+    <ContextMenu.Item shortcut="⌘ N">New Window</ContextMenu.Item>
+    <ContextMenu.Item shortcut="⇧ ⌘ N" disabled>
       New Private Window
     </ContextMenu.Item>
     <ContextMenu.Sub>
       <ContextMenu.SubTrigger>More Tools</ContextMenu.SubTrigger>
 
       <ContextMenu.SubContent>
-        <ContextMenu.Item shortcut="⌘+S">Save Page As…</ContextMenu.Item>
+        <ContextMenu.Item shortcut="⌘ S">Save Page As…</ContextMenu.Item>
         <ContextMenu.Item>Create Shortcut…</ContextMenu.Item>
         <ContextMenu.Item>Name Window…</ContextMenu.Item>
         <ContextMenu.Separator />
@@ -41,7 +28,7 @@ metaDescription: Menu representing a set of actions, displayed at the origin of 
 
     <ContextMenu.Separator />
 
-    <ContextMenu.CheckboxItem shortcut="⌘+B" checked>
+    <ContextMenu.CheckboxItem shortcut="⌘ B" checked>
       Show Bookmarks
     </ContextMenu.CheckboxItem>
     <ContextMenu.CheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
@@ -53,6 +40,12 @@ metaDescription: Menu representing a set of actions, displayed at the origin of 
       <ContextMenu.RadioItem value="pedro">Pedro Duarte</ContextMenu.RadioItem>
       <ContextMenu.RadioItem value="colm">Colm Tuite</ContextMenu.RadioItem>
     </ContextMenu.RadioGroup>
+
+    <ContextMenu.Separator />
+
+    <ContextMenu.Item shortcut="⌘ ⌫" color="red">
+      Delete
+    </ContextMenu.Item>
   </ContextMenu.Content>
 </ContextMenu.Root>
 ```
@@ -101,8 +94,6 @@ An item that can be controlled and rendered like a radio.
 
 An item that can be controlled and rendered like a checkbox.
 
-<ThemesPropsTable name="contextMenuItem" />
-
 ### Sub
 
 Contains all the parts of a submenu.
@@ -115,8 +106,6 @@ An item that opens a submenu. Must be rendered inside `ContextMenu.Sub`.
 
 The component that pops out when a submenu is open. Must be rendered inside `ContextMenu.Sub`.
 
-<ThemesPropsTable name="contextMenuContent" />
-
 ## Examples
 
 ### Size
@@ -127,21 +116,7 @@ Use the `size` prop to control the size.
 <Grid columns="2" gap="3">
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <Grid
-        height="9"
-        px="3"
-        style={{
-          height: 100,
-          placeItems: 'center',
-          borderRadius: 'var(--br-3)',
-          border: '1px dashed var(--accent-6)',
-          cursor: 'default',
-        }}
-      >
-        <Text asChild>
-          <span>Right-click here</span>
-        </Text>
-      </Grid>
+      <RightClickZone />
     </ContextMenu.Trigger>
     <ContextMenu.Content size="1">
       <ContextMenu.Item>New Tab</ContextMenu.Item>
@@ -151,21 +126,7 @@ Use the `size` prop to control the size.
 
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <Grid
-        height="9"
-        px="3"
-        style={{
-          height: 100,
-          placeItems: 'center',
-          borderRadius: 'var(--br-3)',
-          border: '1px dashed var(--accent-6)',
-          cursor: 'default',
-        }}
-      >
-        <Text asChild>
-          <span>Right-click here</span>
-        </Text>
-      </Grid>
+      <RightClickZone />
     </ContextMenu.Trigger>
     <ContextMenu.Content size="2">
       <ContextMenu.Item>New Tab</ContextMenu.Item>
@@ -175,29 +136,15 @@ Use the `size` prop to control the size.
 </Grid>
 ```
 
-### Variants
+### Variant
 
 Use the `variant` prop to customize the visual style of the context menu.
 
 ```jsx live=true
-<Grid columns="3" gap="3">
+<Grid columns="2" gap="3">
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <Grid
-        height="9"
-        px="3"
-        style={{
-          height: 100,
-          placeItems: 'center',
-          borderRadius: 'var(--br-3)',
-          border: '1px dashed var(--accent-6)',
-          cursor: 'default',
-        }}
-      >
-        <Text asChild>
-          <span>Right-click here</span>
-        </Text>
-      </Grid>
+      <RightClickZone />
     </ContextMenu.Trigger>
     <ContextMenu.Content variant="solid">
       <ContextMenu.Item>New Tab</ContextMenu.Item>
@@ -207,23 +154,79 @@ Use the `variant` prop to customize the visual style of the context menu.
 
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <Grid
-        height="9"
-        px="3"
-        style={{
-          height: 100,
-          placeItems: 'center',
-          borderRadius: 'var(--br-3)',
-          border: '1px dashed var(--accent-6)',
-          cursor: 'default',
-        }}
-      >
-        <Text asChild>
-          <span>Right-click here</span>
-        </Text>
-      </Grid>
+      <RightClickZone />
     </ContextMenu.Trigger>
-    <ContextMenu.Content variant="subtle">
+    <ContextMenu.Content variant="soft">
+      <ContextMenu.Item>New Tab</ContextMenu.Item>
+      <ContextMenu.Item>New Window</ContextMenu.Item>
+    </ContextMenu.Content>
+  </ContextMenu.Root>
+</Grid>
+```
+
+### Color
+
+Use the `color` prop to assign a specific color value, ignoring the global theme. You can also pass `color` to a specific item to override for semantic reasons (ie. destruction action).
+
+```jsx live=true
+<Grid columns="4" gap="3">
+  <ContextMenu.Root>
+    <ContextMenu.Trigger>
+      <RightClickZone />
+    </ContextMenu.Trigger>
+    <ContextMenu.Content color="crimson">
+      <ContextMenu.Item>New Tab</ContextMenu.Item>
+      <ContextMenu.Item>New Window</ContextMenu.Item>
+      <ContextMenu.Item color="red">Delete</ContextMenu.Item>
+    </ContextMenu.Content>
+  </ContextMenu.Root>
+
+  <ContextMenu.Root>
+    <ContextMenu.Trigger>
+      <RightClickZone />
+    </ContextMenu.Trigger>
+    <ContextMenu.Content color="indigo">
+      <ContextMenu.Item>New Tab</ContextMenu.Item>
+      <ContextMenu.Item>New Window</ContextMenu.Item>
+      <ContextMenu.Item color="red">Delete</ContextMenu.Item>
+    </ContextMenu.Content>
+  </ContextMenu.Root>
+
+  <ContextMenu.Root>
+    <ContextMenu.Trigger>
+      <RightClickZone />
+    </ContextMenu.Trigger>
+    <ContextMenu.Content color="grass">
+      <ContextMenu.Item>New Tab</ContextMenu.Item>
+      <ContextMenu.Item>New Window</ContextMenu.Item>
+      <ContextMenu.Item color="red">Delete</ContextMenu.Item>
+    </ContextMenu.Content>
+  </ContextMenu.Root>
+
+  <ContextMenu.Root>
+    <ContextMenu.Trigger>
+      <RightClickZone />
+    </ContextMenu.Trigger>
+    <ContextMenu.Content color="orange">
+      <ContextMenu.Item>New Tab</ContextMenu.Item>
+      <ContextMenu.Item>New Window</ContextMenu.Item>
+      <ContextMenu.Item color="red">Delete</ContextMenu.Item>
+    </ContextMenu.Content>
+  </ContextMenu.Root>
+</Grid>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to add contrast.
+
+```jsx live=true
+<Grid columns="3" gap="3">
+  <ContextMenu.Root>
+    <ContextMenu.Trigger>
+      <RightClickZone />
+    </ContextMenu.Trigger>
+    <ContextMenu.Content>
       <ContextMenu.Item>New Tab</ContextMenu.Item>
       <ContextMenu.Item>New Window</ContextMenu.Item>
     </ContextMenu.Content>
@@ -231,23 +234,19 @@ Use the `variant` prop to customize the visual style of the context menu.
 
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <Grid
-        height="9"
-        px="3"
-        style={{
-          height: 100,
-          placeItems: 'center',
-          borderRadius: 'var(--br-3)',
-          border: '1px dashed var(--accent-6)',
-          cursor: 'default',
-        }}
-      >
-        <Text asChild>
-          <span>Right-click here</span>
-        </Text>
-      </Grid>
+      <RightClickZone />
     </ContextMenu.Trigger>
-    <ContextMenu.Content variant="subtle-mono">
+    <ContextMenu.Content highContrast>
+      <ContextMenu.Item>New Tab</ContextMenu.Item>
+      <ContextMenu.Item>New Window</ContextMenu.Item>
+    </ContextMenu.Content>
+  </ContextMenu.Root>
+
+  <ContextMenu.Root>
+    <ContextMenu.Trigger>
+      <RightClickZone />
+    </ContextMenu.Trigger>
+    <ContextMenu.Content color="gray" highContrast>
       <ContextMenu.Item>New Tab</ContextMenu.Item>
       <ContextMenu.Item>New Window</ContextMenu.Item>
     </ContextMenu.Content>

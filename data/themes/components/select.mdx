@@ -5,22 +5,25 @@ metaDescription: List of options from which the user can select, triggered by a 
 
 ```jsx live=true
 <Select.Root defaultValue="apple">
-  <Select.Group>
-    <Select.Label>Fruits</Select.Label>
-    <Select.Item value="orange">Orange</Select.Item>
-    <Select.Item value="apple">Apple</Select.Item>
-    <Select.Item value="grapes" disabled>
-      Grape
-    </Select.Item>
-  </Select.Group>
+  <Select.Trigger />
+  <Select.Content>
+    <Select.Group>
+      <Select.Label>Fruits</Select.Label>
+      <Select.Item value="orange">Orange</Select.Item>
+      <Select.Item value="apple">Apple</Select.Item>
+      <Select.Item value="grapes" disabled>
+        Grape
+      </Select.Item>
+    </Select.Group>
 
-  <SelectSeparator />
+    <SelectSeparator />
 
-  <Select.Group>
-    <Select.Label>Vegetables</Select.Label>
-    <Select.Item value="carrot">Carrot</Select.Item>
-    <Select.Item value="potato">Potato</Select.Item>
-  </Select.Group>
+    <Select.Group>
+      <Select.Label>Vegetables</Select.Label>
+      <Select.Item value="carrot">Carrot</Select.Item>
+      <Select.Item value="potato">Potato</Select.Item>
+    </Select.Group>
+  </Select.Content>
 </Select.Root>
 ```
 
@@ -28,11 +31,21 @@ metaDescription: List of options from which the user can select, triggered by a 
 
 ### Root
 
-Contains all the parts of a select. It inherits props from the Radix [Select.Root](/docs/primitives/components/select#root) and [Select.Content](/docs/primitives/components/select#content) parts. It supports common margin props `m`, `mx`, `my`, `ml`, `mr`, `mt`, `mb`.
-
-It's `ref` is forwarded to the trigger element.
+Contains all the parts of a select. It inherits props from the Radix [Select.Root](/docs/primitives/components/select#root) part.
 
 <ThemesPropsTable name="selectRoot" />
+
+### Trigger
+
+It inherits props from the Radix [Select.Trigger](/docs/primitives/components/select#trigger) and [Select.Value](/docs/primitives/components/select#value) parts. It supports common margin props `m`, `mx`, `my`, `ml`, `mr`, `mt`, `mb`.
+
+<ThemesPropsTable name="selectTrigger" />
+
+### Content
+
+It inherits props from the Radix [Select.Content](/docs/primitives/components/select#content) part.
+
+<ThemesPropsTable name="selectContent" />
 
 ### Item
 
@@ -59,77 +72,128 @@ Use the `size` prop to control the size.
 ```jsx live=true
 <Flex gap="3" align="center">
   <Select.Root size="1" defaultValue="apple">
-    <Select.Item value="orange">Orange</Select.Item>
-    <Select.Item value="apple">Apple</Select.Item>
-    <Select.Item value="grape">Grape</Select.Item>
+    <Select.Trigger />
+    <Select.Content>
+      <Select.Item value="orange">Orange</Select.Item>
+      <Select.Item value="apple">Apple</Select.Item>
+      <Select.Item value="grape">Grape</Select.Item>
+    </Select.Content>
   </Select.Root>
 
   <Select.Root size="2" defaultValue="apple">
-    <Select.Item value="orange">Orange</Select.Item>
-    <Select.Item value="apple">Apple</Select.Item>
-    <Select.Item value="grape">Grape</Select.Item>
+    <Select.Trigger />
+    <Select.Content>
+      <Select.Item value="orange">Orange</Select.Item>
+      <Select.Item value="apple">Apple</Select.Item>
+      <Select.Item value="grape">Grape</Select.Item>
+    </Select.Content>
   </Select.Root>
 </Flex>
 ```
 
-### Variants
+### Variant
 
-Use the `triggerVariant` and `menuVariant` props to customize the visual style of the select.
+Use the `variant` prop on `Trigger` and `Content` to customize the visual style of the select.
 
 ```jsx live=true
 <Flex gap="3" align="center">
-  <Select.Root triggerVariant="surface" defaultValue="apple">
-    <Select.Item value="orange">Orange</Select.Item>
-    <Select.Item value="apple">Apple</Select.Item>
-    <Select.Item value="grape">Grape</Select.Item>
+  <Select.Root defaultValue="apple">
+    <Select.Trigger variant="surface" />
+    <Select.Content>
+      <Select.Item value="orange">Orange</Select.Item>
+      <Select.Item value="apple">Apple</Select.Item>
+      <Select.Item value="grape">Grape</Select.Item>
+    </Select.Content>
   </Select.Root>
 
-  <Select.Root
-    menuVariant="subtle"
-    triggerVariant="subtle"
-    defaultValue="apple"
-  >
-    <Select.Item value="orange">Orange</Select.Item>
-    <Select.Item value="apple">Apple</Select.Item>
-    <Select.Item value="grape">Grape</Select.Item>
+  <Select.Root defaultValue="apple">
+    <Select.Trigger variant="soft" />
+    <Select.Content variant="soft">
+      <Select.Item value="orange">Orange</Select.Item>
+      <Select.Item value="apple">Apple</Select.Item>
+      <Select.Item value="grape">Grape</Select.Item>
+    </Select.Content>
   </Select.Root>
 
-  <Select.Root
-    menuVariant="subtle-mono"
-    triggerVariant="ghost"
-    defaultValue="apple"
-  >
-    <Select.Item value="orange">Orange</Select.Item>
-    <Select.Item value="apple">Apple</Select.Item>
-    <Select.Item value="grape">Grape</Select.Item>
+  <Select.Root defaultValue="apple">
+    <Select.Trigger variant="ghost" />
+    <Select.Content variant="soft">
+      <Select.Item value="orange">Orange</Select.Item>
+      <Select.Item value="apple">Apple</Select.Item>
+      <Select.Item value="grape">Grape</Select.Item>
+    </Select.Content>
   </Select.Root>
 </Flex>
 ```
 
 ### Color
 
-Use the `color` prop to assign a specific color value, ignoring the global theme.
+Use the `color` prop on `Trigger` and `Content` to assign a specific color value, ignoring the global theme. Here we use a gray trigger with different colored contents.
 
 ```jsx live=true
 <Flex gap="3">
-  <Select.Root color="crimson" triggerVariant="outline" defaultValue="crimson">
-    <Select.Item value="crimson">Crimson</Select.Item>
-    <Select.Item value="other">Other</Select.Item>
+  <Select.Root defaultValue="crimson">
+    <Select.Trigger color="gray" />
+    <Select.Content color="crimson">
+      <Select.Item value="crimson">Crimson</Select.Item>
+      <Select.Item value="other">Other</Select.Item>
+    </Select.Content>
   </Select.Root>
 
-  <Select.Root color="indigo" triggerVariant="outline" defaultValue="indigo">
-    <Select.Item value="indigo">Indigo</Select.Item>
-    <Select.Item value="other">Other</Select.Item>
+  <Select.Root defaultValue="indigo">
+    <Select.Trigger color="gray" />
+    <Select.Content color="indigo">
+      <Select.Item value="indigo">Indigo</Select.Item>
+      <Select.Item value="other">Other</Select.Item>
+    </Select.Content>
   </Select.Root>
 
-  <Select.Root color="grass" triggerVariant="outline" defaultValue="grass">
-    <Select.Item value="grass">Grass</Select.Item>
-    <Select.Item value="other">Other</Select.Item>
+  <Select.Root defaultValue="grass">
+    <Select.Trigger color="gray" />
+    <Select.Content color="grass">
+      <Select.Item value="grass">Grass</Select.Item>
+      <Select.Item value="other">Other</Select.Item>
+    </Select.Content>
   </Select.Root>
 
-  <Select.Root color="orange" triggerVariant="outline" defaultValue="orange">
-    <Select.Item value="orange">Orange</Select.Item>
-    <Select.Item value="other">Other</Select.Item>
+  <Select.Root defaultValue="orange">
+    <Select.Trigger color="gray" />
+    <Select.Content color="orange">
+      <Select.Item value="orange">Orange</Select.Item>
+      <Select.Item value="other">Other</Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop on `Trigger` and `Content` to add contrast.
+
+```jsx live=true
+<Flex gap="3">
+  <Select.Root defaultValue="default">
+    <Select.Trigger />
+    <Select.Content>
+      <Select.Item value="default">Default</Select.Item>
+      <Select.Item value="other">Other</Select.Item>
+    </Select.Content>
+  </Select.Root>
+
+  <Select.Root defaultValue="default">
+    <Select.Trigger highContrast />
+    <Select.Content highContrast>
+      <Select.Item value="default">High-contrast</Select.Item>
+      <Select.Item value="other">Other</Select.Item>
+    </Select.Content>
+  </Select.Root>
+
+  <Select.Root defaultValue="default">
+    <Select.Trigger variant="soft" color="gray" highContrast />
+    <Select.Content color="gray" highContrast>
+      <Select.Item value="default">Gray high-contrast</Select.Item>
+      <Select.Item value="other">Other</Select.Item>
+    </Select.Content>
   </Select.Root>
 </Flex>
 ```
@@ -141,28 +205,43 @@ Use the `radius` prop to assign a specific radius value, ignoring the global the
 ```jsx live=true
 <Flex gap="3">
   <Select.Root radius="none" defaultValue="none">
-    <Select.Item value="none">None</Select.Item>
-    <Select.Item value="other">Other</Select.Item>
+    <Select.Trigger />
+    <Select.Content>
+      <Select.Item value="none">None</Select.Item>
+      <Select.Item value="other">Other</Select.Item>
+    </Select.Content>
   </Select.Root>
 
   <Select.Root radius="small" defaultValue="small">
-    <Select.Item value="small">Small</Select.Item>
-    <Select.Item value="other">Other</Select.Item>
+    <Select.Trigger />
+    <Select.Content>
+      <Select.Item value="small">Small</Select.Item>
+      <Select.Item value="other">Other</Select.Item>
+    </Select.Content>
   </Select.Root>
 
   <Select.Root radius="medium" defaultValue="medium">
-    <Select.Item value="medium">Medium</Select.Item>
-    <Select.Item value="other">Other</Select.Item>
+    <Select.Trigger />
+    <Select.Content>
+      <Select.Item value="medium">Medium</Select.Item>
+      <Select.Item value="other">Other</Select.Item>
+    </Select.Content>
   </Select.Root>
 
   <Select.Root radius="large" defaultValue="large">
-    <Select.Item value="large">Large</Select.Item>
-    <Select.Item value="other">Other</Select.Item>
+    <Select.Trigger />
+    <Select.Content>
+      <Select.Item value="large">Large</Select.Item>
+      <Select.Item value="other">Other</Select.Item>
+    </Select.Content>
   </Select.Root>
 
   <Select.Root radius="full" defaultValue="full">
-    <Select.Item value="full">Full</Select.Item>
-    <Select.Item value="other">Other</Select.Item>
+    <Select.Trigger />
+    <Select.Content>
+      <Select.Item value="full">Full</Select.Item>
+      <Select.Item value="other">Other</Select.Item>
+    </Select.Content>
   </Select.Root>
 </Flex>
 ```

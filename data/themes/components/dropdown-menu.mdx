@@ -6,42 +6,48 @@ metaDescription: Menu representing a set of actions, triggered by a button.
 ```jsx live=true
 <DropdownMenu.Root>
   <DropdownMenu.Trigger>
-    <IconButton variant="subtle">
+    <IconButton variant="soft">
       <DotsHorizontalIcon />
     </IconButton>
   </DropdownMenu.Trigger>
   <DropdownMenu.Content>
-    <DropdownMenu.Item shortcut="⌘+T">New Tab</DropdownMenu.Item>
-    <DropdownMenu.Item shortcut="⌘+N">New Window</DropdownMenu.Item>
-    <DropdownMenu.Item shortcut="⇧+⌘+N" disabled>
+    <DropdownMenu.Item shortcut="⌘ T">New Tab</DropdownMenu.Item>
+    <DropdownMenu.Item shortcut="⌘ N">New Window</DropdownMenu.Item>
+    <DropdownMenu.Item shortcut="⇧ ⌘ N" disabled>
       New Private Window
     </DropdownMenu.Item>
     <DropdownMenu.Sub>
       <DropdownMenu.SubTrigger>More Tools</DropdownMenu.SubTrigger>
 
       <DropdownMenu.SubContent>
-        <DropdownMenu.Item shortcut="⌘+S">Save Page As…</DropdownMenu.Item>
+        <DropdownMenu.Item shortcut="⌘ S">Save Page As…</DropdownMenu.Item>
         <DropdownMenu.Item>Create Shortcut…</DropdownMenu.Item>
         <DropdownMenu.Item>Name Window…</DropdownMenu.Item>
-        <DropdownMenuSeparator />
+        <DropdownMenu.Separator />
         <DropdownMenu.Item>Developer Tools</DropdownMenu.Item>
       </DropdownMenu.SubContent>
     </DropdownMenu.Sub>
 
-    <DropdownMenuSeparator />
+    <DropdownMenu.Separator />
 
-    <DropdownMenuCheckboxItem shortcut="⌘+B" checked>
+    <DropdownMenuCheckboxItem shortcut="⌘ B" checked>
       Show Bookmarks
     </DropdownMenuCheckboxItem>
     <DropdownMenuCheckboxItem>Show Full URLs</DropdownMenuCheckboxItem>
 
-    <DropdownMenuSeparator />
+    <DropdownMenu.Separator />
 
     <DropdownMenuLabel>People</DropdownMenuLabel>
     <DropdownMenuRadioGroup value="pedro">
       <DropdownMenuRadioItem value="pedro">Pedro Duarte</DropdownMenuRadioItem>
       <DropdownMenuRadioItem value="colm">Colm Tuite</DropdownMenuRadioItem>
     </DropdownMenuRadioGroup>
+
+    <DropdownMenu.Separator />
+
+    <DropdownMenu.Item shortcut="⌘ ⌫" color="red">
+      Delete
+    </DropdownMenu.Item>
   </DropdownMenu.Content>
 </DropdownMenu.Root>
 ```
@@ -90,8 +96,6 @@ An item that can be controlled and rendered like a radio.
 
 An item that can be controlled and rendered like a checkbox.
 
-<ThemesPropsTable name="dropdownMenuItem" />
-
 ### Sub
 
 Contains all the parts of a submenu.
@@ -104,8 +108,6 @@ An item that opens a submenu. Must be rendered inside `DropdownMenu.Sub`.
 
 The component that pops out when a submenu is open. Must be rendered inside `DropdownMenu.Sub`.
 
-<ThemesPropsTable name="dropdownMenuContent" />
-
 ## Examples
 
 ### Size
@@ -116,7 +118,7 @@ Use the `size` prop to control the size.
 <Flex gap="3" align="center">
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <IconButton variant="subtle" size="1">
+      <IconButton variant="soft" size="1">
         <DotsHorizontalIcon />
       </IconButton>
     </DropdownMenu.Trigger>
@@ -128,7 +130,7 @@ Use the `size` prop to control the size.
 
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <IconButton variant="subtle">
+      <IconButton variant="soft">
         <DotsHorizontalIcon />
       </IconButton>
     </DropdownMenu.Trigger>
@@ -140,7 +142,7 @@ Use the `size` prop to control the size.
 </Flex>
 ```
 
-### Variants
+### Variant
 
 Use the `variant` prop to customize the visual style of the dropdown menu.
 
@@ -160,11 +162,91 @@ Use the `variant` prop to customize the visual style of the dropdown menu.
 
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <IconButton variant="subtle">
+      <IconButton variant="soft">
         <DotsHorizontalIcon />
       </IconButton>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content variant="subtle">
+    <DropdownMenu.Content variant="soft">
+      <DropdownMenu.Item>New Tab</DropdownMenu.Item>
+      <DropdownMenu.Item>New Window</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific color value, ignoring the global theme. You can also pass `color` to a specific item to override for semantic reasons (ie. destruction action).
+
+```jsx live=true
+<Flex gap="3">
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>
+      <IconButton variant="soft" color="crimson">
+        <DotsHorizontalIcon />
+      </IconButton>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content color="crimson">
+      <DropdownMenu.Item>New Tab</DropdownMenu.Item>
+      <DropdownMenu.Item>New Window</DropdownMenu.Item>
+      <DropdownMenu.Item color="red">Delete</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>
+      <IconButton variant="soft" color="indigo">
+        <DotsHorizontalIcon />
+      </IconButton>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content color="indigo">
+      <DropdownMenu.Item>New Tab</DropdownMenu.Item>
+      <DropdownMenu.Item>New Window</DropdownMenu.Item>
+      <DropdownMenu.Item color="red">Delete</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>
+      <IconButton variant="soft" color="grass">
+        <DotsHorizontalIcon />
+      </IconButton>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content color="grass">
+      <DropdownMenu.Item>New Tab</DropdownMenu.Item>
+      <DropdownMenu.Item>New Window</DropdownMenu.Item>
+      <DropdownMenu.Item color="red">Delete</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>
+      <IconButton variant="soft" color="orange">
+        <DotsHorizontalIcon />
+      </IconButton>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content color="orange">
+      <DropdownMenu.Item>New Tab</DropdownMenu.Item>
+      <DropdownMenu.Item>New Window</DropdownMenu.Item>
+      <DropdownMenu.Item color="red">Delete</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to add contrast.
+
+```jsx live=true
+<Flex gap="3">
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>
+      <Button variant="surface" color="gray">
+        Default
+      </Button>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content>
       <DropdownMenu.Item>New Tab</DropdownMenu.Item>
       <DropdownMenu.Item>New Window</DropdownMenu.Item>
     </DropdownMenu.Content>
@@ -172,11 +254,23 @@ Use the `variant` prop to customize the visual style of the dropdown menu.
 
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <IconButton variant="ghost">
-        <DotsHorizontalIcon />
-      </IconButton>
+      <Button variant="surface" color="gray" highContrast>
+        High-contrast
+      </Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content variant="subtle-mono">
+    <DropdownMenu.Content highContrast>
+      <DropdownMenu.Item>New Tab</DropdownMenu.Item>
+      <DropdownMenu.Item>New Window</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>
+      <Button variant="soft" color="gray" highContrast>
+        Gray high-contrast
+      </Button>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content color="gray" highContrast>
       <DropdownMenu.Item>New Tab</DropdownMenu.Item>
       <DropdownMenu.Item>New Window</DropdownMenu.Item>
     </DropdownMenu.Content>

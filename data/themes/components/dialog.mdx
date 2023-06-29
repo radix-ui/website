@@ -18,7 +18,9 @@ metaDescription: A modal dialog window displayed above the page contents.
       </Dialog.Description>
       <Flex gap="3" mt="4" justify="end">
         <Dialog.Close>
-          <Button variant="subtle-mono">Cancel</Button>
+          <Button variant="soft" color="gray">
+            Cancel
+          </Button>
         </Dialog.Close>
         <Dialog.Close>
           <Button variant="solid">
@@ -34,6 +36,8 @@ metaDescription: A modal dialog window displayed above the page contents.
 ## API Reference
 
 This component inherits the props from the [Radix Dialog](/docs/primitives/components/dialog) primitive.
+
+Note that this `Dialog` is always modal, so the `modal` prop is not available.
 
 ### Root
 

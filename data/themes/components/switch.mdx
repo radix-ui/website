@@ -4,7 +4,10 @@ metaDescription: A control that allows the user to toggle between checked and no
 ---
 
 ```jsx live=true
-<Switch />
+<Flex gap="2">
+  <Switch />
+  <Switch defaultChecked />
+</Flex>
 ```
 
 ## API Reference
@@ -27,17 +30,6 @@ Use the `size` prop to control the size.
 </Flex>
 ```
 
-### Variant
-
-Use the `variant` prop to control the visual style.
-
-```jsx live=true
-<Flex gap="3">
-  <Switch variant="solid" defaultChecked />
-  <Switch variant="solid-mono" defaultChecked />
-</Flex>
-```
-
 ### Color
 
 Use the `color` prop to assign a specific color value, ignoring the global theme.
@@ -48,6 +40,17 @@ Use the `color` prop to assign a specific color value, ignoring the global theme
   <Switch color="indigo" defaultChecked />
   <Switch color="grass" defaultChecked />
   <Switch color="orange" defaultChecked />
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to add contrast.
+
+```jsx live=true
+<Flex gap="2">
+  <Switch defaultChecked />
+  <Switch defaultChecked highContrast />
 </Flex>
 ```
 

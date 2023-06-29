@@ -40,6 +40,21 @@ const PreWithLivePreview = (props) => {
                   }}
                 />
               ),
+              RightClickZone: (props) => (
+                <themes.Grid
+                  {...props}
+                  style={{
+                    height: 100,
+                    placeItems: 'center',
+                    border: '1px dashed var(--accent-a6)',
+                    borderRadius: 'var(--br-2-raw)',
+                    cursor: 'default',
+                    ...props.style,
+                  }}
+                >
+                  <themes.Text>Right-click here</themes.Text>
+                </themes.Grid>
+              ),
             }}
           />
         </Box>

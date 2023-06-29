@@ -23,13 +23,13 @@ Use the `size` prop to control the size.
 
 ```jsx live=true
 <Flex gap="3" align="center">
-  <IconButton size="1" variant="subtle">
+  <IconButton size="1" variant="soft">
     <MagnifyingGlassIcon />
   </IconButton>
-  <IconButton size="2" variant="subtle">
+  <IconButton size="2" variant="soft">
     <MagnifyingGlassIcon width="18" height="18" />
   </IconButton>
-  <IconButton size="3" variant="subtle">
+  <IconButton size="3" variant="soft">
     <MagnifyingGlassIcon width="22" height="22" />
   </IconButton>
 </Flex>
@@ -40,42 +40,22 @@ Use the `size` prop to control the size.
 Use the `variant` prop to control the visual style.
 
 ```jsx live=true
-<Flex direction="column" gap="3">
-  <Flex gap="3">
-    <IconButton variant="surface">
-      <MagnifyingGlassIcon />
-    </IconButton>
-    <IconButton variant="solid">
-      <MagnifyingGlassIcon />
-    </IconButton>
-    <IconButton variant="subtle">
-      <MagnifyingGlassIcon />
-    </IconButton>
-    <IconButton variant="outline">
-      <MagnifyingGlassIcon />
-    </IconButton>
-    <IconButton variant="ghost">
-      <MagnifyingGlassIcon />
-    </IconButton>
-  </Flex>
-
-  <Flex gap="3">
-    <IconButton variant="surface-mono">
-      <MagnifyingGlassIcon />
-    </IconButton>
-    <IconButton variant="solid-mono">
-      <MagnifyingGlassIcon />
-    </IconButton>
-    <IconButton variant="subtle-mono">
-      <MagnifyingGlassIcon />
-    </IconButton>
-    <IconButton variant="outline-mono">
-      <MagnifyingGlassIcon />
-    </IconButton>
-    <IconButton variant="ghost-mono">
-      <MagnifyingGlassIcon />
-    </IconButton>
-  </Flex>
+<Flex gap="3">
+  <IconButton variant="solid">
+    <MagnifyingGlassIcon />
+  </IconButton>
+  <IconButton variant="soft">
+    <MagnifyingGlassIcon />
+  </IconButton>
+  <IconButton variant="ghost">
+    <MagnifyingGlassIcon />
+  </IconButton>
+  <IconButton variant="outline">
+    <MagnifyingGlassIcon />
+  </IconButton>
+  <IconButton variant="surface">
+    <MagnifyingGlassIcon />
+  </IconButton>
 </Flex>
 ```
 
@@ -85,18 +65,61 @@ Use the `color` prop to assign a specific color value, ignoring the global theme
 
 ```jsx live=true
 <Flex gap="3">
-  <IconButton color="crimson" variant="subtle">
+  <IconButton color="crimson" variant="soft">
     <MagnifyingGlassIcon />
   </IconButton>
-  <IconButton color="indigo" variant="subtle">
+  <IconButton color="indigo" variant="soft">
     <MagnifyingGlassIcon />
   </IconButton>
-  <IconButton color="grass" variant="subtle">
+  <IconButton color="grass" variant="soft">
     <MagnifyingGlassIcon />
   </IconButton>
-  <IconButton color="orange" variant="subtle">
+  <IconButton color="orange" variant="soft">
     <MagnifyingGlassIcon />
   </IconButton>
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to add contrast.
+
+```jsx live=true
+<Flex direction="column" gap="3">
+  <Flex gap="3">
+    <IconButton variant="solid">
+      <MagnifyingGlassIcon />
+    </IconButton>
+    <IconButton variant="soft">
+      <MagnifyingGlassIcon />
+    </IconButton>
+    <IconButton variant="ghost">
+      <MagnifyingGlassIcon />
+    </IconButton>
+    <IconButton variant="outline">
+      <MagnifyingGlassIcon />
+    </IconButton>
+    <IconButton variant="surface">
+      <MagnifyingGlassIcon />
+    </IconButton>
+  </Flex>
+  <Flex gap="3">
+    <IconButton variant="solid" highContrast>
+      <MagnifyingGlassIcon />
+    </IconButton>
+    <IconButton variant="soft" highContrast>
+      <MagnifyingGlassIcon />
+    </IconButton>
+    <IconButton variant="ghost" highContrast>
+      <MagnifyingGlassIcon />
+    </IconButton>
+    <IconButton variant="outline" highContrast>
+      <MagnifyingGlassIcon />
+    </IconButton>
+    <IconButton variant="surface" highContrast>
+      <MagnifyingGlassIcon />
+    </IconButton>
+  </Flex>
 </Flex>
 ```
 
@@ -106,19 +129,19 @@ Use the `radius` prop to assign a specific radius value, ignoring the global the
 
 ```jsx live=true
 <Flex gap="3">
-  <IconButton radius="none" variant="subtle">
+  <IconButton radius="none" variant="soft">
     <MagnifyingGlassIcon />
   </IconButton>
-  <IconButton radius="small" variant="subtle">
+  <IconButton radius="small" variant="soft">
     <MagnifyingGlassIcon />
   </IconButton>
-  <IconButton radius="medium" variant="subtle">
+  <IconButton radius="medium" variant="soft">
     <MagnifyingGlassIcon />
   </IconButton>
-  <IconButton radius="large" variant="subtle">
+  <IconButton radius="large" variant="soft">
     <MagnifyingGlassIcon />
   </IconButton>
-  <IconButton radius="full" variant="subtle">
+  <IconButton radius="full" variant="soft">
     <MagnifyingGlassIcon />
   </IconButton>
 </Flex>

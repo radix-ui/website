@@ -21,13 +21,13 @@ Use the `size` prop to control the size.
 
 ```jsx live=true
 <Flex gap="3" align="center">
-  <Button size="1" variant="subtle">
+  <Button size="1" variant="soft">
     Button
   </Button>
-  <Button size="2" variant="subtle">
+  <Button size="2" variant="soft">
     Button
   </Button>
-  <Button size="3" variant="subtle">
+  <Button size="3" variant="soft">
     Button
   </Button>
 </Flex>
@@ -38,22 +38,12 @@ Use the `size` prop to control the size.
 Use the `variant` prop to control the visual style.
 
 ```jsx live=true
-<Flex direction="column" gap="3">
-  <Flex gap="3">
-    <Button variant="surface">Surface</Button>
-    <Button variant="solid">Solid</Button>
-    <Button variant="subtle">Subtle</Button>
-    <Button variant="outline">Outline</Button>
-    <Button variant="ghost">Ghost</Button>
-  </Flex>
-
-  <Flex gap="3">
-    <Button variant="surface-mono">Surface</Button>
-    <Button variant="solid-mono">Solid</Button>
-    <Button variant="subtle-mono">Subtle</Button>
-    <Button variant="outline-mono">Outline</Button>
-    <Button variant="ghost-mono">Ghost</Button>
-  </Flex>
+<Flex gap="3">
+  <Button variant="solid">Solid</Button>
+  <Button variant="soft">Subtle</Button>
+  <Button variant="ghost">Ghost</Button>
+  <Button variant="outline">Outline</Button>
+  <Button variant="surface">Surface</Button>
 </Flex>
 ```
 
@@ -63,18 +53,51 @@ Use the `color` prop to assign a specific color value, ignoring the global theme
 
 ```jsx live=true
 <Flex gap="3">
-  <Button color="crimson" variant="subtle">
+  <Button color="crimson" variant="soft">
     Crimson
   </Button>
-  <Button color="indigo" variant="subtle">
+  <Button color="indigo" variant="soft">
     Indigo
   </Button>
-  <Button color="grass" variant="subtle">
+  <Button color="grass" variant="soft">
     Grass
   </Button>
-  <Button color="orange" variant="subtle">
+  <Button color="orange" variant="soft">
     Orange
   </Button>
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to add contrast.
+
+```jsx live=true
+<Flex direction="column" gap="3">
+  <Flex gap="3">
+    <Button variant="solid">Solid</Button>
+    <Button variant="soft">Subtle</Button>
+    <Button variant="ghost">Ghost</Button>
+    <Button variant="outline">Outline</Button>
+    <Button variant="surface">Surface</Button>
+  </Flex>
+  <Flex gap="3">
+    <Button variant="solid" highContrast>
+      Solid
+    </Button>
+    <Button variant="soft" highContrast>
+      Subtle
+    </Button>
+    <Button variant="ghost" highContrast>
+      Ghost
+    </Button>
+    <Button variant="outline" highContrast>
+      Outline
+    </Button>
+    <Button variant="surface" highContrast>
+      Surface
+    </Button>
+  </Flex>
 </Flex>
 ```
 
@@ -84,19 +107,19 @@ Use the `radius` prop to assign a specific radius value, ignoring the global the
 
 ```jsx live=true
 <Flex gap="3">
-  <Button radius="none" variant="subtle">
+  <Button radius="none" variant="soft">
     None
   </Button>
-  <Button radius="small" variant="subtle">
+  <Button radius="small" variant="soft">
     Small
   </Button>
-  <Button radius="medium" variant="subtle">
+  <Button radius="medium" variant="soft">
     Medium
   </Button>
-  <Button radius="large" variant="subtle">
+  <Button radius="large" variant="soft">
     Large
   </Button>
-  <Button radius="full" variant="subtle">
+  <Button radius="full" variant="soft">
     Full
   </Button>
 </Flex>

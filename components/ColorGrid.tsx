@@ -1425,7 +1425,7 @@ export function ColorGrid() {
 
       <Box>
         <Paragraph css={{ my: '$7' }}>
-          These <Code>500</Code> lines should have a nice constrast against the <Code>100</Code>{' '}
+          These <Code>500</Code> lines should have a nice contrast against the <Code>100</Code>{' '}
           background. Make sure the borders don't look too harsh or vibrant.
         </Paragraph>
       </Box>

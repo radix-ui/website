@@ -59,9 +59,7 @@ Use the `variant` prop to control the visual style.
 ```jsx live=true
 <Flex gap="3">
   <Avatar variant="solid" fallback="A" />
-  <Avatar variant="solid-mono" fallback="A" />
-  <Avatar variant="subtle" fallback="A" />
-  <Avatar variant="subtle-mono" fallback="A" />
+  <Avatar variant="soft" fallback="A" />
 </Flex>
 ```
 
@@ -75,6 +73,23 @@ Use the `color` prop to assign a specific color value, ignoring the global theme
   <Avatar color="indigo" fallback="A" />
   <Avatar color="grass" fallback="A" />
   <Avatar color="orange" fallback="A" />
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to add contrast.
+
+```jsx live=true
+<Flex direction="column" gap="3">
+  <Flex gap="3">
+    <Avatar variant="solid" fallback="A" />
+    <Avatar variant="soft" fallback="A" />
+  </Flex>
+  <Flex gap="3">
+    <Avatar variant="solid" fallback="A" highContrast />
+    <Avatar variant="soft" fallback="A" highContrast />
+  </Flex>
 </Flex>
 ```
 

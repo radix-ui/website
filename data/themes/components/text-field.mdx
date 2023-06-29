@@ -20,7 +20,7 @@ This component is based on the `input` element and supports common margin props 
 Use the `size` prop to control the size.
 
 ```jsx live=true
-<Grid gap="3">
+<Grid columns="3" align="center" gap="3">
   <TextField size="1" placeholder="The quick brown fox jumped" />
   <TextField size="2" placeholder="The quick brown fox jumped" />
   <TextField size="3" placeholder="The quick brown fox jumped" />
@@ -32,10 +32,24 @@ Use the `size` prop to control the size.
 Use the `variant` prop to control the visual style.
 
 ```jsx live=true
-<Grid columns="3" gap="3">
+<Grid columns="2" gap="3">
   <TextField variant="surface" placeholder="The quick brown fox jumped" />
-  <TextField variant="surface-mono" placeholder="The quick brown fox jumped" />
-  <TextField variant="subtle-mono" placeholder="The quick brown fox jumped" />
+  <TextField variant="soft" placeholder="The quick brown fox jumped" />
+</Grid>
+```
+
+### Color
+
+Use the `color` prop to assign a specific color value, ignoring the global theme.
+
+```jsx live=true
+<Grid columns="2" gap="3">
+  <TextField color="gray" placeholder="The quick brown fox jumped" />
+  <TextField
+    variant="soft"
+    color="gray"
+    placeholder="The quick brown fox jumped"
+  />
 </Grid>
 ```
 

@@ -68,49 +68,7 @@ Use the `size` prop to control the size.
   </RadioGroup.Root>
 
   <RadioGroup.Root size="2" defaultValue="1">
-    <Flex gap="1" direction="column">
-      <label>
-        <Flex gap="2" align="center">
-          <RadioGroup.Item value="1" />
-          <Text>Default</Text>
-        </Flex>
-      </label>
-      <label>
-        <Flex gap="2" align="center">
-          <RadioGroup.Item value="2" />
-          <Text>Comfortable</Text>
-        </Flex>
-      </label>
-    </Flex>
-  </RadioGroup.Root>
-</Flex>
-```
-
-### Variant
-
-Use the `variant` prop to control the visual style.
-
-```jsx live=true
-<Flex gap="6">
-  <RadioGroup.Root variant="solid" defaultValue="1">
-    <Flex gap="1" direction="column">
-      <label>
-        <Flex gap="2" align="center">
-          <RadioGroup.Item value="1" />
-          <Text>Default</Text>
-        </Flex>
-      </label>
-      <label>
-        <Flex gap="2" align="center">
-          <RadioGroup.Item value="2" />
-          <Text>Comfortable</Text>
-        </Flex>
-      </label>
-    </Flex>
-  </RadioGroup.Root>
-
-  <RadioGroup.Root variant="solid-mono" defaultValue="1">
-    <Flex gap="1" direction="column">
+    <Flex gap="2" direction="column">
       <label>
         <Flex gap="2" align="center">
           <RadioGroup.Item value="1" />
@@ -168,6 +126,48 @@ Use the `color` prop to assign a specific color value, ignoring the global theme
         <Text>Orange</Text>
       </Flex>
     </label>
+  </RadioGroup.Root>
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to add contrast.
+
+```jsx live=true
+<Flex gap="5">
+  <RadioGroup.Root size="1" defaultValue="1">
+    <Flex gap="1" direction="column">
+      <label>
+        <Flex gap="2" align="center">
+          <RadioGroup.Item value="1" />
+          <Text>Default</Text>
+        </Flex>
+      </label>
+      <label>
+        <Flex gap="2" align="center">
+          <RadioGroup.Item value="2" />
+          <Text>Comfortable</Text>
+        </Flex>
+      </label>
+    </Flex>
+  </RadioGroup.Root>
+
+  <RadioGroup.Root size="1" defaultValue="1" highContrast>
+    <Flex gap="1" direction="column">
+      <label>
+        <Flex gap="2" align="center">
+          <RadioGroup.Item value="1" />
+          <Text>Default</Text>
+        </Flex>
+      </label>
+      <label>
+        <Flex gap="2" align="center">
+          <RadioGroup.Item value="2" />
+          <Text>Comfortable</Text>
+        </Flex>
+      </label>
+    </Flex>
   </RadioGroup.Root>
 </Flex>
 ```
