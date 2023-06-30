@@ -1,16 +1,8 @@
 import React from 'react';
-import {
-  Box,
-  IconButton,
-  Text,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-} from '@modulz/design-system';
+import { Box, IconButton, Text, Popover, Code } from '@radix-ui/themes';
 import { InfoCircledIcon, DividerHorizontalIcon } from '@radix-ui/react-icons';
 import { RegionTable } from './RegionTable';
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
-import { Code } from './Code';
 
 export type PropDef = {
   name: string;
@@ -40,43 +32,49 @@ export function PropsTable({
       <thead>
         <tr>
           <Box
-            as="th"
-            css={{
-              borderBottom: '1px solid var(--gray-a6, $gray6)',
-              py: '$3',
-              pr: '$4',
+            asChild
+            height="8"
+            pr="4"
+            style={{
               width: '45%',
+              borderBottom: '1px solid var(--gray-a6)',
             }}
           >
-            <Text size="2" css={{ color: 'var(--gray-11, $gray11)' }}>
-              Prop
-            </Text>
+            <th>
+              <Text size="2" color="gray">
+                Prop
+              </Text>
+            </th>
           </Box>
           <Box
-            as="th"
-            css={{
-              borderBottom: '1px solid var(--gray-a6, $gray6)',
-              py: '$3',
-              pr: '$4',
+            asChild
+            height="8"
+            pr="4"
+            style={{
               width: '27.5%',
+              borderBottom: '1px solid var(--gray-a6)',
             }}
           >
-            <Text size="2" css={{ color: 'var(--gray-11, $gray11)' }}>
-              Type
-            </Text>
+            <th>
+              <Text size="2" color="gray">
+                Type
+              </Text>
+            </th>
           </Box>
           <Box
-            as="th"
-            css={{
-              borderBottom: '1px solid var(--gray-a6, $gray6)',
-              py: '$3',
-              pr: '$4',
+            asChild
+            height="8"
+            pr="4"
+            style={{
               width: '27.5%',
+              borderBottom: '1px solid var(--gray-a6)',
             }}
           >
-            <Text size="2" css={{ color: 'var(--gray-11, $gray11)' }}>
-              Default
-            </Text>
+            <th>
+              <Text size="2" color="gray">
+                Default
+              </Text>
+            </th>
           </Box>
         </tr>
       </thead>
@@ -84,93 +82,111 @@ export function PropsTable({
         {data.map(({ name, type, typeSimple, required, default: defaultValue, description }, i) => (
           <tr key={`${name}-${i}`}>
             <Box
-              as="td"
-              css={{
-                borderBottom: '1px solid var(--gray-a6, $gray6)',
-                py: '$3',
-                pr: '$4',
+              asChild
+              pr="4"
+              height="8"
+              style={{
+                borderBottom: '1px solid var(--gray-a6)',
                 whiteSpace: 'nowrap',
               }}
             >
-              <Code>
-                {name}
-                {required ? '*' : null}
-              </Code>
-              {description && (
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <IconButton
-                      variant="ghost"
-                      css={{ ml: '$1', verticalAlign: 'middle', color: 'var(--gray-11, $gray11)' }}
-                    >
-                      <AccessibleIcon label="Prop description">
-                        <InfoCircledIcon />
-                      </AccessibleIcon>
-                    </IconButton>
-                  </PopoverTrigger>
-                  <PopoverContent
-                    side="top"
-                    css={{ minWidth: 'auto' }}
-                    onOpenAutoFocus={(event) => {
-                      event.preventDefault();
-                      (event.currentTarget as HTMLElement)?.focus();
-                    }}
-                  >
-                    <Box css={{ py: '$2', px: '$3' }}>
-                      <Text size="2" css={{ lineHeight: '20px' }}>
-                        {description}
-                      </Text>
-                    </Box>
-                  </PopoverContent>
-                </Popover>
-              )}
-            </Box>
-            <Box
-              as="td"
-              css={{ borderBottom: '1px solid var(--gray-a6, $gray6)', py: '$3', pr: '$4' }}
-            >
-              <Code variant="gray">{Boolean(typeSimple) ? typeSimple : type}</Code>
-              {Boolean(typeSimple) && Boolean(type) && (
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <IconButton
-                      variant="ghost"
-                      css={{
-                        ml: '$1',
-                        verticalAlign: 'middle',
-                        color: 'var(--gray-11, $gray11)',
-                        display: 'none',
-                        '@bp1': { display: 'inline-flex' },
+              <td>
+                <Code size="2">
+                  {name}
+                  {required ? '*' : null}
+                </Code>
+                {description && (
+                  <Popover.Root>
+                    <Popover.Trigger>
+                      <IconButton
+                        variant="ghost"
+                        size="1"
+                        ml="1"
+                        color="gray"
+                        style={{ verticalAlign: 'middle' }}
+                      >
+                        <AccessibleIcon label="Prop description">
+                          <InfoCircledIcon />
+                        </AccessibleIcon>
+                      </IconButton>
+                    </Popover.Trigger>
+                    <Popover.Content
+                      side="top"
+                      style={{ maxWidth: 350 }}
+                      onOpenAutoFocus={(event) => {
+                        event.preventDefault();
+                        (event.currentTarget as HTMLElement)?.focus();
                       }}
                     >
-                      <AccessibleIcon label="See full type">
-                        <InfoCircledIcon />
-                      </AccessibleIcon>
-                    </IconButton>
-                  </PopoverTrigger>
-                  <PopoverContent side="top" css={{ maxWidth: 'max-content', minWidth: 'auto' }}>
-                    <Box css={{ py: '$2', px: '$2' }}>
-                      <Code variant="violet" css={{ whiteSpace: 'pre', display: 'block' }}>
-                        {type}
-                      </Code>
-                    </Box>
-                  </PopoverContent>
-                </Popover>
-              )}
+                      <Box p="3">
+                        <Text size="2">{description}</Text>
+                      </Box>
+                    </Popover.Content>
+                  </Popover.Root>
+                )}
+              </td>
             </Box>
             <Box
-              as="td"
-              css={{ borderBottom: '1px solid var(--gray-a6, $gray6)', py: '$3', pr: '$4' }}
+              asChild
+              pr="4"
+              height="8"
+              style={{
+                borderBottom: '1px solid var(--gray-a6)',
+              }}
             >
-              {Boolean(defaultValue) ? (
-                <Code variant="gray">{defaultValue}</Code>
-              ) : (
-                <Box css={{ color: 'var(--gray-8, $gray8)' }}>
+              <td>
+                <Code color="gray" size="2">
+                  {Boolean(typeSimple) ? typeSimple : type}
+                </Code>
+                {Boolean(typeSimple) && Boolean(type) && (
+                  <Popover.Root>
+                    <Popover.Trigger>
+                      <IconButton
+                        variant="ghost"
+                        color="gray"
+                        size="1"
+                        ml="1"
+                        style={{
+                          verticalAlign: 'middle',
+                          color: 'var(--gray-11, $gray11)',
+                          // display: 'none',
+                        }}
+                      >
+                        <AccessibleIcon label="See full type">
+                          <InfoCircledIcon />
+                        </AccessibleIcon>
+                      </IconButton>
+                    </Popover.Trigger>
+                    <Popover.Content side="top" style={{ maxWidth: 350 }}>
+                      <Box p="3">
+                        <Code size="2" style={{ whiteSpace: 'pre', display: 'block' }}>
+                          {type}
+                        </Code>
+                      </Box>
+                    </Popover.Content>
+                  </Popover.Root>
+                )}
+              </td>
+            </Box>
+            <Box
+              asChild
+              pr="4"
+              height="8"
+              style={{
+                borderBottom: '1px solid var(--gray-a6)',
+              }}
+            >
+              <td>
+                {Boolean(defaultValue) ? (
+                  <Code size="2" color="gray">
+                    {defaultValue}
+                  </Code>
+                ) : (
                   <AccessibleIcon label="No default value">
-                    <DividerHorizontalIcon />
+                    <DividerHorizontalIcon style={{ color: 'var(--gray-8)' }} />
                   </AccessibleIcon>
-                </Box>
-              )}
+                )}
+              </td>
             </Box>
           </tr>
         ))}
