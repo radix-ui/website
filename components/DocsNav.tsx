@@ -4,7 +4,12 @@ import { Text, Box } from '@modulz/design-system';
 
 export function NavHeading({ children, ...props }: { children: React.ReactNode }) {
   return (
-    <Text as="h4" size="3" css={{ fontWeight: 500, px: '$3', py: '$2' }} {...props}>
+    <Text
+      as="h4"
+      size="3"
+      css={{ fontWeight: 500, px: '$3', py: '$2', color: 'var(--color-text, $hiContrast)' }}
+      {...props}
+    >
       {children}
     </Text>
   );
@@ -33,7 +38,7 @@ export function NavItem({ children, active, disabled, href, ...props }: NavItemP
           display: 'flex',
           alignItems: 'center',
           textDecoration: 'none',
-          color: disabled ? '$gray10' : '$hiContrast',
+          color: disabled ? 'var(--gray-10, $gray10)' : 'var(--gray-12, $hiContrast)',
           py: '$2',
           px: '$3',
           backgroundColor: active ? 'var(--accent-5, $violet5)' : 'transparent',

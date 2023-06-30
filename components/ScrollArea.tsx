@@ -58,7 +58,7 @@ const ScrollAreaScrollbar = styled(ScrollAreaPrimitive.Scrollbar, {
 
 const ScrollAreaThumb = styled(ScrollAreaPrimitive.Thumb, {
   flex: 1,
-  background: '$mauve7',
+  background: 'var(--gray-a7, $mauve7)',
   borderRadius: SCROLLBAR_SIZE,
   zIndex: 1,
   // increase target size for touch devices https://www.w3.org/WAI/WCAG21/Understanding/target-size.html

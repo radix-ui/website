@@ -18,15 +18,15 @@ const globalStyles = globalCss({
 
   body: {
     margin: 0,
-    color: '$hiContrast',
-    backgroundColor: '$loContrast',
+    color: 'var(--text-color, $hiContrast)',
+    backgroundColor: 'var(--color-background, $loContrast)',
     fontFamily: '$untitled',
     WebkitFontSmoothing: 'antialiased',
     MozOsxFontSmoothing: 'grayscale',
     WebkitTextSizeAdjust: '100%',
 
     '.dark-theme &': {
-      backgroundColor: '$mauve1',
+      backgroundColor: 'var(--color-background, $loContrast)',
     },
   },
 

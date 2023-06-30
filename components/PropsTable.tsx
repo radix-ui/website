@@ -48,7 +48,7 @@ export function PropsTable({
               width: '45%',
             }}
           >
-            <Text size="2" css={{ color: '$gray11' }}>
+            <Text size="2" css={{ color: 'var(--gray-11, $gray11)' }}>
               Prop
             </Text>
           </Box>
@@ -61,7 +61,7 @@ export function PropsTable({
               width: '27.5%',
             }}
           >
-            <Text size="2" css={{ color: '$gray11' }}>
+            <Text size="2" css={{ color: 'var(--gray-11, $gray11)' }}>
               Type
             </Text>
           </Box>
@@ -74,7 +74,7 @@ export function PropsTable({
               width: '27.5%',
             }}
           >
-            <Text size="2" css={{ color: '$gray11' }}>
+            <Text size="2" css={{ color: 'var(--gray-11, $gray11)' }}>
               Default
             </Text>
           </Box>
@@ -101,7 +101,7 @@ export function PropsTable({
                   <PopoverTrigger asChild>
                     <IconButton
                       variant="ghost"
-                      css={{ ml: '$1', verticalAlign: 'middle', color: '$gray11' }}
+                      css={{ ml: '$1', verticalAlign: 'middle', color: 'var(--gray-11, $gray11)' }}
                     >
                       <AccessibleIcon label="Prop description">
                         <InfoCircledIcon />
@@ -138,7 +138,7 @@ export function PropsTable({
                       css={{
                         ml: '$1',
                         verticalAlign: 'middle',
-                        color: '$gray11',
+                        color: 'var(--gray-11, $gray11)',
                         display: 'none',
                         '@bp1': { display: 'inline-flex' },
                       }}
@@ -165,8 +165,10 @@ export function PropsTable({
               {Boolean(defaultValue) ? (
                 <Code variant="gray">{defaultValue}</Code>
               ) : (
-                <Box as={AccessibleIcon} label="No default value" css={{ color: '$gray8' }}>
-                  <DividerHorizontalIcon />
+                <Box css={{ color: 'var(--gray-8, $gray8)' }}>
+                  <AccessibleIcon label="No default value">
+                    <DividerHorizontalIcon />
+                  </AccessibleIcon>
                 </Box>
               )}
             </Box>

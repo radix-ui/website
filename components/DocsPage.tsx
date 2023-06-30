@@ -11,12 +11,12 @@ const HeaderWrapper = styled(Box, {
   top: 0,
   left: 0,
   width: '100%',
-  boxShadow: '0 0 0 1px $colors$mauve5',
+  boxShadow: '0 0 0 1px var(--gray-5, $colors$mauve5)',
   zIndex: 2,
   backgroundColor: '$loContrast',
 
   '.dark-theme &': {
-    backgroundColor: '$mauve1',
+    backgroundColor: 'var(--color-background, $mauve1)',
   },
 });
 
@@ -58,7 +58,7 @@ function NavWrapper({ children, isMobileMenuOpen }) {
           overflowX: 'hidden',
           WebkitOverflowScrolling: 'touch',
 
-          backgroundColor: '$loContrast',
+          backgroundColor: 'var(--color-background, $loContrast)',
 
           display: isMobileMenuOpen ? 'block' : 'none',
           '@bp2': { display: 'block', width: '250px' },
