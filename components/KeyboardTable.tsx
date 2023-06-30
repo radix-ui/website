@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, Kbd } from '@modulz/design-system';
+import { Box, Text, Kbd, Flex } from '@radix-ui/themes';
 import { RegionTable } from './RegionTable';
 
 type KeyboardDef = {
@@ -25,15 +25,19 @@ export function KeyboardTable({
     >
       <thead>
         <tr>
-          <Box as="th" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4' }}>
-            <Text size="2" css={{ color: '$gray11' }}>
-              Key
-            </Text>
+          <Box asChild height="8" pr="4" style={{ borderBottom: '1px solid var(--gray-6)' }}>
+            <th>
+              <Text size="2" color="gray">
+                Key
+              </Text>
+            </th>
           </Box>
-          <Box as="th" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4' }}>
-            <Text size="2" css={{ color: '$gray11' }}>
-              Description
-            </Text>
+          <Box asChild height="8" pr="4" style={{ borderBottom: '1px solid var(--gray-6)' }}>
+            <th>
+              <Text size="2" color="gray">
+                Description
+              </Text>
+            </th>
           </Box>
         </tr>
       </thead>
@@ -41,24 +45,23 @@ export function KeyboardTable({
         {data.map(({ keys, description }, i) => (
           <tr key={i}>
             <Box
-              as="td"
-              css={{
-                borderBottom: '1px solid $gray6',
-                py: '$3',
-                pr: '$4',
-                whiteSpace: 'nowrap',
-              }}
+              asChild
+              height="8"
+              pr="4"
+              style={{ borderBottom: '1px solid var(--gray-6)', whiteSpace: 'nowrap' }}
             >
-              {keys.map((k) => (
-                <Kbd key={k} css={{ '& + &': { ml: '4px' } }}>
-                  {k}
-                </Kbd>
-              ))}
+              <td>
+                <Flex gap="2">
+                  {keys.map((k) => (
+                    <Kbd key={k}>{k}</Kbd>
+                  ))}
+                </Flex>
+              </td>
             </Box>
-            <Box as="td" css={{ borderBottom: '1px solid $gray6', py: '$3' }}>
-              <Text size="3" css={{ lineHeight: '25px' }}>
-                {description}
-              </Text>
+            <Box asChild height="8" pr="4" style={{ borderBottom: '1px solid var(--gray-6)' }}>
+              <td>
+                <Text size="2">{description}</Text>
+              </td>
             </Box>
           </tr>
         ))}
