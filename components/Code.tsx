@@ -8,8 +8,8 @@ export const Code = styled(DSCode, {
         color: 'var(--accent-11, $violet11)',
       },
       gray: {
-        bc: '$gray4',
-        color: '$gray11',
+        bc: 'var(--gray-4, $gray)',
+        color: 'var(--gray-11, $gray11)',
       },
     },
   },

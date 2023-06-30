@@ -118,7 +118,7 @@ function PaginationLink({ route, direction }) {
       <Box
         as="a"
         aria-label={`${direction} page: ${route.title}`}
-        css={{ color: '$blue11', textDecoration: 'none' }}
+        css={{ color: 'var(--accent-11, $blue11)', textDecoration: 'none' }}
       >
         <Box css={{ mb: '$2' }}>
           <Text size="3" css={{ color: '$slate11' }}>
