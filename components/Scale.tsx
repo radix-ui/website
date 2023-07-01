@@ -1,16 +1,5 @@
 import * as React from 'react';
-import {
-  Box,
-  Flex,
-  Text,
-  IconButton,
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuItem,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  Tooltip,
-} from '@modulz/design-system';
+import { Box, DropdownMenu, Flex, IconButton, Text, Tooltip } from '@radix-ui/themes';
 import { CopyIcon } from '@radix-ui/react-icons';
 import * as Colors from '@radix-ui/colors';
 import tinycolor from 'tinycolor2';
@@ -99,11 +88,11 @@ const getBgColorForDarkCell = (name) => {
 export const ColorScaleGroup = ({ children }: { children: any }) => {
   return (
     <>
-      <Flex css={{ width: '100%' }}>
-        <Box css={{ height: '$5', width: 140 }} />
+      <Flex>
+        <Box height="5" style={{ width: 140 }} />
         {colorKeys.map((key, i) => (
-          <Box key={key} css={{ flex: 1 }}>
-            <Text variant="gray" css={{ bc: 'transparent', fontSize: '$2', ta: 'center' }}>
+          <Box key={key} grow="1" shrink="1" style={{ flexBasis: 0 }}>
+            <Text color="gray" size="1" align="center">
               {i + 1}
             </Text>
           </Box>
@@ -128,13 +117,14 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
 
   return (
     <Flex
-      css={{ position: 'relative', marginRight: -25 }}
-      onMouseMove={(e) => setIsHovered(true)}
-      onMouseLeave={(e) => setIsHovered(false)}
+      position="relative"
+      style={{ marginRight: -25 }}
+      onMouseMove={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      <Flex css={{ width: 'calc(100% - 25px)', gap: 1, mb: 1 }}>
-        <Flex align="center" css={{ height: '$6', width: 140 }}>
-          <Text variant="gray" size="2">
+      <Flex style={{ width: 'calc(100% - 25px)', gap: 1, marginBottom: 1 }}>
+        <Flex align="center" height="6" style={{ width: 140 }}>
+          <Text color="gray" size="1">
             {label}
           </Text>
         </Flex>
@@ -142,10 +132,13 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
           return (
             <Box
               key={i}
-              css={{
+              height="6"
+              grow="1"
+              shrink="1"
+              style={{
                 height: '$6',
-                flex: 1,
-                bc: isDarkAlpha
+                flexBasis: 0,
+                backgroundColor: isDarkAlpha
                   ? (getBgColorForDarkCell(name) as string)
                   : isAlpha
                   ? 'white'
@@ -157,66 +150,62 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
                   backgroundSize: '12px 12px',
                   backgroundPosition: '0px 0px, 6px 0px, 6px -6px, 0px 6px',
                   backgroundImage: `
-                      linear-gradient(45deg, $gray6 25%, transparent 25%),
-                      linear-gradient(135deg, $gray6 25%, transparent 25%),
-                      linear-gradient(45deg, transparent 75%, $gray6 75%),
-                      linear-gradient(135deg, transparent 75%, $gray6 75%)`,
+                      linear-gradient(45deg, var(--gray-6) 25%, transparent 25%),
+                      linear-gradient(135deg, var(--gray-6) 25%, transparent 25%),
+                      linear-gradient(45deg, transparent 75%, var(--gray-6) 75%),
+                      linear-gradient(135deg, transparent 75%, var(--gray-6) 75%)`,
                 }),
               }}
             >
-              <Box key={i} css={{ height: '100%', width: '100%', bc: value }} />
+              <Box key={i} width="100%" height="100%" style={{ backgroundColor: value }} />
             </Box>
           );
         })}
       </Flex>
       {(isHovered || dropdownMenuIsOpen) && (
-        <Flex
-          align="center"
-          justify="center"
-          css={{ height: '$6', position: 'absolute', right: '-$1' }}
-        >
+        <Flex align="center" justify="center" height="6" position="absolute" right="0" mr="-1">
           <DropdownMenu onOpenChange={(isOpen) => setDropdownMenuIsOpen(isOpen)}>
             <Tooltip content="Copy to Clipboard">
-              <DropdownMenuTrigger asChild>
-                <IconButton>
+              <DropdownMenu.Trigger>
+                <IconButton size="1" variant="ghost" color="gray" highContrast>
                   <CopyIcon />
                 </IconButton>
-              </DropdownMenuTrigger>
+              </DropdownMenu.Trigger>
             </Tooltip>
-            <DropdownMenuContent align="end">
-              <DropdownMenuGroup>
-                <DropdownMenuItem
+            <DropdownMenu.Content align="end" size="1">
+              <DropdownMenu.Group>
+                <DropdownMenu.Item
                   onSelect={(e) => navigator.clipboard.writeText(scaleToHSLObject(name, scale))}
                 >
                   Copy as Object (HSL)
-                </DropdownMenuItem>
-                <DropdownMenuItem
+                </DropdownMenu.Item>
+                <DropdownMenu.Item
                   onSelect={(e) => navigator.clipboard.writeText(scaleToHexObject(name, scale))}
                 >
                   Copy as Object (Hex)
-                </DropdownMenuItem>
-                <DropdownMenuItem
+                </DropdownMenu.Item>
+                <DropdownMenu.Item
                   onSelect={(e) => navigator.clipboard.writeText(scaleToCSS(name, scale))}
                 >
                   Copy as CSS
-                </DropdownMenuItem>
-                <DropdownMenuItem
+                </DropdownMenu.Item>
+                <DropdownMenu.Item
                   onSelect={(e) => navigator.clipboard.writeText(scaleToLESS(scale))}
                 >
                   Copy as LESS
-                </DropdownMenuItem>
-                <DropdownMenuItem
+                </DropdownMenu.Item>
+                <DropdownMenu.Item
                   onSelect={(e) => navigator.clipboard.writeText(scaleToSASS(scale))}
                 >
                   Copy as Sass
-                </DropdownMenuItem>
-                <DropdownMenuItem
+                </DropdownMenu.Item>
+                <DropdownMenu.Item
                   onSelect={(e) => navigator.clipboard.writeText(scaleToSvg(scale))}
                 >
                   Copy as SVG
-                </DropdownMenuItem>
-              </DropdownMenuGroup>
-            </DropdownMenuContent>
+                </DropdownMenu.Item>
+              </DropdownMenu.Group>
+            </DropdownMenu.Content>
           </DropdownMenu>
         </Flex>
       )}

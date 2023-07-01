@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, Kbd, Code } from '@modulz/design-system';
+import { Box, Text, Code } from '@radix-ui/themes';
 import { RegionTable } from './RegionTable';
 
 type KeyboardDef = {
@@ -19,21 +19,41 @@ export function CssVariablesTable({
   const hasAriaLabel = !!(ariaLabel || ariaLabelledBy);
   return (
     <RegionTable
-      css={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}
+      style={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}
       aria-label={hasAriaLabel ? ariaLabel : 'Keyboard Interactions'}
       aria-labelledby={ariaLabelledBy}
     >
       <thead>
         <tr>
-          <Box as="th" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4', width: '45%' }}>
-            <Text size="2" css={{ color: '$gray11' }}>
-              CSS Variable
-            </Text>
+          <Box
+            asChild
+            py="3"
+            pr="4"
+            style={{
+              width: '45%',
+              borderBottom: '1px solid var(--gray-a6)',
+            }}
+          >
+            <th>
+              <Text size="2" color="gray">
+                CSS Variable
+              </Text>
+            </th>
           </Box>
-          <Box as="th" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4', width: '55%' }}>
-            <Text size="2" css={{ color: '$gray11' }}>
-              Description
-            </Text>
+          <Box
+            asChild
+            py="3"
+            pr="4"
+            style={{
+              width: '55%',
+              borderBottom: '1px solid var(--gray-a6)',
+            }}
+          >
+            <th>
+              <Text size="2" color="gray">
+                Description
+              </Text>
+            </th>
           </Box>
         </tr>
       </thead>
@@ -41,27 +61,37 @@ export function CssVariablesTable({
         {data.map(({ cssVariable, description }, i) => (
           <tr key={i}>
             <Box
-              as="td"
-              css={{
-                borderBottom: '1px solid $gray6',
-                py: '$3',
-                pr: '$4',
+              asChild
+              pr="4"
+              py="3"
+              style={{
+                borderBottom: '1px solid var(--gray-a6)',
                 whiteSpace: 'nowrap',
               }}
             >
-              <Code
-                css={{
-                  whiteSpace: 'normal',
-                }}
-              >
-                {cssVariable}
-              </Code>
+              <td>
+                <Code
+                  size="2"
+                  style={{
+                    whiteSpace: 'normal',
+                  }}
+                >
+                  {cssVariable}
+                </Code>
+              </td>
             </Box>
 
-            <Box as="td" css={{ borderBottom: '1px solid $gray6', py: '$3' }}>
-              <Text size="3" css={{ lineHeight: '25px' }}>
-                {description}
-              </Text>
+            <Box
+              asChild
+              py="3"
+              style={{
+                borderBottom: '1px solid var(--gray-a6)',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              <td>
+                <Text size="2">{description}</Text>
+              </td>
             </Box>
           </tr>
         ))}

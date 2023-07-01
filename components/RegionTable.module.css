@@ -1,0 +1,7 @@
+.RegionTable {
+  overflow: auto;
+}
+
+.RegionTable:focus {
+  outline: 0;
+}

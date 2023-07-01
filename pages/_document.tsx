@@ -7,7 +7,7 @@ import { ThemeConfig } from '@radix-ui/themes';
 export default class Document extends NextDocument {
   render() {
     return (
-      <ThemeConfig asChild accentScale="amber" backgroundColor="gray">
+      <ThemeConfig asChild accentScale="crimson" backgroundColor="gray">
         <Html lang="en">
           <Head>
             <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />

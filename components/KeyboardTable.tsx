@@ -19,7 +19,8 @@ export function KeyboardTable({
   const hasAriaLabel = !!(ariaLabel || ariaLabelledBy);
   return (
     <RegionTable
-      css={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse', mt: '$2' }}
+      style={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}
+      mt="2"
       aria-label={hasAriaLabel ? ariaLabel : 'Keyboard Interactions'}
       aria-labelledby={ariaLabelledBy}
     >

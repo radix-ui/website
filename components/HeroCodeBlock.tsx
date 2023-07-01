@@ -51,7 +51,7 @@ export const HeroCodeBlock = ({
   }, [currentTabValue, currentTabs]);
 
   return (
-    <Box data-algolia-exclude position="relative" mx={{ lg: '-8', xl: '-8' }}>
+    <Box data-algolia-exclude position="relative" mx={{ lg: '-7', xl: '-8' }}>
       <Collapsible.Root open={isCodeExpanded} onOpenChange={setIsCodeExpanded}>
         <Flex
           display="inline-flex"
@@ -62,36 +62,35 @@ export const HeroCodeBlock = ({
           top="0"
           right="0"
           mt="-6"
-          mr="3"
+          mr="2"
         >
-          <Box asChild display={/*{ initial: 'none', sm: 'inline-block' }*/ 'inline-block'}>
-            <form
-              action="https://codesandbox.io/api/v1/sandboxes/define"
-              method="POST"
-              target="_blank"
-            >
-              <input type="hidden" name="query" value="file=/App.jsx" />
-              <input type="hidden" name="environment" value="server" />
-              <input type="hidden" name="hidedevtools" value="1" />
-              <input
-                type="hidden"
-                name="parameters"
-                value={makeCodeSandboxParams(frontmatter.name, sources, usedCssLib)}
-              />
-              <Tooltip content={`Open ${CSS_LIB_NAMES[usedCssLib]} demo in CodeSandbox`}>
-                <IconButton
-                  size="1"
-                  variant="solid"
-                  radius="full"
-                  type="submit"
-                  color="gray"
-                  highContrast
-                >
-                  <CodeSandboxLogoIcon />
-                </IconButton>
-              </Tooltip>
-            </form>
-          </Box>
+          <form
+            action="https://codesandbox.io/api/v1/sandboxes/define"
+            method="POST"
+            target="_blank"
+          >
+            <input type="hidden" name="query" value="file=/App.jsx" />
+            <input type="hidden" name="environment" value="server" />
+            <input type="hidden" name="hidedevtools" value="1" />
+            <input
+              type="hidden"
+              name="parameters"
+              value={makeCodeSandboxParams(frontmatter.name, sources, usedCssLib)}
+            />
+            <Tooltip content={`Open ${CSS_LIB_NAMES[usedCssLib]} demo in CodeSandbox`}>
+              <IconButton
+                size="1"
+                variant="solid"
+                radius="full"
+                type="submit"
+                color="gray"
+                highContrast
+                style={{ background: 'none' }}
+              >
+                <CodeSandboxLogoIcon />
+              </IconButton>
+            </Tooltip>
+          </form>
         </Flex>
 
         <Collapsible.Content asChild forceMount>
@@ -105,7 +104,7 @@ export const HeroCodeBlock = ({
             >
               <Tabs.List
                 style={{
-                  height: '100%',
+                  backgroundColor: 'var(--accent-2)',
                 }}
               >
                 {currentTabs.map((tab) => (
@@ -115,7 +114,7 @@ export const HeroCodeBlock = ({
                 ))}
 
                 {cssLibProp === undefined && availableCssLibs.length > 1 ? (
-                  <Box mr="2" style={{ marginLeft: 'auto', marginBlock: 'auto' }}>
+                  <Box mr="1" style={{ marginLeft: 'auto', marginBlock: 'auto' }}>
                     <Select.Root
                       aria-label="Choose a styling solution"
                       size="1"

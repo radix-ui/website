@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, Kbd, Code } from '@modulz/design-system';
+import { Box, Text, Code } from '@radix-ui/themes';
 import { RegionTable } from './RegionTable';
 
 type KeyboardDef = {
@@ -19,21 +19,41 @@ export function DataAttributesTable({
   const hasAriaLabel = !!(ariaLabel || ariaLabelledBy);
   return (
     <RegionTable
-      css={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}
+      style={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}
       aria-label={hasAriaLabel ? ariaLabel : 'Keyboard Interactions'}
       aria-labelledby={ariaLabelledBy}
     >
       <thead>
         <tr>
-          <Box as="th" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4', width: '45%' }}>
-            <Text size="2" css={{ color: '$gray11' }}>
-              Data Attribute
-            </Text>
+          <Box
+            asChild
+            py="3"
+            pr="4"
+            style={{
+              width: '45%',
+              borderBottom: '1px solid var(--gray-a6)',
+            }}
+          >
+            <th>
+              <Text size="2" color="gray">
+                Data Attribute
+              </Text>
+            </th>
           </Box>
-          <Box as="th" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4', width: '55%' }}>
-            <Text size="2" css={{ color: '$gray11' }}>
-              Values
-            </Text>
+          <Box
+            asChild
+            py="3"
+            pr="4"
+            style={{
+              width: '55%',
+              borderBottom: '1px solid var(--gray-a6)',
+            }}
+          >
+            <th>
+              <Text size="2" color="gray">
+                Values
+              </Text>
+            </th>
           </Box>
         </tr>
       </thead>
@@ -41,29 +61,37 @@ export function DataAttributesTable({
         {data.map(({ attribute, values }, i) => (
           <tr key={i}>
             <Box
-              as="td"
-              css={{
-                borderBottom: '1px solid $gray6',
-                py: '$3',
-                pr: '$4',
+              asChild
+              pr="4"
+              py="3"
+              style={{
+                borderBottom: '1px solid var(--gray-a6)',
                 whiteSpace: 'nowrap',
               }}
             >
-              <Code>{attribute}</Code>
+              <td>
+                <Code size="2">{attribute}</Code>
+              </td>
             </Box>
 
-            <Box as="td" css={{ borderBottom: '1px solid $gray6', py: '$3' }}>
-              {Array.isArray(values) ? (
-                <Code css={{ bc: '$gray4', color: '$gray11' }}>
-                  {values.map(
-                    (value, index) => `"${value}" ${values.length !== index + 1 ? ' | ' : ''}`
-                  )}
-                </Code>
-              ) : (
-                <Text size="3" css={{ lineHeight: '25px' }}>
-                  {values}
-                </Text>
-              )}
+            <Box
+              asChild
+              py="3"
+              style={{
+                borderBottom: '1px solid var(--gray-a6)',
+              }}
+            >
+              <td>
+                {Array.isArray(values) ? (
+                  <Code size="2" color="gray">
+                    {values.map(
+                      (value, index) => `"${value}" ${values.length !== index + 1 ? ' | ' : ''}`
+                    )}
+                  </Code>
+                ) : (
+                  <Text size="2">{values}</Text>
+                )}
+              </td>
             </Box>
           </tr>
         ))}

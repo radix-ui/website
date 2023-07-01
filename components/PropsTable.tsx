@@ -25,7 +25,7 @@ export function PropsTable({
   const hasAriaLabel = !!(ariaLabel || ariaLabelledBy);
   return (
     <RegionTable
-      css={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}
+      style={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}
       aria-label={hasAriaLabel ? ariaLabel : 'Component Props'}
       aria-labelledby={ariaLabelledBy}
     >
@@ -33,7 +33,7 @@ export function PropsTable({
         <tr>
           <Box
             asChild
-            height="8"
+            py="3"
             pr="4"
             style={{
               width: '45%',
@@ -48,7 +48,7 @@ export function PropsTable({
           </Box>
           <Box
             asChild
-            height="8"
+            py="3"
             pr="4"
             style={{
               width: '27.5%',
@@ -63,7 +63,7 @@ export function PropsTable({
           </Box>
           <Box
             asChild
-            height="8"
+            py="3"
             pr="4"
             style={{
               width: '27.5%',
@@ -84,7 +84,7 @@ export function PropsTable({
             <Box
               asChild
               pr="4"
-              height="8"
+              py="3"
               style={{
                 borderBottom: '1px solid var(--gray-a6)',
                 whiteSpace: 'nowrap',
@@ -112,6 +112,7 @@ export function PropsTable({
                     </Popover.Trigger>
                     <Popover.Content
                       side="top"
+                      align="center"
                       style={{ maxWidth: 350 }}
                       onOpenAutoFocus={(event) => {
                         event.preventDefault();
@@ -129,9 +130,10 @@ export function PropsTable({
             <Box
               asChild
               pr="4"
-              height="8"
+              py="3"
               style={{
                 borderBottom: '1px solid var(--gray-a6)',
+                whiteSpace: 'nowrap',
               }}
             >
               <td>
@@ -148,8 +150,6 @@ export function PropsTable({
                         ml="1"
                         style={{
                           verticalAlign: 'middle',
-                          color: 'var(--gray-11, $gray11)',
-                          // display: 'none',
                         }}
                       >
                         <AccessibleIcon label="See full type">
@@ -157,7 +157,7 @@ export function PropsTable({
                         </AccessibleIcon>
                       </IconButton>
                     </Popover.Trigger>
-                    <Popover.Content side="top" style={{ maxWidth: 350 }}>
+                    <Popover.Content side="top" align="center" style={{ maxWidth: 350 }}>
                       <Box p="3">
                         <Code size="2" style={{ whiteSpace: 'pre', display: 'block' }}>
                           {type}
@@ -171,7 +171,7 @@ export function PropsTable({
             <Box
               asChild
               pr="4"
-              height="8"
+              py="3"
               style={{
                 borderBottom: '1px solid var(--gray-a6)',
               }}

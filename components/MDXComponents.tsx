@@ -95,11 +95,11 @@ export const components = {
   p: (props) => <Text mb="3" {...props} />,
   a: ({ href = '', ...props }) => {
     if (href.startsWith('http')) {
-      return <Link {...props} highContrast href={href} target="_blank" rel="noopener" />;
+      return <Link {...props} href={href} target="_blank" rel="noopener" />;
     }
     return (
       <NextLink href={href} passHref>
-        <Link {...props} highContrast />
+        <Link {...props} />
       </NextLink>
     );
   },
@@ -198,7 +198,7 @@ const LinkHeading = ({
   id: string;
   children: React.ReactNode;
 } & React.ComponentProps<typeof Link>) => (
-  <Link asChild highContrast weight="bold" color="gray" {...props}>
+  <Link asChild weight="bold" highContrast color="gray" {...props}>
     <a id={id} href={`#${id}`} className={classNames(className, styles.LinkHeading)}>
       {children}
 

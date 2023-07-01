@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box } from '@modulz/design-system';
+import { Box } from '@radix-ui/themes';
+import styles from './RegionTable.module.css';
 
 export function RegionTable({
   'aria-label': ariaLabel,
@@ -8,20 +9,16 @@ export function RegionTable({
 }) {
   return (
     <Box
-      as="div"
       role="region"
       aria-label={ariaLabel}
       aria-labelledby={ariaLabelledBy}
       tabIndex={0}
-      css={{
-        position: 'relative',
-        overflow: 'auto',
-        '&:focus': {
-          outline: 0,
-        },
-      }}
+      position="relative"
+      className={styles.RegionTable}
     >
-      <Box as="table" {...props} />
+      <Box asChild {...props}>
+        <table children={props.children} />
+      </Box>
     </Box>
   );
 }

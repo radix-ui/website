@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Box } from '@modulz/design-system';
 import { Pre } from './Pre';
 import { CopyCodeButton } from './CopyCodeButton';
+import { Box } from '@radix-ui/themes';
 
 const PreWithCopyButton = (props) => {
   const [code, setCode] = React.useState('');
   return (
-    <Box css={{ position: 'relative' }}>
+    <Box position="relative">
       <Pre
         {...props}
         variant="violet"
