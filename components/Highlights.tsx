@@ -1,7 +1,6 @@
 import React from 'react';
-import { Text, Box, Flex, Heading, Separator, Link } from '@modulz/design-system';
+import { Text, Box, Flex, Heading, Separator, Link, Select } from '@radix-ui/themes';
 import { ArrowTopRightIcon, CheckIcon } from '@radix-ui/react-icons';
-import { Select } from '@components/Select';
 import { useRouter } from 'next/router';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { FrontmatterContext } from './MDXComponents';
@@ -14,161 +13,145 @@ export function Highlights({ features }) {
 
   return (
     <Flex
-      css={{
-        fd: 'column',
-        mt: '$4',
-        '@bp1': {
-          fd: 'row',
-          mt: '$7',
-        },
-      }}
+      direction={{ /* initial: 'column', sm: 'row' */ initial: 'row' }}
+      mt={{ initial: '4', sm: '7' }}
     >
-      <Box
-        css={{
-          mb: '$5',
-          '@bp1': {
-            flex: '1',
-            mr: '$5',
-          },
-        }}
-      >
-        <Heading as="h2" css={{ mb: '$4' }}>
-          Features
+      <Box mb="5" grow={{ sm: '1' }} mr={{ sm: '5' }}>
+        <Heading asChild size="4" mb="4">
+          <h2>Features</h2>
         </Heading>
 
-        <Box as="ul" css={{ p: 0, m: 0 }}>
-          {features.map((feature, i) => (
-            <Flex as="li" key={i} css={{ mt: '$2' }}>
-              <Box
-                css={{
-                  width: '25px',
-                  height: '25px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  backgroundColor: '$green4',
-                  borderRadius: '50%',
-                  color: '$green11',
-                  marginRight: '15px',
-                  flexShrink: 0,
-                }}
-              >
-                <CheckIcon />
-              </Box>
-              <Text size="3" css={{ lineHeight: '25px' }}>
-                {feature}
-              </Text>
-            </Flex>
-          ))}
-        </Box>
+        <Flex asChild m="0" p="0" gap="2" direction="column">
+          <ul>
+            {features.map((feature, i) => (
+              <Flex key={i} gap="4" align="start">
+                <Flex
+                  width="5"
+                  height="5"
+                  align="center"
+                  justify="center"
+                  shrink="0"
+                  style={{
+                    backgroundColor: 'var(--green-4)',
+                    borderRadius: '50%',
+                    color: 'var(--green-11)',
+                  }}
+                >
+                  <CheckIcon />
+                </Flex>
+                <Text size="3">{feature}</Text>
+              </Flex>
+            ))}
+          </ul>
+        </Flex>
       </Box>
 
       <Box
-        css={{ width: 'fit-content' }}
-        as="nav"
+        style={{ width: 'fit-content' }}
+        asChild
         aria-labelledby="site-component-info-heading"
         data-algolia-exclude
       >
-        <VisuallyHidden asChild>
-          <h2 id="site-component-info-heading">Component Reference Links</h2>
-        </VisuallyHidden>
-        <Separator size="2" css={{ mb: '$4', display: 'block', '@bp1': { display: 'none' } }} />
-        <Flex css={{ mb: '$2', alignItems: 'center' }}>
-          <Box css={{ mx: -5 }}>
-            <Select
+        <nav>
+          <VisuallyHidden asChild>
+            <h2 id="site-component-info-heading">Component Reference Links</h2>
+          </VisuallyHidden>
+
+          <Box asChild display={{ sm: 'none' }}>
+            <Separator size="2" mb="4" />
+          </Box>
+
+          <Flex mb="2" align="center">
+            <Select.Root
+              size="1"
               value={frontmatter.version}
-              onChange={(e) => router.push(`./${frontmatter.name}/${e.target.value}`)}
+              onValueChange={(value) => router.push(`./${frontmatter.name}/${value}`)}
             >
-              {(frontmatter.versions || []).map((v, i) => {
-                return (
-                  <option key={v} value={v}>
-                    {v}
-                    {i === 0 && ' (latest)'}
-                  </option>
-                );
-              })}
-            </Select>
+              <Select.Trigger mx="-2" variant="ghost" color="gray" />
+              <Select.Content>
+                {(frontmatter.versions || []).map((v, i) => {
+                  return (
+                    <Select.Item key={v} value={v}>
+                      {v}
+                      {i === 0 && ' (latest)'}
+                    </Select.Item>
+                  );
+                })}
+              </Select.Content>
+            </Select.Root>
+          </Flex>
+
+          {frontmatter.gzip && (
+            <Text size="1" color="gray">
+              Size:{' '}
+              <Link
+                color="gray"
+                href={`https://bundlephobia.com/package/@radix-ui/react-${frontmatter.name}@${frontmatter.version}`}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                {frontmatter.gzip}
+              </Link>
+            </Text>
+          )}
+
+          <Box asChild display={{ /* initial: 'none', sm: 'block' */ initial: 'block' }}>
+            <Separator size="2" my="4" />
           </Box>
-        </Flex>
 
-        {frontmatter.gzip && (
-          <Text size="2" css={{ color: '$slate11', lineHeight: '15px' }}>
-            Size:{' '}
-            <Link
-              variant="subtle"
-              href={`https://bundlephobia.com/package/@radix-ui/react-${frontmatter.name}@${frontmatter.version}`}
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              {frontmatter.gzip}
-            </Link>
-          </Text>
-        )}
+          <Flex direction="column" gap="2">
+            <Box>
+              <Link
+                href={`https://github.com/radix-ui/primitives/tree/main/packages/react/${publishedName}/src`}
+                target="_blank"
+              >
+                <Flex display="inline-flex" position="relative" gap="1">
+                  <Text asChild size="1">
+                    <span>View source</span>
+                  </Text>
+                  <ArrowTopRightIcon style={{ color: 'var(--gray-9)' }} />
+                </Flex>
+              </Link>
+            </Box>
+            <Box>
+              <Link
+                href={`https://www.npmjs.com/package/@radix-ui/react-${publishedName}`}
+                target="_blank"
+              >
+                <Flex display="inline-flex" position="relative" gap="1">
+                  <Text size="1" asChild>
+                    <span>View on npm</span>
+                  </Text>
+                  <ArrowTopRightIcon style={{ color: 'var(--gray-9)' }} />
+                </Flex>
+              </Link>
+            </Box>
 
-        <Separator size="2" css={{ my: '$4', display: 'none', '@bp1': { display: 'block' } }} />
-        <Box css={{ mb: '$2' }}>
-          <Link
-            variant="blue"
-            href={`https://github.com/radix-ui/primitives/tree/main/packages/react/${publishedName}/src`}
-            target="_blank"
-          >
-            <Flex css={{ display: 'inline-flex', position: 'relative' }}>
-              <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
-                View source
-              </Text>
-              <Box as="span" css={{ ml: '$1', color: '$gray9' }}>
-                <ArrowTopRightIcon />
-              </Box>
-            </Flex>
-          </Link>
-        </Box>
-        <Box css={{ mb: '$2' }}>
-          <Link
-            variant="blue"
-            href={`https://www.npmjs.com/package/@radix-ui/react-${publishedName}`}
-            target="_blank"
-          >
-            <Flex css={{ display: 'inline-flex', position: 'relative' }}>
-              <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
-                View on npm
-              </Text>
-              <Box as="span" css={{ ml: '$1', color: '$gray9' }}>
-                <ArrowTopRightIcon />
-              </Box>
-            </Flex>
-          </Link>
-        </Box>
-        <Box css={{ mb: '$2' }}>
-          <Link
-            variant="blue"
-            href="https://github.com/radix-ui/primitives/issues/new/choose"
-            target="_blank"
-          >
-            <Flex css={{ display: 'inline-flex', position: 'relative' }}>
-              <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
-                Report an issue
-              </Text>
-              <Box as="span" css={{ ml: '$1', color: '$gray9' }}>
-                <ArrowTopRightIcon />
-              </Box>
-            </Flex>
-          </Link>
-        </Box>
+            <Box>
+              <Link href="https://github.com/radix-ui/primitives/issues/new/choose" target="_blank">
+                <Flex display="inline-flex" position="relative" gap="1">
+                  <Text size="1" asChild>
+                    <span>Report an issue</span>
+                  </Text>
+                  <ArrowTopRightIcon style={{ color: 'var(--gray-9)' }} />
+                </Flex>
+              </Link>
+            </Box>
 
-        {frontmatter.aria && (
-          <Box css={{ mb: '$2' }}>
-            <Link variant="blue" href={frontmatter.aria} target="_blank">
-              <Flex css={{ display: 'inline-flex', position: 'relative' }}>
-                <Text size="2" css={{ display: 'inline', lineHeight: '15px' }}>
-                  ARIA design pattern
-                </Text>
-                <Box as="span" css={{ ml: '$1', color: '$gray9' }}>
-                  <ArrowTopRightIcon />
-                </Box>
-              </Flex>
-            </Link>
-          </Box>
-        )}
+            {frontmatter.aria && (
+              <Box>
+                <Link href={frontmatter.aria} target="_blank">
+                  <Flex display="inline-flex" position="relative" gap="1">
+                    <Text size="1" asChild>
+                      <span>ARIA design pattern</span>
+                    </Text>
+                    <ArrowTopRightIcon style={{ color: 'var(--gray-9)' }} />
+                  </Flex>
+                </Link>
+              </Box>
+            )}
+          </Flex>
+        </nav>
       </Box>
     </Flex>
   );
