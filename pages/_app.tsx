@@ -1,9 +1,9 @@
 import React from 'react';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import { ThemeProvider } from 'next-themes';
 import { globalCss, darkTheme, DesignSystemProvider } from '@modulz/design-system';
+import { Provider as RadixThemesProvider } from '@radix-ui/themes';
 import { PrimitivesDocsPage } from '@components/PrimitivesDocsPage';
 import { ColorsDocsPage } from '@components/ColorsDocsPage';
 import { useAnalytics } from '@lib/analytics';
@@ -62,42 +62,44 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <DesignSystemProvider>
-      <CssLibPreferenceProvider>
-        <ThemeProvider
-          disableTransitionOnChange
-          attribute="class"
-          value={{ light: 'light-theme', dark: darkTheme.className }}
-          defaultTheme="system"
-        >
-          {(() => {
-            if (isPrimitivesDocs) {
-              return (
-                <PrimitivesDocsPage>
-                  <Component {...pageProps} />
-                </PrimitivesDocsPage>
-              );
-            }
+      <RadixThemesProvider>
+        <CssLibPreferenceProvider>
+          <ThemeProvider
+            disableTransitionOnChange
+            attribute="class"
+            value={{ light: 'light-theme', dark: darkTheme.className }}
+            defaultTheme="system"
+          >
+            {(() => {
+              if (isPrimitivesDocs) {
+                return (
+                  <PrimitivesDocsPage>
+                    <Component {...pageProps} />
+                  </PrimitivesDocsPage>
+                );
+              }
 
-            if (isColorsDocs) {
-              return (
-                <ColorsDocsPage>
-                  <Component {...pageProps} />
-                </ColorsDocsPage>
-              );
-            }
+              if (isColorsDocs) {
+                return (
+                  <ColorsDocsPage>
+                    <Component {...pageProps} />
+                  </ColorsDocsPage>
+                );
+              }
 
-            if (isThemesDocs) {
-              return (
-                <ThemesDocsPage>
-                  <Component {...pageProps} />
-                </ThemesDocsPage>
-              );
-            }
+              if (isThemesDocs) {
+                return (
+                  <ThemesDocsPage>
+                    <Component {...pageProps} />
+                  </ThemesDocsPage>
+                );
+              }
 
-            return <Component {...pageProps} />;
-          })()}
-        </ThemeProvider>
-      </CssLibPreferenceProvider>
+              return <Component {...pageProps} />;
+            })()}
+          </ThemeProvider>
+        </CssLibPreferenceProvider>
+      </RadixThemesProvider>
     </DesignSystemProvider>
   );
 }

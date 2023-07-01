@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Box, Flex, Button, IconButton, Tooltip } from '@modulz/design-system';
-import * as Tabs from '@radix-ui/react-tabs';
+import { Box, Flex, Button, IconButton, Tooltip, Tabs, ScrollArea, Select } from '@radix-ui/themes';
 import * as Collapsible from '@radix-ui/react-collapsible';
 import { getParameters } from 'codesandbox/lib/api/define';
 import { CodeSandboxLogoIcon } from '@radix-ui/react-icons';
@@ -9,9 +8,8 @@ import { FrontmatterContext } from './MDXComponents';
 import { Pre } from './Pre';
 import { CopyCodeButton } from './CopyCodeButton';
 import { CSS_LIB_NAMES, DEFAULT_CSS_LIB } from '@lib/constants';
-import { Select } from '@components/Select';
-import { ScrollArea } from '@components/ScrollArea';
 import type { CssLib } from '@lib/constants';
+import styles from './HeroCodeBlock.module.css';
 
 export const HeroCodeBlock = ({
   children,
@@ -53,51 +51,51 @@ export const HeroCodeBlock = ({
   }, [currentTabValue, currentTabs]);
 
   return (
-    <Box
-      data-algolia-exclude
-      css={{ position: 'relative', '@bp3': { mx: '-$7' }, '@bp4': { mx: '-$8' } }}
-    >
+    <Box data-algolia-exclude position="relative" mx={{ lg: '-8', xl: '-8' }}>
       <Collapsible.Root open={isCodeExpanded} onOpenChange={setIsCodeExpanded}>
-        <Box
-          css={{
-            position: 'absolute',
-            display: 'inline-flex',
-            alignItems: 'center',
-            justifyContent: 'flex-end',
-            gap: '$1',
-            top: '-$6',
-            right: '$2',
-          }}
+        <Flex
+          display="inline-flex"
+          position="absolute"
+          align="center"
+          justify="end"
+          gap="1"
+          top="0"
+          right="0"
+          mt="-6"
+          mr="3"
         >
-          <Box
-            as="form"
-            css={{
-              display: 'none',
-              color: '$whiteA12',
-              '@bp1': { display: 'inline-block' },
-            }}
-            action="https://codesandbox.io/api/v1/sandboxes/define"
-            method="POST"
-            target="_blank"
-          >
-            <input type="hidden" name="query" value="file=/App.jsx" />
-            <input type="hidden" name="environment" value="server" />
-            <input type="hidden" name="hidedevtools" value="1" />
-            <input
-              type="hidden"
-              name="parameters"
-              value={makeCodeSandboxParams(frontmatter.name, sources, usedCssLib)}
-            />
-            <Tooltip content={`Open ${CSS_LIB_NAMES[usedCssLib]} demo in CodeSandbox`}>
-              <IconButton type="submit" css={{ color: '$whiteA12' }}>
-                <CodeSandboxLogoIcon />
-              </IconButton>
-            </Tooltip>
+          <Box asChild display={/*{ initial: 'none', sm: 'inline-block' }*/ 'inline-block'}>
+            <form
+              action="https://codesandbox.io/api/v1/sandboxes/define"
+              method="POST"
+              target="_blank"
+            >
+              <input type="hidden" name="query" value="file=/App.jsx" />
+              <input type="hidden" name="environment" value="server" />
+              <input type="hidden" name="hidedevtools" value="1" />
+              <input
+                type="hidden"
+                name="parameters"
+                value={makeCodeSandboxParams(frontmatter.name, sources, usedCssLib)}
+              />
+              <Tooltip content={`Open ${CSS_LIB_NAMES[usedCssLib]} demo in CodeSandbox`}>
+                <IconButton
+                  size="1"
+                  variant="solid"
+                  radius="full"
+                  type="submit"
+                  color="gray"
+                  highContrast
+                >
+                  <CodeSandboxLogoIcon />
+                </IconButton>
+              </Tooltip>
+            </form>
           </Box>
-        </Box>
+        </Flex>
 
         <Collapsible.Content asChild forceMount>
-          <Box css={{ position: 'relative' }}>
+          <Box position="relative">
             <Tabs.Root
               value={currentTabValue}
               onValueChange={(value) => {
@@ -105,117 +103,51 @@ export const HeroCodeBlock = ({
                 setIsCodeExpanded(true);
               }}
             >
-              <Flex
-                align="center"
-                justify="between"
-                css={{
-                  height: 40,
-                  boxShadow: 'inset 0 -1px 0 0 $colors$violet5',
-                  backgroundColor: '$violet2',
-                  paddingRight: '$2',
+              <Tabs.List
+                style={{
+                  height: '100%',
                 }}
               >
-                <Tabs.List
-                  style={{
-                    height: '100%',
-                  }}
-                >
-                  {currentTabs.map((tab) => (
-                    <Tabs.Trigger key={tab.id} value={tab.id} asChild>
-                      <Box
-                        as="button"
-                        css={{
-                          all: 'unset',
-                          appearance: 'none',
-                          backgroundColor: 'transparent',
-                          border: 'none',
-                          lineHeight: '1',
-                          fontFamily: 'inherit',
-                          boxSizing: 'border-box',
-                          flexShrink: 0,
-                          position: 'relative',
-                          userSelect: 'none',
-                          paddingLeft: '$2',
-                          paddingRight: '$2',
-                          gap: '$2',
-                          fontSize: '$2',
-                          height: '100%',
-                          outline: 'none',
-                          '&[data-state="active"]': {
-                            fontWeight: 500,
-                            letterSpacing: '-.025em',
-                            '&::before': {
-                              boxSizing: 'border-box',
-                              content: '""',
-                              height: '2px',
-                              position: 'absolute',
-                              bottom: '0',
-                              left: '0',
-                              right: '0',
-                              backgroundColor: '$violet9',
-                            },
-                          },
-                        }}
-                      >
-                        <Flex
-                          as="span"
-                          align="center"
-                          css={{
-                            height: '$5',
-                            paddingLeft: '$1',
-                            paddingRight: '$1',
-                            borderRadius: '$1',
-                            'button:hover &': {
-                              backgroundColor: '$blackA3',
-                            },
-                            'button:focus-visible &': {
-                              boxShadow: '0 0 0 2px $colors$violet7',
-                            },
-                          }}
-                        >
-                          {tab.title}
-                        </Flex>
-                      </Box>
-                    </Tabs.Trigger>
-                  ))}
-                </Tabs.List>
+                {currentTabs.map((tab) => (
+                  <Tabs.Trigger key={tab.id} value={tab.id}>
+                    {tab.title}
+                  </Tabs.Trigger>
+                ))}
 
                 {cssLibProp === undefined && availableCssLibs.length > 1 ? (
-                  <Box>
-                    <Select
+                  <Box mr="2" style={{ marginLeft: 'auto', marginBlock: 'auto' }}>
+                    <Select.Root
                       aria-label="Choose a styling solution"
+                      size="1"
                       value={preferredCssLib}
-                      onChange={(event) => {
-                        const lib = event.target.value;
+                      onValueChange={(lib) => {
                         if (isValidCssLib(lib)) setPreferredCssLib(lib);
                       }}
                     >
-                      {availableCssLibs.map((lib) => (
-                        <option key={lib} value={lib} style={{ color: '#11181c' }}>
-                          {CSS_LIB_NAMES[lib]}
-                        </option>
-                      ))}
-                    </Select>
+                      <Select.Trigger variant="ghost" color="gray" style={{ minWidth: 115 }} />
+                      <Select.Content>
+                        {availableCssLibs.map((lib) => (
+                          <Select.Item key={lib} value={lib}>
+                            {CSS_LIB_NAMES[lib]}
+                          </Select.Item>
+                        ))}
+                      </Select.Content>
+                    </Select.Root>
                   </Box>
                 ) : null}
-              </Flex>
+              </Tabs.List>
 
               {currentTabs.map((tab) => (
-                <Tabs.Content key={tab.id} value={tab.id} asChild>
+                <Tabs.Content key={tab.id} value={tab.id}>
                   <Box
-                    css={{
-                      position: 'relative',
-                      borderBottomLeftRadius: '$3',
-                      borderBottomRightRadius: '$3',
-                      '&:focus': {
-                        outline: 'none',
-                        boxShadow: '0 0 0 2px $colors$violetA7',
-                      },
+                    position="relative"
+                    style={{
+                      borderBottomLeftRadius: 'var(--br-3)',
+                      borderBottomRightRadius: 'var(--br-3)',
                     }}
                   >
                     <ScrollArea
-                      disabled={!isCodeExpanded}
-                      css={{
+                      style={{
                         borderBottomLeftRadius: '$3',
                         borderBottomRightRadius: '$3',
                         maxHeight: isCodeExpanded ? '80vh' : 150,
@@ -238,33 +170,11 @@ export const HeroCodeBlock = ({
               ))}
             </Tabs.Root>
 
-            <Flex
-              align="end"
-              css={{
-                position: 'absolute',
-                bottom: 0,
-                height: '$9',
-                width: '100%',
-                padding: '$3',
-                overflow: 'hidden',
-                borderRadius: '0 0 $3 $3',
-                '&::before': {
-                  content: '',
-                  pointerEvents: 'none',
-                  display: 'block',
-                  width: '100%',
-                  height: '100%',
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  background: 'linear-gradient(180deg, transparent, $colors$violet2 70%)',
-                  opacity: 0.9,
-                },
-              }}
-              justify="center"
-            >
+            <Flex align="end" justify="center" className={styles.CollapsibleGradient}>
               <Collapsible.Trigger asChild>
-                <Button css={{ zIndex: 0 }}>{isCodeExpanded ? 'Collapse' : 'Expand'} code</Button>
+                <Button size="1" variant="surface" radius="full" color="gray">
+                  {isCodeExpanded ? 'Collapse' : 'Expand'} code
+                </Button>
               </Collapsible.Trigger>
             </Flex>
           </Box>
