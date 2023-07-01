@@ -109,10 +109,14 @@ export const components = {
       <ul children={children} className={styles.List} />
     </Box>
   ),
-  ol: (props) => <DS.Box {...props} css={{ color: '$hiContrast', mb: '$3' }} as="ol" />,
+  ol: (props) => ({ children, ...props }) => (
+    <Box {...props} mb="3" pl="4" asChild>
+      <ol children={children} />
+    </Box>
+  ),
   li: (props) => (
     <li>
-      <Text asChild {...props} />
+      <Text {...props} />
     </li>
   ),
   em: Em,
