@@ -186,7 +186,7 @@ export const Pre = styled('pre', {
   variants: {
     variant: {
       violet: {
-        $$background: 'var(--accent-2, $colors$violet2)',
+        $$background: 'var(--gray-a1, $colors$violet2)',
         $$text: 'var(--accent-11, $colors$violet11)',
         $$syntax1: '$colors$blue10',
         $$syntax2: '$colors$pink11',

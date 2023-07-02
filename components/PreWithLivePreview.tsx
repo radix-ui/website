@@ -64,7 +64,6 @@ const PreWithLivePreview = (props) => {
       <Box css={{ position: 'relative' }}>
         <ThemesPre
           {...props}
-          variant="violet"
           ref={(node) => {
             if (node) {
               // remove double line breaks

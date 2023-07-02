@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
 import { globalCss, darkTheme, DesignSystemProvider } from '@modulz/design-system';
-import { Provider as RadixThemesProvider } from '@radix-ui/themes';
+import { Provider as RadixThemesProvider, ThemeConfig, ThemePanel } from '@radix-ui/themes';
 import { PrimitivesDocsPage } from '@components/PrimitivesDocsPage';
 import { ColorsDocsPage } from '@components/ColorsDocsPage';
 import { useAnalytics } from '@lib/analytics';
@@ -73,29 +73,40 @@ function App({ Component, pageProps }: AppProps) {
             {(() => {
               if (isPrimitivesDocs) {
                 return (
-                  <PrimitivesDocsPage>
-                    <Component {...pageProps} />
-                  </PrimitivesDocsPage>
+                  <ThemeConfig>
+                    <PrimitivesDocsPage>
+                      <Component {...pageProps} />
+                    </PrimitivesDocsPage>
+                  </ThemeConfig>
                 );
               }
 
               if (isColorsDocs) {
                 return (
-                  <ColorsDocsPage>
-                    <Component {...pageProps} />
-                  </ColorsDocsPage>
+                  <ThemeConfig>
+                    <ColorsDocsPage>
+                      <Component {...pageProps} />
+                    </ColorsDocsPage>
+                  </ThemeConfig>
                 );
               }
 
               if (isThemesDocs) {
                 return (
-                  <ThemesDocsPage>
-                    <Component {...pageProps} />
-                  </ThemesDocsPage>
+                  <ThemeConfig accentScale="grass">
+                    <ThemePanel />
+                    <ThemesDocsPage>
+                      <Component {...pageProps} />
+                    </ThemesDocsPage>
+                  </ThemeConfig>
                 );
               }
 
-              return <Component {...pageProps} />;
+              return (
+                <ThemeConfig>
+                  <Component {...pageProps} />
+                </ThemeConfig>
+              );
             })()}
           </ThemeProvider>
         </CssLibPreferenceProvider>

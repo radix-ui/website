@@ -14,7 +14,7 @@
   pointer-events: none;
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent, var(--accent-2) 70%);
+  background: linear-gradient(180deg, transparent, var(--gray-1) 70%);
   opacity: 0.9;
   z-index: -1;
 }

@@ -2,7 +2,7 @@ import { styled, theme } from '@modulz/design-system';
 
 export const ThemesPre = styled('pre', {
   $$background: '$loContrast',
-  $$text: '$colors$hiContrast',
+  $$text: 'var(--gray-a12, $colors$hiContrast)',
   $$syntax1: 'var(--gray-a12)',
   $$syntax2: 'var(--accent-11)',
   $$syntax3: 'var(--gray-a11)',

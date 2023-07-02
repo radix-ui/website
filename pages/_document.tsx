@@ -7,55 +7,54 @@ import { ThemeConfig } from '@radix-ui/themes';
 export default class Document extends NextDocument {
   render() {
     return (
-      <ThemeConfig asChild accentScale="crimson" backgroundColor="gray">
-        <Html lang="en">
-          <Head>
-            <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
-            <link
-              rel="preload"
-              href="/fonts/UntitledSansWeb-Regular.woff"
-              as="font"
-              type="font/woff"
-              crossOrigin="anonymous"
-            />
-            <link
-              rel="preload"
-              href="/fonts/UntitledSansWeb-Regular.woff2"
-              as="font"
-              type="font/woff2"
-              crossOrigin="anonymous"
-            />
-            <link
-              rel="preload"
-              href="/fonts/UntitledSansWeb-Medium.woff"
-              as="font"
-              type="font/woff"
-              crossOrigin="anonymous"
-            />
-            <link
-              rel="preload"
-              href="/fonts/UntitledSansWeb-Medium.woff2"
-              as="font"
-              type="font/woff2"
-              crossOrigin="anonymous"
-            />
-            <link
-              rel="preload"
-              href="/fonts/soehne-mono-web-buch.woff"
-              as="font"
-              type="font/woff"
-              crossOrigin="anonymous"
-            />
-            <link
-              rel="preload"
-              href="/fonts/soehne-mono-web-buch.woff2"
-              as="font"
-              type="font/woff2"
-              crossOrigin="anonymous"
-            />
-            <style
-              dangerouslySetInnerHTML={{
-                __html: `
+      <Html lang="en">
+        <Head>
+          <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
+          <link
+            rel="preload"
+            href="/fonts/UntitledSansWeb-Regular.woff"
+            as="font"
+            type="font/woff"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/UntitledSansWeb-Regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/UntitledSansWeb-Medium.woff"
+            as="font"
+            type="font/woff"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/UntitledSansWeb-Medium.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/soehne-mono-web-buch.woff"
+            as="font"
+            type="font/woff"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/soehne-mono-web-buch.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
 @font-face {
   font-family: 'Untitled Sans';
   font-weight: 400;
@@ -85,19 +84,18 @@ export default class Document extends NextDocument {
   src: url('/fonts/soehne-mono-web-buch.woff2') format('woff2'), url('/fonts/soehne-mono-web-buch.woff') format('woff');
 }
 `,
-              }}
-            />
-            <link rel="icon" href="/favicon.png" />
-            <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-            <script async src={gtagUrl} />
-            <script dangerouslySetInnerHTML={{ __html: renderSnippet() }} />
-          </Head>
-          <body>
-            <Main />
-            <NextScript />
-          </body>
-        </Html>
-      </ThemeConfig>
+            }}
+          />
+          <link rel="icon" href="/favicon.png" />
+          <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+          <script async src={gtagUrl} />
+          <script dangerouslySetInnerHTML={{ __html: renderSnippet() }} />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
     );
   }
 }

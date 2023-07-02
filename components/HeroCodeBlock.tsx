@@ -1,5 +1,15 @@
 import * as React from 'react';
-import { Box, Flex, Button, IconButton, Tooltip, Tabs, ScrollArea, Select } from '@radix-ui/themes';
+import {
+  Box,
+  Flex,
+  Button,
+  IconButton,
+  Tooltip,
+  Tabs,
+  ScrollArea,
+  Select,
+  ThemeConfig,
+} from '@radix-ui/themes';
 import * as Collapsible from '@radix-ui/react-collapsible';
 import { getParameters } from 'codesandbox/lib/api/define';
 import { CodeSandboxLogoIcon } from '@radix-ui/react-icons';
@@ -78,17 +88,11 @@ export const HeroCodeBlock = ({
               value={makeCodeSandboxParams(frontmatter.name, sources, usedCssLib)}
             />
             <Tooltip content={`Open ${CSS_LIB_NAMES[usedCssLib]} demo in CodeSandbox`}>
-              <IconButton
-                size="1"
-                variant="solid"
-                radius="full"
-                type="submit"
-                color="gray"
-                highContrast
-                style={{ background: 'none' }}
-              >
-                <CodeSandboxLogoIcon />
-              </IconButton>
+              <ThemeConfig mode="dark" applyBackgroundColor={false}>
+                <IconButton size="1" variant="ghost" type="submit" color="gray" highContrast>
+                  <CodeSandboxLogoIcon />
+                </IconButton>
+              </ThemeConfig>
             </Tooltip>
           </form>
         </Flex>
@@ -104,7 +108,7 @@ export const HeroCodeBlock = ({
             >
               <Tabs.List
                 style={{
-                  backgroundColor: 'var(--accent-2)',
+                  backgroundColor: 'var(--gray-a1)',
                 }}
               >
                 {currentTabs.map((tab) => (
@@ -171,7 +175,7 @@ export const HeroCodeBlock = ({
 
             <Flex align="end" justify="center" className={styles.CollapsibleGradient}>
               <Collapsible.Trigger asChild>
-                <Button size="1" variant="surface" radius="full" color="gray">
+                <Button size="1" variant="surface" highContrast color="gray">
                   {isCodeExpanded ? 'Collapse' : 'Expand'} code
                 </Button>
               </Collapsible.Trigger>
