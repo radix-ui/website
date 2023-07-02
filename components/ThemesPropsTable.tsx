@@ -88,216 +88,216 @@ const props: Record<string, PropDef[]> = {
     {
       ...sizeProp,
       type: formatValues(themes.buttonSizes),
-      default: formatValues(themes.defaultButtonSize),
+      default: formatValues(themes.buttonSizeDefault),
     },
     {
       ...variantProp,
       type: formatValues(themes.buttonVariants),
-      default: formatValues(themes.defaultButtonVariant),
+      default: formatValues(themes.buttonVariantDefault),
     },
-    { ...colorProp, default: formatValues(themes.defaultButtonColor) },
-    { ...highContrastProp, default: themes.defaultButtonHighContrast },
+    { ...colorProp, default: formatValues(themes.buttonColorDefault) },
+    { ...highContrastProp, default: themes.buttonHighContrastDefault },
     {
       ...radiusProp,
-      type: formatValues(themes.radiusValues),
-      default: formatValues(themes.defaultButtonRadius),
+      type: formatValues(themes.themeRadii),
+      default: formatValues(themes.buttonRadiusDefault),
     },
   ],
   checkbox: [
     {
       ...sizeProp,
       type: formatValues(themes.checkboxSizes),
-      default: formatValues(themes.defaultCheckboxSize),
+      default: formatValues(themes.checkboxSizeDefault),
     },
     {
       ...variantProp,
       type: formatValues(themes.checkboxVariants),
-      default: formatValues(themes.defaultCheckboxVariant),
+      default: formatValues(themes.checkboxVariantDefault),
     },
-    { ...colorProp, default: formatValues(themes.defaultCheckboxColor) },
-    { ...highContrastProp, default: themes.defaultCheckboxHighContrast },
+    { ...colorProp, default: formatValues(themes.checkboxColorDefault) },
+    { ...highContrastProp, default: themes.checkboxHighContrastDefault },
     {
       ...radiusProp,
-      type: formatValues(themes.radiusValues),
-      default: formatValues(themes.defaultCheckboxRadius),
+      type: formatValues(themes.themeRadii),
+      default: formatValues(themes.checkboxRadiusDefault),
     },
   ],
   iconButton: [
     {
       ...sizeProp,
       type: formatValues(themes.iconButtonSizes),
-      default: formatValues(themes.defaultIconButtonSize),
+      default: formatValues(themes.iconButtonSizeDefault),
     },
     {
       ...variantProp,
       type: formatValues(themes.iconButtonVariants),
-      default: formatValues(themes.defaultIconButtonVariant),
+      default: formatValues(themes.iconButtonVariantDefault),
     },
-    { ...colorProp, default: formatValues(themes.defaultIconButtonColor) },
-    { ...highContrastProp, default: themes.defaultIconButtonHighContrast },
+    { ...colorProp, default: formatValues(themes.iconButtonColorDefault) },
+    { ...highContrastProp, default: themes.iconButtonHighContrastDefault },
     {
       ...radiusProp,
-      type: formatValues(themes.radiusValues),
-      default: formatValues(themes.defaultIconButtonRadius),
+      type: formatValues(themes.themeRadii),
+      default: formatValues(themes.iconButtonRadiusDefault),
     },
   ],
   radioGroup: [
     {
       ...sizeProp,
       type: formatValues(themes.radioGroupSizes),
-      default: formatValues(themes.defaultRadioGroupSize),
+      default: formatValues(themes.radioGroupSizeDefault),
     },
     {
       ...variantProp,
       type: formatValues(themes.radioGroupVariants),
-      default: formatValues(themes.defaultRadioGroupVariant),
+      default: formatValues(themes.radioGroupVariantDefault),
     },
-    { ...colorProp, default: formatValues(themes.defaultRadioGroupColor) },
-    { ...highContrastProp, default: themes.defaultRadioGroupHighContrast },
+    { ...colorProp, default: formatValues(themes.radioGroupColorDefault) },
+    { ...highContrastProp, default: themes.radioGroupHighContrastDefault },
   ],
   slider: [
     {
       ...sizeProp,
       type: formatValues(themes.sliderSizes),
-      default: formatValues(themes.defaultSliderSize),
+      default: formatValues(themes.sliderSizeDefault),
     },
     {
       ...variantProp,
       type: formatValues(themes.sliderVariants),
-      default: formatValues(themes.defaultSliderVariant),
+      default: formatValues(themes.sliderVariantDefault),
     },
-    { ...colorProp, default: formatValues(themes.defaultSliderColor) },
-    { ...highContrastProp, default: themes.defaultSliderHighContrast },
+    { ...colorProp, default: formatValues(themes.sliderColorDefault) },
+    { ...highContrastProp, default: themes.sliderHighContrastDefault },
     {
       ...radiusProp,
-      type: formatValues(themes.radiusValues),
-      default: formatValues(themes.defaultSliderRadius),
+      type: formatValues(themes.themeRadii),
+      default: formatValues(themes.sliderRadiusDefault),
     },
   ],
   switch: [
     {
       ...sizeProp,
       type: formatValues(themes.switchSizes),
-      default: formatValues(themes.defaultSwitchSize),
+      default: formatValues(themes.switchSizeDefault),
     },
     {
       ...variantProp,
       type: formatValues(themes.switchVariants),
-      default: formatValues(themes.defaultSwitchVariant),
+      default: formatValues(themes.switchVariantDefault),
     },
-    { ...colorProp, default: formatValues(themes.defaultSwitchColor) },
-    { ...highContrastProp, default: themes.defaultSwitchHighContrast },
+    { ...colorProp, default: formatValues(themes.switchColorDefault) },
+    { ...highContrastProp, default: themes.switchHighContrastDefault },
     {
       ...radiusProp,
-      type: formatValues(themes.radiusValues),
-      default: formatValues(themes.defaultSwitchRadius),
+      type: formatValues(themes.themeRadii),
+      default: formatValues(themes.switchRadiusDefault),
     },
   ],
   textField: [
     {
       ...sizeProp,
       type: formatValues(themes.textFieldSizes),
-      default: formatValues(themes.defaultTextFieldSize),
+      default: formatValues(themes.textFieldSizeDefault),
     },
     {
       ...variantProp,
       type: formatValues(themes.textFieldVariants),
-      default: formatValues(themes.defaultTextFieldVariant),
+      default: formatValues(themes.textFieldVariantDefault),
     },
-    { ...colorProp, default: formatValues(themes.defaultTextFieldColor) },
+    { ...colorProp, default: formatValues(themes.textColorDefault) },
     {
       ...radiusProp,
-      type: formatValues(themes.radiusValues),
-      default: formatValues(themes.defaultTextFieldRadius),
+      type: formatValues(themes.themeRadii),
+      default: formatValues(themes.textFieldRadiusDefault),
     },
   ],
   textArea: [
     {
       ...sizeProp,
       type: formatValues(themes.textAreaSizes),
-      default: formatValues(themes.defaultTextAreaSize),
+      default: formatValues(themes.textAreaSizeDefault),
     },
     {
       ...variantProp,
       type: formatValues(themes.textAreaVariants),
-      default: formatValues(themes.defaultTextAreaVariant),
+      default: formatValues(themes.textAreaVariantDefault),
     },
-    { ...colorProp, default: formatValues(themes.defaultTextAreaColor) },
+    { ...colorProp, default: formatValues(themes.textAreaColorDefault) },
     {
       ...radiusProp,
-      type: formatValues(themes.radiusValues),
-      default: formatValues(themes.defaultTextAreaRadius),
+      type: formatValues(themes.themeRadii),
+      default: formatValues(themes.textAreaRadiusDefault),
     },
   ],
   text: [
     asChildProp,
     {
       ...sizeProp,
-      type: formatValues(themes.textAreaSizes),
-      default: formatValues(themes.defaultTextAreaSize),
+      type: formatValues(themes.textSizes),
+      default: formatValues(themes.textSizeDefault),
     },
     {
       ...weightProp,
       type: formatValues(themes.textWeights),
-      default: formatValues(themes.defaultTextWeight),
+      default: formatValues(themes.textWeightDefault),
     },
     {
       name: 'align',
       required: false,
       type: formatValues(themes.textAlignValues),
-      default: formatValues(themes.defaultTextAlign),
+      default: formatValues(themes.textAlignDefault),
       typeSimple: 'enum',
     },
     {
       name: 'trim',
       required: false,
       type: formatValues(themes.textTrimValues),
-      default: formatValues(themes.defaultTextTrim),
+      default: formatValues(themes.textTrimDefault),
       typeSimple: 'enum',
     },
-    { ...colorProp, default: formatValues(themes.defaultTextColor) },
+    { ...colorProp, default: formatValues(themes.textColorDefault) },
   ],
   heading: [
     asChildProp,
     {
       ...sizeProp,
       type: formatValues(themes.headingSizes),
-      default: formatValues(themes.defaultHeadingSize),
+      default: formatValues(themes.headingSizeDefault),
     },
     {
       name: 'trim',
       required: false,
       type: formatValues(themes.textTrimValues),
-      default: formatValues(themes.defaultTextTrim),
+      default: formatValues(themes.headingTrimDefault),
       typeSimple: 'enum',
     },
-    { ...colorProp, default: formatValues(themes.defaultTextColor) },
+    { ...colorProp, default: formatValues(themes.headingColorDefault) },
   ],
   link: [
     asChildProp,
     {
       ...sizeProp,
       type: formatValues(themes.linkSizes),
-      default: formatValues(themes.defaultLinkSize),
+      default: formatValues(themes.linkSizeDefault),
     },
     {
       ...weightProp,
       type: formatValues(themes.linkWeights),
-      default: formatValues(themes.defaultLinkWeight),
+      default: formatValues(themes.linkWeightDefault),
     },
     {
       ...colorProp,
-      default: formatValues(themes.defaultLinkColor),
+      default: formatValues(themes.linkColorDefault),
     },
-    { ...highContrastProp, default: themes.defaultLinkHighContrast },
+    { ...highContrastProp, default: themes.linkHighContrastDefault },
   ],
   separator: [
     {
       ...sizeProp,
       type: formatValues(themes.separatorSizes),
-      default: formatValues(themes.defaultSeparatorSize),
+      default: formatValues(themes.separatorSizeDefault),
     },
-    { ...colorProp, default: formatValues(themes.defaultSeparatorColor) },
+    { ...colorProp, default: formatValues(themes.separatorColorDefault) },
   ],
   provider: [
     {
@@ -329,32 +329,32 @@ const props: Record<string, PropDef[]> = {
     {
       ...sizeProp,
       type: formatValues(themes.badgeSizes),
-      default: formatValues(themes.defaultBadgeSize),
+      default: formatValues(themes.badgeSizeDefault),
     },
     {
       ...variantProp,
       type: formatValues(themes.badgeVariants),
-      default: formatValues(themes.defaultBadgeVariant),
+      default: formatValues(themes.badgeVariantDefault),
     },
-    { ...colorProp, default: formatValues(themes.defaultBadgeColor) },
+    { ...colorProp, default: formatValues(themes.badgeColorDefault) },
   ],
   avatar: [
     {
       ...sizeProp,
       type: formatValues(themes.avatarSizes),
-      default: formatValues(themes.defaultAvatarSize),
+      default: formatValues(themes.avatarSizeDefault),
     },
     {
       ...variantProp,
       type: formatValues(themes.avatarVariants),
-      default: formatValues(themes.defaultAvatarVariant),
+      default: formatValues(themes.avatarVariantDefault),
     },
-    { ...colorProp, default: formatValues(themes.defaultAvatarColor) },
-    { ...highContrastProp, default: themes.defaultAvatarHighContrast },
+    { ...colorProp, default: formatValues(themes.avatarColorDefault) },
+    { ...highContrastProp, default: themes.avatarHighContrastDefault },
     {
       ...radiusProp,
-      type: formatValues(themes.radiusValues),
-      default: formatValues(themes.defaultAvatarRadius),
+      type: formatValues(themes.themeRadii),
+      default: formatValues(themes.avatarRadiusDefault),
     },
     {
       name: 'fallback',
@@ -378,42 +378,42 @@ const props: Record<string, PropDef[]> = {
       required: false,
       typeSimple: 'enum',
       type: formatValues(themes.flexDisplayValues),
-      default: formatValues(themes.defaultFlexDisplay),
+      default: formatValues(themes.flexDisplayDefault),
     },
     {
       name: 'direction',
       required: false,
       typeSimple: 'enum',
       type: formatValues(themes.flexDirectionValues),
-      default: formatValues(themes.defaultFlexDirection),
+      default: formatValues(themes.flexDirectionDefault),
     },
     {
       name: 'align',
       required: false,
       typeSimple: 'enum',
       type: formatValues(themes.flexAlignValues),
-      default: formatValues(themes.defaultFlexAlign),
+      default: formatValues(themes.flexAlignDefault),
     },
     {
       name: 'justify',
       required: false,
       typeSimple: 'enum',
       type: formatValues(themes.flexJustifyValues),
-      default: formatValues(themes.defaultFlexJustify),
+      default: formatValues(themes.flexJustifyDefault),
     },
     {
       name: 'wrap',
       required: false,
       typeSimple: 'enum',
       type: formatValues(themes.flexWrapValues),
-      default: formatValues(themes.defaultFlexWrap),
+      default: formatValues(themes.flexWrapDefault),
     },
     {
       name: 'gap',
       required: false,
       typeSimple: 'enum',
       type: formatValues(themes.flexGapValues),
-      default: formatValues(themes.defaultFlexGap),
+      default: formatValues(themes.flexGapDefault),
     },
   ],
   grid: [
@@ -422,56 +422,56 @@ const props: Record<string, PropDef[]> = {
       required: false,
       typeSimple: 'enum',
       type: formatValues(themes.gridDisplayValues),
-      default: formatValues(themes.defaultGridDisplay),
+      default: formatValues(themes.gridDisplayDefault),
     },
     {
       name: 'columns',
       required: false,
       typeSimple: 'enum',
       type: formatValues(themes.gridColumnsValues),
-      default: formatValues(themes.defaultGridColumns),
+      default: formatValues(themes.gridColumnsDefault),
     },
     {
       name: 'flow',
       required: false,
       typeSimple: 'enum',
       type: formatValues(themes.gridFlowValues),
-      default: formatValues(themes.defaultGridFlow),
+      default: formatValues(themes.gridFlowDefault),
     },
     {
       name: 'align',
       required: false,
       typeSimple: 'enum',
       type: formatValues(themes.gridAlignValues),
-      default: formatValues(themes.defaultGridAlign),
+      default: formatValues(themes.gridAlignDefault),
     },
     {
       name: 'justify',
       required: false,
       typeSimple: 'enum',
       type: formatValues(themes.gridJustifyValues),
-      default: formatValues(themes.defaultGridJustify),
+      default: formatValues(themes.gridJustifyDefault),
     },
     {
       name: 'gap',
       required: false,
       typeSimple: 'enum',
       type: formatValues(themes.gridGapValues),
-      default: formatValues(themes.defaultGridGap),
+      default: formatValues(themes.gridGapDefault),
     },
     {
       name: 'gapX',
       required: false,
       typeSimple: 'enum',
       type: formatValues(themes.gridGapValues),
-      default: formatValues(themes.defaultGridGapX),
+      default: formatValues(themes.gridGapXDefault),
     },
     {
       name: 'gapY',
       required: false,
       typeSimple: 'enum',
       type: formatValues(themes.gridGapValues),
-      default: formatValues(themes.defaultGridGapY),
+      default: formatValues(themes.gridGapYDefault),
     },
   ],
   layout: [
@@ -559,14 +559,14 @@ const props: Record<string, PropDef[]> = {
     {
       ...sizeProp,
       type: formatValues(themes.containerSizes),
-      default: formatValues(themes.defaultContainerSize),
+      default: formatValues(themes.containerSizeDefault),
     },
   ],
   section: [
     {
       ...sizeProp,
       type: formatValues(themes.sectionSizes),
-      default: formatValues(themes.defaultSectionSize),
+      default: formatValues(themes.sectionSizeDefault),
     },
   ],
   selectRoot: [
@@ -578,12 +578,12 @@ const props: Record<string, PropDef[]> = {
     {
       ...sizeProp,
       type: formatValues(themes.selectSizes),
-      default: formatValues(themes.defaultSelectSize),
+      default: formatValues(themes.selectSizeDefault),
     },
     {
       ...radiusProp,
-      type: formatValues(themes.radiusValues),
-      default: formatValues(themes.defaultSelectRadius),
+      type: formatValues(themes.themeRadii),
+      default: formatValues(themes.selectRadiusDefault),
     },
   ],
   selectTrigger: [
@@ -591,40 +591,40 @@ const props: Record<string, PropDef[]> = {
       name: 'variant',
       required: false,
       type: formatValues(themes.selectTriggerVariants),
-      default: formatValues(themes.defaultSelectTriggerVariant),
+      default: formatValues(themes.selectTriggerVariantDefault),
       typeSimple: 'enum',
     },
-    { ...colorProp, default: formatValues(themes.defaultSelectTriggerColor) },
-    { ...highContrastProp, default: themes.defaultSelectTriggerHighContrast },
+    { ...colorProp, default: formatValues(themes.selectTriggerColorDefault) },
+    { ...highContrastProp, default: themes.selectTriggerHighContrastDefault },
   ],
   selectContent: [
     {
       name: 'variant',
       required: false,
       type: formatValues(themes.selectContentVariants),
-      default: formatValues(themes.defaultSelectContentVariant),
+      default: formatValues(themes.selectContentVariantDefault),
       typeSimple: 'enum',
     },
-    { ...colorProp, default: formatValues(themes.defaultSelectContentColor) },
-    { ...highContrastProp, default: themes.defaultSelectContentHighContrast },
+    { ...colorProp, default: formatValues(themes.selectContentColorDefault) },
+    { ...highContrastProp, default: themes.selectContentHighContrastDefault },
   ],
   code: [
     {
       ...sizeProp,
       type: formatValues(themes.codeSizes),
-      default: formatValues(themes.defaultCodeSize),
+      default: formatValues(themes.codeSizeDefault),
     },
     {
       ...variantProp,
       type: formatValues(themes.codeVariants),
-      default: formatValues(themes.defaultCodeVariant),
+      default: formatValues(themes.codeVariantDefault),
     },
-    { ...colorProp, default: formatValues(themes.defaultCodeColor) },
-    { ...highContrastProp, default: themes.defaultCodeHighContrast },
+    { ...colorProp, default: formatValues(themes.codeColorDefault) },
+    { ...highContrastProp, default: themes.codeHighContrastDefault },
     {
       ...weightProp,
       type: formatValues(themes.codeWeights),
-      default: formatValues(themes.defaultCodeWeight),
+      default: formatValues(themes.codeWeightDefault),
     },
   ],
   tooltip: [
@@ -645,19 +645,19 @@ const props: Record<string, PropDef[]> = {
     {
       ...sizeProp,
       type: formatValues(themes.scrollAreaSizes),
-      default: formatValues(themes.defaultScrollAreaSize),
+      default: formatValues(themes.scrollAreaSizeDefault),
     },
     {
       ...radiusProp,
-      type: formatValues(themes.radiusValues),
-      default: formatValues(themes.defaultScrollAreaRadius),
+      type: formatValues(themes.themeRadii),
+      default: formatValues(themes.scrollAreaRadiusDefault),
     },
     {
       name: 'scrollbars',
       required: false,
       typeSimple: 'enum',
       type: formatValues(themes.scrollAreaScrollbarsValues),
-      default: formatValues(themes.defaultScrollAreaScrollbars),
+      default: formatValues(themes.scrollAreaScrollbarsDefault),
       description: 'Controls the scrollable axes',
     },
   ],
@@ -665,18 +665,18 @@ const props: Record<string, PropDef[]> = {
     {
       ...sizeProp,
       type: formatValues(themes.dropdownMenuContentSizes),
-      default: formatValues(themes.defaultDropdownMenuContentSize),
+      default: formatValues(themes.dropdownMenuContentSizeDefault),
     },
     {
       ...variantProp,
       type: formatValues(themes.dropdownMenuContentVariants),
-      default: formatValues(themes.defaultDropdownMenuContentVariant),
+      default: formatValues(themes.dropdownMenuContentVariantDefault),
     },
-    { ...colorProp, default: formatValues(themes.defaultDropdownMenuContentColor) },
-    { ...highContrastProp, default: themes.defaultDropdownMenuContentHighContrast },
+    { ...colorProp, default: formatValues(themes.dropdownMenuContentColorDefault) },
+    { ...highContrastProp, default: themes.dropdownMenuContentHighContrastDefault },
   ],
   dropdownMenuItem: [
-    { ...colorProp, default: formatValues(themes.defaultDropdownMenuItemColor) },
+    { ...colorProp, default: formatValues(themes.dropdownMenuItemColorDefault) },
     {
       name: 'shortcut',
       required: false,
@@ -688,18 +688,18 @@ const props: Record<string, PropDef[]> = {
     {
       ...sizeProp,
       type: formatValues(themes.contextMenuContentSizes),
-      default: formatValues(themes.defaultContextMenuContentSize),
+      default: formatValues(themes.contextMenuContentSizeDefault),
     },
     {
       ...variantProp,
       type: formatValues(themes.contextMenuContentVariants),
-      default: formatValues(themes.defaultContextMenuContentSize),
+      default: formatValues(themes.contextMenuContentVariantDefault),
     },
-    { ...colorProp, default: formatValues(themes.defaultContextMenuContentColor) },
-    { ...highContrastProp, default: themes.defaultContextMenuContentHighContrast },
+    { ...colorProp, default: formatValues(themes.contextMenuContentColorDefault) },
+    { ...highContrastProp, default: themes.contextMenuContentHighContrastDefault },
   ],
   contextMenuItem: [
-    { ...colorProp, default: formatValues(themes.defaultContextMenuItemColor) },
+    { ...colorProp, default: formatValues(themes.contextMenuItemColorDefault) },
     {
       name: 'shortcut',
       required: false,
@@ -710,55 +710,56 @@ const props: Record<string, PropDef[]> = {
   themeConfig: [
     asChildProp,
     {
-      name: 'darkMode',
+      name: 'mode',
       required: false,
-      typeSimple: 'boolean',
-      default: 'false',
+      typeSimple: 'enum',
+      type: formatValues(themes.themeModes),
+      default: formatValues(themes.themeModeDefault),
       description:
-        'Switches the color scale to a dark palette and applies a dark-theme to the child element of the ThemeConfig',
+        'Changes the color scheme of your app. Invert will use the opposite color scheme of the parent ThemeConfig',
     },
     {
       name: 'accentScale',
       required: false,
       typeSimple: 'enum',
-      type: formatValues(themes.allColorScales),
-      default: formatValues(themes.defaultThemeAccentScale),
+      type: formatValues(themes.radixColorScales),
+      default: formatValues(themes.themeAccentScaleDefault),
       description: 'Changes the main accent color of your app',
     },
     {
       name: 'grayScale',
       required: false,
       typeSimple: 'enum',
-      type: formatValues(['auto', ...themes.allGrayScales]),
-      default: formatValues(themes.defaultThemeGrayScale),
+      type: formatValues(['auto', ...themes.radixGrayScales]),
+      default: formatValues(themes.themeGrayScaleDefault),
     },
     {
       name: 'backgroundColor',
       required: false,
       typeSimple: 'enum',
-      type: formatValues(themes.backgroundColorValues),
-      default: formatValues(themes.defaultThemeBackgroundColor),
+      type: formatValues(themes.themeBackgroundColors),
+      default: formatValues(themes.themeBackgroundColorDefault),
     },
     {
       name: 'textColor',
       required: false,
       typeSimple: 'enum',
-      type: formatValues(themes.textColorValues),
-      default: formatValues(themes.defaultThemeTextColor),
+      type: formatValues(themes.themeTextColors),
+      default: formatValues(themes.themeTextColorDefault),
     },
     {
       name: 'radius',
       required: false,
       typeSimple: 'enum',
-      type: formatValues(themes.radiusValues),
-      default: formatValues(themes.defaultThemeRadius),
+      type: formatValues(themes.themeRadii),
+      default: formatValues(themes.themeRadiusDefault),
     },
     {
       name: 'scaling',
       required: false,
       typeSimple: 'enum',
-      type: formatValues(themes.scalingValues),
-      default: formatValues(themes.defaultThemeScaling),
+      type: formatValues(themes.themeScalings),
+      default: formatValues(themes.themeScalingDefault),
     },
   ],
 };
@@ -782,14 +783,16 @@ function formatValues(values?: readonly string[] | string) {
   return undefined;
 }
 
-function formatToBalancedArray(array: string[], columns = 5) {
-  const numberOfParts = Math.ceil(array.length / columns);
+function formatToBalancedArray(input: string[], columns = 5) {
+  const numberOfParts = Math.ceil(input.length / columns);
 
-  const balancedArray = array.map((value, i) => {
-    const matching = array.filter((v, j) => j % columns === i % columns);
-    const longestPart = Math.max(...matching.map((el) => el.length)) + 1;
-    return value.padEnd(longestPart, ' ');
-  });
+  const balancedArray = input
+    .map((value) => `"${value}"`)
+    .map((value, i, array) => {
+      const matching = array.filter((v, j) => j % columns === i % columns);
+      const longestPart = Math.max(...matching.map((el) => el.length)) + 1;
+      return value.padEnd(longestPart, ' ');
+    });
 
   const parts = [...Array(numberOfParts)].map((value, index) => {
     return balancedArray.slice(index * columns, (index + 1) * columns);

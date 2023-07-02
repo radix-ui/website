@@ -157,7 +157,7 @@ export function PropsTable({
                         </AccessibleIcon>
                       </IconButton>
                     </Popover.Trigger>
-                    <Popover.Content side="top" align="center" style={{ maxWidth: 350 }}>
+                    <Popover.Content side="top" align="center" style={{ maxWidth: 600 }}>
                       <Box p="3">
                         <Code size="2" style={{ whiteSpace: 'pre', display: 'block' }}>
                           {type}
