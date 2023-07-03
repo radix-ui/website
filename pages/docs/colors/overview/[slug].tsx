@@ -6,7 +6,6 @@ import { MDXProvider, components } from '@components/MDXComponents';
 import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { RemoveScroll } from 'react-remove-scroll';
 import { QuickNav } from '@components/QuickNav';
-import { ColorGrid } from '@components/ColorGrid';
 import { ColorScale01 } from '@components/ColorScales';
 import { UseCasesTable } from '@components/UseCasesTable';
 import { CopyIcon } from '@radix-ui/react-icons';
@@ -30,9 +29,7 @@ export default function ColorsGettingStartedDoc({ frontmatter, code }: Doc) {
       />
 
       <MDXProvider frontmatter={frontmatter}>
-        <Component
-          components={{ ...components, ColorGrid, ColorScale01, UseCasesTable, CopyIcon } as any}
-        />
+        <Component components={{ ...components, ColorScale01, UseCasesTable, CopyIcon } as any} />
       </MDXProvider>
 
       <Box

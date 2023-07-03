@@ -6,14 +6,12 @@ import { MDXProvider, components } from '@components/MDXComponents';
 import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { RemoveScroll } from 'react-remove-scroll';
 import { QuickNav } from '@components/QuickNav';
-import { ColorGrid } from '@components/ColorGrid';
 import {
   ColorScale01,
   ColorScale02,
   ColorScale03,
   ColorScale04,
   ColorScale05,
-  ColorExample04,
 } from '@components/ColorScales';
 import { UseCasesTable } from '@components/UseCasesTable';
 import { ColorGrays } from '@components/ColorGrays';
@@ -44,7 +42,6 @@ export default function ColorsPaletteCompostionDoc({ frontmatter, code }: Doc) {
           components={
             {
               ...components,
-              ColorGrid,
               ColorScale01,
               ColorScale02,
               ColorScale03,
@@ -54,7 +51,6 @@ export default function ColorsPaletteCompostionDoc({ frontmatter, code }: Doc) {
               ColorGrays,
               ColorGrayPairs,
               ColorGrayPairsComplementary,
-              ColorExample04,
               PlusIcon,
             } as any
           }
