@@ -73,7 +73,7 @@ function App({ Component, pageProps }: AppProps) {
             {(() => {
               if (isPrimitivesDocs) {
                 return (
-                  <ThemeConfig>
+                  <ThemeConfig accentScale="violet">
                     <PrimitivesDocsPage>
                       <Component {...pageProps} />
                     </PrimitivesDocsPage>
@@ -83,7 +83,7 @@ function App({ Component, pageProps }: AppProps) {
 
               if (isColorsDocs) {
                 return (
-                  <ThemeConfig>
+                  <ThemeConfig accentScale="violet">
                     <ColorsDocsPage>
                       <Component {...pageProps} />
                     </ColorsDocsPage>
@@ -103,7 +103,7 @@ function App({ Component, pageProps }: AppProps) {
               }
 
               return (
-                <ThemeConfig>
+                <ThemeConfig accentScale="violet">
                   <Component {...pageProps} />
                 </ThemeConfig>
               );

@@ -1,0 +1,33 @@
+.NavItem {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: var(--space-2) var(--space-3);
+  border-radius: 999px;
+  transition: background-color 50ms linear;
+  user-select: none;
+  min-height: var(--space-6);
+  color: var(--gray-12);
+}
+
+.NavItem:not(:last-of-type) {
+  margin-bottom: 1px;
+}
+
+.NavItem:focus {
+  outline: none;
+  box-shadow: inset 0 0 0 1px var(--accent-7);
+}
+
+.NavItem:not([href]) {
+  color: var(--gray-10);
+}
+
+.NavItem[href]:hover {
+  background-color: var(--accent-4);
+}
+
+.NavItem.active,
+.NavItem.active:hover {
+  background-color: var(--accent-5);
+}
