@@ -1,27 +1,7 @@
 import React from 'react';
-import { Text, Box, Link, Heading, Skeleton, styled } from '@modulz/design-system';
+import { Box, Link, Heading } from '@radix-ui/themes';
 import { ScrollArea } from '@components/ScrollArea';
-
-const QuickNavUl = styled('ul', {
-  listStyleType: 'none',
-  p: 0,
-  m: 0,
-});
-
-const QuickNavLink = styled(Link, {
-  color: '$slate11',
-  display: 'inline-flex',
-  my: '$1',
-
-  '[data-level="2"] ~ [data-level="3"] &': {
-    marginLeft: '$5',
-  },
-});
-
-const QuickNavText = styled(Text, {
-  color: 'inherit',
-  lineHeight: '20px',
-});
+import styles from './QuickNav.module.css';
 
 export function QuickNav() {
   const [headings, setHeadings] = React.useState<HTMLHeadingElement[]>([]);
@@ -42,38 +22,39 @@ export function QuickNav() {
   return (
     <ScrollArea>
       <Box
-        as="nav"
+        asChild
+        px="5"
         aria-labelledby="site-quick-nav-heading"
-        css={{
-          padding: '$5',
-          py: 68,
+        style={{
+          paddingBlock: 68,
           display: headings.length === 0 ? 'none' : 'block',
         }}
       >
-        <Heading css={{ mb: '$3' }} id="site-quick-nav-heading">
-          Quick nav
-        </Heading>
-        <QuickNavUl>
-          {headings.length === 0 && (
-            <Box as="li">
-              <QuickNavLink variant="subtle">
-                <QuickNavText size="2">
-                  <Skeleton variant="text" />
-                </QuickNavText>
-              </QuickNavLink>
-            </Box>
-          )}
-
-          {headings.map(({ id, nodeName, innerText }) => {
-            return (
-              <Box as="li" key={id} data-level={getLevel(nodeName)}>
-                <QuickNavLink variant="subtle" href={`#${id}`}>
-                  <QuickNavText size="2">{innerText}</QuickNavText>
-                </QuickNavLink>
-              </Box>
-            );
-          })}
-        </QuickNavUl>
+        <nav>
+          <Heading mb="3" size="4" id="site-quick-nav-heading" asChild>
+            <h4>Quick nav</h4>
+          </Heading>
+          <Box asChild p="0" style={{ listStyle: 'none' }}>
+            <ul>
+              {headings.map(({ id, nodeName, innerText }) => {
+                return (
+                  <Box
+                    asChild
+                    key={id}
+                    data-level={getLevel(nodeName)}
+                    className={styles.LinkWrapper}
+                  >
+                    <li>
+                      <Link href={`#${id}`} color="gray" size="2" className={styles.Link}>
+                        {innerText}
+                      </Link>
+                    </li>
+                  </Box>
+                );
+              })}
+            </ul>
+          </Box>
+        </nav>
       </Box>
     </ScrollArea>
   );

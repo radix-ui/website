@@ -1,0 +1,7 @@
+.LinkWrapper {
+  padding-block: var(--space-1);
+}
+
+.LinkWrapper[data-level='2'] ~ .LinkWrapper[data-level='3'] .Link {
+  margin-left: var(--space-5);
+}

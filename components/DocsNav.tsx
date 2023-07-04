@@ -39,9 +39,9 @@ export const NavItemWrapper = React.forwardRef<any, NavItemProps>(function DocsN
   );
 });
 
-export function NavItem({ children, ...props }: NavItemProps) {
+export function NavItem({ children, active, ...props }: NavItemProps) {
   return (
-    <NavItemWrapper {...props} className={classNames(styles.NavItem)}>
+    <NavItemWrapper {...props} className={classNames(styles.NavItem, active && styles.active)}>
       {children}
     </NavItemWrapper>
   );
