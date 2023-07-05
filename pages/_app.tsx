@@ -113,7 +113,12 @@ function App(props: AppProps) {
   return (
     <DesignSystemProvider>
       <CssLibPreferenceProvider>
-        <ThemeProvider disableTransitionOnChange defaultTheme="system">
+        <ThemeProvider
+          disableTransitionOnChange
+          attribute="class"
+          value={{ light: 'light-theme', dark: darkTheme.className }}
+          defaultTheme="system"
+        >
           <Pages {...props} />
         </ThemeProvider>
       </CssLibPreferenceProvider>

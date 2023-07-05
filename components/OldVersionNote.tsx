@@ -10,7 +10,7 @@ export function OldVersionNote({ name, href }) {
         <Text as="p" size="2" color="yellow">
           A newer version of <Text weight="bold">{name}</Text> is available.{' '}
           <NextLink href={href} passHref>
-            <Link>Learn more</Link>
+            <Link color="blue">Learn more</Link>
           </NextLink>
           .
         </Text>

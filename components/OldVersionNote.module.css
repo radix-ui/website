@@ -1,10 +1,13 @@
 .Note {
+  position: sticky;
+  top: var(--space-9);
   background-color: var(--yellow-2);
   border: 1px solid var(--yellow-6);
   border-inline-width: none;
   padding: var(--space-3) var(--space-5);
   margin-inline: calc(-1 * var(--space-5));
   margin-top: calc(-1 * var(--space-5));
+  z-index: 1;
 }
 
 /* @media (min-width: 520px) { */

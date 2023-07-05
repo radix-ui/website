@@ -1,12 +1,11 @@
 import React from 'react';
 import { getMDXComponent } from 'mdx-bundler/client';
-import { Box, Flex, Link, Text } from '@modulz/design-system';
+import { Box, Flex, Link, Text, Heading } from '@radix-ui/themes';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { MDXProvider, components } from '@components/MDXComponents';
 import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { RemoveScroll } from 'react-remove-scroll';
 import { QuickNav } from '@components/QuickNav';
-import * as DS from '@modulz/design-system';
 
 import type { Frontmatter } from 'types/frontmatter';
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
@@ -33,44 +32,34 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
         image={frontmatter.metaImage}
       />
 
-      <DS.Text
-        as="h1"
-        size="8"
-        css={{ scrollMarginTop: '$9', fontWeight: 500, mb: '$2', lineHeight: '40px' }}
-      >
+      <Heading as="h1" size="8" mb="2" style={{ scrollMarginTop: 'var(--space-9)' }}>
         {frontmatter.metaTitle}
-      </DS.Text>
+      </Heading>
 
-      <Box css={{ mt: '$2', mb: '$7' }}>
-        <DS.Paragraph size="2" as="p">
+      <Box mt="2" mb="7">
+        <Text size="4" color="gray" as="p">
           {frontmatter.metaDescription}
-        </DS.Paragraph>
+        </Text>
 
-        <Flex gap="5" css={{ mt: '$5' }}>
+        <Flex gap="5" mt="5">
           <Link
-            variant="blue"
             target="_blank"
             href={`https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/${fileName}.tsx`}
           >
-            <Flex css={{ display: 'inline-flex', position: 'relative' }}>
-              <Text size="3" css={{ display: 'inline', lineHeight: '15px' }}>
-                View source
-              </Text>
-              <Box as="span" css={{ ml: '$1', color: '$gray9' }}>
+            <Flex display="inline-flex" align="center" gap="2">
+              <Text size="3">View source</Text>
+              <Box asChild style={{ color: 'var(--gray-9)' }}>
                 <ArrowTopRightIcon />
               </Box>
             </Flex>
           </Link>
           <Link
-            variant="blue"
             target="_blank"
             href={`https://github.com/radix-ui/themes/issues/new?title=[${componentName}] Issue`}
           >
-            <Flex css={{ display: 'inline-flex', position: 'relative' }}>
-              <Text size="3" css={{ display: 'inline', lineHeight: '15px' }}>
-                Report an issue
-              </Text>
-              <Box as="span" css={{ ml: '$1', color: '$gray9' }}>
+            <Flex display="inline-flex" align="center" gap="2">
+              <Text size="3">Report an issue</Text>
+              <Box asChild style={{ color: 'var(--gray-9)' }}>
                 <ArrowTopRightIcon />
               </Box>
             </Flex>
@@ -83,7 +72,7 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
       </MDXProvider>
 
       <Box
-        as="aside"
+        asChild
         // Components that hide the scrollbar (like Dialog) add padding to
         // account for the scrollbar gap to avoid layout jank. This does not
         // work for position: fixed elements. Since we use react-remove-scroll
@@ -92,21 +81,20 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
         // https://github.com/radix-ui/website/issues/64
         // https://github.com/theKashey/react-remove-scroll#positionfixed-elements
         className={RemoveScroll.classNames.zeroRight}
-        css={{
-          display: 'none',
-          '@media (min-width: 1440px)': {
-            display: 'block',
-            width: 250,
-            flexShrink: 0,
-            zIndex: 1,
-            position: 'fixed',
-            top: '$sizes$8',
-            right: 0,
-            bottom: 0,
-          },
+        position="fixed"
+        right="0"
+        bottom="0"
+        display={{ initial: 'none', lg: 'block' }}
+        style={{
+          width: 250,
+          flexShrink: 0,
+          zIndex: 1,
+          top: 'var(--space-9)',
         }}
       >
-        <QuickNav key={frontmatter.slug} />
+        <aside>
+          <QuickNav key={frontmatter.slug} />
+        </aside>
       </Box>
     </>
   );

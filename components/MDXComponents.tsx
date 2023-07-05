@@ -30,6 +30,7 @@ import {
   Tabs,
   Text,
 } from '@radix-ui/themes';
+import * as DS from '@modulz/design-system';
 import styles from './MDXComponents.module.css';
 import { classNames } from '@lib/classNames';
 
@@ -42,6 +43,7 @@ export const components = {
   TabsTrigger: Tabs.Trigger,
   CodeBlock,
   HeroCodeBlock,
+  ...DS,
   h1: (props) => (
     <Heading asChild size="8">
       <h1 {...props} style={{ scrollMarginTop: 'var(--space-9)' }} />
