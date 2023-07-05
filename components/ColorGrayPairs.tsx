@@ -21,7 +21,11 @@ export function ColorGrayPairs() {
             justify="center"
             style={{ height: 35, marginBottom: 2, backgroundColor: `var(--${color}-4)` }}
           >
-            <Text size="2" style={{ color: `var(--${color}-11)`, textTransform: 'capitalize' }}>
+            <Text
+              as="p"
+              size="2"
+              style={{ color: `var(--${color}-11)`, textTransform: 'capitalize' }}
+            >
               {color}
             </Text>
           </Flex>
@@ -34,6 +38,7 @@ export function ColorGrayPairs() {
                 style={{ height: 35, backgroundColor: `var(--${pair}-10)` }}
               >
                 <Text
+                  as="p"
                   size="2"
                   style={{
                     color: blackTextPairs.includes(pair) ? 'black' : 'white',

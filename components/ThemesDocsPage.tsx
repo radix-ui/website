@@ -14,7 +14,7 @@ import {
 import { NavHeading, NavItem, NavItemTitle } from './DocsNav';
 // import { ResourceColors, ResourceIcons, ResourceStitches } from './Resources';
 import { RouteProps, allThemesRoutes, themesRoutes } from '@lib/themesRoutes';
-import { Provider } from '@radix-ui/themes';
+import { RadixThemesProvider } from '@radix-ui/themes';
 import { ThemesDocsHeader } from './ThemesDocsHeader';
 
 export function ThemesDocsPage({ children }: { children: React.ReactNode }) {
@@ -22,7 +22,7 @@ export function ThemesDocsPage({ children }: { children: React.ReactNode }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   return (
-    <Provider>
+    <RadixThemesProvider>
       <HeaderWrapper>
         <ThemesDocsHeader
           onMobileMenuButtonClick={() => setIsMobileMenuOpen((prevOpen) => !prevOpen)}
@@ -76,6 +76,6 @@ export function ThemesDocsPage({ children }: { children: React.ReactNode }) {
           <EditPageLink />
         </PageWrapper>
       </MainWrapper>
-    </Provider>
+    </RadixThemesProvider>
   );
 }

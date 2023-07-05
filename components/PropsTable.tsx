@@ -41,7 +41,7 @@ export function PropsTable({
             }}
           >
             <th>
-              <Text size="2" color="gray">
+              <Text as="p" size="2" color="gray">
                 Prop
               </Text>
             </th>
@@ -56,7 +56,7 @@ export function PropsTable({
             }}
           >
             <th>
-              <Text size="2" color="gray">
+              <Text as="p" size="2" color="gray">
                 Type
               </Text>
             </th>
@@ -71,7 +71,7 @@ export function PropsTable({
             }}
           >
             <th>
-              <Text size="2" color="gray">
+              <Text as="p" size="2" color="gray">
                 Default
               </Text>
             </th>
@@ -120,7 +120,9 @@ export function PropsTable({
                       }}
                     >
                       <Box p="3">
-                        <Text size="2">{description}</Text>
+                        <Text as="p" size="2">
+                          {description}
+                        </Text>
                       </Box>
                     </Popover.Content>
                   </Popover.Root>

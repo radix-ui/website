@@ -35,7 +35,7 @@ export function CssVariablesTable({
             }}
           >
             <th>
-              <Text size="2" color="gray">
+              <Text as="p" size="2" color="gray">
                 CSS Variable
               </Text>
             </th>
@@ -50,7 +50,7 @@ export function CssVariablesTable({
             }}
           >
             <th>
-              <Text size="2" color="gray">
+              <Text as="p" size="2" color="gray">
                 Description
               </Text>
             </th>
@@ -90,7 +90,9 @@ export function CssVariablesTable({
               }}
             >
               <td>
-                <Text size="2">{description}</Text>
+                <Text as="p" size="2">
+                  {description}
+                </Text>
               </td>
             </Box>
           </tr>

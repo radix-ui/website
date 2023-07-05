@@ -28,14 +28,14 @@ export function KeyboardTable({
         <tr>
           <Box asChild height="8" pr="4" style={{ borderBottom: '1px solid var(--gray-6)' }}>
             <th>
-              <Text size="2" color="gray">
+              <Text as="p" size="2" color="gray">
                 Key
               </Text>
             </th>
           </Box>
           <Box asChild height="8" pr="4" style={{ borderBottom: '1px solid var(--gray-6)' }}>
             <th>
-              <Text size="2" color="gray">
+              <Text as="p" size="2" color="gray">
                 Description
               </Text>
             </th>
@@ -61,7 +61,9 @@ export function KeyboardTable({
             </Box>
             <Box asChild height="8" pr="4" style={{ borderBottom: '1px solid var(--gray-6)' }}>
               <td>
-                <Text size="2">{description}</Text>
+                <Text as="p" size="2">
+                  {description}
+                </Text>
               </td>
             </Box>
           </tr>

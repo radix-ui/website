@@ -32,7 +32,7 @@ export const ColorsDocsHeader = (props: ColorsDocsHeaderProps) => {
             <Box css={{ display: 'none', '@bp2': { display: 'contents' } }}>
               <NextLink href="/docs/colors" passHref>
                 <Link variant={router.pathname.includes('/docs/colors') ? 'contrast' : 'subtle'}>
-                  <Text>Documentation</Text>
+                  <Text as="p">Documentation</Text>
                 </Link>
               </NextLink>
 

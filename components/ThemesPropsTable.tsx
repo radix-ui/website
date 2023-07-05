@@ -713,8 +713,8 @@ const props: Record<string, PropDef[]> = {
       name: 'mode',
       required: false,
       typeSimple: 'enum',
-      type: formatValues(themes.themeModes),
-      default: formatValues(themes.themeModeDefault),
+      type: formatValues(themes.themeAppearances),
+      default: formatValues(themes.themeAppearanceDefault),
       description:
         'Changes the color scheme of your app. Invert will use the opposite color scheme of the parent ThemeConfig',
     },

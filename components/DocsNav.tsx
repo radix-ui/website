@@ -48,9 +48,5 @@ export function NavItem({ children, active, ...props }: NavItemProps) {
 }
 
 export function NavItemTitle({ children }) {
-  return (
-    <Text asChild size="2">
-      <span>{children}</span>
-    </Text>
-  );
+  return <Text size="2">{children}</Text>;
 }

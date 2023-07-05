@@ -8,7 +8,7 @@ import {
   Tabs,
   ScrollArea,
   Select,
-  ThemeConfig,
+  Theme,
 } from '@radix-ui/themes';
 import * as Collapsible from '@radix-ui/react-collapsible';
 import { getParameters } from 'codesandbox/lib/api/define';
@@ -88,11 +88,11 @@ export const HeroCodeBlock = ({
               value={makeCodeSandboxParams(frontmatter.name, sources, usedCssLib)}
             />
             <Tooltip content={`Open ${CSS_LIB_NAMES[usedCssLib]} demo in CodeSandbox`}>
-              <ThemeConfig mode="dark" applyBackgroundColor={false}>
+              <Theme appearance="dark" applyBackgroundColor={false}>
                 <IconButton size="1" variant="ghost" type="submit" color="gray" highContrast>
                   <CodeSandboxLogoIcon />
                 </IconButton>
-              </ThemeConfig>
+              </Theme>
             </Tooltip>
           </form>
         </Flex>

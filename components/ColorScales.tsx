@@ -28,7 +28,7 @@ const ColorScaleBase = ({ steps }: ColorScaleBaseProps) => (
           }}
         >
           {showStep && (
-            <Text size="2" style={{ color: scale >= 9 ? 'white' : 'black' }}>
+            <Text as="p" size="2" style={{ color: scale >= 9 ? 'white' : 'black' }}>
               {scale}
             </Text>
           )}

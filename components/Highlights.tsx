@@ -39,7 +39,9 @@ export function Highlights({ features }) {
                 >
                   <CheckIcon />
                 </Flex>
-                <Text size="3">{feature}</Text>
+                <Text size="3" as="p">
+                  {feature}
+                </Text>
               </Flex>
             ))}
           </ul>
@@ -82,7 +84,7 @@ export function Highlights({ features }) {
           </Flex>
 
           {frontmatter.gzip && (
-            <Text size="1" color="gray">
+            <Text size="1" color="gray" as="p">
               Size:{' '}
               <Link
                 color="gray"
@@ -106,9 +108,7 @@ export function Highlights({ features }) {
                 target="_blank"
               >
                 <Flex display="inline-flex" position="relative" gap="1">
-                  <Text asChild size="1">
-                    <span>View source</span>
-                  </Text>
+                  <Text size="1">View source</Text>
                   <ArrowTopRightIcon style={{ color: 'var(--gray-9)' }} />
                 </Flex>
               </Link>
@@ -119,9 +119,7 @@ export function Highlights({ features }) {
                 target="_blank"
               >
                 <Flex display="inline-flex" position="relative" gap="1">
-                  <Text size="1" asChild>
-                    <span>View on npm</span>
-                  </Text>
+                  <Text size="1">View on npm</Text>
                   <ArrowTopRightIcon style={{ color: 'var(--gray-9)' }} />
                 </Flex>
               </Link>
@@ -130,9 +128,7 @@ export function Highlights({ features }) {
             <Box>
               <Link href="https://github.com/radix-ui/primitives/issues/new/choose" target="_blank">
                 <Flex display="inline-flex" position="relative" gap="1">
-                  <Text size="1" asChild>
-                    <span>Report an issue</span>
-                  </Text>
+                  <Text size="1">Report an issue</Text>
                   <ArrowTopRightIcon style={{ color: 'var(--gray-9)' }} />
                 </Flex>
               </Link>
@@ -142,9 +138,7 @@ export function Highlights({ features }) {
               <Box>
                 <Link href={frontmatter.aria} target="_blank">
                   <Flex display="inline-flex" position="relative" gap="1">
-                    <Text size="1" asChild>
-                      <span>ARIA design pattern</span>
-                    </Text>
+                    <Text size="1">ARIA design pattern</Text>
                     <ArrowTopRightIcon style={{ color: 'var(--gray-9)' }} />
                   </Flex>
                 </Link>

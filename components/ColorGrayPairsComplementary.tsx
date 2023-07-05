@@ -38,14 +38,16 @@ export function ColorGrayPairsComplementary() {
             justify="center"
             style={{ height: 65, backgroundColor: `var(--${color}-10)` }}
           >
-            <Text size="2" style={{ color: 'white', textTransform: 'capitalize' }}>
+            <Text as="p" size="2" style={{ color: 'white', textTransform: 'capitalize' }}>
               {color}
             </Text>
           </Flex>
         ))}
       </Grid>
 
-      <Text mb="3">5 scales designed for black foreground text.</Text>
+      <Text as="p" mb="3">
+        5 scales designed for black foreground text.
+      </Text>
 
       <Grid
         align="center"
@@ -62,7 +64,7 @@ export function ColorGrayPairsComplementary() {
             justify="center"
             style={{ height: 65, backgroundColor: `var(--${color}-10)` }}
           >
-            <Text size="2" style={{ color: 'black', textTransform: 'capitalize' }}>
+            <Text as="p" size="2" style={{ color: 'black', textTransform: 'capitalize' }}>
               {color}
             </Text>
           </Flex>

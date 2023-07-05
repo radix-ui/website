@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
 import { globalCss, darkTheme, DesignSystemProvider } from '@modulz/design-system';
-import { Provider as RadixThemesProvider, ThemeConfig, ThemePanel } from '@radix-ui/themes';
+import { RadixThemesProvider, Theme, ThemePanel } from '@radix-ui/themes';
 import { PrimitivesDocsPage } from '@components/PrimitivesDocsPage';
 import { ColorsDocsPage } from '@components/ColorsDocsPage';
 import { useAnalytics } from '@lib/analytics';
@@ -73,39 +73,39 @@ function App({ Component, pageProps }: AppProps) {
             {(() => {
               if (isPrimitivesDocs) {
                 return (
-                  <ThemeConfig accentScale="violet">
+                  <Theme accentScale="violet">
                     <PrimitivesDocsPage>
                       <Component {...pageProps} />
                     </PrimitivesDocsPage>
-                  </ThemeConfig>
+                  </Theme>
                 );
               }
 
               if (isColorsDocs) {
                 return (
-                  <ThemeConfig accentScale="violet">
+                  <Theme accentScale="violet">
                     <ColorsDocsPage>
                       <Component {...pageProps} />
                     </ColorsDocsPage>
-                  </ThemeConfig>
+                  </Theme>
                 );
               }
 
               if (isThemesDocs) {
                 return (
-                  <ThemeConfig accentScale="grass">
+                  <Theme accentScale="grass">
                     <ThemePanel />
                     <ThemesDocsPage>
                       <Component {...pageProps} />
                     </ThemesDocsPage>
-                  </ThemeConfig>
+                  </Theme>
                 );
               }
 
               return (
-                <ThemeConfig accentScale="violet">
+                <Theme accentScale="violet">
                   <Component {...pageProps} />
-                </ThemeConfig>
+                </Theme>
               );
             })()}
           </ThemeProvider>

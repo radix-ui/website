@@ -19,7 +19,7 @@ export function ColorGrays() {
           justify="center"
           style={{ height: 35, backgroundColor: `var(--${color}-10)` }}
         >
-          <Text size="2" style={{ color: 'white', textTransform: 'capitalize' }}>
+          <Text as="p" size="2" style={{ color: 'white', textTransform: 'capitalize' }}>
             {color}
           </Text>
         </Flex>

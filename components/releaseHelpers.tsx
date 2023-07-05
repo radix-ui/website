@@ -40,23 +40,21 @@ export function PackageRelease({
 export function PRLink({ id }: { id: number | number[] }) {
   const ids = Array.isArray(id) ? id : [id];
   return (
-    <Text color="gray" size="2" asChild>
-      <span>
-        –{' '}
-        {ids.map((id, i, arr) => (
-          <React.Fragment key={id}>
-            <Link
-              color="gray"
-              href={`https://github.com/radix-ui/primitives/pull/${id}`}
-              target="_blank"
-              rel="noopener"
-            >
-              #{id}
-            </Link>
-            {i < arr.length - 1 ? ' ' : null}
-          </React.Fragment>
-        ))}
-      </span>
+    <Text color="gray" size="2">
+      –{' '}
+      {ids.map((id, i, arr) => (
+        <React.Fragment key={id}>
+          <Link
+            color="gray"
+            href={`https://github.com/radix-ui/primitives/pull/${id}`}
+            target="_blank"
+            rel="noopener"
+          >
+            #{id}
+          </Link>
+          {i < arr.length - 1 ? ' ' : null}
+        </React.Fragment>
+      ))}
     </Text>
   );
 }

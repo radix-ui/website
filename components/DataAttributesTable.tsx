@@ -35,7 +35,7 @@ export function DataAttributesTable({
             }}
           >
             <th>
-              <Text size="2" color="gray">
+              <Text as="p" size="2" color="gray">
                 Data Attribute
               </Text>
             </th>
@@ -50,7 +50,7 @@ export function DataAttributesTable({
             }}
           >
             <th>
-              <Text size="2" color="gray">
+              <Text as="p" size="2" color="gray">
                 Values
               </Text>
             </th>
@@ -89,7 +89,9 @@ export function DataAttributesTable({
                     )}
                   </Code>
                 ) : (
-                  <Text size="2">{values}</Text>
+                  <Text as="p" size="2">
+                    {values}
+                  </Text>
                 )}
               </td>
             </Box>
