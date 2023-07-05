@@ -12,13 +12,10 @@ export function Highlights({ features }) {
   const publishedName = frontmatter.publishedName || frontmatter.name;
 
   return (
-    <Flex
-      direction={{ /* initial: 'column', sm: 'row' */ initial: 'row' }}
-      mt={{ initial: '4', sm: '7' }}
-    >
+    <Flex direction={{ initial: 'column', sm: 'row' }} mt={{ initial: '4', sm: '7' }}>
       <Box mb="5" grow={{ sm: '1' }} mr={{ sm: '5' }}>
-        <Heading asChild size="4" mb="4">
-          <h2>Features</h2>
+        <Heading as="h2" size="4" mb="4">
+          Features!
         </Heading>
 
         <Flex asChild m="0" p="0" gap="2" direction="column">
@@ -98,7 +95,7 @@ export function Highlights({ features }) {
           )}
 
           <Box asChild display={{ /* initial: 'none', sm: 'block' */ initial: 'block' }}>
-            <Separator size="2" my="4" />
+            <Separator size="2" my="5" />
           </Box>
 
           <Flex direction="column" gap="2">

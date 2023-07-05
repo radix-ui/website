@@ -2,9 +2,8 @@ import * as React from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { RemoveScroll } from 'react-remove-scroll';
-import { Box, Flex, Text, Link } from '@radix-ui/themes';
+import { Box, Flex, Text, Link, ScrollArea } from '@radix-ui/themes';
 import { Slot } from '@radix-ui/react-slot';
-import { ScrollArea } from '@components/ScrollArea';
 import { classNames } from '@lib/classNames';
 import styles from './DocsPage.module.css';
 

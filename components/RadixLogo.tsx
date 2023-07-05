@@ -1,7 +1,7 @@
 import React from 'react';
-import { Flex } from '@modulz/design-system';
 import { RadixLogoIcon } from './RadixLogoIcon';
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
+import { Flex } from '@radix-ui/themes';
 
 export const RadixLogo = ({ label = 'Radix homepage' }: { label?: string }) => (
   <AccessibleIcon label={label}>

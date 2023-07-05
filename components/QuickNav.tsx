@@ -1,6 +1,5 @@
 import React from 'react';
-import { Box, Link, Heading } from '@radix-ui/themes';
-import { ScrollArea } from '@components/ScrollArea';
+import { Box, Link, Heading, ScrollArea } from '@radix-ui/themes';
 import styles from './QuickNav.module.css';
 
 export function QuickNav() {

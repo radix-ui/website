@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
-import { ThemeProvider } from 'next-themes';
+import { ThemeProvider, useTheme } from 'next-themes';
 import { globalCss, darkTheme, DesignSystemProvider } from '@modulz/design-system';
 import { Theme, ThemePanel } from '@radix-ui/themes';
 import { PrimitivesDocsPage } from '@components/PrimitivesDocsPage';
@@ -51,62 +51,70 @@ const globalStyles = globalCss({
   'h1, h2, h3, h4, h5': { fontWeight: 500 },
 });
 
-function App({ Component, pageProps }: AppProps) {
-  globalStyles();
-  useAnalytics();
+function Pages({ Component, pageProps }: AppProps) {
+  const { resolvedTheme } = useTheme();
   const router = useRouter();
+  const [mounted, setMounted] = React.useState(false);
 
   const isPrimitivesDocs = router.pathname.includes('/docs/primitives');
   const isColorsDocs = router.pathname.includes('/docs/colors');
   const isThemesDocs = router.pathname.includes('/docs/themes');
 
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
+  if (isPrimitivesDocs) {
+    return (
+      <Theme accentScale="violet" appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}>
+        <PrimitivesDocsPage>
+          <Component {...pageProps} />
+        </PrimitivesDocsPage>
+      </Theme>
+    );
+  }
+
+  if (isColorsDocs) {
+    return (
+      <Theme accentScale="violet" appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}>
+        <ColorsDocsPage>
+          <Component {...pageProps} />
+        </ColorsDocsPage>
+      </Theme>
+    );
+  }
+
+  if (isThemesDocs) {
+    return (
+      <Theme accentScale="grass" appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}>
+        <ThemePanel />
+        <ThemesDocsPage>
+          <Component {...pageProps} />
+        </ThemesDocsPage>
+      </Theme>
+    );
+  }
+
+  return (
+    <Theme accentScale="violet" appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}>
+      <Component {...pageProps} />
+    </Theme>
+  );
+}
+
+function App(props: AppProps) {
+  globalStyles();
+  useAnalytics();
+
   return (
     <DesignSystemProvider>
       <CssLibPreferenceProvider>
-        <ThemeProvider
-          disableTransitionOnChange
-          attribute="class"
-          value={{ light: 'light-theme', dark: darkTheme.className }}
-          defaultTheme="system"
-        >
-          {(() => {
-            if (isPrimitivesDocs) {
-              return (
-                <Theme accentScale="violet">
-                  <PrimitivesDocsPage>
-                    <Component {...pageProps} />
-                  </PrimitivesDocsPage>
-                </Theme>
-              );
-            }
-
-            if (isColorsDocs) {
-              return (
-                <Theme accentScale="violet">
-                  <ColorsDocsPage>
-                    <Component {...pageProps} />
-                  </ColorsDocsPage>
-                </Theme>
-              );
-            }
-
-            if (isThemesDocs) {
-              return (
-                <Theme accentScale="grass">
-                  <ThemePanel />
-                  <ThemesDocsPage>
-                    <Component {...pageProps} />
-                  </ThemesDocsPage>
-                </Theme>
-              );
-            }
-
-            return (
-              <Theme accentScale="violet">
-                <Component {...pageProps} />
-              </Theme>
-            );
-          })()}
+        <ThemeProvider disableTransitionOnChange defaultTheme="system">
+          <Pages {...props} />
         </ThemeProvider>
       </CssLibPreferenceProvider>
     </DesignSystemProvider>

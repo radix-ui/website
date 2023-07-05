@@ -1,0 +1,19 @@
+.Note {
+  background-color: var(--yellow-2);
+  border: 1px solid var(--yellow-6);
+  border-inline-width: none;
+  padding: var(--space-3) var(--space-5);
+  margin-inline: calc(-1 * var(--space-5));
+  margin-top: calc(-1 * var(--space-5));
+}
+
+/* @media (min-width: 520px) { */
+@media (min-width: 768px) {
+  .Note {
+    padding: var(--space-3) var(--space-4);
+    border-bottom-left-radius: var(--br-2);
+    border-bottom-right-radius: var(--br-2);
+    border-inline-width: 1px;
+    margin-inline: 0;
+  }
+}

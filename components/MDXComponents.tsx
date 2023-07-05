@@ -1,6 +1,5 @@
 import * as React from 'react';
 import NextLink from 'next/link';
-import * as DS from '@modulz/design-system';
 import { Link2Icon } from '@radix-ui/react-icons';
 import { PropsTable } from './PropsTable';
 import { ThemesPropsTable } from './ThemesPropsTable';
@@ -37,7 +36,6 @@ import { classNames } from '@lib/classNames';
 export const components = {
   ColorScale,
   ColorScaleGroup,
-  ...DS,
   Tabs: Tabs.Root,
   TabsList: Tabs.List,
   TabsContent: Tabs.Content,
