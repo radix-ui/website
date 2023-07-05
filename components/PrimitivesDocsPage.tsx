@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useRouter } from 'next/router';
-import { Box, Badge } from '@modulz/design-system';
+import { Box, Badge } from '@radix-ui/themes';
 import {
   HeaderWrapper,
   MainWrapper,
@@ -41,12 +41,12 @@ export function PrimitivesDocsPage({ children }: { children: React.ReactNode }) 
       <MainWrapper>
         <NavWrapper isMobileMenuOpen={isMobileMenuOpen}>
           <Box
-            css={{
-              position: 'sticky',
-              top: 0,
-              px: '$3',
-              backgroundColor: '$loContrast',
-              '@bp2': { display: 'none' },
+            position="sticky"
+            top="0"
+            display={{ sm: 'none' }}
+            px="3"
+            style={{
+              backgroundColor: 'var(--color-background)',
             }}
           >
             <PrimitivesDocsSearch
@@ -56,9 +56,9 @@ export function PrimitivesDocsPage({ children }: { children: React.ReactNode }) 
             />
           </Box>
 
-          <Box css={{ display: isSearchOpen ? 'none' : undefined, mt: '$4' }}>
+          <Box mt="4" style={{ display: isSearchOpen ? 'none' : undefined }}>
             {primitivesRoutes.map((section: RouteProps) => (
-              <Box key={section.label} css={{ mb: '$4' }}>
+              <Box key={section.label} mb="4">
                 <NavHeading>{section.label}</NavHeading>
 
                 {section.pages.map((page) => (
@@ -69,12 +69,12 @@ export function PrimitivesDocsPage({ children }: { children: React.ReactNode }) 
                   >
                     <NavItemTitle>{page.title}</NavItemTitle>
                     {page.preview && (
-                      <Badge variant="blue" css={{ ml: '$2' }}>
+                      <Badge color="blue" ml="2">
                         Preview
                       </Badge>
                     )}
                     {page.deprecated && (
-                      <Badge variant="yellow" css={{ ml: '$2' }}>
+                      <Badge color="yellow" ml="2">
                         Deprecated
                       </Badge>
                     )}
@@ -83,9 +83,9 @@ export function PrimitivesDocsPage({ children }: { children: React.ReactNode }) 
               </Box>
             ))}
 
-            <Box css={{ mt: '$8' }}>
+            <Box mt="9">
               <NavHeading>Resources</NavHeading>
-              <Box css={{ px: '$2' }}>
+              <Box px="2">
                 <ResourceColors />
                 <ResourceIcons />
               </Box>

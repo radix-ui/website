@@ -2,28 +2,16 @@ import * as React from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { RemoveScroll } from 'react-remove-scroll';
-import { Box, Flex, Text, Link, Container, styled } from '@modulz/design-system';
+import { Box, Flex, Text, Link } from '@radix-ui/themes';
 import { Slot } from '@radix-ui/react-slot';
 import { ScrollArea } from '@components/ScrollArea';
-
-const HeaderWrapper = styled(Box, {
-  position: 'fixed',
-  top: 0,
-  left: 0,
-  width: '100%',
-  boxShadow: '0 0 0 1px var(--gray-5, $colors$mauve5)',
-  zIndex: 2,
-  backgroundColor: '$loContrast',
-
-  '.dark-theme &': {
-    backgroundColor: 'var(--color-background, $mauve1)',
-  },
-});
+import { classNames } from '@lib/classNames';
+import styles from './DocsPage.module.css';
 
 function MainWrapper(props) {
   return (
-    <Box css={{ pt: '$8', position: 'relative', zIndex: 1 }}>
-      <Flex css={{ flexDirection: 'row' }} {...props} />
+    <Box pt="9" position="relative" style={{ zIndex: 1 }}>
+      <Flex {...props} />
     </Box>
   );
 }
@@ -45,46 +33,53 @@ function NavWrapper({ children, isMobileMenuOpen }) {
   return (
     <RemoveScroll as={Slot} allowPinchZoom enabled={isMobileLayout && isMobileMenuOpen}>
       <Box
-        css={{
-          position: 'fixed',
-          top: '$sizes$8',
-          left: 0,
-          bottom: 0,
+        position="fixed"
+        left="0"
+        bottom="0"
+        style={{
+          top: 'var(--space-9)',
           zIndex: 1,
-
-          width: '100%',
           maxHeight: 'auto',
-
           overflowX: 'hidden',
           WebkitOverflowScrolling: 'touch',
-
           backgroundColor: 'var(--color-background, $loContrast)',
-
-          display: isMobileMenuOpen ? 'block' : 'none',
-          '@bp2': { display: 'block', width: '250px' },
+          display: isMobileMenuOpen ? 'block' : undefined,
+          width: isMobileMenuOpen ? '100%' : '250px',
         }}
+        display={{ initial: 'none', sm: 'block' }}
       >
         <ScrollArea>
-          <Box css={{ px: '$2' }}>{children}</Box>
-          <Box css={{ height: '$5', '@bp2': { height: '$8' } }} />
+          <Box px="2">{children}</Box>
+          <Box height={{ initial: '5', sm: '9' }} />
         </ScrollArea>
       </Box>
     </RemoveScroll>
   );
 }
 
-const PageWrapper = styled(Box, {
-  maxWidth: '100%',
-  flex: 1,
-  py: '$5',
-  zIndex: 0,
+interface PageWrapperProps extends React.ComponentProps<typeof Box> {}
 
-  '@bp2': { pt: '$8', pb: '$9', pl: '250px' },
-  '@media (min-width: 1440px)': { pr: '250px' },
+const PageWrapper = React.forwardRef<HTMLDivElement, PageWrapperProps>(function DocsPage(
+  { className, ...props },
+  forwardedRef
+) {
+  return (
+    <div ref={forwardedRef} {...props} className={classNames(className, styles.PageWrapper)} />
+  );
 });
 
-function ContentWrapper(props) {
-  return <Container size="3" css={{ maxWidth: '780px', position: 'relative' }} {...props} />;
+function ContentWrapper({ children, ...props }) {
+  return (
+    <Box
+      position="relative"
+      px={{ initial: '5', md: '0' }}
+      mx="auto"
+      style={{ maxWidth: '780px' }}
+      {...props}
+    >
+      {children}
+    </Box>
+  );
 }
 
 function Pagination({ allRoutes }) {
@@ -94,41 +89,52 @@ function Pagination({ allRoutes }) {
   const next = allRoutes[currentPageIndex + 1];
 
   return (
-    <Container size="3" css={{ maxWidth: '780px' }}>
+    <Box mx="auto" px={{ initial: '5', md: '0' }} style={{ maxWidth: '780px' }}>
       {(previous || next) && (
-        <Flex
-          aria-label="Pagination navigation"
-          css={{ justifyContent: 'space-between', my: '$9' }}
-        >
+        <Flex aria-label="Pagination navigation" justify="between" my="9">
           {previous && <PaginationLink route={previous} direction="Previous" />}
           {next && (
-            <Box css={{ textAlign: 'right', flexGrow: 1 }}>
+            <Box style={{ textAlign: 'right', flexGrow: 1 }}>
               <PaginationLink route={next} direction="Next" />
             </Box>
           )}
         </Flex>
       )}
-    </Container>
+    </Box>
   );
 }
+
+interface HeaderWrapperProps extends React.ComponentPropsWithoutRef<typeof Box> {}
+
+const HeaderWrapper = React.forwardRef<HTMLDivElement, HeaderWrapperProps>(function DocsPage(
+  { children, className, ...props },
+  forwardedRef
+) {
+  return (
+    <Box ref={forwardedRef} {...props} className={classNames(className, styles.HeaderWrapper)}>
+      {children}
+    </Box>
+  );
+});
 
 function PaginationLink({ route, direction }) {
   return (
     <NextLink href={`/${route.slug}`} passHref>
-      <Box
-        as="a"
+      <Flex
+        asChild
+        display="inline-flex"
+        direction="column"
+        gap="1"
         aria-label={`${direction} page: ${route.title}`}
-        css={{ color: 'var(--accent-11, $blue11)', textDecoration: 'none' }}
+        style={{ color: 'var(--accent-11, $blue11)', textDecoration: 'none' }}
       >
-        <Box css={{ mb: '$2' }}>
-          <Text size="3" css={{ color: '$slate11' }}>
+        <a>
+          <Text size="2" style={{ color: 'var(--gray-11)' }}>
             {direction}
           </Text>
-        </Box>
-        <Text size="5" css={{ color: 'inherit' }}>
-          {route.title}
-        </Text>
-      </Box>
+          <Text size="4">{route.title}</Text>
+        </a>
+      </Flex>
     </NextLink>
   );
 }
@@ -147,19 +153,20 @@ function EditPageLink() {
   const editUrl = `${filePath}.mdx`;
 
   return (
-    <Container size="3" css={{ maxWidth: '780px', my: '$9' }}>
+    <Box mx="auto" px={{ initial: '5', md: '0' }} my="9" style={{ maxWidth: '780px' }}>
       <Text size="3">
         <Link
           href={editUrl}
           title="Edit this page on GitHub."
           rel="noopener noreferrer"
           target="_blank"
-          variant="subtle"
+          color="gray"
+          size="2"
         >
           Edit this page on GitHub.
         </Link>
       </Text>
-    </Container>
+    </Box>
   );
 }
 

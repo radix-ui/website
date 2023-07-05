@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useRouter } from 'next/router';
-import { Box, Badge } from '@modulz/design-system';
+import { Box, Badge } from '@radix-ui/themes';
 import {
   HeaderWrapper,
   MainWrapper,
@@ -39,9 +39,9 @@ export function ColorsDocsPage({ children }: { children: React.ReactNode }) {
 
       <MainWrapper>
         <NavWrapper isMobileMenuOpen={isMobileMenuOpen}>
-          <Box css={{ mt: '$4' }}>
+          <Box mt="4">
             {colorsRoutes.map((section) => (
-              <Box key={section.label} css={{ mb: '$4' }}>
+              <Box key={section.label} mb="4">
                 <NavHeading>{section.label}</NavHeading>
 
                 {section.pages.map((page) => (
@@ -52,15 +52,15 @@ export function ColorsDocsPage({ children }: { children: React.ReactNode }) {
                     active={currentPageSlug === page.slug}
                   >
                     <NavItemTitle>{page.title}</NavItemTitle>
-                    {page.draft && <Badge css={{ ml: '$2' }}>Coming soon</Badge>}
+                    {page.draft && <Badge ml="2">Coming soon</Badge>}
                   </NavItem>
                 ))}
               </Box>
             ))}
 
-            <Box css={{ mt: '$8', '@bp2': { display: 'none' } }}>
+            <Box mt="8" display={{ sm: 'none' }}>
               <NavHeading>Resources</NavHeading>
-              <Box css={{ px: '$2' }}>
+              <Box px="2">
                 <ResourcePrimitives />
                 <ResourceIcons />
               </Box>

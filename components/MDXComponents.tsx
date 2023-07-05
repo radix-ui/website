@@ -53,7 +53,7 @@ export const components = {
     // takes the text even if it's wrapped in `<p>`
     // https://github.com/wooorm/xdm/issues/47
     const childText = typeof children === 'string' ? children : children.props.children;
-    return <Text size="4" mt="2" mb="7" color="gray" children={childText} {...props} />;
+    return <Text as="p" size="4" mt="2" mb="7" color="gray" children={childText} {...props} />;
   },
   h2: ({ children, id, ...props }) => (
     <Heading

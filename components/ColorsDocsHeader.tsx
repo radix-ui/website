@@ -1,7 +1,7 @@
 import React from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { Box, Container, Text, Flex, Link, Tooltip, IconButton } from '@modulz/design-system';
+import { Box, Text, Flex, Link, Tooltip, IconButton, Container } from '@radix-ui/themes';
 import { RadixLogo } from '@components/RadixLogo';
 import { ThemeToggle } from '@components/ThemeToggle';
 import { BoxLink } from '@components/BoxLink';
@@ -19,9 +19,9 @@ export const ColorsDocsHeader = (props: ColorsDocsHeaderProps) => {
   const router = useRouter();
 
   return (
-    <Box as="header" className={RemoveScroll.classNames.fullWidth}>
-      <Container size="4">
-        <Flex align="center" justify="between" css={{ height: '$8' }}>
+    <header className={RemoveScroll.classNames.fullWidth}>
+      <Box mx="auto" px="5">
+        <Flex align="center" justify="between" height="9">
           <NextLink href="/colors" passHref>
             <BoxLink>
               <RadixLogo label="Radix Colors homepage" />
@@ -29,10 +29,10 @@ export const ColorsDocsHeader = (props: ColorsDocsHeaderProps) => {
           </NextLink>
 
           <Flex align="center" gap="5">
-            <Box css={{ display: 'none', '@bp2': { display: 'contents' } }}>
+            <Flex gap="5" display={{ initial: 'none', sm: 'flex' }} align="center">
               <NextLink href="/docs/colors" passHref>
-                <Link variant={router.pathname.includes('/docs/colors') ? 'contrast' : 'subtle'}>
-                  <Text as="p">Documentation</Text>
+                <Link color="gray" size="2" highContrast={router.pathname.includes('/docs/colors')}>
+                  Documentation
                 </Link>
               </NextLink>
 
@@ -40,16 +40,17 @@ export const ColorsDocsHeader = (props: ColorsDocsHeaderProps) => {
                 <ResourcePrimitives />
                 <ResourceIcons />
               </ResourcesPopover>
-            </Box>
+            </Flex>
 
             <ThemeToggle />
 
-            <Box css={{ '@bp2': { display: 'none' } }}>
+            <Box display={{ sm: 'none' }}>
               <Tooltip content="Menu">
                 <IconButton
+                  size="1"
+                  color="gray"
+                  variant={isMenuActive ? 'soft' : 'ghost'}
                   onClick={onMobileMenuButtonClick}
-                  css={{ '@bp2': { display: 'none' } }}
-                  state={isMenuActive ? 'active' : undefined}
                 >
                   <HamburgerMenuIcon />
                 </IconButton>
@@ -57,7 +58,7 @@ export const ColorsDocsHeader = (props: ColorsDocsHeaderProps) => {
             </Box>
           </Flex>
         </Flex>
-      </Container>
-    </Box>
+      </Box>
+    </header>
   );
 };

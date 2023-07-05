@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useRouter } from 'next/router';
-import { Box, Badge } from '@modulz/design-system';
+import { Box, Badge } from '@radix-ui/themes';
 import {
   HeaderWrapper,
   MainWrapper,
@@ -14,7 +14,6 @@ import {
 import { NavHeading, NavItem, NavItemTitle } from './DocsNav';
 // import { ResourceColors, ResourceIcons, ResourceStitches } from './Resources';
 import { RouteProps, allThemesRoutes, themesRoutes } from '@lib/themesRoutes';
-import { RadixThemesProvider } from '@radix-ui/themes';
 import { ThemesDocsHeader } from './ThemesDocsHeader';
 
 export function ThemesDocsPage({ children }: { children: React.ReactNode }) {
@@ -22,7 +21,7 @@ export function ThemesDocsPage({ children }: { children: React.ReactNode }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   return (
-    <RadixThemesProvider>
+    <>
       <HeaderWrapper>
         <ThemesDocsHeader
           onMobileMenuButtonClick={() => setIsMobileMenuOpen((prevOpen) => !prevOpen)}
@@ -32,9 +31,9 @@ export function ThemesDocsPage({ children }: { children: React.ReactNode }) {
 
       <MainWrapper>
         <NavWrapper isMobileMenuOpen={isMobileMenuOpen}>
-          <Box css={{ mt: '$4' }}>
+          <Box mt="4">
             {themesRoutes.map((section: RouteProps) => (
-              <Box key={section.label} css={{ mb: '$4' }}>
+              <Box key={section.label} mb="4">
                 <NavHeading>{section.label}</NavHeading>
 
                 {section.pages.map((page) => (
@@ -45,12 +44,12 @@ export function ThemesDocsPage({ children }: { children: React.ReactNode }) {
                   >
                     <NavItemTitle>{page.title}</NavItemTitle>
                     {page.preview && (
-                      <Badge variant="blue" css={{ ml: '$2' }}>
+                      <Badge color="blue" ml="2">
                         Preview
                       </Badge>
                     )}
                     {page.deprecated && (
-                      <Badge variant="yellow" css={{ ml: '$2' }}>
+                      <Badge color="yellow" ml="2">
                         Deprecated
                       </Badge>
                     )}
@@ -76,6 +75,6 @@ export function ThemesDocsPage({ children }: { children: React.ReactNode }) {
           <EditPageLink />
         </PageWrapper>
       </MainWrapper>
-    </RadixThemesProvider>
+    </>
   );
 }

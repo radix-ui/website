@@ -1,0 +1,28 @@
+.HeaderWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 0 1px var(--gray-5);
+  z-index: 2;
+  background-color: var(--color-background);
+}
+
+.PageWrapper {
+  max-width: 100%;
+  flex: 1;
+  padding-block: var(--space-5);
+  z-index: 0;
+}
+
+@media (min-width: 768px) {
+  .PageWrapper {
+    padding-left: 250px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .PageWrapper {
+    padding-right: 250px;
+  }
+}

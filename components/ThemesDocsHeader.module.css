@@ -1,0 +1,11 @@
+@media (min-width: 768px) {
+  .Header {
+    padding-left: 250px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .Header {
+    padding-right: 250px;
+  }
+}

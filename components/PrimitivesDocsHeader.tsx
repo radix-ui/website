@@ -1,12 +1,14 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Box, Container, Flex, IconButton, Tooltip } from '@modulz/design-system';
+import { Box, Container, Flex, IconButton, Tooltip } from '@radix-ui/themes';
 import { RadixLogo } from '@components/RadixLogo';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import { ThemeToggle } from '@components/ThemeToggle';
 import { BoxLink } from '@components/BoxLink';
 import { RemoveScroll } from 'react-remove-scroll';
 import { PrimitivesDocsSearch } from '@components/PrimitivesDocsSearch';
+import { classNames } from '@lib/classNames';
+import styles from './PrimitiveDocsHeader.module.css';
 
 type PrimitivesDocsHeaderProps = {
   onMobileMenuButtonClick?: () => void;
@@ -17,40 +19,42 @@ export const PrimitivesDocsHeader = (props: PrimitivesDocsHeaderProps) => {
   const { onMobileMenuButtonClick, isMenuActive } = props;
   return (
     <Box
-      as="header"
-      className={RemoveScroll.classNames.fullWidth}
-      css={{
-        position: 'relative',
-        '@bp2': { pl: '250px' },
-        '@media (min-width: 1440px)': { pr: '250px' },
-      }}
+      asChild
+      className={classNames(RemoveScroll.classNames.fullWidth, styles.Header)}
+      position="relative"
     >
-      <Container size="3" css={{ maxWidth: '780px' }}>
-        <Flex align="center" justify="between" css={{ height: '$8' }}>
-          <NextLink href="/" passHref>
-            <BoxLink css={{ position: 'absolute', left: '$5' }}>
-              <RadixLogo label="Radix homepage" />
-            </BoxLink>
-          </NextLink>
+      <header>
+        <Box mx="auto" style={{ maxWidth: '780px' }}>
+          <Flex align="center" justify="between" height="9">
+            <NextLink href="/" passHref>
+              <BoxLink style={{ position: 'absolute', left: 'var(--space-5)' }}>
+                <RadixLogo label="Radix homepage" />
+              </BoxLink>
+            </NextLink>
 
-          <Box css={{ width: '100%', display: 'none', '@bp2': { display: 'block' } }}>
-            <PrimitivesDocsSearch />
-          </Box>
+            <Box display={{ initial: 'none', md: 'block' }} width="100%">
+              <PrimitivesDocsSearch />
+            </Box>
 
-          <Flex css={{ position: 'absolute', right: '$5', gap: '$2' }}>
-            <ThemeToggle />
-            <Tooltip content="Menu">
-              <IconButton
-                onClick={onMobileMenuButtonClick}
-                css={{ '@bp2': { display: 'none' } }}
-                state={isMenuActive ? 'active' : undefined}
-              >
-                <HamburgerMenuIcon />
-              </IconButton>
-            </Tooltip>
+            <Flex style={{ position: 'absolute', right: 'var(--space-5)', gap: 'var(--space-2)' }}>
+              <ThemeToggle />
+
+              <Box display={{ sm: 'none' }}>
+                <Tooltip content="Menu">
+                  <IconButton
+                    size="1"
+                    color="gray"
+                    variant={isMenuActive ? 'soft' : 'ghost'}
+                    onClick={onMobileMenuButtonClick}
+                  >
+                    <HamburgerMenuIcon />
+                  </IconButton>
+                </Tooltip>
+              </Box>
+            </Flex>
           </Flex>
-        </Flex>
-      </Container>
+        </Box>
+      </header>
     </Box>
   );
 };

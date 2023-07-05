@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
 import { globalCss, darkTheme, DesignSystemProvider } from '@modulz/design-system';
-import { RadixThemesProvider, Theme, ThemePanel } from '@radix-ui/themes';
+import { Theme, ThemePanel } from '@radix-ui/themes';
 import { PrimitivesDocsPage } from '@components/PrimitivesDocsPage';
 import { ColorsDocsPage } from '@components/ColorsDocsPage';
 import { useAnalytics } from '@lib/analytics';
@@ -62,55 +62,53 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <DesignSystemProvider>
-      <RadixThemesProvider>
-        <CssLibPreferenceProvider>
-          <ThemeProvider
-            disableTransitionOnChange
-            attribute="class"
-            value={{ light: 'light-theme', dark: darkTheme.className }}
-            defaultTheme="system"
-          >
-            {(() => {
-              if (isPrimitivesDocs) {
-                return (
-                  <Theme accentScale="violet">
-                    <PrimitivesDocsPage>
-                      <Component {...pageProps} />
-                    </PrimitivesDocsPage>
-                  </Theme>
-                );
-              }
-
-              if (isColorsDocs) {
-                return (
-                  <Theme accentScale="violet">
-                    <ColorsDocsPage>
-                      <Component {...pageProps} />
-                    </ColorsDocsPage>
-                  </Theme>
-                );
-              }
-
-              if (isThemesDocs) {
-                return (
-                  <Theme accentScale="grass">
-                    <ThemePanel />
-                    <ThemesDocsPage>
-                      <Component {...pageProps} />
-                    </ThemesDocsPage>
-                  </Theme>
-                );
-              }
-
+      <CssLibPreferenceProvider>
+        <ThemeProvider
+          disableTransitionOnChange
+          attribute="class"
+          value={{ light: 'light-theme', dark: darkTheme.className }}
+          defaultTheme="system"
+        >
+          {(() => {
+            if (isPrimitivesDocs) {
               return (
                 <Theme accentScale="violet">
-                  <Component {...pageProps} />
+                  <PrimitivesDocsPage>
+                    <Component {...pageProps} />
+                  </PrimitivesDocsPage>
                 </Theme>
               );
-            })()}
-          </ThemeProvider>
-        </CssLibPreferenceProvider>
-      </RadixThemesProvider>
+            }
+
+            if (isColorsDocs) {
+              return (
+                <Theme accentScale="violet">
+                  <ColorsDocsPage>
+                    <Component {...pageProps} />
+                  </ColorsDocsPage>
+                </Theme>
+              );
+            }
+
+            if (isThemesDocs) {
+              return (
+                <Theme accentScale="grass">
+                  <ThemePanel />
+                  <ThemesDocsPage>
+                    <Component {...pageProps} />
+                  </ThemesDocsPage>
+                </Theme>
+              );
+            }
+
+            return (
+              <Theme accentScale="violet">
+                <Component {...pageProps} />
+              </Theme>
+            );
+          })()}
+        </ThemeProvider>
+      </CssLibPreferenceProvider>
     </DesignSystemProvider>
   );
 }

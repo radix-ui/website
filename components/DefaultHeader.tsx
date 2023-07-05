@@ -1,7 +1,7 @@
 import React from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { Box, Container, Text, Flex, Link } from '@modulz/design-system';
+import { Box, Flex, Link } from '@radix-ui/themes';
 import { RadixLogo } from '@components/RadixLogo';
 import { ThemeToggle } from '@components/ThemeToggle';
 import { BoxLink } from '@components/BoxLink';
@@ -15,31 +15,35 @@ export const DefaultHeader = () => {
   const docsPath = `/docs/${isColors ? 'colors' : 'primitives'}`;
 
   return (
-    <Box as="header" className={RemoveScroll.classNames.fullWidth}>
-      <Container size="4">
-        <Flex align="center" justify="between" css={{ height: '$8' }}>
+    <Box asChild px="5">
+      <header className={RemoveScroll.classNames.fullWidth}>
+        <Flex align="center" justify="between" height="9">
           <NextLink href={rootPath} passHref>
             <BoxLink>
               <RadixLogo label={isColors ? 'Radix Colors homepage' : 'Radix homepage'} />
             </BoxLink>
           </NextLink>
 
-          <Flex align="center" gap={{ '@initial': '4', '@bp2': '5' }}>
-            <Box css={{ display: 'none', '@bp1': { display: 'contents' } }}>
+          <Flex align="center" gap="5">
+            <Flex gap="5" display={{ initial: 'none', sm: 'flex' }} align="center">
               <NextLink href={docsPath} passHref>
-                <Link variant={router.pathname.includes(docsPath) ? 'contrast' : 'subtle'}>
-                  <Text>Documentation</Text>
+                <Link highContrast={router.pathname.includes(docsPath)} size="2" color="gray">
+                  Documentation
                 </Link>
               </NextLink>
 
               {!isColors && (
                 <NextLink href="/case-studies" passHref>
-                  <Link variant={router.pathname.includes('/case-studies') ? 'contrast' : 'subtle'}>
-                    <Text>Case studies</Text>
+                  <Link
+                    highContrast={router.pathname.includes('/case-studies')}
+                    color="gray"
+                    size="2"
+                  >
+                    Case studies
                   </Link>
                 </NextLink>
               )}
-            </Box>
+            </Flex>
 
             <ResourcesPopover>
               {isColors && <ResourcePrimitives />}
@@ -50,7 +54,7 @@ export const DefaultHeader = () => {
             <ThemeToggle />
           </Flex>
         </Flex>
-      </Container>
+      </header>
     </Box>
   );
 };
