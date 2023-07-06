@@ -2,7 +2,7 @@ import * as React from 'react';
 import styles from './BoxLink.module.css';
 import { classNames } from '@lib/classNames';
 
-interface BoxLinkProps extends React.HTMLAttributes<HTMLAnchorElement> {}
+interface BoxLinkProps extends React.ComponentPropsWithoutRef<'a'> {}
 
 export const BoxLink = React.forwardRef<HTMLAnchorElement, BoxLinkProps>(function BoxLink(
   { className, ...props },
