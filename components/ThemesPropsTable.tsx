@@ -299,32 +299,6 @@ const props: Record<string, PropDef[]> = {
     },
     { ...colorProp, default: formatValues(themes.separatorColorDefault) },
   ],
-  provider: [
-    {
-      name: 'tooltipDelayDuration',
-      required: false,
-      default: '700',
-      typeSimple: 'number',
-      description:
-        'The duration from when the mouse enters a tooltip trigger until the tooltip opens.',
-    },
-    {
-      name: 'tooltipSkipDelayDuration',
-      required: false,
-      default: '300',
-      typeSimple: 'number',
-      description:
-        'How much time a user has to enter another trigger without incurring a delay again.',
-    },
-    {
-      name: 'dir',
-      required: false,
-      typeSimple: 'enum',
-      type: formatValues(['ltr', 'rtl']),
-      description:
-        'The global reading direction of your application. This will be inherited by all components.',
-    },
-  ],
   badge: [
     {
       ...sizeProp,
@@ -707,10 +681,24 @@ const props: Record<string, PropDef[]> = {
       description: 'An optional shortcut command to associate with the item',
     },
   ],
-  themeConfig: [
+  theme: [
     asChildProp,
     {
-      name: 'mode',
+      name: 'applyBackgroundColor',
+      required: false,
+      typeSimple: 'boolean',
+      default: 'true',
+      description: 'Whether to apply the themes background color to the rendered element',
+    },
+    {
+      name: 'applyTextColor',
+      required: false,
+      typeSimple: 'boolean',
+      default: 'true',
+      description: 'Whether to apply the themes text color to the rendered element',
+    },
+    {
+      name: 'appearance',
       required: false,
       typeSimple: 'enum',
       type: formatValues(themes.themeAppearances),

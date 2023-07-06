@@ -90,7 +90,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (isThemesDocs) {
     return (
-      <Theme accentScale="grass" appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}>
+      <Theme accentScale="violet" appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}>
         <ThemePanel />
         <ThemesDocsPage>
           <Component {...pageProps} />

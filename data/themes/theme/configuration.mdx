@@ -1,0 +1,116 @@
+---
+metaTitle: Configuring a theme
+metaDescription: The Theme component allows you to define and modify your theme
+---
+
+# Configuring a theme
+
+<Description>
+  The `Theme` component allows you to define and modify your theme.
+</Description>
+
+## Basic configuration
+
+Pass configuration options to `Theme` to modify your theme, refer to the [Theme component documentation](/docs/themes/components/theme) for a full list of options.
+
+```jsx live=true
+<Theme grayScale="accent" radius="full">
+  <Flex direction="column" gap="4">
+    <Text weight="bold">Feedback</Text>
+    <TextArea placeholder="Your feedback" />
+    <Button>Submit</Button>
+  </Flex>
+</Theme>
+```
+
+## Component instance overrides
+
+Override configuration per component by passing the supported prop directly to that component.
+
+```jsx live=true
+<Theme grayScale="accent" radius="full">
+  <Flex direction="column" gap="4">
+    <Button>Submit</Button>
+    <Button radius="none" color="gray">
+      Submit
+    </Button>
+  </Flex>
+</Theme>
+```
+
+## Nesting
+
+Nest themes to modify configuration for a specific subtree.
+
+```jsx live=true
+<Theme grayScale="accent" radius="full">
+  <Text as="div" color="gray" mb="3">
+    Global theme
+  </Text>
+
+  <Flex direction="column" gap="4">
+    <Text weight="bold">Feedback</Text>
+    <TextArea placeholder="Your feedback" />
+    <Button>Submit</Button>
+  </Flex>
+
+  <Theme accentScale="gray" grayScale="accent" radius="full" asChild>
+    <Box
+      p="5"
+      mt="5"
+      style={{
+        borderRadius: 'var(--br-4-raw)',
+        border: '1px solid var(--gray-5)',
+      }}
+    >
+      <Text as="div" color="gray" mb="3">
+        Nested theme
+      </Text>
+
+      <Flex direction="column" gap="4">
+        <Text weight="bold">Feedback</Text>
+        <TextArea placeholder="Your feedback" />
+        <Button>Submit</Button>
+      </Flex>
+    </Box>
+  </Theme>
+</Theme>
+```
+
+### Appearance and inversion
+
+The `appearance` prop allows you to switch between light and dark modes. Using the `invert` option on a child theme will provide the opposite `appearance` to that of it's parent.
+
+```jsx live=true
+<Theme grayScale="accent" radius="full">
+  <Text as="div" color="gray" mb="3">
+    Global theme
+  </Text>
+
+  <Flex direction="column" gap="4">
+    <Text weight="bold">Feedback</Text>
+    <TextArea placeholder="Your feedback" />
+    <Button>Submit</Button>
+  </Flex>
+
+  <Theme appearance="invert" grayScale="accent" radius="full" asChild>
+    <Box
+      p="5"
+      mt="5"
+      style={{
+        borderRadius: 'var(--br-4-raw)',
+      }}
+    >
+      <Text as="div" color="gray" mb="3">
+        Inverted theme
+      </Text>
+
+      <Flex direction="column" gap="4">
+        <Text weight="bold">Feedback</Text>
+        <TextArea placeholder="Your feedback" />
+        <Button>Submit</Button>
+      </Flex>
+    </Box>
+  </Theme>
+</Theme>
+```

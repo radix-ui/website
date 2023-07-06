@@ -1,0 +1,31 @@
+---
+metaTitle: Theme
+metaDescription: Wraps all or part of a React tree to provide theme configuration.
+---
+
+## API Reference
+
+For an overview of theming see the [Theme configuration guide](/docs/themes/guides/theme-configuration).
+
+<ThemesPropsTable name="theme" />
+
+## Examples
+
+### Basic usage
+
+Wrap a component tree in the `Theme` component to provide or modify configuration for all children.
+
+```jsx live=true
+<Theme appearance="dark" radius="full" asChild>
+  <Flex
+    direction="column"
+    gap="4"
+    p="5"
+    style={{ borderRadius: 'var(--br-3-raw)' }}
+  >
+    <Text weight="bold">Feedback</Text>
+    <TextArea placeholder="Your feedback" />
+    <Button>Submit</Button>
+  </Flex>
+</Theme>
+```

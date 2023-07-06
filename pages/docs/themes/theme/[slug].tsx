@@ -6,6 +6,7 @@ import { MDXProvider, components } from '@components/MDXComponents';
 import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { RemoveScroll } from 'react-remove-scroll';
 import { QuickNav } from '@components/QuickNav';
+import * as themesDocsAssets from '@components/ThemesDocsAssets';
 
 import type { Frontmatter } from 'types/frontmatter';
 
@@ -14,7 +15,7 @@ type Doc = {
   code: string;
 };
 
-export default function GuidesDoc({ frontmatter, code }: Doc) {
+export default function ThemingDoc({ frontmatter, code }: Doc) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
   return (
@@ -30,7 +31,14 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
       />
 
       <MDXProvider frontmatter={frontmatter}>
-        <Component components={components as any} />
+        <Component
+          components={
+            {
+              ...components,
+              ...themesDocsAssets,
+            } as any
+          }
+        />
       </MDXProvider>
 
       <Box
@@ -64,17 +72,17 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
 }
 
 export async function getStaticPaths() {
-  const frontmatters = getAllFrontmatter('themes/guides');
+  const frontmatters = getAllFrontmatter('themes/theme');
 
   return {
     paths: frontmatters.map((frontmatter) => ({
-      params: { slug: frontmatter.slug.replace('themes/guides/', '') },
+      params: { slug: frontmatter.slug.replace('themes/theme/', '') },
     })),
     fallback: false,
   };
 }
 
 export async function getStaticProps(context) {
-  const { frontmatter, code } = await getMdxBySlug('themes/guides/', context.params.slug);
+  const { frontmatter, code } = await getMdxBySlug('themes/theme/', context.params.slug);
   return { props: { frontmatter, code } };
 }

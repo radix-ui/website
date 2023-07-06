@@ -34,7 +34,7 @@ export const ThemesPre = styled('pre', {
   position: 'relative',
   backgroundColor: 'var(--gray-a1)',
   color: '$$text',
-  border: '1px solid var(--gray-a3)',
+  border: '1px solid var(--gray-a4)',
 
   '.dark-theme &': {
     backgroundColor: 'var(--white-a2)',

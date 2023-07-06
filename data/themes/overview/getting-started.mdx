@@ -1,11 +1,13 @@
 ---
 metaTitle: Getting started
-metaDescription: Getting started
+metaDescription: Install Radix Themes and start building your project in minutes
 ---
 
 # Getting started
 
-<Description>This is a get started</Description>
+<Description>
+  Install Radix Themes and start building your project in minutes.
+</Description>
 
 ## Installation
 
@@ -26,36 +28,40 @@ metaDescription: Getting started
   </TabsContent>
 </Tabs>
 
-## Setting up
+## Configuring your project
 
 ### 1. Import the CSS file
+
+Import the global CSS file at the root of your application.
+
+```ts
+import '@radix-ui/themes/dist/index.css';
+```
 
 <Note>
   Note: This may vary depending of your framework of choice, but generally
   you'll want to import the CSS file at the root of your application.
 </Note>
 
-```ts
-import '@radix-ui/themes/dist/index.css';
-```
+### 2. Add the Theme component
 
-### 2. Wrap your app with the ThemeConfig
+Wrap the root of your application in a `Theme` component.
 
 ```tsx
-import { ThemeConfig } from '@radix-ui/themes';
+import { Theme } from '@radix-ui/themes';
 
 export default function () {
   return (
-    <ThemeConfig>
-      <YourApp />
-    </ThemeConfig>
+    <Theme>
+      <MyApp />
+    </Theme>
   );
 }
 ```
 
-## Usage
+### 3. Start building
 
-You are now ready to use Radix's components in your app:
+You are now ready to start using components and styles in your app:
 
 ```tsx
 import { Flex, Text, Button } from '@radix-ui/themes';
@@ -64,7 +70,7 @@ export default function MyApp() {
   return (
     <Flex direction="column" gap="2">
       <Text>Hello from Radix Themes :)</Text>
-      <Button>Get started</Button>
+      <Button>Let's go</Button>
     </Flex>
   );
 }

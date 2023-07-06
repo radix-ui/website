@@ -2,20 +2,45 @@ export const themesRoutes = [
   {
     label: 'Overview',
     pages: [
-      { title: 'Introduction', slug: 'docs/themes/overview/introduction' },
       { title: 'Getting started', slug: 'docs/themes/overview/getting-started' },
-      { title: 'Design principles', slug: 'docs/themes/overview/design-principles' },
-      { title: 'FAQs', slug: 'docs/themes/overview/faqs' },
-      // { title: 'Releases', slug: 'docs/themes/overview/releases' },
+      { title: 'Principles', slug: 'docs/themes/overview/principles' },
     ],
   },
   {
-    label: 'Guides',
+    label: 'Theme',
     pages: [
-      { title: 'Theme configuration', slug: 'docs/themes/guides/theme-configuration' },
-      { title: 'Using tokens', slug: 'docs/themes/guides/using-tokens' },
+      { title: 'Overview', slug: 'docs/themes/theme/overview' },
+      { title: 'Configuration', slug: 'docs/themes/theme/configuration' },
+      { title: 'Tokens', slug: 'docs/themes/theme/tokens' },
+      { title: 'Usage', slug: 'docs/themes/theme/usage' },
     ],
   },
+
+  {
+    label: 'Layout',
+    pages: [
+      { title: 'Box', slug: 'docs/themes/components/box' },
+      { title: 'Flex', slug: 'docs/themes/components/flex' },
+      { title: 'Grid', slug: 'docs/themes/components/grid' },
+      { title: 'Container', slug: 'docs/themes/components/container' },
+      { title: 'Section', slug: 'docs/themes/components/section' },
+    ],
+  },
+  {
+    label: 'Typography',
+    pages: [
+      { title: 'Text', slug: 'docs/themes/components/text' },
+      { title: 'Heading', slug: 'docs/themes/components/heading' },
+      { title: 'Blockquote', slug: 'docs/themes/components/blockquote' },
+      { title: 'Quote', slug: 'docs/themes/components/quote' },
+      { title: 'Em', slug: 'docs/themes/components/em' },
+      { title: 'Strong', slug: 'docs/themes/components/strong' },
+      { title: 'Sup', slug: 'docs/themes/components/sup' },
+      { title: 'Code', slug: 'docs/themes/components/code' },
+      { title: 'Kbd', slug: 'docs/themes/components/kbd' },
+    ],
+  },
+
   {
     label: 'Components',
     pages: [
@@ -44,38 +69,15 @@ export const themesRoutes = [
       { title: 'Context Menu', slug: 'docs/themes/components/context-menu' },
     ],
   },
-  {
-    label: 'Typography',
-    pages: [
-      { title: 'Text', slug: 'docs/themes/components/text' },
-      { title: 'Heading', slug: 'docs/themes/components/heading' },
-      { title: 'Blockquote', slug: 'docs/themes/components/blockquote' },
-      { title: 'Quote', slug: 'docs/themes/components/quote' },
-      { title: 'Em', slug: 'docs/themes/components/em' },
-      { title: 'Strong', slug: 'docs/themes/components/strong' },
-      { title: 'Sup', slug: 'docs/themes/components/sup' },
-      { title: 'Code', slug: 'docs/themes/components/code' },
-      { title: 'Kbd', slug: 'docs/themes/components/kbd' },
-    ],
-  },
-  {
-    label: 'Layout',
-    pages: [
-      { title: 'Box', slug: 'docs/themes/components/box' },
-      { title: 'Flex', slug: 'docs/themes/components/flex' },
-      { title: 'Grid', slug: 'docs/themes/components/grid' },
-      { title: 'Container', slug: 'docs/themes/components/container' },
-      { title: 'Section', slug: 'docs/themes/components/section' },
-    ],
-  },
+
   {
     label: 'Utilities',
     pages: [
       { title: 'Accessible Icon', slug: 'docs/themes/components/accessible-icon' },
-      { title: 'Visually Hidden', slug: 'docs/themes/components/visually-hidden' },
       { title: 'Portal', slug: 'docs/themes/components/portal' },
-      { title: 'Provider', slug: 'docs/themes/components/provider' },
       { title: 'Slot', slug: 'docs/themes/components/slot' },
+      { title: 'Theme', slug: 'docs/themes/components/theme' },
+      { title: 'Visually Hidden', slug: 'docs/themes/components/visually-hidden' },
     ],
   },
 ];
