@@ -35,7 +35,6 @@ export const themesRoutes = [
       { title: 'Quote', slug: 'docs/themes/components/quote' },
       { title: 'Em', slug: 'docs/themes/components/em' },
       { title: 'Strong', slug: 'docs/themes/components/strong' },
-      { title: 'Sup', slug: 'docs/themes/components/sup' },
       { title: 'Code', slug: 'docs/themes/components/code' },
       { title: 'Kbd', slug: 'docs/themes/components/kbd' },
     ],
