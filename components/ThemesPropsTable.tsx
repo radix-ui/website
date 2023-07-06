@@ -256,6 +256,7 @@ const props: Record<string, PropDef[]> = {
       typeSimple: 'enum',
     },
     { ...colorProp, default: formatValues(themes.textColorDefault) },
+    { ...highContrastProp, default: themes.textHighContrastDefault },
   ],
   heading: [
     asChildProp,

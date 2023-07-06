@@ -74,15 +74,15 @@ Use the `align` prop to set text alignment. You can change the alignment across 
 Sizes 2–4 are designed to work well for long-form content.
 
 ```jsx live=true
-<Text mb="5" size="4">
+<Text as="p" mb="5" size="4">
   The goal of typography is to relate font size, line height, and line width in a proportional way that maximizes beauty and makes reading easier and more pleasant. The question is: What proportion(s) will give us the best results? The golden ratio is often observed in nature where beauty and utility intersect; perhaps we can use this “divine” proportion to enhance these attributes in our typography.
 </Text>
 
-<Text mb="5" size="3">
+<Text as="p" mb="5" size="3">
   The goal of typography is to relate font size, line height, and line width in a proportional way that maximizes beauty and makes reading easier and more pleasant. The question is: What proportion(s) will give us the best results? The golden ratio is often observed in nature where beauty and utility intersect; perhaps we can use this “divine” proportion to enhance these attributes in our typography.
 </Text>
 
-<Text size="2" color="gray">
+<Text as="p" size="2" color="gray">
   The goal of typography is to relate font size, line height, and line width in a proportional way that maximizes beauty and makes reading easier and more pleasant. The question is: What proportion(s) will give us the best results? The golden ratio is often observed in nature where beauty and utility intersect; perhaps we can use this “divine” proportion to enhance these attributes in our typography.
 </Text>
 ```
@@ -211,6 +211,16 @@ Use the `color` prop to assign a specific color value, ignoring the global theme
   <Text color="grass">Grass</Text>
   <Text color="orange">Orange</Text>
 </Flex>
+```
+
+### High contrast
+
+Use the `highContrast` prop to add contrast.
+
+```jsx live="true"
+<Text size="5" color="gray">
+  The quick <Text highContrast>brown fox</Text> jumps over the lazy dog.
+</Text>
 ```
 
 ### With formatting
