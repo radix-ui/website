@@ -20,6 +20,7 @@ import { PreWithLivePreview } from './PreWithLivePreview';
 import {
   Blockquote,
   Box,
+  Flex,
   Code,
   Em,
   Heading,
@@ -30,11 +31,12 @@ import {
   Tabs,
   Text,
 } from '@radix-ui/themes';
-import * as DS from '@modulz/design-system';
+import * as themes from '@radix-ui/themes';
 import styles from './MDXComponents.module.css';
 import { classNames } from '@lib/classNames';
 
 export const components = {
+  ...themes,
   ColorScale,
   ColorScaleGroup,
   Tabs: Tabs.Root,
@@ -43,7 +45,6 @@ export const components = {
   TabsTrigger: Tabs.Trigger,
   CodeBlock,
   HeroCodeBlock,
-  ...DS,
   h1: (props) => (
     <Heading asChild size="8">
       <h1 {...props} style={{ scrollMarginTop: 'var(--space-9)' }} />
@@ -92,7 +93,7 @@ export const components = {
       <h4 children={children} style={{ scrollMarginTop: 'var(--space-9)' }} />
     </Heading>
   ),
-  p: (props) => <Text size="3" mb="3" as="p" {...props} />,
+  p: (props) => <Text mb="3" as="p" size="3" {...props} />,
   a: ({ href = '', ...props }) => {
     if (href.startsWith('http')) {
       return <Link {...props} href={href} target="_blank" rel="noopener" />;
@@ -105,9 +106,9 @@ export const components = {
   },
   hr: (props) => <Separator size="2" {...props} my="6" style={{ marginInline: 'auto' }} />,
   ul: ({ children, ...props }) => (
-    <Box {...props} mb="3" pl="4" asChild>
+    <Flex direction="column" gap="1" {...props} mb="3" pl="4" asChild>
       <ul children={children} className={styles.List} />
-    </Box>
+    </Flex>
   ),
   ol: (props) => ({ children, ...props }) => (
     <Box {...props} mb="3" pl="4" asChild>

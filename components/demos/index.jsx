@@ -28,3 +28,4 @@ export { default as ToolbarDemo } from './Toolbar/stitches';
 export { default as TooltipDemo } from './Tooltip/stitches';
 //
 export { default as GettingStartedDemo } from './GettingStarted/stitches';
+export * from './Colors';

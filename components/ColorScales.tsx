@@ -19,6 +19,7 @@ const ColorScaleBase = ({ steps }: ColorScaleBaseProps) => (
       const showStep = steps.includes(scale);
       return (
         <Flex
+          key={scale}
           align="center"
           justify="center"
           style={{
