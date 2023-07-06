@@ -575,12 +575,24 @@ const props: Record<string, PropDef[]> = {
       type: formatValues(themes.containerSizes),
       default: formatValues(themes.containerSizeDefault),
     },
+    {
+      name: 'display',
+      required: false,
+      typeSimple: 'enum',
+      type: formatValues(themes.containerDisplayValues),
+    },
   ],
   section: [
     {
       ...sizeProp,
       type: formatValues(themes.sectionSizes),
       default: formatValues(themes.sectionSizeDefault),
+    },
+    {
+      name: 'display',
+      required: false,
+      typeSimple: 'enum',
+      type: formatValues(themes.sectionDisplayValues),
     },
   ],
   selectRoot: [
