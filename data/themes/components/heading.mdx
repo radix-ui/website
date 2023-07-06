@@ -51,6 +51,16 @@ You can change the size across breakpoints using the object syntax.
 </Flex>
 ```
 
+### Align
+
+Use the `align` prop to set text alignment. You can change the alignment across breakpoints using the object syntax.
+
+```jsx live="true"
+<Heading align="left">Left-aligned</Text>
+<Heading align="center">Center-aligned</Text>
+<Heading align="right">Right-aligned</Text>
+```
+
 ### Trim
 
 Use the `trim` prop to trim the leading space at the start, end, or both sides of the text box. You can change the leading trim across breakpoints using the object syntax.
@@ -133,4 +143,14 @@ Use the `color` prop to assign a specific color value, ignoring the global theme
   <Heading color="grass">Grass</Heading>
   <Heading color="orange">Orange</Heading>
 </Flex>
+```
+
+### High contrast
+
+Use the `highContrast` prop to add contrast within colored headings.
+
+```jsx live="true"
+<Heading size="5" color="gray">
+  The quick <Text highContrast>brown fox</Text> jumps over the lazy dog.
+</Heading>
 ```

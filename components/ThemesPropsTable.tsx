@@ -266,6 +266,13 @@ const props: Record<string, PropDef[]> = {
       default: formatValues(themes.headingSizeDefault),
     },
     {
+      name: 'align',
+      required: false,
+      type: formatValues(themes.headingAlignValues),
+      default: formatValues(themes.headingAlignDefault),
+      typeSimple: 'enum',
+    },
+    {
       name: 'trim',
       required: false,
       type: formatValues(themes.textTrimValues),
@@ -273,6 +280,7 @@ const props: Record<string, PropDef[]> = {
       typeSimple: 'enum',
     },
     { ...colorProp, default: formatValues(themes.headingColorDefault) },
+    { ...highContrastProp, default: themes.headingHighContrastDefault },
   ],
   link: [
     asChildProp,
