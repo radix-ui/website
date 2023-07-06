@@ -9,10 +9,11 @@ import {
   CaretRightIcon,
 } from '@radix-ui/react-icons';
 import { RemoveScroll } from 'react-remove-scroll';
-import { Box, TextField, Panel, IconButton, Tooltip, Text, styled } from '@modulz/design-system';
+import { Box, TextField, IconButton, Tooltip, Text } from '@radix-ui/themes';
 import { DismissableLayer } from '@radix-ui/react-dismissable-layer';
 import { Slot } from '@radix-ui/react-slot';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
+import styles from './PrimitivesDocsSearch.module.css';
 
 import type {
   AutocompleteState as InternalAutocompleteState,
@@ -169,7 +170,7 @@ export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
   // This avoids persisting global layout changes when switching
   React.useEffect(() => {
     // Match @bp2
-    const mediaQueryList = window.matchMedia('(min-width: 900px)');
+    const mediaQueryList = window.matchMedia('(min-width: 768px)');
 
     const handleChange = () => {
       formRef.current.reset();
@@ -205,102 +206,84 @@ export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
   }, []);
 
   return (
-    <Box
-      {...autocomplete.getRootProps({})}
-      css={{
-        // for the panel to be positioned correctly without needing popper
-        position: 'relative',
-
-        '@bp2': { mr: '$7' },
-        '@media (min-width: 1130px)': { mr: 0 },
-      }}
-    >
+    <Box {...autocomplete.getRootProps({})} position="relative" mr={{ md: '8', lg: '0' }}>
       <Box
-        css={
-          isMobile
-            ? { position: 'sticky', top: 0, pt: '$5', pb: '$2', backgroundColor: '$loContrast' }
-            : {}
-        }
+        position={isMobile ? 'sticky' : undefined}
+        top="0"
+        pt={isMobile ? '5' : undefined}
+        pb={isMobile ? '2' : undefined}
+        style={isMobile ? { backgroundColor: 'var(--color-background)' } : {}}
       >
         <Box
-          as="form"
-          ref={formRef}
+          asChild
           {...autocomplete.getFormProps({ inputElement: inputRef.current })}
-          css={{
-            position: 'relative',
-
+          position="relative"
+          style={{
             // Allow immediate interaction with input controls when autcomplete is open
             pointerEvents: 'auto',
           }}
         >
-          <Box
-            {...autocomplete.getLabelProps({})}
-            as="label"
-            css={{ position: 'absolute', top: '$2', left: 'calc($3 - 3px)' }}
-          >
-            <MagnifyingGlassIcon />
-            <VisuallyHidden>{SLASH_COMMAND_MESSAGE}.</VisuallyHidden>
-          </Box>
-
-          <TextField
-            ref={inputRef}
-            {...autocomplete.getInputProps({ inputElement: inputRef.current })}
-            size="2"
-            css={{
-              px: '$6',
-              backgroundColor: '$gray3',
-              boxShadow: 'none',
-              // we need at least 16px to prevent iOS safari from zooming in when focusing the input
-              fontSize: isMobile ? 16 : undefined,
-
-              '&:focus': {
-                boxShadow: 'inset 0px 0px 0px 1px $colors$gray8, 0px 0px 0px 1px $colors$gray8',
-              },
-
-              '&[type="search"]': {
-                /* clears the 'X' from Internet Explorer */
-                '&::-ms-clear, &::-ms-reveal': { display: 'none', width: 0, height: 0 },
-
-                /* clears the 'X' from Chrome */
-                [`&::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration`]: {
-                  display: 'none',
-                },
-              },
-            }}
-          />
-
-          {searchState.query ? (
-            // show the clear button when there's a query in the input
-            <Box css={{ position: 'absolute', top: '$1', right: '$1' }}>
-              <Tooltip content="Clear">
-                <IconButton type="reset">
-                  <Cross2Icon />
-                </IconButton>
-              </Tooltip>
-            </Box>
-          ) : (
-            // show the slash command info when there's no query in the input
+          <form ref={formRef}>
             <Box
-              css={{
-                position: 'absolute',
-                top: '$1',
-                right: '$1',
-                display: 'none',
-                '@bp1': { display: 'block' },
-              }}
+              {...autocomplete.getLabelProps({})}
+              asChild
+              position="absolute"
+              style={{ top: 'var(--space-2)', left: 'calc(var(--space-3) - 3px)' }}
             >
-              <Tooltip content={SLASH_COMMAND_MESSAGE}>
-                <IconButton
-                  css={{ boxShadow: 'inset 0px 0px 0px 1px $colors$gray6', color: '$gray11' }}
-                  onClick={() => requestAnimationFrame(() => inputRef.current.focus())}
-                  // we can make it unreachable via keyboard as we have the same message for the SR label
-                  tabIndex={-1}
-                >
-                  <kbd aria-hidden>/</kbd>
-                </IconButton>
-              </Tooltip>
+              <label>
+                <MagnifyingGlassIcon />
+                <VisuallyHidden>{SLASH_COMMAND_MESSAGE}.</VisuallyHidden>
+              </label>
             </Box>
-          )}
+
+            <TextField
+              ref={inputRef}
+              {...autocomplete.getInputProps({ inputElement: inputRef.current })}
+              className={styles.Input}
+              size="2"
+              variant="soft"
+              color="gray"
+              style={{
+                // we need at least 16px to prevent iOS safari from zooming in when focusing the input
+                fontSize: isMobile ? 16 : undefined,
+                paddingInline: 'var(--space-6)',
+              }}
+            />
+
+            {searchState.query ? (
+              // show the clear button when there's a query in the input
+              <Box position="absolute" top="0" right="0" mt="1" mr="1">
+                <Tooltip content="Clear">
+                  <IconButton type="reset" size="1" color="gray" variant="ghost">
+                    <Cross2Icon />
+                  </IconButton>
+                </Tooltip>
+              </Box>
+            ) : (
+              // show the slash command info when there's no query in the input
+              <Box
+                position="absolute"
+                top="0"
+                right="0"
+                mt="1"
+                mr="1"
+                display={{ initial: 'none', sm: 'block' }}
+              >
+                <Tooltip content={SLASH_COMMAND_MESSAGE}>
+                  <IconButton
+                    size="1"
+                    color="gray"
+                    variant="soft"
+                    onClick={() => requestAnimationFrame(() => inputRef.current.focus())}
+                    // we can make it unreachable via keyboard as we have the same message for the SR label
+                    tabIndex={-1}
+                  >
+                    <kbd aria-hidden>/</kbd>
+                  </IconButton>
+                </Tooltip>
+              </Box>
+            )}
+          </form>
         </Box>
       </Box>
 
@@ -319,8 +302,28 @@ export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
               <Box
                 ref={panelRef}
                 {...autocomplete.getPanelProps({})}
-                css={{
-                  py: '$2',
+                py="2"
+                style={{
+                  // ensure padding when scrolling via keyboard
+                  scrollPaddingTop: 'var(--space-2)',
+                  scrollPaddingBottom: 'var(--space-2)',
+                }}
+              >
+                <SearchResults searchState={searchState} autocomplete={autocomplete} />
+              </Box>
+            ) : (
+              <Box
+                ref={panelRef}
+                {...autocomplete.getPanelProps({})}
+                position="absolute"
+                left="0"
+                right="0"
+                mt="1"
+                p="2"
+                className={styles.Panel}
+                style={{
+                  maxHeight: '80vh',
+                  overflow: 'auto',
                   // ensure padding when scrolling via keyboard
                   scrollPaddingTop: '$2',
                   scrollPaddingBottom: '$2',
@@ -328,26 +331,6 @@ export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
               >
                 <SearchResults searchState={searchState} autocomplete={autocomplete} />
               </Box>
-            ) : (
-              <Panel
-                ref={panelRef}
-                {...autocomplete.getPanelProps({})}
-                css={{
-                  position: 'absolute',
-                  left: 0,
-                  right: 0,
-                  mt: '$1',
-                  maxHeight: '80vh',
-                  overflow: 'auto',
-                  p: '$2',
-
-                  // ensure padding when scrolling via keyboard
-                  scrollPaddingTop: '$2',
-                  scrollPaddingBottom: '$2',
-                }}
-              >
-                <SearchResults searchState={searchState} autocomplete={autocomplete} />
-              </Panel>
             )}
           </DismissableLayer>
         </RemoveScroll>
@@ -363,23 +346,28 @@ const SearchResults = React.memo(
 
     if (searchState.status === 'error') {
       return (
-        <ItemTitle size="3" css={{ py: '$2' }}>
-          <Box
-            as="span"
-            css={{ ml: 3, mr: 'calc($2 - 3px)', svg: { display: 'inline-block', mt: -1 } }}
-          >
-            <ExclamationTriangleIcon />
-          </Box>
-          <Mark>Unable to fetch results.</Mark> You might want to check your network connection.
-        </ItemTitle>
+        <Box py="2">
+          <ItemTitle size="2" color="gray">
+            <Box
+              asChild
+              display="inline-block"
+              style={{ marginLeft: 'var(--space-2)', marginRight: 'var(--space-2)', marginTop: -1 }}
+            >
+              <ExclamationTriangleIcon />
+            </Box>
+            <Mark>Unable to fetch results.</Mark> You might want to check your network connection.
+          </ItemTitle>
+        </Box>
       );
     }
 
     if (!hasResults) {
       return (
-        <ItemTitle size="3" css={{ p: '$2' }}>
-          No results for <Mark>“{searchState.query}”</Mark>
-        </ItemTitle>
+        <Box p="2">
+          <ItemTitle size="2" color="gray">
+            No results for <Mark>“{searchState.query}”</Mark>
+          </ItemTitle>
+        </Box>
       );
     }
 
@@ -389,34 +377,28 @@ const SearchResults = React.memo(
           <React.Fragment key={collection.source.sourceId}>
             {index > 0 && (
               <Box
-                as="hr"
-                css={{ my: '$2', border: 'none', height: 1, backgroundColor: '$mauve6' }}
-              />
+                asChild
+                my="2"
+                style={{ border: 'none', height: 1, backgroundColor: 'var(--gray-6)' }}
+              >
+                <hr />
+              </Box>
             )}
 
             <section>
               {collection.items.length > 0 && (
-                <Box
-                  as="ul"
-                  {...autocomplete.getListProps()}
-                  css={{
-                    listStyle: 'none',
-                    m: 0,
-                    p: 0,
-                    li: {
-                      borderRadius: '$1',
-                      '&[aria-selected="true"], &:active': { backgroundColor: '$violet3' },
-                    },
-                  }}
-                >
-                  {collection.items.map((item) => (
-                    <li
-                      key={item.objectID}
-                      {...autocomplete.getItemProps({ item, source: collection.source })}
-                    >
-                      <ItemLink item={item} />
-                    </li>
-                  ))}
+                <Box asChild {...autocomplete.getListProps()} m="0" p="0" className={styles.List}>
+                  <ul>
+                    {collection.items.map((item) => (
+                      <li
+                        key={item.objectID}
+                        {...autocomplete.getItemProps({ item, source: collection.source })}
+                        className={styles.ListItem}
+                      >
+                        <ItemLink item={item} />
+                      </li>
+                    ))}
+                  </ul>
                 </Box>
               )}
             </section>
@@ -436,50 +418,51 @@ const SearchResults = React.memo(
 
 function ItemLink({ item }: { item: SearchItem }) {
   return (
-    <Box
-      href={item.url}
-      as="a"
-      css={{ display: 'block', p: '$2', textDecoration: 'none', color: 'inherit' }}
-    >
-      <ItemTitle as="p" variant="violet" size="3" css={{ mb: '$1' }}>
-        <Highlight
-          hit={item}
-          attribute={item.type === 'content' ? 'content' : ['hierarchy', item.type]}
-        />
-      </ItemTitle>
-      {/* Adding a semi-colon to insert a break in the speech flow */}
-      <VisuallyHidden>; </VisuallyHidden>
-      <ItemBreadcrumb item={item} levels={SUPPORTED_LEVELS} />
+    <Box asChild display="block" p="3" style={{ textDecoration: 'none', color: 'inherit' }}>
+      <a href={item.url}>
+        <ItemTitle mb="1" mt="-1">
+          <Highlight
+            hit={item}
+            attribute={item.type === 'content' ? 'content' : ['hierarchy', item.type]}
+          />
+        </ItemTitle>
+        {/* Adding a semi-colon to insert a break in the speech flow */}
+        <VisuallyHidden>; </VisuallyHidden>
+        <ItemBreadcrumb item={item} levels={SUPPORTED_LEVELS} />
+      </a>
     </Box>
   );
 }
 
-const ItemTitle = styled(Text, {
-  lineHeight: '17px',
-  whiteSpace: 'nowrap',
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-});
+function ItemTitle(props: Omit<React.ComponentProps<typeof Text>, 'asChild' | 'as'>) {
+  return (
+    <Text
+      as="p"
+      color="violet"
+      size={{ initial: '2', sm: '3' }}
+      style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+      {...props}
+    />
+  );
+}
 
 function ItemBreadcrumb({ item, levels }: { item: SearchItem; levels: typeof SUPPORTED_LEVELS }) {
   const itemLevelIndex = item.type === 'content' ? levels.length - 1 : levels.indexOf(item.type);
   const breadcrumbLevels = levels.slice(0, itemLevelIndex);
 
   return (
-    <Text
-      size="1"
-      css={{ color: '$mauve11', textTransform: 'lowercase', lineHeight: '15px' }}
-      as="p"
-    >
+    <Text size="1" color="gray" style={{ textTransform: 'lowercase' }} as="p">
       {breadcrumbLevels.map((level, index) => {
         const heading = item.hierarchy[level];
         return heading ? (
           <React.Fragment key={index}>
             {index > 0 ? (
-              <Box as="span" css={{ color: '$mauve8', svg: { display: 'inline-block' } }}>
-                <CaretRightIcon />
-                {/* Adding a comma to insert a natural break in the speech flow */}
-                <VisuallyHidden>, </VisuallyHidden>
+              <Box asChild style={{ color: 'var(--gray-8)' }}>
+                <span>
+                  <CaretRightIcon style={{ display: 'inline-block' }} />
+                  {/* Adding a comma to insert a natural break in the speech flow */}
+                  <VisuallyHidden>, </VisuallyHidden>
+                </span>
               </Box>
             ) : null}
             <Highlight hit={item} attribute={['hierarchy', level]} />
@@ -500,11 +483,13 @@ function Highlight<THit>({ hit, attribute }: { hit: THit; attribute: keyof THit 
   );
 }
 
-const Mark = styled('mark', {
-  backgroundColor: 'transparent',
-  color: 'inherit',
-  fontWeight: '500',
-});
+function Mark({ children }: { children: React.ReactNode }) {
+  return (
+    <Text asChild weight="bold" className={styles.Mark}>
+      <mark>{children}</mark>
+    </Text>
+  );
+}
 
 function groupBy<TValue extends Record<string, unknown>>(
   values: TValue[],
