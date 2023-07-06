@@ -12,20 +12,14 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/toolbar
   dropdown menus.
 </Description>
 
-<HeroContainer
-  css={{
-    justifyContent: 'flex-start',
-    overflow: 'auto',
-    '@bp2': {
-      justifyContent: 'center',
-    },
-  }}
->
-  <Box css={{ flex: '0 0 20px', '@bp1': { flex: '0 0 60px' } }} />
-  <Box css={{ flex: 1 }}>
-    <ToolbarDemo />
-  </Box>
-  <Box css={{ flex: '0 0 20px', '@bp1': { flex: '0 0 60px' } }} />
+<HeroContainer>
+  <Flex style={{ flex: 1, maxWidth: 600 }}>
+    <Box style={{ flex: '0 0 40px' }} />
+    <Box style={{ flex: 1 }}>
+      <ToolbarDemo />
+    </Box>
+    <Box style={{ flex: '0 0 40px' }} />
+  </Flex>
 </HeroContainer>
 
 <HeroCodeBlock folder="Toolbar" />

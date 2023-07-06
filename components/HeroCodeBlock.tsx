@@ -150,10 +150,11 @@ export const HeroCodeBlock = ({
                     }}
                   >
                     <ScrollArea
+                      scrollbars="both"
                       style={{
                         borderBottomLeftRadius: '$3',
                         borderBottomRightRadius: '$3',
-                        maxHeight: isCodeExpanded ? '80vh' : 150,
+                        height: isCodeExpanded ? '80vh' : 150,
                       }}
                     >
                       <Pre

@@ -90,11 +90,12 @@ const ToolbarLink = styled(
     ...itemStyles,
     backgroundColor: 'transparent',
     color: mauve.mauve11,
-    display: 'inline-flex',
+    display: 'none',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  { '&:hover': { backgroundColor: 'transparent', cursor: 'pointer' } }
+  { '&:hover': { backgroundColor: 'transparent', cursor: 'pointer' } },
+  { '@bp1': { display: 'inline-flex' } }
 );
 
 const ToolbarButton = styled(

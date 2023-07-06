@@ -1,6 +1,7 @@
 .CollapsibleGradient {
   position: absolute;
   bottom: 0;
+  right: 10px;
   width: 100%;
   height: var(--space-9);
   padding: var(--space-3);

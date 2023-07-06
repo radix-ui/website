@@ -1,7 +1,14 @@
 import React from 'react';
 import { Flex } from '@radix-ui/themes';
 
-export function HeroContainer({ css, children }: { css?: any; children?: React.ReactNode }) {
+export function HeroContainer({
+  children,
+  style,
+  ...props
+}: {
+  css?: any;
+  children?: React.ReactNode;
+}) {
   return (
     <Flex
       data-algolia-exclude
@@ -17,7 +24,9 @@ export function HeroContainer({ css, children }: { css?: any; children?: React.R
         paddingBlock: 100,
         borderTopLeftRadius: 'var(--br-3)',
         borderTopRightRadius: 'var(--br-3)',
+        ...style,
       }}
+      {...props}
     >
       {children}
     </Flex>
