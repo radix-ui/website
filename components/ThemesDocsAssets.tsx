@@ -1,23 +1,23 @@
-import { Box, Flex, Grid, Text, Theme, Button } from '@radix-ui/themes';
+import { Box, Flex, Grid, Text, Theme } from '@radix-ui/themes';
 
-interface ColorScaleProps extends React.ComponentProps<typeof Flex> {
+function Swatch({
+  color,
+  children,
+  invert,
+}: {
   color: string;
   children: React.ReactNode;
   invert?: boolean;
-}
-
-function Swatch({ color, children, invert, ...props }: ColorScaleProps) {
+}) {
   return (
     <Flex
       align="center"
       justify="center"
-      {...props}
       style={{
         height: 50,
         backgroundColor: `var(--${color.toLowerCase()}-10)`,
         borderRadius: 'var(--br-2-raw)',
         color: invert ? 'black' : 'white',
-        ...props.style,
       }}
     >
       <Text weight="bold" highContrast>
@@ -105,23 +105,21 @@ export function ThemesAccentGray() {
 
 export function ThemesGray() {
   return (
-    <Theme appearance="dark" applyBackgroundColor={false}>
-      <Grid
-        style={{ gridTemplateColumns: 'repeat(6, minmax(0, 1fr))' }}
-        align="center"
-        gap="2"
-        my="5"
-      >
-        <Swatch color="gray" style={{ backgroundColor: 'var(--colors-gray10)' }}>
-          Pure
-        </Swatch>
-        <Swatch color="mauve">Mauve</Swatch>
-        <Swatch color="slate">Slate</Swatch>
-        <Swatch color="sage">Sage</Swatch>
-        <Swatch color="olive">Olive</Swatch>
-        <Swatch color="sand">Sand</Swatch>
-      </Grid>
-    </Theme>
+    <Grid
+      style={{ gridTemplateColumns: 'repeat(6, minmax(0, 1fr))' }}
+      align="center"
+      gap="2"
+      my="5"
+    >
+      <Theme applyBackgroundColor={false} grayScale="gray">
+        <Swatch color="gray">Pure</Swatch>
+      </Theme>
+      <Swatch color="mauve">Mauve</Swatch>
+      <Swatch color="slate">Slate</Swatch>
+      <Swatch color="sage">Sage</Swatch>
+      <Swatch color="olive">Olive</Swatch>
+      <Swatch color="sand">Sand</Swatch>
+    </Grid>
   );
 }
 
