@@ -320,6 +320,12 @@ const props: Record<string, PropDef[]> = {
       default: formatValues(themes.badgeVariantDefault),
     },
     { ...colorProp, default: formatValues(themes.badgeColorDefault) },
+    { ...highContrastProp, default: themes.badgeHighContrastDefault },
+    {
+      ...radiusProp,
+      type: formatValues(themes.themeRadii),
+      default: formatValues(themes.badgeRadiusDefault),
+    },
   ],
   avatar: [
     {
