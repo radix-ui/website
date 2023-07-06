@@ -4,13 +4,15 @@ metaDescription: Denotes a section of page content.
 ---
 
 ```jsx live=true
-<Section style={{ backgroundColor: 'var(--gray-a2)' }}>
-  <DecorativeBox>
-    <Text align="center" color="gray">
-      Content
-    </Text>
+<Box py="8" style={{ backgroundColor: 'var(--gray-a2)' }}>
+  <DecorativeBox asChild size="2">
+    <Section>
+      <Text align="center" color="gray" as="div">
+        Section
+      </Text>
+    </Section>
   </DecorativeBox>
-</Section>
+</Box>
 ```
 
 ## API Reference

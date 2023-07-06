@@ -6,11 +6,11 @@ metaDescription: For sighted users to preview content available behind a link.
 ```jsx live=true
 <HoverCard.Root>
   <HoverCard.Trigger>
-    <Link>Typography</Link>
+    <Link href="#">Typography</Link>
   </HoverCard.Trigger>
   <HoverCard.Content style={{ overflow: 'hidden' }}>
     <Flex gap="3">
-      <Text size="2" style={{ maxWidth: 250 }}>
+      <Text size="2" style={{ maxWidth: 250 }} as="div">
         <Strong>Typography</Strong> is the art and technique of arranging type
         to make written language legible, readable and appealing when displayed.
         The arrangement of type involves selecting typefaces, point sizes, line
@@ -20,12 +20,12 @@ metaDescription: For sighted users to preview content available behind a link.
       <Box asChild m="-3" ml="0">
         <img
           src="https://images.unsplash.com/photo-1596299786007-9974099be52b?&auto=format&fit=crop&w=300&q=80"
-          alt="A house in a forest"
+          alt="Bold typography"
           style={{
             display: 'block',
             objectFit: 'cover',
             width: 150,
-            height: '100%',
+            backgroundColor: 'var(--gray-5)',
           }}
         />
       </Box>
