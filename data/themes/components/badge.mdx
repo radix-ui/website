@@ -32,6 +32,7 @@ Use the `variant` prop to control the visual style.
 
 ```jsx live=true
 <Flex gap="3">
+  <Badge variant="solid">Solid</Badge>
   <Badge variant="soft">Soft</Badge>
   <Badge variant="outline">Outline</Badge>
   <Badge variant="surface">Surface</Badge>
@@ -58,11 +59,15 @@ Use the `highContrast` prop to add contrast.
 ```jsx live=true
 <Flex direction="column" gap="3">
   <Flex gap="3">
+    <Badge variant="solid">Solid</Badge>
     <Badge variant="soft">Soft</Badge>
     <Badge variant="outline">Outline</Badge>
     <Badge variant="surface">Surface</Badge>
   </Flex>
   <Flex gap="3">
+    <Badge variant="solid" highContrast>
+      Solid
+    </Badge>
     <Badge variant="soft" highContrast>
       Soft
     </Badge>
