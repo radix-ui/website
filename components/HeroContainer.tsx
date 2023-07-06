@@ -6,7 +6,7 @@ export function HeroContainer({
   style,
   ...props
 }: {
-  css?: any;
+  style?: React.CSSProperties;
   children?: React.ReactNode;
 }) {
   return (
