@@ -17,16 +17,12 @@ This component is based on the `h1` element and supports common margin props `m`
 
 ### As another element
 
-Use the `asChild` prop to change the heading level. This prop is purely semantic and does not change the visual appearance .
+Use the `as` prop to change the heading level. This prop is purely semantic and does not change the visual appearance.
 
 ```jsx live=true
-<Heading>Level 1</Heading>
-<Heading asChild>
-  <h2>Level 2</h2>
-</Heading>
-<Heading asChild>
-  <h3>Level 3</h3>
-</Heading>
+<Heading as="h1">Level 1</Heading>
+<Heading as="h2">Level 2</Heading>
+<Heading as="h3">Level 3</Heading>
 ```
 
 ### Size

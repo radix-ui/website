@@ -1,10 +1,25 @@
 import React from 'react';
 import { PropDef, PropsTable } from './PropsTable';
 import * as themes from '@radix-ui/themes';
+import { Code } from '@radix-ui/themes';
 
 export function ThemesPropsTable({ name }: { name: string }) {
   return <PropsTable data={props[name]} />;
 }
+
+const asProp = {
+  name: 'as',
+  required: false,
+  typeSimple: 'enum',
+  description: (
+    <>
+      A shorthand for changing the default rendered element into a semantically appropriate
+      alternative. <br />
+      <br />
+      Cannot be used in combination with <Code>asChild</Code>.
+    </>
+  ),
+};
 
 const asChildProp = {
   name: 'asChild',
@@ -232,6 +247,11 @@ const props: Record<string, PropDef[]> = {
   text: [
     asChildProp,
     {
+      ...asProp,
+      type: formatValues(['span', 'div', 'p']),
+      default: 'span',
+    },
+    {
       ...sizeProp,
       type: formatValues(themes.textSizes),
       default: formatValues(themes.textSizeDefault),
@@ -260,6 +280,11 @@ const props: Record<string, PropDef[]> = {
   ],
   heading: [
     asChildProp,
+    {
+      ...asProp,
+      type: formatValues(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
+      default: 'h1',
+    },
     {
       ...sizeProp,
       type: formatValues(themes.headingSizes),
