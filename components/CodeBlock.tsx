@@ -24,7 +24,7 @@ type CodeBlockProps = PreProps & {
   language: 'js' | 'jsx' | 'bash' | 'css' | 'diff';
   value: string;
   line?: string;
-  css?: any;
+  isInteractive?: boolean;
   showLineNumbers?: boolean;
 };
 
@@ -37,6 +37,7 @@ export const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
       className = '',
       style,
       showLineNumbers,
+      isInteractive,
       ...props
     } = _props;
     let result = refractor.highlight(value, language);
@@ -58,7 +59,15 @@ export const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
         data-line-numbers={showLineNumbers}
         {...props}
       >
-        <code className={classes} dangerouslySetInnerHTML={{ __html: result }} />
+        <code
+          className={classes}
+          dangerouslySetInnerHTML={{ __html: result }}
+          style={
+            isInteractive
+              ? { willChange: 'transform', transition: 'transform 200ms ease-in-out' }
+              : {}
+          }
+        />
       </Pre>
     );
   }

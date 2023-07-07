@@ -6,7 +6,7 @@ import { CodeBlock } from '../CodeBlock';
 
 type CodeDemoProps = React.ComponentProps<typeof CodeBlock>;
 
-export function CodeDemo({ css, line, ...props }: CodeDemoProps) {
+export function CodeDemo({ line, ...props }: CodeDemoProps) {
   const wrapperRef = React.useRef<HTMLPreElement>(null);
 
   React.useEffect(() => {
@@ -82,30 +82,18 @@ export function CodeDemo({ css, line, ...props }: CodeDemoProps) {
         ref={wrapperRef}
         {...props}
         line="0"
-        css={{
-          '@bp2': {
-            display: 'none',
-          },
-          ...css,
-        }}
+        display={{ initial: 'block', sm: 'none' }}
+        style={{ ...props.style, padding: 'var(--space-3' }}
       />
       <CodeBlock
         ref={wrapperRef}
         {...props}
-        css={{
-          display: 'none',
-          '@bp2': {
-            display: 'block',
-          },
-
+        display={{ initial: 'none', sm: 'block' }}
+        isInteractive
+        style={{
           overflowY: 'hidden',
           userSelect: 'none',
-          ...css,
-          code: {
-            willChange: 'transform',
-            transition: 'transform 200ms ease-in-out',
-            ...css?.code,
-          },
+          ...props.style,
         }}
       />
     </>

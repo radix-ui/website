@@ -228,22 +228,10 @@ export const DeveloperExperienceSection = () => {
                 value={allCode}
                 line={activeHighlight}
                 data-invert-line-highlight="false"
-                css={{
+                style={{
                   padding: 0,
                   height: '100%',
                   userSelect: 'auto',
-                  $$background: 'transparent',
-                  $$text: '$colors$cyan12',
-                  $$outline: 'none',
-                  $$syntax1: '$colors$purple11',
-                  // $$syntax2: '$colors$cyan11',
-                  $$syntax2: '$colors$cyan11',
-                  $$syntax3: '$colors$crimson11',
-                  $$syntax4: '$$text',
-                  $$comment: '$colors$slateA11',
-                  $$removed: '$colors$crimson11',
-                  $$added: '$colors$teal11',
-                  $$fadedLines: '$colors$slateA8',
                 }}
               />
             </CodeWindow>
@@ -255,28 +243,32 @@ export const DeveloperExperienceSection = () => {
 };
 
 const StyledCodeDemo = React.forwardRef<HTMLPreElement, React.ComponentProps<typeof CodeDemo>>(
-  ({ css, ...props }, forwardedRef) => (
+  ({ style, ...props }, forwardedRef) => (
     <CodeDemo
       ref={forwardedRef}
       data-invert-line-highlight="false"
-      css={{
-        padding: 0,
-        height: '100%',
-        userSelect: 'auto',
-        $$background: 'transparent',
-        $$text: '$colors$cyan12',
-        $$outline: 'none',
-        $$syntax1: '$colors$purple11',
-        // $$syntax2: '$colors$cyan11',
-        $$syntax2: '$colors$cyan11',
-        $$syntax3: '$colors$crimson11',
-        $$syntax4: '$$text',
-        $$comment: '$colors$slateA11',
-        $$removed: '$colors$crimson11',
-        $$added: '$colors$teal11',
-        $$fadedLines: '$colors$slateA8',
-        ...css,
-      }}
+      style={
+        {
+          padding: 0,
+          height: '100%',
+          userSelect: 'auto',
+          fontSize: 13,
+          '---background': 'transparent',
+          '---text': 'var(--cyan-12)',
+          '---outline': 'none',
+          '---syntax1': 'var(--purple-11)',
+          // $$syntax2: '$colors$cyan11',
+          '---syntax2': 'var(--cyan-11)',
+          '---syntax3': 'var(--crimson-11)',
+          '---syntax4': 'var(---text)',
+          '---comment': 'var(--slate-a11)',
+          '---removed': 'var(--crimson-11)',
+          '---added': 'var(--teal-11)',
+          '---fadedLines': 'var(--slate-a8)',
+          boxShadow: 'none',
+          ...style,
+        } as React.CSSProperties
+      }
       {...props}
     />
   )
