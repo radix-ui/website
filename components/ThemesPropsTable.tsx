@@ -1,5 +1,5 @@
 import React from 'react';
-import { PropDef, PropsTable } from './PropsTable';
+import { PropsTable } from './PropsTable';
 import * as themes from '@radix-ui/themes';
 import { Code } from '@radix-ui/themes';
 
@@ -15,7 +15,7 @@ const definitions = {
   avatar: themes.avatarPropDefs,
   button: { ...asChildProp, ...themes.buttonPropsDefs },
   checkbox: themes.checkboxPropDefs,
-  iconButton: themes.iconButtonPropDefs,
+  iconButton: { ...asChildProp, ...themes.iconButtonPropDefs },
   radioGroup: themes.radioGroupPropDefs,
   slider: themes.sliderPropDefs,
   switch: themes.switchPropDefs,
@@ -86,6 +86,10 @@ const uniqueDescriptions: UniqueDescriptions = {
     appearance:
       'Changes the color scheme of your app. Invert will use the opposite color scheme of the parent ThemeConfig',
     accentScale: 'Changes the main accent color of your app',
+  },
+  tooltip: {
+    content: 'The content associated with the tooltip',
+    multiline: 'Used when you need to format the content across multiple lines',
   },
 };
 
