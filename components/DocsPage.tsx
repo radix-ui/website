@@ -20,7 +20,7 @@ function NavWrapper({ children, isMobileMenuOpen }) {
 
   React.useEffect(() => {
     // Match @bp2
-    const mediaQueryList = window.matchMedia('(min-width: 900px)');
+    const mediaQueryList = window.matchMedia('(min-width: 768px)');
 
     const handleChange = () => setIsMobileLayout(!mediaQueryList.matches);
     handleChange();
@@ -41,7 +41,9 @@ function NavWrapper({ children, isMobileMenuOpen }) {
           maxHeight: 'auto',
           overflowX: 'hidden',
           WebkitOverflowScrolling: 'touch',
-          backgroundColor: 'var(--color-background, $loContrast)',
+          backgroundColor: isMobileMenuOpen
+            ? 'var(--color-background, $loContrast)'
+            : 'transparent',
           display: isMobileMenuOpen ? 'block' : undefined,
           width: isMobileMenuOpen ? '100%' : '250px',
         }}

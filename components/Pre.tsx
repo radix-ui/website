@@ -186,12 +186,13 @@ export const Pre = styled('pre', {
   variants: {
     variant: {
       violet: {
-        $$background: 'var(--gray-a1, $colors$violet2)',
+        $$background: 'var(--accent-a2, $colors$violet2)',
         $$text: 'var(--accent-11, $colors$violet11)',
         $$syntax1: '$colors$blue10',
         $$syntax2: '$colors$pink11',
         $$comment: '$colors$mauve9',
         $$fadedLines: '$colors$mauveA8',
+        boxShadow: 'inset 0 0 0 1px var(--accent-3)',
       },
       violetOld: {
         $$background: theme.colors.mauve12.value,

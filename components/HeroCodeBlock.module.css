@@ -1,13 +1,16 @@
 .CollapsibleGradient {
   position: absolute;
-  bottom: 0;
-  right: 10px;
-  width: 100%;
+  bottom: 1px;
+  right: 1px;
+  left: 1px;
   height: var(--space-9);
   padding: var(--space-3);
   overflow: hidden;
   border-radius: 0 0 var(--br-3) var(--br-3);
-  isolation: isolate;
+}
+
+.CollapsibleGradient > button {
+  z-index: 2;
 }
 
 .CollapsibleGradient::before {
@@ -15,7 +18,5 @@
   pointer-events: none;
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent, var(--gray-1) 70%);
-  opacity: 0.9;
-  z-index: -1;
+  background: linear-gradient(180deg, transparent, var(--accent-2) 70%);
 }

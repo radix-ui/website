@@ -108,7 +108,8 @@ export const HeroCodeBlock = ({
             >
               <Tabs.List
                 style={{
-                  backgroundColor: 'var(--gray-a1)',
+                  backgroundColor: 'var(--accent-a2)',
+                  boxShadow: 'inset 0 0 0 1px var(--accent-3)',
                 }}
               >
                 {currentTabs.map((tab) => (
@@ -127,7 +128,7 @@ export const HeroCodeBlock = ({
                         if (isValidCssLib(lib)) setPreferredCssLib(lib);
                       }}
                     >
-                      <Select.Trigger variant="ghost" color="gray" style={{ minWidth: 115 }} />
+                      <Select.Trigger variant="ghost" style={{ minWidth: 115 }} />
                       <Select.Content>
                         {availableCssLibs.map((lib) => (
                           <Select.Item key={lib} value={lib}>
@@ -147,6 +148,11 @@ export const HeroCodeBlock = ({
                     style={{
                       borderBottomLeftRadius: 'var(--br-3)',
                       borderBottomRightRadius: 'var(--br-3)',
+                      overflow: 'hidden',
+                      marginTop: -1,
+                      display: 'grid',
+                      gridTemplateRows: isCodeExpanded ? '1fr' : '150px',
+                      boxShadow: 'inset 0 0 0 1px var(--accent-3)',
                     }}
                   >
                     <ScrollArea
@@ -154,33 +160,33 @@ export const HeroCodeBlock = ({
                       style={{
                         borderBottomLeftRadius: '$3',
                         borderBottomRightRadius: '$3',
-                        height: isCodeExpanded ? '80vh' : 150,
+                        maxHeight: '70vh',
                       }}
                     >
-                      <Pre
-                        variant="violet"
-                        css={{
-                          borderTopLeftRadius: 0,
-                          borderTopRightRadius: 0,
-                          paddingBottom: isCodeExpanded ? '$9' : undefined,
-                        }}
-                      >
-                        <code>{tab.children}</code>
-                      </Pre>
+                      <Box position="relative" style={{ zIndex: -1 }}>
+                        <Pre
+                          variant="violet"
+                          style={{
+                            boxShadow: 'none',
+                            paddingBottom: 'var(--space-9)',
+                          }}
+                        >
+                          <code>{tab.children}</code>
+                        </Pre>
+                      </Box>
+                      <Flex align="end" justify="center" className={styles.CollapsibleGradient}>
+                        <Collapsible.Trigger asChild>
+                          <Button size="1" variant="surface" highContrast color="gray">
+                            {isCodeExpanded ? 'Collapse' : 'Expand'} code
+                          </Button>
+                        </Collapsible.Trigger>
+                      </Flex>
                     </ScrollArea>
                     <CopyCodeButton code={sources[tab.id]} css={{ zIndex: 1 }} />
                   </Box>
                 </Tabs.Content>
               ))}
             </Tabs.Root>
-
-            <Flex align="end" justify="center" className={styles.CollapsibleGradient}>
-              <Collapsible.Trigger asChild>
-                <Button size="1" variant="surface" highContrast color="gray">
-                  {isCodeExpanded ? 'Collapse' : 'Expand'} code
-                </Button>
-              </Collapsible.Trigger>
-            </Flex>
           </Box>
         </Collapsible.Content>
       </Collapsible.Root>
