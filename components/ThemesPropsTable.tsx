@@ -53,7 +53,7 @@ const definitions = {
   selectContent: themes.selectContentPropDefs,
   scrollArea: themes.scrollAreaPropDefs,
   dropdownMenuContent: themes.dropdownMenuContentPropDefs,
-  dropdownMenuItem: themes.dropdownMenuContentPropDefs,
+  dropdownMenuItem: themes.dropdownMenuItemPropDefs,
   contextMenuContent: themes.contextMenuContentPropDefs,
   contextMenuItem: themes.contextMenuItemPropDefs,
   theme: { ...asChildProp, ...themes.themePropDefs },
@@ -84,8 +84,10 @@ const uniqueDescriptions: UniqueDescriptions = {
   scrollArea: { scrollbars: 'Controls the scrollable axes' },
   theme: {
     appearance:
-      'Changes the color scheme of your app. Invert will use the opposite color scheme of the parent ThemeConfig',
-    accentScale: 'Changes the main accent color of your app',
+      'The color scheme of the theme (typcially referred to as light and dark mode). Invert will use the opposite scheme to that of its parent.',
+    accentScale: 'The primary accent color of the theme.',
+    grayScale: 'Thehe gray scale of the theme.',
+    applyBackgroundColor: 'Whether to apply the themes background color to the rendered element.',
   },
   tooltip: {
     content: 'The content associated with the tooltip',
@@ -103,13 +105,13 @@ const commonDescriptions: CommonDescriptions = {
   highContrast: 'Use to render a high-contrast version of the component.',
   radius: (
     <>
-      Use to override the default radius inherited from the global theme. Read our{' '}
+      Overrides the default radius inherited from the global theme. Read our{' '}
       <a href="/dosc/themes/guides/theme-configuration">theme guide</a> for more details.
     </>
   ),
   as: (
     <>
-      A shorthand for changing the default rendered element into a semantically appropriate
+      Shorthand for changing the default rendered element into a semantically appropriate
       alternative. <br />
       <br />
       Cannot be used in combination with <Code>asChild</Code>.
@@ -124,6 +126,8 @@ const commonDescriptions: CommonDescriptions = {
       Read our <a href="/docs/primitives/guides/composition">Composition</a> guide for more details.
     </>
   ),
+  shortcut: 'Optional shortcut command to associate with the item',
+  trim: 'Removes the leading trim from the start or end of the rendered text node',
 };
 
 function formatValues(values?: readonly string[] | string) {
