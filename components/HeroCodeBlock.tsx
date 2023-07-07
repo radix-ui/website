@@ -163,7 +163,6 @@ export const HeroCodeBlock = ({
                     >
                       <Box position="relative" style={{ zIndex: -1 }}>
                         <Pre
-                          variant="violet"
                           style={{
                             boxShadow: 'none',
                             paddingBottom: 'var(--space-9)',

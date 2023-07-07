@@ -4,7 +4,6 @@ import { CopyCodeButton } from './CopyCodeButton';
 import { LiveCode } from './LiveCode';
 import * as themes from '@radix-ui/themes';
 import * as icons from '@radix-ui/react-icons';
-import { ThemesPre } from './ThemesPre';
 import { Pre } from './Pre';
 
 const PreWithLivePreview = (props) => {
@@ -72,7 +71,7 @@ const PreWithLivePreview = (props) => {
           style={{
             borderTopLeftRadius: 0,
             borderTopRightRadius: 0,
-            backgroundColor: 'var(--gray-a1)',
+            backgroundColor: 'var(--gray-a2)',
             '---text': 'var(--gray-a11)',
             '---border': 'var(--gray-4)',
             '---syntax1': 'var(--accent-a12)',
