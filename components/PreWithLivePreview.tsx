@@ -1,24 +1,25 @@
 import * as React from 'react';
-import { Box } from '@modulz/design-system';
+import { Box, Grid, Text } from '@radix-ui/themes';
 import { CopyCodeButton } from './CopyCodeButton';
 import { LiveCode } from './LiveCode';
 import * as themes from '@radix-ui/themes';
 import * as icons from '@radix-ui/react-icons';
 import { ThemesPre } from './ThemesPre';
+import { Pre } from './Pre';
 
 const PreWithLivePreview = (props) => {
   const [code, setCode] = React.useState('');
   const liveCode = childrenText(props.children) ?? '';
 
   return (
-    <Box css={{ my: '$5' }}>
+    <Box my="5">
       <Box>
         <Box
-          css={{
-            p: '$4 $4',
-            border: '1px solid var(--gray-a4)',
+          p="4"
+          style={{
+            boxShadow: 'inset 0 0 0 1px var(--gray-4)',
             borderBottom: 0,
-            borderRadius: '$3 $3 0 0',
+            borderRadius: 'var(--space-3) var(--space-3) 0 0',
             overflow: 'hidden',
           }}
         >
@@ -28,7 +29,7 @@ const PreWithLivePreview = (props) => {
               ...themes,
               ...icons,
               DecorativeBox: (props) => (
-                <themes.Box
+                <Box
                   {...props}
                   style={{
                     width: '100%',
@@ -42,7 +43,7 @@ const PreWithLivePreview = (props) => {
                 />
               ),
               RightClickZone: (props) => (
-                <themes.Grid
+                <Grid
                   {...props}
                   style={{
                     height: 100,
@@ -53,17 +54,32 @@ const PreWithLivePreview = (props) => {
                     ...props.style,
                   }}
                 >
-                  <themes.Text>Right-click here</themes.Text>
-                </themes.Grid>
+                  <Text>Right-click here</Text>
+                </Grid>
               ),
             }}
           />
         </Box>
       </Box>
 
-      <Box css={{ position: 'relative' }}>
-        <ThemesPre
+      {/* $$syntax1: 'var(--gray-a12)',
+  $$syntax2: 'var(--accent-11)',
+  $$syntax3: 'var(--gray-a11)',
+  $$syntax4: 'var(--gray-a11)', */}
+      <Box position="relative" style={{ marginTop: -1 }}>
+        <Pre
           {...props}
+          style={{
+            borderTopLeftRadius: 0,
+            borderTopRightRadius: 0,
+            backgroundColor: 'var(--gray-a1)',
+            '---text': 'var(--gray-a11)',
+            '---border': 'var(--gray-4)',
+            '---syntax1': 'var(--accent-a12)',
+            '---syntax2': 'var(--accent-11)',
+            '---syntax3': 'var(--gray-a11)',
+            '---syntax4': 'var(--gray-a11)',
+          }}
           ref={(node) => {
             if (node) {
               // remove double line breaks

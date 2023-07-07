@@ -5,12 +5,12 @@ import { Box } from '@radix-ui/themes';
 
 const PreWithCopyButton = (props) => {
   const [code, setCode] = React.useState('');
+
   return (
     <Box position="relative">
       <Pre
         {...props}
-        variant="violet"
-        css={{ my: '$5' }}
+        my="5"
         ref={(node) => {
           if (node) {
             // remove double line breaks

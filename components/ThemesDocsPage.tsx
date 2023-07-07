@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useRouter } from 'next/router';
 import { Box, Badge } from '@radix-ui/themes';
 import {
   HeaderWrapper,
@@ -12,9 +11,9 @@ import {
   useCurrentPageSlug,
 } from '@components/DocsPage';
 import { NavHeading, NavItem, NavItemTitle } from './DocsNav';
-// import { ResourceColors, ResourceIcons, ResourceStitches } from './Resources';
 import { RouteProps, allThemesRoutes, themesRoutes } from '@lib/themesRoutes';
 import { ThemesDocsHeader } from './ThemesDocsHeader';
+import { ResourceColors, ResourceIcons, ResourcePrimitives } from './Resources';
 
 export function ThemesDocsPage({ children }: { children: React.ReactNode }) {
   const currentPageSlug = useCurrentPageSlug();
@@ -58,14 +57,14 @@ export function ThemesDocsPage({ children }: { children: React.ReactNode }) {
               </Box>
             ))}
 
-            {/* <Box css={{ mt: '$8' }}>
+            <Box mt="8">
               <NavHeading>Resources</NavHeading>
-              <Box css={{ px: '$2' }}>
-                <ResourceStitches />
+              <Box px="2">
+                <ResourcePrimitives />
                 <ResourceColors />
                 <ResourceIcons />
               </Box>
-            </Box> */}
+            </Box>
           </Box>
         </NavWrapper>
 

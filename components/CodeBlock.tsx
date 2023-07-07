@@ -35,8 +35,7 @@ export const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
       value,
       line = '0',
       className = '',
-      css,
-      variant = 'violet',
+      style,
       showLineNumbers,
       ...props
     } = _props;
@@ -55,8 +54,7 @@ export const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
       <Pre
         ref={forwardedRef}
         className={classes}
-        css={css}
-        variant={variant}
+        style={style}
         data-line-numbers={showLineNumbers}
         {...props}
       >

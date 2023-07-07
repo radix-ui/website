@@ -180,7 +180,7 @@ export const HeroCodeBlock = ({
                         </Collapsible.Trigger>
                       </Flex>
                     </ScrollArea>
-                    <CopyCodeButton code={sources[tab.id]} css={{ zIndex: 1 }} />
+                    <CopyCodeButton code={sources[tab.id]} style={{ zIndex: 1 }} />
                   </Box>
                 </Tabs.Content>
               ))}

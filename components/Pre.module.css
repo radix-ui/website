@@ -1,0 +1,178 @@
+.Pre {
+  ---background: var(--accent-a2, var(--colors-violet2));
+  ---text: var(--accent-11, var(--colors-violet11));
+  ---syntax1: var(--colors-blue10);
+  ---syntax2: var(--colors-pink11);
+  ---syntax3: var(--colors-blue11);
+  ---syntax4: var(--colors-blue11);
+  ---border: var(--accent-3);
+  ---fadedLines: var(--colors-gray-a8);
+  ---comment: var(--gray-a9);
+  ---removed: var(--colors-red11);
+  ---added: var(--colors-green11);
+  ---lineNumbers: var(--colors-indigo5);
+  ---highlightedLineBg: var(--accent-3, var(--colors-violet3));
+  ---highlightedWord1Bg: var(--accent-4, var(--colors-violet4));
+  ---highlightedWord1BgActive: var(--accent-6, var(--colors-violet6));
+  ---highlightedWord1Text: var(--accent-11, var(--colors-violet11));
+  ---highlightedWord2Bg: var(--colors-red3);
+  ---highlightedWord2BgActive: var(--colors-red5);
+  ---highlightedWord2Text: var(--colors-red11);
+  ---highlightedWord3Bg: var(--colors-green3);
+  ---highlightedWord3BgActive: var(--colors-green5);
+  ---highlightedWord3Text: var(--colors-green11);
+
+  box-sizing: border-box;
+  border-radius: var(--radii-3);
+  padding: var(--space-4) var(--space-5);
+  overflow: auto;
+  font-family: var(--fonts-mono);
+  font-size: var(--fs-1);
+  line-height: 21px;
+  white-space: pre;
+  position: relative;
+  background-color: var(---background);
+  color: var(---text);
+  box-shadow: inset 0 0 0 1px var(---border);
+}
+
+.Pre > code {
+  display: block;
+}
+
+.Pre :global(.token.parameter) {
+  color: var(---text);
+}
+
+.Pre
+  :where(:global(.token.tag), :global(.token.class-name), :global(.token.selector), :global(.token.selector)
+    :global(.class), :global(.token.function)) {
+  color: var(---syntax1);
+}
+
+.Pre
+  :where(:global(.token.attr-value), :global(.token.class), :global(.token.string), :global(.token.number), :global(.token.unit), :global(.token.color)) {
+  color: var(---syntax2);
+}
+
+.Pre
+  :where(:global(.token.attr-name), :global(.token.keyword), :global(.token.rule), :global(.token.operator), :global(.token.pseudo-class), :global(.token.important)) {
+  color: var(---syntax3);
+}
+
+.Pre :where(:global(.token.punctuation), :global(.token.module), :global(.token.property)) {
+  color: var(---syntax4);
+}
+
+.Pre :where(:global(.token.comment)) {
+  color: var(---comment);
+}
+
+.Pre :where(:global(.token.atapply) :global(.token:not(.rule)):not(:global(.important))) {
+  color: inherit;
+}
+
+.Pre :where(:global(.language-shell) :global(.token:not(.comment))) {
+  color: inherit;
+}
+
+.Pre :where(:global(.language-css) :global(.token.function)) {
+  color: inherit;
+}
+
+.Pre
+  :where(:global(.token.deleted):not(:global(.prefix)), :global(.token.inserted):not(:global(.prefix))) {
+  display: block;
+  padding-inline: var(--space-4);
+  margin-inline: -20px;
+}
+
+.Pre :where(:global(.token.deleted):not(:global(.prefix))) {
+  color: var(---removed);
+}
+
+.Pre :where(:global(.token.inserted):not(:global(.prefix))) {
+  color: var(---added);
+}
+
+.Pre :where(:global(.token.deleted.prefix), :global(.token.inserted.prefix)) {
+  user-select: none;
+}
+
+.Pre :where(:global(.highlight-word)) {
+  ---bgAndShadow: var(---highlightedWord1Bg);
+  color: var(---highlightedWord1Text);
+  background-color: var(---bgAndShadow);
+  display: inline-block;
+  border-radius: 2px;
+}
+
+.Pre :where(:global(.highlight-word)) :global(.token) {
+  color: inherit;
+}
+
+.Pre :where(:global(.highlight-word)):global(.on) {
+  ---bgAndShadow: var(---highlightedWord1BgActive);
+  transition: all 100ms ease;
+  cursor: pointer;
+}
+
+.Pre :global(.token.deleted) :global(.highlight-word) {
+  ---bgAndShadow: var(---highlightedWord2Bg);
+  color: var(---highlightedWord2Text);
+}
+
+.Pre :global(.token.deleted) :global(.highlight-word):global(.on) {
+  ---bgAndShadow: var(---highlightedWord2BgActive);
+}
+
+.Pre :global(.token.inserted) :global(.highlight-word) {
+  ---bgAndShadow: var(---highlightedWord3Bg);
+  color: var(---highlightedWord3Text);
+}
+
+.Pre :global(.token.inserted) :global(.highlight-word):global(.on) {
+  ---bgAndShadow: var(---highlightedWord3BgActive);
+}
+
+.Pre[data-line-numbers='true'] :global(.highlight-line) {
+  position: relative;
+  padding-left: var(--space-4);
+}
+
+.Pre[data-line-numbers='true'] :global(.highlight-line)::before {
+  content: attr(data-line);
+  position: absolute;
+  left: -5px;
+  top: 0;
+  color: var(---lineNumbers);
+}
+
+.Pre[data-line-numbers='true']
+  [data-invert-line-highlight='true']
+  :global(.highlight-line)::before {
+  left: 10px;
+}
+
+.Pre [data-invert-line-highlight='false'] :global(.highlight-line),
+.Pre [data-invert-line-highlight='false'] :global(.highlight-line) * {
+  transition: color 150ms ease;
+}
+
+.Pre [data-invert-line-highlight='false'] :global(.highlight-line)[data-highlighted='false'],
+.Pre [data-invert-line-highlight='false'] :global(.highlight-line)[data-highlighted='false'] * {
+  color: var(---fadedLines);
+}
+
+.Pre [data-invert-line-highlight='true'] :global(.highlight-line) {
+  margin-inline: calc(var(--space-5) * -1);
+  padding-inline: var(--space-5);
+}
+
+.Pre [data-invert-line-highlight='true'] :global(.highlight-line)[data-highlighted='true'] {
+  background-color: var(---highlightedLineBg);
+}
+
+.Pre :global(.typewriter) {
+  opacity: 0;
+}
