@@ -70,7 +70,11 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (isPrimitivesDocs) {
     return (
-      <Theme accentScale="violet" appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}>
+      <Theme
+        accentScale="violet"
+        appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}
+        style={{ minHeight: '100vh' }}
+      >
         <PrimitivesDocsPage>
           <Component {...pageProps} />
         </PrimitivesDocsPage>
@@ -80,7 +84,11 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (isColorsDocs) {
     return (
-      <Theme accentScale="violet" appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}>
+      <Theme
+        accentScale="violet"
+        appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}
+        style={{ minHeight: '100vh' }}
+      >
         <ColorsDocsPage>
           <Component {...pageProps} />
         </ColorsDocsPage>
@@ -90,7 +98,11 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (isThemesDocs) {
     return (
-      <Theme accentScale="violet" appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}>
+      <Theme
+        accentScale="violet"
+        appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}
+        style={{ minHeight: '100vh' }}
+      >
         <ThemePanel />
         <ThemesDocsPage>
           <Component {...pageProps} />
@@ -100,7 +112,11 @@ function Pages({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <Theme accentScale="violet" appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}>
+    <Theme
+      accentScale="violet"
+      appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}
+      style={{ minHeight: '100vh' }}
+    >
       <Component {...pageProps} />
     </Theme>
   );
