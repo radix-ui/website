@@ -6,6 +6,7 @@
 
 @media (min-width: 1280px) {
   .Header {
+    padding-left: 250px;
     padding-right: 250px;
   }
 }

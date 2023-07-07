@@ -32,7 +32,7 @@ export const PrimitivesDocsHeader = (props: PrimitivesDocsHeaderProps) => {
               </BoxLink>
             </NextLink>
 
-            <Box display={{ initial: 'none', md: 'block' }} width="100%">
+            <Box display={{ initial: 'none', sm: 'block' }} width="100%" pr={{ sm: '9', md: '0' }}>
               <PrimitivesDocsSearch />
             </Box>
 

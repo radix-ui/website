@@ -71,13 +71,7 @@ const PageWrapper = React.forwardRef<HTMLDivElement, PageWrapperProps>(function 
 
 function ContentWrapper({ children, ...props }) {
   return (
-    <Box
-      position="relative"
-      px={{ initial: '5', md: '0' }}
-      mx="auto"
-      style={{ maxWidth: '780px' }}
-      {...props}
-    >
+    <Box position="relative" mx="auto" style={{ maxWidth: '780px' }} {...props}>
       {children}
     </Box>
   );

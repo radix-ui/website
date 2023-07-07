@@ -45,7 +45,7 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
         className={RemoveScroll.classNames.zeroRight}
         css={{
           display: 'none',
-          '@media (min-width: 1440px)': {
+          '@media (min-width: 1280px)': {
             display: 'block',
             width: 250,
             flexShrink: 0,
