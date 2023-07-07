@@ -20,7 +20,7 @@ import { DefaultHeader } from '@components/DefaultHeader';
 
 export default function ColorsHome() {
   return (
-    <Box>
+    <Box style={{ fontFamily: 'var(--fonts-untitled)' }}>
       <DefaultHeader />
 
       <Box css={{ py: '$4', mt: '$2' }}>
