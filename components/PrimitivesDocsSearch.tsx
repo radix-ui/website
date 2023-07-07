@@ -325,8 +325,8 @@ export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
                   maxHeight: '80vh',
                   overflow: 'auto',
                   // ensure padding when scrolling via keyboard
-                  scrollPaddingTop: '$2',
-                  scrollPaddingBottom: '$2',
+                  scrollPaddingTop: 'var(--space-2)',
+                  scrollPaddingBottom: 'var(--space-2)',
                 }}
               >
                 <SearchResults searchState={searchState} autocomplete={autocomplete} />

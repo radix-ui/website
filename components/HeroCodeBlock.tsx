@@ -158,8 +158,6 @@ export const HeroCodeBlock = ({
                     <ScrollArea
                       scrollbars="both"
                       style={{
-                        borderBottomLeftRadius: '$3',
-                        borderBottomRightRadius: '$3',
                         maxHeight: '70vh',
                       }}
                     >
