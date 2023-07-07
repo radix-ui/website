@@ -126,7 +126,7 @@ const commonDescriptions: CommonDescriptions = {
       Read our <a href="/docs/primitives/guides/composition">Composition</a> guide for more details.
     </>
   ),
-  shortcut: 'Optional shortcut command to associate with the item',
+  // shortcut: 'Optional shortcut command to associate with the item',
   trim: 'Removes the leading trim from the start or end of the rendered text node',
 };
 
