@@ -3,39 +3,60 @@ import { PropDef, PropsTable } from './PropsTable';
 import * as themes from '@radix-ui/themes';
 import { Code } from '@radix-ui/themes';
 
+const asChildProp = {
+  asChild: {
+    required: false,
+    type: 'boolean',
+    default: false,
+  },
+};
+
 const definitions = {
   avatar: themes.avatarPropDefs,
-  button: themes.buttonPropsDefs,
+  button: { ...asChildProp, ...themes.buttonPropsDefs },
   checkbox: themes.checkboxPropDefs,
   iconButton: themes.iconButtonPropDefs,
   radioGroup: themes.radioGroupPropDefs,
   slider: themes.sliderPropDefs,
   switch: themes.switchPropDefs,
-  text: themes.textPropDefs,
   tooltip: themes.tooltipPropDefs,
   box: themes.boxPropDefs,
-  flex: themes.flexPropDefs,
-  grid: themes.gridPropDefs,
+  flex: { ...asChildProp, ...themes.flexPropDefs },
+  grid: { ...asChildProp, ...themes.gridPropDefs },
   container: themes.containerPropDefs,
   section: themes.sectionPropDefs,
-  heading: themes.headingPropDefs,
+  text: {
+    ...asChildProp,
+    as: { required: false, type: 'enum', values: ['p', 'div', 'span'], default: 'span' },
+    ...themes.textPropDefs,
+  },
+  heading: {
+    ...asChildProp,
+    as: {
+      required: false,
+      type: 'enum',
+      values: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+      default: 'h1',
+    },
+    ...themes.headingPropDefs,
+  },
+  link: { ...asChildProp, ...themes.linkPropDefs },
   blockquote: themes.blockquotePropDefs,
   code: themes.codePropDefs,
   textField: themes.textFieldPropDefs,
   textArea: themes.textAreaPropDefs,
-  link: themes.linkPropDefs,
   separator: themes.separatorPropDefs,
   badge: themes.badgePropDefs,
   layout: themes.layoutPropDefs,
   selectRoot: themes.selectRootPropDefs,
-  selectTrigger: themes.selectTriggerPropDefs,
+  selectTrigger: { ...asChildProp, ...themes.selectTriggerPropDefs },
   selectContent: themes.selectContentPropDefs,
   scrollArea: themes.scrollAreaPropDefs,
   dropdownMenuContent: themes.dropdownMenuContentPropDefs,
   dropdownMenuItem: themes.dropdownMenuContentPropDefs,
   contextMenuContent: themes.contextMenuContentPropDefs,
   contextMenuItem: themes.contextMenuItemPropDefs,
-  theme: themes.themePropDefs,
+  theme: { ...asChildProp, ...themes.themePropDefs },
 } as const;
 
 type PropDefinitions = typeof definitions;
@@ -80,6 +101,23 @@ const commonDescriptions: CommonDescriptions = {
     <>
       Use to override the default radius inherited from the global theme. Read our{' '}
       <a href="/dosc/themes/guides/theme-configuration">theme guide</a> for more details.
+    </>
+  ),
+  as: (
+    <>
+      A shorthand for changing the default rendered element into a semantically appropriate
+      alternative. <br />
+      <br />
+      Cannot be used in combination with <Code>asChild</Code>.
+    </>
+  ),
+  asChild: (
+    <>
+      Change the default rendered element for the one passed as a child, merging their props and
+      behavior.
+      <br />
+      <br />
+      Read our <a href="/docs/primitives/guides/composition">Composition</a> guide for more details.
     </>
   ),
 };
@@ -143,7 +181,8 @@ function formatDefinitions(definitions: Record<ComponentName, ThemesPropsDef>) {
         required: item.required,
         typeSimple: item.type,
         type: formatValues(item.values),
-        default: typeof item.default === 'string' ? formatValues(item.default) : item.default,
+        default:
+          typeof item.default === 'boolean' ? String(item.default) : formatValues(item.default),
         description: description,
       };
     });
