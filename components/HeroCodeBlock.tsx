@@ -61,7 +61,12 @@ export const HeroCodeBlock = ({
   }, [currentTabValue, currentTabs]);
 
   return (
-    <Box data-algolia-exclude position="relative" mx={{ lg: '-7', xl: '-8' }}>
+    <Box
+      className="DemoContainer"
+      data-algolia-exclude
+      position="relative"
+      mx={{ lg: '-7', xl: '-8' }}
+    >
       <Collapsible.Root open={isCodeExpanded} onOpenChange={setIsCodeExpanded}>
         <Flex
           display="inline-flex"
@@ -89,7 +94,14 @@ export const HeroCodeBlock = ({
             />
             <Tooltip content={`Open ${CSS_LIB_NAMES[usedCssLib]} demo in CodeSandbox`}>
               <Theme appearance="dark" applyBackgroundColor={false}>
-                <IconButton size="1" variant="ghost" type="submit" color="gray" highContrast>
+                <IconButton
+                  className="SandboxButton"
+                  size="1"
+                  variant="ghost"
+                  type="submit"
+                  color="gray"
+                  highContrast
+                >
                   <CodeSandboxLogoIcon />
                 </IconButton>
               </Theme>
@@ -145,6 +157,7 @@ export const HeroCodeBlock = ({
                 <Tabs.Content key={tab.id} value={tab.id}>
                   <Box
                     position="relative"
+                    className={styles.CodeContainer}
                     style={{
                       borderBottomLeftRadius: 'var(--br-3)',
                       borderBottomRightRadius: 'var(--br-3)',
@@ -179,7 +192,11 @@ export const HeroCodeBlock = ({
                         </Collapsible.Trigger>
                       </Flex>
                     </ScrollArea>
-                    <CopyCodeButton code={sources[tab.id]} style={{ zIndex: 1 }} />
+                    <CopyCodeButton
+                      className={styles.CopyButton}
+                      code={sources[tab.id]}
+                      style={{ zIndex: 1 }}
+                    />
                   </Box>
                 </Tabs.Content>
               ))}

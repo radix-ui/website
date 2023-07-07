@@ -20,3 +20,12 @@
   inset: 0;
   background: linear-gradient(180deg, transparent, var(--accent-2) 70%);
 }
+
+.CodeContainer .CopyButton {
+  opacity: 0;
+  transition: opacity 80ms ease-out;
+}
+
+.CodeContainer:hover .CopyButton {
+  opacity: 1;
+}

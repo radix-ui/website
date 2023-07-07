@@ -1,5 +1,6 @@
 import React from 'react';
 import { Flex } from '@radix-ui/themes';
+import styles from './HeroContainer.module.css';
 
 export function HeroContainer({
   children,
@@ -19,13 +20,7 @@ export function HeroContainer({
       align="start"
       justify="center"
       mx={{ lg: '-7', xl: '-8' }}
-      style={{
-        backgroundImage: 'linear-gradient(330deg, var(--purple-9) 0%, var(--indigo-9) 100%)',
-        paddingBlock: 100,
-        borderTopLeftRadius: 'var(--br-3)',
-        borderTopRightRadius: 'var(--br-3)',
-        ...style,
-      }}
+      className={styles.HeroContainer}
       {...props}
     >
       {children}

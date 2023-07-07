@@ -2,12 +2,13 @@ import * as React from 'react';
 import { Pre } from './Pre';
 import { CopyCodeButton } from './CopyCodeButton';
 import { Box } from '@radix-ui/themes';
+import styles from './PreWithCopyButton.module.css';
 
 const PreWithCopyButton = (props) => {
   const [code, setCode] = React.useState('');
 
   return (
-    <Box position="relative">
+    <Box position="relative" className={styles.Container}>
       <Pre
         {...props}
         my="5"

@@ -1,0 +1,15 @@
+.HeroContainer {
+  background-image: linear-gradient(330deg, var(--purple-9) 0%, var(--indigo-9) 100%);
+  padding-block: 100px;
+  border-top-left-radius: var(--br-3);
+  border-top-right-radius: var(--br-3);
+}
+
+.HeroContainer + :global(.DemoContainer) :global(.SandboxButton) {
+  opacity: 0;
+  transition: opacity 80ms ease-out;
+}
+
+.HeroContainer:hover + :global(.DemoContainer) :global(.SandboxButton) {
+  opacity: 1;
+}

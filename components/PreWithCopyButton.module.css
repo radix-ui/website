@@ -1,0 +1,8 @@
+.Container button {
+  opacity: 0;
+  transition: opacity 80ms ease-out;
+}
+
+.Container:hover button {
+  opacity: 1;
+}
