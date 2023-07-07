@@ -1,8 +1,8 @@
-.Container .CopyButton {
+.CodeContainer .CopyButton {
   opacity: 0;
   transition: opacity 80ms ease-out;
 }
 
-.Container:hover .CopyButton {
+.CodeContainer:hover .CopyButton {
   opacity: 1;
 }

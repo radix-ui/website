@@ -5,6 +5,7 @@ import { LiveCode } from './LiveCode';
 import * as themes from '@radix-ui/themes';
 import * as icons from '@radix-ui/react-icons';
 import { Pre } from './Pre';
+import styles from './PreWithLivePreview.module.css';
 
 const PreWithLivePreview = (props) => {
   const [code, setCode] = React.useState('');
@@ -61,11 +62,7 @@ const PreWithLivePreview = (props) => {
         </Box>
       </Box>
 
-      {/* $$syntax1: 'var(--gray-a12)',
-  $$syntax2: 'var(--accent-11)',
-  $$syntax3: 'var(--gray-a11)',
-  $$syntax4: 'var(--gray-a11)', */}
-      <Box position="relative" style={{ marginTop: -1 }}>
+      <Box position="relative" style={{ marginTop: -1 }} className={styles.CodeContainer}>
         <Pre
           {...props}
           style={{
@@ -88,7 +85,7 @@ const PreWithLivePreview = (props) => {
             }
           }}
         />
-        <CopyCodeButton code={code} />
+        <CopyCodeButton className={styles.CopyButton} code={code} />
       </Box>
     </Box>
   );

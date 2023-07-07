@@ -21,7 +21,7 @@ const PreWithCopyButton = (props) => {
           }
         }}
       />
-      <CopyCodeButton code={code} />
+      <CopyCodeButton className={styles.CopyButton} code={code} />
     </Box>
   );
 };
