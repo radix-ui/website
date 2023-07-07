@@ -17,7 +17,7 @@ import { StatsSection } from '@components/marketing/StatsSection';
 
 export default function PrimitivesHome() {
   return (
-    <Box style={{ fontFamily: 'var(--fonts-untitled)' }}>
+    <Box>
       <TitleAndMetaTags
         title="Primitives – Radix UI"
         description="An open-source React component library for building high-quality, accessible design systems and web apps."

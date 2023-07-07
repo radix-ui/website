@@ -73,7 +73,7 @@ function Pages({ Component, pageProps }: AppProps) {
       <Theme
         accentScale="violet"
         appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}
-        style={{ minHeight: '100vh' }}
+        style={{ minHeight: '100vh', fontFamily: 'var(--fonts-untitled)' }}
       >
         <PrimitivesDocsPage>
           <Component {...pageProps} />
@@ -87,7 +87,7 @@ function Pages({ Component, pageProps }: AppProps) {
       <Theme
         accentScale="violet"
         appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}
-        style={{ minHeight: '100vh' }}
+        style={{ minHeight: '100vh', fontFamily: 'var(--fonts-untitled)' }}
       >
         <ColorsDocsPage>
           <Component {...pageProps} />
@@ -101,7 +101,7 @@ function Pages({ Component, pageProps }: AppProps) {
       <Theme
         accentScale="violet"
         appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}
-        style={{ minHeight: '100vh' }}
+        style={{ minHeight: '100vh', fontFamily: 'var(--fonts-untitled)' }}
       >
         <ThemePanel />
         <ThemesDocsPage>
@@ -115,7 +115,7 @@ function Pages({ Component, pageProps }: AppProps) {
     <Theme
       accentScale="violet"
       appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}
-      style={{ minHeight: '100vh' }}
+      style={{ minHeight: '100vh', fontFamily: 'var(--fonts-untitled)' }}
     >
       <Component {...pageProps} />
     </Theme>
