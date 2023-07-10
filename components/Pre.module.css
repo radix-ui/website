@@ -27,7 +27,7 @@
   padding: var(--space-4) var(--space-5);
   overflow: auto;
   font-family: var(--fonts-mono);
-  font-size: var(--fs-1);
+  font-size: var(--font-size-1);
   line-height: 21px;
   white-space: pre;
   position: relative;

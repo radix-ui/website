@@ -159,8 +159,8 @@ export const HeroCodeBlock = ({
                     position="relative"
                     className={styles.CodeContainer}
                     style={{
-                      borderBottomLeftRadius: 'var(--br-3)',
-                      borderBottomRightRadius: 'var(--br-3)',
+                      borderBottomLeftRadius: 'var(--radius-3)',
+                      borderBottomRightRadius: 'var(--radius-3)',
                       overflow: 'hidden',
                       marginTop: -1,
                       display: 'grid',

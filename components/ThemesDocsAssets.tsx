@@ -16,7 +16,7 @@ function Swatch({
       style={{
         height: 50,
         backgroundColor: `var(--${color.toLowerCase()}-10)`,
-        borderRadius: 'var(--br-2-raw)',
+        borderRadius: 'var(--radius-2)',
         color: invert ? 'black' : 'white',
       }}
     >
@@ -128,7 +128,7 @@ export function ThemesThemeAnatomy() {
     <Flex
       style={{
         backgroundColor: 'var(--gray-a6)',
-        borderRadius: 'var(--br-4-raw)',
+        borderRadius: 'var(--radius-4)',
         position: 'relative',
       }}
       align="center"
@@ -179,7 +179,7 @@ export function ThemesThemeAnatomy() {
         justify="center"
         style={{
           backgroundColor: 'var(--color-panel)',
-          borderRadius: 'var(--br-4-raw)',
+          borderRadius: 'var(--radius-4)',
           width: '100%',
           maxWidth: 300,
           height: 300,
@@ -198,7 +198,7 @@ export function ThemesTextFeel() {
     <Flex
       style={{
         backgroundColor: 'var(--gray-a6)',
-        borderRadius: 'var(--br-4-raw)',
+        borderRadius: 'var(--radius-4)',
       }}
       align="center"
       justify="center"
@@ -211,7 +211,7 @@ export function ThemesTextFeel() {
           justify="center"
           style={{
             backgroundColor: 'var(--color-panel)',
-            borderRadius: 'var(--br-4-raw)',
+            borderRadius: 'var(--radius-4)',
             boxShadow: 'var(--shadow-3)',
           }}
           p="5"
@@ -224,7 +224,7 @@ export function ThemesTextFeel() {
           justify="center"
           style={{
             backgroundColor: 'var(--color-panel)',
-            borderRadius: 'var(--br-4-raw)',
+            borderRadius: 'var(--radius-4)',
             boxShadow: 'var(--shadow-3)',
           }}
           p="5"
@@ -241,7 +241,7 @@ export function ThemesAppearance() {
     <Flex
       style={{
         backgroundColor: 'var(--gray-a6)',
-        borderRadius: 'var(--br-4-raw)',
+        borderRadius: 'var(--radius-4)',
       }}
       align="center"
       justify="center"
@@ -250,7 +250,7 @@ export function ThemesAppearance() {
     >
       <Grid
         columns="2"
-        style={{ width: '100%', height: 300, borderRadius: 'var(--br-4-raw)', overflow: 'hidden' }}
+        style={{ width: '100%', height: 300, borderRadius: 'var(--radius-4)', overflow: 'hidden' }}
       >
         <Theme asChild>
           <Flex

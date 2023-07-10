@@ -6,7 +6,7 @@
   height: var(--space-9);
   padding: var(--space-3);
   overflow: hidden;
-  border-radius: 0 0 var(--br-3) var(--br-3);
+  border-radius: 0 0 var(--radius-3) var(--radius-3);
 }
 
 .CollapsibleGradient > button {

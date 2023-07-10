@@ -51,6 +51,11 @@ const globalStyles = globalCss({
   'h1, h2, h3, h4, h5': { fontWeight: 500 },
 });
 
+const themeRootStyles = {
+  minHeight: '100vh',
+  ['--default-font-family']: 'var(--fonts-untitled)',
+};
+
 function Pages({ Component, pageProps }: AppProps) {
   const { resolvedTheme } = useTheme();
   const router = useRouter();
@@ -73,7 +78,7 @@ function Pages({ Component, pageProps }: AppProps) {
       <Theme
         accentScale="violet"
         appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}
-        style={{ minHeight: '100vh', fontFamily: 'var(--fonts-untitled)' }}
+        style={themeRootStyles}
       >
         <PrimitivesDocsPage>
           <Component {...pageProps} />
@@ -87,7 +92,7 @@ function Pages({ Component, pageProps }: AppProps) {
       <Theme
         accentScale="violet"
         appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}
-        style={{ minHeight: '100vh', fontFamily: 'var(--fonts-untitled)' }}
+        style={themeRootStyles}
       >
         <ColorsDocsPage>
           <Component {...pageProps} />
@@ -101,7 +106,7 @@ function Pages({ Component, pageProps }: AppProps) {
       <Theme
         accentScale="violet"
         appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}
-        style={{ minHeight: '100vh', fontFamily: 'var(--fonts-untitled)' }}
+        style={themeRootStyles}
       >
         <ThemePanel />
         <ThemesDocsPage>
@@ -115,7 +120,7 @@ function Pages({ Component, pageProps }: AppProps) {
     <Theme
       accentScale="violet"
       appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}
-      style={{ minHeight: '100vh', fontFamily: 'var(--fonts-untitled)' }}
+      style={themeRootStyles}
     >
       <Component {...pageProps} />
     </Theme>

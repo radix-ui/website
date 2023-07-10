@@ -4,7 +4,7 @@
   outline: 0;
   padding: var(--space-1);
   margin: calc(-1 * var(--space-1));
-  border-radius: var(--br-1-raw);
+  border-radius: var(--radius-1);
   color: inherit;
 }
 

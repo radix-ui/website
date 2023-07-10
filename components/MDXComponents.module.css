@@ -27,13 +27,13 @@
 }
 
 .Note {
-  border-radius: var(--br-3);
+  border-radius: var(--radius-3);
   color: var(--gray-11);
-  font-size: var(--fs-1);
+  font-size: var(--font-size-1);
 }
 
 .Note p[class*='size-'] {
-  font-size: var(--fs-2);
+  font-size: var(--font-size-2);
   margin: 0;
 }
 
@@ -42,7 +42,7 @@
   flex-wrap: nowrap;
   gap: var(--space-3);
   padding: var(--space-4);
-  border-radius: var(--br-4);
+  border-radius: var(--radius-4);
   box-shadow: inset 0 0 0 1px var(--yellow-a6);
   background-color: var(--yellow-a3);
   color: var(--yellow-11);
@@ -53,5 +53,5 @@
 }
 
 .Alert p[class*='size-'] {
-  font-size: var(--fs-2);
+  font-size: var(--font-size-2);
 }

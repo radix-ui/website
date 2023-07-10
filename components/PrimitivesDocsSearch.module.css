@@ -25,7 +25,7 @@
 }
 
 .ListItem {
-  border-radius: var(--br-1);
+  border-radius: var(--radius-1);
 }
 
 .ListItem:active,
@@ -41,5 +41,5 @@
 .Panel {
   background-color: var(--color-background);
   box-shadow: var(--shadow-3);
-  border-radius: var(--br-3);
+  border-radius: var(--radius-3);
 }
