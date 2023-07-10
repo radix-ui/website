@@ -12,38 +12,91 @@ metaDescription:
   flexibility to build your own components.
 </Description>
 
+## Color
+
+Radix Themes uses [Radix Colors](/docs/colors/palette-composition/scales) as the foundation of it's color system. Out of the box this provides you with 30, 12 step color scales, each with it's own light and dark variant. Open the theme panel to explore and preview all of the available variations.
+
+### Accent
+
+Accents are the most dominant color in your theme, they are used for primary buttons, links and other interactive elements. The accent can be one of 23 scales specified by your [Theme](/docs/themes/components/theme).
+
+<ThemesAccentTable />
+
+### Gray
+
+Gray colors are used for backgrounds, borders, text and other non-interactive elements. You can choose from one of 6 gray scales specified by your [Theme](/docs/themes/components/theme).
+
+<ThemesGrayTable />
+
+### Alpha variants
+
+Every scale has an alpha variant (denoted by the `a` scale prefix). These variants are designed to appear visually the same as their opaque counterparts when placed over a matching background. This is very powerful and allows you to overlay colors without a loss of saturation or hue.
+
+### Additional scales
+
+While the Accent and Gray scales are the sets you'll primarily be using throughout your app, you can use any of the scales available in [Radix Colors](/docs/colors/palette-composition/scales), this is useful when you need to assign semantic color for positive, negative, or warning elements.
+
 ## Spacing
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Spacing tokens are used to apply space between elements. They are derived from a 9 step scale.
 
-## Colors
-
-### Scale definition
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-### Alpha scales
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-### Accents
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-### Grays
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+<ThemesSpacingTable />
 
 ## Typography
 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+### Font size
+
+<ThemesFontSizeTable />
+
 ### Font family
 
+<ThemesFontFamilyTable
+  data={[
+    {
+      token: '--ff-sans',
+      value:
+        "'Inter', 'system-ui', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'",
+    },
+    {
+      token: '--ff-code',
+      value:
+        "'Fira Code', 'Menlo', monospace, 'Apple Color Emoji', 'Segoe UI Emoji'",
+    },
+    {
+      token: '--ff-italic',
+      value: "'Source Serif 4', Georgia, 'Times New Roman', serif",
+    },
+  ]}
+/>
+
+## Visual style
+
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-## Border radius
+### Border radius
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-## Shadow
+<ThemesBorderRadiusTable />
+
+### Shadow
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+<ThemesShadowTable />
+
+## Using the theme
+
+There are two ways of applying theme values to a UI component:
+
+### Using component props
+
+Theme values can be used as prop values on any UI component. For example, adding `margin-right` to a button component can be achieved by using the `mr` prop and passing in a scale value from the spacing scale.
+
+### Overriding with the style prop
+
+Typically components inherently have the props needed to style them, but in some cases you may need to add a style that is not available as a prop or set a value that is outside of the specified prop type.
+
+In this case, you can use the style prop to override the component's default styles. To use theme values with this method, pass the CSS variable name to the CSS property you wish to override. This should be used sparingly, and only when there is no other way to achieve the desired style. For example, to absolute position a box 8px from the top of the page, you can use the style prop to set a top value and pass `--space-2` to it.

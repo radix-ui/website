@@ -1,125 +1,225 @@
-import { Box, Flex, Grid, Text, Theme } from '@radix-ui/themes';
+import { Box, Code, Flex, Grid, ScrollArea, Text, Theme } from '@radix-ui/themes';
+import { RegionTable } from './RegionTable';
 
-function Swatch({
-  color,
-  children,
-  invert,
-}: {
-  color: string;
-  children: React.ReactNode;
-  invert?: boolean;
-}) {
+export function ThemesBorderRadiusTable() {
   return (
-    <Flex
-      align="center"
-      justify="center"
-      style={{
-        height: 50,
-        backgroundColor: `var(--${color.toLowerCase()}-10)`,
-        borderRadius: 'var(--radius-2)',
-        color: invert ? 'black' : 'white',
-      }}
-    >
-      <Text weight="bold" highContrast>
-        {children}
-      </Text>
-    </Flex>
+    <>
+      <Flex direction="column" gap="1">
+        <Flex align="center" gap="1">
+          <Flex style={{ minWidth: 100 }}></Flex>
+
+          {[...new Array(6)].map((_, i) => (
+            <Box style={{ flex: 1 }} height="6" key={i}>
+              <Flex align="center" justify="center" height="100%" width="100%">
+                <Text size="1" color="gray">
+                  {i + 1}
+                </Text>
+              </Flex>
+            </Box>
+          ))}
+        </Flex>
+
+        <Flex align="center" gap="1">
+          <Flex style={{ minWidth: 100 }}>
+            <Code color="gray" size="2">
+              --radius-
+            </Code>
+          </Flex>
+
+          {[...new Array(6)].map((_, i) => (
+            <Box
+              style={{
+                flex: 1,
+                border: '1px solid var(--gray-7)',
+                borderRadius: `var(--radius-${i + 1})`,
+              }}
+              height="6"
+              key={i}
+            ></Box>
+          ))}
+        </Flex>
+      </Flex>
+    </>
   );
 }
 
-export function ThemesAccentRegulars() {
+export function ThemesShadowTable() {
   return (
-    <Grid
-      style={{ gridTemplateColumns: 'repeat(5, minmax(0, 1fr))' }}
-      align="center"
-      gap="2"
-      my="5"
-    >
-      <Swatch color="tomato">Tomato</Swatch>
-      <Swatch color="red">Red</Swatch>
-      <Swatch color="crimson">Crimson</Swatch>
-      <Swatch color="pink">Pink</Swatch>
-      <Swatch color="plum">Plum</Swatch>
-      <Swatch color="purple">Purple</Swatch>
-      <Swatch color="violet">Violet</Swatch>
-      <Swatch color="indigo">Indigo</Swatch>
-      <Swatch color="blue">Blue</Swatch>
-      <Swatch color="cyan">Cyan</Swatch>
-      <Swatch color="teal">Teal</Swatch>
-      <Swatch color="green">Green</Swatch>
-      <Swatch color="grass">Grass</Swatch>
-      <Swatch color="orange">Orange</Swatch>
-      <Swatch color="brown">Brown</Swatch>
-    </Grid>
+    <>
+      <Flex direction="column" gap="1">
+        <Flex align="center" gap="1" px="4">
+          <Flex style={{ minWidth: 100 }}></Flex>
+
+          {[...new Array(5)].map((_, i) => (
+            <Box style={{ flex: 1 }} height="6" key={i}>
+              <Flex align="center" justify="center" height="100%" width="100%">
+                <Text size="1" color="gray">
+                  {i + 1}
+                </Text>
+              </Flex>
+            </Box>
+          ))}
+        </Flex>
+
+        <Flex align="center" gap="1">
+          <Flex style={{ minWidth: 100 }}>
+            <Code color="gray" size="2">
+              --shadow-
+            </Code>
+          </Flex>
+
+          <Flex
+            style={{ flex: 1, backgroundColor: 'var(--gray-3)', borderRadius: 'var(--radius-3)' }}
+            p="4"
+            gap="2"
+          >
+            {[...new Array(5)].map((_, i) => (
+              <Flex style={{ flex: 1 }} align="center" justify="center">
+                <Box
+                  style={{
+                    backgroundColor: 'var(--gray-1)',
+                    boxShadow: `var(--shadow-${i + 1})`,
+                    borderRadius: 'var(--radius-2)',
+                    width: '100%',
+                    maxWidth: '90px',
+                  }}
+                  height="6"
+                  key={i}
+                ></Box>
+              </Flex>
+            ))}
+          </Flex>
+        </Flex>
+      </Flex>
+    </>
   );
 }
 
-export function ThemesAccentBrights() {
+export function ThemesAccentTable() {
   return (
-    <Grid
-      style={{ gridTemplateColumns: 'repeat(5, minmax(0, 1fr))' }}
-      align="center"
-      gap="2"
-      my="5"
-    >
-      <Swatch color="sky" invert>
-        Sky
-      </Swatch>
-      <Swatch color="mint" invert>
-        Mint
-      </Swatch>
-      <Swatch color="lime" invert>
-        Lime
-      </Swatch>
-      <Swatch color="yellow" invert>
-        Yellow
-      </Swatch>
-      <Swatch color="amber" invert>
-        Amber
-      </Swatch>
-    </Grid>
+    <>
+      <Flex direction="column" gap="1">
+        <Flex align="center" gap="1">
+          <Flex style={{ minWidth: 100 }}></Flex>
+
+          {[...new Array(12)].map((_, i) => (
+            <Box style={{ flex: 1 }} height="6" key={i}>
+              <Flex align="center" justify="center" height="100%" width="100%">
+                <Text size="1" color="gray">
+                  {i + 1}
+                </Text>
+              </Flex>
+            </Box>
+          ))}
+        </Flex>
+
+        <Flex align="center" gap="1">
+          <Flex style={{ minWidth: 100 }}>
+            <Code color="gray" size="2">
+              --accent-
+            </Code>
+          </Flex>
+
+          {[...new Array(12)].map((_, i) => (
+            <Box style={{ flex: 1 }} height="6" key={i}>
+              <Box
+                style={{
+                  backgroundColor: `var(--accent-${i + 1})`,
+                  borderRadius: 'var(--radius-2)',
+                }}
+                height="100%"
+                width="100%"
+              />
+            </Box>
+          ))}
+        </Flex>
+
+        <Flex align="center" gap="1">
+          <Flex style={{ minWidth: 100 }}>
+            <Code color="gray" size="2">
+              --accent-a
+            </Code>
+          </Flex>
+
+          {[...new Array(12)].map((_, i) => (
+            <Box style={{ flex: 1 }} height="6" key={i}>
+              <Box
+                style={{
+                  backgroundColor: `var(--accent-a${i + 1})`,
+                  borderRadius: 'var(--radius-2)',
+                }}
+                height="100%"
+                width="100%"
+              />
+            </Box>
+          ))}
+        </Flex>
+      </Flex>
+    </>
   );
 }
 
-export function ThemesAccentMetals() {
+export function ThemesGrayTable() {
   return (
-    <Grid
-      style={{ gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' }}
-      align="center"
-      gap="2"
-      my="5"
-    >
-      <Swatch color="bronze">Bronze</Swatch>
-      <Swatch color="gold">Gold</Swatch>
-    </Grid>
-  );
-}
+    <>
+      <Flex direction="column" gap="1">
+        <Flex align="center" gap="1">
+          <Flex style={{ minWidth: 100 }}></Flex>
 
-export function ThemesAccentGray() {
-  return (
-    <Box my="5">
-      <Swatch color="slate">Gray (Slate)</Swatch>
-    </Box>
-  );
-}
+          {[...new Array(12)].map((_, i) => (
+            <Box style={{ flex: 1 }} height="6" key={i}>
+              <Flex align="center" justify="center" height="100%" width="100%">
+                <Text size="1" color="gray">
+                  {i + 1}
+                </Text>
+              </Flex>
+            </Box>
+          ))}
+        </Flex>
 
-export function ThemesGray() {
-  return (
-    <Grid
-      style={{ gridTemplateColumns: 'repeat(6, minmax(0, 1fr))' }}
-      align="center"
-      gap="2"
-      my="5"
-    >
-      <Theme applyBackgroundColor={false} grayScale="gray">
-        <Swatch color="gray">Pure</Swatch>
-      </Theme>
-      <Swatch color="mauve">Mauve</Swatch>
-      <Swatch color="slate">Slate</Swatch>
-      <Swatch color="sage">Sage</Swatch>
-      <Swatch color="olive">Olive</Swatch>
-      <Swatch color="sand">Sand</Swatch>
-    </Grid>
+        <Flex align="center" gap="1">
+          <Flex style={{ minWidth: 100 }}>
+            <Code color="gray" size="2">
+              --gray-
+            </Code>
+          </Flex>
+
+          {[...new Array(12)].map((_, i) => (
+            <Box style={{ flex: 1 }} height="6" key={i}>
+              <Box
+                style={{
+                  backgroundColor: `var(--gray-${i + 1})`,
+                  borderRadius: 'var(--radius-2)',
+                }}
+                height="100%"
+                width="100%"
+              />
+            </Box>
+          ))}
+        </Flex>
+
+        <Flex align="center" gap="1">
+          <Flex style={{ minWidth: 100 }}>
+            <Code color="gray" size="2">
+              --gray-a
+            </Code>
+          </Flex>
+
+          {[...new Array(12)].map((_, i) => (
+            <Box style={{ flex: 1 }} height="6" key={i}>
+              <Box
+                style={{
+                  backgroundColor: `var(--gray-a${i + 1})`,
+                  borderRadius: 'var(--radius-2)',
+                }}
+                height="100%"
+                width="100%"
+              />
+            </Box>
+          ))}
+        </Flex>
+      </Flex>
+    </>
   );
 }
 
@@ -193,91 +293,289 @@ export function ThemesThemeAnatomy() {
   );
 }
 
-export function ThemesTextFeel() {
+export function ThemesSpacingTable() {
   return (
-    <Flex
-      style={{
-        backgroundColor: 'var(--gray-a6)',
-        borderRadius: 'var(--radius-4)',
-      }}
-      align="center"
-      justify="center"
-      my="7"
-      p="7"
-    >
-      <Grid columns="2" style={{ width: '100%', height: 300 }} gap="6">
-        <Flex
-          align="center"
-          justify="center"
-          style={{
-            backgroundColor: 'var(--color-panel)',
-            borderRadius: 'var(--radius-4)',
-            boxShadow: 'var(--shadow-3)',
-          }}
-          p="5"
-        >
-          <Text color="gray">"auto" example</Text>
+    <>
+      <Flex direction="column" gap="1">
+        <Flex align="center" gap="1">
+          <Flex style={{ minWidth: 100 }}></Flex>
+
+          {[...new Array(9)].map((_, i) => (
+            <Box style={{ flex: 1 }} height="6" key={i}>
+              <Flex align="center" justify="center" height="100%" width="100%">
+                <Text size="1" color="gray">
+                  {i + 1}
+                </Text>
+              </Flex>
+            </Box>
+          ))}
         </Flex>
 
-        <Flex
-          align="center"
-          justify="center"
-          style={{
-            backgroundColor: 'var(--color-panel)',
-            borderRadius: 'var(--radius-4)',
-            boxShadow: 'var(--shadow-3)',
-          }}
-          p="5"
-        >
-          <Text color="gray">"accent" example</Text>
+        <Flex align="center" gap="1">
+          <Flex style={{ minWidth: 100 }}>
+            <Code color="gray" size="2">
+              --space-
+            </Code>
+          </Flex>
+
+          {[...new Array(9)].map((_, i) => (
+            <Flex style={{ flex: 1 }} key={i} align="center">
+              <DecorativeBox style={{ width: '100%', height: `var(--space-${i + 1})` }} />
+            </Flex>
+          ))}
         </Flex>
-      </Grid>
-    </Flex>
+      </Flex>
+    </>
   );
 }
 
-export function ThemesAppearance() {
+export function ThemesFontSizeTable() {
   return (
-    <Flex
-      style={{
-        backgroundColor: 'var(--gray-a6)',
-        borderRadius: 'var(--radius-4)',
-      }}
-      align="center"
-      justify="center"
-      my="7"
-      p="7"
-    >
-      <Grid
-        columns="2"
-        style={{ width: '100%', height: 300, borderRadius: 'var(--radius-4)', overflow: 'hidden' }}
-      >
-        <Theme asChild>
-          <Flex
-            align="center"
-            justify="center"
-            style={{
-              backgroundColor: 'var(--color-panel)',
-            }}
-            p="5"
-          >
-            <Text color="gray">light mode</Text>
-          </Flex>
-        </Theme>
+    <>
+      <Flex direction="column" gap="1">
+        <Flex align="center" gap="1">
+          <Flex style={{ minWidth: 100 }}></Flex>
 
-        <Theme asChild appearance="dark">
-          <Flex
-            align="center"
-            justify="center"
-            style={{
-              backgroundColor: 'var(--color-panel)',
-            }}
-            p="5"
-          >
-            <Text color="gray">dark mode</Text>
+          {[...new Array(9)].map((_, i) => (
+            <Box style={{ flex: 1 }} height="6" key={i}>
+              <Flex align="center" justify="center" height="100%" width="100%">
+                <Text size="1" color="gray">
+                  {i + 1}
+                </Text>
+              </Flex>
+            </Box>
+          ))}
+        </Flex>
+
+        <Flex align="center" gap="1">
+          <Flex style={{ minWidth: 100 }}>
+            <Code color="gray" size="2">
+              --font-size-
+            </Code>
           </Flex>
-        </Theme>
-      </Grid>
-    </Flex>
+
+          {[...new Array(9)].map((_, i) => (
+            <Flex style={{ flex: 1 }} key={i} justify="center">
+              <Text weight="bold" style={{ fontSize: `var(--font-size-${i + 1})`, lineHeight: 1 }}>
+                Aa
+              </Text>
+            </Flex>
+          ))}
+        </Flex>
+      </Flex>
+    </>
+  );
+}
+
+export function ThemesFontFamilyTable({
+  data,
+  'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledBy,
+}: {
+  data: {
+    token: React.ReactNode;
+    value: React.ReactNode;
+  }[];
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
+}) {
+  const hasAriaLabel = !!(ariaLabel || ariaLabelledBy);
+  return (
+    <RegionTable
+      style={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}
+      aria-label={hasAriaLabel ? ariaLabel : 'Keyboard Interactions'}
+      aria-labelledby={ariaLabelledBy}
+    >
+      <thead>
+        <tr>
+          <Box
+            asChild
+            py="3"
+            pr="4"
+            style={{
+              width: '30%',
+              borderBottom: '1px solid var(--gray-a6)',
+            }}
+          >
+            <th>
+              <Text as="p" size="2" color="gray">
+                Token
+              </Text>
+            </th>
+          </Box>
+          <Box
+            asChild
+            py="3"
+            pr="4"
+            style={{
+              borderBottom: '1px solid var(--gray-a6)',
+            }}
+          >
+            <th>
+              <Text as="p" size="2" color="gray">
+                Base value
+              </Text>
+            </th>
+          </Box>
+        </tr>
+      </thead>
+      <tbody>
+        {data.map(({ token, value }, i) => (
+          <tr key={i}>
+            <Box
+              asChild
+              pr="4"
+              py="3"
+              style={{
+                borderBottom: '1px solid var(--gray-a6)',
+                whiteSpace: 'nowrap',
+                width: '30%',
+              }}
+            >
+              <td>
+                <Code
+                  color="gray"
+                  size="2"
+                  style={{
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {token}
+                </Code>
+              </td>
+            </Box>
+
+            <Box
+              asChild
+              py="3"
+              style={{
+                borderBottom: '1px solid var(--gray-a6)',
+              }}
+            >
+              <td>
+                <Code size="2" color="gray">
+                  {value}
+                </Code>
+              </td>
+            </Box>
+          </tr>
+        ))}
+      </tbody>
+    </RegionTable>
+  );
+}
+
+export function ThemesTokensTable({
+  data,
+  'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledBy,
+}: {
+  data: {
+    token: React.ReactNode;
+    value: React.ReactNode;
+  }[];
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
+}) {
+  const hasAriaLabel = !!(ariaLabel || ariaLabelledBy);
+  return (
+    <RegionTable
+      style={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}
+      aria-label={hasAriaLabel ? ariaLabel : 'Keyboard Interactions'}
+      aria-labelledby={ariaLabelledBy}
+    >
+      <thead>
+        <tr>
+          <Box
+            asChild
+            py="3"
+            pr="4"
+            style={{
+              width: '20%',
+              borderBottom: '1px solid var(--gray-a6)',
+            }}
+          >
+            <th>
+              <Text as="p" size="2" color="gray">
+                Token
+              </Text>
+            </th>
+          </Box>
+          <Box
+            asChild
+            py="3"
+            pr="4"
+            style={{
+              width: '55%',
+              borderBottom: '1px solid var(--gray-a6)',
+            }}
+          >
+            <th>
+              <Text as="p" size="2" color="gray">
+                Value
+              </Text>
+            </th>
+          </Box>
+        </tr>
+      </thead>
+      <tbody>
+        {data.map(({ token, value }, i) => (
+          <tr key={i}>
+            <Box
+              asChild
+              pr="4"
+              py="3"
+              style={{
+                borderBottom: '1px solid var(--gray-a6)',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              <td>
+                <Code
+                  size="2"
+                  style={{
+                    whiteSpace: 'normal',
+                  }}
+                >
+                  {token}
+                </Code>
+              </td>
+            </Box>
+
+            <Box
+              asChild
+              py="3"
+              style={{
+                borderBottom: '1px solid var(--gray-a6)',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              <td>
+                <Text as="p" size="2">
+                  {value}
+                </Text>
+              </td>
+            </Box>
+          </tr>
+        ))}
+      </tbody>
+    </RegionTable>
+  );
+}
+
+export function DecorativeBox(props) {
+  return (
+    <Box
+      {...props}
+      style={{
+        // width: '100%',
+        height: '100%',
+        backgroundColor: 'var(--gray-a3)',
+        border: '1px dashed var(--gray-a7)',
+        borderRadius: 'var(--radius-1)',
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.2' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E")`,
+        ...props.style,
+      }}
+    />
   );
 }

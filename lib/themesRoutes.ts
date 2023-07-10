@@ -12,7 +12,6 @@ export const themesRoutes = [
       { title: 'Overview', slug: 'docs/themes/theme/overview' },
       { title: 'Configuration', slug: 'docs/themes/theme/configuration' },
       { title: 'Tokens', slug: 'docs/themes/theme/tokens' },
-      { title: 'Usage', slug: 'docs/themes/theme/usage' },
     ],
   },
 
