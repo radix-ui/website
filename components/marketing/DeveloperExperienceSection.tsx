@@ -89,7 +89,11 @@ export const DeveloperExperienceSection = () => {
                 }}
               >
                 <CodeWindow className={darkTheme}>
-                  <StyledCodeDemo value={code.unstyled} language="jsx" css={{ p: '$2' }} />
+                  <StyledCodeDemo
+                    value={code.unstyled}
+                    language="jsx"
+                    style={{ padding: 'var(--space-2)' }}
+                  />
                 </CodeWindow>
                 <Box>
                   <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>
@@ -101,7 +105,11 @@ export const DeveloperExperienceSection = () => {
                 </Box>
 
                 <CodeWindow className={darkTheme}>
-                  <StyledCodeDemo value={code.composable} language="jsx" css={{ p: '$2' }} />
+                  <StyledCodeDemo
+                    value={code.composable}
+                    language="jsx"
+                    style={{ padding: 'var(--space-2)' }}
+                  />
                 </CodeWindow>
                 <Box>
                   <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>
@@ -113,7 +121,11 @@ export const DeveloperExperienceSection = () => {
                 </Box>
 
                 <CodeWindow className={darkTheme}>
-                  <StyledCodeDemo value={code.customizable} language="jsx" css={{ p: '$2' }} />
+                  <StyledCodeDemo
+                    value={code.customizable}
+                    language="jsx"
+                    style={{ padding: 'var(--space-2)' }}
+                  />
                 </CodeWindow>
                 <Box>
                   <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>
@@ -125,7 +137,11 @@ export const DeveloperExperienceSection = () => {
                 </Box>
 
                 <CodeWindow className={darkTheme}>
-                  <StyledCodeDemo value={code.consistent} language="jsx" css={{ p: '$2' }} />
+                  <StyledCodeDemo
+                    value={code.consistent}
+                    language="jsx"
+                    style={{ padding: 'var(--space-2)' }}
+                  />
                 </CodeWindow>
                 <Box>
                   <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>

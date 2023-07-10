@@ -31,7 +31,7 @@ export function UseCasesTable() {
               }}
             >
               <th>
-                <Text as="p" size="2" color="gray" weight="normal">
+                <Text as="p" size="2" color="gray" weight="regular">
                   Step
                 </Text>
               </th>
@@ -45,7 +45,7 @@ export function UseCasesTable() {
               }}
             >
               <th>
-                <Text as="p" size="2" color="gray" weight="normal">
+                <Text as="p" size="2" color="gray" weight="regular">
                   Use Case
                 </Text>
               </th>
