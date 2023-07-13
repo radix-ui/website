@@ -34,11 +34,11 @@
 .MagicCurtainItem[data-state='hiding'] {
   position: relative;
   z-index: 1;
-  animation: magic-curtain var(--animation-duration) 2s ease-in-out;
+  animation: magic-curtain var(--animation-duration) 3s ease-in-out;
 }
 
 .MagicCurtainItem[data-state='hiding'][data-animation-direction='reverse'] {
-  animation: magic-curtain-reverse var(--animation-duration) 2s ease-in-out;
+  animation: magic-curtain-reverse var(--animation-duration) 3s ease-in-out;
 }
 
 @keyframes magic-curtain {
