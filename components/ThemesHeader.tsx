@@ -8,8 +8,6 @@ import { useTheme } from 'next-themes';
 export const ThemesHeader = () => {
   const { theme, systemTheme, setTheme } = useTheme();
 
-  console.log(useTheme());
-
   return (
     <>
       <Head>
