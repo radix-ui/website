@@ -8,6 +8,7 @@ interface MagicCurtainItem {
   ref: React.RefObject<HTMLElement>;
   setState: (state: State) => void;
   setAnimationDirection: (direction: string) => void;
+  setAnimationPlayState: (playState: string) => void;
 }
 
 const [MagicCurtainProvider, useMagicCurtainContext] = createContext<{
@@ -19,9 +20,6 @@ const MagicCurtainRoot = ({ children }: React.PropsWithChildren<{}>) => {
   const ref = React.useRef<HTMLDivElement>(null);
 
   useIsomorphicLayoutEffect(() => {
-    itemsRef.current[0]?.setState('hiding');
-    itemsRef.current[1]?.setState('revealing');
-
     const handleAnimationEnd = (event: AnimationEvent) => {
       if (
         !(event.target instanceof HTMLElement) ||
@@ -36,7 +34,38 @@ const MagicCurtainRoot = ({ children }: React.PropsWithChildren<{}>) => {
       itemsRef.current[thisIndex].setState('hidden');
       itemsRef.current[nextIndex].setState('hiding');
       itemsRef.current[afterNextIndex].setState('revealing');
+
+      let timeout: ReturnType<typeof setTimeout>;
+
+      const handleMouseDown = () => {
+        clearTimeout(timeout);
+        itemsRef.current[nextIndex].setAnimationPlayState('paused');
+        itemsRef.current[nextIndex].ref.current.addEventListener('mouseup', handleMouseUp);
+      };
+
+      const handleMouseUp = () => {
+        timeout = setTimeout(() => {
+          itemsRef.current[nextIndex].setAnimationPlayState('running');
+        }, 1000);
+      };
+
+      const handleAnimationStart = () => {
+        clearTimeout(timeout);
+        itemsRef.current[nextIndex].ref.current.removeEventListener('mousedown', handleMouseDown);
+        itemsRef.current[nextIndex].ref.current.removeEventListener('mouseup', handleMouseUp);
+      };
+
+      itemsRef.current[nextIndex].ref.current.addEventListener('mousedown', handleMouseDown);
+
+      itemsRef.current[nextIndex].ref.current.addEventListener(
+        'animationstart',
+        handleAnimationStart,
+        { once: true }
+      );
     };
+
+    itemsRef.current[0]?.setState('hiding');
+    itemsRef.current[1]?.setState('revealing');
 
     itemsRef.current.forEach((item, i) => {
       if (i % 2) {
@@ -67,9 +96,10 @@ const MagicCurtainItem = ({ children, ...props }: React.ComponentPropsWithoutRef
   const ref = React.useRef<HTMLDivElement>(null);
   const [state, setState] = React.useState<State>('hidden');
   const [animationDirection, setAnimationDirection] = React.useState('normal');
+  const [animationPlayState, setAnimationPlayState] = React.useState('running');
 
   useIsomorphicLayoutEffect(() => {
-    const item = { ref, setState, setAnimationDirection };
+    const item = { ref, setState, setAnimationDirection, setAnimationPlayState };
     context.itemsRef.current.push(item);
 
     return () => {
@@ -83,6 +113,7 @@ const MagicCurtainItem = ({ children, ...props }: React.ComponentPropsWithoutRef
 
   return (
     <div
+      data-animation-play-state={animationPlayState}
       data-animation-direction={animationDirection}
       data-state={state}
       ref={ref}
