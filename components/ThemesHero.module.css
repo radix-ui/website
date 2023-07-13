@@ -1,0 +1,444 @@
+.ThemesHeroRoot {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  font-family: 'Untitled Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', 'Open Sans', system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+
+  /* Prevent elements with `position: absolute` from adding scrollbars */
+  overflow: hidden;
+
+  /* Scaling multiplier for the demo area */
+  --themes-hero-showcase-scale: calc(10 / 16);
+  --themes-hero-showcase-base-width: 1760px;
+}
+
+.ThemesHeroRoot.color-blue {
+  --themes-hero-text-color: var(--indigo-12);
+  --themes-hero-soft-color: var(--indigo-5);
+  --themes-hero-contrast-color: var(--indigo-1);
+
+  --themes-hero-tagline-title-color-1: #87a3ff;
+  --themes-hero-tagline-title-color-2: #b8adee;
+  --themes-hero-tagline-title-color-3: #aba9fc;
+  --themes-hero-tagline-title-color-4: #e787ff;
+
+  --themes-hero-tagline-title-color-1: color(display-p3 0.55 0.64 1 / 1);
+  --themes-hero-tagline-title-color-2: #b8adee;
+  --themes-hero-tagline-title-color-3: color(display-p3 0.67 0.66 1 / 1);
+  --themes-hero-tagline-title-color-4: color(display-p3 0.9 0.55 1 / 1);
+}
+
+:global(.dark-theme) .ThemesHeroRoot.color-blue {
+  --themes-hero-text-color: var(--indigo-12);
+  --themes-hero-soft-color: #27376d;
+  --themes-hero-contrast-color: var(--indigo-1);
+
+  --themes-hero-tagline-title-color-1: #acbcff;
+  --themes-hero-tagline-title-color-2: #8299f4;
+  --themes-hero-tagline-title-color-3: #d971ab;
+  --themes-hero-tagline-title-color-4: var(--red-11);
+
+  --themes-hero-tagline-title-color-1: color(display-p3 0.69 0.74 1 / 1);
+  --themes-hero-tagline-title-color-2: color(display-p3 0.53 0.6 1 / 1);
+  --themes-hero-tagline-title-color-3: #d971ab;
+  --themes-hero-tagline-title-color-4: color(display-p3 1 0.43 0.43 / 1);
+}
+
+.ThemesHeroRoot.color-green {
+  --themes-hero-text-color: var(--sage-12);
+  --themes-hero-soft-color: var(--sky-5);
+  --themes-hero-contrast-color: var(--sage-1);
+
+  --themes-hero-tagline-title-color-1: #00ff71;
+  --themes-hero-tagline-title-color-2: #00e9d6;
+  --themes-hero-tagline-title-color-3: #00f9ff;
+  --themes-hero-tagline-title-color-4: #a3edff;
+
+  --themes-hero-tagline-title-color-1: color(display-p3 0 1 0.51);
+  --themes-hero-tagline-title-color-2: color(display-p3 0.26 0.9 0.84);
+  --themes-hero-tagline-title-color-3: color(display-p3 0.03 0.96 1);
+  --themes-hero-tagline-title-color-4: color(display-p3 0.7 0.92 1);
+}
+
+:global(.dark-theme) .ThemesHeroRoot.color-green {
+  --themes-hero-text-color: var(--sage-12);
+  --themes-hero-soft-color: var(--mint-7);
+  --themes-hero-contrast-color: var(--sage-1);
+
+  --themes-hero-tagline-title-color-1: #00ff71;
+  --themes-hero-tagline-title-color-2: #00e99d;
+  --themes-hero-tagline-title-color-3: #74f0e6;
+  --themes-hero-tagline-title-color-4: #00ecff;
+
+  --themes-hero-tagline-title-color-1: color(display-p3 0 1 0.51);
+  --themes-hero-tagline-title-color-2: color(display-p3 0.26 0.9 0.64);
+  --themes-hero-tagline-title-color-3: color(display-p3 0.58 0.93 0.9);
+  --themes-hero-tagline-title-color-4: color(display-p3 0.12 0.91 1);
+}
+
+.ThemesHeroRoot.color-red {
+  --themes-hero-text-color: var(--mauve-12);
+  --themes-hero-soft-color: var(--tomato-5);
+  --themes-hero-contrast-color: var(--mauve-1);
+
+  --themes-hero-tagline-title-color-1: #ff0000;
+  --themes-hero-tagline-title-color-2: #ff8283;
+  --themes-hero-tagline-title-color-3: #ff9583;
+  --themes-hero-tagline-title-color-4: #ff9bbd;
+
+  --themes-hero-tagline-title-color-1: color(display-p3 1 0.08 0);
+  --themes-hero-tagline-title-color-2: color(display-p3 1 0.54 0.53);
+  --themes-hero-tagline-title-color-3: color(display-p3 1 0.61 0.53);
+  --themes-hero-tagline-title-color-4: color(display-p3 1 0.63 0.74);
+}
+
+:global(.dark-theme) .ThemesHeroRoot.color-red {
+  --themes-hero-text-color: var(--pink-12);
+  --themes-hero-soft-color: #713949;
+  --themes-hero-contrast-color: var(--pink-1);
+
+  --themes-hero-tagline-title-color-1: #ff4b44;
+  --themes-hero-tagline-title-color-2: #ff82a6;
+  --themes-hero-tagline-title-color-3: #ff9681;
+  --themes-hero-tagline-title-color-4: #ff965d;
+
+  --themes-hero-tagline-title-color-1: color(display-p3 1 0.36 0.31);
+  --themes-hero-tagline-title-color-2: color(display-p3 1 0.54 0.65);
+  --themes-hero-tagline-title-color-3: color(display-p3 1 0.61 0.53);
+  --themes-hero-tagline-title-color-4: color(display-p3 1 0.61 0.41);
+}
+
+@media (min-width: 500px) {
+  .ThemesHeroRoot {
+    --themes-hero-showcase-scale: calc(11 / 16);
+  }
+}
+
+@media (min-width: 500px) {
+  .ThemesHeroRoot {
+    --themes-hero-showcase-scale: calc(12 / 16);
+  }
+}
+
+@media (min-width: 600px) {
+  .ThemesHeroRoot {
+    --themes-hero-showcase-scale: calc(13 / 16);
+  }
+}
+
+@media (min-width: 700px) {
+  .ThemesHeroRoot {
+    --themes-hero-showcase-scale: calc(14 / 16);
+  }
+}
+
+@media (min-width: 800px) {
+  .ThemesHeroRoot {
+    --themes-hero-showcase-scale: 1;
+  }
+}
+
+@media (min-width: 1000px) {
+  .ThemesHeroRoot {
+    --themes-hero-showcase-scale: calc(10 / 16);
+  }
+}
+
+@media (min-width: 1900px) and (min-height: 800px) {
+  .ThemesHeroRoot {
+    --themes-hero-showcase-scale: calc(12 / 16);
+  }
+}
+
+@media (min-width: 2200px) and (min-height: 800px) {
+  .ThemesHeroRoot {
+    --themes-hero-showcase-scale: calc(13 / 16);
+  }
+}
+
+@media (min-width: 2400px) and (min-height: 800px) {
+  .ThemesHeroRoot {
+    --themes-hero-showcase-scale: calc(15 / 16);
+  }
+}
+
+@media (min-width: 2700px) and (min-height: 800px) {
+  .ThemesHeroRoot {
+    --themes-hero-showcase-scale: 1;
+  }
+}
+
+@media (min-width: 3000px) and (min-height: 1000px) {
+  .ThemesHeroRoot {
+    --themes-hero-showcase-scale: calc(18 / 16);
+  }
+}
+
+.ThemesHeroRoot ::selection {
+  background-color: hsla(225, 98.6%, 46.4%, 0.15);
+}
+
+.ThemesHeroContent {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.ThemesHeroTagline {
+  color: var(--themes-hero-text-color);
+  box-sizing: border-box;
+  margin-top: 80px;
+}
+
+.ThemesHeroTaglineTitle {
+  font-size: 280em;
+  font-weight: 500;
+  letter-spacing: -0.09em;
+  line-height: 0.8;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: -0.075em;
+  user-select: none;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  background-image: linear-gradient(
+    180deg,
+    var(--themes-hero-tagline-title-color-1, currentcolor) 5%,
+    var(--themes-hero-tagline-title-color-2, currentcolor) 60%,
+    var(--themes-hero-tagline-title-color-3, currentcolor) 80%,
+    var(--themes-hero-tagline-title-color-4, currentcolor) 90%
+  );
+
+  padding-right: 0.2em;
+  margin-right: -0.2em;
+
+  padding-bottom: 0.2em;
+  margin-bottom: -0.2em;
+}
+
+.ThemesHeroTaglineText {
+  font-size: max(30em, 22px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.4;
+  margin: 1em 0;
+}
+
+.ThemesHeroButton {
+  font-size: max(20em, 15px);
+  font-weight: 500;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 1em;
+  height: 3em;
+  padding-left: 1.25em;
+  padding-right: 1.25em;
+  padding-bottom: 0.1em;
+  margin: 0;
+  text-decoration: none;
+  border-radius: 0.5em;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.ThemesHeroButton.variant-soft {
+  background-color: var(--themes-hero-soft-color);
+  color: var(--themes-hero-text-color);
+}
+
+.ThemesHeroButton.variant-solid {
+  background-color: var(--themes-hero-text-color);
+  color: var(--themes-hero-contrast-color);
+}
+
+.ThemesHeroButton svg {
+  opacity: 0.8;
+  width: 1.25em;
+  height: 1.25em;
+  margin-top: 0.05em;
+  margin-left: -0.5em;
+  margin-right: -0.3em;
+}
+
+.ThemesHeroShowcase {
+  position: relative;
+  user-select: none;
+}
+
+.ThemesHeroShowcase::before {
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  content: '';
+
+  /* Position the background relative to the content-box */
+  background-origin: content-box;
+
+  /* Extend the padding-box outwards without moving the content-box */
+  padding: 9999px;
+  margin: -9999px;
+
+  /*
+   * Radii that define the dots in the pattern scale inversely to the showcase scaling
+   * factor with certain limits that maintain a balanced visual appearance.
+   */
+  --themes-hero-showcase-dot-r1: max(min(calc(10% / var(--themes-hero-showcase-scale)), 11%), 10%);
+  --themes-hero-showcase-dot-r2: max(min(calc(12% / var(--themes-hero-showcase-scale)), 14%), 12%);
+
+  /* Render the dot pattern */
+  background-image: radial-gradient(
+    var(--mauve-a6) var(--themes-hero-showcase-dot-r1),
+    transparent var(--themes-hero-showcase-dot-r2)
+  );
+
+  background-color: var(--mauve-1);
+
+  /* Scale the dots together with the demo */
+  background-size: calc(16px * var(--themes-hero-showcase-scale))
+    calc(16px * var(--themes-hero-showcase-scale));
+}
+
+.ThemesHeroShowcaseInnerScaled {
+  transform: scale(var(--themes-hero-showcase-scale));
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*            Before 1000px            */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+@media (max-width: 999.99px) {
+  .ThemesHeroRoot {
+    font-size: 0.13vw;
+  }
+
+  .ThemesHeroContent {
+    flex-direction: column;
+  }
+
+  .ThemesHeroTagline {
+    text-align: center;
+    padding: 4vw;
+  }
+
+  .ThemesHeroShowcase {
+    position: relative;
+    --themes-hero-showcase-padding: 48px;
+  }
+
+  .ThemesHeroShowcase::-webkit-scrollbar {
+    display: none;
+    width: 0;
+  }
+
+  .ThemesHeroShowcase::before {
+    /* "Spread" the background pattern from top center of .ThemesHeroShowcase element */
+    top: 0;
+    left: 50%;
+    background-position-x: center;
+    background-position-y: calc(
+      (var(--themes-hero-showcase-padding) - 16px / 2) * var(--themes-hero-showcase-scale)
+    );
+  }
+
+  .ThemesHeroShowcaseInner {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+    height: calc(
+      (1550px + var(--themes-hero-showcase-padding) * 2) * var(--themes-hero-showcase-scale)
+    );
+  }
+
+  .ThemesHeroShowcaseInnerScaled {
+    display: table;
+    padding: var(--themes-hero-showcase-padding);
+    transform-origin: top left;
+  }
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*            After 1000px             */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+@media (min-width: 1000px) {
+  .ThemesHeroRoot {
+    /* 1em is no smaller than 0.4px and no larger than 1px, 0.05vw, or 0.1vh */
+    font-size: max(0.4px, min(1px, 0.05vw, 0.1vh));
+  }
+
+  .ThemesHeroContent {
+    align-items: stretch;
+  }
+
+  .ThemesHeroTagline {
+    flex-shrink: 0;
+
+    /* The hero width is between 320px and 800px */
+    width: 800em;
+
+    /* Push self away from the left edge when there's space */
+    margin-left: auto;
+
+    /* The padding is between 25px and 62.5px */
+    padding-left: 62.5em;
+    padding-right: 62.5em;
+    margin-bottom: 62.5em;
+  }
+
+  .ThemesHeroTagline {
+    display: flex;
+  }
+
+  .ThemesHeroShowcase {
+    /* Set static width as actual content is positioned absolutely */
+    width: calc(var(--themes-hero-showcase-base-width) * var(--themes-hero-showcase-scale));
+
+    /* Push self away from the right edge when there's space */
+    margin-right: auto;
+
+    /* Header offset */
+    margin-top: 64px;
+  }
+
+  .ThemesHeroShowcase::before {
+    /* "Spread" the background pattern from center left of .ThemesHeroShowcase element */
+    background-position: 50% calc(50% + 0.5px);
+    top: 50%;
+    left: 0;
+  }
+
+  .ThemesHeroShowcaseInner {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .ThemesHeroShowcaseInnerScaled {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    transform-origin: center left;
+  }
+}
+
+@media (min-width: 1000px) and (min-height: 700px) {
+  .ThemesHeroTagline {
+    align-items: center;
+
+    /* Visually center the hero */
+    margin-bottom: calc(2vh + 80px);
+  }
+}
