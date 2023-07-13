@@ -24,8 +24,8 @@ import { Hover } from './Hover';
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 import { allPeople } from './people';
 
-export const ExampleThemesMusicApp = () => (
-  <Flex align="center" gap="6">
+export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<typeof Flex>) => (
+  <Flex align="center" gap="6" {...props}>
     <Flex shrink="0" gap="6" direction="column" style={{ width: 416, marginBottom: 47 }}>
       <Card size="3">
         <Box height="4" mb="4">

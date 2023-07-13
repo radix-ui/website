@@ -43,7 +43,7 @@ const MagicCurtainRoot = ({ children }: React.PropsWithChildren<{}>) => {
         item.setAnimationDirection('reverse');
       }
 
-      item.ref.current.addEventListener('animationend', handleAnimationEnd);
+      item.ref.current?.addEventListener('animationend', handleAnimationEnd);
     });
 
     return () => {

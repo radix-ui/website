@@ -34,8 +34,8 @@ import {
 import { Marker } from './Marker';
 import { allPeople, email } from './people';
 
-export const ExampleThemesDashboard = () => (
-  <Flex align="center" gap="6">
+export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typeof Flex>) => (
+  <Flex align="center" gap="6" {...props}>
     <Flex
       shrink="0"
       gap="6"

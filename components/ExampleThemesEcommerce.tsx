@@ -36,11 +36,11 @@ import {
 import { Label } from '@radix-ui/react-label';
 import * as React from 'react';
 
-export const ExampleThemesEcommerce = () => {
+export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typeof Flex>) => {
   const [container, setContainer] = React.useState<HTMLDivElement>(null);
 
   return (
-    <Flex align="center" gap="6" ref={setContainer}>
+    <Flex align="center" gap="6" ref={setContainer} {...props}>
       <Flex shrink="0" gap="6" direction="column" style={{ width: 304 }}>
         <Card size="1">
           <Flex mb="2">
@@ -1265,7 +1265,7 @@ export const ExampleThemesEcommerce = () => {
             <Flex direction="column" style={{ minWidth: 140 }}>
               <Select.Root defaultValue="All customers">
                 <Select.Trigger variant="solid" highContrast />
-                <Select.Content container={container} variant="soft" position="popper">
+                <Select.Content variant="soft" container={container} position="popper">
                   <Select.Item value="All customers">All customers</Select.Item>
                   <Select.Item value={new Date().getFullYear().toString()}>
                     {new Date().getFullYear()}

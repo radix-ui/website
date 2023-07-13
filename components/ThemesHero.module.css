@@ -243,11 +243,11 @@
 
   /* Render the dot pattern */
   background-image: radial-gradient(
-    var(--mauve-a6) var(--themes-hero-showcase-dot-r1),
+    var(--gray-a6) var(--themes-hero-showcase-dot-r1),
     transparent var(--themes-hero-showcase-dot-r2)
   );
 
-  background-color: var(--mauve-1);
+  background-color: var(--gray-1);
 
   /* Scale the dots together with the demo */
   background-size: calc(16px * var(--themes-hero-showcase-scale))

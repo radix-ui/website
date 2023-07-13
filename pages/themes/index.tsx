@@ -25,7 +25,7 @@ export default function ThemesHome() {
             --color-surface-1: var(--gray-2);
           }
 
-          .light-theme {
+          :root, .light-theme {
             --themes-hero-blue-text-color: var(--indigo-12);
             --themes-hero-blue-soft-color: var(--indigo-5);
             --themes-hero-blue-contrast-color: var(--indigo-1);
@@ -111,7 +111,7 @@ export default function ThemesHome() {
             grayScale="mauve"
             applyBackgroundColor={false}
           >
-            {/* <ThemesHeader /> */}
+            <ThemesHeader />
             <ThemesHero.Root color="blue">
               <ThemesHero.Tagline>
                 <ThemesHero.Title>Build faster</ThemesHero.Title>
@@ -128,7 +128,7 @@ export default function ThemesHome() {
                 </ThemesHero.Actions>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <ExampleThemesDashboard />
+                <ExampleThemesDashboard style={{ paddingTop: 80 }} />
               </ThemesHero.Showcase>
             </ThemesHero.Root>
           </Theme>
@@ -143,7 +143,7 @@ export default function ThemesHome() {
             appearance="invert"
             applyBackgroundColor={false}
           >
-            {/* <ThemesHeader /> */}
+            <ThemesHeader />
             <ThemesHero.Root color="green">
               <ThemesHero.Tagline>
                 <ThemesHero.Title>Build better</ThemesHero.Title>
@@ -160,7 +160,7 @@ export default function ThemesHome() {
                 </ThemesHero.Actions>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <ExampleThemesEcommerce />
+                <ExampleThemesEcommerce style={{ paddingTop: 80 }} />
               </ThemesHero.Showcase>
             </ThemesHero.Root>
           </Theme>
@@ -174,7 +174,7 @@ export default function ThemesHome() {
             textColor="auto"
             applyBackgroundColor={false}
           >
-            {/* <ThemesHeader /> */}
+            <ThemesHeader />
             <ThemesHero.Root color="red">
               <ThemesHero.Tagline>
                 <ThemesHero.Title>Build hotter</ThemesHero.Title>
@@ -191,7 +191,7 @@ export default function ThemesHome() {
                 </ThemesHero.Actions>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <ExampleThemesMusicApp />
+                <ExampleThemesMusicApp style={{ paddingTop: 80 }} />
               </ThemesHero.Showcase>
             </ThemesHero.Root>
           </Theme>
@@ -205,7 +205,7 @@ export default function ThemesHome() {
             appearance="invert"
             applyBackgroundColor={false}
           >
-            {/* <ThemesHeader /> */}
+            <ThemesHeader />
             <ThemesHero.Root color="blue">
               <ThemesHero.Tagline>
                 <ThemesHero.Title>Build nicer</ThemesHero.Title>
@@ -222,7 +222,7 @@ export default function ThemesHome() {
                 </ThemesHero.Actions>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <ExampleThemesDashboard />
+                <ExampleThemesDashboard style={{ paddingTop: 80 }} />
               </ThemesHero.Showcase>
             </ThemesHero.Root>
           </Theme>
@@ -236,7 +236,7 @@ export default function ThemesHome() {
             textColor="auto"
             applyBackgroundColor={false}
           >
-            {/* <ThemesHeader /> */}
+            <ThemesHeader />
             <ThemesHero.Root color="green">
               <ThemesHero.Tagline>
                 <ThemesHero.Title>Build cooler</ThemesHero.Title>
@@ -253,7 +253,7 @@ export default function ThemesHome() {
                 </ThemesHero.Actions>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <ExampleThemesEcommerce />
+                <ExampleThemesEcommerce style={{ paddingTop: 80 }} />
               </ThemesHero.Showcase>
             </ThemesHero.Root>
           </Theme>
@@ -268,7 +268,7 @@ export default function ThemesHome() {
             appearance="invert"
             applyBackgroundColor={false}
           >
-            {/* <ThemesHeader /> */}
+            <ThemesHeader />
             <ThemesHero.Root color="red">
               <ThemesHero.Tagline>
                 <ThemesHero.Title>Build more</ThemesHero.Title>
@@ -285,7 +285,7 @@ export default function ThemesHome() {
                 </ThemesHero.Actions>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <ExampleThemesMusicApp />
+                <ExampleThemesMusicApp style={{ paddingTop: 80 }} />
               </ThemesHero.Showcase>
             </ThemesHero.Root>
           </Theme>
