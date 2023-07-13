@@ -105,6 +105,7 @@ function Pages({ Component, pageProps }: AppProps) {
   if (isThemesDocs) {
     return (
       <Theme
+        __useKey={false}
         accentScale="violet"
         appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}
         style={themeRootStyles}

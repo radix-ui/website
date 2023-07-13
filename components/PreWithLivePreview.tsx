@@ -15,39 +15,41 @@ const PreWithLivePreview = (props) => {
   return (
     <Box my="5">
       <Box>
-        <Box
-          p="4"
-          style={{
-            boxShadow: 'inset 0 0 0 1px var(--gray-4)',
-            borderBottom: 0,
-            borderRadius: 'var(--space-3) var(--space-3) 0 0',
-            overflow: 'hidden',
-          }}
-        >
-          <LiveCode
-            code={liveCode}
-            scope={{
-              ...themes,
-              ...icons,
-              DecorativeBox,
-              RightClickZone: (props) => (
-                <Grid
-                  {...props}
-                  style={{
-                    height: 100,
-                    placeItems: 'center',
-                    border: '1px dashed var(--accent-a6)',
-                    borderRadius: 'var(--radius-2)',
-                    cursor: 'default',
-                    ...props.style,
-                  }}
-                >
-                  <Text>Right-click here</Text>
-                </Grid>
-              ),
+        <themes.ScrollArea>
+          <Box
+            p="4"
+            style={{
+              boxShadow: 'inset 0 0 0 1px var(--gray-4)',
+              borderBottom: 0,
+              borderRadius: 'var(--space-3) var(--space-3) 0 0',
+              overflow: 'hidden',
             }}
-          />
-        </Box>
+          >
+            <LiveCode
+              code={liveCode}
+              scope={{
+                ...themes,
+                ...icons,
+                DecorativeBox,
+                RightClickZone: (props) => (
+                  <Grid
+                    {...props}
+                    style={{
+                      height: 100,
+                      placeItems: 'center',
+                      border: '1px dashed var(--accent-a6)',
+                      borderRadius: 'var(--radius-2)',
+                      cursor: 'default',
+                      ...props.style,
+                    }}
+                  >
+                    <Text>Right-click here</Text>
+                  </Grid>
+                ),
+              }}
+            />
+          </Box>
+        </themes.ScrollArea>
       </Box>
 
       <Box position="relative" style={{ marginTop: -1 }} className={styles.CodeContainer}>
