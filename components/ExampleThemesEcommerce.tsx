@@ -41,7 +41,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
 
   return (
     <Flex align="center" gap="6" ref={setContainer} {...props}>
-      <Flex shrink="0" gap="6" direction="column" style={{ width: 304 }}>
+      <Flex shrink="0" gap="6" direction="column" style={{ width: 304, marginTop: -16 }}>
         <Card size="1">
           <Flex mb="2">
             <img
@@ -628,6 +628,8 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
           <Heading as="h3" size="4" mb="4">
             Edit product
           </Heading>
+
+          <Box style={{ marginTop: -3 }} />
 
           <Grid columns="5" gap="2" mb="4">
             <Box style={{ gridColumn: '1 / 5' }}>
