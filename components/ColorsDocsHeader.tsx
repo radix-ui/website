@@ -8,6 +8,7 @@ import { BoxLink } from '@components/BoxLink';
 import { RemoveScroll } from 'react-remove-scroll';
 import { ResourcePrimitives, ResourceIcons, ResourcesPopover } from './Resources';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
+import styles from './ColorsDocsHeader.module.css';
 
 type ColorsDocsHeaderProps = {
   onMobileMenuButtonClick?: () => void;
@@ -28,8 +29,8 @@ export const ColorsDocsHeader = (props: ColorsDocsHeaderProps) => {
             </BoxLink>
           </NextLink>
 
-          <Flex align="center" gap="5">
-            <Flex gap="5" display={{ initial: 'none', sm: 'flex' }} align="center">
+          <Flex align="center" gap="4">
+            <Flex gap="4" display={{ initial: 'none', sm: 'flex' }} align="center">
               <NextLink href="/docs/colors" passHref>
                 <Link color="gray" size="2" highContrast={router.pathname.includes('/docs/colors')}>
                   Documentation
@@ -44,18 +45,18 @@ export const ColorsDocsHeader = (props: ColorsDocsHeaderProps) => {
 
             <ThemeToggle />
 
-            <Box display={{ sm: 'none' }}>
-              <Tooltip content="Menu">
-                <IconButton
-                  size="1"
-                  color="gray"
-                  variant={isMenuActive ? 'soft' : 'ghost'}
-                  onClick={onMobileMenuButtonClick}
-                >
-                  <HamburgerMenuIcon />
-                </IconButton>
-              </Tooltip>
-            </Box>
+            <Tooltip content="Menu">
+              <IconButton
+                size="3"
+                variant="ghost"
+                color={isMenuActive ? undefined : 'gray'}
+                data-state={isMenuActive ? 'open' : 'closed'}
+                onClick={onMobileMenuButtonClick}
+                className={styles.MobileMenuButton}
+              >
+                <HamburgerMenuIcon />
+              </IconButton>
+            </Tooltip>
           </Flex>
         </Flex>
       </Box>

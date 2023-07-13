@@ -2,6 +2,10 @@
   .Header {
     padding-left: 250px;
   }
+
+  .MobileMenuButton {
+    display: none !important;
+  }
 }
 
 @media (min-width: 1440px) {

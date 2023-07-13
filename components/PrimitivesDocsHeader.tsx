@@ -42,12 +42,13 @@ export const PrimitivesDocsHeader = (props: PrimitivesDocsHeaderProps) => {
               <Tooltip content="Menu">
                 <IconButton
                   size="3"
-                  color="gray"
                   variant="ghost"
+                  color={isMenuActive ? undefined : 'gray'}
+                  data-state={isMenuActive ? 'open' : 'closed'}
                   onClick={onMobileMenuButtonClick}
                   className={styles.MobileMenuButton}
                 >
-                  {isMenuActive ? <Cross1Icon /> : <HamburgerMenuIcon />}
+                  <HamburgerMenuIcon />
                 </IconButton>
               </Tooltip>
             </Flex>

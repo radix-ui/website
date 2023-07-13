@@ -26,6 +26,6 @@
 
 .MobileMenuButton {
   @media (min-width: 900px) {
-    display: none;
+    display: none !important;
   }
 }

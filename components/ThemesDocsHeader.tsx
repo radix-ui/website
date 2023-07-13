@@ -2,11 +2,12 @@ import React from 'react';
 import NextLink from 'next/link';
 import { Box, Flex, IconButton, Tooltip } from '@radix-ui/themes';
 import { RadixLogo } from '@components/RadixLogo';
-import { HamburgerMenuIcon } from '@radix-ui/react-icons';
+import { Cross1Icon, HamburgerMenuIcon, MixerHorizontalIcon } from '@radix-ui/react-icons';
 import { ThemeToggle } from '@components/ThemeToggle';
 import { BoxLink } from '@components/BoxLink';
 import { RemoveScroll } from 'react-remove-scroll';
 import { classNames } from '@lib/classNames';
+import { ThemesPanelContext } from '@components/ThemesPanel';
 import styles from './ThemesDocsHeader.module.css';
 
 type PrimitivesDocsHeaderProps = {
@@ -16,6 +17,7 @@ type PrimitivesDocsHeaderProps = {
 
 export const ThemesDocsHeader = (props: PrimitivesDocsHeaderProps) => {
   const { onMobileMenuButtonClick, isMenuActive } = props;
+  const { open, onOpenChange } = React.useContext(ThemesPanelContext);
   return (
     <Box
       asChild
@@ -35,21 +37,31 @@ export const ThemesDocsHeader = (props: PrimitivesDocsHeaderProps) => {
               {/* <PrimitivesDocsSearch /> */}
             </Box>
 
-            <Flex style={{ position: 'absolute', right: 'var(--space-5)', gap: 'var(--space-2)' }}>
-              <ThemeToggle />
+            <Flex align="center" gap="4" position="absolute" right="0" mr="5">
+              <Tooltip content="Tweak theme">
+                <IconButton
+                  size="3"
+                  onClick={() => onOpenChange(!open)}
+                  variant="ghost"
+                  color={open ? undefined : 'gray'}
+                  data-state={open ? 'open' : 'closed'}
+                >
+                  <MixerHorizontalIcon />
+                </IconButton>
+              </Tooltip>
 
-              <Box display={{ sm: 'none' }}>
-                <Tooltip content="Menu">
-                  <IconButton
-                    size="1"
-                    color="gray"
-                    variant={isMenuActive ? 'soft' : 'ghost'}
-                    onClick={onMobileMenuButtonClick}
-                  >
-                    <HamburgerMenuIcon />
-                  </IconButton>
-                </Tooltip>
-              </Box>
+              <Tooltip content="Menu">
+                <IconButton
+                  size="3"
+                  variant="ghost"
+                  color={isMenuActive ? undefined : 'gray'}
+                  data-state={isMenuActive ? 'open' : 'closed'}
+                  onClick={onMobileMenuButtonClick}
+                  className={styles.MobileMenuButton}
+                >
+                  <HamburgerMenuIcon />
+                </IconButton>
+              </Tooltip>
             </Flex>
           </Flex>
         </Box>
