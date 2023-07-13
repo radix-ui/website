@@ -32,6 +32,7 @@ function NavWrapper({ children, isMobileMenuOpen }) {
   return (
     <RemoveScroll as={Slot} allowPinchZoom enabled={isMobileLayout && isMobileMenuOpen}>
       <Box
+        className={styles.NavWrapper}
         position="fixed"
         left="0"
         bottom="0"
@@ -47,10 +48,9 @@ function NavWrapper({ children, isMobileMenuOpen }) {
           display: isMobileMenuOpen ? 'block' : undefined,
           width: isMobileMenuOpen ? '100%' : '250px',
         }}
-        display={{ initial: 'none', sm: 'block' }}
       >
         <ScrollArea>
-          <Box px="2">{children}</Box>
+          <Box px="3">{children}</Box>
           <Box height={{ initial: '5', sm: '9' }} />
         </ScrollArea>
       </Box>
@@ -71,7 +71,7 @@ const PageWrapper = React.forwardRef<HTMLDivElement, PageWrapperProps>(function 
 
 function ContentWrapper({ children, ...props }) {
   return (
-    <Box position="relative" mx="auto" style={{ maxWidth: '780px' }} {...props}>
+    <Box position="relative" mx="auto" px="5" style={{ maxWidth: '780px' }} {...props}>
       {children}
     </Box>
   );
@@ -84,7 +84,7 @@ function Pagination({ allRoutes }) {
   const next = allRoutes[currentPageIndex + 1];
 
   return (
-    <Box mx="auto" px={{ initial: '5', md: '0' }} style={{ maxWidth: '780px' }}>
+    <Box mx="auto" px="5" style={{ maxWidth: '780px' }}>
       {(previous || next) && (
         <Flex aria-label="Pagination navigation" justify="between" my="9">
           {previous && <PaginationLink route={previous} direction="Previous" />}
@@ -148,7 +148,7 @@ function EditPageLink() {
   const editUrl = `${filePath}.mdx`;
 
   return (
-    <Box mx="auto" px={{ initial: '5', md: '0' }} my="9" style={{ maxWidth: '780px' }}>
+    <Box mx="auto" px="5" my="9" style={{ maxWidth: '780px' }}>
       <Text size="3">
         <Link
           href={editUrl}

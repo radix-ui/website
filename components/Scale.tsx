@@ -167,7 +167,7 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
           <DropdownMenu onOpenChange={(isOpen) => setDropdownMenuIsOpen(isOpen)}>
             <Tooltip content="Copy to Clipboard">
               <DropdownMenu.Trigger>
-                <IconButton size="1" variant="ghost" color="gray" highContrast>
+                <IconButton size="2" variant="ghost" color="gray" highContrast>
                   <CopyIcon />
                 </IconButton>
               </DropdownMenu.Trigger>

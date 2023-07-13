@@ -101,7 +101,7 @@ export function PropsTable({
                       <IconButton
                         variant="ghost"
                         size="1"
-                        ml="1"
+                        ml="2"
                         color="gray"
                         style={{ verticalAlign: 'middle' }}
                       >
@@ -149,7 +149,7 @@ export function PropsTable({
                         variant="ghost"
                         color="gray"
                         size="1"
-                        ml="1"
+                        ml="2"
                         style={{
                           verticalAlign: 'middle',
                         }}

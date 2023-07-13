@@ -15,7 +15,7 @@ export function Highlights({ features }) {
     <Flex direction={{ initial: 'column', sm: 'row' }} mt={{ initial: '4', sm: '7' }}>
       <Box mb="5" grow={{ sm: '1' }} mr={{ sm: '5' }}>
         <Heading as="h2" size="4" mb="4">
-          Features!
+          Features
         </Heading>
 
         <Flex asChild m="0" p="0" gap="2" direction="column">
@@ -66,7 +66,7 @@ export function Highlights({ features }) {
               value={frontmatter.version}
               onValueChange={(value) => router.push(`./${frontmatter.name}/${value}`)}
             >
-              <Select.Trigger mx="-2" variant="ghost" color="gray" />
+              <Select.Trigger variant="ghost" color="gray" />
               <Select.Content>
                 {(frontmatter.versions || []).map((v, i) => {
                   return (

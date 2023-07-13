@@ -1,8 +1,8 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Box, Container, Flex, IconButton, Tooltip } from '@radix-ui/themes';
+import { Box, Flex, IconButton, Tooltip } from '@radix-ui/themes';
 import { RadixLogo } from '@components/RadixLogo';
-import { HamburgerMenuIcon } from '@radix-ui/react-icons';
+import { Cross1Icon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 import { ThemeToggle } from '@components/ThemeToggle';
 import { BoxLink } from '@components/BoxLink';
 import { RemoveScroll } from 'react-remove-scroll';
@@ -24,7 +24,7 @@ export const PrimitivesDocsHeader = (props: PrimitivesDocsHeaderProps) => {
       position="relative"
     >
       <header>
-        <Box mx="auto" style={{ maxWidth: '780px' }}>
+        <Box mx="auto" px="5" style={{ maxWidth: '780px' }}>
           <Flex align="center" justify="between" height="9">
             <NextLink href="/" passHref>
               <BoxLink style={{ position: 'absolute', left: 'var(--space-5)' }}>
@@ -32,25 +32,24 @@ export const PrimitivesDocsHeader = (props: PrimitivesDocsHeaderProps) => {
               </BoxLink>
             </NextLink>
 
-            <Box display={{ initial: 'none', sm: 'block' }} width="100%" pr={{ sm: '9', md: '0' }}>
+            <Box className={styles.SearchWrapper} width="100%">
               <PrimitivesDocsSearch />
             </Box>
 
-            <Flex style={{ position: 'absolute', right: 'var(--space-5)', gap: 'var(--space-2)' }}>
+            <Flex align="center" gap="4" position="absolute" right="0" mr="5">
               <ThemeToggle />
 
-              <Box display={{ sm: 'none' }}>
-                <Tooltip content="Menu">
-                  <IconButton
-                    size="1"
-                    color="gray"
-                    variant={isMenuActive ? 'soft' : 'ghost'}
-                    onClick={onMobileMenuButtonClick}
-                  >
-                    <HamburgerMenuIcon />
-                  </IconButton>
-                </Tooltip>
-              </Box>
+              <Tooltip content="Menu">
+                <IconButton
+                  size="3"
+                  color="gray"
+                  variant="ghost"
+                  onClick={onMobileMenuButtonClick}
+                  className={styles.MobileMenuButton}
+                >
+                  {isMenuActive ? <Cross1Icon /> : <HamburgerMenuIcon />}
+                </IconButton>
+              </Tooltip>
             </Flex>
           </Flex>
         </Box>

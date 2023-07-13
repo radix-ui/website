@@ -30,7 +30,7 @@ export function ThemesDocsPage({ children }: { children: React.ReactNode }) {
 
       <MainWrapper>
         <NavWrapper isMobileMenuOpen={isMobileMenuOpen}>
-          <Box mt="4">
+          <Box mt="5">
             {themesRoutes.map((section: RouteProps) => (
               <Box key={section.label} mb="4">
                 <NavHeading>{section.label}</NavHeading>

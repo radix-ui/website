@@ -1,6 +1,6 @@
 import React from 'react';
 import { Flex } from '@radix-ui/themes';
-import styles from './HeroContainer.module.css';
+import styles from './HeroCodeBlock.module.css';
 
 export function HeroContainer({
   children,
@@ -19,7 +19,6 @@ export function HeroContainer({
       position="relative"
       align="start"
       justify="center"
-      mx={{ lg: '-7', xl: '-8' }}
       className={styles.HeroContainer}
       {...props}
     >

@@ -9,7 +9,7 @@ export const ThemeToggle = (props) => {
   return (
     <Tooltip content="Toggle theme" side="bottom" align="end">
       <IconButton
-        size="1"
+        size="3"
         variant="ghost"
         color="gray"
         onClick={() => {

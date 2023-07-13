@@ -11,7 +11,7 @@
 }
 
 /* @media (min-width: 520px) { */
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .Note {
     padding: var(--space-3) var(--space-4);
     border-bottom-left-radius: var(--radius-2);

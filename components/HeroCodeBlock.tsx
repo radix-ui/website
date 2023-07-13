@@ -61,12 +61,7 @@ export const HeroCodeBlock = ({
   }, [currentTabValue, currentTabs]);
 
   return (
-    <Box
-      className="DemoContainer"
-      data-algolia-exclude
-      position="relative"
-      mx={{ lg: '-7', xl: '-8' }}
-    >
+    <Box className={styles.DemoContainer} data-algolia-exclude position="relative">
       <Collapsible.Root open={isCodeExpanded} onOpenChange={setIsCodeExpanded}>
         <Flex
           display="inline-flex"
@@ -76,7 +71,7 @@ export const HeroCodeBlock = ({
           gap="1"
           top="0"
           right="0"
-          mt="-6"
+          mt="-7"
           mr="2"
         >
           <form
@@ -95,9 +90,8 @@ export const HeroCodeBlock = ({
             <Tooltip content={`Open ${CSS_LIB_NAMES[usedCssLib]} demo in CodeSandbox`}>
               <Theme appearance="dark" applyBackgroundColor={false}>
                 <IconButton
-                  className="SandboxButton"
-                  size="1"
-                  variant="ghost"
+                  className={styles.SandboxButton}
+                  variant="soft"
                   type="submit"
                   color="gray"
                   highContrast
@@ -131,7 +125,7 @@ export const HeroCodeBlock = ({
                 ))}
 
                 {cssLibProp === undefined && availableCssLibs.length > 1 ? (
-                  <Box mr="1" style={{ marginLeft: 'auto', marginBlock: 'auto' }}>
+                  <Box style={{ marginLeft: 'auto', marginBlock: 'auto' }}>
                     <Select.Root
                       aria-label="Choose a styling solution"
                       size="1"
@@ -140,7 +134,7 @@ export const HeroCodeBlock = ({
                         if (isValidCssLib(lib)) setPreferredCssLib(lib);
                       }}
                     >
-                      <Select.Trigger variant="ghost" style={{ minWidth: 115 }} />
+                      <Select.Trigger variant="soft" mr="2" style={{ minWidth: 115 }} />
                       <Select.Content>
                         {availableCssLibs.map((lib) => (
                           <Select.Item key={lib} value={lib}>
@@ -168,7 +162,8 @@ export const HeroCodeBlock = ({
                       boxShadow: 'inset 0 0 0 1px var(--accent-3)',
                     }}
                   >
-                    <ScrollArea
+                    <ScrollAreaWrapper
+                      disabled={!isCodeExpanded}
                       scrollbars="both"
                       style={{
                         maxHeight: '70vh',
@@ -178,7 +173,7 @@ export const HeroCodeBlock = ({
                         <Pre
                           style={{
                             boxShadow: 'none',
-                            paddingBottom: 'var(--space-9)',
+                            paddingBottom: 80,
                           }}
                         >
                           <code>{tab.children}</code>
@@ -186,12 +181,16 @@ export const HeroCodeBlock = ({
                       </Box>
                       <Flex align="end" justify="center" className={styles.CollapsibleGradient}>
                         <Collapsible.Trigger asChild>
-                          <Button size="1" variant="surface" highContrast color="gray">
-                            {isCodeExpanded ? 'Collapse' : 'Expand'} code
-                          </Button>
+                          <Theme appearance="dark" applyBackgroundColor={false} asChild>
+                            <Box position="relative">
+                              <Button size="1" variant="solid" highContrast>
+                                {isCodeExpanded ? 'Collapse' : 'Expand'} code
+                              </Button>
+                            </Box>
+                          </Theme>
                         </Collapsible.Trigger>
                       </Flex>
-                    </ScrollArea>
+                    </ScrollAreaWrapper>
                     <CopyCodeButton
                       className={styles.CopyButton}
                       code={sources[tab.id]}
@@ -207,6 +206,13 @@ export const HeroCodeBlock = ({
     </Box>
   );
 };
+
+function ScrollAreaWrapper({ disabled = false, ...props }) {
+  if (disabled) {
+    return <div {...props} />;
+  }
+  return <ScrollArea {...props} />;
+}
 
 const onlyUnique = <T,>(value: T, index: number, self: T[]) => self.indexOf(value) === index;
 

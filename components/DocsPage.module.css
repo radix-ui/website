@@ -16,15 +16,23 @@
   z-index: 0;
 }
 
-@media (min-width: 768px) {
+.NavWrapper {
+  display: none;
+}
+
+@media (min-width: 900px) {
   .PageWrapper {
-    padding-block: var(--space-8);
+    padding-block: var(--space-9);
     padding-inline: 0;
     padding-left: 250px;
   }
+
+  .NavWrapper {
+    display: block;
+  }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1440px) {
   .PageWrapper {
     padding-right: 250px;
   }

@@ -14,7 +14,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .Footer {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -24,7 +24,7 @@
   grid-column: 1 / -1;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .RadixLogo {
     grid-column: auto;
   }

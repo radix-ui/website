@@ -1,9 +1,41 @@
+.HeroContainer {
+  background-image: linear-gradient(330deg, var(--purple-9) 0%, var(--indigo-9) 100%);
+  padding-block: 100px;
+  border-top-left-radius: var(--radius-3);
+  border-top-right-radius: var(--radius-3);
+
+  @media (min-width: 1200px) {
+    margin-left: calc(-1 * var(--space-7));
+    margin-right: calc(-1 * var(--space-7));
+  }
+}
+
+.DemoContainer {
+  @media (min-width: 1200px) {
+    margin-left: calc(-1 * var(--space-7));
+    margin-right: calc(-1 * var(--space-7));
+  }
+}
+
+.SandboxButton {
+  opacity: 0;
+  transition: opacity 80ms ease-out;
+}
+.SandboxButton:hover,
+.SandboxButton:focus {
+  opacity: 1;
+}
+
+.HeroContainer:hover + .DemoContainer .SandboxButton {
+  opacity: 1;
+}
+
 .CollapsibleGradient {
   position: absolute;
   bottom: 1px;
   right: 1px;
   left: 1px;
-  height: var(--space-9);
+  height: 80px;
   padding: var(--space-3);
   overflow: hidden;
   border-radius: 0 0 var(--radius-3) var(--radius-3);
@@ -19,6 +51,7 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, transparent, var(--accent-2) 70%);
+  opacity: 0.9;
 }
 
 .CodeContainer .CopyButton {

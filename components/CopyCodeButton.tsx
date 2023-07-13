@@ -18,11 +18,9 @@ export const CopyCodeButton = ({ code, ...props }) => {
         setHasCopied(true);
       }}
       {...props}
-      size="1"
       mt="2"
       mr="2"
-      variant="ghost"
-      color="gray"
+      variant="soft"
       style={{
         position: 'absolute',
         top: '0',

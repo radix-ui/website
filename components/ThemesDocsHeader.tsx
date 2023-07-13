@@ -23,7 +23,7 @@ export const ThemesDocsHeader = (props: PrimitivesDocsHeaderProps) => {
       position="relative"
     >
       <header>
-        <Box mx="auto" style={{ maxWidth: '780px' }}>
+        <Box mx="auto" px="5" style={{ maxWidth: '780px' }}>
           <Flex align="center" justify="between" height="9">
             <NextLink href="/" passHref>
               <BoxLink style={{ position: 'absolute', left: 'var(--space-5)' }}>

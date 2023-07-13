@@ -9,7 +9,7 @@ import {
   CaretRightIcon,
 } from '@radix-ui/react-icons';
 import { RemoveScroll } from 'react-remove-scroll';
-import { Box, TextField, IconButton, Tooltip, Text } from '@radix-ui/themes';
+import { Box, TextField, IconButton, Tooltip, Text, Flex } from '@radix-ui/themes';
 import { DismissableLayer } from '@radix-ui/react-dismissable-layer';
 import { Slot } from '@radix-ui/react-slot';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
@@ -206,7 +206,7 @@ export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
   }, []);
 
   return (
-    <Box {...autocomplete.getRootProps({})} position="relative" mr={{ md: '8', lg: '0' }}>
+    <Box {...autocomplete.getRootProps({})} position="relative">
       <Box
         position={isMobile ? 'sticky' : undefined}
         top="0"
@@ -224,23 +224,27 @@ export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
           }}
         >
           <form ref={formRef}>
-            <Box
+            <Flex
               {...autocomplete.getLabelProps({})}
+              align="center"
               asChild
               position="absolute"
-              style={{ top: 'var(--space-2)', left: 'calc(var(--space-3) - 3px)' }}
+              top="0"
+              bottom="0"
+              ml="2"
+              // style={{ top: 'var(--space-2)', left: 'calc(var(--space-3) - 3px)' }}
             >
               <label>
                 <MagnifyingGlassIcon />
                 <VisuallyHidden>{SLASH_COMMAND_MESSAGE}.</VisuallyHidden>
               </label>
-            </Box>
+            </Flex>
 
             <TextField
               ref={inputRef}
               {...autocomplete.getInputProps({ inputElement: inputRef.current })}
               className={styles.Input}
-              size="2"
+              size="3"
               variant="soft"
               color="gray"
               style={{
@@ -252,22 +256,23 @@ export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
 
             {searchState.query ? (
               // show the clear button when there's a query in the input
-              <Box position="absolute" top="0" right="0" mt="1" mr="1">
+              <Flex align="center" position="absolute" top="0" bottom="0" right="0" mr="3">
                 <Tooltip content="Clear">
                   <IconButton type="reset" size="1" color="gray" variant="ghost">
                     <Cross2Icon />
                   </IconButton>
                 </Tooltip>
-              </Box>
+              </Flex>
             ) : (
               // show the slash command info when there's no query in the input
-              <Box
+              <Flex
+                align="center"
                 position="absolute"
                 top="0"
+                bottom="0"
                 right="0"
-                mt="1"
-                mr="1"
-                display={{ initial: 'none', sm: 'block' }}
+                mr="2"
+                display={{ initial: 'none', sm: 'flex' }}
               >
                 <Tooltip content={SLASH_COMMAND_MESSAGE}>
                   <IconButton
@@ -281,7 +286,7 @@ export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
                     <kbd aria-hidden>/</kbd>
                   </IconButton>
                 </Tooltip>
-              </Box>
+              </Flex>
             )}
           </form>
         </Box>

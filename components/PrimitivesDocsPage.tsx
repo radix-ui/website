@@ -56,7 +56,7 @@ export function PrimitivesDocsPage({ children }: { children: React.ReactNode }) 
             />
           </Box>
 
-          <Box mt="4" style={{ display: isSearchOpen ? 'none' : undefined }}>
+          <Box mt="5" style={{ display: isSearchOpen ? 'none' : undefined }}>
             {primitivesRoutes.map((section: RouteProps) => (
               <Box key={section.label} mb="4">
                 <NavHeading>{section.label}</NavHeading>

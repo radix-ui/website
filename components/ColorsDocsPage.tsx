@@ -39,7 +39,7 @@ export function ColorsDocsPage({ children }: { children: React.ReactNode }) {
 
       <MainWrapper>
         <NavWrapper isMobileMenuOpen={isMobileMenuOpen}>
-          <Box mt="4">
+          <Box mt="5">
             {colorsRoutes.map((section) => (
               <Box key={section.label} mb="4">
                 <NavHeading>{section.label}</NavHeading>

@@ -9,7 +9,7 @@ import { getAllFrontmatter, getAllVersionsFromPath, getMdxBySlug } from '@lib/md
 import { getPackageData, formatBytes } from '@lib/bundlephobia';
 
 import type { Frontmatter } from 'types/frontmatter';
-import { Box } from '@radix-ui/themes';
+import { Box as DsBox } from '@modulz/design-system';
 
 type Doc = {
   frontmatter: Frontmatter;
@@ -42,8 +42,8 @@ export default function ComponentsDoc({ frontmatter, code }: Doc) {
         <Component components={components as any} />
       </MDXProvider>
 
-      <Box
-        asChild
+      <DsBox
+        as="aside"
         // Components that hide the scrollbar (like Dialog) add padding to
         // account for the scrollbar gap to avoid layout jank. This does not
         // work for position: fixed elements. Since we use react-remove-scroll
@@ -52,21 +52,22 @@ export default function ComponentsDoc({ frontmatter, code }: Doc) {
         // https://github.com/radix-ui/website/issues/64
         // https://github.com/theKashey/react-remove-scroll#positionfixed-elements
         className={RemoveScroll.classNames.zeroRight}
-        position="fixed"
-        right="0"
-        bottom="0"
-        display={{ initial: 'none', lg: 'block' }}
-        style={{
-          width: 250,
-          flexShrink: 0,
-          zIndex: 1,
-          top: 'var(--space-9)',
+        css={{
+          display: 'none',
+          '@media (min-width: 1440px)': {
+            display: 'block',
+            width: 250,
+            flexShrink: 0,
+            zIndex: 1,
+            position: 'fixed',
+            top: '$sizes$8',
+            right: 0,
+            bottom: 0,
+          },
         }}
       >
-        <aside>
-          <QuickNav key={frontmatter.slug} />
-        </aside>
-      </Box>
+        <QuickNav key={frontmatter.slug} />
+      </DsBox>
     </>
   );
 }

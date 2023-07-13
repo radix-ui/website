@@ -1,12 +1,31 @@
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .Header {
     padding-left: 250px;
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1440px) {
   .Header {
     padding-left: 250px;
     padding-right: 250px;
+  }
+}
+
+.SearchWrapper {
+  display: none;
+
+  @media (min-width: 900px) {
+    display: block;
+    margin-right: var(--space-7);
+  }
+
+  @media (min-width: 1130px) {
+    margin-right: 0;
+  }
+}
+
+.MobileMenuButton {
+  @media (min-width: 900px) {
+    display: none;
   }
 }
