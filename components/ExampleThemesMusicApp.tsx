@@ -1255,7 +1255,7 @@ const AlbumCard = ({
 }) => (
   <Hover.Root>
     <Box p="3" m="-3">
-      <Box mb="2">
+      <Box mb="2" position="relative">
         <Card style={{ boxShadow: `0 8px 48px -16px ${color.replace('%)', '%, 0.6)')}` }}>
           <Box style={{ margin: 'calc(var(--card-padding) * -1)', cursor: 'pointer' }}>
             <AspectRatio ratio={1}>

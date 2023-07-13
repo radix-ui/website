@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styles from './ThemesHero.module.css';
 import classNames from 'classnames';
-import { ArrowRightIcon } from '@radix-ui/react-icons';
 
 interface ThemesHeroRootProps extends React.ComponentPropsWithoutRef<'div'> {
   color: 'blue' | 'green' | 'red';
