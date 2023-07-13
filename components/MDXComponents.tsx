@@ -89,7 +89,7 @@ export const components = {
     </Heading>
   ),
   h4: ({ children, ...props }) => (
-    <Heading asChild size="4" mb="3" {...props}>
+    <Heading asChild size="4" mt="6" mb="3" {...props}>
       <h4 children={children} style={{ scrollMarginTop: 'var(--space-9)' }} />
     </Heading>
   ),

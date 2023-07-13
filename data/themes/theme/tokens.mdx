@@ -12,6 +12,10 @@ metaDescription:
   flexibility to build your own components.
 </Description>
 
+## Using tokens
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi varius, augue at aliquet sagittis, lorem lacus pretium massa, eget blandit justo quam sit amet nisl. Pellentesque ullamcorper pretium enim, sed ornare enim vulputate et. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+
 ## Color
 
 Radix Themes uses [Radix Colors](/docs/colors/palette-composition/scales) as the foundation of it's color system. Out of the box this provides you with 30, 12 step color scales, each with it's own light and dark variant. Open the theme panel to explore and preview all of the available variations.
@@ -22,11 +26,37 @@ Accents are the most dominant color in your theme, they are used for primary but
 
 <ThemesAccentTable />
 
+<ThemesTokensTable
+  data={[
+    {
+      token: '--accent-{step}',
+      description: 'The accent color for the given step',
+    },
+    {
+      token: '--accent-a{step}',
+      description: 'The accent alpha variant for the given step',
+    },
+  ]}
+/>
+
 ### Gray
 
 Gray colors are used for backgrounds, borders, text and other non-interactive elements. You can choose from one of 6 gray scales specified by your [Theme](/docs/themes/components/theme).
 
 <ThemesGrayTable />
+
+<ThemesTokensTable
+  data={[
+    {
+      token: '--gray-{step}',
+      description: 'The gray color value for the given step',
+    },
+    {
+      token: '--gray-a{step}',
+      description: 'The gray variant color for the given step',
+    },
+  ]}
+/>
 
 ### Alpha variants
 
@@ -42,38 +72,50 @@ Spacing tokens are used to apply space between elements. They are derived from a
 
 <ThemesSpacingTable />
 
-## Typography
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-### Font size
-
-<ThemesFontSizeTable />
-
-### Font family
-
-<ThemesFontFamilyTable
+<ThemesTokensTableValues
   data={[
     {
-      token: '--ff-sans',
-      value:
-        "'Inter', 'system-ui', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'",
+      token: '--space-1',
+      value: '12px',
     },
     {
-      token: '--ff-code',
-      value:
-        "'Fira Code', 'Menlo', monospace, 'Apple Color Emoji', 'Segoe UI Emoji'",
+      token: '--space-2',
+      value: '14px',
     },
     {
-      token: '--ff-italic',
-      value: "'Source Serif 4', Georgia, 'Times New Roman', serif",
+      token: '--space-3',
+      value: '16px',
+    },
+    {
+      token: '--space-4',
+      value: '18px',
+    },
+    {
+      token: '--space-5',
+      value: '20px',
+    },
+    {
+      token: '--space-6',
+      value: '24px',
+    },
+    {
+      token: '--space-7',
+      value: '28px',
+    },
+    {
+      token: '--space-8',
+      value: '35px',
+    },
+    {
+      token: '--space-9',
+      value: '60px',
     },
   ]}
 />
 
 ## Visual style
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+These tokens represent the visual properties of an element, such as border radii and shadow depth.
 
 ### Border radius
 
@@ -81,22 +123,376 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 <ThemesBorderRadiusTable />
 
+<ThemesTokensTableValues
+  data={[
+    {
+      token: '--radius-1',
+      value: '3px',
+    },
+    {
+      token: '--radius-2',
+      value: '4px',
+    },
+    {
+      token: '--radius-3',
+      value: '6px',
+    },
+    {
+      token: '--radius-4',
+      value: '8px',
+    },
+    {
+      token: '--radius-5',
+      value: '12px',
+    },
+    {
+      token: '--radius-6',
+      value: '16px',
+    },
+  ]}
+/>
+
 ### Shadow
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 <ThemesShadowTable />
 
-## Using the theme
+<ThemesTokensTableValues
+  data={[
+    {
+      token: '--radius-1',
+      value: '3px',
+    },
+    {
+      token: '--radius-2',
+      value: '4px',
+    },
+    {
+      token: '--radius-3',
+      value: '6px',
+    },
+    {
+      token: '--radius-4',
+      value: '8px',
+    },
+    {
+      token: '--radius-5',
+      value: '12px',
+    },
+    {
+      token: '--radius-6',
+      value: '16px',
+    },
+  ]}
+/>
 
-There are two ways of applying theme values to a UI component:
+## Typography
 
-### Using component props
+The typographic system is based on a 9 step scale. The defaults are tuned to get the best out of your system font stack, though you can override these values to optimize for your own typeface of choice.
 
-Theme values can be used as prop values on any UI component. For example, adding `margin-right` to a button component can be achieved by using the `mr` prop and passing in a scale value from the spacing scale.
+<ThemesFontSizeTable />
 
-### Overriding with the style prop
+### Type scale
 
-Typically components inherently have the props needed to style them, but in some cases you may need to add a style that is not available as a prop or set a value that is outside of the specified prop type.
+The type scale sits at the core of the typographic system, every step has a corresponding `font-size`, `line-height` and `letter-spacing` value and are designed to be used in combination with each other.
 
-In this case, you can use the style prop to override the component's default styles. To use theme values with this method, pass the CSS variable name to the CSS property you wish to override. This should be used sparingly, and only when there is no other way to achieve the desired style. For example, to absolute position a box 8px from the top of the page, you can use the style prop to set a top value and pass `--space-2` to it.
+<ThemesTokensTable
+  data={[
+    {
+      token: '--font-size-{step}',
+      description: 'The size value for the given step',
+    },
+    {
+      token: '--line-height-{step}',
+      description: 'The line height value for the given step',
+    },
+    {
+      token: '--letter-spacing-{step}',
+      description: 'The letter spacing value for the given step',
+    },
+  ]}
+/>
+
+Their base values and relationships are illustrated below:
+
+<ThemesFontSizingTable
+  data={[
+    {
+      step: 1,
+      fontSize: '12px',
+      letterSpacing: '0.0025em',
+      lineHeight: '16px',
+    },
+    { step: 2, fontSize: '14px', letterSpacing: '0em', lineHeight: '20px' },
+    { step: 3, fontSize: '16px', letterSpacing: '0em', lineHeight: '24px' },
+    {
+      step: 4,
+      fontSize: '18px',
+      letterSpacing: '-0.0025em',
+      lineHeight: '26px',
+    },
+    {
+      step: 5,
+      fontSize: '20px',
+      letterSpacing: '-0.005em',
+      lineHeight: '28px',
+    },
+    {
+      step: 6,
+      fontSize: '24px',
+      letterSpacing: '-0.00625em',
+      lineHeight: '30px',
+    },
+    {
+      step: 7,
+      fontSize: '28px',
+      letterSpacing: '-0.0075em',
+      lineHeight: '36px',
+    },
+    { step: 8, fontSize: '35px', letterSpacing: '-0.01em', lineHeight: '40px' },
+    {
+      step: 9,
+      fontSize: '60px',
+      letterSpacing: '-0.025em',
+      lineHeight: '60px',
+    },
+  ]}
+/>
+
+### Font weight
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+<ThemesTokensTableValues
+  data={[
+    {
+      token: '--font-weight-light',
+      value: '300',
+    },
+    {
+      token: '--font-weight-regular',
+      value: '400',
+    },
+    {
+      token: '--font-weight-medium',
+      value: '500',
+    },
+    {
+      token: '--font-weight-bold',
+      value: '700',
+    },
+  ]}
+/>
+
+### Global defaults
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+<ThemesTokensTableValues
+  data={[
+    {
+      token: '--default-font-family',
+      value:
+        "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Open Sans', system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'",
+    },
+    {
+      token: ' --default-font-size',
+      value: 'var(--font-size-3)',
+    },
+    {
+      token: '--default-font-style',
+      value: 'normal',
+    },
+    {
+      token: '--default-font-weight',
+      value: 'var(--font-weight-regular)',
+    },
+    {
+      token: '--default-line-height',
+      value: '1.5',
+    },
+    {
+      token: '--default-letter-spacing',
+      value: '0em',
+    },
+    {
+      token: '--default-leading-trim-start',
+      value: '0.42em',
+      description: 'This is a test string',
+    },
+    {
+      token: '--default-leading-trim-end',
+      value: '0.36em',
+      description: 'This is a test string',
+    },
+  ]}
+/>
+
+### Advanced configuration
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+#### Heading
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+<ThemesTokensTableValues
+  data={[
+    {
+      token: '--heading-font-family',
+      value: 'var(--default-font-family)',
+    },
+    {
+      token: '--heading-font-size-adjust',
+      value: '1',
+    },
+    {
+      token: '--heading-font-style',
+      value: 'normal',
+    },
+    {
+      token: '--heading-leading-trim-start',
+      value: 'var(--default-leading-trim-start)',
+    },
+    {
+      token: '--heading-leading-trim-end',
+      value: 'var(--default-leading-trim-end)',
+    },
+    {
+      token: '--heading-letter-spacing',
+      value: '0em',
+    },
+  ]}
+/>
+
+Heading `line-height` can be customized independently of the base settings:
+
+<ThemesTokensTableValues
+  data={[
+    {
+      token: '--heading-line-height-1',
+      value: '16px',
+    },
+    {
+      token: '--heading-line-height-2',
+      value: '18px',
+    },
+    {
+      token: '--heading-line-height-3',
+      value: '22px',
+    },
+    {
+      token: '--heading-line-height-4',
+      value: '24px',
+    },
+    {
+      token: '--heading-line-height-5',
+      value: '26px',
+    },
+    {
+      token: '--heading-line-height-6',
+      value: '30px',
+    },
+    {
+      token: '--heading-line-height-7',
+      value: '36px',
+    },
+    {
+      token: '--heading-line-height-8',
+      value: '40px',
+    },
+    {
+      token: '--heading-line-height-9',
+      value: '60px',
+    },
+  ]}
+/>
+
+### Code
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+<ThemesTokensTableValues
+  data={[
+    {
+      token: '--code-font-family',
+      value:
+        "'Fira --Code', 'Menlo', monospace, 'Apple Color Emoji', 'Segoe UI Emoji'",
+    },
+    {
+      token: '--code-font-size-adjust',
+      value: '0.9',
+    },
+    {
+      token: '--code-font-style',
+      value: 'normal',
+    },
+    {
+      token: '--code-font-weight',
+      value: 'inherit',
+    },
+    {
+      token: '--code-letter-spacing',
+      value: '-0.007em',
+    },
+  ]}
+/>
+
+### Strong
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+<ThemesTokensTableValues
+  data={[
+    {
+      token: '--strong-font-family',
+      value: 'var(--default-font-family)',
+    },
+    {
+      token: '--strong-font-size-adjust',
+      value: '1',
+    },
+    {
+      token: '--strong-font-style',
+      value: 'inherit',
+    },
+    {
+      token: '--strong-font-weight',
+      value: 'var(--font-weight-bold)',
+    },
+    {
+      token: '--strong-letter-spacing',
+      value: '0em',
+    },
+  ]}
+/>
+
+### Em
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+<ThemesTokensTableValues
+  data={[
+    {
+      token: '--em-font-family',
+      value: 'var(--default-font-family)',
+    },
+    {
+      token: '--em-font-size-adjust',
+      value: '1',
+    },
+    {
+      token: '--em-font-style',
+      value: 'inherit',
+    },
+    {
+      token: '--em-font-weight',
+      value: 'var(--font-weight-bold)',
+    },
+    {
+      token: '--em-letter-spacing',
+      value: '0em',
+    },
+  ]}
+/>
