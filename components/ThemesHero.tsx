@@ -27,6 +27,10 @@ const ThemesHeroText = (props: React.ComponentPropsWithoutRef<'p'>) => (
   <p className={styles.ThemesHeroTaglineText} {...props} />
 );
 
+const ThemesHeroActions = (props: React.ComponentPropsWithoutRef<'div'>) => (
+  <div className={styles.ThemesHeroActions} {...props} />
+);
+
 interface ThemesHeroButtonProps extends React.ComponentPropsWithoutRef<'a'> {
   variant?: 'solid' | 'soft';
 }
@@ -91,6 +95,7 @@ export const ThemesHero = {
   Tagline: ThemesHeroTagline,
   Title: ThemesHeroTitle,
   Text: ThemesHeroText,
+  Actions: ThemesHeroActions,
   Button: ThemesHeroButton,
   Showcase: ThemesHeroShowcase,
 };
