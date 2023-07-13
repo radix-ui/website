@@ -1,0 +1,9 @@
+.HoverShow {
+  opacity: 0;
+  transition: opacity 160ms;
+}
+
+.HoverRoot:hover .HoverShow {
+  opacity: 1;
+  transition: opacity 60ms;
+}
