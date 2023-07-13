@@ -35,8 +35,12 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
             </Heading>
 
             <Flex gap="4" my="-1">
-              <Button variant="ghost">Clear</Button>
-              <Button variant="ghost">Repeat</Button>
+              <Button tabIndex={-1} variant="ghost">
+                Clear
+              </Button>
+              <Button tabIndex={-1} variant="ghost">
+                Repeat
+              </Button>
             </Flex>
           </Flex>
         </Box>
@@ -95,7 +99,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
         <Flex gap="2" align="center" height="4" mt="2" mb="5">
           <VolumeNoneIcon color="var(--gray-a9)" />
           <Box grow="1">
-            <Slider radius="full" defaultValue={[80]} />
+            <Slider tabIndex={-1} radius="full" defaultValue={[80]} />
           </Box>
           <VolumeMaxIcon color="var(--gray-a9)" />
         </Flex>
@@ -103,7 +107,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
         <Grid columns="4" pt="2" pb="1">
           <Flex direction="column" gap="2" align="center" asChild>
             <Label>
-              <IconButton radius="full" variant="solid">
+              <IconButton tabIndex={-1} radius="full" variant="solid">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 30 30"
@@ -127,7 +131,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
 
           <Flex direction="column" gap="2" align="center" asChild>
             <Label>
-              <IconButton radius="full" variant="solid">
+              <IconButton tabIndex={-1} radius="full" variant="solid">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 30 30"
@@ -151,7 +155,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
 
           <Flex direction="column" gap="2" align="center" asChild>
             <Label>
-              <IconButton radius="full" variant="soft" color="gray">
+              <IconButton tabIndex={-1} radius="full" variant="soft" color="gray">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 30 30"
@@ -175,7 +179,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
 
           <Flex direction="column" gap="2" align="center" asChild>
             <Label>
-              <IconButton radius="full" variant="soft" color="gray">
+              <IconButton tabIndex={-1} radius="full" variant="soft" color="gray">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 30 30"
@@ -209,13 +213,19 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                 </Heading>
 
                 <Flex my="-1">
-                  <Switch defaultChecked radius="full" size="1" style={{ marginTop: 2 }} />
+                  <Switch
+                    tabIndex={-1}
+                    defaultChecked
+                    radius="full"
+                    size="1"
+                    style={{ marginTop: 2 }}
+                  />
                 </Flex>
               </Label>
             </Flex>
 
             <Flex my="-1" gap="4">
-              <Button size="2" variant="ghost">
+              <Button tabIndex={-1} size="2" variant="ghost">
                 Reset
               </Button>
             </Flex>
@@ -248,6 +258,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
             ].map((slider) => (
               <Flex direction="column" align="center" gap="2" width="5" key={slider.frequency}>
                 <Slider
+                  tabIndex={-1}
                   size="2"
                   radius="small"
                   key={slider.frequency}
@@ -272,7 +283,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
             </Heading>
 
             <Flex my="-1" gap="4">
-              <Button size="2" variant="ghost">
+              <Button tabIndex={-1} size="2" variant="ghost">
                 Clear
               </Button>
             </Flex>
@@ -371,6 +382,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
               <MagnifyingGlassIcon />
             </Box>
             <TextField
+              tabIndex={-1}
               radius="full"
               variant="soft"
               color="gray"
@@ -381,16 +393,16 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
         </Flex>
 
         <Flex align="center" position="absolute" top="0" right="0" height="9" mr="4" gap="4">
-          <IconButton size="2" variant="ghost" radius="full">
+          <IconButton tabIndex={-1} size="2" variant="ghost" radius="full">
             <HeartIcon />
           </IconButton>
-          <IconButton size="2" variant="ghost" radius="full">
+          <IconButton tabIndex={-1} size="2" variant="ghost" radius="full">
             <CounterClockwiseClockIcon />
           </IconButton>
-          <IconButton size="2" variant="ghost" radius="full">
+          <IconButton tabIndex={-1} size="2" variant="ghost" radius="full">
             <MixerHorizontalIcon />
           </IconButton>
-          <IconButton size="1" variant="ghost" radius="full" color="gray">
+          <IconButton tabIndex={-1} size="1" variant="ghost" radius="full" color="gray">
             <Avatar
               size="2"
               radius="full"
@@ -408,7 +420,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
               Your favorites
             </Heading>
 
-            <Link size="2" weight="medium">
+            <Link tabIndex={-1} size="2" weight="medium">
               Show all
             </Link>
           </Flex>
@@ -432,7 +444,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
               Made for you
             </Heading>
 
-            <Link size="2" weight="medium">
+            <Link tabIndex={-1} size="2" weight="medium">
               Show all
             </Link>
           </Flex>
@@ -456,7 +468,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
               Your friends listen
             </Heading>
 
-            <Link size="2" weight="medium">
+            <Link tabIndex={-1} size="2" weight="medium">
               Show all
             </Link>
           </Flex>
@@ -506,7 +518,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
           </Theme>
           <Flex height="100%" justify="between" position="relative">
             <Flex gap="4" align="center" p="3">
-              <IconButton radius="full" size="3">
+              <IconButton tabIndex={-1} radius="full" size="3">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentcolor"
@@ -520,7 +532,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
               </IconButton>
 
               <Flex align="center" gap="4">
-                <IconButton color="gray" variant="ghost" radius="full" size="2">
+                <IconButton tabIndex={-1} color="gray" variant="ghost" radius="full" size="2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 30 30"
@@ -532,7 +544,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     <path d="M 21 5 L 21 8 L 18.675781 8 C 16.670448 8 14.796256 9.00408 13.683594 10.671875 L 12 13.197266 L 10.316406 10.671875 C 9.2045791 9.0047337 7.329552 8 5.3242188 8 L 3 8 A 1.0001 1.0001 0 1 0 3 10 L 5.3242188 10 C 6.6628853 10 7.910171 10.668391 8.6523438 11.78125 L 10.798828 15 L 8.6523438 18.21875 C 7.910171 19.331609 6.6628854 20 5.3242188 20 L 3 20 A 1.0001 1.0001 0 1 0 3 22 L 5.3242188 22 C 7.3295521 22 9.2045792 20.995266 10.316406 19.328125 L 12 16.802734 L 13.683594 19.328125 C 14.796256 20.99592 16.670448 22 18.675781 22 L 21 22 L 21 25 L 27 21 L 21 17 L 21 20 L 18.675781 20 C 17.337115 20 16.090994 19.332955 15.347656 18.21875 L 13.201172 15 L 15.347656 11.78125 C 16.090994 10.667045 17.337115 10 18.675781 10 L 21 10 L 21 13 L 27 9 L 21 5 z" />
                   </svg>
                 </IconButton>
-                <IconButton color="gray" variant="ghost" radius="full" size="2">
+                <IconButton tabIndex={-1} color="gray" variant="ghost" radius="full" size="2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 30 30"
@@ -548,7 +560,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
             </Flex>
 
             <Flex align="center" gap="3">
-              <IconButton color="gray" variant="ghost" radius="full" size="2">
+              <IconButton tabIndex={-1} color="gray" variant="ghost" radius="full" size="2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentcolor"
@@ -601,7 +613,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                 </Box>
               </Flex>
 
-              <IconButton color="gray" variant="ghost" radius="full" size="2">
+              <IconButton tabIndex={-1} color="gray" variant="ghost" radius="full" size="2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 30 30"
@@ -619,6 +631,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
             <Flex align="center" gap="2" p="5">
               <VolumeNoneIcon color="var(--gray-a9)" />
               <Slider
+                tabIndex={-1}
                 defaultValue={[80]}
                 variant="soft"
                 color="gray"
@@ -658,7 +671,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     </Text>
                   </Box>
 
-                  <Switch radius="full" mt="2" />
+                  <Switch tabIndex={-1} radius="full" mt="2" />
                 </Flex>
               </Label>
 
@@ -674,7 +687,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     </Text>
                   </Box>
 
-                  <Switch radius="full" mt="2" />
+                  <Switch tabIndex={-1} radius="full" mt="2" />
                 </Flex>
               </Label>
 
@@ -689,7 +702,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     </Text>
                   </Box>
 
-                  <Switch radius="full" mt="2" />
+                  <Switch tabIndex={-1} radius="full" mt="2" />
                 </Flex>
               </Label>
 
@@ -704,7 +717,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     </Text>
                   </Box>
 
-                  <Switch radius="full" defaultChecked mt="2" />
+                  <Switch tabIndex={-1} radius="full" defaultChecked mt="2" />
                 </Flex>
               </Label>
 
@@ -727,7 +740,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     </Text>
                   </Box>
                   <Box grow="1">
-                    <Slider radius="full" size="1" defaultValue={[80]} />
+                    <Slider tabIndex={-1} radius="full" size="1" defaultValue={[80]} />
                   </Box>
                   <Box asChild width="6">
                     <Text color="gray" size="1">
@@ -756,7 +769,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     </Text>
                   </Box>
                   <Box grow="1">
-                    <Slider radius="full" size="1" defaultValue={[0]} />
+                    <Slider tabIndex={-1} radius="full" size="1" defaultValue={[0]} />
                   </Box>
                   <Box asChild width="6">
                     <Text color="gray" size="1">
@@ -776,7 +789,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                 </Heading>
 
                 <Flex my="-1" gap="4">
-                  <Button size="2" variant="ghost">
+                  <Button tabIndex={-1} size="2" variant="ghost">
                     Done
                   </Button>
                 </Flex>
@@ -793,7 +806,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     Sign up with 1 account
                   </Text>
                 </Flex>
-                <Button variant="soft" style={{ width: 64 }}>
+                <Button tabIndex={-1} variant="soft" style={{ width: 64 }}>
                   $4.99
                 </Button>
               </Flex>
@@ -807,7 +820,9 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     Sign up 2 accounts
                   </Text>
                 </Flex>
-                <Button style={{ width: 64 }}>$6.99</Button>
+                <Button tabIndex={-1} style={{ width: 64 }}>
+                  $6.99
+                </Button>
               </Flex>
 
               <Flex align="center" justify="between">
@@ -819,7 +834,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     Sign up to 6 accounts
                   </Text>
                 </Flex>
-                <Button variant="soft" style={{ width: 64 }}>
+                <Button tabIndex={-1} variant="soft" style={{ width: 64 }}>
                   $12.99
                 </Button>
               </Flex>
@@ -835,7 +850,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
               </Text>
 
               <Text size="2" as="p">
-                <Link>Cancel subscription</Link>
+                <Link tabIndex={-1}>Cancel subscription</Link>
               </Text>
             </Box>
           </Card>
@@ -850,10 +865,10 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                 </Heading>
 
                 <Flex my="-1" gap="4">
-                  <Button size="2" variant="ghost">
+                  <Button tabIndex={-1} size="2" variant="ghost">
                     Cancel
                   </Button>
-                  <Button size="2" variant="ghost">
+                  <Button tabIndex={-1} size="2" variant="ghost">
                     Save
                   </Button>
                 </Flex>
@@ -866,7 +881,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                   <Text size="2" weight="medium">
                     Name
                   </Text>
-                  <TextField defaultValue="Vlad Moroz" />
+                  <TextField tabIndex={-1} defaultValue="Vlad Moroz" />
                 </Label>
               </Flex>
 
@@ -875,7 +890,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                   <Text size="2" weight="medium">
                     Username
                   </Text>
-                  <TextField defaultValue="@vladmoroz" />
+                  <TextField tabIndex={-1} defaultValue="@vladmoroz" />
                 </Label>
               </Flex>
 
@@ -884,7 +899,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                   <Text size="2" weight="medium">
                     Email
                   </Text>
-                  <TextField defaultValue="hi@vladmoroz.com" />
+                  <TextField tabIndex={-1} defaultValue="hi@vladmoroz.com" />
                 </Label>
               </Flex>
 
@@ -895,21 +910,21 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                 <Flex direction="column" gap="2">
                   <Flex asChild gap="2">
                     <Label>
-                      <Checkbox defaultChecked />
+                      <Checkbox tabIndex={-1} defaultChecked />
                       <Text size="2">Display my listening history</Text>
                     </Label>
                   </Flex>
 
                   <Flex asChild gap="2">
                     <Label>
-                      <Checkbox />
+                      <Checkbox tabIndex={-1} />
                       <Text size="2">Everyone can follow my activity</Text>
                     </Label>
                   </Flex>
 
                   <Flex asChild gap="2">
                     <Label>
-                      <Checkbox defaultChecked />
+                      <Checkbox tabIndex={-1} defaultChecked />
                       <Text size="2">Show my playlists in search</Text>
                     </Label>
                   </Flex>
@@ -921,8 +936,12 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                   Danger zone
                 </Text>
                 <Flex align="start" direction="column" gap="2">
-                  <Link size="2">Reset recommendations</Link>
-                  <Link size="2">Delete profile</Link>
+                  <Link tabIndex={-1} size="2">
+                    Reset recommendations
+                  </Link>
+                  <Link tabIndex={-1} size="2">
+                    Delete profile
+                  </Link>
                 </Flex>
               </Flex>
             </Flex>
@@ -936,10 +955,10 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                 </Heading>
 
                 <Flex my="-1" gap="4">
-                  <Button size="2" variant="ghost">
+                  <Button tabIndex={-1} size="2" variant="ghost">
                     Start over
                   </Button>
-                  <Button size="2" variant="ghost">
+                  <Button tabIndex={-1} size="2" variant="ghost">
                     Next
                   </Button>
                 </Flex>
@@ -986,6 +1005,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                   'K-pop',
                 ].map((genre) => (
                   <Button
+                    tabIndex={-1}
                     radius="full"
                     variant={['Blues', 'Jazz', 'Funk'].includes(genre) ? 'solid' : 'soft'}
                     key={genre}
@@ -1051,8 +1071,8 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
               </Text>
 
               <Flex justify="center" gap="3">
-                <Button>Listen Now</Button>
-                <IconButton variant="soft">
+                <Button tabIndex={-1}>Listen Now</Button>
+                <IconButton tabIndex={-1} variant="soft">
                   <HeartIcon />
                 </IconButton>
               </Flex>
@@ -1083,7 +1103,9 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                   <Flex direction="column" align="start" gap="1">
                     <HoverCard.Root>
                       <HoverCard.Trigger>
-                        <Link>I seem to sink lower, gazing in the rays of the solar</Link>
+                        <Link tabIndex={-1}>
+                          I seem to sink lower, gazing in the rays of the solar
+                        </Link>
                       </HoverCard.Trigger>
                       <HoverCard.Content side="top" style={{ maxWidth: 320 }}>
                         <Flex gap="2" direction="column">
@@ -1114,7 +1136,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
 
                     <HoverCard.Root>
                       <HoverCard.Trigger>
-                        <Link>Red on white but he sipped on KA soda</Link>
+                        <Link tabIndex={-1}>Red on white but he sipped on KA soda</Link>
                       </HoverCard.Trigger>
                       <HoverCard.Content side="top" style={{ maxWidth: 320 }}>
                         <Flex gap="2" direction="column">
@@ -1130,7 +1152,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                       Damn, that's Coca-Cola,{' '}
                       <HoverCard.Root>
                         <HoverCard.Trigger>
-                          <Link>as TV sports the Olympic ebola</Link>
+                          <Link tabIndex={-1}>as TV sports the Olympic ebola</Link>
                         </HoverCard.Trigger>
                         <HoverCard.Content side="top" style={{ maxWidth: 320 }}>
                           <Flex gap="2" direction="column">
@@ -1149,7 +1171,9 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
 
                     <HoverCard.Root>
                       <HoverCard.Trigger>
-                        <Link href="#">He left the crime scene without the Motorola</Link>
+                        <Link tabIndex={-1} href="#">
+                          He left the crime scene without the Motorola
+                        </Link>
                       </HoverCard.Trigger>
                       <HoverCard.Content side="top" style={{ maxWidth: 320 }}>
                         <Flex gap="2" direction="column">
@@ -1175,7 +1199,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     <Text>I seem to sink lower</Text>
                     <HoverCard.Root>
                       <HoverCard.Trigger>
-                        <Link>In biscuit town, in biscuit town</Link>
+                        <Link tabIndex={-1}>In biscuit town, in biscuit town</Link>
                       </HoverCard.Trigger>
                       <HoverCard.Content side="top" style={{ maxWidth: 320 }}>
                         <Flex gap="2" direction="column">
@@ -1249,7 +1273,7 @@ const AlbumCard = ({
 
         <Hover.Show>
           <Flex gap="2" position="absolute" bottom="0" right="0" m="2">
-            <IconButton radius="full" size="3">
+            <IconButton tabIndex={-1} radius="full" size="3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentcolor"
@@ -1266,7 +1290,14 @@ const AlbumCard = ({
       </Box>
 
       <Flex direction="column" position="relative" align="start">
-        <Link size="2" weight="medium" color="gray" highContrast style={{ textDecoration: 'none' }}>
+        <Link
+          tabIndex={-1}
+          size="2"
+          weight="medium"
+          color="gray"
+          highContrast
+          style={{ textDecoration: 'none' }}
+        >
           {title}
         </Link>
         <Text size="2" color="gray">

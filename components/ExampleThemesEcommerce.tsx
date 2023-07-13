@@ -1153,7 +1153,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               <Text as="p" mb="3" size="3">
                 Striking patterns, vibrant hues, and unusual designs.
               </Text>
-              <Button highContrast variant="solid">
+              <Button tabIndex={-1} highContrast variant="solid">
                 Shop now
               </Button>
             </Box>
@@ -1257,6 +1257,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                 <MagnifyingGlassIcon />
               </Box>
               <TextField
+                tabIndex={-1}
                 variant="soft"
                 placeholder="Search"
                 style={{ paddingLeft: 'var(--space-6)' }}
@@ -1264,7 +1265,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
             </Box>
             <Flex direction="column" style={{ minWidth: 140 }}>
               <Select.Root defaultValue="All customers">
-                <Select.Trigger variant="solid" highContrast />
+                <Select.Trigger variant="solid" highContrast tabIndex={-1} />
                 <Select.Content variant="soft" container={container} position="popper">
                   <Select.Item value="All customers">All customers</Select.Item>
                   <Select.Item value={new Date().getFullYear().toString()}>
