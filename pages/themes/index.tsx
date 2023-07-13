@@ -21,16 +21,97 @@ export default function ThemesHome() {
       <Head>
         <meta name="theme-color" content="#FDFCFD" />
         <style>{`
-          .radix-themes.dark-theme .rt-Card {
+          .radix-themes-example.dark-theme .rt-Card {
             --color-surface-1: var(--gray-2);
+          }
+
+          .light-theme {
+            --themes-hero-blue-text-color: var(--indigo-12);
+            --themes-hero-blue-soft-color: var(--indigo-5);
+            --themes-hero-blue-contrast-color: var(--indigo-1);
+            --themes-hero-blue-tagline-title-color-1: #87a3ff;
+            --themes-hero-blue-tagline-title-color-2: #b8adee;
+            --themes-hero-blue-tagline-title-color-3: #aba9fc;
+            --themes-hero-blue-tagline-title-color-4: #e787ff;
+            --themes-hero-blue-tagline-title-color-1: color(display-p3 0.55 0.64 1 / 1);
+            --themes-hero-blue-tagline-title-color-2: #b8adee;
+            --themes-hero-blue-tagline-title-color-3: color(display-p3 0.67 0.66 1 / 1);
+            --themes-hero-blue-tagline-title-color-4: color(display-p3 0.9 0.55 1 / 1);
+
+            --themes-hero-green-text-color: var(--sage-12);
+            --themes-hero-green-soft-color: var(--sky-5);
+            --themes-hero-green-contrast-color: var(--sage-1);
+            --themes-hero-green-tagline-title-color-1: #00ff71;
+            --themes-hero-green-tagline-title-color-2: #00e9d6;
+            --themes-hero-green-tagline-title-color-3: #00f9ff;
+            --themes-hero-green-tagline-title-color-4: #a3edff;
+            --themes-hero-green-tagline-title-color-1: color(display-p3 0 1 0.51);
+            --themes-hero-green-tagline-title-color-2: color(display-p3 0.26 0.9 0.84);
+            --themes-hero-green-tagline-title-color-3: color(display-p3 0.03 0.96 1);
+            --themes-hero-green-tagline-title-color-4: color(display-p3 0.7 0.92 1);
+
+            --themes-hero-red-text-color: var(--mauve-12);
+            --themes-hero-red-soft-color: var(--tomato-5);
+            --themes-hero-red-contrast-color: var(--mauve-1);
+            --themes-hero-red-tagline-title-color-1: #ff0000;
+            --themes-hero-red-tagline-title-color-2: #ff8283;
+            --themes-hero-red-tagline-title-color-3: #ff9583;
+            --themes-hero-red-tagline-title-color-4: #ff9bbd;
+            --themes-hero-red-tagline-title-color-1: color(display-p3 1 0.08 0);
+            --themes-hero-red-tagline-title-color-2: color(display-p3 1 0.54 0.53);
+            --themes-hero-red-tagline-title-color-3: color(display-p3 1 0.61 0.53);
+            --themes-hero-red-tagline-title-color-4: color(display-p3 1 0.63 0.74);
+          }
+
+          .dark-theme {
+            --themes-hero-blue-text-color: var(--indigo-12);
+            --themes-hero-blue-soft-color: #27376d;
+            --themes-hero-blue-contrast-color: var(--indigo-1);
+            --themes-hero-blue-tagline-title-color-1: #acbcff;
+            --themes-hero-blue-tagline-title-color-2: #8299f4;
+            --themes-hero-blue-tagline-title-color-3: #d971ab;
+            --themes-hero-blue-tagline-title-color-4: var(--red-11);
+            --themes-hero-blue-tagline-title-color-1: color(display-p3 0.69 0.74 1 / 1);
+            --themes-hero-blue-tagline-title-color-2: color(display-p3 0.53 0.6 1 / 1);
+            --themes-hero-blue-tagline-title-color-3: #d971ab;
+            --themes-hero-blue-tagline-title-color-4: color(display-p3 1 0.43 0.43 / 1);
+
+            --themes-hero-green-text-color: var(--sage-12);
+            --themes-hero-green-soft-color: var(--mint-7);
+            --themes-hero-green-contrast-color: var(--sage-1);
+            --themes-hero-green-tagline-title-color-1: #00ff71;
+            --themes-hero-green-tagline-title-color-2: #00e99d;
+            --themes-hero-green-tagline-title-color-3: #74f0e6;
+            --themes-hero-green-tagline-title-color-4: #00ecff;
+            --themes-hero-green-tagline-title-color-1: color(display-p3 0 1 0.51);
+            --themes-hero-green-tagline-title-color-2: color(display-p3 0.26 0.9 0.64);
+            --themes-hero-green-tagline-title-color-3: color(display-p3 0.58 0.93 0.9);
+            --themes-hero-green-tagline-title-color-4: color(display-p3 0.12 0.91 1);
+
+            --themes-hero-red-text-color: var(--pink-12);
+            --themes-hero-red-soft-color: #713949;
+            --themes-hero-red-contrast-color: var(--pink-1);
+            --themes-hero-red-tagline-title-color-1: #ff4b44;
+            --themes-hero-red-tagline-title-color-2: #ff82a6;
+            --themes-hero-red-tagline-title-color-3: #ff9681;
+            --themes-hero-red-tagline-title-color-4: #ff965d;
+            --themes-hero-red-tagline-title-color-1: color(display-p3 1 0.36 0.31);
+            --themes-hero-red-tagline-title-color-2: color(display-p3 1 0.54 0.65);
+            --themes-hero-red-tagline-title-color-3: color(display-p3 1 0.61 0.53);
+            --themes-hero-red-tagline-title-color-4: color(display-p3 1 0.61 0.41);
           }
         `}</style>
       </Head>
 
       <MagicCurtain.Root>
         <MagicCurtain.Item>
-          <div className="light-theme">
-            <ThemesHeader />
+          <Theme
+            className="radix-themes-example"
+            accentScale="indigo"
+            grayScale="mauve"
+            applyBackgroundColor={false}
+          >
+            {/* <ThemesHeader /> */}
             <ThemesHero.Root color="blue">
               <ThemesHero.Tagline>
                 <ThemesHero.Title>Build faster</ThemesHero.Title>
@@ -47,22 +128,22 @@ export default function ThemesHome() {
                 </Flex>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <Theme
-                  accentScale="indigo"
-                  grayScale="mauve"
-                  appearance="light"
-                  applyBackgroundColor={false}
-                >
-                  <ExampleThemesDashboard />
-                </Theme>
+                <ExampleThemesDashboard />
               </ThemesHero.Showcase>
             </ThemesHero.Root>
-          </div>
+          </Theme>
         </MagicCurtain.Item>
 
         <MagicCurtain.Item>
-          <div className="dark-theme">
-            <ThemesHeader />
+          <Theme
+            className="radix-themes-example"
+            accentScale="gray"
+            grayScale="sand"
+            textColor="auto"
+            appearance="invert"
+            applyBackgroundColor={false}
+          >
+            {/* <ThemesHeader /> */}
             <ThemesHero.Root color="green">
               <ThemesHero.Tagline>
                 <ThemesHero.Title>Build better</ThemesHero.Title>
@@ -79,23 +160,21 @@ export default function ThemesHome() {
                 </Flex>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <Theme
-                  accentScale="gray"
-                  grayScale="sand"
-                  textColor="auto"
-                  appearance="dark"
-                  applyBackgroundColor={false}
-                >
-                  <ExampleThemesEcommerce />
-                </Theme>
+                <ExampleThemesEcommerce />
               </ThemesHero.Showcase>
             </ThemesHero.Root>
-          </div>
+          </Theme>
         </MagicCurtain.Item>
 
         <MagicCurtain.Item>
-          <div className="light-theme">
-            <ThemesHeader />
+          <Theme
+            className="radix-themes-example"
+            accentScale="red"
+            grayScale="slate"
+            textColor="auto"
+            applyBackgroundColor={false}
+          >
+            {/* <ThemesHeader /> */}
             <ThemesHero.Root color="red">
               <ThemesHero.Tagline>
                 <ThemesHero.Title>Build hotter</ThemesHero.Title>
@@ -112,23 +191,21 @@ export default function ThemesHome() {
                 </Flex>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <Theme
-                  accentScale="red"
-                  grayScale="slate"
-                  textColor="auto"
-                  appearance="light"
-                  applyBackgroundColor={false}
-                >
-                  <ExampleThemesMusicApp />
-                </Theme>
+                <ExampleThemesMusicApp />
               </ThemesHero.Showcase>
             </ThemesHero.Root>
-          </div>
+          </Theme>
         </MagicCurtain.Item>
 
         <MagicCurtain.Item>
-          <div className="dark-theme">
-            <ThemesHeader />
+          <Theme
+            className="radix-themes-example"
+            accentScale="indigo"
+            grayScale="mauve"
+            appearance="invert"
+            applyBackgroundColor={false}
+          >
+            {/* <ThemesHeader /> */}
             <ThemesHero.Root color="blue">
               <ThemesHero.Tagline>
                 <ThemesHero.Title>Build nicer</ThemesHero.Title>
@@ -145,22 +222,21 @@ export default function ThemesHome() {
                 </Flex>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <Theme
-                  accentScale="indigo"
-                  grayScale="mauve"
-                  appearance="dark"
-                  applyBackgroundColor={false}
-                >
-                  <ExampleThemesDashboard />
-                </Theme>
+                <ExampleThemesDashboard />
               </ThemesHero.Showcase>
             </ThemesHero.Root>
-          </div>
+          </Theme>
         </MagicCurtain.Item>
 
         <MagicCurtain.Item>
-          <div className="light-theme">
-            <ThemesHeader />
+          <Theme
+            className="radix-themes-example"
+            accentScale="gray"
+            grayScale="sand"
+            textColor="auto"
+            applyBackgroundColor={false}
+          >
+            {/* <ThemesHeader /> */}
             <ThemesHero.Root color="green">
               <ThemesHero.Tagline>
                 <ThemesHero.Title>Build cooler</ThemesHero.Title>
@@ -177,23 +253,22 @@ export default function ThemesHome() {
                 </Flex>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <Theme
-                  accentScale="gray"
-                  grayScale="sand"
-                  textColor="auto"
-                  appearance="light"
-                  applyBackgroundColor={false}
-                >
-                  <ExampleThemesEcommerce />
-                </Theme>
+                <ExampleThemesEcommerce />
               </ThemesHero.Showcase>
             </ThemesHero.Root>
-          </div>
+          </Theme>
         </MagicCurtain.Item>
 
         <MagicCurtain.Item>
-          <div className="dark-theme">
-            <ThemesHeader />
+          <Theme
+            className="radix-themes-example"
+            accentScale="red"
+            grayScale="slate"
+            textColor="auto"
+            appearance="invert"
+            applyBackgroundColor={false}
+          >
+            {/* <ThemesHeader /> */}
             <ThemesHero.Root color="red">
               <ThemesHero.Tagline>
                 <ThemesHero.Title>Build more</ThemesHero.Title>
@@ -210,18 +285,10 @@ export default function ThemesHome() {
                 </Flex>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <Theme
-                  accentScale="red"
-                  grayScale="slate"
-                  textColor="auto"
-                  appearance="dark"
-                  applyBackgroundColor={false}
-                >
-                  <ExampleThemesMusicApp />
-                </Theme>
+                <ExampleThemesMusicApp />
               </ThemesHero.Showcase>
             </ThemesHero.Root>
-          </div>
+          </Theme>
         </MagicCurtain.Item>
       </MagicCurtain.Root>
     </>

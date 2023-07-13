@@ -3,9 +3,6 @@
   flex-direction: column;
   min-height: 100vh;
 
-  font-family: 'Untitled Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', 'Open Sans', system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
-
   /* Prevent elements with `position: absolute` from adding scrollbars */
   overflow: hidden;
 
@@ -15,99 +12,45 @@
 }
 
 .ThemesHeroRoot.color-blue {
-  --themes-hero-text-color: var(--indigo-12);
-  --themes-hero-soft-color: var(--indigo-5);
-  --themes-hero-contrast-color: var(--indigo-1);
-
-  --themes-hero-tagline-title-color-1: #87a3ff;
-  --themes-hero-tagline-title-color-2: #b8adee;
-  --themes-hero-tagline-title-color-3: #aba9fc;
-  --themes-hero-tagline-title-color-4: #e787ff;
-
-  --themes-hero-tagline-title-color-1: color(display-p3 0.55 0.64 1 / 1);
-  --themes-hero-tagline-title-color-2: #b8adee;
-  --themes-hero-tagline-title-color-3: color(display-p3 0.67 0.66 1 / 1);
-  --themes-hero-tagline-title-color-4: color(display-p3 0.9 0.55 1 / 1);
-}
-
-:global(.dark-theme) .ThemesHeroRoot.color-blue {
-  --themes-hero-text-color: var(--indigo-12);
-  --themes-hero-soft-color: #27376d;
-  --themes-hero-contrast-color: var(--indigo-1);
-
-  --themes-hero-tagline-title-color-1: #acbcff;
-  --themes-hero-tagline-title-color-2: #8299f4;
-  --themes-hero-tagline-title-color-3: #d971ab;
-  --themes-hero-tagline-title-color-4: var(--red-11);
-
-  --themes-hero-tagline-title-color-1: color(display-p3 0.69 0.74 1 / 1);
-  --themes-hero-tagline-title-color-2: color(display-p3 0.53 0.6 1 / 1);
-  --themes-hero-tagline-title-color-3: #d971ab;
-  --themes-hero-tagline-title-color-4: color(display-p3 1 0.43 0.43 / 1);
+  --themes-hero-text-color: var(--themes-hero-blue-text-color);
+  --themes-hero-soft-color: var(--themes-hero-blue-soft-color);
+  --themes-hero-contrast-color: var(--themes-hero-blue-contrast-color);
+  --themes-hero-tagline-title-color-1: var(--themes-hero-blue-tagline-title-color-1);
+  --themes-hero-tagline-title-color-2: var(--themes-hero-blue-tagline-title-color-2);
+  --themes-hero-tagline-title-color-3: var(--themes-hero-blue-tagline-title-color-3);
+  --themes-hero-tagline-title-color-4: var(--themes-hero-blue-tagline-title-color-4);
+  --themes-hero-tagline-title-color-1: var(--themes-hero-blue-tagline-title-color-1);
+  --themes-hero-tagline-title-color-2: var(--themes-hero-blue-tagline-title-color-2);
+  --themes-hero-tagline-title-color-3: var(--themes-hero-blue-tagline-title-color-3);
+  --themes-hero-tagline-title-color-4: var(--themes-hero-blue-tagline-title-color-4);
 }
 
 .ThemesHeroRoot.color-green {
-  --themes-hero-text-color: var(--sage-12);
-  --themes-hero-soft-color: var(--sky-5);
-  --themes-hero-contrast-color: var(--sage-1);
-
-  --themes-hero-tagline-title-color-1: #00ff71;
-  --themes-hero-tagline-title-color-2: #00e9d6;
-  --themes-hero-tagline-title-color-3: #00f9ff;
-  --themes-hero-tagline-title-color-4: #a3edff;
-
-  --themes-hero-tagline-title-color-1: color(display-p3 0 1 0.51);
-  --themes-hero-tagline-title-color-2: color(display-p3 0.26 0.9 0.84);
-  --themes-hero-tagline-title-color-3: color(display-p3 0.03 0.96 1);
-  --themes-hero-tagline-title-color-4: color(display-p3 0.7 0.92 1);
-}
-
-:global(.dark-theme) .ThemesHeroRoot.color-green {
-  --themes-hero-text-color: var(--sage-12);
-  --themes-hero-soft-color: var(--mint-7);
-  --themes-hero-contrast-color: var(--sage-1);
-
-  --themes-hero-tagline-title-color-1: #00ff71;
-  --themes-hero-tagline-title-color-2: #00e99d;
-  --themes-hero-tagline-title-color-3: #74f0e6;
-  --themes-hero-tagline-title-color-4: #00ecff;
-
-  --themes-hero-tagline-title-color-1: color(display-p3 0 1 0.51);
-  --themes-hero-tagline-title-color-2: color(display-p3 0.26 0.9 0.64);
-  --themes-hero-tagline-title-color-3: color(display-p3 0.58 0.93 0.9);
-  --themes-hero-tagline-title-color-4: color(display-p3 0.12 0.91 1);
+  --themes-hero-text-color: var(--themes-hero-green-text-color);
+  --themes-hero-soft-color: var(--themes-hero-green-soft-color);
+  --themes-hero-contrast-color: var(--themes-hero-green-contrast-color);
+  --themes-hero-tagline-title-color-1: var(--themes-hero-green-tagline-title-color-1);
+  --themes-hero-tagline-title-color-2: var(--themes-hero-green-tagline-title-color-2);
+  --themes-hero-tagline-title-color-3: var(--themes-hero-green-tagline-title-color-3);
+  --themes-hero-tagline-title-color-4: var(--themes-hero-green-tagline-title-color-4);
+  --themes-hero-tagline-title-color-1: var(--themes-hero-green-tagline-title-color-1);
+  --themes-hero-tagline-title-color-2: var(--themes-hero-green-tagline-title-color-2);
+  --themes-hero-tagline-title-color-3: var(--themes-hero-green-tagline-title-color-3);
+  --themes-hero-tagline-title-color-4: var(--themes-hero-green-tagline-title-color-4);
 }
 
 .ThemesHeroRoot.color-red {
-  --themes-hero-text-color: var(--mauve-12);
-  --themes-hero-soft-color: var(--tomato-5);
-  --themes-hero-contrast-color: var(--mauve-1);
-
-  --themes-hero-tagline-title-color-1: #ff0000;
-  --themes-hero-tagline-title-color-2: #ff8283;
-  --themes-hero-tagline-title-color-3: #ff9583;
-  --themes-hero-tagline-title-color-4: #ff9bbd;
-
-  --themes-hero-tagline-title-color-1: color(display-p3 1 0.08 0);
-  --themes-hero-tagline-title-color-2: color(display-p3 1 0.54 0.53);
-  --themes-hero-tagline-title-color-3: color(display-p3 1 0.61 0.53);
-  --themes-hero-tagline-title-color-4: color(display-p3 1 0.63 0.74);
-}
-
-:global(.dark-theme) .ThemesHeroRoot.color-red {
-  --themes-hero-text-color: var(--pink-12);
-  --themes-hero-soft-color: #713949;
-  --themes-hero-contrast-color: var(--pink-1);
-
-  --themes-hero-tagline-title-color-1: #ff4b44;
-  --themes-hero-tagline-title-color-2: #ff82a6;
-  --themes-hero-tagline-title-color-3: #ff9681;
-  --themes-hero-tagline-title-color-4: #ff965d;
-
-  --themes-hero-tagline-title-color-1: color(display-p3 1 0.36 0.31);
-  --themes-hero-tagline-title-color-2: color(display-p3 1 0.54 0.65);
-  --themes-hero-tagline-title-color-3: color(display-p3 1 0.61 0.53);
-  --themes-hero-tagline-title-color-4: color(display-p3 1 0.61 0.41);
+  --themes-hero-text-color: var(--themes-hero-red-text-color);
+  --themes-hero-soft-color: var(--themes-hero-red-soft-color);
+  --themes-hero-contrast-color: var(--themes-hero-red-contrast-color);
+  --themes-hero-tagline-title-color-1: var(--themes-hero-red-tagline-title-color-1);
+  --themes-hero-tagline-title-color-2: var(--themes-hero-red-tagline-title-color-2);
+  --themes-hero-tagline-title-color-3: var(--themes-hero-red-tagline-title-color-3);
+  --themes-hero-tagline-title-color-4: var(--themes-hero-red-tagline-title-color-4);
+  --themes-hero-tagline-title-color-1: var(--themes-hero-red-tagline-title-color-1);
+  --themes-hero-tagline-title-color-2: var(--themes-hero-red-tagline-title-color-2);
+  --themes-hero-tagline-title-color-3: var(--themes-hero-red-tagline-title-color-3);
+  --themes-hero-tagline-title-color-4: var(--themes-hero-red-tagline-title-color-4);
 }
 
 @media (min-width: 500px) {
@@ -187,6 +130,8 @@
 }
 
 .ThemesHeroTagline {
+  font-family: 'Untitled Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', 'Open Sans', system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   color: var(--themes-hero-text-color);
   box-sizing: border-box;
   margin-top: 80px;
@@ -406,9 +351,6 @@
 
     /* Push self away from the right edge when there's space */
     margin-right: auto;
-
-    /* Header offset */
-    margin-top: 64px;
   }
 
   .ThemesHeroShowcase::before {

@@ -1458,11 +1458,11 @@ const albumsFavorites = [
 
 const playlistsForYou = [
   {
-    title: 'Rebellious 90’s and 00’s',
+    title: 'Rebellious ’90s and ’00s',
     caption: 'Throwback to the teenage years',
     cover:
-      'https://workos.imgix.net/images/5449710d-b6c6-467e-95cd-b1d016cac2ed.png?auto=format&fit=clip&q=80&w=500',
-    color: 'hsl(340, 70%, 50%)',
+      'https://workos.imgix.net/images/ea236dea-fd26-4972-9430-d2677457bd0a.png?auto=format&fit=clip&q=80&w=500',
+    color: 'hsl(36, 70%, 50%)',
   },
   {
     title: 'Soft Rock',
