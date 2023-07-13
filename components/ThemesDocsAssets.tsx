@@ -4,9 +4,11 @@ import {
   Code,
   Flex,
   Grid,
+  Heading,
   IconButton,
   Popover,
   ScrollArea,
+  Separator,
   Text,
   Theme,
 } from '@radix-ui/themes';
@@ -20,7 +22,7 @@ export function ThemesBorderRadiusTable() {
         <Flex direction="column" key={i} grow="1" align="center" gap="3">
           <Box
             style={{
-              border: '1px solid var(--gray-7)',
+              border: '2px solid var(--gray-7)',
               borderRadius: `var(--radius-${i + 1})`,
             }}
             height="8"
@@ -382,6 +384,94 @@ export function ThemesFontFamilyTable({
         ))}
       </tbody>
     </RegionTable>
+  );
+}
+
+export function ThemesColorSwatches() {
+  return (
+    <Flex direction="column" gap="4" mt="6" mb="7">
+      <Grid columns="7" gap="3">
+        {[
+          'tomato',
+          'red',
+          'crimson',
+          'pink',
+          'plum',
+          'purple',
+          'violet',
+          'blue',
+          'cyan',
+          'teal',
+          'green',
+          'grass',
+          'brown',
+          'orange',
+          'sky',
+          'mint',
+          'lime',
+          'yellow',
+          'amber',
+          'gold',
+          'bronze',
+        ].map((color, i) => (
+          <Box grow="1" key={i}>
+            <Flex align="center" gap="2">
+              <Box
+                width="3"
+                height="3"
+                style={{ backgroundColor: `var(--${color}-9)`, borderRadius: '100%' }}
+              />
+              <Text size="2">{color}</Text>
+            </Flex>
+          </Box>
+        ))}
+      </Grid>
+
+      <Separator size="4" />
+
+      <Grid columns="7" gap="3">
+        {['gray', 'mauve', 'slate', 'sage', 'olive', 'sand'].map((color, i) => (
+          <Box grow="1" key={i}>
+            <Flex align="center" gap="2">
+              <Box
+                width="3"
+                height="3"
+                style={{ backgroundColor: `var(--${color}-9)`, borderRadius: '100%' }}
+              />
+              <Text size="2">{color}</Text>
+            </Flex>
+          </Box>
+        ))}
+      </Grid>
+
+      {/* <Grid columns="5" gap="3">
+        {['sky', 'mint', 'lime', 'yellow', 'amber'].map((color, i) => (
+          <Box
+            grow="1"
+            style={{
+              backgroundColor: `var(--${color}-9)`,
+              borderRadius: 'var(--radius-2)',
+            }}
+            height="8"
+            key={i}
+          />
+        ))}
+      </Grid>
+
+      <Grid columns="5" gap="3">
+        {['mauve', 'slate', 'sage', 'olive', 'sand'].map((color, i) => (
+          <Box
+            grow="1"
+            style={{
+              backgroundColor: `var(--${color}-9)`,
+              borderRadius: 'var(--radius-2)',
+            }}
+            height="8"
+            key={i}
+          />
+        ))}
+      </Grid> */}
+    </Flex>
   );
 }
 
