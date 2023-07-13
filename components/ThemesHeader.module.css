@@ -8,6 +8,7 @@
   left: 0;
   right: 0;
   z-index: 1;
+  user-select: none;
 }
 
 .HeaderProductLink {
@@ -20,7 +21,6 @@
   padding-left: var(--space-1);
   padding-right: var(--space-1);
   position: relative;
-  user-select: none;
   color: var(--gray-a11);
 }
 
@@ -29,7 +29,7 @@
 }
 
 .HeaderProductLink[data-state='active'] {
-  color: var(--gray-12);
+  color: var(--color-background);
 }
 
 .HeaderProductLinkInner,
@@ -55,18 +55,18 @@
   letter-spacing: -0.01em;
 }
 
-.HeaderProductLink[data-state='active'] .HeaderProductLinkInner {
-  font-weight: bold;
-  letter-spacing: -0.01em;
-  background-color: var(--gray-a3);
-}
-
 .HeaderProductLink:hover .HeaderProductLinkInner {
   background-color: var(--gray-a3);
 }
 
 .HeaderProductLink:focus-visible .HeaderProductLinkInner {
-  box-shadow: 0 0 0 2px var(--purple-8);
+  box-shadow: 0 0 0 2px var(--accent-8);
+}
+
+.HeaderProductLink[data-state='active'] .HeaderProductLinkInner {
+  font-weight: bold;
+  letter-spacing: -0.01em;
+  background-color: var(--color-text);
 }
 
 .HeaderProductLink[data-state='active']::before {

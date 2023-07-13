@@ -119,10 +119,6 @@
   }
 }
 
-.ThemesHeroRoot ::selection {
-  background-color: hsla(225, 98.6%, 46.4%, 0.15);
-}
-
 .ThemesHeroContent {
   display: flex;
   flex-grow: 1;
@@ -218,7 +214,7 @@
 
 .ThemesHeroShowcase {
   position: relative;
-  user-select: none;
+  /* user-select: none; */
 }
 
 .ThemesHeroShowcase::before {

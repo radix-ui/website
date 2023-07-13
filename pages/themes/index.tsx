@@ -21,6 +21,10 @@ export default function ThemesHome() {
       <Head>
         <meta name="theme-color" content="#FDFCFD" />
         <style>{`
+          ::selection {
+            color: currentcolor;
+          }
+
           .radix-themes-example.dark-theme .rt-Card {
             --color-surface-1: var(--gray-2);
           }
@@ -128,7 +132,7 @@ export default function ThemesHome() {
                 </ThemesHero.Actions>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <ExampleThemesDashboard style={{ paddingTop: 80 }} />
+                <ExampleThemesDashboard style={{ paddingTop: 96 }} />
               </ThemesHero.Showcase>
             </ThemesHero.Root>
           </Theme>
@@ -137,8 +141,8 @@ export default function ThemesHome() {
         <MagicCurtain.Item>
           <Theme
             className="radix-themes-example"
-            accentScale="gray"
-            grayScale="sand"
+            accentScale="cyan"
+            grayScale="sage"
             textColor="auto"
             appearance="invert"
             applyBackgroundColor={false}
@@ -160,7 +164,9 @@ export default function ThemesHome() {
                 </ThemesHero.Actions>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <ExampleThemesEcommerce style={{ paddingTop: 80 }} />
+                <Theme accentScale="gray" applyBackgroundColor={false}>
+                  <ExampleThemesEcommerce style={{ paddingTop: 96 }} />
+                </Theme>
               </ThemesHero.Showcase>
             </ThemesHero.Root>
           </Theme>
@@ -191,7 +197,7 @@ export default function ThemesHome() {
                 </ThemesHero.Actions>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <ExampleThemesMusicApp style={{ paddingTop: 80 }} />
+                <ExampleThemesMusicApp style={{ paddingTop: 96 }} />
               </ThemesHero.Showcase>
             </ThemesHero.Root>
           </Theme>
@@ -222,7 +228,7 @@ export default function ThemesHome() {
                 </ThemesHero.Actions>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <ExampleThemesDashboard style={{ paddingTop: 80 }} />
+                <ExampleThemesDashboard style={{ paddingTop: 96 }} />
               </ThemesHero.Showcase>
             </ThemesHero.Root>
           </Theme>
@@ -231,8 +237,8 @@ export default function ThemesHome() {
         <MagicCurtain.Item>
           <Theme
             className="radix-themes-example"
-            accentScale="gray"
-            grayScale="sand"
+            accentScale="cyan"
+            grayScale="sage"
             textColor="auto"
             applyBackgroundColor={false}
           >
@@ -253,7 +259,9 @@ export default function ThemesHome() {
                 </ThemesHero.Actions>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <ExampleThemesEcommerce style={{ paddingTop: 80 }} />
+                <Theme accentScale="gray" applyBackgroundColor={false}>
+                  <ExampleThemesEcommerce style={{ paddingTop: 96 }} />
+                </Theme>
               </ThemesHero.Showcase>
             </ThemesHero.Root>
           </Theme>
@@ -285,7 +293,7 @@ export default function ThemesHome() {
                 </ThemesHero.Actions>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <ExampleThemesMusicApp style={{ paddingTop: 80 }} />
+                <ExampleThemesMusicApp style={{ paddingTop: 96 }} />
               </ThemesHero.Showcase>
             </ThemesHero.Root>
           </Theme>
