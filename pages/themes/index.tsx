@@ -163,7 +163,11 @@ export default function ThemesHome() {
                 </ThemesHero.Actions>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <Theme accentScale="gray" applyBackgroundColor={false}>
+                <Theme
+                  accentScale="gray"
+                  applyBackgroundColor={false}
+                  className="radix-themes-example"
+                >
                   <ExampleThemesEcommerce />
                 </Theme>
               </ThemesHero.Showcase>
@@ -258,7 +262,11 @@ export default function ThemesHome() {
                 </ThemesHero.Actions>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <Theme accentScale="gray" applyBackgroundColor={false}>
+                <Theme
+                  accentScale="gray"
+                  applyBackgroundColor={false}
+                  className="radix-themes-example"
+                >
                   <ExampleThemesEcommerce />
                 </Theme>
               </ThemesHero.Showcase>
