@@ -10,7 +10,7 @@ import { useAnalytics } from '@lib/analytics';
 import { CssLibPreferenceProvider } from '@components/CssLibPreference';
 import { ThemesDocsPage } from '@components/ThemesDocsPage';
 import { ThemesPanelProvider } from '@components/ThemesPanel';
-import '@radix-ui/themes/dist/index.css';
+import './radix-themes.css';
 
 const globalStyles = globalCss({
   '*, *::before, *::after': {
@@ -54,7 +54,6 @@ const globalStyles = globalCss({
 
 const themeRootStyles = {
   minHeight: '100vh',
-  ['--default-font-family']: 'var(--fonts-untitled)',
 };
 
 function Pages({ Component, pageProps }: AppProps) {
