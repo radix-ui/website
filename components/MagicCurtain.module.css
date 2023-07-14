@@ -9,7 +9,7 @@
   --animation-duration: 1s;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 500px) {
   .MagicCurtainItem {
     --animation-duration: 1.5s;
   }
@@ -36,7 +36,7 @@
   z-index: 1;
   animation-name: magic-curtain;
   animation-duration: var(--animation-duration);
-  animation-delay: 3s;
+  animation-delay: calc(1s + var(--animation-duration));
   animation-timing-function: ease-in-out;
 }
 

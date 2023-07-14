@@ -34,34 +34,6 @@ const MagicCurtainRoot = ({ children }: React.PropsWithChildren<{}>) => {
       itemsRef.current[thisIndex].setState('hidden');
       itemsRef.current[nextIndex].setState('hiding');
       itemsRef.current[afterNextIndex].setState('revealing');
-
-      let timeout: ReturnType<typeof setTimeout>;
-
-      const handleMouseDown = () => {
-        clearTimeout(timeout);
-        itemsRef.current[nextIndex].setAnimationPlayState('paused');
-        itemsRef.current[nextIndex].ref.current.addEventListener('mouseup', handleMouseUp);
-      };
-
-      const handleMouseUp = () => {
-        timeout = setTimeout(() => {
-          itemsRef.current[nextIndex].setAnimationPlayState('running');
-        }, 1000);
-      };
-
-      const handleAnimationStart = () => {
-        clearTimeout(timeout);
-        itemsRef.current[nextIndex].ref.current.removeEventListener('mousedown', handleMouseDown);
-        itemsRef.current[nextIndex].ref.current.removeEventListener('mouseup', handleMouseUp);
-      };
-
-      itemsRef.current[nextIndex].ref.current.addEventListener('mousedown', handleMouseDown);
-
-      itemsRef.current[nextIndex].ref.current.addEventListener(
-        'animationstart',
-        handleAnimationStart,
-        { once: true }
-      );
     };
 
     itemsRef.current[0]?.setState('hiding');
@@ -97,6 +69,50 @@ const MagicCurtainItem = ({ children, ...props }: React.ComponentPropsWithoutRef
   const [state, setState] = React.useState<State>('hidden');
   const [animationDirection, setAnimationDirection] = React.useState('normal');
   const [animationPlayState, setAnimationPlayState] = React.useState('running');
+  const delayRef = React.useRef<ReturnType<typeof setTimeout>>();
+
+  React.useEffect(() => {
+    const handleMouseDown = () => {
+      clearTimeout(delayRef.current);
+      setAnimationPlayState('paused');
+      addEventListener('mouseup', handleMouseUp, { capture: true, once: true });
+    };
+
+    const handleMouseUp = () => {
+      delayRef.current = setTimeout(() => {
+        setAnimationPlayState('running');
+      }, 1500);
+    };
+
+    const handleKeyDown = () => {
+      clearTimeout(delayRef.current);
+      setAnimationPlayState('paused');
+
+      delayRef.current = setTimeout(() => {
+        setAnimationPlayState('running');
+      }, 1500);
+    };
+
+    const handleAnimationStart = () => {
+      removeEventListener('mousedown', handleMouseDown, { capture: true });
+      removeEventListener('mouseup', handleMouseUp, { capture: true });
+      removeEventListener('keydown', handleKeyDown, { capture: true });
+      clearTimeout(delayRef.current);
+    };
+
+    if (state === 'hiding') {
+      addEventListener('mousedown', handleMouseDown, { capture: true });
+      addEventListener('keydown', handleKeyDown, { capture: true });
+      ref.current.addEventListener('animationstart', handleAnimationStart, { once: true });
+    }
+
+    return () => {
+      clearTimeout(delayRef.current);
+      removeEventListener('mouseup', handleMouseUp, true);
+      removeEventListener('mousedown', handleMouseDown, true);
+      removeEventListener('keydown', handleKeyDown, true);
+    };
+  }, [state]);
 
   useIsomorphicLayoutEffect(() => {
     const item = { ref, setState, setAnimationDirection, setAnimationPlayState };
