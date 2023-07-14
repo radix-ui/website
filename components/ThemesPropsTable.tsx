@@ -99,14 +99,14 @@ const commonDescriptions: CommonDescriptions = {
   color: (
     <>
       Use to override the default color inherited from the global theme. Read our{' '}
-      <a href="/docs/themes/guides/theme-configuration">theme guide</a> for more details.
+      <a href="/docs/themes/guides/theme/configuration">theme guide</a> for more details.
     </>
   ),
   highContrast: 'Use to render a high-contrast version of the component.',
   radius: (
     <>
       Overrides the default radius inherited from the global theme. Read our{' '}
-      <a href="/dosc/themes/guides/theme-configuration">theme guide</a> for more details.
+      <a href="/dosc/themes/guides/theme/configuration">theme guide</a> for more details.
     </>
   ),
   as: (
