@@ -141,7 +141,7 @@ export default function ThemesHome() {
           <Theme
             className="radix-themes-example"
             accentScale="cyan"
-            grayScale="sage"
+            grayScale="gray"
             textColor="auto"
             appearance="invert"
             applyBackgroundColor={false}
@@ -237,7 +237,7 @@ export default function ThemesHome() {
           <Theme
             className="radix-themes-example"
             accentScale="cyan"
-            grayScale="sage"
+            grayScale="gray"
             textColor="auto"
             applyBackgroundColor={false}
           >
