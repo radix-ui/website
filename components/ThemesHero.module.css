@@ -128,6 +128,7 @@
 .ThemesHeroTagline {
   font-family: 'Untitled Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Helvetica Neue', 'Open Sans', system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  text-wrap: balance;
   color: var(--themes-hero-text-color);
   box-sizing: border-box;
   margin-top: 80px;

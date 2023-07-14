@@ -11,8 +11,7 @@ import { ExampleThemesMusicApp } from '@components/ExampleThemesMusicApp';
 import { ArrowRightIcon, ReaderIcon } from '@radix-ui/react-icons';
 
 const text = `
-  Beautiful, open source component library from the Radix team.
-  Made so that you can focus on shipping your app. Just import and go.
+  Beautiful, open source components for building modern and maintanable apps. Just import and go.
 `;
 
 export default function ThemesHome() {
@@ -122,7 +121,7 @@ export default function ThemesHome() {
                 <ThemesHero.Text>{text}</ThemesHero.Text>
                 <ThemesHero.Actions>
                   <ThemesHero.Button variant="solid" href="/docs/themes/overview/getting-started">
-                    Install Themes
+                    Get started
                     <ArrowRightIcon />
                   </ThemesHero.Button>
                   <ThemesHero.Button variant="soft" href="/docs/themes/theme/overview">
@@ -154,7 +153,7 @@ export default function ThemesHome() {
                 <ThemesHero.Text>{text}</ThemesHero.Text>
                 <ThemesHero.Actions>
                   <ThemesHero.Button variant="solid" href="/docs/themes/overview/getting-started">
-                    Install Themes
+                    Get started
                     <ArrowRightIcon />
                   </ThemesHero.Button>
                   <ThemesHero.Button variant="soft" href="/docs/themes/theme/overview">
@@ -187,7 +186,7 @@ export default function ThemesHome() {
                 <ThemesHero.Text>{text}</ThemesHero.Text>
                 <ThemesHero.Actions>
                   <ThemesHero.Button variant="solid" href="/docs/themes/overview/getting-started">
-                    Install Themes
+                    Get started
                     <ArrowRightIcon />
                   </ThemesHero.Button>
                   <ThemesHero.Button variant="soft" href="/docs/themes/theme/overview">
@@ -218,7 +217,7 @@ export default function ThemesHome() {
                 <ThemesHero.Text>{text}</ThemesHero.Text>
                 <ThemesHero.Actions>
                   <ThemesHero.Button variant="solid" href="/docs/themes/overview/getting-started">
-                    Install Themes
+                    Get started
                     <ArrowRightIcon />
                   </ThemesHero.Button>
                   <ThemesHero.Button variant="soft" href="/docs/themes/theme/overview">
@@ -249,7 +248,7 @@ export default function ThemesHome() {
                 <ThemesHero.Text>{text}</ThemesHero.Text>
                 <ThemesHero.Actions>
                   <ThemesHero.Button variant="solid" href="/docs/themes/overview/getting-started">
-                    Install Themes
+                    Get started
                     <ArrowRightIcon />
                   </ThemesHero.Button>
                   <ThemesHero.Button variant="soft" href="/docs/themes/theme/overview">
@@ -283,7 +282,7 @@ export default function ThemesHome() {
                 <ThemesHero.Text>{text}</ThemesHero.Text>
                 <ThemesHero.Actions>
                   <ThemesHero.Button variant="solid" href="/docs/themes/overview/getting-started">
-                    Install Themes
+                    Get started
                     <ArrowRightIcon />
                   </ThemesHero.Button>
                   <ThemesHero.Button variant="soft" href="/docs/themes/theme/overview">
