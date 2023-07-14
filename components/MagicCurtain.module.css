@@ -27,20 +27,20 @@
   initial-value: 90deg;
 }
 
-.MagicCurtainItem[data-state='hidden'] {
+.MagicCurtainItem[data-visibility='hidden'] {
   display: none;
 }
 
-.MagicCurtainItem[data-state='hiding'] {
+.MagicCurtainItem[data-visibility='visible-in-front'] {
   position: relative;
   z-index: 1;
   animation-name: magic-curtain;
   animation-duration: var(--animation-duration);
-  animation-delay: calc(1s + var(--animation-duration));
+  animation-delay: calc(0.5s + var(--animation-duration));
   animation-timing-function: ease-in-out;
 }
 
-.MagicCurtainItem[data-state='hiding'][data-animation-direction='reverse'] {
+.MagicCurtainItem[data-visibility='visible-in-front'][data-animation-direction='reverse'] {
   animation-name: magic-curtain-reverse;
 }
 

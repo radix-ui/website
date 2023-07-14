@@ -2,11 +2,11 @@ import * as React from 'react';
 import styles from './MagicCurtain.module.css';
 import { createContext } from '@radix-ui/react-context';
 
-type State = 'hidden' | 'hiding' | 'revealing';
+type Visibility = 'hidden' | 'visible-in-front' | 'visible-behind';
 
 interface MagicCurtainItem {
   ref: React.RefObject<HTMLElement>;
-  setState: (state: State) => void;
+  setVisibility: (visibility: Visibility) => void;
   setAnimationDirection: (direction: string) => void;
   setAnimationPlayState: (playState: string) => void;
 }
@@ -31,13 +31,13 @@ const MagicCurtainRoot = ({ children }: React.PropsWithChildren<{}>) => {
       const thisIndex = itemsRef.current.map((item) => item.ref.current).indexOf(event.target);
       const nextIndex = thisIndex + 1 === itemsRef.current.length ? 0 : thisIndex + 1;
       const afterNextIndex = nextIndex + 1 === itemsRef.current.length ? 0 : nextIndex + 1;
-      itemsRef.current[thisIndex].setState('hidden');
-      itemsRef.current[nextIndex].setState('hiding');
-      itemsRef.current[afterNextIndex].setState('revealing');
+      itemsRef.current[thisIndex].setVisibility('hidden');
+      itemsRef.current[nextIndex].setVisibility('visible-in-front');
+      itemsRef.current[afterNextIndex].setVisibility('visible-behind');
     };
 
-    itemsRef.current[0]?.setState('hiding');
-    itemsRef.current[1]?.setState('revealing');
+    itemsRef.current[0]?.setVisibility('visible-in-front');
+    itemsRef.current[1]?.setVisibility('visible-behind');
 
     itemsRef.current.forEach((item, i) => {
       if (i % 2) {
@@ -63,25 +63,43 @@ const MagicCurtainRoot = ({ children }: React.PropsWithChildren<{}>) => {
   );
 };
 
-const MagicCurtainItem = ({ children, ...props }: React.ComponentPropsWithoutRef<'div'>) => {
+const MagicCurtainItem = ({
+  defaultVisibility = 'hidden',
+  children,
+  ...props
+}: React.ComponentPropsWithoutRef<'div'> & { defaultVisibility?: Visibility }) => {
   const context = useMagicCurtainContext('MagicCurtain');
   const ref = React.useRef<HTMLDivElement>(null);
-  const [state, setState] = React.useState<State>('hidden');
+  const [visibility, setVisibility] = React.useState<Visibility>(defaultVisibility);
   const [animationDirection, setAnimationDirection] = React.useState('normal');
   const [animationPlayState, setAnimationPlayState] = React.useState('running');
   const delayRef = React.useRef<ReturnType<typeof setTimeout>>();
 
   React.useEffect(() => {
-    const handleMouseDown = () => {
+    const handlePointerDown = () => {
       clearTimeout(delayRef.current);
       setAnimationPlayState('paused');
-      addEventListener('mouseup', handleMouseUp, { capture: true, once: true });
+      addEventListener('pointerup', handlePointerUp, { once: true });
+
+      // Release the pause state in case the pointer moves out of the document boundaries without pointerup event
+      clearTimeout(delayRef.current);
+      delayRef.current = setTimeout(() => {
+        setAnimationPlayState('running');
+      }, 3000);
     };
 
-    const handleMouseUp = () => {
+    const handlePointerUp = () => {
+      clearTimeout(delayRef.current);
       delayRef.current = setTimeout(() => {
         setAnimationPlayState('running');
       }, 1500);
+    };
+
+    const handleScroll = () => {
+      clearTimeout(delayRef.current);
+      delayRef.current = setTimeout(() => {
+        setAnimationPlayState('running');
+      }, 500);
     };
 
     const handleKeyDown = () => {
@@ -93,29 +111,36 @@ const MagicCurtainItem = ({ children, ...props }: React.ComponentPropsWithoutRef
       }, 1500);
     };
 
-    const handleAnimationStart = () => {
-      removeEventListener('mousedown', handleMouseDown, { capture: true });
-      removeEventListener('mouseup', handleMouseUp, { capture: true });
-      removeEventListener('keydown', handleKeyDown, { capture: true });
+    const handleAnimationStart = (event: Event) => {
+      if (event.target === ref.current) {
+        clearListeners();
+      }
+    };
+
+    const clearListeners = () => {
+      removeEventListener('pointerdown', handlePointerDown);
+      removeEventListener('pointerup', handlePointerUp);
+      removeEventListener('touchstart', handlePointerUp);
+      removeEventListener('keydown', handleKeyDown);
+      removeEventListener('scroll', handleScroll, { capture: true });
+      ref.current?.removeEventListener('animationstart', handleAnimationStart);
       clearTimeout(delayRef.current);
     };
 
-    if (state === 'hiding') {
-      addEventListener('mousedown', handleMouseDown, { capture: true });
-      addEventListener('keydown', handleKeyDown, { capture: true });
-      ref.current.addEventListener('animationstart', handleAnimationStart, { once: true });
+    if (visibility === 'visible-in-front') {
+      addEventListener('pointerdown', handlePointerDown);
+      addEventListener('keydown', handleKeyDown);
+      addEventListener('scroll', handleScroll, { capture: true, passive: true });
+      ref.current?.addEventListener('animationstart', handleAnimationStart, { once: true });
+    } else {
+      clearListeners();
     }
 
-    return () => {
-      clearTimeout(delayRef.current);
-      removeEventListener('mouseup', handleMouseUp, true);
-      removeEventListener('mousedown', handleMouseDown, true);
-      removeEventListener('keydown', handleKeyDown, true);
-    };
-  }, [state]);
+    return () => clearListeners();
+  }, [visibility]);
 
   useIsomorphicLayoutEffect(() => {
-    const item = { ref, setState, setAnimationDirection, setAnimationPlayState };
+    const item = { ref, setVisibility, setAnimationDirection, setAnimationPlayState };
     context.itemsRef.current.push(item);
 
     return () => {
@@ -131,12 +156,12 @@ const MagicCurtainItem = ({ children, ...props }: React.ComponentPropsWithoutRef
     <div
       data-animation-play-state={animationPlayState}
       data-animation-direction={animationDirection}
-      data-state={state}
+      data-visibility={visibility}
       ref={ref}
       className={styles.MagicCurtainItem}
       {...props}
     >
-      {state === 'hidden' ? null : children}
+      {visibility === 'hidden' ? null : children}
     </div>
   );
 };

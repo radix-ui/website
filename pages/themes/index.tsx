@@ -108,7 +108,7 @@ export default function ThemesHome() {
       </Head>
 
       <MagicCurtain.Root>
-        <MagicCurtain.Item>
+        <MagicCurtain.Item defaultVisibility="visible-in-front">
           <Theme
             className="radix-themes-example"
             accentScale="indigo"
