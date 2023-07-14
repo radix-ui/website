@@ -356,6 +356,9 @@
 
     /* Push self away from the right edge when there's space */
     margin-right: auto;
+
+    /* Offset for the header */
+    margin-top: 48px;
   }
 
   .ThemesHeroShowcase::before {

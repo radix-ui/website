@@ -132,7 +132,7 @@ export default function ThemesHome() {
                 </ThemesHero.Actions>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <ExampleThemesDashboard style={{ paddingTop: 96 }} />
+                <ExampleThemesDashboard />
               </ThemesHero.Showcase>
             </ThemesHero.Root>
           </Theme>
@@ -165,7 +165,7 @@ export default function ThemesHome() {
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
                 <Theme accentScale="gray" applyBackgroundColor={false}>
-                  <ExampleThemesEcommerce style={{ paddingTop: 96 }} />
+                  <ExampleThemesEcommerce />
                 </Theme>
               </ThemesHero.Showcase>
             </ThemesHero.Root>
@@ -197,7 +197,7 @@ export default function ThemesHome() {
                 </ThemesHero.Actions>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <ExampleThemesMusicApp style={{ paddingTop: 96 }} />
+                <ExampleThemesMusicApp />
               </ThemesHero.Showcase>
             </ThemesHero.Root>
           </Theme>
@@ -228,7 +228,7 @@ export default function ThemesHome() {
                 </ThemesHero.Actions>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <ExampleThemesDashboard style={{ paddingTop: 96 }} />
+                <ExampleThemesDashboard />
               </ThemesHero.Showcase>
             </ThemesHero.Root>
           </Theme>
@@ -260,7 +260,7 @@ export default function ThemesHome() {
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
                 <Theme accentScale="gray" applyBackgroundColor={false}>
-                  <ExampleThemesEcommerce style={{ paddingTop: 96 }} />
+                  <ExampleThemesEcommerce />
                 </Theme>
               </ThemesHero.Showcase>
             </ThemesHero.Root>
@@ -293,7 +293,7 @@ export default function ThemesHome() {
                 </ThemesHero.Actions>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <ExampleThemesMusicApp style={{ paddingTop: 96 }} />
+                <ExampleThemesMusicApp />
               </ThemesHero.Showcase>
             </ThemesHero.Root>
           </Theme>
