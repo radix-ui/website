@@ -4,13 +4,10 @@ import {
   Code,
   Flex,
   Grid,
-  Heading,
   IconButton,
   Popover,
-  ScrollArea,
   Separator,
   Text,
-  Theme,
 } from '@radix-ui/themes';
 import { RegionTable } from './RegionTable';
 import { InfoCircledIcon } from '@radix-ui/react-icons';
@@ -20,15 +17,11 @@ export function ThemesBorderRadiusTable() {
     <Flex align="center" gap="4" mt="6" mb="4">
       {[...new Array(6)].map((_, i) => (
         <Flex direction="column" key={i} grow="1" align="center" gap="3">
-          <Box
-            style={{
-              border: '2px solid var(--gray-7)',
-              borderRadius: `var(--radius-${i + 1})`,
-            }}
-            height="8"
-            width="100%"
-            key={i}
-          />
+          <Box height="8" width="100%">
+            <DecorativeBox
+              style={{ borderStyle: 'solid', borderRadius: `var(--radius-${i + 1})` }}
+            />
+          </Box>
 
           <Text size="1" color="gray">
             {i + 1}
@@ -48,7 +41,7 @@ export function ThemesShadowTable() {
         gap="4"
       >
         {[...new Array(5)].map((_, i) => (
-          <Flex grow="1" align="center" justify="center">
+          <Flex grow="1" align="center" justify="center" key={i}>
             <Box
               grow="1"
               style={{
@@ -78,84 +71,34 @@ export function ThemesShadowTable() {
   );
 }
 
-export function ThemesAccentTable() {
+export function ThemesSwatchTable({ type = 'accent' }: { type: 'accent' | 'gray' }) {
   return (
     <Flex direction="column" gap="1" mt="6" mb="5">
       <Flex align="center" gap="1">
         {[...new Array(12)].map((_, i) => (
-          <Box style={{ flex: 1 }} height="6" key={i}>
-            <Box
-              style={{
-                backgroundColor: `var(--accent-${i + 1})`,
-                borderRadius: 'var(--radius-2)',
-              }}
-              height="100%"
-              width="100%"
-            />
-          </Box>
-        ))}
-      </Flex>
-
-      <Flex align="center" gap="1">
-        {[...new Array(12)].map((_, i) => (
-          <Box style={{ flex: 1 }} height="6" key={i}>
-            <Box
-              style={{
-                backgroundColor: `var(--accent-a${i + 1})`,
-                borderRadius: 'var(--radius-2)',
-              }}
-              height="100%"
-              width="100%"
-            />
-          </Box>
-        ))}
-      </Flex>
-
-      <Flex align="center" gap="1">
-        {[...new Array(12)].map((_, i) => (
-          <Box style={{ flex: 1 }} height="6" key={i}>
-            <Flex align="center" justify="center" height="100%" width="100%">
-              <Text size="1" color="gray">
-                {i + 1}
-              </Text>
-            </Flex>
-          </Box>
-        ))}
-      </Flex>
-    </Flex>
-  );
-}
-
-export function ThemesGrayTable() {
-  return (
-    <Flex direction="column" gap="1" mt="6" mb="5">
-      <Flex align="center" gap="1">
-        {[...new Array(12)].map((_, i) => (
-          <Box style={{ flex: 1 }} height="6" key={i}>
-            <Box
-              style={{
-                backgroundColor: `var(--gray-${i + 1})`,
-                borderRadius: 'var(--radius-2)',
-              }}
-              height="100%"
-              width="100%"
-            />
-          </Box>
-        ))}
-      </Flex>
-
-      <Flex align="center" gap="1">
-        {[...new Array(12)].map((_, i) => (
-          <Box style={{ flex: 1 }} height="6" key={i}>
-            <Box
-              style={{
-                backgroundColor: `var(--gray-a${i + 1})`,
-                borderRadius: 'var(--radius-2)',
-              }}
-              height="100%"
-              width="100%"
-            />
-          </Box>
+          <Flex grow="1" direction="column" height="9" gap="1" key={i}>
+            <Box style={{ flex: 1 }}>
+              <Box
+                style={{
+                  backgroundColor: `var(--${type}-${i + 1})`,
+                  borderRadius: 'var(--radius-2)',
+                }}
+                height="100%"
+                width="100%"
+              />
+            </Box>
+            <Box style={{ flex: 1 }}>
+              <Box
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Crect width='12' height='12' fill='%23002F75' fill-opacity='0.02'/%3E%3Crect x='12' y='12' width='12' height='12' fill='%23002F75' fill-opacity='0.02'/%3E%3C/svg%3E")`,
+                  backgroundColor: `var(--${type}-a${i + 1})`,
+                  borderRadius: 'var(--radius-2)',
+                }}
+                height="100%"
+                width="100%"
+              />
+            </Box>
+          </Flex>
         ))}
       </Flex>
 
@@ -387,11 +330,11 @@ export function ThemesFontFamilyTable({
   );
 }
 
-export function ThemesColorSwatches() {
+export function ThemesAdditionalSwatches() {
   return (
-    <Flex direction="column" gap="4" mt="6" mb="7">
-      <Grid columns="7" gap="3">
-        {[
+    <Flex direction="column" gap="6" mt="6" mb="7">
+      <Grid columns={{ initial: '5', sm: '7' }} gap="2">
+        {([
           'tomato',
           'red',
           'crimson',
@@ -413,64 +356,50 @@ export function ThemesColorSwatches() {
           'amber',
           'gold',
           'bronze',
-        ].map((color, i) => (
+        ] as const).map((color, i) => (
           <Box grow="1" key={i}>
-            <Flex align="center" gap="2">
+            <Flex
+              align="center"
+              gap="2"
+              style={{ border: `1px solid var(--${color}-4)`, borderRadius: 'var(--radius-2)' }}
+              px="2"
+              py="1"
+            >
               <Box
                 width="3"
                 height="3"
                 style={{ backgroundColor: `var(--${color}-9)`, borderRadius: '100%' }}
               />
-              <Text size="2">{color}</Text>
+              <Text size="1" weight="bold" color={color}>
+                {color.charAt(0).toUpperCase() + color.slice(1)}
+              </Text>
             </Flex>
           </Box>
         ))}
       </Grid>
 
-      <Separator size="4" />
-
-      <Grid columns="7" gap="3">
-        {['gray', 'mauve', 'slate', 'sage', 'olive', 'sand'].map((color, i) => (
-          <Box grow="1" key={i}>
-            <Flex align="center" gap="2">
-              <Box
-                width="3"
-                height="3"
-                style={{ backgroundColor: `var(--${color}-9)`, borderRadius: '100%' }}
-              />
-              <Text size="2">{color}</Text>
-            </Flex>
-          </Box>
-        ))}
-      </Grid>
-
-      {/* <Grid columns="5" gap="3">
-        {['sky', 'mint', 'lime', 'yellow', 'amber'].map((color, i) => (
-          <Box
-            grow="1"
-            style={{
-              backgroundColor: `var(--${color}-9)`,
-              borderRadius: 'var(--radius-2)',
-            }}
-            height="8"
-            key={i}
-          />
-        ))}
-      </Grid>
-
-      <Grid columns="5" gap="3">
+      <Grid columns={{ initial: '5', sm: '7' }} gap="3">
         {['mauve', 'slate', 'sage', 'olive', 'sand'].map((color, i) => (
-          <Box
-            grow="1"
-            style={{
-              backgroundColor: `var(--${color}-9)`,
-              borderRadius: 'var(--radius-2)',
-            }}
-            height="8"
-            key={i}
-          />
+          <Box grow="1" key={i}>
+            <Flex
+              align="center"
+              gap="2"
+              style={{ border: `1px solid var(--${color}-4)`, borderRadius: 'var(--radius-2)' }}
+              px="2"
+              py="1"
+            >
+              <Box
+                width="3"
+                height="3"
+                style={{ backgroundColor: `var(--${color}-9)`, borderRadius: '100%' }}
+              />
+              <Text size="1" weight="bold" style={{ color: `var(--${color}-11)` }}>
+                {color.charAt(0).toUpperCase() + color.slice(1)}
+              </Text>
+            </Flex>
+          </Box>
         ))}
-      </Grid> */}
+      </Grid>
     </Flex>
   );
 }
@@ -865,7 +794,6 @@ export function DecorativeBox(props) {
     <Box
       {...props}
       style={{
-        // width: '100%',
         height: '100%',
         backgroundColor: 'var(--gray-a3)',
         border: '1px dashed var(--gray-a7)',
