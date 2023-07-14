@@ -1,5 +1,5 @@
 @import '@radix-ui/themes/dist/index.css';
 
-.radix-themes {
+.radix-themes:not(.radix-themes-example) {
   --default-font-family: var(--fonts-untitled);
 }
