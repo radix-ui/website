@@ -14,7 +14,9 @@ metaDescription:
 
 ## Using tokens
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi varius, augue at aliquet sagittis, lorem lacus pretium massa, eget blandit justo quam sit amet nisl. Pellentesque ullamcorper pretium enim, sed ornare enim vulputate et. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+Tokens represent all of Radix Themes underlying values and are used internally in all styled components. They are also exposed to you for building and customizing your own components.
+
+You can use them in the same way as any other [CSS custom property](https://developer.mozilla.org/en-US/docs/Web/CSS/--*), either directly inside your CSS or inline via the `style` prop.
 
 ## Color
 
@@ -119,11 +121,9 @@ Spacing tokens are used to apply space between elements. They are derived from a
 
 ## Visual style
 
-These tokens represent the visual properties of an element, such as border radii and shadow depth.
+These tokens represent the visual properties of an element. Such as border radius and shadow.
 
 ### Border radius
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 <ThemesBorderRadiusTable />
 
@@ -158,48 +158,26 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 ### Shadow
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
 <ThemesShadowTable />
 
-<ThemesTokensTableValues
+<ThemesTokensTable
   data={[
     {
-      token: '--radius-1',
-      value: '3px',
-    },
-    {
-      token: '--radius-2',
-      value: '4px',
-    },
-    {
-      token: '--radius-3',
-      value: '6px',
-    },
-    {
-      token: '--radius-4',
-      value: '8px',
-    },
-    {
-      token: '--radius-5',
-      value: '12px',
-    },
-    {
-      token: '--radius-6',
-      value: '16px',
+      token: '--shadow-{step}',
+      description: 'The shadow value for the given step',
     },
   ]}
 />
 
 ## Typography
 
-The typographic system is based on a 9 step scale. The defaults are tuned to get the best out of your system font stack, though you can override these values to optimize for your own typeface of choice.
+The typographic system is based on a 9 step scale. The defaults are tuned to get the best out of the default font stack, though you can override these values to optimize for your own typeface of choice.
 
 <ThemesFontSizeTable />
 
 ### Type scale
 
-The type scale sits at the core of the typographic system, every step has a corresponding `font-size`, `line-height` and `letter-spacing` value and are designed to be used in combination with each other.
+The type scale is at the core of the typographic system, every step has a corresponding `font-size`, `line-height` and `letter-spacing` value, they are designed to be used in combination with each other.
 
 <ThemesTokensTable
   data={[
@@ -266,7 +244,7 @@ Their base values and relationships are illustrated below:
 
 ### Font weight
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Font weight tokens are used to align named weights with those specified by your typeface.
 
 <ThemesTokensTableValues
   data={[
@@ -289,9 +267,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   ]}
 />
 
-### Global defaults
+### Defaults
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+These tokens represent the base typographic attributes of the theme.
 
 <ThemesTokensTableValues
   data={[
@@ -323,23 +301,33 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     {
       token: '--default-leading-trim-start',
       value: '0.42em',
-      description: 'This is a test string',
+      description: (
+        <>
+          The amount of offset trim applied when using the <Code>trim</Code>{' '}
+          prop
+        </>
+      ),
     },
     {
       token: '--default-leading-trim-end',
       value: '0.36em',
-      description: 'This is a test string',
+      description: (
+        <>
+          The amount of offset trim applied when using the <Code>trim</Code>{' '}
+          prop
+        </>
+      ),
     },
   ]}
 />
 
 ### Advanced configuration
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+In addition to the global defaults, you also have access to the typographic attributes for specific elements within a theme.
 
 #### Heading
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Typographic attributes for the [Heading](/docs/themes/components/heading) component.
 
 <ThemesTokensTableValues
   data={[
@@ -358,10 +346,22 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     {
       token: '--heading-leading-trim-start',
       value: 'var(--default-leading-trim-start)',
+      description: (
+        <>
+          The amount of offset trim applied when using the <Code>trim</Code>{' '}
+          prop
+        </>
+      ),
     },
     {
       token: '--heading-leading-trim-end',
       value: 'var(--default-leading-trim-end)',
+      description: (
+        <>
+          The amount of offset trim applied when using the <Code>trim</Code>{' '}
+          prop
+        </>
+      ),
     },
     {
       token: '--heading-letter-spacing',
@@ -370,7 +370,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   ]}
 />
 
-Heading `line-height` can be customized independently of the base settings:
+Heading `line-height` can also be customized independently of the base settings:
 
 <ThemesTokensTableValues
   data={[
@@ -415,7 +415,7 @@ Heading `line-height` can be customized independently of the base settings:
 
 ### Code
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Typographic attributes for the [Code](/docs/themes/components/code) component.
 
 <ThemesTokensTableValues
   data={[
@@ -445,7 +445,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 ### Strong
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Typographic attributes for the [Strong](/docs/themes/components/strong) component.
 
 <ThemesTokensTableValues
   data={[
@@ -474,7 +474,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 ### Em
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Typographic attributes for the [Em](/docs/themes/components/em) component.
 
 <ThemesTokensTableValues
   data={[

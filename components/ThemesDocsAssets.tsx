@@ -332,7 +332,7 @@ export function ThemesFontFamilyTable({
 
 export function ThemesAdditionalSwatches() {
   return (
-    <Flex direction="column" gap="6" mt="6" mb="7">
+    <Flex direction="column" gap="5" mt="6" mb="7">
       <Grid columns={{ initial: '5', sm: '7' }} gap="2">
         {([
           'tomato',
@@ -361,13 +361,13 @@ export function ThemesAdditionalSwatches() {
             <Flex
               align="center"
               gap="2"
-              style={{ border: `1px solid var(--${color}-4)`, borderRadius: 'var(--radius-2)' }}
+              style={{ backgroundColor: `var(--${color}-3)`, borderRadius: 'var(--radius-2)' }}
               px="2"
               py="1"
             >
               <Box
-                width="3"
-                height="3"
+                width="2"
+                height="2"
                 style={{ backgroundColor: `var(--${color}-9)`, borderRadius: '100%' }}
               />
               <Text size="1" weight="bold" color={color}>
@@ -384,13 +384,13 @@ export function ThemesAdditionalSwatches() {
             <Flex
               align="center"
               gap="2"
-              style={{ border: `1px solid var(--${color}-4)`, borderRadius: 'var(--radius-2)' }}
+              style={{ backgroundColor: `var(--${color}-3)`, borderRadius: 'var(--radius-2)' }}
               px="2"
               py="1"
             >
               <Box
-                width="3"
-                height="3"
+                width="2"
+                height="2"
                 style={{ backgroundColor: `var(--${color}-9)`, borderRadius: '100%' }}
               />
               <Text size="1" weight="bold" style={{ color: `var(--${color}-11)` }}>
