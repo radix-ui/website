@@ -17,6 +17,7 @@ import {
   Theme,
 } from '@radix-ui/themes';
 import {
+  BookmarkFilledIcon,
   BookmarkIcon,
   CalendarIcon,
   CrumpledPaperIcon,
@@ -38,6 +39,45 @@ import * as React from 'react';
 
 export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typeof Flex>) => {
   const [container, setContainer] = React.useState<HTMLDivElement>(null);
+
+  const [state, setState] = React.useState({
+    sneakersBookmarked: false,
+    jeansBookmarked: false,
+    delivery: '',
+    sizes: ['9'],
+    materials: [],
+    colors: [],
+    productMaterial: '',
+    productColor: '',
+    productSizes: [],
+  });
+
+  const onToggleButtonClick = React.useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>, key: keyof typeof state) => {
+      setState((currentState) => {
+        const currentValue = currentState[key];
+        const buttonValue = event.currentTarget.textContent;
+
+        let newValue = currentValue;
+
+        if (Array.isArray(newValue)) {
+          if (newValue.includes(buttonValue)) {
+            newValue = newValue.filter((value) => value !== buttonValue);
+          } else {
+            newValue.push(buttonValue);
+          }
+        } else {
+          newValue = currentValue === buttonValue ? '' : buttonValue;
+        }
+
+        return {
+          ...currentState,
+          [key]: newValue,
+        };
+      });
+    },
+    [setState]
+  );
 
   return (
     <Flex align="center" gap="6" ref={setContainer} {...props}>
@@ -79,12 +119,38 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               style={{ borderRadius: 'var(--radius-1)' }}
             />
 
-            <Theme appearance="light" asChild style={{ borderRadius: 'var(--radius-2)' }}>
-              <Box position="absolute" bottom="0" right="0" m="2">
-                <IconButton tabIndex={-1} color="gray" variant="surface">
-                  <BookmarkIcon width="16" height="16" />
+            <Theme appearance="light" asChild>
+              <Flex
+                align="center"
+                justify="center"
+                position="absolute"
+                bottom="0"
+                right="0"
+                width="6"
+                height="6"
+                style={{ borderRadius: 'var(--radius-3)' }}
+                m="2"
+              >
+                <IconButton
+                  size="2"
+                  tabIndex={-1}
+                  color="gray"
+                  variant="ghost"
+                  highContrast={state.sneakersBookmarked}
+                  onClick={() =>
+                    setState((currentState) => ({
+                      ...currentState,
+                      sneakersBookmarked: !currentState.sneakersBookmarked,
+                    }))
+                  }
+                >
+                  {state.sneakersBookmarked ? (
+                    <BookmarkFilledIcon width="16" height="16" />
+                  ) : (
+                    <BookmarkIcon width="16" height="16" />
+                  )}
                 </IconButton>
-              </Box>
+              </Flex>
             </Theme>
           </Flex>
 
@@ -131,7 +197,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               </Select.Root>
             </Flex>
 
-            <Flex direction="column">
+            <Flex direction="column" style={{ minWidth: 80 }}>
               <Label asChild>
                 <Text size="1" color="gray" mb="1">
                   Size
@@ -151,7 +217,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
             </Flex>
 
             <Button tabIndex={-1} size="2" variant="solid" color="gray" highContrast>
-              Add to cart
+              Buy
             </Button>
           </Flex>
         </Card>
@@ -164,10 +230,22 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               </Text>
 
               <Grid gap="1" columns="2">
-                <Button tabIndex={-1} variant="soft" highContrast style={{ fontWeight: 400 }}>
+                <Button
+                  highContrast
+                  tabIndex={-1}
+                  variant={state.delivery === 'Tomorrow' ? 'solid' : 'soft'}
+                  onClick={(event) => onToggleButtonClick(event, 'delivery')}
+                  style={{ fontWeight: 400 }}
+                >
                   Tomorrow
                 </Button>
-                <Button tabIndex={-1} variant="soft" highContrast style={{ fontWeight: 400 }}>
+                <Button
+                  highContrast
+                  tabIndex={-1}
+                  variant={state.delivery === 'Within 3 days' ? 'solid' : 'soft'}
+                  onClick={(event) => onToggleButtonClick(event, 'delivery')}
+                  style={{ fontWeight: 400 }}
+                >
                   Within 3 days
                 </Button>
               </Grid>
@@ -179,42 +257,19 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               </Text>
 
               <Grid gap="1" columns="5">
-                <Button tabIndex={-1} variant="soft" highContrast style={{ fontWeight: 400 }}>
-                  5.5
-                </Button>
-                <Button tabIndex={-1} variant="soft" highContrast style={{ fontWeight: 400 }}>
-                  6
-                </Button>
-                <Button tabIndex={-1} variant="soft" highContrast style={{ fontWeight: 400 }}>
-                  6.5
-                </Button>
-                <Button tabIndex={-1} variant="soft" highContrast style={{ fontWeight: 400 }}>
-                  7
-                </Button>
-                <Button tabIndex={-1} variant="soft" highContrast style={{ fontWeight: 400 }}>
-                  7.5
-                </Button>
-                <Button tabIndex={-1} variant="soft" highContrast style={{ fontWeight: 400 }}>
-                  8
-                </Button>
-                <Button tabIndex={-1} variant="soft" highContrast style={{ fontWeight: 400 }}>
-                  8.5
-                </Button>
-                <Button tabIndex={-1} variant="solid" highContrast>
-                  9
-                </Button>
-                <Button
-                  tabIndex={-1}
-                  variant="soft"
-                  highContrast
-                  disabled
-                  style={{ fontWeight: 400 }}
-                >
-                  9.5
-                </Button>
-                <Button tabIndex={-1} variant="soft" highContrast style={{ fontWeight: 400 }}>
-                  10
-                </Button>
+                {['5.5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10'].map((size) => (
+                  <Button
+                    key={size}
+                    highContrast
+                    tabIndex={-1}
+                    disabled={size === '9.5'}
+                    onClick={(event) => onToggleButtonClick(event, 'sizes')}
+                    variant={state.sizes.includes(size) ? 'solid' : 'soft'}
+                    style={{ fontWeight: 400 }}
+                  >
+                    {size}
+                  </Button>
+                ))}
               </Grid>
             </Box>
 
@@ -224,18 +279,19 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               </Text>
 
               <Grid gap="1" columns="4">
-                <Button tabIndex={-1} variant="soft" highContrast style={{ fontWeight: 400 }}>
-                  Leather
-                </Button>
-                <Button tabIndex={-1} variant="soft" highContrast style={{ fontWeight: 400 }}>
-                  Suede
-                </Button>
-                <Button tabIndex={-1} variant="soft" highContrast style={{ fontWeight: 400 }}>
-                  Mesh
-                </Button>
-                <Button tabIndex={-1} variant="soft" highContrast style={{ fontWeight: 400 }}>
-                  Canvas
-                </Button>
+                {['Leather', 'Suede', 'Mesh', 'Canvas'].map((material) => (
+                  <Button
+                    key={material}
+                    highContrast
+                    tabIndex={-1}
+                    disabled={material === '9.5'}
+                    onClick={(event) => onToggleButtonClick(event, 'materials')}
+                    variant={state.materials.includes(material) ? 'solid' : 'soft'}
+                    style={{ fontWeight: 400 }}
+                  >
+                    {material}
+                  </Button>
+                ))}
               </Grid>
             </Box>
 
@@ -259,9 +315,10 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                   <Button
                     tabIndex={-1}
                     key={color.name}
-                    variant="soft"
                     highContrast
                     style={{ fontWeight: 400, justifyContent: 'start' }}
+                    variant={state.colors.includes(color.name) ? 'solid' : 'soft'}
+                    onClick={(event) => onToggleButtonClick(event, 'colors')}
                   >
                     <Box
                       shrink="0"
@@ -270,7 +327,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                       style={{
                         background: color.value,
                         borderRadius: 'var(--radius-1)',
-                        boxShadow: 'inset 0 0 0 1px rgba(90, 90, 90, 0.15)',
+                        boxShadow: 'inset 0 0 0 1px rgba(160, 160, 160, 0.4)',
                       }}
                     />
                     {color.name}
@@ -348,7 +405,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                   </Select.Root>
                 </Flex>
 
-                <Flex direction="column" width="6">
+                <Flex direction="column" width="7">
                   <Text size="2" weight="bold" align="right">
                     {item.price}
                   </Text>
@@ -383,12 +440,22 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               style={{ borderRadius: 'var(--radius-1)' }}
             />
 
-            <Theme appearance="light" asChild style={{ borderRadius: 'var(--radius-2)' }}>
-              <Box position="absolute" bottom="0" right="0" m="2">
-                <IconButton tabIndex={-1} color="gray" variant="surface">
+            <Theme appearance="light" asChild>
+              <Flex
+                align="center"
+                justify="center"
+                position="absolute"
+                bottom="0"
+                right="0"
+                width="6"
+                height="6"
+                style={{ borderRadius: 'var(--radius-3)' }}
+                m="2"
+              >
+                <IconButton size="2" tabIndex={-1} color="gray" variant="ghost">
                   <BookmarkIcon width="16" height="16" />
                 </IconButton>
-              </Box>
+              </Flex>
             </Theme>
           </Flex>
 
@@ -803,9 +870,10 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                 <Button
                   tabIndex={-1}
                   key={material}
-                  variant="soft"
                   highContrast
                   style={{ fontWeight: 400 }}
+                  variant={state.productMaterial === material ? 'solid' : 'soft'}
+                  onClick={(event) => onToggleButtonClick(event, 'productMaterial')}
                 >
                   {material}
                 </Button>
@@ -833,9 +901,10 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                 <Button
                   tabIndex={-1}
                   key={color.name}
-                  variant="soft"
                   highContrast
                   style={{ fontWeight: 400 }}
+                  variant={state.productColor === color.name ? 'solid' : 'soft'}
+                  onClick={(event) => onToggleButtonClick(event, 'productColor')}
                 >
                   <Flex align="center" gap="2" width="9">
                     <Box
@@ -845,7 +914,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                       style={{
                         background: color.value,
                         borderRadius: 'var(--radius-1)',
-                        boxShadow: 'inset 0 0 0 1px rgba(90, 90, 90, 0.15)',
+                        boxShadow: 'inset 0 0 0 1px rgba(160, 160, 160, 0.4)',
                       }}
                     />
                     {color.name}
@@ -861,15 +930,16 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
             </Text>
 
             <Grid columns="3" gap="1">
-              {['XS', 'S', 'M', 'L', 'XL'].map((material) => (
+              {['XS', 'S', 'M', 'L', 'XL'].map((size) => (
                 <Button
                   tabIndex={-1}
-                  key={material}
-                  variant="soft"
+                  key={size}
                   highContrast
                   style={{ fontWeight: 400 }}
+                  variant={state.productSizes.includes(size) ? 'solid' : 'soft'}
+                  onClick={(event) => onToggleButtonClick(event, 'productSizes')}
                 >
-                  {material}
+                  {size}
                 </Button>
               ))}
             </Grid>
