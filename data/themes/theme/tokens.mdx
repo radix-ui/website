@@ -1,26 +1,44 @@
 ---
 metaTitle: Theme tokens
 metaDescription:
-  Tokens provide access to the underlying theme values and give you full
-  flexibility to build your own components
+  Tokens provide direct access to theme values and give you full flexibility to
+  build and customize your own themed components.
 ---
 
 # Theme tokens
 
 <Description>
-  Tokens provide access to the underlying theme values and give you full
-  flexibility when building or customizing your own components.
+  Tokens provide direct access to theme values and give you full flexibility to
+  build and customize your own themed components.
 </Description>
 
 ## Using tokens
 
-While tokens are used internally by all styled components, they are also exposed to you for usage in your own custom components.
+Radix Themes exposes all tokens as [CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*), these are consumed internally in all styled components.
 
-You can use them in the same way as any other [CSS custom property](https://developer.mozilla.org/en-US/docs/Web/CSS/--*), either directly inside your CSS or inline via the `style` prop.
+You can access them the same way you would any other variable, either directly inside your CSS:
+
+```css
+.Sidebar {
+  color: var(--gray-12);
+  background-color: var(--accent-3);
+}
+```
+
+or inline via the `style` prop:
+
+```jsx
+<Sidebar style={{
+  color: 'var(--gray-12)',
+  backgroundColor: 'var(--accent-3)'
+}}>
+```
 
 ### Layout scaling
 
-Layout related values scale based on the `scaling` setting defined by your [Theme](/docs/themes/components/theme). This allows you to scale the UI density uniformly across your entire application. The values listed here represent the "base" values when the default scaling of `100%` is used.
+Values which affect layout (spacing, typographic sizing, line heights) scale relatively based on the `scaling` value defined in your [Theme](/docs/themes/components/theme). This setting allows you to scale the UI density uniformly across your entire application.
+
+The values illustrated below represent the "base" values (defaulting to `100%`).
 
 ## Color
 
@@ -30,9 +48,9 @@ Radix Themes uses [Radix Colors](/docs/colors/palette-composition/scales) as the
 
 Accents are the most dominant color in your theme, they are used for primary buttons, links and other interactive elements. The accent can be one of 23 scales specified by your [Theme](/docs/themes/components/theme).
 
-<ThemesSwatchTable type="accent" />
+<ThemesColorTable type="accent" />
 
-<ThemesTokensTable
+<ThemesTokensDescriptionTable
   data={[
     {
       token: '--accent-{step}',
@@ -49,9 +67,9 @@ Accents are the most dominant color in your theme, they are used for primary but
 
 Gray colors are used for backgrounds, borders, text and other non-interactive elements. You can choose from one of 6 gray scales specified by your [Theme](/docs/themes/components/theme).
 
-<ThemesSwatchTable type="gray" />
+<ThemesColorTable type="gray" />
 
-<ThemesTokensTable
+<ThemesTokensDescriptionTable
   data={[
     {
       token: '--gray-{step}',
@@ -72,7 +90,7 @@ Every scale has an alpha variant (denoted by the `a` scale prefix). These varian
 
 While the Accent and Gray scales are the sets you'll primarily be using throughout your app, you can use any of the scales available in [Radix Colors](/docs/colors/palette-composition/scales):
 
-<ThemesAdditionalSwatches />
+<ThemesAdditionalColors />
 
 This is useful if you need to assign semantic color, for example, positive, negative, or warning.
 
@@ -82,7 +100,7 @@ Spacing tokens are used to apply space between elements. They are derived from a
 
 <ThemesSpacingTable />
 
-<ThemesTokensTableValues
+<ThemesTokenValuesTable
   data={[
     {
       token: '--space-1',
@@ -131,7 +149,7 @@ These tokens represent the visual properties of an element. Such as border radiu
 
 <ThemesBorderRadiusTable />
 
-<ThemesTokensTableValues
+<ThemesTokenValuesTable
   data={[
     {
       token: '--radius-1',
@@ -164,7 +182,7 @@ These tokens represent the visual properties of an element. Such as border radiu
 
 <ThemesShadowTable />
 
-<ThemesTokensTable
+<ThemesTokensDescriptionTable
   data={[
     {
       token: '--shadow-{step}',
@@ -183,7 +201,7 @@ The typographic system is based on a 9 step scale. The defaults are tuned to get
 
 The type scale is at the core of the typographic system, every step has a corresponding `font-size`, `line-height` and `letter-spacing` value, they are designed to be used in combination with each other.
 
-<ThemesTokensTable
+<ThemesTokensDescriptionTable
   data={[
     {
       token: '--font-size-{step}',
@@ -250,7 +268,7 @@ Their base values and relationships are illustrated below:
 
 Font weight tokens are used to align named weights with those specified by your typeface.
 
-<ThemesTokensTableValues
+<ThemesTokenValuesTable
   data={[
     {
       token: '--font-weight-light',
@@ -275,7 +293,7 @@ Font weight tokens are used to align named weights with those specified by your 
 
 These tokens represent the base typographic attributes of the theme.
 
-<ThemesTokensTableValues
+<ThemesTokenValuesTable
   data={[
     {
       token: '--default-font-family',
@@ -333,7 +351,7 @@ In addition to the global defaults, you also have access to the typographic attr
 
 Typographic attributes for the [Heading](/docs/themes/components/heading) component.
 
-<ThemesTokensTableValues
+<ThemesTokenValuesTable
   data={[
     {
       token: '--heading-font-family',
@@ -376,7 +394,7 @@ Typographic attributes for the [Heading](/docs/themes/components/heading) compon
 
 Heading `line-height` can also be customized independently of the base settings:
 
-<ThemesTokensTableValues
+<ThemesTokenValuesTable
   data={[
     {
       token: '--heading-line-height-1',
@@ -421,7 +439,7 @@ Heading `line-height` can also be customized independently of the base settings:
 
 Typographic attributes for the [Code](/docs/themes/components/code) component.
 
-<ThemesTokensTableValues
+<ThemesTokenValuesTable
   data={[
     {
       token: '--code-font-family',
@@ -451,7 +469,7 @@ Typographic attributes for the [Code](/docs/themes/components/code) component.
 
 Typographic attributes for the [Strong](/docs/themes/components/strong) component.
 
-<ThemesTokensTableValues
+<ThemesTokenValuesTable
   data={[
     {
       token: '--strong-font-family',
@@ -480,7 +498,7 @@ Typographic attributes for the [Strong](/docs/themes/components/strong) componen
 
 Typographic attributes for the [Em](/docs/themes/components/em) component.
 
-<ThemesTokensTableValues
+<ThemesTokenValuesTable
   data={[
     {
       token: '--em-font-family',
