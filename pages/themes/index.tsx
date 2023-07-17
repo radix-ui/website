@@ -114,7 +114,9 @@ export default function ThemesHome() {
             grayScale="mauve"
             applyBackgroundColor={false}
           >
-            <ThemesHeader />
+            <Box position="fixed" top="0" left="0" right="0">
+              <ThemesHeader />
+            </Box>
             <ThemesHero.Root color="blue">
               <ThemesHero.Tagline>
                 <ThemesHero.Title>Build faster</ThemesHero.Title>
@@ -146,7 +148,9 @@ export default function ThemesHome() {
             appearance="invert"
             applyBackgroundColor={false}
           >
-            <ThemesHeader />
+            <Box position="fixed" top="0" left="0" right="0">
+              <ThemesHeader />
+            </Box>
             <ThemesHero.Root color="green">
               <ThemesHero.Tagline>
                 <ThemesHero.Title>Build better</ThemesHero.Title>
@@ -183,7 +187,9 @@ export default function ThemesHome() {
             textColor="auto"
             applyBackgroundColor={false}
           >
-            <ThemesHeader />
+            <Box position="fixed" top="0" left="0" right="0">
+              <ThemesHeader />
+            </Box>
             <ThemesHero.Root color="red">
               <ThemesHero.Tagline>
                 <ThemesHero.Title>Build hotter</ThemesHero.Title>
@@ -214,7 +220,9 @@ export default function ThemesHome() {
             appearance="invert"
             applyBackgroundColor={false}
           >
-            <ThemesHeader />
+            <Box position="fixed" top="0" left="0" right="0">
+              <ThemesHeader />
+            </Box>
             <ThemesHero.Root color="blue">
               <ThemesHero.Tagline>
                 <ThemesHero.Title>Build nicer</ThemesHero.Title>
@@ -245,7 +253,9 @@ export default function ThemesHome() {
             textColor="auto"
             applyBackgroundColor={false}
           >
-            <ThemesHeader />
+            <Box position="fixed" top="0" left="0" right="0">
+              <ThemesHeader />
+            </Box>
             <ThemesHero.Root color="green">
               <ThemesHero.Tagline>
                 <ThemesHero.Title>Build cooler</ThemesHero.Title>
@@ -283,7 +293,9 @@ export default function ThemesHome() {
             appearance="invert"
             applyBackgroundColor={false}
           >
-            <ThemesHeader />
+            <Box position="fixed" top="0" left="0" right="0">
+              <ThemesHeader />
+            </Box>
             <ThemesHero.Root color="red">
               <ThemesHero.Tagline>
                 <ThemesHero.Title>Build more</ThemesHero.Title>

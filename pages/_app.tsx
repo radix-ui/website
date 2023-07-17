@@ -9,7 +9,6 @@ import { ColorsDocsPage } from '@components/ColorsDocsPage';
 import { useAnalytics } from '@lib/analytics';
 import { CssLibPreferenceProvider } from '@components/CssLibPreference';
 import { ThemesDocsPage } from '@components/ThemesDocsPage';
-import { ThemesPanelProvider } from '@components/ThemesPanel';
 import './radix-themes.css';
 
 const globalStyles = globalCss({
@@ -104,16 +103,13 @@ function Pages({ Component, pageProps }: AppProps) {
   if (isThemesDocs) {
     return (
       <Theme
-        __useKey={false}
-        accentScale="violet"
+        accentScale="indigo"
         appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}
         style={themeRootStyles}
       >
-        <ThemesPanelProvider>
-          <ThemesDocsPage>
-            <Component {...pageProps} />
-          </ThemesDocsPage>
-        </ThemesPanelProvider>
+        <ThemesDocsPage>
+          <Component {...pageProps} />
+        </ThemesDocsPage>
       </Theme>
     );
   }

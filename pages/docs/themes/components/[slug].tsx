@@ -7,7 +7,6 @@ import { MDXProvider, components } from '@components/MDXComponents';
 import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { RemoveScroll } from 'react-remove-scroll';
 import { QuickNav } from '@components/QuickNav';
-import { ThemesPanel } from '@components/ThemesPanel';
 
 import type { Frontmatter } from 'types/frontmatter';
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
@@ -99,8 +98,6 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
       >
         <QuickNav key={frontmatter.slug} />
       </DsBox>
-
-      <ThemesPanel />
     </>
   );
 }

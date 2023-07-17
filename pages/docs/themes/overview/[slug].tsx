@@ -5,7 +5,6 @@ import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { MDXProvider, components } from '@components/MDXComponents';
 import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { RemoveScroll } from 'react-remove-scroll';
-import { ThemesPanel } from '@components/ThemesPanel';
 import { QuickNav } from '@components/QuickNav';
 
 import type { Frontmatter } from 'types/frontmatter';
@@ -60,8 +59,6 @@ export default function OverviewDoc({ frontmatter, code }: Doc) {
       >
         <QuickNav key={frontmatter.slug} />
       </Box>
-
-      <ThemesPanel />
     </>
   );
 }

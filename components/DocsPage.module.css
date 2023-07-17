@@ -16,19 +16,11 @@
   z-index: 0;
 }
 
-.NavWrapper {
-  display: none;
-}
-
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
   .PageWrapper {
     padding-block: var(--space-9);
     padding-inline: 0;
     padding-left: 250px;
-  }
-
-  .NavWrapper {
-    display: block;
   }
 }
 

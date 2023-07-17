@@ -16,28 +16,15 @@ function MainWrapper(props) {
 }
 
 function NavWrapper({ children, isMobileMenuOpen }) {
-  const [isMobileLayout, setIsMobileLayout] = React.useState(false);
-
-  React.useEffect(() => {
-    // Match @bp2
-    const mediaQueryList = window.matchMedia('(min-width: 768px)');
-
-    const handleChange = () => setIsMobileLayout(!mediaQueryList.matches);
-    handleChange();
-
-    mediaQueryList.addEventListener('change', handleChange);
-    return () => mediaQueryList.removeEventListener('change', handleChange);
-  }, []);
-
   return (
-    <RemoveScroll as={Slot} allowPinchZoom enabled={isMobileLayout && isMobileMenuOpen}>
+    <RemoveScroll as={Slot} allowPinchZoom enabled={isMobileMenuOpen}>
       <Box
-        className={styles.NavWrapper}
         position="fixed"
         left="0"
         bottom="0"
+        display={{ initial: 'none', md: 'block' }}
         style={{
-          top: 'var(--space-9)',
+          top: 'var(--space-8)',
           zIndex: 1,
           maxHeight: 'auto',
           overflowX: 'hidden',
@@ -50,8 +37,9 @@ function NavWrapper({ children, isMobileMenuOpen }) {
         }}
       >
         <ScrollArea>
-          <Box px="3">{children}</Box>
-          <Box height={{ initial: '5', sm: '9' }} />
+          <Box pt="4" px="3" pb={{ initial: '5', sm: '9' }}>
+            {children}
+          </Box>
         </ScrollArea>
       </Box>
     </RemoveScroll>

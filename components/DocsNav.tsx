@@ -1,8 +1,9 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Text, Heading, Box } from '@radix-ui/themes';
+import { Text, Heading, Box, Badge } from '@radix-ui/themes';
 import { classNames } from '@lib/classNames';
 import styles from './DocsNav.module.css';
+import { NavWrapper, useCurrentPageSlug } from './DocsPage';
 
 export function NavHeading({ children, ...props }: { children: React.ReactNode }) {
   return (
@@ -50,3 +51,45 @@ export function NavItem({ children, active, ...props }: NavItemProps) {
 export function NavItemTitle({ children }) {
   return <Text size="2">{children}</Text>;
 }
+
+interface DocsNavProps {
+  routes: {
+    label: string;
+    pages: {
+      title: string;
+      slug: string;
+      preview?: boolean;
+      deprecated?: boolean;
+    }[];
+  }[];
+}
+
+export const DocsNav = ({ routes }: DocsNavProps) => {
+  const currentPageSlug = useCurrentPageSlug();
+
+  return (
+    <>
+      {routes.map((section) => (
+        <Box key={section.label} mb="4">
+          <NavHeading>{section.label}</NavHeading>
+
+          {section.pages.map((page) => (
+            <NavItem key={page.slug} href={`/${page.slug}`} active={currentPageSlug === page.slug}>
+              <NavItemTitle>{page.title}</NavItemTitle>
+              {page.preview && (
+                <Badge color="blue" ml="2">
+                  Preview
+                </Badge>
+              )}
+              {page.deprecated && (
+                <Badge color="yellow" ml="2">
+                  Deprecated
+                </Badge>
+              )}
+            </NavItem>
+          ))}
+        </Box>
+      ))}
+    </>
+  );
+};
