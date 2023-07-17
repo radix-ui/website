@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Grid, Text } from '@radix-ui/themes';
+import { Box, Grid, Text, Theme } from '@radix-ui/themes';
 import { CopyCodeButton } from './CopyCodeButton';
 import { LiveCode } from './LiveCode';
 import * as themes from '@radix-ui/themes';
@@ -25,29 +25,31 @@ const PreWithLivePreview = (props) => {
               overflow: 'hidden',
             }}
           >
-            <LiveCode
-              code={liveCode}
-              scope={{
-                ...themes,
-                ...icons,
-                DecorativeBox,
-                RightClickZone: (props) => (
-                  <Grid
-                    {...props}
-                    style={{
-                      height: 100,
-                      placeItems: 'center',
-                      border: '1px dashed var(--accent-a6)',
-                      borderRadius: 'var(--radius-2)',
-                      cursor: 'default',
-                      ...props.style,
-                    }}
-                  >
-                    <Text>Right-click here</Text>
-                  </Grid>
-                ),
-              }}
-            />
+            <Theme className="radix-themes-example" applyBackgroundColor={false}>
+              <LiveCode
+                code={liveCode}
+                scope={{
+                  ...themes,
+                  ...icons,
+                  DecorativeBox,
+                  RightClickZone: (props) => (
+                    <Grid
+                      {...props}
+                      style={{
+                        height: 100,
+                        placeItems: 'center',
+                        border: '1px dashed var(--accent-a6)',
+                        borderRadius: 'var(--radius-2)',
+                        cursor: 'default',
+                        ...props.style,
+                      }}
+                    >
+                      <Text>Right-click here</Text>
+                    </Grid>
+                  ),
+                }}
+              />
+            </Theme>
           </Box>
         </themes.ScrollArea>
       </Box>
