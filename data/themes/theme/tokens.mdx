@@ -9,18 +9,22 @@ metaDescription:
 
 <Description>
   Tokens provide access to the underlying theme values and give you full
-  flexibility to build your own components.
+  flexibility when building or customizing your own components.
 </Description>
 
 ## Using tokens
 
-Tokens represent all of Radix Themes underlying values and are used internally in all styled components. They are also exposed to you for building and customizing your own components.
+While tokens are used internally by all styled components, they are also exposed to you for usage in your own custom components.
 
 You can use them in the same way as any other [CSS custom property](https://developer.mozilla.org/en-US/docs/Web/CSS/--*), either directly inside your CSS or inline via the `style` prop.
 
+### Layout scaling
+
+Layout related values scale based on the `scaling` setting defined by your [Theme](/docs/themes/components/theme). This allows you to scale the UI density uniformly across your entire application. The values listed here represent the "base" values when the default scaling of `100%` is used.
+
 ## Color
 
-Radix Themes uses [Radix Colors](/docs/colors/palette-composition/scales) as the foundation of it's color system. Out of the box this provides you with 30, 12 step color scales, each with it's own light and dark variant. Open the theme panel to explore and preview all of the available variations.
+Radix Themes uses [Radix Colors](/docs/colors/palette-composition/scales) as the foundation of it's color system. Out of the box this provides you with 30, 12 step color scales, each with it's own light and dark variant.
 
 ### Accent
 
@@ -32,11 +36,11 @@ Accents are the most dominant color in your theme, they are used for primary but
   data={[
     {
       token: '--accent-{step}',
-      description: 'The accent color for the given step',
+      description: 'The color for the given step',
     },
     {
       token: '--accent-a{step}',
-      description: 'The accent alpha variant for the given step',
+      description: 'The alpha variant for the given step',
     },
   ]}
 />
@@ -51,11 +55,11 @@ Gray colors are used for backgrounds, borders, text and other non-interactive el
   data={[
     {
       token: '--gray-{step}',
-      description: 'The gray color value for the given step',
+      description: 'The color value for the given step',
     },
     {
       token: '--gray-a{step}',
-      description: 'The gray variant color for the given step',
+      description: 'The alpha variant value for the given step',
     },
   ]}
 />
@@ -303,8 +307,8 @@ These tokens represent the base typographic attributes of the theme.
       value: '0.42em',
       description: (
         <>
-          The amount of offset trim applied when using the <Code>trim</Code>{' '}
-          prop
+          The amount of top offset trim applied when using the <Code>trim</Code>{' '}
+          prop.
         </>
       ),
     },
@@ -313,8 +317,8 @@ These tokens represent the base typographic attributes of the theme.
       value: '0.36em',
       description: (
         <>
-          The amount of offset trim applied when using the <Code>trim</Code>{' '}
-          prop
+          The amount of bottom offset trim applied when using the{' '}
+          <Code>trim</Code> prop.
         </>
       ),
     },
@@ -348,8 +352,8 @@ Typographic attributes for the [Heading](/docs/themes/components/heading) compon
       value: 'var(--default-leading-trim-start)',
       description: (
         <>
-          The amount of offset trim applied when using the <Code>trim</Code>{' '}
-          prop
+          The amount of top offset trim applied when using the <Code>trim</Code>{' '}
+          prop.
         </>
       ),
     },
@@ -358,8 +362,8 @@ Typographic attributes for the [Heading](/docs/themes/components/heading) compon
       value: 'var(--default-leading-trim-end)',
       description: (
         <>
-          The amount of offset trim applied when using the <Code>trim</Code>{' '}
-          prop
+          The amount of bottom offset trim applied when using the{' '}
+          <Code>trim</Code> prop.
         </>
       ),
     },
