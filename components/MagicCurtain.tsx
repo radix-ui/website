@@ -31,9 +31,9 @@ const MagicCurtainRoot = ({ children }: React.PropsWithChildren<{}>) => {
       const thisIndex = itemsRef.current.map((item) => item.ref.current).indexOf(event.target);
       const nextIndex = thisIndex + 1 === itemsRef.current.length ? 0 : thisIndex + 1;
       const afterNextIndex = nextIndex + 1 === itemsRef.current.length ? 0 : nextIndex + 1;
-      itemsRef.current[thisIndex].setVisibility('hidden');
-      itemsRef.current[nextIndex].setVisibility('visible-in-front');
-      itemsRef.current[afterNextIndex].setVisibility('visible-behind');
+      itemsRef.current[thisIndex]?.setVisibility('hidden');
+      itemsRef.current[nextIndex]?.setVisibility('visible-in-front');
+      itemsRef.current[afterNextIndex]?.setVisibility('visible-behind');
     };
 
     itemsRef.current[0]?.setVisibility('visible-in-front');
