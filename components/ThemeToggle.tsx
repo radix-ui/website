@@ -1,26 +1,52 @@
 import React from 'react';
 import { useTheme } from 'next-themes';
-import { SunIcon } from '@radix-ui/react-icons';
+import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
 import { IconButton, Tooltip } from '@radix-ui/themes';
+import Head from 'next/head';
 
-export const ThemeToggle = (props) => {
-  const { theme, setTheme } = useTheme();
+export const ThemeToggle = () => {
+  const { theme, systemTheme, setTheme } = useTheme();
 
   return (
-    <Tooltip content="Toggle theme" side="bottom" align="end">
-      <IconButton
-        size="3"
-        variant="ghost"
-        color="gray"
-        onClick={() => {
-          const newTheme = theme === 'dark' ? 'light' : 'dark';
-          setTheme(newTheme);
-        }}
-        {...props}
-        aria-label="toggle a light and dark color scheme"
-      >
-        <SunIcon />
-      </IconButton>
-    </Tooltip>
+    <>
+      <Head>
+        <style>{`
+        :root, .light-theme {
+          --theme-toggle-sun-icon-display: block;
+          --theme-toggle-moon-icon-display: none;
+        }
+        .dark-theme {
+          --theme-toggle-sun-icon-display: none;
+          --theme-toggle-moon-icon-display: block;
+        }
+      `}</style>
+      </Head>
+
+      <Tooltip content="Toggle theme">
+        <IconButton
+          size="3"
+          variant="ghost"
+          color="gray"
+          onClick={() => {
+            // Set 'system' theme if the next theme matches the system theme
+            const resolvedTheme = theme === 'system' ? systemTheme : theme;
+            const nextTheme = resolvedTheme === 'dark' ? 'light' : 'dark';
+            const nextThemeMatchesSystem = nextTheme === systemTheme;
+            setTheme(nextThemeMatchesSystem ? 'system' : nextTheme);
+          }}
+        >
+          <SunIcon
+            width="16"
+            height="16"
+            style={{ display: 'var(--theme-toggle-sun-icon-display)' }}
+          />
+          <MoonIcon
+            width="16"
+            height="16"
+            style={{ display: 'var(--theme-toggle-moon-icon-display)' }}
+          />
+        </IconButton>
+      </Tooltip>
+    </>
   );
 };
