@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styles from './ThemesHero.module.css';
 import classNames from 'classnames';
+import NextLink from 'next/link';
 
 interface ThemesHeroRootProps extends React.ComponentPropsWithoutRef<'div'> {
   color: 'blue' | 'green' | 'red';
@@ -34,14 +35,17 @@ interface ThemesHeroButtonProps extends React.ComponentPropsWithoutRef<'a'> {
   variant?: 'solid' | 'soft';
 }
 
-const ThemesHeroButton = ({ variant = 'solid', children, ...props }: ThemesHeroButtonProps) => (
-  <a
-    href="/docs/themes"
-    className={classNames(styles.ThemesHeroButton, styles[`variant-${variant}`])}
-    {...props}
-  >
-    {children}
-  </a>
+const ThemesHeroButton = ({
+  href = '',
+  variant = 'solid',
+  children,
+  ...props
+}: ThemesHeroButtonProps) => (
+  <NextLink href={href} passHref>
+    <a className={classNames(styles.ThemesHeroButton, styles[`variant-${variant}`])} {...props}>
+      {children}
+    </a>
+  </NextLink>
 );
 
 const ThemesHeroShowcase = ({ children }: React.ComponentPropsWithoutRef<'div'>) => {
