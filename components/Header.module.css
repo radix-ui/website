@@ -1,9 +1,13 @@
 .HeaderRoot {
-  position: sticky;
+  height: var(--space-8);
+}
+
+.HeaderInner {
+  position: fixed;
   font-family: var(--fonts-untitled);
   background-color: var(--color-panel);
   box-shadow: inset 0 -1px var(--gray-a4);
-  height: var(--space-8);
+  height: inherit;
   top: 0;
   left: 0;
   right: 0;

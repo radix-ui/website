@@ -1,4 +1,4 @@
-import { Box, Flex, Theme } from '@radix-ui/themes';
+import { Box, Flex, ScrollArea, Theme } from '@radix-ui/themes';
 import '@radix-ui/themes/dist/index.css';
 import * as React from 'react';
 import Head from 'next/head';
@@ -9,14 +9,21 @@ import { MagicCurtain } from '@components/MagicCurtain';
 import { ExampleThemesEcommerce } from '@components/ExampleThemesEcommerce';
 import { ExampleThemesMusicApp } from '@components/ExampleThemesMusicApp';
 import { ArrowRightIcon, ReaderIcon } from '@radix-ui/react-icons';
+import { DocsNav } from '@components/DocsNav';
+import { themesRoutes } from '@lib/themesRoutes';
+import { MobileMenu, MobileMenuProvider } from '@components/MobileMenu';
+import { useTheme } from 'next-themes';
 
 const text = `
   Beautiful, open source components for building modern and maintanable apps. Just import and go.
 `;
 
 export default function ThemesHome() {
+  const { resolvedTheme } = useTheme();
+  const inverted = resolvedTheme === 'dark' ? 'light' : 'dark';
+
   return (
-    <>
+    <MobileMenuProvider>
       <Head>
         <meta name="theme-color" content="#FDFCFD" />
         <style>{`
@@ -24,8 +31,16 @@ export default function ThemesHome() {
             color: currentcolor;
           }
 
-          .radix-themes-example.dark-theme .rt-Card {
+          .dark-theme:not(.radix-themes-example) .rt-Card {
             --color-surface-1: var(--gray-2);
+          }
+
+          .dark-theme.radix-themes-example .rt-Card {
+            --color-surface-1: var(--gray-2);
+          }
+
+          .light-theme.radix-themes-example .rt-Card {
+            --color-surface-1: white;
           }
 
           :root, .light-theme {
@@ -106,6 +121,13 @@ export default function ThemesHome() {
         `}</style>
       </Head>
 
+      <MobileMenu>
+        <ThemesHeader />
+        <ScrollArea>
+          <DocsNav routes={themesRoutes} />
+        </ScrollArea>
+      </MobileMenu>
+
       <MagicCurtain.Root>
         <MagicCurtain.Item defaultVisibility="visible-in-front">
           <Theme
@@ -114,7 +136,7 @@ export default function ThemesHome() {
             grayScale="mauve"
             applyBackgroundColor={false}
           >
-            <Box position="fixed" top="0" left="0" right="0">
+            <Box height="0">
               <ThemesHeader />
             </Box>
             <ThemesHero.Root color="blue">
@@ -145,10 +167,10 @@ export default function ThemesHome() {
             accentScale="cyan"
             grayScale="gray"
             textColor="auto"
-            appearance="invert"
+            appearance={inverted}
             applyBackgroundColor={false}
           >
-            <Box position="fixed" top="0" left="0" right="0">
+            <Box height="0">
               <ThemesHeader />
             </Box>
             <ThemesHero.Root color="green">
@@ -187,7 +209,7 @@ export default function ThemesHome() {
             textColor="auto"
             applyBackgroundColor={false}
           >
-            <Box position="fixed" top="0" left="0" right="0">
+            <Box height="0">
               <ThemesHeader />
             </Box>
             <ThemesHero.Root color="red">
@@ -217,10 +239,10 @@ export default function ThemesHome() {
             className="radix-themes-example"
             accentScale="indigo"
             grayScale="mauve"
-            appearance="invert"
+            appearance={inverted}
             applyBackgroundColor={false}
           >
-            <Box position="fixed" top="0" left="0" right="0">
+            <Box height="0">
               <ThemesHeader />
             </Box>
             <ThemesHero.Root color="blue">
@@ -253,7 +275,7 @@ export default function ThemesHome() {
             textColor="auto"
             applyBackgroundColor={false}
           >
-            <Box position="fixed" top="0" left="0" right="0">
+            <Box height="0">
               <ThemesHeader />
             </Box>
             <ThemesHero.Root color="green">
@@ -290,10 +312,10 @@ export default function ThemesHome() {
             accentScale="red"
             grayScale="slate"
             textColor="auto"
-            appearance="invert"
+            appearance={inverted}
             applyBackgroundColor={false}
           >
-            <Box position="fixed" top="0" left="0" right="0">
+            <Box height="0">
               <ThemesHeader />
             </Box>
             <ThemesHero.Root color="red">
@@ -318,6 +340,6 @@ export default function ThemesHome() {
           </Theme>
         </MagicCurtain.Item>
       </MagicCurtain.Root>
-    </>
+    </MobileMenuProvider>
   );
 }

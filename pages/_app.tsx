@@ -56,7 +56,6 @@ const themeRootStyles = {
 };
 
 function Pages({ Component, pageProps }: AppProps) {
-  const { resolvedTheme } = useTheme();
   const router = useRouter();
   const [mounted, setMounted] = React.useState(false);
 
@@ -74,11 +73,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (isPrimitivesDocs) {
     return (
-      <Theme
-        accentScale="violet"
-        appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}
-        style={themeRootStyles}
-      >
+      <Theme accentScale="violet" style={themeRootStyles}>
         <PrimitivesDocsPage>
           <Component {...pageProps} />
         </PrimitivesDocsPage>
@@ -88,11 +83,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (isColorsDocs) {
     return (
-      <Theme
-        accentScale="violet"
-        appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}
-        style={themeRootStyles}
-      >
+      <Theme accentScale="violet" style={themeRootStyles}>
         <ColorsDocsPage>
           <Component {...pageProps} />
         </ColorsDocsPage>
@@ -102,11 +93,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (isThemesDocs) {
     return (
-      <Theme
-        accentScale="indigo"
-        appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}
-        style={themeRootStyles}
-      >
+      <Theme accentScale="indigo" style={themeRootStyles}>
         <ThemesDocsPage>
           <Component {...pageProps} />
         </ThemesDocsPage>
@@ -115,11 +102,7 @@ function Pages({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <Theme
-      accentScale="violet"
-      appearance={resolvedTheme === 'dark' ? 'dark' : 'light'}
-      style={themeRootStyles}
-    >
+    <Theme accentScale="violet" style={themeRootStyles}>
       <Component {...pageProps} />
     </Theme>
   );

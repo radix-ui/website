@@ -68,7 +68,7 @@ export const DocsNav = ({ routes }: DocsNavProps) => {
   const currentPageSlug = useCurrentPageSlug();
 
   return (
-    <>
+    <Box pt="4" px="3" pb={{ initial: '5', sm: '9' }}>
       {routes.map((section) => (
         <Box key={section.label} mb="4">
           <NavHeading>{section.label}</NavHeading>
@@ -90,6 +90,6 @@ export const DocsNav = ({ routes }: DocsNavProps) => {
           ))}
         </Box>
       ))}
-    </>
+    </Box>
   );
 };

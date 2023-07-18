@@ -243,7 +243,12 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
         </Text>
 
         <Flex gap="3" mb="5">
-          <TextField tabIndex={-1} size="2" placeholder="Email address" style={{ flexShrink: 1 }} />
+          <TextField.Input
+            tabIndex={-1}
+            size="2"
+            placeholder="Email address"
+            style={{ flexShrink: 1 }}
+          />
           <Button tabIndex={-1} size="2">
             Invite
           </Button>
@@ -439,7 +444,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
             <Text as="div" size="2" weight="bold" mb="2">
               Email address
             </Text>
-            <TextField tabIndex={-1} placeholder="Enter your email" />
+            <TextField.Input tabIndex={-1} placeholder="Enter your email" />
           </Label>
         </Box>
 
@@ -454,7 +459,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
             <Text as="div" size="2" weight="bold" mb="2">
               Password
             </Text>
-            <TextField tabIndex={-1} placeholder="Enter your password" />
+            <TextField.Input tabIndex={-1} placeholder="Enter your password" />
           </Label>
         </Box>
 
