@@ -51,7 +51,7 @@ export const MobileMenu = ({ children }) => {
             style={{
               zIndex: 1,
               display: 'grid',
-              gridTemplateRows: 'var(--space-8) minmax(0, 1fr)',
+              gridTemplateRows: 'auto minmax(0, 1fr)',
               backgroundColor: 'var(--color-background)',
             }}
           >
