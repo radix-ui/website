@@ -4,7 +4,7 @@ metaDescription: Captures user input via a text field.
 ---
 
 ```jsx live=true
-<TextField placeholder="The quick brown fox jumped" />
+<TextField.Input placeholder="The quick brown fox jumped" />
 ```
 
 ## API Reference
@@ -21,9 +21,9 @@ Use the `size` prop to control the size.
 
 ```jsx live=true
 <Grid columns="3" align="center" gap="3">
-  <TextField size="1" placeholder="The quick brown fox jumped" />
-  <TextField size="2" placeholder="The quick brown fox jumped" />
-  <TextField size="3" placeholder="The quick brown fox jumped" />
+  <TextField.Input size="1" placeholder="The quick brown fox jumped" />
+  <TextField.Input size="2" placeholder="The quick brown fox jumped" />
+  <TextField.Input size="3" placeholder="The quick brown fox jumped" />
 </Grid>
 ```
 
@@ -33,8 +33,8 @@ Use the `variant` prop to control the visual style.
 
 ```jsx live=true
 <Grid columns="2" gap="3">
-  <TextField variant="surface" placeholder="The quick brown fox jumped" />
-  <TextField variant="soft" placeholder="The quick brown fox jumped" />
+  <TextField.Input variant="surface" placeholder="The quick brown fox jumped" />
+  <TextField.Input variant="soft" placeholder="The quick brown fox jumped" />
 </Grid>
 ```
 
@@ -44,8 +44,8 @@ Use the `color` prop to assign a specific color value, ignoring the global theme
 
 ```jsx live=true
 <Grid columns="2" gap="3">
-  <TextField color="gray" placeholder="The quick brown fox jumped" />
-  <TextField
+  <TextField.Input color="gray" placeholder="The quick brown fox jumped" />
+  <TextField.Input
     variant="soft"
     color="gray"
     placeholder="The quick brown fox jumped"
@@ -59,10 +59,10 @@ Use the `radius` prop to assign a specific radius value, ignoring the global the
 
 ```jsx live=true
 <Grid columns="5" gap="3">
-  <TextField radius="none" placeholder="The quick brown fox jumped" />
-  <TextField radius="small" placeholder="The quick brown fox jumped" />
-  <TextField radius="medium" placeholder="The quick brown fox jumped" />
-  <TextField radius="large" placeholder="The quick brown fox jumped" />
-  <TextField radius="full" placeholder="The quick brown fox jumped" />
+  <TextField.Input radius="none" placeholder="The quick brown fox jumped" />
+  <TextField.Input radius="small" placeholder="The quick brown fox jumped" />
+  <TextField.Input radius="medium" placeholder="The quick brown fox jumped" />
+  <TextField.Input radius="large" placeholder="The quick brown fox jumped" />
+  <TextField.Input radius="full" placeholder="The quick brown fox jumped" />
 </Grid>
 ```

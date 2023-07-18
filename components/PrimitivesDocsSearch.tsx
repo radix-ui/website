@@ -240,7 +240,7 @@ export function PrimitivesDocsSearch(props: PrimitivesDocsSearchProps) {
               </label>
             </Flex>
 
-            <TextField
+            <TextField.Input
               ref={inputRef}
               {...autocomplete.getInputProps({ inputElement: inputRef.current })}
               className={styles.Input}

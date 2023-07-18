@@ -164,7 +164,7 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
       </Flex>
       {(isHovered || dropdownMenuIsOpen) && (
         <Flex align="center" justify="center" height="6" position="absolute" right="0" mr="-1">
-          <DropdownMenu onOpenChange={(isOpen) => setDropdownMenuIsOpen(isOpen)}>
+          <DropdownMenu.Root onOpenChange={(isOpen) => setDropdownMenuIsOpen(isOpen)}>
             <Tooltip content="Copy to Clipboard">
               <DropdownMenu.Trigger>
                 <IconButton size="2" variant="ghost" color="gray" highContrast>
@@ -206,7 +206,7 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
                 </DropdownMenu.Item>
               </DropdownMenu.Group>
             </DropdownMenu.Content>
-          </DropdownMenu>
+          </DropdownMenu.Root>
         </Flex>
       )}
     </Flex>

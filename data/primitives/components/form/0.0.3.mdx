@@ -371,7 +371,7 @@ Using `asChild` you can compose the `Form` primitive parts with your own compone
 <Form.Field name="name">
   <Form.Label>Full name</Form.Label>
   <Form.Control __asChild__>
-    <TextField variant="primary" />
+    <TextField.Input variant="primary" />
   </Form.Control>
 </Form.Field>
 ```
@@ -466,7 +466,10 @@ You may need to access the raw validity state of a field in order to display you
   <Form.ValidityState>
     {(validity) => (
       <Form.Control asChild>
-        <TextField variant="primary" state={getTextFieldState(__validity__)} />
+        <TextField.Input
+          variant="primary"
+          state={getTextFieldInputState(__validity__)}
+        />
       </Form.Control>
     )}
   </Form.ValidityState>

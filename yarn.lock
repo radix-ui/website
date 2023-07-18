@@ -608,7 +608,7 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
-"@radix-ui/primitive@1.0.1":
+"@radix-ui/primitive@1.0.1", "@radix-ui/primitive@latest":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@radix-ui/primitive/-/primitive-1.0.1.tgz#e46f9958b35d10e9f6dc71c497305c22e3e55dbd"
   integrity sha512-yQ8oGX2GVsEYMWGxcovu1uGWPCxV5BFfeeYxqPmuAzUyLT9qmaMXSAhXpb0WrspIeqYzdJpkh2vHModJPgRIaw==
@@ -1799,12 +1799,13 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
-"@radix-ui/themes@0.0.28":
-  version "0.0.28"
-  resolved "https://registry.yarnpkg.com/@radix-ui/themes/-/themes-0.0.28.tgz#4b773745d9a595238484c70f0dc0f6b5de1220f7"
-  integrity sha512-an1F/4ELRp0RQXymGfdWmxCGDzUOeOU9Eq0EqeJEf87x94kCbnp5oA/ygcyxA4Kf9x+JUUZehnO8S6xVSKxWnw==
+"@radix-ui/themes@0.0.29":
+  version "0.0.29"
+  resolved "https://registry.yarnpkg.com/@radix-ui/themes/-/themes-0.0.29.tgz#0aa4c3497ac3fe3393d9b8daf513cb96ea87e148"
+  integrity sha512-6g4jEsjPLSDLsmkzwvnPSdNchSMnXmqu4Ru4I6hjyJTIAjmf5sxZTaiCsiYPTfAW7x14zOSDRL6stNXFYAqrPQ==
   dependencies:
     "@radix-ui/colors" "^1.0.0"
+    "@radix-ui/primitive" latest
     "@radix-ui/react-accessible-icon" latest
     "@radix-ui/react-alert-dialog" latest
     "@radix-ui/react-aspect-ratio" latest
