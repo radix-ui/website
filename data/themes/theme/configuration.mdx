@@ -6,65 +6,53 @@ metaDescription: The Theme component allows you to define and modify your theme
 # Configuring a theme
 
 <Description>
-  The `Theme` component allows you to define and modify your theme.
+  The Theme component allows you to define and modify your theme.
 </Description>
 
 ## Basic configuration
 
 Pass configuration options to `Theme` to modify your theme, refer to the [Theme component documentation](/docs/themes/components/theme) for a full list of options.
 
-```jsx live=true
-<Theme grayScale="accent" radius="full">
-  <Flex direction="column" gap="4">
-    <Text weight="bold">Feedback</Text>
-    <TextArea placeholder="Your feedback" />
-    <Button>Submit</Button>
-  </Flex>
+```jsx live=true line=1
+<Theme __accentScale__="tomato" __radius__="full">
+  <Card size="2" style={{ maxWidth: 450 }}>
+    <Flex direction="column" gap="4">
+      <Text weight="bold">Feedback</Text>
+      <TextArea placeholder="Your feedback" />
+      <Button>Submit</Button>
+    </Flex>
+  </Card>
 </Theme>
 ```
 
-## Component instance overrides
+### Component instance overrides
 
-Override configuration per component by passing the supported prop directly to that component.
+Override configuration per component by passing any supported prop directly to that component.
 
-```jsx live=true
-<Theme grayScale="accent" radius="full">
-  <Flex direction="column" gap="4">
-    <Button>Submit</Button>
-    <Button radius="none" color="gray">
-      Submit
-    </Button>
-  </Flex>
+```jsx live=true line=6
+<Theme accentScale="tomato" radius="full">
+  <Card size="2" style={{ maxWidth: 450 }}>
+    <Flex direction="column" gap="4">
+      <Text weight="bold">Feedback</Text>
+      <TextArea placeholder="Your feedback" />
+      <Button __color__="crimson" __radius__="medium">
+        Submit
+      </Button>
+    </Flex>
+  </Card>
 </Theme>
 ```
 
-## Nesting
+### Nesting
 
-Nest themes to modify configuration for a specific subtree.
+Nest another theme to modify configuration for a specific subtree.
 
-```jsx live=true
-<Theme grayScale="accent" radius="full">
-  <Text as="div" color="gray" mb="3">
-    Global theme
-  </Text>
-
-  <Flex direction="column" gap="4">
-    <Text weight="bold">Feedback</Text>
-    <TextArea placeholder="Your feedback" />
-    <Button>Submit</Button>
-  </Flex>
-
-  <Theme accentScale="gray" grayScale="accent" radius="full" asChild>
-    <Box
-      p="5"
-      mt="5"
-      style={{
-        borderRadius: 'var(--radius-4)',
-        border: '1px solid var(--gray-5)',
-      }}
-    >
+```jsx live=true line=15
+<Theme accentScale="tomato" radius="full">
+  <Card size="2" style={{ maxWidth: 450 }}>
+    <Box>
       <Text as="div" color="gray" mb="3">
-        Nested theme
+        Parent theme
       </Text>
 
       <Flex direction="column" gap="4">
@@ -73,7 +61,21 @@ Nest themes to modify configuration for a specific subtree.
         <Button>Submit</Button>
       </Flex>
     </Box>
-  </Theme>
+
+    <Theme __accentScale__="crimson" __radius__="small">
+      <Card size="2" mt="6">
+        <Text as="div" color="gray" mb="3">
+          Child theme
+        </Text>
+
+        <Flex direction="column" gap="4">
+          <Text weight="bold">Feedback</Text>
+          <TextArea placeholder="Your feedback" />
+          <Button>Submit</Button>
+        </Flex>
+      </Card>
+    </Theme>
+  </Card>
 </Theme>
 ```
 
@@ -81,36 +83,165 @@ Nest themes to modify configuration for a specific subtree.
 
 The `appearance` prop allows you to switch between light and dark modes. Using the `invert` option on a child theme will provide the opposite `appearance` to that of it's parent.
 
-```jsx live=true
-<Theme grayScale="accent" radius="full">
-  <Text as="div" color="gray" mb="3">
-    Global theme
-  </Text>
+```jsx live=true line=12
+<Theme accentScale="tomato" radius="full">
+  <Card size="2" style={{ maxWidth: 450 }}>
+    <Text as="div" color="gray" mb="3">
+      Parent theme
+    </Text>
+    <Flex direction="column" gap="4">
+      <Text weight="bold">Feedback</Text>
+      <TextArea placeholder="Your feedback" />
+      <Button>Submit</Button>
+    </Flex>
 
-  <Flex direction="column" gap="4">
-    <Text weight="bold">Feedback</Text>
-    <TextArea placeholder="Your feedback" />
-    <Button>Submit</Button>
-  </Flex>
-
-  <Theme appearance="invert" grayScale="accent" radius="full" asChild>
-    <Box
-      p="5"
-      mt="5"
-      style={{
-        borderRadius: 'var(--radius-4)',
-      }}
-    >
-      <Text as="div" color="gray" mb="3">
-        Inverted theme
-      </Text>
-
-      <Flex direction="column" gap="4">
-        <Text weight="bold">Feedback</Text>
-        <TextArea placeholder="Your feedback" />
-        <Button>Submit</Button>
-      </Flex>
-    </Box>
-  </Theme>
+    <Theme __appearance__="invert" asChild>
+      <Box p="4" mt="6" style={{ borderRadius: 'var(--radius-3)' }}>
+        <Text as="div" color="gray" mb="3">
+          Inverted child theme
+        </Text>
+        <Flex direction="column" gap="4">
+          <Text weight="bold">Feedback</Text>
+          <TextArea placeholder="Your feedback" />
+          <Button>Submit</Button>
+        </Flex>
+      </Card>
+    </Theme>
+  </Card>
 </Theme>
 ```
+
+## Modifying theme values
+
+Internal theme values can be customized by modifying [tokens](/docs/themes/theme/tokens). The simplest way to do so is to create a configuration stylesheet and ensure it is imported after the global theme styles:
+
+```css
+/* theme-config.css */
+.radix-themes {
+  --default-font-size: 18px;
+}
+```
+
+```jsx
+// app-root.jsx
+import '@radix-ui/themes/dist/index.css';
+import './themes-config.css';
+
+import { Theme } from '@radix-ui/themes';
+
+export default function () {
+  return (
+    <Theme>
+      <MyApp />
+    </Theme>
+  );
+}
+```
+
+## Custom fonts
+
+How you import and serve your fonts is up to you, though is order to render custom fonts you will need to assign the named font in your stack via the `--default-font-family` token, here is a self hosted example:
+
+```css
+@font-face {
+  font-family: 'Inter';
+  src: url('./inter-light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./inter-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./inter-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./inter-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+```
+
+```css
+.radix-themes {
+  --default-font-family: 'Inter', sans-serif;
+}
+```
+
+### Multiple fonts
+
+Radix Themes provides various tokens for customizing fonts across different contexts. for example `--heading-font-family`, `--code-font-family`, [and more](/docs/themes/theme/tokens#advanced-settings). These are useful when you'd like to implement a font pairing for headings separately from body copy, or wish to tune your code snippets, strong, or emphasis font assignments:
+
+```css
+.radix-themes {
+  --heading-font-family: 'Montserrat', sans-serif;
+  --code-font-family: 'Source Code Pro', monospace;
+}
+```
+
+### With next/font
+
+Loading fonts via [`next/font`](https://nextjs.org/docs/app/api-reference/components/font) is supported, simply load your font with the [`variable`](https://nextjs.org/docs/app/api-reference/components/font#variable) option to define a CSS variable name and assign it to `inter`. Then, use `inter.variable` to add the CSS variable to your HTML document.
+
+```jsx
+import { Inter } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" className={inter.variable}>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+Finally, assign the CSS variable in your `themes-config.css`:
+
+```css
+.radix-themes {
+  --default-font-family: var(--inter-font);
+}
+```
+
+### Alternative weight mapping
+
+Font weight mappings are defined by the [font weight tokens](/docs/themes/theme/tokens#font-weight). Though rare, you may find your chosen typeface does not match the provided defaults. In this case, you can reassign them inside of your `theme-config.css`:
+
+```css
+.radix-themes {
+  --font-weight-light: 200;
+  --font-weight-regular: 300;
+  /* ... */
+}
+```
+
+### Advanced font settings
+
+Out of the box, Radix Themes has a tuned set of typographic attributes for getting the most of out the system font stack. These include fine grain adjustments to letter spacing, line height, sizing, leading trim and more.
+
+When changing fonts it can be desirable to tweak these attributes to get the most out of your chosen typeface. For example, you may find that your chosen typeface has a slightly larger x-height than the default, and you'd like to change the line height to compensate. In this case, you can use the `--default-line-height` token to adjust values across the entire theme:
+
+```css
+.radix-themes {
+  --default-line-height: 1.4;
+  /* ... */
+}
+```
+
+See [tokens](/docs/themes/theme/tokens#defaults) for a comprehensive list of available options.
