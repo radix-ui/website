@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
-import { ThemeProvider, useTheme } from 'next-themes';
+import { ThemeProvider } from 'next-themes';
 import { globalCss, darkTheme, DesignSystemProvider } from '@modulz/design-system';
 import { Theme } from '@radix-ui/themes';
 import { PrimitivesDocsPage } from '@components/PrimitivesDocsPage';
@@ -10,6 +10,7 @@ import { useAnalytics } from '@lib/analytics';
 import { CssLibPreferenceProvider } from '@components/CssLibPreference';
 import { ThemesDocsPage } from '@components/ThemesDocsPage';
 import './radix-themes.css';
+import { SyntaxSchemeProvider } from '@components/Pre';
 
 const globalStyles = globalCss({
   '*, *::before, *::after': {
@@ -76,9 +77,11 @@ function Pages({ Component, pageProps }: AppProps) {
   if (isPrimitivesDocs) {
     return (
       <Theme accentScale={accentScale} style={themeRootStyles}>
-        <PrimitivesDocsPage>
-          <Component {...pageProps} />
-        </PrimitivesDocsPage>
+        <SyntaxSchemeProvider scheme={accentScale}>
+          <PrimitivesDocsPage>
+            <Component {...pageProps} />
+          </PrimitivesDocsPage>
+        </SyntaxSchemeProvider>
       </Theme>
     );
   }
@@ -86,9 +89,11 @@ function Pages({ Component, pageProps }: AppProps) {
   if (isColorsDocs) {
     return (
       <Theme accentScale={accentScale} style={themeRootStyles}>
-        <ColorsDocsPage>
-          <Component {...pageProps} />
-        </ColorsDocsPage>
+        <SyntaxSchemeProvider scheme={accentScale}>
+          <ColorsDocsPage>
+            <Component {...pageProps} />
+          </ColorsDocsPage>
+        </SyntaxSchemeProvider>
       </Theme>
     );
   }
@@ -96,16 +101,20 @@ function Pages({ Component, pageProps }: AppProps) {
   if (isThemesDocs) {
     return (
       <Theme accentScale={accentScale} style={themeRootStyles}>
-        <ThemesDocsPage>
-          <Component {...pageProps} />
-        </ThemesDocsPage>
+        <SyntaxSchemeProvider scheme={accentScale}>
+          <ThemesDocsPage>
+            <Component {...pageProps} />
+          </ThemesDocsPage>
+        </SyntaxSchemeProvider>
       </Theme>
     );
   }
 
   return (
     <Theme accentScale={accentScale} style={themeRootStyles}>
-      <Component {...pageProps} />
+      <SyntaxSchemeProvider scheme={accentScale}>
+        <Component {...pageProps} />
+      </SyntaxSchemeProvider>
     </Theme>
   );
 }

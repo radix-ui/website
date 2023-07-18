@@ -60,13 +60,6 @@ const PreWithLivePreview = (props) => {
           style={{
             borderTopLeftRadius: 0,
             borderTopRightRadius: 0,
-            backgroundColor: 'var(--gray-a2)',
-            '---text': 'var(--gray-a11)',
-            '---border': 'var(--gray-4)',
-            '---syntax1': 'var(--accent-a12)',
-            '---syntax2': 'var(--accent-11)',
-            '---syntax3': 'var(--gray-a11)',
-            '---syntax4': 'var(--gray-a11)',
           }}
           ref={(node) => {
             if (node) {
