@@ -13,15 +13,16 @@ import {
   Grid,
   Text,
 } from '@modulz/design-system';
-import { ArrowBottomRightIcon, ArrowRightIcon, ExternalLinkIcon } from '@radix-ui/react-icons';
+import { ArrowRightIcon, ExternalLinkIcon } from '@radix-ui/react-icons';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { Footer } from '@components/Footer';
-import { DefaultHeader } from '@components/DefaultHeader';
+import { ColorsHeader } from '@components/ColorsHeader';
+import { MobileMenuProvider } from '@components/MobileMenu';
 
 export default function ColorsHome() {
   return (
-    <Box>
-      <DefaultHeader />
+    <MobileMenuProvider>
+      <ColorsHeader />
 
       <Box css={{ py: '$4', mt: '$2' }}>
         <TitleAndMetaTags
@@ -736,6 +737,6 @@ export default function ColorsHome() {
       <Container size="3">
         <Footer />
       </Container>
-    </Box>
+    </MobileMenuProvider>
   );
 }
