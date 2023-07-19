@@ -14,7 +14,7 @@ metaDescription: The Theme component allows you to define and modify your theme
 Pass configuration options to `Theme` to modify your theme, refer to the [Theme component documentation](/docs/themes/components/theme) for a full list of options.
 
 ```jsx live=true line=1
-<Theme __accentScale__="tomato" __radius__="full">
+<Theme __accentScale__="crimson" __radius__="full">
   <Card size="2" style={{ maxWidth: 450 }}>
     <Flex direction="column" gap="4">
       <Text weight="bold">Feedback</Text>
@@ -30,12 +30,12 @@ Pass configuration options to `Theme` to modify your theme, refer to the [Theme 
 Override configuration per component by passing any supported prop directly to that component.
 
 ```jsx live=true line=6
-<Theme accentScale="tomato" radius="full">
+<Theme accentScale="crimson" radius="full">
   <Card size="2" style={{ maxWidth: 450 }}>
     <Flex direction="column" gap="4">
       <Text weight="bold">Feedback</Text>
       <TextArea placeholder="Your feedback" />
-      <Button __color__="crimson" __radius__="medium">
+      <Button __color__="plum" __radius__="none">
         Submit
       </Button>
     </Flex>
@@ -48,7 +48,7 @@ Override configuration per component by passing any supported prop directly to t
 Nest another theme to modify configuration for a specific subtree.
 
 ```jsx live=true line=15
-<Theme accentScale="tomato" radius="full">
+<Theme accentScale="crimson" radius="full">
   <Card size="2" style={{ maxWidth: 450 }}>
     <Box>
       <Text as="div" color="gray" mb="3">
@@ -62,7 +62,7 @@ Nest another theme to modify configuration for a specific subtree.
       </Flex>
     </Box>
 
-    <Theme __accentScale__="crimson" __radius__="small">
+    <Theme __accentScale__="plum" __radius__="none">
       <Card size="2" mt="6">
         <Text as="div" color="gray" mb="3">
           Child theme
@@ -79,39 +79,7 @@ Nest another theme to modify configuration for a specific subtree.
 </Theme>
 ```
 
-### Appearance and inversion
-
-The `appearance` prop allows you to switch between light and dark modes. Using the `invert` option on a child theme will provide the opposite `appearance` to that of it's parent.
-
-```jsx live=true line=12
-<Theme accentScale="tomato" radius="full">
-  <Card size="2" style={{ maxWidth: 450 }}>
-    <Text as="div" color="gray" mb="3">
-      Parent theme
-    </Text>
-    <Flex direction="column" gap="4">
-      <Text weight="bold">Feedback</Text>
-      <TextArea placeholder="Your feedback" />
-      <Button>Submit</Button>
-    </Flex>
-
-    <Theme __appearance__="invert" asChild>
-      <Box p="4" mt="6" style={{ borderRadius: 'var(--radius-3)' }}>
-        <Text as="div" color="gray" mb="3">
-          Inverted child theme
-        </Text>
-        <Flex direction="column" gap="4">
-          <Text weight="bold">Feedback</Text>
-          <TextArea placeholder="Your feedback" />
-          <Button>Submit</Button>
-        </Flex>
-      </Card>
-    </Theme>
-  </Card>
-</Theme>
-```
-
-## Modifying theme values
+## Modifying theme tokens
 
 Internal theme values can be customized by modifying [tokens](/docs/themes/theme/tokens). The simplest way to do so is to create a configuration stylesheet and ensure it is imported after the global theme styles:
 
@@ -219,7 +187,7 @@ Finally, assign the CSS variable in your `themes-config.css`:
 }
 ```
 
-### Alternative weight mapping
+### Weight mapping
 
 Font weight mappings are defined by the [font weight tokens](/docs/themes/theme/tokens#font-weight). Though rare, you may find your chosen typeface does not match the provided defaults. In this case, you can reassign them inside of your `theme-config.css`:
 
