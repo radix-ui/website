@@ -7,7 +7,7 @@ export const PrimitivesDocsHeader = (props: HeaderProps) => {
   const router = useRouter();
 
   return (
-    <Header search={<PrimitivesDocsSearch />} {...props}>
+    <Header {...props}>
       <Link
         size="2"
         color="gray"
