@@ -57,6 +57,7 @@ const definitions = {
   contextMenuContent: themes.contextMenuContentPropDefs,
   contextMenuItem: themes.contextMenuItemPropDefs,
   theme: { ...asChildProp, ...themes.themePropDefs },
+  card: { ...asChildProp, ...themes.cardPropDefs },
 } as const;
 
 type PropDefinitions = typeof definitions;

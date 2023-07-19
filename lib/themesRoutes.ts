@@ -65,6 +65,7 @@ export const themesRoutes = [
       { title: 'Tabs', slug: 'docs/themes/components/tabs' },
       { title: 'Dropdown Menu', slug: 'docs/themes/components/dropdown-menu' },
       { title: 'Context Menu', slug: 'docs/themes/components/context-menu' },
+      { title: 'Card', slug: 'docs/themes/components/card' },
     ],
   },
 

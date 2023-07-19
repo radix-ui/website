@@ -1,0 +1,139 @@
+---
+metaTitle: Card
+metaDescription: Container that groups related content and actions.
+---
+
+```jsx live=true
+<Card>
+  <Text as="div" size="2" weight="bold">
+    Get started
+  </Text>
+  <Text as="div" color="gray" size="2">
+    Start building in minutes
+  </Text>
+</Card>
+```
+
+## API Reference
+
+This component is based on the `div` element and supports common margin props `m`, `mx`, `my`, `ml`, `mr`, `mt`, `mb`.
+
+<ThemesPropsTable name="card" />
+
+## Examples
+
+### As another element
+
+Use the `asChild` prop to render the card as a link or a button. This prop adds styles for the interactive states, like hover and focus.
+
+```jsx live=true
+<Card asChild>
+  <a href="#">
+    <Text as="div" size="2" weight="bold">
+      Get started
+    </Text>
+    <Text as="div" color="gray" size="2">
+      Start building in minutes
+    </Text>
+  </a>
+</Card>
+```
+
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Flex gap="3" direction="column">
+  <Card size="1" style={{ maxWidth: 350 }}>
+    <Text as="div" size="1" weight="bold">
+      Get started
+    </Text>
+    <Text as="div" color="gray" size="1">
+      Start building in minutes
+    </Text>
+  </Card>
+
+  <Card size="2" style={{ maxWidth: 400 }}>
+    <Text as="div" size="2" weight="bold">
+      Get started
+    </Text>
+    <Text as="div" color="gray" size="2">
+      Start building in minutes
+    </Text>
+  </Card>
+
+  <Card size="3" style={{ maxWidth: 450 }}>
+    <Text as="div" size="3" weight="bold">
+      Get started
+    </Text>
+    <Text as="div" color="gray" size="3">
+      Start building in minutes
+    </Text>
+  </Card>
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style.
+
+```jsx live=true
+<Flex gap="3" align="center">
+  <Card variant="outline">
+    <Text as="div" size="2" weight="bold">
+      Outline
+    </Text>
+  </Card>
+
+  <Card variant="surface">
+    <Text as="div" size="2" weight="bold">
+      Surface
+    </Text>
+  </Card>
+
+  <Card variant="ghost">
+    <Text as="div" size="2" weight="bold">
+      Ghost
+    </Text>
+  </Card>
+</Flex>
+```
+
+### Radius
+
+Use the `radius` prop to assign a specific radius value, ignoring the global theme.
+
+```jsx live=true
+<Flex gap="3">
+  <Card radius="none">
+    <Text as="div" size="2" weight="bold">
+      None
+    </Text>
+  </Card>
+
+  <Card radius="small">
+    <Text as="div" size="2" weight="bold">
+      Small
+    </Text>
+  </Card>
+
+  <Card radius="medium">
+    <Text as="div" size="2" weight="bold">
+      Medium
+    </Text>
+  </Card>
+
+  <Card radius="large">
+    <Text as="div" size="2" weight="bold">
+      Large
+    </Text>
+  </Card>
+
+  <Card radius="full">
+    <Text as="div" size="2" weight="bold">
+      Full
+    </Text>
+  </Card>
+</Flex>
+```
