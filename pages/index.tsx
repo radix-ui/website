@@ -11,20 +11,23 @@ import { AdoptionSection } from '@components/marketing/AdoptionSection';
 import { CommunitySection } from '@components/marketing/CommunitySection';
 import { OtherProductsSection } from '@components/marketing/OtherProductsSection';
 import { Footer } from '@components/Footer';
-import { DefaultHeader } from '@components/DefaultHeader';
 import { FancyBackground } from '@components/marketing/FancyBackground';
 import { StatsSection } from '@components/marketing/StatsSection';
+import { MobileMenuProvider } from '@components/MobileMenu';
+import { PrimitivesHeader } from '@components/PrimitivesHeader';
 
 export default function PrimitivesHome() {
   return (
-    <Box>
+    <MobileMenuProvider>
       <TitleAndMetaTags
         title="Primitives – Radix UI"
         description="An open-source React component library for building high-quality, accessible design systems and web apps."
         image="default.png"
       />
+      <Box css={{ height: 0 }}>
+        <PrimitivesHeader ghost />
+      </Box>
       <FancyBackground>
-        <DefaultHeader />
         <MainHero />
       </FancyBackground>
       <CaseStudiesSection />
@@ -50,6 +53,6 @@ export default function PrimitivesHome() {
       <Container size="3">
         <Footer />
       </Container>
-    </Box>
+    </MobileMenuProvider>
   );
 }

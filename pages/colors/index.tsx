@@ -22,7 +22,7 @@ import { MobileMenuProvider } from '@components/MobileMenu';
 export default function ColorsHome() {
   return (
     <MobileMenuProvider>
-      <ColorsHeader />
+      <ColorsHeader ghost />
 
       <Box css={{ py: '$4', mt: '$2' }}>
         <TitleAndMetaTags

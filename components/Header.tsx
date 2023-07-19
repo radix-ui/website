@@ -1,4 +1,5 @@
-import { Flex, IconButton, Link, Tooltip } from '@radix-ui/themes';
+import * as React from 'react';
+import { Flex, IconButton, Tooltip } from '@radix-ui/themes';
 import styles from './Header.module.css';
 import { BoxLink } from './BoxLink';
 import { ThemeToggle } from './ThemeToggle';
@@ -6,17 +7,45 @@ import { Cross1Icon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useMobileMenuContext } from './MobileMenu';
+import { classNames } from '@lib/classNames';
 
 export interface HeaderProps {
   children?: React.ReactNode;
+  ghost?: boolean;
 }
 
-export const Header = ({ children }: HeaderProps) => {
+type ScrollState = 'at-top' | 'scrolling-up' | 'scrolling-down';
+
+export const Header = ({ children, ghost }: HeaderProps) => {
   const mobileMenu = useMobileMenuContext();
   const router = useRouter();
 
+  const [scrollState, setScrollState] = React.useState<ScrollState>('at-top');
+
+  React.useEffect(() => {
+    let previousScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const direction = previousScrollY < window.scrollY ? 'scrolling-down' : 'scrolling-up';
+      const state = window.scrollY < 30 ? 'at-top' : direction;
+      previousScrollY = window.scrollY;
+      setScrollState(state);
+    };
+
+    if (ghost) {
+      addEventListener('scroll', handleScroll, { passive: true });
+    } else {
+      removeEventListener('scroll', handleScroll);
+    }
+
+    return () => removeEventListener('scroll', handleScroll);
+  }, [ghost]);
+
   return (
-    <div className={styles.HeaderRoot}>
+    <div
+      data-scroll-state={scrollState}
+      className={classNames(styles.HeaderRoot, ghost ? styles.ghost : '')}
+    >
       <div className={styles.HeaderInner}>
         <Flex align="center" position="absolute" top="0" bottom="0" left="0" pl="4">
           <BoxLink href="/">
@@ -47,6 +76,7 @@ export const Header = ({ children }: HeaderProps) => {
           <HeaderProductLink
             href="/primitives"
             active={
+              router.pathname === '/' ||
               router.pathname === '/primitives' ||
               router.pathname.startsWith('/primitives/') ||
               router.pathname.startsWith('/docs/primitives')

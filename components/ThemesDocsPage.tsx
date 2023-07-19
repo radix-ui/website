@@ -10,7 +10,7 @@ import { SideNav } from './SideNav';
 export function ThemesDocsPage({ children }: { children: React.ReactNode }) {
   return (
     <MobileMenuProvider>
-      <ThemesHeader />
+      <ThemesHeader ghost />
 
       <MobileMenu>
         <ThemesHeader />

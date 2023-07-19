@@ -14,23 +14,24 @@ import {
   Separator,
 } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { DefaultHeader } from '@components/DefaultHeader';
 import { CaseStudyLogo } from '@components/marketing/CaseStudyLogo';
 import { Footer } from '@components/Footer';
 import { LogoLink } from '@components/marketing/LogoLink';
 import { Root as AccessibleIcon } from '@radix-ui/react-accessible-icon';
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
+import { PrimitivesHeader } from '@components/PrimitivesHeader';
+import { MobileMenuProvider } from '@components/MobileMenu';
 
 export default function CaseStudy() {
   return (
-    <>
+    <MobileMenuProvider>
       <TitleAndMetaTags
         title="Case studies – Radix UI"
         description="An open-source React component library for building high-quality, accessible design systems and web apps."
         image="default.png"
       />
 
-      <DefaultHeader />
+      <PrimitivesHeader />
 
       <Container size={{ '@initial': 2, '@bp2': 3 }}>
         <Section>
@@ -199,6 +200,6 @@ export default function CaseStudy() {
 
         <Footer />
       </Container>
-    </>
+    </MobileMenuProvider>
   );
 }

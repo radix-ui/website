@@ -15,13 +15,14 @@ import {
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { MDXProvider, components } from '@components/MDXComponents';
 import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
-import { DefaultHeader } from '@components/DefaultHeader';
 import { MarketingCaption } from '@components/marketing/MarketingCaption';
 import { CaseStudyLogo, CaseStudyLogoVariant } from '@components/marketing/CaseStudyLogo';
 import { Footer } from '@components/Footer';
 import { BoxLink } from '@components/BoxLink';
 import { Root as AccessibleIcon } from '@radix-ui/react-accessible-icon';
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
+import { PrimitivesHeader } from '@components/PrimitivesHeader';
+import { MobileMenuProvider } from '@components/MobileMenu';
 
 type CaseStudyPage = {
   frontmatter: {
@@ -47,14 +48,14 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
   return (
-    <>
+    <MobileMenuProvider>
       <TitleAndMetaTags
         title={`${frontmatter.metaTitle} – Case studies – Radix UI`}
         description={frontmatter.metaDescription}
         image="default.png"
       />
 
-      <DefaultHeader />
+      <PrimitivesHeader />
 
       <Container size={{ '@initial': 2, '@bp2': 3 }}>
         <Section>
@@ -146,7 +147,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
 
         <Footer />
       </Container>
-    </>
+    </MobileMenuProvider>
   );
 }
 

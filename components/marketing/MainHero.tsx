@@ -281,27 +281,31 @@ export const MainHero = () => {
             css={{
               color: 'transparent',
               WebkitBackgroundClip: 'text',
-              backgroundImage: 'radial-gradient(circle, $hiContrast, $colors$indigo12)',
+              backgroundImage:
+                'radial-gradient(circle at bottom left, $colors$hiContrast, $colors$indigo12)',
               // Use padding rather than margin, or otherwise some descenders
               // may be clipped with WebkitBackgroundClip: 'text'
               pb: '$4',
               // Same issue, letters may be clipped horizontally
               px: '$2',
-              mx: '-$2',
+              mr: '-$2',
+              ml: '-$3',
+              mt: '$5',
               fontWeight: 500,
+              lineHeight: 1,
               fontSize: 'min(max($8, 11.2vw), $9)',
+              textWrap: 'balance',
               letterSpacing: 'max(min(-0.055em, -0.66vw), -0.07em)',
+              maxWidth: 500,
+              '@media (min-width: 600px)': {
+                maxWidth: 750,
+              },
               '@media (min-width: 900px) and (min-height: 850px)': {
                 fontSize: '80px',
-                lineHeight: '0.85',
               },
             }}
           >
-            Why waste
-            <br />
-            time reinventing
-            <br />
-            UI components<span style={{ fontSize: '90%' }}>?</span>
+            Bring your own styles, Radix does the rest.
           </Text>
           <Box css={{ maxWidth: 500, mb: '$5' }}>
             <Paragraph size="2" as="p">

@@ -132,7 +132,16 @@ export const StatsSection = () => {
 
 const FancyBackgroundChart = () => {
   return (
-    <Flex align="end" css={{ position: 'absolute', left: 0, right: 0, bottom: 0 }}>
+    <Flex
+      align="end"
+      css={{
+        pointerEvents: 'none',
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        bottom: 0,
+      }}
+    >
       <Box
         css={{
           // This is the left-hand line that connects to the chart

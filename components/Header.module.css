@@ -5,14 +5,23 @@
 .HeaderInner {
   position: fixed;
   font-family: var(--fonts-untitled);
-  background-color: var(--color-panel);
-  box-shadow: inset 0 -1px var(--gray-a4);
   height: inherit;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 2;
   user-select: none;
+  box-shadow: inset 0 -1px transparent;
+  transition: background-color 60ms, box-shadow 200ms;
+}
+
+.HeaderRoot[data-scroll-state='at-top'] .HeaderInner {
+  transition-duration: 200ms;
+}
+
+.HeaderRoot:not(.ghost[data-scroll-state='at-top']) > .HeaderInner {
+  background-color: var(--color-panel);
+  box-shadow: inset 0 -1px var(--gray-a4);
 }
 
 .HeaderProductLink {

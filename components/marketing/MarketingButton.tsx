@@ -11,7 +11,7 @@ export const StyledButton = styled('button', {
 
   // Custom
   height: '$7',
-  px: '$4',
+  px: 20,
   fontFamily: '$untitled',
   fontWeight: 500,
   borderRadius: '$2',

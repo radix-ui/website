@@ -36,7 +36,7 @@ const DropdownMenuSeparator = styled(DropdownMenuPrimitive.Separator, {
   bc: '$slate4',
   height: 1,
   my: '$1',
-  ml: '$5',
+  ml: '20px',
   mr: '$1',
 });
 
@@ -53,7 +53,7 @@ const itemCss = {
   height: '$5',
   color: '$hiContrast',
   minWidth: 90,
-  pl: '$4',
+  pl: '20px',
   pr: '$3',
   br: '$1',
 
