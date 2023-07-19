@@ -24,7 +24,7 @@ function NavWrapper({ children, isMobileMenuOpen }) {
         bottom="0"
         display={{ initial: 'none', md: 'block' }}
         style={{
-          top: 'var(--space-8)',
+          top: 'var(--header-height)',
           zIndex: 1,
           maxHeight: 'auto',
           overflowX: 'hidden',

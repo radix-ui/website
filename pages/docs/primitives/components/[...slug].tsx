@@ -1,15 +1,12 @@
 import React from 'react';
 import { getMDXComponent } from 'mdx-bundler/client';
-import { RemoveScroll } from 'react-remove-scroll';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { MDXProvider, components } from '@components/MDXComponents';
 import { QuickNav } from '@components/QuickNav';
 import { OldVersionNote } from '@components/OldVersionNote';
 import { getAllFrontmatter, getAllVersionsFromPath, getMdxBySlug } from '@lib/mdx';
 import { getPackageData, formatBytes } from '@lib/bundlephobia';
-
 import type { Frontmatter } from 'types/frontmatter';
-import { Box as DsBox } from '@modulz/design-system';
 
 type Doc = {
   frontmatter: Frontmatter;
@@ -42,32 +39,7 @@ export default function ComponentsDoc({ frontmatter, code }: Doc) {
         <Component components={components as any} />
       </MDXProvider>
 
-      <DsBox
-        as="aside"
-        // Components that hide the scrollbar (like Dialog) add padding to
-        // account for the scrollbar gap to avoid layout jank. This does not
-        // work for position: fixed elements. Since we use react-remove-scroll
-        // under the hood for those primitives, we can add this helper class
-        // provided by that lib to deal with that for the QuickNav.
-        // https://github.com/radix-ui/website/issues/64
-        // https://github.com/theKashey/react-remove-scroll#positionfixed-elements
-        className={RemoveScroll.classNames.zeroRight}
-        css={{
-          display: 'none',
-          '@media (min-width: 1440px)': {
-            display: 'block',
-            width: 250,
-            flexShrink: 0,
-            zIndex: 1,
-            position: 'fixed',
-            top: '$sizes$8',
-            right: 0,
-            bottom: 0,
-          },
-        }}
-      >
-        <QuickNav key={frontmatter.slug} />
-      </DsBox>
+      <QuickNav key={frontmatter.slug} />
     </>
   );
 }

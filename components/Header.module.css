@@ -1,5 +1,5 @@
 .HeaderRoot {
-  height: var(--space-8);
+  height: var(--header-height);
 }
 
 .HeaderInner {

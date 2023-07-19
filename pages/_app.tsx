@@ -25,10 +25,6 @@ const globalStyles = globalCss({
     WebkitFontSmoothing: 'antialiased',
     MozOsxFontSmoothing: 'grayscale',
     WebkitTextSizeAdjust: '100%',
-
-    '.dark-theme &': {
-      backgroundColor: 'var(--color-background, $loContrast)',
-    },
   },
 
   svg: {
@@ -49,7 +45,19 @@ const globalStyles = globalCss({
     zIndex: 0,
   },
 
-  'h1, h2, h3, h4, h5': { fontWeight: 500 },
+  'h1, h2, h3, h4, h5': {
+    fontWeight: 500,
+  },
+
+  ':root': {
+    '--quick-nav-display': 'none',
+  },
+
+  '@media (min-width: 1440px)': {
+    ':root': {
+      '--quick-nav-display': 'block',
+    },
+  },
 });
 
 const themeRootStyles = {

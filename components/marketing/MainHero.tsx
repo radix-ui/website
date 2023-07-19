@@ -290,7 +290,6 @@ export const MainHero = () => {
               px: '$2',
               mr: '-$2',
               ml: '-$3',
-              mt: '$5',
               fontWeight: 500,
               lineHeight: 1,
               fontSize: 'min(max($8, 11.2vw), $9)',
