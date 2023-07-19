@@ -3,7 +3,14 @@ import { Box, darkTheme } from '@modulz/design-system';
 
 export const FancyBackground: React.FC = ({ children }) => {
   return (
-    <Box css={{ position: 'relative', zIndex: 0 }}>
+    <Box
+      css={{
+        position: 'relative',
+        zIndex: 0,
+        // Header height
+        pt: '$8',
+      }}
+    >
       <Box
         css={{
           position: 'absolute',
