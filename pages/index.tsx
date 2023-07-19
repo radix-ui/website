@@ -13,12 +13,22 @@ import { OtherProductsSection } from '@components/marketing/OtherProductsSection
 import { Footer } from '@components/Footer';
 import { FancyBackground } from '@components/marketing/FancyBackground';
 import { StatsSection } from '@components/marketing/StatsSection';
-import { MobileMenuProvider } from '@components/MobileMenu';
+import { MobileMenu, MobileMenuProvider } from '@components/MobileMenu';
 import { PrimitivesHeader } from '@components/PrimitivesHeader';
+import { DocsNav } from '@components/DocsNav';
+import { primitivesRoutes } from '@lib/primitivesRoutes';
+import { ScrollArea } from '@radix-ui/themes';
 
 export default function PrimitivesHome() {
   return (
     <MobileMenuProvider>
+      <MobileMenu>
+        <PrimitivesHeader />
+        <ScrollArea>
+          <DocsNav routes={primitivesRoutes} />
+        </ScrollArea>
+      </MobileMenu>
+
       <TitleAndMetaTags
         title="Primitives – Radix UI"
         description="An open-source React component library for building high-quality, accessible design systems and web apps."

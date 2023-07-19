@@ -17,11 +17,21 @@ import { ArrowRightIcon, ExternalLinkIcon } from '@radix-ui/react-icons';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { Footer } from '@components/Footer';
 import { ColorsHeader } from '@components/ColorsHeader';
-import { MobileMenuProvider } from '@components/MobileMenu';
+import { MobileMenu, MobileMenuProvider } from '@components/MobileMenu';
+import { colorsRoutes } from '@lib/colorsRoutes';
+import { DocsNav } from '@components/DocsNav';
+import { ScrollArea } from '@radix-ui/themes';
 
 export default function ColorsHome() {
   return (
     <MobileMenuProvider>
+      <MobileMenu>
+        <ColorsHeader />
+        <ScrollArea>
+          <DocsNav routes={colorsRoutes} />
+        </ScrollArea>
+      </MobileMenu>
+
       <ColorsHeader ghost />
 
       <Box css={{ py: '$4', mt: '$2' }}>
@@ -38,6 +48,7 @@ export default function ColorsHome() {
           css={{
             pt: '$3',
             pb: '$7',
+            textWrap: 'balance',
             '@bp2': {
               pt: '$6',
               pb: '$8',
