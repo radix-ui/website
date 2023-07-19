@@ -8,102 +8,102 @@
   line-height: 21px;
   white-space: pre;
   position: relative;
-  background-color: var(---background);
-  color: var(---text);
-  box-shadow: inset 0 0 0 1px var(---border);
+  background-color: var(--background);
+  color: var(--text);
+  box-shadow: inset 0 0 0 1px var(--border);
 }
 
 .Pre.violet {
-  ---background: var(--accent-a2);
-  ---text: var(--accent-11);
+  --background: var(--accent-a2);
+  --text: var(--accent-11);
 
-  ---border: var(--accent-4);
-  ---fadedLines: var(--colors-gray-a8);
-  ---comment: var(--gray-a9);
-  ---removed: var(--colors-red11);
-  ---added: var(--colors-green11);
-  ---lineNumbers: var(--colors-indigo5);
+  --border: var(--accent-4);
+  --fadedLines: var(--gray-a8);
+  --comment: var(--gray-a9);
+  --removed: var(--red-11);
+  --added: var(--green-11);
+  --lineNumbers: var(--indigo-5);
 
-  ---syntax1: var(--colors-blue10);
-  ---syntax2: var(--colors-pink11);
-  ---syntax3: var(--colors-blue11);
-  ---syntax4: var(--colors-blue11);
+  --syntax1: var(--blue-10);
+  --syntax2: var(--pink-11);
+  --syntax3: var(--blue-11);
+  --syntax4: var(--blue-11);
 
-  ---highlightedLineBg: var(--accent-3);
+  --highlightedLineBg: var(--accent-3);
 
-  ---highlightedWord1Bg: var(--accent-4);
-  ---highlightedWord1BgActive: var(--accent-6);
-  ---highlightedWord1Text: var(--accent-11);
+  --highlightedWord1Bg: var(--accent-4);
+  --highlightedWord1BgActive: var(--accent-6);
+  --highlightedWord1Text: var(--accent-11);
 
-  ---highlightedWord2Bg: var(--colors-red3);
-  ---highlightedWord2BgActive: var(--colors-red5);
-  ---highlightedWord2Text: var(--colors-red11);
+  --highlightedWord2Bg: var(--red-3);
+  --highlightedWord2BgActive: var(--red-5);
+  --highlightedWord2Text: var(--red-11);
 
-  ---highlightedWord3Bg: var(--colors-green3);
-  ---highlightedWord3BgActive: var(--colors-green5);
-  ---highlightedWord3Text: var(--colors-green11);
+  --highlightedWord3Bg: var(--green-3);
+  --highlightedWord3BgActive: var(--green-5);
+  --highlightedWord3Text: var(--green-11);
 }
 
 .Pre.amber {
-  ---background: var(--accent-a2);
-  ---text: var(--accent-11);
+  --background: var(--accent-a2);
+  --text: var(--accent-11);
 
-  ---border: var(--accent-4);
-  ---fadedLines: var(--colors-gray-a8);
-  ---comment: var(--gray-a9);
-  ---removed: var(--colors-red11);
-  ---added: var(--colors-green11);
-  ---lineNumbers: var(--colors-indigo5);
+  --border: var(--accent-4);
+  --fadedLines: var(--gray-a8);
+  --comment: var(--gray-a9);
+  --removed: var(--red-11);
+  --added: var(--green-11);
+  --lineNumbers: var(--indigo-5);
 
-  ---syntax1: var(--colors-blue10);
-  ---syntax2: var(--colors-pink11);
-  ---syntax3: var(--colors-blue11);
-  ---syntax4: var(--colors-blue11);
+  --syntax1: var(--blue-10);
+  --syntax2: var(--pink-11);
+  --syntax3: var(--blue-11);
+  --syntax4: var(--blue-11);
 
-  ---highlightedLineBg: var(--accent-3);
+  --highlightedLineBg: var(--accent-3);
 
-  ---highlightedWord1Bg: var(--accent-4);
-  ---highlightedWord1BgActive: var(--accent-6);
-  ---highlightedWord1Text: var(--accent-11);
+  --highlightedWord1Bg: var(--accent-4);
+  --highlightedWord1BgActive: var(--accent-6);
+  --highlightedWord1Text: var(--accent-11);
 
-  ---highlightedWord2Bg: var(--colors-red3);
-  ---highlightedWord2BgActive: var(--colors-red5);
-  ---highlightedWord2Text: var(--colors-red11);
+  --highlightedWord2Bg: var(--red-3);
+  --highlightedWord2BgActive: var(--red-5);
+  --highlightedWord2Text: var(--red-11);
 
-  ---highlightedWord3Bg: var(--colors-green3);
-  ---highlightedWord3BgActive: var(--colors-green5);
-  ---highlightedWord3Text: var(--colors-green11);
+  --highlightedWord3Bg: var(--green-3);
+  --highlightedWord3BgActive: var(--green-5);
+  --highlightedWord3Text: var(--green-11);
 }
 
 .Pre.indigo {
-  ---background: var(--accent-a2);
-  ---text: var(--accent-11);
+  --background: var(--accent-a2);
+  --text: var(--accent-11);
 
-  ---border: var(--accent-4);
-  ---fadedLines: var(--colors-gray-a8);
-  ---comment: var(--gray-a9);
-  ---removed: var(--colors-red11);
-  ---added: var(--colors-green11);
-  ---lineNumbers: var(--colors-indigo5);
+  --border: var(--accent-4);
+  --fadedLines: var(--gray-a8);
+  --comment: var(--gray-a9);
+  --removed: var(--red-11);
+  --added: var(--green-11);
+  --lineNumbers: var(--indigo-5);
 
-  ---syntax1: var(--colors-blue11);
-  ---syntax2: var(--colors-crimson11);
-  ---syntax3: var(--accent-11);
-  ---syntax4: var(--colors-blue11);
+  --syntax1: var(--blue-11);
+  --syntax2: var(--crimson-11);
+  --syntax3: var(--accent-11);
+  --syntax4: var(--blue-11);
 
-  ---highlightedLineBg: var(--accent-3);
+  --highlightedLineBg: var(--accent-3);
 
-  ---highlightedWord1Bg: var(--accent-a3);
-  ---highlightedWord1BgActive: var(--accent-6);
-  ---highlightedWord1Text: var(--accent-11);
+  --highlightedWord1Bg: var(--accent-a3);
+  --highlightedWord1BgActive: var(--accent-6);
+  --highlightedWord1Text: var(--accent-11);
 
-  ---highlightedWord2Bg: var(--colors-red3);
-  ---highlightedWord2BgActive: var(--colors-red5);
-  ---highlightedWord2Text: var(--colors-red11);
+  --highlightedWord2Bg: var(--red-3);
+  --highlightedWord2BgActive: var(--red-5);
+  --highlightedWord2Text: var(--red-11);
 
-  ---highlightedWord3Bg: var(--colors-green3);
-  ---highlightedWord3BgActive: var(--colors-green5);
-  ---highlightedWord3Text: var(--colors-green11);
+  --highlightedWord3Bg: var(--green-3);
+  --highlightedWord3BgActive: var(--green-5);
+  --highlightedWord3Text: var(--green-11);
 }
 
 .Pre > code {
@@ -111,31 +111,31 @@
 }
 
 .Pre :global(.token.parameter) {
-  color: var(---text);
+  color: var(--text);
 }
 
 .Pre
   :where(:global(.token.tag), :global(.token.class-name), :global(.token.selector), :global(.token.selector)
     :global(.class), :global(.token.function)) {
-  color: var(---syntax1);
+  color: var(--syntax1);
 }
 
 .Pre
   :where(:global(.token.attr-value), :global(.token.class), :global(.token.string), :global(.token.number), :global(.token.unit), :global(.token.color)) {
-  color: var(---syntax2);
+  color: var(--syntax2);
 }
 
 .Pre
   :where(:global(.token.attr-name), :global(.token.keyword), :global(.token.rule), :global(.token.operator), :global(.token.pseudo-class), :global(.token.important)) {
-  color: var(---syntax3);
+  color: var(--syntax3);
 }
 
 .Pre :where(:global(.token.punctuation), :global(.token.module), :global(.token.property)) {
-  color: var(---syntax4);
+  color: var(--syntax4);
 }
 
 .Pre :where(:global(.token.comment)) {
-  color: var(---comment);
+  color: var(--comment);
 }
 
 .Pre :where(:global(.token.atapply) :global(.token:not(.rule)):not(:global(.important))) {
@@ -158,11 +158,11 @@
 }
 
 .Pre :where(:global(.token.deleted):not(:global(.prefix))) {
-  color: var(---removed);
+  color: var(--removed);
 }
 
 .Pre :where(:global(.token.inserted):not(:global(.prefix))) {
-  color: var(---added);
+  color: var(--added);
 }
 
 .Pre :where(:global(.token.deleted.prefix), :global(.token.inserted.prefix)) {
@@ -170,9 +170,9 @@
 }
 
 .Pre :where(:global(.highlight-word)) {
-  ---bgAndShadow: var(---highlightedWord1Bg);
-  color: var(---highlightedWord1Text);
-  background-color: var(---bgAndShadow);
+  --bgAndShadow: var(--highlightedWord1Bg);
+  color: var(--highlightedWord1Text);
+  background-color: var(--bgAndShadow);
   display: inline-block;
   border-radius: 4px;
 }
@@ -182,27 +182,27 @@
 }
 
 .Pre :where(:global(.highlight-word)):global(.on) {
-  ---bgAndShadow: var(---highlightedWord1BgActive);
+  --bgAndShadow: var(--highlightedWord1BgActive);
   transition: all 100ms ease;
   cursor: pointer;
 }
 
 .Pre :global(.token.deleted) :global(.highlight-word) {
-  ---bgAndShadow: var(---highlightedWord2Bg);
-  color: var(---highlightedWord2Text);
+  --bgAndShadow: var(--highlightedWord2Bg);
+  color: var(--highlightedWord2Text);
 }
 
 .Pre :global(.token.deleted) :global(.highlight-word):global(.on) {
-  ---bgAndShadow: var(---highlightedWord2BgActive);
+  --bgAndShadow: var(--highlightedWord2BgActive);
 }
 
 .Pre :global(.token.inserted) :global(.highlight-word) {
-  ---bgAndShadow: var(---highlightedWord3Bg);
-  color: var(---highlightedWord3Text);
+  --bgAndShadow: var(--highlightedWord3Bg);
+  color: var(--highlightedWord3Text);
 }
 
 .Pre :global(.token.inserted) :global(.highlight-word):global(.on) {
-  ---bgAndShadow: var(---highlightedWord3BgActive);
+  --bgAndShadow: var(--highlightedWord3BgActive);
 }
 
 .Pre[data-line-numbers='true'] :global(.highlight-line) {
@@ -215,7 +215,7 @@
   position: absolute;
   left: -5px;
   top: 0;
-  color: var(---lineNumbers);
+  color: var(--lineNumbers);
 }
 
 .Pre[data-line-numbers='true']
@@ -231,7 +231,7 @@
 
 .Pre [data-invert-line-highlight='false'] :global(.highlight-line)[data-highlighted='false'],
 .Pre [data-invert-line-highlight='false'] :global(.highlight-line)[data-highlighted='false'] * {
-  color: var(---fadedLines);
+  color: var(--fadedLines);
 }
 
 .Pre [data-invert-line-highlight='true'] :global(.highlight-line) {
@@ -240,7 +240,7 @@
 }
 
 .Pre [data-invert-line-highlight='true'] :global(.highlight-line)[data-highlighted='true'] {
-  background-color: var(---highlightedLineBg);
+  background-color: var(--highlightedLineBg);
 }
 
 .Pre :global(.typewriter) {
