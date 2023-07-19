@@ -582,10 +582,10 @@
   resolved "https://registry.yarnpkg.com/@radix-ui/colors/-/colors-0.1.8.tgz#b08c62536fc462a87632165fb28e9b18f9bd047e"
   integrity sha512-jwRMXYwC0hUo0mv6wGpuw254Pd9p/R6Td5xsRpOmaWkUHlooNWqVcadgyzlRumMq3xfOTXwJReU0Jv+EIy4Jbw==
 
-"@radix-ui/colors@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@radix-ui/colors/-/colors-1.0.0.tgz#3ec423748d5ba8f5ae9e2ad1b91c796c726dc000"
-  integrity sha512-l8Rfw7zR6sfPsbXrBq3Xit96Xo+CSFyRFqRX/ls8W/w+HXzbwc5dbVvl+qRjsSIRoC9EiTMRV/QpJHziuTjoqg==
+"@radix-ui/colors@latest":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@radix-ui/colors/-/colors-1.0.1.tgz#e9703d6e1b6f3ace1855e5d784353327a548042c"
+  integrity sha512-xySw8f0ZVsAEP+e7iLl3EvcBXX7gsIlC1Zso/sPBW9gIWerBTgz6axrjU+MZ39wD+WFi5h5zdWpsg3+hwt2Qsg==
 
 "@radix-ui/number@1.0.0":
   version "1.0.0"
@@ -1799,12 +1799,12 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
-"@radix-ui/themes@0.0.29":
-  version "0.0.29"
-  resolved "https://registry.yarnpkg.com/@radix-ui/themes/-/themes-0.0.29.tgz#0aa4c3497ac3fe3393d9b8daf513cb96ea87e148"
-  integrity sha512-6g4jEsjPLSDLsmkzwvnPSdNchSMnXmqu4Ru4I6hjyJTIAjmf5sxZTaiCsiYPTfAW7x14zOSDRL6stNXFYAqrPQ==
+"@radix-ui/themes@0.0.30":
+  version "0.0.30"
+  resolved "https://registry.yarnpkg.com/@radix-ui/themes/-/themes-0.0.30.tgz#1ee848d1c6c2812abc2d8018f57aa48965cffbdd"
+  integrity sha512-4fim3LBIecfY/cGxc3LVuzolHkpJiuDYnnzi3uPwviyMW8IT79rIgPTCIBbDGZO8/eBXBlMm7Ri8oYYjtbVznw==
   dependencies:
-    "@radix-ui/colors" "^1.0.0"
+    "@radix-ui/colors" latest
     "@radix-ui/primitive" latest
     "@radix-ui/react-accessible-icon" latest
     "@radix-ui/react-alert-dialog" latest
