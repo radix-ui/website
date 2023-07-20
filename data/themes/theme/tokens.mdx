@@ -16,22 +16,33 @@ metaDescription:
 
 Radix Themes exposes all tokens as [CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*), these are consumed internally in all styled components.
 
-You can access them the same way you would any other variable, either directly inside your CSS:
+You can access them the same way you would any other variable, either directly inside your CSS or inline via the `style` prop.
+
+### Modifying tokens
+
+Token values can be customized by using a separate configuration stylesheet. The simplest way to do so is to create a `theme-config.css` file and ensure it is imported after the global theme styles:
 
 ```css
-.Sidebar {
-  color: var(--gray-12);
-  background-color: var(--accent-3);
+/* theme-config.css */
+.radix-themes {
+  --default-font-size: 18px;
 }
 ```
 
-or inline via the `style` prop:
-
 ```jsx
-<Sidebar style={{
-  color: 'var(--gray-12)',
-  backgroundColor: 'var(--accent-3)'
-}}>
+// app-root.jsx
+import '@radix-ui/themes/dist/index.css';
+import './themes-config.css';
+
+import { Theme } from '@radix-ui/themes';
+
+export default function () {
+  return (
+    <Theme>
+      <MyApp />
+    </Theme>
+  );
+}
 ```
 
 ### Layout scaling
