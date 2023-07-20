@@ -86,14 +86,14 @@
   --added: var(--green-11);
   --lineNumbers: var(--indigo-5);
 
-  --syntax1: var(--blue-11);
-  --syntax2: var(--crimson-11);
-  --syntax3: var(--accent-11);
-  --syntax4: var(--blue-11);
+  --syntax1: var(--sky-11);
+  --syntax2: var(--amber-11);
+  --syntax3: var(--sky-11);
+  --syntax4: var(--sky-11);
 
   --highlightedLineBg: var(--accent-3);
 
-  --highlightedWord1Bg: var(--accent-a3);
+  --highlightedWord1Bg: var(--accent-4);
   --highlightedWord1BgActive: var(--accent-6);
   --highlightedWord1Text: var(--accent-11);
 
