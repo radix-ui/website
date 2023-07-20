@@ -4,6 +4,7 @@ import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { MDXProvider, components } from '@components/MDXComponents';
 import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { QuickNav } from '@components/QuickNav';
+import * as themesDocsAssets from '@components/ThemesDocsAssets';
 
 import type { Frontmatter } from 'types/frontmatter';
 
@@ -28,7 +29,14 @@ export default function OverviewDoc({ frontmatter, code }: Doc) {
       />
 
       <MDXProvider frontmatter={frontmatter}>
-        <Component components={components as any} />
+        <Component
+          components={
+            {
+              ...components,
+              ...themesDocsAssets,
+            } as any
+          }
+        />
       </MDXProvider>
 
       <QuickNav key={frontmatter.slug} />
