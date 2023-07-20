@@ -9,8 +9,10 @@ import { ColorsDocsPage } from '@components/ColorsDocsPage';
 import { useAnalytics } from '@lib/analytics';
 import { CssLibPreferenceProvider } from '@components/CssLibPreference';
 import { ThemesDocsPage } from '@components/ThemesDocsPage';
-import './radix-themes.css';
 import { SyntaxSchemeProvider } from '@components/Pre';
+
+import '@radix-ui/themes/dist/index.css';
+import './themes-config.css';
 
 const globalStyles = globalCss({
   '*, *::before, *::after': {

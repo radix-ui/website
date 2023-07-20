@@ -617,7 +617,7 @@ export function ThemesTokenValuesTable({
 
 export function ThemesAnatomy() {
   return (
-    <Theme backgroundColor="gray" asChild>
+    <Theme backgroundColor="gray" asChild className="radix-themes-example">
       <Flex
         style={{
           border: '1px solid var(--gray-4)',
