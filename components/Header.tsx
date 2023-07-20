@@ -74,7 +74,7 @@ export const Header = ({ children, ghost }: HeaderProps) => {
             style={{ width: 320, left: 'calc(50% - 160px)' }}
           >
             <HeaderProductLink
-              href="/themes"
+              href="/"
               active={router.pathname === '/' || router.pathname.startsWith('/docs/themes')}
             >
               Themes
