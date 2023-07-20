@@ -10,8 +10,8 @@ export const ThemesHeader = (props: HeaderProps) => {
       <Link
         size="2"
         color="gray"
-        href="/docs/themes/overview/getting-started"
-        highContrast={router.pathname.includes('/docs/themes')}
+        href="/themes/docs/overview/getting-started"
+        highContrast={router.pathname.includes('/themes/docs')}
       >
         Documentation
       </Link>

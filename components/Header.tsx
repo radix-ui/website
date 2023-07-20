@@ -75,7 +75,7 @@ export const Header = ({ children, ghost }: HeaderProps) => {
           >
             <HeaderProductLink
               href="/"
-              active={router.pathname === '/' || router.pathname.startsWith('/docs/themes')}
+              active={router.pathname === '/' || router.pathname.startsWith('/themes')}
             >
               Themes
             </HeaderProductLink>
@@ -87,7 +87,7 @@ export const Header = ({ children, ghost }: HeaderProps) => {
               Primitives
             </HeaderProductLink>
 
-            <HeaderProductLink href="/icons" active={router.pathname === '/icons'}>
+            <HeaderProductLink href="/icons" active={router.pathname.startsWith('/icons')}>
               Icons
             </HeaderProductLink>
 

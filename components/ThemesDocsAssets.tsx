@@ -812,37 +812,37 @@ export function ThemePagesLinks() {
       <ThemeLinkCard
         title="Overview"
         desc="Learn the theme anatomy and how to create the perfect config for your app."
-        href="/docs/themes/theme/overview"
+        href="/themes/docs/theme/overview"
       />
 
       <ThemeLinkCard
         title="Typography"
         desc="Add custom typefaces and dial in their typographic attributes."
-        href="/docs/themes/theme/typography"
+        href="/themes/docs/theme/typography"
       />
 
       <ThemeLinkCard
         title="Dark mode"
         desc="Integrate a great looking dark mode into your app using appearances."
-        href="/docs/themes/theme/dark-mode"
+        href="/themes/docs/theme/dark-mode"
       />
 
       <ThemeLinkCard
         title="Breakpoints"
         desc="Leverage the built-in responsive design utilities and prop syntax."
-        href="/docs/themes/theme/breakpoints"
+        href="/themes/docs/theme/breakpoints"
       />
 
       <ThemeLinkCard
         title="Tokens"
         desc="Access the underlying theme system to build your own components."
-        href="/docs/themes/theme/tokens"
+        href="/themes/docs/theme/tokens"
       />
 
       <ThemeLinkCard
         title="Theme component"
         desc="Study the props API and learn from composition and nesting examples."
-        href="/docs/themes/components/theme"
+        href="/themes/docs/components/theme"
       />
     </Grid>
   );

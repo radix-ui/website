@@ -9,9 +9,9 @@ metaDescription: Adding fonts and tuning typographic details.
 
 ## Using fonts
 
-How you choose to import and serve your fonts is up to you, Radix Themes only requires that you specify your named fonts using the correct [tokens](/docs/themes/theme/tokens#typography).
+How you choose to import and serve your fonts is up to you, Radix Themes only requires that you specify your named fonts using the correct [tokens](/themes/docs/theme/tokens#typography).
 
-You can change the default global font family by specifying the `--default-font-family` token in your [`theme-config.css`](/docs/themes/theme/tokens#modifying-tokens).
+You can change the default global font family by specifying the `--default-font-family` token in your [`theme-config.css`](/themes/docs/theme/tokens#modifying-tokens).
 
 ### Self-hosted fonts
 
@@ -47,7 +47,7 @@ To self-host fonts, download the required font files and add them to your projec
 }
 ```
 
-Then specify this named font within your [`theme-config.css`](/docs/themes/theme/tokens#modifying-tokens).
+Then specify this named font within your [`theme-config.css`](/themes/docs/theme/tokens#modifying-tokens).
 
 ```css
 .radix-themes {
@@ -87,7 +87,7 @@ Finally, assign the CSS variable in your `themes-config.css`.
 
 ### Weight mapping
 
-Font weight mappings are defined by the [font weight tokens](/docs/themes/theme/tokens#font-weight). Though not common, you may find your chosen typeface does not match the provided defaults. In this case, you can reassign the named weights to match those which your typeface has available inside of your `theme-config.css`:
+Font weight mappings are defined by the [font weight tokens](/themes/docs/theme/tokens#font-weight). Though not common, you may find your chosen typeface does not match the provided defaults. In this case, you can reassign the named weights to match those which your typeface has available inside of your `theme-config.css`:
 
 ```css
 .radix-themes {
@@ -100,7 +100,7 @@ Font weight mappings are defined by the [font weight tokens](/docs/themes/theme/
 
 ### Multiple fonts
 
-Various tokens are available for customizing fonts across different components, for example `--heading-font-family`, `--code-font-family`, `--strong-font-family` [and more](/docs/themes/theme/tokens#advanced-settings). This is helpful, for example, when you'd like to implement a font pairing for headings independently of body copy, or you wish to tune your code snippets, strong, or emphasis font assignments independently.
+Various tokens are available for customizing fonts across different components, for example `--heading-font-family`, `--code-font-family`, `--strong-font-family` [and more](/themes/docs/theme/tokens#advanced-settings). This is helpful, for example, when you'd like to implement a font pairing for headings independently of body copy, or you wish to tune your code snippets, strong, or emphasis font assignments independently.
 
 ```css
 .radix-themes {
@@ -124,4 +124,4 @@ When changing fonts it can be desirable to tweak these settings to have them com
 }
 ```
 
-See [tokens](/docs/themes/theme/tokens#typography) for a comprehensive list of available options.
+See [tokens](/themes/docs/theme/tokens#typography) for a comprehensive list of available options.

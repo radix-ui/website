@@ -76,17 +76,17 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
 }
 
 export async function getStaticPaths() {
-  const frontmatters = getAllFrontmatter('themes/components');
+  const frontmatters = getAllFrontmatter('themes/docs/components');
 
   return {
     paths: frontmatters.map((frontmatter) => ({
-      params: { slug: frontmatter.slug.replace('themes/components/', '') },
+      params: { slug: frontmatter.slug.replace('themes/docs/components/', '') },
     })),
     fallback: false,
   };
 }
 
 export async function getStaticProps(context) {
-  const { frontmatter, code } = await getMdxBySlug('themes/components/', context.params.slug);
+  const { frontmatter, code } = await getMdxBySlug('themes/docs/components/', context.params.slug);
   return { props: { frontmatter, code } };
 }

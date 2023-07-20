@@ -98,7 +98,15 @@ function Pages({ Component, pageProps }: AppProps) {
     );
   }
 
-  if (router.pathname.includes('/docs/themes')) {
+  if (router.pathname.includes('/colors')) {
+    return (
+      <Theme accentScale="amber" style={themeRootStyles}>
+        <Component {...pageProps} />
+      </Theme>
+    );
+  }
+
+  if (router.pathname.includes('/themes/docs')) {
     return (
       <Theme accentScale="indigo" style={themeRootStyles}>
         <SyntaxSchemeProvider scheme="indigo">
@@ -106,6 +114,14 @@ function Pages({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
           </ThemesDocsPage>
         </SyntaxSchemeProvider>
+      </Theme>
+    );
+  }
+
+  if (router.pathname.includes('/themes')) {
+    return (
+      <Theme accentScale="indigo" style={themeRootStyles}>
+        <Component {...pageProps} />
       </Theme>
     );
   }

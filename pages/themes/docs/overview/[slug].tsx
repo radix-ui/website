@@ -45,17 +45,17 @@ export default function OverviewDoc({ frontmatter, code }: Doc) {
 }
 
 export async function getStaticPaths() {
-  const frontmatters = getAllFrontmatter('themes/overview');
+  const frontmatters = getAllFrontmatter('themes/docs/overview');
 
   return {
     paths: frontmatters.map((frontmatter) => ({
-      params: { slug: frontmatter.slug.replace('themes/overview/', '') },
+      params: { slug: frontmatter.slug.replace('themes/docs/overview/', '') },
     })),
     fallback: false,
   };
 }
 
 export async function getStaticProps(context) {
-  const { frontmatter, code } = await getMdxBySlug('themes/overview/', context.params.slug);
+  const { frontmatter, code } = await getMdxBySlug('themes/docs/overview/', context.params.slug);
   return { props: { frontmatter, code } };
 }

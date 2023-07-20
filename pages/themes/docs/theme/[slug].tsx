@@ -45,17 +45,17 @@ export default function ThemingDoc({ frontmatter, code }: Doc) {
 }
 
 export async function getStaticPaths() {
-  const frontmatters = getAllFrontmatter('themes/theme');
+  const frontmatters = getAllFrontmatter('themes/docs/theme');
 
   return {
     paths: frontmatters.map((frontmatter) => ({
-      params: { slug: frontmatter.slug.replace('themes/theme/', '') },
+      params: { slug: frontmatter.slug.replace('themes/docs/theme/', '') },
     })),
     fallback: false,
   };
 }
 
 export async function getStaticProps(context) {
-  const { frontmatter, code } = await getMdxBySlug('themes/theme/', context.params.slug);
+  const { frontmatter, code } = await getMdxBySlug('themes/docs/theme/', context.params.slug);
   return { props: { frontmatter, code } };
 }

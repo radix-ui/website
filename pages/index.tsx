@@ -144,11 +144,11 @@ export default function ThemesHome() {
                 <ThemesHero.Title>Build faster</ThemesHero.Title>
                 <ThemesHero.Text>{text}</ThemesHero.Text>
                 <ThemesHero.Actions>
-                  <ThemesHero.Button variant="solid" href="/docs/themes/overview/getting-started">
+                  <ThemesHero.Button variant="solid" href="/themes/docs/overview/getting-started">
                     Get started
                     <ArrowRightIcon />
                   </ThemesHero.Button>
-                  <ThemesHero.Button variant="soft" href="/docs/themes/theme/overview">
+                  <ThemesHero.Button variant="soft" href="/themes/docs/theme/overview">
                     Read docs
                     <ReaderIcon />
                   </ThemesHero.Button>
@@ -178,11 +178,11 @@ export default function ThemesHome() {
                 <ThemesHero.Title>Build better</ThemesHero.Title>
                 <ThemesHero.Text>{text}</ThemesHero.Text>
                 <ThemesHero.Actions>
-                  <ThemesHero.Button variant="solid" href="/docs/themes/overview/getting-started">
+                  <ThemesHero.Button variant="solid" href="/themes/docs/overview/getting-started">
                     Get started
                     <ArrowRightIcon />
                   </ThemesHero.Button>
-                  <ThemesHero.Button variant="soft" href="/docs/themes/theme/overview">
+                  <ThemesHero.Button variant="soft" href="/themes/docs/theme/overview">
                     Read docs
                     <ReaderIcon />
                   </ThemesHero.Button>
@@ -217,11 +217,11 @@ export default function ThemesHome() {
                 <ThemesHero.Title>Build hotter</ThemesHero.Title>
                 <ThemesHero.Text>{text}</ThemesHero.Text>
                 <ThemesHero.Actions>
-                  <ThemesHero.Button variant="solid" href="/docs/themes/overview/getting-started">
+                  <ThemesHero.Button variant="solid" href="/themes/docs/overview/getting-started">
                     Get started
                     <ArrowRightIcon />
                   </ThemesHero.Button>
-                  <ThemesHero.Button variant="soft" href="/docs/themes/theme/overview">
+                  <ThemesHero.Button variant="soft" href="/themes/docs/theme/overview">
                     Read docs
                     <ReaderIcon />
                   </ThemesHero.Button>
@@ -250,11 +250,11 @@ export default function ThemesHome() {
                 <ThemesHero.Title>Build nicer</ThemesHero.Title>
                 <ThemesHero.Text>{text}</ThemesHero.Text>
                 <ThemesHero.Actions>
-                  <ThemesHero.Button variant="solid" href="/docs/themes/overview/getting-started">
+                  <ThemesHero.Button variant="solid" href="/themes/docs/overview/getting-started">
                     Get started
                     <ArrowRightIcon />
                   </ThemesHero.Button>
-                  <ThemesHero.Button variant="soft" href="/docs/themes/theme/overview">
+                  <ThemesHero.Button variant="soft" href="/themes/docs/theme/overview">
                     Read docs
                     <ReaderIcon />
                   </ThemesHero.Button>
@@ -283,11 +283,11 @@ export default function ThemesHome() {
                 <ThemesHero.Title>Build cooler</ThemesHero.Title>
                 <ThemesHero.Text>{text}</ThemesHero.Text>
                 <ThemesHero.Actions>
-                  <ThemesHero.Button variant="solid" href="/docs/themes/overview/getting-started">
+                  <ThemesHero.Button variant="solid" href="/themes/docs/overview/getting-started">
                     Get started
                     <ArrowRightIcon />
                   </ThemesHero.Button>
-                  <ThemesHero.Button variant="soft" href="/docs/themes/theme/overview">
+                  <ThemesHero.Button variant="soft" href="/themes/docs/theme/overview">
                     Read docs
                     <ReaderIcon />
                   </ThemesHero.Button>
@@ -323,11 +323,11 @@ export default function ThemesHome() {
                 <ThemesHero.Title>Build more</ThemesHero.Title>
                 <ThemesHero.Text>{text}</ThemesHero.Text>
                 <ThemesHero.Actions>
-                  <ThemesHero.Button variant="solid" href="/docs/themes/overview/getting-started">
+                  <ThemesHero.Button variant="solid" href="/themes/docs/overview/getting-started">
                     Get started
                     <ArrowRightIcon />
                   </ThemesHero.Button>
-                  <ThemesHero.Button variant="soft" href="/docs/themes/theme/overview">
+                  <ThemesHero.Button variant="soft" href="/themes/docs/theme/overview">
                     Read docs
                     <ReaderIcon />
                   </ThemesHero.Button>
