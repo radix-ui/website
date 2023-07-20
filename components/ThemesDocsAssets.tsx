@@ -15,6 +15,7 @@ import {
 import { RegionTable } from './RegionTable';
 import { InfoCircledIcon } from '@radix-ui/react-icons';
 import { Label } from '@radix-ui/react-label';
+import NextLink from 'next/link';
 
 export function ThemesBorderRadiusTable() {
   return (
@@ -802,5 +803,64 @@ export function DecorativeBox(props) {
         ...props.style,
       }}
     />
+  );
+}
+
+export function ThemePagesLinks() {
+  return (
+    <Grid columns="2" my="6" gap="4">
+      <ThemeLinkCard
+        title="Overview"
+        desc="Learn the theme anatomy and how to create the perfect config for your app."
+        href="/docs/themes/theme/overview"
+      />
+
+      <ThemeLinkCard
+        title="Typography"
+        desc="Add custom typefaces and dial in their typographic attributes."
+        href="/docs/themes/theme/typography"
+      />
+
+      <ThemeLinkCard
+        title="Dark mode"
+        desc="Integrate a great looking dark mode into your app using appearances."
+        href="/docs/themes/theme/dark-mode"
+      />
+
+      <ThemeLinkCard
+        title="Breakpoints"
+        desc="Leverage the built-in responsive design utilities and prop syntax."
+        href="/docs/themes/theme/breakpoints"
+      />
+
+      <ThemeLinkCard
+        title="Tokens"
+        desc="Access the underlying theme system to build your own components."
+        href="/docs/themes/theme/tokens"
+      />
+
+      <ThemeLinkCard
+        title="Theme component"
+        desc="Study the props API and learn from composition and nesting examples."
+        href="/docs/themes/components/theme"
+      />
+    </Grid>
+  );
+}
+
+function ThemeLinkCard({ title, desc, href }: { title: string; desc: string; href: string }) {
+  return (
+    <NextLink href={href} passHref>
+      <Card size="2" asChild>
+        <a>
+          <Text as="div" size="2" weight="bold" mb="1">
+            {title}
+          </Text>
+          <Text as="p" size="2" color="gray">
+            {desc}
+          </Text>
+        </a>
+      </Card>
+    </NextLink>
   );
 }

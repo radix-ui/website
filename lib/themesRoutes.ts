@@ -10,7 +10,9 @@ export const themesRoutes = [
     label: 'Theme',
     pages: [
       { title: 'Overview', slug: 'docs/themes/theme/overview' },
-      { title: 'Configuration', slug: 'docs/themes/theme/configuration' },
+      { title: 'Typography', slug: 'docs/themes/theme/typography' },
+      { title: 'Dark mode', slug: 'docs/themes/theme/dark-mode' },
+      { title: 'Breakpoints', slug: 'docs/themes/theme/breakpoints' },
       { title: 'Tokens', slug: 'docs/themes/theme/tokens' },
     ],
   },

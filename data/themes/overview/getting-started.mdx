@@ -11,6 +11,12 @@ metaDescription: Install Radix Themes and start building your project in minutes
 
 ## Installation
 
+Getting up and running is quick and easy, just follow these simple steps.
+
+### 1. Install Radix Themes
+
+Install the package from your command line.
+
 <Tabs defaultValue="npm" my="5">
   <TabsList>
     <TabsTrigger value="npm">npm</TabsTrigger>
@@ -28,9 +34,7 @@ metaDescription: Install Radix Themes and start building your project in minutes
   </TabsContent>
 </Tabs>
 
-## Configuring your project
-
-### 1. Import the CSS file
+### 2. Import the CSS file
 
 Import the global CSS file at the root of your application.
 
@@ -38,16 +42,11 @@ Import the global CSS file at the root of your application.
 import '@radix-ui/themes/dist/index.css';
 ```
 
-<Note>
-  Note: This may vary depending of your framework of choice, but generally
-  you'll want to import the CSS file at the root of your application.
-</Note>
-
-### 2. Add the Theme component
+### 3. Add the Theme component
 
 Wrap the root of your application in a `Theme` component.
 
-```tsx
+```jsx line=5,7
 import { Theme } from '@radix-ui/themes';
 
 export default function () {
@@ -59,11 +58,11 @@ export default function () {
 }
 ```
 
-### 3. Start building
+### 4. Start building
 
-You are now ready to start using components and styles in your app:
+You are now ready to use themed components in your app.
 
-```tsx
+```jsx
 import { Flex, Text, Button } from '@radix-ui/themes';
 
 export default function MyApp() {
@@ -75,3 +74,54 @@ export default function MyApp() {
   );
 }
 ```
+
+## Customizing your theme
+
+Configuration is managed and applied via the [Theme](/docs/themes/components/theme) component.
+
+### Basic configuration
+
+Pass [configuration props](/docs/themes/components/theme) to `Theme` to customize the appearance.
+
+```jsx line=1
+<Theme
+  __accentScale__="crimson"
+  __grayScale__="sand"
+  __textColor__="accent"
+  __radius__="large"
+  __scaling__="95%"
+>
+  <MyApp />
+</Theme>
+```
+
+### Using the theme panel
+
+Previewing configuration and finding the perfect style for your application is much easier when you can visualise the changes, this is made simple by using the `ThemePanel`.
+
+```jsx
+<div>This is a live example of the theme panel.</div>
+```
+
+Simply open the panel and adjust the settings, then copy and paste the configuration.
+
+Adding the panel to your own app is easy, import it from the package and drop it into your `Theme`:
+
+```jsx line=7
+import { Theme, ThemePanel } from '@radix-ui/themes';
+
+export default function () {
+  return (
+    <Theme>
+      <MyApp />
+      <ThemePanel />
+    </Theme>
+  );
+}
+```
+
+### Take it further
+
+This is just the start, get the most out of Radix Themes by exploring core concepts and features.
+
+<ThemePagesLinks />

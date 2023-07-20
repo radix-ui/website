@@ -1,110 +1,14 @@
 ---
-metaTitle: Configuring a theme
-metaDescription: The Theme component allows you to define and modify your theme
+metaTitle: Theme overview
+metaDescription: Implementing custom fonts and modifying their theme tokens to fine tune the look and feel of your UI.
 ---
 
-# Configuring a theme
+# Typography
 
 <Description>
-  The Theme component allows you to define and modify your theme.
+  Implementing custom fonts and modifying their theme tokens to fine tune the
+  look and feel of your UI.
 </Description>
-
-## Basic configuration
-
-Pass configuration options to `Theme` to modify your theme, refer to the [Theme component documentation](/docs/themes/components/theme) for a full list of options.
-
-```jsx live=true line=1
-<Theme __accentScale__="crimson" __radius__="full">
-  <Card size="2" style={{ maxWidth: 450 }}>
-    <Flex direction="column" gap="4">
-      <Text weight="bold">Feedback</Text>
-      <TextArea placeholder="Your feedback" />
-      <Button>Submit</Button>
-    </Flex>
-  </Card>
-</Theme>
-```
-
-### Component instance overrides
-
-Override configuration per component by passing any supported prop directly to that component.
-
-```jsx live=true line=6
-<Theme accentScale="crimson" radius="full">
-  <Card size="2" style={{ maxWidth: 450 }}>
-    <Flex direction="column" gap="4">
-      <Text weight="bold">Feedback</Text>
-      <TextArea placeholder="Your feedback" />
-      <Button __color__="plum" __radius__="none">
-        Submit
-      </Button>
-    </Flex>
-  </Card>
-</Theme>
-```
-
-### Nesting
-
-Nest another theme to modify configuration for a specific subtree.
-
-```jsx live=true line=15
-<Theme accentScale="crimson" radius="full">
-  <Card size="2" style={{ maxWidth: 450 }}>
-    <Box>
-      <Text as="div" color="gray" mb="3">
-        Parent theme
-      </Text>
-
-      <Flex direction="column" gap="4">
-        <Text weight="bold">Feedback</Text>
-        <TextArea placeholder="Your feedback" />
-        <Button>Submit</Button>
-      </Flex>
-    </Box>
-
-    <Theme __accentScale__="plum" __radius__="none">
-      <Card size="2" mt="6">
-        <Text as="div" color="gray" mb="3">
-          Child theme
-        </Text>
-
-        <Flex direction="column" gap="4">
-          <Text weight="bold">Feedback</Text>
-          <TextArea placeholder="Your feedback" />
-          <Button>Submit</Button>
-        </Flex>
-      </Card>
-    </Theme>
-  </Card>
-</Theme>
-```
-
-## Modifying theme tokens
-
-Internal theme values can be customized by modifying [tokens](/docs/themes/theme/tokens). The simplest way to do so is to create a configuration stylesheet and ensure it is imported after the global theme styles:
-
-```css
-/* theme-config.css */
-.radix-themes {
-  --default-font-size: 18px;
-}
-```
-
-```jsx
-// app-root.jsx
-import '@radix-ui/themes/dist/index.css';
-import './themes-config.css';
-
-import { Theme } from '@radix-ui/themes';
-
-export default function () {
-  return (
-    <Theme>
-      <MyApp />
-    </Theme>
-  );
-}
-```
 
 ## Custom fonts
 
