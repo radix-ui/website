@@ -266,10 +266,10 @@ export const MainHero = () => {
   return (
     <Section
       css={{
-        paddingTop: '$4',
+        paddingTop: '$6',
         // Starting at 850px viewport height, grow the padding top from $5 until it's $9.
         '@media (min-width: 900px) and (min-height: 850px)': {
-          paddingTop: 'min($9, calc($5 + 0.35 * (100vh - 850px)))',
+          paddingTop: 'min($9, calc($8 + 0.35 * (100vh - 850px)))',
         },
       }}
     >

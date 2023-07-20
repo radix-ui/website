@@ -46,6 +46,13 @@ export const Footer = () => {
             <li>
               <Text as="p" size="2" mt="3">
                 <NextLink href="/" passHref>
+                  <Link color="gray">Themes</Link>
+                </NextLink>
+              </Text>
+            </li>
+            <li>
+              <Text as="p" size="2" mt="3">
+                <NextLink href="/primitives" passHref>
                   <Link color="gray">Primitives</Link>
                 </NextLink>
               </Text>
@@ -59,17 +66,9 @@ export const Footer = () => {
             </li>
             <li>
               <Text as="p" size="2" mt="3">
-                <Link
-                  color="gray"
-                  href="https://icons.radix-ui.com/"
-                  target="_blank"
-                  style={{ display: 'inline-flex', alignItems: 'center' }}
-                >
-                  Icons
-                  <Flex asChild ml="2" style={{ color: 'var(--gray-8)' }}>
-                    <ArrowTopRightIcon />
-                  </Flex>
-                </Link>
+                <NextLink href="/icons" passHref>
+                  <Link color="gray">Icons</Link>
+                </NextLink>
               </Text>
             </li>
           </ul>

@@ -57,16 +57,6 @@ module.exports = withPlugins([withTM, withOptimizedImages, withVideos], {
         destination: '/docs/primitives/components/label/:slug*',
         permanent: false,
       },
-      {
-        source: '/primitives',
-        destination: '/',
-        permanent: true,
-      },
-      {
-        source: '/primitives/docs/:slug*',
-        destination: '/docs/primitives/:slug*',
-        permanent: true,
-      },
     ];
   },
 
