@@ -152,19 +152,19 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
 }
 
 export async function getStaticPaths() {
-  const frontmatters = getAllFrontmatter('case-studies');
+  const frontmatters = getAllFrontmatter('primitives/case-studies');
 
   return {
     paths: frontmatters.map((frontmatter) => ({
-      params: { slug: frontmatter.slug.replace('case-studies/', '') },
+      params: { slug: frontmatter.slug.replace('primitives/case-studies/', '') },
     })),
     fallback: false,
   };
 }
 
 export async function getStaticProps(context) {
-  const { frontmatter, code } = await getMdxBySlug('case-studies/', context.params.slug);
-  const frontmatters = getAllFrontmatter('case-studies');
+  const { frontmatter, code } = await getMdxBySlug('primitives/case-studies/', context.params.slug);
+  const frontmatters = getAllFrontmatter('primitives/case-studies');
   const thisIndex = frontmatters.findIndex((data) => data.slug.includes(frontmatter.slug));
   const nextIndex = thisIndex + 1 < frontmatters.length ? thisIndex + 1 : 0;
   const nextCaseStudy = frontmatters[nextIndex];

@@ -33,9 +33,9 @@ export const DefaultHeader = () => {
               </NextLink>
 
               {!isColors && (
-                <NextLink href="/case-studies" passHref>
+                <NextLink href="/primitives/case-studies" passHref>
                   <Link
-                    highContrast={router.pathname.includes('/case-studies')}
+                    highContrast={router.pathname.includes('/primitives/case-studies')}
                     color="gray"
                     size="2"
                   >

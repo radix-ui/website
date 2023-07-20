@@ -33,6 +33,11 @@ module.exports = withPlugins([withTM, withOptimizedImages, withVideos], {
         permanent: true,
       },
       {
+        source: '/case-studies/:slug*',
+        destination: '/primitives/case-studies/:slug*',
+        permanent: true,
+      },
+      {
         source: '/docs/primitives',
         destination: '/docs/primitives/overview/introduction',
         permanent: false,

@@ -1,7 +1,6 @@
 import React from 'react';
 import NextLink from 'next/link';
 import {
-  Avatar,
   Box,
   Container,
   Flex,
@@ -9,7 +8,6 @@ import {
   Heading,
   Link,
   Paragraph,
-  Text,
   Section,
   Separator,
 } from '@modulz/design-system';
@@ -49,7 +47,7 @@ export default function CaseStudy() {
             columns={{ '@initial': 1, '@bp1': 2, '@bp2': 3 }}
             css={{ gap: 1, placeItems: 'stretch', gridAutoRows: '200px', mb: '$8' }}
           >
-            <NextLink href="/case-studies/acid-tango" passHref>
+            <NextLink href="/primitives/case-studies/acid-tango" passHref>
               <LogoLink variant="box">
                 <AccessibleIcon label="Acid Tango case study">
                   <Flex justify="center" css={{ height: '100%' }}>
@@ -58,7 +56,7 @@ export default function CaseStudy() {
                 </AccessibleIcon>
               </LogoLink>
             </NextLink>
-            <NextLink href="/case-studies/atom-learning" passHref>
+            <NextLink href="/primitives/case-studies/atom-learning" passHref>
               <LogoLink variant="box">
                 <AccessibleIcon label="Atom Learning case study">
                   <Flex justify="center" css={{ height: '100%' }}>
@@ -67,7 +65,7 @@ export default function CaseStudy() {
                 </AccessibleIcon>
               </LogoLink>
             </NextLink>
-            <NextLink href="/case-studies/basedash" passHref>
+            <NextLink href="/primitives/case-studies/basedash" passHref>
               <LogoLink variant="box">
                 <AccessibleIcon label="Basedash case study">
                   <Flex justify="center" css={{ height: '100%' }}>
@@ -76,7 +74,7 @@ export default function CaseStudy() {
                 </AccessibleIcon>
               </LogoLink>
             </NextLink>
-            <NextLink href="/case-studies/basement-studio" passHref>
+            <NextLink href="/primitives/case-studies/basement-studio" passHref>
               <LogoLink variant="box">
                 <AccessibleIcon label="basement.studio case study">
                   <Flex justify="center" css={{ height: '100%' }}>
@@ -85,7 +83,7 @@ export default function CaseStudy() {
                 </AccessibleIcon>
               </LogoLink>
             </NextLink>
-            <NextLink href="/case-studies/codesandbox" passHref>
+            <NextLink href="/primitives/case-studies/codesandbox" passHref>
               <LogoLink variant="box">
                 <AccessibleIcon label="CodeSandbox case study">
                   <Flex justify="center" css={{ height: '100%' }}>
@@ -94,7 +92,7 @@ export default function CaseStudy() {
                 </AccessibleIcon>
               </LogoLink>
             </NextLink>
-            <NextLink href="/case-studies/composer" passHref>
+            <NextLink href="/primitives/case-studies/composer" passHref>
               <LogoLink variant="box">
                 <AccessibleIcon label="Composer case study">
                   <Flex justify="center" css={{ height: '100%' }}>
@@ -103,7 +101,7 @@ export default function CaseStudy() {
                 </AccessibleIcon>
               </LogoLink>
             </NextLink>
-            <NextLink href="/case-studies/compound" passHref>
+            <NextLink href="/primitives/case-studies/compound" passHref>
               <LogoLink variant="box">
                 <AccessibleIcon label="Compound case study">
                   <Flex justify="center" css={{ height: '100%' }}>
@@ -112,7 +110,7 @@ export default function CaseStudy() {
                 </AccessibleIcon>
               </LogoLink>
             </NextLink>
-            <NextLink href="/case-studies/linear" passHref>
+            <NextLink href="/primitives/case-studies/linear" passHref>
               <LogoLink variant="box">
                 <AccessibleIcon label="Linear case study">
                   <Flex justify="center" css={{ height: '100%' }}>
@@ -121,7 +119,7 @@ export default function CaseStudy() {
                 </AccessibleIcon>
               </LogoLink>
             </NextLink>
-            <NextLink href="/case-studies/liveblocks" passHref>
+            <NextLink href="/primitives/case-studies/liveblocks" passHref>
               <LogoLink variant="box">
                 <AccessibleIcon label="Liveblocks case study">
                   <Flex justify="center" css={{ height: '100%' }}>
@@ -130,7 +128,7 @@ export default function CaseStudy() {
                 </AccessibleIcon>
               </LogoLink>
             </NextLink>
-            <NextLink href="/case-studies/magnetis" passHref>
+            <NextLink href="/primitives/case-studies/magnetis" passHref>
               <LogoLink variant="box">
                 <AccessibleIcon label="Magnetis case study">
                   <Flex justify="center" css={{ height: '100%' }}>
@@ -139,7 +137,7 @@ export default function CaseStudy() {
                 </AccessibleIcon>
               </LogoLink>
             </NextLink>
-            <NextLink href="/case-studies/supabase" passHref>
+            <NextLink href="/primitives/case-studies/supabase" passHref>
               <LogoLink variant="box">
                 <AccessibleIcon label="Supabase case study">
                   <Flex justify="center" css={{ height: '100%' }}>
@@ -148,7 +146,7 @@ export default function CaseStudy() {
                 </AccessibleIcon>
               </LogoLink>
             </NextLink>
-            <NextLink href="/case-studies/teamflow" passHref>
+            <NextLink href="/primitives/case-studies/teamflow" passHref>
               <LogoLink variant="box">
                 <AccessibleIcon label="Teamflow case study">
                   <Flex justify="center" css={{ height: '100%' }}>
@@ -157,7 +155,7 @@ export default function CaseStudy() {
                 </AccessibleIcon>
               </LogoLink>
             </NextLink>
-            <NextLink href="/case-studies/university-of-amsterdam" passHref>
+            <NextLink href="/primitives/case-studies/university-of-amsterdam" passHref>
               <LogoLink variant="box">
                 <AccessibleIcon label="University of Amsterdam case study">
                   <Flex justify="center" css={{ height: '100%' }}>
@@ -166,7 +164,7 @@ export default function CaseStudy() {
                 </AccessibleIcon>
               </LogoLink>
             </NextLink>
-            <NextLink href="/case-studies/vercel" passHref>
+            <NextLink href="/primitives/case-studies/vercel" passHref>
               <LogoLink variant="box">
                 <AccessibleIcon label="Vercel case study">
                   <Flex justify="center" css={{ height: '100%' }}>
