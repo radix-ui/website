@@ -10,7 +10,7 @@ import { SideNav } from './SideNav';
 export function PrimitivesDocsPage({ children }: { children: React.ReactNode }) {
   return (
     <MobileMenuProvider>
-      <PrimitivesDocsHeader ghost />
+      <PrimitivesDocsHeader />
 
       <MobileMenu>
         <PrimitivesDocsHeader />

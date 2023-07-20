@@ -10,7 +10,7 @@ import { SideNav } from './SideNav';
 export function ColorsDocsPage({ children }: { children: React.ReactNode }) {
   return (
     <MobileMenuProvider>
-      <ColorsHeader ghost />
+      <ColorsHeader />
 
       <MobileMenu>
         <ColorsHeader />
