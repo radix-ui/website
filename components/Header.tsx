@@ -75,11 +75,7 @@ export const Header = ({ children, ghost }: HeaderProps) => {
           >
             <HeaderProductLink
               href="/themes"
-              active={
-                router.pathname === '/themes' ||
-                router.pathname.startsWith('/themes/') ||
-                router.pathname.startsWith('/docs/themes')
-              }
+              active={router.pathname === '/' || router.pathname.startsWith('/docs/themes')}
             >
               Themes
             </HeaderProductLink>
@@ -87,7 +83,6 @@ export const Header = ({ children, ghost }: HeaderProps) => {
             <HeaderProductLink
               href="/primitives"
               active={
-                router.pathname === '/' ||
                 router.pathname === '/primitives' ||
                 router.pathname.startsWith('/primitives/') ||
                 router.pathname.startsWith('/docs/primitives')
