@@ -81,28 +81,28 @@ export const Footer = () => {
             <ul>
               <li>
                 <Text as="p" size="2" mt="3">
-                  <NextLink href="/docs/primitives/overview/introduction" passHref>
+                  <NextLink href="/primitives/docs/overview/introduction" passHref>
                     <Link color="gray">Introduction</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="2" mt="3">
-                  <NextLink href="/docs/primitives/guides/styling" passHref>
+                  <NextLink href="/primitives/docs/guides/styling" passHref>
                     <Link color="gray">Styling</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="2" mt="3">
-                  <NextLink href="/docs/primitives/overview/accessibility" passHref>
+                  <NextLink href="/primitives/docs/overview/accessibility" passHref>
                     <Link color="gray">Accessibility</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="2" mt="3">
-                  <NextLink href="/docs/primitives/overview/releases" passHref>
+                  <NextLink href="/primitives/docs/overview/releases" passHref>
                     <Link color="gray">Releases</Link>
                   </NextLink>
                 </Text>

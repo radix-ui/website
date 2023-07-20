@@ -63,24 +63,11 @@ const themeRootStyles = {
 
 function Pages({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const isPrimitivesDocs = router.pathname.includes('/docs/primitives');
 
-  const accentScale = (() => {
-    if (isPrimitivesDocs || router.pathname.startsWith('/primitives')) {
-      return 'violet';
-    }
-
-    if (router.pathname.startsWith('/colors')) {
-      return 'amber';
-    }
-
-    return 'indigo';
-  })();
-
-  if (isPrimitivesDocs) {
+  if (router.pathname.startsWith('/primitives/docs')) {
     return (
-      <Theme accentScale={accentScale} style={themeRootStyles}>
-        <SyntaxSchemeProvider scheme={accentScale}>
+      <Theme accentScale="violet" style={themeRootStyles}>
+        <SyntaxSchemeProvider scheme="violet">
           <PrimitivesDocsPage>
             <Component {...pageProps} />
           </PrimitivesDocsPage>
@@ -89,10 +76,20 @@ function Pages({ Component, pageProps }: AppProps) {
     );
   }
 
+  if (router.pathname.startsWith('/primitives')) {
+    return (
+      <Theme accentScale="violet" style={themeRootStyles}>
+        <SyntaxSchemeProvider scheme="violet">
+          <Component {...pageProps} />
+        </SyntaxSchemeProvider>
+      </Theme>
+    );
+  }
+
   if (router.pathname.includes('/colors/docs')) {
     return (
-      <Theme accentScale={accentScale} style={themeRootStyles}>
-        <SyntaxSchemeProvider scheme={accentScale}>
+      <Theme accentScale="amber" style={themeRootStyles}>
+        <SyntaxSchemeProvider scheme="amber">
           <ColorsDocsPage>
             <Component {...pageProps} />
           </ColorsDocsPage>
@@ -103,8 +100,8 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.includes('/docs/themes')) {
     return (
-      <Theme accentScale={accentScale} style={themeRootStyles}>
-        <SyntaxSchemeProvider scheme={accentScale}>
+      <Theme accentScale="indigo" style={themeRootStyles}>
+        <SyntaxSchemeProvider scheme="indigo">
           <ThemesDocsPage>
             <Component {...pageProps} />
           </ThemesDocsPage>
@@ -114,8 +111,8 @@ function Pages({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <Theme accentScale={accentScale} style={themeRootStyles}>
-      <SyntaxSchemeProvider scheme={accentScale}>
+    <Theme accentScale="indigo" style={themeRootStyles}>
+      <SyntaxSchemeProvider scheme="indigo">
         <Component {...pageProps} />
       </SyntaxSchemeProvider>
     </Theme>

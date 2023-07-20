@@ -124,7 +124,7 @@ const commonDescriptions: CommonDescriptions = {
       behavior.
       <br />
       <br />
-      Read our <a href="/docs/primitives/guides/composition">Composition</a> guide for more details.
+      Read our <a href="/primitives/docs/guides/composition">Composition</a> guide for more details.
     </>
   ),
   // shortcut: 'Optional shortcut command to associate with the item',

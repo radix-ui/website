@@ -23,7 +23,7 @@ export const AdoptionSection = () => {
           <Heading as="h2" size="3" css={{ mb: '$4' }}>
             Adoption made easy
           </Heading>
-          <NextLink href="/docs/primitives" passHref>
+          <NextLink href="/primitives/docs" passHref>
             <MarketingButton as="a" icon={ArrowRightIcon}>
               Go to docs
             </MarketingButton>

@@ -312,7 +312,7 @@ export const MainHero = () => {
               in React.
             </Paragraph>
           </Box>
-          <NextLink href="/docs/primitives/overview/getting-started" passHref>
+          <NextLink href="/primitives/docs/overview/getting-started" passHref>
             <MarketingButton as="a" icon={ArrowRightIcon}>
               Install Primitives
             </MarketingButton>
@@ -659,7 +659,7 @@ export const MainHero = () => {
                       See more components in the docs
                     </Text>
                     <Text size="3">
-                      <NextLink href="/docs/primitives/overview/getting-started" passHref>
+                      <NextLink href="/primitives/docs/overview/getting-started" passHref>
                         <Link css={{ display: 'inline-flex', alignItems: 'center' }}>
                           View docs
                           <ArrowRightIcon />
