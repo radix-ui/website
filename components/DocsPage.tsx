@@ -1,50 +1,10 @@
 import * as React from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { RemoveScroll } from 'react-remove-scroll';
-import { Box, Flex, Text, Link, ScrollArea } from '@radix-ui/themes';
-import { Slot } from '@radix-ui/react-slot';
+import { Box, Flex, Text, Link } from '@radix-ui/themes';
 import { classNames } from '@lib/classNames';
 import styles from './DocsPage.module.css';
-
-function MainWrapper(props) {
-  return (
-    <Box pt="9" position="relative" style={{ zIndex: 1 }}>
-      <Flex {...props} />
-    </Box>
-  );
-}
-
-function NavWrapper({ children, isMobileMenuOpen }) {
-  return (
-    <RemoveScroll as={Slot} allowPinchZoom enabled={isMobileMenuOpen}>
-      <Box
-        position="fixed"
-        left="0"
-        bottom="0"
-        display={{ initial: 'none', md: 'block' }}
-        style={{
-          top: 'var(--header-height)',
-          zIndex: 1,
-          maxHeight: 'auto',
-          overflowX: 'hidden',
-          WebkitOverflowScrolling: 'touch',
-          backgroundColor: isMobileMenuOpen
-            ? 'var(--color-background, $loContrast)'
-            : 'transparent',
-          display: isMobileMenuOpen ? 'block' : undefined,
-          width: isMobileMenuOpen ? '100%' : '250px',
-        }}
-      >
-        <ScrollArea>
-          <Box pt="4" px="3" pb={{ initial: '5', sm: '9' }}>
-            {children}
-          </Box>
-        </ScrollArea>
-      </Box>
-    </RemoveScroll>
-  );
-}
+import { useCurrentPageSlug } from '@lib/useCurrentPageSlug';
 
 interface PageWrapperProps extends React.ComponentProps<typeof Box> {}
 
@@ -92,19 +52,6 @@ function Pagination({ allRoutes }) {
     </Box>
   );
 }
-
-interface HeaderWrapperProps extends React.ComponentPropsWithoutRef<typeof Box> {}
-
-const HeaderWrapper = React.forwardRef<HTMLDivElement, HeaderWrapperProps>(function DocsPage(
-  { children, className, ...props },
-  forwardedRef
-) {
-  return (
-    <Box ref={forwardedRef} {...props} className={classNames(className, styles.HeaderWrapper)}>
-      {children}
-    </Box>
-  );
-});
 
 function PaginationLink({ route, direction }) {
   return (
@@ -159,23 +106,4 @@ function EditPageLink() {
   );
 }
 
-function useCurrentPageSlug() {
-  const router = useRouter();
-  const routerSlug = router.query.slug;
-  let currentPageSlug = router.pathname.substring(1);
-  if (Array.isArray(routerSlug)) {
-    return currentPageSlug.replace('[...slug]', routerSlug[0]);
-  }
-  return currentPageSlug.replace('[slug]', routerSlug);
-}
-
-export {
-  HeaderWrapper,
-  MainWrapper,
-  NavWrapper,
-  PageWrapper,
-  ContentWrapper,
-  Pagination,
-  EditPageLink,
-  useCurrentPageSlug,
-};
+export { PageWrapper, ContentWrapper, Pagination, EditPageLink };
