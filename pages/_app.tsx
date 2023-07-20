@@ -62,15 +62,13 @@ const themeRootStyles = {
 function Pages({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const isPrimitivesDocs = router.pathname.includes('/docs/primitives');
-  const isColorsDocs = router.pathname.includes('/docs/colors');
-  const isThemesDocs = router.pathname.includes('/docs/themes');
 
   const accentScale = (() => {
     if (isPrimitivesDocs || router.pathname.startsWith('/primitives')) {
       return 'violet';
     }
 
-    if (isColorsDocs || router.pathname.startsWith('/colors')) {
+    if (router.pathname.startsWith('/colors')) {
       return 'amber';
     }
 
@@ -89,7 +87,7 @@ function Pages({ Component, pageProps }: AppProps) {
     );
   }
 
-  if (isColorsDocs) {
+  if (router.pathname.includes('/colors/docs')) {
     return (
       <Theme accentScale={accentScale} style={themeRootStyles}>
         <SyntaxSchemeProvider scheme={accentScale}>
@@ -101,7 +99,7 @@ function Pages({ Component, pageProps }: AppProps) {
     );
   }
 
-  if (isThemesDocs) {
+  if (router.pathname.includes('/docs/themes')) {
     return (
       <Theme accentScale={accentScale} style={themeRootStyles}>
         <SyntaxSchemeProvider scheme={accentScale}>

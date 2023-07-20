@@ -80,7 +80,7 @@ const DATA_FOLDER_PATH = 'https://github.com/radix-ui/website/edit/main/data';
 function EditPageLink() {
   const router = useRouter();
   const routerSlug = router.query.slug;
-  let filePath = `${DATA_FOLDER_PATH}/${router.pathname.replace('/docs/', '')}`;
+  let filePath = `${DATA_FOLDER_PATH}/${router.pathname.replace('/', '')}`;
   if (Array.isArray(routerSlug)) {
     filePath = filePath.replace('[...slug]', routerSlug.join('/'));
   } else {

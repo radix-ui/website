@@ -102,11 +102,7 @@ export const Header = ({ children, ghost }: HeaderProps) => {
 
             <HeaderProductLink
               href="/colors"
-              active={
-                router.pathname === '/colors' ||
-                router.pathname.startsWith('/colors/') ||
-                router.pathname.startsWith('/docs/colors')
-              }
+              active={router.pathname === '/colors' || router.pathname.startsWith('/colors/')}
             >
               Colors
             </HeaderProductLink>

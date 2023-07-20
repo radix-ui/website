@@ -76,7 +76,7 @@ export default function ColorsHome() {
               An open-source color system for designing beautiful, accessible websites and apps.
             </Paragraph>
             <Flex justify={{ '@initial': 'start', '@bp2': 'center' }} gap="5" css={{ mt: '$7' }}>
-              <NextLink href="/docs/colors" passHref>
+              <NextLink href="/colors/docs" passHref>
                 <Button
                   as="a"
                   variant="blue"

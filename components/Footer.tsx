@@ -118,21 +118,21 @@ export const Footer = () => {
             <ul>
               <li>
                 <Text as="p" size="2" mt="3">
-                  <NextLink href="/docs/colors/overview/installation" passHref>
+                  <NextLink href="/colors/docs/overview/installation" passHref>
                     <Link color="gray">Installation</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="2" mt="3">
-                  <NextLink href="/docs/colors/palette-composition/scales" passHref>
+                  <NextLink href="/colors/docs/palette-composition/scales" passHref>
                     <Link color="gray">Scales</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="2" mt="3">
-                  <NextLink href="/docs/colors/palette-composition/composing-a-palette" passHref>
+                  <NextLink href="/colors/docs/palette-composition/composing-a-palette" passHref>
                     <Link color="gray">Palette composition</Link>
                   </NextLink>
                 </Text>
@@ -140,7 +140,7 @@ export const Footer = () => {
               <li>
                 <Text as="p" size="2" mt="3">
                   <NextLink
-                    href="/docs/colors/palette-composition/understanding-the-scale"
+                    href="/colors/docs/palette-composition/understanding-the-scale"
                     passHref
                   >
                     <Link color="gray">Understanding the scale</Link>

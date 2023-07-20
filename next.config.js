@@ -28,19 +28,24 @@ module.exports = withPlugins([withTM, withOptimizedImages, withVideos], {
         permanent: true,
       },
       {
-        source: '/docs/colors',
-        destination: '/docs/colors/overview/installation',
-        permanent: false,
+        source: '/colors/docs',
+        destination: '/colors/docs/overview/installation',
+        permanent: true,
       },
       {
         source: '/docs/colors/palette-composition/the-scales',
-        destination: '/docs/colors/palette-composition/scales',
-        permanent: false,
+        destination: '/colors/docs/palette-composition/scales',
+        permanent: true,
       },
       {
         source: '/docs/colors/getting-started/:slug*',
-        destination: '/docs/colors/overview/:slug*',
-        permanent: false,
+        destination: '/colors/docs/overview/:slug*',
+        permanent: true,
+      },
+      {
+        source: '/docs/colors/:slug*',
+        destination: '/colors/docs/:slug*',
+        permanent: true,
       },
       {
         source: '/docs/primitives',

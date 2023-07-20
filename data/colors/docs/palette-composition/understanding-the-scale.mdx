@@ -35,7 +35,7 @@ Appropriate applications include:
 <Note>
   You may want to use white for your app background in light mode, and Step `1`
   or `2` from a gray or coloured scale in dark mode. In this case, set up a
-  [mutable alias](/docs/colors/overview/aliasing#mutable-aliases) for `AppBg`
+  [mutable alias](/colors/docs/overview/aliasing#mutable-aliases) for `AppBg`
   and map it to a different color for each color mode.
 </Note>
 
@@ -54,18 +54,16 @@ Steps `3`, `4`, and `5` are designed for UI component backgrounds.
 <Flex wrap="wrap" gap="5" my="5">
   <Button icon={<PlusIcon />} variant="soft" color="slate" />
   <Button icon={<PlusIcon />} variant="soft" color="red" />
-  
-  <Flex direction="column" style={{ maxWidth: 'max-content' }}>
-    <MenuItemButton color="blue" data-state="active">
-      Menu item
-    </MenuItemButton>
-    <MenuItemButton color="blue">
-      Second menu item
-    </MenuItemButton>
-    <MenuItemButton color="blue">
-      Third menu item
-    </MenuItemButton>
-  </Flex>
+
+{' '}
+
+<Flex direction="column" style={{ maxWidth: 'max-content' }}>
+  <MenuItemButton color="blue" data-state="active">
+    Menu item
+  </MenuItemButton>
+  <MenuItemButton color="blue">Second menu item</MenuItemButton>
+  <MenuItemButton color="blue">Third menu item</MenuItemButton>
+</Flex>
 
   <Flex direction="column" style={{ maxWidth: 'max-content' }}>
     <MenuItemButton color="violet" data-state="active">

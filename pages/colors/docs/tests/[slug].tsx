@@ -53,17 +53,17 @@ export default function ColorsTestDoc({ frontmatter, code }: Doc) {
 }
 
 export async function getStaticPaths() {
-  const frontmatters = getAllFrontmatter('colors/tests');
+  const frontmatters = getAllFrontmatter('colors/docs/tests');
 
   return {
     paths: frontmatters.map((frontmatter) => ({
-      params: { slug: frontmatter.slug.replace('colors/tests/', '') },
+      params: { slug: frontmatter.slug.replace('colors/docs/tests/', '') },
     })),
     fallback: false,
   };
 }
 
 export async function getStaticProps(context) {
-  const { frontmatter, code } = await getMdxBySlug('colors/tests/', context.params.slug);
+  const { frontmatter, code } = await getMdxBySlug('colors/docs/tests/', context.params.slug);
   return { props: { frontmatter, code } };
 }
