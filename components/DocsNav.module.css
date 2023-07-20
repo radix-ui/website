@@ -16,7 +16,10 @@
 
 .DocsNavItem:focus {
   outline: none;
-  box-shadow: inset 0 0 0 1px var(--accent-7);
+}
+
+.DocsNavItem:focus-visible {
+  box-shadow: inset 0 0 0 1px var(--accent-8), 0 0 0 1px var(--accent-8);
 }
 
 .DocsNavItem:not([href]) {
