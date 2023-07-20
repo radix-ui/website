@@ -35,11 +35,6 @@ const globalStyles = globalCss({
 
   'pre, code': { margin: 0, fontFamily: '$mono' },
 
-  '::selection': {
-    backgroundColor: '$violetA5',
-    color: '$violet12',
-  },
-
   '#__next': {
     position: 'relative',
     zIndex: 0,
