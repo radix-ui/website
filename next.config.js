@@ -23,19 +23,24 @@ module.exports = withPlugins([withTM, withOptimizedImages, withVideos], {
   async redirects() {
     return [
       {
-        source: '/primitives',
-        destination: '/',
-        permanent: true,
-      },
-      {
-        source: '/primitives/docs/:slug*',
-        destination: '/docs/primitives/:slug*',
-        permanent: true,
-      },
-      {
         source: '/case-studies/:slug*',
         destination: '/primitives/case-studies/:slug*',
         permanent: true,
+      },
+      {
+        source: '/docs/colors',
+        destination: '/docs/colors/overview/installation',
+        permanent: false,
+      },
+      {
+        source: '/docs/colors/palette-composition/the-scales',
+        destination: '/docs/colors/palette-composition/scales',
+        permanent: false,
+      },
+      {
+        source: '/docs/colors/getting-started/:slug*',
+        destination: '/docs/colors/overview/:slug*',
+        permanent: false,
       },
       {
         source: '/docs/primitives',
@@ -53,24 +58,14 @@ module.exports = withPlugins([withTM, withOptimizedImages, withVideos], {
         permanent: false,
       },
       {
-        source: '/design/docs-system',
-        destination: '/design/docs-system/overview/introduction',
-        permanent: false,
+        source: '/primitives',
+        destination: '/',
+        permanent: true,
       },
       {
-        source: '/docs/colors',
-        destination: '/docs/colors/overview/installation',
-        permanent: false,
-      },
-      {
-        source: '/docs/colors/palette-composition/the-scales',
-        destination: '/docs/colors/palette-composition/scales',
-        permanent: false,
-      },
-      {
-        source: '/docs/colors/getting-started/:slug*',
-        destination: '/docs/colors/overview/:slug*',
-        permanent: false,
+        source: '/primitives/docs/:slug*',
+        destination: '/docs/primitives/:slug*',
+        permanent: true,
       },
     ];
   },
