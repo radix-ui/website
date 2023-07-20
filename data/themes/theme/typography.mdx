@@ -1,18 +1,21 @@
 ---
 metaTitle: Theme overview
-metaDescription: Implementing custom fonts and modifying their theme tokens to fine tune the look and feel of your UI.
+metaDescription: Adding fonts and tuning typographic details.
 ---
 
 # Typography
 
-<Description>
-  Implementing custom fonts and modifying their theme tokens to fine tune the
-  look and feel of your UI.
-</Description>
+<Description>Adding fonts and tuning typographic details.</Description>
 
-## Custom fonts
+## Using fonts
 
-How you import and serve your fonts is up to you, though in order to render custom fonts you will need to provide the named font in your stack via the `--default-font-family` token, here is a self-hosted example:
+How you choose to import and serve your fonts is up to you, Radix Themes only requires that you specify your named fonts using the correct [tokens](/docs/themes/theme/tokens#typography).
+
+You can change the default global font family by specifying the `--default-font-family` token in your [`theme-config.css`](/docs/themes/theme/tokens#modifying-tokens).
+
+### Self-hosted fonts
+
+To self-host fonts, download the required font files and add them to your project. Then, use `@font-face` to define the named font weights and styles.
 
 ```css
 @font-face {
@@ -44,26 +47,17 @@ How you import and serve your fonts is up to you, though in order to render cust
 }
 ```
 
+Then specify this named font within your [`theme-config.css`](/docs/themes/theme/tokens#modifying-tokens).
+
 ```css
 .radix-themes {
   --default-font-family: 'Inter', sans-serif;
 }
 ```
 
-### Multiple fonts
-
-Radix Themes provides various tokens for customizing fonts across different contexts. for example `--heading-font-family`, `--code-font-family`, [and more](/docs/themes/theme/tokens#advanced-settings). These are useful when you'd like to implement a font pairing for headings separately from body copy, or wish to tune your code snippets, strong, or emphasis font assignments:
-
-```css
-.radix-themes {
-  --heading-font-family: 'Montserrat', sans-serif;
-  --code-font-family: 'Source Code Pro', monospace;
-}
-```
-
 ### With next/font
 
-Loading fonts via [`next/font`](https://nextjs.org/docs/app/api-reference/components/font) is supported, simply load your font with the [`variable`](https://nextjs.org/docs/app/api-reference/components/font#variable) option to define a CSS variable name and assign it to `inter`. Then, use `inter.variable` to add the CSS variable to your HTML document.
+Loading fonts via [next/font](https://nextjs.org/docs/app/api-reference/components/font) is supported, simply load your font with the [`variable`](https://nextjs.org/docs/app/api-reference/components/font#variable) option to define a CSS variable name and assign it to `inter`. Then, use `inter.variable` to add the CSS variable to your HTML document.
 
 ```jsx
 import { Inter } from 'next/font/google';
@@ -83,7 +77,7 @@ export default function RootLayout({ children }) {
 }
 ```
 
-Finally, assign the CSS variable in your `themes-config.css`:
+Finally, assign the CSS variable in your `themes-config.css`.
 
 ```css
 .radix-themes {
@@ -93,27 +87,41 @@ Finally, assign the CSS variable in your `themes-config.css`:
 
 ### Weight mapping
 
-Font weight mappings are defined by the [font weight tokens](/docs/themes/theme/tokens#font-weight). Though rare, you may find your chosen typeface does not match the provided defaults. In this case, you can reassign them inside of your `theme-config.css`:
+Font weight mappings are defined by the [font weight tokens](/docs/themes/theme/tokens#font-weight). Though not common, you may find your chosen typeface does not match the provided defaults. In this case, you can reassign the named weights to match those which your typeface has available inside of your `theme-config.css`:
 
 ```css
 .radix-themes {
   --font-weight-light: 200;
   --font-weight-regular: 300;
-  /* ... */
+  --font-weight-medium: 600;
+  --font-weight-bold: 800;
 }
 ```
 
-### Advanced font settings
+### Multiple fonts
 
-Out of the box, Radix Themes has a tuned set of typographic attributes for getting the most of out the system font stack. These include fine grain adjustments to letter spacing, line height, sizing, leading trim and more.
-
-When changing fonts it can be desirable to tweak these attributes to get the most out of your chosen typeface. For example, you may find that your chosen typeface has a slightly larger x-height than the default, and you'd like to change the line height to compensate. In this case, you can use the `--default-line-height` token to adjust values across the entire theme:
+Various tokens are available for customizing fonts across different components, for example `--heading-font-family`, `--code-font-family`, `--strong-font-family` [and more](/docs/themes/theme/tokens#advanced-settings). This is helpful, for example, when you'd like to implement a font pairing for headings independently of body copy, or you wish to tune your code snippets, strong, or emphasis font assignments independently.
 
 ```css
 .radix-themes {
-  --default-line-height: 1.4;
-  /* ... */
+  --default-font-family: 'Inter', sans-serif;
+  --heading-font-family: 'Montserrat', sans-serif;
 }
 ```
 
-See [tokens](/docs/themes/theme/tokens#defaults) for a comprehensive list of available options.
+### Advanced tuning
+
+Radix Themes has a tuned set of typographic defaults out of the box for getting the most from the default font stack. These include fine grain adjustments to letter spacing, line height, font sizing, leading trim and more.
+
+When changing fonts it can be desirable to tweak these settings to have them compliment your chosen typeface. For example, you may find that your font has slightly different glypth dimensions and you'd like to adjust the letter spacing to compensate. In this case, you can provide different defaults to adjust these values across the entire theme.
+
+```css
+.radix-themes {
+  --default-letter-spacing: 1.2;
+  --default-line-height: 1.6;
+  --default-leading-trim-start: 0.45em;
+  --default-leading-trim-end: 0.35em;
+}
+```
+
+See [tokens](/docs/themes/theme/tokens#typography) for a comprehensive list of available options.
