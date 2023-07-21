@@ -32,15 +32,15 @@ export default function ThemesHome() {
           }
 
           .dark-theme:not(.radix-themes-example) .rt-Card {
-            --color-surface-1: var(--gray-2);
+            --color-surface: var(--gray-2);
           }
 
           .dark-theme.radix-themes-example .rt-Card {
-            --color-surface-1: var(--gray-2);
+            --color-surface: var(--gray-2);
           }
 
           .light-theme.radix-themes-example .rt-Card {
-            --color-surface-1: white;
+            --color-surface: white;
           }
 
           :root, .light-theme {
