@@ -1337,7 +1337,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
             </Box>
             <Flex direction="column" style={{ minWidth: 140 }}>
               <Select.Root defaultValue="All customers">
-                <Select.Trigger variant="solid" highContrast tabIndex={-1} />
+                <Select.Trigger variant="soft" highContrast tabIndex={-1} />
                 <Select.Content variant="soft" container={container} position="popper">
                   <Select.Item value="All customers">All customers</Select.Item>
                   <Select.Item value={new Date().getFullYear().toString()}>

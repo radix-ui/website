@@ -1235,7 +1235,7 @@ const ToDoList = ({ items, onItemsChange }: ToDoList) => {
   return (
     <Flex gap="2" direction="column">
       {items.map((item) => (
-        <Label>
+        <Label key={item.id}>
           <Flex gap="2" align="center">
             <Checkbox
               tabIndex={-1}
