@@ -1,0 +1,10 @@
+.Section {
+  border-top: 1px solid var(--gray-a6);
+  padding: var(--space-4) var(--space-3) var(--space-4);
+}
+
+@media (min-width: 520px) {
+  .Section {
+    padding: var(--space-5) var(--space-6) var(--space-6);
+  }
+}

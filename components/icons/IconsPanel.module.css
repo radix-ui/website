@@ -1,0 +1,42 @@
+.Panel {
+  border-radius: var(--radius-2);
+  min-height: 900px;
+  background: var(--color-panel);
+}
+
+@media (min-width: 900px) {
+  .Panel {
+    margin-top: calc(30vh + 240px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .Panel {
+    margin-top: calc(25vh + 260px);
+  }
+}
+
+.SectionContent {
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+}
+
+@media (max-width: 749px) {
+  .Section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .SectionContent {
+    margin-bottom: var(--space-5);
+  }
+}
+
+@media (min-width: 750px) {
+  .Section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto 1fr;
+    column-gap: var(--space-8);
+  }
+}

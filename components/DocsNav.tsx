@@ -3,7 +3,6 @@ import NextLink from 'next/link';
 import { Text, Heading, Box, Badge } from '@radix-ui/themes';
 import { classNames } from '@lib/classNames';
 import styles from './DocsNav.module.css';
-import { useRouter } from 'next/router';
 import { useCurrentPageSlug } from '@lib/useCurrentPageSlug';
 
 interface DocsNavProps {
