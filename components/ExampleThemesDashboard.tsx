@@ -124,7 +124,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
                   </Marker>
                   <Text size="2">Email support</Text>
                 </Flex>
-                <Button tabIndex={-1} mt="3" variant="surface">
+                <Button tabIndex={-1} mt="3" variant="outline">
                   Downgrade
                 </Button>
               </Flex>
@@ -181,7 +181,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
                   </Marker>
                   <Text size="2">Phone support</Text>
                 </Flex>
-                <Button tabIndex={-1} mt="3" variant="surface">
+                <Button tabIndex={-1} mt="3" variant="outline">
                   Go to Billing
                 </Button>
               </Flex>
@@ -488,7 +488,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
           </Box>
 
           <Flex mt="6" justify="end" gap="3">
-            <Button tabIndex={-1} variant="surface">
+            <Button tabIndex={-1} variant="outline">
               Create an account
             </Button>
             <Button tabIndex={-1}>Sign in</Button>
@@ -555,7 +555,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
           </Box>
 
           <Flex mt="6" justify="end" gap="3">
-            <Button tabIndex={-1} variant="surface" color="red">
+            <Button tabIndex={-1} variant="outline" color="red">
               Freeze
             </Button>
             <Button tabIndex={-1}>Done</Button>
@@ -588,7 +588,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
           <Flex direction="column" gap="3" align="stretch">
             <Button tabIndex={-1}>Next invoice</Button>
 
-            <Button tabIndex={-1} variant="surface">
+            <Button tabIndex={-1} variant="outline">
               Done
             </Button>
           </Flex>
@@ -685,7 +685,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
           </Grid>
 
           <Flex mt="6" justify="end" gap="3">
-            <Button tabIndex={-1} variant="surface" color="red">
+            <Button tabIndex={-1} variant="outline" color="red">
               Reject
             </Button>
             <Button tabIndex={-1}>Approve</Button>
