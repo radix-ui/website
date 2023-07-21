@@ -269,7 +269,7 @@ export const MainHero = () => {
         paddingTop: '$6',
         // Starting at 850px viewport height, grow the padding top from $5 until it's $9.
         '@media (min-width: 900px) and (min-height: 850px)': {
-          paddingTop: 'min($9, calc($8 + 0.35 * (100vh - 850px)))',
+          paddingTop: 'min(96px, calc($9 + (100vh - 850px)))',
         },
       }}
     >
@@ -304,12 +304,12 @@ export const MainHero = () => {
               },
             }}
           >
-            Bring your own styles, Radix does the rest.
+            Bring your own styles, we handle the rest.
           </Text>
-          <Box css={{ maxWidth: 500, mb: '$5' }}>
+          <Box css={{ maxWidth: 536, mb: '$5' }}>
             <Paragraph size="2" as="p">
-              Unstyled, accessible components for building high‑quality design systems and web apps
-              in React.
+              Unstyled, accessible, open source React components for building high‑quality design
+              systems and web apps.
             </Paragraph>
           </Box>
           <NextLink href="/primitives/docs/overview/getting-started" passHref>
