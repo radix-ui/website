@@ -1,4 +1,4 @@
 .radix-themes:not(.radix-themes-example) {
   --default-font-family: var(--fonts-untitled);
-  --code-font-size-adjust: 0.85;
+  --code-font-size-adjust: 0.87;
 }
