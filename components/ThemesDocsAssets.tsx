@@ -583,11 +583,9 @@ export function ThemesTokenValuesTable({
                           (event.currentTarget as HTMLElement)?.focus();
                         }}
                       >
-                        <Box p="3">
-                          <Text as="p" size="2">
-                            {description}
-                          </Text>
-                        </Box>
+                        <Text as="p" size="2">
+                          {description}
+                        </Text>
                       </Popover.Content>
                     </Popover.Root>
                   )}

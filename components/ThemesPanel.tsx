@@ -275,35 +275,33 @@ const ThemesPanel = React.forwardRef<ThemesPanelElement, ThemesPanelProps>(
                           <InfoCircledIcon style={{ display: 'block', opacity: 0.8 }} />
                         </IconButton>
                       </Popover.Trigger>
-                      <Popover.Content side="left" align="center">
-                        <Box p="4" style={{ width: 340 }}>
-                          <Text as="p" size="2" color="gray" mb="3">
-                            Background color
-                          </Text>
-                          <DescriptionList.Root>
-                            <DescriptionList.Term>
-                              <Code size="3">&quot;auto&quot;</Code>
-                            </DescriptionList.Term>
-                            <DescriptionList.Details>
-                              Chosing this option will set the background to <Strong>White</Strong>{' '}
-                              when appearance is <Code>light</Code> and <Strong>Gray 1</Strong>
-                              <Text size="2" color="gray">
-                                <Em> ({resolvedGrayScale} 1)</Em>
-                              </Text>{' '}
-                              when appearance is <Code>dark</Code>.
-                            </DescriptionList.Details>
-                            <DescriptionList.Term>
-                              <Code size="3">&quot;gray&quot;</Code>
-                            </DescriptionList.Term>
-                            <DescriptionList.Details mb="0">
-                              Chosing this option will set the background to <Strong>Gray 1</Strong>
-                              <Text size="2" color="gray">
-                                <Em> ({resolvedGrayScale} 1)</Em>
-                              </Text>
-                              .
-                            </DescriptionList.Details>
-                          </DescriptionList.Root>
-                        </Box>
+                      <Popover.Content side="left" align="center" style={{ width: 340 }}>
+                        <Text as="p" size="2" color="gray" mb="3">
+                          Background color
+                        </Text>
+                        <DescriptionList.Root>
+                          <DescriptionList.Term>
+                            <Code size="3">&quot;auto&quot;</Code>
+                          </DescriptionList.Term>
+                          <DescriptionList.Details>
+                            Chosing this option will set the background to <Strong>White</Strong>{' '}
+                            when appearance is <Code>light</Code> and <Strong>Gray 1</Strong>
+                            <Text size="2" color="gray">
+                              <Em> ({resolvedGrayScale} 1)</Em>
+                            </Text>{' '}
+                            when appearance is <Code>dark</Code>.
+                          </DescriptionList.Details>
+                          <DescriptionList.Term>
+                            <Code size="3">&quot;gray&quot;</Code>
+                          </DescriptionList.Term>
+                          <DescriptionList.Details mb="0">
+                            Chosing this option will set the background to <Strong>Gray 1</Strong>
+                            <Text size="2" color="gray">
+                              <Em> ({resolvedGrayScale} 1)</Em>
+                            </Text>
+                            .
+                          </DescriptionList.Details>
+                        </DescriptionList.Root>
                       </Popover.Content>
                     </Popover.Root>
                   </Label>
@@ -337,35 +335,33 @@ const ThemesPanel = React.forwardRef<ThemesPanelElement, ThemesPanelProps>(
                           <InfoCircledIcon style={{ display: 'block', opacity: 0.8 }} />
                         </IconButton>
                       </Popover.Trigger>
-                      <Popover.Content side="left" align="center">
-                        <Box p="4" style={{ width: 320 }}>
-                          <Text as="p" size="2" color="gray" mb="3">
-                            Text color
-                          </Text>
-                          <DescriptionList.Root>
-                            <DescriptionList.Term>
-                              <Code size="3">&quot;auto&quot;</Code>
-                            </DescriptionList.Term>
-                            <DescriptionList.Details>
-                              Chosing this option will set the text to <Strong>Gray 12</Strong>
-                              <Text size="2" color="gray">
-                                <Em> ({resolvedGrayScale} 12)</Em>
-                              </Text>
-                              .
-                            </DescriptionList.Details>
-                            <DescriptionList.Term>
-                              <Code size="3">&quot;accent&quot;</Code>
-                            </DescriptionList.Term>
-                            <DescriptionList.Details mb="0">
-                              Chosing this option will set the background to{' '}
-                              <Strong>Accent 12</Strong>
-                              <Text size="2" color="gray">
-                                <Em> ({accentScale} 12)</Em>
-                              </Text>
-                              .
-                            </DescriptionList.Details>
-                          </DescriptionList.Root>
-                        </Box>
+                      <Popover.Content side="left" align="center" style={{ width: 320 }}>
+                        <Text as="p" size="2" color="gray" mb="3">
+                          Text color
+                        </Text>
+                        <DescriptionList.Root>
+                          <DescriptionList.Term>
+                            <Code size="3">&quot;auto&quot;</Code>
+                          </DescriptionList.Term>
+                          <DescriptionList.Details>
+                            Chosing this option will set the text to <Strong>Gray 12</Strong>
+                            <Text size="2" color="gray">
+                              <Em> ({resolvedGrayScale} 12)</Em>
+                            </Text>
+                            .
+                          </DescriptionList.Details>
+                          <DescriptionList.Term>
+                            <Code size="3">&quot;accent&quot;</Code>
+                          </DescriptionList.Term>
+                          <DescriptionList.Details mb="0">
+                            Chosing this option will set the background to{' '}
+                            <Strong>Accent 12</Strong>
+                            <Text size="2" color="gray">
+                              <Em> ({accentScale} 12)</Em>
+                            </Text>
+                            .
+                          </DescriptionList.Details>
+                        </DescriptionList.Root>
                       </Popover.Content>
                     </Popover.Root>
                   </Label>
