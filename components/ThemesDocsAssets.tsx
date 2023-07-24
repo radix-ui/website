@@ -115,7 +115,7 @@ export function ThemesColorScale({ type = 'accent' }: { type: 'accent' | 'gray' 
 
 export function ThemesSpacingScale() {
   return (
-    <Flex align="end" gap="1" mt="7" mb="5">
+    <Flex align="end" gap="1">
       {[...new Array(9)].map((_, i) => (
         <Flex direction="column" grow="1" key={i} align="center" gap="4">
           <DecorativeBox style={{ width: '100%', height: `var(--space-${i + 1})` }} />
@@ -445,17 +445,23 @@ export function DecorativeBox(props) {
 
 export function ThemePagesLinks() {
   return (
-    <Grid columns="2" my="6" gap="4">
+    <Grid columns={{ initial: '1', xs: '2' }} my="6" gap="4">
       <ThemeLinkCard
-        title="Overview"
-        desc="Learn the theme anatomy and how to create the perfect config for your app."
+        title="Theme overview"
+        desc="Anatomy of a theme and how to create the perfect config for your app."
         href="/themes/docs/theme/overview"
       />
 
       <ThemeLinkCard
-        title="Typography"
-        desc="Add custom typefaces and dial in their typographic attributes."
-        href="/themes/docs/theme/typography"
+        title="Visual style"
+        desc="Learn how variants, radii and shadows influence your apps visual style."
+        href="/themes/docs/theme/dark-mode"
+      />
+
+      <ThemeLinkCard
+        title="Color"
+        desc="Understand the color system and it’s application in your theme."
+        href="/themes/docs/theme/dark-mode"
       />
 
       <ThemeLinkCard
@@ -465,21 +471,15 @@ export function ThemePagesLinks() {
       />
 
       <ThemeLinkCard
-        title="Breakpoints"
+        title="Typography"
+        desc="Add custom typefaces and fine tune typographic details."
+        href="/themes/docs/theme/typography"
+      />
+
+      <ThemeLinkCard
+        title="Layout"
         desc="Leverage the built-in responsive design utilities and prop syntax."
         href="/themes/docs/theme/breakpoints"
-      />
-
-      <ThemeLinkCard
-        title="Tokens"
-        desc="Access the underlying theme system to build your own components."
-        href="/themes/docs/theme/tokens"
-      />
-
-      <ThemeLinkCard
-        title="Theme component"
-        desc="Study the props API and learn from composition and nesting examples."
-        href="/themes/docs/components/theme"
       />
     </Grid>
   );
@@ -490,12 +490,14 @@ function ThemeLinkCard({ title, desc, href }: { title: string; desc: string; hre
     <NextLink href={href} passHref>
       <Card size="2" asChild>
         <a>
-          <Text as="div" size="2" weight="bold" mb="1">
-            {title}
-          </Text>
-          <Text as="p" size="2" color="gray">
-            {desc}
-          </Text>
+          <Box style={{ maxWidth: 300 }}>
+            <Text as="div" size="2" weight="bold" mb="1">
+              {title}
+            </Text>
+            <Text as="p" size="2" color="gray">
+              {desc}
+            </Text>
+          </Box>
         </a>
       </Card>
     </NextLink>

@@ -2,6 +2,41 @@ import { AccessibleIcon, Box, Code, IconButton, Popover, Table, Text } from '@ra
 import { RegionTable } from './RegionTable';
 import { InfoCircledIcon } from '@radix-ui/react-icons';
 
+export function ThemesSpacingTable() {
+  return (
+    <Box my="5" asChild>
+      <Table.Root>
+        <Table.Content>
+          <Table.Header>
+            <Table.Row>
+              <Table.ColumnHeaderCell>Step</Table.ColumnHeaderCell>
+              <Table.ColumnHeaderCell>Base value</Table.ColumnHeaderCell>
+            </Table.Row>
+          </Table.Header>
+
+          <Table.Body>
+            {['4px', '8px', '12px', '16px', '24px', '32px', '40px', '48px', '64px'].map(
+              (value, i) => {
+                const step = i + 1;
+                return (
+                  <Table.Row key={value}>
+                    <Table.RowHeaderCell>{step}</Table.RowHeaderCell>
+                    <Table.Cell>
+                      <Code color="gray" size="2">
+                        {value}
+                      </Code>
+                    </Table.Cell>
+                  </Table.Row>
+                );
+              }
+            )}
+          </Table.Body>
+        </Table.Content>
+      </Table.Root>
+    </Box>
+  );
+}
+
 export function ThemesFontWeightTable() {
   return (
     <Box my="5" asChild>
