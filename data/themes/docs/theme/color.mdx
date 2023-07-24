@@ -1,0 +1,136 @@
+---
+metaTitle: Color
+metaDescription: Understanding the color system and it's application in your theme.
+---
+
+# Color
+
+<Description>
+  Understanding the color system and it's application in your theme.
+</Description>
+
+## Color scales
+
+[Radix Colors](/colors/docs/palette-composition/scales) provide the foundation of your themes color system. Out of the box this provides 28, 12 step color scales, each with it's own light, dark and alpha variants.
+
+Colors are grouped into 2 categories: Accent and Gray and are specified either globally on your [Theme](/colors/docs/components/theme), or per component where applicable.
+
+### Accent
+
+Accents are the most dominant color in your theme, they are used for primary buttons, links and other interactive elements. The accent can be one of [23 scales](/themes/docs/theme/color#choosing-an-accent-scale).
+
+<ThemesColorScale type="accent" />
+
+### Gray
+
+Grays are used for backgrounds, borders, text and other non-interactive elements. You can choose from one of [6 scales](/themes/docs/theme/color#choosing-a-gray-scale).
+
+<ThemesColorScale type="gray" />
+
+### Alpha variants
+
+Every scale has an alpha variant which are designed to appear visually the same as their opaque counterparts when placed over a matching background. This is very powerful and allows colors to be overlayed without a loss of saturation or hue.
+
+Alpha variants are used automatically within components so no configuration is required, however, if you'd like to use them manually in your own styles you can do so by using [Tokens](/colors/docs/theme/token-reference).
+
+## Choosing an accent scale
+
+There are 23 accents to choose from.
+
+15 scales designed for light foreground text.
+
+<ThemesAccentSwatches />
+
+5 scales designed for dark foreground text.
+
+<ThemesBrightAccentSwatches />
+
+## Choosing a gray scale
+
+There are 6 grays to choose from.
+
+<ThemeGraySwatches />
+
+- `Gray` is pure gray.
+- `Mauve` is based on a desaturated purple hue.
+- `Slate` is based on a desaturated blue hue.
+- `Sage` is based on a desaturated green hue.
+- `Olive` is based on a desaturated lime hue.
+- `Sand` is based on a desaturated yellow hue.
+
+### Neutral and natural pairing
+
+By default, the theme will pair your chosen accent with a gray that is [designed to compliment it](/colors/docs/palette-composition/composing-a-palette#natural-pairing). If you'd prefer a more neutral vibe, or would otherwise like a different feel you can specify an alternative.
+
+## Text color
+
+Depending on the vibe you want, you can set your text color to match either your gray or accent scale with the `textColor` prop on your [Theme](/themes/docs/components/theme).
+
+Using the `accent` setting will result in a richer, more colorful feel.
+
+{
+
+<Box my="5">
+  <Theme
+    textColor="accent"
+    style={{ maxWidth: 550 }}
+    className="radix-themes-example"
+  >
+    <Card size="3">
+      <Heading mb="1" trim="start">
+        Glossary
+      </Heading>
+      <Text as="p" trim="end">
+        Taxonomy and language sorrounding products can be difficult to follow,
+        refresh your memory with our glossary.
+      </Text>
+    </Card>
+  </Theme>
+</Box>
+
+}
+
+Using the `auto` (gray) setting will result in a more functional feel.
+
+{
+
+<Box my="5">
+  <Theme
+    textColor="auto"
+    style={{ maxWidth: 550 }}
+    className="radix-themes-example"
+  >
+    <Card size="3">
+      <Heading mb="1" trim="start">
+        Glossary
+      </Heading>
+      <Text as="p" trim="end">
+        Taxonomy and language sorrounding products can be difficult to follow,
+        refresh your memory with our glossary.
+      </Text>
+    </Card>
+  </Theme>
+</Box>
+
+}
+
+The difference may seem subtle, but it can make a huge difference with a full page of text or a densely populated UI.
+
+You may want to experiment with these settings in your applications and websites to find what works for you.
+
+## Semantic colors
+
+In most apps, you will need to assign colors to communicate semantic meaning, for these cases we recommend using the `color` prop on the nessesary component/s to override the accent color.
+
+Here are some common choices that work well in Western culture.
+
+- **Error**: Red/Tomato/Crimson
+- **Success**: Teal/Green/Grass/Mint
+- **Warning**: Yellow/Amber
+- **Info**: Blue/Sky/Cyan
+
+## Using color tokens
+
+All color values made available as CSS [tokens](/colors/docs/theme/token-reference), should you need them when building your own components or wish to access the theme in your own styles.
+
+See the [Token Reference](/colors/docs/theme/token-reference) for a full list of available values.

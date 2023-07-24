@@ -58,6 +58,9 @@ const definitions = {
   contextMenuItem: themes.contextMenuItemPropDefs,
   theme: { ...asChildProp, ...themes.themePropDefs },
   card: { ...asChildProp, ...themes.cardPropDefs },
+  tableRoot: { ...asChildProp, ...themes.tableRootPropDefs },
+  tableRow: { ...asChildProp, ...themes.tableRowPropDefs },
+  tableCell: { ...asChildProp, ...themes.tableCellPropDefs },
 } as const;
 
 type PropDefinitions = typeof definitions;
@@ -87,7 +90,7 @@ const uniqueDescriptions: UniqueDescriptions = {
     appearance:
       'The color scheme of the theme (typcially referred to as light and dark mode). Invert will use the opposite scheme to that of its parent.',
     accentScale: 'The primary accent color of the theme.',
-    grayScale: 'Thehe gray scale of the theme.',
+    grayScale: 'The gray scale of the theme.',
     applyBackgroundColor: 'Whether to apply the themes background color to the rendered element.',
   },
   tooltip: {

@@ -10,10 +10,13 @@ export const themesRoutes = [
     label: 'Theme',
     pages: [
       { title: 'Overview', slug: 'themes/docs/theme/overview' },
-      { title: 'Typography', slug: 'themes/docs/theme/typography' },
+      { title: 'Visual style', slug: 'themes/docs/theme/visual-style' },
+      { title: 'Color', slug: 'themes/docs/theme/color' },
       { title: 'Dark mode', slug: 'themes/docs/theme/dark-mode' },
+      { title: 'Typography', slug: 'themes/docs/theme/typography' },
+      { title: 'Layout', slug: 'themes/docs/theme/layout' },
       { title: 'Breakpoints', slug: 'themes/docs/theme/breakpoints' },
-      { title: 'Tokens', slug: 'themes/docs/theme/tokens' },
+      { title: 'Token reference', slug: 'themes/docs/theme/token-reference' },
     ],
   },
 

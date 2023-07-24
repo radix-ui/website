@@ -5,6 +5,7 @@ import { MDXProvider, components } from '@components/MDXComponents';
 import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { QuickNav } from '@components/QuickNav';
 import * as themesDocsAssets from '@components/ThemesDocsAssets';
+import * as themesDocsTables from '@components/ThemesDocsTables';
 
 import type { Frontmatter } from 'types/frontmatter';
 
@@ -34,6 +35,7 @@ export default function OverviewDoc({ frontmatter, code }: Doc) {
             {
               ...components,
               ...themesDocsAssets,
+              ...themesDocsTables,
             } as any
           }
         />
