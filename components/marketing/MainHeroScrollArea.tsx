@@ -1,6 +1,5 @@
-import React from 'react';
+import { Box, Text, styled } from '@modulz/design-system';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
-import { Text, Flex, styled, Box } from '@modulz/design-system';
 
 const SCROLLBAR_SIZE = 10;
 

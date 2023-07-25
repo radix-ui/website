@@ -1,4 +1,4 @@
-import { Box, Flex, ScrollArea, Theme } from '@radix-ui/themes';
+import { Box, ScrollArea, Theme } from '@radix-ui/themes';
 import '@radix-ui/themes/dist/index.css';
 import * as React from 'react';
 import Head from 'next/head';

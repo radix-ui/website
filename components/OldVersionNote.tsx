@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import NextLink from 'next/link';
 import { Box, Link, Text } from '@radix-ui/themes';
 import styles from './OldVersionNote.module.css';

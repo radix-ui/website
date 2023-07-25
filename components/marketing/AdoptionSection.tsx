@@ -1,15 +1,6 @@
 import React from 'react';
 import NextLink from 'next/link';
-import {
-  Box,
-  Grid,
-  Text,
-  Container,
-  Heading,
-  Paragraph,
-  Section,
-  Separator,
-} from '@modulz/design-system';
+import { Box, Grid, Text, Container, Heading, Paragraph, Section } from '@modulz/design-system';
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { MarketingCaption } from './MarketingCaption';
 import { MarketingButton } from './MarketingButton';

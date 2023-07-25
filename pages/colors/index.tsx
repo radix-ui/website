@@ -1,8 +1,7 @@
 import React from 'react';
 import NextLink from 'next/link';
 import { Box, Text, Grid, Heading, Container, Flex, Separator, Section } from '@radix-ui/themes';
-import { Button } from '@modulz/design-system';
-import { ArrowRightIcon, ExternalLinkIcon } from '@radix-ui/react-icons';
+import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { Footer } from '@components/Footer';
 import { ColorsHeader } from '@components/ColorsHeader';

@@ -1,6 +1,6 @@
 import React from 'react';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
-import { Flex, styled, darkTheme, keyframes } from '@modulz/design-system';
+import { styled, darkTheme, keyframes } from '@modulz/design-system';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 
 const slideDown = keyframes({

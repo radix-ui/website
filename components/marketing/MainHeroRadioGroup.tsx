@@ -1,6 +1,5 @@
-import React from 'react';
+import { Text, styled } from '@modulz/design-system';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
-import { Text, Flex, styled, darkTheme, keyframes } from '@modulz/design-system';
 
 export const RadioCardGroup = styled(RadioGroupPrimitive.Root, {
   display: 'flex',

@@ -1,107 +1,17 @@
 import {
-  Section,
-  Container,
-  Heading,
-  Link,
-  Avatar,
-  Flex,
-  Button,
-  Paragraph,
-  Separator,
   Box,
+  Container,
+  Flex,
   Grid,
+  Heading,
+  Paragraph,
+  Section,
   Text,
   styled,
-  AspectRatio,
 } from '@modulz/design-system';
+import { CheckIcon } from '@radix-ui/react-icons';
 import React from 'react';
 import { MarketingCaption } from './MarketingCaption';
-import { CheckIcon, ChevronDownIcon } from '@radix-ui/react-icons';
-import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-
-const InlineDropdownTrigger = styled(DropdownMenuPrimitive.Trigger, {
-  all: 'unset',
-  alignItems: 'center',
-  boxSizing: 'border-box',
-  display: 'inline-flex',
-  WebkitTapHighlightColor: 'transparent',
-
-  px: 7,
-  pt: 0,
-  pb: 2,
-  mr: 2,
-  bc: '$slate3',
-  border: '1px solid $slateA5',
-  borderRadius: '$3',
-  outline: 0,
-
-  '@hover': {
-    '&:hover': {
-      borderColor: '$slateA8',
-    },
-    '&:focus': {
-      borderColor: '$slateA8',
-      boxShadow: '0 0 0 1px $colors$slateA8',
-    },
-  },
-});
-
-const ThickCaretDown = (props: React.ComponentProps<'svg'>) => {
-  return (
-    <svg
-      width="15"
-      height="15"
-      viewBox="0 0 15 15"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
-      <path
-        d="M3.5 6.5L7.5 10.25L11.5 6.5"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-};
-
-const InlineDropdownArrow = styled(DropdownMenuPrimitive.Arrow, {
-  fill: '$panel',
-});
-
-const InlineDropdownContent = styled(DropdownMenuPrimitive.Content, {
-  bc: '$panel',
-  boxShadow: '0px 5px 30px -5px $colors$shadowDark',
-  p: '$1',
-  br: '$3',
-});
-
-const InlineDropdownRadioItem = styled(DropdownMenuPrimitive.RadioItem, {
-  display: 'flex',
-  ai: 'center',
-  fontFamily: '$untitled',
-  fontSize: '$5',
-  letterSpacing: '-0.01em',
-  height: '$6',
-  px: '$2',
-  br: '$2',
-  cursor: 'default',
-  '@hover': {
-    '&:hover': {
-      bc: '$slateA3',
-      outline: 0,
-    },
-  },
-  '&:focus': {
-    bc: '$slateA3',
-    outline: 0,
-  },
-  '&[data-state="checked"]': {
-    display: 'none',
-  },
-});
 
 type Components =
   | 'dropdown'
@@ -138,35 +48,6 @@ export const ComponentHighlightsSection = () => {
           <Heading as="h2" size="3" css={{ mb: '$3' }}>
             So, you think you can <span style={{ whiteSpace: 'nowrap' }}>build a dropdown?</span>
           </Heading>
-
-          {/* <DropdownMenuPrimitive.Root>
-            <Heading as="h2" size="3" css={{ mb: '$3' }}>
-              So, you think you can{' '}
-              <span style={{ whiteSpace: 'nowrap' }}>
-                build a{' '}
-                <InlineDropdownTrigger>
-                  {component}
-                  <ThickCaretDown style={{ marginTop: 2, marginLeft: 5, marginRight: -1 }} />
-                </InlineDropdownTrigger>
-                ?
-              </span>
-            </Heading>
-            <InlineDropdownContent sideOffset={5}>
-              <InlineDropdownArrow />
-              <DropdownMenuPrimitive.RadioGroup
-                value={component}
-                onValueChange={(newValue) => setComponent(newValue as Components)}
-              >
-                <InlineDropdownRadioItem value="dropdown">dropdown</InlineDropdownRadioItem>
-                <InlineDropdownRadioItem value="dialog">dialog</InlineDropdownRadioItem>
-                <InlineDropdownRadioItem value="popover">popover</InlineDropdownRadioItem>
-                <InlineDropdownRadioItem value="slider">slider</InlineDropdownRadioItem>
-                <InlineDropdownRadioItem value="scroll area">scroll area</InlineDropdownRadioItem>
-                <InlineDropdownRadioItem value="hover card">hover card</InlineDropdownRadioItem>
-                <InlineDropdownRadioItem value="tooltip">tooltip</InlineDropdownRadioItem>
-              </DropdownMenuPrimitive.RadioGroup>
-            </InlineDropdownContent>
-          </DropdownMenuPrimitive.Root> */}
 
           <Box css={{ maxWidth: 480 }}>
             {component === 'dropdown' && (

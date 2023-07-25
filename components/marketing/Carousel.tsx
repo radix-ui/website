@@ -1,4 +1,4 @@
-import React, { ReactType } from 'react';
+import * as React from 'react';
 import { Box } from '@modulz/design-system';
 import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import { createContext } from '@radix-ui/react-context';

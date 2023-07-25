@@ -1,16 +1,4 @@
-import React from 'react';
-import {
-  Box,
-  Grid,
-  Text,
-  Container,
-  Flex,
-  Heading,
-  Paragraph,
-  Section,
-  Separator,
-  darkTheme,
-} from '@modulz/design-system';
+import { Box, Container, Grid, Heading, Paragraph, Section, Text } from '@modulz/design-system';
 import { MarketingCaption } from './MarketingCaption';
 
 export const BenefitsSection = () => {

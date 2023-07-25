@@ -1,25 +1,22 @@
-import React from 'react';
-import NextLink from 'next/link';
 import {
+  Avatar,
   Box,
-  Grid,
-  Text,
-  styled,
+  Card,
   Container,
   Flex,
+  Grid,
   Heading,
-  Section,
-  Card,
-  Avatar,
   Link,
-  Separator,
+  Section,
+  Text,
+  styled,
 } from '@modulz/design-system';
-import { ArrowRightIcon } from '@radix-ui/react-icons';
-import { MarketingButton } from './MarketingButton';
-import { MarketingCaption } from './MarketingCaption';
 import { Root as AccessibleIcon } from '@radix-ui/react-accessible-icon';
+import { ArrowRightIcon } from '@radix-ui/react-icons';
+import NextLink from 'next/link';
 import { CaseStudyLogo } from './CaseStudyLogo';
 import { LogoLink } from './LogoLink';
+import { MarketingCaption } from './MarketingCaption';
 
 export const CaseStudiesSection = () => {
   return (

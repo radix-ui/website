@@ -1,7 +1,6 @@
 // Inspired by https://github.com/rexxars/react-refractor
-import React from 'react';
 import rangeParser from 'parse-numeric-range';
-import { Box } from '@modulz/design-system';
+import React from 'react';
 import { CodeBlock } from '../CodeBlock';
 
 type CodeDemoProps = React.ComponentProps<typeof CodeBlock>;

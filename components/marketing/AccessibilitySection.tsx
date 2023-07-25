@@ -1,28 +1,26 @@
-import React from 'react';
 import {
   Box,
-  Grid,
-  Text,
-  styled,
+  Card,
   Container,
   Flex,
+  Grid,
   Heading,
-  Paragraph,
   Section,
-  Card,
-  Avatar,
-  keyframes,
+  Text,
   darkTheme,
+  keyframes,
+  styled,
 } from '@modulz/design-system';
 import {
+  CaretDownIcon,
   CaretLeftIcon,
   CheckCircledIcon,
   CheckIcon,
   CodeIcon,
   EyeClosedIcon,
   InputIcon,
-  CaretDownIcon,
 } from '@radix-ui/react-icons';
+import React from 'react';
 import { MarketingCaption } from './MarketingCaption';
 
 type SequenceType = 'screenReader' | 'keyboardNavigation' | 'typeahead' | 'rtl';

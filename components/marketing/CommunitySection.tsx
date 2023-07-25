@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-  Box,
-  Grid,
-  Text,
-  Container,
-  Heading,
-  Section,
-  Card,
-  Separator,
-} from '@modulz/design-system';
+import { Box, Grid, Text, Container, Heading, Section, Card } from '@modulz/design-system';
 import { MarketingCaption } from './MarketingCaption';
 
 export const CommunitySection = () => {
