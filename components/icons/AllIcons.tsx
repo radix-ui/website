@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Icons from '@radix-ui/react-icons';
-import { Grid, Tooltip, Text, Box } from '@radix-ui/themes';
+import { Grid, Tooltip, Text, Box, IconButton } from '@radix-ui/themes';
 import { CopyToastVisibility } from './CopyToast';
 
 import styles from './AllIcons.module.css';
@@ -46,8 +46,10 @@ const CopyButton = ({ children, label }: CopyButtonProps) => {
     <CopyToastVisibility.Consumer>
       {({ setIcon, setIsVisible }) => (
         <Tooltip content={label} side="top" sideOffset={5}>
-          <button
-            className={styles.CopyButton}
+          <IconButton
+            highContrast
+            variant="ghost"
+            size="3"
             onClick={(event: React.MouseEvent) => {
               const svg = event.currentTarget.querySelector('svg');
               const code = svg && svg.parentElement ? svg.parentElement.innerHTML : null;
@@ -76,7 +78,7 @@ const CopyButton = ({ children, label }: CopyButtonProps) => {
             }}
           >
             {children}
-          </button>
+          </IconButton>
         </Tooltip>
       )}
     </CopyToastVisibility.Consumer>

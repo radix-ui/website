@@ -4,30 +4,6 @@
   row-gap: var(--space-6);
 }
 
-.CopyButton {
-  border: 0;
-  outline: 0;
-  font-family: inherit;
-  text-align: inherit;
-  color: inherit;
-  appearance: none;
-  background: transparent;
-  display: block;
-  cursor: pointer;
-  padding: var(--space-3);
-  margin: calc(-1 * var(--space-3));
-  border-radius: var(--radius-1);
-}
-
-.CopyButton:hover {
-  background-color: var(--accent-a4);
-}
-
-.CopyButton:active,
-.CopyButton:focus {
-  box-shadow: 0 0 0 2px var(--accent-a8);
-}
-
 @media (max-width: 350px) {
   .GroupGrid {
     grid-template-columns: repeat(5, 15px);
