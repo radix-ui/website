@@ -9,14 +9,12 @@
   white-space: pre;
   position: relative;
   background-color: var(--background);
-  color: var(--text);
+  color: var(--color-text);
   box-shadow: inset 0 0 0 1px var(--border);
 }
 
 .Pre.violet {
   --background: var(--accent-a2);
-  --text: var(--accent-11);
-
   --border: var(--accent-4);
   --faded-lines: var(--gray-a8);
   --comment: var(--gray-a9);
@@ -24,10 +22,10 @@
   --added: var(--green-11);
   --line-numbers: var(--indigo-5);
 
-  --syntax-1: var(--violet-10);
-  --syntax-2: var(--violet-12);
-  --syntax-3: var(--mint-11);
-  --syntax-4: var(--blue-12);
+  --syntax-accent: var(--violet-10);
+  --syntax-accent-subtle: var(--violet-12);
+  --syntax-complementary: var(--mint-11);
+  --syntax-secondary: var(--blue-12);
 
   --highlighted-line-bg: var(--accent-3);
 
@@ -45,24 +43,21 @@
 }
 
 :global(.dark-theme) .Pre.violet {
-  --syntax-1: var(--violet-11);
+  --syntax-accent: var(--violet-11);
 }
 
-.Pre.amber {
-  --background: var(--accent-a2);
-  --text: var(--accent-11);
-
-  --border: var(--accent-4);
+.Pre.pink {
+  --background: var(--color-surface-2);
+  --border: var(--gray-a4);
   --faded-lines: var(--gray-a8);
-  --comment: var(--gray-a9);
   --removed: var(--red-11);
   --added: var(--green-11);
   --line-numbers: var(--indigo-5);
 
-  --syntax-1: var(--blue-10);
-  --syntax-2: var(--pink-11);
-  --syntax-3: var(--blue-11);
-  --syntax-4: var(--blue-11);
+  --syntax-accent: var(--blue-11);
+  --syntax-accent-subtle: var(--blue-12);
+  --syntax-complementary: var(--pink-11);
+  --syntax-analogous: var(--indigo-11);
 
   --highlighted-line-bg: var(--accent-3);
 
@@ -85,15 +80,13 @@
 
   --border: var(--accent-4);
   --faded-lines: var(--gray-a8);
-  --comment: var(--gray-a9);
   --removed: var(--red-11);
   --added: var(--green-11);
   --line-numbers: var(--indigo-5);
 
-  --syntax-1: var(--indigo-11);
-  --syntax-2: var(--color-text);
-  --syntax-3: var(--crimson-11);
-  --syntax-4: var(--color-text);
+  --syntax-accent: var(--indigo-11);
+  --syntax-accent-subtle: var(--indigo-12);
+  --syntax-complementary: var(--crimson-11);
 
   --highlighted-line-bg: var(--accent-a3);
 
@@ -114,32 +107,56 @@
   display: block;
 }
 
-.Pre :global(.token.parameter) {
-  color: var(--text);
+.Pre :where(:global(.token.punctuation), :global(.token.plain-text)) {
+  color: var(--color-text);
 }
 
+/* prettier-ignore */
 .Pre
-  :where(:global(.token.tag), :global(.token.class-name), :global(.token.selector), :global(.token.selector)
-    :global(.class), :global(.token.function)) {
-  color: var(--syntax-1);
+  :where(
+    :global(.token.class-name),
+    :global(.token.class),
+    :global(.token.function),
+    :global(.token.maybe-class-name),
+    :global(.token.parameter),
+    :global(.token.property),
+    :global(.token.pseudo-class),
+    :global(.token.selector),
+    :global(.token.tag)
+  ) {
+  color: var(--syntax-accent);
 }
 
+/* prettier-ignore */
 .Pre
-  :where(:global(.token.attr-value), :global(.token.class), :global(.token.string), :global(.token.number), :global(.token.unit), :global(.token.color)) {
-  color: var(--syntax-2);
+  :where(
+    :global(.token.attr-value),
+    :global(.token.color),
+    :global(.token.imports),
+    :global(.token.number),
+    :global(.token.string),
+    :global(.token.unit)
+  ) {
+  color: var(--syntax-accent-subtle);
 }
 
+/* prettier-ignore */
 .Pre
-  :where(:global(.token.attr-name), :global(.token.keyword), :global(.token.rule), :global(.token.operator), :global(.token.pseudo-class), :global(.token.important)) {
-  color: var(--syntax-3);
-}
-
-.Pre :where(:global(.token.punctuation), :global(.token.module), :global(.token.property)) {
-  color: var(--syntax-4);
+  :where(
+    :global(.token.attr-name),
+    :global(.token.important),
+    :global(.token.interpolation-punctuation),
+    :global(.token.keyword),
+    :global(.token.module),
+    :global(.token.operator),
+    :global(.token.rule),
+    :global(.token.variable)
+  ) {
+  color: var(--syntax-complementary);
 }
 
 .Pre :where(:global(.token.comment)) {
-  color: var(--comment);
+  color: var(--gray-a11);
 }
 
 .Pre :where(:global(.token.atapply) :global(.token:not(.rule)):not(:global(.important))) {
@@ -147,10 +164,6 @@
 }
 
 .Pre :where(:global(.language-shell) :global(.token:not(.comment))) {
-  color: inherit;
-}
-
-.Pre :where(:global(.language-css) :global(.token.function)) {
   color: inherit;
 }
 

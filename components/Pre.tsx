@@ -7,7 +7,7 @@ import { Box } from '@radix-ui/themes';
 import { createContext } from '@radix-ui/react-context';
 
 const [SyntaxSchemeProvider, useSyntaxSchemeContext] = createContext<{
-  scheme: 'indigo' | 'violet' | 'amber';
+  scheme: 'indigo' | 'violet' | 'pink';
 }>('SyntaxScheme');
 
 type PreProps = React.ComponentPropsWithoutRef<typeof Box> & React.ComponentPropsWithoutRef<'pre'>;

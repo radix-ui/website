@@ -88,8 +88,8 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.includes('/colors/docs')) {
     return (
-      <Theme accentScale="amber" style={themeRootStyles}>
-        <SyntaxSchemeProvider scheme="amber">
+      <Theme accentScale="pink" style={themeRootStyles}>
+        <SyntaxSchemeProvider scheme="pink">
           <ColorsDocsPage>
             <Component {...pageProps} />
           </ColorsDocsPage>
@@ -100,7 +100,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.includes('/colors')) {
     return (
-      <Theme accentScale="amber" style={themeRootStyles}>
+      <Theme accentScale="pink" style={themeRootStyles}>
         <Component {...pageProps} />
       </Theme>
     );
