@@ -26,11 +26,15 @@
   color: var(--gray-10);
 }
 
-.DocsNavItem[href]:hover {
-  background-color: var(--accent-4);
+.DocsNavItem.active {
+  background-color: var(--accent-5);
 }
 
-.DocsNavItem.active,
-.DocsNavItem.active:hover {
-  background-color: var(--accent-5);
+@media (hover: hover) {
+  .DocsNavItem[href]:hover {
+    background-color: var(--accent-4);
+  }
+  .DocsNavItem.active:hover {
+    background-color: var(--accent-5);
+  }
 }

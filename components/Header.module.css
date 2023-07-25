@@ -36,14 +36,16 @@
   padding-right: var(--space-1);
   position: relative;
   color: var(--gray-a11);
-}
-
-.HeaderProductLink:hover {
-  color: var(--gray-12);
-}
-
-.HeaderProductLink:focus {
   outline: 0;
+}
+
+@media (hover: hover) {
+  .HeaderProductLink:hover {
+    color: var(--gray-12);
+  }
+}
+
+.HeaderProductLink:focus-visible {
   color: var(--gray-12);
 }
 
@@ -74,8 +76,10 @@
   letter-spacing: -0.01em;
 }
 
-.HeaderProductLink:hover .HeaderProductLinkInner {
-  background-color: var(--gray-a3);
+@media (hover: hover) {
+  .HeaderProductLink:hover .HeaderProductLinkInner {
+    background-color: var(--gray-a3);
+  }
 }
 
 .HeaderProductLink:focus-visible .HeaderProductLinkInner {

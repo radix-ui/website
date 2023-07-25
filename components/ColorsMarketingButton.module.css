@@ -9,26 +9,36 @@
   border-radius: 100px;
   padding-left: var(--space-4);
   padding-right: var(--space-4);
+  padding-bottom: 1px;
   background-color: white;
   box-shadow: -15px 0 30px -10px var(--orange-a7), 0 0 30px -10px var(--pink-a7),
     15px 0 30px -10px var(--violet-a7);
   cursor: pointer;
-  color: black;
-  transition: box-shadow 150ms ease;
+  color: var(--color-text);
+  outline: 0;
+  transition: box-shadow 150ms, transform 150ms;
 }
 
-.ColorsMarketingButton:hover {
-  box-shadow: -15px 0 30px -10px var(--orange-a8), 0 0 30px -10px var(--pink-a8),
-    15px 0 30px -10px var(--violet-a8);
+@media (hover: hover) {
+  .ColorsMarketingButton:hover {
+    box-shadow: -15px 0 30px -10px var(--orange-a8), 0 0 30px -10px var(--pink-a8),
+      15px 0 30px -10px var(--violet-a8);
+  }
 }
 
 .ColorsMarketingButton:active {
-  bc: white;
-  box-shadow: -15px 0 20px -10px var(--orange-a8), 0 0 20px -10px var(--pink-a8),
-    15px 0 20px -10px var(--violet-a8);
+  box-shadow: -7px 0 20px -5px var(--orange-a6), 0 0 20px -5px var(--pink-a6),
+    7px 0 20px -5px var(--violet-a6);
+  transition-duration: 60ms;
+  transform: translateY(1px);
 }
 
 .ColorsMarketingButton:focus-visible {
-  box-shadow: -15px 0 30px -10px var(--orange-a7), 0 0 30px -10px var(--pink-a7),
-    15px 0 30px -10px var(--violet-a7), 0 0 0 2px var(--pink-a7);
+  box-shadow: -15px 0 30px -10px var(--orange-a8), 0 0 30px -10px var(--pink-a8),
+    15px 0 30px -10px var(--violet-a8), 0 0 0 2px var(--accent-a7);
+}
+
+.ColorsMarketingButton:active:focus-visible {
+  box-shadow: -7px 0 20px -5px var(--orange-a6), 0 0 20px -5px var(--pink-a6),
+    7px 0 20px -5px var(--violet-a6), 0 0 0 2px var(--accent-a7);
 }

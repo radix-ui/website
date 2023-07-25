@@ -23,9 +23,7 @@ export default function Home() {
         image="default.png"
       />
 
-      <Box style={{ height: 0 }}>
-        <IconsHeader ghost />
-      </Box>
+      <IconsHeader />
 
       <Box mt="4">
         <Hero />
