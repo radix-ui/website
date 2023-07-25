@@ -48,15 +48,14 @@ export const IconsPanel = () => {
                 Assets
               </Heading>
 
-              <Flex direction="column" gap="3" mt="2">
+              <Flex direction="column" gap="2" mt="2">
                 <Link
                   href="https://www.figma.com/file/9Df5CaFUEomVzn20gRpaX3/Radix-Icons"
                   target="_blank"
+                  highContrast
                 >
                   <Flex display="flex" align="center" gap="2">
-                    <Box asChild>
-                      <FigmaLogoIcon />
-                    </Box>
+                    <FigmaLogoIcon />
                     <Text size="3">Open in Figma</Text>
                   </Flex>
                 </Link>
@@ -64,11 +63,10 @@ export const IconsPanel = () => {
                 <Link
                   href="https://raw.githubusercontent.com/radix-ui/icons/master/Radix-Icons.sketch"
                   target="_blank"
+                  highContrast
                 >
                   <Flex display="flex" align="center" gap="2">
-                    <Box asChild>
-                      <SketchLogoIcon />
-                    </Box>
+                    <SketchLogoIcon />
                     <Text size="3">Download for Sketch</Text>
                   </Flex>
                 </Link>
@@ -76,11 +74,10 @@ export const IconsPanel = () => {
                 <Link
                   href="https://raw.githubusercontent.com/radix-ui/icons/master/Radix-Icons.iconjar.zip"
                   target="_blank"
+                  highContrast
                 >
                   <Flex display="flex" align="center" gap="2">
-                    <Box asChild>
-                      <IconJarLogoIcon />
-                    </Box>
+                    <IconJarLogoIcon />
                     <Text size="3">Download IconJar</Text>
                   </Flex>
                 </Link>
@@ -88,34 +85,34 @@ export const IconsPanel = () => {
                 <Link
                   href="https://raw.githubusercontent.com/radix-ui/icons/master/radix-icons.zip"
                   target="_blank"
+                  highContrast
                 >
                   <Flex display="flex" align="center" gap="2">
-                    <Box asChild>
-                      <DownloadIcon />
-                    </Box>
+                    <DownloadIcon />
                     <Text size="3">Download SVG</Text>
                   </Flex>
                 </Link>
 
-                <Link href="https://www.npmjs.com/package/@radix-ui/react-icons" target="_blank">
+                <Link
+                  href="https://www.npmjs.com/package/@radix-ui/react-icons"
+                  target="_blank"
+                  highContrast
+                >
                   <Flex display="flex" align="center" gap="2">
-                    <Box asChild>
-                      <CubeIcon />
-                    </Box>
+                    <CubeIcon />
                     <Text size="3">Install with npm</Text>
                   </Flex>
                 </Link>
 
-                <Link href="https://github.com/radix-ui/icons" target="_blank">
+                <Link href="https://github.com/radix-ui/icons" target="_blank" highContrast>
                   <Flex display="flex" align="center" gap="2">
-                    <Box asChild>
-                      <GitHubLogoIcon />
-                    </Box>
+                    <GitHubLogoIcon />
                     <Text size="3">View on GitHub</Text>
                   </Flex>
                 </Link>
               </Flex>
             </Box>
+
             <Box className={styles.SectionContent}>
               <Heading
                 as="h3"

@@ -126,6 +126,16 @@ function Pages({ Component, pageProps }: AppProps) {
     );
   }
 
+  if (router.pathname.includes('/icons')) {
+    return (
+      <Theme accentScale="teal" style={themeRootStyles}>
+        <SyntaxSchemeProvider scheme="indigo">
+          <Component {...pageProps} />
+        </SyntaxSchemeProvider>
+      </Theme>
+    );
+  }
+
   return (
     <Theme accentScale="indigo" style={themeRootStyles}>
       <SyntaxSchemeProvider scheme="indigo">
