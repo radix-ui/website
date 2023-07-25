@@ -1,18 +1,7 @@
 import React from 'react';
 import NextLink from 'next/link';
-import {
-  Section,
-  Container,
-  Heading,
-  Link,
-  Flex,
-  Button,
-  Paragraph,
-  Separator,
-  Box,
-  Grid,
-  Text,
-} from '@modulz/design-system';
+import { Box, Text, Grid, Heading, Container, Flex, Separator, Section } from '@radix-ui/themes';
+import { Button } from '@modulz/design-system';
 import { ArrowRightIcon, ExternalLinkIcon } from '@radix-ui/react-icons';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { Footer } from '@components/Footer';
@@ -21,6 +10,7 @@ import { MobileMenu, MobileMenuProvider } from '@components/MobileMenu';
 import { colorsRoutes } from '@lib/colorsRoutes';
 import { DocsNav } from '@components/DocsNav';
 import { ScrollArea } from '@radix-ui/themes';
+import { ColorsMarketingButton } from '@components/ColorsMarketingButton';
 
 export default function ColorsHome() {
   return (
@@ -34,704 +24,517 @@ export default function ColorsHome() {
 
       <ColorsHeader ghost />
 
-      <Box css={{ py: '$4', mt: '$2' }}>
+      <Box px="5">
         <TitleAndMetaTags
           title="Colors – Radix UI"
           description="An open-source color system for designing beautiful, accessible websites and apps."
           image="colors.png"
         />
-        <Section
-          size={{
-            '@initial': '2',
-            '@bp1': '3',
-          }}
-          css={{
-            pt: '$3',
-            pb: '$7',
-            textWrap: 'balance',
-            '@bp2': {
-              pt: '$6',
-              pb: '$8',
-            },
-          }}
-        >
+        <Section size="2">
+          <Heading
+            mb="3"
+            align={{ xs: 'center' }}
+            style={{
+              fontSize: 'max(48px, min(60px, 15vw))',
+              letterSpacing: 'var(--letter-spacing-9)',
+              lineHeight: 1,
+            }}
+          >
+            A gorgeous, accessible
+            <br />
+            color system
+          </Heading>
+
+          <Box mx="auto" style={{ maxWidth: 500 }}>
+            <Text size="6" as="p" mb="6" color="gray" align={{ xs: 'center' }}>
+              An open-source color system for designing beautiful, accessible websites and apps.
+            </Text>
+          </Box>
+
           <Container size="3">
-            <Heading size="4" css={{ mb: '$3', '@bp2': { ta: 'center' } }}>
-              A gorgeous, accessible <br />
-              color system
-            </Heading>
-            <Paragraph
-              size="2"
-              as="p"
-              css={{
-                mb: '$6',
-                color: '$sage11',
-                '@bp2': {
-                  mx: 230,
-                  ta: 'center',
-                  mb: '$7',
-                },
-              }}
-            >
-              An open-source color system for designing beautiful, accessible websites and apps.
-            </Paragraph>
-            <Flex justify={{ '@initial': 'start', '@bp2': 'center' }} gap="5" css={{ mt: '$7' }}>
+            <Flex align="center" wrap="wrap" justify={{ xs: 'center' }} gap="5">
               <NextLink href="/colors/docs" passHref>
-                <Button
-                  as="a"
-                  variant="blue"
-                  css={{
-                    height: '$6',
-                    fontSize: '$3',
-                    borderRadius: '9999px',
-                    px: '$3',
-                    bc: 'white',
-                    boxShadow:
-                      '-15px 0 30px -10px $colors$orangeA7, 0 0 30px -10px $colors$pinkA7, 15px 0 30px -10px $colors$violetA7',
-                    cursor: 'pointer',
-                    color: 'black',
-                    gap: '$2',
-                    transition: 'all 200ms ease',
-                    '&:hover': {
-                      boxShadow:
-                        '-15px 0 30px -10px $colors$orangeA8, 0 0 30px -10px $colors$pinkA8, 15px 0 30px -10px $colors$violetA8',
-                    },
-                    '&:active': {
-                      bc: 'white',
-                      boxShadow:
-                        '-15px 0 20px -10px $colors$orangeA8, 0 0 20px -10px $colors$pinkA8, 15px 0 20px -10px $colors$violetA8',
-                    },
-                    '&:focus': {
-                      boxShadow:
-                        '-15px 0 30px -10px $colors$orangeA7, 0 0 30px -10px $colors$pinkA7, 15px 0 30px -10px $colors$violetA7, inset 0 0 0 1px $colors$pinkA7, 0 0 0 1px $colors$pinkA7',
-                    },
-                  }}
-                >
-                  Documentation
-                  <ArrowRightIcon />
-                </Button>
+                <ColorsMarketingButton>
+                  Get started
+                  <ArrowRightIcon width="16" height="16" style={{ marginTop: 1 }} />
+                </ColorsMarketingButton>
               </NextLink>
-              <Button
-                as="a"
-                variant="blue"
-                href="https://github.com/radix-ui/colors"
-                target="_blank"
-                css={{
-                  height: '$6',
-                  fontSize: '$3',
-                  borderRadius: '9999px',
-                  px: '$3',
-                  bc: 'transparent',
-                  boxShadow: 'none',
-                  cursor: 'pointer',
-                  color: '$sage11',
-                  gap: '$2',
-                  '&:hover': {
-                    bc: '$sageA5',
-                    boxShadow: 'none',
-                  },
-                  '&:focus': {
-                    boxShadow: 'inset 0 0 0 1px $colors$sky7, 0 0 0 1px $colors$sky7',
-                  },
-                }}
-              >
-                GitHub
-                <ExternalLinkIcon />
-              </Button>
             </Flex>
-
-            {/* <Flex justify="center" css={{ mt: '$8' }}>
-            <Box css={{
-              width: '75%',
-              aspectRatio: '1/1',
-              borderRadius: '50%',
-              position: 'relative',
-              background: 'conic-gradient($colors$red9 0deg 18deg, $colors$crimson9 18deg 36deg, $colors$pink9 36deg 54deg, $colors$plum9 52deg 72deg, $colors$purple9 72deg 90deg, $colors$violet9 90deg 108deg, $colors$indigo9 108deg 126deg, $colors$blue9 126deg 144deg, $colors$sky9 144deg 162deg, $colors$cyan9 162deg 180deg, $colors$mint9 162deg 180deg, $colors$mint9 180deg 198deg)',
-            }}>
-              <Box css={{ position: 'absolute', width: 2, bc: '$loContrast', top: 0, bottom: 0, left: '50%', ml: -1 }}></Box>
-              <Box css={{ position: 'absolute', width: 2, bc: '$loContrast', top: 0, bottom: 0, left: '50%', ml: -1, transform: 'rotate(18deg)' }}></Box>
-              <Box css={{ position: 'absolute', width: 2, bc: '$loContrast', top: 0, bottom: 0, left: '50%', ml: -1, transform: 'rotate(36deg)' }}></Box>
-              <Box css={{ position: 'absolute', width: 2, bc: '$loContrast', top: 0, bottom: 0, left: '50%', ml: -1, transform: 'rotate(54deg)' }}></Box>
-              <Box css={{ position: 'absolute', width: 2, bc: '$loContrast', top: 0, bottom: 0, left: '50%', ml: -1, transform: 'rotate(72deg)' }}></Box>
-              <Box css={{ position: 'absolute', width: 2, bc: '$loContrast', top: 0, bottom: 0, left: '50%', ml: -1, transform: 'rotate(90deg)' }}></Box>
-              <Box css={{ position: 'absolute', width: 2, bc: '$loContrast', top: 0, bottom: 0, left: '50%', ml: -1, transform: 'rotate(108deg)' }}></Box>
-              <Box css={{ position: 'absolute', width: 2, bc: '$loContrast', top: 0, bottom: 0, left: '50%', ml: -1, transform: 'rotate(126deg)' }}></Box>
-              <Box css={{ position: 'absolute', width: 2, bc: '$loContrast', top: 0, bottom: 0, left: '50%', ml: -1, transform: 'rotate(144deg)' }}></Box>
-              <Box css={{ position: 'absolute', width: 2, bc: '$loContrast', top: 0, bottom: 0, left: '50%', ml: -1, transform: 'rotate(162deg)' }}></Box>
-            </Box>
-          </Flex> */}
           </Container>
         </Section>
 
-        <Section css={{ pt: 0 }}>
+        <Section size="2">
           <Container size="3">
-            <Grid
-              css={{
-                gridTemplateColumns: 'repeat(13, minmax(0, 1fr))',
-                gap: 2,
-                ai: 'center',
-              }}
-            >
-              <Box></Box>
-              <Box css={{ ta: 'center', pb: '$2' }}>
-                <Text css={{ fontSize: '$2', color: '$slate11' }}>1</Text>
-              </Box>
-              <Box css={{ ta: 'center', pb: '$2' }}>
-                <Text css={{ fontSize: '$2', color: '$slate11' }}>2</Text>
-              </Box>
-              <Box css={{ ta: 'center', pb: '$2' }}>
-                <Text css={{ fontSize: '$2', color: '$slate11' }}>3</Text>
-              </Box>
-              <Box css={{ ta: 'center', pb: '$2' }}>
-                <Text css={{ fontSize: '$2', color: '$slate11' }}>4</Text>
-              </Box>
-              <Box css={{ ta: 'center', pb: '$2' }}>
-                <Text css={{ fontSize: '$2', color: '$slate11' }}>5</Text>
-              </Box>
-              <Box css={{ ta: 'center', pb: '$2' }}>
-                <Text css={{ fontSize: '$2', color: '$slate11' }}>6</Text>
-              </Box>
-              <Box css={{ ta: 'center', pb: '$2' }}>
-                <Text css={{ fontSize: '$2', color: '$slate11' }}>7</Text>
-              </Box>
-              <Box css={{ ta: 'center', pb: '$2' }}>
-                <Text css={{ fontSize: '$2', color: '$slate11' }}>8</Text>
-              </Box>
-              <Box css={{ ta: 'center', pb: '$2' }}>
-                <Text css={{ fontSize: '$2', color: '$slate11' }}>9</Text>
-              </Box>
-              <Box css={{ ta: 'center', pb: '$2' }}>
-                <Text css={{ fontSize: '$2', color: '$slate11' }}>10</Text>
-              </Box>
-              <Box css={{ ta: 'center', pb: '$2' }}>
-                <Text css={{ fontSize: '$2', color: '$slate11' }}>11</Text>
-              </Box>
-              <Box css={{ ta: 'center', pb: '$2' }}>
-                <Text css={{ fontSize: '$2', color: '$slate11' }}>12</Text>
-              </Box>
+            <Text size="2" color="gray">
+              <Grid
+                align="center"
+                columns="minmax(64px, 1fr) repeat(12, minmax(0px, 1fr)"
+                style={{ gap: 2 }}
+              >
+                <Box />
+                <Text align="center" mb="2">
+                  1
+                </Text>
+                <Text align="center" mb="2">
+                  2
+                </Text>
+                <Text align="center" mb="2">
+                  3
+                </Text>
+                <Text align="center" mb="2">
+                  4
+                </Text>
+                <Text align="center" mb="2">
+                  5
+                </Text>
+                <Text align="center" mb="2">
+                  6
+                </Text>
+                <Text align="center" mb="2">
+                  7
+                </Text>
+                <Text align="center" mb="2">
+                  8
+                </Text>
+                <Text align="center" mb="2">
+                  9
+                </Text>
+                <Text align="center" mb="2">
+                  10
+                </Text>
+                <Text align="center" mb="2">
+                  11
+                </Text>
+                <Text align="center" mb="2">
+                  12
+                </Text>
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Gray</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$gray1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$gray2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$gray3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$gray4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$gray5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$gray6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$gray7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$gray8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$gray9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$gray10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$gray11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$gray12' }}></Box>
+                <Text>Gray</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--gray-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--gray-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--gray-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--gray-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--gray-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--gray-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--gray-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--gray-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--gray-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--gray-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--gray-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--gray-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Mauve</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$mauve1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$mauve2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$mauve3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$mauve4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$mauve5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$mauve6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$mauve7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$mauve8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$mauve9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$mauve10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$mauve11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$mauve12' }}></Box>
+                <Text>Mauve</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--mauve-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--mauve-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--mauve-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--mauve-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--mauve-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--mauve-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--mauve-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--mauve-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--mauve-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--mauve-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--mauve-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--mauve-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Slate</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$slate1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$slate2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$slate3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$slate4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$slate5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$slate6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$slate7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$slate8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$slate9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$slate10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$slate11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$slate12' }}></Box>
+                <Text>Slate</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--slate-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--slate-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--slate-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--slate-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--slate-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--slate-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--slate-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--slate-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--slate-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--slate-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--slate-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--slate-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Sage</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$sage1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sage2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sage3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sage4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sage5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sage6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sage7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sage8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sage9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sage10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sage11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sage12' }}></Box>
+                <Text>Sage</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--sage-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sage-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sage-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sage-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sage-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sage-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sage-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sage-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sage-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sage-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sage-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sage-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Olive</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$olive1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$olive2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$olive3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$olive4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$olive5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$olive6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$olive7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$olive8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$olive9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$olive10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$olive11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$olive12' }}></Box>
+                <Text>Olive</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--olive-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--olive-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--olive-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--olive-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--olive-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--olive-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--olive-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--olive-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--olive-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--olive-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--olive-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--olive-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Sand</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$sand1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sand2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sand3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sand4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sand5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sand6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sand7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sand8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sand9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sand10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sand11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sand12' }}></Box>
+                <Text>Sand</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--sand-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sand-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sand-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sand-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sand-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sand-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sand-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sand-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sand-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sand-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sand-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sand-12)' }} />
 
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
+                <Text>Orange</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--orange-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--orange-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--orange-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--orange-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--orange-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--orange-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--orange-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--orange-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--orange-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--orange-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--orange-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--orange-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Tomato</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$tomato1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$tomato2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$tomato3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$tomato4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$tomato5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$tomato6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$tomato7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$tomato8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$tomato9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$tomato10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$tomato11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$tomato12' }}></Box>
+                <Text>Tomato</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--tomato-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--tomato-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--tomato-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--tomato-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--tomato-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--tomato-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--tomato-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--tomato-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--tomato-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--tomato-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--tomato-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--tomato-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Red</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$red1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$red2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$red3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$red4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$red5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$red6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$red7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$red8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$red9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$red10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$red11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$red12' }}></Box>
+                <Text>Red</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--red-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--red-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--red-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--red-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--red-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--red-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--red-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--red-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--red-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--red-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--red-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--red-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Crimson</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$crimson1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$crimson2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$crimson3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$crimson4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$crimson5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$crimson6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$crimson7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$crimson8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$crimson9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$crimson10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$crimson11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$crimson12' }}></Box>
+                <Text>Crimson</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--crimson-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--crimson-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--crimson-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--crimson-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--crimson-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--crimson-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--crimson-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--crimson-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--crimson-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--crimson-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--crimson-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--crimson-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Pink</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$pink1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$pink2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$pink3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$pink4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$pink5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$pink6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$pink7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$pink8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$pink9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$pink10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$pink11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$pink12' }}></Box>
+                <Text>Pink</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--pink-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--pink-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--pink-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--pink-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--pink-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--pink-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--pink-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--pink-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--pink-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--pink-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--pink-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--pink-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Plum</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$plum1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$plum2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$plum3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$plum4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$plum5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$plum6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$plum7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$plum8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$plum9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$plum10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$plum11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$plum12' }}></Box>
+                <Text>Plum</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--plum-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--plum-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--plum-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--plum-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--plum-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--plum-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--plum-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--plum-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--plum-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--plum-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--plum-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--plum-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Purple</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$purple1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$purple2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$purple3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$purple4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$purple5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$purple6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$purple7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$purple8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$purple9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$purple10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$purple11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$purple12' }}></Box>
+                <Text>Purple</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--purple-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--purple-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--purple-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--purple-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--purple-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--purple-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--purple-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--purple-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--purple-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--purple-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--purple-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--purple-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Violet</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$violet1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$violet2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$violet3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$violet4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$violet5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$violet6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$violet7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$violet8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$violet9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$violet10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$violet11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$violet12' }}></Box>
+                <Text>Violet</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--violet-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--violet-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--violet-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--violet-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--violet-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--violet-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--violet-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--violet-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--violet-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--violet-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--violet-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--violet-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Indigo</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$indigo1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$indigo2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$indigo3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$indigo4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$indigo5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$indigo6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$indigo7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$indigo8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$indigo9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$indigo10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$indigo11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$indigo12' }}></Box>
+                <Text>Indigo</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--indigo-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--indigo-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--indigo-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--indigo-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--indigo-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--indigo-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--indigo-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--indigo-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--indigo-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--indigo-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--indigo-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--indigo-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Blue</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$blue1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$blue2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$blue3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$blue4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$blue5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$blue6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$blue7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$blue8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$blue9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$blue10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$blue11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$blue12' }}></Box>
+                <Text>Blue</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--blue-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--blue-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--blue-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--blue-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--blue-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--blue-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--blue-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--blue-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--blue-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--blue-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--blue-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--blue-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Cyan</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$cyan1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$cyan2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$cyan3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$cyan4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$cyan5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$cyan6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$cyan7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$cyan8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$cyan9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$cyan10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$cyan11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$cyan12' }}></Box>
+                <Text>Cyan</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--cyan-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--cyan-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--cyan-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--cyan-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--cyan-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--cyan-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--cyan-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--cyan-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--cyan-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--cyan-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--cyan-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--cyan-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Teal</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$teal1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$teal2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$teal3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$teal4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$teal5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$teal6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$teal7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$teal8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$teal9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$teal10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$teal11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$teal12' }}></Box>
+                <Text>Teal</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--teal-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--teal-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--teal-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--teal-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--teal-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--teal-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--teal-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--teal-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--teal-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--teal-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--teal-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--teal-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Green</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$green1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$green2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$green3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$green4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$green5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$green6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$green7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$green8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$green9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$green10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$green11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$green12' }}></Box>
+                <Text>Green</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--green-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--green-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--green-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--green-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--green-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--green-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--green-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--green-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--green-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--green-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--green-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--green-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Grass</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$grass1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$grass2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$grass3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$grass4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$grass5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$grass6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$grass7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$grass8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$grass9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$grass10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$grass11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$grass12' }}></Box>
+                <Text>Grass</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--grass-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--grass-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--grass-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--grass-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--grass-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--grass-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--grass-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--grass-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--grass-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--grass-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--grass-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--grass-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Orange</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$orange1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$orange2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$orange3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$orange4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$orange5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$orange6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$orange7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$orange8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$orange9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$orange10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$orange11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$orange12' }}></Box>
+                <Text>Brown</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--brown-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--brown-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--brown-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--brown-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--brown-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--brown-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--brown-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--brown-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--brown-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--brown-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--brown-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--brown-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Brown</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$brown1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$brown2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$brown3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$brown4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$brown5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$brown6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$brown7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$brown8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$brown9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$brown10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$brown11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$brown12' }}></Box>
+                <Text>Gold</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--gold-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--gold-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--gold-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--gold-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--gold-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--gold-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--gold-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--gold-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--gold-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--gold-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--gold-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--gold-12)' }} />
 
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
+                <Text>Bronze</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--bronze-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--bronze-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--bronze-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--bronze-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--bronze-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--bronze-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--bronze-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--bronze-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--bronze-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--bronze-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--bronze-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--bronze-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Sky</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$sky1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sky2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sky3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sky4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sky5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sky6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sky7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sky8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sky9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sky10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sky11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$sky12' }}></Box>
+                <Text>Yellow</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--yellow-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--yellow-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--yellow-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--yellow-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--yellow-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--yellow-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--yellow-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--yellow-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--yellow-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--yellow-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--yellow-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--yellow-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Mint</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$mint1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$mint2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$mint3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$mint4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$mint5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$mint6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$mint7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$mint8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$mint9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$mint10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$mint11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$mint12' }}></Box>
+                <Text>Amber</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--amber-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--amber-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--amber-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--amber-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--amber-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--amber-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--amber-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--amber-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--amber-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--amber-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--amber-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--amber-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Lime</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$lime1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$lime2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$lime3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$lime4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$lime5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$lime6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$lime7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$lime8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$lime9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$lime10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$lime11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$lime12' }}></Box>
+                <Text>Lime</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--lime-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--lime-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--lime-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--lime-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--lime-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--lime-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--lime-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--lime-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--lime-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--lime-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--lime-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--lime-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Yellow</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$yellow1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$yellow2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$yellow3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$yellow4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$yellow5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$yellow6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$yellow7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$yellow8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$yellow9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$yellow10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$yellow11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$yellow12' }}></Box>
+                <Text>Mint</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--mint-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--mint-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--mint-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--mint-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--mint-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--mint-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--mint-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--mint-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--mint-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--mint-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--mint-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--mint-12)' }} />
 
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Amber</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$amber1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$amber2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$amber3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$amber4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$amber5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$amber6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$amber7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$amber8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$amber9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$amber10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$amber11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$amber12' }}></Box>
-
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-              <Box css={{ height: 35 }}></Box>
-
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Bronze</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$bronze1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$bronze2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$bronze3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$bronze4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$bronze5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$bronze6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$bronze7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$bronze8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$bronze9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$bronze10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$bronze11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$bronze12' }}></Box>
-
-              <Box>
-                <Text css={{ fontSize: '$2' }}>Gold</Text>
-              </Box>
-              <Box css={{ height: 35, backgroundColor: '$gold1' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$gold2' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$gold3' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$gold4' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$gold5' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$gold6' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$gold7' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$gold8' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$gold9' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$gold10' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$gold11' }}></Box>
-              <Box css={{ height: 35, backgroundColor: '$gold12' }}></Box>
-            </Grid>
+                <Text>Sky</Text>
+                <Box style={{ height: 35, backgroundColor: 'var(--sky-1)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sky-2)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sky-3)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sky-4)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sky-5)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sky-6)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sky-7)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sky-8)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sky-9)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sky-10)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sky-11)' }} />
+                <Box style={{ height: 35, backgroundColor: 'var(--sky-12)' }} />
+              </Grid>
+            </Text>
           </Container>
         </Section>
 
-        <Flex css={{ justifyContent: 'center' }}>
+        <Flex justify="center">
           <Separator size="2" />
         </Flex>
 
-        <Section
-          size={{
-            '@initial': '2',
-            '@bp1': '3',
-          }}
-        >
+        <Section size="2">
           <Container size="3">
-            <Grid columns={{ '@bp2': '3' }} gap="7">
+            <Grid columns={{ sm: '3' }} gap="7">
               <Box>
-                <Heading size="1">Accessibility made easy</Heading>
-                <Text variant="gray" size="3" css={{ lineHeight: '25px', mt: '$2' }}>
+                <Heading size="5" as="h3">
+                  Accessibility made easy
+                </Heading>
+                <Text as="p" color="gray" size="3" mt="2">
                   Each step is designed for a specific use case, with multiple combinations
                   guaranteed to pass WCAG contrast ratio.
                 </Text>
               </Box>
               <Box>
-                <Heading size="1">Automatic dark mode</Heading>
-                <Text variant="gray" size="3" css={{ lineHeight: '25px', mt: '$2' }}>
+                <Heading size="5" as="h3">
+                  Automatic dark mode
+                </Heading>
+                <Text as="p" color="gray" size="3" mt="2">
                   Switching to dark theme is as simple as applying a class to a container. Dark mode
                   Just Works™.
                 </Text>
               </Box>
               <Box>
-                <Heading size="1">Transparent variants</Heading>
-                <Text variant="gray" size="3" css={{ lineHeight: '25px', mt: '$2' }}>
+                <Heading size="5" as="h3">
+                  Transparent variants
+                </Heading>
+                <Text as="p" color="gray" size="3" mt="2">
                   Each scale has a matching transparent variant, which is handy for UI components
                   that need to blend into colored backgrounds.
                 </Text>
@@ -741,7 +544,7 @@ export default function ColorsHome() {
         </Section>
       </Box>
 
-      <Flex css={{ justifyContent: 'center', mb: '$9' }}>
+      <Flex justify="center" mb="9">
         <Separator size="2" />
       </Flex>
 
