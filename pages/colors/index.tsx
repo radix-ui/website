@@ -68,7 +68,7 @@ export default function ColorsHome() {
             <Text size="2" color="gray">
               <Grid
                 align="center"
-                columns="minmax(64px, 1fr) repeat(12, minmax(0px, 1fr)"
+                columns="minmax(64px, 1fr) repeat(12, minmax(0px, 1fr))"
                 style={{ gap: 2 }}
               >
                 <Box />
