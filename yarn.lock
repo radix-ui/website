@@ -3474,11 +3474,6 @@ datauri@^3.0.0:
     image-size "0.8.3"
     mimer "1.1.0"
 
-date-fns@^2.20.0:
-  version "2.20.0"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.20.0.tgz#df00ba9177fbea22d88010b5844ecc91e9e03ceb"
-  integrity sha512-nmA7y6aDH5+fknfJ0G77HQzUSfTPpq4ifq+c9blP9d+X9zs3kNjxC+t3pcbBMGTp262a6PJB3RVjLlxIgoMI+Q==
-
 deasync@^0.1.0:
   version "0.1.21"
   resolved "https://registry.yarnpkg.com/deasync/-/deasync-0.1.21.tgz#bb11eabd4466c0d8776f0d82deb8a6126460d30f"

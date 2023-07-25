@@ -54,7 +54,6 @@
     "algoliasearch": "^4.14.2",
     "codesandbox": "^2.2.3",
     "copy-to-clipboard": "^3.3.1",
-    "date-fns": "^2.20.0",
     "glob": "^7.1.6",
     "gray-matter": "^4.0.2",
     "hast-util-to-string": "^1.0.4",
