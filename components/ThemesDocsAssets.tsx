@@ -1,6 +1,74 @@
-import { Box, Card, Flex, Grid, Heading, IconButton, Slider, Text, Theme } from '@radix-ui/themes';
+import {
+  Avatar,
+  Badge,
+  Box,
+  Card,
+  Code,
+  Flex,
+  Grid,
+  Heading,
+  IconButton,
+  Link,
+  Slider,
+  Table,
+  Text,
+  Theme,
+} from '@radix-ui/themes';
 import { Label } from '@radix-ui/react-label';
 import NextLink from 'next/link';
+import { allPeople } from './people';
+
+export function ThemesScalingExample() {
+  const scaleValues = ['90%', '95%', '100%', '105%', '110%'] as const;
+  return (
+    <Card size="2">
+      <Flex direction="column" my="-4">
+        {scaleValues.map((scaling, i) => (
+          <Flex
+            key={scaling}
+            style={{
+              borderBottom: i + 1 !== scaleValues.length ? '1px dashed var(--gray-7)' : undefined,
+            }}
+            align="center"
+            gap="4"
+          >
+            <Box style={{ minWidth: 70 }}>
+              <Code size="2" color="gray">
+                {scaling}
+              </Code>
+            </Box>
+
+            <Box py="4" asChild>
+              <Theme
+                applyBackgroundColor={false}
+                scaling={scaling}
+                style={{ flex: 1, maxWidth: 240 + 20 * i }}
+              >
+                <Card variant="surface" aria-label={`${scaling} scaled UI example`}>
+                  <Flex gap="3" align="center" aria-hidden>
+                    <Avatar
+                      size="3"
+                      src={allPeople[6].image}
+                      fallback={allPeople[6]?.name[0].toUpperCase()}
+                    />
+                    <Box>
+                      <Text as="div" size="2" weight="bold">
+                        {allPeople[6].name}
+                      </Text>
+                      <Text as="div" size="2" color="gray">
+                        Approved invoice <Link tabIndex={-1}>#3461</Link>
+                      </Text>
+                    </Box>
+                  </Flex>
+                </Card>
+              </Theme>
+            </Box>
+          </Flex>
+        ))}
+      </Flex>
+    </Card>
+  );
+}
 
 export function ThemesBorderRadiusScale() {
   return (
@@ -258,7 +326,7 @@ export function ThemeGraySwatches() {
   );
 }
 
-export function ThemesAnatomy() {
+export function ThemesAnatomyExample() {
   return (
     <Theme backgroundColor="gray" asChild className="radix-themes-example">
       <Flex
