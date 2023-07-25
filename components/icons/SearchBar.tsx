@@ -11,8 +11,13 @@ type SearchBarProps = {
 
 export const SearchBar = ({ value, onValueChange }: SearchBarProps) => {
   return (
-    <Flex align="center" justify="center" style={{ borderBottom: '1px solid var(--gray-a6)' }}>
-      <span style={{ marginRight: 'var(--space-2)', color: 'var(--gray-11)' }}>
+    <Flex
+      align="center"
+      justify="center"
+      gap="2"
+      style={{ borderBottom: '1px solid var(--gray-a6)' }}
+    >
+      <span style={{ color: 'var(--gray-11)' }}>
         <MagnifyingGlassIcon />
       </span>
 
