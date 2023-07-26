@@ -1,8 +1,8 @@
+import { Box } from '@radix-ui/themes';
 import React from 'react';
+import { AllIcons } from './AllIcons';
 import { SearchBar } from './SearchBar';
 import { SearchResults } from './SearchResults';
-import { AllIcons } from './AllIcons';
-import { Box } from '@radix-ui/themes';
 
 export const MainContent = () => {
   const [searchValue, setSearchValue] = React.useState('');

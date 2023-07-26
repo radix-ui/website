@@ -1,7 +1,4 @@
-import { Box, Flex, Heading, Link, Text } from '@radix-ui/themes';
-import * as React from 'react';
-import { MainContent } from './MainContent';
-import { Section } from './Section';
+import { CodeBlock } from '@components/CodeBlock';
 import {
   CubeIcon,
   DownloadIcon,
@@ -10,8 +7,11 @@ import {
   IconJarLogoIcon,
   SketchLogoIcon,
 } from '@radix-ui/react-icons';
+import { Box, Card, Flex, Heading, Link, Text } from '@radix-ui/themes';
+import * as React from 'react';
 import { CopyToast, CopyToastVisibility } from './CopyToast';
-import { CodeBlock } from '@components/CodeBlock';
+import { MainContent } from './MainContent';
+import { Section } from './Section';
 
 import styles from './IconsPanel.module.css';
 
@@ -35,7 +35,7 @@ export const IconsPanel = () => {
         setIsVisible: setToastIsVisibleTimeout,
       }}
     >
-      <Box mb="5" className={styles.Panel}>
+      <Card mb="5" className={styles.Panel}>
         <MainContent />
         <Section>
           <Box className={styles.Section}>
@@ -164,7 +164,7 @@ function MyComponent () {
             </Box>
           </Box>
         </Section>
-      </Box>
+      </Card>
       <CopyToast />
     </CopyToastVisibility.Provider>
   );

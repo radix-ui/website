@@ -1,6 +1,7 @@
 import React from 'react';
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 import { Flex } from '@radix-ui/themes';
+import AutosizeInput from 'react-input-autosize';
 
 import styles from './SearchBar.module.css';
 
@@ -21,7 +22,7 @@ export const SearchBar = ({ value, onValueChange }: SearchBarProps) => {
         <MagnifyingGlassIcon />
       </span>
 
-      <input
+      <AutosizeInput
         autoComplete="off"
         placeholder="Search"
         name="form-field-name"
