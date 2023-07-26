@@ -10,9 +10,9 @@
   padding-left: var(--space-4);
   padding-right: var(--space-4);
   padding-bottom: 1px;
-  background-color: white;
+  background-color: var(--color-panel);
   box-shadow: -15px 0 30px -10px var(--orange-a7), 0 0 30px -10px var(--pink-a7),
-    15px 0 30px -10px var(--violet-a7);
+    15px 0 30px -10px var(--violet-a7), 0 0 0 1px var(--pink-a4);
   cursor: pointer;
   color: var(--color-text);
   outline: 0;
@@ -22,13 +22,13 @@
 @media (hover: hover) {
   .ColorsMarketingButton:hover {
     box-shadow: -15px 0 30px -10px var(--orange-a8), 0 0 30px -10px var(--pink-a8),
-      15px 0 30px -10px var(--violet-a8);
+      15px 0 30px -10px var(--violet-a8), 0 0 0 1px var(--pink-a4);
   }
 }
 
 .ColorsMarketingButton:active {
   box-shadow: -7px 0 20px -5px var(--orange-a6), 0 0 20px -5px var(--pink-a6),
-    7px 0 20px -5px var(--violet-a6);
+    7px 0 20px -5px var(--violet-a6), 0 0 0 1px var(--pink-a4);
   transition-duration: 60ms;
   transform: translateY(1px);
 }
