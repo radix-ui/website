@@ -9,13 +9,52 @@ metaDescription: Declarative layout and common spacing props.
 
 ## Composing layout
 
-### Margins
+Layout components are foundational building blocks that provide a declarative, composable API, allowing you to build a wide array of layouts and designs.
 
-### Padding
+[Box](/themes/docs/components/box), [Flex](/themes/docs/components/flex) and [Grid](/themes/docs/components/grid) are the most common components you'll use. Box provides block-level spacing and sizing, while Flex and Grid let you create flexible columns, rows and grids.
+
+```jsx live=true
+<Grid columns="3" gap="3">
+  <Flex direction="column" gap="3">
+    <Box height="5">
+      <DecorativeBox />
+    </Box>
+    <Box height="7">
+      <DecorativeBox />
+    </Box>
+    <Box height="9">
+      <DecorativeBox />
+    </Box>
+  </Flex>
+  <Box>
+    <DecorativeBox />
+  </Box>
+  <Box>
+    <DecorativeBox />
+  </Box>
+</Grid>
+```
+
+[Container](/themes/docs/components/container) and [Section](/themes/docs/components/section) are used for page level layout and allow you to contain the max width of page content or add consistency vertical spacing to a specific section.
+
+All layout components share a common set of props:
+
+<ThemesPropsTable name="layout" />
+
+### Margin props
+
+Margin props are shorthand utilities for applying margin to any side of an element, they are useful when you need to apply space between individual elements. Margin props are exposed on any component part that renders a node.
+
+```jsx live=true
+<Button mr="3" variant="soft">Cancel</Button>
+<Button>Save changes</Button>
+```
+
+<ThemesPropsTable name="margin" />
 
 ## Spacing scale
 
-The spacing scale is used to apply space between elements. Values are derived from a 9 step scale.
+Spacing values are derived from a 9 step scale.
 
 <Box my="7">
   <ThemesSpacingScale />
@@ -23,7 +62,7 @@ The spacing scale is used to apply space between elements. Values are derived fr
 
 <ThemesSpacingTable />
 
-### Layout scaling
+### Scaling
 
 Values which affect layout (spacing, typographic sizing, line heights) scale relatively based on the `scaling` value defined in your [Theme](/themes/docs/components/theme). This setting allows you to scale the UI density uniformly across your entire application.
 

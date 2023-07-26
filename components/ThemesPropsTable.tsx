@@ -48,6 +48,7 @@ const definitions = {
   separator: themes.separatorPropDefs,
   badge: themes.badgePropDefs,
   layout: themes.layoutPropDefs,
+  margin: themes.marginPropDefs,
   selectRoot: themes.selectRootPropDefs,
   selectTrigger: { ...asChildProp, ...themes.selectTriggerPropDefs },
   selectContent: themes.selectContentPropDefs,
