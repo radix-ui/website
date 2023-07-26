@@ -27,22 +27,6 @@ export default function ThemesHome() {
       <Head>
         <meta name="theme-color" content="#FDFCFD" />
         <style>{`
-          ::selection {
-            color: currentcolor;
-          }
-
-          .dark-theme:not(.radix-themes-example) .rt-Card {
-            --color-surface-2: var(--gray-2);
-          }
-
-          .dark-theme.radix-themes-example .rt-Card {
-            --color-surface-2: var(--gray-2);
-          }
-
-          .light-theme.radix-themes-example .rt-Card {
-            --color-surface-2: white;
-          }
-
           :root, .light-theme {
             --themes-hero-blue-text-color: var(--indigo-12);
             --themes-hero-blue-soft-color: var(--indigo-5);

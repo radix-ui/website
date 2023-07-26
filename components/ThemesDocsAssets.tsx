@@ -96,7 +96,7 @@ export function ThemesShadowScale() {
         p="5"
         gap="4"
       >
-        {[...new Array(5)].map((_, i) => (
+        {[...new Array(6)].map((_, i) => (
           <Flex grow="1" align="center" justify="center" key={i}>
             <Box
               grow="1"
@@ -113,7 +113,7 @@ export function ThemesShadowScale() {
       </Flex>
 
       <Flex align="center" gap="1" px="4">
-        {[...new Array(5)].map((_, i) => (
+        {[...new Array(6)].map((_, i) => (
           <Flex align="center" justify="center" height="100%" width="100%" key={i}>
             <Text size="1" color="gray">
               {i + 1}

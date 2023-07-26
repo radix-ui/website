@@ -512,7 +512,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
             style={{
               borderRadius: '100px',
               overflow: 'hidden',
-              boxShadow: 'var(--shadow-2), var(--shadow-3)',
+              boxShadow: 'var(--shadow-3), var(--shadow-6)',
               marginLeft: 200,
               marginRight: 200,
             }}

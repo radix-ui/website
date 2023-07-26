@@ -36,6 +36,6 @@
 
 .Panel {
   background-color: var(--color-background);
-  box-shadow: var(--shadow-3);
+  box-shadow: var(--shadow-5);
   border-radius: var(--radius-3);
 }
