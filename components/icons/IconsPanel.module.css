@@ -21,6 +21,16 @@
   grid-row: 1 / 3;
 }
 
+.Section {
+  padding: var(--space-4) var(--space-3) var(--space-4);
+}
+
+@media (min-width: 520px) {
+  .Section {
+    padding: var(--space-5) var(--space-6) var(--space-6);
+  }
+}
+
 @media (max-width: 749px) {
   .Section {
     display: flex;

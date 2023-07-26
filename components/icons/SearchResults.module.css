@@ -1,3 +1,21 @@
+@media (min-width: 520px) {
+  .ResultsWrapper {
+    column-gap: var(--space-7);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(max(calc(var(--total-rows) / 2), 3), auto);
+    grid-auto-flow: column;
+  }
+}
+
+@media (min-width: 900px) {
+  .ResultsWrapper {
+    column-gap: var(--space-3);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(max(calc(var(--total-rows) / 4), 3), auto);
+    grid-auto-flow: column;
+  }
+}
+
 .GhostButton {
   border: 0;
   outline: 0;

@@ -1,10 +1,9 @@
 import React from 'react';
 import * as Icons from '@radix-ui/react-icons';
-import { Flex, Grid, Text } from '@modulz/design-system';
 import { CopyToastVisibility } from './CopyToast';
+import { Box, Flex, Grid, Text } from '@radix-ui/themes';
 
 import styles from './SearchResults.module.css';
-import { Box } from '@radix-ui/themes';
 
 type SearchResultsProps = {
   value: string;
@@ -42,34 +41,16 @@ export const SearchResults = ({ value }: SearchResultsProps) => {
         <Box>
           {value && matchingNames.length > 0 && (
             <Grid
-              css={{
-                rowGap: '$2',
-                alignContent: 'start',
-                padding: '$2 $3',
-
-                '@bp1': {
-                  columnGap: '$6',
-                  padding: '$5 $6',
-                  gridAutoFlow: 'column',
-                  gridTemplateColumns: 'repeat(2, 1fr)',
-                  gridTemplateRows: `repeat(${Math.max(
-                    Math.ceil(matchingNames.length / 2),
-                    3
-                  )}, auto)`,
-                },
-                '@bp2': {
-                  // Place icons on rows first, then add more columns as needed, up to 4 total.
-                  // And make sure there's at least 3 rows, so it looks nice.
-                  // If only there was something like a multi-column layout feature in CSS... 🙃
-                  gridAutoFlow: 'column',
-                  gridTemplateColumns: 'repeat(4, 1fr)',
-                  gridTemplateRows: `repeat(${Math.max(
-                    Math.ceil(matchingNames.length / 4),
-                    3
-                  )}, auto)`,
-                  columnGap: '$2',
-                },
-              }}
+              gapX="3"
+              align="start"
+              py={{ initial: '3', sm: '6' }}
+              px={{ initial: '4', sm: '7' }}
+              className={styles.ResultsWrapper}
+              style={
+                {
+                  '--total-rows': matchingNames.length,
+                } as React.CSSProperties
+              }
             >
               {matchingNames.map((name) => (
                 <Box style={{ minWidth: 0 }} key={name}>
@@ -102,27 +83,19 @@ export const SearchResults = ({ value }: SearchResultsProps) => {
                       }
                     }}
                   >
-                    <Flex
-                      as="span"
-                      css={{
-                        alignItems: 'center',
-                        justifyContent: 'start',
-                        whiteSpace: 'nowrap',
-                        minWidth: 0,
-                      }}
-                    >
-                      <Flex as="span" css={{ mr: '$1', p: '$1', flex: '0' }}>
+                    <Flex align="center" justify="start" gap="2">
+                      <Flex p="1">
                         {React.createElement(Object.values(Icons)[iconNames.indexOf(name)] as any)}
                       </Flex>
                       <Text
                         size="2"
-                        css={{
-                          flexGrow: 0,
-                          flexShrink: 1,
+                        style={{
+                          // flexGrow: 0,
+                          // flexShrink: 1,
                           textOverflow: 'ellipsis',
                           overflow: 'hidden',
-                          minWidth: 0,
-                          lineHeight: '25px',
+                          // minWidth: 0,
+                          // lineHeight: '25px',
                         }}
                       >
                         {name}
@@ -135,14 +108,15 @@ export const SearchResults = ({ value }: SearchResultsProps) => {
           )}
           {!matchingNames.length && (
             <Flex
-              css={{
-                alignItems: 'center',
-                justifyContent: 'center',
+              align="center"
+              justify="center"
+              py="6"
+              px="6"
+              style={{
                 minHeight: 300,
-                padding: '$5 $6',
               }}
             >
-              <Text size="2" css={{ textAlign: 'center', lineHeight: '20px' }}>
+              <Text size="2" style={{ textAlign: 'center' }}>
                 No icons for <span style={{ fontWeight: 500 }}>{value}</span>
               </Text>
             </Flex>
