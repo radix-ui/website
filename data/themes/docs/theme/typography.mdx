@@ -7,15 +7,9 @@ metaDescription: Guidance for using and tuning typography.
 
 <Description>Guidance for using and tuning typography.</Description>
 
-## Overview
+### Composing type
 
-Refined typography is integral for a well designed user interface and Radix Themes provides a comprehensive array of components to make type arrangement in your apps simple and intuitive.
-
-### Heading and Text
-
-All typography components are layered on top of a defined system, this encompasses refined sizing, letter spacing, line heights, font weights and more.
-
-The [Heading](/themes/docs/components/heading) and [Text](/themes/docs/components/text) components are the most common tools for rendering type. They are optimized for titles and body copy respectively.
+Radix Themes provides a comprehensive array of components to make type arrangement in your apps simple and intuitive. Of these, the [Heading](/themes/docs/components/heading) and [Text](/themes/docs/components/text) components are the building blocks you will most frequently reach for. They are optimized for titles and body copy respectively and share common `size` and `weight` props for mapping with the type system.
 
 ```jsx live=true
 <Heading mb="2" size="5">Typographic principles</Heading>
@@ -24,7 +18,7 @@ The [Heading](/themes/docs/components/heading) and [Text](/themes/docs/component
 
 ### Formatting
 
-Compose formatting components to add [empasis](/themes/docs/components/em), signal [importance](/themes/docs/components/strong), highlight [code](/themes/docs/components/code) and more.
+Compose formatting components to add [empasis](/themes/docs/components/em), [signal importance](/themes/docs/components/strong), present [code](/themes/docs/components/code) and more.
 
 ```jsx live=true
 <Text>
@@ -35,15 +29,15 @@ Compose formatting components to add [empasis](/themes/docs/components/em), sign
 
 ## Type scale
 
-The typographic system is based on a 9 step scale, every step has a corresponding `font-size`, `line-height` and `letter-spacing` value which are designed to be used in combination.
+All typography components are layered on top of a defined system, this encompasses refined sizing, letter spacing, line heights, font weights and more.
+
+This system is based on a 9 step scale, every step has a corresponding `font-size`, `line-height` and `letter-spacing` value which are designed to be used in combination.
 
 <Box my="7">
   <ThemesFontSizeScale />
 </Box>
 
 <ThemesFontSizeTable />
-
-You will be typically utilise this scale via the `size` prop on typographic components such as [Text](/themes/docs/components/text) and [Heading](/themes/docs/components/heading), though you can also access the values directly via [Tokens](/themes/docs/theme/token-reference) if needed.
 
 ## Font weight
 
