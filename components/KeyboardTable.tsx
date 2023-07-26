@@ -1,74 +1,42 @@
 import React from 'react';
-import { Box, Text, Kbd, Flex } from '@radix-ui/themes';
-import { RegionTable } from './RegionTable';
+import { Box, Text, Kbd, Flex, Table } from '@radix-ui/themes';
 
 type KeyboardDef = {
   keys: string[];
   description: React.ReactNode;
 };
 
-export function KeyboardTable({
-  data,
-  'aria-label': ariaLabel,
-  'aria-labelledby': ariaLabelledBy,
-}: {
-  data: KeyboardDef[];
-  'aria-label'?: string;
-  'aria-labelledby'?: string;
-}) {
-  const hasAriaLabel = !!(ariaLabel || ariaLabelledBy);
+export function KeyboardTable({ data }: { data: KeyboardDef[] }) {
   return (
-    <RegionTable
-      style={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}
-      mt="2"
-      aria-label={hasAriaLabel ? ariaLabel : 'Keyboard Interactions'}
-      aria-labelledby={ariaLabelledBy}
-    >
-      <thead>
-        <tr>
-          <Box asChild height="8" pr="4" style={{ borderBottom: '1px solid var(--gray-6)' }}>
-            <th>
-              <Text as="p" size="2" color="gray">
-                Key
-              </Text>
-            </th>
-          </Box>
-          <Box asChild height="8" pr="4" style={{ borderBottom: '1px solid var(--gray-6)' }}>
-            <th>
-              <Text as="p" size="2" color="gray">
-                Description
-              </Text>
-            </th>
-          </Box>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map(({ keys, description }, i) => (
-          <tr key={i}>
-            <Box
-              asChild
-              height="8"
-              pr="4"
-              style={{ borderBottom: '1px solid var(--gray-6)', whiteSpace: 'nowrap' }}
-            >
-              <td>
-                <Flex gap="2">
-                  {keys.map((k) => (
-                    <Kbd key={k}>{k}</Kbd>
-                  ))}
-                </Flex>
-              </td>
-            </Box>
-            <Box asChild height="8" pr="4" style={{ borderBottom: '1px solid var(--gray-6)' }}>
-              <td>
-                <Text as="p" size="2">
-                  {description}
-                </Text>
-              </td>
-            </Box>
-          </tr>
-        ))}
-      </tbody>
-    </RegionTable>
+    <Box my="5" asChild>
+      <Table.Root>
+        <Table.Content>
+          <Table.Header>
+            <Table.Row>
+              <Table.ColumnHeaderCell style={{ width: '37%' }}>Key</Table.ColumnHeaderCell>
+              <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
+            </Table.Row>
+          </Table.Header>
+
+          <Table.Body>
+            {data.map(({ keys, description }, i) => {
+              return (
+                <Table.Row key={`${description}-${i}`}>
+                  <Table.Cell>
+                    <Flex gap="2">
+                      {keys.map((k) => (
+                        <Kbd key={k}>{k}</Kbd>
+                      ))}
+                    </Flex>
+                  </Table.Cell>
+
+                  <Table.Cell>{description}</Table.Cell>
+                </Table.Row>
+              );
+            })}
+          </Table.Body>
+        </Table.Content>
+      </Table.Root>
+    </Box>
   );
 }
