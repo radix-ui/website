@@ -4,33 +4,36 @@ import { Grid, Tooltip, Text, Box, IconButton } from '@radix-ui/themes';
 import { CopyToastVisibility } from './CopyToast';
 
 import styles from './AllIcons.module.css';
+import { TooltipProvider } from '@radix-ui/react-tooltip';
 
 export const AllIcons = React.memo(() => {
   return (
-    <Grid mt="-2" pb="2" px="3" className={styles.IconsContainer}>
-      <Box>
-        <Typography />
-        <Music />
-        <Abstract />
-        <Logos />
-      </Box>
-      <Box>
-        <Arrows />
-        <Objects />
-      </Box>
-      <Box>
-        <Design />
-        <Components />
-        <Borders />
-        <Alignment />
-      </Box>
-    </Grid>
+    <TooltipProvider disableHoverableContent>
+      <Grid className={styles.IconsContainer}>
+        <Box>
+          <Typography />
+          <Music />
+          <Abstract />
+          <Logos />
+        </Box>
+        <Box>
+          <Arrows />
+          <Objects />
+        </Box>
+        <Box>
+          <Design />
+          <Components />
+          <Borders />
+          <Alignment />
+        </Box>
+      </Grid>
+    </TooltipProvider>
   );
 });
 
 const Group = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Grid className={styles.GroupGrid} mt="4" mb="6" px="2">
+    <Grid className={styles.GroupGrid} mt="5" mb="6" px="2">
       {children}
     </Grid>
   );
@@ -50,6 +53,7 @@ const CopyButton = ({ children, label }: CopyButtonProps) => {
             highContrast
             variant="ghost"
             size="3"
+            style={{ '--icon-button-ghost-padding': 'var(--space-4)' } as React.CSSProperties}
             onClick={(event: React.MouseEvent) => {
               const svg = event.currentTarget.querySelector('svg');
               const code = svg && svg.parentElement ? svg.parentElement.innerHTML : null;
@@ -88,7 +92,7 @@ const CopyButton = ({ children, label }: CopyButtonProps) => {
 const Abstract = () => {
   return (
     <Box>
-      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="5" weight="medium">
+      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="6" weight="medium">
         Abstract
       </Text>
       <Group>
@@ -244,7 +248,7 @@ const Abstract = () => {
 const Alignment = () => {
   return (
     <Box>
-      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="5" weight="medium">
+      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="6" weight="medium">
         Alignment
       </Text>
       <Group>
@@ -304,7 +308,7 @@ const Alignment = () => {
 const Arrows = () => {
   return (
     <Box>
-      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="5" weight="medium">
+      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="6" weight="medium">
         Arrows
       </Text>
       <Group>
@@ -418,7 +422,7 @@ const Arrows = () => {
 const Borders = () => {
   return (
     <Box>
-      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="5" weight="medium">
+      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="6" weight="medium">
         Borders and corners
       </Text>
       <Group>
@@ -478,7 +482,7 @@ const Borders = () => {
 const Components = () => {
   return (
     <Box>
-      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="5" weight="medium">
+      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="6" weight="medium">
         Components
       </Text>
       <Group>
@@ -574,7 +578,7 @@ const Components = () => {
 const Design = () => {
   return (
     <Box>
-      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="5" weight="medium">
+      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="6" weight="medium">
         Design
       </Text>
       <Group>
@@ -706,7 +710,7 @@ const Design = () => {
 const Logos = () => {
   return (
     <Box>
-      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="5" weight="medium">
+      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="6" weight="medium">
         Logos
       </Text>
       <Group>
@@ -760,7 +764,7 @@ const Logos = () => {
 const Music = () => {
   return (
     <Box>
-      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="5" weight="medium">
+      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="6" weight="medium">
         Music
       </Text>
       <Group>
@@ -808,7 +812,7 @@ const Music = () => {
 const Objects = () => {
   return (
     <Box>
-      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="5" weight="medium">
+      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="6" weight="medium">
         Objects
       </Text>
       <Group>
@@ -1063,7 +1067,7 @@ const Objects = () => {
 const Typography = () => {
   return (
     <Box>
-      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="5" weight="medium">
+      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="6" weight="medium">
         Typography
       </Text>
       <Group>

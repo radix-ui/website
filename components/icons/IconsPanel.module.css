@@ -6,13 +6,13 @@
 
 @media (min-width: 900px) {
   .Panel {
-    margin-top: calc(30vh + 240px);
+    margin-top: calc(30vh + 180px);
   }
 }
 
 @media (min-width: 1200px) {
   .Panel {
-    margin-top: calc(25vh + 260px);
+    margin-top: calc(25vh + 200px);
   }
 }
 
