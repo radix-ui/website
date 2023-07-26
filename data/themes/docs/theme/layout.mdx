@@ -26,12 +26,15 @@ Layout components are foundational building blocks that provide a declarative, c
       <DecorativeBox />
     </Box>
   </Flex>
-  <Box>
-    <DecorativeBox />
-  </Box>
-  <Box>
-    <DecorativeBox />
-  </Box>
+  <Flex direction="column" gap="3">
+    <Box grow="1">
+      <DecorativeBox />
+    </Box>
+
+    <Box height="6">
+      <DecorativeBox />
+    </Box>
+  </Flex>
 </Grid>
 ```
 
