@@ -2,6 +2,9 @@
   border-radius: var(--radius-2);
   min-height: 900px;
   background: var(--color-panel);
+  position: relative;
+  box-shadow: var(--shadow-5);
+  border-radius: var(--radius-5);
 }
 
 @media (min-width: 900px) {

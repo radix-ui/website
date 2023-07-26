@@ -11,7 +11,7 @@ export const MainContent = () => {
     <>
       <SearchBar value={searchValue} onValueChange={setSearchValue} />
       <SearchResults value={searchValue} />
-      <Box style={{ display: searchValue ? 'none' : 'block' }}>
+      <Box px={{ initial: '3', sm: '6' }} style={{ display: searchValue ? 'none' : 'block' }}>
         <AllIcons />
       </Box>
     </>

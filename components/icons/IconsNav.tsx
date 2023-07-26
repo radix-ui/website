@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from '@radix-ui/themes';
+import { Box, Flex, Heading, Text } from '@radix-ui/themes';
 import styles from './IconsNav.module.css';
 
 interface IconsNavProps {
@@ -7,6 +7,7 @@ interface IconsNavProps {
     pages: {
       title: string;
       href: string;
+      icon: React.ReactNode;
     }[];
   }[];
 }
@@ -30,7 +31,11 @@ export const IconsNav = ({ routes }: IconsNavProps) => {
               target="_blank"
               rel="noopener"
             >
-              <Text size="2">{page.title}</Text>
+              <Flex gap="2" align="center">
+                {page.icon}
+
+                <Text size="2">{page.title}</Text>
+              </Flex>
             </a>
           ))}
         </Box>

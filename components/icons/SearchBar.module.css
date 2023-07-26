@@ -4,10 +4,11 @@
   background: transparent;
   border: 0;
   outline: 0;
+  padding: 0;
   box-shadow: none;
   appearance: none;
   font-family: inherit;
-  min-width: 45px;
+  min-width: 50px;
   max-width: 600px;
   height: var(--space-6);
   font-size: var(--font-size-2);

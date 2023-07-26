@@ -7,7 +7,7 @@ import {
   IconJarLogoIcon,
   SketchLogoIcon,
 } from '@radix-ui/react-icons';
-import { Box, Card, Flex, Heading, Link, Separator, Text } from '@radix-ui/themes';
+import { Box, Flex, Heading, Link, Separator, Text } from '@radix-ui/themes';
 import * as React from 'react';
 import { CopyToast, CopyToastVisibility } from './CopyToast';
 import { MainContent } from './MainContent';
@@ -34,7 +34,7 @@ export const IconsPanel = () => {
         setIsVisible: setToastIsVisibleTimeout,
       }}
     >
-      <Card mb="5" className={styles.Panel}>
+      <Box mb="5" className={styles.Panel}>
         <MainContent />
 
         <Separator size="4" />
@@ -161,7 +161,7 @@ function MyComponent () {
             </Text>
           </Box>
         </Box>
-      </Card>
+      </Box>
       <CopyToast />
     </CopyToastVisibility.Provider>
   );

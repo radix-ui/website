@@ -29,11 +29,7 @@ export default function Home() {
       <Box mt="4">
         <Hero />
         <Menu />
-        <Container
-          size="3"
-          style={{ position: 'relative', marginBottom: 'calc(5vh + 25px)' }}
-          px="5"
-        >
+        <Container size="3" style={{ marginBottom: 'calc(5vh + 25px)' }} px="5">
           <IconsPanel />
         </Container>
       </Box>

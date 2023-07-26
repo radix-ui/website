@@ -6,6 +6,7 @@ export const Hero = () => {
   return (
     <Box
       css={{
+        pointerEvents: 'none',
         userSelect: 'none',
         WebkitUserSelect: 'none',
         fontSize: '60px',
