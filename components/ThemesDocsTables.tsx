@@ -1,4 +1,4 @@
-import { Box, Code, Heading, Table } from '@radix-ui/themes';
+import { Box, Code, Text, Table } from '@radix-ui/themes';
 
 export function ThemesBreakpointsTable() {
   return (
@@ -14,18 +14,25 @@ export function ThemesBreakpointsTable() {
 
           <Table.Body>
             {[
-              ['initial', '0px'],
-              ['xs', '520px'],
-              ['sm', '768px'],
-              ['md', '1024px'],
-              ['lg', '1280px'],
-              ['xl', '1640px'],
-            ].map(([key, value]) => (
-              <Table.Row key={key}>
-                <Table.RowHeaderCell>{key}</Table.RowHeaderCell>
+              { name: 'initial', description: 'Phones', size: '0px' },
+              { name: 'xs', description: 'Small tablets', size: '520px' },
+              { name: 'sm', description: 'Tablets', size: '768px' },
+              { name: 'md', description: 'Laptops', size: '1024px' },
+              { name: 'lg', description: 'Desktops', size: '1280px' },
+              { name: 'xl', description: 'Large desktops', size: '1640px' },
+            ].map(({ name, description, size }) => (
+              <Table.Row key={name}>
+                <Table.RowHeaderCell>
+                  <Text weight="bold" as="div">
+                    {name}
+                  </Text>
+                  <Text as="div" color="gray">
+                    {description}
+                  </Text>
+                </Table.RowHeaderCell>
                 <Table.Cell>
                   <Code color="gray" size="2">
-                    {value}
+                    {size}
                   </Code>
                 </Table.Cell>
               </Table.Row>
