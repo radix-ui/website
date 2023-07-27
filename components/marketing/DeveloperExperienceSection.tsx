@@ -14,6 +14,7 @@ import {
 } from '@modulz/design-system';
 import { MarketingCaption } from './MarketingCaption';
 import { CodeDemo } from './CodeDemo';
+import { Theme } from '@radix-ui/themes';
 
 enum Highlights {
   Unstyled = '1-18',
@@ -88,13 +89,15 @@ export const DeveloperExperienceSection = () => {
                   gridTemplateRows: '410px auto',
                 }}
               >
-                <CodeWindow className={darkTheme}>
-                  <StyledCodeDemo
-                    value={code.unstyled}
-                    language="jsx"
-                    style={{ padding: 'var(--space-2)' }}
-                  />
-                </CodeWindow>
+                <Theme asChild appearance="dark" applyBackgroundColor={false}>
+                  <CodeWindow>
+                    <StyledCodeDemo
+                      value={code.unstyled}
+                      language="jsx"
+                      style={{ padding: 'var(--space-2)' }}
+                    />
+                  </CodeWindow>
+                </Theme>
                 <Box>
                   <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>
                     Unstyled
@@ -104,13 +107,15 @@ export const DeveloperExperienceSection = () => {
                   </Text>
                 </Box>
 
-                <CodeWindow className={darkTheme}>
-                  <StyledCodeDemo
-                    value={code.composable}
-                    language="jsx"
-                    style={{ padding: 'var(--space-2)' }}
-                  />
-                </CodeWindow>
+                <Theme asChild appearance="dark" applyBackgroundColor={false}>
+                  <CodeWindow>
+                    <StyledCodeDemo
+                      value={code.composable}
+                      language="jsx"
+                      style={{ padding: 'var(--space-2)' }}
+                    />
+                  </CodeWindow>
+                </Theme>
                 <Box>
                   <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>
                     Composable
@@ -120,13 +125,15 @@ export const DeveloperExperienceSection = () => {
                   </Text>
                 </Box>
 
-                <CodeWindow className={darkTheme}>
-                  <StyledCodeDemo
-                    value={code.customizable}
-                    language="jsx"
-                    style={{ padding: 'var(--space-2)' }}
-                  />
-                </CodeWindow>
+                <Theme asChild appearance="dark" applyBackgroundColor={false}>
+                  <CodeWindow>
+                    <StyledCodeDemo
+                      value={code.customizable}
+                      language="jsx"
+                      style={{ padding: 'var(--space-2)' }}
+                    />
+                  </CodeWindow>
+                </Theme>
                 <Box>
                   <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>
                     Customizable
@@ -136,13 +143,15 @@ export const DeveloperExperienceSection = () => {
                   </Text>
                 </Box>
 
-                <CodeWindow className={darkTheme}>
-                  <StyledCodeDemo
-                    value={code.consistent}
-                    language="jsx"
-                    style={{ padding: 'var(--space-2)' }}
-                  />
-                </CodeWindow>
+                <Theme asChild appearance="dark" applyBackgroundColor={false}>
+                  <CodeWindow>
+                    <StyledCodeDemo
+                      value={code.consistent}
+                      language="jsx"
+                      style={{ padding: 'var(--space-2)' }}
+                    />
+                  </CodeWindow>
+                </Theme>
                 <Box>
                   <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>
                     Consistent
@@ -234,23 +243,21 @@ export const DeveloperExperienceSection = () => {
               '@bp2': { display: 'block' },
             }}
           >
-            <CodeWindow
-              withChrome
-              className={darkTheme}
-              css={{ position: 'absolute', inset: 0, overflow: 'hidden' }}
-            >
-              <StyledCodeDemo
-                language="jsx"
-                value={allCode}
-                line={activeHighlight}
-                data-invert-line-highlight="false"
-                style={{
-                  padding: 0,
-                  height: '100%',
-                  userSelect: 'auto',
-                }}
-              />
-            </CodeWindow>
+            <Theme asChild appearance="dark" applyBackgroundColor={false}>
+              <CodeWindow withChrome style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
+                <StyledCodeDemo
+                  language="jsx"
+                  value={allCode}
+                  line={activeHighlight}
+                  data-invert-line-highlight="false"
+                  style={{
+                    padding: 0,
+                    height: '100%',
+                    userSelect: 'auto',
+                  }}
+                />
+              </CodeWindow>
+            </Theme>
           </Box>
         </Grid>
       </Container>

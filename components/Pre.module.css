@@ -25,7 +25,7 @@
   --syntax-accent: var(--violet-10);
   --syntax-accent-subtle: var(--violet-12);
   --syntax-complementary: var(--mint-11);
-  --syntax-secondary: var(--blue-12);
+  --syntax-secondary: var(--sky-11);
 
   --highlighted-line-bg: var(--accent-3);
 
@@ -57,7 +57,7 @@
   --syntax-accent: var(--blue-11);
   --syntax-accent-subtle: var(--blue-12);
   --syntax-complementary: var(--pink-11);
-  --syntax-analogous: var(--indigo-11);
+  --syntax-secondary: var(--blue-12);
 
   --highlighted-line-bg: var(--accent-3);
 
@@ -87,6 +87,7 @@
   --syntax-accent: var(--indigo-11);
   --syntax-accent-subtle: var(--indigo-12);
   --syntax-complementary: var(--crimson-11);
+  --syntax-secondary: var(--violet-11);
 
   --highlighted-line-bg: var(--accent-a3);
 
@@ -129,15 +130,22 @@
 
 /* prettier-ignore */
 .Pre
-  :where(
-    :global(.token.attr-value),
-    :global(.token.color),
-    :global(.token.imports),
-    :global(.token.number),
-    :global(.token.string),
-    :global(.token.unit)
+:where(
+  :global(.token.attr-value),
+  :global(.token.color),
+  :global(.token.imports)
+  :global(.token.unit)
   ) {
-  color: var(--syntax-accent-subtle);
+    color: var(--syntax-accent-subtle);
+  }
+
+/* prettier-ignore */
+.Pre
+  :where(
+    :global(.token.number),
+    :global(.token.string)
+    ) {
+  color: var(--syntax-secondary);
 }
 
 /* prettier-ignore */
