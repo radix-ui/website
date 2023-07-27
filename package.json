@@ -102,5 +102,8 @@
       "pre-commit": "pretty-quick --staged"
     }
   },
-  "packageManager": "yarn@1.22.18"
+  "packageManager": "yarn@1.22.18",
+  "volta": {
+    "node": "16.20.1"
+  }
 }
