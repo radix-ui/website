@@ -291,7 +291,7 @@ export const MainHero = () => {
               mr: '-$2',
               ml: '-$3',
               fontWeight: 500,
-              lineHeight: 1,
+              lineHeight: 0.9,
               fontSize: 'min(max($8, 11.2vw), $9)',
               textWrap: 'balance',
               letterSpacing: 'max(min(-0.055em, -0.66vw), -0.07em)',
