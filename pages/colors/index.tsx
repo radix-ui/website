@@ -46,7 +46,7 @@ export default function ColorsHome() {
 
           <Box mx="auto" style={{ maxWidth: 500 }}>
             <Text size="6" as="p" mb="6" color="gray" align={{ xs: 'center' }}>
-              An open-source color system for designing beautiful, accessible websites and apps.
+              Comprehensive color system for designing beautiful, accessible websites and apps.
             </Text>
           </Box>
 

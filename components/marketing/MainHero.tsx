@@ -304,11 +304,11 @@ export const MainHero = () => {
               },
             }}
           >
-            Bring your own styles, we handle the rest.
+            Core building blocks for your design system.
           </Text>
           <Box css={{ maxWidth: 536, mb: '$5' }}>
             <Paragraph size="2" as="p">
-              Unstyled, accessible, open source React components for building high‑quality design
+              Unstyled, accessible, open source React components for building high‑quality design
               systems and web apps.
             </Paragraph>
           </Box>
