@@ -159,7 +159,7 @@ export default function ThemesHome() {
             </Box>
             <ThemesHero.Root color="green">
               <ThemesHero.Tagline>
-                <ThemesHero.Title>Build better</ThemesHero.Title>
+                <ThemesHero.Title>Build faster</ThemesHero.Title>
                 <ThemesHero.Text>{text}</ThemesHero.Text>
                 <ThemesHero.Actions>
                   <ThemesHero.Button variant="solid" href="/themes/docs/overview/getting-started">
@@ -198,7 +198,7 @@ export default function ThemesHome() {
             </Box>
             <ThemesHero.Root color="red">
               <ThemesHero.Tagline>
-                <ThemesHero.Title>Build hotter</ThemesHero.Title>
+                <ThemesHero.Title>Build faster</ThemesHero.Title>
                 <ThemesHero.Text>{text}</ThemesHero.Text>
                 <ThemesHero.Actions>
                   <ThemesHero.Button variant="solid" href="/themes/docs/overview/getting-started">
@@ -231,7 +231,7 @@ export default function ThemesHome() {
             </Box>
             <ThemesHero.Root color="blue">
               <ThemesHero.Tagline>
-                <ThemesHero.Title>Build nicer</ThemesHero.Title>
+                <ThemesHero.Title>Build faster</ThemesHero.Title>
                 <ThemesHero.Text>{text}</ThemesHero.Text>
                 <ThemesHero.Actions>
                   <ThemesHero.Button variant="solid" href="/themes/docs/overview/getting-started">
@@ -264,7 +264,7 @@ export default function ThemesHome() {
             </Box>
             <ThemesHero.Root color="green">
               <ThemesHero.Tagline>
-                <ThemesHero.Title>Build cooler</ThemesHero.Title>
+                <ThemesHero.Title>Build faster</ThemesHero.Title>
                 <ThemesHero.Text>{text}</ThemesHero.Text>
                 <ThemesHero.Actions>
                   <ThemesHero.Button variant="solid" href="/themes/docs/overview/getting-started">
@@ -304,7 +304,7 @@ export default function ThemesHome() {
             </Box>
             <ThemesHero.Root color="red">
               <ThemesHero.Tagline>
-                <ThemesHero.Title>Build more</ThemesHero.Title>
+                <ThemesHero.Title>Build faster</ThemesHero.Title>
                 <ThemesHero.Text>{text}</ThemesHero.Text>
                 <ThemesHero.Actions>
                   <ThemesHero.Button variant="solid" href="/themes/docs/overview/getting-started">
