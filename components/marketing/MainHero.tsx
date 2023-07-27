@@ -297,7 +297,7 @@ export const MainHero = () => {
               letterSpacing: 'max(min(-0.055em, -0.66vw), -0.07em)',
               maxWidth: 500,
               '@media (min-width: 600px)': {
-                maxWidth: 750,
+                maxWidth: 800,
               },
               '@media (min-width: 900px) and (min-height: 850px)': {
                 fontSize: '80px',
@@ -306,10 +306,10 @@ export const MainHero = () => {
           >
             Core building blocks for your design system.
           </Text>
-          <Box css={{ maxWidth: 536, mb: '$5' }}>
+          <Box css={{ maxWidth: 520, mb: '$5' }}>
             <Paragraph size="2" as="p">
-              Unstyled, accessible, open source React components for building high‑quality design
-              systems and web apps.
+              Click. Tap. Type. Resize. And—just add your styles. Unstyled, accessible, open source
+              React primitives for high-quality web apps and design systems.
             </Paragraph>
           </Box>
           <NextLink href="/primitives/docs/overview/getting-started" passHref>
