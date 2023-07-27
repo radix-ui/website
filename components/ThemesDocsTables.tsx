@@ -1,4 +1,41 @@
-import { Box, Code, Table } from '@radix-ui/themes';
+import { Box, Code, Heading, Table } from '@radix-ui/themes';
+
+export function ThemesBreakpointsTable() {
+  return (
+    <Box my="5" asChild>
+      <Table.Root>
+        <Table.Content>
+          <Table.Header>
+            <Table.Row>
+              <Table.ColumnHeaderCell>Size</Table.ColumnHeaderCell>
+              <Table.ColumnHeaderCell>Width</Table.ColumnHeaderCell>
+            </Table.Row>
+          </Table.Header>
+
+          <Table.Body>
+            {[
+              ['initial', '0px'],
+              ['xs', '520px'],
+              ['sm', '768px'],
+              ['md', '1024px'],
+              ['lg', '1280px'],
+              ['xl', '1640px'],
+            ].map(([key, value]) => (
+              <Table.Row key={key}>
+                <Table.RowHeaderCell>{key}</Table.RowHeaderCell>
+                <Table.Cell>
+                  <Code color="gray" size="2">
+                    {value}
+                  </Code>
+                </Table.Cell>
+              </Table.Row>
+            ))}
+          </Table.Body>
+        </Table.Content>
+      </Table.Root>
+    </Box>
+  );
+}
 
 export function ThemesSpacingTable() {
   return (

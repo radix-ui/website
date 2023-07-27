@@ -1,13 +1,33 @@
 ---
 metaTitle: Breakpoints
-metaDescription:
-  Built-in breakpoints and a responsive prop syntax allow you to easily build
-  adapative user interfaces.
+metaDescription: Built-in breakpoints allow you to easily build
+  adapative layouts.
 ---
 
 # Breakpoints
 
 <Description>
-  Built-in breakpoints and a responsive prop syntax allow you to easily build
-  adapative user interfaces.
+  Built-in breakpoints allow you to easily build adapative layouts.
 </Description>
+
+## Available sizes
+
+Each breakpoint matches a fixed screen width. Values are `min-width` based and apply when the screen width is equal or greater.
+
+<ThemesBreakpointsTable />
+
+## Usage
+
+Most component size and layout props will accept an additional responsive object shape for modifying the given prop across breakpoints.
+
+Each size maps to a corresponding key, the value of each will be applied when the screen size is greater than or equal to the named breakpoint.
+
+```jsx
+<Heading
+  size={{
+    initial: '3',
+    md: '5',
+    xl: '7',
+  }}
+/>
+```
