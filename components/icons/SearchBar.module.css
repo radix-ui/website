@@ -1,4 +1,4 @@
-.SearchInput input {
+.SearchBarInput input {
   color: inherit;
   box-sizing: content-box;
   background: transparent;
@@ -14,6 +14,6 @@
   font-size: var(--font-size-2);
 }
 
-.SearchInput input::placeholder {
+.SearchBarInput input::placeholder {
   color: var(--gray-a10);
 }

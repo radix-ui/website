@@ -1,5 +1,5 @@
 import { Box } from '@radix-ui/themes';
-import React from 'react';
+import * as React from 'react';
 import { AllIcons } from './AllIcons';
 import { SearchBar } from './SearchBar';
 import { SearchResults } from './SearchResults';

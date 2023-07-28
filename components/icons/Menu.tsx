@@ -7,70 +7,88 @@ import {
   IconJarLogoIcon,
   SketchLogoIcon,
 } from '@radix-ui/react-icons';
-import { Flex, Link, Text } from '@radix-ui/themes';
-
-import styles from './Menu.module.css';
+import { Flex, Link } from '@radix-ui/themes';
 
 export const Menu = () => {
   return (
-    <Flex className={styles.Menu}>
-      <Flex className={styles.MenuInner}>
-        <Link
-          href="https://www.figma.com/file/9Df5CaFUEomVzn20gRpaX3/Radix-Icons"
-          target="_blank"
-          highContrast
-        >
-          <Flex display="flex" align="center" gap="2">
+    <Flex
+      m="6"
+      justify="end"
+      display={{ initial: 'none', md: 'inline-flex' }}
+      position="fixed"
+      right="0"
+      style={{ top: 'var(--space-6)' }}
+    >
+      <Flex
+        direction="column"
+        gap="2"
+        py="4"
+        px="5"
+        style={{
+          background: 'var(--accent-3)',
+          borderRadius: 'var(--radius-1)',
+          boxShadow: '0 10px 40px -10px hsla(174, 100%, 30%, 0.05)',
+          userSelect: 'none',
+        }}
+      >
+        <Flex align="center" gap="2" asChild>
+          <Link
+            href="https://www.figma.com/file/9Df5CaFUEomVzn20gRpaX3/Radix-Icons"
+            target="_blank"
+            highContrast
+          >
             <FigmaLogoIcon />
-            <Text size="2">Open in Figma</Text>
-          </Flex>
-        </Link>
-        <Link
-          href="https://raw.githubusercontent.com/radix-ui/icons/master/Radix-Icons.sketch"
-          target="_blank"
-          highContrast
-        >
-          <Flex display="flex" align="center" gap="2">
+            Open in Figma
+          </Link>
+        </Flex>
+        <Flex align="center" gap="2" asChild>
+          <Link
+            href="https://raw.githubusercontent.com/radix-ui/icons/master/Radix-Icons.sketch"
+            target="_blank"
+            highContrast
+          >
             <SketchLogoIcon />
-            <Text size="2">Download for Sketch</Text>
-          </Flex>
-        </Link>
-        <Link
-          href="https://raw.githubusercontent.com/radix-ui/icons/master/Radix-Icons.iconjar.zip"
-          target="_blank"
-          highContrast
-        >
-          <Flex display="flex" align="center" gap="2">
+            Download for Sketch
+          </Link>
+        </Flex>
+
+        <Flex align="center" gap="2" asChild>
+          <Link
+            href="https://raw.githubusercontent.com/radix-ui/icons/master/Radix-Icons.iconjar.zip"
+            target="_blank"
+            highContrast
+          >
             <IconJarLogoIcon />
-            <Text size="2">Download IconJar</Text>
-          </Flex>
-        </Link>
-        <Link
-          href="https://raw.githubusercontent.com/radix-ui/icons/master/radix-icons.zip"
-          target="_blank"
-          highContrast
-        >
-          <Flex display="flex" align="center" gap="2">
+            Download IconJar
+          </Link>
+        </Flex>
+
+        <Flex align="center" gap="2" asChild>
+          <Link
+            href="https://raw.githubusercontent.com/radix-ui/icons/master/radix-icons.zip"
+            target="_blank"
+            highContrast
+          >
             <DownloadIcon />
-            <Text size="2">Download SVG</Text>
-          </Flex>
-        </Link>
-        <Link
-          href="https://www.npmjs.com/package/@radix-ui/react-icons"
-          target="_blank"
-          highContrast
-        >
-          <Flex display="flex" align="center" gap="2">
+            Download SVG
+          </Link>
+        </Flex>
+        <Flex align="center" gap="2" asChild>
+          <Link
+            href="https://www.npmjs.com/package/@radix-ui/react-icons"
+            target="_blank"
+            highContrast
+          >
             <CubeIcon />
-            <Text size="2">Install with npm</Text>
-          </Flex>
-        </Link>
-        <Link href="https://github.com/radix-ui/icons" target="_blank" highContrast>
-          <Flex display="flex" align="center" gap="2">
+            Install with npm
+          </Link>
+        </Flex>
+        <Flex align="center" gap="2" asChild>
+          <Link href="https://github.com/radix-ui/icons" target="_blank" highContrast>
             <GitHubLogoIcon />
-            <Text size="2">View on GitHub</Text>
-          </Flex>
-        </Link>
+            View on GitHub
+          </Link>
+        </Flex>
       </Flex>
     </Flex>
   );

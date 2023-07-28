@@ -1,6 +1,6 @@
 import React from 'react';
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
-import { Flex } from '@radix-ui/themes';
+import { Flex, Separator } from '@radix-ui/themes';
 import AutosizeInput from 'react-input-autosize';
 
 import styles from './SearchBar.module.css';
@@ -12,25 +12,22 @@ type SearchBarProps = {
 
 export const SearchBar = ({ value, onValueChange }: SearchBarProps) => {
   return (
-    <Flex
-      align="center"
-      justify="center"
-      gap="2"
-      style={{ borderBottom: '1px solid var(--gray-a6)' }}
-    >
-      <span style={{ color: 'var(--gray-11)' }}>
-        <MagnifyingGlassIcon />
-      </span>
+    <>
+      <Flex align="center" justify="center" gap="2">
+        <MagnifyingGlassIcon style={{ color: 'var(--gray-11)' }} />
 
-      <AutosizeInput
-        autoComplete="off"
-        placeholder="Search"
-        name="form-field-name"
-        value={value}
-        className={styles.SearchInput}
-        onChange={(event) => onValueChange(event.target.value)}
-        autoFocus
-      />
-    </Flex>
+        <AutosizeInput
+          autoComplete="off"
+          placeholder="Search"
+          name="form-field-name"
+          value={value}
+          className={styles.SearchBarInput}
+          onChange={(event) => onValueChange(event.target.value)}
+          autoFocus
+        />
+      </Flex>
+
+      <Separator size="4" />
+    </>
   );
 };

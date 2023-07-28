@@ -1,9 +1,7 @@
-import React from 'react';
 import * as Icons from '@radix-ui/react-icons';
+import { Button, Flex, Grid, Text } from '@radix-ui/themes';
+import React from 'react';
 import { CopyToastVisibility } from './CopyToast';
-import { Box, Flex, Grid, Text } from '@radix-ui/themes';
-
-import styles from './SearchResults.module.css';
 
 type SearchResultsProps = {
   value: string;
@@ -38,71 +36,57 @@ export const SearchResults = ({ value }: SearchResultsProps) => {
   return (
     <CopyToastVisibility.Consumer>
       {({ setIcon, setIsVisible }) => (
-        <Box>
+        <>
           {value && matchingNames.length > 0 && (
             <Grid
-              gapX="3"
-              align="start"
+              flow={{ initial: 'row', sm: 'column' }}
+              gapX="6"
+              gapY="5"
+              rows={{
+                sm: `repeat(${Math.max(Math.ceil(matchingNames.length / 2), 3)}, auto)`,
+                md: `repeat(${Math.max(Math.ceil(matchingNames.length / 4), 3)}, auto)`,
+              }}
+              columns={{ initial: '1', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' }}
               py={{ initial: '3', sm: '6' }}
               px={{ initial: '4', sm: '7' }}
-              className={styles.ResultsWrapper}
-              style={
-                {
-                  '--total-rows': matchingNames.length,
-                } as React.CSSProperties
-              }
             >
               {matchingNames.map((name) => (
-                <Box style={{ minWidth: 0 }} key={name}>
-                  <button
-                    className={styles.GhostButton}
-                    onClick={(event: React.MouseEvent) => {
-                      const svg = event.currentTarget.querySelector('svg');
-                      const code = svg && svg.parentElement ? svg.parentElement.innerHTML : null;
+                <Button
+                  key={name}
+                  style={{ justifyContent: 'flex-start' }}
+                  variant="ghost"
+                  highContrast
+                  size="3"
+                  onClick={(event: React.MouseEvent) => {
+                    const svg = event.currentTarget.querySelector('svg');
+                    const code = svg && svg.parentElement ? svg.parentElement.innerHTML : null;
 
-                      // Copy code to clipboard via a hidden textarea element
-                      if (code) {
-                        // Temporary shim until a proper focus-visible handler is added
-                        if (document.activeElement instanceof HTMLButtonElement) {
-                          document.activeElement.blur();
-                        }
-
-                        const textarea = document.createElement('textarea');
-                        textarea.value = code.toString();
-                        textarea.setAttribute('readonly', '');
-                        textarea.style.position = 'absolute';
-                        textarea.style.left = '-9999px';
-                        document.body.appendChild(textarea);
-                        textarea.select();
-                        document.execCommand('copy');
-                        document.body.removeChild(textarea);
-
-                        // Show CopyToast and set latest icon
-                        setIsVisible();
-                        setIcon(code);
+                    // Copy code to clipboard via a hidden textarea element
+                    if (code) {
+                      // Temporary shim until a proper focus-visible handler is added
+                      if (document.activeElement instanceof HTMLButtonElement) {
+                        document.activeElement.blur();
                       }
-                    }}
-                  >
-                    <Flex align="center" justify="start" gap="2">
-                      <Flex p="1">
-                        {React.createElement(Object.values(Icons)[iconNames.indexOf(name)] as any)}
-                      </Flex>
-                      <Text
-                        size="2"
-                        style={{
-                          // flexGrow: 0,
-                          // flexShrink: 1,
-                          textOverflow: 'ellipsis',
-                          overflow: 'hidden',
-                          // minWidth: 0,
-                          // lineHeight: '25px',
-                        }}
-                      >
-                        {name}
-                      </Text>
-                    </Flex>
-                  </button>
-                </Box>
+
+                      const textarea = document.createElement('textarea');
+                      textarea.value = code.toString();
+                      textarea.setAttribute('readonly', '');
+                      textarea.style.position = 'absolute';
+                      textarea.style.left = '-9999px';
+                      document.body.appendChild(textarea);
+                      textarea.select();
+                      document.execCommand('copy');
+                      document.body.removeChild(textarea);
+
+                      // Show CopyToast and set latest icon
+                      setIsVisible();
+                      setIcon(code);
+                    }
+                  }}
+                >
+                  {React.createElement(Object.values(Icons)[iconNames.indexOf(name)] as any)}
+                  {name}
+                </Button>
               ))}
             </Grid>
           )}
@@ -121,7 +105,7 @@ export const SearchResults = ({ value }: SearchResultsProps) => {
               </Text>
             </Flex>
           )}
-        </Box>
+        </>
       )}
     </CopyToastVisibility.Consumer>
   );
