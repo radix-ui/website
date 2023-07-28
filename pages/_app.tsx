@@ -128,8 +128,8 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.includes('/icons')) {
     return (
-      <Theme accentScale="teal" style={themeRootStyles}>
-        <SyntaxSchemeProvider scheme="indigo">
+      <Theme accentScale="teal" grayScale="slate" style={themeRootStyles}>
+        <SyntaxSchemeProvider scheme="teal">
           <Component {...pageProps} />
         </SyntaxSchemeProvider>
       </Theme>

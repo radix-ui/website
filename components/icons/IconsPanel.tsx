@@ -131,7 +131,7 @@ export const IconsPanel = () => {
             </Text>
             <CodeBlock
               mt="2"
-              language="bash"
+              language="jsx"
               value={`import { FaceIcon, ImageIcon, SunIcon } from '@radix-ui/react-icons'
 
 function MyComponent () {

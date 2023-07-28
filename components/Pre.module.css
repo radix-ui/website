@@ -74,6 +74,34 @@
   --highlighted-word-3-text: var(--green-11);
 }
 
+.Pre.teal {
+  --background: var(--color-surface-2);
+  --border: var(--gray-a4);
+  --faded-lines: var(--gray-a8);
+  --removed: var(--red-11);
+  --added: var(--green-11);
+  --line-numbers: var(--indigo-5);
+
+  --syntax-accent: var(--teal-11);
+  --syntax-accent-subtle: var(--teal-12);
+  --syntax-complementary: var(--crimson-11);
+  --syntax-secondary: var(--indigo-11);
+
+  --highlighted-line-bg: var(--accent-3);
+
+  --highlighted-word-1-bg: var(--accent-4);
+  --highlighted-word-1-bg-active: var(--accent-6);
+  --highlighted-word-1-text: var(--accent-11);
+
+  --highlighted-word-2-bg: var(--red-3);
+  --highlighted-word-2-bg-active: var(--red-5);
+  --highlighted-word-2-text: var(--red-11);
+
+  --highlighted-word-3-bg: var(--green-3);
+  --highlighted-word-3-bg-active: var(--green-5);
+  --highlighted-word-3-text: var(--green-11);
+}
+
 .Pre.indigo {
   --background: var(--accent-a2);
   --text: var(--color-text);
