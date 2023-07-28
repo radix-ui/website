@@ -6,3 +6,81 @@ metaDescription: Using appearance to manage and integrate dark mode.
 # Dark mode
 
 <Description>Using appearance to manage and integrate dark mode.</Description>
+
+## Overview
+
+Dark mode has gained widespread popularity in recent years, with operating systems now offering comprehensive support for it directly within the OS.
+
+Out of the box, Radix Themes comes with a built in dark mode option, allowing you to effortlessly switch between modes without any additional design or styling.
+
+{
+
+<Box my="5">
+  <Card size="3">Light and dark example</Card>
+</Box>
+
+}
+
+## Basic usage
+
+By default, the root `Theme` appearance will be `light`. To set a different appearance simply pass the `appearance` prop. This will force the theme to use the specified setting.
+
+```jsx line=1
+<Theme __appearance__="dark">
+  <MyApp />
+</Theme>
+```
+
+## System preference and persistence
+
+A common requirement is to inherit the appearance setting from a users system preferences.
+
+This is a deceptively complex problem to solve given SSR, SSG and client side hydration considerations. To avoid these pitfalls and make implementation easier, we recommend integrating with a theme persistence library such as [next-themes](https://github.com/pacocoursey/next-themes).
+
+### With next-themes
+
+Integrating with `next-themes` is simple and straight-forward, and allows you to avoid common pitfalls with client hydration that can create unsightly flashing during initial render.
+
+Here's an example showing usage and configuration at the root of your application.
+
+```jsx line=6
+import { Theme } from '@radix-ui/themes';
+import { ThemeProvider } from 'next-themes';
+
+export default function () {
+  return (
+    <ThemeProvider
+      __attribute__="class"
+      __value__={{ light: 'light-theme', dark: 'dark-theme' }}
+      disableTransitionOnChange
+      defaultTheme="system"
+    >
+      <Theme>
+        <MyApp />
+      </Theme>
+    </ThemeProvider>
+  );
+}
+```
+
+{
+
+<Callout.Root my="5">
+  <Callout.Icon>
+    <InfoCircledIcon />
+  </Callout.Icon>
+  <Callout.Text>
+    It's important to specify the <Code>attribute</Code> and <Code>value</Code>{' '}
+    configuration and <Strong>not</Strong> to pass <Code>appearance</Code>.
+  </Callout.Text>
+</Callout.Root>
+}
+
+Note that we do not pass the `appearance` prop to `Theme`. We instead tell `next-themes` to apply a specific `class` to the `html` when toggling themes. This is an important detail as `next-themes` will handle render blocking internally when using this approach, avoiding any unsightly flashing during initial render.
+
+Radix Themes supports the following classes for mapping themes to the appearance:
+
+- `light`
+- `dark`
+- `light-theme`
+- `dark-theme`

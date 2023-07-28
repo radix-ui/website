@@ -6,6 +6,7 @@ import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { QuickNav } from '@components/QuickNav';
 import * as themesDocsAssets from '@components/ThemesDocsAssets';
 import * as themesDocsTables from '@components/ThemesDocsTables';
+import * as icons from '@radix-ui/react-icons';
 
 import type { Frontmatter } from 'types/frontmatter';
 
@@ -36,6 +37,7 @@ export default function ThemingDoc({ frontmatter, code }: Doc) {
               ...components,
               ...themesDocsAssets,
               ...themesDocsTables,
+              ...icons,
             } as any
           }
         />

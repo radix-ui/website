@@ -53,7 +53,7 @@ interface ThemesPanelProps extends React.ComponentPropsWithoutRef<typeof Box> {}
 const ThemesPanel = React.forwardRef<ThemesPanelElement, ThemesPanelProps>(
   (props, forwardedRef) => {
     const { open, onOpenChange } = React.useContext(ThemesPanelContext);
-    const { resolvedTheme, setTheme } = useTheme();
+    const { setTheme } = useTheme();
 
     console.log(open);
 
