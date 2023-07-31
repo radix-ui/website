@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, Portal, Theme } from '@radix-ui/themes';
+import { Box, Text, Portal, Theme, Flex } from '@radix-ui/themes';
 
 import styles from './CopyToast.module.css';
 
@@ -23,7 +23,7 @@ export const CopyToast = () => {
       {({ icon, isVisible }) => (
         <Portal>
           <Theme>
-            <Box className={styles.Toast}>
+            <Flex className={styles.Toast} m="5" justify="center">
               <Box
                 className={styles.ToastInner}
                 style={{
@@ -47,7 +47,7 @@ export const CopyToast = () => {
                   />
                 </Text>
               </Box>
-            </Box>
+            </Flex>
           </Theme>
         </Portal>
       )}

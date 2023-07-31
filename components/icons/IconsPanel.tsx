@@ -34,101 +34,107 @@ export const IconsPanel = () => {
         setIsVisible: setToastIsVisibleTimeout,
       }}
     >
-      <Box mb="5" className={styles.Panel}>
+      <Box
+        style={{
+          borderRadius: 'var(--radius-3)',
+          minHeight: 900,
+          background: 'var(--color-panel)',
+          position: 'relative',
+          boxShadow: 'var(--shadow-5)',
+        }}
+        className={styles.IconsPanel}
+      >
         <MainContent />
 
         <Separator size="4" />
 
-        <Box className={styles.Section}>
+        <Box
+          py={{ initial: '4', sm: '5' }}
+          px={{ initial: '3', sm: '6' }}
+          className={styles.IconsPanelMainSection}
+        >
           <Box mb="5" style={{ gridColumn: '3 / 4' }}>
-            <Heading
-              as="h3"
-              size="5"
-              style={{ fontWeight: 500, letterSpacing: '-0.02em', lineHeight: '30px' }}
-            >
+            <Heading as="h3" size="5">
               Assets
             </Heading>
 
             <Flex direction="column" gap="2" mt="2">
-              <Link
-                href="https://www.figma.com/file/9Df5CaFUEomVzn20gRpaX3/Radix-Icons"
-                target="_blank"
-                highContrast
-              >
-                <Flex display="flex" align="center" gap="2">
+              <Flex align="center" gap="2" asChild>
+                <Link
+                  href="https://www.figma.com/file/9Df5CaFUEomVzn20gRpaX3/Radix-Icons"
+                  target="_blank"
+                  highContrast
+                >
                   <FigmaLogoIcon />
-                  <Text size="3">Open in Figma</Text>
-                </Flex>
-              </Link>
-
-              <Link
-                href="https://raw.githubusercontent.com/radix-ui/icons/master/Radix-Icons.sketch"
-                target="_blank"
-                highContrast
-              >
-                <Flex display="flex" align="center" gap="2">
+                  Open in Figma
+                </Link>
+              </Flex>
+              <Flex align="center" gap="2" asChild>
+                <Link
+                  href="https://raw.githubusercontent.com/radix-ui/icons/master/Radix-Icons.sketch"
+                  target="_blank"
+                  highContrast
+                >
                   <SketchLogoIcon />
-                  <Text size="3">Download for Sketch</Text>
-                </Flex>
-              </Link>
+                  Download for Sketch
+                </Link>
+              </Flex>
 
-              <Link
-                href="https://raw.githubusercontent.com/radix-ui/icons/master/Radix-Icons.iconjar.zip"
-                target="_blank"
-                highContrast
-              >
-                <Flex display="flex" align="center" gap="2">
+              <Flex align="center" gap="2" asChild>
+                <Link
+                  href="https://raw.githubusercontent.com/radix-ui/icons/master/Radix-Icons.iconjar.zip"
+                  target="_blank"
+                  highContrast
+                >
                   <IconJarLogoIcon />
-                  <Text size="3">Download IconJar</Text>
-                </Flex>
-              </Link>
+                  Download IconJar
+                </Link>
+              </Flex>
 
-              <Link
-                href="https://raw.githubusercontent.com/radix-ui/icons/master/radix-icons.zip"
-                target="_blank"
-                highContrast
-              >
-                <Flex display="flex" align="center" gap="2">
+              <Flex align="center" gap="2" asChild>
+                <Link
+                  href="https://raw.githubusercontent.com/radix-ui/icons/master/radix-icons.zip"
+                  target="_blank"
+                  highContrast
+                >
                   <DownloadIcon />
-                  <Text size="3">Download SVG</Text>
-                </Flex>
-              </Link>
-
-              <Link
-                href="https://www.npmjs.com/package/@radix-ui/react-icons"
-                target="_blank"
-                highContrast
-              >
-                <Flex display="flex" align="center" gap="2">
+                  Download SVG
+                </Link>
+              </Flex>
+              <Flex align="center" gap="2" asChild>
+                <Link
+                  href="https://www.npmjs.com/package/@radix-ui/react-icons"
+                  target="_blank"
+                  highContrast
+                >
                   <CubeIcon />
-                  <Text size="3">Install with npm</Text>
-                </Flex>
-              </Link>
+                  Install with npm
+                </Link>
+              </Flex>
 
-              <Link href="https://github.com/radix-ui/icons" target="_blank" highContrast>
-                <Flex display="flex" align="center" gap="2">
+              <Flex align="center" gap="2" asChild>
+                <Link href="https://github.com/radix-ui/icons" target="_blank" highContrast>
                   <GitHubLogoIcon />
-                  <Text size="3">View on GitHub</Text>
-                </Flex>
-              </Link>
+                  View on GitHub
+                </Link>
+              </Flex>
             </Flex>
           </Box>
 
-          <Box className={styles.SectionContent}>
-            <Heading
-              as="h3"
-              size="5"
-              style={{ fontWeight: 500, letterSpacing: '-0.02em', lineHeight: '30px' }}
-            >
+          <Box mb={{ initial: '5', sm: '0' }} className={styles.IconsPanelSectionContent}>
+            <Heading as="h3" size="5">
               React components
             </Heading>
-            <Text as="p" size="3" mt="2" style={{ lineHeight: '25px' }}>
+
+            <Text as="p" size="3" mt="2">
               All icons are available as individual React components. Install Radix Icons from npm:
             </Text>
+
             <CodeBlock mt="2" language="bash" value="npm install @radix-ui/react-icons" />
-            <Text as="p" size="3" mt="2" style={{ lineHeight: '25px' }}>
+            <Text as="p" size="3" mt="2">
               Import the icons into your React project:
             </Text>
+
             <CodeBlock
               mt="2"
               language="jsx"
@@ -145,16 +151,13 @@ function MyComponent () {
 }`}
             />
           </Box>
+
           <Box style={{ gridColumn: '3 / 4' }}>
-            <Heading
-              as="h3"
-              size="5"
-              style={{ fontWeight: 500, letterSpacing: '-0.02em', lineHeight: '30px' }}
-            >
+            <Heading as="h3" size="5">
               License
             </Heading>
 
-            <Text as="p" size="3" mt="2" style={{ lineHeight: '25px' }}>
+            <Text as="p" size="3" mt="2">
               Licensed under the{' '}
               <Link href="https://github.com/radix-ui/icons/blob/master/LICENSE">MIT License</Link>.
               Copyright © 2022–present WorkOS.

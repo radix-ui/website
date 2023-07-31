@@ -1,10 +1,7 @@
 .Toast {
-  display: flex;
-  justify-content: center;
   position: fixed;
   bottom: 0;
   width: 100%;
-  margin: var(--space-5);
   max-width: calc(100vw - 50px);
   pointer-events: none;
 }
@@ -16,7 +13,7 @@
   text-align: center;
   background-color: var(--gray-12);
   padding: var(--space-2) var(--space-3);
-  border-radius: var(--space-2);
+  border-radius: var(--radius-2);
   box-shadow: 0 3px 20px -5px rgba(0, 0, 0, 0.4);
   transition-property: opacity;
 }
