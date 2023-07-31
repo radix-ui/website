@@ -36,6 +36,7 @@ export const Menu = () => {
             href="https://www.figma.com/file/9Df5CaFUEomVzn20gRpaX3/Radix-Icons"
             target="_blank"
             highContrast
+            color="gray"
           >
             <FigmaLogoIcon />
             Open in Figma
@@ -46,6 +47,7 @@ export const Menu = () => {
             href="https://raw.githubusercontent.com/radix-ui/icons/master/Radix-Icons.sketch"
             target="_blank"
             highContrast
+            color="gray"
           >
             <SketchLogoIcon />
             Download for Sketch
@@ -57,6 +59,7 @@ export const Menu = () => {
             href="https://raw.githubusercontent.com/radix-ui/icons/master/Radix-Icons.iconjar.zip"
             target="_blank"
             highContrast
+            color="gray"
           >
             <IconJarLogoIcon />
             Download IconJar
@@ -68,6 +71,7 @@ export const Menu = () => {
             href="https://raw.githubusercontent.com/radix-ui/icons/master/radix-icons.zip"
             target="_blank"
             highContrast
+            color="gray"
           >
             <DownloadIcon />
             Download SVG
@@ -78,13 +82,14 @@ export const Menu = () => {
             href="https://www.npmjs.com/package/@radix-ui/react-icons"
             target="_blank"
             highContrast
+            color="gray"
           >
             <CubeIcon />
             Install with npm
           </Link>
         </Flex>
         <Flex align="center" gap="2" asChild>
-          <Link href="https://github.com/radix-ui/icons" target="_blank" highContrast>
+          <Link href="https://github.com/radix-ui/icons" target="_blank" highContrast color="gray">
             <GitHubLogoIcon />
             View on GitHub
           </Link>
