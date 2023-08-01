@@ -1,24 +1,15 @@
-import React from 'react';
-import {
-  Box,
-  Grid,
-  Text,
-  Container,
-  Heading,
-  Section,
-  Card,
-  Separator,
-} from '@modulz/design-system';
+import { Card, Container, Grid, Section } from '@modulz/design-system';
 import { MixIcon } from '@radix-ui/react-icons';
 import { MarketingCaption } from './MarketingCaption';
+import { Box, Heading, Separator, Text } from '@radix-ui/themes';
 
 export const OtherProductsSection = () => {
   return (
     <Section>
       <Container size="3">
-        <Box css={{ mb: '$5' }}>
+        <Box mb="5">
           <MarketingCaption css={{ mb: '$1' }}>More from the Radix team</MarketingCaption>
-          <Heading as="h2" size="3" css={{ mb: '$4' }}>
+          <Heading as="h2" size="8" mb="4">
             Complete suite of design system tools
           </Heading>
         </Box>
@@ -29,8 +20,8 @@ export const OtherProductsSection = () => {
           css={{ justifyContent: 'start', '@bp2': { gridAutoColumns: '220px' }, mb: '$8' }}
         >
           <Card as="a" target="_blank" href="/colors" variant="interactive">
-            <Box css={{ p: '$3' }}>
-              <Box css={{ mb: '$3' }}>
+            <Box p="3">
+              <Box mb="3">
                 <svg
                   width="30"
                   height="30"
@@ -46,24 +37,24 @@ export const OtherProductsSection = () => {
                   />
                 </svg>
               </Box>
-              <Heading as="h3" css={{ mb: '$2' }}>
+              <Heading as="h3" mb="2" size="4">
                 Colors
               </Heading>
-              <Text css={{ lineHeight: 1.5 }}>
+              <Text style={{ lineHeight: 1.5 }}>
                 Beautiful, thought-out palettes with auto dark mode.
               </Text>
             </Box>
           </Card>
 
           <Card as="a" target="_blank" href="https://icons.radix-ui.com/" variant="interactive">
-            <Box css={{ p: '$3' }}>
-              <Box css={{ mb: '$3' }}>
+            <Box p="3">
+              <Box mb="3">
                 <MixIcon width="30" height="30" />
               </Box>
-              <Heading as="h3" css={{ mb: '$2' }}>
+              <Heading as="h3" mb="2" size="4">
                 Icons
               </Heading>
-              <Text css={{ lineHeight: 1.5 }}>
+              <Text style={{ lineHeight: 1.5 }}>
                 A crisp set of 15×15 icons, balanced and consistent.
               </Text>
             </Box>

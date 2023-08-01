@@ -1,23 +1,23 @@
-import React from 'react';
-import { Box, Container, Separator } from '@modulz/design-system';
-import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { MainHero } from '@components/marketing/MainHero';
-import { ComponentHighlightsSection } from '@components/marketing/ComponentHighlightsSection';
-import { CaseStudiesSection } from '@components/marketing/CaseStudiesSection';
-import { BenefitsSection } from '@components/marketing/BenefitsSection';
-import { AccessibilitySection } from '@components/marketing/AccessibilitySection';
-import { DeveloperExperienceSection } from '@components/marketing/DeveloperExperienceSection';
-import { AdoptionSection } from '@components/marketing/AdoptionSection';
-import { CommunitySection } from '@components/marketing/CommunitySection';
-import { OtherProductsSection } from '@components/marketing/OtherProductsSection';
+import { Container } from '@modulz/design-system';
+
+import { DocsNav } from '@components/DocsNav';
 import { Footer } from '@components/Footer';
-import { FancyBackground } from '@components/marketing/FancyBackground';
-import { StatsSection } from '@components/marketing/StatsSection';
 import { MobileMenu, MobileMenuProvider } from '@components/MobileMenu';
 import { PrimitivesHeader } from '@components/PrimitivesHeader';
-import { DocsNav } from '@components/DocsNav';
+import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
+import { AccessibilitySection } from '@components/marketing/AccessibilitySection';
+import { AdoptionSection } from '@components/marketing/AdoptionSection';
+import { BenefitsSection } from '@components/marketing/BenefitsSection';
+import { CaseStudiesSection } from '@components/marketing/CaseStudiesSection';
+import { CommunitySection } from '@components/marketing/CommunitySection';
+import { ComponentHighlightsSection } from '@components/marketing/ComponentHighlightsSection';
+import { DeveloperExperienceSection } from '@components/marketing/DeveloperExperienceSection';
+import { FancyBackground } from '@components/marketing/FancyBackground';
+import { MainHero } from '@components/marketing/MainHero';
+import { OtherProductsSection } from '@components/marketing/OtherProductsSection';
+import { StatsSection } from '@components/marketing/StatsSection';
 import { primitivesRoutes } from '@lib/primitivesRoutes';
-import { ScrollArea } from '@radix-ui/themes';
+import { Box, ScrollArea, Separator } from '@radix-ui/themes';
 
 export default function PrimitivesHome() {
   return (
@@ -34,7 +34,7 @@ export default function PrimitivesHome() {
         description="An open-source React component library for building high-quality, accessible design systems and web apps."
         image="default.png"
       />
-      <Box css={{ height: 0 }}>
+      <Box style={{ height: 0 }}>
         <PrimitivesHeader ghost />
       </Box>
       <FancyBackground>
@@ -44,7 +44,7 @@ export default function PrimitivesHome() {
       <Container size="3">
         <Separator size="2" />
       </Container>
-      <Box css={{ overflow: 'hidden' }}>
+      <Box style={{ overflow: 'hidden' }}>
         <BenefitsSection />
         <StatsSection />
       </Box>

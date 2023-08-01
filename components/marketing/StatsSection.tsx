@@ -1,17 +1,4 @@
-import React from 'react';
-import {
-  Box,
-  Grid,
-  Text,
-  Container,
-  Flex,
-  Heading,
-  Paragraph,
-  Section,
-  Separator,
-  darkTheme,
-} from '@modulz/design-system';
-import { MarketingCaption } from './MarketingCaption';
+import { Box, Container, Flex, Grid, Section, Text, darkTheme } from '@modulz/design-system';
 
 export const StatsSection = () => {
   return (
