@@ -71,6 +71,7 @@ export const themesRoutes = [
       { title: 'Text Area', slug: 'themes/docs/components/text-area' },
       { title: 'Text Field', slug: 'themes/docs/components/text-field' },
       { title: 'Tooltip', slug: 'themes/docs/components/tooltip' },
+      { title: 'Table', slug: 'themes/docs/components/table' },
     ],
   },
 
