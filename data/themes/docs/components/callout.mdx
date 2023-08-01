@@ -1,0 +1,106 @@
+---
+metaTitle: Callout
+metaDescription: A short message to attract user's attention.
+---
+
+```jsx live=true
+<Callout.Root>
+  <Callout.Icon>
+    <InfoCircledIcon />
+  </Callout.Icon>
+  <Callout.Text>
+    You will need admin privileges to install and access this application.
+  </Callout.Text>
+</Callout.Root>
+```
+
+## API Reference
+
+### Root
+
+Groups Icon and Text parts. This component is based on the `div` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
+
+<ThemesPropsTable name="calloutRoot" />
+
+### Icon
+
+Provides width and height for the icon associated with the callout. This component is based on the `div` element.
+
+### Text
+
+Renders the callout text. This component is based on the `p` element.
+
+## Examples
+
+### Colors
+
+Use the `color` prop to assign a specific color value, ignoring the global theme.
+
+```jsx live=true
+<Flex direction="column" gap="3">
+  <Callout.Root color="gray">
+    <Callout.Icon>
+      <InfoCircledIcon />
+    </Callout.Icon>
+    <Callout.Text>
+      You will need <Link href="#">admin privileges</Link> to install and access
+      this application.
+    </Callout.Text>
+  </Callout.Root>
+
+  <Callout.Root color="blue">
+    <Callout.Icon>
+      <InfoCircledIcon />
+    </Callout.Icon>
+    <Callout.Text>
+      You will need <Link href="#">admin privileges</Link> to install and access
+      this application.
+    </Callout.Text>
+  </Callout.Root>
+
+  <Callout.Root color="green">
+    <Callout.Icon>
+      <InfoCircledIcon />
+    </Callout.Icon>
+    <Callout.Text>
+      You will need <Link href="#">admin privileges</Link> to install and access
+      this application.
+    </Callout.Text>
+  </Callout.Root>
+
+  <Callout.Root color="yellow">
+    <Callout.Icon>
+      <InfoCircledIcon />
+    </Callout.Icon>
+    <Callout.Text>
+      You will need <Link href="#">admin privileges</Link> to install and access
+      this application.
+    </Callout.Text>
+  </Callout.Root>
+
+  <Callout.Root color="red">
+    <Callout.Icon>
+      <InfoCircledIcon />
+    </Callout.Icon>
+    <Callout.Text>
+      You will need <Link href="#">admin privileges</Link> to install and access
+      this application.
+    </Callout.Text>
+  </Callout.Root>
+</Flex>
+```
+
+### As alert
+
+Add a native [WAI-ARIA `alert` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) to the callout when the user’s immediate attention is required, like when an error message appears. The screen reader will be interrupted, announcing the new content immediately.
+
+```jsx live=true
+<Callout.Root color="red" role="alert">
+  <Callout.Icon>
+    <ExclamationTriangleIcon />
+  </Callout.Icon>
+  <Callout.Text>
+    Access denied. Please contact the network administrator to view this page.
+  </Callout.Text>
+</Callout.Root>
+```

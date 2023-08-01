@@ -62,6 +62,7 @@ const definitions = {
   tableRoot: { ...asChildProp, ...themes.tableRootPropDefs },
   tableRow: { ...asChildProp, ...themes.tableRowPropDefs },
   tableCell: { ...asChildProp, ...themes.tableCellPropDefs },
+  calloutRoot: { ...themes.calloutRootPropDefs },
 } as const;
 
 type PropDefinitions = typeof definitions;

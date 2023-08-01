@@ -72,6 +72,7 @@ export const themesRoutes = [
       { title: 'Text Field', slug: 'themes/docs/components/text-field' },
       { title: 'Tooltip', slug: 'themes/docs/components/tooltip' },
       { title: 'Table', slug: 'themes/docs/components/table' },
+      { title: 'Callout', slug: 'themes/docs/components/callout' },
     ],
   },
 
