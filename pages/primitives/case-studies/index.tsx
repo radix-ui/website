@@ -1,13 +1,11 @@
-import React from 'react';
-import NextLink from 'next/link';
+import { Footer } from '@components/Footer';
+import { MobileMenuProvider } from '@components/MobileMenu';
+import { PrimitivesHeader } from '@components/PrimitivesHeader';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { CaseStudyLogo } from '@components/marketing/CaseStudyLogo';
-import { Footer } from '@components/Footer';
 import { LogoLink } from '@components/marketing/LogoLink';
 import { Root as AccessibleIcon } from '@radix-ui/react-accessible-icon';
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
-import { PrimitivesHeader } from '@components/PrimitivesHeader';
-import { MobileMenuProvider } from '@components/MobileMenu';
 import {
   Box,
   Container,
@@ -19,6 +17,7 @@ import {
   Separator,
   Text,
 } from '@radix-ui/themes';
+import NextLink from 'next/link';
 
 export default function CaseStudy() {
   return (

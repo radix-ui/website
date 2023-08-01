@@ -1,28 +1,29 @@
-import React from 'react';
-import { getMDXComponent } from 'mdx-bundler/client';
-import NextLink from 'next/link';
+import { BoxLink } from '@components/BoxLink';
+import { Footer } from '@components/Footer';
+import { MDXProvider, components } from '@components/MDXComponents';
+import { MobileMenuProvider } from '@components/MobileMenu';
+import { PrimitivesHeader } from '@components/PrimitivesHeader';
+import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
+import { CaseStudyLogo, CaseStudyLogoVariant } from '@components/marketing/CaseStudyLogo';
+import { MarketingCaption } from '@components/marketing/MarketingCaption';
+import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
+import { Root as AccessibleIcon } from '@radix-ui/react-accessible-icon';
+import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 import {
   Avatar,
   Box,
   Container,
   Flex,
   Grid,
+  Heading,
   Link,
-  Paragraph,
   Section,
   Separator,
-} from '@modulz/design-system';
-import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { MDXProvider, components } from '@components/MDXComponents';
-import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
-import { MarketingCaption } from '@components/marketing/MarketingCaption';
-import { CaseStudyLogo, CaseStudyLogoVariant } from '@components/marketing/CaseStudyLogo';
-import { Footer } from '@components/Footer';
-import { BoxLink } from '@components/BoxLink';
-import { Root as AccessibleIcon } from '@radix-ui/react-accessible-icon';
-import { ArrowTopRightIcon } from '@radix-ui/react-icons';
-import { PrimitivesHeader } from '@components/PrimitivesHeader';
-import { MobileMenuProvider } from '@components/MobileMenu';
+  Text,
+} from '@radix-ui/themes';
+import { getMDXComponent } from 'mdx-bundler/client';
+import NextLink from 'next/link';
+import React from 'react';
 
 type CaseStudyPage = {
   frontmatter: {
@@ -57,42 +58,35 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
 
       <PrimitivesHeader />
 
-      <Container size={{ '@initial': 2, '@bp2': 3 }}>
+      <Container size={{ initial: '2', md: '3' }} px="6">
         <Section>
-          <Grid
-            css={{
-              '@bp2': {
-                gap: '$9',
-                gridTemplateColumns: '1fr 330px',
-              },
-              '@bp3': {
-                gap: 120,
-                gridTemplateColumns: '1fr 380px',
-              },
-            }}
-          >
+          <Grid columns={{ md: '1fr 330px', lg: '1fr 380px' }} gap={{ md: '9' }}>
             <Box>
               <MarketingCaption css={{ mb: '$1' }}>Case study</MarketingCaption>
               <MDXProvider frontmatter={frontmatter}>
                 <Component components={components as any} />
               </MDXProvider>
-              <Flex align="center" gap="3" css={{ mt: '$7' }}>
-                <Avatar size="5" src={frontmatter.authorAvatarUrl} aria-describedby="author" />
+              <Flex align="center" gap="3" mt="7">
+                <Avatar
+                  size="5"
+                  src={frontmatter.authorAvatarUrl}
+                  aria-describedby="author"
+                  fallback={null}
+                  radius="full"
+                />
                 <Box id="author">
-                  <Paragraph css={{ fontWeight: 500 }}>{frontmatter.author}</Paragraph>
-                  <Paragraph>{frontmatter.authorPosition}</Paragraph>
+                  <Text as="p" weight="medium">
+                    {frontmatter.author}
+                  </Text>
+                  <Text as="p">{frontmatter.authorPosition}</Text>
                 </Box>
               </Flex>
-              <Separator size="2" css={{ mt: '$7', '@bp2': { mt: '$9' } }} />
+              <Separator size="3" mt={{ initial: '7', md: '9' }} />
             </Box>
 
-            <Box css={{ position: 'relative', mt: '$7', '@bp2': { mt: 100 } }}>
-              <Box css={{ position: 'sticky', top: '$7', left: 0 }}>
-                <Box
-                  css={{
-                    mb: '$6',
-                  }}
-                >
+            <Box position="relative" mt={{ initial: '7', md: '9' }}>
+              <Box position="sticky" style={{ top: 'var(--space-9)', left: 0 }}>
+                <Box mb="6">
                   <BoxLink
                     target="_blank"
                     href={`https://${frontmatter.companyUrl}`}
@@ -107,38 +101,36 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                     </AccessibleIcon>
                   </BoxLink>
                 </Box>
-                <Box css={{ mb: '$5' }}>
-                  <Paragraph as="h4" css={{ fontWeight: 500 }}>
+                <Box mb="5">
+                  <Heading as="h4" size="4">
                     About
-                  </Paragraph>
-                  <Paragraph css={{ mb: '$1' }}>{frontmatter.companyAbout}</Paragraph>
-                  <Paragraph>
-                    <Link
-                      target="_blank"
-                      href={`https://${frontmatter.companyUrl}`}
-                      css={{ display: 'inline-flex' }}
-                    >
+                  </Heading>
+                  <Text as="p" mb="1">
+                    {frontmatter.companyAbout}
+                  </Text>
+
+                  <Flex align="center" gap="2" asChild>
+                    <Link target="_blank" href={`https://${frontmatter.companyUrl}`} highContrast>
                       {frontmatter.companyUrl}
                       <ArrowTopRightIcon style={{ marginLeft: -1, marginBottom: -2 }} />
                     </Link>
-                  </Paragraph>
+                  </Flex>
                 </Box>
-                <Box css={{ mb: '$5' }}>
-                  <Paragraph as="h4" css={{ fontWeight: 500 }}>
+                <Box mb="5">
+                  <Heading size="4" as="h4">
                     Founded
-                  </Paragraph>
-                  <Paragraph>{frontmatter.companyFounded}</Paragraph>
+                  </Heading>
+                  <Text as="p">{frontmatter.companyFounded}</Text>
                 </Box>
-                <Separator size="2" css={{ my: '$7' }} />
-                <Box css={{ mb: '$5' }}>
-                  <Paragraph as="span" css={{ fontWeight: 500 }}>
+                <Separator size="2" my="7" />
+                <Box mb="5">
+                  <Text weight="medium" as="p">
                     Next case study
-                  </Paragraph>
-                  <Paragraph as="span">
-                    <NextLink href={`/${frontmatter.nextCaseStudySlug}`} passHref>
-                      <Link>{frontmatter.nextCaseStudyTitle}</Link>
-                    </NextLink>
-                  </Paragraph>
+                  </Text>
+
+                  <NextLink href={`/${frontmatter.nextCaseStudySlug}`} passHref>
+                    <Link highContrast>{frontmatter.nextCaseStudyTitle}</Link>
+                  </NextLink>
                 </Box>
               </Box>
             </Box>
