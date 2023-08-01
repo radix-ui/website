@@ -9,27 +9,12 @@ metaDescription: For sighted users to preview content available behind a link.
     <Link href="#">Typography</Link>
   </HoverCard.Trigger>
   <HoverCard.Content>
-    <Flex>
-      <Inset side="left" pr="current">
-        <img
-          src="https://images.unsplash.com/photo-1596299786007-9974099be52b?&auto=format&fit=crop&w=300&q=80"
-          alt="Bold typography"
-          style={{
-            display: 'block',
-            objectFit: 'cover',
-            height: '100%',
-            width: 150,
-            backgroundColor: 'var(--gray-5)',
-          }}
-        />
-      </Inset>
-      <Text size="2" style={{ maxWidth: 250 }} as="div">
-        <Strong>Typography</Strong> is the art and technique of arranging type
-        to make written language legible, readable and appealing when displayed.
-        The arrangement of type involves selecting typefaces, point sizes, line
-        lengths, line-spacing (leading), and letter-spacing (tracking)…
-      </Text>
-    </Flex>
+    <Text size="2" style={{ maxWidth: 250 }} as="div">
+      <Strong>Typography</Strong> is the art and technique of arranging type to
+      make written language legible, readable and appealing when displayed. The
+      arrangement of type involves selecting typefaces, point sizes, line
+      lengths, line-spacing (leading), and letter-spacing (tracking)…
+    </Text>
   </HoverCard.Content>
 </HoverCard.Root>
 ```
@@ -49,3 +34,41 @@ Wraps the link that will open the hover card.
 ### Content
 
 Contains content to be rendered in the open hover card. This component is based on the `div` element.
+
+## Examples
+
+### With inset content
+
+Use the [Inset](/themes/docs/components/inset) component to align content flush with the sides of the hover card.
+
+```jsx live=true
+<HoverCard.Root>
+  <HoverCard.Trigger>
+    <Link href="#">Typography</Link>
+  </HoverCard.Trigger>
+  <HoverCard.Content>
+    <Flex>
+      <Text size="2" style={{ maxWidth: 250 }} as="div">
+        <Strong>Typography</Strong> is the art and technique of arranging type
+        to make written language legible, readable and appealing when displayed.
+        The arrangement of type involves selecting typefaces, point sizes, line
+        lengths, line-spacing (leading), and letter-spacing (tracking)…
+      </Text>
+
+      <Inset side="right" pl="current">
+        <img
+          src="https://images.unsplash.com/photo-1596299786007-9974099be52b?&auto=format&fit=crop&w=300&q=80"
+          alt="Bold typography"
+          style={{
+            display: 'block',
+            objectFit: 'cover',
+            height: '100%',
+            width: 150,
+            backgroundColor: 'var(--gray-5)',
+          }}
+        />
+      </Inset>
+    </Flex>
+  </HoverCard.Content>
+</HoverCard.Root>
+```

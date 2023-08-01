@@ -73,6 +73,7 @@ export const themesRoutes = [
       { title: 'Tooltip', slug: 'themes/docs/components/tooltip' },
       { title: 'Table', slug: 'themes/docs/components/table' },
       { title: 'Callout', slug: 'themes/docs/components/callout' },
+      { title: 'Inset', slug: 'themes/docs/components/inset' },
     ],
   },
 

@@ -42,3 +42,34 @@ Contains content to be rendered in the open popover. This component is based on 
 ### Close
 
 Wraps the control that will close the popover.
+
+## Examples
+
+### With inset content
+
+Use the [Inset](/themes/docs/components/inset) component to align content flush with the sides of the popover.
+
+```jsx live=true
+<Popover.Root>
+  <Popover.Trigger>
+    <Button variant="solid">View details</Button>
+  </Popover.Trigger>
+  <Popover.Content>
+    <Grid columns="1fr 1fr" style={{ width: 400 }}>
+      <div>
+        <Text as="p" size="3">
+          Jan Tschichold was a German calligrapher, typographer and book
+          designer. He played a significant role in the development of graphic
+          design in the 20th century.
+        </Text>
+      </div>
+      <Inset side="right" pl="current">
+        <img
+          src="https://images.unsplash.com/photo-1479030160180-b1860951d696?&auto=format&fit=crop&w=1200&q=80"
+          style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+        />
+      </Inset>
+    </Grid>
+  </Popover.Content>
+</Popover.Root>
+```

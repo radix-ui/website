@@ -4,37 +4,37 @@ metaDescription: A confirmation window displayed above the page contents.
 ---
 
 ```jsx live=true
-<AlertDialogRoot>
-  <AlertDialogTrigger>
-    <Button variant="solid">Open</Button>
-  </AlertDialogTrigger>
-  <AlertDialogContent style={{ maxWidth: 450 }}>
+<AlertDialog.Root>
+  <AlertDialog.Trigger>
+    <Button variant="solid">Revoke access</Button>
+  </AlertDialog.Trigger>
+  <AlertDialog.Content style={{ maxWidth: 450 }}>
+    <AlertDialog.Title>Revoke access</AlertDialog.Title>
     <Flex direction="column" gap="3">
-      <AlertDialogTitle>Revoke setup link</AlertDialogTitle>
-      <AlertDialogDescription size="2">
-        The setup link will no longer be accessible and any existing setup
-        sessions will be revoked.
-      </AlertDialogDescription>
+      <AlertDialog.Description size="2">
+        The application will no longer be accessible and any existing sessions
+        will be revoked.
+      </AlertDialog.Description>
       <Flex gap="3" mt="4" justify="end">
-        <AlertDialogCancel>
+        <AlertDialog.Cancel>
           <Button variant="soft" color="gray">
             Cancel
           </Button>
-        </AlertDialogCancel>
-        <AlertDialogAction>
+        </AlertDialog.Cancel>
+        <AlertDialog.Action>
           <Button variant="solid" color="red">
-            Revoke link
+            Revoke access
           </Button>
-        </AlertDialogAction>
+        </AlertDialog.Action>
       </Flex>
     </Flex>
-  </AlertDialogContent>
-</AlertDialogRoot>
+  </AlertDialog.Content>
+</AlertDialog.Root>
 ```
 
 ## API Reference
 
-This component inherits parts and props from the [Radix Alert Dialog](/primitives/docs/components/alert-dialog) primitive and is visually identical to [Dialog](./dialog), though with differing semantics and behavior. [View source](https://github.com/workos/workos/blob/main/packages/design-system/src/components/alert-dialog.tsx)
+This component inherits parts and props from the [Radix Alert Dialog](/primitives/docs/components/alert-dialog) primitive and is visually identical to [Dialog](/themes/docs/components/dialog), though with differing semantics and behavior. [View source](https://github.com/workos/workos/blob/main/packages/design-system/src/components/alert-dialog.tsx)
 
 ### Root
 
@@ -50,11 +50,11 @@ Contains content to be rendered in the open dialog. This component is based on t
 
 ### Title
 
-An accessible title that is announced when the dialog is opened. This part is based on the [Heading](./heading) component with a pre-defined font size and leading trim on top.
+An accessible title that is announced when the dialog is opened. This part is based on the [Heading](/themes/docs/components/heading) component with a pre-defined font size and leading trim on top.
 
 ### Description
 
-An optional accessible description that is announced when the dialog is opened. This part is based on the [Text](./text) component with a pre-defined font size.
+An optional accessible description that is announced when the dialog is opened. This part is based on the [Text](/themes/docs/components/text) component with a pre-defined font size.
 
 If you want to remove the description entirely, remove this part and pass `aria-describedby={undefined}` to `Dialog.Content`.
 
@@ -65,3 +65,62 @@ Wraps the control that will close the dialog. This should be distinguished visua
 ### Cancel
 
 Wraps the control that will close the dialog. This should be distinguished visually from the `Action` control.
+
+## Examples
+
+### With inset content
+
+Use the [Inset](/themes/docs/components/inset) component to align content flush with the sides of the dialog.
+
+```jsx live=true
+<AlertDialog.Root>
+  <AlertDialog.Trigger>
+    <Button variant="solid">Delete users</Button>
+  </AlertDialog.Trigger>
+  <AlertDialog.Content style={{ maxWidth: 500 }}>
+    <AlertDialog.Title>Delete Users</AlertDialog.Title>
+    <AlertDialog.Description>
+      Are you sure you want to delete these users? This action cannot be undone.
+    </AlertDialog.Description>
+
+    <Inset side="x" my="5">
+      <Table.Root>
+        <Table.Header>
+          <Table.Row>
+            <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
+          </Table.Row>
+        </Table.Header>
+
+        <TableBody>
+          <Table.Row>
+            <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+            <Table.Cell>danilo@example.com</Table.Cell>
+            <Table.Cell>Developer</Table.Cell>
+          </Table.Row>
+
+          <Table.Row>
+            <Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+            <Table.Cell>zahra@example.com</Table.Cell>
+            <Table.Cell>Admin</Table.Cell>
+          </Table.Row>
+        </TableBody>
+      </Table.Root>
+    </Inset>
+
+    <Flex gap="3" justify="end">
+      <AlertDialog.Cancel>
+        <Button variant="soft" color="gray">
+          Cancel
+        </Button>
+      </AlertDialog.Cancel>
+      <AlertDialog.Action>
+        <Button variant="solid" color="red">
+          Delete users
+        </Button>
+      </AlertDialog.Action>
+    </Flex>
+  </AlertDialog.Content>
+</AlertDialog.Root>
+```
