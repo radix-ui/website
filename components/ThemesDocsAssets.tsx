@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   Card,
+  Checkbox,
   Code,
   Flex,
   Grid,
@@ -12,13 +13,172 @@ import {
   Inset,
   Link,
   Slider,
-  Table,
+  Strong,
   Text,
+  TextArea,
+  TextField,
   Theme,
 } from '@radix-ui/themes';
 import { Label } from '@radix-ui/react-label';
 import NextLink from 'next/link';
 import { allPeople } from './people';
+import { CheckIcon, Cross2Icon, DotsHorizontalIcon } from '@radix-ui/react-icons';
+import { Marker } from './Marker';
+import * as React from 'react';
+
+export function ThemesVariantsExample() {
+  return (
+    <>
+      <Box my="5">
+        <Grid columns="2" gap="6" align="stretch">
+          <Theme
+            appearance="dark"
+            radius="large"
+            applyBackgroundColor={false}
+            className="radix-themes-example"
+            asChild
+            accentScale="teal"
+          >
+            <Card size="4">
+              <Flex align="center" justify="center" height="100%">
+                <Box>
+                  <Flex gap="3" direction="column" align="center">
+                    <Marker height="8" width="8">
+                      <CheckIcon width="32" height="32" />
+                    </Marker>
+
+                    <Box height="8">
+                      <Heading as="h3" size="6">
+                        Invoice paid
+                      </Heading>
+                    </Box>
+                  </Flex>
+
+                  <Text as="p" size="3" align="center" mb="5">
+                    You paid $17,975.30. A receipt copy was sent to <Strong>acc@example.com</Strong>
+                  </Text>
+
+                  <Flex direction="column" gap="3" align="stretch">
+                    <Button tabIndex={-1} radius="full">
+                      Next invoice
+                    </Button>
+
+                    <Button tabIndex={-1} radius="full" variant="outline">
+                      Done
+                    </Button>
+                  </Flex>
+                </Box>
+              </Flex>
+            </Card>
+          </Theme>
+
+          <Theme
+            appearance="light"
+            radius="medium"
+            applyBackgroundColor={false}
+            className="radix-themes-example"
+            accentScale="crimson"
+          >
+            <Card size="3">
+              <Box height="4" mb="5">
+                <Flex align="center" justify="between">
+                  <Heading as="h3" size="4" trim="both">
+                    Your profile
+                  </Heading>
+                </Flex>
+              </Box>
+
+              <Flex direction="column" gap="4">
+                <Flex asChild direction="column" gap="2">
+                  <Label>
+                    <Text size="2" weight="medium">
+                      Name
+                    </Text>
+                    <TextField.Input variant="surface" tabIndex={-1} defaultValue="Vlad Moroz" />
+                  </Label>
+                </Flex>
+
+                <Flex asChild direction="column" gap="2">
+                  <Label>
+                    <Text size="2" weight="medium">
+                      Username
+                    </Text>
+                    <TextField.Input variant="surface" tabIndex={-1} defaultValue="@vladmoroz" />
+                  </Label>
+                </Flex>
+
+                <Flex asChild direction="column" gap="2">
+                  <Label>
+                    <Text size="2" weight="medium">
+                      Email
+                    </Text>
+                    <TextField.Input
+                      variant="surface"
+                      tabIndex={-1}
+                      defaultValue="hi@vladmoroz.com"
+                    />
+                  </Label>
+                </Flex>
+
+                <Flex direction="column" gap="2">
+                  <Text size="2" weight="medium">
+                    Privacy
+                  </Text>
+                  <Flex direction="column" gap="2">
+                    <Flex asChild gap="2">
+                      <Label>
+                        <Checkbox variant="surface" tabIndex={-1} defaultChecked />
+                        <Text size="2">Display my listening history</Text>
+                      </Label>
+                    </Flex>
+
+                    <Flex asChild gap="2">
+                      <Label>
+                        <Checkbox variant="surface" tabIndex={-1} />
+                        <Text size="2">Everyone can follow my activity</Text>
+                      </Label>
+                    </Flex>
+
+                    <Flex asChild gap="2">
+                      <Label>
+                        <Checkbox variant="surface" tabIndex={-1} defaultChecked />
+                        <Text size="2">Show my playlists in search</Text>
+                      </Label>
+                    </Flex>
+                  </Flex>
+                </Flex>
+
+                <Flex direction="column" gap="2">
+                  <Text size="2" weight="medium">
+                    Danger zone
+                  </Text>
+                  <Flex align="start" direction="column" gap="2">
+                    <Link tabIndex={-1} size="2">
+                      Reset recommendations
+                    </Link>
+                    <Link tabIndex={-1} size="2">
+                      Delete profile
+                    </Link>
+                  </Flex>
+                </Flex>
+              </Flex>
+            </Card>
+          </Theme>
+        </Grid>
+      </Box>
+    </>
+  );
+}
+
+function email(name: string) {
+  return (
+    name
+      .toLocaleLowerCase()
+      .replace(' ', '.')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '') + '@example.com'
+  );
+}
 
 export function ThemesScalingExample() {
   const scaleValues = ['90%', '95%', '100%', '105%', '110%'] as const;
@@ -60,6 +220,62 @@ export function ThemesScalingExample() {
                       <Text as="div" size="2" color="gray">
                         Approved invoice <Link tabIndex={-1}>#3461</Link>
                       </Text>
+                    </Box>
+                  </Flex>
+                </Card>
+              </Theme>
+            </Box>
+          </Flex>
+        ))}
+      </Flex>
+    </Card>
+  );
+}
+
+export function ThemesRadiusExample() {
+  const radiusValues = ['none', 'medium', 'full'] as const;
+  return (
+    <Card size="2">
+      <Flex direction="column" my="-4">
+        {radiusValues.map((radius, i) => (
+          <Flex
+            key={radius}
+            style={{
+              borderBottom: i + 1 !== radiusValues.length ? '1px dashed var(--gray-7)' : undefined,
+            }}
+            align="center"
+            gap="4"
+          >
+            <Box style={{ minWidth: 70 }}>
+              <Code size="2" color="gray">
+                {radius}
+              </Code>
+            </Box>
+
+            <Box py="4" grow="1" asChild>
+              <Theme
+                applyBackgroundColor={false}
+                radius={radius}
+                style={{ minWidth: 370, maxWidth: 450 }}
+              >
+                <Card variant="surface" size="2">
+                  <Flex gap="3">
+                    <Avatar
+                      size="3"
+                      src={allPeople[4].image}
+                      fallback={allPeople[22]?.name[0].toUpperCase()}
+                    />
+                    <Box grow="1">
+                      <TextArea placeholder="Reply…" tabIndex={-1} />
+                      <Flex gap="3" mt="3" justify="between">
+                        <Flex asChild align="center" gap="2">
+                          <Label>
+                            <Checkbox checked tabIndex={-1} />
+                            <Text size="2">Send to group</Text>
+                          </Label>
+                        </Flex>
+                        <Button tabIndex={-1}>Send message</Button>
+                      </Flex>
                     </Box>
                   </Flex>
                 </Card>
@@ -599,39 +815,41 @@ export function ThemesDarkModeExample() {
 function AlbumCard() {
   return (
     <Card size={{ initial: '3', sm: '4' }}>
-      <Flex mb="4" justify="center" position="relative">
-        <img
-          width="100"
-          height="100"
-          src="https://workos.imgix.net/images/e35b46dc-4384-43d1-932c-24fa44e212cd.png?auto=format&fit=clip&q=80"
-          style={{
-            borderRadius: 'var(--radius-3)',
-            boxShadow: '0 8px 80px -24px hsl(205, 100%, 50%)',
-          }}
-        />
-      </Flex>
-
-      <Box style={{ marginTop: 'var(--space-6)' }}>
-        <Heading align="center" as="h3" size="4" style={{ marginBottom: 'var(--space-2)' }}>
-          King Krule – The OOZ
-        </Heading>
-
-        <Text
-          align="center"
-          as="p"
-          color="gray"
-          size="2"
-          style={{ marginBottom: 'var(--space-4)' }}
-        >
-          A dark and introspective album that showcases a distinctive blend of genres.
-        </Text>
-
-        <Flex justify="center" gap="3">
-          <Button tabIndex={-1}>Listen Now</Button>
-          <IconButton tabIndex={-1} variant="soft">
-            <HeartIcon />
-          </IconButton>
+      <Box py="4">
+        <Flex mb="4" justify="center" position="relative">
+          <img
+            width="100"
+            height="100"
+            src="https://workos.imgix.net/images/e35b46dc-4384-43d1-932c-24fa44e212cd.png?auto=format&fit=clip&q=80"
+            style={{
+              borderRadius: 'var(--radius-3)',
+              boxShadow: '0 8px 80px -24px hsl(205, 100%, 50%)',
+            }}
+          />
         </Flex>
+
+        <Box style={{ marginTop: 'var(--space-6)' }}>
+          <Heading align="center" as="h3" size="4" style={{ marginBottom: 'var(--space-2)' }}>
+            King Krule – The OOZ
+          </Heading>
+
+          <Text
+            align="center"
+            as="p"
+            color="gray"
+            size="2"
+            style={{ marginBottom: 'var(--space-4)' }}
+          >
+            A dark and introspective album that showcases a distinctive blend of genres.
+          </Text>
+
+          <Flex justify="center" gap="3">
+            <Button tabIndex={-1}>Listen Now</Button>
+            <IconButton tabIndex={-1} variant="soft">
+              <HeartIcon />
+            </IconButton>
+          </Flex>
+        </Box>
       </Box>
     </Card>
   );
