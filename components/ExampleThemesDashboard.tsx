@@ -58,194 +58,9 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
         style={{
           width: 640,
           // Space to align the vertically centered content with the dot grid
-          marginBottom: 15,
+          // marginBottom: 15,
         }}
       >
-        <Card size="4" style={{ height: 464 }}>
-          <Box height="7">
-            <Heading as="h3" size="6" mt="-1">
-              Pricing
-            </Heading>
-          </Box>
-
-          <Text as="p" size="2" mb="5" color="gray">
-            No credit card required. Every plan includes a 30-day trial of all Pro features.
-          </Text>
-
-          <Grid columns="3" gap="6">
-            <Flex direction="column">
-              <Text weight="bold" size="5" mb="1">
-                Basic
-              </Text>
-              <Text color="gray" size="2" mb="4">
-                3 team members
-              </Text>
-              <Text weight="bold" size="5" mb="4">
-                $0
-                <Text size="5" weight="bold" style={{ color: 'var(--gray-a8)' }}>
-                  {' / mo'}
-                </Text>
-              </Text>
-
-              <Flex direction="column" gap="2">
-                <Flex gap="2" align="center">
-                  <Marker>
-                    <CheckIcon width="14" height="14" />
-                  </Marker>
-                  <Text size="2">Expense tracking</Text>
-                </Flex>
-                <Flex gap="2" align="center">
-                  <Marker>
-                    <CheckIcon width="14" height="14" />
-                  </Marker>
-                  <Text size="2">Invoicing</Text>
-                </Flex>
-                <Flex gap="2" align="center">
-                  <Marker>
-                    <CheckIcon width="14" height="14" />
-                  </Marker>
-                  <Text size="2">Payment tracking</Text>
-                </Flex>
-                <Flex gap="2" align="center">
-                  <Marker>
-                    <CheckIcon width="14" height="14" />
-                  </Marker>
-                  <Text size="2">Transaction recording</Text>
-                </Flex>
-                <Flex gap="2" align="center">
-                  <Marker>
-                    <CheckIcon width="14" height="14" />
-                  </Marker>
-                  <Text size="2">Basic reports</Text>
-                </Flex>
-                <Flex gap="2" align="center">
-                  <Marker>
-                    <CheckIcon width="14" height="14" />
-                  </Marker>
-                  <Text size="2">Email support</Text>
-                </Flex>
-                <Button tabIndex={-1} mt="3" variant="outline">
-                  Downgrade
-                </Button>
-              </Flex>
-            </Flex>
-
-            <Flex direction="column">
-              <Text weight="bold" size="5" mb="1">
-                Growth
-              </Text>
-              <Text color="gray" size="2" mb="4">
-                10 team members
-              </Text>
-              <Text weight="bold" size="5" mb="4">
-                $49
-                <Text size="5" weight="bold" style={{ color: 'var(--gray-a8)' }}>
-                  {' / mo'}
-                </Text>
-              </Text>
-
-              <Flex direction="column" gap="2">
-                <Flex gap="2" align="center">
-                  <Marker>
-                    <CheckIcon width="14" height="14" />
-                  </Marker>
-                  <Text size="2">Online payments</Text>
-                </Flex>
-                <Flex gap="2" align="center">
-                  <Marker>
-                    <CheckIcon width="14" height="14" />
-                  </Marker>
-                  <Text size="2">Recurring invoices</Text>
-                </Flex>
-                <Flex gap="2" align="center">
-                  <Marker>
-                    <CheckIcon width="14" height="14" />
-                  </Marker>
-                  <Text size="2">Bill management</Text>
-                </Flex>
-                <Flex gap="2" align="center">
-                  <Marker>
-                    <CheckIcon width="14" height="14" />
-                  </Marker>
-                  <Text size="2">Inventory tracking</Text>
-                </Flex>
-                <Flex gap="2" align="center">
-                  <Marker>
-                    <CheckIcon width="14" height="14" />
-                  </Marker>
-                  <Text size="2">Detailed reports</Text>
-                </Flex>
-                <Flex gap="2" align="center">
-                  <Marker>
-                    <CheckIcon width="14" height="14" />
-                  </Marker>
-                  <Text size="2">Phone support</Text>
-                </Flex>
-                <Button tabIndex={-1} mt="3" variant="outline">
-                  Go to Billing
-                </Button>
-              </Flex>
-            </Flex>
-
-            <Flex direction="column">
-              <Text weight="bold" size="5" mb="1">
-                Pro
-              </Text>
-              <Text color="gray" size="2" mb="4">
-                Unlimited team members
-              </Text>
-              <Text weight="bold" size="5" mb="4">
-                $99
-                <Text size="5" weight="bold" style={{ color: 'var(--gray-a8)' }}>
-                  {' / mo'}
-                </Text>
-              </Text>
-
-              <Flex direction="column" gap="2">
-                <Flex gap="2" align="center">
-                  <Marker>
-                    <CheckIcon width="14" height="14" />
-                  </Marker>
-                  <Text size="2">Custom invoices</Text>
-                </Flex>
-                <Flex gap="2" align="center">
-                  <Marker>
-                    <CheckIcon width="14" height="14" />
-                  </Marker>
-                  <Text size="2">Multi-business</Text>
-                </Flex>
-                <Flex gap="2" align="center">
-                  <Marker>
-                    <CheckIcon width="14" height="14" />
-                  </Marker>
-                  <Text size="2">Team collaboration</Text>
-                </Flex>
-                <Flex gap="2" align="center">
-                  <Marker>
-                    <CheckIcon width="14" height="14" />
-                  </Marker>
-                  <Text size="2">App integrations</Text>
-                </Flex>
-                <Flex gap="2" align="center">
-                  <Marker>
-                    <CheckIcon width="14" height="14" />
-                  </Marker>
-                  <Text size="2">Advanced security</Text>
-                </Flex>
-                <Flex gap="2" align="center">
-                  <Marker>
-                    <CheckIcon width="14" height="14" />
-                  </Marker>
-                  <Text size="2">Priority support</Text>
-                </Flex>
-                <Button tabIndex={-1} mt="3">
-                  Upgrade
-                </Button>
-              </Flex>
-            </Flex>
-          </Grid>
-        </Card>
-
         <Card size="4">
           <Box height="7">
             <Heading as="h3" size="6" mt="-1">
@@ -443,6 +258,191 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
             </Flex>
           </Flex>
         </Card>
+
+        <Card size="4" style={{ height: 464 }}>
+          <Box height="7">
+            <Heading as="h3" size="6" mt="-1">
+              Pricing
+            </Heading>
+          </Box>
+
+          <Text as="p" size="2" mb="5" color="gray">
+            No credit card required. Every plan includes a 30-day trial of all Pro features.
+          </Text>
+
+          <Grid columns="3" gap="6">
+            <Flex direction="column">
+              <Text weight="bold" size="5" mb="1">
+                Basic
+              </Text>
+              <Text color="gray" size="2" mb="4">
+                3 team members
+              </Text>
+              <Text weight="bold" size="5" mb="4">
+                $0
+                <Text size="5" weight="bold" style={{ color: 'var(--gray-a8)' }}>
+                  {' / mo'}
+                </Text>
+              </Text>
+
+              <Flex direction="column" gap="2">
+                <Flex gap="2" align="center">
+                  <Marker>
+                    <CheckIcon width="14" height="14" />
+                  </Marker>
+                  <Text size="2">Expense tracking</Text>
+                </Flex>
+                <Flex gap="2" align="center">
+                  <Marker>
+                    <CheckIcon width="14" height="14" />
+                  </Marker>
+                  <Text size="2">Invoicing</Text>
+                </Flex>
+                <Flex gap="2" align="center">
+                  <Marker>
+                    <CheckIcon width="14" height="14" />
+                  </Marker>
+                  <Text size="2">Payment tracking</Text>
+                </Flex>
+                <Flex gap="2" align="center">
+                  <Marker>
+                    <CheckIcon width="14" height="14" />
+                  </Marker>
+                  <Text size="2">Transaction recording</Text>
+                </Flex>
+                <Flex gap="2" align="center">
+                  <Marker>
+                    <CheckIcon width="14" height="14" />
+                  </Marker>
+                  <Text size="2">Basic reports</Text>
+                </Flex>
+                <Flex gap="2" align="center">
+                  <Marker>
+                    <CheckIcon width="14" height="14" />
+                  </Marker>
+                  <Text size="2">Email support</Text>
+                </Flex>
+                <Button tabIndex={-1} mt="3" variant="outline">
+                  Downgrade
+                </Button>
+              </Flex>
+            </Flex>
+
+            <Flex direction="column">
+              <Text weight="bold" size="5" mb="1">
+                Growth
+              </Text>
+              <Text color="gray" size="2" mb="4">
+                10 team members
+              </Text>
+              <Text weight="bold" size="5" mb="4">
+                $49
+                <Text size="5" weight="bold" style={{ color: 'var(--gray-a8)' }}>
+                  {' / mo'}
+                </Text>
+              </Text>
+
+              <Flex direction="column" gap="2">
+                <Flex gap="2" align="center">
+                  <Marker>
+                    <CheckIcon width="14" height="14" />
+                  </Marker>
+                  <Text size="2">Online payments</Text>
+                </Flex>
+                <Flex gap="2" align="center">
+                  <Marker>
+                    <CheckIcon width="14" height="14" />
+                  </Marker>
+                  <Text size="2">Recurring invoices</Text>
+                </Flex>
+                <Flex gap="2" align="center">
+                  <Marker>
+                    <CheckIcon width="14" height="14" />
+                  </Marker>
+                  <Text size="2">Bill management</Text>
+                </Flex>
+                <Flex gap="2" align="center">
+                  <Marker>
+                    <CheckIcon width="14" height="14" />
+                  </Marker>
+                  <Text size="2">Inventory tracking</Text>
+                </Flex>
+                <Flex gap="2" align="center">
+                  <Marker>
+                    <CheckIcon width="14" height="14" />
+                  </Marker>
+                  <Text size="2">Detailed reports</Text>
+                </Flex>
+                <Flex gap="2" align="center">
+                  <Marker>
+                    <CheckIcon width="14" height="14" />
+                  </Marker>
+                  <Text size="2">Phone support</Text>
+                </Flex>
+                <Button tabIndex={-1} mt="3" variant="outline">
+                  Go to Billing
+                </Button>
+              </Flex>
+            </Flex>
+
+            <Flex direction="column">
+              <Text weight="bold" size="5" mb="1">
+                Pro
+              </Text>
+              <Text color="gray" size="2" mb="4">
+                Unlimited team members
+              </Text>
+              <Text weight="bold" size="5" mb="4">
+                $99
+                <Text size="5" weight="bold" style={{ color: 'var(--gray-a8)' }}>
+                  {' / mo'}
+                </Text>
+              </Text>
+
+              <Flex direction="column" gap="2">
+                <Flex gap="2" align="center">
+                  <Marker>
+                    <CheckIcon width="14" height="14" />
+                  </Marker>
+                  <Text size="2">Custom invoices</Text>
+                </Flex>
+                <Flex gap="2" align="center">
+                  <Marker>
+                    <CheckIcon width="14" height="14" />
+                  </Marker>
+                  <Text size="2">Multi-business</Text>
+                </Flex>
+                <Flex gap="2" align="center">
+                  <Marker>
+                    <CheckIcon width="14" height="14" />
+                  </Marker>
+                  <Text size="2">Team collaboration</Text>
+                </Flex>
+                <Flex gap="2" align="center">
+                  <Marker>
+                    <CheckIcon width="14" height="14" />
+                  </Marker>
+                  <Text size="2">App integrations</Text>
+                </Flex>
+                <Flex gap="2" align="center">
+                  <Marker>
+                    <CheckIcon width="14" height="14" />
+                  </Marker>
+                  <Text size="2">Advanced security</Text>
+                </Flex>
+                <Flex gap="2" align="center">
+                  <Marker>
+                    <CheckIcon width="14" height="14" />
+                  </Marker>
+                  <Text size="2">Priority support</Text>
+                </Flex>
+                <Button tabIndex={-1} mt="3">
+                  Upgrade
+                </Button>
+              </Flex>
+            </Flex>
+          </Grid>
+        </Card>
       </Flex>
 
       <Flex
@@ -453,7 +453,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
           scrollSnapAlign: 'center',
           width: 416,
           // Space to align the vertically centered content with the dot grid
-          marginBottom: 15,
+          // marginBottom: 15,
         }}
       >
         <Card size="4" style={{ height: 320 }}>
@@ -700,7 +700,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
         style={{
           width: 640,
           // Space to align the vertically centered content with the dot grid
-          marginBottom: -13,
+          // marginBottom: -13,
         }}
       >
         <Card size="4">

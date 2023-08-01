@@ -11,35 +11,31 @@
   background-color: var(--background);
   color: var(--color-text);
   box-shadow: inset 0 0 0 1px var(--border);
+
+  --line-numbers: var(--gray-6);
+  --faded-lines: var(--gray-a8);
+  --removed: var(--red-11);
+  --added: var(--green-11);
+  --highlighted-line-bg: var(--accent-a3);
+  --highlighted-word-1-bg: var(--accent-a3);
+  --highlighted-word-1-bg-active: var(--accent-6);
+  --highlighted-word-1-text: var(--accent-11);
+  --highlighted-word-2-bg: var(--red-3);
+  --highlighted-word-2-bg-active: var(--red-5);
+  --highlighted-word-2-text: var(--red-11);
+  --highlighted-word-3-bg: var(--green-3);
+  --highlighted-word-3-bg-active: var(--green-5);
+  --highlighted-word-3-text: var(--green-11);
 }
 
 .Pre.violet {
   --background: var(--accent-a2);
   --border: var(--accent-4);
-  --faded-lines: var(--gray-a8);
-  --comment: var(--gray-a9);
-  --removed: var(--red-11);
-  --added: var(--green-11);
-  --line-numbers: var(--indigo-5);
 
   --syntax-accent: var(--violet-10);
   --syntax-accent-subtle: var(--violet-12);
   --syntax-complementary: var(--mint-11);
   --syntax-secondary: var(--sky-11);
-
-  --highlighted-line-bg: var(--accent-3);
-
-  --highlighted-word-1-bg: var(--accent-a3);
-  --highlighted-word-1-bg-active: var(--accent-6);
-  --highlighted-word-1-text: var(--accent-11);
-
-  --highlighted-word-2-bg: var(--red-3);
-  --highlighted-word-2-bg-active: var(--red-5);
-  --highlighted-word-2-text: var(--red-11);
-
-  --highlighted-word-3-bg: var(--green-3);
-  --highlighted-word-3-bg-active: var(--green-5);
-  --highlighted-word-3-text: var(--green-11);
 }
 
 :global(.dark-theme) .Pre.violet {
@@ -49,87 +45,42 @@
 .Pre.pink {
   --background: var(--color-surface-2);
   --border: var(--gray-a4);
-  --faded-lines: var(--gray-a8);
-  --removed: var(--red-11);
-  --added: var(--green-11);
-  --line-numbers: var(--indigo-5);
 
   --syntax-accent: var(--blue-11);
   --syntax-accent-subtle: var(--blue-12);
   --syntax-complementary: var(--pink-11);
   --syntax-secondary: var(--blue-12);
+}
 
-  --highlighted-line-bg: var(--accent-3);
+.Pre.red {
+  --background: var(--color-surface-2);
+  --border: var(--gray-a4);
 
-  --highlighted-word-1-bg: var(--accent-4);
-  --highlighted-word-1-bg-active: var(--accent-6);
-  --highlighted-word-1-text: var(--accent-11);
-
-  --highlighted-word-2-bg: var(--red-3);
-  --highlighted-word-2-bg-active: var(--red-5);
-  --highlighted-word-2-text: var(--red-11);
-
-  --highlighted-word-3-bg: var(--green-3);
-  --highlighted-word-3-bg-active: var(--green-5);
-  --highlighted-word-3-text: var(--green-11);
+  --syntax-accent: var(--red-11);
+  --syntax-accent-subtle: var(--indigo-12);
+  --syntax-complementary: var(--crimson-11);
+  --syntax-secondary: var(--violet-11);
 }
 
 .Pre.teal {
   --background: var(--color-surface-2);
   --border: var(--gray-a4);
-  --faded-lines: var(--gray-a8);
-  --removed: var(--red-11);
-  --added: var(--green-11);
-  --line-numbers: var(--indigo-5);
 
   --syntax-accent: var(--teal-11);
   --syntax-accent-subtle: var(--teal-12);
   --syntax-complementary: var(--crimson-11);
   --syntax-secondary: var(--indigo-11);
-
-  --highlighted-line-bg: var(--accent-3);
-
-  --highlighted-word-1-bg: var(--accent-4);
-  --highlighted-word-1-bg-active: var(--accent-6);
-  --highlighted-word-1-text: var(--accent-11);
-
-  --highlighted-word-2-bg: var(--red-3);
-  --highlighted-word-2-bg-active: var(--red-5);
-  --highlighted-word-2-text: var(--red-11);
-
-  --highlighted-word-3-bg: var(--green-3);
-  --highlighted-word-3-bg-active: var(--green-5);
-  --highlighted-word-3-text: var(--green-11);
 }
 
 .Pre.indigo {
   --background: var(--accent-a2);
-  --text: var(--color-text);
-
   --border: var(--accent-4);
-  --faded-lines: var(--gray-a8);
-  --removed: var(--red-11);
-  --added: var(--green-11);
-  --line-numbers: var(--indigo-5);
+  --text: var(--color-text);
 
   --syntax-accent: var(--indigo-11);
   --syntax-accent-subtle: var(--indigo-12);
   --syntax-complementary: var(--crimson-11);
   --syntax-secondary: var(--violet-11);
-
-  --highlighted-line-bg: var(--accent-a3);
-
-  --highlighted-word-1-bg: var(--accent-a3);
-  --highlighted-word-1-bg-active: var(--accent-6);
-  --highlighted-word-1-text: var(--accent-11);
-
-  --highlighted-word-2-bg: var(--red-3);
-  --highlighted-word-2-bg-active: var(--red-5);
-  --highlighted-word-2-text: var(--red-11);
-
-  --highlighted-word-3-bg: var(--green-3);
-  --highlighted-word-3-bg-active: var(--green-5);
-  --highlighted-word-3-text: var(--green-11);
 }
 
 .Pre > code {

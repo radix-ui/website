@@ -1,0 +1,222 @@
+.ThemesHeroLayoutRoot {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  min-height: 100vh;
+
+  /* Prevent elements with `position: absolute` from adding scrollbars */
+  overflow: hidden;
+
+  /* Scaling multiplier for the demo area */
+  --themes-hero-showcase-scale: calc(10 / 16);
+  --themes-hero-showcase-base-width: 1760px;
+}
+
+@media (min-width: 500px) {
+  .ThemesHeroLayoutRoot {
+    --themes-hero-showcase-scale: calc(11 / 16);
+  }
+}
+
+@media (min-width: 500px) {
+  .ThemesHeroLayoutRoot {
+    --themes-hero-showcase-scale: calc(12 / 16);
+  }
+}
+
+@media (min-width: 600px) {
+  .ThemesHeroLayoutRoot {
+    --themes-hero-showcase-scale: calc(13 / 16);
+  }
+}
+
+@media (min-width: 700px) {
+  .ThemesHeroLayoutRoot {
+    --themes-hero-showcase-scale: calc(14 / 16);
+  }
+}
+
+@media (min-width: 800px) {
+  .ThemesHeroLayoutRoot {
+    --themes-hero-showcase-scale: 1;
+  }
+}
+
+@media (min-width: 1000px) {
+  .ThemesHeroLayoutRoot {
+    --themes-hero-showcase-scale: calc(12 / 16);
+  }
+}
+
+@media (min-width: 1400px) {
+  .ThemesHeroLayoutRoot {
+    --themes-hero-showcase-scale: calc(12 / 16);
+  }
+}
+
+@media (min-width: 1600px) {
+  .ThemesHeroLayoutRoot {
+    --themes-hero-showcase-scale: calc(13 / 16);
+  }
+}
+
+@media (min-width: 1900px) and (min-height: 800px) {
+  .ThemesHeroLayoutRoot {
+    --themes-hero-showcase-scale: calc(14 / 16);
+  }
+}
+
+@media (min-width: 2200px) and (min-height: 800px) {
+  .ThemesHeroLayoutRoot {
+    --themes-hero-showcase-scale: calc(14 / 16);
+  }
+}
+
+@media (min-width: 2400px) and (min-height: 800px) {
+  .ThemesHeroLayoutRoot {
+    --themes-hero-showcase-scale: calc(15 / 16);
+  }
+}
+
+@media (min-width: 2700px) and (min-height: 800px) {
+  .ThemesHeroLayoutRoot {
+    --themes-hero-showcase-scale: 1;
+  }
+}
+
+@media (min-width: 3000px) and (min-height: 1000px) {
+  .ThemesHeroLayoutRoot {
+    --themes-hero-showcase-scale: calc(18 / 16);
+  }
+}
+
+.ThemesHeroLayoutContent {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.ThemesHeroLayoutBackground {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.ThemesHeroLayoutMain {
+  position: relative;
+  box-sizing: content-box;
+  margin-top: 80px;
+}
+
+.ThemesHeroLayoutShowcase {
+  position: relative;
+}
+
+.ThemesHeroLayoutShowcaseInnerScaled {
+  transform: scale(var(--themes-hero-showcase-scale));
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*            Before 1000px            */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+@media (max-width: 999.99px) {
+  .ThemesHeroLayoutContent {
+    flex-direction: column;
+  }
+
+  .ThemesHeroLayoutMain {
+    padding: 4vw;
+  }
+
+  .ThemesHeroLayoutShowcase {
+    position: relative;
+    --themes-hero-showcase-padding: 48px;
+  }
+
+  .ThemesHeroLayoutShowcase::-webkit-scrollbar {
+    display: none;
+    width: 0;
+  }
+
+  .ThemesHeroLayoutShowcaseInner {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+    height: calc(
+      (1550px + var(--themes-hero-showcase-padding) * 2) * var(--themes-hero-showcase-scale)
+    );
+  }
+
+  .ThemesHeroLayoutShowcaseInnerScaled {
+    display: table;
+    padding: var(--themes-hero-showcase-padding);
+    transform-origin: top left;
+  }
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*            After 1000px             */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+@media (min-width: 1000px) {
+  .ThemesHeroLayoutContent {
+    align-items: stretch;
+  }
+
+  .ThemesHeroLayoutMain {
+    flex-shrink: 0;
+    width: 560px;
+
+    /* Push self away from the left edge when there's space */
+    margin-left: auto;
+
+    padding-left: calc(var(--space-9) + 1vw);
+    padding-right: calc(var(--space-9) + 1vw);
+    margin-bottom: var(--space-9);
+  }
+
+  .ThemesHeroLayoutMain {
+    display: flex;
+  }
+
+  .ThemesHeroLayoutShowcase {
+    /* Set static width as actual content is positioned absolutely */
+    width: calc(var(--themes-hero-showcase-base-width) * var(--themes-hero-showcase-scale));
+
+    /* Push self away from the right edge when there's space */
+    margin-right: auto;
+    margin-top: 80px;
+  }
+
+  .ThemesHeroLayoutShowcaseInner {
+    /* overflow: hidden; */
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .ThemesHeroLayoutShowcaseInnerScaled {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-start;
+    transform-origin: top left;
+  }
+}
+
+@media (min-width: 1000px) and (min-height: 700px) {
+  .ThemesHeroLayoutMain {
+    align-items: center;
+
+    /* Visually center the hero */
+    margin-bottom: calc(2vh + 80px);
+  }
+}

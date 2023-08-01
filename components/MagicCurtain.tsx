@@ -67,7 +67,11 @@ const MagicCurtainItem = ({
   defaultVisibility = 'hidden',
   children,
   ...props
-}: React.ComponentPropsWithoutRef<'div'> & { defaultVisibility?: Visibility }) => {
+}: React.ComponentPropsWithoutRef<'div'> & {
+  defaultVisibility?: Visibility;
+  'data-animation-play-state'?: 'running' | 'paused';
+  'data-animation-direction'?: 'normal' | 'reverse';
+}) => {
   const context = useMagicCurtainContext('MagicCurtain');
   const ref = React.useRef<HTMLDivElement>(null);
   const [visibility, setVisibility] = React.useState<Visibility>(defaultVisibility);

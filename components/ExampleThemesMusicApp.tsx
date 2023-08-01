@@ -41,7 +41,17 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
     </Head>
 
     <Flex align="center" gap="6" {...props}>
-      <Flex shrink="0" gap="6" direction="column" style={{ width: 416, marginBottom: 47 }}>
+      <Flex
+        shrink="0"
+        gap="6"
+        direction="column"
+        style={{
+          width: 416,
+
+          // Space to align the vertically centered content with the dot grid
+          // marginBottom: 47
+        }}
+      >
         <Card size="3">
           <Box height="4" mb="4">
             <Flex align="center" justify="between">
@@ -343,7 +353,16 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
         </Card>
       </Flex>
 
-      <Flex shrink="0" gap="6" direction="column" style={{ width: 1312, marginBottom: -17 }}>
+      <Flex
+        shrink="0"
+        gap="6"
+        direction="column"
+        style={{
+          width: 1312,
+          // Space to align the vertically centered content with the dot grid
+          // marginBottom: -17
+        }}
+      >
         <Card size="4" style={{ height: 896 }}>
           <Flex
             position="absolute"
@@ -1088,7 +1107,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
 
                 <Text align="center" as="p" color="gray" size="2" mb="4">
                   A dark and introspective album that showcases King Krule’s distinctive blend of
-                  genres, and delivering hauntingly raw and poetic lyrics.
+                  genres, while delivering hauntingly raw and poetic lyrics.
                 </Text>
 
                 <Flex justify="center" gap="3">
