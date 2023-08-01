@@ -450,7 +450,6 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
         gap="6"
         direction="column"
         style={{
-          scrollSnapAlign: 'center',
           width: 416,
           // Space to align the vertically centered content with the dot grid
           // marginBottom: 15,
@@ -523,12 +522,15 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
               <Flex
                 direction="column"
                 justify="between"
-                style={{
-                  height: 168,
-                  background: 'linear-gradient(to top right, var(--accent-9), #E18BFF)',
-                  boxShadow: '0 1px 20px -5px #7971E9AA',
-                  borderRadius: 'var(--radius-3)',
-                }}
+                style={
+                  {
+                    height: 168,
+                    background: 'linear-gradient(to top right, var(--accent-9), #E18BFF)',
+                    boxShadow: '0 1px 20px -5px #7971E9AA',
+                    borderRadius: 'var(--radius-3)',
+                    '--gray-12': 'white',
+                  } as React.CSSProperties
+                }
               >
                 <Text weight="medium" mt="3" mx="3" size="2">
                   Sophie Johnson
@@ -706,27 +708,178 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
         <Card size="4">
           <Box height="7">
             <Heading as="h3" size="6" mt="-1">
-              To-do
+              Financial performance
             </Heading>
           </Box>
 
-          <Flex gap="3" position="absolute" top="0" right="0" m="3">
-            <IconButton tabIndex={-1} variant="ghost" color="gray" highContrast>
-              <Share2Icon width="20" height="20" />
+          <Flex position="absolute" top="0" right="0" m="3">
+            <IconButton
+              tabIndex={-1}
+              variant="ghost"
+              color="gray"
+              highContrast
+              style={{ margin: 0 }}
+            >
+              <OpenInNewWindowIcon width="20" height="20" />
             </IconButton>
-            <IconButton tabIndex={-1} variant="ghost" color="gray" highContrast>
-              <PlusIcon width="20" height="20" />
+
+            <IconButton
+              tabIndex={-1}
+              variant={state.financePinned ? 'soft' : 'ghost'}
+              color="gray"
+              highContrast
+              style={{ margin: 0 }}
+              onClick={() =>
+                setState((state) => ({ ...state, financePinned: !state.financePinned }))
+              }
+            >
+              {state.financePinned ? (
+                <DrawingPinFilledIcon width="20" height="20" />
+              ) : (
+                <DrawingPinIcon width="20" height="20" />
+              )}
             </IconButton>
           </Flex>
 
-          <Text as="p" size="2" mb="5" color="gray">
-            Stay on top of your daily tasks.
+          <Text as="p" size="2" mb="6" color="gray">
+            Review your company’s KPIs compared to the month before.
           </Text>
 
-          <ToDoList
-            items={state.todo}
-            onItemsChange={(items) => setState({ ...state, todo: items })}
-          />
+          <Grid columns="3" gap="5">
+            <Box>
+              <Flex gap="2" mb="2" align="center">
+                <Text size="2" color="gray">
+                  MRR
+                </Text>
+                <Badge color="teal" radius="full">
+                  <ArrowUpIcon width="12" height="12" style={{ marginLeft: -2 }} />
+                  3.2%
+                </Badge>
+              </Flex>
+              <Text as="div" mb="2" size="8" weight="bold">
+                $350K
+              </Text>
+            </Box>
+
+            <Box>
+              <Flex gap="2" mb="2" align="center">
+                <Text size="2" color="gray">
+                  OpEx
+                </Text>
+                <Badge color="red" radius="full">
+                  <ArrowUpIcon width="12" height="12" style={{ marginLeft: -2 }} />
+                  12.8%
+                </Badge>
+              </Flex>
+              <Text as="div" mb="2" size="8" weight="bold">
+                $211K
+              </Text>
+            </Box>
+
+            <Box>
+              <Flex gap="2" mb="2" align="center">
+                <Text size="2" color="gray">
+                  CapEx
+                </Text>
+                <Badge color="teal" radius="full">
+                  <ArrowDownIcon width="12" height="12" style={{ marginLeft: -2 }} />
+                  8.8%
+                </Badge>
+              </Flex>
+              <Text as="div" mb="2" size="8" weight="bold">
+                $94K
+              </Text>
+            </Box>
+
+            <Box>
+              <Flex gap="2" mb="2" align="center">
+                <Text size="2" color="gray">
+                  GPM
+                </Text>
+                <Badge color="red" radius="full">
+                  <ArrowDownIcon width="12" height="12" style={{ marginLeft: -2 }} />
+                  1.2%
+                </Badge>
+              </Flex>
+              <Text as="div" mb="2" size="8" weight="bold">
+                44.6%
+              </Text>
+            </Box>
+
+            <Box>
+              <Flex gap="2" mb="2" align="center">
+                <Text size="2" color="gray">
+                  NPM
+                </Text>
+                <Badge color="gray" variant="surface" radius="full">
+                  0.0%
+                </Badge>
+              </Flex>
+              <Text as="div" mb="2" size="8" weight="bold">
+                9.1%
+              </Text>
+            </Box>
+
+            <Box>
+              <Flex gap="2" mb="2" align="center">
+                <Text size="2" color="gray">
+                  EBITDA
+                </Text>
+                <Badge color="teal" radius="full">
+                  <ArrowUpIcon width="12" height="12" style={{ marginLeft: -2 }} />
+                  4.1%
+                </Badge>
+              </Flex>
+              <Text as="div" mb="2" size="8" weight="bold">
+                $443K
+              </Text>
+            </Box>
+
+            <Box>
+              <Flex gap="2" mb="2" align="center">
+                <Text size="2" color="gray">
+                  CAC
+                </Text>
+                <Badge color="teal" radius="full">
+                  <ArrowDownIcon width="12" height="12" style={{ marginLeft: -2 }} />
+                  11.0%
+                </Badge>
+              </Flex>
+              <Text as="div" mb="2" size="8" weight="bold">
+                $146
+              </Text>
+            </Box>
+
+            <Box>
+              <Flex gap="2" mb="2" align="center">
+                <Text size="2" color="gray">
+                  LTV
+                </Text>
+                <Badge color="teal" radius="full">
+                  <ArrowUpIcon width="12" height="12" style={{ marginLeft: -2 }} />
+                  3%
+                </Badge>
+              </Flex>
+              <Text as="div" mb="2" size="8" weight="bold">
+                $1,849
+              </Text>
+            </Box>
+
+            <Box>
+              <Flex gap="2" mb="2" align="center">
+                <Text size="2" color="gray">
+                  Churn
+                </Text>
+                <Badge color="red" radius="full">
+                  <ArrowUpIcon width="12" height="12" style={{ marginLeft: -2 }} />
+                  1.1%
+                </Badge>
+              </Flex>
+              <Text as="div" mb="2" size="8" weight="bold">
+                12.4%
+              </Text>
+            </Box>
+          </Grid>
         </Card>
 
         <Card size="4">
@@ -996,178 +1149,27 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
         <Card size="4">
           <Box height="7">
             <Heading as="h3" size="6" mt="-1">
-              Financial performance
+              To-do
             </Heading>
           </Box>
 
-          <Flex position="absolute" top="0" right="0" m="3">
-            <IconButton
-              tabIndex={-1}
-              variant="ghost"
-              color="gray"
-              highContrast
-              style={{ margin: 0 }}
-            >
-              <OpenInNewWindowIcon width="20" height="20" />
+          <Flex gap="3" position="absolute" top="0" right="0" m="3">
+            <IconButton tabIndex={-1} variant="ghost" color="gray" highContrast>
+              <Share2Icon width="20" height="20" />
             </IconButton>
-
-            <IconButton
-              tabIndex={-1}
-              variant={state.financePinned ? 'soft' : 'ghost'}
-              color="gray"
-              highContrast
-              style={{ margin: 0 }}
-              onClick={() =>
-                setState((state) => ({ ...state, financePinned: !state.financePinned }))
-              }
-            >
-              {state.financePinned ? (
-                <DrawingPinFilledIcon width="20" height="20" />
-              ) : (
-                <DrawingPinIcon width="20" height="20" />
-              )}
+            <IconButton tabIndex={-1} variant="ghost" color="gray" highContrast>
+              <PlusIcon width="20" height="20" />
             </IconButton>
           </Flex>
 
-          <Text as="p" size="2" mb="6" color="gray">
-            Review your company’s KPIs compared to the month before.
+          <Text as="p" size="2" mb="5" color="gray">
+            Stay on top of your daily tasks.
           </Text>
 
-          <Grid columns="3" gap="5">
-            <Box>
-              <Flex gap="2" mb="2" align="center">
-                <Text size="2" color="gray">
-                  MRR
-                </Text>
-                <Badge color="teal" radius="full">
-                  <ArrowUpIcon width="12" height="12" style={{ marginLeft: -2 }} />
-                  3.2%
-                </Badge>
-              </Flex>
-              <Text as="div" mb="2" size="8" weight="bold">
-                $350K
-              </Text>
-            </Box>
-
-            <Box>
-              <Flex gap="2" mb="2" align="center">
-                <Text size="2" color="gray">
-                  OpEx
-                </Text>
-                <Badge color="red" radius="full">
-                  <ArrowUpIcon width="12" height="12" style={{ marginLeft: -2 }} />
-                  12.8%
-                </Badge>
-              </Flex>
-              <Text as="div" mb="2" size="8" weight="bold">
-                $211K
-              </Text>
-            </Box>
-
-            <Box>
-              <Flex gap="2" mb="2" align="center">
-                <Text size="2" color="gray">
-                  CapEx
-                </Text>
-                <Badge color="teal" radius="full">
-                  <ArrowDownIcon width="12" height="12" style={{ marginLeft: -2 }} />
-                  8.8%
-                </Badge>
-              </Flex>
-              <Text as="div" mb="2" size="8" weight="bold">
-                $94K
-              </Text>
-            </Box>
-
-            <Box>
-              <Flex gap="2" mb="2" align="center">
-                <Text size="2" color="gray">
-                  GPM
-                </Text>
-                <Badge color="red" radius="full">
-                  <ArrowDownIcon width="12" height="12" style={{ marginLeft: -2 }} />
-                  1.2%
-                </Badge>
-              </Flex>
-              <Text as="div" mb="2" size="8" weight="bold">
-                44.6%
-              </Text>
-            </Box>
-
-            <Box>
-              <Flex gap="2" mb="2" align="center">
-                <Text size="2" color="gray">
-                  NPM
-                </Text>
-                <Badge color="gray" variant="surface" radius="full">
-                  0.0%
-                </Badge>
-              </Flex>
-              <Text as="div" mb="2" size="8" weight="bold">
-                9.1%
-              </Text>
-            </Box>
-
-            <Box>
-              <Flex gap="2" mb="2" align="center">
-                <Text size="2" color="gray">
-                  EBITDA
-                </Text>
-                <Badge color="teal" radius="full">
-                  <ArrowUpIcon width="12" height="12" style={{ marginLeft: -2 }} />
-                  4.1%
-                </Badge>
-              </Flex>
-              <Text as="div" mb="2" size="8" weight="bold">
-                $443K
-              </Text>
-            </Box>
-
-            <Box>
-              <Flex gap="2" mb="2" align="center">
-                <Text size="2" color="gray">
-                  CAC
-                </Text>
-                <Badge color="teal" radius="full">
-                  <ArrowDownIcon width="12" height="12" style={{ marginLeft: -2 }} />
-                  11.0%
-                </Badge>
-              </Flex>
-              <Text as="div" mb="2" size="8" weight="bold">
-                $146
-              </Text>
-            </Box>
-
-            <Box>
-              <Flex gap="2" mb="2" align="center">
-                <Text size="2" color="gray">
-                  LTV
-                </Text>
-                <Badge color="teal" radius="full">
-                  <ArrowUpIcon width="12" height="12" style={{ marginLeft: -2 }} />
-                  3%
-                </Badge>
-              </Flex>
-              <Text as="div" mb="2" size="8" weight="bold">
-                $1,849
-              </Text>
-            </Box>
-
-            <Box>
-              <Flex gap="2" mb="2" align="center">
-                <Text size="2" color="gray">
-                  Churn
-                </Text>
-                <Badge color="red" radius="full">
-                  <ArrowUpIcon width="12" height="12" style={{ marginLeft: -2 }} />
-                  1.1%
-                </Badge>
-              </Flex>
-              <Text as="div" mb="2" size="8" weight="bold">
-                12.4%
-              </Text>
-            </Box>
-          </Grid>
+          <ToDoList
+            items={state.todo}
+            onItemsChange={(items) => setState({ ...state, todo: items })}
+          />
         </Card>
       </Flex>
     </Flex>

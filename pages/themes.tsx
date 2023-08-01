@@ -1,6 +1,7 @@
 import { Box, Flex, ScrollArea, Theme, Text, Button } from '@radix-ui/themes';
 import '@radix-ui/themes/dist/index.css';
 import * as React from 'react';
+import NextLink from 'next/link';
 import Head from 'next/head';
 import { ThemesHeader } from '@components/ThemesHeader';
 import { ThemesHero } from '@components/ThemesHero';
@@ -17,14 +18,6 @@ import { SerifHeading } from '@components/SerifHeading';
 import { CodeBlock } from '@components/CodeBlock';
 import { SyntaxSchemeProvider } from '@components/Pre';
 import { ThemesHeroLayout } from '@components/ThemesHeroLayout';
-
-const title = `
-  A beautiful component library for building apps, better and faster.
-`;
-
-const subtitle = `
-  A set of open source components with principles for building modern and maintainable apps. Just import and go:
-`;
 
 export default function ThemesHome() {
   const { resolvedTheme } = useTheme();
@@ -215,39 +208,52 @@ const MainContent = ({
   codeBlockScheme?: React.ComponentProps<typeof SyntaxSchemeProvider>['scheme'];
 }) => (
   <Box>
-    <SerifHeading mb="5">{title}</SerifHeading>
+    <SerifHeading mb="5">
+      A beautiful component library for building better and faster.
+    </SerifHeading>
 
-    <Text as="p" size="5" mb="5">
-      {subtitle}
+    <Text size={{ initial: '4', xs: '5' }}>
+      <Text as="p" mb="5">
+        A set of ready-to-use UI components with principles—optimized for faster development, easier
+        maintenance, and accessibility.
+      </Text>
+
+      <Box mb="3">
+        <SyntaxSchemeProvider scheme={codeBlockScheme}>
+          <Box mb="4">
+            <CodeBlock language="bash" value="npm install @radix-ui/themes" style={codeStyles} />
+          </Box>
+
+          <Box>
+            <CodeBlock language="jsx" value={codeExample} style={codeStyles} />
+          </Box>
+        </SyntaxSchemeProvider>
+      </Box>
     </Text>
 
-    <Box mb="5">
-      <SyntaxSchemeProvider scheme={codeBlockScheme}>
-        <Box mb="4">
-          <CodeBlock language="bash" value="npm install @radix-ui/themes" style={codeStyles} />
-        </Box>
+    <Text as="p" size="3" mb="6">
+      Just import and go—no configuration required.
+    </Text>
 
-        <Box>
-          <CodeBlock language="jsx" value={codeExample} style={codeStyles} />
-        </Box>
-      </SyntaxSchemeProvider>
-    </Box>
-
-    <Flex gap="4">
-      <Button size="4" color="gray" highContrast>
-        Get started
-        <svg
-          width="14"
-          height="14"
-          viewBox="0 0 12 12"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentcolor"
-          style={{ opacity: 1, marginRight: -3 }}
-        >
-          <path d="M6.39205 11.6023L5.36932 10.5909L8.92045 7.03977H0V5.5625H8.92045L5.36932 2.01705L6.39205 1L11.6932 6.30114L6.39205 11.6023Z" />
-        </svg>
-      </Button>
-      <Button size="4" variant="soft" highContrast>
+    <Flex gap="4" direction={{ initial: 'column', xs: 'row' }}>
+      <NextLink href="/themes/docs/overview/getting-started" passHref>
+        <Button asChild size={{ initial: '3', xs: '4' }} color="gray" highContrast>
+          <a>
+            Get started
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 12 12"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentcolor"
+              style={{ opacity: 1, marginRight: -3 }}
+            >
+              <path d="M6.39205 11.6023L5.36932 10.5909L8.92045 7.03977H0V5.5625H8.92045L5.36932 2.01705L6.39205 1L11.6932 6.30114L6.39205 11.6023Z" />
+            </svg>
+          </a>
+        </Button>
+      </NextLink>
+      <Button size={{ initial: '3', xs: '4' }} variant="soft" highContrast>
         Explore components
       </Button>
     </Flex>
@@ -255,10 +261,11 @@ const MainContent = ({
 );
 
 const codeStyles = {
-  fontSize: 'calc(var(--font-size-3) * 0.95)',
+  fontSize: '0.8em',
   lineHeight: 'var(--line-height-3)',
   '--border': 'var(--gray-a5)',
   '--background': 'var(--color-panel)',
+  maxWidth: 560,
 };
 
 const indigoBackgroundImageAccents = {

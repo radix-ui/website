@@ -676,7 +676,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
         </Card>
       </Flex>
 
-      <Flex shrink="0" gap="6" direction="column" style={{ width: 416, scrollSnapAlign: 'center' }}>
+      <Flex shrink="0" gap="6" direction="column" style={{ width: 416 }}>
         <Card size="2">
           <Flex direction="column" align="center" py="2">
             <Box mb="2">

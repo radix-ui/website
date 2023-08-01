@@ -16,41 +16,9 @@ const ThemesHeroLayoutMain = (props: React.ComponentPropsWithoutRef<'div'>) => (
 );
 
 const ThemesHeroLayoutShowcase = ({ children }: React.ComponentPropsWithoutRef<'div'>) => {
-  const heroShowcaseScrollRef = React.useRef<HTMLDivElement>(null);
-
-  const useIsomorphicLayoutEffect =
-    typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;
-
-  useIsomorphicLayoutEffect(() => {
-    let currentWidth = 0;
-
-    const centerDemoScroll = () => {
-      const newWidth = window.innerWidth;
-      const container = heroShowcaseScrollRef.current;
-
-      if (getComputedStyle(container).overflowX !== 'scroll') {
-        container.scrollLeft = 0;
-        currentWidth = 0;
-        return;
-      }
-
-      if (newWidth !== currentWidth && container) {
-        container.scrollLeft = container.scrollWidth / 2 - container.clientWidth / 2;
-        currentWidth = newWidth;
-      }
-    };
-
-    centerDemoScroll();
-    addEventListener('resize', centerDemoScroll);
-
-    return () => {
-      removeEventListener('resize', centerDemoScroll);
-    };
-  }, []);
-
   return (
     <div className={styles.ThemesHeroLayoutShowcase} aria-hidden>
-      <div className={styles.ThemesHeroLayoutShowcaseInner} ref={heroShowcaseScrollRef}>
+      <div className={styles.ThemesHeroLayoutShowcaseInner}>
         {/* An extra div is needed to have padding working as expected within the scroll container */}
         <div>
           <div className={styles.ThemesHeroLayoutShowcaseInnerScaled}>{children}</div>

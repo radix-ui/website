@@ -4,7 +4,7 @@ export const SerifHeading = (props: React.ComponentPropsWithRef<typeof Heading>)
   return (
     <Heading
       weight="regular"
-      size="9"
+      size={{ initial: '8', xs: '9' }}
       {...props}
       style={
         {

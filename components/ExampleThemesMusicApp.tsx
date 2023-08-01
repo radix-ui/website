@@ -292,7 +292,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     variant="soft"
                     defaultValue={[slider.value]}
                     orientation="vertical"
-                    style={{ height: 128 }}
+                    style={{ height: 160 }}
                   />
                   <Text size="1">{slider.frequency}</Text>
                 </Flex>
@@ -682,12 +682,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
         </Card>
 
         <Flex gap="6" shrink="0">
-          <Flex
-            gap="6"
-            shrink="0"
-            direction="column"
-            style={{ width: 416, scrollSnapAlign: 'center' }}
-          >
+          <Flex gap="6" shrink="0" direction="column" style={{ width: 416 }}>
             <Card size="3">
               <Box height="4" mb="4">
                 <Heading as="h3" size="4" trim="both">

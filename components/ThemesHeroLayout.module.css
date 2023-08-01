@@ -7,13 +7,16 @@
   /* Prevent elements with `position: absolute` from adding scrollbars */
   overflow: hidden;
 
+  --themes-hero-padding: 16px;
+
   /* Scaling multiplier for the demo area */
   --themes-hero-showcase-scale: calc(10 / 16);
   --themes-hero-showcase-base-width: 1760px;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 520px) {
   .ThemesHeroLayoutRoot {
+    --themes-hero-padding: 24px;
     --themes-hero-showcase-scale: calc(11 / 16);
   }
 }
@@ -30,19 +33,20 @@
   }
 }
 
-@media (min-width: 700px) {
+@media (min-width: 680px) {
   .ThemesHeroLayoutRoot {
     --themes-hero-showcase-scale: calc(14 / 16);
   }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 768px) {
   .ThemesHeroLayoutRoot {
+    --themes-hero-padding: 48px;
     --themes-hero-showcase-scale: 1;
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1280px) {
   .ThemesHeroLayoutRoot {
     --themes-hero-showcase-scale: calc(12 / 16);
   }
@@ -108,6 +112,8 @@
   position: relative;
   box-sizing: content-box;
   margin-top: 80px;
+  padding-left: var(--themes-hero-padding);
+  padding-right: var(--themes-hero-padding);
 }
 
 .ThemesHeroLayoutShowcase {
@@ -120,22 +126,23 @@
 
 /* * * * * * * * * * * * * * * * * * * */
 /*                                     */
-/*            Before 1000px            */
+/*            Before 1280px            */
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-@media (max-width: 999.99px) {
+@media (max-width: 1279.99px) {
   .ThemesHeroLayoutContent {
     flex-direction: column;
   }
 
   .ThemesHeroLayoutMain {
-    padding: 4vw;
+    max-width: 850px;
+    margin-bottom: var(--space-8);
   }
 
   .ThemesHeroLayoutShowcase {
     position: relative;
-    --themes-hero-showcase-padding: 48px;
+    --themes-hero-showcase-padding: var(--space-8);
   }
 
   .ThemesHeroLayoutShowcase::-webkit-scrollbar {
@@ -148,25 +155,23 @@
     overflow-y: hidden;
     scrollbar-width: none;
     scroll-snap-type: x proximity;
-    height: calc(
-      (1550px + var(--themes-hero-showcase-padding) * 2) * var(--themes-hero-showcase-scale)
-    );
+    height: calc(1550px * var(--themes-hero-showcase-scale));
   }
 
   .ThemesHeroLayoutShowcaseInnerScaled {
     display: table;
-    padding: var(--themes-hero-showcase-padding);
+    padding: calc(var(--themes-hero-padding) / var(--themes-hero-showcase-scale));
     transform-origin: top left;
   }
 }
 
 /* * * * * * * * * * * * * * * * * * * */
 /*                                     */
-/*            After 1000px             */
+/*            After 1280px             */
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-@media (min-width: 1000px) {
+@media (min-width: 1280px) {
   .ThemesHeroLayoutContent {
     align-items: stretch;
   }
@@ -212,7 +217,7 @@
   }
 }
 
-@media (min-width: 1000px) and (min-height: 700px) {
+@media (min-width: 1280px) and (min-height: 700px) {
   .ThemesHeroLayoutMain {
     align-items: center;
 
