@@ -44,6 +44,7 @@ const definitions = {
   blockquote: themes.blockquotePropDefs,
   code: themes.codePropDefs,
   textField: themes.textFieldPropDefs,
+  textFieldSlot: themes.textFieldSlotPropDefs,
   textArea: themes.textAreaPropDefs,
   separator: themes.separatorPropDefs,
   badge: themes.badgePropDefs,

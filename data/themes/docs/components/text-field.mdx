@@ -4,27 +4,91 @@ metaDescription: Captures user input via a text field.
 ---
 
 ```jsx live=true
-<TextField.Input placeholder="The quick brown fox jumped" />
+<TextField.Root>
+  <TextField.Slot>
+    <MagnifyingGlassIcon height="16" width="16" />
+  </TextField.Slot>
+  <TextField.Input placeholder="Search the docs…" />
+</TextField.Root>
 ```
 
 ## API Reference
 
-This component is based on the `input` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
+### Root
+
+Groups Slot and Input parts. This component is based on the `div` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
+
+<ThemesPropsTable name="textField" />
+
+### Slot
+
+Contains icons or buttons associated with an Input.
+
+<ThemesPropsTable name="textFieldSlot" />
+
+### Input
+
+Render the text input. This component is based on the `input` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
 
 <ThemesPropsTable name="textField" />
 
 ## Examples
+
+### Without Slots
+
+You can omit the `Root` part if you are not using the Slot.
+
+```jsx live=true
+<TextField.Input placeholder="Enter your email" />
+```
 
 ### Size
 
 Use the `size` prop to control the size.
 
 ```jsx live=true
-<Grid columns="3" align="center" gap="3">
-  <TextField.Input size="1" placeholder="The quick brown fox jumped" />
-  <TextField.Input size="2" placeholder="The quick brown fox jumped" />
-  <TextField.Input size="3" placeholder="The quick brown fox jumped" />
-</Grid>
+<Flex direction="column" gap="3" style={{ maxWidth: 400 }}>
+  <TextField.Input size="1" placeholder="Search the docs…" />
+  <TextField.Input size="2" placeholder="Search the docs…" />
+  <TextField.Input size="3" placeholder="Search the docs…" />
+</Flex>
+```
+
+Use matching component sizes when composing Text Field with buttons. However, don’t use size 1 inputs with buttons—at this size, there is not enough vertical space to nest other interactive elements.
+
+```jsx live=true
+<Flex direction="column" gap="3" style={{ maxWidth: 400 }}>
+  <TextField.Root>
+    <TextField.Slot>
+      <MagnifyingGlassIcon height="16" width="16" />
+    </TextField.Slot>
+    <TextField.Input placeholder="Search the docs…" size="1" />
+  </TextField.Root>
+
+  <TextField.Root>
+    <TextField.Slot>
+      <MagnifyingGlassIcon height="16" width="16" />
+    </TextField.Slot>
+    <TextField.Input placeholder="Search the docs…" size="2" />
+    <TextField.Slot>
+      <IconButton size="1" variant="ghost">
+        <DotsHorizontalIcon height="14" width="14" />
+      </IconButton>
+    </TextField.Slot>
+  </TextField.Root>
+
+  <TextField.Root>
+    <TextField.Slot>
+      <MagnifyingGlassIcon height="16" width="16" />
+    </TextField.Slot>
+    <TextField.Input placeholder="Search the docs…" size="3" />
+    <TextField.Slot pr="3">
+      <IconButton size="2" variant="ghost">
+        <DotsHorizontalIcon height="16" width="16" />
+      </IconButton>
+    </TextField.Slot>
+  </TextField.Root>
+</Flex>
 ```
 
 ### Variant
@@ -32,10 +96,11 @@ Use the `size` prop to control the size.
 Use the `variant` prop to control the visual style.
 
 ```jsx live=true
-<Grid columns="2" gap="3">
-  <TextField.Input variant="surface" placeholder="The quick brown fox jumped" />
-  <TextField.Input variant="soft" placeholder="The quick brown fox jumped" />
-</Grid>
+<Flex direction="column" gap="3" style={{ maxWidth: 400 }}>
+  <TextField.Input variant="solid" placeholder="Search the docs…" />
+  <TextField.Input variant="surface" placeholder="Search the docs…" />
+  <TextField.Input variant="soft" placeholder="Search the docs…" />
+</Flex>
 ```
 
 ### Color
@@ -43,14 +108,15 @@ Use the `variant` prop to control the visual style.
 Use the `color` prop to assign a specific color value, ignoring the global theme.
 
 ```jsx live=true
-<Grid columns="2" gap="3">
-  <TextField.Input color="gray" placeholder="The quick brown fox jumped" />
+<Flex direction="column" gap="3" style={{ maxWidth: 400 }}>
+  <TextField.Input variant="soft" placeholder="Search the docs…" />
   <TextField.Input
+    color="green"
     variant="soft"
-    color="gray"
-    placeholder="The quick brown fox jumped"
+    placeholder="Search the docs…"
   />
-</Grid>
+  <TextField.Input color="red" variant="soft" placeholder="Search the docs…" />
+</Flex>
 ```
 
 ### Radius
@@ -58,11 +124,9 @@ Use the `color` prop to assign a specific color value, ignoring the global theme
 Use the `radius` prop to assign a specific radius value, ignoring the global theme.
 
 ```jsx live=true
-<Grid columns="5" gap="3">
-  <TextField.Input radius="none" placeholder="The quick brown fox jumped" />
-  <TextField.Input radius="small" placeholder="The quick brown fox jumped" />
-  <TextField.Input radius="medium" placeholder="The quick brown fox jumped" />
-  <TextField.Input radius="large" placeholder="The quick brown fox jumped" />
-  <TextField.Input radius="full" placeholder="The quick brown fox jumped" />
-</Grid>
+<Flex direction="column" gap="3" style={{ maxWidth: 400 }}>
+  <TextField.Input radius="none" placeholder="Search the docs…" />
+  <TextField.Input radius="large" placeholder="Search the docs…" />
+  <TextField.Input radius="full" placeholder="Search the docs…" />
+</Flex>
 ```
