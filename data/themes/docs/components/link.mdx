@@ -1,6 +1,6 @@
 ---
 metaTitle: Link
-metaDescription: Accessible element for navigation between pages.
+metaDescription: A semantic element for navigation between pages.
 sourcePath: components/link
 ---
 
@@ -36,34 +36,35 @@ Use the `size` prop to control the size of the link. The prop also provides corr
 
 ### Weight
 
-Use the `weight` prop to set the weight of the link. You can change the weight across breakpoints using the object syntax.
+Use the `weight` prop to set the text weight.
 
 ```jsx live="true"
-<Flex direction="column" gap="1">
-  <Link weight="normal">The quick brown fox jumps over the lazy dog</Link>
+<Flex direction="column">
+  <Link weight="regular">The quick brown fox jumps over the lazy dog</Link>
+  <Link weight="medium">The quick brown fox jumps over the lazy dog</Link>
   <Link weight="bold">The quick brown fox jumps over the lazy dog</Link>
 </Flex>
 ```
 
 ### Color
 
-Use the `color` prop to assign a specific color value, ignoring the global theme.
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
 
 ```jsx live=true
-<Flex direction="column" gap="1">
-  <Link color="crimson">The quick brown fox jumps over the lazy dog</Link>
+<Flex direction="column">
   <Link color="indigo">The quick brown fox jumps over the lazy dog</Link>
-  <Link color="grass">The quick brown fox jumps over the lazy dog</Link>
+  <Link color="cyan">The quick brown fox jumps over the lazy dog</Link>
   <Link color="orange">The quick brown fox jumps over the lazy dog</Link>
+  <Link color="crimson">The quick brown fox jumps over the lazy dog</Link>
 </Flex>
 ```
 
 ### High-contrast
 
-Use the `highContrast` prop to add contrast.
+Use the `highContrast` prop to add additional contrast.
 
 ```jsx live=true
-<Flex direction="column" gap="1">
+<Flex direction="column">
   <Link>The quick brown fox jumps over the lazy dog</Link>
   <Link highContrast>The quick brown fox jumps over the lazy dog</Link>
 </Flex>

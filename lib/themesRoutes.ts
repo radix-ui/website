@@ -41,6 +41,7 @@ export const themesRoutes = [
       { title: 'Em', slug: 'themes/docs/components/em' },
       { title: 'Quote', slug: 'themes/docs/components/quote' },
       { title: 'Strong', slug: 'themes/docs/components/strong' },
+      { title: 'Link', slug: 'themes/docs/components/link' },
     ],
   },
 
@@ -59,7 +60,6 @@ export const themesRoutes = [
       { title: 'Dropdown Menu', slug: 'themes/docs/components/dropdown-menu' },
       { title: 'Hover Card', slug: 'themes/docs/components/hover-card' },
       { title: 'Icon Button', slug: 'themes/docs/components/icon-button' },
-      { title: 'Link', slug: 'themes/docs/components/link' },
       { title: 'Popover', slug: 'themes/docs/components/popover' },
       { title: 'Radio Group', slug: 'themes/docs/components/radio-group' },
       { title: 'Scroll Area', slug: 'themes/docs/components/scroll-area' },
