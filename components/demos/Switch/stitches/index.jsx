@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Switch from '@radix-ui/react-switch';
-import { styled } from '@modulz/design-system';
+import { styled } from '@stitches/react';
 import { blackA } from '@radix-ui/colors';
 
 const SwitchDemo = () => (

@@ -1,16 +1,6 @@
 import React from 'react';
-import {
-  Box,
-  Grid,
-  Text,
-  styled,
-  Flex,
-  Heading,
-  Paragraph,
-  Section,
-  Card,
-  darkTheme,
-} from '@modulz/design-system';
+import { Box, Grid, Text, styled, Flex, Heading, Paragraph, Card } from '@modulz/design-system';
+import { Section } from '@radix-ui/themes';
 import { MarketingCaption } from './MarketingCaption';
 import { CodeDemo } from './CodeDemo';
 import { Container, Theme } from '@radix-ui/themes';
@@ -27,16 +17,14 @@ export const DeveloperExperienceSection = () => {
 
   return (
     <Section
-      css={{
+      size={{ initial: '2', sm: '3' }}
+      style={{
         overflow: 'hidden',
-        backgroundColor: '$sky6',
+        backgroundColor: 'var(--sky-6)',
         background: `
-          radial-gradient(ellipse at 100% 100%, hsl(254 100% 6% / 0.07), $violetA1, transparent),
-          linear-gradient(to bottom right, $mint2, $indigo2, $pink3, $cyan3)
+          radial-gradient(ellipse at 100% 100%, hsl(254 100% 6% / 0.07), var(--violet-a1), transparent),
+          linear-gradient(to bottom right, var(--mint-2), var(--indigo-2), var(--pink-3), var(--cyan-3))
         `,
-        [`&.${darkTheme}`]: {
-          background: 'linear-gradient(to bottom right, $sky2, $cyan2, $cyan6)',
-        },
       }}
     >
       <Container mx="5">
@@ -45,7 +33,7 @@ export const DeveloperExperienceSection = () => {
           css={{ '@bp2': { gridTemplateColumns: 'auto 1fr' } }}
         >
           <Box css={{ '@bp2': { maxWidth: 420 } }}>
-            <MarketingCaption css={{ mb: '$1' }}>Developer experience to love</MarketingCaption>
+            <MarketingCaption mb="1">Developer experience to love</MarketingCaption>
             <Heading as="h2" size="3" css={{ mb: '$4' }}>
               Develop with an open, thought‑out API
             </Heading>
@@ -300,7 +288,7 @@ const CodeWindow = styled('div', {
   br: '$4',
   bc: 'var(--gray-2)',
 
-  [`.${darkTheme} &`]: {
+  '.dark-theme &': {
     bc: 'var(--black-a9)',
   },
 
@@ -343,7 +331,7 @@ const CodeWindow = styled('div', {
 const BlendedCard = styled(Card, {
   $$shadowColor: '$colors$skyA12',
   $$bgColor: '$colors$plum1',
-  [`.${darkTheme} &`]: {
+  '.dark-theme &': {
     $$shadowColor: '$colors$blackA12',
     $$bgColor: '$colors$whiteA4',
   },

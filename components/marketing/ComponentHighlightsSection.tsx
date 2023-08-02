@@ -1,25 +1,17 @@
-import { Box, Flex, Grid, Heading, Paragraph, Section, Text, styled } from '@modulz/design-system';
+import { Box, Flex, Grid, Heading, Paragraph, Text, styled } from '@modulz/design-system';
 
 import { CheckIcon } from '@radix-ui/react-icons';
 import React from 'react';
 import { MarketingCaption } from './MarketingCaption';
-import { Container } from '@radix-ui/themes';
-
-type Components =
-  | 'dropdown'
-  | 'dialog'
-  | 'popover'
-  | 'slider'
-  | 'scroll area'
-  | 'hover card'
-  | 'tooltip';
+import { Container, Section } from '@radix-ui/themes';
 
 export const ComponentHighlightsSection = () => {
   return (
     <Section
-      css={{
+      size={{ initial: '2', sm: '3' }}
+      style={{
         position: 'relative',
-        backgroundImage: 'linear-gradient(to bottom, $slate2, $loContrast)',
+        backgroundImage: 'linear-gradient(to bottom, var(--gray-1), var(--color-background))',
         overflow: 'hidden',
       }}
     >
@@ -35,7 +27,7 @@ export const ComponentHighlightsSection = () => {
             '@bp3': { mb: 100 },
           }}
         >
-          <MarketingCaption css={{ mb: '$1' }}>Case in point</MarketingCaption>
+          <MarketingCaption mb="1">Case in point</MarketingCaption>
           <Heading as="h2" size="3" css={{ mb: '$3' }}>
             So, you think you can <span style={{ whiteSpace: 'nowrap' }}>build a dropdown?</span>
           </Heading>

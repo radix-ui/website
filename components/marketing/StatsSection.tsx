@@ -1,34 +1,19 @@
-import { Box, Flex, Grid, Section, Text, darkTheme } from '@modulz/design-system';
-import { Container } from '@radix-ui/themes';
+import { Grid, Box, Container, Section, Flex, Text } from '@radix-ui/themes';
+import styles from './StatsSection.module.css';
 
 export const StatsSection = () => {
   return (
-    <Section
-      css={{
-        pb: '$7',
-        position: 'relative',
-        $$transparent: '#FFFFFF00',
-        $$chartTipColor: 'var(--gray-7)',
-        $$chartLineStartColor: 'var(--cyan-5)',
-        $$chartLineEndColor: 'var(--gray-7)',
-        $$chartTopColor: '#FFFFFF00',
-        $$chartBottomColor: 'var(--gray-2)',
-        [`.${darkTheme} &`]: {
-          $$transparent: '#16161800',
-          $$chartTopColor: '#16161800',
-        },
-      }}
-    >
+    <Section size={{ initial: '2', sm: '3' }} className={styles.StatsSection}>
       <Box
-        css={{
-          pointerEvents: 'none',
+        style={{
           position: 'absolute',
+          pointerEvents: 'none',
           bottom: -200,
           left: -200,
           right: -200,
           height: 700,
           backgroundImage:
-            'radial-gradient(ellipse 75% 700px at 35% calc(100% + 100px), var(--cyan-7) 20%, var(--blue-3), $$transparent)',
+            'radial-gradient(ellipse 75% 700px at 35% calc(100% + 100px), var(--stats-section-background-1) 20%, var(--stats-section-background-2) 40%, var(--stats-section-background-3) 60%, transparent 100%)',
           transform: 'rotate(-10deg)',
           zIndex: -1,
         }}
@@ -36,80 +21,45 @@ export const StatsSection = () => {
       <FancyBackgroundChart />
       <Container position="relative" mx="5">
         <Grid
+          width="min-content"
           align="stretch"
           justify="start"
-          flow={{ '@initial': 'row', '@bp1': 'column' }}
-          gap={{ '@initial': 4, '@bp1': 5, '@bp2': 6 }}
-          css={{ whiteSpace: 'nowrap' }}
+          flow={{ initial: 'row', xs: 'column' }}
+          gap={{ initial: '4', xs: '5', sm: '6' }}
+          style={{ whiteSpace: 'nowrap' }}
         >
           <Box>
-            <Text
-              css={{
-                fontSize: '$9',
-                '@bp1': { fontSize: '$8' },
-                '@bp2': { fontSize: '$9' },
-                fontWeight: 500,
-                fontVariantNumeric: 'proportional-nums',
-                letterSpacing: '-.031em',
-                display: 'flex',
-                alignItems: 'center',
-                mb: '$2',
-              }}
-            >
-              20M
-              <Box as="span" css={{ fontSize: '75%', ml: '0.15em' }}>
-                +
-              </Box>
-            </Text>
-            <Text variant="gray" size={{ '@initial': 3, '@bp2': 4 }}>
+            <Flex asChild align="center">
+              <Text mb="2" weight="medium" size={{ initial: '8', sm: '9' }}>
+                20M
+                <Box style={{ display: 'inline', fontSize: '75%', marginLeft: '0.15em' }}>+</Box>
+              </Text>
+            </Flex>
+            <Text color="gray" size={{ initial: '3', sm: '4' }}>
               Monthly downloads
             </Text>
           </Box>
-          <Box css={{ backgroundColor: '$grayA5', width: 1 }} />
+          <Box style={{ backgroundColor: 'var(--gray-a5)', width: 1 }} />
           <Box>
-            <Text
-              css={{
-                fontSize: '$9',
-                '@bp1': { fontSize: '$8' },
-                '@bp2': { fontSize: '$9' },
-                fontWeight: 500,
-                fontVariantNumeric: 'proportional-nums',
-                letterSpacing: '-.031em',
-                display: 'flex',
-                alignItems: 'center',
-                mb: '$2',
-              }}
-            >
-              4000
-              <Box as="span" css={{ fontSize: '75%', ml: '0.15em' }}>
-                +
-              </Box>
-            </Text>
-            <Text variant="gray" size={{ '@initial': 3, '@bp2': 4 }}>
+            <Flex asChild align="center">
+              <Text mb="2" weight="medium" size={{ initial: '8', sm: '9' }}>
+                4000
+                <Box style={{ display: 'inline', fontSize: '75%', marginLeft: '0.15em' }}>+</Box>
+              </Text>
+            </Flex>
+            <Text color="gray" size={{ initial: '3', sm: '4' }}>
               Discord members
             </Text>
           </Box>
-          <Box css={{ backgroundColor: '$grayA5', width: 1 }} />
+          <Box style={{ backgroundColor: 'var(--gray-a5)', width: 1 }} />
           <Box>
-            <Text
-              css={{
-                fontSize: '$9',
-                '@bp1': { fontSize: '$8' },
-                '@bp2': { fontSize: '$9' },
-                fontWeight: 500,
-                fontVariantNumeric: 'proportional-nums',
-                letterSpacing: '-.031em',
-                display: 'flex',
-                alignItems: 'center',
-                mb: '$2',
-              }}
-            >
-              10K
-              <Box as="span" css={{ fontSize: '75%', ml: '0.15em' }}>
-                +
-              </Box>
-            </Text>
-            <Text variant="gray" size={{ '@initial': 3, '@bp2': 4 }}>
+            <Flex asChild align="center">
+              <Text mb="2" weight="medium" size={{ initial: '8', sm: '9' }}>
+                10K
+                <Box style={{ display: 'inline', fontSize: '75%', marginLeft: '0.15em' }}>+</Box>
+              </Text>
+            </Flex>
+            <Text color="gray" size={{ initial: '3', sm: '4' }}>
               GitHub stars
             </Text>
           </Box>
@@ -123,7 +73,7 @@ const FancyBackgroundChart = () => {
   return (
     <Flex
       align="end"
-      css={{
+      style={{
         pointerEvents: 'none',
         position: 'absolute',
         left: 0,
@@ -131,76 +81,11 @@ const FancyBackgroundChart = () => {
         bottom: 0,
       }}
     >
-      <Box
-        css={{
-          // This is the left-hand line that connects to the chart
-          height: 1,
-          background: 'linear-gradient(to right, $$transparent, $$chartLineStartColor)',
-          flex: '0 0 auto',
-          maxWidth: 1400,
-          '@bp2': {
-            flexGrow: 1,
-          },
-          '@media (min-width: 1500px)': {
-            flexGrow: 100,
-          },
-        }}
-      />
-      <Box
-        css={{
-          // This is the chart wrapper
-          flex: 'none',
-          width: '100vw',
-          height: 250,
-          mr: '-20%',
-          '@bp1': {
-            height: 150,
-          },
-          '@bp2': {
-            mr: -20,
-            width: '55vw',
-            height: 'calc(150px + 2vw)',
-          },
-          '@media (min-width: 1500px)': {
-            mr: 0,
-            width: 960,
-            height: 320,
-          },
-          svg: {
-            overflow: 'visible',
-            width: '100%',
-            height: '100%',
-          },
-        }}
-      >
+      <Box className={styles.StatsSectionGraphicLeft} />
+      <Box className={styles.StatsSectionGraphicMain}>
         <Chart />
       </Box>
-      <Box
-        css={{
-          // This is free space to the right
-          height: 310,
-          position: 'relative',
-          flex: '0 1 auto',
-          flexGrow: 0,
-
-          '@bp1': {
-            height: 150,
-          },
-          '@bp2': {
-            height: 'calc(150px + 2vw)',
-          },
-          '@media (min-width: 1300px)': {
-            flexGrow: 0,
-          },
-          '@media (min-width: 1500px)': {
-            height: 320,
-            flexGrow: 1,
-          },
-          '@bp4': {
-            flexGrow: 20,
-          },
-        }}
-      >
+      <Box className={styles.StatsSectionGraphicRight}>
         <svg
           preserveAspectRatio="none"
           width="320"
@@ -219,8 +104,8 @@ const FancyBackgroundChart = () => {
               x2="0"
               y2="100%"
             >
-              <stop offset="0" stopColor="var(---chartTopColor)" />
-              <stop offset="0.7" stopColor="var(---chartBottomColor)" />
+              <stop offset="0" stopColor="var(--stats-section-chart-top-color)" stopOpacity="0" />
+              <stop offset="0.7" stopColor="var(--stats-section-chart-bottom-color)" />
             </linearGradient>
           </defs>
         </svg>
@@ -253,7 +138,7 @@ const Chart = () => (
       x2="862.01"
       y2="10"
       vectorEffect="non-scaling-stroke"
-      stroke="var(---chartTipColor)"
+      stroke="var(--stats-section-chart-tip-color)"
       strokeLinecap="round"
       strokeWidth="8"
     />
@@ -266,8 +151,8 @@ const Chart = () => (
         y2="319"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0" stopColor="var(---chartTopColor)" />
-        <stop offset="0.7" stopColor="var(---chartBottomColor)" />
+        <stop offset="0" stopColor="var(--stats-section-chart-top-color)" stopOpacity="0" />
+        <stop offset="0.7" stopColor="var(--stats-section-chart-bottom-color)" />
       </linearGradient>
       <linearGradient
         id="gradient-line"
@@ -277,8 +162,8 @@ const Chart = () => (
         y2="359.5"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0" stopColor="var(---chartLineStartColor)" />
-        <stop offset="1" stopColor="var(---chartLineEndColor)" />
+        <stop offset="0" stopColor="var(--stats-section-chart-line-start-color)" />
+        <stop offset="1" stopColor="var(--stats-section-chart-line-end-color)" />
       </linearGradient>
     </defs>
   </svg>

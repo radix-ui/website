@@ -41,7 +41,7 @@ export default function ColorsHome() {
           image="colors.png"
         />
         <Section size={{ initial: '2', sm: '3' }}>
-          <Container mx="5">
+          <Container>
             <SerifHeading mb="3" style={{ maxWidth: 680 }}>
               A gorgeous, accessible colour system for user interfaces.
             </SerifHeading>
@@ -72,14 +72,17 @@ export default function ColorsHome() {
           </Container>
         </Section>
 
-        <Container mx="5">
+        <Container>
           <Text size="2" color="gray">
             <Grid
               align="center"
-              columns="minmax(64px, 1fr) repeat(12, minmax(0px, 1fr))"
-              style={{ gap: 2 }}
+              columns={{
+                initial: 'repeat(12, minmax(0px, 1fr))',
+                sm: 'minmax(64px, 1fr) repeat(12, minmax(0px, 1fr))',
+              }}
+              style={{ gap: 2, whiteSpace: 'nowrap' }}
             >
-              <Box />
+              <Box display={{ initial: 'none', sm: 'block' }} />
               <Text align="center" mb="2">
                 1
               </Text>
@@ -117,7 +120,10 @@ export default function ColorsHome() {
                 12
               </Text>
 
-              <Text>Gray</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Gray</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--gray-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--gray-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--gray-3)' }} />
@@ -131,7 +137,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--gray-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--gray-12)' }} />
 
-              <Text>Mauve</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Mauve</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--mauve-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--mauve-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--mauve-3)' }} />
@@ -145,7 +154,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--mauve-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--mauve-12)' }} />
 
-              <Text>Slate</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Slate</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--slate-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--slate-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--slate-3)' }} />
@@ -159,7 +171,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--slate-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--slate-12)' }} />
 
-              <Text>Sage</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Sage</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--sage-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--sage-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--sage-3)' }} />
@@ -173,7 +188,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--sage-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--sage-12)' }} />
 
-              <Text>Olive</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Olive</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--olive-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--olive-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--olive-3)' }} />
@@ -187,7 +205,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--olive-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--olive-12)' }} />
 
-              <Text>Sand</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Sand</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--sand-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--sand-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--sand-3)' }} />
@@ -201,7 +222,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--sand-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--sand-12)' }} />
 
-              <Text>Orange</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Orange</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--orange-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--orange-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--orange-3)' }} />
@@ -215,7 +239,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--orange-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--orange-12)' }} />
 
-              <Text>Tomato</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Tomato</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--tomato-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--tomato-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--tomato-3)' }} />
@@ -229,7 +256,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--tomato-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--tomato-12)' }} />
 
-              <Text>Red</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Red</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--red-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--red-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--red-3)' }} />
@@ -243,7 +273,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--red-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--red-12)' }} />
 
-              <Text>Crimson</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Crimson</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--crimson-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--crimson-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--crimson-3)' }} />
@@ -257,7 +290,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--crimson-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--crimson-12)' }} />
 
-              <Text>Pink</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Pink</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--pink-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--pink-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--pink-3)' }} />
@@ -271,7 +307,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--pink-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--pink-12)' }} />
 
-              <Text>Plum</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Plum</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--plum-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--plum-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--plum-3)' }} />
@@ -285,7 +324,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--plum-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--plum-12)' }} />
 
-              <Text>Purple</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Purple</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--purple-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--purple-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--purple-3)' }} />
@@ -299,7 +341,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--purple-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--purple-12)' }} />
 
-              <Text>Violet</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Violet</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--violet-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--violet-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--violet-3)' }} />
@@ -313,7 +358,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--violet-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--violet-12)' }} />
 
-              <Text>Indigo</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Indigo</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--indigo-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--indigo-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--indigo-3)' }} />
@@ -327,7 +375,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--indigo-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--indigo-12)' }} />
 
-              <Text>Blue</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Blue</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--blue-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--blue-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--blue-3)' }} />
@@ -341,7 +392,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--blue-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--blue-12)' }} />
 
-              <Text>Cyan</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Cyan</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--cyan-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--cyan-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--cyan-3)' }} />
@@ -355,7 +409,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--cyan-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--cyan-12)' }} />
 
-              <Text>Teal</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Teal</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--teal-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--teal-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--teal-3)' }} />
@@ -369,7 +426,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--teal-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--teal-12)' }} />
 
-              <Text>Green</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Green</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--green-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--green-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--green-3)' }} />
@@ -383,7 +443,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--green-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--green-12)' }} />
 
-              <Text>Grass</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Grass</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--grass-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--grass-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--grass-3)' }} />
@@ -397,7 +460,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--grass-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--grass-12)' }} />
 
-              <Text>Brown</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Brown</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--brown-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--brown-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--brown-3)' }} />
@@ -411,7 +477,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--brown-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--brown-12)' }} />
 
-              <Text>Gold</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Gold</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--gold-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--gold-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--gold-3)' }} />
@@ -425,7 +494,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--gold-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--gold-12)' }} />
 
-              <Text>Bronze</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Bronze</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--bronze-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--bronze-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--bronze-3)' }} />
@@ -439,7 +511,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--bronze-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--bronze-12)' }} />
 
-              <Text>Amber</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Amber</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--amber-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--amber-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--amber-3)' }} />
@@ -453,7 +528,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--amber-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--amber-12)' }} />
 
-              <Text>Yellow</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Yellow</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--yellow-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--yellow-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--yellow-3)' }} />
@@ -467,7 +545,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--yellow-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--yellow-12)' }} />
 
-              <Text>Lime</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Lime</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--lime-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--lime-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--lime-3)' }} />
@@ -481,7 +562,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--lime-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--lime-12)' }} />
 
-              <Text>Mint</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Mint</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--mint-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--mint-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--mint-3)' }} />
@@ -495,7 +579,10 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--mint-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--mint-12)' }} />
 
-              <Text>Sky</Text>
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Sky</Text>
+              </Box>
+
               <Box style={{ height: 35, backgroundColor: 'var(--sky-1)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--sky-2)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--sky-3)' }} />
@@ -512,8 +599,8 @@ export default function ColorsHome() {
           </Text>
         </Container>
 
-        <Section size="3" mx="5" mb="9">
-          <Container mx="5">
+        <Section size="3" mb="9">
+          <Container>
             <Grid columns={{ sm: '3' }} gap="7">
               <Box>
                 <Heading size="5" as="h3">

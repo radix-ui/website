@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Menubar from '@radix-ui/react-menubar';
-import { styled } from '@modulz/design-system';
+import { styled } from '@stitches/react';
 import { blackA, violet, mauve } from '@radix-ui/colors';
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '@radix-ui/react-icons';
 

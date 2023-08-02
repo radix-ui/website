@@ -1,6 +1,6 @@
 import React from 'react';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
-import { styled, keyframes } from '@modulz/design-system';
+import { styled, keyframes } from '@stitches/react';
 import { violet, blackA, red, mauve } from '@radix-ui/colors';
 
 const AlertDialogDemo = () => (

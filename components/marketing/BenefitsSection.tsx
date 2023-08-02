@@ -1,18 +1,19 @@
-import { Box, Grid, Heading, Paragraph, Section, Text } from '@modulz/design-system';
+import { Box, Grid, Heading, Paragraph, Text } from '@modulz/design-system';
 import { MarketingCaption } from './MarketingCaption';
-import { Container } from '@radix-ui/themes';
+import { Section, Container } from '@radix-ui/themes';
 
 export const BenefitsSection = () => {
   return (
     <Section
-      css={{
+      size={{ initial: '2', sm: '3' }}
+      style={{
         position: 'relative',
         overflow: 'hidden',
       }}
     >
       <Container mx="5">
         <Box css={{ mb: '$7' }}>
-          <MarketingCaption css={{ mb: '$1' }}>Why Radix Primitives</MarketingCaption>
+          <MarketingCaption mb="1">Why Radix Primitives</MarketingCaption>
           <Heading as="h2" size="3">
             Spend less time on
             <br />

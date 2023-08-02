@@ -1,15 +1,15 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Box, Grid, Text, Heading, Paragraph, Section } from '@modulz/design-system';
-import { Button, Container } from '@radix-ui/themes';
+import { Box, Grid, Text, Heading, Paragraph } from '@modulz/design-system';
+import { Button, Container, Section } from '@radix-ui/themes';
 import { MarketingCaption } from './MarketingCaption';
 
 export const AdoptionSection = () => {
   return (
-    <Section>
+    <Section size={{ initial: '2', sm: '3' }}>
       <Container mx="5">
         <Box css={{ mb: '$7' }}>
-          <MarketingCaption css={{ mb: '$1' }}>Transition to Radix Primitives</MarketingCaption>
+          <MarketingCaption mb="1">Transition to Radix Primitives</MarketingCaption>
           <Heading as="h2" size="3" css={{ mb: '$5' }}>
             Adoption made easy
           </Heading>

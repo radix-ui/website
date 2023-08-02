@@ -166,11 +166,19 @@ export const CarouselSlideList = (props) => {
         }
       })}
       onPointerDown={composeEventHandlers(props.onPointerDown, (event: PointerEvent) => {
+        if (event.target instanceof HTMLInputElement) {
+          return;
+        }
+
         const element = event.target as HTMLElement;
         element.style.userSelect = 'none';
         element.setPointerCapture(event.pointerId);
       })}
       onPointerUp={composeEventHandlers(props.onPointerUp, (event: PointerEvent) => {
+        if (event.target instanceof HTMLInputElement) {
+          return;
+        }
+
         const element = event.target as HTMLElement;
         element.style.userSelect = '';
         element.releasePointerCapture(event.pointerId);

@@ -1,6 +1,6 @@
 import React from 'react';
 import * as AspectRatio from '@radix-ui/react-aspect-ratio';
-import { styled } from '@modulz/design-system';
+import { styled } from '@stitches/react';
 import { blackA } from '@radix-ui/colors';
 
 const AspectRatioDemo = () => (

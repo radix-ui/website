@@ -1,6 +1,6 @@
 import React from 'react';
 import * as ContextMenu from '@radix-ui/react-context-menu';
-import { styled } from '@modulz/design-system';
+import { styled } from '@stitches/react';
 import { violet, mauve } from '@radix-ui/colors';
 import { DotFilledIcon, CheckIcon, ChevronRightIcon } from '@radix-ui/react-icons';
 

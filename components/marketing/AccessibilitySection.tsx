@@ -1,16 +1,5 @@
-import {
-  Box,
-  Card,
-  Flex,
-  Grid,
-  Heading,
-  Section,
-  Text,
-  darkTheme,
-  keyframes,
-  styled,
-} from '@modulz/design-system';
-import { Container } from '@radix-ui/themes';
+import { Box, Card, Flex, Grid, Heading, Text, keyframes, styled } from '@modulz/design-system';
+import { Container, Section } from '@radix-ui/themes';
 import {
   CaretDownIcon,
   CaretLeftIcon,
@@ -354,7 +343,8 @@ export const AccessibilitySection = () => {
 
   return (
     <Section
-      css={{
+      size={{ initial: '2', sm: '3' }}
+      style={{
         background: 'linear-gradient(to bottom, $mauve2, $loContrast)',
         position: 'relative',
         overflow: 'hidden',
@@ -429,7 +419,7 @@ export const AccessibilitySection = () => {
 
       <Container mx="5" position="relative">
         <Box css={{ mb: '$5' }}>
-          <MarketingCaption css={{ mb: '$1' }}>Supports assistive technology</MarketingCaption>
+          <MarketingCaption mb="1">Supports assistive technology</MarketingCaption>
           <Heading as="h2" size="3">
             Accessibility out of the box
           </Heading>
@@ -486,7 +476,7 @@ export const AccessibilitySection = () => {
               },
 
               $$subpanel: 'transparent',
-              [`.${darkTheme} &`]: {
+              '.dark-theme &': {
                 $$subpanel: 'var(--mauve-a2)',
               },
             }}
@@ -857,7 +847,7 @@ const MockTypeaheadOutput = styled(Text, {
   '&:empty': {
     display: 'none',
   },
-  [`.${darkTheme} &`]: {
+  '.dark-theme &': {
     bc: '$indigo3',
   },
   variants: {
@@ -865,7 +855,7 @@ const MockTypeaheadOutput = styled(Text, {
     variant: {
       contrast: {
         color: '$indigo12',
-        [`.${darkTheme} &`]: {
+        '.dark-theme &': {
           color: '$indigo11',
         },
       },
@@ -1000,7 +990,7 @@ const Key = styled('span', {
   ai: 'center',
   jc: 'center',
 
-  [`.${darkTheme} &`]: {
+  '.dark-theme &': {
     bc: '$mauve1',
   },
 
@@ -1033,7 +1023,7 @@ const Key = styled('span', {
         height: 42,
         br: '$2',
         fontSize: '$1',
-        [`.${darkTheme} &`]: {
+        '.dark-theme &': {
           color: '$slate12',
           textShadow: '0 0 5px var(--gray-a10), 0 0 1px var(--gray-a11)',
         },
@@ -1178,7 +1168,7 @@ const MockDropdownCheckboxItem = ({
 const GlassCard = styled(Card, {
   bc: 'var(--white-a9)',
   backdropFilter: 'blur(8px)',
-  [`.${darkTheme} &`]: {
+  '.dark-theme &': {
     bc: 'var(--white-a2)',
     boxShadow: 'inset 0 0 0 1px var(--white-a4)',
   },

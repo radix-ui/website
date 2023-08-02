@@ -1,4 +1,4 @@
-import { styled } from '@modulz/design-system';
+import { styled } from '@stitches/react';
 
 export const LogoLink = styled('a', {
   display: 'block',
@@ -6,21 +6,19 @@ export const LogoLink = styled('a', {
   color: 'var(--gray-12)',
   position: 'relative',
 
-  '@hover': {
-    color: '$slate9',
+  '@media (hover: hover)': {
+    color: 'var(--gray-9)',
     transition: '120ms color',
+
     '&:hover': {
       color: 'var(--gray-12)',
     },
   },
 
-  '&:focus': {
+  '&:focus-visible': {
     zIndex: 1,
     color: 'var(--gray-12)',
-    boxShadow: '0 0 0 2px $colors$blue8',
-  },
-  '&:focus:not(:focus-visible)': {
-    boxShadow: 'none',
+    boxShadow: '0 0 0 2px var(--blue-8)',
   },
 
   variants: {
@@ -31,7 +29,7 @@ export const LogoLink = styled('a', {
         br: '$1',
       },
       box: {
-        boxShadow: '0 0 0 1px $colors$slate6',
+        boxShadow: '0 0 0 1px var(--gray-6)',
         '&::before': {
           content: '',
           zIndex: 1,
@@ -40,13 +38,13 @@ export const LogoLink = styled('a', {
           transition: '120ms opacity',
           inset: 0,
           opacity: 0,
-          boxShadow: '0 0 0 1px $colors$slate8',
+          boxShadow: '0 0 0 1px var(--gray-8)',
         },
         '&:hover::before': {
           opacity: 1,
         },
         '&:focus::before': {
-          boxShadow: '0 0 0 1px $colors$slate8',
+          boxShadow: '0 0 0 1px var(--gray-8)',
         },
         '&:focus:not(:focus-visible)::before': {
           opacity: 1,
