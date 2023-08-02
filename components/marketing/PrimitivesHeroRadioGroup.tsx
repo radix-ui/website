@@ -66,7 +66,7 @@ const StyledRadio = styled(RadioGroupPrimitive.Item, {
   },
 });
 
-export function MainHeroRadioGroup() {
+export function PrimitivesHeroRadioGroup() {
   return (
     <RadioCardGroup defaultValue="1">
       <StyledRadio value="1">

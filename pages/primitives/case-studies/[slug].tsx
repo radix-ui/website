@@ -58,7 +58,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
 
       <PrimitivesHeader />
 
-      <Container size={{ initial: '2', md: '3' }} px="6">
+      <Container mx="5">
         <Section>
           <Grid columns={{ md: '1fr 330px', lg: '1fr 380px' }} gap={{ md: '9' }}>
             <Box>
@@ -110,7 +110,12 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                   </Text>
 
                   <Flex align="center" gap="2" asChild>
-                    <Link target="_blank" href={`https://${frontmatter.companyUrl}`} highContrast>
+                    <Link
+                      target="_blank"
+                      href={`https://${frontmatter.companyUrl}`}
+                      highContrast
+                      color="gray"
+                    >
                       {frontmatter.companyUrl}
                       <ArrowTopRightIcon style={{ marginLeft: -1, marginBottom: -2 }} />
                     </Link>
@@ -129,7 +134,9 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                   </Text>
 
                   <NextLink href={`/${frontmatter.nextCaseStudySlug}`} passHref>
-                    <Link highContrast>{frontmatter.nextCaseStudyTitle}</Link>
+                    <Link highContrast color="gray">
+                      {frontmatter.nextCaseStudyTitle}
+                    </Link>
                   </NextLink>
                 </Box>
               </Box>

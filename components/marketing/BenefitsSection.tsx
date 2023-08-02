@@ -1,5 +1,6 @@
-import { Box, Container, Grid, Heading, Paragraph, Section, Text } from '@modulz/design-system';
+import { Box, Grid, Heading, Paragraph, Section, Text } from '@modulz/design-system';
 import { MarketingCaption } from './MarketingCaption';
+import { Container } from '@radix-ui/themes';
 
 export const BenefitsSection = () => {
   return (
@@ -9,7 +10,7 @@ export const BenefitsSection = () => {
         overflow: 'hidden',
       }}
     >
-      <Container size="3">
+      <Container mx="5">
         <Box css={{ mb: '$7' }}>
           <MarketingCaption css={{ mb: '$1' }}>Why Radix Primitives</MarketingCaption>
           <Heading as="h2" size="3">

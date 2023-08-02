@@ -4,7 +4,6 @@ import {
   Grid,
   Text,
   styled,
-  Container,
   Flex,
   Heading,
   Paragraph,
@@ -14,7 +13,7 @@ import {
 } from '@modulz/design-system';
 import { MarketingCaption } from './MarketingCaption';
 import { CodeDemo } from './CodeDemo';
-import { Theme } from '@radix-ui/themes';
+import { Container, Theme } from '@radix-ui/themes';
 
 enum Highlights {
   Unstyled = '1-18',
@@ -40,7 +39,7 @@ export const DeveloperExperienceSection = () => {
         },
       }}
     >
-      <Container size="3">
+      <Container mx="5">
         <Grid
           gap={{ '@initial': 5, '@bp3': 8 }}
           css={{ '@bp2': { gridTemplateColumns: 'auto 1fr' } }}
@@ -297,17 +296,13 @@ const StyledCodeDemo = React.forwardRef<HTMLPreElement, React.ComponentProps<typ
 );
 
 const CodeWindow = styled('div', {
-  $$bgColor: '$colors$sky1',
-  [`&.${darkTheme}`]: {
-    $$bgColor: '$colors$sky2',
-  },
-  [`.${darkTheme} &.${darkTheme}`]: {
-    $$bgColor: '$colors$violet1',
-  },
-
   position: 'relative',
-  bc: '$$bgColor',
   br: '$4',
+  bc: 'var(--gray-2)',
+
+  [`.${darkTheme} &`]: {
+    bc: 'var(--black-a9)',
+  },
 
   variants: {
     withChrome: {
@@ -338,7 +333,7 @@ const CodeWindow = styled('div', {
           fontSize: '$1',
           textAlign: 'center',
           color: '$slate9',
-          content: '"DeploymentDetail.jsx"',
+          content: '"MyComponent.jsx"',
         },
       },
     },
@@ -441,11 +436,11 @@ export const StatusTooltip = ({ state, label }) => {
 };`,
 
   customizable: `// Compose a Popover with custom focus and positioning
-export const DeploymentPopover = ({ children }) => {
+export const StatusPopover = ({ children }) => {
   const popoverCloseButton = React.useRef(null);
   return (
     <Popover.Root>
-      <Popover.Trigger>View deployment</Popover.Trigger>
+      <Popover.Trigger>View status</Popover.Trigger>
       <Popover.Portal>
         <PopoverContent
           align="start"

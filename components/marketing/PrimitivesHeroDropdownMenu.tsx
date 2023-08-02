@@ -1,6 +1,6 @@
 import React from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { Box, Flex, styled } from '@modulz/design-system';
+import { styled } from '@stitches/react';
 import {
   CaretDownIcon,
   CaretRightIcon,
@@ -8,17 +8,18 @@ import {
   GitHubLogoIcon,
   TwitterLogoIcon,
 } from '@radix-ui/react-icons';
-import { DemoButton } from '@components/marketing/DemoButton';
+import { Box, Flex } from '@radix-ui/themes';
+import { PrimitivesHeroButton } from '@components/marketing/PrimitivesHeroButton';
 
 const DropdownMenuArrow = styled(DropdownMenuPrimitive.Arrow, {
-  fill: '$loContrast',
+  fill: 'var(--color-panel)',
 });
 
 const contentCss = {
-  bc: '$loContrast',
-  br: '$2',
-  p: '$1',
-  boxShadow: '0px 5px 30px -5px rgba(0, 0, 0, 0.1), 0 1px 3px -1px rgba(0, 0, 0, 0.2)',
+  backgroundColor: 'var(--color-panel)',
+  borderRadius: 'var(--radius-3)',
+  padding: 'var(--space-1)',
+  boxShadow: 'var(--shadow-4)',
 };
 
 const DropdownMenuContentWrapper = styled('div', {
@@ -33,39 +34,39 @@ const DropdownMenuContentWrapper = styled('div', {
 const DropdownMenuContent: any = styled(DropdownMenuPrimitive.Content, contentCss);
 
 const DropdownMenuSeparator = styled(DropdownMenuPrimitive.Separator, {
-  bc: '$slate4',
   height: 1,
-  my: '$1',
-  ml: '20px',
-  mr: '$1',
+  backgroundColor: 'var(--gray-a4)',
+  marginTop: 'var(--space-1)',
+  marginRight: 'var(--space-1)',
+  marginBottom: 'var(--space-1)',
+  marginLeft: '20px',
 });
 
 const itemCss = {
   display: 'flex',
   alignItems: 'center',
-  fontFamily: '$untitled',
-  fontSize: '$1',
+  fontSize: 'var(--font-size-1)',
   fontVariantNumeric: 'tabular-nums',
   lineHeight: '1',
   cursor: 'default',
   userSelect: 'none',
   whiteSpace: 'nowrap',
-  height: '$5',
-  color: '$hiContrast',
+  height: 'var(--space-5)',
+  color: 'var(--gray-12)',
   minWidth: 90,
-  pl: '20px',
-  pr: '$3',
-  br: '$1',
+  paddingLeft: '20px',
+  paddingRight: 'var(--space-4)',
+  borderRadius: 'var(--radius-2)',
 
   '&[data-state="open"]': {
-    backgroundColor: '$slate3',
+    backgroundColor: 'var(--gray-a3)',
   },
 
   // &:active for touch devices
   '&[data-highlighted], &:active': {
     outline: 0,
-    backgroundColor: '$indigo9',
-    color: 'white',
+    backgroundColor: 'var(--color-text)',
+    color: 'var(--color-background)',
   },
 };
 
@@ -73,9 +74,12 @@ const DropdownMenuItem = styled(DropdownMenuPrimitive.Item, itemCss);
 const DropdownMenuCheckboxItem = styled(DropdownMenuPrimitive.CheckboxItem, itemCss);
 
 const DropdownMenuSubTrigger = styled(DropdownMenuPrimitive.SubTrigger, itemCss);
-const DropdownMenuSubContent: any = styled(DropdownMenuPrimitive.SubContent, contentCss);
+const DropdownMenuSubContent: any = styled(DropdownMenuPrimitive.SubContent, {
+  ...contentCss,
+  marginTop: 'calc(var(--space-1) * -1)',
+});
 
-export function MainHeroDropdownMenu() {
+export function PrimitivesHeroDropdownMenu() {
   // We prevent the initial auto focus because it's a demo rather than a real UI,
   // so the parent page focus is not stolen.
   const initialAutoFocusPrevented = React.useRef(false);
@@ -87,11 +91,13 @@ export function MainHeroDropdownMenu() {
 
   return (
     <DropdownMenuPrimitive.Root modal={false} open={open} onOpenChange={setOpen}>
-      <DropdownMenuPrimitive.Trigger asChild>
-        <DemoButton ref={triggerRef} css={{ marginBottom: 120, gap: 3 }}>
-          Options <CaretDownIcon style={{ marginRight: -5 }} />
-        </DemoButton>
-      </DropdownMenuPrimitive.Trigger>
+      <Box style={{ marginBottom: 120 }}>
+        <DropdownMenuPrimitive.Trigger asChild>
+          <PrimitivesHeroButton ref={triggerRef}>
+            Options <CaretDownIcon style={{ marginRight: -3 }} />
+          </PrimitivesHeroButton>
+        </DropdownMenuPrimitive.Trigger>
+      </Box>
 
       <DropdownMenuContentWrapper>
         <DropdownMenuContent
@@ -142,7 +148,7 @@ export function MainHeroDropdownMenu() {
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <Flex
-                  css={{
+                  style={{
                     width: 15,
                     height: 15,
                     alignItems: 'center',

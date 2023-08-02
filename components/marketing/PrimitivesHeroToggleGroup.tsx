@@ -40,7 +40,7 @@ const StyledItem = styled(ToggleGroupPrimitive.Item, {
 const ToggleGroup = StyledToggleGroup;
 const ToggleGroupItem = StyledItem;
 
-export function MainHeroToggleGroup() {
+export function PrimitivesHeroToggleGroup() {
   return (
     <ToggleGroup type="single" defaultValue="center" aria-label="Text alignment">
       <ToggleGroupItem value="left" aria-label="Left aligned">

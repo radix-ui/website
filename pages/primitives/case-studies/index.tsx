@@ -30,7 +30,7 @@ export default function CaseStudy() {
 
       <PrimitivesHeader />
 
-      <Container size={{ initial: '2', md: '3' }} px="6">
+      <Container mx="5">
         <Section>
           <Flex direction="column" align="center" mb="5">
             <Heading size="8" mb="2" align="center">
@@ -185,7 +185,12 @@ export default function CaseStudy() {
             <Text align="center" as="p">
               We’d love to hear how you use Radix Primitives.
               <Flex align="center" gap="2" asChild style={{ display: 'inline-flex' }}>
-                <Link href="https://form.typeform.com/to/FxOiONsk" target="_blank" highContrast>
+                <Link
+                  href="https://form.typeform.com/to/FxOiONsk"
+                  target="_blank"
+                  highContrast
+                  color="gray"
+                >
                   Submit your case study
                   <ArrowTopRightIcon />
                 </Link>

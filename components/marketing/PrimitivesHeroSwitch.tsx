@@ -41,7 +41,7 @@ const StyledThumb = styled(SwitchPrimitive.Thumb, {
 const Switch = StyledSwitch;
 const SwitchThumb = StyledThumb;
 
-export function MainHeroSwitch() {
+export function PrimitivesHeroSwitch() {
   return (
     <Switch defaultChecked aria-label="Demo switch">
       <SwitchThumb />

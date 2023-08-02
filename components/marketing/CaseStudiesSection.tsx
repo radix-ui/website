@@ -2,7 +2,6 @@ import {
   Avatar,
   Box,
   Card,
-  Container,
   Flex,
   Grid,
   Heading,
@@ -11,6 +10,7 @@ import {
   Text,
   styled,
 } from '@modulz/design-system';
+import { Container } from '@radix-ui/themes';
 import { Root as AccessibleIcon } from '@radix-ui/react-accessible-icon';
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
@@ -21,7 +21,7 @@ import { MarketingCaption } from './MarketingCaption';
 export const CaseStudiesSection = () => {
   return (
     <Section>
-      <Container size="3">
+      <Container mx="5">
         <Box css={{ mb: '$5' }}>
           <MarketingCaption css={{ mb: '$1' }}>Case studies</MarketingCaption>
           <Heading as="h2" size="3" css={{ maxWidth: 540 }}>
@@ -88,86 +88,89 @@ export const CaseStudiesSection = () => {
             </Link>
           </NextLink>
         </Text>
-      </Container>
 
-      <Container
-        size="3"
-        css={{
-          position: 'relative',
-          overflowX: 'scroll',
-          overflowY: 'hidden',
-          WebkitOverflowScrolling: 'touch',
-          MsOverflowStyle: 'none',
-          scrollbarWidth: 'none',
-          '&::-webkit-scrollbar': {
-            display: 'none',
-          },
+        <Box
+          css={{
+            position: 'relative',
+            overflowX: 'scroll',
+            overflowY: 'hidden',
+            WebkitOverflowScrolling: 'touch',
+            MsOverflowStyle: 'none',
+            scrollbarWidth: 'none',
+            '&::-webkit-scrollbar': {
+              display: 'none',
+            },
 
-          // Add some padding so that logos aren't clipped when focused.
-          py: '$3',
-          my: '-$3',
-        }}
-      >
-        <Grid flow="column" align="center" justify="start" gap="6">
-          <NextLink href="/primitives/case-studies/atom-learning" passHref>
-            <LogoLink>
-              <AccessibleIcon label="Atom Learning case study">
-                <CaseStudyLogo variant="Atom Learning" width="86" />
-              </AccessibleIcon>
-            </LogoLink>
-          </NextLink>
+            // Add some padding so that logos aren't clipped when focused.
+            py: '$3',
+            my: '-$3',
 
-          <NextLink href="/primitives/case-studies/basedash" passHref>
-            <LogoLink>
-              <AccessibleIcon label="Basedash case study">
-                <CaseStudyLogo variant="Basedash" width="135" />
-              </AccessibleIcon>
-            </LogoLink>
-          </NextLink>
+            // Compensate Container margins
+            mx: 'calc(var(--space-5) * -1)',
+            px: 'var(--space-5)',
+          }}
+        >
+          <Grid flow="column" align="center" justify="start" gap="6">
+            <NextLink href="/primitives/case-studies/atom-learning" passHref>
+              <LogoLink>
+                <AccessibleIcon label="Atom Learning case study">
+                  <CaseStudyLogo variant="Atom Learning" width="86" />
+                </AccessibleIcon>
+              </LogoLink>
+            </NextLink>
 
-          <NextLink href="/primitives/case-studies/basement-studio" passHref>
-            <LogoLink css={{ mb: -6 }}>
-              <AccessibleIcon label="basement.studio case study">
-                <CaseStudyLogo variant="basement.studio" width="120" />
-              </AccessibleIcon>
-            </LogoLink>
-          </NextLink>
+            <NextLink href="/primitives/case-studies/basedash" passHref>
+              <LogoLink>
+                <AccessibleIcon label="Basedash case study">
+                  <CaseStudyLogo variant="Basedash" width="135" />
+                </AccessibleIcon>
+              </LogoLink>
+            </NextLink>
 
-          <NextLink href="/primitives/case-studies/linear" passHref>
-            <LogoLink>
-              <AccessibleIcon label="Linear case study">
-                <CaseStudyLogo variant="Linear" width="105" />
-              </AccessibleIcon>
-            </LogoLink>
-          </NextLink>
+            <NextLink href="/primitives/case-studies/basement-studio" passHref>
+              <LogoLink css={{ mb: -6 }}>
+                <AccessibleIcon label="basement.studio case study">
+                  <CaseStudyLogo variant="basement.studio" width="120" />
+                </AccessibleIcon>
+              </LogoLink>
+            </NextLink>
 
-          <NextLink href="/primitives/case-studies/liveblocks" passHref>
-            <LogoLink css={{ mb: -3 }}>
-              <AccessibleIcon label="Liveblocks case study">
-                <CaseStudyLogo variant="Liveblocks" width="135" />
-              </AccessibleIcon>
-            </LogoLink>
-          </NextLink>
+            <NextLink href="/primitives/case-studies/linear" passHref>
+              <LogoLink>
+                <AccessibleIcon label="Linear case study">
+                  <CaseStudyLogo variant="Linear" width="105" />
+                </AccessibleIcon>
+              </LogoLink>
+            </NextLink>
 
-          <NextLink href="/primitives/case-studies/supabase" passHref>
-            <LogoLink css={{ mb: -2 }}>
-              <AccessibleIcon label="Supabase case study">
-                <CaseStudyLogo variant="Supabase" width="140" />
-              </AccessibleIcon>
-            </LogoLink>
-          </NextLink>
+            <NextLink href="/primitives/case-studies/liveblocks" passHref>
+              <LogoLink css={{ mb: -3 }}>
+                <AccessibleIcon label="Liveblocks case study">
+                  <CaseStudyLogo variant="Liveblocks" width="135" />
+                </AccessibleIcon>
+              </LogoLink>
+            </NextLink>
 
-          <NextLink href="/primitives/case-studies/university-of-amsterdam" passHref>
-            <LogoLink css={{ mt: 2 }}>
-              <AccessibleIcon label="University of Amsterdam case study">
-                <CaseStudyLogo variant="University of Amsterdam" width="152" />
-              </AccessibleIcon>
-            </LogoLink>
-          </NextLink>
+            <NextLink href="/primitives/case-studies/supabase" passHref>
+              <LogoLink css={{ mb: -2 }}>
+                <AccessibleIcon label="Supabase case study">
+                  <CaseStudyLogo variant="Supabase" width="140" />
+                </AccessibleIcon>
+              </LogoLink>
+            </NextLink>
 
-          {/* Horizontal scroll spacer */}
-          <Box css={{ width: 1, height: 1 }} />
-        </Grid>
+            <NextLink href="/primitives/case-studies/university-of-amsterdam" passHref>
+              <LogoLink css={{ mt: 2 }}>
+                <AccessibleIcon label="University of Amsterdam case study">
+                  <CaseStudyLogo variant="University of Amsterdam" width="152" />
+                </AccessibleIcon>
+              </LogoLink>
+            </NextLink>
+
+            {/* Horizontal scroll spacer */}
+            <Box css={{ width: 1, height: 1 }} />
+          </Grid>
+        </Box>
       </Container>
     </Section>
   );

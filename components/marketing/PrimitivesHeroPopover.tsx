@@ -1,9 +1,9 @@
 import React from 'react';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
-import { Text, styled, Grid, TextField } from '@modulz/design-system';
-import { DemoButton } from '@components/marketing/DemoButton';
-import { DemoIconButton } from '@components/marketing/DemoIconButton';
+import { styled } from '@stitches/react';
+import { PrimitivesHeroButton } from '@components/marketing/PrimitivesHeroButton';
 import { Cross2Icon } from '@radix-ui/react-icons';
+import { Flex, IconButton, Text, TextField, Grid, Box } from '@radix-ui/themes';
 
 const PopoverContentWrapper = styled('div', {
   // The default `position: fixed` is wobbly when scrolling with Mac touchpads,
@@ -14,25 +14,7 @@ const PopoverContentWrapper = styled('div', {
   },
 });
 
-const PopoverContent = styled(PopoverPrimitive.Content, {
-  position: 'relative',
-  width: 200,
-  bc: '$loContrast',
-  br: '$2',
-  py: 10,
-  px: 10,
-  boxShadow: '0px 5px 30px -5px rgba(0, 0, 0, 0.1)',
-
-  '& ::selection': {
-    backgroundColor: '$blueA5',
-  },
-});
-
-const PopoverArrow = styled(PopoverPrimitive.Arrow, {
-  fill: '$loContrast',
-});
-
-export function MainHeroPopover() {
+export function PrimitivesHeroPopover() {
   // We prevent the initial auto focus because it's a demo rather than a real UI,
   // so the parent page focus is not stolen.
   const initialAutoFocusPrevented = React.useRef(false);
@@ -41,16 +23,26 @@ export function MainHeroPopover() {
 
   return (
     <PopoverPrimitive.Root modal={false} open={open} onOpenChange={setOpen}>
-      <PopoverPrimitive.Trigger asChild>
-        <DemoButton css={{ mb: 120 }}>Dimensions</DemoButton>
-      </PopoverPrimitive.Trigger>
+      <Box style={{ marginBottom: 120 }}>
+        <PopoverPrimitive.Trigger asChild>
+          <PrimitivesHeroButton>Dimensions</PrimitivesHeroButton>
+        </PopoverPrimitive.Trigger>
+      </Box>
 
       <PopoverContentWrapper>
-        <PopoverContent
+        <PopoverPrimitive.Content
           ref={contentRef}
           side="bottom"
           sideOffset={5}
           avoidCollisions={false}
+          style={{
+            position: 'relative',
+            width: 200,
+            backgroundColor: 'var(--color-panel)',
+            borderRadius: 'var(--radius-3)',
+            padding: 10,
+            boxShadow: 'var(--shadow-4)',
+          }}
           onInteractOutside={(event) => event.preventDefault()}
           onEscapeKeyDown={(event) => {
             event.preventDefault();
@@ -76,32 +68,31 @@ export function MainHeroPopover() {
             }
           }}
         >
-          <PopoverArrow />
+          <PopoverPrimitive.Arrow fill="var(--color-panel)" />
 
-          <Text as="h2" size="3" css={{ fontWeight: '500', mb: '$2', lineHeight: 1.2 }}>
+          <Text as="div" size="3" weight="medium" mb="2">
             Dimensions
           </Text>
 
-          <Grid
-            align="center"
-            css={{ gridTemplateColumns: 'auto 100px', columnGap: '$5', rowGap: '$1' }}
-          >
+          <Grid align="center" columns="auto 100px" gapX="5" gapY="2">
             <Text size="1">Width</Text>
-            <TextField defaultValue="100%" />
+            <TextField.Input size="1" defaultValue="100%" />
             <Text size="1">Height</Text>
-            <TextField defaultValue="20vh" />
+            <TextField.Input size="1" defaultValue="20vh" />
             <Text size="1">Margin</Text>
-            <TextField defaultValue="0" />
+            <TextField.Input size="1" defaultValue="0" />
             <Text size="1">Padding</Text>
-            <TextField defaultValue="10%" />
+            <TextField.Input size="1" defaultValue="10%" />
           </Grid>
 
-          <PopoverPrimitive.Close asChild>
-            <DemoIconButton>
-              <Cross2Icon />
-            </DemoIconButton>
-          </PopoverPrimitive.Close>
-        </PopoverContent>
+          <Flex position="absolute" top="0" right="0" m="2">
+            <PopoverPrimitive.Close asChild>
+              <IconButton size="1" color="gray" variant="ghost" highContrast>
+                <Cross2Icon />
+              </IconButton>
+            </PopoverPrimitive.Close>
+          </Flex>
+        </PopoverPrimitive.Content>
       </PopoverContentWrapper>
     </PopoverPrimitive.Root>
   );

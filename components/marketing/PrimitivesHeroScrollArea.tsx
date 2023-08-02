@@ -1,4 +1,5 @@
-import { Box, Text, styled } from '@modulz/design-system';
+import { Box, Text } from '@radix-ui/themes';
+import { styled } from '@stitches/react';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 
 const SCROLLBAR_SIZE = 10;
@@ -6,7 +7,7 @@ const SCROLLBAR_SIZE = 10;
 const StyledScrollArea = styled(ScrollAreaPrimitive.Root, {
   width: 200,
   height: '77%',
-  borderRadius: '$3',
+  borderRadius: 'var(--radius-3)',
   overflow: 'hidden',
   boxShadow: '0px 5px 30px -5px rgba(0, 0, 0, 0.1), 0 1px 3px -1px rgba(0, 0, 0, 0.2)',
 });
@@ -15,7 +16,7 @@ const StyledViewport = styled(ScrollAreaPrimitive.Viewport, {
   width: '100%',
   height: '100%',
   borderRadius: 'inherit',
-  bc: '$loContrast',
+  backgroundColor: 'var(--color-panel)',
 });
 
 const StyledScrollbar = styled(ScrollAreaPrimitive.Scrollbar, {
@@ -25,9 +26,9 @@ const StyledScrollbar = styled(ScrollAreaPrimitive.Scrollbar, {
   // disable browser handling of all panning and zooming gestures on touch devices
   touchAction: 'none',
   padding: 2,
-  backgroundColor: '$slateA3',
+  backgroundColor: 'var(--gray-a3)',
   transition: 'background-color 120ms, opacity 60ms',
-  '&:hover': { backgroundColor: '$slateA4' },
+  '&:hover': { backgroundColor: 'var(--gray-a4)' },
   '&[data-orientation="vertical"]': { width: SCROLLBAR_SIZE },
   '&[data-orientation="horizontal"]': {
     flexDirection: 'column',
@@ -41,7 +42,7 @@ const StyledScrollbar = styled(ScrollAreaPrimitive.Scrollbar, {
 
 const StyledThumb = styled(ScrollAreaPrimitive.Thumb, {
   flex: 1,
-  background: '$slateA9',
+  background: 'var(--gray-a9)',
   transition: 'background-color 120ms',
   borderRadius: SCROLLBAR_SIZE,
   // increase target size for touch devices https://www.w3.org/WAI/WCAG21/Understanding/target-size.html
@@ -74,22 +75,23 @@ const ScrollAreaCorner = StyledCorner;
 
 const TAGS = Array.from({ length: 50 }).map((_, i, a) => `v1.2.0-beta.${a.length - i}`);
 
-export function MainHeroScrollArea() {
+export function PrimitivesHeroScrollArea() {
   return (
     <ScrollArea>
       <ScrollAreaViewport>
-        <Box css={{ padding: '15px 20px' }}>
-          <Text size="2" css={{ lineHeight: 1.5, fontWeight: 500 }}>
+        <Box p="4">
+          <Text as="div" size="2" weight="bold" trim="start">
             Tags
           </Text>
           {TAGS.map((tag) => (
             <Text
+              as="div"
               size="1"
-              css={{
+              style={{
                 lineHeight: 1.5,
                 marginTop: 10,
                 paddingTop: 10,
-                borderTop: `1px solid $slate6`,
+                borderTop: `1px solid var(--gray-a6)`,
               }}
               key={tag}
             >

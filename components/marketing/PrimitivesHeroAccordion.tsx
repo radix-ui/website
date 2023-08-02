@@ -59,7 +59,7 @@ const StyledTrigger = styled(AccordionPrimitive.Trigger, {
   fontFamily: '$untitled',
   fontSize: '$2',
   lineHeight: 1,
-  color: '$hiContrast',
+  color: 'var(--gray-12)',
   boxShadow: '0 1px 0 $colors$slate6',
   '&[data-state="closed"]': { backgroundColor: '$panel' },
   '&[data-state="open"]': { backgroundColor: '$panel' },
@@ -121,7 +121,7 @@ const AccordionContent = React.forwardRef<
   </StyledContent>
 ));
 
-export function MainHeroAccordion() {
+export function PrimitivesHeroAccordion() {
   return (
     <Accordion type="single" defaultValue="item-1" collapsible>
       <AccordionItem value="item-1">

@@ -1,4 +1,5 @@
-import { Box, Container, Flex, Grid, Section, Text, darkTheme } from '@modulz/design-system';
+import { Box, Flex, Grid, Section, Text, darkTheme } from '@modulz/design-system';
+import { Container } from '@radix-ui/themes';
 
 export const StatsSection = () => {
   return (
@@ -7,11 +8,11 @@ export const StatsSection = () => {
         pb: '$7',
         position: 'relative',
         $$transparent: '#FFFFFF00',
-        $$chartTipColor: '$colors$slate7',
-        $$chartLineStartColor: '$colors$teal5',
-        $$chartLineEndColor: '$colors$slate7',
+        $$chartTipColor: 'var(--gray-7)',
+        $$chartLineStartColor: 'var(--cyan-5)',
+        $$chartLineEndColor: 'var(--gray-7)',
         $$chartTopColor: '#FFFFFF00',
-        $$chartBottomColor: '$colors$slate2',
+        $$chartBottomColor: 'var(--gray-2)',
         [`.${darkTheme} &`]: {
           $$transparent: '#16161800',
           $$chartTopColor: '#16161800',
@@ -27,12 +28,13 @@ export const StatsSection = () => {
           right: -200,
           height: 700,
           backgroundImage:
-            'radial-gradient(ellipse 75% 700px at 35% calc(100% + 100px), $teal8 20%, $cyan3, $$transparent)',
+            'radial-gradient(ellipse 75% 700px at 35% calc(100% + 100px), var(--cyan-7) 20%, var(--blue-3), $$transparent)',
           transform: 'rotate(-10deg)',
+          zIndex: -1,
         }}
       />
       <FancyBackgroundChart />
-      <Container size="3" css={{ position: 'relative' }}>
+      <Container position="relative" mx="5">
         <Grid
           align="stretch"
           justify="start"
@@ -63,7 +65,7 @@ export const StatsSection = () => {
               Monthly downloads
             </Text>
           </Box>
-          <Box css={{ backgroundColor: '$slateA5', width: 1 }} />
+          <Box css={{ backgroundColor: '$grayA5', width: 1 }} />
           <Box>
             <Text
               css={{
@@ -87,7 +89,7 @@ export const StatsSection = () => {
               Discord members
             </Text>
           </Box>
-          <Box css={{ backgroundColor: '$slateA5', width: 1 }} />
+          <Box css={{ backgroundColor: '$grayA5', width: 1 }} />
           <Box>
             <Text
               css={{

@@ -1,18 +1,8 @@
 import React from 'react';
 import NextLink from 'next/link';
-import {
-  Box,
-  Text,
-  styled,
-  darkTheme,
-  Container,
-  Flex,
-  Paragraph,
-  Section,
-  Link,
-} from '@modulz/design-system';
+import { Text, Container, Heading } from '@radix-ui/themes';
+import { Box, styled, darkTheme, Flex, Link } from '@modulz/design-system';
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons';
-import { MarketingButton } from './MarketingButton';
 import {
   Carousel,
   CarouselSlideList,
@@ -20,17 +10,19 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from './Carousel';
-import { MainHeroDialog } from './MainHeroDialog';
-import { MainHeroPopover } from './MainHeroPopover';
-import { MainHeroDropdownMenu } from './MainHeroDropdownMenu';
-import { MainHeroSlider } from './MainHeroSlider';
-import { MainHeroTabs } from './MainHeroTabs';
-import { MainHeroScrollArea } from './MainHeroScrollArea';
-import { MainHeroAccordion } from './MainHeroAccordion';
-import { MainHeroRadioGroup } from './MainHeroRadioGroup';
-import { MainHeroToggleGroup } from './MainHeroToggleGroup';
-import { MainHeroSwitch } from './MainHeroSwitch';
+import { PrimitivesHeroDialog } from './PrimitivesHeroDialog';
+import { PrimitivesHeroPopover } from './PrimitivesHeroPopover';
+import { PrimitivesHeroDropdownMenu } from './PrimitivesHeroDropdownMenu';
+import { PrimitivesHeroSlider } from './PrimitivesHeroSlider';
+import { PrimitivesHeroTabs } from './PrimitivesHeroTabs';
+import { PrimitivesHeroScrollArea } from './PrimitivesHeroScrollArea';
+import { PrimitivesHeroAccordion } from './PrimitivesHeroAccordion';
+import { PrimitivesHeroRadioGroup } from './PrimitivesHeroRadioGroup';
+import { PrimitivesHeroToggleGroup } from './PrimitivesHeroToggleGroup';
+import { PrimitivesHeroSwitch } from './PrimitivesHeroSwitch';
 import { useComposedRefs } from '@radix-ui/react-compose-refs';
+import { Button, Section } from '@radix-ui/themes';
+import { SerifHeading } from '@components/SerifHeading';
 
 const DemoContainer = styled('div', {
   display: 'flex',
@@ -120,7 +112,7 @@ const FocusArea = React.forwardRef<HTMLDivElement, React.ComponentProps<typeof S
   }
 );
 
-export const MainHero = () => {
+export const PrimitivesHero = () => {
   const lastUsedFocusArea = React.useRef<HTMLElement>(null);
   const isRoving = React.useRef(false);
 
@@ -264,58 +256,32 @@ export const MainHero = () => {
   }, []);
 
   return (
-    <Section
-      css={{
-        paddingTop: '$6',
-        // Starting at 850px viewport height, grow the padding top from $5 until it's $9.
-        '@media (min-width: 900px) and (min-height: 850px)': {
-          paddingTop: 'min(96px, calc($9 + (100vh - 850px)))',
-        },
-      }}
-    >
-      <Container size="3">
+    <Section size={{ initial: '2', sm: '3' }}>
+      <Container mx="5">
         <Box css={{ mb: '$6' }}>
-          <Text
-            as="h1"
-            size={{ '@initial': 8, '@bp1': 9 }}
-            css={{
-              color: 'transparent',
-              WebkitBackgroundClip: 'text',
-              backgroundImage:
-                'radial-gradient(circle at bottom left, $colors$hiContrast, $colors$indigo12)',
-              // Use padding rather than margin, or otherwise some descenders
-              // may be clipped with WebkitBackgroundClip: 'text'
-              pb: '$4',
-              // Same issue, letters may be clipped horizontally
-              px: '$2',
-              mr: '-$2',
-              ml: '-$3',
-              fontWeight: 500,
-              lineHeight: 0.9,
-              fontSize: 'min(max($8, 11.2vw), $9)',
-              textWrap: 'balance',
-              letterSpacing: 'max(min(-0.055em, -0.66vw), -0.07em)',
-              maxWidth: 500,
-              '@media (min-width: 600px)': {
-                maxWidth: 800,
-              },
-              '@media (min-width: 900px) and (min-height: 850px)': {
-                fontSize: '80px',
-              },
-            }}
-          >
-            Core building blocks for your design system.
-          </Text>
           <Box css={{ maxWidth: 520, mb: '$5' }}>
-            <Paragraph size="2" as="p">
-              Click. Tap. Type. Resize. And—just add your styles. Unstyled, accessible, open source
-              React primitives for high-quality web apps and design systems.
-            </Paragraph>
+            <SerifHeading mb="3">Core building blocks for your design system.</SerifHeading>
+            <Text size="5" as="p" mb="6" color="gray">
+              Unstyled, accessible, open source React primitives for high-quality web apps and
+              design systems.
+            </Text>
           </Box>
-          <NextLink href="/primitives/docs/overview/getting-started" passHref>
-            <MarketingButton as="a" icon={ArrowRightIcon}>
-              Install Primitives
-            </MarketingButton>
+          <NextLink href="/primitives/docs" passHref>
+            <Button asChild size={{ initial: '3', xs: '4' }} color="gray" highContrast>
+              <a>
+                Get started
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 12 12"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentcolor"
+                  style={{ opacity: 1, marginRight: -3 }}
+                >
+                  <path d="M6.39205 11.6023L5.36932 10.5909L8.92045 7.03977H0V5.5625H8.92045L5.36932 2.01705L6.39205 1L11.6932 6.30114L6.39205 11.6023Z" />
+                </svg>
+              </a>
+            </Button>
           </NextLink>
         </Box>
       </Container>
@@ -333,12 +299,11 @@ export const MainHero = () => {
               WebkitOverflowScrolling: 'touch',
 
               // Gap between slides
-              $$gap: '$space$5',
+              $$gap: 'var(--space-5)',
 
               // calculate the left padding to apply to the scrolling list
               // so that the carousel starts aligned with the container component
-              // the "1145" and "$5" values comes from the <Container /> component
-              '$$scroll-padding': 'max($$gap, calc((100% - 1145px) / 2 + $$gap))',
+              '$$scroll-padding': 'max($$gap, calc(50% - var(--container-3) / 2))',
               pl: '$$scroll-padding',
 
               // hide scrollbar
@@ -369,14 +334,14 @@ export const MainHero = () => {
                     },
                   }}
                 >
-                  <MainHeroDialog />
+                  <PrimitivesHeroDialog />
                 </DemoContainer>
               </FocusArea>
               <GrabBox>
-                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                <Heading as="h3" size="3" mb="1">
                   Dialog
-                </Text>
-                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                </Heading>
+                <Text as="p" size="2" color="gray">
                   With modal and non-modal modes, fine-grained focus&nbsp;control, accessible to
                   screen readers.
                 </Text>
@@ -398,14 +363,14 @@ export const MainHero = () => {
                     },
                   }}
                 >
-                  <MainHeroDropdownMenu />
+                  <PrimitivesHeroDropdownMenu />
                 </DemoContainer>
               </FocusArea>
               <GrabBox>
-                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                <Heading as="h3" size="3" mb="1">
                   Dropdown Menu
-                </Text>
-                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                </Heading>
+                <Text as="p" size="2" color="gray">
                   With submenus, checkable items, collision handling, arrow key navigation, and
                   typeahead support.
                 </Text>
@@ -427,14 +392,14 @@ export const MainHero = () => {
                     },
                   }}
                 >
-                  <MainHeroPopover />
+                  <PrimitivesHeroPopover />
                 </DemoContainer>
               </FocusArea>
               <GrabBox>
-                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                <Heading as="h3" size="3" mb="1">
                   Popover
-                </Text>
-                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                </Heading>
+                <Text as="p" size="2" color="gray">
                   With fine-grained focus control, collision handling, origin-aware and
                   collision-aware animations.
                 </Text>
@@ -456,14 +421,14 @@ export const MainHero = () => {
                     },
                   }}
                 >
-                  <MainHeroSlider />
+                  <PrimitivesHeroSlider />
                 </DemoContainer>
               </FocusArea>
               <GrabBox>
-                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                <Heading as="h3" size="3" mb="1">
                   Slider
-                </Text>
-                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                </Heading>
+                <Text as="p" size="2" color="gray">
                   Supports keyboard and touch input, step interval, multiple thumbs for value
                   ranges, and RTL direction.
                 </Text>
@@ -485,14 +450,14 @@ export const MainHero = () => {
                     },
                   }}
                 >
-                  <MainHeroScrollArea />
+                  <PrimitivesHeroScrollArea />
                 </DemoContainer>
               </FocusArea>
               <GrabBox>
-                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                <Heading as="h3" size="3" mb="1">
                   Scroll Area
-                </Text>
-                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                </Heading>
+                <Text as="p" size="2" color="gray">
                   Supports custom cross-browser styling while maintaining the browser's native
                   scroll behavior.
                 </Text>
@@ -514,14 +479,14 @@ export const MainHero = () => {
                     },
                   }}
                 >
-                  <MainHeroTabs />
+                  <PrimitivesHeroTabs />
                 </DemoContainer>
               </FocusArea>
               <GrabBox>
-                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                <Heading as="h3" size="3" mb="1">
                   Tabs
-                </Text>
-                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                </Heading>
+                <Text as="p" size="2" color="gray">
                   Supports arrow key navigation, horizontal/vertical orientation, controlled or
                   uncontrolled.
                 </Text>
@@ -543,14 +508,14 @@ export const MainHero = () => {
                     },
                   }}
                 >
-                  <MainHeroAccordion />
+                  <PrimitivesHeroAccordion />
                 </DemoContainer>
               </FocusArea>
               <GrabBox>
-                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                <Heading as="h3" size="3" mb="1">
                   Accordion
-                </Text>
-                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                </Heading>
+                <Text as="p" size="2" color="gray">
                   Supports one or multiple items open at the same time, keyboard navigation,
                   collapse and expand animation.
                 </Text>
@@ -572,14 +537,14 @@ export const MainHero = () => {
                     },
                   }}
                 >
-                  <MainHeroRadioGroup />
+                  <PrimitivesHeroRadioGroup />
                 </DemoContainer>
               </FocusArea>
               <GrabBox>
-                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                <Heading as="h3" size="3" mb="1">
                   Radio Group
-                </Text>
-                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                </Heading>
+                <Text as="p" size="2" color="gray">
                   With arrow key navigation, horizontal/vertical orientation support, controlled or
                   uncontrolled.
                 </Text>
@@ -601,14 +566,14 @@ export const MainHero = () => {
                     },
                   }}
                 >
-                  <MainHeroToggleGroup />
+                  <PrimitivesHeroToggleGroup />
                 </DemoContainer>
               </FocusArea>
               <GrabBox>
-                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                <Heading as="h3" size="3" mb="1">
                   Toggle Group
-                </Text>
-                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                </Heading>
+                <Text as="p" size="2" color="gray">
                   A set of two-state buttons that can be toggled on or off. Supports single and
                   multiple pressed buttons.
                 </Text>
@@ -630,14 +595,14 @@ export const MainHero = () => {
                     },
                   }}
                 >
-                  <MainHeroSwitch />
+                  <PrimitivesHeroSwitch />
                 </DemoContainer>
               </FocusArea>
               <GrabBox>
-                <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: '25px' }}>
+                <Heading as="h3" size="3" mb="1">
                   Switch
-                </Text>
-                <Text as="p" size="3" variant="gray" css={{ lineHeight: '23px' }}>
+                </Heading>
+                <Text as="p" size="2" color="gray">
                   Allows the user to toggle between checked and not checked.
                 </Text>
               </GrabBox>
@@ -655,7 +620,7 @@ export const MainHero = () => {
                   }}
                 >
                   <Flex align="center" direction="column" gap="2">
-                    <Text size="2" variant="gray">
+                    <Text size="2" color="gray">
                       See more components in the docs
                     </Text>
                     <Text size="3">
@@ -720,7 +685,7 @@ const CarouselArrowButton = styled('button', {
   br: '$round',
   width: '$7',
   height: '$7',
-  color: '$hiContrast',
+  color: 'var(--gray-12)',
 
   boxShadow: '$colors$blackA11 0px 2px 12px -5px, $colors$blackA5 0px 1px 3px',
   willChange: 'transform, box-shadow, opacity',
@@ -744,7 +709,7 @@ const CarouselArrowButton = styled('button', {
     boxShadow: `
       $colors$blackA10 0px 3px 16px -5px,
       $colors$blackA5 0px 1px 3px,
-      $colors$blue8 0 0 0 2px
+      $colors$blue9 0 0 0 2px
     `,
     transform: 'translateY(-1px)',
   },

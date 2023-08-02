@@ -3,20 +3,20 @@ import { styled } from '@modulz/design-system';
 export const LogoLink = styled('a', {
   display: 'block',
   outline: 0,
-  color: '$hiContrast',
+  color: 'var(--gray-12)',
   position: 'relative',
 
   '@hover': {
     color: '$slate9',
     transition: '120ms color',
     '&:hover': {
-      color: '$hiContrast',
+      color: 'var(--gray-12)',
     },
   },
 
   '&:focus': {
     zIndex: 1,
-    color: '$hiContrast',
+    color: 'var(--gray-12)',
     boxShadow: '0 0 0 2px $colors$blue8',
   },
   '&:focus:not(:focus-visible)': {

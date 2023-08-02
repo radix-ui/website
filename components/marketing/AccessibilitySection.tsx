@@ -1,7 +1,6 @@
 import {
   Box,
   Card,
-  Container,
   Flex,
   Grid,
   Heading,
@@ -11,6 +10,7 @@ import {
   keyframes,
   styled,
 } from '@modulz/design-system';
+import { Container } from '@radix-ui/themes';
 import {
   CaretDownIcon,
   CaretLeftIcon,
@@ -427,7 +427,7 @@ export const AccessibilitySection = () => {
         />
       </Box>
 
-      <Container size="3" css={{ position: 'relative' }}>
+      <Container mx="5" position="relative">
         <Box css={{ mb: '$5' }}>
           <MarketingCaption css={{ mb: '$1' }}>Supports assistive technology</MarketingCaption>
           <Heading as="h2" size="3">
@@ -440,7 +440,7 @@ export const AccessibilitySection = () => {
           css={{
             bc: '$mauveA3',
             mb: '$5',
-            boxShadow: '0 0 1px $colors$slateA9',
+            boxShadow: '0 0 1px var(--gray-a9)',
             backdropFilter: 'blur(8px)',
 
             // Horizontal spacing is really tight on iPhone SE
@@ -465,19 +465,19 @@ export const AccessibilitySection = () => {
               gridTemplateRows: 'auto',
               gridAutoRows: '270px',
               '& > *:nth-child(2)': {
-                boxShadow: '0 1px $colors$grayA4',
+                boxShadow: '0 1px var(--gray-a4)',
               },
               '@media (min-width: 620px)': {
                 gridTemplateColumns: 'repeat(2, minmax(min-content, 1fr))',
                 '& > *:nth-child(2)': {
-                  boxShadow: '1px 0 $colors$grayA4',
+                  boxShadow: '1px 0 var(--gray-a4)',
                 },
               },
               '@bp2': {
                 gridTemplateRows: '270px',
                 gridTemplateColumns: 'repeat(3, minmax(min-content, 1fr))',
                 '& > *:nth-child(2)': {
-                  boxShadow: '1px 0 $colors$grayA4, -1px 0 $colors$grayA4',
+                  boxShadow: '1px 0 var(--gray-a4), -1px 0 var(--gray-a4)',
                 },
               },
               '& > *': {
@@ -487,7 +487,7 @@ export const AccessibilitySection = () => {
 
               $$subpanel: 'transparent',
               [`.${darkTheme} &`]: {
-                $$subpanel: '$colors$mauveA2',
+                $$subpanel: 'var(--mauve-a2)',
               },
             }}
           >
@@ -498,7 +498,7 @@ export const AccessibilitySection = () => {
                 py: '$5',
                 bc: '$grayA1',
                 gridColumn: '1 / -1',
-                boxShadow: '0 1px $colors$grayA4',
+                boxShadow: '0 1px var(--gray-a4)',
                 '@bp2': {
                   boxShadow: 'none',
                   gridColumn: '1 / 2',
@@ -734,7 +734,7 @@ const MockDropdownSeparator = styled('div', {
   ml: 30,
   mr: 10,
   my: 5,
-  bc: '$mauve5',
+  bc: 'var(--mauve-a5)',
 });
 
 const MockDropdown = ({ state }: { state?: MockDropdownState }) => {
@@ -833,16 +833,11 @@ const MockScreenReader = ({ css, ...props }: React.ComponentProps<typeof Heading
       size="3"
       as="span"
       css={{
-        $$textBgStop1: '#4F4B59',
-        $$textBgStop2: '#545685',
         color: 'transparent',
         WebkitBackgroundClip: 'text',
         userSelect: 'none',
-        backgroundImage: 'linear-gradient(to bottom right, $$textBgStop1, $$textBgStop2)',
-        [`.${darkTheme} &`]: {
-          $$textBgStop1: '$colors$indigo12',
-          $$textBgStop2: '$colors$whiteA11',
-        },
+        filter: 'saturate(0.5)',
+        backgroundImage: 'linear-gradient(to bottom right, var(--blue-11), var(--gray-12))',
         ...css,
       }}
       {...props}
@@ -856,7 +851,7 @@ const MockTypeaheadOutput = styled(Text, {
   br: '$1',
   pb: 2,
   bc: '$indigo4',
-  border: '1px solid $colors$indigo6',
+  border: '1px solid var(--blue-a6)',
   lineHeight: '18px',
   whiteSpace: 'pre',
   '&:empty': {
@@ -988,7 +983,7 @@ const MockArrowKeyboard = ({ currentKey }: { currentKey?: string }) => {
 const keyPressAnimation = keyframes({
   from: {
     bc: '$slate5',
-    boxShadow: '0 0 0 1px $colors$slate5',
+    boxShadow: '0 0 0 1px var(--gray-5)',
   },
 });
 
@@ -997,7 +992,7 @@ const Key = styled('span', {
   bc: '$mauve1',
   fontFamily: '$untitled',
   color: '$slate11',
-  boxShadow: '0 0 0 1px $colors$mauveA6, 0 2px $colors$mauveA6',
+  boxShadow: '0 0 0 1px var(--mauve-a6), 0 2px var(--mauve-a6)',
   userSelect: 'none',
   flex: 'none',
   maxWidth: '100%',
@@ -1040,7 +1035,7 @@ const Key = styled('span', {
         fontSize: '$1',
         [`.${darkTheme} &`]: {
           color: '$slate12',
-          textShadow: '0 0 5px $colors$slateA10, 0 0 1px $colors$slateA11',
+          textShadow: '0 0 5px var(--gray-a10), 0 0 1px var(--gray-a11)',
         },
       },
     },
@@ -1060,7 +1055,7 @@ const MockDropdownButton = styled(Box, {
   lineHeight: '35px',
   mb: '$1',
   px: '$2',
-  color: '$hiContrast',
+  color: 'var(--gray-12)',
   bc: '$loContrast',
   fontFamily: '$untitled',
   fontSize: '$2',
@@ -1070,11 +1065,11 @@ const MockDropdownButton = styled(Box, {
   variants: {
     focused: {
       true: {
-        boxShadow: 'inset 0 0 0 1px $colors$indigo8, 0 0 0 1px $colors$indigo8',
+        boxShadow: 'inset 0 0 0 1px var(--blue-a8), 0 0 0 1px var(--blue-a8)',
         transition: 'none',
       },
       false: {
-        boxShadow: 'inset 0 0 0 1px $colors$slate5, 0 0 0 3px #FFFFFF00',
+        boxShadow: 'inset 0 0 0 1px var(--gray-5), 0 0 0 3px #FFFFFF00',
         bc: '$mauve1',
       },
     },
@@ -1129,12 +1124,8 @@ const MockDropdownItem = styled(Box, {
   height: '$$itemHeight',
   lineHeight: '$$itemHeight',
   position: 'relative',
-  color: '$hiContrast',
+  color: 'var(--gray-12)',
   br: 5,
-
-  [`.${darkTheme} &`]: {
-    color: '$slate11',
-  },
 
   variants: {
     indent: {
@@ -1147,17 +1138,13 @@ const MockDropdownItem = styled(Box, {
     },
     focused: {
       true: {
-        backgroundColor: '$indigo11',
-        color: 'white',
-        [`.${darkTheme} &`]: {
-          color: 'white',
-          backgroundColor: '$indigo7',
-        },
+        backgroundColor: 'var(--color-text)',
+        color: 'var(--color-background)',
       },
     },
     focusWithin: {
       true: {
-        backgroundColor: '$slateA4',
+        backgroundColor: 'var(--gray-a4)',
       },
     },
   },
@@ -1189,11 +1176,11 @@ const MockDropdownCheckboxItem = ({
 };
 
 const GlassCard = styled(Card, {
-  bc: '$whiteA9',
+  bc: 'var(--white-a9)',
   backdropFilter: 'blur(8px)',
   [`.${darkTheme} &`]: {
-    bc: '$whiteA2',
-    boxShadow: 'inset 0 0 0 1px $colors$whiteA4',
+    bc: 'var(--white-a2)',
+    boxShadow: 'inset 0 0 0 1px var(--white-a4)',
   },
 });
 
@@ -1389,7 +1376,7 @@ const AnimationStateButton = styled('button', {
   WebkitTapHighlightColor: 'transparent',
 
   fontSize: '$4',
-  fontFamily: '$untitled',
+  fontFamily: 'inherit',
   fontWeight: 500,
   lineHeight: 1,
   letterSpacing: '-0.015em',
@@ -1397,29 +1384,24 @@ const AnimationStateButton = styled('button', {
   px: '$2',
   position: 'relative',
   br: '$2',
-  $$outline: '0 0',
 
-  '&:focus': {
-    boxShadow: '0 0 0 2px $colors$cyan8',
-  },
-  '&:focus:not(:focus-visible)': {
-    boxShadow: '$$outline',
+  '&:focus-visible': {
+    boxShadow: '0 0 0 2px var(--blue-a8)',
   },
 
   variants: {
     active: {
       true: {
-        $$outline: 'inset 0 0 0 1px $colors$cyan6',
-        boxShadow: '$$outline',
-        color: '$hiContrast',
-        backgroundColor: '$cyanA4',
+        boxShadow: 'inset 0 0 0 1px var(--blue-a6)',
+        color: 'var(--gray-12)',
+        backgroundColor: 'var(--blue-a4)',
         cursor: 'default',
       },
       false: {
-        color: '$slate9',
+        color: 'var(--gray-a9)',
         '@hover': {
           '&:hover': {
-            color: '$hiContrast',
+            color: 'var(--gray-12)',
           },
         },
       },

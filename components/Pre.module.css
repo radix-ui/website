@@ -28,18 +28,22 @@
   --highlighted-word-3-text: var(--green-11);
 }
 
-.Pre.violet {
-  --background: var(--accent-a2);
-  --border: var(--accent-4);
+.Pre.blue {
+  --background: var(--color-panel);
+  --border: var(--gray-a5);
 
-  --syntax-accent: var(--violet-10);
-  --syntax-accent-subtle: var(--violet-12);
-  --syntax-complementary: var(--mint-11);
-  --syntax-secondary: var(--sky-11);
+  --syntax-accent: var(--blue-11);
+  --syntax-accent-subtle: var(--blue-12);
+  --syntax-complementary: var(--crimson-11);
+  --syntax-secondary: var(--teal-11);
+
+  --highlighted-line-bg: var(--blue-a3);
+  --highlighted-word-1-bg: var(--blue-a4);
+  --highlighted-word-1-text: var(--blue-12);
 }
 
-:global(.dark-theme) .Pre.violet {
-  --syntax-accent: var(--violet-11);
+:global(.dark-theme) .Pre.blue {
+  --syntax-accent: var(--blue-11);
 }
 
 .Pre.pink {

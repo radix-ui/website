@@ -1,9 +1,16 @@
 import * as React from 'react';
 import styles from './ColorsMarketingButton.module.css';
+import { Button } from '@radix-ui/themes';
 
 export const ColorsMarketingButton = React.forwardRef<
-  HTMLAnchorElement,
-  React.ComponentPropsWithoutRef<'a'>
+  HTMLButtonElement,
+  React.ComponentProps<typeof Button>
 >((props, forwardedRef) => (
-  <a {...props} className={styles.ColorsMarketingButton} ref={forwardedRef} />
+  <Button
+    color="gray"
+    highContrast
+    {...props}
+    className={styles.ColorsMarketingButton}
+    ref={forwardedRef}
+  />
 ));

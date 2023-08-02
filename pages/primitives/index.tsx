@@ -1,4 +1,4 @@
-import { Container } from '@modulz/design-system';
+import { Container } from '@radix-ui/themes';
 
 import { DocsNav } from '@components/DocsNav';
 import { Footer } from '@components/Footer';
@@ -13,8 +13,7 @@ import { CommunitySection } from '@components/marketing/CommunitySection';
 import { ComponentHighlightsSection } from '@components/marketing/ComponentHighlightsSection';
 import { DeveloperExperienceSection } from '@components/marketing/DeveloperExperienceSection';
 import { FancyBackground } from '@components/marketing/FancyBackground';
-import { MainHero } from '@components/marketing/MainHero';
-import { OtherProductsSection } from '@components/marketing/OtherProductsSection';
+import { PrimitivesHero } from '@components/marketing/PrimitivesHero';
 import { StatsSection } from '@components/marketing/StatsSection';
 import { primitivesRoutes } from '@lib/primitivesRoutes';
 import { Box, ScrollArea, Separator } from '@radix-ui/themes';
@@ -38,10 +37,10 @@ export default function PrimitivesHome() {
         <PrimitivesHeader ghost />
       </Box>
       <FancyBackground>
-        <MainHero />
+        <PrimitivesHero />
       </FancyBackground>
       <CaseStudiesSection />
-      <Container size="3">
+      <Container mx="5">
         <Separator size="2" />
       </Container>
       <Box style={{ overflow: 'hidden' }}>
@@ -52,15 +51,11 @@ export default function PrimitivesHome() {
       <AccessibilitySection />
       <DeveloperExperienceSection />
       <AdoptionSection />
-      <Container size="3">
+      <Container mx="5">
         <Separator size="2" />
       </Container>
       <CommunitySection />
-      <Container size="3">
-        <Separator size="2" />
-      </Container>
-      <OtherProductsSection />
-      <Container size="3">
+      <Container mx="5">
         <Footer />
       </Container>
     </MobileMenuProvider>

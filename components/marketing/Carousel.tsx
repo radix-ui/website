@@ -151,6 +151,10 @@ export const CarouselSlideList = (props) => {
       ref={composedRefs}
       data-state={dragStart ? 'dragging' : undefined}
       onMouseDownCapture={composeEventHandlers(props.onMouseDownCapture, (event: MouseEvent) => {
+        if (event.target instanceof HTMLInputElement) {
+          return;
+        }
+
         // Drag only if main mouse button was clicked
         if (event.button === 0) {
           document.addEventListener('mousemove', handleMouseMove);
