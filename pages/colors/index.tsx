@@ -43,7 +43,7 @@ export default function ColorsHome() {
         <Section size={{ initial: '2', sm: '3' }}>
           <Container mx="5">
             <SerifHeading mb="3" style={{ maxWidth: 680 }}>
-              A gorgeous, accessible colour system for user interfaces
+              A gorgeous, accessible colour system for user interfaces.
             </SerifHeading>
 
             <Box style={{ maxWidth: 500 }}>

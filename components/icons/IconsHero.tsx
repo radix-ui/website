@@ -51,7 +51,7 @@ export const IconsHero = () => {
               <SerifHeading>
                 A crisp set
                 <br />
-                of 15×15 icons
+                of 15×15 icons.
               </SerifHeading>
             </Box>
 

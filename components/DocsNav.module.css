@@ -23,7 +23,7 @@
 }
 
 .DocsNavItem:not([href]) {
-  color: var(--gray-10);
+  color: var(--gray-a10);
 }
 
 .DocsNavItem.active {
