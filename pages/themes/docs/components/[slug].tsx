@@ -5,9 +5,10 @@ import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { MDXProvider, components } from '@components/MDXComponents';
 import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { QuickNav } from '@components/QuickNav';
+import { ArrowTopRightIcon } from '@radix-ui/react-icons';
+import * as icons from '@radix-ui/react-icons';
 
 import type { Frontmatter } from 'types/frontmatter';
-import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 
 type Doc = {
   frontmatter: Frontmatter;
@@ -66,7 +67,7 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
       </Box>
 
       <MDXProvider frontmatter={frontmatter}>
-        <Component components={components as any} />
+        <Component components={{ ...components, ...icons } as any} />
       </MDXProvider>
 
       <QuickNav key={frontmatter.slug} />

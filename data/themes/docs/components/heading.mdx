@@ -1,6 +1,6 @@
 ---
 metaTitle: Heading
-metaDescription: Base typographic heading element.
+metaDescription: A semantic heading element.
 sourcePath: components/heading
 ---
 
@@ -28,29 +28,39 @@ Use the `as` prop to change the heading level. This prop is purely semantic and 
 
 ### Size
 
-Use the `size` prop to control the size of the heading. The prop also provides correct line height and corrective letter spacing—as text size increases, the relative line height and letter spacing decreate.
+Use the `size` prop to control the size of the heading. The prop also provides correct line height and corrective letter spacing—as text size increases, the relative line height and letter spacing decrease.
 
-You can change the size across breakpoints using the object syntax.
+{
 
-> Heading sizes match [Text](/themes/docs/components/text) sizes. However, the line heights and letter spacing are set tighter.
+<Callout.Root my="5">
+  <Callout.Icon>
+    <InfoCircledIcon />
+  </Callout.Icon>
+  <Callout.Text>
+    Heading sizes match <Code>Text</Code> sizes. However, the line heights and
+    letter spacing are set tighter.
+  </Callout.Text>
+</Callout.Root>
+
+}
 
 ```jsx live="true"
 <Flex direction="column" gap="3" width="max-content">
-  <Heading size="9">Portez ce vieux whisky</Heading>
-  <Heading size="8">Portez ce vieux whisky</Heading>
-  <Heading size="7">Portez ce vieux whisky</Heading>
-  <Heading size="6">Portez ce vieux whisky</Heading>
-  <Heading size="5">Portez ce vieux whisky</Heading>
-  <Heading size="4">Portez ce vieux whisky</Heading>
-  <Heading size="3">Portez ce vieux whisky</Heading>
-  <Heading size="2">Portez ce vieux whisky</Heading>
-  <Heading size="1">Portez ce vieux whisky</Heading>
+  <Heading size="9">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="8">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="7">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="6">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="5">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="4">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="3">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="2">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="1">The quick brown fox jumps over the lazy dog</Heading>
 </Flex>
 ```
 
 ### Align
 
-Use the `align` prop to set text alignment. You can change the alignment across breakpoints using the object syntax.
+Use the `align` prop to set text alignment.
 
 ```jsx live="true"
 <Heading align="left">Left-aligned</Text>
@@ -60,7 +70,7 @@ Use the `align` prop to set text alignment. You can change the alignment across 
 
 ### Trim
 
-Use the `trim` prop to trim the leading space at the start, end, or both sides of the text box. You can change the leading trim across breakpoints using the object syntax.
+Use the `trim` prop to trim the leading space at the start, end, or both sides of the text box.
 
 The prop works similarly to the upcoming [half-leading control](https://www.w3.org/TR/css-inline-3/#leading-trim) spec, but uses a common [negative margin workaround](https://seek-oss.github.io/capsize/) under the hood for cross-browser support.
 
@@ -131,14 +141,22 @@ Trimming the leading is useful when dialing in vertical spacing in cards or othe
 
 ### Color
 
-Use the `color` prop to assign a specific color value, ignoring the global theme.
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
 
 ```jsx live=true
-<Flex gap="3">
-  <Heading color="crimson">Crimson</Heading>
-  <Heading color="indigo">Indigo</Heading>
-  <Heading color="grass">Grass</Heading>
-  <Heading color="orange">Orange</Heading>
+<Flex direction="column" gap="1">
+  <Heading color="indigo" size="5">
+    The quick brown fox jumps over the lazy dog
+  </Heading>
+  <Heading color="cyan" size="5">
+    The quick brown fox jumps over the lazy dog
+  </Heading>
+  <Heading color="orange" size="5">
+    The quick brown fox jumps over the lazy dog
+  </Heading>
+  <Heading color="crimson" size="5">
+    The quick brown fox jumps over the lazy dog
+  </Heading>
 </Flex>
 ```
 
