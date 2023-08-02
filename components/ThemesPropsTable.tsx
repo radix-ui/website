@@ -66,6 +66,7 @@ const definitions = {
   calloutRoot: { ...themes.calloutRootPropDefs },
   inset: { ...themes.insetPropDefs },
   tabsList: { ...themes.tabsListPropDefs },
+  kbd: { ...themes.kbdPropDefs },
 } as const;
 
 type PropDefinitions = typeof definitions;
