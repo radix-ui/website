@@ -33,13 +33,13 @@ Renders the callout text. This component is based on the `p` element.
 
 ## Examples
 
-### Colors
+### Variant
 
-Use the `color` prop to assign a specific color value, ignoring the global theme.
+Use the `variant` prop to control the visual style.
 
 ```jsx live=true
 <Flex direction="column" gap="3">
-  <Callout.Root color="gray">
+  <Callout.Root variant="soft">
     <Callout.Icon>
       <InfoCircledIcon />
     </Callout.Icon>
@@ -49,6 +49,34 @@ Use the `color` prop to assign a specific color value, ignoring the global theme
     </Callout.Text>
   </Callout.Root>
 
+  <Callout.Root variant="outline">
+    <Callout.Icon>
+      <InfoCircledIcon />
+    </Callout.Icon>
+    <Callout.Text>
+      You will need <Link href="#">admin privileges</Link> to install and access
+      this application.
+    </Callout.Text>
+  </Callout.Root>
+
+  <Callout.Root variant="surface">
+    <Callout.Icon>
+      <InfoCircledIcon />
+    </Callout.Icon>
+    <Callout.Text>
+      You will need <Link href="#">admin privileges</Link> to install and access
+      this application.
+    </Callout.Text>
+  </Callout.Root>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
+
+```jsx live=true
+<Flex direction="column" gap="3">
   <Callout.Root color="blue">
     <Callout.Icon>
       <InfoCircledIcon />
@@ -69,7 +97,7 @@ Use the `color` prop to assign a specific color value, ignoring the global theme
     </Callout.Text>
   </Callout.Root>
 
-  <Callout.Root color="yellow">
+  <Callout.Root color="red">
     <Callout.Icon>
       <InfoCircledIcon />
     </Callout.Icon>
@@ -78,14 +106,30 @@ Use the `color` prop to assign a specific color value, ignoring the global theme
       this application.
     </Callout.Text>
   </Callout.Root>
+</Flex>
+```
 
-  <Callout.Root color="red">
+### High-contrast
+
+Use the `HighContrast` prop to add additional contrast.
+
+```jsx live=true
+<Flex direction="column" gap="3">
+  <Callout.Root variant="soft">
     <Callout.Icon>
       <InfoCircledIcon />
     </Callout.Icon>
     <Callout.Text>
-      You will need <Link href="#">admin privileges</Link> to install and access
-      this application.
+      An update to Radix Themes is available. See what’s new in version 3.2.0.
+    </Callout.Text>
+  </Callout.Root>
+
+  <Callout.Root variant="soft" highContrast>
+    <Callout.Icon>
+      <InfoCircledIcon />
+    </Callout.Icon>
+    <Callout.Text>
+      An update to Radix Themes is available. See what’s new in version 3.2.0.
     </Callout.Text>
   </Callout.Root>
 </Flex>
