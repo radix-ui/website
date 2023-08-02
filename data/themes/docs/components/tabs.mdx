@@ -5,43 +5,31 @@ sourcePath: components/tabs
 ---
 
 ```jsx live=true
-<Box mt="0">
-  <Tabs.Root
-    defaultValue="account"
-    style={{
-      border: '1px solid var(--gray-a5)',
-      borderRadius: 'min(var(--radius-3), var(--radius-3))',
-    }}
-  >
-    <Tabs.List>
-      <Tabs.Trigger value="account">Account</Tabs.Trigger>
-      <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
-      <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
-    </Tabs.List>
+<Tabs.Root defaultValue="account">
+  <Tabs.List>
+    <Tabs.Trigger value="account">Account</Tabs.Trigger>
+    <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+    <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+  </Tabs.List>
 
-    <Tabs.Content value="account">
-      <Box p="5">
-        <Text>
-          Make changes to your <Strong>account</Strong> here.
-        </Text>
-      </Box>
-    </Tabs.Content>
-    <Tabs.Content value="documents">
-      <Box p="5">
-        <Text>
-          Make changes to your <Strong>documents</Strong> here.
-        </Text>
-      </Box>
-    </Tabs.Content>
-    <Tabs.Content value="settings">
-      <Box p="5">
-        <Text>
-          Make changes to your <Strong>settings</Strong> here.
-        </Text>
-      </Box>
-    </Tabs.Content>
-  </Tabs.Root>
-</Box>
+  <Tabs.Content value="account">
+    <Box px="4" pt="4" pb="2">
+      <Text size="2">Make changes to your account.</Text>
+    </Box>
+  </Tabs.Content>
+
+  <Tabs.Content value="documents">
+    <Box px="4" pt="4" pb="2">
+      <Text size="2">Access and update your documents.</Text>
+    </Box>
+  </Tabs.Content>
+
+  <Tabs.Content value="settings">
+    <Box px="4" pt="4" pb="2">
+      <Text size="2">Edit your profile or update contact information.</Text>
+    </Box>
+  </Tabs.Content>
+</Tabs.Root>
 ```
 
 ## API Reference
@@ -50,11 +38,13 @@ This component inherits the props from the [Radix Tabs](/primitives/docs/compone
 
 ### Root
 
-Contains all the tabs component parts.
+Contains all component parts.
 
 ### List
 
-Contains the triggers that are aligned along the edge of the active content.
+Contains the triggers that sit alongside the active content.
+
+<ThemesPropsTable name="tabsList" />
 
 ### Trigger
 
@@ -63,3 +53,29 @@ The button that activates its associated content.
 ### Content
 
 Contains the content associated with each trigger.
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size of the tabs list.
+
+```jsx live=true
+<Flex direction="column" gap="3">
+  <Tabs.Root defaultValue="account">
+    <Tabs.List size="1">
+      <Tabs.Trigger value="account">Account</Tabs.Trigger>
+      <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+      <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+    </Tabs.List>
+  </Tabs.Root>
+
+  <Tabs.Root defaultValue="account">
+    <Tabs.List size="2">
+      <Tabs.Trigger value="account">Account</Tabs.Trigger>
+      <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+      <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+    </Tabs.List>
+  </Tabs.Root>
+</Flex>
+```
