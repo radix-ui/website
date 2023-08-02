@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Icons from '@radix-ui/react-icons';
-import { Grid, Tooltip, Text, Box, IconButton } from '@radix-ui/themes';
+import { Grid, Tooltip, Heading, Box, IconButton, Flex } from '@radix-ui/themes';
 import { CopyToastVisibility } from './CopyToast';
 
 import styles from './AllIcons.module.css';
@@ -33,7 +33,7 @@ export const AllIcons = React.memo(() => {
 
 const Group = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Grid className={styles.GroupGrid} mt="5" mb="6" px="2">
+    <Grid className={styles.GroupGrid} px="2" mb={{ sm: '3' }}>
       {children}
     </Grid>
   );
@@ -52,8 +52,7 @@ const CopyButton = ({ children, label }: CopyButtonProps) => {
           <IconButton
             highContrast
             variant="ghost"
-            size="3"
-            style={{ '--icon-button-ghost-padding': 'var(--space-4)' } as React.CSSProperties}
+            size="4"
             onClick={(event: React.MouseEvent) => {
               const svg = event.currentTarget.querySelector('svg');
               const code = svg && svg.parentElement ? svg.parentElement.innerHTML : null;
@@ -92,9 +91,11 @@ const CopyButton = ({ children, label }: CopyButtonProps) => {
 const Abstract = () => {
   return (
     <Box>
-      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="6" weight="medium">
-        Abstract
-      </Text>
+      <Flex py="6">
+        <Heading as="h3" size="1" weight="medium">
+          Abstract
+        </Heading>
+      </Flex>
       <Group>
         <CopyButton label="Hamburger Menu">
           <Icons.HamburgerMenuIcon />
@@ -248,9 +249,11 @@ const Abstract = () => {
 const Alignment = () => {
   return (
     <Box>
-      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="6" weight="medium">
-        Alignment
-      </Text>
+      <Flex pt="6" pb="6">
+        <Heading as="h3" size="1" weight="medium">
+          Alignment
+        </Heading>
+      </Flex>
       <Group>
         <CopyButton label="Align Top">
           <Icons.AlignTopIcon />
@@ -308,9 +311,11 @@ const Alignment = () => {
 const Arrows = () => {
   return (
     <Box>
-      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="6" weight="medium">
-        Arrows
-      </Text>
+      <Flex pt="6" pb="6">
+        <Heading as="h3" size="1" weight="medium">
+          Arrows
+        </Heading>
+      </Flex>
       <Group>
         <CopyButton label="Arrow Left">
           <Icons.ArrowLeftIcon />
@@ -422,9 +427,11 @@ const Arrows = () => {
 const Borders = () => {
   return (
     <Box>
-      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="6" weight="medium">
-        Borders and corners
-      </Text>
+      <Flex pt="6" pb="6">
+        <Heading as="h3" size="1" weight="medium">
+          Borders and corners
+        </Heading>
+      </Flex>
       <Group>
         <CopyButton label="Border All">
           <Icons.BorderAllIcon />
@@ -482,9 +489,11 @@ const Borders = () => {
 const Components = () => {
   return (
     <Box>
-      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="6" weight="medium">
-        Components
-      </Text>
+      <Flex pt="6" pb="6">
+        <Heading as="h3" size="1" weight="medium">
+          Components
+        </Heading>
+      </Flex>
       <Group>
         <CopyButton label="Box">
           <Icons.BoxIcon />
@@ -578,9 +587,11 @@ const Components = () => {
 const Design = () => {
   return (
     <Box>
-      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="6" weight="medium">
-        Design
-      </Text>
+      <Flex pt="6" pb="6">
+        <Heading as="h3" size="1" weight="medium">
+          Design
+        </Heading>
+      </Flex>
       <Group>
         <CopyButton label="Frame">
           <Icons.FrameIcon />
@@ -710,9 +721,11 @@ const Design = () => {
 const Logos = () => {
   return (
     <Box>
-      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="6" weight="medium">
-        Logos
-      </Text>
+      <Flex pt="6" pb="6">
+        <Heading as="h3" size="1" weight="medium">
+          Logos
+        </Heading>
+      </Flex>
       <Group>
         <CopyButton label="Modulz Logo">
           <Icons.ModulzLogoIcon />
@@ -764,9 +777,11 @@ const Logos = () => {
 const Music = () => {
   return (
     <Box>
-      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="6" weight="medium">
-        Music
-      </Text>
+      <Flex pt="6" pb="6">
+        <Heading as="h3" size="1" weight="medium">
+          Music
+        </Heading>
+      </Flex>
       <Group>
         <CopyButton label="Play">
           <Icons.PlayIcon />
@@ -812,9 +827,11 @@ const Music = () => {
 const Objects = () => {
   return (
     <Box>
-      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="6" weight="medium">
-        Objects
-      </Text>
+      <Flex pt="6" pb="6">
+        <Heading as="h3" size="1" weight="medium">
+          Objects
+        </Heading>
+      </Flex>
       <Group>
         <CopyButton label="Magnifying Glass">
           <Icons.MagnifyingGlassIcon />
@@ -1067,9 +1084,11 @@ const Objects = () => {
 const Typography = () => {
   return (
     <Box>
-      <Text as="p" style={{ letterSpacing: '-0.01em' }} size="1" my="6" weight="medium">
-        Typography
-      </Text>
+      <Flex pt="6" pb="6">
+        <Heading as="h3" size="1" weight="medium">
+          Typography
+        </Heading>
+      </Flex>
       <Group>
         <CopyButton label="Font Style">
           <Icons.FontStyleIcon />
