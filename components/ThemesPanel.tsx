@@ -156,7 +156,7 @@ const ThemesPanel = React.forwardRef<ThemesPanelElement, ThemesPanelProps>(
           zIndex: 1,
           overflow: 'hidden',
           height: 'calc(100vh - var(--space-9))',
-          backgroundColor: 'var(--color-panel)',
+          backgroundColor: 'var(--color-panel-solid)',
           boxShadow: 'inset 1px 0 0 0 var(--gray-6)',
           transformOrigin: 'top right',
           transitionProperty: 'opacity, transform',

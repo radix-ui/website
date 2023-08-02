@@ -38,7 +38,7 @@ export const IconsPanel = () => {
         style={{
           borderRadius: 'var(--radius-3)',
           minHeight: 900,
-          background: 'var(--color-panel)',
+          background: 'var(--color-panel-solid)',
           position: 'relative',
           boxShadow: 'var(--shadow-5)',
         }}

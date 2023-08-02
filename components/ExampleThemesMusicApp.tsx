@@ -239,7 +239,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
 
                   <Flex my="-1">
                     <Switch
-                      variant="surface"
+                      variant="classic"
                       tabIndex={-1}
                       defaultChecked
                       radius="full"
@@ -702,7 +702,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                       </Text>
                     </Box>
 
-                    <Switch variant="surface" tabIndex={-1} radius="full" mt="2" />
+                    <Switch variant="classic" tabIndex={-1} radius="full" mt="2" />
                   </Flex>
                 </Label>
 
@@ -718,7 +718,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                       </Text>
                     </Box>
 
-                    <Switch variant="surface" tabIndex={-1} radius="full" mt="2" />
+                    <Switch variant="classic" tabIndex={-1} radius="full" mt="2" />
                   </Flex>
                 </Label>
 
@@ -733,7 +733,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                       </Text>
                     </Box>
 
-                    <Switch variant="surface" tabIndex={-1} radius="full" mt="2" />
+                    <Switch variant="classic" tabIndex={-1} radius="full" mt="2" />
                   </Flex>
                 </Label>
 
@@ -748,7 +748,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                       </Text>
                     </Box>
 
-                    <Switch variant="surface" tabIndex={-1} radius="full" defaultChecked mt="2" />
+                    <Switch variant="classic" tabIndex={-1} radius="full" defaultChecked mt="2" />
                   </Flex>
                 </Label>
 
@@ -912,7 +912,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     <Text size="2" weight="medium">
                       Name
                     </Text>
-                    <TextField.Input variant="surface" tabIndex={-1} defaultValue="Vlad Moroz" />
+                    <TextField.Input variant="classic" tabIndex={-1} defaultValue="Vlad Moroz" />
                   </Label>
                 </Flex>
 
@@ -921,7 +921,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     <Text size="2" weight="medium">
                       Username
                     </Text>
-                    <TextField.Input variant="surface" tabIndex={-1} defaultValue="@vladmoroz" />
+                    <TextField.Input variant="classic" tabIndex={-1} defaultValue="@vladmoroz" />
                   </Label>
                 </Flex>
 
@@ -931,7 +931,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                       Email
                     </Text>
                     <TextField.Input
-                      variant="surface"
+                      variant="classic"
                       tabIndex={-1}
                       defaultValue="hi@vladmoroz.com"
                     />
@@ -945,21 +945,21 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                   <Flex direction="column" gap="2">
                     <Flex asChild gap="2">
                       <Label>
-                        <Checkbox variant="surface" tabIndex={-1} defaultChecked />
+                        <Checkbox variant="classic" tabIndex={-1} defaultChecked />
                         <Text size="2">Display my listening history</Text>
                       </Label>
                     </Flex>
 
                     <Flex asChild gap="2">
                       <Label>
-                        <Checkbox variant="surface" tabIndex={-1} />
+                        <Checkbox variant="classic" tabIndex={-1} />
                         <Text size="2">Everyone can follow my activity</Text>
                       </Label>
                     </Flex>
 
                     <Flex asChild gap="2">
                       <Label>
-                        <Checkbox variant="surface" tabIndex={-1} defaultChecked />
+                        <Checkbox variant="classic" tabIndex={-1} defaultChecked />
                         <Text size="2">Show my playlists in search</Text>
                       </Label>
                     </Flex>
@@ -1266,7 +1266,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                   style={{
                     opacity: 0.6,
                     pointerEvents: 'none',
-                    background: 'linear-gradient(to bottom, transparent, var(--color-panel))',
+                    background: 'linear-gradient(to bottom, transparent, var(--color-panel-solid))',
                   }}
                 />
               </Box>

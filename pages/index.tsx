@@ -27,7 +27,7 @@ export default function ThemesHome() {
         <meta name="theme-color" content="#FDFCFD" />
         <style>
           {`
-            .rt-Card.rt-Card.variant-solid::after {
+            .rt-Card.rt-Card.variant-surface::after {
               box-shadow: var(--shadow-4);
             }
 
@@ -59,7 +59,11 @@ export default function ThemesHome() {
               </ThemesHeroLayout.Main>
 
               <ThemesHeroLayout.Showcase>
-                <Theme className="radix-themes-example" applyBackgroundColor={false}>
+                <Theme
+                  className="radix-themes-example"
+                  panelBackground="solid"
+                  applyBackgroundColor={false}
+                >
                   <ExampleThemesDashboard align="start" />
                 </Theme>
               </ThemesHeroLayout.Showcase>
@@ -85,6 +89,7 @@ export default function ThemesHome() {
               <ThemesHeroLayout.Showcase>
                 <Theme
                   className="radix-themes-example"
+                  panelBackground="solid"
                   accentScale="gray"
                   applyBackgroundColor={false}
                 >
@@ -111,7 +116,11 @@ export default function ThemesHome() {
               </ThemesHeroLayout.Main>
 
               <ThemesHeroLayout.Showcase>
-                <Theme className="radix-themes-example" applyBackgroundColor={false}>
+                <Theme
+                  className="radix-themes-example"
+                  panelBackground="solid"
+                  applyBackgroundColor={false}
+                >
                   <ExampleThemesMusicApp align="start" />
                 </Theme>
               </ThemesHeroLayout.Showcase>
@@ -135,7 +144,11 @@ export default function ThemesHome() {
               </ThemesHeroLayout.Main>
 
               <ThemesHeroLayout.Showcase>
-                <Theme className="radix-themes-example" applyBackgroundColor={false}>
+                <Theme
+                  className="radix-themes-example"
+                  panelBackground="solid"
+                  applyBackgroundColor={false}
+                >
                   <ExampleThemesDashboard align="start" />
                 </Theme>
               </ThemesHeroLayout.Showcase>
@@ -161,6 +174,7 @@ export default function ThemesHome() {
               <ThemesHeroLayout.Showcase>
                 <Theme
                   className="radix-themes-example"
+                  panelBackground="solid"
                   accentScale="gray"
                   grayScale="gray"
                   applyBackgroundColor={false}
@@ -188,7 +202,11 @@ export default function ThemesHome() {
               </ThemesHeroLayout.Main>
 
               <ThemesHeroLayout.Showcase>
-                <Theme className="radix-themes-example" applyBackgroundColor={false}>
+                <Theme
+                  className="radix-themes-example"
+                  panelBackground="solid"
+                  applyBackgroundColor={false}
+                >
                   <ExampleThemesMusicApp align="start" />
                 </Theme>
               </ThemesHeroLayout.Showcase>
@@ -262,7 +280,7 @@ const codeStyles = {
   fontSize: '0.8em',
   lineHeight: 'var(--line-height-3)',
   '--border': 'var(--gray-a5)',
-  '--background': 'var(--color-panel)',
+  '--background': 'var(--color-panel-solid)',
   maxWidth: 560,
 };
 

@@ -12,11 +12,11 @@ import { Box, Flex } from '@radix-ui/themes';
 import { PrimitivesHeroButton } from '@components/marketing/PrimitivesHeroButton';
 
 const DropdownMenuArrow = styled(DropdownMenuPrimitive.Arrow, {
-  fill: 'var(--color-panel)',
+  fill: 'var(--color-panel-solid)',
 });
 
 const contentCss = {
-  backgroundColor: 'var(--color-panel)',
+  backgroundColor: 'var(--color-panel-solid)',
   borderRadius: 'var(--radius-3)',
   padding: 'var(--space-1)',
   boxShadow: 'var(--shadow-4)',

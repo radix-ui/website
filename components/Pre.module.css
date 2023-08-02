@@ -47,7 +47,7 @@
 }
 
 .Pre.pink {
-  --background: var(--color-surface-2);
+  --background: var(--color-panel-translucent);
   --border: var(--gray-a4);
 
   --syntax-accent: var(--blue-11);
@@ -57,7 +57,7 @@
 }
 
 .Pre.red {
-  --background: var(--color-surface-2);
+  --background: var(--color-panel-translucent);
   --border: var(--gray-a4);
 
   --syntax-accent: var(--red-11);
@@ -67,7 +67,7 @@
 }
 
 .Pre.teal {
-  --background: var(--color-surface-2);
+  --background: var(--color-panel-translucent);
   --border: var(--gray-a4);
 
   --syntax-accent: var(--teal-11);

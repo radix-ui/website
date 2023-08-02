@@ -38,7 +38,7 @@ export function PrimitivesHeroPopover() {
           style={{
             position: 'relative',
             width: 200,
-            backgroundColor: 'var(--color-panel)',
+            backgroundColor: 'var(--color-panel-solid)',
             borderRadius: 'var(--radius-3)',
             padding: 10,
             boxShadow: 'var(--shadow-4)',
@@ -68,7 +68,7 @@ export function PrimitivesHeroPopover() {
             }
           }}
         >
-          <PopoverPrimitive.Arrow fill="var(--color-panel)" />
+          <PopoverPrimitive.Arrow fill="var(--color-panel-solid)" />
 
           <Text as="div" size="3" weight="medium" mb="2">
             Dimensions

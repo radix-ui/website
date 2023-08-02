@@ -37,7 +37,7 @@ const StyledTrigger = styled(TabsPrimitive.Trigger, {
   },
   '&[data-state="active"]': {
     color: 'var(--gray-12)',
-    backgroundColor: 'var(--color-panel)',
+    backgroundColor: 'var(--color-panel-solid)',
     $$bottomShadow: '0 0',
   },
   '&:focus': {
@@ -62,7 +62,7 @@ const StyledTrigger = styled(TabsPrimitive.Trigger, {
 const StyledContent = styled(TabsPrimitive.Content, {
   flexGrow: 1,
   padding: 20,
-  backgroundColor: 'var(--color-panel)',
+  backgroundColor: 'var(--color-panel-solid)',
   borderBottomLeftRadius: 'var(--radius-4)',
   borderBottomRightRadius: 'var(--radius-4)',
   outline: 'none',
