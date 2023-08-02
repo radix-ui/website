@@ -1,6 +1,6 @@
 import React from 'react';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
-import { styled, darkTheme, keyframes } from '@modulz/design-system';
+import { styled, keyframes } from '@stitches/react';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 
 const slideDown = keyframes({
@@ -14,31 +14,32 @@ const slideUp = keyframes({
 });
 
 const StyledAccordion = styled(AccordionPrimitive.Root, {
-  borderRadius: '$3',
-  backgroundColor: '$slate6',
-  boxShadow: '0px 5px 30px -5px rgba(0, 0, 0, 0.1), 0 1px 3px -1px rgba(0, 0, 0, 0.2)',
+  background: 'var(--color-panel-solid)',
+  borderRadius: 'var(--radius-4)',
+  boxShadow: 'var(--shadow-4)',
   width: '80%',
 });
 
 const StyledItem = styled(AccordionPrimitive.Item, {
   overflow: 'hidden',
   marginTop: 1,
+  boxShadow: '0 1px 0 var(--gray-6)',
 
   '&:first-child': {
     marginTop: 0,
-    borderTopLeftRadius: '$3',
-    borderTopRightRadius: '$3',
+    borderTopLeftRadius: 'var(--radius-4)',
+    borderTopRightRadius: 'var(--radius-4)',
   },
 
   '&:last-child': {
-    borderBottomLeftRadius: '$3',
-    borderBottomRightRadius: '$3',
+    borderBottomLeftRadius: 'var(--radius-4)',
+    borderBottomRightRadius: 'var(--radius-4)',
   },
 
   '&:focus-within': {
     position: 'relative',
     zIndex: 1,
-    boxShadow: '0 0 0 2px $colors$indigoA8',
+    boxShadow: '0 0 0 2px var(--accent-8)',
   },
 });
 
@@ -49,35 +50,37 @@ const StyledHeader = styled(AccordionPrimitive.Header, {
 
 const StyledTrigger = styled(AccordionPrimitive.Trigger, {
   all: 'unset',
-  backgroundColor: 'transparent',
+  // backgroundColor: 'red',
   padding: '0 20px',
   height: 45,
   flex: 1,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  fontFamily: '$untitled',
-  fontSize: '$2',
+  fontFamily: 'inherit',
+  fontSize: 'var(--font-size-2)',
   lineHeight: 1,
   color: 'var(--gray-12)',
-  boxShadow: '0 1px 0 $colors$slate6',
-  '&[data-state="closed"]': { backgroundColor: '$panel' },
-  '&[data-state="open"]': { backgroundColor: '$panel' },
+  transition: 'box-shadow 300ms',
+  '&[data-state="open"]': {
+    boxShadow: '0 1px 0 var(--gray-6)',
+  },
   '@hover': {
     '&:hover': {
-      backgroundColor: '$slate2',
+      backgroundColor: 'var(--gray-a2)',
     },
   },
 });
 
 const StyledContent = styled(AccordionPrimitive.Content, {
   overflow: 'hidden',
-  fontSize: '$2',
-  color: '$slateA11',
-  backgroundColor: '$slate2',
+  fontSize: 'var(--font-size-2)',
+  color: 'var(--gray-a11)',
+  backgroundColor: 'var(--gray-a2)',
   lineHeight: 1.5,
-  [`.${darkTheme} &`]: {
-    backgroundColor: '$loContrast',
+  margin: 1,
+  [`.dark-theme &`]: {
+    backgroundColor: 'var(--color-surface)',
   },
 
   '&[data-state="open"]': {
@@ -93,7 +96,7 @@ const StyledContentText = styled('div', {
 });
 
 const StyledChevron = styled(ChevronDownIcon, {
-  color: '$slate9',
+  color: 'var(--gray-a9)',
   transition: 'transform 300ms cubic-bezier(0.87, 0, 0.13, 1)',
   '[data-state=open] &': { transform: 'rotate(180deg)' },
 });

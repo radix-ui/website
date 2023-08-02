@@ -6,15 +6,15 @@ import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
 
 const StyledToggleGroup = styled(ToggleGroupPrimitive.Root, {
   display: 'inline-flex',
-  backgroundColor: '$slate6',
-  borderRadius: '$2',
-  boxShadow: '0px 5px 30px -5px rgba(0, 0, 0, 0.1), 0 1px 3px -1px rgba(0, 0, 0, 0.2)',
+  backgroundColor: 'var(--color-panel-solid)',
+  borderRadius: 'var(--radius-3)',
+  boxShadow: 'var(--shadow-4)',
+  margin: 1,
 });
 
 const StyledItem = styled(ToggleGroupPrimitive.Item, {
   all: 'unset',
-  backgroundColor: '$loContrast',
-  color: '$slate11',
+  color: 'var(--gray-a11)',
   height: 35,
   width: 35,
   display: 'flex',
@@ -22,18 +22,27 @@ const StyledItem = styled(ToggleGroupPrimitive.Item, {
   lineHeight: 1,
   alignItems: 'center',
   justifyContent: 'center',
-  marginLeft: 1,
-  '&:first-child': { marginLeft: 0, borderTopLeftRadius: '$2', borderBottomLeftRadius: '$2' },
-  '&:last-child': { borderTopRightRadius: '$2', borderBottomRightRadius: '$2' },
-  '&:hover': { backgroundColor: '$slate2' },
-  '&[data-state=on]': { backgroundColor: '$slate3', color: '$slate12' },
-  '&:focus': {
-    zIndex: 1,
-    boxShadow: '0 0 0 2px $colors$indigo8',
+  borderRight: '1px solid var(--gray-5)',
+  '&:first-child': {
+    marginLeft: 0,
+    borderTopLeftRadius: 'var(--radius-3)',
+    borderBottomLeftRadius: 'var(--radius-3)',
   },
-  '&:focus:not(:focus-visible)': {
-    zIndex: 'auto',
-    boxShadow: 'none',
+  '&:last-child': {
+    borderRight: 0,
+    borderTopRightRadius: 'var(--radius-3)',
+    borderBottomRightRadius: 'var(--radius-3)',
+  },
+  '&:hover': {
+    backgroundColor: 'var(--gray-a2)',
+  },
+  '&[data-state=on]': {
+    backgroundColor: 'var(--gray-a3)',
+    color: 'var(--gray-12)',
+  },
+  '&:focus-visible': {
+    zIndex: 1,
+    boxShadow: '0 0 0 2px var(--accent-8)',
   },
 });
 

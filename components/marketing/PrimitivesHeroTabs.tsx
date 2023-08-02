@@ -9,7 +9,8 @@ const StyledTabs = styled(TabsPrimitive.Root, {
   display: 'flex',
   flexDirection: 'column',
   width: '80%',
-  boxShadow: `0 2px 10px var(--black-a4)`,
+  borderRadius: 'var(--radius-4)',
+  boxShadow: 'var(--shadow-4)',
 });
 
 const StyledList = styled(TabsPrimitive.List, {
