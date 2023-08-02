@@ -1,6 +1,6 @@
 ---
 metaTitle: Text
-metaDescription: Base typographic text element.
+metaDescription: A foundational text primitive.
 sourcePath: components/text
 ---
 
@@ -10,7 +10,7 @@ sourcePath: components/text
 
 ## API Reference
 
-This component is based on the `p` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
+This component is based on the `span` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
 
 <ThemesPropsTable name="text" />
 
@@ -18,17 +18,17 @@ This component is based on the `p` element and supports [common margin props](/t
 
 ### As another element
 
-Use the `as` prop to render text as a `p`, `div` or `span`. This prop is purely semantic and does not change the visual appearance.
+Use the `as` prop to render text as a `p`, `div` or `span`. This prop is purely semantic and does not alter visual appearance.
 
 ```jsx live=true
-<Text as="p">This is a paragraph.</Text>
-<Text as="div">This is a div.</Text>
-<Text as="span">This is a span.</Text>
+<Text as="p">This is a <Strong>paragraph</Strong> element.</Text>
+<Text as="div">This is a <Strong>div</Strong> element.</Text>
+<Text as="span">This is a <Strong>span</Strong> element.</Text>
 ```
 
 ### Size
 
-Use the `size` prop to control the size of the text. The prop also provides correct line height and corrective letter spacing—as text size increases, the relative line height and letter spacing decrease.
+Use the `size` prop to control text size. This prop also provides correct line height and corrective letter spacing—as text size increases, the relative line height and letter spacing decrease.
 
 ```jsx live=true
 <Flex direction="column" gap="3" width="max-content">
@@ -46,15 +46,19 @@ Use the `size` prop to control the size of the text. The prop also provides corr
 
 ### Weight
 
-Use the `weight` prop to set the weight of the text. You can change the weight across breakpoints using the object syntax.
+Use the `weight` prop to set the text weight.
 
-```jsx live="true"
-<Text weight="normal">
-  Ambiguous voice of a heart which prefers kiwi bowls to a zephyr.
+```jsx live=true
+<Text weight="regular" as="div">
+  The quick brown fox jumps over the lazy dog.
 </Text>
 
-<Text weight="bold">
-  Ambiguous voice of a heart which prefers kiwi bowls to a zephyr.
+<Text weight="medium" as="div">
+  The quick brown fox jumps over the lazy dog.
+</Text>
+
+<Text weight="bold" as="div">
+  The quick brown fox jumps over the lazy dog.
 </Text>
 ```
 
@@ -62,10 +66,10 @@ Use the `weight` prop to set the weight of the text. You can change the weight a
 
 Use the `align` prop to set text alignment. You can change the alignment across breakpoints using the object syntax.
 
-```jsx live="true"
-<Text align="left">Left-aligned</Text>
-<Text align="center">Center-aligned</Text>
-<Text align="right">Right-aligned</Text>
+```jsx live=true
+<Text align="left" as="div">Left-aligned</Text>
+<Text align="center" as="div">Center-aligned</Text>
+<Text align="right" as="div">Right-aligned</Text>
 ```
 
 Sizes 2–4 are designed to work well for long-form content.
@@ -90,37 +94,37 @@ Sizes 1–3 are designed to work well for UI labels.
 <Grid align="center" columns="2" gap="5" p="3">
   <Flex direction="column">
     <Text size="3" weight="bold">
-      Quick Look
+      Theme overview
     </Text>
     <Text color="gray" size="2">
-      Third-party extensions
+      Learn how to create the perfect theme
     </Text>
   </Flex>
 
   <Flex direction="column">
     <Text size="2" weight="bold">
-      Quick Look
+      Theme overview
     </Text>
     <Text color="gray" size="2">
-      Third-party extensions
+      Learn how to create the perfect theme
     </Text>
   </Flex>
 
   <Flex direction="column">
     <Text size="2" weight="bold">
-      Quick Look
+      Theme overview
     </Text>
     <Text color="gray" size="1">
-      Third-party extensions
+      Learn how to create the perfect theme
     </Text>
   </Flex>
 
   <Flex direction="column">
     <Text size="1" weight="bold">
-      Quick Look
+      Theme overview
     </Text>
     <Text color="gray" size="1">
-      Third-party extensions
+      Learn how to create the perfect theme
     </Text>
   </Flex>
 </Grid>
@@ -128,7 +132,7 @@ Sizes 1–3 are designed to work well for UI labels.
 
 ### Trim
 
-Use the `trim` prop to trim the leading space at the start, end, or both sides of the text box. You can change the leading trim across breakpoints using the object syntax.
+Use the `trim` prop to trim the leading space at the start, end, or both sides of the text box.
 
 The prop works similarly to the upcoming [half-leading control](https://www.w3.org/TR/css-inline-3/#leading-trim) spec, but uses a common [negative margin workaround](https://seek-oss.github.io/capsize/) under the hood for cross-browser support.
 
@@ -199,20 +203,20 @@ Trimming the leading is useful when dialing in vertical spacing in cards or othe
 
 ### Color
 
-Use the `color` prop to assign a specific color value, ignoring the global theme.
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
 
 ```jsx live=true
-<Flex gap="3">
-  <Text color="crimson">Crimson</Text>
-  <Text color="indigo">Indigo</Text>
-  <Text color="grass">Grass</Text>
-  <Text color="orange">Orange</Text>
+<Flex direction="column" gap="1">
+  <Text color="crimson">The quick brown fox jumps over the lazy dog.</Text>
+  <Text color="violet">The quick brown fox jumps over the lazy dog.</Text>
+  <Text color="grass">The quick brown fox jumps over the lazy dog.</Text>
+  <Text color="orange">The quick brown fox jumps over the lazy dog.</Text>
 </Flex>
 ```
 
 ### High-contrast
 
-Use the `highContrast` prop to add contrast within colored text.
+Use the `highContrast` prop to add additional contrast.
 
 ```jsx live="true"
 <Text size="5" color="gray">
@@ -222,7 +226,7 @@ Use the `highContrast` prop to add contrast within colored text.
 
 ### With formatting
 
-Text component works in tandem with the formatting components.
+Compose `Text` with formatting components to add emphasis and structure to content.
 
 ```jsx live="true"
 <Text size="5">
