@@ -1,21 +1,28 @@
 /*
-    bp1: '(min-width: 520px)',
-    bp2: '(min-width: 900px)',
-    bp3: '(min-width: 1200px)',
-    bp4: '(min-width: 1800px)',
-  */
+  bp1: '(min-width: 520px)',
+  bp2: '(min-width: 900px)',
+  bp3: '(min-width: 1200px)',
+  bp4: '(min-width: 1800px)',
+*/
 
 .StatsSection {
   position: relative;
   padding-bottom: var(--space-7);
-  --stats-section-background-1: var(--cyan-a5);
-  --stats-section-background-2: var(--blue-a5);
+  --stats-section-background-1: var(--amber-a4);
+  --stats-section-background-2: var(--grass-a2);
   --stats-section-background-3: var(--blue-a4);
-  --stats-section-chart-line-start-color: var(--cyan-5);
+  --stats-section-chart-line-start-color: var(--gray-5);
   --stats-section-chart-line-end-color: var(--gray-7);
   --stats-section-chart-tip-color: var(--gray-7);
   --stats-section-chart-top-color: var(--color-background);
   --stats-section-chart-bottom-color: var(--gray-1);
+}
+
+:global(.dark-theme) .StatsSection {
+  --stats-section-background-3: var(--blue-a3);
+  --stats-section-background-2: var(--plum-a3);
+  --stats-section-background-1: var(--crimson-a5);
+  --stats-section-chart-line-start-color: var(--plum-5);
 }
 
 .StatsSectionGraphicLeft {
@@ -43,7 +50,7 @@
   height: 250px;
   margin-right: -20%;
   /* Safari rendering bug */
-  transform: translateY(0.01px);
+  transform: translateY(0.1px);
 }
 
 .StatsSectionGraphicMain svg {

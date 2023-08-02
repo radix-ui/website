@@ -13,7 +13,7 @@ export const StatsSection = () => {
           right: -200,
           height: 700,
           backgroundImage:
-            'radial-gradient(ellipse 75% 700px at 35% calc(100% + 100px), var(--stats-section-background-1) 20%, var(--stats-section-background-2) 40%, var(--stats-section-background-3) 60%, transparent 100%)',
+            'radial-gradient(ellipse 75% 700px at 35% calc(100% + 100px), var(--stats-section-background-1) 30%, var(--stats-section-background-2) 50%, var(--stats-section-background-3) 60%, transparent 100%)',
           transform: 'rotate(-10deg)',
           zIndex: -1,
         }}

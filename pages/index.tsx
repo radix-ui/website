@@ -223,9 +223,7 @@ const MainContent = ({
   codeBlockScheme?: React.ComponentProps<typeof SyntaxSchemeProvider>['scheme'];
 }) => (
   <Box>
-    <SerifHeading mb="5">
-      A beautiful component library for building better and faster.
-    </SerifHeading>
+    <SerifHeading mb="5">A beautiful component library for building better & faster.</SerifHeading>
 
     <Text size={{ initial: '4', xs: '5' }}>
       <Text as="p" mb="5">
@@ -276,7 +274,8 @@ const MainContent = ({
 );
 
 const codeStyles = {
-  fontSize: '0.75em',
+  fontSize: '0.7em',
+  padding: '0.75em 1em',
   lineHeight: 'var(--line-height-3)',
   '--border': 'var(--gray-a5)',
   '--background': 'var(--color-panel-solid)',
