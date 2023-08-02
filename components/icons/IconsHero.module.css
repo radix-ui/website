@@ -1,0 +1,30 @@
+.IconsHeroLinesContainer {
+  position: absolute;
+  user-select: none;
+  pointer-events: none;
+  overflow: hidden;
+  inset: 0;
+  z-index: 0;
+}
+
+.IconsHeroLines {
+  position: relative;
+
+  top: calc(var(--header-height) + 32px);
+  left: 280px;
+  font-size: calc(var(--line-height-8) * 2 - 5px);
+}
+
+@media (min-width: 520px) {
+  .IconsHeroLines {
+    top: calc(var(--header-height) + 30px);
+    left: max(384px, calc(50% - var(--container-3) / 2 + 360px));
+    font-size: calc(var(--line-height-9) * 2 - 7px);
+  }
+}
+
+@media (min-width: 768px) {
+  .IconsHeroLines {
+    top: calc(var(--header-height) + 70px);
+  }
+}

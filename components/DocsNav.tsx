@@ -39,13 +39,13 @@ export const DocsNav = ({ routes }: DocsNavProps) => {
               <Text size="2">{page.title}</Text>
 
               {page.preview && (
-                <Badge color="blue" ml="2">
+                <Badge ml="2" color="blue" radius="full">
                   Preview
                 </Badge>
               )}
 
               {page.deprecated && (
-                <Badge color="yellow" ml="2">
+                <Badge ml="2" color="yellow" radius="full">
                   Deprecated
                 </Badge>
               )}

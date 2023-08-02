@@ -276,7 +276,7 @@ const MainContent = ({
 );
 
 const codeStyles = {
-  fontSize: '0.8em',
+  fontSize: '0.75em',
   lineHeight: 'var(--line-height-3)',
   '--border': 'var(--gray-a5)',
   '--background': 'var(--color-panel-solid)',

@@ -1,15 +1,3 @@
-@media (min-width: 900px) {
-  .IconsPanel {
-    margin-top: calc(30vh + 180px);
-  }
-}
-
-@media (min-width: 1200px) {
-  .IconsPanel {
-    margin-top: calc(25vh + 200px);
-  }
-}
-
 .IconsPanelMainSection {
   display: flex;
   flex-direction: column;

@@ -19,7 +19,7 @@
   --highlighted-line-bg: var(--accent-a3);
   --highlighted-word-1-bg: var(--accent-a3);
   --highlighted-word-1-bg-active: var(--accent-6);
-  --highlighted-word-1-text: var(--accent-11);
+  --highlighted-word-1-text: var(--accent-12);
   --highlighted-word-2-bg: var(--red-3);
   --highlighted-word-2-bg-active: var(--red-5);
   --highlighted-word-2-text: var(--red-11);
@@ -39,7 +39,6 @@
 
   --highlighted-line-bg: var(--blue-a3);
   --highlighted-word-1-bg: var(--blue-a4);
-  --highlighted-word-1-text: var(--blue-12);
 }
 
 :global(.dark-theme) .Pre.blue {
@@ -48,7 +47,7 @@
 
 .Pre.pink {
   --background: var(--color-panel-translucent);
-  --border: var(--gray-a4);
+  --border: var(--gray-a5);
 
   --syntax-accent: var(--blue-11);
   --syntax-accent-subtle: var(--blue-12);
@@ -58,7 +57,7 @@
 
 .Pre.red {
   --background: var(--color-panel-translucent);
-  --border: var(--gray-a4);
+  --border: var(--gray-a5);
 
   --syntax-accent: var(--red-11);
   --syntax-accent-subtle: var(--indigo-12);
@@ -68,12 +67,12 @@
 
 .Pre.teal {
   --background: var(--color-panel-translucent);
-  --border: var(--gray-a4);
+  --border: var(--gray-a5);
 
   --syntax-accent: var(--teal-11);
   --syntax-accent-subtle: var(--teal-12);
   --syntax-complementary: var(--crimson-11);
-  --syntax-secondary: var(--indigo-11);
+  --syntax-secondary: var(--violet-11);
 }
 
 .Pre.indigo {
@@ -85,6 +84,9 @@
   --syntax-accent-subtle: var(--indigo-12);
   --syntax-complementary: var(--crimson-11);
   --syntax-secondary: var(--violet-11);
+
+  --highlighted-line-bg: var(--violet-a3);
+  --highlighted-word-1-bg: var(--indigo-a4);
 }
 
 .Pre > code {
@@ -182,7 +184,6 @@
   color: var(--highlighted-word-1-text);
   background-color: var(--bg-and-shadow);
   display: inline-block;
-  border-radius: 4px;
 }
 
 .Pre :where(:global(.highlight-word)) :global(.token) {

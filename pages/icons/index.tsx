@@ -2,7 +2,7 @@ import { IconsHeader } from '@components/IconsHeader';
 import { MobileMenu, MobileMenuProvider } from '@components/MobileMenu';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { IconsNav } from '@components/icons/IconsNav';
-import { Hero } from '@components/icons/Hero';
+import { IconsHero } from '@components/icons/IconsHero';
 import { IconsPanel } from '@components/icons/IconsPanel';
 import { iconsRoutes } from '@lib/iconsRoutes';
 import { Box, Container, ScrollArea } from '@radix-ui/themes';
@@ -24,15 +24,13 @@ export default function Home() {
         image="default.png"
       />
 
-      <IconsHeader />
+      <IconsHeader ghost />
 
-      <Box mt="4">
-        <Hero />
-        <Menu />
-        <Container style={{ marginBottom: 'calc(5vh + 25px)' }} mx="5">
-          <IconsPanel />
-        </Container>
-      </Box>
+      <IconsHero />
+      <Menu />
+      <Container mx="5" pb="9">
+        <IconsPanel />
+      </Container>
     </MobileMenuProvider>
   );
 }

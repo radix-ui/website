@@ -20,12 +20,13 @@ export const Menu = () => {
       style={{ top: 'var(--space-6)' }}
     >
       <Flex
+        align="start"
         direction="column"
         gap="2"
-        py="4"
-        px="5"
+        p="4"
         style={{
-          background: 'var(--accent-3)',
+          backgroundColor: 'var(--color-panel-solid)',
+          backgroundImage: 'linear-gradient(to top, var(--accent-a4), var(--accent-a4))',
           borderRadius: 'var(--radius-1)',
           boxShadow: '0 10px 40px -10px hsla(174, 100%, 30%, 0.05)',
           userSelect: 'none',
@@ -33,6 +34,8 @@ export const Menu = () => {
       >
         <Flex align="center" gap="2" asChild>
           <Link
+            size="2"
+            underline="hover"
             href="https://www.figma.com/file/9Df5CaFUEomVzn20gRpaX3/Radix-Icons"
             target="_blank"
             highContrast
@@ -44,6 +47,8 @@ export const Menu = () => {
         </Flex>
         <Flex align="center" gap="2" asChild>
           <Link
+            size="2"
+            underline="hover"
             href="https://raw.githubusercontent.com/radix-ui/icons/master/Radix-Icons.sketch"
             target="_blank"
             highContrast
@@ -56,6 +61,8 @@ export const Menu = () => {
 
         <Flex align="center" gap="2" asChild>
           <Link
+            size="2"
+            underline="hover"
             href="https://raw.githubusercontent.com/radix-ui/icons/master/Radix-Icons.iconjar.zip"
             target="_blank"
             highContrast
@@ -68,6 +75,8 @@ export const Menu = () => {
 
         <Flex align="center" gap="2" asChild>
           <Link
+            size="2"
+            underline="hover"
             href="https://raw.githubusercontent.com/radix-ui/icons/master/radix-icons.zip"
             target="_blank"
             highContrast
@@ -79,6 +88,8 @@ export const Menu = () => {
         </Flex>
         <Flex align="center" gap="2" asChild>
           <Link
+            size="2"
+            underline="hover"
             href="https://www.npmjs.com/package/@radix-ui/react-icons"
             target="_blank"
             highContrast
@@ -89,7 +100,14 @@ export const Menu = () => {
           </Link>
         </Flex>
         <Flex align="center" gap="2" asChild>
-          <Link href="https://github.com/radix-ui/icons" target="_blank" highContrast color="gray">
+          <Link
+            size="2"
+            underline="hover"
+            href="https://github.com/radix-ui/icons"
+            target="_blank"
+            highContrast
+            color="gray"
+          >
             <GitHubLogoIcon />
             View on GitHub
           </Link>

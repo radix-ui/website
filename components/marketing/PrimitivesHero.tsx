@@ -1,7 +1,7 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Text, Container, Heading } from '@radix-ui/themes';
-import { Box, styled, darkTheme, Flex, Link } from '@modulz/design-system';
+import { Box, Text, Container, Heading } from '@radix-ui/themes';
+import { styled, darkTheme, Flex, Link } from '@modulz/design-system';
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons';
 import {
   Carousel,
@@ -258,8 +258,8 @@ export const PrimitivesHero = () => {
   return (
     <Section size={{ initial: '2', sm: '3' }}>
       <Container mx="5">
-        <Box css={{ mb: '$6' }}>
-          <Box css={{ maxWidth: 520, mb: '$5' }}>
+        <Box mb="6">
+          <Box mb="5" style={{ maxWidth: 520 }}>
             <SerifHeading mb="3">Core building blocks for your design system.</SerifHeading>
             <Text size="5" as="p" mb="6" color="gray">
               Unstyled, accessible, open source React primitives for high-quality web apps and
@@ -286,7 +286,7 @@ export const PrimitivesHero = () => {
         </Box>
       </Container>
 
-      <Box css={{ position: 'relative' }}>
+      <Box position="relative">
         <Carousel>
           <CarouselSlideList
             css={{
@@ -638,7 +638,7 @@ export const PrimitivesHero = () => {
           </CarouselSlideList>
 
           <Box
-            css={{
+            style={{
               position: 'absolute',
               top: 'calc(50% - $7)',
               left: '15px',
@@ -653,7 +653,7 @@ export const PrimitivesHero = () => {
             </CarouselPrevious>
           </Box>
           <Box
-            css={{
+            style={{
               position: 'absolute',
               top: 'calc(50% - $7)',
               right: '15px',

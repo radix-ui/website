@@ -65,7 +65,7 @@ function PaginationLink({ route, direction }) {
         style={{ color: 'var(--accent-11, $blue11)', textDecoration: 'none' }}
       >
         <a>
-          <Text size="2" style={{ color: 'var(--gray-11)' }}>
+          <Text size="2" style={{ color: 'var(--gray-a11)' }}>
             {direction}
           </Text>
           <Text size="4">{route.title}</Text>

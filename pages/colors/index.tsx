@@ -52,7 +52,7 @@ export default function ColorsHome() {
               </Text>
             </Box>
 
-            <NextLink href="/themes/docs/overview/getting-started" passHref>
+            <NextLink href="/colors/docs/overview/installation" passHref>
               <ColorsMarketingButton asChild size={{ initial: '3', xs: '4' }}>
                 <a>
                   Get started

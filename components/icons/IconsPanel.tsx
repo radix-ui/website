@@ -36,31 +36,27 @@ export const IconsPanel = () => {
     >
       <Box
         style={{
-          borderRadius: 'var(--radius-3)',
+          borderRadius: 'var(--radius-4)',
           minHeight: 900,
           background: 'var(--color-panel-solid)',
           position: 'relative',
           boxShadow: 'var(--shadow-5)',
         }}
-        className={styles.IconsPanel}
       >
         <MainContent />
 
         <Separator size="4" />
 
-        <Box
-          py={{ initial: '4', sm: '5' }}
-          px={{ initial: '3', sm: '6' }}
-          className={styles.IconsPanelMainSection}
-        >
+        <Box p={{ initial: '5', sm: '6' }} className={styles.IconsPanelMainSection}>
           <Box mb="5" style={{ gridColumn: '3 / 4' }}>
             <Heading as="h3" size="5">
               Assets
             </Heading>
 
-            <Flex direction="column" gap="2" mt="2">
+            <Flex direction="column" gap="2" mt="3">
               <Flex align="center" gap="2" asChild>
                 <Link
+                  size="2"
                   href="https://www.figma.com/file/9Df5CaFUEomVzn20gRpaX3/Radix-Icons"
                   target="_blank"
                   highContrast
@@ -72,6 +68,7 @@ export const IconsPanel = () => {
               </Flex>
               <Flex align="center" gap="2" asChild>
                 <Link
+                  size="2"
                   href="https://raw.githubusercontent.com/radix-ui/icons/master/Radix-Icons.sketch"
                   target="_blank"
                   highContrast
@@ -84,6 +81,7 @@ export const IconsPanel = () => {
 
               <Flex align="center" gap="2" asChild>
                 <Link
+                  size="2"
                   href="https://raw.githubusercontent.com/radix-ui/icons/master/Radix-Icons.iconjar.zip"
                   target="_blank"
                   highContrast
@@ -96,6 +94,7 @@ export const IconsPanel = () => {
 
               <Flex align="center" gap="2" asChild>
                 <Link
+                  size="2"
                   href="https://raw.githubusercontent.com/radix-ui/icons/master/radix-icons.zip"
                   target="_blank"
                   highContrast
@@ -107,6 +106,7 @@ export const IconsPanel = () => {
               </Flex>
               <Flex align="center" gap="2" asChild>
                 <Link
+                  size="2"
                   href="https://www.npmjs.com/package/@radix-ui/react-icons"
                   target="_blank"
                   highContrast
@@ -119,6 +119,7 @@ export const IconsPanel = () => {
 
               <Flex align="center" gap="2" asChild>
                 <Link
+                  size="2"
                   href="https://github.com/radix-ui/icons"
                   target="_blank"
                   highContrast
@@ -136,12 +137,13 @@ export const IconsPanel = () => {
               React components
             </Heading>
 
-            <Text as="p" size="3" mt="2">
+            <Text as="p" size="3" mt="3">
               All icons are available as individual React components. Install Radix Icons from npm:
             </Text>
 
-            <CodeBlock mt="2" language="bash" value="npm install @radix-ui/react-icons" />
-            <Text as="p" size="3" mt="2">
+            <CodeBlock mt="3" language="bash" value="npm install @radix-ui/react-icons" />
+
+            <Text as="p" size="3" mt="4">
               Import the icons into your React project:
             </Text>
 
@@ -167,9 +169,18 @@ function MyComponent () {
               License
             </Heading>
 
-            <Text as="p" size="3" mt="2">
+            <Text as="p" size="2" mt="2">
               Licensed under the{' '}
-              <Link href="https://github.com/radix-ui/icons/blob/master/LICENSE">MIT License</Link>.
+              <Link
+                size="2"
+                href="https://github.com/radix-ui/icons/blob/master/LICENSE"
+                highContrast
+                color="gray"
+              >
+                MIT License
+              </Link>
+              .
+              <br />
               Copyright © 2022–present WorkOS.
             </Text>
           </Box>
