@@ -18,7 +18,7 @@ This component is based on the `code` element and supports [common margin props]
 
 ### Size
 
-Use the `size` prop to control the size of the text. The prop also provides correct line height and corrective letter spacing—as text size increases, the relative line height and letter spacing decrease.
+Use the `size` prop to control text size. This prop also provides correct line height and corrective letter spacing—as text size increases, the relative line height and letter spacing decrease.
 
 ```jsx live=true
 <Flex direction="column" gap="3" width="max-content" align="start">
@@ -49,28 +49,28 @@ Use the `variant` prop to control the visual style.
 
 ### Color
 
-Use the `color` prop to assign a specific color value, ignoring the global theme.
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
 
 ```jsx live=true
 <Flex gap="3">
   <Code color="crimson" variant="soft">
-    Crimson
+    console.log()
   </Code>
-  <Code color="indigo" variant="soft">
-    Indigo
+  <Code color="violet" variant="soft">
+    console.log()
   </Code>
   <Code color="grass" variant="soft">
-    Grass
+    console.log()
   </Code>
   <Code color="orange" variant="soft">
-    Orange
+    console.log()
   </Code>
 </Flex>
 ```
 
 ### High-contrast
 
-Use the `highContrast` prop to add contrast.
+Use the `highContrast` prop to add additional contrast.
 
 ```jsx live=true
 <Flex direction="column" gap="3">
@@ -80,6 +80,7 @@ Use the `highContrast` prop to add contrast.
     <Code variant="outline">console.log()</Code>
     <Code variant="ghost">console.log()</Code>
   </Flex>
+
   <Flex gap="3">
     <Code variant="solid" highContrast>
       console.log()
@@ -99,11 +100,11 @@ Use the `highContrast` prop to add contrast.
 
 ### Weight
 
-Use the `weight` prop to set the weight of the text. You can change the weight across breakpoints using the object syntax.
+Use the `weight` prop to change the font weight.
 
 ```jsx live="true"
 <Flex direction="column" gap="2" align="start">
-  <Code weight="normal">console.log()</Code>
+  <Code weight="regular">console.log()</Code>
   <Code weight="bold">console.log()</Code>
 </Flex>
 ```
