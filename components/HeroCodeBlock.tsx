@@ -104,7 +104,15 @@ export const HeroCodeBlock = ({
         </Flex>
 
         <Collapsible.Content asChild forceMount>
-          <Box position="relative">
+          <Box
+            position="relative"
+            style={{
+              border: '1px solid var(--gray-a5)',
+              borderBottomLeftRadius: 'var(--radius-3)',
+              borderBottomRightRadius: 'var(--radius-3)',
+              borderTop: 'none',
+            }}
+          >
             <Tabs.Root
               value={currentTabValue}
               onValueChange={(value) => {
@@ -114,8 +122,9 @@ export const HeroCodeBlock = ({
             >
               <Tabs.List
                 style={{
-                  backgroundColor: 'var(--accent-a2)',
-                  boxShadow: 'inset 0 0 0 1px var(--accent-3)',
+                  position: 'relative',
+                  backgroundColor: 'var(--gray-a2)',
+                  marginBottom: -1,
                 }}
               >
                 {currentTabs.map((tab) => (
@@ -134,7 +143,13 @@ export const HeroCodeBlock = ({
                         if (isValidCssLib(lib)) setPreferredCssLib(lib);
                       }}
                     >
-                      <Select.Trigger variant="soft" mr="2" style={{ minWidth: 115 }} />
+                      <Select.Trigger
+                        highContrast
+                        variant="surface"
+                        color="gray"
+                        mr="2"
+                        style={{ minWidth: 115 }}
+                      />
                       <Select.Content>
                         {availableCssLibs.map((lib) => (
                           <Select.Item key={lib} value={lib}>
@@ -153,13 +168,9 @@ export const HeroCodeBlock = ({
                     position="relative"
                     className={styles.CodeContainer}
                     style={{
-                      borderBottomLeftRadius: 'var(--radius-3)',
-                      borderBottomRightRadius: 'var(--radius-3)',
                       overflow: 'hidden',
-                      marginTop: -1,
                       display: 'grid',
                       gridTemplateRows: isCodeExpanded ? '1fr' : '150px',
-                      boxShadow: 'inset 0 0 0 1px var(--accent-3)',
                     }}
                   >
                     <ScrollAreaWrapper
@@ -181,13 +192,14 @@ export const HeroCodeBlock = ({
                       </Box>
                       <Flex align="end" justify="center" className={styles.CollapsibleGradient}>
                         <Collapsible.Trigger asChild>
-                          <Theme appearance="dark" applyBackgroundColor={false} asChild>
-                            <Box position="relative">
-                              <Button size="1" variant="solid" highContrast>
-                                {isCodeExpanded ? 'Collapse' : 'Expand'} code
-                              </Button>
-                            </Box>
-                          </Theme>
+                          <Box
+                            position="relative"
+                            style={{ backgroundColor: 'var(--color-panel-solid)' }}
+                          >
+                            <Button size="1" variant="soft" highContrast color="gray">
+                              {isCodeExpanded ? 'Collapse' : 'Expand'} code
+                            </Button>
+                          </Box>
                         </Collapsible.Trigger>
                       </Flex>
                     </ScrollAreaWrapper>
