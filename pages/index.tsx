@@ -30,7 +30,6 @@ export default function ThemesHome() {
             .rt-Card.rt-Card.variant-surface::after {
               box-shadow: var(--shadow-4);
             }
-
           `}
         </style>
       </Head>
