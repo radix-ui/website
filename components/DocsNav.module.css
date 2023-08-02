@@ -27,14 +27,14 @@
 }
 
 .DocsNavItem.active {
-  background-color: var(--accent-5);
+  background-color: var(--accent-a5);
 }
 
 @media (hover: hover) {
   .DocsNavItem[href]:hover {
-    background-color: var(--accent-4);
+    background-color: var(--accent-a4);
   }
   .DocsNavItem.active:hover {
-    background-color: var(--accent-5);
+    background-color: var(--accent-a5);
   }
 }
