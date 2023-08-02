@@ -1,8 +1,8 @@
 .HeroContainer {
   background-image: linear-gradient(330deg, var(--purple-9) 0%, var(--indigo-9) 100%);
   padding-block: 100px;
-  border-top-left-radius: var(--radius-3);
-  border-top-right-radius: var(--radius-3);
+  border-top-left-radius: var(--radius-4);
+  border-top-right-radius: var(--radius-4);
 
   @media (min-width: 1200px) {
     margin-left: calc(-1 * var(--space-7));
@@ -32,13 +32,13 @@
 
 .CollapsibleGradient {
   position: absolute;
-  bottom: 1px;
-  right: 1px;
-  left: 1px;
+  bottom: 0;
+  right: 0;
+  left: 0;
   height: 80px;
   padding: var(--space-3);
   overflow: hidden;
-  border-radius: 0 0 var(--radius-3) var(--radius-3);
+  border-radius: 0 0 var(--radius-4) var(--radius-4);
 }
 
 .CollapsibleGradient > button {

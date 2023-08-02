@@ -62,7 +62,7 @@ export function Highlights({ features }) {
 
           <Flex mb="2" align="center">
             <Select.Root
-              size="1"
+              size="2"
               value={frontmatter.version}
               onValueChange={(value) => router.push(`./${frontmatter.name}/${value}`)}
             >
@@ -81,7 +81,7 @@ export function Highlights({ features }) {
           </Flex>
 
           {frontmatter.gzip && (
-            <Text size="1" color="gray" as="p">
+            <Text size="2" color="gray" as="p">
               Size:{' '}
               <Link
                 color="gray"
@@ -100,45 +100,51 @@ export function Highlights({ features }) {
 
           <Flex direction="column" gap="2">
             <Box>
-              <Link
-                href={`https://github.com/radix-ui/primitives/tree/main/packages/react/${publishedName}/src`}
-                target="_blank"
-              >
-                <Flex display="inline-flex" position="relative" gap="1">
-                  <Text size="1">View source</Text>
+              <Flex asChild display="inline-flex" align="center" position="relative" gap="1">
+                <Link
+                  size="2"
+                  href={`https://github.com/radix-ui/primitives/tree/main/packages/react/${publishedName}/src`}
+                  target="_blank"
+                >
+                  View source
                   <ArrowTopRightIcon style={{ color: 'var(--gray-9)' }} />
-                </Flex>
-              </Link>
+                </Link>
+              </Flex>
             </Box>
             <Box>
-              <Link
-                href={`https://www.npmjs.com/package/@radix-ui/react-${publishedName}`}
-                target="_blank"
-              >
-                <Flex display="inline-flex" position="relative" gap="1">
-                  <Text size="1">View on npm</Text>
+              <Flex asChild display="inline-flex" align="center" position="relative" gap="1">
+                <Link
+                  size="2"
+                  href={`https://www.npmjs.com/package/@radix-ui/react-${publishedName}`}
+                  target="_blank"
+                >
+                  View on npm
                   <ArrowTopRightIcon style={{ color: 'var(--gray-9)' }} />
-                </Flex>
-              </Link>
+                </Link>
+              </Flex>
             </Box>
 
             <Box>
-              <Link href="https://github.com/radix-ui/primitives/issues/new/choose" target="_blank">
-                <Flex display="inline-flex" position="relative" gap="1">
-                  <Text size="1">Report an issue</Text>
+              <Flex asChild display="inline-flex" align="center" position="relative" gap="1">
+                <Link
+                  size="2"
+                  href="https://github.com/radix-ui/primitives/issues/new/choose"
+                  target="_blank"
+                >
+                  Report an issue
                   <ArrowTopRightIcon style={{ color: 'var(--gray-9)' }} />
-                </Flex>
-              </Link>
+                </Link>
+              </Flex>
             </Box>
 
             {frontmatter.aria && (
               <Box>
-                <Link href={frontmatter.aria} target="_blank">
-                  <Flex display="inline-flex" position="relative" gap="1">
-                    <Text size="1">ARIA design pattern</Text>
+                <Flex asChild display="inline-flex" align="center" position="relative" gap="1">
+                  <Link size="2" href={frontmatter.aria} target="_blank">
+                    ARIA design pattern
                     <ArrowTopRightIcon style={{ color: 'var(--gray-9)' }} />
-                  </Flex>
-                </Link>
+                  </Link>
+                </Flex>
               </Box>
             )}
           </Flex>

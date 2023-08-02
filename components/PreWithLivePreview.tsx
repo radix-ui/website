@@ -13,18 +13,17 @@ const PreWithLivePreview = (props) => {
   const liveCode = childrenText(props.children) ?? '';
 
   return (
-    <Box my="5">
+    <Box
+      my="5"
+      style={{
+        borderRadius: 'var(--radius-4)',
+        boxShadow: '0 0 0 1px var(--gray-a5)',
+      }}
+    >
       <Box>
         <themes.ScrollArea>
           <Theme className="radix-themes-example" applyBackgroundColor={false} asChild>
-            <Box
-              p="4"
-              style={{
-                boxShadow: 'inset 0 0 0 1px var(--gray-4)',
-                borderRadius: 'var(--space-3) var(--space-3) 0 0',
-                overflow: 'hidden',
-              }}
-            >
+            <Box p="4" style={{ borderBottom: '1px solid var(--gray-a5)', overflow: 'hidden' }}>
               <LiveCode
                 code={liveCode}
                 scope={{
@@ -53,12 +52,13 @@ const PreWithLivePreview = (props) => {
         </themes.ScrollArea>
       </Box>
 
-      <Box position="relative" style={{ marginTop: -1 }} className={styles.CodeContainer}>
+      <Box position="relative" className={styles.CodeContainer}>
         <Pre
           {...props}
           style={{
             borderTopLeftRadius: 0,
             borderTopRightRadius: 0,
+            boxShadow: 'none',
           }}
           ref={(node) => {
             if (node) {

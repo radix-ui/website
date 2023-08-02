@@ -41,28 +41,30 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
         </Text>
 
         <Flex gap="5" mt="5">
-          <Link
-            target="_blank"
-            href={`https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/${frontmatter.sourcePath}.tsx`}
-          >
-            <Flex display="inline-flex" align="center" gap="2">
-              <Text size="3">View source</Text>
+          <Flex asChild display="inline-flex" align="center" gap="2">
+            <Link
+              size="3"
+              target="_blank"
+              href={`https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/${frontmatter.sourcePath}.tsx`}
+            >
+              View source
               <Box asChild style={{ color: 'var(--gray-9)' }}>
                 <ArrowTopRightIcon />
               </Box>
-            </Flex>
-          </Link>
-          <Link
-            target="_blank"
-            href={`https://github.com/radix-ui/themes/issues/new?title=[${componentName}] Issue`}
-          >
-            <Flex display="inline-flex" align="center" gap="2">
-              <Text size="3">Report an issue</Text>
+            </Link>
+          </Flex>
+          <Flex asChild display="inline-flex" align="center" gap="2">
+            <Link
+              size="3"
+              target="_blank"
+              href={`https://github.com/radix-ui/themes/issues/new?title=[${componentName}] Issue`}
+            >
+              Report an issue
               <Box asChild style={{ color: 'var(--gray-9)' }}>
                 <ArrowTopRightIcon />
               </Box>
-            </Flex>
-          </Link>
+            </Link>
+          </Flex>
         </Flex>
       </Box>
 

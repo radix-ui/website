@@ -1,6 +1,6 @@
 .Pre {
   box-sizing: border-box;
-  border-radius: var(--radii-3);
+  border-radius: var(--radius-4);
   padding: var(--space-4) var(--space-5);
   overflow: auto;
   font-family: var(--fonts-mono);
@@ -77,7 +77,7 @@
 
 .Pre.indigo {
   --background: var(--accent-a2);
-  --border: var(--accent-4);
+  --border: var(--gray-a5);
   --text: var(--color-text);
 
   --syntax-accent: var(--indigo-11);

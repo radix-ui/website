@@ -108,8 +108,8 @@ export const HeroCodeBlock = ({
             position="relative"
             style={{
               border: '1px solid var(--gray-a5)',
-              borderBottomLeftRadius: 'var(--radius-3)',
-              borderBottomRightRadius: 'var(--radius-3)',
+              borderBottomLeftRadius: 'var(--radius-4)',
+              borderBottomRightRadius: 'var(--radius-4)',
               borderTop: 'none',
             }}
           >
@@ -145,12 +145,12 @@ export const HeroCodeBlock = ({
                     >
                       <Select.Trigger
                         highContrast
-                        variant="surface"
+                        variant="soft"
                         color="gray"
                         mr="2"
                         style={{ minWidth: 115 }}
                       />
-                      <Select.Content>
+                      <Select.Content variant="soft">
                         {availableCssLibs.map((lib) => (
                           <Select.Item key={lib} value={lib}>
                             {CSS_LIB_NAMES[lib]}
