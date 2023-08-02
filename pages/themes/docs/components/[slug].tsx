@@ -16,7 +16,6 @@ type Doc = {
 
 export default function GuidesDoc({ frontmatter, code }: Doc) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
-  const fileName = frontmatter.metaTitle.replace(/\s+/g, '-').toLowerCase();
   const componentName = frontmatter.metaTitle.replace(/\s+/g, '');
 
   return (
@@ -43,7 +42,7 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
         <Flex gap="5" mt="5">
           <Link
             target="_blank"
-            href={`https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/${fileName}.tsx`}
+            href={`https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/${frontmatter.sourcePath}.tsx`}
           >
             <Flex display="inline-flex" align="center" gap="2">
               <Text size="3">View source</Text>
