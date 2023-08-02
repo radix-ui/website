@@ -12,13 +12,21 @@ export type PropDef = {
   description?: string | React.ReactNode;
 };
 
-export function PropsTable({ data }: { data: PropDef[] }) {
+export function PropsTable({
+  data,
+  propHeaderFixedWidth = true,
+}: {
+  data: PropDef[];
+  propHeaderFixedWidth?: boolean;
+}) {
   return (
     <Box my="5" asChild>
       <Table.Root variant="surface">
         <Table.Header>
           <Table.Row>
-            <Table.ColumnHeaderCell style={{ width: '37%' }}>Prop</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell style={{ width: propHeaderFixedWidth ? '37%' : 'auto' }}>
+              Prop
+            </Table.ColumnHeaderCell>
             <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
             <Table.ColumnHeaderCell>Default</Table.ColumnHeaderCell>
           </Table.Row>

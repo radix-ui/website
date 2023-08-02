@@ -192,7 +192,10 @@ type ThemesPropsDef = Record<
 
 function applyResponsive(value: string | undefined, isResponsive) {
   if (value && isResponsive) {
-    return `Responsive<${value.trim()}>`;
+    return `Responsive<${value
+      // the empty spaces are so that we align nicely
+      .replace('\n', `\n${Array(12).join(' ')}`)
+      .trim()}>`;
   }
 
   return value;
@@ -230,5 +233,5 @@ function formatDefinitions(definitions: Record<ComponentName, ThemesPropsDef>) {
 const props = formatDefinitions(definitions);
 
 export function ThemesPropsTable({ name }: { name: string }) {
-  return <PropsTable data={props[name]} />;
+  return <PropsTable data={props[name]} propHeaderFixedWidth={false} />;
 }
