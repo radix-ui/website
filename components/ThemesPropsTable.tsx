@@ -138,9 +138,13 @@ const commonDescriptions: CommonDescriptions = {
   trim: 'Removes the leading trim from the start or end of the rendered text node',
 };
 
+function shouldBalanceArray(values?: readonly string[] | string) {
+  return Array.isArray(values) && values.length > 8;
+}
+
 function formatValues(values?: readonly string[] | string) {
   if (Array.isArray(values)) {
-    if (values.length > 8) {
+    if (shouldBalanceArray(values)) {
       return formatToBalancedArray(values, 5);
     }
 
@@ -177,8 +181,22 @@ function formatToBalancedArray(input: string[], columns = 5) {
 
 type ThemesPropsDef = Record<
   string,
-  { type: string; values?: readonly string[]; default?: boolean | string; required?: boolean }
+  {
+    type: string;
+    values?: readonly string[];
+    default?: boolean | string;
+    required?: boolean;
+    responsive?: boolean;
+  }
 >;
+
+function applyResponsive(value: string | undefined, isResponsive) {
+  if (value && isResponsive) {
+    return `Responsive<${value.trim()}>`;
+  }
+
+  return value;
+}
 
 function formatDefinitions(definitions: Record<ComponentName, ThemesPropsDef>) {
   const formattedProps = {};
@@ -192,11 +210,13 @@ function formatDefinitions(definitions: Record<ComponentName, ThemesPropsDef>) {
       const description =
         uniqueDescriptions[componentName]?.[propName] || commonDescriptions[propName];
 
+      const value = applyResponsive(formatValues(item.values), item.responsive);
+
       return {
         name: propName,
         required: item.required,
-        typeSimple: item.type,
-        type: formatValues(item.values),
+        typeSimple: item.values && !shouldBalanceArray(item.values) ? value : item.type,
+        type: shouldBalanceArray(item.values) ? value : undefined,
         default:
           typeof item.default === 'boolean' ? String(item.default) : formatValues(item.default),
         description: description,
