@@ -5,10 +5,13 @@ sourcePath: components/avatar
 ---
 
 ```jsx live=true
-<Avatar
-  src="https://images.unsplash.com/photo-1620122303020-87ec826cf70d?&w=128&h=128&dpr=2&q=80"
-  fallback="A"
-/>
+<Flex gap="2">
+  <Avatar
+    src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
+    fallback="S"
+  />
+  <Avatar fallback="S" />
+</Flex>
 ```
 
 ## API Reference
@@ -24,51 +27,21 @@ This component inherits props from the [Radix Avatar](/primitives/docs/component
 Use the `size` prop to control the size.
 
 ```jsx live=true
-<Flex gap="3" align="center">
+<Flex direction="column" gap="2">
   <Avatar
-    size="1"
-    src="https://images.unsplash.com/photo-1620122303020-87ec826cf70d?&w=160&h=160&dpr=2&q=80"
-    fallback="A"
-  />
-  <Avatar
-    size="2"
-    src="https://images.unsplash.com/photo-1620122303020-87ec826cf70d?&w=160&h=160&dpr=2&q=80"
-    fallback="A"
-  />
-  <Avatar
-    size="3"
-    src="https://images.unsplash.com/photo-1620122303020-87ec826cf70d?&w=160&h=160&dpr=2&q=80"
-    fallback="A"
-  />
-  <Avatar
-    size="4"
-    src="https://images.unsplash.com/photo-1620122303020-87ec826cf70d?&w=160&h=160&dpr=2&q=80"
-    fallback="A"
+    size="7"
+    src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
+    fallback="S"
   />
   <Avatar
     size="5"
-    src="https://images.unsplash.com/photo-1620122303020-87ec826cf70d?&w=160&h=160&dpr=2&q=80"
-    fallback="A"
+    src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
+    fallback="S"
   />
   <Avatar
-    size="6"
-    src="https://images.unsplash.com/photo-1620122303020-87ec826cf70d?&w=160&h=160&dpr=2&q=80"
-    fallback="A"
-  />
-  <Avatar
-    size="7"
-    src="https://images.unsplash.com/photo-1620122303020-87ec826cf70d?&w=160&h=160&dpr=2&q=80"
-    fallback="A"
-  />
-  <Avatar
-    size="8"
-    src="https://images.unsplash.com/photo-1620122303020-87ec826cf70d?&w=160&h=160&dpr=2&q=80"
-    fallback="A"
-  />
-  <Avatar
-    size="9"
-    src="https://images.unsplash.com/photo-1620122303020-87ec826cf70d?&w=160&h=160&dpr=2&q=80"
-    fallback="A"
+    size="3"
+    src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
+    fallback="S"
   />
 </Flex>
 ```
@@ -78,9 +51,9 @@ Use the `size` prop to control the size.
 Use the `variant` prop to control the visual style.
 
 ```jsx live=true
-<Flex gap="3">
-  <Avatar variant="solid" fallback="A" />
-  <Avatar variant="soft" fallback="A" />
+<Flex gap="2">
+  <Avatar variant="solid" fallback="S" />
+  <Avatar variant="soft" fallback="S" />
 </Flex>
 ```
 
@@ -89,11 +62,11 @@ Use the `variant` prop to control the visual style.
 Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
 
 ```jsx live=true
-<Flex gap="3">
-  <Avatar color="crimson" fallback="A" />
-  <Avatar color="indigo" fallback="A" />
-  <Avatar color="grass" fallback="A" />
-  <Avatar color="orange" fallback="A" />
+<Flex gap="2">
+  <Avatar color="indigo" fallback="S" />
+  <Avatar color="cyan" fallback="S" />
+  <Avatar color="orange" fallback="S" />
+  <Avatar color="crimson" fallback="S" />
 </Flex>
 ```
 
@@ -102,14 +75,15 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 Use the `highContrast` prop to add additional contrast.
 
 ```jsx live=true
-<Flex direction="column" gap="3">
-  <Flex gap="3">
-    <Avatar variant="solid" fallback="A" />
-    <Avatar variant="soft" fallback="A" />
+<Flex gap="2">
+  <Flex direction="column" gap="2">
+    <Avatar variant="solid" fallback="S" />
+    <Avatar variant="soft" fallback="S" />
   </Flex>
-  <Flex gap="3">
-    <Avatar variant="solid" fallback="A" highContrast />
-    <Avatar variant="soft" fallback="A" highContrast />
+
+  <Flex direction="column" gap="2">
+    <Avatar variant="solid" fallback="S" highContrast />
+    <Avatar variant="soft" fallback="S" highContrast />
   </Flex>
 </Flex>
 ```
@@ -119,12 +93,10 @@ Use the `highContrast` prop to add additional contrast.
 Use the `radius` prop to assign a specific radius value, ignoring the global theme.
 
 ```jsx live=true
-<Flex gap="3">
-  <Avatar radius="none" fallback="A" />
-  <Avatar radius="small" fallback="A" />
-  <Avatar radius="medium" fallback="A" />
-  <Avatar radius="large" fallback="A" />
-  <Avatar radius="full" fallback="A" />
+<Flex gap="2">
+  <Avatar radius="none" fallback="S" />
+  <Avatar radius="large" fallback="S" />
+  <Avatar radius="full" fallback="S" />
 </Flex>
 ```
 
@@ -133,9 +105,9 @@ Use the `radius` prop to assign a specific radius value, ignoring the global the
 Use the `fallback` prop to modify the rendered fallback element.
 
 ```jsx live=true
-<Flex gap="3">
-  <Avatar fallback="D" />
-  <Avatar fallback="BG" />
+<Flex gap="2">
+  <Avatar fallback="S" />
+  <Avatar fallback="RW" />
   <Avatar
     fallback={
       <svg viewBox="0 0 24 24" fill="currentColor">
