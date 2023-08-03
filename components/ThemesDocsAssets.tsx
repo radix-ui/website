@@ -182,6 +182,8 @@ function email(name: string) {
 
 export function ThemesScalingExample() {
   const scaleValues = ['90%', '95%', '100%', '105%', '110%'] as const;
+  const person = allPeople[6];
+
   return (
     <Card size="2">
       <Flex direction="column" my="-4">
@@ -208,14 +210,10 @@ export function ThemesScalingExample() {
               >
                 <Card variant="surface" aria-label={`${scaling} scaled UI example`}>
                   <Flex gap="3" align="center" aria-hidden>
-                    <Avatar
-                      size="3"
-                      src={allPeople[6].image}
-                      fallback={allPeople[6]?.name[0].toUpperCase()}
-                    />
+                    <Avatar size="3" src={person.image} fallback={person?.name[0].toUpperCase()} />
                     <Box>
                       <Text as="div" size="2" weight="bold">
-                        {allPeople[6].name}
+                        {person.name}
                       </Text>
                       <Text as="div" size="2" color="gray">
                         Approved invoice <Link tabIndex={-1}>#3461</Link>

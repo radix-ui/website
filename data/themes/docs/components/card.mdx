@@ -6,12 +6,22 @@ sourcePath: components/card
 
 ```jsx live=true
 <Card>
-  <Text as="div" size="2" weight="bold">
-    Get started
-  </Text>
-  <Text as="div" color="gray" size="2">
-    Start building in minutes
-  </Text>
+  <Flex gap="3" align="center">
+    <Avatar
+      size="3"
+      src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
+      radius="full"
+      fallback="T"
+    />
+    <Box>
+      <Text as="div" size="2" weight="bold">
+        Teodros Girmay
+      </Text>
+      <Text as="div" size="2" color="gray">
+        Engineering
+      </Text>
+    </Box>
+  </Flex>
 </Card>
 ```
 
@@ -23,6 +33,99 @@ This component is based on the `div` element and supports [common margin props](
 
 ## Examples
 
+### As another element
+
+Use the `asChild` prop to render the card as a link or a button. This prop adds styles for the interactive states, like hover and focus.
+
+```jsx live=true
+<Card asChild style={{ maxWidth: 350 }}>
+  <a href="#">
+    <Text as="div" size="2" weight="bold">
+      Quick start
+    </Text>
+    <Text as="div" color="gray" size="2">
+      Start building your next project in minutes
+    </Text>
+  </a>
+</Card>
+```
+
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Flex gap="3" direction="column">
+  <Card size="1" style={{ maxWidth: 350 }}>
+    <Flex gap="3" align="center">
+      <Avatar size="3" radius="full" fallback="T" color="indigo" />
+      <Box>
+        <Text as="div" size="2" weight="bold">
+          Teodros Girmay
+        </Text>
+        <Text as="div" size="2" color="gray">
+          Engineering
+        </Text>
+      </Box>
+    </Flex>
+  </Card>
+
+  <Card size="2" style={{ maxWidth: 425 }}>
+    <Flex gap="4" align="center">
+      <Avatar size="4" radius="full" fallback="T" color="indigo" />
+      <Box>
+        <Text as="div" weight="bold">
+          Teodros Girmay
+        </Text>
+        <Text as="div" color="gray">
+          Engineering
+        </Text>
+      </Box>
+    </Flex>
+  </Card>
+
+  <Card size="3" style={{ maxWidth: 500 }}>
+    <Flex gap="4" align="center">
+      <Avatar size="5" radius="full" fallback="T" color="indigo" />
+      <Box>
+        <Text as="div" size="4" weight="bold">
+          Teodros Girmay
+        </Text>
+        <Text as="div" size="4" color="gray">
+          Engineering
+        </Text>
+      </Box>
+    </Flex>
+  </Card>
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style.
+
+```jsx live=true
+<Flex direction="column" gap="3" style={{ maxWidth: 350 }}>
+  <Card variant="surface">
+    <Text as="div" size="2" weight="bold">
+      Quick start
+    </Text>
+    <Text as="div" color="gray" size="2">
+      Start building your next project in minutes
+    </Text>
+  </Card>
+
+  <Card variant="classic">
+    <Text as="div" size="2" weight="bold">
+      Quick start
+    </Text>
+    <Text as="div" color="gray" size="2">
+      Start building your next project in minutes
+    </Text>
+  </Card>
+</Flex>
+```
+
 ### With inset content
 
 Use the [Inset](/themes/docs/components/inset) component to align content flush with the sides of the card.
@@ -30,7 +133,7 @@ Use the [Inset](/themes/docs/components/inset) component to align content flush 
 ```jsx live=true
 <Card size="3">
   <Flex>
-    <Inset side="left" mr="5">
+    <Inset side="left" pr="current">
       <Flex
         align="center"
         justify="center"
@@ -51,82 +154,4 @@ Use the [Inset](/themes/docs/components/inset) component to align content flush 
     </Box>
   </Flex>
 </Card>
-```
-
-### As another element
-
-Use the `asChild` prop to render the card as a link or a button. This prop adds styles for the interactive states, like hover and focus.
-
-```jsx live=true
-<Card asChild>
-  <a href="#">
-    <Text as="div" size="2" weight="bold">
-      Get started
-    </Text>
-    <Text as="div" color="gray" size="2">
-      Start building in minutes
-    </Text>
-  </a>
-</Card>
-```
-
-### Size
-
-Use the `size` prop to control the size.
-
-```jsx live=true
-<Flex gap="3" direction="column">
-  <Card size="1" style={{ maxWidth: 350 }}>
-    <Text as="div" size="1" weight="bold">
-      Get started
-    </Text>
-    <Text as="div" color="gray" size="1">
-      Start building in minutes
-    </Text>
-  </Card>
-
-  <Card size="2" style={{ maxWidth: 400 }}>
-    <Text as="div" size="2" weight="bold">
-      Get started
-    </Text>
-    <Text as="div" color="gray" size="2">
-      Start building in minutes
-    </Text>
-  </Card>
-
-  <Card size="3" style={{ maxWidth: 450 }}>
-    <Text as="div" size="3" weight="bold">
-      Get started
-    </Text>
-    <Text as="div" color="gray" size="3">
-      Start building in minutes
-    </Text>
-  </Card>
-</Flex>
-```
-
-### Variant
-
-Use the `variant` prop to control the visual style.
-
-```jsx live=true
-<Flex gap="3" align="center">
-  <Card variant="outline">
-    <Text as="div" size="2" weight="bold">
-      Outline
-    </Text>
-  </Card>
-
-  <Card variant="surface">
-    <Text as="div" size="2" weight="bold">
-      Surface
-    </Text>
-  </Card>
-
-  <Card variant="ghost">
-    <Text as="div" size="2" weight="bold">
-      Ghost
-    </Text>
-  </Card>
-</Flex>
 ```
