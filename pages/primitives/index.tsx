@@ -52,7 +52,7 @@ export default function PrimitivesHome() {
         <PrimitivesHero />
       </FancyBackground>
       <CaseStudiesSection />
-      <Container mx="5">
+      <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Separator size="2" />
       </Container>
       <Box style={{ overflow: 'hidden' }}>
@@ -63,11 +63,11 @@ export default function PrimitivesHome() {
       <AccessibilitySection />
       <DeveloperExperienceSection />
       <AdoptionSection />
-      <Container mx="5">
+      <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Separator size="2" />
       </Container>
       <CommunitySection />
-      <Container mx="5">
+      <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Footer />
       </Container>
     </MobileMenuProvider>

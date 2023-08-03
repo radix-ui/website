@@ -58,7 +58,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
 
       <PrimitivesHeader />
 
-      <Container mx="5">
+      <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Section size={{ initial: '2', md: '3' }}>
           <Grid columns={{ md: '1fr 330px', lg: '1fr 380px' }} gap={{ md: '9' }}>
             <Box>
@@ -84,7 +84,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
               <Separator size="3" mt={{ initial: '7', md: '9' }} />
             </Box>
 
-            <Box position="relative" mt={{ initial: '7', md: '9' }}>
+            <Box position="relative" pt="7" mt={{ md: '9' }}>
               <Box position="sticky" style={{ top: 'var(--space-9)', left: 0 }}>
                 <Box mb="6">
                   <BoxLink

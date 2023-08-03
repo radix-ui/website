@@ -27,7 +27,7 @@ export const DeveloperExperienceSection = () => {
         `,
       }}
     >
-      <Container mx="5">
+      <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Grid
           gap={{ '@initial': 5, '@bp3': 8 }}
           css={{ '@bp2': { gridTemplateColumns: 'auto 1fr' } }}

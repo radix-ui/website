@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { Box, ScrollArea } from '@radix-ui/themes';
-import { PageWrapper, ContentWrapper, Pagination, EditPageLink } from '@components/DocsPage';
+import { Box, Flex, ScrollArea } from '@radix-ui/themes';
+import { DocsPagination } from '@components/DocsPagination';
 import { allColorsRoutes, colorsRoutes } from '@lib/colorsRoutes';
 import { ColorsHeader } from './ColorsHeader';
 import { DocsNav } from './DocsNav';
 import { MobileMenu, MobileMenuProvider } from './MobileMenu';
 import { SideNav } from './SideNav';
+import { DocsPageWrapper } from './DocsPageWrapper';
+import { EditPageLink } from './EditPageLink';
 
 export function ColorsDocsPage({ children }: { children: React.ReactNode }) {
   return (
@@ -21,19 +23,19 @@ export function ColorsDocsPage({ children }: { children: React.ReactNode }) {
         </ScrollArea>
       </MobileMenu>
 
-      <Box position="relative">
+      <Flex>
         <SideNav>
           <Box pt="4" px="4" pb="9">
             <DocsNav routes={colorsRoutes} />
           </Box>
         </SideNav>
 
-        <PageWrapper>
-          <ContentWrapper data-algolia-page-scope>{children}</ContentWrapper>
-          <Pagination allRoutes={allColorsRoutes} />
+        <DocsPageWrapper>
+          <Box data-algolia-page-scope>{children}</Box>
+          <DocsPagination allRoutes={allColorsRoutes} />
           <EditPageLink />
-        </PageWrapper>
-      </Box>
+        </DocsPageWrapper>
+      </Flex>
     </MobileMenuProvider>
   );
 }

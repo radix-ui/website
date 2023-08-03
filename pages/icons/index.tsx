@@ -28,7 +28,7 @@ export default function Home() {
 
       <IconsHero />
       <Menu />
-      <Container mx="5" pb="9">
+      <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }} pb="9">
         <IconsPanel />
       </Container>
     </MobileMenuProvider>

@@ -6,7 +6,7 @@ import { Section, Container } from '@radix-ui/themes';
 export const CommunitySection = () => {
   return (
     <Section size={{ initial: '2', md: '3' }}>
-      <Container mx="5">
+      <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Box css={{ mb: '$5' }}>
           <MarketingCaption mb="1">An active and friendly community 👋</MarketingCaption>
           <Heading as="h2" size="3" css={{ mb: '$4' }}>

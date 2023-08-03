@@ -11,7 +11,7 @@ export const BenefitsSection = () => {
         overflow: 'hidden',
       }}
     >
-      <Container mx="5">
+      <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Box css={{ mb: '$7' }}>
           <MarketingCaption mb="1">Why Radix Primitives</MarketingCaption>
           <Heading as="h2" size="3">

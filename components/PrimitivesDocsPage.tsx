@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Box, Flex, ScrollArea } from '@radix-ui/themes';
-import { PageWrapper, ContentWrapper, Pagination, EditPageLink } from '@components/DocsPage';
+import { DocsPagination } from '@components/DocsPagination';
 import { PrimitivesDocsHeader } from '@components/PrimitivesDocsHeader';
 import { allPrimitivesRoutes, primitivesRoutes } from '@lib/primitivesRoutes';
 import { DocsNav } from './DocsNav';
@@ -8,6 +8,8 @@ import { MobileMenu, MobileMenuProvider } from './MobileMenu';
 import { SideNav } from './SideNav';
 import { PrimitivesSearchMobile } from './PrimitivesSearchMobile';
 import { PrimitivesSearchDesktop } from './PrimitivesSearchDesktop';
+import { DocsPageWrapper } from './DocsPageWrapper';
+import { EditPageLink } from './EditPageLink';
 
 export function PrimitivesDocsPage({ children }: { children: React.ReactNode }) {
   const [mobileSearchOpen, setMobileSearchOpen] = React.useState(false);
@@ -32,7 +34,7 @@ export function PrimitivesDocsPage({ children }: { children: React.ReactNode }) 
         </ScrollArea>
       </MobileMenu>
 
-      <Box position="relative">
+      <Flex>
         <SideNav>
           <Box pt="4" px="4" pb="9">
             <Box mb="4">
@@ -43,12 +45,12 @@ export function PrimitivesDocsPage({ children }: { children: React.ReactNode }) 
           </Box>
         </SideNav>
 
-        <PageWrapper>
-          <ContentWrapper data-algolia-page-scope>{children}</ContentWrapper>
-          <Pagination allRoutes={allPrimitivesRoutes} />
+        <DocsPageWrapper>
+          <Box data-algolia-page-scope>{children}</Box>
+          <DocsPagination allRoutes={allPrimitivesRoutes} />
           <EditPageLink />
-        </PageWrapper>
-      </Box>
+        </DocsPageWrapper>
+      </Flex>
     </MobileMenuProvider>
   );
 }

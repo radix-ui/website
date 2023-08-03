@@ -19,7 +19,7 @@ export const StatsSection = () => {
         }}
       />
       <FancyBackgroundChart />
-      <Container position="relative" mx="5">
+      <Container position="relative" mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Grid
           width="min-content"
           align="stretch"

@@ -257,7 +257,7 @@ export const PrimitivesHero = () => {
 
   return (
     <Section size={{ initial: '2', md: '3' }}>
-      <Container mx="5">
+      <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Box mb="6">
           <Box mb="5" style={{ maxWidth: 520 }}>
             <SerifHeading mb="3">Core building blocks for your design system</SerifHeading>
@@ -288,354 +288,356 @@ export const PrimitivesHero = () => {
 
       <Box position="relative">
         <Carousel>
-          <CarouselSlideList
-            css={{
-              display: 'grid',
-              gridAutoFlow: 'column',
-              gridAutoColumns: 'min-content',
-              ox: 'auto',
-              oy: 'hidden',
-              py: '$1',
-              WebkitOverflowScrolling: 'touch',
+          <Box asChild ml={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
+            <CarouselSlideList
+              css={{
+                display: 'grid',
+                gridAutoFlow: 'column',
+                gridAutoColumns: 'min-content',
+                overflowX: 'auto',
+                overflowY: 'hidden',
+                paddingTop: '$1',
+                paddingBottom: '$1',
+                WebkitOverflowScrolling: 'touch',
 
-              // Gap between slides
-              $$gap: 'var(--space-5)',
+                // Remove the actual margin
+                '--margin-left-override': 0,
 
-              // calculate the left padding to apply to the scrolling list
-              // so that the carousel starts aligned with the container component
-              '$$scroll-padding': 'max($$gap, calc(50% - var(--container-3) / 2))',
-              pl: '$$scroll-padding',
+                // Move the responsive margin here
+                paddingLeft: 'max(var(--margin-left), calc(50% - var(--container-3) / 2))',
 
-              // hide scrollbar
-              MsOverflowStyle: 'none',
-              scrollbarWidth: 'none',
-              '&::-webkit-scrollbar': {
-                display: 'none',
-              },
+                // hide scrollbar
+                MsOverflowStyle: 'none',
+                scrollbarWidth: 'none',
 
-              // Can't have nice grid gap because Safari butchers scroll padding with it
-              '& > *': {
-                pr: '$$gap',
-              },
-            }}
-          >
-            <CarouselSlide>
-              <FocusArea
-                aria-label="Dialog component demo"
-                onKeyDown={onFocusAreaKeyDown}
-                onFocus={onFocusAreaFocus}
-              >
-                <DemoContainer
-                  aria-hidden
-                  css={{
-                    background: 'linear-gradient(120deg, $indigo6, $crimson5)',
-                    '.dark-theme &': {
-                      background: 'linear-gradient(120deg, $indigo4, $plum3)',
-                    },
-                  }}
+                '&::-webkit-scrollbar': {
+                  display: 'none',
+                },
+
+                // Can't have nice grid gap because Safari butchers scroll padding with it
+                '& > *': {
+                  paddingRight: 'var(--space-5)',
+                },
+              }}
+            >
+              <CarouselSlide>
+                <FocusArea
+                  aria-label="Dialog component demo"
+                  onKeyDown={onFocusAreaKeyDown}
+                  onFocus={onFocusAreaFocus}
                 >
-                  <PrimitivesHeroDialog />
-                </DemoContainer>
-              </FocusArea>
-              <GrabBox>
-                <Heading as="h3" size="3" mb="1">
-                  Dialog
-                </Heading>
-                <Text as="p" size="2" color="gray">
-                  With modal and non-modal modes, fine-grained focus&nbsp;control, accessible to
-                  screen readers.
-                </Text>
-              </GrabBox>
-            </CarouselSlide>
+                  <DemoContainer
+                    aria-hidden
+                    css={{
+                      background: 'linear-gradient(120deg, $indigo6, $crimson5)',
+                      '.dark-theme &': {
+                        background: 'linear-gradient(120deg, $indigo4, $plum3)',
+                      },
+                    }}
+                  >
+                    <PrimitivesHeroDialog />
+                  </DemoContainer>
+                </FocusArea>
+                <GrabBox>
+                  <Heading as="h3" size="3" mb="1">
+                    Dialog
+                  </Heading>
+                  <Text as="p" size="2" color="gray">
+                    With modal and non-modal modes, fine-grained focus&nbsp;control, accessible to
+                    screen readers.
+                  </Text>
+                </GrabBox>
+              </CarouselSlide>
 
-            <CarouselSlide>
-              <FocusArea
-                aria-label="Dropdown menu component demo"
-                onKeyDown={onFocusAreaKeyDown}
-                onFocus={onFocusAreaFocus}
-              >
-                <DemoContainer
-                  aria-hidden
-                  css={{
-                    background: 'linear-gradient(120deg,  $crimson5, $blue5)',
-                    '.dark-theme &': {
-                      background: 'linear-gradient(120deg,  $plum3, $blue3)',
-                    },
-                  }}
+              <CarouselSlide>
+                <FocusArea
+                  aria-label="Dropdown menu component demo"
+                  onKeyDown={onFocusAreaKeyDown}
+                  onFocus={onFocusAreaFocus}
                 >
-                  <PrimitivesHeroDropdownMenu />
-                </DemoContainer>
-              </FocusArea>
-              <GrabBox>
-                <Heading as="h3" size="3" mb="1">
-                  Dropdown Menu
-                </Heading>
-                <Text as="p" size="2" color="gray">
-                  With submenus, checkable items, collision handling, arrow key navigation, and
-                  typeahead support.
-                </Text>
-              </GrabBox>
-            </CarouselSlide>
+                  <DemoContainer
+                    aria-hidden
+                    css={{
+                      background: 'linear-gradient(120deg,  $crimson5, $blue5)',
+                      '.dark-theme &': {
+                        background: 'linear-gradient(120deg,  $plum3, $blue3)',
+                      },
+                    }}
+                  >
+                    <PrimitivesHeroDropdownMenu />
+                  </DemoContainer>
+                </FocusArea>
+                <GrabBox>
+                  <Heading as="h3" size="3" mb="1">
+                    Dropdown Menu
+                  </Heading>
+                  <Text as="p" size="2" color="gray">
+                    With submenus, checkable items, collision handling, arrow key navigation, and
+                    typeahead support.
+                  </Text>
+                </GrabBox>
+              </CarouselSlide>
 
-            <CarouselSlide>
-              <FocusArea
-                aria-label="Popover component demo"
-                onKeyDown={onFocusAreaKeyDown}
-                onFocus={onFocusAreaFocus}
-              >
-                <DemoContainer
-                  aria-hidden
-                  css={{
-                    background: 'linear-gradient(120deg, $blue5, $lime3)',
-                    '.dark-theme &': {
-                      background: 'linear-gradient(120deg, $blue3, $sand6)',
-                    },
-                  }}
+              <CarouselSlide>
+                <FocusArea
+                  aria-label="Popover component demo"
+                  onKeyDown={onFocusAreaKeyDown}
+                  onFocus={onFocusAreaFocus}
                 >
-                  <PrimitivesHeroPopover />
-                </DemoContainer>
-              </FocusArea>
-              <GrabBox>
-                <Heading as="h3" size="3" mb="1">
-                  Popover
-                </Heading>
-                <Text as="p" size="2" color="gray">
-                  With fine-grained focus control, collision handling, origin-aware and
-                  collision-aware animations.
-                </Text>
-              </GrabBox>
-            </CarouselSlide>
+                  <DemoContainer
+                    aria-hidden
+                    css={{
+                      background: 'linear-gradient(120deg, $blue5, $lime3)',
+                      '.dark-theme &': {
+                        background: 'linear-gradient(120deg, $blue3, $sand6)',
+                      },
+                    }}
+                  >
+                    <PrimitivesHeroPopover />
+                  </DemoContainer>
+                </FocusArea>
+                <GrabBox>
+                  <Heading as="h3" size="3" mb="1">
+                    Popover
+                  </Heading>
+                  <Text as="p" size="2" color="gray">
+                    With fine-grained focus control, collision handling, origin-aware and
+                    collision-aware animations.
+                  </Text>
+                </GrabBox>
+              </CarouselSlide>
 
-            <CarouselSlide>
-              <FocusArea
-                aria-label="Slider component demo"
-                onKeyDown={onFocusAreaKeyDown}
-                onFocus={onFocusAreaFocus}
-              >
-                <DemoContainer
-                  aria-hidden
-                  css={{
-                    background: 'linear-gradient(120deg, $lime3, $pink4)',
-                    '.dark-theme &': {
-                      background: 'linear-gradient(120deg, $sand6, $pink3)',
-                    },
-                  }}
+              <CarouselSlide>
+                <FocusArea
+                  aria-label="Slider component demo"
+                  onKeyDown={onFocusAreaKeyDown}
+                  onFocus={onFocusAreaFocus}
                 >
-                  <PrimitivesHeroSlider />
-                </DemoContainer>
-              </FocusArea>
-              <GrabBox>
-                <Heading as="h3" size="3" mb="1">
-                  Slider
-                </Heading>
-                <Text as="p" size="2" color="gray">
-                  Supports keyboard and touch input, step interval, multiple thumbs for value
-                  ranges, and RTL direction.
-                </Text>
-              </GrabBox>
-            </CarouselSlide>
+                  <DemoContainer
+                    aria-hidden
+                    css={{
+                      background: 'linear-gradient(120deg, $lime3, $pink4)',
+                      '.dark-theme &': {
+                        background: 'linear-gradient(120deg, $sand6, $pink3)',
+                      },
+                    }}
+                  >
+                    <PrimitivesHeroSlider />
+                  </DemoContainer>
+                </FocusArea>
+                <GrabBox>
+                  <Heading as="h3" size="3" mb="1">
+                    Slider
+                  </Heading>
+                  <Text as="p" size="2" color="gray">
+                    Supports keyboard and touch input, step interval, multiple thumbs for value
+                    ranges, and RTL direction.
+                  </Text>
+                </GrabBox>
+              </CarouselSlide>
 
-            <CarouselSlide>
-              <FocusArea
-                aria-label="Scroll area component demo"
-                onKeyDown={onFocusAreaKeyDown}
-                onFocus={onFocusAreaFocus}
-              >
-                <DemoContainer
-                  aria-hidden
-                  css={{
-                    background: 'linear-gradient(120deg, $pink4, $gold5)',
-                    '.dark-theme &': {
-                      background: 'linear-gradient(120deg, $pink3, $gold4)',
-                    },
-                  }}
+              <CarouselSlide>
+                <FocusArea
+                  aria-label="Scroll area component demo"
+                  onKeyDown={onFocusAreaKeyDown}
+                  onFocus={onFocusAreaFocus}
                 >
-                  <PrimitivesHeroScrollArea />
-                </DemoContainer>
-              </FocusArea>
-              <GrabBox>
-                <Heading as="h3" size="3" mb="1">
-                  Scroll Area
-                </Heading>
-                <Text as="p" size="2" color="gray">
-                  Supports custom cross-browser styling while maintaining the browser's native
-                  scroll behavior.
-                </Text>
-              </GrabBox>
-            </CarouselSlide>
+                  <DemoContainer
+                    aria-hidden
+                    css={{
+                      background: 'linear-gradient(120deg, $pink4, $gold5)',
+                      '.dark-theme &': {
+                        background: 'linear-gradient(120deg, $pink3, $gold4)',
+                      },
+                    }}
+                  >
+                    <PrimitivesHeroScrollArea />
+                  </DemoContainer>
+                </FocusArea>
+                <GrabBox>
+                  <Heading as="h3" size="3" mb="1">
+                    Scroll Area
+                  </Heading>
+                  <Text as="p" size="2" color="gray">
+                    Supports custom cross-browser styling while maintaining the browser's native
+                    scroll behavior.
+                  </Text>
+                </GrabBox>
+              </CarouselSlide>
 
-            <CarouselSlide>
-              <FocusArea
-                aria-label="Tabs component demo"
-                onKeyDown={onFocusAreaKeyDown}
-                onFocus={onFocusAreaFocus}
-              >
-                <DemoContainer
-                  aria-hidden
-                  css={{
-                    background: 'linear-gradient(120deg, $gold5, $tomato5)',
-                    '.dark-theme &': {
-                      background: 'linear-gradient(120deg, $gold4, $crimson4)',
-                    },
-                  }}
+              <CarouselSlide>
+                <FocusArea
+                  aria-label="Tabs component demo"
+                  onKeyDown={onFocusAreaKeyDown}
+                  onFocus={onFocusAreaFocus}
                 >
-                  <PrimitivesHeroTabs />
-                </DemoContainer>
-              </FocusArea>
-              <GrabBox>
-                <Heading as="h3" size="3" mb="1">
-                  Tabs
-                </Heading>
-                <Text as="p" size="2" color="gray">
-                  Supports arrow key navigation, horizontal/vertical orientation, controlled or
-                  uncontrolled.
-                </Text>
-              </GrabBox>
-            </CarouselSlide>
+                  <DemoContainer
+                    aria-hidden
+                    css={{
+                      background: 'linear-gradient(120deg, $gold5, $tomato5)',
+                      '.dark-theme &': {
+                        background: 'linear-gradient(120deg, $gold4, $crimson4)',
+                      },
+                    }}
+                  >
+                    <PrimitivesHeroTabs />
+                  </DemoContainer>
+                </FocusArea>
+                <GrabBox>
+                  <Heading as="h3" size="3" mb="1">
+                    Tabs
+                  </Heading>
+                  <Text as="p" size="2" color="gray">
+                    Supports arrow key navigation, horizontal/vertical orientation, controlled or
+                    uncontrolled.
+                  </Text>
+                </GrabBox>
+              </CarouselSlide>
 
-            <CarouselSlide>
-              <FocusArea
-                aria-label="Accordion component demo"
-                onKeyDown={onFocusAreaKeyDown}
-                onFocus={onFocusAreaFocus}
-              >
-                <DemoContainer
-                  aria-hidden
-                  css={{
-                    background: 'linear-gradient(120deg, $tomato5, $indigo7)',
-                    '.dark-theme &': {
-                      background: 'linear-gradient(120deg, $crimson4, $indigo5)',
-                    },
-                  }}
+              <CarouselSlide>
+                <FocusArea
+                  aria-label="Accordion component demo"
+                  onKeyDown={onFocusAreaKeyDown}
+                  onFocus={onFocusAreaFocus}
                 >
-                  <PrimitivesHeroAccordion />
-                </DemoContainer>
-              </FocusArea>
-              <GrabBox>
-                <Heading as="h3" size="3" mb="1">
-                  Accordion
-                </Heading>
-                <Text as="p" size="2" color="gray">
-                  Supports one or multiple items open at the same time, keyboard navigation,
-                  collapse and expand animation.
-                </Text>
-              </GrabBox>
-            </CarouselSlide>
+                  <DemoContainer
+                    aria-hidden
+                    css={{
+                      background: 'linear-gradient(120deg, $tomato5, $indigo7)',
+                      '.dark-theme &': {
+                        background: 'linear-gradient(120deg, $crimson4, $indigo5)',
+                      },
+                    }}
+                  >
+                    <PrimitivesHeroAccordion />
+                  </DemoContainer>
+                </FocusArea>
+                <GrabBox>
+                  <Heading as="h3" size="3" mb="1">
+                    Accordion
+                  </Heading>
+                  <Text as="p" size="2" color="gray">
+                    Supports one or multiple items open at the same time, keyboard navigation,
+                    collapse and expand animation.
+                  </Text>
+                </GrabBox>
+              </CarouselSlide>
 
-            <CarouselSlide>
-              <FocusArea
-                aria-label="Radio group component demo"
-                onKeyDown={onFocusAreaKeyDown}
-                onFocus={onFocusAreaFocus}
-              >
-                <DemoContainer
-                  aria-hidden
-                  css={{
-                    background: 'linear-gradient(120deg, $indigo7, $cyan3)',
-                    '.dark-theme &': {
-                      background: 'linear-gradient(120deg, $indigo5, $cyan7)',
-                    },
-                  }}
+              <CarouselSlide>
+                <FocusArea
+                  aria-label="Radio group component demo"
+                  onKeyDown={onFocusAreaKeyDown}
+                  onFocus={onFocusAreaFocus}
                 >
-                  <PrimitivesHeroRadioGroup />
-                </DemoContainer>
-              </FocusArea>
-              <GrabBox>
-                <Heading as="h3" size="3" mb="1">
-                  Radio Group
-                </Heading>
-                <Text as="p" size="2" color="gray">
-                  With arrow key navigation, horizontal/vertical orientation support, controlled or
-                  uncontrolled.
-                </Text>
-              </GrabBox>
-            </CarouselSlide>
+                  <DemoContainer
+                    aria-hidden
+                    css={{
+                      background: 'linear-gradient(120deg, $indigo7, $cyan3)',
+                      '.dark-theme &': {
+                        background: 'linear-gradient(120deg, $indigo5, $cyan7)',
+                      },
+                    }}
+                  >
+                    <PrimitivesHeroRadioGroup />
+                  </DemoContainer>
+                </FocusArea>
+                <GrabBox>
+                  <Heading as="h3" size="3" mb="1">
+                    Radio Group
+                  </Heading>
+                  <Text as="p" size="2" color="gray">
+                    With arrow key navigation, horizontal/vertical orientation support, controlled
+                    or uncontrolled.
+                  </Text>
+                </GrabBox>
+              </CarouselSlide>
 
-            <CarouselSlide>
-              <FocusArea
-                aria-label="Toggle group component demo"
-                onKeyDown={onFocusAreaKeyDown}
-                onFocus={onFocusAreaFocus}
-              >
-                <DemoContainer
-                  aria-hidden
-                  css={{
-                    background: 'linear-gradient(120deg, $cyan3, $mint5)',
-                    '.dark-theme &': {
-                      background: 'linear-gradient(120deg, $cyan7, $teal6)',
-                    },
-                  }}
+              <CarouselSlide>
+                <FocusArea
+                  aria-label="Toggle group component demo"
+                  onKeyDown={onFocusAreaKeyDown}
+                  onFocus={onFocusAreaFocus}
                 >
-                  <PrimitivesHeroToggleGroup />
-                </DemoContainer>
-              </FocusArea>
-              <GrabBox>
-                <Heading as="h3" size="3" mb="1">
-                  Toggle Group
-                </Heading>
-                <Text as="p" size="2" color="gray">
-                  A set of two-state buttons that can be toggled on or off. Supports single and
-                  multiple pressed buttons.
-                </Text>
-              </GrabBox>
-            </CarouselSlide>
+                  <DemoContainer
+                    aria-hidden
+                    css={{
+                      background: 'linear-gradient(120deg, $cyan3, $mint5)',
+                      '.dark-theme &': {
+                        background: 'linear-gradient(120deg, $cyan7, $teal6)',
+                      },
+                    }}
+                  >
+                    <PrimitivesHeroToggleGroup />
+                  </DemoContainer>
+                </FocusArea>
+                <GrabBox>
+                  <Heading as="h3" size="3" mb="1">
+                    Toggle Group
+                  </Heading>
+                  <Text as="p" size="2" color="gray">
+                    A set of two-state buttons that can be toggled on or off. Supports single and
+                    multiple pressed buttons.
+                  </Text>
+                </GrabBox>
+              </CarouselSlide>
 
-            <CarouselSlide>
-              <FocusArea
-                aria-label="Switch component demo"
-                onKeyDown={onFocusAreaKeyDown}
-                onFocus={onFocusAreaFocus}
-              >
-                <DemoContainer
-                  aria-hidden
-                  css={{
-                    background: 'linear-gradient(120deg, $mint5, $red3)',
-                    '.dark-theme &': {
-                      background: 'linear-gradient(120deg, $teal6, $plum4)',
-                    },
-                  }}
+              <CarouselSlide>
+                <FocusArea
+                  aria-label="Switch component demo"
+                  onKeyDown={onFocusAreaKeyDown}
+                  onFocus={onFocusAreaFocus}
                 >
-                  <PrimitivesHeroSwitch />
-                </DemoContainer>
-              </FocusArea>
-              <GrabBox>
-                <Heading as="h3" size="3" mb="1">
-                  Switch
-                </Heading>
-                <Text as="p" size="2" color="gray">
-                  Allows the user to toggle between checked and not checked.
-                </Text>
-              </GrabBox>
-            </CarouselSlide>
+                  <DemoContainer
+                    aria-hidden
+                    css={{
+                      background: 'linear-gradient(120deg, $mint5, $red3)',
+                      '.dark-theme &': {
+                        background: 'linear-gradient(120deg, $teal6, $plum4)',
+                      },
+                    }}
+                  >
+                    <PrimitivesHeroSwitch />
+                  </DemoContainer>
+                </FocusArea>
+                <GrabBox>
+                  <Heading as="h3" size="3" mb="1">
+                    Switch
+                  </Heading>
+                  <Text as="p" size="2" color="gray">
+                    Allows the user to toggle between checked and not checked.
+                  </Text>
+                </GrabBox>
+              </CarouselSlide>
 
-            <CarouselSlide>
-              <FocusArea onKeyDown={onFocusAreaKeyDown} onFocus={onFocusAreaFocus}>
-                <DemoContainer
-                  css={{
-                    backgroundColor: '$whiteA6',
-                    boxShadow: '0 0 0 1px $colors$slateA5',
-                    '.dark-theme &': {
-                      backgroundColor: '$blackA4',
-                    },
-                  }}
-                >
-                  <Flex align="center" direction="column" gap="2">
-                    <Text size="2" color="gray">
-                      See more components in the docs
-                    </Text>
-                    <Text size="3">
-                      <NextLink href="/primitives/docs/overview/getting-started" passHref>
-                        <Link css={{ display: 'inline-flex', alignItems: 'center' }}>
-                          View docs
-                          <ArrowRightIcon />
-                        </Link>
-                      </NextLink>
-                    </Text>
-                  </Flex>
-                </DemoContainer>
-              </FocusArea>
-            </CarouselSlide>
-          </CarouselSlideList>
+              <CarouselSlide>
+                <FocusArea onKeyDown={onFocusAreaKeyDown} onFocus={onFocusAreaFocus}>
+                  <DemoContainer
+                    css={{
+                      backgroundColor: '$whiteA6',
+                      boxShadow: '0 0 0 1px $colors$slateA5',
+                      '.dark-theme &': {
+                        backgroundColor: '$blackA4',
+                      },
+                    }}
+                  >
+                    <Flex align="center" direction="column" gap="2">
+                      <Text size="2" color="gray">
+                        See more components in the docs
+                      </Text>
+                      <Text size="3">
+                        <NextLink href="/primitives/docs/overview/getting-started" passHref>
+                          <Link css={{ display: 'inline-flex', alignItems: 'center' }}>
+                            View docs
+                            <ArrowRightIcon />
+                          </Link>
+                        </NextLink>
+                      </Text>
+                    </Flex>
+                  </DemoContainer>
+                </FocusArea>
+              </CarouselSlide>
+            </CarouselSlideList>
+          </Box>
 
           <Box
             style={{
@@ -736,6 +738,6 @@ const GrabBox = styled('div', {
   '&:active': { cursor: 'grabbing' },
 
   // Fill in spaces between slides
-  mr: '-$$gap',
-  pr: '$$gap',
+  marginRight: 'calc(-1 * var(--space-5))',
+  paddingRight: 'var(--space-5)',
 });

@@ -36,7 +36,7 @@ export default function ColorsHome() {
 
       <ColorsHeader ghost />
 
-      <Box px="5" position="relative">
+      <Box mx={{ initial: '5', xs: '6', sm: '7', md: '9' }} position="relative">
         <TitleAndMetaTags
           title="Colors – Radix UI"
           description="An open-source color system for designing beautiful, accessible websites and apps."
@@ -636,7 +636,7 @@ export default function ColorsHome() {
         </Section>
       </Box>
 
-      <Container mx="5">
+      <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Footer />
       </Container>
     </MobileMenuProvider>

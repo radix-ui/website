@@ -416,7 +416,7 @@ export const AccessibilitySection = () => {
         />
       </Box>
 
-      <Container mx="5" position="relative">
+      <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }} position="relative">
         <Box css={{ mb: '$5' }}>
           <MarketingCaption mb="1">Supports assistive technology</MarketingCaption>
           <Heading as="h2" size="3">
