@@ -130,7 +130,7 @@ export const components = {
   blockquote: Blockquote,
   pre: (props) => {
     if (props.children.props.live) {
-      return <PreWithLivePreview {...props} />;
+      return <PreWithLivePreview scroll={props.children.props.scroll} {...props} />;
     }
     return <PreWithCopyButton {...props} />;
   },

@@ -44,8 +44,8 @@ Use the `size` prop to control the size of the heading. The prop also provides c
 
 }
 
-```jsx live="true"
-<Flex direction="column" gap="3" width="max-content">
+```jsx live=true scroll=true
+<Flex direction="column" gap="3">
   <Heading size="9">The quick brown fox jumps over the lazy dog</Heading>
   <Heading size="8">The quick brown fox jumps over the lazy dog</Heading>
   <Heading size="7">The quick brown fox jumps over the lazy dog</Heading>
@@ -62,7 +62,7 @@ Use the `size` prop to control the size of the heading. The prop also provides c
 
 Use the `align` prop to set text alignment.
 
-```jsx live="true"
+```jsx live=true
 <Heading align="left">Left-aligned</Text>
 <Heading align="center">Center-aligned</Text>
 <Heading align="right">Right-aligned</Text>
@@ -74,7 +74,7 @@ Use the `trim` prop to trim the leading space at the start, end, or both sides o
 
 The prop works similarly to the upcoming [half-leading control](https://www.w3.org/TR/css-inline-3/#leading-trim) spec, but uses a common [negative margin workaround](https://seek-oss.github.io/capsize/) under the hood for cross-browser support.
 
-```jsx live="true"
+```jsx live=true
 <Flex direction="column" gap="3">
   <Heading
     trim="normal"
@@ -101,7 +101,7 @@ The prop works similarly to the upcoming [half-leading control](https://www.w3.o
 
 Trimming the leading is useful when dialing in vertical spacing in cards or other “boxy” components. Otherwise, padding looks larger on top and bottom than on the sides.
 
-```jsx live="true"
+```jsx live=true
 <Flex direction="column" gap="3">
   <Box
     style={{
@@ -143,7 +143,7 @@ Trimming the leading is useful when dialing in vertical spacing in cards or othe
 
 Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
 
-```jsx live=true
+```jsx live=true scroll=true
 <Flex direction="column" gap="1">
   <Heading color="indigo" size="5">
     The quick brown fox jumps over the lazy dog
@@ -164,7 +164,7 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 
 Use the `highContrast` prop to add contrast within colored headings.
 
-```jsx live="true"
+```jsx live=true
 <Heading size="5" color="gray">
   The quick <Text highContrast>brown fox</Text> jumps over the lazy dog.
 </Heading>

@@ -1,11 +1,13 @@
 ---
 metaTitle: Button
-metaDescription: Triggers an action or event, such as submitting a form or opening a dialog.
+metaDescription: Trigger an action or event, such as submitting a form or displaying a dialog.
 sourcePath: components/button
 ---
 
 ```jsx live=true
-<Button>Button</Button>
+<Button>
+  <BookmarkIcon width="16" height="16" /> Bookmark
+</Button>
 ```
 
 ## API Reference
@@ -21,15 +23,15 @@ This component is based on the `button` element and supports [common margin prop
 Use the `size` prop to control the size.
 
 ```jsx live=true
-<Flex gap="3" align="center">
+<Flex direction="column" gap="3" align="start">
   <Button size="1" variant="soft">
-    Button
+    Edit profile
   </Button>
   <Button size="2" variant="soft">
-    Button
+    Edit profile
   </Button>
   <Button size="3" variant="soft">
-    Button
+    Edit profile
   </Button>
 </Flex>
 ```
@@ -38,13 +40,25 @@ Use the `size` prop to control the size.
 
 Use the `variant` prop to control the visual style.
 
-```jsx live=true
+```jsx live=true scroll=true
+<Flex gap="3">
+  <Button variant="classic">Edit profile</Button>
+  <Button variant="solid">Edit profile</Button>
+  <Button variant="soft">Edit profile</Button>
+  <Button variant="outline">Edit profile</Button>
+  <Button variant="surface">Edit profile</Button>
+</Flex>
+```
+
+#### Ghost
+
+Use the `ghost` variant to render the button without a visually containing element. Ghost buttons behave differently in layout as they use a negative margin to optically align themselves against their siblings while maintaining their padded active and hover states.
+
+```jsx live=true line=3
 <Flex gap="3" align="center">
-  <Button variant="solid">Solid</Button>
-  <Button variant="soft">Soft</Button>
-  <Button variant="outline">Outline</Button>
-  <Button variant="surface">Surface</Button>
-  <Button variant="ghost">Ghost</Button>
+  <Button variant="solid">Edit profile</Button>
+  <Button variant="ghost">Edit profile</Button>
+  <Button variant="soft">Edit profile</Button>
 </Flex>
 ```
 
@@ -52,19 +66,19 @@ Use the `variant` prop to control the visual style.
 
 Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
 
-```jsx live=true
+```jsx live=true scroll=true
 <Flex gap="3">
-  <Button color="crimson" variant="soft">
-    Crimson
-  </Button>
   <Button color="indigo" variant="soft">
-    Indigo
+    Edit profile
   </Button>
-  <Button color="grass" variant="soft">
-    Grass
+  <Button color="cyan" variant="soft">
+    Edit profile
   </Button>
   <Button color="orange" variant="soft">
-    Orange
+    Edit profile
+  </Button>
+  <Button color="crimson" variant="soft">
+    Edit profile
   </Button>
 </Flex>
 ```
@@ -73,30 +87,30 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 
 Use the `highContrast` prop to add additional contrast.
 
-```jsx live=true
+```jsx live=true scroll=true
 <Flex direction="column" gap="3">
-  <Flex gap="3" align="center">
-    <Button variant="solid">Solid</Button>
-    <Button variant="soft">Soft</Button>
-    <Button variant="outline">Outline</Button>
-    <Button variant="surface">Surface</Button>
-    <Button variant="ghost">Ghost</Button>
+  <Flex gap="3">
+    <Button variant="classic">Edit profile</Button>
+    <Button variant="solid">Edit profile</Button>
+    <Button variant="soft">Edit profile</Button>
+    <Button variant="outline">Edit profile</Button>
+    <Button variant="surface">Edit profile</Button>
   </Flex>
-  <Flex gap="3" align="center">
+  <Flex gap="3">
+    <Button variant="classic" highContrast>
+      Edit profile
+    </Button>
     <Button variant="solid" highContrast>
-      Solid
+      Edit profile
     </Button>
     <Button variant="soft" highContrast>
-      Soft
+      Edit profile
     </Button>
     <Button variant="outline" highContrast>
-      Outline
+      Edit profile
     </Button>
     <Button variant="surface" highContrast>
-      Surface
-    </Button>
-    <Button variant="ghost" highContrast>
-      Ghost
+      Edit profile
     </Button>
   </Flex>
 </Flex>
@@ -106,22 +120,40 @@ Use the `highContrast` prop to add additional contrast.
 
 Use the `radius` prop to assign a specific radius value, ignoring the global theme.
 
-```jsx live=true
+```jsx live=true scroll=true
 <Flex gap="3">
   <Button radius="none" variant="soft">
-    None
-  </Button>
-  <Button radius="small" variant="soft">
-    Small
-  </Button>
-  <Button radius="medium" variant="soft">
-    Medium
+    Edit profile
   </Button>
   <Button radius="large" variant="soft">
-    Large
+    Edit profile
   </Button>
   <Button radius="full" variant="soft">
-    Full
+    Edit profile
+  </Button>
+</Flex>
+```
+
+### With icons
+
+You can nest icons directly inside the button. The correct gap is provided automatically.
+
+```jsx live=true scroll=true
+<Flex gap="3">
+  <Button variant="classic">
+    <BookmarkIcon width="16" height="16" /> Bookmark
+  </Button>
+  <Button variant="solid">
+    <BookmarkIcon width="16" height="16" /> Bookmark
+  </Button>
+  <Button variant="soft">
+    <BookmarkIcon width="16" height="16" /> Bookmark
+  </Button>
+  <Button variant="outline">
+    <BookmarkIcon width="16" height="16" /> Bookmark
+  </Button>
+  <Button variant="surface">
+    <BookmarkIcon width="16" height="16" /> Bookmark
   </Button>
 </Flex>
 ```
