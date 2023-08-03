@@ -7,7 +7,7 @@ sourcePath: components/dialog
 ```jsx live=true
 <Dialog.Root>
   <Dialog.Trigger>
-    <Button variant="solid">Edit profile</Button>
+    <Button>Edit profile</Button>
   </Dialog.Trigger>
 
   <Dialog.Content style={{ maxWidth: 450 }}>
@@ -44,7 +44,7 @@ sourcePath: components/dialog
         </Button>
       </Dialog.Close>
       <Dialog.Close>
-        <Button variant="solid">Save</Button>
+        <Button>Save</Button>
       </Dialog.Close>
     </Flex>
   </Dialog.Content>
@@ -85,11 +85,11 @@ Contains the content of the dialog. This component is based on the `div` element
 
 ### Title
 
-An accessible title that is announced when the dialog is opened. This part is based on the [Heading](./heading) component with a pre-defined font size and leading trim on top.
+An accessible title that is announced when the dialog is opened. This part is based on the [Heading](/themes/docs/components/heading) component with a pre-defined font size and leading trim on top.
 
 ### Description
 
-An optional accessible description that is announced when the dialog is opened. This part is based on the [Text](./text) component with a pre-defined font size.
+An optional accessible description that is announced when the dialog is opened. This part is based on the [Text](/themes/docs/components/text) component with a pre-defined font size.
 
 If you want to remove the description entirely, remove this part and pass `aria-describedby={undefined}` to `Dialog.Content`.
 
@@ -106,7 +106,7 @@ Use the [Inset](/themes/docs/components/inset) component to align content flush 
 ```jsx live=true
 <Dialog.Root>
   <Dialog.Trigger>
-    <Button variant="solid">View users</Button>
+    <Button>View users</Button>
   </Dialog.Trigger>
   <Dialog.Content>
     <Dialog.Title>Users</Dialog.Title>

@@ -1,33 +1,32 @@
 ---
 metaTitle: Alert Dialog
-metaDescription: A confirmation window displayed above the page contents.
+metaDescription: A modal confirmation dialog that interrupts the user and expects a response.
 sourcePath: components/alert-dialog
 ---
 
 ```jsx live=true
 <AlertDialog.Root>
   <AlertDialog.Trigger>
-    <Button variant="solid">Revoke access</Button>
+    <Button color="red">Revoke access</Button>
   </AlertDialog.Trigger>
   <AlertDialog.Content style={{ maxWidth: 450 }}>
     <AlertDialog.Title>Revoke access</AlertDialog.Title>
-    <Flex direction="column" gap="3">
-      <AlertDialog.Description size="2">
-        The application will no longer be accessible and any existing sessions
-        will be revoked.
-      </AlertDialog.Description>
-      <Flex gap="3" mt="4" justify="end">
-        <AlertDialog.Cancel>
-          <Button variant="soft" color="gray">
-            Cancel
-          </Button>
-        </AlertDialog.Cancel>
-        <AlertDialog.Action>
-          <Button variant="solid" color="red">
-            Revoke access
-          </Button>
-        </AlertDialog.Action>
-      </Flex>
+    <AlertDialog.Description size="2">
+      Are you sure? this application will no longer be accessible and any
+      existing sessions will be expired.
+    </AlertDialog.Description>
+
+    <Flex gap="3" mt="4" justify="end">
+      <AlertDialog.Cancel>
+        <Button variant="soft" color="gray">
+          Cancel
+        </Button>
+      </AlertDialog.Cancel>
+      <AlertDialog.Action>
+        <Button variant="solid" color="red">
+          Revoke access
+        </Button>
+      </AlertDialog.Action>
     </Flex>
   </AlertDialog.Content>
 </AlertDialog.Root>
@@ -35,11 +34,11 @@ sourcePath: components/alert-dialog
 
 ## API Reference
 
-This component inherits parts and props from the [Radix Alert Dialog](/primitives/docs/components/alert-dialog) primitive and is visually identical to [Dialog](/themes/docs/components/dialog), though with differing semantics and behavior. [View source](https://github.com/workos/workos/blob/main/packages/design-system/src/components/alert-dialog.tsx)
+This component inherits parts and props from the [Radix Alert Dialog](/primitives/docs/components/alert-dialog) primitive and is visually identical to [Dialog](/themes/docs/components/dialog), though with differing semantics and behavior.
 
 ### Root
 
-Contains all the parts of a dialog.
+Contains all the parts of the dialog.
 
 ### Trigger
 
@@ -47,7 +46,9 @@ Wraps the control that will open the dialog.
 
 ### Content
 
-Contains content to be rendered in the open dialog. This component is based on the div element.
+Contains the content of the dialog. This component is based on the `div` element.
+
+<ThemesPropsTable name="alertDialogContent" />
 
 ### Title
 
@@ -76,12 +77,13 @@ Use the [Inset](/themes/docs/components/inset) component to align content flush 
 ```jsx live=true
 <AlertDialog.Root>
   <AlertDialog.Trigger>
-    <Button variant="solid">Delete users</Button>
+    <Button color="red">Delete users</Button>
   </AlertDialog.Trigger>
   <AlertDialog.Content style={{ maxWidth: 500 }}>
     <AlertDialog.Title>Delete Users</AlertDialog.Title>
-    <AlertDialog.Description>
-      Are you sure you want to delete these users? This action cannot be undone.
+    <AlertDialog.Description size="2">
+      Are you sure you want to delete these users? this action is permanent and
+      cannot be undone.
     </AlertDialog.Description>
 
     <Inset side="x" my="5">
@@ -117,9 +119,7 @@ Use the [Inset](/themes/docs/components/inset) component to align content flush 
         </Button>
       </AlertDialog.Cancel>
       <AlertDialog.Action>
-        <Button variant="solid" color="red">
-          Delete users
-        </Button>
+        <Button color="red">Delete users</Button>
       </AlertDialog.Action>
     </Flex>
   </AlertDialog.Content>

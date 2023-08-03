@@ -69,6 +69,7 @@ const definitions = {
   kbd: { ...themes.kbdPropDefs },
   hoverCardContent: { ...themes.hoverCardContentPropDefs },
   dialogContent: { ...themes.dialogContentPropDefs },
+  alertDialogContent: { ...themes.alertDialogContentPropDefs },
 } as const;
 
 type PropDefinitions = typeof definitions;
