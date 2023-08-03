@@ -1,34 +1,51 @@
 ---
 metaTitle: Dialog
-metaDescription: A modal dialog window displayed above the page contents.
+metaDescription: A modal dialog window displayed above the page.
 sourcePath: components/dialog
 ---
 
 ```jsx live=true
 <Dialog.Root>
   <Dialog.Trigger>
-    <Button variant="solid">Open</Button>
+    <Button variant="solid">Edit profile</Button>
   </Dialog.Trigger>
+
   <Dialog.Content style={{ maxWidth: 450 }}>
+    <Dialog.Title>Edit profile</Dialog.Title>
+    <Dialog.Description size="2" mb="4">
+      Make changes to your profile.
+    </Dialog.Description>
+
     <Flex direction="column" gap="3">
-      <Dialog.Title>Share resource</Dialog.Title>
-      <Dialog.Description size="2">
-        Jan Tschichold was a German calligrapher, typographer and book designer.
-        He played a significant role in the development of graphic design in the
-        20th century.
-      </Dialog.Description>
-      <Flex gap="3" mt="4" justify="end">
-        <Dialog.Close>
-          <Button variant="soft" color="gray">
-            Cancel
-          </Button>
-        </Dialog.Close>
-        <Dialog.Close>
-          <Button variant="solid">
-            Share <Share2Icon />
-          </Button>
-        </Dialog.Close>
-      </Flex>
+      <label>
+        <Text as="div" size="2" mb="1" weight="bold">
+          Name
+        </Text>
+        <TextField.Input
+          defaultValue="Freja Johnsen"
+          placeholder="Enter your full name"
+        />
+      </label>
+      <label>
+        <Text as="div" size="2" mb="1" weight="bold">
+          Email
+        </Text>
+        <TextField.Input
+          defaultValue="freja@example.com"
+          placeholder="Enter your email"
+        />
+      </label>
+    </Flex>
+
+    <Flex gap="3" mt="4" justify="end">
+      <Dialog.Close>
+        <Button variant="soft" color="gray">
+          Cancel
+        </Button>
+      </Dialog.Close>
+      <Dialog.Close>
+        <Button variant="solid">Save</Button>
+      </Dialog.Close>
     </Flex>
   </Dialog.Content>
 </Dialog.Root>
@@ -38,7 +55,19 @@ sourcePath: components/dialog
 
 This component inherits the props from the [Radix Dialog](/primitives/docs/components/dialog) primitive.
 
-Note that this `Dialog` is always modal, so the `modal` prop is not available.
+{
+
+<Callout.Root my="5">
+  <Callout.Icon>
+    <InfoCircledIcon />
+  </Callout.Icon>
+  <Callout.Text>
+    Note that this dialog is designed around the modal pattern, so the{' '}
+    <Code>modal</Code> prop is unavailable.
+  </Callout.Text>
+</Callout.Root>
+
+}
 
 ### Root
 
@@ -50,7 +79,9 @@ Wraps the control that will open the dialog.
 
 ### Content
 
-Contains content to be rendered in the open dialog. This component is based on the `div` element.
+Contains the content of the dialog. This component is based on the `div` element.
+
+<ThemesPropsTable name="dialogContent" />
 
 ### Title
 
