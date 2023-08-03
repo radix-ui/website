@@ -70,6 +70,7 @@ const definitions = {
   hoverCardContent: { ...themes.hoverCardContentPropDefs },
   dialogContent: { ...themes.dialogContentPropDefs },
   alertDialogContent: { ...themes.alertDialogContentPropDefs },
+  popoverContent: { ...themes.popoverContentPropDefs },
 } as const;
 
 type PropDefinitions = typeof definitions;
