@@ -67,6 +67,7 @@ const definitions = {
   inset: { ...themes.insetPropDefs },
   tabsList: { ...themes.tabsListPropDefs },
   kbd: { ...themes.kbdPropDefs },
+  hoverCardContent: { ...themes.hoverCardContentPropDefs },
 } as const;
 
 type PropDefinitions = typeof definitions;
