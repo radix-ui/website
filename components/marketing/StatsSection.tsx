@@ -3,7 +3,7 @@ import styles from './StatsSection.module.css';
 
 export const StatsSection = () => {
   return (
-    <Section size={{ initial: '2', sm: '3' }} className={styles.StatsSection}>
+    <Section size="2" className={styles.StatsSection}>
       <Box
         style={{
           position: 'absolute',

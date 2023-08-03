@@ -256,11 +256,11 @@ export const PrimitivesHero = () => {
   }, []);
 
   return (
-    <Section size={{ initial: '2', sm: '3' }}>
+    <Section size={{ initial: '2', md: '3' }}>
       <Container mx="5">
         <Box mb="6">
           <Box mb="5" style={{ maxWidth: 520 }}>
-            <SerifHeading mb="3">Core building blocks for your design system.</SerifHeading>
+            <SerifHeading mb="3">Core building blocks for your design system</SerifHeading>
             <Text size="5" as="p" mb="6" color="gray">
               Unstyled, accessible, open source React primitives for high-quality web apps and
               design systems.

@@ -342,7 +342,7 @@ export const AccessibilitySection = () => {
 
   return (
     <Section
-      size={{ initial: '2', sm: '3' }}
+      size={{ initial: '2', md: '3' }}
       style={{
         background: 'linear-gradient(to bottom, $mauve2, $loContrast)',
         position: 'relative',

@@ -111,7 +111,7 @@
 .ThemesHeroLayoutMain {
   position: relative;
   box-sizing: content-box;
-  margin-top: 80px;
+  margin-top: var(--header-height);
   padding-left: var(--themes-hero-padding);
   padding-right: var(--themes-hero-padding);
 }
@@ -130,18 +130,18 @@
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-@media (max-width: 1279.99px) {
+@media (max-width: 1279px) {
   .ThemesHeroLayoutContent {
     flex-direction: column;
   }
 
   .ThemesHeroLayoutMain {
     max-width: 850px;
-    margin-bottom: var(--space-8);
   }
 
   .ThemesHeroLayoutShowcase {
     position: relative;
+    /* margin-top: calc(-1 * var(--themes-hero-showcase-padding)); */
     --themes-hero-showcase-padding: var(--space-8);
   }
 
@@ -185,7 +185,6 @@
 
     padding-left: calc(var(--space-9) + 1vw);
     padding-right: calc(var(--space-9) + 1vw);
-    margin-bottom: var(--space-9);
   }
 
   .ThemesHeroLayoutMain {
@@ -222,6 +221,6 @@
     align-items: center;
 
     /* Visually center the hero */
-    margin-bottom: calc(2vh + 80px);
+    margin-bottom: 2vh;
   }
 }

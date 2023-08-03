@@ -1,4 +1,4 @@
-import { Box, Flex, ScrollArea, Theme, Text, Button } from '@radix-ui/themes';
+import { Box, Flex, ScrollArea, Theme, Text, Button, Section } from '@radix-ui/themes';
 import '@radix-ui/themes/dist/index.css';
 import * as React from 'react';
 import NextLink from 'next/link';
@@ -44,7 +44,7 @@ export default function ThemesHome() {
       </MobileMenu>
 
       <MagicCurtain.Root>
-        <MagicCurtain.Item defaultVisibility="visible-in-front">
+        <MagicCurtain.Item data-animation-play-state="paused" defaultVisibility="visible-in-front">
           <Theme accentScale="indigo" grayScale="slate">
             <Box height="0">
               <ThemesHeader ghost />
@@ -225,53 +225,57 @@ const MainContent = ({
   codeBlockScheme?: React.ComponentProps<typeof SyntaxSchemeProvider>['scheme'];
 }) => (
   <Box>
-    <SerifHeading mb="5">A beautiful component library for building better & faster.</SerifHeading>
+    <Section size={{ initial: '2', md: '3', lg: '2' }}>
+      <SerifHeading mb="5">
+        A beautiful component library for building better and faster
+      </SerifHeading>
 
-    <Text size={{ initial: '4', xs: '5' }}>
-      <Text as="p" mb="5">
-        A set of ready-to-use UI components with principles—optimized for faster development, easier
-        maintenance, and accessibility.
+      <Text size={{ initial: '4', xs: '5' }}>
+        <Text as="p" mb="5">
+          A set of ready-to-use UI components with principles—optimized for faster development,
+          easier maintenance, and accessibility.
+        </Text>
+
+        <Box mb="3">
+          <SyntaxSchemeProvider scheme={codeBlockScheme}>
+            <Box mb="4">
+              <CodeBlock language="bash" value="npm install @radix-ui/themes" style={codeStyles} />
+            </Box>
+
+            <Box>
+              <CodeBlock language="jsx" value={codeExample} style={codeStyles} />
+            </Box>
+          </SyntaxSchemeProvider>
+        </Box>
       </Text>
 
-      <Box mb="3">
-        <SyntaxSchemeProvider scheme={codeBlockScheme}>
-          <Box mb="4">
-            <CodeBlock language="bash" value="npm install @radix-ui/themes" style={codeStyles} />
-          </Box>
+      <Text as="p" size="3" mb="6">
+        Just import and go—no configuration required.
+      </Text>
 
-          <Box>
-            <CodeBlock language="jsx" value={codeExample} style={codeStyles} />
-          </Box>
-        </SyntaxSchemeProvider>
-      </Box>
-    </Text>
-
-    <Text as="p" size="3" mb="6">
-      Just import and go—no configuration required.
-    </Text>
-
-    <Flex gap="4" direction={{ initial: 'column', xs: 'row' }}>
-      <NextLink href="/themes/docs/overview/getting-started" passHref>
-        <Button asChild size={{ initial: '3', xs: '4' }} color="gray" highContrast>
-          <a>
-            Get started
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 12 12"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentcolor"
-              style={{ opacity: 1, marginRight: -3 }}
-            >
-              <path d="M6.39205 11.6023L5.36932 10.5909L8.92045 7.03977H0V5.5625H8.92045L5.36932 2.01705L6.39205 1L11.6932 6.30114L6.39205 11.6023Z" />
-            </svg>
-          </a>
+      <Flex gap="4" direction={{ initial: 'column', xs: 'row' }}>
+        <NextLink href="/themes/docs/overview/getting-started" passHref>
+          <Button asChild size={{ initial: '3', xs: '4' }} color="gray" highContrast>
+            <a>
+              Get started
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 12 12"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentcolor"
+                style={{ opacity: 1, marginRight: -3 }}
+              >
+                <path d="M6.39205 11.6023L5.36932 10.5909L8.92045 7.03977H0V5.5625H8.92045L5.36932 2.01705L6.39205 1L11.6932 6.30114L6.39205 11.6023Z" />
+              </svg>
+            </a>
+          </Button>
+        </NextLink>
+        <Button size={{ initial: '3', xs: '4' }} variant="soft" highContrast>
+          Explore components
         </Button>
-      </NextLink>
-      <Button size={{ initial: '3', xs: '4' }} variant="soft" highContrast>
-        Explore components
-      </Button>
-    </Flex>
+      </Flex>
+    </Section>
   </Box>
 );
 
@@ -315,6 +319,7 @@ const redBackgroundImageAccents = {
 } as React.CSSProperties;
 
 const codeExample = `
+import '@radix-ui/themes/dist/index.css';
 import { Theme, Button } from '@radix-ui/themes'
 
 export default () => (

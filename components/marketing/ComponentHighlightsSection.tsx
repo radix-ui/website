@@ -44,7 +44,7 @@ export const ComponentHighlightsSection = () => {
           {/* <Guides7 /> */}
           {/* <Guides8 /> */}
 
-          <Box css={{ position: 'relative', mb: '$4' }}>
+          <Box css={{ position: 'relative', mb: '$4', pointerEvents: 'none' }}>
             <Box
               css={{
                 position: 'absolute',
@@ -86,7 +86,7 @@ export const ComponentHighlightsSection = () => {
                     angle={-45 + i * 15}
                     color1="var(--colors-slateA2)"
                     color2="var(--colors-indigoA3)"
-                    opacity={1 - i * 0.1}
+                    opacity={Math.max(0, 1 - i * 0.1)}
                   />
                 )
               )}

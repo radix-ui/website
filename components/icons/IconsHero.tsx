@@ -45,13 +45,13 @@ export const IconsHero = () => {
       </Box>
 
       <Box position="relative">
-        <Section size={{ initial: '2', sm: '3' }}>
+        <Section size={{ initial: '2', md: '3' }}>
           <Container mx="5">
             <Box mb="6">
               <SerifHeading>
                 A crisp set
                 <br />
-                of 15×15 icons.
+                of 15×15 icons
               </SerifHeading>
             </Box>
 

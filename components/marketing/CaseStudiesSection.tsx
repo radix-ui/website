@@ -9,7 +9,7 @@ import { MarketingCaption } from './MarketingCaption';
 
 export const CaseStudiesSection = () => {
   return (
-    <Section size={{ initial: '2', sm: '3' }}>
+    <Section size={{ initial: '2', md: '3' }}>
       <Container mx="5">
         <Box css={{ mb: '$5' }}>
           <MarketingCaption mb="1">Case studies</MarketingCaption>

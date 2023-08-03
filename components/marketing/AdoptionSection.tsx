@@ -6,7 +6,7 @@ import { MarketingCaption } from './MarketingCaption';
 
 export const AdoptionSection = () => {
   return (
-    <Section size={{ initial: '2', sm: '3' }}>
+    <Section size={{ initial: '2', md: '3' }}>
       <Container mx="5">
         <Box css={{ mb: '$7' }}>
           <MarketingCaption mb="1">Transition to Radix Primitives</MarketingCaption>

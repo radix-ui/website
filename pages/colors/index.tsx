@@ -42,10 +42,10 @@ export default function ColorsHome() {
           description="An open-source color system for designing beautiful, accessible websites and apps."
           image="colors.png"
         />
-        <Section size={{ initial: '2', sm: '3' }}>
+        <Section size={{ initial: '2', md: '3' }}>
           <Container>
             <SerifHeading mb="3" style={{ maxWidth: 680 }}>
-              A gorgeous, accessible colour system for user interfaces.
+              A gorgeous, accessible colour system for user interfaces
             </SerifHeading>
 
             <Box style={{ maxWidth: 500 }}>

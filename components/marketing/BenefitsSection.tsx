@@ -5,7 +5,7 @@ import { Section, Container } from '@radix-ui/themes';
 export const BenefitsSection = () => {
   return (
     <Section
-      size={{ initial: '2', sm: '3' }}
+      size={{ initial: '2', md: '3' }}
       style={{
         position: 'relative',
         overflow: 'hidden',

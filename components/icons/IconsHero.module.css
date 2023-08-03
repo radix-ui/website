@@ -23,7 +23,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .IconsHeroLines {
     top: calc(var(--header-height) + 70px);
   }
