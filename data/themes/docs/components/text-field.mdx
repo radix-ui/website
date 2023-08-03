@@ -1,6 +1,6 @@
 ---
 metaTitle: Text Field
-metaDescription: Captures user input via a text field.
+metaDescription: Captures user input with an optional slot for buttons and icons.
 sourcePath: components/text-field
 ---
 
@@ -29,7 +29,7 @@ Contains icons or buttons associated with an Input.
 
 ### Input
 
-Render the text input. This component is based on the `input` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
+The input element. This component is based on the `input` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
 
 <ThemesPropsTable name="textField" />
 
@@ -37,7 +37,7 @@ Render the text input. This component is based on the `input` element and suppor
 
 ### Without Slots
 
-You can omit the `Root` part if you are not using the Slot.
+You can omit the `Root` part if you are not using a `Slot`.
 
 ```jsx live=true
 <TextField.Input placeholder="Enter your email" />
@@ -98,8 +98,8 @@ Use the `variant` prop to control the visual style.
 
 ```jsx live=true
 <Flex direction="column" gap="3" style={{ maxWidth: 400 }}>
-  <TextField.Input variant="solid" placeholder="Search the docs…" />
   <TextField.Input variant="surface" placeholder="Search the docs…" />
+  <TextField.Input variant="classic" placeholder="Search the docs…" />
   <TextField.Input variant="soft" placeholder="Search the docs…" />
 </Flex>
 ```
@@ -110,7 +110,11 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 
 ```jsx live=true
 <Flex direction="column" gap="3" style={{ maxWidth: 400 }}>
-  <TextField.Input variant="soft" placeholder="Search the docs…" />
+  <TextField.Input
+    color="indigo"
+    variant="soft"
+    placeholder="Search the docs…"
+  />
   <TextField.Input
     color="green"
     variant="soft"
