@@ -1,5 +1,5 @@
+import * as React from 'react';
 import { Container } from '@radix-ui/themes';
-
 import { DocsNav } from '@components/DocsNav';
 import { Footer } from '@components/Footer';
 import { MobileMenu, MobileMenuProvider } from '@components/MobileMenu';
@@ -17,14 +17,26 @@ import { PrimitivesHero } from '@components/marketing/PrimitivesHero';
 import { StatsSection } from '@components/marketing/StatsSection';
 import { primitivesRoutes } from '@lib/primitivesRoutes';
 import { Box, ScrollArea, Separator } from '@radix-ui/themes';
+import { PrimitivesDocsHeader } from '@components/PrimitivesDocsHeader';
+import { PrimitivesSearchMobile } from '@components/PrimitivesSearchMobile';
 
 export default function PrimitivesHome() {
+  const [mobileSearchOpen, setMobileSearchOpen] = React.useState(false);
   return (
     <MobileMenuProvider>
       <MobileMenu>
-        <PrimitivesHeader />
-        <ScrollArea>
-          <DocsNav routes={primitivesRoutes} />
+        <PrimitivesDocsHeader />
+        <ScrollArea scrollbars="vertical">
+          <Box pt="4" px="4" pb="9" style={{ maxWidth: '100vw' }}>
+            <Box mb="4">
+              <PrimitivesSearchMobile
+                onSearchShow={() => setMobileSearchOpen(true)}
+                onSearchHide={() => setMobileSearchOpen(false)}
+              />
+            </Box>
+
+            {!mobileSearchOpen && <DocsNav routes={primitivesRoutes} />}
+          </Box>
         </ScrollArea>
       </MobileMenu>
 

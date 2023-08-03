@@ -232,7 +232,6 @@ const animations: Record<SequenceType, AnimationKeyframe[]> = {
   ],
 };
 
-// TODO think how to label the animation for AT
 export const AccessibilitySection = () => {
   const keyframeRef = React.useRef(0);
   const iterationRef = React.useRef(0);

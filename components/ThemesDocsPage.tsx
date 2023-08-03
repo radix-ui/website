@@ -15,13 +15,17 @@ export function ThemesDocsPage({ children }: { children: React.ReactNode }) {
       <MobileMenu>
         <ThemesHeader />
         <ScrollArea>
-          <DocsNav routes={themesRoutes} />
+          <Box pt="4" px="4" pb="9">
+            <DocsNav routes={themesRoutes} />
+          </Box>
         </ScrollArea>
       </MobileMenu>
 
       <Box position="relative">
         <SideNav>
-          <DocsNav routes={themesRoutes} />
+          <Box pt="4" px="4" pb="9">
+            <DocsNav routes={themesRoutes} />
+          </Box>
         </SideNav>
 
         <PageWrapper>

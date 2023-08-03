@@ -1,7 +1,7 @@
 import { Link } from '@radix-ui/themes';
 import { Header, HeaderProps } from './Header';
 import { useRouter } from 'next/router';
-import { PrimitivesDocsSearch } from './PrimitivesDocsSearch';
+import { PrimitivesSearch } from './PrimitivesSearch';
 
 export const PrimitivesDocsHeader = (props: HeaderProps) => {
   const router = useRouter();

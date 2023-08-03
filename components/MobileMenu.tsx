@@ -3,6 +3,7 @@ import { createContext } from '@radix-ui/react-context';
 import { RemoveScroll } from 'react-remove-scroll';
 import { Slot } from '@radix-ui/react-slot';
 import { Box, Portal, Theme } from '@radix-ui/themes';
+import { useRouter } from 'next/router';
 
 const [MenuProvider, useMenuContext] = createContext<{
   open: boolean;
@@ -11,6 +12,25 @@ const [MenuProvider, useMenuContext] = createContext<{
 
 export const MobileMenuProvider = ({ children }) => {
   const [open, setOpen] = React.useState(false);
+
+  const router = useRouter();
+
+  React.useEffect(() => {
+    const handleRouteChangeStart = () => {
+      // Dismiss mobile keyboard if focusing an input (e.g. when searching)
+      if (document.activeElement instanceof HTMLInputElement) {
+        document.activeElement.blur();
+      }
+
+      setOpen(false);
+    };
+
+    router.events.on('routeChangeStart', handleRouteChangeStart);
+
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChangeStart);
+    };
+  }, []);
 
   React.useEffect(() => {
     // Match @media (--md)

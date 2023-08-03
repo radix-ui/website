@@ -108,13 +108,16 @@ export default function ThemesHome() {
       <MobileMenu>
         <ThemesHeader />
         <ScrollArea>
-          <DocsNav routes={themesRoutes} />
+          <Box pt="4" px="4" pb="9">
+            <DocsNav routes={themesRoutes} />
+          </Box>
         </ScrollArea>
       </MobileMenu>
 
       <MagicCurtain.Root>
         <MagicCurtain.Item defaultVisibility="visible-in-front">
           <Theme
+            panelBackground="solid"
             className="radix-themes-example"
             accentScale="indigo"
             grayScale="mauve"
@@ -147,6 +150,7 @@ export default function ThemesHome() {
 
         <MagicCurtain.Item>
           <Theme
+            panelBackground="solid"
             className="radix-themes-example"
             accentScale="cyan"
             grayScale="gray"
@@ -174,6 +178,7 @@ export default function ThemesHome() {
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
                 <Theme
+                  panelBackground="solid"
                   accentScale="gray"
                   applyBackgroundColor={false}
                   className="radix-themes-example"
@@ -187,6 +192,7 @@ export default function ThemesHome() {
 
         <MagicCurtain.Item>
           <Theme
+            panelBackground="solid"
             className="radix-themes-example"
             accentScale="red"
             grayScale="slate"
@@ -220,6 +226,7 @@ export default function ThemesHome() {
 
         <MagicCurtain.Item>
           <Theme
+            panelBackground="solid"
             className="radix-themes-example"
             accentScale="indigo"
             grayScale="mauve"
@@ -253,6 +260,7 @@ export default function ThemesHome() {
 
         <MagicCurtain.Item>
           <Theme
+            panelBackground="solid"
             className="radix-themes-example"
             accentScale="cyan"
             grayScale="gray"
@@ -279,6 +287,7 @@ export default function ThemesHome() {
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
                 <Theme
+                  panelBackground="solid"
                   accentScale="gray"
                   applyBackgroundColor={false}
                   className="radix-themes-example"
@@ -292,6 +301,7 @@ export default function ThemesHome() {
 
         <MagicCurtain.Item>
           <Theme
+            panelBackground="solid"
             className="radix-themes-example"
             accentScale="red"
             grayScale="slate"

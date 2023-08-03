@@ -21,11 +21,11 @@ export const DocsNav = ({ routes }: DocsNavProps) => {
   const currentPageSlug = useCurrentPageSlug();
 
   return (
-    <Box p={{ initial: '3', md: '4' }} pb={{ initial: '5', sm: '9' }}>
+    <Box>
       {routes.map((section) => (
         <Box key={section.label} mb="4">
           <Box py="2" px="3">
-            <Heading as="h4" size="2">
+            <Heading as="h4" size={{ initial: '3', md: '2' }}>
               {section.label}
             </Heading>
           </Box>
@@ -36,7 +36,7 @@ export const DocsNav = ({ routes }: DocsNavProps) => {
               href={`/${page.slug}`}
               active={currentPageSlug === page.slug}
             >
-              <Text size="2">{page.title}</Text>
+              <Text size={{ initial: '3', md: '2' }}>{page.title}</Text>
 
               {page.preview && (
                 <Badge ml="2" color="blue" radius="full">

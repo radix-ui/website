@@ -15,13 +15,17 @@ export function ColorsDocsPage({ children }: { children: React.ReactNode }) {
       <MobileMenu>
         <ColorsHeader />
         <ScrollArea>
-          <DocsNav routes={colorsRoutes} />
+          <Box pt="4" px="4" pb="9">
+            <DocsNav routes={colorsRoutes} />
+          </Box>
         </ScrollArea>
       </MobileMenu>
 
       <Box position="relative">
         <SideNav>
-          <DocsNav routes={colorsRoutes} />
+          <Box pt="4" px="4" pb="9">
+            <DocsNav routes={colorsRoutes} />
+          </Box>
         </SideNav>
 
         <PageWrapper>

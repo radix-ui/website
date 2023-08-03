@@ -37,7 +37,9 @@ export default function ThemesHome() {
       <MobileMenu>
         <ThemesHeader />
         <ScrollArea>
-          <DocsNav routes={themesRoutes} />
+          <Box pt="4" px="4" pb="9">
+            <DocsNav routes={themesRoutes} />
+          </Box>
         </ScrollArea>
       </MobileMenu>
 

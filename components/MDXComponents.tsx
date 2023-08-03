@@ -46,7 +46,7 @@ export const components = {
   CodeBlock,
   HeroCodeBlock,
   h1: (props) => (
-    <Heading asChild size="8">
+    <Heading asChild size="8" mb="3">
       <h1 {...props} style={{ scrollMarginTop: 'var(--space-9)' }} />
     </Heading>
   ),
