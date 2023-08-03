@@ -5,7 +5,11 @@ sourcePath: components/badge
 ---
 
 ```jsx live=true
-<Badge>Badge</Badge>
+<Flex gap="2">
+  <Badge color="orange">In progress</Badge>
+  <Badge color="blue">In review</Badge>
+  <Badge color="green">Complete</Badge>
+</Flex>
 ```
 
 ## API Reference
@@ -21,9 +25,13 @@ This component is based on the `span` element and supports [common margin props]
 Use the `size` prop to control the size.
 
 ```jsx live=true
-<Flex gap="3" align="center">
-  <Badge size="1">Badge</Badge>
-  <Badge size="2">Badge</Badge>
+<Flex direction="column" align="start" gap="3">
+  <Badge size="1" color="indigo">
+    Enhancement
+  </Badge>
+  <Badge size="2" color="indigo">
+    Enhancement
+  </Badge>
 </Flex>
 ```
 
@@ -32,11 +40,19 @@ Use the `size` prop to control the size.
 Use the `variant` prop to control the visual style.
 
 ```jsx live=true
-<Flex gap="3">
-  <Badge variant="solid">Solid</Badge>
-  <Badge variant="soft">Soft</Badge>
-  <Badge variant="outline">Outline</Badge>
-  <Badge variant="surface">Surface</Badge>
+<Flex direction="column" align="start" gap="2">
+  <Badge variant="solid" color="indigo">
+    Enhancement
+  </Badge>
+  <Badge variant="soft" color="indigo">
+    Enhancement
+  </Badge>
+  <Badge variant="outline" color="indigo">
+    Enhancement
+  </Badge>
+  <Badge variant="surface" color="indigo">
+    Enhancement
+  </Badge>
 </Flex>
 ```
 
@@ -45,11 +61,11 @@ Use the `variant` prop to control the visual style.
 Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
 
 ```jsx live=true
-<Flex gap="3">
-  <Badge color="crimson">Crimson</Badge>
-  <Badge color="indigo">Indigo</Badge>
-  <Badge color="grass">Grass</Badge>
-  <Badge color="orange">Orange</Badge>
+<Flex direction="column" align="start" gap="2">
+  <Badge color="indigo">Enhancement</Badge>
+  <Badge color="cyan">Enhancement</Badge>
+  <Badge color="orange">Enhancement</Badge>
+  <Badge color="crimson">Enhancement</Badge>
 </Flex>
 ```
 
@@ -58,25 +74,25 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 Use the `highContrast` prop to add additional contrast.
 
 ```jsx live=true
-<Flex direction="column" gap="3">
-  <Flex gap="3">
-    <Badge variant="solid">Solid</Badge>
-    <Badge variant="soft">Soft</Badge>
-    <Badge variant="outline">Outline</Badge>
-    <Badge variant="surface">Surface</Badge>
+<Flex gap="2">
+  <Flex direction="column" gap="2">
+    <Badge variant="solid">Enhancement</Badge>
+    <Badge variant="soft">Enhancement</Badge>
+    <Badge variant="outline">Enhancement</Badge>
+    <Badge variant="surface">Enhancement</Badge>
   </Flex>
-  <Flex gap="3">
+  <Flex direction="column" gap="2">
     <Badge variant="solid" highContrast>
-      Solid
+      Enhancement
     </Badge>
     <Badge variant="soft" highContrast>
-      Soft
+      Enhancement
     </Badge>
     <Badge variant="outline" highContrast>
-      Outline
+      Enhancement
     </Badge>
     <Badge variant="surface" highContrast>
-      Surface
+      Enhancement
     </Badge>
   </Flex>
 </Flex>
@@ -87,11 +103,15 @@ Use the `highContrast` prop to add additional contrast.
 Use the `radius` prop to assign a specific radius value, ignoring the global theme.
 
 ```jsx live=true
-<Flex gap="3">
-  <Badge radius="none">None</Badge>
-  <Badge radius="small">Small</Badge>
-  <Badge radius="medium">Medium</Badge>
-  <Badge radius="large">Large</Badge>
-  <Badge radius="full">Full</Badge>
+<Flex direction="column" align="start" gap="2">
+  <Badge variant="solid" radius="none" color="indigo">
+    Enhancement
+  </Badge>
+  <Badge variant="solid" radius="large" color="indigo">
+    Enhancement
+  </Badge>
+  <Badge variant="solid" radius="full" color="indigo">
+    Enhancement
+  </Badge>
 </Flex>
 ```
