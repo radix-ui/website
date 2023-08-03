@@ -1,11 +1,23 @@
 ---
 metaTitle: Separator
-metaDescription: A vertical or a horizontal line.
+metaDescription: Visually or semantically separates content.
 sourcePath: components/separator
 ---
 
 ```jsx live=true
-<Separator />
+<Text size="2">
+  Tools for building high-quality, accessible UI.
+  <Separator my="3" size="4" />
+  <Flex gap="3" align="center">
+    Themes
+    <Separator orientation="vertical" />
+    Primitives
+    <Separator orientation="vertical" />
+    Icons
+    <Separator orientation="vertical" />
+    Colors
+  </Flex>
+</Text>
 ```
 
 ## API Reference
@@ -16,11 +28,9 @@ This component inherits the props from the [Radix Separator](/primitives/docs/co
 
 ## Examples
 
-### Sizes
+### Size
 
-Use the `size` prop to control the size of the separator. Size 3 separator takes full width or height of the container.
-
-You can change the separator size across breakpoints using the object syntax.
+Use the `size` prop to control the size of the separator. The largest step takes full width or height of the container.
 
 ```jsx live="true"
 <Flex direction="column" gap="4">
@@ -46,10 +56,10 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 
 ```jsx live=true
 <Flex direction="column" gap="3">
-  <Separator color="crimson" size="4" />
   <Separator color="indigo" size="4" />
-  <Separator color="grass" size="4" />
+  <Separator color="cyan" size="4" />
   <Separator color="orange" size="4" />
+  <Separator color="crimson" size="4" />
 </Flex>
 ```
 
