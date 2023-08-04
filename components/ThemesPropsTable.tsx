@@ -213,7 +213,7 @@ function applyResponsive(value: string | undefined, isResponsive) {
   if (value && isResponsive) {
     return `Responsive<${value
       // the empty spaces are so that we align nicely
-      .replaceAll('\n', `\n${Array(12).join(' ')}`)
+      .replace(/\n/g, `\n${Array(12).join(' ')}`)
       .trim()}>`;
   }
 
