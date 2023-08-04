@@ -5,13 +5,12 @@ sourcePath: components/section
 ---
 
 ```jsx live=true
-<Box py="8" style={{ backgroundColor: 'var(--gray-a2)' }}>
+<Box
+  py="8"
+  style={{ backgroundColor: 'var(--gray-a2)', borderRadius: 'var(--radius-3)' }}
+>
   <DecorativeBox asChild size="2">
-    <Section>
-      <Text align="center" color="gray" as="div">
-        Section
-      </Text>
-    </Section>
+    <Section />
   </DecorativeBox>
 </Box>
 ```
