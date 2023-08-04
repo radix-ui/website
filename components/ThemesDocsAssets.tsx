@@ -744,7 +744,7 @@ export function ThemePagesLinks() {
 
       <ThemeLinkCard
         title="Color"
-        desc="Understand the color system and it’s application in your theme."
+        desc="Understand the color system and its application in your theme."
         href="/themes/docs/theme/dark-mode"
       />
 
