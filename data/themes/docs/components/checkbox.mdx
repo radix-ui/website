@@ -6,8 +6,8 @@ sourcePath: components/checkbox
 
 ```jsx live=true
 <Flex gap="2">
-  <Checkbox />
   <Checkbox defaultChecked />
+  <Checkbox />
 </Flex>
 ```
 
@@ -24,9 +24,29 @@ This component inherits the props from the [Radix Checkbox](/primitives/docs/com
 Use the `size` prop to control the size.
 
 ```jsx live=true
-<Flex gap="2" align="center">
+<Flex direction="column" gap="2">
   <Checkbox size="1" defaultChecked />
   <Checkbox size="2" defaultChecked />
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style.
+
+```jsx live=true scroll=true
+<Flex gap="2">
+  <Flex direction="column" gap="2">
+    <Checkbox variant="surface" defaultChecked />
+    <Checkbox variant="classic" defaultChecked />
+    <Checkbox variant="soft" defaultChecked />
+  </Flex>
+
+  <Flex direction="column" gap="2">
+    <Checkbox variant="surface" />
+    <Checkbox variant="classic" />
+    <Checkbox variant="soft" />
+  </Flex>
 </Flex>
 ```
 
@@ -36,10 +56,10 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 
 ```jsx live=true
 <Flex gap="2">
-  <Checkbox color="crimson" defaultChecked />
   <Checkbox color="indigo" defaultChecked />
-  <Checkbox color="grass" defaultChecked />
+  <Checkbox color="cyan" defaultChecked />
   <Checkbox color="orange" defaultChecked />
+  <Checkbox color="crimson" defaultChecked />
 </Flex>
 ```
 
@@ -49,8 +69,17 @@ Use the `highContrast` prop to add additional contrast.
 
 ```jsx live=true
 <Flex gap="2">
-  <Checkbox defaultChecked />
-  <Checkbox defaultChecked highContrast />
+  <Flex direction="column" gap="2">
+    <Checkbox variant="surface" defaultChecked />
+    <Checkbox variant="classic" defaultChecked />
+    <Checkbox variant="soft" defaultChecked />
+  </Flex>
+
+  <Flex direction="column" gap="2">
+    <Checkbox variant="surface" defaultChecked highContrast />
+    <Checkbox variant="classic" defaultChecked highContrast />
+    <Checkbox variant="soft" defaultChecked highContrast />
+  </Flex>
 </Flex>
 ```
 
@@ -71,7 +100,7 @@ By default, the checkbox is vertically aligned when placed inline with Text size
 It is also well-aligned with Text size 2 in a default flex layout.
 
 ```jsx live="true"
-<Box style={{ maxWidth: 300 }}>
+<Box style={{ maxWidth: 400 }}>
   <Text size="2">
     <Flex gap="2">
       <Checkbox id="checkbox-1" />
