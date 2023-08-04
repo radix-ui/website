@@ -200,7 +200,7 @@ function applyResponsive(value: string | undefined, isResponsive) {
   if (value && isResponsive) {
     return `Responsive<${value
       // the empty spaces are so that we align nicely
-      .replace('\n', `\n${Array(12).join(' ')}`)
+      .replaceAll('\n', `\n${Array(12).join(' ')}`)
       .trim()}>`;
   }
 
