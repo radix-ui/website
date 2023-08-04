@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Grid, Text, Theme } from '@radix-ui/themes';
+import { Box, Flex, Grid, Text, Theme } from '@radix-ui/themes';
 import { CopyCodeButton } from './CopyCodeButton';
 import { LiveCode } from './LiveCode';
 import * as themes from '@radix-ui/themes';
@@ -30,19 +30,29 @@ const PreWithLivePreview = (props) => {
                   ...themes,
                   ...icons,
                   DecorativeBox,
-                  RightClickZone: (props) => (
+                  RightClickZone: ({ heading, ...props }) => (
                     <Grid
                       {...props}
                       style={{
                         height: 100,
                         placeItems: 'center',
                         border: '1px dashed var(--accent-a6)',
-                        borderRadius: 'var(--radius-2)',
+                        backgroundColor: 'var(--accent-a1)',
+                        borderRadius: 'var(--radius-3)',
                         cursor: 'default',
                         ...props.style,
                       }}
                     >
-                      <Text>Right-click here</Text>
+                      <Flex direction="column" align="center">
+                        {heading && (
+                          <Text weight="bold" size="2">
+                            {heading}
+                          </Text>
+                        )}
+                        <Text color="gray" size={heading ? '2' : undefined}>
+                          Right-click here
+                        </Text>
+                      </Flex>
                     </Grid>
                   ),
                 }}

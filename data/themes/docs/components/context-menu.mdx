@@ -7,43 +7,28 @@ sourcePath: components/context-menu
 ```jsx live=true
 <ContextMenu.Root>
   <ContextMenu.Trigger>
-    <RightClickZone />
+    <RightClickZone style={{ height: 150 }} />
   </ContextMenu.Trigger>
   <ContextMenu.Content>
-    <ContextMenu.Item shortcut="⌘ T">New Tab</ContextMenu.Item>
-    <ContextMenu.Item shortcut="⌘ N">New Window</ContextMenu.Item>
-    <ContextMenu.Item shortcut="⇧ ⌘ N" disabled>
-      New Private Window
-    </ContextMenu.Item>
-    <ContextMenu.Sub>
-      <ContextMenu.SubTrigger>More Tools</ContextMenu.SubTrigger>
+    <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+    <ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+    <ContextMenu.Separator />
+    <ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
 
+    <ContextMenu.Sub>
+      <ContextMenu.SubTrigger>More</ContextMenu.SubTrigger>
       <ContextMenu.SubContent>
-        <ContextMenu.Item shortcut="⌘ S">Save Page As…</ContextMenu.Item>
-        <ContextMenu.Item>Create Shortcut…</ContextMenu.Item>
-        <ContextMenu.Item>Name Window…</ContextMenu.Item>
+        <ContextMenu.Item>Move to project…</ContextMenu.Item>
+        <ContextMenu.Item>Move to folder…</ContextMenu.Item>
         <ContextMenu.Separator />
-        <ContextMenu.Item>Developer Tools</ContextMenu.Item>
+        <ContextMenu.Item>Advanced options…</ContextMenu.Item>
       </ContextMenu.SubContent>
     </ContextMenu.Sub>
 
     <ContextMenu.Separator />
-
-    <ContextMenu.CheckboxItem shortcut="⌘ B" checked>
-      Show Bookmarks
-    </ContextMenu.CheckboxItem>
-    <ContextMenu.CheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
-
+    <ContextMenu.Item>Share</ContextMenu.Item>
+    <ContextMenu.Item>Add to favorites</ContextMenu.Item>
     <ContextMenu.Separator />
-
-    <ContextMenu.Label>People</ContextMenu.Label>
-    <ContextMenu.RadioGroup value="pedro">
-      <ContextMenu.RadioItem value="pedro">Pedro Duarte</ContextMenu.RadioItem>
-      <ContextMenu.RadioItem value="colm">Colm Tuite</ContextMenu.RadioItem>
-    </ContextMenu.RadioGroup>
-
-    <ContextMenu.Separator />
-
     <ContextMenu.Item shortcut="⌘ ⌫" color="red">
       Delete
     </ContextMenu.Item>
@@ -117,21 +102,35 @@ Use the `size` prop to control the size.
 <Grid columns="2" gap="3">
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <RightClickZone />
+      <RightClickZone heading="Size one" />
     </ContextMenu.Trigger>
     <ContextMenu.Content size="1">
-      <ContextMenu.Item>New Tab</ContextMenu.Item>
-      <ContextMenu.Item>New Window</ContextMenu.Item>
+      <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+      <ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+      <ContextMenu.Separator />
+      <ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
+
+      <ContextMenu.Separator />
+      <ContextMenu.Item shortcut="⌘ ⌫" color="red">
+        Delete
+      </ContextMenu.Item>
     </ContextMenu.Content>
   </ContextMenu.Root>
 
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <RightClickZone />
+      <RightClickZone heading="Size two" />
     </ContextMenu.Trigger>
     <ContextMenu.Content size="2">
-      <ContextMenu.Item>New Tab</ContextMenu.Item>
-      <ContextMenu.Item>New Window</ContextMenu.Item>
+      <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+      <ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+      <ContextMenu.Separator />
+      <ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
+
+      <ContextMenu.Separator />
+      <ContextMenu.Item shortcut="⌘ ⌫" color="red">
+        Delete
+      </ContextMenu.Item>
     </ContextMenu.Content>
   </ContextMenu.Root>
 </Grid>
@@ -145,21 +144,35 @@ Use the `variant` prop to customize the visual style of the context menu.
 <Grid columns="2" gap="3">
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <RightClickZone />
+      <RightClickZone heading="Solid" />
     </ContextMenu.Trigger>
     <ContextMenu.Content variant="solid">
-      <ContextMenu.Item>New Tab</ContextMenu.Item>
-      <ContextMenu.Item>New Window</ContextMenu.Item>
+      <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+      <ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+      <ContextMenu.Separator />
+      <ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
+
+      <ContextMenu.Separator />
+      <ContextMenu.Item shortcut="⌘ ⌫" color="red">
+        Delete
+      </ContextMenu.Item>
     </ContextMenu.Content>
   </ContextMenu.Root>
 
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <RightClickZone />
+      <RightClickZone heading="Soft" />
     </ContextMenu.Trigger>
     <ContextMenu.Content variant="soft">
-      <ContextMenu.Item>New Tab</ContextMenu.Item>
-      <ContextMenu.Item>New Window</ContextMenu.Item>
+      <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+      <ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+      <ContextMenu.Separator />
+      <ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
+
+      <ContextMenu.Separator />
+      <ContextMenu.Item shortcut="⌘ ⌫" color="red">
+        Delete
+      </ContextMenu.Item>
     </ContextMenu.Content>
   </ContextMenu.Root>
 </Grid>
@@ -170,48 +183,72 @@ Use the `variant` prop to customize the visual style of the context menu.
 Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme. You can also pass `color` to a specific item to override for semantic reasons (ie. destruction action).
 
 ```jsx live=true
-<Grid columns="4" gap="3">
+<Grid columns="2" gap="3">
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <RightClickZone />
-    </ContextMenu.Trigger>
-    <ContextMenu.Content color="crimson">
-      <ContextMenu.Item>New Tab</ContextMenu.Item>
-      <ContextMenu.Item>New Window</ContextMenu.Item>
-      <ContextMenu.Item color="red">Delete</ContextMenu.Item>
-    </ContextMenu.Content>
-  </ContextMenu.Root>
-
-  <ContextMenu.Root>
-    <ContextMenu.Trigger>
-      <RightClickZone />
+      <RightClickZone heading="Indigo" />
     </ContextMenu.Trigger>
     <ContextMenu.Content color="indigo">
-      <ContextMenu.Item>New Tab</ContextMenu.Item>
-      <ContextMenu.Item>New Window</ContextMenu.Item>
-      <ContextMenu.Item color="red">Delete</ContextMenu.Item>
+      <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+      <ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+      <ContextMenu.Separator />
+      <ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
+
+      <ContextMenu.Separator />
+      <ContextMenu.Item shortcut="⌘ ⌫" color="red">
+        Delete
+      </ContextMenu.Item>
     </ContextMenu.Content>
   </ContextMenu.Root>
 
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <RightClickZone />
+      <RightClickZone heading="Cyan" />
     </ContextMenu.Trigger>
-    <ContextMenu.Content color="grass">
-      <ContextMenu.Item>New Tab</ContextMenu.Item>
-      <ContextMenu.Item>New Window</ContextMenu.Item>
-      <ContextMenu.Item color="red">Delete</ContextMenu.Item>
+    <ContextMenu.Content color="cyan">
+      <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+      <ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+      <ContextMenu.Separator />
+      <ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
+
+      <ContextMenu.Separator />
+      <ContextMenu.Item shortcut="⌘ ⌫" color="red">
+        Delete
+      </ContextMenu.Item>
     </ContextMenu.Content>
   </ContextMenu.Root>
 
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <RightClickZone />
+      <RightClickZone heading="Orange" />
     </ContextMenu.Trigger>
     <ContextMenu.Content color="orange">
-      <ContextMenu.Item>New Tab</ContextMenu.Item>
-      <ContextMenu.Item>New Window</ContextMenu.Item>
-      <ContextMenu.Item color="red">Delete</ContextMenu.Item>
+      <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+      <ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+      <ContextMenu.Separator />
+      <ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
+
+      <ContextMenu.Separator />
+      <ContextMenu.Item shortcut="⌘ ⌫" color="red">
+        Delete
+      </ContextMenu.Item>
+    </ContextMenu.Content>
+  </ContextMenu.Root>
+
+  <ContextMenu.Root>
+    <ContextMenu.Trigger>
+      <RightClickZone heading="Crimson" />
+    </ContextMenu.Trigger>
+    <ContextMenu.Content color="crimson">
+      <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+      <ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+      <ContextMenu.Separator />
+      <ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
+
+      <ContextMenu.Separator />
+      <ContextMenu.Item shortcut="⌘ ⌫" color="red">
+        Delete
+      </ContextMenu.Item>
     </ContextMenu.Content>
   </ContextMenu.Root>
 </Grid>
@@ -222,34 +259,28 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 Use the `highContrast` prop to add additional contrast.
 
 ```jsx live=true
-<Grid columns="3" gap="3">
+<Grid columns="2" gap="3">
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <RightClickZone />
+      <RightClickZone heading="Standard" />
     </ContextMenu.Trigger>
     <ContextMenu.Content>
-      <ContextMenu.Item>New Tab</ContextMenu.Item>
-      <ContextMenu.Item>New Window</ContextMenu.Item>
+      <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+      <ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+      <ContextMenu.Separator />
+      <ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
     </ContextMenu.Content>
   </ContextMenu.Root>
 
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <RightClickZone />
+      <RightClickZone heading="High-contrast" />
     </ContextMenu.Trigger>
     <ContextMenu.Content highContrast>
-      <ContextMenu.Item>New Tab</ContextMenu.Item>
-      <ContextMenu.Item>New Window</ContextMenu.Item>
-    </ContextMenu.Content>
-  </ContextMenu.Root>
-
-  <ContextMenu.Root>
-    <ContextMenu.Trigger>
-      <RightClickZone />
-    </ContextMenu.Trigger>
-    <ContextMenu.Content color="gray" highContrast>
-      <ContextMenu.Item>New Tab</ContextMenu.Item>
-      <ContextMenu.Item>New Window</ContextMenu.Item>
+      <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+      <ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+      <ContextMenu.Separator />
+      <ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
     </ContextMenu.Content>
   </ContextMenu.Root>
 </Grid>
