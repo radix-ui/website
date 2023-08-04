@@ -7,7 +7,9 @@ import { PrimitivesSearch } from './PrimitivesSearch';
 
 export const PrimitivesSearchDesktop = () => {
   const [dialogOpen, setDialogOpen] = React.useState(false);
-  const buttonRef = React.useRef<HTMLButtonElement>(null);
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
+  const clearButtonRef = React.useRef<HTMLButtonElement>(null);
 
   React.useEffect(() => {
     const isEditingContent = (event: KeyboardEvent) => {
@@ -18,7 +20,7 @@ export const PrimitivesSearchDesktop = () => {
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (!isEditingContent(event) && event.key === '/') {
-        buttonRef.current.click();
+        triggerRef.current.click();
         event.preventDefault();
       }
     };
@@ -31,7 +33,7 @@ export const PrimitivesSearchDesktop = () => {
     <DialogPrimitive.Root open={dialogOpen} onOpenChange={setDialogOpen}>
       <DialogPrimitive.Trigger asChild>
         <button
-          ref={buttonRef}
+          ref={triggerRef}
           aria-label="Search. Press Slash key to search quickly."
           className={styles.PrimitivesSearchDesktopButton}
           onKeyDown={(event) => {
@@ -54,13 +56,19 @@ export const PrimitivesSearchDesktop = () => {
         <Theme>
           <DialogPrimitive.Overlay className={styles.PrimitivesSearchDesktopDialogOverlay}>
             <DialogPrimitive.Content
-              onEscapeKeyDown={() => setDialogOpen(false)}
+              onEscapeKeyDown={() => {
+                if (inputRef.current.value === '') {
+                  setDialogOpen(false);
+                } else {
+                  clearButtonRef.current?.click();
+                }
+              }}
               className={styles.PrimitivesSearchDesktopDialogContent}
             >
               <PrimitivesSearch.Root>
                 <Box position="relative">
                   <PrimitivesSearch.Input>
-                    <input className={styles.PrimitivesSearchDesktopInput} />
+                    <input ref={inputRef} className={styles.PrimitivesSearchDesktopInput} />
                   </PrimitivesSearch.Input>
 
                   <Flex
@@ -85,7 +93,13 @@ export const PrimitivesSearchDesktop = () => {
                     style={{ zIndex: 1 }}
                   >
                     <PrimitivesSearch.ClearButton>
-                      <IconButton size="2" color="gray" variant="ghost" radius="full">
+                      <IconButton
+                        ref={clearButtonRef}
+                        size="2"
+                        color="gray"
+                        variant="ghost"
+                        radius="full"
+                      >
                         <Cross2Icon width="18" height="18" />
                       </IconButton>
                     </PrimitivesSearch.ClearButton>
