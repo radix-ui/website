@@ -288,8 +288,13 @@ const CodeWindow = styled('div', {
   br: '$4',
   bc: 'var(--gray-2)',
 
-  '.dark-theme &': {
+  '.dark &, .dark-theme &': {
     bc: 'var(--black-a9)',
+  },
+
+  // Quick & dirty fix to remove the copy code icon button
+  '& button': {
+    display: 'none',
   },
 
   variants: {
@@ -307,10 +312,10 @@ const CodeWindow = styled('div', {
           height: 12,
           content: '""',
           background: `
-        radial-gradient(circle closest-side at 6px, $slateA7 90%, #FFFFFF00),
-        radial-gradient(circle closest-side at 24px, $slateA7 90%, #FFFFFF00),
-        radial-gradient(circle closest-side at 42px, $slateA7 90%, #FFFFFF00)
-        `,
+            radial-gradient(circle closest-side at 6px, var(--gray-a7) 90%, #FFFFFF00),
+            radial-gradient(circle closest-side at 24px, var(--gray-a7) 90%, #FFFFFF00),
+            radial-gradient(circle closest-side at 42px, var(--gray-a7) 90%, #FFFFFF00)
+          `,
         },
         '&::after': {
           position: 'absolute',
@@ -331,7 +336,7 @@ const CodeWindow = styled('div', {
 const BlendedCard = styled(Card, {
   $$shadowColor: '$colors$skyA12',
   $$bgColor: '$colors$plum1',
-  '.dark-theme &': {
+  '.dark &, .dark-theme &': {
     $$shadowColor: '$colors$blackA12',
     $$bgColor: '$colors$whiteA4',
   },

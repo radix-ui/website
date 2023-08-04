@@ -79,7 +79,7 @@ const StyledContent = styled(AccordionPrimitive.Content, {
   backgroundColor: 'var(--gray-a2)',
   lineHeight: 1.5,
   margin: 1,
-  '.dark-theme &': {
+  '.dark &, .dark-theme &': {
     backgroundColor: 'var(--color-surface)',
   },
 

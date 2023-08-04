@@ -11,11 +11,11 @@ export const ThemeToggle = () => {
     <>
       <Head>
         <style>{`
-        :root, .light-theme {
+        :root, .light, .light-theme {
           --theme-toggle-sun-icon-display: block;
           --theme-toggle-moon-icon-display: none;
         }
-        .dark-theme {
+        .dark, .dark-theme {
           --theme-toggle-sun-icon-display: none;
           --theme-toggle-moon-icon-display: block;
         }

@@ -26,7 +26,7 @@ export default function ThemesHome() {
       <Head>
         <meta name="theme-color" content="#FDFCFD" />
         <style>{`
-          :root, .light-theme {
+          :root, .light, .light-theme {
             --themes-hero-blue-text-color: var(--indigo-12);
             --themes-hero-blue-soft-color: var(--indigo-5);
             --themes-hero-blue-contrast-color: var(--indigo-1);
@@ -64,7 +64,7 @@ export default function ThemesHome() {
             --themes-hero-red-tagline-title-color-4: color(display-p3 1 0.63 0.74);
           }
 
-          .dark-theme {
+          .dark, .dark-theme {
             --themes-hero-blue-text-color: var(--indigo-12);
             --themes-hero-blue-soft-color: #27376d;
             --themes-hero-blue-contrast-color: var(--indigo-1);

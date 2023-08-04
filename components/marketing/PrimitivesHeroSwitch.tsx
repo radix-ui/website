@@ -14,10 +14,10 @@ const StyledSwitch = styled(SwitchPrimitive.Root, {
   '&[data-state="checked"]': {
     backgroundColor: '#2C333B',
   },
-  ':where(.dark-theme) &': {
+  ':where(.dark, .dark-theme) &': {
     boxShadow: '0 0 0 1px var(--gray-a8)',
   },
-  ':where(.dark-theme) &[data-state="checked"]': {
+  ':where(.dark, .dark-theme) &[data-state="checked"]': {
     backgroundColor: '#141417',
     boxShadow: '0 0 0 1px var(--gray-a6)',
   },

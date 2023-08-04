@@ -475,7 +475,7 @@ export const AccessibilitySection = () => {
               },
 
               $$subpanel: 'transparent',
-              '.dark-theme &': {
+              '.dark &, .dark-theme &': {
                 $$subpanel: 'var(--mauve-a2)',
               },
             }}
@@ -846,7 +846,7 @@ const MockTypeaheadOutput = styled(Text, {
   '&:empty': {
     display: 'none',
   },
-  '.dark-theme &': {
+  '.dark &, .dark-theme &': {
     bc: '$indigo3',
   },
   variants: {
@@ -854,7 +854,7 @@ const MockTypeaheadOutput = styled(Text, {
     variant: {
       contrast: {
         color: '$indigo12',
-        '.dark-theme &': {
+        '.dark &, .dark-theme &': {
           color: '$indigo11',
         },
       },
@@ -989,7 +989,7 @@ const Key = styled('span', {
   ai: 'center',
   jc: 'center',
 
-  '.dark-theme &': {
+  '.dark &, .dark-theme &': {
     bc: '$mauve1',
   },
 
@@ -1022,7 +1022,7 @@ const Key = styled('span', {
         height: 42,
         br: '$2',
         fontSize: '$1',
-        '.dark-theme &': {
+        '.dark &, .dark-theme &': {
           color: '$slate12',
           textShadow: '0 0 5px var(--gray-a10), 0 0 1px var(--gray-a11)',
         },
@@ -1167,7 +1167,7 @@ const MockDropdownCheckboxItem = ({
 const GlassCard = styled(Card, {
   bc: 'var(--white-a9)',
   backdropFilter: 'blur(8px)',
-  '.dark-theme &': {
+  '.dark &, .dark-theme &': {
     bc: 'var(--white-a2)',
     boxShadow: 'inset 0 0 0 1px var(--white-a4)',
   },

@@ -38,7 +38,7 @@ export const PrimitivesHeroButton = styled('button', {
             backgroundColor: 'var(--white-a12)',
           },
         },
-        '.dark-theme &': {
+        '.dark &, .dark-theme &': {
           backgroundColor: 'var(--white-a5)',
           '@media (hover: hover)': {
             '&:hover': {

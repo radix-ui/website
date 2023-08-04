@@ -54,7 +54,7 @@
   opacity: 0.9;
 }
 
-:global(.dark-theme) .CollapsibleGradient::before {
+:global(:where(.dark, .dark-theme)) .CollapsibleGradient::before {
   background: linear-gradient(180deg, transparent, var(--gray-2) 70%);
 }
 

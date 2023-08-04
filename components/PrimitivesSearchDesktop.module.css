@@ -154,7 +154,7 @@
   padding-bottom: var(--space-2);
 }
 
-:global(.dark-theme) .PrimitivesSearchDesktopInput {
+:global(:where(.dark, .dark-theme)) .PrimitivesSearchDesktopInput {
   box-shadow: 0 0 0 1px var(--gray-6);
 }
 
@@ -183,6 +183,6 @@
   max-height: calc(100vh - 2 * (var(--header-height) + var(--space-4)) - var(--space-8));
 }
 
-:global(.dark-theme) .PrimitivesSearchDesktopPanel {
+:global(:where(.dark, .dark-theme)) .PrimitivesSearchDesktopPanel {
   box-shadow: 0 0 0 1px var(--gray-6);
 }

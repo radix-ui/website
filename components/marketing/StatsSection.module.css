@@ -18,7 +18,7 @@
   --stats-section-chart-bottom-color: var(--gray-1);
 }
 
-:global(.dark-theme) .StatsSection {
+:global(:where(.dark, .dark-theme)) .StatsSection {
   --stats-section-background-3: var(--blue-a3);
   --stats-section-background-2: var(--plum-a3);
   --stats-section-background-1: var(--crimson-a5);

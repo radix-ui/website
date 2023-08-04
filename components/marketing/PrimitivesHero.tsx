@@ -330,7 +330,7 @@ export const PrimitivesHero = () => {
                     aria-hidden
                     css={{
                       background: 'linear-gradient(120deg, $indigo6, $crimson5)',
-                      '.dark-theme &': {
+                      '.dark &, .dark-theme &': {
                         background: 'linear-gradient(120deg, $indigo4, $plum3)',
                       },
                     }}
@@ -359,7 +359,7 @@ export const PrimitivesHero = () => {
                     aria-hidden
                     css={{
                       background: 'linear-gradient(120deg,  $crimson5, $blue5)',
-                      '.dark-theme &': {
+                      '.dark &, .dark-theme &': {
                         background: 'linear-gradient(120deg,  $plum3, $blue3)',
                       },
                     }}
@@ -388,7 +388,7 @@ export const PrimitivesHero = () => {
                     aria-hidden
                     css={{
                       background: 'linear-gradient(120deg, $blue5, $lime3)',
-                      '.dark-theme &': {
+                      '.dark &, .dark-theme &': {
                         background: 'linear-gradient(120deg, $blue3, $sand6)',
                       },
                     }}
@@ -417,7 +417,7 @@ export const PrimitivesHero = () => {
                     aria-hidden
                     css={{
                       background: 'linear-gradient(120deg, $lime3, $pink4)',
-                      '.dark-theme &': {
+                      '.dark &, .dark-theme &': {
                         background: 'linear-gradient(120deg, $sand6, $pink3)',
                       },
                     }}
@@ -446,7 +446,7 @@ export const PrimitivesHero = () => {
                     aria-hidden
                     css={{
                       background: 'linear-gradient(120deg, $pink4, $gold5)',
-                      '.dark-theme &': {
+                      '.dark &, .dark-theme &': {
                         background: 'linear-gradient(120deg, $pink3, $gold4)',
                       },
                     }}
@@ -475,7 +475,7 @@ export const PrimitivesHero = () => {
                     aria-hidden
                     css={{
                       background: 'linear-gradient(120deg, $gold5, $tomato5)',
-                      '.dark-theme &': {
+                      '.dark &, .dark-theme &': {
                         background: 'linear-gradient(120deg, $gold4, $crimson4)',
                       },
                     }}
@@ -504,7 +504,7 @@ export const PrimitivesHero = () => {
                     aria-hidden
                     css={{
                       background: 'linear-gradient(120deg, $tomato5, $indigo7)',
-                      '.dark-theme &': {
+                      '.dark &, .dark-theme &': {
                         background: 'linear-gradient(120deg, $crimson4, $indigo5)',
                       },
                     }}
@@ -533,7 +533,7 @@ export const PrimitivesHero = () => {
                     aria-hidden
                     css={{
                       background: 'linear-gradient(120deg, $indigo7, $cyan3)',
-                      '.dark-theme &': {
+                      '.dark &, .dark-theme &': {
                         background: 'linear-gradient(120deg, $indigo5, $cyan7)',
                       },
                     }}
@@ -562,7 +562,7 @@ export const PrimitivesHero = () => {
                     aria-hidden
                     css={{
                       background: 'linear-gradient(120deg, $cyan3, $mint5)',
-                      '.dark-theme &': {
+                      '.dark &, .dark-theme &': {
                         background: 'linear-gradient(120deg, $cyan7, $teal6)',
                       },
                     }}
@@ -591,7 +591,7 @@ export const PrimitivesHero = () => {
                     aria-hidden
                     css={{
                       background: 'linear-gradient(120deg, $mint5, $red3)',
-                      '.dark-theme &': {
+                      '.dark &, .dark-theme &': {
                         background: 'linear-gradient(120deg, $teal6, $plum4)',
                       },
                     }}
@@ -615,7 +615,7 @@ export const PrimitivesHero = () => {
                     css={{
                       backgroundColor: '$whiteA6',
                       boxShadow: '0 0 0 1px $colors$slateA5',
-                      '.dark-theme &': {
+                      '.dark &, .dark-theme &': {
                         backgroundColor: '$blackA4',
                       },
                     }}

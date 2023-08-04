@@ -41,7 +41,7 @@
   --highlighted-word-1-bg: var(--blue-a4);
 }
 
-:global(.dark-theme) .Pre.blue {
+:global(:where(.dark, .dark-theme)) .Pre.blue {
   --syntax-accent: var(--blue-11);
 }
 

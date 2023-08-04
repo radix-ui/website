@@ -30,11 +30,11 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
     <Head>
       <style>
         {`
-          :root, .light-theme {
-            --color-transparent-panel: rgba(239, 247, 255, 0.615);
+          :root, .light, .light-theme {
+            --color-panel-blurred: rgba(239, 247, 255, 0.615);
           }
-          .dark-theme {
-            --color-transparent-panel: rgba(0, 14, 24, 0.593);
+          .dark, .dark-theme {
+            --color-panel-blurred: rgba(0, 14, 24, 0.593);
           }
         `}
       </style>
@@ -543,7 +543,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
               style={{
                 overflow: 'hidden',
                 borderRadius: '100px',
-                backgroundColor: 'var(--color-transparent-panel)',
+                backgroundColor: 'var(--color-panel-blurred)',
                 filter: 'saturate(0.5) brightness(1.1)',
                 WebkitBackdropFilter: 'blur(24px)',
                 backdropFilter: 'blur(24px)',
