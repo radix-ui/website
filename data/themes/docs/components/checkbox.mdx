@@ -5,9 +5,12 @@ sourcePath: components/checkbox
 ---
 
 ```jsx live=true
-<Flex gap="2">
-  <Checkbox defaultChecked />
-  <Checkbox />
+<Flex>
+  <Text size="2">
+    <label>
+      <Checkbox mr="1" defaultChecked /> Agree to Terms and Conditions
+    </label>
+  </Text>
 </Flex>
 ```
 
@@ -82,7 +85,7 @@ Use the `highContrast` prop to add additional contrast.
 By default, the checkbox is vertically aligned when placed inline with Text size 2. This is the most common font size used with controls.
 
 ```jsx live="true"
-<Flex direction="column" gap="3" style={{ maxWidth: 300 }}>
+<Flex>
   <Text size="2">
     <label>
       <Checkbox mr="1" /> Agree to Terms and Conditions
