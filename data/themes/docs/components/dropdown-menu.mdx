@@ -7,45 +7,32 @@ sourcePath: components/dropdown-menu
 ```jsx live=true
 <DropdownMenu.Root>
   <DropdownMenu.Trigger>
-    <IconButton variant="soft">
-      <DotsHorizontalIcon />
-    </IconButton>
+    <Button variant="soft">
+      Options
+      <CaretDownIcon />
+    </Button>
   </DropdownMenu.Trigger>
   <DropdownMenu.Content>
-    <DropdownMenu.Item shortcut="⌘ T">New Tab</DropdownMenu.Item>
-    <DropdownMenu.Item shortcut="⌘ N">New Window</DropdownMenu.Item>
-    <DropdownMenu.Item shortcut="⇧ ⌘ N" disabled>
-      New Private Window
-    </DropdownMenu.Item>
-    <DropdownMenu.Sub>
-      <DropdownMenu.SubTrigger>More Tools</DropdownMenu.SubTrigger>
+    <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+    <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+    <DropdownMenu.Separator />
+    <DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
 
+    <DropdownMenu.Sub>
+      <DropdownMenu.SubTrigger>More</DropdownMenu.SubTrigger>
       <DropdownMenu.SubContent>
-        <DropdownMenu.Item shortcut="⌘ S">Save Page As…</DropdownMenu.Item>
-        <DropdownMenu.Item>Create Shortcut…</DropdownMenu.Item>
-        <DropdownMenu.Item>Name Window…</DropdownMenu.Item>
+        <DropdownMenu.Item>Move to project…</DropdownMenu.Item>
+        <DropdownMenu.Item>Move to folder…</DropdownMenu.Item>
+
         <DropdownMenu.Separator />
-        <DropdownMenu.Item>Developer Tools</DropdownMenu.Item>
+        <DropdownMenu.Item>Advanced options…</DropdownMenu.Item>
       </DropdownMenu.SubContent>
     </DropdownMenu.Sub>
 
     <DropdownMenu.Separator />
-
-    <DropdownMenuCheckboxItem shortcut="⌘ B" checked>
-      Show Bookmarks
-    </DropdownMenuCheckboxItem>
-    <DropdownMenuCheckboxItem>Show Full URLs</DropdownMenuCheckboxItem>
-
+    <DropdownMenu.Item>Share</DropdownMenu.Item>
+    <DropdownMenu.Item>Add to favorites</DropdownMenu.Item>
     <DropdownMenu.Separator />
-
-    <DropdownMenuLabel>People</DropdownMenuLabel>
-    <DropdownMenuRadioGroup value="pedro">
-      <DropdownMenuRadioItem value="pedro">Pedro Duarte</DropdownMenuRadioItem>
-      <DropdownMenuRadioItem value="colm">Colm Tuite</DropdownMenuRadioItem>
-    </DropdownMenuRadioGroup>
-
-    <DropdownMenu.Separator />
-
     <DropdownMenu.Item shortcut="⌘ ⌫" color="red">
       Delete
     </DropdownMenu.Item>
@@ -55,7 +42,7 @@ sourcePath: components/dropdown-menu
 
 ## API Reference
 
-This component inherits props from the [Radix DropdownMenu](/primitives/docs/components/dropdown-menu) primitive.
+This component inherits props from the [Radix Dropdown Menu](/primitives/docs/components/dropdown-menu) primitive.
 
 ### Root
 
@@ -119,25 +106,41 @@ Use the `size` prop to control the size.
 <Flex gap="3" align="center">
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <IconButton variant="soft" size="1">
-        <DotsHorizontalIcon />
-      </IconButton>
+      <Button variant="soft" size="2">
+        Options
+        <CaretDownIcon width="16" height="16" />
+      </Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content size="1">
-      <DropdownMenu.Item>New Tab</DropdownMenu.Item>
-      <DropdownMenu.Item>New Window</DropdownMenu.Item>
+    <DropdownMenu.Content size="2">
+      <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
+
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ ⌫" color="red">
+        Delete
+      </DropdownMenu.Item>
     </DropdownMenu.Content>
   </DropdownMenu.Root>
 
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <IconButton variant="soft">
-        <DotsHorizontalIcon />
-      </IconButton>
+      <Button variant="soft" size="1">
+        Options
+        <CaretDownIcon width="12" height="12" />
+      </Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content size="2">
-      <DropdownMenu.Item>New Tab</DropdownMenu.Item>
-      <DropdownMenu.Item>New Window</DropdownMenu.Item>
+    <DropdownMenu.Content size="1">
+      <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
+
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ ⌫" color="red">
+        Delete
+      </DropdownMenu.Item>
     </DropdownMenu.Content>
   </DropdownMenu.Root>
 </Flex>
@@ -151,25 +154,41 @@ Use the `variant` prop to customize the visual style of the dropdown menu.
 <Flex gap="3" align="center">
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <IconButton variant="outline">
-        <DotsHorizontalIcon />
-      </IconButton>
+      <Button variant="solid">
+        Options
+        <CaretDownIcon width="12" height="12" />
+      </Button>
     </DropdownMenu.Trigger>
     <DropdownMenu.Content variant="solid">
-      <DropdownMenu.Item>New Tab</DropdownMenu.Item>
-      <DropdownMenu.Item>New Window</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
+
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ ⌫" color="red">
+        Delete
+      </DropdownMenu.Item>
     </DropdownMenu.Content>
   </DropdownMenu.Root>
 
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <IconButton variant="soft">
-        <DotsHorizontalIcon />
-      </IconButton>
+      <Button variant="soft">
+        Options
+        <CaretDownIcon width="12" height="12" />
+      </Button>
     </DropdownMenu.Trigger>
     <DropdownMenu.Content variant="soft">
-      <DropdownMenu.Item>New Tab</DropdownMenu.Item>
-      <DropdownMenu.Item>New Window</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
+
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ ⌫" color="red">
+        Delete
+      </DropdownMenu.Item>
     </DropdownMenu.Content>
   </DropdownMenu.Root>
 </Flex>
@@ -183,53 +202,61 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 <Flex gap="3">
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <IconButton variant="soft" color="crimson">
-        <DotsHorizontalIcon />
-      </IconButton>
+      <Button variant="soft" color="indigo">
+        Options
+        <CaretDownIcon width="12" height="12" />
+      </Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content color="crimson">
-      <DropdownMenu.Item>New Tab</DropdownMenu.Item>
-      <DropdownMenu.Item>New Window</DropdownMenu.Item>
-      <DropdownMenu.Item color="red">Delete</DropdownMenu.Item>
+    <DropdownMenu.Content variant="soft" color="indigo">
+      <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
     </DropdownMenu.Content>
   </DropdownMenu.Root>
 
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <IconButton variant="soft" color="indigo">
-        <DotsHorizontalIcon />
-      </IconButton>
+      <Button variant="soft" color="cyan">
+        Options
+        <CaretDownIcon width="12" height="12" />
+      </Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content color="indigo">
-      <DropdownMenu.Item>New Tab</DropdownMenu.Item>
-      <DropdownMenu.Item>New Window</DropdownMenu.Item>
-      <DropdownMenu.Item color="red">Delete</DropdownMenu.Item>
+    <DropdownMenu.Content variant="soft" color="cyan">
+      <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
     </DropdownMenu.Content>
   </DropdownMenu.Root>
 
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <IconButton variant="soft" color="grass">
-        <DotsHorizontalIcon />
-      </IconButton>
+      <Button variant="soft" color="orange">
+        Options
+        <CaretDownIcon width="12" height="12" />
+      </Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content color="grass">
-      <DropdownMenu.Item>New Tab</DropdownMenu.Item>
-      <DropdownMenu.Item>New Window</DropdownMenu.Item>
-      <DropdownMenu.Item color="red">Delete</DropdownMenu.Item>
+    <DropdownMenu.Content variant="soft" color="orange">
+      <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
     </DropdownMenu.Content>
   </DropdownMenu.Root>
 
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <IconButton variant="soft" color="orange">
-        <DotsHorizontalIcon />
-      </IconButton>
+      <Button variant="soft" color="crimson">
+        Options
+        <CaretDownIcon width="12" height="12" />
+      </Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content color="orange">
-      <DropdownMenu.Item>New Tab</DropdownMenu.Item>
-      <DropdownMenu.Item>New Window</DropdownMenu.Item>
-      <DropdownMenu.Item color="red">Delete</DropdownMenu.Item>
+    <DropdownMenu.Content variant="soft" color="crimson">
+      <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
     </DropdownMenu.Content>
   </DropdownMenu.Root>
 </Flex>
@@ -240,41 +267,65 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 Use the `highContrast` prop to add additional contrast.
 
 ```jsx live=true
-<Flex gap="3">
+<Grid columns="2" gap="3" display="inline-grid">
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <Button variant="surface" color="gray">
-        Default
+      <Button variant="solid">
+        Options
+        <CaretDownIcon width="12" height="12" />
       </Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content>
-      <DropdownMenu.Item>New Tab</DropdownMenu.Item>
-      <DropdownMenu.Item>New Window</DropdownMenu.Item>
+    <DropdownMenu.Content variant="solid">
+      <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
     </DropdownMenu.Content>
   </DropdownMenu.Root>
 
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <Button variant="surface" color="gray" highContrast>
-        High-contrast
+      <Button variant="solid" highContrast>
+        Options
+        <CaretDownIcon width="12" height="12" />
       </Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content highContrast>
-      <DropdownMenu.Item>New Tab</DropdownMenu.Item>
-      <DropdownMenu.Item>New Window</DropdownMenu.Item>
+    <DropdownMenu.Content variant="solid" highContrast>
+      <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
     </DropdownMenu.Content>
   </DropdownMenu.Root>
 
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <Button variant="soft" color="gray" highContrast>
-        Gray high-contrast
+      <Button variant="soft">
+        Options
+        <CaretDownIcon width="12" height="12" />
       </Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content color="gray" highContrast>
-      <DropdownMenu.Item>New Tab</DropdownMenu.Item>
-      <DropdownMenu.Item>New Window</DropdownMenu.Item>
+    <DropdownMenu.Content variant="soft">
+      <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
     </DropdownMenu.Content>
   </DropdownMenu.Root>
-</Flex>
+
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>
+      <Button variant="soft" highContrast>
+        Options
+        <CaretDownIcon width="12" height="12" />
+      </Button>
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content variant="soft" highContrast>
+      <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+</Grid>
 ```
