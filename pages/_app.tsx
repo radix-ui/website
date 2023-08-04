@@ -10,13 +10,13 @@ import { useAnalytics } from '@lib/analytics';
 import { CssLibPreferenceProvider } from '@components/CssLibPreference';
 import { ThemesDocsPage } from '@components/ThemesDocsPage';
 import { SyntaxSchemeProvider } from '@components/Pre';
-
 import '@radix-ui/themes/dist/index.css';
 import './themes-config.css';
 
 const globalStyles = globalCss({
   ':root': {
     '--header-height': '48px',
+    '--quick-nav-display': 'none',
   },
 
   '*, *::before, *::after': {
@@ -49,10 +49,6 @@ const globalStyles = globalCss({
 
   'h1, h2, h3, h4, h5': {
     fontWeight: 500,
-  },
-
-  ':root': {
-    '--quick-nav-display': 'none',
   },
 
   '@media (min-width: 1440px)': {
