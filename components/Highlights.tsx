@@ -29,9 +29,9 @@ export function Highlights({ features }) {
                   justify="center"
                   shrink="0"
                   style={{
-                    backgroundColor: 'var(--teal-4)',
+                    backgroundColor: 'var(--green-4)',
                     borderRadius: '50%',
-                    color: 'var(--teal-11)',
+                    color: 'var(--green-11)',
                   }}
                 >
                   <CheckIcon />
