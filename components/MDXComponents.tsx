@@ -178,6 +178,21 @@ export const components = {
       <ThemesPropsTable {...props} />
     </Box>
   ),
+  TabsCodeBlock: (props) => (
+    <Tabs.Root {...props}>
+      <Box
+        style={{
+          border: '1px solid var(--gray-a5)',
+          borderRadius: 'var(--radius-4)',
+        }}
+      >
+        {props.children}
+      </Box>
+    </Tabs.Root>
+  ),
+  TabsCodeBlockContent: (props) => (
+    <CodeBlock {...props} style={{ boxShadow: 'none', borderRadius: 0 }} />
+  ),
   KeyboardTable: (props) => (
     <Box mb="5">
       <KeyboardTable {...props} />

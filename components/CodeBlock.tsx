@@ -11,6 +11,9 @@ import rangeParser from 'parse-numeric-range';
 import highlightLine from '@lib/rehype-highlight-line';
 import highlightWord from '@lib/rehype-highlight-word';
 import { Pre } from './Pre';
+import { CopyCodeButton } from './CopyCodeButton';
+
+import styles from './CodeBlock.module.css';
 
 refractor.register(js);
 refractor.register(jsx);
@@ -54,7 +57,7 @@ export const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
     return (
       <Pre
         ref={forwardedRef}
-        className={classes}
+        className={`${styles.Container} ${classes}`}
         style={style}
         data-line-numbers={showLineNumbers}
         {...props}
@@ -68,6 +71,7 @@ export const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
               : {}
           }
         />
+        <CopyCodeButton code={value} className={styles.CopyButton} />
       </Pre>
     );
   }

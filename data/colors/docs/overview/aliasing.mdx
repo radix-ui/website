@@ -15,14 +15,14 @@ Referencing color scales by their actual scale name can work well, like `blue` a
 
 {
 
-<Tabs defaultValue="1" my="5">
+<TabsCodeBlock defaultValue="1" my="5">
   <TabsList>
     <TabsTrigger value="1">CSS</TabsTrigger>
     <TabsTrigger value="2">Stitches</TabsTrigger>
     <TabsTrigger value="3">Styled Components</TabsTrigger>
   </TabsList>
   <TabsContent value="1">
-    <CodeBlock language="css" value={`/*
+    <TabsCodeBlockContent language="css" value={`/*
  * Note: Importing from the CDN in production is not recommended.
  * It's intended for prototyping only.
  */
@@ -60,7 +60,7 @@ Referencing color scales by their actual scale name can work well, like `blue` a
 `}/>
   </TabsContent>
   <TabsContent value="2">
-    <CodeBlock language="jsx" value={`import { createCss } from '@stitches/react';
+    <TabsCodeBlockContent language="jsx" value={`import { createCss } from '@stitches/react';
 import {
   blue,
   green,
@@ -107,7 +107,7 @@ const { styled } = createCss({
 
   </TabsContent>
   <TabsContent value="3">
-    <CodeBlock language="jsx" value={`import styled, { ThemeProvider } from 'styled-components';
+    <TabsCodeBlockContent language="jsx" value={`import styled, { ThemeProvider } from 'styled-components';
 import {
   blue,
   green,
@@ -153,7 +153,7 @@ const theme = {
 `}/>
 
   </TabsContent>
-</Tabs>
+</TabsCodeBlock>
 }
 
 With this approach, you will likely run into issues where you need to use the same scale for multiple semantics. Common examples include:
@@ -167,14 +167,14 @@ In this scenario, you can choose to define multiple semantic aliases which map t
 
 {
 
-<Tabs defaultValue="1" my="5">
+<TabsCodeBlock defaultValue="1" my="5">
   <TabsList>
     <TabsTrigger value="1">CSS</TabsTrigger>
     <TabsTrigger value="2">Stitches</TabsTrigger>
     <TabsTrigger value="3">Styled Components</TabsTrigger>
   </TabsList>
   <TabsContent value="1">
-    <CodeBlock language="css" value={`/*
+    <TabsCodeBlockContent language="css" value={`/*
  * Note: Importing from the CDN in production is not recommended.
  * It's intended for prototyping only.
  */
@@ -201,7 +201,7 @@ In this scenario, you can choose to define multiple semantic aliases which map t
 `}/>
     </TabsContent>
   <TabsContent value="2">
-    <CodeBlock language="jsx" value={`import { createCss } from '@stitches/react';
+    <TabsCodeBlockContent language="jsx" value={`import { createCss } from '@stitches/react';
 import {
   blue,
   green,
@@ -237,7 +237,7 @@ const { styled } = createCss({
 
   </TabsContent>
   <TabsContent value="3">
-    <CodeBlock language="jsx" value={`import styled, { ThemeProvider } from 'styled-components';
+    <TabsCodeBlockContent language="jsx" value={`import styled, { ThemeProvider } from 'styled-components';
 import {
   blue,
   green,
@@ -271,7 +271,7 @@ const theme = {
 `}/>
 
   </TabsContent>
-</Tabs>
+</TabsCodeBlock>
 }
 
 
@@ -283,14 +283,14 @@ Each step in Radix Colors scales is designed for a specific use case. To help yo
 
 {
 
-<Tabs defaultValue="1" my="5">
+<TabsCodeBlock defaultValue="1" my="5">
   <TabsList>
     <TabsTrigger value="1">CSS</TabsTrigger>
     <TabsTrigger value="2">Stitches</TabsTrigger>
     <TabsTrigger value="3">Styled Components</TabsTrigger>
   </TabsList>
   <TabsContent value="1">
-    <CodeBlock language="css" value={`/*
+    <TabsCodeBlockContent language="css" value={`/*
  * Note: Importing from the CDN in production is not recommended.
  * It's intended for prototyping only.
  */
@@ -328,7 +328,7 @@ Each step in Radix Colors scales is designed for a specific use case. To help yo
 `}/>
   </TabsContent>
   <TabsContent value="2">
-    <CodeBlock language="jsx" value={`import { createCss } from '@stitches/react';
+    <TabsCodeBlockContent language="jsx" value={`import { createCss } from '@stitches/react';
 import {
   blue,
   green,
@@ -375,7 +375,7 @@ const { styled } = createCss({
 
   </TabsContent>
   <TabsContent value="3">
-    <CodeBlock language="jsx" value={`import styled, { ThemeProvider } from 'styled-components';
+    <TabsCodeBlockContent language="jsx" value={`import styled, { ThemeProvider } from 'styled-components';
 import {
   blue,
   green,
@@ -421,7 +421,7 @@ const theme = {
 `}/>
 
   </TabsContent>
-</Tabs>
+</TabsCodeBlock>
 }
 
 Again, with this approach, you will likely run into issues where you need to use the same step for multiple use cases. Common examples include:
@@ -433,14 +433,14 @@ In these cases, you can choose to define multiple aliases which map to the same 
 
 {
 
-<Tabs defaultValue="1" my="5">
+<TabsCodeBlock defaultValue="1" my="5">
   <TabsList>
     <TabsTrigger value="1">CSS</TabsTrigger>
     <TabsTrigger value="2">Stitches</TabsTrigger>
     <TabsTrigger value="3">Styled Components</TabsTrigger>
   </TabsList>
   <TabsContent value="1">
-    <CodeBlock language="css" value={`/*
+    <TabsCodeBlockContent language="css" value={`/*
  * Note: Importing from the CDN in production is not recommended.
  * It's intended for prototyping only.
  */
@@ -460,7 +460,7 @@ In these cases, you can choose to define multiple aliases which map to the same 
 `}/>
   </TabsContent>
   <TabsContent value="2">
-    <CodeBlock language="jsx" value={`import { createCss } from '@stitches/react';
+    <TabsCodeBlockContent language="jsx" value={`import { createCss } from '@stitches/react';
 import {
   gray,
   blue,
@@ -490,7 +490,7 @@ const { styled, theme } = createCss({
 
   </TabsContent>
   <TabsContent value="3">
-    <CodeBlock language="jsx" value={`import styled, { ThemeProvider } from 'styled-components';
+    <TabsCodeBlockContent language="jsx" value={`import styled, { ThemeProvider } from 'styled-components';
 import {
   gray,
   blue,
@@ -519,7 +519,7 @@ const theme = {
 `}/>
 
   </TabsContent>
-</Tabs>
+</TabsCodeBlock>
 }
 
 Or you can simply recommend that your teammates defer to the original step number for situations where use cases don't have an alias.
@@ -535,14 +535,14 @@ When designing for both light and dark modes, you sometimes need to map a variab
 
 {
 
-<Tabs defaultValue="1" my="5">
+<TabsCodeBlock defaultValue="1" my="5">
   <TabsList>
     <TabsTrigger value="1">CSS</TabsTrigger>
     <TabsTrigger value="2">Stitches</TabsTrigger>
     <TabsTrigger value="3">Styled Components</TabsTrigger>
   </TabsList>
   <TabsContent value="1">
-    <CodeBlock language="css" value={`/*
+    <TabsCodeBlockContent language="css" value={`/*
  * Note: Importing from the CDN in production is not recommended.
  * It's intended for prototyping only.
  */
@@ -568,7 +568,7 @@ When designing for both light and dark modes, you sometimes need to map a variab
 `}/>
   </TabsContent>
   <TabsContent value="2">
-    <CodeBlock language="jsx" value={`import { createCss } from '@stitches/react';
+    <TabsCodeBlockContent language="jsx" value={`import { createCss } from '@stitches/react';
 import {
   slate,
   slateA,
@@ -609,7 +609,7 @@ const darkTheme = theme({
 
   </TabsContent>
   <TabsContent value="3">
-    <CodeBlock language="jsx" value={`import styled, { ThemeProvider } from 'styled-components';
+    <TabsCodeBlockContent language="jsx" value={`import styled, { ThemeProvider } from 'styled-components';
 import {
   slate,
   slateA,
@@ -648,7 +648,7 @@ const darkTheme = {
 `}/>
 
   </TabsContent>
-</Tabs>
+</TabsCodeBlock>
 }
 
 
@@ -665,14 +665,14 @@ If you wish, you can rename scales. Reasons might include:
 
 {
 
-<Tabs defaultValue="1" my="5">
+<TabsCodeBlock defaultValue="1" my="5">
   <TabsList>
     <TabsTrigger value="1">CSS</TabsTrigger>
     <TabsTrigger value="2">Stitches</TabsTrigger>
     <TabsTrigger value="3">Styled Components</TabsTrigger>
   </TabsList>
   <TabsContent value="1">
-    <CodeBlock language="css" value={`/*
+    <TabsCodeBlockContent language="css" value={`/*
  * Note: Importing from the CDN in production is not recommended.
  * It's intended for prototyping only.
  */
@@ -701,7 +701,7 @@ If you wish, you can rename scales. Reasons might include:
 `}/>
   </TabsContent>
   <TabsContent value="2">
-    <CodeBlock language="jsx" value={`import { createCss } from '@stitches/react';
+    <TabsCodeBlockContent language="jsx" value={`import { createCss } from '@stitches/react';
 import {
   slate,
   sky,
@@ -734,7 +734,7 @@ const { styled } = createCss({
 
   </TabsContent>
   <TabsContent value="3">
-    <CodeBlock language="jsx" value={`import styled, { ThemeProvider } from 'styled-components';
+    <TabsCodeBlockContent language="jsx" value={`import styled, { ThemeProvider } from 'styled-components';
 import {
   slate,
   sky,
@@ -766,5 +766,5 @@ const theme = {
 `}/>
 
   </TabsContent>
-</Tabs>
+</TabsCodeBlock>
 }
