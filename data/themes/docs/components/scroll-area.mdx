@@ -1,6 +1,6 @@
 ---
 metaTitle: Scroll Area
-metaDescription: Custom, cross-browser scrollbars using native functionality.
+metaDescription: Custom styled, cross-browser scrollable area using native functionality.
 sourcePath: components/scroll-area
 ---
 
@@ -48,83 +48,70 @@ This component inherits props from the Radix [ScrollArea.Root](/primitives/docs/
 Use the `size` prop to control the size of the scrollbar handles.
 
 ```jsx live=true
-<Flex gap="3" align="center" style={{ height: 150 }}>
-  <ScrollArea size="1" type="always" scrollbars="vertical">
-    <Box p="2" pr="8">
-      <Flex direction="column" gap="4">
-        <Text trim="both">
-          Three fundamental aspects of typography are legibility, readability,
-          and aesthetics. Although in a non-technical sense "legible" and
-          "readable" are often used synonymously, typographically they are
-          separate but related concepts
-        </Text>
-      </Flex>
-    </Box>
+<Flex direction="column" gap="2">
+  <ScrollArea
+    size="1"
+    type="always"
+    scrollbars="horizontal"
+    style={{ width: 300, height: 12 }}
+  >
+    <Box style={{ width: 800, height: 1 }} />
   </ScrollArea>
 
-  <ScrollArea size="2" type="always" scrollbars="vertical">
-    <Box p="2" pr="8">
-      <Text trim="both">
-        Three fundamental aspects of typography are legibility, readability, and
-        aesthetics. Although in a non-technical sense "legible" and "readable"
-        are often used synonymously, typographically they are separate but
-        related concepts.
-      </Text>
-    </Box>
+  <ScrollArea
+    size="2"
+    type="always"
+    scrollbars="horizontal"
+    style={{ width: 350, height: 16 }}
+  >
+    <Box style={{ width: 900, height: 1 }} />
   </ScrollArea>
 
-  <ScrollArea size="3" type="always" scrollbars="vertical">
-    <Box p="2" pr="8">
-      <Flex direction="column" gap="4">
-        <Text trim="both">
-          Three fundamental aspects of typography are legibility, readability,
-          and aesthetics. Although in a non-technical sense "legible" and
-          "readable" are often used synonymously, typographically they are
-          separate but related concepts
-        </Text>
-      </Flex>
-    </Box>
+  <ScrollArea
+    size="3"
+    type="always"
+    scrollbars="horizontal"
+    style={{ width: 400, height: 20 }}
+  >
+    <Box style={{ width: 1000, height: 1 }} />
   </ScrollArea>
 </Flex>
 ```
 
 ### Radius
 
-Use the `radius` prop to assign a specific radius value to the scrollbar handles, ignoring the global theme.
+Use the `radius` prop to assign a specific radius to the handles, ignoring the global theme.
 
 ```jsx live=true
-<Flex gap="3" align="center" style={{ height: 150 }}>
-  <ScrollArea radius="none" size="3" type="always" scrollbars="vertical">
-    <Box p="2" pr="8">
-      <Text trim="both">
-        Three fundamental aspects of typography are legibility, readability, and
-        aesthetics. Although in a non-technical sense "legible" and "readable"
-        are often used synonymously, typographically they are separate but
-        related concepts.
-      </Text>
-    </Box>
+<Flex direction="column" gap="3">
+  <ScrollArea
+    radius="none"
+    size="3"
+    type="always"
+    scrollbars="horizontal"
+    style={{ width: 350, height: 20 }}
+  >
+    <Box style={{ width: 600, height: 1 }} />
   </ScrollArea>
 
-  <ScrollArea radius="medium" size="3" type="always" scrollbars="vertical">
-    <Box p="2" pr="8">
-      <Text trim="both">
-        Three fundamental aspects of typography are legibility, readability, and
-        aesthetics. Although in a non-technical sense "legible" and "readable"
-        are often used synonymously, typographically they are separate but
-        related concepts.
-      </Text>
-    </Box>
+  <ScrollArea
+    radius="large"
+    size="3"
+    type="always"
+    scrollbars="horizontal"
+    style={{ width: 350, height: 20 }}
+  >
+    <Box style={{ width: 800, height: 1 }} />
   </ScrollArea>
 
-  <ScrollArea radius="full" size="3" type="always" scrollbars="vertical">
-    <Box p="2" pr="8">
-      <Text trim="both">
-        Three fundamental aspects of typography are legibility, readability, and
-        aesthetics. Although in a non-technical sense "legible" and "readable"
-        are often used synonymously, typographically they are separate but
-        related concepts.
-      </Text>
-    </Box>
+  <ScrollArea
+    radius="full"
+    size="3"
+    type="always"
+    scrollbars="horizontal"
+    style={{ width: 350, height: 20 }}
+  >
+    <Box style={{ width: 1000, height: 1 }} />
   </ScrollArea>
 </Flex>
 ```
@@ -134,18 +121,23 @@ Use the `radius` prop to assign a specific radius value to the scrollbar handles
 Use the `scrollbars` prop to limit scrollable axes.
 
 ```jsx live=true
-<Flex gap="3" align="center" style={{ height: 165 }}>
-  <ScrollArea radius="none" type="always" scrollbars="vertical">
+<Grid columns="2" gap="2">
+  <ScrollArea
+    radius="none"
+    type="always"
+    scrollbars="vertical"
+    style={{ height: 150 }}
+  >
     <Box p="2" pr="8">
       <Flex direction="column" gap="4">
-        <Text trim="both">
+        <Text size="2" trim="both">
           Three fundamental aspects of typography are legibility, readability,
           and aesthetics. Although in a non-technical sense "legible" and
           "readable" are often used synonymously, typographically they are
           separate but related concepts.
         </Text>
 
-        <Text trim="both">
+        <Text size="2" trim="both">
           Legibility describes how easily individual characters can be
           distinguished from one another. It is described by Walter Tracy as
           "the quality of being decipherable and recognisable". For instance, if
@@ -156,22 +148,29 @@ Use the `scrollbars` prop to limit scrollable axes.
     </Box>
   </ScrollArea>
 
-  <ScrollArea radius="medium" type="always" scrollbars="horizontal">
-    <Box p="2" pr="5">
-      <Grid columns="2" gap="4" style={{ width: 660 }}>
-        <Text trim="both">
+  <ScrollArea
+    radius="none"
+    type="always"
+    scrollbars="horizontal"
+    style={{ height: 150 }}
+  >
+    <Box p="2">
+      <Flex gap="4" style={{ width: 700 }}>
+        <Text size="2" trim="both">
           Three fundamental aspects of typography are legibility, readability,
           and aesthetics. Although in a non-technical sense "legible" and
           "readable" are often used synonymously, typographically they are
           separate but related concepts.
         </Text>
 
-        <Text trim="both">
+        <Text size="2" trim="both">
           Legibility describes how easily individual characters can be
           distinguished from one another. It is described by Walter Tracy as
-          "the quality of being decipherable and recognisable".
+          "the quality of being decipherable and recognisable". For instance, if
+          a "b" and an "h", or a "3" and an "8", are difficult to distinguish at
+          small sizes, this is a problem of legibility.
         </Text>
-      </Grid>
+      </Flex>
     </Box>
   </ScrollArea>
 </Flex>
