@@ -43,101 +43,87 @@ export const Header = ({ children, ghost }: HeaderProps) => {
   }, [ghost]);
 
   return (
-    <>
-      <Head>
-        <style>
-          {`
-            .radix-themes {
-              --header-height: var(--space-8);
-            }
-          `}
-        </style>
-      </Head>
-      <div
-        data-scroll-state={scrollState}
-        className={classNames(styles.HeaderRoot, ghost ? styles.ghost : '')}
-      >
-        <div className={styles.HeaderInner}>
-          <Flex align="center" position="absolute" top="0" bottom="0" left="0" pl="4">
-            <BoxLink href="/">
-              <RadixLogo />
-            </BoxLink>
-          </Flex>
+    <div
+      data-scroll-state={scrollState}
+      className={classNames(styles.HeaderRoot, ghost ? styles.ghost : '')}
+    >
+      <div className={styles.HeaderInner}>
+        <Flex align="center" position="absolute" top="0" bottom="0" left="0" pl="4">
+          <BoxLink href="/">
+            <RadixLogo />
+          </BoxLink>
+        </Flex>
 
-          <Flex
-            display={{ initial: 'none', xs: 'flex' }}
-            align="center"
-            justify="center"
-            position="absolute"
-            top="0"
-            bottom="0"
-            style={{ width: 320, left: 'calc(50% - 160px)' }}
+        <Flex
+          display={{ initial: 'none', xs: 'flex' }}
+          align="center"
+          justify="center"
+          position="absolute"
+          top="0"
+          bottom="0"
+          style={{ width: 320, left: 'calc(50% - 160px)' }}
+        >
+          <HeaderProductLink
+            href="/"
+            active={router.pathname === '/' || router.pathname.startsWith('/themes')}
           >
-            <HeaderProductLink
-              href="/"
-              active={router.pathname === '/' || router.pathname.startsWith('/themes')}
+            Themes
+          </HeaderProductLink>
+
+          <HeaderProductLink href="/primitives" active={router.pathname.startsWith('/primitives')}>
+            Primitives
+          </HeaderProductLink>
+
+          <HeaderProductLink href="/icons" active={router.pathname.startsWith('/icons')}>
+            Icons
+          </HeaderProductLink>
+
+          <HeaderProductLink href="/colors" active={router.pathname.startsWith('/colors')}>
+            Colors
+          </HeaderProductLink>
+        </Flex>
+
+        <Flex
+          display={{ initial: 'none', md: 'flex' }}
+          align="center"
+          gap="5"
+          position="absolute"
+          top="0"
+          bottom="0"
+          right="0"
+          pr="4"
+        >
+          {children}
+          <ThemeToggle />
+        </Flex>
+
+        <Flex
+          display={{ md: 'none' }}
+          align="center"
+          gap="4"
+          position="absolute"
+          top="0"
+          bottom="0"
+          right="0"
+          pr="4"
+        >
+          <ThemeToggle />
+
+          <Tooltip content="Navigation">
+            <IconButton
+              size="3"
+              variant="ghost"
+              color="gray"
+              data-state={mobileMenu.open ? 'open' : 'closed'}
+              onClick={() => mobileMenu.setOpen((open) => !open)}
+              className={styles.MobileMenuButton}
             >
-              Themes
-            </HeaderProductLink>
-
-            <HeaderProductLink
-              href="/primitives"
-              active={router.pathname.startsWith('/primitives')}
-            >
-              Primitives
-            </HeaderProductLink>
-
-            <HeaderProductLink href="/icons" active={router.pathname.startsWith('/icons')}>
-              Icons
-            </HeaderProductLink>
-
-            <HeaderProductLink href="/colors" active={router.pathname.startsWith('/colors')}>
-              Colors
-            </HeaderProductLink>
-          </Flex>
-
-          <Flex
-            display={{ initial: 'none', md: 'flex' }}
-            align="center"
-            gap="5"
-            position="absolute"
-            top="0"
-            bottom="0"
-            right="0"
-            pr="4"
-          >
-            {children}
-            <ThemeToggle />
-          </Flex>
-
-          <Flex
-            display={{ md: 'none' }}
-            align="center"
-            gap="4"
-            position="absolute"
-            top="0"
-            bottom="0"
-            right="0"
-            pr="4"
-          >
-            <ThemeToggle />
-
-            <Tooltip content="Navigation">
-              <IconButton
-                size="3"
-                variant="ghost"
-                color="gray"
-                data-state={mobileMenu.open ? 'open' : 'closed'}
-                onClick={() => mobileMenu.setOpen((open) => !open)}
-                className={styles.MobileMenuButton}
-              >
-                <HamburgerMenuIcon width="16" height="16" />
-              </IconButton>
-            </Tooltip>
-          </Flex>
-        </div>
+              <HamburgerMenuIcon width="16" height="16" />
+            </IconButton>
+          </Tooltip>
+        </Flex>
       </div>
-    </>
+    </div>
   );
 };
 

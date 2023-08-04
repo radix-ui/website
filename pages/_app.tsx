@@ -15,6 +15,10 @@ import '@radix-ui/themes/dist/index.css';
 import './themes-config.css';
 
 const globalStyles = globalCss({
+  ':root': {
+    '--header-height': '48px',
+  },
+
   '*, *::before, *::after': {
     boxSizing: 'border-box',
   },
