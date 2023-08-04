@@ -1,19 +1,19 @@
 ---
 metaTitle: Switch
-metaDescription: A control that allows the user to toggle between checked and not checked.
+metaDescription: A toggle switch alternative to the checkbox.
 sourcePath: components/switch
 ---
 
 ```jsx live=true
 <Flex gap="2">
-  <Switch />
   <Switch defaultChecked />
+  <Switch />
 </Flex>
 ```
 
 ## API Reference
 
-This component inherits the props from the [Radix Switch](/primitives/docs/components/switch) primitive and supports [common margin props](/themes/docs/theme/layout#margin-props).
+This component inherits props from the [Radix Switch](/primitives/docs/components/switch) primitive and supports [common margin props](/themes/docs/theme/layout#margin-props).
 
 <ThemesPropsTable name="switch" />
 
@@ -24,10 +24,30 @@ This component inherits the props from the [Radix Switch](/primitives/docs/compo
 Use the `size` prop to control the size.
 
 ```jsx live=true
-<Flex gap="3">
+<Flex direction="column" gap="2">
   <Switch size="1" />
   <Switch size="2" />
   <Switch size="3" />
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style.
+
+```jsx live=true scroll=true
+<Flex gap="2">
+  <Flex direction="column" gap="2">
+    <Switch variant="surface" defaultChecked />
+    <Switch variant="classic" defaultChecked />
+    <Switch variant="soft" defaultChecked />
+  </Flex>
+
+  <Flex direction="column" gap="2">
+    <Switch variant="surface" />
+    <Switch variant="classic" />
+    <Switch variant="soft" />
+  </Flex>
 </Flex>
 ```
 
@@ -36,11 +56,11 @@ Use the `size` prop to control the size.
 Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
 
 ```jsx live=true
-<Flex gap="3">
-  <Switch color="crimson" defaultChecked />
+<Flex gap="2">
   <Switch color="indigo" defaultChecked />
-  <Switch color="grass" defaultChecked />
+  <Switch color="cyan" defaultChecked />
   <Switch color="orange" defaultChecked />
+  <Switch color="crimson" defaultChecked />
 </Flex>
 ```
 
@@ -62,8 +82,6 @@ Use the `radius` prop to assign a specific radius value, ignoring the global the
 ```jsx live=true
 <Flex gap="3">
   <Switch radius="none" />
-  <Switch radius="small" />
-  <Switch radius="medium" />
   <Switch radius="large" />
   <Switch radius="full" />
 </Flex>
