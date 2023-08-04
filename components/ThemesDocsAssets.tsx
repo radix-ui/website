@@ -22,7 +22,7 @@ import {
 import { Label } from '@radix-ui/react-label';
 import NextLink from 'next/link';
 import { allPeople } from './people';
-import { CheckIcon, Cross2Icon, DotsHorizontalIcon } from '@radix-ui/react-icons';
+import { CheckIcon } from '@radix-ui/react-icons';
 import { Marker } from './Marker';
 import * as React from 'react';
 
@@ -459,7 +459,7 @@ export function ThemesAccentSwatches() {
           'gray',
         ] as const).map((color, i) => (
           <Box grow="1" key={i}>
-            <Theme appearance="dark" accentColor={color} hasBackground={false} asChild>
+            <Theme accentColor={color} hasBackground={false} asChild>
               <Flex
                 align="center"
                 justify="center"
@@ -467,7 +467,7 @@ export function ThemesAccentSwatches() {
                 style={{ backgroundColor: `var(--accent-9)`, borderRadius: 'var(--radius-2)' }}
                 height="6"
               >
-                <Text as="div" size="1" weight="bold">
+                <Text as="div" size="1" weight="bold" style={{ color: 'var(--accent-9-contrast)' }}>
                   {color.charAt(0).toUpperCase() + color.slice(1)}
                 </Text>
               </Flex>
@@ -485,7 +485,7 @@ export function ThemesBrightAccentSwatches() {
       <Grid columns={{ initial: '3', xs: '4', sm: '6' }} gap="2">
         {(['sky', 'mint', 'lime', 'yellow', 'amber'] as const).map((color, i) => (
           <Box grow="1" key={i}>
-            <Theme appearance="light" accentColor={color} hasBackground={false} asChild>
+            <Theme accentColor={color} hasBackground={false} asChild>
               <Flex
                 align="center"
                 justify="center"
@@ -493,7 +493,7 @@ export function ThemesBrightAccentSwatches() {
                 style={{ backgroundColor: `var(--accent-9)`, borderRadius: 'var(--radius-2)' }}
                 height="6"
               >
-                <Text as="div" size="1" weight="bold">
+                <Text as="div" size="1" weight="bold" style={{ color: 'var(--accent-9-contrast)' }}>
                   {color.charAt(0).toUpperCase() + color.slice(1)}
                 </Text>
               </Flex>
@@ -520,11 +520,9 @@ export function ThemeGraySwatches() {
                 px="2"
                 py="2"
               >
-                <Theme appearance="dark" hasBackground={false}>
-                  <Text as="div" size="1" weight="bold" style={{ color: 'white' }}>
-                    {color.charAt(0).toUpperCase() + color.slice(1)}
-                  </Text>
-                </Theme>
+                <Text as="div" size="1" weight="bold" style={{ color: 'var(--accent-9-contrast)' }}>
+                  {color.charAt(0).toUpperCase() + color.slice(1)}
+                </Text>
               </Flex>
             </Theme>
           </Box>
