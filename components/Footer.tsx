@@ -1,6 +1,6 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Box, Grid, Text, Flex, Link, Heading } from '@radix-ui/themes';
+import { Box, Grid, Text, Flex, Link, Heading, AccessibleIcon } from '@radix-ui/themes';
 import { RadixLogo } from './RadixLogo';
 import { useRouter } from 'next/router';
 import { BoxLink } from './BoxLink';
@@ -15,9 +15,11 @@ export const Footer = () => {
     <Grid asChild pb="9" gapX="7" gapY="3" className={styles.Footer}>
       <footer>
         <Flex align="start" direction="column" className={styles.RadixLogo} mb="5">
-          <NextLink href={isColors ? '/colors' : '/'} passHref>
+          <NextLink href="/" passHref>
             <BoxLink>
-              <RadixLogo label={isColors ? 'Radix Colors homepage' : 'Radix homepage'} />
+              <AccessibleIcon label="Radix Homepage">
+                <RadixLogo />
+              </AccessibleIcon>
             </BoxLink>
           </NextLink>
           <Box pr="8" mt="5">
