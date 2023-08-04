@@ -12,16 +12,17 @@ const StyledSwitch = styled(SwitchPrimitive.Root, {
   transition: 'background-color 100ms, box-shadow 100ms',
   WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
   '&[data-state="checked"]': {
-    backgroundColor: 'var(--gray-12)',
+    backgroundColor: '#2C333B',
   },
-  '&:focus': {
-    boxShadow: `0 0 0 2px var(--gray-a8)`,
+  ':where(.dark-theme) &': {
+    boxShadow: '0 0 0 1px var(--gray-a8)',
   },
-  '&[data-state="checked"]:focus': {
-    boxShadow: `0 0 0 2px var(--blue-a8)`,
+  ':where(.dark-theme) &[data-state="checked"]': {
+    backgroundColor: '#141417',
+    boxShadow: '0 0 0 1px var(--gray-a6)',
   },
-  '&:focus:not(:focus-visible)': {
-    boxShadow: 'none',
+  '&:focus-visible': {
+    boxShadow: `0 0 0 2px var(--accent-a8)`,
   },
 });
 
