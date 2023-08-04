@@ -4,24 +4,15 @@ import { Box, Text, Grid, Heading, Container, Section } from '@radix-ui/themes';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { Footer } from '@components/Footer';
 import { ColorsHeader } from '@components/ColorsHeader';
-import { MobileMenu, MobileMenuProvider } from '@components/MobileMenu';
-import { colorsRoutes } from '@lib/colorsRoutes';
-import { DocsNav } from '@components/DocsNav';
-import { ScrollArea } from '@radix-ui/themes';
+import { MobileMenuProvider } from '@components/MobileMenu';
 import { ColorsMarketingButton } from '@components/ColorsMarketingButton';
 import { SerifHeading } from '@components/SerifHeading';
+import { ColorsMobileMenu } from '@components/ColorsMobileMenu';
 
 export default function ColorsHome() {
   return (
     <MobileMenuProvider>
-      <MobileMenu>
-        <ColorsHeader />
-        <ScrollArea>
-          <Box pt="4" px="4" pb="9">
-            <DocsNav routes={colorsRoutes} />
-          </Box>
-        </ScrollArea>
-      </MobileMenu>
+      <ColorsMobileMenu />
 
       <Box
         style={{

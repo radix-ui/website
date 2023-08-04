@@ -3,6 +3,7 @@ import { Footer } from '@components/Footer';
 import { MDXProvider, components } from '@components/MDXComponents';
 import { MobileMenuProvider } from '@components/MobileMenu';
 import { PrimitivesHeader } from '@components/PrimitivesHeader';
+import { PrimitivesMobileMenu } from '@components/PrimitivesMobileMenu';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { CaseStudyLogo, CaseStudyLogoVariant } from '@components/marketing/CaseStudyLogo';
 import { MarketingCaption } from '@components/marketing/MarketingCaption';
@@ -57,6 +58,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
       />
 
       <PrimitivesHeader />
+      <PrimitivesMobileMenu />
 
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Section size={{ initial: '2', md: '3' }}>

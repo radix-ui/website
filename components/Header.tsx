@@ -3,7 +3,7 @@ import { Flex, IconButton, Tooltip } from '@radix-ui/themes';
 import styles from './Header.module.css';
 import { BoxLink } from './BoxLink';
 import { ThemeToggle } from './ThemeToggle';
-import { Cross1Icon, HamburgerMenuIcon } from '@radix-ui/react-icons';
+import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useMobileMenuContext } from './MobileMenu';
@@ -122,7 +122,7 @@ export const Header = ({ children, ghost }: HeaderProps) => {
           >
             <ThemeToggle />
 
-            <Tooltip content="Menu">
+            <Tooltip content="Navigation">
               <IconButton
                 size="3"
                 variant="ghost"
@@ -131,11 +131,7 @@ export const Header = ({ children, ghost }: HeaderProps) => {
                 onClick={() => mobileMenu.setOpen((open) => !open)}
                 className={styles.MobileMenuButton}
               >
-                {mobileMenu.open ? (
-                  <Cross1Icon width="16" height="16" />
-                ) : (
-                  <HamburgerMenuIcon width="16" height="16" />
-                )}
+                <HamburgerMenuIcon width="16" height="16" />
               </IconButton>
             </Tooltip>
           </Flex>

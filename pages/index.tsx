@@ -1,5 +1,4 @@
-import { Box, Flex, ScrollArea, Theme, Text, Button, Section } from '@radix-ui/themes';
-import '@radix-ui/themes/dist/index.css';
+import { Box, Flex, Theme, Text, Button, Section } from '@radix-ui/themes';
 import * as React from 'react';
 import NextLink from 'next/link';
 import Head from 'next/head';
@@ -8,14 +7,13 @@ import { ExampleThemesDashboard } from '@components/ExampleThemesDashboard';
 import { MagicCurtain } from '@components/MagicCurtain';
 import { ExampleThemesEcommerce } from '@components/ExampleThemesEcommerce';
 import { ExampleThemesMusicApp } from '@components/ExampleThemesMusicApp';
-import { DocsNav } from '@components/DocsNav';
-import { themesRoutes } from '@lib/themesRoutes';
-import { MobileMenu, MobileMenuProvider } from '@components/MobileMenu';
+import { MobileMenuProvider } from '@components/MobileMenu';
 import { useTheme } from 'next-themes';
 import { SerifHeading } from '@components/SerifHeading';
 import { CodeBlock } from '@components/CodeBlock';
 import { SyntaxSchemeProvider } from '@components/Pre';
 import { ThemesHeroLayout } from '@components/ThemesHeroLayout';
+import { ThemesMobileMenu } from '@components/ThemesMobileMenu';
 
 export default function ThemesHome() {
   const { resolvedTheme } = useTheme();
@@ -34,17 +32,10 @@ export default function ThemesHome() {
         </style>
       </Head>
 
-      <MobileMenu>
-        <ThemesHeader />
-        <ScrollArea>
-          <Box pt="4" px="4" pb="9">
-            <DocsNav routes={themesRoutes} />
-          </Box>
-        </ScrollArea>
-      </MobileMenu>
+      <ThemesMobileMenu />
 
       <MagicCurtain.Root>
-        <MagicCurtain.Item data-animation-play-state="paused" defaultVisibility="visible-in-front">
+        <MagicCurtain.Item defaultVisibility="visible-in-front">
           <Theme accentScale="indigo" grayScale="slate">
             <Box height="0">
               <ThemesHeader ghost />
@@ -238,13 +229,7 @@ const MainContent = ({
 
         <Box mb="3">
           <SyntaxSchemeProvider scheme={codeBlockScheme}>
-            <Box mb="4">
-              <CodeBlock language="bash" value="npm install @radix-ui/themes" style={codeStyles} />
-            </Box>
-
-            <Box>
-              <CodeBlock language="jsx" value={codeExample} style={codeStyles} />
-            </Box>
+            <CodeBlock language="jsx" value={codeExample} style={codeStyles} />
           </SyntaxSchemeProvider>
         </Box>
       </Text>

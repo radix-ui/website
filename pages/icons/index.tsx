@@ -1,20 +1,35 @@
 import { IconsHeader } from '@components/IconsHeader';
 import { MobileMenu, MobileMenuProvider } from '@components/MobileMenu';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { IconsNav } from '@components/icons/IconsNav';
 import { IconsHero } from '@components/icons/IconsHero';
 import { IconsPanel } from '@components/icons/IconsPanel';
 import { iconsRoutes } from '@lib/iconsRoutes';
 import { Box, Container, ScrollArea } from '@radix-ui/themes';
 import { Menu } from '@components/icons/Menu';
+import { DocsNav } from '@components/DocsNav';
+import { ColorsHeader } from '@components/ColorsHeader';
 
 export default function Home() {
   return (
     <MobileMenuProvider>
       <MobileMenu>
-        <IconsHeader />
+        <ColorsHeader />
         <ScrollArea>
-          <IconsNav routes={iconsRoutes} />
+          <Box pt="4" px="4" pb="9">
+            <DocsNav
+              routes={[
+                {
+                  pages: [
+                    {
+                      title: 'Homepage',
+                      slug: 'icons',
+                    },
+                  ],
+                },
+                ...iconsRoutes,
+              ]}
+            />
+          </Box>
         </ScrollArea>
       </MobileMenu>
 

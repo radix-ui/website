@@ -85,7 +85,7 @@ function PrimitivesSearchRoot({
         id: 'radix-autocomplete',
         // Always highlight the first result
         defaultActiveItemId: 0,
-        placeholder: 'Search',
+        placeholder: 'Search docs',
         openOnFocus: false,
         debug: false,
         shouldPanelOpen: ({ state }) => Boolean(state.query),

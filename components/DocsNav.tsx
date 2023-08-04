@@ -1,16 +1,17 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Text, Heading, Box, Badge } from '@radix-ui/themes';
+import { Text, Heading, Box, Badge, Flex } from '@radix-ui/themes';
 import { classNames } from '@lib/classNames';
 import styles from './DocsNav.module.css';
 import { useCurrentPageSlug } from '@lib/useCurrentPageSlug';
 
 interface DocsNavProps {
   routes: {
-    label: string;
+    label?: string;
     pages: {
       title: string;
       slug: string;
+      icon?: React.ReactNode;
       preview?: boolean;
       deprecated?: boolean;
     }[];
@@ -22,13 +23,15 @@ export const DocsNav = ({ routes }: DocsNavProps) => {
 
   return (
     <Box>
-      {routes.map((section) => (
-        <Box key={section.label} mb="4">
-          <Box py="2" px="3">
-            <Heading as="h4" size={{ initial: '3', md: '2' }}>
-              {section.label}
-            </Heading>
-          </Box>
+      {routes.map((section, i) => (
+        <Box key={section.label ?? i} mb="4">
+          {section.label && (
+            <Box py="2" px="3">
+              <Heading as="h4" size={{ initial: '3', md: '2' }}>
+                {section.label}
+              </Heading>
+            </Box>
+          )}
 
           {section.pages.map((page) => (
             <DocsNavItem
@@ -36,7 +39,10 @@ export const DocsNav = ({ routes }: DocsNavProps) => {
               href={`/${page.slug}`}
               active={currentPageSlug === page.slug}
             >
-              <Text size={{ initial: '3', md: '2' }}>{page.title}</Text>
+              <Flex gap="2" align="center">
+                {page.icon}
+                <Text size={{ initial: '3', md: '2' }}>{page.title}</Text>
+              </Flex>
 
               {page.preview && (
                 <Badge ml="2" color="blue" radius="full">

@@ -1,6 +1,7 @@
 import { Footer } from '@components/Footer';
 import { MobileMenuProvider } from '@components/MobileMenu';
 import { PrimitivesHeader } from '@components/PrimitivesHeader';
+import { PrimitivesMobileMenu } from '@components/PrimitivesMobileMenu';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { CaseStudyLogo } from '@components/marketing/CaseStudyLogo';
 import { LogoLink } from '@components/marketing/LogoLink';
@@ -28,6 +29,7 @@ export default function CaseStudy() {
         image="default.png"
       />
 
+      <PrimitivesMobileMenu />
       <PrimitivesHeader />
 
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
