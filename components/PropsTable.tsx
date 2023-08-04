@@ -66,7 +66,9 @@ export function PropsTable({
                             (event.currentTarget as HTMLElement)?.focus();
                           }}
                         >
-                          {description}
+                          <Text as="div" size="2">
+                            {description}
+                          </Text>
                         </Popover.Content>
                       </Popover.Root>
                     )}

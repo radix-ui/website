@@ -1,7 +1,19 @@
 import React from 'react';
 import { PropsTable } from './PropsTable';
 import * as themes from '@radix-ui/themes';
-import { Code } from '@radix-ui/themes';
+import { Code, Link as DSLink } from '@radix-ui/themes';
+import NextLink from 'next/link';
+
+const Link = ({ href = '', ...props }) => {
+  if (href.startsWith('http')) {
+    return <DSLink {...props} href={href} target="_blank" rel="noopener" />;
+  }
+  return (
+    <NextLink href={href} passHref>
+      <DSLink {...props} />
+    </NextLink>
+  );
+};
 
 const asChildProp = {
   asChild: {
@@ -113,14 +125,14 @@ const commonDescriptions: CommonDescriptions = {
   color: (
     <>
       Use to override the default color inherited from the global theme. Read our{' '}
-      <a href="/themes/docs/guides/theme/configuration">theme guide</a> for more details.
+      <Link href="/themes/docs/guides/theme/configuration">theme guide</Link> for more details.
     </>
   ),
   highContrast: 'Use to render a high-contrast version of the component.',
   radius: (
     <>
       Overrides the default radius inherited from the global theme. Read our{' '}
-      <a href="/dosc/themes/guides/theme/configuration">theme guide</a> for more details.
+      <Link href="/dosc/themes/guides/theme/configuration">theme guide</Link> for more details.
     </>
   ),
   as: (
@@ -137,7 +149,8 @@ const commonDescriptions: CommonDescriptions = {
       behavior.
       <br />
       <br />
-      Read our <a href="/primitives/docs/guides/composition">Composition</a> guide for more details.
+      Read our <Link href="/primitives/docs/guides/composition">Composition</Link> guide for more
+      details.
     </>
   ),
   // shortcut: 'Optional shortcut command to associate with the item',
