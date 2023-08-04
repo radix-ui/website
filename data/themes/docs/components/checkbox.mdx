@@ -34,20 +34,17 @@ Use the `size` prop to control the size.
 
 Use the `variant` prop to control the visual style.
 
-```jsx live=true scroll=true
-<Flex gap="2">
-  <Flex direction="column" gap="2">
-    <Checkbox variant="surface" defaultChecked />
-    <Checkbox variant="classic" defaultChecked />
-    <Checkbox variant="soft" defaultChecked />
-  </Flex>
+```jsx live=true
+<Grid columns="2" gap="2" display="inline-grid">
+  <Checkbox variant="surface" defaultChecked />
+  <Checkbox variant="surface" />
 
-  <Flex direction="column" gap="2">
-    <Checkbox variant="surface" />
-    <Checkbox variant="classic" />
-    <Checkbox variant="soft" />
-  </Flex>
-</Flex>
+  <Checkbox variant="classic" defaultChecked />
+  <Checkbox variant="classic" />
+
+  <Checkbox variant="soft" defaultChecked />
+  <Checkbox variant="soft" />
+</Grid>
 ```
 
 ### Color
@@ -68,19 +65,16 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 Use the `highContrast` prop to add additional contrast.
 
 ```jsx live=true
-<Flex gap="2">
-  <Flex direction="column" gap="2">
-    <Checkbox variant="surface" defaultChecked />
-    <Checkbox variant="classic" defaultChecked />
-    <Checkbox variant="soft" defaultChecked />
-  </Flex>
+<Grid columns="2" gap="2" display="inline-grid">
+  <Checkbox variant="surface" defaultChecked />
+  <Checkbox variant="surface" defaultChecked highContrast />
 
-  <Flex direction="column" gap="2">
-    <Checkbox variant="surface" defaultChecked highContrast />
-    <Checkbox variant="classic" defaultChecked highContrast />
-    <Checkbox variant="soft" defaultChecked highContrast />
-  </Flex>
-</Flex>
+  <Checkbox variant="classic" defaultChecked />
+  <Checkbox variant="classic" defaultChecked highContrast />
+
+  <Checkbox variant="soft" defaultChecked />
+  <Checkbox variant="soft" defaultChecked highContrast />
+</Grid>
 ```
 
 ### Alignment

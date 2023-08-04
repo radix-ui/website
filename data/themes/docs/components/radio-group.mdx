@@ -1,6 +1,6 @@
 ---
 metaTitle: Radio Group
-metaDescription: Set of options where only one selection can be made.
+metaDescription: A set of interactive radio buttons where only one can be selected at a time.
 sourcePath: components/radio-group
 ---
 
@@ -41,7 +41,7 @@ Contains all the parts of a radio group.
 
 ### Item
 
-An item in the group that can be checked. An input will also render when used within a form to ensure events propagate correctly.
+An item in the group that can be checked.
 
 ## Examples
 
@@ -50,40 +50,43 @@ An item in the group that can be checked. An input will also render when used wi
 Use the `size` prop to control the size.
 
 ```jsx live=true
-<Flex gap="5" align="center">
+<Flex direction="column" gap="2">
   <RadioGroup.Root size="1" defaultValue="1">
-    <Flex gap="1" direction="column">
-      <label>
-        <Flex gap="2" align="center">
-          <RadioGroup.Item value="1" />
-          <Text>Default</Text>
-        </Flex>
-      </label>
-      <label>
-        <Flex gap="2" align="center">
-          <RadioGroup.Item value="2" />
-          <Text>Comfortable</Text>
-        </Flex>
-      </label>
-    </Flex>
+    <RadioGroup.Item value="1" />
   </RadioGroup.Root>
 
   <RadioGroup.Root size="2" defaultValue="1">
-    <Flex gap="2" direction="column">
-      <label>
-        <Flex gap="2" align="center">
-          <RadioGroup.Item value="1" />
-          <Text>Default</Text>
-        </Flex>
-      </label>
-      <label>
-        <Flex gap="2" align="center">
-          <RadioGroup.Item value="2" />
-          <Text>Comfortable</Text>
-        </Flex>
-      </label>
-    </Flex>
+    <RadioGroup.Item value="1" />
   </RadioGroup.Root>
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style.
+
+```jsx live=true
+<Flex direction="column" gap="2">
+  <Flex asChild gap="2">
+    <RadioGroup.Root variant="surface" defaultValue="1">
+      <RadioGroup.Item value="1" />
+      <RadioGroup.Item value="2" />
+    </RadioGroup.Root>
+  </Flex>
+
+  <Flex asChild gap="2">
+    <RadioGroup.Root variant="classic" defaultValue="1">
+      <RadioGroup.Item value="1" />
+      <RadioGroup.Item value="2" />
+    </RadioGroup.Root>
+  </Flex>
+
+  <Flex asChild gap="2">
+    <RadioGroup.Root variant="soft" defaultValue="1">
+      <RadioGroup.Item value="1" />
+      <RadioGroup.Item value="2" />
+    </RadioGroup.Root>
+  </Flex>
 </Flex>
 ```
 
@@ -92,41 +95,21 @@ Use the `size` prop to control the size.
 Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
 
 ```jsx live=true
-<Flex direction="column" gap="2">
-  <RadioGroup.Root color="crimson" defaultValue="1">
-    <label>
-      <Flex gap="2" align="center">
-        <RadioGroup.Item value="1" />
-        <Text>Crimson</Text>
-      </Flex>
-    </label>
-  </RadioGroup.Root>
-
+<Flex gap="2">
   <RadioGroup.Root color="indigo" defaultValue="1">
-    <label>
-      <Flex gap="2" align="center">
-        <RadioGroup.Item value="1" />
-        <Text>Indigo</Text>
-      </Flex>
-    </label>
+    <RadioGroup.Item value="1" />
   </RadioGroup.Root>
 
-  <RadioGroup.Root color="grass" defaultValue="1">
-    <label>
-      <Flex gap="2" align="center">
-        <RadioGroup.Item value="1" />
-        <Text>Grass</Text>
-      </Flex>
-    </label>
+  <RadioGroup.Root color="cyan" defaultValue="1">
+    <RadioGroup.Item value="1" />
   </RadioGroup.Root>
 
   <RadioGroup.Root color="orange" defaultValue="1">
-    <label>
-      <Flex gap="2" align="center">
-        <RadioGroup.Item value="1" />
-        <Text>Orange</Text>
-      </Flex>
-    </label>
+    <RadioGroup.Item value="1" />
+  </RadioGroup.Root>
+
+  <RadioGroup.Root color="crimson" defaultValue="1">
+    <RadioGroup.Item value="1" />
   </RadioGroup.Root>
 </Flex>
 ```
@@ -136,39 +119,35 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 Use the `highContrast` prop to add additional contrast.
 
 ```jsx live=true
-<Flex gap="5">
-  <RadioGroup.Root size="1" defaultValue="1">
-    <Flex gap="1" direction="column">
-      <label>
-        <Flex gap="2" align="center">
-          <RadioGroup.Item value="1" />
-          <Text>Default</Text>
-        </Flex>
-      </label>
-      <label>
-        <Flex gap="2" align="center">
-          <RadioGroup.Item value="2" />
-          <Text>Comfortable</Text>
-        </Flex>
-      </label>
-    </Flex>
-  </RadioGroup.Root>
+<Flex direction="column" gap="2">
+  <Flex gap="2">
+    <RadioGroup.Root variant="surface" defaultValue="1">
+      <RadioGroup.Item value="1" />
+    </RadioGroup.Root>
 
-  <RadioGroup.Root size="1" defaultValue="1" highContrast>
-    <Flex gap="1" direction="column">
-      <label>
-        <Flex gap="2" align="center">
-          <RadioGroup.Item value="1" />
-          <Text>Default</Text>
-        </Flex>
-      </label>
-      <label>
-        <Flex gap="2" align="center">
-          <RadioGroup.Item value="2" />
-          <Text>Comfortable</Text>
-        </Flex>
-      </label>
-    </Flex>
-  </RadioGroup.Root>
+    <RadioGroup.Root variant="surface" defaultValue="1" highContrast>
+      <RadioGroup.Item value="1" />
+    </RadioGroup.Root>
+  </Flex>
+
+  <Flex gap="2">
+    <RadioGroup.Root variant="classic" defaultValue="1">
+      <RadioGroup.Item value="1" />
+    </RadioGroup.Root>
+
+    <RadioGroup.Root variant="classic" defaultValue="1" highContrast>
+      <RadioGroup.Item value="1" />
+    </RadioGroup.Root>
+  </Flex>
+
+  <Flex gap="2">
+    <RadioGroup.Root variant="soft" defaultValue="1">
+      <RadioGroup.Item value="1" />
+    </RadioGroup.Root>
+
+    <RadioGroup.Root variant="soft" defaultValue="1" highContrast>
+      <RadioGroup.Item value="1" />
+    </RadioGroup.Root>
+  </Flex>
 </Flex>
 ```
