@@ -24,12 +24,16 @@ const ColorScaleBase = ({ steps }: ColorScaleBaseProps) => (
           justify="center"
           style={{
             height: 35,
-            backgroundColor: `var(--violet-${scale})`,
+            backgroundColor: `var(--accent-a${scale})`,
             filter: !showStep ? 'grayscale(1)' : undefined,
           }}
         >
           {showStep && (
-            <Text as="p" size="2" style={{ color: scale >= 9 ? 'white' : 'black' }}>
+            <Text
+              as="p"
+              size="2"
+              style={{ color: scale >= 9 ? 'var(--gray-1)' : 'var(--gray-12)' }}
+            >
               {scale}
             </Text>
           )}

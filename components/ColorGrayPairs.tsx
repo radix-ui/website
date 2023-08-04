@@ -32,6 +32,7 @@ export function ColorGrayPairs() {
           <Flex style={{ gap: 2 }}>
             {pairs.map((pair) => (
               <Flex
+                key={pair}
                 grow="1"
                 align="center"
                 justify="center"
