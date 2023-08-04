@@ -65,7 +65,7 @@ const itemCss = {
   // &:active for touch devices
   '&[data-highlighted], &:active': {
     outline: 0,
-    backgroundColor: 'var(--color-text)',
+    backgroundColor: 'var(--gray-12)',
     color: 'var(--color-background)',
   },
 };

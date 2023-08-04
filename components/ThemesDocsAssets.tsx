@@ -34,10 +34,10 @@ export function ThemesVariantsExample() {
           <Theme
             appearance="dark"
             radius="large"
-            applyBackgroundColor={false}
+            hasBackground={false}
             className="radix-themes-example"
             asChild
-            accentScale="teal"
+            accentColor="teal"
           >
             <Card size="4">
               <Flex align="center" justify="center" height="100%">
@@ -75,9 +75,9 @@ export function ThemesVariantsExample() {
           <Theme
             appearance="light"
             radius="medium"
-            applyBackgroundColor={false}
+            hasBackground={false}
             className="radix-themes-example"
-            accentScale="crimson"
+            accentColor="crimson"
           >
             <Card size="3">
               <Box height="4" mb="5">
@@ -203,11 +203,7 @@ export function ThemesScalingExample() {
             </Box>
 
             <Box py="4" asChild>
-              <Theme
-                applyBackgroundColor={false}
-                scaling={scaling}
-                style={{ flex: 1, maxWidth: 240 + 20 * i }}
-              >
+              <Theme scaling={scaling} style={{ flex: 1, maxWidth: 240 + 20 * i }}>
                 <Card variant="surface" aria-label={`${scaling} scaled UI example`}>
                   <Flex gap="3" align="center" aria-hidden>
                     <Avatar size="3" src={person.image} fallback={person?.name[0].toUpperCase()} />
@@ -251,11 +247,7 @@ export function ThemesRadiusExample() {
             </Box>
 
             <Box py="4" grow="1" asChild>
-              <Theme
-                applyBackgroundColor={false}
-                radius={radius}
-                style={{ minWidth: 370, maxWidth: 450 }}
-              >
+              <Theme radius={radius} style={{ minWidth: 370, maxWidth: 450 }}>
                 <Card variant="surface" size="2">
                   <Flex gap="3">
                     <Avatar
@@ -467,7 +459,7 @@ export function ThemesAccentSwatches() {
           'gray',
         ] as const).map((color, i) => (
           <Box grow="1" key={i}>
-            <Theme appearance="dark" accentScale={color} applyBackgroundColor={false} asChild>
+            <Theme appearance="dark" accentColor={color} hasBackground={false} asChild>
               <Flex
                 align="center"
                 justify="center"
@@ -493,7 +485,7 @@ export function ThemesBrightAccentSwatches() {
       <Grid columns={{ initial: '3', xs: '4', sm: '6' }} gap="2">
         {(['sky', 'mint', 'lime', 'yellow', 'amber'] as const).map((color, i) => (
           <Box grow="1" key={i}>
-            <Theme appearance="light" accentScale={color} applyBackgroundColor={false} asChild>
+            <Theme appearance="light" accentColor={color} hasBackground={false} asChild>
               <Flex
                 align="center"
                 justify="center"
@@ -519,7 +511,7 @@ export function ThemeGraySwatches() {
       <Grid columns={{ initial: '3', xs: '4', sm: '6' }} gap="2">
         {(['gray', 'mauve', 'slate', 'sage', 'olive', 'sand'] as const).map((color, i) => (
           <Box grow="1" key={i}>
-            <Theme grayScale={color} applyBackgroundColor={false} asChild>
+            <Theme grayColor={color} asChild>
               <Flex
                 align="center"
                 justify="center"
@@ -528,7 +520,7 @@ export function ThemeGraySwatches() {
                 px="2"
                 py="2"
               >
-                <Theme appearance="dark" applyBackgroundColor={false}>
+                <Theme appearance="dark" hasBackground={false}>
                   <Text as="div" size="1" weight="bold" style={{ color: 'white' }}>
                     {color.charAt(0).toUpperCase() + color.slice(1)}
                   </Text>
@@ -544,9 +536,10 @@ export function ThemeGraySwatches() {
 
 export function ThemesAnatomyExample() {
   return (
-    <Theme backgroundColor="gray" asChild className="radix-themes-example">
+    <Theme asChild className="radix-themes-example">
       <Flex
         style={{
+          backgroundColor: 'var(--gray-1)',
           border: '1px solid var(--gray-4)',
           borderRadius: 'var(--radius-4)',
         }}
@@ -793,13 +786,13 @@ export function ThemesDarkModeExample() {
     <Card>
       <Inset side="all">
         <Grid columns={{ initial: '1', sm: '2' }}>
-          <Theme appearance="light" backgroundColor="gray" asChild>
+          <Theme asChild appearance="light" style={{ backgroundColor: 'var(--gray-1)' }}>
             <Box p={{ initial: '4', sm: '5' }}>
               <AlbumCard />
             </Box>
           </Theme>
 
-          <Theme appearance="dark" backgroundColor="gray" asChild>
+          <Theme asChild appearance="dark" style={{ backgroundColor: 'var(--gray-1)' }}>
             <Box p="5">
               <AlbumCard />
             </Box>

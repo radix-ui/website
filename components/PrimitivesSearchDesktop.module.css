@@ -14,7 +14,7 @@
   border-radius: 100px;
   gap: var(--space-2);
   padding-left: var(--space-3);
-  padding-right: var(--space-2);
+  padding-right: var(--space-3);
   padding-top: var(--space-2);
   padding-bottom: var(--space-2);
   transition: background-color 120ms;
@@ -177,13 +177,10 @@
   margin-bottom: var(--space-3);
 }
 
-.PrimitivesSearchDesktopPanel :global(.rt-ScrollAreaViewport) {
-  max-height: calc(100vh - 2 * (var(--header-height) + var(--space-4)) - var(--space-8));
-}
-
 .PrimitivesSearchDesktopPanelInner {
   padding: var(--space-3);
   max-width: 580px;
+  max-height: calc(100vh - 2 * (var(--header-height) + var(--space-4)) - var(--space-8));
 }
 
 :global(.dark-theme) .PrimitivesSearchDesktopPanel {

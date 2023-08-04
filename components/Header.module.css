@@ -152,7 +152,7 @@
 .HeaderProductLink[data-state='active'] .HeaderProductLinkInner {
   font-weight: bold;
   letter-spacing: -0.01em;
-  background-color: var(--color-text);
+  background-color: var(--gray-12);
 }
 
 .HeaderProductLink[data-state='active']::before {

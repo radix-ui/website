@@ -88,7 +88,7 @@ export const HeroCodeBlock = ({
               value={makeCodeSandboxParams(frontmatter.name, sources, usedCssLib)}
             />
             <Tooltip content={`Open ${CSS_LIB_NAMES[usedCssLib]} demo in CodeSandbox`}>
-              <Theme appearance="dark" applyBackgroundColor={false}>
+              <Theme appearance="dark" hasBackground={false}>
                 <IconButton
                   className={styles.SandboxButton}
                   variant="soft"
@@ -144,7 +144,6 @@ export const HeroCodeBlock = ({
                       }}
                     >
                       <Select.Trigger
-                        highContrast
                         variant="soft"
                         color="gray"
                         mr="2"

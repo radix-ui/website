@@ -1127,7 +1127,7 @@ const MockDropdownItem = styled(Box, {
     },
     focused: {
       true: {
-        backgroundColor: 'var(--color-text)',
+        backgroundColor: 'var(--gray-12)',
         color: 'var(--color-background)',
       },
     },

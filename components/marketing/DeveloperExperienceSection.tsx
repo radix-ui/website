@@ -76,7 +76,7 @@ export const DeveloperExperienceSection = () => {
                   gridTemplateRows: '410px auto',
                 }}
               >
-                <Theme asChild appearance="dark" applyBackgroundColor={false}>
+                <Theme asChild appearance="dark" hasBackground={false}>
                   <CodeWindow>
                     <StyledCodeDemo
                       value={code.unstyled}
@@ -94,7 +94,7 @@ export const DeveloperExperienceSection = () => {
                   </Text>
                 </Box>
 
-                <Theme asChild appearance="dark" applyBackgroundColor={false}>
+                <Theme asChild appearance="dark" hasBackground={false}>
                   <CodeWindow>
                     <StyledCodeDemo
                       value={code.composable}
@@ -112,7 +112,7 @@ export const DeveloperExperienceSection = () => {
                   </Text>
                 </Box>
 
-                <Theme asChild appearance="dark" applyBackgroundColor={false}>
+                <Theme asChild appearance="dark" hasBackground={false}>
                   <CodeWindow>
                     <StyledCodeDemo
                       value={code.customizable}
@@ -130,7 +130,7 @@ export const DeveloperExperienceSection = () => {
                   </Text>
                 </Box>
 
-                <Theme asChild appearance="dark" applyBackgroundColor={false}>
+                <Theme asChild appearance="dark" hasBackground={false}>
                   <CodeWindow>
                     <StyledCodeDemo
                       value={code.consistent}
@@ -230,7 +230,7 @@ export const DeveloperExperienceSection = () => {
               '@bp2': { display: 'block' },
             }}
           >
-            <Theme asChild appearance="dark" applyBackgroundColor={false}>
+            <Theme asChild appearance="dark" hasBackground={false}>
               <CodeWindow withChrome style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
                 <StyledCodeDemo
                   language="jsx"

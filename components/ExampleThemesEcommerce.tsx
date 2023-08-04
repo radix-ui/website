@@ -198,7 +198,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               </Label>
 
               <Select.Root defaultValue="Pastel" size="2">
-                <Select.Trigger tabIndex={-1} variant="soft" highContrast />
+                <Select.Trigger tabIndex={-1} variant="soft" />
                 <Select.Content variant="soft" container={container} position="popper">
                   <Select.Item value="Pastel">Pastel</Select.Item>
                   <Select.Item value="Bright">Bright</Select.Item>
@@ -214,7 +214,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               </Label>
 
               <Select.Root defaultValue="8" size="2">
-                <Select.Trigger tabIndex={-1} variant="soft" highContrast />
+                <Select.Trigger tabIndex={-1} variant="soft" />
                 <Select.Content variant="soft" container={container} position="popper">
                   {Array.from({ length: 12 }, (_, i) => (
                     <Select.Item key={i} value={String(i * 0.5 + 5)}>
@@ -503,7 +503,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               </Label>
 
               <Select.Root defaultValue="Lighter" size="2">
-                <Select.Trigger tabIndex={-1} variant="soft" highContrast />
+                <Select.Trigger tabIndex={-1} variant="soft" />
                 <Select.Content variant="soft" container={container} position="popper">
                   <Select.Item value="Lighter">Lighter</Select.Item>
                   <Select.Item value="Darker">Darker</Select.Item>
@@ -519,7 +519,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               </Label>
 
               <Select.Root defaultValue="30" size="2">
-                <Select.Trigger tabIndex={-1} variant="soft" highContrast />
+                <Select.Trigger tabIndex={-1} variant="soft" />
                 <Select.Content variant="soft" container={container} position="popper">
                   {Array.from({ length: 17 }, (_, i) => (
                     <Select.Item key={i} value={String(i + 24)}>
@@ -1346,7 +1346,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
             </Box>
             <Flex direction="column" style={{ minWidth: 140 }}>
               <Select.Root defaultValue="All customers">
-                <Select.Trigger variant="soft" highContrast tabIndex={-1} />
+                <Select.Trigger variant="soft" tabIndex={-1} />
                 <Select.Content variant="soft" container={container} position="popper">
                   <Select.Item value="All customers">All customers</Select.Item>
                   <Select.Item value={new Date().getFullYear().toString()}>

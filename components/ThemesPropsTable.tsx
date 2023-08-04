@@ -99,9 +99,9 @@ const uniqueDescriptions: UniqueDescriptions = {
   theme: {
     appearance:
       'The color scheme of the theme (typcially referred to as light and dark mode). Invert will use the opposite scheme to that of its parent.',
-    accentScale: 'The primary accent color of the theme.',
-    grayScale: 'The gray scale of the theme.',
-    applyBackgroundColor: 'Whether to apply the themes background color to the rendered element.',
+    accentColor: 'The primary accent color of the theme.',
+    grayColor: 'The gray scale of the theme.',
+    hasBackground: 'Whether to apply the themes background color to the rendered element.',
   },
   tooltip: {
     content: 'The content associated with the tooltip',

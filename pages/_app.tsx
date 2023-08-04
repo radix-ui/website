@@ -10,7 +10,7 @@ import { useAnalytics } from '@lib/analytics';
 import { CssLibPreferenceProvider } from '@components/CssLibPreference';
 import { ThemesDocsPage } from '@components/ThemesDocsPage';
 import { SyntaxSchemeProvider } from '@components/Pre';
-import '@radix-ui/themes/dist/index.css';
+import '@radix-ui/themes/styles.css';
 import './themes-config.css';
 
 const globalStyles = globalCss({
@@ -67,7 +67,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.startsWith('/primitives/docs')) {
     return (
-      <Theme accentScale="blue" grayScale="slate" style={themeRootStyles}>
+      <Theme accentColor="blue" grayColor="slate" style={themeRootStyles}>
         <SyntaxSchemeProvider scheme="blue">
           <PrimitivesDocsPage>
             <Component {...pageProps} />
@@ -79,7 +79,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.startsWith('/primitives')) {
     return (
-      <Theme accentScale="blue" grayScale="slate" style={themeRootStyles}>
+      <Theme accentColor="blue" grayColor="slate" style={themeRootStyles}>
         <SyntaxSchemeProvider scheme="blue">
           <Component {...pageProps} />
         </SyntaxSchemeProvider>
@@ -89,7 +89,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.startsWith('/colors/docs')) {
     return (
-      <Theme accentScale="pink" style={themeRootStyles}>
+      <Theme accentColor="pink" style={themeRootStyles}>
         <SyntaxSchemeProvider scheme="pink">
           <ColorsDocsPage>
             <Component {...pageProps} />
@@ -101,7 +101,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.startsWith('/colors')) {
     return (
-      <Theme accentScale="pink" style={themeRootStyles}>
+      <Theme accentColor="pink" style={themeRootStyles}>
         <Component {...pageProps} />
       </Theme>
     );
@@ -109,7 +109,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.startsWith('/themes/docs')) {
     return (
-      <Theme accentScale="indigo" style={themeRootStyles}>
+      <Theme accentColor="indigo" style={themeRootStyles}>
         <SyntaxSchemeProvider scheme="indigo">
           <ThemesDocsPage>
             <Component {...pageProps} />
@@ -121,7 +121,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.startsWith('/themes')) {
     return (
-      <Theme accentScale="indigo" style={themeRootStyles}>
+      <Theme accentColor="indigo" style={themeRootStyles}>
         <Component {...pageProps} />
       </Theme>
     );
@@ -129,7 +129,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.startsWith('/icons')) {
     return (
-      <Theme accentScale="teal" grayScale="slate" style={themeRootStyles}>
+      <Theme accentColor="teal" grayColor="slate" style={themeRootStyles}>
         <SyntaxSchemeProvider scheme="teal">
           <Component {...pageProps} />
         </SyntaxSchemeProvider>
@@ -138,7 +138,7 @@ function Pages({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <Theme accentScale="indigo" style={themeRootStyles}>
+    <Theme accentColor="indigo" style={themeRootStyles}>
       <SyntaxSchemeProvider scheme="indigo">
         <Component {...pageProps} />
       </SyntaxSchemeProvider>

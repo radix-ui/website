@@ -7,7 +7,7 @@ export const PrimitivesHeroButton = styled('button', {
   boxSizing: 'border-box',
   userSelect: 'none',
   display: 'inline-flex',
-  color: 'var(--color-text)',
+  color: 'var(--gray-12)',
   fontSize: 'var(--font-size-1)',
   lineHeight: 1,
   gap: 3,

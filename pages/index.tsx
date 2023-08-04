@@ -36,7 +36,7 @@ export default function ThemesHome() {
 
       <MagicCurtain.Root>
         <MagicCurtain.Item defaultVisibility="visible-in-front">
-          <Theme accentScale="indigo" grayScale="slate">
+          <Theme hasBackground accentColor="indigo" grayColor="slate">
             <Box height="0">
               <ThemesHeader ghost />
             </Box>
@@ -54,7 +54,7 @@ export default function ThemesHome() {
                 <Theme
                   className="radix-themes-example"
                   panelBackground="solid"
-                  applyBackgroundColor={false}
+                  hasBackground={false}
                 >
                   <ExampleThemesDashboard align="start" />
                 </Theme>
@@ -64,7 +64,7 @@ export default function ThemesHome() {
         </MagicCurtain.Item>
 
         <MagicCurtain.Item>
-          <Theme accentScale="teal" grayScale="gray" appearance={inverted}>
+          <Theme hasBackground accentColor="teal" grayColor="gray" appearance={inverted}>
             <Box height="0">
               <ThemesHeader ghost />
             </Box>
@@ -82,8 +82,8 @@ export default function ThemesHome() {
                 <Theme
                   className="radix-themes-example"
                   panelBackground="solid"
-                  accentScale="gray"
-                  applyBackgroundColor={false}
+                  accentColor="gray"
+                  hasBackground={false}
                 >
                   <ExampleThemesEcommerce align="start" />
                 </Theme>
@@ -93,7 +93,7 @@ export default function ThemesHome() {
         </MagicCurtain.Item>
 
         <MagicCurtain.Item>
-          <Theme accentScale="red" grayScale="slate">
+          <Theme hasBackground accentColor="red" grayColor="slate">
             <Box height="0">
               <ThemesHeader ghost />
             </Box>
@@ -111,7 +111,7 @@ export default function ThemesHome() {
                 <Theme
                   className="radix-themes-example"
                   panelBackground="solid"
-                  applyBackgroundColor={false}
+                  hasBackground={false}
                 >
                   <ExampleThemesMusicApp align="start" />
                 </Theme>
@@ -121,7 +121,7 @@ export default function ThemesHome() {
         </MagicCurtain.Item>
 
         <MagicCurtain.Item>
-          <Theme accentScale="indigo" grayScale="slate" appearance={inverted}>
+          <Theme hasBackground accentColor="indigo" grayColor="slate" appearance={inverted}>
             <Box height="0">
               <ThemesHeader ghost />
             </Box>
@@ -139,7 +139,7 @@ export default function ThemesHome() {
                 <Theme
                   className="radix-themes-example"
                   panelBackground="solid"
-                  applyBackgroundColor={false}
+                  hasBackground={false}
                 >
                   <ExampleThemesDashboard align="start" />
                 </Theme>
@@ -149,7 +149,7 @@ export default function ThemesHome() {
         </MagicCurtain.Item>
 
         <MagicCurtain.Item>
-          <Theme accentScale="cyan" grayScale="gray">
+          <Theme hasBackground accentColor="cyan" grayColor="gray">
             <Box height="0">
               <ThemesHeader ghost />
             </Box>
@@ -167,9 +167,9 @@ export default function ThemesHome() {
                 <Theme
                   className="radix-themes-example"
                   panelBackground="solid"
-                  accentScale="gray"
-                  grayScale="gray"
-                  applyBackgroundColor={false}
+                  accentColor="gray"
+                  grayColor="gray"
+                  hasBackground={false}
                 >
                   <ExampleThemesEcommerce align="start" />
                 </Theme>
@@ -179,7 +179,7 @@ export default function ThemesHome() {
         </MagicCurtain.Item>
 
         <MagicCurtain.Item>
-          <Theme accentScale="red" grayScale="slate" appearance={inverted}>
+          <Theme hasBackground accentColor="red" grayColor="slate" appearance={inverted}>
             <Box height="0">
               <ThemesHeader ghost />
             </Box>
@@ -197,7 +197,7 @@ export default function ThemesHome() {
                 <Theme
                   className="radix-themes-example"
                   panelBackground="solid"
-                  applyBackgroundColor={false}
+                  hasBackground={false}
                 >
                   <ExampleThemesMusicApp align="start" />
                 </Theme>
@@ -304,7 +304,7 @@ const redBackgroundImageAccents = {
 } as React.CSSProperties;
 
 const codeExample = `
-import '@radix-ui/themes/dist/index.css';
+import '@radix-ui/themes/styles.css';
 import { Theme, Button } from '@radix-ui/themes'
 
 export default () => (

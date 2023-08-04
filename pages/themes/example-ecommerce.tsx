@@ -5,7 +5,7 @@ import * as React from 'react';
 export default function ExamplePage() {
   return (
     <Box asChild p="9">
-      <Theme accentScale="gray" grayScale="gray" className="radix-themes-example">
+      <Theme accentColor="gray" grayColor="gray" className="radix-themes-example">
         <ExampleThemesEcommerce />
       </Theme>
     </Box>

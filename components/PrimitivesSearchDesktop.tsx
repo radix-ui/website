@@ -46,7 +46,7 @@ export const PrimitivesSearchDesktop = () => {
           Search
           <Tooltip content="Press Slash key to search">
             <Flex ml="auto" my="-2" aria-hidden>
-              <Kbd>/</Kbd>
+              <Kbd size="2">/</Kbd>
             </Flex>
           </Tooltip>
         </button>

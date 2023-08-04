@@ -9,7 +9,7 @@
   white-space: pre;
   position: relative;
   background-color: var(--background);
-  color: var(--color-text);
+  color: var(--gray-12);
   box-shadow: inset 0 0 0 1px var(--border);
 
   --line-numbers: var(--gray-6);
@@ -78,7 +78,7 @@
 .Pre.indigo {
   --background: var(--accent-a2);
   --border: var(--gray-a5);
-  --text: var(--color-text);
+  --text: var(--gray-12);
 
   --syntax-accent: var(--indigo-11);
   --syntax-accent-subtle: var(--indigo-12);
@@ -94,7 +94,7 @@
 }
 
 .Pre :where(:global(.token.punctuation), :global(.token.plain-text)) {
-  color: var(--color-text);
+  color: var(--gray-12);
 }
 
 /* prettier-ignore */

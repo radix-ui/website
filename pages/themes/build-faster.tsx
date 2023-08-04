@@ -118,9 +118,8 @@ export default function ThemesHome() {
           <Theme
             panelBackground="solid"
             className="radix-themes-example"
-            accentScale="indigo"
-            grayScale="mauve"
-            applyBackgroundColor={false}
+            accentColor="indigo"
+            grayColor="mauve"
           >
             <Box height="0">
               <ThemesHeader />
@@ -151,11 +150,10 @@ export default function ThemesHome() {
           <Theme
             panelBackground="solid"
             className="radix-themes-example"
-            accentScale="cyan"
-            grayScale="gray"
-            textColor="auto"
+            accentColor="cyan"
+            grayColor="gray"
             appearance={inverted}
-            applyBackgroundColor={false}
+            hasBackground={false}
           >
             <Box height="0">
               <ThemesHeader />
@@ -176,12 +174,7 @@ export default function ThemesHome() {
                 </ThemesHero.Actions>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <Theme
-                  panelBackground="solid"
-                  accentScale="gray"
-                  applyBackgroundColor={false}
-                  className="radix-themes-example"
-                >
+                <Theme panelBackground="solid" accentColor="gray" className="radix-themes-example">
                   <ExampleThemesEcommerce />
                 </Theme>
               </ThemesHero.Showcase>
@@ -193,10 +186,8 @@ export default function ThemesHome() {
           <Theme
             panelBackground="solid"
             className="radix-themes-example"
-            accentScale="red"
-            grayScale="slate"
-            textColor="auto"
-            applyBackgroundColor={false}
+            accentColor="red"
+            grayColor="slate"
           >
             <Box height="0">
               <ThemesHeader />
@@ -227,10 +218,10 @@ export default function ThemesHome() {
           <Theme
             panelBackground="solid"
             className="radix-themes-example"
-            accentScale="indigo"
-            grayScale="mauve"
+            accentColor="indigo"
+            grayColor="mauve"
             appearance={inverted}
-            applyBackgroundColor={false}
+            hasBackground={false}
           >
             <Box height="0">
               <ThemesHeader />
@@ -261,10 +252,8 @@ export default function ThemesHome() {
           <Theme
             panelBackground="solid"
             className="radix-themes-example"
-            accentScale="cyan"
-            grayScale="gray"
-            textColor="auto"
-            applyBackgroundColor={false}
+            accentColor="cyan"
+            grayColor="gray"
           >
             <Box height="0">
               <ThemesHeader />
@@ -285,12 +274,7 @@ export default function ThemesHome() {
                 </ThemesHero.Actions>
               </ThemesHero.Tagline>
               <ThemesHero.Showcase>
-                <Theme
-                  panelBackground="solid"
-                  accentScale="gray"
-                  applyBackgroundColor={false}
-                  className="radix-themes-example"
-                >
+                <Theme panelBackground="solid" accentColor="gray" className="radix-themes-example">
                   <ExampleThemesEcommerce />
                 </Theme>
               </ThemesHero.Showcase>
@@ -302,11 +286,10 @@ export default function ThemesHome() {
           <Theme
             panelBackground="solid"
             className="radix-themes-example"
-            accentScale="red"
-            grayScale="slate"
-            textColor="auto"
+            accentColor="red"
+            grayColor="slate"
             appearance={inverted}
-            applyBackgroundColor={false}
+            hasBackground={false}
           >
             <Box height="0">
               <ThemesHeader />
