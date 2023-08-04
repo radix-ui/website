@@ -8,7 +8,6 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useMobileMenuContext } from './MobileMenu';
 import { classNames } from '@lib/classNames';
-import Head from 'next/head';
 
 export interface HeaderProps {
   children?: React.ReactNode;
@@ -45,43 +44,53 @@ export const Header = ({ children, ghost }: HeaderProps) => {
   return (
     <div
       data-scroll-state={scrollState}
+      data-mobile-menu-open={mobileMenu.open}
       className={classNames(styles.HeaderRoot, ghost ? styles.ghost : '')}
     >
       <div className={styles.HeaderInner}>
-        <Flex align="center" position="absolute" top="0" bottom="0" left="0" pl="4">
-          <BoxLink href="/">
-            <RadixLogo />
-          </BoxLink>
+        <Flex
+          display={{ xs: 'none' }}
+          align="center"
+          position="absolute"
+          top="0"
+          bottom="0"
+          left="0"
+          pl="4"
+        >
+          <BoxLink href="/">{mobileMenu.open ? <RadixLogoIcon /> : <RadixLogo />}</BoxLink>
         </Flex>
 
         <Flex
           display={{ initial: 'none', xs: 'flex' }}
           align="center"
-          justify="center"
           position="absolute"
           top="0"
           bottom="0"
-          style={{ width: 320, left: 'calc(50% - 160px)' }}
+          left="0"
+          pl="4"
         >
+          <BoxLink href="/">
+            <RadixLogo />
+          </BoxLink>
+        </Flex>
+
+        <div className={styles.HeaderProductLinksContainer}>
           <HeaderProductLink
             href="/"
             active={router.pathname === '/' || router.pathname.startsWith('/themes')}
           >
             Themes
           </HeaderProductLink>
-
           <HeaderProductLink href="/primitives" active={router.pathname.startsWith('/primitives')}>
             Primitives
           </HeaderProductLink>
-
           <HeaderProductLink href="/icons" active={router.pathname.startsWith('/icons')}>
             Icons
           </HeaderProductLink>
-
           <HeaderProductLink href="/colors" active={router.pathname.startsWith('/colors')}>
             Colors
           </HeaderProductLink>
-        </Flex>
+        </div>
 
         <Flex
           display={{ initial: 'none', md: 'flex' }}
@@ -107,7 +116,9 @@ export const Header = ({ children, ghost }: HeaderProps) => {
           right="0"
           pr="4"
         >
-          <ThemeToggle />
+          <div className={styles.HeaderThemeToggleContainer}>
+            <ThemeToggle />
+          </div>
 
           <Tooltip content="Navigation">
             <IconButton
@@ -155,6 +166,20 @@ const RadixLogo = () => (
       clipRule="evenodd"
       d="M24.9132 20V14.0168H28.7986L32.4513 20H35.7006L31.6894 13.5686C33.5045 12.986 35.0955 11.507 35.0955 9.01961C35.0955 5.7479 32.7994 4 28.9571 4H22V20H24.9132ZM24.9132 6.35294V11.6863H28.821C31.0395 11.6863 32.1599 10.7675 32.1599 9.01961C32.1599 7.27171 30.9395 6.35294 28.621 6.35294H24.9132Z"
     />
+    <path d="M7 23C3.13401 23 0 19.6422 0 15.5C0 11.3578 3.13401 8 7 8V23Z" />
+    <path d="M7 0H0V7H7V0Z" />
+    <path d="M11.5 7C13.433 7 15 5.433 15 3.5C15 1.567 13.433 0 11.5 0C9.56704 0 8 1.567 8 3.5C8 5.433 9.56704 7 11.5 7Z" />
+  </svg>
+);
+
+const RadixLogoIcon = () => (
+  <svg
+    width="16"
+    height="24"
+    viewBox="0 0 16 24"
+    fill="currentcolor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path d="M7 23C3.13401 23 0 19.6422 0 15.5C0 11.3578 3.13401 8 7 8V23Z" />
     <path d="M7 0H0V7H7V0Z" />
     <path d="M11.5 7C13.433 7 15 5.433 15 3.5C15 1.567 13.433 0 11.5 0C9.56704 0 8 1.567 8 3.5C8 5.433 9.56704 7 11.5 7Z" />

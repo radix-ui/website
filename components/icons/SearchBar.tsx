@@ -35,7 +35,6 @@ export const SearchBar = ({ value, onValueChange }: SearchBarProps) => {
           value={value}
           className={styles.SearchBarInput}
           onChange={(event) => onValueChange(event.target.value)}
-          autoFocus
         />
       </Flex>
 
