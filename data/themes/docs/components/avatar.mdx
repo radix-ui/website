@@ -27,7 +27,7 @@ This component inherits props from the [Radix Avatar](/primitives/docs/component
 Use the `size` prop to control the size.
 
 ```jsx live=true
-<Flex direction="column" gap="2">
+<Flex align="center" gap="2">
   <Avatar
     size="7"
     src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
@@ -40,6 +40,12 @@ Use the `size` prop to control the size.
   />
   <Avatar
     size="3"
+    src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
+    fallback="S"
+  />
+
+  <Avatar
+    size="1"
     src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
     fallback="S"
   />

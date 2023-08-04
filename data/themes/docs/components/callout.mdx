@@ -33,6 +33,41 @@ Renders the callout text. This component is based on the `p` element.
 
 ## Examples
 
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Flex direction="column" gap="3" align="start">
+  <Callout.Root size="3">
+    <Callout.Icon>
+      <InfoCircledIcon />
+    </Callout.Icon>
+    <Callout.Text>
+      You will need admin privileges to install and access this application.
+    </Callout.Text>
+  </Callout.Root>
+
+  <Callout.Root size="2">
+    <Callout.Icon>
+      <InfoCircledIcon />
+    </Callout.Icon>
+    <Callout.Text>
+      You will need admin privileges to install and access this application.
+    </Callout.Text>
+  </Callout.Root>
+
+  <Callout.Root size="1">
+    <Callout.Icon>
+      <InfoCircledIcon />
+    </Callout.Icon>
+    <Callout.Text>
+      You will need admin privileges to install and access this application.
+    </Callout.Text>
+  </Callout.Root>
+</Flex>
+```
+
 ### Variant
 
 Use the `variant` prop to control the visual style.
