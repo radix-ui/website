@@ -1,5 +1,5 @@
-import { Box, Card, Flex, Grid, Heading, Text, keyframes, styled } from '@modulz/design-system';
-import { Container, Section } from '@radix-ui/themes';
+import { Box, Card, Flex, Grid, keyframes, styled } from '@modulz/design-system';
+import { Container, Section, Heading, Text } from '@radix-ui/themes';
 import {
   CaretDownIcon,
   CaretLeftIcon,
@@ -419,7 +419,7 @@ export const AccessibilitySection = () => {
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }} position="relative">
         <Box css={{ mb: '$5' }}>
           <MarketingCaption mb="1">Supports assistive technology</MarketingCaption>
-          <Heading as="h2" size="3">
+          <Heading as="h2" size="7">
             Accessibility out of the box
           </Heading>
         </Box>
@@ -531,7 +531,7 @@ export const AccessibilitySection = () => {
                   gap="1"
                   css={{ color: '$slate11', px: '$3', position: 'relative' }}
                 >
-                  <Text variant="gray" size="2">
+                  <Text color="gray" size="2">
                     Keyboard input
                   </Text>
                   <KeyboardIcon />
@@ -574,7 +574,7 @@ export const AccessibilitySection = () => {
             {currentSequence === 'screenReader' && (
               <Grid css={{ py: '$3', bc: '$$subpanel' }} role="presentation">
                 <Flex align="center" gap="1" css={{ color: '$slate11', px: '$3' }}>
-                  <Text variant="gray" size="2">
+                  <Text color="gray" size="2">
                     Screen reader
                   </Text>
                   <AccessibilityIcon />
@@ -584,11 +584,23 @@ export const AccessibilitySection = () => {
                   justify="between"
                   css={{ pt: '$3', px: '$3', minHeight: 180 }}
                 >
-                  <MockScreenReader>
+                  <Text
+                    size="7"
+                    weight="medium"
+                    style={{
+                      lineHeight: 1.2,
+                      color: 'transparent',
+                      WebkitBackgroundClip: 'text',
+                      userSelect: 'none',
+                      filter: 'saturate(0.5)',
+                      backgroundImage:
+                        'linear-gradient(to bottom right, var(--blue-11), var(--gray-12))',
+                    }}
+                  >
                     <ScreenReaderOutput
                       dropdownState={animations[currentSequence][keyframe]?.dropdown}
                     />
-                  </MockScreenReader>
+                  </Text>
                   <SpeakerIcon />
                 </Flex>
               </Grid>
@@ -596,7 +608,7 @@ export const AccessibilitySection = () => {
 
             <Grid css={{ py: '$3', bc: '$$subpanel' }} role="presentation">
               <Flex align="center" gap="1" css={{ color: '$slate11', px: '$3' }}>
-                <Text variant="gray" size="2">
+                <Text color="gray" size="2">
                   Radix component
                 </Text>
                 <CodeIcon />
@@ -619,10 +631,10 @@ export const AccessibilitySection = () => {
               <Box css={{ mb: '$3' }}>
                 <CheckCircledIcon width="30" height="30" />
               </Box>
-              <Heading as="h3" css={{ mb: '$2' }}>
+              <Heading as="h3" size="3" mb="1">
                 WAI-ARIA compliant
               </Heading>
-              <Text css={{ lineHeight: 1.5 }} as="p">
+              <Text size="3" as="p">
                 Radix Primitives follow the WAI-ARIA guidelines, implementing correct semantics and
                 behaviors for our components.
               </Text>
@@ -634,10 +646,10 @@ export const AccessibilitySection = () => {
               <Box css={{ mb: '$3' }}>
                 <KeyboardIcon width="30" height="30" />
               </Box>
-              <Heading as="h3" css={{ mb: '$2' }}>
+              <Heading as="h3" size="3" mb="1">
                 Keyboard navigation
               </Heading>
-              <Text css={{ lineHeight: 1.5 }} as="p">
+              <Text size="3" as="p">
                 Primitives provide full keyboard support for components where users expect to use a
                 keyboard or other input devices.
               </Text>
@@ -649,10 +661,10 @@ export const AccessibilitySection = () => {
               <Box css={{ mb: '$3' }}>
                 <InputIcon width="30" height="30" />
               </Box>
-              <Heading as="h3" css={{ mb: '$2' }}>
+              <Heading as="h3" size="3" mb="1">
                 Focus management
               </Heading>
-              <Text css={{ lineHeight: 1.5 }} as="p">
+              <Text size="3" as="p">
                 Out of the box, Primitives provide sensible focus management defaults, which can be
                 further customized in your code.
               </Text>
@@ -664,10 +676,10 @@ export const AccessibilitySection = () => {
               <Box css={{ mb: '$3' }}>
                 <EyeClosedIcon width="30" height="30" />
               </Box>
-              <Heading as="h3" css={{ mb: '$2' }}>
+              <Heading as="h3" size="3" mb="1">
                 Screen reader tested
               </Heading>
-              <Text css={{ lineHeight: 1.5 }} as="p">
+              <Text size="3" as="p">
                 We test Primitives with common assistive technologies, looking out for practical
                 issues that people may experience.
               </Text>
@@ -683,35 +695,45 @@ const ScreenReaderOutput = ({ dropdownState }: { dropdownState: MockDropdownStat
   if (dropdownState === 'closed') {
     return (
       <span>
-        Navigation, menu <span style={{ whiteSpace: 'nowrap' }}>pop-up</span>, button
+        Navigation,
+        <br />
+        menu <span style={{ whiteSpace: 'nowrap' }}>pop-up</span>, button
       </span>
     );
   }
   if (dropdownState === 'item1') {
     return (
       <span>
-        Show Minimap, ticked, <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
+        Show Minimap,
+        <br />
+        ticked, <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
       </span>
     );
   }
   if (dropdownState === 'item2') {
     return (
       <span>
-        Go to Symbol, <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
+        Go to Symbol,
+        <br />
+        <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
       </span>
     );
   }
   if (dropdownState === 'item3') {
     return (
       <span>
-        Go to Definition, <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
+        Go to Definition,
+        <br />
+        <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
       </span>
     );
   }
   if (dropdownState === 'item4') {
     return (
       <span>
-        Go to References, <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
+        Go to References,
+        <br />
+        <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
       </span>
     );
   }
@@ -813,24 +835,6 @@ const MockRtlDropdown = ({ state }: { state?: MockDropdownState }) => {
         </MockDropdownContent>
       </Box>
     </Box>
-  );
-};
-
-const MockScreenReader = ({ css, ...props }: React.ComponentProps<typeof Heading>) => {
-  return (
-    <Heading
-      size="3"
-      as="span"
-      css={{
-        color: 'transparent',
-        WebkitBackgroundClip: 'text',
-        userSelect: 'none',
-        filter: 'saturate(0.5)',
-        backgroundImage: 'linear-gradient(to bottom right, var(--blue-11), var(--gray-12))',
-        ...css,
-      }}
-      {...props}
-    />
   );
 };
 

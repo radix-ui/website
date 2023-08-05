@@ -1,5 +1,5 @@
-import { Avatar, Box, Card, Flex, Grid, Heading, Link, Text, styled } from '@modulz/design-system';
-import { Section, Container } from '@radix-ui/themes';
+import { Avatar, Box, Card, Flex, Grid, Link, Text, styled } from '@modulz/design-system';
+import { Section, Container, Heading } from '@radix-ui/themes';
 import { Root as AccessibleIcon } from '@radix-ui/react-accessible-icon';
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
@@ -13,7 +13,7 @@ export const CaseStudiesSection = () => {
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Box css={{ mb: '$5' }}>
           <MarketingCaption mb="1">Case studies</MarketingCaption>
-          <Heading as="h2" size="3" css={{ maxWidth: 540 }}>
+          <Heading as="h2" size="7" style={{ maxWidth: 500 }}>
             World-class teams use Radix Primitives to power their products
           </Heading>
         </Box>

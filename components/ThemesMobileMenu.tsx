@@ -17,6 +17,10 @@ export const ThemesMobileMenu = () => (
                   title: 'Homepage',
                   slug: '',
                 },
+                {
+                  title: 'Components',
+                  slug: 'themes/components',
+                },
               ],
             },
             ...themesRoutes,

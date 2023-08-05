@@ -292,7 +292,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     variant="soft"
                     defaultValue={[slider.value]}
                     orientation="vertical"
-                    style={{ height: 160 }}
+                    style={{ height: 128 }}
                   />
                   <Text size="1">{slider.frequency}</Text>
                 </Flex>

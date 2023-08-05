@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Grid, Text, styled, Flex, Heading, Paragraph, Card } from '@modulz/design-system';
-import { Section } from '@radix-ui/themes';
+import { Box, Grid, Text, styled, Flex, Paragraph, Card } from '@modulz/design-system';
+import { Section, Heading } from '@radix-ui/themes';
 import { MarketingCaption } from './MarketingCaption';
 import { CodeDemo } from './CodeDemo';
 import { Container, Theme } from '@radix-ui/themes';
@@ -34,7 +34,7 @@ export const DeveloperExperienceSection = () => {
         >
           <Box css={{ '@bp2': { maxWidth: 420 } }}>
             <MarketingCaption mb="1">Developer experience to love</MarketingCaption>
-            <Heading as="h2" size="3" css={{ mb: '$4' }}>
+            <Heading as="h2" size="7" mb="4">
               Develop with an open, thought‑out API
             </Heading>
 

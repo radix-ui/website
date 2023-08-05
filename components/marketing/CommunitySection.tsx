@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, Grid, Text, Heading, Card } from '@modulz/design-system';
+import { Box, Grid, Card } from '@modulz/design-system';
 import { MarketingCaption } from './MarketingCaption';
-import { Section, Container } from '@radix-ui/themes';
+import { Section, Container, Heading, Text } from '@radix-ui/themes';
 
 export const CommunitySection = () => {
   return (
@@ -9,7 +9,7 @@ export const CommunitySection = () => {
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Box css={{ mb: '$5' }}>
           <MarketingCaption mb="1">An active and friendly community 👋</MarketingCaption>
-          <Heading as="h2" size="3" css={{ mb: '$4' }}>
+          <Heading as="h2" size="7" mb="4">
             Join our fast-growing community
           </Heading>
         </Box>
@@ -37,10 +37,10 @@ export const CommunitySection = () => {
                   />
                 </svg>
               </Box>
-              <Heading as="h3" css={{ mb: '$2' }}>
+              <Heading as="h3" size="3" mb="1">
                 Twitter
               </Heading>
-              <Text css={{ lineHeight: 1.5 }}>
+              <Text size="3" as="p">
                 For announcements, blog posts, and general Radix tips.
               </Text>
             </Box>
@@ -69,10 +69,10 @@ export const CommunitySection = () => {
                   />
                 </svg>
               </Box>
-              <Heading as="h3" css={{ mb: '$2' }}>
+              <Heading as="h3" size="3" mb="1">
                 Discord
               </Heading>
-              <Text css={{ lineHeight: 1.5 }}>
+              <Text size="3" as="p">
                 To get involved in the community, ask questions, and share tips.
               </Text>
             </Box>
@@ -96,10 +96,10 @@ export const CommunitySection = () => {
                   />
                 </svg>
               </Box>
-              <Heading as="h3" css={{ mb: '$2' }}>
+              <Heading as="h3" size="3" mb="1">
                 GitHub
               </Heading>
-              <Text css={{ lineHeight: 1.5 }}>
+              <Text size="3" as="p">
                 To file issues, request features, and contribute, check out our GitHub.
               </Text>
             </Box>

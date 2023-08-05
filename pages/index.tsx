@@ -14,6 +14,7 @@ import { CodeBlock } from '@components/CodeBlock';
 import { SyntaxSchemeProvider } from '@components/Pre';
 import { ThemesHeroLayout } from '@components/ThemesHeroLayout';
 import { ThemesMobileMenu } from '@components/ThemesMobileMenu';
+import { GridIcon } from '@radix-ui/react-icons';
 
 export default function ThemesHome() {
   const { resolvedTheme } = useTheme();
@@ -218,13 +219,16 @@ const MainContent = ({
   <Box>
     <Section size={{ initial: '2', md: '3', lg: '2' }}>
       <SerifHeading mb="5">
-        A beautiful component library for building better and faster
+        {/* A beautiful component library for building better and faster */}
+        Start building
+        <br />
+        your app now
       </SerifHeading>
 
       <Text size={{ initial: '4', xs: '5' }}>
-        <Text as="p" mb="5">
-          A set of ready-to-use UI components with principles—optimized for faster development,
-          easier maintenance, and accessibility.
+        <Text as="p" mb="5" style={{ maxWidth: 500 }}>
+          Get going with Radix Themes, a component library built with principles—optimized for fast
+          development, easy maintenance, and accessibility.
         </Text>
 
         <Box mb="3">
@@ -234,7 +238,7 @@ const MainContent = ({
         </Box>
       </Text>
 
-      <Text as="p" size="3" mb="6">
+      <Text as="p" size="3" mb="6" color="gray">
         Just import and go—no configuration required.
       </Text>
 
@@ -256,9 +260,14 @@ const MainContent = ({
             </a>
           </Button>
         </NextLink>
-        <Button size={{ initial: '3', xs: '4' }} variant="soft" highContrast>
-          Explore components
-        </Button>
+        <NextLink href="/themes/components" passHref>
+          <Button asChild size={{ initial: '3', xs: '4' }} variant="soft" highContrast>
+            <a>
+              <GridIcon width="18" height="18" style={{ marginTop: 1 }} />
+              View components
+            </a>
+          </Button>
+        </NextLink>
       </Flex>
     </Section>
   </Box>
@@ -270,7 +279,7 @@ const codeStyles = {
   lineHeight: 'var(--line-height-3)',
   '--border': 'var(--gray-a5)',
   '--background': 'var(--color-panel-solid)',
-  maxWidth: 560,
+  maxWidth: 500,
 };
 
 const indigoBackgroundImageAccents = {

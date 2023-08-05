@@ -259,9 +259,11 @@ export const PrimitivesHero = () => {
     <Section size={{ initial: '2', md: '3' }}>
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Box mb="6">
-          <Box mb="5" style={{ maxWidth: 520 }}>
-            <SerifHeading mb="3">Core building blocks for your design system</SerifHeading>
-            <Text size="5" as="p" mb="6" color="gray">
+          <Box mb="5">
+            <SerifHeading mb="3" style={{ maxWidth: 560 }}>
+              Core building blocks for your design system
+            </SerifHeading>
+            <Text size="5" as="p" mb="6" color="gray" style={{ maxWidth: 520 }}>
               Unstyled, accessible, open source React primitives for high-quality web apps and
               design systems.
             </Text>

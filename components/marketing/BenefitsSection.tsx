@@ -1,6 +1,6 @@
-import { Box, Grid, Heading, Paragraph, Text } from '@modulz/design-system';
+import { Box, Grid, Paragraph, Text } from '@modulz/design-system';
 import { MarketingCaption } from './MarketingCaption';
-import { Section, Container } from '@radix-ui/themes';
+import { Section, Container, Heading } from '@radix-ui/themes';
 
 export const BenefitsSection = () => {
   return (
@@ -14,7 +14,7 @@ export const BenefitsSection = () => {
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Box css={{ mb: '$7' }}>
           <MarketingCaption mb="1">Why Radix Primitives</MarketingCaption>
-          <Heading as="h2" size="3">
+          <Heading as="h2" size="7">
             Spend less time on
             <br />
             undifferentiated work

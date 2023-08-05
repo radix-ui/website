@@ -1,7 +1,7 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Box, Grid, Text, Heading, Paragraph } from '@modulz/design-system';
-import { Button, Container, Section } from '@radix-ui/themes';
+import { Box, Grid, Text, Paragraph } from '@modulz/design-system';
+import { Button, Container, Heading, Section } from '@radix-ui/themes';
 import { MarketingCaption } from './MarketingCaption';
 
 export const AdoptionSection = () => {
@@ -10,7 +10,7 @@ export const AdoptionSection = () => {
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Box css={{ mb: '$7' }}>
           <MarketingCaption mb="1">Transition to Radix Primitives</MarketingCaption>
-          <Heading as="h2" size="3" css={{ mb: '$5' }}>
+          <Heading as="h2" size="7" mb="5">
             Adoption made easy
           </Heading>
           <NextLink href="/primitives/docs" passHref>
