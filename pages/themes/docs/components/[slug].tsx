@@ -1,5 +1,6 @@
 import React from 'react';
 import { getMDXComponent } from 'mdx-bundler/client';
+import NextLink from 'next/link';
 import { Box, Flex, Link, Text, Heading } from '@radix-ui/themes';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { MDXProvider, components } from '@components/MDXComponents';
@@ -65,6 +66,12 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
               </Box>
             </Link>
           </Flex>
+
+          {hasExamples(frontmatter.slug) && (
+            <NextLink passHref href={`/themes/components#${frontmatter.slug}`}>
+              <Link size="3">View more examples</Link>
+            </NextLink>
+          )}
         </Flex>
       </Box>
 
@@ -75,6 +82,25 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
       <QuickNav key={frontmatter.slug} />
     </>
   );
+}
+
+function hasExamples(slug: Frontmatter['slug']) {
+  if (
+    [
+      'box',
+      'flex',
+      'grid',
+      'container',
+      'section',
+      'accessible-icon',
+      'portal',
+      'slot',
+      'theme',
+      'visually-hidden',
+    ].includes(slug)
+  )
+    return false;
+  return true;
 }
 
 export async function getStaticPaths() {
