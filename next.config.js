@@ -72,6 +72,16 @@ module.exports = withPlugins([withTM, withOptimizedImages, withVideos], {
         destination: '/primitives/docs/overview/introduction',
         permanent: false,
       },
+      {
+        source: '/themes',
+        destination: '/',
+        permanent: false,
+      },
+      {
+        source: '/themes/docs',
+        destination: '/themes/docs/overview/getting-started',
+        permanent: false,
+      },
     ];
   },
 
