@@ -25,7 +25,7 @@ const asChildProp = {
 
 const definitions = {
   avatar: themes.avatarPropDefs,
-  button: { ...asChildProp, ...themes.buttonPropsDefs },
+  button: { ...asChildProp, ...themes.buttonPropDefs },
   checkbox: themes.checkboxPropDefs,
   iconButton: { ...asChildProp, ...themes.iconButtonPropDefs },
   radioGroup: themes.radioGroupPropDefs,

@@ -306,7 +306,7 @@ export const PrimitivesHero = () => {
                 '--margin-left-override': 0,
 
                 // Move the responsive margin here
-                paddingLeft: 'max(var(--margin-left), calc(50% - var(--container-3) / 2))',
+                paddingLeft: 'max(var(--margin-left), calc(50% - var(--container-4) / 2))',
 
                 // hide scrollbar
                 MsOverflowStyle: 'none',

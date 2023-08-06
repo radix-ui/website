@@ -1,6 +1,6 @@
 import { Box, Grid, Paragraph, Text } from '@modulz/design-system';
 import { MarketingCaption } from './MarketingCaption';
-import { Section, Container, Heading } from '@radix-ui/themes';
+import { Section, Container, Heading, Em } from '@radix-ui/themes';
 
 export const BenefitsSection = () => {
   return (
@@ -31,10 +31,9 @@ export const BenefitsSection = () => {
               Save time. Ship faster.
             </Text>
             <Paragraph css={{ mb: '$5' }}>
-              It takes a <em style={{ fontFamily: 'Georgia, serif' }}>lot</em> of time to develop
-              and maintain robust UI components, and it's mostly undifferentiated work. Building on
-              top of Radix components will save you time and money, so you can ship a better product
-              faster.
+              It takes <Em>a lot</Em> of time to develop and maintain robust UI components, and it's
+              mostly undifferentiated work. Building on top of Radix components will save you time
+              and money, so you can ship a better product faster.
             </Paragraph>
           </Box>
 

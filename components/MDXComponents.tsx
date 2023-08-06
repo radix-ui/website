@@ -214,7 +214,7 @@ const LinkHeading = ({
   id: string;
   children: React.ReactNode;
 } & React.ComponentProps<typeof Link>) => (
-  <Link asChild weight="bold" highContrast color="gray" {...props}>
+  <Link asChild weight="bold" highContrast color="gray" underline="hover" {...props}>
     <a id={id} href={`#${id}`} className={classNames(className, styles.LinkHeading)}>
       {children}
 

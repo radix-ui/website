@@ -18,7 +18,7 @@
 @media (min-width: 520px) {
   .IconsHeroLines {
     top: calc(var(--header-height) + 30px);
-    left: max(420px, calc(50% - var(--container-3) / 2 + 360px));
+    left: max(420px, calc(50% - var(--container-4) / 2 + 360px));
     font-size: calc(var(--line-height-9) * 2 - 7px);
   }
 }
