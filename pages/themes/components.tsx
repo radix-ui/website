@@ -181,7 +181,7 @@ import {
   MagnifyingGlassIcon,
   StarIcon,
 } from '@radix-ui/react-icons';
-import { getPeopleForColor } from './people';
+import { getPeopleForColor } from '@lib/people';
 import styles from './components.module.css';
 import { MobileMenuProvider, MobileMenu } from '@components/MobileMenu';
 import { ThemesHeader } from '@components/ThemesHeader';
