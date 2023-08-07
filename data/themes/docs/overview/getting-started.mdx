@@ -11,7 +11,7 @@ metaDescription: Install Radix Themes and start building your project in minutes
 
 ## Installation
 
-Getting up and running is quick and easy, just follow these simple steps.
+Getting up and running is quick and easy.
 
 ### 1. Install Radix Themes
 
@@ -66,7 +66,7 @@ export default function () {
 
 ### 4. Start building
 
-You are now ready to use themed components in your app.
+You are now ready to use Radix Themes components.
 
 ```jsx
 import { Flex, Text, Button } from '@radix-ui/themes';
@@ -87,7 +87,7 @@ Configuration is managed and applied via the [Theme](/themes/docs/components/the
 
 ### Basic configuration
 
-Pass [configuration props](/themes/docs/components/theme) to `Theme` to customize the appearance.
+Pass [configuration](/themes/docs/components/theme) to the `Theme` to customize appearance.
 
 ```jsx line=1
 <Theme
@@ -102,15 +102,11 @@ Pass [configuration props](/themes/docs/components/theme) to `Theme` to customiz
 
 ### Using the theme panel
 
-Previewing configuration and finding the perfect style for your application is much easier when you can visualise the changes, this is made simple by using the `ThemePanel`.
+`ThemePanel` is a drop in component that allows you to preview the theme configuration in real time.
 
-```jsx
-<div>This is a live example of the theme panel.</div>
-```
+Visit the [component playground](/themes/components) to see it in action.
 
-Simply open the panel and adjust the settings, then copy and paste the configuration.
-
-Adding the panel to your own app is easy, import it from the package and drop it into your `Theme`:
+To add it to your app, import it from the package and drop it inside your root `Theme`.
 
 ```jsx line=7
 import { Theme, ThemePanel } from '@radix-ui/themes';
@@ -119,7 +115,7 @@ export default function () {
   return (
     <Theme>
       <MyApp />
-      <ThemePanel />
+      <__ThemePanel__ />
     </Theme>
   );
 }
@@ -127,6 +123,46 @@ export default function () {
 
 ### Take it further
 
-This is just the start, get the most out of Radix Themes by exploring core concepts and features.
+Get the most out of Radix Themes by exploring more concepts and features.
 
-<ThemePagesLinks />
+{
+
+  <Grid columns={{ initial: '1', xs: '2' }} my="6" gap="4">
+      <ThemesLinkCard
+        title="Theme overview"
+        desc="Anatomy of a theme and how to create the perfect style for your app."
+        href="/themes/docs/theme/overview"
+      />
+
+      <ThemesLinkCard
+        title="Visual style"
+        desc="Learn how variants, radii and shadows influence your apps visual style."
+        href="/themes/docs/theme/dark-mode"
+      />
+
+      <ThemesLinkCard
+        title="Color"
+        desc="Understand the color system and its application in your theme."
+        href="/themes/docs/theme/dark-mode"
+      />
+
+      <ThemesLinkCard
+        title="Dark mode"
+        desc="Integrate a great looking dark mode into your app using appearances."
+        href="/themes/docs/theme/dark-mode"
+      />
+
+      <ThemesLinkCard
+        title="Typography"
+        desc="Add custom typefaces and fine tune typographic details."
+        href="/themes/docs/theme/typography"
+      />
+
+      <ThemesLinkCard
+        title="Layout"
+        desc="Leverage the built-in responsive design utilities and prop syntax."
+        href="/themes/docs/theme/breakpoints"
+      />
+    </Grid>
+
+}
