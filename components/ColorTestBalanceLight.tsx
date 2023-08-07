@@ -45,7 +45,7 @@ export function ColorTestBalanceLight() {
       >
         <Box></Box>
         {steps.map((step) => (
-          <Flex pb="2" justify="center">
+          <Flex key={step} pb="2" justify="center">
             <Text color="gray" size="2">
               {step}
             </Text>
