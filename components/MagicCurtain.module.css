@@ -34,14 +34,18 @@
 .MagicCurtainItem[data-visibility='visible-in-front'] {
   position: relative;
   z-index: 1;
-  animation-name: magic-curtain;
-  animation-duration: var(--animation-duration);
-  animation-delay: calc(0.5s + var(--animation-duration));
-  animation-timing-function: ease-in-out;
 }
 
-.MagicCurtainItem[data-visibility='visible-in-front'][data-animation-direction='reverse'] {
-  animation-name: magic-curtain-reverse;
+@media (prefers-reduced-motion: no-preference) {
+  .MagicCurtainItem[data-visibility='visible-in-front'] {
+    animation-name: magic-curtain;
+    animation-duration: var(--animation-duration);
+    animation-delay: calc(0.5s + var(--animation-duration));
+    animation-timing-function: ease-in-out;
+  }
+  .MagicCurtainItem[data-visibility='visible-in-front'][data-animation-direction='reverse'] {
+    animation-name: magic-curtain-reverse;
+  }
 }
 
 .MagicCurtainItem[data-animation-play-state='paused'] {
