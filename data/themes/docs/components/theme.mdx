@@ -6,7 +6,7 @@ sourcePath: theme
 
 ## API Reference
 
-For an overview of theming see the [Theme configuration guide](/themes/docs/guides/theme/configuration).
+For an overview of theming see the [overview page](/themes/docs/theme/overview).
 
 <ThemesPropsTable name="theme" />
 
@@ -17,67 +17,116 @@ For an overview of theming see the [Theme configuration guide](/themes/docs/guid
 Wrap a component tree in the `Theme` component to provide or modify configuration for all children.
 
 ```jsx live=true
-<Theme __accentColor__="grass" __radius__="full">
-  <Card size="2" style={{ maxWidth: 450 }}>
-    <Flex direction="column" gap="4">
-      <Text weight="bold">Feedback</Text>
-      <TextArea placeholder="Your feedback" />
-      <Button>Submit</Button>
+<Card size="2" style={{ maxWidth: 400 }}>
+  <Flex direction="column" gap="3">
+    <Grid gap="1">
+      <Text as="div" weight="bold" size="2" mb="1">
+        Feedback
+      </Text>
+      <TextArea placeholder="Write your feedback…" />
+    </Grid>
+    <Flex asChild justify="between">
+      <label>
+        <Text color="gray" size="2">
+          Attach screenshot?
+        </Text>
+        <Switch size="1" defaultChecked />
+      </label>
     </Flex>
-  </Card>
-</Theme>
-```
-
-### Component instance overrides
-
-Override configuration per component by passing any supported prop directly to that component.
-
-```jsx live=true line=6
-<Theme accentColor="crimson" radius="full">
-  <Card size="2" style={{ maxWidth: 450 }}>
-    <Flex direction="column" gap="4">
-      <Text weight="bold">Feedback</Text>
-      <TextArea placeholder="Your feedback" />
-      <Button __color__="plum" __radius__="none">
-        Submit
-      </Button>
-    </Flex>
-  </Card>
-</Theme>
+    <Grid columns="2" gap="2">
+      <Button variant="surface">Back</Button>
+      <Button>Send</Button>
+    </Grid>
+  </Flex>
+</Card>
 ```
 
 ### Nesting
 
-Nest another theme to modify configuration for a specific subtree.
+Nest another theme to modify configuration for a specific subtree. Configuration is inherited from the parent.
 
-```jsx live=true line=15
-<Theme accentColor="crimson" radius="full">
-  <Card size="2" style={{ maxWidth: 450 }}>
-    <Box>
-      <Text as="div" color="gray" mb="3">
-        Parent theme
-      </Text>
-
-      <Flex direction="column" gap="4">
-        <Text weight="bold">Feedback</Text>
-        <TextArea placeholder="Your feedback" />
-        <Button>Submit</Button>
-      </Flex>
-    </Box>
-
-    <Theme __accentColor__="plum" __radius__="none">
-      <Card size="2" mt="6">
-        <Text as="div" color="gray" mb="3">
-          Child theme
+```jsx live=true scroll=true line=16,32
+<Card size="2">
+  <Flex gap="6">
+    <Flex direction="column" gap="3">
+      <Heading as="h5" size="2">
+        Global
+      </Heading>
+      <Grid gap="1">
+        <Text as="div" weight="bold" size="2" mb="1">
+          Feedback
         </Text>
+        <TextArea placeholder="Write your feedback…" />
+      </Grid>
+      <Button>Send</Button>
+    </Flex>
 
-        <Flex direction="column" gap="4">
-          <Text weight="bold">Feedback</Text>
-          <TextArea placeholder="Your feedback" />
-          <Button>Submit</Button>
+    <Theme __accentColor__="cyan" __radius__="full">
+      <Card size="2">
+        <Flex gap="6">
+          <Flex direction="column" gap="3">
+            <Heading as="h5" size="2">
+              Child
+            </Heading>
+            <Grid gap="1">
+              <Text as="div" weight="bold" size="2" mb="1">
+                Feedback
+              </Text>
+              <TextArea placeholder="Write your feedback…" />
+            </Grid>
+            <Button>Send</Button>
+          </Flex>
+
+          <Theme __accentColor__="orange">
+            <Card size="2">
+              <Flex direction="column" gap="3">
+                <Heading as="h5" size="2">
+                  Grandchild
+                </Heading>
+                <Grid gap="1">
+                  <Text as="div" weight="bold" size="2" mb="1">
+                    Feedback
+                  </Text>
+                  <TextArea placeholder="Write your feedback…" />
+                </Grid>
+                <Button>Send</Button>
+              </Flex>
+            </Card>
+          </Theme>
         </Flex>
       </Card>
     </Theme>
-  </Card>
-</Theme>
+  </Flex>
+</Card>
+```
+
+### Component overrides
+
+Override configuration per component by passing any supported prop directly to that component.
+
+```jsx live=true line=19
+<Card size="2" style={{ maxWidth: 400 }}>
+  <Flex direction="column" gap="3">
+    <Grid gap="1">
+      <Text as="div" weight="bold" size="2" mb="1">
+        Feedback
+      </Text>
+      <TextArea placeholder="Write your feedback…" />
+    </Grid>
+    <Flex asChild justify="between">
+      <label>
+        <Text color="gray" size="2">
+          Attach screenshot?
+        </Text>
+        <Switch size="1" defaultChecked />
+      </label>
+    </Flex>
+    <Grid columns="2" gap="2">
+      <Button variant="surface">Back</Button>
+      <Button __color__="gray" __radius__="full" highContrast>
+        Send
+      </Button>
+    </Grid>
+  </Flex>
+</Card>
 ```
