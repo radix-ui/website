@@ -30,9 +30,9 @@ export const ThemeToggle = () => {
           onClick={() => {
             // Set 'system' theme if the next theme matches the system theme
             const resolvedTheme = theme === 'system' ? systemTheme : theme;
-            const nextTheme = resolvedTheme === 'dark' ? 'light' : 'dark';
-            const nextThemeMatchesSystem = nextTheme === systemTheme;
-            setTheme(nextThemeMatchesSystem ? 'system' : nextTheme);
+            const newTheme = resolvedTheme === 'dark' ? 'light' : 'dark';
+            const newThemeMatchesSystem = newTheme === systemTheme;
+            setTheme(newThemeMatchesSystem ? 'system' : newTheme);
           }}
         >
           <SunIcon

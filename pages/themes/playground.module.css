@@ -1,0 +1,67 @@
+.PlaygroundRoot :global(.rt-Heading):where([id]) {
+  scroll-margin-top: calc(var(--header-height) + var(--space-6));
+}
+
+.PlaygroundTable {
+  border-collapse: collapse;
+}
+
+.PlaygroundTable:not(.rt-TableRootTable) {
+  margin-bottom: calc(var(--space-4) * -1);
+}
+
+.PlaygroundTable th:not(:global(.rt-TableColumnHeaderCell), :global(.rt-TableRowHeaderCell)) {
+  font-weight: var(--font-weight-regular);
+}
+
+.PlaygroundTable tr:not(:global(.rt-TableRow)) {
+  vertical-align: middle;
+}
+
+.PlaygroundTable th:not(:global(.rt-TableColumnHeaderCell), :global(.rt-TableRowHeaderCell)),
+.PlaygroundTable td:not(:global(.rt-TableCell)) {
+  padding: 0;
+  padding-right: var(--space-4);
+  padding-bottom: var(--space-4);
+  text-align: center;
+}
+
+.PlaygroundTable tbody tr td:first-child:not(:global(.rt-TableCell)) {
+  padding-left: 0;
+  padding-right: var(--space-4);
+  min-width: 64px;
+  text-align: left;
+}
+
+.PlaygroundTable thead th:not(:global(.rt-TableColumnHeaderCell), :global(.rt-TableRowHeaderCell)),
+.PlaygroundTable tbody tr td:first-child:not(:global(.rt-TableCell)) {
+  font-size: var(--font-size-1);
+  letter-spacing: var(--letter-spacing-1);
+  line-height: var(--line-height-1);
+  color: var(--gray-11);
+}
+
+.PlaygroundTable :global(.rt-TextFieldRoot) {
+  width: 180px;
+}
+.PlaygroundTable :global(.rt-TextArea) {
+  width: 180px;
+}
+.PlaygroundTable :global(.rt-CalloutRoot) {
+  white-space: nowrap;
+}
+.PlaygroundTable :global(.rt-Badge) {
+  vertical-align: top;
+}
+.PlaygroundTable :global(.rt-SliderRoot) {
+  width: 160px;
+}
+
+.PlaygroundDocsLink {
+  opacity: 0;
+  transition: opacity 50ms linear;
+}
+
+.PlaygroundSection:hover .ViewDocsLink {
+  opacity: 1;
+}

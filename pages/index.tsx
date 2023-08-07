@@ -15,6 +15,7 @@ import { SyntaxSchemeProvider } from '@components/Pre';
 import { ThemesHeroLayout } from '@components/ThemesHeroLayout';
 import { ThemesMobileMenu } from '@components/ThemesMobileMenu';
 import { GridIcon } from '@radix-ui/react-icons';
+import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 
 export default function ThemesHome() {
   const { resolvedTheme } = useTheme();
@@ -22,6 +23,12 @@ export default function ThemesHome() {
 
   return (
     <MobileMenuProvider>
+      <TitleAndMetaTags
+        title="Themes – Radix UI"
+        description="An open source component library for building modern React apps that helps you build faster and makes it easy to create beautiful, accessible interfaces that are a breeze to maintain."
+        image="default.png"
+      />
+
       <Head>
         <meta name="theme-color" content="#FDFCFD" />
         <style>
@@ -238,7 +245,7 @@ const MainContent = ({
             </a>
           </Button>
         </NextLink>
-        <NextLink href="/themes/components" passHref>
+        <NextLink href="/themes/playground" passHref>
           <Button asChild size={{ initial: '3', xs: '4' }} variant="soft" highContrast>
             <a>
               <GridIcon width="18" height="18" style={{ marginTop: 1 }} />

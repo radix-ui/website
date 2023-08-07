@@ -18,8 +18,8 @@ export const ThemesHeader = (props: HeaderProps) => {
       <Link
         size="2"
         color="gray"
-        href="/themes/components"
-        highContrast={router.pathname.includes('/themes/components')}
+        href="/themes/playground"
+        highContrast={router.pathname.includes('/themes/playground')}
       >
         Playground
       </Link>

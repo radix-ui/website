@@ -67,9 +67,9 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
             </Link>
           </Flex>
 
-          {hasExamples(frontmatter.slug) && (
+          {hasPlaygroundExample(frontmatter.slug) && (
             <NextLink passHref href={`/themes/components#${frontmatter.slug}`}>
-              <Link size="3">View more examples</Link>
+              <Link size="3">View in Playground</Link>
             </NextLink>
           )}
         </Flex>
@@ -84,7 +84,7 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
   );
 }
 
-function hasExamples(slug: Frontmatter['slug']) {
+function hasPlaygroundExample(slug: Frontmatter['slug']) {
   if (
     [
       'box',
