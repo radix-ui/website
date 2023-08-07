@@ -104,7 +104,7 @@ Nest another theme to modify configuration for a specific subtree. Configuration
 
 Override configuration per component by passing any supported prop directly to that component.
 
-```jsx live=true line=19
+```jsx live=true line=14,19
 <Card size="2" style={{ maxWidth: 400 }}>
   <Flex direction="column" gap="3">
     <Grid gap="1">
@@ -118,12 +118,12 @@ Override configuration per component by passing any supported prop directly to t
         <Text color="gray" size="2">
           Attach screenshot?
         </Text>
-        <Switch size="1" defaultChecked />
+        <Switch size="1" __color__="orange" __radius__="full" defaultChecked />
       </label>
     </Flex>
     <Grid columns="2" gap="2">
       <Button variant="surface">Back</Button>
-      <Button __color__="gray" __radius__="full" highContrast>
+      <Button __color__="cyan" __radius__="full">
         Send
       </Button>
     </Grid>
