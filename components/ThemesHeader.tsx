@@ -6,15 +6,7 @@ export const ThemesHeader = (props: HeaderProps) => {
   const router = useRouter();
 
   return (
-    <Header {...props}>
-      <Link
-        size="2"
-        color="gray"
-        href="/themes/components"
-        highContrast={router.pathname.includes('/themes/components')}
-      >
-        Components
-      </Link>
+    <Header gitHubLink="https://github.com/radix-ui/themes" {...props}>
       <Link
         size="2"
         color="gray"
@@ -22,6 +14,14 @@ export const ThemesHeader = (props: HeaderProps) => {
         highContrast={router.pathname.includes('/themes/docs')}
       >
         Documentation
+      </Link>
+      <Link
+        size="2"
+        color="gray"
+        href="/themes/components"
+        highContrast={router.pathname.includes('/themes/components')}
+      >
+        All components
       </Link>
     </Header>
   );

@@ -6,7 +6,7 @@ export const ColorsHeader = (props: HeaderProps) => {
   const router = useRouter();
 
   return (
-    <Header {...props}>
+    <Header gitHubLink="https://github.com/radix-ui/colors" {...props}>
       <Link
         size="2"
         color="gray"

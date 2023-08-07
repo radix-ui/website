@@ -6,7 +6,7 @@ export const PrimitivesHeader = (props: HeaderProps) => {
   const router = useRouter();
 
   return (
-    <Header {...props}>
+    <Header gitHubLink="https://github.com/radix-ui/primitives" {...props}>
       <Link
         size="2"
         color="gray"

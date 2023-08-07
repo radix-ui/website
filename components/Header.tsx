@@ -3,7 +3,7 @@ import { AccessibleIcon, Flex, IconButton, Tooltip } from '@radix-ui/themes';
 import styles from './Header.module.css';
 import { BoxLink } from './BoxLink';
 import { ThemeToggle } from './ThemeToggle';
-import { HamburgerMenuIcon } from '@radix-ui/react-icons';
+import { GitHubLogoIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useMobileMenuContext } from './MobileMenu';
@@ -12,12 +12,13 @@ import { RadixLogo, RadixLogoIcon } from './RadixLogo';
 
 export interface HeaderProps {
   children?: React.ReactNode;
+  gitHubLink?: string;
   ghost?: boolean;
 }
 
 type ScrollState = 'at-top' | 'scrolling-up' | 'scrolling-down';
 
-export const Header = ({ children, ghost }: HeaderProps) => {
+export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
   const mobileMenu = useMobileMenuContext();
   const router = useRouter();
 
@@ -114,6 +115,17 @@ export const Header = ({ children, ghost }: HeaderProps) => {
           pr="4"
         >
           {children}
+
+          {gitHubLink && (
+            <Tooltip content="View GitHub ">
+              <IconButton asChild size="3" variant="ghost" color="gray">
+                <a href={gitHubLink} target="_blank">
+                  <GitHubLogoIcon width="16" height="16" />
+                </a>
+              </IconButton>
+            </Tooltip>
+          )}
+
           <ThemeToggle />
         </Flex>
 
