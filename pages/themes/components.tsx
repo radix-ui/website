@@ -188,8 +188,11 @@ import styles from './components.module.css';
 import { MobileMenuProvider, MobileMenu } from '@components/MobileMenu';
 import { ThemesHeader } from '@components/ThemesHeader';
 import { ThemesPanelBackgroundImage } from '@components/ThemesPanelBackgroundImage';
+import { useTheme } from 'next-themes';
 
 export default function ComponentsPage() {
+  const { systemTheme, setTheme } = useTheme();
+
   const {
     onAccentColorChange,
     onGrayColorChange,
@@ -224,6 +227,10 @@ export default function ComponentsPage() {
 
         <Box display={{ initial: 'none', lg: 'block' }}>
           <ThemePanel
+            onAppearanceChange={(newTheme) => {
+              const newThemeMatchesSystem = newTheme === systemTheme;
+              setTheme(newThemeMatchesSystem ? 'system' : (newTheme as 'light' | 'dark'));
+            }}
             style={{
               top: 'var(--header-height)',
               maxHeight: 'calc(100vh - var(--header-height) - var(--space-4) * 2)',
