@@ -225,8 +225,8 @@ const MainContent = ({
 
       <Text size={{ initial: '4', xs: '5' }}>
         <Text as="p" mb="5" style={{ maxWidth: 500 }} color="gray">
-          An open source component library optimized for fast development, easy maintenance, and
-          accessibility.
+          An open source component library optimized for fast development, easy maintenance,
+          and accessibility.
         </Text>
 
         <Box mb="3">
