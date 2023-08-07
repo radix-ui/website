@@ -216,23 +216,6 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--sand-12)' }} />
 
               <Box display={{ initial: 'none', sm: 'block' }}>
-                <Text>Orange</Text>
-              </Box>
-
-              <Box style={{ height: 35, backgroundColor: 'var(--orange-1)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--orange-2)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--orange-3)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--orange-4)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--orange-5)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--orange-6)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--orange-7)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--orange-8)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--orange-9)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--orange-10)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--orange-11)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--orange-12)' }} />
-
-              <Box display={{ initial: 'none', sm: 'block' }}>
                 <Text>Tomato</Text>
               </Box>
 
@@ -454,21 +437,21 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--grass-12)' }} />
 
               <Box display={{ initial: 'none', sm: 'block' }}>
-                <Text>Brown</Text>
+                <Text>Bronze</Text>
               </Box>
 
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-1)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-2)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-3)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-4)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-5)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-6)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-7)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-8)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-9)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-10)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-11)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-12)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--bronze-1)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--bronze-2)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--bronze-3)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--bronze-4)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--bronze-5)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--bronze-6)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--bronze-7)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--bronze-8)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--bronze-9)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--bronze-10)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--bronze-11)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--bronze-12)' }} />
 
               <Box display={{ initial: 'none', sm: 'block' }}>
                 <Text>Gold</Text>
@@ -488,21 +471,38 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--gold-12)' }} />
 
               <Box display={{ initial: 'none', sm: 'block' }}>
-                <Text>Bronze</Text>
+                <Text>Brown</Text>
               </Box>
 
-              <Box style={{ height: 35, backgroundColor: 'var(--bronze-1)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--bronze-2)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--bronze-3)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--bronze-4)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--bronze-5)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--bronze-6)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--bronze-7)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--bronze-8)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--bronze-9)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--bronze-10)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--bronze-11)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--bronze-12)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-1)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-2)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-3)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-4)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-5)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-6)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-7)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-8)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-9)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-10)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-11)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-12)' }} />
+
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Orange</Text>
+              </Box>
+
+              <Box style={{ height: 35, backgroundColor: 'var(--orange-1)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--orange-2)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--orange-3)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--orange-4)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--orange-5)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--orange-6)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--orange-7)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--orange-8)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--orange-9)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--orange-10)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--orange-11)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--orange-12)' }} />
 
               <Box display={{ initial: 'none', sm: 'block' }}>
                 <Text>Amber</Text>
