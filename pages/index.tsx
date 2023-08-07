@@ -204,7 +204,7 @@ const MainContent = ({
       </SerifHeading>
 
       <Text size={{ initial: '4', xs: '5' }}>
-        <Text as="p" mb="5" style={{ maxWidth: 500 }}>
+        <Text as="p" mb="5" style={{ maxWidth: 500 }} color="gray">
           Get going with Radix Themes, a component library built with principles—optimized for fast
           development, easy maintenance, and accessibility.
         </Text>
@@ -216,7 +216,7 @@ const MainContent = ({
         </Box>
       </Text>
 
-      <Text as="p" size="3" mb="6" color="gray">
+      <Text as="p" size="3" mb="6">
         Just import and go—no configuration required.
       </Text>
 
@@ -242,7 +242,7 @@ const MainContent = ({
           <Button asChild size={{ initial: '3', xs: '4' }} variant="soft" highContrast>
             <a>
               <GridIcon width="18" height="18" style={{ marginTop: 1 }} />
-              View components
+              Explore components
             </a>
           </Button>
         </NextLink>
