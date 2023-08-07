@@ -17,7 +17,7 @@
     "@algolia/autocomplete-preset-algolia": "^1.7.1",
     "@mdx-js/loader": "1.6.22",
     "@modulz/design-system": "1.0.0",
-    "@radix-ui/colors": "2.0.0-alpha.5",
+    "@radix-ui/colors": "2.0.1",
     "@radix-ui/react-accessible-icon": "1.0.3",
     "@radix-ui/react-accordion": "1.1.2",
     "@radix-ui/react-alert-dialog": "1.0.4",
