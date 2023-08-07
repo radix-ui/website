@@ -730,8 +730,8 @@ export function ThemesDarkModeExample() {
 
 function AlbumCard() {
   return (
-    <Card size={{ initial: '3', sm: '4' }}>
-      <Box py="4">
+    <Card size={{ initial: '3', sm: '3' }}>
+      <Box py="5">
         <Flex mb="4" justify="center" position="relative">
           <img
             width="100"
@@ -744,18 +744,42 @@ function AlbumCard() {
           />
         </Flex>
 
-        <Box style={{ marginTop: 'var(--space-6)' }}>
-          <Heading align="center" as="h3" size="4" style={{ marginBottom: 'var(--space-2)' }}>
+        <Box mt="5">
+          <Theme asChild accentColor="crimson">
+            <Flex mb="4" align="center" justify="center">
+              {[1, 2, 3, 4].map((i) => (
+                <svg
+                  key={i}
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 30 30"
+                  width="20"
+                  height="20"
+                  fill="currentcolor"
+                  color="var(--accent-9)"
+                >
+                  <path d="M15.765,2.434l2.875,8.512l8.983,0.104c0.773,0.009,1.093,0.994,0.473,1.455l-7.207,5.364l2.677,8.576 c0.23,0.738-0.607,1.346-1.238,0.899L15,22.147l-7.329,5.196c-0.63,0.447-1.468-0.162-1.238-0.899l2.677-8.576l-7.207-5.364 c-0.62-0.461-0.3-1.446,0.473-1.455l8.983-0.104l2.875-8.512C14.482,1.701,15.518,1.701,15.765,2.434z" />
+                </svg>
+              ))}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 60 60"
+                width="20"
+                height="20"
+                fill="currentcolor"
+                color="var(--accent-9)"
+              >
+                <path d="M29.887 3.926A2 2 0 0 0 28.078 5.3l-5.41 16.535-17.395.035a2 2 0 0 0-1.175 3.613l14.054 10.254-5.343 16.559a2 2 0 0 0 3.074 2.234l14.094-10.199 14.097 10.2a2 2 0 0 0 3.075-2.235l-5.344-16.559 14.054-10.254a2 2 0 0 0-1.175-3.613l-17.399-.035L31.88 5.301a2 2 0 0 0-1.992-1.375Zm.09 8.433 3.957 12.098a2 2 0 0 0 1.898 1.379l12.727.023-10.282 7.5a2 2 0 0 0-.722 2.23l3.91 12.118-10.317-7.465a2 2 0 0 0-2.343 0l-10.309 7.461 3.906-12.113a2 2 0 0 0-.722-2.23l-10.281-7.5 12.726-.024a2.001 2.001 0 0 0 1.895-1.379l3.957-12.098Z" />
+                <path d="M29.887 3.926A2 2 0 0 0 28.078 5.3l-5.41 16.535-17.395.035a2 2 0 0 0-1.175 3.613l14.054 10.254-5.343 16.559a2 2 0 0 0 3.074 2.234l14.094-10.199 14.097 10.2a2 2 0 0 0 3.075-2.235l-5.344-16.559 14.054-10.254a2 2 0 0 0-1.175-3.613l-17.399-.035L31.88 5.301a2 2 0 0 0-1.992-1.375Zm.09 8.433 3.957 12.098a2 2 0 0 0 1.898 1.379l12.727.023-10.282 7.5a2 2 0 0 0-.722 2.23l3.91 12.118-10.317-7.465a2 2 0 0 0-2.343 0l-10.309 7.461 3.906-12.113a2 2 0 0 0-.722-2.23l-10.281-7.5 12.726-.024a2.001 2.001 0 0 0 1.895-1.379l3.957-12.098Z" />
+                <path d="M28.805 40.242a2 2 0 0 1 1.172-.379V12.359L26.02 24.457a2 2 0 0 1-1.895 1.379l-12.726.023 10.28 7.5a2 2 0 0 1 .723 2.23l-3.906 12.114 10.309-7.46Z" />
+              </svg>
+            </Flex>
+          </Theme>
+
+          <Heading align="center" as="h3" size="4" mb="2">
             King Krule – The OOZ
           </Heading>
 
-          <Text
-            align="center"
-            as="p"
-            color="gray"
-            size="2"
-            style={{ marginBottom: 'var(--space-4)' }}
-          >
+          <Text align="center" as="p" color="gray" size="2" mb="4">
             A dark and introspective album that showcases a distinctive blend of genres.
           </Text>
 

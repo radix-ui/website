@@ -9,9 +9,7 @@ metaDescription: Using appearance to manage and integrate dark mode.
 
 ## Overview
 
-Dark mode has gained widespread popularity in recent years, with operating systems now offering first-class support.
-
-Out of the box, Radix Themes comes with built-in light and dark modes, allowing you to effortlessly switch appearance without any additional design or styling.
+Radix Themes ships with built-in light and dark modes, allowing you to easily switch appearance without any additional design or styling.
 
 <Box my="5">
   <ThemesDarkModeExample />
@@ -19,7 +17,7 @@ Out of the box, Radix Themes comes with built-in light and dark modes, allowing 
 
 ## Basic usage
 
-By default, the root `Theme` appearance will be `light`. To set a different appearance simply pass the `appearance` prop. This will force the theme to use the specified setting.
+By default, the root `Theme` appearance is `light`. To set a different appearance pass it via the `appearance` prop. This will force the theme to use the specified setting.
 
 ```jsx line=1
 <Theme __appearance__="dark">
@@ -27,17 +25,35 @@ By default, the root `Theme` appearance will be `light`. To set a different appe
 </Theme>
 ```
 
-## System preference and persistence
+### Automatic background color
+
+Radix Themes will automatically set the background color of your app to match `appearance`, this is achieved by injecting a `background-color` style on the `body` element.
+
+As the style injection can only occur on the client, you may experience a hydration warning. In this case it's safe to suppress the warning.
+
+```jsx line=4
+// app/layout.jsx
+export default function Layout({ children }) {
+  return (
+    <html __suppressHydrationWarning__>
+      <head />
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+## Inheriting from system preferences
 
 A common requirement is to inherit the appearance setting from a users system preferences.
 
-This is a deceptively complex problem to solve given SSR, SSG and client side hydration considerations. To avoid these pitfalls and make implementation easier, we recommend integrating with a theme persistence library such as [next-themes](https://github.com/pacocoursey/next-themes).
+This is a deceptively complex problem to solve given SSR, SSG and client side hydration considerations. To make implementation easier, we recommend integrating with a theme switching library.
 
 ### With next-themes
 
-Integrating with `next-themes` is simple and straight-forward, and allows you to avoid common pitfalls with client hydration that can create unsightly flashing during initial render.
+Radix Themes already implements matching class names which makes integration with `next-themes` simple and straight-forward.
 
-Here's an example showing usage and configuration at the root of your application.
+All that is needed is to ensure that `attribute` is set to use the `class` switching method.
 
 ```jsx line=6
 import { Theme } from '@radix-ui/themes';
@@ -45,12 +61,7 @@ import { ThemeProvider } from 'next-themes';
 
 export default function () {
   return (
-    <ThemeProvider
-      __attribute__="class"
-      __value__={{ light: 'light-theme', dark: 'dark-theme' }}
-      disableTransitionOnChange
-      defaultTheme="system"
-    >
+    <ThemeProvider __attribute__="class">
       <Theme>
         <MyApp />
       </Theme>
@@ -66,18 +77,23 @@ export default function () {
     <InfoCircledIcon />
   </Callout.Icon>
   <Callout.Text>
-    It's important to specify the <Code>attribute</Code> and <Code>value</Code>{' '}
-    configuration and <Strong>not</Strong> to pass <Code>appearance</Code>.
+    It's important <Strong>not</Strong> to pass <Code>resolvedTheme</Code> to
+    <Code>appearance</Code>, instead relying wholly on class switching. This is important
+    as <Code>next-themes</Code> will automatically prevent any unsightly flashing
+    during initial render.
   </Callout.Text>
 </Callout.Root>
 
 }
 
-Note that we do not pass the `appearance` prop to `Theme`. We instead tell `next-themes` to apply a specific `class` to the `html` when toggling themes. This is an important detail as `next-themes` will handle render blocking internally when using this approach, avoiding any unsightly flashing during initial render.
+### With other libraries
 
-Radix Themes supports the following classes for mapping themes to the appearance:
+Any library that supports class switching is compatible, you'll just need to ensure that the appended class names match those used by Radix Themes:
 
 - `light`
 - `dark`
+
+or
+
 - `light-theme`
 - `dark-theme`
