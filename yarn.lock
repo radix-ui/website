@@ -577,15 +577,15 @@
   resolved "https://registry.yarnpkg.com/@radix-ui/colors/-/colors-0.1.7.tgz#055cdf104f92ae58a7d6a7f1c7327c635b90747f"
   integrity sha512-E6+ZPQ+FFn1/NZ4c/KRvZTu9KjC/MXrbJNETYs1HKe96gyxQivPu65FkhOsRnPigvJ0YJ9ZxYGxayqDNmaC1cQ==
 
-"@radix-ui/colors@0.1.8":
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/@radix-ui/colors/-/colors-0.1.8.tgz#b08c62536fc462a87632165fb28e9b18f9bd047e"
-  integrity sha512-jwRMXYwC0hUo0mv6wGpuw254Pd9p/R6Td5xsRpOmaWkUHlooNWqVcadgyzlRumMq3xfOTXwJReU0Jv+EIy4Jbw==
+"@radix-ui/colors@2.0.0-alpha.3":
+  version "2.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/@radix-ui/colors/-/colors-2.0.0-alpha.3.tgz#cf1541d5f4a9c33746ea297cdb5f1af2737ded95"
+  integrity sha512-PBYN1KtaQfxhgyO+GXDIWq190MEuNjT5UCkiQFCFcCOutSL+D+O5Lk46eeir4heS3w/4ZEgrVzbA5VKdUeYH7w==
 
-"@radix-ui/colors@2.0.0-alpha.1":
-  version "2.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@radix-ui/colors/-/colors-2.0.0-alpha.1.tgz#03aac51d41bd7e893e04f277bc27abdd8ee541b3"
-  integrity sha512-1bdGw5NQT8FyL8jx8wYLBupwvYaqyDMALIMoAvaSw1lQUn5Y6bwU4SDclHeac1jlrCd0ujtlRezqmbV5HiTMFQ==
+"@radix-ui/colors@2.0.0-alpha.5":
+  version "2.0.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/@radix-ui/colors/-/colors-2.0.0-alpha.5.tgz#7c13a3aa5ed9073ad694966a8748fd45ac64494d"
+  integrity sha512-yGMFhL85UfioK2A5sDT7lj9aymgsZFk8Fpf5m2AhH3LVAUYfvvUJxhSTrTmiIOUIOHoUH86lvBpDHNvP2kSbrw==
 
 "@radix-ui/number@1.0.0":
   version "1.0.0"
@@ -1799,12 +1799,12 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
-"@radix-ui/themes@0.0.44":
-  version "0.0.44"
-  resolved "https://registry.yarnpkg.com/@radix-ui/themes/-/themes-0.0.44.tgz#5d505b40652bdc2253cb0d1b44cf0d48907c796a"
-  integrity sha512-ZoQmfGrInDjxPiD9eOz+jSlD4H2RK7zd/ntcHih2V2m6RmhLBCmhFA3Wq//ke+QZDcmI0cd4LsTADUT8SKkLUg==
+"@radix-ui/themes@0.0.45":
+  version "0.0.45"
+  resolved "https://registry.yarnpkg.com/@radix-ui/themes/-/themes-0.0.45.tgz#c6ebc181691cc2ef79762addf157a616932099d5"
+  integrity sha512-/ynLVw7Tc0Grxoni+N/AAnhR9Xl5mHpAV7A3BUSY5aaBsRwKhnFR2Ye3l0+3dfsIigerOfvsJKFQqkOBOExhsg==
   dependencies:
-    "@radix-ui/colors" "2.0.0-alpha.1"
+    "@radix-ui/colors" "2.0.0-alpha.3"
     "@radix-ui/primitive" latest
     "@radix-ui/react-accessible-icon" latest
     "@radix-ui/react-alert-dialog" latest

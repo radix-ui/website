@@ -139,7 +139,7 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
                 height: '$6',
                 flexBasis: 0,
                 backgroundColor: isDarkAlpha
-                  ? (getBgColorForDarkCell(name) as string)
+                  ? Colors['grayDark']['gray1']
                   : isAlpha
                   ? 'white'
                   : 'transparent',

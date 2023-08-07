@@ -8,7 +8,7 @@ const pairings = [
   { color: 'sand', pairs: ['yellow', 'amber', 'orange', 'brown'] },
 ];
 
-const blackTextPairs = ['sky', 'mint', 'lime', 'amber'];
+const blackTextPairs = ['sky', 'mint', 'lime', 'amber', 'yellow'];
 
 export function ColorGrayPairs() {
   return (
@@ -42,7 +42,7 @@ export function ColorGrayPairs() {
                   as="p"
                   size="2"
                   style={{
-                    color: blackTextPairs.includes(pair) ? 'black' : 'white',
+                    color: blackTextPairs.includes(pair) ? '#202020' : 'white',
                     textTransform: 'capitalize',
                   }}
                 >

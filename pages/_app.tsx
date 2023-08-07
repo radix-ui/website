@@ -89,7 +89,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.startsWith('/colors/docs')) {
     return (
-      <Theme accentColor="pink" style={themeRootStyles}>
+      <Theme accentColor="pink" grayColor="gray" style={themeRootStyles}>
         <SyntaxSchemeProvider scheme="pink">
           <ColorsDocsPage>
             <Component {...pageProps} />
@@ -101,7 +101,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.startsWith('/colors')) {
     return (
-      <Theme accentColor="pink" style={themeRootStyles}>
+      <Theme accentColor="pink" grayColor="gray" style={themeRootStyles}>
         <Component {...pageProps} />
       </Theme>
     );
