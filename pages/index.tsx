@@ -203,11 +203,25 @@ const MainContent = ({
 }) => (
   <Box>
     <Section size={{ initial: '2', md: '3', lg: '2' }} pb={{ initial: '4', lg: '7' }}>
-      <SerifHeading mb="3">
-        Start building
-        <br />
-        your app now
-      </SerifHeading>
+      <Box>
+        <Box display={{ lg: 'none' }}>
+          <SerifHeading mb="3">
+            Start building
+            <br />
+            your app now
+          </SerifHeading>
+        </Box>
+        <Box display={{ initial: 'none', lg: 'block' }}>
+          <SerifHeading
+            mb="4"
+            style={{ lineHeight: 0.9, '--heading-font-size-adjust': 1.3 } as React.CSSProperties}
+          >
+            Start building
+            <br />
+            your app now
+          </SerifHeading>
+        </Box>
+      </Box>
 
       <Text size={{ initial: '4', xs: '5' }}>
         <Text as="p" mb="5" style={{ maxWidth: 500 }} color="gray">
