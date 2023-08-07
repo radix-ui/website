@@ -524,7 +524,7 @@ export function ThemeGraySwatches() {
   );
 }
 
-export function ThemesVolumnControlExample() {
+export function ThemesVolumeControlExample() {
   return (
     <Flex
       justify="center"

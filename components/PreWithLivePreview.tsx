@@ -6,7 +6,7 @@ import * as themes from '@radix-ui/themes';
 import * as icons from '@radix-ui/react-icons';
 import { Pre } from './Pre';
 import styles from './PreWithLivePreview.module.css';
-import { DecorativeBox, ThemesVolumnControlExample } from './ThemesDocsAssets';
+import { DecorativeBox, ThemesVolumeControlExample } from './ThemesDocsAssets';
 
 const PreWithLivePreview = (props) => {
   const [code, setCode] = React.useState('');
@@ -29,7 +29,7 @@ const PreWithLivePreview = (props) => {
                 scope={{
                   ...themes,
                   ...icons,
-                  ThemesVolumnControlExample,
+                  ThemesVolumeControlExample,
                   DecorativeBox,
                   RightClickZone: ({ heading, ...props }) => (
                     <Grid
