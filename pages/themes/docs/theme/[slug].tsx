@@ -1,14 +1,12 @@
 import React from 'react';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { MDXProvider, components } from '@components/MDXComponents';
+import { MDXProvider } from '@components/MDXComponents';
 import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { QuickNav } from '@components/QuickNav';
-import * as themesDocsAssets from '@components/ThemesDocsAssets';
-import * as themesDocsTables from '@components/ThemesDocsTables';
-import * as icons from '@radix-ui/react-icons';
 
 import type { Frontmatter } from 'types/frontmatter';
+import { ThemesMDXComponents } from '@components/ThemesMDXComponents';
 
 type Doc = {
   frontmatter: Frontmatter;
@@ -31,16 +29,7 @@ export default function ThemingDoc({ frontmatter, code }: Doc) {
       />
 
       <MDXProvider frontmatter={frontmatter}>
-        <Component
-          components={
-            {
-              ...components,
-              ...themesDocsAssets,
-              ...themesDocsTables,
-              ...icons,
-            } as any
-          }
-        />
+        <Component components={ThemesMDXComponents as any} />
       </MDXProvider>
 
       <QuickNav key={frontmatter.slug} />

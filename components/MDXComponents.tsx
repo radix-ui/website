@@ -31,12 +31,12 @@ import {
   Tabs,
   Text,
 } from '@radix-ui/themes';
-import * as themes from '@radix-ui/themes';
+import * as themesComponents from '@radix-ui/themes';
 import styles from './MDXComponents.module.css';
 import { classNames } from '@lib/classNames';
 
 export const components = {
-  ...themes,
+  ...themesComponents,
   ColorScale,
   ColorScaleGroup,
   Tabs: Tabs.Root,
@@ -171,11 +171,6 @@ export const components = {
   PropsTable: (props) => (
     <Box my="4">
       <PropsTable {...props} />
-    </Box>
-  ),
-  ThemesPropsTable: (props) => (
-    <Box mt="4" mb="6">
-      <ThemesPropsTable {...props} />
     </Box>
   ),
   TabsCodeBlock: (props) => (

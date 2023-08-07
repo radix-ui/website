@@ -3,11 +3,11 @@ import { getMDXComponent } from 'mdx-bundler/client';
 import NextLink from 'next/link';
 import { Box, Flex, Link, Text, Heading } from '@radix-ui/themes';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { MDXProvider, components } from '@components/MDXComponents';
+import { MDXProvider } from '@components/MDXComponents';
+import { ThemesMDXComponents } from '@components/ThemesMDXComponents';
 import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { QuickNav } from '@components/QuickNav';
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
-import * as icons from '@radix-ui/react-icons';
 
 import type { Frontmatter } from 'types/frontmatter';
 
@@ -76,7 +76,7 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
       </Box>
 
       <MDXProvider frontmatter={frontmatter}>
-        <Component components={{ ...components, ...icons } as any} />
+        <Component components={ThemesMDXComponents as any} />
       </MDXProvider>
 
       <QuickNav key={frontmatter.slug} />
