@@ -2,6 +2,7 @@ import * as React from 'react';
 import NextLink from 'next/link';
 import {
   Theme,
+  themePropDefs,
   //
   AlertDialogRoot,
   AlertDialogTrigger,
@@ -171,6 +172,7 @@ import {
   //
   // helpers:
   themeAccentColorsOrdered,
+  useThemeContext,
   //
   ThemePanel,
 } from '@radix-ui/themes';
@@ -187,6 +189,26 @@ import { MobileMenuProvider, MobileMenu } from '@components/MobileMenu';
 import { ThemesHeader } from '@components/ThemesHeader';
 
 export default function ComponentsPage() {
+  const {
+    onAccentColorChange,
+    onGrayColorChange,
+    onRadiusChange,
+    onScalingChange,
+    onPanelBackgroundChange,
+  } = useThemeContext();
+
+  // When the page unmounts, reset theme settings to match the default applied to `/themes` section
+  // so they don't persist on other pages.
+  React.useEffect(() => {
+    return () => {
+      onAccentColorChange('indigo');
+      onGrayColorChange(themePropDefs.grayColor.default);
+      onRadiusChange(themePropDefs.radius.default);
+      onScalingChange(themePropDefs.scaling.default);
+      onPanelBackgroundChange(themePropDefs.panelBackground.default);
+    };
+  }, []);
+
   return (
     <MobileMenuProvider>
       <div className={styles.root}>
