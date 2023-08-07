@@ -4341,9 +4341,11 @@ function RightClickArea(props: {
     variant = contextMenuContentPropDefs.variant.default,
     color = 'accent',
     highContrast = contextMenuContentPropDefs.highContrast.default,
+    ...rest
   } = props;
   return (
     <Grid
+      {...rest}
       data-accent-color={color}
       height={size === '2' ? '8' : '6'}
       px="3"
