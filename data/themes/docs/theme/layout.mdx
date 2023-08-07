@@ -7,11 +7,19 @@ metaDescription: Declarative layout and common spacing props.
 
 <Description>Declarative layout and common spacing props.</Description>
 
-## Composing layout
+## Spacing scale
 
-Layout components are foundational building blocks that provide a declarative, composable API, allowing you to build a wide array of layouts and designs.
+Spacing values are derived from a 9 step scale.
 
-[Box](/themes/docs/components/box), [Flex](/themes/docs/components/flex) and [Grid](/themes/docs/components/grid) are the most common components you'll use. Box provides block-level spacing and sizing, while Flex and Grid let you create flexible columns, rows and grids.
+<Box my="7">
+  <ThemesSpacingScale />
+</Box>
+
+<ThemesSpacingTable />
+
+## Layout components
+
+[Box](/themes/docs/components/box), [Flex](/themes/docs/components/flex) and [Grid](/themes/docs/components/grid) are foundational elements you'll use to construct layouts. Box provides block-level spacing and sizing, while Flex and Grid let you create flexible columns, rows and grids.
 
 ```jsx live=true
 <Grid columns="3" gap="3">
@@ -46,7 +54,7 @@ All layout components share a common set of props:
 
 ### Margin props
 
-Margin props are shorthand utilities for applying margin to any side of an element, they are useful when you need to apply space between individual elements. Margin props are exposed on all components that return a node.
+Shorthand utilities for applying margin to any side of an element, useful when you need to apply space between elements. Margin props are available on components that render a node.
 
 ```jsx live=true line=1
 <Button __mr__="3" variant="soft">Cancel</Button>
@@ -54,16 +62,6 @@ Margin props are shorthand utilities for applying margin to any side of an eleme
 ```
 
 <ThemesPropsTable name="margin" />
-
-## Spacing scale
-
-Spacing values are derived from a 9 step scale.
-
-<Box my="7">
-  <ThemesSpacingScale />
-</Box>
-
-<ThemesSpacingTable />
 
 ### Scaling
 
