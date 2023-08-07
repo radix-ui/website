@@ -190,6 +190,7 @@ import { ThemesHeader } from '@components/ThemesHeader';
 import { ThemesPanelBackgroundImage } from '@components/ThemesPanelBackgroundImage';
 import { useTheme } from 'next-themes';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
+import Head from 'next/head';
 
 export default function ComponentsPage() {
   const { systemTheme, setTheme } = useTheme();
@@ -216,6 +217,10 @@ export default function ComponentsPage() {
 
   return (
     <MobileMenuProvider>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+
       <TitleAndMetaTags
         title="Playground – Themes – Radix UI"
         description="An open source component library for building modern React apps that helps you build faster and makes it easy to create beautiful, accessible interfaces that are a breeze to maintain."

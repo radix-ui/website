@@ -57,11 +57,13 @@
   width: 160px;
 }
 
-.PlaygroundDocsLink {
-  opacity: 0;
-  transition: opacity 50ms linear;
-}
+@media (hover: hover) {
+  .PlaygroundDocsLink {
+    opacity: 0;
+    transition: opacity 50ms linear;
+  }
 
-.PlaygroundSection:hover .PlaygroundDocsLink {
-  opacity: 1;
+  .PlaygroundSection:hover .PlaygroundDocsLink {
+    opacity: 1;
+  }
 }
