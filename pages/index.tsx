@@ -202,9 +202,8 @@ const MainContent = ({
   codeBlockScheme?: React.ComponentProps<typeof SyntaxSchemeProvider>['scheme'];
 }) => (
   <Box>
-    <Section size={{ initial: '2', md: '3', lg: '2' }}>
-      <SerifHeading mb="5" style={{ fontSize: 80, lineHeight: 0.9 }}>
-        {/* A beautiful component library for building better and faster */}
+    <Section size={{ initial: '2', md: '3', lg: '2' }} pb={{ initial: '4', lg: '7' }}>
+      <SerifHeading mb="3">
         Start building
         <br />
         your app now
@@ -223,7 +222,7 @@ const MainContent = ({
         </Box>
       </Text>
 
-      <Text as="p" size="3" mb="6">
+      <Text as="p" size="3" mb="6" color="gray">
         Just import and go—no configuration required.
       </Text>
 

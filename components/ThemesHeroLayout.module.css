@@ -7,7 +7,7 @@
   /* Prevent elements with `position: absolute` from adding scrollbars */
   overflow: hidden;
 
-  --themes-hero-padding: 16px;
+  --themes-hero-padding: var(--space-5);
 
   /* Scaling multiplier for the demo area */
   --themes-hero-showcase-scale: calc(10 / 16);
@@ -16,7 +16,7 @@
 
 @media (min-width: 520px) {
   .ThemesHeroLayoutRoot {
-    --themes-hero-padding: 24px;
+    --themes-hero-padding: var(--space-6);
     --themes-hero-showcase-scale: calc(11 / 16);
   }
 }
@@ -41,7 +41,7 @@
 
 @media (min-width: 768px) {
   .ThemesHeroLayoutRoot {
-    --themes-hero-padding: 48px;
+    --themes-hero-padding: var(--space-7);
     --themes-hero-showcase-scale: 1;
   }
 }
@@ -161,6 +161,7 @@
   .ThemesHeroLayoutShowcaseInnerScaled {
     display: table;
     padding: calc(var(--themes-hero-padding) / var(--themes-hero-showcase-scale));
+    padding-top: var(--space-8);
     transform-origin: top left;
   }
 }
