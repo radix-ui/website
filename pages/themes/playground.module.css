@@ -62,6 +62,6 @@
   transition: opacity 50ms linear;
 }
 
-.PlaygroundSection:hover .ViewDocsLink {
+.PlaygroundSection:hover .PlaygroundDocsLink {
   opacity: 1;
 }
