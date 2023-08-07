@@ -6,6 +6,10 @@
   border-collapse: collapse;
 }
 
+.table:not(.rt-TableRootTable) {
+  margin-bottom: calc(var(--space-4) * -1);
+}
+
 .table th:not(:global(.rt-TableColumnHeaderCell), :global(.rt-TableRowHeaderCell)) {
   font-weight: var(--font-weight-regular);
 }
@@ -51,4 +55,13 @@
 }
 .table :global(.rt-SliderRoot) {
   width: 160px;
+}
+
+.ViewDocsLink {
+  opacity: 0;
+  transition: opacity 50ms linear;
+}
+
+.ComponentWrapper:hover .ViewDocsLink {
+  opacity: 1;
 }
