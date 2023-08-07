@@ -1,62 +1,34 @@
 ---
 metaTitle: Visual style
-metaDescription:
-  Learn how component variants, radius and shadows influence your apps visual
-  style.
+metaDescription: Visual properties and their impact on your theme.
 ---
 
 # Visual style
 
-<Description>
-  Learn how component variants, radius and shadows influence your apps visual
-  style.
-</Description>
+<Description>Visual properties and their impact on your theme.</Description>
+
+## Panel background
+
+The `panelBackground` setting controls the background effect applied to panelled elements such as cards and tables.
+
+Passing the `translucent` value creates a subtle overlay effect on these elements.
+
+<Box my="5">
+  <ThemesPanelTranslucentExample />
+</Box>
+
+While `solid` is useful when you'd prefer to present information unobstructed.
+
+<Box my="5">
+  <ThemesPanelSolidExample />
+</Box>
 
 ## Radius
 
-The `radius` property controls the border radius applied to UI elements. Larger values illict a more playful feel, while lower values present as more formal and serious. It can be set either at the [Theme](/themes/docs/components/theme) level, or directly on applicable components.
+The `radius` setting manages the radius factor applied to elements.
 
-Unlike most other properties, `radius` is not a flat value derived from a scale, instead the rendered radius is contextual and differs depending on the component. For example, when set to `full`, a [Button](/themes/docs/components/button) becomes pill shaped while a [Card](/themes/docs/components/theme) will never exceed an appropriate curve.
-
-Likewise, a [Checkbox](/themes/docs/components/checkbox) will never become fully rounded to prevent any visual confusion between it and a [Radio Group](/themes/docs/components/radio-group).
+The resulting `border-radius` is contextual and differs depending on the component. For example, when set to `full`, a [Button](/themes/docs/components/button) becomes pill shaped while a [Checkbox](/themes/docs/components/checkbox) will never become fully rounded to prevent any confusion between it and a [Radio Group](/themes/docs/components/radio-group).
 
 <Box my="5">
   <ThemesRadiusExample />
 </Box>
-
-### Instance overrides
-
-You can override the radius of a component independently of the theme by passing `radius`.
-
-This is helpful in cases where you'd like to apply a consistent radius across your UI but want to make specific exceptions, such as retaining circular avatars or pill shaped buttons.
-
-```jsx live=true line=4
-<Theme radius="small" style={{ maxWidth: 450 }}>
-  <Card variant="surface" size="2">
-    <Flex gap="3">
-      <Avatar
-        size="3"
-        src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?&w=64&h=64&dpr=2&q=70&crop=faces&fit=crop"
-        fallback="A"
-        __radius__="full"
-      />
-      <Box grow="1">
-        <TextArea placeholder="Reply…" style={{ height: 80 }} />
-        <Flex gap="3" mt="3" justify="between">
-          <Flex align="center" gap="2">
-            <Checkbox checked />
-            <Text size="2">Send to group</Text>
-          </Flex>
-          <Button>Send message</Button>
-        </Flex>
-      </Box>
-    </Flex>
-  </Card>
-</Theme>
-```
-
-### Shadow depth
-
-Shadows are preconfigured in Radix Themes and provide visual depth. Values are defined internally and derived from a 6 step scale, with 1 being the lowest elevation (part of the lowest "surface") and 6 being highest (an overlayed dialog window).
-
-<ThemesShadowScale />

@@ -15,9 +15,11 @@ import {
   Separator,
   Slider,
   Strong,
+  Table,
   Text,
   TextArea,
   TextField,
+  TextFieldInput,
   Theme,
 } from '@radix-ui/themes';
 import { Label } from '@radix-ui/react-label';
@@ -25,6 +27,134 @@ import { allPeople } from './people';
 import { CheckIcon } from '@radix-ui/react-icons';
 import { Marker } from './Marker';
 import * as React from 'react';
+import { ThemesPanelBackgroundImage } from './ThemesPanelBackgroundImage';
+
+export function ThemesPanelTranslucentExample() {
+  return (
+    <Card>
+      <Inset>
+        <Theme panelBackground="translucent" asChild>
+          <Flex direction="column">
+            <Flex justify="center" position="relative" px="5" py="8">
+              <Flex
+                align="center"
+                justify="center"
+                position="absolute"
+                inset="0"
+                style={{ overflow: 'hidden' }}
+              >
+                <ThemesPanelBackgroundImage
+                  id="1"
+                  width="900"
+                  height="200%"
+                  style={{ opacity: 0.5 }}
+                />
+              </Flex>
+
+              <Card size="4" style={{ width: 400 }}>
+                <Box height="7" mb="4">
+                  <Heading as="h3" size="6" mt="-1">
+                    Sign up
+                  </Heading>
+                </Box>
+
+                <Box mb="5">
+                  <label>
+                    <Text as="div" size="2" weight="medium" mb="2">
+                      Email address
+                    </Text>
+                    <TextFieldInput tabIndex={-1} placeholder="Enter your email" />
+                  </label>
+                </Box>
+
+                <Box mb="5" position="relative">
+                  <Box position="absolute" top="0" right="0" style={{ marginTop: -2 }}>
+                    <Link href="#card" tabIndex={-1} size="2">
+                      Forgot password?
+                    </Link>
+                  </Box>
+
+                  <label>
+                    <Text as="div" size="2" weight="medium" mb="2">
+                      Password
+                    </Text>
+                    <TextFieldInput tabIndex={-1} placeholder="Enter your password" />
+                  </label>
+                </Box>
+
+                <Flex mt="6" justify="end" gap="3">
+                  <Button tabIndex={-1} variant="soft">
+                    Create an account
+                  </Button>
+                  <Button tabIndex={-1}>Sign in</Button>
+                </Flex>
+              </Card>
+            </Flex>
+          </Flex>
+        </Theme>
+      </Inset>
+    </Card>
+  );
+}
+
+export function ThemesPanelSolidExample() {
+  return (
+    <Card>
+      <Inset>
+        <Theme panelBackground="solid" asChild>
+          <Flex direction="column">
+            <Flex justify="center" position="relative" px="5" py="8">
+              <Flex
+                align="center"
+                justify="center"
+                position="absolute"
+                inset="0"
+                style={{ overflow: 'hidden' }}
+              >
+                <ThemesPanelBackgroundImage
+                  id="2"
+                  width="1700"
+                  height="300%"
+                  style={{ opacity: 0.5 }}
+                />
+              </Flex>
+
+              <Table.Root variant="surface" size="2">
+                <Table.Header>
+                  <Table.Row>
+                    <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+                    <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+                    <Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
+                  </Table.Row>
+                </Table.Header>
+
+                <Table.Body>
+                  <Table.Row>
+                    <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+                    <Table.Cell>danilo@example.com</Table.Cell>
+                    <Table.Cell>Developer</Table.Cell>
+                  </Table.Row>
+
+                  <Table.Row>
+                    <Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+                    <Table.Cell>zahra@example.com</Table.Cell>
+                    <Table.Cell>Admin</Table.Cell>
+                  </Table.Row>
+
+                  <Table.Row>
+                    <Table.RowHeaderCell>Jasper Eriksson</Table.RowHeaderCell>
+                    <Table.Cell>jasper@example.com</Table.Cell>
+                    <Table.Cell>Developer</Table.Cell>
+                  </Table.Row>
+                </Table.Body>
+              </Table.Root>
+            </Flex>
+          </Flex>
+        </Theme>
+      </Inset>
+    </Card>
+  );
+}
 
 export function ThemesVariantsExample() {
   return (
