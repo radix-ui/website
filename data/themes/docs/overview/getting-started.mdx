@@ -90,12 +90,7 @@ Configuration is managed and applied via the [Theme](/themes/docs/components/the
 Pass [configuration](/themes/docs/components/theme) to the `Theme` to customize appearance.
 
 ```jsx line=1
-<Theme
-  __accentColor__="crimson"
-  __grayColor__="sand"
-  __radius__="large"
-  __scaling__="95%"
->
+<Theme accentColor="crimson" grayColor="sand" radius="large" scaling="95%">
   <MyApp />
 </Theme>
 ```
@@ -115,7 +110,7 @@ export default function () {
   return (
     <Theme>
       <MyApp />
-      <__ThemePanel__ />
+      <ThemePanel />
     </Theme>
   );
 }
