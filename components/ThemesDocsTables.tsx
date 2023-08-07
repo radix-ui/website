@@ -123,11 +123,17 @@ export function ThemesFontFamilyTable() {
           {[
             [
               'Text',
-              `-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
-              'Open Sans', system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'`,
+              `-apple-system, BlinkMacSystemFont, 'Segoe UI (Custom)', Roboto,
+              'Helvetica Neue', 'Open Sans (Custom)', system-ui, sans-serif, 'Apple Color Emoji',
+              'Segoe UI Emoji'`,
             ],
-            ['Code', `'Fira Code', 'Menlo', monospace, 'Apple Color Emoji', 'Segoe UI Emoji'`],
-            ['Emphasis', `'Source Serif 4', Georgia, 'Times New Roman', serif`],
+            [
+              'Code',
+              `'Menlo', 'Consolas (Custom)', 'Bitstream Vera Sans Mono', monospace,
+            'Apple Color Emoji', 'Segoe UI Emoji'`,
+            ],
+            ['Emphasis', `'Times New Roman', 'Times', serif`],
+            ['Quote', `'Times New Roman', 'Times', serif`],
           ].map(([key, value]) => (
             <Table.Row key={key}>
               <Table.RowHeaderCell>{key}</Table.RowHeaderCell>

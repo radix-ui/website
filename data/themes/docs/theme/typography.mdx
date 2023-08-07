@@ -9,7 +9,7 @@ metaDescription: Guidance for using and tuning typography.
 
 ## Composing type
 
-Radix Themes provides a comprehensive set of components for managing type in your apps. The most common are [Heading](/themes/docs/components/heading) and [Text](/themes/docs/components/text), for titles and body copy respectively. These components share `size` and `weight` props and map to the underlying type system to ensure consistent typography throughout your app.
+Radix Themes provides [Text](/themes/docs/components/text) and [Heading](/themes/docs/components/heading) components for rendering titles and body copy respectively. These components share `size` and `weight` props and map to the underlying type system to ensure consistent typography throughout your app.
 
 ```jsx live=true
 <Heading mb="2" size="4">Typographic principles</Heading>
@@ -29,9 +29,7 @@ Compose formatting components to add [empasis](/themes/docs/components/em), [sig
 
 ## Type scale
 
-All typography components are layered on top of a defined system, this encompasses refined sizing, letter spacing, line heights, font weights and more.
-
-This system is based on a 9 step scale, every step has a corresponding `font-size`, `line-height` and `letter-spacing` value which are designed to be used in combination.
+The typographic system is based on a 9 step scale, every step has a corresponding `font-size`, `line-height` and `letter-spacing` value which are all designed to be used in combination.
 
 <Box my="7">
   <ThemesFontSizeScale />
@@ -68,11 +66,11 @@ The following weights are supported. Weights can be [customized](/themes/docs/th
 
 ## Custom fonts
 
-Radix Themes uses a system font stack by default for portability and legibility, with additional fonts supplied for [Code](/themes/docs/components/code) and [Emphasis](/themes/docs/components/em).
+Radix Themes uses a system font stack for portability and legibility.
 
 <ThemesFontFamilyTable />
 
-You can provide your own fonts however, and how you choose to import and serve them is up to you. It is only required that you specify your named fonts using the correct [Token](/themes/docs/theme/token-reference#typography) syntax.
+You can provide your own fonts however, and how you choose to import and serve them is up to you. It is only required that you specify your named fonts using the correct token syntax.
 
 To change the default global font family, specify the `--default-font-family` token in your [`theme-config.css`](/themes/docs/theme/token-reference#modifying-tokens) and provide a different value.
 
@@ -140,7 +138,7 @@ export default function RootLayout({ children }) {
 }
 ```
 
-Finally, assign the CSS variable in your `themes-config.css`.
+Finally, assign the CSS variable in your [`themes-config.css`](/themes/docs/theme/token-reference#modifying-tokens).
 
 ```css
 .radix-themes {
@@ -150,7 +148,7 @@ Finally, assign the CSS variable in your `themes-config.css`.
 
 ### Weight mapping
 
-Weight mappings are defined in the corresponding [Tokens](/themes/docs/theme/token-reference#font-weight). Though not common, you may find your chosen typeface does not match the provided defaults. In this case, you can reassign weights inside of your `theme-config.css`:
+Weight mappings are defined in the corresponding [Tokens](/themes/docs/theme/token-reference). Though uncommon, you may find your chosen typeface does not match the provided defaults. In this case, you can reassign weights inside of your `theme-config.css`:
 
 ```css
 .radix-themes {
@@ -163,7 +161,7 @@ Weight mappings are defined in the corresponding [Tokens](/themes/docs/theme/tok
 
 ### Multiple fonts
 
-Various tokens are available for customizing fonts across different components, for example `--heading-font-family`, `--code-font-family`, `--strong-font-family` [and more](/themes/docs/theme/token-reference#advanced-settings). This is helpful, for example, when you’d like to implement a font pairing for headings independently of body copy, or you wish to tune your code snippets, strong, or emphasis font assignments independently.
+Various tokens are available for customizing fonts across different components, for example `--heading-font-family`, `--code-font-family`, `--strong-font-family` [and more](/themes/docs/theme/token-reference). This is helpful for example, when you’d like to implement a display face for headings independently of body copy, or you wish to tune your `code`, `strong`, or `em` font assignments separately.
 
 ```css
 .radix-themes {
@@ -173,11 +171,13 @@ Various tokens are available for customizing fonts across different components, 
 }
 ```
 
-### Customizing values
+### Advanced customization
 
-Radix Themes has a tuned set of typographic defaults which include fine grain adjustments to letter spacing, line height, font sizing, leading trim and more.
+Radix Themes has a refined set of typographic defaults including adjustments to `letter-spacing`, `line-height`, `font-size`, and more.
 
-When changing fonts it can be desirable to tweak these settings and have them compliment your chosen typeface. For example, you may find that your font has slightly different glypth dimensions and you’d like to adjust the letter spacing to compensate. In this case, you can provide different defaults to adjust these values across the entire theme.
+When changing fonts it can be desirable to tweak these settings to have them compliment your chosen typeface. For example, you may find that your custom font has slightly different glypth dimensions and you’d like to adjust `letter-spacing` to compensate.
+
+You can adjust these values by modifying [Tokens](/themes/docs/theme/token-reference).
 
 ```css
 .radix-themes {
@@ -186,5 +186,3 @@ When changing fonts it can be desirable to tweak these settings and have them co
   /* ... */
 }
 ```
-
-See [Tokens](/themes/docs/theme/token-reference) for a comprehensive list of available options.
