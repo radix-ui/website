@@ -19,7 +19,7 @@ export const ThemesMobileMenu = () => (
                   slug: '',
                 },
                 {
-                  title: 'Components',
+                  title: 'Playground',
                   slug: 'themes/components',
                 },
               ],

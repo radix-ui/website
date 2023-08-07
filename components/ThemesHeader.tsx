@@ -21,7 +21,7 @@ export const ThemesHeader = (props: HeaderProps) => {
         href="/themes/components"
         highContrast={router.pathname.includes('/themes/components')}
       >
-        All components
+        Playground
       </Link>
     </Header>
   );
