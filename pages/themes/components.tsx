@@ -190,11 +190,14 @@ export default function ComponentsPage() {
   return (
     <MobileMenuProvider>
       <div className={styles.root}>
-        <MobileMenu>
-          <ThemesHeader />
-        </MobileMenu>
+        {/* Set default values for settings we don't want affecting the header */}
+        <Theme radius="medium" scaling="100%">
+          <MobileMenu>
+            <ThemesHeader />
+          </MobileMenu>
 
-        <ThemesHeader />
+          <ThemesHeader />
+        </Theme>
 
         <Box display={{ initial: 'none', lg: 'block' }}>
           <ThemePanel
