@@ -216,7 +216,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/alert-dialog">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <Flex gap="4" align="center" mb="9">
@@ -330,7 +330,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/aspect-ratio">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <Grid columns="4" gap="4" mb="9">
@@ -351,7 +351,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/avatar">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <TabsRoot defaultValue="theme-colors">
@@ -527,7 +527,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/badge">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <TabsRoot defaultValue="theme-colors">
@@ -657,7 +657,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/blockquote">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <TabsRoot defaultValue="theme-colors">
@@ -797,7 +797,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/button">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <TabsRoot defaultValue="theme-colors">
@@ -935,7 +935,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/callout">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <TabsRoot defaultValue="theme-colors">
@@ -1089,7 +1089,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/card">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <Box my="6" style={{ whiteSpace: 'nowrap' }}>
@@ -1214,7 +1214,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/checkbox">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <TabsRoot defaultValue="theme-colors">
@@ -1348,7 +1348,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/code">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <TabsRoot defaultValue="theme-colors">
@@ -1481,7 +1481,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/context-menu">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <TabsRoot defaultValue="theme-colors">
@@ -1641,7 +1641,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/dialog">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <Flex gap="4" align="center" mb="9">
@@ -1839,7 +1839,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/dropdown-menu">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <TabsRoot defaultValue="theme-colors">
@@ -2020,7 +2020,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/em">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <Box mb="9" style={{ width: 'calc(580px * var(--scaling))' }}>
@@ -2038,7 +2038,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/heading">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <TabsRoot defaultValue="specimen">
@@ -2174,7 +2174,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/hover-card">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <Flex direction="column" gap="4" mb="9">
@@ -2210,7 +2210,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/icon-button">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <TabsRoot defaultValue="theme-colors">
@@ -2348,7 +2348,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/inset">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <Box my="6">
@@ -2408,7 +2408,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/kbd">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <TabsRoot defaultValue="specimen">
@@ -2465,7 +2465,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/link">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <TabsRoot defaultValue="specimen">
@@ -2607,7 +2607,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/popover">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <Flex align="center" gap="4" my="6">
@@ -2760,7 +2760,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/quote">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <Box mb="9" style={{ width: 'calc(580px * var(--scaling))' }}>
@@ -2781,7 +2781,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/radio-group">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <TabsRoot defaultValue="theme-colors">
@@ -2946,7 +2946,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/scroll area">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <Flex align="start" direction="column" my="6">
@@ -3006,7 +3006,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/select">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <TabsRoot defaultValue="theme-colors">
@@ -3168,7 +3168,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/separator">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <Flex my="6" style={{ whiteSpace: 'nowrap' }}>
@@ -3194,7 +3194,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/slider">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <TabsRoot defaultValue="theme-colors">
@@ -3341,7 +3341,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/switch">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <TabsRoot defaultValue="theme-colors">
@@ -3484,7 +3484,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/table">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <Box my="6" style={{ whiteSpace: 'nowrap' }}>
@@ -3605,7 +3605,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/tabs">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <Flex gap="8" align="end" mb="9">
@@ -3627,7 +3627,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/text">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <TabsRoot defaultValue="specimen">
@@ -3880,7 +3880,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/text-area">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <TabsRoot defaultValue="theme-colors">
@@ -4007,7 +4007,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/text-field">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <TabsRoot defaultValue="theme-colors">
@@ -4231,7 +4231,7 @@ export default function ComponentsPage() {
               </Link>
             </Heading>
             <NextLink passHref href="/themes/docs/components/tooltip">
-              <Link size="2">Docs</Link>
+              <Link size="2">View in docs</Link>
             </NextLink>
           </Flex>
           <Flex my="6">
