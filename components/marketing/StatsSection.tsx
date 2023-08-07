@@ -30,7 +30,12 @@ export const StatsSection = () => {
         >
           <Box>
             <Flex asChild align="center">
-              <Text mb="2" weight="medium" size={{ initial: '8', sm: '9' }}>
+              <Text
+                mb="1"
+                weight="medium"
+                size={{ initial: '8', sm: '9' }}
+                style={{ fontSize: 60 * 1.3, fontFamily: '"Adobe Text Pro", serif' }}
+              >
                 20M
                 <Box style={{ display: 'inline', fontSize: '75%', marginLeft: '0.15em' }}>+</Box>
               </Text>
@@ -42,7 +47,12 @@ export const StatsSection = () => {
           <Box style={{ backgroundColor: 'var(--gray-a5)', width: 1 }} />
           <Box>
             <Flex asChild align="center">
-              <Text mb="2" weight="medium" size={{ initial: '8', sm: '9' }}>
+              <Text
+                mb="1"
+                weight="medium"
+                size={{ initial: '8', sm: '9' }}
+                style={{ fontSize: 60 * 1.3, fontFamily: '"Adobe Text Pro", serif' }}
+              >
                 4000
                 <Box style={{ display: 'inline', fontSize: '75%', marginLeft: '0.15em' }}>+</Box>
               </Text>
@@ -54,7 +64,12 @@ export const StatsSection = () => {
           <Box style={{ backgroundColor: 'var(--gray-a5)', width: 1 }} />
           <Box>
             <Flex asChild align="center">
-              <Text mb="2" weight="medium" size={{ initial: '8', sm: '9' }}>
+              <Text
+                mb="1"
+                weight="medium"
+                size={{ initial: '8', sm: '9' }}
+                style={{ fontSize: 60 * 1.3, fontFamily: '"Adobe Text Pro", serif' }}
+              >
                 10K
                 <Box style={{ display: 'inline', fontSize: '75%', marginLeft: '0.15em' }}>+</Box>
               </Text>

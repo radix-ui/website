@@ -10,14 +10,14 @@
 .IconsHeroLines {
   position: relative;
 
-  top: calc(var(--header-height) + 32px);
+  top: calc(var(--header-height) + 34px);
   left: 280px;
   font-size: calc(var(--line-height-8) * 2 - 5px);
 }
 
 @media (min-width: 520px) {
   .IconsHeroLines {
-    top: calc(var(--header-height) + 30px);
+    top: calc(var(--header-height) + 32px);
     left: max(420px, calc(50% - var(--container-4) / 2 + 360px));
     font-size: calc(var(--line-height-9) * 2 - 7px);
   }
@@ -25,6 +25,6 @@
 
 @media (min-width: 1024px) {
   .IconsHeroLines {
-    top: calc(var(--header-height) + 70px);
+    top: calc(var(--header-height) + 72px);
   }
 }

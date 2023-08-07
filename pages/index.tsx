@@ -203,7 +203,7 @@ const MainContent = ({
 }) => (
   <Box>
     <Section size={{ initial: '2', md: '3', lg: '2' }}>
-      <SerifHeading mb="5">
+      <SerifHeading mb="5" style={{ fontSize: 80, lineHeight: 0.9 }}>
         {/* A beautiful component library for building better and faster */}
         Start building
         <br />
@@ -212,8 +212,8 @@ const MainContent = ({
 
       <Text size={{ initial: '4', xs: '5' }}>
         <Text as="p" mb="5" style={{ maxWidth: 500 }} color="gray">
-          Get going with Radix Themes, a component library built with principles—optimized for fast
-          development, easy maintenance, and accessibility.
+          An open source component library optimized for fast development, easy maintenance, and
+          accessibility.
         </Text>
 
         <Box mb="3">
