@@ -60,25 +60,3 @@ This is helpful in cases where you'd like to apply a consistent radius across yo
 Shadows are preconfigured in Radix Themes and provide visual depth. Values are defined internally and derived from a 6 step scale, with 1 being the lowest elevation (part of the lowest "surface") and 6 being highest (an overlayed dialog window).
 
 <ThemesShadowScale />
-
-## Variants
-
-The concept of visual weight is well understood in UI design, and refers to the importance of an element in relation to other elements on the screen. For example, a primary action should be more dominant than a secondary action.
-
-Rather than providing semantically named "primary" and "secondary" actions, Radix Themes instead exposes a set of distinct variants named according to their visual attributes, allowing you to define your own hierarchy of relative importance depending on your visual style.
-
-Here is an example using [Button](/themes/docs/components/button).
-
-```jsx live=true
-<Flex gap="3" align="center">
-  <Button variant="solid">Get started</Button>
-  <Button variant="soft">Get started</Button>
-  <Button variant="ghost">Get started</Button>
-</Flex>
-```
-
-In this example, `solid` is the most dominant, followed by `soft` and `ghost`.
-
-By composing variants in combination with radius and other [theme settings](/themes/docs/components/theme) you can quickly create visual hierarchies and unique looking interfaces.
-
-<ThemesVariantsExample />

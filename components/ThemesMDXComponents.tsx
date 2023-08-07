@@ -16,18 +16,26 @@ export const ThemesMDXComponents = {
       <ThemesPropsTable {...props} />
     </Box>
   ),
-  ThemesLinkCard: ({ title, desc, href }: { title: string; desc: string; href: string }) => (
-    <NextLink href={href} passHref>
-      <Card size="2" asChild>
-        <a>
-          <Text as="div" size="2" weight="bold" mb="1">
-            {title}
-          </Text>
-          <Text as="p" size="2" color="gray">
-            {desc}
-          </Text>
-        </a>
-      </Card>
-    </NextLink>
-  ),
+  ThemesLinkCard: ({ title, desc, href }: { title: string; desc: string; href: string }) => {
+    const cardContent = (
+      <>
+        <Text as="div" size="2" weight="bold" mb="1">
+          {title}
+        </Text>
+        <Text as="p" size="2" color="gray">
+          {desc}
+        </Text>
+      </>
+    );
+
+    return href ? (
+      <NextLink href={href} passHref>
+        <Card size="2" asChild>
+          <a>{cardContent}</a>
+        </Card>
+      </NextLink>
+    ) : (
+      <Card size="2">{cardContent}</Card>
+    );
+  },
 };
