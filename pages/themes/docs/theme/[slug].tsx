@@ -25,7 +25,7 @@ export default function ThemingDoc({ frontmatter, code }: Doc) {
       <TitleAndMetaTags
         title={`${frontmatter.metaTitle} – Radix UI`}
         description={frontmatter.metaDescription}
-        image={frontmatter.metaImage}
+        image="themes.png"
       />
 
       <MDXProvider frontmatter={frontmatter}>

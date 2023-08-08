@@ -26,7 +26,7 @@ export default function PrimitivesHome() {
         title="Primitives – Radix UI"
         description="Unstyled, accessible, open source React primitives for high-quality web apps and
         design systems."
-        image="default.png"
+        image="primitives.png"
       />
       <Box style={{ height: 0 }}>
         <PrimitivesHeader ghost />

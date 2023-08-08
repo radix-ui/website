@@ -26,7 +26,7 @@ export default function ThemesHome() {
       <TitleAndMetaTags
         title="Themes – Radix UI"
         description="An open source component library for building modern React apps that helps you build faster and makes it easy to create beautiful, accessible interfaces that are a breeze to maintain."
-        image="default.png"
+        image="themes.png"
       />
 
       <Head>

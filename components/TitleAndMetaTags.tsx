@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 type TitleAndMetaTagsProps = {
   title?: string;
   description?: string;
-  image?: string;
+  image: string;
   url?: string;
   pathname?: string;
 };
@@ -19,7 +19,7 @@ export function TitleAndMetaTags({
 }: TitleAndMetaTagsProps) {
   const router = useRouter();
 
-  const imageUrl = `${url}/social/${image || 'default.png'}`;
+  const imageUrl = `${url}/social/${image}`;
   const path = pathname || router.pathname;
 
   return (

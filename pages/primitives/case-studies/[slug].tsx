@@ -54,7 +54,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
       <TitleAndMetaTags
         title={`${frontmatter.metaTitle} – Case studies – Radix UI`}
         description={frontmatter.metaDescription}
-        image="default.png"
+        image="primitives.png"
       />
 
       <PrimitivesHeader />

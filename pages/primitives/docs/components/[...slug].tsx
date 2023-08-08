@@ -25,7 +25,7 @@ export default function ComponentsDoc({ frontmatter, code }: Doc) {
       <TitleAndMetaTags
         title={`${frontmatter.metaTitle} – Radix UI`}
         description={frontmatter.metaDescription}
-        image={frontmatter.metaImage}
+        image="primitives.png"
       />
 
       {frontmatter.version !== frontmatter.versions?.[0] && (
