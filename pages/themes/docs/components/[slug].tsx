@@ -68,7 +68,7 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
           </Flex>
 
           {hasPlaygroundExample(frontmatter.slug) && (
-            <NextLink passHref href={`/themes/components#${frontmatter.slug}`}>
+            <NextLink passHref href={`/themes/playground#${frontmatter.slug}`}>
               <Link size="3">View in Playground</Link>
             </NextLink>
           )}
