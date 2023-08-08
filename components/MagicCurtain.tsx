@@ -37,9 +37,16 @@ const MagicCurtainRoot = ({ children }: React.PropsWithChildren<{}>) => {
     };
 
     itemsRef.current[0]?.setVisibility('visible-in-front');
+
+    if (/Android|iPhone/i.test(navigator.userAgent)) {
+      return;
+    }
+
     itemsRef.current[1]?.setVisibility('visible-behind');
 
     itemsRef.current.forEach((item, i) => {
+      item.setAnimationPlayState('running');
+
       if (i % 2) {
         item.setAnimationDirection('reverse');
       }
@@ -76,7 +83,7 @@ const MagicCurtainItem = ({
   const ref = React.useRef<HTMLDivElement>(null);
   const [visibility, setVisibility] = React.useState<Visibility>(defaultVisibility);
   const [animationDirection, setAnimationDirection] = React.useState('normal');
-  const [animationPlayState, setAnimationPlayState] = React.useState('running');
+  const [animationPlayState, setAnimationPlayState] = React.useState('paused');
   const delayRef = React.useRef<ReturnType<typeof setTimeout>>();
 
   React.useEffect(() => {
