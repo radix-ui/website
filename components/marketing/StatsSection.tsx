@@ -34,10 +34,23 @@ export const StatsSection = () => {
                 mb="1"
                 weight="medium"
                 size={{ initial: '8', sm: '9' }}
-                style={{ fontSize: 60 * 1.3, fontFamily: '"Adobe Text Pro", serif' }}
+                style={{
+                  fontSize: 60 * 1.3,
+                  fontFamily: '"Adobe Text Pro", serif',
+                  marginLeft: '-0.01em',
+                }}
               >
                 20M
-                <Box style={{ display: 'inline', fontSize: '75%', marginLeft: '0.15em' }}>+</Box>
+                <Box
+                  style={{
+                    display: 'inline',
+                    fontSize: '75%',
+                    marginLeft: '0.15em',
+                    marginTop: '-0.15em',
+                  }}
+                >
+                  +
+                </Box>
               </Text>
             </Flex>
             <Text color="gray" size={{ initial: '3', sm: '4' }}>
@@ -51,10 +64,23 @@ export const StatsSection = () => {
                 mb="1"
                 weight="medium"
                 size={{ initial: '8', sm: '9' }}
-                style={{ fontSize: 60 * 1.3, fontFamily: '"Adobe Text Pro", serif' }}
+                style={{
+                  fontSize: 60 * 1.3,
+                  fontFamily: '"Adobe Text Pro", serif',
+                  marginLeft: '-0.01em',
+                }}
               >
                 4000
-                <Box style={{ display: 'inline', fontSize: '75%', marginLeft: '0.15em' }}>+</Box>
+                <Box
+                  style={{
+                    display: 'inline',
+                    fontSize: '75%',
+                    marginLeft: '0.15em',
+                    marginTop: '-0.15em',
+                  }}
+                >
+                  +
+                </Box>
               </Text>
             </Flex>
             <Text color="gray" size={{ initial: '3', sm: '4' }}>
@@ -68,7 +94,12 @@ export const StatsSection = () => {
                 mb="1"
                 weight="medium"
                 size={{ initial: '8', sm: '9' }}
-                style={{ fontSize: 60 * 1.3, fontFamily: '"Adobe Text Pro", serif' }}
+                style={{
+                  fontSize: 60 * 1.3,
+                  fontFamily: '"Adobe Text Pro", serif',
+                  marginLeft: '-0.08em',
+                  marginTop: '-0.15em',
+                }}
               >
                 10K
                 <Box style={{ display: 'inline', fontSize: '75%', marginLeft: '0.15em' }}>+</Box>
