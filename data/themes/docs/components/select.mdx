@@ -64,6 +64,30 @@ Used to visually separate items in the Select. It inherits props from the [Radix
 
 ## Examples
 
+### Alternative positioning
+
+Set the `position` prop to `popper` and use the `side` prop to position items below the trigger.
+
+```jsx live=true
+<Flex gap="3" align="center">
+  <Select.Root defaultValue="apple">
+    <Select.Trigger />
+    <Select.Content position="popper">
+      <Select.Item value="apple">Apple</Select.Item>
+      <Select.Item value="orange">Orange</Select.Item>
+    </Select.Content>
+  </Select.Root>
+
+  <Select.Root defaultValue="apple">
+    <Select.Trigger />
+    <Select.Content position="popper" side="top">
+      <Select.Item value="apple">Apple</Select.Item>
+      <Select.Item value="orange">Orange</Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Flex>
+```
+
 ### Size
 
 Use the `size` prop to control the size.
