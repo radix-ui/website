@@ -118,7 +118,7 @@ export function ThemesPanelSolidExample() {
               />
             </Flex>
 
-            <Table.Root variant="surface" size="2" style={{ overflowX: 'auto' }}>
+            <Table.Root variant="surface" size="2">
               <Table.Header>
                 <Table.Row>
                   <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
