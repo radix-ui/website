@@ -1172,8 +1172,12 @@ export default function ComponentsPage() {
                 </NextLink>
               </Flex>
               <Box style={{ whiteSpace: 'nowrap' }}>
-                <Flex direction="column" style={{ width: 1000 }}>
-                  <Flex justify="center" position="relative" style={{ padding: 100 }}>
+                <Flex direction="column" className={styles.PlaygroundHeroContainer}>
+                  <Flex
+                    justify="center"
+                    position="relative"
+                    className={styles.PlaygroundHeroContent}
+                  >
                     <Flex
                       align="center"
                       justify="center"
@@ -1755,7 +1759,7 @@ export default function ComponentsPage() {
                   <DialogTrigger>
                     <Button size="1">Open</Button>
                   </DialogTrigger>
-                  <DialogContent size="1" style={{ maxWidth: 300 }}>
+                  <DialogContent size="1" style={{ maxWidth: 300, marginInline: 'var(--space-5)' }}>
                     <DialogTitle size="3" mb="1">
                       Edit profile
                     </DialogTitle>
@@ -1805,7 +1809,7 @@ export default function ComponentsPage() {
                   <DialogTrigger>
                     <Button size="2">Open</Button>
                   </DialogTrigger>
-                  <DialogContent size="2" style={{ maxWidth: 400 }}>
+                  <DialogContent size="2" style={{ maxWidth: 400, marginInline: 'var(--space-5)' }}>
                     <DialogTitle mb="2">Edit profile</DialogTitle>
                     <DialogDescription size="2" mb="4">
                       Make changes to your profile.
@@ -1849,7 +1853,7 @@ export default function ComponentsPage() {
                   <DialogTrigger>
                     <Button size="3">Open</Button>
                   </DialogTrigger>
-                  <DialogContent size="3" style={{ maxWidth: 500 }}>
+                  <DialogContent size="3" style={{ maxWidth: 500, marginInline: 'var(--space-5)' }}>
                     <DialogTitle>Edit profile</DialogTitle>
                     <DialogDescription size="2" mb="4">
                       Make changes to your profile.
@@ -1893,7 +1897,7 @@ export default function ComponentsPage() {
                   <DialogTrigger>
                     <Button size="4">Open</Button>
                   </DialogTrigger>
-                  <DialogContent size="4">
+                  <DialogContent size="4" style={{ marginInline: 'var(--space-5)' }}>
                     <DialogTitle size="6">Edit profile</DialogTitle>
                     <DialogDescription size="3" mb="5">
                       Make changes to your profile.
@@ -3709,8 +3713,12 @@ export default function ComponentsPage() {
               </Flex>
               {/* Apply a negative margin bottom to negate the table padding bottom of the examples */}
               <Box style={{ whiteSpace: 'nowrap' }} mb="-6">
-                <Flex direction="column" style={{ width: 1000 }} mb="6">
-                  <Flex justify="center" position="relative" style={{ padding: 100 }}>
+                <Flex direction="column" className={styles.PlaygroundHeroContainer} mb="6">
+                  <Flex
+                    justify="center"
+                    position="relative"
+                    className={styles.PlaygroundHeroContent}
+                  >
                     <Flex
                       align="center"
                       justify="center"
@@ -3721,7 +3729,7 @@ export default function ComponentsPage() {
                       <ThemesPanelBackgroundImage id="1" width="100%" height="200%" />
                     </Flex>
 
-                    <TableRoot variant="surface" size="2">
+                    <TableRoot variant="surface" size={{ initial: '1', sm: '2' }}>
                       <TableHeader>
                         <TableRow>
                           <TableColumnHeaderCell>Full name</TableColumnHeaderCell>
@@ -4711,7 +4719,12 @@ const ChatBubbleIcon = (props: React.ComponentPropsWithoutRef<'svg'>) => (
 );
 
 const PlaygroundSection: React.FC<React.PropsWithChildren<unknown>> = ({ children }) => (
-  <Flex className={styles.PlaygroundSection} direction="column" gap="5" mb="8">
+  <Flex
+    className={styles.PlaygroundSection}
+    direction="column"
+    gap="5"
+    mb={{ initial: '5', sm: '8' }}
+  >
     {children}
   </Flex>
 );
