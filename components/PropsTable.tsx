@@ -21,7 +21,7 @@ export function PropsTable({
 }) {
   return (
     <Box my="5" asChild>
-      <Table.Root variant="surface">
+      <Table.Root variant="surface" style={{ overflowX: 'scroll' }}>
         <Table.Header>
           <Table.Row>
             <Table.ColumnHeaderCell style={{ width: propHeaderFixedWidth ? '37%' : 'auto' }}>
