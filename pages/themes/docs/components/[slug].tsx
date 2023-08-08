@@ -41,7 +41,7 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
           {frontmatter.metaDescription}
         </Text>
 
-        <Flex gap="5" mt="5">
+        <Flex direction={{ initial: 'column', xs: 'row' }} gap={{ initial: '3', xs: '5' }} mt="5">
           <Flex asChild display="inline-flex" align="center" gap="2">
             <Link
               size="3"
