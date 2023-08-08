@@ -35,7 +35,7 @@ export function ThemesPanelTranslucentExample() {
       <Inset>
         <Theme panelBackground="translucent" asChild>
           <Flex direction="column">
-            <Flex justify="center" position="relative" px="5" py="8">
+            <Flex justify="center" position="relative" px="5" py={{ initial: '5', sm: '8' }}>
               <Flex
                 align="center"
                 justify="center"
@@ -84,7 +84,7 @@ export function ThemesPanelTranslucentExample() {
 
                 <Flex mt="6" justify="end" gap="3">
                   <Button tabIndex={-1} variant="soft">
-                    Create an account
+                    Create account
                   </Button>
                   <Button tabIndex={-1}>Sign in</Button>
                 </Flex>
@@ -102,53 +102,51 @@ export function ThemesPanelSolidExample() {
     <Card>
       <Inset>
         <Theme panelBackground="solid" asChild>
-          <Flex direction="column">
-            <Flex justify="center" position="relative" px="5" py="8">
-              <Flex
-                align="center"
-                justify="center"
-                position="absolute"
-                inset="0"
-                style={{ overflow: 'hidden' }}
-              >
-                <ThemesPanelBackgroundImage
-                  id="2"
-                  width="1700"
-                  height="300%"
-                  style={{ opacity: 0.5 }}
-                />
-              </Flex>
-
-              <Table.Root variant="surface" size="2">
-                <Table.Header>
-                  <Table.Row>
-                    <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
-                    <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
-                    <Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
-                  </Table.Row>
-                </Table.Header>
-
-                <Table.Body>
-                  <Table.Row>
-                    <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
-                    <Table.Cell>danilo@example.com</Table.Cell>
-                    <Table.Cell>Developer</Table.Cell>
-                  </Table.Row>
-
-                  <Table.Row>
-                    <Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
-                    <Table.Cell>zahra@example.com</Table.Cell>
-                    <Table.Cell>Admin</Table.Cell>
-                  </Table.Row>
-
-                  <Table.Row>
-                    <Table.RowHeaderCell>Jasper Eriksson</Table.RowHeaderCell>
-                    <Table.Cell>jasper@example.com</Table.Cell>
-                    <Table.Cell>Developer</Table.Cell>
-                  </Table.Row>
-                </Table.Body>
-              </Table.Root>
+          <Flex justify="center" position="relative" px="5" py={{ initial: '5', sm: '8' }}>
+            <Flex
+              align="center"
+              justify="center"
+              position="absolute"
+              inset="0"
+              style={{ overflow: 'hidden' }}
+            >
+              <ThemesPanelBackgroundImage
+                id="2"
+                width="1700"
+                height="300%"
+                style={{ opacity: 0.5 }}
+              />
             </Flex>
+
+            <Table.Root variant="surface" size="2" style={{ overflowX: 'scroll' }}>
+              <Table.Header>
+                <Table.Row>
+                  <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
+                </Table.Row>
+              </Table.Header>
+
+              <Table.Body>
+                <Table.Row>
+                  <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+                  <Table.Cell>danilo@example.com</Table.Cell>
+                  <Table.Cell>Developer</Table.Cell>
+                </Table.Row>
+
+                <Table.Row>
+                  <Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+                  <Table.Cell>zahra@example.com</Table.Cell>
+                  <Table.Cell>Admin</Table.Cell>
+                </Table.Row>
+
+                <Table.Row>
+                  <Table.RowHeaderCell>Jasper Eriksson</Table.RowHeaderCell>
+                  <Table.Cell>jasper@example.com</Table.Cell>
+                  <Table.Cell>Developer</Table.Cell>
+                </Table.Row>
+              </Table.Body>
+            </Table.Root>
           </Flex>
         </Theme>
       </Inset>
@@ -662,8 +660,9 @@ export function ThemesVolumeControlExample() {
         backgroundColor: 'var(--gray-2)',
         borderRadius: 'var(--radius-1)',
         border: '1px solid var(--gray-4)',
+        minWidth: 350,
       }}
-      p="6"
+      p={{ initial: '5', sm: '6' }}
     >
       <Card size="3" style={{ maxWidth: 460, width: '100%' }} variant="classic">
         <Flex direction="column">
