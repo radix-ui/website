@@ -38,7 +38,7 @@ const MagicCurtainRoot = ({ children }: React.PropsWithChildren<{}>) => {
 
     itemsRef.current[0]?.setVisibility('visible-in-front');
 
-    if (/Android|iPhone/i.test(navigator.userAgent)) {
+    if (/Android|iPhone|Firefox/i.test(navigator.userAgent)) {
       return;
     }
 
