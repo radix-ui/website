@@ -90,6 +90,7 @@ export const CaseStudiesSection = () => {
 
         <NextLink href="/primitives/case-studies" passHref>
           <Link
+            size="2"
             color="gray"
             mb="4"
             style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--space-1)' }}
