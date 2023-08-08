@@ -38,14 +38,13 @@ Use the `size` prop to control the size.
 Use the `variant` prop to control the visual style.
 
 ```jsx live=true
-<Grid columns="2" gap="2" display="inline-grid">
-  <Checkbox variant="surface" defaultChecked />
-  <Checkbox variant="surface" />
-
+<Grid columns="3" gap="2" display="inline-grid">
   <Checkbox variant="classic" defaultChecked />
-  <Checkbox variant="classic" />
-
+  <Checkbox variant="surface" defaultChecked />
   <Checkbox variant="soft" defaultChecked />
+
+  <Checkbox variant="classic" />
+  <Checkbox variant="surface" />
   <Checkbox variant="soft" />
 </Grid>
 ```
@@ -68,14 +67,13 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 Use the `highContrast` prop to add additional contrast.
 
 ```jsx live=true
-<Grid columns="2" gap="2" display="inline-grid">
-  <Checkbox variant="surface" defaultChecked />
-  <Checkbox variant="surface" defaultChecked highContrast />
-
+<Grid columns="3" gap="2" display="inline-grid">
   <Checkbox variant="classic" defaultChecked />
-  <Checkbox variant="classic" defaultChecked highContrast />
-
+  <Checkbox variant="surface" defaultChecked />
   <Checkbox variant="soft" defaultChecked />
+
+  <Checkbox variant="classic" defaultChecked highContrast />
+  <Checkbox variant="surface" defaultChecked highContrast />
   <Checkbox variant="soft" defaultChecked highContrast />
 </Grid>
 ```
