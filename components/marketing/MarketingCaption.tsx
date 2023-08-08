@@ -4,5 +4,5 @@ export const MarketingCaption = ({
   asChild: _,
   ...props
 }: React.ComponentPropsWithoutRef<typeof Text>) => (
-  <Text as="div" weight="medium" size="2" color="teal" {...props} />
+  <Text as="div" size="2" weight="medium" {...props} />
 );
