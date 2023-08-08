@@ -63,13 +63,13 @@ export function ThemesPanelTranslucentExample() {
                     <Text as="div" size="2" weight="medium" mb="2">
                       Email address
                     </Text>
-                    <TextFieldInput tabIndex={-1} placeholder="Enter your email" />
+                    <TextFieldInput placeholder="Enter your email" />
                   </label>
                 </Box>
 
                 <Box mb="5" position="relative">
                   <Box position="absolute" top="0" right="0" style={{ marginTop: -2 }}>
-                    <Link href="#card" tabIndex={-1} size="2">
+                    <Link href="#card" size="2">
                       Forgot password?
                     </Link>
                   </Box>
@@ -78,15 +78,13 @@ export function ThemesPanelTranslucentExample() {
                     <Text as="div" size="2" weight="medium" mb="2">
                       Password
                     </Text>
-                    <TextFieldInput tabIndex={-1} placeholder="Enter your password" />
+                    <TextFieldInput placeholder="Enter your password" />
                   </label>
                 </Box>
 
                 <Flex mt="6" justify="end" gap="3">
-                  <Button tabIndex={-1} variant="soft">
-                    Create account
-                  </Button>
-                  <Button tabIndex={-1}>Sign in</Button>
+                  <Button variant="soft">Create account</Button>
+                  <Button>Sign in</Button>
                 </Flex>
               </Card>
             </Flex>
@@ -188,11 +186,9 @@ export function ThemesVariantsExample() {
                   </Text>
 
                   <Flex direction="column" gap="3" align="stretch">
-                    <Button tabIndex={-1} radius="full">
-                      Next invoice
-                    </Button>
+                    <Button radius="full">Next invoice</Button>
 
-                    <Button tabIndex={-1} radius="full" variant="outline">
+                    <Button radius="full" variant="outline">
                       Done
                     </Button>
                   </Flex>
@@ -224,7 +220,7 @@ export function ThemesVariantsExample() {
                     <Text size="2" weight="medium">
                       Name
                     </Text>
-                    <TextField.Input variant="surface" tabIndex={-1} defaultValue="Emily Adams" />
+                    <TextField.Input variant="surface" defaultValue="Emily Adams" />
                   </Label>
                 </Flex>
 
@@ -233,7 +229,7 @@ export function ThemesVariantsExample() {
                     <Text size="2" weight="medium">
                       Username
                     </Text>
-                    <TextField.Input variant="surface" tabIndex={-1} defaultValue="@emilyadams" />
+                    <TextField.Input variant="surface" defaultValue="@emilyadams" />
                   </Label>
                 </Flex>
 
@@ -242,11 +238,7 @@ export function ThemesVariantsExample() {
                     <Text size="2" weight="medium">
                       Email
                     </Text>
-                    <TextField.Input
-                      variant="surface"
-                      tabIndex={-1}
-                      defaultValue="emily@example.com"
-                    />
+                    <TextField.Input variant="surface" defaultValue="emily@example.com" />
                   </Label>
                 </Flex>
 
@@ -257,21 +249,21 @@ export function ThemesVariantsExample() {
                   <Flex direction="column" gap="2">
                     <Flex asChild gap="2">
                       <Label>
-                        <Checkbox variant="surface" tabIndex={-1} defaultChecked />
+                        <Checkbox variant="surface" defaultChecked />
                         <Text size="2">Display my listening history</Text>
                       </Label>
                     </Flex>
 
                     <Flex asChild gap="2">
                       <Label>
-                        <Checkbox variant="surface" tabIndex={-1} />
+                        <Checkbox variant="surface" />
                         <Text size="2">Everyone can follow my activity</Text>
                       </Label>
                     </Flex>
 
                     <Flex asChild gap="2">
                       <Label>
-                        <Checkbox variant="surface" tabIndex={-1} defaultChecked />
+                        <Checkbox variant="surface" defaultChecked />
                         <Text size="2">Show my playlists in search</Text>
                       </Label>
                     </Flex>
@@ -283,12 +275,8 @@ export function ThemesVariantsExample() {
                     Danger zone
                   </Text>
                   <Flex align="start" direction="column" gap="2">
-                    <Link tabIndex={-1} size="2">
-                      Reset recommendations
-                    </Link>
-                    <Link tabIndex={-1} size="2">
-                      Delete profile
-                    </Link>
+                    <Link size="2">Reset recommendations</Link>
+                    <Link size="2">Delete profile</Link>
                   </Flex>
                 </Flex>
               </Flex>
@@ -332,7 +320,7 @@ export function ThemesScalingExample() {
                         {person.name}
                       </Text>
                       <Text as="div" size="2" color="gray">
-                        Approved invoice <Link tabIndex={-1}>#3461</Link>
+                        Approved invoice <Link>#3461</Link>
                       </Text>
                     </Box>
                   </Flex>
@@ -376,15 +364,15 @@ export function ThemesRadiusExample() {
                       fallback={allPeople[22]?.name[0].toUpperCase()}
                     />
                     <Box grow="1">
-                      <TextArea placeholder="Reply…" tabIndex={-1} />
+                      <TextArea placeholder="Reply…" />
                       <Flex gap="3" mt="3" justify="between">
                         <Flex asChild align="center" gap="2">
                           <Label>
-                            <Checkbox checked tabIndex={-1} />
+                            <Checkbox checked />
                             <Text size="2">Send to group</Text>
                           </Label>
                         </Flex>
-                        <Button tabIndex={-1}>Send message</Button>
+                        <Button>Send message</Button>
                       </Flex>
                     </Box>
                   </Flex>
@@ -683,7 +671,7 @@ export function ThemesVolumeControlExample() {
           <Flex gap="2" align="center" height="4" mt="2" mb="5">
             <VolumeNoneIcon color="var(--gray-a9)" />
             <Box grow="1">
-              <Slider tabIndex={-1} defaultValue={[80]} />
+              <Slider defaultValue={[80]} />
             </Box>
             <VolumeMaxIcon color="var(--gray-a9)" />
           </Flex>
@@ -691,7 +679,7 @@ export function ThemesVolumeControlExample() {
           <Grid columns={{ initial: '2', xs: '4' }} pt="2" pb="1" gapY="5">
             <Flex direction="column" gap="2" align="center" asChild>
               <Label>
-                <IconButton tabIndex={-1} variant="soft" color="gray">
+                <IconButton variant="soft" color="gray">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 30 30"
@@ -715,7 +703,7 @@ export function ThemesVolumeControlExample() {
 
             <Flex direction="column" gap="2" align="center" asChild>
               <Label>
-                <IconButton tabIndex={-1} variant="solid">
+                <IconButton variant="solid">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 30 30"
@@ -739,7 +727,7 @@ export function ThemesVolumeControlExample() {
 
             <Flex direction="column" gap="2" align="center" asChild>
               <Label>
-                <IconButton tabIndex={-1} variant="soft" color="gray">
+                <IconButton variant="soft" color="gray">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 30 30"
@@ -763,7 +751,7 @@ export function ThemesVolumeControlExample() {
 
             <Flex direction="column" gap="2" align="center" asChild>
               <Label>
-                <IconButton tabIndex={-1} variant="soft" color="gray">
+                <IconButton variant="soft" color="gray">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 30 30"
@@ -913,8 +901,8 @@ function AlbumCard() {
           </Text>
 
           <Flex justify="center" gap="3">
-            <Button tabIndex={-1}>Listen Now</Button>
-            <IconButton tabIndex={-1} variant="soft">
+            <Button>Listen Now</Button>
+            <IconButton variant="soft">
               <HeartIcon />
             </IconButton>
           </Flex>
