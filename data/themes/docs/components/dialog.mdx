@@ -1,0 +1,152 @@
+---
+metaTitle: Dialog
+metaDescription: A modal dialog window displayed above the page.
+sourcePath: components/dialog
+---
+
+```jsx live=true
+<Dialog.Root>
+  <Dialog.Trigger>
+    <Button>Edit profile</Button>
+  </Dialog.Trigger>
+
+  <Dialog.Content style={{ maxWidth: 450 }}>
+    <Dialog.Title>Edit profile</Dialog.Title>
+    <Dialog.Description size="2" mb="4">
+      Make changes to your profile.
+    </Dialog.Description>
+
+    <Flex direction="column" gap="3">
+      <label>
+        <Text as="div" size="2" mb="1" weight="bold">
+          Name
+        </Text>
+        <TextField.Input
+          defaultValue="Freja Johnsen"
+          placeholder="Enter your full name"
+        />
+      </label>
+      <label>
+        <Text as="div" size="2" mb="1" weight="bold">
+          Email
+        </Text>
+        <TextField.Input
+          defaultValue="freja@example.com"
+          placeholder="Enter your email"
+        />
+      </label>
+    </Flex>
+
+    <Flex gap="3" mt="4" justify="end">
+      <Dialog.Close>
+        <Button variant="soft" color="gray">
+          Cancel
+        </Button>
+      </Dialog.Close>
+      <Dialog.Close>
+        <Button>Save</Button>
+      </Dialog.Close>
+    </Flex>
+  </Dialog.Content>
+</Dialog.Root>
+```
+
+## API Reference
+
+This component inherits props from the [Radix Dialog](/primitives/docs/components/dialog) primitive.
+
+{
+
+<Callout.Root my="5">
+  <Callout.Icon>
+    <InfoCircledIcon />
+  </Callout.Icon>
+  <Callout.Text>
+    Note that this dialog is designed around the modal pattern, so the{' '}
+    <Code>modal</Code> prop is unavailable.
+  </Callout.Text>
+</Callout.Root>
+
+}
+
+### Root
+
+Contains all the parts of a dialog.
+
+### Trigger
+
+Wraps the control that will open the dialog.
+
+### Content
+
+Contains the content of the dialog. This component is based on the `div` element.
+
+<ThemesPropsTable name="dialogContent" />
+
+### Title
+
+An accessible title that is announced when the dialog is opened. This part is based on the [Heading](/themes/docs/components/heading) component with a pre-defined font size and leading trim on top.
+
+### Description
+
+An optional accessible description that is announced when the dialog is opened. This part is based on the [Text](/themes/docs/components/text) component with a pre-defined font size.
+
+If you want to remove the description entirely, remove this part and pass `aria-describedby={undefined}` to `Dialog.Content`.
+
+### Close
+
+Wraps the control that will close the dialog.
+
+## Examples
+
+### With inset content
+
+Use the [Inset](/themes/docs/components/inset) component to align content flush with the sides of the dialog.
+
+```jsx live=true
+<Dialog.Root>
+  <Dialog.Trigger>
+    <Button>View users</Button>
+  </Dialog.Trigger>
+  <Dialog.Content>
+    <Dialog.Title>Users</Dialog.Title>
+    <Dialog.Description>
+      The following users have access to this project.
+    </Dialog.Description>
+
+    <Inset side="x" my="5">
+      <Table.Root>
+        <Table.Header>
+          <Table.Row>
+            <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
+          </Table.Row>
+        </Table.Header>
+
+        <TableBody>
+          <Table.Row>
+            <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+            <Table.Cell>danilo@example.com</Table.Cell>
+            <Table.Cell>Developer</Table.Cell>
+          </Table.Row>
+
+          <Table.Row>
+            <Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+            <Table.Cell>zahra@example.com</Table.Cell>
+            <Table.Cell>Admin</Table.Cell>
+          </Table.Row>
+        </TableBody>
+      </Table.Root>
+    </Inset>
+
+    <Flex gap="3" justify="end">
+      <DialogClose>
+        <Button variant="soft" color="gray">
+          Close
+        </Button>
+      </DialogClose>
+    </Flex>
+  </Dialog.Content>
+</Dialog.Root>
+```

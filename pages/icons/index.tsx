@@ -1,0 +1,51 @@
+import { IconsHeader } from '@components/IconsHeader';
+import { MobileMenu, MobileMenuProvider } from '@components/MobileMenu';
+import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
+import { IconsHero } from '@components/icons/IconsHero';
+import { IconsPanel } from '@components/icons/IconsPanel';
+import { iconsRoutes } from '@lib/iconsRoutes';
+import { Box, Container, ScrollArea } from '@radix-ui/themes';
+import { Menu } from '@components/icons/Menu';
+import { DocsNav } from '@components/DocsNav';
+import { ColorsHeader } from '@components/ColorsHeader';
+
+export default function Home() {
+  return (
+    <MobileMenuProvider>
+      <MobileMenu>
+        <ColorsHeader />
+        <ScrollArea>
+          <Box pt="4" px="4" pb="9">
+            <DocsNav
+              routes={[
+                {
+                  pages: [
+                    {
+                      title: 'Homepage',
+                      slug: 'icons',
+                    },
+                  ],
+                },
+                ...iconsRoutes,
+              ]}
+            />
+          </Box>
+        </ScrollArea>
+      </MobileMenu>
+
+      <TitleAndMetaTags
+        title="Radix Icons"
+        description="A crisp set of 15×15 icons designed by the WorkOS team."
+        image="default.png"
+      />
+
+      <IconsHeader ghost />
+
+      <IconsHero />
+      <Menu />
+      <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }} pb="9">
+        <IconsPanel />
+      </Container>
+    </MobileMenuProvider>
+  );
+}

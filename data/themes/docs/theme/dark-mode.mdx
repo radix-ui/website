@@ -1,0 +1,99 @@
+---
+metaTitle: Dark mode
+metaDescription: Using appearance to manage and integrate dark mode.
+---
+
+# Dark mode
+
+<Description>Using appearance to manage and integrate dark mode.</Description>
+
+## Overview
+
+Light and dark modes are supported out of the box, allowing you to easily switch appearance without any additional design or styling.
+
+<Box my="5">
+  <ThemesDarkModeExample />
+</Box>
+
+## Basic usage
+
+By default, the root `Theme` appearance is `light`. To set a different appearance pass it via the `appearance` prop. This will force the theme to use the specified setting.
+
+```jsx line=1
+<Theme __appearance__="dark">
+  <MyApp />
+</Theme>
+```
+
+### Automatic background color
+
+Radix Themes will automatically set the background color of your app to match `appearance`, this is achieved by injecting a `background-color` style on the `body` element.
+
+As the style injection can only occur on the client, you may experience a hydration warning. In this case it's safe to suppress the warning.
+
+```jsx line=4
+// app/layout.jsx
+export default function Layout({ children }) {
+  return (
+    <html __suppressHydrationWarning__>
+      <head />
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+## Inheriting from system preferences
+
+A common requirement is to inherit the appearance setting from a users system preferences.
+
+This is a deceptively complex problem to solve given SSR, SSG and client side hydration considerations. To make implementation easier, we recommend integrating with a theme switching library.
+
+### With next-themes
+
+Radix Themes already implements matching class names which makes integration with `next-themes` simple and straight-forward.
+
+All that is needed is to ensure that `attribute` is set to use the `class` switching method.
+
+```jsx line=6
+import { Theme } from '@radix-ui/themes';
+import { ThemeProvider } from 'next-themes';
+
+export default function () {
+  return (
+    <ThemeProvider __attribute__="class">
+      <Theme>
+        <MyApp />
+      </Theme>
+    </ThemeProvider>
+  );
+}
+```
+
+{
+
+<Callout.Root my="5">
+  <Callout.Icon>
+    <InfoCircledIcon />
+  </Callout.Icon>
+  <Callout.Text>
+    It's important <Strong>not</Strong> to pass <Code>resolvedTheme</Code> to
+    <Code>appearance</Code>, instead relying entirely on class switching. This is
+    important as <Code>next-themes</Code> will automatically prevent any unsightly
+    flashing during initial render.
+  </Callout.Text>
+</Callout.Root>
+
+}
+
+### With other libraries
+
+Any library that supports class switching is compatible, you'll just need to ensure that the appended class names match those used by Radix Themes:
+
+- `light`
+- `dark`
+
+or
+
+- `light-theme`
+- `dark-theme`

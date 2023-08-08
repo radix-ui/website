@@ -1,55 +1,20 @@
-import React from 'react';
+import * as React from 'react';
 import NextLink from 'next/link';
-import { Box, Link } from '@modulz/design-system';
+import { Box, Link, Text } from '@radix-ui/themes';
+import styles from './OldVersionNote.module.css';
 
 export function OldVersionNote({ name, href }) {
   return (
-    <Box
-      as="aside"
-      css={{
-        mt: '-$5',
-        mb: '$5',
-        mx: '-$5',
-        py: '$2',
-        px: '$5',
-        bc: '$yellow2',
-        boxShadow: '0 0 0 1px $colors$yellow5',
-
-        '@bp2': {
-          position: 'absolute',
-          top: '-$8',
-          left: '$5',
-          right: '$5',
-          m: 0,
-          px: '$3',
-          borderBottomRightRadius: '$3',
-          borderBottomLeftRadius: '$3',
-        },
-        '@bp4': {
-          px: '$8',
-          mx: '-$6',
-          left: '-$1',
-          right: '-$1',
-        },
-        '& p': {
-          fontSize: '$3',
-          color: '$yellow11',
-          lineHeight: '21px',
-          margin: 0,
-        },
-      }}
-    >
-      <p>
-        A newer version of{' '}
-        <Box as="span" css={{ fontWeight: 500 }}>
-          {name}
-        </Box>{' '}
-        is available.{' '}
-        <NextLink href={href} passHref>
-          <Link variant="blue">Learn more</Link>
-        </NextLink>
-        .
-      </p>
+    <Box asChild className={styles.Note} mb="5">
+      <aside>
+        <Text as="p" size="2" color="yellow">
+          A newer version of <Text weight="bold">{name}</Text> is available.{' '}
+          <NextLink href={href} passHref>
+            <Link color="blue">Learn more</Link>
+          </NextLink>
+          .
+        </Text>
+      </aside>
     </Box>
   );
 }

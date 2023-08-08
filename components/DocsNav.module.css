@@ -1,0 +1,40 @@
+.DocsNavItem {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: var(--space-2) var(--space-3);
+  border-radius: 999px;
+  transition: background-color 50ms linear;
+  user-select: none;
+  min-height: var(--space-6);
+  color: var(--gray-12);
+}
+
+.DocsNavItem:not(:last-of-type) {
+  margin-bottom: 1px;
+}
+
+.DocsNavItem:focus {
+  outline: none;
+}
+
+.DocsNavItem:focus-visible {
+  box-shadow: inset 0 0 0 1px var(--accent-8), 0 0 0 1px var(--accent-8);
+}
+
+.DocsNavItem:not([href]) {
+  color: var(--gray-a10);
+}
+
+.DocsNavItem.active {
+  background-color: var(--accent-a5);
+}
+
+@media (hover: hover) {
+  .DocsNavItem[href]:hover {
+    background-color: var(--accent-a4);
+  }
+  .DocsNavItem.active:hover {
+    background-color: var(--accent-a5);
+  }
+}

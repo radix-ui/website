@@ -1,4 +1,4 @@
-import React, { ReactType } from 'react';
+import * as React from 'react';
 import { Box } from '@modulz/design-system';
 import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import { createContext } from '@radix-ui/react-context';
@@ -151,6 +151,10 @@ export const CarouselSlideList = (props) => {
       ref={composedRefs}
       data-state={dragStart ? 'dragging' : undefined}
       onMouseDownCapture={composeEventHandlers(props.onMouseDownCapture, (event: MouseEvent) => {
+        if (event.target instanceof HTMLInputElement) {
+          return;
+        }
+
         // Drag only if main mouse button was clicked
         if (event.button === 0) {
           document.addEventListener('mousemove', handleMouseMove);
@@ -162,11 +166,19 @@ export const CarouselSlideList = (props) => {
         }
       })}
       onPointerDown={composeEventHandlers(props.onPointerDown, (event: PointerEvent) => {
+        if (event.target instanceof HTMLInputElement) {
+          return;
+        }
+
         const element = event.target as HTMLElement;
         element.style.userSelect = 'none';
         element.setPointerCapture(event.pointerId);
       })}
       onPointerUp={composeEventHandlers(props.onPointerUp, (event: PointerEvent) => {
+        if (event.target instanceof HTMLInputElement) {
+          return;
+        }
+
         const element = event.target as HTMLElement;
         element.style.userSelect = '';
         element.releasePointerCapture(event.pointerId);

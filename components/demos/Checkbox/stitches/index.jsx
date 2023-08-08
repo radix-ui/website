@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Checkbox from '@radix-ui/react-checkbox';
-import { styled } from '@modulz/design-system';
+import { styled } from '@stitches/react';
 import { violet, blackA } from '@radix-ui/colors';
 import { CheckIcon } from '@radix-ui/react-icons';
 

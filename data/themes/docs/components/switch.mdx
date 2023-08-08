@@ -1,0 +1,92 @@
+---
+metaTitle: Switch
+metaDescription: A toggle switch alternative to the checkbox.
+sourcePath: components/switch
+---
+
+```jsx live=true
+<Flex>
+  <Text size="2">
+    <label>
+      <Switch mr="2" defaultChecked /> Sync settings{' '}
+      <Text color="gray">(Default)</Text>
+    </label>
+  </Text>
+</Flex>
+```
+
+## API Reference
+
+This component inherits props from the [Radix Switch](/primitives/docs/components/switch) primitive and supports [common margin props](/themes/docs/theme/layout#margin-props).
+
+<ThemesPropsTable name="switch" />
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Flex align="center" gap="2">
+  <Switch size="3" defaultChecked />
+  <Switch size="2" defaultChecked />
+  <Switch size="1" defaultChecked />
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style.
+
+```jsx live=true scroll=true
+<Flex gap="2">
+  <Flex direction="column" gap="2">
+    <Switch variant="surface" defaultChecked />
+    <Switch variant="classic" defaultChecked />
+    <Switch variant="soft" defaultChecked />
+  </Flex>
+
+  <Flex direction="column" gap="2">
+    <Switch variant="surface" />
+    <Switch variant="classic" />
+    <Switch variant="soft" />
+  </Flex>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
+
+```jsx live=true
+<Flex gap="2">
+  <Switch color="indigo" defaultChecked />
+  <Switch color="cyan" defaultChecked />
+  <Switch color="orange" defaultChecked />
+  <Switch color="crimson" defaultChecked />
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to add additional contrast.
+
+```jsx live=true
+<Flex gap="2">
+  <Switch defaultChecked />
+  <Switch defaultChecked highContrast />
+</Flex>
+```
+
+### Radius
+
+Use the `radius` prop to assign a specific radius value, ignoring the global theme.
+
+```jsx live=true
+<Flex gap="3">
+  <Switch radius="none" defaultChecked />
+  <Switch radius="large" defaultChecked />
+  <Switch radius="full" defaultChecked />
+</Flex>
+```

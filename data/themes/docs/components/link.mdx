@@ -1,0 +1,82 @@
+---
+metaTitle: Link
+metaDescription: A semantic element for navigation between pages.
+sourcePath: components/link
+---
+
+```jsx live=true
+<Link>The quick brown fox jumps over the lazy dog.</Link>
+```
+
+## API Reference
+
+This component is based on the `a` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
+
+<ThemesPropsTable name="link" />
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size of the link. The prop also provides correct line height and corrective letter spacing—as text size increases, the relative line height and letter spacing decrease.
+
+```jsx live=true scroll=true
+<Flex direction="column" gap="3">
+  <Link size="9">The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="8">The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="7">The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="6">The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="5">The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="4">The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="3">The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="2">The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="1">The quick brown fox jumps over the lazy dog.</Link>
+</Flex>
+```
+
+### Weight
+
+Use the `weight` prop to set the text weight.
+
+```jsx live="true"
+<Flex direction="column">
+  <Link weight="regular">The quick brown fox jumps over the lazy dog.</Link>
+  <Link weight="medium">The quick brown fox jumps over the lazy dog.</Link>
+  <Link weight="bold">The quick brown fox jumps over the lazy dog.</Link>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
+
+```jsx live=true scroll=true
+<Flex direction="column">
+  <Link color="indigo">The quick brown fox jumps over the lazy dog.</Link>
+  <Link color="cyan">The quick brown fox jumps over the lazy dog.</Link>
+  <Link color="orange">The quick brown fox jumps over the lazy dog.</Link>
+  <Link color="crimson">The quick brown fox jumps over the lazy dog.</Link>
+</Flex>
+```
+
+### Underline
+
+Use the `underline` prop to manage the visibility of the underline affordance.
+
+```jsx live="true" scroll=true
+<Flex direction="column">
+  <Link underline="hover">The quick brown fox jumps over the lazy dog.</Link>
+  <Link underline="always">The quick brown fox jumps over the lazy dog.</Link>
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to add additional contrast.
+
+```jsx live=true scroll=true
+<Flex direction="column">
+  <Link>The quick brown fox jumps over the lazy dog.</Link>
+  <Link highContrast>The quick brown fox jumps over the lazy dog.</Link>
+</Flex>
+```

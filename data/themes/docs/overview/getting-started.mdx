@@ -1,0 +1,163 @@
+---
+metaTitle: Getting started
+metaDescription: Install Radix Themes and start building your project in minutes
+---
+
+# Getting started
+
+<Description>
+  Install Radix Themes and start building your project in minutes.
+</Description>
+
+## Installation
+
+Getting up and running is quick and easy.
+
+### 1. Install Radix Themes
+
+Install the package from your command line.
+
+<TabsCodeBlock defaultValue="npm" my="5">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+  </TabsList>
+  <TabsContent value="npm">
+    <TabsCodeBlockContent
+      language="bash"
+      value="npm install @radix-ui/themes"
+    />
+  </TabsContent>
+  <TabsContent value="yarn">
+    <TabsCodeBlockContent language="bash" value="yarn add @radix-ui/themes" />
+  </TabsContent>
+  <TabsContent value="pnpm">
+    <TabsCodeBlockContent
+      language="bash"
+      value="pnpm install @radix-ui/themes"
+    />
+  </TabsContent>
+</TabsCodeBlock>
+
+### 2. Import the CSS file
+
+Import the global CSS file at the root of your application.
+
+```ts
+import '@radix-ui/themes/index.css';
+```
+
+### 3. Add the Theme component
+
+Wrap the root of your application in a `Theme` component.
+
+```jsx line=5,7
+import { Theme } from '@radix-ui/themes';
+
+export default function () {
+  return (
+    <Theme>
+      <MyApp />
+    </Theme>
+  );
+}
+```
+
+### 4. Start building
+
+You are now ready to use Radix Themes components.
+
+```jsx
+import { Flex, Text, Button } from '@radix-ui/themes';
+
+export default function MyApp() {
+  return (
+    <Flex direction="column" gap="2">
+      <Text>Hello from Radix Themes :)</Text>
+      <Button>Let's go</Button>
+    </Flex>
+  );
+}
+```
+
+## Customizing your theme
+
+Configuration is managed and applied via the [Theme](/themes/docs/components/theme) component.
+
+### Basic configuration
+
+Pass [configuration](/themes/docs/components/theme) to the `Theme` to customize appearance.
+
+```jsx line=1
+<Theme accentColor="crimson" grayColor="sand" radius="large" scaling="95%">
+  <MyApp />
+</Theme>
+```
+
+### Using the theme panel
+
+`ThemePanel` is a drop in component that allows you to preview the theme configuration in real time.
+
+Visit the [component playground](/themes/playground) to see it in action.
+
+To add it to your app, import it from the package and drop it inside your root `Theme`.
+
+```jsx line=7
+import { Theme, ThemePanel } from '@radix-ui/themes';
+
+export default function () {
+  return (
+    <Theme>
+      <MyApp />
+      <ThemePanel />
+    </Theme>
+  );
+}
+```
+
+### Take it further
+
+Get the most out of Radix Themes by exploring more concepts and features.
+
+{
+
+  <Grid columns={{ initial: '1', xs: '2' }} my="6" gap="4">
+      <ThemesLinkCard
+        title="Theme overview"
+        desc="Anatomy of a theme and how to create the perfect style for your app."
+        href="/themes/docs/theme/overview"
+      />
+
+      <ThemesLinkCard
+        title="Visual style"
+        desc="Learn how variants, radii and shadows influence your apps visual style."
+        href="/themes/docs/theme/dark-mode"
+      />
+
+      <ThemesLinkCard
+        title="Color"
+        desc="Understand the color system and its application in your theme."
+        href="/themes/docs/theme/dark-mode"
+      />
+
+      <ThemesLinkCard
+        title="Dark mode"
+        desc="Integrate a great looking dark mode into your app using appearances."
+        href="/themes/docs/theme/dark-mode"
+      />
+
+      <ThemesLinkCard
+        title="Typography"
+        desc="Add custom typefaces and fine tune typographic details."
+        href="/themes/docs/theme/typography"
+      />
+
+      <ThemesLinkCard
+        title="Layout"
+        desc="Leverage the built-in responsive design utilities and prop syntax."
+        href="/themes/docs/theme/breakpoints"
+      />
+    </Grid>
+
+}

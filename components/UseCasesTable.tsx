@@ -1,137 +1,94 @@
-import {
-  Box,
-  Text,
-  Section,
-  Container,
-  Grid,
-  Table,
-  Code,
-  Heading,
-  Flex,
-  Paragraph,
-  Tr,
-  Td,
-  Th,
-  Thead,
-  Tbody,
-  Tfoot,
-} from '@modulz/design-system';
+import { Text, Box } from '@radix-ui/themes';
+
+const steps = [
+  'App background',
+  'Subtle background',
+  'UI element background',
+  'Hovered UI element background',
+  'Active / Selected UI element background',
+  'Subtle borders and separators',
+  'UI element border and focus rings',
+  'Hovered UI element border',
+  'Solid backgrounds',
+  'Hovered solid backgrounds',
+  'Low-contrast text',
+  'High-contrast text',
+];
 
 export function UseCasesTable() {
   return (
-    <Table striped css={{ my: '$5' }}>
-      <Thead>
-        <Tr>
-          <Th css={{ px: '$4' }}>
-            <Text size="2" css={{ color: 'inherit' }}>
-              Step
-            </Text>
-          </Th>
-          <Th css={{ px: '$4' }}>
-            <Text size="2" css={{ color: 'inherit' }}>
-              Use Case
-            </Text>
-          </Th>
-        </Tr>
-      </Thead>
-      <Tbody>
-        <Tr>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">1</Text>
-          </Td>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">App background</Text>
-          </Td>
-        </Tr>
-        <Tr>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">2</Text>
-          </Td>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">Subtle background</Text>
-          </Td>
-        </Tr>
-        <Tr>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">3</Text>
-          </Td>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">UI element background</Text>
-          </Td>
-        </Tr>
-        <Tr>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">4</Text>
-          </Td>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">Hovered UI element background</Text>
-          </Td>
-        </Tr>
-        <Tr>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">5</Text>
-          </Td>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">Active / Selected UI element background</Text>
-          </Td>
-        </Tr>
-        <Tr>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">6</Text>
-          </Td>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">Subtle borders and separators</Text>
-          </Td>
-        </Tr>
-        <Tr>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">7</Text>
-          </Td>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">UI element border and focus rings</Text>
-          </Td>
-        </Tr>
-        <Tr>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">8</Text>
-          </Td>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">Hovered UI element border</Text>
-          </Td>
-        </Tr>
-        <Tr>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">9</Text>
-          </Td>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">Solid backgrounds</Text>
-          </Td>
-        </Tr>
-        <Tr>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">10</Text>
-          </Td>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">Hovered solid backgrounds</Text>
-          </Td>
-        </Tr>
-        <Tr>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">11</Text>
-          </Td>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">Low-contrast text</Text>
-          </Td>
-        </Tr>
-        <Tr>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">12</Text>
-          </Td>
-          <Td css={{ px: '$4' }}>
-            <Text size="2">High-contrast text</Text>
-          </Td>
-        </Tr>
-      </Tbody>
-    </Table>
+    <Box asChild my="5">
+      <table style={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}>
+        <thead>
+          <tr>
+            <Box
+              asChild
+              py="3"
+              px="4"
+              style={{
+                width: '50%',
+                borderBottom: '1px solid var(--gray-a3)',
+              }}
+            >
+              <th>
+                <Text as="p" size="2" color="gray" weight="regular">
+                  Step
+                </Text>
+              </th>
+            </Box>
+            <Box
+              asChild
+              py="3"
+              px="4"
+              style={{
+                borderBottom: '1px solid var(--gray-a3)',
+              }}
+            >
+              <th>
+                <Text as="p" size="2" color="gray" weight="regular">
+                  Use Case
+                </Text>
+              </th>
+            </Box>
+          </tr>
+        </thead>
+        <tbody>
+          {steps.map((step, i) => (
+            <tr key={step}>
+              <Box
+                asChild
+                py="2"
+                px="4"
+                style={{
+                  borderBottom: '1px solid var(--gray-a3)',
+                  backgroundColor: i % 2 === 0 ? 'var(--gray-a2)' : 'transparent',
+                }}
+              >
+                <td>
+                  <Text size="2" as="p">
+                    {i}
+                  </Text>
+                </td>
+              </Box>
+              <Box
+                asChild
+                py="2"
+                px="4"
+                style={{
+                  borderBottom: '1px solid var(--gray-a3)',
+                  backgroundColor: i % 2 === 0 ? 'var(--gray-a2)' : 'transparent',
+                }}
+              >
+                <td>
+                  <Text size="2" as="p">
+                    {step}
+                  </Text>
+                </td>
+              </Box>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </Box>
   );
 }

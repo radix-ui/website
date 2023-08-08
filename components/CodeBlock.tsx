@@ -11,6 +11,9 @@ import rangeParser from 'parse-numeric-range';
 import highlightLine from '@lib/rehype-highlight-line';
 import highlightWord from '@lib/rehype-highlight-word';
 import { Pre } from './Pre';
+import { CopyCodeButton } from './CopyCodeButton';
+
+import styles from './CodeBlock.module.css';
 
 refractor.register(js);
 refractor.register(jsx);
@@ -24,7 +27,7 @@ type CodeBlockProps = PreProps & {
   language: 'js' | 'jsx' | 'bash' | 'css' | 'diff';
   value: string;
   line?: string;
-  css?: any;
+  isInteractive?: boolean;
   showLineNumbers?: boolean;
 };
 
@@ -35,9 +38,9 @@ export const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
       value,
       line = '0',
       className = '',
-      css,
-      variant = 'violet',
+      style,
       showLineNumbers,
+      isInteractive,
       ...props
     } = _props;
     let result = refractor.highlight(value, language);
@@ -54,13 +57,21 @@ export const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
     return (
       <Pre
         ref={forwardedRef}
-        className={classes}
-        css={css}
-        variant={variant}
+        className={`${styles.Container} ${classes}`}
+        style={style}
         data-line-numbers={showLineNumbers}
         {...props}
       >
-        <code className={classes} dangerouslySetInnerHTML={{ __html: result }} />
+        <code
+          className={classes}
+          dangerouslySetInnerHTML={{ __html: result }}
+          style={
+            isInteractive
+              ? { willChange: 'transform', transition: 'transform 200ms ease-in-out' }
+              : {}
+          }
+        />
+        <CopyCodeButton code={value} className={styles.CopyButton} />
       </Pre>
     );
   }

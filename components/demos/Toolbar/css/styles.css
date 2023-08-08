@@ -66,13 +66,18 @@ button {
 .ToolbarLink {
   background-color: transparent;
   color: var(--mauve-11);
-  display: inline-flex;
+  display: none;
   justify-content: center;
   align-items: center;
 }
 .ToolbarLink:hover {
   background-color: transparent;
   cursor: pointer;
+}
+@media (min-width: 520px) {
+  .ToolbarLink {
+    display: inline-flex;
+  }
 }
 
 .ToolbarButton {

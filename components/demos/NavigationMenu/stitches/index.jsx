@@ -1,6 +1,6 @@
 import React from 'react';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
-import { styled, keyframes } from '@modulz/design-system';
+import { styled, keyframes } from '@stitches/react';
 import { CaretDownIcon } from '@radix-ui/react-icons';
 import { violet, mauve, indigo, purple, blackA } from '@radix-ui/colors';
 
@@ -47,22 +47,22 @@ const NavigationMenuDemo = () => {
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <List layout="two">
-              <ListItem title="Introduction" href="/docs/primitives/overview/introduction">
+              <ListItem title="Introduction" href="/primitives/docs/overview/introduction">
                 Build high-quality, accessible design systems and web apps.
               </ListItem>
-              <ListItem title="Getting started" href="/docs/primitives/overview/getting-started">
+              <ListItem title="Getting started" href="/primitives/docs/overview/getting-started">
                 A quick tutorial to get you up and running with Radix Primitives.
               </ListItem>
-              <ListItem title="Styling" href="/docs/primitives/guides/styling">
+              <ListItem title="Styling" href="/primitives/docs/guides/styling">
                 Unstyled and compatible with any styling solution.
               </ListItem>
-              <ListItem title="Animation" href="/docs/primitives/guides/animation">
+              <ListItem title="Animation" href="/primitives/docs/guides/animation">
                 Use CSS keyframes or any animation library of your choice.
               </ListItem>
-              <ListItem title="Accessibility" href="/docs/primitives/overview/accessibility">
+              <ListItem title="Accessibility" href="/primitives/docs/overview/accessibility">
                 Tested in a range of browsers and assistive technologies.
               </ListItem>
-              <ListItem title="Releases" href="/docs/primitives/overview/releases">
+              <ListItem title="Releases" href="/primitives/docs/overview/releases">
                 Radix Primitives releases and their changelogs.
               </ListItem>
             </List>

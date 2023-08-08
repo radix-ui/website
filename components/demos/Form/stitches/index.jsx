@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Form from '@radix-ui/react-form';
-import { styled, keyframes } from '@modulz/design-system';
+import { styled, keyframes } from '@stitches/react';
 import { blackA, violet, mauve } from '@radix-ui/colors';
 
 const FormDemo = () => (

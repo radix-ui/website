@@ -1,79 +1,34 @@
 import * as React from 'react';
-import { useRouter } from 'next/router';
-import { Box, Badge } from '@modulz/design-system';
-import {
-  HeaderWrapper,
-  MainWrapper,
-  NavWrapper,
-  PageWrapper,
-  ContentWrapper,
-  Pagination,
-  EditPageLink,
-  useCurrentPageSlug,
-} from '@components/DocsPage';
-import { ColorsDocsHeader } from '@components/ColorsDocsHeader';
-//
+import { Box, Flex } from '@radix-ui/themes';
+import { DocsPagination } from '@components/DocsPagination';
 import { allColorsRoutes, colorsRoutes } from '@lib/colorsRoutes';
-import { NavHeading, NavItem, NavItemTitle } from './DocsNav';
-import { ResourceIcons, ResourcePrimitives } from './Resources';
+import { ColorsHeader } from './ColorsHeader';
+import { DocsNav } from './DocsNav';
+import { MobileMenuProvider } from './MobileMenu';
+import { SideNav } from './SideNav';
+import { DocsPageWrapper } from './DocsPageWrapper';
+import { EditPageLink } from './EditPageLink';
+import { ColorsMobileMenu } from './ColorsMobileMenu';
 
 export function ColorsDocsPage({ children }: { children: React.ReactNode }) {
-  const router = useRouter();
-  const currentPageSlug = useCurrentPageSlug();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
-
-  React.useEffect(() => {
-    const handleRouteChange = () => setIsMobileMenuOpen(false);
-    router.events.on('routeChangeStart', handleRouteChange);
-    return () => router.events.off('routeChangeStart', handleRouteChange);
-  }, []);
-
   return (
-    <>
-      <HeaderWrapper>
-        <ColorsDocsHeader
-          onMobileMenuButtonClick={() => setIsMobileMenuOpen((prevOpen) => !prevOpen)}
-          isMenuActive={isMobileMenuOpen}
-        />
-      </HeaderWrapper>
+    <MobileMenuProvider>
+      <ColorsHeader />
+      <ColorsMobileMenu />
 
-      <MainWrapper>
-        <NavWrapper isMobileMenuOpen={isMobileMenuOpen}>
-          <Box css={{ mt: '$4' }}>
-            {colorsRoutes.map((section) => (
-              <Box key={section.label} css={{ mb: '$4' }}>
-                <NavHeading>{section.label}</NavHeading>
-
-                {section.pages.map((page) => (
-                  <NavItem
-                    key={page.slug}
-                    href={`/${page.slug}`}
-                    disabled={page.draft}
-                    active={currentPageSlug === page.slug}
-                  >
-                    <NavItemTitle>{page.title}</NavItemTitle>
-                    {page.draft && <Badge css={{ ml: '$2' }}>Coming soon</Badge>}
-                  </NavItem>
-                ))}
-              </Box>
-            ))}
-
-            <Box css={{ mt: '$8', '@bp2': { display: 'none' } }}>
-              <NavHeading>Resources</NavHeading>
-              <Box css={{ px: '$2' }}>
-                <ResourcePrimitives />
-                <ResourceIcons />
-              </Box>
-            </Box>
+      <Flex>
+        <SideNav>
+          <Box pt="4" px="4" pb="9">
+            <DocsNav routes={colorsRoutes} />
           </Box>
-        </NavWrapper>
+        </SideNav>
 
-        <PageWrapper>
-          <ContentWrapper>{children}</ContentWrapper>
-          <Pagination allRoutes={allColorsRoutes} />
+        <DocsPageWrapper>
+          <Box data-algolia-page-scope>{children}</Box>
+          <DocsPagination allRoutes={allColorsRoutes} />
           <EditPageLink />
-        </PageWrapper>
-      </MainWrapper>
-    </>
+        </DocsPageWrapper>
+      </Flex>
+    </MobileMenuProvider>
   );
 }

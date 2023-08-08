@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Collapsible from '@radix-ui/react-collapsible';
-import { styled } from '@modulz/design-system';
+import { styled } from '@stitches/react';
 import { violet, blackA } from '@radix-ui/colors';
 import { RowSpacingIcon, Cross2Icon } from '@radix-ui/react-icons';
 

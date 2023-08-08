@@ -1,16 +1,8 @@
-import { styled, Text } from '@modulz/design-system';
+import { Text } from '@radix-ui/themes';
 
-export const MarketingCaption = styled(Text, {
-  display: 'inline-block',
-  fontWeight: 500,
-  lineHeight: '20px',
-
-  '&[href]': {
-    textDecoration: 'none',
-  },
-
-  defaultVariants: {
-    size: 3,
-    variant: 'teal',
-  },
-});
+export const MarketingCaption = ({
+  asChild: _,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof Text>) => (
+  <Text as="div" weight="medium" size="2" color="teal" {...props} />
+);

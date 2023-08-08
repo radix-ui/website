@@ -1,173 +1,47 @@
-import {
-  Box,
-  Text,
-  Section,
-  Container,
-  Grid,
-  Code,
-  Heading,
-  Flex,
-  Paragraph,
-} from '@modulz/design-system';
-import { CheckIcon, CheckboxIcon } from '@radix-ui/react-icons';
+import { Text, Flex } from '@radix-ui/themes';
+import { CheckIcon } from '@radix-ui/react-icons';
+
+const allColors = ['sky', 'mint', 'lime', 'yellow', 'amber'];
 
 export function ColorTestTextLargeBright() {
   return (
-    <Box>
-      <Grid
-        css={{
-          gridTemplateColumns: 'repeat(1, minmax(0, 1fr))',
-          gap: 2,
-          ai: 'center',
-          my: '$5',
-        }}
-      >
+    <Flex
+      direction="column"
+      my="5"
+      style={{
+        gridTemplateColumns: 'repeat(1, minmax(0, 1fr))',
+        gap: 2,
+      }}
+    >
+      {allColors.map((color) => (
         <Flex
+          key={color}
           align="center"
           justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$sky9' }}
+          height="8"
+          px="3"
+          style={{ backgroundColor: `var(--${color}-9)` }}
         >
-          <Text
-            css={{
-              color: 'black',
-              fontSize: '$5',
-              fontWeight: 600,
-              fontFamily: 'system-ui, helvetica, sans-serif',
-            }}
-          >
-            Black text on Sky 9
+          <Text size="5" weight="bold" style={{ color: 'black' }}>
+            Black text on {capitalize(color)} 9
           </Text>
           <Flex
-            css={{
-              bc: '$sky11',
-              color: '$loContrast',
-              ai: 'center',
-              jc: 'center',
-              width: '$5',
-              height: '$5',
+            align="center"
+            justify="center"
+            width="5"
+            height="5"
+            style={{
+              backgroundColor: `var(--${color}-11)`,
+              color: `var(--color-background)`,
               borderRadius: '50%',
             }}
           >
             <CheckIcon />
           </Flex>
         </Flex>
-        <Flex
-          align="center"
-          justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$mint9' }}
-        >
-          <Text
-            css={{
-              color: 'black',
-              fontSize: '$5',
-              fontWeight: 600,
-              fontFamily: 'system-ui, helvetica, sans-serif',
-            }}
-          >
-            Black text on Mint 9
-          </Text>
-          <Flex
-            css={{
-              bc: '$mint11',
-              color: '$loContrast',
-              ai: 'center',
-              jc: 'center',
-              width: '$5',
-              height: '$5',
-              borderRadius: '50%',
-            }}
-          >
-            <CheckIcon />
-          </Flex>
-        </Flex>
-        <Flex
-          align="center"
-          justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$lime9' }}
-        >
-          <Text
-            css={{
-              color: 'black',
-              fontSize: '$5',
-              fontWeight: 600,
-              fontFamily: 'system-ui, helvetica, sans-serif',
-            }}
-          >
-            Black text on Lime 9
-          </Text>
-          <Flex
-            css={{
-              bc: '$lime11',
-              color: '$loContrast',
-              ai: 'center',
-              jc: 'center',
-              width: '$5',
-              height: '$5',
-              borderRadius: '50%',
-            }}
-          >
-            <CheckIcon />
-          </Flex>
-        </Flex>
-        <Flex
-          align="center"
-          justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$yellow9' }}
-        >
-          <Text
-            css={{
-              color: 'black',
-              fontSize: '$5',
-              fontWeight: 600,
-              fontFamily: 'system-ui, helvetica, sans-serif',
-            }}
-          >
-            Black text on Yellow 9
-          </Text>
-          <Flex
-            css={{
-              bc: '$yellow11',
-              color: '$loContrast',
-              ai: 'center',
-              jc: 'center',
-              width: '$5',
-              height: '$5',
-              borderRadius: '50%',
-            }}
-          >
-            <CheckIcon />
-          </Flex>
-        </Flex>
-        <Flex
-          align="center"
-          justify="between"
-          css={{ height: '$7', px: '$3', backgroundColor: '$amber9' }}
-        >
-          <Text
-            css={{
-              color: 'black',
-              fontSize: '$5',
-              fontWeight: 600,
-              fontFamily: 'system-ui, helvetica, sans-serif',
-            }}
-          >
-            Black text on Amber 9
-          </Text>
-          <Flex
-            css={{
-              bc: '$amber11',
-              color: '$loContrast',
-              ai: 'center',
-              jc: 'center',
-              width: '$5',
-              height: '$5',
-              borderRadius: '50%',
-            }}
-          >
-            <CheckIcon />
-          </Flex>
-        </Flex>
-      </Grid>
-    </Box>
+      ))}
+    </Flex>
   );
 }
+
+const capitalize = (str: string) => `${str.charAt(0).toUpperCase()}${str.slice(1)}`;

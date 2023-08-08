@@ -1,19 +1,9 @@
 import React from 'react';
-import {
-  Box,
-  Grid,
-  Text,
-  styled,
-  Container,
-  Flex,
-  Heading,
-  Paragraph,
-  Section,
-  Card,
-  darkTheme,
-} from '@modulz/design-system';
+import { Box, Grid, Text, styled, Flex, Paragraph, Card } from '@modulz/design-system';
+import { Section, Heading } from '@radix-ui/themes';
 import { MarketingCaption } from './MarketingCaption';
 import { CodeDemo } from './CodeDemo';
+import { Container, Theme } from '@radix-ui/themes';
 
 enum Highlights {
   Unstyled = '1-18',
@@ -27,26 +17,24 @@ export const DeveloperExperienceSection = () => {
 
   return (
     <Section
-      css={{
+      size={{ initial: '2', sm: '3' }}
+      style={{
         overflow: 'hidden',
-        backgroundColor: '$sky6',
+        backgroundColor: 'var(--sky-6)',
         background: `
-          radial-gradient(ellipse at 100% 100%, hsl(254 100% 6% / 0.07), $violetA1, transparent),
-          linear-gradient(to bottom right, $mint2, $indigo2, $pink3, $cyan3)
+          radial-gradient(ellipse at 100% 100%, hsl(254 100% 6% / 0.07), var(--violet-a1), transparent),
+          linear-gradient(to bottom right, var(--mint-2), var(--indigo-2), var(--pink-3), var(--cyan-3))
         `,
-        [`&.${darkTheme}`]: {
-          background: 'linear-gradient(to bottom right, $sky2, $cyan2, $cyan6)',
-        },
       }}
     >
-      <Container size="3">
+      <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Grid
           gap={{ '@initial': 5, '@bp3': 8 }}
           css={{ '@bp2': { gridTemplateColumns: 'auto 1fr' } }}
         >
           <Box css={{ '@bp2': { maxWidth: 420 } }}>
-            <MarketingCaption css={{ mb: '$1' }}>Developer experience to love</MarketingCaption>
-            <Heading as="h2" size="3" css={{ mb: '$4' }}>
+            <MarketingCaption mb="1">Developer experience to love</MarketingCaption>
+            <Heading as="h2" size="7" mb="4">
               Develop with an open, thought‑out API
             </Heading>
 
@@ -88,9 +76,15 @@ export const DeveloperExperienceSection = () => {
                   gridTemplateRows: '410px auto',
                 }}
               >
-                <CodeWindow className={darkTheme}>
-                  <StyledCodeDemo value={code.unstyled} language="jsx" css={{ p: '$2' }} />
-                </CodeWindow>
+                <Theme asChild appearance="dark" hasBackground={false}>
+                  <CodeWindow>
+                    <StyledCodeDemo
+                      value={code.unstyled}
+                      language="jsx"
+                      style={{ padding: 'var(--space-2)' }}
+                    />
+                  </CodeWindow>
+                </Theme>
                 <Box>
                   <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>
                     Unstyled
@@ -100,9 +94,15 @@ export const DeveloperExperienceSection = () => {
                   </Text>
                 </Box>
 
-                <CodeWindow className={darkTheme}>
-                  <StyledCodeDemo value={code.composable} language="jsx" css={{ p: '$2' }} />
-                </CodeWindow>
+                <Theme asChild appearance="dark" hasBackground={false}>
+                  <CodeWindow>
+                    <StyledCodeDemo
+                      value={code.composable}
+                      language="jsx"
+                      style={{ padding: 'var(--space-2)' }}
+                    />
+                  </CodeWindow>
+                </Theme>
                 <Box>
                   <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>
                     Composable
@@ -112,9 +112,15 @@ export const DeveloperExperienceSection = () => {
                   </Text>
                 </Box>
 
-                <CodeWindow className={darkTheme}>
-                  <StyledCodeDemo value={code.customizable} language="jsx" css={{ p: '$2' }} />
-                </CodeWindow>
+                <Theme asChild appearance="dark" hasBackground={false}>
+                  <CodeWindow>
+                    <StyledCodeDemo
+                      value={code.customizable}
+                      language="jsx"
+                      style={{ padding: 'var(--space-2)' }}
+                    />
+                  </CodeWindow>
+                </Theme>
                 <Box>
                   <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>
                     Customizable
@@ -124,9 +130,15 @@ export const DeveloperExperienceSection = () => {
                   </Text>
                 </Box>
 
-                <CodeWindow className={darkTheme}>
-                  <StyledCodeDemo value={code.consistent} language="jsx" css={{ p: '$2' }} />
-                </CodeWindow>
+                <Theme asChild appearance="dark" hasBackground={false}>
+                  <CodeWindow>
+                    <StyledCodeDemo
+                      value={code.consistent}
+                      language="jsx"
+                      style={{ padding: 'var(--space-2)' }}
+                    />
+                  </CodeWindow>
+                </Theme>
                 <Box>
                   <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>
                     Consistent
@@ -218,35 +230,21 @@ export const DeveloperExperienceSection = () => {
               '@bp2': { display: 'block' },
             }}
           >
-            <CodeWindow
-              withChrome
-              className={darkTheme}
-              css={{ position: 'absolute', inset: 0, overflow: 'hidden' }}
-            >
-              <StyledCodeDemo
-                language="jsx"
-                value={allCode}
-                line={activeHighlight}
-                data-invert-line-highlight="false"
-                css={{
-                  padding: 0,
-                  height: '100%',
-                  userSelect: 'auto',
-                  $$background: 'transparent',
-                  $$text: '$colors$cyan12',
-                  $$outline: 'none',
-                  $$syntax1: '$colors$purple11',
-                  // $$syntax2: '$colors$cyan11',
-                  $$syntax2: '$colors$cyan11',
-                  $$syntax3: '$colors$crimson11',
-                  $$syntax4: '$$text',
-                  $$comment: '$colors$slateA11',
-                  $$removed: '$colors$crimson11',
-                  $$added: '$colors$teal11',
-                  $$fadedLines: '$colors$slateA8',
-                }}
-              />
-            </CodeWindow>
+            <Theme asChild appearance="dark" hasBackground={false}>
+              <CodeWindow withChrome style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
+                <StyledCodeDemo
+                  language="jsx"
+                  value={allCode}
+                  line={activeHighlight}
+                  data-invert-line-highlight="false"
+                  style={{
+                    padding: 0,
+                    height: '100%',
+                    userSelect: 'auto',
+                  }}
+                />
+              </CodeWindow>
+            </Theme>
           </Box>
         </Grid>
       </Container>
@@ -255,45 +253,49 @@ export const DeveloperExperienceSection = () => {
 };
 
 const StyledCodeDemo = React.forwardRef<HTMLPreElement, React.ComponentProps<typeof CodeDemo>>(
-  ({ css, ...props }, forwardedRef) => (
+  ({ style, ...props }, forwardedRef) => (
     <CodeDemo
       ref={forwardedRef}
       data-invert-line-highlight="false"
-      css={{
-        padding: 0,
-        height: '100%',
-        userSelect: 'auto',
-        $$background: 'transparent',
-        $$text: '$colors$cyan12',
-        $$outline: 'none',
-        $$syntax1: '$colors$purple11',
-        // $$syntax2: '$colors$cyan11',
-        $$syntax2: '$colors$cyan11',
-        $$syntax3: '$colors$crimson11',
-        $$syntax4: '$$text',
-        $$comment: '$colors$slateA11',
-        $$removed: '$colors$crimson11',
-        $$added: '$colors$teal11',
-        $$fadedLines: '$colors$slateA8',
-        ...css,
-      }}
+      style={
+        {
+          padding: 0,
+          height: '100%',
+          userSelect: 'auto',
+          fontSize: 13,
+          '--background': 'transparent',
+          '--text': 'var(--cyan-12)',
+          '--outline': 'none',
+          '--syntax1': 'var(--purple-11)',
+          '--syntax2': 'var(--cyan-11)',
+          '--syntax3': 'var(--crimson-11)',
+          '--syntax4': 'var(--text)',
+          '--comment': 'var(--slate-a11)',
+          '--removed': 'var(--crimson-11)',
+          '--added': 'var(--teal-11)',
+          '--fadedLines': 'var(--slate-a8)',
+          boxShadow: 'none',
+          ...style,
+        } as React.CSSProperties
+      }
       {...props}
     />
   )
 );
 
 const CodeWindow = styled('div', {
-  $$bgColor: '$colors$sky1',
-  [`&.${darkTheme}`]: {
-    $$bgColor: '$colors$sky2',
-  },
-  [`.${darkTheme} &.${darkTheme}`]: {
-    $$bgColor: '$colors$violet1',
+  position: 'relative',
+  br: '$4',
+  bc: 'var(--gray-2)',
+
+  '.dark &, .dark-theme &': {
+    bc: 'var(--black-a9)',
   },
 
-  position: 'relative',
-  bc: '$$bgColor',
-  br: '$4',
+  // Quick & dirty fix to remove the copy code icon button
+  '& button': {
+    display: 'none',
+  },
 
   variants: {
     withChrome: {
@@ -310,10 +312,10 @@ const CodeWindow = styled('div', {
           height: 12,
           content: '""',
           background: `
-        radial-gradient(circle closest-side at 6px, $slateA7 90%, #FFFFFF00),
-        radial-gradient(circle closest-side at 24px, $slateA7 90%, #FFFFFF00),
-        radial-gradient(circle closest-side at 42px, $slateA7 90%, #FFFFFF00)
-        `,
+            radial-gradient(circle closest-side at 6px, var(--gray-a7) 90%, #FFFFFF00),
+            radial-gradient(circle closest-side at 24px, var(--gray-a7) 90%, #FFFFFF00),
+            radial-gradient(circle closest-side at 42px, var(--gray-a7) 90%, #FFFFFF00)
+          `,
         },
         '&::after': {
           position: 'absolute',
@@ -324,7 +326,7 @@ const CodeWindow = styled('div', {
           fontSize: '$1',
           textAlign: 'center',
           color: '$slate9',
-          content: '"DeploymentDetail.jsx"',
+          content: '"MyComponent.jsx"',
         },
       },
     },
@@ -334,7 +336,7 @@ const CodeWindow = styled('div', {
 const BlendedCard = styled(Card, {
   $$shadowColor: '$colors$skyA12',
   $$bgColor: '$colors$plum1',
-  [`.${darkTheme} &`]: {
+  '.dark &, .dark-theme &': {
     $$shadowColor: '$colors$blackA12',
     $$bgColor: '$colors$whiteA4',
   },
@@ -427,11 +429,11 @@ export const StatusTooltip = ({ state, label }) => {
 };`,
 
   customizable: `// Compose a Popover with custom focus and positioning
-export const DeploymentPopover = ({ children }) => {
+export const StatusPopover = ({ children }) => {
   const popoverCloseButton = React.useRef(null);
   return (
     <Popover.Root>
-      <Popover.Trigger>View deployment</Popover.Trigger>
+      <Popover.Trigger>View status</Popover.Trigger>
       <Popover.Portal>
         <PopoverContent
           align="start"

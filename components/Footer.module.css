@@ -1,0 +1,31 @@
+.Footer {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.Footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 520px) {
+  .Footer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .Footer {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.RadixLogo {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 900px) {
+  .RadixLogo {
+    grid-column: auto;
+  }
+}

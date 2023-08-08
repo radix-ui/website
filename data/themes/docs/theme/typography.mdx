@@ -1,0 +1,188 @@
+---
+metaTitle: Theme overview
+metaDescription: Guidance for using and tuning typography.
+---
+
+# Typography
+
+<Description>Guidance for using and tuning typography.</Description>
+
+## Composing type
+
+Use [Text](/themes/docs/components/text) and [Heading](/themes/docs/components/heading) components to render titles and body copy. These components share `size` and `weight` props and map to the underlying type system to ensure consistent typography throughout your app.
+
+```jsx live=true
+<Heading mb="2" size="4">Typographic principles</Heading>
+<Text>The goal of typography is to relate font size, line height, and line width in a proportional way that maximizes beauty and makes reading easier and more pleasant.</Text>
+```
+
+### Formatting
+
+Compose formatting components to add [empasis](/themes/docs/components/em), [signal importance](/themes/docs/components/strong), present [code](/themes/docs/components/code) and more.
+
+```jsx live=true
+<Text>
+  The <Em>most</Em> important thing to remember is,{' '}
+  <Strong>stay positive</Strong>.
+</Text>
+```
+
+## Type scale
+
+The typographic system is based on a 9 step scale, every step has a corresponding `font-size`, `line-height` and `letter-spacing` value which are all designed to be used in combination.
+
+<Box my="7">
+  <ThemesFontSizeScale />
+</Box>
+
+<ThemesFontSizeTable />
+
+## Font weight
+
+The following weights are supported. Weights can be [customized](/themes/docs/theme/typography#weight-mapping) to map to your own typeface.
+
+{
+
+<Theme className="radix-themes-example">
+  <Card size="2" my="5">
+    <Text weight="light" as="div" size="6">
+      Light
+    </Text>
+    <Text weight="regular" as="div" size="6">
+      Regular
+    </Text>
+    <Text weight="medium" as="div" size="6">
+      Medium
+    </Text>
+    <Text weight="bold" as="div" size="6">
+      Bold
+    </Text>
+  </Card>
+</Theme>
+
+}
+
+<ThemesFontWeightTable />
+
+## Custom fonts
+
+Radix Themes uses a system font stack for portability and legibility.
+
+<ThemesFontFamilyTable />
+
+You can provide your own fonts however, and how you choose to import and serve them is up to you. It is only required that you specify your named fonts using the correct token syntax.
+
+To change the default global font family, specify the `--default-font-family` token in your [`theme-config.css`](/themes/docs/theme/token-reference#modifying-tokens) and provide a different value.
+
+### Self-hosted fonts
+
+To self-host fonts, download the required font files and add them to your project. Then, use `@font-face` to define the named font weights and styles.
+
+```css
+@font-face {
+  font-family: 'Inter';
+  src: url('./inter-light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./inter-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./inter-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./inter-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+```
+
+Then specify this named font within your [`theme-config.css`](/themes/docs/theme/token-reference#modifying-tokens).
+
+```css
+.radix-themes {
+  --default-font-family: 'Inter', sans-serif;
+}
+```
+
+### With next/font
+
+Loading fonts via [next/font](https://nextjs.org/docs/app/api-reference/components/font) is supported, simply load your font with the [`variable`](https://nextjs.org/docs/app/api-reference/components/font#variable) option to define a CSS variable name and assign it to `inter`. Then, use `inter.variable` to add the CSS variable to your HTML document.
+
+```jsx
+import { Inter } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" className={inter.variable}>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+Finally, assign the CSS variable in your [`themes-config.css`](/themes/docs/theme/token-reference#modifying-tokens).
+
+```css
+.radix-themes {
+  --default-font-family: var(--inter-font);
+}
+```
+
+### Weight mapping
+
+Weight mappings are defined in the corresponding [Tokens](/themes/docs/theme/token-reference). Though uncommon, you may find your chosen typeface does not match the provided defaults. In this case, you can reassign weights inside of your `theme-config.css`:
+
+```css
+.radix-themes {
+  --font-weight-light: 200;
+  --font-weight-regular: 300;
+  --font-weight-medium: 600;
+  --font-weight-bold: 800;
+}
+```
+
+### Multiple fonts
+
+Various tokens are available for customizing fonts across different components, for example `--heading-font-family`, `--code-font-family`, `--strong-font-family` [and more](/themes/docs/theme/token-reference). This is helpful for example, when you’d like to implement a display face for headings independently of body copy, or you wish to tune your `code`, `strong`, or `em` font assignments separately.
+
+```css
+.radix-themes {
+  --default-font-family: 'Inter', sans-serif;
+  --heading-font-family: 'Montserrat', sans-serif;
+  /* ... */
+}
+```
+
+### Advanced customization
+
+Radix Themes has a refined set of typographic defaults including adjustments to `letter-spacing`, `line-height`, `font-size`, and more.
+
+When changing fonts it can be desirable to tweak these settings to have them compliment your chosen typeface. For example, you may find that your custom font has slightly different glypth dimensions and you’d like to adjust `letter-spacing` to compensate.
+
+You can adjust these values by modifying [Tokens](/themes/docs/theme/token-reference).
+
+```css
+.radix-themes {
+  --default-letter-spacing: 1.2;
+  --default-line-height: 1.6;
+  /* ... */
+}
+```

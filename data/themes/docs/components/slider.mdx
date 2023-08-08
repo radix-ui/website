@@ -1,0 +1,91 @@
+---
+metaTitle: Slider
+metaDescription: Provides user selection from a range of values.
+sourcePath: components/slider
+---
+
+```jsx live=true
+<Slider defaultValue={[50]} />
+```
+
+## API Reference
+
+This component inherits props from the [Radix Slider](/primitives/docs/components/slider) primitive and supports [common margin props](/themes/docs/theme/layout#margin-props).
+
+<ThemesPropsTable name="slider" />
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Flex direction="column" gap="4" style={{ maxWidth: 450 }}>
+  <Slider size="1" defaultValue={[25]} />
+  <Slider size="2" defaultValue={[50]} />
+  <Slider size="3" defaultValue={[75]} />
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style.
+
+```jsx live=true
+<Flex direction="column" gap="4" style={{ maxWidth: 450 }}>
+  <Slider variant="surface" defaultValue={[75]} />
+  <Slider variant="classic" defaultValue={[50]} />
+  <Slider variant="soft" defaultValue={[25]} />
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
+
+```jsx live=true
+<Flex gap="4" style={{ height: 75 }}>
+  <Slider color="indigo" defaultValue={[25]} orientation="vertical" />
+  <Slider color="cyan" defaultValue={[50]} orientation="vertical" />
+  <Slider color="orange" defaultValue={[75]} orientation="vertical" />
+  <Slider color="crimson" defaultValue={[100]} orientation="vertical" />
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to add additional contrast.
+
+```jsx live=true
+<Grid columns="2" gap="4" style={{ maxWidth: 450 }}>
+  <Slider variant="surface" defaultValue={[75]} />
+  <Slider variant="surface" defaultValue={[75]} highContrast />
+
+  <Slider variant="classic" defaultValue={[50]} />
+  <Slider variant="classic" defaultValue={[50]} highContrast />
+
+  <Slider variant="soft" defaultValue={[25]} />
+  <Slider variant="soft" defaultValue={[25]} highContrast />
+</Grid>
+```
+
+### Radius
+
+Use the `radius` prop to assign a specific radius value, ignoring the global theme.
+
+```jsx live=true
+<Flex gap="4" style={{ height: 75 }}>
+  <Slider defaultValue={[50]} radius="none" orientation="vertical" />
+  <Slider defaultValue={[50]} radius="large" orientation="vertical" />
+  <Slider defaultValue={[50]} radius="full" orientation="vertical" />
+</Flex>
+```
+
+### Range
+
+Provide multiple values to create a range slider.
+
+```jsx live=true
+<Slider defaultValue={[25, 75]} />
+```

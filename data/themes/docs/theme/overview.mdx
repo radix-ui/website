@@ -1,0 +1,88 @@
+---
+metaTitle: Theme overview
+metaDescription: Use the Theme component to quickly change the look and feel of your UI.
+---
+
+# Theme overview
+
+<Description>
+  Use the Theme component to quickly change the look and feel of your UI.
+</Description>
+
+## Anatomy
+
+The [Theme component](/themes/docs/components/theme) defines the overall visual look of your application, it can be customized by passing a minimal set of configuration options.
+
+```jsx live=true
+<Theme
+  accentColor="cyan"
+  grayColor="gray"
+  panelBackground="solid"
+  scaling="100%"
+  radius="full"
+>
+  <ThemesVolumeControlExample />
+</Theme>
+```
+
+A well tuned set of defaults is provided to get you started, but don’t be afraid to [play with all of the available options](/themes/playground) to find the right visual style for your application.
+
+{
+
+  <Grid columns={{ initial: '1', xs: '2' }} my="6" gap="4">
+      <ThemesLinkCard
+        title="Accent color"
+        desc="The accent color of primary buttons, links and interactive elements."
+      />
+
+      <ThemesLinkCard
+        title="Gray color"
+        desc="The shade of gray applied to borders, text and non-interactive elements."
+      />
+
+      <ThemesLinkCard
+        title="Panel background"
+        desc="Whether to apply a solid color, or use a translucent effect on panel elements."
+      />
+
+      <ThemesLinkCard
+        title="Radius"
+        desc="The amount of border radius applied to themed elements."
+      />
+
+      <ThemesLinkCard
+        title="Appearance"
+        desc="The color scheme of the theme (typcially referred to as light and dark mode)"
+      />
+
+      <ThemesLinkCard
+        title="Scaling"
+        desc="The unform scaling applied to the UI across the entire theme."
+      />
+    </Grid>
+
+}
+
+## Variants
+
+Variants are visual variations of a component, they are used to create visual hierarchies and communicate relative importance.
+
+Each component offers a different set of variants though all are designed to be consistent and complimentary with each other.
+
+```jsx live=true
+<Flex gap="3" align="center">
+  <Button variant="solid">
+    Get started <ArrowRightIcon />
+  </Button>
+  <Button variant="soft">
+    Get started <ArrowRightIcon />
+  </Button>
+  <Button variant="ghost">
+    Get started <ArrowRightIcon />
+  </Button>
+</Flex>
+```
+
+Using a combination of component variants alongside customized theme settings allows you to create a multitude of unique looking interfaces.
+
+<ThemesVariantsExample />

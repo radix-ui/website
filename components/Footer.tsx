@@ -1,121 +1,111 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Box, Grid, Text, Flex, Link } from '@modulz/design-system';
+import { Box, Grid, Text, Flex, Link, Heading, AccessibleIcon } from '@radix-ui/themes';
 import { RadixLogo } from './RadixLogo';
 import { useRouter } from 'next/router';
 import { BoxLink } from './BoxLink';
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
+import styles from './Footer.module.css';
 
 export const Footer = () => {
   const router = useRouter();
   const isColors = router.pathname.includes('/colors');
 
   return (
-    <Box as="footer" css={{ pb: '$9' }}>
-      <Grid
-        css={{
-          rowGap: '$7',
-          columnGap: '$3',
-          gridTemplateColumns: 'repeat(2, 1fr)',
-          '@bp1': { gridTemplateColumns: 'repeat(3, 1fr)' },
-          '@bp2': { gridTemplateColumns: 'repeat(4, 1fr)' },
-          '& ul': { listStyle: 'none', margin: '0', padding: '0' },
-        }}
-      >
-        <Flex
-          align="start"
-          direction="column"
-          css={{ gridColumn: '1 / -1', '@bp2': { gridColumn: 'auto' } }}
-        >
-          <NextLink href={isColors ? '/colors' : '/'} passHref>
+    <Grid asChild pb="9" gapX="7" gapY="3" className={styles.Footer}>
+      <footer>
+        <Flex align="start" direction="column" className={styles.RadixLogo} mb="5">
+          <NextLink href="/" passHref>
             <BoxLink>
-              <RadixLogo label={isColors ? 'Radix Colors homepage' : 'Radix homepage'} />
+              <AccessibleIcon label="Radix Homepage">
+                <RadixLogo />
+              </AccessibleIcon>
             </BoxLink>
           </NextLink>
-          <Text
-            as="h6"
-            size="2"
-            css={{
-              lineHeight: '20px',
-              color: '$gray10',
-              pr: '$8',
-              mt: '$5',
-            }}
-          >
-            A project by{' '}
-            <Link variant="subtle" href="https://workos.com">
-              WorkOS
-            </Link>
-            .
-          </Text>
+          <Box pr="8" mt="5">
+            <Heading
+              as="h6"
+              size="2"
+              style={{
+                lineHeight: '20px',
+                color: 'var(--gray-10)',
+                fontWeight: 'inherit',
+              }}
+            >
+              A project by{' '}
+              <Link color="gray" href="https://workos.com">
+                WorkOS
+              </Link>
+              .
+            </Heading>
+          </Box>
         </Flex>
         <Box>
-          <Text as="h6" size="3" css={{ fontWeight: 500, lineHeight: '20px' }}>
+          <Heading as="h6" size="3">
             Products
-          </Text>
+          </Heading>
           <ul>
             <li>
-              <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+              <Text as="p" size="2" mt="3">
                 <NextLink href="/" passHref>
-                  <Link variant="subtle">Primitives</Link>
+                  <Link color="gray">Themes</Link>
                 </NextLink>
               </Text>
             </li>
             <li>
-              <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+              <Text as="p" size="2" mt="3">
+                <NextLink href="/primitives" passHref>
+                  <Link color="gray">Primitives</Link>
+                </NextLink>
+              </Text>
+            </li>
+            <li>
+              <Text as="p" size="2" mt="3">
                 <NextLink href="/colors" passHref>
-                  <Link variant="subtle">Colors</Link>
+                  <Link color="gray">Colors</Link>
                 </NextLink>
               </Text>
             </li>
             <li>
-              <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                <Link
-                  variant="subtle"
-                  href="https://icons.radix-ui.com/"
-                  target="_blank"
-                  css={{ display: 'inline-flex', alignItems: 'center' }}
-                >
-                  Icons
-                  <Flex as="span" css={{ color: '$slate8' }}>
-                    <ArrowTopRightIcon />
-                  </Flex>
-                </Link>
+              <Text as="p" size="2" mt="3">
+                <NextLink href="/icons" passHref>
+                  <Link color="gray">Icons</Link>
+                </NextLink>
               </Text>
             </li>
           </ul>
         </Box>
         {isColors === false && (
           <Box>
-            <Text as="h6" size="3" css={{ fontWeight: 500, lineHeight: '20px' }}>
+            <Heading as="h6" size="3">
               Docs
-            </Text>
+            </Heading>
             <ul>
               <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/docs/primitives/overview/introduction" passHref>
-                    <Link variant="subtle">Introduction</Link>
+                <Text as="p" size="2" mt="3">
+                  <NextLink href="/primitives/docs/overview/introduction" passHref>
+                    <Link color="gray">Introduction</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/docs/primitives/guides/styling" passHref>
-                    <Link variant="subtle">Styling</Link>
+                <Text as="p" size="2" mt="3">
+                  <NextLink href="/primitives/docs/guides/styling" passHref>
+                    <Link color="gray">Styling</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/docs/primitives/overview/accessibility" passHref>
-                    <Link variant="subtle">Accessibility</Link>
+                <Text as="p" size="2" mt="3">
+                  <NextLink href="/primitives/docs/overview/accessibility" passHref>
+                    <Link color="gray">Accessibility</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/docs/primitives/overview/releases" passHref>
-                    <Link variant="subtle">Releases</Link>
+                <Text as="p" size="2" mt="3">
+                  <NextLink href="/primitives/docs/overview/releases" passHref>
+                    <Link color="gray">Releases</Link>
                   </NextLink>
                 </Text>
               </li>
@@ -124,38 +114,38 @@ export const Footer = () => {
         )}
         {isColors && (
           <Box>
-            <Text as="h6" size="3" css={{ fontWeight: 500, lineHeight: '20px' }}>
+            <Heading as="h6" size="3">
               Docs
-            </Text>
+            </Heading>
             <ul>
               <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/docs/colors/overview/installation" passHref>
-                    <Link variant="subtle">Installation</Link>
+                <Text as="p" size="2" mt="3">
+                  <NextLink href="/colors/docs/overview/installation" passHref>
+                    <Link color="gray">Installation</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/docs/colors/palette-composition/scales" passHref>
-                    <Link variant="subtle">Scales</Link>
+                <Text as="p" size="2" mt="3">
+                  <NextLink href="/colors/docs/palette-composition/scales" passHref>
+                    <Link color="gray">Scales</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/docs/colors/palette-composition/composing-a-palette" passHref>
-                    <Link variant="subtle">Palette composition</Link>
+                <Text as="p" size="2" mt="3">
+                  <NextLink href="/colors/docs/palette-composition/composing-a-palette" passHref>
+                    <Link color="gray">Palette composition</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+                <Text as="p" size="2" mt="3">
                   <NextLink
-                    href="/docs/colors/palette-composition/understanding-the-scale"
+                    href="/colors/docs/palette-composition/understanding-the-scale"
                     passHref
                   >
-                    <Link variant="subtle">Understanding the scale</Link>
+                    <Link color="gray">Understanding the scale</Link>
                   </NextLink>
                 </Text>
               </li>
@@ -163,50 +153,50 @@ export const Footer = () => {
           </Box>
         )}
         <Box>
-          <Text as="h6" size="3" css={{ fontWeight: 500, lineHeight: '20px' }}>
+          <Heading as="h6" size="3">
             Community
-          </Text>
+          </Heading>
           <ul>
             <li>
-              <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+              <Text as="p" size="2" mt="3">
                 <Link
                   href="https://github.com/radix-ui"
-                  variant="subtle"
+                  color="gray"
                   target="_blank"
-                  css={{ display: 'inline-flex', alignItems: 'center' }}
+                  style={{ display: 'inline-flex', alignItems: 'center' }}
                 >
                   GitHub
-                  <Flex as="span" css={{ color: '$slate8' }}>
+                  <Flex asChild ml="2" style={{ color: 'var(--gray-8)' }}>
                     <ArrowTopRightIcon />
                   </Flex>
                 </Link>
               </Text>
             </li>
             <li>
-              <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+              <Text as="p" size="2" mt="3">
                 <Link
                   href="https://twitter.com/radix_ui"
-                  variant="subtle"
+                  color="gray"
                   target="_blank"
-                  css={{ display: 'inline-flex', alignItems: 'center' }}
+                  style={{ display: 'inline-flex', alignItems: 'center' }}
                 >
                   Twitter
-                  <Flex as="span" css={{ color: '$slate8' }}>
+                  <Flex asChild ml="2" style={{ color: 'var(--gray-8)' }}>
                     <ArrowTopRightIcon />
                   </Flex>
                 </Link>
               </Text>
             </li>
             <li>
-              <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+              <Text as="p" size="2" mt="3">
                 <Link
                   href="https://discord.com/invite/7Xb99uG"
-                  variant="subtle"
+                  color="gray"
                   target="_blank"
-                  css={{ display: 'inline-flex', alignItems: 'center' }}
+                  style={{ display: 'inline-flex', alignItems: 'center' }}
                 >
                   Discord
-                  <Flex as="span" css={{ color: '$slate8' }}>
+                  <Flex asChild ml="2" style={{ color: 'var(--gray-8)' }}>
                     <ArrowTopRightIcon />
                   </Flex>
                 </Link>
@@ -214,7 +204,7 @@ export const Footer = () => {
             </li>
           </ul>
         </Box>
-      </Grid>
-    </Box>
+      </footer>
+    </Grid>
   );
 };

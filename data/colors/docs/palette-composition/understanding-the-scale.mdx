@@ -1,0 +1,383 @@
+---
+metaTitle: Use Cases
+metaDescription: How to use Radix Colors.
+---
+
+# Understanding the scale
+
+<Description>
+  Learn which scale step is the most appropriate for each use case.
+</Description>
+
+## Use Cases
+
+There are 12 steps in each scale. Each step was designed for at least one specific use case.
+
+This table is a simple overview of the most common use case for each step. However, there are many exceptions and caveats to factor in, which are covered in further detail below.
+
+<UseCasesTable />
+
+## Steps 1–2: Backgrounds
+
+<ColorScale01 />
+
+Steps `1` and `2` are designed for app backgrounds and subtle component backgrounds. You can use them interchangeably, depending on the vibe you're going for.
+
+Appropriate applications include:
+
+- Main app background
+- Striped table background
+- Code block background
+- Card background
+- Sidebar background
+- Canvas area background
+
+<Note>
+  You may want to use white for your app background in light mode, and Step `1`
+  or `2` from a gray or coloured scale in dark mode. In this case, set up a
+  [mutable alias](/colors/docs/overview/aliasing#mutable-aliases) for `AppBg`
+  and map it to a different color for each color mode.
+</Note>
+
+## Steps 3–5: Component backgrounds
+
+<ColorScale02 />
+
+Steps `3`, `4`, and `5` are designed for UI component backgrounds.
+
+- Step `3` is for normal states.
+- Step `4` is for hover states.
+- Step `5` is for pressed or selected states.
+
+{
+
+<Flex wrap="wrap" gap="5" my="5">
+  <Button icon={<PlusIcon />} variant="soft" color="slate" />
+  <Button icon={<PlusIcon />} variant="soft" color="pink" />
+
+{' '}
+
+<Flex direction="column" style={{ maxWidth: 'max-content' }}>
+  <MenuItemButton color="gray" data-state="active">
+    Menu item
+  </MenuItemButton>
+  <MenuItemButton color="gray">Second menu item</MenuItemButton>
+  <MenuItemButton color="gray">Third menu item</MenuItemButton>
+</Flex>
+
+  <Flex direction="column" style={{ maxWidth: 'max-content' }}>
+    <MenuItemButton color="pink" data-state="active">
+      Menu item
+    </MenuItemButton>
+    <MenuItemButton color="pink">
+      Second menu item
+    </MenuItemButton>
+    <MenuItemButton color="pink">
+      Third menu item
+    </MenuItemButton>
+  </Flex>
+</Flex>
+}
+
+Even if your component has a transparent background in its default state, you should skip Step `3` and use Step `4` for its hover state.
+
+{
+
+<Flex wrap="wrap" gap="5" my="5">
+  <Button icon={<PlusIcon />} variant="ghost" color="slate" />
+  <Button icon={<PlusIcon />} variant="ghost" color="blue" />
+  <Button icon={<PlusIcon />} variant="ghost" color="red" />
+</Flex>
+}
+
+For call-to-action components that you want to draw particular attention to, you can bump each color one step higher to steps `4`, `5`, and `6`.
+
+{
+
+<Flex align="center" wrap="wrap" gap="5" my="5">
+  <Button variant="soft" color="tomato">
+    Tomato
+  </Button>
+  <Button variant="soft" color="red">
+    Red
+  </Button>
+  <Button variant="soft" color="crimson">
+    Crimson
+  </Button>
+  <Button variant="soft" color="pink">
+    Pink
+  </Button>
+  <Button variant="soft" color="plum">
+    Plum
+  </Button>
+  <Button variant="soft" color="purple">
+    Purple
+  </Button>
+  <Button variant="soft" color="violet">
+    Violet
+  </Button>
+  <Button variant="soft" color="indigo">
+    Indigo
+  </Button>
+  <Button variant="soft" color="blue">
+    Blue
+  </Button>
+  <Button variant="soft" color="sky">
+    Sky
+  </Button>
+  <Button variant="soft" color="cyan">
+    Cyan
+  </Button>
+  <Button variant="soft" color="teal">
+    Teal
+  </Button>
+  <Button variant="soft" color="mint">
+    Mint
+  </Button>
+  <Button variant="soft" color="green">
+    Green
+  </Button>
+  <Button variant="soft" color="grass">
+    Grass
+  </Button>
+  <Button variant="soft" color="lime">
+    Lime
+  </Button>
+  <Button variant="soft" color="yellow">
+    Yellow
+  </Button>
+  <Button variant="soft" color="amber">
+    Amber
+  </Button>
+  <Button variant="soft" color="orange">
+    Orange
+  </Button>
+</Flex>
+
+}
+
+For complex components where you need many subtle colors to communicate different meanings, you can get creative and do something like:
+
+- Step `3` for hovered backgrounds.
+- Step `4` for selected / pressed backgrounds.
+- Step `5` for "unread" backgrounds.
+- Step `6` for hovered "unread" backgrounds.
+
+{
+
+<Flex direction="column" mt="5" style={{ maxWidth: 250 }}>
+  <MenuItemButton color="accent" data-state="highlighted">
+    New unread email
+  </MenuItemButton>
+  <MenuItemButton color="accent" data-state="selected">
+    Selected email
+  </MenuItemButton>
+  <MenuItemButton color="accent">Email menu item</MenuItemButton>
+  <MenuItemButton color="accent">Email menu item</MenuItemButton>
+</Flex>
+
+}
+
+<Note>
+  Steps `11` and `12`—which are designed for text—are guaranteed to pass 4.5:1
+  contrast ratio on top of a step `3` background from the same scale.
+</Note>
+
+## Steps 6–8: Borders
+
+<ColorScale03 />
+
+Steps `6`, `7`, and `8` are designed for borders.
+
+- Step `6` is designed for subtle borders on components which are not interactive. For example sidebars, headers, cards, alerts, and separators.
+- Step `7` is designed for borders on interactive components, but can also be used for focus rings.
+- Step `8` is designed for borders on interactive components in their hover state.
+
+{
+
+<Flex align="center" wrap="wrap" gap="5" my="5">
+  <Button variant="outline" color="tomato">
+    Tomato
+  </Button>
+  <Button variant="outline" color="red">
+    Red
+  </Button>
+  <Button variant="outline" color="crimson">
+    Crimson
+  </Button>
+  <Button variant="outline" color="pink">
+    Pink
+  </Button>
+  <Button variant="outline" color="plum">
+    Plum
+  </Button>
+  <Button variant="outline" color="purple">
+    Purple
+  </Button>
+  <Button variant="outline" color="violet">
+    Violet
+  </Button>
+  <Button variant="outline" color="indigo">
+    Indigo
+  </Button>
+  <Button variant="outline" color="blue">
+    Blue
+  </Button>
+  <Button variant="outline" color="sky">
+    Sky
+  </Button>
+  <Button variant="outline" color="cyan">
+    Cyan
+  </Button>
+  <Button variant="outline" color="teal">
+    Teal
+  </Button>
+  <Button variant="outline" color="mint">
+    Mint
+  </Button>
+  <Button variant="outline" color="green">
+    Green
+  </Button>
+  <Button variant="outline" color="grass">
+    Grass
+  </Button>
+  <Button variant="outline" color="lime">
+    Lime
+  </Button>
+  <Button variant="outline" color="yellow">
+    Yellow
+  </Button>
+  <Button variant="outline" color="amber">
+    Amber
+  </Button>
+  <Button variant="outline" color="orange">
+    Orange
+  </Button>
+</Flex>
+
+}
+
+## Steps 9–10: Solid backgrounds
+
+<ColorScale04 />
+
+Steps `9` and `10` are designed for solid backgrounds.
+
+Step `9` has the highest chroma of all steps in the scale. In other words, it's the purest step, the step mixed with the least amount of white or black. Because `9` is the purest step, it has a wide range of applications:
+
+- Website/App backgrounds
+- Website section backgrounds
+- Header backgrounds
+- Component backgrounds
+- Graphics/Logos
+- Overlays
+- Coloured shadows
+- Accent borders
+
+Step `10` is designed for component hover states, where step `9` is the component's normal state background.
+
+<Note>
+  Most step 9 colors are designed for white foreground text. `Sky`, `Mint`,
+  `Lime`, `Yellow`, and `Amber` are designed for black foreground text and steps
+  `9` and `10`.
+</Note>
+
+{
+
+<Flex align="center" wrap="wrap" gap="5" my="5">
+  <Button variant="solid" color="tomato">
+    Tomato
+  </Button>
+  <Button variant="solid" color="red">
+    Red
+  </Button>
+  <Button variant="solid" color="crimson">
+    Crimson
+  </Button>
+  <Button variant="solid" color="pink">
+    Pink
+  </Button>
+  <Button variant="solid" color="plum">
+    Plum
+  </Button>
+  <Button variant="solid" color="purple">
+    Purple
+  </Button>
+  <Button variant="solid" color="violet">
+    Violet
+  </Button>
+  <Button variant="solid" color="indigo">
+    Indigo
+  </Button>
+  <Button variant="solid" color="blue">
+    Blue
+  </Button>
+  <Button variant="solid" color="sky" invertText>
+    Sky
+  </Button>
+  <Button variant="solid" color="cyan">
+    Cyan
+  </Button>
+  <Button variant="solid" color="teal">
+    Teal
+  </Button>
+  <Button variant="solid" color="mint" invertText>
+    Mint
+  </Button>
+  <Button variant="solid" color="green">
+    Green
+  </Button>
+  <Button variant="solid" color="grass">
+    Grass
+  </Button>
+  <Button variant="solid" color="lime" invertText>
+    Lime
+  </Button>
+  <Button variant="solid" color="yellow" invertText>
+    Yellow
+  </Button>
+  <Button variant="solid" color="amber" invertText>
+    Amber
+  </Button>
+  <Button variant="solid" color="orange">
+    Orange
+  </Button>
+  <ToggleSwitch />
+  <Slider />
+</Flex>
+
+}
+
+## Steps 11–12: Text
+
+<ColorScale05 />
+
+Steps `11` and `12` are designed for text.
+
+- Step `11` is designed for low-contrast text.
+- Step `12` is designed for high-contrast text.
+
+{
+
+<Flex gap="4" direction="column" my="5">
+  <Text size="3" weight="bold" style={{ color: 'var(--gray-12)' }}>
+    This text is Gray 12
+  </Text>
+  <Text size="3" style={{ color: 'var(--gray-11)' }}>
+    This text is Gray 11
+  </Text>
+  <Text size="3" weight="bold" style={{ color: 'var(--slate-12)' }}>
+    This text is Slate 12
+  </Text>
+  <Text size="3" style={{ color: 'var(--slate-11)' }}>
+    This text is Slate 11
+  </Text>
+  <Text size="3" weight="bold" style={{ color: 'var(--pink-12)' }}>
+    This text is Pink 12
+  </Text>
+  <Text size="3" style={{ color: 'var(--pink-11)' }}>
+    This text is Pink 11
+  </Text>
+</Flex>
+
+}

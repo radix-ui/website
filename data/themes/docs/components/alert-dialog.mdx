@@ -1,0 +1,127 @@
+---
+metaTitle: Alert Dialog
+metaDescription: A modal confirmation dialog that interrupts the user and expects a response.
+sourcePath: components/alert-dialog
+---
+
+```jsx live=true
+<AlertDialog.Root>
+  <AlertDialog.Trigger>
+    <Button color="red">Revoke access</Button>
+  </AlertDialog.Trigger>
+  <AlertDialog.Content style={{ maxWidth: 450 }}>
+    <AlertDialog.Title>Revoke access</AlertDialog.Title>
+    <AlertDialog.Description size="2">
+      Are you sure? this application will no longer be accessible and any
+      existing sessions will be expired.
+    </AlertDialog.Description>
+
+    <Flex gap="3" mt="4" justify="end">
+      <AlertDialog.Cancel>
+        <Button variant="soft" color="gray">
+          Cancel
+        </Button>
+      </AlertDialog.Cancel>
+      <AlertDialog.Action>
+        <Button variant="solid" color="red">
+          Revoke access
+        </Button>
+      </AlertDialog.Action>
+    </Flex>
+  </AlertDialog.Content>
+</AlertDialog.Root>
+```
+
+## API Reference
+
+This component inherits parts and props from the [Radix Alert Dialog](/primitives/docs/components/alert-dialog) primitive and is visually identical to [Dialog](/themes/docs/components/dialog), though with differing semantics and behavior.
+
+### Root
+
+Contains all the parts of the dialog.
+
+### Trigger
+
+Wraps the control that will open the dialog.
+
+### Content
+
+Contains the content of the dialog. This component is based on the `div` element.
+
+<ThemesPropsTable name="alertDialogContent" />
+
+### Title
+
+An accessible title that is announced when the dialog is opened. This part is based on the [Heading](/themes/docs/components/heading) component with a pre-defined font size and leading trim on top.
+
+### Description
+
+An optional accessible description that is announced when the dialog is opened. This part is based on the [Text](/themes/docs/components/text) component with a pre-defined font size.
+
+If you want to remove the description entirely, remove this part and pass `aria-describedby={undefined}` to `Dialog.Content`.
+
+### Action
+
+Wraps the control that will close the dialog. This should be distinguished visually from the `Cancel` control.
+
+### Cancel
+
+Wraps the control that will close the dialog. This should be distinguished visually from the `Action` control.
+
+## Examples
+
+### With inset content
+
+Use the [Inset](/themes/docs/components/inset) component to align content flush with the sides of the dialog.
+
+```jsx live=true
+<AlertDialog.Root>
+  <AlertDialog.Trigger>
+    <Button color="red">Delete users</Button>
+  </AlertDialog.Trigger>
+  <AlertDialog.Content style={{ maxWidth: 500 }}>
+    <AlertDialog.Title>Delete Users</AlertDialog.Title>
+    <AlertDialog.Description size="2">
+      Are you sure you want to delete these users? this action is permanent and
+      cannot be undone.
+    </AlertDialog.Description>
+
+    <Inset side="x" my="5">
+      <Table.Root>
+        <Table.Header>
+          <Table.Row>
+            <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
+          </Table.Row>
+        </Table.Header>
+
+        <TableBody>
+          <Table.Row>
+            <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+            <Table.Cell>danilo@example.com</Table.Cell>
+            <Table.Cell>Developer</Table.Cell>
+          </Table.Row>
+
+          <Table.Row>
+            <Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+            <Table.Cell>zahra@example.com</Table.Cell>
+            <Table.Cell>Admin</Table.Cell>
+          </Table.Row>
+        </TableBody>
+      </Table.Root>
+    </Inset>
+
+    <Flex gap="3" justify="end">
+      <AlertDialog.Cancel>
+        <Button variant="soft" color="gray">
+          Cancel
+        </Button>
+      </AlertDialog.Cancel>
+      <AlertDialog.Action>
+        <Button color="red">Delete users</Button>
+      </AlertDialog.Action>
+    </Flex>
+  </AlertDialog.Content>
+</AlertDialog.Root>
+```

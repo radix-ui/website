@@ -1,0 +1,84 @@
+---
+metaTitle: Color
+metaDescription: Understanding the color system and it’s application in your theme.
+---
+
+# Color
+
+<Description>
+  Understanding the color system and it’s application in your theme.
+</Description>
+
+## Color scales
+
+There are 28, 12 step color scales available, each with their own light, dark and alpha variants.
+
+Colors are grouped into 2 categories: accents and grays, and can be specified on your [Theme](/colors/docs/components/theme), or per component where appropriate.
+
+### Accents
+
+The accent is the most dominant color in your theme, it is used for primary buttons, links and other interactive elements. The accent can be one of [23 scales](/themes/docs/theme/color#choosing-an-accent-color).
+
+<ThemesColorScale type="accent" />
+
+### Grays
+
+Grays are used for backgrounds, borders, text and other non-interactive elements. You can choose from one of [6 scales](/themes/docs/theme/color#choosing-a-gray-color).
+
+<ThemesColorScale type="gray" />
+
+### Alpha variants
+
+Every color has an alpha variant which is designed to appear visually the same when placed over the page background. This is very powerful and allows colors to be overlayed almost without any loss of saturation or hue.
+
+Alpha variants are used automatically within components so no configuration is required. However, if you’d like to use them manually in your own styles you can do so by using [Tokens](/themes/docs/theme/token-reference).
+
+## Choosing an accent color
+
+There are 23 accents to choose from.
+
+15 scales designed for light foreground text.
+
+<ThemesAccentSwatches />
+
+5 scales designed for dark foreground text.
+
+<ThemesBrightAccentSwatches />
+
+## Choosing a gray color
+
+There are 6 grays to choose from.
+
+<ThemeGraySwatches />
+
+- `Gray` is pure gray.
+- `Mauve` is based on a desaturated purple hue.
+- `Slate` is based on a desaturated blue hue.
+- `Sage` is based on a desaturated green hue.
+- `Olive` is based on a desaturated lime hue.
+- `Sand` is based on a desaturated yellow hue.
+
+### Neutral and natural pairing
+
+The theme will automatically pair your chosen accent with a gray that is [designed to compliment it](/colors/docs/palette-composition/composing-a-palette#natural-pairing). You can specify an alternative if you’d prefer a neutral vibe.
+
+The difference may seem subtle, but it can make a huge difference with a full page of text or a densely populated UI.
+
+You may want to experiment with these settings in your applications and websites to find what works for you.
+
+## Semantic colors
+
+At some point you will likely need to assign colors to communicate semantic meaning, for these cases we recommend using the `color` prop on the required components to override the accent color.
+
+Here are some common choices that work well in Western culture.
+
+- **Error**: Red/Tomato/Crimson
+- **Success**: Teal/Green/Grass/Mint
+- **Warning**: Yellow/Amber
+- **Info**: Blue/Sky/Cyan
+
+## Using color tokens
+
+All color values are available as CSS [tokens](/themes/docs/theme/token-reference) should you need to build custom components.
+
+See the [token reference](/themes/docs/theme/token-reference) page for a complete list.

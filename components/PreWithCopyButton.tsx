@@ -1,16 +1,17 @@
 import * as React from 'react';
-import { Box } from '@modulz/design-system';
 import { Pre } from './Pre';
 import { CopyCodeButton } from './CopyCodeButton';
+import { Box } from '@radix-ui/themes';
+import styles from './PreWithCopyButton.module.css';
 
 const PreWithCopyButton = (props) => {
   const [code, setCode] = React.useState('');
+
   return (
-    <Box css={{ position: 'relative' }}>
+    <Box position="relative" className={styles.Container}>
       <Pre
         {...props}
-        variant="violet"
-        css={{ my: '$5' }}
+        my="5"
         ref={(node) => {
           if (node) {
             // remove double line breaks
@@ -20,7 +21,7 @@ const PreWithCopyButton = (props) => {
           }
         }}
       />
-      <CopyCodeButton code={code} />
+      <CopyCodeButton className={styles.CopyButton} code={code} />
     </Box>
   );
 };

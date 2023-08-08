@@ -1,0 +1,108 @@
+---
+metaTitle: Popover
+metaDescription: Floating element for displaying rich content, triggered by a button.
+sourcePath: components/popover
+---
+
+```jsx live=true
+<Popover.Root>
+  <Popover.Trigger>
+    <Button variant="soft">
+      <ChatBubbleIcon width="16" height="16" />
+      Comment
+    </Button>
+  </Popover.Trigger>
+  <Popover.Content style={{ width: 360 }}>
+    <Flex gap="3">
+      <Avatar
+        size="2"
+        src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
+        fallback="A"
+        radius="full"
+      />
+      <Box grow="1">
+        <TextArea placeholder="Write a comment…" style={{ height: 80 }} />
+        <Flex gap="3" mt="3" justify="between">
+          <Flex align="center" gap="2" asChild>
+            <label>
+              <Checkbox />
+              <Text size="2">Send to group</Text>
+            </label>
+          </Flex>
+
+          <Popover.Close>
+            <Button size="1">Comment</Button>
+          </Popover.Close>
+        </Flex>
+      </Box>
+    </Flex>
+  </Popover.Content>
+</Popover.Root>
+```
+
+## API Reference
+
+This component inherits props from the [Radix Popover](/primitives/docs/components/popover) primitive.
+
+### Root
+
+Contains all the parts of a popover.
+
+### Trigger
+
+Wraps the control that will open the popover.
+
+### Content
+
+Contains content to be rendered in the open popover. This component is based on the `div` element.
+
+<ThemesPropsTable name="popoverContent" />
+
+### Close
+
+Wraps the control that will close the popover.
+
+## Examples
+
+### With inset content
+
+Use the [Inset](/themes/docs/components/inset) component to align content flush with the sides of the popover.
+
+```jsx live=true
+<Popover.Root>
+  <Popover.Trigger>
+    <Button variant="soft">
+      <Share2Icon width="16" height="16" />
+      Share image
+    </Button>
+  </Popover.Trigger>
+  <Popover.Content style={{ width: 360 }}>
+    <Grid columns="120px 1fr">
+      <Inset side="left" pr="current">
+        <img
+          src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?&auto=format&fit=crop&w=400&q=80"
+          style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+        />
+      </Inset>
+
+      <div>
+        <Heading size="2" mb="1">
+          Share this image
+        </Heading>
+        <Text as="p" size="2" mb="4" color="gray">
+          Minimalistic 3D rendering wallpaper.
+        </Text>
+
+        <Flex direction="column" align="stretch">
+          <Popover.Close>
+            <Button size="1" variant="soft">
+              <Link1Icon width="16" height="16" />
+              Copy link
+            </Button>
+          </Popover.Close>
+        </Flex>
+      </div>
+    </Grid>
+  </Popover.Content>
+</Popover.Root>
+```

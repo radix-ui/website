@@ -1,0 +1,153 @@
+---
+metaTitle: Radio Group
+metaDescription: A set of interactive radio buttons where only one can be selected at a time.
+sourcePath: components/radio-group
+---
+
+```jsx live=true
+<RadioGroup.Root defaultValue="1">
+  <Flex gap="2" direction="column">
+    <label>
+      <Flex gap="2" align="center">
+        <RadioGroup.Item value="1" />
+        <Text size="2">Default</Text>
+      </Flex>
+    </label>
+    <label>
+      <Flex gap="2" align="center">
+        <RadioGroup.Item value="2" />
+        <Text size="2">Comfortable</Text>
+      </Flex>
+    </label>
+    <label>
+      <Flex gap="2" align="center">
+        <RadioGroup.Item value="3" />
+        <Text size="2">Compact</Text>
+      </Flex>
+    </label>
+  </Flex>
+</RadioGroup.Root>
+```
+
+## API Reference
+
+This component inherits props from the [Radix Radio Group](/primitives/docs/components/radio-group) primitive and supports [common margin props](/themes/docs/theme/layout#margin-props).
+
+### Root
+
+Contains all the parts of a radio group.
+
+<ThemesPropsTable name="radioGroup" />
+
+### Item
+
+An item in the group that can be checked.
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Flex align="center" gap="2">
+  <RadioGroup.Root size="2" defaultValue="1">
+    <RadioGroup.Item value="1" />
+  </RadioGroup.Root>
+
+  <RadioGroup.Root size="1" defaultValue="1">
+    <RadioGroup.Item value="1" />
+  </RadioGroup.Root>
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style.
+
+```jsx live=true
+<Flex direction="column" gap="2">
+  <Flex asChild gap="2">
+    <RadioGroup.Root variant="surface" defaultValue="1">
+      <RadioGroup.Item value="1" />
+      <RadioGroup.Item value="2" />
+    </RadioGroup.Root>
+  </Flex>
+
+  <Flex asChild gap="2">
+    <RadioGroup.Root variant="classic" defaultValue="1">
+      <RadioGroup.Item value="1" />
+      <RadioGroup.Item value="2" />
+    </RadioGroup.Root>
+  </Flex>
+
+  <Flex asChild gap="2">
+    <RadioGroup.Root variant="soft" defaultValue="1">
+      <RadioGroup.Item value="1" />
+      <RadioGroup.Item value="2" />
+    </RadioGroup.Root>
+  </Flex>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
+
+```jsx live=true
+<Flex gap="2">
+  <RadioGroup.Root color="indigo" defaultValue="1">
+    <RadioGroup.Item value="1" />
+  </RadioGroup.Root>
+
+  <RadioGroup.Root color="cyan" defaultValue="1">
+    <RadioGroup.Item value="1" />
+  </RadioGroup.Root>
+
+  <RadioGroup.Root color="orange" defaultValue="1">
+    <RadioGroup.Item value="1" />
+  </RadioGroup.Root>
+
+  <RadioGroup.Root color="crimson" defaultValue="1">
+    <RadioGroup.Item value="1" />
+  </RadioGroup.Root>
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to add additional contrast.
+
+```jsx live=true
+<Flex direction="column" gap="2">
+  <Flex gap="2">
+    <RadioGroup.Root variant="surface" defaultValue="1">
+      <RadioGroup.Item value="1" />
+    </RadioGroup.Root>
+
+    <RadioGroup.Root variant="surface" defaultValue="1" highContrast>
+      <RadioGroup.Item value="1" />
+    </RadioGroup.Root>
+  </Flex>
+
+  <Flex gap="2">
+    <RadioGroup.Root variant="classic" defaultValue="1">
+      <RadioGroup.Item value="1" />
+    </RadioGroup.Root>
+
+    <RadioGroup.Root variant="classic" defaultValue="1" highContrast>
+      <RadioGroup.Item value="1" />
+    </RadioGroup.Root>
+  </Flex>
+
+  <Flex gap="2">
+    <RadioGroup.Root variant="soft" defaultValue="1">
+      <RadioGroup.Item value="1" />
+    </RadioGroup.Root>
+
+    <RadioGroup.Root variant="soft" defaultValue="1" highContrast>
+      <RadioGroup.Item value="1" />
+    </RadioGroup.Root>
+  </Flex>
+</Flex>
+```

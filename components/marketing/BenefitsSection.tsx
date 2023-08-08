@@ -1,30 +1,20 @@
-import React from 'react';
-import {
-  Box,
-  Grid,
-  Text,
-  Container,
-  Flex,
-  Heading,
-  Paragraph,
-  Section,
-  Separator,
-  darkTheme,
-} from '@modulz/design-system';
+import { Box, Grid, Paragraph, Text } from '@modulz/design-system';
 import { MarketingCaption } from './MarketingCaption';
+import { Section, Container, Heading, Em } from '@radix-ui/themes';
 
 export const BenefitsSection = () => {
   return (
     <Section
-      css={{
+      size={{ initial: '2', md: '3' }}
+      style={{
         position: 'relative',
         overflow: 'hidden',
       }}
     >
-      <Container size="3">
+      <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Box css={{ mb: '$7' }}>
-          <MarketingCaption css={{ mb: '$1' }}>Why Radix Primitives</MarketingCaption>
-          <Heading as="h2" size="3">
+          <MarketingCaption mb="1">Why Radix Primitives</MarketingCaption>
+          <Heading as="h2" size="7">
             Spend less time on
             <br />
             undifferentiated work
@@ -41,10 +31,9 @@ export const BenefitsSection = () => {
               Save time. Ship faster.
             </Text>
             <Paragraph css={{ mb: '$5' }}>
-              It takes a <em style={{ fontFamily: 'Georgia, serif' }}>lot</em> of time to develop
-              and maintain robust UI components, and it's mostly undifferentiated work. Building on
-              top of Radix components will save you time and money, so you can ship a better product
-              faster.
+              It takes <Em>a lot</Em> of time to develop and maintain robust UI components, and it's
+              mostly undifferentiated work. Building on top of Radix components will save you time
+              and money, so you can ship a better product faster.
             </Paragraph>
           </Box>
 

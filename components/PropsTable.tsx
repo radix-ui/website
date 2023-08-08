@@ -1,148 +1,125 @@
 import React from 'react';
-import {
-  Box,
-  IconButton,
-  Text,
-  Code,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-} from '@modulz/design-system';
+import { Box, IconButton, Text, Popover, Code, Table } from '@radix-ui/themes';
 import { InfoCircledIcon, DividerHorizontalIcon } from '@radix-ui/react-icons';
-import { RegionTable } from './RegionTable';
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
 
-type PropDef = {
+export type PropDef = {
   name: string;
   required?: boolean;
   default?: string | boolean;
-  type: string;
+  type?: string;
   typeSimple: string;
-  description?: string;
+  description?: string | React.ReactNode;
 };
 
 export function PropsTable({
   data,
-  'aria-label': ariaLabel,
-  'aria-labelledby': ariaLabelledBy,
+  propHeaderFixedWidth = true,
 }: {
   data: PropDef[];
-  'aria-label'?: string;
-  'aria-labelledby'?: string;
+  propHeaderFixedWidth?: boolean;
 }) {
-  const hasAriaLabel = !!(ariaLabel || ariaLabelledBy);
   return (
-    <RegionTable
-      css={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}
-      aria-label={hasAriaLabel ? ariaLabel : 'Component Props'}
-      aria-labelledby={ariaLabelledBy}
-    >
-      <thead>
-        <tr>
-          <Box as="th" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4', width: '45%' }}>
-            <Text size="2" css={{ color: '$gray11' }}>
+    <Box my="5" asChild>
+      <Table.Root variant="surface">
+        <Table.Header>
+          <Table.Row>
+            <Table.ColumnHeaderCell style={{ width: propHeaderFixedWidth ? '37%' : 'auto' }}>
               Prop
-            </Text>
-          </Box>
-          <Box
-            as="th"
-            css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4', width: '27.5%' }}
-          >
-            <Text size="2" css={{ color: '$gray11' }}>
-              Type
-            </Text>
-          </Box>
-          <Box
-            as="th"
-            css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4', width: '27.5%' }}
-          >
-            <Text size="2" css={{ color: '$gray11' }}>
-              Default
-            </Text>
-          </Box>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map(({ name, type, typeSimple, required, default: defaultValue, description }, i) => (
-          <tr key={`${name}-${i}`}>
-            <Box
-              as="td"
-              css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4', whiteSpace: 'nowrap' }}
-            >
-              <Code>
-                {name}
-                {required ? '*' : null}
-              </Code>
-              {description && (
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <IconButton
-                      variant="ghost"
-                      css={{ ml: '$1', verticalAlign: 'middle', color: '$gray11' }}
-                    >
-                      <AccessibleIcon label="Prop description">
-                        <InfoCircledIcon />
+            </Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell>Default</Table.ColumnHeaderCell>
+          </Table.Row>
+        </Table.Header>
+
+        <Table.Body>
+          {data.map(
+            ({ name, type, typeSimple, required, default: defaultValue, description }, i) => {
+              return (
+                <Table.Row key={`${name}-${i}`}>
+                  <Table.RowHeaderCell>
+                    <Code size="2">
+                      {name}
+                      {required ? '*' : null}
+                    </Code>
+                    {description && (
+                      <Popover.Root>
+                        <Popover.Trigger>
+                          <IconButton
+                            variant="ghost"
+                            size="1"
+                            ml="2"
+                            color="gray"
+                            style={{ verticalAlign: 'middle' }}
+                          >
+                            <AccessibleIcon label="Prop description">
+                              <InfoCircledIcon />
+                            </AccessibleIcon>
+                          </IconButton>
+                        </Popover.Trigger>
+                        <Popover.Content
+                          side="top"
+                          align="center"
+                          style={{ maxWidth: 350 }}
+                          onOpenAutoFocus={(event) => {
+                            event.preventDefault();
+                            (event.currentTarget as HTMLElement)?.focus();
+                          }}
+                        >
+                          <Text as="div" size="2">
+                            {description}
+                          </Text>
+                        </Popover.Content>
+                      </Popover.Root>
+                    )}
+                  </Table.RowHeaderCell>
+                  <Table.Cell>
+                    <Code color="gray" size="2">
+                      {Boolean(typeSimple) ? typeSimple : type}
+                    </Code>
+                    {Boolean(typeSimple) && Boolean(type) && (
+                      <Popover.Root>
+                        <Popover.Trigger>
+                          <IconButton
+                            variant="ghost"
+                            color="gray"
+                            size="1"
+                            ml="2"
+                            style={{
+                              verticalAlign: 'middle',
+                            }}
+                          >
+                            <AccessibleIcon label="See full type">
+                              <InfoCircledIcon />
+                            </AccessibleIcon>
+                          </IconButton>
+                        </Popover.Trigger>
+                        <Popover.Content side="top" align="center" style={{ maxWidth: 600 }}>
+                          <Code size="2" style={{ whiteSpace: 'pre', display: 'block' }}>
+                            {type}
+                          </Code>
+                        </Popover.Content>
+                      </Popover.Root>
+                    )}
+                  </Table.Cell>
+
+                  <Table.Cell>
+                    {Boolean(defaultValue) ? (
+                      <Code size="2" color="gray">
+                        {defaultValue}
+                      </Code>
+                    ) : (
+                      <AccessibleIcon label="No default value">
+                        <DividerHorizontalIcon style={{ color: 'var(--gray-8)' }} />
                       </AccessibleIcon>
-                    </IconButton>
-                  </PopoverTrigger>
-                  <PopoverContent
-                    side="top"
-                    onOpenAutoFocus={(event) => {
-                      event.preventDefault();
-                      (event.currentTarget as HTMLElement)?.focus();
-                    }}
-                  >
-                    <Box css={{ py: '$2', px: '$3' }}>
-                      <Text size="2" css={{ lineHeight: '20px' }}>
-                        {description}
-                      </Text>
-                    </Box>
-                  </PopoverContent>
-                </Popover>
-              )}
-            </Box>
-            <Box as="td" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4' }}>
-              <Code css={{ bc: '$gray4', color: '$gray11' }}>
-                {Boolean(typeSimple) ? typeSimple : type}
-              </Code>
-              {Boolean(typeSimple) && (
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <IconButton
-                      variant="ghost"
-                      css={{
-                        ml: '$1',
-                        verticalAlign: 'middle',
-                        color: '$gray11',
-                        display: 'none',
-                        '@bp1': { display: 'inline-flex' },
-                      }}
-                    >
-                      <AccessibleIcon label="See full type">
-                        <InfoCircledIcon />
-                      </AccessibleIcon>
-                    </IconButton>
-                  </PopoverTrigger>
-                  <PopoverContent side="top" css={{ maxWidth: 'max-content' }}>
-                    <Box css={{ py: '$2', px: '$2', whiteSpace: 'nowrap' }}>
-                      <Code>{type}</Code>
-                    </Box>
-                  </PopoverContent>
-                </Popover>
-              )}
-            </Box>
-            <Box as="td" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4' }}>
-              {Boolean(defaultValue) ? (
-                <Code css={{ bc: '$gray4', color: '$gray11' }}>{defaultValue}</Code>
-              ) : (
-                <Box as={AccessibleIcon} label="No default value" css={{ color: '$gray8' }}>
-                  <DividerHorizontalIcon />
-                </Box>
-              )}
-            </Box>
-          </tr>
-        ))}
-      </tbody>
-    </RegionTable>
+                    )}
+                  </Table.Cell>
+                </Table.Row>
+              );
+            }
+          )}
+        </Table.Body>
+      </Table.Root>
+    </Box>
   );
 }

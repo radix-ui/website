@@ -1,30 +1,52 @@
 import React from 'react';
-import { darkTheme, IconButton, Tooltip } from '@modulz/design-system';
 import { useTheme } from 'next-themes';
-import { SunIcon } from '@radix-ui/react-icons';
+import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
+import { IconButton, Tooltip } from '@radix-ui/themes';
+import Head from 'next/head';
 
-export const ThemeToggle = (props) => {
-  const { theme, setTheme } = useTheme();
+export const ThemeToggle = () => {
+  const { theme, systemTheme, setTheme } = useTheme();
 
   return (
-    <Tooltip content="Toggle theme" side="bottom" align="end">
-      <IconButton
-        variant="ghost"
-        onClick={() => {
-          const newTheme = theme === 'dark' ? 'light' : 'dark';
+    <>
+      <Head>
+        <style>{`
+        :root, .light, .light-theme {
+          --theme-toggle-sun-icon-display: block;
+          --theme-toggle-moon-icon-display: none;
+        }
+        .dark, .dark-theme {
+          --theme-toggle-sun-icon-display: none;
+          --theme-toggle-moon-icon-display: block;
+        }
+      `}</style>
+      </Head>
 
-          document.documentElement.classList.toggle(darkTheme.className);
-          document.documentElement.classList.toggle('light-theme');
-          document.documentElement.style.setProperty('color-scheme', newTheme);
-
-          // Finally, we still need to let `next-themes` know of the theme change so that it saves it to local storage.
-          setTheme(newTheme);
-        }}
-        {...props}
-        aria-label="toggle a light and dark color scheme"
-      >
-        <SunIcon />
-      </IconButton>
-    </Tooltip>
+      <Tooltip content="Toggle theme">
+        <IconButton
+          size="3"
+          variant="ghost"
+          color="gray"
+          onClick={() => {
+            // Set 'system' theme if the next theme matches the system theme
+            const resolvedTheme = theme === 'system' ? systemTheme : theme;
+            const newTheme = resolvedTheme === 'dark' ? 'light' : 'dark';
+            const newThemeMatchesSystem = newTheme === systemTheme;
+            setTheme(newThemeMatchesSystem ? 'system' : newTheme);
+          }}
+        >
+          <SunIcon
+            width="16"
+            height="16"
+            style={{ display: 'var(--theme-toggle-sun-icon-display)' }}
+          />
+          <MoonIcon
+            width="16"
+            height="16"
+            style={{ display: 'var(--theme-toggle-moon-icon-display)' }}
+          />
+        </IconButton>
+      </Tooltip>
+    </>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Toolbar from '@radix-ui/react-toolbar';
-import { styled } from '@modulz/design-system';
+import { styled } from '@stitches/react';
 import { violet, blackA, mauve } from '@radix-ui/colors';
 import {
   StrikethroughIcon,
@@ -90,11 +90,12 @@ const ToolbarLink = styled(
     ...itemStyles,
     backgroundColor: 'transparent',
     color: mauve.mauve11,
-    display: 'inline-flex',
+    display: 'none',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  { '&:hover': { backgroundColor: 'transparent', cursor: 'pointer' } }
+  { '&:hover': { backgroundColor: 'transparent', cursor: 'pointer' } },
+  { '@bp1': { display: 'inline-flex' } }
 );
 
 const ToolbarButton = styled(

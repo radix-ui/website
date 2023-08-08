@@ -1,0 +1,105 @@
+---
+metaTitle: Tabs
+metaDescription: Set of content sections to be displayed one at a time.
+sourcePath: components/tabs
+---
+
+```jsx live=true
+<Tabs.Root defaultValue="account">
+  <Tabs.List>
+    <Tabs.Trigger value="account">Account</Tabs.Trigger>
+    <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+    <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+  </Tabs.List>
+
+  <Box px="4" pt="3" pb="2">
+    <Tabs.Content value="account">
+      <Text size="2">Make changes to your account.</Text>
+    </Tabs.Content>
+
+    <Tabs.Content value="documents">
+      <Text size="2">Access and update your documents.</Text>
+    </Tabs.Content>
+
+    <Tabs.Content value="settings">
+      <Text size="2">Edit your profile or update contact information.</Text>
+    </Tabs.Content>
+  </Box>
+</Tabs.Root>
+```
+
+## API Reference
+
+This component inherits props from the [Radix Tabs](/primitives/docs/components/tabs) primitive and supports [common margin props](/themes/docs/theme/layout#margin-props).
+
+### Root
+
+Contains all component parts.
+
+### List
+
+Contains the triggers that sit alongside the active content.
+
+<ThemesPropsTable name="tabsList" />
+
+### Trigger
+
+The button that activates its associated content.
+
+### Content
+
+Contains the content associated with each trigger.
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size of the tabs list.
+
+```jsx live=true
+<Flex direction="column" gap="4">
+  <Tabs.Root defaultValue="account">
+    <Tabs.List size="1">
+      <Tabs.Trigger value="account">Account</Tabs.Trigger>
+      <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+      <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+    </Tabs.List>
+
+    <Box px="2" pt="2" pb="2">
+      <Tabs.Content value="account">
+        <Text size="2">Make changes to your account.</Text>
+      </Tabs.Content>
+
+      <Tabs.Content value="documents">
+        <Text size="2">Access and update your documents.</Text>
+      </Tabs.Content>
+
+      <Tabs.Content value="settings">
+        <Text size="2">Edit your profile or update contact information.</Text>
+      </Tabs.Content>
+    </Box>
+  </Tabs.Root>
+
+  <Tabs.Root defaultValue="account">
+    <Tabs.List size="2">
+      <Tabs.Trigger value="account">Account</Tabs.Trigger>
+      <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+      <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+    </Tabs.List>
+
+    <Box px="4" pt="3" pb="2">
+      <Tabs.Content value="account">
+        <Text size="2">Make changes to your account.</Text>
+      </Tabs.Content>
+
+      <Tabs.Content value="documents">
+        <Text size="2">Access and update your documents.</Text>
+      </Tabs.Content>
+
+      <Tabs.Content value="settings">
+        <Text size="2">Edit your profile or update contact information.</Text>
+      </Tabs.Content>
+    </Box>
+  </Tabs.Root>
+</Flex>
+```

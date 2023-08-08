@@ -1,0 +1,36 @@
+---
+metaTitle: Tooltip
+metaDescription: Floating element that provides a control with contextual information via pointer or focus.
+sourcePath: components/tooltip
+---
+
+```jsx live=true
+<Tooltip content="Add to library">
+  <IconButton radius="full">
+    <PlusIcon />
+  </IconButton>
+</Tooltip>
+```
+
+## API Reference
+
+This component inherits and merges props from the Radix [Tooltip.Root](/primitives/docs/components/tooltip#root), [Tooltip.Portal](/primitives/docs/components/tooltip#portal) and [Tooltip.Content](/primitives/docs/components/tooltip#content) parts. It supports [common margin props](/themes/docs/theme/layout#margin-props).
+
+<ThemesPropsTable name="tooltip" />
+
+## Examples
+
+### Multi-line
+
+Use the `multiline` prop to wrap content across multiple lines.
+
+```jsx live=true
+<Tooltip
+  multiline
+  content="Add the selected items to your library for usage within your dashboard."
+>
+  <IconButton radius="full">
+    <PlusIcon />
+  </IconButton>
+</Tooltip>
+```

@@ -23,48 +23,63 @@ module.exports = withPlugins([withTM, withOptimizedImages, withVideos], {
   async redirects() {
     return [
       {
-        source: '/primitives',
-        destination: '/',
+        source: '/case-studies/:slug*',
+        destination: '/primitives/case-studies/:slug*',
         permanent: true,
       },
       {
-        source: '/primitives/docs/:slug*',
-        destination: '/docs/primitives/:slug*',
+        source: '/colors/docs',
+        destination: '/colors/docs/overview/installation',
+        permanent: true,
+      },
+      {
+        source: '/docs/colors/palette-composition/the-scales',
+        destination: '/colors/docs/palette-composition/scales',
+        permanent: true,
+      },
+      {
+        source: '/docs/colors/getting-started/:slug*',
+        destination: '/colors/docs/overview/:slug*',
+        permanent: true,
+      },
+      {
+        source: '/docs/colors/:slug*',
+        destination: '/colors/docs/:slug*',
         permanent: true,
       },
       {
         source: '/docs/primitives',
-        destination: '/docs/primitives/overview/introduction',
+        destination: '/primitives/docs/overview/introduction',
         permanent: false,
       },
       {
         source: '/docs/primitives/utilities/aspect-ratio/:slug*',
-        destination: '/docs/primitives/components/aspect-ratio/:slug*',
-        permanent: false,
+        destination: '/primitives/docs/components/aspect-ratio/:slug*',
+        permanent: true,
       },
       {
         source: '/docs/primitives/utilities/label/:slug*',
-        destination: '/docs/primitives/components/label/:slug*',
+        destination: '/primitives/docs/components/label/:slug*',
+        permanent: true,
+      },
+      {
+        source: '/docs/primitives/:slug*',
+        destination: '/primitives/docs/:slug*',
+        permanent: true,
+      },
+      {
+        source: '/primitives/docs',
+        destination: '/primitives/docs/overview/introduction',
         permanent: false,
       },
       {
-        source: '/design/docs-system',
-        destination: '/design/docs-system/overview/introduction',
+        source: '/themes',
+        destination: '/',
         permanent: false,
       },
       {
-        source: '/docs/colors',
-        destination: '/docs/colors/overview/installation',
-        permanent: false,
-      },
-      {
-        source: '/docs/colors/palette-composition/the-scales',
-        destination: '/docs/colors/palette-composition/scales',
-        permanent: false,
-      },
-      {
-        source: '/docs/colors/getting-started/:slug*',
-        destination: '/docs/colors/overview/:slug*',
+        source: '/themes/docs',
+        destination: '/themes/docs/overview/getting-started',
         permanent: false,
       },
     ];
@@ -109,15 +124,15 @@ module.exports = withPlugins([withTM, withOptimizedImages, withVideos], {
 
     return [
       ...createRewrites(
-        getLatestVersionFromPath('primitives/components'),
-        '/docs/primitives/components/'
+        getLatestVersionFromPath('primitives/docs/components'),
+        '/primitives/docs/components/'
       ),
       ...createRewrites(
-        getLatestVersionFromPath('primitives/utilities'),
-        '/docs/primitives/utilities/'
+        getLatestVersionFromPath('primitives/docs/utilities'),
+        '/primitives/docs/utilities/'
       ),
       ...createRewrites(
-        getLatestVersionFromPath('design-system/components'),
+        getLatestVersionFromPath('design-system/docs/components'),
         '/design-docs/system/components/'
       ),
     ];

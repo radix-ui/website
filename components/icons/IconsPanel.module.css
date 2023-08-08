@@ -1,0 +1,18 @@
+.IconsPanelMainSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.IconsPanelSectionContent {
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+}
+
+@media (min-width: 750px) {
+  .IconsPanelMainSection {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto 1fr;
+    column-gap: var(--space-8);
+  }
+}

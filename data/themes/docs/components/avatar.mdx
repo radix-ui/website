@@ -1,0 +1,129 @@
+---
+metaTitle: Avatar
+metaDescription: A profile picture, user initials or fallback icon.
+sourcePath: components/avatar
+---
+
+```jsx live=true
+<Flex gap="2">
+  <Avatar
+    src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
+    fallback="S"
+  />
+  <Avatar fallback="S" />
+</Flex>
+```
+
+## API Reference
+
+This component inherits props from the [Radix Avatar](/primitives/docs/components/avatar) primitive.
+
+<ThemesPropsTable name="avatar" />
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Flex align="center" gap="2">
+  <Avatar
+    size="7"
+    src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
+    fallback="S"
+  />
+  <Avatar
+    size="5"
+    src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
+    fallback="S"
+  />
+  <Avatar
+    size="3"
+    src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
+    fallback="S"
+  />
+
+  <Avatar
+    size="1"
+    src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
+    fallback="S"
+  />
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style.
+
+```jsx live=true
+<Flex gap="2">
+  <Avatar variant="solid" fallback="S" />
+  <Avatar variant="soft" fallback="S" />
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
+
+```jsx live=true
+<Flex gap="2">
+  <Avatar color="indigo" fallback="S" />
+  <Avatar color="cyan" fallback="S" />
+  <Avatar color="orange" fallback="S" />
+  <Avatar color="crimson" fallback="S" />
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to add additional contrast.
+
+```jsx live=true
+<Flex gap="2">
+  <Flex direction="column" gap="2">
+    <Avatar variant="solid" fallback="S" />
+    <Avatar variant="soft" fallback="S" />
+  </Flex>
+
+  <Flex direction="column" gap="2">
+    <Avatar variant="solid" fallback="S" highContrast />
+    <Avatar variant="soft" fallback="S" highContrast />
+  </Flex>
+</Flex>
+```
+
+### Radius
+
+Use the `radius` prop to assign a specific radius value, ignoring the global theme.
+
+```jsx live=true
+<Flex gap="2">
+  <Avatar radius="none" fallback="S" />
+  <Avatar radius="large" fallback="S" />
+  <Avatar radius="full" fallback="S" />
+</Flex>
+```
+
+### Fallback
+
+Use the `fallback` prop to modify the rendered fallback element.
+
+```jsx live=true
+<Flex gap="2">
+  <Avatar fallback="S" />
+  <Avatar fallback="RW" />
+  <Avatar
+    fallback={
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25
+          8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0
+          0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+        />
+      </svg>
+    }
+  />
+</Flex>
+```

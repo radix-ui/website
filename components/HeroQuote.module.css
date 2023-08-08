@@ -1,0 +1,39 @@
+.HeroQuote {
+  margin-top: var(--space-6);
+  padding-block: var(--space-6);
+  border-top: 1px solid var(--gray-6);
+  text-indent: -0.61em;
+}
+
+.HeroQuote::before {
+  content: '“';
+  margin-right: 0.1em;
+}
+
+.HeroQuote::after {
+  content: '”';
+}
+
+@media (min-width: 1300px) {
+  .HeroQuote {
+    position: relative;
+    text-indent: 0;
+  }
+
+  .HeroQuote::after {
+    content: none;
+  }
+
+  .HeroQuote::before {
+    position: absolute;
+    color: var(--gray-6);
+    top: 25px;
+    left: -85px;
+    font-size: 130px;
+    font-weight: 700;
+    font-family: 'Times New Roman', serif;
+    line-height: 1;
+    letter-spacing: -0.045em;
+    content: '‘‘';
+  }
+}

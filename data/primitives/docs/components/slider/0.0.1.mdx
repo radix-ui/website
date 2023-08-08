@@ -1,0 +1,620 @@
+---
+metaTitle: Slider
+metaDescription: An input where the user selects a value from within a given range.
+name: slider
+aria: https://www.w3.org/WAI/ARIA/apg/patterns/slidertwothumb
+---
+
+# Slider
+
+<Description>
+  An input where the user selects a value from within a given range.
+</Description>
+
+<Highlights
+  features={[
+    'Can be controlled or uncontrolled.',
+    'Supports multiple thumbs.',
+    'Supports a minimum value between thumbs.',
+    'Supports touch or click on track to update value.',
+    'Supports Right to Left direction.',
+    'Full keyboard navigation.',
+  ]}
+/>
+
+## Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-slider
+```
+
+## Anatomy
+
+Import the components and piece the parts together.
+
+```jsx
+import * as Slider from '@radix-ui/react-slider';
+
+export default () => (
+  <Slider.Root>
+    <Slider.Track>
+      <Slider.Range />
+    </Slider.Track>
+    <Slider.Thumb />
+  </Slider.Root>
+);
+```
+
+## Basic example
+
+Create your styled slider component from the primitive parts.
+
+```jsx
+import { styled } from 'path-to/stitches.config';
+import * as Slider from '@radix-ui/react-slider';
+
+const StyledSlider = styled(Slider.Root, {
+  position: 'relative',
+  display: 'flex',
+  alignItems: 'center',
+  userSelect: 'none',
+  touchAction: 'none',
+  height: 16,
+});
+
+const StyledTrack = styled(Slider.Track, {
+  backgroundColor: 'gainsboro',
+  position: 'relative',
+  flexGrow: 1,
+  height: 2,
+});
+
+const StyledRange = styled(Slider.Range, {
+  position: 'absolute',
+  backgroundColor: 'dodgerblue',
+  borderRadius: '9999px',
+  height: '100%',
+});
+
+const StyledThumb = styled(Slider.Thumb, {
+  display: 'block',
+  width: 16,
+  height: 16,
+  backgroundColor: 'white',
+  border: '1px solid lightgray',
+  borderRadius: '20px',
+  '&:focus': {
+    outline: 'none',
+    borderColor: 'dodgerblue',
+  },
+});
+
+export default () => (
+  <StyledSlider defaultValue={[50]}>
+    <StyledTrack>
+      <StyledRange />
+    </StyledTrack>
+    <StyledThumb />
+  </StyledSlider>
+);
+```
+
+<Note>
+
+**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/guides/styling).
+
+</Note>
+
+## API Reference
+
+### Root
+
+Contains all the parts of a slider.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'span',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+    {
+      name: 'defaultValue',
+      required: false,
+      type: 'number[]',
+      description:
+        'The value of the slider when initially rendered. Use when you do not need to control the state of the slider.',
+    },
+    {
+      name: 'value',
+      required: false,
+      type: 'number[]',
+      description: (
+        <span>
+          The controlled value of the slider. Must be used in conjunction with{' '}
+          <Code>onValueChange</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'name',
+      required: false,
+      type: 'string',
+      description:
+        'The name of the slider. Submitted with its owning form as part of a name/value pair.',
+    },
+    {
+      name: 'disabled',
+      required: false,
+      type: 'boolean',
+      default: 'false',
+      description: (
+        <span>
+          When <Code>true</Code>, prevents the user from interacting with the
+          slider.
+        </span>
+      ),
+    },
+    {
+      name: 'orientation',
+      required: false,
+      type: '"horizontal" | "vertical"',
+      typeSimple: 'enum',
+      default: '"horizontal"',
+      description: 'The orientation of the slider.',
+    },
+    {
+      name: 'dir',
+      required: false,
+      type: '"ltr" | "rtl"',
+      typeSimple: 'enum',
+      default: '"ltr"',
+      description:
+        'The reading direction of the slider. If omitted, assumes LTR (left-to-right) reading mode.',
+    },
+    {
+      name: 'min',
+      required: false,
+      type: 'number',
+      default: '0',
+      description: 'The minimum value for the range.',
+    },
+    {
+      name: 'max',
+      required: false,
+      type: 'number',
+      default: '100',
+      description: 'The maximum value for the range.',
+    },
+    {
+      name: 'step',
+      required: false,
+      type: 'number',
+      default: '1',
+      description: 'The stepping interval.',
+    },
+    {
+      name: 'onValueChange',
+      required: false,
+      type: 'onValueChange?(value: number[]): void',
+      typeSimple: 'function',
+      description: 'Event handler called when the value changes.',
+    },
+    {
+      name: 'minStepsBetweenThumbs',
+      required: false,
+      type: 'number',
+      default: '0',
+      description: (
+        <span>
+          The minimum permitted <Code>step</Code>s between multiple thumbs.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+### Track
+
+The track that contains the `Slider.Range`.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'span',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Range
+
+The range part. Must live inside `Slider.Track`.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'span',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+### Thumb
+
+A draggable thumb. You can render multiple thumbs.
+
+<PropsTable
+  data={[
+    {
+      name: 'as',
+      required: false,
+      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
+      typeSimple: 'enum',
+      default: 'span',
+      description:
+        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
+    },
+  ]}
+/>
+
+## Examples
+
+### Vertical orientation
+
+Use the `orientation` prop to create a vertical slider.
+
+```jsx
+import { styled } from 'path-to/stitches.config';
+import * as Slider from '@radix-ui/react-slider';
+
+const StyledSlider = styled(Slider.Root, {
+  position: 'relative',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  userSelect: 'none',
+  touchAction: 'none',
+  width: 16,
+  height: 100,
+});
+
+const StyledTrack = styled(Slider.Track, {
+  backgroundColor: 'gainsboro',
+  position: 'relative',
+  flexGrow: 1,
+  width: 2,
+});
+
+const StyledRange = styled(Slider.Range, {
+  position: 'absolute',
+  backgroundColor: 'dodgerblue',
+  borderRadius: '9999px',
+  width: '100%',
+});
+
+const StyledThumb = styled(Slider.Thumb, {
+  display: 'block',
+  width: 16,
+  height: 16,
+  backgroundColor: 'white',
+  border: '1px solid lightgray',
+  borderRadius: '20px',
+  '&:focus': {
+    outline: 'none',
+    borderColor: 'dodgerblue',
+  },
+});
+
+export default () => (
+  <StyledSlider defaultValue={[50]} orientation="vertical">
+    <StyledTrack>
+      <StyledRange />
+    </StyledTrack>
+    <StyledThumb />
+  </StyledSlider>
+);
+```
+
+### Create a range
+
+Add multiple thumbs and values to create a range slider.
+
+```jsx
+import { styled } from 'path-to/stitches.config';
+import * as Slider from '@radix-ui/react-slider';
+
+const StyledSlider = styled(Slider.Root, {
+  position: 'relative',
+  display: 'flex',
+  alignItems: 'center',
+  userSelect: 'none',
+  touchAction: 'none',
+  height: 16,
+});
+
+const StyledTrack = styled(Slider.Track, {
+  backgroundColor: 'gainsboro',
+  position: 'relative',
+  flexGrow: 1,
+  height: 2,
+});
+
+const StyledRange = styled(Slider.Range, {
+  position: 'absolute',
+  backgroundColor: 'dodgerblue',
+  borderRadius: '9999px',
+  height: '100%',
+});
+
+const StyledThumb = styled(Slider.Thumb, {
+  display: 'block',
+  width: 16,
+  height: 16,
+  backgroundColor: 'white',
+  border: '1px solid lightgray',
+  borderRadius: '20px',
+  '&:focus': {
+    outline: 'none',
+    borderColor: 'dodgerblue',
+  },
+});
+
+export default () => (
+  <StyledSlider defaultValue={[25, 75]}>
+    <StyledTrack>
+      <StyledRange />
+    </StyledTrack>
+    <StyledThumb />
+    <StyledThumb />
+  </StyledSlider>
+);
+```
+
+### Define step size
+
+Use the `step` prop to increase the stepping interval.
+
+```jsx
+import { styled } from 'path-to/stitches.config';
+import * as Slider from '@radix-ui/react-slider';
+
+const StyledSlider = styled(Slider.Root, {
+  position: 'relative',
+  display: 'flex',
+  alignItems: 'center',
+  userSelect: 'none',
+  touchAction: 'none',
+  height: 16,
+});
+
+const StyledTrack = styled(Slider.Track, {
+  backgroundColor: 'gainsboro',
+  position: 'relative',
+  flexGrow: 1,
+  height: 2,
+});
+
+const StyledRange = styled(Slider.Range, {
+  position: 'absolute',
+  backgroundColor: 'dodgerblue',
+  borderRadius: '9999px',
+  height: '100%',
+});
+
+const StyledThumb = styled(Slider.Thumb, {
+  display: 'block',
+  width: 16,
+  height: 16,
+  backgroundColor: 'white',
+  border: '1px solid lightgray',
+  borderRadius: '20px',
+  '&:focus': {
+    outline: 'none',
+    borderColor: 'dodgerblue',
+  },
+});
+
+export default () => (
+  <StyledSlider defaultValue={[50]} step={5}>
+    <StyledTrack>
+      <StyledRange />
+    </StyledTrack>
+    <StyledThumb />
+  </StyledSlider>
+);
+```
+
+### Prevent thumb overlap
+
+Use `minStepsBetweenThumbs` to avoid thumbs with equal values.
+
+```jsx
+import { styled } from 'path-to/stitches.config';
+import * as Slider from '@radix-ui/react-slider';
+
+const StyledSlider = styled(Slider.Root, {
+  position: 'relative',
+  display: 'flex',
+  alignItems: 'center',
+  userSelect: 'none',
+  touchAction: 'none',
+  height: 16,
+});
+
+const StyledTrack = styled(Slider.Track, {
+  backgroundColor: 'gainsboro',
+  position: 'relative',
+  flexGrow: 1,
+  height: 2,
+});
+
+const StyledRange = styled(Slider.Range, {
+  position: 'absolute',
+  backgroundColor: 'dodgerblue',
+  borderRadius: '9999px',
+  height: '100%',
+});
+
+const StyledThumb = styled(Slider.Thumb, {
+  display: 'block',
+  width: 16,
+  height: 16,
+  backgroundColor: 'white',
+  border: '1px solid lightgray',
+  borderRadius: '20px',
+  '&:focus': {
+    outline: 'none',
+    borderColor: 'dodgerblue',
+  },
+});
+
+export default () => (
+  <StyledSlider defaultValue={[25, 75]} minStepsBetweenThumbs={1} step={5}>
+    <StyledTrack>
+      <StyledRange />
+    </StyledTrack>
+    <StyledThumb />
+    <StyledThumb />
+  </StyledSlider>
+);
+```
+
+## Accessibility
+
+Adheres to the [Slider WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slidertwothumb).
+
+### Keyboard Interactions
+
+<KeyboardTable
+  data={[
+    {
+      keys: ['ArrowRight'],
+      description: (
+        <span>
+          Increments/decrements by the <Code>step</Code> value depending on{' '}
+          <Code>orientation</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowLeft'],
+      description: (
+        <span>
+          Increments/decrements by the <Code>step</Code> value depending on{' '}
+          <Code>orientation</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowUp'],
+      description: (
+        <span>
+          Increases the value by the <Code>step</Code> amount.
+        </span>
+      ),
+    },
+    {
+      keys: ['ArrowDown'],
+      description: (
+        <span>
+          Decreases the value by the <Code>step</Code> amount.
+        </span>
+      ),
+    },
+    {
+      keys: ['PageUp'],
+      description: (
+        <span>
+          Increases the value by a larger <Code>step</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['PageDown'],
+      description: (
+        <span>
+          Decreases the value by a larger <Code>step</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['Shift + ArrowUp'],
+      description: (
+        <span>
+          Increases the value by a larger <Code>step</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['Shift + ArrowDown'],
+      description: (
+        <span>
+          Decreases the value by a larger <Code>step</Code>.
+        </span>
+      ),
+    },
+    {
+      keys: ['Home'],
+      description: 'Sets the value to its minimum.',
+    },
+    {
+      keys: ['End'],
+      description: 'Sets the value to its maximum.',
+    },
+  ]}
+/>
+
+## Custom APIs
+
+Create your own API by abstracting the primitive parts into your own component.
+
+### Abstract all parts
+
+This example abstracts all of the `Slider` parts so it can be used as a self closing element.
+
+#### Usage
+
+```jsx
+import { Slider } from './your-slider';
+
+export default () => <Slider defaultValue={[25]} />;
+```
+
+#### Implementation
+
+```jsx
+// your-slider.jsx
+import * as SliderPrimitive from '@radix-ui/react-slider';
+
+export const Slider = React.forwardRef((props, forwardedRef) => {
+  const value = props.value || props.defaultValue;
+
+  return (
+    <SliderPrimitive.Slider {...props} ref={forwardedRef}>
+      <SliderPrimitive.Track>
+        <SliderPrimitive.Range />
+      </SliderPrimitive.Track>
+      {value.map((_, i) => (
+        <SliderThumb key={i} />
+      ))}
+    </SliderPrimitive.Slider>
+  );
+});
+```

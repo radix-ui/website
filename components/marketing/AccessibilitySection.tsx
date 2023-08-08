@@ -1,28 +1,15 @@
-import React from 'react';
+import { Box, Card, Flex, Grid, keyframes, styled } from '@modulz/design-system';
+import { Container, Section, Heading, Text } from '@radix-ui/themes';
 import {
-  Box,
-  Grid,
-  Text,
-  styled,
-  Container,
-  Flex,
-  Heading,
-  Paragraph,
-  Section,
-  Card,
-  Avatar,
-  keyframes,
-  darkTheme,
-} from '@modulz/design-system';
-import {
+  CaretDownIcon,
   CaretLeftIcon,
   CheckCircledIcon,
   CheckIcon,
   CodeIcon,
   EyeClosedIcon,
   InputIcon,
-  CaretDownIcon,
 } from '@radix-ui/react-icons';
+import React from 'react';
 import { MarketingCaption } from './MarketingCaption';
 
 type SequenceType = 'screenReader' | 'keyboardNavigation' | 'typeahead' | 'rtl';
@@ -245,7 +232,6 @@ const animations: Record<SequenceType, AnimationKeyframe[]> = {
   ],
 };
 
-// TODO think how to label the animation for AT
 export const AccessibilitySection = () => {
   const keyframeRef = React.useRef(0);
   const iterationRef = React.useRef(0);
@@ -356,7 +342,8 @@ export const AccessibilitySection = () => {
 
   return (
     <Section
-      css={{
+      size={{ initial: '2', md: '3' }}
+      style={{
         background: 'linear-gradient(to bottom, $mauve2, $loContrast)',
         position: 'relative',
         overflow: 'hidden',
@@ -429,10 +416,10 @@ export const AccessibilitySection = () => {
         />
       </Box>
 
-      <Container size="3" css={{ position: 'relative' }}>
+      <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }} position="relative">
         <Box css={{ mb: '$5' }}>
-          <MarketingCaption css={{ mb: '$1' }}>Supports assistive technology</MarketingCaption>
-          <Heading as="h2" size="3">
+          <MarketingCaption mb="1">Supports assistive technology</MarketingCaption>
+          <Heading as="h2" size="7">
             Accessibility out of the box
           </Heading>
         </Box>
@@ -442,7 +429,7 @@ export const AccessibilitySection = () => {
           css={{
             bc: '$mauveA3',
             mb: '$5',
-            boxShadow: '0 0 1px $colors$slateA9',
+            boxShadow: '0 0 1px var(--gray-a9)',
             backdropFilter: 'blur(8px)',
 
             // Horizontal spacing is really tight on iPhone SE
@@ -467,19 +454,19 @@ export const AccessibilitySection = () => {
               gridTemplateRows: 'auto',
               gridAutoRows: '270px',
               '& > *:nth-child(2)': {
-                boxShadow: '0 1px $colors$grayA4',
+                boxShadow: '0 1px var(--gray-a4)',
               },
               '@media (min-width: 620px)': {
                 gridTemplateColumns: 'repeat(2, minmax(min-content, 1fr))',
                 '& > *:nth-child(2)': {
-                  boxShadow: '1px 0 $colors$grayA4',
+                  boxShadow: '1px 0 var(--gray-a4)',
                 },
               },
               '@bp2': {
                 gridTemplateRows: '270px',
                 gridTemplateColumns: 'repeat(3, minmax(min-content, 1fr))',
                 '& > *:nth-child(2)': {
-                  boxShadow: '1px 0 $colors$grayA4, -1px 0 $colors$grayA4',
+                  boxShadow: '1px 0 var(--gray-a4), -1px 0 var(--gray-a4)',
                 },
               },
               '& > *': {
@@ -488,8 +475,8 @@ export const AccessibilitySection = () => {
               },
 
               $$subpanel: 'transparent',
-              [`.${darkTheme} &`]: {
-                $$subpanel: '$colors$mauveA2',
+              '.dark &, .dark-theme &': {
+                $$subpanel: 'var(--mauve-a2)',
               },
             }}
           >
@@ -500,7 +487,7 @@ export const AccessibilitySection = () => {
                 py: '$5',
                 bc: '$grayA1',
                 gridColumn: '1 / -1',
-                boxShadow: '0 1px $colors$grayA4',
+                boxShadow: '0 1px var(--gray-a4)',
                 '@bp2': {
                   boxShadow: 'none',
                   gridColumn: '1 / 2',
@@ -544,7 +531,7 @@ export const AccessibilitySection = () => {
                   gap="1"
                   css={{ color: '$slate11', px: '$3', position: 'relative' }}
                 >
-                  <Text variant="gray" size="2">
+                  <Text color="gray" size="2">
                     Keyboard input
                   </Text>
                   <KeyboardIcon />
@@ -587,7 +574,7 @@ export const AccessibilitySection = () => {
             {currentSequence === 'screenReader' && (
               <Grid css={{ py: '$3', bc: '$$subpanel' }} role="presentation">
                 <Flex align="center" gap="1" css={{ color: '$slate11', px: '$3' }}>
-                  <Text variant="gray" size="2">
+                  <Text color="gray" size="2">
                     Screen reader
                   </Text>
                   <AccessibilityIcon />
@@ -597,11 +584,23 @@ export const AccessibilitySection = () => {
                   justify="between"
                   css={{ pt: '$3', px: '$3', minHeight: 180 }}
                 >
-                  <MockScreenReader>
+                  <Text
+                    size="7"
+                    weight="medium"
+                    style={{
+                      lineHeight: 1.2,
+                      color: 'transparent',
+                      WebkitBackgroundClip: 'text',
+                      userSelect: 'none',
+                      filter: 'saturate(0.5)',
+                      backgroundImage:
+                        'linear-gradient(to bottom right, var(--blue-11), var(--gray-12))',
+                    }}
+                  >
                     <ScreenReaderOutput
                       dropdownState={animations[currentSequence][keyframe]?.dropdown}
                     />
-                  </MockScreenReader>
+                  </Text>
                   <SpeakerIcon />
                 </Flex>
               </Grid>
@@ -609,7 +608,7 @@ export const AccessibilitySection = () => {
 
             <Grid css={{ py: '$3', bc: '$$subpanel' }} role="presentation">
               <Flex align="center" gap="1" css={{ color: '$slate11', px: '$3' }}>
-                <Text variant="gray" size="2">
+                <Text color="gray" size="2">
                   Radix component
                 </Text>
                 <CodeIcon />
@@ -632,10 +631,10 @@ export const AccessibilitySection = () => {
               <Box css={{ mb: '$3' }}>
                 <CheckCircledIcon width="30" height="30" />
               </Box>
-              <Heading as="h3" css={{ mb: '$2' }}>
+              <Heading as="h3" size="3" mb="1">
                 WAI-ARIA compliant
               </Heading>
-              <Text css={{ lineHeight: 1.5 }} as="p">
+              <Text size="3" as="p">
                 Radix Primitives follow the WAI-ARIA guidelines, implementing correct semantics and
                 behaviors for our components.
               </Text>
@@ -647,10 +646,10 @@ export const AccessibilitySection = () => {
               <Box css={{ mb: '$3' }}>
                 <KeyboardIcon width="30" height="30" />
               </Box>
-              <Heading as="h3" css={{ mb: '$2' }}>
+              <Heading as="h3" size="3" mb="1">
                 Keyboard navigation
               </Heading>
-              <Text css={{ lineHeight: 1.5 }} as="p">
+              <Text size="3" as="p">
                 Primitives provide full keyboard support for components where users expect to use a
                 keyboard or other input devices.
               </Text>
@@ -662,10 +661,10 @@ export const AccessibilitySection = () => {
               <Box css={{ mb: '$3' }}>
                 <InputIcon width="30" height="30" />
               </Box>
-              <Heading as="h3" css={{ mb: '$2' }}>
+              <Heading as="h3" size="3" mb="1">
                 Focus management
               </Heading>
-              <Text css={{ lineHeight: 1.5 }} as="p">
+              <Text size="3" as="p">
                 Out of the box, Primitives provide sensible focus management defaults, which can be
                 further customized in your code.
               </Text>
@@ -677,10 +676,10 @@ export const AccessibilitySection = () => {
               <Box css={{ mb: '$3' }}>
                 <EyeClosedIcon width="30" height="30" />
               </Box>
-              <Heading as="h3" css={{ mb: '$2' }}>
+              <Heading as="h3" size="3" mb="1">
                 Screen reader tested
               </Heading>
-              <Text css={{ lineHeight: 1.5 }} as="p">
+              <Text size="3" as="p">
                 We test Primitives with common assistive technologies, looking out for practical
                 issues that people may experience.
               </Text>
@@ -696,35 +695,45 @@ const ScreenReaderOutput = ({ dropdownState }: { dropdownState: MockDropdownStat
   if (dropdownState === 'closed') {
     return (
       <span>
-        Navigation, menu <span style={{ whiteSpace: 'nowrap' }}>pop-up</span>, button
+        Navigation,
+        <br />
+        menu <span style={{ whiteSpace: 'nowrap' }}>pop-up</span>, button
       </span>
     );
   }
   if (dropdownState === 'item1') {
     return (
       <span>
-        Show Minimap, ticked, <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
+        Show Minimap,
+        <br />
+        ticked, <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
       </span>
     );
   }
   if (dropdownState === 'item2') {
     return (
       <span>
-        Go to Symbol, <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
+        Go to Symbol,
+        <br />
+        <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
       </span>
     );
   }
   if (dropdownState === 'item3') {
     return (
       <span>
-        Go to Definition, <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
+        Go to Definition,
+        <br />
+        <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
       </span>
     );
   }
   if (dropdownState === 'item4') {
     return (
       <span>
-        Go to References, <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
+        Go to References,
+        <br />
+        <span style={{ whiteSpace: 'nowrap' }}>menu item</span>
       </span>
     );
   }
@@ -736,7 +745,7 @@ const MockDropdownSeparator = styled('div', {
   ml: 30,
   mr: 10,
   my: 5,
-  bc: '$mauve5',
+  bc: 'var(--mauve-a5)',
 });
 
 const MockDropdown = ({ state }: { state?: MockDropdownState }) => {
@@ -829,42 +838,19 @@ const MockRtlDropdown = ({ state }: { state?: MockDropdownState }) => {
   );
 };
 
-const MockScreenReader = ({ css, ...props }: React.ComponentProps<typeof Heading>) => {
-  return (
-    <Heading
-      size="3"
-      as="span"
-      css={{
-        $$textBgStop1: '#4F4B59',
-        $$textBgStop2: '#545685',
-        color: 'transparent',
-        WebkitBackgroundClip: 'text',
-        userSelect: 'none',
-        backgroundImage: 'linear-gradient(to bottom right, $$textBgStop1, $$textBgStop2)',
-        [`.${darkTheme} &`]: {
-          $$textBgStop1: '$colors$indigo12',
-          $$textBgStop2: '$colors$whiteA11',
-        },
-        ...css,
-      }}
-      {...props}
-    />
-  );
-};
-
 const MockTypeaheadOutput = styled(Text, {
   display: 'inline-block',
   px: '$1',
   br: '$1',
   pb: 2,
   bc: '$indigo4',
-  border: '1px solid $colors$indigo6',
+  border: '1px solid var(--blue-a6)',
   lineHeight: '18px',
   whiteSpace: 'pre',
   '&:empty': {
     display: 'none',
   },
-  [`.${darkTheme} &`]: {
+  '.dark &, .dark-theme &': {
     bc: '$indigo3',
   },
   variants: {
@@ -872,7 +858,7 @@ const MockTypeaheadOutput = styled(Text, {
     variant: {
       contrast: {
         color: '$indigo12',
-        [`.${darkTheme} &`]: {
+        '.dark &, .dark-theme &': {
           color: '$indigo11',
         },
       },
@@ -990,7 +976,7 @@ const MockArrowKeyboard = ({ currentKey }: { currentKey?: string }) => {
 const keyPressAnimation = keyframes({
   from: {
     bc: '$slate5',
-    boxShadow: '0 0 0 1px $colors$slate5',
+    boxShadow: '0 0 0 1px var(--gray-5)',
   },
 });
 
@@ -999,7 +985,7 @@ const Key = styled('span', {
   bc: '$mauve1',
   fontFamily: '$untitled',
   color: '$slate11',
-  boxShadow: '0 0 0 1px $colors$mauveA6, 0 2px $colors$mauveA6',
+  boxShadow: '0 0 0 1px var(--mauve-a6), 0 2px var(--mauve-a6)',
   userSelect: 'none',
   flex: 'none',
   maxWidth: '100%',
@@ -1007,7 +993,7 @@ const Key = styled('span', {
   ai: 'center',
   jc: 'center',
 
-  [`.${darkTheme} &`]: {
+  '.dark &, .dark-theme &': {
     bc: '$mauve1',
   },
 
@@ -1040,9 +1026,9 @@ const Key = styled('span', {
         height: 42,
         br: '$2',
         fontSize: '$1',
-        [`.${darkTheme} &`]: {
+        '.dark &, .dark-theme &': {
           color: '$slate12',
-          textShadow: '0 0 5px $colors$slateA10, 0 0 1px $colors$slateA11',
+          textShadow: '0 0 5px var(--gray-a10), 0 0 1px var(--gray-a11)',
         },
       },
     },
@@ -1062,7 +1048,7 @@ const MockDropdownButton = styled(Box, {
   lineHeight: '35px',
   mb: '$1',
   px: '$2',
-  color: '$hiContrast',
+  color: 'var(--gray-12)',
   bc: '$loContrast',
   fontFamily: '$untitled',
   fontSize: '$2',
@@ -1072,11 +1058,11 @@ const MockDropdownButton = styled(Box, {
   variants: {
     focused: {
       true: {
-        boxShadow: 'inset 0 0 0 1px $colors$indigo8, 0 0 0 1px $colors$indigo8',
+        boxShadow: 'inset 0 0 0 1px var(--blue-a8), 0 0 0 1px var(--blue-a8)',
         transition: 'none',
       },
       false: {
-        boxShadow: 'inset 0 0 0 1px $colors$slate5, 0 0 0 3px #FFFFFF00',
+        boxShadow: 'inset 0 0 0 1px var(--gray-5), 0 0 0 3px #FFFFFF00',
         bc: '$mauve1',
       },
     },
@@ -1131,12 +1117,8 @@ const MockDropdownItem = styled(Box, {
   height: '$$itemHeight',
   lineHeight: '$$itemHeight',
   position: 'relative',
-  color: '$hiContrast',
+  color: 'var(--gray-12)',
   br: 5,
-
-  [`.${darkTheme} &`]: {
-    color: '$slate11',
-  },
 
   variants: {
     indent: {
@@ -1149,17 +1131,13 @@ const MockDropdownItem = styled(Box, {
     },
     focused: {
       true: {
-        backgroundColor: '$indigo11',
-        color: 'white',
-        [`.${darkTheme} &`]: {
-          color: 'white',
-          backgroundColor: '$indigo7',
-        },
+        backgroundColor: 'var(--gray-12)',
+        color: 'var(--color-background)',
       },
     },
     focusWithin: {
       true: {
-        backgroundColor: '$slateA4',
+        backgroundColor: 'var(--gray-a4)',
       },
     },
   },
@@ -1191,11 +1169,11 @@ const MockDropdownCheckboxItem = ({
 };
 
 const GlassCard = styled(Card, {
-  bc: '$whiteA9',
+  bc: 'var(--white-a9)',
   backdropFilter: 'blur(8px)',
-  [`.${darkTheme} &`]: {
-    bc: '$whiteA2',
-    boxShadow: 'inset 0 0 0 1px $colors$whiteA4',
+  '.dark &, .dark-theme &': {
+    bc: 'var(--white-a2)',
+    boxShadow: 'inset 0 0 0 1px var(--white-a4)',
   },
 });
 
@@ -1391,7 +1369,7 @@ const AnimationStateButton = styled('button', {
   WebkitTapHighlightColor: 'transparent',
 
   fontSize: '$4',
-  fontFamily: '$untitled',
+  fontFamily: 'inherit',
   fontWeight: 500,
   lineHeight: 1,
   letterSpacing: '-0.015em',
@@ -1399,29 +1377,24 @@ const AnimationStateButton = styled('button', {
   px: '$2',
   position: 'relative',
   br: '$2',
-  $$outline: '0 0',
 
-  '&:focus': {
-    boxShadow: '0 0 0 2px $colors$cyan8',
-  },
-  '&:focus:not(:focus-visible)': {
-    boxShadow: '$$outline',
+  '&:focus-visible': {
+    boxShadow: '0 0 0 2px var(--blue-a8)',
   },
 
   variants: {
     active: {
       true: {
-        $$outline: 'inset 0 0 0 1px $colors$cyan6',
-        boxShadow: '$$outline',
-        color: '$hiContrast',
-        backgroundColor: '$cyanA4',
+        boxShadow: 'inset 0 0 0 1px var(--blue-a6)',
+        color: 'var(--gray-12)',
+        backgroundColor: 'var(--blue-a4)',
         cursor: 'default',
       },
       false: {
-        color: '$slate9',
+        color: 'var(--gray-a9)',
         '@hover': {
           '&:hover': {
-            color: '$hiContrast',
+            color: 'var(--gray-12)',
           },
         },
       },

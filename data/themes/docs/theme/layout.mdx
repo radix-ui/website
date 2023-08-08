@@ -1,0 +1,72 @@
+---
+metaTitle: Layout
+metaDescription: Declarative layout and common spacing props.
+---
+
+# Layout
+
+<Description>Declarative layout and common spacing props.</Description>
+
+## Spacing scale
+
+Spacing values are derived from a 9 step scale.
+
+<Box my="7">
+  <ThemesSpacingScale />
+</Box>
+
+<ThemesSpacingTable />
+
+## Layout components
+
+[Box](/themes/docs/components/box), [Flex](/themes/docs/components/flex) and [Grid](/themes/docs/components/grid) are foundational elements you'll use to construct layouts. Box provides block-level spacing and sizing, while Flex and Grid let you create flexible columns, rows and grids.
+
+```jsx live=true
+<Grid columns="3" gap="3">
+  <Flex direction="column" gap="3">
+    <Box height="5">
+      <DecorativeBox />
+    </Box>
+    <Box height="7">
+      <DecorativeBox />
+    </Box>
+    <Box height="9">
+      <DecorativeBox />
+    </Box>
+  </Flex>
+  <Flex direction="column" gap="3">
+    <Box grow="1">
+      <DecorativeBox />
+    </Box>
+
+    <Box height="6">
+      <DecorativeBox />
+    </Box>
+  </Flex>
+</Grid>
+```
+
+[Container](/themes/docs/components/container) and [Section](/themes/docs/components/section) are used for page level layout and allow you to contain the max width of content or apply consistent vertical spacing between sections.
+
+All layout components share a common set of props:
+
+<ThemesPropsTable name="layout" />
+
+### Margin props
+
+Shorthand utilities for applying margin to any side of an element, useful when you need to apply space between elements. Margin props are available on components that render a node.
+
+```jsx live=true line=1
+<Button __mr__="3" variant="soft">Cancel</Button>
+<Button>Save changes</Button>
+```
+
+<ThemesPropsTable name="margin" />
+
+### Scaling
+
+Values which affect layout (spacing, typographic sizing, line heights) scale relatively based on the `scaling` value defined in your [Theme](/themes/docs/components/theme). This setting allows you to scale the UI density uniformly across your entire application.
+
+<Box my="5">
+  <ThemesScalingExample />
+</Box>

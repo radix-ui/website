@@ -1,0 +1,26 @@
+---
+metaTitle: Section
+metaDescription: Denotes a section of page content.
+sourcePath: components/section
+---
+
+```jsx live=true
+<Box
+  py="8"
+  style={{ backgroundColor: 'var(--gray-a2)', borderRadius: 'var(--radius-3)' }}
+>
+  <DecorativeBox asChild size="2">
+    <Section />
+  </DecorativeBox>
+</Box>
+```
+
+## API Reference
+
+This component is based on the `section` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
+
+<ThemesPropsTable name="section" />
+
+The following props are shared between [Box](./box), [Flex](./flex), [Grid](./grid), [Container](./container) and [Section](./section) layout components.
+
+<ThemesPropsTable name="layout" />

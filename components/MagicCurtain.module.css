@@ -1,0 +1,91 @@
+.MagicCurtainRoot {
+  position: relative;
+}
+
+.MagicCurtainItem {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  --animation-duration: 1s;
+}
+
+@media (min-width: 500px) {
+  .MagicCurtainItem {
+    --animation-duration: 1.5s;
+  }
+}
+
+@media (min-width: 1500px) {
+  .MagicCurtainItem {
+    --animation-duration: 2s;
+  }
+}
+
+@property --gradient-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 90deg;
+}
+
+.MagicCurtainItem[data-visibility='hidden'] {
+  display: none;
+}
+
+.MagicCurtainItem[data-visibility='visible-in-front'] {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .MagicCurtainItem[data-visibility='visible-in-front'] {
+    animation-name: magic-curtain;
+    animation-duration: var(--animation-duration);
+    animation-delay: calc(0.5s + var(--animation-duration));
+    animation-timing-function: ease-in-out;
+  }
+  .MagicCurtainItem[data-visibility='visible-in-front'][data-animation-direction='reverse'] {
+    animation-name: magic-curtain-reverse;
+  }
+}
+
+.MagicCurtainItem[data-animation-play-state='paused'] {
+  animation-play-state: paused;
+}
+
+@keyframes magic-curtain {
+  0% {
+    clip-path: polygon(0 0, 120% 0, 100% 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(0 0, -20% 0, 0 100%, 0 100%);
+  }
+}
+
+@keyframes magic-curtain-reverse {
+  0% {
+    clip-path: polygon(-20% 0, 100% 0, 100% 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(120% 0, 200% 0, 200% 100%, 100% 100%);
+  }
+}
+
+@media (min-width: 1000px) {
+  @keyframes magic-curtain {
+    0% {
+      clip-path: polygon(0 0, 105% 0, 100% 100%, 0 100%);
+    }
+    100% {
+      clip-path: polygon(0 0, -5% 0, 0 100%, 0 100%);
+    }
+  }
+
+  @keyframes magic-curtain-reverse {
+    0% {
+      clip-path: polygon(-5% 0, 100% 0, 100% 100%, 0 100%);
+    }
+    100% {
+      clip-path: polygon(105% 0, 200% 0, 200% 100%, 100% 100%);
+    }
+  }
+}

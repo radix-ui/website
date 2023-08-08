@@ -1,73 +1,48 @@
 import React from 'react';
-import { Box, Text, Kbd, Code } from '@modulz/design-system';
-import { RegionTable } from './RegionTable';
+import { Box, Text, Code, Table } from '@radix-ui/themes';
 
 type KeyboardDef = {
   attribute: string;
   values: string;
 };
 
-export function DataAttributesTable({
-  data,
-  'aria-label': ariaLabel,
-  'aria-labelledby': ariaLabelledBy,
-}: {
-  data: KeyboardDef[];
-  'aria-label'?: string;
-  'aria-labelledby'?: string;
-}) {
-  const hasAriaLabel = !!(ariaLabel || ariaLabelledBy);
+export function DataAttributesTable({ data }: { data: KeyboardDef[] }) {
   return (
-    <RegionTable
-      css={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}
-      aria-label={hasAriaLabel ? ariaLabel : 'Keyboard Interactions'}
-      aria-labelledby={ariaLabelledBy}
-    >
-      <thead>
-        <tr>
-          <Box as="th" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4', width: '45%' }}>
-            <Text size="2" css={{ color: '$gray11' }}>
-              Data Attribute
-            </Text>
-          </Box>
-          <Box as="th" css={{ borderBottom: '1px solid $gray6', py: '$3', pr: '$4', width: '55%' }}>
-            <Text size="2" css={{ color: '$gray11' }}>
-              Values
-            </Text>
-          </Box>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map(({ attribute, values }, i) => (
-          <tr key={i}>
-            <Box
-              as="td"
-              css={{
-                borderBottom: '1px solid $gray6',
-                py: '$3',
-                pr: '$4',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              <Code>{attribute}</Code>
-            </Box>
+    <Box my="5" asChild>
+      <Table.Root variant="surface">
+        <Table.Header>
+          <Table.Row>
+            <Table.ColumnHeaderCell style={{ width: '37%' }}>Data attribute</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell>Values</Table.ColumnHeaderCell>
+          </Table.Row>
+        </Table.Header>
 
-            <Box as="td" css={{ borderBottom: '1px solid $gray6', py: '$3' }}>
-              {Array.isArray(values) ? (
-                <Code css={{ bc: '$gray4', color: '$gray11' }}>
-                  {values.map(
-                    (value, index) => `"${value}" ${values.length !== index + 1 ? ' | ' : ''}`
+        <Table.Body>
+          {data.map(({ attribute, values }, i) => {
+            return (
+              <Table.Row key={`${attribute}-${i}`}>
+                <Table.RowHeaderCell>
+                  <Code size="2">{attribute}</Code>
+                </Table.RowHeaderCell>
+
+                <Table.Cell>
+                  {Array.isArray(values) ? (
+                    <Code size="2" color="gray">
+                      {values.map(
+                        (value, index) => `"${value}" ${values.length !== index + 1 ? ' | ' : ''}`
+                      )}
+                    </Code>
+                  ) : (
+                    <Text as="p" size="2">
+                      {values}
+                    </Text>
                   )}
-                </Code>
-              ) : (
-                <Text size="3" css={{ lineHeight: '25px' }}>
-                  {values}
-                </Text>
-              )}
-            </Box>
-          </tr>
-        ))}
-      </tbody>
-    </RegionTable>
+                </Table.Cell>
+              </Table.Row>
+            );
+          })}
+        </Table.Body>
+      </Table.Root>
+    </Box>
   );
 }

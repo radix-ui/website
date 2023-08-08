@@ -11,6 +11,13 @@ export default class Document extends NextDocument {
           <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
           <link
             rel="preload"
+            href="/fonts/AdobeTextPro-Regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
             href="/fonts/UntitledSansWeb-Regular.woff"
             as="font"
             type="font/woff"
@@ -55,6 +62,13 @@ export default class Document extends NextDocument {
             dangerouslySetInnerHTML={{
               __html: `
 @font-face {
+  font-family: 'Adobe Text Pro';
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/AdobeTextPro-Regular.woff2) format('woff2');
+}
+
+@font-face {
   font-family: 'Untitled Sans';
   font-weight: 400;
   font-display: swap;
@@ -64,6 +78,13 @@ export default class Document extends NextDocument {
 @font-face {
   font-family: 'Untitled Sans';
   font-weight: 500;
+  font-display: swap;
+  src: url(/fonts/UntitledSansWeb-Medium.woff2) format('woff2'), url(/fonts/UntitledSansWeb-Medium.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Untitled Sans';
+  font-weight: 600;
   font-display: swap;
   src: url(/fonts/UntitledSansWeb-Medium.woff2) format('woff2'), url(/fonts/UntitledSansWeb-Medium.woff) format('woff');
 }

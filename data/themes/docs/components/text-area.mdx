@@ -1,0 +1,53 @@
+---
+metaTitle: Text Area
+metaDescription: Captures multi-line user input.
+sourcePath: components/text-area
+---
+
+```jsx live=true
+<TextArea placeholder="Reply to comment…" />
+```
+
+## API Reference
+
+This component is based on the `textarea` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
+
+<ThemesPropsTable name="textArea" />
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Flex direction="column" gap="3" style={{ maxWidth: 500 }}>
+  <TextArea size="1" placeholder="Reply to comment…" />
+  <TextArea size="2" placeholder="Reply to comment…" />
+  <TextArea size="3" placeholder="Reply to comment…" />
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style.
+
+```jsx live=true
+<Flex direction="column" gap="3" style={{ maxWidth: 500 }}>
+  <TextArea variant="surface" placeholder="Reply to comment…" />
+  <TextArea variant="classic" placeholder="Reply to comment…" />
+  <TextArea variant="soft" placeholder="Reply to comment…" />
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
+
+```jsx live=true
+<Flex direction="column" gap="3" style={{ maxWidth: 500 }}>
+  <TextArea color="blue" variant="soft" placeholder="Reply to comment…" />
+  <TextArea color="green" variant="soft" placeholder="Reply to comment…" />
+  <TextArea color="red" variant="soft" placeholder="Reply to comment…" />
+</Flex>
+```

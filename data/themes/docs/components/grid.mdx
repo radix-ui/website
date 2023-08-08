@@ -1,0 +1,40 @@
+---
+metaTitle: Grid
+metaDescription: Component for creating grid layouts.
+sourcePath: components/grid
+---
+
+```jsx live=true
+<Grid columns="3" gap="3" width="auto">
+  <Box height="9">
+    <DecorativeBox />
+  </Box>
+  <Box height="9">
+    <DecorativeBox />
+  </Box>
+  <Box height="9">
+    <DecorativeBox />
+  </Box>
+  <Box height="9">
+    <DecorativeBox />
+  </Box>
+  <Box height="9">
+    <DecorativeBox />
+  </Box>
+  <Box height="9">
+    <DecorativeBox />
+  </Box>
+</Grid>
+```
+
+## API Reference
+
+This component is based on the `div` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
+
+Use these props to create grid layouts.
+
+<ThemesPropsTable name="grid" />
+
+The following props are shared between [Box](./box), [Flex](./flex), [Grid](./grid), [Container](./container) and [Section](./section) layout components.
+
+<ThemesPropsTable name="layout" />
