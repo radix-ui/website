@@ -36,7 +36,7 @@ export default function Home() {
       <TitleAndMetaTags
         title="Radix Icons"
         description="A crisp set of 15×15 icons designed by the WorkOS team."
-        image="default.png"
+        image="icons.png"
       />
 
       <IconsHeader ghost />

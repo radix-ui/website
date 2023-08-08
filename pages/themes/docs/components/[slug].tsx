@@ -29,7 +29,7 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
       <TitleAndMetaTags
         title={`${frontmatter.metaTitle} – Radix UI`}
         description={frontmatter.metaDescription}
-        image={frontmatter.metaImage}
+        image="themes.png"
       />
 
       <Heading as="h1" size="8" mb="2" style={{ scrollMarginTop: 'var(--space-9)' }}>
