@@ -45,7 +45,7 @@ export function ThemesBreakpointsTable() {
 export function ThemesSpacingTable() {
   return (
     <Box my="5" asChild>
-      <Table.Root>
+      <Table.Root variant="surface">
         <Table.Header>
           <Table.Row>
             <Table.ColumnHeaderCell>Step</Table.ColumnHeaderCell>
@@ -78,7 +78,7 @@ export function ThemesSpacingTable() {
 export function ThemesFontWeightTable() {
   return (
     <Box my="5" asChild>
-      <Table.Root>
+      <Table.Root variant="surface">
         <Table.Header>
           <Table.Row>
             <Table.ColumnHeaderCell>Weight</Table.ColumnHeaderCell>
@@ -111,7 +111,7 @@ export function ThemesFontWeightTable() {
 export function ThemesFontFamilyTable() {
   return (
     <Box my="5" asChild>
-      <Table.Root>
+      <Table.Root variant="surface">
         <Table.Header>
           <Table.Row>
             <Table.ColumnHeaderCell>Type</Table.ColumnHeaderCell>
@@ -153,7 +153,7 @@ export function ThemesFontFamilyTable() {
 export function ThemesFontSizeTable() {
   return (
     <Box my="5" asChild>
-      <Table.Root>
+      <Table.Root variant="surface">
         <Table.Header>
           <Table.Row>
             <Table.ColumnHeaderCell>Step</Table.ColumnHeaderCell>

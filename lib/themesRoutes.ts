@@ -10,9 +10,9 @@ export const themesRoutes = [
     label: 'Theme',
     pages: [
       { title: 'Overview', slug: 'themes/docs/theme/overview' },
-      { title: 'Visual style', slug: 'themes/docs/theme/visual-style' },
       { title: 'Color', slug: 'themes/docs/theme/color' },
       { title: 'Dark mode', slug: 'themes/docs/theme/dark-mode' },
+      { title: 'Visual style', slug: 'themes/docs/theme/visual-style' },
       { title: 'Typography', slug: 'themes/docs/theme/typography' },
       { title: 'Layout', slug: 'themes/docs/theme/layout' },
       { title: 'Breakpoints', slug: 'themes/docs/theme/breakpoints' },
