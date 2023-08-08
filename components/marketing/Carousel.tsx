@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Box } from '@modulz/design-system';
 import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import { createContext } from '@radix-ui/react-context';
 import { useCallbackRef } from '@radix-ui/react-use-callback-ref';
@@ -18,7 +17,7 @@ const [CarouselProvider, useCarouselContext] = createContext<{
 }>('Carousel');
 
 export const Carousel = (props) => {
-  const ref = useRef<React.ElementRef<typeof Box>>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const { children, ...carouselProps } = props;
   const slideListRef = useRef<HTMLElement>(null);
   const [_, force] = useState({});
@@ -119,16 +118,16 @@ export const Carousel = (props) => {
       onNextClick={handleNextClick}
       onPrevClick={handlePrevClick}
     >
-      <Box {...carouselProps} ref={ref}>
+      <div {...carouselProps} ref={ref}>
         {children}
-      </Box>
+      </div>
     </CarouselProvider>
   );
 };
 
 export const CarouselSlideList = (props) => {
   const context = useCarouselContext('CarouselSlideList');
-  const ref = React.useRef<React.ElementRef<typeof Box>>(null);
+  const ref = React.useRef<React.ElementRef<'div'>>(null);
   const composedRefs = useComposedRefs(ref, context.slideListRef);
   const [dragStart, setDragStart] = React.useState(null);
 
@@ -146,7 +145,7 @@ export const CarouselSlideList = (props) => {
   });
 
   return (
-    <Box
+    <div
       {...props}
       ref={composedRefs}
       data-state={dragStart ? 'dragging' : undefined}
@@ -188,9 +187,9 @@ export const CarouselSlideList = (props) => {
 };
 
 export const CarouselSlide = (props) => {
-  const { as: Comp = Box, ...slideProps } = props;
+  const { as: Comp = 'div', ...slideProps } = props;
   const context = useCarouselContext('CarouselSlide');
-  const ref = useRef<React.ElementRef<typeof Box>>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const [intersectionRatio, setIntersectionRatio] = useState(0);
   const isDraggingRef = useRef(false);
 

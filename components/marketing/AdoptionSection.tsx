@@ -1,14 +1,13 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Box, Grid, Text, Paragraph } from '@modulz/design-system';
-import { Button, Container, Heading, Section } from '@radix-ui/themes';
+import { Box, Button, Container, Grid, Heading, Section, Text } from '@radix-ui/themes';
 import { MarketingCaption } from './MarketingCaption';
 
 export const AdoptionSection = () => {
   return (
     <Section size={{ initial: '2', md: '3' }}>
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
-        <Box css={{ mb: '$7' }}>
+        <Box mb="7">
           <MarketingCaption mb="1">Transition to Radix Primitives</MarketingCaption>
           <Heading as="h2" size="7" mb="5">
             Adoption made easy
@@ -32,36 +31,28 @@ export const AdoptionSection = () => {
           </NextLink>
         </Box>
 
-        <Grid columns={{ '@initial': 1, '@bp1': 2 }} gap={{ '@initial': 4, '@bp1': 7, '@bp2': 9 }}>
+        <Grid columns={{ initial: '1', xs: '2' }} gap={{ initial: '6', xs: '7', sm: '9' }}>
           <Box>
-            <Text
-              as="h3"
-              size="6"
-              css={{ fontWeight: 500, letterSpacing: '-0.03em', lineHeight: 1.3, mb: '$2' }}
-            >
+            <Heading as="h3" size="4" mb="2">
               Incremental adoption
-            </Text>
-            <Paragraph>
+            </Heading>
+            <Text as="p" size="3">
               Each component is its own independently versioned package, so new components can be
               added alongside your existing code. No need to disrupt feature work with a huge
               rewrite{'\u2060'}—you can start small and add more components one by one.
-            </Paragraph>
+            </Text>
           </Box>
 
           <Box>
-            <Text
-              as="h3"
-              size="6"
-              css={{ fontWeight: 500, letterSpacing: '-0.03em', lineHeight: 1.3, mb: '$2' }}
-            >
+            <Heading as="h3" size="4" mb="2">
               Detailed docs and TypeScript support
-            </Text>
-            <Paragraph>
+            </Heading>
+            <Text as="p" size="3">
               Radix documentation contains real-world examples, extensive API references,
               accessibility details, and full TypeScript support. All components share a similar
               API, creating a consistent developer experience. You will love working with Radix
               Primitives.
-            </Paragraph>
+            </Text>
           </Box>
         </Grid>
       </Container>
