@@ -38,8 +38,8 @@ Use the `size` prop to control text size. This prop also provides correct line h
 
 Use the `variant` prop to control the visual style.
 
-```jsx live=true
-<Flex direction="column" align="start" gap="2">
+```jsx live=true scroll=true
+<Flex gap="3">
   <Code variant="solid">console.log()</Code>
   <Code variant="soft">console.log()</Code>
   <Code variant="outline">console.log()</Code>
@@ -51,8 +51,8 @@ Use the `variant` prop to control the visual style.
 
 Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
 
-```jsx live=true
-<Flex direction="column" align="start" gap="2">
+```jsx live=true scroll=true
+<Flex gap="3">
   <Code color="indigo" variant="soft">
     console.log()
   </Code>
@@ -73,15 +73,15 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 Use the `highContrast` prop to add additional contrast.
 
 ```jsx live=true
-<Flex gap="3">
-  <Flex direction="column" align="start" gap="2">
+<Flex direction="column" gap="3">
+  <Flex gap="3">
     <Code variant="solid">console.log()</Code>
     <Code variant="soft">console.log()</Code>
     <Code variant="outline">console.log()</Code>
     <Code variant="ghost">console.log()</Code>
   </Flex>
 
-  <Flex direction="column" align="start" gap="2">
+  <Flex gap="3">
     <Code variant="solid" highContrast>
       console.log()
     </Code>
@@ -103,7 +103,7 @@ Use the `highContrast` prop to add additional contrast.
 Use the `weight` prop to set the text weight.
 
 ```jsx live="true"
-<Flex direction="column" gap="2" align="start">
+<Flex gap="3">
   <Code weight="regular">console.log()</Code>
   <Code weight="bold">console.log()</Code>
 </Flex>
