@@ -104,35 +104,63 @@ type CommonDescriptions = {
 
 const uniqueDescriptions: UniqueDescriptions = {
   avatar: {
-    fallback:
-      'The fallback element that is rendered when there is no image. It can be a 1 or 2 letter string, or a ReactNode (an icon for example).',
+    fallback: 'The fallback element to render when an image is not available.',
   },
-  scrollArea: { scrollbars: 'Controls the scrollable axes' },
+  scrollArea: { scrollbars: 'Controls the scrollable axes.' },
   theme: {
-    appearance:
-      'The color scheme of the theme (typcially referred to as light and dark mode). Invert will use the opposite scheme to that of its parent.',
-    accentColor: 'The primary accent color of the theme.',
-    grayColor: 'The gray scale of the theme.',
-    hasBackground: 'Whether to apply the themes background color to the rendered element.',
+    appearance: (
+      <>
+        The color scheme of the theme (typcially referred to as light and dark mode). See the{' '}
+        <Link href="/themes/docs/theme/dark-mode">dark mode guide</Link> for more details.
+      </>
+    ),
+    accentColor: (
+      <>
+        The dominant color of the theme, see the{' '}
+        <Link href="/themes/docs/theme/color">color guide</Link> for more details.
+      </>
+    ),
+    grayColor: (
+      <>
+        The grayscale of the theme, see the <Link href="/themes/docs/theme/color">color guide</Link>{' '}
+        for more details.
+      </>
+    ),
+    hasBackground: 'Whether to apply the themes background color to the theme node.',
+    scaling: (
+      <>
+        The linear scaling applied to the theme. See the{' '}
+        <Link href="/themes/docs/theme/layout#scaling">layout guide</Link> for more details.
+      </>
+    ),
   },
   tooltip: {
-    content: 'The content associated with the tooltip',
-    multiline: 'Used when you need to format the content across multiple lines',
+    content: 'The content associated with the tooltip.',
+    multiline: 'Used when you need to format the content across multiple lines.',
+  },
+  link: {
+    underline: 'Sets the visibility of the underline affordance.',
   },
 };
 
 const commonDescriptions: CommonDescriptions = {
-  color: (
+  variant: (
     <>
-      Use to override the default color inherited from the global theme. Read our{' '}
-      <Link href="/themes/docs/guides/theme/configuration">theme guide</Link> for more details.
+      The visual variant to apply, see{' '}
+      <Link href="/themes/docs/theme/overview#variants">theme overview</Link> for more details.
     </>
   ),
-  highContrast: 'Use to render a high-contrast version of the component.',
+  color: (
+    <>
+      Overrides the accent color inherited from the Theme. See the{' '}
+      <Link href="/themes/docs/theme/color">color guide</Link> for more details.
+    </>
+  ),
+  highContrast: 'Renders the component in higher contrast.',
   radius: (
     <>
-      Overrides the default radius inherited from the global theme. Read our{' '}
-      <Link href="/dosc/themes/guides/theme/configuration">theme guide</Link> for more details.
+      Overrides the radius inherited from the theme. See the{' '}
+      <Link href="/themes/docs/theme/visual-style#radius">theme guide</Link> for more details.
     </>
   ),
   as: (
@@ -153,8 +181,8 @@ const commonDescriptions: CommonDescriptions = {
       details.
     </>
   ),
-  // shortcut: 'Optional shortcut command to associate with the item',
-  trim: 'Removes the leading trim from the start or end of the rendered text node',
+  shortcut: 'Optional shortcut command displayed next to the item text.',
+  trim: 'Removes the leading trim from the start or end of the rendered text node.',
 };
 
 function shouldBalanceArray(values?: readonly string[] | string) {
