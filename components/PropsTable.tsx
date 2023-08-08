@@ -37,7 +37,7 @@ export function PropsTable({
             ({ name, type, typeSimple, required, default: defaultValue, description }, i) => {
               return (
                 <Table.Row key={`${name}-${i}`}>
-                  <Table.RowHeaderCell>
+                  <Table.RowHeaderCell style={{ whiteSpace: 'nowrap' }}>
                     <Code size="2">
                       {name}
                       {required ? '*' : null}
@@ -73,7 +73,7 @@ export function PropsTable({
                       </Popover.Root>
                     )}
                   </Table.RowHeaderCell>
-                  <Table.Cell>
+                  <Table.Cell style={{ whiteSpace: 'nowrap' }}>
                     <Code color="gray" size="2">
                       {Boolean(typeSimple) ? typeSimple : type}
                     </Code>

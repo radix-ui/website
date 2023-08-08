@@ -186,7 +186,7 @@ const commonDescriptions: CommonDescriptions = {
 };
 
 function shouldBalanceArray(values?: readonly string[] | string) {
-  return Array.isArray(values) && values.length > 8;
+  return Array.isArray(values) && values.length > 5;
 }
 
 function formatValues(values?: readonly string[] | string) {
