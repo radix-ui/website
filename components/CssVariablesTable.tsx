@@ -9,7 +9,7 @@ type KeyboardDef = {
 export function CssVariablesTable({ data }: { data: KeyboardDef[] }) {
   return (
     <Box my="5" asChild>
-      <Table.Root variant="surface" style={{ overflowX: 'scroll' }}>
+      <Table.Root variant="surface" style={{ overflowX: 'auto' }}>
         <Table.Header>
           <Table.Row>
             <Table.ColumnHeaderCell style={{ width: '37%' }}>CSS Variable</Table.ColumnHeaderCell>
