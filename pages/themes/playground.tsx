@@ -191,6 +191,7 @@ import { ThemesPanelBackgroundImage } from '@components/ThemesPanelBackgroundIma
 import { useTheme } from 'next-themes';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import Head from 'next/head';
+import { ThemesMobileMenu } from '@components/ThemesMobileMenu';
 
 export default function ComponentsPage() {
   const { systemTheme, setTheme } = useTheme();
@@ -236,6 +237,8 @@ export default function ComponentsPage() {
 
           <ThemesHeader />
         </Theme>
+
+        <ThemesMobileMenu />
 
         <Box display={{ initial: 'none', lg: 'block' }}>
           <ThemePanel
