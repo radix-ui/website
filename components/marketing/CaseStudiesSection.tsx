@@ -1,105 +1,114 @@
-import { Avatar, Box, Card, Flex, Grid, Link, Text, styled } from '@modulz/design-system';
-import { Section, Container, Heading } from '@radix-ui/themes';
-import { Root as AccessibleIcon } from '@radix-ui/react-accessible-icon';
+import {
+  AccessibleIcon,
+  Avatar,
+  Box,
+  Flex,
+  Grid,
+  Section,
+  Container,
+  Heading,
+  Card,
+  Text,
+  Link,
+} from '@radix-ui/themes';
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import { CaseStudyLogo } from './CaseStudyLogo';
 import { LogoLink } from './LogoLink';
 import { MarketingCaption } from './MarketingCaption';
+import { HiddenScroll } from './HiddenScroll';
 
 export const CaseStudiesSection = () => {
   return (
     <Section size={{ initial: '2', md: '3' }}>
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
-        <Box css={{ mb: '$5' }}>
+        <Box mb="5">
           <MarketingCaption mb="1">Case studies</MarketingCaption>
           <Heading as="h2" size="7" style={{ maxWidth: 500 }}>
             World-class teams use Radix Primitives to power their products
           </Heading>
         </Box>
 
-        <Grid columns={{ '@bp2': 2 }} gap="5" css={{ mb: '$6' }}>
-          <Card variant="interactive" as="a" href="/primitives/case-studies/vercel">
-            <Box css={{ p: '$5' }}>
-              <Box css={{ mb: '$4' }}>
-                <AccessibleIcon label="Vercel case study">
-                  <CaseStudyLogo variant="Vercel" />
-                </AccessibleIcon>
-              </Box>
-              <TestimonialText css={{ mb: '$4' }}>
-                We’ve been able to focus on building solid user experiences on top of Radix
-                Primitives. With UI components, there are just too many angles and rabbit holes to
-                cover for product teams that wish to move quickly.
-              </TestimonialText>
-              <Flex align="center" gap="2">
-                <Avatar
-                  size="3"
-                  src="/marketing/avatar-rauno-freiberg.jpg"
-                  aria-describedby="person1"
-                />
-                <Text variant="gray" size="3" id="person1" css={{ lineHeight: 1.5 }}>
-                  Rauno Freiberg, UI Engineer at Vercel
+        <Grid columns={{ sm: '2' }} gap="5" mb="6">
+          <NextLink passHref href="/primitives/case-studies/vercel">
+            <Card asChild size="3">
+              <a>
+                <Box mb="5">
+                  <AccessibleIcon label="Vercel case study">
+                    <CaseStudyLogo variant="Vercel" />
+                  </AccessibleIcon>
+                </Box>
+                <Text as="p" size="3" mb="4" style={{ textIndent: '-0.5em' }}>
+                  “We’ve been able to focus on building solid user experiences on top of Radix
+                  Primitives. With UI components, there are just too many angles and rabbit holes to
+                  cover for product teams that wish to move quickly.”
                 </Text>
-              </Flex>
-            </Box>
-          </Card>
-          <Card variant="interactive" as="a" href="/primitives/case-studies/codesandbox">
-            <Box css={{ p: '$5' }}>
-              <Box css={{ mb: '$4' }}>
-                <AccessibleIcon label="CodeSandbox case study">
-                  <CaseStudyLogo variant="CodeSandbox" />
-                </AccessibleIcon>
-              </Box>
-              <TestimonialText css={{ mb: '$4' }}>
-                Radix has significantly improved the accessibility standard in our components. We
-                spend far less time discussing and implementing keyboard navigation, focus traps,
-                and researching appropriate ARIA techniques for our components.
-              </TestimonialText>
-              <Flex align="center" gap="2">
-                <Avatar
-                  size="3"
-                  src="/marketing/avatar-scott-hutcheson.png"
-                  aria-describedby="person2"
-                />
-                <Text variant="gray" size="3" id="person2" css={{ lineHeight: 1.5 }}>
-                  Scott Hutcheson, Product Engineer at CodeSandbox
+                <Flex align="center" gap="3">
+                  <Avatar
+                    size="3"
+                    fallback="R"
+                    radius="full"
+                    src="/marketing/avatar-rauno-freiberg.jpg"
+                    aria-describedby="person1"
+                  />
+                  <Text color="gray" size="3" id="person1">
+                    Rauno Freiberg, UI Engineer at Vercel
+                  </Text>
+                </Flex>
+              </a>
+            </Card>
+          </NextLink>
+          <NextLink passHref href="/primitives/case-studies/codesandbox">
+            <Card asChild size="3">
+              <a>
+                <Box mb="5">
+                  <AccessibleIcon label="CodeSandbox case study">
+                    <CaseStudyLogo variant="CodeSandbox" />
+                  </AccessibleIcon>
+                </Box>
+                <Text as="p" size="3" mb="4" style={{ textIndent: '-0.5em' }}>
+                  “Radix has significantly improved the accessibility standard in our components. We
+                  spend far less time discussing and implementing keyboard navigation, focus traps,
+                  and researching appropriate ARIA techniques for our components.”
                 </Text>
-              </Flex>
-            </Box>
-          </Card>
+                <Flex align="center" gap="3">
+                  <Avatar
+                    size="3"
+                    fallback="S"
+                    radius="full"
+                    src="/marketing/avatar-scott-hutcheson.png"
+                    aria-describedby="person2"
+                  />
+                  <Text color="gray" size="3" id="person2">
+                    Scott Hutcheson, Product Engineer at CodeSandbox
+                  </Text>
+                </Flex>
+              </a>
+            </Card>
+          </NextLink>
         </Grid>
 
-        <Text variant="gray" css={{ mb: '$3' }}>
-          <NextLink href="/primitives/case-studies" passHref>
-            <Link variant="subtle" css={{ display: 'inline-flex', alignItems: 'center' }}>
-              And dozens more companies
-              <ArrowRightIcon />
-            </Link>
-          </NextLink>
-        </Text>
+        <NextLink href="/primitives/case-studies" passHref>
+          <Link
+            color="gray"
+            mb="4"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--space-1)' }}
+          >
+            And dozens more companies
+            <ArrowRightIcon style={{ marginBottom: -2 }} />
+          </Link>
+        </NextLink>
 
-        <Box
-          css={{
-            position: 'relative',
-            overflowX: 'scroll',
-            overflowY: 'hidden',
-            WebkitOverflowScrolling: 'touch',
-            MsOverflowStyle: 'none',
-            scrollbarWidth: 'none',
-            '&::-webkit-scrollbar': {
-              display: 'none',
-            },
-
-            // Add some padding so that logos aren't clipped when focused.
-            py: '$3',
-            my: '-$3',
-
-            // Compensate Container margins
-            mx: 'calc(var(--space-5) * -1)',
-            px: 'var(--space-5)',
-          }}
+        <HiddenScroll
+          position="relative"
+          // Add some padding so that logos aren't clipped when focused.
+          py="3"
+          my="-3"
+          // Compensate Container margins
+          mx={{ initial: '-5', xs: '-6', sm: '-7', md: '-9' }}
+          px={{ initial: '5', xs: '6', sm: '7', md: '9' }}
         >
-          <Grid flow="column" align="center" justify="start" gap="6">
+          <Grid columns="none" flow="column" align="center" justify="start" gap="6">
             <NextLink href="/primitives/case-studies/atom-learning" passHref>
               <LogoLink>
                 <AccessibleIcon label="Atom Learning case study">
@@ -157,28 +166,10 @@ export const CaseStudiesSection = () => {
             </NextLink>
 
             {/* Horizontal scroll spacer */}
-            <Box css={{ width: 1, height: 1 }} />
+            <div style={{ width: 1, height: 1 }} />
           </Grid>
-        </Box>
+        </HiddenScroll>
       </Container>
     </Section>
   );
 };
-
-const TestimonialText = styled(
-  Text,
-  {
-    lineHeight: 1.6,
-    letterSpacing: '-0.01em',
-    textIndent: '-0.577em',
-    fontVariantNumeric: 'normal',
-    hyphens: 'auto',
-    '&::before': { content: '“', mr: '0.07em' },
-    '&::after': { content: '”', ml: '0.07em' },
-  },
-  {
-    defaultVariants: {
-      size: 4,
-    },
-  }
-);
