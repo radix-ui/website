@@ -236,9 +236,8 @@ export default function ComponentsPage() {
           </MobileMenu>
 
           <ThemesHeader />
+          <ThemesMobileMenu />
         </Theme>
-
-        <ThemesMobileMenu />
 
         <Box display={{ initial: 'none', lg: 'block' }}>
           <ThemePanel
