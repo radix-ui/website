@@ -350,50 +350,53 @@ export function ThemesRadiusExample() {
   const radiusValues = ['none', 'medium', 'full'] as const;
   return (
     <Card size="2">
-      <Flex direction="column" my="-4">
-        {radiusValues.map((radius, i) => (
-          <Flex
-            key={radius}
-            style={{
-              borderBottom: i + 1 !== radiusValues.length ? '1px dashed var(--gray-7)' : undefined,
-            }}
-            align="center"
-            gap="4"
-          >
-            <Box style={{ minWidth: 70 }}>
-              <Code size="2" color="gray">
-                {radius}
-              </Code>
-            </Box>
+      <Inset px="current">
+        <Flex direction="column" my="-4">
+          {radiusValues.map((radius, i) => (
+            <Flex
+              key={radius}
+              style={{
+                borderBottom:
+                  i + 1 !== radiusValues.length ? '1px dashed var(--gray-7)' : undefined,
+              }}
+              align="center"
+              gap="4"
+            >
+              <Box style={{ minWidth: 70 }}>
+                <Code size="2" color="gray">
+                  {radius}
+                </Code>
+              </Box>
 
-            <Box py="4" grow="1" asChild>
-              <Theme radius={radius} style={{ minWidth: 370, maxWidth: 450 }}>
-                <Card variant="surface" size="2">
-                  <Flex gap="3">
-                    <Avatar
-                      size="3"
-                      src={allPeople[4].image}
-                      fallback={allPeople[22]?.name[0].toUpperCase()}
-                    />
-                    <Box grow="1">
-                      <TextArea placeholder="Reply…" tabIndex={-1} />
-                      <Flex gap="3" mt="3" justify="between">
-                        <Flex asChild align="center" gap="2">
-                          <Label>
-                            <Checkbox checked tabIndex={-1} />
-                            <Text size="2">Send to group</Text>
-                          </Label>
+              <Box py="4" grow="1" asChild>
+                <Theme radius={radius} style={{ minWidth: 370, maxWidth: 450 }}>
+                  <Card variant="surface" size="2">
+                    <Flex gap="3">
+                      <Avatar
+                        size="3"
+                        src={allPeople[4].image}
+                        fallback={allPeople[22]?.name[0].toUpperCase()}
+                      />
+                      <Box grow="1">
+                        <TextArea placeholder="Reply…" tabIndex={-1} />
+                        <Flex gap="3" mt="3" justify="between">
+                          <Flex asChild align="center" gap="2">
+                            <Label>
+                              <Checkbox checked tabIndex={-1} />
+                              <Text size="2">Send to group</Text>
+                            </Label>
+                          </Flex>
+                          <Button tabIndex={-1}>Send message</Button>
                         </Flex>
-                        <Button tabIndex={-1}>Send message</Button>
-                      </Flex>
-                    </Box>
-                  </Flex>
-                </Card>
-              </Theme>
-            </Box>
-          </Flex>
-        ))}
-      </Flex>
+                      </Box>
+                    </Flex>
+                  </Card>
+                </Theme>
+              </Box>
+            </Flex>
+          ))}
+        </Flex>
+      </Inset>
     </Card>
   );
 }
