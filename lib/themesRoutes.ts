@@ -4,6 +4,7 @@ export const themesRoutes = [
     pages: [
       { title: 'Getting started', slug: 'themes/docs/overview/getting-started' },
       // { title: 'Vision', slug: 'themes/docs/overview/vision' },
+      { title: 'Releases', slug: 'themes/docs/overview/releases' },
     ],
   },
   {

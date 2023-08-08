@@ -150,7 +150,7 @@ export const components = {
     );
   },
   Note: ({ children, ...props }) => (
-    <Box mt="5" mb="5" className={styles.Note} asChild {...props}>
+    <Box className={styles.Note} asChild {...props}>
       <aside children={children} />
     </Box>
   ),

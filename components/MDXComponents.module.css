@@ -24,7 +24,7 @@
 .Note {
   border-radius: var(--radius-3);
   color: var(--gray-11);
-  font-size: var(--font-size-1);
+  font-size: var(--font-size-2);
 }
 
 .Note p[class*='size-'] {
