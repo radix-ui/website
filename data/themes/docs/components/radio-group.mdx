@@ -66,22 +66,22 @@ Use the `size` prop to control the size.
 Use the `variant` prop to control the visual style.
 
 ```jsx live=true
-<Flex direction="column" gap="2">
-  <Flex asChild gap="2">
+<Flex gap="2">
+  <Flex direction="column" asChild gap="2">
     <RadioGroup.Root variant="surface" defaultValue="1">
       <RadioGroup.Item value="1" />
       <RadioGroup.Item value="2" />
     </RadioGroup.Root>
   </Flex>
 
-  <Flex asChild gap="2">
+  <Flex direction="column" asChild gap="2">
     <RadioGroup.Root variant="classic" defaultValue="1">
       <RadioGroup.Item value="1" />
       <RadioGroup.Item value="2" />
     </RadioGroup.Root>
   </Flex>
 
-  <Flex asChild gap="2">
+  <Flex direction="column" asChild gap="2">
     <RadioGroup.Root variant="soft" defaultValue="1">
       <RadioGroup.Item value="1" />
       <RadioGroup.Item value="2" />
@@ -119,35 +119,29 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 Use the `highContrast` prop to add additional contrast.
 
 ```jsx live=true
-<Flex direction="column" gap="2">
-  <Flex gap="2">
-    <RadioGroup.Root variant="surface" defaultValue="1">
-      <RadioGroup.Item value="1" />
-    </RadioGroup.Root>
+<Grid columns="3" gap="2" display="inline-grid">
+  <RadioGroup.Root variant="classic" defaultValue="1">
+    <RadioGroup.Item value="1" />
+  </RadioGroup.Root>
 
-    <RadioGroup.Root variant="surface" defaultValue="1" highContrast>
-      <RadioGroup.Item value="1" />
-    </RadioGroup.Root>
-  </Flex>
+  <RadioGroup.Root variant="surface" defaultValue="1">
+    <RadioGroup.Item value="1" />
+  </RadioGroup.Root>
 
-  <Flex gap="2">
-    <RadioGroup.Root variant="classic" defaultValue="1">
-      <RadioGroup.Item value="1" />
-    </RadioGroup.Root>
+  <RadioGroup.Root variant="soft" defaultValue="1">
+    <RadioGroup.Item value="1" />
+  </RadioGroup.Root>
 
-    <RadioGroup.Root variant="classic" defaultValue="1" highContrast>
-      <RadioGroup.Item value="1" />
-    </RadioGroup.Root>
-  </Flex>
+  <RadioGroup.Root variant="classic" defaultValue="1" highContrast>
+    <RadioGroup.Item value="1" />
+  </RadioGroup.Root>
 
-  <Flex gap="2">
-    <RadioGroup.Root variant="soft" defaultValue="1">
-      <RadioGroup.Item value="1" />
-    </RadioGroup.Root>
+  <RadioGroup.Root variant="surface" defaultValue="1" highContrast>
+    <RadioGroup.Item value="1" />
+  </RadioGroup.Root>
 
-    <RadioGroup.Root variant="soft" defaultValue="1" highContrast>
-      <RadioGroup.Item value="1" />
-    </RadioGroup.Root>
-  </Flex>
+  <RadioGroup.Root variant="soft" defaultValue="1" highContrast>
+    <RadioGroup.Item value="1" />
+  </RadioGroup.Root>
 </Flex>
 ```
