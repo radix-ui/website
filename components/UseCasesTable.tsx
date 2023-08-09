@@ -66,7 +66,7 @@ export function UseCasesTable() {
               >
                 <td>
                   <Text size="2" as="p">
-                    {i}
+                    {i + 1}
                   </Text>
                 </td>
               </Box>
