@@ -475,11 +475,20 @@ export function ThemesColorScale({ type = 'accent' }: { type: 'accent' | 'gray' 
             <Box
               grow="1"
               style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Crect width='12' height='12' fill='%23002F75' fill-opacity='0.02'/%3E%3Crect x='12' y='12' width='12' height='12' fill='%23002F75' fill-opacity='0.02'/%3E%3C/svg%3E")`,
-                backgroundColor: `var(--${type}-a${i + 1})`,
+                backgroundImage:
+                  'linear-gradient(45deg, var(--gray-2) 25%, transparent 25%), linear-gradient(135deg, var(--gray-2) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--gray-2) 75%), linear-gradient(135deg, transparent 75%, var(--gray-2) 75%)',
+                backgroundSize: '12px 12px',
+                backgroundPosition: '0px 0px, 6px 0px, 6px -6px, 0px 6px',
                 borderRadius: 'var(--radius-2)',
+                overflow: 'hidden',
               }}
-            />
+            >
+              <Box
+                width="100%"
+                height="100%"
+                style={{ backgroundColor: `var(--${type}-a${i + 1})` }}
+              />
+            </Box>
           </Flex>
         ))}
       </Flex>
