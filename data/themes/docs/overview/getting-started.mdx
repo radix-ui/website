@@ -64,6 +64,31 @@ export default function () {
 }
 ```
 
+#### 3.1 Next.js App Router
+
+If you're using Next.js' App Router, put `<Theme>` inside the `body` tag of the root `layout.tsx`:
+
+```jsx
+import { Theme } from '@radix-ui/themes';
+import '@radix-ui/themes/styles.css';
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>
+        <Theme>
+          {children}
+        </Theme>
+      </body>
+    </html>
+  );
+}
+```
+
 ### 4. Start building
 
 You are now ready to use Radix Themes components.
