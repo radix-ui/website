@@ -150,7 +150,7 @@
   transition: background-color 200ms;
 }
 
-.MagicCurtainControlsTrigger:not([data-visually-hidden='true'])::before {
+.MagicCurtainControlsTrigger[data-visually-hidden='true']::before {
   content: none;
   /* background-color: red; */
 }
