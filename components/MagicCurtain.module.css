@@ -1,58 +1,82 @@
 .MagicCurtainRoot {
   position: relative;
+  --magic-curtain-controls-trigger-width: 64px;
+  --magic-curtain-controls-trigger-height: 64px;
+  --magic-curtain-controls-preview-width: 168px;
+  --magic-curtain-controls-preview-height: 98px;
 }
 
 .MagicCurtainItem {
   position: absolute;
   z-index: 0;
   inset: 0;
-  --animation-duration: 1s;
+  --animation-duration: 800ms;
 }
 
 @media (min-width: 500px) {
   .MagicCurtainItem {
-    --animation-duration: 1.5s;
+    --animation-duration: 800ms;
   }
 }
 
 @media (min-width: 1500px) {
   .MagicCurtainItem {
-    --animation-duration: 2s;
+    --animation-duration: 800ms;
   }
-}
-
-@property --gradient-angle {
-  syntax: '<angle>';
-  inherits: false;
-  initial-value: 90deg;
 }
 
 .MagicCurtainItem[data-visibility='hidden'] {
   display: none;
 }
 
-.MagicCurtainItem[data-visibility='visible-in-front'] {
+.MagicCurtainItem[data-visibility='animating-out'] {
   position: relative;
   z-index: 1;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .MagicCurtainItem[data-visibility='visible-in-front'] {
-    animation-name: magic-curtain;
+  .MagicCurtainItem[data-visibility='animating-out'] {
+    animation-name: magic-curtain-clip;
     animation-duration: var(--animation-duration);
-    animation-delay: calc(0.5s + var(--animation-duration));
     animation-timing-function: ease-in-out;
   }
-  .MagicCurtainItem[data-visibility='visible-in-front'][data-animation-direction='reverse'] {
-    animation-name: magic-curtain-reverse;
+}
+
+[data-force-reduced-motion='always'] .MagicCurtainItem[data-visibility='animating-out'] {
+  animation-name: magic-curtain-fade;
+  animation-duration: calc(var(--animation-duration) / 4);
+  animation-timing-function: ease-in-out;
+  will-change: opacity;
+}
+
+/* Firefox has performance issues at high pixel count */
+@media (min-width: 3000px), (min-width: 1920px) and (min-resolution: 120dpi) {
+  [data-force-reduced-motion='if-hi-res'] .MagicCurtainItem[data-visibility='animating-out'] {
+    animation-name: magic-curtain-fade;
+    animation-duration: calc(var(--animation-duration) / 4);
+    animation-timing-function: ease-in-out;
+    will-change: opacity;
   }
 }
 
-.MagicCurtainItem[data-animation-play-state='paused'] {
-  animation-play-state: paused;
+@media (prefers-reduced-motion) {
+  .MagicCurtainItem[data-visibility='animating-out'] {
+    animation-name: magic-curtain-fade;
+    animation-duration: calc(var(--animation-duration) / 4);
+    animation-timing-function: ease-in-out;
+  }
 }
 
-@keyframes magic-curtain {
+@keyframes magic-curtain-fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes magic-curtain-clip {
   0% {
     clip-path: polygon(0 0, 120% 0, 100% 100%, 0 100%);
   }
@@ -61,17 +85,8 @@
   }
 }
 
-@keyframes magic-curtain-reverse {
-  0% {
-    clip-path: polygon(-20% 0, 100% 0, 100% 100%, 0 100%);
-  }
-  100% {
-    clip-path: polygon(120% 0, 200% 0, 200% 100%, 100% 100%);
-  }
-}
-
 @media (min-width: 1000px) {
-  @keyframes magic-curtain {
+  @keyframes magic-curtain-clip {
     0% {
       clip-path: polygon(0 0, 105% 0, 100% 100%, 0 100%);
     }
@@ -79,13 +94,159 @@
       clip-path: polygon(0 0, -5% 0, 0 100%, 0 100%);
     }
   }
+}
 
-  @keyframes magic-curtain-reverse {
-    0% {
-      clip-path: polygon(-5% 0, 100% 0, 100% 100%, 0 100%);
-    }
-    100% {
-      clip-path: polygon(105% 0, 200% 0, 200% 100%, 100% 100%);
-    }
+.MagicCurtainControlsRoot {
+  position: relative;
+  display: flex;
+  margin-left: calc(var(--space-1) * -1);
+}
+
+.MagicCurtainControlsItem {
+  position: relative;
+}
+
+.MagicCurtainControlsTrigger {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  appearance: none;
+  background: none;
+  font-family: inherit;
+  font-size: var(--font-size-2);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: var(--magic-curtain-controls-trigger-width);
+  width: var(--magic-curtain-controls-trigger-height);
+  margin: calc(-1 * var(--space-4)) 0;
+}
+
+.MagicCurtainControlsTrigger:focus-visible::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  height: var(--space-2);
+  left: 0;
+  right: 0;
+  border-radius: var(--space-1);
+  background-color: transparent;
+  box-shadow: 0 0 0 2px rgba(120, 134, 144, 0.6);
+}
+
+.MagicCurtainControlsTrigger::before {
+  --magic-curtain-control-line-width: calc(var(--space-1) / 2);
+  position: absolute;
+  pointer-events: none;
+  height: var(--magic-curtain-control-line-width);
+  left: var(--space-1);
+  right: var(--space-1);
+  border-radius: var(--space-1);
+  background-color: var(--gray-a6);
+  transition: background-color 200ms;
+}
+
+.MagicCurtainControlsTrigger:not([data-visually-hidden='true'])::before {
+  content: '';
+}
+
+.MagicCurtainControlsTrigger[data-highlighted='true']::before {
+  transition-duration: 30ms;
+  background-color: var(--gray-12);
+}
+
+.MagicCurtainControlsPreviewViewportWrapper {
+  transform: translateX(
+    calc(var(--magic-curtain-controls-offset-index) * var(--magic-curtain-controls-trigger-width))
+  );
+  position: absolute;
+  top: -96px;
+  left: 0;
+}
+
+.MagicCurtainControlsPreviewViewportWrapper {
+  transition: transform 250ms ease-out;
+}
+
+.MagicCurtainControlsPreviewViewport {
+  display: flex;
+  position: relative;
+  width: var(--magic-curtain-controls-preview-width);
+  height: var(--magic-curtain-controls-preview-height);
+  box-sizing: content-box;
+  background-color: white;
+  box-shadow: var(--shadow-5);
+  border-radius: var(--radius-3);
+  overflow: hidden;
+}
+
+.MagicCurtainControlsPreviewViewport[data-state='open'] {
+  animation: scale-in 250ms ease;
+  animation-play-state: running;
+  animation-fill-mode: forwards;
+}
+
+.MagicCurtainControlsPreviewViewport[data-state='closed'] {
+  animation: scale-out 250ms ease;
+  animation-play-state: running;
+  animation-fill-mode: forwards;
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: rotateX(-30deg) scale(0.9);
   }
+  to {
+    opacity: 1;
+    transform: rotateX(0deg) scale(1);
+  }
+}
+
+@keyframes scale-out {
+  from {
+    opacity: 1;
+    transform: rotateX(0deg) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: rotateX(-10deg) scale(0.95);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .MagicCurtainControlsPreviewContent {
+    transform: translateX(
+      calc(
+        -1 * var(--magic-curtain-controls-offset-index) * var(--magic-curtain-controls-preview-width)
+      )
+    );
+    transition: transform 250ms ease-out;
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .MagicCurtainControlsPreviewContent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 250ms ease-out;
+  }
+  .MagicCurtainControlsPreviewContent[data-active='false'] {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 250ms ease-in;
+  }
+}
+
+.MagicCurtainControlsPreviewContentImage {
+  display: flex;
+  width: var(--magic-curtain-controls-preview-width);
+  height: var(--magic-curtain-controls-preview-height);
+  object-fit: cover;
+  border-radius: var(--radius-4);
+  border: var(--space-1) solid white;
 }

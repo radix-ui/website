@@ -120,6 +120,10 @@
   position: relative;
 }
 
+.ThemesHeroLayoutShowcase :global(.rt-Card.rt-variant-surface::after) {
+  box-shadow: var(--shadow-4);
+}
+
 .ThemesHeroLayoutShowcaseInnerScaled {
   transform: scale(var(--themes-hero-showcase-scale));
 }

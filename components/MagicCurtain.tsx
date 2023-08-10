@@ -1,69 +1,61 @@
 import * as React from 'react';
 import styles from './MagicCurtain.module.css';
 import { createContext } from '@radix-ui/react-context';
+import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 
-type Visibility = 'hidden' | 'visible-in-front' | 'visible-behind';
+type Visibility = 'hidden' | 'animating-out' | 'visible';
+type ForceReducedMotion = 'always' | 'if-hi-res' | 'never';
 
 interface MagicCurtainItem {
-  ref: React.RefObject<HTMLElement>;
+  visibility: Visibility;
   setVisibility: (visibility: Visibility) => void;
-  setAnimationDirection: (direction: string) => void;
-  setAnimationPlayState: (playState: string) => void;
+  ref: React.RefObject<HTMLDivElement>;
 }
 
 const [MagicCurtainProvider, useMagicCurtainContext] = createContext<{
-  itemsRef: React.RefObject<MagicCurtainItem[]>;
+  items: MagicCurtainItem[];
+  setItems: React.Dispatch<React.SetStateAction<MagicCurtainItem[]>>;
+
+  // Which control is highlighted as active
+  highlightedControl: string;
+  setHighlightedControl: React.Dispatch<React.SetStateAction<string>>;
+
+  // Which control is hovered (hovering the preview also counts)
+  hoveredControl: string;
+  setHoveredControl: React.Dispatch<React.SetStateAction<string>>;
 }>('MagicCurtain');
 
 const MagicCurtainRoot = ({ children }: React.PropsWithChildren<{}>) => {
-  const itemsRef = React.useRef<MagicCurtainItem[]>([]);
+  const [items, setItems] = React.useState<MagicCurtainItem[]>([]);
+  const [hoveredControl, setHoveredControl] = React.useState<string>('');
+  const [highlightedControl, setHighlightedControl] = React.useState<string>('0');
   const ref = React.useRef<HTMLDivElement>(null);
+  const [forceReducedMotion, setForceReducedMotion] = React.useState<ForceReducedMotion>('never');
 
-  useIsomorphicLayoutEffect(() => {
-    const handleAnimationEnd = (event: AnimationEvent) => {
-      if (
-        !(event.target instanceof HTMLElement) ||
-        ![styles['magic-curtain'], styles['magic-curtain-reverse']].includes(event.animationName)
-      ) {
-        return;
-      }
-
-      const thisIndex = itemsRef.current.map((item) => item.ref.current).indexOf(event.target);
-      const nextIndex = thisIndex + 1 === itemsRef.current.length ? 0 : thisIndex + 1;
-      const afterNextIndex = nextIndex + 1 === itemsRef.current.length ? 0 : nextIndex + 1;
-      itemsRef.current[thisIndex]?.setVisibility('hidden');
-      itemsRef.current[nextIndex]?.setVisibility('visible-in-front');
-      itemsRef.current[afterNextIndex]?.setVisibility('visible-behind');
-    };
-
-    itemsRef.current[0]?.setVisibility('visible-in-front');
-
-    if (/Android|iPhone|Firefox/i.test(navigator.userAgent)) {
-      return;
+  React.useEffect(() => {
+    if (/firefox/i.test(navigator.userAgent)) {
+      setForceReducedMotion('if-hi-res');
     }
 
-    itemsRef.current[1]?.setVisibility('visible-behind');
-
-    itemsRef.current.forEach((item, i) => {
-      item.setAnimationPlayState('running');
-
-      if (i % 2) {
-        item.setAnimationDirection('reverse');
-      }
-
-      item.ref.current?.addEventListener('animationend', handleAnimationEnd);
-    });
-
-    return () => {
-      itemsRef.current.forEach((item) => {
-        item.ref.current?.removeEventListener('animationend', handleAnimationEnd);
-      });
-    };
+    if (/iphone|android/i.test(navigator.userAgent)) {
+      setForceReducedMotion('always');
+    }
   }, []);
 
   return (
-    <MagicCurtainProvider itemsRef={itemsRef}>
-      <div ref={ref} className={styles.MagicCurtainRoot}>
+    <MagicCurtainProvider
+      items={items}
+      setItems={setItems}
+      highlightedControl={highlightedControl}
+      setHighlightedControl={setHighlightedControl}
+      hoveredControl={hoveredControl}
+      setHoveredControl={setHoveredControl}
+    >
+      <div
+        ref={ref}
+        data-force-reduced-motion={forceReducedMotion}
+        className={styles.MagicCurtainRoot}
+      >
         {children}
       </div>
     </MagicCurtainProvider>
@@ -76,103 +68,283 @@ const MagicCurtainItem = ({
   ...props
 }: React.ComponentPropsWithoutRef<'div'> & {
   defaultVisibility?: Visibility;
-  'data-animation-play-state'?: 'running' | 'paused';
-  'data-animation-direction'?: 'normal' | 'reverse';
 }) => {
   const context = useMagicCurtainContext('MagicCurtain');
   const ref = React.useRef<HTMLDivElement>(null);
   const [visibility, setVisibility] = React.useState<Visibility>(defaultVisibility);
-  const [animationDirection, setAnimationDirection] = React.useState('normal');
-  const [animationPlayState, setAnimationPlayState] = React.useState('paused');
-  const delayRef = React.useRef<ReturnType<typeof setTimeout>>();
-
-  React.useEffect(() => {
-    const handlePointerDown = () => {
-      clearTimeout(delayRef.current);
-      setAnimationPlayState('paused');
-      addEventListener('pointerup', handlePointerUp, { once: true });
-
-      // Release the pause state in case the pointer moves out of the document boundaries without pointerup event
-      clearTimeout(delayRef.current);
-      delayRef.current = setTimeout(() => {
-        setAnimationPlayState('running');
-      }, 3000);
-    };
-
-    const handlePointerUp = () => {
-      clearTimeout(delayRef.current);
-      delayRef.current = setTimeout(() => {
-        setAnimationPlayState('running');
-      }, 1500);
-    };
-
-    const handleScroll = () => {
-      clearTimeout(delayRef.current);
-      delayRef.current = setTimeout(() => {
-        setAnimationPlayState('running');
-      }, 500);
-    };
-
-    const handleKeyDown = () => {
-      clearTimeout(delayRef.current);
-      setAnimationPlayState('paused');
-
-      delayRef.current = setTimeout(() => {
-        setAnimationPlayState('running');
-      }, 1500);
-    };
-
-    const handleAnimationStart = (event: Event) => {
-      if (event.target === ref.current) {
-        clearListeners();
-      }
-    };
-
-    const clearListeners = () => {
-      removeEventListener('pointerdown', handlePointerDown);
-      removeEventListener('pointerup', handlePointerUp);
-      removeEventListener('touchstart', handlePointerUp);
-      removeEventListener('keydown', handleKeyDown);
-      removeEventListener('scroll', handleScroll, { capture: true });
-      ref.current?.removeEventListener('animationstart', handleAnimationStart);
-      clearTimeout(delayRef.current);
-    };
-
-    if (visibility === 'visible-in-front') {
-      addEventListener('pointerdown', handlePointerDown);
-      addEventListener('keydown', handleKeyDown);
-      addEventListener('scroll', handleScroll, { capture: true, passive: true });
-      ref.current?.addEventListener('animationstart', handleAnimationStart, { once: true });
-    } else {
-      clearListeners();
-    }
-
-    return () => clearListeners();
-  }, [visibility]);
 
   useIsomorphicLayoutEffect(() => {
-    const item = { ref, setVisibility, setAnimationDirection, setAnimationPlayState };
-    context.itemsRef.current.push(item);
+    const item = { ref, visibility, setVisibility };
+
+    context.setItems((items) =>
+      [...items, item].sort((a, b) => {
+        // Sort items according to their order in the DOM
+        return a.ref.current.compareDocumentPosition(b.ref.current) & 4 ? -1 : 1;
+      })
+    );
 
     return () => {
-      const index = context.itemsRef.current.indexOf(item);
-
-      if (index > -1) {
-        context.itemsRef.current.splice(index, 1);
-      }
+      context.setItems((items) => {
+        return [...items.filter((value) => value.ref !== item.ref)];
+      });
     };
-  }, []);
+  }, [visibility]);
 
   return (
-    <div
-      data-animation-play-state={animationPlayState}
-      data-animation-direction={animationDirection}
-      data-visibility={visibility}
-      ref={ref}
-      className={styles.MagicCurtainItem}
-      {...props}
-    >
+    <div data-visibility={visibility} ref={ref} className={styles.MagicCurtainItem} {...props}>
       {visibility === 'hidden' ? null : children}
+    </div>
+  );
+};
+
+interface MagicCurtainControlsProps {
+  images?: string[];
+}
+
+const MagicCurtainControls = ({ images }: MagicCurtainControlsProps) => {
+  const context = useMagicCurtainContext('MagicCurtain');
+  const items = context.items;
+  const viewportWrapperRef = React.useRef<HTMLDivElement>(null);
+  const [menuValue, setMenuValue] = React.useState<string>('');
+  const [offsetIndex, setOffsetIndex] = React.useState<string>('');
+  const hasAnimatingItem = !!items.find((value) => value.visibility === 'animating-out');
+  const upcomingAnimationCallback = React.useRef<(() => void) | null>(null);
+
+  // Clear offset on viewport removal
+  React.useLayoutEffect(() => {
+    const observer = new MutationObserver((mutationList) => {
+      for (const mutation of mutationList) {
+        if (mutation.type === 'childList') {
+          const firstRemovedNode = mutation.removedNodes[0] as HTMLElement | undefined;
+
+          if (firstRemovedNode?.getAttribute('data-viewport')) {
+            setOffsetIndex('');
+          }
+        }
+      }
+    });
+
+    observer.observe(viewportWrapperRef.current, { childList: true });
+    return () => observer.disconnect();
+  }, []);
+
+  const startAnimation = React.useCallback(
+    (clickedItem: MagicCurtainItem) => {
+      // Do nothing if this item is already visible
+      if (clickedItem.visibility === 'visible') {
+        return;
+      }
+
+      const itemToHide = items.find((value) => value.visibility === 'visible');
+
+      const handleAnimationEnd = (event: AnimationEvent) => {
+        // Make sure this is the right animation
+        const isMagicCurtainAnimation = [
+          styles['magic-curtain-fade'],
+          styles['magic-curtain-clip'],
+        ].includes(event.animationName);
+
+        if (event.target instanceof HTMLElement && isMagicCurtainAnimation) {
+          itemToHide.setVisibility('hidden');
+          event.currentTarget.removeEventListener('animationend', handleAnimationEnd);
+
+          // Run the rescheduled animation callback if it’s there
+          upcomingAnimationCallback.current?.();
+        }
+      };
+
+      clickedItem.setVisibility('visible');
+      itemToHide?.setVisibility('animating-out');
+      itemToHide?.ref.current?.addEventListener('animationend', handleAnimationEnd);
+    },
+    [context]
+  );
+
+  return (
+    <NavigationMenu.Root
+      delayDuration={40}
+      skipDelayDuration={40}
+      value={menuValue}
+      className={styles.MagicCurtainControlsRoot}
+      onValueChange={(value) => {
+        setMenuValue(value);
+        setOffsetIndex(value);
+      }}
+    >
+      <NavigationMenu.List
+        style={{
+          display: 'flex',
+          listStyle: 'none',
+          margin: 0,
+          padding: 0,
+          zIndex: 1,
+          position: 'relative',
+        }}
+      >
+        {items.map((item, index) => (
+          <NavigationMenu.Item
+            key={index}
+            className={styles.MagicCurtainControlsItem}
+            value={index.toString()}
+            onPointerMove={() => context.setHoveredControl(index.toString())}
+            onPointerLeave={() => {
+              // Wait a tick and reset the hovered control index if it wasn't changed by anything else
+              setTimeout(() => {
+                context.setHoveredControl((current) =>
+                  current === index.toString() ? '' : current
+                );
+              });
+            }}
+          >
+            <NavigationMenu.Trigger
+              data-visually-hidden
+              aria-label={`Example ${index}`}
+              data-visibility={item.visibility}
+              className={styles.MagicCurtainControlsTrigger}
+              onClick={() => {
+                // Do nothing if this item is already visible
+                if (item.visibility === 'visible') {
+                  return;
+                }
+
+                // Always set the clicked control as highlighted,
+                // even if it's going to be animated a bit later
+                context.setHighlightedControl(index.toString());
+
+                if (hasAnimatingItem) {
+                  // Schedule the animation start after the current animation ends
+                  upcomingAnimationCallback.current = () => {
+                    startAnimation(item);
+                    upcomingAnimationCallback.current = null;
+                  };
+                } else {
+                  startAnimation(item);
+                }
+              }}
+              onKeyDown={(event) => {
+                if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') {
+                  return;
+                }
+
+                let nextItem = event.key === 'ArrowLeft' ? items[index - 1] : items[index + 1];
+
+                // This is for when we are focused on the item that isn’t currently active and press an arrow key.
+                // We want to activate the item on either arrow key press first before we can continue cycling through
+                // the list. We check for `!hasAnimatingItem` so that if there is an animation running and we are
+                // rapidly cycling through the list with the arrow keys, it doesn't stutter over the hidden items.
+                if (item.visibility === 'hidden' && !hasAnimatingItem) {
+                  // Don’t move the focus to the next/previous item
+                  event.preventDefault();
+                  nextItem = item;
+                }
+
+                // No looping
+                if (items.indexOf(nextItem) === -1) {
+                  return;
+                }
+
+                // Always set the clicked control as highlighted,
+                // even if it's going to be animated a bit later
+                context.setHighlightedControl(items.indexOf(nextItem).toString());
+
+                if (hasAnimatingItem) {
+                  upcomingAnimationCallback.current = () => {
+                    // Schedule the animation start after the current animation ends
+                    startAnimation(nextItem);
+                    upcomingAnimationCallback.current = null;
+                  };
+                } else {
+                  startAnimation(nextItem);
+                }
+              }}
+            />
+
+            <div style={{ display: 'none' }}>
+              {images[index] && (
+                <NavigationMenu.Content
+                  forceMount
+                  data-active={menuValue === index.toString()}
+                  className={styles.MagicCurtainControlsPreviewContent}
+                  onPointerMove={() => context.setHoveredControl(index.toString())}
+                  onPointerLeave={() => {
+                    // Wait a tick and reset the hovered control index if it wasn't changed by anything else
+                    setTimeout(() => {
+                      context.setHoveredControl((current) =>
+                        current === index.toString() ? '' : current
+                      );
+                    });
+                  }}
+                  onClick={() => {
+                    // Force hide the hover card and dispel the hover state
+                    setMenuValue('');
+                    context.setHoveredControl('');
+
+                    // Do nothing if this item is already visible
+                    if (item.visibility === 'visible') {
+                      return;
+                    }
+
+                    // Always set the clicked control as highlighted,
+                    // even if it's going to be animated a bit later
+                    context.setHighlightedControl(index.toString());
+
+                    if (hasAnimatingItem) {
+                      // Schedule the animation start after the current animation ends
+                      upcomingAnimationCallback.current = () => {
+                        startAnimation(item);
+                        upcomingAnimationCallback.current = null;
+                      };
+                    } else {
+                      startAnimation(item);
+                    }
+                  }}
+                >
+                  <img
+                    className={styles.MagicCurtainControlsPreviewContentImage}
+                    src={images[index]}
+                  />
+                </NavigationMenu.Content>
+              )}
+            </div>
+          </NavigationMenu.Item>
+        ))}
+      </NavigationMenu.List>
+
+      <div
+        ref={viewportWrapperRef}
+        className={styles.MagicCurtainControlsPreviewViewportWrapper}
+        style={
+          {
+            // Avoid transitioning from initial position when first opening
+            display: offsetIndex ? undefined : 'none',
+            '--magic-curtain-controls-offset-index': offsetIndex,
+          } as React.CSSProperties
+        }
+      >
+        <NavigationMenu.Viewport
+          data-viewport
+          className={styles.MagicCurtainControlsPreviewViewport}
+        />
+      </div>
+    </NavigationMenu.Root>
+  );
+};
+
+const MagicCurtainMirrorControls = () => {
+  const context = useMagicCurtainContext('MagicCurtain');
+  return (
+    <div className={styles.MagicCurtainControlsRoot}>
+      {context.items.map((item, index) => (
+        <div key={index} className={styles.MagicCurtainControlsItem}>
+          <div
+            data-highlighted={
+              context.hoveredControl === index.toString() ||
+              context.highlightedControl === index.toString()
+            }
+            className={styles.MagicCurtainControlsTrigger}
+          />
+        </div>
+      ))}
     </div>
   );
 };
@@ -183,4 +355,6 @@ const useIsomorphicLayoutEffect =
 export const MagicCurtain = {
   Root: MagicCurtainRoot,
   Item: MagicCurtainItem,
+  Controls: MagicCurtainControls,
+  MirrorControls: MagicCurtainMirrorControls,
 };
