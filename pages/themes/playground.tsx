@@ -2176,7 +2176,7 @@ export default function ComponentsPage() {
                   <TabsTrigger value="all-weights">All weights</TabsTrigger>
                 </TabsList>
                 <TabsContent value="specimen">
-                  <Box mt="6" style={{ width: 'calc(560px * var(--scaling))' }}>
+                  <Box mt="6" style={{ width: 'calc(585px * var(--scaling))' }}>
                     <Heading size="9">
                       The principles of the typographic craft are difficult to master
                     </Heading>
@@ -2194,7 +2194,7 @@ export default function ComponentsPage() {
                       </Text>
                     </Box>
 
-                    <Box style={{ width: 'calc(320px * var(--scaling))' }}>
+                    <Box style={{ width: 'calc(330px * var(--scaling))' }}>
                       <Heading size="4" mb="2">
                         The principles of the typographic craft are difficult to master
                       </Heading>
