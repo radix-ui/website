@@ -111,7 +111,7 @@ const MagicCurtainControls = ({ images }: MagicCurtainControlsProps) => {
   const upcomingAnimationCallback = React.useRef<(() => void) | null>(null);
 
   // Clear offset on viewport removal
-  React.useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const observer = new MutationObserver((mutationList) => {
       for (const mutation of mutationList) {
         if (mutation.type === 'childList') {
