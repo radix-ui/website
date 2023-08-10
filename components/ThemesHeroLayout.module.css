@@ -108,6 +108,11 @@
   justify-content: center;
 }
 
+.ThemesHeroLayoutBackground svg {
+  width: max(2560px, 100vw);
+  height: auto;
+}
+
 .ThemesHeroLayoutMain {
   position: relative;
   box-sizing: content-box;
@@ -126,6 +131,12 @@
 
 .ThemesHeroLayoutShowcaseInnerScaled {
   transform: scale(var(--themes-hero-showcase-scale));
+}
+
+/* Center vertically on really large screens */
+.ThemesHeroLayoutShowcaseInnerScaled > * {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 /* * * * * * * * * * * * * * * * * * * */

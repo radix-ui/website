@@ -185,14 +185,10 @@
 
 .MagicCurtainControlsPreviewViewport[data-state='open'] {
   animation: scale-in 250ms ease;
-  animation-play-state: running;
-  animation-fill-mode: forwards;
 }
 
 .MagicCurtainControlsPreviewViewport[data-state='closed'] {
   animation: scale-out 250ms ease;
-  animation-play-state: running;
-  animation-fill-mode: forwards;
 }
 
 @keyframes scale-in {

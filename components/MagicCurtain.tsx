@@ -168,7 +168,11 @@ const MagicCurtainControls = ({ images }: MagicCurtainControlsProps) => {
       className={styles.MagicCurtainControlsRoot}
       onValueChange={(value) => {
         setMenuValue(value);
-        setOffsetIndex(value);
+
+        // If `value` is falsy, the offset will be cleared on viewport removal
+        if (value) {
+          setOffsetIndex(value);
+        }
       }}
     >
       <NavigationMenu.List
