@@ -12,7 +12,7 @@ import {
   IconButton,
   Inset,
   Link,
-  Separator,
+  ScrollArea,
   Slider,
   Strong,
   Table,
@@ -291,115 +291,112 @@ export function ThemesVariantsExample() {
 export function ThemesScalingExample() {
   const scaleValues = ['90%', '95%', '100%', '105%', '110%'] as const;
   const person = allPeople[6];
-
   return (
-    <Card size="2">
-      <Flex direction="column" my="-4">
-        {scaleValues.map((scaling, i) => (
-          <Flex
-            key={scaling}
-            style={{
-              borderBottom: i + 1 !== scaleValues.length ? '1px dashed var(--gray-7)' : undefined,
-            }}
-            align="center"
-            gap="4"
-          >
-            <Box style={{ minWidth: 70 }}>
-              <Code size="2" color="gray">
-                {scaling}
-              </Code>
-            </Box>
-
-            <Box py="4" asChild>
-              <Theme scaling={scaling} style={{ flex: 1, maxWidth: 240 + 20 * i }}>
-                <Card variant="surface" aria-label={`${scaling} scaled UI example`}>
-                  <Flex gap="3" align="center" aria-hidden>
-                    <Avatar size="3" src={person.image} fallback={person?.name[0].toUpperCase()} />
-                    <Box>
-                      <Text as="div" size="2" weight="bold">
-                        {person.name}
-                      </Text>
-                      <Text as="div" size="2" color="gray">
-                        Approved invoice <Link>#3461</Link>
-                      </Text>
-                    </Box>
-                  </Flex>
-                </Card>
-              </Theme>
-            </Box>
-          </Flex>
-        ))}
-      </Flex>
-    </Card>
+    <PropValueExampleCard>
+      {scaleValues.map((scaling, i) => (
+        <PropValueExampleCardRow
+          value={scaling}
+          bordered={i + 1 !== scaleValues.length}
+          key={scaling}
+        >
+          <Theme scaling={scaling} style={{ flex: 1, maxWidth: 240 + 20 * i }}>
+            <Card variant="surface" aria-label={`${scaling} scaled UI example`}>
+              <Flex gap="3" align="center" aria-hidden>
+                <Avatar size="3" src={person.image} fallback={person?.name[0].toUpperCase()} />
+                <Box>
+                  <Text as="div" size="2" weight="bold">
+                    {person.name}
+                  </Text>
+                  <Text as="div" size="2" color="gray">
+                    Approved invoice <Link>#3461</Link>
+                  </Text>
+                </Box>
+              </Flex>
+            </Card>
+          </Theme>
+        </PropValueExampleCardRow>
+      ))}
+    </PropValueExampleCard>
   );
 }
 
 export function ThemesRadiusExample() {
   const radiusValues = ['none', 'medium', 'full'] as const;
   return (
-    <Card size="2">
-      <Flex direction="column" my="-4">
-        {radiusValues.map((radius, i) => (
-          <Flex
-            key={radius}
-            style={{
-              borderBottom: i + 1 !== radiusValues.length ? '1px dashed var(--gray-7)' : undefined,
-            }}
-            align="center"
-            gap="4"
-          >
-            <Box style={{ minWidth: 70 }}>
-              <Code size="2" color="gray">
-                {radius}
-              </Code>
-            </Box>
-
-            <Box py="4" grow="1" asChild>
-              <Theme radius={radius} style={{ minWidth: 370, maxWidth: 450 }}>
-                <Card variant="surface" size="2">
-                  <Flex gap="3">
-                    <Avatar
-                      size="3"
-                      src={allPeople[4].image}
-                      fallback={allPeople[22]?.name[0].toUpperCase()}
-                    />
-                    <Box grow="1">
-                      <TextArea placeholder="Reply…" />
-                      <Flex gap="3" mt="3" justify="between">
-                        <Flex asChild align="center" gap="2">
-                          <Label>
-                            <Checkbox checked />
-                            <Text size="2">Send to group</Text>
-                          </Label>
-                        </Flex>
-                        <Button>Send message</Button>
-                      </Flex>
-                    </Box>
+    <PropValueExampleCard>
+      {radiusValues.map((radius, i) => (
+        <PropValueExampleCardRow
+          value={radius}
+          bordered={i + 1 !== radiusValues.length}
+          key={radius}
+        >
+          <Theme radius={radius}>
+            <Card variant="surface" size="2" style={{ maxWidth: 480 }}>
+              <Flex gap="3">
+                <Avatar
+                  size="3"
+                  src={allPeople[4].image}
+                  fallback={allPeople[22]?.name[0].toUpperCase()}
+                />
+                <Box grow="1">
+                  <TextArea placeholder="Reply…" />
+                  <Flex gap="6" mt="3" justify="between">
+                    <Flex asChild align="center" gap="2">
+                      <Label>
+                        <Checkbox checked />
+                        <Text size="2">Send to group</Text>
+                      </Label>
+                    </Flex>
+                    <Button>Send message</Button>
                   </Flex>
-                </Card>
-              </Theme>
-            </Box>
-          </Flex>
-        ))}
-      </Flex>
+                </Box>
+              </Flex>
+            </Card>
+          </Theme>
+        </PropValueExampleCardRow>
+      ))}
+    </PropValueExampleCard>
+  );
+}
+
+function PropValueExampleCard({ children }: { children: React.ReactNode }) {
+  return (
+    <Card size="2">
+      <Inset side="all">
+        <ScrollArea>{children}</ScrollArea>
+      </Inset>
     </Card>
   );
 }
 
-export function ThemesBorderRadiusScale() {
+function PropValueExampleCardRow({
+  children,
+  value,
+  bordered,
+}: {
+  children: React.ReactNode;
+  value: string;
+  bordered: boolean;
+}) {
   return (
-    <Flex gap="4" mt="6" mb="5">
-      {[...new Array(6)].map((_, i) => (
-        <Flex direction="column" key={i} grow="1" align="center" gap="3">
-          <Box height="8" width="100%">
-            <DecorativeBox style={{ borderRadius: `var(--radius-${i + 1})` }} />
-          </Box>
+    <Flex
+      style={{
+        borderBottom: bordered ? '1px dashed var(--gray-6)' : undefined,
+      }}
+      align="center"
+      gap="4"
+      px="5"
+      py="4"
+    >
+      <Box style={{ minWidth: 60 }}>
+        <Code size="2" color="gray">
+          {value}
+        </Code>
+      </Box>
 
-          <Text size="1" color="gray">
-            {i + 1}
-          </Text>
-        </Flex>
-      ))}
+      <Box grow="1" style={{ minWidth: 'max-content' }}>
+        {children}
+      </Box>
     </Flex>
   );
 }
