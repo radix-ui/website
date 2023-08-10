@@ -230,7 +230,7 @@ export default function ThemesHome() {
 
 const ControlsWrapper = ({ children, ...props }: React.ComponentPropsWithoutRef<typeof Box>) => {
   return (
-    <Box position="fixed" bottom="0" left="0" ml="5" mb="5" {...props}>
+    <Box position="absolute" bottom="0" left="0" ml="7" mb="5" {...props}>
       <Text weight="bold" size="2" style={{ pointerEvents: 'none' }}>
         Explore examples
       </Text>
