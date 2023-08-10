@@ -2182,8 +2182,8 @@ export default function ComponentsPage() {
                     </Heading>
                   </Box>
 
-                  <Flex mt="6" gap="6">
-                    <Box style={{ width: 'calc(340px * var(--scaling))' }}>
+                  <Grid columns="auto auto" mt="6" gap="6">
+                    <Box pr="4" style={{ width: 'calc(340px * var(--scaling))' }}>
                       <Heading size="5" mb="2">
                         The principles of the typographic craft are difficult to master
                       </Heading>
@@ -2204,9 +2204,7 @@ export default function ComponentsPage() {
                         more pleasant.
                       </Text>
                     </Box>
-                  </Flex>
 
-                  <Flex mt="6" gap="6">
                     <Box style={{ width: 'calc(290px * var(--scaling))' }}>
                       <Heading size="3" mb="1">
                         The principles of the typographic craft are difficult to master
@@ -2228,7 +2226,7 @@ export default function ComponentsPage() {
                         more pleasant.
                       </Text>
                     </Box>
-                  </Flex>
+                  </Grid>
                 </TabsContent>
 
                 <TabsContent value="all-colors">
