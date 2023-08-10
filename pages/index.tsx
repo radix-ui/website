@@ -44,7 +44,7 @@ export default function ThemesHome() {
 
             <ThemesHeroLayout.Root>
               <ThemesHeroLayout.Background>
-                <BackgroundImage style={indigoBackgroundImageAccents} id="1" />
+                <BackgroundImage style={indigoBackgroundImageStyle} id="1" />
               </ThemesHeroLayout.Background>
 
               <ThemesHeroLayout.Main>
@@ -72,7 +72,7 @@ export default function ThemesHome() {
 
             <ThemesHeroLayout.Root>
               <ThemesHeroLayout.Background>
-                <BackgroundImage style={tealBackgroundImageAccents} id="2" />
+                <BackgroundImage style={tealBackgroundImageStyle} id="2" />
               </ThemesHeroLayout.Background>
 
               <ThemesHeroLayout.Main>
@@ -100,7 +100,7 @@ export default function ThemesHome() {
 
             <ThemesHeroLayout.Root>
               <ThemesHeroLayout.Background>
-                <BackgroundImage style={redBackgroundImageAccents} id="3" />
+                <BackgroundImage style={redBackgroundImageStyle} id="3" />
               </ThemesHeroLayout.Background>
 
               <ThemesHeroLayout.Main>
@@ -128,7 +128,7 @@ export default function ThemesHome() {
 
             <ThemesHeroLayout.Root>
               <ThemesHeroLayout.Background>
-                <BackgroundImage style={indigoBackgroundImageAccents} id="4" />
+                <BackgroundImage style={indigoBackgroundImageStyle} id="4" />
               </ThemesHeroLayout.Background>
 
               <ThemesHeroLayout.Main>
@@ -156,7 +156,7 @@ export default function ThemesHome() {
 
             <ThemesHeroLayout.Root>
               <ThemesHeroLayout.Background>
-                <BackgroundImage style={tealBackgroundImageAccents} id="5" />
+                <BackgroundImage style={tealBackgroundImageStyle} id="5" />
               </ThemesHeroLayout.Background>
 
               <ThemesHeroLayout.Main>
@@ -189,7 +189,7 @@ export default function ThemesHome() {
 
             <ThemesHeroLayout.Root>
               <ThemesHeroLayout.Background>
-                <BackgroundImage style={redBackgroundImageAccents} id="6" />
+                <BackgroundImage style={redBackgroundImageStyle} id="6" />
               </ThemesHeroLayout.Background>
 
               <ThemesHeroLayout.Main>
@@ -331,7 +331,8 @@ const codeStyles = {
   maxWidth: 500,
 };
 
-const indigoBackgroundImageAccents = {
+const indigoBackgroundImageStyle = {
+  '--color-background-image-base': 'var(--color-background)',
   '--color-background-image-accent-1': 'var(--indigo-a7)',
   '--color-background-image-accent-2': 'var(--violet-6)',
   '--color-background-image-accent-3': 'var(--purple-9)',
@@ -341,7 +342,8 @@ const indigoBackgroundImageAccents = {
   '--color-background-image-accent-7': 'var(--indigo-5)',
 } as React.CSSProperties;
 
-const tealBackgroundImageAccents = {
+const tealBackgroundImageStyle = {
+  '--color-background-image-base': 'var(--sage-1)',
   '--color-background-image-accent-1': 'var(--teal-a7)',
   '--color-background-image-accent-2': 'var(--mint-7)',
   '--color-background-image-accent-3': 'var(--green-9)',
@@ -349,16 +351,21 @@ const tealBackgroundImageAccents = {
   '--color-background-image-accent-5': 'var(--crimson-3)',
   '--color-background-image-accent-6': 'var(--mint-6)',
   '--color-background-image-accent-7': 'var(--teal-5)',
+  // transformOrigin: 'center center',
+  // transform: 'scaleX(-1) rotate(160deg)',
 } as React.CSSProperties;
 
-const redBackgroundImageAccents = {
+const redBackgroundImageStyle = {
+  '--color-background-image-base': 'var(--red-2)',
   '--color-background-image-accent-1': 'var(--crimson-a7)',
-  '--color-background-image-accent-2': 'var(--red-5)',
-  '--color-background-image-accent-3': 'var(--red-9)',
-  '--color-background-image-accent-4': 'var(--red-2)',
-  '--color-background-image-accent-5': 'var(--mauve-1)',
-  '--color-background-image-accent-6': 'var(--crimson-3)',
-  '--color-background-image-accent-7': 'var(--red-7)',
+  '--color-background-image-accent-2': 'var(--red-1)',
+  '--color-background-image-accent-3': 'var(--red-3)',
+  '--color-background-image-accent-4': 'var(--red-7)',
+  '--color-background-image-accent-5': 'var(--color-background)',
+  '--color-background-image-accent-6': 'var(--crimson-1)',
+  '--color-background-image-accent-7': 'var(--red-5)',
+  // transformOrigin: 'center center',
+  // transform: 'scaleY(-0.5) scaleX(-1) rotate(-15deg)',
 } as React.CSSProperties;
 
 const codeExample = `
@@ -433,9 +440,9 @@ const BackgroundImage = ({
         gradientUnits="userSpaceOnUse"
         gradientTransform="translate(2922 2538.48) rotate(-117.986) scale(1898.15 3571.73)"
       >
-        <stop stopColor="var(--color-background)" />
-        <stop offset="0.822917" stopColor="var(--color-background)" />
-        <stop offset="1" stopColor="var(--color-background)" stopOpacity="0" />
+        <stop stopColor="var(--color-background-image-base)" />
+        <stop offset="0.822917" stopColor="var(--color-background-image-base)" />
+        <stop offset="1" stopColor="var(--color-background-image-base)" stopOpacity="0" />
       </radialGradient>
 
       <radialGradient
@@ -446,9 +453,9 @@ const BackgroundImage = ({
         gradientUnits="userSpaceOnUse"
         gradientTransform="translate(3069.05 2293.39) rotate(-117.986) scale(1898.15 3571.73)"
       >
-        <stop stopColor="var(--color-background)" />
-        <stop offset="0.822917" stopColor="var(--color-background)" />
-        <stop offset="1" stopColor="var(--color-background)" stopOpacity="0" />
+        <stop stopColor="var(--color-background-image-base)" />
+        <stop offset="0.822917" stopColor="var(--color-background-image-base)" />
+        <stop offset="1" stopColor="var(--color-background-image-base)" stopOpacity="0" />
       </radialGradient>
 
       <radialGradient
@@ -475,9 +482,9 @@ const BackgroundImage = ({
         gradientUnits="userSpaceOnUse"
         gradientTransform="translate(3934.59 656.035) rotate(148.98) scale(1938.73 3648.08)"
       >
-        <stop stopColor="var(--color-background)" />
-        <stop offset="0.789375" stopColor="var(--color-background)" />
-        <stop offset="1" stopColor="var(--color-background)" stopOpacity="0" />
+        <stop stopColor="var(--color-background-image-base)" />
+        <stop offset="0.789375" stopColor="var(--color-background-image-base)" />
+        <stop offset="1" stopColor="var(--color-background-image-base)" stopOpacity="0" />
       </radialGradient>
 
       <radialGradient
@@ -488,13 +495,13 @@ const BackgroundImage = ({
         gradientUnits="userSpaceOnUse"
         gradientTransform="translate(-804.109 -2036.8) rotate(64.9401) scale(6436.87 6304.81)"
       >
-        <stop stopColor="var(--color-background)" />
+        <stop stopColor="var(--color-background-image-base)" />
         <stop offset="0.0833333" stopColor="var(--color-background-image-accent-1)" />
         <stop offset="0.364583" stopColor="var(--color-background-image-accent-2)" />
-        <stop offset="0.658041" stopColor="var(--color-background)" />
+        <stop offset="0.658041" stopColor="var(--color-background-image-base)" />
         <stop offset="0.798521" stopColor="var(--color-background-image-accent-3)" />
-        <stop offset="0.942708" stopColor="var(--color-background)" />
-        <stop offset="1" stopColor="var(--color-background)" />
+        <stop offset="0.942708" stopColor="var(--color-background-image-base)" />
+        <stop offset="1" stopColor="var(--color-background-image-base)" />
       </radialGradient>
       <radialGradient
         id={`paint1_radial_37_453-${id}`}
@@ -504,13 +511,13 @@ const BackgroundImage = ({
         gradientUnits="userSpaceOnUse"
         gradientTransform="translate(201.6 -1080.02) rotate(64.9401) scale(6436.87 6304.81)"
       >
-        <stop stopColor="var(--color-background)" />
+        <stop stopColor="var(--color-background-image-base)" />
         <stop offset="0.0833333" stopColor="var(--color-background-image-accent-4)" />
         <stop offset="0.333803" stopColor="var(--color-background-image-accent-5)" />
-        <stop offset="0.658041" stopColor="var(--color-background)" />
+        <stop offset="0.658041" stopColor="var(--color-background-image-base)" />
         <stop offset="0.798521" stopColor="var(--color-background-image-accent-3)" />
-        <stop offset="0.942708" stopColor="var(--color-background)" />
-        <stop offset="1" stopColor="var(--color-background)" />
+        <stop offset="0.942708" stopColor="var(--color-background-image-base)" />
+        <stop offset="1" stopColor="var(--color-background-image-base)" />
       </radialGradient>
       <radialGradient
         id={`paint2_radial_37_453-${id}`}
@@ -520,13 +527,13 @@ const BackgroundImage = ({
         gradientUnits="userSpaceOnUse"
         gradientTransform="translate(912.834 -811.021) rotate(64.9401) scale(6436.87 6304.81)"
       >
-        <stop stopColor="var(--color-background)" />
+        <stop stopColor="var(--color-background-image-base)" />
         <stop offset="0.140625" stopColor="var(--color-background-image-accent-6)" />
         <stop offset="0.333803" stopColor="var(--color-background-image-accent-7)" />
-        <stop offset="0.658041" stopColor="var(--color-background)" />
+        <stop offset="0.658041" stopColor="var(--color-background-image-base)" />
         <stop offset="0.798521" stopColor="var(--color-background-image-accent-3)" />
-        <stop offset="0.942708" stopColor="var(--color-background)" />
-        <stop offset="1" stopColor="var(--color-background)" />
+        <stop offset="0.942708" stopColor="var(--color-background-image-base)" />
+        <stop offset="1" stopColor="var(--color-background-image-base)" />
       </radialGradient>
       <radialGradient
         id={`paint3_radial_37_453-${id}`}
@@ -536,13 +543,13 @@ const BackgroundImage = ({
         gradientUnits="userSpaceOnUse"
         gradientTransform="translate(1711.41 -1639.11) rotate(64.9401) scale(6436.87 6304.81)"
       >
-        <stop stopColor="var(--color-background)" />
+        <stop stopColor="var(--color-background-image-base)" />
         <stop offset="0.0833333" stopColor="var(--color-background-image-accent-1)" />
         <stop offset="0.333803" stopColor="var(--color-background-image-accent-5)" />
-        <stop offset="0.658041" stopColor="var(--color-background)" />
+        <stop offset="0.658041" stopColor="var(--color-background-image-base)" />
         <stop offset="0.798521" stopColor="var(--color-background-image-accent-3)" />
-        <stop offset="0.942708" stopColor="var(--color-background)" />
-        <stop offset="1" stopColor="var(--color-background)" />
+        <stop offset="0.942708" stopColor="var(--color-background-image-base)" />
+        <stop offset="1" stopColor="var(--color-background-image-base)" />
       </radialGradient>
       <radialGradient
         id={`paint4_radial_37_453-${id}`}
@@ -552,13 +559,13 @@ const BackgroundImage = ({
         gradientUnits="userSpaceOnUse"
         gradientTransform="translate(3479.06 -623.459) rotate(113.028) scale(8332.26 4870.62)"
       >
-        <stop stopColor="var(--color-background)" />
+        <stop stopColor="var(--color-background-image-base)" />
         <stop offset="0.0833333" stopColor="var(--color-background-image-accent-1)" />
         <stop offset="0.333803" stopColor="var(--color-background-image-accent-5)" />
-        <stop offset="0.658041" stopColor="var(--color-background)" />
+        <stop offset="0.658041" stopColor="var(--color-background-image-base)" />
         <stop offset="0.798521" stopColor="var(--color-background-image-accent-3)" />
-        <stop offset="0.942708" stopColor="var(--color-background)" />
-        <stop offset="1" stopColor="var(--color-background)" />
+        <stop offset="0.942708" stopColor="var(--color-background-image-base)" />
+        <stop offset="1" stopColor="var(--color-background-image-base)" />
       </radialGradient>
     </defs>
   </svg>
