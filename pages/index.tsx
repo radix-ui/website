@@ -65,62 +65,6 @@ export default function ThemesHome() {
         </MagicCurtain.Item>
 
         <MagicCurtain.Item>
-          <Theme hasBackground accentColor="teal" grayColor="gray" appearance={inverted}>
-            <Box height="0">
-              <ThemesHeader ghost />
-            </Box>
-
-            <ThemesHeroLayout.Root>
-              <ThemesHeroLayout.Background>
-                <BackgroundImage style={tealBackgroundImageStyle} id="2" />
-              </ThemesHeroLayout.Background>
-
-              <ThemesHeroLayout.Main>
-                <MainContent codeBlockScheme="teal" />
-              </ThemesHeroLayout.Main>
-
-              <ThemesHeroLayout.Showcase>
-                <Theme className="radix-themes-example" accentColor="gray" hasBackground={false}>
-                  <ExampleThemesEcommerce align="start" />
-                </Theme>
-              </ThemesHeroLayout.Showcase>
-
-              <ControlsWrapper>
-                <MagicCurtain.MirrorControls />
-              </ControlsWrapper>
-            </ThemesHeroLayout.Root>
-          </Theme>
-        </MagicCurtain.Item>
-
-        <MagicCurtain.Item>
-          <Theme hasBackground accentColor="red" grayColor="slate">
-            <Box height="0">
-              <ThemesHeader ghost />
-            </Box>
-
-            <ThemesHeroLayout.Root>
-              <ThemesHeroLayout.Background>
-                <BackgroundImage style={redBackgroundImageStyle} id="3" />
-              </ThemesHeroLayout.Background>
-
-              <ThemesHeroLayout.Main>
-                <MainContent codeBlockScheme="red" />
-              </ThemesHeroLayout.Main>
-
-              <ThemesHeroLayout.Showcase>
-                <Theme className="radix-themes-example" hasBackground={false}>
-                  <ExampleThemesMusicApp align="start" />
-                </Theme>
-              </ThemesHeroLayout.Showcase>
-
-              <ControlsWrapper>
-                <MagicCurtain.MirrorControls />
-              </ControlsWrapper>
-            </ThemesHeroLayout.Root>
-          </Theme>
-        </MagicCurtain.Item>
-
-        <MagicCurtain.Item>
           <Theme hasBackground accentColor="indigo" grayColor="slate" appearance={inverted}>
             <Box height="0">
               <ThemesHeader ghost />
@@ -182,6 +126,62 @@ export default function ThemesHome() {
         </MagicCurtain.Item>
 
         <MagicCurtain.Item>
+          <Theme hasBackground accentColor="teal" grayColor="gray" appearance={inverted}>
+            <Box height="0">
+              <ThemesHeader ghost />
+            </Box>
+
+            <ThemesHeroLayout.Root>
+              <ThemesHeroLayout.Background>
+                <BackgroundImage style={tealBackgroundImageStyle} id="2" />
+              </ThemesHeroLayout.Background>
+
+              <ThemesHeroLayout.Main>
+                <MainContent codeBlockScheme="teal" />
+              </ThemesHeroLayout.Main>
+
+              <ThemesHeroLayout.Showcase>
+                <Theme className="radix-themes-example" accentColor="gray" hasBackground={false}>
+                  <ExampleThemesEcommerce align="start" />
+                </Theme>
+              </ThemesHeroLayout.Showcase>
+
+              <ControlsWrapper>
+                <MagicCurtain.MirrorControls />
+              </ControlsWrapper>
+            </ThemesHeroLayout.Root>
+          </Theme>
+        </MagicCurtain.Item>
+
+        <MagicCurtain.Item>
+          <Theme hasBackground accentColor="red" grayColor="slate">
+            <Box height="0">
+              <ThemesHeader ghost />
+            </Box>
+
+            <ThemesHeroLayout.Root>
+              <ThemesHeroLayout.Background>
+                <BackgroundImage style={redBackgroundImageStyle} id="3" />
+              </ThemesHeroLayout.Background>
+
+              <ThemesHeroLayout.Main>
+                <MainContent codeBlockScheme="red" />
+              </ThemesHeroLayout.Main>
+
+              <ThemesHeroLayout.Showcase>
+                <Theme className="radix-themes-example" hasBackground={false}>
+                  <ExampleThemesMusicApp align="start" />
+                </Theme>
+              </ThemesHeroLayout.Showcase>
+
+              <ControlsWrapper>
+                <MagicCurtain.MirrorControls />
+              </ControlsWrapper>
+            </ThemesHeroLayout.Root>
+          </Theme>
+        </MagicCurtain.Item>
+
+        <MagicCurtain.Item>
           <Theme hasBackground accentColor="red" grayColor="slate" appearance={inverted}>
             <Box height="0">
               <ThemesHeader ghost />
@@ -213,12 +213,12 @@ export default function ThemesHome() {
           <ControlsWrapper style={{ zIndex: 100, color: 'transparent' }}>
             <MagicCurtain.Controls
               images={[
-                'https://ph-files.imgix.net/e3c8c9b2-f0cf-41b0-9d68-1fc683afa6dd.png?auto=compress&codec=mozjpeg&cs=strip&auto=format&w=387&h=220&fit=max&dpr=2',
-                'https://ph-files.imgix.net/1818db79-e35e-4b86-93af-b3fc0904326f.png?auto=compress&codec=mozjpeg&cs=strip&auto=format&w=387&h=220&fit=max&dpr=2',
-                'https://ph-files.imgix.net/5e1a6ef4-adee-472b-9bd1-782454bc2287.png?auto=compress&codec=mozjpeg&cs=strip&auto=format&w=387&h=220&fit=max&dpr=2',
-                'https://ph-files.imgix.net/1818db79-e35e-4b86-93af-b3fc0904326f.png?auto=compress&codec=mozjpeg&cs=strip&auto=format&w=387&h=220&fit=max&dpr=2',
-                'https://ph-files.imgix.net/e3c8c9b2-f0cf-41b0-9d68-1fc683afa6dd.png?auto=compress&codec=mozjpeg&cs=strip&auto=format&w=387&h=220&fit=max&dpr=2',
-                'https://ph-files.imgix.net/1818db79-e35e-4b86-93af-b3fc0904326f.png?auto=compress&codec=mozjpeg&cs=strip&auto=format&w=387&h=220&fit=max&dpr=2',
+                'https://workos.imgix.net/images/eced715d-bb9b-477c-974e-9bc30d47cfff.png?auto=format&fit=clip&q=95&w=496',
+                'https://workos.imgix.net/images/8525e6d9-d09e-428e-93a7-1f4a83159c76.png?auto=format&fit=clip&q=95&w=496',
+                'https://workos.imgix.net/images/6420ba96-b473-4be9-912a-c5f13c47083d.png?auto=format&fit=clip&q=95&w=496',
+                'https://workos.imgix.net/images/6e7e80a1-bc55-43c9-8fcc-575c70256f6e.png?auto=format&fit=clip&q=95&w=496',
+                'https://workos.imgix.net/images/271312d2-6249-4669-9431-3f97a32b9ef2.png?auto=format&fit=clip&q=95&w=496',
+                'https://workos.imgix.net/images/b7af0911-e659-4b70-8184-1b56cebf8082.png?auto=format&fit=clip&q=95&w=496',
               ]}
             />
           </ControlsWrapper>
