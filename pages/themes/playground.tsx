@@ -2176,14 +2176,14 @@ export default function ComponentsPage() {
                   <TabsTrigger value="all-weights">All weights</TabsTrigger>
                 </TabsList>
                 <TabsContent value="specimen">
-                  <Box mt="6" style={{ width: 'calc(560px * var(--scaling))' }}>
+                  <Box mt="6" style={{ width: 'calc(585px * var(--scaling))' }}>
                     <Heading size="9">
                       The principles of the typographic craft are difficult to master
                     </Heading>
                   </Box>
 
-                  <Flex mt="6" gap="6">
-                    <Box style={{ width: 'calc(340px * var(--scaling))' }}>
+                  <Grid columns="auto auto" mt="6" gap="6">
+                    <Box pr="4" style={{ width: 'calc(340px * var(--scaling))' }}>
                       <Heading size="5" mb="2">
                         The principles of the typographic craft are difficult to master
                       </Heading>
@@ -2194,7 +2194,7 @@ export default function ComponentsPage() {
                       </Text>
                     </Box>
 
-                    <Box style={{ width: 'calc(320px * var(--scaling))' }}>
+                    <Box style={{ width: 'calc(330px * var(--scaling))' }}>
                       <Heading size="4" mb="2">
                         The principles of the typographic craft are difficult to master
                       </Heading>
@@ -2204,9 +2204,7 @@ export default function ComponentsPage() {
                         more pleasant.
                       </Text>
                     </Box>
-                  </Flex>
 
-                  <Flex mt="6" gap="6">
                     <Box style={{ width: 'calc(290px * var(--scaling))' }}>
                       <Heading size="3" mb="1">
                         The principles of the typographic craft are difficult to master
@@ -2228,7 +2226,7 @@ export default function ComponentsPage() {
                         more pleasant.
                       </Text>
                     </Box>
-                  </Flex>
+                  </Grid>
                 </TabsContent>
 
                 <TabsContent value="all-colors">

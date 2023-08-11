@@ -119,6 +119,14 @@ function Pages({ Component, pageProps }: AppProps) {
     );
   }
 
+  if (router.pathname.startsWith('/themes/playground')) {
+    return (
+      <Theme accentColor="indigo" className="radix-themes-example" style={themeRootStyles}>
+        <Component {...pageProps} />
+      </Theme>
+    );
+  }
+
   if (router.pathname.startsWith('/themes')) {
     return (
       <Theme accentColor="indigo" style={themeRootStyles}>
