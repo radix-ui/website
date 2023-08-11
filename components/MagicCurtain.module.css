@@ -21,16 +21,10 @@
 .MagicCurtainItem {
   position: relative;
   z-index: 0;
-  --animation-duration: 800ms;
+  --animation-duration: 600ms;
 }
 
-@media (min-width: 500px) {
-  .MagicCurtainItem {
-    --animation-duration: 800ms;
-  }
-}
-
-@media (min-width: 1500px) {
+@media (min-width: 1280px) {
   .MagicCurtainItem {
     --animation-duration: 800ms;
   }
