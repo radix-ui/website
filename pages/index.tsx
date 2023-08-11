@@ -48,7 +48,7 @@ export default function ThemesHome() {
               </ThemesHeroLayout.Main>
 
               <ThemesHeroLayout.Showcase>
-                <Theme className="radix-themes-example" hasBackground={false}>
+                <Theme className="radix-themes-default-fonts" hasBackground={false}>
                   <ExampleThemesDashboard align="start" />
                 </Theme>
               </ThemesHeroLayout.Showcase>
@@ -72,7 +72,7 @@ export default function ThemesHome() {
               </ThemesHeroLayout.Main>
 
               <ThemesHeroLayout.Showcase>
-                <Theme className="radix-themes-example" hasBackground={false}>
+                <Theme className="radix-themes-default-fonts" hasBackground={false}>
                   <ExampleThemesDashboard align="start" />
                 </Theme>
               </ThemesHeroLayout.Showcase>
@@ -97,7 +97,7 @@ export default function ThemesHome() {
 
               <ThemesHeroLayout.Showcase>
                 <Theme
-                  className="radix-themes-example"
+                  className="radix-themes-default-fonts"
                   accentColor="gray"
                   grayColor="gray"
                   hasBackground={false}
@@ -125,7 +125,11 @@ export default function ThemesHome() {
               </ThemesHeroLayout.Main>
 
               <ThemesHeroLayout.Showcase>
-                <Theme className="radix-themes-example" accentColor="gray" hasBackground={false}>
+                <Theme
+                  className="radix-themes-default-fonts"
+                  accentColor="gray"
+                  hasBackground={false}
+                >
                   <ExampleThemesEcommerce align="start" />
                 </Theme>
               </ThemesHeroLayout.Showcase>
@@ -149,7 +153,7 @@ export default function ThemesHome() {
               </ThemesHeroLayout.Main>
 
               <ThemesHeroLayout.Showcase>
-                <Theme className="radix-themes-example" hasBackground={false}>
+                <Theme className="radix-themes-default-fonts" hasBackground={false}>
                   <ExampleThemesMusicApp align="start" />
                 </Theme>
               </ThemesHeroLayout.Showcase>
@@ -173,7 +177,7 @@ export default function ThemesHome() {
               </ThemesHeroLayout.Main>
 
               <ThemesHeroLayout.Showcase>
-                <Theme className="radix-themes-example" hasBackground={false}>
+                <Theme className="radix-themes-default-fonts" hasBackground={false}>
                   <ExampleThemesMusicApp align="start" />
                 </Theme>
               </ThemesHeroLayout.Showcase>

@@ -4,7 +4,6 @@
 
 .HeaderInner {
   position: fixed;
-  font-family: var(--fonts-untitled);
   height: inherit;
   top: 0;
   left: 0;

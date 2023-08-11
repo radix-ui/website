@@ -165,14 +165,14 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
       {(isHovered || dropdownMenuIsOpen) && (
         <Flex align="center" justify="center" height="6" position="absolute" right="0" mr="-1">
           <DropdownMenu.Root onOpenChange={(isOpen) => setDropdownMenuIsOpen(isOpen)}>
-            <Tooltip content="Copy to Clipboard">
+            <Tooltip className="radix-themes-custom-fonts" content="Copy to Clipboard">
               <DropdownMenu.Trigger>
                 <IconButton size="2" variant="ghost" color="gray" highContrast>
                   <CopyIcon />
                 </IconButton>
               </DropdownMenu.Trigger>
             </Tooltip>
-            <DropdownMenu.Content align="end" size="1">
+            <DropdownMenu.Content className="radix-themes-custom-fonts" align="end" size="1">
               <DropdownMenu.Group>
                 <DropdownMenu.Item
                   onSelect={(e) => navigator.clipboard.writeText(scaleToHSLObject(name, scale))}

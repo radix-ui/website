@@ -67,7 +67,7 @@ export function Highlights({ features }) {
               onValueChange={(value) => router.push(`./${frontmatter.name}/${value}`)}
             >
               <Select.Trigger variant="ghost" color="gray" />
-              <Select.Content>
+              <Select.Content className="radix-themes-custom-fonts">
                 {(frontmatter.versions || []).map((v, i) => {
                   return (
                     <Select.Item key={v} value={v}>

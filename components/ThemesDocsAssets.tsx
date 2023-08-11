@@ -161,7 +161,7 @@ export function ThemesVariantsExample() {
             appearance="dark"
             radius="large"
             hasBackground={false}
-            className="radix-themes-example"
+            className="radix-themes-default-fonts"
             asChild
             accentColor="teal"
             panelBackground="solid"
@@ -201,7 +201,7 @@ export function ThemesVariantsExample() {
             appearance="light"
             radius="medium"
             hasBackground={false}
-            className="radix-themes-example"
+            className="radix-themes-default-fonts"
             accentColor="crimson"
             panelBackground="solid"
           >

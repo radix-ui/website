@@ -44,7 +44,7 @@ export const PrimitivesSearchDesktop = () => {
         >
           <MagnifyingGlassIcon />
           Search
-          <Tooltip content="Press Slash key to search">
+          <Tooltip className="radix-themes-custom-fonts" content="Press Slash key to search">
             <Flex ml="auto" my="-2" aria-hidden>
               <Kbd size="2">/</Kbd>
             </Flex>
@@ -53,7 +53,7 @@ export const PrimitivesSearchDesktop = () => {
       </DialogPrimitive.Trigger>
 
       <DialogPrimitive.Portal>
-        <Theme>
+        <Theme className="radix-themes-custom-fonts">
           <DialogPrimitive.Overlay className={styles.PrimitivesSearchDesktopDialogOverlay}>
             <DialogPrimitive.Content
               onEscapeKeyDown={() => {

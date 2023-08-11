@@ -63,7 +63,7 @@ export const MobileMenu = ({ children }) => {
 
   return (
     <Portal>
-      <Theme>
+      <Theme className="radix-themes-custom-fonts">
         <RemoveScroll as={Slot} allowPinchZoom enabled>
           <Box
             position="fixed"

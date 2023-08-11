@@ -22,7 +22,7 @@ export const CopyToast = () => {
     <CopyToastVisibility.Consumer>
       {({ icon, isVisible }) => (
         <Portal>
-          <Theme>
+          <Theme className="radix-themes-custom-fonts">
             <Flex className={styles.Toast} m="5" justify="center">
               <Box
                 className={styles.ToastInner}

@@ -3,9 +3,6 @@
   border-radius: var(--radius-4);
   padding: var(--space-4) var(--space-5);
   overflow: auto;
-  font-family: var(--fonts-mono);
-  font-size: var(--font-size-1);
-  line-height: 21px;
   white-space: pre;
   position: relative;
   background-color: var(--background);
@@ -26,6 +23,13 @@
   --highlighted-word-3-bg: var(--green-3);
   --highlighted-word-3-bg-active: var(--green-5);
   --highlighted-word-3-text: var(--green-11);
+}
+
+.Pre code {
+  font-size: calc(var(--font-size-2) * var(--code-font-size-adjust));
+  font-family: var(--code-font-family);
+  line-height: 22px;
+  --letter-spacing: var(--letter-spacing-2);
 }
 
 .Pre.blue {
