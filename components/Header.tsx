@@ -40,6 +40,7 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
       removeEventListener('scroll', handleScroll);
     }
 
+    handleScroll();
     return () => removeEventListener('scroll', handleScroll);
   }, [ghost]);
 

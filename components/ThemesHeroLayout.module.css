@@ -108,6 +108,11 @@
   justify-content: center;
 }
 
+.ThemesHeroLayoutBackground svg {
+  width: max(2560px, 100vw);
+  height: auto;
+}
+
 .ThemesHeroLayoutMain {
   position: relative;
   box-sizing: content-box;
@@ -120,8 +125,18 @@
   position: relative;
 }
 
+.ThemesHeroLayoutShowcase :global(.rt-Card.rt-variant-surface::after) {
+  box-shadow: var(--shadow-4);
+}
+
 .ThemesHeroLayoutShowcaseInnerScaled {
   transform: scale(var(--themes-hero-showcase-scale));
+}
+
+/* Center vertically on really large screens */
+.ThemesHeroLayoutShowcaseInnerScaled > * {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 /* * * * * * * * * * * * * * * * * * * */
@@ -183,7 +198,6 @@
 
     /* Push self away from the left edge when there's space */
     margin-left: auto;
-
     padding-left: calc(var(--space-9) + 1vw);
     padding-right: calc(var(--space-9) + 1vw);
   }
@@ -223,5 +237,33 @@
 
     /* Visually center the hero */
     margin-bottom: 2vh;
+  }
+}
+
+.ThemesHeroLayoutControls {
+  padding-top: var(--space-8);
+  margin-bottom: calc(var(--space-4) * -1);
+}
+
+/* Make sure the controls fit without scroll on MacBook Pro 14" with Dock visible at its default size */
+@media (min-width: 1280px) {
+  .ThemesHeroLayoutControls {
+    margin-bottom: calc(var(--space-6) * -1);
+  }
+}
+
+@media (min-width: 1280px) and (min-height: 800px) {
+  .ThemesHeroLayoutControls {
+    position: fixed;
+    padding: 0;
+    margin: 0;
+
+    /*
+    * Put the controls in the bottom left on large displays,
+    * nudging them away from the corner the larger the viewport is.
+    */
+    --large-display-offset: min(calc((100vh - 800px) * 0.025), calc((100vw - 1280px) * 0.025));
+    bottom: calc(var(--space-5) + var(--large-display-offset));
+    left: calc(var(--space-7) + var(--large-display-offset));
   }
 }
