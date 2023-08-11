@@ -291,16 +291,14 @@ const MainContent = ({
         </Flex>
       </Box>
 
-      <Box pt="8" mb="-2">
-        <ThemesHeroLayout.Controls>
-          <Text weight="bold" size="2" style={{ pointerEvents: 'none' }}>
-            Live examples
-          </Text>
-          <Box mx="-1" mt="-1">
-            <MagicCurtain.MirrorControls />
-          </Box>
-        </ThemesHeroLayout.Controls>
-      </Box>
+      <ThemesHeroLayout.Controls>
+        <Text weight="bold" size="3" style={{ pointerEvents: 'none' }}>
+          Live examples
+        </Text>
+        <Box mx="-1">
+          <MagicCurtain.MirrorControls />
+        </Box>
+      </ThemesHeroLayout.Controls>
     </Section>
   </Box>
 );
@@ -322,7 +320,6 @@ const indigoBackgroundImageStyle = {
   '--color-background-image-accent-5': 'var(--slate-1)',
   '--color-background-image-accent-6': 'var(--crimson-a5)',
   '--color-background-image-accent-7': 'var(--indigo-5)',
-  transform: 'rotate(30deg)',
 } as React.CSSProperties;
 
 const tealBackgroundImageStyle = {
@@ -334,7 +331,6 @@ const tealBackgroundImageStyle = {
   '--color-background-image-accent-5': 'var(--crimson-3)',
   '--color-background-image-accent-6': 'var(--mint-a5)',
   '--color-background-image-accent-7': 'var(--teal-5)',
-  transform: 'rotate(30deg)',
   // transformOrigin: 'center center',
   // transform: 'scaleX(-1) rotate(160deg)',
 } as React.CSSProperties;
@@ -348,7 +344,6 @@ const redBackgroundImageStyle = {
   '--color-background-image-accent-5': 'var(--color-background)',
   '--color-background-image-accent-6': 'var(--red-a4)',
   '--color-background-image-accent-7': 'var(--red-5)',
-  transform: 'rotate(30deg)',
   // transformOrigin: 'center center',
   // transform: 'scaleY(-0.5) scaleX(-1) rotate(-15deg)',
 } as React.CSSProperties;

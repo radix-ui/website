@@ -1,12 +1,18 @@
 .MagicCurtainRoot {
   position: relative;
-  --magic-curtain-controls-trigger-width: 48px;
+  --magic-curtain-controls-trigger-width: 44px;
   --magic-curtain-controls-trigger-height: 64px;
   --magic-curtain-controls-preview-width: 248px;
   --magic-curtain-controls-preview-height: 143px;
 }
 
-@media (min-width: 520px) {
+@media (min-width: 360px) {
+  .MagicCurtainRoot {
+    --magic-curtain-controls-trigger-width: 48px;
+  }
+}
+
+@media (min-width: 440px) {
   .MagicCurtainRoot {
     --magic-curtain-controls-trigger-width: 64px;
   }

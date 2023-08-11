@@ -240,19 +240,30 @@
   }
 }
 
-@media (min-width: 1280px) and (min-height: 800px) {
+.ThemesHeroLayoutControls {
+  padding-top: var(--space-8);
+  margin-bottom: calc(var(--space-4) * -1);
+}
+
+/* Make sure the controls fit without scroll on MacBook Pro 14" with Dock visible at its default size */
+@media (min-width: 1280px) {
   .ThemesHeroLayoutControls {
-    /* padding-top: calc((100vh - 774px) * 0.5); */
-    position: fixed;
-    bottom: calc(var(--space-5) + (100vh - 900px) * 0.025);
-    left: calc(var(--space-7) + (100vw - 1440px) * 0.025);
+    margin-bottom: calc(var(--space-6) * -1);
   }
 }
 
-@media (min-width: 1440px) and (min-height: 900px) {
+@media (min-width: 1280px) and (min-height: 800px) {
   .ThemesHeroLayoutControls {
     position: fixed;
-    bottom: calc(var(--space-5) + (100vh - 900px) * 0.025);
-    left: calc(var(--space-7) + (100vw - 1440px) * 0.025);
+    padding: 0;
+    margin: 0;
+
+    /*
+    * Put the controls in the bottom left on large displays,
+    * nudging them away from the corner the larger the viewport is.
+    */
+    --large-display-offset: min(calc((100vh - 800px) * 0.025), calc((100vw - 1280px) * 0.025));
+    bottom: calc(var(--space-5) + var(--large-display-offset));
+    left: calc(var(--space-7) + var(--large-display-offset));
   }
 }
