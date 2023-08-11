@@ -2,6 +2,7 @@ import * as React from 'react';
 import styles from './MagicCurtain.module.css';
 import { createContext } from '@radix-ui/react-context';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+import debounce from 'lodash.debounce';
 
 type Visibility = 'hidden' | 'animating-out' | 'visible';
 type ForceReducedMotion = 'always' | 'if-hi-res' | 'never';
@@ -16,6 +17,9 @@ const [MagicCurtainProvider, useMagicCurtainContext] = createContext<{
   items: MagicCurtainItem[];
   setItems: React.Dispatch<React.SetStateAction<MagicCurtainItem[]>>;
 
+  controlsPosition: { left: number; top: number };
+  setControlsPosition: React.Dispatch<React.SetStateAction<{ left: number; top: number }>>;
+
   // Which control is highlighted as active
   highlightedControl: string;
   setHighlightedControl: React.Dispatch<React.SetStateAction<string>>;
@@ -23,23 +27,23 @@ const [MagicCurtainProvider, useMagicCurtainContext] = createContext<{
   // Which control is hovered (hovering the preview also counts)
   hoveredControl: string;
   setHoveredControl: React.Dispatch<React.SetStateAction<string>>;
+
+  // Which control is focused from keyboard
+  focusedControl: string;
+  setFocusedControl: React.Dispatch<React.SetStateAction<string>>;
 }>('MagicCurtain');
 
 const MagicCurtainRoot = ({ children }: React.PropsWithChildren<{}>) => {
-  const [items, setItems] = React.useState<MagicCurtainItem[]>([]);
-  const [hoveredControl, setHoveredControl] = React.useState<string>('');
-  const [highlightedControl, setHighlightedControl] = React.useState<string>('0');
   const ref = React.useRef<HTMLDivElement>(null);
-  const [forceReducedMotion, setForceReducedMotion] = React.useState<ForceReducedMotion>('never');
+  const [items, setItems] = React.useState<MagicCurtainItem[]>([]);
+  const [hoveredControl, setHoveredControl] = React.useState('');
+  const [highlightedControl, setHighlightedControl] = React.useState('0');
+  const [focusedControl, setFocusedControl] = React.useState('');
+  const [controlsPosition, setControlsPosition] = React.useState({ left: -9999, top: -9999 });
+  const [isFirefox, setIsFirefox] = React.useState(false);
 
   React.useEffect(() => {
-    if (/firefox/i.test(navigator.userAgent)) {
-      setForceReducedMotion('if-hi-res');
-    }
-
-    if (/iphone|android/i.test(navigator.userAgent)) {
-      setForceReducedMotion('always');
-    }
+    setIsFirefox(/firefox/i.test(navigator.userAgent));
   }, []);
 
   return (
@@ -48,14 +52,14 @@ const MagicCurtainRoot = ({ children }: React.PropsWithChildren<{}>) => {
       setItems={setItems}
       highlightedControl={highlightedControl}
       setHighlightedControl={setHighlightedControl}
+      controlsPosition={controlsPosition}
+      setControlsPosition={setControlsPosition}
       hoveredControl={hoveredControl}
       setHoveredControl={setHoveredControl}
+      focusedControl={focusedControl}
+      setFocusedControl={setFocusedControl}
     >
-      <div
-        ref={ref}
-        data-force-reduced-motion={forceReducedMotion}
-        className={styles.MagicCurtainRoot}
-      >
+      <div ref={ref} data-is-firefox={isFirefox} className={styles.MagicCurtainRoot}>
         {children}
       </div>
     </MagicCurtainProvider>
@@ -103,11 +107,12 @@ interface MagicCurtainControlsProps {
 
 const MagicCurtainControls = ({ images }: MagicCurtainControlsProps) => {
   const context = useMagicCurtainContext('MagicCurtain');
-  const items = context.items;
+
+  const rootRef = React.useRef<HTMLElement>(null);
   const viewportWrapperRef = React.useRef<HTMLDivElement>(null);
   const [menuValue, setMenuValue] = React.useState<string>('');
   const [offsetIndex, setOffsetIndex] = React.useState<string>('');
-  const hasAnimatingItem = !!items.find((value) => value.visibility === 'animating-out');
+  const hasAnimatingItem = !!context.items.find((value) => value.visibility === 'animating-out');
   const upcomingAnimationCallback = React.useRef<(() => void) | null>(null);
 
   // Clear offset on viewport removal
@@ -135,7 +140,7 @@ const MagicCurtainControls = ({ images }: MagicCurtainControlsProps) => {
         return;
       }
 
-      const itemToHide = items.find((value) => value.visibility === 'visible');
+      const itemToHide = context.items.find((value) => value.visibility === 'visible');
 
       const handleAnimationEnd = (event: AnimationEvent) => {
         // Make sure this is the right animation
@@ -157,7 +162,7 @@ const MagicCurtainControls = ({ images }: MagicCurtainControlsProps) => {
       itemToHide?.setVisibility('animating-out');
       itemToHide?.ref.current?.addEventListener('animationend', handleAnimationEnd);
     },
-    [context]
+    [context.items]
   );
 
   return (
@@ -165,7 +170,9 @@ const MagicCurtainControls = ({ images }: MagicCurtainControlsProps) => {
       delayDuration={40}
       skipDelayDuration={40}
       value={menuValue}
+      ref={rootRef}
       className={styles.MagicCurtainControlsRoot}
+      style={{ position: 'absolute', zIndex: 1, ...context.controlsPosition }}
       onValueChange={(value) => {
         setMenuValue(value);
 
@@ -176,6 +183,7 @@ const MagicCurtainControls = ({ images }: MagicCurtainControlsProps) => {
       }}
     >
       <NavigationMenu.List
+        aria-label="Radix Themes Examples"
         style={{
           display: 'flex',
           listStyle: 'none',
@@ -185,14 +193,14 @@ const MagicCurtainControls = ({ images }: MagicCurtainControlsProps) => {
           position: 'relative',
         }}
       >
-        {items.map((item, index) => (
+        {context.items.map((item, index) => (
           <NavigationMenu.Item
             key={index}
             className={styles.MagicCurtainControlsItem}
             value={index.toString()}
             onPointerMove={() => context.setHoveredControl(index.toString())}
             onPointerLeave={() => {
-              // Wait a tick and reset the hovered control index if it wasn't changed by anything else
+              // Wait a tick and reset the control index if it wasn't changed by anything else
               setTimeout(() => {
                 context.setHoveredControl((current) =>
                   current === index.toString() ? '' : current
@@ -202,9 +210,22 @@ const MagicCurtainControls = ({ images }: MagicCurtainControlsProps) => {
           >
             <NavigationMenu.Trigger
               data-visually-hidden
-              aria-label={`Example ${index}`}
+              aria-label={`Example ${index + 1}`}
               data-visibility={item.visibility}
               className={styles.MagicCurtainControlsTrigger}
+              onFocus={(event) => {
+                if (event.currentTarget.matches(':focus-visible')) {
+                  context.setFocusedControl(index.toString());
+                }
+              }}
+              onBlur={() => {
+                // Wait a tick and reset the control index if it wasn't changed by anything else
+                setTimeout(() => {
+                  context.setFocusedControl((current) =>
+                    current === index.toString() ? '' : current
+                  );
+                });
+              }}
               onClick={() => {
                 // Do nothing if this item is already visible
                 if (item.visibility === 'visible') {
@@ -230,6 +251,7 @@ const MagicCurtainControls = ({ images }: MagicCurtainControlsProps) => {
                   return;
                 }
 
+                const items = context.items;
                 let nextItem = event.key === 'ArrowLeft' ? items[index - 1] : items[index + 1];
 
                 // This is for when we are focused on the item that isn’t currently active and press an arrow key.
@@ -271,7 +293,7 @@ const MagicCurtainControls = ({ images }: MagicCurtainControlsProps) => {
                   className={styles.MagicCurtainControlsPreviewContent}
                   onPointerMove={() => context.setHoveredControl(index.toString())}
                   onPointerLeave={() => {
-                    // Wait a tick and reset the hovered control index if it wasn't changed by anything else
+                    // Wait a tick and reset the control index if it wasn't changed by anything else
                     setTimeout(() => {
                       context.setHoveredControl((current) =>
                         current === index.toString() ? '' : current
@@ -336,11 +358,38 @@ const MagicCurtainControls = ({ images }: MagicCurtainControlsProps) => {
 
 const MagicCurtainMirrorControls = () => {
   const context = useMagicCurtainContext('MagicCurtain');
+  const ref = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const positionControls = debounce(() => {
+      requestAnimationFrame(() => {
+        if (ref.current) {
+          const rect = ref.current.getBoundingClientRect();
+          const top = rect.top + window.scrollY;
+          const left = rect.left + window.scrollX;
+
+          context.setControlsPosition((current) => {
+            if (current.top === top && current.left === left) {
+              return current;
+            }
+
+            return { top, left };
+          });
+        }
+      });
+    }, 200);
+
+    positionControls();
+    addEventListener('resize', positionControls);
+    return () => removeEventListener('resize', positionControls);
+  }, [context.setControlsPosition]);
+
   return (
-    <div className={styles.MagicCurtainControlsRoot}>
+    <div ref={ref} className={styles.MagicCurtainControlsRoot}>
       {context.items.map((item, index) => (
         <div key={index} className={styles.MagicCurtainControlsItem}>
           <div
+            data-focused={context.focusedControl === index.toString()}
             data-highlighted={
               context.hoveredControl === index.toString() ||
               context.highlightedControl === index.toString()

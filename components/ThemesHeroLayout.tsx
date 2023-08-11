@@ -15,6 +15,10 @@ const ThemesHeroLayoutMain = (props: React.ComponentPropsWithoutRef<'div'>) => (
   <div className={styles.ThemesHeroLayoutMain} {...props} />
 );
 
+const ThemesHeroLayoutControls = (props: React.ComponentPropsWithoutRef<'div'>) => (
+  <div className={styles.ThemesHeroLayoutControls} {...props} />
+);
+
 const ThemesHeroLayoutShowcase = ({ children }: React.ComponentPropsWithoutRef<'div'>) => {
   return (
     <div className={styles.ThemesHeroLayoutShowcase} aria-hidden>
@@ -32,5 +36,6 @@ export const ThemesHeroLayout = {
   Root: ThemesHeroLayoutRoot,
   Background: ThemesHeroLayoutBackground,
   Main: ThemesHeroLayoutMain,
+  Controls: ThemesHeroLayoutControls,
   Showcase: ThemesHeroLayoutShowcase,
 };

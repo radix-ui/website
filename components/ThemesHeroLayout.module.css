@@ -198,7 +198,6 @@
 
     /* Push self away from the left edge when there's space */
     margin-left: auto;
-
     padding-left: calc(var(--space-9) + 1vw);
     padding-right: calc(var(--space-9) + 1vw);
   }
@@ -238,5 +237,22 @@
 
     /* Visually center the hero */
     margin-bottom: 2vh;
+  }
+}
+
+@media (min-width: 1280px) and (min-height: 800px) {
+  .ThemesHeroLayoutControls {
+    /* padding-top: calc((100vh - 774px) * 0.5); */
+    position: fixed;
+    bottom: calc(var(--space-5) + (100vh - 900px) * 0.025);
+    left: calc(var(--space-7) + (100vw - 1440px) * 0.025);
+  }
+}
+
+@media (min-width: 1440px) and (min-height: 900px) {
+  .ThemesHeroLayoutControls {
+    position: fixed;
+    bottom: calc(var(--space-5) + (100vh - 900px) * 0.025);
+    left: calc(var(--space-7) + (100vw - 1440px) * 0.025);
   }
 }

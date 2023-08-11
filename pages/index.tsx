@@ -29,10 +29,6 @@ export default function ThemesHome() {
         image="themes.png"
       />
 
-      <Head>
-        <meta name="theme-color" content="#FDFCFD" />
-      </Head>
-
       <ThemesMobileMenu />
 
       <MagicCurtain.Root>
@@ -56,10 +52,6 @@ export default function ThemesHome() {
                   <ExampleThemesDashboard align="start" />
                 </Theme>
               </ThemesHeroLayout.Showcase>
-
-              <ControlsWrapper>
-                <MagicCurtain.MirrorControls />
-              </ControlsWrapper>
             </ThemesHeroLayout.Root>
           </Theme>
         </MagicCurtain.Item>
@@ -84,10 +76,6 @@ export default function ThemesHome() {
                   <ExampleThemesDashboard align="start" />
                 </Theme>
               </ThemesHeroLayout.Showcase>
-
-              <ControlsWrapper>
-                <MagicCurtain.MirrorControls />
-              </ControlsWrapper>
             </ThemesHeroLayout.Root>
           </Theme>
         </MagicCurtain.Item>
@@ -117,10 +105,6 @@ export default function ThemesHome() {
                   <ExampleThemesEcommerce align="start" />
                 </Theme>
               </ThemesHeroLayout.Showcase>
-
-              <ControlsWrapper>
-                <MagicCurtain.MirrorControls />
-              </ControlsWrapper>
             </ThemesHeroLayout.Root>
           </Theme>
         </MagicCurtain.Item>
@@ -145,10 +129,6 @@ export default function ThemesHome() {
                   <ExampleThemesEcommerce align="start" />
                 </Theme>
               </ThemesHeroLayout.Showcase>
-
-              <ControlsWrapper>
-                <MagicCurtain.MirrorControls />
-              </ControlsWrapper>
             </ThemesHeroLayout.Root>
           </Theme>
         </MagicCurtain.Item>
@@ -173,10 +153,6 @@ export default function ThemesHome() {
                   <ExampleThemesMusicApp align="start" />
                 </Theme>
               </ThemesHeroLayout.Showcase>
-
-              <ControlsWrapper>
-                <MagicCurtain.MirrorControls />
-              </ControlsWrapper>
             </ThemesHeroLayout.Root>
           </Theme>
         </MagicCurtain.Item>
@@ -201,43 +177,37 @@ export default function ThemesHome() {
                   <ExampleThemesMusicApp align="start" />
                 </Theme>
               </ThemesHeroLayout.Showcase>
-
-              <ControlsWrapper>
-                <MagicCurtain.MirrorControls />
-              </ControlsWrapper>
             </ThemesHeroLayout.Root>
           </Theme>
         </MagicCurtain.Item>
 
-        <Theme appearance="light" hasBackground={false} asChild>
-          <ControlsWrapper style={{ zIndex: 100, color: 'transparent' }}>
-            <MagicCurtain.Controls
-              images={[
-                'https://workos.imgix.net/images/eced715d-bb9b-477c-974e-9bc30d47cfff.png?auto=format&fit=clip&q=95&w=496',
-                'https://workos.imgix.net/images/8525e6d9-d09e-428e-93a7-1f4a83159c76.png?auto=format&fit=clip&q=95&w=496',
-                'https://workos.imgix.net/images/6420ba96-b473-4be9-912a-c5f13c47083d.png?auto=format&fit=clip&q=95&w=496',
-                'https://workos.imgix.net/images/6e7e80a1-bc55-43c9-8fcc-575c70256f6e.png?auto=format&fit=clip&q=95&w=496',
-                'https://workos.imgix.net/images/271312d2-6249-4669-9431-3f97a32b9ef2.png?auto=format&fit=clip&q=95&w=496',
-                'https://workos.imgix.net/images/b7af0911-e659-4b70-8184-1b56cebf8082.png?auto=format&fit=clip&q=95&w=496',
-              ]}
-            />
-          </ControlsWrapper>
+        <Theme appearance="light" hasBackground={false}>
+          <MagicCurtain.Controls
+            images={resolvedTheme === 'light' ? previewImages : previewImagesDarkMode}
+          />
         </Theme>
       </MagicCurtain.Root>
     </MobileMenuProvider>
   );
 }
 
-const ControlsWrapper = ({ children, ...props }: React.ComponentPropsWithoutRef<typeof Box>) => {
-  return (
-    <Box position="absolute" bottom="0" left="0" ml="7" mb="5" {...props}>
-      <Text weight="bold" size="2" style={{ pointerEvents: 'none' }}>
-        Explore examples
-      </Text>
-      {children}
-    </Box>
-  );
-};
+const previewImages = [
+  'https://workos.imgix.net/images/2f5a1e4b-39c5-4604-b278-a219f9898159.png?auto=format&fit=clip&q=80&w=496',
+  'https://workos.imgix.net/images/5516f53e-0b29-4fc2-92d8-74566aa91976.png?auto=format&fit=clip&q=80&w=496',
+  'https://workos.imgix.net/images/59b77353-32f4-4176-ac36-8299ed7c1236.png?auto=format&fit=clip&q=80&w=496',
+  'https://workos.imgix.net/images/bc735904-1193-48a0-bcc6-37c9b73312fa.png?auto=format&fit=clip&q=80&w=496',
+  'https://workos.imgix.net/images/bde22677-6a86-495a-baf9-7328e8f52401.png?auto=format&fit=clip&q=80&w=496',
+  'https://workos.imgix.net/images/f6c9aea7-8bcc-458a-8531-3b36458dc031.png?auto=format&fit=clip&q=80&w=496',
+];
+
+const previewImagesDarkMode = [
+  previewImages[1],
+  previewImages[0],
+  previewImages[3],
+  previewImages[2],
+  previewImages[5],
+  previewImages[4],
+];
 
 const MainContent = ({
   codeBlockScheme = 'indigo',
@@ -266,58 +236,71 @@ const MainContent = ({
         </Box>
       </Box>
 
-      <Text size={{ initial: '4', xs: '5' }}>
-        <Text as="p" mb="5" style={{ maxWidth: 500 }} color="gray">
-          An open source component library optimized for fast development, easy maintenance,
-          and accessibility. Just import and go—no configuration required.
+      <Box style={{ maxWidth: 500 }}>
+        <Text size={{ initial: '4', xs: '5' }}>
+          <Text as="p" mb="5" color="gray">
+            An open source component library optimized for fast development, easy maintenance,
+            and accessibility. Just import and go—no configuration required.
+          </Text>
+
+          <Box mb="5">
+            <SyntaxSchemeProvider scheme={codeBlockScheme}>
+              <CodeBlock language="jsx" value={codeExample} style={codeStyles} />
+            </SyntaxSchemeProvider>
+          </Box>
         </Text>
 
-        <Box mb="5">
-          <SyntaxSchemeProvider scheme={codeBlockScheme}>
-            <CodeBlock language="jsx" value={codeExample} style={codeStyles} />
-          </SyntaxSchemeProvider>
-        </Box>
-      </Text>
+        <Flex gap="4" direction={{ initial: 'column', xs: 'row' }}>
+          <NextLink href="/themes/docs/overview/getting-started" passHref>
+            <Button
+              asChild
+              size={{ initial: '3', xs: '4' }}
+              color="gray"
+              highContrast
+              style={{ flexGrow: 1 }}
+            >
+              <a>
+                Get started
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 12 12"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentcolor"
+                  style={{ opacity: 1, marginRight: -3 }}
+                >
+                  <path d="M6.39205 11.6023L5.36932 10.5909L8.92045 7.03977H0V5.5625H8.92045L5.36932 2.01705L6.39205 1L11.6932 6.30114L6.39205 11.6023Z" />
+                </svg>
+              </a>
+            </Button>
+          </NextLink>
+          <NextLink href="/themes/playground" passHref>
+            <Button
+              asChild
+              size={{ initial: '3', xs: '4' }}
+              variant="soft"
+              highContrast
+              style={{ flexGrow: 1 }}
+            >
+              <a>
+                <GridIcon width="18" height="18" style={{ marginTop: 1 }} />
+                Playground
+              </a>
+            </Button>
+          </NextLink>
+        </Flex>
+      </Box>
 
-      <Flex mb="6" gap="4" direction={{ initial: 'column', xs: 'row' }}>
-        <NextLink href="/themes/docs/overview/getting-started" passHref>
-          <Button
-            asChild
-            size={{ initial: '3', xs: '4' }}
-            color="gray"
-            highContrast
-            style={{ flexGrow: 1 }}
-          >
-            <a>
-              Get started
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 12 12"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentcolor"
-                style={{ opacity: 1, marginRight: -3 }}
-              >
-                <path d="M6.39205 11.6023L5.36932 10.5909L8.92045 7.03977H0V5.5625H8.92045L5.36932 2.01705L6.39205 1L11.6932 6.30114L6.39205 11.6023Z" />
-              </svg>
-            </a>
-          </Button>
-        </NextLink>
-        <NextLink href="/themes/playground" passHref>
-          <Button
-            asChild
-            size={{ initial: '3', xs: '4' }}
-            variant="soft"
-            highContrast
-            style={{ flexGrow: 1 }}
-          >
-            <a>
-              <GridIcon width="18" height="18" style={{ marginTop: 1 }} />
-              Playground
-            </a>
-          </Button>
-        </NextLink>
-      </Flex>
+      <Box pt="8" mb="-2">
+        <ThemesHeroLayout.Controls>
+          <Text weight="bold" size="2" style={{ pointerEvents: 'none' }}>
+            Live examples
+          </Text>
+          <Box mx="-1" mt="-1">
+            <MagicCurtain.MirrorControls />
+          </Box>
+        </ThemesHeroLayout.Controls>
+      </Box>
     </Section>
   </Box>
 );
@@ -328,7 +311,6 @@ const codeStyles = {
   lineHeight: 'var(--line-height-3)',
   '--border': 'var(--gray-a5)',
   '--background': 'var(--color-panel-solid)',
-  maxWidth: 500,
 };
 
 const indigoBackgroundImageStyle = {
@@ -338,8 +320,9 @@ const indigoBackgroundImageStyle = {
   '--color-background-image-accent-3': 'var(--purple-9)',
   '--color-background-image-accent-4': 'var(--blue-5)',
   '--color-background-image-accent-5': 'var(--slate-1)',
-  '--color-background-image-accent-6': 'var(--crimson-6)',
+  '--color-background-image-accent-6': 'var(--crimson-a5)',
   '--color-background-image-accent-7': 'var(--indigo-5)',
+  transform: 'rotate(30deg)',
 } as React.CSSProperties;
 
 const tealBackgroundImageStyle = {
@@ -349,8 +332,9 @@ const tealBackgroundImageStyle = {
   '--color-background-image-accent-3': 'var(--green-9)',
   '--color-background-image-accent-4': 'var(--sky-5)',
   '--color-background-image-accent-5': 'var(--crimson-3)',
-  '--color-background-image-accent-6': 'var(--mint-6)',
+  '--color-background-image-accent-6': 'var(--mint-a5)',
   '--color-background-image-accent-7': 'var(--teal-5)',
+  transform: 'rotate(30deg)',
   // transformOrigin: 'center center',
   // transform: 'scaleX(-1) rotate(160deg)',
 } as React.CSSProperties;
@@ -362,8 +346,9 @@ const redBackgroundImageStyle = {
   '--color-background-image-accent-3': 'var(--red-3)',
   '--color-background-image-accent-4': 'var(--red-7)',
   '--color-background-image-accent-5': 'var(--color-background)',
-  '--color-background-image-accent-6': 'var(--crimson-1)',
+  '--color-background-image-accent-6': 'var(--red-a4)',
   '--color-background-image-accent-7': 'var(--red-5)',
+  transform: 'rotate(30deg)',
   // transformOrigin: 'center center',
   // transform: 'scaleY(-0.5) scaleX(-1) rotate(-15deg)',
 } as React.CSSProperties;
@@ -528,7 +513,11 @@ const BackgroundImage = ({
         gradientTransform="translate(912.834 -811.021) rotate(64.9401) scale(6436.87 6304.81)"
       >
         <stop stopColor="var(--color-background-image-base)" />
-        <stop offset="0.140625" stopColor="var(--color-background-image-accent-6)" />
+        <stop
+          offset="0.140625"
+          stopColor="var(--color-background-image-accent-6)"
+          stopOpacity={0}
+        />
         <stop offset="0.333803" stopColor="var(--color-background-image-accent-7)" />
         <stop offset="0.658041" stopColor="var(--color-background-image-base)" />
         <stop offset="0.798521" stopColor="var(--color-background-image-accent-3)" />

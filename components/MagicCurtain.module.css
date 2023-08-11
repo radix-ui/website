@@ -1,9 +1,15 @@
 .MagicCurtainRoot {
   position: relative;
-  --magic-curtain-controls-trigger-width: 64px;
+  --magic-curtain-controls-trigger-width: 48px;
   --magic-curtain-controls-trigger-height: 64px;
   --magic-curtain-controls-preview-width: 248px;
   --magic-curtain-controls-preview-height: 143px;
+}
+
+@media (min-width: 520px) {
+  .MagicCurtainRoot {
+    --magic-curtain-controls-trigger-width: 64px;
+  }
 }
 
 .MagicCurtainItem {
@@ -42,20 +48,12 @@
   }
 }
 
-[data-force-reduced-motion='always'] .MagicCurtainItem[data-visibility='animating-out'] {
-  animation-name: magic-curtain-fade;
-  animation-duration: calc(var(--animation-duration) / 4);
-  animation-timing-function: ease-in-out;
-  will-change: opacity;
-}
-
 /* Firefox has performance issues at high pixel count */
 @media (min-width: 3000px), (min-width: 1920px) and (min-resolution: 120dpi) {
-  [data-force-reduced-motion='if-hi-res'] .MagicCurtainItem[data-visibility='animating-out'] {
+  [data-is-firefox='true'] .MagicCurtainItem[data-visibility='animating-out'] {
     animation-name: magic-curtain-fade;
     animation-duration: calc(var(--animation-duration) / 4);
     animation-timing-function: ease-in-out;
-    will-change: opacity;
   }
 }
 
@@ -99,7 +97,6 @@
 .MagicCurtainControlsRoot {
   position: relative;
   display: flex;
-  margin-left: calc(var(--space-1) * -1);
 }
 
 .MagicCurtainControlsItem {
@@ -115,26 +112,15 @@
   background: none;
   font-family: inherit;
   font-size: var(--font-size-2);
+  -webkit-tap-highlight-color: transparent;
 
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  height: var(--magic-curtain-controls-trigger-width);
-  width: var(--magic-curtain-controls-trigger-height);
+  width: var(--magic-curtain-controls-trigger-width);
+  height: var(--magic-curtain-controls-trigger-height);
   margin: calc(-1 * var(--space-4)) 0;
-}
-
-.MagicCurtainControlsTrigger:focus-visible::after {
-  content: '';
-  position: absolute;
-  pointer-events: none;
-  height: var(--space-2);
-  left: 0;
-  right: 0;
-  border-radius: var(--space-1);
-  background-color: transparent;
-  box-shadow: 0 0 0 2px rgba(120, 134, 144, 0.6);
 }
 
 .MagicCurtainControlsTrigger::before {
@@ -145,8 +131,8 @@
   height: var(--magic-curtain-control-line-width);
   left: var(--space-1);
   right: var(--space-1);
-  border-radius: var(--space-1);
-  background-color: var(--gray-a6);
+  border-radius: var(--space-2);
+  background-color: var(--gray-a8);
   transition: background-color 200ms;
 }
 
@@ -155,9 +141,20 @@
   /* background-color: red; */
 }
 
+.MagicCurtainControlsTrigger[data-focused='true']::before {
+  transition-duration: 30ms;
+  background-color: var(--gray-a11);
+}
+
 .MagicCurtainControlsTrigger[data-highlighted='true']::before {
   transition-duration: 30ms;
   background-color: var(--gray-12);
+}
+
+@media (hover: none) {
+  .MagicCurtainControlsPreviewViewportWrapper {
+    display: none;
+  }
 }
 
 .MagicCurtainControlsPreviewViewportWrapper {
