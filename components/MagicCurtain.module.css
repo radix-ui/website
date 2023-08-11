@@ -1,5 +1,7 @@
 .MagicCurtainRoot {
   position: relative;
+
+  /* These variables must be fixed lengths to work with the positioning */
   --magic-curtain-controls-trigger-width: 44px;
   --magic-curtain-controls-trigger-height: 64px;
   --magic-curtain-controls-preview-width: 248px;
