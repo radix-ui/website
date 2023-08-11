@@ -50,16 +50,20 @@ import '@radix-ui/themes/styles.css';
 
 ### 3. Add the Theme component
 
-Wrap the root of your application in a `Theme` component.
+Add `Theme` to your application, wrapping the root component inside of `body`.
 
-```jsx line=5,7
+```jsx line=7,9
 import { Theme } from '@radix-ui/themes';
 
 export default function () {
   return (
-    <Theme>
-      <MyApp />
-    </Theme>
+    <html>
+      <body>
+        <Theme>
+          <MyApp />
+        </Theme>
+      </body>
+    </html>
   );
 }
 ```
