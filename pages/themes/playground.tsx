@@ -3121,12 +3121,12 @@ export default function ComponentsPage() {
 
             <PlaygroundSection>
               <Flex align="baseline" gap="4">
-                <Heading id="scroll area">
-                  <Link color="gray" underline="hover" highContrast href="#scroll area">
+                <Heading id="scroll-area">
+                  <Link color="gray" underline="hover" highContrast href="#scroll-area">
                     Scroll Area
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/scroll area">
+                <NextLink passHref href="/themes/docs/components/scroll-area">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
