@@ -37,12 +37,12 @@ pre {
   z-index: 0;
 }
 
-#__next > .radix-themes {
+.radix-themes[data-is-root-theme='true'] {
   min-height: 100vh;
 }
 
-.radix-themes.radix-themes-custom,
-.radix-themes-custom .radix-themes:not(.radix-themes-example) {
+.radix-themes.radix-themes-custom-fonts,
+.radix-themes-custom-fonts .radix-themes:not(.radix-themes-default-fonts) {
   --default-font-family: var(--fonts-untitled);
   --code-font-family: var(--fonts-mono);
   --letter-spacing-1: 0.005em;

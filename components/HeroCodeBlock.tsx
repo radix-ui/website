@@ -88,7 +88,7 @@ export const HeroCodeBlock = ({
               value={makeCodeSandboxParams(frontmatter.name, sources, usedCssLib)}
             />
             <Tooltip
-              className="radix-themes-custom"
+              className="radix-themes-custom-fonts"
               content={`Open ${CSS_LIB_NAMES[usedCssLib]} demo in CodeSandbox`}
             >
               <Theme appearance="dark" hasBackground={false}>
@@ -152,7 +152,7 @@ export const HeroCodeBlock = ({
                         mr="2"
                         style={{ minWidth: 115 }}
                       />
-                      <Select.Content className="radix-themes-custom" variant="soft">
+                      <Select.Content className="radix-themes-custom-fonts" variant="soft">
                         {availableCssLibs.map((lib) => (
                           <Select.Item key={lib} value={lib}>
                             {CSS_LIB_NAMES[lib]}

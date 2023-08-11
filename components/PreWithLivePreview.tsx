@@ -22,7 +22,7 @@ const PreWithLivePreview = (props) => {
     >
       <Box style={{ borderBottom: '1px solid var(--gray-a5)' }}>
         <themes.ScrollArea>
-          <Theme className="radix-themes-example" asChild>
+          <Theme className="radix-themes-default-fonts" asChild>
             <Box p="4" width={props.scroll ? 'max-content' : undefined}>
               <LiveCode
                 code={liveCode}

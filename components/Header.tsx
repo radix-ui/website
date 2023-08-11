@@ -45,7 +45,7 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
   }, [ghost]);
 
   return (
-    <Theme asChild className="radix-themes-custom">
+    <Theme asChild className="radix-themes-custom-fonts">
       <div
         data-scroll-state={scrollState}
         data-mobile-menu-open={mobileMenu.open}
@@ -122,7 +122,7 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
             {children}
 
             {gitHubLink && (
-              <Tooltip className="radix-themes-custom" content="View GitHub ">
+              <Tooltip className="radix-themes-custom-fonts" content="View GitHub ">
                 <IconButton asChild size="3" variant="ghost" color="gray">
                   <a href={gitHubLink} target="_blank">
                     <GitHubLogoIcon width="16" height="16" />
@@ -148,7 +148,7 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
               <ThemeToggle />
             </div>
 
-            <Tooltip className="radix-themes-custom" content="Navigation">
+            <Tooltip className="radix-themes-custom-fonts" content="Navigation">
               <IconButton
                 size="3"
                 variant="ghost"

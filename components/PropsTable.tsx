@@ -61,7 +61,7 @@ export function PropsTable({
                           side="top"
                           align="center"
                           style={{ maxWidth: 350 }}
-                          className="radix-themes-custom"
+                          className="radix-themes-custom-fonts"
                           onOpenAutoFocus={(event) => {
                             event.preventDefault();
                             (event.currentTarget as HTMLElement)?.focus();

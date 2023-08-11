@@ -18,7 +18,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.startsWith('/primitives/docs')) {
     return (
-      <Theme accentColor="blue" grayColor="slate" className="radix-themes-custom">
+      <Theme accentColor="blue" grayColor="slate" className="radix-themes-custom-fonts">
         <SyntaxSchemeProvider scheme="blue">
           <PrimitivesDocsPage>
             <Component {...pageProps} />
@@ -30,7 +30,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.startsWith('/primitives')) {
     return (
-      <Theme accentColor="blue" grayColor="slate" className="radix-themes-custom">
+      <Theme accentColor="blue" grayColor="slate" className="radix-themes-custom-fonts">
         <SyntaxSchemeProvider scheme="blue">
           <Component {...pageProps} />
         </SyntaxSchemeProvider>
@@ -40,7 +40,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.startsWith('/colors/docs')) {
     return (
-      <Theme accentColor="pink" grayColor="gray" className="radix-themes-custom">
+      <Theme accentColor="pink" grayColor="gray" className="radix-themes-custom-fonts">
         <SyntaxSchemeProvider scheme="pink">
           <ColorsDocsPage>
             <Component {...pageProps} />
@@ -52,7 +52,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.startsWith('/colors')) {
     return (
-      <Theme accentColor="pink" grayColor="gray" className="radix-themes-custom">
+      <Theme accentColor="pink" grayColor="gray" className="radix-themes-custom-fonts">
         <Component {...pageProps} />
       </Theme>
     );
@@ -60,7 +60,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.startsWith('/themes/docs')) {
     return (
-      <Theme accentColor="indigo" className="radix-themes-custom">
+      <Theme accentColor="indigo" className="radix-themes-custom-fonts">
         <SyntaxSchemeProvider scheme="indigo">
           <ThemesDocsPage>
             <Component {...pageProps} />
@@ -80,7 +80,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.startsWith('/themes')) {
     return (
-      <Theme accentColor="indigo" className="radix-themes-custom">
+      <Theme accentColor="indigo" className="radix-themes-custom-fonts">
         <Component {...pageProps} />
       </Theme>
     );
@@ -88,7 +88,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.startsWith('/icons')) {
     return (
-      <Theme accentColor="teal" grayColor="slate" className="radix-themes-custom">
+      <Theme accentColor="teal" grayColor="slate" className="radix-themes-custom-fonts">
         <SyntaxSchemeProvider scheme="teal">
           <Component {...pageProps} />
         </SyntaxSchemeProvider>
@@ -97,7 +97,7 @@ function Pages({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <Theme accentColor="indigo" className="radix-themes-custom">
+    <Theme accentColor="indigo" className="radix-themes-custom-fonts">
       <SyntaxSchemeProvider scheme="indigo">
         <Component {...pageProps} />
       </SyntaxSchemeProvider>
