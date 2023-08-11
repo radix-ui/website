@@ -331,8 +331,6 @@ const tealBackgroundImageStyle = {
   '--color-background-image-accent-5': 'var(--crimson-3)',
   '--color-background-image-accent-6': 'var(--mint-a5)',
   '--color-background-image-accent-7': 'var(--teal-5)',
-  // transformOrigin: 'center center',
-  // transform: 'scaleX(-1) rotate(160deg)',
 } as React.CSSProperties;
 
 const redBackgroundImageStyle = {
@@ -344,9 +342,13 @@ const redBackgroundImageStyle = {
   '--color-background-image-accent-5': 'var(--color-background)',
   '--color-background-image-accent-6': 'var(--red-a4)',
   '--color-background-image-accent-7': 'var(--red-5)',
-  // transformOrigin: 'center center',
-  // transform: 'scaleY(-0.5) scaleX(-1) rotate(-15deg)',
 } as React.CSSProperties;
+
+// A couple other styles that work nicely if we need a variation of this background:
+// - transformOrigin: 'center center',
+//   transform: 'scaleX(-1) rotate(160deg)',
+// - transformOrigin: 'center center',
+//   transform: 'scaleY(-0.5) scaleX(-1) rotate(-15deg)',
 
 const codeExample = `
 import '@radix-ui/themes/styles.css';
