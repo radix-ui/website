@@ -1,0 +1,57 @@
+:root {
+  --header-height: 48px;
+  --quick-nav-display: none;
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --quick-nav-display: block;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--gray-12);
+  --colors-hiContrast: var(--slate-12);
+  -webkit-text-size-adjust: 100%;
+}
+
+svg {
+  display: block;
+  vertical-align: middle;
+  overflow: visible;
+}
+
+pre {
+  margin: 0;
+}
+
+#__next {
+  position: relative;
+  z-index: 0;
+}
+
+#__next > .radix-themes {
+  min-height: 100vh;
+}
+
+.radix-themes.radix-themes-custom,
+.radix-themes-custom .radix-themes:not(.radix-themes-example) {
+  --default-font-family: var(--fonts-untitled);
+  --code-font-family: var(--fonts-mono);
+  --letter-spacing-1: 0.005em;
+  --letter-spacing-2: 0em;
+  --letter-spacing-3: 0em;
+  --letter-spacing-4: -0.005em;
+  --letter-spacing-5: -0.01em;
+  --letter-spacing-6: -0.0125em;
+  --letter-spacing-7: -0.015em;
+  --letter-spacing-8: -0.02em;
+  --letter-spacing-9: -0.05em;
+}

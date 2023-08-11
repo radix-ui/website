@@ -2,7 +2,7 @@ import React from 'react';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
-import { globalCss, darkTheme, DesignSystemProvider } from '@modulz/design-system';
+import { darkTheme, DesignSystemProvider } from '@modulz/design-system';
 import { Theme } from '@radix-ui/themes';
 import { PrimitivesDocsPage } from '@components/PrimitivesDocsPage';
 import { ColorsDocsPage } from '@components/ColorsDocsPage';
@@ -11,63 +11,14 @@ import { CssLibPreferenceProvider } from '@components/CssLibPreference';
 import { ThemesDocsPage } from '@components/ThemesDocsPage';
 import { SyntaxSchemeProvider } from '@components/Pre';
 import '@radix-ui/themes/styles.css';
-import './themes-config.css';
-
-const globalStyles = globalCss({
-  ':root': {
-    '--header-height': '48px',
-    '--quick-nav-display': 'none',
-  },
-
-  '*, *::before, *::after': {
-    boxSizing: 'border-box',
-  },
-
-  body: {
-    '--colors-hiContrast': 'var(--slate-12)',
-    margin: 0,
-    color: 'var(--text-color, var(--gray-12))',
-    backgroundColor: 'var(--color-background, $loContrast)',
-    fontFamily: '$untitled',
-    WebkitFontSmoothing: 'antialiased',
-    MozOsxFontSmoothing: 'grayscale',
-    WebkitTextSizeAdjust: '100%',
-  },
-
-  svg: {
-    display: 'block',
-    verticalAlign: 'middle',
-    overflow: 'visible',
-  },
-
-  'pre, code': { margin: 0, fontFamily: '$mono' },
-
-  '#__next': {
-    position: 'relative',
-    zIndex: 0,
-  },
-
-  'h1, h2, h3, h4, h5': {
-    fontWeight: 500,
-  },
-
-  '@media (min-width: 1440px)': {
-    ':root': {
-      '--quick-nav-display': 'block',
-    },
-  },
-});
-
-const themeRootStyles = {
-  minHeight: '100vh',
-};
+import './styles.css';
 
 function Pages({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   if (router.pathname.startsWith('/primitives/docs')) {
     return (
-      <Theme accentColor="blue" grayColor="slate" style={themeRootStyles}>
+      <Theme accentColor="blue" grayColor="slate" className="radix-themes-custom">
         <SyntaxSchemeProvider scheme="blue">
           <PrimitivesDocsPage>
             <Component {...pageProps} />
@@ -79,7 +30,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.startsWith('/primitives')) {
     return (
-      <Theme accentColor="blue" grayColor="slate" style={themeRootStyles}>
+      <Theme accentColor="blue" grayColor="slate" className="radix-themes-custom">
         <SyntaxSchemeProvider scheme="blue">
           <Component {...pageProps} />
         </SyntaxSchemeProvider>
@@ -89,7 +40,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.startsWith('/colors/docs')) {
     return (
-      <Theme accentColor="pink" grayColor="gray" style={themeRootStyles}>
+      <Theme accentColor="pink" grayColor="gray" className="radix-themes-custom">
         <SyntaxSchemeProvider scheme="pink">
           <ColorsDocsPage>
             <Component {...pageProps} />
@@ -101,7 +52,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.startsWith('/colors')) {
     return (
-      <Theme accentColor="pink" grayColor="gray" style={themeRootStyles}>
+      <Theme accentColor="pink" grayColor="gray" className="radix-themes-custom">
         <Component {...pageProps} />
       </Theme>
     );
@@ -109,7 +60,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.startsWith('/themes/docs')) {
     return (
-      <Theme accentColor="indigo" style={themeRootStyles}>
+      <Theme accentColor="indigo" className="radix-themes-custom">
         <SyntaxSchemeProvider scheme="indigo">
           <ThemesDocsPage>
             <Component {...pageProps} />
@@ -121,7 +72,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.startsWith('/themes/playground')) {
     return (
-      <Theme accentColor="indigo" className="radix-themes-example" style={themeRootStyles}>
+      <Theme accentColor="indigo">
         <Component {...pageProps} />
       </Theme>
     );
@@ -129,7 +80,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.startsWith('/themes')) {
     return (
-      <Theme accentColor="indigo" style={themeRootStyles}>
+      <Theme accentColor="indigo" className="radix-themes-custom">
         <Component {...pageProps} />
       </Theme>
     );
@@ -137,7 +88,7 @@ function Pages({ Component, pageProps }: AppProps) {
 
   if (router.pathname.startsWith('/icons')) {
     return (
-      <Theme accentColor="teal" grayColor="slate" style={themeRootStyles}>
+      <Theme accentColor="teal" grayColor="slate" className="radix-themes-custom">
         <SyntaxSchemeProvider scheme="teal">
           <Component {...pageProps} />
         </SyntaxSchemeProvider>
@@ -146,7 +97,7 @@ function Pages({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <Theme accentColor="indigo" style={themeRootStyles}>
+    <Theme accentColor="indigo" className="radix-themes-custom">
       <SyntaxSchemeProvider scheme="indigo">
         <Component {...pageProps} />
       </SyntaxSchemeProvider>
@@ -155,7 +106,6 @@ function Pages({ Component, pageProps }: AppProps) {
 }
 
 function App(props: AppProps) {
-  globalStyles();
   useAnalytics();
 
   return (

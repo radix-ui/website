@@ -48,7 +48,7 @@ const CopyButton = ({ children, label }: CopyButtonProps) => {
   return (
     <CopyToastVisibility.Consumer>
       {({ setIcon, setIsVisible }) => (
-        <Tooltip content={label} side="top" sideOffset={5}>
+        <Tooltip className="radix-themes-custom" content={label} side="top" sideOffset={5}>
           <IconButton
             highContrast
             variant="ghost"

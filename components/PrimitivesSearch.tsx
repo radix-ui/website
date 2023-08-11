@@ -219,7 +219,7 @@ function PrimitivesSearchClearButton({ children }: { children: React.ReactNode }
   }
 
   return (
-    <Tooltip content="Clear">
+    <Tooltip className="radix-themes-custom" content="Clear">
       <Slot
         onClick={(event) => {
           autocomplete.setQuery('');

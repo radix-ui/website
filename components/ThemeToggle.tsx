@@ -22,7 +22,7 @@ export const ThemeToggle = () => {
       `}</style>
       </Head>
 
-      <Tooltip content="Toggle theme">
+      <Tooltip className="radix-themes-custom" content="Toggle theme">
         <IconButton
           size="3"
           variant="ghost"
