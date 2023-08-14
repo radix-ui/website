@@ -634,7 +634,7 @@ export const AccessibilitySection = () => {
               <Heading as="h3" size="3" mb="1">
                 WAI-ARIA compliant
               </Heading>
-              <Text size="3" as="p">
+              <Text size="3" as="p" color="gray">
                 Radix Primitives follow the WAI-ARIA guidelines, implementing correct semantics and
                 behaviors for our components.
               </Text>
@@ -649,7 +649,7 @@ export const AccessibilitySection = () => {
               <Heading as="h3" size="3" mb="1">
                 Keyboard navigation
               </Heading>
-              <Text size="3" as="p">
+              <Text size="3" as="p" color="gray">
                 Primitives provide full keyboard support for components where users expect to use a
                 keyboard or other input devices.
               </Text>
@@ -664,7 +664,7 @@ export const AccessibilitySection = () => {
               <Heading as="h3" size="3" mb="1">
                 Focus management
               </Heading>
-              <Text size="3" as="p">
+              <Text size="3" as="p" color="gray">
                 Out of the box, Primitives provide sensible focus management defaults, which can be
                 further customized in your code.
               </Text>
@@ -679,7 +679,7 @@ export const AccessibilitySection = () => {
               <Heading as="h3" size="3" mb="1">
                 Screen reader tested
               </Heading>
-              <Text size="3" as="p">
+              <Text size="3" as="p" color="gray">
                 We test Primitives with common assistive technologies, looking out for practical
                 issues that people may experience.
               </Text>

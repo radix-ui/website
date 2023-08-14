@@ -15,7 +15,7 @@
   --stats-section-chart-line-end-color: var(--gray-7);
   --stats-section-chart-tip-color: var(--gray-7);
   --stats-section-chart-top-color: var(--color-background);
-  --stats-section-chart-bottom-color: var(--gray-1);
+  --stats-section-chart-bottom-color: var(--color-background);
 }
 
 :global(:where(.dark, .dark-theme)) .StatsSection {

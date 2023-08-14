@@ -1,27 +1,22 @@
 import React from 'react';
-import { Box, Grid, Card } from '@modulz/design-system';
 import { MarketingCaption } from './MarketingCaption';
-import { Section, Container, Heading, Text } from '@radix-ui/themes';
+import { Box, Section, Container, Heading, Text, Card, Grid } from '@radix-ui/themes';
 
 export const CommunitySection = () => {
   return (
     <Section size={{ initial: '2', md: '3' }}>
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
-        <Box css={{ mb: '$5' }}>
+        <Box mb="5">
           <MarketingCaption mb="1">An active and friendly community 👋</MarketingCaption>
           <Heading as="h2" size="7" mb="4">
             Join our fast-growing community
           </Heading>
         </Box>
 
-        <Grid
-          gap="3"
-          flow={{ '@initial': 'row', '@bp2': 'column' }}
-          css={{ justifyContent: 'start', '@bp2': { gridAutoColumns: '220px' } }}
-        >
-          <Card as="a" target="_blank" href="https://twitter.com/radix_ui" variant="interactive">
-            <Box css={{ p: '$3' }}>
-              <Box css={{ mb: '$3' }}>
+        <Grid gap="3" justify="start" columns={{ xs: '1fr 1fr', sm: '230px 230px 230px' }}>
+          <Card asChild>
+            <a target="_blank" href="https://twitter.com/radix_ui">
+              <Box mb="3">
                 <svg
                   width="30"
                   height="30"
@@ -40,20 +35,15 @@ export const CommunitySection = () => {
               <Heading as="h3" size="3" mb="1">
                 Twitter
               </Heading>
-              <Text size="3" as="p">
-                For announcements, blog posts, and general Radix tips.
+              <Text size="3" as="p" color="gray">
+                For announcements, updates, and general Radix tips.
               </Text>
-            </Box>
+            </a>
           </Card>
 
-          <Card
-            as="a"
-            target="_blank"
-            href="https://discord.com/invite/7Xb99uG"
-            variant="interactive"
-          >
-            <Box css={{ p: '$3' }}>
-              <Box css={{ mb: '$3' }}>
+          <Card asChild>
+            <a target="_blank" href="https://discord.com/invite/7Xb99uG">
+              <Box mb="3">
                 <svg
                   width="30"
                   height="30"
@@ -72,15 +62,15 @@ export const CommunitySection = () => {
               <Heading as="h3" size="3" mb="1">
                 Discord
               </Heading>
-              <Text size="3" as="p">
+              <Text size="3" as="p" color="gray">
                 To get involved in the community, ask questions, and share tips.
               </Text>
-            </Box>
+            </a>
           </Card>
 
-          <Card as="a" target="_blank" href="https://github.com/radix-ui" variant="interactive">
-            <Box css={{ p: '$3' }}>
-              <Box css={{ mb: '$3' }}>
+          <Card asChild>
+            <a target="_blank" href="https://github.com/radix-ui">
+              <Box mb="3">
                 <svg
                   width="30"
                   height="30"
@@ -99,10 +89,10 @@ export const CommunitySection = () => {
               <Heading as="h3" size="3" mb="1">
                 GitHub
               </Heading>
-              <Text size="3" as="p">
+              <Text size="3" as="p" color="gray">
                 To file issues, request features, and contribute, check out our GitHub.
               </Text>
-            </Box>
+            </a>
           </Card>
         </Grid>
       </Container>

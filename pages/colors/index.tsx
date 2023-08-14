@@ -1,6 +1,6 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Box, Text, Grid, Heading, Container, Section } from '@radix-ui/themes';
+import { Box, Text, Grid, Heading, Container, Section, Separator } from '@radix-ui/themes';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { Footer } from '@components/Footer';
 import { ColorsHeader } from '@components/ColorsHeader';
@@ -592,33 +592,33 @@ export default function ColorsHome() {
           </Text>
         </Container>
 
-        <Section size="3" mb="9">
+        <Section size={{ initial: '2', md: '3' }}>
           <Container>
-            <Grid columns={{ sm: '3' }} gap="7">
-              <Box>
-                <Heading size="5" as="h3">
-                  Accessibility made easy
+            <Grid columns={{ sm: '3' }} gap={{ initial: '7', sm: '6', md: '9' }}>
+              <Box style={{ maxWidth: 540 }}>
+                <Heading size="4" as="h3" mb="2">
+                  Accessibility made easy
                 </Heading>
-                <Text as="p" color="gray" size="3" mt="2">
-                  Each step is designed for a specific use case, with multiple combinations
+                <Text as="p" size="3">
+                  Each step is designed for a specific use case, with multiple combinations
                   guaranteed to pass WCAG contrast ratio.
                 </Text>
               </Box>
-              <Box>
-                <Heading size="5" as="h3">
+              <Box style={{ maxWidth: 540 }}>
+                <Heading size="4" as="h3" mb="2">
                   Automatic dark mode
                 </Heading>
-                <Text as="p" color="gray" size="3" mt="2">
-                  Switching to dark theme is as simple as applying a class to a container. Dark mode
-                  Just Works™.
+                <Text as="p" size="3">
+                  Switching to dark theme is as simple as applying a class to a container. Dark mode
+                  Just Works™.
                 </Text>
               </Box>
-              <Box>
-                <Heading size="5" as="h3">
+              <Box style={{ maxWidth: 540 }}>
+                <Heading size="4" as="h3" mb="2">
                   Transparent variants
                 </Heading>
-                <Text as="p" color="gray" size="3" mt="2">
-                  Each scale has a matching transparent variant, which is handy for UI components
+                <Text as="p" size="3">
+                  Each scale has a matching transparent variant, which is handy for UI components
                   that need to blend into colored backgrounds.
                 </Text>
               </Box>
@@ -628,7 +628,10 @@ export default function ColorsHome() {
       </Box>
 
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
-        <Footer />
+        <Separator size="2" />
+        <Section size={{ initial: '2', md: '3' }} pb="0">
+          <Footer />
+        </Section>
       </Container>
     </MobileMenuProvider>
   );

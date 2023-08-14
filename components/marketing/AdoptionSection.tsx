@@ -7,7 +7,7 @@ export const AdoptionSection = () => {
   return (
     <Section size={{ initial: '2', md: '3' }}>
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
-        <Box mb="7">
+        <Box mb="8">
           <MarketingCaption mb="1">Transition to Radix Primitives</MarketingCaption>
           <Heading as="h2" size="7" mb="5">
             Adoption made easy
@@ -31,12 +31,12 @@ export const AdoptionSection = () => {
           </NextLink>
         </Box>
 
-        <Grid columns={{ initial: '1', xs: '2' }} gap={{ initial: '6', xs: '7', sm: '9' }}>
+        <Grid columns={{ initial: '1', sm: '2' }} gap={{ initial: '7', sm: '5' }}>
           <Box>
             <Heading as="h3" size="4" mb="2">
               Incremental adoption
             </Heading>
-            <Text as="p" size="3">
+            <Text as="p" size="3" mr={{ sm: '5', md: '7', lg: '9' }}>
               Each component is its own independently versioned package, so new components can be
               added alongside your existing code. No need to disrupt feature work with a huge
               rewrite{'\u2060'}—you can start small and add more components one by one.
@@ -47,7 +47,7 @@ export const AdoptionSection = () => {
             <Heading as="h3" size="4" mb="2">
               Detailed docs and TypeScript support
             </Heading>
-            <Text as="p" size="3">
+            <Text as="p" size="3" mr={{ sm: '5', md: '7', lg: '9' }}>
               Radix documentation contains real-world examples, extensive API references,
               accessibility details, and full TypeScript support. All components share a similar
               API, creating a consistent developer experience. You will love working with Radix
