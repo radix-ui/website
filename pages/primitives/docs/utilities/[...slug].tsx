@@ -32,7 +32,7 @@ export default function UtilitiesDoc({ frontmatter, code }: Doc) {
       {frontmatter.version !== frontmatter.versions?.[0] && (
         <OldVersionNote
           name={frontmatter.metaTitle}
-          href={`/primitives/docs/docs/components/${frontmatter.slug.replace(
+          href={`/primitives/docs/utilities/${frontmatter.slug.replace(
             frontmatter.version,
             ''
           )}`}
