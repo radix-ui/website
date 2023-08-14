@@ -82,7 +82,7 @@ export function CodeDemo({ line, ...props }: CodeDemoProps) {
         {...props}
         line="0"
         display={{ initial: 'block', sm: 'none' }}
-        style={{ ...props.style, padding: 'var(--space-3' }}
+        style={{ ...props.style }}
       />
       <CodeBlock
         ref={wrapperRef}

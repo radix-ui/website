@@ -1,57 +1,35 @@
-import { Box, Flex, Grid, Paragraph, Text, styled } from '@modulz/design-system';
-import { CheckIcon } from '@radix-ui/react-icons';
 import React from 'react';
+import { CheckIcon } from '@radix-ui/react-icons';
 import { MarketingCaption } from './MarketingCaption';
-import { Container, Section, Heading } from '@radix-ui/themes';
+import { Box, Flex, Grid, Container, Section, Heading, Text } from '@radix-ui/themes';
+import { HiddenScroll } from './HiddenScroll';
 
 export const ComponentHighlightsSection = () => {
   return (
-    <Section
-      size={{ initial: '2', sm: '3' }}
-      style={{
-        position: 'relative',
-        backgroundImage: 'linear-gradient(to bottom, var(--gray-1), var(--color-background))',
-        overflow: 'hidden',
-      }}
-    >
+    <Section position="relative" size={{ initial: '2', sm: '3' }} style={{ overflow: 'hidden' }}>
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
-        <Flex
-          direction="column"
-          align="center"
-          css={{
-            textAlign: 'center',
-            position: 'relative',
-            zIndex: 1,
-            mb: '$6',
-            '@bp3': { mb: 100 },
-          }}
-        >
+        <Flex direction="column" align="center" position="relative" mb="6" pb={{ lg: '9' }}>
           <MarketingCaption mb="1">Case in point</MarketingCaption>
-          <Heading as="h2" size="7" mb="3">
+          <Heading align="center" as="h2" size="7" mb="3">
             So, you think you can <span style={{ whiteSpace: 'nowrap' }}>build a dropdown?</span>
           </Heading>
-
-          <Box css={{ maxWidth: 480 }}>
-            <Paragraph>
-              We agonise over API design, performance, and accessibility so you don't need to.
-            </Paragraph>
-          </Box>
+          <Text align="center" as="p" size="3" style={{ maxWidth: 340 }}>
+            We agonise over API design, performance, and accessibility so you don't need to.
+          </Text>
         </Flex>
 
-        <Box css={{ position: 'relative' }}>
+        <Box position="relative">
           {/* Use guides to position things sanely */}
           {/* <Guides7 /> */}
           {/* <Guides8 /> */}
 
-          <Box css={{ position: 'relative', mb: '$4', pointerEvents: 'none' }}>
+          <Box position="relative" mb="4" style={{ pointerEvents: 'none' }}>
             <Box
-              css={{
-                position: 'absolute',
-                height: '100%',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-              }}
+              position="absolute"
+              height="100%"
+              top="50%"
+              left="50%"
+              style={{ transform: 'translate(-50%, -50%)' }}
             >
               <Circle
                 size={180}
@@ -93,7 +71,8 @@ export const ComponentHighlightsSection = () => {
             <Flex
               align="center"
               justify="center"
-              css={{ position: 'relative', '@bp3': { height: 850 } }}
+              position="relative"
+              style={{ height: 'var(--component-highlights-image-height, auto)' }}
             >
               <img
                 src="/marketing/dropdown-menu.svg"
@@ -102,187 +81,209 @@ export const ComponentHighlightsSection = () => {
             </Flex>
           </Box>
 
-          <Box
-            css={{
-              mx: '-$5',
-              pl: '$5',
-              pt: '$1',
-              position: 'relative',
-              overflowX: 'scroll',
-              overflowY: 'hidden',
-              WebkitOverflowScrolling: 'touch',
-              MsOverflowStyle: 'none',
-              scrollbarWidth: 'none',
-              '&::-webkit-scrollbar': {
-                display: 'none',
-              },
-              '@bp1': {
-                all: 'unset',
-              },
-            }}
+          <HiddenScroll
+            position={{ initial: 'relative', sm: 'static' }}
+            m={{ initial: '-8', sm: '0' }}
+            p={{ initial: '8', sm: '0' }}
           >
             <Grid
-              gap={{ '@initial': 5, '@bp2': 7 }}
-              flow={{ '@initial': 'column', '@bp1': 'row' }}
-              justify={{ '@initial': 'start', '@bp1': 'center' }}
-              css={{
-                gridAutoColumns: 'calc(100vw - 100px)',
-                '@bp1': { gridTemplateColumns: '1fr 1fr' },
-                '@bp2': { gridTemplateColumns: '315px 315px', ml: '$5' },
-                '@bp3': { mb: '$8', '& > *': { position: 'absolute', width: 315 } },
-              }}
+              gap={{ initial: '5', sm: '7' }}
+              flow={{ initial: 'column', sm: 'row' }}
+              justify={{ initial: 'start', sm: 'center' }}
+              columns={{ initial: 'none', sm: 'auto auto' }}
+              style={{ gridAutoColumns: 'max-content' }}
             >
-              <Box css={{ '@bp3': { top: '-1%', left: '27%' } }}>
-                <Flex gap="2" align="start" css={{ mb: '$1' }}>
-                  <FancyCheckMark />
-                  <Text
-                    as="h3"
-                    size="4"
-                    css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
-                  >
-                    Full keyboard navigation
-                  </Text>
+              <Box
+                position={{ lg: 'absolute' }}
+                style={{
+                  width: 'var(--component-highlights-item-width)',
+                  maxWidth: 400,
+                  top: '-1%',
+                  left: '27%',
+                }}
+              >
+                <Flex gap="2" align="start" mb="1">
+                  <Checkmark />
+                  <Heading as="h3" size="3">
+                    Full keyboard navigation
+                  </Heading>
                 </Flex>
-                <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
-                  Navigate the menu using arrow keys, Escape, and Enter hotkeys, or even via
-                  typeahead.
+                <Text as="p" color="gray" size="3" ml="6">
+                  Navigate the menu using arrow keys, Escape, and Enter hotkeys, or even
+                  via typeahead.
                 </Text>
               </Box>
 
-              <Box css={{ '@bp3': { top: '14%', left: '60%' } }}>
-                <Flex gap="2" align="start" css={{ mb: '$1' }}>
-                  <FancyCheckMark />
-                  <Text
-                    as="h3"
-                    size="4"
-                    css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
-                  >
-                    Modal and non-modal modes
-                  </Text>
+              <Box
+                position={{ lg: 'absolute' }}
+                style={{
+                  width: 'var(--component-highlights-item-width)',
+                  maxWidth: 400,
+                  top: '14%',
+                  left: '60%',
+                }}
+              >
+                <Flex gap="2" align="start" mb="1">
+                  <Checkmark />
+                  <Heading as="h3" size="3">
+                    Modal and non-modal modes
+                  </Heading>
                 </Flex>
-                <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
-                  Configure whether the dropdown menu allows or blocks outside interactions.
+                <Text as="p" color="gray" size="3" ml="6">
+                  Configure whether the dropdown menu allows or blocks outside interactions.
                 </Text>
               </Box>
 
-              <Box css={{ '@bp3': { top: '40%', left: '74%' } }}>
-                <Flex gap="2" align="start" css={{ mb: '$1' }}>
-                  <FancyCheckMark />
-                  <Text
-                    as="h3"
-                    size="4"
-                    css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
-                  >
+              <Box
+                position={{ lg: 'absolute' }}
+                style={{
+                  width: 'var(--component-highlights-item-width)',
+                  maxWidth: 400,
+                  top: '40%',
+                  left: '74%',
+                }}
+              >
+                <Flex gap="2" align="start" mb="1">
+                  <Checkmark />
+                  <Heading as="h3" size="3">
                     Supports submenus
-                  </Text>
+                  </Heading>
                 </Flex>
-                <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
-                  Nest another level of fully functional submenus inside the dropdown menu.
+                <Text as="p" color="gray" size="3" ml="6">
+                  Nest another level of fully functional submenus inside the dropdown menu.
                 </Text>
               </Box>
 
-              <Box css={{ '@bp3': { top: '67%', left: '69%' } }}>
-                <Flex gap="2" align="start" css={{ mb: '$1' }}>
-                  <FancyCheckMark />
-                  <Text
-                    as="h3"
-                    size="4"
-                    css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
-                  >
-                    Supports assistive technology
-                  </Text>
+              <Box
+                position={{ lg: 'absolute' }}
+                style={{
+                  width: 'var(--component-highlights-item-width)',
+                  maxWidth: 420,
+                  top: '67%',
+                  left: '69%',
+                }}
+              >
+                <Flex gap="2" align="start" mb="1">
+                  <Checkmark />
+                  <Heading as="h3" size="3">
+                    Supports assistive technology
+                  </Heading>
                 </Flex>
-                <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
-                  Implements correct semantics and behaviors, so it's accessible to people using
-                  assistive technology.
+                <Text as="p" color="gray" size="3" ml="6">
+                  Implements correct semantics and behaviors, so it's accessible to people using
+                  assistive technology.
                 </Text>
               </Box>
 
-              <Box css={{ '@bp3': { top: '94%', left: '39%' } }}>
-                <Flex gap="2" align="start" css={{ mb: '$1' }}>
-                  <FancyCheckMark />
-                  <Text
-                    as="h3"
-                    size="4"
-                    css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
-                  >
-                    Collision and origin-aware animations
-                  </Text>
+              <Box
+                position={{ lg: 'absolute' }}
+                style={{
+                  width: 'var(--component-highlights-item-width)',
+                  maxWidth: 400,
+                  top: '94%',
+                  left: '39%',
+                }}
+              >
+                <Flex gap="2" align="start" mb="1" mr="-1">
+                  <Checkmark />
+                  <Heading as="h3" size="3">
+                    Collision and origin-aware animations
+                  </Heading>
                 </Flex>
-                <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
+                <Text as="p" color="gray" size="3" ml="6">
                   Create open and close animations that take the dropdown menu’s actual position
-                  into account.
+                  into account.
                 </Text>
               </Box>
 
-              <Box css={{ '@bp3': { top: '76%', left: '8%' } }}>
-                <Flex gap="2" align="start" css={{ mb: '$1' }}>
-                  <FancyCheckMark />
-                  <Text
-                    as="h3"
-                    size="4"
-                    css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
-                  >
+              <Box
+                position={{ lg: 'absolute' }}
+                style={{
+                  width: 'var(--component-highlights-item-width)',
+                  maxWidth: 420,
+                  top: '76%',
+                  left: '8%',
+                }}
+              >
+                <Flex gap="2" align="start" mb="1">
+                  <Checkmark />
+                  <Heading as="h3" size="3">
                     Control alignment and collisions
-                  </Text>
+                  </Heading>
                 </Flex>
-                <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
+                <Text as="p" color="gray" size="3" ml="6">
                   Position the menu anywhere relative to the trigger, taking collisions with the
-                  screen into account.
+                  screen into account.
                 </Text>
               </Box>
 
-              <Box css={{ '@bp3': { top: '49%', left: '-1%' } }}>
-                <Flex gap="2" align="start" css={{ mb: '$1' }}>
-                  <FancyCheckMark />
-                  <Text
-                    as="h3"
-                    size="4"
-                    css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
-                  >
-                    Fully managed focus
-                  </Text>
+              <Box
+                position={{ lg: 'absolute' }}
+                style={{
+                  width: 'var(--component-highlights-item-width)',
+                  maxWidth: 420,
+                  top: '49%',
+                  left: '-1%',
+                }}
+              >
+                <Flex gap="2" align="start" mb="1">
+                  <Checkmark />
+                  <Heading as="h3" size="3">
+                    Fully managed focus
+                  </Heading>
                 </Flex>
-                <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
-                  Granularly control focus behavior when user closes the dropdown menu or focuses an
-                  outside element.
+                <Text as="p" color="gray" size="3" ml="6">
+                  Granularly control focus behavior when user closes the dropdown menu or focuses
+                  an outside element.
                 </Text>
               </Box>
 
-              <Box css={{ '@bp3': { top: '19%', left: '4%' } }}>
-                <Flex gap="2" align="start" css={{ mb: '$1' }}>
-                  <FancyCheckMark />
-                  <Text
-                    as="h3"
-                    size="4"
-                    css={{ lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.01em' }}
-                  >
-                    Supports checkable items
-                  </Text>
+              <Box
+                position={{ lg: 'absolute' }}
+                style={{
+                  width: 'var(--component-highlights-item-width)',
+                  maxWidth: 400,
+                  top: '19%',
+                  left: '4%',
+                }}
+              >
+                <Flex gap="2" align="start" mb="1">
+                  <Checkmark />
+                  <Heading as="h3" size="3">
+                    Supports checkable items
+                  </Heading>
                 </Flex>
-                <Text size="3" variant="gray" css={{ lineHeight: 1.5, ml: '$6' }}>
-                  Items can be used to perform actions, as well as act as checkbox or radiobutton
-                  controls.
+                <Text as="p" color="gray" size="3" ml="6">
+                  Items can be used to perform actions, as well as act as checkbox or
+                  radiobutton controls.
                 </Text>
               </Box>
+
+              <Box pr="5" display={{ sm: 'none' }} />
             </Grid>
-          </Box>
+          </HiddenScroll>
         </Box>
       </Container>
     </Section>
   );
 };
 
-const FancyCheckMark = styled(CheckIcon, {
-  color: '$teal11',
-  backgroundColor: '$teal4',
-  padding: '$1',
-  mt: -2,
-  width: '$5',
-  height: '$5',
-  borderRadius: '$round',
-  flex: 'none',
-});
+const Checkmark = () => (
+  <CheckIcon
+    style={{
+      color: 'var(--teal-11)',
+      backgroundColor: 'var(--teal-4)',
+      padding: 'var(--space-1)',
+      width: 'var(--space-5)',
+      height: 'var(--space-5)',
+      marginTop: -1,
+      marginBottom: -1,
+      borderRadius: '100%',
+      flexGrow: 0,
+      flexShrink: 0,
+    }}
+  />
+);
 
 const Circle = ({
   size,
@@ -299,14 +300,14 @@ const Circle = ({
 }) => {
   return (
     <Box
-      css={{
+      style={{
         position: 'absolute',
         left: '50%',
         top: '50%',
         width: size,
         height: size,
-        transform: `translate(-50%, -50%) rotate(${angle}deg)`,
         opacity: opacity,
+        transform: `translate(-50%, -50%) rotate(${angle}deg)`,
       }}
     >
       <svg
@@ -332,8 +333,8 @@ const Circle = ({
             x2="50"
             y2="100"
           >
-            <stop style={{ stopColor: color1 }} />
-            <stop style={{ stopColor: color2 }} offset="1" />
+            <stop stopColor={color1} />
+            <stop stopColor={color2} offset="1" />
           </linearGradient>
         </defs>
       </svg>

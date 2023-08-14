@@ -29,6 +29,7 @@ type CodeBlockProps = PreProps & {
   line?: string;
   isInteractive?: boolean;
   showLineNumbers?: boolean;
+  showCopyCodeButton?: boolean;
 };
 
 export const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
@@ -40,6 +41,7 @@ export const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
       className = '',
       style,
       showLineNumbers,
+      showCopyCodeButton = true,
       isInteractive,
       ...props
     } = _props;
@@ -71,7 +73,7 @@ export const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
               : {}
           }
         />
-        <CopyCodeButton code={value} className={styles.CopyButton} />
+        {showCopyCodeButton && <CopyCodeButton code={value} className={styles.CopyButton} />}
       </Pre>
     );
   }

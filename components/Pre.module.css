@@ -238,12 +238,16 @@
 }
 
 .Pre [data-invert-line-highlight='false'] :global(.highlight-line),
-.Pre [data-invert-line-highlight='false'] :global(.highlight-line) * {
+.Pre [data-invert-line-highlight='false'] :global(.highlight-line) *,
+.Pre[data-invert-line-highlight='false'] :global(.highlight-line),
+.Pre[data-invert-line-highlight='false'] :global(.highlight-line) * {
   transition: color 150ms ease;
 }
 
 .Pre [data-invert-line-highlight='false'] :global(.highlight-line)[data-highlighted='false'],
-.Pre [data-invert-line-highlight='false'] :global(.highlight-line)[data-highlighted='false'] * {
+.Pre [data-invert-line-highlight='false'] :global(.highlight-line)[data-highlighted='false'] *,
+.Pre[data-invert-line-highlight='false'] :global(.highlight-line)[data-highlighted='false'],
+.Pre[data-invert-line-highlight='false'] :global(.highlight-line)[data-highlighted='false'] * {
   color: var(--faded-lines);
 }
 

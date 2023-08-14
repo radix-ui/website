@@ -1,9 +1,9 @@
 import React from 'react';
-import { Box, Grid, Text, styled, Flex, Paragraph, Card } from '@modulz/design-system';
-import { Section, Heading } from '@radix-ui/themes';
+import { Box, Section, Text, Flex, Grid, Heading, Card } from '@radix-ui/themes';
 import { MarketingCaption } from './MarketingCaption';
 import { CodeDemo } from './CodeDemo';
 import { Container, Theme } from '@radix-ui/themes';
+import { HiddenScroll } from './HiddenScroll';
 
 enum Highlights {
   Unstyled = '1-18',
@@ -13,7 +13,7 @@ enum Highlights {
 }
 
 export const DeveloperExperienceSection = () => {
-  const [activeHighlight, setActiveHighlight] = React.useState<Highlights>(Highlights.Unstyled);
+  const [active, setActive] = React.useState<Highlights>(Highlights.Unstyled);
 
   return (
     <Section
@@ -28,217 +28,212 @@ export const DeveloperExperienceSection = () => {
       }}
     >
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
-        <Grid
-          gap={{ '@initial': 5, '@bp3': 8 }}
-          css={{ '@bp2': { gridTemplateColumns: 'auto 1fr' } }}
-        >
-          <Box css={{ '@bp2': { maxWidth: 420 } }}>
+        <Grid gap={{ initial: '5', md: '8' }} columns={{ sm: 'auto 1fr' }}>
+          <Box style={{ maxWidth: 430 }}>
             <MarketingCaption mb="1">Developer experience to love</MarketingCaption>
             <Heading as="h2" size="7" mb="4">
               Develop with an open, thought‑out API
             </Heading>
 
-            <Paragraph css={{ mb: '$5', maxWidth: 500 }}>
+            <Text as="p" mb="5" style={{ maxWidth: 500 }}>
               One of our main goals is to provide the best possible developer experience. Radix
               Primitives provides a fully-typed API. All components share a similar API, creating
               a consistent and predictable experience.
-            </Paragraph>
+            </Text>
 
-            <Box
-              css={{
-                width: '100vw',
-                pl: '$5',
-                mx: '-$5',
-                // Don't cut off box shadows
-                py: '$1',
-                overflowX: 'scroll',
-                overflowY: 'hidden',
-                WebkitOverflowScrolling: 'touch',
-                MsOverflowStyle: 'none',
-                scrollbarWidth: 'none',
-                '&::-webkit-scrollbar': {
-                  display: 'none',
-                },
-                '@bp2': {
-                  display: 'none',
-                },
-              }}
-            >
+            <HiddenScroll display={{ md: 'none' }} pl="5" py="1" mx="-5" style={{ width: '100vw' }}>
               <Grid
-                gapX={{
-                  '@initial': 3,
-                  '@bp1': 5,
-                }}
-                gapY={3}
+                gapX={{ initial: '3', xs: '5' }}
+                gapY="3"
                 flow="column"
-                css={{
-                  gridTemplateColumns: 'repeat(4, max-content) 1px',
-                  gridTemplateRows: '410px auto',
-                }}
+                columns="repeat(4, max-content) 1px"
+                rows="430px auto"
               >
                 <Theme asChild appearance="dark" hasBackground={false}>
                   <CodeWindow>
-                    <StyledCodeDemo
-                      value={code.unstyled}
-                      language="jsx"
-                      style={{ padding: 'var(--space-2)' }}
-                    />
+                    <StyledCodeDemo value={code.unstyled} language="jsx" />
                   </CodeWindow>
                 </Theme>
                 <Box>
-                  <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>
+                  <Heading as="h3" size="3">
                     Unstyled
-                  </Text>
-                  <Text as="p" size="3" css={{ lineHeight: 1.5, color: '$slateA11' }}>
+                  </Heading>
+                  <Text as="p" size="3" color="gray">
                     No need to override styles, no specificity wars.
                   </Text>
                 </Box>
 
                 <Theme asChild appearance="dark" hasBackground={false}>
                   <CodeWindow>
-                    <StyledCodeDemo
-                      value={code.composable}
-                      language="jsx"
-                      style={{ padding: 'var(--space-2)' }}
-                    />
+                    <StyledCodeDemo value={code.composable} language="jsx" />
                   </CodeWindow>
                 </Theme>
                 <Box>
-                  <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>
+                  <Heading as="h3" size="3">
                     Composable
-                  </Text>
-                  <Text as="p" size="3" css={{ lineHeight: 1.5, color: '$slateA11' }}>
+                  </Heading>
+                  <Text as="p" size="3" color="gray">
                     Granular access to each component part.
                   </Text>
                 </Box>
 
                 <Theme asChild appearance="dark" hasBackground={false}>
                   <CodeWindow>
-                    <StyledCodeDemo
-                      value={code.customizable}
-                      language="jsx"
-                      style={{ padding: 'var(--space-2)' }}
-                    />
+                    <StyledCodeDemo value={code.customizable} language="jsx" />
                   </CodeWindow>
                 </Theme>
                 <Box>
-                  <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>
+                  <Heading as="h3" size="3">
                     Customizable
-                  </Text>
-                  <Text as="p" size="3" css={{ lineHeight: 1.5, color: '$slateA11' }}>
+                  </Heading>
+                  <Text as="p" size="3" color="gray">
                     Configure behavior, control focus, add event listeners.
                   </Text>
                 </Box>
 
                 <Theme asChild appearance="dark" hasBackground={false}>
                   <CodeWindow>
-                    <StyledCodeDemo
-                      value={code.consistent}
-                      language="jsx"
-                      style={{ padding: 'var(--space-2)' }}
-                    />
+                    <StyledCodeDemo value={code.consistent} language="jsx" />
                   </CodeWindow>
                 </Theme>
                 <Box>
-                  <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>
+                  <Heading as="h3" size="3">
                     Consistent
-                  </Text>
-                  <Text as="p" size="3" css={{ lineHeight: 1.5, color: '$slateA11' }}>
+                  </Heading>
+                  <Text as="p" size="3" color="gray">
                     Components with similar functionality share similar API.
                   </Text>
                 </Box>
                 <Box />
               </Grid>
-            </Box>
+            </HiddenScroll>
 
-            <Flex
-              gap="1"
-              direction="column"
-              css={{ ml: '-$3', display: 'none', '@bp2': { display: 'flex' } }}
-            >
-              <BlendedCard
-                as="button"
-                onMouseDown={() => setActiveHighlight(Highlights.Unstyled)}
-                onClick={() => setActiveHighlight(Highlights.Unstyled)}
-                variant={activeHighlight === Highlights.Unstyled ? 'active' : 'ghost'}
+            <Flex gap="1" direction="column" ml="-3" display={{ initial: 'none', md: 'flex' }}>
+              <Card
+                asChild
+                onMouseDown={() => setActive(Highlights.Unstyled)}
+                onClick={() => setActive(Highlights.Unstyled)}
+                variant="ghost"
+                style={{
+                  margin: 0,
+                  backgroundColor: active === Highlights.Unstyled ? 'var(--gray-a3)' : '',
+                }}
               >
-                <Box css={{ p: '$3' }}>
-                  <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>
+                <button>
+                  <Heading as="h3" size="3">
                     Unstyled
-                  </Text>
-                  <Text as="p" size="3" css={{ lineHeight: 1.5, color: '$slateA11' }}>
+                  </Heading>
+                  <Text as="p" size="3" color="gray">
                     No need to override styles, no specificity wars.
                   </Text>
-                </Box>
-              </BlendedCard>
+                </button>
+              </Card>
 
-              <BlendedCard
-                as="button"
-                onMouseDown={() => setActiveHighlight(Highlights.Composable)}
-                onClick={() => setActiveHighlight(Highlights.Composable)}
-                variant={activeHighlight === Highlights.Composable ? 'active' : 'ghost'}
+              <Card
+                asChild
+                onMouseDown={() => setActive(Highlights.Composable)}
+                onClick={() => setActive(Highlights.Composable)}
+                variant="ghost"
+                style={{
+                  margin: 0,
+                  backgroundColor: active === Highlights.Composable ? 'var(--gray-a3)' : '',
+                }}
               >
-                <Box css={{ p: '$3' }}>
-                  <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>
+                <button>
+                  <Heading as="h3" size="3">
                     Composable
-                  </Text>
-                  <Text as="p" size="3" css={{ lineHeight: 1.5, color: '$slateA11' }}>
+                  </Heading>
+                  <Text as="p" size="3" color="gray">
                     Granular access to each component part.
                   </Text>
-                </Box>
-              </BlendedCard>
+                </button>
+              </Card>
 
-              <BlendedCard
-                as="button"
-                onMouseDown={() => setActiveHighlight(Highlights.Customizable)}
-                onClick={() => setActiveHighlight(Highlights.Customizable)}
-                variant={activeHighlight === Highlights.Customizable ? 'active' : 'ghost'}
+              <Card
+                asChild
+                onMouseDown={() => setActive(Highlights.Customizable)}
+                onClick={() => setActive(Highlights.Customizable)}
+                variant="ghost"
+                style={{
+                  margin: 0,
+                  backgroundColor: active === Highlights.Customizable ? 'var(--gray-a3)' : '',
+                }}
               >
-                <Box css={{ p: '$3' }}>
-                  <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>
+                <button>
+                  <Heading as="h3" size="3">
                     Customizable
-                  </Text>
-                  <Text as="p" size="3" css={{ lineHeight: 1.5, color: '$slateA11' }}>
+                  </Heading>
+                  <Text as="p" size="3" color="gray">
                     Configure behavior, control focus, add event listeners.
                   </Text>
-                </Box>
-              </BlendedCard>
+                </button>
+              </Card>
 
-              <BlendedCard
-                as="button"
-                onMouseDown={() => setActiveHighlight(Highlights.Consistent)}
-                onClick={() => setActiveHighlight(Highlights.Consistent)}
-                variant={activeHighlight === Highlights.Consistent ? 'active' : 'ghost'}
+              <Card
+                asChild
+                onMouseDown={() => setActive(Highlights.Consistent)}
+                onClick={() => setActive(Highlights.Consistent)}
+                variant="ghost"
+                style={{
+                  margin: 0,
+                  backgroundColor: active === Highlights.Consistent ? 'var(--gray-a3)' : '',
+                }}
               >
-                <Box css={{ p: '$3' }}>
-                  <Text as="h3" size="3" css={{ fontWeight: 500, lineHeight: 1.5 }}>
+                <button>
+                  <Heading as="h3" size="3">
                     Consistent
-                  </Text>
-                  <Text as="p" size="3" css={{ lineHeight: 1.5, color: '$slateA11' }}>
+                  </Heading>
+                  <Text as="p" size="3" color="gray">
                     Components with similar functionality share similar API.
                   </Text>
-                </Box>
-              </BlendedCard>
+                </button>
+              </Card>
             </Flex>
           </Box>
 
           <Box
-            css={{
-              position: 'relative',
-              minWidth: 480,
-              display: 'none',
-              '@bp2': { display: 'block' },
-            }}
+            display={{ initial: 'none', md: 'block' }}
+            position="relative"
+            style={{ minWidth: 480, minHeight: 602 }}
           >
             <Theme asChild appearance="dark" hasBackground={false}>
-              <CodeWindow withChrome style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
+              <CodeWindow
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  overflow: 'hidden',
+                  paddingTop: 'var(--space-6)',
+                  boxShadow: '0 50px 100px -50px hsl(254 100% 6% / 0.7)',
+                  minHeight: 575,
+                }}
+              >
+                <Box
+                  style={{
+                    position: 'absolute',
+                    top: 10,
+                    left: 10,
+                    width: 52,
+                    height: 12,
+                    background: `
+                      radial-gradient(circle closest-side at 6px, var(--gray-a7) 90%, #FFFFFF00),
+                      radial-gradient(circle closest-side at 24px, var(--gray-a7) 90%, #FFFFFF00),
+                      radial-gradient(circle closest-side at 42px, var(--gray-a7) 90%, #FFFFFF00)
+                    `,
+                  }}
+                />
+
+                <Flex position="absolute" justify="center" top="0" left="0" right="0" mt="2">
+                  <Text size="1" style={{ color: 'var(--slate-a9)', userSelect: 'none' }}>
+                    MyComponent.jsx
+                  </Text>
+                </Flex>
+
                 <StyledCodeDemo
                   language="jsx"
                   value={allCode}
-                  line={activeHighlight}
+                  line={active}
                   data-invert-line-highlight="false"
                   style={{
-                    padding: 0,
                     height: '100%',
                     userSelect: 'auto',
                   }}
@@ -257,23 +252,13 @@ const StyledCodeDemo = React.forwardRef<HTMLPreElement, React.ComponentProps<typ
     <CodeDemo
       ref={forwardedRef}
       data-invert-line-highlight="false"
+      showCopyCodeButton={false}
       style={
         {
-          padding: 0,
           height: '100%',
           userSelect: 'auto',
-          fontSize: 13,
+          padding: 'var(--space-3)',
           '--background': 'transparent',
-          '--text': 'var(--cyan-12)',
-          '--outline': 'none',
-          '--syntax1': 'var(--purple-11)',
-          '--syntax2': 'var(--cyan-11)',
-          '--syntax3': 'var(--crimson-11)',
-          '--syntax4': 'var(--text)',
-          '--comment': 'var(--slate-a11)',
-          '--removed': 'var(--crimson-11)',
-          '--added': 'var(--teal-11)',
-          '--fadedLines': 'var(--slate-a8)',
           boxShadow: 'none',
           ...style,
         } as React.CSSProperties
@@ -283,111 +268,19 @@ const StyledCodeDemo = React.forwardRef<HTMLPreElement, React.ComponentProps<typ
   )
 );
 
-const CodeWindow = styled('div', {
-  position: 'relative',
-  br: '$4',
-  bc: 'var(--gray-2)',
-
-  '.dark &, .dark-theme &': {
-    bc: 'var(--black-a9)',
-  },
-
-  // Quick & dirty fix to remove the copy code icon button
-  '& button': {
-    display: 'none',
-  },
-
-  variants: {
-    withChrome: {
-      true: {
-        px: '$2',
-        pt: '$6',
-        pb: '$2',
-        boxShadow: '0 50px 100px -50px hsl(254 100% 6% / 0.7)',
-        '&::before': {
-          position: 'absolute',
-          top: 10,
-          left: 10,
-          width: 52,
-          height: 12,
-          content: '""',
-          background: `
-            radial-gradient(circle closest-side at 6px, var(--gray-a7) 90%, #FFFFFF00),
-            radial-gradient(circle closest-side at 24px, var(--gray-a7) 90%, #FFFFFF00),
-            radial-gradient(circle closest-side at 42px, var(--gray-a7) 90%, #FFFFFF00)
-          `,
-        },
-        '&::after': {
-          position: 'absolute',
-          top: 8,
-          left: 0,
-          right: 0,
-          fontFamily: '$untitled',
-          fontSize: '$1',
-          textAlign: 'center',
-          color: '$slate9',
-          content: '"MyComponent.jsx"',
-        },
-      },
-    },
-  },
-});
-
-const BlendedCard = styled(Card, {
-  $$shadowColor: '$colors$skyA12',
-  $$bgColor: '$colors$plum1',
-  '.dark &, .dark-theme &': {
-    $$shadowColor: '$colors$blackA12',
-    $$bgColor: '$colors$whiteA4',
-  },
-
-  cursor: 'default',
-  position: 'relative',
-  zIndex: 1,
-  willChange: 'transform',
-  backgroundColor: '$$bgColor',
-  '&::before': {
-    boxShadow: '0 0 0 1px $colors$blackA3',
-  },
-
-  // Fix a bug when hovering at card edges would cause the card to jitter because of transform
-  '@hover': {
-    '&:hover::after': {
-      content: '',
-      inset: -3,
-      position: 'absolute',
-    },
-  },
-
-  variants: {
-    variant: {
-      active: {
-        '&::before': {
-          boxShadow: '0px 4px 16px -12px $$shadowColor',
-        },
-        '&:active': {
-          transition: 'transform 150ms cubic-bezier(0.22, 1, 0.36, 1)',
-        },
-        '&:focus:not(:focus-visible)': {
-          boxShadow: 'none',
-        },
-      },
-      ghost: {
-        '&::before': {
-          boxShadow: '0px 4px 16px -12px $$shadowColor',
-        },
-        '@hover': {
-          '&:hover': {
-            backgroundColor: '$$bgColor',
-          },
-        },
-        '&:focus:not(:focus-visible)': {
-          boxShadow: 'none',
-        },
-      },
-    },
-  },
-});
+const CodeWindow = ({ style, ...props }: React.ComponentPropsWithoutRef<'div'>) => (
+  <Box
+    className="dark-theme"
+    style={{
+      position: 'relative',
+      maxHeight: '100%',
+      borderRadius: 'var(--radius-5)',
+      backgroundColor: 'var(--developer-experience-code-window-background)',
+      ...style,
+    }}
+    {...props}
+  />
+);
 
 const code = {
   unstyled: `// Add styles with your preferred CSS technology

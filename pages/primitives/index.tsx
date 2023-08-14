@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Container } from '@radix-ui/themes';
+import { Container, Section } from '@radix-ui/themes';
 import { Footer } from '@components/Footer';
 import { MobileMenuProvider } from '@components/MobileMenu';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
@@ -51,7 +51,10 @@ export default function PrimitivesHome() {
       </Container>
       <CommunitySection />
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
-        <Footer />
+        <Separator size="2" />
+        <Section size={{ initial: '2', md: '3' }} pb="0">
+          <Footer />
+        </Section>
       </Container>
     </MobileMenuProvider>
   );
