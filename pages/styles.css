@@ -20,6 +20,9 @@ body {
   color: var(--gray-12);
   --colors-hiContrast: var(--slate-12);
   -webkit-text-size-adjust: 100%;
+
+  /* Provide a default family for portalled elements not using themes (e.g. Primitives examples) */
+  font-family: var(--fonts-untitled);
 }
 
 svg {
