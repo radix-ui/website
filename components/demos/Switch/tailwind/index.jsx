@@ -3,7 +3,7 @@ import * as Switch from '@radix-ui/react-switch';
 
 const SwitchDemo = () => (
   <form>
-    <div className="flex items-center" style={{ display: 'flex', alignItems: 'center' }}>
+    <div className="flex items-center">
       <label className="text-white text-[15px] leading-none pr-[15px]" htmlFor="airplane-mode">
         Airplane mode
       </label>
