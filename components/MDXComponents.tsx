@@ -99,7 +99,7 @@ export const components = {
       return <Link {...props} href={href} target="_blank" rel="noopener" />;
     }
     return (
-      <NextLink href={href} passHref>
+      <NextLink href={href} passHref legacyBehavior>
         <Link {...props} />
       </NextLink>
     );

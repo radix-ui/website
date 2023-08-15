@@ -255,7 +255,7 @@ const MainContent = ({
         </Text>
 
         <Flex gap="4" direction={{ initial: 'column', xs: 'row' }}>
-          <NextLink href="/themes/docs/overview/getting-started" passHref>
+          <NextLink href="/themes/docs/overview/getting-started" passHref legacyBehavior>
             <Button
               asChild
               size={{ initial: '3', xs: '4' }}
@@ -278,7 +278,7 @@ const MainContent = ({
               </a>
             </Button>
           </NextLink>
-          <NextLink href="/themes/playground" passHref>
+          <NextLink href="/themes/playground" passHref legacyBehavior>
             <Button
               asChild
               size={{ initial: '3', xs: '4' }}

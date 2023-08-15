@@ -12,7 +12,7 @@ export const AdoptionSection = () => {
           <Heading as="h2" size="7" mb="5">
             Adoption made easy
           </Heading>
-          <NextLink href="/primitives/docs" passHref>
+          <NextLink href="/primitives/docs" passHref legacyBehavior>
             <Button asChild size={{ initial: '3', xs: '4' }} color="gray" highContrast>
               <a>
                 Go to docs

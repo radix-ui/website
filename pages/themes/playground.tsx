@@ -261,7 +261,7 @@ export default function ComponentsPage() {
                     Alert Dialog
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/alert-dialog">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/alert-dialog">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -379,7 +379,7 @@ export default function ComponentsPage() {
                     Aspect Ratio
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/aspect-ratio">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/aspect-ratio">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -404,7 +404,7 @@ export default function ComponentsPage() {
                     Avatar
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/avatar">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/avatar">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -589,7 +589,7 @@ export default function ComponentsPage() {
                     Badge
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/badge">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/badge">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -723,7 +723,7 @@ export default function ComponentsPage() {
                     Blockquote
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/blockquote">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/blockquote">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -867,7 +867,7 @@ export default function ComponentsPage() {
                     Button
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/button">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/button">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -1009,7 +1009,7 @@ export default function ComponentsPage() {
                     Callout
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/callout">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/callout">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -1167,7 +1167,7 @@ export default function ComponentsPage() {
                     Card
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/card">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/card">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -1296,7 +1296,7 @@ export default function ComponentsPage() {
                     Checkbox
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/checkbox">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/checkbox">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -1439,7 +1439,7 @@ export default function ComponentsPage() {
                     Code
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/code">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/code">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -1576,7 +1576,7 @@ export default function ComponentsPage() {
                     Context Menu
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/context-menu">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/context-menu">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -1748,7 +1748,7 @@ export default function ComponentsPage() {
                     Dialog
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/dialog">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/dialog">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -1950,7 +1950,7 @@ export default function ComponentsPage() {
                     Dropdown Menu
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/dropdown-menu">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/dropdown-menu">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -2139,7 +2139,7 @@ export default function ComponentsPage() {
                     Em
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/em">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/em">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -2162,7 +2162,7 @@ export default function ComponentsPage() {
                     Heading
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/heading">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/heading">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -2300,7 +2300,7 @@ export default function ComponentsPage() {
                     Hover Card
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/hover-card">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/hover-card">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -2340,7 +2340,7 @@ export default function ComponentsPage() {
                     Icon Button
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/icon-button">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/icon-button">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -2482,7 +2482,7 @@ export default function ComponentsPage() {
                     Inset
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/inset">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/inset">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -2546,7 +2546,7 @@ export default function ComponentsPage() {
                     Kbd
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/kbd">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/kbd">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -2607,7 +2607,7 @@ export default function ComponentsPage() {
                     Link
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/link">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/link">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -2765,7 +2765,7 @@ export default function ComponentsPage() {
                     Popover
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/popover">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/popover">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -2922,7 +2922,7 @@ export default function ComponentsPage() {
                     Quote
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/quote">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/quote">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -2947,7 +2947,7 @@ export default function ComponentsPage() {
                     Radio Group
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/radio-group">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/radio-group">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -3124,7 +3124,7 @@ export default function ComponentsPage() {
                     Scroll Area
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/scroll-area">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/scroll-area">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -3189,7 +3189,7 @@ export default function ComponentsPage() {
                     Select
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/select">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/select">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -3357,7 +3357,7 @@ export default function ComponentsPage() {
                     Separator
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/separator">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/separator">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -3387,7 +3387,7 @@ export default function ComponentsPage() {
                     Slider
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/slider">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/slider">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -3546,7 +3546,7 @@ export default function ComponentsPage() {
                     Switch
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/switch">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/switch">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -3703,7 +3703,7 @@ export default function ComponentsPage() {
                     Table
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/table">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/table">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -3833,7 +3833,7 @@ export default function ComponentsPage() {
                     Tabs
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/tabs">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/tabs">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -3859,7 +3859,7 @@ export default function ComponentsPage() {
                     Text
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/text">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/text">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -4118,7 +4118,7 @@ export default function ComponentsPage() {
                     Text Area
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/text-area">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/text-area">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -4253,7 +4253,7 @@ export default function ComponentsPage() {
                     Text Field
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/text-field">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/text-field">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>
@@ -4481,7 +4481,7 @@ export default function ComponentsPage() {
                     Tooltip
                   </Link>
                 </Heading>
-                <NextLink passHref href="/themes/docs/components/tooltip">
+                <NextLink passHref legacyBehavior href="/themes/docs/components/tooltip">
                   <Link className={styles.PlaygroundDocsLink} size="2">
                     View in docs
                   </Link>

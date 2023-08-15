@@ -61,7 +61,7 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
             left="0"
             pl="4"
           >
-            <NextLink href="/" passHref>
+            <NextLink href="/" passHref legacyBehavior>
               <BoxLink>
                 <AccessibleIcon label="Radix Homepage">
                   {mobileMenu.open ? <RadixLogoIcon /> : <RadixLogo />}
@@ -79,7 +79,7 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
             left="0"
             pl="4"
           >
-            <NextLink href="/" passHref>
+            <NextLink href="/" passHref legacyBehavior>
               <BoxLink>
                 <AccessibleIcon label="Radix Homepage">
                   <RadixLogo />
@@ -173,7 +173,7 @@ const HeaderProductLink = ({
   href = '',
   ...props
 }: React.ComponentPropsWithoutRef<'a'> & { active?: boolean }) => (
-  <NextLink href={href}>
+  <NextLink href={href} passHref legacyBehavior>
     <a data-state={active ? 'active' : 'inactive'} className={styles.HeaderProductLink} {...props}>
       <span className={styles.HeaderProductLinkInner}>{children}</span>
       <span className={styles.HeaderProductLinkInnerHidden}>{children}</span>

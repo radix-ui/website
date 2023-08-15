@@ -269,7 +269,7 @@ export const PrimitivesHero = () => {
               design systems.
             </Text>
           </Box>
-          <NextLink href="/primitives/docs" passHref>
+          <NextLink href="/primitives/docs" passHref legacyBehavior>
             <Button asChild size={{ initial: '3', xs: '4' }} color="gray" highContrast>
               <a>
                 Get started
@@ -635,7 +635,11 @@ export const PrimitivesHero = () => {
                           <Text size="2" color="gray">
                             See more components in the docs
                           </Text>
-                          <NextLink href="/primitives/docs/overview/getting-started" passHref>
+                          <NextLink
+                            href="/primitives/docs/overview/getting-started"
+                            passHref
+                            legacyBehavior
+                          >
                             <Link
                               size="3"
                               highContrast

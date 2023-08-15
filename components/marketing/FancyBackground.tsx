@@ -1,7 +1,6 @@
-import React from 'react';
 import { Box } from '@radix-ui/themes';
 
-export const FancyBackground: React.FC = ({ children }) => {
+export const FancyBackground = ({ children }: { children: React.ReactNode }) => {
   return (
     <Box style={{ position: 'relative', zIndex: 0, paddingTop: 'var(--header-height)' }}>
       <Box
