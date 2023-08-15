@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import styles from './MagicCurtain.module.css';
 import { createContext } from '@radix-ui/react-context';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
@@ -150,11 +151,16 @@ const MagicCurtainControls = ({ images }: MagicCurtainControlsProps) => {
         ].includes(event.animationName);
 
         if (event.target instanceof HTMLElement && isMagicCurtainAnimation) {
-          itemToHide.setVisibility('hidden');
-          event.currentTarget.removeEventListener('animationend', handleAnimationEnd);
+          // With React 18 concurrency, the update is applied a frame after
+          // the animation ends, creating a flash of visible content.
+          // By manually flushing we ensure they sync within a frame, removing the flash.
+          ReactDOM.flushSync(() => {
+            itemToHide.setVisibility('hidden');
+            event.currentTarget.removeEventListener('animationend', handleAnimationEnd);
 
-          // Run the rescheduled animation callback if it’s there
-          upcomingAnimationCallback.current?.();
+            // Run the rescheduled animation callback if it’s there
+            upcomingAnimationCallback.current?.();
+          });
         }
       };
 
