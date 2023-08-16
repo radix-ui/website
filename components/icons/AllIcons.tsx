@@ -89,7 +89,7 @@ const Abstract = () => {
   return (
     <Box>
       <Flex py="6">
-        <Heading as="h3" size="1" weight="medium">
+        <Heading as="h3" size="1">
           Abstract
         </Heading>
       </Flex>
@@ -247,7 +247,7 @@ const Alignment = () => {
   return (
     <Box>
       <Flex pt="6" pb="6">
-        <Heading as="h3" size="1" weight="medium">
+        <Heading as="h3" size="1">
           Alignment
         </Heading>
       </Flex>
@@ -309,7 +309,7 @@ const Arrows = () => {
   return (
     <Box>
       <Flex pt="6" pb="6">
-        <Heading as="h3" size="1" weight="medium">
+        <Heading as="h3" size="1">
           Arrows
         </Heading>
       </Flex>
@@ -425,7 +425,7 @@ const Borders = () => {
   return (
     <Box>
       <Flex pt="6" pb="6">
-        <Heading as="h3" size="1" weight="medium">
+        <Heading as="h3" size="1">
           Borders and corners
         </Heading>
       </Flex>
@@ -487,7 +487,7 @@ const Components = () => {
   return (
     <Box>
       <Flex pt="6" pb="6">
-        <Heading as="h3" size="1" weight="medium">
+        <Heading as="h3" size="1">
           Components
         </Heading>
       </Flex>
@@ -585,7 +585,7 @@ const Design = () => {
   return (
     <Box>
       <Flex pt="6" pb="6">
-        <Heading as="h3" size="1" weight="medium">
+        <Heading as="h3" size="1">
           Design
         </Heading>
       </Flex>
@@ -719,7 +719,7 @@ const Logos = () => {
   return (
     <Box>
       <Flex pt="6" pb="6">
-        <Heading as="h3" size="1" weight="medium">
+        <Heading as="h3" size="1">
           Logos
         </Heading>
       </Flex>
@@ -775,7 +775,7 @@ const Music = () => {
   return (
     <Box>
       <Flex pt="6" pb="6">
-        <Heading as="h3" size="1" weight="medium">
+        <Heading as="h3" size="1">
           Music
         </Heading>
       </Flex>
@@ -825,7 +825,7 @@ const Objects = () => {
   return (
     <Box>
       <Flex pt="6" pb="6">
-        <Heading as="h3" size="1" weight="medium">
+        <Heading as="h3" size="1">
           Objects
         </Heading>
       </Flex>
@@ -1082,7 +1082,7 @@ const Typography = () => {
   return (
     <Box>
       <Flex pt="6" pb="6">
-        <Heading as="h3" size="1" weight="medium">
+        <Heading as="h3" size="1">
           Typography
         </Heading>
       </Flex>

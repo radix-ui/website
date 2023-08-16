@@ -1,6 +1,6 @@
 import React from 'react';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
-import { styled } from '@stitches/react';
+import { styled } from '@lib/stitches';
 import { PrimitivesHeroButton } from '@components/marketing/PrimitivesHeroButton';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import { Flex, IconButton, Text, TextField, Grid, Box } from '@radix-ui/themes';
@@ -70,7 +70,7 @@ export function PrimitivesHeroPopover() {
         >
           <PopoverPrimitive.Arrow fill="var(--color-panel-solid)" />
 
-          <Text as="div" size="3" weight="medium" mb="2">
+          <Text as="div" size="3" weight="bold" mb="2">
             Dimensions
           </Text>
 

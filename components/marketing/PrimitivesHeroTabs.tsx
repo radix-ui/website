@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled } from '@modulz/design-system';
+import { styled } from '@lib/stitches';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import { PrimitivesHeroButton } from '@components/marketing/PrimitivesHeroButton';
 import { TextField, Text, Box, Flex } from '@radix-ui/themes';
@@ -23,7 +23,7 @@ const StyledTrigger = styled(TabsPrimitive.Trigger, {
   $$bottomShadow: 'inset 0 -1px var(--gray-6)',
   all: 'unset',
   padding: '0 20px',
-  height: '$7',
+  height: 'var(--space-7)',
   flex: 1,
   display: 'flex',
   alignItems: 'center',
@@ -41,13 +41,9 @@ const StyledTrigger = styled(TabsPrimitive.Trigger, {
     backgroundColor: 'var(--color-panel-solid)',
     $$bottomShadow: '0 0',
   },
-  '&:focus': {
+  '&:focus-visible': {
     zIndex: 1,
     boxShadow: `0 0 0 2px var(--accent-8)`,
-  },
-  '&:focus:not(:focus-visible)': {
-    zIndex: 'auto',
-    boxShadow: '$$bottomShadow, $$sideShadow',
   },
   '& + &': {
     $$sideShadow: '-1px 0 var(--gray-6)',
@@ -67,8 +63,7 @@ const StyledContent = styled(TabsPrimitive.Content, {
   borderBottomLeftRadius: 'var(--radius-4)',
   borderBottomRightRadius: 'var(--radius-4)',
   outline: 'none',
-  '&:focus': { boxShadow: `0 0 0 2px $colors$indigo8` },
-  '&:focus:not(:focus-visible)': { boxShadow: 'none' },
+  '&:focus-visible': { boxShadow: `0 0 0 2px var(--blue-8)` },
 });
 
 const Tabs = StyledTabs;

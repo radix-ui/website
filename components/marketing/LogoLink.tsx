@@ -1,4 +1,4 @@
-import { styled } from '@stitches/react';
+import { styled } from '@lib/stitches';
 
 export const LogoLink = styled('a', {
   display: 'block',
@@ -24,9 +24,9 @@ export const LogoLink = styled('a', {
   variants: {
     variant: {
       normal: {
-        m: '-$1',
-        p: '$1',
-        br: '$1',
+        margin: 'calc(var(--space-1) * -1)',
+        padding: 'var(--space-1)',
+        borderRadius: 'var(--radius-2)',
       },
       box: {
         boxShadow: '0 0 0 1px var(--gray-6)',

@@ -1,4 +1,4 @@
-import { styled } from '@stitches/react';
+import { styled } from '@lib/stitches';
 
 export const PrimitivesHeroButton = styled('button', {
   // Reset
@@ -22,11 +22,8 @@ export const PrimitivesHeroButton = styled('button', {
   // For Safari layout shifts when interacting with positioned components
   willChange: 'transform',
 
-  '&:focus': {
+  '&:focus-visible': {
     boxShadow: '0 0 0 2px var(--gray-a8)',
-  },
-  '&:focus:not(:focus-visible)': {
-    boxShadow: 'none',
   },
 
   variants: {

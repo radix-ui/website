@@ -99,7 +99,7 @@ export const SearchResults = ({ value }: SearchResultsProps) => {
           }}
         >
           <Text size="2" style={{ textAlign: 'center' }}>
-            No icons for <span style={{ fontWeight: 500 }}>{value}</span>
+            No icons for <Text weight="bold">{value}</Text>
           </Text>
         </Flex>
       )}

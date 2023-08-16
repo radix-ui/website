@@ -1,13 +1,16 @@
 import React from 'react';
 import { MarketingCaption } from './MarketingCaption';
-import { Box, Section, Container, Heading, Text, Card, Grid } from '@radix-ui/themes';
+import { Box, Section, Container, Heading, Text, Card, Grid, Flex } from '@radix-ui/themes';
 
 export const CommunitySection = () => {
   return (
     <Section size={{ initial: '2', md: '3' }}>
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Box mb="5">
-          <MarketingCaption mb="1">An active and friendly community 👋</MarketingCaption>
+          <Flex mb="1">
+            <MarketingCaption mb="1">An active and friendly community</MarketingCaption>
+            <Text size="3"> 👋</Text>
+          </Flex>
           <Heading as="h2" size="7" mb="4">
             Join our fast-growing community
           </Heading>

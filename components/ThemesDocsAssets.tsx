@@ -60,7 +60,7 @@ export function ThemesPanelTranslucentExample() {
 
                 <Box mb="5">
                   <label>
-                    <Text as="div" size="2" weight="medium" mb="2">
+                    <Text as="div" size="2" weight="bold" mb="2">
                       Email address
                     </Text>
                     <TextFieldInput placeholder="Enter your email" />
@@ -75,7 +75,7 @@ export function ThemesPanelTranslucentExample() {
                   </Box>
 
                   <label>
-                    <Text as="div" size="2" weight="medium" mb="2">
+                    <Text as="div" size="2" weight="bold" mb="2">
                       Password
                     </Text>
                     <TextFieldInput placeholder="Enter your password" />
@@ -217,7 +217,7 @@ export function ThemesVariantsExample() {
               <Flex direction="column" gap="4">
                 <Flex asChild direction="column" gap="2">
                   <Label>
-                    <Text size="2" weight="medium">
+                    <Text size="2" weight="bold">
                       Name
                     </Text>
                     <TextField.Input variant="surface" defaultValue="Emily Adams" />
@@ -226,7 +226,7 @@ export function ThemesVariantsExample() {
 
                 <Flex asChild direction="column" gap="2">
                   <Label>
-                    <Text size="2" weight="medium">
+                    <Text size="2" weight="bold">
                       Username
                     </Text>
                     <TextField.Input variant="surface" defaultValue="@emilyadams" />
@@ -235,7 +235,7 @@ export function ThemesVariantsExample() {
 
                 <Flex asChild direction="column" gap="2">
                   <Label>
-                    <Text size="2" weight="medium">
+                    <Text size="2" weight="bold">
                       Email
                     </Text>
                     <TextField.Input variant="surface" defaultValue="emily@example.com" />
@@ -243,7 +243,7 @@ export function ThemesVariantsExample() {
                 </Flex>
 
                 <Flex direction="column" gap="2">
-                  <Text size="2" weight="medium">
+                  <Text size="2" weight="bold">
                     Privacy
                   </Text>
                   <Flex direction="column" gap="2">
@@ -271,7 +271,7 @@ export function ThemesVariantsExample() {
                 </Flex>
 
                 <Flex direction="column" gap="2">
-                  <Text size="2" weight="medium">
+                  <Text size="2" weight="bold">
                     Danger zone
                   </Text>
                   <Flex align="start" direction="column" gap="2">
@@ -697,7 +697,7 @@ export function ThemesVolumeControlExample() {
                   </svg>
                 </IconButton>
                 <Flex direction="column">
-                  <Text align="center" weight="medium" size="2">
+                  <Text align="center" weight="bold" size="2">
                     Normalize
                   </Text>
                   <Text align="center" color="gray" size="1">
@@ -721,7 +721,7 @@ export function ThemesVolumeControlExample() {
                   </svg>
                 </IconButton>
                 <Flex direction="column">
-                  <Text align="center" weight="medium" size="2">
+                  <Text align="center" weight="bold" size="2">
                     Equalizer
                   </Text>
                   <Text align="center" color="gray" size="1">
@@ -745,7 +745,7 @@ export function ThemesVolumeControlExample() {
                   </svg>
                 </IconButton>
                 <Flex direction="column">
-                  <Text align="center" weight="medium" size="2">
+                  <Text align="center" weight="bold" size="2">
                     3D Audio
                   </Text>
                   <Text align="center" color="gray" size="1">
@@ -769,7 +769,7 @@ export function ThemesVolumeControlExample() {
                   </svg>
                 </IconButton>
                 <Flex direction="column">
-                  <Text align="center" weight="medium" size="2">
+                  <Text align="center" weight="bold" size="2">
                     Cross-Fade
                   </Text>
                   <Text align="center" color="gray" size="1">

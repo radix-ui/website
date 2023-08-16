@@ -1,5 +1,5 @@
 import { Box, Text } from '@radix-ui/themes';
-import { styled } from '@stitches/react';
+import { styled } from '@lib/stitches';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 
 const SCROLLBAR_SIZE = 10;
@@ -59,12 +59,12 @@ const StyledThumb = styled(ScrollAreaPrimitive.Thumb, {
     minHeight: 44,
   },
   [`.${StyledScrollbar.className}:hover &`]: {
-    background: '$slateA11',
+    background: 'var(--gray-a11)',
   },
 });
 
 const StyledCorner = styled(ScrollAreaPrimitive.Corner, {
-  background: '$blackA8',
+  background: 'var(--black-a8)',
 });
 
 const ScrollArea = StyledScrollArea;

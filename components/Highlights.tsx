@@ -98,7 +98,7 @@ export function Highlights({ features }) {
             <Separator size="2" my="5" />
           </Box>
 
-          <Flex direction="column" gap="2">
+          <Flex direction="column" gap="2" style={{ whiteSpace: 'nowrap' }}>
             <Box>
               <Flex asChild display="inline-flex" align="center" position="relative" gap="1">
                 <Link
