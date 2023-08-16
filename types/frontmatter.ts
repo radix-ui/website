@@ -11,7 +11,6 @@ export type Frontmatter = {
   publishedName?: string;
   slug: string;
   by?: 'colm' | 'stephen' | 'pedro';
-  readingTime?: { text: string; minutes: number; time: number; words: number };
   gzip?: number;
   sourcePath?: string;
 };

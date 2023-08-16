@@ -45,7 +45,7 @@ export default function ColorsHome() {
               </Text>
             </Box>
 
-            <NextLink href="/colors/docs/overview/installation" passHref>
+            <NextLink href="/colors/docs/overview/installation" passHref legacyBehavior>
               <ColorsMarketingButton asChild size={{ initial: '3', xs: '4' }}>
                 <a>
                   Get started

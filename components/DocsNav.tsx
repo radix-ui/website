@@ -84,7 +84,7 @@ const DocsNavItem = ({ active, disabled, href, ...props }: DocsNavItemProps) => 
   }
 
   return (
-    <NextLink passHref href={href}>
+    <NextLink passHref legacyBehavior href={href}>
       <a className={className} {...props} />
     </NextLink>
   );

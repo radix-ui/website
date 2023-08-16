@@ -36,7 +36,7 @@ function DocsPaginationLink({ route, direction }) {
       <Text size="2" color="gray">
         {direction}
       </Text>
-      <NextLink href={`/${route.slug}`} passHref>
+      <NextLink href={`/${route.slug}`} passHref legacyBehavior>
         <Link>
           <Text size="4">{route.title}</Text>
         </Link>

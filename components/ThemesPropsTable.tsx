@@ -9,7 +9,7 @@ const Link = ({ href = '', ...props }) => {
     return <DSLink {...props} href={href} target="_blank" rel="noopener" />;
   }
   return (
-    <NextLink href={href} passHref>
+    <NextLink href={href} passHref legacyBehavior>
       <DSLink {...props} />
     </NextLink>
   );

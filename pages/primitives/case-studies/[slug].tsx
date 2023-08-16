@@ -135,7 +135,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                     Next case study
                   </Text>
 
-                  <NextLink href={`/${frontmatter.nextCaseStudySlug}`} passHref>
+                  <NextLink href={`/${frontmatter.nextCaseStudySlug}`} passHref legacyBehavior>
                     <Link highContrast color="gray">
                       {frontmatter.nextCaseStudyTitle}
                     </Link>
