@@ -9,7 +9,7 @@ import {
 } from '@radix-ui/react-icons';
 import { Box, Flex, Heading, Link, Separator, Text } from '@radix-ui/themes';
 import * as React from 'react';
-import { CopyToast, CopyToastVisibility } from './CopyToast';
+import { CopyToastProvider } from './CopyToast';
 import { MainContent } from './MainContent';
 
 import styles from './IconsPanel.module.css';
@@ -26,14 +26,7 @@ export const IconsPanel = () => {
   };
 
   return (
-    <CopyToastVisibility.Provider
-      value={{
-        icon: toastIcon,
-        setIcon: setToastIcon,
-        isVisible: toastIsVisible,
-        setIsVisible: setToastIsVisibleTimeout,
-      }}
-    >
+    <CopyToastProvider>
       <Box
         style={{
           borderRadius: 'var(--radius-4)',
@@ -186,7 +179,6 @@ function MyComponent () {
           </Box>
         </Box>
       </Box>
-      <CopyToast />
-    </CopyToastVisibility.Provider>
+    </CopyToastProvider>
   );
 };

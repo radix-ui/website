@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Icons from '@radix-ui/react-icons';
 import { Grid, Tooltip, Heading, Box, IconButton, Flex } from '@radix-ui/themes';
-import { CopyToastVisibility } from './CopyToast';
+import { useCopyToast } from './CopyToast';
 
 import styles from './AllIcons.module.css';
 import { TooltipProvider } from '@radix-ui/react-tooltip';
@@ -45,46 +45,43 @@ type CopyButtonProps = {
 };
 
 const CopyButton = ({ children, label }: CopyButtonProps) => {
+  const { showCopyToast } = useCopyToast();
+
   return (
-    <CopyToastVisibility.Consumer>
-      {({ setIcon, setIsVisible }) => (
-        <Tooltip className="radix-themes-custom-fonts" content={label} side="top" sideOffset={5}>
-          <IconButton
-            highContrast
-            variant="ghost"
-            size="4"
-            onClick={(event: React.MouseEvent) => {
-              const svg = event.currentTarget.querySelector('svg');
-              const code = svg && svg.parentElement ? svg.parentElement.innerHTML : null;
+    <Tooltip className="radix-themes-custom-fonts" content={label} side="top" sideOffset={5}>
+      <IconButton
+        highContrast
+        variant="ghost"
+        size="4"
+        onClick={(event: React.MouseEvent) => {
+          const svg = event.currentTarget.querySelector('svg');
+          const code = svg && svg.parentElement ? svg.parentElement.innerHTML : null;
 
-              // Copy code to clipboard via a hidden textarea element
-              if (code) {
-                // Temporary shim until a proper focus-visible handler is added
-                if (document.activeElement instanceof HTMLButtonElement) {
-                  document.activeElement.blur();
-                }
+          // Copy code to clipboard via a hidden textarea element
+          if (code) {
+            // Temporary shim until a proper focus-visible handler is added
+            if (document.activeElement instanceof HTMLButtonElement) {
+              document.activeElement.blur();
+            }
 
-                const textarea = document.createElement('textarea');
-                textarea.value = code.toString();
-                textarea.setAttribute('readonly', '');
-                textarea.style.position = 'absolute';
-                textarea.style.left = '-9999px';
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
+            const textarea = document.createElement('textarea');
+            textarea.value = code.toString();
+            textarea.setAttribute('readonly', '');
+            textarea.style.position = 'absolute';
+            textarea.style.left = '-9999px';
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
 
-                // Show CopyToast and set latest icon
-                setIsVisible();
-                setIcon(code);
-              }
-            }}
-          >
-            {children}
-          </IconButton>
-        </Tooltip>
-      )}
-    </CopyToastVisibility.Consumer>
+            // Show CopyToast and set latest icon
+            showCopyToast(code);
+          }
+        }}
+      >
+        {children}
+      </IconButton>
+    </Tooltip>
   );
 };
 

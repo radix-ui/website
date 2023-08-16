@@ -1,56 +1,74 @@
 import React from 'react';
-import { Box, Text, Portal, Theme, Flex } from '@radix-ui/themes';
+import { Text, Theme, Flex } from '@radix-ui/themes';
+import * as Toast from '@radix-ui/react-toast';
 
 import styles from './CopyToast.module.css';
 
-type CopyToastVisibilityValue = {
-  icon: string;
-  setIcon: (newIcon: string) => void;
-  isVisible: boolean;
-  setIsVisible: () => void;
+type CopyToastContextValue = {
+  showCopyToast: (icon: string) => void;
 };
 
-export const CopyToastVisibility = React.createContext<CopyToastVisibilityValue>({
-  icon: '',
-  setIcon: () => undefined,
-  isVisible: false,
-  setIsVisible: () => undefined,
-});
+const CopyToastContext = React.createContext<CopyToastContextValue | null>(null);
 
-export const CopyToast = () => {
+export const CopyToastProvider = ({ children }: { children: React.ReactNode }) => {
+  const [open, setOpen] = React.useState(false);
+  const [icon, setIcon] = React.useState('');
+  const timeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
+
   return (
-    <CopyToastVisibility.Consumer>
-      {({ icon, isVisible }) => (
-        <Portal>
-          <Theme className="radix-themes-custom-fonts">
-            <Flex className={styles.Toast} m="5" justify="center">
-              <Box
-                className={styles.ToastInner}
-                style={{
-                  opacity: Number(isVisible),
-                  transitionDuration: isVisible ? '50ms' : '300ms',
-                }}
+    <CopyToastContext.Provider
+      value={{
+        showCopyToast: React.useCallback((icon) => {
+          setIcon(icon);
+          setOpen(true);
+          clearTimeout(timeoutRef.current);
+          timeoutRef.current = setTimeout(() => setOpen(false), 3000);
+        }, []),
+      }}
+    >
+      <Toast.Provider>
+        {children}
+
+        <Theme className="radix-themes-custom-fonts" asChild>
+          <Toast.Root
+            className={styles.Toast}
+            open={open}
+            onOpenChange={setOpen}
+            duration={Infinity}
+          >
+            <Toast.Title asChild>
+              <Text
+                size="2"
+                style={{ color: 'var(--gray-1)', display: 'flex', alignItems: 'center' }}
               >
-                <Text
-                  size="2"
-                  style={{ color: 'var(--gray-1)', display: 'flex', alignItems: 'center' }}
-                >
-                  SVG copied to clipboard
-                  <span
-                    dangerouslySetInnerHTML={{ __html: icon }}
-                    style={{
-                      display: 'inline-flex',
-                      marginLeft: '0.75em',
-                      verticalAlign: 'top',
-                      justifyContent: 'center',
-                    }}
-                  />
-                </Text>
-              </Box>
-            </Flex>
-          </Theme>
-        </Portal>
-      )}
-    </CopyToastVisibility.Consumer>
+                SVG copied to clipboard
+                <span
+                  dangerouslySetInnerHTML={{ __html: icon }}
+                  style={{
+                    display: 'inline-flex',
+                    marginLeft: '0.75em',
+                    verticalAlign: 'top',
+                    justifyContent: 'center',
+                  }}
+                />
+              </Text>
+            </Toast.Title>
+          </Toast.Root>
+        </Theme>
+
+        <Flex className={styles.ToastViewport} m="5" justify="center" asChild>
+          <Toast.Viewport />
+        </Flex>
+      </Toast.Provider>
+    </CopyToastContext.Provider>
   );
+};
+
+export const useCopyToast = () => {
+  const copyToastContext = React.useContext(CopyToastContext);
+  if (!copyToastContext) {
+    throw new TypeError('`useCopyToast` must be called from within an `CopyToastProvider`');
+  }
+
+  return copyToastContext;
 };

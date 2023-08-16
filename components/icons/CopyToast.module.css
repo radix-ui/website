@@ -1,12 +1,15 @@
-.Toast {
+.ToastViewport {
   position: fixed;
   bottom: 0;
+  left: 0;
+  padding: 0;
+  list-style: none;
+  pointer-events: none;
   width: 100%;
   max-width: calc(100vw - 50px);
-  pointer-events: none;
 }
 
-.ToastInner {
+.Toast {
   pointer-events: auto;
   -webkit-user-select: none;
   user-select: none;
@@ -15,5 +18,34 @@
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-2);
   box-shadow: 0 3px 20px -5px rgba(0, 0, 0, 0.4);
-  transition-property: opacity;
+}
+
+.Toast[data-state='open'] {
+  animation: scaleIn 100ms ease;
+}
+
+.Toast[data-state='closed'] {
+  animation: scaleOut 200ms ease;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
 }
