@@ -6,6 +6,8 @@ import tinycolor from 'tinycolor2';
 
 type Scale = Record<string, string>;
 
+const HSLA_ALPHA_REGEX = /hsla\(\s*\d{1,3}\s*,\s*\d{1,3}(?:\.\d+)?%\s*,\s*\d{1,3}(?:\.\d+)?%\s*,\s*(\d(?:\.\d+)?|\.\d+)\s*\)/;
+
 const toCssCasing = (str: string) =>
   str
     .replace(/([a-z])(\d)/, '$1-$2')
@@ -23,7 +25,7 @@ const scaleToHexObject = (name: string, scale: Scale) => {
   const values = Object.entries(scale)
     .map(([key, value]) => {
       // tinycolor doesn't know to parse alpha from the newer hsl syntax, so we extract it ourselves
-      const alpha = value.match(/\/\s*((\d|\.)+)/)?.[1] ?? '1';
+      const alpha = value.match(HSLA_ALPHA_REGEX)?.[1] ?? '1';
       // Convert the alpha number to a hex string
       const hexAlpha = Math.round(+alpha * 255)
         .toString(16)
@@ -70,7 +72,7 @@ const scaleToSvg = (
       const x = i * valueWidth;
       const hex = tinycolor(value).toHexString();
       // tinycolor doesn't know to parse alpha from the newer hsl syntax, so we extract it ourselves
-      const alpha = value.match(/\/\s*((\d|\.)+)/)?.[1] ?? '1';
+      const alpha = value.match(HSLA_ALPHA_REGEX)?.[1] ?? '1';
       return `<rect x="${x}" width="${valueWidth}" height="${valueHeight}" fill="${hex}" fill-opacity="${alpha}" />`;
     })
     .join('')}</svg>`;
