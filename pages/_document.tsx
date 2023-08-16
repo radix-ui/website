@@ -9,6 +9,34 @@ export default class Document extends NextDocument {
       <Html lang="en">
         <Head>
           <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
+          <link
+            rel="preload"
+            href="/fonts/AdobeTextPro-Regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/soehne-mono-web-buch.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="https://cdn.workos.com/fonts/untitled-sans-regular-v2.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="https://cdn.workos.com/fonts/untitled-sans-medium-v2.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
           <style
             dangerouslySetInnerHTML={{
               __html: `
