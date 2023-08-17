@@ -22,7 +22,6 @@ name: hover-card
     'Customize side, alignment, offsets, collision handling.',
     'Optionally render a pointing arrow.',
     'Supports custom open and close delays.',
-    'Opens on hover only.',
     'Ignored by screen readers.',
   ]}
 />
@@ -554,4 +553,15 @@ export default () => (
 
 ### Keyboard Interactions
 
-The hover card is intended for mouse users only so will not respond to keyboard navigation.
+<KeyboardTable
+  data={[
+    {
+      keys: ['Tab'],
+      description: 'Opens/closes the hover card.',
+    },
+    {
+      keys: ['Enter'],
+      description: 'Opens the hover card link',
+    },
+  ]}
+/>
