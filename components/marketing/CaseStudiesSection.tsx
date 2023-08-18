@@ -127,7 +127,7 @@ export const CaseStudiesSection = () => {
             </NextLink>
 
             <NextLink href="/primitives/case-studies/basement-studio" passHref legacyBehavior>
-              <LogoLink css={{ mb: -6 }}>
+              <LogoLink style={{ marginBottom: -6 }}>
                 <AccessibleIcon label="basement.studio case study">
                   <CaseStudyLogo variant="basement.studio" width="120" />
                 </AccessibleIcon>
@@ -143,7 +143,7 @@ export const CaseStudiesSection = () => {
             </NextLink>
 
             <NextLink href="/primitives/case-studies/liveblocks" passHref legacyBehavior>
-              <LogoLink css={{ mb: -3 }}>
+              <LogoLink style={{ marginBottom: -3 }}>
                 <AccessibleIcon label="Liveblocks case study">
                   <CaseStudyLogo variant="Liveblocks" width="135" />
                 </AccessibleIcon>
@@ -151,7 +151,7 @@ export const CaseStudiesSection = () => {
             </NextLink>
 
             <NextLink href="/primitives/case-studies/supabase" passHref legacyBehavior>
-              <LogoLink css={{ mb: -2 }}>
+              <LogoLink style={{ marginBottom: -2 }}>
                 <AccessibleIcon label="Supabase case study">
                   <CaseStudyLogo variant="Supabase" width="140" />
                 </AccessibleIcon>
@@ -163,7 +163,7 @@ export const CaseStudiesSection = () => {
               passHref
               legacyBehavior
             >
-              <LogoLink css={{ mt: 2 }}>
+              <LogoLink style={{ marginTop: 2 }}>
                 <AccessibleIcon label="University of Amsterdam case study">
                   <CaseStudyLogo variant="University of Amsterdam" width="152" />
                 </AccessibleIcon>

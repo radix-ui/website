@@ -77,7 +77,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                   radius="full"
                 />
                 <Box id="author">
-                  <Text as="p" weight="medium">
+                  <Text as="p" weight="bold">
                     {frontmatter.author}
                   </Text>
                   <Text as="p">{frontmatter.authorPosition}</Text>
@@ -131,7 +131,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                 </Box>
                 <Separator size="2" my="7" />
                 <Box mb="5">
-                  <Text weight="medium" as="p">
+                  <Text weight="bold" as="p">
                     Next case study
                   </Text>
 

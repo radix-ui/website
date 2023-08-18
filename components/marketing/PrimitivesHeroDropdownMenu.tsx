@@ -1,6 +1,6 @@
 import React from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { styled } from '@stitches/react';
+import { styled } from '@lib/stitches';
 import {
   CaretDownIcon,
   CaretRightIcon,

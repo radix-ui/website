@@ -2,7 +2,6 @@ import React from 'react';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
-import { darkTheme, DesignSystemProvider } from '@modulz/design-system';
 import { Theme } from '@radix-ui/themes';
 import { PrimitivesDocsPage } from '@components/PrimitivesDocsPage';
 import { ColorsDocsPage } from '@components/ColorsDocsPage';
@@ -109,18 +108,16 @@ function App(props: AppProps) {
   useAnalytics();
 
   return (
-    <DesignSystemProvider>
-      <CssLibPreferenceProvider>
-        <ThemeProvider
-          disableTransitionOnChange
-          attribute="class"
-          value={{ light: 'light-theme', dark: darkTheme.className }}
-          defaultTheme="system"
-          // @ts-ignore
-          children={<Pages {...props} />}
-        />
-      </CssLibPreferenceProvider>
-    </DesignSystemProvider>
+    <CssLibPreferenceProvider>
+      <ThemeProvider
+        disableTransitionOnChange
+        attribute="class"
+        value={{ light: 'light-theme', dark: 'dark-theme' }}
+        defaultTheme="system"
+        // @ts-ignore
+        children={<Pages {...props} />}
+      />
+    </CssLibPreferenceProvider>
   );
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
-import { styled, keyframes } from '@stitches/react';
+import { styled, keyframes } from '@lib/stitches';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 
 const slideDown = keyframes({

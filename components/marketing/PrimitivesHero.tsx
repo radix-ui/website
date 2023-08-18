@@ -1,7 +1,7 @@
 import React from 'react';
 import NextLink from 'next/link';
 import { Box, Text, Link, Flex, Container, Heading } from '@radix-ui/themes';
-import { styled } from '@modulz/design-system';
+import { styled } from '@lib/stitches';
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons';
 import {
   Carousel,
@@ -28,30 +28,30 @@ import { HiddenScroll } from './HiddenScroll';
 const DemoContainer = styled('div', {
   display: 'flex',
   position: 'relative',
-  ai: 'center',
-  jc: 'center',
+  alignItems: 'center',
+  justifyContent: 'center',
   width: 300,
   height: 400,
-  borderRadius: '$3',
-  mb: '$2',
+  borderRadius: 'var(--radius-4)',
+  marginBottom: 'var(--space-2)',
 
   // Content slightly above vertical center feels perfectly centred
-  pb: '$3',
+  paddingBottom: 'var(--space-3)',
 
   // Can't select text because the carousel is draggable
   userSelect: 'none',
   cursor: 'default',
 
-  '@bp1': {
+  '@media (min-width: 520px)': {
     width: 400,
   },
 });
 
 const StyledFocusArea = styled('div', {
   outline: 0,
-  borderRadius: '$3',
+  borderRadius: 'var(--radius-4)',
   '&:focus': {
-    boxShadow: '0 0 0 2px $colors$blue8',
+    boxShadow: '0 0 0 2px var(--blue-a8)',
   },
   '&:focus:not(:focus-visible)': {
     boxShadow: 'none',
@@ -320,9 +320,9 @@ export const PrimitivesHero = () => {
                       <DemoContainer
                         aria-hidden
                         css={{
-                          background: 'linear-gradient(120deg, $indigo6, $crimson5)',
+                          background: 'linear-gradient(120deg, var(--indigo-6), var(--crimson-5))',
                           '.dark &, .dark-theme &': {
-                            background: 'linear-gradient(120deg, $indigo4, $plum3)',
+                            background: 'linear-gradient(120deg, var(--indigo-4), var(--plum-3))',
                           },
                         }}
                       >
@@ -351,9 +351,9 @@ export const PrimitivesHero = () => {
                       <DemoContainer
                         aria-hidden
                         css={{
-                          background: 'linear-gradient(120deg,  $crimson5, $blue5)',
+                          background: 'linear-gradient(120deg,  var(--crimson-5), var(--blue-5))',
                           '.dark &, .dark-theme &': {
-                            background: 'linear-gradient(120deg,  $plum3, $blue3)',
+                            background: 'linear-gradient(120deg,  var(--plum-3), var(--blue-3))',
                           },
                         }}
                       >
@@ -382,9 +382,9 @@ export const PrimitivesHero = () => {
                       <DemoContainer
                         aria-hidden
                         css={{
-                          background: 'linear-gradient(120deg, $blue5, $lime3)',
+                          background: 'linear-gradient(120deg, var(--blue-5), var(--lime-3))',
                           '.dark &, .dark-theme &': {
-                            background: 'linear-gradient(120deg, $blue3, $sand6)',
+                            background: 'linear-gradient(120deg, var(--blue-3), var(--sand-6))',
                           },
                         }}
                       >
@@ -413,9 +413,9 @@ export const PrimitivesHero = () => {
                       <DemoContainer
                         aria-hidden
                         css={{
-                          background: 'linear-gradient(120deg, $lime3, $pink4)',
+                          background: 'linear-gradient(120deg, var(--lime-3), var(--pink-4))',
                           '.dark &, .dark-theme &': {
-                            background: 'linear-gradient(120deg, $sand6, $pink3)',
+                            background: 'linear-gradient(120deg, var(--sand-6), var(--pink-3))',
                           },
                         }}
                       >
@@ -444,9 +444,9 @@ export const PrimitivesHero = () => {
                       <DemoContainer
                         aria-hidden
                         css={{
-                          background: 'linear-gradient(120deg, $pink4, $gold5)',
+                          background: 'linear-gradient(120deg, var(--pink-4), var(--gold-5))',
                           '.dark &, .dark-theme &': {
-                            background: 'linear-gradient(120deg, $pink3, $gold4)',
+                            background: 'linear-gradient(120deg, var(--pink-3), var(--gold-4))',
                           },
                         }}
                       >
@@ -475,9 +475,9 @@ export const PrimitivesHero = () => {
                       <DemoContainer
                         aria-hidden
                         css={{
-                          background: 'linear-gradient(120deg, $gold5, $tomato5)',
+                          background: 'linear-gradient(120deg, var(--gold-5), var(--tomato-5))',
                           '.dark &, .dark-theme &': {
-                            background: 'linear-gradient(120deg, $gold4, $crimson4)',
+                            background: 'linear-gradient(120deg, var(--gold-4), var(--crimson-4))',
                           },
                         }}
                       >
@@ -506,9 +506,10 @@ export const PrimitivesHero = () => {
                       <DemoContainer
                         aria-hidden
                         css={{
-                          background: 'linear-gradient(120deg, $tomato5, $indigo7)',
+                          background: 'linear-gradient(120deg, var(--tomato-5), var(--indigo-7))',
                           '.dark &, .dark-theme &': {
-                            background: 'linear-gradient(120deg, $crimson4, $indigo5)',
+                            background:
+                              'linear-gradient(120deg, var(--crimson-4), var(--indigo-5))',
                           },
                         }}
                       >
@@ -537,9 +538,9 @@ export const PrimitivesHero = () => {
                       <DemoContainer
                         aria-hidden
                         css={{
-                          background: 'linear-gradient(120deg, $indigo7, $cyan3)',
+                          background: 'linear-gradient(120deg, var(--indigo-7), var(--cyan-3))',
                           '.dark &, .dark-theme &': {
-                            background: 'linear-gradient(120deg, $indigo5, $cyan7)',
+                            background: 'linear-gradient(120deg, var(--indigo-5), var(--cyan-7))',
                           },
                         }}
                       >
@@ -568,9 +569,9 @@ export const PrimitivesHero = () => {
                       <DemoContainer
                         aria-hidden
                         css={{
-                          background: 'linear-gradient(120deg, $cyan3, $mint5)',
+                          background: 'linear-gradient(120deg, var(--cyan-3), var(--mint-5))',
                           '.dark &, .dark-theme &': {
-                            background: 'linear-gradient(120deg, $cyan7, $teal6)',
+                            background: 'linear-gradient(120deg, var(--cyan-7), var(--teal-6))',
                           },
                         }}
                       >
@@ -599,9 +600,9 @@ export const PrimitivesHero = () => {
                       <DemoContainer
                         aria-hidden
                         css={{
-                          background: 'linear-gradient(120deg, $mint5, $red3)',
+                          background: 'linear-gradient(120deg, var(--mint-5), var(--red-3))',
                           '.dark &, .dark-theme &': {
-                            background: 'linear-gradient(120deg, $teal6, $plum4)',
+                            background: 'linear-gradient(120deg, var(--teal-6), var(--plum-4))',
                           },
                         }}
                       >
@@ -624,10 +625,10 @@ export const PrimitivesHero = () => {
                     <FocusArea onKeyDown={onFocusAreaKeyDown} onFocus={onFocusAreaFocus}>
                       <DemoContainer
                         css={{
-                          backgroundColor: '$whiteA6',
-                          boxShadow: '0 0 0 1px $colors$slateA5',
+                          backgroundColor: 'var(--white-a6)',
+                          boxShadow: '0 0 0 1px var(--gray-a5)',
                           '.dark &, .dark-theme &': {
-                            backgroundColor: '$blackA4',
+                            backgroundColor: 'var(--black-a4)',
                           },
                         }}
                       >
@@ -705,45 +706,39 @@ const CarouselArrowButton = styled('button', {
   display: 'flex',
   position: 'relative',
   zIndex: 1,
-  ai: 'center',
-  jc: 'center',
-  bc: '$panel',
-  br: '$round',
-  width: '$7',
-  height: '$7',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: 'var(--color-panel-solid)',
+  borderRadius: '100%',
+  width: 'var(--space-8)',
+  height: 'var(--space-8)',
   color: 'var(--gray-12)',
 
-  boxShadow: '$colors$blackA11 0px 2px 12px -5px, $colors$blackA5 0px 1px 3px',
+  boxShadow: 'var(--black-a11) 0px 2px 12px -5px, var(--black-a5) 0px 1px 3px',
   willChange: 'transform, box-shadow, opacity',
   transition: 'all 100ms',
 
   '@hover': {
     '&:hover': {
-      boxShadow: '$colors$blackA10 0px 3px 16px -5px, $colors$blackA5 0px 1px 3px',
+      boxShadow: 'var(--black-a10) 0px 3px 16px -5px, var(--black-a5) 0px 1px 3px',
       transform: 'translateY(-1px)',
 
       // Fix a bug when hovering at button edges would cause the button to jitter because of transform
       '&::before': {
         content: '',
         inset: -2,
-        br: '$round',
+        borderRadius: '100%',
         position: 'absolute',
       },
     },
   },
-  '&:focus': {
+  '&:focus-visible:not(:active)': {
     boxShadow: `
-      $colors$blackA10 0px 3px 16px -5px,
-      $colors$blackA5 0px 1px 3px,
-      $colors$blue9 0 0 0 2px
+      var(--black-a10) 0px 3px 16px -5px,
+      var(--black-a5) 0px 1px 3px,
+      var(--blue-9) 0 0 0 2px
     `,
     transform: 'translateY(-1px)',
-  },
-  '&:focus:not(:focus-visible)': {
-    boxShadow: '$colors$blackA11 0px 2px 12px -5px, $colors$blackA5 0px 1px 3px',
-  },
-  '&:active:not(:focus)': {
-    boxShadow: '$colors$blackA11 0px 2px 12px -5px, $colors$blackA5 0px 1px 3px',
   },
   '&:active': {
     transform: 'none',

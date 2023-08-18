@@ -1,6 +1,6 @@
 import React from 'react';
 import * as SliderPrimitive from '@radix-ui/react-slider';
-import { styled } from '@stitches/react';
+import { styled } from '@lib/stitches';
 
 const StyledSlider = styled(SliderPrimitive.Root, {
   position: 'relative',
@@ -49,7 +49,7 @@ const StyledThumb = styled(SliderPrimitive.Thumb, {
   borderRadius: 10,
   '&:focus-visible': {
     boxShadow:
-      '0 2px 10px -5px var(--black-a9), 0 1px 4px -1px var(--black-a7), 0 0 0 1px var(--black-a3), 0 0 0 4px $colors$grayA4',
+      '0 2px 10px -5px var(--black-a9), 0 1px 4px -1px var(--black-a7), 0 0 0 1px var(--black-a3), 0 0 0 4px var(--gray-a4)',
   },
 });
 

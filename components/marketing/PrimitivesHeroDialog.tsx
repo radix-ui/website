@@ -41,7 +41,7 @@ export function PrimitivesHeroDialog() {
         }}
       >
         <DialogPrimitive.Title asChild>
-          <Text as="div" size="3" weight="medium" mb="2">
+          <Text as="div" size="3" weight="bold" mb="2">
             Edit Profile
           </Text>
         </DialogPrimitive.Title>

@@ -138,7 +138,7 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
               grow="1"
               shrink="1"
               style={{
-                height: '$6',
+                height: 'var(--space-6)',
                 flexBasis: 0,
                 backgroundColor: isDarkAlpha
                   ? Colors['grayDark']['gray1']

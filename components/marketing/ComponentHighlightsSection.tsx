@@ -6,7 +6,12 @@ import { HiddenScroll } from './HiddenScroll';
 
 export const ComponentHighlightsSection = () => {
   return (
-    <Section position="relative" size={{ initial: '2', sm: '3' }} style={{ overflow: 'hidden' }}>
+    <Section
+      position="relative"
+      size={{ initial: '2', sm: '3' }}
+      style={{ overflow: 'hidden' }}
+      mb={{ md: '9' }}
+    >
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Flex direction="column" align="center" position="relative" mb="6" pb={{ lg: '9' }}>
           <MarketingCaption mb="1">Case in point</MarketingCaption>
@@ -31,38 +36,18 @@ export const ComponentHighlightsSection = () => {
               left="50%"
               style={{ transform: 'translate(-50%, -50%)' }}
             >
-              <Circle
-                size={180}
-                angle={-45}
-                color1="var(--colors-slateA4)"
-                color2="var(--colors-indigoA6)"
-              />
-              <Circle
-                size={300}
-                angle={20}
-                color1="var(--colors-slateA3)"
-                color2="var(--colors-indigoA5)"
-              />
-              <Circle
-                size={420}
-                angle={35}
-                color1="var(--colors-slateA2)"
-                color2="var(--colors-indigoA4)"
-              />
-              <Circle
-                size={540}
-                angle={-50}
-                color1="var(--colors-slateA2)"
-                color2="var(--colors-indigoA3)"
-              />
+              <Circle size={180} angle={-45} color1="var(--slate-a4)" color2="var(--indigo-a6)" />
+              <Circle size={300} angle={20} color1="var(--slate-a3)" color2="var(--indigo-a5)" />
+              <Circle size={420} angle={35} color1="var(--slate-a2)" color2="var(--indigo-a4)" />
+              <Circle size={540} angle={-50} color1="var(--slate-a2)" color2="var(--indigo-a3)" />
               {[660, 780, 900, 1020, 1140, 1260, 1380, 1500, 1620, 1740, 1860, 1980, 2100].map(
                 (size, i) => (
                   <Circle
                     key={i}
                     size={size + i * i * 5}
                     angle={-45 + i * 15}
-                    color1="var(--colors-slateA2)"
-                    color2="var(--colors-indigoA3)"
+                    color1="var(--slate-a2)"
+                    color2="var(--indigo-a3)"
                     opacity={Math.max(0, 1 - i * 0.1)}
                   />
                 )

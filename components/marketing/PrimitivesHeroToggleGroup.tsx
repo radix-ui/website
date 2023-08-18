@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled } from '@stitches/react';
+import { styled } from '@lib/stitches';
 import { TextAlignCenterIcon, TextAlignLeftIcon, TextAlignRightIcon } from '@radix-ui/react-icons';
 
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
