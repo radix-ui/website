@@ -18,7 +18,7 @@ export function Highlights({ features }) {
           Features
         </Heading>
 
-        <Flex asChild m="0" p="0" gap="2" direction="column">
+        <Flex asChild m="0" p="0" gap="3" direction="column">
           <ul>
             {features.map((feature, i) => (
               <Flex key={i} gap="4" align="start">
