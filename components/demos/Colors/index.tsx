@@ -16,7 +16,7 @@ const getColorScale = (color: string): React.CSSProperties => {
   }, {});
 };
 
-type ButtonProps = Steps & {
+type MenuItemButtonProps = Steps & {
   variant: 'soft' | 'outline' | 'solid' | 'ghost';
   color: string;
   active?: boolean;
@@ -25,37 +25,12 @@ type ButtonProps = Steps & {
   children?: React.ReactNode;
 };
 
-export const Button = ({
-  icon,
-  variant = 'soft',
-  invertText,
-  color,
-  active,
-  children,
-  ...steps
-}: ButtonProps) => (
-  <button
-    className={classNames(
-      styles.BaseButton,
-      variant === 'soft' && styles.SoftButton,
-      variant === 'outline' && styles.OutlineButton,
-      variant === 'solid' && styles.SolidButton,
-      variant === 'ghost' && styles.GhostButton,
-      invertText && styles.invertText,
-      icon && styles.IconButton
-    )}
-    style={getColorScale(color)}
-  >
-    {icon || children}
-  </button>
-);
-
 export const MenuItemButton = ({
   color,
   active = false,
   children,
   ...props
-}: React.PropsWithChildren<ButtonProps>) => (
+}: React.PropsWithChildren<MenuItemButtonProps>) => (
   <button
     className={classNames(styles.BaseButton, styles.MenuItemButton)}
     style={getColorScale(color)}

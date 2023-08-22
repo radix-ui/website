@@ -89,8 +89,8 @@
   --syntax-complementary: var(--crimson-11);
   --syntax-secondary: var(--violet-11);
 
-  --highlighted-line-bg: var(--violet-a3);
-  --highlighted-word-1-bg: var(--indigo-a4);
+  --highlighted-line-bg: var(--indigo-a3);
+  --highlighted-word-1-bg: var(--iris-a3);
 }
 
 .Pre > code {

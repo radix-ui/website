@@ -90,11 +90,11 @@ const getBgColorForDarkCell = (name) => {
 export const ColorScaleGroup = ({ children }: { children: any }) => {
   return (
     <>
-      <Flex>
+      <Flex style={{ gap: 1 }}>
         <Box height="5" style={{ width: 140 }} />
         {colorKeys.map((key, i) => (
-          <Box key={key} grow="1" shrink="1" style={{ flexBasis: 0 }}>
-            <Text color="gray" size="1" align="center">
+          <Box key={key} grow="0" shrink="1" width="8">
+            <Text as="div" color="gray" size="1" align="center">
               {i + 1}
             </Text>
           </Box>
@@ -135,11 +135,9 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
             <Box
               key={i}
               height="6"
-              grow="1"
+              width="8"
               shrink="1"
               style={{
-                height: 'var(--space-6)',
-                flexBasis: 0,
                 backgroundColor: isDarkAlpha
                   ? Colors['grayDark']['gray1']
                   : isAlpha
@@ -147,15 +145,25 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
                   : 'transparent',
 
                 // Show transparency grid for whiteA and blackA
-                ...((isWhiteA || isBlackA) && {
-                  backgroundColor: 'transparent',
-                  backgroundSize: '12px 12px',
-                  backgroundPosition: '0px 0px, 6px 0px, 6px -6px, 0px 6px',
+                ...(isBlackA && {
+                  backgroundColor: 'white',
+                  backgroundSize: '16px 16px',
+                  backgroundPosition: '0px 0px, 8px 0px, 8px -8px, 0px 8px',
                   backgroundImage: `
-                      linear-gradient(45deg, var(--gray-6) 25%, transparent 25%),
-                      linear-gradient(135deg, var(--gray-6) 25%, transparent 25%),
-                      linear-gradient(45deg, transparent 75%, var(--gray-6) 75%),
-                      linear-gradient(135deg, transparent 75%, var(--gray-6) 75%)`,
+                      linear-gradient(45deg, #f8f8f8 25%, transparent 25%),
+                      linear-gradient(135deg, #f8f8f8 25%, transparent 25%),
+                      linear-gradient(45deg, transparent 75%, #f8f8f8 75%),
+                      linear-gradient(135deg, transparent 75%, #f8f8f8 75%)`,
+                }),
+                ...(isWhiteA && {
+                  backgroundColor: '#181818',
+                  backgroundSize: '16px 16px',
+                  backgroundPosition: '0px 0px, 8px 0px, 8px -8px, 0px 8px',
+                  backgroundImage: `
+                      linear-gradient(45deg, #222222 25%, transparent 25%),
+                      linear-gradient(135deg, #222222 25%, transparent 25%),
+                      linear-gradient(45deg, transparent 75%, #222222 75%),
+                      linear-gradient(135deg, transparent 75%, #222222 75%)`,
                 }),
               }}
             >

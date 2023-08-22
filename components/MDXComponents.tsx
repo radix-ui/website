@@ -2,7 +2,6 @@ import * as React from 'react';
 import NextLink from 'next/link';
 import { Link2Icon } from '@radix-ui/react-icons';
 import { PropsTable } from './PropsTable';
-import { ThemesPropsTable } from './ThemesPropsTable';
 import { KeyboardTable } from './KeyboardTable';
 import { Highlights } from './Highlights';
 import { HeroCodeBlock } from './HeroCodeBlock';

@@ -163,17 +163,20 @@ const neutralPeople = [person15, person03, person05, person01, person09, person1
 type Color =
   | 'tomato'
   | 'red'
+  | 'ruby'
   | 'crimson'
   | 'pink'
   | 'plum'
   | 'purple'
   | 'violet'
+  | 'iris'
   | 'indigo'
   | 'blue'
   | 'sky'
   | 'cyan'
   | 'teal'
   | 'mint'
+  | 'jade'
   | 'green'
   | 'lime'
   | 'grass'
@@ -188,6 +191,7 @@ function getPeopleForColor(color: Color) {
   switch (color) {
     case 'tomato':
     case 'red':
+    case 'ruby':
       return [person07, person17, person19];
     case 'crimson':
     case 'pink':
@@ -196,6 +200,7 @@ function getPeopleForColor(color: Color) {
     case 'purple':
     case 'violet':
       return [person02, person06, person14, person30];
+    case 'iris':
     case 'indigo':
     case 'blue':
     case 'sky':
@@ -204,6 +209,7 @@ function getPeopleForColor(color: Color) {
     case 'teal':
     case 'mint':
       return [person10, person20, person23, person28];
+    case 'jade':
     case 'green':
     case 'lime':
       return [person21, person26, person29];
@@ -226,16 +232,19 @@ function generatePeopleByColorScale() {
   return ([
     'tomato',
     'red',
+    'ruby',
     'crimson',
     'pink',
     'plum',
     'purple',
     'violet',
+    'iris',
     'indigo',
     'blue',
     'sky',
     'cyan',
     'teal',
+    'jade',
     'mint',
     'green',
     'lime',
