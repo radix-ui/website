@@ -51,7 +51,7 @@ export function ColorGrayPairsComplementary() {
       </Grid>
 
       <Text as="p" mb="3">
-        5 scales designed for dark foreground text.
+        Scales designed for dark foreground text:
       </Text>
 
       <Grid
