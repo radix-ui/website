@@ -931,10 +931,10 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
-"@radix-ui/themes@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@radix-ui/themes/-/themes-1.1.0.tgz#d42ad4b415301e1acbd4936844e0d63a3ddb3ce8"
-  integrity sha512-deMf3on8p37yuJQkibnyI2TdtXnnNTObeLDk2jXl4McR6kN4KR4xFAv184y6WuBEKUUGBcmy9O6TK4fv1X7qbw==
+"@radix-ui/themes@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@radix-ui/themes/-/themes-1.1.1.tgz#9ef5d3cfca218e47d7e33ed5fad0b9e3619c4afa"
+  integrity sha512-h4J8N6FWPslT2i2YnNE1bMRKwPLzUkGuJuYocR19IaQUryWcbdyfsSO4EpUBetD831gT0z/Z592BoNOFSUjXIw==
   dependencies:
     "@radix-ui/colors" "^2.1.0"
     "@radix-ui/primitive" "^1.0.1"
