@@ -1,6 +1,10 @@
 import { Box, Text, Grid, Flex } from '@radix-ui/themes';
 
 const whiteBgColors = [
+  'bronze',
+  'gold',
+  'brown',
+  'orange',
   'tomato',
   'red',
   'ruby',
@@ -17,8 +21,6 @@ const whiteBgColors = [
   'jade',
   'green',
   'grass',
-  'orange',
-  'brown',
 ];
 
 const darkBgColors = ['sky', 'mint', 'lime', 'yellow', 'amber'];
