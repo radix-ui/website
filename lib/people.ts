@@ -168,6 +168,7 @@ function getPeopleForColor(color: ThemeOptions['accentColor']) {
       return neutralPeople;
     case 'tomato':
     case 'red':
+    case 'ruby':
       return [person07, person17, person19];
     case 'crimson':
     case 'pink':
@@ -176,6 +177,7 @@ function getPeopleForColor(color: ThemeOptions['accentColor']) {
     case 'purple':
     case 'violet':
       return [person02, person06, person14, person30];
+    case 'iris':
     case 'indigo':
     case 'blue':
     case 'sky':
@@ -184,6 +186,7 @@ function getPeopleForColor(color: ThemeOptions['accentColor']) {
     case 'teal':
     case 'mint':
       return [person10, person20, person23, person28];
+    case 'jade':
     case 'green':
     case 'lime':
       return [person21, person26, person29];

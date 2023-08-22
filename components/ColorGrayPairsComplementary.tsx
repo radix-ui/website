@@ -3,22 +3,25 @@ import { Box, Text, Grid, Flex } from '@radix-ui/themes';
 const whiteBgColors = [
   'tomato',
   'red',
+  'ruby',
   'crimson',
   'pink',
   'plum',
   'purple',
   'violet',
+  'iris',
   'indigo',
   'blue',
   'cyan',
   'teal',
+  'jade',
   'green',
   'grass',
   'orange',
   'brown',
 ];
 
-const blackBgColors = ['sky', 'mint', 'lime', 'yellow', 'amber'];
+const darkBgColors = ['sky', 'mint', 'lime', 'yellow', 'amber'];
 
 export function ColorGrayPairsComplementary() {
   return (
@@ -46,7 +49,7 @@ export function ColorGrayPairsComplementary() {
       </Grid>
 
       <Text as="p" mb="3">
-        5 scales designed for black foreground text.
+        5 scales designed for dark foreground text.
       </Text>
 
       <Grid
@@ -57,14 +60,18 @@ export function ColorGrayPairsComplementary() {
           gap: 2,
         }}
       >
-        {blackBgColors.map((color) => (
+        {darkBgColors.map((color) => (
           <Flex
             key={color}
             align="center"
             justify="center"
             style={{ height: 65, backgroundColor: `var(--${color}-10)` }}
           >
-            <Text as="p" size="2" style={{ color: 'black', textTransform: 'capitalize' }}>
+            <Text
+              as="p"
+              size="2"
+              style={{ color: `var(--${color}-9-contrast)`, textTransform: 'capitalize' }}
+            >
               {color}
             </Text>
           </Flex>

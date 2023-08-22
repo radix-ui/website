@@ -10,21 +10,24 @@ const allColors = [
   'sand',
   'tomato',
   'red',
+  'ruby',
   'crimson',
   'pink',
   'plum',
   'purple',
   'violet',
+  'iris',
   'indigo',
   'blue',
   'cyan',
   'teal',
+  'jade',
   'green',
   'grass',
-  'orange',
-  'brown',
   'bronze',
   'gold',
+  'brown',
+  'orange',
 ];
 
 export function ColorTestTextLarge() {
@@ -47,7 +50,7 @@ export function ColorTestTextLarge() {
           style={{ backgroundColor: `var(--${color}-9)` }}
         >
           <Text size="5" weight="bold" style={{ color: 'white' }}>
-            White text on {capitalize(color)} 9
+            White on {capitalize(color)} 9
           </Text>
           <Flex
             align="center"

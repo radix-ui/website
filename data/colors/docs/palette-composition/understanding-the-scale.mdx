@@ -52,8 +52,8 @@ Steps `3`, `4`, and `5` are designed for UI component backgrounds.
 {
 
 <Flex wrap="wrap" gap="5" my="5">
-  <Button icon={<PlusIcon />} variant="soft" color="slate" />
-  <Button icon={<PlusIcon />} variant="soft" color="pink" />
+  <IconButton variant="soft" color="gray"><PlusIcon /></IconButton>
+  <IconButton variant="soft" color="pink"><PlusIcon /></IconButton>
 
 {' '}
 
@@ -79,103 +79,21 @@ Steps `3`, `4`, and `5` are designed for UI component backgrounds.
 </Flex>
 }
 
-Even if your component has a transparent background in its default state, you should skip Step `3` and use Step `4` for its hover state.
+If your component has a transparent background in its default state, you can use Step `3` for its hover state.
 
 {
 
 <Flex wrap="wrap" gap="5" my="5">
-  <Button icon={<PlusIcon />} variant="ghost" color="slate" />
-  <Button icon={<PlusIcon />} variant="ghost" color="blue" />
-  <Button icon={<PlusIcon />} variant="ghost" color="red" />
+  <IconButton variant="ghost" color="gray">
+    <PlusIcon />
+  </IconButton>
+  <IconButton variant="ghost" color="blue">
+    <PlusIcon />
+  </IconButton>
+  <IconButton variant="ghost" color="red">
+    <PlusIcon />
+  </IconButton>
 </Flex>
-}
-
-For call-to-action components that you want to draw particular attention to, you can bump each color one step higher to steps `4`, `5`, and `6`.
-
-{
-
-<Flex align="center" wrap="wrap" gap="5" my="5">
-  <Button variant="soft" color="tomato">
-    Tomato
-  </Button>
-  <Button variant="soft" color="red">
-    Red
-  </Button>
-  <Button variant="soft" color="crimson">
-    Crimson
-  </Button>
-  <Button variant="soft" color="pink">
-    Pink
-  </Button>
-  <Button variant="soft" color="plum">
-    Plum
-  </Button>
-  <Button variant="soft" color="purple">
-    Purple
-  </Button>
-  <Button variant="soft" color="violet">
-    Violet
-  </Button>
-  <Button variant="soft" color="indigo">
-    Indigo
-  </Button>
-  <Button variant="soft" color="blue">
-    Blue
-  </Button>
-  <Button variant="soft" color="sky">
-    Sky
-  </Button>
-  <Button variant="soft" color="cyan">
-    Cyan
-  </Button>
-  <Button variant="soft" color="teal">
-    Teal
-  </Button>
-  <Button variant="soft" color="mint">
-    Mint
-  </Button>
-  <Button variant="soft" color="green">
-    Green
-  </Button>
-  <Button variant="soft" color="grass">
-    Grass
-  </Button>
-  <Button variant="soft" color="lime">
-    Lime
-  </Button>
-  <Button variant="soft" color="yellow">
-    Yellow
-  </Button>
-  <Button variant="soft" color="amber">
-    Amber
-  </Button>
-  <Button variant="soft" color="orange">
-    Orange
-  </Button>
-</Flex>
-
-}
-
-For complex components where you need many subtle colors to communicate different meanings, you can get creative and do something like:
-
-- Step `3` for hovered backgrounds.
-- Step `4` for selected / pressed backgrounds.
-- Step `5` for "unread" backgrounds.
-- Step `6` for hovered "unread" backgrounds.
-
-{
-
-<Flex direction="column" mt="5" style={{ maxWidth: 250 }}>
-  <MenuItemButton color="accent" data-state="highlighted">
-    New unread email
-  </MenuItemButton>
-  <MenuItemButton color="accent" data-state="selected">
-    Selected email
-  </MenuItemButton>
-  <MenuItemButton color="accent">Email menu item</MenuItemButton>
-  <MenuItemButton color="accent">Email menu item</MenuItemButton>
-</Flex>
-
 }
 
 <Note>
@@ -190,70 +108,88 @@ For complex components where you need many subtle colors to communicate differen
 Steps `6`, `7`, and `8` are designed for borders.
 
 - Step `6` is designed for subtle borders on components which are not interactive. For example sidebars, headers, cards, alerts, and separators.
-- Step `7` is designed for borders on interactive components, but can also be used for focus rings.
-- Step `8` is designed for borders on interactive components in their hover state.
+- Step `7` is designed for subtle borders on interactive components.
+- Step `8` is designed for stronger borders on interactive components and focus rings.
 
 {
 
-<Flex align="center" wrap="wrap" gap="5" my="5">
-  <Button variant="outline" color="tomato">
-    Tomato
+<Grid columns="7" gap="3" my="5">
+  <Button variant="surface" color="gold">
+    Gold
   </Button>
-  <Button variant="outline" color="red">
-    Red
+  <Button variant="surface" color="bronze">
+    Bronze
   </Button>
-  <Button variant="outline" color="crimson">
-    Crimson
+  <Button variant="surface" color="brown">
+    Brown
   </Button>
-  <Button variant="outline" color="pink">
-    Pink
-  </Button>
-  <Button variant="outline" color="plum">
-    Plum
-  </Button>
-  <Button variant="outline" color="purple">
-    Purple
-  </Button>
-  <Button variant="outline" color="violet">
-    Violet
-  </Button>
-  <Button variant="outline" color="indigo">
-    Indigo
-  </Button>
-  <Button variant="outline" color="blue">
-    Blue
-  </Button>
-  <Button variant="outline" color="sky">
-    Sky
-  </Button>
-  <Button variant="outline" color="cyan">
-    Cyan
-  </Button>
-  <Button variant="outline" color="teal">
-    Teal
-  </Button>
-  <Button variant="outline" color="mint">
-    Mint
-  </Button>
-  <Button variant="outline" color="green">
-    Green
-  </Button>
-  <Button variant="outline" color="grass">
-    Grass
-  </Button>
-  <Button variant="outline" color="lime">
-    Lime
-  </Button>
-  <Button variant="outline" color="yellow">
+  <Button variant="surface" color="yellow">
     Yellow
   </Button>
-  <Button variant="outline" color="amber">
+  <Button variant="surface" color="amber">
     Amber
   </Button>
-  <Button variant="outline" color="orange">
+  <Button variant="surface" color="orange">
     Orange
   </Button>
-</Flex>
+  <Button variant="surface" color="tomato">
+    Tomato
+  </Button>
+  <Button variant="surface" color="red">
+    Red
+  </Button>
+  <Button variant="surface" color="ruby">
+    Ruby
+  </Button>
+  <Button variant="surface" color="crimson">
+    Crimson
+  </Button>
+  <Button variant="surface" color="pink">
+    Pink
+  </Button>
+  <Button variant="surface" color="plum">
+    Plum
+  </Button>
+  <Button variant="surface" color="purple">
+    Purple
+  </Button>
+  <Button variant="surface" color="violet">
+    Violet
+  </Button>
+  <Button variant="surface" color="iris">
+    Iris
+  </Button>
+  <Button variant="surface" color="indigo">
+    Indigo
+  </Button>
+  <Button variant="surface" color="blue">
+    Blue
+  </Button>
+  <Button variant="surface" color="cyan">
+    Cyan
+  </Button>
+  <Button variant="surface" color="teal">
+    Teal
+  </Button>
+  <Button variant="surface" color="jade">
+    Jade
+  </Button>
+  <Button variant="surface" color="green">
+    Green
+  </Button>
+  <Button variant="surface" color="grass">
+    Grass
+  </Button>
+  <Button variant="surface" color="lime">
+    Lime
+  </Button>
+  <Button variant="surface" color="mint">
+    Mint
+  </Button>
+  <Button variant="surface" color="sky">
+    Sky
+  </Button>
+</Grid>
 
 }
 
@@ -284,12 +220,33 @@ Step `10` is designed for component hover states, where step `9` is the componen
 
 {
 
-<Flex align="center" wrap="wrap" gap="5" my="5">
+<Grid columns="7" gap="3" my="5">
+  <Button variant="solid" color="gold">
+    Gold
+  </Button>
+  <Button variant="solid" color="bronze">
+    Bronze
+  </Button>
+  <Button variant="solid" color="brown">
+    Brown
+  </Button>
+  <Button variant="solid" color="yellow">
+    Yellow
+  </Button>
+  <Button variant="solid" color="amber">
+    Amber
+  </Button>
+  <Button variant="solid" color="orange">
+    Orange
+  </Button>
   <Button variant="solid" color="tomato">
     Tomato
   </Button>
   <Button variant="solid" color="red">
     Red
+  </Button>
+  <Button variant="solid" color="ruby">
+    Ruby
   </Button>
   <Button variant="solid" color="crimson">
     Crimson
@@ -306,14 +263,14 @@ Step `10` is designed for component hover states, where step `9` is the componen
   <Button variant="solid" color="violet">
     Violet
   </Button>
+  <Button variant="solid" color="iris">
+    Iris
+  </Button>
   <Button variant="solid" color="indigo">
     Indigo
   </Button>
   <Button variant="solid" color="blue">
     Blue
-  </Button>
-  <Button variant="solid" color="sky" invertText>
-    Sky
   </Button>
   <Button variant="solid" color="cyan">
     Cyan
@@ -321,8 +278,8 @@ Step `10` is designed for component hover states, where step `9` is the componen
   <Button variant="solid" color="teal">
     Teal
   </Button>
-  <Button variant="solid" color="mint" invertText>
-    Mint
+  <Button variant="solid" color="jade">
+    Jade
   </Button>
   <Button variant="solid" color="green">
     Green
@@ -330,21 +287,16 @@ Step `10` is designed for component hover states, where step `9` is the componen
   <Button variant="solid" color="grass">
     Grass
   </Button>
-  <Button variant="solid" color="lime" invertText>
+  <Button variant="solid" color="lime">
     Lime
   </Button>
-  <Button variant="solid" color="yellow" invertText>
-    Yellow
+  <Button variant="solid" color="mint">
+    Mint
   </Button>
-  <Button variant="solid" color="amber" invertText>
-    Amber
+  <Button variant="solid" color="sky">
+    Sky
   </Button>
-  <Button variant="solid" color="orange">
-    Orange
-  </Button>
-  <ToggleSwitch />
-  <Slider />
-</Flex>
+</Grid>
 
 }
 
@@ -359,24 +311,24 @@ Steps `11` and `12` are designed for text.
 
 {
 
-<Flex gap="4" direction="column" my="5">
-  <Text size="3" weight="bold" style={{ color: 'var(--gray-12)' }}>
-    This text is Gray 12
-  </Text>
-  <Text size="3" style={{ color: 'var(--gray-11)' }}>
-    This text is Gray 11
-  </Text>
-  <Text size="3" weight="bold" style={{ color: 'var(--slate-12)' }}>
-    This text is Slate 12
+<Flex gap="2" direction="column" my="5">
+  <Text size="3" style={{ color: 'var(--pink-11)' }}>
+    This text is Pink 11
   </Text>
   <Text size="3" style={{ color: 'var(--slate-11)' }}>
     This text is Slate 11
   </Text>
+  <Text size="3" style={{ color: 'var(--gray-11)' }}>
+    This text is Gray 11
+  </Text>
   <Text size="3" weight="bold" style={{ color: 'var(--pink-12)' }}>
     This text is Pink 12
   </Text>
-  <Text size="3" style={{ color: 'var(--pink-11)' }}>
-    This text is Pink 11
+  <Text size="3" weight="bold" style={{ color: 'var(--slate-12)' }}>
+    This text is Slate 12
+  </Text>
+  <Text size="3" weight="bold" style={{ color: 'var(--gray-12)' }}>
+    This text is Gray 12
   </Text>
 </Flex>
 

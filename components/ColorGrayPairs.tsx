@@ -1,14 +1,17 @@
 import { Box, Text, Flex } from '@radix-ui/themes';
 
 const pairings = [
-  { color: 'mauve', pairs: ['tomato', 'red', 'crimson', 'pink', 'plum', 'purple', 'violet'] },
-  { color: 'slate', pairs: ['indigo', 'blue', 'sky', 'cyan'] },
-  { color: 'sage', pairs: ['teal', 'mint', 'green'] },
+  {
+    color: 'mauve',
+    pairs: ['tomato', 'red', 'ruby', 'crimson', 'pink', 'plum', 'purple', 'violet'],
+  },
+  { color: 'slate', pairs: ['iris', 'indigo', 'blue', 'sky', 'cyan'] },
+  { color: 'sage', pairs: ['mint', 'teal', 'jade', 'green'] },
   { color: 'olive', pairs: ['grass', 'lime'] },
   { color: 'sand', pairs: ['yellow', 'amber', 'orange', 'brown'] },
 ];
 
-const blackTextPairs = ['sky', 'mint', 'lime', 'amber', 'yellow'];
+const darkTextPair = ['sky', 'mint', 'lime', 'amber', 'yellow'];
 
 export function ColorGrayPairs() {
   return (
@@ -19,7 +22,11 @@ export function ColorGrayPairs() {
             grow="1"
             align="center"
             justify="center"
-            style={{ height: 35, marginBottom: 2, backgroundColor: `var(--${color}-4)` }}
+            style={{
+              height: 'var(--space-6)',
+              marginBottom: 2,
+              backgroundColor: `var(--${color}-4)`,
+            }}
           >
             <Text
               as="p"
@@ -34,15 +41,16 @@ export function ColorGrayPairs() {
               <Flex
                 key={pair}
                 grow="1"
+                width="100%"
                 align="center"
                 justify="center"
-                style={{ height: 35, backgroundColor: `var(--${pair}-10)` }}
+                style={{ height: 'var(--space-6)', backgroundColor: `var(--${pair}-9)` }}
               >
                 <Text
                   as="p"
                   size="2"
                   style={{
-                    color: blackTextPairs.includes(pair) ? '#202020' : 'white',
+                    color: darkTextPair.includes(pair) ? `var(--${color}-12)` : 'white',
                     textTransform: 'capitalize',
                   }}
                 >

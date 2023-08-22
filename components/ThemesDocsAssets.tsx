@@ -551,19 +551,22 @@ export function ThemesFontSizeScale() {
 export function ThemesAccentSwatches() {
   return (
     <Flex direction="column" gap="5" my="6">
-      <Grid columns={{ initial: '3', xs: '4', sm: '6' }} gap="2">
+      <Grid columns={{ initial: '3', xs: '4', sm: '7' }} gap="2">
         {([
           'tomato',
           'red',
+          'ruby',
           'crimson',
           'pink',
           'plum',
           'purple',
           'violet',
+          'iris',
           'indigo',
           'blue',
           'cyan',
           'teal',
+          'jade',
           'green',
           'grass',
           'brown',
@@ -579,9 +582,10 @@ export function ThemesAccentSwatches() {
                 justify="center"
                 gap="2"
                 style={{ backgroundColor: `var(--accent-9)`, borderRadius: 'var(--radius-2)' }}
-                height="6"
+                px="2"
+                py="2"
               >
-                <Text as="div" size="1" weight="bold" style={{ color: 'var(--accent-9-contrast)' }}>
+                <Text as="div" size="2" weight="bold" style={{ color: 'var(--accent-9-contrast)' }}>
                   {color.charAt(0).toUpperCase() + color.slice(1)}
                 </Text>
               </Flex>
@@ -596,7 +600,7 @@ export function ThemesAccentSwatches() {
 export function ThemesBrightAccentSwatches() {
   return (
     <Flex direction="column" gap="5" my="6">
-      <Grid columns={{ initial: '3', xs: '4', sm: '6' }} gap="2">
+      <Grid columns={{ initial: '3', xs: '4', sm: '7' }} gap="2">
         {(['sky', 'mint', 'lime', 'yellow', 'amber'] as const).map((color, i) => (
           <Box grow="1" key={i}>
             <Theme accentColor={color} hasBackground={false} asChild>
@@ -605,9 +609,10 @@ export function ThemesBrightAccentSwatches() {
                 justify="center"
                 gap="2"
                 style={{ backgroundColor: `var(--accent-9)`, borderRadius: 'var(--radius-2)' }}
-                height="6"
+                px="2"
+                py="2"
               >
-                <Text as="div" size="1" weight="bold" style={{ color: 'var(--accent-9-contrast)' }}>
+                <Text as="div" size="2" weight="bold" style={{ color: 'var(--accent-9-contrast)' }}>
                   {color.charAt(0).toUpperCase() + color.slice(1)}
                 </Text>
               </Flex>
@@ -634,7 +639,7 @@ export function ThemeGraySwatches() {
                 px="2"
                 py="2"
               >
-                <Text as="div" size="1" weight="bold" style={{ color: 'var(--accent-9-contrast)' }}>
+                <Text as="div" size="2" weight="bold" style={{ color: 'var(--accent-9-contrast)' }}>
                   {color.charAt(0).toUpperCase() + color.slice(1)}
                 </Text>
               </Flex>

@@ -250,6 +250,23 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--red-12)' }} />
 
               <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Ruby</Text>
+              </Box>
+
+              <Box style={{ height: 35, backgroundColor: 'var(--ruby-1)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--ruby-2)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--ruby-3)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--ruby-4)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--ruby-5)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--ruby-6)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--ruby-7)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--ruby-8)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--ruby-9)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--ruby-10)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--ruby-11)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--ruby-12)' }} />
+
+              <Box display={{ initial: 'none', sm: 'block' }}>
                 <Text>Crimson</Text>
               </Box>
 
@@ -335,6 +352,23 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--violet-12)' }} />
 
               <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Iris</Text>
+              </Box>
+
+              <Box style={{ height: 35, backgroundColor: 'var(--iris-1)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--iris-2)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--iris-3)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--iris-4)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--iris-5)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--iris-6)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--iris-7)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--iris-8)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--iris-9)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--iris-10)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--iris-11)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--iris-12)' }} />
+
+              <Box display={{ initial: 'none', sm: 'block' }}>
                 <Text>Indigo</Text>
               </Box>
 
@@ -401,6 +435,23 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--teal-10)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--teal-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--teal-12)' }} />
+
+              <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Jade</Text>
+              </Box>
+
+              <Box style={{ height: 35, backgroundColor: 'var(--jade-1)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--jade-2)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--jade-3)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--jade-4)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--jade-5)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--jade-6)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--jade-7)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--jade-8)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--jade-9)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--jade-10)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--jade-11)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--jade-12)' }} />
 
               <Box display={{ initial: 'none', sm: 'block' }}>
                 <Text>Green</Text>
