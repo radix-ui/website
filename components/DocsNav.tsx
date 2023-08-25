@@ -73,14 +73,22 @@ interface DocsNavItemProps {
 
 const DocsNavItem = ({ active, disabled, href, ...props }: DocsNavItemProps) => {
   const className = classNames(styles.DocsNavItem, active && styles.active);
-  const isExternal = href.startsWith('http');
+  const isExternal = href.startsWith('http') || href.startsWith('/http');
 
   if (disabled) {
     return <span className={className} {...props} />;
   }
 
   if (isExternal) {
-    return <a className={className} href={href} target="_blank" rel="noopener" {...props} />;
+    return (
+      <a
+        className={className}
+        href={href?.replace(/^\/+/, '')}
+        target="_blank"
+        rel="noopener"
+        {...props}
+      />
+    );
   }
 
   return (
