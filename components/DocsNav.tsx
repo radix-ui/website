@@ -36,7 +36,7 @@ export const DocsNav = ({ routes }: DocsNavProps) => {
           {section.pages.map((page) => (
             <DocsNavItem
               key={page.slug}
-              href={`/${page.slug}`}
+              href={page.slug}
               active={currentPageSlug === page.slug}
             >
               <Flex gap="2" align="center">
@@ -73,26 +73,18 @@ interface DocsNavItemProps {
 
 const DocsNavItem = ({ active, disabled, href, ...props }: DocsNavItemProps) => {
   const className = classNames(styles.DocsNavItem, active && styles.active);
-  const isExternal = href.startsWith('http') || href.startsWith('/http');
+  const isExternal = href.startsWith('http');
 
   if (disabled) {
     return <span className={className} {...props} />;
   }
 
   if (isExternal) {
-    return (
-      <a
-        className={className}
-        href={href?.replace(/^\/+/, '')}
-        target="_blank"
-        rel="noopener"
-        {...props}
-      />
-    );
+    return <a className={className} href={href} target="_blank" rel="noopener" {...props} />;
   }
 
   return (
-    <NextLink passHref legacyBehavior href={href}>
+    <NextLink passHref legacyBehavior href={`/${href}`}>
       <a className={className} {...props} />
     </NextLink>
   );
