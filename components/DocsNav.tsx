@@ -36,7 +36,7 @@ export const DocsNav = ({ routes }: DocsNavProps) => {
           {section.pages.map((page) => (
             <DocsNavItem
               key={page.slug}
-              href={`/${page.slug}`}
+              href={page.slug}
               active={currentPageSlug === page.slug}
             >
               <Flex gap="2" align="center">
@@ -84,7 +84,7 @@ const DocsNavItem = ({ active, disabled, href, ...props }: DocsNavItemProps) => 
   }
 
   return (
-    <NextLink passHref legacyBehavior href={href}>
+    <NextLink passHref legacyBehavior href={`/${href}`}>
       <a className={className} {...props} />
     </NextLink>
   );
