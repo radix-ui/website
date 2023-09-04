@@ -14,7 +14,7 @@ export function ThemesUnofficialFigmaLibrary() {
               Figma library
             </Heading>
             <Text as="p" size="3" color="gray">
-              Unofficial version of Radix Themes components for Figma, by Victor Allegret.
+              Unofficial Radix Themes components for Figma, by Victor Allegret.
             </Text>
           </Box>
         </Flex>
