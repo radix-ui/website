@@ -3,7 +3,7 @@ export const themesRoutes = [
     label: 'Overview',
     pages: [
       { title: 'Getting started', slug: 'themes/docs/overview/getting-started' },
-      // { title: 'Vision', slug: 'themes/docs/overview/vision' },
+      { title: 'Resources', slug: 'themes/docs/overview/resources' },
       { title: 'Releases', slug: 'themes/docs/overview/releases' },
     ],
   },
