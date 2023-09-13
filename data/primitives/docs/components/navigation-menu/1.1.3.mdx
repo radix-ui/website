@@ -723,12 +723,13 @@ This will ensure accessibility and consistent keyboard control is maintained. He
 ```tsx line=7-16,22,25
 // index.tsx
 import { useRouter } from 'next/router';
-import NextLink from 'next/link';
+import NextLink, { LinkProps } from "next/link";
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import './styles.css';
 
-interface LinkProps extends React.ComponentProps<typeof NavigationMenu.Link> {
-  href: string;
+interface LinkProps
+  extends Omit<React.ComponentProps<typeof NavigationMenu.Link>, "href"> {
+  href: LinkProps["href"];
 }
 
 const Link = ({ href, ...props }: LinkProps) => {
