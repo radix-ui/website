@@ -1,6 +1,6 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Box, Text, Grid, Heading, Container, Section, Separator } from '@radix-ui/themes';
+import { Box, Text, Grid, Heading, Container, Section, Separator, Flex } from '@radix-ui/themes';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { Footer } from '@components/Footer';
 import { ColorsHeader } from '@components/ColorsHeader';
@@ -8,6 +8,14 @@ import { MobileMenuProvider } from '@components/MobileMenu';
 import { ColorsMarketingButton } from '@components/ColorsMarketingButton';
 import { SerifHeading } from '@components/SerifHeading';
 import { ColorsMobileMenu } from '@components/ColorsMobileMenu';
+import {
+  DesktopIcon,
+  EyeOpenIcon,
+  Half2Icon,
+  InputIcon,
+  MoonIcon,
+  TransparencyGridIcon,
+} from '@radix-ui/react-icons';
 
 export default function ColorsHome() {
   return (
@@ -488,6 +496,23 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--grass-12)' }} />
 
               <Box display={{ initial: 'none', sm: 'block' }}>
+                <Text>Brown</Text>
+              </Box>
+
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-1)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-2)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-3)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-4)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-5)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-6)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-7)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-8)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-9)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-10)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-11)' }} />
+              <Box style={{ height: 35, backgroundColor: 'var(--brown-12)' }} />
+
+              <Box display={{ initial: 'none', sm: 'block' }}>
                 <Text>Bronze</Text>
               </Box>
 
@@ -520,23 +545,6 @@ export default function ColorsHome() {
               <Box style={{ height: 35, backgroundColor: 'var(--gold-10)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--gold-11)' }} />
               <Box style={{ height: 35, backgroundColor: 'var(--gold-12)' }} />
-
-              <Box display={{ initial: 'none', sm: 'block' }}>
-                <Text>Brown</Text>
-              </Box>
-
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-1)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-2)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-3)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-4)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-5)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-6)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-7)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-8)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-9)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-10)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-11)' }} />
-              <Box style={{ height: 35, backgroundColor: 'var(--brown-12)' }} />
 
               <Box display={{ initial: 'none', sm: 'block' }}>
                 <Text>Orange</Text>
@@ -647,17 +655,23 @@ export default function ColorsHome() {
           <Container>
             <Grid columns={{ sm: '3' }} gap={{ initial: '7', sm: '6', md: '9' }}>
               <Box style={{ maxWidth: 540 }}>
+                <Flex mb="3">
+                  <EyeOpenIcon width="30" height="30" />
+                </Flex>
                 <Heading size="4" as="h3" mb="2">
                   Accessibility made easy
                 </Heading>
                 <Text as="p" size="3">
-                  Each step is designed for a specific use case, with multiple combinations
-                  guaranteed to pass WCAG contrast ratio.
+                  Text colors are guaranteed to pass target contrast ratios against the
+                  corresponding background colors.
                 </Text>
               </Box>
               <Box style={{ maxWidth: 540 }}>
+                <Flex mb="3">
+                  <MoonIcon width="30" height="30" />
+                </Flex>
                 <Heading size="4" as="h3" mb="2">
-                  Automatic dark mode
+                  Automatic dark mode
                 </Heading>
                 <Text as="p" size="3">
                   Switching to dark theme is as simple as applying a class to a container. Dark mode
@@ -665,12 +679,51 @@ export default function ColorsHome() {
                 </Text>
               </Box>
               <Box style={{ maxWidth: 540 }}>
+                <Flex mb="3">
+                  <TransparencyGridIcon width="30" height="30" />
+                </Flex>
                 <Heading size="4" as="h3" mb="2">
                   Transparent variants
                 </Heading>
                 <Text as="p" size="3">
                   Each scale has a matching transparent variant, which is handy for UI components
                   that need to blend into colored backgrounds.
+                </Text>
+              </Box>
+              <Box style={{ maxWidth: 540 }}>
+                <Flex mb="3">
+                  <Half2Icon width="30" height="30" />
+                </Flex>
+                <Heading size="4" as="h3" mb="2">
+                  APCA text contrast
+                </Heading>
+                <Text as="p" size="3">
+                  Contrast targets are based on the modern APCA contrast algorithm, which accurately
+                  predicts how human vision perceives text.
+                </Text>
+              </Box>
+              <Box style={{ maxWidth: 540 }}>
+                <Flex mb="3">
+                  <DesktopIcon width="30" height="30" />
+                </Flex>
+                <Heading size="4" as="h3" mb="2">
+                  P3 color gamut support
+                </Heading>
+                <Text as="p" size="3">
+                  Accounts for the blending differences in the wide gamut color spaces and enables
+                  the brightest yellows and reds possible.
+                </Text>
+              </Box>
+              <Box style={{ maxWidth: 540 }}>
+                <Flex mb="3">
+                  <InputIcon width="30" height="30" />
+                </Flex>
+                <Heading size="4" as="h3" mb="2">
+                  Designed for user interfaces
+                </Heading>
+                <Text as="p" size="3">
+                  Each step is designed with a specific use case in mind, such as backgrounds, hover
+                  states, borders, overlays, or text.
                 </Text>
               </Box>
             </Grid>
