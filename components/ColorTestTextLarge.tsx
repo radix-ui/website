@@ -58,8 +58,8 @@ export function ColorTestTextLarge() {
             width="5"
             height="5"
             style={{
-              backgroundColor: `var(--white-a11)`,
-              color: `var(--black-a12)`,
+              backgroundColor: `var(--white-a9)`,
+              color: `var(--black-a9)`,
               borderRadius: '50%',
             }}
           >

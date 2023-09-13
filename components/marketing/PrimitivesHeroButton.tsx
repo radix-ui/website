@@ -29,17 +29,17 @@ export const PrimitivesHeroButton = styled('button', {
   variants: {
     variant: {
       white: {
-        backgroundColor: 'var(--white-a11)',
+        backgroundColor: 'var(--white-a9)',
         '@media (hover: hover)': {
           '&:hover': {
-            backgroundColor: 'var(--white-a12)',
+            backgroundColor: 'var(--white-a11)',
           },
         },
         '.dark &, .dark-theme &': {
-          backgroundColor: 'var(--white-a5)',
+          backgroundColor: 'var(--white-a3)',
           '@media (hover: hover)': {
             '&:hover': {
-              backgroundColor: 'var(--white-a6)',
+              backgroundColor: 'var(--white-a4)',
             },
           },
         },
