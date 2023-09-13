@@ -58,7 +58,7 @@ export const SearchResults = ({ value }: SearchResultsProps) => {
               size="3"
               onClick={(event: React.MouseEvent) => {
                 const svg = event.currentTarget.querySelector('svg');
-                const code = svg && svg.parentElement ? svg.parentElement.innerHTML : null;
+                const code = svg ? svg.outerHTML : null;
 
                 // Copy code to clipboard via a hidden textarea element
                 if (code) {
