@@ -28,7 +28,7 @@ export function PrimitivesHeroDialog() {
           borderRadius: 'var(--radius-3)',
           padding: 'var(--space-3)',
           marginTop: 'calc(var(--space-4) * -1)',
-          boxShadow: 'var(--shadow-4)',
+          boxShadow: '0 0 0 1px var(--gray-a3), var(--shadow-4)',
         }}
         onInteractOutside={(event) => event.preventDefault()}
         onOpenAutoFocus={(event) => {

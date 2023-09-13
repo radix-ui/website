@@ -41,7 +41,7 @@ export function PrimitivesHeroPopover() {
             backgroundColor: 'var(--color-panel-solid)',
             borderRadius: 'var(--radius-3)',
             padding: 10,
-            boxShadow: 'var(--shadow-4)',
+            boxShadow: '0 0 0 1px var(--gray-a3), var(--shadow-4)',
           }}
           onInteractOutside={(event) => event.preventDefault()}
           onEscapeKeyDown={(event) => {

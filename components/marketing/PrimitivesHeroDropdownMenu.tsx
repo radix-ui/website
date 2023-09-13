@@ -19,7 +19,7 @@ const contentCss = {
   backgroundColor: 'var(--color-panel-solid)',
   borderRadius: 'var(--radius-3)',
   padding: 'var(--space-1)',
-  boxShadow: 'var(--shadow-4)',
+  boxShadow: '0 0 0 1px var(--gray-a3), var(--shadow-4)',
 };
 
 const DropdownMenuContentWrapper = styled('div', {

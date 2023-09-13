@@ -16,7 +16,7 @@ const slideUp = keyframes({
 const StyledAccordion = styled(AccordionPrimitive.Root, {
   background: 'var(--color-panel-solid)',
   borderRadius: 'var(--radius-4)',
-  boxShadow: 'var(--shadow-4)',
+  boxShadow: '0 0 0 1px var(--gray-a3), var(--shadow-4)',
   width: '80%',
 });
 

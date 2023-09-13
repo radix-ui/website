@@ -8,7 +8,7 @@ export const RadioCardGroup = styled(RadioGroupPrimitive.Root, {
   width: '60%',
   backgroundColor: 'var(--color-panel-solid)',
   borderRadius: 'var(--radius-4)',
-  boxShadow: 'var(--shadow-4)',
+  boxShadow: '0 0 0 1px var(--gray-a3), var(--shadow-4)',
 });
 
 const StyledRadioButton = styled('div', {
