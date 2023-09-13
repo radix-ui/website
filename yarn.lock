@@ -239,10 +239,10 @@
   resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-13.4.16.tgz#79a151d94583e03992c80df3d3e7f7686390ddac"
   integrity sha512-WamDZm1M/OEM4QLce3lOmD1XdLEl37zYZwlmOLhmF7qYJ2G6oYm9+ejZVv+LakQIsIuXhSpVlOvrxIAHqwRkPQ==
 
-"@radix-ui/colors@3.0.0-rc.1":
-  version "3.0.0-rc.1"
-  resolved "https://registry.yarnpkg.com/@radix-ui/colors/-/colors-3.0.0-rc.1.tgz#1b9c4cfc30b7c18fa865959736ee6070f50e1b34"
-  integrity sha512-X9SwWFSKDJ/mqcAwHXoHOwgE/ifvRUZkCSoIqU9zfOVeXvW+pkRvG1/aHHNFDKVSPi77YKdeS9mp7cU1pQwB3g==
+"@radix-ui/colors@3.0.0-rc.2":
+  version "3.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/@radix-ui/colors/-/colors-3.0.0-rc.2.tgz#5d8c40466133fc1fc7c7798a1b80c5340b736e87"
+  integrity sha512-vnorG5xW9uEofAk4zS+PAK1TwJBWVCwLiiFSeJYEEtAWMxauwoTs8+k3uhLo/NWNWa9y4mA0IrD3WlzFEba7Yg==
 
 "@radix-ui/colors@^2.1.0":
   version "2.1.0"
