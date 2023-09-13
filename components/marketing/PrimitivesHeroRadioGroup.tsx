@@ -50,7 +50,7 @@ const StyledRadio = styled(RadioGroupPrimitive.Item, {
   '& + &': {
     boxShadow: 'inset 0 1px var(--gray-5)',
   },
-  '@hover': {
+  '@media (hover: hover)': {
     '&:hover': {
       backgroundColor: 'var(--gray-a2)',
     },

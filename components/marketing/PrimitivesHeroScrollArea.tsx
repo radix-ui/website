@@ -64,7 +64,7 @@ const StyledThumb = styled(ScrollAreaPrimitive.Thumb, {
 });
 
 const StyledCorner = styled(ScrollAreaPrimitive.Corner, {
-  background: 'var(--black-a8)',
+  background: 'var(--black-a4)',
 });
 
 const ScrollArea = StyledScrollArea;

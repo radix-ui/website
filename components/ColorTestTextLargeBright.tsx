@@ -22,8 +22,8 @@ export function ColorTestTextLargeBright() {
           px="3"
           style={{ backgroundColor: `var(--${color}-9)` }}
         >
-          <Text size="5" weight="bold" style={{ color: `var(--black-a12)` }}>
-            Black A12 on {capitalize(color)} 9
+          <Text size="5" weight="bold" style={{ color: `var(--black-a11)` }}>
+            Black A11 on {capitalize(color)} 9
           </Text>
           <Flex
             align="center"

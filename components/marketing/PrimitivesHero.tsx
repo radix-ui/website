@@ -714,14 +714,13 @@ const CarouselArrowButton = styled('button', {
   height: 'var(--space-8)',
   color: 'var(--gray-12)',
 
-  boxShadow: 'var(--black-a11) 0px 2px 12px -5px, var(--black-a5) 0px 1px 3px',
+  boxShadow: 'var(--black-a7) 0px 2px 12px -5px, var(--black-a2) 0px 1px 3px',
   willChange: 'transform, box-shadow, opacity',
   transition: 'all 100ms',
 
-  '@hover': {
+  '@media (hover: hover)': {
     '&:hover': {
-      boxShadow: 'var(--black-a10) 0px 3px 16px -5px, var(--black-a5) 0px 1px 3px',
-      transform: 'translateY(-1px)',
+      boxShadow: 'var(--black-a6) 0px 3px 16px -5px, var(--black-a2) 0px 1px 3px',
 
       // Fix a bug when hovering at button edges would cause the button to jitter because of transform
       '&::before': {
@@ -733,15 +732,12 @@ const CarouselArrowButton = styled('button', {
     },
   },
   '&:focus-visible:not(:active)': {
-    boxShadow: `
-      var(--black-a10) 0px 3px 16px -5px,
-      var(--black-a5) 0px 1px 3px,
-      var(--blue-9) 0 0 0 2px
-    `,
-    transform: 'translateY(-1px)',
+    boxShadow: 'var(--black-a7) 0px 2px 12px -5px, var(--black-a2) 0px 1px 3px',
+    outline: '2px solid var(--accent-8)',
   },
   '&:active': {
-    transform: 'none',
+    transform: 'translateY(1px)',
+    boxShadow: 'var(--black-a7) 0px 2px 10px -5px, var(--black-a2) 0px 1px 3px',
     transition: 'opacity 100ms',
   },
   '&:disabled': {
