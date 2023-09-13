@@ -28,7 +28,7 @@ const PopoverTrigger = styled(Popover.Trigger, {
   height: 35,
   backgroundColor: 'white',
   color: violet.violet11,
-  boxShadow: `0 2px 10px ${blackA.blackA7}`,
+  boxShadow: `0 2px 10px ${blackA.blackA4}`,
   '&:hover': { backgroundColor: mauve.mauve3 },
   '&:focus': { boxShadow: `0 0 0 2px black` },
 });

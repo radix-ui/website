@@ -65,11 +65,11 @@ const inputStyles = {
 
   fontSize: 15,
   color: 'white',
-  backgroundColor: blackA.blackA5,
-  boxShadow: `0 0 0 1px ${blackA.blackA9}`,
+  backgroundColor: blackA.blackA2,
+  boxShadow: `0 0 0 1px ${blackA.blackA6}`,
   '&:hover': { boxShadow: `0 0 0 1px black` },
   '&:focus': { boxShadow: `0 0 0 2px black` },
-  '&::selection': { backgroundColor: blackA.blackA9, color: 'white' },
+  '&::selection': { backgroundColor: blackA.blackA6, color: 'white' },
 };
 
 const Input = styled('input', {
@@ -101,7 +101,7 @@ const Button = styled('button', {
 
   backgroundColor: 'white',
   color: violet.violet11,
-  boxShadow: `0 2px 10px ${blackA.blackA7}`,
+  boxShadow: `0 2px 10px ${blackA.blackA4}`,
   '&:hover': { backgroundColor: mauve.mauve3 },
   '&:focus': { boxShadow: `0 0 0 2px black` },
 });

@@ -9,7 +9,7 @@ const AspectRatioDemo = () => (
       width: 300,
       borderRadius: 6,
       overflow: 'hidden',
-      boxShadow: `0 2px 10px ${blackA.blackA7}`,
+      boxShadow: `0 2px 10px ${blackA.blackA4}`,
     }}
   >
     <AspectRatio.Root ratio={16 / 9}>

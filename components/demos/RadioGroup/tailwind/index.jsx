@@ -10,7 +10,7 @@ const RadioGroupDemo = () => (
     >
       <div className="flex items-center">
         <RadioGroup.Item
-          className="bg-white w-[25px] h-[25px] rounded-full shadow-[0_2px_10px] shadow-blackA7 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black outline-none cursor-default"
+          className="bg-white w-[25px] h-[25px] rounded-full shadow-[0_2px_10px] shadow-blackA4 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black outline-none cursor-default"
           value="default"
           id="r1"
         >
@@ -22,7 +22,7 @@ const RadioGroupDemo = () => (
       </div>
       <div className="flex items-center">
         <RadioGroup.Item
-          className="bg-white w-[25px] h-[25px] rounded-full shadow-[0_2px_10px] shadow-blackA7 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black outline-none cursor-default"
+          className="bg-white w-[25px] h-[25px] rounded-full shadow-[0_2px_10px] shadow-blackA4 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black outline-none cursor-default"
           value="comfortable"
           id="r2"
         >
@@ -34,7 +34,7 @@ const RadioGroupDemo = () => (
       </div>
       <div className="flex items-center">
         <RadioGroup.Item
-          className="bg-white w-[25px] h-[25px] rounded-full shadow-[0_2px_10px] shadow-blackA7 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black outline-none cursor-default"
+          className="bg-white w-[25px] h-[25px] rounded-full shadow-[0_2px_10px] shadow-blackA4 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black outline-none cursor-default"
           value="compact"
           id="r3"
         >

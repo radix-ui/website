@@ -48,7 +48,7 @@ const TabsRoot = styled(Tabs.Root, {
   display: 'flex',
   flexDirection: 'column',
   width: 300,
-  boxShadow: `0 2px 10px ${blackA.blackA4}`,
+  boxShadow: `0 2px 10px ${blackA.blackA2}`,
 });
 
 const TabsList = styled(Tabs.List, {

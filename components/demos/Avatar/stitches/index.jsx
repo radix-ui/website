@@ -35,7 +35,7 @@ const AvatarRoot = styled(AvatarPrimitive.Root, {
   width: 45,
   height: 45,
   borderRadius: '100%',
-  backgroundColor: blackA.blackA3,
+  backgroundColor: blackA.blackA1,
 });
 
 const AvatarImage = styled(AvatarPrimitive.Image, {

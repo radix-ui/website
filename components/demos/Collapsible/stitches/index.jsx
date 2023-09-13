@@ -45,7 +45,7 @@ const IconButton = styled('button', {
   alignItems: 'center',
   justifyContent: 'center',
   color: violet.violet11,
-  boxShadow: `0 2px 10px ${blackA.blackA7}`,
+  boxShadow: `0 2px 10px ${blackA.blackA4}`,
   '&[data-state="closed"]': { backgroundColor: 'white' },
   '&[data-state="open"]': { backgroundColor: violet.violet3 },
   '&:hover': { backgroundColor: violet.violet3 },
@@ -65,7 +65,7 @@ const Repository = styled('div', {
   borderRadius: 4,
   margin: '10px 0',
   padding: 10,
-  boxShadow: `0 2px 10px ${blackA.blackA7}`,
+  boxShadow: `0 2px 10px ${blackA.blackA4}`,
 });
 
 export default CollapsibleDemo;

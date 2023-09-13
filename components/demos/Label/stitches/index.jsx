@@ -29,10 +29,10 @@ const Input = styled('input', {
   fontSize: 15,
   lineHeight: 1,
   color: 'white',
-  backgroundColor: blackA.blackA5,
-  boxShadow: `0 0 0 1px ${blackA.blackA9}`,
+  backgroundColor: blackA.blackA2,
+  boxShadow: `0 0 0 1px ${blackA.blackA6}`,
   '&:focus': { boxShadow: `0 0 0 2px black` },
-  '&::selection': { backgroundColor: blackA.blackA9, color: 'white' },
+  '&::selection': { backgroundColor: blackA.blackA6, color: 'white' },
 });
 
 const Flex = styled('div', { display: 'flex' });

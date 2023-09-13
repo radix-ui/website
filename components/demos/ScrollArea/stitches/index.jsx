@@ -32,7 +32,7 @@ const ScrollAreaRoot = styled(ScrollArea.Root, {
   height: 225,
   borderRadius: 4,
   overflow: 'hidden',
-  boxShadow: `0 2px 10px ${blackA.blackA7}`,
+  boxShadow: `0 2px 10px ${blackA.blackA4}`,
   backgroundColor: 'white',
 });
 
@@ -49,9 +49,9 @@ const ScrollAreaScrollbar = styled(ScrollArea.Scrollbar, {
   // disable browser handling of all panning and zooming gestures on touch devices
   touchAction: 'none',
   padding: 2,
-  background: blackA.blackA6,
+  background: blackA.blackA3,
   transition: 'background 160ms ease-out',
-  '&:hover': { background: blackA.blackA8 },
+  '&:hover': { background: blackA.blackA5 },
   '&[data-orientation="vertical"]': { width: SCROLLBAR_SIZE },
   '&[data-orientation="horizontal"]': {
     flexDirection: 'column',
@@ -79,7 +79,7 @@ const ScrollAreaThumb = styled(ScrollArea.Thumb, {
 });
 
 const ScrollAreaCorner = styled(ScrollArea.Corner, {
-  background: blackA.blackA8,
+  background: blackA.blackA5,
 });
 
 const Box = styled('div', {});

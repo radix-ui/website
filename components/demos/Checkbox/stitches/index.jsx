@@ -28,7 +28,7 @@ const CheckboxRoot = styled(Checkbox.Root, {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  boxShadow: `0 2px 10px ${blackA.blackA7}`,
+  boxShadow: `0 2px 10px ${blackA.blackA4}`,
   '&:hover': { backgroundColor: violet.violet3 },
   '&:focus': { boxShadow: `0 0 0 2px black` },
 });

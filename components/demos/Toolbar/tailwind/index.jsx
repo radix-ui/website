@@ -11,7 +11,7 @@ import {
 
 const ToolbarDemo = () => (
   <Toolbar.Root
-    className="flex p-[10px] w-full min-w-max rounded-md bg-white shadow-[0_2px_10px] shadow-blackA7"
+    className="flex p-[10px] w-full min-w-max rounded-md bg-white shadow-[0_2px_10px] shadow-blackA4"
     aria-label="Formatting options"
   >
     <Toolbar.ToggleGroup type="multiple" aria-label="Text formatting">

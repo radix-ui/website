@@ -42,7 +42,7 @@ const contentShow = keyframes({
 });
 
 const AlertDialogOverlay = styled(AlertDialog.Overlay, {
-  backgroundColor: blackA.blackA9,
+  backgroundColor: blackA.blackA6,
   position: 'fixed',
   inset: 0,
   animation: `${overlayShow} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
@@ -98,7 +98,7 @@ const Button = styled('button', {
       violet: {
         backgroundColor: 'white',
         color: violet.violet11,
-        boxShadow: `0 2px 10px ${blackA.blackA7}`,
+        boxShadow: `0 2px 10px ${blackA.blackA4}`,
         '&:hover': { backgroundColor: mauve.mauve3 },
         '&:focus': { boxShadow: `0 0 0 2px black` },
       },

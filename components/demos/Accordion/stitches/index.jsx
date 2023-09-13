@@ -31,7 +31,7 @@ const AccordionRoot = styled(Accordion.Root, {
   borderRadius: 6,
   width: 300,
   backgroundColor: mauve.mauve6,
-  boxShadow: `0 2px 10px ${blackA.blackA4}`,
+  boxShadow: `0 2px 10px ${blackA.blackA2}`,
 });
 
 const AccordionItem = styled(Accordion.Item, {
