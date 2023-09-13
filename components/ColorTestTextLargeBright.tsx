@@ -2,7 +2,6 @@ import { Text, Flex } from '@radix-ui/themes';
 import { CheckIcon } from '@radix-ui/react-icons';
 
 const allColors = ['amber', 'yellow', 'lime', 'mint', 'sky'];
-const grays = ['sand', 'sand', 'olive', 'sage', 'slate'];
 
 export function ColorTestTextLargeBright() {
   return (
@@ -23,8 +22,8 @@ export function ColorTestTextLargeBright() {
           px="3"
           style={{ backgroundColor: `var(--${color}-9)` }}
         >
-          <Text size="5" weight="bold" style={{ color: `var(--${grays[i]}-12)` }}>
-            {capitalize(grays[i])} 12 on {capitalize(color)} 9
+          <Text size="5" weight="bold" style={{ color: `var(--black-a12)` }}>
+            Black A12 on {capitalize(color)} 9
           </Text>
           <Flex
             align="center"
@@ -32,8 +31,8 @@ export function ColorTestTextLargeBright() {
             width="5"
             height="5"
             style={{
-              backgroundColor: `var(--${color}-11)`,
-              color: `var(--color-background)`,
+              backgroundColor: `var(--white-a11)`,
+              color: `var(--black-a12)`,
               borderRadius: '50%',
             }}
           >

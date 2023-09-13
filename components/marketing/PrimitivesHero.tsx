@@ -625,10 +625,10 @@ export const PrimitivesHero = () => {
                     <FocusArea onKeyDown={onFocusAreaKeyDown} onFocus={onFocusAreaFocus}>
                       <DemoContainer
                         css={{
-                          backgroundColor: 'var(--white-a6)',
+                          backgroundColor: 'var(--white-a3)',
                           boxShadow: '0 0 0 1px var(--gray-a5)',
                           '.dark &, .dark-theme &': {
-                            backgroundColor: 'var(--black-a4)',
+                            backgroundColor: 'var(--black-a3)',
                           },
                         }}
                       >

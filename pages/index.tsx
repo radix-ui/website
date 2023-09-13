@@ -311,7 +311,7 @@ const codeStyles = {
   fontSize: '0.7em',
   padding: '0.75em 1em',
   lineHeight: 'var(--line-height-3)',
-  '--border': 'var(--gray-a5)',
+  '--border': 'inset 0 0 0 1px var(--gray-a5)',
   '--background': 'var(--color-panel-solid)',
 };
 

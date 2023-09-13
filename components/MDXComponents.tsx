@@ -174,14 +174,7 @@ export const components = {
   ),
   TabsCodeBlock: (props) => (
     <Tabs.Root {...props}>
-      <Box
-        style={{
-          border: '1px solid var(--gray-a5)',
-          borderRadius: 'var(--radius-4)',
-        }}
-      >
-        {props.children}
-      </Box>
+      <Box className={styles.TabsCodeBlock}>{props.children}</Box>
     </Tabs.Root>
   ),
   TabsCodeBlockContent: (props) => (

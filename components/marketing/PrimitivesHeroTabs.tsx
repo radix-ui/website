@@ -31,7 +31,7 @@ const StyledTrigger = styled(TabsPrimitive.Trigger, {
   lineHeight: 1,
   userSelect: 'none',
   backgroundColor: 'var(--gray-2)',
-  color: 'var(--gray-11)',
+  color: 'var(--gray-a11)',
   boxShadow: '$$bottomShadow, $$sideShadow',
   '&:hover': {
     backgroundColor: 'var(--gray-1)',

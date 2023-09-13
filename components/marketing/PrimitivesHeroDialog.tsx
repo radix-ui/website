@@ -24,7 +24,7 @@ export function PrimitivesHeroDialog() {
           left: '50%',
           transform: 'translate(-50%, -50%)',
           width: '70%',
-          backgroundColor: 'var(--color-background)',
+          backgroundColor: 'var(--color-panel-solid)',
           borderRadius: 'var(--radius-3)',
           padding: 'var(--space-3)',
           marginTop: 'calc(var(--space-4) * -1)',

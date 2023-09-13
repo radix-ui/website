@@ -54,7 +54,7 @@ export function ColorTestText() {
           px="3"
           style={{ backgroundColor: `var(--${color}-3)` }}
         >
-          <Text size="3" style={{ color: `var(--${color}-11)` }}>
+          <Text size="5" weight="bold" style={{ color: `var(--${color}-11)` }}>
             {capitalize(color)} 11 on {capitalize(color)} 3
           </Text>
           <Flex
@@ -63,8 +63,8 @@ export function ColorTestText() {
             width="5"
             height="5"
             style={{
-              backgroundColor: `var(--${color}-5)`,
-              color: `var(--${color}-11)`,
+              backgroundColor: `var(--${color}-a4)`,
+              color: `var(--${color}-12)`,
               borderRadius: '50%',
             }}
           >

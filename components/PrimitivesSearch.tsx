@@ -393,7 +393,7 @@ function ItemBreadcrumb({ item, levels }: { item: SearchItem; levels: typeof SUP
         return heading ? (
           <React.Fragment key={index}>
             {index > 0 ? (
-              <Box asChild style={{ color: 'var(--gray-11)' }}>
+              <Box asChild style={{ color: 'var(--gray-a11)' }}>
                 <span>
                   <CaretRightIcon style={{ display: 'inline-block' }} />
                   {/* Adding a comma to insert a natural break in the speech flow */}
