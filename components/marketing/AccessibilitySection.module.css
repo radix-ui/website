@@ -379,7 +379,7 @@
   padding: var(--space-1);
   border-radius: var(--radius-3);
   background-color: var(--color-panel-solid);
-  box-shadow: var(--shadow-panel), var(--shadow-4);
+  box-shadow: var(--shadow-4);
 }
 .ExampleDropdownContent[data-open='true'] {
   opacity: 1;

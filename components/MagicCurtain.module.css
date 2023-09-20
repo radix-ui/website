@@ -179,7 +179,7 @@
   height: var(--magic-curtain-controls-preview-height);
   box-sizing: content-box;
   background-color: white;
-  box-shadow: var(--shadow-panel), var(--shadow-5);
+  box-shadow: var(--shadow-5);
   border-radius: var(--radius-3);
   overflow: hidden;
 }

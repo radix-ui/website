@@ -31,7 +31,7 @@ export const IconsPanel = () => {
           style={{
             pointerEvents: 'none',
             borderRadius: 'inherit',
-            boxShadow: 'var(--shadow-panel-solid), var(--shadow-5)',
+            boxShadow: 'var(--shadow-5)',
           }}
         />
         <MainContent />
