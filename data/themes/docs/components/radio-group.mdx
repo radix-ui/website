@@ -7,31 +7,28 @@ sourcePath: components/radio-group
 ```jsx live=true
 <RadioGroup.Root defaultValue="1">
   <Flex gap="2" direction="column">
-    <label>
-      <Flex gap="2" align="center">
-        <RadioGroup.Item value="1" />
-        <Text size="2">Default</Text>
+    <Text as="label" size="2">
+      <Flex gap="2">
+        <RadioGroup.Item value="1" /> Default
       </Flex>
-    </label>
-    <label>
-      <Flex gap="2" align="center">
-        <RadioGroup.Item value="2" />
-        <Text size="2">Comfortable</Text>
+    </Text>
+    <Text as="label" size="2">
+      <Flex gap="2">
+        <RadioGroup.Item value="2" /> Comfortable
       </Flex>
-    </label>
-    <label>
-      <Flex gap="2" align="center">
-        <RadioGroup.Item value="3" />
-        <Text size="2">Compact</Text>
+    </Text>
+    <Text as="label" size="2">
+      <Flex gap="2">
+        <RadioGroup.Item value="3" /> Compact
       </Flex>
-    </label>
+    </Text>
   </Flex>
 </RadioGroup.Root>
 ```
 
 ## API Reference
 
-This component inherits props from the [Radix Radio Group](/primitives/docs/components/radio-group) primitive and supports [common margin props](/themes/docs/theme/layout#margin-props).
+This component inherits props from the [Radio Group primitive](/primitives/docs/components/radio-group) and supports [common margin props](/themes/docs/theme/layout#margin-props).
 
 ### Root
 
@@ -47,15 +44,19 @@ An item in the group that can be checked.
 
 ### Size
 
-Use the `size` prop to control the size.
+Use the `size` prop to control the radiobutton size.
 
-```jsx live=true
+```jsx live=true style="lineHeight: 0"
 <Flex align="center" gap="2">
+  <RadioGroup.Root size="1" defaultValue="1">
+    <RadioGroup.Item value="1" />
+  </RadioGroup.Root>
+
   <RadioGroup.Root size="2" defaultValue="1">
     <RadioGroup.Item value="1" />
   </RadioGroup.Root>
 
-  <RadioGroup.Root size="1" defaultValue="1">
+  <RadioGroup.Root size="3" defaultValue="1">
     <RadioGroup.Item value="1" />
   </RadioGroup.Root>
 </Flex>
@@ -63,7 +64,7 @@ Use the `size` prop to control the size.
 
 ### Variant
 
-Use the `variant` prop to control the visual style.
+Use the `variant` prop to control the visual style of the radiobuttons.
 
 ```jsx live=true
 <Flex gap="2">
@@ -94,7 +95,7 @@ Use the `variant` prop to control the visual style.
 
 Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
 
-```jsx live=true
+```jsx live=true style="lineHeight: 0"
 <Flex gap="2">
   <RadioGroup.Root color="indigo" defaultValue="1">
     <RadioGroup.Item value="1" />
@@ -116,32 +117,136 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 
 ### High-contrast
 
-Use the `highContrast` prop to add additional contrast.
+Use the `highContrast` prop to increase color contrast with the background.
 
-```jsx live=true
-<Grid columns="3" gap="2" display="inline-grid">
-  <RadioGroup.Root variant="classic" defaultValue="1">
+```jsx live=true style="lineHeight: 0"
+<Grid rows="2" gap="2" display="inline-grid" flow="column">
+  <RadioGroup.Root color="indigo" defaultValue="1">
     <RadioGroup.Item value="1" />
   </RadioGroup.Root>
 
-  <RadioGroup.Root variant="surface" defaultValue="1">
+  <RadioGroup.Root color="indigo" defaultValue="1" highContrast>
     <RadioGroup.Item value="1" />
   </RadioGroup.Root>
 
-  <RadioGroup.Root variant="soft" defaultValue="1">
+  <RadioGroup.Root color="cyan" defaultValue="1">
     <RadioGroup.Item value="1" />
   </RadioGroup.Root>
 
-  <RadioGroup.Root variant="classic" defaultValue="1" highContrast>
+  <RadioGroup.Root color="cyan" defaultValue="1" highContrast>
     <RadioGroup.Item value="1" />
   </RadioGroup.Root>
 
-  <RadioGroup.Root variant="surface" defaultValue="1" highContrast>
+  <RadioGroup.Root color="orange" defaultValue="1">
     <RadioGroup.Item value="1" />
   </RadioGroup.Root>
 
-  <RadioGroup.Root variant="soft" defaultValue="1" highContrast>
+  <RadioGroup.Root color="orange" defaultValue="1" highContrast>
     <RadioGroup.Item value="1" />
+  </RadioGroup.Root>
+
+  <RadioGroup.Root color="crimson" defaultValue="1">
+    <RadioGroup.Item value="1" />
+  </RadioGroup.Root>
+
+  <RadioGroup.Root color="crimson" defaultValue="1" highContrast>
+    <RadioGroup.Item value="1" />
+  </RadioGroup.Root>
+</Grid>
+```
+
+### Alignment
+
+Composing `RadioGroup.Item` within `Text` automatically centers it with the first line of text.
+
+```jsx live="true"
+<Flex direction="column" gap="3">
+  <RadioGroup.Root size="1" defaultValue="1">
+    <Text as="label" size="2">
+      <Flex gap="2">
+        <RadioGroup.Item value="1" /> Default
+      </Flex>
+    </Text>
+
+    <Text as="label" size="2">
+      <Flex gap="2">
+        <RadioGroup.Item value="2" /> Compact
+      </Flex>
+    </Text>
+  </RadioGroup.Root>
+
+  <RadioGroup.Root size="2" defaultValue="1">
+    <Text as="label" size="3">
+      <Flex gap="2">
+        <RadioGroup.Item value="1" /> Default
+      </Flex>
+    </Text>
+
+    <Text as="label" size="3">
+      <Flex gap="2">
+        <RadioGroup.Item value="2" /> Compact
+      </Flex>
+    </Text>
+  </RadioGroup.Root>
+
+  <RadioGroup.Root size="3" defaultValue="1">
+    <Text as="label" size="4">
+      <Flex gap="2">
+        <RadioGroup.Item value="1" /> Default
+      </Flex>
+    </Text>
+
+    <Text as="label" size="4">
+      <Flex gap="2">
+        <RadioGroup.Item value="2" /> Compact
+      </Flex>
+    </Text>
+  </RadioGroup.Root>
+</Flex>
+```
+
+It is automatically well-aligned with multi-line text too.
+
+### Disabled
+
+Use the native `disabled` attribute to create a disabled radiobutton.
+
+```jsx live="true"
+<Flex direction="column" gap="2">
+  <RadioGroup.Root defaultValue="2">
+    <Flex direction="column" gap="2">
+      <Text as="label" size="2">
+        <Flex gap="2">
+          <RadioGroup.Item value="1" />
+          Off
+        </Flex>
+      </Text>
+
+      <Text as="label" size="2">
+        <Flex gap="2">
+          <RadioGroup.Item value="2" />
+          On
+        </Flex>
+      </Text>
+    </Flex>
+  </RadioGroup.Root>
+
+  <RadioGroup.Root defaultValue="2">
+    <Flex direction="column" gap="2">
+      <Text as="label" size="2" color="gray">
+        <Flex gap="2">
+          <RadioGroup.Item value="1" disabled />
+          Off
+        </Flex>
+      </Text>
+
+      <Text as="label" size="2" color="gray">
+        <Flex gap="2">
+          <RadioGroup.Item value="2" disabled />
+          On
+        </Flex>
+      </Text>
+    </Flex>
   </RadioGroup.Root>
 </Flex>
 ```

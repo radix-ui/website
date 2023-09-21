@@ -39,7 +39,7 @@ const definitions = {
   section: themes.sectionPropDefs,
   text: {
     ...asChildProp,
-    as: { required: false, type: 'enum', values: ['p', 'div', 'span'], default: 'span' },
+    as: { required: false, type: 'enum', values: ['p', 'label', 'div', 'span'], default: 'span' },
     ...themes.textPropDefs,
   },
   heading: {

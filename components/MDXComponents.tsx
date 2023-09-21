@@ -129,11 +129,17 @@ export const components = {
   blockquote: Blockquote,
   pre: (props) => {
     if (props.children.props.live) {
-      return <PreWithLivePreview scroll={props.children.props.scroll} {...props} />;
+      return (
+        <PreWithLivePreview
+          scroll={props.children.props.scroll}
+          style={props.children.props.style}
+          {...props}
+        />
+      );
     }
     return <PreWithCopyButton {...props} />;
   },
-  code: ({ className, line, live, ...props }) => {
+  code: ({ className, line, live, style, ...props }) => {
     // if it's a codeblock (``` block in markdown), it'll have a className from prism
     const isInlineCode = !className;
     return isInlineCode ? (

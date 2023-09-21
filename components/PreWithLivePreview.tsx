@@ -8,7 +8,7 @@ import { Pre } from './Pre';
 import styles from './PreWithLivePreview.module.css';
 import { DecorativeBox, ThemesVolumeControlExample } from './ThemesDocsAssets';
 
-const PreWithLivePreview = (props) => {
+const PreWithLivePreview = ({ style, ...props }) => {
   const [code, setCode] = React.useState('');
   const liveCode = childrenText(props.children) ?? '';
 
@@ -23,7 +23,7 @@ const PreWithLivePreview = (props) => {
       <Box style={{ borderBottom: '1px solid var(--gray-a5)' }}>
         <themes.ScrollArea>
           <Theme className="radix-themes-default-fonts" asChild>
-            <Box p="4" width={props.scroll ? 'max-content' : undefined}>
+            <Box p="4" width={props.scroll ? 'max-content' : undefined} style={style}>
               <LiveCode
                 code={liveCode}
                 scope={{

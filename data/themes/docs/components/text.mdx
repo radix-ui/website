@@ -10,7 +10,7 @@ sourcePath: components/text
 
 ## API Reference
 
-This component is based on the `span` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
+This component is based on the `span` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
 
 <ThemesPropsTable name="text" />
 
@@ -18,10 +18,11 @@ This component is based on the `span` element and supports [common margin props]
 
 ### As another element
 
-Use the `as` prop to render text as a `p`, `div` or `span`. This prop is purely semantic and does not alter visual appearance.
+Use the `as` prop to render text as a `p`, `label`, `div` or `span`. This prop is purely semantic and does not alter visual appearance.
 
 ```jsx live=true
 <Text as="p">This is a <Strong>paragraph</Strong> element.</Text>
+<Text as="label">This is a <Strong>label</Strong> element.</Text>
 <Text as="div">This is a <Strong>div</Strong> element.</Text>
 <Text as="span">This is a <Strong>span</Strong> element.</Text>
 ```
@@ -32,44 +33,16 @@ Use the `size` prop to control text size. This prop also provides correct line h
 
 ```jsx live=true scroll=true
 <Flex direction="column" gap="3">
-  <Text size="9">The quick brown fox jumps over the lazy dog.</Text>
-  <Text size="8">The quick brown fox jumps over the lazy dog.</Text>
-  <Text size="7">The quick brown fox jumps over the lazy dog.</Text>
-  <Text size="6">The quick brown fox jumps over the lazy dog.</Text>
-  <Text size="5">The quick brown fox jumps over the lazy dog.</Text>
-  <Text size="4">The quick brown fox jumps over the lazy dog.</Text>
-  <Text size="3">The quick brown fox jumps over the lazy dog.</Text>
-  <Text size="2">The quick brown fox jumps over the lazy dog.</Text>
   <Text size="1">The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="2">The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="3">The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="4">The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="5">The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="6">The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="7">The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="8">The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="9">The quick brown fox jumps over the lazy dog.</Text>
 </Flex>
-```
-
-### Weight
-
-Use the `weight` prop to set the text weight.
-
-```jsx live=true scroll=true
-<Text weight="regular" as="div">
-  The quick brown fox jumps over the lazy dog.
-</Text>
-
-<Text weight="medium" as="div">
-  The quick brown fox jumps over the lazy dog.
-</Text>
-
-<Text weight="bold" as="div">
-  The quick brown fox jumps over the lazy dog.
-</Text>
-```
-
-### Align
-
-Use the `align` prop to set text alignment.
-
-```jsx live=true
-<Text align="left" as="div">Left-aligned</Text>
-<Text align="center" as="div">Center-aligned</Text>
-<Text align="right" as="div">Right-aligned</Text>
 ```
 
 Sizes 2–4 are designed to work well for long-form content.
@@ -128,6 +101,34 @@ Sizes 1–3 are designed to work well for UI labels.
     </Text>
   </Flex>
 </Grid>
+```
+
+### Weight
+
+Use the `weight` prop to set the text weight.
+
+```jsx live=true scroll=true
+<Text weight="regular" as="div">
+  The quick brown fox jumps over the lazy dog.
+</Text>
+
+<Text weight="medium" as="div">
+  The quick brown fox jumps over the lazy dog.
+</Text>
+
+<Text weight="bold" as="div">
+  The quick brown fox jumps over the lazy dog.
+</Text>
+```
+
+### Align
+
+Use the `align` prop to set text alignment.
+
+```jsx live=true
+<Text align="left" as="div">Left-aligned</Text>
+<Text align="center" as="div">Center-aligned</Text>
+<Text align="right" as="div">Right-aligned</Text>
 ```
 
 ### Trim
@@ -203,7 +204,7 @@ Trimming the leading is useful when dialing in vertical spacing in cards or othe
 
 ### Color
 
-Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme. The text colors are designed to achieve at least Lc 60 APCA contrast over common background colors.
 
 ```jsx live=true scroll=true
 <Flex direction="column">
@@ -216,12 +217,23 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 
 ### High-contrast
 
-Use the `highContrast` prop to add additional contrast.
+Use the `highContrast` prop to increase color contrast with the background.
 
 ```jsx live="true"
-<Text size="5" color="gray">
-  The quick <Text highContrast>brown fox</Text> jumps over the lazy dog.
-</Text>
+<Flex direction="column">
+  <Text highContrast color="indigo">
+    The quick brown fox jumps over the lazy dog.
+  </Text>
+  <Text highContrast color="cyan">
+    The quick brown fox jumps over the lazy dog.
+  </Text>
+  <Text highContrast color="orange">
+    The quick brown fox jumps over the lazy dog.
+  </Text>
+  <Text highContrast color="crimson">
+    The quick brown fox jumps over the lazy dog.
+  </Text>
+</Flex>
 ```
 
 ### With formatting
@@ -234,4 +246,19 @@ Compose `Text` with formatting components to add emphasis and structure to conte
   a piece of computer <Code>code</Code>, and even a hotkey combination{' '}
   <Kbd>⇧⌘A</Kbd> within the text.
 </Text>
+```
+
+### With form controls
+
+Composing `Text` with a form control like [`Checkbox`](/themes/docs/components/checkbox), [`RadioGroup`](/themes/docs/components/radio-group), or [`Switch`](/themes/docs/components/switch) automatically centers the control with the first line of text, even when the text is multi-line.
+
+```jsx live="true"
+<Box style={{ maxWidth: 300 }}>
+  <Text as="label" size="3">
+    <Flex gap="2">
+      <Checkbox defaultChecked /> I understand that these documents are
+      confidential and cannot be shared with a third party.
+    </Flex>
+  </Text>
+</Box>
 ```

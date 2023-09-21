@@ -8,6 +8,9 @@
 
 .PlaygroundTable:not(.rt-TableRootTable) {
   margin-bottom: calc(var(--space-4) * -1);
+
+  /* Prevent intrinsic line height from influencing alignment inside the table cells */
+  line-height: 0;
 }
 
 .PlaygroundTable th:not(:global(.rt-TableColumnHeaderCell), :global(.rt-TableRowHeaderCell)) {

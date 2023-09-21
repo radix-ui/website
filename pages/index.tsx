@@ -1,7 +1,6 @@
 import { Box, Flex, Theme, Text, Button, Section } from '@radix-ui/themes';
 import * as React from 'react';
 import NextLink from 'next/link';
-import Head from 'next/head';
 import { ThemesHeader } from '@components/ThemesHeader';
 import { ExampleThemesDashboard } from '@components/ExampleThemesDashboard';
 import { MagicCurtain } from '@components/MagicCurtain';

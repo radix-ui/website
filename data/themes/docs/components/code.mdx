@@ -10,7 +10,7 @@ sourcePath: components/code
 
 ## API Reference
 
-This component is based on the `code` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
+This component is based on the `code` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
 
 <ThemesPropsTable name="code" />
 
@@ -22,15 +22,15 @@ Use the `size` prop to control text size. This prop also provides correct line h
 
 ```jsx live=true scroll=true
 <Flex direction="column" gap="3" align="start">
-  <Code size="9">console.log()</Code>
-  <Code size="8">console.log()</Code>
-  <Code size="7">console.log()</Code>
-  <Code size="6">console.log()</Code>
-  <Code size="5">console.log()</Code>
-  <Code size="4">console.log()</Code>
-  <Code size="3">console.log()</Code>
-  <Code size="2">console.log()</Code>
   <Code size="1">console.log()</Code>
+  <Code size="2">console.log()</Code>
+  <Code size="3">console.log()</Code>
+  <Code size="4">console.log()</Code>
+  <Code size="5">console.log()</Code>
+  <Code size="6">console.log()</Code>
+  <Code size="7">console.log()</Code>
+  <Code size="8">console.log()</Code>
+  <Code size="9">console.log()</Code>
 </Flex>
 ```
 
@@ -53,24 +53,16 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 
 ```jsx live=true
 <Flex direction="column" align="start" gap="2">
-  <Code color="indigo" variant="soft">
-    console.log()
-  </Code>
-  <Code color="crimson" variant="soft">
-    console.log()
-  </Code>
-  <Code color="cyan" variant="soft">
-    console.log()
-  </Code>
-  <Code color="orange" variant="soft">
-    console.log()
-  </Code>
+  <Code color="indigo">console.log()</Code>
+  <Code color="crimson">console.log()</Code>
+  <Code color="cyan">console.log()</Code>
+  <Code color="orange">console.log()</Code>
 </Flex>
 ```
 
 ### High-contrast
 
-Use the `highContrast` prop to add additional contrast.
+Use the `highContrast` prop to increase color contrast with the background.
 
 ```jsx live=true
 <Flex gap="3">

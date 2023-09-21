@@ -35,15 +35,9 @@ Alpha variants are used automatically within components so no configuration is r
 
 ## Choosing an accent color
 
-There is a number of accents to choose from.
-
-Scales designed for light foreground text:
+There is a number of accents to choose from. Visit the [Playground](/themes/playground) page to explore how each accent color looks.
 
 <ThemesAccentSwatches />
-
-Scales designed for dark foreground text:
-
-<ThemesBrightAccentSwatches />
 
 ## Choosing a gray color
 
@@ -51,34 +45,63 @@ You can choose a pure gray or a tinted gray scale:
 
 <ThemeGraySwatches />
 
-- `Gray` is pure gray.
-- `Mauve` is based on a desaturated purple hue.
-- `Slate` is based on a desaturated blue hue.
-- `Sage` is based on a desaturated green hue.
-- `Olive` is based on a desaturated lime hue.
-- `Sand` is based on a desaturated yellow hue.
+- `gray` is pure gray
+- `mauve` is based on a purple hue
+- `slate` is based on a blue hue
+- `sage` is based on a green hue
+- `olive` is based on a lime hue
+- `sand` is based on a yellow hue
 
 ### Neutral and natural pairing
 
-The theme will automatically pair your chosen accent with a gray that is [designed to compliment it](/colors/docs/palette-composition/composing-a-palette#natural-pairing). You can specify an alternative if you’d prefer a neutral vibe.
+The theme will automatically pair your chosen accent with a gray that is designed to compliment it](/colors/docs/palette-composition/composing-a-palette#natural-pairing). You can specify an alternative if you’d prefer a different look.
 
-The difference may seem subtle, but it can make a huge difference with a full page of text or a densely populated UI.
+The difference may seem subtle, but it is impactful on pages with a lot of text or in dense UIs.
 
 You may want to experiment with these settings in your applications and websites to find what works for you.
-
-## Semantic colors
-
-At some point you will likely need to assign colors to communicate semantic meaning, for these cases we recommend using the `color` prop on the required components to override the accent color.
-
-Here are some common choices that work well in Western culture.
-
-- **Error**: Red, Ruby, Tomato, Crimson
-- **Success**: Green, Teal, Jade, Grass, Mint
-- **Warning**: Yellow, Amber, Orange
-- **Info**: Blue, Indigo, Sky, Cyan
 
 ## Using color tokens
 
 All color values are available as CSS [tokens](/themes/docs/theme/token-reference) should you need to build custom components.
 
 See the [token reference](/themes/docs/theme/token-reference) page for a complete list.
+
+### Aliasing colors
+
+You may find that certain shades that have less common names pair better with your main accent color. For example, it is common to use `crimson` or `ruby` in place of `red`, or `teal`, `jade`, or `grass` in place of `green`.
+
+To reclaim the more intuitive color names like `red`, `green`, or `blue`, you can re-map Radix Themes tokens in place of one another:
+
+```css
+/* Your styles.css */
+.radix-themes {
+  --red-1: var(--ruby-1);
+  --red-2: var(--ruby-2);
+  --red-3: var(--ruby-3);
+  --red-4: var(--ruby-4);
+  --red-5: var(--ruby-5);
+  --red-6: var(--ruby-6);
+  --red-7: var(--ruby-7);
+  --red-8: var(--ruby-8);
+  --red-9: var(--ruby-9);
+  --red-10: var(--ruby-10);
+  --red-11: var(--ruby-11);
+  --red-12: var(--ruby-12);
+  --red-a1: var(--ruby-a1);
+  --red-a2: var(--ruby-a2);
+  --red-a3: var(--ruby-a3);
+  --red-a4: var(--ruby-a4);
+  --red-a5: var(--ruby-a5);
+  --red-a6: var(--ruby-a6);
+  --red-a7: var(--ruby-a7);
+  --red-a8: var(--ruby-a8);
+  --red-a9: var(--ruby-a9);
+  --red-a10: var(--ruby-a10);
+  --red-a11: var(--ruby-a11);
+  --red-a12: var(--ruby-a12);
+}
+```
+
+In this example, using the `red` color in Radix Themes components and tokens would now reference the original `ruby` scale.
+
+This is also how Radix Themes re-maps tinted grays like `mauve`, `slate`, `sage`, etc. to `gray` according to your theme setting, so that `gray` always refers to the shade you picked.

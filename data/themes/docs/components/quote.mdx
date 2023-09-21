@@ -1,13 +1,17 @@
 ---
 metaTitle: Quote
-metaDescription: A short quotation.
+metaDescription: A short inline quotation.
 sourcePath: components/quote
 ---
 
 ```jsx live=true
-<Quote>Styles come and go. Good design is a language, not a style.</Quote>
+<Text>
+  His famous quote,{' '}
+  <Quote>Styles come and go. Good design is a language, not a style</Quote>,
+  elegantly summs up Massimo’s philosophy of design.
+</Text>
 ```
 
 ## API Reference
 
-This component is based on the `q` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
+This component is based on the `q` element and supports [common margin props](/themes/docs/theme/layout#margin-props).

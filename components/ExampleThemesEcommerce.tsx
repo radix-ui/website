@@ -81,16 +81,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
 
   return (
     <Flex align="center" gap="6" ref={setContainer} {...props}>
-      <Flex
-        shrink="0"
-        gap="6"
-        direction="column"
-        style={{
-          width: 304,
-          // Space to align the vertically centered content with the dot grid
-          // marginTop: -16,
-        }}
-      >
+      <Flex shrink="0" gap="6" direction="column" style={{ width: 304 }}>
         <Card size="1">
           <Flex mb="2">
             <img
@@ -348,11 +339,9 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
         </Card>
 
         <Card size="1">
-          <Box height="4" mb="4">
-            <Heading as="h3" size="3">
-              Shopping cart
-            </Heading>
-          </Box>
+          <Heading as="h3" size="3" mb="3">
+            Shopping cart
+          </Heading>
 
           <Flex direction="column" gap="3">
             {[
@@ -618,16 +607,14 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
         </Card>
 
         <Card size="1">
-          <Box height="6">
-            <Flex align="center" justify="between">
-              <Heading as="h3" size="3">
-                Bookmarks
-              </Heading>
-              <Button tabIndex={-1} size="1" variant="ghost">
-                Buy all
-              </Button>
-            </Flex>
-          </Box>
+          <Flex align="center" justify="between" mb="2">
+            <Heading as="h3" size="3">
+              Bookmarks
+            </Heading>
+            <Button tabIndex={-1} size="1" variant="ghost">
+              Buy all
+            </Button>
+          </Flex>
 
           <Grid gapX="2" gapY="4" columns="2">
             {[
@@ -956,7 +943,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
         </Card>
 
         <Card size="2">
-          <Flex align="center" justify="between" height="5" mb="4">
+          <Flex align="center" justify="between" mb="4">
             <Heading as="h3" size="4">
               Orders
             </Heading>
@@ -1067,32 +1054,18 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
         </Card>
       </Flex>
 
-      <Flex
-        shrink="0"
-        gap="6"
-        direction="column"
-        style={{
-          width: 640,
-          // Space to align the vertically centered content with the dot grid
-          marginBottom: 15,
-        }}
-      >
+      <Flex shrink="0" gap="6" direction="column" style={{ width: 640 }}>
         <Card size="2">
           <Heading as="h3" size="4" mb="4">
             Shipment tracking
           </Heading>
 
-          <Box position="relative" mb="5" grow="1">
-            <Box position="absolute" top="0" left="0" m="2" style={{ pointerEvents: 'none' }}>
+          <TextField.Root mb="5">
+            <TextField.Slot>
               <MagnifyingGlassIcon />
-            </Box>
-            <TextField.Input
-              variant="soft"
-              tabIndex={-1}
-              placeholder="Enter package number"
-              style={{ paddingLeft: 'var(--space-6)' }}
-            />
-          </Box>
+            </TextField.Slot>
+            <TextField.Input variant="soft" tabIndex={-1} placeholder="Enter package number" />
+          </TextField.Root>
 
           <Grid columns="2">
             <Flex gap="4" direction="column" pr="6">

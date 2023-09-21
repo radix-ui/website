@@ -447,7 +447,11 @@ export default function ComponentsPage() {
                               <Avatar variant={variant} fallback={<AvatarIconFallback />} />
                             </td>
                             <td>
-                              <Avatar variant={variant} fallback="V" highContrast />
+                              <Avatar
+                                variant={variant}
+                                fallback={<AvatarIconFallback />}
+                                highContrast
+                              />
                             </td>
                             <td>
                               <Avatar
@@ -471,7 +475,12 @@ export default function ComponentsPage() {
                               />
                             </td>
                             <td>
-                              <Avatar variant={variant} color="gray" fallback="V" highContrast />
+                              <Avatar
+                                variant={variant}
+                                color="gray"
+                                fallback={<AvatarIconFallback />}
+                                highContrast
+                              />
                             </td>
                           </tr>
                         ))}
@@ -524,7 +533,7 @@ export default function ComponentsPage() {
                                   <Avatar
                                     variant={variant}
                                     color={color}
-                                    fallback="V"
+                                    fallback={<AvatarIconFallback />}
                                     highContrast
                                   />
                                 </td>
@@ -1191,11 +1200,9 @@ export default function ComponentsPage() {
                     </Flex>
 
                     <Card size="4" style={{ width: 400 }}>
-                      <Box height="7" mb="4">
-                        <Heading as="h3" size="6" mt="-1">
-                          Sign up
-                        </Heading>
-                      </Box>
+                      <Heading as="h3" size="6" trim="start" mb="4">
+                        Sign up
+                      </Heading>
 
                       <Box mb="5">
                         <label>
@@ -2492,7 +2499,7 @@ export default function ComponentsPage() {
                 <Flex gap="6">
                   <Card size="2">
                     <Flex>
-                      <Inset side="left" pr="current">
+                      <Inset clip="padding-box" side="left" pr="current">
                         <InsetImage />
                       </Inset>
                       <Text as="p" size="3" style={{ width: 240 }}>
@@ -2508,7 +2515,7 @@ export default function ComponentsPage() {
                         <Strong>Typography</Strong> is the art and technique of arranging type to
                         make written language legible, readable and appealing when displayed.
                       </Text>
-                      <Inset side="right" pl="current">
+                      <Inset clip="padding-box" side="right" pl="current">
                         <InsetImage />
                       </Inset>
                     </Flex>
@@ -2517,7 +2524,7 @@ export default function ComponentsPage() {
 
                 <Flex gap="6" mt="6">
                   <Card size="2" style={{ width: 300 }}>
-                    <Inset side="top" pb="current">
+                    <Inset clip="padding-box" side="top" pb="current">
                       <InsetImage style={{ width: '100%', height: 160 }} />
                     </Inset>
                     <Text as="p" size="3" style={{ width: 240 }}>
@@ -2531,7 +2538,7 @@ export default function ComponentsPage() {
                       <Strong>Typography</Strong> is the art and technique of arranging type to make
                       written language legible, readable and appealing when displayed.
                     </Text>
-                    <Inset side="bottom" pt="current">
+                    <Inset clip="padding-box" side="bottom" pt="current">
                       <InsetImage style={{ width: '100%', height: 160 }} />
                     </Inset>
                   </Card>
@@ -4144,7 +4151,7 @@ export default function ComponentsPage() {
                       </thead>
                       <tbody>
                         {textAreaPropDefs.variant.values.map((variant) => (
-                          <tr key={variant}>
+                          <tr key={variant} style={{ verticalAlign: 'baseline' }}>
                             <td>{upperFirst(variant)}</td>
                             <td>
                               <TextArea variant={variant} placeholder="Reply to comment" />
@@ -4192,7 +4199,7 @@ export default function ComponentsPage() {
                       </thead>
                       <tbody>
                         {themeAccentColorsOrdered.map((color) => (
-                          <tr key={color}>
+                          <tr key={color} style={{ verticalAlign: 'baseline' }}>
                             <td>{upperFirst(color)}</td>
                             {textAreaPropDefs.variant.values.map((variant) => (
                               <td key={variant}>
@@ -4225,7 +4232,7 @@ export default function ComponentsPage() {
                       </thead>
                       <tbody>
                         {textAreaPropDefs.size.values.map((size) => (
-                          <tr key={size}>
+                          <tr key={size} style={{ verticalAlign: 'baseline' }}>
                             <td>Size {size}</td>
                             {textAreaPropDefs.variant.values.map((variant) => (
                               <td key={variant}>
@@ -4520,15 +4527,11 @@ function AvatarIconFallback() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
+      viewBox="0 0 64 64"
       fill="currentColor"
-      className="w-6 h-6"
+      style={{ width: '60%', height: '60%' }}
     >
-      <path
-        fillRule="evenodd"
-        d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-        clipRule="evenodd"
-      />
+      <path d="M41.5 14c4.687 0 8.5 4.038 8.5 9s-3.813 9-8.5 9S33 27.962 33 23 36.813 14 41.5 14zM56.289 43.609C57.254 46.21 55.3 49 52.506 49c-2.759 0-11.035 0-11.035 0 .689-5.371-4.525-10.747-8.541-13.03 2.388-1.171 5.149-1.834 8.07-1.834C48.044 34.136 54.187 37.944 56.289 43.609zM37.289 46.609C38.254 49.21 36.3 52 33.506 52c-5.753 0-17.259 0-23.012 0-2.782 0-4.753-2.779-3.783-5.392 2.102-5.665 8.245-9.472 15.289-9.472S35.187 40.944 37.289 46.609zM21.5 17c4.687 0 8.5 4.038 8.5 9s-3.813 9-8.5 9S13 30.962 13 26 16.813 17 21.5 17z"></path>
     </svg>
   );
 }

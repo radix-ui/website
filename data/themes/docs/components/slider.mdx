@@ -10,7 +10,7 @@ sourcePath: components/slider
 
 ## API Reference
 
-This component inherits props from the [Radix Slider](/primitives/docs/components/slider) primitive and supports [common margin props](/themes/docs/theme/layout#margin-props).
+This component inherits props from the [Slider primitive](/primitives/docs/components/slider) and supports [common margin props](/themes/docs/theme/layout#margin-props).
 
 <ThemesPropsTable name="slider" />
 
@@ -21,10 +21,10 @@ This component inherits props from the [Radix Slider](/primitives/docs/component
 Use the `size` prop to control the size.
 
 ```jsx live=true
-<Flex direction="column" gap="4" style={{ maxWidth: 450 }}>
-  <Slider size="1" defaultValue={[25]} />
-  <Slider size="2" defaultValue={[50]} />
-  <Slider size="3" defaultValue={[75]} />
+<Flex direction="column" gap="4" style={{ maxWidth: 300 }}>
+  <Slider defaultValue={[25]} size="1" />
+  <Slider defaultValue={[50]} size="2" />
+  <Slider defaultValue={[75]} size="3" />
 </Flex>
 ```
 
@@ -33,10 +33,10 @@ Use the `size` prop to control the size.
 Use the `variant` prop to control the visual style.
 
 ```jsx live=true
-<Flex direction="column" gap="4" style={{ maxWidth: 450 }}>
-  <Slider variant="surface" defaultValue={[75]} />
-  <Slider variant="classic" defaultValue={[50]} />
-  <Slider variant="soft" defaultValue={[25]} />
+<Flex direction="column" gap="4" style={{ maxWidth: 300 }}>
+  <Slider defaultValue={[25]} variant="surface" />
+  <Slider defaultValue={[50]} variant="classic" />
+  <Slider defaultValue={[75]} variant="soft" />
 </Flex>
 ```
 
@@ -45,28 +45,28 @@ Use the `variant` prop to control the visual style.
 Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
 
 ```jsx live=true
-<Flex gap="4" style={{ height: 75 }}>
-  <Slider color="indigo" defaultValue={[25]} orientation="vertical" />
-  <Slider color="cyan" defaultValue={[50]} orientation="vertical" />
-  <Slider color="orange" defaultValue={[75]} orientation="vertical" />
-  <Slider color="crimson" defaultValue={[100]} orientation="vertical" />
+<Flex direction="column" gap="4" style={{ maxWidth: 300 }}>
+  <Slider defaultValue={[20]} color="indigo" />
+  <Slider defaultValue={[40]} color="cyan" />
+  <Slider defaultValue={[60]} color="orange" />
+  <Slider defaultValue={[80]} color="crimson" />
 </Flex>
 ```
 
 ### High-contrast
 
-Use the `highContrast` prop to add additional contrast.
+Use the `highContrast` prop to increase color contrast in light mode.
 
 ```jsx live=true
-<Grid columns="2" gap="4" style={{ maxWidth: 450 }}>
-  <Slider variant="surface" defaultValue={[75]} />
-  <Slider variant="surface" defaultValue={[75]} highContrast />
-
-  <Slider variant="classic" defaultValue={[50]} />
-  <Slider variant="classic" defaultValue={[50]} highContrast />
-
-  <Slider variant="soft" defaultValue={[25]} />
-  <Slider variant="soft" defaultValue={[25]} highContrast />
+<Grid columns="2" gap="4">
+  <Slider defaultValue={[20]} color="indigo" />
+  <Slider defaultValue={[20]} color="indigo" highContrast />
+  <Slider defaultValue={[40]} color="cyan" />
+  <Slider defaultValue={[40]} color="cyan" highContrast />
+  <Slider defaultValue={[60]} color="orange" />
+  <Slider defaultValue={[60]} color="orange" highContrast />
+  <Slider defaultValue={[80]} color="crimson" />
+  <Slider defaultValue={[80]} color="crimson" highContrast />
 </Grid>
 ```
 
@@ -75,10 +75,10 @@ Use the `highContrast` prop to add additional contrast.
 Use the `radius` prop to assign a specific radius value, ignoring the global theme.
 
 ```jsx live=true
-<Flex gap="4" style={{ height: 75 }}>
-  <Slider defaultValue={[50]} radius="none" orientation="vertical" />
-  <Slider defaultValue={[50]} radius="large" orientation="vertical" />
-  <Slider defaultValue={[50]} radius="full" orientation="vertical" />
+<Flex direction="column" gap="4" style={{ maxWidth: 300 }}>
+  <Slider defaultValue={[25]} radius="none" />
+  <Slider defaultValue={[50]} radius="small" />
+  <Slider defaultValue={[75]} radius="full" />
 </Flex>
 ```
 

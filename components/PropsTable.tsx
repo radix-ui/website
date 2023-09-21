@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, IconButton, Text, Popover, Code, Table } from '@radix-ui/themes';
+import { Box, IconButton, Text, Popover, Code, Table, Flex } from '@radix-ui/themes';
 import { InfoCircledIcon, DividerHorizontalIcon } from '@radix-ui/react-icons';
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
 
@@ -36,72 +36,66 @@ export function PropsTable({
           {data.map(
             ({ name, type, typeSimple, required, default: defaultValue, description }, i) => {
               return (
-                <Table.Row key={`${name}-${i}`}>
-                  <Table.RowHeaderCell style={{ whiteSpace: 'nowrap' }}>
-                    <Code size="2">
-                      {name}
-                      {required ? '*' : null}
-                    </Code>
-                    {description && (
-                      <Popover.Root>
-                        <Popover.Trigger>
-                          <IconButton
-                            variant="ghost"
-                            size="1"
-                            ml="2"
-                            color="gray"
-                            style={{ verticalAlign: 'middle' }}
-                          >
-                            <AccessibleIcon label="Prop description">
-                              <InfoCircledIcon />
-                            </AccessibleIcon>
-                          </IconButton>
-                        </Popover.Trigger>
-                        <Popover.Content
-                          side="top"
-                          align="center"
-                          style={{ maxWidth: 350 }}
-                          className="radix-themes-custom-fonts"
-                          onOpenAutoFocus={(event) => {
-                            event.preventDefault();
-                            (event.currentTarget as HTMLElement)?.focus();
-                          }}
-                        >
-                          <Text as="div" size="2">
-                            {description}
-                          </Text>
-                        </Popover.Content>
-                      </Popover.Root>
-                    )}
-                  </Table.RowHeaderCell>
-                  <Table.Cell style={{ whiteSpace: 'nowrap' }}>
-                    <Code color="gray" size="2">
-                      {Boolean(typeSimple) ? typeSimple : type}
-                    </Code>
-                    {Boolean(typeSimple) && Boolean(type) && (
-                      <Popover.Root>
-                        <Popover.Trigger>
-                          <IconButton
-                            variant="ghost"
-                            color="gray"
-                            size="1"
-                            ml="2"
-                            style={{
-                              verticalAlign: 'middle',
+                <Table.Row key={`${name}-${i}`} style={{ whiteSpace: 'nowrap' }}>
+                  <Table.RowHeaderCell>
+                    <Flex display="inline-flex" align="center" gap="2">
+                      <Box>
+                        <Code size="2">
+                          {name}
+                          {required ? '*' : null}
+                        </Code>
+                      </Box>
+                      {description && (
+                        <Popover.Root>
+                          <Popover.Trigger>
+                            <IconButton variant="ghost" size="1" color="gray">
+                              <AccessibleIcon label="Prop description">
+                                <InfoCircledIcon />
+                              </AccessibleIcon>
+                            </IconButton>
+                          </Popover.Trigger>
+                          <Popover.Content
+                            side="top"
+                            align="center"
+                            style={{ maxWidth: 350 }}
+                            className="radix-themes-custom-fonts"
+                            onOpenAutoFocus={(event) => {
+                              event.preventDefault();
+                              (event.currentTarget as HTMLElement)?.focus();
                             }}
                           >
-                            <AccessibleIcon label="See full type">
-                              <InfoCircledIcon />
-                            </AccessibleIcon>
-                          </IconButton>
-                        </Popover.Trigger>
-                        <Popover.Content side="top" align="center" style={{ maxWidth: 600 }}>
-                          <Code size="2" style={{ whiteSpace: 'pre', display: 'block' }}>
-                            {type}
-                          </Code>
-                        </Popover.Content>
-                      </Popover.Root>
-                    )}
+                            <Text as="div" size="2">
+                              {description}
+                            </Text>
+                          </Popover.Content>
+                        </Popover.Root>
+                      )}
+                    </Flex>
+                  </Table.RowHeaderCell>
+                  <Table.Cell>
+                    <Flex display="inline-flex" align="center" gap="2">
+                      <Box>
+                        <Code color="gray" size="2">
+                          {Boolean(typeSimple) ? typeSimple : type}
+                        </Code>
+                      </Box>
+                      {Boolean(typeSimple) && Boolean(type) && (
+                        <Popover.Root>
+                          <Popover.Trigger>
+                            <IconButton variant="ghost" color="gray" size="1">
+                              <AccessibleIcon label="See full type">
+                                <InfoCircledIcon />
+                              </AccessibleIcon>
+                            </IconButton>
+                          </Popover.Trigger>
+                          <Popover.Content side="top" align="center" style={{ maxWidth: 600 }}>
+                            <Code size="2" style={{ whiteSpace: 'pre', display: 'block' }}>
+                              {type}
+                            </Code>
+                          </Popover.Content>
+                        </Popover.Root>
+                      )}
+                    </Flex>
                   </Table.Cell>
 
                   <Table.Cell>

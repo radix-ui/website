@@ -5,8 +5,8 @@ sourcePath: components/select
 ---
 
 ```jsx live=true
-<Select.Root>
-  <Select.Trigger placeholder="Select a fruit…" />
+<Select.Root defaultValue="apple">
+  <Select.Trigger />
   <Select.Content>
     <Select.Group>
       <Select.Label>Fruits</Select.Label>
@@ -30,37 +30,37 @@ sourcePath: components/select
 
 ### Root
 
-Contains all the parts of a select. It inherits props from the [Radix Select.Root](/primitives/docs/components/select#root) part.
+Contains all the parts of a select. It inherits props from the [Select.Root primitive](/primitives/docs/components/select#root) part.
 
 <ThemesPropsTable name="selectRoot" />
 
 ### Trigger
 
-The button that toggles the select. This component inherits props from the [Radix Select.Trigger](/primitives/docs/components/select#trigger) and [Select.Value](/primitives/docs/components/select#value) parts. It supports [common margin props](/themes/docs/theme/layout#margin-props).
+The button that toggles the select. This component inherits props from the [Select.Trigger primitive](/primitives/docs/components/select#trigger) and [Select.Value primitive](/primitives/docs/components/select#value) parts. It supports [common margin props](/themes/docs/theme/layout#margin-props).
 
 <ThemesPropsTable name="selectTrigger" />
 
 ### Content
 
-The component that pops out when the select is open. It inherits props from the [Radix Select.Portal](/primitives/docs/components/select#portal) and [Select.Content](/primitives/docs/components/select#content) parts.
+The component that pops out when the select is open. It inherits props from the [Select.Portal primitive](/primitives/docs/components/select#portal) and [Select.Content primitive](/primitives/docs/components/select#content) parts.
 
 <ThemesPropsTable name="selectContent" />
 
 ### Item
 
-The component that contains the select items. It inherits props from the [Radix Select.Item](/primitives/docs/components/select#item) part.
+The component that contains the select items. It inherits props from the [Select.Item primitive](/primitives/docs/components/select#item) part.
 
 ### Group
 
-Used to group multiple items. It inherits props from the [Radix Select.Group](/primitives/docs/components/select#group) part. Use in conjunction with `Select.Label` to ensure good accessibility via automatic labelling.
+Used to group multiple items. It inherits props from the [Select.Group primitive](/primitives/docs/components/select#group) part. Use in conjunction with `Select.Label` to ensure good accessibility via automatic labelling.
 
 ### Label
 
-Used to render the label of a group, it isn't focusable using arrow keys. It inherits props from the [Radix Select.Label](/primitives/docs/components/select#label) part.
+Used to render the label of a group, it isn't focusable using arrow keys. It inherits props from the [Select.Label primitive](/primitives/docs/components/select#label) part.
 
 ### Separator
 
-Used to visually separate items in the Select. It inherits props from the [Radix Select.Separator](/primitives/docs/components/select#separator) part.
+Used to visually separate items in the Select. It inherits props from the [Select.Separator primitive](/primitives/docs/components/select#separator) part.
 
 ## Examples
 
@@ -69,23 +69,13 @@ Used to visually separate items in the Select. It inherits props from the [Radix
 Set the `position` prop to `popper` and use the `side` prop to position items below the trigger.
 
 ```jsx live=true
-<Flex gap="3" align="center">
-  <Select.Root defaultValue="apple">
-    <Select.Trigger />
-    <Select.Content position="popper">
-      <Select.Item value="apple">Apple</Select.Item>
-      <Select.Item value="orange">Orange</Select.Item>
-    </Select.Content>
-  </Select.Root>
-
-  <Select.Root defaultValue="apple">
-    <Select.Trigger />
-    <Select.Content position="popper" side="top">
-      <Select.Item value="apple">Apple</Select.Item>
-      <Select.Item value="orange">Orange</Select.Item>
-    </Select.Content>
-  </Select.Root>
-</Flex>
+<Select.Root defaultValue="apple">
+  <Select.Trigger />
+  <Select.Content position="popper">
+    <Select.Item value="apple">Apple</Select.Item>
+    <Select.Item value="orange">Orange</Select.Item>
+  </Select.Content>
+</Select.Root>
 ```
 
 ### Size
@@ -94,7 +84,7 @@ Use the `size` prop to control the size.
 
 ```jsx live=true
 <Flex gap="3" align="center">
-  <Select.Root size="3" defaultValue="apple">
+  <Select.Root size="1" defaultValue="apple">
     <Select.Trigger />
     <Select.Content>
       <Select.Item value="apple">Apple</Select.Item>
@@ -110,7 +100,7 @@ Use the `size` prop to control the size.
     </Select.Content>
   </Select.Root>
 
-  <Select.Root size="1" defaultValue="apple">
+  <Select.Root size="3" defaultValue="apple">
     <Select.Trigger />
     <Select.Content>
       <Select.Item value="apple">Apple</Select.Item>
@@ -270,4 +260,30 @@ Use the `radius` prop to assign a specific radius value, ignoring the global the
     </Select.Content>
   </Select.Root>
 </Flex>
+```
+
+### Placeholder
+
+Use the `placeholder` prop to create a `Trigger` that doesn’t need an initial value.
+
+```jsx live="true"
+<Select.Root>
+  <Select.Trigger placeholder="Pick a fruit" />
+  <Select.Content>
+    <Select.Group>
+      <Select.Label>Fruits</Select.Label>
+      <Select.Item value="orange">Orange</Select.Item>
+      <Select.Item value="apple">Apple</Select.Item>
+      <Select.Item value="grape" disabled>
+        Grape
+      </Select.Item>
+    </Select.Group>
+    <Select.Separator />
+    <Select.Group>
+      <Select.Label>Vegetables</Select.Label>
+      <Select.Item value="carrot">Carrot</Select.Item>
+      <Select.Item value="potato">Potato</Select.Item>
+    </Select.Group>
+  </Select.Content>
+</Select.Root>
 ```
