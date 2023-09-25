@@ -1,6 +1,5 @@
 import {
   Avatar,
-  Badge,
   Box,
   Button,
   Card,
@@ -22,7 +21,6 @@ import {
   TextFieldInput,
   Theme,
   themeAccentColorsOrdered,
-  themeGrayColorsGrouped,
 } from '@radix-ui/themes';
 import { Label } from '@radix-ui/react-label';
 import { allPeople } from './people';
@@ -453,7 +451,7 @@ export function SwatchRow({ name }: { name: string }) {
 
 export function ThemesColorScale({ type = 'accent' }: { type: 'accent' | 'gray' }) {
   return (
-    <Flex direction="column" gap="3" mt="6" mb="5">
+    <Flex direction="column" gap="2" mt="6" mb="5">
       <Flex align="center" gap="1">
         {[...new Array(12)].map((_, i) => (
           <Flex grow="1" direction="column" gap="1" key={i}>
@@ -598,12 +596,7 @@ export function ThemesVolumeControlExample() {
   return (
     <Flex
       justify="center"
-      style={{
-        backgroundColor: 'var(--gray-2)',
-        borderRadius: 'var(--radius-1)',
-        border: '1px solid var(--gray-4)',
-        minWidth: 350,
-      }}
+      style={{ backgroundColor: 'var(--gray-2)', borderRadius: 'var(--radius-1)', minWidth: 350 }}
       p={{ initial: '5', sm: '6' }}
     >
       <Card size="3" style={{ maxWidth: 460, width: '100%' }} variant="classic">
@@ -623,7 +616,7 @@ export function ThemesVolumeControlExample() {
           <Flex gap="2" align="center" height="4" mt="2" mb="5">
             <VolumeNoneIcon color="var(--gray-a9)" />
             <Box grow="1">
-              <Slider defaultValue={[80]} />
+              <Slider variant="soft" defaultValue={[80]} />
             </Box>
             <VolumeMaxIcon color="var(--gray-a9)" />
           </Flex>
@@ -778,29 +771,27 @@ export function DecorativeBox(props) {
 
 export function ThemesDarkModeExample() {
   return (
-    <Card>
-      <Inset side="all">
-        <Grid columns={{ initial: '1', sm: '2' }}>
-          <Theme asChild appearance="light" style={{ backgroundColor: 'var(--gray-1)' }}>
-            <Box p={{ initial: '4', sm: '5' }}>
-              <AlbumCard />
-            </Box>
-          </Theme>
+    <Box style={{ borderRadius: 'var(--radius-6)', overflow: 'hidden' }}>
+      <Grid columns={{ initial: '1', sm: '2' }}>
+        <Theme asChild appearance="light" style={{ backgroundColor: 'var(--gray-2)' }}>
+          <Box p={{ initial: '4', sm: '5' }}>
+            <AlbumCard />
+          </Box>
+        </Theme>
 
-          <Theme asChild appearance="dark" style={{ backgroundColor: 'var(--gray-1)' }}>
-            <Box p="5">
-              <AlbumCard />
-            </Box>
-          </Theme>
-        </Grid>
-      </Inset>
-    </Card>
+        <Theme asChild appearance="dark" style={{ backgroundColor: 'var(--gray-2)' }}>
+          <Box p="5">
+            <AlbumCard />
+          </Box>
+        </Theme>
+      </Grid>
+    </Box>
   );
 }
 
 function AlbumCard() {
   return (
-    <Card size={{ initial: '3', sm: '3' }}>
+    <Card size="1">
       <Box py="5">
         <Flex mb="4" justify="center" position="relative">
           <img
@@ -815,7 +806,7 @@ function AlbumCard() {
         </Flex>
 
         <Box mt="5">
-          <Theme asChild accentColor="crimson">
+          <Theme asChild accentColor="ruby">
             <Flex mb="4" align="center" justify="center">
               {[1, 2, 3, 4].map((i) => (
                 <svg

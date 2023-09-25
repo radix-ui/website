@@ -35,42 +35,27 @@ Alpha variants are used automatically within components so no configuration is r
 
 ## Choosing an accent color
 
-There is a number of accents to choose from. Visit the [Playground](/themes/playground) page to explore how each accent color looks.
+There is a number of accents to choose from. Visit the [component playground](/themes/playground) page to explore how each accent color feels.
 
 <ThemesAccentSwatches />
 
 ## Choosing a gray color
 
-You can choose a pure gray or a tinted gray scale:
+The theme will automatically pair your accent color with a gray shade that compliments it.
 
 <ThemeGraySwatches />
 
-- `gray` is pure gray
-- `mauve` is based on a purple hue
-- `slate` is based on a blue hue
-- `sage` is based on a green hue
-- `olive` is based on a lime hue
-- `sand` is based on a yellow hue
-
-### Neutral and natural pairing
-
-The theme will automatically pair your chosen accent with a gray that is designed to compliment it](/colors/docs/palette-composition/composing-a-palette#natural-pairing). You can specify an alternative if you’d prefer a different look.
-
-The difference may seem subtle, but it is impactful on pages with a lot of text or in dense UIs.
-
-You may want to experiment with these settings in your applications and websites to find what works for you.
+You can specify an alternative if you’d prefer a different look. The difference may seem subtle, but it is impactful on pages with a lot of text or in dense UIs. You can choose between a pure gray or a number of tinted grays.
 
 ## Using color tokens
 
-All color values are available as CSS [tokens](/themes/docs/theme/token-reference) should you need to build custom components.
-
-See the [token reference](/themes/docs/theme/token-reference) page for a complete list.
+All colors are available as CSS variables in case you need to build custom components. See the [token reference](/themes/docs/theme/token-reference) page for a complete list.
 
 ### Aliasing colors
 
-You may find that certain shades that have less common names pair better with your main accent color. For example, it is common to use `crimson` or `ruby` in place of `red`, or `teal`, `jade`, or `grass` in place of `green`.
+You may find that certain shades that have less common names pair better with your main accent color. For example, it is common to use `crimson` and `ruby` in place of `red`, or `teal` and `jade` in place of `green`.
 
-To reclaim the more intuitive color names like `red`, `green`, or `blue`, you can re-map Radix Themes tokens in place of one another:
+To reclaim the more intuitive color names like `red`, `green`, or `blue`, among others, you can remap Radix Themes tokens in place of one another:
 
 ```css
 /* Your styles.css */
