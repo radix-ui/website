@@ -1200,7 +1200,7 @@ export default function ComponentsPage() {
                     </Flex>
 
                     <Card size="4" style={{ width: 400 }}>
-                      <Heading as="h3" size="6" trim="start" mb="4">
+                      <Heading as="h3" size="6" trim="start" mb="5">
                         Sign up
                       </Heading>
 
