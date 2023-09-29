@@ -148,6 +148,7 @@ const MagicCurtainControls = ({ images }: MagicCurtainControlsProps) => {
         const isMagicCurtainAnimation = [
           styles['magic-curtain-fade'],
           styles['magic-curtain-clip'],
+          styles['magic-curtain-clip-reverse'],
         ].includes(event.animationName);
 
         if (event.target instanceof HTMLElement && isMagicCurtainAnimation) {

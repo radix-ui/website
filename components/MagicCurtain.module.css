@@ -48,6 +48,11 @@
     animation-duration: var(--animation-duration);
     animation-timing-function: ease-in-out;
   }
+
+  .MagicCurtainItem[data-visibility='visible']
+    ~ .MagicCurtainItem[data-visibility='animating-out'] {
+    animation-name: magic-curtain-clip-reverse;
+  }
 }
 
 /* Firefox has performance issues at high pixel count */
@@ -85,6 +90,15 @@
   }
 }
 
+@keyframes magic-curtain-clip-reverse {
+  0% {
+    clip-path: polygon(-20% 0, 100% 0, 100% 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(120% 0, 100% 0, 100% 100%, 100% 100%);
+  }
+}
+
 @media (min-width: 1000px) {
   @keyframes magic-curtain-clip {
     0% {
@@ -92,6 +106,15 @@
     }
     100% {
       clip-path: polygon(0 0, -5% 0, 0 100%, 0 100%);
+    }
+  }
+
+  @keyframes magic-curtain-clip-reverse {
+    0% {
+      clip-path: polygon(-5% 0, 100% 0, 100% 100%, 0 100%);
+    }
+    100% {
+      clip-path: polygon(105% 0, 100% 0, 100% 100%, 100% 100%);
     }
   }
 }
