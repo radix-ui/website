@@ -172,7 +172,7 @@ export function ThemesVariantsExample() {
                       <CheckIcon width="32" height="32" />
                     </Marker>
 
-                    <Heading as="h3" size="6">
+                    <Heading as="h3" size="6" mb="2">
                       Invoice paid
                     </Heading>
                   </Flex>
