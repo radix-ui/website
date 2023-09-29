@@ -51,7 +51,7 @@
     "@radix-ui/react-toolbar": "1.0.4",
     "@radix-ui/react-tooltip": "1.0.6",
     "@radix-ui/react-visually-hidden": "1.0.3",
-    "@radix-ui/themes": "2.0.0-rc.3",
+    "@radix-ui/themes": "2.0.0-rc.7",
     "@stitches/react": "^1.2.8",
     "algoliasearch": "^4.14.2",
     "codesandbox": "^2.2.3",

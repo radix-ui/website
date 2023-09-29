@@ -104,18 +104,14 @@ export const components = {
     );
   },
   hr: (props) => <Separator size="2" {...props} my="6" style={{ marginInline: 'auto' }} />,
-  ul: ({ children, ...props }) => (
-    <Flex direction="column" gap="1" {...props} mb="3" pl="4" asChild>
-      <ul children={children} className={styles.List} />
-    </Flex>
-  ),
+  ul: (props) => <ul {...props} className={styles.List} />,
   ol: (props) => ({ children, ...props }) => (
     <Box {...props} mb="3" pl="4" asChild>
       <ol children={children} />
     </Box>
   ),
   li: (props) => (
-    <li>
+    <li className={styles.ListItem}>
       <Text {...props} />
     </li>
   ),
