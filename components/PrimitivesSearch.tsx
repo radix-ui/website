@@ -370,7 +370,9 @@ function ItemLink({ item }: { item: SearchItem }) {
   );
 }
 
-function ItemTitle(props: Omit<React.ComponentProps<typeof Text>, 'asChild' | 'as'>) {
+type ItemTitleProps = Omit<Extract<React.ComponentPropsWithoutRef<typeof Text>, { as: 'p' }>, 'as'>;
+
+function ItemTitle(props: ItemTitleProps) {
   return (
     <Text
       as="p"
