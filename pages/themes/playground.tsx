@@ -2786,7 +2786,7 @@ export default function ComponentsPage() {
                       Comment
                     </Button>
                   </PopoverTrigger>
-                  <PopoverContent size="1" style={{ width: 250 }}>
+                  <PopoverContent size="1" style={{ width: 280 }}>
                     <Flex gap="3">
                       <Avatar
                         size="2"
@@ -2798,10 +2798,10 @@ export default function ComponentsPage() {
 
                         <Flex gap="3" mt="3" justify="between">
                           <Flex align="center" gap="2" asChild>
-                            <label>
-                              <Checkbox />
-                              <Text size="1">Send to group</Text>
-                            </label>
+                            <Text as="label" size="1">
+                              <Checkbox size="1" />
+                              <Text>Send to group</Text>
+                            </Text>
                           </Flex>
 
                           <PopoverClose>
@@ -2833,10 +2833,10 @@ export default function ComponentsPage() {
                         <TextArea placeholder="Write a comment…" style={{ height: 100 }} />
                         <Flex gap="3" mt="3" justify="between">
                           <Flex align="center" gap="2" asChild>
-                            <label>
+                            <Text as="label" size="2">
                               <Checkbox />
-                              <Text size="2">Send to group</Text>
-                            </label>
+                              <Text>Send to group</Text>
+                            </Text>
                           </Flex>
 
                           <PopoverClose>
@@ -2868,10 +2868,10 @@ export default function ComponentsPage() {
                         <TextArea size="3" placeholder="Write a comment…" style={{ height: 120 }} />
                         <Flex gap="3" mt="4" justify="between">
                           <Flex align="center" gap="2" asChild>
-                            <label>
-                              <Checkbox />
-                              <Text size="2">Send to group</Text>
-                            </label>
+                            <Text as="label" size="2">
+                              <Checkbox size="2" />
+                              <Text>Send to group</Text>
+                            </Text>
                           </Flex>
 
                           <PopoverClose>
@@ -2892,8 +2892,8 @@ export default function ComponentsPage() {
                       Comment
                     </Button>
                   </PopoverTrigger>
-                  <PopoverContent size="4" style={{ width: 400 }}>
-                    <Flex gap="4">
+                  <PopoverContent size="4" style={{ width: 440 }}>
+                    <Flex gap="5">
                       <Avatar
                         size="5"
                         src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
@@ -2903,10 +2903,10 @@ export default function ComponentsPage() {
                         <TextArea size="3" placeholder="Write a comment…" style={{ height: 120 }} />
                         <Flex gap="3" mt="4" justify="between">
                           <Flex align="center" gap="2" asChild>
-                            <label>
-                              <Checkbox size="2" />
+                            <Text as="label" size="1">
+                              <Checkbox size="3" />
                               <Text size="3">Send to group</Text>
-                            </label>
+                            </Text>
                           </Flex>
 
                           <PopoverClose>

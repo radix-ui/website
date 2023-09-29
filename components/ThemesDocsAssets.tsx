@@ -336,10 +336,10 @@ export function ThemesRadiusExample() {
                   <TextArea placeholder="Reply…" />
                   <Flex gap="6" mt="3" justify="between">
                     <Flex asChild align="center" gap="2">
-                      <Label>
+                      <Text as="label" size="2">
                         <Checkbox checked />
-                        <Text size="2">Send to group</Text>
-                      </Label>
+                        <Text>Send to group</Text>
+                      </Text>
                     </Flex>
                     <Button>Send message</Button>
                   </Flex>
