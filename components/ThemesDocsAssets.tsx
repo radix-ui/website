@@ -242,24 +242,24 @@ export function ThemesVariantsExample() {
                   </Text>
                   <Flex direction="column" gap="2">
                     <Flex asChild gap="2">
-                      <Label>
-                        <Checkbox variant="surface" defaultChecked />
-                        <Text size="2">Display my listening history</Text>
-                      </Label>
+                      <Text as="label" size="2">
+                        <Checkbox defaultChecked />
+                        <Text>Display my listening history</Text>
+                      </Text>
                     </Flex>
 
                     <Flex asChild gap="2">
-                      <Label>
-                        <Checkbox variant="surface" />
-                        <Text size="2">Everyone can follow my activity</Text>
-                      </Label>
+                      <Text as="label" size="2">
+                        <Checkbox />
+                        <Text>Everyone can follow my activity</Text>
+                      </Text>
                     </Flex>
 
                     <Flex asChild gap="2">
-                      <Label>
-                        <Checkbox variant="surface" defaultChecked />
-                        <Text size="2">Show my playlists in search</Text>
-                      </Label>
+                      <Text as="label" size="2">
+                        <Checkbox defaultChecked />
+                        <Text>Show my playlists in search</Text>
+                      </Text>
                     </Flex>
                   </Flex>
                 </Flex>
