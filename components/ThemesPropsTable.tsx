@@ -136,7 +136,6 @@ const uniqueDescriptions: UniqueDescriptions = {
   },
   tooltip: {
     content: 'The content associated with the tooltip.',
-    multiline: 'Used when you need to format the content across multiple lines.',
   },
   link: {
     underline: 'Sets the visibility of the underline affordance.',
