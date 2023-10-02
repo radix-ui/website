@@ -26,6 +26,11 @@ module.exports = {
         permanent: true,
       },
       {
+        source: '/colors/docs/tests/:slug*',
+        destination: '/colors',
+        permanent: true,
+      },
+      {
         source: '/docs/colors/palette-composition/the-scales',
         destination: '/colors/docs/palette-composition/scales',
         permanent: true,

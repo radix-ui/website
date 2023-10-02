@@ -26,7 +26,7 @@ export const colorsRoutes = [
   },
 
   {
-    label: 'Palette Composition',
+    label: 'Palette composition',
     pages: [
       {
         title: 'Scales',
@@ -43,14 +43,6 @@ export const colorsRoutes = [
         slug: 'colors/docs/palette-composition/understanding-the-scale',
         draft: false,
       },
-    ],
-  },
-
-  {
-    label: 'Tests',
-    pages: [
-      { title: 'Balance', slug: 'colors/docs/tests/balance', draft: false },
-      { title: 'Contrast', slug: 'colors/docs/tests/contrast', draft: false },
     ],
   },
 ];
