@@ -48,7 +48,7 @@ export function ColorTestBalanceDark() {
       >
         <Box></Box>
         {steps.map((step) => (
-          <Flex pb="2" justify="center">
+          <Flex pb="2" justify="center" key={step}>
             <Text color="gray" size="2">
               {step}
             </Text>
