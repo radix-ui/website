@@ -239,15 +239,10 @@
   resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-13.4.16.tgz#79a151d94583e03992c80df3d3e7f7686390ddac"
   integrity sha512-WamDZm1M/OEM4QLce3lOmD1XdLEl37zYZwlmOLhmF7qYJ2G6oYm9+ejZVv+LakQIsIuXhSpVlOvrxIAHqwRkPQ==
 
-"@radix-ui/colors@3.0.0-rc.2":
-  version "3.0.0-rc.2"
-  resolved "https://registry.yarnpkg.com/@radix-ui/colors/-/colors-3.0.0-rc.2.tgz#5d8c40466133fc1fc7c7798a1b80c5340b736e87"
-  integrity sha512-vnorG5xW9uEofAk4zS+PAK1TwJBWVCwLiiFSeJYEEtAWMxauwoTs8+k3uhLo/NWNWa9y4mA0IrD3WlzFEba7Yg==
-
-"@radix-ui/colors@^3.0.0-rc.5":
-  version "3.0.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@radix-ui/colors/-/colors-3.0.0-rc.5.tgz#4de195b96c047506be58663528f9f83c39d6d477"
-  integrity sha512-SHAmQwvoRFuX1Kqo0ZwOwp/24GQqNMUaS3tWcR5RgDaC1ZpUKQfT+IbdzGm63OVzQhpyA4PRcjimM2UMa9SYTw==
+"@radix-ui/colors@3.0.0", "@radix-ui/colors@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/colors/-/colors-3.0.0.tgz#e8a591a303c44e503bd1212cacf40a09511165e0"
+  integrity sha512-FUOsGBkHrYJwCSEtWRCIfQbZG7q1e6DgxCIOe1SUQzDe/7rXXeA47s8yCn6fuTNQAj1Zq4oTFi9Yjp3wzElcxg==
 
 "@radix-ui/number@1.0.1":
   version "1.0.1"
@@ -1113,7 +1108,7 @@
     "@radix-ui/react-use-controllable-state" "1.0.1"
     "@radix-ui/react-visually-hidden" "1.0.3"
 
-"@radix-ui/react-use-callback-ref@1.0.1":
+"@radix-ui/react-use-callback-ref@1.0.1", "@radix-ui/react-use-callback-ref@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-use-callback-ref/-/react-use-callback-ref-1.0.1.tgz#f4bb1f27f2023c984e6534317ebc411fc181107a"
   integrity sha512-D94LjX4Sp0xJFVaoQOd3OO9k7tpBYNOXdVhkltUbGv2Qb9OXdrg/CpsjlZv7ia14Sylv398LswWBVVu5nqKzAQ==
@@ -1181,12 +1176,12 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
-"@radix-ui/themes@2.0.0-rc.7":
-  version "2.0.0-rc.7"
-  resolved "https://registry.yarnpkg.com/@radix-ui/themes/-/themes-2.0.0-rc.7.tgz#7d8cb22b2c06383a1366d1b0242bb60efc61e0a1"
-  integrity sha512-yL0YdzxSMQJUyhi/FK2V9eKvLvP58zt6wEviIV7uMfTCzLVSxrvzpODI5hVodFiulZA2vFR5QFLNyv9MzXp2/Q==
+"@radix-ui/themes@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/themes/-/themes-2.0.0.tgz#fa6b9a2394fbc31f6335ed770a965e75fa75fe5d"
+  integrity sha512-XIJkXLzIOerrmk24wpyYnPnHC+z4KdH4uFGKBcMqKSSAly9GuBDWpscdxaEja1AvOJJChpmONsD768M/GOVpfg==
   dependencies:
-    "@radix-ui/colors" "^3.0.0-rc.5"
+    "@radix-ui/colors" "^3.0.0"
     "@radix-ui/primitive" "^1.0.1"
     "@radix-ui/react-accessible-icon" "^1.0.3"
     "@radix-ui/react-alert-dialog" "^1.0.5"
@@ -1210,6 +1205,7 @@
     "@radix-ui/react-switch" "^1.0.3"
     "@radix-ui/react-tabs" "^1.0.4"
     "@radix-ui/react-tooltip" "^1.0.7"
+    "@radix-ui/react-use-callback-ref" "^1.0.1"
     "@radix-ui/react-visually-hidden" "^1.0.3"
     classnames "^2.3.2"
 

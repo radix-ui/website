@@ -57,6 +57,9 @@ Radix Themes releases and their changelogs.
   - Make sure that forced light/dark appearance on the `Theme` component also sets the corresponding browser colors, like the correct input autofill background color.
   - Rename all `@keyframes` animations with `rt-` prefix and into kebab case.
   - Use `outline` rather than `box-shadow` for most focus styles, which avoids a slight anti-aliasing issue in Chrome on focused elements.
+- `AlertDialog`, `Dialog`
+  - Add padding around dialog content to prevent it from touching the viewport edges
+  - Make sure that the dialog content doesn’t overflow viewport on iOS
 - `Avatar`
   - Don’t enforce fallback icon size
     - **[Upgrade guide]** If you were using `svg` assets as a fallback, make sure to set an appropriate size manually.

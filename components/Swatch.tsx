@@ -1753,23 +1753,23 @@ const contrastInfo = {
   },
   dark: {
     'gray-1': {
-      step11: 60.7,
+      step11: 61.3,
       step12: 96.3,
     },
     'gray-2': {
-      step11: 60,
+      step11: 60.6,
       step12: 95.5,
     },
     'gray-3': {
-      step11: 58.8,
+      step11: 59.4,
       step12: 94.3,
     },
     'gray-4': {
-      step11: 57.4,
+      step11: 57.9,
       step12: 92.9,
     },
     'gray-5': {
-      step11: 55.9,
+      step11: 56.4,
       step12: 91.4,
     },
     'gray-9': {
@@ -1781,11 +1781,11 @@ const contrastInfo = {
       white: 74.7,
     },
     'gray-11': {
-      step1: 60.7,
-      step2: 60,
-      step3: 58.8,
-      step4: 57.4,
-      step5: 55.9,
+      step1: 61.3,
+      step2: 60.6,
+      step3: 59.4,
+      step4: 57.9,
+      step5: 56.4,
     },
     'gray-12': {
       step1: 96.3,
@@ -1837,23 +1837,23 @@ const contrastInfo = {
       step5: 91.5,
     },
     'slate-1': {
-      step11: 60.5,
+      step11: 61,
       step12: 96.2,
     },
     'slate-2': {
-      step11: 59.8,
+      step11: 60.3,
       step12: 95.5,
     },
     'slate-3': {
-      step11: 58.6,
+      step11: 59.1,
       step12: 94.3,
     },
     'slate-4': {
-      step11: 57.3,
+      step11: 57.8,
       step12: 93,
     },
     'slate-5': {
-      step11: 55.8,
+      step11: 56.3,
       step12: 91.4,
     },
     'slate-9': {
@@ -1865,11 +1865,11 @@ const contrastInfo = {
       white: 74.8,
     },
     'slate-11': {
-      step1: 60.5,
-      step2: 59.8,
-      step3: 58.6,
-      step4: 57.3,
-      step5: 55.8,
+      step1: 61,
+      step2: 60.3,
+      step3: 59.1,
+      step4: 57.8,
+      step5: 56.3,
     },
     'slate-12': {
       step1: 96.2,
@@ -1879,23 +1879,23 @@ const contrastInfo = {
       step5: 91.4,
     },
     'sage-1': {
-      step11: 60.1,
+      step11: 60.7,
       step12: 95.9,
     },
     'sage-2': {
-      step11: 59.5,
+      step11: 60.1,
       step12: 95.3,
     },
     'sage-3': {
-      step11: 58.3,
+      step11: 58.9,
       step12: 94.1,
     },
     'sage-4': {
-      step11: 57,
+      step11: 57.6,
       step12: 92.7,
     },
     'sage-5': {
-      step11: 55.5,
+      step11: 56.1,
       step12: 91.2,
     },
     'sage-9': {
@@ -1907,11 +1907,11 @@ const contrastInfo = {
       white: 75.1,
     },
     'sage-11': {
-      step1: 60.1,
-      step2: 59.5,
-      step3: 58.3,
-      step4: 57,
-      step5: 55.5,
+      step1: 60.7,
+      step2: 60.1,
+      step3: 58.9,
+      step4: 57.6,
+      step5: 56.1,
     },
     'sage-12': {
       step1: 95.9,
@@ -1963,23 +1963,23 @@ const contrastInfo = {
       step5: 91.2,
     },
     'sand-1': {
-      step11: 60.2,
+      step11: 60.7,
       step12: 96.2,
     },
     'sand-2': {
-      step11: 59.4,
+      step11: 60,
       step12: 95.5,
     },
     'sand-3': {
-      step11: 58.2,
+      step11: 58.8,
       step12: 94.3,
     },
     'sand-4': {
-      step11: 56.9,
+      step11: 57.4,
       step12: 92.9,
     },
     'sand-5': {
-      step11: 55.4,
+      step11: 55.9,
       step12: 91.4,
     },
     'sand-9': {
@@ -1987,15 +1987,15 @@ const contrastInfo = {
       white: 81,
     },
     'sand-10': {
-      black: 34.3,
-      white: 75.2,
+      black: 34.7,
+      white: 74.9,
     },
     'sand-11': {
-      step1: 60.2,
-      step2: 59.4,
-      step3: 58.2,
-      step4: 56.9,
-      step5: 55.4,
+      step1: 60.7,
+      step2: 60,
+      step3: 58.8,
+      step4: 57.4,
+      step5: 55.9,
     },
     'sand-12': {
       step1: 96.2,
@@ -2105,7 +2105,7 @@ const contrastInfo = {
       step12: 82.1,
     },
     'ruby-5': {
-      step11: 54.9,
+      step11: 54.8,
       step12: 79.8,
     },
     'ruby-9': {
@@ -2121,7 +2121,7 @@ const contrastInfo = {
       step2: 60.3,
       step3: 58.9,
       step4: 57.2,
-      step5: 54.9,
+      step5: 54.8,
     },
     'ruby-12': {
       step1: 85.6,
@@ -2261,7 +2261,7 @@ const contrastInfo = {
       step12: 87,
     },
     'purple-2': {
-      step11: 60.1,
+      step11: 60,
       step12: 86.6,
     },
     'purple-3': {
@@ -2273,8 +2273,8 @@ const contrastInfo = {
       step12: 83,
     },
     'purple-5': {
-      step11: 54.2,
-      step12: 80.8,
+      step11: 54.1,
+      step12: 80.7,
     },
     'purple-9': {
       black: 28.9,
@@ -2286,17 +2286,17 @@ const contrastInfo = {
     },
     'purple-11': {
       step1: 60.5,
-      step2: 60.1,
+      step2: 60,
       step3: 58.3,
       step4: 56.4,
-      step5: 54.2,
+      step5: 54.1,
     },
     'purple-12': {
       step1: 87,
       step2: 86.6,
       step3: 84.9,
       step4: 83,
-      step5: 80.8,
+      step5: 80.7,
     },
     'violet-1': {
       step11: 60.8,
@@ -2483,7 +2483,7 @@ const contrastInfo = {
       step12: 83.5,
     },
     'cyan-5': {
-      step11: 57,
+      step11: 56.9,
       step12: 79.8,
     },
     'cyan-9': {
@@ -2499,7 +2499,7 @@ const contrastInfo = {
       step2: 65.5,
       step3: 63.2,
       step4: 60.6,
-      step5: 57,
+      step5: 56.9,
     },
     'cyan-12': {
       step1: 88.9,
@@ -2815,12 +2815,12 @@ const contrastInfo = {
       step12: 91.3,
     },
     'sky-4': {
-      step11: 61.1,
-      step12: 88.6,
+      step11: 61,
+      step12: 88.5,
     },
     'sky-5': {
-      step11: 57,
-      step12: 84.6,
+      step11: 56.7,
+      step12: 84.3,
     },
     'sky-9': {
       black: 81.2,
@@ -2834,35 +2834,35 @@ const contrastInfo = {
       step1: 66.4,
       step2: 65.8,
       step3: 63.8,
-      step4: 61.1,
-      step5: 57,
+      step4: 61,
+      step5: 56.7,
     },
     'sky-12': {
       step1: 93.9,
       step2: 93.3,
       step3: 91.3,
-      step4: 88.6,
-      step5: 84.6,
+      step4: 88.5,
+      step5: 84.3,
     },
     'mint-1': {
       step11: 68.7,
       step12: 93.7,
     },
     'mint-2': {
-      step11: 68,
-      step12: 93,
+      step11: 68.2,
+      step12: 93.2,
     },
     'mint-3': {
       step11: 66,
       step12: 91,
     },
     'mint-4': {
-      step11: 62.9,
-      step12: 87.9,
+      step11: 63.2,
+      step12: 88.2,
     },
     'mint-5': {
-      step11: 59.4,
-      step12: 84.4,
+      step11: 59.6,
+      step12: 84.6,
     },
     'mint-9': {
       black: 83.4,
@@ -2874,32 +2874,32 @@ const contrastInfo = {
     },
     'mint-11': {
       step1: 68.7,
-      step2: 68,
+      step2: 68.2,
       step3: 66,
-      step4: 62.9,
-      step5: 59.4,
+      step4: 63.2,
+      step5: 59.6,
     },
     'mint-12': {
       step1: 93.7,
-      step2: 93,
+      step2: 93.2,
       step3: 91,
-      step4: 87.9,
-      step5: 84.4,
+      step4: 88.2,
+      step5: 84.6,
     },
     'lime-1': {
-      step11: 81.9,
+      step11: 81.8,
       step12: 96.9,
     },
     'lime-2': {
       step11: 81.3,
-      step12: 96.4,
+      step12: 96.3,
     },
     'lime-3': {
       step11: 79.3,
-      step12: 94.3,
+      step12: 94.4,
     },
     'lime-4': {
-      step11: 76.5,
+      step11: 76.6,
       step12: 91.6,
     },
     'lime-5': {
@@ -2915,16 +2915,16 @@ const contrastInfo = {
       white: 7.8,
     },
     'lime-11': {
-      step1: 81.9,
+      step1: 81.8,
       step2: 81.3,
       step3: 79.3,
-      step4: 76.5,
+      step4: 76.6,
       step5: 72.9,
     },
     'lime-12': {
       step1: 96.9,
-      step2: 96.4,
-      step3: 94.3,
+      step2: 96.3,
+      step3: 94.4,
       step4: 91.6,
       step5: 88,
     },
@@ -2941,12 +2941,12 @@ const contrastInfo = {
       step12: 92.8,
     },
     'yellow-4': {
-      step11: 83.1,
+      step11: 83,
       step12: 91.3,
     },
     'yellow-5': {
-      step11: 80.5,
-      step12: 88.8,
+      step11: 80.4,
+      step12: 88.7,
     },
     'yellow-9': {
       black: 90.7,
@@ -2960,15 +2960,15 @@ const contrastInfo = {
       step1: 86.8,
       step2: 86.2,
       step3: 84.5,
-      step4: 83.1,
-      step5: 80.5,
+      step4: 83,
+      step5: 80.4,
     },
     'yellow-12': {
       step1: 95,
       step2: 94.5,
       step3: 92.8,
       step4: 91.3,
-      step5: 88.8,
+      step5: 88.7,
     },
     'amber-1': {
       step11: 78.2,
@@ -2976,19 +2976,19 @@ const contrastInfo = {
     },
     'amber-2': {
       step11: 77.6,
-      step12: 92.6,
+      step12: 92.5,
     },
     'amber-3': {
       step11: 76.1,
       step12: 91.1,
     },
     'amber-4': {
-      step11: 74.5,
+      step11: 74.4,
       step12: 89.4,
     },
     'amber-5': {
-      step11: 71.9,
-      step12: 86.9,
+      step11: 71.8,
+      step12: 86.8,
     },
     'amber-9': {
       black: 77.7,
@@ -3002,31 +3002,31 @@ const contrastInfo = {
       step1: 78.2,
       step2: 77.6,
       step3: 76.1,
-      step4: 74.5,
-      step5: 71.9,
+      step4: 74.4,
+      step5: 71.8,
     },
     'amber-12': {
       step1: 93.1,
-      step2: 92.6,
+      step2: 92.5,
       step3: 91.1,
       step4: 89.4,
-      step5: 86.9,
+      step5: 86.8,
     },
     'orange-1': {
       step11: 62.9,
       step12: 90.5,
     },
     'orange-2': {
-      step11: 62.4,
-      step12: 90,
+      step11: 62.5,
+      step12: 90.1,
     },
     'orange-3': {
       step11: 60.9,
       step12: 88.5,
     },
     'orange-4': {
-      step11: 59.4,
-      step12: 87,
+      step11: 59.3,
+      step12: 86.9,
     },
     'orange-5': {
       step11: 56.9,
@@ -3042,16 +3042,16 @@ const contrastInfo = {
     },
     'orange-11': {
       step1: 62.9,
-      step2: 62.4,
+      step2: 62.5,
       step3: 60.9,
-      step4: 59.4,
+      step4: 59.3,
       step5: 56.9,
     },
     'orange-12': {
       step1: 90.5,
-      step2: 90,
+      step2: 90.1,
       step3: 88.5,
-      step4: 87,
+      step4: 86.9,
       step5: 84.5,
     },
   },
