@@ -60,7 +60,7 @@ export default function ColorsHome() {
 
       <Box mx={{ initial: '5', xs: '6', sm: '7', md: '9' }} position="relative">
         <TitleAndMetaTags
-          title="Colors – Radix UI"
+          title="Radix Colors"
           description="An open-source color system for designing beautiful, accessible websites and apps."
           image="colors.png"
         />

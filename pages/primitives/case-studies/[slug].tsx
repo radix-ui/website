@@ -52,7 +52,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
   return (
     <MobileMenuProvider>
       <TitleAndMetaTags
-        title={`${frontmatter.metaTitle} – Case studies – Radix UI`}
+        title={`${frontmatter.metaTitle} – Case studies – Radix Primitives`}
         description={frontmatter.metaDescription}
         image="primitives.png"
       />

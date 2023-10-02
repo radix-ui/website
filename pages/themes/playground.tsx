@@ -223,7 +223,7 @@ export default function ComponentsPage() {
       </Head>
 
       <TitleAndMetaTags
-        title="Playground – Themes – Radix UI"
+        title="Playground – Radix Themes"
         description="An open source component library for building modern React apps that helps you build faster and makes it easy to create beautiful, accessible interfaces that are a breeze to maintain."
         image="themes.png"
       />

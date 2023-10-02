@@ -23,7 +23,7 @@ export default function ThemingDoc({ frontmatter, code }: Doc) {
       </div>
 
       <TitleAndMetaTags
-        title={`${frontmatter.metaTitle} – Radix UI`}
+        title={`${frontmatter.metaTitle} – Radix Themes`}
         description={frontmatter.metaDescription}
         image="themes.png"
       />

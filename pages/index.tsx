@@ -23,8 +23,8 @@ export default function ThemesHome() {
   return (
     <MobileMenuProvider>
       <TitleAndMetaTags
-        title="Themes – Radix UI"
-        description="An open source component library for building modern React apps that helps you build faster and makes it easy to create beautiful, accessible interfaces that are a breeze to maintain."
+        title="Radix UI"
+        description="Components, icons, and colors for building high‑quality, accessible UI. Free and open-source."
         image="themes.png"
       />
 
