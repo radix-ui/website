@@ -1,5 +1,15 @@
 import React from 'react';
-import { Box, IconButton, Text, Popover, Code, Table, Flex } from '@radix-ui/themes';
+import {
+  Box,
+  IconButton,
+  Text,
+  Popover,
+  Code,
+  Table,
+  Flex,
+  Inset,
+  ScrollArea,
+} from '@radix-ui/themes';
 import { InfoCircledIcon, DividerHorizontalIcon } from '@radix-ui/react-icons';
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
 
@@ -88,10 +98,25 @@ export function PropsTable({
                               </AccessibleIcon>
                             </IconButton>
                           </Popover.Trigger>
-                          <Popover.Content side="top" align="center" style={{ maxWidth: 600 }}>
-                            <Code size="2" style={{ whiteSpace: 'pre', display: 'block' }}>
-                              {type}
-                            </Code>
+                          <Popover.Content
+                            side="top"
+                            align="center"
+                            style={{ maxWidth: 'min(720px, 95vw)' }}
+                          >
+                            <Inset>
+                              <ScrollArea type="auto">
+                                <Box style={{ padding: 'var(--inset-padding)' }}>
+                                  <Code
+                                    color="gray"
+                                    variant="ghost"
+                                    size="2"
+                                    style={{ whiteSpace: 'pre', display: 'block' }}
+                                  >
+                                    {type}
+                                  </Code>
+                                </Box>
+                              </ScrollArea>
+                            </Inset>
                           </Popover.Content>
                         </Popover.Root>
                       )}
