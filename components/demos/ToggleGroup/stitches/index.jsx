@@ -22,7 +22,7 @@ const ToggleGroupRoot = styled(ToggleGroup.Root, {
   display: 'inline-flex',
   backgroundColor: mauve.mauve6,
   borderRadius: 4,
-  boxShadow: `0 2px 10px ${blackA.blackA7}`,
+  boxShadow: `0 2px 10px ${blackA.blackA4}`,
 });
 
 const ToggleGroupItem = styled(ToggleGroup.Item, {

@@ -25,7 +25,7 @@ const SliderRoot = styled(Slider.Root, {
 });
 
 const SliderTrack = styled(Slider.Track, {
-  backgroundColor: blackA.blackA10,
+  backgroundColor: blackA.blackA7,
   position: 'relative',
   flexGrow: 1,
   borderRadius: '9999px',
@@ -44,10 +44,10 @@ const SliderThumb = styled(Slider.Thumb, {
   width: 20,
   height: 20,
   backgroundColor: 'white',
-  boxShadow: `0 2px 10px ${blackA.blackA7}`,
+  boxShadow: `0 2px 10px ${blackA.blackA4}`,
   borderRadius: 10,
   '&:hover': { backgroundColor: violet.violet3 },
-  '&:focus': { outline: 'none', boxShadow: `0 0 0 5px ${blackA.blackA8}` },
+  '&:focus': { outline: 'none', boxShadow: `0 0 0 5px ${blackA.blackA5}` },
 });
 
 export default SliderDemo;

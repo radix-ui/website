@@ -8,6 +8,9 @@
 
 .PlaygroundTable:not(.rt-TableRootTable) {
   margin-bottom: calc(var(--space-4) * -1);
+
+  /* Prevent intrinsic line height from influencing alignment inside the table cells */
+  line-height: 0;
 }
 
 .PlaygroundTable th:not(:global(.rt-TableColumnHeaderCell), :global(.rt-TableRowHeaderCell)) {
@@ -38,7 +41,7 @@
   font-size: var(--font-size-1);
   letter-spacing: var(--letter-spacing-1);
   line-height: var(--line-height-1);
-  color: var(--gray-11);
+  color: var(--gray-a11);
 }
 
 .PlaygroundTable :global(.rt-TextFieldRoot) {

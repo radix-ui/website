@@ -3,7 +3,7 @@ import * as Tabs from '@radix-ui/react-tabs';
 
 const TabsDemo = () => (
   <Tabs.Root
-    className="flex flex-col w-[300px] shadow-[0_2px_10px] shadow-blackA4"
+    className="flex flex-col w-[300px] shadow-[0_2px_10px] shadow-blackA2"
     defaultValue="tab1"
   >
     <Tabs.List className="shrink-0 flex border-b border-mauve6" aria-label="Manage your account">

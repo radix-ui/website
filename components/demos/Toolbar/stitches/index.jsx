@@ -51,7 +51,7 @@ const ToolbarRoot = styled(Toolbar.Root, {
   minWidth: 'max-content',
   borderRadius: 6,
   backgroundColor: 'white',
-  boxShadow: `0 2px 10px ${blackA.blackA7}`,
+  boxShadow: `0 2px 10px ${blackA.blackA4}`,
 });
 
 const itemStyles = {

@@ -10,7 +10,7 @@ const StyledTabs = styled(TabsPrimitive.Root, {
   flexDirection: 'column',
   width: '80%',
   borderRadius: 'var(--radius-4)',
-  boxShadow: 'var(--shadow-4)',
+  boxShadow: '0 0 0 1px var(--gray-a3), var(--shadow-4)',
 });
 
 const StyledList = styled(TabsPrimitive.List, {
@@ -31,7 +31,7 @@ const StyledTrigger = styled(TabsPrimitive.Trigger, {
   lineHeight: 1,
   userSelect: 'none',
   backgroundColor: 'var(--gray-2)',
-  color: 'var(--gray-11)',
+  color: 'var(--gray-a11)',
   boxShadow: '$$bottomShadow, $$sideShadow',
   '&:hover': {
     backgroundColor: 'var(--gray-1)',

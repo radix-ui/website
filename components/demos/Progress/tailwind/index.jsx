@@ -11,7 +11,7 @@ const ProgressDemo = () => {
 
   return (
     <Progress.Root
-      className="relative overflow-hidden bg-blackA9 rounded-full w-[300px] h-[25px]"
+      className="relative overflow-hidden bg-blackA6 rounded-full w-[300px] h-[25px]"
       style={{
         // Fix overflow clipping in Safari
         // https://gist.github.com/domske/b66047671c780a238b51c51ffde8d3a0

@@ -17,9 +17,7 @@ import {
   Switch,
   Text,
   TextField,
-  Theme,
 } from '@radix-ui/themes';
-import { Label } from '@radix-ui/react-label';
 import { Hover } from './Hover';
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 import { allPeople } from './people';
@@ -41,34 +39,22 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
     </Head>
 
     <Flex align="center" gap="6" {...props}>
-      <Flex
-        shrink="0"
-        gap="6"
-        direction="column"
-        style={{
-          width: 416,
-
-          // Space to align the vertically centered content with the dot grid
-          // marginBottom: 47
-        }}
-      >
+      <Flex shrink="0" gap="6" direction="column" style={{ width: 416 }}>
         <Card size="3">
-          <Box height="4" mb="4">
-            <Flex align="center" justify="between">
-              <Heading as="h3" size="4" trim="both">
-                Queue
-              </Heading>
+          <Flex align="center" justify="between" mb="5">
+            <Heading as="h3" size="4" trim="both">
+              Queue
+            </Heading>
 
-              <Flex gap="4" my="-1">
-                <Button tabIndex={-1} variant="ghost">
-                  Clear
-                </Button>
-                <Button tabIndex={-1} variant="ghost">
-                  Repeat
-                </Button>
-              </Flex>
+            <Flex gap="4" my="-1">
+              <Button tabIndex={-1} variant="ghost">
+                Clear
+              </Button>
+              <Button tabIndex={-1} variant="ghost">
+                Repeat
+              </Button>
             </Flex>
-          </Box>
+          </Flex>
 
           <Flex direction="column" gap="4">
             {songsQueue.slice(0, 5).map((song) => (
@@ -107,31 +93,29 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
         </Card>
 
         <Card size="3">
-          <Box height="4" mb="6">
-            <Flex align="center" justify="between">
-              <Heading as="h3" size="4" trim="both">
-                Sound
-              </Heading>
+          <Flex align="center" justify="between" mb="5">
+            <Heading as="h3" size="4" trim="start">
+              Sound
+            </Heading>
 
-              <Flex gap="4">
-                <Text size="2" color="gray">
-                  Yamaha THR
-                </Text>
-              </Flex>
+            <Flex gap="4">
+              <Text size="2" color="gray">
+                Yamaha THR
+              </Text>
             </Flex>
-          </Box>
+          </Flex>
 
           <Flex gap="2" align="center" height="4" mt="2" mb="5">
             <VolumeNoneIcon color="var(--gray-a9)" />
             <Box grow="1">
-              <Slider tabIndex={-1} radius="full" defaultValue={[80]} />
+              <Slider tabIndex={-1} defaultValue={[80]} />
             </Box>
             <VolumeMaxIcon color="var(--gray-a9)" />
           </Flex>
 
           <Grid columns="4" pt="2" pb="1">
             <Flex direction="column" gap="2" align="center" asChild>
-              <Label>
+              <Text as="label">
                 <IconButton tabIndex={-1} radius="full" variant="solid">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -151,11 +135,11 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     On
                   </Text>
                 </Flex>
-              </Label>
+              </Text>
             </Flex>
 
             <Flex direction="column" gap="2" align="center" asChild>
-              <Label>
+              <Text as="label">
                 <IconButton tabIndex={-1} radius="full" variant="solid">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -175,11 +159,11 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     On
                   </Text>
                 </Flex>
-              </Label>
+              </Text>
             </Flex>
 
             <Flex direction="column" gap="2" align="center" asChild>
-              <Label>
+              <Text as="label">
                 <IconButton tabIndex={-1} radius="full" variant="soft" color="gray">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -199,11 +183,11 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     Off
                   </Text>
                 </Flex>
-              </Label>
+              </Text>
             </Flex>
 
             <Flex direction="column" gap="2" align="center" asChild>
-              <Label>
+              <Text as="label">
                 <IconButton tabIndex={-1} radius="full" variant="soft" color="gray">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -223,40 +207,32 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     Off
                   </Text>
                 </Flex>
-              </Label>
+              </Text>
             </Flex>
           </Grid>
         </Card>
 
         <Card size="3">
-          <Box height="4" mb="6">
-            <Flex align="center" justify="between">
-              <Flex asChild align="center" gap="3">
-                <Label>
-                  <Heading as="h3" size="4" trim="both">
-                    Equalizer
-                  </Heading>
-
-                  <Flex my="-1">
-                    <Switch
-                      variant="classic"
-                      tabIndex={-1}
-                      defaultChecked
-                      radius="full"
-                      size="1"
-                      style={{ marginTop: 2 }}
-                    />
-                  </Flex>
-                </Label>
+          <Flex align="center" justify="between" mb="6">
+            <Text as="label" size="4" weight="bold" trim="start">
+              <Flex gap="2" my="-1">
+                Equalizer
+                <Switch
+                  variant="classic"
+                  tabIndex={-1}
+                  defaultChecked
+                  size="1"
+                  style={{ marginTop: 1 }}
+                />
               </Flex>
+            </Text>
 
-              <Flex my="-1" gap="4">
-                <Button tabIndex={-1} size="2" variant="ghost">
-                  Reset
-                </Button>
-              </Flex>
+            <Flex my="-1" gap="4">
+              <Button tabIndex={-1} size="2" variant="ghost">
+                Reset
+              </Button>
             </Flex>
-          </Box>
+          </Flex>
 
           <Box position="relative" my="-1">
             <Flex direction="column" gap="4" py="4" position="absolute" left="0" right="0">
@@ -302,19 +278,17 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
         </Card>
 
         <Card size="3">
-          <Box height="4" mb="4">
-            <Flex align="center" justify="between">
-              <Heading as="h3" size="4" trim="both">
-                History
-              </Heading>
+          <Flex align="center" justify="between" mb="5">
+            <Heading as="h3" size="4" trim="both">
+              History
+            </Heading>
 
-              <Flex my="-1" gap="4">
-                <Button tabIndex={-1} size="2" variant="ghost">
-                  Clear
-                </Button>
-              </Flex>
+            <Flex my="-1" gap="4">
+              <Button tabIndex={-1} size="2" variant="ghost">
+                Clear
+              </Button>
             </Flex>
-          </Box>
+          </Flex>
 
           <Flex direction="column" gap="4">
             {songsHistory.map((song, i) => (
@@ -353,16 +327,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
         </Card>
       </Flex>
 
-      <Flex
-        shrink="0"
-        gap="6"
-        direction="column"
-        style={{
-          width: 1312,
-          // Space to align the vertically centered content with the dot grid
-          // marginBottom: -17
-        }}
-      >
+      <Flex shrink="0" gap="6" direction="column" style={{ width: 1312 }}>
         <Card size="4" style={{ height: 896 }}>
           <Flex
             position="absolute"
@@ -412,19 +377,12 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
             right="0"
             height="9"
           >
-            <Box position="relative">
-              <Box position="absolute" top="0" left="0" m="2" style={{ pointerEvents: 'none' }}>
+            <TextField.Root color="gray" radius="full" variant="soft" style={{ width: 400 }}>
+              <TextField.Slot>
                 <MagnifyingGlassIcon />
-              </Box>
-              <TextField.Input
-                tabIndex={-1}
-                radius="full"
-                variant="soft"
-                color="gray"
-                placeholder="Search"
-                style={{ paddingLeft: 'var(--space-6)', width: 400 }}
-              />
-            </Box>
+              </TextField.Slot>
+              <TextField.Input tabIndex={-1} placeholder="Search" />
+            </TextField.Root>
           </Flex>
 
           <Flex align="center" position="absolute" top="0" right="0" height="9" mr="4" gap="4">
@@ -530,8 +488,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
             height="9"
             style={{
               borderRadius: '100px',
-              overflow: 'hidden',
-              boxShadow: 'var(--shadow-3), var(--shadow-6)',
+              boxShadow: 'var(--shadow-6)',
               marginLeft: 200,
               marginRight: 200,
             }}
@@ -684,14 +641,12 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
         <Flex gap="6" shrink="0">
           <Flex gap="6" shrink="0" direction="column" style={{ width: 416 }}>
             <Card size="3">
-              <Box height="4" mb="4">
-                <Heading as="h3" size="4" trim="both">
-                  Settings
-                </Heading>
-              </Box>
+              <Heading as="h3" size="4" trim="both" mb="5">
+                Settings
+              </Heading>
 
               <Flex direction="column" gap="5">
-                <Label>
+                <Text as="label">
                   <Flex justify="between" gap="5">
                     <Box>
                       <Text as="div" size="2" weight="medium" mb="1">
@@ -702,11 +657,11 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                       </Text>
                     </Box>
 
-                    <Switch variant="classic" tabIndex={-1} radius="full" mt="2" />
+                    <Switch size="3" variant="classic" tabIndex={-1} mt="2" />
                   </Flex>
-                </Label>
+                </Text>
 
-                <Label>
+                <Text as="label">
                   <Flex justify="between" gap="5">
                     <Box>
                       <Text as="div" size="2" weight="medium" mb="1">
@@ -718,11 +673,11 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                       </Text>
                     </Box>
 
-                    <Switch variant="classic" tabIndex={-1} radius="full" mt="2" />
+                    <Switch size="3" variant="classic" tabIndex={-1} mt="2" />
                   </Flex>
-                </Label>
+                </Text>
 
-                <Label>
+                <Text as="label">
                   <Flex justify="between" gap="5">
                     <Box>
                       <Text as="div" size="2" weight="medium" mb="1">
@@ -733,11 +688,11 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                       </Text>
                     </Box>
 
-                    <Switch variant="classic" tabIndex={-1} radius="full" mt="2" />
+                    <Switch size="3" variant="classic" tabIndex={-1} mt="2" />
                   </Flex>
-                </Label>
+                </Text>
 
-                <Label>
+                <Text as="label">
                   <Flex justify="between" gap="5">
                     <Box>
                       <Text as="div" size="2" weight="medium" mb="1">
@@ -748,9 +703,9 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                       </Text>
                     </Box>
 
-                    <Switch variant="classic" tabIndex={-1} radius="full" defaultChecked mt="2" />
+                    <Switch size="3" variant="classic" tabIndex={-1} defaultChecked mt="2" />
                   </Flex>
-                </Label>
+                </Text>
 
                 <Box>
                   <Flex justify="between" gap="5">
@@ -813,19 +768,17 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
             </Card>
 
             <Card size="3">
-              <Box height="4" mb="5">
-                <Flex align="center" justify="between">
-                  <Heading as="h3" size="4" trim="both">
-                    Membership
-                  </Heading>
+              <Flex align="center" justify="between" mb="5">
+                <Heading as="h3" size="4" trim="both">
+                  Membership
+                </Heading>
 
-                  <Flex my="-1" gap="4">
-                    <Button tabIndex={-1} size="2" variant="ghost">
-                      Done
-                    </Button>
-                  </Flex>
+                <Flex my="-1" gap="4">
+                  <Button tabIndex={-1} size="2" variant="ghost">
+                    Done
+                  </Button>
                 </Flex>
-              </Box>
+              </Flex>
 
               <Flex direction="column" gap="4">
                 <Flex align="center" justify="between">
@@ -875,7 +828,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                 <Separator size="4" style={{ marginTop: -1 }} />
               </Box>
 
-              <Box height="8">
+              <Box>
                 <Text size="2" as="p" my="3">
                   Your next payment is $6.99 on July 18, 2023
                 </Text>
@@ -889,53 +842,45 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
 
           <Flex gap="6" shrink="0" direction="column" style={{ width: 416 }}>
             <Card size="3">
-              <Box height="4" mb="5">
-                <Flex align="center" justify="between">
-                  <Heading as="h3" size="4" trim="both">
-                    Your profile
-                  </Heading>
+              <Flex align="center" justify="between" mb="5">
+                <Heading as="h3" size="4" trim="both">
+                  Your profile
+                </Heading>
 
-                  <Flex my="-1" gap="4">
-                    <Button tabIndex={-1} size="2" variant="ghost">
-                      Cancel
-                    </Button>
-                    <Button tabIndex={-1} size="2" variant="ghost">
-                      Save
-                    </Button>
-                  </Flex>
+                <Flex my="-1" gap="4">
+                  <Button tabIndex={-1} size="2" variant="ghost">
+                    Cancel
+                  </Button>
+                  <Button tabIndex={-1} size="2" variant="ghost">
+                    Save
+                  </Button>
                 </Flex>
-              </Box>
+              </Flex>
 
               <Flex direction="column" gap="4">
                 <Flex asChild direction="column" gap="2">
-                  <Label>
-                    <Text size="2" weight="medium">
-                      Name
-                    </Text>
+                  <Text as="label" size="2" weight="medium">
+                    <Text>Name</Text>
                     <TextField.Input variant="classic" tabIndex={-1} defaultValue="Vlad Moroz" />
-                  </Label>
+                  </Text>
                 </Flex>
 
                 <Flex asChild direction="column" gap="2">
-                  <Label>
-                    <Text size="2" weight="medium">
-                      Username
-                    </Text>
+                  <Text as="label" size="2" weight="medium">
+                    <Text>Username</Text>
                     <TextField.Input variant="classic" tabIndex={-1} defaultValue="@vladmoroz" />
-                  </Label>
+                  </Text>
                 </Flex>
 
                 <Flex asChild direction="column" gap="2">
-                  <Label>
-                    <Text size="2" weight="medium">
-                      Email
-                    </Text>
+                  <Text as="label" size="2" weight="medium">
+                    <Text>Email</Text>
                     <TextField.Input
                       variant="classic"
                       tabIndex={-1}
                       defaultValue="hi@vladmoroz.com"
                     />
-                  </Label>
+                  </Text>
                 </Flex>
 
                 <Flex direction="column" gap="2">
@@ -944,24 +889,24 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                   </Text>
                   <Flex direction="column" gap="2">
                     <Flex asChild gap="2">
-                      <Label>
-                        <Checkbox variant="classic" tabIndex={-1} defaultChecked />
-                        <Text size="2">Display my listening history</Text>
-                      </Label>
+                      <Text as="label" size="2">
+                        <Checkbox tabIndex={-1} defaultChecked />
+                        <Text>Display my listening history</Text>
+                      </Text>
                     </Flex>
 
                     <Flex asChild gap="2">
-                      <Label>
-                        <Checkbox variant="classic" tabIndex={-1} />
-                        <Text size="2">Everyone can follow my activity</Text>
-                      </Label>
+                      <Text as="label" size="2">
+                        <Checkbox tabIndex={-1} />
+                        <Text>Everyone can follow my activity</Text>
+                      </Text>
                     </Flex>
 
                     <Flex asChild gap="2">
-                      <Label>
-                        <Checkbox variant="classic" tabIndex={-1} defaultChecked />
-                        <Text size="2">Show my playlists in search</Text>
-                      </Label>
+                      <Text as="label" size="2">
+                        <Checkbox tabIndex={-1} defaultChecked />
+                        <Text>Show my playlists in search</Text>
+                      </Text>
                     </Flex>
                   </Flex>
                 </Flex>
@@ -983,22 +928,20 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
             </Card>
 
             <Card size="3">
-              <Box height="4" mb="5">
-                <Flex align="center" justify="between">
-                  <Heading as="h3" size="4" trim="both">
-                    Create a playlist
-                  </Heading>
+              <Flex align="center" justify="between" mb="5">
+                <Heading as="h3" size="4" trim="both">
+                  Create a playlist
+                </Heading>
 
-                  <Flex my="-1" gap="4">
-                    <Button tabIndex={-1} size="2" variant="ghost">
-                      Start over
-                    </Button>
-                    <Button tabIndex={-1} size="2" variant="ghost">
-                      Next
-                    </Button>
-                  </Flex>
+                <Flex my="-1" gap="4">
+                  <Button tabIndex={-1} size="2" variant="ghost">
+                    Start over
+                  </Button>
+                  <Button tabIndex={-1} size="2" variant="ghost">
+                    Next
+                  </Button>
                 </Flex>
-              </Box>
+              </Flex>
 
               <Box>
                 <Flex gap="2" wrap="wrap">
@@ -1123,11 +1066,9 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                   overflow: 'hidden',
                 }}
               >
-                <Box height="4" mb="3">
-                  <Heading as="h3" size="4" trim="both">
-                    Lyrics
-                  </Heading>
-                </Box>
+                <Heading as="h3" size="4" trim="both" mb="3">
+                  Lyrics
+                </Heading>
 
                 <Text as="div" color="gray" size="3" mb="5">
                   King Krule – Biscuit Town

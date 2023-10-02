@@ -45,11 +45,11 @@ const StyledThumb = styled(SliderPrimitive.Thumb, {
   height: 20,
   backgroundColor: 'white',
   boxShadow:
-    '0 2px 10px -5px var(--black-a9), 0 1px 4px -1px var(--black-a7), 0 0 0 1px var(--black-a3)',
+    '0 2px 10px -5px var(--black-a5), 0 1px 4px -1px var(--black-a4), 0 0 0 1px var(--black-a2)',
   borderRadius: 10,
   '&:focus-visible': {
     boxShadow:
-      '0 2px 10px -5px var(--black-a9), 0 1px 4px -1px var(--black-a7), 0 0 0 1px var(--black-a3), 0 0 0 4px var(--gray-a4)',
+      '0 2px 10px -5px var(--black-a5), 0 1px 4px -1px var(--black-a4), 0 0 0 1px var(--black-a2), 0 0 0 4px var(--gray-a4)',
   },
 });
 

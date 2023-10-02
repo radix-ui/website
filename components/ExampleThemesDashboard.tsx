@@ -51,22 +51,11 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
 
   return (
     <Flex align="center" gap="6" {...props}>
-      <Flex
-        shrink="0"
-        gap="6"
-        direction="column"
-        style={{
-          width: 640,
-          // Space to align the vertically centered content with the dot grid
-          // marginBottom: 15,
-        }}
-      >
+      <Flex shrink="0" gap="6" direction="column" style={{ width: 640 }}>
         <Card size="4">
-          <Box height="7">
-            <Heading as="h3" size="6" mt="-1">
-              Your team
-            </Heading>
-          </Box>
+          <Heading as="h3" size="6" trim="start" mb="2">
+            Your team
+          </Heading>
 
           <Text as="p" size="2" mb="5" color="gray">
             Invite and manage your team members.
@@ -117,11 +106,9 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
         </Card>
 
         <Card size="4">
-          <Box height="7">
-            <Heading as="h3" size="6" mt="-1">
-              Notifications
-            </Heading>
-          </Box>
+          <Heading as="h3" size="6" trim="start" mb="2">
+            Notifications
+          </Heading>
 
           <Text as="p" size="2" mb="6" color="gray">
             Manage your notification settings.
@@ -142,32 +129,26 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
                 </Text>
               </Box>
               <Flex direction="column" gap="4" mt="1">
-                <Label>
-                  <Flex align="center" gap="2">
-                    <Switch tabIndex={-1} defaultChecked radius="full" />
-                    <Text size="2" weight="bold">
-                      Push
-                    </Text>
-                  </Flex>
-                </Label>
+                <Flex asChild gap="2">
+                  <Text as="label" size="2" weight="bold">
+                    <Switch tabIndex={-1} defaultChecked />
+                    <Text>Push</Text>
+                  </Text>
+                </Flex>
 
-                <Label>
-                  <Flex align="center" gap="2">
-                    <Switch tabIndex={-1} defaultChecked radius="full" />
-                    <Text size="2" weight="bold">
-                      Email
-                    </Text>
-                  </Flex>
-                </Label>
+                <Flex asChild gap="2">
+                  <Text as="label" size="2" weight="bold">
+                    <Switch tabIndex={-1} defaultChecked />
+                    <Text>Email</Text>
+                  </Text>
+                </Flex>
 
-                <Label>
-                  <Flex align="center" gap="2">
-                    <Switch tabIndex={-1} radius="full" />
-                    <Text size="2" weight="bold">
-                      Slack
-                    </Text>
-                  </Flex>
-                </Label>
+                <Flex asChild gap="2">
+                  <Text as="label" size="2" weight="bold">
+                    <Switch tabIndex={-1} />
+                    <Text>Slack</Text>
+                  </Text>
+                </Flex>
               </Flex>
             </Flex>
 
@@ -185,32 +166,26 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
                 </Text>
               </Box>
               <Flex direction="column" gap="4" mt="1">
-                <Label>
-                  <Flex align="center" gap="2">
-                    <Switch tabIndex={-1} defaultChecked radius="full" />
-                    <Text size="2" weight="bold">
-                      Push
-                    </Text>
-                  </Flex>
-                </Label>
+                <Flex asChild gap="2">
+                  <Text as="label" size="2" weight="bold">
+                    <Switch tabIndex={-1} defaultChecked />
+                    <Text>Push</Text>
+                  </Text>
+                </Flex>
 
-                <Label>
-                  <Flex align="center" gap="2">
-                    <Switch tabIndex={-1} radius="full" />
-                    <Text size="2" weight="bold">
-                      Email
-                    </Text>
-                  </Flex>
-                </Label>
+                <Flex asChild gap="2">
+                  <Text as="label" size="2" weight="bold">
+                    <Switch tabIndex={-1} defaultChecked />
+                    <Text>Email</Text>
+                  </Text>
+                </Flex>
 
-                <Label>
-                  <Flex align="center" gap="2">
-                    <Switch tabIndex={-1} defaultChecked radius="full" />
-                    <Text size="2" weight="bold">
-                      Slack
-                    </Text>
-                  </Flex>
-                </Label>
+                <Flex asChild gap="2">
+                  <Text as="label" size="2" weight="bold">
+                    <Switch tabIndex={-1} />
+                    <Text>Slack</Text>
+                  </Text>
+                </Flex>
               </Flex>
             </Flex>
 
@@ -228,43 +203,35 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
                 </Text>
               </Box>
               <Flex direction="column" gap="4" mt="1">
-                <Label>
-                  <Flex align="center" gap="2">
-                    <Switch tabIndex={-1} defaultChecked radius="full" />
-                    <Text size="2" weight="bold">
-                      Push
-                    </Text>
-                  </Flex>
-                </Label>
+                <Flex asChild gap="2">
+                  <Text as="label" size="2" weight="bold">
+                    <Switch tabIndex={-1} defaultChecked />
+                    <Text>Push</Text>
+                  </Text>
+                </Flex>
 
-                <Label>
-                  <Flex align="center" gap="2">
-                    <Switch tabIndex={-1} defaultChecked radius="full" />
-                    <Text size="2" weight="bold">
-                      Email
-                    </Text>
-                  </Flex>
-                </Label>
+                <Flex asChild gap="2">
+                  <Text as="label" size="2" weight="bold">
+                    <Switch tabIndex={-1} defaultChecked />
+                    <Text>Email</Text>
+                  </Text>
+                </Flex>
 
-                <Label>
-                  <Flex align="center" gap="2">
-                    <Switch tabIndex={-1} defaultChecked={false} radius="full" />
-                    <Text size="2" weight="bold">
-                      Slack
-                    </Text>
-                  </Flex>
-                </Label>
+                <Flex asChild gap="2">
+                  <Text as="label" size="2" weight="bold">
+                    <Switch tabIndex={-1} />
+                    <Text>Slack</Text>
+                  </Text>
+                </Flex>
               </Flex>
             </Flex>
           </Flex>
         </Card>
 
         <Card size="4" style={{ height: 464 }}>
-          <Box height="7">
-            <Heading as="h3" size="6" mt="-1">
-              Pricing
-            </Heading>
-          </Box>
+          <Heading as="h3" size="6" trim="start" mb="2">
+            Pricing
+          </Heading>
 
           <Text as="p" size="2" mb="5" color="gray">
             No credit card required. Every plan includes a 30-day trial of all Pro features.
@@ -445,22 +412,11 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
         </Card>
       </Flex>
 
-      <Flex
-        shrink="0"
-        gap="6"
-        direction="column"
-        style={{
-          width: 416,
-          // Space to align the vertically centered content with the dot grid
-          // marginBottom: 15,
-        }}
-      >
+      <Flex shrink="0" gap="6" direction="column" style={{ width: 416 }}>
         <Card size="4" style={{ height: 320 }}>
-          <Box height="7" mb="4">
-            <Heading as="h3" size="6" mt="-1">
-              Sign up
-            </Heading>
-          </Box>
+          <Heading as="h3" size="6" trim="start" mb="5">
+            Sign up
+          </Heading>
 
           <Box mb="5">
             <Label>
@@ -501,11 +457,9 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
             </IconButton>
           </Box>
 
-          <Box height="7">
-            <Heading as="h3" size="6" mt="-1">
-              Your company card
-            </Heading>
-          </Box>
+          <Heading as="h3" size="6" trim="start" mb="2">
+            Your company card
+          </Heading>
 
           <Text as="p" size="2" mb="6" color="gray">
             View and manage your corporate card.
@@ -576,11 +530,9 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
               <CheckIcon width="32" height="32" />
             </Marker>
 
-            <Box height="8">
-              <Heading as="h3" size="6">
-                Invoice paid
-              </Heading>
-            </Box>
+            <Heading as="h3" size="6" mb="2">
+              Invoice paid
+            </Heading>
           </Flex>
 
           <Text as="p" size="3" align="center" mb="5">
@@ -603,14 +555,12 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
             </IconButton>
           </Box>
 
-          <Box height="7" mb="4">
-            <Heading as="h3" size="6" mt="-1">
-              Invoice{' '}
-              <Link tabIndex={-1} weight="bold">
-                #3463
-              </Link>
-            </Heading>
-          </Box>
+          <Heading as="h3" size="6" trim="start" mb="5">
+            Invoice{' '}
+            <Link tabIndex={-1} weight="bold">
+              #3463
+            </Link>
+          </Heading>
 
           <Grid columns="2" gapX="4" gapY="5">
             <Box>
@@ -695,22 +645,11 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
         </Card>
       </Flex>
 
-      <Flex
-        shrink="0"
-        gap="6"
-        direction="column"
-        style={{
-          width: 640,
-          // Space to align the vertically centered content with the dot grid
-          // marginBottom: -13,
-        }}
-      >
+      <Flex shrink="0" gap="6" direction="column" style={{ width: 640 }}>
         <Card size="4">
-          <Box height="7">
-            <Heading as="h3" size="6" mt="-1">
-              Financial performance
-            </Heading>
-          </Box>
+          <Heading as="h3" size="6" trim="start" mb="2">
+            Financial performance
+          </Heading>
 
           <Flex position="absolute" top="0" right="0" m="3">
             <IconButton
@@ -883,11 +822,9 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
         </Card>
 
         <Card size="4">
-          <Box height="7">
-            <Heading as="h3" size="6" mt="-1">
-              Recent activity
-            </Heading>
-          </Box>
+          <Heading as="h3" size="6" trim="start" mb="2">
+            Recent activity
+          </Heading>
 
           <Flex position="absolute" top="0" right="0" m="3">
             <IconButton
@@ -1147,11 +1084,9 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
         </Card>
 
         <Card size="4">
-          <Box height="7">
-            <Heading as="h3" size="6" mt="-1">
-              To-do
-            </Heading>
-          </Box>
+          <Heading as="h3" size="6" trim="start" mb="2">
+            To-do
+          </Heading>
 
           <Flex gap="3" position="absolute" top="0" right="0" m="3">
             <IconButton tabIndex={-1} variant="ghost" color="gray" highContrast>
@@ -1237,8 +1172,19 @@ const ToDoList = ({ items, onItemsChange }: ToDoList) => {
   return (
     <Flex gap="2" direction="column">
       {items.map((item) => (
-        <Label key={item.id}>
-          <Flex gap="2" align="center">
+        <Text
+          as="label"
+          size="2"
+          key={item.id}
+          color={item.completed ? 'gray' : undefined}
+          style={
+            {
+              textDecoration: item.completed ? 'line-through' : undefined,
+              '--accent-12': 'var(--accent-11)',
+            } as React.CSSProperties
+          }
+        >
+          <Flex gap="2">
             <Checkbox
               tabIndex={-1}
               checked={item.completed}
@@ -1249,20 +1195,9 @@ const ToDoList = ({ items, onItemsChange }: ToDoList) => {
                 onItemsChange(newItems);
               }}
             />
-            <Text
-              size="2"
-              color={item.completed ? 'gray' : undefined}
-              style={
-                {
-                  textDecoration: item.completed ? 'line-through' : undefined,
-                  '--accent-12': 'var(--accent-11)',
-                } as React.CSSProperties
-              }
-            >
-              {itemsContent[item.id]}
-            </Text>
+            <Text>{itemsContent[item.id]}</Text>
           </Flex>
-        </Label>
+        </Text>
       ))}
     </Flex>
   );

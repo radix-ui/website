@@ -16,7 +16,7 @@ const slideUp = keyframes({
 const StyledAccordion = styled(AccordionPrimitive.Root, {
   background: 'var(--color-panel-solid)',
   borderRadius: 'var(--radius-4)',
-  boxShadow: 'var(--shadow-4)',
+  boxShadow: '0 0 0 1px var(--gray-a3), var(--shadow-4)',
   width: '80%',
 });
 
@@ -65,7 +65,7 @@ const StyledTrigger = styled(AccordionPrimitive.Trigger, {
   '&[data-state="open"]': {
     boxShadow: '0 1px 0 var(--gray-6)',
   },
-  '@hover': {
+  '@media (hover: hover)': {
     '&:hover': {
       backgroundColor: 'var(--gray-a2)',
     },

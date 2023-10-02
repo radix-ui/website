@@ -4,6 +4,7 @@ import { Text, Heading, Box, Badge, Flex } from '@radix-ui/themes';
 import { classNames } from '@lib/classNames';
 import styles from './DocsNav.module.css';
 import { useCurrentPageSlug } from '@lib/useCurrentPageSlug';
+import scrollIntoView from 'scroll-into-view-if-needed';
 
 interface DocsNavProps {
   routes: {
@@ -34,11 +35,7 @@ export const DocsNav = ({ routes }: DocsNavProps) => {
           )}
 
           {section.pages.map((page) => (
-            <DocsNavItem
-              key={page.slug}
-              href={page.slug}
-              active={currentPageSlug === page.slug}
-            >
+            <DocsNavItem key={page.slug} href={page.slug} active={currentPageSlug === page.slug}>
               <Flex gap="2" align="center">
                 {page.icon}
                 <Text size={{ initial: '3', md: '2' }}>{page.title}</Text>
@@ -74,18 +71,46 @@ interface DocsNavItemProps {
 const DocsNavItem = ({ active, disabled, href, ...props }: DocsNavItemProps) => {
   const className = classNames(styles.DocsNavItem, active && styles.active);
   const isExternal = href.startsWith('http');
+  const ref = React.useRef<HTMLAnchorElement>(null);
+
+  React.useEffect(() => {
+    // Scroll active links into view when in a Scroll Area
+    if (ref.current && active) {
+      const container = document.querySelector('[data-radix-scroll-area-viewport]');
+
+      if (!container) {
+        return;
+      }
+
+      // Tread very, very, very carefully if changing this.
+      // Sneaky bugs reproduced only on select cursed devices may show up.
+      scrollIntoView(ref.current, {
+        block: 'nearest',
+        scrollMode: 'if-needed',
+        boundary: (parent) => Boolean(container.contains(parent)),
+        behavior: (actions) => {
+          actions.forEach(({ el, top }) => {
+            const dir = el.scrollTop < top ? 1 : -1;
+            el.scrollTop = top + 80 * dir;
+          });
+        },
+      });
+    }
+  }, [active]);
 
   if (disabled) {
-    return <span className={className} {...props} />;
+    return <span ref={ref} className={className} {...props} />;
   }
 
   if (isExternal) {
-    return <a className={className} href={href} target="_blank" rel="noopener" {...props} />;
+    return (
+      <a ref={ref} className={className} href={href} target="_blank" rel="noopener" {...props} />
+    );
   }
 
   return (
     <NextLink passHref legacyBehavior href={`/${href}`}>
-      <a className={className} {...props} />
+      <a ref={ref} className={className} {...props} />
     </NextLink>
   );
 };

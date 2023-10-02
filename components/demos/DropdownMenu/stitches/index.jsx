@@ -212,7 +212,7 @@ const IconButton = styled('button', {
   justifyContent: 'center',
   color: violet.violet11,
   backgroundColor: 'white',
-  boxShadow: `0 2px 10px ${blackA.blackA7}`,
+  boxShadow: `0 2px 10px ${blackA.blackA4}`,
   '&:hover': { backgroundColor: violet.violet3 },
   '&:focus': { boxShadow: `0 0 0 2px black` },
 });

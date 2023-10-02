@@ -370,7 +370,9 @@ function ItemLink({ item }: { item: SearchItem }) {
   );
 }
 
-function ItemTitle(props: Omit<React.ComponentProps<typeof Text>, 'asChild' | 'as'>) {
+type ItemTitleProps = Omit<Extract<React.ComponentPropsWithoutRef<typeof Text>, { as: 'p' }>, 'as'>;
+
+function ItemTitle(props: ItemTitleProps) {
   return (
     <Text
       as="p"
@@ -393,7 +395,7 @@ function ItemBreadcrumb({ item, levels }: { item: SearchItem; levels: typeof SUP
         return heading ? (
           <React.Fragment key={index}>
             {index > 0 ? (
-              <Box asChild style={{ color: 'var(--gray-11)' }}>
+              <Box asChild style={{ color: 'var(--gray-a11)' }}>
                 <span>
                   <CaretRightIcon style={{ display: 'inline-block' }} />
                   {/* Adding a comma to insert a natural break in the speech flow */}

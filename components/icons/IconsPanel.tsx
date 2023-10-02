@@ -15,27 +15,25 @@ import { MainContent } from './MainContent';
 import styles from './IconsPanel.module.css';
 
 export const IconsPanel = () => {
-  const [toastIsVisible, setToastIsVisible] = React.useState(false);
-  const [toastIcon, setToastIcon] = React.useState('');
-  const [toastTimeout, setToastTimeout] = React.useState<ReturnType<typeof setTimeout>>();
-
-  const setToastIsVisibleTimeout = () => {
-    setToastIsVisible(true);
-    clearTimeout(toastTimeout);
-    setToastTimeout(setTimeout(() => setToastIsVisible(false), 3000));
-  };
-
   return (
     <CopyToastProvider>
       <Box
         style={{
           borderRadius: 'var(--radius-4)',
           minHeight: 900,
-          background: 'var(--color-panel-solid)',
+          background: 'var(--color-background)',
           position: 'relative',
-          boxShadow: 'var(--shadow-5)',
         }}
       >
+        <Box
+          position="absolute"
+          inset="0"
+          style={{
+            pointerEvents: 'none',
+            borderRadius: 'inherit',
+            boxShadow: 'var(--shadow-5)',
+          }}
+        />
         <MainContent />
 
         <Separator size="4" />

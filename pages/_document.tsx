@@ -78,8 +78,6 @@ export default class Document extends NextDocument {
 `,
             }}
           />
-          <link rel="icon" href="/favicon.png" />
-          <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
           <script async src={gtagUrl} />
           <script dangerouslySetInnerHTML={{ __html: renderSnippet() }} />
         </Head>

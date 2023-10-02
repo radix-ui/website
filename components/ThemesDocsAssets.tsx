@@ -1,6 +1,5 @@
 import {
   Avatar,
-  Badge,
   Box,
   Button,
   Card,
@@ -21,6 +20,7 @@ import {
   TextField,
   TextFieldInput,
   Theme,
+  themeAccentColorsOrdered,
 } from '@radix-ui/themes';
 import { Label } from '@radix-ui/react-label';
 import { allPeople } from './people';
@@ -52,11 +52,9 @@ export function ThemesPanelTranslucentExample() {
               </Flex>
 
               <Card size="4" style={{ width: 400 }}>
-                <Box height="7" mb="4">
-                  <Heading as="h3" size="6" mt="-1">
-                    Sign up
-                  </Heading>
-                </Box>
+                <Heading as="h3" size="6" trim="start" mb="4">
+                  Sign up
+                </Heading>
 
                 <Box mb="5">
                   <label>
@@ -174,11 +172,9 @@ export function ThemesVariantsExample() {
                       <CheckIcon width="32" height="32" />
                     </Marker>
 
-                    <Box height="8">
-                      <Heading as="h3" size="6">
-                        Invoice paid
-                      </Heading>
-                    </Box>
+                    <Heading as="h3" size="6" mb="2">
+                      Invoice paid
+                    </Heading>
                   </Flex>
 
                   <Text as="p" size="3" align="center" mb="5">
@@ -206,13 +202,11 @@ export function ThemesVariantsExample() {
             panelBackground="solid"
           >
             <Card size="3">
-              <Box height="4" mb="5">
-                <Flex align="center" justify="between">
-                  <Heading as="h3" size="4" trim="both">
-                    Your profile
-                  </Heading>
-                </Flex>
-              </Box>
+              <Flex align="center" justify="between" mb="5">
+                <Heading as="h3" size="4" trim="both">
+                  Your profile
+                </Heading>
+              </Flex>
 
               <Flex direction="column" gap="4">
                 <Flex asChild direction="column" gap="2">
@@ -248,24 +242,24 @@ export function ThemesVariantsExample() {
                   </Text>
                   <Flex direction="column" gap="2">
                     <Flex asChild gap="2">
-                      <Label>
-                        <Checkbox variant="surface" defaultChecked />
-                        <Text size="2">Display my listening history</Text>
-                      </Label>
+                      <Text as="label" size="2">
+                        <Checkbox defaultChecked />
+                        <Text>Display my listening history</Text>
+                      </Text>
                     </Flex>
 
                     <Flex asChild gap="2">
-                      <Label>
-                        <Checkbox variant="surface" />
-                        <Text size="2">Everyone can follow my activity</Text>
-                      </Label>
+                      <Text as="label" size="2">
+                        <Checkbox />
+                        <Text>Everyone can follow my activity</Text>
+                      </Text>
                     </Flex>
 
                     <Flex asChild gap="2">
-                      <Label>
-                        <Checkbox variant="surface" defaultChecked />
-                        <Text size="2">Show my playlists in search</Text>
-                      </Label>
+                      <Text as="label" size="2">
+                        <Checkbox defaultChecked />
+                        <Text>Show my playlists in search</Text>
+                      </Text>
                     </Flex>
                   </Flex>
                 </Flex>
@@ -342,10 +336,10 @@ export function ThemesRadiusExample() {
                   <TextArea placeholder="Reply…" />
                   <Flex gap="6" mt="3" justify="between">
                     <Flex asChild align="center" gap="2">
-                      <Label>
+                      <Text as="label" size="2">
                         <Checkbox checked />
-                        <Text size="2">Send to group</Text>
-                      </Label>
+                        <Text>Send to group</Text>
+                      </Text>
                     </Flex>
                     <Button>Send message</Button>
                   </Flex>
@@ -457,26 +451,26 @@ export function SwatchRow({ name }: { name: string }) {
 
 export function ThemesColorScale({ type = 'accent' }: { type: 'accent' | 'gray' }) {
   return (
-    <Flex direction="column" gap="3" mt="6" mb="5">
+    <Flex direction="column" gap="2" mt="6" mb="5">
       <Flex align="center" gap="1">
         {[...new Array(12)].map((_, i) => (
-          <Flex grow="1" direction="column" height="9" gap="1" key={i}>
+          <Flex grow="1" direction="column" gap="1" key={i}>
             <Box
-              grow="1"
+              height="6"
               style={{
                 backgroundColor: `var(--${type}-${i + 1})`,
-                borderRadius: 'var(--radius-2)',
+                borderRadius: 'var(--radius-1)',
               }}
             />
 
             <Box
-              grow="1"
+              height="6"
               style={{
                 backgroundImage:
                   'linear-gradient(45deg, var(--gray-2) 25%, transparent 25%), linear-gradient(135deg, var(--gray-2) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--gray-2) 75%), linear-gradient(135deg, transparent 75%, var(--gray-2) 75%)',
-                backgroundSize: '12px 12px',
-                backgroundPosition: '0px 0px, 6px 0px, 6px -6px, 0px 6px',
-                borderRadius: 'var(--radius-2)',
+                backgroundSize: '16px 16px',
+                backgroundPosition: '0px 0px, 8px 0px, 8px -8px, 0px 8px',
+                borderRadius: 'var(--radius-1)',
                 overflow: 'hidden',
               }}
             >
@@ -551,72 +545,19 @@ export function ThemesFontSizeScale() {
 export function ThemesAccentSwatches() {
   return (
     <Flex direction="column" gap="5" my="6">
-      <Grid columns={{ initial: '3', xs: '4', sm: '7' }} gap="2">
-        {([
-          'tomato',
-          'red',
-          'ruby',
-          'crimson',
-          'pink',
-          'plum',
-          'purple',
-          'violet',
-          'iris',
-          'indigo',
-          'blue',
-          'cyan',
-          'teal',
-          'jade',
-          'green',
-          'grass',
-          'brown',
-          'orange',
-          'gold',
-          'bronze',
-          'gray',
-        ] as const).map((color, i) => (
+      <Grid columns={{ initial: '4', xs: '6', sm: '9' }} gapX="1" gapY="3">
+        {themeAccentColorsOrdered.map((color, i) => (
           <Box grow="1" key={i}>
             <Theme accentColor={color} hasBackground={false} asChild>
-              <Flex
-                align="center"
-                justify="center"
-                gap="2"
-                style={{ backgroundColor: `var(--accent-9)`, borderRadius: 'var(--radius-2)' }}
-                px="2"
-                py="2"
-              >
-                <Text as="div" size="2" weight="bold" style={{ color: 'var(--accent-9-contrast)' }}>
-                  {color.charAt(0).toUpperCase() + color.slice(1)}
-                </Text>
-              </Flex>
+              <Box
+                mb="1"
+                height="8"
+                style={{ backgroundColor: `var(--accent-9)`, borderRadius: 'var(--radius-1)' }}
+              />
             </Theme>
-          </Box>
-        ))}
-      </Grid>
-    </Flex>
-  );
-}
-
-export function ThemesBrightAccentSwatches() {
-  return (
-    <Flex direction="column" gap="5" my="6">
-      <Grid columns={{ initial: '3', xs: '4', sm: '7' }} gap="2">
-        {(['sky', 'mint', 'lime', 'yellow', 'amber'] as const).map((color, i) => (
-          <Box grow="1" key={i}>
-            <Theme accentColor={color} hasBackground={false} asChild>
-              <Flex
-                align="center"
-                justify="center"
-                gap="2"
-                style={{ backgroundColor: `var(--accent-9)`, borderRadius: 'var(--radius-2)' }}
-                px="2"
-                py="2"
-              >
-                <Text as="div" size="2" weight="bold" style={{ color: 'var(--accent-9-contrast)' }}>
-                  {color.charAt(0).toUpperCase() + color.slice(1)}
-                </Text>
-              </Flex>
-            </Theme>
+            <Text as="div" size="1" color="gray">
+              {color.charAt(0).toUpperCase() + color.slice(1)}
+            </Text>
           </Box>
         ))}
       </Grid>
@@ -627,23 +568,23 @@ export function ThemesBrightAccentSwatches() {
 export function ThemeGraySwatches() {
   return (
     <Flex direction="column" gap="5" my="6">
-      <Grid columns={{ initial: '3', xs: '4', sm: '6' }} gap="2">
+      <Grid columns={{ initial: '4', xs: '6', sm: '9' }} gapX="1" gapY="3">
         {(['gray', 'mauve', 'slate', 'sage', 'olive', 'sand'] as const).map((color, i) => (
           <Box grow="1" key={i}>
-            <Theme grayColor={color} asChild>
-              <Flex
-                align="center"
-                justify="center"
-                gap="2"
-                style={{ backgroundColor: `var(--gray-9)`, borderRadius: 'var(--radius-2)' }}
-                px="2"
-                py="2"
-              >
-                <Text as="div" size="2" weight="bold" style={{ color: 'var(--accent-9-contrast)' }}>
-                  {color.charAt(0).toUpperCase() + color.slice(1)}
-                </Text>
-              </Flex>
+            <Theme accentColor="gray" grayColor={color} hasBackground={false} asChild>
+              <Box
+                mb="1"
+                height="8"
+                style={{
+                  backgroundColor: `var(--accent-9)`,
+                  borderRadius: 'var(--radius-1)',
+                  filter: color === 'gray' ? 'saturate(0)' : undefined,
+                }}
+              />
             </Theme>
+            <Text as="div" size="1" color="gray">
+              {color.charAt(0).toUpperCase() + color.slice(1)}
+            </Text>
           </Box>
         ))}
       </Grid>
@@ -655,34 +596,27 @@ export function ThemesVolumeControlExample() {
   return (
     <Flex
       justify="center"
-      style={{
-        backgroundColor: 'var(--gray-2)',
-        borderRadius: 'var(--radius-1)',
-        border: '1px solid var(--gray-4)',
-        minWidth: 350,
-      }}
+      style={{ backgroundColor: 'var(--gray-2)', borderRadius: 'var(--radius-1)', minWidth: 350 }}
       p={{ initial: '5', sm: '6' }}
     >
       <Card size="3" style={{ maxWidth: 460, width: '100%' }} variant="classic">
         <Flex direction="column">
-          <Box height="4" mb="6">
-            <Flex align="center" justify="between">
-              <Heading as="h3" size="4" trim="both">
-                Sound
-              </Heading>
+          <Flex align="center" justify="between" mb="6">
+            <Heading as="h3" size="4" trim="both">
+              Sound
+            </Heading>
 
-              <Flex gap="4">
-                <Text size="2" color="gray">
-                  Yamaha THR
-                </Text>
-              </Flex>
+            <Flex gap="4">
+              <Text size="2" color="gray">
+                Yamaha THR
+              </Text>
             </Flex>
-          </Box>
+          </Flex>
 
           <Flex gap="2" align="center" height="4" mt="2" mb="5">
             <VolumeNoneIcon color="var(--gray-a9)" />
             <Box grow="1">
-              <Slider defaultValue={[80]} />
+              <Slider variant="soft" defaultValue={[80]} />
             </Box>
             <VolumeMaxIcon color="var(--gray-a9)" />
           </Flex>
@@ -825,7 +759,8 @@ export function DecorativeBox(props) {
       style={{
         height: '100%',
         backgroundColor: 'var(--gray-a3)',
-        border: '1px solid var(--gray-a7)',
+        backgroundClip: 'padding-box',
+        border: '1px solid var(--gray-a5)',
         borderRadius: 'var(--radius-1)',
         backgroundImage: `url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.2' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E")`,
         ...props.style,
@@ -836,29 +771,27 @@ export function DecorativeBox(props) {
 
 export function ThemesDarkModeExample() {
   return (
-    <Card>
-      <Inset side="all">
-        <Grid columns={{ initial: '1', sm: '2' }}>
-          <Theme asChild appearance="light" style={{ backgroundColor: 'var(--gray-1)' }}>
-            <Box p={{ initial: '4', sm: '5' }}>
-              <AlbumCard />
-            </Box>
-          </Theme>
+    <Box style={{ borderRadius: 'var(--radius-6)', overflow: 'hidden' }}>
+      <Grid columns={{ initial: '1', sm: '2' }}>
+        <Theme asChild appearance="light" style={{ backgroundColor: 'var(--gray-2)' }}>
+          <Box p={{ initial: '4', sm: '5' }}>
+            <AlbumCard />
+          </Box>
+        </Theme>
 
-          <Theme asChild appearance="dark" style={{ backgroundColor: 'var(--gray-1)' }}>
-            <Box p="5">
-              <AlbumCard />
-            </Box>
-          </Theme>
-        </Grid>
-      </Inset>
-    </Card>
+        <Theme asChild appearance="dark" style={{ backgroundColor: 'var(--gray-2)' }}>
+          <Box p="5">
+            <AlbumCard />
+          </Box>
+        </Theme>
+      </Grid>
+    </Box>
   );
 }
 
 function AlbumCard() {
   return (
-    <Card size={{ initial: '3', sm: '3' }}>
+    <Card size="1">
       <Box py="5">
         <Flex mb="4" justify="center" position="relative">
           <img
@@ -873,7 +806,7 @@ function AlbumCard() {
         </Flex>
 
         <Box mt="5">
-          <Theme asChild accentColor="crimson">
+          <Theme asChild accentColor="ruby">
             <Flex mb="4" align="center" justify="center">
               {[1, 2, 3, 4].map((i) => (
                 <svg

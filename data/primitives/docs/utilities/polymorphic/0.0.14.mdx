@@ -8,6 +8,20 @@ name: polymorphic
 
 <Description>Creates strongly typed polymorphic components.</Description>
 
+<Callout.Root color="yellow" mt="-3">
+  <Callout.Text>
+    {[
+      'This package has been deprecated in favour of the ',
+      <Code variant="ghost">asChild</Code>,
+      ' prop. Learn more about how to ',
+      <Link href="/primitives/docs/guides/composition">
+        change the rendered element here
+      </Link>,
+      '.',
+    ]}
+  </Callout.Text>
+</Callout.Root>
+
 <Highlights
   features={[
     'Typed attributes based on the `as` prop',
@@ -15,12 +29,6 @@ name: polymorphic
     'Typed events based on the `as` prop',
   ]}
 />
-
-<Alert>
-  This package has been deprecated in favour of the `asChild` prop. Learn more
-  about how to [change the rendered element
-  here](/primitives/docs/guides/composition).
-</Alert>
 
 ## Installation
 

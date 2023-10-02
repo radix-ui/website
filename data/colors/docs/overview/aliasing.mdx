@@ -547,13 +547,13 @@ When designing for both light and dark modes, you sometimes need to map a variab
  * It's intended for prototyping only.
  */
 @import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/slate.css';
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/slateA.css';
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/whiteA.css';
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blackA.css';
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/slate-alpha.css';
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/white-alpha.css';
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/black-alpha.css';
 
 :root {
   --panel: white;
-  --panelContrast: var(--black-a11);
+  --panel-contrast: var(--black-a9);
   --shadow: var(--slate-a3);
   --overlay: var(--black-a8);
 }
@@ -561,9 +561,9 @@ When designing for both light and dark modes, you sometimes need to map a variab
 .dark {
   /* Remap your colors for dark mode */
   --panel: var(--slate-2);
-  --panelContrast: var(--white-a11);
+  --panel-contrast: var(--white-a9);
   --shadow: black;
-  --overlay: var(--black-a12);
+  --overlay: var(--black-a11);
 }
 `}/>
   </TabsContent>
@@ -587,7 +587,7 @@ const { styled, theme } = createCss({
       panel: 'white',
       panelContrast: '$grayA12',
       shadow: '$slateA3',
-      overlay: '$blackA8',
+      overlay: '$blackA6',
     },
   },
 });
@@ -602,7 +602,7 @@ const darkTheme = theme({
     panel: '$slate2',
     panelContrast: '$grayA3',
     shadow: 'black',
-    overlay: '$blackA12',
+    overlay: '$blackA9',
   },
 });
 `}/>
@@ -637,9 +637,9 @@ const darkTheme = {
 
   // Remap your colors for dark mode
   panel: slate.slate2,
-  panelContrast: whiteA.whiteA11,
+  panelContrast: whiteA.whiteA9,
   shadow: 'black',
-  overlay: blackA.blackA12,
+  overlay: blackA.blackA11,
 }
 
 <ThemeProvider theme={darkTheme}>

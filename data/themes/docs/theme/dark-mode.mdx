@@ -9,7 +9,7 @@ metaDescription: Using appearance to manage and integrate dark mode.
 
 ## Overview
 
-Light and dark modes are supported out of the box, allowing you to easily switch appearance without any additional design or styling.
+Light and dark modes are supported out of the box, allowing you to easily switch appearance without additional design or styling.
 
 <Box my="5">
   <ThemesDarkModeExample />
@@ -51,9 +51,9 @@ This is a deceptively complex problem to solve given SSR, SSG and client side hy
 
 ### With next-themes
 
-Radix Themes already implements matching class names which makes integration with `next-themes` simple and straight-forward.
+Integration with `next-themes` is simple and straightforward because Radix Themes implements matching class names.
 
-All that is needed is to ensure that `attribute` is set to use the `class` switching method.
+To enable dark mode, use `<ThemeProvider>` from `next-themes` with `attribute="class"`.
 
 ```jsx line=6
 import { Theme } from '@radix-ui/themes';
@@ -61,7 +61,7 @@ import { ThemeProvider } from 'next-themes';
 
 export default function () {
   return (
-    <ThemeProvider __attribute__="class">
+    <ThemeProvider attribute="class">
       <Theme>
         <MyApp />
       </Theme>
@@ -72,15 +72,17 @@ export default function () {
 
 {
 
-<Callout.Root my="5">
+<Callout.Root my="5" highContrast>
   <Callout.Icon>
     <InfoCircledIcon />
   </Callout.Icon>
   <Callout.Text>
-    It's important <Strong>not</Strong> to pass <Code>resolvedTheme</Code> to
-    <Code>appearance</Code>, instead relying entirely on class switching. This is
-    important as <Code>next-themes</Code> will automatically prevent any unsightly
-    flashing during initial render.
+    Do <Strong>not</Strong> pass <Code variant="ghost">resolvedTheme</Code> from{' '}
+    <Code variant="ghost">next-themes</Code> to{' '}
+    <Code variant="ghost">appearance</Code>. Instead, rely just on the class
+    switching. This is important so that{' '}
+    <Code variant="ghost">next-themes</Code> can prevent the appearance flash
+    during initial render.
   </Callout.Text>
 </Callout.Root>
 

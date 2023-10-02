@@ -18,7 +18,7 @@
   "dependencies": {
     "@algolia/autocomplete-core": "^1.7.1",
     "@algolia/autocomplete-preset-algolia": "^1.7.1",
-    "@radix-ui/colors": "2.1.0",
+    "@radix-ui/colors": "3.0.0",
     "@radix-ui/react-accessible-icon": "1.0.3",
     "@radix-ui/react-accordion": "1.1.2",
     "@radix-ui/react-alert-dialog": "1.0.4",
@@ -51,7 +51,7 @@
     "@radix-ui/react-toolbar": "1.0.4",
     "@radix-ui/react-tooltip": "1.0.6",
     "@radix-ui/react-visually-hidden": "1.0.3",
-    "@radix-ui/themes": "1.1.1",
+    "@radix-ui/themes": "2.0.0",
     "@stitches/react": "^1.2.8",
     "algoliasearch": "^4.14.2",
     "codesandbox": "^2.2.3",
@@ -74,6 +74,7 @@
     "refractor": "^3.3.1",
     "rehype": "^11.0.0",
     "remark-slug": "^6.0.0",
+    "scroll-into-view-if-needed": "^3.1.0",
     "smoothscroll-polyfill": "^0.4.4",
     "tinycolor2": "^1.4.2"
   },

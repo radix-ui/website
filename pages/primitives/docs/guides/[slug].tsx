@@ -22,7 +22,7 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
       </div>
 
       <TitleAndMetaTags
-        title={`${frontmatter.metaTitle} – Radix UI`}
+        title={`${frontmatter.metaTitle} – Radix Primitives`}
         description={frontmatter.metaDescription}
         image="primitives.png"
       />

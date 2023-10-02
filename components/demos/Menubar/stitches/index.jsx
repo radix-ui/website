@@ -153,7 +153,7 @@ const MenubarRoot = styled(Menubar.Root, {
   backgroundColor: 'white',
   padding: 3,
   borderRadius: 6,
-  boxShadow: `0 2px 10px ${blackA.blackA7}`,
+  boxShadow: `0 2px 10px ${blackA.blackA4}`,
 });
 
 const MenubarTrigger = styled(Menubar.Trigger, {

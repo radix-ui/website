@@ -125,7 +125,7 @@
   position: relative;
 }
 
-.ThemesHeroLayoutShowcase :global(.rt-Card.rt-variant-surface::after) {
+.ThemesHeroLayoutShowcase :global(.rt-Card::after) {
   box-shadow: var(--shadow-4);
 }
 

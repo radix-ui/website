@@ -104,18 +104,14 @@ export const components = {
     );
   },
   hr: (props) => <Separator size="2" {...props} my="6" style={{ marginInline: 'auto' }} />,
-  ul: ({ children, ...props }) => (
-    <Flex direction="column" gap="1" {...props} mb="3" pl="4" asChild>
-      <ul children={children} className={styles.List} />
-    </Flex>
-  ),
+  ul: (props) => <ul {...props} className={styles.List} />,
   ol: (props) => ({ children, ...props }) => (
     <Box {...props} mb="3" pl="4" asChild>
       <ol children={children} />
     </Box>
   ),
   li: (props) => (
-    <li>
+    <li className={styles.ListItem}>
       <Text {...props} />
     </li>
   ),
@@ -129,11 +125,17 @@ export const components = {
   blockquote: Blockquote,
   pre: (props) => {
     if (props.children.props.live) {
-      return <PreWithLivePreview scroll={props.children.props.scroll} {...props} />;
+      return (
+        <PreWithLivePreview
+          scroll={props.children.props.scroll}
+          style={props.children.props.style}
+          {...props}
+        />
+      );
     }
     return <PreWithCopyButton {...props} />;
   },
-  code: ({ className, line, live, ...props }) => {
+  code: ({ className, line, live, style, ...props }) => {
     // if it's a codeblock (``` block in markdown), it'll have a className from prism
     const isInlineCode = !className;
     return isInlineCode ? (
@@ -153,11 +155,6 @@ export const components = {
       <aside children={children} />
     </Box>
   ),
-  Alert: ({ children, ...props }) => (
-    <Box my="6" asChild {...props}>
-      <aside children={children} className={styles.Alert}></aside>
-    </Box>
-  ),
   Highlights,
   Kbd: Kbd,
   Code,
@@ -174,14 +171,7 @@ export const components = {
   ),
   TabsCodeBlock: (props) => (
     <Tabs.Root {...props}>
-      <Box
-        style={{
-          border: '1px solid var(--gray-a5)',
-          borderRadius: 'var(--radius-4)',
-        }}
-      >
-        {props.children}
-      </Box>
+      <Box className={styles.TabsCodeBlock}>{props.children}</Box>
     </Tabs.Root>
   ),
   TabsCodeBlockContent: (props) => (

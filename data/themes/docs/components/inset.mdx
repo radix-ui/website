@@ -4,34 +4,30 @@ metaDescription: Applies a negative margin to allow content to bleed into the su
 sourcePath: components/inset
 ---
 
-```jsx live=true scroll=true
-<Card size="3">
-  <Flex>
-    <Inset side="left" mr="5">
-      <Flex
-        align="center"
-        justify="center"
-        px="7"
-        style={{ background: '#24292F', height: '100%' }}
-      >
-        <GitHubLogoIcon color="white" height="40" width="40" />
-      </Flex>
-    </Inset>
-
-    <Box style={{ maxWidth: 400 }}>
-      <Text as="div" color="gray" mb="1" size="2">
-        github.com
-      </Text>
-      <Text size="5">
-        Official Node.js SDK for interacting with the AcmeCorp API.
-      </Text>
-    </Box>
-  </Flex>
+```jsx live=true
+<Card size="2" style={{ maxWidth: 240 }}>
+  <Inset clip="padding-box" side="top" pb="current">
+    <img
+      src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+      alt="Bold typography"
+      style={{
+        display: 'block',
+        objectFit: 'cover',
+        width: '100%',
+        height: 140,
+        backgroundColor: 'var(--gray-5)',
+      }}
+    />
+  </Inset>
+  <Text as="p" size="3">
+    <Strong>Typography</Strong> is the art and technique of arranging type to
+    make written language legible, readable and appealing when displayed.
+  </Text>
 </Card>
 ```
 
 ## API Reference
 
-This component is based on the `div` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
+This component is based on the `div` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
 
 <ThemesPropsTable name="inset" />

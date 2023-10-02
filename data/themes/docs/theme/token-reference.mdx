@@ -12,13 +12,19 @@ metaDescription:
   and customize your own themed components.
 </Description>
 
-## Overview
+Radix Themes exposes all tokens as [CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*). These are consumed internally in all component styles. You can access them the same way you would any other variable, either directly inside your CSS or inline via the `style` prop.
 
-Radix Themes exposes all tokens as [CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*), these are consumed internally in all styled components.
+For a comprehensive list of all available tokens, see their respective source files:
 
-You can access them the same way you would any other variable, either directly inside your CSS or inline via the `style` prop.
+- [Color](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/color.css)
+- [Cursors](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/cursor.css)
+- [Radius](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/radius.css)
+- [Scaling](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/scaling.css)
+- [Shadows](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/shadow.css)
+- [Space](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/space.css)
+- [Typography](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/typography.css)
 
-### Modifying tokens
+## Modifying tokens
 
 Token values can be customized by using a separate configuration stylesheet. The simplest way to do so is to create a `theme-config.css` file and ensure it is imported after the global theme styles:
 
@@ -44,13 +50,3 @@ export default function () {
   );
 }
 ```
-
-## Tokens
-
-For a comprehensive list of all available tokens, see their respective source files:
-
-- [Color](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/color.css)
-- [Radius](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/radius.css)
-- [Shadows](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/shadow.css)
-- [Space](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/space.css)
-- [Typography](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/typography.css)

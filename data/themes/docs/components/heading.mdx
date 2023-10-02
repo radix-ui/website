@@ -10,7 +10,7 @@ sourcePath: components/heading
 
 ## API Reference
 
-This component is based on the `h1` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
+This component is based on the `h1` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
 
 <ThemesPropsTable name="heading" />
 
@@ -32,13 +32,14 @@ Use the `size` prop to control the size of the heading. The prop also provides c
 
 {
 
-<Callout.Root my="5">
+<Callout.Root my="5" highContrast>
   <Callout.Icon>
     <InfoCircledIcon />
   </Callout.Icon>
   <Callout.Text>
-    Heading sizes match <Code>Text</Code> sizes. However, the line heights and
-    letter spacing are set tighter.
+    Heading sizes match <a href="/themes/components/text">Text</a> sizes.
+    However, the line heights are set a bit tighter as headings tend to be
+    shorter than running text.
   </Callout.Text>
 </Callout.Root>
 
@@ -46,15 +47,15 @@ Use the `size` prop to control the size of the heading. The prop also provides c
 
 ```jsx live=true scroll=true
 <Flex direction="column" gap="3">
-  <Heading size="9">The quick brown fox jumps over the lazy dog</Heading>
-  <Heading size="8">The quick brown fox jumps over the lazy dog</Heading>
-  <Heading size="7">The quick brown fox jumps over the lazy dog</Heading>
-  <Heading size="6">The quick brown fox jumps over the lazy dog</Heading>
-  <Heading size="5">The quick brown fox jumps over the lazy dog</Heading>
-  <Heading size="4">The quick brown fox jumps over the lazy dog</Heading>
-  <Heading size="3">The quick brown fox jumps over the lazy dog</Heading>
-  <Heading size="2">The quick brown fox jumps over the lazy dog</Heading>
   <Heading size="1">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="2">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="3">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="4">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="5">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="6">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="7">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="8">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="9">The quick brown fox jumps over the lazy dog</Heading>
 </Flex>
 ```
 
@@ -141,31 +142,34 @@ Trimming the leading is useful when dialing in vertical spacing in cards or othe
 
 ### Color
 
-Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme. The text colors are designed to achieve at least Lc 60 APCA contrast over common background colors.
 
 ```jsx live=true scroll=true
-<Flex direction="column" gap="1">
-  <Heading color="indigo" size="5">
-    The quick brown fox jumps over the lazy dog
-  </Heading>
-  <Heading color="cyan" size="5">
-    The quick brown fox jumps over the lazy dog
-  </Heading>
-  <Heading color="orange" size="5">
-    The quick brown fox jumps over the lazy dog
-  </Heading>
-  <Heading color="crimson" size="5">
-    The quick brown fox jumps over the lazy dog
-  </Heading>
+<Flex direction="column">
+  <Heading color="indigo">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading color="cyan">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading color="orange">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading color="crimson">The quick brown fox jumps over the lazy dog</Heading>
 </Flex>
 ```
 
 ### High-contrast
 
-Use the `highContrast` prop to add contrast within colored headings.
+Use the `highContrast` prop to increase color contrast with the background.
 
-```jsx live=true
-<Heading size="5" color="gray">
-  The quick <Text highContrast>brown fox</Text> jumps over the lazy dog.
-</Heading>
+```jsx live="true"
+<Flex direction="column">
+  <Heading highContrast color="indigo">
+    The quick brown fox jumps over the lazy dog.
+  </Heading>
+  <Heading highContrast color="cyan">
+    The quick brown fox jumps over the lazy dog.
+  </Heading>
+  <Heading highContrast color="orange">
+    The quick brown fox jumps over the lazy dog.
+  </Heading>
+  <Heading highContrast color="crimson">
+    The quick brown fox jumps over the lazy dog.
+  </Heading>
+</Flex>
 ```

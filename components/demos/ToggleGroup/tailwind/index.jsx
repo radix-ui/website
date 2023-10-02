@@ -7,7 +7,7 @@ const toggleGroupItemClasses =
 
 const ToggleGroupDemo = () => (
   <ToggleGroup.Root
-    className="inline-flex bg-mauve6 rounded shadow-[0_2px_10px] shadow-blackA7 space-x-px"
+    className="inline-flex bg-mauve6 rounded shadow-[0_2px_10px] shadow-blackA4 space-x-px"
     type="single"
     defaultValue="center"
     aria-label="Text alignment"

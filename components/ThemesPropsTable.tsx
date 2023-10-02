@@ -39,7 +39,7 @@ const definitions = {
   section: themes.sectionPropDefs,
   text: {
     ...asChildProp,
-    as: { required: false, type: 'enum', values: ['p', 'div', 'span'], default: 'span' },
+    as: { required: false, type: 'enum', values: ['p', 'label', 'div', 'span'], default: 'span' },
     ...themes.textPropDefs,
   },
   heading: {
@@ -136,7 +136,6 @@ const uniqueDescriptions: UniqueDescriptions = {
   },
   tooltip: {
     content: 'The content associated with the tooltip.',
-    multiline: 'Used when you need to format the content across multiple lines.',
   },
   link: {
     underline: 'Sets the visibility of the underline affordance.',
@@ -191,14 +190,8 @@ function shouldBalanceArray(values?: readonly string[] | string) {
 
 function formatValues(values?: readonly string[] | string) {
   if (Array.isArray(values)) {
-    if (shouldBalanceArray(values)) {
-      return formatToBalancedArray(values, 5);
-    }
-
-    return values
-      .filter((item) => Boolean(item))
-      .map((v) => `"${v}"`)
-      .join(' | ');
+    const strings = values.filter((item) => Boolean(item)).map((v) => `"${v}"`);
+    return strings.join(' | ');
   }
 
   if (values) {
@@ -206,24 +199,6 @@ function formatValues(values?: readonly string[] | string) {
   }
 
   return undefined;
-}
-
-function formatToBalancedArray(input: string[], columns = 5) {
-  const numberOfParts = Math.ceil(input.length / columns);
-
-  const balancedArray = input
-    .map((value) => `"${value}"`)
-    .map((value, i, array) => {
-      const matching = array.filter((v, j) => j % columns === i % columns);
-      const longestPart = Math.max(...matching.map((el) => el.length)) + 1;
-      return value.padEnd(longestPart, ' ');
-    });
-
-  const parts = [...Array(numberOfParts)].map((value, index) => {
-    return balancedArray.slice(index * columns, (index + 1) * columns);
-  });
-
-  return parts.map((part) => part.join(' | ')).join('\n');
 }
 
 type ThemesPropsDef = Record<
@@ -239,10 +214,7 @@ type ThemesPropsDef = Record<
 
 function applyResponsive(value: string | undefined, isResponsive) {
   if (value && isResponsive) {
-    return `Responsive<${value
-      // the empty spaces are so that we align nicely
-      .replace(/\n/g, `\n${Array(12).join(' ')}`)
-      .trim()}>`;
+    return `Responsive<${value}>`;
   }
 
   return value;

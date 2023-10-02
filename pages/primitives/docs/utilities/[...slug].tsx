@@ -24,7 +24,7 @@ export default function UtilitiesDoc({ frontmatter, code }: Doc) {
       </div>
 
       <TitleAndMetaTags
-        title={`${frontmatter.metaTitle} – Radix UI`}
+        title={`${frontmatter.metaTitle} – Radix Primitives`}
         description={frontmatter.metaDescription}
         image="primitives.png"
       />
@@ -32,10 +32,7 @@ export default function UtilitiesDoc({ frontmatter, code }: Doc) {
       {frontmatter.version !== frontmatter.versions?.[0] && (
         <OldVersionNote
           name={frontmatter.metaTitle}
-          href={`/primitives/docs/utilities/${frontmatter.slug.replace(
-            frontmatter.version,
-            ''
-          )}`}
+          href={`/primitives/docs/utilities/${frontmatter.slug.replace(frontmatter.version, '')}`}
         />
       )}
 

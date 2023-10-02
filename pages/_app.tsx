@@ -9,6 +9,7 @@ import { useAnalytics } from '@lib/analytics';
 import { CssLibPreferenceProvider } from '@components/CssLibPreference';
 import { ThemesDocsPage } from '@components/ThemesDocsPage';
 import { SyntaxSchemeProvider } from '@components/Pre';
+import { Favicon } from '@components/Favicon';
 import '@radix-ui/themes/styles.css';
 import './styles.css';
 
@@ -20,6 +21,7 @@ function Pages({ Component, pageProps }: AppProps) {
       <Theme accentColor="blue" grayColor="slate" className="radix-themes-custom-fonts">
         <SyntaxSchemeProvider scheme="blue">
           <PrimitivesDocsPage>
+            <Favicon />
             <Component {...pageProps} />
           </PrimitivesDocsPage>
         </SyntaxSchemeProvider>
@@ -31,6 +33,7 @@ function Pages({ Component, pageProps }: AppProps) {
     return (
       <Theme accentColor="blue" grayColor="slate" className="radix-themes-custom-fonts">
         <SyntaxSchemeProvider scheme="blue">
+          <Favicon />
           <Component {...pageProps} />
         </SyntaxSchemeProvider>
       </Theme>
@@ -42,6 +45,7 @@ function Pages({ Component, pageProps }: AppProps) {
       <Theme accentColor="pink" grayColor="gray" className="radix-themes-custom-fonts">
         <SyntaxSchemeProvider scheme="pink">
           <ColorsDocsPage>
+            <Favicon />
             <Component {...pageProps} />
           </ColorsDocsPage>
         </SyntaxSchemeProvider>
@@ -52,6 +56,7 @@ function Pages({ Component, pageProps }: AppProps) {
   if (router.pathname.startsWith('/colors')) {
     return (
       <Theme accentColor="pink" grayColor="gray" className="radix-themes-custom-fonts">
+        <Favicon />
         <Component {...pageProps} />
       </Theme>
     );
@@ -62,6 +67,7 @@ function Pages({ Component, pageProps }: AppProps) {
       <Theme accentColor="indigo" className="radix-themes-custom-fonts">
         <SyntaxSchemeProvider scheme="indigo">
           <ThemesDocsPage>
+            <Favicon />
             <Component {...pageProps} />
           </ThemesDocsPage>
         </SyntaxSchemeProvider>
@@ -72,6 +78,7 @@ function Pages({ Component, pageProps }: AppProps) {
   if (router.pathname.startsWith('/themes/playground')) {
     return (
       <Theme accentColor="indigo">
+        <Favicon />
         <Component {...pageProps} />
       </Theme>
     );
@@ -80,6 +87,7 @@ function Pages({ Component, pageProps }: AppProps) {
   if (router.pathname.startsWith('/themes')) {
     return (
       <Theme accentColor="indigo" className="radix-themes-custom-fonts">
+        <Favicon />
         <Component {...pageProps} />
       </Theme>
     );
@@ -89,6 +97,7 @@ function Pages({ Component, pageProps }: AppProps) {
     return (
       <Theme accentColor="teal" grayColor="slate" className="radix-themes-custom-fonts">
         <SyntaxSchemeProvider scheme="teal">
+          <Favicon />
           <Component {...pageProps} />
         </SyntaxSchemeProvider>
       </Theme>
@@ -98,6 +107,7 @@ function Pages({ Component, pageProps }: AppProps) {
   return (
     <Theme accentColor="indigo" className="radix-themes-custom-fonts">
       <SyntaxSchemeProvider scheme="indigo">
+        <Favicon />
         <Component {...pageProps} />
       </SyntaxSchemeProvider>
     </Theme>

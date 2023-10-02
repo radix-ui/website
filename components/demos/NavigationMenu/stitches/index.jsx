@@ -140,7 +140,7 @@ const NavigationMenuList = styled(NavigationMenu.List, {
   padding: 4,
   borderRadius: 6,
   listStyle: 'none',
-  boxShadow: `0 2px 10px ${blackA.blackA7}`,
+  boxShadow: `0 2px 10px ${blackA.blackA4}`,
   margin: 0,
 });
 

@@ -20,7 +20,7 @@
 }
 
 .HeaderRoot:not(.ghost[data-scroll-state='at-top']) > .HeaderInner {
-  background-color: var(--color-panel-solid);
+  background-color: var(--color-background);
   box-shadow: 0 1px var(--gray-a4);
 }
 
