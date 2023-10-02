@@ -13,14 +13,14 @@ export function ThemesBreakpointsTable() {
 
         <Table.Body>
           {[
-            { name: 'initial', description: 'Phones', size: '0px' },
-            { name: 'xs', description: 'Small tablets', size: '520px' },
-            { name: 'sm', description: 'Tablets', size: '768px' },
-            { name: 'md', description: 'Laptops', size: '1024px' },
-            { name: 'lg', description: 'Desktops', size: '1280px' },
-            { name: 'xl', description: 'Large desktops', size: '1640px' },
+            { name: 'initial', description: 'Phones (portrait)', size: '0px' },
+            { name: 'xs', description: 'Phones (landscape)', size: '520px' },
+            { name: 'sm', description: 'Tablets (portrait)', size: '768px' },
+            { name: 'md', description: 'Tablets (landscape)', size: '1024px' },
+            { name: 'lg', description: 'Laptops', size: '1280px' },
+            { name: 'xl', description: 'Desktops', size: '1640px' },
           ].map(({ name, description, size }) => (
-            <Table.Row key={name}>
+            <Table.Row key={name} align="center">
               <Table.RowHeaderCell>
                 <Text weight="bold" as="div">
                   {name}
