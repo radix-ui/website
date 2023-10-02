@@ -349,7 +349,7 @@ const MagicCurtainControls = ({ images }: MagicCurtainControlsProps) => {
           {
             // Avoid transitioning from initial position when first opening
             display: offsetIndex ? undefined : 'none',
-            '--magic-curtain-controls-offset-index': offsetIndex,
+            '--magic-curtain-controls-offset-index': offsetIndex || undefined,
           } as React.CSSProperties
         }
       >
