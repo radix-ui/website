@@ -1,3 +1,7 @@
+.Link {
+  display: inline-block;
+}
+
 .LinkWrapper {
   padding-block: var(--space-1);
 }
