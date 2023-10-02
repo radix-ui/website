@@ -78,4 +78,8 @@ pre {
   --letter-spacing-7: -0.015em;
   --letter-spacing-8: -0.02em;
   --letter-spacing-9: -0.05em;
+  --code-padding-top: 0em;
+  --code-padding-bottom: 0.075em;
+  --default-leading-trim-start: 0.42em;
+  --default-leading-trim-end: 0.38em;
 }
