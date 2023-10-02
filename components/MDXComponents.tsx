@@ -155,11 +155,6 @@ export const components = {
       <aside children={children} />
     </Box>
   ),
-  Alert: ({ children, ...props }) => (
-    <Box my="6" asChild {...props}>
-      <aside children={children} className={styles.Alert}></aside>
-    </Box>
-  ),
   Highlights,
   Kbd: Kbd,
   Code,
