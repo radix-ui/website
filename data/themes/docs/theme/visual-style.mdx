@@ -17,6 +17,16 @@ Passing the `translucent` value creates a subtle overlay effect on these element
   <ThemesPanelTranslucentExample />
 </Box>
 
+## Basic usage
+
+By default, the root `Theme` panel background is `solid`. To set a different panel background pass it via the `panelBackground` prop. This will force the theme to use the specified setting.
+
+```jsx line=1
+<Theme __panelBackground__="translucent">
+  <MyApp />
+</Theme>
+```
+
 While `solid` is useful when you'd prefer to present information unobstructed.
 
 <Box my="5">
