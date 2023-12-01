@@ -18,7 +18,7 @@ const ContextMenuDemo = () => {
             Back <RightSlot>⌘+[</RightSlot>
           </ContextMenuItem>
           <ContextMenuItem disabled>
-            Foward <RightSlot>⌘+]</RightSlot>
+            Forward <RightSlot>⌘+]</RightSlot>
           </ContextMenuItem>
           <ContextMenuItem>
             Reload <RightSlot>⌘+R</RightSlot>
