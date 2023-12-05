@@ -18,7 +18,7 @@ Radix Themes releases and their changelogs.
 <Note>November 14, 2023</Note>
 
 - `Card`
-  - Fix an issue when `variant="surface"` border color may disappear in browsers that don't support `color-mix`
+  - Fix an issue when `variant="surface"` border color may disappear in browsers that don't support `color-mix`.
   - Tweak `variant="surface"` border color.
 - `Code`
   - When `variant="ghost"` is used within a `Link`, make sure that `underline="hover"` on the `Link` is respected.
@@ -47,30 +47,30 @@ Radix Themes releases and their changelogs.
     - **[Upgrade guide]** If you were overriding certain colors, make sure that your overrides are harmonized with the new color scales.
   - Rework transparent black and white color scales.
     - **[Upgrade guide]** If you were using transparent black and white color scales for your custom styles (`--black-a1`, `--white-a1`, etc.), make sure to check the new values and update the steps used so that your designs look as expected:
-      - Change `--black-a1` to `rgba(0, 0, 0, 0.01)`
-      - Change `--black-a2` to `rgba(0, 0, 0, 0.024)`
-      - Change `--black-a3` to `--black-a1`
-      - Change `--black-a4` to `--black-a2`
-      - Change `--black-a5` to `--black-a2`
-      - Change `--black-a6` to `--black-a3`
-      - Change `--black-a7` to `--black-a3` or `--black-a4`
-      - Change `--black-a8` to `--black-a5`
-      - Change `--black-a9` to `--black-a6` or `--black-a7`
-      - Change `--black-a10` to `--black-a7`
-      - Change `--black-a11` to `--black-a8`
-      - Change `--black-a12` to `--black-a11`
-      - Change `--white-a1` to `transparent`
-      - Change `--white-a2` to `rgba(255, 255, 255, 0.01)`
-      - Change `--white-a3` to `--white-a1` or `--white-a2`
-      - Change `--white-a4` to `--white-a2`
-      - Change `--white-a5` to `--white-a3`
-      - Change `--white-a6` to `--white-a3` or `--white-a4`
-      - Change `--white-a7` to `--white-a4`
-      - Change `--white-a8` to `--white-a5`
-      - Change `--white-a9` to `--white-a6`
-      - Change `--white-a10` to `--white-a7`
-      - Change `--white-a11` to `--white-a9`
-      - Change `--white-a12` to `--white-a11` or `--white-a12`
+      - Change `--black-a1` to `rgba(0, 0, 0, 0.01)`.
+      - Change `--black-a2` to `rgba(0, 0, 0, 0.024)`.
+      - Change `--black-a3` to `--black-a1`.
+      - Change `--black-a4` to `--black-a2`.
+      - Change `--black-a5` to `--black-a2`.
+      - Change `--black-a6` to `--black-a3`.
+      - Change `--black-a7` to `--black-a3` or `--black-a4`.
+      - Change `--black-a8` to `--black-a5`.
+      - Change `--black-a9` to `--black-a6` or `--black-a7`.
+      - Change `--black-a10` to `--black-a7`.
+      - Change `--black-a11` to `--black-a8`.
+      - Change `--black-a12` to `--black-a11`.
+      - Change `--white-a1` to `transparent`.
+      - Change `--white-a2` to `rgba(255, 255, 255, 0.01)`.
+      - Change `--white-a3` to `--white-a1` or `--white-a2`.
+      - Change `--white-a4` to `--white-a2`.
+      - Change `--white-a5` to `--white-a3`.
+      - Change `--white-a6` to `--white-a3` or `--white-a4`.
+      - Change `--white-a7` to `--white-a4`.
+      - Change `--white-a8` to `--white-a5`.
+      - Change `--white-a9` to `--white-a6`.
+      - Change `--white-a10` to `--white-a7`.
+      - Change `--white-a11` to `--white-a9`.
+      - Change `--white-a12` to `--white-a11` or `--white-a12`.
   - Refine the shadow scale.
   - Maintain theme accent color for focus rings on most `color="gray"` component, similarly to the text selection color.
   - Change some internal component-specific CSS variables to follow a naming pattern.
@@ -107,30 +107,30 @@ Radix Themes releases and their changelogs.
     - **[Upgrade guide]** If you were relying on how `Callout.Root` happened to provide flex properties, change your layout to use a `Flex` component explicitly.
   - Fix an issue when the callout would inherit text color unless an explicit `color` prop was passed.
     - **[Upgrade guide]** If you preferred the previous look, pass `highContrast` prop to your callouts to make the text darker.
-  - Use a gray background for a gray `variant="surface"`
-  - Use a darker outline color `variant="outline"`
+  - Use a gray background for a gray `variant="surface"`.
+  - Use a darker outline color `variant="outline"`.
 - `Checkbox`
   - **[Breaking]** Improve layout so that wrapping a checkbox in `Text` component automatically aligns the checkbox with the first line of the text.
     - **[Upgrade guide]** Make sure that your layouts with checkboxes look as expected. If not, wrap your checkboxes in `<Text as="label" size="...">`, using your preferred text size.
   - **[Breaking]** Rework sizes – add a smaller `size="1"`, change the default size to `size="2"`, add a more refined `size="3"`
     - **[Upgrade guide]** If you were using `size="1"` or `size="2"` checkboxes via an explicit `size` prop, rename them to `size="2"` and `size="3"` respectively.
-  - Refine the look and feel of `variant="classic"`
+  - Refine the look and feel of `variant="classic"`.
   - Refine and normalise the look and feel of the disabled states.
 - `Card`
   - Update the `variant="classic"` shadow so that it doesn’t extend outside of the element.
-  - Refine hover and pressed styles for `variant="classic"`
+  - Refine hover and pressed styles for `variant="classic"`.
   - Add missing pressed styles.
   - Refine how the inner shadows are applied so that they blend with the background outside of the component.
 - `Code`
-  - Add interactive styles when `Code` is within `Link`
+  - Add interactive styles when `Code` is within `Link`.
   - Fix an issue when `variant="ghost"` font size would be inconsistent depending on whether the size was based on a parent `Text` element or came from the code’s own `size` prop.
-  - Scale the outline thickness relative to the font size for `variant="outline"` and `variant="surface"`
-  - Improve `::selection` background color for `variant="solid"`
+  - Scale the outline thickness relative to the font size for `variant="outline"` and `variant="surface"`.
+  - Improve `::selection` background color for `variant="solid"`.
   - Add CSS variables to `.radix-themes` for customising the padding of `Code` variants in case the default values don’t work well with the vertical metrics of custom code font.
     - `--code-padding-top`
     - `--code-padding-bottom`
 - `DropdownMenu`, `ContextMenu`
-  - Reduce border radius when theme setting is `radius="full"`
+  - Reduce border radius when theme setting is `radius="full"`.
   - Refine horizontal paddings.
   - Refine label look and feel.
 - `Grid`
@@ -143,21 +143,21 @@ Radix Themes releases and their changelogs.
 - `Link`
   - Desaturate the underline color.
   - Make links automatically high-contrast within colored `Heading` elements (similarly to the automatic high-contrast within `Text`).
-  - Scale the underline thickness relative to the font size for `variant="outline"` and `variant="surface"`
+  - Scale the underline thickness relative to the font size for `variant="outline"` and `variant="surface"`.
 - `RadioGroup`
   - **[Breaking]** Improve layout so that wrapping a radiobutton in `Text` component automatically aligns the radiobutton with the first line of the text.
     - **[Upgrade guide]** Make sure that your layouts with radio buttons look as expected. If not, wrap your radio buttons in `<Text as="label" size="...">`, using your preferred text size.
-  - **[Breaking]** Rework sizes – add a smaller `size="1"`, change the default size to `size="2"`, add a more refined `size="3"`
+  - **[Breaking]** Rework sizes – add a smaller `size="1"`, change the default size to `size="2"`, add a more refined `size="3"`.
     - **[Upgrade guide]** If you were using `size="1"` or `size="2"` radio buttons via an explicit `size` prop, rename them to `size="2"` and `size="3"` respectively.
-  - Refine the look and feel of `variant="classic"`
+  - Refine the look and feel of `variant="classic"`.
   - Refine and normalise the look and feel of the disabled states.
 - `Select`
   - Fix invisible scrollbar in long item lists.
   - Improve `variant="classic"` look and feel across light and dark mode.
-  - Align `SelectContent` to the left of the trigger when using `position="popper"`
+  - Align `SelectContent` to the left of the trigger when using `position="popper"`.
   - Refine horizontal paddings.
   - Refine label look and feel.
-  - Rework `size="3"`
+  - Rework `size="3"`.
 - `ScrollArea`
   - Upgrade the primitive version, fixing an upstream type issue.
   - Rename scrollbar margin variables to include the scrollbar orientation and declare them on `.radix-themes` to facilitate easier scrollbar position adjustments.
@@ -217,7 +217,7 @@ Radix Themes releases and their changelogs.
   - Disable transitions when changing the appearance.
   - Improve contrast in the border radius preview.
 - `Tooltip`
-  - Reduce border radius when theme setting is `radius="full"`
+  - Reduce border radius when theme setting is `radius="full"`.
   - **[Breaking]** Remove `multiline` prop.
     - **[Upgrade guide]** If you were using `multiline` prop, pass `style={{ maxWidth: 250 }}` to the relevant Tooltip elements.
 
