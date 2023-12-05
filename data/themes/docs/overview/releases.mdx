@@ -11,7 +11,7 @@ Radix Themes releases and their changelogs.
 
 <Note>December 5, 2023</Note>
 
-- Fix an issue when Chrome would sometimes crash while using CSS inspector on a Radix Themes stylesheet
+- Fix an issue when Chrome would sometimes crash while using CSS inspector on a Radix Themes stylesheet.
 
 ## 2.0.1
 
@@ -19,13 +19,13 @@ Radix Themes releases and their changelogs.
 
 - `Card`
   - Fix an issue when `variant="surface"` border color may disappear in browsers that don't support `color-mix`
-  - Tweak `variant="surface"` border color
+  - Tweak `variant="surface"` border color.
 - `Code`
   - When `variant="ghost"` is used within a `Link`, make sure that `underline="hover"` on the `Link` is respected.
 - `TextField`
-  - Improve vertical text alignment with common fonts
-  - Don’t apply the autofill accent color when the input is disabled
-  - Make sure the autofill accent color always pairs with the focus outline color
+  - Improve vertical text alignment with common fonts.
+  - Don’t apply the autofill accent color when the input is disabled.
+  - Make sure the autofill accent color always pairs with the focus outline color.
 
 ## 2.0.0
 
@@ -78,10 +78,10 @@ Radix Themes releases and their changelogs.
   - Rename all `@keyframes` animations with `rt-` prefix and into kebab case.
   - Use `outline` rather than `box-shadow` for most focus styles, which avoids a slight anti-aliasing issue in Chrome on focused elements.
 - `AlertDialog`, `Dialog`
-  - Add padding around dialog content to prevent it from touching the viewport edges
-  - Make sure that the dialog content doesn’t overflow viewport on iOS
+  - Add padding around dialog content to prevent it from touching the viewport edges.
+  - Make sure that the dialog content doesn’t overflow viewport on iOS.
 - `Avatar`
-  - Don’t enforce fallback icon size
+  - Don’t enforce fallback icon size.
     - **[Upgrade guide]** If you were using `svg` assets as a fallback, make sure to set an appropriate size manually.
   - Add CSS variables to control the cursor style on interactive elements:
     - `--cursor-button: default;`
@@ -93,11 +93,11 @@ Radix Themes releases and their changelogs.
     - `--cursor-slider-thumb: default;`
     - `--cursor-slider-thumb-active: default;`
     - `--cursor-switch: default;`
-  - Replace `.rt-reset-button` and `.rt-reset-a` classes with a single `.rt-reset` class
+  - Replace `.rt-reset-button` and `.rt-reset-a` classes with a single `.rt-reset` class.
     - The new `.rt-reset` class can be use to reset `a`, `button`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `ol`, `ul`, `p`, and `pre` tags when building custom components.
     - **[Upgrade guide]** If you were using these classes for your custom components, update the class name used.
 - `Blockquote`
-  - **[Breaking]** Remove `trim` prop
+  - **[Breaking]** Remove `trim` prop.
 - `Button`, `IconButton`
   - Refine and normalise the look and feel of the disabled states.
   - Apply disabled styles to other elements when using `disabled` together with `asChild`
@@ -114,7 +114,7 @@ Radix Themes releases and their changelogs.
     - **[Upgrade guide]** Make sure that your layouts with checkboxes look as expected. If not, wrap your checkboxes in `<Text as="label" size="...">`, using your preferred text size.
   - **[Breaking]** Rework sizes – add a smaller `size="1"`, change the default size to `size="2"`, add a more refined `size="3"`
     - **[Upgrade guide]** If you were using `size="1"` or `size="2"` checkboxes via an explicit `size` prop, rename them to `size="2"` and `size="3"` respectively.
-  - Refine the look and feel of `variant="classic"`.
+  - Refine the look and feel of `variant="classic"`
   - Refine and normalise the look and feel of the disabled states.
 - `Card`
   - Update the `variant="classic"` shadow so that it doesn’t extend outside of the element.
@@ -123,7 +123,7 @@ Radix Themes releases and their changelogs.
   - Refine how the inner shadows are applied so that they blend with the background outside of the component.
 - `Code`
   - Add interactive styles when `Code` is within `Link`
-  - Fix an issue when `variant="ghost"` font size would be inconsistent depending on whether the size was based on a parent `Text` element or came from the code’s own `size` prop
+  - Fix an issue when `variant="ghost"` font size would be inconsistent depending on whether the size was based on a parent `Text` element or came from the code’s own `size` prop.
   - Scale the outline thickness relative to the font size for `variant="outline"` and `variant="surface"`
   - Improve `::selection` background color for `variant="solid"`
   - Add CSS variables to `.radix-themes` for customising the padding of `Code` variants in case the default values don’t work well with the vertical metrics of custom code font.
@@ -131,15 +131,15 @@ Radix Themes releases and their changelogs.
     - `--code-padding-bottom`
 - `DropdownMenu`, `ContextMenu`
   - Reduce border radius when theme setting is `radius="full"`
-  - Refine horizontal paddings
-  - Refine label look and feel
+  - Refine horizontal paddings.
+  - Refine label look and feel.
 - `Grid`
   - Fix a bug when nesting `Grid` components could cause the descendant `Grid`’s to inherit some parent styles unintentionally.
 - `Inset`
   - Add `clip` prop to control whether content is clipped to the padding or to the border of the parent element.
   - Automatically adjust table cell padding for when `Table` is inside `Inset`
 - `Kbd`
-  - Tweak vertical alignment
+  - Tweak vertical alignment.
 - `Link`
   - Desaturate the underline color.
   - Make links automatically high-contrast within colored `Heading` elements (similarly to the automatic high-contrast within `Text`).
@@ -149,18 +149,18 @@ Radix Themes releases and their changelogs.
     - **[Upgrade guide]** Make sure that your layouts with radio buttons look as expected. If not, wrap your radio buttons in `<Text as="label" size="...">`, using your preferred text size.
   - **[Breaking]** Rework sizes – add a smaller `size="1"`, change the default size to `size="2"`, add a more refined `size="3"`
     - **[Upgrade guide]** If you were using `size="1"` or `size="2"` radio buttons via an explicit `size` prop, rename them to `size="2"` and `size="3"` respectively.
-  - Refine the look and feel of `variant="classic"`.
+  - Refine the look and feel of `variant="classic"`
   - Refine and normalise the look and feel of the disabled states.
 - `Select`
-  - Fix invisible scrollbar in long item lists
+  - Fix invisible scrollbar in long item lists.
   - Improve `variant="classic"` look and feel across light and dark mode.
   - Align `SelectContent` to the left of the trigger when using `position="popper"`
-  - Refine horizontal paddings
-  - Refine label look and feel
+  - Refine horizontal paddings.
+  - Refine label look and feel.
   - Rework `size="3"`
 - `ScrollArea`
-  - Upgrade the primitive version, fixing an upstream type issue
-  - Rename scrollbar margin variables to include the scrollbar orientation and declare them on `.radix-themes` to facilitate easier scrollbar position adjustments
+  - Upgrade the primitive version, fixing an upstream type issue.
+  - Rename scrollbar margin variables to include the scrollbar orientation and declare them on `.radix-themes` to facilitate easier scrollbar position adjustments.
     - **[Upgrade guide]** If you were using the variables `--scrollarea-scrollbar-margin-top`, `--scrollarea-scrollbar-margin-left`, etc. make sure that they follow the new names and are set at the appropriate level. There's no need to target `.rt-ScrollAreaScrollbar` element to set the variables anymore, as they can be set just on the component that needs the override. New variables:
       - `--scrollarea-scrollbar-horizontal-margin-top`
       - `--scrollarea-scrollbar-horizontal-margin-bottom`
@@ -190,8 +190,8 @@ Radix Themes releases and their changelogs.
     - `--tabs-trigger-inactive-letter-spacing`
     - `--tabs-trigger-inactive-word-spacing`
 - `Text`
-  - Add `as="label"` option to the `as` prop
-  - Improve how prop types are resolved when `as` prop isn’t specified
+  - Add `as="label"` option to the `as` prop.
+  - Improve how prop types are resolved when `as` prop isn’t specified.
 - `TextArea`
   - Rework the internal implementation, now using multiple HTML nodes for styling purposes.
     - Adjust the layout styles so that `TextArea` behaves like a true `display: block` element, filling the available space horizontally.
@@ -218,7 +218,7 @@ Radix Themes releases and their changelogs.
   - Improve contrast in the border radius preview.
 - `Tooltip`
   - Reduce border radius when theme setting is `radius="full"`
-  - **[Breaking]** Remove `multiline` prop
+  - **[Breaking]** Remove `multiline` prop.
     - **[Upgrade guide]** If you were using `multiline` prop, pass `style={{ maxWidth: 250 }}` to the relevant Tooltip elements.
 
 ## 1.1.2
@@ -236,7 +236,7 @@ Radix Themes releases and their changelogs.
   version](https://radix-website-a4l61k3zl-workos.vercel.app/themes/docs)
 </Box>
 
-- Export prop types for all components, resolving type errors with certain setups
+- Export prop types for all components, resolving type errors with certain setups.
 
 ## 1.1.0
 
@@ -248,8 +248,8 @@ Radix Themes releases and their changelogs.
 </Box>
 
 - Three new color scales: `ruby`, `iris`, and `jade`
-- Set explicit versions of the Radix Primitives dependencies to allow stable builds
-- Use an explicit `React.FC` type for `ContextMenuSub`, `DialogRoot`, `HoverCardRoot`, and `PopoverRoot`, resolving a type error with certain setups
+- Set explicit versions of the Radix Primitives dependencies to allow stable builds.
+- Use an explicit `React.FC` type for `ContextMenuSub`, `DialogRoot`, `HoverCardRoot`, and `PopoverRoot`, resolving a type error with certain setups.
 
 ## 1.0.0
 
