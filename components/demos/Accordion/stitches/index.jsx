@@ -79,7 +79,6 @@ const StyledHeader = styled(Accordion.Header, {
 const StyledTrigger = styled(Accordion.Trigger, {
   all: 'unset',
   fontFamily: 'inherit',
-  backgroundColor: 'transparent',
   padding: '0 20px',
   height: 45,
   flex: 1,
