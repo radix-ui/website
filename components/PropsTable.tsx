@@ -9,6 +9,8 @@ import {
   Flex,
   Inset,
   ScrollArea,
+  Heading,
+  Grid,
 } from '@radix-ui/themes';
 import { InfoCircledIcon, DividerHorizontalIcon } from '@radix-ui/react-icons';
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
@@ -29,6 +31,54 @@ export function PropsTable({
   data: PropDef[];
   propHeaderFixedWidth?: boolean;
 }) {
+  return (
+    <>
+      {data.map(({ name, type, typeSimple, required, default: defaultValue, description }, i) => {
+        return (
+          <React.Fragment key={i}>
+            <Heading as="h3" size="4">
+              <Code>{name}</Code>
+            </Heading>
+            <Flex asChild direction="column" gap="3" style={{ listStyle: 'none', padding: 0 }}>
+              <ul>
+                {required ? (
+                  <Grid asChild gap="5" columns="80px 1fr">
+                    <li>
+                      <Text weight="medium" size="2">
+                        Required
+                      </Text>
+                      <Text>Yes</Text>
+                    </li>
+                  </Grid>
+                ) : null}
+                {description && (
+                  <Grid asChild gap="5" columns="80px 1fr">
+                    <li>
+                      <Text weight="medium" size="2">
+                        Description
+                      </Text>
+                      <Text>{description}</Text>
+                    </li>
+                  </Grid>
+                )}
+                <Grid asChild gap="5" columns="80px 1fr">
+                  <li>
+                    <Text weight="medium" size="2">
+                      Type
+                    </Text>
+                    <Box>
+                      <Code color="gray">{type ?? typeSimple}</Code>
+                    </Box>
+                  </li>
+                </Grid>
+              </ul>
+            </Flex>
+          </React.Fragment>
+        );
+      })}
+    </>
+  );
+
   return (
     <Box my="5" asChild>
       <Table.Root variant="surface">
