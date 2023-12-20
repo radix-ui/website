@@ -1,0 +1,15 @@
+.ColorsHomeGrid {
+  display: grid;
+  gap: 4px;
+  align-items: center;
+  grid-template-columns: minmax(64px, 1fr) repeat(12, minmax(0px, 1fr));
+  white-space: nowrap;
+  min-width: 880px;
+}
+
+@media (min-width: 1440px) {
+  .ColorsHomeGrid {
+    width: calc(100% + 95px);
+    margin-left: -95px;
+  }
+}

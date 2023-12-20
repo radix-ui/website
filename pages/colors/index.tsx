@@ -1,3 +1,4 @@
+import { flushSync } from 'react-dom';
 import React from 'react';
 import NextLink from 'next/link';
 import {
@@ -10,6 +11,8 @@ import {
   Separator,
   Flex,
   ScrollArea,
+  Button,
+  radixColorScales,
 } from '@radix-ui/themes';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { Footer } from '@components/Footer';
@@ -28,6 +31,7 @@ import {
 } from '@radix-ui/react-icons';
 import { Swatch } from '@components/Swatch';
 import Head from 'next/head';
+import styles from './index.module.css';
 
 export default function ColorsHome() {
   return (
@@ -76,10 +80,10 @@ export default function ColorsHome() {
               </Text>
             </Box>
 
-            <NextLink href="/colors/docs/overview/installation" passHref legacyBehavior>
+            <Flex gap="4">
               <ColorsMarketingButton asChild size={{ initial: '3', xs: '4' }}>
-                <a>
-                  Get started
+                <NextLink href="/colors/docs/overview/installation">
+                  Go to docs
                   <svg
                     width="14"
                     height="14"
@@ -90,9 +94,10 @@ export default function ColorsHome() {
                   >
                     <path d="M6.39205 11.6023L5.36932 10.5909L8.92045 7.03977H0V5.5625H8.92045L5.36932 2.01705L6.39205 1L11.6932 6.30114L6.39205 11.6023Z" />
                   </svg>
-                </a>
+                </NextLink>
               </ColorsMarketingButton>
-            </NextLink>
+              <RandomColorButton />
+            </Flex>
           </Container>
         </Section>
       </Box>
@@ -100,12 +105,7 @@ export default function ColorsHome() {
       <ScrollArea mb="-4">
         <Box mx={{ initial: '5', xs: '6', sm: '7', md: '9' }} mb="4">
           <Container style={{ whiteSpace: 'nowrap', minWidth: 880 }}>
-            <Grid
-              gap="1"
-              align="center"
-              columns="minmax(64px, 1fr) repeat(12, minmax(0px, 1fr))"
-              style={{ whiteSpace: 'nowrap', minWidth: 880 }}
-            >
+            <div className={styles.ColorsHomeGrid}>
               <Box />
               <UsageRange style={{ gridColumn: '2 / 4' }}>Backgrounds</UsageRange>
               <UsageRange style={{ gridColumn: '4 / 7' }}>Interactive components</UsageRange>
@@ -164,64 +164,37 @@ export default function ColorsHome() {
                   <Text color="gray" size="2">
                     {scale.charAt(0).toUpperCase() + scale.slice(1)}
                   </Text>
-                  <Swatch scale={scale} step="1" />
-                  <Swatch scale={scale} step="2" />
-                  <Swatch scale={scale} step="3" />
-                  <Swatch scale={scale} step="4" />
-                  <Swatch scale={scale} step="5" />
-                  <Swatch scale={scale} step="6" />
-                  <Swatch scale={scale} step="7" />
-                  <Swatch scale={scale} step="8" />
-                  <Swatch scale={scale} step="9" />
-                  <Swatch scale={scale} step="10" />
-                  <Swatch scale={scale} step="11" />
-                  <Swatch scale={scale} step="12" />
+                  {Array.from({ length: 12 }, (_, i) => i + 1).map((step) => (
+                    <Swatch key={step} scale={scale} step={step.toString()} />
+                  ))}
                 </React.Fragment>
               ))}
-            </Grid>
+            </div>
 
             <Box height="6" />
 
-            <Grid gap="1" align="center" columns="minmax(64px, 1fr) repeat(12, minmax(0px, 1fr))">
+            <div className={styles.ColorsHomeGrid}>
               <Box />
               <UsageRange style={{ gridColumn: '2 / -1' }}>
                 Shadows, highlights, and overlays
               </UsageRange>
 
               <Box />
-              <StepLabel>1</StepLabel>
-              <StepLabel>2</StepLabel>
-              <StepLabel>3</StepLabel>
-              <StepLabel>4</StepLabel>
-              <StepLabel>5</StepLabel>
-              <StepLabel>6</StepLabel>
-              <StepLabel>7</StepLabel>
-              <StepLabel>8</StepLabel>
-              <StepLabel>9</StepLabel>
-              <StepLabel>10</StepLabel>
-              <StepLabel>11</StepLabel>
-              <StepLabel>12</StepLabel>
+              {Array.from({ length: 12 }, (_, i) => i + 1).map((step) => (
+                <StepLabel>{step}</StepLabel>
+              ))}
 
               {['black', 'white'].map((scale) => (
                 <React.Fragment key={scale}>
                   <Text color="gray" size="2">
                     {scale.charAt(0).toUpperCase() + scale.slice(1)}
                   </Text>
-                  <Swatch scale={scale} step="1" />
-                  <Swatch scale={scale} step="2" />
-                  <Swatch scale={scale} step="3" />
-                  <Swatch scale={scale} step="4" />
-                  <Swatch scale={scale} step="5" />
-                  <Swatch scale={scale} step="6" />
-                  <Swatch scale={scale} step="7" />
-                  <Swatch scale={scale} step="8" />
-                  <Swatch scale={scale} step="9" />
-                  <Swatch scale={scale} step="10" />
-                  <Swatch scale={scale} step="11" />
-                  <Swatch scale={scale} step="12" />
+                  {Array.from({ length: 12 }, (_, i) => i + 1).map((step) => (
+                    <Swatch key={step} scale={scale} step={step.toString()} />
+                  ))}
                 </React.Fragment>
               ))}
-            </Grid>
+            </div>
           </Container>
         </Box>
       </ScrollArea>
@@ -339,3 +312,46 @@ const UsageRange = ({ children, ...props }: React.ComponentPropsWithoutRef<typeo
     />
   </Flex>
 );
+
+type RandomColor = typeof radixColorScales[number] | 'gray';
+
+const RandomColorButton = () => {
+  const [color, setColor] = React.useState<RandomColor>('gray');
+  const [prevColor, setPrevColor] = React.useState<RandomColor>('gray');
+
+  return (
+    <Button
+      highContrast
+      onPointerOver={() => {
+        const nextColor = getNextColor(prevColor);
+        flushSync(() => setColor(nextColor));
+        setPrevColor(nextColor);
+      }}
+      onPointerOut={() => flushSync(() => setColor('gray'))}
+      variant="soft"
+      color={color}
+      size={{ initial: '3', xs: '4' }}
+      asChild
+    >
+      <NextLink href="/colors/new">Create your colors</NextLink>
+    </Button>
+  );
+};
+
+/** Retrieve a new random color that would be somewhat far away from the current one */
+const getNextColor = (currentColor: RandomColor) => {
+  let candidate = currentColor;
+  const baseIndex = currentColor === 'gray' ? 100 : radixColorScales.indexOf(currentColor);
+
+  do {
+    candidate = getRandomColor();
+    console.log(candidate);
+  } while (
+    ['brown', 'gold', 'bronze'].includes(candidate) ||
+    Math.abs(radixColorScales.indexOf(candidate) - baseIndex) < 4
+  );
+
+  return candidate;
+};
+
+const getRandomColor = () => radixColorScales[Math.floor(Math.random() * radixColorScales.length)];
