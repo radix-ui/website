@@ -1135,7 +1135,7 @@ const itemsContent = {
   a: (
     <span>
       Respond to comment{' '}
-      <Link tabIndex={-1} onClick={(event) => event.preventDefault()}>
+      <Link underline="hover" tabIndex={-1} onClick={(event) => event.preventDefault()}>
         #384
       </Link>{' '}
       from Travis Ross
@@ -1144,7 +1144,7 @@ const itemsContent = {
   b: (
     <span>
       Invite{' '}
-      <Link tabIndex={-1} onClick={(event) => event.preventDefault()}>
+      <Link underline="hover" tabIndex={-1} onClick={(event) => event.preventDefault()}>
         Acme Co.
       </Link>{' '}
       team to Slack
@@ -1153,7 +1153,7 @@ const itemsContent = {
   c: (
     <span>
       Create a report{' '}
-      <Link tabIndex={-1} onClick={(event) => event.preventDefault()}>
+      <Link underline="hover" tabIndex={-1} onClick={(event) => event.preventDefault()}>
         requested
       </Link>{' '}
       by Danilo Sousa
@@ -1162,7 +1162,7 @@ const itemsContent = {
   d: (
     <span>
       Review support request{' '}
-      <Link tabIndex={-1} onClick={(event) => event.preventDefault()}>
+      <Link underline="hover" tabIndex={-1} onClick={(event) => event.preventDefault()}>
         #85
       </Link>
     </span>
@@ -1171,7 +1171,7 @@ const itemsContent = {
   f: (
     <span>
       Review invoice{' '}
-      <Link tabIndex={-1} onClick={(event) => event.preventDefault()}>
+      <Link underline="hover" tabIndex={-1} onClick={(event) => event.preventDefault()}>
         #3456
       </Link>
     </span>
@@ -1182,18 +1182,7 @@ const ToDoList = ({ items, onItemsChange }: ToDoList) => {
   return (
     <Flex gap="2" direction="column">
       {items.map((item) => (
-        <Text
-          as="label"
-          size="2"
-          key={item.id}
-          color={item.completed ? 'gray' : undefined}
-          style={
-            {
-              textDecoration: item.completed ? 'line-through' : undefined,
-              '--accent-12': 'var(--accent-11)',
-            } as React.CSSProperties
-          }
-        >
+        <Text as="label" size="2" key={item.id}>
           <Flex gap="2">
             <Checkbox
               tabIndex={-1}
@@ -1205,7 +1194,17 @@ const ToDoList = ({ items, onItemsChange }: ToDoList) => {
                 onItemsChange(newItems);
               }}
             />
-            <Text>{itemsContent[item.id]}</Text>
+            <Text
+              color={item.completed ? 'gray' : undefined}
+              style={
+                {
+                  textDecoration: item.completed ? 'line-through' : undefined,
+                  '--accent-12': 'var(--accent-11)',
+                } as React.CSSProperties
+              }
+            >
+              {itemsContent[item.id]}
+            </Text>
           </Flex>
         </Text>
       ))}
