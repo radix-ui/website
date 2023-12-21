@@ -1211,15 +1211,15 @@ export default function ComponentsPage() {
 
                     <Card size="4" style={{ width: 400 }}>
                       <Heading as="h3" size="6" trim="start" mb="5">
-                        Sign up
+                        Sign in
                       </Heading>
 
                       <Box mb="5">
                         <label>
                           <Text as="div" size="2" weight="medium" mb="2">
-                            Email address
+                            Email
                           </Text>
-                          <TextFieldInput placeholder="Enter your email" />
+                          <TextFieldInput placeholder="Enter your email address" />
                         </label>
                       </Box>
 

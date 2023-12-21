@@ -1,59 +1,98 @@
-import { AvatarIconFallback } from '@components/AvatarIconFallback';
-import { ColorField } from '@components/ColorField';
 import { ColorsHeader } from '@components/ColorsHeader';
 import { ColorsMobileMenu } from '@components/ColorsMobileMenu';
-import { DocsNav } from '@components/DocsNav';
-import { DocsPageWrapper } from '@components/DocsPageWrapper';
-import { DocsPagination } from '@components/DocsPagination';
-import { EditPageLink } from '@components/EditPageLink';
-import { ExampleThemesDashboard } from '@components/ExampleThemesDashboard';
 import { MobileMenuProvider } from '@components/MobileMenu';
-import { SideNav } from '@components/SideNav';
 import { Swatch } from '@components/Swatch';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { allColorsRoutes, colorsRoutes } from '@lib/colorsRoutes';
-import { getPeopleForColor } from '@lib/people';
-import { ArrowRightIcon, InfoCircledIcon, MagnifyingGlassIcon } from '@radix-ui/react-icons';
+import {
+  BoxIcon,
+  GridIcon,
+  InfoCircledIcon,
+  MagnifyingGlassIcon,
+  TextIcon,
+  ImageIcon,
+  PlusIcon,
+  FrameIcon,
+  CubeIcon,
+  CrumpledPaperIcon,
+  ScissorsIcon,
+  Component1Icon,
+  TokensIcon,
+  FontFamilyIcon,
+  LightningBoltIcon,
+  ChevronDownIcon,
+  StarIcon,
+  AccessibilityIcon,
+  BookmarkIcon,
+  HeartIcon,
+  Share2Icon,
+  GitHubLogoIcon,
+} from '@radix-ui/react-icons';
 import {
   Avatar,
   Badge,
+  Blockquote,
   Box,
   Button,
   CalloutIcon,
   CalloutRoot,
   CalloutText,
   Card,
+  Checkbox,
   Container,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuRoot,
+  DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
   Flex,
   Grid,
   Heading,
+  HoverCardContent,
+  HoverCardRoot,
+  HoverCardTrigger,
   IconButton,
+  Inset,
   Link,
   Section,
-  Select,
-  SelectRoot,
   Separator,
+  Strong,
+  Switch,
+  TabsList,
+  TabsRoot,
+  TabsTrigger,
   Text,
-  TextField,
   TextFieldInput,
   TextFieldRoot,
   TextFieldSlot,
   Theme,
-  avatarPropDefs,
-  badgePropDefs,
-  buttonPropDefs,
-  calloutRootPropDefs,
-  cardPropDefs,
-  textFieldPropDefs,
+  Tooltip,
 } from '@radix-ui/themes';
-import Head from 'next/head';
 import * as React from 'react';
+import styles from './new.module.css';
+import { getPeopleForColor } from '@lib/people';
+import { ThemesPanelBackgroundImage } from '@components/ThemesPanelBackgroundImage';
+import { AvatarIconFallback } from '@components/AvatarIconFallback';
+import { StepLabel, UsageRange } from './index';
 
 const colors = [undefined, 'gray'] as const;
 const highContrast = [undefined, true] as const;
 
 export default function ColorsNew() {
   const accent = 'indigo';
+
+  const [state, setState] = React.useState({
+    todo: [
+      { id: 'a', completed: false },
+      { id: 'b', completed: false },
+      { id: 'c', completed: false },
+      { id: 'd', completed: true },
+      { id: 'e', completed: true },
+    ],
+  });
 
   return (
     <MobileMenuProvider>
@@ -67,34 +106,35 @@ export default function ColorsNew() {
         image="colors.png"
       />
 
-      {/* <SideNav borderRight>
-          <Theme asChild accentColor="gray">
-            <Box pt="5" px="5" pb="9">
-              <Flex direction="column" gap="5">
-
-
-                <Flex direction="column">
-                  <Label htmlFor="key-color">Key color</Label>
-                  <ColorField defaultValue="#3D63DD" id="key-color" />
-                </Flex>
-
-                <Flex direction="column">
-                  <Label htmlFor="bg-color">Page background</Label>
-                  <ColorField defaultValue="#FFFFFF" id="bg-color" />
-                </Flex>
-
-                <Button highContrast>Save</Button>
-              </Flex>
-            </Box>
-          </Theme>
-        </SideNav> */}
-
-      <Theme asChild accentColor={accent} className="radix-themes-default-fonts">
+      <Theme
+        asChild
+        accentColor={accent}
+        grayColor="slate"
+        className="radix-themes-default-fonts"
+        panelBackground="solid"
+      >
         <Section px={{ initial: '5', xs: '6', sm: '7', md: '9' }} size={{ initial: '2', md: '3' }}>
           <Container>
-            <Heading mb="5">Scales</Heading>
-
             <Grid columns="12" gap="1" mb="1">
+              <UsageRange style={{ gridColumn: '1 / 3' }}>Backgrounds</UsageRange>
+              <UsageRange style={{ gridColumn: '3 / 6' }}>Interactive components</UsageRange>
+              <UsageRange style={{ gridColumn: '6 / 9' }}>Borders and separators</UsageRange>
+              <UsageRange style={{ gridColumn: '9 / 11' }}>Solid colors</UsageRange>
+              <UsageRange style={{ gridColumn: '11 / 13' }}>Accessible text</UsageRange>
+
+              <StepLabel>1</StepLabel>
+              <StepLabel>2</StepLabel>
+              <StepLabel>3</StepLabel>
+              <StepLabel>4</StepLabel>
+              <StepLabel>5</StepLabel>
+              <StepLabel>6</StepLabel>
+              <StepLabel>7</StepLabel>
+              <StepLabel>8</StepLabel>
+              <StepLabel>9</StepLabel>
+              <StepLabel>10</StepLabel>
+              <StepLabel>11</StepLabel>
+              <StepLabel>12</StepLabel>
+
               {Array.from({ length: 12 }, (_, i) => i + 1).map((step) => (
                 <Swatch key={step} scale="indigo" step={step.toString()} />
               ))}
@@ -106,87 +146,109 @@ export default function ColorsNew() {
               ))}
             </Grid>
 
-            <Heading mb="5">Components</Heading>
+            {/* <Heading as="h2" weight="medium" size="2" mb="5">
+              Example UI
+            </Heading> */}
 
-            <Flex align="start" gap="6">
-              <Grid gap="6" columns="min-content">
-                {/* * * * * * * * * * * * * * * * * Button * * * * * * * * * * * * * * * * */}
-                <Grid gap="4" columns="repeat(5, auto)">
-                  {buttonPropDefs.variant.values.map((variant, i) => (
-                    <React.Fragment key={i}>
-                      {colors.map((color, ii) =>
-                        highContrast.map((highContrast, iii) => (
-                          <Flex key={i + ii + iii} justify="center">
-                            <Button color={color} variant={variant} highContrast={highContrast}>
-                              Next <ArrowRightIcon width="16" height="16" />
-                            </Button>
-                          </Flex>
-                        ))
-                      )}
-
-                      <Flex justify="center">
-                        <Button disabled color="gray" variant={variant}>
-                          Next <ArrowRightIcon width="16" height="16" />
-                        </Button>
-                      </Flex>
-                    </React.Fragment>
-                  ))}
-                </Grid>
-
-                <Grid gap="6" columns="2">
-                  {/* * * * * * * * * * * * * * * * TextField * * * * * * * * * * * * * * * */}
-                  <Grid gap="4">
-                    {textFieldPropDefs.variant.values.map((variant, i) => (
-                      <TextFieldRoot key={i} variant={variant}>
-                        <TextFieldSlot>
-                          <MagnifyingGlassIcon width="16" height="16" />
-                        </TextFieldSlot>
-                        <TextFieldInput placeholder="Search" />
-                        <TextFieldSlot>
-                          <IconButton variant="ghost" color="gray" size="1">
-                            <InfoCircledIcon />
-                          </IconButton>
-                        </TextFieldSlot>
-                      </TextFieldRoot>
-                    ))}
-
-                    <TextFieldRoot variant="soft" color="gray">
+            <Grid columns="320px 1fr 320px" gap="6">
+              <Flex gap="5" direction="column">
+                <Flex gap="2">
+                  <Box grow="1" shrink="0">
+                    <TextFieldRoot>
                       <TextFieldSlot>
-                        <MagnifyingGlassIcon width="16" height="16" />
+                        <MagnifyingGlassIcon />
                       </TextFieldSlot>
-                      <TextFieldInput placeholder="Search" />
-                      <TextFieldSlot>
-                        <IconButton variant="ghost" color="gray" size="1">
-                          <InfoCircledIcon />
-                        </IconButton>
-                      </TextFieldSlot>
+                      <TextFieldInput placeholder="Search" type="text" name="_" />
                     </TextFieldRoot>
-                  </Grid>
+                  </Box>
+                  <Button size="2">Submit</Button>
+                </Flex>
 
-                  <Box></Box>
-                </Grid>
-              </Grid>
+                <CalloutRoot>
+                  <CalloutIcon>
+                    <InfoCircledIcon />
+                  </CalloutIcon>
+                  <CalloutText>Please upgrade to the new version.</CalloutText>
+                </CalloutRoot>
 
-              {/* * * * * * * * * * * * * * * * * Callout * * * * * * * * * * * * * * * * */}
-              <Flex direction="column" justify="between" gap="4">
-                {colors.map((color, i) =>
-                  calloutRootPropDefs.variant.values.map((variant, ii) => (
-                    <CalloutRoot key={i + ii} color={color} variant={variant}>
-                      <CalloutIcon>
-                        <InfoCircledIcon width="16" height="16" />
-                      </CalloutIcon>
-                      <CalloutText>
-                        Please <Link href="#">upgrade</Link> to the new version.
-                      </CalloutText>
-                    </CalloutRoot>
-                  ))
-                )}
-              </Flex>
+                <LayersRoot>
+                  <LayersItem data-active>
+                    <Flex align="center" justify="center" width="4" height="4">
+                      <BoxIcon />
+                    </Flex>
+                    <Text size="1">Box</Text>
+                  </LayersItem>
+                  <LayersItem>
+                    <Flex align="center" justify="center" width="4" height="4">
+                      <GridIcon />
+                    </Flex>
+                    <Text size="1">Grid</Text>
+                  </LayersItem>
+                  <LayersItem data-indent="1">
+                    <Flex align="center" justify="center" width="4" height="4">
+                      <ImageIcon />
+                    </Flex>
+                    <Text size="1">Image</Text>
+                  </LayersItem>
+                  <LayersItem data-indent="1">
+                    <Flex align="center" justify="center" width="4" height="4">
+                      <ImageIcon />
+                    </Flex>
+                    <Text size="1">Image</Text>
+                  </LayersItem>
+                  <LayersItem data-indent="1">
+                    <Flex align="center" justify="center" width="4" height="4">
+                      <TextIcon />
+                    </Flex>
+                    <Text size="1">Text</Text>
+                  </LayersItem>
+                </LayersRoot>
 
-              <Flex direction="column" justify="between" gap="4">
-                {['classic', 'surface'].map((variant, ii) => (
-                  <Card asChild variant={variant} size="2" mr="2">
-                    <a href="#card">
+                <Flex gap="1" justify="between">
+                  <Badge radius="full" variant="soft">
+                    New feature
+                  </Badge>
+                  <Badge radius="full" variant="surface">
+                    New feature
+                  </Badge>
+                  <Badge radius="full" variant="outline">
+                    New feature
+                  </Badge>
+                </Flex>
+
+                <Flex align="center" gap="1" justify="between">
+                  <IconButton variant="classic">
+                    <Flex align="center" justify="center" width="4" height="4">
+                      <StarIcon />
+                    </Flex>
+                  </IconButton>
+                  <IconButton variant="solid">
+                    <Flex align="center" justify="center" width="4" height="4">
+                      <BookmarkIcon />
+                    </Flex>
+                  </IconButton>
+                  <IconButton variant="soft">
+                    <Flex align="center" justify="center" width="4" height="4">
+                      <AccessibilityIcon />
+                    </Flex>
+                  </IconButton>
+                  <IconButton variant="surface">
+                    <Flex align="center" justify="center" width="4" height="4">
+                      <HeartIcon />
+                    </Flex>
+                  </IconButton>
+                  <IconButton variant="outline">
+                    <Flex align="center" justify="center" width="4" height="4">
+                      <Share2Icon />
+                    </Flex>
+                  </IconButton>
+                  <Switch size="1" ml="2" />
+                  <Switch size="1" defaultChecked />
+                </Flex>
+
+                <Flex direction="column" gap="4">
+                  <Card asChild variant="classic" size="2">
+                    <a href="#">
                       <Flex align="center" gap="3">
                         <Avatar size="4" src={getPeopleForColor('gray')[0].image} fallback="V" />
                         <Box>
@@ -201,11 +263,327 @@ export default function ColorsNew() {
                       </Flex>
                     </a>
                   </Card>
-                ))}
-              </Flex>
-            </Flex>
 
-            <Flex gap="6"></Flex>
+                  <Card asChild variant="surface" size="2">
+                    <a href="#">
+                      <Flex align="center" gap="3">
+                        <Avatar size="4" src={getPeopleForColor('gray')[0].image} fallback="V" />
+                        <Box>
+                          <Text as="div" weight="medium" size="3">
+                            Emily Adams
+                          </Text>
+
+                          <Text as="div" color="gray" size="2">
+                            emily.adams@example.com
+                          </Text>
+                        </Box>
+                      </Flex>
+                    </a>
+                  </Card>
+                </Flex>
+              </Flex>
+
+              <Flex gap="5" direction="column">
+                <Flex gap="4">
+                  <Flex
+                    align="center"
+                    gap="3"
+                    px="2"
+                    style={{
+                      boxShadow: 'inset 0 0 0 1px var(--gray-a6)',
+                      borderRadius: 'var(--radius-3)',
+                    }}
+                  >
+                    <Tooltip content="Add element">
+                      <IconButton variant="ghost" highContrast color="gray">
+                        <Flex width="4" height="4" align="center" justify="center">
+                          <PlusIcon />
+                        </Flex>
+                      </IconButton>
+                    </Tooltip>
+
+                    <Separator size="1" orientation="vertical" />
+
+                    <Tooltip content="Frame">
+                      <IconButton variant="ghost" highContrast color="gray">
+                        <Flex width="4" height="4" align="center" justify="center">
+                          <FrameIcon />
+                        </Flex>
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip content="Rectangle">
+                      <IconButton variant="ghost" highContrast color="gray">
+                        <Flex width="4" height="4" align="center" justify="center">
+                          <BoxIcon />
+                        </Flex>
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip content="Components">
+                      <IconButton variant="ghost" highContrast color="gray">
+                        <Flex width="4" height="4" align="center" justify="center">
+                          <Component1Icon />
+                        </Flex>
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip content="Tokens">
+                      <IconButton variant="ghost" highContrast color="gray">
+                        <Flex width="4" height="4" align="center" justify="center">
+                          <TokensIcon />
+                        </Flex>
+                      </IconButton>
+                    </Tooltip>
+
+                    <Separator size="1" orientation="vertical" />
+
+                    <Tooltip content="Text">
+                      <IconButton variant="ghost" highContrast color="gray">
+                        <Flex width="4" height="4" align="center" justify="center">
+                          <TextIcon />
+                        </Flex>
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip content="Typography">
+                      <IconButton variant="ghost" highContrast color="gray">
+                        <Flex width="4" height="4" align="center" justify="center">
+                          <FontFamilyIcon />
+                        </Flex>
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip content="Fill with AI">
+                      <IconButton variant="ghost" highContrast color="gray">
+                        <Flex width="4" height="4" align="center" justify="center">
+                          <LightningBoltIcon />
+                        </Flex>
+                      </IconButton>
+                    </Tooltip>
+
+                    <Separator size="1" orientation="vertical" />
+
+                    <Tooltip content="Scissors">
+                      <IconButton variant="ghost" highContrast color="gray">
+                        <Flex width="4" height="4" align="center" justify="center">
+                          <ScissorsIcon />
+                        </Flex>
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip content="Modules">
+                      <IconButton variant="ghost" highContrast color="gray">
+                        <Flex width="4" height="4" align="center" justify="center">
+                          <CubeIcon />
+                        </Flex>
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip content="Archive">
+                      <IconButton variant="ghost" highContrast color="gray">
+                        <Flex width="4" height="4" align="center" justify="center">
+                          <CrumpledPaperIcon />
+                        </Flex>
+                      </IconButton>
+                    </Tooltip>
+                  </Flex>
+                  <DropdownMenuRoot>
+                    <DropdownMenuTrigger>
+                      <Button size="2" variant="surface" color="gray" highContrast>
+                        Object
+                        <ChevronDownIcon style={{ marginRight: -4, marginLeft: -4 }} />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <DropdownMenuGroup>
+                        <DropdownMenuItem shortcut="⌘ C">Copy</DropdownMenuItem>
+                        <DropdownMenuItem shortcut="⌘ V">Paste</DropdownMenuItem>
+                        <DropdownMenuItem shortcut="⇧ ⌘ R">Paste to replace</DropdownMenuItem>
+                      </DropdownMenuGroup>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuSub>
+                        <DropdownMenuSubTrigger>Layers</DropdownMenuSubTrigger>
+                        <DropdownMenuSubContent>
+                          <DropdownMenuItem shortcut="⇧ ⌘ ]">Move to top</DropdownMenuItem>
+                          <DropdownMenuItem shortcut="⌘ ]">Move up</DropdownMenuItem>
+                          <DropdownMenuItem shortcut="⌘ [">Move down</DropdownMenuItem>
+                          <DropdownMenuItem shortcut="⇧ ⌘ [">Move to bottom</DropdownMenuItem>
+                        </DropdownMenuSubContent>
+                      </DropdownMenuSub>
+                      <DropdownMenuSub>
+                        <DropdownMenuSubTrigger>Boolean groups</DropdownMenuSubTrigger>
+                        <DropdownMenuSubContent>
+                          <DropdownMenuItem>Union</DropdownMenuItem>
+                          <DropdownMenuItem>Subtract</DropdownMenuItem>
+                          <DropdownMenuItem>Intersect</DropdownMenuItem>
+                          <DropdownMenuSeparator />
+                          <DropdownMenuItem shortcut="⌘ E">Merge</DropdownMenuItem>
+                        </DropdownMenuSubContent>
+                      </DropdownMenuSub>
+                    </DropdownMenuContent>
+                  </DropdownMenuRoot>
+                </Flex>
+
+                <Flex direction="column">
+                  <Flex direction="column" position="relative" px="8" py="7">
+                    <Flex
+                      align="center"
+                      justify="center"
+                      position="absolute"
+                      inset="0"
+                      style={{
+                        overflow: 'hidden',
+                        borderRadius: 'var(--radius-3)',
+                        background: 'var(--gray-2)',
+                      }}
+                    >
+                      <ThemesPanelBackgroundImage id="1" style={{ width: '240%' }} />
+                    </Flex>
+
+                    <Card size="4">
+                      <Heading as="h3" size="5" trim="start" mb="5">
+                        Sign up
+                      </Heading>
+
+                      <Flex direction="column" mb="5">
+                        <Flex>
+                          <Text htmlFor="example-name" as="label" size="2" weight="medium" mb="1">
+                            Full name
+                          </Text>
+                        </Flex>
+                        <TextFieldInput id="example-name" placeholder="Enter your name" />
+                      </Flex>
+
+                      <Flex direction="column" mb="5">
+                        <Flex>
+                          <Text htmlFor="example-email" as="label" size="2" weight="medium" mb="1">
+                            Email
+                          </Text>
+                        </Flex>
+                        <TextFieldInput id="example-email" placeholder="Enter your email address" />
+                      </Flex>
+
+                      <Flex direction="column" mb="5">
+                        <Flex>
+                          <Text
+                            htmlFor="example-password"
+                            as="label"
+                            size="2"
+                            weight="medium"
+                            mb="1"
+                          >
+                            Password
+                          </Text>
+                        </Flex>
+                        <TextFieldInput id="example-password" placeholder="Enter your password" />
+                      </Flex>
+
+                      <Grid
+                        mt="5"
+                        gap="4"
+                        style={{ '--cursor-button': 'pointer' } as React.CSSProperties}
+                      >
+                        <Button>Create account</Button>
+                        <Flex align="center" gap="3">
+                          <Separator size="4" />
+                          <Text color="gray" size="1">
+                            OR
+                          </Text>
+                          <Separator size="4" />
+                        </Flex>
+                        <Button color="gray" variant="surface" highContrast>
+                          <GitHubLogoIcon />
+                          Continue with GitHub
+                        </Button>
+                      </Grid>
+                    </Card>
+                  </Flex>
+                </Flex>
+              </Flex>
+
+              <Flex gap="6" direction="column">
+                <Flex mt="-2">
+                  <TabsRoot defaultValue="colors" activationMode="manual">
+                    <TabsList size="2">
+                      <TabsTrigger value="themes">Themes</TabsTrigger>
+                      <TabsTrigger value="primitives">Primitives</TabsTrigger>
+                      <TabsTrigger value="icons">Icons</TabsTrigger>
+                      <TabsTrigger value="colors">Colors</TabsTrigger>
+                    </TabsList>
+                  </TabsRoot>
+                </Flex>
+
+                <Flex gap="4" direction="column">
+                  <Flex gap="3">
+                    <Avatar
+                      radius="full"
+                      variant="solid"
+                      src={getPeopleForColor('gray')[6].image}
+                      fallback="V"
+                    />
+                    <Avatar
+                      radius="full"
+                      variant="solid"
+                      src={getPeopleForColor('gray')[2].image}
+                      fallback="V"
+                    />
+                    <Avatar radius="full" variant="solid" fallback="V" />
+                    <Avatar radius="full" variant="solid" fallback="BG" />
+                    <Avatar radius="full" variant="solid" fallback={<AvatarIconFallback />} />
+                    <Avatar
+                      radius="full"
+                      variant="solid"
+                      fallback={<AvatarIconFallback />}
+                      highContrast
+                    />
+                  </Flex>
+
+                  <Flex gap="3">
+                    <Avatar
+                      radius="full"
+                      variant="soft"
+                      src={getPeopleForColor('gray')[0].image}
+                      fallback="V"
+                    />
+                    <Avatar
+                      radius="full"
+                      variant="soft"
+                      src={getPeopleForColor('gray')[1].image}
+                      fallback="V"
+                    />
+                    <Avatar radius="full" variant="soft" fallback="V" />
+                    <Avatar radius="full" variant="soft" fallback="BG" />
+                    <Avatar radius="full" variant="soft" fallback={<AvatarIconFallback />} />
+                    <Avatar
+                      radius="full"
+                      variant="soft"
+                      fallback={<AvatarIconFallback />}
+                      highContrast
+                    />
+                  </Flex>
+                </Flex>
+
+                <Separator size="4" />
+
+                <Flex gap="4" direction="column">
+                  <Text size="2">
+                    <LinksExample />
+                  </Text>
+
+                  <Text size="2" color="gray">
+                    <LinksExample />
+                  </Text>
+                </Flex>
+
+                <Box
+                  p="4"
+                  style={{
+                    borderRadius: 'var(--radius-4)',
+                    backgroundColor: 'var(--color-panel-solid)',
+                    backgroundImage: 'linear-gradient(var(--gray-a2), var(--gray-a2))',
+                  }}
+                >
+                  <ToDoList
+                    items={state.todo}
+                    onItemsChange={(items) => setState({ ...state, todo: items })}
+                  />
+                </Box>
+              </Flex>
+            </Grid>
           </Container>
         </Section>
       </Theme>
@@ -213,11 +591,222 @@ export default function ColorsNew() {
   );
 }
 
-const Label = (props: React.ComponentProps<'label'>) => (
-  <Flex mb="2">
-    {/* To match docs heading sizing */}
-    <Heading asChild weight="bold" size="2">
-      <label {...props} />
-    </Heading>
-  </Flex>
+interface ToDoItem {
+  id: string;
+  completed: boolean;
+}
+
+interface ToDoList {
+  items: ToDoItem[];
+  onItemsChange: (items: ToDoItem[]) => void;
+}
+
+const ToDoList = ({ items, onItemsChange }: ToDoList) => {
+  return (
+    <Flex gap="2" direction="column">
+      {items.map((item) => (
+        <Text as="label" size="2" key={item.id}>
+          <Flex gap="2">
+            <Checkbox
+              checked={item.completed}
+              onCheckedChange={(checked) => {
+                const newItems = items.slice();
+                const newItem = newItems.find((candidate) => candidate.id === item.id);
+                newItem.completed = Boolean(checked);
+                onItemsChange(newItems);
+              }}
+            />
+            <Text
+              color={item.completed ? 'gray' : undefined}
+              style={
+                {
+                  textDecoration: item.completed ? 'line-through' : undefined,
+                  '--accent-12': 'var(--accent-11)',
+                } as React.CSSProperties
+              }
+            >
+              {itemsContent[item.id]}
+            </Text>
+          </Flex>
+        </Text>
+      ))}
+    </Flex>
+  );
+};
+
+const itemsContent = {
+  a: (
+    <span>
+      Respond to comment{' '}
+      <Link underline="hover" onClick={(event) => event.preventDefault()}>
+        #384
+      </Link>{' '}
+      from Travis
+    </span>
+  ),
+  b: (
+    <span>
+      Invite{' '}
+      <Link underline="hover" onClick={(event) => event.preventDefault()}>
+        Acme Co.
+      </Link>{' '}
+      team to Slack
+    </span>
+  ),
+  c: (
+    <span>
+      Create a report{' '}
+      <Link underline="hover" onClick={(event) => event.preventDefault()}>
+        requested
+      </Link>{' '}
+      by Danilo
+    </span>
+  ),
+  d: <span>Close Q2 finances</span>,
+  e: (
+    <span>
+      Review invoice{' '}
+      <Link underline="hover" onClick={(event) => event.preventDefault()}>
+        #3456
+      </Link>
+    </span>
+  ),
+};
+
+const LinksExample = () => (
+  <Blockquote>
+    Susan Kare is an American{' '}
+    <HoverCardRoot>
+      <HoverCardTrigger>
+        <Link underline="hover" target="_blank" href="https://en.wikipedia.org/wiki/Graphic_design">
+          graphic designer
+        </Link>
+      </HoverCardTrigger>
+      <HoverCardContent>
+        <Flex>
+          <Inset side="left" pr="current">
+            <img
+              src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&h=480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Graphic design"
+              style={{
+                display: 'block',
+                objectFit: 'cover',
+                height: 160,
+                width: 160,
+                backgroundColor: 'var(--gray-5)',
+                filter: 'contrast(1.05) brightness(1.05)',
+              }}
+            />
+          </Inset>
+          <Text as="p" size="2" style={{ maxWidth: 250 }}>
+            <Strong>Graphic design</Strong> is a profession and applied art whose activity consists
+            in projecting visual communications intended to transmit specific messages to people.
+          </Text>
+        </Flex>
+      </HoverCardContent>
+    </HoverCardRoot>{' '}
+    and artist, who contributed{' '}
+    <HoverCardRoot>
+      <HoverCardTrigger>
+        <Link underline="hover" target="_blank" href="https://en.wikipedia.org/wiki/User_interface">
+          interface
+        </Link>
+      </HoverCardTrigger>
+      <HoverCardContent>
+        <Flex>
+          <Inset side="left" pr="current">
+            <img
+              src="https://images.unsplash.com/photo-1602576666092-bf6447a729fc?q=80&h=480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="A graphical user interface"
+              style={{
+                display: 'block',
+                objectFit: 'cover',
+                objectPosition: 'right',
+                height: 160,
+                width: 160,
+                backgroundColor: 'var(--gray-5)',
+                filter: 'contrast(1.05) brightness(1.05)',
+              }}
+            />
+          </Inset>
+          <Text as="p" size="2" style={{ maxWidth: 250 }}>
+            In the industrial design field of human–computer interaction, a{' '}
+            <Strong>user interface</Strong> is the space where interactions between humans and
+            machines occur.
+          </Text>
+        </Flex>
+      </HoverCardContent>
+    </HoverCardRoot>{' '}
+    elements and{' '}
+    <HoverCardRoot>
+      <HoverCardTrigger>
+        <Link underline="hover" target="_blank" href="https://en.wikipedia.org/wiki/Typeface">
+          typefaces
+        </Link>
+      </HoverCardTrigger>
+      <HoverCardContent>
+        <Flex>
+          <Inset side="left" pr="current">
+            <img
+              src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&h=540&q=80"
+              alt="A graphical user interface"
+              style={{
+                display: 'block',
+                objectFit: 'cover',
+                height: 160,
+                width: 160,
+                backgroundColor: 'var(--gray-5)',
+              }}
+            />
+          </Inset>
+          <Text as="p" size="2" style={{ maxWidth: 250 }}>
+            A <Strong>typeface</Strong> or <Strong>font family</Strong> is a design of letters,
+            numbers and other symbols, to be used in printing or for electronic display. There are
+            thousands of different typefaces in existence, with new ones being developed constantly.
+          </Text>
+        </Flex>
+      </HoverCardContent>
+    </HoverCardRoot>{' '}
+    for the first{' '}
+    <HoverCardRoot>
+      <HoverCardTrigger>
+        <Link underline="hover" target="_blank" href="https://en.wikipedia.org/wiki/Typeface">
+          Apple Macintosh
+        </Link>
+      </HoverCardTrigger>
+      <HoverCardContent>
+        <Flex>
+          <Inset side="left" pr="current">
+            <img
+              src="https://images.unsplash.com/photo-1553469945-2adfe230284d?q=80&h=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="A graphical user interface"
+              style={{
+                display: 'block',
+                objectFit: 'cover',
+                objectPosition: '80%',
+                height: 160,
+                width: 160,
+                backgroundColor: 'var(--gray-5)',
+                filter: 'grayscale(100%)',
+              }}
+            />
+          </Inset>
+          <Text as="p" size="2" style={{ maxWidth: 250 }}>
+            The <Strong>Apple Macintosh</Strong>—later rebranded as the{' '}
+            <Strong>Macintosh 128K</Strong>—was the first successful mass-market all-in-one desktop
+            personal computer with a graphical user interface, built-in screen, and mouse.
+          </Text>
+        </Flex>
+      </HoverCardContent>
+    </HoverCardRoot>{' '}
+    personal computer from 1983 to 1986.
+  </Blockquote>
+);
+
+const LayersRoot = (props: React.ComponentPropsWithoutRef<'div'>) => (
+  <div className={styles.LayersRoot} {...props} />
+);
+
+const LayersItem = (props: React.ComponentPropsWithoutRef<'div'>) => (
+  <div className={styles.LayersItem} {...props} />
 );

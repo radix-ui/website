@@ -290,7 +290,7 @@ export default function ColorsHome() {
   );
 }
 
-const StepLabel = ({ children }: React.PropsWithChildren<{}>) => (
+export const StepLabel = ({ children }: React.PropsWithChildren<{}>) => (
   <Flex justify="center" mb="3">
     <Text size="1" color="gray">
       {children}
@@ -298,7 +298,7 @@ const StepLabel = ({ children }: React.PropsWithChildren<{}>) => (
   </Flex>
 );
 
-const UsageRange = ({ children, ...props }: React.ComponentPropsWithoutRef<typeof Flex>) => (
+export const UsageRange = ({ children, ...props }: React.ComponentPropsWithoutRef<typeof Flex>) => (
   <Flex direction="column" mb="2" {...props}>
     <Text align="center" size="1" mb="3" color="gray">
       {children}
