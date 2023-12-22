@@ -1,4 +1,3 @@
-import { flushSync } from 'react-dom';
 import React from 'react';
 import NextLink from 'next/link';
 import {
@@ -12,7 +11,6 @@ import {
   Flex,
   ScrollArea,
   Button,
-  radixColorScales,
 } from '@radix-ui/themes';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { Footer } from '@components/Footer';
@@ -96,7 +94,16 @@ export default function ColorsHome() {
                   </svg>
                 </NextLink>
               </ColorsMarketingButton>
-              <RandomColorButton />
+
+              <Button
+                highContrast
+                variant="soft"
+                color="gray"
+                size={{ initial: '3', xs: '4' }}
+                asChild
+              >
+                <NextLink href="/colors/create">Create your palette</NextLink>
+              </Button>
             </Flex>
           </Container>
         </Section>
@@ -312,46 +319,3 @@ export const UsageRange = ({ children, ...props }: React.ComponentPropsWithoutRe
     />
   </Flex>
 );
-
-type RandomColor = typeof radixColorScales[number] | 'gray';
-
-const RandomColorButton = () => {
-  const [color, setColor] = React.useState<RandomColor>('gray');
-  const [prevColor, setPrevColor] = React.useState<RandomColor>('gray');
-
-  return (
-    <Button
-      highContrast
-      onPointerOver={() => {
-        const nextColor = getNextColor(prevColor);
-        flushSync(() => setColor(nextColor));
-        setPrevColor(nextColor);
-      }}
-      onPointerOut={() => flushSync(() => setColor('gray'))}
-      variant="soft"
-      color={color}
-      size={{ initial: '3', xs: '4' }}
-      asChild
-    >
-      <NextLink href="/colors/new">Create your colors</NextLink>
-    </Button>
-  );
-};
-
-/** Retrieve a new random color that would be somewhat far away from the current one */
-const getNextColor = (currentColor: RandomColor) => {
-  let candidate = currentColor;
-  const baseIndex = currentColor === 'gray' ? 100 : radixColorScales.indexOf(currentColor);
-
-  do {
-    candidate = getRandomColor();
-    console.log(candidate);
-  } while (
-    ['brown', 'gold', 'bronze'].includes(candidate) ||
-    Math.abs(radixColorScales.indexOf(candidate) - baseIndex) < 4
-  );
-
-  return candidate;
-};
-
-const getRandomColor = () => radixColorScales[Math.floor(Math.random() * radixColorScales.length)];
