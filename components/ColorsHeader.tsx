@@ -10,18 +10,18 @@ export const ColorsHeader = (props: HeaderProps) => {
       <Link
         size="2"
         color="gray"
-        href="/colors/new"
-        highContrast={router.pathname.includes('/colors/new')}
-      >
-        Create your colors
-      </Link>
-      <Link
-        size="2"
-        color="gray"
         href="/colors/docs"
         highContrast={router.pathname.includes('/colors/docs')}
       >
         Documentation
+      </Link>
+      <Link
+        size="2"
+        color="gray"
+        href="/colors/create"
+        highContrast={router.pathname.includes('/colors/create')}
+      >
+        Create your palette
       </Link>
     </Header>
   );
