@@ -90,7 +90,8 @@
 }
 
 .Pre > code {
-  display: block;
+  display: inline-block;
+  min-width: 100%;
 }
 
 .Pre :where(:global(.token.punctuation), :global(.token.plain-text)) {
