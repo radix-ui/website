@@ -2,6 +2,7 @@ import { composeRefs } from '@radix-ui/react-compose-refs';
 import { TextField, extractMarginProps } from '@radix-ui/themes';
 import styles from './ColorField.module.css';
 import * as React from 'react';
+import Color from 'colorjs.io';
 
 interface ColorFieldProps extends React.ComponentPropsWithoutRef<typeof TextField.Input> {
   value?: string;
@@ -20,7 +21,7 @@ export const ColorField = React.forwardRef<HTMLInputElement, ColorFieldProps>(
       onChange,
       onKeyDownCapture,
       onValueChange,
-      placeholder = 'Hex color',
+      placeholder = 'Enter a color',
       readOnly,
       size,
       value,
@@ -30,7 +31,7 @@ export const ColorField = React.forwardRef<HTMLInputElement, ColorFieldProps>(
   ) => {
     const inputRef = React.useRef<HTMLInputElement>(null);
     const [inputValue, setInputValue] = React.useState(
-      parseHex(value ?? defaultValue) ?? DEFAULT_COLOR
+      toShortFormat(value ?? defaultValue) ?? DEFAULT_COLOR
     );
 
     const committedColorRef = React.useRef(inputValue);
@@ -38,17 +39,17 @@ export const ColorField = React.forwardRef<HTMLInputElement, ColorFieldProps>(
     const { rest: marginRest, ...marginProps } = extractMarginProps(props);
 
     const color = React.useMemo(() => {
-      const hex = parseHex(inputValue);
-      return hex ? hex : committedColorRef.current;
+      const string = toShortFormat(inputValue);
+      return string ? string : committedColorRef.current;
     }, [inputValue]);
 
     // Sync with the incoming value
     useIsomorphicLayoutEffect(() => {
-      const hex = parseHex(value);
+      const string = toShortFormat(value);
 
-      if (hex) {
-        setInputValue(hex);
-        committedColorRef.current = hex;
+      if (string) {
+        setInputValue(string);
+        committedColorRef.current = string;
       }
     }, [value]);
 
@@ -77,19 +78,28 @@ export const ColorField = React.forwardRef<HTMLInputElement, ColorFieldProps>(
               disabled={disabled || readOnly}
               className={styles.ColorFieldSwatch}
               onChange={(event) => {
-                const hex = parseHex(event.currentTarget.value);
+                // Some gymnastics here to make sure that we don't lose the current color space format,
+                // e.g. if the user had "lch(45 70.5 286.08)" in the input before, it should stay "lch"
+                // after using the native browser’s picker, which always outputs a color formatted as hex.
+                const colorSpace = new Color(value).spaceId;
+                const string = toShortFormat(
+                  new Color(event.currentTarget.value).to(colorSpace).toString()
+                );
 
-                if (hex) {
-                  committedColorRef.current = hex;
-                  setInputValue(hex);
-                  onValueChange?.(formatHex(hex));
+                if (string) {
+                  committedColorRef.current = string;
+                  setInputValue(string);
+                  onValueChange?.(toCssFormat(string));
                 }
 
                 onChange?.(event);
               }}
               tabIndex={-1}
               type="color"
-              value={'#' + color}
+              // input type="color" accepts 6-digit hex values only
+              value={toCssFormat(
+                toShortFormat(new Color(toCssFormat(color)).to('srgb').toString({ format: 'hex' }))
+              )}
             />
             <div className={styles.ColorFieldSwatchBorder} />
           </div>
@@ -103,7 +113,7 @@ export const ColorField = React.forwardRef<HTMLInputElement, ColorFieldProps>(
             committedColorRef.current = color;
             preventInputSelectionRef.current = false;
             setInputValue(color);
-            onValueChange?.(formatHex(color));
+            onValueChange?.(toCssFormat(color));
             // Firefox doesn't really reset input selection range on blur, and then
             // recovers it on focus, which messes with our selection on mouse up.
             inputRef.current?.setSelectionRange(0, 0);
@@ -118,7 +128,7 @@ export const ColorField = React.forwardRef<HTMLInputElement, ColorFieldProps>(
               if (committedColorRef.current !== inputValue) {
                 committedColorRef.current = color;
                 setInputValue(color);
-                onValueChange?.(formatHex(color));
+                onValueChange?.(toCssFormat(color));
                 setTimeout(() => inputRef.current?.select());
 
                 // Prevent form submission
@@ -164,9 +174,35 @@ const hasSelection = (input: HTMLInputElement | null) => {
   return false;
 };
 
-const parseHex = (value?: string) => {
+const toShortFormat = (value?: string): string | null => {
+  if (!value) {
+    return null;
+  }
+
+  // Make sure `toShortFormat` can parse values it has produced itself.
+  value = toCssFormat(value.trim());
+
   const regexp = /((?:^(?:[0-9]|[a-f]){6})|(?:^(?:[0-9]|[a-f]){1,3}))/i;
-  let [hex] = value?.trim().replace(/^#/, '').match(regexp) ?? [];
+  let [hex] = value.replace(/^#/, '').match(regexp) ?? [];
+
+  let color: Color | undefined;
+
+  if (isColorFunction(value)) {
+    try {
+      color = new Color(value);
+
+      // Convert sRGB color spaces to hex because colorjs.io formats them a bit weird.
+      // and since we don’t feel strongly enough about fixing that, hex is better than weird.
+      if (['srgb', 'hsl', 'hwb'].includes(color.spaceId)) {
+        return toShortFormat(color.to('srgb').toString({ format: 'hex' }));
+      }
+
+      const str = color.toString({ precision: 3 });
+
+      // Remove the `color()` function wrapper for brevity
+      return str.startsWith('color') ? str.replace('color(', '').replace(')', '') : str;
+    } catch {}
+  }
 
   if (!hex) {
     return null;
@@ -187,7 +223,37 @@ const parseHex = (value?: string) => {
   return hex.toUpperCase();
 };
 
-const formatHex = (value: string) => '#' + value;
+const toCssFormat = (value: string) => {
+  if (isColorFunction(value)) {
+    return value.includes('(') ? value : `color(${value})`;
+  }
+
+  if (value.startsWith('#')) {
+    return value;
+  }
+
+  return '#' + value;
+};
+
+const isColorFunction = (value: string) => {
+  return (
+    value.startsWith('a98') ||
+    value.startsWith('color') ||
+    value.startsWith('display-p3') ||
+    value.startsWith('hsl') ||
+    value.startsWith('hwb') ||
+    value.startsWith('lab') ||
+    value.startsWith('lch') ||
+    value.startsWith('oklab') ||
+    value.startsWith('oklch') ||
+    value.startsWith('p3') ||
+    value.startsWith('prophoto') ||
+    value.startsWith('rec2020') ||
+    value.startsWith('rgb') ||
+    value.startsWith('srgb') ||
+    value.startsWith('xyz')
+  );
+};
 
 const useIsomorphicLayoutEffect =
   typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;

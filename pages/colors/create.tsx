@@ -193,7 +193,7 @@ export default function ColorsNew() {
           </Flex>
 
           <Box mb="9">
-            <Flex gap="4" justify="center" align="end">
+            <Grid flow="column" columns="220px 220px 220px" gap="4" justify="center" align="end">
               <Flex direction="column">
                 <Flex>
                   <Text as="label" htmlFor="accent" size="1" color="gray" mb="1">
@@ -294,7 +294,7 @@ export default function ColorsNew() {
                   )}
                 </Text>
               </Flex>
-            </Flex>
+            </Grid>
           </Box>
 
           <Theme

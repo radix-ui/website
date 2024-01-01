@@ -145,7 +145,7 @@ function getStep9Colors(
 
   // If the accent base color is close to the page background color, it's likely
   // white on white or black on black, so we want to return something that makes sense instead
-  if (distance < 20) {
+  if (distance < 25) {
     return [scale[8], getTextColor(scale[8])];
   }
 
