@@ -1,3 +1,4 @@
+import NextLink from 'next/link';
 import { ColorsHeader } from '@components/ColorsHeader';
 import { ColorsMobileMenu } from '@components/ColorsMobileMenu';
 import { MobileMenuProvider } from '@components/MobileMenu';
@@ -29,6 +30,7 @@ import {
   CopyIcon,
   FigmaLogoIcon,
   CheckIcon,
+  ArrowLeftIcon,
 } from '@radix-ui/react-icons';
 import {
   Avatar,
@@ -82,28 +84,67 @@ import { ThemesPanelBackgroundImage } from '@components/ThemesPanelBackgroundIma
 import { AvatarIconFallback } from '@components/AvatarIconFallback';
 import { StepLabel, UsageRange } from './index';
 import { ColorField } from '@components/ColorField';
-import { generateRadixColors } from '@components/generate-radix-colors';
+import { generateRadixColors } from '@components/generateRadixColors';
 import Head from 'next/head';
 import { classNames } from '@lib/classNames';
 import { Swatch } from '@components/Swatch';
+import { useLocalStorage, useIsomorphicLayoutEffect } from 'usehooks-ts';
+import { useTheme } from 'next-themes';
 
 export default function ColorsNew() {
+  // TODODODO
   const accent = 'indigo';
-  const [accentValue, setAccentValue] = React.useState('#3D63DD');
-  const [grayValue, setGrayValue] = React.useState('#8B8D98');
-  const [backgroundValue, setBackgroundValue] = React.useState('#FFFFFF');
 
-  const result = generateRadixColors({
+  const { resolvedTheme } = useTheme();
+
+  const [lightAccentValue, setLightAccentValue] = useLocalStorage('create/light/accent', '#3D63DD');
+  const [lightGrayValue, setLightGrayValue] = useLocalStorage('create/light/gray', '#8B8D98');
+  const [lightBackgroundValue, setLightBackgroundValue] = useLocalStorage(
+    'create/light/background',
+    '#FFFFFF'
+  );
+
+  const [darkAccentValue, setDarkAccentValue] = useLocalStorage('create/dark/accent', '#3D63DD');
+  const [darkGrayValue, setDarkGrayValue] = useLocalStorage('create/dark/gray', '#8B8D98');
+  const [darkBackgroundValue, setDarkBackgroundValue] = useLocalStorage(
+    'create/dark/background',
+    '#111111'
+  );
+
+  const accentValue = resolvedTheme === 'dark' ? darkAccentValue : lightAccentValue;
+  const grayValue = resolvedTheme === 'dark' ? darkGrayValue : lightGrayValue;
+  const backgroundValue = resolvedTheme === 'dark' ? darkBackgroundValue : lightBackgroundValue;
+
+  const setAccentValue = resolvedTheme === 'dark' ? setDarkAccentValue : setLightAccentValue;
+  const setGrayValue = resolvedTheme === 'dark' ? setDarkGrayValue : setLightGrayValue;
+  const setBackgroundValue =
+    resolvedTheme === 'dark' ? setDarkBackgroundValue : setLightBackgroundValue;
+
+  const lightModeResult = generateRadixColors({
     appearance: 'light',
-    accentColorString: accentValue,
-    grayColorString: grayValue,
-    pageBackground: backgroundValue,
+    accentColorString: lightAccentValue,
+    grayColorString: lightGrayValue,
+    pageBackground: lightBackgroundValue,
+  });
+
+  const darkModeResult = generateRadixColors({
+    appearance: 'dark',
+    accentColorString: darkAccentValue,
+    grayColorString: darkGrayValue,
+    pageBackground: darkBackgroundValue,
   });
 
   const [codeCopied, setCodeCopied] = React.useState(false);
   const [svgCopied, setSvgCopied] = React.useState(false);
   const copiedTimeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
   const COPIED_TIMEOUT = 3000;
+
+  const [hydrated, setHydrated] = React.useState(false);
+  useIsomorphicLayoutEffect(() => setHydrated(true), []);
+
+  if (!hydrated) {
+    return null;
+  }
 
   return (
     <MobileMenuProvider>
@@ -121,9 +162,8 @@ export default function ColorsNew() {
       <ColorsHeader ghost />
       <ColorsMobileMenu />
 
-      {/* TODO SHARE IMAGE */}
       <TitleAndMetaTags
-        title="Create your brand palette – Radix Colors"
+        title="Create your Radix palette – Radix Colors"
         description="An open-source color system for designing beautiful, accessible websites and apps."
         image="colors.png"
       />
@@ -132,17 +172,25 @@ export default function ColorsNew() {
         <style>
           {getPreviewStyles({
             selector: `.radix-themes`,
-            lightBrandColors: result,
-            darkBrandColors: result,
+            lightColors: lightModeResult,
+            darkColors: darkModeResult,
           })}
         </style>
       </Head>
 
       <Section px={{ initial: '5', xs: '6', sm: '7', md: '9' }} size={{ initial: '2', md: '3' }}>
         <Container position="relative">
-          <Heading as="h1" align="center" size="8" mb="8">
-            Create your Radix palette
-          </Heading>
+          <Flex direction="column" align="center" gap="3">
+            <Button asChild variant="ghost" color="gray" highContrast ml="-2">
+              <NextLink href="/colors">
+                <ArrowLeftIcon />
+                Radix Colors
+              </NextLink>
+            </Button>
+            <Heading as="h1" align="center" size="8" mb="8">
+              Create your Radix palette
+            </Heading>
+          </Flex>
 
           <Box mb="9">
             <Flex gap="4" justify="center" align="end">
@@ -229,8 +277,6 @@ export default function ColorsNew() {
                 height="6"
                 align="center"
                 justify="start"
-                // ml="5"
-                // mr="-9"
                 gap="1"
                 style={{
                   whiteSpace: 'nowrap',
@@ -734,7 +780,7 @@ const Preview = ({ children, ...props }: React.ComponentPropsWithoutRef<typeof B
             p="4"
             style={{
               borderRadius: 'var(--radius-4)',
-              backgroundColor: 'var(--color-panel-solid)',
+              // backgroundColor: 'var(--color-panel-solid)',
               backgroundImage: 'linear-gradient(var(--gray-a2), var(--gray-a2))',
             }}
           >
@@ -971,48 +1017,48 @@ const LayersItem = (props: React.ComponentPropsWithoutRef<'div'>) => (
 
 interface GetPreviewStylesParams {
   selector?: string;
-  lightBrandColors: ReturnType<typeof generateRadixColors>;
-  darkBrandColors: ReturnType<typeof generateRadixColors>;
+  lightColors: ReturnType<typeof generateRadixColors>;
+  darkColors: ReturnType<typeof generateRadixColors>;
 }
 
-export const getPreviewStyles = ({
-  selector,
-  lightBrandColors,
-  darkBrandColors,
-}: GetPreviewStylesParams) => {
+export const getPreviewStyles = ({ selector, lightColors, darkColors }: GetPreviewStylesParams) => {
   const themeSelector = selector || '.radix-themes';
 
   return `
+:root, .light, .light-theme {
+  --color-page-background: ${lightColors.pageBackground} !important;
+}
+.dark, .dark-theme {
+  --color-page-background: ${darkColors.pageBackground} !important;
+}
 
 ${themeSelector}:not(.dark, .dark-theme), ${themeSelector}:is(.light, .light-theme) {
-  ${lightBrandColors.accentScale
-    .map((value, index) => `--accent-${index + 1}: ${value};`)
-    .join('\n  ')}
+  ${lightColors.accentScale.map((value, index) => `--accent-${index + 1}: ${value};`).join('\n  ')}
 
-  ${lightBrandColors.accentScaleAlpha
+  ${lightColors.accentScaleAlpha
     .map((value, index) => `--accent-a${index + 1}: ${value};`)
     .join('\n  ')}
 
-  ${lightBrandColors.grayScale.map((value, index) => `--gray-${index + 1}: ${value};`).join('\n  ')}
+  ${lightColors.grayScale.map((value, index) => `--gray-${index + 1}: ${value};`).join('\n  ')}
 
-  ${lightBrandColors.grayScaleAlpha
+  ${lightColors.grayScaleAlpha
     .map((value, index) => `--gray-a${index + 1}: ${value};`)
     .join('\n  ')}
 
-  --accent-9-contrast: ${lightBrandColors.accent9Contrast};
-  --gray-surface: ${lightBrandColors.graySurface};
-  --gray-2-translucent: ${lightBrandColors.grayTranslucent};
+  --accent-9-contrast: ${lightColors.accent9Contrast};
+  --gray-surface: ${lightColors.graySurface};
+  --gray-2-translucent: ${lightColors.grayTranslucent};
 }
 
 @supports (color: color(display-p3 1 1 1)) {
   @media (color-gamut: p3) {
     ${themeSelector}:not(.dark, .dark-theme),
     ${themeSelector}:is(.light, .light-theme) {
-      ${lightBrandColors.accentScaleAlphaWideGamut
+      ${lightColors.accentScaleAlphaWideGamut
         .map((value, index) => `--accent-a${index + 1}: ${value};`)
         .join('\n      ')}
 
-      ${lightBrandColors.grayScaleAlphaWideGamut
+      ${lightColors.grayScaleAlphaWideGamut
         .map((value, index) => `--gray-a${index + 1}: ${value};`)
         .join('\n      ')}
     }
@@ -1020,33 +1066,29 @@ ${themeSelector}:not(.dark, .dark-theme), ${themeSelector}:is(.light, .light-the
 }
 
 :is(.dark, .dark-theme) ${themeSelector}:not(.light, .light-theme) {
-  ${darkBrandColors.accentScale
-    .map((value, index) => `--accent-${index + 1}: ${value};`)
-    .join('\n  ')}
+  ${darkColors.accentScale.map((value, index) => `--accent-${index + 1}: ${value};`).join('\n  ')}
 
-  ${darkBrandColors.accentScaleAlpha
+  ${darkColors.accentScaleAlpha
     .map((value, index) => `--accent-a${index + 1}: ${value};`)
     .join('\n  ')}
 
-  ${darkBrandColors.grayScale.map((value, index) => `--gray-${index + 1}: ${value};`).join('\n  ')}
+  ${darkColors.grayScale.map((value, index) => `--gray-${index + 1}: ${value};`).join('\n  ')}
 
-  ${darkBrandColors.grayScaleAlpha
-    .map((value, index) => `--gray-a${index + 1}: ${value};`)
-    .join('\n  ')}
+  ${darkColors.grayScaleAlpha.map((value, index) => `--gray-a${index + 1}: ${value};`).join('\n  ')}
 
-  --accent-9-contrast: ${darkBrandColors.accent9Contrast};
-  --gray-surface: ${darkBrandColors.graySurface};
-  --gray-2-translucent: ${darkBrandColors.grayTranslucent};
+  --accent-9-contrast: ${darkColors.accent9Contrast};
+  --gray-surface: ${darkColors.graySurface};
+  --gray-2-translucent: ${darkColors.grayTranslucent};
 }
 
 @supports (color: color(display-p3 1 1 1)) {
   @media (color-gamut: p3) {
     :is(.dark, .dark-theme) ${themeSelector}:not(.light, .light-theme) {
-      ${darkBrandColors.accentScaleAlphaWideGamut
+      ${darkColors.accentScaleAlphaWideGamut
         .map((value, index) => `--accent-a${index + 1}: ${value};`)
         .join('\n      ')}
 
-      ${darkBrandColors.grayScaleAlphaWideGamut
+      ${darkColors.grayScaleAlphaWideGamut
         .map((value, index) => `--gray-a${index + 1}: ${value};`)
         .join('\n      ')}
     }

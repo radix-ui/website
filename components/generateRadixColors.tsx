@@ -2,6 +2,7 @@ import * as RadixColors from '@radix-ui/colors';
 import Color from 'colorjs.io';
 
 type ArrayOf12<T> = [T, T, T, T, T, T, T, T, T, T, T, T];
+const arrayOf12 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] as const;
 
 // prettier-ignore
 const grayScaleNames = ['gray', 'mauve', 'slate', 'sage', 'olive', 'sand'] as const;
@@ -55,12 +56,9 @@ export const generateRadixColors = ({
   const accentBaseColor = new Color(args.accentColorString).to('oklch');
 
   let accentScaleColors = getScaleFromColor(accentBaseColor, allScales);
-  let grayBaseColor = new Color(args.grayColorString).to('oklch');
 
-  const grayScaleColors =
-    appearance === 'light'
-      ? getScaleFromColor(grayBaseColor, grayScales)
-      : getDarkModeGrayScale(pageBackgroundColor);
+  const grayBaseColor = new Color(args.grayColorString).to('oklch');
+  const grayScaleColors = getScaleFromColor(grayBaseColor, grayScales);
 
   const backdropColor =
     appearance === 'light' ? new Color('#FFFFFF').to('oklch') : grayScaleColors[0];
@@ -82,10 +80,15 @@ export const generateRadixColors = ({
   accentScaleColors[8] = accent9Color;
   accentScaleColors[9] = getButtonHoverColor(accent9Color, [accentScaleColors]);
 
-  // TODO FIND A BETTER WAY TO DO STEP 11 AND 12
-  if (!isNaN(accent9Color.coords[2])) {
-    accentScaleColors[10].coords[2] = accent9Color.coords[2];
-  }
+  // Limit saturation of the text colors
+  accentScaleColors[10].coords[1] = Math.min(
+    Math.max(accentScaleColors[8].coords[1], accentScaleColors[7].coords[1]),
+    accentScaleColors[10].coords[1]
+  );
+  accentScaleColors[11].coords[1] = Math.min(
+    Math.max(accentScaleColors[8].coords[1], accentScaleColors[7].coords[1]),
+    accentScaleColors[11].coords[1]
+  );
 
   const accentScaleHex = accentScaleColors.map((color) =>
     color.to('srgb').toString({ format: 'hex' })
@@ -128,6 +131,8 @@ export const generateRadixColors = ({
     // TODO rework this
     grayTranslucent: grayScaleHex[1],
     // TODO add accent translucent
+
+    pageBackground: pageBackgroundColor.to('srgb').toString({ format: 'hex' }),
   };
 };
 
@@ -174,79 +179,121 @@ function getButtonHoverColor(source: Color, scales: ArrayOf12<Color>[]) {
   return buttonHoverColor;
 }
 
-// TODO #E68EB9 step 11 and 12 too saturated
-// TODO #001F85 step 11 and 12 too saturated
 function getScaleFromColor(source: Color, scales: Record<string, ArrayOf12<Color>>) {
-  let baseScale: ArrayOf12<Color> | undefined;
-  let closestColor = source;
-  let minDistance = Infinity;
+  let allColors: { scale: string; color: Color; distance: number }[] = [];
 
-  Object.values(scales).forEach((scale) => {
+  Object.entries(scales).forEach(([name, scale]) => {
     for (const color of scale) {
       const distance = source.deltaEOK(color);
-      if (distance < minDistance) {
-        minDistance = distance;
-        closestColor = color;
-        baseScale = scale;
-      }
+      allColors.push({ scale: name, distance, color });
     }
   });
 
-  if (!baseScale) {
-    throw Error('Could not find base scale');
+  allColors.sort((a, b) => a.distance - b.distance);
+
+  // Remove non-unique scales
+  let closestColors = allColors.filter(
+    (color, i, arr) => i === arr.findIndex((value) => value.scale === color.scale)
+  );
+
+  // If the next two closest colors are both grays, remove the second one until it’s not a gray anymore.
+  // This is because up next we will be comparing how close the two closest colors are to the source color,
+  // and since the grays are all extremely close to each other, we won’t get any useful data from the second
+  // closest color if it’s also a gray.
+  const grayScaleNamesStr = grayScaleNames as readonly string[];
+  const allAreGrays = closestColors.every((color) => grayScaleNamesStr.includes(color.scale));
+  if (!allAreGrays && grayScaleNamesStr.includes(closestColors[0].scale)) {
+    while (grayScaleNamesStr.includes(closestColors[1].scale)) {
+      closestColors.splice(1, 1);
+    }
   }
 
-  const ratioC = Math.min(4, source.coords[1] / closestColor.coords[1]);
-  const scale = baseScale.map((color) => {
-    const scaleColor = color.clone();
-    scaleColor.coords[1] = color.coords[1] * ratioC;
-    scaleColor.coords[2] = source.coords[2];
-    return scaleColor.toGamut({ space: 'p3' });
-  }) as ArrayOf12<Color>;
+  let colorA = closestColors[0];
+  let colorB = closestColors[1];
 
-  console.log({
-    hsl: scale.map((color) =>
-      color
-        .to('hsl')
-        .coords.map((c) => c.toFixed(5))
-        .join(' ')
-    ),
-    oklch: scale.map((color) => color.coords.map((c) => c.toFixed(5)).join(' ')),
+  // Light trigonometry ahead.
+  //
+  // We want to determine the color that is the closest to the source color. Sometimes it makes sense
+  // to proportionally mix the two closest colors together, but sometimes it is not useful at all.
+  // Color coords are spatial in 3D, however we can treat the data we have as a 2D projection that is good enough.
+  //
+  // Case 1:
+  // If the distances between the source color, the 1st closest color (A) and the 2nd closest color (B) form
+  // a triangle where NEITHER angle A nor B are larger than 90 degrees, then we want to mix the 1st and the 2nd
+  // closest colors in the same proportion as distances AD and BD are to each other. Mixing the two would result
+  // in a color that would be closer to the source color than either of the two original closest colors.
+  // Example: source color is a desaturated blue, which is between "indigo" and "slate" scales.
+  //
+  //        C ← Source color
+  //       /|⟍
+  //      / |  ⟍
+  //   b /  |    ⟍  a
+  //    /   |      ⟍
+  //   /    |        ⟍
+  //  A --- D -------- B
+  //        ↑
+  //        The color we want to use as the base, which is a mix of A and B.
+  //
+  // Case 2:
+  // If the distances between the source color, the 1st closest color (A) and the 2nd closest color (B) form
+  // a triangle where EITHER angle A or B are larger than 90 degrees, then we don’t care about point B because it’s
+  // directionally the same as A, as mixing A and B can’t provide us with a color that is any closer to the source.
+  // Example: source color is a saturated blue, with "blue" being the closest scale, and "indigo" just being further.
+  //
+  //      C ← Source color
+  //       \⟍
+  //        \  ⟍
+  //         \    ⟍  a
+  //        b \      ⟍
+  //           \        ⟍
+  //            A ------- B
+  //            ↑
+  //            The color we want to use as the base, which is not influenced by B.
+
+  // We’ll need all the lengths of the triangle sides, named after the angles they look at:
+  const a = colorB.distance;
+  const b = colorA.distance;
+  const c = colorA.color.deltaEOK(colorB.color);
+
+  // We can get the ratios of AD to BD lengths with trigonometry using tangents,
+  // as the ratio of the tangents of the opposite angles will match.
+  const cosA = (b ** 2 + c ** 2 - a ** 2) / (2 * b * c);
+  const radA = Math.acos(cosA);
+  const sinA = Math.sin(radA);
+
+  const cosB = (a ** 2 + c ** 2 - b ** 2) / (2 * a * c);
+  const radB = Math.acos(cosB);
+  const sinB = Math.sin(radB);
+
+  // Tangent of angle C in the ACD triangle
+  const tanC1 = cosA / sinA;
+
+  // Tangent of angle C in the BCD triangle
+  const tanC2 = cosB / sinB;
+
+  // The ratio of the tangents corresponds to the ratio of the distances AD to BD
+  // In the end, it means how much of scale B we want to mix into scale A.
+  // If it’s "0" or less, this is an obtuse triangle from case 2, and we use just scale A.
+  const ratio = Math.max(0, tanC1 / tanC2) * 0.5;
+
+  // The base scale is going to be a mix of the two closest scales, with the mix ratio we determined before
+  const scaleA = scales[colorA.scale];
+  const scaleB = scales[colorB.scale];
+  const scale = arrayOf12.map((i) =>
+    new Color(Color.mix(scaleA[i], scaleB[i], ratio)).to('oklch')
+  ) as ArrayOf12<Color>;
+
+  // Get the closest color from the pre-mixed scale we created
+  const baseColor = scale.slice().sort((a, b) => source.deltaEOK(a) - source.deltaEOK(b))[0];
+
+  // Note the chroma difference between the source color and the base color
+  const ratioC = source.coords[1] / baseColor.coords[1];
+
+  // Modify hue and chrome of the scale to match the source color
+  scale.forEach((color) => {
+    color.coords[1] = Math.min(source.coords[1] * 1.5, color.coords[1] * ratioC);
+    color.coords[2] = source.coords[2];
   });
-
-  return scale;
-}
-
-function getDarkModeGrayScale(source: Color) {
-  const isPureGray = isNaN(source.coords[2]) || !!source.coords[1];
-  const scales = darkGrayColors;
-  const baseScale = isPureGray ? scales.gray : scales.slate;
-  const ratioL = source.coords[0] / baseScale[0].coords[0];
-  const ratioC = source.coords[1] / baseScale[0].coords[1];
-
-  const scale = baseScale.map((color, i) => {
-    const scaleColor = color.clone();
-    const colorL = color.coords[0];
-    const colorC = color.coords[1];
-
-    // Compute target L based on the lightness ratio of the source color to the base scale,
-    // while diminishing the strength of the lightness ratio as we get towards the end of the scale.
-    const targetL = colorL * (i / 11) + colorL * ratioL * ((11 - i) / 11);
-
-    // Cap min and max lightness, but allow pure black as the first step
-    const step2L = baseScale[1].coords[0];
-    const maxL = colorL * 2;
-    const minL = i > 0 ? Math.max(step2L, colorL * 0.75) : 0;
-
-    // Compute target C based on the chroma ratio of the source color to the base scale,
-    // while diminishing the strength of the chroma ratio as we get towards the end of the scale.
-    const targetC = colorC * (i / 11) + colorC * ratioC * ((11 - i) / 11);
-
-    scaleColor.coords[0] = Math.max(Math.min(maxL, targetL), minL);
-    scaleColor.coords[1] = Math.min(0.028, targetC);
-    scaleColor.coords[2] = source.coords[2];
-    return scaleColor;
-  }) as ArrayOf12<Color>;
 
   return scale;
 }
@@ -254,7 +301,7 @@ function getDarkModeGrayScale(source: Color) {
 function getTextColor(background: Color) {
   const white = new Color('oklch', [1, 0, 0]);
 
-  if (Math.abs(white.contrastAPCA(background)) < 35) {
+  if (Math.abs(white.contrastAPCA(background)) < 40) {
     const [L, C, H] = background.coords;
     return new Color('oklch', [0.25, Math.max(0.08 * C, 0.04), H]);
   }
