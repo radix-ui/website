@@ -1054,8 +1054,16 @@ ${themeSelector}:not(.dark, .dark-theme), ${themeSelector}:is(.light, .light-the
   @media (color-gamut: p3) {
     ${themeSelector}:not(.dark, .dark-theme),
     ${themeSelector}:is(.light, .light-theme) {
+      ${lightColors.accentScaleWideGamut
+        .map((value, index) => `--accent-${index + 1}: ${value};`)
+        .join('\n      ')}
+
       ${lightColors.accentScaleAlphaWideGamut
         .map((value, index) => `--accent-a${index + 1}: ${value};`)
+        .join('\n      ')}
+
+      ${lightColors.grayScaleWideGamut
+        .map((value, index) => `--gray-${index + 1}: ${value};`)
         .join('\n      ')}
 
       ${lightColors.grayScaleAlphaWideGamut
@@ -1084,8 +1092,16 @@ ${themeSelector}:not(.dark, .dark-theme), ${themeSelector}:is(.light, .light-the
 @supports (color: color(display-p3 1 1 1)) {
   @media (color-gamut: p3) {
     :is(.dark, .dark-theme) ${themeSelector}:not(.light, .light-theme) {
+      ${darkColors.accentScaleWideGamut
+        .map((value, index) => `--accent-${index + 1}: ${value};`)
+        .join('\n      ')}
+
       ${darkColors.accentScaleAlphaWideGamut
         .map((value, index) => `--accent-a${index + 1}: ${value};`)
+        .join('\n      ')}
+
+      ${darkColors.grayScaleWideGamut
+        .map((value, index) => `--gray-${index + 1}: ${value};`)
         .join('\n      ')}
 
       ${darkColors.grayScaleAlphaWideGamut

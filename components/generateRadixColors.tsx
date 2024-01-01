@@ -94,6 +94,10 @@ export const generateRadixColors = ({
     color.to('srgb').toString({ format: 'hex' })
   ) as ArrayOf12<string>;
 
+  const accentScaleWideGamut = accentScaleColors.map((color) =>
+    color.to('oklch').toString({ precision: 4 })
+  ) as ArrayOf12<string>;
+
   const accentScaleAlphaHex = accentScaleHex.map((color) =>
     getAlphaColorSrgb(color, backdropHex)
   ) as ArrayOf12<string>;
@@ -108,6 +112,10 @@ export const generateRadixColors = ({
     color.to('srgb').toString({ format: 'hex' })
   ) as ArrayOf12<string>;
 
+  const grayScaleWideGamut = grayScaleColors.map((color) =>
+    color.to('oklch').toString({ precision: 4 })
+  ) as ArrayOf12<string>;
+
   const grayScaleAlphaHex = grayScaleHex.map((color) =>
     getAlphaColorSrgb(color, backdropHex)
   ) as ArrayOf12<string>;
@@ -119,11 +127,13 @@ export const generateRadixColors = ({
   return {
     accentScale: accentScaleHex,
     accentScaleAlpha: accentScaleAlphaHex,
+    accentScaleWideGamut: accentScaleWideGamut,
     accentScaleAlphaWideGamut: accentScaleAlphaWideGamutHex,
     accent9Contrast: accent9ContrastColorHex,
 
     grayScale: grayScaleHex,
     grayScaleAlpha: grayScaleAlphaHex,
+    grayScaleWideGamut: grayScaleWideGamut,
     grayScaleAlphaWideGamut: grayScaleAlphaWideGamutHex,
 
     graySurface: appearance === 'light' ? '#ffffffcc' : 'rgba(0, 0, 0, 0.05)',
