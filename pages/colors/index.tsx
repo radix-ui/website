@@ -188,7 +188,7 @@ export default function ColorsHome() {
 
               <Box />
               {Array.from({ length: 12 }, (_, i) => i + 1).map((step) => (
-                <StepLabel>{step}</StepLabel>
+                <StepLabel key={step}>{step}</StepLabel>
               ))}
 
               {['black', 'white'].map((scale) => (

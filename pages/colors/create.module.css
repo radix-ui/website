@@ -9,7 +9,7 @@
   box-sizing: border-box;
   background-color: var(--panel);
   box-shadow: inset 0 0 0 1px var(--gray-a4);
-  color: var(--accent-12);
+  color: var(--gray-12);
   overflow: hidden;
 }
 
@@ -39,10 +39,12 @@
 
 .LayersItem:active {
   background-color: var(--accent-a2);
+  color: var(--accent-12);
 }
 
 .LayersItem[data-active] {
   background-color: var(--accent-a3);
+  color: var(--accent-12);
 }
 
 .LayersItem[data-active]:active {
@@ -50,7 +52,7 @@
 }
 
 .LayersItem[data-active] svg {
-  color: var(--accent-12);
+  color: inherit;
   filter: none;
 }
 
