@@ -59,10 +59,7 @@ export const generateRadixColors = ({
 
   const grayBaseColor = new Color(args.grayColorString).to('oklch');
   const grayScaleColors = getScaleFromColor(grayBaseColor, grayScales);
-
-  const backdropColor =
-    appearance === 'light' ? new Color('#FFFFFF').to('oklch') : grayScaleColors[0];
-
+  const backdropColor = new Color(pageBackgroundColor).to('oklch');
   const backdropHex = backdropColor.to('srgb').toString({ format: 'hex' });
 
   // Make sure we use the tint from the gray scale for when base is pure white or black
@@ -142,7 +139,7 @@ export const generateRadixColors = ({
     grayTranslucent: grayScaleHex[1],
     // TODO add accent translucent
 
-    pageBackground: pageBackgroundColor.to('srgb').toString({ format: 'hex' }),
+    pageBackground: args.pageBackground,
   };
 };
 
