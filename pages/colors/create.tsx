@@ -13,7 +13,6 @@ import {
   ImageIcon,
   PlusIcon,
   FrameIcon,
-  CubeIcon,
   CrumpledPaperIcon,
   ScissorsIcon,
   Component1Icon,
@@ -99,39 +98,26 @@ export default function ColorsNew() {
 
   const [lightAccentValue, setLightAccentValue] = useLocalStorage('create/light/accent', '#3D63DD');
   const [lightGrayValue, setLightGrayValue] = useLocalStorage('create/light/gray', '#8B8D98');
-  const [lightBackgroundValue, setLightBackgroundValue] = useLocalStorage(
-    'create/light/background',
-    '#FFFFFF'
-  );
 
   const [darkAccentValue, setDarkAccentValue] = useLocalStorage('create/dark/accent', '#3D63DD');
   const [darkGrayValue, setDarkGrayValue] = useLocalStorage('create/dark/gray', '#8B8D98');
-  const [darkBackgroundValue, setDarkBackgroundValue] = useLocalStorage(
-    'create/dark/background',
-    '#111111'
-  );
 
   const accentValue = resolvedTheme === 'dark' ? darkAccentValue : lightAccentValue;
   const grayValue = resolvedTheme === 'dark' ? darkGrayValue : lightGrayValue;
-  const backgroundValue = resolvedTheme === 'dark' ? darkBackgroundValue : lightBackgroundValue;
 
   const setAccentValue = resolvedTheme === 'dark' ? setDarkAccentValue : setLightAccentValue;
   const setGrayValue = resolvedTheme === 'dark' ? setDarkGrayValue : setLightGrayValue;
-  const setBackgroundValue =
-    resolvedTheme === 'dark' ? setDarkBackgroundValue : setLightBackgroundValue;
 
   const lightModeResult = generateRadixColors({
     appearance: 'light',
     accent: lightAccentValue,
     gray: lightGrayValue,
-    pageBackground: lightBackgroundValue,
   });
 
   const darkModeResult = generateRadixColors({
     appearance: 'dark',
     accent: darkAccentValue,
     gray: darkGrayValue,
-    pageBackground: darkBackgroundValue,
   });
 
   const [codeCopied, setCodeCopied] = React.useState(false);
@@ -210,19 +196,6 @@ export default function ColorsNew() {
                   </Text>
                 </Flex>
                 <ColorField id="gray" value={grayValue} onValueChange={setGrayValue} />
-              </Flex>
-
-              <Flex direction="column">
-                <Flex>
-                  <Text as="label" htmlFor="background" size="1" color="gray" mb="1">
-                    Background
-                  </Text>
-                </Flex>
-                <ColorField
-                  id="background"
-                  value={backgroundValue}
-                  onValueChange={setBackgroundValue}
-                />
               </Flex>
 
               <DropdownMenuRoot>
@@ -1046,8 +1019,9 @@ ${themeSelector}:not(.dark, .dark-theme), ${themeSelector}:is(.light, .light-the
     .join('\n  ')}
 
   --accent-9-contrast: ${lightColors.accent9Contrast};
+  --color-surface-accent: ${lightColors.accentSurface};
+  --gray-2-translucent: ${lightColors.gray2Translucent};
   --gray-surface: ${lightColors.graySurface};
-  --gray-2-translucent: ${lightColors.grayTranslucent};
 }
 
 @supports (color: color(display-p3 1 1 1)) {
@@ -1069,6 +1043,10 @@ ${themeSelector}:not(.dark, .dark-theme), ${themeSelector}:is(.light, .light-the
       ${lightColors.grayScaleAlphaWideGamut
         .map((value, index) => `--gray-a${index + 1}: ${value};`)
         .join('\n      ')}
+
+      --color-surface-accent: ${lightColors.accentSurfaceWideGamut};
+      --gray-2-translucent: ${lightColors.gray2TranslucentWideGamut};
+      --gray-surface: ${lightColors.graySurfaceWideGamut};
     }
   }
 }
@@ -1085,8 +1063,9 @@ ${themeSelector}:not(.dark, .dark-theme), ${themeSelector}:is(.light, .light-the
   ${darkColors.grayScaleAlpha.map((value, index) => `--gray-a${index + 1}: ${value};`).join('\n  ')}
 
   --accent-9-contrast: ${darkColors.accent9Contrast};
+  --color-surface-accent: ${darkColors.accentSurface};
+  --gray-2-translucent: ${darkColors.gray2Translucent};
   --gray-surface: ${darkColors.graySurface};
-  --gray-2-translucent: ${darkColors.grayTranslucent};
 }
 
 @supports (color: color(display-p3 1 1 1)) {
@@ -1107,6 +1086,10 @@ ${themeSelector}:not(.dark, .dark-theme), ${themeSelector}:is(.light, .light-the
       ${darkColors.grayScaleAlphaWideGamut
         .map((value, index) => `--gray-a${index + 1}: ${value};`)
         .join('\n      ')}
+
+      --color-surface-accent: ${darkColors.accentSurfaceWideGamut};
+      --gray-2-translucent: ${darkColors.gray2TranslucentWideGamut};
+      --gray-surface: ${darkColors.graySurfaceWideGamut};
     }
   }
 }

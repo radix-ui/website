@@ -45,22 +45,21 @@ export const generateRadixColors = ({
   ...args
 }: {
   appearance: 'light' | 'dark';
-  pageBackground: string;
   accent: string;
   gray: string;
 }) => {
   const allScales = appearance === 'light' ? lightColors : darkColors;
   const grayScales = appearance === 'light' ? lightGrayColors : darkGrayColors;
 
-  const pageBackgroundColor = new Color(args.pageBackground).to('oklch');
+  const grayBaseColor = new Color(args.gray).to('oklch');
+  const grayScaleColors = getScaleFromColor(grayBaseColor, grayScales);
+
+  const backgroundColor = appearance === 'light' ? new Color('#FFFFFF') : grayScaleColors[0];
   const accentBaseColor = new Color(args.accent).to('oklch');
 
   let accentScaleColors = getScaleFromColor(accentBaseColor, allScales);
 
-  const grayBaseColor = new Color(args.gray).to('oklch');
-  const grayScaleColors = getScaleFromColor(grayBaseColor, grayScales);
-  const backdropColor = new Color(pageBackgroundColor).to('oklch');
-  const backdropHex = backdropColor.to('srgb').toString({ format: 'hex' });
+  const backgroundHex = backgroundColor.to('srgb').toString({ format: 'hex' });
 
   // Make sure we use the tint from the gray scale for when base is pure white or black
   const accentBaseHex = accentBaseColor.to('srgb').toString({ format: 'hex' });
@@ -71,7 +70,7 @@ export const generateRadixColors = ({
   const [accent9Color, accent9ContrastColor] = getStep9Colors(
     accentScaleColors,
     accentBaseColor,
-    pageBackgroundColor
+    backgroundColor
   );
 
   accentScaleColors[8] = accent9Color;
@@ -96,11 +95,11 @@ export const generateRadixColors = ({
   ) as ArrayOf12<string>;
 
   const accentScaleAlphaHex = accentScaleHex.map((color) =>
-    getAlphaColorSrgb(color, backdropHex)
+    getAlphaColorSrgb(color, backgroundHex)
   ) as ArrayOf12<string>;
 
-  const accentScaleAlphaWideGamutHex = accentScaleHex.map((color) =>
-    getAlphaColorP3(color, backdropHex)
+  const accentScaleAlphaWideGamutString = accentScaleHex.map((color) =>
+    getAlphaColorP3(color, backgroundHex)
   ) as ArrayOf12<string>;
 
   const accent9ContrastColorHex = accent9ContrastColor.to('srgb').toString({ format: 'hex' });
@@ -114,41 +113,76 @@ export const generateRadixColors = ({
   ) as ArrayOf12<string>;
 
   const grayScaleAlphaHex = grayScaleHex.map((color) =>
-    getAlphaColorSrgb(color, backdropHex)
+    getAlphaColorSrgb(color, backgroundHex)
   ) as ArrayOf12<string>;
 
-  const grayScaleAlphaWideGamutHex = grayScaleHex.map((color) =>
-    getAlphaColorP3(color, backdropHex)
+  const grayScaleAlphaWideGamutString = grayScaleHex.map((color) =>
+    getAlphaColorP3(color, backgroundHex)
   ) as ArrayOf12<string>;
+
+  // prettier-ignore
+  const gray2TranslucentHex =
+    appearance === 'light'
+      ? '#FFFFFFCC'
+      : getAlphaColorSrgb(grayScaleHex[1], backgroundHex, 0.7);
+
+  const gray2TranslucentWideGamut =
+    appearance === 'light'
+      ? 'display-p3(1 1 1 / 0.8)'
+      : getAlphaColorP3(grayScaleWideGamut[1], backgroundHex, 0.7);
+
+  // prettier-ignore
+  const graySurfaceHex =
+    appearance === 'light'
+      ? '#FFFFFFCC'
+      : getAlphaColorSrgb(grayScaleHex[1], backgroundHex, 0.5);
+
+  const graySurfaceWideGamutString =
+    appearance === 'light'
+      ? 'display-p3(1 1 1 / 0.8)'
+      : getAlphaColorP3(grayScaleWideGamut[1], backgroundHex, 0.5);
+
+  const accentSurfaceHex =
+    appearance === 'light'
+      ? getAlphaColorSrgb(accentScaleHex[1], backgroundHex, 0.8)
+      : getAlphaColorSrgb(accentScaleHex[1], backgroundHex, 0.5);
+
+  const accentSurfaceWideGamutString =
+    appearance === 'light'
+      ? getAlphaColorP3(accentScaleWideGamut[1], backgroundHex, 0.8)
+      : getAlphaColorP3(accentScaleWideGamut[1], backgroundHex, 0.5);
 
   return {
     accentScale: accentScaleHex,
     accentScaleAlpha: accentScaleAlphaHex,
     accentScaleWideGamut: accentScaleWideGamut,
-    accentScaleAlphaWideGamut: accentScaleAlphaWideGamutHex,
+    accentScaleAlphaWideGamut: accentScaleAlphaWideGamutString,
     accent9Contrast: accent9ContrastColorHex,
 
     grayScale: grayScaleHex,
     grayScaleAlpha: grayScaleAlphaHex,
     grayScaleWideGamut: grayScaleWideGamut,
-    grayScaleAlphaWideGamut: grayScaleAlphaWideGamutHex,
+    grayScaleAlphaWideGamut: grayScaleAlphaWideGamutString,
 
-    graySurface: appearance === 'light' ? '#ffffffcc' : 'rgba(0, 0, 0, 0.05)',
+    gray2Translucent: gray2TranslucentHex,
+    gray2TranslucentWideGamut: gray2TranslucentWideGamut,
 
-    // TODO rework this
-    grayTranslucent: grayScaleHex[1],
-    // TODO add accent translucent
+    graySurface: graySurfaceHex,
+    graySurfaceWideGamut: graySurfaceWideGamutString,
 
-    pageBackground: args.pageBackground,
+    accentSurface: accentSurfaceHex,
+    accentSurfaceWideGamut: accentSurfaceWideGamutString,
+
+    pageBackground: backgroundHex,
   };
 };
 
 function getStep9Colors(
   scale: ArrayOf12<Color>,
   accentBaseColor: Color,
-  pageBackgroundColor: Color
+  backgroundColor: Color
 ): [Color, Color] {
-  const distance = accentBaseColor.deltaEOK(pageBackgroundColor) * 100;
+  const distance = accentBaseColor.deltaEOK(backgroundColor) * 100;
 
   // If the accent base color is close to the page background color, it's likely
   // white on white or black on black, so we want to return something that makes sense instead
