@@ -122,15 +122,15 @@ export default function ColorsNew() {
 
   const lightModeResult = generateRadixColors({
     appearance: 'light',
-    accentColorString: lightAccentValue,
-    grayColorString: lightGrayValue,
+    accent: lightAccentValue,
+    gray: lightGrayValue,
     pageBackground: lightBackgroundValue,
   });
 
   const darkModeResult = generateRadixColors({
     appearance: 'dark',
-    accentColorString: darkAccentValue,
-    grayColorString: darkGrayValue,
+    accent: darkAccentValue,
+    gray: darkGrayValue,
     pageBackground: darkBackgroundValue,
   });
 
