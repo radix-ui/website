@@ -46,18 +46,18 @@ export const generateRadixColors = ({
 }: {
   appearance: 'light' | 'dark';
   pageBackground: string;
-  accentColorString: string;
-  grayColorString: string;
+  accent: string;
+  gray: string;
 }) => {
   const allScales = appearance === 'light' ? lightColors : darkColors;
   const grayScales = appearance === 'light' ? lightGrayColors : darkGrayColors;
 
   const pageBackgroundColor = new Color(args.pageBackground).to('oklch');
-  const accentBaseColor = new Color(args.accentColorString).to('oklch');
+  const accentBaseColor = new Color(args.accent).to('oklch');
 
   let accentScaleColors = getScaleFromColor(accentBaseColor, allScales);
 
-  const grayBaseColor = new Color(args.grayColorString).to('oklch');
+  const grayBaseColor = new Color(args.gray).to('oklch');
   const grayScaleColors = getScaleFromColor(grayBaseColor, grayScales);
   const backdropColor = new Color(pageBackgroundColor).to('oklch');
   const backdropHex = backdropColor.to('srgb').toString({ format: 'hex' });
