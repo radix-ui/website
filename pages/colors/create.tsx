@@ -167,19 +167,21 @@ export default function ColorsNew() {
       <Section px={{ initial: '5', xs: '6', sm: '7', md: '9' }} size={{ initial: '2', md: '3' }}>
         <Container position="relative">
           <Flex direction="column" align="center" gap="3">
-            <Button asChild variant="ghost" color="gray" highContrast ml="-2">
-              <NextLink href="/colors">
-                <ArrowLeftIcon />
-                Radix Colors
-              </NextLink>
-            </Button>
+            <Flex asChild align="center" gap="1">
+              <Link asChild size="2" color="gray" ml="-2">
+                <NextLink href="/colors">
+                  <ArrowLeftIcon />
+                  Radix Colors
+                </NextLink>
+              </Link>
+            </Flex>
             <Heading as="h1" align="center" size="8" mb="8">
-              Create your Radix palette
+              Create your palette
             </Heading>
           </Flex>
 
           <Box mb="9">
-            <Grid flow="column" columns="220px 220px 220px" gap="4" justify="center" align="end">
+            <Grid flow="column" columns="220px 220px" gap="4" justify="center" align="end">
               <Flex direction="column">
                 <Flex>
                   <Text as="label" htmlFor="accent" size="1" color="gray" mb="1">
