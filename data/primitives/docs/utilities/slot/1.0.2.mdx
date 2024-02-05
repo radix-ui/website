@@ -74,7 +74,7 @@ export default () => (
   <Slot onClick={(event) => {
     if (!event.defaultPrevented) console.log('Not logged because default is prevented.');
   }}>
-    <button onClick={(event) => event.preventDefault()) />
+    <button onClick={(event) => event.preventDefault()} />
   </Slot>
 );
 ```
