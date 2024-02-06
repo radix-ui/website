@@ -16,7 +16,7 @@ const toCssCasing = (str: string) =>
 
 const scaleToHSLObject = (name: string, scale: Scale) => {
   const values = Object.entries(scale)
-    .map(([key, val]) => `  ${key}: '${val}',`)
+    .map(([key, val]) => `  ${key}: '${tinycolor(val).toHslString()}',`)
     .join('\n');
   return `const ${name} = {\n${values}\n}`;
 };
