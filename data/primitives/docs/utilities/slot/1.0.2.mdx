@@ -36,6 +36,8 @@ export default () => (
 
 Use to create your own `asChild` API.
 
+When your component has a single children element:
+
 ```jsx line=9
 // your-button.jsx
 import React from 'react';
@@ -44,6 +46,25 @@ import { Slot } from '@radix-ui/react-slot';
 function Button({ asChild, ...props }) {
   const Comp = asChild ? Slot : 'button';
   return <Comp {...props} />;
+}
+```
+
+Use <Slottable /> when your component has multiple childrens to pass the props to the correct element:
+
+```jsx
+// your-button.jsx
+import React from 'react';
+import { Slot, Slottable } from '@radix-ui/react-slot';
+
+function Button({ asChild, leftElement, rightElement, ...props }) {
+  const Comp = asChild ? Slot : 'button';
+  return (
+    <Comp {...props}>
+      {leftElement}
+      <Slottable>{children}</Slottable>
+      {rightElement}
+    </Comp>
+  );
 }
 ```
 
@@ -58,6 +79,8 @@ export default () => (
   </Button>
 );
 ```
+
+
 
 ### Event handlers
 
