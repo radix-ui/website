@@ -14,8 +14,8 @@ module.exports = {
       },
       keyframes: {
         hide: {
-          from: { opacity: 1 },
-          to: { opacity: 0 },
+          from: { opacity: '1' },
+          to: { opacity: '0' },
         },
         slideIn: {
           from: { transform: 'translateX(calc(100% + var(--viewport-padding)))' },
