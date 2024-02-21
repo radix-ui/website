@@ -722,23 +722,19 @@ This will ensure accessibility and consistent keyboard control is maintained. He
 
 ```jsx line=7-16,22,25
 // index.jsx
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import NextLink from 'next/link';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import './styles.css';
 
 const Link = ({ href, ...props }) => {
-  const router = useRouter();
-  const isActive = router.asPath === href;
+  const pathname = usePathname();
+  const isActive = href === pathname;
 
   return (
-    <NextLink href={href} passHref legacyBehavior>
-      <NavigationMenu.Link
-        className="NavigationMenuLink"
-        active={isActive}
-        {...props}
-      />
-    </NextLink>
+    <NavigationMenu.Link asChild active={isActive}>
+      <NextLink href={href} className="NavigationMenuLink" {...props} />
+    </NavigationMenu.Link>
   );
 };
 
