@@ -163,10 +163,6 @@ const commonDescriptions: CommonDescriptions = {
   trim: 'Removes the leading trim from the start or end of the rendered text node.',
 };
 
-function shouldBalanceArray(values?: readonly string[] | string) {
-  return Array.isArray(values) && values.length > 5;
-}
-
 function formatValues(values?: readonly string[] | string) {
   if (Array.isArray(values)) {
     const strings = values.filter((item) => Boolean(item)).map((v) => `"${v}"`);
@@ -177,7 +173,7 @@ function formatValues(values?: readonly string[] | string) {
     return `"${values}"`;
   }
 
-  return undefined;
+  return '';
 }
 
 type ThemesPropsDef = Record<
@@ -199,6 +195,16 @@ function applyResponsive(value: string | undefined, isResponsive) {
   return value;
 }
 
+function applyStringUnion(value: string | undefined, isEnumString) {
+  if (value && isEnumString) {
+    return `Union<string, ${value}>`;
+  }
+
+  return value;
+}
+
+const MAX_TYPE_LENGTH = 60;
+
 function formatDefinitions(definitions: Record<ComponentName, ThemesPropsDef>) {
   const formattedProps = {};
 
@@ -211,13 +217,18 @@ function formatDefinitions(definitions: Record<ComponentName, ThemesPropsDef>) {
       const description =
         uniqueDescriptions[componentName]?.[propName] || commonDescriptions[propName];
 
-      const value = applyResponsive(formatValues(item.values), item.responsive);
+      let value = applyStringUnion(formatValues(item.values), item.type === 'enum | string');
+      value = applyResponsive(value, item.responsive);
+
+      const shouldUseSimpleType = item.values
+        ? value.length > MAX_TYPE_LENGTH || item.type === 'enum | string'
+        : true;
 
       return {
         name: propName,
         required: item.required,
-        typeSimple: item.values && !shouldBalanceArray(item.values) ? value : item.type,
-        type: shouldBalanceArray(item.values) ? value : undefined,
+        typeSimple: shouldUseSimpleType ? item.type : value,
+        type: shouldUseSimpleType ? value : undefined,
         default:
           typeof item.default === 'boolean' ? String(item.default) : formatValues(item.default),
         description: description,
