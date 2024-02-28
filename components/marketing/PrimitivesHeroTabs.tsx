@@ -99,7 +99,7 @@ export function PrimitivesHeroTabs() {
                 Name
               </Text>
             </Box>
-            <TextField.Input size="1" id="name" defaultValue="Pedro Duarte" />
+            <TextField.Root size="1" id="name" defaultValue="Pedro Duarte" />
           </Label>
         </Fieldset>
         <Fieldset>
@@ -109,7 +109,7 @@ export function PrimitivesHeroTabs() {
                 Username
               </Text>
             </Box>
-            <TextField.Input size="1" id="username" defaultValue="@peduarte" />
+            <TextField.Root size="1" id="username" defaultValue="@peduarte" />
           </Label>
         </Fieldset>
         <Flex justify="end" mt="4">
@@ -124,7 +124,7 @@ export function PrimitivesHeroTabs() {
                 Current password
               </Text>
             </Box>
-            <TextField.Input size="1" id="currentPassword" type="password" />
+            <TextField.Root size="1" id="currentPassword" type="password" />
           </Label>
         </Fieldset>
         <Fieldset>
@@ -134,7 +134,7 @@ export function PrimitivesHeroTabs() {
                 New password
               </Text>
             </Box>
-            <TextField.Input size="1" id="newPassword" type="password" />
+            <TextField.Root size="1" id="newPassword" type="password" />
           </Label>
         </Fieldset>
         <Flex justify="end" mt="4">

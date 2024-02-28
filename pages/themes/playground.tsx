@@ -162,7 +162,6 @@ import {
   //
   TextFieldRoot,
   TextFieldSlot,
-  TextFieldInput,
   textFieldPropDefs,
   //
   Text,
@@ -1219,7 +1218,7 @@ export default function ComponentsPage() {
                           <Text as="div" size="2" weight="medium" mb="2">
                             Email
                           </Text>
-                          <TextFieldInput placeholder="Enter your email address" />
+                          <TextFieldRoot placeholder="Enter your email address" />
                         </label>
                       </Box>
 
@@ -1234,7 +1233,7 @@ export default function ComponentsPage() {
                           <Text as="div" size="2" weight="medium" mb="2">
                             Password
                           </Text>
-                          <TextFieldInput placeholder="Enter your password" />
+                          <TextFieldRoot placeholder="Enter your password" />
                         </label>
                       </Box>
 
@@ -1789,7 +1788,7 @@ export default function ComponentsPage() {
                         <Text as="div" size="1" mb="1" weight="bold">
                           Name
                         </Text>
-                        <TextFieldInput
+                        <TextFieldRoot
                           size="1"
                           defaultValue="Freja Johnsen"
                           placeholder="Enter your full name"
@@ -1799,7 +1798,7 @@ export default function ComponentsPage() {
                         <Text as="div" size="1" mb="1" weight="bold">
                           Email
                         </Text>
-                        <TextFieldInput
+                        <TextFieldRoot
                           size="1"
                           defaultValue="freja@example.com"
                           placeholder="Enter your email"
@@ -1837,7 +1836,7 @@ export default function ComponentsPage() {
                         <Text as="div" size="2" mb="1" weight="bold">
                           Name
                         </Text>
-                        <TextFieldInput
+                        <TextFieldRoot
                           defaultValue="Freja Johnsen"
                           placeholder="Enter your full name"
                         />
@@ -1846,7 +1845,7 @@ export default function ComponentsPage() {
                         <Text as="div" size="2" mb="1" weight="bold">
                           Email
                         </Text>
-                        <TextFieldInput
+                        <TextFieldRoot
                           defaultValue="freja@example.com"
                           placeholder="Enter your email"
                         />
@@ -1881,7 +1880,7 @@ export default function ComponentsPage() {
                         <Text as="div" size="2" mb="1" weight="bold">
                           Name
                         </Text>
-                        <TextFieldInput
+                        <TextFieldRoot
                           defaultValue="Freja Johnsen"
                           placeholder="Enter your full name"
                         />
@@ -1890,7 +1889,7 @@ export default function ComponentsPage() {
                         <Text as="div" size="2" mb="1" weight="bold">
                           Email
                         </Text>
-                        <TextFieldInput
+                        <TextFieldRoot
                           defaultValue="freja@example.com"
                           placeholder="Enter your email"
                         />
@@ -1925,7 +1924,7 @@ export default function ComponentsPage() {
                         <Text as="div" size="3" mb="1" weight="bold">
                           Name
                         </Text>
-                        <TextFieldInput
+                        <TextFieldRoot
                           size="3"
                           defaultValue="Freja Johnsen"
                           placeholder="Enter your full name"
@@ -1935,7 +1934,7 @@ export default function ComponentsPage() {
                         <Text as="div" size="3" mb="1" weight="bold">
                           Email
                         </Text>
-                        <TextFieldInput
+                        <TextFieldRoot
                           size="3"
                           defaultValue="freja@example.com"
                           placeholder="Enter your email"
@@ -4299,11 +4298,10 @@ export default function ComponentsPage() {
                           <tr key={variant}>
                             <td>{upperFirst(variant)}</td>
                             <td>
-                              <TextFieldRoot variant={variant}>
+                              <TextFieldRoot variant={variant} placeholder="Search">
                                 <TextFieldSlot>
                                   <MagnifyingGlassIcon width="16" height="16" />
                                 </TextFieldSlot>
-                                <TextFieldInput placeholder="Search" />
                                 <TextFieldSlot>
                                   <IconButton variant="ghost" color="gray" size="1">
                                     <InfoCircledIcon />
@@ -4312,11 +4310,10 @@ export default function ComponentsPage() {
                               </TextFieldRoot>
                             </td>
                             <td>
-                              <TextFieldRoot variant={variant} color="gray">
+                              <TextFieldRoot variant={variant} color="gray" placeholder="Search">
                                 <TextFieldSlot>
                                   <MagnifyingGlassIcon width="16" height="16" />
                                 </TextFieldSlot>
-                                <TextFieldInput placeholder="Search" />
                                 <TextFieldSlot>
                                   <IconButton variant="ghost" color="gray" size="1">
                                     <InfoCircledIcon />
@@ -4325,15 +4322,15 @@ export default function ComponentsPage() {
                               </TextFieldRoot>
                             </td>
                             <td>
-                              <TextFieldRoot variant={variant}>
+                              <TextFieldRoot
+                                variant={variant}
+                                placeholder="Search"
+                                defaultValue="Quick brown fox"
+                                disabled
+                              >
                                 <TextFieldSlot>
                                   <MagnifyingGlassIcon width="16" height="16" />
                                 </TextFieldSlot>
-                                <TextFieldInput
-                                  placeholder="Search"
-                                  defaultValue="Quick brown fox"
-                                  disabled
-                                />
                                 <TextFieldSlot>
                                   <IconButton variant="ghost" color="gray" size="1" disabled>
                                     <InfoCircledIcon />
@@ -4342,15 +4339,15 @@ export default function ComponentsPage() {
                               </TextFieldRoot>
                             </td>
                             <td>
-                              <TextFieldRoot variant={variant}>
+                              <TextFieldRoot
+                                variant={variant}
+                                placeholder="Search"
+                                defaultValue="Quick brown fox"
+                                readOnly
+                              >
                                 <TextFieldSlot>
                                   <MagnifyingGlassIcon width="16" height="16" />
                                 </TextFieldSlot>
-                                <TextFieldInput
-                                  placeholder="Search"
-                                  defaultValue="Quick brown fox"
-                                  readOnly
-                                />
                                 <TextFieldSlot>
                                   <IconButton variant="ghost" color="gray" size="1">
                                     <InfoCircledIcon />
@@ -4382,11 +4379,10 @@ export default function ComponentsPage() {
                             <td>{upperFirst(color)}</td>
                             {textFieldPropDefs.variant.values.map((variant) => (
                               <td key={variant}>
-                                <TextFieldRoot color={color} variant={variant}>
+                                <TextFieldRoot color={color} variant={variant} placeholder="Search">
                                   <TextFieldSlot>
                                     <MagnifyingGlassIcon width="16" height="16" />
                                   </TextFieldSlot>
-                                  <TextFieldInput placeholder="Search" />
                                   <TextFieldSlot>
                                     <IconButton variant="ghost" color="gray" size="1">
                                       <InfoCircledIcon />
@@ -4432,11 +4428,11 @@ export default function ComponentsPage() {
                                     variant={variant}
                                     radius={radius}
                                     style={{ width: 140 }}
+                                    placeholder="Search"
                                   >
                                     <TextFieldSlot>
                                       <MagnifyingGlassIcon width="14" height="14" />
                                     </TextFieldSlot>
-                                    <TextFieldInput placeholder="Search" />
                                   </TextFieldRoot>
                                 </td>
                               ))}
@@ -4450,11 +4446,11 @@ export default function ComponentsPage() {
                                     variant={variant}
                                     radius={radius}
                                     style={{ width: 160 }}
+                                    placeholder="Search"
                                   >
                                     <TextFieldSlot>
                                       <MagnifyingGlassIcon width="16" height="16" />
                                     </TextFieldSlot>
-                                    <TextFieldInput placeholder="Search" />
                                     <TextFieldSlot>
                                       <IconButton variant="ghost" color="gray" size="1">
                                         <InfoCircledIcon />
@@ -4468,11 +4464,15 @@ export default function ComponentsPage() {
                               <td>Size 3</td>
                               {textFieldPropDefs.radius.values.map((radius) => (
                                 <td key={radius}>
-                                  <TextFieldRoot size="3" variant={variant} radius={radius}>
+                                  <TextFieldRoot
+                                    size="3"
+                                    variant={variant}
+                                    radius={radius}
+                                    placeholder="Search"
+                                  >
                                     <TextFieldSlot>
                                       <MagnifyingGlassIcon width="18" height="18" />
                                     </TextFieldSlot>
-                                    <TextFieldInput placeholder="Search" />
                                     <TextFieldSlot>
                                       <IconButton variant="ghost" color="gray" size="2">
                                         <InfoCircledIcon />

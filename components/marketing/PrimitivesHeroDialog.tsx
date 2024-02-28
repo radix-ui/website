@@ -53,7 +53,7 @@ export function PrimitivesHeroDialog() {
                 Name
               </Text>
             </Box>
-            <TextField.Input size="1" id="name" defaultValue="Pedro Duarte" />
+            <TextField.Root size="1" id="name" defaultValue="Pedro Duarte" />
           </Label>
         </Flex>
 
@@ -64,7 +64,7 @@ export function PrimitivesHeroDialog() {
                 Username
               </Text>
             </Box>
-            <TextField.Input size="1" id="username" defaultValue="@peduarte" />
+            <TextField.Root size="1" id="username" defaultValue="@peduarte" />
           </Label>
         </Flex>
 

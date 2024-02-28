@@ -18,7 +18,7 @@ import {
   Text,
   TextArea,
   TextField,
-  TextFieldInput,
+  TextFieldRoot,
   Theme,
   themeAccentColorsOrdered,
 } from '@radix-ui/themes';
@@ -61,7 +61,7 @@ export function ThemesPanelTranslucentExample() {
                     <Text as="div" size="2" weight="bold" mb="2">
                       Email address
                     </Text>
-                    <TextFieldInput placeholder="Enter your email" />
+                    <TextFieldRoot placeholder="Enter your email" />
                   </label>
                 </Box>
 
@@ -76,7 +76,7 @@ export function ThemesPanelTranslucentExample() {
                     <Text as="div" size="2" weight="bold" mb="2">
                       Password
                     </Text>
-                    <TextFieldInput placeholder="Enter your password" />
+                    <TextFieldRoot placeholder="Enter your password" />
                   </label>
                 </Box>
 
@@ -214,7 +214,7 @@ export function ThemesVariantsExample() {
                     <Text size="2" weight="bold">
                       Name
                     </Text>
-                    <TextField.Input variant="surface" defaultValue="Emily Adams" />
+                    <TextField.Root variant="surface" defaultValue="Emily Adams" />
                   </Label>
                 </Flex>
 
@@ -223,7 +223,7 @@ export function ThemesVariantsExample() {
                     <Text size="2" weight="bold">
                       Username
                     </Text>
-                    <TextField.Input variant="surface" defaultValue="@emilyadams" />
+                    <TextField.Root variant="surface" defaultValue="@emilyadams" />
                   </Label>
                 </Flex>
 
@@ -232,7 +232,7 @@ export function ThemesVariantsExample() {
                     <Text size="2" weight="bold">
                       Email
                     </Text>
-                    <TextField.Input variant="surface" defaultValue="emily@example.com" />
+                    <TextField.Root variant="surface" defaultValue="emily@example.com" />
                   </Label>
                 </Flex>
 
