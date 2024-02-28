@@ -54,6 +54,7 @@
     "@radix-ui/themes": "2.0.2",
     "@stitches/react": "^1.2.8",
     "algoliasearch": "^4.14.2",
+    "bezier-easing": "^2.1.0",
     "codesandbox": "^2.2.3",
     "colorjs.io": "0.4.5",
     "copy-to-clipboard": "^3.3.1",
