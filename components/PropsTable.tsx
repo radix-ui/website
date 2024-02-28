@@ -105,7 +105,14 @@ export function PropsTable({
                           >
                             <Inset>
                               <ScrollArea type="auto">
-                                <Box style={{ padding: 'var(--inset-padding)' }}>
+                                <Box
+                                  style={{
+                                    paddingTop: 'var(--inset-padding-top)',
+                                    paddingRight: 'var(--inset-padding-right)',
+                                    paddingBottom: 'var(--inset-padding-bottom)',
+                                    paddingLeft: 'var(--inset-padding-left)',
+                                  }}
+                                >
                                   <Code
                                     color="gray"
                                     variant="ghost"
