@@ -18,7 +18,7 @@ export function PrimitivesDocsPage({ children }: { children: React.ReactNode }) 
 
       <Flex>
         <SideNav>
-          <Box pt="4" px="4" pb="9">
+          <Box pt="4" px="3" pb="9">
             <Box mb="4">
               <PrimitivesSearchDesktop />
             </Box>

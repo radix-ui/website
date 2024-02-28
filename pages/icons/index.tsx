@@ -15,7 +15,7 @@ export default function Home() {
       <MobileMenu>
         <ColorsHeader />
         <ScrollArea>
-          <Box pt="4" px="4" pb="9">
+          <Box pt="4" px="3" pb="9">
             <DocsNav
               routes={[
                 {

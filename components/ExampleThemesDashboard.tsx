@@ -11,7 +11,6 @@ import {
   PlusIcon,
   Share2Icon,
 } from '@radix-ui/react-icons';
-import { Label } from '@radix-ui/react-label';
 import {
   Avatar,
   Badge,
@@ -228,7 +227,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
           </Flex>
         </Card>
 
-        <Card size="4" style={{ height: 464 }}>
+        <Card size="4">
           <Heading as="h3" size="6" trim="start" mb="2">
             Pricing
           </Heading>
@@ -413,18 +412,22 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
       </Flex>
 
       <Flex shrink="0" gap="6" direction="column" style={{ width: 416 }}>
-        <Card size="4" style={{ height: 320 }}>
+        <Card size="4">
           <Heading as="h3" size="6" trim="start" mb="5">
             Sign up
           </Heading>
 
           <Box mb="5">
-            <Label>
-              <Text as="div" size="2" weight="bold" mb="2">
+            <Flex mb="2">
+              <Text as="label" htmlFor="example-email-field" size="2" weight="bold">
                 Email address
               </Text>
-              <TextField.Input tabIndex={-1} placeholder="Enter your email" />
-            </Label>
+            </Flex>
+            <TextField.Input
+              tabIndex={-1}
+              placeholder="Enter your email"
+              id="example-email-field"
+            />
           </Box>
 
           <Box mb="5" position="relative">
@@ -434,12 +437,19 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
               </Link>
             </Box>
 
-            <Label>
-              <Text as="div" size="2" weight="bold" mb="2">
+            <Flex justify="between" mb="2">
+              <Text as="label" size="2" weight="bold" htmlFor="example-password-field">
                 Password
               </Text>
-              <TextField.Input tabIndex={-1} placeholder="Enter your password" />
-            </Label>
+              <Link tabIndex={-1} size="2">
+                Forgot password?
+              </Link>
+            </Flex>
+            <TextField.Input
+              tabIndex={-1}
+              placeholder="Enter your password"
+              id="example-password-field"
+            />
           </Box>
 
           <Flex mt="6" justify="end" gap="3">
@@ -1125,7 +1135,7 @@ const itemsContent = {
   a: (
     <span>
       Respond to comment{' '}
-      <Link tabIndex={-1} onClick={(event) => event.preventDefault()}>
+      <Link underline="hover" tabIndex={-1} onClick={(event) => event.preventDefault()}>
         #384
       </Link>{' '}
       from Travis Ross
@@ -1134,7 +1144,7 @@ const itemsContent = {
   b: (
     <span>
       Invite{' '}
-      <Link tabIndex={-1} onClick={(event) => event.preventDefault()}>
+      <Link underline="hover" tabIndex={-1} onClick={(event) => event.preventDefault()}>
         Acme Co.
       </Link>{' '}
       team to Slack
@@ -1143,7 +1153,7 @@ const itemsContent = {
   c: (
     <span>
       Create a report{' '}
-      <Link tabIndex={-1} onClick={(event) => event.preventDefault()}>
+      <Link underline="hover" tabIndex={-1} onClick={(event) => event.preventDefault()}>
         requested
       </Link>{' '}
       by Danilo Sousa
@@ -1152,7 +1162,7 @@ const itemsContent = {
   d: (
     <span>
       Review support request{' '}
-      <Link tabIndex={-1} onClick={(event) => event.preventDefault()}>
+      <Link underline="hover" tabIndex={-1} onClick={(event) => event.preventDefault()}>
         #85
       </Link>
     </span>
@@ -1161,7 +1171,7 @@ const itemsContent = {
   f: (
     <span>
       Review invoice{' '}
-      <Link tabIndex={-1} onClick={(event) => event.preventDefault()}>
+      <Link underline="hover" tabIndex={-1} onClick={(event) => event.preventDefault()}>
         #3456
       </Link>
     </span>
@@ -1172,18 +1182,7 @@ const ToDoList = ({ items, onItemsChange }: ToDoList) => {
   return (
     <Flex gap="2" direction="column">
       {items.map((item) => (
-        <Text
-          as="label"
-          size="2"
-          key={item.id}
-          color={item.completed ? 'gray' : undefined}
-          style={
-            {
-              textDecoration: item.completed ? 'line-through' : undefined,
-              '--accent-12': 'var(--accent-11)',
-            } as React.CSSProperties
-          }
-        >
+        <Text as="label" size="2" key={item.id}>
           <Flex gap="2">
             <Checkbox
               tabIndex={-1}
@@ -1195,7 +1194,17 @@ const ToDoList = ({ items, onItemsChange }: ToDoList) => {
                 onItemsChange(newItems);
               }}
             />
-            <Text>{itemsContent[item.id]}</Text>
+            <Text
+              color={item.completed ? 'gray' : undefined}
+              style={
+                {
+                  textDecoration: item.completed ? 'line-through' : undefined,
+                  '--accent-12': 'var(--accent-11)',
+                } as React.CSSProperties
+              }
+            >
+              {itemsContent[item.id]}
+            </Text>
           </Flex>
         </Text>
       ))}

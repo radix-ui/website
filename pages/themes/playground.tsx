@@ -192,6 +192,7 @@ import { useTheme } from 'next-themes';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import Head from 'next/head';
 import { ThemesMobileMenu } from '@components/ThemesMobileMenu';
+import { AvatarIconFallback } from '@components/AvatarIconFallback';
 import { RemoveScroll } from 'react-remove-scroll';
 
 export default function ComponentsPage() {
@@ -394,7 +395,7 @@ export default function ComponentsPage() {
                   </Link>
                 </NextLink>
               </Flex>
-              <Grid columns="4" gap="4">
+              <Grid columns={{ initial: '3', lg: '5', xl: '6' }} gap="4">
                 {['2 / 3', '1 / 1', '16 / 9'].map((ratio) => (
                   <div key={ratio}>
                     <Text as="p" size="1" color="gray" mb="2">
@@ -1210,15 +1211,15 @@ export default function ComponentsPage() {
 
                     <Card size="4" style={{ width: 400 }}>
                       <Heading as="h3" size="6" trim="start" mb="5">
-                        Sign up
+                        Sign in
                       </Heading>
 
                       <Box mb="5">
                         <label>
                           <Text as="div" size="2" weight="medium" mb="2">
-                            Email address
+                            Email
                           </Text>
-                          <TextFieldInput placeholder="Enter your email" />
+                          <TextFieldInput placeholder="Enter your email address" />
                         </label>
                       </Box>
 
@@ -4529,19 +4530,6 @@ export default function ComponentsPage() {
         </Section>
       </div>
     </MobileMenuProvider>
-  );
-}
-
-function AvatarIconFallback() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 64 64"
-      fill="currentColor"
-      style={{ width: '60%', height: '60%' }}
-    >
-      <path d="M41.5 14c4.687 0 8.5 4.038 8.5 9s-3.813 9-8.5 9S33 27.962 33 23 36.813 14 41.5 14zM56.289 43.609C57.254 46.21 55.3 49 52.506 49c-2.759 0-11.035 0-11.035 0 .689-5.371-4.525-10.747-8.541-13.03 2.388-1.171 5.149-1.834 8.07-1.834C48.044 34.136 54.187 37.944 56.289 43.609zM37.289 46.609C38.254 49.21 36.3 52 33.506 52c-5.753 0-17.259 0-23.012 0-2.782 0-4.753-2.779-3.783-5.392 2.102-5.665 8.245-9.472 15.289-9.472S35.187 40.944 37.289 46.609zM21.5 17c4.687 0 8.5 4.038 8.5 9s-3.813 9-8.5 9S13 30.962 13 26 16.813 17 21.5 17z"></path>
-    </svg>
   );
 }
 
