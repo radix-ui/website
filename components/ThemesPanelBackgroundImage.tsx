@@ -9,7 +9,7 @@ export const ThemesPanelBackgroundImage = ({
     viewBox="0 0 2560 1920"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    style={{ opacity: 0.6, ...style }}
+    style={{ opacity: 0.6, pointerEvents: 'none', ...style }}
     {...props}
   >
     <g>

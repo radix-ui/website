@@ -4,7 +4,10 @@ import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
 import { IconButton, Tooltip } from '@radix-ui/themes';
 import Head from 'next/head';
 
-export const ThemeToggle = () => {
+export const ThemeToggle = ({
+  children,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof IconButton>) => {
   const { theme, systemTheme, setTheme } = useTheme();
 
   return (
@@ -34,6 +37,7 @@ export const ThemeToggle = () => {
             const newThemeMatchesSystem = newTheme === systemTheme;
             setTheme(newThemeMatchesSystem ? 'system' : newTheme);
           }}
+          {...props}
         >
           <SunIcon
             width="16"

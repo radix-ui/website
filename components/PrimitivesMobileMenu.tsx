@@ -14,7 +14,7 @@ export const PrimitivesMobileMenu = () => {
     <MobileMenu>
       <PrimitivesHeader />
       <ScrollArea scrollbars="vertical">
-        <Box pt="4" px="4" pb="9" style={{ maxWidth: '100vw' }}>
+        <Box pt="4" px="3" pb="9" style={{ maxWidth: '100vw' }}>
           <Box mb="4">
             <PrimitivesSearchMobile
               onSearchShow={() => setMobileSearchOpen(true)}
