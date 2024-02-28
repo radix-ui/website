@@ -218,7 +218,7 @@ const MainContent = ({
   codeBlockScheme?: React.ComponentProps<typeof SyntaxSchemeProvider>['scheme'];
 }) => (
   <Box>
-    <Section size={{ initial: '2', md: '3', lg: '2' }} pb={{ initial: '4', lg: '7' }}>
+    <Section size={{ initial: '2', md: '4', lg: '2' }} pb={{ initial: '4', lg: '7' }}>
       <Box>
         <Box display={{ lg: 'none' }}>
           <SerifHeading mb="3">

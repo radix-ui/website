@@ -4,7 +4,7 @@ import { Box, Section, Grid, Container, Heading, Em, Text } from '@radix-ui/them
 export const BenefitsSection = () => {
   return (
     <Section
-      size={{ initial: '2', md: '3' }}
+      size={{ initial: '2', md: '4' }}
       style={{
         position: 'relative',
         overflow: 'hidden',

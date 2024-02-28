@@ -64,7 +64,7 @@ export default function ColorsHome() {
           description="An open-source color system for designing beautiful, accessible websites and apps."
           image="colors.png"
         />
-        <Section size={{ initial: '2', md: '3' }}>
+        <Section size={{ initial: '2', md: '4' }}>
           <Container>
             <SerifHeading mb="3" style={{ maxWidth: 720 }}>
               A gorgeous, accessible color system for user interfaces
@@ -227,7 +227,7 @@ export default function ColorsHome() {
       </ScrollArea>
 
       <Box mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
-        <Section size={{ initial: '2', md: '3' }}>
+        <Section size={{ initial: '2', md: '4' }}>
           <Container>
             <Grid columns={{ sm: '3' }} gap={{ initial: '7', sm: '6', md: '9' }}>
               <Box style={{ maxWidth: 540 }}>
@@ -309,7 +309,7 @@ export default function ColorsHome() {
 
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Separator size="2" />
-        <Section size={{ initial: '2', md: '3' }} pb="0">
+        <Section size={{ initial: '2', md: '4' }} pb="0">
           <Footer />
         </Section>
       </Container>

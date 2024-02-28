@@ -8,7 +8,7 @@ export const ComponentHighlightsSection = () => {
   return (
     <Section
       position="relative"
-      size={{ initial: '2', sm: '3' }}
+      size={{ initial: '2', sm: '4' }}
       style={{ overflow: 'hidden' }}
       mb={{ md: '9' }}
     >
