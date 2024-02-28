@@ -61,7 +61,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
       <PrimitivesMobileMenu />
 
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
-        <Section size={{ initial: '2', md: '3' }}>
+        <Section size={{ initial: '2', md: '4' }}>
           <Grid columns={{ md: '1fr 330px', lg: '1fr 380px' }} gap={{ md: '9' }}>
             <Box>
               <MarketingCaption mb="1">Case study</MarketingCaption>

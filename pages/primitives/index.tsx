@@ -52,7 +52,7 @@ export default function PrimitivesHome() {
       <CommunitySection />
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Separator size="2" />
-        <Section size={{ initial: '2', md: '3' }} pb="0">
+        <Section size={{ initial: '2', md: '4' }} pb="0">
           <Footer />
         </Section>
       </Container>

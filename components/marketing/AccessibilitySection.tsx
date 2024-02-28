@@ -341,7 +341,7 @@ export const AccessibilitySection = () => {
   }, [currentSequence, isIntersecting]);
 
   return (
-    <Section size={{ initial: '2', md: '3' }} className={styles.AccessibilitySectionRoot}>
+    <Section size={{ initial: '2', md: '4' }} className={styles.AccessibilitySectionRoot}>
       <div className={styles.AccessibilitySectionBackground}>
         <div className={styles.AccessibilitySectionBackgroundSquare} />
         <div className={styles.AccessibilitySectionBackgroundTriangle}>

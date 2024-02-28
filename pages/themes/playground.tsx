@@ -261,7 +261,7 @@ export default function ComponentsPage() {
           />
         </Box>
 
-        <Section size={{ initial: '2', md: '3' }}>
+        <Section size={{ initial: '2', md: '4' }}>
           <Flex direction="column" gap="9" mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
             <PlaygroundSection>
               <Flex align="baseline" gap="4" mt="2">

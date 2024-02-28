@@ -257,7 +257,7 @@ export const PrimitivesHero = () => {
   }, []);
 
   return (
-    <Section size={{ initial: '2', md: '3' }}>
+    <Section size={{ initial: '2', md: '4' }}>
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Box mb="6">
           <Box mb="5">
