@@ -25,24 +25,6 @@ By default, the root `Theme` appearance is `light`. To set a different appearanc
 </Theme>
 ```
 
-### Automatic background color
-
-Radix Themes will automatically set the background color of your app to match `appearance`, this is achieved by injecting a `background-color` style on the `body` element.
-
-As the style injection can only occur on the client, you may experience a hydration warning. In this case it's safe to suppress the warning.
-
-```jsx line=4
-// app/layout.jsx
-export default function Layout({ children }) {
-  return (
-    <html __suppressHydrationWarning__>
-      <head />
-      <body>{children}</body>
-    </html>
-  );
-}
-```
-
 ## Inheriting from system preferences
 
 A common requirement is to inherit the appearance setting from a users system preferences.
@@ -92,10 +74,7 @@ export default function () {
 
 Any library that supports class switching is compatible, you'll just need to ensure that the appended class names match those used by Radix Themes:
 
-- `light`
-- `dark`
-
-or
-
-- `light-theme`
-- `dark-theme`
+- `className="light"`
+- `className="light-theme"`
+- `className="dark"`
+- `className="dark-theme"`
