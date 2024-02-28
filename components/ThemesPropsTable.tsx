@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropsTable } from './PropsTable';
-import * as themes from '@radix-ui/themes';
+import * as themes from '@lib/themes';
 import { Code, Link as DSLink } from '@radix-ui/themes';
 import NextLink from 'next/link';
 
@@ -15,47 +15,26 @@ const Link = ({ href = '', ...props }) => {
   );
 };
 
-const asChildProp = {
-  asChild: {
-    required: false,
-    type: 'boolean',
-    default: false,
-  },
-};
-
 const definitions = {
   avatar: themes.avatarPropDefs,
-  button: { ...asChildProp, ...themes.buttonPropDefs },
+  button: themes.buttonPropDefs,
   checkbox: themes.checkboxPropDefs,
-  iconButton: { ...asChildProp, ...themes.iconButtonPropDefs },
-  radioGroup: themes.radioGroupPropDefs,
+  iconButton: themes.iconButtonPropDefs,
+  radioGroup: themes.radioGroupRootPropDefs,
   slider: themes.sliderPropDefs,
   switch: themes.switchPropDefs,
   tooltip: themes.tooltipPropDefs,
   box: themes.boxPropDefs,
-  flex: { ...asChildProp, ...themes.flexPropDefs },
-  grid: { ...asChildProp, ...themes.gridPropDefs },
+  flex: themes.flexPropDefs,
+  grid: themes.gridPropDefs,
   container: themes.containerPropDefs,
   section: themes.sectionPropDefs,
-  text: {
-    ...asChildProp,
-    as: { required: false, type: 'enum', values: ['p', 'label', 'div', 'span'], default: 'span' },
-    ...themes.textPropDefs,
-  },
-  heading: {
-    ...asChildProp,
-    as: {
-      required: false,
-      type: 'enum',
-      values: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
-      default: 'h1',
-    },
-    ...themes.headingPropDefs,
-  },
-  link: { ...asChildProp, ...themes.linkPropDefs },
+  text: themes.textPropDefs,
+  heading: themes.headingPropDefs,
+  link: themes.linkPropDefs,
   blockquote: themes.blockquotePropDefs,
   code: themes.codePropDefs,
-  textField: themes.textFieldPropDefs,
+  textField: themes.textFieldRootPropDefs,
   textFieldSlot: themes.textFieldSlotPropDefs,
   textArea: themes.textAreaPropDefs,
   separator: themes.separatorPropDefs,
@@ -63,26 +42,26 @@ const definitions = {
   layout: themes.layoutPropDefs,
   margin: themes.marginPropDefs,
   selectRoot: themes.selectRootPropDefs,
-  selectTrigger: { ...asChildProp, ...themes.selectTriggerPropDefs },
+  selectTrigger: themes.selectTriggerPropDefs,
   selectContent: themes.selectContentPropDefs,
   scrollArea: themes.scrollAreaPropDefs,
   dropdownMenuContent: themes.dropdownMenuContentPropDefs,
   dropdownMenuItem: themes.dropdownMenuItemPropDefs,
   contextMenuContent: themes.contextMenuContentPropDefs,
   contextMenuItem: themes.contextMenuItemPropDefs,
-  theme: { ...asChildProp, ...themes.themePropDefs },
-  card: { ...asChildProp, ...themes.cardPropDefs },
-  tableRoot: { ...asChildProp, ...themes.tableRootPropDefs },
-  tableRow: { ...asChildProp, ...themes.tableRowPropDefs },
-  tableCell: { ...asChildProp, ...themes.tableCellPropDefs },
-  calloutRoot: { ...themes.calloutRootPropDefs },
-  inset: { ...themes.insetPropDefs },
-  tabsList: { ...themes.tabsListPropDefs },
-  kbd: { ...themes.kbdPropDefs },
-  hoverCardContent: { ...themes.hoverCardContentPropDefs },
-  dialogContent: { ...themes.dialogContentPropDefs },
-  alertDialogContent: { ...themes.alertDialogContentPropDefs },
-  popoverContent: { ...themes.popoverContentPropDefs },
+  theme: themes.themePropDefs,
+  card: themes.cardPropDefs,
+  tableRoot: themes.tableRootPropDefs,
+  tableRow: themes.tableRowPropDefs,
+  tableCell: themes.tableCellPropDefs,
+  calloutRoot: themes.calloutRootPropDefs,
+  inset: themes.insetPropDefs,
+  tabsList: themes.tabsListPropDefs,
+  kbd: themes.kbdPropDefs,
+  hoverCardContent: themes.hoverCardContentPropDefs,
+  dialogContent: themes.dialogContentPropDefs,
+  alertDialogContent: themes.alertDialogContentPropDefs,
+  popoverContent: themes.popoverContentPropDefs,
 } as const;
 
 type PropDefinitions = typeof definitions;
