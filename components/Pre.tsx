@@ -10,7 +10,8 @@ const [SyntaxSchemeProvider, useSyntaxSchemeContext] = createContext<{
   scheme: 'indigo' | 'pink' | 'teal' | 'blue' | 'red';
 }>('SyntaxScheme');
 
-type PreProps = React.ComponentPropsWithoutRef<typeof Box> & React.ComponentPropsWithoutRef<'pre'>;
+type PreProps = Omit<React.ComponentPropsWithoutRef<typeof Box>, 'asChild' | 'as'> &
+  React.ComponentPropsWithoutRef<'pre'>;
 
 const Pre = React.forwardRef<HTMLPreElement, PreProps>(function Pre(
   { className, children, ...props },
