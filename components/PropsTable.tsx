@@ -101,7 +101,7 @@ export function PropsTable({
                           <Popover.Content
                             side="top"
                             align="center"
-                            style={{ maxWidth: 'min(720px, 95vw)' }}
+                            style={{ maxWidth: 'min(1240px, 95vw)' }}
                           >
                             <Inset>
                               <ScrollArea type="auto">
