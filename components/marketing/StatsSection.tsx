@@ -27,6 +27,7 @@ export const StatsSection = () => {
           flow={{ initial: 'row', xs: 'column' }}
           gap={{ initial: '4', xs: '5', sm: '6' }}
           style={{ whiteSpace: 'nowrap' }}
+          mr="-7"
         >
           <Box>
             <Flex asChild align="center">
@@ -40,7 +41,7 @@ export const StatsSection = () => {
                   marginLeft: '-0.01em',
                 }}
               >
-                20M
+                130M
                 <span style={{ fontSize: '70%', marginLeft: '0.05em', marginTop: '-0.15em' }}>
                   +
                 </span>
@@ -68,7 +69,7 @@ export const StatsSection = () => {
                   marginLeft: '-0.01em',
                 }}
               >
-                4000
+                5500
                 <span style={{ fontSize: '70%', marginLeft: '0.05em', marginTop: '-0.15em' }}>
                   +
                 </span>
