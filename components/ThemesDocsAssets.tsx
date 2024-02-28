@@ -20,7 +20,6 @@ import {
   TextField,
   TextFieldRoot,
   Theme,
-  themeAccentColorsOrdered,
 } from '@radix-ui/themes';
 import { Label } from '@radix-ui/react-label';
 import { allPeople } from './people';
@@ -28,6 +27,7 @@ import { CheckIcon } from '@radix-ui/react-icons';
 import { Marker } from './Marker';
 import * as React from 'react';
 import { ThemesPanelBackgroundImage } from './ThemesPanelBackgroundImage';
+import { accentColors } from '@lib/themes';
 
 export function ThemesPanelTranslucentExample() {
   return (
@@ -546,7 +546,7 @@ export function ThemesAccentSwatches() {
   return (
     <Flex direction="column" gap="5" my="6">
       <Grid columns={{ initial: '4', xs: '6', sm: '9' }} gapX="1" gapY="3">
-        {themeAccentColorsOrdered.map((color, i) => (
+        {accentColors.map((color, i) => (
           <Box flexGrow="1" key={i}>
             <Theme accentColor={color} hasBackground={false} asChild>
               <Box

@@ -121,7 +121,7 @@ import {
   textFieldRootPropDefs,
   textPropDefs,
   themePropDefs,
-} from '@lib/themes-props';
+} from '@lib/themes';
 import {
   ArrowRightIcon,
   CaretDownIcon,
