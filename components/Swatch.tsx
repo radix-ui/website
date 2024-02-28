@@ -13,8 +13,6 @@ import {
   Flex,
   AccessibleIcon,
   IconButton,
-  radixColorScalesBright,
-  radixGrayScales,
   Dialog,
 } from '@radix-ui/themes';
 import styles from './Swatch.module.css';
@@ -23,6 +21,8 @@ import * as Colors from '@radix-ui/colors';
 import { useTheme } from 'next-themes';
 import { Cross2Icon, InfoCircledIcon } from '@radix-ui/react-icons';
 import copy from 'copy-to-clipboard';
+
+const brightColors = ['amber', 'yellow', 'lime', 'mint', 'sky'];
 
 interface SwatchProps extends React.ComponentPropsWithoutRef<'button'> {
   scale: string;
@@ -84,7 +84,7 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
 
             {!['white', 'black'].includes(scale) &&
               (() => {
-                const isGray = (radixGrayScales as readonly string[]).includes(scale);
+                const isGray = ['gray', 'mauve', 'slate', 'sage', 'olive', 'sand'].includes(scale);
                 const dark = resolvedTheme === 'dark';
                 const hex = getValue({ scale, step, dark });
                 const hexA = getValue({ scale, step, dark, alpha: true });
@@ -125,9 +125,7 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
                         {['5'].includes(step) && 'Step 12 labels'}
                         {['6', '7', '8'].includes(step) && 'Steps 1–5 backgrounds'}
                         {['9', '10'].includes(step) &&
-                          (([...radixColorScalesBright] as string[]).includes(scale)
-                            ? 'Dark text'
-                            : 'White text')}
+                          (brightColors.includes(scale) ? 'Dark text' : 'White text')}
                         {['11', '12'].includes(step) && 'Background colors'}
                       </Text>
                     </Box>
@@ -316,7 +314,7 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
                 }
 
                 if (+step < 11) {
-                  const isBright = (radixColorScalesBright as readonly string[]).includes(scale);
+                  const isBright = brightColors.includes(scale);
                   return isBright ? 'light' : 'dark';
                 }
 

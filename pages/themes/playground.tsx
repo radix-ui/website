@@ -1,180 +1,127 @@
 import * as React from 'react';
 import NextLink from 'next/link';
 import {
-  Theme,
-  themePropDefs,
-  //
-  AlertDialogRoot,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogTitle,
-  AlertDialogDescription,
   AlertDialogAction,
   AlertDialogCancel,
-  //
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogRoot,
+  AlertDialogTitle,
+  AlertDialogTrigger,
   AspectRatio,
-  //
   Avatar,
-  avatarPropDefs,
-  //
   Badge,
-  badgePropDefs,
-  //
   Blockquote,
-  blockquotePropDefs,
-  //
   Box,
-  //
   Button,
-  buttonPropDefs,
-  //
-  CalloutRoot,
   CalloutIcon,
+  CalloutRoot,
   CalloutText,
-  calloutRootPropDefs,
-  //
   Card,
-  cardPropDefs,
-  //
   Checkbox,
-  checkboxPropDefs,
-  //
   Code,
-  codePropDefs,
-  //
-  Container,
-  //
-  ContextMenuRoot,
-  ContextMenuTrigger,
   ContextMenuContent,
-  ContextMenuLabel,
   ContextMenuItem,
-  ContextMenuGroup,
-  ContextMenuRadioGroup,
-  ContextMenuRadioItem,
-  ContextMenuCheckboxItem,
-  ContextMenuSub,
-  ContextMenuSubTrigger,
-  ContextMenuSubContent,
+  ContextMenuRoot,
   ContextMenuSeparator,
-  contextMenuContentPropDefs,
-  //
-  DialogRoot,
-  DialogTrigger,
-  DialogContent,
-  DialogTitle,
-  DialogDescription,
+  ContextMenuSub,
+  ContextMenuSubContent,
+  ContextMenuSubTrigger,
+  ContextMenuTrigger,
   DialogClose,
-  dialogContentPropDefs,
-  //
-  DropdownMenuRoot,
-  DropdownMenuTrigger,
+  DialogContent,
+  DialogDescription,
+  DialogRoot,
+  DialogTitle,
+  DialogTrigger,
   DropdownMenuContent,
-  DropdownMenuLabel,
   DropdownMenuItem,
-  DropdownMenuGroup,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuCheckboxItem,
-  DropdownMenuSub,
-  DropdownMenuSubTrigger,
-  DropdownMenuSubContent,
+  DropdownMenuRoot,
   DropdownMenuSeparator,
-  dropdownMenuContentPropDefs,
-  //
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
   Em,
   Flex,
   Grid,
-  //
   Heading,
-  headingPropDefs,
-  //
+  HoverCardContent,
   HoverCardRoot,
   HoverCardTrigger,
-  HoverCardContent,
-  hoverCardContentPropDefs,
-  //
   IconButton,
-  iconButtonPropDefs,
-  //
   Inset,
-  //
   Kbd,
-  kbdPropDefs,
-  //
   Link,
-  linkPropDefs,
-  //
-  PopoverRoot,
-  PopoverContent,
-  PopoverTrigger,
   PopoverClose,
-  //
+  PopoverContent,
+  PopoverRoot,
+  PopoverTrigger,
   Quote,
-  //
-  RadioGroupRoot,
   RadioGroupItem,
-  radioGroupPropDefs,
-  //
+  RadioGroupRoot,
   ScrollArea,
-  scrollAreaPropDefs,
-  //
   Section,
-  //
-  SelectRoot,
-  SelectTrigger,
   SelectContent,
-  SelectItem,
   SelectGroup,
+  SelectItem,
   SelectLabel,
+  SelectRoot,
   SelectSeparator,
-  selectRootPropDefs,
-  selectTriggerPropDefs,
-  selectContentPropDefs,
-  //
+  SelectTrigger,
   Separator,
-  //
   Slider,
-  sliderPropDefs,
-  //
   Strong,
-  //
   Switch,
-  switchPropDefs,
-  //
-  TableRoot,
-  TableHeader,
-  TableRow,
-  TableColumnHeaderCell,
   TableBody,
-  TableRowHeaderCell,
   TableCell,
-  tableRootPropDefs,
-  //
-  TabsRoot,
-  TabsList,
-  TabsTrigger,
+  TableColumnHeaderCell,
+  TableHeader,
+  TableRoot,
+  TableRow,
+  TableRowHeaderCell,
   TabsContent,
-  tabsListPropDefs,
-  //
+  TabsList,
+  TabsRoot,
+  TabsTrigger,
+  Text,
   TextArea,
-  textAreaPropDefs,
-  //
   TextFieldRoot,
   TextFieldSlot,
-  textFieldPropDefs,
-  //
-  Text,
-  textPropDefs,
-  //
-  Tooltip,
-  //
-  // helpers:
-  themeAccentColorsOrdered,
-  useThemeContext,
-  //
+  Theme,
   ThemePanel,
+  Tooltip,
+  useThemeContext,
 } from '@radix-ui/themes';
+import {
+  accentColors,
+  avatarPropDefs,
+  badgePropDefs,
+  blockquotePropDefs,
+  buttonPropDefs,
+  calloutRootPropDefs,
+  cardPropDefs,
+  checkboxPropDefs,
+  codePropDefs,
+  contextMenuContentPropDefs,
+  dropdownMenuContentPropDefs,
+  headingPropDefs,
+  hoverCardContentPropDefs,
+  iconButtonPropDefs,
+  kbdPropDefs,
+  linkPropDefs,
+  radioGroupRootPropDefs,
+  selectRootPropDefs,
+  selectTriggerPropDefs,
+  sliderPropDefs,
+  switchPropDefs,
+  tableRootPropDefs,
+  tabsListPropDefs,
+  textAreaPropDefs,
+  textFieldRootPropDefs,
+  textPropDefs,
+  themePropDefs,
+} from '@lib/themes-props';
 import {
   ArrowRightIcon,
   CaretDownIcon,
@@ -512,7 +459,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             {avatarPropDefs.variant.values.map((variant, index) => (
@@ -670,7 +617,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             {badgePropDefs.variant.values.map((variant) => (
@@ -810,7 +757,7 @@ export default function ComponentsPage() {
                   <Box mt="6">
                     <table className={styles.PlaygroundTable} style={{ whiteSpace: 'nowrap' }}>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             <td style={{ textAlign: 'left' }}>
@@ -956,7 +903,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             {buttonPropDefs.variant.values.map((variant) => (
@@ -1108,7 +1055,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             {calloutRootPropDefs.variant.values.map((variant) => (
@@ -1391,7 +1338,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             {checkboxPropDefs.variant.values.map((variant) => (
@@ -1527,7 +1474,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color} style={{ verticalAlign: 'baseline' }}>
                             <td>{upperFirst(color)}</td>
                             {codePropDefs.variant.values.map((variant) => (
@@ -1677,7 +1624,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             {contextMenuContentPropDefs.variant.values.map((variant) => (
@@ -2063,7 +2010,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             {dropdownMenuContentPropDefs.variant.values.map((variant) => (
@@ -2249,7 +2196,7 @@ export default function ComponentsPage() {
                   <Box mt="6">
                     <table className={styles.PlaygroundTable} style={{ whiteSpace: 'nowrap' }}>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             <td>
@@ -2427,7 +2374,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             {iconButtonPropDefs.variant.values.map((variant) => (
@@ -2714,7 +2661,7 @@ export default function ComponentsPage() {
                   <Box mt="6">
                     <table className={styles.PlaygroundTable} style={{ whiteSpace: 'nowrap' }}>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             <td style={{ textAlign: 'left' }}>
@@ -2987,7 +2934,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {radioGroupPropDefs.variant.values.map((variant) => (
+                        {radioGroupRootPropDefs.variant.values.map((variant) => (
                           <tr key={variant}>
                             <td>{upperFirst(variant)}</td>
                             <td>
@@ -3052,16 +2999,16 @@ export default function ComponentsPage() {
                       <thead>
                         <tr>
                           <th />
-                          {radioGroupPropDefs.variant.values.map((variant) => (
+                          {radioGroupRootPropDefs.variant.values.map((variant) => (
                             <th key={variant}>{upperFirst(variant)}</th>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
-                            {radioGroupPropDefs.variant.values.map((variant) => (
+                            {radioGroupRootPropDefs.variant.values.map((variant) => (
                               <td key={variant}>
                                 <Flex align="center" justify="center" gap="4">
                                   <RadioGroupRoot variant={variant} color={color}>
@@ -3100,7 +3047,7 @@ export default function ComponentsPage() {
                       <thead>
                         <tr>
                           <th />
-                          {radioGroupPropDefs.variant.values.map((variant) => (
+                          {radioGroupRootPropDefs.variant.values.map((variant) => (
                             <th key={variant} style={{ textAlign: 'left' }}>
                               {upperFirst(variant)}
                             </th>
@@ -3108,10 +3055,10 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {radioGroupPropDefs.size.values.map((size) => (
+                        {radioGroupRootPropDefs.size.values.map((size) => (
                           <tr key={size}>
                             <td>Size {size}</td>
-                            {radioGroupPropDefs.variant.values.map((variant) => (
+                            {radioGroupRootPropDefs.variant.values.map((variant) => (
                               <td key={variant} style={{ textAlign: 'left' }}>
                                 <Flex align="center" justify="start" gap="4">
                                   <RadioGroupRoot
@@ -3294,7 +3241,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             {selectTriggerPropDefs.variant.values.map((variant) => (
@@ -3479,7 +3426,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color, index) => (
+                        {accentColors.map((color, index) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             {sliderPropDefs.variant.values.map((variant) => (
@@ -3641,7 +3588,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             {switchPropDefs.variant.values.map((variant) => (
@@ -4071,7 +4018,7 @@ export default function ComponentsPage() {
                   <Box mt="6">
                     <table className={styles.PlaygroundTable} style={{ whiteSpace: 'nowrap' }}>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color} style={{ verticalAlign: 'baseline' }}>
                             <td>{upperFirst(color)}</td>
                             <td>
@@ -4207,7 +4154,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color} style={{ verticalAlign: 'baseline' }}>
                             <td>{upperFirst(color)}</td>
                             {textAreaPropDefs.variant.values.map((variant) => (
@@ -4294,7 +4241,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {textFieldPropDefs.variant.values.map((variant) => (
+                        {textFieldRootPropDefs.variant.values.map((variant) => (
                           <tr key={variant}>
                             <td>{upperFirst(variant)}</td>
                             <td>
@@ -4368,16 +4315,16 @@ export default function ComponentsPage() {
                       <thead>
                         <tr>
                           <th />
-                          {textFieldPropDefs.variant.values.map((variant) => (
+                          {textFieldRootPropDefs.variant.values.map((variant) => (
                             <th key={variant}>{upperFirst(variant)}</th>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
-                            {textFieldPropDefs.variant.values.map((variant) => (
+                            {textFieldRootPropDefs.variant.values.map((variant) => (
                               <td key={variant}>
                                 <TextFieldRoot color={color} variant={variant} placeholder="Search">
                                   <TextFieldSlot>
@@ -4404,7 +4351,7 @@ export default function ComponentsPage() {
                       <thead>
                         <tr>
                           <th />
-                          {textFieldPropDefs.radius.values.map((radius) => (
+                          {textFieldRootPropDefs.radius.values.map((radius) => (
                             <th key={radius} style={{ textAlign: 'left' }}>
                               {radius === 'none' ? 'No radius' : upperFirst(radius)}
                             </th>
@@ -4412,7 +4359,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {textFieldPropDefs.variant.values.map((variant, index) => (
+                        {textFieldRootPropDefs.variant.values.map((variant, index) => (
                           <React.Fragment key={variant}>
                             {index > 0 && (
                               <tr>
@@ -4421,7 +4368,7 @@ export default function ComponentsPage() {
                             )}
                             <tr>
                               <td>Size 1</td>
-                              {textFieldPropDefs.radius.values.map((radius) => (
+                              {textFieldRootPropDefs.radius.values.map((radius) => (
                                 <td key={radius}>
                                   <TextFieldRoot
                                     size="1"
@@ -4439,7 +4386,7 @@ export default function ComponentsPage() {
                             </tr>
                             <tr>
                               <td>Size 2</td>
-                              {textFieldPropDefs.radius.values.map((radius) => (
+                              {textFieldRootPropDefs.radius.values.map((radius) => (
                                 <td key={radius}>
                                   <TextFieldRoot
                                     size="2"
@@ -4462,7 +4409,7 @@ export default function ComponentsPage() {
                             </tr>
                             <tr>
                               <td>Size 3</td>
-                              {textFieldPropDefs.radius.values.map((radius) => (
+                              {textFieldRootPropDefs.radius.values.map((radius) => (
                                 <td key={radius}>
                                   <TextFieldRoot
                                     size="3"
