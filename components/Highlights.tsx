@@ -23,8 +23,8 @@ export function Highlights({ features }) {
             {features.map((feature, i) => (
               <Flex key={i} gap="4" align="start">
                 <Flex
-                  width="5"
-                  height="5"
+                  width="24px"
+                  height="24px"
                   align="center"
                   justify="center"
                   flexShrink="0"

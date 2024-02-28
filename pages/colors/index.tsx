@@ -180,7 +180,7 @@ export default function ColorsHome() {
               ))}
             </Grid>
 
-            <Box height="6" />
+            <Box height="32px" />
 
             <Grid gap="1" align="center" columns="minmax(64px, 1fr) repeat(12, minmax(0px, 1fr))">
               <Box />

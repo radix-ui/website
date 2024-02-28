@@ -168,7 +168,7 @@ export function ThemesVariantsExample() {
               <Flex align="center" justify="center" height="100%">
                 <Box>
                   <Flex gap="3" direction="column" align="center">
-                    <Marker height="8" width="8">
+                    <Marker height="48px" width="48px">
                       <CheckIcon width="32" height="32" />
                     </Marker>
 
@@ -412,7 +412,7 @@ export function ThemesShadowScale() {
                 boxShadow: `var(--shadow-${i + 1})`,
                 borderRadius: 'var(--radius-2)',
               }}
-              height="8"
+              height="48px"
               key={i}
             />
           </Flex>
@@ -437,7 +437,7 @@ export function SwatchRow({ name }: { name: string }) {
     <Grid columns="12" gap="1">
       {[...new Array(12)].map((_, i) => (
         <Box
-          height="6"
+          height="32px"
           style={{
             backgroundColor: `var(--${name}-${i + 1})`,
             borderRadius: 'var(--radius-2)',
@@ -456,7 +456,7 @@ export function ThemesColorScale({ type = 'accent' }: { type: 'accent' | 'gray' 
         {[...new Array(12)].map((_, i) => (
           <Flex flexGrow="1" direction="column" gap="1" key={i}>
             <Box
-              height="6"
+              height="32px"
               style={{
                 backgroundColor: `var(--${type}-${i + 1})`,
                 borderRadius: 'var(--radius-1)',
@@ -464,7 +464,7 @@ export function ThemesColorScale({ type = 'accent' }: { type: 'accent' | 'gray' 
             />
 
             <Box
-              height="6"
+              height="32px"
               style={{
                 backgroundImage:
                   'linear-gradient(45deg, var(--gray-2) 25%, transparent 25%), linear-gradient(135deg, var(--gray-2) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--gray-2) 75%), linear-gradient(135deg, transparent 75%, var(--gray-2) 75%)',
@@ -551,7 +551,7 @@ export function ThemesAccentSwatches() {
             <Theme accentColor={color} hasBackground={false} asChild>
               <Box
                 mb="1"
-                height="8"
+                height="48px"
                 style={{ backgroundColor: `var(--accent-9)`, borderRadius: 'var(--radius-1)' }}
               />
             </Theme>
@@ -574,7 +574,7 @@ export function ThemeGraySwatches() {
             <Theme accentColor="gray" grayColor={color} hasBackground={false} asChild>
               <Box
                 mb="1"
-                height="8"
+                height="48px"
                 style={{
                   backgroundColor: `var(--accent-9)`,
                   borderRadius: 'var(--radius-1)',
@@ -613,7 +613,7 @@ export function ThemesVolumeControlExample() {
             </Flex>
           </Flex>
 
-          <Flex gap="2" align="center" height="4" mt="2" mb="5">
+          <Flex gap="2" align="center" height="16px" mt="2" mb="5">
             <VolumeNoneIcon color="var(--gray-a9)" />
             <Box flexGrow="1">
               <Slider variant="soft" defaultValue={[80]} />
