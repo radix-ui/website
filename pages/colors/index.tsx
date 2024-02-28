@@ -38,7 +38,7 @@ export default function ColorsHome() {
         <style>
           {`
             :is(.dark, .dark-theme) :is(body, .radix-themes) {
-              --color-page-background: #0b0b0b;
+              --color-background: #0b0b0b;
               --color-panel-solid: var(--gray-1);
             }
           `}

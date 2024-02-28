@@ -68,5 +68,5 @@
 }
 
 :global(:is(.dark, .dark-theme)) .SwatchContent {
-  background-color: var(--color-page-background);
+  background-color: var(--color-background);
 }
