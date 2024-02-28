@@ -126,8 +126,8 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                 position="absolute"
                 bottom="0"
                 right="0"
-                width="6"
-                height="6"
+                width="32px"
+                height="32px"
                 style={{ borderRadius: 'var(--radius-3)' }}
                 m="2"
               >
@@ -322,8 +322,8 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                   >
                     <Box
                       flexShrink="0"
-                      width="4"
-                      height="4"
+                      width="16px"
+                      height="16px"
                       style={{
                         background: color.value,
                         borderRadius: 'var(--radius-1)',
@@ -371,7 +371,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               },
             ].map((item) => (
               <Flex gap="4" align="center" justify="between" key={item.url}>
-                <Flex flexGrow="1" align="center" gap="2" height="6">
+                <Flex flexGrow="1" align="center" gap="2" height="32px">
                   <img
                     src={item.url}
                     style={{ borderRadius: 'var(--radius-1)' }}
@@ -390,7 +390,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                   </Box>
                 </Flex>
 
-                <Flex direction="column" width="8">
+                <Flex direction="column" width="48px">
                   <Select.Root defaultValue={item.count} size="1">
                     <Select.Trigger tabIndex={-1} />
                     <Select.Content variant="soft" container={container} position="popper">
@@ -403,7 +403,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                   </Select.Root>
                 </Flex>
 
-                <Flex direction="column" width="7">
+                <Flex direction="column" width="40px">
                   <Text size="2" weight="bold" align="right">
                     {item.price}
                   </Text>
@@ -445,8 +445,8 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                 position="absolute"
                 bottom="0"
                 right="0"
-                width="6"
-                height="6"
+                width="32px"
+                height="32px"
                 style={{ borderRadius: 'var(--radius-3)' }}
                 m="2"
               >
@@ -902,11 +902,11 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                   variant={state.productColor === color.name ? 'solid' : 'soft'}
                   onClick={(event) => onToggleButtonClick(event, 'productColor')}
                 >
-                  <Flex align="center" gap="2" width="9">
+                  <Flex align="center" gap="2" width="64px">
                     <Box
                       flexShrink="0"
-                      width="4"
-                      height="4"
+                      width="16px"
+                      height="16px"
                       style={{
                         background: color.value,
                         borderRadius: 'var(--radius-1)',
@@ -1104,7 +1104,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                   <Text as="div" weight="bold" size="2" mb="1">
                     Status
                   </Text>
-                  <Flex height="5" align="center">
+                  <Flex height="24px" align="center">
                     <Badge color="green" style={{ marginLeft: -2 }}>
                       On time
                     </Badge>
@@ -1421,8 +1421,8 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
 
 const GreenDot = () => (
   <Box
-    width="2"
-    height="2"
+    width="8px"
+    height="8px"
     position="absolute"
     mt="1"
     ml="-1"

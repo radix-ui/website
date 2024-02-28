@@ -908,7 +908,14 @@ const ExampleDropdownCheckboxItem = ({
   return (
     <div className={styles.ExampleDropdownItem} {...props}>
       {checked && (
-        <Flex align="center" justify="center" position="absolute" left="0" width="6" height="6">
+        <Flex
+          align="center"
+          justify="center"
+          position="absolute"
+          left="0"
+          width="32px"
+          height="32px"
+        >
           <CheckIcon width="16" height="16" />
         </Flex>
       )}

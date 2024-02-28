@@ -59,7 +59,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
           <Flex direction="column" gap="4">
             {songsQueue.slice(0, 5).map((song) => (
               <Flex align="center" gap="3" key={song.name}>
-                <Box asChild width="8" height="8">
+                <Box asChild width="48px" height="48px">
                   <img
                     src={song.cover}
                     style={{ objectFit: 'cover', borderRadius: 'var(--radius-2)' }}
@@ -105,7 +105,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
             </Flex>
           </Flex>
 
-          <Flex gap="2" align="center" height="4" mt="2" mb="5">
+          <Flex gap="2" align="center" height="16px" mt="2" mb="5">
             <VolumeNoneIcon color="var(--gray-a9)" />
             <Box flexGrow="1">
               <Slider tabIndex={-1} defaultValue={[80]} />
@@ -258,7 +258,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                 { frequency: '8K', value: 65 },
                 { frequency: '16K', value: 68 },
               ].map((slider) => (
-                <Flex direction="column" align="center" gap="2" width="5" key={slider.frequency}>
+                <Flex direction="column" align="center" gap="2" width="24px" key={slider.frequency}>
                   <Slider
                     tabIndex={-1}
                     size="2"
@@ -293,7 +293,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
           <Flex direction="column" gap="4">
             {songsHistory.map((song, i) => (
               <Flex align="center" gap="3" key={song.name}>
-                <Box asChild width="8" height="8">
+                <Box asChild width="48px" height="48px">
                   <img
                     src={song.cover}
                     style={{ objectFit: 'cover', borderRadius: 'var(--radius-2)' }}
@@ -333,15 +333,15 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
             position="absolute"
             align="center"
             justify="between"
-            width="8"
-            height="8"
+            width="48px"
+            height="48px"
             top="0"
             left="0"
             ml="4"
           >
             <Box
-              width="3"
-              height="3"
+              width="12px"
+              height="12px"
               style={{
                 background: '#FF5F57',
                 boxShadow: 'inset 0 0 0 1px var(--gray-a5)',
@@ -349,8 +349,8 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
               }}
             />
             <Box
-              width="3"
-              height="3"
+              width="12px"
+              height="12px"
               style={{
                 background: '#FDBB2E',
                 boxShadow: 'inset 0 0 0 1px var(--gray-a5)',
@@ -358,8 +358,8 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
               }}
             />
             <Box
-              width="3"
-              height="3"
+              width="12px"
+              height="12px"
               style={{
                 background: '#27C840',
                 boxShadow: 'inset 0 0 0 1px var(--gray-a5)',
@@ -375,7 +375,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
             top="0"
             left="0"
             right="0"
-            height="9"
+            height="64px"
           >
             <TextField.Root color="gray" radius="full" variant="soft" style={{ width: 400 }}>
               <TextField.Slot>
@@ -385,7 +385,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
             </TextField.Root>
           </Flex>
 
-          <Flex align="center" position="absolute" top="0" right="0" height="9" mr="4" gap="4">
+          <Flex align="center" position="absolute" top="0" right="0" height="64px" mr="4" gap="4">
             <IconButton tabIndex={-1} size="2" variant="ghost" radius="full">
               <HeartIcon />
             </IconButton>
@@ -405,7 +405,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
             </IconButton>
           </Flex>
 
-          <Box height="7" />
+          <Box height="40px" />
 
           <Box mb="4">
             <Flex align="baseline" justify="between">
@@ -485,7 +485,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
             right="0"
             bottom="0"
             mb="5"
-            height="9"
+            height="64px"
             style={{
               borderRadius: '100px',
               boxShadow: 'var(--shadow-6)',
@@ -581,7 +581,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
 
                     <Box
                       position="relative"
-                      height="1"
+                      height="4px"
                       style={{
                         backgroundColor: 'var(--gray-a5)',
                         borderRadius: 'var(--radius-1)',
@@ -590,8 +590,8 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     >
                       <Box
                         position="absolute"
-                        height="1"
-                        width="9"
+                        height="4px"
+                        width="64px"
                         style={{
                           borderRadius: 'var(--radius-1)',
                           backgroundColor: 'var(--gray-a9)',
@@ -720,7 +720,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                   </Flex>
 
                   <Flex align="center" gap="2" mt="3">
-                    <Box asChild width="5">
+                    <Box asChild width="24px">
                       <Text color="gray" size="1">
                         0%
                       </Text>
@@ -728,7 +728,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     <Box flexGrow="1">
                       <Slider tabIndex={-1} radius="full" size="1" defaultValue={[80]} />
                     </Box>
-                    <Box asChild width="6">
+                    <Box asChild width="32px">
                       <Text color="gray" size="1">
                         100%
                       </Text>
@@ -749,7 +749,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                   </Flex>
 
                   <Flex align="center" gap="2" mt="3">
-                    <Box asChild width="5">
+                    <Box asChild width="24px">
                       <Text color="gray" size="1">
                         Off
                       </Text>
@@ -757,7 +757,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     <Box flexGrow="1">
                       <Slider tabIndex={-1} radius="full" size="1" defaultValue={[0]} />
                     </Box>
-                    <Box asChild width="6">
+                    <Box asChild width="32px">
                       <Text color="gray" size="1">
                         10s
                       </Text>

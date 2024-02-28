@@ -142,7 +142,7 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
 
                     <Flex
                       mb={{ initial: '3', xs: '0' }}
-                      height={{ initial: '5', xs: '4' }}
+                      height={{ initial: '24px', xs: '16px' }}
                       align="center"
                     >
                       <CopyButton>{hex}</CopyButton>
@@ -182,7 +182,7 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
 
                     <Flex
                       mb={{ initial: '3', xs: '0' }}
-                      height={{ initial: '5', xs: '4' }}
+                      height={{ initial: '24px', xs: '16px' }}
                       align="center"
                     >
                       <CopyButton>{hexA}</CopyButton>
@@ -193,7 +193,7 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
                     </Text>
                     <Flex
                       mb={{ initial: '3', xs: '0' }}
-                      height={{ initial: '5', xs: '4' }}
+                      height={{ initial: '24px', xs: '16px' }}
                       align="center"
                     >
                       <CopyButton>{p3}</CopyButton>
@@ -202,7 +202,7 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
                     <Text color="gray" size="2">
                       P3 alpha
                     </Text>
-                    <Flex height={{ initial: '5', xs: '4' }} align="center">
+                    <Flex height={{ initial: '24px', xs: '16px' }} align="center">
                       <CopyButton>{p3A}</CopyButton>
                     </Flex>
 

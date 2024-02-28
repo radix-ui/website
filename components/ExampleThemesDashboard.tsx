@@ -536,7 +536,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
           </Box>
 
           <Flex gap="3" direction="column" align="center">
-            <Marker height="8" width="8">
+            <Marker height="48px" width="48px">
               <CheckIcon width="32" height="32" />
             </Marker>
 

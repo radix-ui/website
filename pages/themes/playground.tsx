@@ -4580,7 +4580,7 @@ function RightClickArea(props: {
     <Grid
       {...rest}
       data-accent-color={color}
-      height={size === '2' ? '8' : '6'}
+      height={size === '2' ? '48px' : '32px'}
       px="3"
       style={{
         placeItems: 'center',
