@@ -701,7 +701,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                   <Box display="inline-block">Title</Box>
                 </Text>
 
-                <TextField.Input
+                <TextField.Root
                   tabIndex={-1}
                   variant="soft"
                   placeholder="Enter product title"
@@ -716,7 +716,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                   <Box display="inline-block">Price</Box>
                 </Text>
 
-                <TextField.Input
+                <TextField.Root
                   tabIndex={-1}
                   variant="soft"
                   placeholder="Enter price"
@@ -1060,11 +1060,10 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
             Shipment tracking
           </Heading>
 
-          <TextField.Root mb="5">
+          <TextField.Root mb="5" variant="soft" tabIndex={-1} placeholder="Enter package number">
             <TextField.Slot>
               <MagnifyingGlassIcon />
             </TextField.Slot>
-            <TextField.Input variant="soft" tabIndex={-1} placeholder="Enter package number" />
           </TextField.Root>
 
           <Grid columns="2">
@@ -1310,7 +1309,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               <Box position="absolute" top="0" left="0" m="2" style={{ pointerEvents: 'none' }}>
                 <MagnifyingGlassIcon />
               </Box>
-              <TextField.Input
+              <TextField.Root
                 tabIndex={-1}
                 variant="soft"
                 placeholder="Search"

@@ -62,7 +62,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
 
           <Flex gap="3" mb="5">
             <Box flexGrow="1">
-              <TextField.Input tabIndex={-1} size="2" placeholder="Email address" />
+              <TextField.Root tabIndex={-1} size="2" placeholder="Email address" />
             </Box>
             <Button tabIndex={-1} size="2">
               Invite
@@ -423,21 +423,11 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
                 Email address
               </Text>
             </Flex>
-            <TextField.Input
-              tabIndex={-1}
-              placeholder="Enter your email"
-              id="example-email-field"
-            />
+            <TextField.Root tabIndex={-1} placeholder="Enter your email" id="example-email-field" />
           </Box>
 
           <Box mb="5" position="relative">
-            <Box position="absolute" top="0" right="0" style={{ marginTop: -2 }}>
-              <Link tabIndex={-1} size="2">
-                Forgot password?
-              </Link>
-            </Box>
-
-            <Flex justify="between" mb="2">
+            <Flex align="baseline" justify="between" mb="2">
               <Text as="label" size="2" weight="bold" htmlFor="example-password-field">
                 Password
               </Text>
@@ -445,7 +435,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
                 Forgot password?
               </Link>
             </Flex>
-            <TextField.Input
+            <TextField.Root
               tabIndex={-1}
               placeholder="Enter your password"
               id="example-password-field"

@@ -377,11 +377,17 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
             right="0"
             height="64px"
           >
-            <TextField.Root color="gray" radius="full" variant="soft" style={{ width: 400 }}>
+            <TextField.Root
+              color="gray"
+              radius="full"
+              variant="soft"
+              style={{ width: 400 }}
+              tabIndex={-1}
+              placeholder="Search"
+            >
               <TextField.Slot>
                 <MagnifyingGlassIcon />
               </TextField.Slot>
-              <TextField.Input tabIndex={-1} placeholder="Search" />
             </TextField.Root>
           </Flex>
 
@@ -861,21 +867,21 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                 <Flex asChild direction="column" gap="2">
                   <Text as="label" size="2" weight="medium">
                     <Text>Name</Text>
-                    <TextField.Input variant="classic" tabIndex={-1} defaultValue="Vlad Moroz" />
+                    <TextField.Root variant="classic" tabIndex={-1} defaultValue="Vlad Moroz" />
                   </Text>
                 </Flex>
 
                 <Flex asChild direction="column" gap="2">
                   <Text as="label" size="2" weight="medium">
                     <Text>Username</Text>
-                    <TextField.Input variant="classic" tabIndex={-1} defaultValue="@vladmoroz" />
+                    <TextField.Root variant="classic" tabIndex={-1} defaultValue="@vladmoroz" />
                   </Text>
                 </Flex>
 
                 <Flex asChild direction="column" gap="2">
                   <Text as="label" size="2" weight="medium">
                     <Text>Email</Text>
-                    <TextField.Input
+                    <TextField.Root
                       variant="classic"
                       tabIndex={-1}
                       defaultValue="hi@vladmoroz.com"
