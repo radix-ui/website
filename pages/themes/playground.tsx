@@ -1555,7 +1555,7 @@ export default function ComponentsPage() {
                     <Flex direction="column" gap="4">
                       {codePropDefs.size.values.map((size) => (
                         <Flex align="center" key={size}>
-                          <Box shrink="0" style={{ width: 80 }}>
+                          <Box flexShrink="0" style={{ width: 80 }}>
                             <Text color="gray" size="1">
                               Size {size}
                             </Text>
@@ -2602,7 +2602,7 @@ export default function ComponentsPage() {
                       <Flex direction="column" gap="4" style={{ whiteSpace: 'nowrap' }}>
                         {kbdPropDefs.size.values.map((size) => (
                           <Flex align="center" key={size}>
-                            <Box shrink="0" style={{ width: 80 }}>
+                            <Box flexShrink="0" style={{ width: 80 }}>
                               <Text color="gray" size="1">
                                 Size {size}
                               </Text>
@@ -2740,7 +2740,7 @@ export default function ComponentsPage() {
                     <Flex direction="column" gap="4">
                       {linkPropDefs.size.values.map((size) => (
                         <Flex align="center" key={size}>
-                          <Box shrink="0" style={{ width: 80 }}>
+                          <Box flexShrink="0" style={{ width: 80 }}>
                             <Text color="gray" size="1">
                               Size {size}
                             </Text>
@@ -2803,7 +2803,7 @@ export default function ComponentsPage() {
                         src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
                         fallback="A"
                       />
-                      <Box grow="1">
+                      <Box flexGrow="1">
                         <TextArea size="1" placeholder="Write a comment…" style={{ height: 80 }} />
 
                         <Flex gap="3" mt="3" justify="between">
@@ -2839,7 +2839,7 @@ export default function ComponentsPage() {
                         src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
                         fallback="A"
                       />
-                      <Box grow="1">
+                      <Box flexGrow="1">
                         <TextArea placeholder="Write a comment…" style={{ height: 100 }} />
                         <Flex gap="3" mt="3" justify="between">
                           <Flex align="center" gap="2" asChild>
@@ -2874,7 +2874,7 @@ export default function ComponentsPage() {
                         src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
                         fallback="A"
                       />
-                      <Box grow="1">
+                      <Box flexGrow="1">
                         <TextArea size="3" placeholder="Write a comment…" style={{ height: 120 }} />
                         <Flex gap="3" mt="4" justify="between">
                           <Flex align="center" gap="2" asChild>
@@ -2909,7 +2909,7 @@ export default function ComponentsPage() {
                         src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
                         fallback="A"
                       />
-                      <Box grow="1">
+                      <Box flexGrow="1">
                         <TextArea size="3" placeholder="Write a comment…" style={{ height: 120 }} />
                         <Flex gap="3" mt="4" justify="between">
                           <Flex align="center" gap="2" asChild>
@@ -4095,7 +4095,7 @@ export default function ComponentsPage() {
                     <Flex direction="column" gap="4" style={{ whiteSpace: 'nowrap' }}>
                       {textPropDefs.size.values.map((size) => (
                         <Flex align="center" key={size}>
-                          <Box shrink="0" style={{ width: 80 }}>
+                          <Box flexShrink="0" style={{ width: 80 }}>
                             <Text color="gray" size="1">
                               Size {size}
                             </Text>

@@ -50,7 +50,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
 
   return (
     <Flex align="center" gap="6" {...props}>
-      <Flex shrink="0" gap="6" direction="column" style={{ width: 640 }}>
+      <Flex flexShrink="0" gap="6" direction="column" style={{ width: 640 }}>
         <Card size="4">
           <Heading as="h3" size="6" trim="start" mb="2">
             Your team
@@ -61,7 +61,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
           </Text>
 
           <Flex gap="3" mb="5">
-            <Box grow="1">
+            <Box flexGrow="1">
               <TextField.Input tabIndex={-1} size="2" placeholder="Email address" />
             </Box>
             <Button tabIndex={-1} size="2">
@@ -87,7 +87,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
                     {email(allPeople[number]?.name)}
                   </Text>
 
-                  <Flex grow="1" justify="end">
+                  <Flex flexGrow="1" justify="end">
                     <IconButton tabIndex={-1} variant="ghost" highContrast>
                       <DotsHorizontalIcon width="16" height="16" />
                     </IconButton>
@@ -411,7 +411,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
         </Card>
       </Flex>
 
-      <Flex shrink="0" gap="6" direction="column" style={{ width: 416 }}>
+      <Flex flexShrink="0" gap="6" direction="column" style={{ width: 416 }}>
         <Card size="4">
           <Heading as="h3" size="6" trim="start" mb="5">
             Sign up
@@ -655,7 +655,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
         </Card>
       </Flex>
 
-      <Flex shrink="0" gap="6" direction="column" style={{ width: 640 }}>
+      <Flex flexShrink="0" gap="6" direction="column" style={{ width: 640 }}>
         <Card size="4">
           <Heading as="h3" size="6" trim="start" mb="2">
             Financial performance

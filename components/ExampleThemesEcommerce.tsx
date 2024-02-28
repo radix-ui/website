@@ -81,7 +81,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
 
   return (
     <Flex align="center" gap="6" ref={setContainer} {...props}>
-      <Flex shrink="0" gap="6" direction="column" style={{ width: 304 }}>
+      <Flex flexShrink="0" gap="6" direction="column" style={{ width: 304 }}>
         <Card size="1">
           <Flex mb="2">
             <img
@@ -102,7 +102,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                 Simple and versatile
               </Text>
             </Box>
-            <Box shrink="0">
+            <Box flexShrink="0">
               <Button tabIndex={-1} size="2" variant="soft" color="gray" highContrast>
                 Shop now
               </Button>
@@ -181,7 +181,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
           </Box>
 
           <Flex gap="2" align="end">
-            <Flex direction="column" grow="1">
+            <Flex direction="column" flexGrow="1">
               <Label asChild>
                 <Text size="1" color="gray" mb="1">
                   Color
@@ -321,7 +321,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                     onClick={(event) => onToggleButtonClick(event, 'colors')}
                   >
                     <Box
-                      shrink="0"
+                      flexShrink="0"
                       width="4"
                       height="4"
                       style={{
@@ -371,7 +371,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               },
             ].map((item) => (
               <Flex gap="4" align="center" justify="between" key={item.url}>
-                <Flex grow="1" align="center" gap="2" height="6">
+                <Flex flexGrow="1" align="center" gap="2" height="6">
                   <img
                     src={item.url}
                     style={{ borderRadius: 'var(--radius-1)' }}
@@ -428,7 +428,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
         </Card>
       </Flex>
 
-      <Flex shrink="0" gap="6" direction="column" style={{ width: 304 }}>
+      <Flex flexShrink="0" gap="6" direction="column" style={{ width: 304 }}>
         <Card size="1">
           <Flex mb="2" position="relative">
             <img
@@ -484,7 +484,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
           </Box>
 
           <Flex gap="2" align="end">
-            <Flex direction="column" grow="1">
+            <Flex direction="column" flexGrow="1">
               <Label asChild>
                 <Text size="1" color="gray" mb="1">
                   Color
@@ -545,7 +545,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                 Break the fashion norms
               </Text>
             </Box>
-            <Box shrink="0">
+            <Box flexShrink="0">
               <Button tabIndex={-1} size="2" variant="soft" color="gray" highContrast>
                 Shop now
               </Button>
@@ -663,7 +663,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
         </Card>
       </Flex>
 
-      <Flex shrink="0" gap="6" direction="column" style={{ width: 416 }}>
+      <Flex flexShrink="0" gap="6" direction="column" style={{ width: 416 }}>
         <Card size="2">
           <Flex direction="column" align="center" py="2">
             <Box mb="2">
@@ -904,7 +904,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                 >
                   <Flex align="center" gap="2" width="9">
                     <Box
-                      shrink="0"
+                      flexShrink="0"
                       width="4"
                       height="4"
                       style={{
@@ -1054,7 +1054,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
         </Card>
       </Flex>
 
-      <Flex shrink="0" gap="6" direction="column" style={{ width: 640 }}>
+      <Flex flexShrink="0" gap="6" direction="column" style={{ width: 640 }}>
         <Card size="2">
           <Heading as="h3" size="4" mb="4">
             Shipment tracking
@@ -1306,7 +1306,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
           </Heading>
 
           <Flex gap="2">
-            <Box position="relative" mb="5" grow="1">
+            <Box position="relative" mb="5" flexGrow="1">
               <Box position="absolute" top="0" left="0" m="2" style={{ pointerEvents: 'none' }}>
                 <MagnifyingGlassIcon />
               </Box>
@@ -1391,7 +1391,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                   </Text>
                 </Box>
 
-                <Flex align="center" justify="end" gap="5" grow="1">
+                <Flex align="center" justify="end" gap="5" flexGrow="1">
                   <Box>
                     <Text as="div" size="2" color="gray" align="right">
                       Sales

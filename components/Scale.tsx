@@ -93,7 +93,7 @@ export const ColorScaleGroup = ({ children }: { children: any }) => {
       <Flex style={{ gap: 1 }}>
         <Box height="5" style={{ width: 140 }} />
         {colorKeys.map((key, i) => (
-          <Box key={key} grow="0" shrink="1" width="8">
+          <Box key={key} flexGrow="0" flexShrink="1" width="8">
             <Text as="div" color="gray" size="1" align="center">
               {i + 1}
             </Text>
@@ -136,7 +136,7 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
               key={i}
               height="6"
               width="8"
-              shrink="1"
+              flexShrink="1"
               style={{
                 backgroundColor: isDarkAlpha
                   ? Colors['grayDark']['gray1']
