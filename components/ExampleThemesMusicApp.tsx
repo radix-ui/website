@@ -39,7 +39,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
     </Head>
 
     <Flex align="center" gap="6" {...props}>
-      <Flex shrink="0" gap="6" direction="column" style={{ width: 416 }}>
+      <Flex flexShrink="0" gap="6" direction="column" style={{ width: 416 }}>
         <Card size="3">
           <Flex align="center" justify="between" mb="5">
             <Heading as="h3" size="4" trim="both">
@@ -65,7 +65,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     style={{ objectFit: 'cover', borderRadius: 'var(--radius-2)' }}
                   />
                 </Box>
-                <Box grow="1" width="0">
+                <Box flexGrow="1" width="0">
                   <Text
                     as="div"
                     size="2"
@@ -107,7 +107,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
 
           <Flex gap="2" align="center" height="4" mt="2" mb="5">
             <VolumeNoneIcon color="var(--gray-a9)" />
-            <Box grow="1">
+            <Box flexGrow="1">
               <Slider tabIndex={-1} defaultValue={[80]} />
             </Box>
             <VolumeMaxIcon color="var(--gray-a9)" />
@@ -245,7 +245,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
               <Box style={{ borderTop: '1px dotted var(--gray-a5)', marginTop: -1 }} />
             </Flex>
 
-            <Flex shrink="0" grow="1" justify="between" position="relative">
+            <Flex flexShrink="0" flexGrow="1" justify="between" position="relative">
               {[
                 { frequency: '32', value: 75 },
                 { frequency: '64', value: 73 },
@@ -299,7 +299,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                     style={{ objectFit: 'cover', borderRadius: 'var(--radius-2)' }}
                   />
                 </Box>
-                <Box grow="1" width="0">
+                <Box flexGrow="1" width="0">
                   <Text
                     as="div"
                     size="2"
@@ -327,7 +327,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
         </Card>
       </Flex>
 
-      <Flex shrink="0" gap="6" direction="column" style={{ width: 1312 }}>
+      <Flex flexShrink="0" gap="6" direction="column" style={{ width: 1312 }}>
         <Card size="4" style={{ height: 896 }}>
           <Flex
             position="absolute"
@@ -638,8 +638,8 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
           </Box>
         </Card>
 
-        <Flex gap="6" shrink="0">
-          <Flex gap="6" shrink="0" direction="column" style={{ width: 416 }}>
+        <Flex gap="6" flexShrink="0">
+          <Flex gap="6" flexShrink="0" direction="column" style={{ width: 416 }}>
             <Card size="3">
               <Heading as="h3" size="4" trim="both" mb="5">
                 Settings
@@ -725,7 +725,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                         0%
                       </Text>
                     </Box>
-                    <Box grow="1">
+                    <Box flexGrow="1">
                       <Slider tabIndex={-1} radius="full" size="1" defaultValue={[80]} />
                     </Box>
                     <Box asChild width="6">
@@ -754,7 +754,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
                         Off
                       </Text>
                     </Box>
-                    <Box grow="1">
+                    <Box flexGrow="1">
                       <Slider tabIndex={-1} radius="full" size="1" defaultValue={[0]} />
                     </Box>
                     <Box asChild width="6">
@@ -840,7 +840,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
             </Card>
           </Flex>
 
-          <Flex gap="6" shrink="0" direction="column" style={{ width: 416 }}>
+          <Flex gap="6" flexShrink="0" direction="column" style={{ width: 416 }}>
             <Card size="3">
               <Flex align="center" justify="between" mb="5">
                 <Heading as="h3" size="4" trim="both">
@@ -996,7 +996,7 @@ export const ExampleThemesMusicApp = (props: React.ComponentPropsWithoutRef<type
             </Card>
           </Flex>
 
-          <Flex gap="6" shrink="0" direction="column" style={{ width: 416 }}>
+          <Flex gap="6" flexShrink="0" direction="column" style={{ width: 416 }}>
             <Card size="3">
               <Flex m="4" justify="center" position="relative">
                 <img

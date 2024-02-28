@@ -407,7 +407,7 @@ export const AccessibilitySection = () => {
 
             <div className={styles.AccessibilitySectionCenter} role="presentation">
               {currentSequence === 'screenReader' && (
-                <Grid grow="1" rows="auto 1fr">
+                <Grid flexGrow="1" rows="auto 1fr">
                   <Flex align="center" gap="1" my="2" mx="3">
                     <Text color="gray" size="2">
                       Screen reader
@@ -444,7 +444,7 @@ export const AccessibilitySection = () => {
               )}
 
               {currentSequence !== 'screenReader' && (
-                <Grid grow="1" rows="auto 1fr" style={{ overflow: 'hidden' }}>
+                <Grid flexGrow="1" rows="auto 1fr" style={{ overflow: 'hidden' }}>
                   <Flex align="baseline" justify="between" my="2" mx="3">
                     <Flex align="center" gap="1">
                       <Text color="gray" size="2">
@@ -500,7 +500,7 @@ export const AccessibilitySection = () => {
             </div>
 
             <div className={styles.AccessibilitySectionRight} role="presentation">
-              <Grid rows="auto 1fr" grow="1">
+              <Grid rows="auto 1fr" flexGrow="1">
                 <Flex align="center" gap="1" my="2" mx="3">
                   <Text color="gray" size="2">
                     Radix component

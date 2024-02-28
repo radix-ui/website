@@ -332,7 +332,7 @@ export function ThemesRadiusExample() {
                   src={allPeople[4].image}
                   fallback={allPeople[22]?.name[0].toUpperCase()}
                 />
-                <Box grow="1">
+                <Box flexGrow="1">
                   <TextArea placeholder="Reply…" />
                   <Flex gap="6" mt="3" justify="between">
                     <Flex asChild align="center" gap="2">
@@ -388,7 +388,7 @@ function PropValueExampleCardRow({
         </Code>
       </Box>
 
-      <Box grow="1" style={{ minWidth: 'max-content' }}>
+      <Box flexGrow="1" style={{ minWidth: 'max-content' }}>
         {children}
       </Box>
     </Flex>
@@ -404,9 +404,9 @@ export function ThemesShadowScale() {
         gap="4"
       >
         {[...new Array(6)].map((_, i) => (
-          <Flex grow="1" align="center" justify="center" key={i}>
+          <Flex flexGrow="1" align="center" justify="center" key={i}>
             <Box
-              grow="1"
+              flexGrow="1"
               style={{
                 backgroundColor: 'var(--gray-1)',
                 boxShadow: `var(--shadow-${i + 1})`,
@@ -454,7 +454,7 @@ export function ThemesColorScale({ type = 'accent' }: { type: 'accent' | 'gray' 
     <Flex direction="column" gap="2" mt="6" mb="5">
       <Flex align="center" gap="1">
         {[...new Array(12)].map((_, i) => (
-          <Flex grow="1" direction="column" gap="1" key={i}>
+          <Flex flexGrow="1" direction="column" gap="1" key={i}>
             <Box
               height="6"
               style={{
@@ -501,7 +501,7 @@ export function ThemesSpacingScale() {
   return (
     <Flex align="end" gap="1">
       {[...new Array(9)].map((_, i) => (
-        <Flex direction="column" grow="1" key={i} align="center" gap="4">
+        <Flex direction="column" flexGrow="1" key={i} align="center" gap="4">
           <DecorativeBox style={{ width: '100%', height: `var(--space-${i + 1})` }} />
 
           <Text size="1" color="gray">
@@ -520,7 +520,7 @@ export function ThemesFontSizeScale() {
         {[...new Array(9)].map((_, i) => (
           <Flex
             direction="column"
-            grow="1"
+            flexGrow="1"
             key={i}
             justify="end"
             align="center"
@@ -547,7 +547,7 @@ export function ThemesAccentSwatches() {
     <Flex direction="column" gap="5" my="6">
       <Grid columns={{ initial: '4', xs: '6', sm: '9' }} gapX="1" gapY="3">
         {themeAccentColorsOrdered.map((color, i) => (
-          <Box grow="1" key={i}>
+          <Box flexGrow="1" key={i}>
             <Theme accentColor={color} hasBackground={false} asChild>
               <Box
                 mb="1"
@@ -570,7 +570,7 @@ export function ThemeGraySwatches() {
     <Flex direction="column" gap="5" my="6">
       <Grid columns={{ initial: '4', xs: '6', sm: '9' }} gapX="1" gapY="3">
         {(['gray', 'mauve', 'slate', 'sage', 'olive', 'sand'] as const).map((color, i) => (
-          <Box grow="1" key={i}>
+          <Box flexGrow="1" key={i}>
             <Theme accentColor="gray" grayColor={color} hasBackground={false} asChild>
               <Box
                 mb="1"
@@ -615,7 +615,7 @@ export function ThemesVolumeControlExample() {
 
           <Flex gap="2" align="center" height="4" mt="2" mb="5">
             <VolumeNoneIcon color="var(--gray-a9)" />
-            <Box grow="1">
+            <Box flexGrow="1">
               <Slider variant="soft" defaultValue={[80]} />
             </Box>
             <VolumeMaxIcon color="var(--gray-a9)" />

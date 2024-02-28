@@ -27,7 +27,7 @@ export function Highlights({ features }) {
                   height="5"
                   align="center"
                   justify="center"
-                  shrink="0"
+                  flexShrink="0"
                   style={{
                     backgroundColor: 'var(--green-4)',
                     borderRadius: '50%',

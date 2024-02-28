@@ -19,7 +19,7 @@ export function ColorGrayPairs() {
       {pairings.map(({ color, pairs }) => (
         <Box my="5" key={color}>
           <Flex
-            grow="1"
+            flexGrow="1"
             align="center"
             justify="center"
             style={{
@@ -40,7 +40,7 @@ export function ColorGrayPairs() {
             {pairs.map((pair) => (
               <Flex
                 key={pair}
-                grow="1"
+                flexGrow="1"
                 width="100%"
                 align="center"
                 justify="center"
