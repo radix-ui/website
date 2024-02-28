@@ -13,7 +13,7 @@ export function Highlights({ features }) {
 
   return (
     <Flex direction={{ initial: 'column', sm: 'row' }} mt={{ initial: '4', sm: '7' }}>
-      <Box mb="5" grow={{ sm: '1' }} mr={{ sm: '5' }}>
+      <Box mb="5" flexGrow={{ sm: '1' }} mr={{ sm: '5' }}>
         <Heading as="h2" size="4" mb="4">
           Features
         </Heading>
