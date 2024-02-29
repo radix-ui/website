@@ -26,19 +26,19 @@ For a comprehensive list of all available tokens, see their respective source fi
 
 ## Modifying tokens
 
-Token values can be customized by using a separate configuration stylesheet. The simplest way to do so is to create a `theme-config.css` file and ensure it is imported after the global theme styles:
+Token values can be customized by using a separate configuration stylesheet. The simplest way to do so is to create your own custom CSS file and ensure it is imported after the global theme styles:
 
 ```css
-/* theme-config.css */
+/* Your custom CSS file */
 .radix-themes {
   --default-font-size: 18px;
 }
 ```
 
 ```jsx
-// app-root.jsx
+/* Your app entry file */
 import '@radix-ui/themes/styles.css';
-import './theme-config.css';
+import './my-custom-styles.css';
 
 import { Theme } from '@radix-ui/themes';
 
@@ -48,5 +48,123 @@ export default function () {
       <MyApp />
     </Theme>
   );
+}
+```
+
+## Common customizations
+
+### Font family
+
+To customize the font family used in your theme, remap the corresponding `font-family` tokens:
+
+```css
+.radix-themes {
+  --default-font-family:  /* Your custom default font */
+  --heading-font-family:  /* Your custom font for <Heading> components */
+  --code-font-family:     /* Your custom font for <Code> components */
+  --strong-font-family:   /* Your custom font for <Strong> components */
+  --em-font-family:       /* Your custom font for <Em> components */
+  --quote-font-family:    /* Your custom font for <Quote> components */
+}
+```
+
+### Font weights
+
+To customize the exact font weights used in your theme, remap the corresponding `font-weight` tokens. There’s just four font weights to customize:
+
+```css
+.radix-themes {
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+}
+```
+
+### Advanced typography
+
+There’s a number of advanced typographic features that can be customized. These include a font size multiplier for certain components, font style, letter spacing, and leading trim. For example, you can customize the headings to render with a relatively larger font size than your default font, different leading trim values, and tighter letter spacing:
+
+```css
+.radix-themes {
+  --heading-font-family: 'Untitled Sans', sans-serif;
+  --heading-font-size-adjust: 1.05;
+  --heading-font-style: normal;
+  --heading-leading-trim-start: 0.42em;
+  --heading-leading-trim-end: 0.38em;
+  --heading-letter-spacing: -0.01em;
+}
+```
+
+### Brand colors
+
+You can replace a specific color with your brand color by remapping the corresponding token. Usually, this would be **step 9** of the scale that you’d use for your brand color.
+
+```css
+.radix-themes {
+  --my-brand-color: #3052f6;
+  --indigo-9: var(--my-brand-color);
+  --indigo-a9: var(--my-brand-color);
+}
+```
+
+In this example, using solid-colored `indigo` components will now reference your custom color.
+
+### Color aliasing
+
+You may prefer to use generic color names to refer to the color shades that you want to use. For example, it is common to refer to `crimson`, `jade`, and `indigo` as `red`, `green`, and `blue` respectively.
+
+In this case, you can remap Radix Themes tokens in place of one another and reclaim the color names you want to use:
+
+```css
+.radix-themes {
+  --red-1: var(--ruby-1);
+  --red-2: var(--ruby-2);
+  --red-3: var(--ruby-3);
+  --red-4: var(--ruby-4);
+  --red-5: var(--ruby-5);
+  --red-6: var(--ruby-6);
+  --red-7: var(--ruby-7);
+  --red-8: var(--ruby-8);
+  --red-9: var(--ruby-9);
+  --red-10: var(--ruby-10);
+  --red-11: var(--ruby-11);
+  --red-12: var(--ruby-12);
+
+  --red-a1: var(--ruby-a1);
+  --red-a2: var(--ruby-a2);
+  --red-a3: var(--ruby-a3);
+  --red-a4: var(--ruby-a4);
+  --red-a5: var(--ruby-a5);
+  --red-a6: var(--ruby-a6);
+  --red-a7: var(--ruby-a7);
+  --red-a8: var(--ruby-a8);
+  --red-a9: var(--ruby-a9);
+  --red-a10: var(--ruby-a10);
+  --red-a11: var(--ruby-a11);
+  --red-a12: var(--ruby-a12);
+
+  --red-surface: var(--ruby-surface);
+  --red-9-contrast: var(--ruby-9-contrast);
+}
+```
+
+In this example, using the `red` color in Radix Themes components and tokens would now reference the original `ruby` scale.
+
+### Cursors
+
+To automatically use a pointer cursor on buttons, you can customize the default cursor tokens:
+
+```css
+.radix-themes {
+  --cursor-button: pointer;
+  --cursor-checkbox: pointer;
+  --cursor-disabled: default;
+  --cursor-link: pointer;
+  --cursor-menu-item: pointer;
+  --cursor-radio: pointer;
+  --cursor-slider-thumb: grab;
+  --cursor-slider-thumb-active: grabbing;
+  --cursor-switch: pointer;
 }
 ```

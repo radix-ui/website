@@ -19,6 +19,7 @@ import {
   TextArea,
   TextField,
   TextFieldRoot,
+  TextFieldSlot,
   Theme,
 } from '@radix-ui/themes';
 import { Label } from '@radix-ui/react-label';
@@ -27,13 +28,13 @@ import { CheckIcon } from '@radix-ui/react-icons';
 import { Marker } from './Marker';
 import * as React from 'react';
 import { ThemesPanelBackgroundImage } from './ThemesPanelBackgroundImage';
-import { accentColors } from '@lib/themes';
+import { accentColors, themePropDefs } from '@lib/themes';
 
-export function ThemesPanelTranslucentExample() {
+export function ThemesPanelCardExample({ panelBackground }) {
   return (
     <Card>
       <Inset>
-        <Theme panelBackground="translucent" asChild>
+        <Theme panelBackground={panelBackground} asChild>
           <Flex direction="column">
             <Flex justify="center" position="relative" px="5" py={{ initial: '5', sm: '8' }}>
               <Flex
@@ -93,11 +94,11 @@ export function ThemesPanelTranslucentExample() {
   );
 }
 
-export function ThemesPanelSolidExample() {
+export function ThemesPanelTableExample({ panelBackground }) {
   return (
     <Card>
       <Inset>
-        <Theme panelBackground="solid" asChild>
+        <Theme panelBackground={panelBackground} asChild>
           <Flex justify="center" position="relative" px="5" py={{ initial: '5', sm: '8' }}>
             <Flex
               align="center"
@@ -155,44 +156,6 @@ export function ThemesVariantsExample() {
     <>
       <Box my="5">
         <Grid columns={{ initial: '1', sm: '2' }} gap="6" align="stretch">
-          <Theme
-            appearance="dark"
-            radius="large"
-            hasBackground={false}
-            className="radix-themes-default-fonts"
-            asChild
-            accentColor="teal"
-            panelBackground="solid"
-          >
-            <Card size="4">
-              <Flex align="center" justify="center" height="100%">
-                <Box>
-                  <Flex gap="3" direction="column" align="center">
-                    <Marker height="48px" width="48px">
-                      <CheckIcon width="32" height="32" />
-                    </Marker>
-
-                    <Heading as="h3" size="6" mb="2">
-                      Invoice paid
-                    </Heading>
-                  </Flex>
-
-                  <Text as="p" size="3" align="center" mb="5">
-                    You paid $17,975.30. A receipt copy was sent to <Strong>acc@example.com</Strong>
-                  </Text>
-
-                  <Flex direction="column" gap="3" align="stretch">
-                    <Button radius="full">Next invoice</Button>
-
-                    <Button radius="full" variant="outline">
-                      Done
-                    </Button>
-                  </Flex>
-                </Box>
-              </Flex>
-            </Card>
-          </Theme>
-
           <Theme
             appearance="light"
             radius="medium"
@@ -276,6 +239,44 @@ export function ThemesVariantsExample() {
               </Flex>
             </Card>
           </Theme>
+
+          <Theme
+            appearance="dark"
+            radius="large"
+            hasBackground={false}
+            className="radix-themes-default-fonts"
+            asChild
+            accentColor="teal"
+            panelBackground="solid"
+          >
+            <Card size="4">
+              <Flex align="center" justify="center" height="100%">
+                <Box>
+                  <Flex gap="3" direction="column" align="center">
+                    <Marker height="48px" width="48px">
+                      <CheckIcon width="32" height="32" />
+                    </Marker>
+
+                    <Heading as="h3" size="6" mb="2">
+                      Invoice paid
+                    </Heading>
+                  </Flex>
+
+                  <Text as="p" size="3" align="center" mb="5">
+                    You paid $17,975.30. A receipt copy was sent to <Strong>acc@example.com</Strong>
+                  </Text>
+
+                  <Flex direction="column" gap="3" align="stretch">
+                    <Button radius="full">Next invoice</Button>
+
+                    <Button radius="full" variant="outline">
+                      Done
+                    </Button>
+                  </Flex>
+                </Box>
+              </Flex>
+            </Card>
+          </Theme>
         </Grid>
       </Box>
     </>
@@ -315,37 +316,18 @@ export function ThemesScalingExample() {
 }
 
 export function ThemesRadiusExample() {
-  const radiusValues = ['none', 'medium', 'full'] as const;
   return (
     <PropValueExampleCard>
-      {radiusValues.map((radius, i) => (
-        <PropValueExampleCardRow
-          value={radius}
-          bordered={i + 1 !== radiusValues.length}
-          key={radius}
-        >
+      {themePropDefs.radius.values.map((radius, i, arr) => (
+        <PropValueExampleCardRow value={radius} bordered={i + 1 !== arr.length} key={radius}>
           <Theme radius={radius}>
-            <Card variant="surface" size="2" style={{ maxWidth: 480 }}>
-              <Flex gap="3">
-                <Avatar
-                  size="3"
-                  src={allPeople[4].image}
-                  fallback={allPeople[22]?.name[0].toUpperCase()}
-                />
-                <Box flexGrow="1">
-                  <TextArea placeholder="Reply…" />
-                  <Flex gap="6" mt="3" justify="between">
-                    <Flex asChild align="center" gap="2">
-                      <Text as="label" size="2">
-                        <Checkbox checked />
-                        <Text>Send to group</Text>
-                      </Text>
-                    </Flex>
-                    <Button>Send message</Button>
-                  </Flex>
-                </Box>
-              </Flex>
-            </Card>
+            <Box maxWidth="320px">
+              <TextFieldRoot size="3" placeholder="Reply…">
+                <TextFieldSlot side="right" px="1">
+                  <Button size="2">Send</Button>
+                </TextFieldSlot>
+              </TextFieldRoot>
+            </Box>
           </Theme>
         </PropValueExampleCardRow>
       ))}
@@ -395,20 +377,66 @@ function PropValueExampleCardRow({
   );
 }
 
+export function ThemesRadiusScale() {
+  return (
+    <Flex direction="column" gap="3" mt="6" mb="5">
+      <Flex
+        flexGrow="1"
+        p="5"
+        gap="4"
+        style={{
+          backgroundColor: 'var(--gray-a1)',
+          boxShadow: 'inset 0 0 0 1px var(--gray-a4)',
+          borderRadius: 'var(--radius-4)',
+        }}
+      >
+        {[...new Array(6)].map((_, i) => (
+          <Flex flexGrow="1" align="center" justify="center" key={i}>
+            <DecorativeBox
+              flexGrow="1"
+              style={{
+                borderRadius: `var(--radius-${i + 1})`,
+              }}
+              height="48px"
+              key={i}
+            />
+          </Flex>
+        ))}
+      </Flex>
+
+      <Flex align="center" gap="1" px="4">
+        {[...new Array(6)].map((_, i) => (
+          <Flex align="center" justify="center" height="100%" width="100%" key={i}>
+            <Text size="1" color="gray">
+              {i + 1}
+            </Text>
+          </Flex>
+        ))}
+      </Flex>
+    </Flex>
+  );
+}
+
 export function ThemesShadowScale() {
   return (
     <Flex direction="column" gap="3" mt="6" mb="5">
       <Flex
-        style={{ flex: 1, backgroundColor: 'var(--gray-4)', borderRadius: 'var(--radius-3)' }}
+        position="relative"
+        flexGrow="1"
         p="5"
         gap="4"
+        style={{
+          backgroundColor: 'var(--gray-a1)',
+          boxShadow: 'inset 0 0 0 1px var(--gray-a4)',
+          borderRadius: 'var(--radius-4)',
+        }}
       >
         {[...new Array(6)].map((_, i) => (
           <Flex flexGrow="1" align="center" justify="center" key={i}>
             <Box
               flexGrow="1"
               style={{
-                backgroundColor: 'var(--gray-1)',
+                backgroundColor: 'var(--color-panel-solid)',
                 boxShadow: `var(--shadow-${i + 1})`,
                 borderRadius: 'var(--radius-2)',
               }}
@@ -417,6 +445,23 @@ export function ThemesShadowScale() {
             />
           </Flex>
         ))}
+
+        <Flex position="absolute" inset="5" gap="4">
+          <Flex flexGrow="1" />
+          {[...new Array(5)].map((_, i) => (
+            <Flex flexGrow="1" align="center" justify="center" key={i}>
+              <Box
+                flexGrow="1"
+                style={{
+                  backgroundColor: 'var(--color-panel-solid)',
+                  borderRadius: 'var(--radius-2)',
+                }}
+                height="48px"
+                key={i}
+              />
+            </Flex>
+          ))}
+        </Flex>
       </Flex>
 
       <Flex align="center" gap="1" px="4">
@@ -755,9 +800,9 @@ const VolumeMaxIcon = (props: React.ComponentPropsWithoutRef<'svg'>) => (
 export function DecorativeBox(props) {
   return (
     <Box
+      height="100%"
       {...props}
       style={{
-        height: '100%',
         backgroundColor: 'var(--gray-a3)',
         backgroundClip: 'padding-box',
         border: '1px solid var(--gray-a5)',

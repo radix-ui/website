@@ -3,8 +3,8 @@ export const themesRoutes = [
     label: 'Overview',
     pages: [
       { title: 'Getting started', slug: 'themes/docs/overview/getting-started' },
-      { title: 'Resources', slug: 'themes/docs/overview/resources' },
       { title: 'Releases', slug: 'themes/docs/overview/releases' },
+      { title: 'Resources', slug: 'themes/docs/overview/resources' },
     ],
   },
   {
@@ -13,11 +13,14 @@ export const themesRoutes = [
       { title: 'Overview', slug: 'themes/docs/theme/overview' },
       { title: 'Color', slug: 'themes/docs/theme/color' },
       { title: 'Dark mode', slug: 'themes/docs/theme/dark-mode' },
-      { title: 'Visual style', slug: 'themes/docs/theme/visual-style' },
       { title: 'Typography', slug: 'themes/docs/theme/typography' },
       { title: 'Layout', slug: 'themes/docs/theme/layout' },
       { title: 'Breakpoints', slug: 'themes/docs/theme/breakpoints' },
-      { title: 'Token reference', slug: 'themes/docs/theme/token-reference' },
+      { title: 'Radius', slug: 'themes/docs/theme/radius' },
+      { title: 'Shadows', slug: 'themes/docs/theme/shadows' },
+      { title: 'Cursors', slug: 'themes/docs/theme/cursors' },
+      { title: 'Custom components', slug: 'themes/docs/theme/custom-components' },
+      // { title: 'Token reference', slug: 'themes/docs/theme/token-reference' },
     ],
   },
 

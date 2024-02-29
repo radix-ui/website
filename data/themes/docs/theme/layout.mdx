@@ -9,27 +9,24 @@ metaDescription: Declarative layout and common spacing props.
 
 ## Layout components
 
-[Box](/themes/docs/components/box), [Flex](/themes/docs/components/flex) and [Grid](/themes/docs/components/grid) are foundational elements you'll use to construct layouts. Box provides block-level spacing and sizing, while Flex and Grid let you create flexible columns, rows and grids.
+[Box](/themes/docs/components/box), [Flex](/themes/docs/components/flex) and [Grid](/themes/docs/components/grid) are foundational elements you’ll use to construct layouts. Box provides block-level spacing and sizing, while Flex and Grid let you create flexible columns, rows and grids.
 
 ```jsx live=true
 <Grid columns="3" gap="3">
   <Flex direction="column" gap="3">
-    <Box height="24px">
-      <DecorativeBox />
-    </Box>
-    <Box height="40px">
-      <DecorativeBox />
-    </Box>
     <Box height="64px">
+      <DecorativeBox />
+    </Box>
+    <Box height="96px">
       <DecorativeBox />
     </Box>
   </Flex>
 
   <Flex direction="column" gap="3">
-    <Box flexGrow="1">
+    <Box height="96px">
       <DecorativeBox />
     </Box>
-    <Box height="32px">
+    <Box height="64px">
       <DecorativeBox />
     </Box>
   </Flex>
@@ -38,24 +35,28 @@ metaDescription: Declarative layout and common spacing props.
 
 [Container](/themes/docs/components/container) and [Section](/themes/docs/components/section) are used for page level layout and allow you to contain the max width of content or apply consistent vertical spacing between sections.
 
-All layout components share a common set of props:
+## Layout props
+
+All layout components share a common set of props to customize their layout:
 
 <ThemesPropsTable name="layout" />
 
-### Margin props
+## Margin props
 
-Shorthand utilities for applying margin to any side of an element, useful when you need to apply space between elements. Margin props are available on components that render a node.
+Almost all components support margin props, which is a set of utilities for applying margin to any side of an element.
 
 ```jsx live=true line=1
-<Button __mr__="3" variant="soft">Cancel</Button>
-<Button>Save changes</Button>
+<Button mr="3">Save</Button>
+<Button variant="soft">Cancel</Button>
 ```
 
 <ThemesPropsTable name="margin" />
 
-## Spacing scale
+The margin props may be unavailable on components that don’t render a HTML node or rely on their Root part for layout.
 
-Spacing values are derived from a 9 step scale.
+## Space scale
+
+Spacing values are derived from a 9-step scale, which is used for props such as margin and padding. These props accept numeric strings from `"1"` to `"9"`, which correspond to the steps in the scale below.
 
 <Box my="7">
   <ThemesSpacingScale />
@@ -63,10 +64,55 @@ Spacing values are derived from a 9 step scale.
 
 <ThemesSpacingTable />
 
-### Scaling
+#### Space scale tokens
 
-Values which affect layout (spacing, typographic sizing, line heights) scale relatively based on the `scaling` value defined in your [Theme](/themes/docs/components/theme). This setting allows you to scale the UI density uniformly across your entire application.
+Space scale tokens can be also accessed using CSS variables. You can use these tokens to style your custom components, ensuring they are consistent with the rest of your theme.
+
+```css
+/* Space scale */
+var(--space-1);
+var(--space-2);
+var(--space-3);
+var(--space-4);
+var(--space-5);
+var(--space-6);
+var(--space-7);
+var(--space-8);
+var(--space-9);
+```
+
+## Scaling
+
+Values which affect layout (spacing, typographic sizing, line heights) scale relatively based on the `scaling` value defined in your Theme. This setting allows you to scale the UI density uniformly across your entire application.
+
+```jsx line="1"
+<Theme scaling="100%">
+  <Card variant="surface">
+    <Flex gap="3" align="center">
+      <Avatar size="3" src={person.image} fallback={person.name} />
+      <Box>
+        <Text as="div" size="2" weight="bold">
+          {person.name}
+        </Text>
+        <Text as="div" size="2" color="gray">
+          Approved invoice <Link>#3461</Link>
+        </Text>
+      </Box>
+    </Flex>
+  </Card>
+</Theme>
+```
 
 <Box my="5">
   <ThemesScalingExample />
 </Box>
+
+#### Scaling token
+
+The scaling token can be accessed using the `var(--scaling)` CSS variable. If you need to use different scaling factors in your app, you can use this tokens to style your custom components, ensuring they are consistent with the rest of your theme.
+
+```css
+.MyCustomComponent {
+  width: calc(200px * var(--scaling));
+}
+```

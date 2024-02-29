@@ -1,0 +1,66 @@
+---
+metaTitle: Cursors
+metaDescription: Customizing cursors used for interactive elements.
+---
+
+# Cursors
+
+<Description>Customizing cursors used for interactive elements.</Description>
+
+## Default cursors
+
+By default, interactive elements that don’t link to another page use the regular arrow cursor. This also matches the browser defaults. However, disabled elements use an explicit disabled cursor.
+
+```jsx live="true"
+<Flex align="center" gap="4">
+  <Flex align="center" gap="3">
+    <Button>Submit</Button>
+    <Button asChild>
+      <a href="#">Link</a>
+    </Button>
+    <Button disabled>Disabled</Button>
+  </Flex>
+  <Button variant="ghost">Ghost button</Button>
+  <Link size="2">Regular link</Link>
+  <Checkbox defaultChecked />
+  <Switch defaultChecked />
+  <Switch defaultChecked disabled />
+</Flex>
+```
+
+## Cursor tokens
+
+Cursor settings can be accessed using CSS variables. You can use these tokens to style your custom components, ensuring they are accessible and consistent with the rest of your theme.
+
+```css
+/* Available cursor tokens */
+var(--cursor-button);
+var(--cursor-checkbox);
+var(--cursor-disabled);
+var(--cursor-link);
+var(--cursor-menu-item);
+var(--cursor-radio);
+var(--cursor-slider-thumb);
+var(--cursor-slider-thumb-active);
+var(--cursor-switch);
+```
+
+## Customization
+
+It’s common to use a pointer cursor for interactive elements. Radix Themes cursors can be customized by overriding the corresponding variables of the CSS token system.
+
+Make sure that your CSS is applied after the Radix Themes styles so that it takes precedence.
+
+```css
+.radix-themes {
+  --cursor-button: pointer;
+  --cursor-checkbox: pointer;
+  --cursor-disabled: default;
+  --cursor-link: pointer;
+  --cursor-menu-item: pointer;
+  --cursor-radio: pointer;
+  --cursor-slider-thumb: grab;
+  --cursor-slider-thumb-active: grabbing;
+  --cursor-switch: pointer;
+}
+```

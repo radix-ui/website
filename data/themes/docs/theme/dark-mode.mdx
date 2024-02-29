@@ -20,7 +20,7 @@ Light and dark modes are supported out of the box, allowing you to easily switch
 By default, the root `Theme` appearance is `light`. To set a different appearance pass it via the `appearance` prop. This will force the theme to use the specified setting.
 
 ```jsx line=1
-<Theme __appearance__="dark">
+<Theme appearance="dark">
   <MyApp />
 </Theme>
 ```
@@ -59,12 +59,11 @@ export default function () {
     <InfoCircledIcon />
   </Callout.Icon>
   <Callout.Text>
-    Do <Strong>not</Strong> pass <Code variant="ghost">resolvedTheme</Code> from{' '}
-    <Code variant="ghost">next-themes</Code> to{' '}
-    <Code variant="ghost">appearance</Code>. Instead, rely just on the class
-    switching. This is important so that{' '}
-    <Code variant="ghost">next-themes</Code> can prevent the appearance flash
-    during initial render.
+    <Strong>Do not</Strong> try to set{' '}
+    <Code>{'<Theme appearance={resolvedTheme}>'}</Code>. Instead, rely just on
+    class switching that <Code>next-themes</Code> provides. This way{' '}
+    <Code>next-themes</Code> can prevent the appearance flash during initial
+    render.
   </Callout.Text>
 </Callout.Root>
 
@@ -72,7 +71,7 @@ export default function () {
 
 ### With other libraries
 
-Any library that supports class switching is compatible, you'll just need to ensure that the appended class names match those used by Radix Themes:
+Any library that supports class switching is compatible. You’ll just need to ensure that the appended class names match those supported by Radix Themes:
 
 - `className="light"`
 - `className="light-theme"`
