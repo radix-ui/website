@@ -132,43 +132,71 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
         </Flex>
         {Object.values(scale).map((value, i) => {
           return (
-            <Box
-              key={i}
-              height="6"
-              width="8"
-              shrink="1"
-              style={{
-                backgroundColor: isDarkAlpha
-                  ? Colors['grayDark']['gray1']
-                  : isAlpha
-                  ? 'white'
-                  : 'transparent',
+            <DropdownMenu.Root onOpenChange={(isOpen) => setDropdownMenuIsOpen(isOpen)} key={i}>
+              <Tooltip className="radix-themes-custom-fonts" content="Copy to Clipboard">
+                <DropdownMenu.Trigger>
+                  <Box
+                    height="6"
+                    width="8"
+                    shrink="1"
+                    onClick={() => navigator.clipboard.writeText(value)}
+                    style={{
+                      backgroundColor: isDarkAlpha
+                        ? Colors['grayDark']['gray1']
+                        : isAlpha
+                        ? 'white'
+                        : 'transparent',
 
-                // Show transparency grid for whiteA and blackA
-                ...(isBlackA && {
-                  backgroundColor: 'white',
-                  backgroundSize: '16px 16px',
-                  backgroundPosition: '0px 0px, 8px 0px, 8px -8px, 0px 8px',
-                  backgroundImage: `
+                      // Show transparency grid for whiteA and blackA
+                      ...(isBlackA && {
+                        backgroundColor: 'white',
+                        backgroundSize: '16px 16px',
+                        backgroundPosition: '0px 0px, 8px 0px, 8px -8px, 0px 8px',
+                        backgroundImage: `
                       linear-gradient(45deg, #f8f8f8 25%, transparent 25%),
                       linear-gradient(135deg, #f8f8f8 25%, transparent 25%),
                       linear-gradient(45deg, transparent 75%, #f8f8f8 75%),
                       linear-gradient(135deg, transparent 75%, #f8f8f8 75%)`,
-                }),
-                ...(isWhiteA && {
-                  backgroundColor: '#181818',
-                  backgroundSize: '16px 16px',
-                  backgroundPosition: '0px 0px, 8px 0px, 8px -8px, 0px 8px',
-                  backgroundImage: `
+                      }),
+                      ...(isWhiteA && {
+                        backgroundColor: '#181818',
+                        backgroundSize: '16px 16px',
+                        backgroundPosition: '0px 0px, 8px 0px, 8px -8px, 0px 8px',
+                        backgroundImage: `
                       linear-gradient(45deg, #222222 25%, transparent 25%),
                       linear-gradient(135deg, #222222 25%, transparent 25%),
                       linear-gradient(45deg, transparent 75%, #222222 75%),
                       linear-gradient(135deg, transparent 75%, #222222 75%)`,
-                }),
-              }}
-            >
-              <Box key={i} width="100%" height="100%" style={{ backgroundColor: value }} />
-            </Box>
+                      }),
+                    }}
+                  >
+                    <Box key={i} width="100%" height="100%" style={{ backgroundColor: value }} />
+                  </Box>
+                </DropdownMenu.Trigger>
+              </Tooltip>
+              <DropdownMenu.Content className="radix-themes-custom-fonts" align="end" size="1">
+                <DropdownMenu.Group>
+                  <DropdownMenu.Item onSelect={(e) => navigator.clipboard.writeText(value)}>
+                    Copy as Hex
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item
+                    onSelect={(e) => navigator.clipboard.writeText(tinycolor(value).toHexString())}
+                  >
+                    Copy as Hex (no alpha)
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item
+                    onSelect={(e) => navigator.clipboard.writeText(tinycolor(value).toRgbString())}
+                  >
+                    Copy as RGB
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item
+                    onSelect={(e) => navigator.clipboard.writeText(tinycolor(value).toHslString())}
+                  >
+                    Copy as HSL
+                  </DropdownMenu.Item>
+                </DropdownMenu.Group>
+              </DropdownMenu.Content>
+            </DropdownMenu.Root>
           );
         })}
       </Flex>
