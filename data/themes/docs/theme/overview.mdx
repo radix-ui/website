@@ -11,7 +11,7 @@ metaDescription: Use the Theme component to quickly change the look and feel of 
 
 ## Anatomy
 
-The [Theme component](/themes/docs/components/theme) defines the overall visual look of your application, it can be customized by passing a minimal set of configuration options.
+The [Theme component](/themes/docs/components/theme) defines the overall visual look of your application. It can be customized by passing a minimal set of configuration options.
 
 ```jsx live=true
 <Theme
@@ -25,45 +25,45 @@ The [Theme component](/themes/docs/components/theme) defines the overall visual 
 </Theme>
 ```
 
-A well tuned set of defaults is provided to get you started, but don’t be afraid to [play with all of the available options](/themes/playground) to find the right visual style for your application.
+A well tuned set of defaults is provided to get you started, but don’t be afraid to play with all of the available options to find the right visual style for your application. Check out the [Playground](/themes/playground) to see what effect each option has.
 
 {
 
   <Grid columns={{ initial: '1', xs: '2' }} my="6" gap="4">
       <ThemesLinkCard
-        title="Accent color"
-        desc="The accent color of primary buttons, links and interactive elements."
-        href="/themes/docs/theme/color#choosing-an-accent-color"
-      />
-
-      <ThemesLinkCard
-        title="Gray color"
-        desc="The shade of gray applied to borders, text and non-interactive elements."
-        href="/themes/docs/theme/color#choosing-a-gray-color"
-      />
-
-      <ThemesLinkCard
-        title="Panel background"
-        desc="Whether to apply a solid color, or use a translucent effect on panel elements."
-        href="/themes/docs/theme/visual-style#panel-background"
-      />
-
-      <ThemesLinkCard
-        title="Radius"
-        desc="The amount of border radius applied to themed elements."
-        href="/themes/docs/theme/visual-style#radius"
+        title="Colors"
+        desc="Pick your accent color and learn about the underlying token system."
+        href="/themes/docs/theme/color#accents"
       />
 
       <ThemesLinkCard
         title="Appearance"
-        desc="The color scheme of the theme (typically referred to as light and dark mode)"
+        desc="Set the color scheme of the theme, typically referred to as light and dark mode."
         href="/themes/docs/theme/dark-mode"
       />
 
       <ThemesLinkCard
-        title="Scaling"
-        desc="The uniform scaling applied to the UI across the entire theme."
-        href="/themes/docs/theme/layout#scaling"
+        title="Typography"
+        desc="Learn how to use and customize the typographic components in your theme."
+        href="/themes/docs/theme/typography"
+      />
+
+      <ThemesLinkCard
+        title="Layout"
+        desc="How to use the layout components, common spacing props, and set the theme scaling."
+        href="/themes/docs/theme/layout"
+      />
+
+      <ThemesLinkCard
+        title="Radius"
+        desc="Choose the radius setting in your theme that fits your brand."
+        href="/themes/docs/theme/radius"
+      />
+
+      <ThemesLinkCard
+        title="Custom components"
+        desc="Learn to build your own components that use the same theme settings."
+        href="/themes/docs/theme/custom-components"
       />
     </Grid>
 
@@ -71,9 +71,9 @@ A well tuned set of defaults is provided to get you started, but don’t be afra
 
 ## Variants
 
-Variants are visual variations of a component, they are used to create visual hierarchies and communicate relative importance.
+Variants are visual variations of a component which are used to create visual hierarchies and communicate relative importance.
 
-Each component offers a different set of variants though all are designed to be consistent and complimentary with each other.
+Each component offers a different set of variants, though all are designed to be consistent and complimentary with each other.
 
 ```jsx live=true
 <Flex gap="3" align="center">
@@ -89,6 +89,6 @@ Each component offers a different set of variants though all are designed to be 
 </Flex>
 ```
 
-Using a combination of component variants alongside customized theme settings allows you to create a multitude of unique looking interfaces.
+Using a combination of component variants alongside customized theme settings allows you to create a multitude of unique-looking interfaces.
 
 <ThemesVariantsExample />

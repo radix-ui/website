@@ -73,7 +73,7 @@ export const components = {
   ),
   h3: ({ children, id, ...props }) => (
     <Heading
-      size="5"
+      size="4"
       mt="7"
       mb="2"
       asChild

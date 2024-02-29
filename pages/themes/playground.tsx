@@ -1006,7 +1006,7 @@ export default function ComponentsPage() {
                                   <InfoCircledIcon width="16" height="16" />
                                 </CalloutIcon>
                                 <CalloutText>
-                                  Please <Link href="#">upgrade</Link> to the new version.
+                                  Please <Link>upgrade</Link> to the new version.
                                 </CalloutText>
                               </CalloutRoot>
                               <CalloutRoot variant={variant} highContrast mt="4">
@@ -1014,7 +1014,7 @@ export default function ComponentsPage() {
                                   <InfoCircledIcon width="16" height="16" />
                                 </CalloutIcon>
                                 <CalloutText>
-                                  Please <Link href="#">upgrade</Link> to the new version.
+                                  Please <Link>upgrade</Link> to the new version.
                                 </CalloutText>
                               </CalloutRoot>
                             </td>
@@ -1024,7 +1024,7 @@ export default function ComponentsPage() {
                                   <InfoCircledIcon width="16" height="16" />
                                 </CalloutIcon>
                                 <CalloutText>
-                                  Please <Link href="#">upgrade</Link> to the new version.
+                                  Please <Link>upgrade</Link> to the new version.
                                 </CalloutText>
                               </CalloutRoot>
                               <CalloutRoot variant={variant} color="gray" highContrast mt="4">
@@ -1032,7 +1032,7 @@ export default function ComponentsPage() {
                                   <InfoCircledIcon width="16" height="16" />
                                 </CalloutIcon>
                                 <CalloutText>
-                                  Please <Link href="#">upgrade</Link> to the new version.
+                                  Please <Link>upgrade</Link> to the new version.
                                 </CalloutText>
                               </CalloutRoot>
                             </td>
@@ -1065,7 +1065,7 @@ export default function ComponentsPage() {
                                     <InfoCircledIcon width="16" height="16" />
                                   </CalloutIcon>
                                   <CalloutText>
-                                    Please <Link href="#">upgrade</Link> to the new version.
+                                    Please <Link>upgrade</Link> to the new version.
                                   </CalloutText>
                                 </CalloutRoot>
                                 <CalloutRoot variant={variant} color={color} highContrast mt="4">
@@ -1073,7 +1073,7 @@ export default function ComponentsPage() {
                                     <InfoCircledIcon width="16" height="16" />
                                   </CalloutIcon>
                                   <CalloutText>
-                                    Please <Link href="#">upgrade</Link> to the new version.
+                                    Please <Link>upgrade</Link> to the new version.
                                   </CalloutText>
                                 </CalloutRoot>
                               </td>
@@ -1110,7 +1110,7 @@ export default function ComponentsPage() {
                                       <InfoCircledIcon {...calloutSizeToIconSize(size)} />
                                     </CalloutIcon>
                                     <CalloutText>
-                                      Please <Link href="#">upgrade</Link> to the new version.
+                                      Please <Link>upgrade</Link> to the new version.
                                     </CalloutText>
                                   </CalloutRoot>
                                 </Flex>
@@ -2275,7 +2275,7 @@ export default function ComponentsPage() {
                     Technology revolutionized{' '}
                     <HoverCardRoot>
                       <HoverCardTrigger>
-                        <Link href="#">typography</Link>
+                        <Link>typography</Link>
                       </HoverCardTrigger>
 
                       <HoverCardContent size={size} side="top">

@@ -249,7 +249,7 @@
 }
 
 .Pre [data-invert-line-highlight='true'] :global(.highlight-line) {
-  margin-inline: calc(var(--space-5) * -1 + 1px);
+  margin-inline: calc(var(--space-5) * -1 - 1px);
   padding-inline: var(--space-5);
 }
 

@@ -13,7 +13,7 @@ type Doc = {
   code: string;
 };
 
-export default function ThemingDoc({ frontmatter, code }: Doc) {
+export default function ThemesDoc({ frontmatter, code }: Doc) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
   return (
