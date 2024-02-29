@@ -58,8 +58,8 @@ export const components = {
   h2: ({ children, id, ...props }) => (
     <Heading
       size="6"
-      mt="7"
-      mb="2"
+      mt="8"
+      mb="4"
       asChild
       {...props}
       id={id}
