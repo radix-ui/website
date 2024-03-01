@@ -12,16 +12,16 @@ metaDescription: Customizing cursors used for interactive elements.
 By default, interactive elements that don’t link to another page use the regular arrow cursor. This also matches the browser defaults. However, disabled elements use an explicit disabled cursor.
 
 ```jsx live="true"
-<Flex align="center" gap="4">
-  <Flex align="center" gap="3">
-    <Button>Submit</Button>
+<Flex align="center" gap="4" wrap="wrap">
+  <Flex align="center" gap="3" wrap="wrap">
+    <Button>Button</Button>
     <Button asChild>
       <a href="#">Link</a>
     </Button>
     <Button disabled>Disabled</Button>
   </Flex>
   <Button variant="ghost">Ghost button</Button>
-  <Link size="2">Regular link</Link>
+  <Link size="2">Link</Link>
   <Checkbox defaultChecked />
   <Switch defaultChecked />
   <Switch defaultChecked disabled />
@@ -49,7 +49,7 @@ var(--cursor-switch);
 
 It’s common to use a pointer cursor for interactive elements. Radix Themes cursors can be customized by overriding the corresponding variables of the CSS token system.
 
-Make sure that your CSS is applied after the Radix Themes styles so that it takes precedence.
+Here’s an example of how you can customize the cursor tokens to set `cursor: pointer` for most interactive elements in the theme:
 
 ```css
 .radix-themes {
@@ -64,3 +64,5 @@ Make sure that your CSS is applied after the Radix Themes styles so that it take
   --cursor-switch: pointer;
 }
 ```
+
+Make sure that your CSS is applied after the Radix Themes styles so that it takes precedence.
