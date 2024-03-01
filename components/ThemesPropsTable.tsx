@@ -3,6 +3,7 @@ import { PropsTable } from './PropsTable';
 import * as themes from '@lib/themes';
 import { Code, Link as DSLink } from '@radix-ui/themes';
 import NextLink from 'next/link';
+import { ExternalLink } from './ExternalLink';
 
 const Link = ({ href = '', ...props }) => {
   if (href.startsWith('http')) {
@@ -16,52 +17,55 @@ const Link = ({ href = '', ...props }) => {
 };
 
 const definitions = {
+  alertDialogContent: themes.alertDialogContentPropDefs,
   avatar: themes.avatarPropDefs,
-  button: themes.buttonPropDefs,
-  checkbox: themes.checkboxPropDefs,
-  iconButton: themes.iconButtonPropDefs,
-  radioGroup: themes.radioGroupRootPropDefs,
-  slider: themes.sliderPropDefs,
-  switch: themes.switchPropDefs,
-  tooltip: themes.tooltipPropDefs,
-  box: themes.boxPropDefs,
-  flex: themes.flexPropDefs,
-  grid: themes.gridPropDefs,
-  container: themes.containerPropDefs,
-  section: themes.sectionPropDefs,
-  text: themes.textPropDefs,
-  heading: themes.headingPropDefs,
-  link: themes.linkPropDefs,
-  blockquote: themes.blockquotePropDefs,
-  code: themes.codePropDefs,
-  textField: themes.textFieldRootPropDefs,
-  textFieldSlot: themes.textFieldSlotPropDefs,
-  textArea: themes.textAreaPropDefs,
-  separator: themes.separatorPropDefs,
   badge: themes.badgePropDefs,
-  layout: themes.layoutPropDefs,
-  margin: themes.marginPropDefs,
-  selectRoot: themes.selectRootPropDefs,
-  selectTrigger: themes.selectTriggerPropDefs,
-  selectContent: themes.selectContentPropDefs,
-  scrollArea: themes.scrollAreaPropDefs,
-  dropdownMenuContent: themes.dropdownMenuContentPropDefs,
-  dropdownMenuItem: themes.dropdownMenuItemPropDefs,
+  blockquote: themes.blockquotePropDefs,
+  box: themes.boxPropDefs,
+  button: themes.buttonPropDefs,
+  calloutRoot: themes.calloutRootPropDefs,
+  card: themes.cardPropDefs,
+  checkbox: themes.checkboxPropDefs,
+  code: themes.codePropDefs,
+  container: themes.containerPropDefs,
   contextMenuContent: themes.contextMenuContentPropDefs,
   contextMenuItem: themes.contextMenuItemPropDefs,
-  theme: themes.themePropDefs,
-  card: themes.cardPropDefs,
+  dialogContent: themes.dialogContentPropDefs,
+  dropdownMenuContent: themes.dropdownMenuContentPropDefs,
+  dropdownMenuItem: themes.dropdownMenuItemPropDefs,
+  em: themes.emPropDefs,
+  flex: themes.flexPropDefs,
+  grid: themes.gridPropDefs,
+  heading: themes.headingPropDefs,
+  hoverCardContent: themes.hoverCardContentPropDefs,
+  iconButton: themes.iconButtonPropDefs,
+  inset: themes.insetPropDefs,
+  kbd: themes.kbdPropDefs,
+  layout: themes.layoutPropDefs,
+  link: themes.linkPropDefs,
+  margin: themes.marginPropDefs,
+  popoverContent: themes.popoverContentPropDefs,
+  quote: themes.quotePropDefs,
+  radioGroup: themes.radioGroupRootPropDefs,
+  scrollArea: themes.scrollAreaPropDefs,
+  section: themes.sectionPropDefs,
+  selectContent: themes.selectContentPropDefs,
+  selectRoot: themes.selectRootPropDefs,
+  selectTrigger: themes.selectTriggerPropDefs,
+  separator: themes.separatorPropDefs,
+  slider: themes.sliderPropDefs,
+  strong: themes.strongPropDefs,
+  switch: themes.switchPropDefs,
+  tableCell: themes.tableCellPropDefs,
   tableRoot: themes.tableRootPropDefs,
   tableRow: themes.tableRowPropDefs,
-  tableCell: themes.tableCellPropDefs,
-  calloutRoot: themes.calloutRootPropDefs,
-  inset: themes.insetPropDefs,
   tabsList: themes.tabsListPropDefs,
-  kbd: themes.kbdPropDefs,
-  hoverCardContent: themes.hoverCardContentPropDefs,
-  dialogContent: themes.dialogContentPropDefs,
-  alertDialogContent: themes.alertDialogContentPropDefs,
-  popoverContent: themes.popoverContentPropDefs,
+  text: themes.textPropDefs,
+  textArea: themes.textAreaPropDefs,
+  textField: themes.textFieldRootPropDefs,
+  textFieldSlot: themes.textFieldSlotPropDefs,
+  theme: themes.themePropDefs,
+  tooltip: themes.tooltipPropDefs,
 } as const;
 
 type PropDefinitions = typeof definitions;
@@ -81,11 +85,58 @@ type CommonDescriptions = {
   [K in ExtractedProps[keyof ExtractProps<PropDefinitions>]]?: React.ReactNode;
 };
 
+const textAlign = (
+  <>
+    Sets the CSS{' '}
+    <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align">
+      text-align
+    </ExternalLink>{' '}
+    property.
+  </>
+);
+
+const textWrap = (
+  <>
+    Controls the wrapping behavior of the text. See the corresponding{' '}
+    <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap">
+      text-wrap
+    </ExternalLink>{' '}
+    values for details.
+  </>
+);
+
 const uniqueDescriptions: UniqueDescriptions = {
   avatar: {
     fallback: 'The fallback element to render when an image is not available.',
   },
+  blockquote: {
+    wrap: textWrap,
+  },
+  code: {
+    wrap: textWrap,
+  },
+  em: {
+    wrap: textWrap,
+  },
+  heading: {
+    align: textAlign,
+    wrap: textWrap,
+  },
+  link: {
+    wrap: textWrap,
+    underline: 'Sets the visibility of the underline affordance.',
+  },
+  quote: {
+    wrap: textWrap,
+  },
+  strong: {
+    wrap: textWrap,
+  },
   scrollArea: { scrollbars: 'Controls the scrollable axes.' },
+  text: {
+    align: textAlign,
+    wrap: textWrap,
+  },
   theme: {
     appearance: (
       <>
@@ -116,9 +167,6 @@ const uniqueDescriptions: UniqueDescriptions = {
   tooltip: {
     content: 'The content associated with the tooltip.',
   },
-  link: {
-    underline: 'Sets the visibility of the underline affordance.',
-  },
 };
 
 const commonDescriptions: CommonDescriptions = {
@@ -134,7 +182,7 @@ const commonDescriptions: CommonDescriptions = {
       <Link href="/themes/docs/theme/color">color guide</Link> for more details.
     </>
   ),
-  highContrast: 'Renders the component in higher contrast.',
+  highContrast: 'Uses a higher contrast color for the component.',
   radius: (
     <>
       Overrides the radius inherited from the theme. See the{' '}
@@ -160,7 +208,16 @@ const commonDescriptions: CommonDescriptions = {
     </>
   ),
   shortcut: 'Optional shortcut command displayed next to the item text.',
-  trim: 'Removes the leading trim from the start or end of the rendered text node.',
+  trim: 'Trims the leading whitespace from the start or end of the text.',
+  truncate: (
+    <>
+      Truncates text with an ellipsis. Be aware of{' '}
+      <ExternalLink href="https://css-tricks.com/flexbox-truncated-text/">
+        common pitfalls
+      </ExternalLink>{' '}
+      in flex layouts.
+    </>
+  ),
 };
 
 function formatValues(values?: readonly string[] | string) {

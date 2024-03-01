@@ -19,8 +19,6 @@ export const themesRoutes = [
       { title: 'Radius', slug: 'themes/docs/theme/radius' },
       { title: 'Shadows', slug: 'themes/docs/theme/shadows' },
       { title: 'Cursors', slug: 'themes/docs/theme/cursors' },
-      { title: 'Custom components', slug: 'themes/docs/theme/custom-components' },
-      // { title: 'Token reference', slug: 'themes/docs/theme/token-reference' },
     ],
   },
 
