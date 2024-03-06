@@ -5,13 +5,26 @@ import {
   Card,
   Checkbox,
   Code,
+  Container,
+  DialogContent,
+  DialogRoot,
+  DialogTrigger,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuRoot,
+  DropdownMenuTrigger,
   Flex,
   Grid,
   Heading,
   IconButton,
   Inset,
   Link,
+  PopoverContent,
+  PopoverRoot,
+  PopoverTrigger,
   ScrollArea,
+  Section,
   Slider,
   Strong,
   Table,
@@ -379,7 +392,7 @@ function PropValueExampleCardRow({
 
 export function ThemesRadiusScale() {
   return (
-    <Flex direction="column" gap="3" mt="6" mb="5">
+    <Flex direction="column" gap="3">
       <Flex
         flexGrow="1"
         p="5"
@@ -397,7 +410,7 @@ export function ThemesRadiusScale() {
               style={{
                 borderRadius: `var(--radius-${i + 1})`,
               }}
-              height="48px"
+              height="32px"
               key={i}
             />
           </Flex>
@@ -419,7 +432,7 @@ export function ThemesRadiusScale() {
 
 export function ThemesShadowScale() {
   return (
-    <Flex direction="column" gap="3" mt="6" mb="5">
+    <Flex direction="column" gap="3">
       <Flex
         position="relative"
         flexGrow="1"
@@ -496,7 +509,7 @@ export function SwatchRow({ name }: { name: string }) {
 
 export function ThemesColorScale({ type = 'accent' }: { type: 'accent' | 'gray' }) {
   return (
-    <Flex direction="column" gap="2" mt="6" mb="5">
+    <Flex direction="column" gap="2">
       <Flex align="center" gap="1">
         {[...new Array(12)].map((_, i) => (
           <Flex flexGrow="1" direction="column" gap="1" key={i}>
@@ -589,7 +602,7 @@ export function ThemesFontSizeScale() {
 
 export function ThemesAccentSwatches() {
   return (
-    <Flex direction="column" gap="5" my="6">
+    <Flex direction="column" gap="5">
       <Grid columns={{ initial: '4', xs: '6', sm: '9' }} gapX="1" gapY="3">
         {accentColors.map((color, i) => (
           <Box flexGrow="1" key={i}>
@@ -612,7 +625,7 @@ export function ThemesAccentSwatches() {
 
 export function ThemeGraySwatches() {
   return (
-    <Flex direction="column" gap="5" my="6">
+    <Flex direction="column" gap="5">
       <Grid columns={{ initial: '4', xs: '6', sm: '9' }} gapX="1" gapY="3">
         {(['gray', 'mauve', 'slate', 'sage', 'olive', 'sand'] as const).map((color, i) => (
           <Box flexGrow="1" key={i}>
@@ -797,7 +810,7 @@ const VolumeMaxIcon = (props: React.ComponentPropsWithoutRef<'svg'>) => (
   </svg>
 );
 
-export function DecorativeBox(props) {
+export function DecorativeBox(props: React.ComponentPropsWithoutRef<typeof Box>) {
   return (
     <Box
       height="100%"
@@ -913,3 +926,161 @@ const HeartIcon = (props: React.ComponentPropsWithoutRef<'svg'>) => (
     <path d="M 9.5449219 3 C 5.3895807 3 2 6.3895806 2 10.544922 C 2 14.283156 4.9005496 18.084723 7.6601562 21.119141 C 10.419763 24.153558 13.171875 26.369141 13.171875 26.369141 A 1.0001 1.0001 0 0 0 13.197266 26.388672 C 13.642797 26.725148 14.201794 26.943857 14.808594 26.984375 A 1.0001 1.0001 0 0 0 15 27 A 1.0001 1.0001 0 0 0 15.189453 26.984375 A 1.0001 1.0001 0 0 0 15.199219 26.982422 C 15.802918 26.940449 16.359155 26.723674 16.802734 26.388672 A 1.0001 1.0001 0 0 0 16.828125 26.369141 C 16.828125 26.369141 19.580237 24.153558 22.339844 21.119141 C 25.099451 18.084722 28 14.283156 28 10.544922 C 28 6.3895806 24.610419 3 20.455078 3 C 17.841043 3 15.989939 4.4385487 15 5.4570312 C 14.010061 4.4385487 12.158957 3 9.5449219 3 z M 9.5449219 5 C 12.276127 5 13.937826 7.2424468 14.103516 7.4746094 A 1.0001 1.0001 0 0 0 14.994141 8.0136719 A 1.0001 1.0001 0 0 0 15.017578 8.0136719 A 1.0001 1.0001 0 0 0 15.041016 8.0117188 A 1.0001 1.0001 0 0 0 15.117188 8.0058594 A 1.0001 1.0001 0 0 0 15.892578 7.4785156 C 16.049938 7.2575052 17.716133 5 20.455078 5 C 23.529737 5 26 7.4702629 26 10.544922 C 26 13.147688 23.499768 16.870104 20.859375 19.773438 C 18.227966 22.666891 15.607768 24.780451 15.589844 24.794922 C 15.414236 24.925626 15.219097 25 15 25 C 14.780903 25 14.585764 24.92563 14.410156 24.794922 C 14.392236 24.780452 11.772034 22.666891 9.140625 19.773438 C 6.5002316 16.870105 4 13.147688 4 10.544922 C 4 7.4702629 6.470263 5 9.5449219 5 z" />
   </svg>
 );
+
+export function ThemesBoxExample() {
+  return (
+    <Card my="4" size="2">
+      <Box width="64px" height="64px">
+        <DecorativeBox />
+      </Box>
+    </Card>
+  );
+}
+
+export function ThemesFlexExample() {
+  return (
+    <Card my="4" size="2">
+      <Flex
+        gap="3"
+        p="3"
+        m="2"
+        style={{
+          borderRadius: 'var(--radius-2)',
+          backgroundColor: 'var(--gray-a2)',
+          outline: '1px dashed var(--gray-a7)',
+        }}
+      >
+        <Box width="64px" height="64px">
+          <DecorativeBox />
+        </Box>
+        <Box width="64px" height="64px">
+          <DecorativeBox />
+        </Box>
+        <Box width="64px" height="64px">
+          <DecorativeBox />
+        </Box>
+        <Box width="64px" height="64px">
+          <DecorativeBox />
+        </Box>
+        <Box width="64px" height="64px">
+          <DecorativeBox />
+        </Box>
+      </Flex>
+    </Card>
+  );
+}
+
+export function ThemesGridExample() {
+  return (
+    <Card my="4" size="2">
+      <Grid
+        gap="3"
+        p="3"
+        m="2"
+        columns="repeat(3, auto)"
+        style={{
+          borderRadius: 'var(--radius-2)',
+          backgroundColor: 'var(--gray-a2)',
+          outline: '1px dashed var(--gray-a7)',
+        }}
+      >
+        <Box width="96px" height="64px">
+          <DecorativeBox />
+        </Box>
+        <Box width="96px" height="64px">
+          <DecorativeBox />
+        </Box>
+        <Box width="96px" height="64px">
+          <DecorativeBox />
+        </Box>
+        <Box width="96px" height="64px">
+          <DecorativeBox />
+        </Box>
+        <Box width="96px" height="64px">
+          <DecorativeBox />
+        </Box>
+        <Box width="96px" height="64px">
+          <DecorativeBox />
+        </Box>
+      </Grid>
+    </Card>
+  );
+}
+
+export function ThemesSectionExample() {
+  return (
+    <Card my="4" size="2">
+      <Section
+        size="1"
+        // px="3"
+        m="2"
+        style={{
+          borderRadius: 'var(--radius-2)',
+          backgroundColor: 'var(--gray-a2)',
+          outline: '1px dashed var(--gray-a7)',
+        }}
+      >
+        <Box height="96px">
+          <DecorativeBox style={{ borderRadius: 0, borderLeft: 0, borderRight: 0 }} />
+        </Box>
+      </Section>
+    </Card>
+  );
+}
+
+export function ThemesContainerExample() {
+  return (
+    <Card my="4" size="2">
+      <Container
+        size="1"
+        px="3"
+        m="2"
+        style={{
+          borderRadius: 'var(--radius-2)',
+          backgroundColor: 'var(--gray-a2)',
+          outline: '1px dashed var(--gray-a7)',
+        }}
+      >
+        <Box height="96px">
+          <DecorativeBox style={{ borderRadius: 0, borderTop: 0, borderBottom: 0 }} />
+        </Box>
+      </Container>
+    </Card>
+  );
+}
+
+export function ThemesZIndexExample() {
+  return (
+    <Card my="6" size="2">
+      <ThemesZIndexExampleRecursive />
+    </Card>
+  );
+}
+
+function ThemesZIndexExampleRecursive() {
+  return (
+    <Flex align="center" justify="center" height="160px">
+      <DialogRoot>
+        <PopoverRoot>
+          <PopoverTrigger>
+            <Button>Recursive popover</Button>
+          </PopoverTrigger>
+          <PopoverContent>
+            <Heading size="3" mb="2" trim="start">
+              Hello from the popover 👋
+            </Heading>
+            <DialogTrigger>
+              <Button color="gray" highContrast>
+                Recursive dialog
+              </Button>
+            </DialogTrigger>
+          </PopoverContent>
+        </PopoverRoot>
+
+        <DialogContent>
+          <ThemesZIndexExampleRecursive />
+        </DialogContent>
+      </DialogRoot>
+    </Flex>
+  );
+}

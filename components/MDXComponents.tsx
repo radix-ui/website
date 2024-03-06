@@ -1,6 +1,6 @@
 import * as React from 'react';
 import NextLink from 'next/link';
-import { Link2Icon } from '@radix-ui/react-icons';
+import { ExternalLinkIcon, Link2Icon } from '@radix-ui/react-icons';
 import { PropsTable } from './PropsTable';
 import { KeyboardTable } from './KeyboardTable';
 import { Highlights } from './Highlights';
@@ -93,21 +93,28 @@ export const components = {
     </Heading>
   ),
   p: (props) => <Text mb="3" as="p" size="3" {...props} />,
-  a: ({ href = '', ...props }) => {
+  a: ({ href = '', children, ...props }) => {
     if (href.startsWith('http')) {
-      return <Link {...props} href={href} target="_blank" rel="noopener" />;
+      return (
+        <Flex asChild display="inline-flex" align="center" gap="1">
+          <Link {...props} href={href} target="_blank" rel="noopener">
+            {children}
+            <ExternalLinkIcon style={{ marginTop: 2, marginLeft: -1, marginRight: -1 }} />
+          </Link>
+        </Flex>
+      );
     }
     return (
       <NextLink href={href} passHref legacyBehavior>
-        <Link {...props} />
+        <Link {...props}>{children}</Link>
       </NextLink>
     );
   },
-  hr: (props) => <Separator size="2" {...props} my="6" style={{ marginInline: 'auto' }} />,
+  hr: (props) => <Separator size="2" {...props} my="8" style={{ marginInline: 'auto' }} />,
   ul: (props) => <ul {...props} className={styles.List} />,
-  ol: (props) => ({ children, ...props }) => (
+  ol: ({ children, ...props }) => (
     <Box {...props} mb="3" pl="4" asChild>
-      <ol children={children} />
+      <ol>{children}</ol>
     </Box>
   ),
   li: (props) => (
@@ -151,7 +158,7 @@ export const components = {
     );
   },
   Note: ({ children, ...props }) => (
-    <Box className={styles.Note} asChild {...props}>
+    <Box className={styles.Note} asChild my="2" {...props}>
       <aside children={children} />
     </Box>
   ),

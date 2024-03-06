@@ -25,9 +25,9 @@ By default, the root `Theme` appearance is `light`. To set a different appearanc
 </Theme>
 ```
 
-## Inheriting from system preferences
+## Inheriting system appearance
 
-A common requirement is to inherit the appearance setting from a users system preferences.
+A common requirement is to inherit the appearance setting from a user’s system preferences.
 
 This is a deceptively complex problem to solve given SSR, SSG and client side hydration considerations. To make implementation easier, we recommend integrating with a theme switching library.
 
@@ -54,7 +54,7 @@ export default function () {
 
 {
 
-<Callout.Root my="5" highContrast>
+<Callout.Root my="5" color="gray">
   <Callout.Icon>
     <InfoCircledIcon />
   </Callout.Icon>
