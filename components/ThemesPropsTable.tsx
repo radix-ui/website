@@ -41,9 +41,7 @@ const definitions = {
   iconButton: themes.iconButtonPropDefs,
   inset: themes.insetPropDefs,
   kbd: themes.kbdPropDefs,
-  layout: themes.layoutPropDefs,
   link: themes.linkPropDefs,
-  margin: themes.marginPropDefs,
   popoverContent: themes.popoverContentPropDefs,
   quote: themes.quotePropDefs,
   radioGroup: themes.radioGroupRootPropDefs,
@@ -66,6 +64,36 @@ const definitions = {
   textFieldSlot: themes.textFieldSlotPropDefs,
   theme: themes.themePropDefs,
   tooltip: themes.tooltipPropDefs,
+
+  // Common props
+  layout: themes.layoutPropDefs,
+  margin: themes.marginPropDefs,
+
+  // Layout props
+  padding: themes.paddingPropDefs,
+  width: themes.widthPropDefs,
+  height: themes.heightPropDefs,
+  flexChildren: {
+    flexBasis: themes.layoutPropDefs.flexBasis,
+    flexShrink: themes.layoutPropDefs.flexShrink,
+    flexGrow: themes.layoutPropDefs.flexGrow,
+  },
+  gridChildren: {
+    gridColumn: themes.layoutPropDefs.gridColumn,
+    gridColumnStart: themes.layoutPropDefs.gridColumnStart,
+    gridColumnEnd: themes.layoutPropDefs.gridColumnEnd,
+    gridRow: themes.layoutPropDefs.gridRow,
+    gridRowStart: themes.layoutPropDefs.gridRowStart,
+    gridRowEnd: themes.layoutPropDefs.gridRowEnd,
+  },
+  position: {
+    position: themes.layoutPropDefs.position,
+    inset: themes.layoutPropDefs.inset,
+    top: themes.layoutPropDefs.top,
+    right: themes.layoutPropDefs.right,
+    bottom: themes.layoutPropDefs.bottom,
+    left: themes.layoutPropDefs.left,
+  },
 } as const;
 
 type PropDefinitions = typeof definitions;
@@ -284,7 +312,7 @@ function formatDefinitions(definitions: Record<ComponentName, ThemesPropsDef>) {
       return {
         name: propName,
         required: item.required,
-        typeSimple: shouldUseSimpleType ? item.type : value,
+        typeSimple: shouldUseSimpleType ? applyResponsive(item.type, item.responsive) : value,
         type: shouldUseSimpleType ? value : undefined,
         default:
           typeof item.default === 'boolean' ? String(item.default) : formatValues(item.default),

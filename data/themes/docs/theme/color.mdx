@@ -25,13 +25,17 @@ Accent color is the most dominant color in your theme. It is used for primary bu
 
 There is a range of accent colors to choose from:
 
-<ThemesAccentSwatches />
+<Box mt="5" mb="8">
+  <ThemesAccentSwatches />
+</Box>
 
 #### Accent scale anatomy
 
 Each accent is a 12-step scale that includes a solid and a transparent variant of each color. For example, here’s the `indigo` color scale:
 
-<ThemesColorScale type="accent" />
+<Box mt="5" mb="8">
+  <ThemesColorScale type="accent" />
+</Box>
 
 #### Accent scale tokens
 
@@ -60,12 +64,14 @@ var(--accent-10);
 var(--accent-11);
 var(--accent-12);
 
-/* Accessible text over step 9 */
-var(--accent-9-contrast);
-
-/* Tinted panel background */
-var(--color-surface-accent);
+/* Functional colors */
+var(--accent-surface);
+var(--accent-indicator);
+var(--accent-track);
+var(--accent-contrast);
 ```
+
+---
 
 ## Grays
 
@@ -81,13 +87,17 @@ You can also choose between a pure gray or a number of tinted grays. Your accent
 
 There is 6 grays to choose from. The difference may seem subtle, but it is impactful especially on pages with a lot of text or in dense UIs.
 
-<ThemeGraySwatches />
+<Box mt="5" mb="8">
+  <ThemeGraySwatches />
+</Box>
 
 #### Gray scale anatomy
 
 Grays are based on the same 12-step color scale that includes a solid and a transparent variant of each color. For example, here’s the `slate` color scale:
 
-<ThemesColorScale type="gray" />
+<Box mt="5" mb="8">
+  <ThemesColorScale type="gray" />
+</Box>
 
 #### Gray scale tokens
 
@@ -116,12 +126,14 @@ var(--gray-10);
 var(--gray-11);
 var(--gray-12);
 
-/* Accessible text over step 9 */
-var(--gray-9-contrast);
-
-/* Tinted panel background in dark mode */
-var(--gray-2-translucent);
+/* Functional colors */
+var(--gray-surface);
+var(--gray-indicator);
+var(--gray-track);
+var(--gray-contrast);
 ```
+
+---
 
 ## Color overrides
 
@@ -166,6 +178,8 @@ Nested components will automatically inherit the new accent color.
 
 Individual colors can be accessed directly using similar CSS variables by their corresponding names. For example, the reds are accessed via `--red-1`, `--red-2`, and so on up to `--red-12`.
 
+---
+
 ## High contrast
 
 Most of the time, components with a `color` prop also provide a `highContrast` option that achieves appearance that stands out against the page background:
@@ -180,6 +194,8 @@ Most of the time, components with a `color` prop also provide a `highContrast` o
   </Button>
 </Flex>
 ```
+
+---
 
 ## Focus and selection
 
@@ -207,6 +223,8 @@ Focus color tokens can be accessed using CSS variables that follow a similar nam
 
 Most of the components use `--focus-8` for the focus outline color.
 
+---
+
 ## Alpha colors
 
 Every color has an alpha variant which is designed to appear visually the same when placed over the page background. This is a powerful tool that allows colors to look naturally when overlayed over another background. All numerical color steps have a corresponding alpha variant.
@@ -226,6 +244,8 @@ var(--red-a12);
 ```
 
 Alpha colors are used automatically within Radix Themes components—no additional configuration is required.
+
+---
 
 ## Backgrounds
 
@@ -271,6 +291,8 @@ While `solid` is useful when you'd prefer to present information unobstructed.
 <Box my="5">
   <ThemesPanelCardExample panelBackground="solid" />
 </Box>
+
+---
 
 ## Customization
 
@@ -327,8 +349,35 @@ In this case, you can remap Radix Themes tokens in place of one another and recl
   --red-a12: var(--ruby-a12);
 
   --red-surface: var(--ruby-surface);
-  --red-9-contrast: var(--ruby-9-contrast);
+  --red-indicator: var(--ruby-indicator);
+  --red-track: var(--ruby-track);
+  --red-contrast: var(--ruby-contrast);
 }
 ```
 
 In this example, using the `red` color in Radix Themes components and tokens would now reference the original `ruby` scale.
+
+---
+
+## Individual CSS files
+
+Color definitions comprise around 20% of the total CSS size that Radix Themes ships with.
+
+If you’d prefer to reduce your CSS bundle size and have access just to the colors you use, you can import the individual CSS files for each color module. Here’s a sample setup:
+
+```ts
+// Base theme tokens
+import '@radix-ui/themes/tokens/base.css';
+
+// Include just the colors you use, for example `ruby`, `teal`, and `slate`.
+// Remember to import the gray tint that matches your theme setting.
+import '@radix-ui/themes/tokens/colors/ruby.css';
+import '@radix-ui/themes/tokens/colors/teal.css';
+import '@radix-ui/themes/tokens/colors/slate.css';
+
+// Rest of the CSS
+import '@radix-ui/themes/components.css';
+import '@radix-ui/themes/utilities.css';
+```
+
+Please note that the colors you didn’t import will still be accepted by the `color` prop in React. Also, make sure that your developer tooling preserves the order of the imported CSS files.

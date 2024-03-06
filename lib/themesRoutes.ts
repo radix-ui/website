@@ -3,8 +3,13 @@ export const themesRoutes = [
     label: 'Overview',
     pages: [
       { title: 'Getting started', slug: 'themes/docs/overview/getting-started' },
+      { title: 'Styling', slug: 'themes/docs/overview/styling' },
+      { title: 'Layout', slug: 'themes/docs/overview/layout' },
       { title: 'Releases', slug: 'themes/docs/overview/releases' },
-      { title: 'Resources', slug: 'themes/docs/overview/resources' },
+      // { title: 'Resources', slug: 'themes/docs/overview/resources' },
+      //
+      // TODO
+      //
     ],
   },
   {
@@ -14,7 +19,7 @@ export const themesRoutes = [
       { title: 'Color', slug: 'themes/docs/theme/color' },
       { title: 'Dark mode', slug: 'themes/docs/theme/dark-mode' },
       { title: 'Typography', slug: 'themes/docs/theme/typography' },
-      { title: 'Layout', slug: 'themes/docs/theme/layout' },
+      { title: 'Spacing', slug: 'themes/docs/theme/spacing' },
       { title: 'Breakpoints', slug: 'themes/docs/theme/breakpoints' },
       { title: 'Radius', slug: 'themes/docs/theme/radius' },
       { title: 'Shadows', slug: 'themes/docs/theme/shadows' },

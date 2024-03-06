@@ -18,7 +18,9 @@ const steps = [
 export function UseCasesTable() {
   return (
     <Box asChild my="5">
-      <table style={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}>
+      <table
+        style={{ display: 'table', width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}
+      >
         <thead>
           <tr>
             <Box
@@ -26,6 +28,7 @@ export function UseCasesTable() {
               py="3"
               px="4"
               style={{
+                display: 'table-cell',
                 width: '50%',
                 borderBottom: '1px solid var(--gray-a3)',
               }}
@@ -41,6 +44,7 @@ export function UseCasesTable() {
               py="3"
               px="4"
               style={{
+                display: 'table-cell',
                 borderBottom: '1px solid var(--gray-a3)',
               }}
             >
@@ -60,6 +64,7 @@ export function UseCasesTable() {
                 py="2"
                 px="4"
                 style={{
+                  display: 'table-cell',
                   borderBottom: '1px solid var(--gray-a3)',
                   backgroundColor: i % 2 === 0 ? 'var(--gray-a2)' : 'transparent',
                 }}
@@ -75,6 +80,7 @@ export function UseCasesTable() {
                 py="2"
                 px="4"
                 style={{
+                  display: 'table-cell',
                   borderBottom: '1px solid var(--gray-a3)',
                   backgroundColor: i % 2 === 0 ? 'var(--gray-a2)' : 'transparent',
                 }}
