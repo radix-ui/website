@@ -1,0 +1,98 @@
+---
+metaTitle: Radix Themes 3.0
+metaDescription: New layout engine, 11 new components, and brand color generator
+---
+
+# Radix Themes 3.0
+
+<Description>
+  New layout engine, 11 new components, and brand color generator.
+</Description>
+
+## Introduction
+
+Radix Themes 3.0 is just in. This release is big leap towards making Radix Themes the best component library for building modern SaaS apps.
+
+## What is Radix Themes?
+
+Radix Themes is an open source system of opinionated, pre-built components and design tokens that developers use to build React apps. Exceptional component API design and advanced visual design distinguish Radix Themes from other component libraries. It’s easy to get started, and just as easy to maintain a project built with Radix Themes.
+
+{<img src="https://workos.imgix.net/images/bc42caea-bfe8-4e91-b093-1fe3ff771382.png?auto=format&fit=clip&q=80" />}
+
+Radix Themes is customised via [Theme](/themes/docs/theme/overview) configuration, underlying design tokens, and by building your own components on top of the same building blocks that the library itself is built upon.
+
+WorkOS built and maintains Radix Themes. It’s made by same team behind [Radix Primitives](/primitives), a robust set of accessible React primitives that power thousands of top-notch products on the web. WorkOS product interfaces themselves use Radix Themes, which makes it battle-tested in a demanding environment with hundreds of paying customers.
+
+## What’s new?
+
+Highlights of the 3.0 release are:
+
+- New layout engine
+- Brand color generator
+- 11 new components
+- Full compatibility with frameworks like Remix and Astro out of the box
+
+Up next, we’ll go over each new feature. There’s many more improvements detailed [in the docs](/themes/docs/overview/releases).
+
+## New layout engine
+
+### Backstory
+
+Layout components are a cornerstone feature of Radix Themes. There’s just five of them—[Box](/themes/docs/components/box), [Flex](/themes/docs/components/flex), [Grid](/themes/docs/components/grid), [Section](/themes/docs/components/section), and [Container](/themes/docs/components/section). These components are used to separate layout responsibilities from content and interactivity. This is _the_ separation of concerns that makes apps maintainable and easy to reason about, and understanding these principles is key to building interfaces effectively.
+
+In web development, the lines between different elements may be blurry. You can achieve similar results by layering different techniques onto the same building block, and end up with elements that try to do a lot of jobs at the same time, which incurs complexity, maintenance costs, and results in sneaky bugs.
+
+In Radix Themes, every componentThemes is designed in such a way that it encourages you to use it just for what it can do really, really well. With that in mind, only layout components provide easy, unrestricted access to manipulate the layout of your interfaces through their props, such as padding, width, height, or position, among others.
+
+Layout components and their props are explained in the [Layout guide](/themes/docs/overview/layout).
+
+### Better layout props
+
+In this release, layout components received a number of new layout props, and the way that layout props accept values has been significantly reworked:
+
+- 9 new props for working with flex and grid layouts
+- 4 new props for controlling the dimensions of layout components
+- In addition to [space scale values](/themes/docs/theme/spacing), all layout props now accept any valid CSS values, including when used with the responsive object syntax.
+
+What’s “responsive object syntax”? In Radix Themes, it is how you build a responsive layout at different breakpoints without leaving the React code where you compose your app itself.
+
+Consider the following piece of code:
+
+```jsx
+<Flex width="500px" />
+```
+
+This would create a [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) layout that’s `500px` wide. But what if you wanted to use a different width on mobile? This is possible using the responsive object syntax, where you can specify the value to use at a particular breakpoint:
+
+```jsx
+<Flex width={{ initial: '100%', sm: '300px', md: '500px' }} />
+```
+
+Now, in addtion to [space scale values](/themes/docs/theme/spacing), layout props support valid CSS values, like `100px`, `50vw`, or even expressions like `calc(100vw - 200px)`. And, on top of that, developers can use those values at specific breakpoints.
+
+However, does it perform well? Does it work with server components? Well, here’s how the above `<Flex>` element gets actually rendered into the DOM:
+
+```jsx
+<div
+  style={{ '--width': '100%', '--width-md': '500px', '--width-sm': '300px'; }}
+  class="rt-Flex rt-r-w sm:rt-r-w md:rt-r-w"
+/>
+```
+
+You can see how that the `<Flex>` element was compiled into a combination of utility classes and CSS custom properties. There is no runtime evaluation of the breakpoints, which means the performance is just like vanilla CSS and the component can be rendered on the server.
+
+### The best of both worlds
+
+Altogether, there is 5 layout components with almost 40 props each. They form a system that is easy to learn and master, and the ceiling of what you can achieve with them without leaving the type safety of your JSX files is _incredibly_ high.
+
+If you have never used such a system, we’d suggest you give it try. It is a great alternative to Tailwind, which is an incredibly powerful tool originally built for the same purpose—layout. However, today that evolved into an entire styling paradigm that may encourage you to create complex styles on the fly, which violates the separation of concerns mentioned earlier.
+
+Radix Themes layout comes with the full power that utility class frameworks may provide for layout, but it’s also type-safe and guides the developer in maintaining a clear boundary with the other pieces of the interface that they are buiulding.
+
+### Nota bene
+
+If you want to use _just_ the layout component from Radix Themes, that’s also possible. Just make sure that JavaScript tree-shaking works on your side, and import the layout essentials CSS:
+
+```jsx
+import '@radix-ui/themes/layout.css';
+```
