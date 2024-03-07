@@ -44,7 +44,7 @@ Most components do have `className` and `style` props, but if you find yourself 
 
 Tailwind is _great_. Yet, if you plan to use Radix Themes with Tailwind, keep in mind how its ergonomics may encourage you to create complex styles on the fly, sometimes reaching into the component internals without friction. Counterproductive situations will be easy to come by.
 
-Tailwind is a different styling paradigm, and styling paradigms don’t mix well.
+Tailwind is a different styling paradigm, which may not mix well with the idea of a closed component system where customization is achieved through props, tokens, and creating new components on top of a shared set of building blocks.
 
 ## Custom components
 
@@ -165,4 +165,4 @@ import './my-styles.css';
 import '@radix-ui/themes/utilities.css';
 ```
 
-You can import `utilities.css` after your custom styles to ensure that the layout props work as expected with your custom styles.
+You can import `utilities.css` after your custom styles to ensure that the layout props work as expected with your custom styles. However, if you use Next.js, keep in mind the [import order issue](#nextjs-import-order) that’s mentioned above.
