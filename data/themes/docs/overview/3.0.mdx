@@ -42,7 +42,7 @@ Layout components are a cornerstone feature of Radix Themes. There’s just five
 
 In web development, the lines between different elements may be blurry. You can achieve similar results by layering different techniques onto the same building block, and end up with elements that try to do a lot of jobs at the same time, which incurs complexity, maintenance costs, and results in sneaky bugs.
 
-In Radix Themes, every componentThemes is designed in such a way that it encourages you to use it just for what it can do really, really well. With that in mind, only layout components provide easy, unrestricted access to manipulate the layout of your interfaces through their props, such as padding, width, height, or position, among others.
+In Radix Themes, every component is designed in such a way that it encourages you to use it just for what it can do really, really well. With that in mind, only layout components provide easy, unrestricted access to manipulate the layout of your interfaces through their props, such as padding, width, height, or position, among others.
 
 Layout components and their props are explained in the [Layout guide](/themes/docs/overview/layout).
 
@@ -52,7 +52,7 @@ In this release, layout components received a number of new layout props, and th
 
 - 9 new props for working with flex and grid layouts
 - 4 new props for controlling the dimensions of layout components
-- In addition to [space scale values](/themes/docs/theme/spacing), all layout props now accept any valid CSS values, including when used with the responsive object syntax.
+- In addition to [space scale values](/themes/docs/theme/spacing), all layout props now accept valid CSS values, including when used with the responsive object syntax.
 
 What’s “responsive object syntax”? In Radix Themes, it is how you build a responsive layout at different breakpoints without leaving the React code where you compose your app itself.
 
@@ -85,7 +85,7 @@ You can see how that the `<Flex>` element was compiled into a combination of uti
 
 Altogether, there is 5 layout components with almost 40 props each. They form a system that is easy to learn and master, and the ceiling of what you can achieve with them without leaving the type safety of your JSX files is _incredibly_ high.
 
-If you have never used such a system, we’d suggest you give it try. It is a great alternative to Tailwind, which is an incredibly powerful tool originally built for the same purpose—layout. However, today that evolved into an entire styling paradigm that may encourage you to create complex styles on the fly, which violates the separation of concerns mentioned earlier.
+If you have never used such a system, we’d suggest you give it try. It is a great alternative to Tailwind, which is an incredibly powerful tool originally built for the same purpose—layout. However, today that evolved into an entire styling paradigm that does not discourage you from creating complex styles on the fly, which violates the separation of concerns mentioned earlier.
 
 Radix Themes layout comes with the full power that utility class frameworks may provide for layout, but it’s also type-safe and guides the developer in maintaining a clear boundary with the other pieces of the interface that they are buiulding.
 
