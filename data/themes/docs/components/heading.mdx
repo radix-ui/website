@@ -140,9 +140,20 @@ Trimming the leading is useful when dialing in vertical spacing in cards or othe
 </Flex>
 ```
 
+The default trim values are configured for the system font stack that’s used by Radix Themes. If you are using custom fonts, you can [adjust](/themes/docs/theme/typography#customization) the trim values using the corresponding CSS variables.
+
+```css
+.radix-themes {
+  --default-leading-trim-start: 0.42em;
+  --default-leading-trim-end: 0.36em;
+  --heading-leading-trim-start: 0.42em;
+  --heading-leading-trim-end: 0.36em;
+}
+```
+
 ### Color
 
-Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme. The text colors are designed to achieve at least Lc 60 APCA contrast over common background colors.
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color). The text colors are designed to achieve at least Lc 60 APCA contrast over common background colors.
 
 ```jsx live=true scroll=true
 <Flex direction="column">
@@ -159,16 +170,8 @@ Use the `highContrast` prop to increase color contrast with the background.
 
 ```jsx live="true"
 <Flex direction="column">
-  <Heading highContrast color="indigo">
-    The quick brown fox jumps over the lazy dog.
-  </Heading>
-  <Heading highContrast color="cyan">
-    The quick brown fox jumps over the lazy dog.
-  </Heading>
-  <Heading highContrast color="orange">
-    The quick brown fox jumps over the lazy dog.
-  </Heading>
-  <Heading highContrast color="crimson">
+  <Heading color="gray">The quick brown fox jumps over the lazy dog.</Heading>
+  <Heading color="gray" highContrast>
     The quick brown fox jumps over the lazy dog.
   </Heading>
 </Flex>

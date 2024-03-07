@@ -49,7 +49,7 @@ Use the `variant` prop to control the visual style of the checkbox.
 
 ### Color
 
-Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
 
 ```jsx live=true
 <Flex gap="2">
@@ -74,6 +74,8 @@ Use the `highContrast` prop to increase color contrast with the background.
   <Checkbox color="orange" defaultChecked highContrast />
   <Checkbox color="crimson" defaultChecked />
   <Checkbox color="crimson" defaultChecked highContrast />
+  <Checkbox color="gray" defaultChecked />
+  <Checkbox color="gray" defaultChecked highContrast />
 </Grid>
 ```
 
@@ -106,7 +108,7 @@ Composing `Checkbox` within `Text` automatically centers it with the first line 
 It is automatically well-aligned with multi-line text too.
 
 ```jsx live="true"
-<Box style={{ maxWidth: 300 }}>
+<Box maxWidth="300px">
   <Text as="label" size="3">
     <Flex gap="2">
       <Checkbox defaultChecked /> I understand that these documents are

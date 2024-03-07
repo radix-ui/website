@@ -93,7 +93,7 @@ Use the `variant` prop to control the visual style of the radio buttons.
 
 ### Color
 
-Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
 
 ```jsx live=true style="lineHeight: 0"
 <Flex gap="2">
@@ -150,6 +150,14 @@ Use the `highContrast` prop to increase color contrast with the background.
   </RadioGroup.Root>
 
   <RadioGroup.Root color="crimson" defaultValue="1" highContrast>
+    <RadioGroup.Item value="1" />
+  </RadioGroup.Root>
+
+  <RadioGroup.Root color="gray" defaultValue="1">
+    <RadioGroup.Item value="1" />
+  </RadioGroup.Root>
+
+  <RadioGroup.Root color="gray" defaultValue="1" highContrast>
     <RadioGroup.Item value="1" />
   </RadioGroup.Root>
 </Grid>

@@ -196,7 +196,7 @@ Use the `variant` prop to customize the visual style of the dropdown menu.
 
 ### Color
 
-Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme. You can also pass `color` to a specific item to override for semantic reasons (ie. destruction action).
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color). You can also pass `color` to a specific item to override for semantic reasons (ie. destruction action).
 
 ```jsx live=true
 <Flex gap="3">
@@ -266,16 +266,16 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 
 Use the `highContrast` prop to increase color contrast with the background.
 
-```jsx live=true
+```jsx live=true line="24,54"
 <Grid columns="2" gap="3" display="inline-grid">
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <Button variant="solid">
+      <Button color="gray">
         Options
         <CaretDownIcon width="12" height="12" />
       </Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content variant="solid">
+    <DropdownMenu.Content color="gray">
       <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
       <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
       <DropdownMenu.Separator />
@@ -285,12 +285,12 @@ Use the `highContrast` prop to increase color contrast with the background.
 
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <Button variant="solid" highContrast>
+      <Button color="gray" highContrast>
         Options
         <CaretDownIcon width="12" height="12" />
       </Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content variant="solid" highContrast>
+    <DropdownMenu.Content color="gray" highContrast>
       <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
       <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
       <DropdownMenu.Separator />
@@ -300,12 +300,12 @@ Use the `highContrast` prop to increase color contrast with the background.
 
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <Button variant="soft">
+      <Button color="gray" variant="soft">
         Options
         <CaretDownIcon width="12" height="12" />
       </Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content variant="soft">
+    <DropdownMenu.Content color="gray" variant="soft">
       <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
       <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
       <DropdownMenu.Separator />
@@ -315,12 +315,12 @@ Use the `highContrast` prop to increase color contrast with the background.
 
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <Button variant="soft" highContrast>
+      <Button color="gray" variant="soft" highContrast>
         Options
         <CaretDownIcon width="12" height="12" />
       </Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content variant="soft" highContrast>
+    <DropdownMenu.Content color="gray" variant="soft" highContrast>
       <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
       <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
       <DropdownMenu.Separator />

@@ -60,7 +60,7 @@ Use the `ghost` variant to display a button without chrome. Ghost buttons behave
 
 ### Color
 
-Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
 
 ```jsx live=true scroll=true
 <Flex gap="3">
@@ -86,26 +86,36 @@ Use the `highContrast` prop to increase color contrast with the background.
 ```jsx live=true scroll=true
 <Flex direction="column" gap="3">
   <Flex gap="3">
-    <Button variant="classic">Edit profile</Button>
-    <Button variant="solid">Edit profile</Button>
-    <Button variant="soft">Edit profile</Button>
-    <Button variant="surface">Edit profile</Button>
-    <Button variant="outline">Edit profile</Button>
+    <Button color="gray" variant="classic">
+      Edit profile
+    </Button>
+    <Button color="gray" variant="solid">
+      Edit profile
+    </Button>
+    <Button color="gray" variant="soft">
+      Edit profile
+    </Button>
+    <Button color="gray" variant="surface">
+      Edit profile
+    </Button>
+    <Button color="gray" variant="outline">
+      Edit profile
+    </Button>
   </Flex>
   <Flex gap="3">
-    <Button variant="classic" highContrast>
+    <Button color="gray" variant="classic" highContrast>
       Edit profile
     </Button>
-    <Button variant="solid" highContrast>
+    <Button color="gray" variant="solid" highContrast>
       Edit profile
     </Button>
-    <Button variant="soft" highContrast>
+    <Button color="gray" variant="soft" highContrast>
       Edit profile
     </Button>
-    <Button variant="surface" highContrast>
+    <Button color="gray" variant="surface" highContrast>
       Edit profile
     </Button>
-    <Button variant="outline" highContrast>
+    <Button color="gray" variant="outline" highContrast>
       Edit profile
     </Button>
   </Flex>
@@ -114,7 +124,7 @@ Use the `highContrast` prop to increase color contrast with the background.
 
 ### Radius
 
-Use the `radius` prop to assign a specific radius value, ignoring the global theme.
+Use the `radius` prop to assign a specific radius value.
 
 ```jsx live=true scroll=true
 <Flex gap="3">
