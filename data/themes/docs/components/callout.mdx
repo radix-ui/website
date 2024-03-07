@@ -108,7 +108,7 @@ Use the `variant` prop to control the visual style.
 
 ### Color
 
-Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
 
 ```jsx live=true
 <Flex direction="column" gap="3">
@@ -148,9 +148,9 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 
 Use the `HighContrast` prop to add additional contrast.
 
-```jsx live=true
+```jsx live=true line="11"
 <Flex direction="column" gap="3">
-  <Callout.Root variant="soft">
+  <Callout.Root color="gray" variant="soft">
     <Callout.Icon>
       <InfoCircledIcon />
     </Callout.Icon>
@@ -159,7 +159,7 @@ Use the `HighContrast` prop to add additional contrast.
     </Callout.Text>
   </Callout.Root>
 
-  <Callout.Root variant="soft" highContrast>
+  <Callout.Root color="gray" variant="soft" highContrast>
     <Callout.Icon>
       <InfoCircledIcon />
     </Callout.Icon>

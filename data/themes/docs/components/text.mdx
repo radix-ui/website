@@ -202,9 +202,20 @@ Trimming the leading is useful when dialing in vertical spacing in cards or othe
 </Flex>
 ```
 
+The default trim values are configured for the system font stack that’s used by Radix Themes. If you are using custom fonts, you can [adjust](/themes/docs/theme/typography#customization) the trim values using the corresponding CSS variables.
+
+```css
+.radix-themes {
+  --default-leading-trim-start: 0.42em;
+  --default-leading-trim-end: 0.36em;
+  --heading-leading-trim-start: 0.42em;
+  --heading-leading-trim-end: 0.36em;
+}
+```
+
 ### Color
 
-Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme. The text colors are designed to achieve at least Lc 60 APCA contrast over common background colors.
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color). The text colors are designed to achieve at least Lc 60 APCA contrast over common background colors.
 
 ```jsx live=true scroll=true
 <Flex direction="column">
@@ -221,16 +232,8 @@ Use the `highContrast` prop to increase color contrast with the background.
 
 ```jsx live="true"
 <Flex direction="column">
-  <Text highContrast color="indigo">
-    The quick brown fox jumps over the lazy dog.
-  </Text>
-  <Text highContrast color="cyan">
-    The quick brown fox jumps over the lazy dog.
-  </Text>
-  <Text highContrast color="orange">
-    The quick brown fox jumps over the lazy dog.
-  </Text>
-  <Text highContrast color="crimson">
+  <Text color="gray">The quick brown fox jumps over the lazy dog.</Text>
+  <Text color="gray" highContrast>
     The quick brown fox jumps over the lazy dog.
   </Text>
 </Flex>
@@ -241,7 +244,7 @@ Use the `highContrast` prop to increase color contrast with the background.
 Compose `Text` with formatting components to add emphasis and structure to content.
 
 ```jsx live="true"
-<Text size="5">
+<Text as="p">
   Look, such a helpful <Link>link</Link>, an <Em>italic emphasis</Em>, a piece
   of computer <Code>code</Code>, and even a hotkey combination <Kbd>⇧⌘A</Kbd>{' '}
   within the text.
@@ -253,7 +256,7 @@ Compose `Text` with formatting components to add emphasis and structure to conte
 Composing `Text` with a form control like [`Checkbox`](/themes/docs/components/checkbox), [`RadioGroup`](/themes/docs/components/radio-group), or [`Switch`](/themes/docs/components/switch) automatically centers the control with the first line of text, even when the text is multi-line.
 
 ```jsx live="true"
-<Box style={{ maxWidth: 300 }}>
+<Box maxWidth="300px">
   <Text as="label" size="3">
     <Flex gap="2">
       <Checkbox defaultChecked /> I understand that these documents are

@@ -58,7 +58,7 @@ Use the `size` prop to control the size of the scrollbar handles.
     scrollbars="horizontal"
     style={{ width: 300, height: 12 }}
   >
-    <Box style={{ width: 800, height: 1 }} />
+    <Box width="800px" height="1px" />
   </ScrollArea>
 
   <ScrollArea
@@ -67,7 +67,7 @@ Use the `size` prop to control the size of the scrollbar handles.
     scrollbars="horizontal"
     style={{ width: 350, height: 16 }}
   >
-    <Box style={{ width: 900, height: 1 }} />
+    <Box width="900px" height="1px" />
   </ScrollArea>
 
   <ScrollArea
@@ -76,14 +76,14 @@ Use the `size` prop to control the size of the scrollbar handles.
     scrollbars="horizontal"
     style={{ width: 400, height: 20 }}
   >
-    <Box style={{ width: 1000, height: 1 }} />
+    <Box width="1000px" height="1px" />
   </ScrollArea>
 </Flex>
 ```
 
 ### Radius
 
-Use the `radius` prop to assign a specific radius to the handles, ignoring the global theme.
+Use the `radius` prop to assign a specific radius to the handles.
 
 ```jsx live=true
 <Flex direction="column" gap="3">
@@ -94,7 +94,7 @@ Use the `radius` prop to assign a specific radius to the handles, ignoring the g
     scrollbars="horizontal"
     style={{ width: 350, height: 20 }}
   >
-    <Box style={{ width: 800, height: 1 }} />
+    <Box width="800px" height="1px" />
   </ScrollArea>
 
   <ScrollArea
@@ -104,7 +104,7 @@ Use the `radius` prop to assign a specific radius to the handles, ignoring the g
     scrollbars="horizontal"
     style={{ width: 350, height: 20 }}
   >
-    <Box style={{ width: 800, height: 1 }} />
+    <Box width="800px" height="1px" />
   </ScrollArea>
 
   <ScrollArea
@@ -114,7 +114,7 @@ Use the `radius` prop to assign a specific radius to the handles, ignoring the g
     scrollbars="horizontal"
     style={{ width: 350, height: 20 }}
   >
-    <Box style={{ width: 800, height: 1 }} />
+    <Box width="800px" height="1px" />
   </ScrollArea>
 </Flex>
 ```
@@ -145,7 +145,7 @@ Use the `scrollbars` prop to limit scrollable axes.
   </ScrollArea>
 
   <ScrollArea type="always" scrollbars="horizontal" style={{ height: 150 }}>
-    <Flex gap="4" p="2" style={{ width: 700 }}>
+    <Flex gap="4" p="2" width="700px">
       <Text size="2" trim="both">
         Three fundamental aspects of typography are legibility, readability, and
         aesthetics. Although in a non-technical sense "legible" and "readable"

@@ -33,7 +33,7 @@ Contains icons or buttons associated with an Input.
 Use the `size` prop to control the size.
 
 ```jsx live=true
-<Flex direction="column" gap="3" style={{ maxWidth: 400 }}>
+<Flex direction="column" gap="3" maxWidth="400px">
   <TextField.Root size="1" placeholder="Search the docs…" />
   <TextField.Root size="2" placeholder="Search the docs…" />
   <TextField.Root size="3" placeholder="Search the docs…" />
@@ -43,7 +43,7 @@ Use the `size` prop to control the size.
 Use matching component sizes when composing Text Field with buttons. However, don’t use size 1 inputs with buttons—at this size, there is not enough vertical space to nest other interactive elements.
 
 ```jsx live=true
-<Flex direction="column" gap="3" style={{ maxWidth: 400 }}>
+<Flex direction="column" gap="3" maxWidth="400px">
   <TextField.Root>
     <TextField.Slot>
       <MagnifyingGlassIcon height="16" width="16" />
@@ -82,7 +82,7 @@ Use matching component sizes when composing Text Field with buttons. However, do
 Use the `variant` prop to control the visual style.
 
 ```jsx live=true
-<Flex direction="column" gap="3" style={{ maxWidth: 400 }}>
+<Flex direction="column" gap="3" maxWidth="400px">
   <TextField.Root variant="surface" placeholder="Search the docs…" />
   <TextField.Root variant="classic" placeholder="Search the docs…" />
   <TextField.Root variant="soft" placeholder="Search the docs…" />
@@ -91,10 +91,10 @@ Use the `variant` prop to control the visual style.
 
 ### Color
 
-Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
 
 ```jsx live=true
-<Flex direction="column" gap="3" style={{ maxWidth: 400 }}>
+<Flex direction="column" gap="3" maxWidth="400px">
   <TextField.Root
     color="indigo"
     variant="soft"
@@ -107,10 +107,10 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 
 ### Radius
 
-Use the `radius` prop to assign a specific radius value, ignoring the global theme.
+Use the `radius` prop to assign a specific radius value.
 
 ```jsx live=true
-<Flex direction="column" gap="3" style={{ maxWidth: 400 }}>
+<Flex direction="column" gap="3" maxWidth="400px">
   <TextField.Root radius="none" placeholder="Search the docs…" />
   <TextField.Root radius="large" placeholder="Search the docs…" />
   <TextField.Root radius="full" placeholder="Search the docs…" />

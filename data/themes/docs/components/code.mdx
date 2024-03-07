@@ -49,7 +49,7 @@ Use the `variant` prop to control the visual style.
 
 ### Color
 
-Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
 
 ```jsx live=true
 <Flex direction="column" align="start" gap="2">
@@ -67,23 +67,31 @@ Use the `highContrast` prop to increase color contrast with the background.
 ```jsx live=true
 <Flex gap="3">
   <Flex direction="column" align="start" gap="2">
-    <Code variant="solid">console.log()</Code>
-    <Code variant="soft">console.log()</Code>
-    <Code variant="outline">console.log()</Code>
-    <Code variant="ghost">console.log()</Code>
+    <Code color="gray" variant="solid">
+      console.log()
+    </Code>
+    <Code color="gray" variant="soft">
+      console.log()
+    </Code>
+    <Code color="gray" variant="outline">
+      console.log()
+    </Code>
+    <Code color="gray" variant="ghost">
+      console.log()
+    </Code>
   </Flex>
 
   <Flex direction="column" align="start" gap="2">
-    <Code variant="solid" highContrast>
+    <Code color="gray" variant="solid" highContrast>
       console.log()
     </Code>
-    <Code variant="soft" highContrast>
+    <Code color="gray" variant="soft" highContrast>
       console.log()
     </Code>
-    <Code variant="outline" highContrast>
+    <Code color="gray" variant="outline" highContrast>
       console.log()
     </Code>
-    <Code variant="ghost" highContrast>
+    <Code color="gray" variant="ghost" highContrast>
       console.log()
     </Code>
   </Flex>

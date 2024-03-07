@@ -180,7 +180,7 @@ Use the `variant` prop to customize the visual style of the context menu.
 
 ### Color
 
-Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme. You can also pass `color` to a specific item to override for semantic reasons (ie. destruction action).
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color). You can also pass `color` to a specific item to override for semantic reasons (i.e. a destructive action).
 
 ```jsx live=true
 <Grid columns="2" gap="3">
@@ -258,13 +258,13 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 
 Use the `highContrast` prop to increase color contrast with the background.
 
-```jsx live=true
+```jsx live=true line="18"
 <Grid columns="2" gap="3">
   <ContextMenu.Root>
     <ContextMenu.Trigger>
       <RightClickZone heading="Standard" />
     </ContextMenu.Trigger>
-    <ContextMenu.Content>
+    <ContextMenu.Content color="gray">
       <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
       <ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
       <ContextMenu.Separator />
@@ -276,7 +276,7 @@ Use the `highContrast` prop to increase color contrast with the background.
     <ContextMenu.Trigger>
       <RightClickZone heading="High-contrast" />
     </ContextMenu.Trigger>
-    <ContextMenu.Content highContrast>
+    <ContextMenu.Content color="gray" highContrast>
       <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
       <ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
       <ContextMenu.Separator />
