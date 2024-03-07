@@ -3,6 +3,7 @@
 }
 
 .HeaderInner {
+  min-width: 320px;
   position: fixed;
   height: inherit;
   top: 0;
@@ -60,11 +61,9 @@
   position: relative;
   color: var(--gray-a11);
   outline: 0;
-}
 
-.HeaderProductLink[data-state='active'] {
-  padding-left: var(--space-1);
-  padding-right: var(--space-1);
+  padding-left: 1px;
+  padding-right: 1px;
 }
 
 /* Downscale on small devices */
@@ -74,10 +73,10 @@
   }
 }
 
-@media (min-width: 520px) {
+@media (min-width: 440px) {
   .HeaderProductLink {
-    padding-left: var(--space-1);
-    padding-right: var(--space-1);
+    padding-left: 2px;
+    padding-right: 2px;
   }
 }
 
@@ -104,11 +103,11 @@
   padding-bottom: var(--space-1);
   padding-left: var(--space-1);
   padding-right: var(--space-1);
-  border-radius: var(--radius-2);
+  border-radius: 999px;
 }
 
-.HeaderProductLink[data-state='active'] .HeaderProductLinkInner,
-.HeaderProductLink[data-state='active'] .HeaderProductLinkInnerHidden {
+:where(.HeaderProductLink[data-state='active']) .HeaderProductLinkInner,
+:where(.HeaderProductLink[data-state='active']) .HeaderProductLinkInnerHidden {
   padding-left: var(--space-2);
   padding-right: var(--space-2);
 }
@@ -118,6 +117,13 @@
   .HeaderProductLinkInnerHidden {
     padding-left: var(--space-2);
     padding-right: var(--space-2);
+  }
+}
+@media (min-width: 440px) {
+  .HeaderProductLinkInner,
+  .HeaderProductLinkInnerHidden {
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 
