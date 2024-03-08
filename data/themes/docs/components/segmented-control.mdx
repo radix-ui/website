@@ -1,0 +1,113 @@
+---
+metaTitle: Segmented Control
+metaDescription: Toggle buttons for switching between different values or views.
+sourcePath: components/segmented-control
+---
+
+```jsx live=true
+<SegmentedControlRoot defaultValue="inbox">
+  <SegmentedControlItem value="inbox">Inbox</SegmentedControlItem>
+  <SegmentedControlItem value="drafts">Drafts</SegmentedControlItem>
+  <SegmentedControlItem value="sent">Sent</SegmentedControlItem>
+</SegmentedControlRoot>
+```
+
+## API Reference
+
+This component inherits props and functionality from the [Toggle Group primitive](/primitives/docs/components/toggle-group). It supports [common margin props](/themes/docs/theme/layout#margin-props).
+
+### Root
+
+Contains the items of the control.
+
+<ThemesPropsTable name="SegmentedControlRoot" />
+
+### Item
+
+Represents individual values of the control.
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size of the control.
+
+```jsx live="true"
+<Flex align="start" direction="column" gap="4">
+  <SegmentedControlRoot defaultValue="inbox" size="1">
+    <SegmentedControlItem value="inbox">Inbox</SegmentedControlItem>
+    <SegmentedControlItem value="drafts">Drafts</SegmentedControlItem>
+    <SegmentedControlItem value="sent">Sent</SegmentedControlItem>
+  </SegmentedControlRoot>
+
+  <SegmentedControlRoot defaultValue="inbox" size="2">
+    <SegmentedControlItem value="inbox">Inbox</SegmentedControlItem>
+    <SegmentedControlItem value="drafts">Drafts</SegmentedControlItem>
+    <SegmentedControlItem value="sent">Sent</SegmentedControlItem>
+  </SegmentedControlRoot>
+
+  <SegmentedControlRoot defaultValue="inbox" size="3">
+    <SegmentedControlItem value="inbox">Inbox</SegmentedControlItem>
+    <SegmentedControlItem value="drafts">Drafts</SegmentedControlItem>
+    <SegmentedControlItem value="sent">Sent</SegmentedControlItem>
+  </SegmentedControlRoot>
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style of the control.
+
+```jsx live="true"
+<Flex align="start" direction="column" gap="4">
+  <SegmentedControlRoot defaultValue="inbox" variant="surface">
+    <SegmentedControlItem value="inbox">Inbox</SegmentedControlItem>
+    <SegmentedControlItem value="drafts">Drafts</SegmentedControlItem>
+    <SegmentedControlItem value="sent">Sent</SegmentedControlItem>
+  </SegmentedControlRoot>
+
+  <SegmentedControlRoot defaultValue="inbox" variant="classic">
+    <SegmentedControlItem value="inbox">Inbox</SegmentedControlItem>
+    <SegmentedControlItem value="drafts">Drafts</SegmentedControlItem>
+    <SegmentedControlItem value="sent">Sent</SegmentedControlItem>
+  </SegmentedControlRoot>
+</Flex>
+```
+
+### Radius
+
+Use the `radius` prop to assign a specific radius value.
+
+```jsx live="true"
+<Flex align="start" direction="column" gap="4">
+  <SegmentedControlRoot defaultValue="inbox" radius="none">
+    <SegmentedControlItem value="inbox">Inbox</SegmentedControlItem>
+    <SegmentedControlItem value="drafts">Drafts</SegmentedControlItem>
+    <SegmentedControlItem value="sent">Sent</SegmentedControlItem>
+  </SegmentedControlRoot>
+
+  <SegmentedControlRoot defaultValue="inbox" radius="small">
+    <SegmentedControlItem value="inbox">Inbox</SegmentedControlItem>
+    <SegmentedControlItem value="drafts">Drafts</SegmentedControlItem>
+    <SegmentedControlItem value="sent">Sent</SegmentedControlItem>
+  </SegmentedControlRoot>
+
+  <SegmentedControlRoot defaultValue="inbox" radius="medium">
+    <SegmentedControlItem value="inbox">Inbox</SegmentedControlItem>
+    <SegmentedControlItem value="drafts">Drafts</SegmentedControlItem>
+    <SegmentedControlItem value="sent">Sent</SegmentedControlItem>
+  </SegmentedControlRoot>
+
+  <SegmentedControlRoot defaultValue="inbox" radius="large">
+    <SegmentedControlItem value="inbox">Inbox</SegmentedControlItem>
+    <SegmentedControlItem value="drafts">Drafts</SegmentedControlItem>
+    <SegmentedControlItem value="sent">Sent</SegmentedControlItem>
+  </SegmentedControlRoot>
+
+  <SegmentedControlRoot defaultValue="inbox" radius="full">
+    <SegmentedControlItem value="inbox">Inbox</SegmentedControlItem>
+    <SegmentedControlItem value="drafts">Drafts</SegmentedControlItem>
+    <SegmentedControlItem value="sent">Sent</SegmentedControlItem>
+  </SegmentedControlRoot>
+</Flex>
+```
