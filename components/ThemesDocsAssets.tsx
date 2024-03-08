@@ -6,33 +6,21 @@ import {
   Checkbox,
   Code,
   Container,
-  DialogContent,
-  DialogRoot,
-  DialogTrigger,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuRoot,
-  DropdownMenuTrigger,
+  Dialog,
   Flex,
   Grid,
   Heading,
   IconButton,
   Inset,
   Link,
-  PopoverContent,
-  PopoverRoot,
-  PopoverTrigger,
+  Popover,
   ScrollArea,
   Section,
   Slider,
   Strong,
   Table,
   Text,
-  TextArea,
   TextField,
-  TextFieldRoot,
-  TextFieldSlot,
   Theme,
 } from '@radix-ui/themes';
 import { Label } from '@radix-ui/react-label';
@@ -75,7 +63,7 @@ export function ThemesPanelCardExample({ panelBackground }) {
                     <Text as="div" size="2" weight="bold" mb="2">
                       Email address
                     </Text>
-                    <TextFieldRoot placeholder="Enter your email" />
+                    <TextField.Root placeholder="Enter your email" />
                   </label>
                 </Box>
 
@@ -90,7 +78,7 @@ export function ThemesPanelCardExample({ panelBackground }) {
                     <Text as="div" size="2" weight="bold" mb="2">
                       Password
                     </Text>
-                    <TextFieldRoot placeholder="Enter your password" />
+                    <TextField.Root placeholder="Enter your password" />
                   </label>
                 </Box>
 
@@ -335,11 +323,11 @@ export function ThemesRadiusExample() {
         <PropValueExampleCardRow value={radius} bordered={i + 1 !== arr.length} key={radius}>
           <Theme radius={radius}>
             <Box maxWidth="320px">
-              <TextFieldRoot size="3" placeholder="Reply…">
-                <TextFieldSlot side="right" px="1">
+              <TextField.Root size="3" placeholder="Reply…">
+                <TextField.Slot side="right" px="1">
                   <Button size="2">Send</Button>
-                </TextFieldSlot>
-              </TextFieldRoot>
+                </TextField.Slot>
+              </TextField.Root>
             </Box>
           </Theme>
         </PropValueExampleCardRow>
@@ -1060,27 +1048,27 @@ export function ThemesZIndexExample() {
 function ThemesZIndexExampleRecursive() {
   return (
     <Flex align="center" justify="center" height="160px">
-      <DialogRoot>
-        <PopoverRoot>
-          <PopoverTrigger>
+      <Dialog.Root>
+        <Popover.Root>
+          <Popover.Trigger>
             <Button>Recursive popover</Button>
-          </PopoverTrigger>
-          <PopoverContent>
+          </Popover.Trigger>
+          <Popover.Content>
             <Heading size="3" mb="2" trim="start">
               Hello from the popover 👋
             </Heading>
-            <DialogTrigger>
+            <Dialog.Trigger>
               <Button color="gray" highContrast>
                 Recursive dialog
               </Button>
-            </DialogTrigger>
-          </PopoverContent>
-        </PopoverRoot>
+            </Dialog.Trigger>
+          </Popover.Content>
+        </Popover.Root>
 
-        <DialogContent>
+        <Dialog.Content>
           <ThemesZIndexExampleRecursive />
-        </DialogContent>
-      </DialogRoot>
+        </Dialog.Content>
+      </Dialog.Root>
     </Flex>
   );
 }
