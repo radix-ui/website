@@ -1,0 +1,139 @@
+---
+metaTitle: Tab Nav
+metaDescription: Navigation menu with links styled as tabs.
+sourcePath: components/tab-nav
+---
+
+```jsx live=true
+<TabNavRoot>
+  <TabNavLink href="#" active>
+    Account
+  </TabNavLink>
+  <TabNavLink href="#">Documents</TabNavLink>
+  <TabNavLink href="#">Settings</TabNavLink>
+</TabNavRoot>
+```
+
+## API Reference
+
+This component is based on the [Navigation Menu primitive](/primitives/docs/components/navigation-menu) and supports [common margin props](/themes/docs/theme/layout#margin-props).
+
+### Root
+
+Contains the navigation menu links.
+
+<ThemesPropsTable name="TabNavRoot" />
+
+### Link
+
+An individual navigation menu link.
+
+<ThemesPropsTable name="TabNavLink" />
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size of the tabs.
+
+```jsx live=true line="2,10"
+<Flex direction="column" gap="4" pb="2">
+  <TabNavRoot size="1">
+    <TabNavLink href="#" active>
+      Account
+    </TabNavLink>
+    <TabNavLink href="#">Documents</TabNavLink>
+    <TabNavLink href="#">Settings</TabNavLink>
+  </TabNavRoot>
+
+  <TabNavRoot size="2">
+    <TabNavLink href="#" active>
+      Account
+    </TabNavLink>
+    <TabNavLink href="#">Documents</TabNavLink>
+    <TabNavLink href="#">Settings</TabNavLink>
+  </TabNavRoot>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color) to the tab list.
+
+```jsx live=true line="2,10,18,26"
+<Flex direction="column" gap="4" pb="2">
+  <TabNavRoot color="indigo">
+    <TabNavLink href="#" active>
+      Account
+    </TabNavLink>
+    <TabNavLink href="#">Documents</TabNavLink>
+    <TabNavLink href="#">Settings</TabNavLink>
+  </TabNavRoot>
+
+  <TabNavRoot color="cyan">
+    <TabNavLink href="#" active>
+      Account
+    </TabNavLink>
+    <TabNavLink href="#">Documents</TabNavLink>
+    <TabNavLink href="#">Settings</TabNavLink>
+  </TabNavRoot>
+
+  <TabNavRoot color="orange">
+    <TabNavLink href="#" active>
+      Account
+    </TabNavLink>
+    <TabNavLink href="#">Documents</TabNavLink>
+    <TabNavLink href="#">Settings</TabNavLink>
+  </TabNavRoot>
+
+  <TabNavRoot color="crimson">
+    <TabNavLink href="#" active>
+      Account
+    </TabNavLink>
+    <TabNavLink href="#">Documents</TabNavLink>
+    <TabNavLink href="#">Settings</TabNavLink>
+  </TabNavRoot>
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to increase color contrast with the background.
+
+```jsx live=true line="10"
+<Flex direction="column" gap="4" pb="2">
+  <TabNavRoot color="gray">
+    <TabNavLink href="#" active>
+      Account
+    </TabNavLink>
+    <TabNavLink href="#">Documents</TabNavLink>
+    <TabNavLink href="#">Settings</TabNavLink>
+  </TabNavRoot>
+
+  <TabNavRoot color="gray" highContrast>
+    <TabNavLink href="#" active>
+      Account
+    </TabNavLink>
+    <TabNavLink href="#">Documents</TabNavLink>
+    <TabNavLink href="#">Settings</TabNavLink>
+  </TabNavRoot>
+</Flex>
+```
+
+### With router links
+
+Use the `asChild` prop to compose `TabNavLink` with a your app’s router link component.
+
+```jsx
+<TabNavRoot>
+  <TabNavLink asChild active={pathname === '/account'}>
+    <NextLink href="/account">Account</NextLink>
+  </TabNavLink>
+  <TabNavLink asChild active={pathname === '/documents'}>
+    <NextLink href="/documents">Documents</NextLink>
+  </TabNavLink>
+  <TabNavLink asChild active={pathname === '/settings'}>
+    <NextLink href="/settings">Settings</NextLink>
+  </TabNavLink>
+</TabNavRoot>
+```
