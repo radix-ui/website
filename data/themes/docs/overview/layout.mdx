@@ -151,6 +151,12 @@ The margin props may be unavailable on components that don’t render a HTML nod
 
 ---
 
-## TODO
+## Standalone usage
 
-Explain how to use only layout components via layout.css
+If needed, it’s possible to use _just_ the layout component from Radix Themes. Just make sure that JavaScript tree-shaking works on your side, and import the CSS that powers the layout styles:
+
+```jsx
+import '@radix-ui/themes/layout.css';
+```
+
+You’ll still have to wrap your app with `Theme` to provide the space scale and scaling factor settings.

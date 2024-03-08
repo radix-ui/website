@@ -131,8 +131,7 @@ Usually, you’d want your custom CSS to override Radix Themes styles. However, 
 
 Consider a simple paragraph style that just resets the browser’s default margin:
 
-```css line="3"
-/* my-styles.css */
+```css
 .my-paragraph {
   margin: 0;
 }
@@ -140,12 +139,11 @@ Consider a simple paragraph style that just resets the browser’s default margi
 
 You might apply the margin prop from a `Box` onto your custom paragraph via `asChild`:
 
-```jsx line="8,10"
-/* app.jsx */
+```jsx line="7,9"
 import '@radix-ui/themes/styles.css';
 import './my-styles.css';
 
-function App() {
+function MyApp() {
   return (
     <Theme>
       <Box asChild m="5">
@@ -156,13 +154,20 @@ function App() {
 }
 ```
 
-Yet, this won’t work intuitively. The custom styles are imported after Radix Themes styles, so they will override the margin prop. As a workaround, Radix Themes provides separate `tokens.css`, `components.css`, and `utilities.css` files that the original `styles.css` is built upon.
+Yet, this won’t work intuitively. The custom styles are imported after Radix Themes styles, so they will override the margin prop. As a workaround, Radix Themes provides separate `tokens.css`, `components.css`, and `utilities.css` files that the original `styles.css` is built upon:
 
-```jsx line="1,2,4"
+```jsx
 import '@radix-ui/themes/tokens.css';
 import '@radix-ui/themes/components.css';
-import './my-styles.css';
 import '@radix-ui/themes/utilities.css';
 ```
 
 You can import `utilities.css` after your custom styles to ensure that the layout props work as expected with your custom styles. However, if you use Next.js, keep in mind the [import order issue](#nextjs-import-order) that’s mentioned above.
+
+If you use [standalone layout components](/themes/docs/overview/layout#standalone-usage), split CSS files are also available for them:
+
+```jsx
+import '@radix-ui/themes/layout/tokens.css';
+import '@radix-ui/themes/layout/components.css';
+import '@radix-ui/themes/layout/utilities.css';
+```
