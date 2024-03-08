@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Flex, Grid, Text, Theme } from '@radix-ui/themes';
+import { Box, Flex, Grid, Text, Theme, ScrollArea } from '@radix-ui/themes';
 import { CopyCodeButton } from './CopyCodeButton';
 import { LiveCode } from './LiveCode';
 import * as themes from '@radix-ui/themes';
@@ -15,13 +15,14 @@ const PreWithLivePreview = ({ style, ...props }) => {
   return (
     <Box
       my="5"
+      position="relative"
       style={{
         borderRadius: 'var(--radius-4)',
-        boxShadow: '0 0 0 1px var(--gray-a5)',
+        boxShadow: 'inset 0 0 0 1px var(--gray-a5)',
       }}
     >
-      <Box style={{ borderBottom: '1px solid var(--gray-a5)' }}>
-        <themes.ScrollArea>
+      <Box>
+        <ScrollArea>
           <Theme className="radix-themes-default-fonts" asChild>
             <Box p="4" width={props.scroll ? 'max-content' : undefined} style={style}>
               <LiveCode
@@ -60,8 +61,15 @@ const PreWithLivePreview = ({ style, ...props }) => {
               />
             </Box>
           </Theme>
-        </themes.ScrollArea>
+        </ScrollArea>
       </Box>
+
+      <Box
+        position="absolute"
+        left="1px"
+        right="1px"
+        style={{ borderBottom: '1px solid var(--gray-a5)' }}
+      />
 
       <Box position="relative" className={styles.CodeContainer}>
         <Pre
