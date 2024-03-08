@@ -17,53 +17,56 @@ const Link = ({ href = '', ...props }) => {
 };
 
 const definitions = {
-  alertDialogContent: themes.alertDialogContentPropDefs,
-  avatar: themes.avatarPropDefs,
-  badge: themes.badgePropDefs,
-  blockquote: themes.blockquotePropDefs,
-  box: themes.boxPropDefs,
-  button: themes.buttonPropDefs,
-  calloutRoot: themes.calloutRootPropDefs,
-  card: themes.cardPropDefs,
-  checkbox: themes.checkboxPropDefs,
-  code: themes.codePropDefs,
-  container: themes.containerPropDefs,
-  contextMenuContent: themes.contextMenuContentPropDefs,
-  contextMenuItem: themes.contextMenuItemPropDefs,
-  dialogContent: themes.dialogContentPropDefs,
-  dropdownMenuContent: themes.dropdownMenuContentPropDefs,
-  dropdownMenuItem: themes.dropdownMenuItemPropDefs,
-  em: themes.emPropDefs,
-  flex: themes.flexPropDefs,
-  grid: themes.gridPropDefs,
-  heading: themes.headingPropDefs,
-  hoverCardContent: themes.hoverCardContentPropDefs,
-  iconButton: themes.iconButtonPropDefs,
-  inset: themes.insetPropDefs,
-  kbd: themes.kbdPropDefs,
-  link: themes.linkPropDefs,
-  popoverContent: themes.popoverContentPropDefs,
-  quote: themes.quotePropDefs,
-  radioGroup: themes.radioGroupRootPropDefs,
-  scrollArea: themes.scrollAreaPropDefs,
-  section: themes.sectionPropDefs,
-  selectContent: themes.selectContentPropDefs,
-  selectRoot: themes.selectRootPropDefs,
-  selectTrigger: themes.selectTriggerPropDefs,
-  separator: themes.separatorPropDefs,
-  slider: themes.sliderPropDefs,
-  strong: themes.strongPropDefs,
-  switch: themes.switchPropDefs,
-  tableCell: themes.tableCellPropDefs,
-  tableRoot: themes.tableRootPropDefs,
-  tableRow: themes.tableRowPropDefs,
-  tabsList: themes.tabsListPropDefs,
-  text: themes.textPropDefs,
-  textArea: themes.textAreaPropDefs,
-  textField: themes.textFieldRootPropDefs,
-  textFieldSlot: themes.textFieldSlotPropDefs,
-  theme: themes.themePropDefs,
-  tooltip: themes.tooltipPropDefs,
+  AlertDialogContent: themes.alertDialogContentPropDefs,
+  Avatar: themes.avatarPropDefs,
+  Badge: themes.badgePropDefs,
+  Blockquote: themes.blockquotePropDefs,
+  Box: themes.boxPropDefs,
+  Button: themes.buttonPropDefs,
+  CalloutRoot: themes.calloutRootPropDefs,
+  Card: themes.cardPropDefs,
+  Checkbox: themes.checkboxPropDefs,
+  Code: themes.codePropDefs,
+  Container: themes.containerPropDefs,
+  ContextMenuContent: themes.contextMenuContentPropDefs,
+  ContextMenuItem: themes.contextMenuItemPropDefs,
+  DialogContent: themes.dialogContentPropDefs,
+  DropdownMenuContent: themes.dropdownMenuContentPropDefs,
+  DropdownMenuItem: themes.dropdownMenuItemPropDefs,
+  Em: themes.emPropDefs,
+  Flex: themes.flexPropDefs,
+  Grid: themes.gridPropDefs,
+  Heading: themes.headingPropDefs,
+  HoverCardContent: themes.hoverCardContentPropDefs,
+  IconButton: themes.iconButtonPropDefs,
+  Inset: themes.insetPropDefs,
+  Kbd: themes.kbdPropDefs,
+  Link: themes.linkPropDefs,
+  PopoverContent: themes.popoverContentPropDefs,
+  Quote: themes.quotePropDefs,
+  RadioGroup: themes.radioGroupRootPropDefs,
+  ScrollArea: themes.scrollAreaPropDefs,
+  SegmentedControlRoot: themes.segmentedControlRootPropDefs,
+  Section: themes.sectionPropDefs,
+  SelectContent: themes.selectContentPropDefs,
+  SelectRoot: themes.selectRootPropDefs,
+  SelectTrigger: themes.selectTriggerPropDefs,
+  Separator: themes.separatorPropDefs,
+  Slider: themes.sliderPropDefs,
+  Strong: themes.strongPropDefs,
+  Switch: themes.switchPropDefs,
+  TableCell: themes.tableCellPropDefs,
+  TableRoot: themes.tableRootPropDefs,
+  TableRow: themes.tableRowPropDefs,
+  TabsList: themes.tabsListPropDefs,
+  TabNavRoot: themes.tabNavPropDefs,
+  TabNavLink: themes.tabNavLinkPropDefs,
+  Text: themes.textPropDefs,
+  TextArea: themes.textAreaPropDefs,
+  TextField: themes.textFieldRootPropDefs,
+  TextFieldSlot: themes.textFieldSlotPropDefs,
+  Theme: themes.themePropDefs,
+  Tooltip: themes.tooltipPropDefs,
 
   // Common props
   layout: themes.layoutPropDefs,
@@ -134,38 +137,38 @@ const textWrap = (
 );
 
 const uniqueDescriptions: UniqueDescriptions = {
-  avatar: {
+  Avatar: {
     fallback: 'The fallback element to render when an image is not available.',
   },
-  blockquote: {
+  Blockquote: {
     wrap: textWrap,
   },
-  code: {
+  Code: {
     wrap: textWrap,
   },
-  em: {
+  Em: {
     wrap: textWrap,
   },
-  heading: {
+  Heading: {
     align: textAlign,
     wrap: textWrap,
   },
-  link: {
+  Link: {
     wrap: textWrap,
     underline: 'Sets the visibility of the underline affordance.',
   },
-  quote: {
+  Quote: {
     wrap: textWrap,
   },
-  strong: {
+  Strong: {
     wrap: textWrap,
   },
-  scrollArea: { scrollbars: 'Controls the scrollable axes.' },
-  text: {
+  ScrollArea: { scrollbars: 'Controls the scrollable axes.' },
+  Text: {
     align: textAlign,
     wrap: textWrap,
   },
-  theme: {
+  Theme: {
     appearance: (
       <>
         The color scheme of the theme (typcially referred to as light and dark mode). See the{' '}
@@ -192,7 +195,7 @@ const uniqueDescriptions: UniqueDescriptions = {
       </>
     ),
   },
-  tooltip: {
+  Tooltip: {
     content: 'The content associated with the tooltip.',
   },
 };
