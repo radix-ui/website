@@ -91,6 +91,7 @@ export const themesRoutes = [
     pages: [
       { title: 'Accessible Icon', slug: 'themes/docs/components/accessible-icon' },
       { title: 'Portal', slug: 'themes/docs/components/portal' },
+      { title: 'Reset', slug: 'themes/docs/components/reset' },
       { title: 'Slot', slug: 'themes/docs/components/slot' },
       { title: 'Theme', slug: 'themes/docs/components/theme' },
       { title: 'Visually Hidden', slug: 'themes/docs/components/visually-hidden' },
