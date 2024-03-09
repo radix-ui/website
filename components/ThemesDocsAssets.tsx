@@ -29,7 +29,7 @@ import { CheckIcon } from '@radix-ui/react-icons';
 import { Marker } from './Marker';
 import * as React from 'react';
 import { ThemesPanelBackgroundImage } from './ThemesPanelBackgroundImage';
-import { accentColors, themePropDefs } from '@lib/themes';
+import { accentColors, themePropDefs } from '@lib/themes/props';
 
 export function ThemesPanelCardExample({ panelBackground }) {
   return (

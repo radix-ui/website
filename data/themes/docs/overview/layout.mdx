@@ -62,7 +62,7 @@ Padding props can access the [space scale steps](/themes/docs/theme/spacing) or 
 <Box p={{ sm: '6', lg: '9' }}>
 ```
 
-<ThemesPropsTable name="padding" />
+<ThemesPropsTable defs="paddingPropDefs" />
 
 ### Width
 
@@ -73,7 +73,7 @@ Width props accept any valid [CSS width value](https://developer.mozilla.org/en-
 <Box width={{ md: '100vw', xl: '1400px' }} />
 ```
 
-<ThemesPropsTable name="width" />
+<ThemesPropsTable defs="widthPropDefs" />
 
 ### Height
 
@@ -84,7 +84,7 @@ Height props accept any valid [CSS height value](https://developer.mozilla.org/e
 <Box height={{ md: '100vh', xl: '600px' }} />
 ```
 
-<ThemesPropsTable name="height" />
+<ThemesPropsTable defs="heightPropDefs" />
 
 ### Positioning
 
@@ -101,7 +101,7 @@ Positioning props can change how the element is placed relative to the normal fl
 <Box left={{ initial: "0", xl: "auto" }} />
 ```
 
-<ThemesPropsTable name="position" />
+<ThemesPropsTable defs="positionPropDefs" />
 
 ### Flex children
 
@@ -113,7 +113,7 @@ Each layout component has props used to control the style when it is a child of 
 <Box flexGrow={{ initial: "0", lg: "1" }} />
 ```
 
-<ThemesPropsTable name="flexChildren" />
+<ThemesPropsTable defs="flexChildrenPropDefs" />
 
 ### Grid children
 
@@ -129,7 +129,7 @@ Each layout component has props used to control the style when it is a child of 
 <Box gridRowEnd={{ initial: "-1", md: "3", lg: "auto" }} />
 ```
 
-<ThemesPropsTable name="gridChildren" />
+<ThemesPropsTable defs="gridChildrenPropDefs" />
 
 ---
 
@@ -145,7 +145,7 @@ Margin props can access the [space scale steps](/themes/docs/theme/spacing) or 
 <Button m={{ sm: '6', lg: '9' }}>
 ```
 
-<ThemesPropsTable name="margin" />
+<ThemesPropsTable defs="marginPropDefs" />
 
 The margin props may be unavailable on components that don’t render a HTML node or rely on their Root part for layout.
 
