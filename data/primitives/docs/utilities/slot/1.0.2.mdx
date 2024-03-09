@@ -80,8 +80,6 @@ export default () => (
 );
 ```
 
-
-
 ### Event handlers
 
 Any prop that starts with `on` (e.g., `onClick`) is considered an event handler.
@@ -94,9 +92,12 @@ If one of the event handlers relies on `event.defaultPrevented` make sure that t
 import { Slot } from '@radix-ui/react-slot';
 
 export default () => (
-  <Slot onClick={(event) => {
-    if (!event.defaultPrevented) console.log('Not logged because default is prevented.');
-  }}>
+  <Slot
+    onClick={(event) => {
+      if (!event.defaultPrevented)
+        console.log('Not logged because default is prevented.');
+    }}
+  >
     <button onClick={(event) => event.preventDefault()} />
   </Slot>
 );
