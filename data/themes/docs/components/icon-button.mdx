@@ -153,3 +153,27 @@ Use the `radius` prop to assign a specific radius value.
   </IconButton>
 </Flex>
 ```
+
+### Loading
+
+Use the `loading` prop to display a loading spinner in place of button content. The button will be disabled while loading.
+
+```jsx live=true scroll=true
+<Flex gap="3">
+  <IconButton loading variant="classic">
+    <MagnifyingGlassIcon width="18" height="18" />
+  </IconButton>
+  <IconButton loading variant="solid">
+    <MagnifyingGlassIcon width="18" height="18" />
+  </IconButton>
+  <IconButton loading variant="soft">
+    <MagnifyingGlassIcon width="18" height="18" />
+  </IconButton>
+  <IconButton loading variant="surface">
+    <MagnifyingGlassIcon width="18" height="18" />
+  </IconButton>
+  <IconButton loading variant="outline">
+    <MagnifyingGlassIcon width="18" height="18" />
+  </IconButton>
+</Flex>
+```

@@ -759,6 +759,7 @@ export default function ComponentsPage() {
                           <th colSpan={2}>Accent</th>
                           <th colSpan={2}>Gray</th>
                           <th>Disabled</th>
+                          <th>Loading</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -787,6 +788,11 @@ export default function ComponentsPage() {
                             </td>
                             <td>
                               <Button variant={variant} disabled>
+                                Next <ArrowRightIcon width="16" height="16" />
+                              </Button>
+                            </td>
+                            <td>
+                              <Button variant={variant} loading>
                                 Next <ArrowRightIcon width="16" height="16" />
                               </Button>
                             </td>
@@ -2280,6 +2286,7 @@ export default function ComponentsPage() {
                           <th colSpan={2}>Accent</th>
                           <th colSpan={2}>Gray</th>
                           <th>Disabled</th>
+                          <th>Loading</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -2308,6 +2315,11 @@ export default function ComponentsPage() {
                             </td>
                             <td>
                               <IconButton variant={variant} disabled>
+                                <StarIcon width="16" height="16" />
+                              </IconButton>
+                            </td>
+                            <td>
+                              <IconButton variant={variant} loading>
                                 <StarIcon width="16" height="16" />
                               </IconButton>
                             </td>

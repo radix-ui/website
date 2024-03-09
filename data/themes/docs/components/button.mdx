@@ -6,7 +6,7 @@ sourcePath: components/button
 
 ```jsx live=true
 <Button>
-  <BookmarkIcon width="16" height="16" /> Bookmark
+  <BookmarkIcon /> Bookmark
 </Button>
 ```
 
@@ -147,19 +147,80 @@ You can nest icons directly inside the button. An appropriate gap is provided au
 ```jsx live=true scroll=true
 <Flex gap="3">
   <Button variant="classic">
-    <BookmarkIcon width="16" height="16" /> Bookmark
+    <BookmarkIcon /> Bookmark
   </Button>
   <Button variant="solid">
-    <BookmarkIcon width="16" height="16" /> Bookmark
+    <BookmarkIcon /> Bookmark
   </Button>
   <Button variant="soft">
-    <BookmarkIcon width="16" height="16" /> Bookmark
+    <BookmarkIcon /> Bookmark
   </Button>
   <Button variant="surface">
-    <BookmarkIcon width="16" height="16" /> Bookmark
+    <BookmarkIcon /> Bookmark
   </Button>
   <Button variant="outline">
-    <BookmarkIcon width="16" height="16" /> Bookmark
+    <BookmarkIcon /> Bookmark
+  </Button>
+</Flex>
+```
+
+### Loading
+
+Use the `loading` prop to display a loading spinner in place of button content, preserving the original size of the button in its normal state. The button will be disabled while loading.
+
+```jsx live=true scroll=true
+<Flex gap="3">
+  <Button loading variant="classic">
+    Bookmark
+  </Button>
+  <Button loading variant="solid">
+    Bookmark
+  </Button>
+  <Button loading variant="soft">
+    Bookmark
+  </Button>
+  <Button loading variant="surface">
+    Bookmark
+  </Button>
+  <Button loading variant="outline">
+    Bookmark
+  </Button>
+</Flex>
+```
+
+If you already have an icon inside the button, you can use the `disabled` state and a [Spinner](/themes/docs/components/spinner) component to achieve a more streamlined design.
+
+```jsx live=true scroll=true
+<Flex gap="3">
+  <Button disabled variant="classic">
+    <Spinner loading>
+      <BookmarkIcon />
+    </Spinner>
+    Bookmark
+  </Button>
+  <Button disabled variant="solid">
+    <Spinner loading>
+      <BookmarkIcon />
+    </Spinner>
+    Bookmark
+  </Button>
+  <Button disabled variant="soft">
+    <Spinner loading>
+      <BookmarkIcon />
+    </Spinner>
+    Bookmark
+  </Button>
+  <Button disabled variant="surface">
+    <Spinner loading>
+      <BookmarkIcon />
+    </Spinner>
+    Bookmark
+  </Button>
+  <Button disabled variant="outline">
+    <Spinner loading>
+      <BookmarkIcon />
+    </Spinner>
+    Bookmark
   </Button>
 </Flex>
 ```
