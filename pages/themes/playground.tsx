@@ -15,6 +15,7 @@ import {
   CheckboxGroup,
   Code,
   ContextMenu,
+  DataList,
   Dialog,
   DropdownMenu,
   Em,
@@ -65,6 +66,7 @@ import {
   checkboxPropDefs,
   codePropDefs,
   contextMenuContentPropDefs,
+  dataListPropDefs,
   dropdownMenuContentPropDefs,
   headingPropDefs,
   hoverCardContentPropDefs,
@@ -92,6 +94,7 @@ import {
   ArrowRightIcon,
   CaretDownIcon,
   CubeIcon,
+  HomeIcon,
   InfoCircledIcon,
   MagnifyingGlassIcon,
   StarIcon,
@@ -1680,6 +1683,37 @@ export default function ComponentsPage() {
                     </table>
                   </Box>
                 </Tabs.Content>
+              </Tabs.Root>
+            </PlaygroundSection>
+
+            <PlaygroundSection>
+              <PlaygroundSectionTitle id="data-list">Data List</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="horizontal">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="horizontal">Horizontal</Tabs.Trigger>
+                  <Tabs.Trigger value="vertical">Vertical</Tabs.Trigger>
+                </Tabs.List>
+
+                {dataListPropDefs.orientation.values.map((orientation) => (
+                  <Tabs.Content value={orientation} key={orientation}>
+                    <Flex mt="5">
+                      {dataListPropDefs.size.values.map((size, i) => (
+                        <Box key={size} mr={`${64 + i * 16}px`}>
+                          <Text
+                            as="div"
+                            size="1"
+                            color="gray"
+                            mb="5"
+                            align={orientation === 'horizontal' ? 'center' : undefined}
+                          >
+                            Size {size}
+                          </Text>
+                          <ExampleDataList size={size} orientation={orientation} />
+                        </Box>
+                      ))}
+                    </Flex>
+                  </Tabs.Content>
+                ))}
               </Tabs.Root>
             </PlaygroundSection>
 
@@ -4911,6 +4945,55 @@ function ExampleTabs(props: React.ComponentPropsWithoutRef<typeof Tabs.List>) {
         <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
       </Tabs.List>
     </Tabs.Root>
+  );
+}
+
+function ExampleDataList({
+  size = dataListPropDefs.size.default,
+  orientation = dataListPropDefs.orientation.default,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof DataList.Root>) {
+  return (
+    <DataList.Root orientation={orientation} size={size} {...props}>
+      <DataList.Item align={orientation === 'horizontal' ? 'center' : undefined}>
+        <DataList.Label minWidth="88px">Status</DataList.Label>
+        <DataList.Value>
+          <Badge color="jade" variant="soft" radius="full" mx="-2px" size={+size > 2 ? '2' : '1'}>
+            Active
+          </Badge>
+        </DataList.Value>
+      </DataList.Item>
+      <DataList.Item>
+        <DataList.Label minWidth="88px">Name</DataList.Label>
+        <DataList.Value>Vlad Moroz</DataList.Value>
+      </DataList.Item>
+      <DataList.Item>
+        <DataList.Label minWidth="88px">Email</DataList.Label>
+        <DataList.Value>
+          <Link color="gray" highContrast underline="hover" href="mailto:vlad@workos.com">
+            vlad@workos.com
+          </Link>
+        </DataList.Value>
+      </DataList.Item>
+      <DataList.Item>
+        <DataList.Label minWidth="88px">Company</DataList.Label>
+        <DataList.Value>
+          <Link
+            color="gray"
+            highContrast
+            underline="hover"
+            target="_blank"
+            href="https://workos.com"
+          >
+            WorkOS
+          </Link>
+        </DataList.Value>
+      </DataList.Item>
+      <DataList.Item>
+        <DataList.Label minWidth="88px">Title</DataList.Label>
+        <DataList.Value>Product Designer</DataList.Value>
+      </DataList.Item>
+    </DataList.Root>
   );
 }
 
