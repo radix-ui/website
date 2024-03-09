@@ -27,6 +27,7 @@ import {
   Kbd,
   Link,
   Popover,
+  Progress,
   Quote,
   Radio,
   RadioCardGroup,
@@ -36,7 +37,9 @@ import {
   SegmentedControl,
   Select,
   Separator,
+  Skeleton,
   Slider,
+  Spinner,
   Strong,
   Switch,
   Table,
@@ -68,6 +71,7 @@ import {
   iconButtonPropDefs,
   kbdPropDefs,
   linkPropDefs,
+  progressPropDefs,
   radioCardGroupRootPropDefs,
   radioGroupRootPropDefs,
   radioPropDefs,
@@ -867,7 +871,7 @@ export default function ComponentsPage() {
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <PlaygroundSectionTitle id="callout">Callout.</PlaygroundSectionTitle>
+              <PlaygroundSectionTitle id="callout">Callout</PlaygroundSectionTitle>
               <Tabs.Root defaultValue="theme-colors">
                 <Tabs.List size="2">
                   <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
@@ -2607,7 +2611,7 @@ export default function ComponentsPage() {
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <PlaygroundSectionTitle id="popover">Popover.</PlaygroundSectionTitle>
+              <PlaygroundSectionTitle id="popover">Popover</PlaygroundSectionTitle>
               <Flex align="center" gap="4">
                 <Popover.Root>
                   <Popover.Trigger>
@@ -2750,6 +2754,156 @@ export default function ComponentsPage() {
                   </Popover.Content>
                 </Popover.Root>
               </Flex>
+            </PlaygroundSection>
+
+            <PlaygroundSection>
+              <PlaygroundSectionTitle id="progress">Progress</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="theme-colors">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="theme-colors">
+                  <Box mt="6">
+                    <table className={styles.PlaygroundTable}>
+                      <thead>
+                        <tr>
+                          <th />
+                          <th colSpan={2}>Accent</th>
+                          <th colSpan={2}>Gray</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {progressPropDefs.variant.values.map((variant, index) => (
+                          <tr key={variant}>
+                            <td>{upperFirst(variant)}</td>
+                            <td>
+                              <Progress width="160px" value={33 + 17 * index} variant={variant} />
+                            </td>
+                            <td>
+                              <Progress
+                                width="160px"
+                                value={33 + 17 * index}
+                                variant={variant}
+                                highContrast
+                              />
+                            </td>
+                            <td>
+                              <Progress
+                                width="160px"
+                                value={33 + 17 * index}
+                                variant={variant}
+                                color="gray"
+                              />
+                            </td>
+                            <td>
+                              <Progress
+                                width="160px"
+                                value={33 + 17 * index}
+                                variant={variant}
+                                color="gray"
+                                highContrast
+                              />
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </Box>
+                </Tabs.Content>
+
+                <Tabs.Content value="all-colors">
+                  <Box mt="6">
+                    <table className={styles.PlaygroundTable}>
+                      <thead>
+                        <tr>
+                          <th />
+                          {progressPropDefs.variant.values.map((variant) => (
+                            <th key={variant} colSpan={2}>
+                              {upperFirst(variant)}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {accentColors.map((color, index) => (
+                          <tr key={color}>
+                            <td>{upperFirst(color)}</td>
+                            {progressPropDefs.variant.values.map((variant) => (
+                              <React.Fragment key={variant}>
+                                <td>
+                                  <Progress
+                                    width="160px"
+                                    value={30 + index * 2}
+                                    color={color}
+                                    variant={variant}
+                                  />
+                                </td>
+                                <td>
+                                  <Progress
+                                    width="160px"
+                                    value={30 + index * 2}
+                                    color={color}
+                                    variant={variant}
+                                    highContrast
+                                  />
+                                </td>
+                              </React.Fragment>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </Box>
+                </Tabs.Content>
+
+                <Tabs.Content value="all-sizes">
+                  <Box mt="6">
+                    <table className={styles.PlaygroundTable}>
+                      <thead>
+                        <tr>
+                          <th />
+                          {progressPropDefs.radius.values.map((radius) => (
+                            <th key={radius} style={{ textAlign: 'left' }}>
+                              {radius === 'none' ? 'No radius' : upperFirst(radius)}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {progressPropDefs.variant.values.map((variant, index) => (
+                          <React.Fragment key={variant}>
+                            {index > 0 && (
+                              <tr>
+                                <td>&nbsp;</td>
+                              </tr>
+                            )}
+                            {progressPropDefs.size.values.map((size, sizeIndex) => (
+                              <tr key={size}>
+                                <td>Size {size}</td>
+                                {progressPropDefs.radius.values.map((radius) => (
+                                  <td key={radius} style={{ textAlign: 'left' }}>
+                                    <Flex align="center" justify="start" gap="4">
+                                      <Progress
+                                        width="160px"
+                                        value={33 + 17 * sizeIndex}
+                                        size={size}
+                                        variant={variant}
+                                        radius={radius}
+                                      />
+                                    </Flex>
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </React.Fragment>
+                        ))}
+                      </tbody>
+                    </table>
+                  </Box>
+                </Tabs.Content>
+              </Tabs.Root>
             </PlaygroundSection>
 
             <PlaygroundSection>
@@ -3121,7 +3275,7 @@ export default function ComponentsPage() {
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <PlaygroundSectionTitle id="select">Select.</PlaygroundSectionTitle>
+              <PlaygroundSectionTitle id="select">Select</PlaygroundSectionTitle>
               <Tabs.Root defaultValue="theme-colors">
                 <Tabs.List size="2">
                   <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
@@ -3349,6 +3503,79 @@ export default function ComponentsPage() {
             </PlaygroundSection>
 
             <PlaygroundSection>
+              <PlaygroundSectionTitle id="skeleton">Skeleton</PlaygroundSectionTitle>
+
+              <Grid gap="5" columns="360px 360px">
+                {[false, true].map((isLoading, i) => (
+                  <Card variant="classic" size="4" key={i}>
+                    <Box height="40px" mb="4">
+                      <Heading as="h3" size="6" mt="-1">
+                        <Skeleton loading={isLoading}>Sign in</Skeleton>
+                      </Heading>
+                    </Box>
+
+                    <Box mb="5">
+                      <Flex direction="column">
+                        <Text as="label" size="2" weight="medium" mb="2" htmlFor="email">
+                          <Skeleton loading={isLoading}>Email address</Skeleton>
+                        </Text>
+                        <Skeleton loading={isLoading}>
+                          <TextField.Root
+                            id={'skeleton-email' + i}
+                            type="email"
+                            variant="classic"
+                            placeholder="Enter your email"
+                          />
+                        </Skeleton>
+                      </Flex>
+                    </Box>
+
+                    <Box mb="5" position="relative">
+                      <Box position="absolute" top="0" right="0" style={{ marginTop: -2 }}>
+                        {isLoading ? (
+                          <Text size="2">
+                            <Skeleton loading>Forgot password?</Skeleton>
+                          </Text>
+                        ) : (
+                          <Link size="2" href="#">
+                            Forgot password?
+                          </Link>
+                        )}
+                      </Box>
+
+                      <Flex direction="column">
+                        <Text as="label" size="2" weight="medium" mb="2" htmlFor="password">
+                          <Skeleton loading={isLoading}>Password</Skeleton>
+                        </Text>
+                        <Skeleton loading={isLoading}>
+                          <TextField.Root
+                            id={'skeleton-password' + i}
+                            variant="classic"
+                            type="password"
+                            placeholder="Enter your password"
+                          />
+                        </Skeleton>
+                      </Flex>
+                    </Box>
+
+                    <Flex mt="6" justify="end" gap="3">
+                      <Skeleton loading={isLoading}>
+                        <Button variant="surface" highContrast color="gray">
+                          Create an account
+                        </Button>
+                      </Skeleton>
+                      <Skeleton loading={isLoading}>
+                        <Button variant="solid" type="submit">
+                          Sign in
+                        </Button>
+                      </Skeleton>
+                    </Flex>
+                  </Card>
+                ))}
+              </Grid>
+            </PlaygroundSection>
+
+            <PlaygroundSection>
               <PlaygroundSectionTitle id="slider">Slider</PlaygroundSectionTitle>
               <Tabs.Root defaultValue="theme-colors">
                 <Tabs.List size="2">
@@ -3494,6 +3721,15 @@ export default function ComponentsPage() {
                   </Box>
                 </Tabs.Content>
               </Tabs.Root>
+            </PlaygroundSection>
+
+            <PlaygroundSection>
+              <PlaygroundSectionTitle id="spinner">Spinner</PlaygroundSectionTitle>
+              <Flex align="center" gap="4">
+                <Spinner size="1" />
+                <Spinner size="2" />
+                <Spinner size="3" />
+              </Flex>
             </PlaygroundSection>
 
             <PlaygroundSection>
@@ -3643,7 +3879,7 @@ export default function ComponentsPage() {
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <PlaygroundSectionTitle id="table">Table.</PlaygroundSectionTitle>
+              <PlaygroundSectionTitle id="table">Table</PlaygroundSectionTitle>
               {/* Apply a negative margin bottom to negate the table padding bottom of the examples */}
               <Box style={{ whiteSpace: 'nowrap' }} mb="-6">
                 <Flex direction="column" className={styles.PlaygroundHeroContainer} mb="6">
@@ -3762,7 +3998,7 @@ export default function ComponentsPage() {
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <PlaygroundSectionTitle id="tabs">Tabs.</PlaygroundSectionTitle>
+              <PlaygroundSectionTitle id="tabs">Tabs</PlaygroundSectionTitle>
 
               <Tabs.Root defaultValue="theme-colors">
                 <Tabs.List size="2">
