@@ -79,18 +79,15 @@ import {
   tabNavPropDefs,
   tableRootPropDefs,
   tabsListPropDefs,
-  tabsRootPropDefs,
   textAreaPropDefs,
   textFieldRootPropDefs,
   textPropDefs,
   themePropDefs,
-} from '@lib/themes';
+} from '@lib/themes/props';
 import {
   ArrowRightIcon,
   CaretDownIcon,
-  CrumpledPaperIcon,
   CubeIcon,
-  GlobeIcon,
   InfoCircledIcon,
   MagnifyingGlassIcon,
   StarIcon,

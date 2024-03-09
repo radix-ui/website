@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropsTable } from './PropsTable';
-import * as themes from '@lib/themes';
+import * as props from '@lib/themes/props';
 import { Code, Link as DSLink } from '@radix-ui/themes';
 import NextLink from 'next/link';
 import { ExternalLink } from './ExternalLink';
@@ -16,86 +16,49 @@ const Link = ({ href = '', ...props }) => {
   );
 };
 
+const {
+  // single props
+  alignProp,
+  colorProp,
+  highContrastProp,
+  inheritedColorProp,
+  radiusProp,
+  textWrapProp,
+  trimProp,
+  truncateProp,
+  weightProp,
+
+  // arrays
+  accentColors,
+  accentColorsGrouped,
+  breakpoints,
+  grayColors,
+  radii,
+  ...propDefs
+} = props;
+
 const definitions = {
-  AlertDialogContent: themes.alertDialogContentPropDefs,
-  Avatar: themes.avatarPropDefs,
-  Badge: themes.badgePropDefs,
-  Blockquote: themes.blockquotePropDefs,
-  Box: themes.boxPropDefs,
-  Button: themes.buttonPropDefs,
-  CalloutRoot: themes.calloutRootPropDefs,
-  Card: themes.cardPropDefs,
-  Checkbox: themes.checkboxPropDefs,
-  Code: themes.codePropDefs,
-  Container: themes.containerPropDefs,
-  ContextMenuContent: themes.contextMenuContentPropDefs,
-  ContextMenuItem: themes.contextMenuItemPropDefs,
-  DialogContent: themes.dialogContentPropDefs,
-  DropdownMenuContent: themes.dropdownMenuContentPropDefs,
-  DropdownMenuItem: themes.dropdownMenuItemPropDefs,
-  Em: themes.emPropDefs,
-  Flex: themes.flexPropDefs,
-  Grid: themes.gridPropDefs,
-  Heading: themes.headingPropDefs,
-  HoverCardContent: themes.hoverCardContentPropDefs,
-  IconButton: themes.iconButtonPropDefs,
-  Inset: themes.insetPropDefs,
-  Kbd: themes.kbdPropDefs,
-  Link: themes.linkPropDefs,
-  PopoverContent: themes.popoverContentPropDefs,
-  Quote: themes.quotePropDefs,
-  RadioGroup: themes.radioGroupRootPropDefs,
-  ScrollArea: themes.scrollAreaPropDefs,
-  SegmentedControlRoot: themes.segmentedControlRootPropDefs,
-  Section: themes.sectionPropDefs,
-  SelectContent: themes.selectContentPropDefs,
-  SelectRoot: themes.selectRootPropDefs,
-  SelectTrigger: themes.selectTriggerPropDefs,
-  Separator: themes.separatorPropDefs,
-  Slider: themes.sliderPropDefs,
-  Strong: themes.strongPropDefs,
-  Switch: themes.switchPropDefs,
-  TableCell: themes.tableCellPropDefs,
-  TableRoot: themes.tableRootPropDefs,
-  TableRow: themes.tableRowPropDefs,
-  TabsList: themes.tabsListPropDefs,
-  TabNavRoot: themes.tabNavPropDefs,
-  TabNavLink: themes.tabNavLinkPropDefs,
-  Text: themes.textPropDefs,
-  TextArea: themes.textAreaPropDefs,
-  TextField: themes.textFieldRootPropDefs,
-  TextFieldSlot: themes.textFieldSlotPropDefs,
-  Theme: themes.themePropDefs,
-  Tooltip: themes.tooltipPropDefs,
-
-  // Common props
-  layout: themes.layoutPropDefs,
-  margin: themes.marginPropDefs,
-
-  // Layout props
-  padding: themes.paddingPropDefs,
-  width: themes.widthPropDefs,
-  height: themes.heightPropDefs,
-  flexChildren: {
-    flexBasis: themes.layoutPropDefs.flexBasis,
-    flexShrink: themes.layoutPropDefs.flexShrink,
-    flexGrow: themes.layoutPropDefs.flexGrow,
+  ...propDefs,
+  flexChildrenPropDefs: {
+    flexBasis: props.layoutPropDefs.flexBasis,
+    flexShrink: props.layoutPropDefs.flexShrink,
+    flexGrow: props.layoutPropDefs.flexGrow,
   },
-  gridChildren: {
-    gridColumn: themes.layoutPropDefs.gridColumn,
-    gridColumnStart: themes.layoutPropDefs.gridColumnStart,
-    gridColumnEnd: themes.layoutPropDefs.gridColumnEnd,
-    gridRow: themes.layoutPropDefs.gridRow,
-    gridRowStart: themes.layoutPropDefs.gridRowStart,
-    gridRowEnd: themes.layoutPropDefs.gridRowEnd,
+  gridChildrenPropDefs: {
+    gridColumn: props.layoutPropDefs.gridColumn,
+    gridColumnStart: props.layoutPropDefs.gridColumnStart,
+    gridColumnEnd: props.layoutPropDefs.gridColumnEnd,
+    gridRow: props.layoutPropDefs.gridRow,
+    gridRowStart: props.layoutPropDefs.gridRowStart,
+    gridRowEnd: props.layoutPropDefs.gridRowEnd,
   },
-  position: {
-    position: themes.layoutPropDefs.position,
-    inset: themes.layoutPropDefs.inset,
-    top: themes.layoutPropDefs.top,
-    right: themes.layoutPropDefs.right,
-    bottom: themes.layoutPropDefs.bottom,
-    left: themes.layoutPropDefs.left,
+  positionPropDefs: {
+    position: props.layoutPropDefs.position,
+    inset: props.layoutPropDefs.inset,
+    top: props.layoutPropDefs.top,
+    right: props.layoutPropDefs.right,
+    bottom: props.layoutPropDefs.bottom,
+    left: props.layoutPropDefs.left,
   },
 } as const;
 
@@ -112,8 +75,9 @@ type ExtractProps<T> = {
   [K in keyof T]: T[K] extends object ? keyof ExtractProps<T[K]> : React.ReactNode;
 };
 type ExtractedProps = ExtractProps<PropDefinitions>;
+type ExtractedPropsKeys = ExtractedProps[keyof ExtractedProps];
 type CommonDescriptions = {
-  [K in ExtractedProps[keyof ExtractProps<PropDefinitions>]]?: React.ReactNode;
+  [K in ExtractedPropsKeys]?: React.ReactNode;
 };
 
 const textAlign = (
@@ -137,38 +101,38 @@ const textWrap = (
 );
 
 const uniqueDescriptions: UniqueDescriptions = {
-  Avatar: {
+  avatarPropDefs: {
     fallback: 'The fallback element to render when an image is not available.',
   },
-  Blockquote: {
+  blockquotePropDefs: {
     wrap: textWrap,
   },
-  Code: {
+  codePropDefs: {
     wrap: textWrap,
   },
-  Em: {
+  emPropDefs: {
     wrap: textWrap,
   },
-  Heading: {
+  headingPropDefs: {
     align: textAlign,
     wrap: textWrap,
   },
-  Link: {
+  linkPropDefs: {
     wrap: textWrap,
     underline: 'Sets the visibility of the underline affordance.',
   },
-  Quote: {
+  quotePropDefs: {
     wrap: textWrap,
   },
-  Strong: {
+  strongPropDefs: {
     wrap: textWrap,
   },
-  ScrollArea: { scrollbars: 'Controls the scrollable axes.' },
-  Text: {
+  scrollAreaPropDefs: { scrollbars: 'Controls the scrollable axes.' },
+  textPropDefs: {
     align: textAlign,
     wrap: textWrap,
   },
-  Theme: {
+  themePropDefs: {
     appearance: (
       <>
         The color scheme of the theme (typcially referred to as light and dark mode). See the{' '}
@@ -195,7 +159,7 @@ const uniqueDescriptions: UniqueDescriptions = {
       </>
     ),
   },
-  Tooltip: {
+  tooltipPropDefs: {
     content: 'The content associated with the tooltip.',
   },
 };
@@ -327,8 +291,8 @@ function formatDefinitions(definitions: Record<ComponentName, ThemesPropsDef>) {
   return formattedProps;
 }
 
-const props = formatDefinitions(definitions);
+const data = formatDefinitions(definitions);
 
-export function ThemesPropsTable({ name }: { name: string }) {
-  return <PropsTable data={props[name]} propHeaderFixedWidth={false} />;
+export function ThemesPropsTable({ defs }: { defs: string }) {
+  return <PropsTable data={data[defs]} propHeaderFixedWidth={false} />;
 }
