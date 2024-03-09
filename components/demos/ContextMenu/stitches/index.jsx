@@ -11,7 +11,7 @@ const ContextMenuDemo = () => {
 
   return (
     <ContextMenu.Root>
-      <ContextMenuTrigger>Right click here.</ContextMenuTrigger>
+      <ContextMenuTrigger>Right-click here.</ContextMenuTrigger>
       <ContextMenu.Portal>
         <ContextMenuContent sideOffset={5} align="end">
           <ContextMenuItem>

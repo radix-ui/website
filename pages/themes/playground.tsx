@@ -4863,7 +4863,7 @@ function RightClickArea(props: {
       }}
     >
       {/* @ts-ignore */}
-      <Text size={size} color={color} highContrast={highContrast}>
+      <Text size={size} color={color} highContrast style={{ opacity: 0.9 }}>
         Right-click here
       </Text>
     </Grid>

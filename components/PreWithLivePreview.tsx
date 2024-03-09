@@ -39,7 +39,7 @@ const PreWithLivePreview = ({ style, ...props }) => {
                         height: 100,
                         placeItems: 'center',
                         border: '1px dashed var(--accent-a6)',
-                        backgroundColor: 'var(--accent-a1)',
+                        backgroundColor: 'var(--accent-a2)',
                         borderRadius: 'var(--radius-3)',
                         cursor: 'default',
                         ...props.style,
