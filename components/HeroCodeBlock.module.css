@@ -63,6 +63,7 @@
   transition: opacity 80ms ease-out;
 }
 
-.CodeContainer:hover .CopyButton {
+.CodeContainer:hover .CopyButton,
+.CopyButton:focus {
   opacity: 1;
 }
