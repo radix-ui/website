@@ -124,10 +124,13 @@ const uniqueDescriptions: UniqueDescriptions = {
   quotePropDefs: {
     wrap: textWrap,
   },
+  scrollAreaPropDefs: { scrollbars: 'Controls the scrollable axes.' },
   strongPropDefs: {
     wrap: textWrap,
   },
-  scrollAreaPropDefs: { scrollbars: 'Controls the scrollable axes.' },
+  spinnerPropDefs: {
+    loading: <>Toggles whether to hide the children and display the spinner.</>,
+  },
   textPropDefs: {
     align: textAlign,
     wrap: textWrap,
