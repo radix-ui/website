@@ -6,10 +6,6 @@ export const themesRoutes = [
       { title: 'Styling', slug: 'themes/docs/overview/styling' },
       { title: 'Layout', slug: 'themes/docs/overview/layout' },
       { title: 'Releases', slug: 'themes/docs/overview/releases' },
-      // { title: 'Resources', slug: 'themes/docs/overview/resources' },
-      //
-      // TODO
-      //
     ],
   },
   {
@@ -76,6 +72,7 @@ export const themesRoutes = [
       { title: 'Select', slug: 'themes/docs/components/select' },
       { title: 'Separator', slug: 'themes/docs/components/separator' },
       { title: 'Slider', slug: 'themes/docs/components/slider' },
+      { title: 'Spinner', slug: 'themes/docs/components/spinner' },
       { title: 'Switch', slug: 'themes/docs/components/switch' },
       { title: 'Table', slug: 'themes/docs/components/table' },
       { title: 'Tabs', slug: 'themes/docs/components/tabs' },
