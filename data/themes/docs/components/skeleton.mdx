@@ -1,0 +1,83 @@
+---
+metaTitle: Skeleton
+metaDescription: Replaces content with same shape placeholder that indicates a loading state.
+sourcePath: components/skeleton
+---
+
+```jsx live="true"
+<Skeleton>Loading</Skeleton>
+```
+
+## API Reference
+
+This component is based on the `span` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
+
+<ThemesPropsTable defs="skeletonPropDefs" />
+
+## Examples
+
+### Size
+
+Use the width and height props to manually control the size of the skeleton.
+
+```jsx live="true"
+<Skeleton width="48px" height="48px" />
+```
+
+### With children
+
+Use the `loading` prop to control whether the skeleton or its children are displayed. Skeleton preserves the dimensions of children when they are hidden and disables interactive elements.
+
+```jsx live="true"
+<Flex gap="4">
+  <Skeleton loading={true}>
+    <Switch defaultChecked />
+  </Skeleton>
+
+  <Skeleton loading={false}>
+    <Switch defaultChecked />
+  </Skeleton>
+</Flex>
+```
+
+### With text
+
+When using Skeleton with text, you’d usually wrap the text node itself rather than the parent element. This ensures that the text is replaced with a placeholder of the same size:
+
+```jsx live="true" line="4,7,9"
+<Container size="1">
+  <Flex direction="column" gap="2">
+    <Text>
+      <Skeleton>Lorem ipsum dolor sit amet.</Skeleton>
+    </Text>
+
+    <Skeleton>
+      <Text>Lorem ipsum dolor sit amet</Text>
+    </Skeleton>
+  </Flex>
+</Container>
+```
+
+The difference is especially noticeable when wrapping longer paragraphs:
+
+```jsx live="true" line="4,8,11,17"
+<Container size="1">
+  <Flex direction="column" gap="3">
+    <Text>
+      <Skeleton>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+        felis tellus, efficitur id convallis a, viverra eget libero. Nam magna
+        erat, fringilla sed commodo sed, aliquet nec magna.
+      </Skeleton>
+    </Text>
+
+    <Skeleton>
+      <Text>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+        felis tellus, efficitur id convallis a, viverra eget libero. Nam magna
+        erat, fringilla sed commodo sed, aliquet nec magna.
+      </Text>
+    </Skeleton>
+  </Flex>
+</Container>
+```

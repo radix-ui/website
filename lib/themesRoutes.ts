@@ -71,6 +71,7 @@ export const themesRoutes = [
       { title: 'Segmented Control', slug: 'themes/docs/components/segmented-control' },
       { title: 'Select', slug: 'themes/docs/components/select' },
       { title: 'Separator', slug: 'themes/docs/components/separator' },
+      { title: 'Skeleton', slug: 'themes/docs/components/skeleton' },
       { title: 'Slider', slug: 'themes/docs/components/slider' },
       { title: 'Spinner', slug: 'themes/docs/components/spinner' },
       { title: 'Switch', slug: 'themes/docs/components/switch' },
