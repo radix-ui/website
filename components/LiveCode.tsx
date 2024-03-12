@@ -12,20 +12,99 @@ interface LiveCodeProps {
   onRender?: (error: Error | undefined) => void;
 }
 
-export const LiveCode = ({ code = '', scope = {}, onRender = () => undefined }: LiveCodeProps) => {
+export const LiveCode = ({
+  code = '',
+  scope = {},
+  onRender = () => undefined,
+}: LiveCodeProps) => {
+  const currentError = React.useRef<Error>();
+  const setCurrentError = (error: Error | undefined) =>
+    (currentError.current = error);
+
+  // Reset current error state at render
+  setCurrentError(undefined);
+
+  // Update error handler with current error state after the render
+  // Using layout effect so handler can react with own DOM changes without flicker
+  useIsomorphicLayoutEffect(() => {
+    onRender(currentError.current);
+  });
+
   try {
     const transformedCode = transform(code);
     const Preview = evaluate(transformedCode, {
+      internal__onError: setCurrentError,
       ...scope,
     });
 
-    return <>{Preview}</>;
+    // This is a boolean, number, string, null, or undefined
+    if (!Preview || Object(Preview) !== Preview) {
+      return <>{Preview}</>;
+    }
+
+    // This is a valid React element
+    if (React.isValidElement(Preview)) {
+      return (
+        <ErrorBoundary
+          key={transformedCode}
+          onError={(error) => setCurrentError(error)}
+        >
+          {Preview}
+        </ErrorBoundary>
+      );
+    }
+
+    // This is a function
+    if (typeof Preview === 'function') {
+      return (
+        <ErrorBoundary
+          key={transformedCode}
+          onError={(error) => setCurrentError(error)}
+        >
+          <Preview />
+        </ErrorBoundary>
+      );
+    }
   } catch (error) {
-    console.error(error);
+    setCurrentError(error as Error);
   }
 
   return null;
 };
+
+type ErrorBoundaryProps = Omit<React.ComponentProps<'div'>, 'onError'> & {
+  children?: React.ReactNode;
+  onError: (error: Error) => void;
+
+  /** We must set the key in order to clear ErrorBoundary state on re-renders  */
+  key: React.Key;
+};
+
+type ErrorBoundaryState = {
+  error?: Error;
+};
+
+class ErrorBoundary extends React.Component<
+  ErrorBoundaryProps,
+  ErrorBoundaryState
+> {
+  constructor(props: ErrorBoundaryProps) {
+    super(props);
+    this.state = {};
+  }
+
+  static getDerivedStateFromError(error: Error) {
+    return { error };
+  }
+
+  override componentDidCatch(error: Error) {
+    this.props.onError(error);
+  }
+
+  override render() {
+    return this.state.error ? null : this.props.children;
+  }
+}
 
 const evaluate = (code = '', scope: Record<string, unknown> = {}) => {
   const scopeKeys = Object.keys(scope);
@@ -55,7 +134,8 @@ const transform = (code = '') => {
 };
 
 // Wrap JSX code in React fragment so it's easier to author code that renders multiple elements
-const injectFragment = (code = '') => (/^<[^]*>$/m.test(code) ? `<>${code}</>` : code);
+const injectFragment = (code = '') =>
+  /^<[^]*>$/m.test(code) ? `<>${code}</>` : code;
 
 // Wrap code in `return` statement so we can create a function and inject try / catch into the expression body
 const injectReturnTryCatch = (code = '') => {
@@ -67,7 +147,7 @@ const injectReturnTryCatch = (code = '') => {
   if (regexp.test(code)) {
     return code.replace(
       regexp,
-      `return (function $2 () { try { ${code}; return new $2() } ${catchBlock} })`
+      `return (function $2 () { try { ${code}; return new $2() } ${catchBlock} })`,
     );
   }
 
@@ -86,7 +166,10 @@ const injectReturnTryCatch = (code = '') => {
   // This might be a function component declared like this: () => ...
   regexp = /^((?:\([^]*?\)|\w+)\s*=>\s*)([^]+)/m;
   if (regexp.test(code)) {
-    return code.replace(regexp, `return ($1 { try { return $2 } ${catchBlock}})`);
+    return code.replace(
+      regexp,
+      `return ($1 { try { return $2 } ${catchBlock}})`,
+    );
   }
 
   // No match found, don't do anything fancy
@@ -108,3 +191,6 @@ const injectReactClassComponentPrototype = (fn: () => null, code = '') => {
 };
 
 const removeImports = (code = '') => code.replace(/^(import .+?;|'|")$/gms, '');
+
+const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;
