@@ -1029,11 +1029,11 @@ export default function ComponentsPage() {
             <PlaygroundSection>
               <PlaygroundSectionTitle id="card">Card</PlaygroundSectionTitle>
               <Box style={{ whiteSpace: 'nowrap' }}>
-                <Flex direction="column" className={styles.PlaygroundHeroContainer}>
+                <Flex direction="column" maxWidth="1000px">
                   <Flex
                     justify="center"
                     position="relative"
-                    className={styles.PlaygroundHeroContent}
+                    py={{ initial: '7', xs: '9', sm: '100px' }}
                   >
                     <Flex
                       align="center"
@@ -3928,11 +3928,11 @@ export default function ComponentsPage() {
               <PlaygroundSectionTitle id="table">Table</PlaygroundSectionTitle>
               {/* Apply a negative margin bottom to negate the table padding bottom of the examples */}
               <Box style={{ whiteSpace: 'nowrap' }} mb="-6">
-                <Flex direction="column" className={styles.PlaygroundHeroContainer} mb="6">
+                <Flex direction="column" maxWidth="1000px" mb="6">
                   <Flex
                     justify="center"
                     position="relative"
-                    className={styles.PlaygroundHeroContent}
+                    py={{ initial: '7', xs: '9', sm: '100px' }}
                   >
                     <Flex
                       align="center"
