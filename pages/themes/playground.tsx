@@ -66,7 +66,7 @@ import {
   checkboxPropDefs,
   codePropDefs,
   contextMenuContentPropDefs,
-  dataListPropDefs,
+  dataListRootPropDefs,
   dropdownMenuContentPropDefs,
   headingPropDefs,
   hoverCardContentPropDefs,
@@ -82,7 +82,7 @@ import {
   selectTriggerPropDefs,
   sliderPropDefs,
   switchPropDefs,
-  tabNavPropDefs,
+  tabNavRootPropDefs,
   tableRootPropDefs,
   tabsListPropDefs,
   textAreaPropDefs,
@@ -94,7 +94,6 @@ import {
   ArrowRightIcon,
   CaretDownIcon,
   CubeIcon,
-  HomeIcon,
   InfoCircledIcon,
   MagnifyingGlassIcon,
   StarIcon,
@@ -1700,10 +1699,10 @@ export default function ComponentsPage() {
                   <Tabs.Trigger value="vertical">Vertical</Tabs.Trigger>
                 </Tabs.List>
 
-                {dataListPropDefs.orientation.values.map((orientation) => (
+                {dataListRootPropDefs.orientation.values.map((orientation) => (
                   <Tabs.Content value={orientation} key={orientation}>
                     <Flex mt="5">
-                      {dataListPropDefs.size.values.map((size, i) => (
+                      {dataListRootPropDefs.size.values.map((size, i) => (
                         <Box key={size} mr={`${64 + i * 16}px`}>
                           <Text
                             as="div"
@@ -2825,31 +2824,35 @@ export default function ComponentsPage() {
                           <tr key={variant}>
                             <td>{upperFirst(variant)}</td>
                             <td>
-                              <Progress width="160px" value={33 + 17 * index} variant={variant} />
-                            </td>
-                            <td>
                               <Progress
-                                width="160px"
                                 value={33 + 17 * index}
                                 variant={variant}
-                                highContrast
+                                style={{ width: 160 }}
                               />
                             </td>
                             <td>
                               <Progress
-                                width="160px"
                                 value={33 + 17 * index}
                                 variant={variant}
-                                color="gray"
+                                highContrast
+                                style={{ width: 160 }}
                               />
                             </td>
                             <td>
                               <Progress
-                                width="160px"
+                                value={33 + 17 * index}
+                                variant={variant}
+                                color="gray"
+                                style={{ width: 160 }}
+                              />
+                            </td>
+                            <td>
+                              <Progress
                                 value={33 + 17 * index}
                                 variant={variant}
                                 color="gray"
                                 highContrast
+                                style={{ width: 160 }}
                               />
                             </td>
                           </tr>
@@ -2880,19 +2883,19 @@ export default function ComponentsPage() {
                               <React.Fragment key={variant}>
                                 <td>
                                   <Progress
-                                    width="160px"
                                     value={30 + index * 2}
                                     color={color}
                                     variant={variant}
+                                    style={{ width: 160 }}
                                   />
                                 </td>
                                 <td>
                                   <Progress
-                                    width="160px"
                                     value={30 + index * 2}
                                     color={color}
                                     variant={variant}
                                     highContrast
+                                    style={{ width: 160 }}
                                   />
                                 </td>
                               </React.Fragment>
@@ -2932,11 +2935,11 @@ export default function ComponentsPage() {
                                   <td key={radius} style={{ textAlign: 'left' }}>
                                     <Flex align="center" justify="start" gap="4">
                                       <Progress
-                                        width="160px"
                                         value={33 + 17 * sizeIndex}
                                         size={size}
                                         variant={variant}
                                         radius={radius}
+                                        style={{ width: 160 }}
                                       />
                                     </Flex>
                                   </td>
@@ -4163,7 +4166,7 @@ export default function ComponentsPage() {
                 <Tabs.Content value="all-sizes">
                   <Box mt="6">
                     <Flex align="start" direction="column" gap="5">
-                      {tabNavPropDefs.size.values.map((size) => (
+                      {tabNavRootPropDefs.size.values.map((size) => (
                         <Flex align="center" gap="5" key={size}>
                           <Box width="64px">
                             <Text color="gray" size="1">
@@ -4961,8 +4964,8 @@ function ExampleTabs(props: React.ComponentPropsWithoutRef<typeof Tabs.List>) {
 }
 
 function ExampleDataList({
-  size = dataListPropDefs.size.default,
-  orientation = dataListPropDefs.orientation.default,
+  size = dataListRootPropDefs.size.default,
+  orientation = dataListRootPropDefs.orientation.default,
   ...props
 }: React.ComponentPropsWithoutRef<typeof DataList.Root>) {
   return (

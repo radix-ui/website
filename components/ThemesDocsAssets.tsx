@@ -16,8 +16,11 @@ import {
   Popover,
   ScrollArea,
   Section,
+  Skeleton,
   Slider,
+  Spinner,
   Strong,
+  Switch,
   Table,
   Text,
   TextField,
@@ -25,7 +28,7 @@ import {
 } from '@radix-ui/themes';
 import { Label } from '@radix-ui/react-label';
 import { allPeople } from './people';
-import { CheckIcon } from '@radix-ui/react-icons';
+import { CheckIcon, CubeIcon, EyeClosedIcon, EyeOpenIcon } from '@radix-ui/react-icons';
 import { Marker } from './Marker';
 import * as React from 'react';
 import { ThemesPanelBackgroundImage } from './ThemesPanelBackgroundImage';
@@ -1069,6 +1072,120 @@ function ThemesZIndexExampleRecursive() {
           <ThemesZIndexExampleRecursive />
         </Dialog.Content>
       </Dialog.Root>
+    </Flex>
+  );
+}
+
+export function ThemesBlogPostExampleSpinner() {
+  const [loading, setLoading] = React.useState(false);
+  return (
+    <Button
+      disabled={loading}
+      onClick={() => {
+        setLoading(true);
+        setTimeout(() => setLoading(false), 3000);
+      }}
+    >
+      <Spinner loading={loading}>
+        <CubeIcon />
+      </Spinner>
+      Create workspace
+    </Button>
+  );
+}
+
+export function ThemesBlogPostExampleSkeleton() {
+  const [isLoading, setIsLoading] = React.useState(true);
+  return (
+    <Flex
+      align="center"
+      justify="center"
+      position="relative"
+      my="5"
+      py={{ initial: '7', xs: '9', sm: '100px' }}
+      style={{
+        backgroundColor: 'var(--gray-a2)',
+        borderRadius: 'var(--radius-4)',
+      }}
+    >
+      <Box flexGrow="1" maxWidth="360px">
+        <Card variant="classic" size="4">
+          <Box height="40px" mb="4">
+            <Heading as="h3" size="6" mt="-1">
+              <Skeleton loading={isLoading}>Sign in</Skeleton>
+            </Heading>
+          </Box>
+
+          <Box mb="5">
+            <Flex direction="column">
+              <Text as="label" size="2" weight="medium" mb="2" htmlFor="email">
+                <Skeleton loading={isLoading}>Email address</Skeleton>
+              </Text>
+              <Skeleton loading={isLoading}>
+                <TextField.Root
+                  id={'skeleton-email'}
+                  type="email"
+                  variant="classic"
+                  placeholder="Enter your email"
+                />
+              </Skeleton>
+            </Flex>
+          </Box>
+
+          <Box mb="5" position="relative">
+            <Box position="absolute" top="0" right="0" style={{ marginTop: -2 }}>
+              {isLoading ? (
+                <Text size="2">
+                  <Skeleton loading>Forgot password?</Skeleton>
+                </Text>
+              ) : (
+                <Link size="2" href="#">
+                  Forgot password?
+                </Link>
+              )}
+            </Box>
+
+            <Flex direction="column">
+              <Text as="label" size="2" weight="medium" mb="2" htmlFor="password">
+                <Skeleton loading={isLoading}>Password</Skeleton>
+              </Text>
+              <Skeleton loading={isLoading}>
+                <TextField.Root
+                  id={'skeleton-password'}
+                  variant="classic"
+                  type="password"
+                  placeholder="Enter your password"
+                />
+              </Skeleton>
+            </Flex>
+          </Box>
+
+          <Flex mt="6" justify="end" gap="3">
+            <Skeleton loading={isLoading}>
+              <Button variant="surface" highContrast color="gray">
+                Cancel
+              </Button>
+            </Skeleton>
+            <Skeleton loading={isLoading}>
+              <Button variant="solid" type="submit">
+                Sign in
+              </Button>
+            </Skeleton>
+          </Flex>
+        </Card>
+      </Box>
+
+      <Flex justify="center" position="absolute" bottom="4">
+        <Button
+          size="1"
+          radius="full"
+          color="gray"
+          variant="surface"
+          onClick={() => setIsLoading((value) => !value)}
+        >
+          Toggle loading
+        </Button>
+      </Flex>
     </Flex>
   );
 }

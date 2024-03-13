@@ -17,18 +17,7 @@ const Link = ({ href = '', ...props }) => {
 };
 
 const {
-  // single props
-  alignProp,
-  colorProp,
-  highContrastProp,
-  inheritedColorProp,
-  radiusProp,
-  textWrapProp,
-  trimProp,
-  truncateProp,
-  weightProp,
-
-  // arrays
+  // values
   accentColors,
   accentColorsGrouped,
   breakpoints,
