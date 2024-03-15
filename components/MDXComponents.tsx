@@ -92,7 +92,7 @@ export const components = {
       <h4 children={children} style={{ scrollMarginTop: 'var(--space-9)' }} />
     </Heading>
   ),
-  p: (props) => <Text mb="3" as="p" size="3" {...props} />,
+  p: (props) => <Text mb="4" as="p" size="3" {...props} />,
   a: ({ href = '', children, ...props }) => {
     if (href.startsWith('http')) {
       return (

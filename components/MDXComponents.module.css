@@ -20,7 +20,7 @@
   padding-left: var(--space-4);
   list-style-type: circle;
   margin-top: 0;
-  margin-bottom: var(--space-4);
+  margin-bottom: calc(var(--space-4) + var(--space-1));
 }
 
 .List .List {
@@ -29,7 +29,7 @@
 }
 
 p + .List {
-  margin-top: calc(-1 * var(--space-2));
+  margin-top: calc(-1 * var(--space-1));
 }
 
 .Blockquote {

@@ -1,44 +1,180 @@
 ---
 metaTitle: Radix Themes 3.0
-metaDescription: New layout engine, 11 new components, and brand color generator
+metaDescription: New layout engine, new dashboard components, and brand color generator
 ---
 
 # Radix Themes 3.0
 
 <Description>
-  New layout engine, 11 new components, and brand color generator.
+  New layout engine, new dashboard components, and brand color generator.
 </Description>
 
 ## Introduction
 
 Radix Themes 3.0 just landed. This release is big leap towards making Radix Themes the best component library for building modern SaaS apps.
 
-## What is Radix Themes?
+We’ll present the main highlights in this post. The complete changelog is available on the [Radix website](/themes/docs/overview/releases#300).
 
-Radix Themes is an open source system of opinionated, pre-built components and design tokens that developers use to build React apps. Exceptional component API design and advanced visual design distinguish Radix Themes from other component libraries. It’s easy to get started, and just as easy to maintain a project built with Radix Themes.
+## Brand color generator
 
-{<img src="https://workos.imgix.net/images/bc42caea-bfe8-4e91-b093-1fe3ff771382.png?auto=format&fit=clip&q=80" />}
+Radix Themes comes with almost 30 color scales, each with their own light, dark and alpha variants. Under the hood, the color system is powered by [Radix Colors](/colors).
 
-Radix Themes is customised via [Theme](/themes/docs/theme/overview) configuration, underlying design tokens, and by building your own components on top of the same building blocks that the library itself is built upon. Naturally, WorkOS product UIs use Radix Themes, which makes it battle-tested in a demanding environment with thousands of users.
+<Box mt="6" mb="7">
+  <ThemesAccentSwatches />
+</Box>
+
+Today, we are introducing a tool to create your own brand palette. It’s a simple interface that lets you specify a primary color, a gray color, and your page background, which then creates a color configuration to copy-paste into your theme styles.
+
+## New components
+
+Radix Themes 3.0 introduces a number of new components for building dashboards and data-heavy interfaces. They are built and designed with the level of rigor and care that you’ve come to expect from Radix, and as usual, they are accessible to keyboard and screen reader users. Here’s a quick overview of the main highlights.
+
+### Spinner
+
+Spinner is a simple animated loading indicator:
+
+```jsx live=true
+<Spinner />
+```
+
+In the Radix version, it comes with an intuitive API to conditionally render its children when they are done loading. Consider the following example:
+
+<ThemesBlogPostExampleSpinner />
+
+```jsx
+// Inside the button:
+<Spinner loading={loading}>
+  <CubeIcon />
+</Spinner>
+```
+
+The implementation looks effortless—the way it should be. Spinner preserves child dimensions while the data is being fetched, so there is no layout shift between the states. This is an ergonomic way to handle loading states in your app because it minimizes the amount of code branching needed in common situations.
+
+### Skeleton
+
+Skeleton is another loading component in this release:
+
+```jsx live=true
+<Skeleton>
+  <Button radius="full">Button</Button>
+</Skeleton>
+```
+
+Skeleton has a similar API to Spinner, but it also fully adopts the shape and size of child components, so you can build the skeleton interface using exactly the same layout that you’d use in the real one:
+
+<ThemesBlogPostExampleSkeleton />
+
+### Segmented Control
+
+Segmented Control carries a familiar design for toggle buttons that switch between values:
+
+<ThemesBlogPostExampleSegmentedControl />
+
+Segmented Control packs many details that were crafted to be invisible. For example, a bolder font weight is used on the active item, yet there is no layout shift, and the animation is dialled in so that even the font weight change transitions smoothly. Here’s the same demo slowed down:
+
+<ThemesBlogPostExampleSegmentedControlAnimated />
+
+### Data List
+
+[Data List](/themes/docs/components/data-list) is a component for displaying a list of key-value pairs:
+
+<ThemesBlogPostExampleDataList />
+
+What’s special about Data List? It is a common pattern that is deceptively tricky to get right. We had to put together a [secret page](https://themes-playground-modulz.vercel.app/test-data-list) with all the different layout combinations as we designed for:
+
+- Values of varied length
+- Consistent rhythm between mixed height items
+- Configurable alignment of the label and value
+- Common layout compositions within
+- Leading trim
+
+### Reset
+
+Unlike others, [Reset](/themes/docs/components/reset) is an invisible component:
+
+```jsx live=true
+<Reset>
+  <button>Button</button>
+</Reset>
+```
+
+Reset removes default browser styles from any HTML tag and sets idiomatic layout defaults so that you can build your custom components on top of it.
+
+In most interfaces, these styles are global and affect the entire app, so that tends to be a compromise between removing as much as possible and retaining common defaults. Reset puts a new spin on the ergonomics of the normalization styles that almost any website needs.
+
+### Radio Cards
+
+[Radio Cards](/themes/docs/components/radio-cards) is a common pattern for picking a single value out of multiple. They are used for visually engaing forms where each options gets more weight compared to a regular radio button:
+
+<ThemesBlogPostExampleArea>
+  <Box width="600px">
+    <RadioCardGroup.Root defaultValue="1" columns="3">
+      <RadioCardGroup.Item value="1">
+        <Flex direction="column" width="100%">
+          <Text weight="bold">8-core CPU</Text>
+          <Text>32 GB RAM</Text>
+        </Flex>
+      </RadioCardGroup.Item>
+      <RadioCardGroup.Item value="2">
+        <Flex direction="column" width="100%">
+          <Text weight="bold">6-core CPU</Text>
+          <Text>24 GB RAM</Text>
+        </Flex>
+      </RadioCardGroup.Item>
+      <RadioCardGroup.Item value="3">
+        <Flex direction="column" width="100%">
+          <Text weight="bold">4-core CPU</Text>
+          <Text>16 GB RAM</Text>
+        </Flex>
+      </RadioCardGroup.Item>
+    </RadioCardGroup.Root>
+  </Box>
+</ThemesBlogPostExampleArea>
+
+### Checkbox Cards
+
+[Checkbox Cards](/themes/docs/components/checkbox-cards) are similar to Radio Cards, but are used for picking multiple values:
+
+<ThemesBlogPostExampleArea>
+  <Box width="600px">
+    <CheckboxCardGroup.Root defaultValue={['1']} columns="3">
+      <CheckboxCardGroup.Item value="1">
+        <Flex direction="column" width="100%">
+          <Text weight="bold">A1 Keyboard</Text>
+          <Text>US Layout</Text>
+        </Flex>
+      </CheckboxCardGroup.Item>
+      <CheckboxCardGroup.Item value="2">
+        <Flex direction="column" width="100%">
+          <Text weight="bold">Pro Mouse</Text>
+          <Text>Zero-lag wireless</Text>
+        </Flex>
+      </CheckboxCardGroup.Item>
+      <CheckboxCardGroup.Item value="3">
+        <Flex direction="column" width="100%">
+          <Text weight="bold">Lightning Mat</Text>
+          <Text>Wireless charging</Text>
+        </Flex>
+      </CheckboxCardGroup.Item>
+    </CheckboxCardGroup.Root>
+  </Box>
+</ThemesBlogPostExampleArea>
+
+### Progress
+
+[Progress](/themes/docs/components/progress) is yet another loading component. It can be used to indicate the progress of a task, or use an ambiguous animation to indicate indeterminate progress:
+
+<ThemesBlogPostExampleProgress />
+
+### Tab Nav
+
+[Tab Nav](/themes/docs/components/tab-nav) is a component for navigating to a different view. It complements its lookalike [Tabs](/themes/docs/components/tabs) sibling, but it is built on top of the Navigation Menu primitive which provides screen reader accessibility and keyboard navigation tailored to links.
+
+<ThemesBlogPostExampleTabNav baseUrl="/themes/docs/overview/3.0" />
 
 ## New layout engine
 
-This release brings a new layout engine to Radix Themes that makes layout components and their props more powerful and easier to use.
-
-{
-
-<Flex
-  align="center"
-  justify="center"
-  height="300px"
-  style={{ backgroundColor: 'var(--gray-a2)' }}
->
-  <Text size="2" color="gray">
-    Layout engine image
-  </Text>
-</Flex>
-
-}
+A new layout engine makes layout components and their props more powerful and easier to use.
 
 Layout components are a cornerstone feature of Radix Themes. There’s just five of them—[Box](/themes/docs/components/box), [Flex](/themes/docs/components/flex), [Grid](/themes/docs/components/grid), [Section](/themes/docs/components/section), and [Container](/themes/docs/components/section). These components are used to separate layout responsibilities from content and interactivity. This is _the_ separation of concerns that makes apps maintainable and easy to reason about, and understanding these principles is key to building interfaces effectively.
 
@@ -100,3 +236,87 @@ If you want to use _just_ the layout component from Radix Themes, that’s also 
 ```jsx
 import '@radix-ui/themes/layout.css';
 ```
+
+## ESM ecosystem support
+
+Frameworks like Remix and Astro are configured to use ESM by default. In Radix Themes 3.0, we have revisited the way that the library is built and configured to ensure that it is supported in ESM environments out of the box.
+
+Radix Themes distribution is a _hybrid_ ESM/CommonJS package. Depending on your setup, your import resolver will now pick the right version automatically.
+
+---
+
+### How dual distributions work
+
+To use Radix Themes, you don’t need to understand the problems of the ESM/CommonJS duality. However, read on if you want to know how the hybrid configuration works under the hood. This may be helpful when building your own packages or debugging issues with your dependencies.
+
+When creating a hybrid package, you’ll compile two versions of your code: one for an ESM environment, and one for CommonJS. Most build tools can easily do this. The problems start when you need to “explain” to the target environment which version is which.
+
+There’s a couple of techniques that may be used to indicate whether a module is ESM or CJS:
+
+- Use conditional `package.json` exports field
+- Rely on `.mjs` and `.cjs` extensions to indicate ESM or CJS code
+- Use the `type` field in your `package.json` to indicate how `.js` files should be interpreted
+
+### The problem with conditional exports
+
+On the surface, the `exports` field in `package.json` seems to be a straightforward solution to the task. Supposedly, you’d compile the code into two directories, and then use the `import` and `require` statements to point to the right version of the code:
+
+```json
+{
+  "exports": {
+    "require": "./dist/cjs/index.js",
+    "import": "./dist/esm/index.js"
+  }
+}
+```
+
+You can even add the `types` field to the `exports` field to ensure that TypeScript works correctly:
+
+```json
+{
+  "exports": {
+    "require": {
+      "types": "./dist/cjs/index.d.ts",
+      "default": "./dist/cjs/index.js"
+    },
+    "import": {
+      "types": "./dist/esm/index.d.ts",
+      "default": "./dist/esm/index.js"
+    }
+  }
+}
+```
+
+This works fine if all of the package code is bundled into those `index.js` files and there are no internal submodules. It makes sense for a package that would do just one thing, when all of its code can be naturally bundled into a single file.
+
+However, a package like Radix Themes exports many components, and each export must be from a separate file. This requirement makes it possible to tree-shake the package, so that instead of importing the entire library, your build tool may be able to import just the code you used.
+
+This is where the conditional `exports` field fails. Unintuitively, it describes just whether a particular _entry point_ of the package is ESM or CJS. Past the entry point, `.js` files imported within the package will be interpreted according to the `type` field in `package.json`.
+
+### The problem with file extensions
+
+Because `.js` files are ambiguous, `.mjs` and `.cjs` extensions were introduced to explicitly indicate whether code is ESM or CJS.
+
+Supposedly, you’d rename all the `.js` files in the distribution to `.mjs` and `.cjs`. Then, all the `import` and `require` statements inside of the package need to be patched up to point to the right file. It’s doable, but it’s about as fun as it sounds. On top of that, the `.mjs` extension is not as widely supported by certain toolchains, which a quick search for GitHub issues easily confirms.
+
+### The magic of the `type` field
+
+According to [Node.js docs](https://nodejs.org/api/packages.html#type), the `type` field in `package.json` defines whether `.js` files are interpreted as ESM or CJS.
+
+If you piece that together with how conditional exports work and that you may have additional `package.json` files within the internal folders of a package, you can create a hybrid package that works in both ESM and CJS environments. Altogether, here’s what worked for Radix Themes:
+
+- Set the root `package.json` to the explicit `"type": "commonjs"` value
+- Add a separate `package.json` to the ESM distribution folder with `"type": "module"` value
+- Use the conditional `exports` field to point to the CJS and ESM entry points
+
+This way, the package will work in both ESM and CJS environments. No `.mjs` or `.cjs` extensions are needed, and the package is tree-shakeable.
+
+## @ Removed
+
+### What is Radix Themes?
+
+Radix Themes is an open source system of opinionated, pre-built components and design tokens that developers use to build React apps. Exceptional component API design and advanced visual design distinguish Radix Themes from other component libraries. It’s easy to get started, and just as easy to maintain a project built with Radix Themes.
+
+{<img src="https://workos.imgix.net/images/bc42caea-bfe8-4e91-b093-1fe3ff771382.png?auto=format&fit=clip&q=80" />}
+
+Radix Themes is customised via [Theme](/themes/docs/theme/overview) configuration, underlying design tokens, and by building your own components on top of the same building blocks that the library itself is built upon. Naturally, WorkOS product UIs use Radix Themes, which makes it battle-tested in a demanding environment with thousands of users.
