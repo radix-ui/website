@@ -11,7 +11,7 @@ import {
   Callout,
   Card,
   Checkbox,
-  CheckboxCardGroup,
+  CheckboxCards,
   CheckboxGroup,
   Code,
   ContextMenu,
@@ -31,7 +31,7 @@ import {
   Progress,
   Quote,
   Radio,
-  RadioCardGroup,
+  RadioCards,
   RadioGroup,
   ScrollArea,
   Section,
@@ -61,7 +61,7 @@ import {
   buttonPropDefs,
   calloutRootPropDefs,
   cardPropDefs,
-  checkboxCardGroupRootPropDefs,
+  checkboxCardsRootPropDefs,
   checkboxGroupRootPropDefs,
   checkboxPropDefs,
   codePropDefs,
@@ -74,7 +74,7 @@ import {
   kbdPropDefs,
   linkPropDefs,
   progressPropDefs,
-  radioCardGroupRootPropDefs,
+  radioCardsRootPropDefs,
   radioGroupRootPropDefs,
   radioPropDefs,
   segmentedControlRootPropDefs,
@@ -1307,23 +1307,19 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {checkboxCardGroupRootPropDefs.variant.values.map((variant) => (
+                        {checkboxCardsRootPropDefs.variant.values.map((variant) => (
                           <tr key={variant}>
                             <td>{upperFirst(variant)}</td>
                             <td>
                               <Flex direction="column" width="280px" gap="4" mx="2" mb="4">
-                                <ExampleCheckboxCardGroup variant={variant} />
-                                <ExampleCheckboxCardGroup variant={variant} highContrast />
+                                <ExampleCheckboxCards variant={variant} />
+                                <ExampleCheckboxCards variant={variant} highContrast />
                               </Flex>
                             </td>
                             <td>
                               <Flex direction="column" width="280px" gap="4" mx="2" mb="4">
-                                <ExampleCheckboxCardGroup color="gray" variant={variant} />
-                                <ExampleCheckboxCardGroup
-                                  color="gray"
-                                  variant={variant}
-                                  highContrast
-                                />
+                                <ExampleCheckboxCards color="gray" variant={variant} />
+                                <ExampleCheckboxCards color="gray" variant={variant} highContrast />
                               </Flex>
                             </td>
                           </tr>
@@ -1339,7 +1335,7 @@ export default function ComponentsPage() {
                       <thead>
                         <tr>
                           <th />
-                          {checkboxCardGroupRootPropDefs.variant.values.map((variant) => (
+                          {checkboxCardsRootPropDefs.variant.values.map((variant) => (
                             <th key={variant}>{upperFirst(variant)}</th>
                           ))}
                         </tr>
@@ -1348,14 +1344,14 @@ export default function ComponentsPage() {
                         {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
-                            {checkboxCardGroupRootPropDefs.variant.values.map((variant) => (
+                            {checkboxCardsRootPropDefs.variant.values.map((variant) => (
                               <td key={variant}>
                                 <Flex align="center" justify="center" gap="5" mx="2">
                                   <Box width="280px">
-                                    <ExampleCheckboxCardGroup color={color} variant={variant} />
+                                    <ExampleCheckboxCards color={color} variant={variant} />
                                   </Box>
                                   <Box width="280px">
-                                    <ExampleCheckboxCardGroup
+                                    <ExampleCheckboxCards
                                       color={color}
                                       variant={variant}
                                       highContrast
@@ -1377,7 +1373,7 @@ export default function ComponentsPage() {
                       <thead>
                         <tr>
                           <th />
-                          {checkboxCardGroupRootPropDefs.variant.values.map((variant) => (
+                          {checkboxCardsRootPropDefs.variant.values.map((variant) => (
                             <th key={variant} style={{ textAlign: 'left' }}>
                               {upperFirst(variant)}
                             </th>
@@ -1385,13 +1381,13 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {checkboxCardGroupRootPropDefs.size.values.map((size) => (
+                        {checkboxCardsRootPropDefs.size.values.map((size) => (
                           <tr key={size}>
                             <td>Size {size}</td>
-                            {checkboxCardGroupRootPropDefs.variant.values.map((variant) => (
+                            {checkboxCardsRootPropDefs.variant.values.map((variant) => (
                               <td key={variant} style={{ textAlign: 'left' }}>
                                 <Box width={`${160 + +size * 60}px`} mr="5" my="1">
-                                  <ExampleCheckboxCardGroup variant={variant} size={size} />
+                                  <ExampleCheckboxCards variant={variant} size={size} />
                                 </Box>
                               </td>
                             ))}
@@ -3172,23 +3168,19 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {radioCardGroupRootPropDefs.variant.values.map((variant) => (
+                        {radioCardsRootPropDefs.variant.values.map((variant) => (
                           <tr key={variant}>
                             <td>{upperFirst(variant)}</td>
                             <td>
                               <Flex direction="column" width="280px" gap="4" mx="2" mb="4">
-                                <ExampleRadioCardGroup variant={variant} />
-                                <ExampleRadioCardGroup variant={variant} highContrast />
+                                <ExampleRadioCards variant={variant} />
+                                <ExampleRadioCards variant={variant} highContrast />
                               </Flex>
                             </td>
                             <td>
                               <Flex direction="column" width="280px" gap="4" mx="2" mb="4">
-                                <ExampleRadioCardGroup color="gray" variant={variant} />
-                                <ExampleRadioCardGroup
-                                  color="gray"
-                                  variant={variant}
-                                  highContrast
-                                />
+                                <ExampleRadioCards color="gray" variant={variant} />
+                                <ExampleRadioCards color="gray" variant={variant} highContrast />
                               </Flex>
                             </td>
                           </tr>
@@ -3204,7 +3196,7 @@ export default function ComponentsPage() {
                       <thead>
                         <tr>
                           <th />
-                          {radioCardGroupRootPropDefs.variant.values.map((variant) => (
+                          {radioCardsRootPropDefs.variant.values.map((variant) => (
                             <th key={variant}>{upperFirst(variant)}</th>
                           ))}
                         </tr>
@@ -3213,14 +3205,14 @@ export default function ComponentsPage() {
                         {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
-                            {radioCardGroupRootPropDefs.variant.values.map((variant) => (
+                            {radioCardsRootPropDefs.variant.values.map((variant) => (
                               <td key={variant}>
                                 <Flex align="center" justify="center" gap="5" mx="2">
                                   <Box width="280px">
-                                    <ExampleRadioCardGroup color={color} variant={variant} />
+                                    <ExampleRadioCards color={color} variant={variant} />
                                   </Box>
                                   <Box width="280px">
-                                    <ExampleRadioCardGroup
+                                    <ExampleRadioCards
                                       color={color}
                                       variant={variant}
                                       highContrast
@@ -3242,7 +3234,7 @@ export default function ComponentsPage() {
                       <thead>
                         <tr>
                           <th />
-                          {radioCardGroupRootPropDefs.variant.values.map((variant) => (
+                          {radioCardsRootPropDefs.variant.values.map((variant) => (
                             <th key={variant} style={{ textAlign: 'left' }}>
                               {upperFirst(variant)}
                             </th>
@@ -3250,13 +3242,13 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {radioCardGroupRootPropDefs.size.values.map((size) => (
+                        {radioCardsRootPropDefs.size.values.map((size) => (
                           <tr key={size}>
                             <td>Size {size}</td>
-                            {radioCardGroupRootPropDefs.variant.values.map((variant) => (
+                            {radioCardsRootPropDefs.variant.values.map((variant) => (
                               <td key={variant} style={{ textAlign: 'left' }}>
                                 <Box width={`${160 + +size * 60}px`} mr="5" my="1">
-                                  <ExampleRadioCardGroup variant={variant} size={size} />
+                                  <ExampleRadioCards variant={variant} size={size} />
                                 </Box>
                               </td>
                             ))}
@@ -4911,29 +4903,27 @@ function ExampleContextMenuContent() {
   );
 }
 
-function ExampleCheckboxCardGroup(
-  props: React.ComponentPropsWithoutRef<typeof CheckboxCardGroup.Root>
-) {
+function ExampleCheckboxCards(props: React.ComponentPropsWithoutRef<typeof CheckboxCards.Root>) {
   return (
-    <CheckboxCardGroup.Root columns="2" defaultValue={['1']} {...props}>
-      <CheckboxCardGroup.Item value="1">Next.js</CheckboxCardGroup.Item>
-      <CheckboxCardGroup.Item value="2">Remix</CheckboxCardGroup.Item>
-    </CheckboxCardGroup.Root>
+    <CheckboxCards.Root columns="2" defaultValue={['1']} {...props}>
+      <CheckboxCards.Item value="1">Next.js</CheckboxCards.Item>
+      <CheckboxCards.Item value="2">Remix</CheckboxCards.Item>
+    </CheckboxCards.Root>
   );
 }
 
-function ExampleRadioCardGroup(props: React.ComponentPropsWithoutRef<typeof RadioCardGroup.Root>) {
+function ExampleRadioCards(props: React.ComponentPropsWithoutRef<typeof RadioCards.Root>) {
   return (
-    <RadioCardGroup.Root columns="2" defaultValue="1" {...props}>
-      <RadioCardGroup.Item value="1">
+    <RadioCards.Root columns="2" defaultValue="1" {...props}>
+      <RadioCards.Item value="1">
         <VercelLogoIcon />
         Next.js
-      </RadioCardGroup.Item>
-      <RadioCardGroup.Item value="2">
+      </RadioCards.Item>
+      <RadioCards.Item value="2">
         <CubeIcon />
         Remix
-      </RadioCardGroup.Item>
-    </RadioCardGroup.Root>
+      </RadioCards.Item>
+    </RadioCards.Root>
   );
 }
 
