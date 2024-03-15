@@ -15,7 +15,9 @@ Radix Themes 3.0 just landed. This release is big leap towards making Radix Them
 
 We’ll present the main highlights in this post. The complete changelog is available on the [Radix website](/themes/docs/overview/releases#300).
 
-## Brand color generator
+---
+
+## Brand colors
 
 Radix Themes comes with almost 30 color scales, each with their own light, dark and alpha variants. Under the hood, the color system is powered by [Radix Colors](/colors).
 
@@ -24,6 +26,8 @@ Radix Themes comes with almost 30 color scales, each with their own light, dark 
 </Box>
 
 Today, we are introducing a tool to create your own brand palette. It’s a simple interface that lets you specify a primary color, a gray color, and your page background, which then creates a color configuration to copy-paste into your theme styles.
+
+---
 
 ## New components
 
@@ -172,6 +176,8 @@ In most interfaces, these styles are global and affect the entire app, so that t
 
 <ThemesBlogPostExampleTabNav baseUrl="/themes/docs/overview/3.0" />
 
+---
+
 ## New layout engine
 
 A new layout engine makes layout components and their props more powerful and easier to use.
@@ -237,13 +243,13 @@ If you want to use _just_ the layout component from Radix Themes, that’s also 
 import '@radix-ui/themes/layout.css';
 ```
 
+---
+
 ## ESM ecosystem support
 
 Frameworks like Remix and Astro are configured to use ESM by default. In Radix Themes 3.0, we have revisited the way that the library is built and configured to ensure that it is supported in ESM environments out of the box.
 
 Radix Themes distribution is a _hybrid_ ESM/CommonJS package. Depending on your setup, your import resolver will now pick the right version automatically.
-
----
 
 ### How dual distributions work
 
