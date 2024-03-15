@@ -11,13 +11,11 @@ metaDescription: New layout engine, new dashboard components, and brand color g
 
 ## Introduction
 
-Radix Themes 3.0 just landed. This release is big leap towards making Radix Themes the best component library for building modern SaaS apps.
-
-We’ll present the main highlights in this post. The complete changelog is available on the [Radix website](/themes/docs/overview/releases#300).
+Radix Themes 3.0 just landed. This release is big leap towards making Radix Themes the best component library for building modern SaaS apps. We’ll present the main highlights in this post. The complete changelog and a migration guide are available in the [release notes](/themes/docs/overview/releases#300).
 
 ---
 
-## Brand colors
+## Brand color generator
 
 Radix Themes comes with almost 30 color scales, each with their own light, dark and alpha variants. Under the hood, the color system is powered by [Radix Colors](/colors).
 
@@ -25,7 +23,17 @@ Radix Themes comes with almost 30 color scales, each with their own light, dark 
   <ThemesAccentSwatches />
 </Box>
 
-Today, we are introducing a tool to create your own brand palette. It’s a simple interface that lets you specify a primary color, a gray color, and your page background, which then creates a color configuration to copy-paste into your theme styles.
+Today, we are introducing a color tool to create your own brand palette for Radix Themes. It’s a simple interface that lets you specify a primary color, a gray color, and your page background, which then creates a color configuration to copy-paste into your theme styles.
+
+<Text as="div" align="center" my="6">
+  <NextLink href="/colors/create-your-palette">
+    <img
+      src="https://workos.imgix.net/images/d102af28-90e3-4a7d-8ab9-3b50a7af9c04.png?auto=format&fit=clip&q=80"
+      style={{ borderRadius: 'var(--radius-4)', width: '100%' }}
+    />
+  </NextLink>
+  {<a href="/colors/create-your-palette">Create your palette →</a>}
+</Text>
 
 ---
 
@@ -317,7 +325,11 @@ If you piece that together with how conditional exports work and that you may ha
 
 This way, the package will work in both ESM and CJS environments. No `.mjs` or `.cjs` extensions are needed, and the package is tree-shakeable.
 
-## @ Removed
+---
+
+## @Redacted
+
+This is not going to be a part of the post, but could be a useful piece of copy-pasta for the communication around this post
 
 ### What is Radix Themes?
 

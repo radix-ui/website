@@ -124,9 +124,9 @@ export const components = {
   ),
   em: Em,
   strong: Strong,
-  img: ({ ...props }) => (
+  img: ({ style, ...props }) => (
     <Box my="6">
-      <img {...props} style={{ maxWidth: '100%', verticalAlign: 'middle' }} />
+      <img {...props} style={{ maxWidth: '100%', verticalAlign: 'middle', ...style }} />
     </Box>
   ),
   blockquote: Blockquote,
@@ -157,6 +157,7 @@ export const components = {
       <code className={className} {...props} data-invert-line-highlight={line !== undefined} />
     );
   },
+  NextLink,
   Note: ({ children, ...props }) => (
     <Box className={styles.Note} asChild my="2" {...props}>
       <aside children={children} />
