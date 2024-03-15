@@ -110,7 +110,7 @@ import Head from 'next/head';
 import { ThemesMobileMenu } from '@components/ThemesMobileMenu';
 import { AvatarIconFallback } from '@components/AvatarIconFallback';
 import { RemoveScroll } from 'react-remove-scroll';
-import TabNavDemo from './tab-nav-demo';
+import TabNavDemo from '@components/tab-nav-demo';
 
 export default function ComponentsPage() {
   const { systemTheme, setTheme } = useTheme();
@@ -3782,6 +3782,14 @@ export default function ComponentsPage() {
             </PlaygroundSection>
 
             <PlaygroundSection>
+              <PlaygroundSectionTitle id="strong">Strong</PlaygroundSectionTitle>
+
+              <Text as="p" size="3">
+                The most important thing to remember is, <Strong>stay positive</Strong>.
+              </Text>
+            </PlaygroundSection>
+
+            <PlaygroundSection>
               <PlaygroundSectionTitle id="switch">Switch</PlaygroundSectionTitle>
               <Tabs.Root defaultValue="theme-colors">
                 <Tabs.List size="2">
@@ -4130,16 +4138,16 @@ export default function ComponentsPage() {
                         <Text color="gray" size="1" mb="2">
                           Accent
                         </Text>
-                        <TabNavDemo mb="5" />
-                        <TabNavDemo highContrast />
+                        <TabNavDemo baseUrl="/themes/playground" mb="5" />
+                        <TabNavDemo baseUrl="/themes/playground" highContrast />
                       </Flex>
 
                       <Flex align="center" direction="column">
                         <Text color="gray" size="1" mb="2">
                           Gray
                         </Text>
-                        <TabNavDemo color="gray" mb="5" />
-                        <TabNavDemo color="gray" highContrast />
+                        <TabNavDemo baseUrl="/themes/playground" color="gray" mb="5" />
+                        <TabNavDemo baseUrl="/themes/playground" color="gray" highContrast />
                       </Flex>
                     </Flex>
                   </Box>
@@ -4155,8 +4163,8 @@ export default function ComponentsPage() {
                               {upperFirst(color)}
                             </Text>
                           </Box>
-                          <TabNavDemo color={color} />
-                          <TabNavDemo color={color} highContrast />
+                          <TabNavDemo baseUrl="/themes/playground" color={color} />
+                          <TabNavDemo baseUrl="/themes/playground" color={color} highContrast />
                         </Flex>
                       ))}
                     </Flex>
@@ -4173,7 +4181,7 @@ export default function ComponentsPage() {
                               Size {size}
                             </Text>
                           </Box>
-                          <TabNavDemo size={size} />
+                          <TabNavDemo baseUrl="/themes/playground" size={size} />
                         </Flex>
                       ))}
                     </Flex>

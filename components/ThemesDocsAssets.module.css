@@ -1,0 +1,17 @@
+.SegmentedControlDemo {
+  --segmented-control-transition-duration: 1s;
+  pointer-events: none;
+}
+
+/* Safari */
+@supports (zoom: 2) {
+  .SegmentedControlDemo {
+    zoom: 2;
+  }
+}
+
+@supports not (zoom: 2) {
+  .SegmentedControlDemo {
+    transform: scale(2);
+  }
+}

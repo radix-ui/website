@@ -1,12 +1,15 @@
 import {
   Avatar,
+  Badge,
   Box,
   Button,
   Card,
   Checkbox,
   Code,
   Container,
+  DataList,
   Dialog,
+  Em,
   Flex,
   Grid,
   Heading,
@@ -14,13 +17,14 @@ import {
   Inset,
   Link,
   Popover,
+  Progress,
   ScrollArea,
   Section,
+  SegmentedControl,
   Skeleton,
   Slider,
   Spinner,
   Strong,
-  Switch,
   Table,
   Text,
   TextField,
@@ -28,11 +32,13 @@ import {
 } from '@radix-ui/themes';
 import { Label } from '@radix-ui/react-label';
 import { allPeople } from './people';
-import { CheckIcon, CubeIcon, EyeClosedIcon, EyeOpenIcon } from '@radix-ui/react-icons';
+import { CheckIcon, CopyIcon, CubeIcon, Half2Icon, PlayIcon } from '@radix-ui/react-icons';
 import { Marker } from './Marker';
 import * as React from 'react';
 import { ThemesPanelBackgroundImage } from './ThemesPanelBackgroundImage';
 import { accentColors, themePropDefs } from '@lib/themes/props';
+import { TabNavDemo } from '@components/tab-nav-demo';
+import styles from './ThemesDocsAssets.module.css';
 
 export function ThemesPanelCardExample({ panelBackground }) {
   return (
@@ -1076,39 +1082,55 @@ function ThemesZIndexExampleRecursive() {
   );
 }
 
+export function ThemesBlogPostExampleArea({
+  style,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof Flex>) {
+  return (
+    <Flex
+      my="5"
+      py="7"
+      direction="column"
+      align="center"
+      justify="center"
+      minHeight="240px"
+      position="relative"
+      style={{
+        backgroundColor: 'var(--color-panel)',
+        boxShadow: 'inset 0 0 0 1px var(--gray-a5)',
+        borderRadius: 'var(--radius-4)',
+        ...style,
+      }}
+      {...props}
+    />
+  );
+}
+
 export function ThemesBlogPostExampleSpinner() {
   const [loading, setLoading] = React.useState(false);
   return (
-    <Button
-      disabled={loading}
-      onClick={() => {
-        setLoading(true);
-        setTimeout(() => setLoading(false), 3000);
-      }}
-    >
-      <Spinner loading={loading}>
-        <CubeIcon />
-      </Spinner>
-      Create workspace
-    </Button>
+    <ThemesBlogPostExampleArea>
+      <Button
+        disabled={loading}
+        onClick={() => {
+          setLoading(true);
+          setTimeout(() => setLoading(false), 3000);
+        }}
+      >
+        <Spinner loading={loading}>
+          <CubeIcon />
+        </Spinner>
+        Create workspace
+      </Button>
+    </ThemesBlogPostExampleArea>
   );
 }
 
 export function ThemesBlogPostExampleSkeleton() {
   const [isLoading, setIsLoading] = React.useState(true);
   return (
-    <Flex
-      align="center"
-      justify="center"
-      position="relative"
-      my="5"
-      py={{ initial: '7', xs: '9', sm: '100px' }}
-      style={{
-        backgroundColor: 'var(--gray-a2)',
-        borderRadius: 'var(--radius-4)',
-      }}
-    >
-      <Box flexGrow="1" maxWidth="360px">
+    <ThemesBlogPostExampleArea>
+      <Box width="100%" maxWidth="360px">
         <Card variant="classic" size="4">
           <Box height="40px" mb="4">
             <Heading as="h3" size="6" mt="-1">
@@ -1175,17 +1197,178 @@ export function ThemesBlogPostExampleSkeleton() {
         </Card>
       </Box>
 
+      <Box mb="6">
+        <Flex justify="center" position="absolute" bottom="4" left="0" right="0">
+          <Button
+            size="1"
+            color="gray"
+            radius="full"
+            variant="surface"
+            onClick={() => setIsLoading((value) => !value)}
+          >
+            <Half2Icon
+              width="13"
+              height="13"
+              style={{ transform: isLoading ? 'scaleX(-1)' : undefined }}
+            />
+            Toggle loading
+          </Button>
+        </Flex>
+      </Box>
+    </ThemesBlogPostExampleArea>
+  );
+}
+
+export function ThemesBlogPostExampleSegmentedControl() {
+  return (
+    <ThemesBlogPostExampleArea>
+      <SegmentedControl.Root defaultValue="1" variant="classic">
+        <SegmentedControl.Item value="1">Inbox</SegmentedControl.Item>
+        <SegmentedControl.Item value="2">Drafts</SegmentedControl.Item>
+        <SegmentedControl.Item value="3">Sent</SegmentedControl.Item>
+      </SegmentedControl.Root>
+    </ThemesBlogPostExampleArea>
+  );
+}
+
+export function ThemesBlogPostExampleSegmentedControlAnimated() {
+  const [value, setValue] = React.useState('1');
+  const previousValueRef = React.useRef(value);
+  const timeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
+
+  React.useEffect(() => {
+    if (value === '1') {
+      timeoutRef.current = setTimeout(() => setValue('2'), 2000);
+    }
+
+    if (value === '2' && previousValueRef.current === '1') {
+      timeoutRef.current = setTimeout(() => setValue('3'), 2000);
+    }
+
+    if (value === '2' && previousValueRef.current === '3') {
+      timeoutRef.current = setTimeout(() => setValue('1'), 2000);
+    }
+
+    if (value === '3') {
+      timeoutRef.current = setTimeout(() => setValue('2'), 2000);
+    }
+
+    previousValueRef.current = value;
+
+    return () => clearTimeout(timeoutRef.current);
+  }, [value]);
+
+  return (
+    <>
+      <ThemesBlogPostExampleArea>
+        <SegmentedControl.Root
+          // @ts-expect-error
+          inert="true"
+          className={styles.SegmentedControlDemo}
+          value={value}
+          variant="classic"
+        >
+          <SegmentedControl.Item value="1">Inbox</SegmentedControl.Item>
+          <SegmentedControl.Item value="2">Drafts</SegmentedControl.Item>
+          <SegmentedControl.Item value="3">Sent</SegmentedControl.Item>
+        </SegmentedControl.Root>
+      </ThemesBlogPostExampleArea>
+
+      <Flex justify="center" mt="-3" mb="5">
+        <Text align="center" size="2">
+          <Em>Even the font weight change is animated</Em>
+        </Text>
+      </Flex>
+    </>
+  );
+}
+
+export function ThemesBlogPostExampleProgress() {
+  const [key, setKey] = React.useState(0);
+  return (
+    <ThemesBlogPostExampleArea>
+      <Flex align="center" gap="4" width="100%" maxWidth="240px" key={key}>
+        <Progress size="1" />
+      </Flex>
+
       <Flex justify="center" position="absolute" bottom="4">
         <Button
           size="1"
-          radius="full"
           color="gray"
+          radius="full"
           variant="surface"
-          onClick={() => setIsLoading((value) => !value)}
+          onClick={() => setKey((value) => ++value)}
         >
-          Toggle loading
+          <PlayIcon width="13" height="13" />
+          Play again
         </Button>
       </Flex>
-    </Flex>
+    </ThemesBlogPostExampleArea>
+  );
+}
+
+export function ThemesBlogPostExampleTabNav() {
+  return (
+    <ThemesBlogPostExampleArea>
+      <TabNavDemo
+        baseUrl="/themes/docs/overview/3.0"
+        items={['Account', 'Documents', 'Workspace']}
+      />
+    </ThemesBlogPostExampleArea>
+  );
+}
+
+export function ThemesBlogPostExampleDataList() {
+  return (
+    <ThemesBlogPostExampleArea>
+      <DataList.Root>
+        <DataList.Item align="center">
+          <DataList.Label minWidth="88px">Status</DataList.Label>
+          <DataList.Value>
+            <Badge color="jade" variant="soft" radius="full" style={{ marginLeft: -2 }}>
+              Authorized
+            </Badge>
+          </DataList.Value>
+        </DataList.Item>
+        <DataList.Item>
+          <DataList.Label minWidth="88px">ID</DataList.Label>
+          <DataList.Value>
+            <Flex align="center" gap="2">
+              <Code variant="ghost">u_2J89JSA4GJ</Code>
+              <IconButton
+                size="1"
+                aria-label="Copy value"
+                color="gray"
+                variant="ghost"
+                onClick={(event) => {
+                  const text = event.currentTarget.parentElement?.textContent;
+                  void navigator.clipboard.writeText(text);
+                }}
+              >
+                <CopyIcon />
+              </IconButton>
+            </Flex>
+          </DataList.Value>
+        </DataList.Item>
+        <DataList.Item>
+          <DataList.Label minWidth="88px">Name</DataList.Label>
+          <DataList.Value>Vlad Moroz</DataList.Value>
+        </DataList.Item>
+        <DataList.Item>
+          <DataList.Label minWidth="88px">Email</DataList.Label>
+          <DataList.Value>
+            <Link href="mailto:vlad@workos.com">vlad@workos.com</Link>
+          </DataList.Value>
+        </DataList.Item>
+        <DataList.Item>
+          <DataList.Label minWidth="88px">Company</DataList.Label>
+          <DataList.Value>
+            <Link target="_blank" href="https://workos.com">
+              WorkOS
+            </Link>
+          </DataList.Value>
+        </DataList.Item>
+      </DataList.Root>
+    </ThemesBlogPostExampleArea>
   );
 }
