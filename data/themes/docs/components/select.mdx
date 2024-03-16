@@ -64,20 +64,6 @@ Used to visually separate items in the Select. It inherits props from the [Selec
 
 ## Examples
 
-### Alternative positioning
-
-Set the `position` prop to `popper` and use the `side` prop to position items below the trigger.
-
-```jsx live=true
-<Select.Root defaultValue="apple">
-  <Select.Trigger />
-  <Select.Content position="popper">
-    <Select.Item value="apple">Apple</Select.Item>
-    <Select.Item value="orange">Orange</Select.Item>
-  </Select.Content>
-</Select.Root>
-```
-
 ### Size
 
 Use the `size` prop to control the size.
@@ -284,6 +270,20 @@ Use the `placeholder` prop to create a `Trigger` that doesn’t need an initial 
       <Select.Item value="carrot">Carrot</Select.Item>
       <Select.Item value="potato">Potato</Select.Item>
     </Select.Group>
+  </Select.Content>
+</Select.Root>
+```
+
+### Position
+
+Set `position="popper"` prop to position the select menu below the trigger.
+
+```jsx live=true
+<Select.Root defaultValue="apple">
+  <Select.Trigger />
+  <Select.Content position="popper">
+    <Select.Item value="apple">Apple</Select.Item>
+    <Select.Item value="orange">Orange</Select.Item>
   </Select.Content>
 </Select.Root>
 ```
