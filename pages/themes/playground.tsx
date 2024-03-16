@@ -1051,7 +1051,7 @@ export default function ComponentsPage() {
 
                       <Box mb="5">
                         <label>
-                          <Text as="div" size="2" weight="medium" mb="2">
+                          <Text as="div" size="2" weight="medium" mb="1">
                             Email
                           </Text>
                           <TextField.Root placeholder="Enter your email address" />
@@ -1066,7 +1066,7 @@ export default function ComponentsPage() {
                         </Box>
 
                         <label>
-                          <Text as="div" size="2" weight="medium" mb="2">
+                          <Text as="div" size="2" weight="medium" mb="1">
                             Password
                           </Text>
                           <TextField.Root placeholder="Enter your password" />
@@ -1286,9 +1286,7 @@ export default function ComponentsPage() {
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <PlaygroundSectionTitle id="checkbox-card-group">
-                Checkbox Card Group
-              </PlaygroundSectionTitle>
+              <PlaygroundSectionTitle id="checkbox-cards">Checkbox Cards</PlaygroundSectionTitle>
 
               <Tabs.Root defaultValue="theme-colors">
                 <Tabs.List size="2">
@@ -3147,9 +3145,7 @@ export default function ComponentsPage() {
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <PlaygroundSectionTitle id="radio-card-group">
-                Radio Card Group
-              </PlaygroundSectionTitle>
+              <PlaygroundSectionTitle id="radio-cards">Radio Cards</PlaygroundSectionTitle>
 
               <Tabs.Root defaultValue="theme-colors">
                 <Tabs.List size="2">

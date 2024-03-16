@@ -48,7 +48,7 @@ export default function ThemesHome() {
 
               <ThemesHeroLayout.Showcase>
                 <Theme className="radix-themes-default-fonts" hasBackground={false}>
-                  <ExampleThemesDashboard align="start" />
+                  <ExampleThemesDashboard align="start" focusable={false} />
                 </Theme>
               </ThemesHeroLayout.Showcase>
             </ThemesHeroLayout.Root>
@@ -72,7 +72,7 @@ export default function ThemesHome() {
 
               <ThemesHeroLayout.Showcase>
                 <Theme className="radix-themes-default-fonts" hasBackground={false}>
-                  <ExampleThemesDashboard align="start" />
+                  <ExampleThemesDashboard align="start" focusable={false} />
                 </Theme>
               </ThemesHeroLayout.Showcase>
             </ThemesHeroLayout.Root>
@@ -101,7 +101,7 @@ export default function ThemesHome() {
                   grayColor="gray"
                   hasBackground={false}
                 >
-                  <ExampleThemesEcommerce align="start" />
+                  <ExampleThemesEcommerce align="start" focusable={false} />
                 </Theme>
               </ThemesHeroLayout.Showcase>
             </ThemesHeroLayout.Root>
@@ -129,7 +129,7 @@ export default function ThemesHome() {
                   accentColor="gray"
                   hasBackground={false}
                 >
-                  <ExampleThemesEcommerce align="start" />
+                  <ExampleThemesEcommerce align="start" focusable={false} />
                 </Theme>
               </ThemesHeroLayout.Showcase>
             </ThemesHeroLayout.Root>
@@ -153,7 +153,7 @@ export default function ThemesHome() {
 
               <ThemesHeroLayout.Showcase>
                 <Theme className="radix-themes-default-fonts" hasBackground={false}>
-                  <ExampleThemesMusicApp align="start" />
+                  <ExampleThemesMusicApp align="start" focusable={false} />
                 </Theme>
               </ThemesHeroLayout.Showcase>
             </ThemesHeroLayout.Root>
@@ -177,7 +177,7 @@ export default function ThemesHome() {
 
               <ThemesHeroLayout.Showcase>
                 <Theme className="radix-themes-default-fonts" hasBackground={false}>
-                  <ExampleThemesMusicApp align="start" />
+                  <ExampleThemesMusicApp align="start" focusable={false} />
                 </Theme>
               </ThemesHeroLayout.Showcase>
             </ThemesHeroLayout.Root>
