@@ -69,7 +69,7 @@ export function ThemesPanelCardExample({ panelBackground }) {
 
                 <Box mb="5">
                   <label>
-                    <Text as="div" size="2" weight="bold" mb="2">
+                    <Text as="div" size="2" weight="bold" mb="1">
                       Email address
                     </Text>
                     <TextField.Root placeholder="Enter your email" />
@@ -84,7 +84,7 @@ export function ThemesPanelCardExample({ panelBackground }) {
                   </Box>
 
                   <label>
-                    <Text as="div" size="2" weight="bold" mb="2">
+                    <Text as="div" size="2" weight="bold" mb="1">
                       Password
                     </Text>
                     <TextField.Root placeholder="Enter your password" />
