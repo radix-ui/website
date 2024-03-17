@@ -142,15 +142,15 @@ Nested components will automatically inherit the new accent color.
 
 ```jsx live=true line=17
 <Theme accentColor="indigo">
-  <Flex align="start" direction="column" gap="4">
+  <Flex align="start" direction={{ initial: 'column', sm: 'row' }} gap="4">
     <Callout.Root>
       <Callout.Icon>
         <InfoCircledIcon />
       </Callout.Icon>
       <Callout.Text>
         <Flex as="span" align="center" gap="4">
-          <Text>This branch has new commits.</Text>
-          <Button size="1" my="-2">
+          <Text>There are new commits.</Text>
+          <Button variant="surface" size="1" my="-2">
             Refresh
           </Button>
         </Flex>
@@ -163,8 +163,8 @@ Nested components will automatically inherit the new accent color.
       </Callout.Icon>
       <Callout.Text>
         <Flex as="span" align="center" gap="4">
-          <Text>This branch has new commits.</Text>
-          <Button size="1" my="-2">
+          <Text>There are new commits.</Text>
+          <Button variant="surface" size="1" my="-2">
             Refresh
           </Button>
         </Flex>
@@ -276,7 +276,7 @@ The `panelBackground` prop controls whether panelled elements use a solid or a t
 </Theme>
 ```
 
-<Box my="5">
+<Box mt="5" mb="6">
   <ThemesPanelCardExample panelBackground="translucent" />
 </Box>
 
@@ -288,7 +288,7 @@ While `solid` is useful when you'd prefer to present information unobstructed.
 </Theme>
 ```
 
-<Box my="5">
+<Box mt="5" mb="6">
   <ThemesPanelCardExample panelBackground="solid" />
 </Box>
 
@@ -380,4 +380,4 @@ import '@radix-ui/themes/components.css';
 import '@radix-ui/themes/utilities.css';
 ```
 
-Please note that the colors you didn’t import will still be accepted by the `color` prop in React. Also, make sure that your developer tooling preserves the order of the imported CSS files.
+Please note that the colors you didn’t import will still be accepted by the `color` prop in React. Also, make sure that your developer tooling [preserves](/themes/docs/overview/styling#nextjs-import-order) the order of the imported CSS files.

@@ -446,7 +446,7 @@ export const ExampleThemesDashboard = ({ focusable = true, ...props }: ExampleLa
           </Heading>
 
           <Box mb="5">
-            <Flex mb="2">
+            <Flex mb="1">
               <Text as="label" htmlFor="example-email-field" size="2" weight="bold">
                 Email address
               </Text>
@@ -459,7 +459,7 @@ export const ExampleThemesDashboard = ({ focusable = true, ...props }: ExampleLa
           </Box>
 
           <Box mb="5" position="relative">
-            <Flex align="baseline" justify="between" mb="2">
+            <Flex align="baseline" justify="between" mb="1">
               <Text as="label" size="2" weight="bold" htmlFor="example-password-field">
                 Password
               </Text>

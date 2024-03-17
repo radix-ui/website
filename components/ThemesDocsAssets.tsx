@@ -1,4 +1,5 @@
 import {
+  AspectRatio,
   Avatar,
   Badge,
   Box,
@@ -41,66 +42,62 @@ import { TabNavDemo } from '@components/tab-nav-demo';
 import styles from './ThemesDocsAssets.module.css';
 
 export function ThemesPanelCardExample({ panelBackground }) {
+  const passwordFieldId = 'example-password-field' + React.useId();
   return (
-    <Card>
-      <Inset>
-        <Theme panelBackground={panelBackground} asChild>
-          <Flex direction="column">
-            <Flex justify="center" position="relative" px="5" py={{ initial: '5', sm: '8' }}>
-              <Flex
-                align="center"
-                justify="center"
-                position="absolute"
-                inset="0"
-                style={{ overflow: 'hidden' }}
-              >
-                <ThemesPanelBackgroundImage
-                  id="1"
-                  width="900"
-                  height="200%"
-                  style={{ opacity: 0.5 }}
-                />
-              </Flex>
-
-              <Card size="4" style={{ width: 400 }}>
-                <Heading as="h3" size="6" trim="start" mb="4">
-                  Sign up
-                </Heading>
-
-                <Box mb="5">
-                  <label>
-                    <Text as="div" size="2" weight="bold" mb="1">
-                      Email address
-                    </Text>
-                    <TextField.Root placeholder="Enter your email" />
-                  </label>
-                </Box>
-
-                <Box mb="5" position="relative">
-                  <Box position="absolute" top="0" right="0" style={{ marginTop: -2 }}>
-                    <Link href="#card" size="2">
-                      Forgot password?
-                    </Link>
-                  </Box>
-
-                  <label>
-                    <Text as="div" size="2" weight="bold" mb="1">
-                      Password
-                    </Text>
-                    <TextField.Root placeholder="Enter your password" />
-                  </label>
-                </Box>
-
-                <Flex mt="6" justify="end" gap="3">
-                  <Button variant="soft">Create account</Button>
-                  <Button>Sign in</Button>
-                </Flex>
-              </Card>
-            </Flex>
+    <Theme panelBackground={panelBackground} asChild>
+      <Flex direction="column" mx={{ initial: '-5', xs: '-6', sm: '0' }}>
+        <Flex justify="center" position="relative" px="5" py={{ initial: '7', xs: '9' }}>
+          <Flex
+            align="center"
+            justify="center"
+            position="absolute"
+            inset="0"
+            style={{ overflow: 'hidden' }}
+          >
+            <ThemesPanelBackgroundImage id="1" width="900" height="200%" style={{ opacity: 0.5 }} />
           </Flex>
-        </Theme>
-      </Inset>
-    </Card>
+
+          <Box width="100%" maxWidth="400px">
+            <Card size="4">
+              <Heading as="h3" size="6" trim="start" mb="4">
+                Sign up
+              </Heading>
+
+              <Box mb="5">
+                <label>
+                  <Text as="div" size="2" weight="bold" mb="1">
+                    Email address
+                  </Text>
+                  <TextField.Root placeholder="Enter your email" />
+                </label>
+              </Box>
+
+              <Box mb="5" position="relative">
+                <Flex align="baseline" justify="between" mb="1">
+                  <Text as="label" size="2" weight="medium" htmlFor={passwordFieldId}>
+                    Password
+                  </Text>
+                  <Link href="#" size="2">
+                    Forgot password?
+                  </Link>
+                </Flex>
+                <TextField.Root id={passwordFieldId} placeholder="Enter your password" />
+              </Box>
+
+              <Flex
+                direction={{ initial: 'column-reverse', sm: 'row' }}
+                mt="5"
+                justify="end"
+                gap="3"
+              >
+                <Button variant="soft">Create account</Button>
+                <Button>Sign in</Button>
+              </Flex>
+            </Card>
+          </Box>
+        </Flex>
+      </Flex>
+    </Theme>
   );
 }
 
@@ -506,19 +503,25 @@ export function SwatchRow({ name }: { name: string }) {
 
 export function ThemesColorScale({ type = 'accent' }: { type: 'accent' | 'gray' }) {
   return (
-    <Flex direction="column" gap="2">
-      <Flex align="center" gap="1">
+    <Flex direction={{ sm: 'column' }} gap="2">
+      <Flex
+        direction={{ initial: 'column', sm: 'row' }}
+        align={{ sm: 'center' }}
+        gap="1"
+        flexGrow="1"
+      >
         {[...new Array(12)].map((_, i) => (
-          <Flex flexGrow="1" direction="column" gap="1" key={i}>
+          <Flex flexGrow="1" direction={{ sm: 'column' }} gap="1" key={i}>
             <Box
+              flexGrow="1"
               height="32px"
               style={{
                 backgroundColor: `var(--${type}-${i + 1})`,
                 borderRadius: 'var(--radius-1)',
               }}
             />
-
             <Box
+              flexGrow="1"
               height="32px"
               style={{
                 backgroundImage:
@@ -539,7 +542,12 @@ export function ThemesColorScale({ type = 'accent' }: { type: 'accent' | 'gray' 
         ))}
       </Flex>
 
-      <Flex align="center" gap="1">
+      <Flex
+        minWidth="24px"
+        direction={{ initial: 'column', sm: 'row' }}
+        align={{ sm: 'center' }}
+        gap="1"
+      >
         {[...new Array(12)].map((_, i) => (
           <Flex align="center" justify="center" height="100%" width="100%" key={i}>
             <Text size="1" color="gray">
@@ -574,9 +582,9 @@ export function ThemesFontSizeScale() {
       <Flex align="stretch" style={{ borderBottom: '1px dashed var(--gray-a6)' }}>
         {[...new Array(9)].map((_, i) => (
           <Flex
+            key={i}
             direction="column"
             flexGrow="1"
-            key={i}
             justify="end"
             align="center"
             position="relative"
@@ -603,13 +611,11 @@ export function ThemesAccentSwatches() {
       <Grid columns={{ initial: '4', xs: '6', sm: '9' }} gapX="1" gapY="3">
         {accentColors.map((color, i) => (
           <Box flexGrow="1" key={i}>
-            <Theme accentColor={color} hasBackground={false} asChild>
-              <Box
-                mb="1"
-                height="48px"
-                style={{ backgroundColor: `var(--accent-9)`, borderRadius: 'var(--radius-1)' }}
-              />
-            </Theme>
+            <Box
+              mb="1"
+              height="48px"
+              style={{ backgroundColor: `var(--${color}-9)`, borderRadius: 'var(--radius-1)' }}
+            />
             <Text as="div" size="1" color="gray">
               {color.charAt(0).toUpperCase() + color.slice(1)}
             </Text>
@@ -626,21 +632,67 @@ export function ThemeGraySwatches() {
       <Grid columns={{ initial: '4', xs: '6', sm: '9' }} gapX="1" gapY="3">
         {(['gray', 'mauve', 'slate', 'sage', 'olive', 'sand'] as const).map((color, i) => (
           <Box flexGrow="1" key={i}>
-            <Theme accentColor="gray" grayColor={color} hasBackground={false} asChild>
-              <Box
-                mb="1"
-                height="48px"
-                style={{
-                  backgroundColor: `var(--accent-9)`,
-                  borderRadius: 'var(--radius-1)',
-                  filter: color === 'gray' ? 'saturate(0)' : undefined,
-                }}
-              />
-            </Theme>
+            <Box
+              mb="1"
+              height="48px"
+              style={{
+                backgroundColor: `var(--${color}-9)`,
+                borderRadius: 'var(--radius-1)',
+                filter: color === 'gray' ? 'saturate(0)' : undefined,
+              }}
+            />
             <Text as="div" size="1" color="gray">
               {color.charAt(0).toUpperCase() + color.slice(1)}
             </Text>
           </Box>
+        ))}
+      </Grid>
+    </Flex>
+  );
+}
+
+export function ThemesAllColors() {
+  const steps = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const colors = [
+    'gray',
+    'bronze',
+    'tomato',
+    'red',
+    'ruby',
+    'crimson',
+    'pink',
+    'plum',
+    'purple',
+    'violet',
+    'iris',
+    'indigo',
+    'blue',
+    'cyan',
+    'teal',
+    'jade',
+    'green',
+    'grass',
+    'brown',
+    'orange',
+    'amber',
+    'yellow',
+    'lime',
+    'mint',
+    'sky',
+  ];
+  return (
+    <Flex direction="column" gap="5">
+      <Grid columns="26" gapX="1px" gapY="3">
+        {colors.map((color) => (
+          <Flex direction="column" gap="1px" key={color}>
+            {steps.map((step) => (
+              <AspectRatio
+                ratio={1}
+                key={step}
+                style={{ backgroundColor: `var(--${color}-${step})`, borderRadius: '1.5px' }}
+              />
+            ))}
+          </Flex>
         ))}
       </Grid>
     </Flex>
