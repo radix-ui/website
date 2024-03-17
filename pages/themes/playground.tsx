@@ -1059,18 +1059,18 @@ export default function ComponentsPage() {
                       </Box>
 
                       <Box mb="5" position="relative">
-                        <Box position="absolute" top="0" right="0" style={{ marginTop: -2 }}>
-                          <Link href="#card" size="2">
-                            Forgot password?
-                          </Link>
-                        </Box>
-
-                        <label>
-                          <Text as="div" size="2" weight="medium" mb="1">
+                        <Flex align="baseline" justify="between" mb="1">
+                          <Text as="label" size="2" weight="medium" htmlFor="card-password-field">
                             Password
                           </Text>
-                          <TextField.Root placeholder="Enter your password" />
-                        </label>
+                          <Link href="#" size="2">
+                            Forgot password?
+                          </Link>
+                        </Flex>
+                        <TextField.Root
+                          id="card-password-field"
+                          placeholder="Enter your password"
+                        />
                       </Box>
 
                       <Flex mt="6" justify="end" gap="3">
