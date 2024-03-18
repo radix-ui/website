@@ -1,7 +1,7 @@
 import { Box, Flex, ScrollArea } from '@radix-ui/themes';
 import { DocsPagination } from '@components/DocsPagination';
 import { PrimitivesHeader } from '@components/PrimitivesHeader';
-import { allPrimitivesRoutes, primitivesRoutes } from '@lib/primitivesRoutes';
+import { allPrimitivesRoutes, primitivesRoutes } from '@utils/primitivesRoutes';
 import { DocsNav } from './DocsNav';
 import { MobileMenuProvider } from './MobileMenu';
 import { SideNav } from './SideNav';

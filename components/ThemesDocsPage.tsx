@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Box, Flex } from '@radix-ui/themes';
 import { DocsPagination } from '@components/DocsPagination';
-import { allThemesRoutes, themesRoutes } from '@lib/themesRoutes';
+import { allThemesRoutes, themesRoutes } from '@utils/themesRoutes';
 import { ThemesHeader } from './ThemesHeader';
 import { DocsNav } from './DocsNav';
 import { MobileMenuProvider } from './MobileMenu';

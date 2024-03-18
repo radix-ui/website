@@ -1,4 +1,4 @@
-import { accentColors } from '@lib/themes/props';
+import { accentColors } from '@utils/themes/props';
 
 type Person = {
   image: string;

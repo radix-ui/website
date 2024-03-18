@@ -4,6 +4,7 @@ import styles from './MagicCurtain.module.css';
 import { createContext } from '@radix-ui/react-context';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import debounce from 'lodash.debounce';
+import { useIsomorphicLayoutEffect } from '@utils/useIsomorphicLayoutEffect';
 
 type Visibility = 'hidden' | 'animating-out' | 'visible';
 type ForceReducedMotion = 'always' | 'if-hi-res' | 'never';
@@ -408,9 +409,6 @@ const MagicCurtainMirrorControls = () => {
     </div>
   );
 };
-
-const useIsomorphicLayoutEffect =
-  typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;
 
 export const MagicCurtain = {
   Root: MagicCurtainRoot,

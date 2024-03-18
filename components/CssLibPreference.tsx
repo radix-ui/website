@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useLayoutEffect } from '@radix-ui/react-use-layout-effect';
-import { DEFAULT_CSS_LIB, SUPPORTED_CSS_LIBS } from '@lib/constants';
-import type { CssLib } from '@lib/constants';
+import { DEFAULT_CSS_LIB, SUPPORTED_CSS_LIBS } from '@utils/constants';
+import type { CssLib } from '@utils/constants';
 
 const LOCAL_STORAGE_KEY = '@radix-ui/css-lib';
 

@@ -1,4 +1,4 @@
-import { styled } from '@lib/stitches';
+import { styled } from '@utils/stitches';
 
 export const LogoLink = styled('a', {
   display: 'block',

@@ -17,25 +17,51 @@ Getting up and running is quick and easy.
 
 Install the package from your command line.
 
-<TabsCodeBlock defaultValue="npm" my="5">
-  <TabsList>
-    <TabsTrigger value="npm">npm</TabsTrigger>
-    <TabsTrigger value="yarn">yarn</TabsTrigger>
-    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
-  </TabsList>
-  <TabsContent value="npm">
-    <TabsCodeBlockContent
-      language="bash"
-      value="npm install @radix-ui/themes"
-    />
-  </TabsContent>
-  <TabsContent value="yarn">
-    <TabsCodeBlockContent language="bash" value="yarn add @radix-ui/themes" />
-  </TabsContent>
-  <TabsContent value="pnpm">
-    <TabsCodeBlockContent language="bash" value="pnpm add @radix-ui/themes" />
-  </TabsContent>
-</TabsCodeBlock>
+<Tabs.Root asChild defaultValue="npm">
+  <CodeBlock.Root>
+    <CodeBlock.Header>
+      <Tabs.List>
+        <Tabs.Trigger value="npm">npm</Tabs.Trigger>
+        <Tabs.Trigger value="yarn">yarn</Tabs.Trigger>
+        <Tabs.Trigger value="pnpm">pnpm</Tabs.Trigger>
+      </Tabs.List>
+    </CodeBlock.Header>
+
+    <Tabs.Content asChild value="npm">
+      <CodeBlock.Content>
+        <CodeBlock.Pre>
+          <CodeBlock.Code language="bash">
+            {'npm install @radix-ui/themes'}
+          </CodeBlock.Code>
+        </CodeBlock.Pre>
+        <CodeBlock.CopyButton />
+      </CodeBlock.Content>
+    </Tabs.Content>
+
+    <Tabs.Content asChild value="yarn">
+      <CodeBlock.Content>
+        <CodeBlock.Pre>
+          <CodeBlock.Code language="bash">
+            {'yarn add @radix-ui/themes'}
+          </CodeBlock.Code>
+        </CodeBlock.Pre>
+        <CodeBlock.CopyButton />
+      </CodeBlock.Content>
+    </Tabs.Content>
+
+    <Tabs.Content asChild value="pnpm">
+      <CodeBlock.Content>
+        <CodeBlock.Pre>
+          <CodeBlock.Code language="bash">
+            {'pnpm add @radix-ui/themes'}
+          </CodeBlock.Code>
+        </CodeBlock.Pre>
+        <CodeBlock.CopyButton />
+      </CodeBlock.Content>
+    </Tabs.Content>
+
+  </CodeBlock.Root>
+</Tabs.Root>
 
 ### 2. Import the CSS file
 

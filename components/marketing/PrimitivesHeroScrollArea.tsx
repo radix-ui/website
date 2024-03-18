@@ -1,5 +1,5 @@
 import { Box, Text } from '@radix-ui/themes';
-import { styled } from '@lib/stitches';
+import { styled } from '@utils/stitches';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 
 const SCROLLBAR_SIZE = 10;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropsTable } from './PropsTable';
-import * as props from '@lib/themes/props';
+import * as props from '@utils/themes/props';
 import { Code, Link as DSLink } from '@radix-ui/themes';
 import NextLink from 'next/link';
 import { ExternalLink } from './ExternalLink';

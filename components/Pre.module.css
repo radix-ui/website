@@ -9,7 +9,7 @@
   color: var(--gray-12);
   box-shadow: var(--border);
 
-  --border: inset 0 0 0 1px var(--gray-a5);
+  --border: inset 0 0 0 1px var(--accent-a1), inset 0 0 0 1px var(--gray-a5);
   --line-numbers: var(--gray-6);
   --faded-lines: var(--gray-a8);
   --removed: var(--red-11);

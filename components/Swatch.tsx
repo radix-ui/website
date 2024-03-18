@@ -16,7 +16,7 @@ import {
   Dialog,
 } from '@radix-ui/themes';
 import styles from './Swatch.module.css';
-import { classNames } from '@lib/classNames';
+import { classNames } from '@utils/classNames';
 import * as Colors from '@radix-ui/colors';
 import { useTheme } from 'next-themes';
 import { Cross2Icon, InfoCircledIcon } from '@radix-ui/react-icons';

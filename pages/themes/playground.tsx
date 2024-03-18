@@ -89,7 +89,7 @@ import {
   textFieldRootPropDefs,
   textPropDefs,
   themePropDefs,
-} from '@lib/themes/props';
+} from '@utils/themes/props';
 import {
   ArrowRightIcon,
   CaretDownIcon,
@@ -99,7 +99,7 @@ import {
   StarIcon,
   VercelLogoIcon,
 } from '@radix-ui/react-icons';
-import { getPeopleForColor } from '@lib/people';
+import { getPeopleForColor } from '@utils/people';
 import styles from './playground.module.css';
 import { MobileMenuProvider, MobileMenu } from '@components/MobileMenu';
 import { ThemesHeader } from '@components/ThemesHeader';

@@ -4,8 +4,8 @@ import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { MDXProvider, components } from '@components/MDXComponents';
 import { QuickNav } from '@components/QuickNav';
 import { OldVersionNote } from '@components/OldVersionNote';
-import { getAllFrontmatter, getAllVersionsFromPath, getMdxBySlug } from '@lib/mdx';
-import { getPackageData, formatBytes } from '@lib/bundlephobia';
+import { getAllFrontmatter, getAllVersionsFromPath, getMdxBySlug } from '@utils/mdx';
+import { getPackageData, formatBytes } from '@utils/bundlephobia';
 
 import type { Frontmatter } from 'types/frontmatter';
 

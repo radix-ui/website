@@ -5,7 +5,7 @@ import { Box, Flex, Link, Text, Heading } from '@radix-ui/themes';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { MDXProvider } from '@components/MDXComponents';
 import { ThemesMDXComponents } from '@components/ThemesMDXComponents';
-import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
+import { getAllFrontmatter, getMdxBySlug } from '@utils/mdx';
 import { QuickNav } from '@components/QuickNav';
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 

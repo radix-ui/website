@@ -1,0 +1,106 @@
+.radix-themes[data-accent-color='indigo'] {
+  --code-block-header-background: var(--accent-1);
+  --code-block-background: var(--accent-2);
+  --code-block-border: var(--gray-a5);
+  --code-block-highlighted-line: var(--accent-a3);
+  --code-block-highlighted-word: var(--accent-a3);
+  --syntax-1: var(--accent-11);
+  --syntax-2: var(--accent-12);
+  --syntax-3: var(--crimson-11);
+  --syntax-4: var(--violet-11);
+}
+.radix-themes[data-accent-color='blue'] {
+  --code-block-header-background: var(--gray-1);
+  --code-block-background: var(--color-panel-solid);
+  --code-block-border: var(--gray-a5);
+  --code-block-highlighted-line: var(--accent-a2);
+  --code-block-highlighted-word: var(--accent-a3);
+  --syntax-1: var(--accent-11);
+  --syntax-2: var(--accent-12);
+  --syntax-3: var(--crimson-11);
+  --syntax-4: var(--teal-11);
+}
+.radix-themes[data-accent-color='pink'] {
+  --code-block-header-background: var(--gray-1);
+  --code-block-background: var(--color-panel-solid);
+  --code-block-border: var(--gray-a5);
+  --code-block-highlighted-line: var(--accent-a2);
+  --code-block-highlighted-word: var(--accent-a3);
+  --syntax-1: var(--blue-11);
+  --syntax-2: var(--blue-12);
+  --syntax-3: var(--accent-11);
+  --syntax-4: var(--blue-12);
+}
+.radix-themes[data-accent-color='red'] {
+  --code-block-header-background: var(--gray-1);
+  --code-block-background: var(--color-panel-solid);
+  --code-block-border: var(--gray-a5);
+  --code-block-highlighted-line: var(--accent-a2);
+  --code-block-highlighted-word: var(--accent-a3);
+  --syntax-1: var(--accent-11);
+  --syntax-2: var(--indigo-12);
+  --syntax-3: var(--crimson-11);
+  --syntax-4: var(--violet-11);
+}
+.radix-themes[data-accent-color='teal'],
+.radix-themes[data-accent-color='cyan'] {
+  --code-block-header-background: var(--gray-1);
+  --code-block-background: var(--color-panel-solid);
+  --code-block-border: var(--gray-a5);
+  --code-block-highlighted-line: var(--accent-a2);
+  --code-block-highlighted-word: var(--accent-a3);
+  --syntax-1: var(--accent-11);
+  --syntax-2: var(--accent-12);
+  --syntax-3: var(--crimson-11);
+  --syntax-4: var(--violet-11);
+}
+
+.token.punctuation,
+.token.plain-text {
+  color: var(--gray-12);
+}
+
+.token.class-name,
+.token.class,
+.token.function,
+.token.maybe-class-name,
+.token.parameter,
+.token.property,
+.token.pseudo-class,
+.token.selector,
+.token.tag {
+  color: var(--syntax-1);
+}
+
+.token.attr-value,
+.token.color,
+.token.imports,
+.token.unit {
+  color: var(--syntax-2);
+}
+
+.token.attr-name,
+.token.important,
+.token.interpolation-punctuation,
+.token.keyword,
+.token.module,
+.token.operator,
+.token.rule,
+.token.variable {
+  color: var(--syntax-3);
+}
+
+.token.number,
+.token.string {
+  color: var(--syntax-4);
+}
+
+.token.comment {
+  color: var(--gray-a11);
+}
+
+.highlight-word {
+  display: inline-block;
+  color: var(--accent-12);
+  background-color: var(--code-block-highlighted-word);
+}
