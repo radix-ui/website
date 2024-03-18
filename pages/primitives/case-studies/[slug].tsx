@@ -7,7 +7,7 @@ import { PrimitivesMobileMenu } from '@components/PrimitivesMobileMenu';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { CaseStudyLogo, CaseStudyLogoVariant } from '@components/marketing/CaseStudyLogo';
 import { MarketingCaption } from '@components/marketing/MarketingCaption';
-import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
+import { getAllFrontmatter, getMdxBySlug } from '@utils/mdx';
 import { Root as AccessibleIcon } from '@radix-ui/react-accessible-icon';
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 import {

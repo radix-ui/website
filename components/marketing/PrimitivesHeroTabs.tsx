@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled } from '@lib/stitches';
+import { styled } from '@utils/stitches';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import { PrimitivesHeroButton } from '@components/marketing/PrimitivesHeroButton';
 import { TextField, Text, Box, Flex } from '@radix-ui/themes';

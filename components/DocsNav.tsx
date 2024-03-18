@@ -1,9 +1,9 @@
 import React from 'react';
 import NextLink from 'next/link';
 import { Text, Heading, Box, Badge, Flex } from '@radix-ui/themes';
-import { classNames } from '@lib/classNames';
+import { classNames } from '@utils/classNames';
 import styles from './DocsNav.module.css';
-import { useCurrentPageSlug } from '@lib/useCurrentPageSlug';
+import { useCurrentPageSlug } from '@utils/useCurrentPageSlug';
 import scrollIntoView from 'scroll-into-view-if-needed';
 
 interface DocsNavProps {

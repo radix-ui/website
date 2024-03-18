@@ -13,16 +13,20 @@ metaDescription: How to use Radix Colors.
 
 Referencing color scales by their actual scale name can work well, like `blue` and `red`. But often, creating semantic aliases like `accent`, `primary`, `neutral`, or `brand` can be helpful, especially when it comes to theming.
 
-{
+<Tabs.Root asChild defaultValue="css">
+  <CodeBlock.Root>
+    <CodeBlock.Header>
+      <Tabs.List>
+        <Tabs.Trigger value="css">CSS</Tabs.Trigger>
+        <Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
+      </Tabs.List>
+    </CodeBlock.Header>
 
-<TabsCodeBlock defaultValue="1" my="5">
-  <TabsList>
-    <TabsTrigger value="1">CSS</TabsTrigger>
-    <TabsTrigger value="2">Stitches</TabsTrigger>
-    <TabsTrigger value="3">Styled Components</TabsTrigger>
-  </TabsList>
-  <TabsContent value="1">
-    <TabsCodeBlockContent language="css" value={`/*
+    <Tabs.Content asChild value="css">
+      <CodeBlock.Content>
+        <CodeBlock.Pre>
+          <CodeBlock.Code language="css">
+            {`/*
  * Note: Importing from the CDN in production is not recommended.
  * It's intended for prototyping only.
  */
@@ -57,58 +61,18 @@ Referencing color scales by their actual scale name can work well, like `blue` a
   --danger-2: var(--red-2);
   /* repeat for all steps */
 }
-`}/>
-  </TabsContent>
-  <TabsContent value="2">
-    <TabsCodeBlockContent language="jsx" value={`import { createCss } from '@stitches/react';
-import {
-  blue,
-  green,
-  yellow,
-  red
-} from '@radix-ui/colors';
+`}
+          </CodeBlock.Code>
+        </CodeBlock.Pre>
+        <CodeBlock.CopyButton />
+      </CodeBlock.Content>
+    </Tabs.Content>
 
-const { styled } = createCss({
-  theme: {
-    colors: {
-      ...blue,
-      ...green,
-      ...yellow,
-      ...red,
-
-      accent1: '$blue1',
-      accent2: '$blue2',
-      accent3: '$blue3',
-      accent4: '$blue4',
-      accent5: '$blue5',
-      accent6: '$blue6',
-      accent7: '$blue7',
-      accent8: '$blue8',
-      accent9: '$blue9',
-      accent10: '$blue10',
-      accent11: '$blue11',
-      accent12: '$blue12',
-
-      success1: '$green1',
-      success2: '$green2',
-      // repeat for all steps
-
-      warning1: '$yellow1',
-      warning2: '$yellow2',
-      // repeat for all steps
-
-      danger1: '$red1',
-      danger2: '$red2',
-      // repeat for all steps
-    },
-  },
-});`
-}/>
-
-  </TabsContent>
-  <TabsContent value="3">
-    <TabsCodeBlockContent language="jsx" value={`import styled, { ThemeProvider } from 'styled-components';
-import {
+    <Tabs.Content asChild value="css-in-js">
+      <CodeBlock.Content>
+        <CodeBlock.Pre>
+          <CodeBlock.Code language="js">
+{`import {
   blue,
   green,
   yellow,
@@ -146,15 +110,15 @@ const theme = {
   danger2: red.red2,
   // repeat for all steps
 };
+`}
+          </CodeBlock.Code>
+        </CodeBlock.Pre>
+        <CodeBlock.CopyButton />
+      </CodeBlock.Content>
+    </Tabs.Content>
 
-<ThemeProvider theme={theme}>
-  // your app
-</ThemeProvider>
-`}/>
-
-  </TabsContent>
-</TabsCodeBlock>
-}
+  </CodeBlock.Root>
+</Tabs.Root>
 
 With this approach, you will likely run into issues where you need to use the same scale for multiple semantics. Common examples include:
 
@@ -165,16 +129,20 @@ With this approach, you will likely run into issues where you need to use the sa
 
 In this scenario, you can choose to define multiple semantic aliases which map to the same scale.
 
-{
+<Tabs.Root asChild defaultValue="css">
+  <CodeBlock.Root>
+    <CodeBlock.Header>
+      <Tabs.List>
+        <Tabs.Trigger value="css">CSS</Tabs.Trigger>
+        <Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
+      </Tabs.List>
+    </CodeBlock.Header>
 
-<TabsCodeBlock defaultValue="1" my="5">
-  <TabsList>
-    <TabsTrigger value="1">CSS</TabsTrigger>
-    <TabsTrigger value="2">Stitches</TabsTrigger>
-    <TabsTrigger value="3">Styled Components</TabsTrigger>
-  </TabsList>
-  <TabsContent value="1">
-    <TabsCodeBlockContent language="css" value={`/*
+    <Tabs.Content asChild value="css">
+      <CodeBlock.Content>
+        <CodeBlock.Pre>
+          <CodeBlock.Code language="css">
+            {`/*
  * Note: Importing from the CDN in production is not recommended.
  * It's intended for prototyping only.
  */
@@ -198,47 +166,18 @@ In this scenario, you can choose to define multiple semantic aliases which map t
   --pending-1: var(--yellow-1);
   --pending-2: var(--yellow-2);
 }
-`}/>
-    </TabsContent>
-  <TabsContent value="2">
-    <TabsCodeBlockContent language="jsx" value={`import { createCss } from '@stitches/react';
-import {
-  blue,
-  green,
-  yellow,
-  red
-} from '@radix-ui/colors';
+`}
+          </CodeBlock.Code>
+        </CodeBlock.Pre>
+        <CodeBlock.CopyButton />
+      </CodeBlock.Content>
+    </Tabs.Content>
 
-const { styled } = createCss({
-  theme: {
-    colors: {
-      ...blue,
-      ...green,
-      ...yellow,
-
-      accent1: '$blue1',
-      accent2: '$blue2',
-      info1: '$blue1',
-      info2: '$blue2',
-
-      success1: '$green1',
-      success2: '$green2',
-      valid1: '$green1',
-      valid2: '$green2',
-
-      warning1: '$yellow1',
-      warning2: '$yellow2',
-      pending1: '$yellow1',
-      pending2: '$yellow2',
-    },
-  },
-});
-`}/>
-
-  </TabsContent>
-  <TabsContent value="3">
-    <TabsCodeBlockContent language="jsx" value={`import styled, { ThemeProvider } from 'styled-components';
-import {
+    <Tabs.Content asChild value="css-in-js">
+      <CodeBlock.Content>
+        <CodeBlock.Pre>
+          <CodeBlock.Code language="js">
+{`import {
   blue,
   green,
   yellow
@@ -264,16 +203,15 @@ const theme = {
   pending1: yellow.yellow1,
   pending2: yellow.yellow2,
 };
+`}
+          </CodeBlock.Code>
+        </CodeBlock.Pre>
+        <CodeBlock.CopyButton />
+      </CodeBlock.Content>
+    </Tabs.Content>
 
-<ThemeProvider theme={theme}>
-  // your app
-</ThemeProvider>
-`}/>
-
-  </TabsContent>
-</TabsCodeBlock>
-}
-
+  </CodeBlock.Root>
+</Tabs.Root>
 
 Or you can simply recommend that your teammates defer to the original scale name for situations where there is no appropriate semantic alias.
 
@@ -281,16 +219,20 @@ Or you can simply recommend that your teammates defer to the original scale name
 
 Each step in Radix Colors scales is designed for a specific use case. To help your team know which step to use, you can provide aliases based on the designed use cases.
 
-{
+<Tabs.Root asChild defaultValue="css">
+  <CodeBlock.Root>
+    <CodeBlock.Header>
+      <Tabs.List>
+        <Tabs.Trigger value="css">CSS</Tabs.Trigger>
+        <Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
+      </Tabs.List>
+    </CodeBlock.Header>
 
-<TabsCodeBlock defaultValue="1" my="5">
-  <TabsList>
-    <TabsTrigger value="1">CSS</TabsTrigger>
-    <TabsTrigger value="2">Stitches</TabsTrigger>
-    <TabsTrigger value="3">Styled Components</TabsTrigger>
-  </TabsList>
-  <TabsContent value="1">
-    <TabsCodeBlockContent language="css" value={`/*
+    <Tabs.Content asChild value="css">
+      <CodeBlock.Content>
+        <CodeBlock.Pre>
+          <CodeBlock.Code language="css">
+{`/*
  * Note: Importing from the CDN in production is not recommended.
  * It's intended for prototyping only.
  */
@@ -325,58 +267,18 @@ Each step in Radix Colors scales is designed for a specific use case. To help yo
   --danger-bg-subtle: var(--red-2);
   /* repeat for all steps */
 }
-`}/>
-  </TabsContent>
-  <TabsContent value="2">
-    <TabsCodeBlockContent language="jsx" value={`import { createCss } from '@stitches/react';
-import {
-  blue,
-  green,
-  yellow,
-  red
-} from '@radix-ui/colors';
+`}
+          </CodeBlock.Code>
+        </CodeBlock.Pre>
+        <CodeBlock.CopyButton />
+      </CodeBlock.Content>
+    </Tabs.Content>
 
-const { styled } = createCss({
-  theme: {
-    colors: {
-      ...blue,
-      ...green,
-      ...yellow,
-      ...red,
-
-      accentBase: '$blue1',
-      accentBgSubtle: '$blue2',
-      accentBg: '$blue3',
-      accentBgHover: '$blue4',
-      accentBgActive: '$blue5',
-      accentLine: '$blue6',
-      accentBorder: '$blue7',
-      accentBorderHover: '$blue8',
-      accentSolid: '$blue9',
-      accentSolidHover: '$blue10',
-      accentText: '$blue11',
-      accentTextContrast: '$blue12',
-
-      successBase: '$green1',
-      successBgSubtle: '$green2',
-      // repeat for all steps
-
-      warningBase: '$yellow1',
-      warningBgSubtle: '$yellow2',
-      // repeat for all steps
-
-      dangerBase: '$red1',
-      dangerBgSubtle: '$red2',
-      // repeat for all steps
-    },
-  },
-})
-`}/>
-
-  </TabsContent>
-  <TabsContent value="3">
-    <TabsCodeBlockContent language="jsx" value={`import styled, { ThemeProvider } from 'styled-components';
-import {
+    <Tabs.Content asChild value="css-in-js">
+      <CodeBlock.Content>
+        <CodeBlock.Pre>
+          <CodeBlock.Code language="js">
+{`import {
   blue,
   green,
   yellow,
@@ -414,33 +316,37 @@ const theme = {
   dangerBgSubtle: red.red2,
   // repeat for all steps
 };
+`}
+          </CodeBlock.Code>
+        </CodeBlock.Pre>
+        <CodeBlock.CopyButton />
+      </CodeBlock.Content>
+    </Tabs.Content>
 
-<ThemeProvider theme={theme}>
-  // your app
-</ThemeProvider>
-`}/>
-
-  </TabsContent>
-</TabsCodeBlock>
-}
+  </CodeBlock.Root>
+</Tabs.Root>
 
 Again, with this approach, you will likely run into issues where you need to use the same step for multiple use cases. Common examples include:
 
-- Step 9 is designed for solid backgrounds, but it also works well for input placeholder text.
+- Step 9 is designed for solid backgrounds, but it also may work for input placeholder text.
 - Step 8 is designed for hovered component borders, but it also works well for focus rings.
 
 In these cases, you can choose to define multiple aliases which map to the same step.
 
-{
+<Tabs.Root asChild defaultValue="css">
+  <CodeBlock.Root>
+    <CodeBlock.Header>
+      <Tabs.List>
+        <Tabs.Trigger value="css">CSS</Tabs.Trigger>
+        <Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
+      </Tabs.List>
+    </CodeBlock.Header>
 
-<TabsCodeBlock defaultValue="1" my="5">
-  <TabsList>
-    <TabsTrigger value="1">CSS</TabsTrigger>
-    <TabsTrigger value="2">Stitches</TabsTrigger>
-    <TabsTrigger value="3">Styled Components</TabsTrigger>
-  </TabsList>
-  <TabsContent value="1">
-    <TabsCodeBlockContent language="css" value={`/*
+    <Tabs.Content asChild value="css">
+      <CodeBlock.Content>
+        <CodeBlock.Pre>
+          <CodeBlock.Code language="css">
+{`/*
  * Note: Importing from the CDN in production is not recommended.
  * It's intended for prototyping only.
  */
@@ -452,46 +358,23 @@ In these cases, you can choose to define multiple aliases which map to the same 
 
 :root {
   --gray-solid: var(--gray-9);
-  --gray-placeholderText: var(--gray-9);
+  --gray-placeholder-text: var(--gray-9);
 
   --accent-border-hover: var(--blue-8);
   --accent-focus-ring: var(--blue-8);
 }
-`}/>
-  </TabsContent>
-  <TabsContent value="2">
-    <TabsCodeBlockContent language="jsx" value={`import { createCss } from '@stitches/react';
-import {
-  gray,
-  blue,
-  green,
-  yellow,
-  red
-} from '@radix-ui/colors';
+`}
+          </CodeBlock.Code>
+        </CodeBlock.Pre>
+        <CodeBlock.CopyButton />
+      </CodeBlock.Content>
+    </Tabs.Content>
 
-const { styled, theme } = createCss({
-  theme: {
-    colors: {
-      ...gray,
-      ...blue,
-      ...green,
-      ...yellow,
-      ...red,
-
-      graySolid: '$gray9',
-      grayPlaceholderText: '$gray9',
-
-      accentBorderHover: '$blue8',
-      accentFocusRing: '$blue8',
-    },
-  },
-});
-`}/>
-
-  </TabsContent>
-  <TabsContent value="3">
-    <TabsCodeBlockContent language="jsx" value={`import styled, { ThemeProvider } from 'styled-components';
-import {
+    <Tabs.Content asChild value="css-in-js">
+      <CodeBlock.Content>
+        <CodeBlock.Pre>
+          <CodeBlock.Code language="js">
+{`import {
   gray,
   blue,
   green,
@@ -511,16 +394,15 @@ const theme = {
 
   accentBorderHover: blue.blue8,
   accentFocusRing: blue.blue8,
-};
+};`}
+          </CodeBlock.Code>
+        </CodeBlock.Pre>
+        <CodeBlock.CopyButton />
+      </CodeBlock.Content>
+    </Tabs.Content>
 
-<ThemeProvider theme={theme}>
-  // your app
-</ThemeProvider>
-`}/>
-
-  </TabsContent>
-</TabsCodeBlock>
-}
+  </CodeBlock.Root>
+</Tabs.Root>
 
 Or you can simply recommend that your teammates defer to the original step number for situations where use cases don't have an alias.
 
@@ -533,16 +415,20 @@ When designing for both light and dark modes, you sometimes need to map a variab
 - Shadows that are saturated, transparent gray in light mode, and pure black in dark mode.
 - An overlay that is light transparent black in light mode, and a darker transparent black in dark mode.
 
-{
+<Tabs.Root asChild defaultValue="css">
+  <CodeBlock.Root>
+    <CodeBlock.Header>
+      <Tabs.List>
+        <Tabs.Trigger value="css">CSS</Tabs.Trigger>
+        <Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
+      </Tabs.List>
+    </CodeBlock.Header>
 
-<TabsCodeBlock defaultValue="1" my="5">
-  <TabsList>
-    <TabsTrigger value="1">CSS</TabsTrigger>
-    <TabsTrigger value="2">Stitches</TabsTrigger>
-    <TabsTrigger value="3">Styled Components</TabsTrigger>
-  </TabsList>
-  <TabsContent value="1">
-    <TabsCodeBlockContent language="css" value={`/*
+    <Tabs.Content asChild value="css">
+      <CodeBlock.Content>
+        <CodeBlock.Pre>
+          <CodeBlock.Code language="css">
+{`/*
  * Note: Importing from the CDN in production is not recommended.
  * It's intended for prototyping only.
  */
@@ -564,52 +450,18 @@ When designing for both light and dark modes, you sometimes need to map a variab
   --panel-contrast: var(--white-a9);
   --shadow: black;
   --overlay: var(--black-a11);
-}
-`}/>
-  </TabsContent>
-  <TabsContent value="2">
-    <TabsCodeBlockContent language="jsx" value={`import { createCss } from '@stitches/react';
-import {
-  slate,
-  slateA,
-  grayA,
-  blackA
-} from '@radix-ui/colors';
+}`}
+          </CodeBlock.Code>
+        </CodeBlock.Pre>
+        <CodeBlock.CopyButton />
+      </CodeBlock.Content>
+    </Tabs.Content>
 
-const { styled, theme } = createCss({
-  theme: {
-    colors: {
-      ...slate,
-      ...slateA,
-      ...grayA,
-      ...blackA,
-
-      panel: 'white',
-      panelContrast: '$grayA12',
-      shadow: '$slateA3',
-      overlay: '$blackA6',
-    },
-  },
-});
-
-const darkTheme = theme({
-  colors: {
-    ...slateDark,
-    ...slateDarkA,
-    ...grayDarkA,
-
-    // Remap your colors for dark mode
-    panel: '$slate2',
-    panelContrast: '$grayA3',
-    shadow: 'black',
-    overlay: '$blackA9',
-  },
-});
-`}/>
-
-  </TabsContent>
-  <TabsContent value="3">
-    <TabsCodeBlockContent language="jsx" value={`import styled, { ThemeProvider } from 'styled-components';
+    <Tabs.Content asChild value="css-in-js">
+      <CodeBlock.Content>
+        <CodeBlock.Pre>
+          <CodeBlock.Code language="js">
+{`import styled, { ThemeProvider } from 'styled-components';
 import {
   slate,
   slateA,
@@ -644,13 +496,15 @@ const darkTheme = {
 
 <ThemeProvider theme={darkTheme}>
   // your app
-</ThemeProvider>
-`}/>
+</ThemeProvider>`}
+          </CodeBlock.Code>
+        </CodeBlock.Pre>
+        <CodeBlock.CopyButton />
+      </CodeBlock.Content>
+    </Tabs.Content>
 
-  </TabsContent>
-</TabsCodeBlock>
-}
-
+  </CodeBlock.Root>
+</Tabs.Root>
 
 Avoid using specific variable names like "CardBg", or "Tooltip", because you will likely need to use each variable for multiple use cases.
 
@@ -658,21 +512,24 @@ Avoid using specific variable names like "CardBg", or "Tooltip", because you wil
 
 If you wish, you can rename scales. Reasons might include:
 
-- Rename a saturated gray to "gray" to keep things simple.
-- Rename "sky" or "grass" to "blue" or "green" to keep things standard.
-- Rename a scale to match your brand, like how Discord use "Blurple".
-- Just to have some fun :)
+- Rename a saturated gray to `gray` to keep things simple.
+- Rename `sky` or `grass` to `blue` or `green` to keep the naming intuitive.
+- Rename a scale to match your brand, like how Discord use `blurple`.
 
-{
+<Tabs.Root asChild defaultValue="css">
+  <CodeBlock.Root>
+    <CodeBlock.Header>
+      <Tabs.List>
+        <Tabs.Trigger value="css">CSS</Tabs.Trigger>
+        <Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
+      </Tabs.List>
+    </CodeBlock.Header>
 
-<TabsCodeBlock defaultValue="1" my="5">
-  <TabsList>
-    <TabsTrigger value="1">CSS</TabsTrigger>
-    <TabsTrigger value="2">Stitches</TabsTrigger>
-    <TabsTrigger value="3">Styled Components</TabsTrigger>
-  </TabsList>
-  <TabsContent value="1">
-    <TabsCodeBlockContent language="css" value={`/*
+    <Tabs.Content asChild value="css">
+      <CodeBlock.Content>
+        <CodeBlock.Pre>
+          <CodeBlock.Code language="css">
+{`/*
  * Note: Importing from the CDN in production is not recommended.
  * It's intended for prototyping only.
  */
@@ -698,44 +555,18 @@ If you wish, you can rename scales. Reasons might include:
   --caribbean-sunset-1: var(--crimson-1);
   --caribbean-sunset-2: var(--crimson-2);
 }
-`}/>
-  </TabsContent>
-  <TabsContent value="2">
-    <TabsCodeBlockContent language="jsx" value={`import { createCss } from '@stitches/react';
-import {
-  slate,
-  sky,
-  grass,
-  violet,
-  crimson
-} from '@radix-ui/colors';
+`}
+          </CodeBlock.Code>
+        </CodeBlock.Pre>
+        <CodeBlock.CopyButton />
+      </CodeBlock.Content>
+    </Tabs.Content>
 
-const { styled } = createCss({
-  theme: {
-    colors: {
-      gray1: slate.slate1,
-      gray2: slate.slate2,
-
-      blue1: sky.sky1,
-      blue2: sky.sky2,
-
-      green1: grass.grass1,
-      green2: grass.grass2,
-
-      blurple1: violet.violet1,
-      blurple2: violet.violet2,
-
-      caribbeanSunset1: crimson.crimson1,
-      caribbeanSunset2: crimson.crimson2,
-    },
-  },
-});
-`}/>
-
-  </TabsContent>
-  <TabsContent value="3">
-    <TabsCodeBlockContent language="jsx" value={`import styled, { ThemeProvider } from 'styled-components';
-import {
+    <Tabs.Content asChild value="css-in-js">
+      <CodeBlock.Content>
+        <CodeBlock.Pre>
+          <CodeBlock.Code language="js">
+{`import {
   slate,
   sky,
   grass,
@@ -758,13 +589,12 @@ const theme = {
 
   caribbeanSunset1: crimson.crimson1,
   caribbeanSunset2: crimson.crimson2,
-};
+};`}
+          </CodeBlock.Code>
+        </CodeBlock.Pre>
+        <CodeBlock.CopyButton />
+      </CodeBlock.Content>
+    </Tabs.Content>
 
-<ThemeProvider theme={theme}>
-  // your app
-</ThemeProvider>
-`}/>
-
-  </TabsContent>
-</TabsCodeBlock>
-}
+  </CodeBlock.Root>
+</Tabs.Root>

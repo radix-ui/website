@@ -1,7 +1,7 @@
 import React from 'react';
 import NextLink from 'next/link';
 import { Box, Text, Link, Flex, Container, Heading } from '@radix-ui/themes';
-import { styled } from '@lib/stitches';
+import { styled } from '@utils/stitches';
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons';
 import {
   Carousel,

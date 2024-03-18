@@ -5,9 +5,9 @@ import matter from 'gray-matter';
 import compareVersions from 'compare-versions';
 import { bundleMDX } from 'mdx-bundler';
 import remarkSlug from 'remark-slug';
-import rehypeHeroCodeBlock from '@lib/rehype-hero-code-block';
-import rehypeMetaAttribute from '@lib/rehype-meta-attribute';
-import rehypeHighlightCode from '@lib/rehype-highlight-code';
+import rehypeHeroCodeBlock from '@utils/rehype-hero-code-block';
+import rehypeMetaAttribute from '@utils/rehype-meta-attribute';
+import rehypeHighlightCode from '@utils/rehype-highlight-code';
 
 import type { Frontmatter } from 'types/frontmatter';
 

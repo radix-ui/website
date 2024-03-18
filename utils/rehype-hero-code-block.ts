@@ -21,10 +21,10 @@ const rehypeHeroCodeBlock = () => (tree: UnistTree) => {
               const syntax = getSyntax(extension);
               let source = fs.readFileSync(path.join(filePath), 'utf8');
 
-              // We reference @lib/stitches in the original stitches demos to ensure
+              // We reference @utils/stitches in the original stitches demos to ensure
               // styles are extracted in SSR when rendered to docs pages.
               if (lib === 'stitches' && file === 'index.jsx') {
-                source = source.replace('@lib/stitches', '@stitches/react');
+                source = source.replace('@utils/stitches', '@stitches/react');
               }
 
               node.children.push(

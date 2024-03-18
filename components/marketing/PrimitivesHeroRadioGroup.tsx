@@ -1,5 +1,5 @@
 import { Text } from '@radix-ui/themes';
-import { styled } from '@lib/stitches';
+import { styled } from '@utils/stitches';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 
 export const RadioCards = styled(RadioGroupPrimitive.Root, {

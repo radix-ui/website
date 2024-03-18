@@ -1,6 +1,6 @@
 import styles from './index.module.css';
 import * as React from 'react';
-import { classNames } from '@lib/classNames';
+import { classNames } from '@utils/classNames';
 
 type Steps = {
   normalStep?: number;

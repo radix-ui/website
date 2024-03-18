@@ -1,7 +1,7 @@
 import React from 'react';
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
-import { getCssText } from '@lib/stitches';
-import { renderSnippet, gtagUrl } from '@lib/analytics';
+import { getCssText } from '@utils/stitches';
+import { renderSnippet, gtagUrl } from '@utils/analytics';
 
 export default class Document extends NextDocument {
   render() {

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { transform as sucraseTransform } from 'sucrase';
+import { useIsomorphicLayoutEffect } from '@utils/useIsomorphicLayoutEffect';
 
 interface LiveCodeProps {
   /** Code string to evaluate */
@@ -191,6 +192,3 @@ const injectReactClassComponentPrototype = (fn: () => null, code = '') => {
 };
 
 const removeImports = (code = '') => code.replace(/^(import .+?;|'|")$/gms, '');
-
-const useIsomorphicLayoutEffect =
-  typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;

@@ -37,7 +37,7 @@ import { CheckIcon, CopyIcon, CubeIcon, Half2Icon, PlayIcon } from '@radix-ui/re
 import { Marker } from './Marker';
 import * as React from 'react';
 import { ThemesPanelBackgroundImage } from './ThemesPanelBackgroundImage';
-import { accentColors, themePropDefs } from '@lib/themes/props';
+import { accentColors, themePropDefs } from '@utils/themes/props';
 import { TabNavDemo } from '@components/tab-nav-demo';
 import styles from './ThemesDocsAssets.module.css';
 

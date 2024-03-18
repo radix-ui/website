@@ -7,7 +7,7 @@ import { GitHubLogoIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useMobileMenuContext } from './MobileMenu';
-import { classNames } from '@lib/classNames';
+import { classNames } from '@utils/classNames';
 import { RadixLogo, RadixLogoIcon } from './RadixLogo';
 import { RemoveScroll } from 'react-remove-scroll';
 

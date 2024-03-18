@@ -1,4 +1,4 @@
-import { colorsRoutes } from '@lib/colorsRoutes';
+import { colorsRoutes } from '@utils/colorsRoutes';
 import { Box, ScrollArea } from '@radix-ui/themes';
 import { ColorsHeader } from './ColorsHeader';
 import { DocsNav } from './DocsNav';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { primitivesRoutes } from '@lib/primitivesRoutes';
+import { primitivesRoutes } from '@utils/primitivesRoutes';
 import { Box, ScrollArea } from '@radix-ui/themes';
 import { DocsNav } from './DocsNav';
 import { MobileMenu } from './MobileMenu';

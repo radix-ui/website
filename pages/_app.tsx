@@ -5,13 +5,14 @@ import { ThemeProvider } from 'next-themes';
 import { Theme } from '@radix-ui/themes';
 import { PrimitivesDocsPage } from '@components/PrimitivesDocsPage';
 import { ColorsDocsPage } from '@components/ColorsDocsPage';
-import { useAnalytics } from '@lib/analytics';
+import { useAnalytics } from '@utils/analytics';
 import { CssLibPreferenceProvider } from '@components/CssLibPreference';
 import { ThemesDocsPage } from '@components/ThemesDocsPage';
 import { SyntaxSchemeProvider } from '@components/Pre';
 import { Favicon } from '@components/Favicon';
 import '@radix-ui/themes/styles.css';
 import './styles.css';
+import './syntax-highlighting.css';
 
 function Pages({ Component, pageProps }: AppProps) {
   const router = useRouter();

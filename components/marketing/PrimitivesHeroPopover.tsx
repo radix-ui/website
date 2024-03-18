@@ -1,6 +1,6 @@
 import React from 'react';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
-import { styled } from '@lib/stitches';
+import { styled } from '@utils/stitches';
 import { PrimitivesHeroButton } from '@components/marketing/PrimitivesHeroButton';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import { Flex, IconButton, Text, TextField, Grid, Box } from '@radix-ui/themes';

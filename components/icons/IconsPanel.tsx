@@ -1,4 +1,3 @@
-import { CodeBlock } from '@components/CodeBlock';
 import {
   CubeIcon,
   DownloadIcon,
@@ -13,6 +12,7 @@ import { CopyToastProvider } from './CopyToast';
 import { MainContent } from './MainContent';
 
 import styles from './IconsPanel.module.css';
+import { CodeBlock } from '@components/CodeBlock';
 
 export const IconsPanel = () => {
   return (
@@ -132,16 +132,25 @@ export const IconsPanel = () => {
               All icons are available as individual React components. Install Radix Icons from npm:
             </Text>
 
-            <CodeBlock mt="3" language="bash" value="npm install @radix-ui/react-icons" />
+            <CodeBlock.Root mt="3">
+              <CodeBlock.Content>
+                <CodeBlock.Pre>
+                  <CodeBlock.Code language="bash">npm install @radix-ui/react-icons</CodeBlock.Code>
+                </CodeBlock.Pre>
+                <CodeBlock.CopyButton />
+              </CodeBlock.Content>
+            </CodeBlock.Root>
 
             <Text as="p" size="3" mt="4">
               Import the icons into your React project:
             </Text>
 
-            <CodeBlock
-              mt="2"
-              language="jsx"
-              value={`import { FaceIcon, ImageIcon, SunIcon } from '@radix-ui/react-icons'
+            <CodeBlock.Root mt="3">
+              <CodeBlock.Content>
+                <CodeBlock.Pre>
+                  <CodeBlock.Code language="jsx">
+                    {`
+import { FaceIcon, ImageIcon, SunIcon } from '@radix-ui/react-icons'
 
 function MyComponent () {
   return (
@@ -151,8 +160,12 @@ function MyComponent () {
       <ImageIcon />
     </div>
   )
-}`}
-            />
+}
+                  `.trim()}
+                  </CodeBlock.Code>
+                </CodeBlock.Pre>
+              </CodeBlock.Content>
+            </CodeBlock.Root>
           </Box>
 
           <Box style={{ gridColumn: '3 / 4' }}>

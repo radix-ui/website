@@ -1,9 +1,11 @@
 import React from 'react';
 import { Box, Section, Text, Flex, Grid, Heading, Card } from '@radix-ui/themes';
 import { MarketingCaption } from './MarketingCaption';
-import { CodeDemo } from './CodeDemo';
 import { Container, Theme } from '@radix-ui/themes';
 import { HiddenScroll } from './HiddenScroll';
+import { CodeBlock } from '@components/CodeBlock';
+import rangeParser from 'parse-numeric-range';
+import { useIsomorphicLayoutEffect } from '@utils/useIsomorphicLayoutEffect';
 
 enum Highlights {
   Unstyled = '1-18',
@@ -13,7 +15,70 @@ enum Highlights {
 }
 
 export const DeveloperExperienceSection = () => {
-  const [active, setActive] = React.useState<Highlights>(Highlights.Unstyled);
+  const [activeLines, setActiveLines] = React.useState<Highlights>(Highlights.Unstyled);
+  const preRef = React.useRef<HTMLPreElement>(null);
+
+  useIsomorphicLayoutEffect(() => {
+    const pre = preRef.current;
+    if (!pre) {
+      return;
+    }
+
+    const paddingY = 24;
+    const codeInner = pre.querySelector('code');
+    const codeBlockHeight = pre.clientHeight - paddingY * 2;
+
+    const lines = pre.querySelectorAll<HTMLElement>('[data-highlighted]');
+
+    if (!activeLines) {
+      codeInner.style.transform = `translate3d(0, 0, 0)`;
+      return;
+    }
+
+    const linesToHighlight = rangeParser(activeLines);
+
+    const firstLineNumber = Math.max(0, linesToHighlight[0] - 1);
+    const lastLineNumber = Math.min(lines.length - 1, [...linesToHighlight].reverse()[0] - 1);
+    const firstLine = lines[firstLineNumber];
+    const lastLine = lines[lastLineNumber];
+
+    // Prevent errors in case the right line doesnt exist
+    if (!firstLine || !lastLine) {
+      console.warn(`NewCodeDemo: Error finding the right line`);
+      return;
+    }
+
+    const linesHeight = lastLine.offsetTop + lastLine.offsetHeight - firstLine.offsetTop;
+    const maxDistance = codeInner.clientHeight - codeBlockHeight;
+
+    const codeFits = linesHeight < codeBlockHeight;
+    const lastLineIsBelow = lastLine.offsetTop + lastLine.offsetHeight > codeBlockHeight - paddingY;
+    const lastLineIsAbove = !lastLineIsBelow;
+
+    let translateY;
+    if (codeFits && lastLineIsAbove) {
+      translateY = 0;
+    } else if (codeFits && lastLineIsBelow) {
+      const dist = firstLine.offsetTop - (codeBlockHeight - linesHeight) / 2;
+      translateY = dist > maxDistance ? maxDistance : dist;
+    } else {
+      translateY = firstLine.offsetTop;
+    }
+
+    lines.forEach((line, i) => {
+      const lineIndex = i + 1;
+
+      if (linesToHighlight.includes(lineIndex)) {
+        line.setAttribute('data-highlighted', 'true');
+      } else {
+        line.setAttribute('data-highlighted', 'false');
+      }
+    });
+
+    requestAnimationFrame(
+      () => (codeInner.style.transform = `translate3d(0, ${-translateY}px, 0)`)
+    );
+  }, [activeLines]);
 
   return (
     <Section
@@ -41,7 +106,13 @@ export const DeveloperExperienceSection = () => {
               a consistent and predictable experience.
             </Text>
 
-            <HiddenScroll display={{ md: 'none' }} pl="5" py="1" mx="-5" style={{ width: '100vw' }}>
+            <HiddenScroll
+              pl="5"
+              py="1"
+              width="100vw"
+              display={{ md: 'none' }}
+              mx={{ initial: '-5', xs: '-6', sm: '-7' }}
+            >
               <Grid
                 gapX={{ initial: '3', xs: '5' }}
                 gapY="3"
@@ -49,11 +120,16 @@ export const DeveloperExperienceSection = () => {
                 columns="repeat(4, max-content) 1px"
                 rows="430px auto"
               >
-                <Theme asChild appearance="dark" hasBackground={false}>
-                  <CodeWindow>
-                    <StyledCodeDemo value={code.unstyled} language="jsx" />
-                  </CodeWindow>
+                <Theme asChild appearance="dark">
+                  <CodeBlock.Root style={codeBlockRootStyles}>
+                    <CodeBlock.Content>
+                      <CodeBlock.Pre>
+                        <CodeBlock.Code language="jsx">{code.unstyled}</CodeBlock.Code>
+                      </CodeBlock.Pre>
+                    </CodeBlock.Content>
+                  </CodeBlock.Root>
                 </Theme>
+
                 <Box>
                   <Heading as="h3" size="3">
                     Unstyled
@@ -63,11 +139,16 @@ export const DeveloperExperienceSection = () => {
                   </Text>
                 </Box>
 
-                <Theme asChild appearance="dark" hasBackground={false}>
-                  <CodeWindow>
-                    <StyledCodeDemo value={code.composable} language="jsx" />
-                  </CodeWindow>
+                <Theme asChild appearance="dark">
+                  <CodeBlock.Root style={codeBlockRootStyles}>
+                    <CodeBlock.Content>
+                      <CodeBlock.Pre>
+                        <CodeBlock.Code language="jsx">{code.composable}</CodeBlock.Code>
+                      </CodeBlock.Pre>
+                    </CodeBlock.Content>
+                  </CodeBlock.Root>
                 </Theme>
+
                 <Box>
                   <Heading as="h3" size="3">
                     Composable
@@ -77,11 +158,16 @@ export const DeveloperExperienceSection = () => {
                   </Text>
                 </Box>
 
-                <Theme asChild appearance="dark" hasBackground={false}>
-                  <CodeWindow>
-                    <StyledCodeDemo value={code.customizable} language="jsx" />
-                  </CodeWindow>
+                <Theme asChild appearance="dark">
+                  <CodeBlock.Root style={codeBlockRootStyles}>
+                    <CodeBlock.Content>
+                      <CodeBlock.Pre>
+                        <CodeBlock.Code language="jsx">{code.customizable}</CodeBlock.Code>
+                      </CodeBlock.Pre>
+                    </CodeBlock.Content>
+                  </CodeBlock.Root>
                 </Theme>
+
                 <Box>
                   <Heading as="h3" size="3">
                     Customizable
@@ -91,11 +177,16 @@ export const DeveloperExperienceSection = () => {
                   </Text>
                 </Box>
 
-                <Theme asChild appearance="dark" hasBackground={false}>
-                  <CodeWindow>
-                    <StyledCodeDemo value={code.consistent} language="jsx" />
-                  </CodeWindow>
+                <Theme asChild appearance="dark">
+                  <CodeBlock.Root style={codeBlockRootStyles}>
+                    <CodeBlock.Content>
+                      <CodeBlock.Pre>
+                        <CodeBlock.Code language="jsx">{code.consistent}</CodeBlock.Code>
+                      </CodeBlock.Pre>
+                    </CodeBlock.Content>
+                  </CodeBlock.Root>
                 </Theme>
+
                 <Box>
                   <Heading as="h3" size="3">
                     Consistent
@@ -111,12 +202,13 @@ export const DeveloperExperienceSection = () => {
             <Flex gap="1" direction="column" ml="-3" display={{ initial: 'none', md: 'flex' }}>
               <Card
                 asChild
-                onMouseDown={() => setActive(Highlights.Unstyled)}
-                onClick={() => setActive(Highlights.Unstyled)}
+                onMouseDown={() => setActiveLines(Highlights.Unstyled)}
+                onClick={() => setActiveLines(Highlights.Unstyled)}
                 variant="ghost"
                 style={{
                   margin: 0,
-                  backgroundColor: active === Highlights.Unstyled ? 'var(--gray-a3)' : '',
+                  backgroundColor:
+                    activeLines === Highlights.Unstyled ? 'var(--gray-a3)' : undefined,
                 }}
               >
                 <button>
@@ -131,12 +223,13 @@ export const DeveloperExperienceSection = () => {
 
               <Card
                 asChild
-                onMouseDown={() => setActive(Highlights.Composable)}
-                onClick={() => setActive(Highlights.Composable)}
+                onMouseDown={() => setActiveLines(Highlights.Composable)}
+                onClick={() => setActiveLines(Highlights.Composable)}
                 variant="ghost"
                 style={{
                   margin: 0,
-                  backgroundColor: active === Highlights.Composable ? 'var(--gray-a3)' : '',
+                  backgroundColor:
+                    activeLines === Highlights.Composable ? 'var(--gray-a3)' : undefined,
                 }}
               >
                 <button>
@@ -151,12 +244,13 @@ export const DeveloperExperienceSection = () => {
 
               <Card
                 asChild
-                onMouseDown={() => setActive(Highlights.Customizable)}
-                onClick={() => setActive(Highlights.Customizable)}
+                onMouseDown={() => setActiveLines(Highlights.Customizable)}
+                onClick={() => setActiveLines(Highlights.Customizable)}
                 variant="ghost"
                 style={{
                   margin: 0,
-                  backgroundColor: active === Highlights.Customizable ? 'var(--gray-a3)' : '',
+                  backgroundColor:
+                    activeLines === Highlights.Customizable ? 'var(--gray-a3)' : undefined,
                 }}
               >
                 <button>
@@ -171,12 +265,13 @@ export const DeveloperExperienceSection = () => {
 
               <Card
                 asChild
-                onMouseDown={() => setActive(Highlights.Consistent)}
-                onClick={() => setActive(Highlights.Consistent)}
+                onMouseDown={() => setActiveLines(Highlights.Consistent)}
+                onClick={() => setActiveLines(Highlights.Consistent)}
                 variant="ghost"
                 style={{
                   margin: 0,
-                  backgroundColor: active === Highlights.Consistent ? 'var(--gray-a3)' : '',
+                  backgroundColor:
+                    activeLines === Highlights.Consistent ? 'var(--gray-a3)' : undefined,
                 }}
               >
                 <button>
@@ -194,51 +289,35 @@ export const DeveloperExperienceSection = () => {
           <Box
             display={{ initial: 'none', md: 'block' }}
             position="relative"
-            style={{ minWidth: 480, minHeight: 602 }}
+            minWidth="480px"
+            minHeight="602px"
           >
-            <Theme asChild appearance="dark" hasBackground={false}>
-              <CodeWindow
+            <Theme asChild appearance="dark">
+              <CodeBlock.Root
                 style={{
+                  ...codeBlockRootStyles,
                   position: 'absolute',
                   inset: 0,
-                  overflow: 'hidden',
                   paddingTop: 'var(--space-6)',
                   boxShadow: '0 50px 100px -50px hsl(254 100% 6% / 0.7)',
-                  minHeight: 575,
                 }}
               >
-                <Box
-                  style={{
-                    position: 'absolute',
-                    top: 10,
-                    left: 10,
-                    width: 52,
-                    height: 12,
-                    background: `
-                      radial-gradient(circle closest-side at 6px, var(--gray-a7) 90%, #FFFFFF00),
-                      radial-gradient(circle closest-side at 24px, var(--gray-a7) 90%, #FFFFFF00),
-                      radial-gradient(circle closest-side at 42px, var(--gray-a7) 90%, #FFFFFF00)
-                    `,
-                  }}
-                />
+                <Box position="absolute" top="10px" left="10px">
+                  <WindowControlButtons />
+                </Box>
 
-                <Flex position="absolute" justify="center" top="0" left="0" right="0" mt="2">
-                  <Text size="1" style={{ color: 'var(--slate-a9)', userSelect: 'none' }}>
-                    MyComponent.jsx
-                  </Text>
-                </Flex>
+                <Box position="absolute" top="0" left="0" right="0">
+                  <WindowTitle />
+                </Box>
 
-                <StyledCodeDemo
-                  language="jsx"
-                  value={allCode}
-                  line={active}
-                  data-invert-line-highlight="false"
-                  style={{
-                    height: '100%',
-                    userSelect: 'auto',
-                  }}
-                />
-              </CodeWindow>
+                <CodeBlock.Content>
+                  <CodeBlock.Pre ref={preRef} overflow="hidden">
+                    <CodeBlock.Code language="jsx" invertLineHighlight style={codeBlockCodeStyles}>
+                      {allCode}
+                    </CodeBlock.Code>
+                  </CodeBlock.Pre>
+                </CodeBlock.Content>
+              </CodeBlock.Root>
             </Theme>
           </Box>
         </Grid>
@@ -247,39 +326,40 @@ export const DeveloperExperienceSection = () => {
   );
 };
 
-const StyledCodeDemo = React.forwardRef<HTMLPreElement, React.ComponentProps<typeof CodeDemo>>(
-  ({ style, ...props }, forwardedRef) => (
-    <CodeDemo
-      ref={forwardedRef}
-      data-invert-line-highlight="false"
-      showCopyCodeButton={false}
-      style={
-        {
-          height: '100%',
-          userSelect: 'auto',
-          padding: 'var(--space-3)',
-          '--background': 'transparent',
-          boxShadow: 'none',
-          ...style,
-        } as React.CSSProperties
-      }
-      {...props}
-    />
-  )
+const codeBlockRootStyles = {
+  '--code-block-background': 'var(--developer-experience-code-block-background)',
+  '--code-block-border': 'transparent',
+  '--code-block-radius': 'var(--radius-5)',
+  '--scrollarea-scrollbar-vertical-margin-top': 'var(--space-2)',
+  '--scrollarea-scrollbar-vertical-margin-bottom': 'var(--space-2)',
+} as React.CSSProperties;
+
+const codeBlockCodeStyles = {
+  display: 'block',
+  transition: 'transform 200ms ease-in-out',
+  willChange: 'transform',
+};
+
+const WindowControlButtons = () => (
+  <Box
+    width="52px"
+    height="12px"
+    style={{
+      background: `
+        radial-gradient(circle closest-side at 6px, var(--gray-a7) 90%, #FFFFFF00),
+        radial-gradient(circle closest-side at 24px, var(--gray-a7) 90%, #FFFFFF00),
+        radial-gradient(circle closest-side at 42px, var(--gray-a7) 90%, #FFFFFF00)
+      `,
+    }}
+  />
 );
 
-const CodeWindow = ({ style, ...props }: React.ComponentPropsWithoutRef<'div'>) => (
-  <Box
-    className="dark-theme"
-    style={{
-      position: 'relative',
-      maxHeight: '100%',
-      borderRadius: 'var(--radius-5)',
-      backgroundColor: 'var(--developer-experience-code-window-background)',
-      ...style,
-    }}
-    {...props}
-  />
+const WindowTitle = () => (
+  <Flex align="center" justify="center" height="32px">
+    <Text size="1" style={{ color: 'var(--slate-a9)', userSelect: 'none' }}>
+      MyComponent.jsx
+    </Text>
+  </Flex>
 );
 
 const code = {

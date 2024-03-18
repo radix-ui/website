@@ -17,8 +17,8 @@ import { isValidCssLib, useCssLibPreference } from './CssLibPreference';
 import { FrontmatterContext } from './MDXComponents';
 import { Pre } from './Pre';
 import { CopyCodeButton } from './CopyCodeButton';
-import { CSS_LIB_NAMES, DEFAULT_CSS_LIB } from '@lib/constants';
-import type { CssLib } from '@lib/constants';
+import { CSS_LIB_NAMES, DEFAULT_CSS_LIB } from '@utils/constants';
+import type { CssLib } from '@utils/constants';
 import styles from './HeroCodeBlock.module.css';
 
 export const HeroCodeBlock = ({
