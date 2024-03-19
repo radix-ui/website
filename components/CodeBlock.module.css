@@ -44,12 +44,23 @@
   height: 100%;
 }
 
-.CodeBlockCopyButton {
+/* Set copy button positioning only when within code block content */
+.CodeBlockContent .CodeBlockCopyButton {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+
   transition: opacity 80ms ease-out;
   opacity: 0;
 }
 
-.CodeBlockCopyButton:focus-visible {
+@media (max-width: 767px) {
+  .CodeBlockContent .CodeBlockCopyButton {
+    display: none;
+  }
+}
+
+.CodeBlockContent .CodeBlockCopyButton:focus-visible {
   opacity: 1;
 }
 

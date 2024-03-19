@@ -55,15 +55,5 @@
 }
 
 :global(:where(.dark, .dark-theme)) .CollapsibleGradient::before {
-  background: linear-gradient(180deg, transparent, var(--gray-2) 70%);
-}
-
-.CodeContainer .CopyButton {
-  opacity: 0;
-  transition: opacity 80ms ease-out;
-}
-
-.CodeContainer:hover .CopyButton,
-.CopyButton:focus {
-  opacity: 1;
+  background: linear-gradient(180deg, transparent, var(--gray-1) 70%);
 }

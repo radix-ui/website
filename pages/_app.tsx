@@ -8,7 +8,6 @@ import { ColorsDocsPage } from '@components/ColorsDocsPage';
 import { useAnalytics } from '@utils/analytics';
 import { CssLibPreferenceProvider } from '@components/CssLibPreference';
 import { ThemesDocsPage } from '@components/ThemesDocsPage';
-import { SyntaxSchemeProvider } from '@components/Pre';
 import { Favicon } from '@components/Favicon';
 import '@radix-ui/themes/styles.css';
 import './styles.css';
@@ -20,12 +19,10 @@ function Pages({ Component, pageProps }: AppProps) {
   if (router.pathname.startsWith('/primitives/docs')) {
     return (
       <Theme accentColor="blue" grayColor="slate" className="radix-themes-custom-fonts">
-        <SyntaxSchemeProvider scheme="blue">
-          <PrimitivesDocsPage>
-            <Favicon />
-            <Component {...pageProps} />
-          </PrimitivesDocsPage>
-        </SyntaxSchemeProvider>
+        <PrimitivesDocsPage>
+          <Favicon />
+          <Component {...pageProps} />
+        </PrimitivesDocsPage>
       </Theme>
     );
   }
@@ -33,10 +30,8 @@ function Pages({ Component, pageProps }: AppProps) {
   if (router.pathname.startsWith('/primitives')) {
     return (
       <Theme accentColor="blue" grayColor="slate" className="radix-themes-custom-fonts">
-        <SyntaxSchemeProvider scheme="blue">
-          <Favicon />
-          <Component {...pageProps} />
-        </SyntaxSchemeProvider>
+        <Favicon />
+        <Component {...pageProps} />
       </Theme>
     );
   }
@@ -44,12 +39,10 @@ function Pages({ Component, pageProps }: AppProps) {
   if (router.pathname.startsWith('/colors/docs')) {
     return (
       <Theme accentColor="pink" grayColor="gray" className="radix-themes-custom-fonts">
-        <SyntaxSchemeProvider scheme="pink">
-          <ColorsDocsPage>
-            <Favicon />
-            <Component {...pageProps} />
-          </ColorsDocsPage>
-        </SyntaxSchemeProvider>
+        <ColorsDocsPage>
+          <Favicon />
+          <Component {...pageProps} />
+        </ColorsDocsPage>
       </Theme>
     );
   }
@@ -66,12 +59,10 @@ function Pages({ Component, pageProps }: AppProps) {
   if (router.pathname.startsWith('/themes/docs')) {
     return (
       <Theme accentColor="indigo" className="radix-themes-custom-fonts">
-        <SyntaxSchemeProvider scheme="indigo">
-          <ThemesDocsPage>
-            <Favicon />
-            <Component {...pageProps} />
-          </ThemesDocsPage>
-        </SyntaxSchemeProvider>
+        <ThemesDocsPage>
+          <Favicon />
+          <Component {...pageProps} />
+        </ThemesDocsPage>
       </Theme>
     );
   }
@@ -97,20 +88,16 @@ function Pages({ Component, pageProps }: AppProps) {
   if (router.pathname.startsWith('/icons')) {
     return (
       <Theme accentColor="teal" grayColor="slate" className="radix-themes-custom-fonts">
-        <SyntaxSchemeProvider scheme="teal">
-          <Favicon />
-          <Component {...pageProps} />
-        </SyntaxSchemeProvider>
+        <Favicon />
+        <Component {...pageProps} />
       </Theme>
     );
   }
 
   return (
     <Theme accentColor="indigo" className="radix-themes-custom-fonts">
-      <SyntaxSchemeProvider scheme="indigo">
-        <Favicon />
-        <Component {...pageProps} />
-      </SyntaxSchemeProvider>
+      <Favicon />
+      <Component {...pageProps} />
     </Theme>
   );
 }
