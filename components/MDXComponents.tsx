@@ -53,7 +53,7 @@ export const components = {
     <Heading
       size="6"
       mt="8"
-      mb="4"
+      mb="2"
       asChild
       {...props}
       id={id}

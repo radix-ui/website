@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as themes from '@radix-ui/themes';
 import * as icons from '@radix-ui/react-icons';
-import { Box, Flex, IconButton, ScrollArea } from '@radix-ui/themes';
+import { Box, Flex, IconButton, ScrollArea, Theme } from '@radix-ui/themes';
 import { CheckIcon, CopyIcon } from '@radix-ui/react-icons';
 import { classNames } from '@utils/classNames';
 import styles from './CodeBlock.module.css';
@@ -42,26 +42,28 @@ const LivePreview = React.forwardRef<HTMLDivElement, LivePreviewProps>(function 
   forwardedRef
 ) {
   return (
-    <Box
-      ref={forwardedRef}
-      className={classNames(styles.CodeBlockLivePreview, className)}
-      {...props}
-    >
-      <ScrollArea>
-        <div data-scroll={scroll} className={styles.CodeBlockLivePreviewInner}>
-          <LiveCode
-            code={code}
-            scope={{
-              ...themes,
-              ...icons,
-              ThemesVolumeControlExample,
-              DecorativeBox,
-              RightClickZone,
-            }}
-          />
-        </div>
-      </ScrollArea>
-    </Box>
+    <Theme asChild className="radix-themes-default-fonts">
+      <Box
+        ref={forwardedRef}
+        className={classNames(styles.CodeBlockLivePreview, className)}
+        {...props}
+      >
+        <ScrollArea>
+          <div data-scroll={scroll} className={styles.CodeBlockLivePreviewInner}>
+            <LiveCode
+              code={code}
+              scope={{
+                ...themes,
+                ...icons,
+                ThemesVolumeControlExample,
+                DecorativeBox,
+                RightClickZone,
+              }}
+            />
+          </div>
+        </ScrollArea>
+      </Box>
+    </Theme>
   );
 });
 LivePreview.displayName = 'CodeBlock.LivePreview';
@@ -83,7 +85,12 @@ const Content = React.forwardRef<HTMLDivElement, ContentProps>(function Content(
   forwardedRef
 ) {
   return (
-    <Box ref={forwardedRef} className={classNames(styles.CodeBlockContent, className)} {...props} />
+    <Box
+      ref={forwardedRef}
+      data-code-block-content
+      className={classNames(styles.CodeBlockContent, className)}
+      {...props}
+    />
   );
 });
 Content.displayName = 'CodeBlock.Content';
@@ -149,25 +156,23 @@ const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
     }, [hasCopied]);
 
     return (
-      <Flex position="absolute" top="7px" right="7px" display={{ initial: 'none', sm: 'flex' }}>
-        <IconButton
-          aria-label="Copy code to clipboard"
-          ref={forwardedRef}
-          {...props}
-          className={classNames(styles.CodeBlockCopyButton, className)}
-          onClick={async (event) => {
-            const value = event.currentTarget
-              .closest(`.${styles.CodeBlockContent}`)
-              .querySelector('pre').textContent;
-            copy(value);
-            setHasCopied(true);
-          }}
-          color="gray"
-          variant="soft"
-        >
-          {hasCopied ? <CheckIcon /> : <CopyIcon />}
-        </IconButton>
-      </Flex>
+      <IconButton
+        aria-label="Copy code to clipboard"
+        ref={forwardedRef}
+        {...props}
+        className={classNames(styles.CodeBlockCopyButton, className)}
+        onClick={async (event) => {
+          const value = event.currentTarget
+            .closest(`[data-code-block-content]`)
+            .querySelector('code').textContent;
+          copy(value);
+          setHasCopied(true);
+        }}
+        color="gray"
+        variant="soft"
+      >
+        {hasCopied ? <CheckIcon /> : <CopyIcon />}
+      </IconButton>
     );
   }
 );

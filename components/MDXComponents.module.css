@@ -19,7 +19,7 @@
   gap: var(--space-1);
   padding-left: var(--space-4);
   list-style-type: circle;
-  margin-top: 0;
+  margin-top: var(--space-3);
   margin-bottom: calc(var(--space-4) + var(--space-1));
 }
 

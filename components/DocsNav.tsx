@@ -42,13 +42,13 @@ export const DocsNav = ({ routes }: DocsNavProps) => {
               </Flex>
 
               {page.preview && (
-                <Badge ml="2" color="blue" radius="full">
+                <Badge ml="2" color="gray" radius="full" variant="surface">
                   Preview
                 </Badge>
               )}
 
               {page.deprecated && (
-                <Badge ml="2" color="yellow" radius="full">
+                <Badge ml="2" color="gray" radius="full" variant="surface">
                   Deprecated
                 </Badge>
               )}
