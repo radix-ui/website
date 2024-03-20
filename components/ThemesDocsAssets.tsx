@@ -239,8 +239,12 @@ export function ThemesVariantsExample() {
                     Danger zone
                   </Text>
                   <Flex align="start" direction="column" gap="2">
-                    <Link size="2">Reset recommendations</Link>
-                    <Link size="2">Delete profile</Link>
+                    <Link href="#" size="2" onClick={(e) => e.preventDefault()}>
+                      Reset recommendations
+                    </Link>
+                    <Link href="#" size="2" onClick={(e) => e.preventDefault()}>
+                      Delete profile
+                    </Link>
                   </Flex>
                 </Flex>
               </Flex>
@@ -310,7 +314,10 @@ export function ThemesScalingExample() {
                     {person.name}
                   </Text>
                   <Text as="div" size="2" color="gray">
-                    Approved invoice <Link>#3461</Link>
+                    Approved invoice{' '}
+                    <Link href="#" onClick={(e) => e.preventDefault()}>
+                      #3461
+                    </Link>
                   </Text>
                 </Box>
               </Flex>

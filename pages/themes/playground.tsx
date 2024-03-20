@@ -906,7 +906,11 @@ export default function ComponentsPage() {
                                   <InfoCircledIcon width="16" height="16" />
                                 </Callout.Icon>
                                 <Callout.Text>
-                                  Please <Link>upgrade</Link> to the new version.
+                                  Please{' '}
+                                  <Link href="#" onClick={(e) => e.preventDefault()}>
+                                    upgrade
+                                  </Link>{' '}
+                                  to the new version.
                                 </Callout.Text>
                               </Callout.Root>
                               <Callout.Root variant={variant} highContrast mt="4">
@@ -914,7 +918,11 @@ export default function ComponentsPage() {
                                   <InfoCircledIcon width="16" height="16" />
                                 </Callout.Icon>
                                 <Callout.Text>
-                                  Please <Link>upgrade</Link> to the new version.
+                                  Please{' '}
+                                  <Link href="#" onClick={(e) => e.preventDefault()}>
+                                    upgrade
+                                  </Link>{' '}
+                                  to the new version.
                                 </Callout.Text>
                               </Callout.Root>
                             </td>
@@ -924,7 +932,11 @@ export default function ComponentsPage() {
                                   <InfoCircledIcon width="16" height="16" />
                                 </Callout.Icon>
                                 <Callout.Text>
-                                  Please <Link>upgrade</Link> to the new version.
+                                  Please{' '}
+                                  <Link href="#" onClick={(e) => e.preventDefault()}>
+                                    upgrade
+                                  </Link>{' '}
+                                  to the new version.
                                 </Callout.Text>
                               </Callout.Root>
                               <Callout.Root variant={variant} color="gray" highContrast mt="4">
@@ -932,7 +944,11 @@ export default function ComponentsPage() {
                                   <InfoCircledIcon width="16" height="16" />
                                 </Callout.Icon>
                                 <Callout.Text>
-                                  Please <Link>upgrade</Link> to the new version.
+                                  Please{' '}
+                                  <Link href="#" onClick={(e) => e.preventDefault()}>
+                                    upgrade
+                                  </Link>{' '}
+                                  to the new version.
                                 </Callout.Text>
                               </Callout.Root>
                             </td>
@@ -965,7 +981,11 @@ export default function ComponentsPage() {
                                     <InfoCircledIcon width="16" height="16" />
                                   </Callout.Icon>
                                   <Callout.Text>
-                                    Please <Link>upgrade</Link> to the new version.
+                                    Please{' '}
+                                    <Link href="#" onClick={(e) => e.preventDefault()}>
+                                      upgrade
+                                    </Link>{' '}
+                                    to the new version.
                                   </Callout.Text>
                                 </Callout.Root>
                                 <Callout.Root variant={variant} color={color} highContrast mt="4">
@@ -973,7 +993,11 @@ export default function ComponentsPage() {
                                     <InfoCircledIcon width="16" height="16" />
                                   </Callout.Icon>
                                   <Callout.Text>
-                                    Please <Link>upgrade</Link> to the new version.
+                                    Please{' '}
+                                    <Link href="#" onClick={(e) => e.preventDefault()}>
+                                      upgrade
+                                    </Link>{' '}
+                                    to the new version.
                                   </Callout.Text>
                                 </Callout.Root>
                               </td>
@@ -1010,7 +1034,11 @@ export default function ComponentsPage() {
                                       <InfoCircledIcon {...calloutSizeToIconSize(size)} />
                                     </Callout.Icon>
                                     <Callout.Text>
-                                      Please <Link>upgrade</Link> to the new version.
+                                      Please{' '}
+                                      <Link href="#" onClick={(e) => e.preventDefault()}>
+                                        upgrade
+                                      </Link>{' '}
+                                      to the new version.
                                     </Callout.Text>
                                   </Callout.Root>
                                 </Flex>
@@ -2241,7 +2269,7 @@ export default function ComponentsPage() {
                     Technology revolutionized{' '}
                     <HoverCard.Root>
                       <HoverCard.Trigger>
-                        <Link>typography</Link>
+                        <Link href="https://en.wikipedia.org/wiki/Typography">typography</Link>
                       </HoverCard.Trigger>
 
                       <HoverCard.Content size={size} side="top">
