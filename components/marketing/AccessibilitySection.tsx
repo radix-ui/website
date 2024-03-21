@@ -444,7 +444,7 @@ export const AccessibilitySection = () => {
               )}
 
               {currentSequence !== 'screenReader' && (
-                <Grid flexGrow="1" rows="auto 1fr" style={{ overflow: 'hidden' }}>
+                <Grid flexGrow="1" rows="auto 1fr" overflow="hidden">
                   <Flex align="baseline" justify="between" my="2" mx="3">
                     <Flex align="center" gap="1">
                       <Text color="gray" size="2">

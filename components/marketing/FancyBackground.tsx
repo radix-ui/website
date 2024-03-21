@@ -4,26 +4,23 @@ export const FancyBackground = ({ children }: { children: React.ReactNode }) => 
   return (
     <Box style={{ position: 'relative', zIndex: 0, paddingTop: 'var(--header-height)' }}>
       <Box
+        position="absolute"
+        overflow="hidden"
+        inset="0"
         style={{
-          position: 'absolute',
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
           backgroundColor: 'var(--gray-1)',
           zIndex: -1,
-          overflow: 'hidden',
         }}
       >
         <Box
+          width="100vw"
+          minWidth="1500px"
+          position="absolute"
+          top="0"
+          bottom="0"
           style={{
-            width: '100vw',
-            minWidth: 1500,
             left: '50%',
             transform: 'translateX(-50%)',
-            position: 'absolute',
-            top: 0,
-            bottom: 0,
             backgroundRepeat: 'no-repeat',
             backgroundImage: `
               radial-gradient(circle 800px at 700px 200px, var(--purple-2), transparent),

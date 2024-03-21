@@ -38,7 +38,7 @@ export default function PrimitivesHome() {
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Separator size="2" />
       </Container>
-      <Box style={{ overflow: 'hidden' }}>
+      <Box overflow="hidden">
         <BenefitsSection />
         <StatsSection />
       </Box>

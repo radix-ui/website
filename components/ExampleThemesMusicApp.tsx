@@ -76,19 +76,10 @@ export const ExampleThemesMusicApp = ({ focusable = true, ...props }: ExampleLay
                     />
                   </Box>
                   <Box flexGrow="1" width="0">
-                    <Text
-                      as="div"
-                      size="2"
-                      style={{ textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}
-                    >
+                    <Text as="div" size="2" truncate>
                       {song.name}
                     </Text>
-                    <Text
-                      as="div"
-                      size="1"
-                      color="gray"
-                      style={{ textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}
-                    >
+                    <Text as="div" size="1" color="gray" truncate>
                       {song.artist} – {song.album}
                     </Text>
                   </Box>
@@ -318,19 +309,10 @@ export const ExampleThemesMusicApp = ({ focusable = true, ...props }: ExampleLay
                     />
                   </Box>
                   <Box flexGrow="1" width="0">
-                    <Text
-                      as="div"
-                      size="2"
-                      style={{ textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}
-                    >
+                    <Text as="div" size="2" truncate>
                       {song.name}
                     </Text>
-                    <Text
-                      as="div"
-                      size="1"
-                      color="gray"
-                      style={{ textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}
-                    >
+                    <Text as="div" size="1" color="gray" truncate>
                       {song.artist} – {song.album}
                     </Text>
                   </Box>
@@ -540,8 +522,8 @@ export const ExampleThemesMusicApp = ({ focusable = true, ...props }: ExampleLay
                 width="100%"
                 height="100%"
                 position="absolute"
+                overflow="hidden"
                 style={{
-                  overflow: 'hidden',
                   borderRadius: '100px',
                   backgroundColor: 'var(--color-floating-panel)',
                   filter: 'saturate(0.5) brightness(1.1)',
@@ -1165,12 +1147,10 @@ export const ExampleThemesMusicApp = ({ focusable = true, ...props }: ExampleLay
 
               <Card size="3">
                 <Box
+                  height="336px"
                   position="relative"
-                  style={{
-                    height: 336,
-                    marginBottom: 'calc(-1 * var(--card-padding))',
-                    overflow: 'hidden',
-                  }}
+                  overflow="hidden"
+                  mb="calc(-1 * var(--card-padding))"
                 >
                   <Heading as="h3" size="4" trim="both" mb="3">
                     Lyrics

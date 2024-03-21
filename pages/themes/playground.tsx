@@ -1065,9 +1065,9 @@ export default function ComponentsPage() {
                     <Flex
                       align="center"
                       justify="center"
+                      overflow="hidden"
                       position="absolute"
                       inset="0"
-                      style={{ overflow: 'hidden' }}
                     >
                       <ThemesPanelBackgroundImage id="1" width="100%" height="200%" />
                     </Flex>
@@ -3964,9 +3964,9 @@ export default function ComponentsPage() {
                     <Flex
                       align="center"
                       justify="center"
+                      overflow="hidden"
                       position="absolute"
                       inset="0"
-                      style={{ overflow: 'hidden' }}
                     >
                       <ThemesPanelBackgroundImage id="1" width="100%" height="200%" />
                     </Flex>

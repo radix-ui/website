@@ -373,15 +373,7 @@ function ItemLink({ item }: { item: SearchItem }) {
 type ItemTitleProps = Omit<Extract<React.ComponentPropsWithoutRef<typeof Text>, { as: 'p' }>, 'as'>;
 
 function ItemTitle(props: ItemTitleProps) {
-  return (
-    <Text
-      as="p"
-      color="blue"
-      size="3"
-      style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
-      {...props}
-    />
-  );
+  return <Text as="p" color="blue" size="3" truncate {...props} />;
 }
 
 function ItemBreadcrumb({ item, levels }: { item: SearchItem; levels: typeof SUPPORTED_LEVELS }) {
