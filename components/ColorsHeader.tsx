@@ -15,6 +15,14 @@ export const ColorsHeader = (props: HeaderProps) => {
       >
         Documentation
       </Link>
+      <Link
+        size="2"
+        color="gray"
+        href="/colors/create"
+        highContrast={router.pathname.includes('/colors/create')}
+      >
+        Create your palette
+      </Link>
     </Header>
   );
 };
