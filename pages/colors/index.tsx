@@ -10,6 +10,7 @@ import {
   Separator,
   Flex,
   ScrollArea,
+  Button,
 } from '@radix-ui/themes';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { Footer } from '@components/Footer';
@@ -28,6 +29,7 @@ import {
 } from '@radix-ui/react-icons';
 import { Swatch } from '@components/Swatch';
 import Head from 'next/head';
+import styles from './index.module.css';
 
 export default function ColorsHome() {
   return (
@@ -76,10 +78,10 @@ export default function ColorsHome() {
               </Text>
             </Box>
 
-            <NextLink href="/colors/docs/overview/installation" passHref legacyBehavior>
+            <Flex gap="4">
               <ColorsMarketingButton asChild size={{ initial: '3', xs: '4' }}>
-                <a>
-                  Get started
+                <NextLink href="/colors/docs/overview/installation">
+                  Go to docs
                   <svg
                     width="14"
                     height="14"
@@ -90,9 +92,19 @@ export default function ColorsHome() {
                   >
                     <path d="M6.39205 11.6023L5.36932 10.5909L8.92045 7.03977H0V5.5625H8.92045L5.36932 2.01705L6.39205 1L11.6932 6.30114L6.39205 11.6023Z" />
                   </svg>
-                </a>
+                </NextLink>
               </ColorsMarketingButton>
-            </NextLink>
+
+              <Button
+                highContrast
+                variant="soft"
+                color="gray"
+                size={{ initial: '3', xs: '4' }}
+                asChild
+              >
+                <NextLink href="/colors/create">Create your palette</NextLink>
+              </Button>
+            </Flex>
           </Container>
         </Section>
       </Box>
@@ -100,12 +112,7 @@ export default function ColorsHome() {
       <ScrollArea mb="-4">
         <Box mx={{ initial: '5', xs: '6', sm: '7', md: '9' }} mb="4">
           <Container style={{ whiteSpace: 'nowrap', minWidth: 880 }}>
-            <Grid
-              gap="1"
-              align="center"
-              columns="minmax(64px, 1fr) repeat(12, minmax(0px, 1fr))"
-              style={{ whiteSpace: 'nowrap', minWidth: 880 }}
-            >
+            <div className={styles.ColorsHomeGrid}>
               <Box />
               <UsageRange style={{ gridColumn: '2 / 4' }}>Backgrounds</UsageRange>
               <UsageRange style={{ gridColumn: '4 / 7' }}>Interactive components</UsageRange>
@@ -164,64 +171,37 @@ export default function ColorsHome() {
                   <Text color="gray" size="2">
                     {scale.charAt(0).toUpperCase() + scale.slice(1)}
                   </Text>
-                  <Swatch scale={scale} step="1" />
-                  <Swatch scale={scale} step="2" />
-                  <Swatch scale={scale} step="3" />
-                  <Swatch scale={scale} step="4" />
-                  <Swatch scale={scale} step="5" />
-                  <Swatch scale={scale} step="6" />
-                  <Swatch scale={scale} step="7" />
-                  <Swatch scale={scale} step="8" />
-                  <Swatch scale={scale} step="9" />
-                  <Swatch scale={scale} step="10" />
-                  <Swatch scale={scale} step="11" />
-                  <Swatch scale={scale} step="12" />
+                  {Array.from({ length: 12 }, (_, i) => i + 1).map((step) => (
+                    <Swatch key={step} scale={scale} step={step.toString()} />
+                  ))}
                 </React.Fragment>
               ))}
-            </Grid>
+            </div>
 
             <Box height="32px" />
 
-            <Grid gap="1" align="center" columns="minmax(64px, 1fr) repeat(12, minmax(0px, 1fr))">
+            <div className={styles.ColorsHomeGrid}>
               <Box />
               <UsageRange style={{ gridColumn: '2 / -1' }}>
                 Shadows, highlights, and overlays
               </UsageRange>
 
               <Box />
-              <StepLabel>1</StepLabel>
-              <StepLabel>2</StepLabel>
-              <StepLabel>3</StepLabel>
-              <StepLabel>4</StepLabel>
-              <StepLabel>5</StepLabel>
-              <StepLabel>6</StepLabel>
-              <StepLabel>7</StepLabel>
-              <StepLabel>8</StepLabel>
-              <StepLabel>9</StepLabel>
-              <StepLabel>10</StepLabel>
-              <StepLabel>11</StepLabel>
-              <StepLabel>12</StepLabel>
+              {Array.from({ length: 12 }, (_, i) => i + 1).map((step) => (
+                <StepLabel key={step}>{step}</StepLabel>
+              ))}
 
               {['black', 'white'].map((scale) => (
                 <React.Fragment key={scale}>
                   <Text color="gray" size="2">
                     {scale.charAt(0).toUpperCase() + scale.slice(1)}
                   </Text>
-                  <Swatch scale={scale} step="1" />
-                  <Swatch scale={scale} step="2" />
-                  <Swatch scale={scale} step="3" />
-                  <Swatch scale={scale} step="4" />
-                  <Swatch scale={scale} step="5" />
-                  <Swatch scale={scale} step="6" />
-                  <Swatch scale={scale} step="7" />
-                  <Swatch scale={scale} step="8" />
-                  <Swatch scale={scale} step="9" />
-                  <Swatch scale={scale} step="10" />
-                  <Swatch scale={scale} step="11" />
-                  <Swatch scale={scale} step="12" />
+                  {Array.from({ length: 12 }, (_, i) => i + 1).map((step) => (
+                    <Swatch key={step} scale={scale} step={step.toString()} />
+                  ))}
                 </React.Fragment>
               ))}
-            </Grid>
+            </div>
           </Container>
         </Box>
       </ScrollArea>
@@ -317,7 +297,7 @@ export default function ColorsHome() {
   );
 }
 
-const StepLabel = ({ children }: React.PropsWithChildren<{}>) => (
+export const StepLabel = ({ children }: React.PropsWithChildren<{}>) => (
   <Flex justify="center" mb="3">
     <Text size="1" color="gray">
       {children}
@@ -325,7 +305,7 @@ const StepLabel = ({ children }: React.PropsWithChildren<{}>) => (
   </Flex>
 );
 
-const UsageRange = ({ children, ...props }: React.ComponentPropsWithoutRef<typeof Flex>) => (
+export const UsageRange = ({ children, ...props }: React.ComponentPropsWithoutRef<typeof Flex>) => (
   <Flex direction="column" mb="2" {...props}>
     <Text align="center" size="1" mb="3" color="gray">
       {children}
