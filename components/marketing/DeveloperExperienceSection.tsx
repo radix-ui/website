@@ -83,8 +83,8 @@ export const DeveloperExperienceSection = () => {
   return (
     <Section
       size={{ initial: '2', sm: '4' }}
+      overflow="hidden"
       style={{
-        overflow: 'hidden',
         backgroundColor: 'var(--sky-6)',
         background: `
           radial-gradient(ellipse at 100% 100%, hsl(254 100% 6% / 0.07), var(--violet-a1), transparent),

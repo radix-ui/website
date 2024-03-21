@@ -46,13 +46,7 @@ export function ThemesPanelCardExample({ panelBackground }) {
     <Theme panelBackground={panelBackground} asChild>
       <Flex direction="column" mx={{ initial: '-5', xs: '-6', sm: '0' }}>
         <Flex justify="center" position="relative" px="5" py={{ initial: '7', xs: '9' }}>
-          <Flex
-            align="center"
-            justify="center"
-            position="absolute"
-            inset="0"
-            style={{ overflow: 'hidden' }}
-          >
+          <Flex align="center" justify="center" overflow="hidden" position="absolute" inset="0">
             <ThemesPanelBackgroundImage id="1" width="900" height="200%" style={{ opacity: 0.5 }} />
           </Flex>
 
@@ -106,13 +100,7 @@ export function ThemesPanelTableExample({ panelBackground }) {
       <Inset>
         <Theme panelBackground={panelBackground} asChild>
           <Flex justify="center" position="relative" px="5" py={{ initial: '5', sm: '8' }}>
-            <Flex
-              align="center"
-              justify="center"
-              position="absolute"
-              inset="0"
-              style={{ overflow: 'hidden' }}
-            >
+            <Flex align="center" justify="center" overflow="hidden" position="absolute" inset="0">
               <ThemesPanelBackgroundImage
                 id="2"
                 width="1700"
@@ -529,13 +517,13 @@ export function ThemesColorScale({ type = 'accent' }: { type: 'accent' | 'gray' 
             <Box
               flexGrow="1"
               height="32px"
+              overflow="hidden"
               style={{
                 backgroundImage:
                   'linear-gradient(45deg, var(--gray-2) 25%, transparent 25%), linear-gradient(135deg, var(--gray-2) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--gray-2) 75%), linear-gradient(135deg, transparent 75%, var(--gray-2) 75%)',
                 backgroundSize: '16px 16px',
                 backgroundPosition: '0px 0px, 8px 0px, 8px -8px, 0px 8px',
                 borderRadius: 'var(--radius-1)',
-                overflow: 'hidden',
               }}
             >
               <Box
@@ -1079,7 +1067,7 @@ export function DecorativeBox(props: React.ComponentPropsWithoutRef<typeof Box>)
 
 export function ThemesDarkModeExample() {
   return (
-    <Box style={{ borderRadius: 'var(--radius-6)', overflow: 'hidden' }}>
+    <Box overflow="hidden" style={{ borderRadius: 'var(--radius-6)' }}>
       <Grid columns={{ initial: '1', sm: '2' }}>
         <Theme asChild appearance="light" style={{ backgroundColor: 'var(--gray-2)' }}>
           <Box p={{ initial: '4', sm: '5' }}>
