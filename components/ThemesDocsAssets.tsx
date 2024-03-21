@@ -1,5 +1,4 @@
 import {
-  AspectRatio,
   Avatar,
   Badge,
   Box,
@@ -688,23 +687,218 @@ export function ThemesAllColors() {
     'sky',
   ];
   return (
-    <Flex direction="column" gap="5">
-      <Grid columns="26" gapX="1px" gapY="3">
-        {colors.map((color) => (
-          <Flex direction="column" gap="1px" key={color}>
-            {steps.map((step) => (
-              <AspectRatio
-                ratio={1}
-                key={step}
-                style={{ backgroundColor: `var(--${color}-${step})`, borderRadius: '1.5px' }}
-              />
-            ))}
-          </Flex>
-        ))}
+    <Flex direction="column" gap="3">
+      <Grid columns="25" rows="12" gap="1px">
+        {steps.map((step) =>
+          colors.map((color) => (
+            <Box
+              key={color + step}
+              style={{
+                aspectRatio: '1 / 1',
+                backgroundColor: `var(--${color}-${step})`,
+                borderRadius: '1px',
+              }}
+            />
+          ))
+        )}
       </Grid>
+
+      <Text as="div" align="center" color="gray" size="2">
+        Color system
+      </Text>
     </Flex>
   );
 }
+
+const werther = `A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now. When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees, and but a few stray gleams steal into the inner sanctuary, I throw myself down among the tall grass by the trickling stream; and, as I lie close to the earth, a thousand unknown plants are noticed by me: when I hear the buzz of the little world among the stalks, and grow familiar with the countless indescribable forms of the insects and flies, then I feel the presence of the Almighty, who formed us in his own image, and the breath`;
+
+export function ThemesTypeSpecimen() {
+  return (
+    <Theme className="radix-themes-default-fonts">
+      <Flex direction="column" gap="2">
+        <Grid align="start" columns="auto auto" gap="5">
+          <Flex>
+            <Flex direction="column" gap="3.1px">
+              <Heading size="9" trim="start" weight="regular">
+                <Flex justify="between">
+                  <span>A</span>
+                  <span>B</span>
+                  <span>C</span>
+                  <span>D</span>
+                </Flex>
+              </Heading>
+              <Heading size="8" weight="regular">
+                <Flex justify="between">
+                  <span>A</span>
+                  <span>B</span>
+                  <span>C</span>
+                  <span>D</span>
+                  <span>E</span>
+                  <span>F</span>
+                  <span>G</span>
+                </Flex>
+              </Heading>
+              <Heading size="7" weight="regular">
+                <Flex justify="between">
+                  <span>A</span>
+                  <span>B</span>
+                  <span>C</span>
+                  <span>D</span>
+                  <span>E</span>
+                  <span>F</span>
+                  <span>G</span>
+                  <span>H</span>
+                  <span>I</span>
+                </Flex>
+              </Heading>
+              <Heading size="6" weight="regular">
+                <Flex justify="between">
+                  <span>A</span>
+                  <span>B</span>
+                  <span>C</span>
+                  <span>D</span>
+                  <span>E</span>
+                  <span>F</span>
+                  <span>G</span>
+                  <span>H</span>
+                  <span>I</span>
+                  <span>J</span>
+                </Flex>
+              </Heading>
+              <Heading size="5" weight="regular">
+                <Flex justify="between">
+                  <span>A</span>
+                  <span>B</span>
+                  <span>C</span>
+                  <span>D</span>
+                  <span>E</span>
+                  <span>F</span>
+                  <span>G</span>
+                  <span>H</span>
+                  <span>I</span>
+                  <span>J</span>
+                  <span>K</span>
+                  <span>L</span>
+                </Flex>
+              </Heading>
+            </Flex>
+          </Flex>
+          <Grid align="baseline" columns="auto auto" gap="5">
+            <Box position="relative" top="calc(-1 * var(--line-height-2))">
+              <Text
+                as="p"
+                size="2"
+                style={{
+                  WebkitLineClamp: 10,
+                  WebkitBoxOrient: 'vertical',
+                  display: '-webkit-box',
+                  overflow: 'hidden',
+                }}
+              >
+                {werther}
+              </Text>
+            </Box>
+
+            <Box maxWidth="260px">
+              <Heading trim="end" size="8">
+                Ambiguous voice of a heart which prefers kiwi bowls to a zephyr.
+              </Heading>
+            </Box>
+          </Grid>
+        </Grid>
+
+        <Text as="div" align="center" color="gray" size="2">
+          Typography examples
+        </Text>
+      </Flex>
+    </Theme>
+  );
+}
+
+export function ThemesPanelComposition() {
+  return (
+    <Flex direction="column" gap="2">
+      <Flex
+        p="7"
+        direction="column"
+        align="center"
+        justify="center"
+        style={{
+          backgroundColor: 'var(--gray-a2)',
+          boxShadow: 'inset 0 0 0 1px var(--gray-a3)',
+          borderRadius: 'var(--radius-4)',
+        }}
+      >
+        <Grid width="100%" columns="3" gap="5">
+          <Flex
+            direction="column"
+            align="start"
+            p="4"
+            gap="2"
+            style={{
+              backgroundColor: 'var(--color-panel-solid)',
+              borderRadius: 'var(--radius-3)',
+              boxShadow: 'var(--shadow-2)',
+            }}
+          >
+            <StaticSkeleton width="80px" height="16px" />
+            <StaticSkeleton width="100%" height="24px" />
+          </Flex>
+          <Flex
+            direction="column"
+            align="start"
+            p="4"
+            gap="2"
+            style={{
+              backgroundColor: 'var(--color-panel-solid)',
+              borderRadius: 'var(--radius-5)',
+              boxShadow: 'var(--shadow-3)',
+            }}
+          >
+            <StaticSkeleton
+              width="80px"
+              height="16px"
+              style={{ borderRadius: 'var(--radius-2)' }}
+            />
+            <StaticSkeleton
+              width="100%"
+              height="24px"
+              style={{ borderRadius: 'var(--radius-2)' }}
+            />
+          </Flex>
+          <Flex
+            direction="column"
+            align="start"
+            p="4"
+            gap="2"
+            style={{
+              backgroundColor: 'var(--color-panel-solid)',
+              borderRadius: 'var(--radius-6)',
+              boxShadow: 'var(--shadow-5)',
+            }}
+          >
+            <StaticSkeleton width="80px" height="16px" style={{ borderRadius: '100px' }} />
+            <StaticSkeleton width="100%" height="24px" style={{ borderRadius: '100px' }} />
+          </Flex>
+        </Grid>
+      </Flex>
+
+      <Text as="div" align="center" color="gray" size="2">
+        Shadow and radius examples
+      </Text>
+    </Flex>
+  );
+}
+
+const StaticSkeleton = (props: React.ComponentPropsWithoutRef<typeof Skeleton>) => (
+  <Skeleton
+    {...props}
+    ref={(element) => {
+      element?.style.setProperty('animation', 'none', 'important');
+      element?.style.setProperty('background-color', 'var(--gray-a3)', 'important');
+    }}
+  />
+);
 
 export function ThemesVolumeControlExample() {
   return (
