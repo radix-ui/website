@@ -19,9 +19,8 @@ const Link = ({ href = '', ...props }) => {
 const {
   // values
   accentColors,
-  accentColorsGrouped,
-  breakpoints,
   grayColors,
+  breakpoints,
   radii,
   ...propDefs
 } = props;

@@ -1197,10 +1197,10 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
-"@radix-ui/themes@3.0.0-rc.17":
-  version "3.0.0-rc.17"
-  resolved "https://registry.yarnpkg.com/@radix-ui/themes/-/themes-3.0.0-rc.17.tgz#81a1366846708ef0b8c1d5c5c94a3ea9bdc6187f"
-  integrity sha512-TQU6ezhYn+8/isuQwoVZhmXLWkVBBabixxKLaVLJJtTat8LR/UmXiaK0mGE435syNLadsGeP0L0cto/r6dabVg==
+"@radix-ui/themes@3.0.0-rc.18-patch.2":
+  version "3.0.0-rc.18-patch.2"
+  resolved "https://registry.yarnpkg.com/@radix-ui/themes/-/themes-3.0.0-rc.18-patch.2.tgz#3963d7a673a3ef9a2be2a576c072560c1f904f2b"
+  integrity sha512-0chniCtfPaU3TrZaDfCLvK3ucgi/H9v5ikKhs7Y442zeBw2SpyJJDAWwPm+NYrkfLScU5AXUuwKPukkfvn027A==
   dependencies:
     "@radix-ui/colors" "^3.0.0"
     "@radix-ui/primitive" "^1.0.1"
