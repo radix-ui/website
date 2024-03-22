@@ -49,6 +49,7 @@ import {
   IconButton,
   Inset,
   Link,
+  Reset,
   Section,
   Separator,
   Strong,
@@ -73,9 +74,12 @@ import { classNames } from '@utils/classNames';
 import { Swatch } from '@components/Swatch';
 import { useLocalStorage, useIsomorphicLayoutEffect } from 'usehooks-ts';
 import { useTheme } from 'next-themes';
+import * as ToggleGroup from '@radix-ui/react-toggle-group';
+
+// TODO fix selectiion colors on gray elements
 
 export default function Page() {
-  // TODODODO
+  // TODODODO get accent name
   const accent = 'indigo';
 
   const { resolvedTheme } = useTheme();
@@ -133,7 +137,7 @@ export default function Page() {
       <ColorsMobileMenu />
 
       <TitleAndMetaTags
-        title="Create your Radix palette – Radix Colors"
+        title="Create your palette – Radix Colors"
         description="An open-source color system for designing beautiful, accessible websites and apps."
         image="colors.png"
       />
@@ -342,32 +346,32 @@ export const Preview = ({ children, ...props }: React.ComponentPropsWithoutRef<t
           <Callout.Text>Please upgrade to the new version.</Callout.Text>
         </Callout.Root>
 
-        <LayersRoot>
-          <LayersItem data-active>
+        <LayersRoot type="single">
+          <LayersItem value="1">
             <Flex align="center" justify="center" width="4" height="4">
               <BoxIcon />
             </Flex>
             <Text size="1">Box</Text>
           </LayersItem>
-          <LayersItem>
+          <LayersItem value="2">
             <Flex align="center" justify="center" width="4" height="4">
               <GridIcon />
             </Flex>
             <Text size="1">Grid</Text>
           </LayersItem>
-          <LayersItem data-indent="1">
+          <LayersItem data-indent="1" value="3">
             <Flex align="center" justify="center" width="4" height="4">
               <ImageIcon />
             </Flex>
             <Text size="1">Image</Text>
           </LayersItem>
-          <LayersItem data-indent="1">
+          <LayersItem data-indent="1" value="4">
             <Flex align="center" justify="center" width="4" height="4">
               <ImageIcon />
             </Flex>
             <Text size="1">Image</Text>
           </LayersItem>
-          <LayersItem data-indent="1">
+          <LayersItem data-indent="1" value="5">
             <Flex align="center" justify="center" width="4" height="4">
               <TextIcon />
             </Flex>
@@ -419,7 +423,7 @@ export const Preview = ({ children, ...props }: React.ComponentPropsWithoutRef<t
 
         <Flex direction="column" gap="4">
           <Card asChild variant="classic" size="2">
-            <a href="#">
+            <a href="#" onClick={(e) => e.preventDefault()}>
               <Flex align="center" gap="3">
                 <Avatar size="4" src={getPeopleForColor('gray')[0].image} fallback="V" />
                 <Box>
@@ -436,7 +440,7 @@ export const Preview = ({ children, ...props }: React.ComponentPropsWithoutRef<t
           </Card>
 
           <Card asChild variant="surface" size="2">
-            <a href="#">
+            <a href="#" onClick={(e) => e.preventDefault()}>
               <Flex align="center" gap="3">
                 <Avatar size="4" src={getPeopleForColor('gray')[0].image} fallback="V" />
                 <Box>
@@ -551,7 +555,7 @@ export const Preview = ({ children, ...props }: React.ComponentPropsWithoutRef<t
               <Box flexGrow="1" asChild>
                 <Button size="2" variant="surface" color="gray" highContrast>
                   Actions
-                  <ChevronDownIcon style={{ marginRight: -4, marginLeft: -4 }} />
+                  <DropdownMenu.TriggerIcon />
                 </Button>
               </Box>
             </DropdownMenu.Trigger>
@@ -959,12 +963,23 @@ const LinksExample = () => (
   </Blockquote>
 );
 
-const LayersRoot = (props: React.ComponentPropsWithoutRef<'div'>) => (
-  <div className={styles.LayersRoot} {...props} />
-);
+const LayersRoot = (
+  props: Extract<React.ComponentPropsWithoutRef<typeof ToggleGroup.Root>, { type: 'single' }>
+) => <ToggleGroup.Root type="single" defaultValue="1" className={styles.LayersRoot} {...props} />;
 
-const LayersItem = (props: React.ComponentPropsWithoutRef<'div'>) => (
-  <div className={styles.LayersItem} {...props} />
+const LayersItem = (props: React.ComponentPropsWithoutRef<typeof ToggleGroup.Item>) => (
+  <Reset>
+    <ToggleGroup.Item
+      className={styles.LayersItem}
+      onMouseDown={(event) => event.button === 0 && event.currentTarget.click()}
+      onClick={(event) => {
+        if (event.currentTarget.getAttribute('data-state') === 'on') {
+          event.preventDefault();
+        }
+      }}
+      {...props}
+    />
+  </Reset>
 );
 
 interface GetPreviewStylesParams {

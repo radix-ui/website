@@ -42,16 +42,13 @@
   color: var(--accent-12);
 }
 
-.LayersItem[data-active] {
+.LayersItem[data-state='on'] {
+  pointer-events: none;
   background-color: var(--accent-a3);
   color: var(--accent-12);
 }
 
-.LayersItem[data-active]:active {
-  background-color: var(--accent-a4);
-}
-
-.LayersItem[data-active] svg {
+.LayersItem[data-state='on'] svg {
   color: inherit;
   filter: none;
 }
@@ -61,8 +58,13 @@
 }
 
 @media (hover: hover) {
-  .LayersItem:hover:not([data-active]) {
-    outline: 1px solid var(--accent-8);
+  .LayersItem:hover[data-state='off'] {
+    outline: 1px solid var(--accent-7);
     outline-offset: -1px;
   }
+}
+
+.LayersItem:focus-visible {
+  outline: 1px solid var(--accent-7);
+  outline-offset: -1px;
 }
