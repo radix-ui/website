@@ -1,6 +1,6 @@
 ---
 metaTitle: Radix Themes 3.0
-metaDescription: New layout engine, new dashboard components, and brand color generator
+metaDescription: New layout engine, new dashboard components, and brand color generator.
 publishedAt: March 23, 2024
 metaImage: https://pbs.twimg.com/media/F7dGDWIWkAEMTWP?format=jpg&name=small
 ---
@@ -13,7 +13,9 @@ metaImage: https://pbs.twimg.com/media/F7dGDWIWkAEMTWP?format=jpg&name=small
 
 ## Introduction
 
-Radix Themes 3.0 just landed. This release is big leap towards making Radix Themes the best component library for building modern SaaS apps. We’ll present the main highlights in this post. The complete changelog and a migration guide are available in the [release notes](/themes/docs/overview/releases#300).
+Radix Themes 3.0 just landed. This release is big leap towards making Radix Themes the best component library for building modern apps. We’ll present the main highlights in this post.
+
+For the comprehensive changelog and a migration guide, see the [release notes](/themes/docs/overview/releases#300).
 
 ---
 
@@ -21,11 +23,13 @@ Radix Themes 3.0 just landed. This release is big leap towards making Radix Them
 
 Radix Themes comes with almost 30 color scales, each with their own light, dark and alpha variants. Under the hood, the color system is powered by [Radix Colors](/colors).
 
+Every scale has been tuned to provide fully accessible contrast ratios, each with steps that correspond to backgrounds, interactive components, borders and text. Offering the most beautiful and intuitive color system you’ve ever used.
+
 <Box mt="6" mb="7">
   <ThemesAccentSwatches />
 </Box>
 
-Today, we are introducing a color tool to create your own brand palette for Radix Themes. It’s a simple interface that lets you specify a primary color, a gray color, and your page background, which then creates a color configuration to copy-paste into your theme styles.
+Today, we are introducing a new tool which allows you to create your own brand palette for Radix Themes. It’s a simple interface that lets you specify a primary color, a gray color, and your page background, generating a color configuration to copy-paste into your theme styles.
 
 <Text as="div" align="center" my="6">
   <NextLink href="/colors/create-your-palette">
@@ -51,7 +55,7 @@ Spinner is a simple animated loading indicator:
 <Spinner />
 ```
 
-In the Radix version, it comes with an intuitive API to conditionally render its children when they are done loading. Consider the following example:
+It comes with an intuitive API to conditionally render its children when they are done loading. Consider the following example:
 
 <ThemesBlogPostExampleSpinner />
 
@@ -74,7 +78,7 @@ Skeleton is another loading component in this release:
 </Skeleton>
 ```
 
-Skeleton has a similar API to Spinner, but it also fully adopts the shape and size of child components, so you can build the skeleton interface using exactly the same layout that you’d use in the real one:
+Skeleton has a similar API to Spinner, but it also fully adopts the shape and size of child components, so you can build the skeleton interface using exactly the same layout that you’d use in the fully one:
 
 <ThemesBlogPostExampleSkeleton />
 
@@ -84,7 +88,7 @@ Segmented Control carries a familiar design for toggle buttons that switch betwe
 
 <ThemesBlogPostExampleSegmentedControl />
 
-Segmented Control packs many details that were crafted to be invisible. For example, a bolder font weight is used on the active item, yet there is no layout shift, and the animation is dialled in so that even the font weight change transitions smoothly. Here’s the same demo slowed down:
+Segmented Control packs many details that were crafted to be invisible. For example, a bolder font weight is used on the active item, yet there is no layout shift, and the animation is dialed in so that even the font weight change transitions smoothly. Here’s the same demo slowed down:
 
 <ThemesBlogPostExampleSegmentedControlAnimated />
 
@@ -190,19 +194,17 @@ In most interfaces, these styles are global and affect the entire app, so that t
 
 ## New layout engine
 
-A new layout engine makes layout components and their props more powerful and easier to use.
+A new engine makes layout components and their props more powerful and easier to use.
 
-Layout components are a cornerstone feature of Radix Themes. There’s just five of them—[Box](/themes/docs/components/box), [Flex](/themes/docs/components/flex), [Grid](/themes/docs/components/grid), [Section](/themes/docs/components/section), and [Container](/themes/docs/components/section). These components are used to separate layout responsibilities from content and interactivity. This is _the_ separation of concerns that makes apps maintainable and easy to reason about, and understanding these principles is key to building interfaces effectively.
+Layout components are a cornerstone feature of Radix Themes. There are just five of them—[Box](/themes/docs/components/box), [Flex](/themes/docs/components/flex), [Grid](/themes/docs/components/grid), [Section](/themes/docs/components/section), and [Container](/themes/docs/components/section). These components are used to separate layout responsibilities from content and interactivity. When you separate layout concerns from content and interactivity, the compositions you create are more maintainable and easy to reason about.
 
-In web development, the lines between different elements may be blurry. You can achieve similar results by layering different techniques onto the same building block, and end up with elements that try to do a lot of jobs at the same time, which incurs complexity, maintenance costs, and results in sneaky bugs.
+These components allow you to quickly add structure to views, pages and other interactive elements within your application.
 
-In Radix Themes, every component is designed in such a way that it encourages you to use it just for what it can do really, really well. With that in mind, only layout components provide easy, unrestricted access to manipulate the layout of your interfaces. This is done through layout props, such as padding, width, height, or position, among others.
-
-Layout components and their props are explained in the [Layout guide](/themes/docs/overview/layout).
+You can learn more about layout components and their props in the [Layout guide](/themes/docs/overview/layout).
 
 ### Better layout props
 
-Layout components received a number of new layout props. On top of that, the way that layout props accept values has been significantly reworked:
+In this release, layout components have received a number of new props and the values they accept have been significantly reworked:
 
 - 9 new props for working with flex and grid layouts
 - 4 new props for controlling the dimensions of layout components
@@ -224,7 +226,7 @@ This would create a flexbox layout that’s `500px` wide. But what if you wanted
 <Flex width={{ initial: '100%', sm: '300px', md: '500px' }} />
 ```
 
-Now, in addtion to [space scale values](/themes/docs/theme/spacing), layout props will support valid CSS values. For example, `100px`, `50vw`, or even expressions like `calc(100vw - 200px)` can be used at specific breakpoints.
+Now, in addition to [space scale values](/themes/docs/theme/spacing), layout props will support valid CSS values. For example, `100px`, `50vw`, or even expressions like `calc(100vw - 200px)` can be used at specific breakpoints.
 
 However, does it perform well? Does it work with server components? Well, here’s how the above `<Flex>` element gets actually rendered into the DOM:
 
@@ -239,9 +241,9 @@ You can see how that the `<Flex>` element was compiled into a combination of uti
 
 ### The best of both worlds
 
-Altogether, there is 5 layout components with almost 40 props each. Together they form a system that is easy to learn, quick to master, and sets an _incredibly_ high ceiling of what you can achieve with them without leaving the safety of your JSX files.
+Altogether, there are 5 layout components with almost 40 props each. Together they form a system that is easy to learn, quick to master, and sets an _incredibly_ high ceiling of what you can achieve without switching between files and losing momentum.
 
-If you have never used such a system, we’d suggest you give it try. It is a great alternative to Tailwind, which is an incredibly powerful tool originally built for the same purpose—layout. However, today that evolved into an entire styling paradigm that does not discourage you from creating complex styles on the fly, which violates the separation of concerns mentioned earlier.
+If you have never used such a system, we’d suggest you give it try. It is a great alternative to Tailwind, which is an incredibly powerful tool originally built for the same purpose—layout. However, today it has evolved into an entire styling paradigm that does not discourage you from creating complex styles on the fly, which can violate the separation of concerns mentioned earlier.
 
 Radix Themes layout comes with the full power that utility class frameworks may provide for layout, but it’s also type-safe and guides the developer in maintaining a clear boundary with the other pieces of the interface that they are building.
 
@@ -255,88 +257,16 @@ import '@radix-ui/themes/layout.css';
 
 ---
 
-## ESM ecosystem support
+## Zero config setup with Astro and Remix
 
-Frameworks like Remix and Astro are configured to use ESM by default. In Radix Themes 3.0, we have revisited the way that the library is built and configured to ensure that it is supported in ESM environments out of the box.
+Radix Themes is now much easier to set up with Remix and Astro. In 3.0, we have revisited the way the library is built to ensure support for ESM environments out of the box.
 
-Radix Themes distribution is a _hybrid_ ESM/CommonJS package. Depending on your setup, your import resolver will now pick the right version automatically.
-
-### How dual distributions work
-
-To use Radix Themes, you don’t need to understand the problems of the ESM/CommonJS duality. However, read on if you want to know how the hybrid configuration works under the hood. This may be helpful when building your own packages or debugging issues with your dependencies.
-
-When creating a hybrid package, you’ll compile two versions of your code: one for an ESM environment, and one for CommonJS. Most build tools can easily do this. The problems start when you need to “explain” to the target environment which version is which.
-
-There’s a couple of techniques that may be used to indicate whether a module is ESM or CJS:
-
-- Use conditional `package.json` exports field
-- Rely on `.mjs` and `.cjs` extensions to indicate ESM or CJS code
-- Use the `type` field in your `package.json` to indicate how `.js` files should be interpreted
-
-### The problem with conditional exports
-
-On the surface, the `exports` field in `package.json` seems to be a straightforward solution to the task. Supposedly, you’d compile the code into two directories, and then use the `import` and `require` statements to point to the right version of the code:
-
-```json
-{
-  "exports": {
-    "require": "./dist/cjs/index.js",
-    "import": "./dist/esm/index.js"
-  }
-}
-```
-
-You can even add the `types` field to the `exports` field to ensure that TypeScript works correctly:
-
-```json
-{
-  "exports": {
-    "require": {
-      "types": "./dist/cjs/index.d.ts",
-      "default": "./dist/cjs/index.js"
-    },
-    "import": {
-      "types": "./dist/esm/index.d.ts",
-      "default": "./dist/esm/index.js"
-    }
-  }
-}
-```
-
-This works fine if all of the package code is bundled into those `index.js` files and there are no internal submodules. It makes sense for a package that would do just one thing, when all of its code can be naturally bundled into a single file.
-
-However, a package like Radix Themes exports many components, and each export must be from a separate file. This requirement makes it possible to tree-shake the package, so that instead of importing the entire library, your build tool may be able to import just the code you used.
-
-This is where the conditional `exports` field fails. Unintuitively, it describes just whether a particular _entry point_ of the package is ESM or CJS. Past the entry point, `.js` files imported within the package will be interpreted according to the `type` field in `package.json`.
-
-### The problem with file extensions
-
-Because `.js` files are ambiguous, `.mjs` and `.cjs` extensions were introduced to explicitly indicate whether code is ESM or CJS.
-
-Supposedly, you’d rename all the `.js` files in the distribution to `.mjs` and `.cjs`. Then, all the `import` and `require` statements inside of the package need to be patched up to point to the right file. It’s doable, but it’s about as fun as it sounds. On top of that, the `.mjs` extension is not as widely supported by certain toolchains, which a quick search for GitHub issues easily confirms.
-
-### The magic of the `type` field
-
-According to [Node.js docs](https://nodejs.org/api/packages.html#type), the `type` field in `package.json` defines whether `.js` files are interpreted as ESM or CJS.
-
-If you piece that together with how conditional exports work and that you may have additional `package.json` files within the internal folders of a package, you can create a hybrid package that works in both ESM and CJS environments. Altogether, here’s what worked for Radix Themes:
-
-- Set the root `package.json` to the explicit `"type": "commonjs"` value
-- Add a separate `package.json` to the ESM distribution folder with `"type": "module"` value
-- Use the conditional `exports` field to point to the CJS and ESM entry points
-
-This way, the package will work in both ESM and CJS environments. No `.mjs` or `.cjs` extensions are needed, and the package is tree-shakeable.
+The distribution is now a _hybrid_ ESM/CommonJS package. Depending on your setup, your import resolver will now pick the right version automatically.
 
 ---
 
-## @Redacted
+## Contributors
 
-This is not going to be a part of the post, but could be a useful piece of copy-pasta for the communication around this post
+Radix Themes 3.0 is the result of the hard work of many contributors. We’d like to thank everyone who has contributed to this release, whether through code, documentation, design, or community support.
 
-### What is Radix Themes?
-
-Radix Themes is an open source system of opinionated, pre-built components and design tokens that developers use to build React apps. Exceptional component API design and advanced visual design distinguish Radix Themes from other component libraries. It’s easy to get started, and just as easy to maintain a project built with Radix Themes.
-
-{<img src="https://workos.imgix.net/images/bc42caea-bfe8-4e91-b093-1fe3ff771382.png?auto=format&fit=clip&q=80" />}
-
-Radix Themes is customised via [Theme](/themes/docs/theme/overview) configuration, underlying design tokens, and by building your own components on top of the same building blocks that the library itself is built upon. Naturally, WorkOS product UIs use Radix Themes, which makes it battle-tested in a demanding environment with thousands of users.
+Special thanks to [@penx](https://github.com/penx), [@itsMapleLeaf](https://github.com/itsMapleLeaf) and [@smorimoto](https://github.com/smorimoto).
