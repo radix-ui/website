@@ -11,7 +11,7 @@ metaDescription: How to approach styling with Radix Themes.
 
 Radix Themes does not come with a built-in styling system. There’s no `css` or `sx` prop, and it does not use any styling libraries internally. Under the hood, it’s built with vanilla CSS.
 
-For you, there’s no overhead when it comes to picking a styling technology for your app.
+There’s no overhead when it comes to picking a styling technology for your app.
 
 ## What you get
 
@@ -29,18 +29,18 @@ For more information on specific tokens, refer to the corresponding guides in th
 
 ## Overriding styles
 
-Beyond simple and benign style overrides, we recommend to use the components as-is, or create your own versions of the designs you need using the same building blocks. There is no in-between or middle ground, as that’s where the complexity and maintenance burdens usually come from.
+Beyond simple style overrides, we recommend using the components as-is, or create your own versions using the same building blocks.
 
 Most components do have `className` and `style` props, but if you find yourself needing to override a lot of styles, it’s a good sign that you should either:
 
 - Try to achieve what you need with the existing props and theme configuration.
 - See whether you can achieve your design by tweaking the underlying token system.
-- Create your own component using lower-level building blocks, like [Primitives](/primitives) and [Colors](/colors).
+- Create your own component using lower-level building blocks, such [Primitives](/primitives) and [Colors](/colors).
 - Reconsider whether Radix Themes is the right fit for your project.
 
 ### Tailwind
 
-Tailwind is _great_. Yet, if you plan to use Radix Themes with Tailwind, keep in mind how its ergonomics may encourage you to create complex styles on the fly, sometimes reaching into the component internals without friction. Counterproductive situations will be easy to come by.
+Tailwind is _great_. Yet, if you plan to use Radix Themes with Tailwind, keep in mind how its ergonomics may encourage you to create complex styles on the fly, sometimes reaching into the component internals without friction.
 
 Tailwind is a different styling paradigm, which may not mix well with the idea of a closed component system where customization is achieved through props, tokens, and creating new components on top of a shared set of building blocks.
 
@@ -56,13 +56,13 @@ Feel free to explore the [source code](https://github.com/radix-ui/themes/tree/m
 
 ## Common issues
 
-### z-index wars
+### z-index conflicts
 
 Out of the box, portalled Radix Themes components can be nested and stacked in any order without conflicts. For example, you can open a popover that opens a dialog, which in turn opens another popover. They all stack on top of each other in the order they were opened:
 
 <ThemesZIndexExample />
 
-When building your own components, use the following rules to avoid z-index wars:
+When building your own components, use the following rules to avoid z-index conflicts:
 
 - Don’t use `z-index` values other than `auto`, `0`, or `-1` in rare cases.
 - Render the elements that should stack on top of each other in portals.
@@ -80,7 +80,7 @@ import './my-styles.css';
 
 This Next.js issue may come and go sporadically, or happen only in development or production.
 
-As a workaround, you can merge all the CSS into a single file first via [postcss-import](https://github.com/postcss/postcss-import) and import just that in your layout. Alternatively, importing the styles directly in `page.tsx` files also works.
+As a workaround, you can merge all the CSS into a single file first via [postcss-import](https://github.com/postcss/postcss-import) and import just that into your layout. Alternatively, importing the styles directly in `page.tsx` files also works.
 
 ### Tailwind base styles
 
