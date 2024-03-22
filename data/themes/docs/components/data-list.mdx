@@ -1,0 +1,77 @@
+---
+metaTitle: Data List
+metaDescription: Displays metadata as a list of key-value pairs.
+sourcePath: components/data-list
+---
+
+```jsx live=true
+<DataList.Root>
+  <DataList.Item>
+    <DataList.Label minWidth="88px">Status</DataList.Label>
+    <DataList.Value>
+      <Badge color="jade" variant="soft" radius="full" mx="-2px" size="2">
+        Active
+      </Badge>
+    </DataList.Value>
+  </DataList.Item>
+  <DataList.Item>
+    <DataList.Label minWidth="88px">Name</DataList.Label>
+    <DataList.Value>Vlad Moroz</DataList.Value>
+  </DataList.Item>
+  <DataList.Item>
+    <DataList.Label minWidth="88px">Email</DataList.Label>
+    <DataList.Value>
+      <Link
+        color="gray"
+        highContrast
+        underline="hover"
+        href="mailto:vlad@workos.com"
+      >
+        vlad@workos.com
+      </Link>
+    </DataList.Value>
+  </DataList.Item>
+  <DataList.Item>
+    <DataList.Label minWidth="88px">Company</DataList.Label>
+    <DataList.Value>
+      <Link
+        color="gray"
+        highContrast
+        underline="hover"
+        target="_blank"
+        href="https://workos.com"
+      >
+        WorkOS
+      </Link>
+    </DataList.Value>
+  </DataList.Item>
+  <DataList.Item>
+    <DataList.Label minWidth="88px">Title</DataList.Label>
+    <DataList.Value>Product Designer</DataList.Value>
+  </DataList.Item>
+</DataList.Root>
+```
+
+## API Reference
+
+### Root
+
+Contains all the parts of the data list.
+
+<ThemesPropsTable defs="dataListRootPropDefs" />
+
+### Item
+
+Wraps a key-value pair.
+
+<ThemesPropsTable defs="dataListItemPropDefs" />
+
+### Label
+
+Contains the key of the key-value pair.
+
+<ThemesPropsTable defs="dataListLabelPropDefs" />
+
+### Value
+
+Contains the value of the key-value pair.

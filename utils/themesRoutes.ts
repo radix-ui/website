@@ -60,6 +60,7 @@ export const themesRoutes = [
       { title: 'Card', slug: 'themes/docs/components/card' },
       { title: 'Checkbox', slug: 'themes/docs/components/checkbox' },
       { title: 'Context Menu', slug: 'themes/docs/components/context-menu' },
+      { title: 'Data List', slug: 'themes/docs/components/data-list' },
       { title: 'Dialog', slug: 'themes/docs/components/dialog' },
       { title: 'Dropdown Menu', slug: 'themes/docs/components/dropdown-menu' },
       { title: 'Hover Card', slug: 'themes/docs/components/hover-card' },
