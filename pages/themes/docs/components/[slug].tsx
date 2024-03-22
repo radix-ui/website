@@ -94,6 +94,7 @@ function hasPlaygroundExample(slug: Frontmatter['slug']) {
       'section',
       'accessible-icon',
       'portal',
+      'reset',
       'slot',
       'theme',
       'visually-hidden',
