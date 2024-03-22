@@ -15,7 +15,7 @@ metaDescription: Radix Themes releases and their changelogs.
 
 - General
   - Multi-part components now don’t export named parts (ie. `DialogRoot`, `DialogTrigger`, …)
-    - Use dot notation instead (ie. `Dialog.Root`, `Dialog.Trigger`, …) after importing like this: `import { Dialog } from "@radix-ui/themes"`.
+    - Use dot notation for all multi-part components instead (ie. `Dialog.Root`, `Dialog.Trigger`, …) after importing like this: `import { Dialog } from "@radix-ui/themes"`.
   - Component prop definitions and internal helpers are no longer available from the root `@radix-ui/themes` import entry point.
     - Import them from `@radix-ui/themes/props` and `@radix-ui/themes/helpers` instead.
       - Note: you might need to use `"moduleResolution": "NodeNext"` with your compiler to access these paths.
@@ -67,6 +67,7 @@ metaDescription: Radix Themes releases and their changelogs.
     - Improve ESM compatibility
     - Improve tree-shaking of individual component parts
     - **[Breaking]** Drop named exports for multi-part components
+      - Note: Our new approach allows dot notation to work reliably in server components too
     - **[Breaking]** Remove component prop definitions and internal helpers from the root `@radix-ui/themes` import entry point and export them from `@radix-ui/themes/props` and `@radix-ui/themes/helpers` to make it possible to build your own component library on top of Radix Themes using the same techniques.
     - Add a wildcard entry point to the package to allow direct access to the package internals as an escape hatch if you have a complex tooling setup that can’t support modern module resolution rules
     - Add extra CSS file exports for advanced use-cases:
