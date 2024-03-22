@@ -48,18 +48,18 @@ export const generateRadixColors = ({
   appearance: 'light' | 'dark';
   accent: string;
   gray: string;
-  background?: string;
+  background: string;
 }) => {
   const allScales = appearance === 'light' ? lightColors : darkColors;
   const grayScales = appearance === 'light' ? lightGrayColors : darkGrayColors;
+  const backgroundColor = new Color(args.background).to('oklch');
 
   const grayBaseColor = new Color(args.gray).to('oklch');
-  const grayScaleColors = getScaleFromColor(grayBaseColor, grayScales);
+  const grayScaleColors = getScaleFromColor(grayBaseColor, grayScales, backgroundColor);
 
-  const backgroundColor = appearance === 'light' ? new Color('#FFFFFF') : grayScaleColors[0];
   const accentBaseColor = new Color(args.accent).to('oklch');
 
-  let accentScaleColors = getScaleFromColor(accentBaseColor, allScales);
+  let accentScaleColors = getScaleFromColor(accentBaseColor, allScales, backgroundColor);
 
   const backgroundHex = backgroundColor.to('srgb').toString({ format: 'hex' });
 
@@ -149,7 +149,7 @@ export const generateRadixColors = ({
     accentSurface: accentSurfaceHex,
     accentSurfaceWideGamut: accentSurfaceWideGamutString,
 
-    pageBackground: backgroundHex,
+    background: backgroundHex,
   };
 };
 
@@ -196,7 +196,11 @@ function getButtonHoverColor(source: Color, scales: ArrayOf12<Color>[]) {
   return buttonHoverColor;
 }
 
-function getScaleFromColor(source: Color, scales: Record<string, ArrayOf12<Color>>) {
+function getScaleFromColor(
+  source: Color,
+  scales: Record<string, ArrayOf12<Color>>,
+  backgroundColor: Color
+) {
   let allColors: { scale: string; color: Color; distance: number }[] = [];
 
   Object.entries(scales).forEach(([name, scale]) => {
@@ -306,10 +310,56 @@ function getScaleFromColor(source: Color, scales: Record<string, ArrayOf12<Color
   // Note the chroma difference between the source color and the base color
   const ratioC = source.coords[1] / baseColor.coords[1];
 
-  // Modify hue and chrome of the scale to match the source color
+  // Modify hue and chroma of the scale to match the source color
   scale.forEach((color) => {
     color.coords[1] = Math.min(source.coords[1] * 1.5, color.coords[1] * ratioC);
     color.coords[2] = source.coords[2];
+  });
+
+  // Light mode
+  if (scale[0].coords[0] > 0.5) {
+    const lightnessScale = scale.map(({ coords }) => coords[0]);
+    const backgroundL = Math.max(0, Math.min(1, backgroundColor.coords[0]));
+    const newLightnessScale = transposeProgressionStart(
+      backgroundL,
+      // Add white as the first "step" of the light scale
+      [1, ...lightnessScale],
+      easeOutExponential
+    );
+
+    // Remove the step we added
+    newLightnessScale.shift();
+
+    newLightnessScale.forEach((lightness, i) => {
+      scale[i].coords[0] = lightness;
+    });
+
+    return scale;
+  }
+
+  // Dark mode
+  let ease: typeof easeInExponential = [...easeInExponential];
+  const referenceBackgroundColorL = scale[0].coords[0];
+  const backgroundColorL = Math.max(0, Math.min(1, backgroundColor.coords[0]));
+
+  // If background is lighter than step 0, we want to gradually change the easing to linear
+  const ratioL = backgroundColorL / referenceBackgroundColorL;
+
+  if (ratioL > 1) {
+    const maxRatio = 1.5;
+
+    for (let i = 0; i < ease.length; i++) {
+      const metaRatio = (ratioL - 1) * (maxRatio / (maxRatio - 1));
+      ease[i] = ratioL > maxRatio ? 0 : Math.max(0, ease[i] * (1 - metaRatio));
+    }
+  }
+
+  const lightnessScale = scale.map(({ coords }) => coords[0]);
+  const backgroundL = backgroundColor.coords[0];
+  const newLightnessScale = transposeProgressionStart(backgroundL, lightnessScale, ease);
+
+  newLightnessScale.forEach((lightness, i) => {
+    scale[i].coords[0] = lightness;
   });
 
   return scale;
@@ -499,27 +549,30 @@ function formatHex(str: string) {
   return str;
 }
 
-function transposeProgressionStart(
-  value: number,
+const easeInExponential = [1, 0, 1, 0] as [number, number, number, number];
+const easeOutExponential = [0, 1, 0, 1] as [number, number, number, number];
+
+export function transposeProgressionStart(
+  to: number,
   arr: number[],
   curve: [number, number, number, number]
 ) {
   return arr.map((n, i, arr) => {
     const lastIndex = arr.length - 1;
-    const diff = arr[0] - value;
+    const diff = arr[0] - to;
     const fn = BezierEasing(...curve);
     return n - diff * fn(1 - i / lastIndex);
   });
 }
 
-function transposeProgressionEnd(
-  value: number,
+export function transposeProgressionEnd(
+  to: number,
   arr: number[],
   curve: [number, number, number, number]
 ) {
   return arr.map((n, i, arr) => {
     const lastIndex = arr.length - 1;
-    const diff = arr[lastIndex] - value;
+    const diff = arr[lastIndex] - to;
     const fn = BezierEasing(...curve);
     return n - diff * fn(i / lastIndex);
   });
