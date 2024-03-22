@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AccessibleIcon, Flex, IconButton, Theme, Tooltip } from '@radix-ui/themes';
+import { AccessibleIcon, Flex, IconButton, Link, Theme, Tooltip } from '@radix-ui/themes';
 import styles from './Header.module.css';
 import { BoxLink } from './BoxLink';
 import { ThemeToggle } from './ThemeToggle';
@@ -132,6 +132,15 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
               pr="4"
             >
               {children}
+
+              <Link
+                size="2"
+                color="gray"
+                href="/blog"
+                highContrast={router.pathname.includes('/blog')}
+              >
+                Blog
+              </Link>
 
               {gitHubLink && (
                 <Tooltip className="radix-themes-custom-fonts" content="View GitHub ">

@@ -3,7 +3,7 @@ import { Box, Link, Heading, ScrollArea } from '@radix-ui/themes';
 import { RemoveScroll } from 'react-remove-scroll';
 import styles from './QuickNav.module.css';
 
-export function QuickNav() {
+export function QuickNav({ title = 'Quick nav' }: { title?: string }) {
   const [headings, setHeadings] = React.useState<HTMLHeadingElement[]>([]);
 
   React.useEffect(() => {
@@ -55,7 +55,7 @@ export function QuickNav() {
           >
             <nav>
               <Heading mb="3" size="4" id="site-quick-nav-heading" asChild>
-                <h4>Quick nav</h4>
+                <h4>{title}</h4>
               </Heading>
               <Box asChild p="0" style={{ listStyle: 'none' }}>
                 <ul>

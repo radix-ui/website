@@ -1,13 +1,12 @@
-import { colorsRoutes } from '@utils/colorsRoutes';
 import { Box, ScrollArea } from '@radix-ui/themes';
-import { ColorsHeader } from './ColorsHeader';
 import { DocsNav } from './DocsNav';
 import { MobileMenu } from './MobileMenu';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
+import { BlogHeader } from './BlogHeader';
 
-export const ColorsMobileMenu = () => (
+export const BlogMobileMenu = () => (
   <MobileMenu>
-    <ColorsHeader />
+    <BlogHeader />
     <ScrollArea>
       <Box pt="4" px="3" pb="9">
         <DocsNav
@@ -16,7 +15,7 @@ export const ColorsMobileMenu = () => (
               pages: [
                 {
                   title: 'Homepage',
-                  slug: 'colors',
+                  slug: '',
                 },
                 {
                   title: 'Blog',
@@ -24,13 +23,12 @@ export const ColorsMobileMenu = () => (
                 },
               ],
             },
-            ...colorsRoutes,
             {
               label: 'Resources',
               pages: [
                 {
                   title: 'GitHub',
-                  slug: 'https://github.com/radix-ui/colors',
+                  slug: 'https://github.com/radix-ui/themes',
                   icon: <GitHubLogoIcon />,
                 },
               ],

@@ -35,6 +35,10 @@ export const PrimitivesMobileMenu = () => {
                       title: 'Case studies',
                       slug: 'primitives/case-studies',
                     },
+                    {
+                      title: 'Blog',
+                      slug: 'blog',
+                    },
                   ],
                 },
                 ...primitivesRoutes,

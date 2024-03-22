@@ -24,6 +24,10 @@ export default function Home() {
                       title: 'Homepage',
                       slug: 'icons',
                     },
+                    {
+                      title: 'Blog',
+                      slug: 'blog',
+                    },
                   ],
                 },
                 ...iconsRoutes,
