@@ -772,7 +772,7 @@ export function ThemesTypeSpecimen() {
             </Flex>
           </Flex>
           <Grid align="baseline" columns="auto auto" gap="5">
-            <Box position="relative" top="calc(-1 * var(--line-height-2))">
+            <Box position="relative" top={{ initial: '0', sm: 'calc(-1 * var(--line-height-2))' }}>
               <Text
                 as="p"
                 size="2"
@@ -787,7 +787,7 @@ export function ThemesTypeSpecimen() {
               </Text>
             </Box>
 
-            <Box maxWidth="260px">
+            <Box maxWidth="260px" display={{ initial: 'none', sm: 'block' }}>
               <Heading trim="end" size="8">
                 Ambiguous voice of a heart which prefers kiwi bowls to a zephyr.
               </Heading>
@@ -807,7 +807,7 @@ export function ThemesPanelComposition() {
   return (
     <Flex direction="column" gap="2">
       <Flex
-        p="7"
+        p={{ initial: '5', sm: '7' }}
         direction="column"
         align="center"
         justify="center"
@@ -817,7 +817,7 @@ export function ThemesPanelComposition() {
           borderRadius: 'var(--radius-4)',
         }}
       >
-        <Grid width="100%" columns="3" gap="5">
+        <Grid width="100%" columns={{ initial: '1', xs: '3' }} gap="5">
           <Flex
             direction="column"
             align="start"
