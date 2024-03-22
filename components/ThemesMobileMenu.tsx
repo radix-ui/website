@@ -22,6 +22,10 @@ export const ThemesMobileMenu = () => (
                   title: 'Playground',
                   slug: 'themes/playground',
                 },
+                {
+                  title: 'Blog',
+                  slug: 'blog',
+                },
               ],
             },
             ...themesRoutes,

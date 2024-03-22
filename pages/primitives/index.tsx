@@ -49,7 +49,11 @@ export default function PrimitivesHome() {
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Separator size="2" />
       </Container>
-      <CommunitySection />
+      <Section size={{ initial: '2', md: '4' }}>
+        <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
+          <CommunitySection />
+        </Container>
+      </Section>
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Separator size="2" />
         <Section size={{ initial: '2', md: '4' }} pb="0">
