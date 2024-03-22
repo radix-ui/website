@@ -59,6 +59,7 @@ export const themesRoutes = [
       { title: 'Callout', slug: 'themes/docs/components/callout' },
       { title: 'Card', slug: 'themes/docs/components/card' },
       { title: 'Checkbox', slug: 'themes/docs/components/checkbox' },
+      { title: 'Checkbox Group', slug: 'themes/docs/components/checkbox-group' },
       { title: 'Context Menu', slug: 'themes/docs/components/context-menu' },
       { title: 'Data List', slug: 'themes/docs/components/data-list' },
       { title: 'Dialog', slug: 'themes/docs/components/dialog' },

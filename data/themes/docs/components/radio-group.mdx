@@ -208,39 +208,17 @@ Use the native `disabled` attribute to create a disabled radiobutton.
 ```jsx live="true"
 <Flex direction="column" gap="2">
   <RadioGroup.Root defaultValue="2">
-    <Flex direction="column" gap="2">
-      <Text as="label" size="2">
-        <Flex gap="2">
-          <RadioGroup.Item value="1" />
-          Off
-        </Flex>
-      </Text>
-
-      <Text as="label" size="2">
-        <Flex gap="2">
-          <RadioGroup.Item value="2" />
-          On
-        </Flex>
-      </Text>
-    </Flex>
+    <RadioGroup.Item value="1">Off</RadioGroup.Item>
+    <RadioGroup.Item value="2">On</RadioGroup.Item>
   </RadioGroup.Root>
 
   <RadioGroup.Root defaultValue="2">
-    <Flex direction="column" gap="2">
-      <Text as="label" size="2" color="gray">
-        <Flex gap="2">
-          <RadioGroup.Item value="1" disabled />
-          Off
-        </Flex>
-      </Text>
-
-      <Text as="label" size="2" color="gray">
-        <Flex gap="2">
-          <RadioGroup.Item value="2" disabled />
-          On
-        </Flex>
-      </Text>
-    </Flex>
+    <RadioGroup.Item value="1" disabled>
+      Off
+    </RadioGroup.Item>
+    <RadioGroup.Item value="2" disabled>
+      On
+    </RadioGroup.Item>
   </RadioGroup.Root>
 </Flex>
 ```

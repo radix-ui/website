@@ -1,0 +1,224 @@
+---
+metaTitle: Checkbox Group
+metaDescription: Set of interactive buttons where multiple options can be selected at a time.
+sourcePath: components/checkbox-group
+---
+
+```jsx live=true
+<CheckboxGroup.Root defaultValue={['1']} name="example">
+  <CheckboxGroup.Item value="1">Fun</CheckboxGroup.Item>
+  <CheckboxGroup.Item value="2">Serious</CheckboxGroup.Item>
+  <CheckboxGroup.Item value="3">Smart</CheckboxGroup.Item>
+</CheckboxGroup.Root>
+```
+
+## API Reference
+
+This component supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+### Root
+
+Contains all the parts of a checkbox group.
+
+<ThemesPropsTable defs="checkboxGroupRootPropDefs" />
+
+### Item
+
+An item in the group that can be checked.
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the checkbox size.
+
+```jsx live=true
+<Flex align="center" gap="2">
+  <CheckboxGroup.Root size="1" defaultValue="1">
+    <CheckboxGroup.Item value="1" />
+  </CheckboxGroup.Root>
+
+  <CheckboxGroup.Root size="2" defaultValue="1">
+    <CheckboxGroup.Item value="1" />
+  </CheckboxGroup.Root>
+
+  <CheckboxGroup.Root size="3" defaultValue="1">
+    <CheckboxGroup.Item value="1" />
+  </CheckboxGroup.Root>
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style of the checkboxes.
+
+```jsx live=true
+<Flex gap="2">
+  <Flex direction="column" asChild gap="2">
+    <CheckboxGroup.Root variant="surface" defaultValue="1">
+      <CheckboxGroup.Item value="1" />
+      <CheckboxGroup.Item value="2" />
+    </CheckboxGroup.Root>
+  </Flex>
+
+  <Flex direction="column" asChild gap="2">
+    <CheckboxGroup.Root variant="classic" defaultValue="1">
+      <CheckboxGroup.Item value="1" />
+      <CheckboxGroup.Item value="2" />
+    </CheckboxGroup.Root>
+  </Flex>
+
+  <Flex direction="column" asChild gap="2">
+    <CheckboxGroup.Root variant="soft" defaultValue="1">
+      <CheckboxGroup.Item value="1" />
+      <CheckboxGroup.Item value="2" />
+    </CheckboxGroup.Root>
+  </Flex>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
+
+```jsx live=true
+<Flex gap="2">
+  <CheckboxGroup.Root color="indigo" defaultValue="1">
+    <CheckboxGroup.Item value="1" />
+  </CheckboxGroup.Root>
+
+  <CheckboxGroup.Root color="cyan" defaultValue="1">
+    <CheckboxGroup.Item value="1" />
+  </CheckboxGroup.Root>
+
+  <CheckboxGroup.Root color="orange" defaultValue="1">
+    <CheckboxGroup.Item value="1" />
+  </CheckboxGroup.Root>
+
+  <CheckboxGroup.Root color="crimson" defaultValue="1">
+    <CheckboxGroup.Item value="1" />
+  </CheckboxGroup.Root>
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to increase color contrast with the background.
+
+```jsx live=true
+<Grid rows="2" gap="2" display="inline-grid" flow="column">
+  <CheckboxGroup.Root color="indigo" defaultValue="1">
+    <CheckboxGroup.Item value="1" />
+  </CheckboxGroup.Root>
+
+  <CheckboxGroup.Root color="indigo" defaultValue="1" highContrast>
+    <CheckboxGroup.Item value="1" />
+  </CheckboxGroup.Root>
+
+  <CheckboxGroup.Root color="cyan" defaultValue="1">
+    <CheckboxGroup.Item value="1" />
+  </CheckboxGroup.Root>
+
+  <CheckboxGroup.Root color="cyan" defaultValue="1" highContrast>
+    <CheckboxGroup.Item value="1" />
+  </CheckboxGroup.Root>
+
+  <CheckboxGroup.Root color="orange" defaultValue="1">
+    <CheckboxGroup.Item value="1" />
+  </CheckboxGroup.Root>
+
+  <CheckboxGroup.Root color="orange" defaultValue="1" highContrast>
+    <CheckboxGroup.Item value="1" />
+  </CheckboxGroup.Root>
+
+  <CheckboxGroup.Root color="crimson" defaultValue="1">
+    <CheckboxGroup.Item value="1" />
+  </CheckboxGroup.Root>
+
+  <CheckboxGroup.Root color="crimson" defaultValue="1" highContrast>
+    <CheckboxGroup.Item value="1" />
+  </CheckboxGroup.Root>
+
+  <CheckboxGroup.Root color="gray" defaultValue="1">
+    <CheckboxGroup.Item value="1" />
+  </CheckboxGroup.Root>
+
+  <CheckboxGroup.Root color="gray" defaultValue="1" highContrast>
+    <CheckboxGroup.Item value="1" />
+  </CheckboxGroup.Root>
+</Grid>
+```
+
+### Alignment
+
+Composing `CheckboxGroup.Item` within `Text` automatically centers it with the first line of text.
+
+```jsx live="true"
+<Flex direction="column" gap="3">
+  <CheckboxGroup.Root size="1" defaultValue="1">
+    <Text as="label" size="2">
+      <Flex gap="2">
+        <CheckboxGroup.Item value="1" /> Default
+      </Flex>
+    </Text>
+
+    <Text as="label" size="2">
+      <Flex gap="2">
+        <CheckboxGroup.Item value="2" /> Compact
+      </Flex>
+    </Text>
+  </CheckboxGroup.Root>
+
+  <CheckboxGroup.Root size="2" defaultValue="1">
+    <Text as="label" size="3">
+      <Flex gap="2">
+        <CheckboxGroup.Item value="1" /> Default
+      </Flex>
+    </Text>
+
+    <Text as="label" size="3">
+      <Flex gap="2">
+        <CheckboxGroup.Item value="2" /> Compact
+      </Flex>
+    </Text>
+  </CheckboxGroup.Root>
+
+  <CheckboxGroup.Root size="3" defaultValue="1">
+    <Text as="label" size="4">
+      <Flex gap="2">
+        <CheckboxGroup.Item value="1" /> Default
+      </Flex>
+    </Text>
+
+    <Text as="label" size="4">
+      <Flex gap="2">
+        <CheckboxGroup.Item value="2" /> Compact
+      </Flex>
+    </Text>
+  </CheckboxGroup.Root>
+</Flex>
+```
+
+It is automatically well-aligned with multi-line text too.
+
+### Disabled
+
+Use the native `disabled` attribute to create a disabled radiobutton.
+
+```jsx live="true"
+<Flex direction="column" gap="2">
+  <CheckboxGroup.Root defaultValue="2">
+    <CheckboxGroup.Item value="1">Off</CheckboxGroup.Item>
+    <CheckboxGroup.Item value="2">On</CheckboxGroup.Item>
+  </CheckboxGroup.Root>
+
+  <CheckboxGroup.Root defaultValue="2">
+    <CheckboxGroup.Item value="1" disabled>
+      Off
+    </CheckboxGroup.Item>
+    <CheckboxGroup.Item value="2" disabled>
+      On
+    </CheckboxGroup.Item>
+  </CheckboxGroup.Root>
+</Flex>
+```
