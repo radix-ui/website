@@ -27,6 +27,48 @@ The [Theme component](/themes/docs/components/theme) defines the overall visual 
 
 A well tuned set of defaults is provided to get you started, but don’t be afraid to play with all of the available options to find the right visual style for your application. Check out the [Playground](/themes/playground) to see what effect each option has.
 
+## Variants
+
+Variants are visual variations of a component which are used to create visual hierarchies and communicate relative importance.
+
+Each component offers a different set of variants, though all are designed to be consistent and complimentary with each other.
+
+```jsx live=true
+<Flex gap="3" align="center">
+  <Button variant="classic">
+    Get started <ArrowRightIcon />
+  </Button>
+  <Button variant="solid">
+    Get started <ArrowRightIcon />
+  </Button>
+  <Button variant="soft">
+    Get started <ArrowRightIcon />
+  </Button>
+</Flex>
+```
+
+## Examples
+
+Using a combination of component variants alongside customized theme settings allows you to create a multitude of unique-looking interfaces.
+
+For example you could create:
+
+- [Music applications](/themes/example-music-app)
+- [Ecommerce product elements](/themes/example-ecommerce)
+- [SaaS dashboards](/themes/example-dashboard)
+
+Or any number of differing treatments and styles.
+
+<ThemesVariantsExample />
+
+## Tokens
+
+Tokens provide direct access to theme values and give you flexibility to build and customize your own themed components.
+
+Radix Themes exposes all tokens as CSS [Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*). These are consumed internally in all component styles. You can access them the same way you would any other variable, either directly inside your CSS or inline via the style prop.
+
+For all available theme tokens see the [source code](https://github.com/radix-ui/themes/tree/main/packages/radix-ui-themes/src/styles/tokens), or read more about each type of token in the relevant theme pages below.
+
 {
 
   <Grid columns={{ initial: '1', xs: '2' }} my="6" gap="4">
@@ -68,47 +110,3 @@ A well tuned set of defaults is provided to get you started, but don’t be afra
     </Grid>
 
 }
-
-## Variants
-
-Variants are visual variations of a component which are used to create visual hierarchies and communicate relative importance.
-
-Each component offers a different set of variants, though all are designed to be consistent and complimentary with each other.
-
-```jsx live=true
-<Flex gap="3" align="center">
-  <Button variant="classic">
-    Get started <ArrowRightIcon />
-  </Button>
-  <Button variant="solid">
-    Get started <ArrowRightIcon />
-  </Button>
-  <Button variant="soft">
-    Get started <ArrowRightIcon />
-  </Button>
-</Flex>
-```
-
-Using a combination of component variants alongside customized theme settings allows you to create a multitude of unique-looking interfaces.
-
-<ThemesVariantsExample />
-
-## Tokens
-
-## TODO
-
-## TODO
-
-## TODO
-
-## TODO
-
-## TODO
-
-## TODO
-
-## TODO
-
-## TODO
-
-For all available theme tokens see the [source code](https://github.com/radix-ui/themes/tree/main/packages/radix-ui-themes/src/styles/tokens) and make sure to read the theme overview pages in the docs.
