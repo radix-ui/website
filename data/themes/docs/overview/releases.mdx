@@ -50,6 +50,11 @@ metaDescription: Radix Themes releases and their changelogs.
     - If you need lower-level control, you can use the `Radio` component instead
   - `Section` has a new `size="3"`
     - Update all your Sections that used `size="3"` to `size="4"`
+  - `Tabs` underlying letter/word spacing CSS variables were renamed to support both `Tabs` and `TabNav` components. If you were using them, rename them to the new values:
+    - `--tabs-trigger-active-letter-spacing` → `--tab-active-letter-spacing`
+    - `--tabs-trigger-active-word-spacing` → `--tab-active-word-spacing`
+    - `--tabs-trigger-inactive-letter-spacing` → `--tab-inactive-letter-spacing`
+    - `--tabs-trigger-inactive-word-spacing` → `--tab-inactive-word-spacing`
   - `TextField` now only has 2 parts: `Root` and `Slot`, dropping the `Input` part and simplifying how props are forwarded.
     - All `TextField.Input` parts used **without** `TextField.Root` should be renamed to `TextField.Root`
     - All `TextField.Input` parts used **within** `TextField.Root` should be removed and their props should be put directly on the `TextField.Root` part
@@ -204,7 +209,7 @@ metaDescription: Radix Themes releases and their changelogs.
 - `Tabs`:
   - Add `color` and `highContrast` props to `TabsList`
   - Add margin props `TabsList` and `TabsContent`
-  - Renamed the letter/word spacing CSS variables in `.radix-themes` so that it supports both `Tabs` and `TabNav` components. Note that this is a backwards compatible change, as the old variables are still supported.
+  - Renamed the letter/word spacing CSS variables in `.radix-themes` so that it supports both `Tabs` and `TabNav` components.
     - `--tabs-trigger-active-letter-spacing` → `--tab-active-letter-spacing`
     - `--tabs-trigger-active-word-spacing` → `--tab-active-word-spacing`
     - `--tabs-trigger-inactive-letter-spacing` → `--tab-inactive-letter-spacing`
