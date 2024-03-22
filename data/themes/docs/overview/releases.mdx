@@ -22,6 +22,9 @@ General
 - Component prop definitions and internal helpers are no longer available from the root `@radix-ui/themes` import entry point.
   - Import them from `@radix-ui/themes/props` and `@radix-ui/themes/helpers` instead. - Note: you might need to use `"moduleResolution": "NodeNext"` with your compiler to access these paths. - Note: changes to prop defs and helpers won’t be covered by semver.
     Props
+
+Props
+
 - The `width` and `height` props on layout components don't map to space scale anymore
   - Find and replace your `width` and `height` prop usage with the corresponding [space scale](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/space.css) steps, e.g. `width="9"` would need to be changed to `width="64px"` or `width="var(--space-9)"`, and so on for other steps.
 - The `shrink` and `grow` props on layout components were renamed
