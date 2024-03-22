@@ -7,6 +7,237 @@ metaDescription: Radix Themes releases and their changelogs.
 
 <Description>Radix Themes releases and their changelogs.</Description>
 
+## 3.0.0
+
+<Note>March 23, 2024</Note>
+
+**Upgrade guide**
+
+- General
+  - Multi-part components now don’t export named parts (ie. `DialogRoot`, `DialogTrigger`, …)
+    - Use dot notation instead (ie. `Dialog.Root`, `Dialog.Trigger`, …) after importing like this: `import { Dialog } from "@radix-ui/themes"`.
+  - Component prop definitions and internal helpers are no longer available from the root `@radix-ui/themes` import entry point.
+    - Import them from `@radix-ui/themes/props` and `@radix-ui/themes/helpers` instead.
+      - Note: you might need to use `"moduleResolution": "NodeNext"` with your compiler to access these paths.
+      - Note: changes to prop defs and helpers won’t be covered by semver.
+- Props
+  - The `width` and `height` props on layout components don't map to space scale anymore
+    - Find and replace your `width` and `height` prop usage with the corresponding [space scale](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/space.css) steps, e.g. `width="9"` would need to be changed to `width="64px"` or `width="var(--space-9)"`, and so on for other steps.
+  - The `shrink` and `grow` props on layout components were renamed
+    - Use `flexShrink` and `flexGrow` instead
+- Colors
+  - `--color-surface-accent` was renamed to `--accent-surface`
+    - If you were using this token for your custom components, make sure to replace the corresponding references
+  - `--accent-9-contrast`, `--red-9-contrast`, `--pink-9-contrast`, `--blue-9-contrast`, etc. were renamed to `--accent-contrast`, `--red-contrast`, `--pink-contrast`, `--blue-contrast` and so on.
+    - If you were using these tokens for your custom components, make sure to replace the corresponding references
+  - `--color-focus-root`, `--color-selection-root`, `--color-autofill-root` were replaced with a focus color scale, e.g. `--focus-1` – `--focus-12`, and `--focus-a1` – `--focus-a12`.
+    - If you were overriding the above tokens or using them in your custom components, you’ll need to references the new color scale.
+      - `--color-autofill-root` is replaced by `--focus-a3`
+      - `--color-focus-root` is replaced by `--focus-8`
+      - `--color-selection-root` is replaced by `--focus-a5`
+  - `--gray-2-translucent` and the corresponding tinted gray colors were removed
+- Components
+  - `AlertDialog`, `Dialog` now have `maxWidth="600px"` by default on the Content part.
+    - This is slightly larger than the previous `580px` value. If you use dialogs that need a different width, override `maxWidth` with your own value.
+  - `Badge` has a new `size="3"`, `size="2"` is now much smaller, and `size="1"` dimensions were tweaked
+    - Replace your `size="2"` usage with `size="3"`
+  - `Card` internal HTML structure and styles were reworked and now renders a single HTML node. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
+    - If you need to override the Card’s background color on variants other than `ghost`, use `--card-background-color` variable instead of assigning `background-color` directly, or set your background color on an `<Inset p="current">` element nested as the first child of the Card.
+    - Check your Card instances that uses `asChild` or is `asChild`’ed onto by a parent component. (The common case with link or button card without any extra styles will work as expected).
+  - `HoverCard` and `Popover` now have `maxWidth="480px"` by default on the Content part.
+    - If you use popovers and hover cards that need a wider width, override `maxWidth` with your own value.
+  - `RadioGroup` internal HTML structure and styles were reworked and is now designed to display an optional text label when passing `children` to the `Item` part. The `Root` part now also provides flex column styles and spacing.
+    - If you need lower-level control, you can use the `Radio` component instead
+  - `Section` has a new `size="3"`
+    - Update all your Sections that used `size="3"` to `size="4"`
+  - `TextField` now only has 2 parts: `Root` and `Slot`, dropping the `Input` part and simplifying how props are forwarded.
+    - All `TextField.Input` parts used **without** `TextField.Root` should be renamed to `TextField.Root`
+    - All `TextField.Input` parts used **within** `TextField.Root` should be removed and their props should be put directly on the `TextField.Root` part
+    - All `TextField.Slot` parts placed to the right of `TextField.Input` will need `side="right"` prop. However, no adjustment is needed when two slots were used within one `TextField`, e.g. one slot on the left and another one on the right. In that case, the slots will be automatically placed on different sides.
+    - Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
+  - `Theme` does not set body background color automatically anymore. The background color is now provided by the root `Theme` by default. The CSS variable `--color-page-background` is no longer available.
+    - In most cases, it can be safely replaced with `--color-background` available on the `.radix-themes` element.
+  - `Tooltip` now has `maxWidth="360px"` by default on the Content part.
+    - If you use tooltips that need to be wider, override `maxWidth` with your own value.
+
+<details>
+<summary>**Full changelog**</summary>
+
+- General
+  - Package structure
+    - Improve ESM compatibility
+    - Improve tree-shaking of individual component parts
+    - **[Breaking]** Drop named exports for multi-part components
+    - **[Breaking]** Remove component prop definitions and internal helpers from the root `@radix-ui/themes` import entry point and export them from `@radix-ui/themes/props` and `@radix-ui/themes/helpers` to make it possible to build your own component library on top of Radix Themes using the same techniques.
+    - Add a wildcard entry point to the package to allow direct access to the package internals as an escape hatch if you have a complex tooling setup that can’t support modern module resolution rules
+    - Add extra CSS file exports for advanced use-cases:
+      - Export individual `tokens.css`, `components.css`, and `utilities.css` files in case you need fine-grained control of the CSS precedence. For example, this allows to import Radix Themes `utilities.css` after your own CSS, and everything else before that.
+      - Additionally to the above, you can customise which colors to import. Instead of importing `tokens.css`, you can also import `tokens/base.css` and `tokens/colors/*.css`, where `*` corresponds to the names of the accent and gray colors you need in your project.
+      - Export `layout.css` that only includes styles for the layout components (Box, Flex, Grid, Container, Section). Individual exports `layout/tokens.css`, `layout/components.css`, and `layout/utilities.css` are also available to support the above use-case.
+  - Props
+    - Add the following props to all layout components:
+      - `minWidth`, `maxWidth`
+      - `minHeight`, `maxHeight`
+      - `flexBasis`, `flexShrink`, `flexGrow`
+      - `gridColumn`, `gridColumnStart`, `gridColumnEnd`
+      - `gridRow`, `gridRowStart`, `gridRowEnd`
+      - `overflow`, `overflowX`, `overflowY`
+    - Rework all layout props to allow arbitrary CSS values, including when used with the responsive object syntax. Props that support arbitrary values include:
+      - `width`, `minWidth`, `maxWidth`
+      - `height`, `minHeight`, `maxHeight`
+      - `m`, `mx`, `my`, `mt`, `mr`, `mb`, `ml`
+      - `p`, `px`, `py`, `pt`, `pr`, `pb`, `pl`
+      - `inset`, `top`, `right`, `bottom`, `left`
+      - `gap`, `gapX`, `gapY`
+      - `flexBasis`, `flexShrink`, `flexGrow`
+      - `gridColumn`, `gridColumnStart`, `gridColumnEnd`
+      - `gridRow`, `gridRowStart`, `gridRowEnd`
+    - **[Breaking]** The `width` and `height` props don't map to space scale anymore. This is because in the vast majority of cases, width and height were not set to space scale, and with that, space scale as an IDE autocomplete suggestion felt odd/misleading.
+    - **[Breaking]** Rename `shrink` and `grow` props to `flexShrink` and `flexGrow`
+    - Update the type signature of the layout props so that code editor suggestions use just space scale values when possible. CSS keywords and other values such as `"auto"` or `"100vw"` are still available as manual string values.
+    - Document all layout props with JSDoc
+    - Fix an issue with responsive props when using a breakpoints object without the `initial` key would not apply the default prop value
+    - Remove the native `color`, `defaultValue`, and `defaultChecked` attributes from components that inherit them from the native HTML elements to avoid confusion with their custom implementations
+    - **[Breaking]** Rework the availability of `asChild` prop on all components and parts
+  - Colors
+    - Make sure `highContrast` text colors work consistently when nested within other components that accept an accent color
+    - Tweak the background color of all `variant="soft"` menu items
+    - **[Breaking]** Rename `--color-surface-accent` to `--accent-surface`
+    - **[Breaking]** Rename `--accent-9-contrast`, `--red-9-contrast`, `--pink-9-contrast`, `--blue-9-contrast`, etc. to `--accent-contrast`, `--red-contrast`, `--pink-contrast`, `--blue-contrast` and so on.
+    - Remove `--gray-2-translucent` and the corresponding tinted gray colors
+    - Tweak `--color-surface` and `--color-panel-translucent` values
+    - **[Breaking]** Replace `--color-focus-root`, `--color-selection-root`, `--color-autofill-root` with a focus color scale, e.g. `--focus-1` – `--focus-12`, and `--focus-a1` – `--focus-a12`.
+  - Other
+    - Speed up most of the animations
+    - Ensure all elements that have padding or border styles use `box-sizing: border-box`
+    - Ensure that disabled cursor styles are applied correctly
+    - Add a blur backdrop filter effect to the translucent panels
+- 11 new components
+  - `DataList`
+    - Component for displaying text data as key-value pairs. Parts:
+      - `Root`
+      - `Item`
+      - `Label`
+      - `Value`
+  - `CheckboxGroup`
+    - Group of checkboxes with an optional text label and roving focus. Parts:
+      - `Root`
+      - `Item`
+  - `CheckboxCards`
+    - Interactive card components to pick one or more value from the list. Parts:
+      - `Root`
+      - `Item`
+  - `Progress`
+    - Progress bar component that indicates completion of a task.
+  - `Radio`
+    - Standalone element for building your own layouts with radio inputs.
+  - `RadioCards`
+    - Interactive card components to pick one of the values from the list. Parts:
+      - `Root`
+      - `Item`
+  - `Reset`
+    - Component that resets the styles for any native HTML element.
+  - `SegmentedControl`
+    - Component for selecting a single option out of many and for controlling tab-like interfaces
+  - `Skeleton`
+    - Component that may wrap any UI element and turn it into a loading skeleton. Can also render self or a React Fragment conditionally using a `loading` prop.
+  - `Spinner`
+    - Loading spinner component. Like `Skeleton`, it also may wrap any UI element and display itself using a conditional `loading` prop.
+  - `TabNav`
+    - Equivalent for `Tabs`, but used for page navigation. Renders regular links and supports roving focus. Parts:
+      - `Root`
+      - `Link`
+- `AlertDialog`, `Dialog`
+  - Add `position: relative` to support absolutely positioned children.
+  - Add `width`, `minWidth`, `maxWidth` props to the Content part.
+  - Set `maxWidth="600px"` by default on the Content part.
+  - Rework the scroll container so that it displays scrollbars on the viewport rather than confined to the dialog Content part. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
+- `Badge`
+  - Remove `user-select: none`
+  - **[Breaking]** Add `size="3"`, make `size="2"` much smaller, tweak `size="1"` dimensions
+- `Blockquote`, `Code`, `Em`, `Heading`, `Quote`, `Link`, `Strong`, `Text`
+  - Add new `wrap` and `truncate` props that control whether the text wraps and whether it is truncated with ellipsis
+- `Card`
+  - Rework the internal HTML structure and styles. This component now renders a single HTML node. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
+- `Code`
+  - `variant="ghost"` color now works similarly to Text, inheriting the color unless set explicitly using the `color` prop
+- `Container`
+  - Add `align` prop to control whether the container content is aligned to the left, center, or right
+  - **[Breaking]** Change the `display="block"` value to `display="initial"` (the former value was broken)
+- `ContextMenu`, `DropdownMenu`
+  - Add `color` prop to `CheckboxItem` and `RadioItem` parts
+- `Checkbox`, `RadioGroup`, `Switch`
+  - Rework the internal HTML structure and styles. These components now render fewer HTML nodes and forward all props to the topmost node. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
+- `DropdownMenu`
+  - Use a brighter text color for the highlighted item when the Content part uses `variant="soft"`
+  - Add an optional `TriggerIcon` part that renders an arrow down indicator
+- `Box`, `Flex`, `Grid`
+  - Add support for `as` prop to render as `span` or `div`
+  - For Box, `display: block` style is now enforced regardless of the tag
+- `Button`, `IconButton`
+  - Add new `loading` prop
+- `Flex`
+  - Add `gapX` and `gapY` props
+- `HoverCard`, `Popover`
+  - Add `position: relative` to support absolutely positioned children.
+  - Add `width`, `minWidth`, `maxWidth`, `height`, `minHeight`, `maxHeight` props to the Content part.
+  - Set `maxWidth="480px"` by default on the Content part.
+- `RadioGroup`
+  - [**Breaking**] Rework the internal HTML structure and styles. This component is now designed to display an optional text label when passing `children` to the `Item` part, and the `Root` part now provides flex column styles and spacing.
+- `Section`
+  - **[Breaking]** Change the `display="block"` value to `display="initial"` (the former value was broken)
+  - **[Breaking]** Use a new value for `size="3"`, use the previous value for `size="4"`
+- `Select`
+  - Make sure that Trigger font weight is not inherited, e.g. from a wrapping `<label>` element
+- `Separator`
+  - Allow responsive values for the `orientation` prop
+- `ScrollArea`
+  - Fix an issue when Scroll Area would be unable to stretch to 100% height when informed by the parent’s auto height
+- `Slider`
+  - Change the size of the bounding box to match the size of the Slider track
+  - Replace `flex-shrink: 0` with `flex-grow: 1` and `width: stretch` / `height: stretch` to allow the slider element to flex and shrink in layouts more intuitively.
+  - Fix an overzealous focus outline in Safari
+- `Table`
+  - Add new `layout` prop to control the `table-layout` style property
+  - Align `width` prop type signature and implementation on the `TableCell` part with the reworked `width` prop on the layout components
+  - Add `minWidth` and `maxWidth` props to the `TableCell` part
+- `Tabs`:
+  - Add `color` and `highContrast` props to `TabsList`
+  - Add margin props `TabsList` and `TabsContent`
+  - Renamed the letter/word spacing CSS variables in `.radix-themes` so that it supports both `Tabs` and `TabNav` components. Note that this is a backwards compatible change, as the old variables are still supported.
+    - `--tabs-trigger-active-letter-spacing` → `--tab-active-letter-spacing`
+    - `--tabs-trigger-active-word-spacing` → `--tab-active-word-spacing`
+    - `--tabs-trigger-inactive-letter-spacing` → `--tab-inactive-letter-spacing`
+    - `--tabs-trigger-inactive-word-spacing` → `--tab-inactive-word-spacing`
+- `TextArea`
+  - Add `radius` prop
+  - Add `resize` prop
+  - Fix an issue when Grammarly extension would break the component styles
+  - Make sure that the font weight is not inherited, e.g. from a wrapping `<label>` element
+  - Rework the internal HTML structure and styles. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
+- `TextField`
+  - **[Breaking]** Remove the `Input` part to simplify how props are forwarded and rework internal HTML structure and styles.
+  - Fix an issue with some input `type`s not supporting `getSelectionRange`
+  - Fix an issue when Grammarly extension would break the component styles
+  - Make sure that the font weight is not inherited, e.g. from a wrapping `<label>` element
+- `ThemePanel`
+  - Change the hotkey to toggle the Theme Panel to "T" keypress and dark mode to "D" keypress (without modifiers).
+- `Theme`
+  - Set `min-height: 100vh` on the root `Theme` component
+  - Fix an issue when in certain situations, `hasBackground` prop value would have no effect
+  - Refine the logic for when `Theme` has a background color by default. `Theme` without an explicit `hasBackground` prop will display a background color:
+    - When it is the root `Theme` component
+    - When it has an explicit appearance value, e.g. `<Theme apperance="light">` or `<Theme apperance="dark">`
+  - Body background color is no longer set automatically. The background color is now provided by the root `Theme` by default.
+    - **[Breaking]** The CSS variable `--color-page-background` is no longer available.
+    - `suppressHydrationWarning` on `html` is no longer needed (unless required by other libraries, like `next-themes`)
+  - Document all Theme props with JSDoc
+- `Tooltip`
+  - Add `width`, `minWidth`, `maxWidth` props.
+  - Set `maxWidth="360px"` by default on the tooltip content
+  - Change the default delay duration to 200ms
+    </details>
+
 ## 2.0.2
 
 <Note>December 5, 2023</Note>
