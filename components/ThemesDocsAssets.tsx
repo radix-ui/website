@@ -1330,7 +1330,8 @@ export function ThemesBlogPostExampleArea({
   return (
     <Flex
       my="5"
-      py="7"
+      py={{ initial: '4', xs: '5', md: '7' }}
+      px={{ initial: '4', xs: '5', md: '0' }}
       direction="column"
       align="center"
       justify="center"
@@ -1372,7 +1373,7 @@ export function ThemesBlogPostExampleSkeleton() {
   return (
     <ThemesBlogPostExampleArea>
       <Box width="100%" maxWidth="360px">
-        <Card variant="classic" size="4">
+        <Card variant="classic" size={{ initial: '3', xs: '4' }}>
           <Box height="40px" mb="4">
             <Heading as="h3" size="6" mt="-1">
               <Skeleton loading={isLoading}>Sign in</Skeleton>
@@ -1395,19 +1396,7 @@ export function ThemesBlogPostExampleSkeleton() {
             </Flex>
           </Box>
 
-          <Box mb="5" position="relative">
-            <Box position="absolute" top="0" right="0" style={{ marginTop: -2 }}>
-              {isLoading ? (
-                <Text size="2">
-                  <Skeleton loading>Forgot password?</Skeleton>
-                </Text>
-              ) : (
-                <Link size="2" href="#">
-                  Forgot password?
-                </Link>
-              )}
-            </Box>
-
+          <Box mb="5">
             <Flex direction="column">
               <Text as="label" size="2" weight="medium" mb="2" htmlFor="password">
                 <Skeleton loading={isLoading}>Password</Skeleton>
@@ -1552,8 +1541,9 @@ export function ThemesBlogPostExampleTabNav() {
   return (
     <ThemesBlogPostExampleArea>
       <TabNavDemo
-        baseUrl="/themes/docs/overview/3.0"
+        baseUrl="/blog/themes-3"
         items={['Account', 'Documents', 'Workspace']}
+        size={{ initial: '1', xs: '2' }}
       />
     </ThemesBlogPostExampleArea>
   );
