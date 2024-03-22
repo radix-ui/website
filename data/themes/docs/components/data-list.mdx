@@ -6,12 +6,28 @@ sourcePath: components/data-list
 
 ```jsx live=true
 <DataList.Root>
-  <DataList.Item>
+  <DataList.Item align="center">
     <DataList.Label minWidth="88px">Status</DataList.Label>
     <DataList.Value>
-      <Badge color="jade" variant="soft" radius="full" mx="-2px" size="2">
-        Active
+      <Badge color="jade" variant="soft" radius="full">
+        Authorized
       </Badge>
+    </DataList.Value>
+  </DataList.Item>
+  <DataList.Item>
+    <DataList.Label minWidth="88px">ID</DataList.Label>
+    <DataList.Value>
+      <Flex align="center" gap="2">
+        <Code variant="ghost">u_2J89JSA4GJ</Code>
+        <IconButton
+          size="1"
+          aria-label="Copy value"
+          color="gray"
+          variant="ghost"
+        >
+          <CopyIcon />
+        </IconButton>
+      </Flex>
     </DataList.Value>
   </DataList.Item>
   <DataList.Item>
@@ -21,33 +37,16 @@ sourcePath: components/data-list
   <DataList.Item>
     <DataList.Label minWidth="88px">Email</DataList.Label>
     <DataList.Value>
-      <Link
-        color="gray"
-        highContrast
-        underline="hover"
-        href="mailto:vlad@workos.com"
-      >
-        vlad@workos.com
-      </Link>
+      <Link href="mailto:vlad@workos.com">vlad@workos.com</Link>
     </DataList.Value>
   </DataList.Item>
   <DataList.Item>
     <DataList.Label minWidth="88px">Company</DataList.Label>
     <DataList.Value>
-      <Link
-        color="gray"
-        highContrast
-        underline="hover"
-        target="_blank"
-        href="https://workos.com"
-      >
+      <Link target="_blank" href="https://workos.com">
         WorkOS
       </Link>
     </DataList.Value>
-  </DataList.Item>
-  <DataList.Item>
-    <DataList.Label minWidth="88px">Title</DataList.Label>
-    <DataList.Value>Product Designer</DataList.Value>
   </DataList.Item>
 </DataList.Root>
 ```
