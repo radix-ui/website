@@ -1,5 +1,6 @@
 import * as RadixColors from '@radix-ui/colors';
 import Color from 'colorjs.io';
+import BezierEasing from 'bezier-easing';
 
 type ArrayOf12<T> = [T, T, T, T, T, T, T, T, T, T, T, T];
 const arrayOf12 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] as const;
@@ -47,6 +48,7 @@ export const generateRadixColors = ({
   appearance: 'light' | 'dark';
   accent: string;
   gray: string;
+  background?: string;
 }) => {
   const allScales = appearance === 'light' ? lightColors : darkColors;
   const grayScales = appearance === 'light' ? lightGrayColors : darkGrayColors;
@@ -495,4 +497,30 @@ function formatHex(str: string) {
   }
 
   return str;
+}
+
+function transposeProgressionStart(
+  value: number,
+  arr: number[],
+  curve: [number, number, number, number]
+) {
+  return arr.map((n, i, arr) => {
+    const lastIndex = arr.length - 1;
+    const diff = arr[0] - value;
+    const fn = BezierEasing(...curve);
+    return n - diff * fn(1 - i / lastIndex);
+  });
+}
+
+function transposeProgressionEnd(
+  value: number,
+  arr: number[],
+  curve: [number, number, number, number]
+) {
+  return arr.map((n, i, arr) => {
+    const lastIndex = arr.length - 1;
+    const diff = arr[lastIndex] - value;
+    const fn = BezierEasing(...curve);
+    return n - diff * fn(i / lastIndex);
+  });
 }
