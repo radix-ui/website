@@ -13,57 +13,62 @@ metaDescription: Radix Themes releases and their changelogs.
 
 **Upgrade guide**
 
-- General
-  - Multi-part components now don’t export named parts (ie. `DialogRoot`, `DialogTrigger`, …)
-    - Use dot notation for all multi-part components instead (ie. `Dialog.Root`, `Dialog.Trigger`, …) after importing like this: `import { Dialog } from "@radix-ui/themes"`.
-  - Component prop definitions and internal helpers are no longer available from the root `@radix-ui/themes` import entry point.
-    - Import them from `@radix-ui/themes/props` and `@radix-ui/themes/helpers` instead.
-      - Note: you might need to use `"moduleResolution": "NodeNext"` with your compiler to access these paths.
-      - Note: changes to prop defs and helpers won’t be covered by semver.
-- Props
-  - The `width` and `height` props on layout components don't map to space scale anymore
-    - Find and replace your `width` and `height` prop usage with the corresponding [space scale](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/space.css) steps, e.g. `width="9"` would need to be changed to `width="64px"` or `width="var(--space-9)"`, and so on for other steps.
-  - The `shrink` and `grow` props on layout components were renamed
-    - Use `flexShrink` and `flexGrow` instead
-- Colors
-  - `--color-surface-accent` was renamed to `--accent-surface`
-    - If you were using this token for your custom components, make sure to replace the corresponding references
-  - `--accent-9-contrast`, `--red-9-contrast`, `--pink-9-contrast`, `--blue-9-contrast`, etc. were renamed to `--accent-contrast`, `--red-contrast`, `--pink-contrast`, `--blue-contrast` and so on.
-    - If you were using these tokens for your custom components, make sure to replace the corresponding references
-  - `--color-focus-root`, `--color-selection-root`, `--color-autofill-root` were replaced with a focus color scale, e.g. `--focus-1` – `--focus-12`, and `--focus-a1` – `--focus-a12`.
-    - If you were overriding the above tokens or using them in your custom components, you’ll need to references the new color scale.
-      - `--color-autofill-root` is replaced by `--focus-a3`
-      - `--color-focus-root` is replaced by `--focus-8`
-      - `--color-selection-root` is replaced by `--focus-a5`
-  - `--gray-2-translucent` and the corresponding tinted gray colors were removed
-- Components
-  - `AlertDialog`, `Dialog` now have `maxWidth="600px"` by default on the Content part.
-    - This is slightly larger than the previous `580px` value. If you use dialogs that need a different width, override `maxWidth` with your own value.
-  - `Badge` has a new `size="3"`, `size="2"` is now much smaller, and `size="1"` dimensions were tweaked
-    - Replace your `size="2"` usage with `size="3"`
-  - `Card` internal HTML structure and styles were reworked and now renders a single HTML node. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
-    - If you need to override the Card’s background color on variants other than `ghost`, use `--card-background-color` variable instead of assigning `background-color` directly, or set your background color on an `<Inset p="current">` element nested as the first child of the Card.
-    - Check your Card instances that uses `asChild` or is `asChild`’ed onto by a parent component. (The common case with link or button card without any extra styles will work as expected).
-  - `HoverCard` and `Popover` now have `maxWidth="480px"` by default on the Content part.
-    - If you use popovers and hover cards that need a wider width, override `maxWidth` with your own value.
-  - `RadioGroup` internal HTML structure and styles were reworked and is now designed to display an optional text label when passing `children` to the `Item` part. The `Root` part now also provides flex column styles and spacing.
-    - If you need lower-level control, you can use the `Radio` component instead
-  - `Section` has a new `size="3"`
-    - Update all your Sections that used `size="3"` to `size="4"`
-  - `Tabs` underlying letter/word spacing CSS variables were renamed to support both `Tabs` and `TabNav` components. If you were using them, rename them to the new values:
-    - `--tabs-trigger-active-letter-spacing` → `--tab-active-letter-spacing`
-    - `--tabs-trigger-active-word-spacing` → `--tab-active-word-spacing`
-    - `--tabs-trigger-inactive-letter-spacing` → `--tab-inactive-letter-spacing`
-    - `--tabs-trigger-inactive-word-spacing` → `--tab-inactive-word-spacing`
-  - `TextField` now only has 2 parts: `Root` and `Slot`, dropping the `Input` part and simplifying how props are forwarded.
-    - All `TextField.Input` parts used **without** `TextField.Root` should be renamed to `TextField.Root`
-    - All `TextField.Input` parts used **within** `TextField.Root` should be removed and their props should be put directly on the `TextField.Root` part
-    - All `TextField.Slot` parts placed to the right of `TextField.Input` will need `side="right"` prop. However, no adjustment is needed when two slots were used within one `TextField`, e.g. one slot on the left and another one on the right. In that case, the slots will be automatically placed on different sides.
-    - Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
-  - `Theme` does not set body background color automatically anymore. The background color is now provided by the root `Theme` by default. The CSS variable `--color-page-background` is no longer available.
-    - In most cases, it can be safely replaced with `--color-background` available on the `.radix-themes` element.
-  - `Tooltip` now has `maxWidth="360px"` by default on the Content part.
-    - If you use tooltips that need to be wider, override `maxWidth` with your own value.
+General
+
+- Multi-part components now don’t export named parts (ie. `DialogRoot`, `DialogTrigger`, …)
+  - Use dot notation for all multi-part components instead (ie. `Dialog.Root`, `Dialog.Trigger`, …) after importing like this: `import { Dialog } from "@radix-ui/themes"`.
+- Component prop definitions and internal helpers are no longer available from the root `@radix-ui/themes` import entry point.
+  - Import them from `@radix-ui/themes/props` and `@radix-ui/themes/helpers` instead. - Note: you might need to use `"moduleResolution": "NodeNext"` with your compiler to access these paths. - Note: changes to prop defs and helpers won’t be covered by semver.
+    Props
+- The `width` and `height` props on layout components don't map to space scale anymore
+  - Find and replace your `width` and `height` prop usage with the corresponding [space scale](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/space.css) steps, e.g. `width="9"` would need to be changed to `width="64px"` or `width="var(--space-9)"`, and so on for other steps.
+- The `shrink` and `grow` props on layout components were renamed
+  - Use `flexShrink` and `flexGrow` instead
+
+Colors
+
+- `--color-surface-accent` was renamed to `--accent-surface`
+  - If you were using this token for your custom components, make sure to replace the corresponding references
+- `--accent-9-contrast`, `--red-9-contrast`, `--pink-9-contrast`, `--blue-9-contrast`, etc. were renamed to `--accent-contrast`, `--red-contrast`, `--pink-contrast`, `--blue-contrast` and so on.
+  - If you were using these tokens for your custom components, make sure to replace the corresponding references
+- `--color-focus-root`, `--color-selection-root`, `--color-autofill-root` were replaced with a focus color scale, e.g. `--focus-1` – `--focus-12`, and `--focus-a1` – `--focus-a12`.
+  - If you were overriding the above tokens or using them in your custom components, you’ll need to references the new color scale.
+    - `--color-autofill-root` is replaced by `--focus-a3`
+    - `--color-focus-root` is replaced by `--focus-8`
+    - `--color-selection-root` is replaced by `--focus-a5`
+- `--gray-2-translucent` and the corresponding tinted gray colors were removed
+
+Components
+
+- `AlertDialog`, `Dialog` now have `maxWidth="600px"` by default on the Content part.
+  - This is slightly larger than the previous `580px` value. If you use dialogs that need a different width, override `maxWidth` with your own value.
+- `Badge` has a new `size="3"`, `size="2"` is now much smaller, and `size="1"` dimensions were tweaked
+  - Replace your `size="2"` usage with `size="3"`
+- `Card` internal HTML structure and styles were reworked and now renders a single HTML node. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
+  - If you need to override the Card’s background color on variants other than `ghost`, use `--card-background-color` variable instead of assigning `background-color` directly, or set your background color on an `<Inset p="current">` element nested as the first child of the Card.
+  - Check your Card instances that uses `asChild` or is `asChild`’ed onto by a parent component. (The common case with link or button card without any extra styles will work as expected).
+- `HoverCard` and `Popover` now have `maxWidth="480px"` by default on the Content part.
+  - If you use popovers and hover cards that need a wider width, override `maxWidth` with your own value.
+- `RadioGroup` internal HTML structure and styles were reworked and is now designed to display an optional text label when passing `children` to the `Item` part. The `Root` part now also provides flex column styles and spacing.
+  - If you need lower-level control, you can use the `Radio` component instead
+- `Section` has a new `size="3"`
+  - Update all your Sections that used `size="3"` to `size="4"`
+- `Tabs` underlying letter/word spacing CSS variables were renamed to support both `Tabs` and `TabNav` components. If you were using them, rename them to the new values:
+  - `--tabs-trigger-active-letter-spacing` → `--tab-active-letter-spacing`
+  - `--tabs-trigger-active-word-spacing` → `--tab-active-word-spacing`
+  - `--tabs-trigger-inactive-letter-spacing` → `--tab-inactive-letter-spacing`
+  - `--tabs-trigger-inactive-word-spacing` → `--tab-inactive-word-spacing`
+- `TextField` now only has 2 parts: `Root` and `Slot`, dropping the `Input` part and simplifying how props are forwarded.
+  - All `TextField.Input` parts used **without** `TextField.Root` should be renamed to `TextField.Root`
+  - All `TextField.Input` parts used **within** `TextField.Root` should be removed and their props should be put directly on the `TextField.Root` part
+  - All `TextField.Slot` parts placed to the right of `TextField.Input` will need `side="right"` prop. However, no adjustment is needed when two slots were used within one `TextField`, e.g. one slot on the left and another one on the right. In that case, the slots will be automatically placed on different sides.
+  - Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
+- `Theme` does not set body background color automatically anymore. The background color is now provided by the root `Theme` by default. The CSS variable `--color-page-background` is no longer available.
+  - In most cases, it can be safely replaced with `--color-background` available on the `.radix-themes` element.
+- `Tooltip` now has `maxWidth="360px"` by default on the Content part.
+  - If you use tooltips that need to be wider, override `maxWidth` with your own value.
+
+---
 
 **Full changelog**
 
