@@ -78,7 +78,7 @@ Skeleton is another loading component in this release:
 </Skeleton>
 ```
 
-Skeleton has a similar API to Spinner, but it also fully adopts the shape and size of child components, so you can build the skeleton interface using exactly the same layout that you’d use in the fully one:
+Skeleton has a similar API to Spinner, but it also fully adopts the shape and size of child components, so you can build the skeleton interface using exactly the same layout that you’d use in the real one:
 
 <ThemesBlogPostExampleSkeleton />
 
@@ -125,8 +125,8 @@ In most interfaces, these styles are global and affect the entire app, so that t
 [Radio Cards](/themes/docs/components/radio-cards) is a common pattern for picking a single value out of multiple. They are used for visually engaing forms where each options gets more weight compared to a regular radio button:
 
 <ThemesBlogPostExampleArea>
-  <Box width="600px">
-    <RadioCards.Root defaultValue="1" columns="3">
+  <Box width="100%" maxWidth="600px">
+    <RadioCards.Root defaultValue="1" columns={{ initial: '1', sm: '3' }}>
       <RadioCards.Item value="1">
         <Flex direction="column" width="100%">
           <Text weight="bold">8-core CPU</Text>
@@ -154,8 +154,11 @@ In most interfaces, these styles are global and affect the entire app, so that t
 [Checkbox Cards](/themes/docs/components/checkbox-cards) are similar to Radio Cards, but are used for picking multiple values:
 
 <ThemesBlogPostExampleArea>
-  <Box width="600px">
-    <CheckboxCards.Root defaultValue={['1']} columns="3">
+  <Box width="100%" maxWidth="600px">
+    <CheckboxCards.Root
+      defaultValue={['1']}
+      columns={{ initial: '1', sm: '3' }}
+    >
       <CheckboxCards.Item value="1">
         <Flex direction="column" width="100%">
           <Text weight="bold">A1 Keyboard</Text>
