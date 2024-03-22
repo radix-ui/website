@@ -5,24 +5,10 @@ sourcePath: components/radio-group
 ---
 
 ```jsx live=true
-<RadioGroup.Root defaultValue="1">
-  <Flex gap="2" direction="column">
-    <Text as="label" size="2">
-      <Flex gap="2">
-        <RadioGroup.Item value="1" /> Default
-      </Flex>
-    </Text>
-    <Text as="label" size="2">
-      <Flex gap="2">
-        <RadioGroup.Item value="2" /> Comfortable
-      </Flex>
-    </Text>
-    <Text as="label" size="2">
-      <Flex gap="2">
-        <RadioGroup.Item value="3" /> Compact
-      </Flex>
-    </Text>
-  </Flex>
+<RadioGroup.Root defaultValue="1" name="example">
+  <RadioGroup.Item value="1">Default</RadioGroup.Item>
+  <RadioGroup.Item value="2">Comfortable</RadioGroup.Item>
+  <RadioGroup.Item value="3">Compact</RadioGroup.Item>
 </RadioGroup.Root>
 ```
 
