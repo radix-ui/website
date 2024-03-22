@@ -86,26 +86,32 @@ export default function Page() {
 
   const [lightAccentValue, setLightAccentValue] = useLocalStorage('create/light/accent', '#3D63DD');
   const [lightGrayValue, setLightGrayValue] = useLocalStorage('create/light/gray', '#8B8D98');
+  const [lightBgValue, setLightBgValue] = useLocalStorage('create/light/background', '#FFFFFF');
 
   const [darkAccentValue, setDarkAccentValue] = useLocalStorage('create/dark/accent', '#3D63DD');
   const [darkGrayValue, setDarkGrayValue] = useLocalStorage('create/dark/gray', '#8B8D98');
+  const [darkBgValue, setDarkBgValue] = useLocalStorage('create/dark/background', '#111111');
 
   const accentValue = resolvedTheme === 'dark' ? darkAccentValue : lightAccentValue;
   const grayValue = resolvedTheme === 'dark' ? darkGrayValue : lightGrayValue;
+  const bgValue = resolvedTheme === 'dark' ? darkBgValue : lightBgValue;
 
   const setAccentValue = resolvedTheme === 'dark' ? setDarkAccentValue : setLightAccentValue;
   const setGrayValue = resolvedTheme === 'dark' ? setDarkGrayValue : setLightGrayValue;
+  const setBgValue = resolvedTheme === 'dark' ? setDarkBgValue : setLightBgValue;
 
   const lightModeResult = generateRadixColors({
     appearance: 'light',
     accent: lightAccentValue,
     gray: lightGrayValue,
+    background: lightBgValue,
   });
 
   const darkModeResult = generateRadixColors({
     appearance: 'dark',
     accent: darkAccentValue,
     gray: darkGrayValue,
+    background: darkBgValue,
   });
 
   const [codeCopied, setCodeCopied] = React.useState(false);
@@ -169,7 +175,7 @@ export default function Page() {
           </Flex>
 
           <Box mb="9">
-            <Grid flow="column" columns="220px 220px" gap="4" justify="center" align="end">
+            <Grid flow="column" columns="180px 180px 180px" gap="4" justify="center" align="end">
               <Flex direction="column">
                 <Flex>
                   <Text as="label" htmlFor="accent" size="1" color="gray" mb="1">
@@ -186,6 +192,15 @@ export default function Page() {
                   </Text>
                 </Flex>
                 <ColorField id="gray" value={grayValue} onValueChange={setGrayValue} />
+              </Flex>
+
+              <Flex direction="column">
+                <Flex>
+                  <Text as="label" htmlFor="bg" size="1" color="gray" mb="1">
+                    Background
+                  </Text>
+                </Flex>
+                <ColorField id="bg" value={bgValue} onValueChange={setBgValue} />
               </Flex>
 
               <DropdownMenu.Root>
@@ -265,7 +280,6 @@ export default function Page() {
             grayColor="gray"
             hasBackground={false}
             className="radix-themes-default-fonts"
-            panelBackground="solid"
           >
             <Scales />
             <Preview />
@@ -798,7 +812,7 @@ const itemsContent = {
   a: (
     <span>
       Respond to comment{' '}
-      <Link underline="hover" onClick={(event) => event.preventDefault()}>
+      <Link href="#" underline="hover" onClick={(event) => event.preventDefault()}>
         #384
       </Link>{' '}
       from Travis
@@ -807,7 +821,7 @@ const itemsContent = {
   b: (
     <span>
       Invite{' '}
-      <Link underline="hover" onClick={(event) => event.preventDefault()}>
+      <Link href="#" underline="hover" onClick={(event) => event.preventDefault()}>
         Acme Co.
       </Link>{' '}
       team to Slack
@@ -816,7 +830,7 @@ const itemsContent = {
   c: (
     <span>
       Create a report{' '}
-      <Link underline="hover" onClick={(event) => event.preventDefault()}>
+      <Link href="#" underline="hover" onClick={(event) => event.preventDefault()}>
         requested
       </Link>{' '}
       by Danilo
@@ -826,7 +840,7 @@ const itemsContent = {
   e: (
     <span>
       Review invoice{' '}
-      <Link underline="hover" onClick={(event) => event.preventDefault()}>
+      <Link href="#" underline="hover" onClick={(event) => event.preventDefault()}>
         #3456
       </Link>
     </span>
@@ -992,11 +1006,11 @@ export const getPreviewStyles = ({ selector, lightColors, darkColors }: GetPrevi
   const themeSelector = selector || '.radix-themes';
 
   return `
-:root, .light, .light-theme {
-  --color-background: ${lightColors.pageBackground} !important;
+:root, .light, .light-theme, .radix-themes:where([data-has-background='true']) {
+  --color-background: ${lightColors.background} !important;
 }
-.dark, .dark-theme {
-  --color-background: ${darkColors.pageBackground} !important;
+.dark, .dark-theme, :where(.dark, .dark-theme) .radix-themes:where([data-has-background='true']) {
+  --color-background: ${darkColors.background} !important;
 }
 
 ${themeSelector}:not(.dark, .dark-theme), ${themeSelector}:is(.light, .light-theme) {
