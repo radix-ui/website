@@ -68,6 +68,7 @@ export const themesRoutes = [
       { title: 'Icon Button', slug: 'themes/docs/components/icon-button' },
       { title: 'Inset', slug: 'themes/docs/components/inset' },
       { title: 'Popover', slug: 'themes/docs/components/popover' },
+      { title: 'Progress', slug: 'themes/docs/components/progress' },
       { title: 'Radio', slug: 'themes/docs/components/radio' },
       { title: 'Radio Group', slug: 'themes/docs/components/radio-group' },
       { title: 'Scroll Area', slug: 'themes/docs/components/scroll-area' },

@@ -1,0 +1,103 @@
+---
+metaTitle: Progress
+metaDescription: Displays a progress bar related to a task.
+sourcePath: components/progress
+---
+
+```jsx live=true
+<Progress />
+```
+
+## API Reference
+
+This component inherits props from the [Progress primitive](/primitives/docs/components/progress) and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+<ThemesPropsTable defs="progressPropDefs" />
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Flex direction="column" gap="4" maxWidth="300px">
+  <Progress value={25} size="3" />
+  <Progress value={50} size="2" />
+  <Progress value={75} size="1" />
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style.
+
+```jsx live=true
+<Flex direction="column" gap="4" maxWidth="300px">
+  <Progress value={25} variant="classic" />
+  <Progress value={50} variant="surface" />
+  <Progress value={75} variant="soft" />
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
+
+```jsx live=true
+<Flex direction="column" gap="4" maxWidth="300px">
+  <Progress value={20} color="indigo" />
+  <Progress value={40} color="cyan" />
+  <Progress value={60} color="orange" />
+  <Progress value={80} color="crimson" />
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to increase color contrast with the background.
+
+```jsx live=true
+<Grid columns="2" gap="4">
+  <Progress value={10} color="indigo" />
+  <Progress value={10} color="indigo" highContrast />
+  <Progress value={30} color="cyan" />
+  <Progress value={30} color="cyan" highContrast />
+  <Progress value={50} color="orange" />
+  <Progress value={50} color="orange" highContrast />
+  <Progress value={70} color="crimson" />
+  <Progress value={70} color="crimson" highContrast />
+  <Progress value={90} color="gray" />
+  <Progress value={90} color="gray" highContrast />
+</Grid>
+```
+
+### Radius
+
+Use the `radius` prop to assign a specific radius value.
+
+```jsx live=true
+<Flex direction="column" gap="4" maxWidth="300px">
+  <Progress value={25} radius="none" />
+  <Progress value={50} radius="small" />
+  <Progress value={75} radius="full" />
+</Flex>
+```
+
+### With controlled value
+
+Use the `value` prop to provide a precise indication of the task progress.
+
+```jsx live=true
+<Progress value={75} />
+```
+
+### With custom duration
+
+Use the `duration` prop to indicate an approximate duration of an indeterminate task. Once the duration times out, the progress bar will start an indeterminate animation.
+
+```jsx live=true
+<Progress duration="30s" />
+```
+
+When an approximate duration can be estimated, the Progress component is still useful over [Spinner](./spinner), which doesn’t provide any visual cues towards the progress of the task.
