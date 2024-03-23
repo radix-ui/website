@@ -1069,7 +1069,7 @@ export default function ComponentsPage() {
                       position="absolute"
                       inset="0"
                     >
-                      <ThemesPanelBackgroundImage id="1" width="100%" height="200%" />
+                      <ThemesPanelBackgroundImage id="1" width="1000px" height="1000px" />
                     </Flex>
 
                     <Card size="4" style={{ width: 400 }}>
@@ -3968,7 +3968,7 @@ export default function ComponentsPage() {
                       position="absolute"
                       inset="0"
                     >
-                      <ThemesPanelBackgroundImage id="1" width="100%" height="200%" />
+                      <ThemesPanelBackgroundImage id="1" width="1000px" height="1000px" />
                     </Flex>
 
                     <Table.Root variant="surface" size={{ initial: '1', sm: '2' }}>
