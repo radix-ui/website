@@ -40,7 +40,7 @@ export default function RadixBlog({ frontmatters }: Blog) {
 
         <Section size={{ initial: '2', md: '4' }}>
           <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
-            <Box mb={{ initial: '7', md: '9' }}>
+            <Box mb="7">
               <Heading size="8" mb="2">
                 Latest updates
               </Heading>
@@ -51,31 +51,35 @@ export default function RadixBlog({ frontmatters }: Blog) {
             </Box>
             <Flex direction="column">
               {frontmatters.map(({ metaTitle, metaDescription, slug, metaImage, publishedAt }) => (
-                <Card size="4" variant="classic" asChild key={slug}>
+                <Card size="3" variant="classic" asChild key={slug}>
                   <NextLink href={`/${slug}`}>
-                    <Grid columns={{ initial: 'auto auto', sm: '2' }} width="100%" gap="7">
-                      {/* This card should ideally stack the image above on smaller displays, hiding for now though due to response inset bug */}
-                      <Box display={{ initial: 'none', xs: 'block' }} asChild>
-                        <Inset clip="padding-box" side="left">
-                          <img
-                            src={metaImage}
-                            alt={metaTitle}
-                            style={{
-                              display: 'block',
-                              objectFit: 'cover',
-                              height: '100%',
-                              width: '100%',
-                              backgroundColor: 'var(--gray-3)',
-                            }}
-                          />
-                        </Inset>
-                      </Box>
+                    <Grid columns={{ initial: '1', sm: '2' }} width="100%">
+                      <Inset
+                        clip="padding-box"
+                        side={{ initial: 'top', sm: 'left' }}
+                        pb={{ initial: 'current', sm: '0' }}
+                        pr={{ initial: '0', sm: 'current' }}
+                      >
+                        <img
+                          src={metaImage}
+                          alt={metaTitle}
+                          style={{
+                            display: 'block',
+                            objectFit: 'cover',
+                            objectPosition: 'left top',
+                            height: '100%',
+                            width: '100%',
+                            backgroundColor: 'var(--gray-3)',
+                            boxShadow: '0 0 0 1px var(--gray-3)',
+                          }}
+                        />
+                      </Inset>
                       <Flex justify="between" direction="column">
                         <Box>
-                          <Text color="gray" mb="1" as="p" size="2">
+                          <Text color="gray" mb="1" as="p" size="2" wrap="balance">
                             {publishedAt}
                           </Text>
-                          <Heading size="7" mb="3">
+                          <Heading size="6" mb="3" wrap="balance">
                             {metaTitle}
                           </Heading>
                           <Text as="p" mb="5" color="gray">
