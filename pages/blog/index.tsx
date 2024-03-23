@@ -57,7 +57,7 @@ export default function RadixBlog({ frontmatters }: Blog) {
                         <Flex width="100%" gap="2">
                           <Inset clip="padding-box" side="left" pr="current">
                             <img
-                              src={metaImage}
+                              src={`social/${metaImage}`}
                               alt={metaTitle}
                               style={{
                                 display: 'block',
