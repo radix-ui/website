@@ -13,6 +13,7 @@ import { BlogMobileMenu } from '@components/BlogMobileMenu';
 import { QuickNav } from '@components/QuickNav';
 import NextLink from 'next/link';
 import { ArrowLeftIcon } from '@radix-ui/react-icons';
+import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 
 type BlogPost = {
   frontmatter: Frontmatter;
@@ -24,6 +25,12 @@ export default function BlogPost({ frontmatter, code }: BlogPost) {
 
   return (
     <>
+      <TitleAndMetaTags
+        title={`${frontmatter.metaTitle} – Blog – Radix UI`}
+        description={frontmatter.metaDescription}
+        image={frontmatter.metaImage}
+      />
+
       <MobileMenuProvider>
         <BlogHeader />
         <BlogMobileMenu />

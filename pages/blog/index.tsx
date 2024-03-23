@@ -20,29 +20,33 @@ import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { CommunitySection } from '@components/marketing/CommunitySection';
 import { Footer } from '@components/Footer';
 import { Frontmatter } from 'types/frontmatter';
+import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 
 type Blog = {
   frontmatters: Frontmatter[];
 };
 
+const description = 'Stay in the loop with the latest Radix news, straight from the team.';
+
 export default function RadixBlog({ frontmatters }: Blog) {
   return (
     <>
+      <TitleAndMetaTags title="Blog – Radix UI" description={description} image="themes.png" />
+
       <MobileMenuProvider>
         <BlogHeader />
         <BlogMobileMenu />
 
         <Section size={{ initial: '2', md: '4' }}>
           <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
-            {' '}
             <Box>
-              <Box mb="9">
-                <Heading size="8" mb="4">
+              <Box mb="8">
+                <Heading size="8" mb="2">
                   Latest Updates
                 </Heading>
 
-                <Text size="5" color="gray" as="p">
-                  All the latest Radix news, straight from the team
+                <Text size="4" color="gray" as="p">
+                  {description}
                 </Text>
               </Box>
               <Flex direction="column">
