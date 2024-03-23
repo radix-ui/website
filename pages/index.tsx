@@ -1,4 +1,4 @@
-import { Box, Flex, Theme, Text, Button, Section } from '@radix-ui/themes';
+import { Box, Flex, Theme, Text, Button, Section, Link, Badge } from '@radix-ui/themes';
 import * as React from 'react';
 import NextLink from 'next/link';
 import { ThemesHeader } from '@components/ThemesHeader';
@@ -215,6 +215,18 @@ const MainContent = () => (
   <Box>
     <Section size={{ initial: '2', md: '4', lg: '2' }} pb={{ initial: '4', lg: '7' }}>
       <Box>
+        <Flex align="center" gap="2" mb="7">
+          <Badge size="2" radius="full" color="green">
+            New
+          </Badge>
+          <Text color="gray">
+            Radix Themes 3.0 is out! See{' '}
+            <NextLink href="/blog/themes-3" passHref legacyBehavior>
+              <Link highContrast>what's new</Link>
+            </NextLink>
+            .
+          </Text>
+        </Flex>
         <Box display={{ lg: 'none' }}>
           <SerifHeading mb="3">
             Start building
