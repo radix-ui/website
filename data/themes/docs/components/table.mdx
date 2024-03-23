@@ -78,6 +78,74 @@ The header of a table row. Based on the `th` element and provides the same props
 
 ## Examples
 
+### Size
+
+Use the `size` prop to control how much space the table occupies.
+
+```jsx live=true line=2,22,42
+<Flex direction="column" gap="5" maxWidth="350px">
+  <Table.Root __size__="1">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+        <Table.Cell>danilo@example.com</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+        <Table.Cell>zahra@example.com</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+
+  <Table.Root __size__="2">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+        <Table.Cell>danilo@example.com</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+        <Table.Cell>zahra@example.com</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+
+  <Table.Root __size__="3">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+        <Table.Cell>danilo@example.com</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+        <Table.Cell>zahra@example.com</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Flex>
+```
+
 ### With a backplate
 
 Use `variant="surface"` to add a visually enclosed backplate to the table.
