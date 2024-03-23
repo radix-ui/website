@@ -42,7 +42,7 @@ export default function RadixBlog({ frontmatters }: Blog) {
           <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
             <Box mb={{ initial: '7', md: '9' }}>
               <Heading size="8" mb="2">
-                Latest Updates
+                Latest updates
               </Heading>
 
               <Text size="4" color="gray" as="p">
@@ -72,7 +72,7 @@ export default function RadixBlog({ frontmatters }: Blog) {
                       </Box>
                       <Flex justify="between" direction="column">
                         <Box>
-                          <Text color="gray" mb="5" as="p" size="2">
+                          <Text color="gray" mb="1" as="p" size="2">
                             {publishedAt}
                           </Text>
                           <Heading size="7" mb="3">
