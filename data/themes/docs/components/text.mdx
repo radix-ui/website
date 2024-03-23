@@ -217,12 +217,8 @@ The default trim values are configured for the system font stack that’s used b
 
 Use the `truncate` prop to truncate text with an ellipsis when it overflows its container.
 
-```jsx live=true line=6
-<Flex direction="column" gap="3" maxWidth="300px">
-  <Text>
-    Under a sky as clear as a sapphire, the audacious wind embarked on yet
-    another sojourn.
-  </Text>
+```jsx live=true line=2
+<Flex maxWidth="300px">
   <Text truncate>
     Under a sky as clear as a sapphire, the audacious wind embarked on yet
     another sojourn.
