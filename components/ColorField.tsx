@@ -81,9 +81,13 @@ export const ColorField = React.forwardRef<HTMLInputElement, ColorFieldProps>(
             preventInputSelectionRef.current = false;
             setInputValue(color);
             onValueChange?.(toCssFormat(color));
+
             // Firefox doesn't really reset input selection range on blur, and then
             // recovers it on focus, which messes with our selection on mouse up.
-            inputRef.current?.setSelectionRange(0, 0);
+            if (navigator.userAgent.toLowerCase().includes('firefox')) {
+              inputRef.current?.setSelectionRange(0, 0);
+            }
+
             onBlur?.(event);
           }}
           onChange={(event) => {
