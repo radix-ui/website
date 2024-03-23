@@ -58,14 +58,14 @@ export default function RadixBlog({ frontmatters }: Blog) {
                       <Box display={{ initial: 'none', xs: 'block' }} asChild>
                         <Inset clip="padding-box" side="left">
                           <img
-                            src={`social/${metaImage}`}
+                            src={metaImage}
                             alt={metaTitle}
                             style={{
                               display: 'block',
                               objectFit: 'cover',
                               height: '100%',
                               width: '100%',
-                              backgroundColor: 'var(--gray-5)',
+                              backgroundColor: 'var(--gray-3)',
                             }}
                           />
                         </Inset>
