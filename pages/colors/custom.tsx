@@ -3,7 +3,6 @@ import NextLink from 'next/link';
 import { ColorsHeader } from '@components/ColorsHeader';
 import { ColorsMobileMenu } from '@components/ColorsMobileMenu';
 import { MobileMenuProvider } from '@components/MobileMenu';
-import swatchStyles from '@components/Swatch.module.css';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import {
   BoxIcon,
