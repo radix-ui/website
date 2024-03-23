@@ -70,11 +70,11 @@ import { StepLabel, UsageRange } from './index';
 import { ColorField } from '@components/ColorField';
 import { generateRadixColors } from '@components/generateRadixColors';
 import { classNames } from '@utils/classNames';
-import { Swatch } from '@components/Swatch';
 import { useLocalStorage, useIsomorphicLayoutEffect } from 'usehooks-ts';
 import { useTheme } from 'next-themes';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
 import copy from 'copy-to-clipboard';
+import { CustomSwatch } from '@components/CustomSwatch';
 
 export default function Page() {
   const { resolvedTheme } = useTheme();
@@ -348,7 +348,63 @@ export default function Page() {
             </Box>
 
             <Theme className="radix-themes-default-fonts">
-              <Scales />
+              <Grid columns="12" gap={{ initial: '2px', sm: '1' }} mb="9">
+                <UsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="1 / 3">
+                  Backgrounds
+                </UsageRange>
+                <UsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="3 / 6">
+                  Interactive components
+                </UsageRange>
+                <UsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="6 / 9">
+                  Borders and separators
+                </UsageRange>
+                <UsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="9 / 11">
+                  Solid colors
+                </UsageRange>
+                <UsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="11 / 13">
+                  Accessible text
+                </UsageRange>
+
+                <StepLabel display={{ initial: 'none', sm: 'flex' }}>1</StepLabel>
+                <StepLabel display={{ initial: 'none', sm: 'flex' }}>2</StepLabel>
+                <StepLabel display={{ initial: 'none', sm: 'flex' }}>3</StepLabel>
+                <StepLabel display={{ initial: 'none', sm: 'flex' }}>4</StepLabel>
+                <StepLabel display={{ initial: 'none', sm: 'flex' }}>5</StepLabel>
+                <StepLabel display={{ initial: 'none', sm: 'flex' }}>6</StepLabel>
+                <StepLabel display={{ initial: 'none', sm: 'flex' }}>7</StepLabel>
+                <StepLabel display={{ initial: 'none', sm: 'flex' }}>8</StepLabel>
+                <StepLabel display={{ initial: 'none', sm: 'flex' }}>9</StepLabel>
+                <StepLabel display={{ initial: 'none', sm: 'flex' }}>10</StepLabel>
+                <StepLabel display={{ initial: 'none', sm: 'flex' }}>11</StepLabel>
+                <StepLabel display={{ initial: 'none', sm: 'flex' }}>12</StepLabel>
+
+                {Array.from({ length: 12 }, (_, i) => i + 1).map((step, i) => (
+                  <CustomSwatch
+                    key={step}
+                    scale={accent === 'custom' ? 'accent' : accent}
+                    step={step.toString()}
+                    cssVariable={`var(--${accent}-${step})`}
+                    hex={result.accentScale[i].toUpperCase()}
+                    hexA={result.accentScaleAlpha[i].toUpperCase()}
+                    p3={result.accentScaleWideGamut[i]}
+                    p3A={result.accentScaleAlphaWideGamut[i]}
+                  />
+                ))}
+
+                {Array.from({ length: 12 }, (_, i) => i + 1).map((step, i) => (
+                  <CustomSwatch
+                    key={step}
+                    scale="gray"
+                    step={step.toString()}
+                    cssVariable={`var(--gray-${step})`}
+                    hex={result.grayScale[i].toUpperCase()}
+                    hexA={result.grayScaleAlpha[i].toUpperCase()}
+                    p3={result.grayScaleWideGamut[i]}
+                    p3A={result.grayScaleAlphaWideGamut[i]}
+                  />
+                ))}
+              </Grid>
+
               <Preview />
             </Theme>
           </Container>
@@ -357,44 +413,6 @@ export default function Page() {
     </MobileMenuProvider>
   );
 }
-
-const Scales = () => (
-  <Grid columns="12" gap="1" mb="9">
-    <UsageRange style={{ gridColumn: '1 / 3' }}>Backgrounds</UsageRange>
-    <UsageRange style={{ gridColumn: '3 / 6' }}>Interactive components</UsageRange>
-    <UsageRange style={{ gridColumn: '6 / 9' }}>Borders and separators</UsageRange>
-    <UsageRange style={{ gridColumn: '9 / 11' }}>Solid colors</UsageRange>
-    <UsageRange style={{ gridColumn: '11 / 13' }}>Accessible text</UsageRange>
-
-    <StepLabel>1</StepLabel>
-    <StepLabel>2</StepLabel>
-    <StepLabel>3</StepLabel>
-    <StepLabel>4</StepLabel>
-    <StepLabel>5</StepLabel>
-    <StepLabel>6</StepLabel>
-    <StepLabel>7</StepLabel>
-    <StepLabel>8</StepLabel>
-    <StepLabel>9</StepLabel>
-    <StepLabel>10</StepLabel>
-    <StepLabel>11</StepLabel>
-    <StepLabel>12</StepLabel>
-
-    {Array.from({ length: 12 }, (_, i) => i + 1).map((step) => (
-      <span
-        key={step}
-        className={classNames(swatchStyles.SwatchTrigger, swatchStyles.SwatchTransparencyGrid)}
-      >
-        <span style={{ backgroundColor: `var(--accent-${step})` }}>
-          <VisuallyHidden>Step {step}</VisuallyHidden>
-        </span>
-      </span>
-    ))}
-
-    {Array.from({ length: 12 }, (_, i) => i + 1).map((step) => (
-      <Swatch key={step} scale="gray" step={step.toString()} />
-    ))}
-  </Grid>
-);
 
 export const Preview = ({ children, ...props }: React.ComponentPropsWithoutRef<typeof Grid>) => {
   const [state, setState] = React.useState({

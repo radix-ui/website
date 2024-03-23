@@ -1,0 +1,54 @@
+.CustomSwatchTrigger {
+  display: flex;
+  margin: -2px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  box-sizing: content-box;
+  border-radius: var(--radius-2);
+  height: var(--space-9);
+  outline-offset: -2px;
+
+  border-radius: var(--radius-1);
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .CustomSwatchTrigger {
+    height: var(--space-7);
+  }
+}
+
+.CustomSwatchTrigger span {
+  width: 100%;
+  height: 100%;
+  outline-offset: -1px;
+  outline: 1px solid transparent;
+}
+
+@media (hover: hover) {
+  .CustomSwatchTrigger:hover {
+    outline: 2px solid var(--gray-12);
+  }
+  .CustomSwatchTrigger:hover span {
+    outline-width: 0px;
+  }
+}
+
+.CustomSwatchTrigger:focus-visible,
+.CustomSwatchTrigger[data-state='open'] {
+  outline: 2px solid var(--gray-12);
+}
+
+@media (min-width: 768px) {
+  .CustomSwatchTrigger {
+    height: var(--space-8);
+  }
+}
+
+.CustomSwatchContent {
+  margin: auto;
+}
+
+:global(:is(.dark, .dark-theme)) .CustomSwatchContent {
+  background-color: var(--color-background);
+}
