@@ -15,3 +15,70 @@ sourcePath: components/strong
 This component is based on the `strong` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
 
 <ThemesPropsTable defs="strongPropDefs" />
+
+## Examples
+
+### Truncate
+
+Use the `truncate` prop to truncate text with an ellipsis when it overflows its container.
+
+```jsx live=true line=6
+<Flex direction="column" gap="2" maxWidth="300px">
+  <Strong>
+    Under a sky as clear as a sapphire, the audacious wind embarked on yet
+    another sojourn.
+  </Strong>
+  <Strong truncate>
+    Under a sky as clear as a sapphire, the audacious wind embarked on yet
+    another sojourn.
+  </Strong>
+</Flex>
+```
+
+### Wrap
+
+Use the `wrap` prop to control text wrapping.
+
+```jsx live=true line=13,21,29,37,45
+<Flex direction="column" maxWidth="300px">
+  <Text size="2" mb="1">
+    Default
+  </Text>
+  <Strong>
+    Under a sky as clear as a sapphire, the audacious wind embarked on yet
+    another sojourn.
+  </Strong>
+
+  <Text size="2" mb="1" mt="4">
+    wrap="wrap"
+  </Text>
+  <Strong wrap="wrap">
+    Under a sky as clear as a sapphire, the audacious wind embarked on yet
+    another sojourn.
+  </Strong>
+
+  <Text size="2" mb="1" mt="4">
+    wrap="nowrap"
+  </Text>
+  <Strong wrap="nowrap">
+    Under a sky as clear as a sapphire, the audacious wind embarked on yet
+    another sojourn.
+  </Strong>
+
+  <Text size="2" mb="1" mt="4">
+    wrap="balance"
+  </Text>
+  <Strong wrap="balance">
+    Under a sky as clear as a sapphire, the audacious wind embarked on yet
+    another sojourn.
+  </Strong>
+
+  <Text size="2" mb="1" mt="4">
+    wrap="pretty"
+  </Text>
+  <Strong wrap="pretty">
+    Under a sky as clear as a sapphire, the audacious wind embarked on yet
+    another sojourn.
+  </Strong>
+</Flex>
+```
