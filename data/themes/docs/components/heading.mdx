@@ -151,6 +151,65 @@ The default trim values are configured for the system font stack that’s used b
 }
 ```
 
+### Truncate
+
+Use the `truncate` prop to truncate text with an ellipsis when it overflows its container.
+
+```jsx live=true line=3
+<Flex direction="column" gap="3" maxWidth="300px">
+  <Heading>The quick brown fox jumps over the lazy dog</Heading>
+  <Heading truncate>The quick brown fox jumps over the lazy dog</Heading>
+</Flex>
+```
+
+### Wrap
+
+Use the `wrap` prop to control text wrapping.
+
+```jsx live=true line=13,21,29,37,45
+<Flex direction="column" maxWidth="320px">
+  <Text size="2" mb="1">
+    Default
+  </Text>
+  <Heading size="3">
+    Under a sky as clear as a sapphire, the audacious wind embarked on yet
+    another sojourn.
+  </Heading>
+
+  <Text size="2" mb="1" mt="4">
+    wrap="wrap"
+  </Text>
+  <Heading size="3" wrap="wrap">
+    Under a sky as clear as a sapphire, the audacious wind embarked on yet
+    another sojourn.
+  </Heading>
+
+  <Text size="2" mb="1" mt="4">
+    wrap="nowrap"
+  </Text>
+  <Heading size="3" wrap="nowrap">
+    Under a sky as clear as a sapphire, the audacious wind embarked on yet
+    another sojourn.
+  </Heading>
+
+  <Text size="2" mb="1" mt="4">
+    wrap="balance"
+  </Text>
+  <Heading size="3" wrap="balance">
+    Under a sky as clear as a sapphire, the audacious wind embarked on yet
+    another sojourn.
+  </Heading>
+
+  <Text size="2" mt="4">
+    wrap="pretty"
+  </Text>
+  <Heading size="3" wrap="pretty">
+    Under a sky as clear as a sapphire, the audacious wind embarked on yet
+    another sojourn.
+  </Heading>
+</Flex>
+```
+
 ### Color
 
 Use the `color` prop to assign a specific [color](/themes/docs/theme/color). The text colors are designed to achieve at least Lc 60 APCA contrast over common background colors.
