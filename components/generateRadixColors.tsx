@@ -143,7 +143,7 @@ export const generateRadixColors = ({
 
     graySurface: appearance === 'light' ? '#ffffffcc' : 'rgba(0, 0, 0, 0.05)',
     graySurfaceWideGamut:
-      appearance === 'light' ? 'color(display-p3 1 0 0 / 80%)' : 'color(display-p3 0 0 0 / 5%)',
+      appearance === 'light' ? 'color(display-p3 1 1 1 / 80%)' : 'color(display-p3 0 0 0 / 5%)',
 
     accentSurface: accentSurfaceHex,
     accentSurfaceWideGamut: accentSurfaceWideGamutString,

@@ -102,7 +102,7 @@ export default function ColorsHome() {
                 size={{ initial: '3', xs: '4' }}
                 asChild
               >
-                <NextLink href="/colors/create">Create your palette</NextLink>
+                <NextLink href="/colors/custom">Create a custom palette</NextLink>
               </Button>
             </Flex>
           </Container>
