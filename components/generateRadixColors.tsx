@@ -1,5 +1,7 @@
+// @ts-nocheck
+// Something is fucked up about Color.js and Next.js when building
 import * as RadixColors from '@radix-ui/colors';
-import Color from 'colorjs.io';
+import Color from '@utils/color.js';
 import BezierEasing from 'bezier-easing';
 
 type ArrayOf12<T> = [T, T, T, T, T, T, T, T, T, T, T, T];

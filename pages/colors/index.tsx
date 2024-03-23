@@ -30,6 +30,8 @@ import {
 import { Swatch } from '@components/Swatch';
 import Head from 'next/head';
 import styles from './index.module.css';
+import { ColorUsageRange } from '@components/ColorUsageRange';
+import { ColorStepLabel } from '@components/ColorStepLabel';
 
 export default function ColorsHome() {
   return (
@@ -114,25 +116,25 @@ export default function ColorsHome() {
           <Container style={{ whiteSpace: 'nowrap', minWidth: 880 }}>
             <div className={styles.ColorsHomeGrid}>
               <Box />
-              <UsageRange gridColumn="2 / 4">Backgrounds</UsageRange>
-              <UsageRange gridColumn="4 / 7">Interactive components</UsageRange>
-              <UsageRange gridColumn="7 / 10">Borders and separators</UsageRange>
-              <UsageRange gridColumn="10 / 12">Solid colors</UsageRange>
-              <UsageRange gridColumn="12 / 14">Accessible text</UsageRange>
+              <ColorUsageRange gridColumn="2 / 4">Backgrounds</ColorUsageRange>
+              <ColorUsageRange gridColumn="4 / 7">Interactive components</ColorUsageRange>
+              <ColorUsageRange gridColumn="7 / 10">Borders and separators</ColorUsageRange>
+              <ColorUsageRange gridColumn="10 / 12">Solid colors</ColorUsageRange>
+              <ColorUsageRange gridColumn="12 / 14">Accessible text</ColorUsageRange>
 
               <Box />
-              <StepLabel>1</StepLabel>
-              <StepLabel>2</StepLabel>
-              <StepLabel>3</StepLabel>
-              <StepLabel>4</StepLabel>
-              <StepLabel>5</StepLabel>
-              <StepLabel>6</StepLabel>
-              <StepLabel>7</StepLabel>
-              <StepLabel>8</StepLabel>
-              <StepLabel>9</StepLabel>
-              <StepLabel>10</StepLabel>
-              <StepLabel>11</StepLabel>
-              <StepLabel>12</StepLabel>
+              <ColorStepLabel>1</ColorStepLabel>
+              <ColorStepLabel>2</ColorStepLabel>
+              <ColorStepLabel>3</ColorStepLabel>
+              <ColorStepLabel>4</ColorStepLabel>
+              <ColorStepLabel>5</ColorStepLabel>
+              <ColorStepLabel>6</ColorStepLabel>
+              <ColorStepLabel>7</ColorStepLabel>
+              <ColorStepLabel>8</ColorStepLabel>
+              <ColorStepLabel>9</ColorStepLabel>
+              <ColorStepLabel>10</ColorStepLabel>
+              <ColorStepLabel>11</ColorStepLabel>
+              <ColorStepLabel>12</ColorStepLabel>
 
               {[
                 'gray',
@@ -182,11 +184,13 @@ export default function ColorsHome() {
 
             <div className={styles.ColorsHomeGrid}>
               <Box />
-              <UsageRange gridColumn="2 / -1">Shadows, highlights, and overlays</UsageRange>
+              <ColorUsageRange gridColumn="2 / -1">
+                Shadows, highlights, and overlays
+              </ColorUsageRange>
 
               <Box />
               {Array.from({ length: 12 }, (_, i) => i + 1).map((step) => (
-                <StepLabel key={step}>{step}</StepLabel>
+                <ColorStepLabel key={step}>{step}</ColorStepLabel>
               ))}
 
               {['black', 'white'].map((scale) => (
@@ -294,26 +298,3 @@ export default function ColorsHome() {
     </MobileMenuProvider>
   );
 }
-
-export const StepLabel = ({ children, ...props }: React.ComponentPropsWithoutRef<typeof Flex>) => (
-  <Flex justify="center" mb="3" {...props}>
-    <Text size="1" color="gray">
-      {children}
-    </Text>
-  </Flex>
-);
-
-export const UsageRange = ({ children, ...props }: React.ComponentPropsWithoutRef<typeof Flex>) => (
-  <Flex direction="column" mb="2" {...props}>
-    <Text align="center" size="1" mb="3" color="gray">
-      {children}
-    </Text>
-    <Box
-      style={{
-        height: 1,
-        backgroundImage:
-          'linear-gradient(to right, transparent, var(--gray-a8) 30%, var(--gray-a8) 70%, transparent)',
-      }}
-    />
-  </Flex>
-);

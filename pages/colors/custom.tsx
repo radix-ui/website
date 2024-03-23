@@ -1,4 +1,4 @@
-import Color from 'colorjs.io';
+import Color from '@utils/color.js';
 import NextLink from 'next/link';
 import { ColorsHeader } from '@components/ColorsHeader';
 import { ColorsMobileMenu } from '@components/ColorsMobileMenu';
@@ -64,7 +64,6 @@ import styles from './custom.module.css';
 import { getPeopleForColor } from '@utils/people';
 import { ThemesPanelBackgroundImage } from '@components/ThemesPanelBackgroundImage';
 import { AvatarIconFallback } from '@components/AvatarIconFallback';
-import { StepLabel, UsageRange } from './index';
 import { ColorField } from '@components/ColorField';
 import { generateRadixColors } from '@components/generateRadixColors';
 import { useLocalStorage, useIsomorphicLayoutEffect } from 'usehooks-ts';
@@ -72,6 +71,8 @@ import { useTheme } from 'next-themes';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
 import copy from 'copy-to-clipboard';
 import { CustomSwatch } from '@components/CustomSwatch';
+import { ColorUsageRange } from '@components/ColorUsageRange';
+import { ColorStepLabel } from '@components/ColorStepLabel';
 
 export default function Page() {
   const { resolvedTheme } = useTheme();
@@ -359,34 +360,34 @@ export default function Page() {
               mx={{ initial: '-5', xs: '-6', sm: '0' }}
               px={{ initial: '2px', sm: '0' }}
             >
-              <UsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="1 / 3">
+              <ColorUsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="1 / 3">
                 Backgrounds
-              </UsageRange>
-              <UsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="3 / 6">
+              </ColorUsageRange>
+              <ColorUsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="3 / 6">
                 Interactive components
-              </UsageRange>
-              <UsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="6 / 9">
+              </ColorUsageRange>
+              <ColorUsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="6 / 9">
                 Borders and separators
-              </UsageRange>
-              <UsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="9 / 11">
+              </ColorUsageRange>
+              <ColorUsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="9 / 11">
                 Solid colors
-              </UsageRange>
-              <UsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="11 / 13">
+              </ColorUsageRange>
+              <ColorUsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="11 / 13">
                 Accessible text
-              </UsageRange>
+              </ColorUsageRange>
 
-              <StepLabel display={{ initial: 'none', sm: 'flex' }}>1</StepLabel>
-              <StepLabel display={{ initial: 'none', sm: 'flex' }}>2</StepLabel>
-              <StepLabel display={{ initial: 'none', sm: 'flex' }}>3</StepLabel>
-              <StepLabel display={{ initial: 'none', sm: 'flex' }}>4</StepLabel>
-              <StepLabel display={{ initial: 'none', sm: 'flex' }}>5</StepLabel>
-              <StepLabel display={{ initial: 'none', sm: 'flex' }}>6</StepLabel>
-              <StepLabel display={{ initial: 'none', sm: 'flex' }}>7</StepLabel>
-              <StepLabel display={{ initial: 'none', sm: 'flex' }}>8</StepLabel>
-              <StepLabel display={{ initial: 'none', sm: 'flex' }}>9</StepLabel>
-              <StepLabel display={{ initial: 'none', sm: 'flex' }}>10</StepLabel>
-              <StepLabel display={{ initial: 'none', sm: 'flex' }}>11</StepLabel>
-              <StepLabel display={{ initial: 'none', sm: 'flex' }}>12</StepLabel>
+              <ColorStepLabel display={{ initial: 'none', sm: 'flex' }}>1</ColorStepLabel>
+              <ColorStepLabel display={{ initial: 'none', sm: 'flex' }}>2</ColorStepLabel>
+              <ColorStepLabel display={{ initial: 'none', sm: 'flex' }}>3</ColorStepLabel>
+              <ColorStepLabel display={{ initial: 'none', sm: 'flex' }}>4</ColorStepLabel>
+              <ColorStepLabel display={{ initial: 'none', sm: 'flex' }}>5</ColorStepLabel>
+              <ColorStepLabel display={{ initial: 'none', sm: 'flex' }}>6</ColorStepLabel>
+              <ColorStepLabel display={{ initial: 'none', sm: 'flex' }}>7</ColorStepLabel>
+              <ColorStepLabel display={{ initial: 'none', sm: 'flex' }}>8</ColorStepLabel>
+              <ColorStepLabel display={{ initial: 'none', sm: 'flex' }}>9</ColorStepLabel>
+              <ColorStepLabel display={{ initial: 'none', sm: 'flex' }}>10</ColorStepLabel>
+              <ColorStepLabel display={{ initial: 'none', sm: 'flex' }}>11</ColorStepLabel>
+              <ColorStepLabel display={{ initial: 'none', sm: 'flex' }}>12</ColorStepLabel>
 
               {Array.from({ length: 12 }, (_, i) => i + 1).map((step, i) => (
                 <CustomSwatch
@@ -1320,6 +1321,7 @@ ${darkGrayColorsCss}
 };
 
 const getColorName = (value: string) => {
+  // @ts-ignore
   const color = new Color(value).to('hsl');
 
   if (color.coords[1] < 25) {
