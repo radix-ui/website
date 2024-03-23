@@ -36,22 +36,22 @@ export default function BlogPost({ frontmatter, code }: BlogPost) {
         <BlogMobileMenu />
 
         <Flex>
-          <Box
-            px="9"
-            width={'250px'}
-            style={{ zIndex: 1 }}
-            display={{ initial: 'none', md: 'block' }}
-          >
-            <Section size={{ initial: '2', md: '4' }}>
-              <Link color="gray" asChild>
+          <Section size={{ initial: '2', md: '4' }} asChild>
+            <Box
+              px="9"
+              width="250px"
+              style={{ zIndex: 1 }}
+              display={{ initial: 'none', md: 'block' }}
+            >
+              <Link color="gray" asChild style={{ position: 'fixed' }}>
                 <NextLink href={`/blog`}>← Go back</NextLink>
               </Link>
-            </Section>
-          </Box>
+            </Box>
+          </Section>
 
           <DocsPageWrapper>
             <Box>
-              <Text color="gray" size="3" mb="6" as="div">
+              <Text color="gray" size="3" mb="6" as="div" trim="start">
                 {frontmatter.publishedAt}
               </Text>
 

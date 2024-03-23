@@ -40,61 +40,57 @@ export default function RadixBlog({ frontmatters }: Blog) {
 
         <Section size={{ initial: '2', md: '4' }}>
           <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
-            <Box>
-              <Box mb={{ initial: '7', md: '9' }}>
-                <Heading size="8" mb="2">
-                  Latest Updates
-                </Heading>
+            <Box mb={{ initial: '7', md: '9' }}>
+              <Heading size="8" mb="2">
+                Latest Updates
+              </Heading>
 
-                <Text size="4" color="gray" as="p">
-                  {description}
-                </Text>
-              </Box>
-              <Flex direction="column">
-                {frontmatters.map(
-                  ({ metaTitle, metaDescription, slug, metaImage, publishedAt }) => (
-                    <Card size="4" variant="classic" asChild key={slug}>
-                      <NextLink href={`/${slug}`}>
-                        <Grid columns={{ initial: 'auto auto', sm: '2' }} width="100%" gap="7">
-                          {/* This card should ideally stack the image above on smaller displays, hiding for now though due to response inset bug */}
-                          <Box display={{ initial: 'none', xs: 'block' }} asChild>
-                            <Inset clip="padding-box" side="left">
-                              <img
-                                src={`social/${metaImage}`}
-                                alt={metaTitle}
-                                style={{
-                                  display: 'block',
-                                  objectFit: 'cover',
-                                  height: '100%',
-                                  width: '100%',
-                                  backgroundColor: 'var(--gray-5)',
-                                }}
-                              />
-                            </Inset>
-                          </Box>
-                          <Flex justify="between" direction="column">
-                            <Box>
-                              <Text color="gray" mb="5" as="p" size="2">
-                                {publishedAt}
-                              </Text>
-                              <Heading size="7" mb="3">
-                                {metaTitle}
-                              </Heading>
-                              <Text as="p" mb="5" color="gray">
-                                {metaDescription}
-                              </Text>
-                            </Box>
-                            <Link asChild>
-                              <Box>Read more →</Box>
-                            </Link>
-                          </Flex>
-                        </Grid>
-                      </NextLink>
-                    </Card>
-                  )
-                )}
-              </Flex>
+              <Text size="4" color="gray" as="p">
+                {description}
+              </Text>
             </Box>
+            <Flex direction="column">
+              {frontmatters.map(({ metaTitle, metaDescription, slug, metaImage, publishedAt }) => (
+                <Card size="4" variant="classic" asChild key={slug}>
+                  <NextLink href={`/${slug}`}>
+                    <Grid columns={{ initial: 'auto auto', sm: '2' }} width="100%" gap="7">
+                      {/* This card should ideally stack the image above on smaller displays, hiding for now though due to response inset bug */}
+                      <Box display={{ initial: 'none', xs: 'block' }} asChild>
+                        <Inset clip="padding-box" side="left">
+                          <img
+                            src={`social/${metaImage}`}
+                            alt={metaTitle}
+                            style={{
+                              display: 'block',
+                              objectFit: 'cover',
+                              height: '100%',
+                              width: '100%',
+                              backgroundColor: 'var(--gray-5)',
+                            }}
+                          />
+                        </Inset>
+                      </Box>
+                      <Flex justify="between" direction="column">
+                        <Box>
+                          <Text color="gray" mb="5" as="p" size="2">
+                            {publishedAt}
+                          </Text>
+                          <Heading size="7" mb="3">
+                            {metaTitle}
+                          </Heading>
+                          <Text as="p" mb="5" color="gray">
+                            {metaDescription}
+                          </Text>
+                        </Box>
+                        <Link asChild>
+                          <Box>Read more →</Box>
+                        </Link>
+                      </Flex>
+                    </Grid>
+                  </NextLink>
+                </Card>
+              ))}
+            </Flex>
           </Container>
         </Section>
 
