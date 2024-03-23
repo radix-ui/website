@@ -4,6 +4,7 @@ import {
   Card,
   Container,
   Flex,
+  Grid,
   Heading,
   Inset,
   Link,
@@ -40,7 +41,7 @@ export default function RadixBlog({ frontmatters }: Blog) {
         <Section size={{ initial: '2', md: '4' }}>
           <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
             <Box>
-              <Box mb="8">
+              <Box mb={{ initial: '7', md: '9' }}>
                 <Heading size="8" mb="2">
                   Latest Updates
                 </Heading>
@@ -54,37 +55,40 @@ export default function RadixBlog({ frontmatters }: Blog) {
                   ({ metaTitle, metaDescription, slug, metaImage, publishedAt }) => (
                     <Card size="4" variant="classic" asChild key={slug}>
                       <NextLink href={`/${slug}`}>
-                        <Flex width="100%" gap="2">
-                          <Inset clip="padding-box" side="left" pr="current">
-                            <img
-                              src={`social/${metaImage}`}
-                              alt={metaTitle}
-                              style={{
-                                display: 'block',
-                                objectFit: 'cover',
-                                height: '100%',
-                                width: '100%',
-                                backgroundColor: 'var(--gray-5)',
-                              }}
-                            />
-                          </Inset>
+                        <Grid columns={{ initial: 'auto auto', sm: '2' }} width="100%" gap="7">
+                          {/* This card should ideally stack the image above on smaller displays, hiding for now though due to response inset bug */}
+                          <Box display={{ initial: 'none', xs: 'block' }} asChild>
+                            <Inset clip="padding-box" side="left">
+                              <img
+                                src={`social/${metaImage}`}
+                                alt={metaTitle}
+                                style={{
+                                  display: 'block',
+                                  objectFit: 'cover',
+                                  height: '100%',
+                                  width: '100%',
+                                  backgroundColor: 'var(--gray-5)',
+                                }}
+                              />
+                            </Inset>
+                          </Box>
                           <Flex justify="between" direction="column">
                             <Box>
-                              <Text color="gray" mb="3" as="p" size="2">
+                              <Text color="gray" mb="5" as="p" size="2">
                                 {publishedAt}
                               </Text>
-                              <Heading mb="3">{metaTitle}</Heading>
-                              <Text as="p" mb="5">
+                              <Heading size="7" mb="3">
+                                {metaTitle}
+                              </Heading>
+                              <Text as="p" mb="5" color="gray">
                                 {metaDescription}
                               </Text>
                             </Box>
                             <Link asChild>
-                              <Flex align="center" gap="2">
-                                Read more <ArrowRightIcon />
-                              </Flex>
+                              <Box>Read more →</Box>
                             </Link>
                           </Flex>
-                        </Flex>
+                        </Grid>
                       </NextLink>
                     </Card>
                   )

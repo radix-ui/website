@@ -26,7 +26,7 @@ export default function BlogPost({ frontmatter, code }: BlogPost) {
   return (
     <>
       <TitleAndMetaTags
-        title={`${frontmatter.metaTitle} – Blog – Radix UI`}
+        title={`${frontmatter.metaTitle} – Radix UI`}
         description={frontmatter.metaDescription}
         image={frontmatter.metaImage}
       />
@@ -37,13 +37,15 @@ export default function BlogPost({ frontmatter, code }: BlogPost) {
 
         <Flex>
           <Box
-            px="7"
+            px="9"
             width={'250px'}
             style={{ zIndex: 1 }}
             display={{ initial: 'none', md: 'block' }}
           >
             <Section size={{ initial: '2', md: '4' }}>
-              <BackLink />
+              <Link color="gray" asChild>
+                <NextLink href={`/blog`}>← Go back</NextLink>
+              </Link>
             </Section>
           </Box>
 
@@ -67,19 +69,6 @@ export default function BlogPost({ frontmatter, code }: BlogPost) {
     </>
   );
 }
-
-const BackLink = () => {
-  return (
-    <NextLink passHref legacyBehavior href={`/blog`}>
-      <Flex asChild align="center" gap="3">
-        <Link color="gray">
-          <ArrowLeftIcon />
-          Back to blog
-        </Link>
-      </Flex>
-    </NextLink>
-  );
-};
 
 export async function getStaticPaths() {
   const frontmatters = getAllFrontmatter('blog');
