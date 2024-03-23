@@ -300,7 +300,7 @@ Radix Themes colors can be customized by overriding the corresponding CSS variab
 
 Make sure that your CSS is applied after the Radix Themes styles so that it takes precedence.
 
-### Brand colors
+### Brand color
 
 You can replace a specific color with your brand color by remapping the corresponding token. Usually, you’d override **step 9** of the scale that you are using as your theme accent.
 
@@ -313,6 +313,30 @@ You can replace a specific color with your brand color by remapping the correspo
 ```
 
 In this example, using solid-colored `indigo` components will now reference your custom color.
+
+### Custom palette
+
+You can use the [custom color palette tool](/colors/custom) to generate a custom palette based just on a couple reference colors. Once you are happy with the result, paste the generated CSS into your project. You can rename the generated colors to match the accent that you want to use in your theme.
+
+To generate dark theme colors, toggle the appearance to dark in the website header. Make sure to paste the generated CSS after your light theme color overrides.
+
+<Text as="div" align="center" my="6">
+  <Box asChild mb="2">
+    <Link asChild>
+      <NextLink href="/colors/custom">
+        <img
+          src="https://workos.imgix.net/images/4c48334e-feb3-4046-9569-bd695b174728.png?auto=format&fit=clip&q=80"
+          style={{
+            width: '100%',
+            display: 'block',
+            borderRadius: 'var(--radius-4)',
+          }}
+        />
+      </NextLink>
+    </Link>
+  </Box>
+  {<a href="/colors/custom">Create a custom palette →</a>}
+</Text>
 
 ### Color aliasing
 
