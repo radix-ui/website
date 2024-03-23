@@ -61,6 +61,7 @@ export const generateRadixColors = ({
 
   let accentScaleColors = getScaleFromColor(accentBaseColor, allScales, backgroundColor);
 
+  // Enforce srgb for the background color
   const backgroundHex = backgroundColor.to('srgb').toString({ format: 'hex' });
 
   // Make sure we use the tint from the gray scale for when base is pure white or black
@@ -69,11 +70,7 @@ export const generateRadixColors = ({
     accentScaleColors = grayScaleColors.map((color) => color.clone()) as ArrayOf12<Color>;
   }
 
-  const [accent9Color, accentContrastColor] = getStep9Colors(
-    accentScaleColors,
-    accentBaseColor,
-    backgroundColor
-  );
+  const [accent9Color, accentContrastColor] = getStep9Colors(accentScaleColors, accentBaseColor);
 
   accentScaleColors[8] = accent9Color;
   accentScaleColors[9] = getButtonHoverColor(accent9Color, [accentScaleColors]);
@@ -145,6 +142,8 @@ export const generateRadixColors = ({
     grayScaleAlphaWideGamut: grayScaleAlphaWideGamutString,
 
     graySurface: appearance === 'light' ? '#ffffffcc' : 'rgba(0, 0, 0, 0.05)',
+    graySurfaceWideGamut:
+      appearance === 'light' ? 'color(display-p3 1 0 0 / 80%)' : 'color(display-p3 0 0 0 / 5%)',
 
     accentSurface: accentSurfaceHex,
     accentSurfaceWideGamut: accentSurfaceWideGamutString,
@@ -153,12 +152,9 @@ export const generateRadixColors = ({
   };
 };
 
-function getStep9Colors(
-  scale: ArrayOf12<Color>,
-  accentBaseColor: Color,
-  backgroundColor: Color
-): [Color, Color] {
-  const distance = accentBaseColor.deltaEOK(backgroundColor) * 100;
+function getStep9Colors(scale: ArrayOf12<Color>, accentBaseColor: Color): [Color, Color] {
+  const referenceBackgroundColor = scale[0];
+  const distance = accentBaseColor.deltaEOK(referenceBackgroundColor) * 100;
 
   // If the accent base color is close to the page background color, it's likely
   // white on white or black on black, so we want to return something that makes sense instead
@@ -324,7 +320,7 @@ function getScaleFromColor(
       backgroundL,
       // Add white as the first "step" of the light scale
       [1, ...lightnessScale],
-      easeOutExponential
+      lightModeEasing
     );
 
     // Remove the step we added
@@ -338,7 +334,7 @@ function getScaleFromColor(
   }
 
   // Dark mode
-  let ease: typeof easeInExponential = [...easeInExponential];
+  let ease: typeof darkModeEasing = [...darkModeEasing];
   const referenceBackgroundColorL = scale[0].coords[0];
   const backgroundColorL = Math.max(0, Math.min(1, backgroundColor.coords[0]));
 
@@ -549,8 +545,8 @@ function formatHex(str: string) {
   return str;
 }
 
-const easeInExponential = [1, 0, 1, 0] as [number, number, number, number];
-const easeOutExponential = [0, 1, 0, 1] as [number, number, number, number];
+const darkModeEasing = [1, 0, 1, 0] as [number, number, number, number];
+const lightModeEasing = [0, 2, 0, 2] as [number, number, number, number];
 
 export function transposeProgressionStart(
   to: number,

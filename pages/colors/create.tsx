@@ -1,3 +1,4 @@
+import Color from 'colorjs.io';
 import NextLink from 'next/link';
 import { ColorsHeader } from '@components/ColorsHeader';
 import { ColorsMobileMenu } from '@components/ColorsMobileMenu';
@@ -28,7 +29,6 @@ import {
   GitHubLogoIcon,
   CopyIcon,
   FigmaLogoIcon,
-  CheckIcon,
   ArrowLeftIcon,
 } from '@radix-ui/react-icons';
 import {
@@ -75,11 +75,11 @@ import { Swatch } from '@components/Swatch';
 import { useLocalStorage, useIsomorphicLayoutEffect } from 'usehooks-ts';
 import { useTheme } from 'next-themes';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
+import copy from 'copy-to-clipboard';
 
 // TODO fix selectiion colors on gray elements
 
 export default function Page() {
-  // TODODODO get accent name
   const accent = 'indigo';
 
   const { resolvedTheme } = useTheme();
@@ -114,10 +114,22 @@ export default function Page() {
     background: darkBgValue,
   });
 
-  const [codeCopied, setCodeCopied] = React.useState(false);
-  const [svgCopied, setSvgCopied] = React.useState(false);
+  const result = resolvedTheme === 'dark' ? darkModeResult : lightModeResult;
+
+  const [copied, setCopied] = React.useState('');
   const copiedTimeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
-  const COPIED_TIMEOUT = 3000;
+  const COPIED_TIMEOUT = 1500;
+
+  const setCopiedMessage = React.useCallback(
+    (message: string) => {
+      setCopied(message);
+      clearTimeout(copiedTimeoutRef.current);
+      copiedTimeoutRef.current = setTimeout(() => {
+        setCopied('');
+      }, COPIED_TIMEOUT);
+    },
+    [setCopied]
+  );
 
   const [hydrated, setHydrated] = React.useState(false);
   useIsomorphicLayoutEffect(() => setHydrated(true), []);
@@ -175,10 +187,16 @@ export default function Page() {
           </Flex>
 
           <Box mb="9">
-            <Grid flow="column" columns="180px 180px 180px" gap="4" justify="center" align="end">
+            <Grid
+              flow="column"
+              columns="180px 180px 180px auto"
+              gap="4"
+              justify="center"
+              align="end"
+            >
               <Flex direction="column">
-                <Flex>
-                  <Text as="label" htmlFor="accent" size="1" color="gray" mb="1">
+                <Flex mb="1">
+                  <Text as="label" htmlFor="accent" size="1" color="gray">
                     Accent
                   </Text>
                 </Flex>
@@ -186,8 +204,8 @@ export default function Page() {
               </Flex>
 
               <Flex direction="column">
-                <Flex>
-                  <Text as="label" htmlFor="gray" size="1" color="gray" mb="1">
+                <Flex justify="between" mb="1">
+                  <Text as="label" htmlFor="gray" size="1" color="gray">
                     Gray
                   </Text>
                 </Flex>
@@ -195,82 +213,134 @@ export default function Page() {
               </Flex>
 
               <Flex direction="column">
-                <Flex>
-                  <Text as="label" htmlFor="bg" size="1" color="gray" mb="1">
+                <Flex mb="1">
+                  <Text as="label" htmlFor="bg" size="1" color="gray">
                     Background
                   </Text>
                 </Flex>
                 <ColorField id="bg" value={bgValue} onValueChange={setBgValue} />
               </Flex>
 
-              <DropdownMenu.Root>
-                <DropdownMenu.Trigger>
-                  <Button>
-                    Save
-                    <Box asChild mx="-1">
-                      <ChevronDownIcon />
-                    </Box>
-                  </Button>
-                </DropdownMenu.Trigger>
-                <DropdownMenu.Content>
-                  <DropdownMenu.Item
+              <Flex align="center" gap="3">
+                <DropdownMenu.Root>
+                  <DropdownMenu.Trigger>
+                    <Button>
+                      <Flex
+                        as="span"
+                        align="center"
+                        gap="2"
+                        style={{ visibility: copied ? 'hidden' : undefined }}
+                      >
+                        Save
+                        <DropdownMenu.TriggerIcon />
+                      </Flex>
+                      {copied && <Box position="absolute">Copied</Box>}
+                    </Button>
+                  </DropdownMenu.Trigger>
+                  <DropdownMenu.Content>
+                    {/* <DropdownMenu.Item
                     onSelect={() => {
-                      setCodeCopied(true);
+                      setCopied(true);
                       setSvgCopied(false);
                       clearTimeout(copiedTimeoutRef.current);
                       copiedTimeoutRef.current = setTimeout(() => {
-                        setCodeCopied(false);
+                        setCopied(false);
                       }, COPIED_TIMEOUT);
                     }}
                   >
-                    <Flex align="center" gap="2">
-                      <Box asChild ml="-1">
-                        <CopyIcon />
-                      </Box>
-                      Copy CSS code
-                    </Flex>
-                  </DropdownMenu.Item>
-                  <DropdownMenu.Item
-                    onSelect={() => {
-                      setSvgCopied(true);
-                      setCodeCopied(false);
-                      clearTimeout(copiedTimeoutRef.current);
-                      copiedTimeoutRef.current = setTimeout(() => {
-                        setSvgCopied(false);
-                      }, COPIED_TIMEOUT);
-                    }}
-                  >
-                    <Flex align="center" gap="2">
-                      <Box asChild ml="-1">
-                        <FigmaLogoIcon />
-                      </Box>
-                      Copy SVG object
-                    </Flex>
-                  </DropdownMenu.Item>
-                </DropdownMenu.Content>
-              </DropdownMenu.Root>
+                    Copy CSS code
+                  </DropdownMenu.Item> */}
 
-              <Flex
-                asChild
-                height="6"
-                align="center"
-                justify="start"
-                gap="1"
-                style={{
-                  whiteSpace: 'nowrap',
-                  width: 100,
-                  marginRight: -116,
-                }}
-              >
-                <Text size="2">
-                  {(codeCopied || svgCopied) && (
-                    <>
-                      <CheckIcon width="18" height="18" />
-                      {svgCopied ? 'SVG ' : 'CSS '}
-                      copied
-                    </>
-                  )}
-                </Text>
+                    <DropdownMenu.Sub>
+                      <DropdownMenu.SubTrigger>
+                        <Flex align="center" gap="2">
+                          <Box asChild ml="-1">
+                            <CopyIcon />
+                          </Box>
+                          Copy CSS code
+                        </Flex>
+                      </DropdownMenu.SubTrigger>
+
+                      <DropdownMenu.SubContent>
+                        <DropdownMenu.Item
+                          onSelect={() => {
+                            const css = getCssToCopy({
+                              isDarkMode: resolvedTheme === 'dark',
+                              name: getColorName(accentValue),
+                              contrast: result.accentContrast,
+                              scale: result.accentScale,
+                              scaleWideGamut: result.accentScaleWideGamut,
+                              scaleAlpha: result.accentScaleAlpha,
+                              scaleAlphaWideGamut: result.accentScaleAlphaWideGamut,
+                              surface: result.accentSurface,
+                              surfaceWideGamut: result.accentSurfaceWideGamut,
+                            });
+
+                            copy(css);
+                            setCopiedMessage('accents');
+                          }}
+                        >
+                          Copy accent scale
+                        </DropdownMenu.Item>
+
+                        <DropdownMenu.Item
+                          onSelect={() => {
+                            const css = getCssToCopy({
+                              isDarkMode: resolvedTheme === 'dark',
+                              name: 'gray',
+                              contrast: '#FFFFFF',
+                              scale: result.grayScale,
+                              scaleWideGamut: result.grayScaleWideGamut,
+                              scaleAlpha: result.grayScaleAlpha,
+                              scaleAlphaWideGamut: result.grayScaleAlphaWideGamut,
+                              surface: result.graySurface,
+                              surfaceWideGamut: result.graySurfaceWideGamut,
+                            });
+
+                            copy(css);
+                            setCopiedMessage('grays');
+                          }}
+                        >
+                          Copy gray scale
+                        </DropdownMenu.Item>
+
+                        <DropdownMenu.Item
+                          onSelect={() => {
+                            const css = getBackgroundCssToCopy({
+                              isDarkMode: resolvedTheme === 'dark',
+                              background: result.background,
+                            });
+
+                            copy(css);
+                            setCopiedMessage('background');
+                          }}
+                        >
+                          Copy background color
+                        </DropdownMenu.Item>
+                      </DropdownMenu.SubContent>
+                    </DropdownMenu.Sub>
+                    <DropdownMenu.Item onSelect={() => setCopiedMessage('SVG')}>
+                      <Flex align="center" gap="2">
+                        <Box asChild ml="-1">
+                          <FigmaLogoIcon />
+                        </Box>
+                        Copy SVG object
+                      </Flex>
+                    </DropdownMenu.Item>
+                  </DropdownMenu.Content>
+                </DropdownMenu.Root>
+
+                {/* <Flex asChild height="100%" align="center" justify="start" width="100%" gap="1">
+                  <Text size="2" wrap="nowrap">
+                    {(codeCopied || svgCopied) && (
+                      <>
+                        <CheckIcon width="18" height="18" />
+                        {svgCopied ? 'SVG ' : 'CSS '}
+                        copied
+                      </>
+                    )}
+                  </Text>
+                </Flex> */}
               </Flex>
             </Grid>
           </Box>
@@ -751,8 +821,7 @@ export const Preview = ({ children, ...props }: React.ComponentPropsWithoutRef<t
           p="4"
           style={{
             borderRadius: 'var(--radius-4)',
-            // backgroundColor: 'var(--color-panel-solid)',
-            backgroundImage: 'linear-gradient(var(--gray-a2), var(--gray-a2))',
+            backgroundColor: 'var(--gray-a2)',
           }}
         >
           <ToDoList
@@ -996,21 +1065,103 @@ const LayersItem = (props: React.ComponentPropsWithoutRef<typeof ToggleGroup.Ite
   </Reset>
 );
 
-interface GetPreviewStylesParams {
-  selector?: string;
-  lightColors: ReturnType<typeof generateRadixColors>;
-  darkColors: ReturnType<typeof generateRadixColors>;
+type GeneratedColors = ReturnType<typeof generateRadixColors>;
+
+interface GetCssToCopyParams {
+  isDarkMode: boolean;
+  name: string;
+  scale: GeneratedColors['accentScale'];
+  scaleWideGamut: GeneratedColors['accentScaleWideGamut'];
+  scaleAlpha: GeneratedColors['accentScaleAlpha'];
+  scaleAlphaWideGamut: GeneratedColors['accentScaleAlphaWideGamut'];
+  contrast: GeneratedColors['accentContrast'];
+  surface: GeneratedColors['accentSurface'];
+  surfaceWideGamut: GeneratedColors['accentSurfaceWideGamut'];
 }
 
-export const getPreviewStyles = ({ selector, lightColors, darkColors }: GetPreviewStylesParams) => {
+const getCssToCopy = ({
+  isDarkMode,
+  name,
+  scale,
+  scaleWideGamut,
+  scaleAlpha,
+  scaleAlphaWideGamut,
+  contrast,
+  surface,
+  surfaceWideGamut,
+}: GetCssToCopyParams) => {
+  const selector = isDarkMode ? '.dark, .dark-theme' : ':root, .light, .light-theme';
+  // TODO backgroundColor
+
+  return `
+${selector} {
+  ${scale.map((value, index) => `--${name}-${index + 1}: ${value};`).join('\n  ')}
+
+  ${scaleAlpha.map((value, index) => `--${name}-a${index + 1}: ${value};`).join('\n  ')}
+
+  --${name}-contrast: ${contrast};
+  --${name}-surface: ${surface};
+  --${name}-indicator: ${scale[8]};
+  --${name}-track: ${scale[8]};
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+  @media (color-gamut: p3) {
+    ${selector} {
+      ${scaleWideGamut.map((value, index) => `--${name}-${index + 1}: ${value};`).join('\n      ')}
+
+      ${scaleAlphaWideGamut
+        .map((value, index) => `--${name}-a${index + 1}: ${value};`)
+        .join('\n      ')}
+
+      --${name}-contrast: ${contrast};
+      --${name}-surface: ${surfaceWideGamut};
+      --${name}-indicator: ${scaleWideGamut[8]};
+      --${name}-track: ${scaleWideGamut[8]};
+    }
+  }
+}
+  `.trim();
+};
+
+const getBackgroundCssToCopy = ({
+  isDarkMode,
+  background,
+}: {
+  isDarkMode: boolean;
+  background: string;
+}) => {
+  if (isDarkMode) {
+    return `
+.dark, .dark-theme, :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
+  --color-background: ${background};
+}
+    `.trim();
+  }
+
+  return `
+:root, .light, .light-theme, .radix-themes {
+  --color-background: ${background};
+}
+  `.trim();
+};
+
+interface GetPreviewStylesParams {
+  selector?: string;
+  lightColors: GeneratedColors;
+  darkColors: GeneratedColors;
+}
+
+const getPreviewStyles = ({ selector, lightColors, darkColors }: GetPreviewStylesParams) => {
   const themeSelector = selector || '.radix-themes';
 
   return `
-:root, .light, .light-theme, .radix-themes:where([data-has-background='true']) {
-  --color-background: ${lightColors.background} !important;
+.radix-themes {
+  --color-background: ${lightColors.background};
 }
-.dark, .dark-theme, :where(.dark, .dark-theme) .radix-themes:where([data-has-background='true']) {
-  --color-background: ${darkColors.background} !important;
+:is(.dark, .dark-theme),
+:is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
+  --color-background: ${darkColors.background};
 }
 
 ${themeSelector}:not(.dark, .dark-theme), ${themeSelector}:is(.light, .light-theme) {
@@ -1105,3 +1256,56 @@ ${themeSelector}:not(.dark, .dark-theme), ${themeSelector}:is(.light, .light-the
 }
 `;
 };
+
+const getColorName = (value: string) => {
+  const color = new Color(value).to('hsl');
+
+  if (color.coords[1] < 30) {
+    return 'gray';
+  }
+  if (color.coords[0] >= 0 && color.coords[0] < 20) {
+    return 'red';
+  }
+  if (color.coords[0] >= 20 && color.coords[0] < 40) {
+    return 'orange';
+  }
+  if (color.coords[0] >= 40 && color.coords[0] < 65) {
+    return 'yellow';
+  }
+  if (color.coords[0] >= 65 && color.coords[0] < 100) {
+    return 'lime';
+  }
+  if (color.coords[0] >= 100 && color.coords[0] < 165) {
+    return 'green';
+  }
+  if (color.coords[0] >= 165 && color.coords[0] < 190) {
+    return 'teal';
+  }
+  if (color.coords[0] >= 190 && color.coords[0] < 240) {
+    return 'blue';
+  }
+  if (color.coords[0] >= 240 && color.coords[0] < 270) {
+    return 'violet';
+  }
+  if (color.coords[0] >= 270 && color.coords[0] < 320) {
+    return 'purple';
+  }
+  if (color.coords[0] >= 320 && color.coords[0] < 340) {
+    return 'pink';
+  }
+
+  return 'red';
+};
+
+const defaultErrorMessage = 'Please use a reasonable color';
+const mildlyOffensiveErrorMessages = [
+  'That’s not going to work',
+  'Please be reasonable',
+  'We know you aren’t serious',
+  'You don’t want to use that',
+  'Please have some self-respect',
+  'Could you stop messing around?!',
+  'Did your designer make you do this?',
+  'Why don’t you just use Radix Colors?',
+  'We appreciate you testing the limits',
+];
