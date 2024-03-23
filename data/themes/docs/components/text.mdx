@@ -220,8 +220,9 @@ Use the `truncate` prop to truncate text with an ellipsis when it overflows its 
 ```jsx live=true line=2
 <Flex maxWidth="300px">
   <Text truncate>
-    Under a sky as clear as a sapphire, the audacious wind embarked on yet
-    another sojourn.
+    The goal of typography is to relate font size, line height, and line width
+    in a proportional way that maximizes beauty and makes reading easier and
+    more pleasant.
   </Text>
 </Flex>
 ```
@@ -230,49 +231,53 @@ Use the `truncate` prop to truncate text with an ellipsis when it overflows its 
 
 Use the `wrap` prop to control text wrapping.
 
-```jsx live=true line=13,21,29,37,45
-<Flex direction="column" maxWidth="300px">
-  <Text weight="bold" size="2" mb="1">
-    Default
-  </Text>
-  <Text>
-    Under a sky as clear as a sapphire, the audacious wind embarked on yet
-    another sojourn.
-  </Text>
-
-  <Text weight="bold" size="2" mb="1" mt="4">
-    wrap="wrap"
-  </Text>
-  <Text wrap="wrap">
-    Under a sky as clear as a sapphire, the audacious wind embarked on yet
-    another sojourn.
-  </Text>
-
-  <Text weight="bold" size="2" mb="1" mt="4">
-    wrap="nowrap"
-  </Text>
+```jsx live=true line=2
+<Flex maxWidth="300px" style={{ background: 'var(--gray-a3)' }}>
   <Text wrap="nowrap">
-    Under a sky as clear as a sapphire, the audacious wind embarked on yet
-    another sojourn.
-  </Text>
-
-  <Text weight="bold" size="2" mb="1" mt="4">
-    wrap="balance"
-  </Text>
-  <Text wrap="balance">
-    Under a sky as clear as a sapphire, the audacious wind embarked on yet
-    another sojourn.
-  </Text>
-
-  <Text weight="bold" size="2" mb="1" mt="4">
-    wrap="pretty"
-  </Text>
-  <Text wrap="pretty">
-    Under a sky as clear as a sapphire, the audacious wind embarked on yet
-    another sojourn.
+    The goal of typography is to relate font size, line height, and line width
+    in a proportional way that maximizes beauty and makes reading easier and
+    more pleasant.
   </Text>
 </Flex>
 ```
+
+```jsx live=true line=2
+<Flex maxWidth="300px">
+  <Text wrap="balance">
+    The goal of typography is to relate font size, line height, and line width
+    in a proportional way that maximizes beauty and makes reading easier and
+    more pleasant.
+  </Text>
+</Flex>
+```
+
+```jsx live=true line=2
+<Flex maxWidth="300px">
+  <Text wrap="pretty">
+    The goal of typography is to relate font size, line height, and line width
+    in a proportional way that maximizes beauty and makes reading easier and
+    more pleasant.
+  </Text>
+</Flex>
+```
+
+{
+
+<Callout.Root my="5" color="gray">
+  <Callout.Icon>
+    <InfoCircledIcon />
+  </Callout.Icon>
+  <Callout.Text>
+    <Code>text-wrap: pretty</Code> is an experimental value that is{' '}
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap#browser_compatibility">
+      not yet supported in all browsers
+    </a>
+    . However, it can be treated as a progressive enhancement for browsers that do
+    support it.
+  </Callout.Text>
+</Callout.Root>
+
+}
 
 ### Color
 
