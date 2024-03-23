@@ -101,9 +101,10 @@ Wraps the control that will close the dialog.
 
 ### Size
 
-Use the `size` prop to control the size of the dialog.
+Use the `size` prop to control size of the dialog. It will affect the `padding` and `border-radius` of the Content.
+Use it in conjunction with the `width`, `minWidth` and `maxWidth` props to control the width of the dialog.
 
-```jsx live=true line=6,15,24,33
+```jsx live=true line=6,17,28,39
 <Flex gap="4" align="center">
   <Dialog.Root>
     <Dialog.Trigger>
