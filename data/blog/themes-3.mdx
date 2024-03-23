@@ -8,7 +8,7 @@ metaImage: blog-themes-3.jpg
 # Radix Themes 3.0
 
 <Description>
-  New layout engine, new components, and brand color generator.
+  New layout engine, new components, and custom color palette generator.
 </Description>
 
 ## Introduction
@@ -19,7 +19,7 @@ For the comprehensive changelog and a migration guide, see the [release notes](/
 
 ---
 
-## Brand color generator
+## Custom color palettes
 
 Radix Themes comes with almost 30 color scales, each with their own light, dark and alpha variants. Under the hood, the color system is powered by [Radix Colors](/colors).
 
@@ -32,13 +32,21 @@ Every scale has been tuned to provide fully accessible contrast ratios, each wit
 Today, we are introducing a new tool which allows you to create your own brand palette for Radix Themes. It’s a simple interface that lets you specify a primary color, a gray color, and your page background, generating a color configuration to copy-paste into your theme styles.
 
 <Text as="div" align="center" my="6">
-  <NextLink href="/colors/create-your-palette">
-    <img
-      src="https://workos.imgix.net/images/d102af28-90e3-4a7d-8ab9-3b50a7af9c04.png?auto=format&fit=clip&q=80"
-      style={{ borderRadius: 'var(--radius-4)', width: '100%' }}
-    />
-  </NextLink>
-  {<a href="/colors/create-your-palette">Create your palette →</a>}
+  <Box asChild mb="2">
+    <Link asChild>
+      <NextLink href="/colors/custom">
+        <img
+          src="https://workos.imgix.net/images/d102af28-90e3-4a7d-8ab9-3b50a7af9c04.png?auto=format&fit=clip&q=80"
+          style={{
+            width: '100%',
+            display: 'block',
+            borderRadius: 'var(--radius-4)',
+          }}
+        />
+      </NextLink>
+    </Link>
+  </Box>
+  {<a href="/colors/custom">Create a custom palette →</a>}
 </Text>
 
 ---
@@ -174,7 +182,7 @@ In most interfaces, these styles are global and affect the entire app, so that t
       <CheckboxCards.Item value="3">
         <Flex direction="column" width="100%">
           <Text weight="bold">Lightning Mat</Text>
-          <Text>Wireless charging</Text>
+          <Text>Next-gen charging</Text>
         </Flex>
       </CheckboxCards.Item>
     </CheckboxCards.Root>
@@ -260,11 +268,11 @@ import '@radix-ui/themes/layout.css';
 
 ---
 
-## Zero config setup with Astro and Remix
+## Zero config setup with Astro and Remix
 
 Radix Themes is now much easier to set up with Remix and Astro. In 3.0, we have revisited the way the library is built to ensure support for ESM environments out of the box.
 
-The distribution is now a _hybrid_ ESM/CommonJS package. Depending on your setup, your import resolver will now pick the right version automatically.
+The distribution is now a hybrid ESM/CommonJS package. Depending on your setup, your import resolver will now pick the right version automatically.
 
 ---
 
