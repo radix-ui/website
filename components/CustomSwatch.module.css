@@ -5,16 +5,17 @@
   background-clip: padding-box;
   box-sizing: content-box;
   border-radius: var(--radius-2);
-  height: var(--space-9);
+  height: var(--space-8);
   outline-offset: -2px;
 
   border-radius: var(--radius-1);
   overflow: hidden;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .CustomSwatchTrigger {
-    height: var(--space-7);
+    aspect-ratio: 1 / 1;
+    height: auto;
   }
 }
 
@@ -37,12 +38,6 @@
 .CustomSwatchTrigger:focus-visible,
 .CustomSwatchTrigger[data-state='open'] {
   outline: 2px solid var(--gray-12);
-}
-
-@media (min-width: 768px) {
-  .CustomSwatchTrigger {
-    height: var(--space-8);
-  }
 }
 
 .CustomSwatchContent {

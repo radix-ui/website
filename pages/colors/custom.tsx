@@ -236,7 +236,7 @@ export default function Page() {
                 >
                   <DropdownMenu.Root>
                     <DropdownMenu.Trigger>
-                      <Button>
+                      <Button highContrast={!!copied}>
                         <Flex
                           as="span"
                           align="center"
@@ -251,18 +251,18 @@ export default function Page() {
                     </DropdownMenu.Trigger>
                     <DropdownMenu.Content>
                       {/*
-                      <DropdownMenu.Item
-                        onSelect={() => {
-                          setCopied(true);
-                          setSvgCopied(false);
-                          clearTimeout(copiedTimeoutRef.current);
-                          copiedTimeoutRef.current = setTimeout(() => {
-                            setCopied(false);
-                          }, COPIED_TIMEOUT);
-                        }}
-                      >
-                        Copy CSS code
-                      </DropdownMenu.Item>
+                        <DropdownMenu.Item
+                          onSelect={() => {
+                            setCopied(true);
+                            setSvgCopied(false);
+                            clearTimeout(copiedTimeoutRef.current);
+                            copiedTimeoutRef.current = setTimeout(() => {
+                              setCopied(false);
+                            }, COPIED_TIMEOUT);
+                          }}
+                        >
+                          Copy CSS code
+                        </DropdownMenu.Item>
                       */}
 
                       <DropdownMenu.Sub>
@@ -347,64 +347,72 @@ export default function Page() {
               </Grid>
             </Box>
 
+            <Grid
+              mb="9"
+              flow={{ initial: 'column', sm: 'row' }}
+              columns={{ initial: '2', sm: '12' }}
+              rows={{ initial: '12', sm: 'auto' }}
+              gap={{ initial: '2px', md: '1' }}
+              mx={{ initial: '-5', xs: '-6', sm: '0' }}
+              px={{ initial: '2px', sm: '0' }}
+            >
+              <UsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="1 / 3">
+                Backgrounds
+              </UsageRange>
+              <UsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="3 / 6">
+                Interactive components
+              </UsageRange>
+              <UsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="6 / 9">
+                Borders and separators
+              </UsageRange>
+              <UsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="9 / 11">
+                Solid colors
+              </UsageRange>
+              <UsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="11 / 13">
+                Accessible text
+              </UsageRange>
+
+              <StepLabel display={{ initial: 'none', sm: 'flex' }}>1</StepLabel>
+              <StepLabel display={{ initial: 'none', sm: 'flex' }}>2</StepLabel>
+              <StepLabel display={{ initial: 'none', sm: 'flex' }}>3</StepLabel>
+              <StepLabel display={{ initial: 'none', sm: 'flex' }}>4</StepLabel>
+              <StepLabel display={{ initial: 'none', sm: 'flex' }}>5</StepLabel>
+              <StepLabel display={{ initial: 'none', sm: 'flex' }}>6</StepLabel>
+              <StepLabel display={{ initial: 'none', sm: 'flex' }}>7</StepLabel>
+              <StepLabel display={{ initial: 'none', sm: 'flex' }}>8</StepLabel>
+              <StepLabel display={{ initial: 'none', sm: 'flex' }}>9</StepLabel>
+              <StepLabel display={{ initial: 'none', sm: 'flex' }}>10</StepLabel>
+              <StepLabel display={{ initial: 'none', sm: 'flex' }}>11</StepLabel>
+              <StepLabel display={{ initial: 'none', sm: 'flex' }}>12</StepLabel>
+
+              {Array.from({ length: 12 }, (_, i) => i + 1).map((step, i) => (
+                <CustomSwatch
+                  key={step}
+                  scale={accent === 'custom' ? 'accent' : accent}
+                  step={step.toString()}
+                  cssVariable={`var(--${accent}-${step})`}
+                  hex={result.accentScale[i].toUpperCase()}
+                  hexA={result.accentScaleAlpha[i].toUpperCase()}
+                  p3={result.accentScaleWideGamut[i]}
+                  p3A={result.accentScaleAlphaWideGamut[i]}
+                />
+              ))}
+
+              {Array.from({ length: 12 }, (_, i) => i + 1).map((step, i) => (
+                <CustomSwatch
+                  key={step}
+                  scale="gray"
+                  step={step.toString()}
+                  cssVariable={`var(--gray-${step})`}
+                  hex={result.grayScale[i].toUpperCase()}
+                  hexA={result.grayScaleAlpha[i].toUpperCase()}
+                  p3={result.grayScaleWideGamut[i]}
+                  p3A={result.grayScaleAlphaWideGamut[i]}
+                />
+              ))}
+            </Grid>
+
             <Theme className="radix-themes-default-fonts">
-              <Grid columns="12" gap={{ initial: '2px', sm: '1' }} mb="9">
-                <UsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="1 / 3">
-                  Backgrounds
-                </UsageRange>
-                <UsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="3 / 6">
-                  Interactive components
-                </UsageRange>
-                <UsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="6 / 9">
-                  Borders and separators
-                </UsageRange>
-                <UsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="9 / 11">
-                  Solid colors
-                </UsageRange>
-                <UsageRange display={{ initial: 'none', sm: 'flex' }} gridColumn="11 / 13">
-                  Accessible text
-                </UsageRange>
-
-                <StepLabel display={{ initial: 'none', sm: 'flex' }}>1</StepLabel>
-                <StepLabel display={{ initial: 'none', sm: 'flex' }}>2</StepLabel>
-                <StepLabel display={{ initial: 'none', sm: 'flex' }}>3</StepLabel>
-                <StepLabel display={{ initial: 'none', sm: 'flex' }}>4</StepLabel>
-                <StepLabel display={{ initial: 'none', sm: 'flex' }}>5</StepLabel>
-                <StepLabel display={{ initial: 'none', sm: 'flex' }}>6</StepLabel>
-                <StepLabel display={{ initial: 'none', sm: 'flex' }}>7</StepLabel>
-                <StepLabel display={{ initial: 'none', sm: 'flex' }}>8</StepLabel>
-                <StepLabel display={{ initial: 'none', sm: 'flex' }}>9</StepLabel>
-                <StepLabel display={{ initial: 'none', sm: 'flex' }}>10</StepLabel>
-                <StepLabel display={{ initial: 'none', sm: 'flex' }}>11</StepLabel>
-                <StepLabel display={{ initial: 'none', sm: 'flex' }}>12</StepLabel>
-
-                {Array.from({ length: 12 }, (_, i) => i + 1).map((step, i) => (
-                  <CustomSwatch
-                    key={step}
-                    scale={accent === 'custom' ? 'accent' : accent}
-                    step={step.toString()}
-                    cssVariable={`var(--${accent}-${step})`}
-                    hex={result.accentScale[i].toUpperCase()}
-                    hexA={result.accentScaleAlpha[i].toUpperCase()}
-                    p3={result.accentScaleWideGamut[i]}
-                    p3A={result.accentScaleAlphaWideGamut[i]}
-                  />
-                ))}
-
-                {Array.from({ length: 12 }, (_, i) => i + 1).map((step, i) => (
-                  <CustomSwatch
-                    key={step}
-                    scale="gray"
-                    step={step.toString()}
-                    cssVariable={`var(--gray-${step})`}
-                    hex={result.grayScale[i].toUpperCase()}
-                    hexA={result.grayScaleAlpha[i].toUpperCase()}
-                    p3={result.grayScaleWideGamut[i]}
-                    p3A={result.grayScaleAlphaWideGamut[i]}
-                  />
-                ))}
-              </Grid>
-
               <Preview />
             </Theme>
           </Container>
