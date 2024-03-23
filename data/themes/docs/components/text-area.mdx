@@ -69,3 +69,16 @@ Use the `radius` prop to assign a specific radius value.
   <TextArea radius="full" placeholder="Search the docs…" />
 </Flex>
 ```
+
+### Resize
+
+Use the `resize` prop to enable resizing on one ore both axis.
+
+```jsx live=true
+<Flex direction="column" gap="3" maxWidth="250px">
+  <TextArea resize="none" placeholder="Search the docs…" />
+  <TextArea resize="vertical" placeholder="Search the docs…" />
+  <TextArea resize="horizontal" placeholder="Search the docs…" />
+  <TextArea resize="both" placeholder="Search the docs…" />
+</Flex>
+```
