@@ -33,10 +33,16 @@ Contains icons or buttons associated with an Input.
 Use the `size` prop to control the size.
 
 ```jsx live=true
-<Flex direction="column" gap="3" maxWidth="400px">
-  <TextField.Root size="1" placeholder="Search the docs…" />
-  <TextField.Root size="2" placeholder="Search the docs…" />
-  <TextField.Root size="3" placeholder="Search the docs…" />
+<Flex direction="column" gap="3">
+  <Box maxWidth="200px">
+    <TextField.Root size="1" placeholder="Search the docs…" />
+  </Box>
+  <Box maxWidth="250px">
+    <TextField.Root size="2" placeholder="Search the docs…" />
+  </Box>
+  <Box maxWidth="250px">
+    <TextField.Root size="3" placeholder="Search the docs…" />
+  </Box>
 </Flex>
 ```
 
@@ -44,36 +50,39 @@ Use matching component sizes when composing Text Field with buttons. However, do
 
 ```jsx live=true
 <Flex direction="column" gap="3" maxWidth="400px">
-  <TextField.Root>
-    <TextField.Slot>
-      <MagnifyingGlassIcon height="16" width="16" />
-    </TextField.Slot>
-    <TextField.Root placeholder="Search the docs…" size="1" />
-  </TextField.Root>
+  <Box maxWidth="200px">
+    <TextField.Root placeholder="Search the docs…" size="1">
+      <TextField.Slot>
+        <MagnifyingGlassIcon height="16" width="16" />
+      </TextField.Slot>
+    </TextField.Root>
+  </Box>
 
-  <TextField.Root>
-    <TextField.Slot>
-      <MagnifyingGlassIcon height="16" width="16" />
-    </TextField.Slot>
-    <TextField.Root placeholder="Search the docs…" size="2" />
-    <TextField.Slot>
-      <IconButton size="1" variant="ghost">
-        <DotsHorizontalIcon height="14" width="14" />
-      </IconButton>
-    </TextField.Slot>
-  </TextField.Root>
+  <Box maxWidth="250px">
+    <TextField.Root placeholder="Search the docs…" size="2">
+      <TextField.Slot>
+        <MagnifyingGlassIcon height="16" width="16" />
+      </TextField.Slot>
+      <TextField.Slot>
+        <IconButton size="1" variant="ghost">
+          <DotsHorizontalIcon height="14" width="14" />
+        </IconButton>
+      </TextField.Slot>
+    </TextField.Root>
+  </Box>
 
-  <TextField.Root>
-    <TextField.Slot>
-      <MagnifyingGlassIcon height="16" width="16" />
-    </TextField.Slot>
-    <TextField.Root placeholder="Search the docs…" size="3" />
-    <TextField.Slot pr="3">
-      <IconButton size="2" variant="ghost">
-        <DotsHorizontalIcon height="16" width="16" />
-      </IconButton>
-    </TextField.Slot>
-  </TextField.Root>
+  <Box maxWidth="300px">
+    <TextField.Root placeholder="Search the docs…" size="3">
+      <TextField.Slot>
+        <MagnifyingGlassIcon height="16" width="16" />
+      </TextField.Slot>
+      <TextField.Slot pr="3">
+        <IconButton size="2" variant="ghost">
+          <DotsHorizontalIcon height="16" width="16" />
+        </IconButton>
+      </TextField.Slot>
+    </TextField.Root>
+  </Box>
 </Flex>
 ```
 
@@ -82,7 +91,7 @@ Use matching component sizes when composing Text Field with buttons. However, do
 Use the `variant` prop to control the visual style.
 
 ```jsx live=true
-<Flex direction="column" gap="3" maxWidth="400px">
+<Flex direction="column" gap="3" maxWidth="250px">
   <TextField.Root variant="surface" placeholder="Search the docs…" />
   <TextField.Root variant="classic" placeholder="Search the docs…" />
   <TextField.Root variant="soft" placeholder="Search the docs…" />
@@ -94,7 +103,7 @@ Use the `variant` prop to control the visual style.
 Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
 
 ```jsx live=true
-<Flex direction="column" gap="3" maxWidth="400px">
+<Flex direction="column" gap="3" maxWidth="250px">
   <TextField.Root
     color="indigo"
     variant="soft"
@@ -110,7 +119,7 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
 Use the `radius` prop to assign a specific radius value.
 
 ```jsx live=true
-<Flex direction="column" gap="3" maxWidth="400px">
+<Flex direction="column" gap="3" maxWidth="250px">
   <TextField.Root radius="none" placeholder="Search the docs…" />
   <TextField.Root radius="large" placeholder="Search the docs…" />
   <TextField.Root radius="full" placeholder="Search the docs…" />
