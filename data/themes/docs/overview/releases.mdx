@@ -12,40 +12,74 @@ metaDescription: Radix Themes releases and their changelogs.
 <Note>March 23, 2024</Note>
 
 <Box mt="3" mb="6">
-  [View introduction blog post](/blog/themes-3)
+  Radix Themes 3.0 comes with a new layout engine, 11 new components, and full
+  ESM support. [Read the announcement](/blog/themes-3).
 </Box>
 
-**Upgrade guide**
+### Upgrade guide
 
-General
+This release introduces a number of breaking changes. Please follow the steps below to upgrade.
 
-- Multi-part components now don’t export named parts (ie. `DialogRoot`, `DialogTrigger`, …)
-  - Use dot notation for all multi-part components instead (ie. `Dialog.Root`, `Dialog.Trigger`, …) after importing like this: `import { Dialog } from "@radix-ui/themes"`.
-- Component prop definitions and internal helpers are no longer available from the root `@radix-ui/themes` import entry point.
-  - Import them from `@radix-ui/themes/props` and `@radix-ui/themes/helpers` instead. - Note: you might need to use `"moduleResolution": "NodeNext"` with your compiler to access these paths. - Note: changes to prop defs and helpers won’t be covered by semver.
-    Props
+#### General
 
-Props
+- Multi-part components now don’t export named parts anymore. Use dot notation instead, which was revised to work with React Server Components. For example:
+  - `DialogRoot` → `Dialog.Root`
+  - `DialogTrigger` → `Dialog.Trigger`
+  - `DialogContent` → `Dialog.Content`
+  - …and so on for all multi-part components:
+    - `AlertDialog`
+    - `Callout`
+    - `ContextMenu`
+    - `Dialog`
+    - `DropdownMenu`
+    - `HoverCard`
+    - `Popover`
+    - `RadioGroup`
+    - `Select`
+    - `Table`
+    - `Tabs`
+    - `TextField`
+- Package internals such as prop definitions and helpers are no longer available from the root `@radix-ui/themes` import entry point.
+  - Import them from `@radix-ui/themes/props` and `@radix-ui/themes/helpers` instead.
 
-- The `width` and `height` props on layout components don't map to space scale anymore
-  - Find and replace your `width` and `height` prop usage with the corresponding [space scale](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/space.css) steps, e.g. `width="9"` would need to be changed to `width="64px"` or `width="var(--space-9)"`, and so on for other steps.
+#### Props
+
+- The `width` and `height` props on layout components don't map to space scale anymore. Find and replace your `width` and `height` prop usage with the corresponding [space scale](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/space.css) steps:
+  - `width="1"` → `width="4px"`
+  - `width="2"` → `width="8px"`
+  - `width="3"` → `width="12px"`
+  - `width="4"` → `width="16px"`
+  - `width="5"` → `width="24px"`
+  - `width="6"` → `width="32px"`
+  - `width="7"` → `width="40px"`
+  - `width="8"` → `width="48px"`
+  - `width="9"` → `width="64px"`
+  - …and so on for `height`
+  - Make sure to update responsive object syntax as well
+  - You can also use `var(--space-1)` to `var(--space-9)` instead of hardcoded values.
 - The `shrink` and `grow` props on layout components were renamed
-  - Use `flexShrink` and `flexGrow` instead
+  - `shrink` → `flexShrink`
+  - `grow` → `flexGrow`
 
-Colors
+#### Colors
 
-- `--color-surface-accent` was renamed to `--accent-surface`
-  - If you were using this token for your custom components, make sure to replace the corresponding references
-- `--accent-9-contrast`, `--red-9-contrast`, `--pink-9-contrast`, `--blue-9-contrast`, etc. were renamed to `--accent-contrast`, `--red-contrast`, `--pink-contrast`, `--blue-contrast` and so on.
-  - If you were using these tokens for your custom components, make sure to replace the corresponding references
-- `--color-focus-root`, `--color-selection-root`, `--color-autofill-root` were replaced with a focus color scale, e.g. `--focus-1` – `--focus-12`, and `--focus-a1` – `--focus-a12`.
-  - If you were overriding the above tokens or using them in your custom components, you’ll need to references the new color scale.
-    - `--color-autofill-root` is replaced by `--focus-a3`
-    - `--color-focus-root` is replaced by `--focus-8`
-    - `--color-selection-root` is replaced by `--focus-a5`
-- `--gray-2-translucent` and the corresponding tinted gray colors were removed
+If you were using the following tokens for your custom components, make sure to replace the corresponding references.
 
-Components
+- `--color-surface-accent` → `--accent-surface`
+- Contrast colors were renamed:
+  - `--accent-9-contrast` → `--accent-contrast`
+  - `--red-9-contrast` → `--red-contrast`
+  - `--pink-9-contrast` → `--pink-contrast`
+  - `--blue-9-contrast` → `--blue-contrast`
+  - …and so on for all scales
+- Added a new focus color scale. Rename the following tokens:
+  - `--color-autofill-root` → `--focus-a3`
+  - `--color-focus-root` → `--focus-8`
+  - `--color-selection-root` → `--focus-a5`
+- `--gray-2-translucent` and the corresponding tinted gray colors were removed.
+  - Use `--color-panel-translucent` in combination with a backdrop blur filter instead.
+
+#### Components
 
 - `AlertDialog`, `Dialog` now have `maxWidth="600px"` by default on the Content part.
   - This is slightly larger than the previous `580px` value. If you use dialogs that need a different width, override `maxWidth` with your own value.
@@ -77,7 +111,7 @@ Components
 
 ---
 
-**Full changelog**
+### Full changelog
 
 - General
   - Package structure

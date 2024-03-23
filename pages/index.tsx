@@ -11,7 +11,7 @@ import { useTheme } from 'next-themes';
 import { SerifHeading } from '@components/SerifHeading';
 import { ThemesHeroLayout } from '@components/ThemesHeroLayout';
 import { ThemesMobileMenu } from '@components/ThemesMobileMenu';
-import { GridIcon } from '@radix-ui/react-icons';
+import { ArrowRightIcon, GridIcon } from '@radix-ui/react-icons';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { CodeBlock } from '@components/CodeBlock';
 
@@ -215,17 +215,13 @@ const MainContent = () => (
   <Box>
     <Section size={{ initial: '2', md: '4', lg: '2' }} pb={{ initial: '4', lg: '7' }}>
       <Box>
-        <Flex align="center" gap="2" mb="7">
-          <Badge size="2" radius="full" color="green">
-            New
-          </Badge>
-          <Text color="gray">
-            Radix Themes 3.0 is out! See{' '}
-            <NextLink href="/blog/themes-3" passHref legacyBehavior>
-              <Link highContrast>what's new</Link>
+        <Flex align="center" gap="2" mb="6">
+          <Badge asChild size="2" radius="full">
+            <NextLink href="/blog/themes-3">
+              See what’s new in Radix Themes 3.0
+              <ArrowRightIcon width="13" height="13" style={{ marginLeft: -2 }} />
             </NextLink>
-            .
-          </Text>
+          </Badge>
         </Flex>
         <Box display={{ lg: 'none' }}>
           <SerifHeading mb="3">
