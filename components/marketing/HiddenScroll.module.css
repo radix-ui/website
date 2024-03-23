@@ -3,6 +3,7 @@
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  overscroll-behavior-x: contain;
 }
 
 .HiddenScroll::-webkit-scrollbar {

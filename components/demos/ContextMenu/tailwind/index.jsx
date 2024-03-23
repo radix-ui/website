@@ -10,7 +10,7 @@ const ContextMenuDemo = () => {
   return (
     <ContextMenu.Root>
       <ContextMenu.Trigger className="block border-2 border-white border-dashed text-white rounded text-[15px] select-none py-[45px] w-[300px] text-center">
-        Right click here.
+        Right-click here.
       </ContextMenu.Trigger>
       <ContextMenu.Portal>
         <ContextMenu.Content

@@ -101,11 +101,18 @@ export function PropsTable({
                           <Popover.Content
                             side="top"
                             align="center"
-                            style={{ maxWidth: 'min(720px, 95vw)' }}
+                            style={{ maxWidth: 'min(1240px, 95vw)' }}
                           >
                             <Inset>
                               <ScrollArea type="auto">
-                                <Box style={{ padding: 'var(--inset-padding)' }}>
+                                <Box
+                                  style={{
+                                    paddingTop: 'var(--inset-padding-top)',
+                                    paddingRight: 'var(--inset-padding-right)',
+                                    paddingBottom: 'var(--inset-padding-bottom)',
+                                    paddingLeft: 'var(--inset-padding-left)',
+                                  }}
+                                >
                                   <Code
                                     color="gray"
                                     variant="ghost"

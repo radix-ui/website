@@ -7,7 +7,7 @@ import { PrimitivesMobileMenu } from '@components/PrimitivesMobileMenu';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { CaseStudyLogo, CaseStudyLogoVariant } from '@components/marketing/CaseStudyLogo';
 import { MarketingCaption } from '@components/marketing/MarketingCaption';
-import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
+import { getAllFrontmatter, getMdxBySlug } from '@utils/mdx';
 import { Root as AccessibleIcon } from '@radix-ui/react-accessible-icon';
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 import {
@@ -61,7 +61,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
       <PrimitivesMobileMenu />
 
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
-        <Section size={{ initial: '2', md: '3' }}>
+        <Section size={{ initial: '2', md: '4' }}>
           <Grid columns={{ md: '1fr 330px', lg: '1fr 380px' }} gap={{ md: '9' }}>
             <Box>
               <MarketingCaption mb="1">Case study</MarketingCaption>

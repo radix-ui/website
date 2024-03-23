@@ -1,11 +1,10 @@
 import * as React from 'react';
 import NextLink from 'next/link';
-import { Link2Icon } from '@radix-ui/react-icons';
+import { ExternalLinkIcon, Link2Icon } from '@radix-ui/react-icons';
 import { PropsTable } from './PropsTable';
 import { KeyboardTable } from './KeyboardTable';
 import { Highlights } from './Highlights';
 import { HeroCodeBlock } from './HeroCodeBlock';
-import { CodeBlock } from './CodeBlock';
 import { PackageRelease, PRLink } from './releaseHelpers';
 import { HeroContainer } from './HeroContainer';
 import { HeroQuote } from './HeroQuote';
@@ -14,8 +13,7 @@ import { ColorScale, ColorScaleGroup } from './Scale';
 import * as Demos from './demos';
 import { CssVariablesTable } from './CssVariablesTable';
 import { DataAttributesTable } from './DataAttributesTable';
-import { PreWithCopyButton } from './PreWithCopyButton';
-import { PreWithLivePreview } from './PreWithLivePreview';
+import { CodeBlock } from './CodeBlock';
 import {
   Blockquote,
   Box,
@@ -32,20 +30,16 @@ import {
 } from '@radix-ui/themes';
 import * as themesComponents from '@radix-ui/themes';
 import styles from './MDXComponents.module.css';
-import { classNames } from '@lib/classNames';
+import { classNames } from '@utils/classNames';
 
 export const components = {
   ...themesComponents,
   ColorScale,
   ColorScaleGroup,
-  Tabs: Tabs.Root,
-  TabsList: Tabs.List,
-  TabsContent: Tabs.Content,
-  TabsTrigger: Tabs.Trigger,
-  CodeBlock,
+  Tabs,
   HeroCodeBlock,
   h1: (props) => (
-    <Heading asChild size="8" mb="3">
+    <Heading asChild size="8" mb="2">
       <h1 {...props} style={{ scrollMarginTop: 'var(--space-9)' }} />
     </Heading>
   ),
@@ -58,8 +52,8 @@ export const components = {
   h2: ({ children, id, ...props }) => (
     <Heading
       size="6"
-      mt="7"
-      mb="2"
+      mt="8"
+      mb="3"
       asChild
       {...props}
       id={id}
@@ -73,7 +67,7 @@ export const components = {
   ),
   h3: ({ children, id, ...props }) => (
     <Heading
-      size="5"
+      size="4"
       mt="7"
       mb="2"
       asChild
@@ -92,22 +86,29 @@ export const components = {
       <h4 children={children} style={{ scrollMarginTop: 'var(--space-9)' }} />
     </Heading>
   ),
-  p: (props) => <Text mb="3" as="p" size="3" {...props} />,
-  a: ({ href = '', ...props }) => {
+  p: (props) => <Text mb="4" as="p" size="3" {...props} />,
+  a: ({ href = '', children, ...props }) => {
     if (href.startsWith('http')) {
-      return <Link {...props} href={href} target="_blank" rel="noopener" />;
+      return (
+        <Flex asChild display="inline-flex" align="center" gap="1">
+          <Link {...props} href={href} target="_blank" rel="noopener">
+            {children}
+            <ExternalLinkIcon style={{ marginTop: 2, marginLeft: -1, marginRight: -1 }} />
+          </Link>
+        </Flex>
+      );
     }
     return (
       <NextLink href={href} passHref legacyBehavior>
-        <Link {...props} />
+        <Link {...props}>{children}</Link>
       </NextLink>
     );
   },
-  hr: (props) => <Separator size="2" {...props} my="6" style={{ marginInline: 'auto' }} />,
+  hr: (props) => <Separator size="2" {...props} my="8" style={{ marginInline: 'auto' }} />,
   ul: (props) => <ul {...props} className={styles.List} />,
-  ol: (props) => ({ children, ...props }) => (
+  ol: ({ children, ...props }) => (
     <Box {...props} mb="3" pl="4" asChild>
-      <ol children={children} />
+      <ol>{children}</ol>
     </Box>
   ),
   li: (props) => (
@@ -117,41 +118,37 @@ export const components = {
   ),
   em: Em,
   strong: Strong,
-  img: ({ ...props }) => (
+  img: ({ style, ...props }) => (
     <Box my="6">
-      <img {...props} style={{ maxWidth: '100%', verticalAlign: 'middle' }} />
+      <img {...props} style={{ maxWidth: '100%', verticalAlign: 'middle', ...style }} />
     </Box>
   ),
   blockquote: Blockquote,
-  pre: (props) => {
-    if (props.children.props.live) {
-      return (
-        <PreWithLivePreview
-          scroll={props.children.props.scroll}
-          style={props.children.props.style}
-          {...props}
-        />
-      );
-    }
-    return <PreWithCopyButton {...props} />;
-  },
+  // todo: line highlights, style overrides, live preview
+  pre: ({ children }) => (
+    <CodeBlock.Root my="5">
+      {children.props.live && (
+        <CodeBlock.LivePreview code={childrenText(children)} scroll={children.props.scroll} />
+      )}
+      <CodeBlock.Content>
+        <CodeBlock.Pre>{children}</CodeBlock.Pre>
+        <CodeBlock.CopyButton />
+      </CodeBlock.Content>
+    </CodeBlock.Root>
+  ),
   code: ({ className, line, live, style, ...props }) => {
     // if it's a codeblock (``` block in markdown), it'll have a className from prism
     const isInlineCode = !className;
     return isInlineCode ? (
-      <Code
-        className={className}
-        {...props}
-        style={{
-          whiteSpace: 'break-spaces',
-        }}
-      />
+      <Code className={className} {...props} style={{ whiteSpace: 'break-spaces' }} />
     ) : (
-      <code className={className} {...props} data-invert-line-highlight={line !== undefined} />
+      <code className={className} {...props} />
     );
   },
+  CodeBlock,
+  NextLink,
   Note: ({ children, ...props }) => (
-    <Box className={styles.Note} asChild {...props}>
+    <Box className={styles.Note} asChild my="2" {...props}>
       <aside children={children} />
     </Box>
   ),
@@ -168,14 +165,6 @@ export const components = {
     <Box my="4">
       <PropsTable {...props} />
     </Box>
-  ),
-  TabsCodeBlock: (props) => (
-    <Tabs.Root {...props}>
-      <Box className={styles.TabsCodeBlock}>{props.children}</Box>
-    </Tabs.Root>
-  ),
-  TabsCodeBlockContent: (props) => (
-    <CodeBlock {...props} style={{ boxShadow: 'none', borderRadius: 0 }} />
   ),
   KeyboardTable: (props) => (
     <Box mb="5">
@@ -215,3 +204,22 @@ export function MDXProvider(props) {
   const { frontmatter, children } = props;
   return <FrontmatterContext.Provider value={frontmatter}>{children}</FrontmatterContext.Provider>;
 }
+
+export const childrenText = (children?: React.ReactNode): string | null => {
+  if (isReactElement(children)) {
+    return childrenText(children.props?.children);
+  }
+
+  if (Array.isArray(children)) {
+    return children.map(childrenText).flat().filter(Boolean).join('');
+  }
+
+  if (typeof children === 'string') {
+    return children;
+  }
+
+  return null;
+};
+
+const isReactElement = (element?: React.ReactNode): element is React.ReactElement =>
+  React.isValidElement(element) && Boolean(element.props.children);

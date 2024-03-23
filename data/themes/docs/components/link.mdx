@@ -1,18 +1,18 @@
 ---
 metaTitle: Link
-metaDescription: A semantic element for navigation between pages.
+metaDescription: Semantic element for navigation between pages.
 sourcePath: components/link
 ---
 
 ```jsx live=true
-<Link>The quick brown fox jumps over the lazy dog.</Link>
+<Link href="#">Sign up</Link>
 ```
 
 ## API Reference
 
-This component is based on the `a` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
+This component is based on the `a` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
 
-<ThemesPropsTable name="link" />
+<ThemesPropsTable defs="linkPropDefs" />
 
 ## Examples
 
@@ -22,15 +22,33 @@ Use the `size` prop to control the size of the link. The prop also provides corr
 
 ```jsx live=true scroll=true
 <Flex direction="column" gap="3">
-  <Link size="1">The quick brown fox jumps over the lazy dog.</Link>
-  <Link size="2">The quick brown fox jumps over the lazy dog.</Link>
-  <Link size="3">The quick brown fox jumps over the lazy dog.</Link>
-  <Link size="4">The quick brown fox jumps over the lazy dog.</Link>
-  <Link size="5">The quick brown fox jumps over the lazy dog.</Link>
-  <Link size="6">The quick brown fox jumps over the lazy dog.</Link>
-  <Link size="7">The quick brown fox jumps over the lazy dog.</Link>
-  <Link size="8">The quick brown fox jumps over the lazy dog.</Link>
-  <Link size="9">The quick brown fox jumps over the lazy dog.</Link>
+  <Link href="#" size="1">
+    Sign up
+  </Link>
+  <Link href="#" size="2">
+    Sign up
+  </Link>
+  <Link href="#" size="3">
+    Sign up
+  </Link>
+  <Link href="#" size="4">
+    Sign up
+  </Link>
+  <Link href="#" size="5">
+    Sign up
+  </Link>
+  <Link href="#" size="6">
+    Sign up
+  </Link>
+  <Link href="#" size="7">
+    Sign up
+  </Link>
+  <Link href="#" size="8">
+    Sign up
+  </Link>
+  <Link href="#" size="9">
+    Sign up
+  </Link>
 </Flex>
 ```
 
@@ -40,33 +58,48 @@ Use the `weight` prop to set the text weight.
 
 ```jsx live="true"
 <Flex direction="column">
-  <Link weight="regular">The quick brown fox jumps over the lazy dog.</Link>
-  <Link weight="medium">The quick brown fox jumps over the lazy dog.</Link>
-  <Link weight="bold">The quick brown fox jumps over the lazy dog.</Link>
+  <Link href="#" weight="regular">
+    Sign up
+  </Link>
+  <Link href="#" weight="medium">
+    Sign up
+  </Link>
+  <Link href="#" weight="bold">
+    Sign up
+  </Link>
+</Flex>
+```
+
+### Truncate
+
+Use the `truncate` prop to truncate text with an ellipsis when it overflows its container.
+
+```jsx live=true line=2
+<Flex maxWidth="150px">
+  <Link href="#" truncate>
+    Sign up to the newsletter
+  </Link>
 </Flex>
 ```
 
 ### Color
 
-Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
 
 ```jsx live=true scroll=true
 <Flex direction="column">
-  <Link color="indigo">The quick brown fox jumps over the lazy dog.</Link>
-  <Link color="cyan">The quick brown fox jumps over the lazy dog.</Link>
-  <Link color="orange">The quick brown fox jumps over the lazy dog.</Link>
-  <Link color="crimson">The quick brown fox jumps over the lazy dog.</Link>
-</Flex>
-```
-
-### Underline
-
-Use the `underline` prop to manage the visibility of the underline affordance.
-
-```jsx live="true" scroll=true
-<Flex direction="column">
-  <Link underline="hover">The quick brown fox jumps over the lazy dog.</Link>
-  <Link underline="always">The quick brown fox jumps over the lazy dog.</Link>
+  <Link href="#" color="indigo">
+    Sign up
+  </Link>
+  <Link href="#" color="cyan">
+    Sign up
+  </Link>
+  <Link href="#" color="orange">
+    Sign up
+  </Link>
+  <Link href="#" color="crimson">
+    Sign up
+  </Link>
 </Flex>
 ```
 
@@ -76,7 +109,26 @@ Use the `highContrast` prop to increase color contrast with the background.
 
 ```jsx live=true scroll=true
 <Flex direction="column">
-  <Link>The quick brown fox jumps over the lazy dog.</Link>
-  <Link highContrast>The quick brown fox jumps over the lazy dog.</Link>
+  <Link href="#" color="gray">
+    Sign up
+  </Link>
+  <Link href="#" color="gray" highContrast>
+    Sign up
+  </Link>
+</Flex>
+```
+
+### Underline
+
+Use the `underline` prop to manage the visibility of the underline affordance.
+
+```jsx live="true" scroll=true
+<Flex direction="column">
+  <Link href="#" underline="hover">
+    Sign up
+  </Link>
+  <Link href="#" underline="always">
+    Sign up
+  </Link>
 </Flex>
 ```

@@ -12,4 +12,22 @@ sourcePath: components/strong
 
 ## API Reference
 
-This component is based on the `strong` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
+This component is based on the `strong` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+<ThemesPropsTable defs="strongPropDefs" />
+
+## Examples
+
+### Truncate
+
+Use the `truncate` prop to truncate text with an ellipsis when it overflows its container.
+
+```jsx live=true line=2
+<Flex maxWidth="300px">
+  <Strong truncate>
+    The goal of typography is to relate font size, line height, and line width
+    in a proportional way that maximizes beauty and makes reading easier and
+    more pleasant.
+  </Strong>
+</Flex>
+```

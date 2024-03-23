@@ -30,21 +30,21 @@ sourcePath: components/select
 
 ### Root
 
-Contains all the parts of a select. It inherits props from the [Select.Root primitive](/primitives/docs/components/select#root) part.
+Contains all the parts of a select. It inherits props from the Select primitive [Root](/primitives/docs/components/select#root) part.
 
-<ThemesPropsTable name="selectRoot" />
+<ThemesPropsTable defs="selectRootPropDefs" />
 
 ### Trigger
 
-The button that toggles the select. This component inherits props from the [Select.Trigger primitive](/primitives/docs/components/select#trigger) and [Select.Value primitive](/primitives/docs/components/select#value) parts. It supports [common margin props](/themes/docs/theme/layout#margin-props).
+The button that toggles the select. This component inherits props from the Select primitive [Trigger](/primitives/docs/components/select#trigger) and [Value](/primitives/docs/components/select#value) parts. It supports [common margin props](/themes/docs/overview/layout#margin-props).
 
-<ThemesPropsTable name="selectTrigger" />
+<ThemesPropsTable defs="selectTriggerPropDefs" />
 
 ### Content
 
 The component that pops out when the select is open. It inherits props from the [Select.Portal primitive](/primitives/docs/components/select#portal) and [Select.Content primitive](/primitives/docs/components/select#content) parts.
 
-<ThemesPropsTable name="selectContent" />
+<ThemesPropsTable defs="selectContentPropDefs" />
 
 ### Item
 
@@ -63,20 +63,6 @@ Used to render the label of a group, it isn't focusable using arrow keys. It inh
 Used to visually separate items in the Select. It inherits props from the [Select.Separator primitive](/primitives/docs/components/select#separator) part.
 
 ## Examples
-
-### Alternative positioning
-
-Set the `position` prop to `popper` and use the `side` prop to position items below the trigger.
-
-```jsx live=true
-<Select.Root defaultValue="apple">
-  <Select.Trigger />
-  <Select.Content position="popper">
-    <Select.Item value="apple">Apple</Select.Item>
-    <Select.Item value="orange">Orange</Select.Item>
-  </Select.Content>
-</Select.Root>
-```
 
 ### Size
 
@@ -168,7 +154,7 @@ Use the `ghost` trigger variant to render the trigger without a visually contain
 
 ### Color
 
-Use the `color` prop on `Trigger` and `Content` to assign a specific color value, ignoring the global theme.
+Use the `color` prop on `Trigger` and `Content` to assign a specific color value.
 
 ```jsx live=true
 <Flex gap="3">
@@ -210,19 +196,19 @@ Use the `color` prop on `Trigger` and `Content` to assign a specific color value
 
 Use the `highContrast` prop on `Content` to increase item contrast.
 
-```jsx live=true
+```jsx live=true line=12
 <Flex gap="3">
   <Select.Root defaultValue="apple">
-    <Select.Trigger variant="soft" />
-    <Select.Content variant="solid">
+    <Select.Trigger color="gray" />
+    <Select.Content color="gray" variant="solid">
       <Select.Item value="apple">Apple</Select.Item>
       <Select.Item value="orange">Orange</Select.Item>
     </Select.Content>
   </Select.Root>
 
   <Select.Root defaultValue="apple">
-    <Select.Trigger variant="soft" />
-    <Select.Content variant="solid" highContrast>
+    <Select.Trigger color="gray" />
+    <Select.Content color="gray" variant="solid" highContrast>
       <Select.Item value="apple">Apple</Select.Item>
       <Select.Item value="orange">Orange</Select.Item>
     </Select.Content>
@@ -232,7 +218,7 @@ Use the `highContrast` prop on `Content` to increase item contrast.
 
 ### Radius
 
-Use the `radius` prop to assign a specific radius value, ignoring the global theme.
+Use the `radius` prop to assign a specific radius value.
 
 ```jsx live=true
 <Flex gap="3">
@@ -284,6 +270,20 @@ Use the `placeholder` prop to create a `Trigger` that doesn’t need an initial 
       <Select.Item value="carrot">Carrot</Select.Item>
       <Select.Item value="potato">Potato</Select.Item>
     </Select.Group>
+  </Select.Content>
+</Select.Root>
+```
+
+### Position
+
+Set `position="popper"` prop to position the select menu below the trigger.
+
+```jsx live=true
+<Select.Root defaultValue="apple">
+  <Select.Trigger />
+  <Select.Content position="popper">
+    <Select.Item value="apple">Apple</Select.Item>
+    <Select.Item value="orange">Orange</Select.Item>
   </Select.Content>
 </Select.Root>
 ```

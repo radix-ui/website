@@ -13,16 +13,17 @@ import {
   Flex,
   AccessibleIcon,
   IconButton,
-  radixColorScalesBright,
-  radixGrayScales,
   Dialog,
+  Reset,
 } from '@radix-ui/themes';
 import styles from './Swatch.module.css';
-import { classNames } from '@lib/classNames';
+import { classNames } from '@utils/classNames';
 import * as Colors from '@radix-ui/colors';
 import { useTheme } from 'next-themes';
 import { Cross2Icon, InfoCircledIcon } from '@radix-ui/react-icons';
 import copy from 'copy-to-clipboard';
+
+const brightColors = ['amber', 'yellow', 'lime', 'mint', 'sky'];
 
 interface SwatchProps extends React.ComponentPropsWithoutRef<'button'> {
   scale: string;
@@ -46,17 +47,19 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
   return (
     <Dialog.Root>
       <Dialog.Trigger>
-        <button
-          data-color-scale={scale}
-          className={classNames('rt-reset', styles.SwatchTrigger, styles.SwatchTransparencyGrid)}
-          {...props}
-        >
-          <span style={{ backgroundColor: cssVariable, ...style }}>
-            <VisuallyHidden>
-              {scale} {step}
-            </VisuallyHidden>
-          </span>
-        </button>
+        <Reset>
+          <button
+            data-color-scale={scale}
+            className={classNames(styles.SwatchTrigger, styles.SwatchTransparencyGrid)}
+            {...props}
+          >
+            <span style={{ backgroundColor: cssVariable, ...style }}>
+              <VisuallyHidden>
+                {scale} {step}
+              </VisuallyHidden>
+            </span>
+          </button>
+        </Reset>
       </Dialog.Trigger>
 
       <Theme accentColor="gray" className="radix-themes-custom-fonts" asChild>
@@ -70,11 +73,7 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
           }}
         >
           <Box position="relative">
-            <Box
-              data-color-scale={scale}
-              className={styles.SwatchTransparencyGrid}
-              style={{ height: 240 }}
-            >
+            <Box data-color-scale={scale} className={styles.SwatchTransparencyGrid} height="240px">
               <Box style={{ width: '100%', height: '100%', backgroundColor: cssVariable }} />
             </Box>
 
@@ -84,7 +83,7 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
 
             {!['white', 'black'].includes(scale) &&
               (() => {
-                const isGray = (radixGrayScales as readonly string[]).includes(scale);
+                const isGray = ['gray', 'mauve', 'slate', 'sage', 'olive', 'sand'].includes(scale);
                 const dark = resolvedTheme === 'dark';
                 const hex = getValue({ scale, step, dark });
                 const hexA = getValue({ scale, step, dark, alpha: true });
@@ -125,9 +124,7 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
                         {['5'].includes(step) && 'Step 12 labels'}
                         {['6', '7', '8'].includes(step) && 'Steps 1–5 backgrounds'}
                         {['9', '10'].includes(step) &&
-                          (([...radixColorScalesBright] as string[]).includes(scale)
-                            ? 'Dark text'
-                            : 'White text')}
+                          (brightColors.includes(scale) ? 'Dark text' : 'White text')}
                         {['11', '12'].includes(step) && 'Background colors'}
                       </Text>
                     </Box>
@@ -142,7 +139,7 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
 
                     <Flex
                       mb={{ initial: '3', xs: '0' }}
-                      height={{ initial: '5', xs: '4' }}
+                      height={{ initial: '24px', xs: '16px' }}
                       align="center"
                     >
                       <CopyButton>{hex}</CopyButton>
@@ -182,7 +179,7 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
 
                     <Flex
                       mb={{ initial: '3', xs: '0' }}
-                      height={{ initial: '5', xs: '4' }}
+                      height={{ initial: '24px', xs: '16px' }}
                       align="center"
                     >
                       <CopyButton>{hexA}</CopyButton>
@@ -193,7 +190,7 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
                     </Text>
                     <Flex
                       mb={{ initial: '3', xs: '0' }}
-                      height={{ initial: '5', xs: '4' }}
+                      height={{ initial: '24px', xs: '16px' }}
                       align="center"
                     >
                       <CopyButton>{p3}</CopyButton>
@@ -202,7 +199,7 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
                     <Text color="gray" size="2">
                       P3 alpha
                     </Text>
-                    <Flex height={{ initial: '5', xs: '4' }} align="center">
+                    <Flex height={{ initial: '24px', xs: '16px' }} align="center">
                       <CopyButton>{p3A}</CopyButton>
                     </Flex>
 
@@ -316,7 +313,7 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
                 }
 
                 if (+step < 11) {
-                  const isBright = (radixColorScalesBright as readonly string[]).includes(scale);
+                  const isBright = brightColors.includes(scale);
                   return isBright ? 'light' : 'dark';
                 }
 

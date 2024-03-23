@@ -125,8 +125,11 @@
   position: relative;
 }
 
-.ThemesHeroLayoutShowcase :global(.rt-Card::after) {
-  box-shadow: var(--shadow-4);
+.ThemesHeroLayoutShowcase :global(.rt-Card) {
+  box-shadow: inset var(--shadow-4);
+  --backdrop-filter-panel: none;
+  --base-card-surface-box-shadow: none;
+  --card-background-color: var(--hero-card-background-color);
 }
 
 .ThemesHeroLayoutShowcaseInnerScaled {

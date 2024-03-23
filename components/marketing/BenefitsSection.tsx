@@ -3,13 +3,7 @@ import { Box, Section, Grid, Container, Heading, Em, Text } from '@radix-ui/them
 
 export const BenefitsSection = () => {
   return (
-    <Section
-      size={{ initial: '2', md: '3' }}
-      style={{
-        position: 'relative',
-        overflow: 'hidden',
-      }}
-    >
+    <Section size={{ initial: '2', md: '4' }} position="relative" overflow="hidden">
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Box mb="7">
           <MarketingCaption mb="1">Why Radix Primitives</MarketingCaption>

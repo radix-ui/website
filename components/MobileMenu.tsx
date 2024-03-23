@@ -16,7 +16,7 @@ export const MobileMenuProvider = ({ children }) => {
   const router = useRouter();
 
   React.useEffect(() => {
-    const handleRouteChangeStart = () => {
+    const handleRouteChangeComplete = () => {
       // Dismiss mobile keyboard if focusing an input (e.g. when searching)
       if (document.activeElement instanceof HTMLInputElement) {
         document.activeElement.blur();
@@ -25,10 +25,10 @@ export const MobileMenuProvider = ({ children }) => {
       setOpen(false);
     };
 
-    router.events.on('routeChangeStart', handleRouteChangeStart);
+    router.events.on('routeChangeComplete', handleRouteChangeComplete);
 
     return () => {
-      router.events.off('routeChangeStart', handleRouteChangeStart);
+      router.events.off('routeChangeComplete', handleRouteChangeComplete);
     };
   }, []);
 

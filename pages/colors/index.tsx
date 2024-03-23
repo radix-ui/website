@@ -10,6 +10,7 @@ import {
   Separator,
   Flex,
   ScrollArea,
+  Button,
 } from '@radix-ui/themes';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { Footer } from '@components/Footer';
@@ -28,6 +29,9 @@ import {
 } from '@radix-ui/react-icons';
 import { Swatch } from '@components/Swatch';
 import Head from 'next/head';
+import styles from './index.module.css';
+import { ColorUsageRange } from '@components/ColorUsageRange';
+import { ColorStepLabel } from '@components/ColorStepLabel';
 
 export default function ColorsHome() {
   return (
@@ -38,7 +42,7 @@ export default function ColorsHome() {
         <style>
           {`
             :is(.dark, .dark-theme) :is(body, .radix-themes) {
-              --color-page-background: #0b0b0b;
+              --color-background: #0b0b0b;
               --color-panel-solid: var(--gray-1);
             }
           `}
@@ -64,7 +68,7 @@ export default function ColorsHome() {
           description="An open-source color system for designing beautiful, accessible websites and apps."
           image="colors.png"
         />
-        <Section size={{ initial: '2', md: '3' }}>
+        <Section size={{ initial: '2', md: '4' }}>
           <Container>
             <SerifHeading mb="3" style={{ maxWidth: 720 }}>
               A gorgeous, accessible color system for user interfaces
@@ -76,10 +80,10 @@ export default function ColorsHome() {
               </Text>
             </Box>
 
-            <NextLink href="/colors/docs/overview/installation" passHref legacyBehavior>
+            <Flex gap="4">
               <ColorsMarketingButton asChild size={{ initial: '3', xs: '4' }}>
-                <a>
-                  Get started
+                <NextLink href="/colors/docs/overview/installation">
+                  Go to docs
                   <svg
                     width="14"
                     height="14"
@@ -90,9 +94,19 @@ export default function ColorsHome() {
                   >
                     <path d="M6.39205 11.6023L5.36932 10.5909L8.92045 7.03977H0V5.5625H8.92045L5.36932 2.01705L6.39205 1L11.6932 6.30114L6.39205 11.6023Z" />
                   </svg>
-                </a>
+                </NextLink>
               </ColorsMarketingButton>
-            </NextLink>
+
+              <Button
+                highContrast
+                variant="soft"
+                color="gray"
+                size={{ initial: '3', xs: '4' }}
+                asChild
+              >
+                <NextLink href="/colors/custom">Custom palette</NextLink>
+              </Button>
+            </Flex>
           </Container>
         </Section>
       </Box>
@@ -100,32 +114,27 @@ export default function ColorsHome() {
       <ScrollArea mb="-4">
         <Box mx={{ initial: '5', xs: '6', sm: '7', md: '9' }} mb="4">
           <Container style={{ whiteSpace: 'nowrap', minWidth: 880 }}>
-            <Grid
-              gap="1"
-              align="center"
-              columns="minmax(64px, 1fr) repeat(12, minmax(0px, 1fr))"
-              style={{ whiteSpace: 'nowrap', minWidth: 880 }}
-            >
+            <div className={styles.ColorsHomeGrid}>
               <Box />
-              <UsageRange style={{ gridColumn: '2 / 4' }}>Backgrounds</UsageRange>
-              <UsageRange style={{ gridColumn: '4 / 7' }}>Interactive components</UsageRange>
-              <UsageRange style={{ gridColumn: '7 / 10' }}>Borders and separators</UsageRange>
-              <UsageRange style={{ gridColumn: '10 / 12' }}>Solid colors</UsageRange>
-              <UsageRange style={{ gridColumn: '12 / 14' }}>Accessible text</UsageRange>
+              <ColorUsageRange gridColumn="2 / 4">Backgrounds</ColorUsageRange>
+              <ColorUsageRange gridColumn="4 / 7">Interactive components</ColorUsageRange>
+              <ColorUsageRange gridColumn="7 / 10">Borders and separators</ColorUsageRange>
+              <ColorUsageRange gridColumn="10 / 12">Solid colors</ColorUsageRange>
+              <ColorUsageRange gridColumn="12 / 14">Accessible text</ColorUsageRange>
 
               <Box />
-              <StepLabel>1</StepLabel>
-              <StepLabel>2</StepLabel>
-              <StepLabel>3</StepLabel>
-              <StepLabel>4</StepLabel>
-              <StepLabel>5</StepLabel>
-              <StepLabel>6</StepLabel>
-              <StepLabel>7</StepLabel>
-              <StepLabel>8</StepLabel>
-              <StepLabel>9</StepLabel>
-              <StepLabel>10</StepLabel>
-              <StepLabel>11</StepLabel>
-              <StepLabel>12</StepLabel>
+              <ColorStepLabel>1</ColorStepLabel>
+              <ColorStepLabel>2</ColorStepLabel>
+              <ColorStepLabel>3</ColorStepLabel>
+              <ColorStepLabel>4</ColorStepLabel>
+              <ColorStepLabel>5</ColorStepLabel>
+              <ColorStepLabel>6</ColorStepLabel>
+              <ColorStepLabel>7</ColorStepLabel>
+              <ColorStepLabel>8</ColorStepLabel>
+              <ColorStepLabel>9</ColorStepLabel>
+              <ColorStepLabel>10</ColorStepLabel>
+              <ColorStepLabel>11</ColorStepLabel>
+              <ColorStepLabel>12</ColorStepLabel>
 
               {[
                 'gray',
@@ -164,70 +173,43 @@ export default function ColorsHome() {
                   <Text color="gray" size="2">
                     {scale.charAt(0).toUpperCase() + scale.slice(1)}
                   </Text>
-                  <Swatch scale={scale} step="1" />
-                  <Swatch scale={scale} step="2" />
-                  <Swatch scale={scale} step="3" />
-                  <Swatch scale={scale} step="4" />
-                  <Swatch scale={scale} step="5" />
-                  <Swatch scale={scale} step="6" />
-                  <Swatch scale={scale} step="7" />
-                  <Swatch scale={scale} step="8" />
-                  <Swatch scale={scale} step="9" />
-                  <Swatch scale={scale} step="10" />
-                  <Swatch scale={scale} step="11" />
-                  <Swatch scale={scale} step="12" />
+                  {Array.from({ length: 12 }, (_, i) => i + 1).map((step) => (
+                    <Swatch key={step} scale={scale} step={step.toString()} />
+                  ))}
                 </React.Fragment>
               ))}
-            </Grid>
+            </div>
 
-            <Box height="6" />
+            <Box height="32px" />
 
-            <Grid gap="1" align="center" columns="minmax(64px, 1fr) repeat(12, minmax(0px, 1fr))">
+            <div className={styles.ColorsHomeGrid}>
               <Box />
-              <UsageRange style={{ gridColumn: '2 / -1' }}>
+              <ColorUsageRange gridColumn="2 / -1">
                 Shadows, highlights, and overlays
-              </UsageRange>
+              </ColorUsageRange>
 
               <Box />
-              <StepLabel>1</StepLabel>
-              <StepLabel>2</StepLabel>
-              <StepLabel>3</StepLabel>
-              <StepLabel>4</StepLabel>
-              <StepLabel>5</StepLabel>
-              <StepLabel>6</StepLabel>
-              <StepLabel>7</StepLabel>
-              <StepLabel>8</StepLabel>
-              <StepLabel>9</StepLabel>
-              <StepLabel>10</StepLabel>
-              <StepLabel>11</StepLabel>
-              <StepLabel>12</StepLabel>
+              {Array.from({ length: 12 }, (_, i) => i + 1).map((step) => (
+                <ColorStepLabel key={step}>{step}</ColorStepLabel>
+              ))}
 
               {['black', 'white'].map((scale) => (
                 <React.Fragment key={scale}>
                   <Text color="gray" size="2">
                     {scale.charAt(0).toUpperCase() + scale.slice(1)}
                   </Text>
-                  <Swatch scale={scale} step="1" />
-                  <Swatch scale={scale} step="2" />
-                  <Swatch scale={scale} step="3" />
-                  <Swatch scale={scale} step="4" />
-                  <Swatch scale={scale} step="5" />
-                  <Swatch scale={scale} step="6" />
-                  <Swatch scale={scale} step="7" />
-                  <Swatch scale={scale} step="8" />
-                  <Swatch scale={scale} step="9" />
-                  <Swatch scale={scale} step="10" />
-                  <Swatch scale={scale} step="11" />
-                  <Swatch scale={scale} step="12" />
+                  {Array.from({ length: 12 }, (_, i) => i + 1).map((step) => (
+                    <Swatch key={step} scale={scale} step={step.toString()} />
+                  ))}
                 </React.Fragment>
               ))}
-            </Grid>
+            </div>
           </Container>
         </Box>
       </ScrollArea>
 
       <Box mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
-        <Section size={{ initial: '2', md: '3' }}>
+        <Section size={{ initial: '2', md: '4' }}>
           <Container>
             <Grid columns={{ sm: '3' }} gap={{ initial: '7', sm: '6', md: '9' }}>
               <Box style={{ maxWidth: 540 }}>
@@ -309,33 +291,10 @@ export default function ColorsHome() {
 
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Separator size="2" />
-        <Section size={{ initial: '2', md: '3' }} pb="0">
+        <Section size={{ initial: '2', md: '4' }} pb="0">
           <Footer />
         </Section>
       </Container>
     </MobileMenuProvider>
   );
 }
-
-const StepLabel = ({ children }: React.PropsWithChildren<{}>) => (
-  <Flex justify="center" mb="3">
-    <Text size="1" color="gray">
-      {children}
-    </Text>
-  </Flex>
-);
-
-const UsageRange = ({ children, ...props }: React.ComponentPropsWithoutRef<typeof Flex>) => (
-  <Flex direction="column" mb="2" {...props}>
-    <Text align="center" size="1" mb="3" color="gray">
-      {children}
-    </Text>
-    <Box
-      style={{
-        height: 1,
-        backgroundImage:
-          'linear-gradient(to right, transparent, var(--gray-a8) 30%, var(--gray-a8) 70%, transparent)',
-      }}
-    />
-  </Flex>
-);

@@ -1,7 +1,7 @@
 import React from 'react';
 import NextLink from 'next/link';
 import { Box, Text, Link, Flex, Container, Heading } from '@radix-ui/themes';
-import { styled } from '@lib/stitches';
+import { styled } from '@utils/stitches';
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons';
 import {
   Carousel,
@@ -257,7 +257,7 @@ export const PrimitivesHero = () => {
   }, []);
 
   return (
-    <Section size={{ initial: '2', md: '3' }}>
+    <Section size={{ initial: '2', md: '4' }}>
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
         <Box mb="6">
           <Box mb="5">

@@ -13,7 +13,7 @@ export function Highlights({ features }) {
 
   return (
     <Flex direction={{ initial: 'column', sm: 'row' }} mt={{ initial: '4', sm: '7' }}>
-      <Box mb="5" grow={{ sm: '1' }} mr={{ sm: '5' }}>
+      <Box mb="5" flexGrow={{ sm: '1' }} mr={{ sm: '5' }}>
         <Heading as="h2" size="4" mb="4">
           Features
         </Heading>
@@ -23,11 +23,11 @@ export function Highlights({ features }) {
             {features.map((feature, i) => (
               <Flex key={i} gap="4" align="start">
                 <Flex
-                  width="5"
-                  height="5"
+                  width="24px"
+                  height="24px"
                   align="center"
                   justify="center"
-                  shrink="0"
+                  flexShrink="0"
                   style={{
                     backgroundColor: 'var(--green-4)',
                     borderRadius: '50%',

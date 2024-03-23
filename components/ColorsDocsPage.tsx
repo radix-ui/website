@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Box, Flex } from '@radix-ui/themes';
 import { DocsPagination } from '@components/DocsPagination';
-import { allColorsRoutes, colorsRoutes } from '@lib/colorsRoutes';
+import { allColorsRoutes, colorsRoutes } from '@utils/colorsRoutes';
 import { ColorsHeader } from './ColorsHeader';
 import { DocsNav } from './DocsNav';
 import { MobileMenuProvider } from './MobileMenu';
@@ -18,7 +18,7 @@ export function ColorsDocsPage({ children }: { children: React.ReactNode }) {
 
       <Flex>
         <SideNav>
-          <Box pt="4" px="4" pb="9">
+          <Box pt="4" px="3" pb="9">
             <DocsNav routes={colorsRoutes} />
           </Box>
         </SideNav>

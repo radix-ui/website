@@ -10,9 +10,9 @@ sourcePath: components/text-area
 
 ## API Reference
 
-This component is based on the `textarea` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
+This component is based on the `textarea` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
 
-<ThemesPropsTable name="textArea" />
+<ThemesPropsTable defs="textAreaPropDefs" />
 
 ## Examples
 
@@ -21,10 +21,16 @@ This component is based on the `textarea` element and supports [common margin p
 Use the `size` prop to control the size.
 
 ```jsx live=true
-<Flex direction="column" gap="3" style={{ maxWidth: 500 }}>
-  <TextArea size="1" placeholder="Reply to comment…" />
-  <TextArea size="2" placeholder="Reply to comment…" />
-  <TextArea size="3" placeholder="Reply to comment…" />
+<Flex direction="column" gap="3">
+  <Box maxWidth="200px">
+    <TextArea size="1" placeholder="Reply to comment…" />
+  </Box>
+  <Box maxWidth="250px">
+    <TextArea size="2" placeholder="Reply to comment…" />
+  </Box>
+  <Box maxWidth="300px">
+    <TextArea size="3" placeholder="Reply to comment…" />
+  </Box>
 </Flex>
 ```
 
@@ -33,7 +39,7 @@ Use the `size` prop to control the size.
 Use the `variant` prop to control the visual style.
 
 ```jsx live=true
-<Flex direction="column" gap="3" style={{ maxWidth: 500 }}>
+<Flex direction="column" gap="3" maxWidth="250px">
   <TextArea variant="surface" placeholder="Reply to comment…" />
   <TextArea variant="classic" placeholder="Reply to comment…" />
   <TextArea variant="soft" placeholder="Reply to comment…" />
@@ -42,12 +48,37 @@ Use the `variant` prop to control the visual style.
 
 ### Color
 
-Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
 
 ```jsx live=true
-<Flex direction="column" gap="3" style={{ maxWidth: 500 }}>
+<Flex direction="column" gap="3" maxWidth="250px">
   <TextArea color="blue" variant="soft" placeholder="Reply to comment…" />
   <TextArea color="green" variant="soft" placeholder="Reply to comment…" />
   <TextArea color="red" variant="soft" placeholder="Reply to comment…" />
+</Flex>
+```
+
+### Radius
+
+Use the `radius` prop to assign a specific radius value.
+
+```jsx live=true
+<Flex direction="column" gap="3" maxWidth="250px">
+  <TextArea radius="none" placeholder="Search the docs…" />
+  <TextArea radius="large" placeholder="Search the docs…" />
+  <TextArea radius="full" placeholder="Search the docs…" />
+</Flex>
+```
+
+### Resize
+
+Use the `resize` prop to enable resizing on one ore both axis.
+
+```jsx live=true
+<Flex direction="column" gap="3" maxWidth="250px">
+  <TextArea resize="none" placeholder="Search the docs…" />
+  <TextArea resize="vertical" placeholder="Search the docs…" />
+  <TextArea resize="horizontal" placeholder="Search the docs…" />
+  <TextArea resize="both" placeholder="Search the docs…" />
 </Flex>
 ```

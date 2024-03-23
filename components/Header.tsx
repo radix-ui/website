@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AccessibleIcon, Flex, IconButton, Theme, Tooltip } from '@radix-ui/themes';
+import { AccessibleIcon, Flex, IconButton, Link, Theme, Tooltip } from '@radix-ui/themes';
 import styles from './Header.module.css';
 import { BoxLink } from './BoxLink';
 import { ThemeToggle } from './ThemeToggle';
@@ -7,7 +7,7 @@ import { GitHubLogoIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useMobileMenuContext } from './MobileMenu';
-import { classNames } from '@lib/classNames';
+import { classNames } from '@utils/classNames';
 import { RadixLogo, RadixLogoIcon } from './RadixLogo';
 import { RemoveScroll } from 'react-remove-scroll';
 
@@ -132,6 +132,15 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
               pr="4"
             >
               {children}
+
+              <Link
+                size="2"
+                color="gray"
+                href="/blog"
+                highContrast={router.pathname.includes('/blog')}
+              >
+                Blog
+              </Link>
 
               {gitHubLink && (
                 <Tooltip className="radix-themes-custom-fonts" content="View GitHub ">

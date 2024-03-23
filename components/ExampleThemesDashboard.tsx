@@ -11,7 +11,6 @@ import {
   PlusIcon,
   Share2Icon,
 } from '@radix-ui/react-icons';
-import { Label } from '@radix-ui/react-label';
 import {
   Avatar,
   Badge,
@@ -19,6 +18,7 @@ import {
   Button,
   Card,
   Checkbox,
+  DropdownMenu,
   Flex,
   Grid,
   Heading,
@@ -35,7 +35,18 @@ import { Marker } from './Marker';
 import { allPeople, email } from './people';
 import * as React from 'react';
 
-export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typeof Flex>) => {
+type ExampleLayoutProps = React.ComponentPropsWithoutRef<typeof Flex> & {
+  focusable?: boolean;
+};
+
+export const ExampleThemesDashboard = ({ focusable = true, ...props }: ExampleLayoutProps) => {
+  // We’ll use a different portal container for homepage demo purposes; this is usually not needed.
+  const [portalContainer, setPortalContainer] = React.useState<HTMLDivElement>(null);
+
+  // Interactive elements may be not focusable for homepage demo purposes
+  const tabIndex = focusable ? undefined : -1;
+
+  // Simple state to make the example functional
   const [state, setState] = React.useState({
     todo: [
       { id: 'a', completed: false },
@@ -50,8 +61,8 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
   });
 
   return (
-    <Flex align="center" gap="6" {...props}>
-      <Flex shrink="0" gap="6" direction="column" style={{ width: 640 }}>
+    <Flex align="center" gap="6" ref={setPortalContainer} {...props}>
+      <Flex flexShrink="0" gap="6" direction="column" width="640px">
         <Card size="4">
           <Heading as="h3" size="6" trim="start" mb="2">
             Your team
@@ -62,10 +73,10 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
           </Text>
 
           <Flex gap="3" mb="5">
-            <Box grow="1">
-              <TextField.Input tabIndex={-1} size="2" placeholder="Email address" />
+            <Box flexGrow="1">
+              <TextField.Root tabIndex={tabIndex} size="2" placeholder="Email address" />
             </Box>
-            <Button tabIndex={-1} size="2">
+            <Button tabIndex={tabIndex} size="2">
               Invite
             </Button>
           </Flex>
@@ -74,12 +85,18 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
             {[4, 2, 12, 20, 16].map((number, i) => (
               <Box key={number}>
                 <Flex gap="4" align="center">
-                  <Flex gap="3" align="center" style={{ width: 200, whiteSpace: 'nowrap' }}>
+                  <Flex gap="3" align="center" width="200px">
                     <Avatar
                       src={allPeople[number]?.image}
                       fallback={allPeople[number]?.name[0].toUpperCase()}
                     />
-                    <Link tabIndex={-1} size="2">
+                    <Link
+                      href="#"
+                      tabIndex={tabIndex}
+                      size="2"
+                      wrap="nowrap"
+                      onClick={(e) => e.preventDefault()}
+                    >
                       {allPeople[number]?.name}
                     </Link>
                   </Flex>
@@ -88,15 +105,25 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
                     {email(allPeople[number]?.name)}
                   </Text>
 
-                  <Flex grow="1" justify="end">
-                    <IconButton tabIndex={-1} variant="ghost" highContrast>
-                      <DotsHorizontalIcon width="16" height="16" />
-                    </IconButton>
+                  <Flex flexGrow="1" justify="end">
+                    <DropdownMenu.Root>
+                      <DropdownMenu.Trigger>
+                        <IconButton color="gray" tabIndex={tabIndex} variant="ghost">
+                          <DotsHorizontalIcon />
+                        </IconButton>
+                      </DropdownMenu.Trigger>
+                      <DropdownMenu.Content container={portalContainer} variant="soft">
+                        <DropdownMenu.Item>View profile</DropdownMenu.Item>
+                        <DropdownMenu.Item>Change role</DropdownMenu.Item>
+                        <DropdownMenu.Separator />
+                        <DropdownMenu.Item color="red">Remove</DropdownMenu.Item>
+                      </DropdownMenu.Content>
+                    </DropdownMenu.Root>
                   </Flex>
                 </Flex>
 
                 {i !== 4 && (
-                  <Box style={{ marginTop: -1 }}>
+                  <Box>
                     <Separator size="4" my="3" />
                   </Box>
                 )}
@@ -114,7 +141,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
             Manage your notification settings.
           </Text>
 
-          <Box style={{ marginTop: -1 }}>
+          <Box>
             <Separator size="4" my="5" />
           </Box>
 
@@ -131,28 +158,28 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
               <Flex direction="column" gap="4" mt="1">
                 <Flex asChild gap="2">
                   <Text as="label" size="2" weight="bold">
-                    <Switch tabIndex={-1} defaultChecked />
+                    <Switch tabIndex={tabIndex} defaultChecked />
                     <Text>Push</Text>
                   </Text>
                 </Flex>
 
                 <Flex asChild gap="2">
                   <Text as="label" size="2" weight="bold">
-                    <Switch tabIndex={-1} defaultChecked />
+                    <Switch tabIndex={tabIndex} defaultChecked />
                     <Text>Email</Text>
                   </Text>
                 </Flex>
 
                 <Flex asChild gap="2">
                   <Text as="label" size="2" weight="bold">
-                    <Switch tabIndex={-1} />
+                    <Switch tabIndex={tabIndex} />
                     <Text>Slack</Text>
                   </Text>
                 </Flex>
               </Flex>
             </Flex>
 
-            <Box style={{ marginTop: -1 }}>
+            <Box>
               <Separator size="4" my="5" />
             </Box>
 
@@ -168,28 +195,28 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
               <Flex direction="column" gap="4" mt="1">
                 <Flex asChild gap="2">
                   <Text as="label" size="2" weight="bold">
-                    <Switch tabIndex={-1} defaultChecked />
+                    <Switch tabIndex={tabIndex} defaultChecked />
                     <Text>Push</Text>
                   </Text>
                 </Flex>
 
                 <Flex asChild gap="2">
                   <Text as="label" size="2" weight="bold">
-                    <Switch tabIndex={-1} defaultChecked />
+                    <Switch tabIndex={tabIndex} defaultChecked />
                     <Text>Email</Text>
                   </Text>
                 </Flex>
 
                 <Flex asChild gap="2">
                   <Text as="label" size="2" weight="bold">
-                    <Switch tabIndex={-1} />
+                    <Switch tabIndex={tabIndex} />
                     <Text>Slack</Text>
                   </Text>
                 </Flex>
               </Flex>
             </Flex>
 
-            <Box style={{ marginTop: -1 }}>
+            <Box>
               <Separator size="4" my="5" />
             </Box>
 
@@ -205,21 +232,21 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
               <Flex direction="column" gap="4" mt="1">
                 <Flex asChild gap="2">
                   <Text as="label" size="2" weight="bold">
-                    <Switch tabIndex={-1} defaultChecked />
+                    <Switch tabIndex={tabIndex} defaultChecked />
                     <Text>Push</Text>
                   </Text>
                 </Flex>
 
                 <Flex asChild gap="2">
                   <Text as="label" size="2" weight="bold">
-                    <Switch tabIndex={-1} defaultChecked />
+                    <Switch tabIndex={tabIndex} defaultChecked />
                     <Text>Email</Text>
                   </Text>
                 </Flex>
 
                 <Flex asChild gap="2">
                   <Text as="label" size="2" weight="bold">
-                    <Switch tabIndex={-1} />
+                    <Switch tabIndex={tabIndex} />
                     <Text>Slack</Text>
                   </Text>
                 </Flex>
@@ -228,7 +255,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
           </Flex>
         </Card>
 
-        <Card size="4" style={{ height: 464 }}>
+        <Card size="4">
           <Heading as="h3" size="6" trim="start" mb="2">
             Pricing
           </Heading>
@@ -289,7 +316,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
                   </Marker>
                   <Text size="2">Email support</Text>
                 </Flex>
-                <Button tabIndex={-1} mt="3" variant="outline">
+                <Button tabIndex={tabIndex} mt="3" variant="outline">
                   Downgrade
                 </Button>
               </Flex>
@@ -346,7 +373,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
                   </Marker>
                   <Text size="2">Phone support</Text>
                 </Flex>
-                <Button tabIndex={-1} mt="3" variant="outline">
+                <Button tabIndex={tabIndex} mt="3" variant="outline">
                   Go to Billing
                 </Button>
               </Flex>
@@ -403,7 +430,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
                   </Marker>
                   <Text size="2">Priority support</Text>
                 </Flex>
-                <Button tabIndex={-1} mt="3">
+                <Button tabIndex={tabIndex} mt="3">
                   Upgrade
                 </Button>
               </Flex>
@@ -412,47 +439,52 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
         </Card>
       </Flex>
 
-      <Flex shrink="0" gap="6" direction="column" style={{ width: 416 }}>
-        <Card size="4" style={{ height: 320 }}>
+      <Flex flexShrink="0" gap="6" direction="column" width="416px">
+        <Card size="4">
           <Heading as="h3" size="6" trim="start" mb="5">
             Sign up
           </Heading>
 
           <Box mb="5">
-            <Label>
-              <Text as="div" size="2" weight="bold" mb="2">
+            <Flex mb="1">
+              <Text as="label" htmlFor="example-email-field" size="2" weight="bold">
                 Email address
               </Text>
-              <TextField.Input tabIndex={-1} placeholder="Enter your email" />
-            </Label>
+            </Flex>
+            <TextField.Root
+              tabIndex={tabIndex}
+              placeholder="Enter your email"
+              id="example-email-field"
+            />
           </Box>
 
           <Box mb="5" position="relative">
-            <Box position="absolute" top="0" right="0" style={{ marginTop: -2 }}>
-              <Link tabIndex={-1} size="2">
-                Forgot password?
-              </Link>
-            </Box>
-
-            <Label>
-              <Text as="div" size="2" weight="bold" mb="2">
+            <Flex align="baseline" justify="between" mb="1">
+              <Text as="label" size="2" weight="bold" htmlFor="example-password-field">
                 Password
               </Text>
-              <TextField.Input tabIndex={-1} placeholder="Enter your password" />
-            </Label>
+              <Link href="#" tabIndex={tabIndex} size="2" onClick={(e) => e.preventDefault()}>
+                Forgot password?
+              </Link>
+            </Flex>
+            <TextField.Root
+              tabIndex={tabIndex}
+              placeholder="Enter your password"
+              id="example-password-field"
+            />
           </Box>
 
           <Flex mt="6" justify="end" gap="3">
-            <Button tabIndex={-1} variant="outline">
+            <Button tabIndex={tabIndex} variant="outline">
               Create an account
             </Button>
-            <Button tabIndex={-1}>Sign in</Button>
+            <Button tabIndex={tabIndex}>Sign in</Button>
           </Flex>
         </Card>
 
         <Card size="4">
           <Box position="absolute" top="0" right="0" m="3">
-            <IconButton tabIndex={-1} variant="ghost" color="gray" highContrast>
+            <IconButton tabIndex={tabIndex} variant="ghost" color="gray" highContrast>
               <Cross2Icon width="20" height="20" />
             </IconButton>
           </Box>
@@ -476,9 +508,9 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
               <Flex
                 direction="column"
                 justify="between"
+                height="168px"
                 style={
                   {
-                    height: 168,
                     background: 'linear-gradient(to top right, var(--accent-9), #E18BFF)',
                     boxShadow: '0 1px 20px -5px #7971E9AA',
                     borderRadius: 'var(--radius-3)',
@@ -497,7 +529,13 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
                       <span> </span>
                       5027 1846
                     </Text>
-                    <IconButton tabIndex={-1} variant="ghost" color="gray" size="1" highContrast>
+                    <IconButton
+                      tabIndex={tabIndex}
+                      variant="ghost"
+                      color="gray"
+                      size="1"
+                      highContrast
+                    >
                       <CopyIcon />
                     </IconButton>
                   </Flex>
@@ -511,22 +549,22 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
           </Box>
 
           <Flex mt="6" justify="end" gap="3">
-            <Button tabIndex={-1} variant="outline" color="red">
+            <Button tabIndex={tabIndex} variant="outline" color="red">
               Freeze
             </Button>
-            <Button tabIndex={-1}>Done</Button>
+            <Button tabIndex={tabIndex}>Done</Button>
           </Flex>
         </Card>
 
         <Card size="4">
           <Box position="absolute" top="0" right="0" m="3">
-            <IconButton tabIndex={-1} variant="ghost" color="gray" highContrast>
+            <IconButton tabIndex={tabIndex} variant="ghost" color="gray" highContrast>
               <Cross2Icon width="20" height="20" />
             </IconButton>
           </Box>
 
           <Flex gap="3" direction="column" align="center">
-            <Marker height="8" width="8">
+            <Marker height="48px" width="48px">
               <CheckIcon width="32" height="32" />
             </Marker>
 
@@ -540,9 +578,9 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
           </Text>
 
           <Flex direction="column" gap="3" align="stretch">
-            <Button tabIndex={-1}>Next invoice</Button>
+            <Button tabIndex={tabIndex}>Next invoice</Button>
 
-            <Button tabIndex={-1} variant="outline">
+            <Button tabIndex={tabIndex} variant="outline">
               Done
             </Button>
           </Flex>
@@ -550,14 +588,14 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
 
         <Card size="4">
           <Box position="absolute" top="0" right="0" m="3">
-            <IconButton tabIndex={-1} variant="ghost" color="gray" highContrast>
+            <IconButton tabIndex={tabIndex} variant="ghost" color="gray" highContrast>
               <Cross2Icon width="20" height="20" />
             </IconButton>
           </Box>
 
           <Heading as="h3" size="6" trim="start" mb="5">
             Invoice{' '}
-            <Link tabIndex={-1} weight="bold">
+            <Link href="#" tabIndex={tabIndex} weight="bold" onClick={(e) => e.preventDefault()}>
               #3463
             </Link>
           </Heading>
@@ -605,7 +643,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
               </Text>
             </Box>
 
-            <Flex direction="column" gap="1" style={{ gridColumn: '1 / -1' }}>
+            <Flex direction="column" gap="1" gridColumn="1 / -1">
               <Flex justify="between">
                 <Text size="2" mb="1" color="gray">
                   Services
@@ -626,7 +664,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
                 </Text>
                 <Text size="2">$17,500</Text>
               </Flex>
-              <Box style={{ marginTop: -1 }}>
+              <Box>
                 <Separator size="4" mt="1" mb="2" />
               </Box>
               <Flex justify="between">
@@ -637,15 +675,15 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
           </Grid>
 
           <Flex mt="6" justify="end" gap="3">
-            <Button tabIndex={-1} variant="outline" color="red">
+            <Button tabIndex={tabIndex} variant="outline" color="red">
               Reject
             </Button>
-            <Button tabIndex={-1}>Approve</Button>
+            <Button tabIndex={tabIndex}>Approve</Button>
           </Flex>
         </Card>
       </Flex>
 
-      <Flex shrink="0" gap="6" direction="column" style={{ width: 640 }}>
+      <Flex flexShrink="0" gap="6" direction="column" width="640px">
         <Card size="4">
           <Heading as="h3" size="6" trim="start" mb="2">
             Financial performance
@@ -653,7 +691,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
 
           <Flex position="absolute" top="0" right="0" m="3">
             <IconButton
-              tabIndex={-1}
+              tabIndex={tabIndex}
               variant="ghost"
               color="gray"
               highContrast
@@ -663,7 +701,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
             </IconButton>
 
             <IconButton
-              tabIndex={-1}
+              tabIndex={tabIndex}
               variant={state.financePinned ? 'soft' : 'ghost'}
               color="gray"
               highContrast
@@ -828,7 +866,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
 
           <Flex position="absolute" top="0" right="0" m="3">
             <IconButton
-              tabIndex={-1}
+              tabIndex={tabIndex}
               variant="ghost"
               color="gray"
               highContrast
@@ -838,7 +876,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
             </IconButton>
 
             <IconButton
-              tabIndex={-1}
+              tabIndex={tabIndex}
               variant={state.activityPinned ? 'soft' : 'ghost'}
               color="gray"
               highContrast
@@ -873,7 +911,10 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
                       {allPeople[6].name}
                     </Text>
                     <Text as="div" size="2" color="gray">
-                      Approved invoice <Link tabIndex={-1}>#3461</Link>
+                      Approved invoice{' '}
+                      <Link href="#" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
+                        #3461
+                      </Link>
                     </Text>
                   </Box>
                 </Flex>
@@ -884,7 +925,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
               </Flex>
             </Flex>
 
-            <Box style={{ marginTop: -1 }}>
+            <Box>
               <Separator size="4" />
             </Box>
 
@@ -901,8 +942,14 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
                       {allPeople[8].name}
                     </Text>
                     <Text as="p" size="2" color="gray">
-                      Purchased <Link tabIndex={-1}>15 office chairs</Link> and{' '}
-                      <Link tabIndex={-1}>2 drum sets</Link>
+                      Purchased{' '}
+                      <Link href="#" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
+                        15 office chairs
+                      </Link>{' '}
+                      and{' '}
+                      <Link href="#" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
+                        2 drum sets
+                      </Link>
                     </Text>
                   </Box>
                 </Flex>
@@ -913,7 +960,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
               </Flex>
             </Flex>
 
-            <Box style={{ marginTop: -1 }}>
+            <Box>
               <Separator size="4" />
             </Box>
 
@@ -930,7 +977,10 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
                       {allPeople[8].name}
                     </Text>
                     <Text as="p" size="2" color="gray">
-                      Responded to your comment <Link tabIndex={-1}>#7514</Link>
+                      Responded to your comment{' '}
+                      <Link href="#" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
+                        #7514
+                      </Link>
                     </Text>
                   </Box>
                 </Flex>
@@ -941,7 +991,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
               </Flex>
             </Flex>
 
-            <Box style={{ marginTop: -1 }}>
+            <Box>
               <Separator size="4" />
             </Box>
 
@@ -958,7 +1008,10 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
                       {allPeople[28].name}
                     </Text>
                     <Text as="p" size="2" color="gray">
-                      Created <Link tabIndex={-1}>4 invoices</Link>
+                      Created{' '}
+                      <Link href="#" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
+                        4 invoices
+                      </Link>
                     </Text>
                   </Box>
                 </Flex>
@@ -969,7 +1022,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
               </Flex>
             </Flex>
 
-            <Box style={{ marginTop: -1 }}>
+            <Box>
               <Separator size="4" />
             </Box>
 
@@ -986,7 +1039,10 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
                       {allPeople[26].name}
                     </Text>
                     <Text as="p" size="2" color="gray">
-                      Updated client details for <Link tabIndex={-1}>Acme Co.</Link>
+                      Updated client details for{' '}
+                      <Link href="#" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
+                        Acme Co.
+                      </Link>
                     </Text>
                   </Box>
                 </Flex>
@@ -997,7 +1053,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
               </Flex>
             </Flex>
 
-            <Box style={{ marginTop: -1 }}>
+            <Box>
               <Separator size="4" />
             </Box>
 
@@ -1014,7 +1070,10 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
                       {allPeople[25].name}
                     </Text>
                     <Text as="p" size="2" color="gray">
-                      Created <Link tabIndex={-1}>a new report</Link>
+                      Created{' '}
+                      <Link href="#" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
+                        a new report
+                      </Link>
                     </Text>
                   </Box>
                 </Flex>
@@ -1025,7 +1084,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
               </Flex>
             </Flex>
 
-            <Box style={{ marginTop: -1 }}>
+            <Box>
               <Separator size="4" />
             </Box>
 
@@ -1042,7 +1101,10 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
                       {allPeople[25].name}
                     </Text>
                     <Text as="p" size="2" color="gray">
-                      Deleted report <Link tabIndex={-1}>#34</Link>
+                      Deleted report{' '}
+                      <Link href="#" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
+                        #34
+                      </Link>
                     </Text>
                   </Box>
                 </Flex>
@@ -1053,7 +1115,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
               </Flex>
             </Flex>
 
-            <Box style={{ marginTop: -1 }}>
+            <Box>
               <Separator size="4" />
             </Box>
 
@@ -1089,10 +1151,10 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
           </Heading>
 
           <Flex gap="3" position="absolute" top="0" right="0" m="3">
-            <IconButton tabIndex={-1} variant="ghost" color="gray" highContrast>
+            <IconButton tabIndex={tabIndex} variant="ghost" color="gray" highContrast>
               <Share2Icon width="20" height="20" />
             </IconButton>
-            <IconButton tabIndex={-1} variant="ghost" color="gray" highContrast>
+            <IconButton tabIndex={tabIndex} variant="ghost" color="gray" highContrast>
               <PlusIcon width="20" height="20" />
             </IconButton>
           </Flex>
@@ -1102,6 +1164,7 @@ export const ExampleThemesDashboard = (props: React.ComponentPropsWithoutRef<typ
           </Text>
 
           <ToDoList
+            focusable={focusable}
             items={state.todo}
             onItemsChange={(items) => setState({ ...state, todo: items })}
           />
@@ -1117,76 +1180,67 @@ interface ToDoItem {
 }
 
 interface ToDoList {
+  focusable: boolean;
   items: ToDoItem[];
   onItemsChange: (items: ToDoItem[]) => void;
 }
 
-const itemsContent = {
-  a: (
-    <span>
-      Respond to comment{' '}
-      <Link tabIndex={-1} onClick={(event) => event.preventDefault()}>
-        #384
-      </Link>{' '}
-      from Travis Ross
-    </span>
-  ),
-  b: (
-    <span>
-      Invite{' '}
-      <Link tabIndex={-1} onClick={(event) => event.preventDefault()}>
-        Acme Co.
-      </Link>{' '}
-      team to Slack
-    </span>
-  ),
-  c: (
-    <span>
-      Create a report{' '}
-      <Link tabIndex={-1} onClick={(event) => event.preventDefault()}>
-        requested
-      </Link>{' '}
-      by Danilo Sousa
-    </span>
-  ),
-  d: (
-    <span>
-      Review support request{' '}
-      <Link tabIndex={-1} onClick={(event) => event.preventDefault()}>
-        #85
-      </Link>
-    </span>
-  ),
-  e: <span>Close Q2 finances</span>,
-  f: (
-    <span>
-      Review invoice{' '}
-      <Link tabIndex={-1} onClick={(event) => event.preventDefault()}>
-        #3456
-      </Link>
-    </span>
-  ),
-};
+const ToDoList = ({ focusable, items, onItemsChange }: ToDoList) => {
+  const tabIndex = focusable ? undefined : -1;
+  const itemsContent = {
+    a: (
+      <span>
+        Respond to comment{' '}
+        <Link href="#" underline="hover" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
+          #384
+        </Link>{' '}
+        from Travis Ross
+      </span>
+    ),
+    b: (
+      <span>
+        Invite{' '}
+        <Link href="#" underline="hover" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
+          Acme Co.
+        </Link>{' '}
+        team to Slack
+      </span>
+    ),
+    c: (
+      <span>
+        Create a report{' '}
+        <Link href="#" underline="hover" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
+          requested
+        </Link>{' '}
+        by Danilo Sousa
+      </span>
+    ),
+    d: (
+      <span>
+        Review support request{' '}
+        <Link href="#" underline="hover" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
+          #85
+        </Link>
+      </span>
+    ),
+    e: <span>Close Q2 finances</span>,
+    f: (
+      <span>
+        Review invoice{' '}
+        <Link href="#" underline="hover" tabIndex={tabIndex} onClick={(e) => e.preventDefault()}>
+          #3456
+        </Link>
+      </span>
+    ),
+  };
 
-const ToDoList = ({ items, onItemsChange }: ToDoList) => {
   return (
     <Flex gap="2" direction="column">
       {items.map((item) => (
-        <Text
-          as="label"
-          size="2"
-          key={item.id}
-          color={item.completed ? 'gray' : undefined}
-          style={
-            {
-              textDecoration: item.completed ? 'line-through' : undefined,
-              '--accent-12': 'var(--accent-11)',
-            } as React.CSSProperties
-          }
-        >
-          <Flex gap="2">
+        <Text as="label" size="2" key={item.id}>
+          <Flex as="span" gap="2">
             <Checkbox
-              tabIndex={-1}
+              tabIndex={tabIndex}
               checked={item.completed}
               onCheckedChange={(checked) => {
                 const newItems = items.slice();
@@ -1195,7 +1249,17 @@ const ToDoList = ({ items, onItemsChange }: ToDoList) => {
                 onItemsChange(newItems);
               }}
             />
-            <Text>{itemsContent[item.id]}</Text>
+            <Text
+              color={item.completed ? 'gray' : undefined}
+              style={
+                {
+                  textDecoration: item.completed ? 'line-through' : undefined,
+                  '--accent-12': 'var(--accent-11)',
+                } as React.CSSProperties
+              }
+            >
+              {itemsContent[item.id]}
+            </Text>
           </Flex>
         </Text>
       ))}

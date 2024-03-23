@@ -1,0 +1,164 @@
+---
+metaTitle: Radio Cards
+metaDescription: Set of interactive cards where only one can be selected at a time.
+sourcePath: components/radio-cards
+---
+
+```jsx live=true
+<Box maxWidth="600px">
+  <RadioCards.Root defaultValue="1" columns={{ initial: '1', sm: '3' }}>
+    <RadioCards.Item value="1">
+      <Flex direction="column" width="100%">
+        <Text weight="bold">8-core CPU</Text>
+        <Text>32 GB RAM</Text>
+      </Flex>
+    </RadioCards.Item>
+    <RadioCards.Item value="2">
+      <Flex direction="column" width="100%">
+        <Text weight="bold">6-core CPU</Text>
+        <Text>24 GB RAM</Text>
+      </Flex>
+    </RadioCards.Item>
+    <RadioCards.Item value="3">
+      <Flex direction="column" width="100%">
+        <Text weight="bold">4-core CPU</Text>
+        <Text>16 GB RAM</Text>
+      </Flex>
+    </RadioCards.Item>
+  </RadioCards.Root>
+</Box>
+```
+
+## API Reference
+
+This component inherits props from the [Radio Group primitive](/primitives/docs/components/radio-group) and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+### Root
+
+<ThemesPropsTable defs="radioCardsRootPropDefs" />
+
+### Item
+
+An item in the group that can be checked.
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Flex align="center" gap="3">
+  <RadioCards.Root size="1">
+    <RadioCards.Item value="1">8-core CPU</RadioCards.Item>
+  </RadioCards.Root>
+
+  <RadioCards.Root size="2">
+    <RadioCards.Item value="1">8-core CPU</RadioCards.Item>
+  </RadioCards.Root>
+
+  <RadioCards.Root size="3">
+    <RadioCards.Item value="1">8-core CPU</RadioCards.Item>
+  </RadioCards.Root>
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style.
+
+```jsx live=true
+<Flex direction="column" gap="3" maxWidth="200px">
+  <RadioCards.Root variant="surface">
+    <RadioCards.Item value="1">8-core CPU</RadioCards.Item>
+  </RadioCards.Root>
+
+  <RadioCards.Root variant="classic">
+    <RadioCards.Item value="1">8-core CPU</RadioCards.Item>
+  </RadioCards.Root>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
+
+```jsx live=true
+<Flex direction="column" gap="3" maxWidth="200px">
+  <RadioCards.Root defaultValue="1" color="indigo">
+    <RadioCards.Item value="1">8-core CPU</RadioCards.Item>
+  </RadioCards.Root>
+
+  <RadioCards.Root defaultValue="1" color="cyan">
+    <RadioCards.Item value="1">8-core CPU</RadioCards.Item>
+  </RadioCards.Root>
+
+  <RadioCards.Root defaultValue="1" color="orange">
+    <RadioCards.Item value="1">8-core CPU</RadioCards.Item>
+  </RadioCards.Root>
+
+  <RadioCards.Root defaultValue="1" color="crimson">
+    <RadioCards.Item value="1">8-core CPU</RadioCards.Item>
+  </RadioCards.Root>
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to increase color contrast with the background.
+
+```jsx live=true
+<Grid columns="2" gap="3" display="inline-grid">
+  <RadioCards.Root defaultValue="1" color="indigo">
+    <RadioCards.Item value="1">8-core CPU</RadioCards.Item>
+  </RadioCards.Root>
+
+  <RadioCards.Root defaultValue="1" color="indigo" highContrast>
+    <RadioCards.Item value="1">8-core CPU</RadioCards.Item>
+  </RadioCards.Root>
+
+  <RadioCards.Root defaultValue="1" color="cyan">
+    <RadioCards.Item value="1">8-core CPU</RadioCards.Item>
+  </RadioCards.Root>
+
+  <RadioCards.Root defaultValue="1" color="cyan" highContrast>
+    <RadioCards.Item value="1">8-core CPU</RadioCards.Item>
+  </RadioCards.Root>
+
+  <RadioCards.Root defaultValue="1" color="orange">
+    <RadioCards.Item value="1">8-core CPU</RadioCards.Item>
+  </RadioCards.Root>
+
+  <RadioCards.Root defaultValue="1" color="orange" highContrast>
+    <RadioCards.Item value="1">8-core CPU</RadioCards.Item>
+  </RadioCards.Root>
+
+  <RadioCards.Root defaultValue="1" color="crimson">
+    <RadioCards.Item value="1">8-core CPU</RadioCards.Item>
+  </RadioCards.Root>
+
+  <RadioCards.Root defaultValue="1" color="crimson" highContrast>
+    <RadioCards.Item value="1">8-core CPU</RadioCards.Item>
+  </RadioCards.Root>
+</Grid>
+```
+
+### Disabled
+
+```jsx live=true
+<Flex direction="column" gap="4" maxWidth="450px">
+  <RadioCards.Root columns="2" defaultValue="2">
+    <RadioCards.Item value="1">Off</RadioCards.Item>
+    <RadioCards.Item value="2">On</RadioCards.Item>
+  </RadioCards.Root>
+
+  <RadioCards.Root columns="2" defaultValue="2">
+    <RadioCards.Item value="1" disabled>
+      Off
+    </RadioCards.Item>
+    <RadioCards.Item value="2" disabled>
+      On
+    </RadioCards.Item>
+  </RadioCards.Root>
+</Flex>
+```

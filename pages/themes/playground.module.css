@@ -61,36 +61,6 @@
 }
 
 /**
- * Hero
- */
-.PlaygroundHeroContainer {
-  margin-inline: calc(var(--space-5) * -1);
-}
-
-.PlaygroundHeroContent {
-  padding-block: var(--space-7);
-  padding-inline: var(--space-5);
-}
-
-@media (min-width: 520px) {
-  .PlaygroundHeroContainer {
-    margin-inline: 0;
-  }
-
-  .PlaygroundHeroContent {
-    padding-block: 100px;
-    padding-inline: 100px;
-  }
-}
-
-@media (min-width: 900px) {
-  .PlaygroundHeroContainer {
-    width: 1000px;
-    margin-inline: 0;
-  }
-}
-
-/**
  * Docs link
  */
 @media (hover: hover) {

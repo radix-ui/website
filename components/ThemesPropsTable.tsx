@@ -1,8 +1,9 @@
 import React from 'react';
 import { PropsTable } from './PropsTable';
-import * as themes from '@radix-ui/themes';
+import * as props from '@utils/themes/props';
 import { Code, Link as DSLink } from '@radix-ui/themes';
 import NextLink from 'next/link';
+import { ExternalLink } from './ExternalLink';
 
 const Link = ({ href = '', ...props }) => {
   if (href.startsWith('http')) {
@@ -15,74 +16,38 @@ const Link = ({ href = '', ...props }) => {
   );
 };
 
-const asChildProp = {
-  asChild: {
-    required: false,
-    type: 'boolean',
-    default: false,
-  },
-};
+const {
+  // values
+  accentColors,
+  grayColors,
+  breakpoints,
+  radii,
+  ...propDefs
+} = props;
 
 const definitions = {
-  avatar: themes.avatarPropDefs,
-  button: { ...asChildProp, ...themes.buttonPropDefs },
-  checkbox: themes.checkboxPropDefs,
-  iconButton: { ...asChildProp, ...themes.iconButtonPropDefs },
-  radioGroup: themes.radioGroupPropDefs,
-  slider: themes.sliderPropDefs,
-  switch: themes.switchPropDefs,
-  tooltip: themes.tooltipPropDefs,
-  box: themes.boxPropDefs,
-  flex: { ...asChildProp, ...themes.flexPropDefs },
-  grid: { ...asChildProp, ...themes.gridPropDefs },
-  container: themes.containerPropDefs,
-  section: themes.sectionPropDefs,
-  text: {
-    ...asChildProp,
-    as: { required: false, type: 'enum', values: ['p', 'label', 'div', 'span'], default: 'span' },
-    ...themes.textPropDefs,
+  ...propDefs,
+  flexChildrenPropDefs: {
+    flexBasis: props.layoutPropDefs.flexBasis,
+    flexShrink: props.layoutPropDefs.flexShrink,
+    flexGrow: props.layoutPropDefs.flexGrow,
   },
-  heading: {
-    ...asChildProp,
-    as: {
-      required: false,
-      type: 'enum',
-      values: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
-      default: 'h1',
-    },
-    ...themes.headingPropDefs,
+  gridChildrenPropDefs: {
+    gridColumn: props.layoutPropDefs.gridColumn,
+    gridColumnStart: props.layoutPropDefs.gridColumnStart,
+    gridColumnEnd: props.layoutPropDefs.gridColumnEnd,
+    gridRow: props.layoutPropDefs.gridRow,
+    gridRowStart: props.layoutPropDefs.gridRowStart,
+    gridRowEnd: props.layoutPropDefs.gridRowEnd,
   },
-  link: { ...asChildProp, ...themes.linkPropDefs },
-  blockquote: themes.blockquotePropDefs,
-  code: themes.codePropDefs,
-  textField: themes.textFieldPropDefs,
-  textFieldSlot: themes.textFieldSlotPropDefs,
-  textArea: themes.textAreaPropDefs,
-  separator: themes.separatorPropDefs,
-  badge: themes.badgePropDefs,
-  layout: themes.layoutPropDefs,
-  margin: themes.marginPropDefs,
-  selectRoot: themes.selectRootPropDefs,
-  selectTrigger: { ...asChildProp, ...themes.selectTriggerPropDefs },
-  selectContent: themes.selectContentPropDefs,
-  scrollArea: themes.scrollAreaPropDefs,
-  dropdownMenuContent: themes.dropdownMenuContentPropDefs,
-  dropdownMenuItem: themes.dropdownMenuItemPropDefs,
-  contextMenuContent: themes.contextMenuContentPropDefs,
-  contextMenuItem: themes.contextMenuItemPropDefs,
-  theme: { ...asChildProp, ...themes.themePropDefs },
-  card: { ...asChildProp, ...themes.cardPropDefs },
-  tableRoot: { ...asChildProp, ...themes.tableRootPropDefs },
-  tableRow: { ...asChildProp, ...themes.tableRowPropDefs },
-  tableCell: { ...asChildProp, ...themes.tableCellPropDefs },
-  calloutRoot: { ...themes.calloutRootPropDefs },
-  inset: { ...themes.insetPropDefs },
-  tabsList: { ...themes.tabsListPropDefs },
-  kbd: { ...themes.kbdPropDefs },
-  hoverCardContent: { ...themes.hoverCardContentPropDefs },
-  dialogContent: { ...themes.dialogContentPropDefs },
-  alertDialogContent: { ...themes.alertDialogContentPropDefs },
-  popoverContent: { ...themes.popoverContentPropDefs },
+  positionPropDefs: {
+    position: props.layoutPropDefs.position,
+    inset: props.layoutPropDefs.inset,
+    top: props.layoutPropDefs.top,
+    right: props.layoutPropDefs.right,
+    bottom: props.layoutPropDefs.bottom,
+    left: props.layoutPropDefs.left,
+  },
 } as const;
 
 type PropDefinitions = typeof definitions;
@@ -98,16 +63,67 @@ type ExtractProps<T> = {
   [K in keyof T]: T[K] extends object ? keyof ExtractProps<T[K]> : React.ReactNode;
 };
 type ExtractedProps = ExtractProps<PropDefinitions>;
+type ExtractedPropsKeys = ExtractedProps[keyof ExtractedProps];
 type CommonDescriptions = {
-  [K in ExtractedProps[keyof ExtractProps<PropDefinitions>]]?: React.ReactNode;
+  [K in ExtractedPropsKeys]?: React.ReactNode;
 };
 
+const textAlign = (
+  <>
+    Sets the CSS{' '}
+    <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align">
+      text-align
+    </ExternalLink>{' '}
+    property.
+  </>
+);
+
+const textWrap = (
+  <>
+    Controls the wrapping behavior of the text. See the corresponding{' '}
+    <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap">
+      text-wrap
+    </ExternalLink>{' '}
+    values for details.
+  </>
+);
+
 const uniqueDescriptions: UniqueDescriptions = {
-  avatar: {
+  avatarPropDefs: {
     fallback: 'The fallback element to render when an image is not available.',
   },
-  scrollArea: { scrollbars: 'Controls the scrollable axes.' },
-  theme: {
+  blockquotePropDefs: {
+    wrap: textWrap,
+  },
+  codePropDefs: {
+    wrap: textWrap,
+  },
+  emPropDefs: {
+    wrap: textWrap,
+  },
+  headingPropDefs: {
+    align: textAlign,
+    wrap: textWrap,
+  },
+  linkPropDefs: {
+    wrap: textWrap,
+    underline: 'Sets the visibility of the underline affordance.',
+  },
+  quotePropDefs: {
+    wrap: textWrap,
+  },
+  scrollAreaPropDefs: { scrollbars: 'Controls the scrollable axes.' },
+  strongPropDefs: {
+    wrap: textWrap,
+  },
+  spinnerPropDefs: {
+    loading: <>Toggles whether to hide the children and display the spinner.</>,
+  },
+  textPropDefs: {
+    align: textAlign,
+    wrap: textWrap,
+  },
+  themePropDefs: {
     appearance: (
       <>
         The color scheme of the theme (typcially referred to as light and dark mode). See the{' '}
@@ -134,11 +150,8 @@ const uniqueDescriptions: UniqueDescriptions = {
       </>
     ),
   },
-  tooltip: {
+  tooltipPropDefs: {
     content: 'The content associated with the tooltip.',
-  },
-  link: {
-    underline: 'Sets the visibility of the underline affordance.',
   },
 };
 
@@ -155,7 +168,7 @@ const commonDescriptions: CommonDescriptions = {
       <Link href="/themes/docs/theme/color">color guide</Link> for more details.
     </>
   ),
-  highContrast: 'Renders the component in higher contrast.',
+  highContrast: 'Uses a higher contrast color for the component.',
   radius: (
     <>
       Overrides the radius inherited from the theme. See the{' '}
@@ -181,12 +194,17 @@ const commonDescriptions: CommonDescriptions = {
     </>
   ),
   shortcut: 'Optional shortcut command displayed next to the item text.',
-  trim: 'Removes the leading trim from the start or end of the rendered text node.',
+  trim: 'Trims the leading whitespace from the start or end of the text.',
+  truncate: (
+    <>
+      Truncates text with an ellipsis. Be aware of{' '}
+      <ExternalLink href="https://css-tricks.com/flexbox-truncated-text/">
+        common pitfalls
+      </ExternalLink>{' '}
+      in flex layouts.
+    </>
+  ),
 };
-
-function shouldBalanceArray(values?: readonly string[] | string) {
-  return Array.isArray(values) && values.length > 5;
-}
 
 function formatValues(values?: readonly string[] | string) {
   if (Array.isArray(values)) {
@@ -198,7 +216,7 @@ function formatValues(values?: readonly string[] | string) {
     return `"${values}"`;
   }
 
-  return undefined;
+  return '';
 }
 
 type ThemesPropsDef = Record<
@@ -220,6 +238,16 @@ function applyResponsive(value: string | undefined, isResponsive) {
   return value;
 }
 
+function applyStringUnion(value: string | undefined, isEnumString) {
+  if (value && isEnumString) {
+    return `Union<string, ${value}>`;
+  }
+
+  return value;
+}
+
+const MAX_TYPE_LENGTH = 60;
+
 function formatDefinitions(definitions: Record<ComponentName, ThemesPropsDef>) {
   const formattedProps = {};
 
@@ -232,13 +260,18 @@ function formatDefinitions(definitions: Record<ComponentName, ThemesPropsDef>) {
       const description =
         uniqueDescriptions[componentName]?.[propName] || commonDescriptions[propName];
 
-      const value = applyResponsive(formatValues(item.values), item.responsive);
+      let value = applyStringUnion(formatValues(item.values), item.type === 'enum | string');
+      value = applyResponsive(value, item.responsive);
+
+      const shouldUseSimpleType = item.values
+        ? value.length > MAX_TYPE_LENGTH || item.type === 'enum | string'
+        : true;
 
       return {
         name: propName,
         required: item.required,
-        typeSimple: item.values && !shouldBalanceArray(item.values) ? value : item.type,
-        type: shouldBalanceArray(item.values) ? value : undefined,
+        typeSimple: shouldUseSimpleType ? applyResponsive(item.type, item.responsive) : value,
+        type: shouldUseSimpleType ? value : undefined,
         default:
           typeof item.default === 'boolean' ? String(item.default) : formatValues(item.default),
         description: description,
@@ -249,8 +282,8 @@ function formatDefinitions(definitions: Record<ComponentName, ThemesPropsDef>) {
   return formattedProps;
 }
 
-const props = formatDefinitions(definitions);
+const data = formatDefinitions(definitions);
 
-export function ThemesPropsTable({ name }: { name: string }) {
-  return <PropsTable data={props[name]} propHeaderFixedWidth={false} />;
+export function ThemesPropsTable({ defs }: { defs: string }) {
+  return <PropsTable data={data[defs]} propHeaderFixedWidth={false} />;
 }

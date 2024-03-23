@@ -7,6 +7,7 @@ import {
   Grid,
   Heading,
   IconButton,
+  Inset,
   Link,
   Select,
   Separator,
@@ -36,52 +37,35 @@ import {
 } from '@radix-ui/react-icons';
 import { Label } from '@radix-ui/react-label';
 import * as React from 'react';
+import * as ToggleGroup from '@radix-ui/react-toggle-group';
 
-export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typeof Flex>) => {
-  const [container, setContainer] = React.useState<HTMLDivElement>(null);
+type ExampleLayoutProps = React.ComponentPropsWithoutRef<typeof Flex> & {
+  focusable?: boolean;
+};
 
+export const ExampleThemesEcommerce = ({ focusable = true, ...props }: ExampleLayoutProps) => {
+  // We’ll use a different portal container for homepage demo purposes; this is usually not needed.
+  const [portalContainer, setPortalContainer] = React.useState<HTMLDivElement>(null);
+
+  // Interactive elements may be not focusable for homepage demo purposes
+  const tabIndex = focusable ? undefined : -1;
+
+  // Simple state to make the example functional
   const [state, setState] = React.useState({
     sneakersBookmarked: false,
     jeansBookmarked: false,
     delivery: '',
-    sizes: ['9'],
-    materials: [],
-    colors: [],
+    size: '9',
+    material: '',
+    color: '',
     productMaterial: '',
     productColor: '',
     productSizes: [],
   });
 
-  const onToggleButtonClick = React.useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>, key: keyof typeof state) => {
-      setState((currentState) => {
-        const currentValue = currentState[key];
-        const buttonValue = event.currentTarget.textContent;
-
-        let newValue = currentValue;
-
-        if (Array.isArray(newValue)) {
-          if (newValue.includes(buttonValue)) {
-            newValue = newValue.filter((value) => value !== buttonValue);
-          } else {
-            newValue.push(buttonValue);
-          }
-        } else {
-          newValue = currentValue === buttonValue ? '' : buttonValue;
-        }
-
-        return {
-          ...currentState,
-          [key]: newValue,
-        };
-      });
-    },
-    [setState]
-  );
-
   return (
-    <Flex align="center" gap="6" ref={setContainer} {...props}>
-      <Flex shrink="0" gap="6" direction="column" style={{ width: 304 }}>
+    <Flex align="center" gap="6" ref={setPortalContainer} {...props}>
+      <Flex flexShrink="0" gap="6" direction="column" width="304px">
         <Card size="1">
           <Flex mb="2">
             <img
@@ -94,16 +78,24 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
 
           <Flex align="center" justify="between" gap="3">
             <Box>
-              <Link color="gray" size="2" weight="bold" highContrast>
+              <Link
+                href="#"
+                underline="hover"
+                color="gray"
+                size="2"
+                weight="bold"
+                highContrast
+                tabIndex={tabIndex}
+                onClick={(e) => e.preventDefault()}
+              >
                 Back to basics
               </Link>
-
               <Text size="2" color="gray" as="p">
                 Simple and versatile
               </Text>
             </Box>
-            <Box shrink="0">
-              <Button tabIndex={-1} size="2" variant="soft" color="gray" highContrast>
+            <Box flexShrink="0">
+              <Button tabIndex={tabIndex} size="2" variant="soft" color="gray" highContrast>
                 Shop now
               </Button>
             </Box>
@@ -126,14 +118,14 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                 position="absolute"
                 bottom="0"
                 right="0"
-                width="6"
-                height="6"
+                width="32px"
+                height="32px"
                 style={{ borderRadius: 'var(--radius-3)' }}
                 m="2"
               >
                 <IconButton
                   size="2"
-                  tabIndex={-1}
+                  tabIndex={tabIndex}
                   color="gray"
                   variant="ghost"
                   highContrast={state.sneakersBookmarked}
@@ -144,11 +136,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                     }))
                   }
                 >
-                  {state.sneakersBookmarked ? (
-                    <BookmarkFilledIcon width="16" height="16" />
-                  ) : (
-                    <BookmarkIcon width="16" height="16" />
-                  )}
+                  {state.sneakersBookmarked ? <BookmarkFilledIcon /> : <BookmarkIcon />}
                 </IconButton>
               </Flex>
             </Theme>
@@ -157,7 +145,15 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
           <Flex align="end" justify="between" mb="2">
             <Box>
               <Flex mb="1">
-                <Link size="2" color="gray" highContrast>
+                <Link
+                  href="#"
+                  underline="hover"
+                  size="2"
+                  color="gray"
+                  highContrast
+                  tabIndex={tabIndex}
+                  onClick={(e) => e.preventDefault()}
+                >
                   Footwear
                 </Link>
               </Flex>
@@ -176,12 +172,12 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
             Love at the first sight for enthusiasts seeking a fresh and whimsical style.
           </Text>
 
-          <Box style={{ marginTop: -1 }}>
+          <Box>
             <Separator size="4" my="4" />
           </Box>
 
           <Flex gap="2" align="end">
-            <Flex direction="column" grow="1">
+            <Flex direction="column" flexGrow="1">
               <Label asChild>
                 <Text size="1" color="gray" mb="1">
                   Color
@@ -189,24 +185,23 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               </Label>
 
               <Select.Root defaultValue="Pastel" size="2">
-                <Select.Trigger tabIndex={-1} variant="soft" />
-                <Select.Content variant="soft" container={container} position="popper">
+                <Select.Trigger tabIndex={tabIndex} variant="soft" />
+                <Select.Content variant="soft" container={portalContainer} position="popper">
                   <Select.Item value="Pastel">Pastel</Select.Item>
                   <Select.Item value="Bright">Bright</Select.Item>
                 </Select.Content>
               </Select.Root>
             </Flex>
 
-            <Flex direction="column" style={{ minWidth: 80 }}>
+            <Flex direction="column" minWidth="80px">
               <Label asChild>
                 <Text size="1" color="gray" mb="1">
                   Size
                 </Text>
               </Label>
-
               <Select.Root defaultValue="8" size="2">
-                <Select.Trigger tabIndex={-1} variant="soft" />
-                <Select.Content variant="soft" container={container} position="popper">
+                <Select.Trigger tabIndex={tabIndex} variant="soft" />
+                <Select.Content variant="soft" container={portalContainer} position="popper">
                   {Array.from({ length: 12 }, (_, i) => (
                     <Select.Item key={i} value={String(i * 0.5 + 5)}>
                       {i * 0.5 + 5}
@@ -216,38 +211,26 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               </Select.Root>
             </Flex>
 
-            <Button tabIndex={-1} size="2" variant="solid" color="gray" highContrast>
+            <Button tabIndex={tabIndex} size="2" variant="solid" color="gray" highContrast>
               Buy
             </Button>
           </Flex>
         </Card>
 
         <Card size="1">
-          <Flex direction="column" style={{ gap: 20 }}>
+          <Flex direction="column" gap="20px">
             <Box>
               <Text as="div" size="2" weight="bold" mb="2">
                 Delivery
               </Text>
-
-              <Grid gap="1" columns="2">
-                <Button
-                  highContrast
-                  tabIndex={-1}
-                  variant={state.delivery === 'Tomorrow' ? 'solid' : 'soft'}
-                  onClick={(event) => onToggleButtonClick(event, 'delivery')}
-                  style={{ fontWeight: 400 }}
-                >
-                  Tomorrow
-                </Button>
-                <Button
-                  highContrast
-                  tabIndex={-1}
-                  variant={state.delivery === 'Within 3 days' ? 'solid' : 'soft'}
-                  onClick={(event) => onToggleButtonClick(event, 'delivery')}
-                  style={{ fontWeight: 400 }}
-                >
-                  Within 3 days
-                </Button>
+              <Grid asChild gap="1" columns="2">
+                <ToggleButtons
+                  type="single"
+                  tabIndex={tabIndex}
+                  values={['Tomorrow', 'Within 3 days']}
+                  value={state.delivery}
+                  onValueChange={(value) => setState({ ...state, delivery: value })}
+                />
               </Grid>
             </Box>
 
@@ -255,21 +238,14 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               <Text as="div" size="2" weight="bold" mb="2">
                 Size
               </Text>
-
-              <Grid gap="1" columns="5">
-                {['5.5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10'].map((size) => (
-                  <Button
-                    key={size}
-                    highContrast
-                    tabIndex={-1}
-                    disabled={size === '9.5'}
-                    onClick={(event) => onToggleButtonClick(event, 'sizes')}
-                    variant={state.sizes.includes(size) ? 'solid' : 'soft'}
-                    style={{ fontWeight: 400 }}
-                  >
-                    {size}
-                  </Button>
-                ))}
+              <Grid asChild gap="1" columns="5">
+                <ToggleButtons
+                  type="single"
+                  tabIndex={tabIndex}
+                  values={['5.5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10']}
+                  value={state.size}
+                  onValueChange={(value) => setState({ ...state, size: value })}
+                />
               </Grid>
             </Box>
 
@@ -278,20 +254,14 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                 Material
               </Text>
 
-              <Grid gap="1" columns="4">
-                {['Leather', 'Suede', 'Mesh', 'Canvas'].map((material) => (
-                  <Button
-                    key={material}
-                    highContrast
-                    tabIndex={-1}
-                    disabled={material === '9.5'}
-                    onClick={(event) => onToggleButtonClick(event, 'materials')}
-                    variant={state.materials.includes(material) ? 'solid' : 'soft'}
-                    style={{ fontWeight: 400 }}
-                  >
-                    {material}
-                  </Button>
-                ))}
+              <Grid asChild gap="1" columns="4">
+                <ToggleButtons
+                  type="single"
+                  tabIndex={tabIndex}
+                  values={['Leather', 'Suede', 'Mesh', 'Canvas']}
+                  value={state.material}
+                  onValueChange={(value) => setState({ ...state, material: value })}
+                />
               </Grid>
             </Box>
 
@@ -300,39 +270,50 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                 Color
               </Text>
 
-              <Grid gap="1" columns="3">
-                {[
-                  { name: 'White', value: 'white' },
-                  { name: 'Gray', value: 'var(--gray-9)' },
-                  { name: 'Black', value: '#1B1B18' },
-                  { name: 'Red', value: 'var(--red-9)' },
-                  { name: 'Pink', value: 'var(--pink-8)' },
-                  { name: 'Violet', value: 'var(--violet-9)' },
-                  { name: 'Blue', value: 'var(--blue-9)' },
-                  { name: 'Green', value: 'var(--teal-9)' },
-                  { name: 'Beige', value: '#E5DFCF' },
-                ].map((color) => (
-                  <Button
-                    tabIndex={-1}
-                    key={color.name}
-                    highContrast
-                    style={{ fontWeight: 400, justifyContent: 'start' }}
-                    variant={state.colors.includes(color.name) ? 'solid' : 'soft'}
-                    onClick={(event) => onToggleButtonClick(event, 'colors')}
-                  >
-                    <Box
-                      shrink="0"
-                      width="4"
-                      height="4"
-                      style={{
-                        background: color.value,
-                        borderRadius: 'var(--radius-1)',
-                        boxShadow: 'inset 0 0 0 1px rgba(160, 160, 160, 0.4)',
-                      }}
-                    />
-                    {color.name}
-                  </Button>
-                ))}
+              <Grid asChild gap="1" columns="3">
+                <ToggleButtons
+                  type="single"
+                  tabIndex={tabIndex}
+                  values={[
+                    'White',
+                    'Gray',
+                    'Black',
+                    'Red',
+                    'Pink',
+                    'Violet',
+                    'Blue',
+                    'Green',
+                    'Beige',
+                  ]}
+                  value={state.color}
+                  onValueChange={(value) => setState({ ...state, color: value })}
+                >
+                  {(value) => (
+                    <React.Fragment>
+                      <Box
+                        flexShrink="0"
+                        width="16px"
+                        height="16px"
+                        style={{
+                          background: {
+                            White: 'white',
+                            Gray: 'var(--gray-9)',
+                            Black: '#1B1B18',
+                            Red: 'var(--red-9)',
+                            Pink: 'var(--pink-8)',
+                            Violet: 'var(--violet-9)',
+                            Blue: 'var(--blue-9)',
+                            Green: 'var(--teal-9)',
+                            Beige: '#E5DFCF',
+                          }[value],
+                          borderRadius: 'var(--radius-1)',
+                          boxShadow: 'inset 0 0 0 1px rgba(160, 160, 160, 0.4)',
+                        }}
+                      />
+                      {value}
+                    </React.Fragment>
+                  )}
+                </ToggleButtons>
               </Grid>
             </Box>
           </Flex>
@@ -371,7 +352,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               },
             ].map((item) => (
               <Flex gap="4" align="center" justify="between" key={item.url}>
-                <Flex grow="1" align="center" gap="2" height="6">
+                <Flex flexGrow="1" align="center" gap="2" height="32px">
                   <img
                     src={item.url}
                     style={{ borderRadius: 'var(--radius-1)' }}
@@ -380,7 +361,14 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                   />
                   <Box>
                     <Text as="div" color="gray" trim="start">
-                      <Link size="2" weight="bold">
+                      <Link
+                        href="#"
+                        underline="hover"
+                        tabIndex={tabIndex}
+                        size="2"
+                        weight="bold"
+                        onClick={(e) => e.preventDefault()}
+                      >
                         {item.name}
                       </Link>
                     </Text>
@@ -390,10 +378,10 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                   </Box>
                 </Flex>
 
-                <Flex direction="column" width="8">
+                <Flex direction="column" width="48px">
                   <Select.Root defaultValue={item.count} size="1">
-                    <Select.Trigger tabIndex={-1} />
-                    <Select.Content variant="soft" container={container} position="popper">
+                    <Select.Trigger tabIndex={tabIndex} />
+                    <Select.Content variant="soft" container={portalContainer} position="popper">
                       {Array.from({ length: 9 }, (_, i) => (
                         <Select.Item key={i} value={String(i + 1)}>
                           {i + 1}
@@ -403,7 +391,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                   </Select.Root>
                 </Flex>
 
-                <Flex direction="column" width="7">
+                <Flex direction="column" width="40px">
                   <Text size="2" weight="bold" align="right">
                     {item.price}
                   </Text>
@@ -412,7 +400,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
             ))}
           </Flex>
 
-          <Box style={{ marginTop: -1 }}>
+          <Box>
             <Separator size="4" my="4" />
           </Box>
 
@@ -421,14 +409,14 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               Total <Strong>$313</Strong>
             </Text>
 
-            <Button tabIndex={-1} size="2" variant="solid" color="gray" highContrast>
+            <Button tabIndex={tabIndex} size="2" variant="solid" color="gray" highContrast>
               Go to checkout
             </Button>
           </Flex>
         </Card>
       </Flex>
 
-      <Flex shrink="0" gap="6" direction="column" style={{ width: 304 }}>
+      <Flex flexShrink="0" gap="6" direction="column" width="304px">
         <Card size="1">
           <Flex mb="2" position="relative">
             <img
@@ -445,13 +433,25 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                 position="absolute"
                 bottom="0"
                 right="0"
-                width="6"
-                height="6"
+                width="32px"
+                height="32px"
                 style={{ borderRadius: 'var(--radius-3)' }}
                 m="2"
               >
-                <IconButton size="2" tabIndex={-1} color="gray" variant="ghost">
-                  <BookmarkIcon width="16" height="16" />
+                <IconButton
+                  size="2"
+                  tabIndex={tabIndex}
+                  color="gray"
+                  variant="ghost"
+                  highContrast={state.jeansBookmarked}
+                  onClick={() =>
+                    setState((currentState) => ({
+                      ...currentState,
+                      jeansBookmarked: !currentState.jeansBookmarked,
+                    }))
+                  }
+                >
+                  {state.jeansBookmarked ? <BookmarkFilledIcon /> : <BookmarkIcon />}
                 </IconButton>
               </Flex>
             </Theme>
@@ -460,7 +460,15 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
           <Flex align="end" justify="between" mb="2">
             <Box>
               <Flex mb="1">
-                <Link highContrast size="2" color="gray">
+                <Link
+                  href="#"
+                  underline="hover"
+                  tabIndex={tabIndex}
+                  highContrast
+                  size="2"
+                  color="gray"
+                  onClick={(e) => e.preventDefault()}
+                >
                   Pants and jeans
                 </Link>
               </Flex>
@@ -479,12 +487,12 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
             Jeans with a sense of nostalgia, as if they carry whispered tales of past adventures.
           </Text>
 
-          <Box style={{ marginTop: -1 }}>
+          <Box>
             <Separator size="4" my="4" />
           </Box>
 
           <Flex gap="2" align="end">
-            <Flex direction="column" grow="1">
+            <Flex direction="column" flexGrow="1">
               <Label asChild>
                 <Text size="1" color="gray" mb="1">
                   Color
@@ -492,8 +500,8 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               </Label>
 
               <Select.Root defaultValue="Lighter" size="2">
-                <Select.Trigger tabIndex={-1} variant="soft" />
-                <Select.Content variant="soft" container={container} position="popper">
+                <Select.Trigger tabIndex={tabIndex} variant="soft" />
+                <Select.Content variant="soft" container={portalContainer} position="popper">
                   <Select.Item value="Lighter">Lighter</Select.Item>
                   <Select.Item value="Darker">Darker</Select.Item>
                 </Select.Content>
@@ -508,8 +516,8 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               </Label>
 
               <Select.Root defaultValue="30" size="2">
-                <Select.Trigger tabIndex={-1} variant="soft" />
-                <Select.Content variant="soft" container={container} position="popper">
+                <Select.Trigger tabIndex={tabIndex} variant="soft" />
+                <Select.Content variant="soft" container={portalContainer} position="popper">
                   {Array.from({ length: 17 }, (_, i) => (
                     <Select.Item key={i} value={String(i + 24)}>
                       {i + 24}
@@ -519,7 +527,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               </Select.Root>
             </Flex>
 
-            <Button tabIndex={-1} size="2" variant="solid" color="gray" highContrast>
+            <Button tabIndex={tabIndex} size="2" variant="solid" color="gray" highContrast>
               Add to cart
             </Button>
           </Flex>
@@ -537,7 +545,16 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
 
           <Flex align="center" justify="between" gap="3">
             <Box>
-              <Link color="gray" size="2" weight="bold" highContrast>
+              <Link
+                href="#"
+                underline="hover"
+                tabIndex={tabIndex}
+                color="gray"
+                size="2"
+                weight="bold"
+                highContrast
+                onClick={(e) => e.preventDefault()}
+              >
                 Unexpected pairings
               </Link>
 
@@ -545,8 +562,8 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                 Break the fashion norms
               </Text>
             </Box>
-            <Box shrink="0">
-              <Button tabIndex={-1} size="2" variant="soft" color="gray" highContrast>
+            <Box flexShrink="0">
+              <Button tabIndex={tabIndex} size="2" variant="soft" color="gray" highContrast>
                 Shop now
               </Button>
             </Box>
@@ -597,10 +614,10 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
           </Flex>
 
           <Flex gap="2" justify="end">
-            <Button tabIndex={-1} size="2" variant="soft" color="gray" highContrast>
+            <Button tabIndex={tabIndex} size="2" variant="soft" color="gray" highContrast>
               Edit
             </Button>
-            <Button tabIndex={-1} size="2" variant="solid" color="gray" highContrast>
+            <Button tabIndex={tabIndex} size="2" variant="solid" color="gray" highContrast>
               Confirm
             </Button>
           </Flex>
@@ -611,7 +628,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
             <Heading as="h3" size="3">
               Bookmarks
             </Heading>
-            <Button tabIndex={-1} size="1" variant="ghost">
+            <Button tabIndex={tabIndex} size="1" variant="ghost">
               Buy all
             </Button>
           </Flex>
@@ -655,7 +672,16 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                 </Flex>
 
                 <Text as="div" size="2" color="gray">
-                  <Link weight="bold">{item.name}</Link>, {item.price}
+                  <Link
+                    href="#"
+                    tabIndex={tabIndex}
+                    underline="hover"
+                    weight="bold"
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    {item.name}
+                  </Link>
+                  , {item.price}
                 </Text>
               </Box>
             ))}
@@ -663,7 +689,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
         </Card>
       </Flex>
 
-      <Flex shrink="0" gap="6" direction="column" style={{ width: 416 }}>
+      <Flex flexShrink="0" gap="6" direction="column" width="416px">
         <Card size="2">
           <Flex direction="column" align="center" py="2">
             <Box mb="2">
@@ -673,14 +699,23 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               Product discarded
             </Heading>
             <Text size="2" color="gray" mb="4">
-              It’s still available in the <Link>archive</Link>.
+              It’s still available in the{' '}
+              <Link
+                href="#"
+                tabIndex={tabIndex}
+                underline="hover"
+                onClick={(e) => e.preventDefault()}
+              >
+                archive
+              </Link>
+              .
             </Text>
 
             <Flex gap="2">
-              <Button tabIndex={-1} variant="soft" highContrast>
+              <Button tabIndex={tabIndex} variant="soft" highContrast>
                 Undo
               </Button>
-              <Button tabIndex={-1} variant="solid" highContrast>
+              <Button tabIndex={tabIndex} variant="solid" highContrast>
                 Done
               </Button>
             </Flex>
@@ -692,17 +727,15 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
             Edit product
           </Heading>
 
-          <Box style={{ marginTop: -3 }} />
-
           <Grid columns="5" gap="2" mb="4">
-            <Box style={{ gridColumn: '1 / 5' }}>
+            <Box gridColumn="1 / 5">
               <Label>
                 <Text size="2" weight="bold" mb="2" asChild>
                   <Box display="inline-block">Title</Box>
                 </Text>
 
-                <TextField.Input
-                  tabIndex={-1}
+                <TextField.Root
+                  tabIndex={tabIndex}
                   variant="soft"
                   placeholder="Enter product title"
                   defaultValue="Skirt #16"
@@ -716,8 +749,8 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                   <Box display="inline-block">Price</Box>
                 </Text>
 
-                <TextField.Input
-                  tabIndex={-1}
+                <TextField.Root
+                  tabIndex={tabIndex}
                   variant="soft"
                   placeholder="Enter price"
                   defaultValue="$99"
@@ -766,17 +799,17 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                 style={{ border: '1px solid var(--gray-5)', borderRadius: 'var(--radius-2)' }}
               >
                 <Grid columns="2" gap="2">
-                  <IconButton tabIndex={-1} highContrast variant="soft" size="2">
-                    <ImageIcon width="16" height="16" />
+                  <IconButton tabIndex={tabIndex} highContrast variant="soft" size="2">
+                    <ImageIcon />
                   </IconButton>
-                  <IconButton tabIndex={-1} highContrast variant="soft" size="2">
-                    <VideoIcon width="16" height="16" />
+                  <IconButton tabIndex={tabIndex} highContrast variant="soft" size="2">
+                    <VideoIcon />
                   </IconButton>
-                  <IconButton tabIndex={-1} highContrast variant="soft" size="2">
-                    <InstagramLogoIcon width="16" height="16" />
+                  <IconButton tabIndex={tabIndex} highContrast variant="soft" size="2">
+                    <InstagramLogoIcon />
                   </IconButton>
-                  <IconButton tabIndex={-1} highContrast variant="soft" size="2">
-                    <RulerHorizontalIcon width="16" height="16" />
+                  <IconButton tabIndex={tabIndex} highContrast variant="soft" size="2">
+                    <RulerHorizontalIcon />
                   </IconButton>
                 </Grid>
               </Flex>
@@ -791,54 +824,55 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
             </Label>
             <Box position="relative">
               <TextArea
-                tabIndex={-1}
+                tabIndex={tabIndex}
                 spellCheck={false}
                 id="skirt-description"
                 variant="soft"
+                rows={10}
                 defaultValue="Amidst the soft hues and delicate silence, one's gaze is always drawn towards this skirt. The fabric seems to possess a story of its own, woven with threads of history and whispered secrets. Its savory color, reminiscent of lush meadows in spring, holds the promise of new beginnings. Delicate ruffles cascade elegantly, like gentle waves lapping against an untouched shore."
-                style={{ height: 260, paddingTop: 48 }}
+                style={{ paddingTop: 48 }}
               />
               <Box position="absolute" m="2" top="0" left="0" right="0">
                 <Flex gap="4">
                   <Flex gap="1">
-                    <IconButton tabIndex={-1} variant="soft" highContrast>
-                      <FontItalicIcon width="16" height="16" />
+                    <IconButton tabIndex={tabIndex} variant="soft" highContrast>
+                      <FontItalicIcon />
                     </IconButton>
 
-                    <IconButton tabIndex={-1} variant="soft" highContrast>
-                      <FontBoldIcon width="16" height="16" />
+                    <IconButton tabIndex={tabIndex} variant="soft" highContrast>
+                      <FontBoldIcon />
                     </IconButton>
 
-                    <IconButton tabIndex={-1} variant="soft" highContrast>
-                      <StrikethroughIcon width="16" height="16" />
-                    </IconButton>
-                  </Flex>
-
-                  <Flex gap="1">
-                    <IconButton tabIndex={-1} variant="soft" highContrast>
-                      <TextAlignLeftIcon width="16" height="16" />
-                    </IconButton>
-
-                    <IconButton tabIndex={-1} variant="soft" highContrast>
-                      <TextAlignCenterIcon width="16" height="16" />
-                    </IconButton>
-
-                    <IconButton tabIndex={-1} variant="soft" highContrast>
-                      <TextAlignRightIcon width="16" height="16" />
+                    <IconButton tabIndex={tabIndex} variant="soft" highContrast>
+                      <StrikethroughIcon />
                     </IconButton>
                   </Flex>
 
                   <Flex gap="1">
-                    <IconButton tabIndex={-1} variant="soft" highContrast>
+                    <IconButton tabIndex={tabIndex} variant="soft" highContrast>
+                      <TextAlignLeftIcon />
+                    </IconButton>
+
+                    <IconButton tabIndex={tabIndex} variant="soft" highContrast>
+                      <TextAlignCenterIcon />
+                    </IconButton>
+
+                    <IconButton tabIndex={tabIndex} variant="soft" highContrast>
+                      <TextAlignRightIcon />
+                    </IconButton>
+                  </Flex>
+
+                  <Flex gap="1">
+                    <IconButton tabIndex={tabIndex} variant="soft" highContrast>
                       <MagicWandIcon />
                     </IconButton>
 
-                    <IconButton tabIndex={-1} variant="soft" highContrast>
-                      <ImageIcon width="16" height="16" />
+                    <IconButton tabIndex={tabIndex} variant="soft" highContrast>
+                      <ImageIcon />
                     </IconButton>
 
-                    <IconButton tabIndex={-1} variant="soft" highContrast>
-                      <CrumpledPaperIcon width="16" height="16" />
+                    <IconButton tabIndex={tabIndex} variant="soft" highContrast>
+                      <CrumpledPaperIcon />
                     </IconButton>
                   </Flex>
                 </Flex>
@@ -851,29 +885,24 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               <Box display="inline-block">Main material</Box>
             </Text>
 
-            <Grid columns="3" gap="1">
-              {[
-                'Synthetic',
-                'Wool',
-                'Cotton',
-                'Linen',
-                'Denim',
-                'Leather',
-                'Silk',
-                'Chiffon',
-                'Other',
-              ].map((material) => (
-                <Button
-                  tabIndex={-1}
-                  key={material}
-                  highContrast
-                  style={{ fontWeight: 400 }}
-                  variant={state.productMaterial === material ? 'solid' : 'soft'}
-                  onClick={(event) => onToggleButtonClick(event, 'productMaterial')}
-                >
-                  {material}
-                </Button>
-              ))}
+            <Grid asChild columns="3" gap="1">
+              <ToggleButtons
+                type="single"
+                tabIndex={tabIndex}
+                value={state.productMaterial}
+                onValueChange={(value) => setState({ ...state, productMaterial: value })}
+                values={[
+                  'Synthetic',
+                  'Wool',
+                  'Cotton',
+                  'Linen',
+                  'Denim',
+                  'Leather',
+                  'Silk',
+                  'Chiffon',
+                  'Other',
+                ]}
+              />
             </Grid>
           </Box>
 
@@ -882,41 +911,50 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               <Box display="inline-block">Main color</Box>
             </Text>
 
-            <Grid columns="3" gap="1">
-              {[
-                { name: 'White', value: 'white' },
-                { name: 'Gray', value: 'var(--gray-9)' },
-                { name: 'Black', value: '#1B1B18' },
-                { name: 'Red', value: 'var(--red-9)' },
-                { name: 'Pink', value: 'var(--pink-8)' },
-                { name: 'Violet', value: 'var(--violet-9)' },
-                { name: 'Blue', value: 'var(--blue-9)' },
-                { name: 'Green', value: 'var(--teal-9)' },
-                { name: 'Beige', value: '#E5DFCF' },
-              ].map((color) => (
-                <Button
-                  tabIndex={-1}
-                  key={color.name}
-                  highContrast
-                  style={{ fontWeight: 400 }}
-                  variant={state.productColor === color.name ? 'solid' : 'soft'}
-                  onClick={(event) => onToggleButtonClick(event, 'productColor')}
-                >
-                  <Flex align="center" gap="2" width="9">
+            <Grid asChild gap="1" columns="3">
+              <ToggleButtons
+                type="single"
+                tabIndex={tabIndex}
+                values={[
+                  'White',
+                  'Gray',
+                  'Black',
+                  'Red',
+                  'Pink',
+                  'Violet',
+                  'Blue',
+                  'Green',
+                  'Beige',
+                ]}
+                value={state.productColor}
+                onValueChange={(value) => setState({ ...state, productColor: value })}
+              >
+                {(value) => (
+                  <React.Fragment>
                     <Box
-                      shrink="0"
-                      width="4"
-                      height="4"
+                      flexShrink="0"
+                      width="16px"
+                      height="16px"
                       style={{
-                        background: color.value,
+                        background: {
+                          White: 'white',
+                          Gray: 'var(--gray-9)',
+                          Black: '#1B1B18',
+                          Red: 'var(--red-9)',
+                          Pink: 'var(--pink-8)',
+                          Violet: 'var(--violet-9)',
+                          Blue: 'var(--blue-9)',
+                          Green: 'var(--teal-9)',
+                          Beige: '#E5DFCF',
+                        }[value],
                         borderRadius: 'var(--radius-1)',
                         boxShadow: 'inset 0 0 0 1px rgba(160, 160, 160, 0.4)',
                       }}
                     />
-                    {color.name}
-                  </Flex>
-                </Button>
-              ))}
+                    {value}
+                  </React.Fragment>
+                )}
+              </ToggleButtons>
             </Grid>
           </Box>
 
@@ -925,19 +963,14 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               <Box display="inline-block">Sizes</Box>
             </Text>
 
-            <Grid columns="3" gap="1">
-              {['XS', 'S', 'M', 'L', 'XL'].map((size) => (
-                <Button
-                  tabIndex={-1}
-                  key={size}
-                  highContrast
-                  style={{ fontWeight: 400 }}
-                  variant={state.productSizes.includes(size) ? 'solid' : 'soft'}
-                  onClick={(event) => onToggleButtonClick(event, 'productSizes')}
-                >
-                  {size}
-                </Button>
-              ))}
+            <Grid asChild columns="3" gap="1">
+              <ToggleButtons
+                type="multiple"
+                tabIndex={tabIndex}
+                values={['XS', 'S', 'M', 'L', 'XL']}
+                value={state.productSizes}
+                onValueChange={(value) => setState({ ...state, productSizes: value })}
+              />
             </Grid>
           </Box>
         </Card>
@@ -947,7 +980,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
             <Heading as="h3" size="4">
               Orders
             </Heading>
-            <Button tabIndex={-1} variant="ghost" size="1" mr="-2">
+            <Button tabIndex={tabIndex} variant="ghost" size="1" mr="-2">
               <CalendarIcon width="12" height="12" />
               <Text size="2">May 2023</Text>
             </Button>
@@ -972,9 +1005,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
               </Text>
             </Grid>
 
-            <Box style={{ marginTop: -1 }}>
-              <Separator size="4" />
-            </Box>
+            <Separator size="4" />
 
             {([
               {
@@ -1028,7 +1059,15 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
             ] as const).map((order) => (
               <Grid columns="4" key={order.id}>
                 <Text size="3" color="gray">
-                  <Link weight="bold">#{order.id}</Link>
+                  <Link
+                    href="#"
+                    tabIndex={tabIndex}
+                    underline="hover"
+                    weight="bold"
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    #{order.id}
+                  </Link>
                 </Text>
 
                 <Box>
@@ -1047,24 +1086,28 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
           </Flex>
 
           <Flex justify="end">
-            <Button tabIndex={-1} variant="soft" highContrast>
+            <Button tabIndex={tabIndex} variant="soft" highContrast>
               Show more
             </Button>
           </Flex>
         </Card>
       </Flex>
 
-      <Flex shrink="0" gap="6" direction="column" style={{ width: 640 }}>
+      <Flex flexShrink="0" gap="6" direction="column" width="640px">
         <Card size="2">
           <Heading as="h3" size="4" mb="4">
             Shipment tracking
           </Heading>
 
-          <TextField.Root mb="5">
+          <TextField.Root
+            mb="5"
+            variant="soft"
+            tabIndex={tabIndex}
+            placeholder="Enter package number"
+          >
             <TextField.Slot>
               <MagnifyingGlassIcon />
             </TextField.Slot>
-            <TextField.Input variant="soft" tabIndex={-1} placeholder="Enter package number" />
           </TextField.Root>
 
           <Grid columns="2">
@@ -1082,7 +1125,14 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                 <Text as="div" weight="bold" size="2" mb="1">
                   Order number
                 </Text>
-                <Link highContrast size="3">
+                <Link
+                  href="#"
+                  tabIndex={tabIndex}
+                  underline="hover"
+                  highContrast
+                  size="3"
+                  onClick={(e) => e.preventDefault()}
+                >
                   #94356
                 </Link>
               </Box>
@@ -1104,8 +1154,8 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                   <Text as="div" weight="bold" size="2" mb="1">
                     Status
                   </Text>
-                  <Flex height="5" align="center">
-                    <Badge color="green" style={{ marginLeft: -2 }}>
+                  <Flex height="24px" align="center">
+                    <Badge color="green" ml="-2px">
                       On time
                     </Badge>
                   </Flex>
@@ -1131,7 +1181,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
             </Flex>
 
             <Box position="relative" pt="1">
-              <Box position="absolute" top="0" bottom="0" style={{ width: 1, marginLeft: -0.5 }}>
+              <Box position="absolute" top="0" bottom="0" width="1px" ml="-0.5px">
                 <Separator
                   size="4"
                   orientation="vertical"
@@ -1196,108 +1246,123 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
         </Card>
 
         <Card size="2">
-          <Grid
-            style={{ margin: 'calc(var(--card-padding) * -1)', gridTemplateRows: '256px 256px' }}
-            columns="3"
-          >
-            <Box p="4">
-              <Heading as="h3" size="8" mb="2">
-                Dare to stand out
-              </Heading>
-              <Text as="p" mb="3" size="3">
-                Striking patterns, vibrant hues, and unusual designs.
-              </Text>
-              <Button tabIndex={-1} highContrast variant="solid">
-                Shop now
-              </Button>
-            </Box>
-
-            <Box>
-              <img
-                src="https://images.unsplash.com/photo-1514866747592-c2d279258a78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80"
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-            </Box>
-
-            <Text asChild size="1" mb="2" color="gray" style={{ lineHeight: '20px' }}>
+          <Inset clip="padding-box">
+            <Grid rows="256px 256px" columns="3">
               <Box p="4">
-                <Text style={{ marginRight: 6 }}>Men’s</Text>
-                {[
-                  'Polo #11',
-                  'Shirt #12',
-                  'Shirt #24',
-                  'Sneakers #3',
-                  'Jeans #9',
-                  'T‑shirt #4',
-                  'Pants #20',
-                  'Socks #9',
-                  'Watch #15',
-                  'Belt #7',
-                  'Bag #6',
-                  'Shirt #16',
-                  'Suit #17',
-                  'Shorts #22',
-                  'Shoes #13',
-                ].map((product) => (
-                  <React.Fragment key={product}>
-                    <Link key={product} highContrast style={{ marginRight: 6 }}>
-                      {product}
-                    </Link>
-                    <wbr />
-                  </React.Fragment>
-                ))}
-
-                <Text style={{ marginRight: 6 }}>Women’s</Text>
-                {[
-                  'Blouse #16',
-                  'Dress #3',
-                  'Skirt #22',
-                  'Heels #13',
-                  'Sandals #18',
-                  'Bag #14',
-                  'Scarf #19',
-                  'Earrings #23',
-                  'Bracelet #21',
-                  'Necklace #25',
-                  'Glasses #26',
-                  'Perfume #27',
-                ].map((product) => (
-                  <React.Fragment key={product}>
-                    <Link key={product} highContrast style={{ marginRight: 6 }}>
-                      {product}
-                    </Link>
-                    <wbr />
-                  </React.Fragment>
-                ))}
+                <Heading as="h3" size="8" mb="2">
+                  Dare to stand out
+                </Heading>
+                <Text as="p" mb="3" size="3">
+                  Striking patterns, vibrant hues, and unusual designs.
+                </Text>
+                <Button tabIndex={tabIndex} highContrast variant="solid">
+                  Shop now
+                </Button>
               </Box>
-            </Text>
 
-            <Box>
-              <img
-                src="https://plus.unsplash.com/premium_photo-1668485968648-f29fe5157463?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80"
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-            </Box>
+              <Box>
+                <img
+                  src="https://images.unsplash.com/photo-1514866747592-c2d279258a78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </Box>
 
-            <Flex p="4" direction="column" align="center" justify="between">
-              <Text size="1" align="center" color="gray">
-                15&thinsp;–&thinsp;30 Mar
-              </Text>
-              <Text mb="3" mr="4" weight="bold" size="9">
-                −25%
-              </Text>
-              <Text size="1" align="center" color="gray">
-                Get our boldest designs.
-              </Text>
-            </Flex>
+              <Text asChild size="1" mb="2" color="gray" style={{ lineHeight: '20px' }}>
+                <Box p="4">
+                  <Text mr="6px">Men’s</Text>
+                  {[
+                    'Polo #11',
+                    'Shirt #12',
+                    'Shirt #24',
+                    'Sneakers #3',
+                    'Jeans #9',
+                    'T‑shirt #4',
+                    'Pants #20',
+                    'Socks #9',
+                    'Watch #15',
+                    'Belt #7',
+                    'Bag #6',
+                    'Shirt #16',
+                    'Suit #17',
+                    'Shorts #22',
+                    'Shoes #13',
+                  ].map((product) => (
+                    <React.Fragment key={product}>
+                      <Link
+                        key={product}
+                        href="#"
+                        tabIndex={tabIndex}
+                        underline="hover"
+                        highContrast
+                        mr="6px"
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        {product}
+                      </Link>
+                      <wbr />
+                    </React.Fragment>
+                  ))}
 
-            <Box>
-              <img
-                src="https://images.unsplash.com/photo-1532660621034-fb55e2e59762?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=700&q=80"
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-            </Box>
-          </Grid>
+                  <Text mr="6px">Women’s</Text>
+                  {[
+                    'Blouse #16',
+                    'Dress #3',
+                    'Skirt #22',
+                    'Heels #13',
+                    'Sandals #18',
+                    'Bag #14',
+                    'Scarf #19',
+                    'Earrings #23',
+                    'Bracelet #21',
+                    'Necklace #25',
+                    'Glasses #26',
+                    'Perfume #27',
+                  ].map((product) => (
+                    <React.Fragment key={product}>
+                      <Link
+                        key={product}
+                        href="#"
+                        tabIndex={tabIndex}
+                        underline="hover"
+                        highContrast
+                        mr="6px"
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        {product}
+                      </Link>
+                      <wbr />
+                    </React.Fragment>
+                  ))}
+                </Box>
+              </Text>
+
+              <Box>
+                <img
+                  src="https://plus.unsplash.com/premium_photo-1668485968648-f29fe5157463?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </Box>
+
+              <Flex p="4" direction="column" align="center" justify="between">
+                <Text size="1" align="center" color="gray">
+                  15&thinsp;–&thinsp;30 Mar
+                </Text>
+                <Text mb="3" mr="4" weight="bold" size="9">
+                  −25%
+                </Text>
+                <Text size="1" align="center" color="gray">
+                  Get our boldest designs.
+                </Text>
+              </Flex>
+
+              <Box>
+                <img
+                  src="https://images.unsplash.com/photo-1532660621034-fb55e2e59762?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=700&q=80"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </Box>
+            </Grid>
+          </Inset>
         </Card>
 
         <Card size="2">
@@ -1306,21 +1371,17 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
           </Heading>
 
           <Flex gap="2">
-            <Box position="relative" mb="5" grow="1">
-              <Box position="absolute" top="0" left="0" m="2" style={{ pointerEvents: 'none' }}>
-                <MagnifyingGlassIcon />
-              </Box>
-              <TextField.Input
-                tabIndex={-1}
-                variant="soft"
-                placeholder="Search"
-                style={{ paddingLeft: 'var(--space-6)' }}
-              />
+            <Box position="relative" mb="5" flexGrow="1">
+              <TextField.Root tabIndex={tabIndex} variant="soft" placeholder="Search">
+                <TextField.Slot>
+                  <MagnifyingGlassIcon />
+                </TextField.Slot>
+              </TextField.Root>
             </Box>
-            <Flex direction="column" style={{ minWidth: 140 }}>
+            <Flex direction="column" minWidth="140px">
               <Select.Root defaultValue="All customers">
-                <Select.Trigger variant="soft" tabIndex={-1} />
-                <Select.Content variant="soft" container={container} position="popper">
+                <Select.Trigger variant="soft" tabIndex={tabIndex} />
+                <Select.Content variant="soft" container={portalContainer} position="popper">
                   <Select.Item value="All customers">All customers</Select.Item>
                   <Select.Item value={new Date().getFullYear().toString()}>
                     {new Date().getFullYear()}
@@ -1380,7 +1441,15 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
             ].map((customer) => (
               <Flex justify="between" key={customer.name}>
                 <Box>
-                  <Link size="3" weight="bold" highContrast>
+                  <Link
+                    href="#"
+                    tabIndex={tabIndex}
+                    size="3"
+                    weight="bold"
+                    highContrast
+                    underline="hover"
+                    onClick={(e) => e.preventDefault()}
+                  >
                     {customer.name}
                   </Link>
                   <Text as="div" size="2" mb="2">
@@ -1391,7 +1460,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                   </Text>
                 </Box>
 
-                <Flex align="center" justify="end" gap="5" grow="1">
+                <Flex align="center" justify="end" gap="5" flexGrow="1">
                   <Box>
                     <Text as="div" size="2" color="gray" align="right">
                       Sales
@@ -1401,7 +1470,7 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
                     </Text>
                   </Box>
                   <Separator orientation="vertical" size="3" />
-                  <Box style={{ minWidth: 70 }}>
+                  <Box minWidth="70px">
                     <Text as="div" size="2" color="gray">
                       Orders
                     </Text>
@@ -1421,8 +1490,8 @@ export const ExampleThemesEcommerce = (props: React.ComponentPropsWithoutRef<typ
 
 const GreenDot = () => (
   <Box
-    width="2"
-    height="2"
+    width="8px"
+    height="8px"
     position="absolute"
     mt="1"
     ml="-1"
@@ -1432,4 +1501,60 @@ const GreenDot = () => (
       borderRadius: '100%',
     }}
   />
+);
+
+interface ToggleButtonsSingleProps {
+  type: 'single';
+  value: string;
+  onValueChange: (value: string) => void;
+}
+
+interface ToggleButtonsMultipleProps {
+  type: 'multiple';
+  value: string[];
+  onValueChange: (value: string[]) => void;
+}
+
+interface ToggleButtonsCommonProps {
+  tabIndex?: number;
+  values: string[];
+  children?: (value: string) => React.ReactNode;
+}
+
+type ToggleGroupRootElement = React.ElementRef<typeof ToggleGroup.Root>;
+
+type ToggleButtonsProps = (ToggleButtonsSingleProps | ToggleButtonsMultipleProps) &
+  ToggleButtonsCommonProps;
+
+const ToggleButtons = React.forwardRef<ToggleGroupRootElement, ToggleButtonsProps>(
+  ({ children, tabIndex, values, ...props }, forwardedRef) => {
+    const isActive = (value: string) =>
+      props.type === 'single' ? props.value === value : props.value.includes(value);
+
+    return (
+      <ToggleGroup.Root
+        ref={forwardedRef}
+        {...props}
+        {...(tabIndex !== undefined && { tabIndex })}
+        onValueChange={(value) => {
+          if (value) {
+            props.onValueChange(value);
+          }
+        }}
+      >
+        {values.map((value) => (
+          <ToggleGroup.Item asChild key={value} value={value}>
+            <Button
+              highContrast
+              variant={isActive(value) ? 'solid' : 'soft'}
+              style={{ fontWeight: 400 }}
+              {...(tabIndex !== undefined && { tabIndex })}
+            >
+              {children ? children(value) : value}
+            </Button>
+          </ToggleGroup.Item>
+        ))}
+      </ToggleGroup.Root>
+    );
+  }
 );

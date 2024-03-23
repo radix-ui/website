@@ -2,7 +2,7 @@ import React from 'react';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { MDXProvider } from '@components/MDXComponents';
-import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
+import { getAllFrontmatter, getMdxBySlug } from '@utils/mdx';
 import { QuickNav } from '@components/QuickNav';
 
 import type { Frontmatter } from 'types/frontmatter';
@@ -13,7 +13,7 @@ type Doc = {
   code: string;
 };
 
-export default function ThemingDoc({ frontmatter, code }: Doc) {
+export default function ThemesDoc({ frontmatter, code }: Doc) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
   return (

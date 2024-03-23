@@ -1,111 +1,106 @@
 import {
   Avatar,
+  Badge,
   Box,
   Button,
   Card,
   Checkbox,
   Code,
+  Container,
+  DataList,
+  Dialog,
+  Em,
   Flex,
   Grid,
   Heading,
   IconButton,
   Inset,
   Link,
+  Popover,
+  Progress,
   ScrollArea,
+  Section,
+  SegmentedControl,
+  Skeleton,
   Slider,
+  Spinner,
   Strong,
   Table,
   Text,
-  TextArea,
   TextField,
-  TextFieldInput,
   Theme,
-  themeAccentColorsOrdered,
 } from '@radix-ui/themes';
 import { Label } from '@radix-ui/react-label';
 import { allPeople } from './people';
-import { CheckIcon } from '@radix-ui/react-icons';
+import { CheckIcon, CopyIcon, CubeIcon, Half2Icon, PlayIcon } from '@radix-ui/react-icons';
 import { Marker } from './Marker';
 import * as React from 'react';
 import { ThemesPanelBackgroundImage } from './ThemesPanelBackgroundImage';
+import { accentColors, themePropDefs } from '@utils/themes/props';
+import { TabNavDemo } from '@components/tab-nav-demo';
+import styles from './ThemesDocsAssets.module.css';
 
-export function ThemesPanelTranslucentExample() {
+export function ThemesPanelCardExample({ panelBackground }) {
+  const passwordFieldId = 'example-password-field' + React.useId();
   return (
-    <Card>
-      <Inset>
-        <Theme panelBackground="translucent" asChild>
-          <Flex direction="column">
-            <Flex justify="center" position="relative" px="5" py={{ initial: '5', sm: '8' }}>
-              <Flex
-                align="center"
-                justify="center"
-                position="absolute"
-                inset="0"
-                style={{ overflow: 'hidden' }}
-              >
-                <ThemesPanelBackgroundImage
-                  id="1"
-                  width="900"
-                  height="200%"
-                  style={{ opacity: 0.5 }}
-                />
-              </Flex>
-
-              <Card size="4" style={{ width: 400 }}>
-                <Heading as="h3" size="6" trim="start" mb="4">
-                  Sign up
-                </Heading>
-
-                <Box mb="5">
-                  <label>
-                    <Text as="div" size="2" weight="bold" mb="2">
-                      Email address
-                    </Text>
-                    <TextFieldInput placeholder="Enter your email" />
-                  </label>
-                </Box>
-
-                <Box mb="5" position="relative">
-                  <Box position="absolute" top="0" right="0" style={{ marginTop: -2 }}>
-                    <Link href="#card" size="2">
-                      Forgot password?
-                    </Link>
-                  </Box>
-
-                  <label>
-                    <Text as="div" size="2" weight="bold" mb="2">
-                      Password
-                    </Text>
-                    <TextFieldInput placeholder="Enter your password" />
-                  </label>
-                </Box>
-
-                <Flex mt="6" justify="end" gap="3">
-                  <Button variant="soft">Create account</Button>
-                  <Button>Sign in</Button>
-                </Flex>
-              </Card>
-            </Flex>
+    <Theme panelBackground={panelBackground} asChild>
+      <Flex direction="column" mx={{ initial: '-5', xs: '-6', sm: '0' }}>
+        <Flex justify="center" position="relative" px="5" py={{ initial: '7', xs: '9' }}>
+          <Flex align="center" justify="center" overflow="hidden" position="absolute" inset="0">
+            <ThemesPanelBackgroundImage id="1" width="900" height="200%" style={{ opacity: 0.5 }} />
           </Flex>
-        </Theme>
-      </Inset>
-    </Card>
+
+          <Box width="100%" maxWidth="400px">
+            <Card size="4">
+              <Heading as="h3" size="6" trim="start" mb="4">
+                Sign up
+              </Heading>
+
+              <Box mb="5">
+                <label>
+                  <Text as="div" size="2" weight="bold" mb="1">
+                    Email address
+                  </Text>
+                  <TextField.Root placeholder="Enter your email" />
+                </label>
+              </Box>
+
+              <Box mb="5" position="relative">
+                <Flex align="baseline" justify="between" mb="1">
+                  <Text as="label" size="2" weight="medium" htmlFor={passwordFieldId}>
+                    Password
+                  </Text>
+                  <Link href="#" size="2">
+                    Forgot password?
+                  </Link>
+                </Flex>
+                <TextField.Root id={passwordFieldId} placeholder="Enter your password" />
+              </Box>
+
+              <Flex
+                direction={{ initial: 'column-reverse', sm: 'row' }}
+                mt="5"
+                justify="end"
+                gap="3"
+              >
+                <Button variant="soft">Create account</Button>
+                <Button>Sign in</Button>
+              </Flex>
+            </Card>
+          </Box>
+        </Flex>
+      </Flex>
+    </Theme>
   );
 }
 
-export function ThemesPanelSolidExample() {
+export function ThemesPanelTableExample({ panelBackground }) {
   return (
     <Card>
       <Inset>
-        <Theme panelBackground="solid" asChild>
+        <Theme panelBackground={panelBackground} asChild>
           <Flex justify="center" position="relative" px="5" py={{ initial: '5', sm: '8' }}>
-            <Flex
-              align="center"
-              justify="center"
-              position="absolute"
-              inset="0"
-              style={{ overflow: 'hidden' }}
-            >
+            <Flex align="center" justify="center" overflow="hidden" position="absolute" inset="0">
               <ThemesPanelBackgroundImage
                 id="2"
                 width="1700"
@@ -156,44 +151,6 @@ export function ThemesVariantsExample() {
       <Box my="5">
         <Grid columns={{ initial: '1', sm: '2' }} gap="6" align="stretch">
           <Theme
-            appearance="dark"
-            radius="large"
-            hasBackground={false}
-            className="radix-themes-default-fonts"
-            asChild
-            accentColor="teal"
-            panelBackground="solid"
-          >
-            <Card size="4">
-              <Flex align="center" justify="center" height="100%">
-                <Box>
-                  <Flex gap="3" direction="column" align="center">
-                    <Marker height="8" width="8">
-                      <CheckIcon width="32" height="32" />
-                    </Marker>
-
-                    <Heading as="h3" size="6" mb="2">
-                      Invoice paid
-                    </Heading>
-                  </Flex>
-
-                  <Text as="p" size="3" align="center" mb="5">
-                    You paid $17,975.30. A receipt copy was sent to <Strong>acc@example.com</Strong>
-                  </Text>
-
-                  <Flex direction="column" gap="3" align="stretch">
-                    <Button radius="full">Next invoice</Button>
-
-                    <Button radius="full" variant="outline">
-                      Done
-                    </Button>
-                  </Flex>
-                </Box>
-              </Flex>
-            </Card>
-          </Theme>
-
-          <Theme
             appearance="light"
             radius="medium"
             hasBackground={false}
@@ -214,7 +171,7 @@ export function ThemesVariantsExample() {
                     <Text size="2" weight="bold">
                       Name
                     </Text>
-                    <TextField.Input variant="surface" defaultValue="Emily Adams" />
+                    <TextField.Root variant="surface" defaultValue="Emily Adams" />
                   </Label>
                 </Flex>
 
@@ -223,7 +180,7 @@ export function ThemesVariantsExample() {
                     <Text size="2" weight="bold">
                       Username
                     </Text>
-                    <TextField.Input variant="surface" defaultValue="@emilyadams" />
+                    <TextField.Root variant="surface" defaultValue="@emilyadams" />
                   </Label>
                 </Flex>
 
@@ -232,7 +189,7 @@ export function ThemesVariantsExample() {
                     <Text size="2" weight="bold">
                       Email
                     </Text>
-                    <TextField.Input variant="surface" defaultValue="emily@example.com" />
+                    <TextField.Root variant="surface" defaultValue="emily@example.com" />
                   </Label>
                 </Flex>
 
@@ -269,10 +226,52 @@ export function ThemesVariantsExample() {
                     Danger zone
                   </Text>
                   <Flex align="start" direction="column" gap="2">
-                    <Link size="2">Reset recommendations</Link>
-                    <Link size="2">Delete profile</Link>
+                    <Link href="#" size="2" onClick={(e) => e.preventDefault()}>
+                      Reset recommendations
+                    </Link>
+                    <Link href="#" size="2" onClick={(e) => e.preventDefault()}>
+                      Delete profile
+                    </Link>
                   </Flex>
                 </Flex>
+              </Flex>
+            </Card>
+          </Theme>
+
+          <Theme
+            appearance="dark"
+            radius="large"
+            hasBackground={false}
+            className="radix-themes-default-fonts"
+            asChild
+            accentColor="teal"
+            panelBackground="solid"
+          >
+            <Card size="4">
+              <Flex align="center" justify="center" height="100%">
+                <Box>
+                  <Flex gap="3" direction="column" align="center">
+                    <Marker height="48px" width="48px">
+                      <CheckIcon width="32" height="32" />
+                    </Marker>
+
+                    <Heading as="h3" size="6" mb="2">
+                      Invoice paid
+                    </Heading>
+                  </Flex>
+
+                  <Text as="p" size="3" align="center" mb="5">
+                    You paid $17,975.30. A receipt copy was sent to <Strong>acc@example.com</Strong>
+                  </Text>
+
+                  <Flex direction="column" gap="3" align="stretch">
+                    <Button radius="full">Next invoice</Button>
+
+                    <Button radius="full" variant="outline">
+                      Done
+                    </Button>
+                  </Flex>
+                </Box>
               </Flex>
             </Card>
           </Theme>
@@ -302,7 +301,10 @@ export function ThemesScalingExample() {
                     {person.name}
                   </Text>
                   <Text as="div" size="2" color="gray">
-                    Approved invoice <Link>#3461</Link>
+                    Approved invoice{' '}
+                    <Link href="#" onClick={(e) => e.preventDefault()}>
+                      #3461
+                    </Link>
                   </Text>
                 </Box>
               </Flex>
@@ -315,37 +317,18 @@ export function ThemesScalingExample() {
 }
 
 export function ThemesRadiusExample() {
-  const radiusValues = ['none', 'medium', 'full'] as const;
   return (
     <PropValueExampleCard>
-      {radiusValues.map((radius, i) => (
-        <PropValueExampleCardRow
-          value={radius}
-          bordered={i + 1 !== radiusValues.length}
-          key={radius}
-        >
+      {themePropDefs.radius.values.map((radius, i, arr) => (
+        <PropValueExampleCardRow value={radius} bordered={i + 1 !== arr.length} key={radius}>
           <Theme radius={radius}>
-            <Card variant="surface" size="2" style={{ maxWidth: 480 }}>
-              <Flex gap="3">
-                <Avatar
-                  size="3"
-                  src={allPeople[4].image}
-                  fallback={allPeople[22]?.name[0].toUpperCase()}
-                />
-                <Box grow="1">
-                  <TextArea placeholder="Reply…" />
-                  <Flex gap="6" mt="3" justify="between">
-                    <Flex asChild align="center" gap="2">
-                      <Text as="label" size="2">
-                        <Checkbox checked />
-                        <Text>Send to group</Text>
-                      </Text>
-                    </Flex>
-                    <Button>Send message</Button>
-                  </Flex>
-                </Box>
-              </Flex>
-            </Card>
+            <Box maxWidth="320px">
+              <TextField.Root size="3" placeholder="Reply…">
+                <TextField.Slot side="right" px="1">
+                  <Button size="2">Send</Button>
+                </TextField.Slot>
+              </TextField.Root>
+            </Box>
           </Theme>
         </PropValueExampleCardRow>
       ))}
@@ -388,35 +371,98 @@ function PropValueExampleCardRow({
         </Code>
       </Box>
 
-      <Box grow="1" style={{ minWidth: 'max-content' }}>
+      <Box flexGrow="1" style={{ minWidth: 'max-content' }}>
         {children}
       </Box>
     </Flex>
   );
 }
 
-export function ThemesShadowScale() {
+export function ThemesRadiusScale() {
   return (
-    <Flex direction="column" gap="3" mt="6" mb="5">
+    <Flex direction="column" gap="3">
       <Flex
-        style={{ flex: 1, backgroundColor: 'var(--gray-4)', borderRadius: 'var(--radius-3)' }}
+        flexGrow="1"
         p="5"
         gap="4"
+        style={{
+          backgroundColor: 'var(--gray-a1)',
+          boxShadow: 'inset 0 0 0 1px var(--gray-a4)',
+          borderRadius: 'var(--radius-4)',
+        }}
       >
         {[...new Array(6)].map((_, i) => (
-          <Flex grow="1" align="center" justify="center" key={i}>
-            <Box
-              grow="1"
+          <Flex flexGrow="1" align="center" justify="center" key={i}>
+            <DecorativeBox
+              flexGrow="1"
               style={{
-                backgroundColor: 'var(--gray-1)',
-                boxShadow: `var(--shadow-${i + 1})`,
-                borderRadius: 'var(--radius-2)',
+                borderRadius: `var(--radius-${i + 1})`,
               }}
-              height="8"
+              height="32px"
               key={i}
             />
           </Flex>
         ))}
+      </Flex>
+
+      <Flex align="center" gap="1" px="4">
+        {[...new Array(6)].map((_, i) => (
+          <Flex align="center" justify="center" height="100%" width="100%" key={i}>
+            <Text size="1" color="gray">
+              {i + 1}
+            </Text>
+          </Flex>
+        ))}
+      </Flex>
+    </Flex>
+  );
+}
+
+export function ThemesShadowScale() {
+  return (
+    <Flex direction="column" gap="3">
+      <Flex
+        position="relative"
+        flexGrow="1"
+        p="5"
+        gap="4"
+        style={{
+          backgroundColor: 'var(--gray-a1)',
+          boxShadow: 'inset 0 0 0 1px var(--gray-a4)',
+          borderRadius: 'var(--radius-4)',
+        }}
+      >
+        {[...new Array(6)].map((_, i) => (
+          <Flex flexGrow="1" align="center" justify="center" key={i}>
+            <Box
+              flexGrow="1"
+              style={{
+                backgroundColor: 'var(--color-panel-solid)',
+                boxShadow: `var(--shadow-${i + 1})`,
+                borderRadius: 'var(--radius-2)',
+              }}
+              height="48px"
+              key={i}
+            />
+          </Flex>
+        ))}
+
+        <Flex position="absolute" inset="5" gap="4">
+          <Flex flexGrow="1" />
+          {[...new Array(5)].map((_, i) => (
+            <Flex flexGrow="1" align="center" justify="center" key={i}>
+              <Box
+                flexGrow="1"
+                style={{
+                  backgroundColor: 'var(--color-panel-solid)',
+                  borderRadius: 'var(--radius-2)',
+                }}
+                height="48px"
+                key={i}
+              />
+            </Flex>
+          ))}
+        </Flex>
       </Flex>
 
       <Flex align="center" gap="1" px="4">
@@ -437,7 +483,7 @@ export function SwatchRow({ name }: { name: string }) {
     <Grid columns="12" gap="1">
       {[...new Array(12)].map((_, i) => (
         <Box
-          height="6"
+          height="32px"
           style={{
             backgroundColor: `var(--${name}-${i + 1})`,
             borderRadius: 'var(--radius-2)',
@@ -451,27 +497,33 @@ export function SwatchRow({ name }: { name: string }) {
 
 export function ThemesColorScale({ type = 'accent' }: { type: 'accent' | 'gray' }) {
   return (
-    <Flex direction="column" gap="2" mt="6" mb="5">
-      <Flex align="center" gap="1">
+    <Flex direction={{ sm: 'column' }} gap="2">
+      <Flex
+        direction={{ initial: 'column', sm: 'row' }}
+        align={{ sm: 'center' }}
+        gap="1"
+        flexGrow="1"
+      >
         {[...new Array(12)].map((_, i) => (
-          <Flex grow="1" direction="column" gap="1" key={i}>
+          <Flex flexGrow="1" direction={{ sm: 'column' }} gap="1" key={i}>
             <Box
-              height="6"
+              flexGrow="1"
+              height="32px"
               style={{
                 backgroundColor: `var(--${type}-${i + 1})`,
                 borderRadius: 'var(--radius-1)',
               }}
             />
-
             <Box
-              height="6"
+              flexGrow="1"
+              height="32px"
+              overflow="hidden"
               style={{
                 backgroundImage:
                   'linear-gradient(45deg, var(--gray-2) 25%, transparent 25%), linear-gradient(135deg, var(--gray-2) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--gray-2) 75%), linear-gradient(135deg, transparent 75%, var(--gray-2) 75%)',
                 backgroundSize: '16px 16px',
                 backgroundPosition: '0px 0px, 8px 0px, 8px -8px, 0px 8px',
                 borderRadius: 'var(--radius-1)',
-                overflow: 'hidden',
               }}
             >
               <Box
@@ -484,7 +536,12 @@ export function ThemesColorScale({ type = 'accent' }: { type: 'accent' | 'gray' 
         ))}
       </Flex>
 
-      <Flex align="center" gap="1">
+      <Flex
+        minWidth="24px"
+        direction={{ initial: 'column', sm: 'row' }}
+        align={{ sm: 'center' }}
+        gap="1"
+      >
         {[...new Array(12)].map((_, i) => (
           <Flex align="center" justify="center" height="100%" width="100%" key={i}>
             <Text size="1" color="gray">
@@ -501,7 +558,7 @@ export function ThemesSpacingScale() {
   return (
     <Flex align="end" gap="1">
       {[...new Array(9)].map((_, i) => (
-        <Flex direction="column" grow="1" key={i} align="center" gap="4">
+        <Flex direction="column" flexGrow="1" key={i} align="center" gap="4">
           <DecorativeBox style={{ width: '100%', height: `var(--space-${i + 1})` }} />
 
           <Text size="1" color="gray">
@@ -519,9 +576,9 @@ export function ThemesFontSizeScale() {
       <Flex align="stretch" style={{ borderBottom: '1px dashed var(--gray-a6)' }}>
         {[...new Array(9)].map((_, i) => (
           <Flex
-            direction="column"
-            grow="1"
             key={i}
+            direction="column"
+            flexGrow="1"
             justify="end"
             align="center"
             position="relative"
@@ -544,17 +601,15 @@ export function ThemesFontSizeScale() {
 
 export function ThemesAccentSwatches() {
   return (
-    <Flex direction="column" gap="5" my="6">
+    <Flex direction="column" gap="5">
       <Grid columns={{ initial: '4', xs: '6', sm: '9' }} gapX="1" gapY="3">
-        {themeAccentColorsOrdered.map((color, i) => (
-          <Box grow="1" key={i}>
-            <Theme accentColor={color} hasBackground={false} asChild>
-              <Box
-                mb="1"
-                height="8"
-                style={{ backgroundColor: `var(--accent-9)`, borderRadius: 'var(--radius-1)' }}
-              />
-            </Theme>
+        {accentColors.map((color, i) => (
+          <Box flexGrow="1" key={i}>
+            <Box
+              mb="1"
+              height="48px"
+              style={{ backgroundColor: `var(--${color}-9)`, borderRadius: 'var(--radius-1)' }}
+            />
             <Text as="div" size="1" color="gray">
               {color.charAt(0).toUpperCase() + color.slice(1)}
             </Text>
@@ -567,21 +622,19 @@ export function ThemesAccentSwatches() {
 
 export function ThemeGraySwatches() {
   return (
-    <Flex direction="column" gap="5" my="6">
+    <Flex direction="column" gap="5">
       <Grid columns={{ initial: '4', xs: '6', sm: '9' }} gapX="1" gapY="3">
         {(['gray', 'mauve', 'slate', 'sage', 'olive', 'sand'] as const).map((color, i) => (
-          <Box grow="1" key={i}>
-            <Theme accentColor="gray" grayColor={color} hasBackground={false} asChild>
-              <Box
-                mb="1"
-                height="8"
-                style={{
-                  backgroundColor: `var(--accent-9)`,
-                  borderRadius: 'var(--radius-1)',
-                  filter: color === 'gray' ? 'saturate(0)' : undefined,
-                }}
-              />
-            </Theme>
+          <Box flexGrow="1" key={i}>
+            <Box
+              mb="1"
+              height="48px"
+              style={{
+                backgroundColor: `var(--${color}-9)`,
+                borderRadius: 'var(--radius-1)',
+                filter: color === 'gray' ? 'saturate(0)' : undefined,
+              }}
+            />
             <Text as="div" size="1" color="gray">
               {color.charAt(0).toUpperCase() + color.slice(1)}
             </Text>
@@ -591,6 +644,249 @@ export function ThemeGraySwatches() {
     </Flex>
   );
 }
+
+export function ThemesAllColors() {
+  const steps = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const colors = [
+    'gray',
+    'bronze',
+    'tomato',
+    'red',
+    'ruby',
+    'crimson',
+    'pink',
+    'plum',
+    'purple',
+    'violet',
+    'iris',
+    'indigo',
+    'blue',
+    'cyan',
+    'teal',
+    'jade',
+    'green',
+    'grass',
+    'brown',
+    'orange',
+    'amber',
+    'yellow',
+    'lime',
+    'mint',
+    'sky',
+  ];
+  return (
+    <Flex direction="column" gap="3">
+      <Grid columns="25" rows="12" gap="1px">
+        {steps.map((step) =>
+          colors.map((color) => (
+            <Box
+              key={color + step}
+              style={{
+                aspectRatio: '1 / 1',
+                backgroundColor: `var(--${color}-${step})`,
+                borderRadius: '1px',
+              }}
+            />
+          ))
+        )}
+      </Grid>
+
+      <Text as="div" align="center" color="gray" size="2">
+        Color system
+      </Text>
+    </Flex>
+  );
+}
+
+const werther = `A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now. When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees, and but a few stray gleams steal into the inner sanctuary, I throw myself down among the tall grass by the trickling stream; and, as I lie close to the earth, a thousand unknown plants are noticed by me: when I hear the buzz of the little world among the stalks, and grow familiar with the countless indescribable forms of the insects and flies, then I feel the presence of the Almighty, who formed us in his own image, and the breath`;
+
+export function ThemesTypeSpecimen() {
+  return (
+    <Theme className="radix-themes-default-fonts">
+      <Flex direction="column" gap="2">
+        <Grid align="start" columns="auto auto" gap="5">
+          <Flex>
+            <Flex direction="column" gap="3.1px">
+              <Heading size="9" trim="start" weight="regular">
+                <Flex justify="between">
+                  <span>A</span>
+                  <span>B</span>
+                  <span>C</span>
+                  <span>D</span>
+                </Flex>
+              </Heading>
+              <Heading size="8" weight="regular">
+                <Flex justify="between">
+                  <span>A</span>
+                  <span>B</span>
+                  <span>C</span>
+                  <span>D</span>
+                  <span>E</span>
+                  <span>F</span>
+                  <span>G</span>
+                </Flex>
+              </Heading>
+              <Heading size="7" weight="regular">
+                <Flex justify="between">
+                  <span>A</span>
+                  <span>B</span>
+                  <span>C</span>
+                  <span>D</span>
+                  <span>E</span>
+                  <span>F</span>
+                  <span>G</span>
+                  <span>H</span>
+                  <span>I</span>
+                </Flex>
+              </Heading>
+              <Heading size="6" weight="regular">
+                <Flex justify="between">
+                  <span>A</span>
+                  <span>B</span>
+                  <span>C</span>
+                  <span>D</span>
+                  <span>E</span>
+                  <span>F</span>
+                  <span>G</span>
+                  <span>H</span>
+                  <span>I</span>
+                  <span>J</span>
+                </Flex>
+              </Heading>
+              <Heading size="5" weight="regular">
+                <Flex justify="between">
+                  <span>A</span>
+                  <span>B</span>
+                  <span>C</span>
+                  <span>D</span>
+                  <span>E</span>
+                  <span>F</span>
+                  <span>G</span>
+                  <span>H</span>
+                  <span>I</span>
+                  <span>J</span>
+                  <span>K</span>
+                  <span>L</span>
+                </Flex>
+              </Heading>
+            </Flex>
+          </Flex>
+          <Grid align="baseline" columns="auto auto" gap="5">
+            <Box position="relative" top={{ initial: '0', sm: 'calc(-1 * var(--line-height-2))' }}>
+              <Text
+                as="p"
+                size="2"
+                style={{
+                  WebkitLineClamp: 10,
+                  WebkitBoxOrient: 'vertical',
+                  display: '-webkit-box',
+                  overflow: 'hidden',
+                }}
+              >
+                {werther}
+              </Text>
+            </Box>
+
+            <Box maxWidth="260px" display={{ initial: 'none', sm: 'block' }}>
+              <Heading trim="end" size="8">
+                Ambiguous voice of a heart which prefers kiwi bowls to a zephyr.
+              </Heading>
+            </Box>
+          </Grid>
+        </Grid>
+
+        <Text as="div" align="center" color="gray" size="2">
+          Typography examples
+        </Text>
+      </Flex>
+    </Theme>
+  );
+}
+
+export function ThemesPanelComposition() {
+  return (
+    <Flex direction="column" gap="2">
+      <Flex
+        p={{ initial: '5', sm: '7' }}
+        direction="column"
+        align="center"
+        justify="center"
+        style={{
+          backgroundColor: 'var(--gray-a2)',
+          boxShadow: 'inset 0 0 0 1px var(--gray-a3)',
+          borderRadius: 'var(--radius-4)',
+        }}
+      >
+        <Grid width="100%" columns={{ initial: '1', xs: '3' }} gap="5">
+          <Flex
+            direction="column"
+            align="start"
+            p="4"
+            gap="2"
+            style={{
+              backgroundColor: 'var(--color-panel-solid)',
+              borderRadius: 'var(--radius-3)',
+              boxShadow: 'var(--shadow-2)',
+            }}
+          >
+            <StaticSkeleton width="80px" height="16px" />
+            <StaticSkeleton width="100%" height="24px" />
+          </Flex>
+          <Flex
+            direction="column"
+            align="start"
+            p="4"
+            gap="2"
+            style={{
+              backgroundColor: 'var(--color-panel-solid)',
+              borderRadius: 'var(--radius-5)',
+              boxShadow: 'var(--shadow-3)',
+            }}
+          >
+            <StaticSkeleton
+              width="80px"
+              height="16px"
+              style={{ borderRadius: 'var(--radius-2)' }}
+            />
+            <StaticSkeleton
+              width="100%"
+              height="24px"
+              style={{ borderRadius: 'var(--radius-2)' }}
+            />
+          </Flex>
+          <Flex
+            direction="column"
+            align="start"
+            p="4"
+            gap="2"
+            style={{
+              backgroundColor: 'var(--color-panel-solid)',
+              borderRadius: 'var(--radius-6)',
+              boxShadow: 'var(--shadow-5)',
+            }}
+          >
+            <StaticSkeleton width="80px" height="16px" style={{ borderRadius: '100px' }} />
+            <StaticSkeleton width="100%" height="24px" style={{ borderRadius: '100px' }} />
+          </Flex>
+        </Grid>
+      </Flex>
+
+      <Text as="div" align="center" color="gray" size="2">
+        Shadow and radius examples
+      </Text>
+    </Flex>
+  );
+}
+
+const StaticSkeleton = (props: React.ComponentPropsWithoutRef<typeof Skeleton>) => (
+  <Skeleton
+    {...props}
+    ref={(element) => {
+      element?.style.setProperty('animation', 'none', 'important');
+      element?.style.setProperty('background-color', 'var(--gray-a3)', 'important');
+    }}
+  />
+);
 
 export function ThemesVolumeControlExample() {
   return (
@@ -613,9 +909,9 @@ export function ThemesVolumeControlExample() {
             </Flex>
           </Flex>
 
-          <Flex gap="2" align="center" height="4" mt="2" mb="5">
+          <Flex gap="2" align="center" height="16px" mt="2" mb="5">
             <VolumeNoneIcon color="var(--gray-a9)" />
-            <Box grow="1">
+            <Box flexGrow="1">
               <Slider variant="soft" defaultValue={[80]} />
             </Box>
             <VolumeMaxIcon color="var(--gray-a9)" />
@@ -752,12 +1048,12 @@ const VolumeMaxIcon = (props: React.ComponentPropsWithoutRef<'svg'>) => (
   </svg>
 );
 
-export function DecorativeBox(props) {
+export function DecorativeBox(props: React.ComponentPropsWithoutRef<typeof Box>) {
   return (
     <Box
+      height="100%"
       {...props}
       style={{
-        height: '100%',
         backgroundColor: 'var(--gray-a3)',
         backgroundClip: 'padding-box',
         border: '1px solid var(--gray-a5)',
@@ -771,7 +1067,7 @@ export function DecorativeBox(props) {
 
 export function ThemesDarkModeExample() {
   return (
-    <Box style={{ borderRadius: 'var(--radius-6)', overflow: 'hidden' }}>
+    <Box overflow="hidden" style={{ borderRadius: 'var(--radius-6)' }}>
       <Grid columns={{ initial: '1', sm: '2' }}>
         <Theme asChild appearance="light" style={{ backgroundColor: 'var(--gray-2)' }}>
           <Box p={{ initial: '4', sm: '5' }}>
@@ -868,3 +1164,442 @@ const HeartIcon = (props: React.ComponentPropsWithoutRef<'svg'>) => (
     <path d="M 9.5449219 3 C 5.3895807 3 2 6.3895806 2 10.544922 C 2 14.283156 4.9005496 18.084723 7.6601562 21.119141 C 10.419763 24.153558 13.171875 26.369141 13.171875 26.369141 A 1.0001 1.0001 0 0 0 13.197266 26.388672 C 13.642797 26.725148 14.201794 26.943857 14.808594 26.984375 A 1.0001 1.0001 0 0 0 15 27 A 1.0001 1.0001 0 0 0 15.189453 26.984375 A 1.0001 1.0001 0 0 0 15.199219 26.982422 C 15.802918 26.940449 16.359155 26.723674 16.802734 26.388672 A 1.0001 1.0001 0 0 0 16.828125 26.369141 C 16.828125 26.369141 19.580237 24.153558 22.339844 21.119141 C 25.099451 18.084722 28 14.283156 28 10.544922 C 28 6.3895806 24.610419 3 20.455078 3 C 17.841043 3 15.989939 4.4385487 15 5.4570312 C 14.010061 4.4385487 12.158957 3 9.5449219 3 z M 9.5449219 5 C 12.276127 5 13.937826 7.2424468 14.103516 7.4746094 A 1.0001 1.0001 0 0 0 14.994141 8.0136719 A 1.0001 1.0001 0 0 0 15.017578 8.0136719 A 1.0001 1.0001 0 0 0 15.041016 8.0117188 A 1.0001 1.0001 0 0 0 15.117188 8.0058594 A 1.0001 1.0001 0 0 0 15.892578 7.4785156 C 16.049938 7.2575052 17.716133 5 20.455078 5 C 23.529737 5 26 7.4702629 26 10.544922 C 26 13.147688 23.499768 16.870104 20.859375 19.773438 C 18.227966 22.666891 15.607768 24.780451 15.589844 24.794922 C 15.414236 24.925626 15.219097 25 15 25 C 14.780903 25 14.585764 24.92563 14.410156 24.794922 C 14.392236 24.780452 11.772034 22.666891 9.140625 19.773438 C 6.5002316 16.870105 4 13.147688 4 10.544922 C 4 7.4702629 6.470263 5 9.5449219 5 z" />
   </svg>
 );
+
+export function ThemesBoxExample() {
+  return (
+    <Card my="4" size="2">
+      <Box width="64px" height="64px">
+        <DecorativeBox />
+      </Box>
+    </Card>
+  );
+}
+
+export function ThemesFlexExample() {
+  return (
+    <Card my="4" size="2">
+      <Flex
+        gap="3"
+        p="3"
+        m="2"
+        style={{
+          borderRadius: 'var(--radius-2)',
+          backgroundColor: 'var(--gray-a2)',
+          outline: '1px dashed var(--gray-a7)',
+        }}
+      >
+        <Box width="64px" height="64px">
+          <DecorativeBox />
+        </Box>
+        <Box width="64px" height="64px">
+          <DecorativeBox />
+        </Box>
+        <Box width="64px" height="64px">
+          <DecorativeBox />
+        </Box>
+        <Box width="64px" height="64px">
+          <DecorativeBox />
+        </Box>
+        <Box width="64px" height="64px">
+          <DecorativeBox />
+        </Box>
+      </Flex>
+    </Card>
+  );
+}
+
+export function ThemesGridExample() {
+  return (
+    <Card my="4" size="2">
+      <Grid
+        gap="3"
+        p="3"
+        m="2"
+        columns="repeat(3, auto)"
+        style={{
+          borderRadius: 'var(--radius-2)',
+          backgroundColor: 'var(--gray-a2)',
+          outline: '1px dashed var(--gray-a7)',
+        }}
+      >
+        <Box width="96px" height="64px">
+          <DecorativeBox />
+        </Box>
+        <Box width="96px" height="64px">
+          <DecorativeBox />
+        </Box>
+        <Box width="96px" height="64px">
+          <DecorativeBox />
+        </Box>
+        <Box width="96px" height="64px">
+          <DecorativeBox />
+        </Box>
+        <Box width="96px" height="64px">
+          <DecorativeBox />
+        </Box>
+        <Box width="96px" height="64px">
+          <DecorativeBox />
+        </Box>
+      </Grid>
+    </Card>
+  );
+}
+
+export function ThemesSectionExample() {
+  return (
+    <Card my="4" size="2">
+      <Section
+        size="1"
+        // px="3"
+        m="2"
+        style={{
+          borderRadius: 'var(--radius-2)',
+          backgroundColor: 'var(--gray-a2)',
+          outline: '1px dashed var(--gray-a7)',
+        }}
+      >
+        <Box height="96px">
+          <DecorativeBox style={{ borderRadius: 0, borderLeft: 0, borderRight: 0 }} />
+        </Box>
+      </Section>
+    </Card>
+  );
+}
+
+export function ThemesContainerExample() {
+  return (
+    <Card my="4" size="2">
+      <Container
+        size="1"
+        px="3"
+        m="2"
+        style={{
+          borderRadius: 'var(--radius-2)',
+          backgroundColor: 'var(--gray-a2)',
+          outline: '1px dashed var(--gray-a7)',
+        }}
+      >
+        <Box height="96px">
+          <DecorativeBox style={{ borderRadius: 0, borderTop: 0, borderBottom: 0 }} />
+        </Box>
+      </Container>
+    </Card>
+  );
+}
+
+export function ThemesZIndexExample() {
+  return (
+    <Card my="6" size="2">
+      <ThemesZIndexExampleRecursive />
+    </Card>
+  );
+}
+
+function ThemesZIndexExampleRecursive() {
+  return (
+    <Flex align="center" justify="center" height="160px">
+      <Dialog.Root>
+        <Popover.Root>
+          <Popover.Trigger>
+            <Button>Recursive popover</Button>
+          </Popover.Trigger>
+          <Popover.Content>
+            <Heading size="3" mb="2" trim="start">
+              Hello from the popover 👋
+            </Heading>
+            <Dialog.Trigger>
+              <Button color="gray" highContrast>
+                Recursive dialog
+              </Button>
+            </Dialog.Trigger>
+          </Popover.Content>
+        </Popover.Root>
+
+        <Dialog.Content>
+          <ThemesZIndexExampleRecursive />
+        </Dialog.Content>
+      </Dialog.Root>
+    </Flex>
+  );
+}
+
+export function ThemesBlogPostExampleArea({
+  style,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof Flex>) {
+  return (
+    <Flex
+      my="5"
+      py={{ initial: '4', xs: '5', md: '7' }}
+      px={{ initial: '4', xs: '5', md: '0' }}
+      direction="column"
+      align="center"
+      justify="center"
+      minHeight="240px"
+      position="relative"
+      style={{
+        backgroundColor: 'var(--color-panel)',
+        boxShadow: 'inset 0 0 0 1px var(--gray-a5)',
+        borderRadius: 'var(--radius-4)',
+        ...style,
+      }}
+      {...props}
+    />
+  );
+}
+
+export function ThemesBlogPostExampleSpinner() {
+  const [loading, setLoading] = React.useState(false);
+  return (
+    <ThemesBlogPostExampleArea>
+      <Button
+        disabled={loading}
+        onClick={() => {
+          setLoading(true);
+          setTimeout(() => setLoading(false), 3000);
+        }}
+      >
+        <Spinner loading={loading}>
+          <CubeIcon />
+        </Spinner>
+        Create workspace
+      </Button>
+    </ThemesBlogPostExampleArea>
+  );
+}
+
+export function ThemesBlogPostExampleSkeleton() {
+  const [isLoading, setIsLoading] = React.useState(true);
+  return (
+    <ThemesBlogPostExampleArea>
+      <Box width="100%" maxWidth="360px">
+        <Card variant="classic" size={{ initial: '3', xs: '4' }}>
+          <Box height="40px" mb="4">
+            <Heading as="h3" size="6" mt="-1">
+              <Skeleton loading={isLoading}>Sign in</Skeleton>
+            </Heading>
+          </Box>
+
+          <Box mb="5">
+            <Flex direction="column">
+              <Text as="label" size="2" weight="medium" mb="2" htmlFor="email">
+                <Skeleton loading={isLoading}>Email address</Skeleton>
+              </Text>
+              <Skeleton loading={isLoading}>
+                <TextField.Root
+                  id={'skeleton-email'}
+                  type="email"
+                  variant="classic"
+                  placeholder="Enter your email"
+                />
+              </Skeleton>
+            </Flex>
+          </Box>
+
+          <Box mb="5">
+            <Flex direction="column">
+              <Text as="label" size="2" weight="medium" mb="2" htmlFor="password">
+                <Skeleton loading={isLoading}>Password</Skeleton>
+              </Text>
+              <Skeleton loading={isLoading}>
+                <TextField.Root
+                  id={'skeleton-password'}
+                  variant="classic"
+                  type="password"
+                  placeholder="Enter your password"
+                />
+              </Skeleton>
+            </Flex>
+          </Box>
+
+          <Flex mt="6" justify="end" gap="3">
+            <Skeleton loading={isLoading}>
+              <Button variant="surface" highContrast color="gray">
+                Cancel
+              </Button>
+            </Skeleton>
+            <Skeleton loading={isLoading}>
+              <Button variant="solid" type="submit">
+                Sign in
+              </Button>
+            </Skeleton>
+          </Flex>
+        </Card>
+      </Box>
+
+      <Box mb="6">
+        <Flex justify="center" position="absolute" bottom="4" left="0" right="0">
+          <Button
+            size="1"
+            color="gray"
+            radius="full"
+            variant="surface"
+            onClick={() => setIsLoading((value) => !value)}
+          >
+            <Half2Icon
+              width="13"
+              height="13"
+              style={{ transform: isLoading ? 'scaleX(-1)' : undefined }}
+            />
+            Toggle loading
+          </Button>
+        </Flex>
+      </Box>
+    </ThemesBlogPostExampleArea>
+  );
+}
+
+export function ThemesBlogPostExampleSegmentedControl() {
+  return (
+    <ThemesBlogPostExampleArea>
+      <SegmentedControl.Root defaultValue="1" variant="classic">
+        <SegmentedControl.Item value="1">Inbox</SegmentedControl.Item>
+        <SegmentedControl.Item value="2">Drafts</SegmentedControl.Item>
+        <SegmentedControl.Item value="3">Sent</SegmentedControl.Item>
+      </SegmentedControl.Root>
+    </ThemesBlogPostExampleArea>
+  );
+}
+
+export function ThemesBlogPostExampleSegmentedControlAnimated() {
+  const [value, setValue] = React.useState('1');
+  const previousValueRef = React.useRef(value);
+  const timeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
+
+  React.useEffect(() => {
+    if (value === '1') {
+      timeoutRef.current = setTimeout(() => setValue('2'), 2000);
+    }
+
+    if (value === '2' && previousValueRef.current === '1') {
+      timeoutRef.current = setTimeout(() => setValue('3'), 2000);
+    }
+
+    if (value === '2' && previousValueRef.current === '3') {
+      timeoutRef.current = setTimeout(() => setValue('1'), 2000);
+    }
+
+    if (value === '3') {
+      timeoutRef.current = setTimeout(() => setValue('2'), 2000);
+    }
+
+    previousValueRef.current = value;
+
+    return () => clearTimeout(timeoutRef.current);
+  }, [value]);
+
+  return (
+    <>
+      <ThemesBlogPostExampleArea>
+        <SegmentedControl.Root
+          // @ts-expect-error
+          inert="true"
+          className={styles.SegmentedControlDemo}
+          value={value}
+          variant="classic"
+        >
+          <SegmentedControl.Item value="1">Inbox</SegmentedControl.Item>
+          <SegmentedControl.Item value="2">Drafts</SegmentedControl.Item>
+          <SegmentedControl.Item value="3">Sent</SegmentedControl.Item>
+        </SegmentedControl.Root>
+      </ThemesBlogPostExampleArea>
+
+      <Flex justify="center" mt="-3" mb="5">
+        <Text align="center" size="2">
+          <Em>Even the font weight change is animated</Em>
+        </Text>
+      </Flex>
+    </>
+  );
+}
+
+export function ThemesBlogPostExampleProgress() {
+  const [key, setKey] = React.useState(0);
+  return (
+    <ThemesBlogPostExampleArea>
+      <Flex align="center" gap="4" width="100%" maxWidth="240px" key={key}>
+        <Progress size="1" />
+      </Flex>
+
+      <Flex justify="center" position="absolute" bottom="4">
+        <Button
+          size="1"
+          color="gray"
+          radius="full"
+          variant="surface"
+          onClick={() => setKey((value) => ++value)}
+        >
+          <PlayIcon width="13" height="13" />
+          Play again
+        </Button>
+      </Flex>
+    </ThemesBlogPostExampleArea>
+  );
+}
+
+export function ThemesBlogPostExampleTabNav() {
+  return (
+    <ThemesBlogPostExampleArea>
+      <TabNavDemo
+        baseUrl="/blog/themes-3"
+        items={['Account', 'Documents', 'Workspace']}
+        size={{ initial: '1', xs: '2' }}
+      />
+    </ThemesBlogPostExampleArea>
+  );
+}
+
+export function ThemesBlogPostExampleDataList() {
+  return (
+    <ThemesBlogPostExampleArea>
+      <DataList.Root>
+        <DataList.Item align="center">
+          <DataList.Label minWidth="88px">Status</DataList.Label>
+          <DataList.Value>
+            <Badge color="jade" variant="soft" radius="full" style={{ marginLeft: -2 }}>
+              Authorized
+            </Badge>
+          </DataList.Value>
+        </DataList.Item>
+        <DataList.Item>
+          <DataList.Label minWidth="88px">ID</DataList.Label>
+          <DataList.Value>
+            <Flex align="center" gap="2">
+              <Code variant="ghost">u_2J89JSA4GJ</Code>
+              <IconButton
+                size="1"
+                aria-label="Copy value"
+                color="gray"
+                variant="ghost"
+                onClick={(event) => {
+                  const text = event.currentTarget.parentElement?.textContent;
+                  void navigator.clipboard.writeText(text);
+                }}
+              >
+                <CopyIcon />
+              </IconButton>
+            </Flex>
+          </DataList.Value>
+        </DataList.Item>
+        <DataList.Item>
+          <DataList.Label minWidth="88px">Name</DataList.Label>
+          <DataList.Value>Vlad Moroz</DataList.Value>
+        </DataList.Item>
+        <DataList.Item>
+          <DataList.Label minWidth="88px">Email</DataList.Label>
+          <DataList.Value>
+            <Link href="mailto:vlad@workos.com">vlad@workos.com</Link>
+          </DataList.Value>
+        </DataList.Item>
+        <DataList.Item>
+          <DataList.Label minWidth="88px">Company</DataList.Label>
+          <DataList.Value>
+            <Link target="_blank" href="https://workos.com">
+              WorkOS
+            </Link>
+          </DataList.Value>
+        </DataList.Item>
+      </DataList.Root>
+    </ThemesBlogPostExampleArea>
+  );
+}

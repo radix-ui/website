@@ -1,189 +1,105 @@
 import * as React from 'react';
 import NextLink from 'next/link';
 import {
-  Theme,
-  themePropDefs,
-  //
-  AlertDialogRoot,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogTitle,
-  AlertDialogDescription,
-  AlertDialogAction,
-  AlertDialogCancel,
-  //
+  AlertDialog,
   AspectRatio,
-  //
   Avatar,
-  avatarPropDefs,
-  //
   Badge,
-  badgePropDefs,
-  //
   Blockquote,
-  blockquotePropDefs,
-  //
   Box,
-  //
   Button,
-  buttonPropDefs,
-  //
-  CalloutRoot,
-  CalloutIcon,
-  CalloutText,
-  calloutRootPropDefs,
-  //
+  Callout,
   Card,
-  cardPropDefs,
-  //
   Checkbox,
-  checkboxPropDefs,
-  //
+  CheckboxCards,
+  CheckboxGroup,
   Code,
-  codePropDefs,
-  //
-  Container,
-  //
-  ContextMenuRoot,
-  ContextMenuTrigger,
-  ContextMenuContent,
-  ContextMenuLabel,
-  ContextMenuItem,
-  ContextMenuGroup,
-  ContextMenuRadioGroup,
-  ContextMenuRadioItem,
-  ContextMenuCheckboxItem,
-  ContextMenuSub,
-  ContextMenuSubTrigger,
-  ContextMenuSubContent,
-  ContextMenuSeparator,
-  contextMenuContentPropDefs,
-  //
-  DialogRoot,
-  DialogTrigger,
-  DialogContent,
-  DialogTitle,
-  DialogDescription,
-  DialogClose,
-  dialogContentPropDefs,
-  //
-  DropdownMenuRoot,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuItem,
-  DropdownMenuGroup,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuCheckboxItem,
-  DropdownMenuSub,
-  DropdownMenuSubTrigger,
-  DropdownMenuSubContent,
-  DropdownMenuSeparator,
-  dropdownMenuContentPropDefs,
-  //
+  ContextMenu,
+  DataList,
+  Dialog,
+  DropdownMenu,
   Em,
   Flex,
   Grid,
-  //
   Heading,
-  headingPropDefs,
-  //
-  HoverCardRoot,
-  HoverCardTrigger,
-  HoverCardContent,
-  hoverCardContentPropDefs,
-  //
+  HoverCard,
   IconButton,
-  iconButtonPropDefs,
-  //
   Inset,
-  //
   Kbd,
-  kbdPropDefs,
-  //
   Link,
-  linkPropDefs,
-  //
-  PopoverRoot,
-  PopoverContent,
-  PopoverTrigger,
-  PopoverClose,
-  //
+  Popover,
+  Progress,
   Quote,
-  //
-  RadioGroupRoot,
-  RadioGroupItem,
-  radioGroupPropDefs,
-  //
+  Radio,
+  RadioCards,
+  RadioGroup,
   ScrollArea,
-  scrollAreaPropDefs,
-  //
   Section,
-  //
-  SelectRoot,
-  SelectTrigger,
-  SelectContent,
-  SelectItem,
-  SelectGroup,
-  SelectLabel,
-  SelectSeparator,
+  SegmentedControl,
+  Select,
+  Separator,
+  Skeleton,
+  Slider,
+  Spinner,
+  Strong,
+  Switch,
+  Table,
+  Tabs,
+  Text,
+  TextArea,
+  TextField,
+  Theme,
+  ThemePanel,
+  Tooltip,
+  useThemeContext,
+} from '@radix-ui/themes';
+import {
+  accentColors,
+  avatarPropDefs,
+  badgePropDefs,
+  blockquotePropDefs,
+  buttonPropDefs,
+  calloutRootPropDefs,
+  cardPropDefs,
+  checkboxCardsRootPropDefs,
+  checkboxGroupRootPropDefs,
+  checkboxPropDefs,
+  codePropDefs,
+  contextMenuContentPropDefs,
+  dataListRootPropDefs,
+  dropdownMenuContentPropDefs,
+  headingPropDefs,
+  hoverCardContentPropDefs,
+  iconButtonPropDefs,
+  kbdPropDefs,
+  linkPropDefs,
+  progressPropDefs,
+  radioCardsRootPropDefs,
+  radioGroupRootPropDefs,
+  radioPropDefs,
+  segmentedControlRootPropDefs,
   selectRootPropDefs,
   selectTriggerPropDefs,
-  selectContentPropDefs,
-  //
-  Separator,
-  //
-  Slider,
   sliderPropDefs,
-  //
-  Strong,
-  //
-  Switch,
   switchPropDefs,
-  //
-  TableRoot,
-  TableHeader,
-  TableRow,
-  TableColumnHeaderCell,
-  TableBody,
-  TableRowHeaderCell,
-  TableCell,
+  tabNavRootPropDefs,
   tableRootPropDefs,
-  //
-  TabsRoot,
-  TabsList,
-  TabsTrigger,
-  TabsContent,
   tabsListPropDefs,
-  //
-  TextArea,
   textAreaPropDefs,
-  //
-  TextFieldRoot,
-  TextFieldSlot,
-  TextFieldInput,
-  textFieldPropDefs,
-  //
-  Text,
+  textFieldRootPropDefs,
   textPropDefs,
-  //
-  Tooltip,
-  //
-  // helpers:
-  themeAccentColorsOrdered,
-  useThemeContext,
-  //
-  ThemePanel,
-} from '@radix-ui/themes';
+  themePropDefs,
+} from '@utils/themes/props';
 import {
   ArrowRightIcon,
   CaretDownIcon,
+  CubeIcon,
   InfoCircledIcon,
   MagnifyingGlassIcon,
   StarIcon,
+  VercelLogoIcon,
 } from '@radix-ui/react-icons';
-import { getPeopleForColor } from '@lib/people';
+import { getPeopleForColor } from '@utils/people';
 import styles from './playground.module.css';
 import { MobileMenuProvider, MobileMenu } from '@components/MobileMenu';
 import { ThemesHeader } from '@components/ThemesHeader';
@@ -192,7 +108,9 @@ import { useTheme } from 'next-themes';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import Head from 'next/head';
 import { ThemesMobileMenu } from '@components/ThemesMobileMenu';
+import { AvatarIconFallback } from '@components/AvatarIconFallback';
 import { RemoveScroll } from 'react-remove-scroll';
+import TabNavDemo from '@components/tab-nav-demo';
 
 export default function ComponentsPage() {
   const { systemTheme, setTheme } = useTheme();
@@ -261,140 +179,118 @@ export default function ComponentsPage() {
           />
         </Box>
 
-        <Section size={{ initial: '2', md: '3' }}>
+        <Section size={{ initial: '2', md: '4' }}>
           <Flex direction="column" gap="9" mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
             <PlaygroundSection>
-              <Flex align="baseline" gap="4" mt="2">
-                <Heading id="alert-dialog">
-                  <Link color="gray" underline="hover" highContrast href="#alert-dialog">
-                    Alert Dialog
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/alert-dialog">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
+              <PlaygroundSectionTitle id="alert-dialog">Alert Dialog</PlaygroundSectionTitle>
               <Flex gap="4" align="center">
-                <AlertDialogRoot>
-                  <AlertDialogTrigger>
+                <AlertDialog.Root>
+                  <AlertDialog.Trigger>
                     <Button size="1">Open</Button>
-                  </AlertDialogTrigger>
-                  <AlertDialogContent size="1" style={{ width: 'calc(300px * var(--scaling))' }}>
-                    <AlertDialogTitle size="2" mb="1">
+                  </AlertDialog.Trigger>
+                  <AlertDialog.Content size="1" style={{ width: 'calc(300px * var(--scaling))' }}>
+                    <AlertDialog.Title size="2" mb="1">
                       Revoke access
-                    </AlertDialogTitle>
-                    <AlertDialogDescription size="1" mb="3">
+                    </AlertDialog.Title>
+                    <AlertDialog.Description size="1" mb="3">
                       Are you sure? This application will no longer be accessible and any existing
                       sessions will be expired.
-                    </AlertDialogDescription>
+                    </AlertDialog.Description>
 
                     <Flex gap="2" mt="3" justify="end">
-                      <AlertDialogCancel>
+                      <AlertDialog.Cancel>
                         <Button size="1" variant="soft" color="gray">
                           Cancel
                         </Button>
-                      </AlertDialogCancel>
-                      <AlertDialogAction>
+                      </AlertDialog.Cancel>
+                      <AlertDialog.Action>
                         <Button size="1" color="red">
                           Revoke
                         </Button>
-                      </AlertDialogAction>
+                      </AlertDialog.Action>
                     </Flex>
-                  </AlertDialogContent>
-                </AlertDialogRoot>
+                  </AlertDialog.Content>
+                </AlertDialog.Root>
 
-                <AlertDialogRoot>
-                  <AlertDialogTrigger>
+                <AlertDialog.Root>
+                  <AlertDialog.Trigger>
                     <Button size="2">Open</Button>
-                  </AlertDialogTrigger>
-                  <AlertDialogContent size="2" style={{ width: 'calc(400px * var(--scaling))' }}>
-                    <AlertDialogTitle mb="2">Revoke access</AlertDialogTitle>
-                    <AlertDialogDescription size="2" mb="4">
+                  </AlertDialog.Trigger>
+                  <AlertDialog.Content size="2" style={{ width: 'calc(400px * var(--scaling))' }}>
+                    <AlertDialog.Title mb="2">Revoke access</AlertDialog.Title>
+                    <AlertDialog.Description size="2" mb="4">
                       Are you sure? This application will no longer be accessible and any existing
                       sessions will be expired.
-                    </AlertDialogDescription>
+                    </AlertDialog.Description>
 
                     <Flex gap="3" mt="4" justify="end">
-                      <AlertDialogCancel>
+                      <AlertDialog.Cancel>
                         <Button variant="soft" color="gray">
                           Cancel
                         </Button>
-                      </AlertDialogCancel>
-                      <AlertDialogAction>
+                      </AlertDialog.Cancel>
+                      <AlertDialog.Action>
                         <Button color="red">Revoke</Button>
-                      </AlertDialogAction>
+                      </AlertDialog.Action>
                     </Flex>
-                  </AlertDialogContent>
-                </AlertDialogRoot>
+                  </AlertDialog.Content>
+                </AlertDialog.Root>
 
-                <AlertDialogRoot>
-                  <AlertDialogTrigger>
+                <AlertDialog.Root>
+                  <AlertDialog.Trigger>
                     <Button size="3">Open</Button>
-                  </AlertDialogTrigger>
-                  <AlertDialogContent size="3" style={{ width: 'calc(400px * var(--scaling))' }}>
-                    <AlertDialogTitle>Revoke access</AlertDialogTitle>
-                    <AlertDialogDescription size="2" mb="4">
+                  </AlertDialog.Trigger>
+                  <AlertDialog.Content size="3" style={{ width: 'calc(400px * var(--scaling))' }}>
+                    <AlertDialog.Title>Revoke access</AlertDialog.Title>
+                    <AlertDialog.Description size="2" mb="4">
                       Are you sure? This application will no longer be accessible and any existing
                       sessions will be expired.
-                    </AlertDialogDescription>
+                    </AlertDialog.Description>
 
                     <Flex gap="3" mt="4" justify="end">
-                      <AlertDialogCancel>
+                      <AlertDialog.Cancel>
                         <Button variant="soft" color="gray">
                           Cancel
                         </Button>
-                      </AlertDialogCancel>
-                      <AlertDialogAction>
+                      </AlertDialog.Cancel>
+                      <AlertDialog.Action>
                         <Button color="red">Revoke</Button>
-                      </AlertDialogAction>
+                      </AlertDialog.Action>
                     </Flex>
-                  </AlertDialogContent>
-                </AlertDialogRoot>
+                  </AlertDialog.Content>
+                </AlertDialog.Root>
 
-                <AlertDialogRoot>
-                  <AlertDialogTrigger>
+                <AlertDialog.Root>
+                  <AlertDialog.Trigger>
                     <Button size="4">Open</Button>
-                  </AlertDialogTrigger>
-                  <AlertDialogContent size="4" style={{ width: 'calc(450px * var(--scaling))' }}>
-                    <AlertDialogTitle size="6">Revoke access</AlertDialogTitle>
-                    <AlertDialogDescription size="3" mb="5">
+                  </AlertDialog.Trigger>
+                  <AlertDialog.Content size="4" style={{ width: 'calc(450px * var(--scaling))' }}>
+                    <AlertDialog.Title size="6">Revoke access</AlertDialog.Title>
+                    <AlertDialog.Description size="3" mb="5">
                       Are you sure? This application will no longer be accessible and any existing
                       sessions will be expired.
-                    </AlertDialogDescription>
+                    </AlertDialog.Description>
 
                     <Flex gap="3" mt="5" justify="end">
-                      <AlertDialogCancel>
+                      <AlertDialog.Cancel>
                         <Button size="3" variant="soft" color="gray">
                           Cancel
                         </Button>
-                      </AlertDialogCancel>
-                      <AlertDialogAction>
+                      </AlertDialog.Cancel>
+                      <AlertDialog.Action>
                         <Button size="3" color="red">
                           Revoke
                         </Button>
-                      </AlertDialogAction>
+                      </AlertDialog.Action>
                     </Flex>
-                  </AlertDialogContent>
-                </AlertDialogRoot>
+                  </AlertDialog.Content>
+                </AlertDialog.Root>
               </Flex>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="aspect-ratio">
-                  <Link color="gray" underline="hover" highContrast href="#aspect-ratio">
-                    Aspect Ratio
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/aspect-ratio">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
-              <Grid columns="4" gap="4">
+              <PlaygroundSectionTitle id="aspect-ratio">Aspect Ratio</PlaygroundSectionTitle>
+              <Grid columns={{ initial: '3', lg: '5', xl: '6' }} gap="4">
                 {['2 / 3', '1 / 1', '16 / 9'].map((ratio) => (
                   <div key={ratio}>
                     <Text as="p" size="1" color="gray" mb="2">
@@ -407,25 +303,14 @@ export default function ComponentsPage() {
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="avatar">
-                  <Link color="gray" underline="hover" highContrast href="#avatar">
-                    Avatar
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/avatar">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
-              <TabsRoot defaultValue="theme-colors">
-                <TabsList size="2">
-                  <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                  <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                  <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                </TabsList>
-                <TabsContent value="theme-colors">
+              <PlaygroundSectionTitle id="avatar">Avatar</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="theme-colors">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="theme-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -496,9 +381,9 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-colors">
+                <Tabs.Content value="all-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -512,7 +397,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             {avatarPropDefs.variant.values.map((variant, index) => (
@@ -553,9 +438,9 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-sizes">
+                <Tabs.Content value="all-sizes">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -596,30 +481,19 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
-              </TabsRoot>
+                </Tabs.Content>
+              </Tabs.Root>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="badge">
-                  <Link color="gray" underline="hover" highContrast href="#badge">
-                    Badge
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/badge">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
-              <TabsRoot defaultValue="theme-colors">
-                <TabsList size="2">
-                  <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                  <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                  <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                </TabsList>
-                <TabsContent value="theme-colors">
+              <PlaygroundSectionTitle id="badge">Badge</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="theme-colors">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="theme-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -656,9 +530,9 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-colors">
+                <Tabs.Content value="all-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -670,7 +544,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             {badgePropDefs.variant.values.map((variant) => (
@@ -690,9 +564,9 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-sizes">
+                <Tabs.Content value="all-sizes">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -730,31 +604,20 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
-              </TabsRoot>
+                </Tabs.Content>
+              </Tabs.Root>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="blockquote">
-                  <Link color="gray" underline="hover" highContrast href="#blockquote">
-                    Blockquote
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/blockquote">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
-              <TabsRoot defaultValue="theme-colors">
-                <TabsList size="2">
-                  <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                  <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                  <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  <TabsTrigger value="all-weights">All weights</TabsTrigger>
-                </TabsList>
-                <TabsContent value="theme-colors">
+              <PlaygroundSectionTitle id="blockquote">Blockquote</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="theme-colors">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                  <Tabs.Trigger value="all-weights">All weights</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="theme-colors">
                   <Grid mt="6" gap="6" columns="auto auto" style={{ whiteSpace: 'nowrap' }}>
                     <Flex direction="column" gap="6">
                       <Text mb="-4" size="1" color="gray" align="center">
@@ -804,13 +667,13 @@ export default function ComponentsPage() {
                       </Blockquote>
                     </Flex>
                   </Grid>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-colors">
+                <Tabs.Content value="all-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable} style={{ whiteSpace: 'nowrap' }}>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             <td style={{ textAlign: 'left' }}>
@@ -832,9 +695,9 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-sizes">
+                <Tabs.Content value="all-sizes">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <tbody>
@@ -853,9 +716,9 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-weights">
+                <Tabs.Content value="all-weights">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable} style={{ whiteSpace: 'nowrap' }}>
                       <tbody>
@@ -874,30 +737,19 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
-              </TabsRoot>
+                </Tabs.Content>
+              </Tabs.Root>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="button">
-                  <Link color="gray" underline="hover" highContrast href="#button">
-                    Button
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/button">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
-              <TabsRoot defaultValue="theme-colors">
-                <TabsList size="2">
-                  <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                  <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                  <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                </TabsList>
-                <TabsContent value="theme-colors">
+              <PlaygroundSectionTitle id="button">Button</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="theme-colors">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="theme-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -906,6 +758,7 @@ export default function ComponentsPage() {
                           <th colSpan={2}>Accent</th>
                           <th colSpan={2}>Gray</th>
                           <th>Disabled</th>
+                          <th>Loading</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -937,14 +790,19 @@ export default function ComponentsPage() {
                                 Next <ArrowRightIcon width="16" height="16" />
                               </Button>
                             </td>
+                            <td>
+                              <Button variant={variant} loading>
+                                Next <ArrowRightIcon width="16" height="16" />
+                              </Button>
+                            </td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-colors">
+                <Tabs.Content value="all-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -956,7 +814,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             {buttonPropDefs.variant.values.map((variant) => (
@@ -976,9 +834,9 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-sizes">
+                <Tabs.Content value="all-sizes">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -1016,30 +874,19 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
-              </TabsRoot>
+                </Tabs.Content>
+              </Tabs.Root>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="callout">
-                  <Link color="gray" underline="hover" highContrast href="#callout">
-                    Callout
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/callout">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
-              <TabsRoot defaultValue="theme-colors">
-                <TabsList size="2">
-                  <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                  <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                  <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                </TabsList>
-                <TabsContent value="theme-colors">
+              <PlaygroundSectionTitle id="callout">Callout</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="theme-colors">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="theme-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -1054,49 +901,65 @@ export default function ComponentsPage() {
                           <tr key={variant}>
                             <td>{upperFirst(variant)}</td>
                             <td>
-                              <CalloutRoot variant={variant}>
-                                <CalloutIcon>
+                              <Callout.Root variant={variant}>
+                                <Callout.Icon>
                                   <InfoCircledIcon width="16" height="16" />
-                                </CalloutIcon>
-                                <CalloutText>
-                                  Please <Link href="#">upgrade</Link> to the new version.
-                                </CalloutText>
-                              </CalloutRoot>
-                              <CalloutRoot variant={variant} highContrast mt="4">
-                                <CalloutIcon>
+                                </Callout.Icon>
+                                <Callout.Text>
+                                  Please{' '}
+                                  <Link href="#" onClick={(e) => e.preventDefault()}>
+                                    upgrade
+                                  </Link>{' '}
+                                  to the new version.
+                                </Callout.Text>
+                              </Callout.Root>
+                              <Callout.Root variant={variant} highContrast mt="4">
+                                <Callout.Icon>
                                   <InfoCircledIcon width="16" height="16" />
-                                </CalloutIcon>
-                                <CalloutText>
-                                  Please <Link href="#">upgrade</Link> to the new version.
-                                </CalloutText>
-                              </CalloutRoot>
+                                </Callout.Icon>
+                                <Callout.Text>
+                                  Please{' '}
+                                  <Link href="#" onClick={(e) => e.preventDefault()}>
+                                    upgrade
+                                  </Link>{' '}
+                                  to the new version.
+                                </Callout.Text>
+                              </Callout.Root>
                             </td>
                             <td>
-                              <CalloutRoot variant={variant} color="gray">
-                                <CalloutIcon>
+                              <Callout.Root variant={variant} color="gray">
+                                <Callout.Icon>
                                   <InfoCircledIcon width="16" height="16" />
-                                </CalloutIcon>
-                                <CalloutText>
-                                  Please <Link href="#">upgrade</Link> to the new version.
-                                </CalloutText>
-                              </CalloutRoot>
-                              <CalloutRoot variant={variant} color="gray" highContrast mt="4">
-                                <CalloutIcon>
+                                </Callout.Icon>
+                                <Callout.Text>
+                                  Please{' '}
+                                  <Link href="#" onClick={(e) => e.preventDefault()}>
+                                    upgrade
+                                  </Link>{' '}
+                                  to the new version.
+                                </Callout.Text>
+                              </Callout.Root>
+                              <Callout.Root variant={variant} color="gray" highContrast mt="4">
+                                <Callout.Icon>
                                   <InfoCircledIcon width="16" height="16" />
-                                </CalloutIcon>
-                                <CalloutText>
-                                  Please <Link href="#">upgrade</Link> to the new version.
-                                </CalloutText>
-                              </CalloutRoot>
+                                </Callout.Icon>
+                                <Callout.Text>
+                                  Please{' '}
+                                  <Link href="#" onClick={(e) => e.preventDefault()}>
+                                    upgrade
+                                  </Link>{' '}
+                                  to the new version.
+                                </Callout.Text>
+                              </Callout.Root>
                             </td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-colors">
+                <Tabs.Content value="all-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -1108,27 +971,35 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             {calloutRootPropDefs.variant.values.map((variant) => (
                               <td key={variant}>
-                                <CalloutRoot variant={variant} color={color}>
-                                  <CalloutIcon>
+                                <Callout.Root variant={variant} color={color}>
+                                  <Callout.Icon>
                                     <InfoCircledIcon width="16" height="16" />
-                                  </CalloutIcon>
-                                  <CalloutText>
-                                    Please <Link href="#">upgrade</Link> to the new version.
-                                  </CalloutText>
-                                </CalloutRoot>
-                                <CalloutRoot variant={variant} color={color} highContrast mt="4">
-                                  <CalloutIcon>
+                                  </Callout.Icon>
+                                  <Callout.Text>
+                                    Please{' '}
+                                    <Link href="#" onClick={(e) => e.preventDefault()}>
+                                      upgrade
+                                    </Link>{' '}
+                                    to the new version.
+                                  </Callout.Text>
+                                </Callout.Root>
+                                <Callout.Root variant={variant} color={color} highContrast mt="4">
+                                  <Callout.Icon>
                                     <InfoCircledIcon width="16" height="16" />
-                                  </CalloutIcon>
-                                  <CalloutText>
-                                    Please <Link href="#">upgrade</Link> to the new version.
-                                  </CalloutText>
-                                </CalloutRoot>
+                                  </Callout.Icon>
+                                  <Callout.Text>
+                                    Please{' '}
+                                    <Link href="#" onClick={(e) => e.preventDefault()}>
+                                      upgrade
+                                    </Link>{' '}
+                                    to the new version.
+                                  </Callout.Text>
+                                </Callout.Root>
                               </td>
                             ))}
                           </tr>
@@ -1136,9 +1007,9 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-sizes">
+                <Tabs.Content value="all-sizes">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -1158,14 +1029,18 @@ export default function ComponentsPage() {
                             {calloutRootPropDefs.variant.values.map((variant) => (
                               <td key={variant}>
                                 <Flex>
-                                  <CalloutRoot variant={variant} size={size}>
-                                    <CalloutIcon>
+                                  <Callout.Root variant={variant} size={size}>
+                                    <Callout.Icon>
                                       <InfoCircledIcon {...calloutSizeToIconSize(size)} />
-                                    </CalloutIcon>
-                                    <CalloutText>
-                                      Please <Link href="#">upgrade</Link> to the new version.
-                                    </CalloutText>
-                                  </CalloutRoot>
+                                    </Callout.Icon>
+                                    <Callout.Text>
+                                      Please{' '}
+                                      <Link href="#" onClick={(e) => e.preventDefault()}>
+                                        upgrade
+                                      </Link>{' '}
+                                      to the new version.
+                                    </Callout.Text>
+                                  </Callout.Root>
                                 </Flex>
                               </td>
                             ))}
@@ -1174,67 +1049,56 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
-              </TabsRoot>
+                </Tabs.Content>
+              </Tabs.Root>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="card">
-                  <Link color="gray" underline="hover" highContrast href="#card">
-                    Card
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/card">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
+              <PlaygroundSectionTitle id="card">Card</PlaygroundSectionTitle>
               <Box style={{ whiteSpace: 'nowrap' }}>
-                <Flex direction="column" className={styles.PlaygroundHeroContainer}>
+                <Flex direction="column" maxWidth="1000px">
                   <Flex
                     justify="center"
                     position="relative"
-                    className={styles.PlaygroundHeroContent}
+                    py={{ initial: '7', xs: '9', sm: '100px' }}
                   >
                     <Flex
                       align="center"
                       justify="center"
+                      overflow="hidden"
                       position="absolute"
                       inset="0"
-                      style={{ overflow: 'hidden' }}
                     >
-                      <ThemesPanelBackgroundImage id="1" width="100%" height="200%" />
+                      <ThemesPanelBackgroundImage id="1" width="1000px" height="1000px" />
                     </Flex>
 
                     <Card size="4" style={{ width: 400 }}>
                       <Heading as="h3" size="6" trim="start" mb="5">
-                        Sign up
+                        Sign in
                       </Heading>
 
                       <Box mb="5">
                         <label>
-                          <Text as="div" size="2" weight="medium" mb="2">
-                            Email address
+                          <Text as="div" size="2" weight="medium" mb="1">
+                            Email
                           </Text>
-                          <TextFieldInput placeholder="Enter your email" />
+                          <TextField.Root placeholder="Enter your email address" />
                         </label>
                       </Box>
 
                       <Box mb="5" position="relative">
-                        <Box position="absolute" top="0" right="0" style={{ marginTop: -2 }}>
-                          <Link href="#card" size="2">
-                            Forgot password?
-                          </Link>
-                        </Box>
-
-                        <label>
-                          <Text as="div" size="2" weight="medium" mb="2">
+                        <Flex align="baseline" justify="between" mb="1">
+                          <Text as="label" size="2" weight="medium" htmlFor="card-password-field">
                             Password
                           </Text>
-                          <TextFieldInput placeholder="Enter your password" />
-                        </label>
+                          <Link href="#" size="2">
+                            Forgot password?
+                          </Link>
+                        </Flex>
+                        <TextField.Root
+                          id="card-password-field"
+                          placeholder="Enter your password"
+                        />
                       </Box>
 
                       <Flex mt="6" justify="end" gap="3">
@@ -1306,25 +1170,14 @@ export default function ComponentsPage() {
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="checkbox">
-                  <Link color="gray" underline="hover" highContrast href="#checkbox">
-                    Checkbox
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/checkbox">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
-              <TabsRoot defaultValue="theme-colors">
-                <TabsList size="2">
-                  <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                  <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                  <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                </TabsList>
-                <TabsContent value="theme-colors">
+              <PlaygroundSectionTitle id="checkbox">Checkbox</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="theme-colors">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="theme-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -1377,9 +1230,9 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-colors">
+                <Tabs.Content value="all-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -1391,7 +1244,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             {checkboxPropDefs.variant.values.map((variant) => (
@@ -1413,9 +1266,9 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-sizes">
+                <Tabs.Content value="all-sizes">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -1444,31 +1297,145 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
-              </TabsRoot>
+                </Tabs.Content>
+              </Tabs.Root>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="code">
-                  <Link color="gray" underline="hover" highContrast href="#code">
-                    Code
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/code">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
+              <PlaygroundSectionTitle id="checkbox-group">Checkbox Group</PlaygroundSectionTitle>
+              <Flex align="start" direction="column" gap="5">
+                {checkboxGroupRootPropDefs.size.values.map((size) => (
+                  <CheckboxGroup.Root defaultValue={['1']} size={size} key={size}>
+                    <CheckboxGroup.Item value="1">Agree to Terms and Conditions</CheckboxGroup.Item>
+                    <CheckboxGroup.Item value="2">Agree to Privacy Policy</CheckboxGroup.Item>
+                  </CheckboxGroup.Root>
+                ))}
               </Flex>
-              <TabsRoot defaultValue="theme-colors">
-                <TabsList size="2">
-                  <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                  <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                  <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  <TabsTrigger value="all-weights">All weights</TabsTrigger>
-                </TabsList>
-                <TabsContent value="theme-colors">
+            </PlaygroundSection>
+
+            <PlaygroundSection>
+              <PlaygroundSectionTitle id="checkbox-cards">Checkbox Cards</PlaygroundSectionTitle>
+
+              <Tabs.Root defaultValue="theme-colors">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="theme-colors">
+                  <Box mt="6" mb="-6">
+                    <table className={styles.PlaygroundTable}>
+                      <thead>
+                        <tr>
+                          <th />
+                          <th>Accent</th>
+                          <th>Gray</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {checkboxCardsRootPropDefs.variant.values.map((variant) => (
+                          <tr key={variant}>
+                            <td>{upperFirst(variant)}</td>
+                            <td>
+                              <Flex direction="column" width="280px" gap="4" mx="2" mb="4">
+                                <ExampleCheckboxCards variant={variant} />
+                                <ExampleCheckboxCards variant={variant} highContrast />
+                              </Flex>
+                            </td>
+                            <td>
+                              <Flex direction="column" width="280px" gap="4" mx="2" mb="4">
+                                <ExampleCheckboxCards color="gray" variant={variant} />
+                                <ExampleCheckboxCards color="gray" variant={variant} highContrast />
+                              </Flex>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </Box>
+                </Tabs.Content>
+
+                <Tabs.Content value="all-colors">
+                  <Box mt="6">
+                    <table className={styles.PlaygroundTable}>
+                      <thead>
+                        <tr>
+                          <th />
+                          {checkboxCardsRootPropDefs.variant.values.map((variant) => (
+                            <th key={variant}>{upperFirst(variant)}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {accentColors.map((color) => (
+                          <tr key={color}>
+                            <td>{upperFirst(color)}</td>
+                            {checkboxCardsRootPropDefs.variant.values.map((variant) => (
+                              <td key={variant}>
+                                <Flex align="center" justify="center" gap="5" mx="2">
+                                  <Box width="280px">
+                                    <ExampleCheckboxCards color={color} variant={variant} />
+                                  </Box>
+                                  <Box width="280px">
+                                    <ExampleCheckboxCards
+                                      color={color}
+                                      variant={variant}
+                                      highContrast
+                                    />
+                                  </Box>
+                                </Flex>
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </Box>
+                </Tabs.Content>
+
+                <Tabs.Content value="all-sizes">
+                  <Box mt="6">
+                    <table className={styles.PlaygroundTable}>
+                      <thead>
+                        <tr>
+                          <th />
+                          {checkboxCardsRootPropDefs.variant.values.map((variant) => (
+                            <th key={variant} style={{ textAlign: 'left' }}>
+                              {upperFirst(variant)}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {checkboxCardsRootPropDefs.size.values.map((size) => (
+                          <tr key={size}>
+                            <td>Size {size}</td>
+                            {checkboxCardsRootPropDefs.variant.values.map((variant) => (
+                              <td key={variant} style={{ textAlign: 'left' }}>
+                                <Box width={`${160 + +size * 60}px`} mr="5" my="1">
+                                  <ExampleCheckboxCards variant={variant} size={size} />
+                                </Box>
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </Box>
+                </Tabs.Content>
+              </Tabs.Root>
+            </PlaygroundSection>
+
+            <PlaygroundSection>
+              <PlaygroundSectionTitle id="code">Code</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="theme-colors">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                  <Tabs.Trigger value="all-weights">All weights</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="theme-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -1513,9 +1480,9 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-colors">
+                <Tabs.Content value="all-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -1527,7 +1494,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color} style={{ verticalAlign: 'baseline' }}>
                             <td>{upperFirst(color)}</td>
                             {codePropDefs.variant.values.map((variant) => (
@@ -1547,14 +1514,14 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-sizes">
+                <Tabs.Content value="all-sizes">
                   <Box mt="6">
                     <Flex direction="column" gap="4">
                       {codePropDefs.size.values.map((size) => (
                         <Flex align="center" key={size}>
-                          <Box shrink="0" style={{ width: 80 }}>
+                          <Box flexShrink="0" style={{ width: 80 }}>
                             <Text color="gray" size="1">
                               Size {size}
                             </Text>
@@ -1564,9 +1531,9 @@ export default function ComponentsPage() {
                       ))}
                     </Flex>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-weights">
+                <Tabs.Content value="all-weights">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable} style={{ whiteSpace: 'nowrap' }}>
                       <tbody>
@@ -1581,30 +1548,19 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
-              </TabsRoot>
+                </Tabs.Content>
+              </Tabs.Root>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="context-menu">
-                  <Link color="gray" underline="hover" highContrast href="#context-menu">
-                    Context Menu
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/context-menu">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
-              <TabsRoot defaultValue="theme-colors">
-                <TabsList size="2">
-                  <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                  <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                  <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                </TabsList>
-                <TabsContent value="theme-colors">
+              <PlaygroundSectionTitle id="context-menu">Context Menu</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="theme-colors">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="theme-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -1619,53 +1575,53 @@ export default function ComponentsPage() {
                           <tr key={variant}>
                             <td>{upperFirst(variant)}</td>
                             <td>
-                              <ContextMenuRoot>
-                                <ContextMenuTrigger>
+                              <ContextMenu.Root>
+                                <ContextMenu.Trigger>
                                   <RightClickArea variant={variant} />
-                                </ContextMenuTrigger>
-                                <ContextMenuContent variant={variant}>
+                                </ContextMenu.Trigger>
+                                <ContextMenu.Content variant={variant}>
                                   <ExampleContextMenuContent />
-                                </ContextMenuContent>
-                              </ContextMenuRoot>
+                                </ContextMenu.Content>
+                              </ContextMenu.Root>
                             </td>
                             <td>
-                              <ContextMenuRoot>
-                                <ContextMenuTrigger>
+                              <ContextMenu.Root>
+                                <ContextMenu.Trigger>
                                   <RightClickArea variant={variant} highContrast />
-                                </ContextMenuTrigger>
-                                <ContextMenuContent variant={variant} highContrast>
+                                </ContextMenu.Trigger>
+                                <ContextMenu.Content variant={variant} highContrast>
                                   <ExampleContextMenuContent />
-                                </ContextMenuContent>
-                              </ContextMenuRoot>
+                                </ContextMenu.Content>
+                              </ContextMenu.Root>
                             </td>
                             <td>
-                              <ContextMenuRoot>
-                                <ContextMenuTrigger>
+                              <ContextMenu.Root>
+                                <ContextMenu.Trigger>
                                   <RightClickArea variant={variant} color="gray" />
-                                </ContextMenuTrigger>
-                                <ContextMenuContent variant={variant} color="gray">
+                                </ContextMenu.Trigger>
+                                <ContextMenu.Content variant={variant} color="gray">
                                   <ExampleContextMenuContent />
-                                </ContextMenuContent>
-                              </ContextMenuRoot>
+                                </ContextMenu.Content>
+                              </ContextMenu.Root>
                             </td>
                             <td>
-                              <ContextMenuRoot>
-                                <ContextMenuTrigger>
+                              <ContextMenu.Root>
+                                <ContextMenu.Trigger>
                                   <RightClickArea variant={variant} color="gray" highContrast />
-                                </ContextMenuTrigger>
-                                <ContextMenuContent variant={variant} color="gray" highContrast>
+                                </ContextMenu.Trigger>
+                                <ContextMenu.Content variant={variant} color="gray" highContrast>
                                   <ExampleContextMenuContent />
-                                </ContextMenuContent>
-                              </ContextMenuRoot>
+                                </ContextMenu.Content>
+                              </ContextMenu.Root>
                             </td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-colors">
+                <Tabs.Content value="all-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -1677,36 +1633,36 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             {contextMenuContentPropDefs.variant.values.map((variant) => (
                               <td key={variant}>
                                 <Flex align="center" justify="center" gap="4">
-                                  <ContextMenuRoot>
-                                    <ContextMenuTrigger>
+                                  <ContextMenu.Root>
+                                    <ContextMenu.Trigger>
                                       <RightClickArea variant={variant} color={color} />
-                                    </ContextMenuTrigger>
-                                    <ContextMenuContent variant={variant} color={color}>
+                                    </ContextMenu.Trigger>
+                                    <ContextMenu.Content variant={variant} color={color}>
                                       <ExampleContextMenuContent />
-                                    </ContextMenuContent>
-                                  </ContextMenuRoot>
-                                  <ContextMenuRoot>
-                                    <ContextMenuTrigger>
+                                    </ContextMenu.Content>
+                                  </ContextMenu.Root>
+                                  <ContextMenu.Root>
+                                    <ContextMenu.Trigger>
                                       <RightClickArea
                                         variant={variant}
                                         color={color}
                                         highContrast
                                       />
-                                    </ContextMenuTrigger>
-                                    <ContextMenuContent
+                                    </ContextMenu.Trigger>
+                                    <ContextMenu.Content
                                       variant={variant}
                                       color={color}
                                       highContrast
                                     >
                                       <ExampleContextMenuContent />
-                                    </ContextMenuContent>
-                                  </ContextMenuRoot>
+                                    </ContextMenu.Content>
+                                  </ContextMenu.Root>
                                 </Flex>
                               </td>
                             ))}
@@ -1715,9 +1671,9 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-sizes">
+                <Tabs.Content value="all-sizes">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -1737,14 +1693,14 @@ export default function ComponentsPage() {
                             {contextMenuContentPropDefs.variant.values.map((variant) => (
                               <td key={variant}>
                                 <Flex>
-                                  <ContextMenuRoot>
-                                    <ContextMenuTrigger>
+                                  <ContextMenu.Root>
+                                    <ContextMenu.Trigger>
                                       <RightClickArea size={size} variant={variant} />
-                                    </ContextMenuTrigger>
-                                    <ContextMenuContent size={size} variant={variant}>
+                                    </ContextMenu.Trigger>
+                                    <ContextMenu.Content size={size} variant={variant}>
                                       <ExampleContextMenuContent />
-                                    </ContextMenuContent>
-                                  </ContextMenuRoot>
+                                    </ContextMenu.Content>
+                                  </ContextMenu.Root>
                                 </Flex>
                               </td>
                             ))}
@@ -1753,42 +1709,65 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
-              </TabsRoot>
+                </Tabs.Content>
+              </Tabs.Root>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="dialog">
-                  <Link color="gray" underline="hover" highContrast href="#dialog">
-                    Dialog
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/dialog">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
+              <PlaygroundSectionTitle id="data-list">Data List</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="horizontal">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="horizontal">Horizontal</Tabs.Trigger>
+                  <Tabs.Trigger value="vertical">Vertical</Tabs.Trigger>
+                </Tabs.List>
+
+                {dataListRootPropDefs.orientation.values.map((orientation) => (
+                  <Tabs.Content value={orientation} key={orientation}>
+                    <Flex mt="5">
+                      {dataListRootPropDefs.size.values.map((size, i) => (
+                        <Box key={size} mr={`${64 + i * 16}px`}>
+                          <Text
+                            as="div"
+                            size="1"
+                            color="gray"
+                            mb="5"
+                            align={orientation === 'horizontal' ? 'center' : undefined}
+                          >
+                            Size {size}
+                          </Text>
+                          <ExampleDataList size={size} orientation={orientation} />
+                        </Box>
+                      ))}
+                    </Flex>
+                  </Tabs.Content>
+                ))}
+              </Tabs.Root>
+            </PlaygroundSection>
+
+            <PlaygroundSection>
+              <PlaygroundSectionTitle id="dialog">Dialog</PlaygroundSectionTitle>
               <Flex gap="4" align="center">
-                <DialogRoot>
-                  <DialogTrigger>
+                <Dialog.Root>
+                  <Dialog.Trigger>
                     <Button size="1">Open</Button>
-                  </DialogTrigger>
-                  <DialogContent size="1" style={{ maxWidth: 300, marginInline: 'var(--space-5)' }}>
-                    <DialogTitle size="3" mb="1">
+                  </Dialog.Trigger>
+                  <Dialog.Content
+                    size="1"
+                    style={{ maxWidth: 300, marginInline: 'var(--space-5)' }}
+                  >
+                    <Dialog.Title size="3" mb="1">
                       Edit profile
-                    </DialogTitle>
-                    <DialogDescription size="2" mb="3">
+                    </Dialog.Title>
+                    <Dialog.Description size="2" mb="3">
                       Make changes to your profile.
-                    </DialogDescription>
+                    </Dialog.Description>
 
                     <Flex direction="column" gap="3">
                       <label>
                         <Text as="div" size="1" mb="1" weight="bold">
                           Name
                         </Text>
-                        <TextFieldInput
+                        <TextField.Root
                           size="1"
                           defaultValue="Freja Johnsen"
                           placeholder="Enter your full name"
@@ -1798,7 +1777,7 @@ export default function ComponentsPage() {
                         <Text as="div" size="1" mb="1" weight="bold">
                           Email
                         </Text>
-                        <TextFieldInput
+                        <TextField.Root
                           size="1"
                           defaultValue="freja@example.com"
                           placeholder="Enter your email"
@@ -1807,36 +1786,39 @@ export default function ComponentsPage() {
                     </Flex>
 
                     <Flex gap="2" mt="3" justify="end">
-                      <DialogClose>
+                      <Dialog.Close>
                         <Button size="1" variant="soft" color="gray">
                           Cancel
                         </Button>
-                      </DialogClose>
-                      <DialogClose>
+                      </Dialog.Close>
+                      <Dialog.Close>
                         <Button size="1" autoFocus>
                           Save
                         </Button>
-                      </DialogClose>
+                      </Dialog.Close>
                     </Flex>
-                  </DialogContent>
-                </DialogRoot>
+                  </Dialog.Content>
+                </Dialog.Root>
 
-                <DialogRoot>
-                  <DialogTrigger>
+                <Dialog.Root>
+                  <Dialog.Trigger>
                     <Button size="2">Open</Button>
-                  </DialogTrigger>
-                  <DialogContent size="2" style={{ maxWidth: 400, marginInline: 'var(--space-5)' }}>
-                    <DialogTitle mb="2">Edit profile</DialogTitle>
-                    <DialogDescription size="2" mb="4">
+                  </Dialog.Trigger>
+                  <Dialog.Content
+                    size="2"
+                    style={{ maxWidth: 400, marginInline: 'var(--space-5)' }}
+                  >
+                    <Dialog.Title mb="2">Edit profile</Dialog.Title>
+                    <Dialog.Description size="2" mb="4">
                       Make changes to your profile.
-                    </DialogDescription>
+                    </Dialog.Description>
 
                     <Flex direction="column" gap="3">
                       <label>
                         <Text as="div" size="2" mb="1" weight="bold">
                           Name
                         </Text>
-                        <TextFieldInput
+                        <TextField.Root
                           defaultValue="Freja Johnsen"
                           placeholder="Enter your full name"
                         />
@@ -1845,7 +1827,7 @@ export default function ComponentsPage() {
                         <Text as="div" size="2" mb="1" weight="bold">
                           Email
                         </Text>
-                        <TextFieldInput
+                        <TextField.Root
                           defaultValue="freja@example.com"
                           placeholder="Enter your email"
                         />
@@ -1853,34 +1835,37 @@ export default function ComponentsPage() {
                     </Flex>
 
                     <Flex gap="3" mt="4" justify="end">
-                      <DialogClose>
+                      <Dialog.Close>
                         <Button variant="soft" color="gray">
                           Cancel
                         </Button>
-                      </DialogClose>
-                      <DialogClose>
+                      </Dialog.Close>
+                      <Dialog.Close>
                         <Button autoFocus>Save</Button>
-                      </DialogClose>
+                      </Dialog.Close>
                     </Flex>
-                  </DialogContent>
-                </DialogRoot>
+                  </Dialog.Content>
+                </Dialog.Root>
 
-                <DialogRoot>
-                  <DialogTrigger>
+                <Dialog.Root>
+                  <Dialog.Trigger>
                     <Button size="3">Open</Button>
-                  </DialogTrigger>
-                  <DialogContent size="3" style={{ maxWidth: 500, marginInline: 'var(--space-5)' }}>
-                    <DialogTitle>Edit profile</DialogTitle>
-                    <DialogDescription size="2" mb="4">
+                  </Dialog.Trigger>
+                  <Dialog.Content
+                    size="3"
+                    style={{ maxWidth: 500, marginInline: 'var(--space-5)' }}
+                  >
+                    <Dialog.Title>Edit profile</Dialog.Title>
+                    <Dialog.Description size="2" mb="4">
                       Make changes to your profile.
-                    </DialogDescription>
+                    </Dialog.Description>
 
                     <Flex direction="column" gap="3">
                       <label>
                         <Text as="div" size="2" mb="1" weight="bold">
                           Name
                         </Text>
-                        <TextFieldInput
+                        <TextField.Root
                           defaultValue="Freja Johnsen"
                           placeholder="Enter your full name"
                         />
@@ -1889,7 +1874,7 @@ export default function ComponentsPage() {
                         <Text as="div" size="2" mb="1" weight="bold">
                           Email
                         </Text>
-                        <TextFieldInput
+                        <TextField.Root
                           defaultValue="freja@example.com"
                           placeholder="Enter your email"
                         />
@@ -1897,34 +1882,34 @@ export default function ComponentsPage() {
                     </Flex>
 
                     <Flex gap="3" mt="4" justify="end">
-                      <DialogClose>
+                      <Dialog.Close>
                         <Button variant="soft" color="gray">
                           Cancel
                         </Button>
-                      </DialogClose>
-                      <DialogClose>
+                      </Dialog.Close>
+                      <Dialog.Close>
                         <Button autoFocus>Save</Button>
-                      </DialogClose>
+                      </Dialog.Close>
                     </Flex>
-                  </DialogContent>
-                </DialogRoot>
+                  </Dialog.Content>
+                </Dialog.Root>
 
-                <DialogRoot>
-                  <DialogTrigger>
+                <Dialog.Root>
+                  <Dialog.Trigger>
                     <Button size="4">Open</Button>
-                  </DialogTrigger>
-                  <DialogContent size="4" style={{ marginInline: 'var(--space-5)' }}>
-                    <DialogTitle size="6">Edit profile</DialogTitle>
-                    <DialogDescription size="3" mb="5">
+                  </Dialog.Trigger>
+                  <Dialog.Content size="4" style={{ marginInline: 'var(--space-5)' }}>
+                    <Dialog.Title size="6">Edit profile</Dialog.Title>
+                    <Dialog.Description size="3" mb="5">
                       Make changes to your profile.
-                    </DialogDescription>
+                    </Dialog.Description>
 
                     <Flex direction="column" gap="5">
                       <label>
                         <Text as="div" size="3" mb="1" weight="bold">
                           Name
                         </Text>
-                        <TextFieldInput
+                        <TextField.Root
                           size="3"
                           defaultValue="Freja Johnsen"
                           placeholder="Enter your full name"
@@ -1934,7 +1919,7 @@ export default function ComponentsPage() {
                         <Text as="div" size="3" mb="1" weight="bold">
                           Email
                         </Text>
-                        <TextFieldInput
+                        <TextField.Root
                           size="3"
                           defaultValue="freja@example.com"
                           placeholder="Enter your email"
@@ -1943,42 +1928,31 @@ export default function ComponentsPage() {
                     </Flex>
 
                     <Flex gap="3" mt="5" justify="end">
-                      <DialogClose>
+                      <Dialog.Close>
                         <Button size="3" variant="soft" color="gray">
                           Cancel
                         </Button>
-                      </DialogClose>
-                      <DialogClose>
+                      </Dialog.Close>
+                      <Dialog.Close>
                         <Button size="3" autoFocus>
                           Save
                         </Button>
-                      </DialogClose>
+                      </Dialog.Close>
                     </Flex>
-                  </DialogContent>
-                </DialogRoot>
+                  </Dialog.Content>
+                </Dialog.Root>
               </Flex>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="dropdown-menu">
-                  <Link color="gray" underline="hover" highContrast href="#dropdown-menu">
-                    Dropdown Menu
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/dropdown-menu">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
-              <TabsRoot defaultValue="theme-colors">
-                <TabsList size="2">
-                  <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                  <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                  <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                </TabsList>
-                <TabsContent value="theme-colors">
+              <PlaygroundSectionTitle id="dropdown-menu">Dropdown Menu</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="theme-colors">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="theme-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -1993,65 +1967,65 @@ export default function ComponentsPage() {
                           <tr key={variant}>
                             <td>{upperFirst(variant)}</td>
                             <td>
-                              <DropdownMenuRoot>
-                                <DropdownMenuTrigger>
+                              <DropdownMenu.Root>
+                                <DropdownMenu.Trigger>
                                   <Button variant={variant}>
                                     Options
                                     <CaretDownIcon width="16" height="16" />
                                   </Button>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent variant={variant}>
+                                </DropdownMenu.Trigger>
+                                <DropdownMenu.Content variant={variant}>
                                   <ExampleDropdownMenuContent />
-                                </DropdownMenuContent>
-                              </DropdownMenuRoot>
+                                </DropdownMenu.Content>
+                              </DropdownMenu.Root>
                             </td>
                             <td>
-                              <DropdownMenuRoot>
-                                <DropdownMenuTrigger>
+                              <DropdownMenu.Root>
+                                <DropdownMenu.Trigger>
                                   <Button variant={variant} highContrast>
                                     Options
                                     <CaretDownIcon width="16" height="16" />
                                   </Button>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent variant={variant} highContrast>
+                                </DropdownMenu.Trigger>
+                                <DropdownMenu.Content variant={variant} highContrast>
                                   <ExampleDropdownMenuContent />
-                                </DropdownMenuContent>
-                              </DropdownMenuRoot>
+                                </DropdownMenu.Content>
+                              </DropdownMenu.Root>
                             </td>
                             <td>
-                              <DropdownMenuRoot>
-                                <DropdownMenuTrigger>
+                              <DropdownMenu.Root>
+                                <DropdownMenu.Trigger>
                                   <Button variant={variant} color="gray">
                                     Options
                                     <CaretDownIcon width="16" height="16" />
                                   </Button>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent variant={variant} color="gray">
+                                </DropdownMenu.Trigger>
+                                <DropdownMenu.Content variant={variant} color="gray">
                                   <ExampleDropdownMenuContent />
-                                </DropdownMenuContent>
-                              </DropdownMenuRoot>
+                                </DropdownMenu.Content>
+                              </DropdownMenu.Root>
                             </td>
                             <td>
-                              <DropdownMenuRoot>
-                                <DropdownMenuTrigger>
+                              <DropdownMenu.Root>
+                                <DropdownMenu.Trigger>
                                   <Button variant={variant} color="gray" highContrast>
                                     Options
                                     <CaretDownIcon width="16" height="16" />
                                   </Button>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent variant={variant} color="gray" highContrast>
+                                </DropdownMenu.Trigger>
+                                <DropdownMenu.Content variant={variant} color="gray" highContrast>
                                   <ExampleDropdownMenuContent />
-                                </DropdownMenuContent>
-                              </DropdownMenuRoot>
+                                </DropdownMenu.Content>
+                              </DropdownMenu.Root>
                             </td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-colors">
+                <Tabs.Content value="all-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -2063,38 +2037,38 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             {dropdownMenuContentPropDefs.variant.values.map((variant) => (
                               <td key={variant}>
                                 <Flex align="center" justify="center" gap="4">
-                                  <DropdownMenuRoot>
-                                    <DropdownMenuTrigger>
+                                  <DropdownMenu.Root>
+                                    <DropdownMenu.Trigger>
                                       <Button variant={variant} color={color}>
                                         Options
                                         <CaretDownIcon width="16" height="16" />
                                       </Button>
-                                    </DropdownMenuTrigger>
-                                    <DropdownMenuContent variant={variant} color={color}>
+                                    </DropdownMenu.Trigger>
+                                    <DropdownMenu.Content variant={variant} color={color}>
                                       <ExampleDropdownMenuContent />
-                                    </DropdownMenuContent>
-                                  </DropdownMenuRoot>
-                                  <DropdownMenuRoot>
-                                    <DropdownMenuTrigger>
+                                    </DropdownMenu.Content>
+                                  </DropdownMenu.Root>
+                                  <DropdownMenu.Root>
+                                    <DropdownMenu.Trigger>
                                       <Button variant={variant} color={color} highContrast>
                                         Options
                                         <CaretDownIcon width="16" height="16" />
                                       </Button>
-                                    </DropdownMenuTrigger>
-                                    <DropdownMenuContent
+                                    </DropdownMenu.Trigger>
+                                    <DropdownMenu.Content
                                       variant={variant}
                                       color={color}
                                       highContrast
                                     >
                                       <ExampleDropdownMenuContent />
-                                    </DropdownMenuContent>
-                                  </DropdownMenuRoot>
+                                    </DropdownMenu.Content>
+                                  </DropdownMenu.Root>
                                 </Flex>
                               </td>
                             ))}
@@ -2103,9 +2077,9 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-sizes">
+                <Tabs.Content value="all-sizes">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -2125,17 +2099,17 @@ export default function ComponentsPage() {
                             {dropdownMenuContentPropDefs.variant.values.map((variant) => (
                               <td key={variant}>
                                 <Flex>
-                                  <DropdownMenuRoot>
-                                    <DropdownMenuTrigger>
+                                  <DropdownMenu.Root>
+                                    <DropdownMenu.Trigger>
                                       <Button size={size} variant={variant}>
                                         Options
                                         <CaretDownIcon {...buttonSizeToIconSize(size)} />
                                       </Button>
-                                    </DropdownMenuTrigger>
-                                    <DropdownMenuContent size={size} variant={variant}>
+                                    </DropdownMenu.Trigger>
+                                    <DropdownMenu.Content size={size} variant={variant}>
                                       <ExampleDropdownMenuContent />
-                                    </DropdownMenuContent>
-                                  </DropdownMenuRoot>
+                                    </DropdownMenu.Content>
+                                  </DropdownMenu.Root>
                                 </Flex>
                               </td>
                             ))}
@@ -2144,23 +2118,12 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
-              </TabsRoot>
+                </Tabs.Content>
+              </Tabs.Root>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="em">
-                  <Link color="gray" underline="hover" highContrast href="#em">
-                    Em
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/em">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
+              <PlaygroundSectionTitle id="em">Em</PlaygroundSectionTitle>
               <Box style={{ width: 'calc(580px * var(--scaling))' }}>
                 Versions of the <Em>Lorem ipsum</Em> text have been used in typesetting at least
                 since the 1960s, when it was popularized by advertisements for Letraset transfer
@@ -2172,26 +2135,15 @@ export default function ComponentsPage() {
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="heading">
-                  <Link color="gray" underline="hover" highContrast href="#heading">
-                    Heading
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/heading">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
-              <TabsRoot defaultValue="specimen">
-                <TabsList size="2">
-                  <TabsTrigger value="specimen">Specimen</TabsTrigger>
-                  <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                  <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  <TabsTrigger value="all-weights">All weights</TabsTrigger>
-                </TabsList>
-                <TabsContent value="specimen">
+              <PlaygroundSectionTitle id="heading">Heading</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="specimen">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="specimen">Specimen</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                  <Tabs.Trigger value="all-weights">All weights</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="specimen">
                   <Box mt="6" style={{ width: 'calc(585px * var(--scaling))' }}>
                     <Heading size="9">
                       The principles of the typographic craft are difficult to master
@@ -2243,13 +2195,13 @@ export default function ComponentsPage() {
                       </Text>
                     </Box>
                   </Grid>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-colors">
+                <Tabs.Content value="all-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable} style={{ whiteSpace: 'nowrap' }}>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             <td>
@@ -2265,9 +2217,9 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-sizes">
+                <Tabs.Content value="all-sizes">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable} style={{ whiteSpace: 'nowrap' }}>
                       <tbody>
@@ -2286,9 +2238,9 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-weights">
+                <Tabs.Content value="all-weights">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable} style={{ whiteSpace: 'nowrap' }}>
                       <tbody>
@@ -2305,33 +2257,22 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
-              </TabsRoot>
+                </Tabs.Content>
+              </Tabs.Root>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="hover-card">
-                  <Link color="gray" underline="hover" highContrast href="#hover-card">
-                    Hover Card
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/hover-card">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
+              <PlaygroundSectionTitle id="hover-card">Hover Card</PlaygroundSectionTitle>
               <Flex direction="column" gap="4">
                 {hoverCardContentPropDefs.size.values.map((size) => (
                   <Text key={size} size={size}>
                     Technology revolutionized{' '}
-                    <HoverCardRoot>
-                      <HoverCardTrigger>
-                        <Link href="#">typography</Link>
-                      </HoverCardTrigger>
+                    <HoverCard.Root>
+                      <HoverCard.Trigger>
+                        <Link href="https://en.wikipedia.org/wiki/Typography">typography</Link>
+                      </HoverCard.Trigger>
 
-                      <HoverCardContent size={size} side="top">
+                      <HoverCard.Content size={size} side="top">
                         <Flex>
                           <Inset side="left" pr="current">
                             <InsetImage style={{ width: 120 }} />
@@ -2341,8 +2282,8 @@ export default function ComponentsPage() {
                             to make written language legible, readable and appealing when displayed.
                           </Text>
                         </Flex>
-                      </HoverCardContent>
-                    </HoverCardRoot>{' '}
+                      </HoverCard.Content>
+                    </HoverCard.Root>{' '}
                     in the latter twentieth century.
                   </Text>
                 ))}
@@ -2350,25 +2291,14 @@ export default function ComponentsPage() {
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="icon-button">
-                  <Link color="gray" underline="hover" highContrast href="#icon-button">
-                    Icon Button
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/icon-button">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
-              <TabsRoot defaultValue="theme-colors">
-                <TabsList size="2">
-                  <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                  <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                  <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                </TabsList>
-                <TabsContent value="theme-colors">
+              <PlaygroundSectionTitle id="icon-button">Icon Button</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="theme-colors">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="theme-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -2377,6 +2307,7 @@ export default function ComponentsPage() {
                           <th colSpan={2}>Accent</th>
                           <th colSpan={2}>Gray</th>
                           <th>Disabled</th>
+                          <th>Loading</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -2408,14 +2339,19 @@ export default function ComponentsPage() {
                                 <StarIcon width="16" height="16" />
                               </IconButton>
                             </td>
+                            <td>
+                              <IconButton variant={variant} loading>
+                                <StarIcon width="16" height="16" />
+                              </IconButton>
+                            </td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-colors">
+                <Tabs.Content value="all-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -2427,7 +2363,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             {iconButtonPropDefs.variant.values.map((variant) => (
@@ -2447,9 +2383,9 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-sizes">
+                <Tabs.Content value="all-sizes">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -2487,23 +2423,12 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
-              </TabsRoot>
+                </Tabs.Content>
+              </Tabs.Root>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="inset">
-                  <Link color="gray" underline="hover" highContrast href="#inset">
-                    Inset
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/inset">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
+              <PlaygroundSectionTitle id="inset">Inset</PlaygroundSectionTitle>
               <Box>
                 <Flex gap="6">
                   <Card size="2">
@@ -2556,25 +2481,14 @@ export default function ComponentsPage() {
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="kbd">
-                  <Link color="gray" underline="hover" highContrast href="#kbd">
-                    Kbd
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/kbd">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
-              <TabsRoot defaultValue="specimen">
-                <TabsList size="2">
-                  <TabsTrigger value="specimen">Specimen</TabsTrigger>
-                  <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                </TabsList>
+              <PlaygroundSectionTitle id="kbd">Kbd</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="specimen">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="specimen">Specimen</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                </Tabs.List>
 
-                <TabsContent value="specimen">
+                <Tabs.Content value="specimen">
                   <Flex direction="column" gap="4" mt="6">
                     <Text as="p" size="2">
                       Press <Kbd>⌘ C</Kbd> to show/hide the Theme Panel, or press <Kbd>⌘ D</Kbd> to
@@ -2593,15 +2507,15 @@ export default function ComponentsPage() {
                       toggle dark mode.
                     </Text>
                   </Flex>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-sizes">
+                <Tabs.Content value="all-sizes">
                   <Box mt="6">
                     <Box mt="6">
                       <Flex direction="column" gap="4" style={{ whiteSpace: 'nowrap' }}>
                         {kbdPropDefs.size.values.map((size) => (
                           <Flex align="center" key={size}>
-                            <Box shrink="0" style={{ width: 80 }}>
+                            <Box flexShrink="0" style={{ width: 80 }}>
                               <Text color="gray" size="1">
                                 Size {size}
                               </Text>
@@ -2612,31 +2526,20 @@ export default function ComponentsPage() {
                       </Flex>
                     </Box>
                   </Box>
-                </TabsContent>
-              </TabsRoot>
+                </Tabs.Content>
+              </Tabs.Root>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="link">
-                  <Link color="gray" underline="hover" highContrast href="#link">
-                    Link
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/link">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
-              <TabsRoot defaultValue="specimen">
-                <TabsList size="2">
-                  <TabsTrigger value="specimen">Specimen</TabsTrigger>
-                  <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                  <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  <TabsTrigger value="all-weights">All weights</TabsTrigger>
-                </TabsList>
-                <TabsContent value="specimen">
+              <PlaygroundSectionTitle id="link">Link</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="specimen">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="specimen">Specimen</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                  <Tabs.Trigger value="all-weights">All weights</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="specimen">
                   <Grid
                     mt="6"
                     gap="6"
@@ -2708,13 +2611,13 @@ export default function ComponentsPage() {
                       </Text>
                     </Flex>
                   </Grid>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-colors">
+                <Tabs.Content value="all-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable} style={{ whiteSpace: 'nowrap' }}>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             <td style={{ textAlign: 'left' }}>
@@ -2732,14 +2635,14 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-sizes">
+                <Tabs.Content value="all-sizes">
                   <Box mt="6">
                     <Flex direction="column" gap="4">
                       {linkPropDefs.size.values.map((size) => (
                         <Flex align="center" key={size}>
-                          <Box shrink="0" style={{ width: 80 }}>
+                          <Box flexShrink="0" style={{ width: 80 }}>
                             <Text color="gray" size="1">
                               Size {size}
                             </Text>
@@ -2751,9 +2654,9 @@ export default function ComponentsPage() {
                       ))}
                     </Flex>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-weights">
+                <Tabs.Content value="all-weights">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable} style={{ whiteSpace: 'nowrap' }}>
                       <tbody>
@@ -2770,39 +2673,28 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
-              </TabsRoot>
+                </Tabs.Content>
+              </Tabs.Root>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="popover">
-                  <Link color="gray" underline="hover" highContrast href="#popover">
-                    Popover
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/popover">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
+              <PlaygroundSectionTitle id="popover">Popover</PlaygroundSectionTitle>
               <Flex align="center" gap="4">
-                <PopoverRoot>
-                  <PopoverTrigger>
+                <Popover.Root>
+                  <Popover.Trigger>
                     <Button size="1">
                       <ChatBubbleIcon width="14" height="14" />
                       Comment
                     </Button>
-                  </PopoverTrigger>
-                  <PopoverContent size="1" style={{ width: 280 }}>
+                  </Popover.Trigger>
+                  <Popover.Content size="1" style={{ width: 280 }}>
                     <Flex gap="3">
                       <Avatar
                         size="2"
                         src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
                         fallback="A"
                       />
-                      <Box grow="1">
+                      <Box flexGrow="1">
                         <TextArea size="1" placeholder="Write a comment…" style={{ height: 80 }} />
 
                         <Flex gap="3" mt="3" justify="between">
@@ -2813,32 +2705,32 @@ export default function ComponentsPage() {
                             </Text>
                           </Flex>
 
-                          <PopoverClose>
+                          <Popover.Close>
                             <Button autoFocus size="1">
                               Comment
                             </Button>
-                          </PopoverClose>
+                          </Popover.Close>
                         </Flex>
                       </Box>
                     </Flex>
-                  </PopoverContent>
-                </PopoverRoot>
+                  </Popover.Content>
+                </Popover.Root>
 
-                <PopoverRoot>
-                  <PopoverTrigger>
+                <Popover.Root>
+                  <Popover.Trigger>
                     <Button size="2">
                       <ChatBubbleIcon width="16" height="16" />
                       Comment
                     </Button>
-                  </PopoverTrigger>
-                  <PopoverContent size="2" style={{ width: 320 }}>
+                  </Popover.Trigger>
+                  <Popover.Content size="2" style={{ width: 320 }}>
                     <Flex gap="4">
                       <Avatar
                         size="3"
                         src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
                         fallback="A"
                       />
-                      <Box grow="1">
+                      <Box flexGrow="1">
                         <TextArea placeholder="Write a comment…" style={{ height: 100 }} />
                         <Flex gap="3" mt="3" justify="between">
                           <Flex align="center" gap="2" asChild>
@@ -2848,32 +2740,32 @@ export default function ComponentsPage() {
                             </Text>
                           </Flex>
 
-                          <PopoverClose>
+                          <Popover.Close>
                             <Button autoFocus size="2">
                               Comment
                             </Button>
-                          </PopoverClose>
+                          </Popover.Close>
                         </Flex>
                       </Box>
                     </Flex>
-                  </PopoverContent>
-                </PopoverRoot>
+                  </Popover.Content>
+                </Popover.Root>
 
-                <PopoverRoot>
-                  <PopoverTrigger>
+                <Popover.Root>
+                  <Popover.Trigger>
                     <Button size="3">
                       <ChatBubbleIcon width="16" height="16" />
                       Comment
                     </Button>
-                  </PopoverTrigger>
-                  <PopoverContent size="3" style={{ width: 400 }}>
+                  </Popover.Trigger>
+                  <Popover.Content size="3" style={{ width: 400 }}>
                     <Flex gap="4">
                       <Avatar
                         size="4"
                         src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
                         fallback="A"
                       />
-                      <Box grow="1">
+                      <Box flexGrow="1">
                         <TextArea size="3" placeholder="Write a comment…" style={{ height: 120 }} />
                         <Flex gap="3" mt="4" justify="between">
                           <Flex align="center" gap="2" asChild>
@@ -2883,32 +2775,32 @@ export default function ComponentsPage() {
                             </Text>
                           </Flex>
 
-                          <PopoverClose>
+                          <Popover.Close>
                             <Button autoFocus size="3">
                               Comment
                             </Button>
-                          </PopoverClose>
+                          </Popover.Close>
                         </Flex>
                       </Box>
                     </Flex>
-                  </PopoverContent>
-                </PopoverRoot>
+                  </Popover.Content>
+                </Popover.Root>
 
-                <PopoverRoot>
-                  <PopoverTrigger>
+                <Popover.Root>
+                  <Popover.Trigger>
                     <Button size="4">
                       <ChatBubbleIcon width="18" height="18" />
                       Comment
                     </Button>
-                  </PopoverTrigger>
-                  <PopoverContent size="4" style={{ width: 440 }}>
+                  </Popover.Trigger>
+                  <Popover.Content size="4" style={{ width: 440 }}>
                     <Flex gap="5">
                       <Avatar
                         size="5"
                         src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
                         fallback="A"
                       />
-                      <Box grow="1">
+                      <Box flexGrow="1">
                         <TextArea size="3" placeholder="Write a comment…" style={{ height: 120 }} />
                         <Flex gap="3" mt="4" justify="between">
                           <Flex align="center" gap="2" asChild>
@@ -2918,32 +2810,175 @@ export default function ComponentsPage() {
                             </Text>
                           </Flex>
 
-                          <PopoverClose>
+                          <Popover.Close>
                             <Button autoFocus size="3">
                               Comment
                             </Button>
-                          </PopoverClose>
+                          </Popover.Close>
                         </Flex>
                       </Box>
                     </Flex>
-                  </PopoverContent>
-                </PopoverRoot>
+                  </Popover.Content>
+                </Popover.Root>
               </Flex>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="quote">
-                  <Link color="gray" underline="hover" highContrast href="#quote">
-                    Quote
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/quote">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
+              <PlaygroundSectionTitle id="progress">Progress</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="theme-colors">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="theme-colors">
+                  <Box mt="6">
+                    <table className={styles.PlaygroundTable}>
+                      <thead>
+                        <tr>
+                          <th />
+                          <th colSpan={2}>Accent</th>
+                          <th colSpan={2}>Gray</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {progressPropDefs.variant.values.map((variant, index) => (
+                          <tr key={variant}>
+                            <td>{upperFirst(variant)}</td>
+                            <td>
+                              <Progress
+                                value={33 + 17 * index}
+                                variant={variant}
+                                style={{ width: 160 }}
+                              />
+                            </td>
+                            <td>
+                              <Progress
+                                value={33 + 17 * index}
+                                variant={variant}
+                                highContrast
+                                style={{ width: 160 }}
+                              />
+                            </td>
+                            <td>
+                              <Progress
+                                value={33 + 17 * index}
+                                variant={variant}
+                                color="gray"
+                                style={{ width: 160 }}
+                              />
+                            </td>
+                            <td>
+                              <Progress
+                                value={33 + 17 * index}
+                                variant={variant}
+                                color="gray"
+                                highContrast
+                                style={{ width: 160 }}
+                              />
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </Box>
+                </Tabs.Content>
+
+                <Tabs.Content value="all-colors">
+                  <Box mt="6">
+                    <table className={styles.PlaygroundTable}>
+                      <thead>
+                        <tr>
+                          <th />
+                          {progressPropDefs.variant.values.map((variant) => (
+                            <th key={variant} colSpan={2}>
+                              {upperFirst(variant)}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {accentColors.map((color, index) => (
+                          <tr key={color}>
+                            <td>{upperFirst(color)}</td>
+                            {progressPropDefs.variant.values.map((variant) => (
+                              <React.Fragment key={variant}>
+                                <td>
+                                  <Progress
+                                    value={30 + index * 2}
+                                    color={color}
+                                    variant={variant}
+                                    style={{ width: 160 }}
+                                  />
+                                </td>
+                                <td>
+                                  <Progress
+                                    value={30 + index * 2}
+                                    color={color}
+                                    variant={variant}
+                                    highContrast
+                                    style={{ width: 160 }}
+                                  />
+                                </td>
+                              </React.Fragment>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </Box>
+                </Tabs.Content>
+
+                <Tabs.Content value="all-sizes">
+                  <Box mt="6">
+                    <table className={styles.PlaygroundTable}>
+                      <thead>
+                        <tr>
+                          <th />
+                          {progressPropDefs.radius.values.map((radius) => (
+                            <th key={radius} style={{ textAlign: 'left' }}>
+                              {radius === 'none' ? 'No radius' : upperFirst(radius)}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {progressPropDefs.variant.values.map((variant, index) => (
+                          <React.Fragment key={variant}>
+                            {index > 0 && (
+                              <tr>
+                                <td>&nbsp;</td>
+                              </tr>
+                            )}
+                            {progressPropDefs.size.values.map((size, sizeIndex) => (
+                              <tr key={size}>
+                                <td>Size {size}</td>
+                                {progressPropDefs.radius.values.map((radius) => (
+                                  <td key={radius} style={{ textAlign: 'left' }}>
+                                    <Flex align="center" justify="start" gap="4">
+                                      <Progress
+                                        value={33 + 17 * sizeIndex}
+                                        size={size}
+                                        variant={variant}
+                                        radius={radius}
+                                        style={{ width: 160 }}
+                                      />
+                                    </Flex>
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </React.Fragment>
+                        ))}
+                      </tbody>
+                    </table>
+                  </Box>
+                </Tabs.Content>
+              </Tabs.Root>
+            </PlaygroundSection>
+
+            <PlaygroundSection>
+              <PlaygroundSectionTitle id="quote">Quote</PlaygroundSectionTitle>
               <Box style={{ width: 'calc(580px * var(--scaling))' }}>
                 <Quote style={{ marginLeft: '-0.4em' }}>
                   A man who would letterspace lower case would steal sheep
@@ -2957,86 +2992,72 @@ export default function ComponentsPage() {
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="radio-group">
-                  <Link color="gray" underline="hover" highContrast href="#radio-group">
-                    Radio Group
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/radio-group">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
-              <TabsRoot defaultValue="theme-colors">
-                <TabsList size="2">
-                  <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                  <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                  <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                </TabsList>
-                <TabsContent value="theme-colors">
+              <PlaygroundSectionTitle id="radio">Radio</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="theme-colors">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="theme-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
                         <tr>
                           <th />
-                          <th colSpan={2}>Accent</th>
-                          <th colSpan={2}>Gray</th>
+                          <th>Accent</th>
+                          <th>Gray</th>
                           <th>Disabled</th>
                         </tr>
                       </thead>
                       <tbody>
-                        {radioGroupPropDefs.variant.values.map((variant) => (
+                        {radioPropDefs.variant.values.map((variant) => (
                           <tr key={variant}>
                             <td>{upperFirst(variant)}</td>
                             <td>
-                              <Flex align="center" justify="center" gap="4">
-                                <RadioGroupRoot variant={variant}>
-                                  <RadioGroupItem value="value" />
-                                </RadioGroupRoot>
-                                <RadioGroupRoot variant={variant} defaultValue="value">
-                                  <RadioGroupItem value="value" />
-                                </RadioGroupRoot>
-                              </Flex>
-                            </td>
-                            <td>
-                              <Flex align="center" justify="center" gap="4">
-                                <RadioGroupRoot variant={variant} highContrast defaultValue="value">
-                                  <RadioGroupItem value="value" />
-                                </RadioGroupRoot>
-                              </Flex>
-                            </td>
-                            <td>
-                              <Flex align="center" justify="center" gap="4">
-                                <RadioGroupRoot variant={variant} color="gray">
-                                  <RadioGroupItem value="value" />
-                                </RadioGroupRoot>
-                                <RadioGroupRoot variant={variant} color="gray" defaultValue="value">
-                                  <RadioGroupItem value="value" />
-                                </RadioGroupRoot>
-                              </Flex>
-                            </td>
-                            <td>
-                              <Flex align="center" justify="center" gap="4">
-                                <RadioGroupRoot
+                              <Flex align="center" justify="center" gap="2">
+                                <Radio
+                                  name={`radio-accent-${variant}`}
                                   variant={variant}
+                                  value="1"
+                                />
+                                <Radio
+                                  name={`radio-accent-${variant}`}
+                                  variant={variant}
+                                  value="2"
+                                  defaultChecked
+                                />
+                                <Radio highContrast variant={variant} value="" defaultChecked />
+                              </Flex>
+                            </td>
+                            <td>
+                              <Flex align="center" justify="center" gap="2">
+                                <Radio
+                                  name={`radio-gray-${variant}`}
+                                  color="gray"
+                                  variant={variant}
+                                  value="1"
+                                />
+                                <Radio
+                                  name={`radio-gray-${variant}`}
+                                  color="gray"
+                                  variant={variant}
+                                  value="2"
+                                  defaultChecked
+                                />
+                                <Radio
                                   color="gray"
                                   highContrast
-                                  defaultValue="value"
-                                >
-                                  <RadioGroupItem value="value" />
-                                </RadioGroupRoot>
+                                  variant={variant}
+                                  value=""
+                                  defaultChecked
+                                />
                               </Flex>
                             </td>
                             <td>
-                              <Flex align="center" justify="center" gap="4">
-                                <RadioGroupRoot variant={variant} disabled>
-                                  <RadioGroupItem value="value" />
-                                </RadioGroupRoot>
-                                <RadioGroupRoot variant={variant} disabled defaultValue="value">
-                                  <RadioGroupItem value="value" />
-                                </RadioGroupRoot>
+                              <Flex align="center" justify="center" gap="2">
+                                <Radio disabled variant={variant} value="" />
+                                <Radio disabled variant={variant} value="" defaultChecked />
                               </Flex>
                             </td>
                           </tr>
@@ -3044,46 +3065,46 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-colors">
+                <Tabs.Content value="all-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
                         <tr>
                           <th />
-                          {radioGroupPropDefs.variant.values.map((variant) => (
+                          {radioPropDefs.variant.values.map((variant) => (
                             <th key={variant}>{upperFirst(variant)}</th>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
-                            {radioGroupPropDefs.variant.values.map((variant) => (
+                            {radioPropDefs.variant.values.map((variant) => (
                               <td key={variant}>
-                                <Flex align="center" justify="center" gap="4">
-                                  <RadioGroupRoot variant={variant} color={color}>
-                                    <RadioGroupItem value="value" />
-                                  </RadioGroupRoot>
-
-                                  <RadioGroupRoot
-                                    variant={variant}
+                                <Flex align="center" justify="center" gap="2">
+                                  <Radio
+                                    name={`radio-${color}-${variant}`}
                                     color={color}
-                                    defaultValue="value"
-                                  >
-                                    <RadioGroupItem value="value" />
-                                  </RadioGroupRoot>
-
-                                  <RadioGroupRoot
                                     variant={variant}
+                                    value="1"
+                                  />
+                                  <Radio
+                                    name={`radio-${color}-${variant}`}
                                     color={color}
+                                    variant={variant}
+                                    value="2"
+                                    defaultChecked
+                                  />
+                                  <Radio
+                                    color={color}
+                                    variant={variant}
+                                    defaultChecked
+                                    value=""
                                     highContrast
-                                    defaultValue="value"
-                                  >
-                                    <RadioGroupItem value="value" />
-                                  </RadioGroupRoot>
+                                  />
                                 </Flex>
                               </td>
                             ))}
@@ -3092,15 +3113,15 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-sizes">
+                <Tabs.Content value="all-sizes">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
                         <tr>
                           <th />
-                          {radioGroupPropDefs.variant.values.map((variant) => (
+                          {radioGroupRootPropDefs.variant.values.map((variant) => (
                             <th key={variant} style={{ textAlign: 'left' }}>
                               {upperFirst(variant)}
                             </th>
@@ -3108,19 +3129,25 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {radioGroupPropDefs.size.values.map((size) => (
+                        {radioGroupRootPropDefs.size.values.map((size) => (
                           <tr key={size}>
                             <td>Size {size}</td>
-                            {radioGroupPropDefs.variant.values.map((variant) => (
+                            {radioGroupRootPropDefs.variant.values.map((variant) => (
                               <td key={variant} style={{ textAlign: 'left' }}>
-                                <Flex align="center" justify="start" gap="4">
-                                  <RadioGroupRoot
+                                <Flex align="center" justify="start" gap="2">
+                                  <Radio
+                                    name={`radio-size-${size}-${variant}`}
                                     size={size}
                                     variant={variant}
-                                    defaultValue="value"
-                                  >
-                                    <RadioGroupItem value="value" />
-                                  </RadioGroupRoot>
+                                    value="1"
+                                  />
+                                  <Radio
+                                    name={`radio-size-${size}-${variant}`}
+                                    size={size}
+                                    variant={variant}
+                                    value="2"
+                                    defaultChecked
+                                  />
                                 </Flex>
                               </td>
                             ))}
@@ -3129,23 +3156,137 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
-              </TabsRoot>
+                </Tabs.Content>
+              </Tabs.Root>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="scroll-area">
-                  <Link color="gray" underline="hover" highContrast href="#scroll-area">
-                    Scroll Area
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/scroll-area">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
+              <PlaygroundSectionTitle id="radio-group">Radio Group</PlaygroundSectionTitle>
+              <Flex align="start" direction="column" gap="5">
+                {radioGroupRootPropDefs.size.values.map((size) => (
+                  <RadioGroup.Root defaultValue="1" size={size} key={size}>
+                    <RadioGroup.Item value="1">Agree to Terms and Conditions</RadioGroup.Item>
+                    <RadioGroup.Item value="2">Disagree with Terms and Conditions</RadioGroup.Item>
+                  </RadioGroup.Root>
+                ))}
               </Flex>
+            </PlaygroundSection>
+
+            <PlaygroundSection>
+              <PlaygroundSectionTitle id="radio-cards">Radio Cards</PlaygroundSectionTitle>
+
+              <Tabs.Root defaultValue="theme-colors">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="theme-colors">
+                  <Box mt="6" mb="-6">
+                    <table className={styles.PlaygroundTable}>
+                      <thead>
+                        <tr>
+                          <th />
+                          <th>Accent</th>
+                          <th>Gray</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {radioCardsRootPropDefs.variant.values.map((variant) => (
+                          <tr key={variant}>
+                            <td>{upperFirst(variant)}</td>
+                            <td>
+                              <Flex direction="column" width="280px" gap="4" mx="2" mb="4">
+                                <ExampleRadioCards variant={variant} />
+                                <ExampleRadioCards variant={variant} highContrast />
+                              </Flex>
+                            </td>
+                            <td>
+                              <Flex direction="column" width="280px" gap="4" mx="2" mb="4">
+                                <ExampleRadioCards color="gray" variant={variant} />
+                                <ExampleRadioCards color="gray" variant={variant} highContrast />
+                              </Flex>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </Box>
+                </Tabs.Content>
+
+                <Tabs.Content value="all-colors">
+                  <Box mt="6">
+                    <table className={styles.PlaygroundTable}>
+                      <thead>
+                        <tr>
+                          <th />
+                          {radioCardsRootPropDefs.variant.values.map((variant) => (
+                            <th key={variant}>{upperFirst(variant)}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {accentColors.map((color) => (
+                          <tr key={color}>
+                            <td>{upperFirst(color)}</td>
+                            {radioCardsRootPropDefs.variant.values.map((variant) => (
+                              <td key={variant}>
+                                <Flex align="center" justify="center" gap="5" mx="2">
+                                  <Box width="280px">
+                                    <ExampleRadioCards color={color} variant={variant} />
+                                  </Box>
+                                  <Box width="280px">
+                                    <ExampleRadioCards
+                                      color={color}
+                                      variant={variant}
+                                      highContrast
+                                    />
+                                  </Box>
+                                </Flex>
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </Box>
+                </Tabs.Content>
+
+                <Tabs.Content value="all-sizes">
+                  <Box mt="6">
+                    <table className={styles.PlaygroundTable}>
+                      <thead>
+                        <tr>
+                          <th />
+                          {radioCardsRootPropDefs.variant.values.map((variant) => (
+                            <th key={variant} style={{ textAlign: 'left' }}>
+                              {upperFirst(variant)}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {radioCardsRootPropDefs.size.values.map((size) => (
+                          <tr key={size}>
+                            <td>Size {size}</td>
+                            {radioCardsRootPropDefs.variant.values.map((variant) => (
+                              <td key={variant} style={{ textAlign: 'left' }}>
+                                <Box width={`${160 + +size * 60}px`} mr="5" my="1">
+                                  <ExampleRadioCards variant={variant} size={size} />
+                                </Box>
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </Box>
+                </Tabs.Content>
+              </Tabs.Root>
+            </PlaygroundSection>
+
+            <PlaygroundSection>
+              <PlaygroundSectionTitle id="scroll-area">Scroll Area</PlaygroundSectionTitle>
               <Flex align="start" direction="column">
                 <Card size="2">
                   <Inset>
@@ -3199,25 +3340,14 @@ export default function ComponentsPage() {
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="select">
-                  <Link color="gray" underline="hover" highContrast href="#select">
-                    Select
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/select">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
-              <TabsRoot defaultValue="theme-colors">
-                <TabsList size="2">
-                  <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                  <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                  <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                </TabsList>
-                <TabsContent value="theme-colors">
+              <PlaygroundSectionTitle id="select">Select</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="theme-colors">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="theme-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -3234,55 +3364,55 @@ export default function ComponentsPage() {
                           <tr key={variant}>
                             <td>{upperFirst(variant)}</td>
                             <td>
-                              <SelectRoot defaultValue="apple">
-                                <SelectTrigger variant={variant} />
-                                <SelectContent
+                              <Select.Root defaultValue="apple">
+                                <Select.Trigger variant={variant} />
+                                <Select.Content
                                   variant={selectTriggerVariantToSelectContentVariant(variant)}
                                 >
                                   <ExampleSelectContent />
-                                </SelectContent>
-                              </SelectRoot>
+                                </Select.Content>
+                              </Select.Root>
                             </td>
                             <td>
-                              <SelectRoot defaultValue="apple">
-                                <SelectTrigger variant={variant} color="gray" />
-                                <SelectContent
+                              <Select.Root defaultValue="apple">
+                                <Select.Trigger variant={variant} color="gray" />
+                                <Select.Content
                                   variant={selectTriggerVariantToSelectContentVariant(variant)}
                                   color="gray"
                                   highContrast
                                 >
                                   <ExampleSelectContent />
-                                </SelectContent>
-                              </SelectRoot>
+                                </Select.Content>
+                              </Select.Root>
                             </td>
                             <td>
-                              <SelectRoot>
-                                <SelectTrigger variant={variant} placeholder="Choose a fruit…" />
-                                <SelectContent
+                              <Select.Root>
+                                <Select.Trigger variant={variant} placeholder="Choose a fruit…" />
+                                <Select.Content
                                   variant={selectTriggerVariantToSelectContentVariant(variant)}
                                 >
                                   <ExampleSelectContent />
-                                </SelectContent>
-                              </SelectRoot>
+                                </Select.Content>
+                              </Select.Root>
                             </td>
                             <td>
-                              <SelectRoot defaultValue="apple" disabled>
-                                <SelectTrigger variant={variant} />
-                                <SelectContent
+                              <Select.Root defaultValue="apple" disabled>
+                                <Select.Trigger variant={variant} />
+                                <Select.Content
                                   variant={selectTriggerVariantToSelectContentVariant(variant)}
                                 >
                                   <ExampleSelectContent />
-                                </SelectContent>
-                              </SelectRoot>
+                                </Select.Content>
+                              </Select.Root>
                             </td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-colors">
+                <Tabs.Content value="all-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -3294,20 +3424,20 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             {selectTriggerPropDefs.variant.values.map((variant) => (
                               <td key={variant}>
-                                <SelectRoot defaultValue="apple">
-                                  <SelectTrigger variant={variant} color={color} />
-                                  <SelectContent
+                                <Select.Root defaultValue="apple">
+                                  <Select.Trigger variant={variant} color={color} />
+                                  <Select.Content
                                     variant={selectTriggerVariantToSelectContentVariant(variant)}
                                     color={color}
                                   >
                                     <ExampleSelectContent />
-                                  </SelectContent>
-                                </SelectRoot>
+                                  </Select.Content>
+                                </Select.Root>
                               </td>
                             ))}
                           </tr>
@@ -3315,9 +3445,9 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-sizes">
+                <Tabs.Content value="all-sizes">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -3343,16 +3473,16 @@ export default function ComponentsPage() {
                                 <td>Size {size}</td>
                                 {selectTriggerPropDefs.radius.values.map((radius) => (
                                   <td key={radius} style={{ textAlign: 'left' }}>
-                                    <SelectRoot size={size} defaultValue="apple">
-                                      <SelectTrigger variant={variant} radius={radius} />
-                                      <SelectContent
+                                    <Select.Root size={size} defaultValue="apple">
+                                      <Select.Trigger variant={variant} radius={radius} />
+                                      <Select.Content
                                         variant={selectTriggerVariantToSelectContentVariant(
                                           variant
                                         )}
                                       >
                                         <ExampleSelectContent />
-                                      </SelectContent>
-                                    </SelectRoot>
+                                      </Select.Content>
+                                    </Select.Root>
                                   </td>
                                 ))}
                               </tr>
@@ -3362,23 +3492,12 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
-              </TabsRoot>
+                </Tabs.Content>
+              </Tabs.Root>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="separator">
-                  <Link color="gray" underline="hover" highContrast href="#separator">
-                    Separator
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/separator">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
+              <PlaygroundSectionTitle id="separator">Separator</PlaygroundSectionTitle>
               <Flex style={{ whiteSpace: 'nowrap' }}>
                 <Text size="2">
                   Tools for building high-quality, accessible UI.
@@ -3397,25 +3516,139 @@ export default function ComponentsPage() {
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="slider">
-                  <Link color="gray" underline="hover" highContrast href="#slider">
-                    Slider
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/slider">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
-              <TabsRoot defaultValue="theme-colors">
-                <TabsList size="2">
-                  <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                  <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                  <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                </TabsList>
-                <TabsContent value="theme-colors">
+              <PlaygroundSectionTitle id="segmented-control">
+                Segmented Control
+              </PlaygroundSectionTitle>
+
+              <Box mt="6">
+                <table className={styles.PlaygroundTable}>
+                  <thead>
+                    <tr>
+                      <th />
+                      {segmentedControlRootPropDefs.radius.values.map((radius) => (
+                        <th key={radius} style={{ textAlign: 'left' }}>
+                          {radius === 'none' ? 'No radius' : upperFirst(radius)}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {segmentedControlRootPropDefs.variant.values.map((variant, index) => (
+                      <React.Fragment key={variant}>
+                        {index > 0 && (
+                          <tr>
+                            <td>&nbsp;</td>
+                          </tr>
+                        )}
+                        {selectRootPropDefs.size.values.map((size) => (
+                          <tr key={size}>
+                            <td>Size {size}</td>
+                            {segmentedControlRootPropDefs.radius.values.map((radius) => (
+                              <td key={radius} style={{ textAlign: 'left' }}>
+                                <Flex pr="4">
+                                  <SegmentedControl.Root
+                                    defaultValue="1"
+                                    variant={variant}
+                                    size={size}
+                                    radius={radius}
+                                  >
+                                    <SegmentedControl.Item value="1">Inbox</SegmentedControl.Item>
+                                    <SegmentedControl.Item value="2">Sent</SegmentedControl.Item>
+                                  </SegmentedControl.Root>
+                                </Flex>
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </React.Fragment>
+                    ))}
+                  </tbody>
+                </table>
+              </Box>
+            </PlaygroundSection>
+
+            <PlaygroundSection>
+              <PlaygroundSectionTitle id="skeleton">Skeleton</PlaygroundSectionTitle>
+
+              <Grid gap="5" columns="360px 360px">
+                {[false, true].map((isLoading, i) => (
+                  <Card variant="classic" size="4" key={i}>
+                    <Box height="40px" mb="4">
+                      <Heading as="h3" size="6" mt="-1">
+                        <Skeleton loading={isLoading}>Sign in</Skeleton>
+                      </Heading>
+                    </Box>
+
+                    <Box mb="5">
+                      <Flex direction="column">
+                        <Text as="label" size="2" weight="medium" mb="2" htmlFor="email">
+                          <Skeleton loading={isLoading}>Email address</Skeleton>
+                        </Text>
+                        <Skeleton loading={isLoading}>
+                          <TextField.Root
+                            id={'skeleton-email' + i}
+                            type="email"
+                            variant="classic"
+                            placeholder="Enter your email"
+                          />
+                        </Skeleton>
+                      </Flex>
+                    </Box>
+
+                    <Box mb="5" position="relative">
+                      <Box position="absolute" top="0" right="0" style={{ marginTop: -2 }}>
+                        {isLoading ? (
+                          <Text size="2">
+                            <Skeleton loading>Forgot password?</Skeleton>
+                          </Text>
+                        ) : (
+                          <Link size="2" href="#">
+                            Forgot password?
+                          </Link>
+                        )}
+                      </Box>
+
+                      <Flex direction="column">
+                        <Text as="label" size="2" weight="medium" mb="2" htmlFor="password">
+                          <Skeleton loading={isLoading}>Password</Skeleton>
+                        </Text>
+                        <Skeleton loading={isLoading}>
+                          <TextField.Root
+                            id={'skeleton-password' + i}
+                            variant="classic"
+                            type="password"
+                            placeholder="Enter your password"
+                          />
+                        </Skeleton>
+                      </Flex>
+                    </Box>
+
+                    <Flex mt="6" justify="end" gap="3">
+                      <Skeleton loading={isLoading}>
+                        <Button variant="surface" highContrast color="gray">
+                          Create an account
+                        </Button>
+                      </Skeleton>
+                      <Skeleton loading={isLoading}>
+                        <Button variant="solid" type="submit">
+                          Sign in
+                        </Button>
+                      </Skeleton>
+                    </Flex>
+                  </Card>
+                ))}
+              </Grid>
+            </PlaygroundSection>
+
+            <PlaygroundSection>
+              <PlaygroundSectionTitle id="slider">Slider</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="theme-colors">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="theme-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -3463,9 +3696,9 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-colors">
+                <Tabs.Content value="all-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -3479,7 +3712,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color, index) => (
+                        {accentColors.map((color, index) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             {sliderPropDefs.variant.values.map((variant) => (
@@ -3506,9 +3739,9 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-sizes">
+                <Tabs.Content value="all-sizes">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -3551,30 +3784,36 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
-              </TabsRoot>
+                </Tabs.Content>
+              </Tabs.Root>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="switch">
-                  <Link color="gray" underline="hover" highContrast href="#switch">
-                    Switch
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/switch">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
+              <PlaygroundSectionTitle id="spinner">Spinner</PlaygroundSectionTitle>
+              <Flex align="center" gap="4">
+                <Spinner size="1" />
+                <Spinner size="2" />
+                <Spinner size="3" />
               </Flex>
-              <TabsRoot defaultValue="theme-colors">
-                <TabsList size="2">
-                  <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                  <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                  <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                </TabsList>
-                <TabsContent value="theme-colors">
+            </PlaygroundSection>
+
+            <PlaygroundSection>
+              <PlaygroundSectionTitle id="strong">Strong</PlaygroundSectionTitle>
+
+              <Text as="p" size="3">
+                The most important thing to remember is, <Strong>stay positive</Strong>.
+              </Text>
+            </PlaygroundSection>
+
+            <PlaygroundSection>
+              <PlaygroundSectionTitle id="switch">Switch</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="theme-colors">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="theme-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -3627,9 +3866,9 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-colors">
+                <Tabs.Content value="all-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -3641,7 +3880,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
                             {switchPropDefs.variant.values.map((variant) => (
@@ -3663,9 +3902,9 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-sizes">
+                <Tabs.Content value="all-sizes">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -3708,70 +3947,59 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
-              </TabsRoot>
+                </Tabs.Content>
+              </Tabs.Root>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="table">
-                  <Link color="gray" underline="hover" highContrast href="#table">
-                    Table
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/table">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
+              <PlaygroundSectionTitle id="table">Table</PlaygroundSectionTitle>
               {/* Apply a negative margin bottom to negate the table padding bottom of the examples */}
               <Box style={{ whiteSpace: 'nowrap' }} mb="-6">
-                <Flex direction="column" className={styles.PlaygroundHeroContainer} mb="6">
+                <Flex direction="column" maxWidth="1000px" mb="6">
                   <Flex
                     justify="center"
                     position="relative"
-                    className={styles.PlaygroundHeroContent}
+                    py={{ initial: '7', xs: '9', sm: '100px' }}
                   >
                     <Flex
                       align="center"
                       justify="center"
+                      overflow="hidden"
                       position="absolute"
                       inset="0"
-                      style={{ overflow: 'hidden' }}
                     >
-                      <ThemesPanelBackgroundImage id="1" width="100%" height="200%" />
+                      <ThemesPanelBackgroundImage id="1" width="1000px" height="1000px" />
                     </Flex>
 
-                    <TableRoot variant="surface" size={{ initial: '1', sm: '2' }}>
-                      <TableHeader>
-                        <TableRow>
-                          <TableColumnHeaderCell>Full name</TableColumnHeaderCell>
-                          <TableColumnHeaderCell>Email</TableColumnHeaderCell>
-                          <TableColumnHeaderCell>Group</TableColumnHeaderCell>
-                        </TableRow>
-                      </TableHeader>
+                    <Table.Root variant="surface" size={{ initial: '1', sm: '2' }}>
+                      <Table.Header>
+                        <Table.Row>
+                          <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+                          <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+                          <Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
+                        </Table.Row>
+                      </Table.Header>
 
-                      <TableBody>
-                        <TableRow>
-                          <TableRowHeaderCell>Danilo Sousa</TableRowHeaderCell>
-                          <TableCell>danilo@example.com</TableCell>
-                          <TableCell>Developer</TableCell>
-                        </TableRow>
+                      <Table.Body>
+                        <Table.Row>
+                          <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+                          <Table.Cell>danilo@example.com</Table.Cell>
+                          <Table.Cell>Developer</Table.Cell>
+                        </Table.Row>
 
-                        <TableRow>
-                          <TableRowHeaderCell>Zahra Ambessa</TableRowHeaderCell>
-                          <TableCell>zahra@example.com</TableCell>
-                          <TableCell>Admin</TableCell>
-                        </TableRow>
+                        <Table.Row>
+                          <Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+                          <Table.Cell>zahra@example.com</Table.Cell>
+                          <Table.Cell>Admin</Table.Cell>
+                        </Table.Row>
 
-                        <TableRow>
-                          <TableRowHeaderCell>Jasper Eriksson</TableRowHeaderCell>
-                          <TableCell>jasper@example.com</TableCell>
-                          <TableCell>Developer</TableCell>
-                        </TableRow>
-                      </TableBody>
-                    </TableRoot>
+                        <Table.Row>
+                          <Table.RowHeaderCell>Jasper Eriksson</Table.RowHeaderCell>
+                          <Table.Cell>jasper@example.com</Table.Cell>
+                          <Table.Cell>Developer</Table.Cell>
+                        </Table.Row>
+                      </Table.Body>
+                    </Table.Root>
                   </Flex>
                 </Flex>
 
@@ -3804,35 +4032,35 @@ export default function ComponentsPage() {
                               paddingBottom: 'var(--space-8)',
                             }}
                           >
-                            <TableRoot variant={variant} size={size}>
-                              <TableHeader>
-                                <TableRow>
-                                  <TableColumnHeaderCell>Full name</TableColumnHeaderCell>
-                                  <TableColumnHeaderCell>Email</TableColumnHeaderCell>
-                                  <TableColumnHeaderCell>Group</TableColumnHeaderCell>
-                                </TableRow>
-                              </TableHeader>
+                            <Table.Root variant={variant} size={size}>
+                              <Table.Header>
+                                <Table.Row>
+                                  <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+                                  <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+                                  <Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
+                                </Table.Row>
+                              </Table.Header>
 
-                              <TableBody>
-                                <TableRow>
-                                  <TableRowHeaderCell>Danilo Sousa</TableRowHeaderCell>
-                                  <TableCell>danilo@example.com</TableCell>
-                                  <TableCell>Developer</TableCell>
-                                </TableRow>
+                              <Table.Body>
+                                <Table.Row>
+                                  <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+                                  <Table.Cell>danilo@example.com</Table.Cell>
+                                  <Table.Cell>Developer</Table.Cell>
+                                </Table.Row>
 
-                                <TableRow>
-                                  <TableRowHeaderCell>Zahra Ambessa</TableRowHeaderCell>
-                                  <TableCell>zahra@example.com</TableCell>
-                                  <TableCell>Admin</TableCell>
-                                </TableRow>
+                                <Table.Row>
+                                  <Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+                                  <Table.Cell>zahra@example.com</Table.Cell>
+                                  <Table.Cell>Admin</Table.Cell>
+                                </Table.Row>
 
-                                <TableRow>
-                                  <TableRowHeaderCell>Jasper Eriksson</TableRowHeaderCell>
-                                  <TableCell>jasper@example.com</TableCell>
-                                  <TableCell>Developer</TableCell>
-                                </TableRow>
-                              </TableBody>
-                            </TableRoot>
+                                <Table.Row>
+                                  <Table.RowHeaderCell>Jasper Eriksson</Table.RowHeaderCell>
+                                  <Table.Cell>jasper@example.com</Table.Cell>
+                                  <Table.Cell>Developer</Table.Cell>
+                                </Table.Row>
+                              </Table.Body>
+                            </Table.Root>
                           </td>
                         ))}
                       </tr>
@@ -3843,53 +4071,152 @@ export default function ComponentsPage() {
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="tabs">
-                  <Link color="gray" underline="hover" highContrast href="#tabs">
-                    Tabs
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/tabs">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
-              <Flex gap="8" align="end">
-                {tabsListPropDefs.size.values.map((size) => (
-                  <TabsRoot key={size} defaultValue="account" activationMode="manual">
-                    <TabsList size={size}>
-                      <TabsTrigger value="account">Account</TabsTrigger>
-                      <TabsTrigger value="documents">Documents</TabsTrigger>
-                      <TabsTrigger value="settings">Settings</TabsTrigger>
-                    </TabsList>
-                  </TabsRoot>
-                ))}
-              </Flex>
+              <PlaygroundSectionTitle id="tabs">Tabs</PlaygroundSectionTitle>
+
+              <Tabs.Root defaultValue="theme-colors">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="theme-colors">
+                  <Box mt="6">
+                    <Flex gap="6">
+                      <Flex align="center" direction="column">
+                        <Text color="gray" size="1" mb="2">
+                          Accent
+                        </Text>
+                        <ExampleTabs mb="5" />
+                        <ExampleTabs highContrast />
+                      </Flex>
+
+                      <Flex align="center" direction="column">
+                        <Text color="gray" size="1" mb="2">
+                          Gray
+                        </Text>
+                        <ExampleTabs color="gray" mb="5" />
+                        <ExampleTabs color="gray" highContrast />
+                      </Flex>
+                    </Flex>
+                  </Box>
+                </Tabs.Content>
+
+                <Tabs.Content value="all-colors">
+                  <Box mt="6">
+                    <Flex align="start" direction="column" gap="5">
+                      {accentColors.map((color) => (
+                        <Flex align="center" gap="5" key={color}>
+                          <Box width="64px">
+                            <Text color="gray" size="1">
+                              {upperFirst(color)}
+                            </Text>
+                          </Box>
+                          <ExampleTabs color={color} />
+                          <ExampleTabs color={color} highContrast />
+                        </Flex>
+                      ))}
+                    </Flex>
+                  </Box>
+                </Tabs.Content>
+
+                <Tabs.Content value="all-sizes">
+                  <Box mt="6">
+                    <Flex align="start" direction="column" gap="5">
+                      {tabsListPropDefs.size.values.map((size) => (
+                        <Flex align="center" gap="5" key={size}>
+                          <Box width="64px">
+                            <Text color="gray" size="1">
+                              Size {size}
+                            </Text>
+                          </Box>
+                          <ExampleTabs size={size} />
+                        </Flex>
+                      ))}
+                    </Flex>
+                  </Box>
+                </Tabs.Content>
+              </Tabs.Root>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="text">
-                  <Link color="gray" underline="hover" highContrast href="#text">
-                    Text
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/text">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
-              <TabsRoot defaultValue="specimen">
-                <TabsList size="2">
-                  <TabsTrigger value="specimen">Specimen</TabsTrigger>
-                  <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                  <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                  <TabsTrigger value="all-weights">All weights</TabsTrigger>
-                </TabsList>
+              <PlaygroundSectionTitle id="tab-nav">Tab Nav</PlaygroundSectionTitle>
 
-                <TabsContent value="specimen">
+              <Tabs.Root defaultValue="theme-colors">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="theme-colors">
+                  <Box mt="6">
+                    <Flex gap="6">
+                      <Flex align="center" direction="column">
+                        <Text color="gray" size="1" mb="2">
+                          Accent
+                        </Text>
+                        <TabNavDemo baseUrl="/themes/playground" mb="5" />
+                        <TabNavDemo baseUrl="/themes/playground" highContrast />
+                      </Flex>
+
+                      <Flex align="center" direction="column">
+                        <Text color="gray" size="1" mb="2">
+                          Gray
+                        </Text>
+                        <TabNavDemo baseUrl="/themes/playground" color="gray" mb="5" />
+                        <TabNavDemo baseUrl="/themes/playground" color="gray" highContrast />
+                      </Flex>
+                    </Flex>
+                  </Box>
+                </Tabs.Content>
+
+                <Tabs.Content value="all-colors">
+                  <Box mt="6">
+                    <Flex align="start" direction="column" gap="5">
+                      {accentColors.map((color) => (
+                        <Flex align="center" gap="5" key={color}>
+                          <Box width="64px">
+                            <Text color="gray" size="1">
+                              {upperFirst(color)}
+                            </Text>
+                          </Box>
+                          <TabNavDemo baseUrl="/themes/playground" color={color} />
+                          <TabNavDemo baseUrl="/themes/playground" color={color} highContrast />
+                        </Flex>
+                      ))}
+                    </Flex>
+                  </Box>
+                </Tabs.Content>
+
+                <Tabs.Content value="all-sizes">
+                  <Box mt="6">
+                    <Flex align="start" direction="column" gap="5">
+                      {tabNavRootPropDefs.size.values.map((size) => (
+                        <Flex align="center" gap="5" key={size}>
+                          <Box width="64px">
+                            <Text color="gray" size="1">
+                              Size {size}
+                            </Text>
+                          </Box>
+                          <TabNavDemo baseUrl="/themes/playground" size={size} />
+                        </Flex>
+                      ))}
+                    </Flex>
+                  </Box>
+                </Tabs.Content>
+              </Tabs.Root>
+            </PlaygroundSection>
+
+            <PlaygroundSection>
+              <PlaygroundSectionTitle id="text">Text</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="specimen">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="specimen">Specimen</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                  <Tabs.Trigger value="all-weights">All weights</Tabs.Trigger>
+                </Tabs.List>
+
+                <Tabs.Content value="specimen">
                   <Box mt="6" style={{ width: 'calc(760px * var(--scaling))' }}>
                     <Text as="p" size="5">
                       The goal of typography is to relate font size, line height, and line width in
@@ -4065,13 +4392,13 @@ export default function ComponentsPage() {
                       </Text>
                     </Flex>
                   </Grid>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-colors">
+                <Tabs.Content value="all-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable} style={{ whiteSpace: 'nowrap' }}>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color} style={{ verticalAlign: 'baseline' }}>
                             <td>{upperFirst(color)}</td>
                             <td>
@@ -4087,14 +4414,14 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-sizes">
+                <Tabs.Content value="all-sizes">
                   <Box mt="6">
                     <Flex direction="column" gap="4" style={{ whiteSpace: 'nowrap' }}>
                       {textPropDefs.size.values.map((size) => (
                         <Flex align="center" key={size}>
-                          <Box shrink="0" style={{ width: 80 }}>
+                          <Box flexShrink="0" style={{ width: 80 }}>
                             <Text color="gray" size="1">
                               Size {size}
                             </Text>
@@ -4104,9 +4431,9 @@ export default function ComponentsPage() {
                       ))}
                     </Flex>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-weights">
+                <Tabs.Content value="all-weights">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable} style={{ whiteSpace: 'nowrap' }}>
                       <tbody>
@@ -4123,30 +4450,19 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
-              </TabsRoot>
+                </Tabs.Content>
+              </Tabs.Root>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="text-area">
-                  <Link color="gray" underline="hover" highContrast href="#text-area">
-                    Text Area
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/text-area">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
-              <TabsRoot defaultValue="theme-colors">
-                <TabsList size="2">
-                  <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                  <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                  <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                </TabsList>
-                <TabsContent value="theme-colors">
+              <PlaygroundSectionTitle id="text-area">Text Area</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="theme-colors">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="theme-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -4193,9 +4509,9 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-colors">
+                <Tabs.Content value="all-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -4207,7 +4523,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color} style={{ verticalAlign: 'baseline' }}>
                             <td>{upperFirst(color)}</td>
                             {textAreaPropDefs.variant.values.map((variant) => (
@@ -4224,9 +4540,9 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-sizes">
+                <Tabs.Content value="all-sizes">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -4258,30 +4574,19 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
-              </TabsRoot>
+                </Tabs.Content>
+              </Tabs.Root>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="text-field">
-                  <Link color="gray" underline="hover" highContrast href="#text-field">
-                    Text Field
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/text-field">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
-              <TabsRoot defaultValue="theme-colors">
-                <TabsList size="2">
-                  <TabsTrigger value="theme-colors">Theme colors</TabsTrigger>
-                  <TabsTrigger value="all-colors">All colors</TabsTrigger>
-                  <TabsTrigger value="all-sizes">All sizes</TabsTrigger>
-                </TabsList>
-                <TabsContent value="theme-colors">
+              <PlaygroundSectionTitle id="text-field">Text Field</PlaygroundSectionTitle>
+              <Tabs.Root defaultValue="theme-colors">
+                <Tabs.List size="2">
+                  <Tabs.Trigger value="theme-colors">Theme colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-colors">All colors</Tabs.Trigger>
+                  <Tabs.Trigger value="all-sizes">All sizes</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="theme-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
@@ -4294,104 +4599,105 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {textFieldPropDefs.variant.values.map((variant) => (
+                        {textFieldRootPropDefs.variant.values.map((variant) => (
                           <tr key={variant}>
                             <td>{upperFirst(variant)}</td>
                             <td>
-                              <TextFieldRoot variant={variant}>
-                                <TextFieldSlot>
+                              <TextField.Root variant={variant} placeholder="Search">
+                                <TextField.Slot>
                                   <MagnifyingGlassIcon width="16" height="16" />
-                                </TextFieldSlot>
-                                <TextFieldInput placeholder="Search" />
-                                <TextFieldSlot>
+                                </TextField.Slot>
+                                <TextField.Slot>
                                   <IconButton variant="ghost" color="gray" size="1">
                                     <InfoCircledIcon />
                                   </IconButton>
-                                </TextFieldSlot>
-                              </TextFieldRoot>
+                                </TextField.Slot>
+                              </TextField.Root>
                             </td>
                             <td>
-                              <TextFieldRoot variant={variant} color="gray">
-                                <TextFieldSlot>
+                              <TextField.Root variant={variant} color="gray" placeholder="Search">
+                                <TextField.Slot>
                                   <MagnifyingGlassIcon width="16" height="16" />
-                                </TextFieldSlot>
-                                <TextFieldInput placeholder="Search" />
-                                <TextFieldSlot>
+                                </TextField.Slot>
+                                <TextField.Slot>
                                   <IconButton variant="ghost" color="gray" size="1">
                                     <InfoCircledIcon />
                                   </IconButton>
-                                </TextFieldSlot>
-                              </TextFieldRoot>
+                                </TextField.Slot>
+                              </TextField.Root>
                             </td>
                             <td>
-                              <TextFieldRoot variant={variant}>
-                                <TextFieldSlot>
+                              <TextField.Root
+                                variant={variant}
+                                placeholder="Search"
+                                defaultValue="Quick brown fox"
+                                disabled
+                              >
+                                <TextField.Slot>
                                   <MagnifyingGlassIcon width="16" height="16" />
-                                </TextFieldSlot>
-                                <TextFieldInput
-                                  placeholder="Search"
-                                  defaultValue="Quick brown fox"
-                                  disabled
-                                />
-                                <TextFieldSlot>
+                                </TextField.Slot>
+                                <TextField.Slot>
                                   <IconButton variant="ghost" color="gray" size="1" disabled>
                                     <InfoCircledIcon />
                                   </IconButton>
-                                </TextFieldSlot>
-                              </TextFieldRoot>
+                                </TextField.Slot>
+                              </TextField.Root>
                             </td>
                             <td>
-                              <TextFieldRoot variant={variant}>
-                                <TextFieldSlot>
+                              <TextField.Root
+                                variant={variant}
+                                placeholder="Search"
+                                defaultValue="Quick brown fox"
+                                readOnly
+                              >
+                                <TextField.Slot>
                                   <MagnifyingGlassIcon width="16" height="16" />
-                                </TextFieldSlot>
-                                <TextFieldInput
-                                  placeholder="Search"
-                                  defaultValue="Quick brown fox"
-                                  readOnly
-                                />
-                                <TextFieldSlot>
+                                </TextField.Slot>
+                                <TextField.Slot>
                                   <IconButton variant="ghost" color="gray" size="1">
                                     <InfoCircledIcon />
                                   </IconButton>
-                                </TextFieldSlot>
-                              </TextFieldRoot>
+                                </TextField.Slot>
+                              </TextField.Root>
                             </td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-colors">
+                <Tabs.Content value="all-colors">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
                         <tr>
                           <th />
-                          {textFieldPropDefs.variant.values.map((variant) => (
+                          {textFieldRootPropDefs.variant.values.map((variant) => (
                             <th key={variant}>{upperFirst(variant)}</th>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
-                        {themeAccentColorsOrdered.map((color) => (
+                        {accentColors.map((color) => (
                           <tr key={color}>
                             <td>{upperFirst(color)}</td>
-                            {textFieldPropDefs.variant.values.map((variant) => (
+                            {textFieldRootPropDefs.variant.values.map((variant) => (
                               <td key={variant}>
-                                <TextFieldRoot color={color} variant={variant}>
-                                  <TextFieldSlot>
+                                <TextField.Root
+                                  color={color}
+                                  variant={variant}
+                                  placeholder="Search"
+                                >
+                                  <TextField.Slot>
                                     <MagnifyingGlassIcon width="16" height="16" />
-                                  </TextFieldSlot>
-                                  <TextFieldInput placeholder="Search" />
-                                  <TextFieldSlot>
+                                  </TextField.Slot>
+                                  <TextField.Slot>
                                     <IconButton variant="ghost" color="gray" size="1">
                                       <InfoCircledIcon />
                                     </IconButton>
-                                  </TextFieldSlot>
-                                </TextFieldRoot>
+                                  </TextField.Slot>
+                                </TextField.Root>
                               </td>
                             ))}
                           </tr>
@@ -4399,15 +4705,15 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
+                </Tabs.Content>
 
-                <TabsContent value="all-sizes">
+                <Tabs.Content value="all-sizes">
                   <Box mt="6">
                     <table className={styles.PlaygroundTable}>
                       <thead>
                         <tr>
                           <th />
-                          {textFieldPropDefs.radius.values.map((radius) => (
+                          {textFieldRootPropDefs.radius.values.map((radius) => (
                             <th key={radius} style={{ textAlign: 'left' }}>
                               {radius === 'none' ? 'No radius' : upperFirst(radius)}
                             </th>
@@ -4415,7 +4721,7 @@ export default function ComponentsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {textFieldPropDefs.variant.values.map((variant, index) => (
+                        {textFieldRootPropDefs.variant.values.map((variant, index) => (
                           <React.Fragment key={variant}>
                             {index > 0 && (
                               <tr>
@@ -4424,60 +4730,64 @@ export default function ComponentsPage() {
                             )}
                             <tr>
                               <td>Size 1</td>
-                              {textFieldPropDefs.radius.values.map((radius) => (
+                              {textFieldRootPropDefs.radius.values.map((radius) => (
                                 <td key={radius}>
-                                  <TextFieldRoot
+                                  <TextField.Root
                                     size="1"
                                     variant={variant}
                                     radius={radius}
                                     style={{ width: 140 }}
+                                    placeholder="Search"
                                   >
-                                    <TextFieldSlot>
+                                    <TextField.Slot>
                                       <MagnifyingGlassIcon width="14" height="14" />
-                                    </TextFieldSlot>
-                                    <TextFieldInput placeholder="Search" />
-                                  </TextFieldRoot>
+                                    </TextField.Slot>
+                                  </TextField.Root>
                                 </td>
                               ))}
                             </tr>
                             <tr>
                               <td>Size 2</td>
-                              {textFieldPropDefs.radius.values.map((radius) => (
+                              {textFieldRootPropDefs.radius.values.map((radius) => (
                                 <td key={radius}>
-                                  <TextFieldRoot
+                                  <TextField.Root
                                     size="2"
                                     variant={variant}
                                     radius={radius}
                                     style={{ width: 160 }}
+                                    placeholder="Search"
                                   >
-                                    <TextFieldSlot>
+                                    <TextField.Slot>
                                       <MagnifyingGlassIcon width="16" height="16" />
-                                    </TextFieldSlot>
-                                    <TextFieldInput placeholder="Search" />
-                                    <TextFieldSlot>
+                                    </TextField.Slot>
+                                    <TextField.Slot>
                                       <IconButton variant="ghost" color="gray" size="1">
                                         <InfoCircledIcon />
                                       </IconButton>
-                                    </TextFieldSlot>
-                                  </TextFieldRoot>
+                                    </TextField.Slot>
+                                  </TextField.Root>
                                 </td>
                               ))}
                             </tr>
                             <tr>
                               <td>Size 3</td>
-                              {textFieldPropDefs.radius.values.map((radius) => (
+                              {textFieldRootPropDefs.radius.values.map((radius) => (
                                 <td key={radius}>
-                                  <TextFieldRoot size="3" variant={variant} radius={radius}>
-                                    <TextFieldSlot>
+                                  <TextField.Root
+                                    size="3"
+                                    variant={variant}
+                                    radius={radius}
+                                    placeholder="Search"
+                                  >
+                                    <TextField.Slot>
                                       <MagnifyingGlassIcon width="18" height="18" />
-                                    </TextFieldSlot>
-                                    <TextFieldInput placeholder="Search" />
-                                    <TextFieldSlot>
+                                    </TextField.Slot>
+                                    <TextField.Slot>
                                       <IconButton variant="ghost" color="gray" size="2">
                                         <InfoCircledIcon />
                                       </IconButton>
-                                    </TextFieldSlot>
-                                  </TextFieldRoot>
+                                    </TextField.Slot>
+                                  </TextField.Root>
                                 </td>
                               ))}
                             </tr>
@@ -4486,23 +4796,12 @@ export default function ComponentsPage() {
                       </tbody>
                     </table>
                   </Box>
-                </TabsContent>
-              </TabsRoot>
+                </Tabs.Content>
+              </Tabs.Root>
             </PlaygroundSection>
 
             <PlaygroundSection>
-              <Flex align="baseline" gap="4">
-                <Heading id="tooltip">
-                  <Link color="gray" underline="hover" highContrast href="#tooltip">
-                    Tooltip
-                  </Link>
-                </Heading>
-                <NextLink passHref legacyBehavior href="/themes/docs/components/tooltip">
-                  <Link className={styles.PlaygroundDocsLink} size="2">
-                    View in docs
-                  </Link>
-                </NextLink>
-              </Flex>
+              <PlaygroundSectionTitle id="tooltip">Tooltip</PlaygroundSectionTitle>
               <Flex mt="6">
                 <Tooltip content="The quick brown fox">
                   <Flex
@@ -4532,45 +4831,32 @@ export default function ComponentsPage() {
   );
 }
 
-function AvatarIconFallback() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 64 64"
-      fill="currentColor"
-      style={{ width: '60%', height: '60%' }}
-    >
-      <path d="M41.5 14c4.687 0 8.5 4.038 8.5 9s-3.813 9-8.5 9S33 27.962 33 23 36.813 14 41.5 14zM56.289 43.609C57.254 46.21 55.3 49 52.506 49c-2.759 0-11.035 0-11.035 0 .689-5.371-4.525-10.747-8.541-13.03 2.388-1.171 5.149-1.834 8.07-1.834C48.044 34.136 54.187 37.944 56.289 43.609zM37.289 46.609C38.254 49.21 36.3 52 33.506 52c-5.753 0-17.259 0-23.012 0-2.782 0-4.753-2.779-3.783-5.392 2.102-5.665 8.245-9.472 15.289-9.472S35.187 40.944 37.289 46.609zM21.5 17c4.687 0 8.5 4.038 8.5 9s-3.813 9-8.5 9S13 30.962 13 26 16.813 17 21.5 17z"></path>
-    </svg>
-  );
-}
-
 function ExampleDropdownMenuContent() {
   return (
     <>
-      <DropdownMenuItem shortcut="⌘ E">Edit</DropdownMenuItem>
-      <DropdownMenuItem shortcut="⌘ D">Duplicate</DropdownMenuItem>
-      <DropdownMenuSeparator />
-      <DropdownMenuItem shortcut="⌘ N">Archive</DropdownMenuItem>
+      <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
 
-      <DropdownMenuSub>
-        <DropdownMenuSubTrigger>More</DropdownMenuSubTrigger>
-        <DropdownMenuSubContent>
-          <DropdownMenuItem>Move to project…</DropdownMenuItem>
-          <DropdownMenuItem>Move to folder…</DropdownMenuItem>
+      <DropdownMenu.Sub>
+        <DropdownMenu.SubTrigger>More</DropdownMenu.SubTrigger>
+        <DropdownMenu.SubContent>
+          <DropdownMenu.Item>Move to project…</DropdownMenu.Item>
+          <DropdownMenu.Item>Move to folder…</DropdownMenu.Item>
 
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Advanced options…</DropdownMenuItem>
-        </DropdownMenuSubContent>
-      </DropdownMenuSub>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Item>Advanced options…</DropdownMenu.Item>
+        </DropdownMenu.SubContent>
+      </DropdownMenu.Sub>
 
-      <DropdownMenuSeparator />
-      <DropdownMenuItem>Share</DropdownMenuItem>
-      <DropdownMenuItem>Add to favorites</DropdownMenuItem>
-      <DropdownMenuSeparator />
-      <DropdownMenuItem shortcut="⌘ ⌫" color="red">
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item>Share</DropdownMenu.Item>
+      <DropdownMenu.Item>Add to favorites</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ ⌫" color="red">
         Delete
-      </DropdownMenuItem>
+      </DropdownMenu.Item>
     </>
   );
 }
@@ -4592,7 +4878,7 @@ function RightClickArea(props: {
     <Grid
       {...rest}
       data-accent-color={color}
-      height={size === '2' ? '8' : '6'}
+      height={size === '2' ? '48px' : '32px'}
       px="3"
       style={{
         placeItems: 'center',
@@ -4604,7 +4890,7 @@ function RightClickArea(props: {
       }}
     >
       {/* @ts-ignore */}
-      <Text size={size} color={color} highContrast={highContrast}>
+      <Text size={size} color={color} highContrast style={{ opacity: 0.9 }}>
         Right-click here
       </Text>
     </Grid>
@@ -4614,53 +4900,137 @@ function RightClickArea(props: {
 function ExampleContextMenuContent() {
   return (
     <>
-      <ContextMenuItem shortcut="⌘ E">Edit</ContextMenuItem>
-      <ContextMenuItem shortcut="⌘ D">Duplicate</ContextMenuItem>
-      <ContextMenuSeparator />
-      <ContextMenuItem shortcut="⌘ N">Archive</ContextMenuItem>
+      <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+      <ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+      <ContextMenu.Separator />
+      <ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
 
-      <ContextMenuSub>
-        <ContextMenuSubTrigger>More</ContextMenuSubTrigger>
-        <ContextMenuSubContent>
-          <ContextMenuItem>Move to project…</ContextMenuItem>
-          <ContextMenuItem>Move to folder…</ContextMenuItem>
+      <ContextMenu.Sub>
+        <ContextMenu.SubTrigger>More</ContextMenu.SubTrigger>
+        <ContextMenu.SubContent>
+          <ContextMenu.Item>Move to project…</ContextMenu.Item>
+          <ContextMenu.Item>Move to folder…</ContextMenu.Item>
 
-          <ContextMenuSeparator />
-          <ContextMenuItem>Advanced options…</ContextMenuItem>
-        </ContextMenuSubContent>
-      </ContextMenuSub>
+          <ContextMenu.Separator />
+          <ContextMenu.Item>Advanced options…</ContextMenu.Item>
+        </ContextMenu.SubContent>
+      </ContextMenu.Sub>
 
-      <ContextMenuSeparator />
-      <ContextMenuItem>Share</ContextMenuItem>
-      <ContextMenuItem>Add to favorites</ContextMenuItem>
-      <ContextMenuSeparator />
-      <ContextMenuItem shortcut="⌘ ⌫" color="red">
+      <ContextMenu.Separator />
+      <ContextMenu.Item>Share</ContextMenu.Item>
+      <ContextMenu.Item>Add to favorites</ContextMenu.Item>
+      <ContextMenu.Separator />
+      <ContextMenu.Item shortcut="⌘ ⌫" color="red">
         Delete
-      </ContextMenuItem>
+      </ContextMenu.Item>
     </>
+  );
+}
+
+function ExampleCheckboxCards(props: React.ComponentPropsWithoutRef<typeof CheckboxCards.Root>) {
+  return (
+    <CheckboxCards.Root columns="2" defaultValue={['1']} {...props}>
+      <CheckboxCards.Item value="1">Next.js</CheckboxCards.Item>
+      <CheckboxCards.Item value="2">Remix</CheckboxCards.Item>
+    </CheckboxCards.Root>
+  );
+}
+
+function ExampleRadioCards(props: React.ComponentPropsWithoutRef<typeof RadioCards.Root>) {
+  return (
+    <RadioCards.Root columns="2" defaultValue="1" {...props}>
+      <RadioCards.Item value="1">
+        <VercelLogoIcon />
+        Next.js
+      </RadioCards.Item>
+      <RadioCards.Item value="2">
+        <CubeIcon />
+        Remix
+      </RadioCards.Item>
+    </RadioCards.Root>
   );
 }
 
 function ExampleSelectContent() {
   return (
     <>
-      <SelectGroup>
-        <SelectLabel>Fruits</SelectLabel>
-        <SelectItem value="orange">Orange</SelectItem>
-        <SelectItem value="apple">Apple</SelectItem>
-        <SelectItem value="grapes" disabled>
+      <Select.Group>
+        <Select.Label>Fruits</Select.Label>
+        <Select.Item value="orange">Orange</Select.Item>
+        <Select.Item value="apple">Apple</Select.Item>
+        <Select.Item value="grapes" disabled>
           Grape
-        </SelectItem>
-      </SelectGroup>
+        </Select.Item>
+      </Select.Group>
 
-      <SelectSeparator />
+      <Select.Separator />
 
-      <SelectGroup>
-        <SelectLabel>Vegetables</SelectLabel>
-        <SelectItem value="carrot">Carrot</SelectItem>
-        <SelectItem value="potato">Potato</SelectItem>
-      </SelectGroup>
+      <Select.Group>
+        <Select.Label>Vegetables</Select.Label>
+        <Select.Item value="carrot">Carrot</Select.Item>
+        <Select.Item value="potato">Potato</Select.Item>
+      </Select.Group>
     </>
+  );
+}
+
+function ExampleTabs(props: React.ComponentPropsWithoutRef<typeof Tabs.List>) {
+  return (
+    <Tabs.Root defaultValue="account" activationMode="manual">
+      <Tabs.List {...props}>
+        <Tabs.Trigger value="account">Account</Tabs.Trigger>
+        <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+      </Tabs.List>
+    </Tabs.Root>
+  );
+}
+
+function ExampleDataList({
+  size = dataListRootPropDefs.size.default,
+  orientation = dataListRootPropDefs.orientation.default,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof DataList.Root>) {
+  return (
+    <DataList.Root orientation={orientation} size={size} {...props}>
+      <DataList.Item align={orientation === 'horizontal' ? 'center' : undefined}>
+        <DataList.Label minWidth="88px">Status</DataList.Label>
+        <DataList.Value>
+          <Badge color="jade" variant="soft" radius="full" mx="-2px" size={+size > 2 ? '2' : '1'}>
+            Active
+          </Badge>
+        </DataList.Value>
+      </DataList.Item>
+      <DataList.Item>
+        <DataList.Label minWidth="88px">Name</DataList.Label>
+        <DataList.Value>Vlad Moroz</DataList.Value>
+      </DataList.Item>
+      <DataList.Item>
+        <DataList.Label minWidth="88px">Email</DataList.Label>
+        <DataList.Value>
+          <Link color="gray" highContrast underline="hover" href="mailto:vlad@workos.com">
+            vlad@workos.com
+          </Link>
+        </DataList.Value>
+      </DataList.Item>
+      <DataList.Item>
+        <DataList.Label minWidth="88px">Company</DataList.Label>
+        <DataList.Value>
+          <Link
+            color="gray"
+            highContrast
+            underline="hover"
+            target="_blank"
+            href="https://workos.com"
+          >
+            WorkOS
+          </Link>
+        </DataList.Value>
+      </DataList.Item>
+      <DataList.Item>
+        <DataList.Label minWidth="88px">Title</DataList.Label>
+        <DataList.Value>Product Designer</DataList.Value>
+      </DataList.Item>
+    </DataList.Root>
   );
 }
 
@@ -4728,7 +5098,7 @@ const ChatBubbleIcon = (props: React.ComponentPropsWithoutRef<'svg'>) => (
   </svg>
 );
 
-const PlaygroundSection: React.FC<React.PropsWithChildren<unknown>> = ({ children }) => (
+const PlaygroundSection = ({ children }: { children: React.ReactNode }) => (
   <Flex
     className={styles.PlaygroundSection}
     direction="column"
@@ -4736,5 +5106,25 @@ const PlaygroundSection: React.FC<React.PropsWithChildren<unknown>> = ({ childre
     mb={{ initial: '5', sm: '8' }}
   >
     {children}
+  </Flex>
+);
+
+interface PlaygroundSectionTitleProps {
+  children: React.ReactNode;
+  id: string;
+}
+
+const PlaygroundSectionTitle = ({ children, id }: PlaygroundSectionTitleProps) => (
+  <Flex align="baseline" gap="4" mt="2">
+    <Heading id={id}>
+      <Link color="gray" underline="hover" highContrast href={`#${id}`}>
+        {children}
+      </Link>
+    </Heading>
+    <NextLink passHref legacyBehavior href={`/themes/docs/components/${id}`}>
+      <Link className={styles.PlaygroundDocsLink} size="2">
+        View in docs
+      </Link>
+    </NextLink>
   </Flex>
 );

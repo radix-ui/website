@@ -1,6 +1,6 @@
 ---
 metaTitle: Heading
-metaDescription: A semantic heading element.
+metaDescription: Semantic heading element.
 sourcePath: components/heading
 ---
 
@@ -10,9 +10,9 @@ sourcePath: components/heading
 
 ## API Reference
 
-This component is based on the `h1` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
+This component is based on the `h1` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
 
-<ThemesPropsTable name="heading" />
+<ThemesPropsTable defs="headingPropDefs" />
 
 ## Examples
 
@@ -32,7 +32,7 @@ Use the `size` prop to control the size of the heading. The prop also provides c
 
 {
 
-<Callout.Root my="5" highContrast>
+<Callout.Root my="5" color="gray">
   <Callout.Icon>
     <InfoCircledIcon />
   </Callout.Icon>
@@ -57,6 +57,24 @@ Use the `size` prop to control the size of the heading. The prop also provides c
   <Heading size="8">The quick brown fox jumps over the lazy dog</Heading>
   <Heading size="9">The quick brown fox jumps over the lazy dog</Heading>
 </Flex>
+```
+
+### Weight
+
+Use the `weight` prop to set the text weight.
+
+```jsx live=true scroll=true
+<Heading weight="regular">
+  The quick brown fox jumps over the lazy dog.
+</Heading>
+
+<Heading weight="medium">
+  The quick brown fox jumps over the lazy dog.
+</Heading>
+
+<Heading weight="bold">
+  The quick brown fox jumps over the lazy dog.
+</Heading>
 ```
 
 ### Align
@@ -140,9 +158,70 @@ Trimming the leading is useful when dialing in vertical spacing in cards or othe
 </Flex>
 ```
 
+The default trim values are configured for the system font stack that’s used by Radix Themes. If you are using custom fonts, you can [adjust](/themes/docs/theme/typography#customization) the trim values using the corresponding CSS variables.
+
+```css
+.radix-themes {
+  --default-leading-trim-start: 0.42em;
+  --default-leading-trim-end: 0.36em;
+  --heading-leading-trim-start: 0.42em;
+  --heading-leading-trim-end: 0.36em;
+}
+```
+
+### Truncate
+
+Use the `truncate` prop to truncate text with an ellipsis when it overflows its container.
+
+```jsx live=true line=2
+<Flex maxWidth="300px">
+  <Heading truncate>The quick brown fox jumps over the lazy dog</Heading>
+</Flex>
+```
+
+### Wrap
+
+Use the `wrap` prop to control text wrapping.
+
+```jsx live=true line=2
+<Flex maxWidth="300px">
+  <Heading wrap="nowrap">The quick brown fox jumps over the lazy dog</Heading>
+</Flex>
+```
+
+```jsx live=true line=2
+<Flex maxWidth="300px">
+  <Heading wrap="balance">The quick brown fox jumps over the lazy dog</Heading>
+</Flex>
+```
+
+```jsx live=true line=2
+<Flex maxWidth="300px">
+  <Heading wrap="pretty">The quick brown fox jumps over the lazy dog</Heading>
+</Flex>
+```
+
+{
+
+<Callout.Root my="5" color="gray">
+  <Callout.Icon>
+    <InfoCircledIcon />
+  </Callout.Icon>
+  <Callout.Text>
+    <Code>text-wrap: pretty</Code> is an experimental value that is{' '}
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap#browser_compatibility">
+      not yet supported in all browsers
+    </a>
+    . However, it can be treated as a progressive enhancement for browsers that do
+    support it.
+  </Callout.Text>
+</Callout.Root>
+
+}
+
 ### Color
 
-Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme. The text colors are designed to achieve at least Lc 60 APCA contrast over common background colors.
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color). The text colors are designed to achieve at least Lc 60 APCA contrast over common background colors.
 
 ```jsx live=true scroll=true
 <Flex direction="column">
@@ -159,16 +238,8 @@ Use the `highContrast` prop to increase color contrast with the background.
 
 ```jsx live="true"
 <Flex direction="column">
-  <Heading highContrast color="indigo">
-    The quick brown fox jumps over the lazy dog.
-  </Heading>
-  <Heading highContrast color="cyan">
-    The quick brown fox jumps over the lazy dog.
-  </Heading>
-  <Heading highContrast color="orange">
-    The quick brown fox jumps over the lazy dog.
-  </Heading>
-  <Heading highContrast color="crimson">
+  <Heading color="gray">The quick brown fox jumps over the lazy dog.</Heading>
+  <Heading color="gray" highContrast>
     The quick brown fox jumps over the lazy dog.
   </Heading>
 </Flex>

@@ -1,17 +1,17 @@
 ---
 metaTitle: Theme overview
-metaDescription: Use the Theme component to quickly change the look and feel of your UI.
+metaDescription: Use the Theme component to change the look and feel of your UI.
 ---
 
 # Theme overview
 
 <Description>
-  Use the Theme component to quickly change the look and feel of your UI.
+  Use the Theme component to change the look and feel of your UI.
 </Description>
 
 ## Anatomy
 
-The [Theme component](/themes/docs/components/theme) defines the overall visual look of your application, it can be customized by passing a minimal set of configuration options.
+The [Theme component](/themes/docs/components/theme) defines the overall visual look of your application. It can be customized by passing a minimal set of configuration options.
 
 ```jsx live=true
 <Theme
@@ -25,55 +25,13 @@ The [Theme component](/themes/docs/components/theme) defines the overall visual 
 </Theme>
 ```
 
-A well tuned set of defaults is provided to get you started, but don’t be afraid to [play with all of the available options](/themes/playground) to find the right visual style for your application.
-
-{
-
-  <Grid columns={{ initial: '1', xs: '2' }} my="6" gap="4">
-      <ThemesLinkCard
-        title="Accent color"
-        desc="The accent color of primary buttons, links and interactive elements."
-        href="/themes/docs/theme/color#choosing-an-accent-color"
-      />
-
-      <ThemesLinkCard
-        title="Gray color"
-        desc="The shade of gray applied to borders, text and non-interactive elements."
-        href="/themes/docs/theme/color#choosing-a-gray-color"
-      />
-
-      <ThemesLinkCard
-        title="Panel background"
-        desc="Whether to apply a solid color, or use a translucent effect on panel elements."
-        href="/themes/docs/theme/visual-style#panel-background"
-      />
-
-      <ThemesLinkCard
-        title="Radius"
-        desc="The amount of border radius applied to themed elements."
-        href="/themes/docs/theme/visual-style#radius"
-      />
-
-      <ThemesLinkCard
-        title="Appearance"
-        desc="The color scheme of the theme (typically referred to as light and dark mode)"
-        href="/themes/docs/theme/dark-mode"
-      />
-
-      <ThemesLinkCard
-        title="Scaling"
-        desc="The uniform scaling applied to the UI across the entire theme."
-        href="/themes/docs/theme/layout#scaling"
-      />
-    </Grid>
-
-}
+A well tuned set of defaults is provided to get you started, but don’t be afraid to play with all of the available options to find the right visual style for your application. Check out the [Playground](/themes/playground) to see what effect each option has.
 
 ## Variants
 
-Variants are visual variations of a component, they are used to create visual hierarchies and communicate relative importance.
+Variants are visual variations of a component which are used to create visual hierarchies and communicate relative importance.
 
-Each component offers a different set of variants though all are designed to be consistent and complimentary with each other.
+Each component offers a different set of variants, though all are designed to be consistent and complimentary with each other.
 
 ```jsx live=true
 <Flex gap="3" align="center">
@@ -89,6 +47,65 @@ Each component offers a different set of variants though all are designed to be 
 </Flex>
 ```
 
-Using a combination of component variants alongside customized theme settings allows you to create a multitude of unique looking interfaces.
+## Examples
+
+Using a combination of component variants alongside customized theme settings allows you to create a multitude of unique-looking interfaces.
+
+For example you could create:
+
+- [Music applications](/themes/example-music-app)
+- [Ecommerce product elements](/themes/example-ecommerce)
+- [SaaS dashboards](/themes/example-dashboard)
+
+Or any number of differing treatments and styles.
 
 <ThemesVariantsExample />
+
+## Tokens
+
+Tokens provide direct access to theme values and give you flexibility to build and customize your own themed components.
+
+For all available theme tokens see the [source code](https://github.com/radix-ui/themes/tree/main/packages/radix-ui-themes/src/styles/tokens), or read more about each type of token in the relevant theme pages.
+
+{
+
+  <Grid columns={{ initial: '1', xs: '2' }} my="6" gap="4">
+      <ThemesLinkCard
+        title="Color"
+        desc="Understand the color system and its application in your theme."
+        href="/themes/docs/theme/color"
+      />
+
+      <ThemesLinkCard
+        title="Typography"
+        desc="Learn how to use and customize the typographic elements of your theme."
+        href="/themes/docs/theme/typography"
+      />
+
+      <ThemesLinkCard
+        title="Spacing"
+        desc="Explore the spacing scale and the available scaling options."
+        href="/themes/docs/theme/spacing"
+      />
+
+      <ThemesLinkCard
+        title="Radius"
+        desc="Choose the radius setting in your theme that fits your style."
+        href="/themes/docs/theme/radius"
+      />
+
+      <ThemesLinkCard
+        title="Shadows"
+        desc="Use elevation, depth and shadows effectively and customize their properties."
+        href="/themes/docs/theme/shadows"
+      />
+
+      <ThemesLinkCard
+        title="Cursors"
+        desc="Customizing cursors used for interactive elements."
+        href="/themes/docs/theme/cursors"
+      />
+
+    </Grid>
+
+}

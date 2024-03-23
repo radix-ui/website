@@ -1,6 +1,6 @@
 ---
 metaTitle: Alert Dialog
-metaDescription: A modal confirmation dialog that interrupts the user and expects a response.
+metaDescription: Modal confirmation dialog that interrupts the user and expects a response.
 sourcePath: components/alert-dialog
 ---
 
@@ -9,7 +9,7 @@ sourcePath: components/alert-dialog
   <AlertDialog.Trigger>
     <Button color="red">Revoke access</Button>
   </AlertDialog.Trigger>
-  <AlertDialog.Content style={{ maxWidth: 450 }}>
+  <AlertDialog.Content maxWidth="450px">
     <AlertDialog.Title>Revoke access</AlertDialog.Title>
     <AlertDialog.Description size="2">
       Are you sure? This application will no longer be accessible and any
@@ -48,7 +48,7 @@ Wraps the control that will open the dialog.
 
 Contains the content of the dialog. This component is based on the `div` element.
 
-<ThemesPropsTable name="alertDialogContent" />
+<ThemesPropsTable defs="alertDialogContentPropDefs" />
 
 ### Title
 
@@ -58,7 +58,7 @@ An accessible title that is announced when the dialog is opened. This part is ba
 
 An optional accessible description that is announced when the dialog is opened. This part is based on the [Text](/themes/docs/components/text) component with a pre-defined font size.
 
-If you want to remove the description entirely, remove this part and pass `aria-describedby={undefined}` to `Dialog.Content`.
+If you want to remove the description entirely, remove this part and pass `aria-describedby={undefined}` to `Content`.
 
 ### Action
 
@@ -70,6 +70,59 @@ Wraps the control that will close the dialog. This should be distinguished visua
 
 ## Examples
 
+### Size
+
+Use the `size` prop to control size of the dialog. It will affect the `padding` and `border-radius` of the Content.
+Use it in conjunction with the `width`, `minWidth` and `maxWidth` props to control the width of the dialog.
+
+```jsx live=true line=6,17,28,39
+<Flex gap="4" align="center">
+  <AlertDialog.Root>
+    <AlertDialog.Trigger>
+      <Button variant="soft">Size 1</Button>
+    </AlertDialog.Trigger>
+    <AlertDialog.Content __size__="1" maxWidth="300px">
+      <Text as="p" trim="both" size="1">
+        The quick brown fox jumps over the lazy dog.
+      </Text>
+    </AlertDialog.Content>
+  </AlertDialog.Root>
+
+  <AlertDialog.Root>
+    <AlertDialog.Trigger>
+      <Button variant="soft">Size 2</Button>
+    </AlertDialog.Trigger>
+    <AlertDialog.Content __size__="2" maxWidth="400px">
+      <Text as="p" trim="both" size="2">
+        The quick brown fox jumps over the lazy dog.
+      </Text>
+    </AlertDialog.Content>
+  </AlertDialog.Root>
+
+  <AlertDialog.Root>
+    <AlertDialog.Trigger>
+      <Button variant="soft">Size 3</Button>
+    </AlertDialog.Trigger>
+    <AlertDialog.Content __size__="3" maxWidth="500px">
+      <Text as="p" trim="both" size="3">
+        The quick brown fox jumps over the lazy dog.
+      </Text>
+    </AlertDialog.Content>
+  </AlertDialog.Root>
+
+  <AlertDialog.Root>
+    <AlertDialog.Trigger>
+      <Button variant="soft">Size 4</Button>
+    </AlertDialog.Trigger>
+    <AlertDialog.Content __size__="4">
+      <Text as="p" trim="both" size="4">
+        The quick brown fox jumps over the lazy dog.
+      </Text>
+    </AlertDialog.Content>
+  </AlertDialog.Root>
+</Flex>
+```
+
 ### With inset content
 
 Use the [Inset](/themes/docs/components/inset) component to align content flush with the sides of the dialog.
@@ -79,7 +132,7 @@ Use the [Inset](/themes/docs/components/inset) component to align content flush 
   <AlertDialog.Trigger>
     <Button color="red">Delete users</Button>
   </AlertDialog.Trigger>
-  <AlertDialog.Content style={{ maxWidth: 500 }}>
+  <AlertDialog.Content maxWidth="500px">
     <AlertDialog.Title>Delete Users</AlertDialog.Title>
     <AlertDialog.Description size="2">
       Are you sure you want to delete these users? This action is permanent and
@@ -96,7 +149,7 @@ Use the [Inset](/themes/docs/components/inset) component to align content flush 
           </Table.Row>
         </Table.Header>
 
-        <TableBody>
+        <Table.Body>
           <Table.Row>
             <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
             <Table.Cell>danilo@example.com</Table.Cell>
@@ -108,7 +161,7 @@ Use the [Inset](/themes/docs/components/inset) component to align content flush 
             <Table.Cell>zahra@example.com</Table.Cell>
             <Table.Cell>Admin</Table.Cell>
           </Table.Row>
-        </TableBody>
+        </Table.Body>
       </Table.Root>
     </Inset>
 

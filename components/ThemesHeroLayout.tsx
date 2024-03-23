@@ -15,9 +15,19 @@ const ThemesHeroLayoutMain = (props: React.ComponentPropsWithoutRef<'div'>) => (
   <div className={styles.ThemesHeroLayoutMain} {...props} />
 );
 
-const ThemesHeroLayoutControls = (props: React.ComponentPropsWithoutRef<'div'>) => (
-  <div className={styles.ThemesHeroLayoutControls} {...props} />
-);
+const ThemesHeroLayoutControls = (props: React.ComponentPropsWithoutRef<'div'>) => {
+  const [rendered, setRendered] = React.useState(false);
+
+  React.useEffect(() => {
+    setRendered(true);
+  }, []);
+
+  if (!rendered) {
+    return null;
+  }
+
+  return <div className={styles.ThemesHeroLayoutControls} {...props} />;
+};
 
 const ThemesHeroLayoutShowcase = ({ children }: React.ComponentPropsWithoutRef<'div'>) => {
   return (

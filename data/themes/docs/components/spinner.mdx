@@ -1,0 +1,64 @@
+---
+metaTitle: Spinner
+metaDescription: Displays an animated loading indicator.
+sourcePath: components/spinner
+---
+
+```jsx live="true"
+<Spinner />
+```
+
+## API Reference
+
+This component is based on the `span` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+<ThemesPropsTable defs="spinnerPropDefs" />
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size of the spinner.
+
+```jsx live="true"
+<Flex align="center" gap="4">
+  <Spinner size="1" />
+  <Spinner size="2" />
+  <Spinner size="3" />
+</Flex>
+```
+
+### With children
+
+Use the `loading` prop to control whether the spinner or its children are displayed. Spinner preserves the dimensions of children when they are hidden and disables interactive elements.
+
+```jsx live="true"
+<Flex gap="4">
+  <Spinner loading={true}>
+    <Switch defaultChecked />
+  </Spinner>
+
+  <Spinner loading={false}>
+    <Switch defaultChecked />
+  </Spinner>
+</Flex>
+```
+
+### With buttons
+
+[Buttons](/themes/docs/components/button) have their own `loading` prop that automatically composes a spinner.
+
+```jsx live=true scroll=true
+<Button loading>Bookmark</Button>
+```
+
+If you have an icon inside the button, you can use the button’s `disabled` state and wrap the icon in a standalone `<Spinner>` to achieve a more sophisticated design.
+
+```jsx live=true scroll=true
+<Button disabled>
+  <Spinner loading>
+    <BookmarkIcon />
+  </Spinner>
+  Bookmark
+</Button>
+```

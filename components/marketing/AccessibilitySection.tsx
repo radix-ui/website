@@ -341,7 +341,7 @@ export const AccessibilitySection = () => {
   }, [currentSequence, isIntersecting]);
 
   return (
-    <Section size={{ initial: '2', md: '3' }} className={styles.AccessibilitySectionRoot}>
+    <Section size={{ initial: '2', md: '4' }} className={styles.AccessibilitySectionRoot}>
       <div className={styles.AccessibilitySectionBackground}>
         <div className={styles.AccessibilitySectionBackgroundSquare} />
         <div className={styles.AccessibilitySectionBackgroundTriangle}>
@@ -407,7 +407,7 @@ export const AccessibilitySection = () => {
 
             <div className={styles.AccessibilitySectionCenter} role="presentation">
               {currentSequence === 'screenReader' && (
-                <Grid grow="1" rows="auto 1fr">
+                <Grid flexGrow="1" rows="auto 1fr">
                   <Flex align="center" gap="1" my="2" mx="3">
                     <Text color="gray" size="2">
                       Screen reader
@@ -444,7 +444,7 @@ export const AccessibilitySection = () => {
               )}
 
               {currentSequence !== 'screenReader' && (
-                <Grid grow="1" rows="auto 1fr" style={{ overflow: 'hidden' }}>
+                <Grid flexGrow="1" rows="auto 1fr" overflow="hidden">
                   <Flex align="baseline" justify="between" my="2" mx="3">
                     <Flex align="center" gap="1">
                       <Text color="gray" size="2">
@@ -500,7 +500,7 @@ export const AccessibilitySection = () => {
             </div>
 
             <div className={styles.AccessibilitySectionRight} role="presentation">
-              <Grid rows="auto 1fr" grow="1">
+              <Grid rows="auto 1fr" flexGrow="1">
                 <Flex align="center" gap="1" my="2" mx="3">
                   <Text color="gray" size="2">
                     Radix component
@@ -908,7 +908,14 @@ const ExampleDropdownCheckboxItem = ({
   return (
     <div className={styles.ExampleDropdownItem} {...props}>
       {checked && (
-        <Flex align="center" justify="center" position="absolute" left="0" width="6" height="6">
+        <Flex
+          align="center"
+          justify="center"
+          position="absolute"
+          left="0"
+          width="32px"
+          height="32px"
+        >
           <CheckIcon width="16" height="16" />
         </Flex>
       )}

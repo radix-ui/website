@@ -1,6 +1,6 @@
 ---
 metaTitle: Scroll Area
-metaDescription: Custom styled, cross-browser scrollable area using native functionality.
+metaDescription: Custom-styled scrollable area using native functionality.
 sourcePath: components/scroll-area
 ---
 
@@ -40,9 +40,9 @@ sourcePath: components/scroll-area
 
 ## API Reference
 
-This component inherits props from the Radix [ScrollArea.Root](/primitives/docs/components/scroll-area#root) and [ScrollArea.Viewport](/primitives/docs/components/scroll-area#viewport) parts. It supports [common margin props](/themes/docs/theme/layout#margin-props).
+This component inherits props from the ScrollArea primitive [Root](/primitives/docs/components/scroll-area#root) and [Viewport](/primitives/docs/components/scroll-area#viewport) parts. It supports [common margin props](/themes/docs/overview/layout#margin-props).
 
-<ThemesPropsTable name="scrollArea" />
+<ThemesPropsTable defs="scrollAreaPropDefs" />
 
 ## Examples
 
@@ -58,7 +58,7 @@ Use the `size` prop to control the size of the scrollbar handles.
     scrollbars="horizontal"
     style={{ width: 300, height: 12 }}
   >
-    <Box style={{ width: 800, height: 1 }} />
+    <Box width="800px" height="1px" />
   </ScrollArea>
 
   <ScrollArea
@@ -67,7 +67,7 @@ Use the `size` prop to control the size of the scrollbar handles.
     scrollbars="horizontal"
     style={{ width: 350, height: 16 }}
   >
-    <Box style={{ width: 900, height: 1 }} />
+    <Box width="900px" height="1px" />
   </ScrollArea>
 
   <ScrollArea
@@ -76,45 +76,33 @@ Use the `size` prop to control the size of the scrollbar handles.
     scrollbars="horizontal"
     style={{ width: 400, height: 20 }}
   >
-    <Box style={{ width: 1000, height: 1 }} />
+    <Box width="1000px" height="1px" />
   </ScrollArea>
 </Flex>
 ```
 
 ### Radius
 
-Use the `radius` prop to assign a specific radius to the handles, ignoring the global theme.
+Use the `radius` prop to assign a specific radius to the handles.
 
 ```jsx live=true
 <Flex direction="column" gap="3">
   <ScrollArea
     radius="none"
-    size="3"
     type="always"
     scrollbars="horizontal"
     style={{ width: 350, height: 20 }}
   >
-    <Box style={{ width: 800, height: 1 }} />
-  </ScrollArea>
-
-  <ScrollArea
-    radius="large"
-    size="3"
-    type="always"
-    scrollbars="horizontal"
-    style={{ width: 350, height: 20 }}
-  >
-    <Box style={{ width: 800, height: 1 }} />
+    <Box width="800px" height="1px" />
   </ScrollArea>
 
   <ScrollArea
     radius="full"
-    size="3"
     type="always"
     scrollbars="horizontal"
     style={{ width: 350, height: 20 }}
   >
-    <Box style={{ width: 800, height: 1 }} />
+    <Box width="800px" height="1px" />
   </ScrollArea>
 </Flex>
 ```
@@ -145,7 +133,7 @@ Use the `scrollbars` prop to limit scrollable axes.
   </ScrollArea>
 
   <ScrollArea type="always" scrollbars="horizontal" style={{ height: 150 }}>
-    <Flex gap="4" p="2" style={{ width: 700 }}>
+    <Flex gap="4" p="2" width="700px">
       <Text size="2" trim="both">
         Three fundamental aspects of typography are legibility, readability, and
         aesthetics. Although in a non-technical sense "legible" and "readable"

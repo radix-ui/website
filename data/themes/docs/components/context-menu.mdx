@@ -1,6 +1,6 @@
 ---
 metaTitle: Context Menu
-metaDescription: Menu representing a set of actions, displayed at the origin of a pointer right-click or long-press.
+metaDescription: Menu representing a set of actions, displayed at the point of right click or long press.
 sourcePath: components/context-menu
 ---
 
@@ -38,7 +38,7 @@ sourcePath: components/context-menu
 
 ## API Reference
 
-This component inherits props from the [ContextMenu primitive](/primitives/docs/components/context-menu).
+This component inherits props from the [Context Menu primitive](/primitives/docs/components/context-menu).
 
 ### Root
 
@@ -52,7 +52,7 @@ Wraps the element that will open the context menu.
 
 The component that pops out when the context menu is open.
 
-<ThemesPropsTable name="contextMenuContent" />
+<ThemesPropsTable defs="contextMenuContentPropDefs" />
 
 ### Label
 
@@ -62,23 +62,27 @@ Used to render a label. It won't be focusable using arrow keys.
 
 The component that contains the context menu items.
 
-<ThemesPropsTable name="contextMenuItem" />
+<ThemesPropsTable defs="contextMenuItemPropDefs" />
 
 ### Group
 
-Used to group multiple `ContextMenu.Item`s.
+Used to group multiple `Item` parts.
 
 ### RadioGroup
 
-Used to group multiple `ContextMenu.RadioItem`s.
+Used to group multiple `RadioItem` parts.
 
 ### RadioItem
 
 An item that can be controlled and rendered like a radio.
 
+<ThemesPropsTable defs="contextMenuRadioItemPropDefs" />
+
 ### CheckboxItem
 
 An item that can be controlled and rendered like a checkbox.
+
+<ThemesPropsTable defs="contextMenuCheckboxItemPropDefs" />
 
 ### Sub
 
@@ -102,7 +106,7 @@ Use the `size` prop to control the size.
 <Grid columns="2" gap="3">
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <RightClickZone heading="Size one" />
+      <RightClickZone title="Size one" />
     </ContextMenu.Trigger>
     <ContextMenu.Content size="1">
       <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
@@ -119,7 +123,7 @@ Use the `size` prop to control the size.
 
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <RightClickZone heading="Size two" />
+      <RightClickZone title="Size two" />
     </ContextMenu.Trigger>
     <ContextMenu.Content size="2">
       <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
@@ -144,7 +148,7 @@ Use the `variant` prop to customize the visual style of the context menu.
 <Grid columns="2" gap="3">
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <RightClickZone heading="Solid" />
+      <RightClickZone title="Solid" />
     </ContextMenu.Trigger>
     <ContextMenu.Content variant="solid">
       <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
@@ -161,7 +165,7 @@ Use the `variant` prop to customize the visual style of the context menu.
 
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <RightClickZone heading="Soft" />
+      <RightClickZone title="Soft" />
     </ContextMenu.Trigger>
     <ContextMenu.Content variant="soft">
       <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
@@ -180,13 +184,13 @@ Use the `variant` prop to customize the visual style of the context menu.
 
 ### Color
 
-Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme. You can also pass `color` to a specific item to override for semantic reasons (ie. destruction action).
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color). You can also pass `color` to a specific item to override for semantic reasons (i.e. a destructive action).
 
 ```jsx live=true
 <Grid columns="2" gap="3">
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <RightClickZone heading="Indigo" />
+      <RightClickZone title="Indigo" />
     </ContextMenu.Trigger>
     <ContextMenu.Content color="indigo">
       <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
@@ -203,7 +207,7 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <RightClickZone heading="Cyan" />
+      <RightClickZone title="Cyan" />
     </ContextMenu.Trigger>
     <ContextMenu.Content color="cyan">
       <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
@@ -220,7 +224,7 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <RightClickZone heading="Orange" />
+      <RightClickZone title="Orange" />
     </ContextMenu.Trigger>
     <ContextMenu.Content color="orange">
       <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
@@ -237,7 +241,7 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <RightClickZone heading="Crimson" />
+      <RightClickZone title="Crimson" />
     </ContextMenu.Trigger>
     <ContextMenu.Content color="crimson">
       <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
@@ -258,13 +262,13 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 
 Use the `highContrast` prop to increase color contrast with the background.
 
-```jsx live=true
+```jsx live=true line="18"
 <Grid columns="2" gap="3">
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <RightClickZone heading="Standard" />
+      <RightClickZone title="Standard" />
     </ContextMenu.Trigger>
-    <ContextMenu.Content>
+    <ContextMenu.Content color="gray">
       <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
       <ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
       <ContextMenu.Separator />
@@ -274,9 +278,9 @@ Use the `highContrast` prop to increase color contrast with the background.
 
   <ContextMenu.Root>
     <ContextMenu.Trigger>
-      <RightClickZone heading="High-contrast" />
+      <RightClickZone title="High-contrast" />
     </ContextMenu.Trigger>
-    <ContextMenu.Content highContrast>
+    <ContextMenu.Content color="gray" highContrast>
       <ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
       <ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
       <ContextMenu.Separator />

@@ -41,7 +41,7 @@ export const PrimitivesSearchMobile = ({
           align="center"
           top="0"
           left="0"
-          height="7"
+          height="40px"
           ml="3"
           style={{ pointerEvents: 'none' }}
         >

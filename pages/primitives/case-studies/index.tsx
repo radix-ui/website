@@ -33,7 +33,7 @@ export default function CaseStudy() {
       <PrimitivesHeader />
 
       <Container mx={{ initial: '5', xs: '6', sm: '7', md: '9' }}>
-        <Section size={{ initial: '2', md: '3' }}>
+        <Section size={{ initial: '2', md: '4' }}>
           <Flex direction="column" align="center" mb="5">
             <Heading size="8" mb="2" align="center">
               Case studies

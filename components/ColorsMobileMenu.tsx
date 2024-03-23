@@ -1,4 +1,4 @@
-import { colorsRoutes } from '@lib/colorsRoutes';
+import { colorsRoutes } from '@utils/colorsRoutes';
 import { Box, ScrollArea } from '@radix-ui/themes';
 import { ColorsHeader } from './ColorsHeader';
 import { DocsNav } from './DocsNav';
@@ -9,7 +9,7 @@ export const ColorsMobileMenu = () => (
   <MobileMenu>
     <ColorsHeader />
     <ScrollArea>
-      <Box pt="4" px="4" pb="9">
+      <Box pt="4" px="3" pb="9">
         <DocsNav
           routes={[
             {
@@ -17,6 +17,10 @@ export const ColorsMobileMenu = () => (
                 {
                   title: 'Homepage',
                   slug: 'colors',
+                },
+                {
+                  title: 'Blog',
+                  slug: 'blog',
                 },
               ],
             },

@@ -1,13 +1,13 @@
 ---
 metaTitle: Getting started
-metaDescription: Install Radix Themes and start building your project in minutes
+metaDescription: Install Radix Themes and start building in minutes
 ---
 
 # Getting started
 
-<Description>
-  Install Radix Themes and start building your project in minutes.
-</Description>
+<Description>Install Radix Themes and start building in minutes.</Description>
+
+Radix Themes is a pre-styled component library that is designed to work out of the box with minimal configuration. If you are looking for the unstyled components, go to [Radix Primitives](/primitives).
 
 ## Installation
 
@@ -17,25 +17,51 @@ Getting up and running is quick and easy.
 
 Install the package from your command line.
 
-<TabsCodeBlock defaultValue="npm" my="5">
-  <TabsList>
-    <TabsTrigger value="npm">npm</TabsTrigger>
-    <TabsTrigger value="yarn">yarn</TabsTrigger>
-    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
-  </TabsList>
-  <TabsContent value="npm">
-    <TabsCodeBlockContent
-      language="bash"
-      value="npm install @radix-ui/themes"
-    />
-  </TabsContent>
-  <TabsContent value="yarn">
-    <TabsCodeBlockContent language="bash" value="yarn add @radix-ui/themes" />
-  </TabsContent>
-  <TabsContent value="pnpm">
-    <TabsCodeBlockContent language="bash" value="pnpm add @radix-ui/themes" />
-  </TabsContent>
-</TabsCodeBlock>
+<Tabs.Root asChild defaultValue="npm">
+  <CodeBlock.Root my="5">
+    <CodeBlock.Header>
+      <Tabs.List>
+        <Tabs.Trigger value="npm">npm</Tabs.Trigger>
+        <Tabs.Trigger value="yarn">yarn</Tabs.Trigger>
+        <Tabs.Trigger value="pnpm">pnpm</Tabs.Trigger>
+      </Tabs.List>
+    </CodeBlock.Header>
+
+    <Tabs.Content asChild value="npm">
+      <CodeBlock.Content>
+        <CodeBlock.Pre>
+          <CodeBlock.Code language="bash">
+            {'npm install @radix-ui/themes'}
+          </CodeBlock.Code>
+        </CodeBlock.Pre>
+        <CodeBlock.CopyButton />
+      </CodeBlock.Content>
+    </Tabs.Content>
+
+    <Tabs.Content asChild value="yarn">
+      <CodeBlock.Content>
+        <CodeBlock.Pre>
+          <CodeBlock.Code language="bash">
+            {'yarn add @radix-ui/themes'}
+          </CodeBlock.Code>
+        </CodeBlock.Pre>
+        <CodeBlock.CopyButton />
+      </CodeBlock.Content>
+    </Tabs.Content>
+
+    <Tabs.Content asChild value="pnpm">
+      <CodeBlock.Content>
+        <CodeBlock.Pre>
+          <CodeBlock.Code language="bash">
+            {'pnpm add @radix-ui/themes'}
+          </CodeBlock.Code>
+        </CodeBlock.Pre>
+        <CodeBlock.CopyButton />
+      </CodeBlock.Content>
+    </Tabs.Content>
+
+  </CodeBlock.Root>
+</Tabs.Root>
 
 ### 2. Import the CSS file
 
@@ -98,11 +124,9 @@ Pass [configuration](/themes/docs/components/theme) to the `Theme` to customize 
 
 ### Using the theme panel
 
-`ThemePanel` is a drop-in component that allows you to preview the theme configuration in real time.
+`ThemePanel` is a drop-in component that allows you to preview the theme in real time. Visit the [component playground](/themes/playground) to see it in action.
 
-Visit the [component playground](/themes/playground) to see it in action.
-
-To add it to your app, import it from the package and drop it inside your root `Theme`.
+To add `ThemePanel` to your app, import it from the package and drop it inside your root `Theme`.
 
 ```jsx line=7
 import { Theme, ThemePanel } from '@radix-ui/themes';
@@ -125,15 +149,21 @@ Get the most out of Radix Themes by exploring more concepts and features.
 
   <Grid columns={{ initial: '1', xs: '2' }} my="6" gap="4">
       <ThemesLinkCard
-        title="Theme overview"
-        desc="Anatomy of a theme and how to create the perfect style for your app."
-        href="/themes/docs/theme/overview"
+        title="Styling"
+        desc="Learn how to approach styling and overrides with Radix Themes."
+        href="/themes/docs/overview/styling"
       />
 
       <ThemesLinkCard
-        title="Visual style"
-        desc="Learn how variants, radii and shadows influence your apps visual style."
-        href="/themes/docs/theme/visual-style"
+        title="Layout"
+        desc="Get to know the layout primitives and their available properties."
+        href="/themes/docs/overview/layout"
+      />
+
+      <ThemesLinkCard
+        title="Theme overview"
+        desc="Anatomy of a theme and how to create the perfect style for your app."
+        href="/themes/docs/theme/overview"
       />
 
       <ThemesLinkCard
@@ -142,7 +172,7 @@ Get the most out of Radix Themes by exploring more concepts and features.
         href="/themes/docs/theme/color"
       />
 
-      <ThemesLinkCard
+       <ThemesLinkCard
         title="Dark mode"
         desc="Integrate a great looking dark mode into your app using appearances."
         href="/themes/docs/theme/dark-mode"
@@ -154,11 +184,6 @@ Get the most out of Radix Themes by exploring more concepts and features.
         href="/themes/docs/theme/typography"
       />
 
-      <ThemesLinkCard
-        title="Layout"
-        desc="Leverage the built-in responsive design utilities and prop syntax."
-        href="/themes/docs/theme/layout"
-      />
     </Grid>
 
 }

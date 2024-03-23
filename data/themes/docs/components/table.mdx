@@ -1,6 +1,6 @@
 ---
 metaTitle: Table
-metaDescription: A semantic table for presenting tabular data.
+metaDescription: Semantic table element for presenting data.
 sourcePath: components/table
 ---
 
@@ -40,9 +40,9 @@ sourcePath: components/table
 
 ### Root
 
-Groups the `Header` and `Body` parts. This component is based on the `table` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
+Groups the `Header` and `Body` parts. This component is based on the `table` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
 
-<ThemesPropsTable name="tableRoot" />
+<ThemesPropsTable defs="tableRootPropDefs" />
 
 ### Header
 
@@ -56,31 +56,99 @@ Displays the table data. This component is based on the `tbody` element.
 
 A row of table cells. Based on the `tr` element.
 
-<ThemesPropsTable name="tableRow" />
+<ThemesPropsTable defs="tableRowPropDefs" />
 
 ### Cell
 
 A basic table cell. This component is based on the `td` element, but uses `justify` instead of `align` to control how horizontal space is distributed within the table cell.
 
-<ThemesPropsTable name="tableCell" />
+<ThemesPropsTable defs="tableCellPropDefs" />
 
 ### ColumnHeaderCell
 
 The header of a table column. Based on the `th` element and provides the same props interface as the `Cell` part.
 
-<ThemesPropsTable name="tableCell" />
+<ThemesPropsTable defs="tableCellPropDefs" />
 
-### ColumnRowHeaderCell
+### RowHeaderCell
 
 The header of a table row. Based on the `th` element and provides the same props interface as the `Cell` part.
 
-<ThemesPropsTable name="tableCell" />
+<ThemesPropsTable defs="tableCellPropDefs" />
 
 ## Examples
 
+### Size
+
+Use the `size` prop to control how large the text and padding of the table cells should be.
+
+```jsx live=true line=2,22,42
+<Flex direction="column" gap="5" maxWidth="350px">
+  <Table.Root __size__="1">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+        <Table.Cell>danilo@example.com</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+        <Table.Cell>zahra@example.com</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+
+  <Table.Root __size__="2">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+        <Table.Cell>danilo@example.com</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+        <Table.Cell>zahra@example.com</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+
+  <Table.Root __size__="3">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+        <Table.Cell>danilo@example.com</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+        <Table.Cell>zahra@example.com</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Flex>
+```
+
 ### With a backplate
 
-Set `variant` to `surface` to add a visually enclosed backplate to the table.
+Use `variant="surface"` to add a visually enclosed backplate to the table.
 
 ```jsx live=true
 <Table.Root variant="surface">

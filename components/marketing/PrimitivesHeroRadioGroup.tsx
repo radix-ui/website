@@ -1,8 +1,8 @@
 import { Text } from '@radix-ui/themes';
-import { styled } from '@lib/stitches';
+import { styled } from '@utils/stitches';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 
-export const RadioCardGroup = styled(RadioGroupPrimitive.Root, {
+export const RadioCards = styled(RadioGroupPrimitive.Root, {
   display: 'flex',
   flexDirection: 'column',
   width: '60%',
@@ -69,7 +69,7 @@ const StyledRadio = styled(RadioGroupPrimitive.Item, {
 
 export function PrimitivesHeroRadioGroup() {
   return (
-    <RadioCardGroup defaultValue="1">
+    <RadioCards defaultValue="1">
       <StyledRadio value="1">
         <StyledRadioButton>
           <StyledRadioIndicator />
@@ -88,6 +88,6 @@ export function PrimitivesHeroRadioGroup() {
         </StyledRadioButton>
         <Text size="2">Slate Gray</Text>
       </StyledRadio>
-    </RadioCardGroup>
+    </RadioCards>
   );
 }

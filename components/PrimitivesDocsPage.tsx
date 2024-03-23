@@ -1,7 +1,7 @@
 import { Box, Flex, ScrollArea } from '@radix-ui/themes';
 import { DocsPagination } from '@components/DocsPagination';
 import { PrimitivesHeader } from '@components/PrimitivesHeader';
-import { allPrimitivesRoutes, primitivesRoutes } from '@lib/primitivesRoutes';
+import { allPrimitivesRoutes, primitivesRoutes } from '@utils/primitivesRoutes';
 import { DocsNav } from './DocsNav';
 import { MobileMenuProvider } from './MobileMenu';
 import { SideNav } from './SideNav';
@@ -18,7 +18,7 @@ export function PrimitivesDocsPage({ children }: { children: React.ReactNode }) 
 
       <Flex>
         <SideNav>
-          <Box pt="4" px="4" pb="9">
+          <Box pt="4" px="3" pb="9">
             <Box mb="4">
               <PrimitivesSearchDesktop />
             </Box>

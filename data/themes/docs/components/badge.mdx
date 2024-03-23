@@ -1,6 +1,6 @@
 ---
 metaTitle: Badge
-metaDescription: A stylized badge element.
+metaDescription: Stylized badge element.
 sourcePath: components/badge
 ---
 
@@ -14,9 +14,9 @@ sourcePath: components/badge
 
 ## API Reference
 
-This component is based on the `span` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
+This component is based on the `span` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
 
-<ThemesPropsTable name="badge" />
+<ThemesPropsTable defs="badgePropDefs" />
 
 ## Examples
 
@@ -26,11 +26,13 @@ Use the `size` prop to control the size.
 
 ```jsx live=true
 <Flex align="center" gap="2">
+  <Badge size="1" color="indigo">
+    New
+  </Badge>
   <Badge size="2" color="indigo">
     New
   </Badge>
-
-  <Badge size="1" color="indigo">
+  <Badge size="3" color="indigo">
     New
   </Badge>
 </Flex>
@@ -48,10 +50,10 @@ Use the `variant` prop to control the visual style.
   <Badge variant="soft" color="indigo">
     New
   </Badge>
-  <Badge variant="outline" color="indigo">
+  <Badge variant="surface" color="indigo">
     New
   </Badge>
-  <Badge variant="surface" color="indigo">
+  <Badge variant="outline" color="indigo">
     New
   </Badge>
 </Flex>
@@ -59,7 +61,7 @@ Use the `variant` prop to control the visual style.
 
 ### Color
 
-Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
 
 ```jsx live=true
 <Flex gap="2">
@@ -77,22 +79,30 @@ Use the `highContrast` prop to increase color contrast with the background.
 ```jsx live=true
 <Flex direction="column" gap="2">
   <Flex gap="2">
-    <Badge variant="solid">New</Badge>
-    <Badge variant="soft">New</Badge>
-    <Badge variant="outline">New</Badge>
-    <Badge variant="surface">New</Badge>
+    <Badge color="gray" variant="solid">
+      New
+    </Badge>
+    <Badge color="gray" variant="soft">
+      New
+    </Badge>
+    <Badge color="gray" variant="surface">
+      New
+    </Badge>
+    <Badge color="gray" variant="outline">
+      New
+    </Badge>
   </Flex>
   <Flex gap="2">
-    <Badge variant="solid" highContrast>
+    <Badge color="gray" variant="solid" highContrast>
       New
     </Badge>
-    <Badge variant="soft" highContrast>
+    <Badge color="gray" variant="soft" highContrast>
       New
     </Badge>
-    <Badge variant="outline" highContrast>
+    <Badge color="gray" variant="surface" highContrast>
       New
     </Badge>
-    <Badge variant="surface" highContrast>
+    <Badge color="gray" variant="outline" highContrast>
       New
     </Badge>
   </Flex>
@@ -101,7 +111,7 @@ Use the `highContrast` prop to increase color contrast with the background.
 
 ### Radius
 
-Use the `radius` prop to assign a specific radius value, ignoring the global theme.
+Use the `radius` prop to assign a specific radius value.
 
 ```jsx live=true scroll=true
 <Flex gap="2">

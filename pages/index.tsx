@@ -9,12 +9,11 @@ import { ExampleThemesMusicApp } from '@components/ExampleThemesMusicApp';
 import { MobileMenuProvider } from '@components/MobileMenu';
 import { useTheme } from 'next-themes';
 import { SerifHeading } from '@components/SerifHeading';
-import { CodeBlock } from '@components/CodeBlock';
-import { SyntaxSchemeProvider } from '@components/Pre';
 import { ThemesHeroLayout } from '@components/ThemesHeroLayout';
 import { ThemesMobileMenu } from '@components/ThemesMobileMenu';
 import { GridIcon } from '@radix-ui/react-icons';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
+import { CodeBlock } from '@components/CodeBlock';
 
 export default function ThemesHome() {
   const { resolvedTheme } = useTheme();
@@ -43,12 +42,12 @@ export default function ThemesHome() {
               </ThemesHeroLayout.Background>
 
               <ThemesHeroLayout.Main>
-                <MainContent codeBlockScheme="indigo" />
+                <MainContent />
               </ThemesHeroLayout.Main>
 
               <ThemesHeroLayout.Showcase>
                 <Theme className="radix-themes-default-fonts" hasBackground={false}>
-                  <ExampleThemesDashboard align="start" />
+                  <ExampleThemesDashboard align="start" focusable={false} />
                 </Theme>
               </ThemesHeroLayout.Showcase>
             </ThemesHeroLayout.Root>
@@ -72,7 +71,7 @@ export default function ThemesHome() {
 
               <ThemesHeroLayout.Showcase>
                 <Theme className="radix-themes-default-fonts" hasBackground={false}>
-                  <ExampleThemesDashboard align="start" />
+                  <ExampleThemesDashboard align="start" focusable={false} />
                 </Theme>
               </ThemesHeroLayout.Showcase>
             </ThemesHeroLayout.Root>
@@ -91,7 +90,7 @@ export default function ThemesHome() {
               </ThemesHeroLayout.Background>
 
               <ThemesHeroLayout.Main>
-                <MainContent codeBlockScheme="teal" />
+                <MainContent />
               </ThemesHeroLayout.Main>
 
               <ThemesHeroLayout.Showcase>
@@ -101,7 +100,7 @@ export default function ThemesHome() {
                   grayColor="gray"
                   hasBackground={false}
                 >
-                  <ExampleThemesEcommerce align="start" />
+                  <ExampleThemesEcommerce align="start" focusable={false} />
                 </Theme>
               </ThemesHeroLayout.Showcase>
             </ThemesHeroLayout.Root>
@@ -120,7 +119,7 @@ export default function ThemesHome() {
               </ThemesHeroLayout.Background>
 
               <ThemesHeroLayout.Main>
-                <MainContent codeBlockScheme="teal" />
+                <MainContent />
               </ThemesHeroLayout.Main>
 
               <ThemesHeroLayout.Showcase>
@@ -129,7 +128,7 @@ export default function ThemesHome() {
                   accentColor="gray"
                   hasBackground={false}
                 >
-                  <ExampleThemesEcommerce align="start" />
+                  <ExampleThemesEcommerce align="start" focusable={false} />
                 </Theme>
               </ThemesHeroLayout.Showcase>
             </ThemesHeroLayout.Root>
@@ -148,12 +147,12 @@ export default function ThemesHome() {
               </ThemesHeroLayout.Background>
 
               <ThemesHeroLayout.Main>
-                <MainContent codeBlockScheme="red" />
+                <MainContent />
               </ThemesHeroLayout.Main>
 
               <ThemesHeroLayout.Showcase>
                 <Theme className="radix-themes-default-fonts" hasBackground={false}>
-                  <ExampleThemesMusicApp align="start" />
+                  <ExampleThemesMusicApp align="start" focusable={false} />
                 </Theme>
               </ThemesHeroLayout.Showcase>
             </ThemesHeroLayout.Root>
@@ -172,12 +171,12 @@ export default function ThemesHome() {
               </ThemesHeroLayout.Background>
 
               <ThemesHeroLayout.Main>
-                <MainContent codeBlockScheme="red" />
+                <MainContent />
               </ThemesHeroLayout.Main>
 
               <ThemesHeroLayout.Showcase>
                 <Theme className="radix-themes-default-fonts" hasBackground={false}>
-                  <ExampleThemesMusicApp align="start" />
+                  <ExampleThemesMusicApp align="start" focusable={false} />
                 </Theme>
               </ThemesHeroLayout.Showcase>
             </ThemesHeroLayout.Root>
@@ -212,13 +211,9 @@ const previewImagesDarkMode = [
   previewImages[4],
 ];
 
-const MainContent = ({
-  codeBlockScheme = 'indigo',
-}: {
-  codeBlockScheme?: React.ComponentProps<typeof SyntaxSchemeProvider>['scheme'];
-}) => (
+const MainContent = () => (
   <Box>
-    <Section size={{ initial: '2', md: '3', lg: '2' }} pb={{ initial: '4', lg: '7' }}>
+    <Section size={{ initial: '2', md: '4', lg: '2' }} pb={{ initial: '4', lg: '7' }}>
       <Box>
         <Box display={{ lg: 'none' }}>
           <SerifHeading mb="3">
@@ -247,9 +242,19 @@ const MainContent = ({
           </Text>
 
           <Box mb="5">
-            <SyntaxSchemeProvider scheme={codeBlockScheme}>
-              <CodeBlock language="jsx" value={codeExample} style={codeStyles} />
-            </SyntaxSchemeProvider>
+            <CodeBlock.Root
+              style={
+                {
+                  '--code-block-background': 'var(--color-panel-solid)',
+                } as React.CSSProperties
+              }
+            >
+              <CodeBlock.Content>
+                <CodeBlock.Pre>
+                  <CodeBlock.Code language="jsx">{codeExample}</CodeBlock.Code>
+                </CodeBlock.Pre>
+              </CodeBlock.Content>
+            </CodeBlock.Root>
           </Box>
         </Text>
 
@@ -305,14 +310,6 @@ const MainContent = ({
     </Section>
   </Box>
 );
-
-const codeStyles = {
-  fontSize: '0.7em',
-  padding: '0.75em 1em',
-  lineHeight: 'var(--line-height-3)',
-  '--border': 'inset 0 0 0 1px var(--gray-a5)',
-  '--background': 'var(--color-panel-solid)',
-};
 
 const indigoBackgroundImageStyle = {
   '--color-background-image-base': 'var(--color-background)',

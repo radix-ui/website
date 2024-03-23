@@ -91,9 +91,9 @@ export const ColorScaleGroup = ({ children }: { children: any }) => {
   return (
     <>
       <Flex style={{ gap: 1 }}>
-        <Box height="5" style={{ width: 140 }} />
+        <Box height="24px" style={{ width: 140 }} />
         {colorKeys.map((key, i) => (
-          <Box key={key} grow="0" shrink="1" width="8">
+          <Box key={key} flexGrow="0" flexShrink="1" width="48px">
             <Text as="div" color="gray" size="1" align="center">
               {i + 1}
             </Text>
@@ -125,7 +125,7 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
       onMouseLeave={() => setIsHovered(false)}
     >
       <Flex style={{ width: 'calc(100% - 25px)', gap: 1, marginBottom: 1 }}>
-        <Flex align="center" height="6" style={{ width: 140 }}>
+        <Flex align="center" height="32px" style={{ width: 140 }}>
           <Text color="gray" size="1">
             {label}
           </Text>
@@ -134,9 +134,9 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
           return (
             <Box
               key={i}
-              height="6"
-              width="8"
-              shrink="1"
+              height="32px"
+              width="48px"
+              flexShrink="1"
               style={{
                 backgroundColor: isDarkAlpha
                   ? Colors['grayDark']['gray1']
@@ -173,7 +173,7 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
         })}
       </Flex>
       {(isHovered || dropdownMenuIsOpen) && (
-        <Flex align="center" justify="center" height="6" position="absolute" right="0" mr="-1">
+        <Flex align="center" justify="center" height="32px" position="absolute" right="0" mr="-1">
           <DropdownMenu.Root onOpenChange={(isOpen) => setDropdownMenuIsOpen(isOpen)}>
             <Tooltip className="radix-themes-custom-fonts" content="Copy to Clipboard">
               <DropdownMenu.Trigger>

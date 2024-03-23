@@ -1,4 +1,4 @@
-import { themesRoutes } from '@lib/themesRoutes';
+import { themesRoutes } from '@utils/themesRoutes';
 import { Box, ScrollArea } from '@radix-ui/themes';
 import { ThemesHeader } from './ThemesHeader';
 import { DocsNav } from './DocsNav';
@@ -9,7 +9,7 @@ export const ThemesMobileMenu = () => (
   <MobileMenu>
     <ThemesHeader />
     <ScrollArea>
-      <Box pt="4" px="4" pb="9">
+      <Box pt="4" px="3" pb="9">
         <DocsNav
           routes={[
             {
@@ -21,6 +21,10 @@ export const ThemesMobileMenu = () => (
                 {
                   title: 'Playground',
                   slug: 'themes/playground',
+                },
+                {
+                  title: 'Blog',
+                  slug: 'blog',
                 },
               ],
             },

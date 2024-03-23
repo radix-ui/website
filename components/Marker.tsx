@@ -4,8 +4,8 @@ export const Marker = (props: React.ComponentPropsWithoutRef<typeof Flex>) => (
   <Flex
     align="center"
     justify="center"
-    width="4"
-    height="4"
+    width="16px"
+    height="16px"
     {...props}
     style={{
       color: 'var(--teal-11)',

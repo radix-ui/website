@@ -9,7 +9,7 @@ sourcePath: components/dropdown-menu
   <DropdownMenu.Trigger>
     <Button variant="soft">
       Options
-      <CaretDownIcon />
+      <DropdownMenu.TriggerIcon />
     </Button>
   </DropdownMenu.Trigger>
   <DropdownMenu.Content>
@@ -52,11 +52,15 @@ Contains all the parts of a dropdown menu.
 
 Wraps the control that will open the dropdown menu.
 
+### Trigger Icon
+
+An optional icon part.
+
 ### Content
 
 The component that pops out when the dropdown menu is open.
 
-<ThemesPropsTable name="dropdownMenuContent" />
+<ThemesPropsTable defs="dropdownMenuContentPropDefs" />
 
 ### Label
 
@@ -66,23 +70,27 @@ Used to render a label. It won't be focusable using arrow keys.
 
 The component that contains the dropdown menu items.
 
-<ThemesPropsTable name="dropdownMenuItem" />
+<ThemesPropsTable defs="dropdownMenuItemPropDefs" />
 
 ### Group
 
-Used to group multiple `DropdownMenu.Item`s.
+Used to group multiple `Item` parts.
 
 ### RadioGroup
 
-Used to group multiple `DropdownMenu.RadioItem`s.
+Used to group multiple `RadioItem` parts.
 
 ### RadioItem
 
 An item that can be controlled and rendered like a radio.
 
+<ThemesPropsTable defs="dropdownMenuRadioItemPropDefs" />
+
 ### CheckboxItem
 
 An item that can be controlled and rendered like a checkbox.
+
+<ThemesPropsTable defs="dropdownMenuCheckboxItemPropDefs" />
 
 ### Sub
 
@@ -106,12 +114,12 @@ Use the `size` prop to control the size.
 <Flex gap="3" align="center">
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <Button variant="soft" size="2">
+      <Button variant="soft" size="1">
         Options
-        <CaretDownIcon width="16" height="16" />
+        <DropdownMenu.TriggerIcon />
       </Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content size="2">
+    <DropdownMenu.Content size="1">
       <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
       <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
       <DropdownMenu.Separator />
@@ -126,12 +134,12 @@ Use the `size` prop to control the size.
 
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <Button variant="soft" size="1">
+      <Button variant="soft" size="2">
         Options
-        <CaretDownIcon width="12" height="12" />
+        <DropdownMenu.TriggerIcon />
       </Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content size="1">
+    <DropdownMenu.Content size="2">
       <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
       <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
       <DropdownMenu.Separator />
@@ -156,7 +164,7 @@ Use the `variant` prop to customize the visual style of the dropdown menu.
     <DropdownMenu.Trigger>
       <Button variant="solid">
         Options
-        <CaretDownIcon width="12" height="12" />
+        <DropdownMenu.TriggerIcon />
       </Button>
     </DropdownMenu.Trigger>
     <DropdownMenu.Content variant="solid">
@@ -176,7 +184,7 @@ Use the `variant` prop to customize the visual style of the dropdown menu.
     <DropdownMenu.Trigger>
       <Button variant="soft">
         Options
-        <CaretDownIcon width="12" height="12" />
+        <DropdownMenu.TriggerIcon />
       </Button>
     </DropdownMenu.Trigger>
     <DropdownMenu.Content variant="soft">
@@ -196,7 +204,7 @@ Use the `variant` prop to customize the visual style of the dropdown menu.
 
 ### Color
 
-Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme. You can also pass `color` to a specific item to override for semantic reasons (ie. destruction action).
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color). You can also pass `color` to a specific item to override for semantic reasons (ie. destruction action).
 
 ```jsx live=true
 <Flex gap="3">
@@ -204,7 +212,7 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
     <DropdownMenu.Trigger>
       <Button variant="soft" color="indigo">
         Options
-        <CaretDownIcon width="12" height="12" />
+        <DropdownMenu.TriggerIcon />
       </Button>
     </DropdownMenu.Trigger>
     <DropdownMenu.Content variant="soft" color="indigo">
@@ -219,7 +227,7 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
     <DropdownMenu.Trigger>
       <Button variant="soft" color="cyan">
         Options
-        <CaretDownIcon width="12" height="12" />
+        <DropdownMenu.TriggerIcon />
       </Button>
     </DropdownMenu.Trigger>
     <DropdownMenu.Content variant="soft" color="cyan">
@@ -234,7 +242,7 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
     <DropdownMenu.Trigger>
       <Button variant="soft" color="orange">
         Options
-        <CaretDownIcon width="12" height="12" />
+        <DropdownMenu.TriggerIcon />
       </Button>
     </DropdownMenu.Trigger>
     <DropdownMenu.Content variant="soft" color="orange">
@@ -249,7 +257,7 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
     <DropdownMenu.Trigger>
       <Button variant="soft" color="crimson">
         Options
-        <CaretDownIcon width="12" height="12" />
+        <DropdownMenu.TriggerIcon />
       </Button>
     </DropdownMenu.Trigger>
     <DropdownMenu.Content variant="soft" color="crimson">
@@ -266,16 +274,16 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
 
 Use the `highContrast` prop to increase color contrast with the background.
 
-```jsx live=true
+```jsx live=true line="24,54"
 <Grid columns="2" gap="3" display="inline-grid">
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <Button variant="solid">
+      <Button color="gray">
         Options
-        <CaretDownIcon width="12" height="12" />
+        <DropdownMenu.TriggerIcon />
       </Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content variant="solid">
+    <DropdownMenu.Content color="gray">
       <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
       <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
       <DropdownMenu.Separator />
@@ -285,12 +293,12 @@ Use the `highContrast` prop to increase color contrast with the background.
 
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <Button variant="solid" highContrast>
+      <Button color="gray" highContrast>
         Options
-        <CaretDownIcon width="12" height="12" />
+        <DropdownMenu.TriggerIcon />
       </Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content variant="solid" highContrast>
+    <DropdownMenu.Content color="gray" highContrast>
       <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
       <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
       <DropdownMenu.Separator />
@@ -300,12 +308,12 @@ Use the `highContrast` prop to increase color contrast with the background.
 
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <Button variant="soft">
+      <Button color="gray" variant="soft">
         Options
-        <CaretDownIcon width="12" height="12" />
+        <DropdownMenu.TriggerIcon />
       </Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content variant="soft">
+    <DropdownMenu.Content color="gray" variant="soft">
       <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
       <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
       <DropdownMenu.Separator />
@@ -315,12 +323,12 @@ Use the `highContrast` prop to increase color contrast with the background.
 
   <DropdownMenu.Root>
     <DropdownMenu.Trigger>
-      <Button variant="soft" highContrast>
+      <Button color="gray" variant="soft" highContrast>
         Options
-        <CaretDownIcon width="12" height="12" />
+        <DropdownMenu.TriggerIcon />
       </Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content variant="soft" highContrast>
+    <DropdownMenu.Content color="gray" variant="soft" highContrast>
       <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
       <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
       <DropdownMenu.Separator />

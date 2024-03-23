@@ -6,20 +6,19 @@ import {
   IconButton,
   Tooltip,
   Tabs,
-  ScrollArea,
   Select,
   Theme,
+  Grid,
 } from '@radix-ui/themes';
 import * as Collapsible from '@radix-ui/react-collapsible';
 import { getParameters } from 'codesandbox/lib/api/define';
-import { CodeSandboxLogoIcon } from '@radix-ui/react-icons';
+import { CodeSandboxLogoIcon, CopyIcon } from '@radix-ui/react-icons';
 import { isValidCssLib, useCssLibPreference } from './CssLibPreference';
 import { FrontmatterContext } from './MDXComponents';
-import { Pre } from './Pre';
-import { CopyCodeButton } from './CopyCodeButton';
-import { CSS_LIB_NAMES, DEFAULT_CSS_LIB } from '@lib/constants';
-import type { CssLib } from '@lib/constants';
+import { CSS_LIB_NAMES, DEFAULT_CSS_LIB } from '@utils/constants';
+import type { CssLib } from '@utils/constants';
 import styles from './HeroCodeBlock.module.css';
+import { CodeBlock } from './CodeBlock';
 
 export const HeroCodeBlock = ({
   children,
@@ -108,6 +107,7 @@ export const HeroCodeBlock = ({
 
         <Collapsible.Content asChild forceMount>
           <Box
+            data-code-block-content
             position="relative"
             style={{
               border: '1px solid var(--gray-a5)',
@@ -126,7 +126,7 @@ export const HeroCodeBlock = ({
               <Tabs.List
                 style={{
                   position: 'relative',
-                  backgroundColor: 'var(--gray-a2)',
+                  backgroundColor: 'var(--color-panel-solid)',
                   marginBottom: -1,
                 }}
               >
@@ -136,8 +136,10 @@ export const HeroCodeBlock = ({
                   </Tabs.Trigger>
                 ))}
 
-                {cssLibProp === undefined && availableCssLibs.length > 1 ? (
-                  <Box style={{ marginLeft: 'auto', marginBlock: 'auto' }}>
+                <Flex ml="auto" my="auto" gap="2">
+                  <CodeBlock.CopyButton size="1" />
+
+                  {cssLibProp === undefined && availableCssLibs.length > 1 ? (
                     <Select.Root
                       aria-label="Choose a styling solution"
                       size="1"
@@ -152,7 +154,7 @@ export const HeroCodeBlock = ({
                         mr="2"
                         style={{ minWidth: 115 }}
                       />
-                      <Select.Content className="radix-themes-custom-fonts" variant="soft">
+                      <Select.Content className="radix-themes-custom-fonts">
                         {availableCssLibs.map((lib) => (
                           <Select.Item key={lib} value={lib}>
                             {CSS_LIB_NAMES[lib]}
@@ -160,57 +162,39 @@ export const HeroCodeBlock = ({
                         ))}
                       </Select.Content>
                     </Select.Root>
-                  </Box>
-                ) : null}
+                  ) : null}
+                </Flex>
               </Tabs.List>
 
               {currentTabs.map((tab) => (
-                <Tabs.Content key={tab.id} value={tab.id}>
-                  <Box
-                    position="relative"
-                    className={styles.CodeContainer}
-                    style={{
-                      overflow: 'hidden',
-                      display: 'grid',
-                      gridTemplateRows: isCodeExpanded ? '1fr' : '150px',
-                    }}
-                  >
-                    <ScrollAreaWrapper
-                      disabled={!isCodeExpanded}
-                      scrollbars="both"
-                      style={{
-                        maxHeight: '70vh',
-                      }}
+                <Tabs.Content key={tab.id} value={tab.id} asChild>
+                  <CodeBlock.Content>
+                    <Grid
+                      position="relative"
+                      width="100%"
+                      rows={isCodeExpanded ? '1fr' : '150px'}
+                      maxHeight="70vh"
+                      minHeight="150px"
                     >
-                      <Box position="relative" style={{ zIndex: -1 }}>
-                        <Pre
-                          style={{
-                            boxShadow: 'none',
-                            paddingBottom: 80,
-                          }}
-                        >
-                          <code>{tab.children}</code>
-                        </Pre>
-                      </Box>
-                      <Flex align="end" justify="center" className={styles.CollapsibleGradient}>
-                        <Collapsible.Trigger asChild>
-                          <Box
-                            position="relative"
-                            style={{ backgroundColor: 'var(--color-panel-solid)' }}
-                          >
-                            <Button size="1" variant="soft" highContrast color="gray">
-                              {isCodeExpanded ? 'Collapse' : 'Expand'} code
-                            </Button>
-                          </Box>
-                        </Collapsible.Trigger>
-                      </Flex>
-                    </ScrollAreaWrapper>
-                    <CopyCodeButton
-                      className={styles.CopyButton}
-                      code={sources[tab.id]}
-                      style={{ zIndex: 1 }}
-                    />
-                  </Box>
+                      <CodeBlock.Pre overflow={isCodeExpanded ? 'scroll' : 'hidden'}>
+                        <code>{tab.children}</code>
+
+                        <Box height="64px" />
+                        <Flex align="end" justify="center" className={styles.CollapsibleGradient}>
+                          <Collapsible.Trigger asChild>
+                            <Box
+                              position="relative"
+                              style={{ backgroundColor: 'var(--color-panel-solid)' }}
+                            >
+                              <Button size="1" variant="soft" highContrast color="gray">
+                                {isCodeExpanded ? 'Collapse' : 'Expand'} code
+                              </Button>
+                            </Box>
+                          </Collapsible.Trigger>
+                        </Flex>
+                      </CodeBlock.Pre>
+                    </Grid>
+                  </CodeBlock.Content>
                 </Tabs.Content>
               ))}
             </Tabs.Root>
@@ -220,13 +204,6 @@ export const HeroCodeBlock = ({
     </Box>
   );
 };
-
-function ScrollAreaWrapper({ disabled = false, ...props }) {
-  if (disabled) {
-    return <div {...props} />;
-  }
-  return <ScrollArea {...props} />;
-}
 
 const onlyUnique = <T,>(value: T, index: number, self: T[]) => self.indexOf(value) === index;
 

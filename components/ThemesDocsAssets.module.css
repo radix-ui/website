@@ -1,0 +1,33 @@
+.SegmentedControlDemo {
+  --segmented-control-transition-duration: 1s;
+  pointer-events: none;
+}
+
+/* Safari */
+@supports (zoom: 2) {
+  @media (min-width: 520px) {
+    .SegmentedControlDemo {
+      zoom: 1.5;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .SegmentedControlDemo {
+      zoom: 2;
+    }
+  }
+}
+
+@supports not (zoom: 2) {
+  @media (min-width: 520px) {
+    .SegmentedControlDemo {
+      transform: scale(1.5);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .SegmentedControlDemo {
+      transform: scale(2);
+    }
+  }
+}

@@ -3,7 +3,7 @@ import { MobileMenu, MobileMenuProvider } from '@components/MobileMenu';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { IconsHero } from '@components/icons/IconsHero';
 import { IconsPanel } from '@components/icons/IconsPanel';
-import { iconsRoutes } from '@lib/iconsRoutes';
+import { iconsRoutes } from '@utils/iconsRoutes';
 import { Box, Container, ScrollArea } from '@radix-ui/themes';
 import { Menu } from '@components/icons/Menu';
 import { DocsNav } from '@components/DocsNav';
@@ -15,7 +15,7 @@ export default function Home() {
       <MobileMenu>
         <ColorsHeader />
         <ScrollArea>
-          <Box pt="4" px="4" pb="9">
+          <Box pt="4" px="3" pb="9">
             <DocsNav
               routes={[
                 {
@@ -23,6 +23,10 @@ export default function Home() {
                     {
                       title: 'Homepage',
                       slug: 'icons',
+                    },
+                    {
+                      title: 'Blog',
+                      slug: 'blog',
                     },
                   ],
                 },
