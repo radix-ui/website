@@ -135,6 +135,7 @@ const Code = React.forwardRef<HTMLElement, CodeProps>(function Code(
   return (
     <code
       ref={forwardedRef}
+      suppressHydrationWarning
       dangerouslySetInnerHTML={{ __html: result }}
       data-invert-line-highlight={invertLineHighlight}
       className={classNames(styles.CodeBlockCode, className)}

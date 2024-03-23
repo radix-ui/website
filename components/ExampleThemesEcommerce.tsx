@@ -1527,12 +1527,13 @@ type ToggleButtonsProps = (ToggleButtonsSingleProps | ToggleButtonsMultipleProps
   ToggleButtonsCommonProps;
 
 const ToggleButtons = React.forwardRef<ToggleGroupRootElement, ToggleButtonsProps>(
-  ({ children, tabIndex, values, ...props }) => {
+  ({ children, tabIndex, values, ...props }, forwardedRef) => {
     const isActive = (value: string) =>
       props.type === 'single' ? props.value === value : props.value.includes(value);
 
     return (
       <ToggleGroup.Root
+        ref={forwardedRef}
         {...props}
         {...(tabIndex !== undefined && { tabIndex })}
         onValueChange={(value) => {
