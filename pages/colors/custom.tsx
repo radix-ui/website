@@ -194,8 +194,9 @@ export default function Page() {
 
             <Box mb="9">
               <Grid
-                flow="column"
-                columns="180px 180px 180px auto"
+                columns={{ initial: '1fr', sm: '180px 180px 180px auto' }}
+                maxWidth={{ initial: '400px', sm: 'none' }}
+                mx="auto"
                 gap="4"
                 justify="center"
                 align="end"
@@ -227,7 +228,12 @@ export default function Page() {
                   <ColorField id="bg" value={bgValue} onValueChange={setBgValue} />
                 </Flex>
 
-                <Flex align="center" gap="3">
+                <Flex
+                  gap="3"
+                  align={{ sm: 'center' }}
+                  direction={{ initial: 'column', sm: 'row' }}
+                  mt={{ initial: '2', sm: '0' }}
+                >
                   <DropdownMenu.Root>
                     <DropdownMenu.Trigger>
                       <Button>
@@ -402,8 +408,13 @@ export const Preview = ({ children, ...props }: React.ComponentPropsWithoutRef<t
   });
 
   return (
-    <Grid columns="320px 1fr 320px" gap="6" {...props}>
-      <Flex gap="5" direction="column">
+    <Grid
+      justify="center"
+      columns={{ initial: '1fr', sm: '320px 320px', lg: '320px 1fr 320px' }}
+      gap="6"
+      {...props}
+    >
+      <Flex gap="5" direction="column" width="100%" maxWidth="400px" mx="auto">
         <Flex gap="2">
           <Box flexGrow="1" flexShrink="0">
             <TextField.Root placeholder="Search" type="text" name="_">
@@ -455,7 +466,7 @@ export const Preview = ({ children, ...props }: React.ComponentPropsWithoutRef<t
           </LayersItem>
         </LayersRoot>
 
-        <Flex justify="between" align="center">
+        <Flex align="center" justify={{ initial: 'center', sm: 'between' }} gap="4">
           <Badge radius="full" variant="soft">
             Fully-featured
           </Badge>
@@ -467,7 +478,11 @@ export const Preview = ({ children, ...props }: React.ComponentPropsWithoutRef<t
           </Badge>
         </Flex>
 
-        <Flex align="center" gap="1" justify="between">
+        <Flex
+          align="center"
+          justify={{ initial: 'center', sm: 'between' }}
+          gap={{ initial: '4', sm: '0' }}
+        >
           <IconButton variant="classic">
             <Flex align="center" justify="center" width="4" height="4">
               <StarIcon />
@@ -534,8 +549,91 @@ export const Preview = ({ children, ...props }: React.ComponentPropsWithoutRef<t
         </Flex>
       </Flex>
 
-      <Flex gap="5" direction="column">
-        <Flex gap="4">
+      <Flex gap="6" direction="column" width="100%" maxWidth="400px" mx="auto">
+        <Flex mt="-2" mx="auto">
+          <Tabs.Root defaultValue="colors" activationMode="manual">
+            <Tabs.List size="2">
+              <Tabs.Trigger value="themes">Themes</Tabs.Trigger>
+              <Tabs.Trigger value="primitives">Primitives</Tabs.Trigger>
+              <Tabs.Trigger value="icons">Icons</Tabs.Trigger>
+              <Tabs.Trigger value="colors">Colors</Tabs.Trigger>
+            </Tabs.List>
+          </Tabs.Root>
+        </Flex>
+
+        <Flex gap="4" direction="column" mx="auto">
+          <Flex gap="3">
+            <Avatar
+              radius="full"
+              variant="solid"
+              src={getPeopleForColor('gray')[6].image}
+              fallback="V"
+            />
+            <Avatar
+              radius="full"
+              variant="solid"
+              src={getPeopleForColor('gray')[2].image}
+              fallback="V"
+            />
+            <Avatar radius="full" variant="solid" fallback="V" />
+            <Avatar radius="full" variant="solid" fallback="BG" />
+            <Avatar radius="full" variant="solid" fallback={<AvatarIconFallback />} />
+            <Avatar radius="full" variant="solid" fallback={<AvatarIconFallback />} highContrast />
+          </Flex>
+
+          <Flex gap="3">
+            <Avatar
+              radius="full"
+              variant="soft"
+              src={getPeopleForColor('gray')[0].image}
+              fallback="V"
+            />
+            <Avatar
+              radius="full"
+              variant="soft"
+              src={getPeopleForColor('gray')[1].image}
+              fallback="V"
+            />
+            <Avatar radius="full" variant="soft" fallback="V" />
+            <Avatar radius="full" variant="soft" fallback="BG" />
+            <Avatar radius="full" variant="soft" fallback={<AvatarIconFallback />} />
+            <Avatar radius="full" variant="soft" fallback={<AvatarIconFallback />} highContrast />
+          </Flex>
+        </Flex>
+
+        <Separator size="4" />
+
+        <Flex gap="4" direction="column">
+          <Text size="2">
+            <LinksExample />
+          </Text>
+
+          <Text size="2" color="gray">
+            <LinksExample highContrast />
+          </Text>
+        </Flex>
+
+        <Box
+          p="4"
+          style={{
+            borderRadius: 'var(--radius-4)',
+            backgroundColor: 'var(--gray-a2)',
+          }}
+        >
+          <ToDoList
+            items={state.todo}
+            onItemsChange={(items) => setState({ ...state, todo: items })}
+          />
+        </Box>
+      </Flex>
+
+      <Flex
+        gap="5"
+        direction="column"
+        gridColumn={{ initial: '1 / -1', lg: '2 / 3' }}
+        gridRow={{ lg: '1' }}
+      >
+        <Flex gap="4" display={{ initial: 'none', lg: 'flex' }}>
           <Flex
             align="center"
             gap="3"
@@ -666,17 +764,20 @@ export const Preview = ({ children, ...props }: React.ComponentPropsWithoutRef<t
         </Flex>
 
         <Flex direction="column">
-          <Flex direction="column" position="relative" px="8" py="7">
+          <Flex
+            direction="column"
+            position="relative"
+            mx={{ initial: '-5', xs: '-6', sm: '0' }}
+            px={{ initial: '6', sm: '8' }}
+            py={{ initial: '6', sm: '7' }}
+          >
             <Flex
               align="center"
               justify="center"
               position="absolute"
               inset="0"
-              style={{
-                overflow: 'hidden',
-                borderRadius: 'var(--radius-3)',
-                background: 'var(--gray-2)',
-              }}
+              overflow="hidden"
+              style={{ background: 'var(--gray-2)' }}
             >
               <ThemesPanelBackgroundImage id="1" style={{ width: '240%', marginLeft: '70%' }} />
             </Flex>
@@ -686,141 +787,65 @@ export const Preview = ({ children, ...props }: React.ComponentPropsWithoutRef<t
                 Sign up
               </Heading>
 
-              <Card size="4">
-                <Flex direction="column" mb="5">
-                  <Flex>
-                    <Text
-                      htmlFor="example-name"
-                      as="label"
-                      size="2"
-                      weight="medium"
-                      mb="1"
-                      trim="start"
-                    >
-                      Full name
-                    </Text>
+              <Box maxWidth="400px" mx="auto">
+                <Card size="4">
+                  <Flex direction="column" mb="5">
+                    <Flex>
+                      <Text
+                        htmlFor="example-name"
+                        as="label"
+                        size="2"
+                        weight="medium"
+                        mb="1"
+                        trim="start"
+                      >
+                        Full name
+                      </Text>
+                    </Flex>
+                    <TextField.Root id="example-name" placeholder="Enter your name" />
                   </Flex>
-                  <TextField.Root id="example-name" placeholder="Enter your name" />
-                </Flex>
 
-                <Flex direction="column" mb="5">
-                  <Flex>
-                    <Text htmlFor="example-email" as="label" size="2" weight="medium" mb="1">
-                      Email
-                    </Text>
+                  <Flex direction="column" mb="5">
+                    <Flex>
+                      <Text htmlFor="example-email" as="label" size="2" weight="medium" mb="1">
+                        Email
+                      </Text>
+                    </Flex>
+                    <TextField.Root id="example-email" placeholder="Enter your email address" />
                   </Flex>
-                  <TextField.Root id="example-email" placeholder="Enter your email address" />
-                </Flex>
 
-                <Flex direction="column" mb="5">
-                  <Flex>
-                    <Text htmlFor="example-password" as="label" size="2" weight="medium" mb="1">
-                      Password
-                    </Text>
+                  <Flex direction="column" mb="5">
+                    <Flex>
+                      <Text htmlFor="example-password" as="label" size="2" weight="medium" mb="1">
+                        Password
+                      </Text>
+                    </Flex>
+                    <TextField.Root id="example-password" placeholder="Enter your password" />
                   </Flex>
-                  <TextField.Root id="example-password" placeholder="Enter your password" />
-                </Flex>
 
-                <Grid
-                  mt="5"
-                  gap="4"
-                  style={{ '--cursor-button': 'pointer' } as React.CSSProperties}
-                >
-                  <Button>Create account</Button>
-                  <Flex align="center" gap="3">
-                    <Separator size="4" />
-                    <Text color="gray" size="1">
-                      OR
-                    </Text>
-                    <Separator size="4" />
-                  </Flex>
-                  <Button color="gray" variant="surface" highContrast>
-                    <GitHubLogoIcon />
-                    Continue with GitHub
-                  </Button>
-                </Grid>
-              </Card>
+                  <Grid
+                    mt="5"
+                    gap="4"
+                    style={{ '--cursor-button': 'pointer' } as React.CSSProperties}
+                  >
+                    <Button>Create account</Button>
+                    <Flex align="center" gap="3">
+                      <Separator size="4" />
+                      <Text color="gray" size="1">
+                        OR
+                      </Text>
+                      <Separator size="4" />
+                    </Flex>
+                    <Button color="gray" variant="surface" highContrast>
+                      <GitHubLogoIcon />
+                      Continue with GitHub
+                    </Button>
+                  </Grid>
+                </Card>
+              </Box>
             </Box>
           </Flex>
         </Flex>
-      </Flex>
-
-      <Flex gap="6" direction="column">
-        <Flex mt="-2">
-          <Tabs.Root defaultValue="colors" activationMode="manual">
-            <Tabs.List size="2">
-              <Tabs.Trigger value="themes">Themes</Tabs.Trigger>
-              <Tabs.Trigger value="primitives">Primitives</Tabs.Trigger>
-              <Tabs.Trigger value="icons">Icons</Tabs.Trigger>
-              <Tabs.Trigger value="colors">Colors</Tabs.Trigger>
-            </Tabs.List>
-          </Tabs.Root>
-        </Flex>
-
-        <Flex gap="4" direction="column">
-          <Flex gap="3">
-            <Avatar
-              radius="full"
-              variant="solid"
-              src={getPeopleForColor('gray')[6].image}
-              fallback="V"
-            />
-            <Avatar
-              radius="full"
-              variant="solid"
-              src={getPeopleForColor('gray')[2].image}
-              fallback="V"
-            />
-            <Avatar radius="full" variant="solid" fallback="V" />
-            <Avatar radius="full" variant="solid" fallback="BG" />
-            <Avatar radius="full" variant="solid" fallback={<AvatarIconFallback />} />
-            <Avatar radius="full" variant="solid" fallback={<AvatarIconFallback />} highContrast />
-          </Flex>
-
-          <Flex gap="3">
-            <Avatar
-              radius="full"
-              variant="soft"
-              src={getPeopleForColor('gray')[0].image}
-              fallback="V"
-            />
-            <Avatar
-              radius="full"
-              variant="soft"
-              src={getPeopleForColor('gray')[1].image}
-              fallback="V"
-            />
-            <Avatar radius="full" variant="soft" fallback="V" />
-            <Avatar radius="full" variant="soft" fallback="BG" />
-            <Avatar radius="full" variant="soft" fallback={<AvatarIconFallback />} />
-            <Avatar radius="full" variant="soft" fallback={<AvatarIconFallback />} highContrast />
-          </Flex>
-        </Flex>
-
-        <Separator size="4" />
-
-        <Flex gap="4" direction="column">
-          <Text size="2">
-            <LinksExample />
-          </Text>
-
-          <Text size="2" color="gray">
-            <LinksExample highContrast />
-          </Text>
-        </Flex>
-
-        <Box
-          p="4"
-          style={{
-            borderRadius: 'var(--radius-4)',
-            backgroundColor: 'var(--gray-a2)',
-          }}
-        >
-          <ToDoList
-            items={state.todo}
-            onItemsChange={(items) => setState({ ...state, todo: items })}
-          />
-        </Box>
       </Flex>
     </Grid>
   );
