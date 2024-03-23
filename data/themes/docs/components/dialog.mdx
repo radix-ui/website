@@ -99,6 +99,58 @@ Wraps the control that will close the dialog.
 
 ## Examples
 
+### Size
+
+Use the `size` prop to control the size of the dialog.
+
+```jsx live=true line=6,15,24,33
+<Flex gap="4" align="center">
+  <Dialog.Root>
+    <Dialog.Trigger>
+      <Button>Size 1</Button>
+    </Dialog.Trigger>
+    <Dialog.Content __size__="1" maxWidth="300px">
+      <Text as="p" trim="both" size="1">
+        The quick brown fox jumps over the lazy dog.
+      </Text>
+    </Dialog.Content>
+  </Dialog.Root>
+
+  <Dialog.Root>
+    <Dialog.Trigger>
+      <Button>Size 2</Button>
+    </Dialog.Trigger>
+    <Dialog.Content __size__="2" maxWidth="400px">
+      <Text as="p" trim="both" size="2">
+        The quick brown fox jumps over the lazy dog.
+      </Text>
+    </Dialog.Content>
+  </Dialog.Root>
+
+  <Dialog.Root>
+    <Dialog.Trigger>
+      <Button>Size 3</Button>
+    </Dialog.Trigger>
+    <Dialog.Content __size__="3" maxWidth="500px">
+      <Text as="p" trim="both" size="3">
+        The quick brown fox jumps over the lazy dog.
+      </Text>
+    </Dialog.Content>
+  </Dialog.Root>
+
+  <Dialog.Root>
+    <Dialog.Trigger>
+      <Button>Size 4</Button>
+    </Dialog.Trigger>
+    <Dialog.Content __size__="4">
+      <Text as="p" trim="both" size="4">
+        The quick brown fox jumps over the lazy dog.
+      </Text>
+    </Dialog.Content>
+  </Dialog.Root>
+</Flex>
+```
+
 ### With inset content
 
 Use the [Inset](/themes/docs/components/inset) component to align content flush with the sides of the dialog.
