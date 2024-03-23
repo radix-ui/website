@@ -65,48 +65,47 @@ Or any number of differing treatments and styles.
 
 Tokens provide direct access to theme values and give you flexibility to build and customize your own themed components.
 
-Radix Themes exposes all tokens as CSS [Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*). These are consumed internally in all component styles. You can access them the same way you would any other variable, either directly inside your CSS or inline via the style prop.
-
-For all available theme tokens see the [source code](https://github.com/radix-ui/themes/tree/main/packages/radix-ui-themes/src/styles/tokens), or read more about each type of token in the relevant theme pages below.
+For all available theme tokens see the [source code](https://github.com/radix-ui/themes/tree/main/packages/radix-ui-themes/src/styles/tokens), or read more about each type of token in the relevant theme pages.
 
 {
 
   <Grid columns={{ initial: '1', xs: '2' }} my="6" gap="4">
       <ThemesLinkCard
-        title="Colors"
-        desc="Pick your accent color and learn about the underlying token system."
-        href="/themes/docs/theme/color#accents"
-      />
-
-      <ThemesLinkCard
-        title="Appearance"
-        desc="Set the color scheme of the theme, typically referred to as light and dark mode."
-        href="/themes/docs/theme/dark-mode"
+        title="Color"
+        desc="Understand the color system and its application in your theme."
+        href="/themes/docs/theme/color"
       />
 
       <ThemesLinkCard
         title="Typography"
-        desc="Learn how to use and customize the typographic components in your theme."
+        desc="Learn how to use and customize the typographic elements of your theme."
         href="/themes/docs/theme/typography"
       />
 
       <ThemesLinkCard
-        title="Layout"
-        desc="How to use the layout components, common spacing props, and set the theme scaling."
-        href="/themes/docs/theme/layout"
+        title="Spacing"
+        desc="Explore the spacing scale and the available scaling options."
+        href="/themes/docs/theme/spacing"
       />
 
       <ThemesLinkCard
         title="Radius"
-        desc="Choose the radius setting in your theme that fits your brand."
+        desc="Choose the radius setting in your theme that fits your style."
         href="/themes/docs/theme/radius"
       />
 
       <ThemesLinkCard
-        title="Custom components"
-        desc="Learn to build your own components that use the same theme settings."
-        href="/themes/docs/theme/custom-components"
+        title="Shadows"
+        desc="Use elevation, depth and shadows effectively and customize their properties."
+        href="/themes/docs/theme/shadows"
       />
+
+      <ThemesLinkCard
+        title="Cursors"
+        desc="Customizing cursors used for interactive elements."
+        href="/themes/docs/theme/cursors"
+      />
+
     </Grid>
 
 }
