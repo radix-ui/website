@@ -114,11 +114,11 @@ export default function ColorsHome() {
           <Container style={{ whiteSpace: 'nowrap', minWidth: 880 }}>
             <div className={styles.ColorsHomeGrid}>
               <Box />
-              <UsageRange style={{ gridColumn: '2 / 4' }}>Backgrounds</UsageRange>
-              <UsageRange style={{ gridColumn: '4 / 7' }}>Interactive components</UsageRange>
-              <UsageRange style={{ gridColumn: '7 / 10' }}>Borders and separators</UsageRange>
-              <UsageRange style={{ gridColumn: '10 / 12' }}>Solid colors</UsageRange>
-              <UsageRange style={{ gridColumn: '12 / 14' }}>Accessible text</UsageRange>
+              <UsageRange gridColumn="2 / 4">Backgrounds</UsageRange>
+              <UsageRange gridColumn="4 / 7">Interactive components</UsageRange>
+              <UsageRange gridColumn="7 / 10">Borders and separators</UsageRange>
+              <UsageRange gridColumn="10 / 12">Solid colors</UsageRange>
+              <UsageRange gridColumn="12 / 14">Accessible text</UsageRange>
 
               <Box />
               <StepLabel>1</StepLabel>
@@ -182,9 +182,7 @@ export default function ColorsHome() {
 
             <div className={styles.ColorsHomeGrid}>
               <Box />
-              <UsageRange style={{ gridColumn: '2 / -1' }}>
-                Shadows, highlights, and overlays
-              </UsageRange>
+              <UsageRange gridColumn="2 / -1">Shadows, highlights, and overlays</UsageRange>
 
               <Box />
               {Array.from({ length: 12 }, (_, i) => i + 1).map((step) => (
@@ -297,8 +295,8 @@ export default function ColorsHome() {
   );
 }
 
-export const StepLabel = ({ children }: React.PropsWithChildren<{}>) => (
-  <Flex justify="center" mb="3">
+export const StepLabel = ({ children, ...props }: React.ComponentPropsWithoutRef<typeof Flex>) => (
+  <Flex justify="center" mb="3" {...props}>
     <Text size="1" color="gray">
       {children}
     </Text>

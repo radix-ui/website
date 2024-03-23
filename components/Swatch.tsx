@@ -14,6 +14,7 @@ import {
   AccessibleIcon,
   IconButton,
   Dialog,
+  Reset,
 } from '@radix-ui/themes';
 import styles from './Swatch.module.css';
 import { classNames } from '@utils/classNames';
@@ -46,17 +47,19 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
   return (
     <Dialog.Root>
       <Dialog.Trigger>
-        <button
-          data-color-scale={scale}
-          className={classNames('rt-reset', styles.SwatchTrigger, styles.SwatchTransparencyGrid)}
-          {...props}
-        >
-          <span style={{ backgroundColor: cssVariable, ...style }}>
-            <VisuallyHidden>
-              {scale} {step}
-            </VisuallyHidden>
-          </span>
-        </button>
+        <Reset>
+          <button
+            data-color-scale={scale}
+            className={classNames(styles.SwatchTrigger, styles.SwatchTransparencyGrid)}
+            {...props}
+          >
+            <span style={{ backgroundColor: cssVariable, ...style }}>
+              <VisuallyHidden>
+                {scale} {step}
+              </VisuallyHidden>
+            </span>
+          </button>
+        </Reset>
       </Dialog.Trigger>
 
       <Theme accentColor="gray" className="radix-themes-custom-fonts" asChild>
@@ -70,11 +73,7 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
           }}
         >
           <Box position="relative">
-            <Box
-              data-color-scale={scale}
-              className={styles.SwatchTransparencyGrid}
-              style={{ height: 240 }}
-            >
+            <Box data-color-scale={scale} className={styles.SwatchTransparencyGrid} height="240px">
               <Box style={{ width: '100%', height: '100%', backgroundColor: cssVariable }} />
             </Box>
 
