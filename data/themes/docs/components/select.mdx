@@ -287,3 +287,56 @@ Set `position="popper"` prop to position the select menu below the trigger.
   </Select.Content>
 </Select.Root>
 ```
+
+### With SSR
+
+When using server-side rendering, you might notice a layout shift after hydration. This is because Trigger executes client-side code to display the label that corresponds to the resolved value. To avoid that layout shift, you can render the Trigger label manually by mapping values.
+
+```jsx live=true
+() => {
+  const data = {
+    apple: 'Apple',
+    orange: 'Orange',
+  };
+  const [value, setValue] = React.useState('apple');
+  return (
+    <Select.Root value={value} onValueChange={setValue}>
+      <Select.Trigger>{data[value]}</Select.Trigger>
+      <Select.Content>
+        <Select.Item value="apple">Apple</Select.Item>
+        <Select.Item value="orange">Orange</Select.Item>
+      </Select.Content>
+    </Select.Root>
+  );
+};
+```
+
+### With an icon
+
+You can customise how Trigger renders the value by controlling its children manually. For example, you can render an icon next to the label that corresponds to the current value.
+
+```jsx live=true
+() => {
+  const data = {
+    light: { label: 'Light', icon: <SunIcon /> },
+    dark: { label: 'Dark', icon: <MoonIcon /> },
+  };
+  const [value, setValue] = React.useState('light');
+  return (
+    <Flex direction="column" maxWidth="160px">
+      <Select.Root value={value} onValueChange={setValue}>
+        <Select.Trigger>
+          <Flex as="span" align="center" gap="2">
+            {data[value].icon}
+            {data[value].label}
+          </Flex>
+        </Select.Trigger>
+        <Select.Content position="popper">
+          <Select.Item value="light">Light</Select.Item>
+          <Select.Item value="dark">Dark</Select.Item>
+        </Select.Content>
+      </Select.Root>
+    </Flex>
+  );
+};
+```
