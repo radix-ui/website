@@ -87,6 +87,21 @@ export default function Page() {
   const [darkGrayValue, setDarkGrayValue] = useLocalStorage('colors/dark/gray', '#8B8D98');
   const [darkBgValue, setDarkBgValue] = useLocalStorage('colors/dark/background', '#111111');
 
+  // Discard local storage values that are older than 2 hours
+  const [timestamp, setTimestamp] = useLocalStorage('colors/timestamp', Date.now());
+  const [discardStoredValues] = React.useState(Date.now() - timestamp > 1000 * 60 * 2);
+  useIsomorphicLayoutEffect(() => {
+    if (discardStoredValues) {
+      setTimestamp(Date.now());
+      setLightAccentValue('#3D63DD');
+      setLightGrayValue('#8B8D98');
+      setLightBgValue('#FFFFFF');
+      setDarkAccentValue('#3D63DD');
+      setDarkGrayValue('#8B8D98');
+      setDarkBgValue('#111111');
+    }
+  }, [discardStoredValues]);
+
   const accentValue = resolvedTheme === 'dark' ? darkAccentValue : lightAccentValue;
   const grayValue = resolvedTheme === 'dark' ? darkGrayValue : lightGrayValue;
   const bgValue = resolvedTheme === 'dark' ? darkBgValue : lightBgValue;
@@ -184,7 +199,7 @@ export default function Page() {
               </Heading>
 
               <SegmentedControl.Root
-                value={resolvedTheme}
+                value={resolvedTheme === 'dark' ? 'dark' : 'light'}
                 onValueChange={setTheme}
                 style={{ backgroundColor: 'transparent' }}
                 mt="5"
