@@ -92,7 +92,6 @@ export default function Page() {
   const [discardStoredValues] = React.useState(Date.now() - timestamp > 1000 * 60 * 2);
   useIsomorphicLayoutEffect(() => {
     if (discardStoredValues) {
-      setTimestamp(Date.now());
       setLightAccentValue('#3D63DD');
       setLightGrayValue('#8B8D98');
       setLightBgValue('#FFFFFF');
@@ -100,6 +99,8 @@ export default function Page() {
       setDarkGrayValue('#8B8D98');
       setDarkBgValue('#111111');
     }
+    // Refresh the timestamp
+    setTimestamp(Date.now());
   }, [discardStoredValues]);
 
   const accentValue = resolvedTheme === 'dark' ? darkAccentValue : lightAccentValue;
