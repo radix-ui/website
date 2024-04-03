@@ -18,6 +18,11 @@ export const colorsRoutes = [
         draft: false,
       },
       {
+        title: 'Custom palettes',
+        slug: 'colors/docs/overview/custom-palettes',
+        draft: false,
+      },
+      {
         title: 'Releases',
         slug: 'colors/docs/overview/releases',
         draft: false,
