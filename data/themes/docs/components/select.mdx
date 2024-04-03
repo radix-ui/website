@@ -290,7 +290,7 @@ Set `position="popper"` prop to position the select menu below the trigger.
 
 ### With SSR
 
-When using server-side rendering, you might notice a layout shift after hydration. This is because Trigger executes client-side code to display the label that corresponds to the resolved value. To avoid that layout shift, you can render the Trigger label manually by mapping values.
+When using server-side rendering, you might notice a layout shift after hydration. This is because Trigger executes client-side code to display the selected item’s text. To avoid that layout shift, you can render it manually by mapping values.
 
 ```jsx live=true
 () => {
@@ -313,7 +313,7 @@ When using server-side rendering, you might notice a layout shift after hydratio
 
 ### With an icon
 
-You can customise how Trigger renders the value by controlling its children manually. For example, you can render an icon next to the label that corresponds to the current value.
+You can customise how Trigger renders the value by controlling its children manually. For example, you can render an icon next to the selected item’s text.
 
 ```jsx live=true
 () => {
