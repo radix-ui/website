@@ -91,9 +91,7 @@ export const generateRadixColors = ({
     color.to('srgb').toString({ format: 'hex' })
   ) as ArrayOf12<string>;
 
-  const accentScaleWideGamut = accentScaleColors.map((color) =>
-    color.to('oklch').toString({ precision: 4 })
-  ) as ArrayOf12<string>;
+  const accentScaleWideGamut = accentScaleColors.map(toOklchString) as ArrayOf12<string>;
 
   const accentScaleAlphaHex = accentScaleHex.map((color) =>
     getAlphaColorSrgb(color, backgroundHex)
@@ -109,9 +107,7 @@ export const generateRadixColors = ({
     color.to('srgb').toString({ format: 'hex' })
   ) as ArrayOf12<string>;
 
-  const grayScaleWideGamut = grayScaleColors.map((color) =>
-    color.to('oklch').toString({ precision: 4 })
-  ) as ArrayOf12<string>;
+  const grayScaleWideGamut = grayScaleColors.map(toOklchString) as ArrayOf12<string>;
 
   const grayScaleAlphaHex = grayScaleHex.map((color) =>
     getAlphaColorSrgb(color, backgroundHex)
@@ -574,4 +570,14 @@ export function transposeProgressionEnd(
     const fn = BezierEasing(...curve);
     return n - diff * fn(i / lastIndex);
   });
+}
+
+// Convert to OKLCH string with percentage for the lightness channel
+// https://github.com/radix-ui/themes/issues/420
+function toOklchString(color: Color) {
+  const L = +(color.coords[0] * 100).toFixed(1);
+  return color
+    .to('oklch')
+    .toString({ precision: 4 })
+    .replace(/(\S+)(.+)/, `oklch(${L}%$2`);
 }

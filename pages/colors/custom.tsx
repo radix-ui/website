@@ -28,7 +28,8 @@ import {
   CopyIcon,
   FigmaLogoIcon,
   ArrowLeftIcon,
-  ArrowRightIcon,
+  SunIcon,
+  MoonIcon,
 } from '@radix-ui/react-icons';
 import {
   Avatar,
@@ -50,6 +51,7 @@ import {
   Link,
   Reset,
   Section,
+  SegmentedControl,
   Separator,
   Strong,
   Switch,
@@ -75,15 +77,31 @@ import { ColorUsageRange } from '@components/ColorUsageRange';
 import { ColorStepLabel } from '@components/ColorStepLabel';
 
 export default function Page() {
-  const { resolvedTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
 
-  const [lightAccentValue, setLightAccentValue] = useLocalStorage('create/light/accent', '#3D63DD');
-  const [lightGrayValue, setLightGrayValue] = useLocalStorage('create/light/gray', '#8B8D98');
-  const [lightBgValue, setLightBgValue] = useLocalStorage('create/light/background', '#FFFFFF');
+  const [lightAccentValue, setLightAccentValue] = useLocalStorage('colors/light/accent', '#3D63DD');
+  const [lightGrayValue, setLightGrayValue] = useLocalStorage('colors/light/gray', '#8B8D98');
+  const [lightBgValue, setLightBgValue] = useLocalStorage('colors/light/background', '#FFFFFF');
 
-  const [darkAccentValue, setDarkAccentValue] = useLocalStorage('create/dark/accent', '#3D63DD');
-  const [darkGrayValue, setDarkGrayValue] = useLocalStorage('create/dark/gray', '#8B8D98');
-  const [darkBgValue, setDarkBgValue] = useLocalStorage('create/dark/background', '#111111');
+  const [darkAccentValue, setDarkAccentValue] = useLocalStorage('colors/dark/accent', '#3D63DD');
+  const [darkGrayValue, setDarkGrayValue] = useLocalStorage('colors/dark/gray', '#8B8D98');
+  const [darkBgValue, setDarkBgValue] = useLocalStorage('colors/dark/background', '#111111');
+
+  // Discard local storage values that are older than 2 hours
+  const [timestamp, setTimestamp] = useLocalStorage('colors/timestamp', Date.now());
+  const [discardStoredValues] = React.useState(Date.now() - timestamp > 1000 * 60 * 2);
+  useIsomorphicLayoutEffect(() => {
+    if (discardStoredValues) {
+      setLightAccentValue('#3D63DD');
+      setLightGrayValue('#8B8D98');
+      setLightBgValue('#FFFFFF');
+      setDarkAccentValue('#3D63DD');
+      setDarkGrayValue('#8B8D98');
+      setDarkBgValue('#111111');
+    }
+    // Refresh the timestamp
+    setTimestamp(Date.now());
+  }, [discardStoredValues]);
 
   const accentValue = resolvedTheme === 'dark' ? darkAccentValue : lightAccentValue;
   const grayValue = resolvedTheme === 'dark' ? darkGrayValue : lightGrayValue;
@@ -168,8 +186,8 @@ export default function Page() {
 
         <Section px={{ initial: '5', xs: '6', sm: '7', md: '9' }} size={{ initial: '2', md: '3' }}>
           <Container position="relative">
-            <Flex direction="column" align="center" gap="3" mb="8">
-              <Flex asChild align="center" gap="1">
+            <Flex direction="column" align="center" mb="7">
+              <Flex asChild align="center" gap="1" mb="3">
                 <Link asChild size="2" color="gray" ml="-2">
                   <NextLink href="/colors">
                     <ArrowLeftIcon />
@@ -180,14 +198,26 @@ export default function Page() {
               <Heading as="h1" align="center" size="8">
                 Create a custom palette
               </Heading>
-              {/* <Flex asChild align="center" gap="1">
-                <Link asChild size="2" color="gray" ml="-2">
-                  <NextLink href="/colors/docs/overview/custom">
-                    How to use custom colors
-                    <ArrowRightIcon />
-                  </NextLink>
-                </Link>
-              </Flex> */}
+
+              <SegmentedControl.Root
+                value={resolvedTheme === 'dark' ? 'dark' : 'light'}
+                onValueChange={setTheme}
+                style={{ backgroundColor: 'transparent' }}
+                mt="5"
+              >
+                <SegmentedControl.Item value="light">
+                  <Flex as="span" align="center" gap="2" ml="-1">
+                    <SunIcon />
+                    Light
+                  </Flex>
+                </SegmentedControl.Item>
+                <SegmentedControl.Item value="dark">
+                  <Flex as="span" align="center" gap="2" ml="-1">
+                    <MoonIcon />
+                    Dark
+                  </Flex>
+                </SegmentedControl.Item>
+              </SegmentedControl.Root>
             </Flex>
 
             <Box mb="9">
@@ -248,21 +278,6 @@ export default function Page() {
                       </Button>
                     </DropdownMenu.Trigger>
                     <DropdownMenu.Content>
-                      {/*
-                        <DropdownMenu.Item
-                          onSelect={() => {
-                            setCopied(true);
-                            setSvgCopied(false);
-                            clearTimeout(copiedTimeoutRef.current);
-                            copiedTimeoutRef.current = setTimeout(() => {
-                              setCopied(false);
-                            }, COPIED_TIMEOUT);
-                          }}
-                        >
-                          Copy CSS code
-                        </DropdownMenu.Item>
-                      */}
-
                       <DropdownMenu.Sub>
                         <DropdownMenu.SubTrigger>
                           <Flex align="center" gap="2">
