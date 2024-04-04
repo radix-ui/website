@@ -612,7 +612,7 @@ export const Slider = React.forwardRef((props, forwardedRef) => {
         <SliderPrimitive.Range />
       </SliderPrimitive.Track>
       {value.map((_, i) => (
-        <SliderThumb key={i} />
+        <SliderPrimitive.Thumb key={i} />
       ))}
     </SliderPrimitive.Slider>
   );
