@@ -172,7 +172,7 @@ const commonDescriptions: CommonDescriptions = {
   radius: (
     <>
       Overrides the radius inherited from the theme. See the{' '}
-      <Link href="/themes/docs/theme/visual-style#radius">theme guide</Link> for more details.
+      <Link href="/themes/docs/theme/radius">radius guide</Link> for more details.
     </>
   ),
   as: (
