@@ -150,6 +150,14 @@ export const CaseStudiesSection = () => {
               </LogoLink>
             </NextLink>
 
+            <NextLink href="/primitives/case-studies/nodejs" passHref legacyBehavior>
+              <LogoLink>
+                <AccessibleIcon label="Node.js case study">
+                  <CaseStudyLogo variant="Node.js" width="40" />
+                </AccessibleIcon>
+              </LogoLink>
+            </NextLink>
+
             <NextLink href="/primitives/case-studies/supabase" passHref legacyBehavior>
               <LogoLink style={{ marginBottom: -2 }}>
                 <AccessibleIcon label="Supabase case study">
