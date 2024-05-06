@@ -6,7 +6,7 @@ const PopoverDemo = () => (
   <Popover.Root>
     <Popover.Trigger asChild>
       <button
-        className="rounded-full w-[35px] h-[35px] inline-flex items-center justify-center text-violet11 bg-white shadow-[0_2px_10px] shadow-blackA4 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black cursor-default outline-none"
+        className="rounded-full size-[35px] inline-flex items-center justify-center text-violet11 bg-white shadow-[0_2px_10px] shadow-blackA4 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black cursor-default outline-none"
         aria-label="Update dimensions"
       >
         <MixerHorizontalIcon />
@@ -61,7 +61,7 @@ const PopoverDemo = () => (
           </fieldset>
         </div>
         <Popover.Close
-          className="rounded-full h-[25px] w-[25px] inline-flex items-center justify-center text-violet11 absolute top-[5px] right-[5px] hover:bg-violet4 focus:shadow-[0_0_0_2px] focus:shadow-violet7 outline-none cursor-default"
+          className="rounded-full size-[25px] inline-flex items-center justify-center text-violet11 absolute top-[5px] right-[5px] hover:bg-violet4 focus:shadow-[0_0_0_2px] focus:shadow-violet7 outline-none cursor-default"
           aria-label="Close"
         >
           <Cross2Icon />

@@ -18,14 +18,14 @@ const ContextMenuDemo = () => {
           sideOffset={5}
           align="end"
         >
-          <ContextMenu.Item className="group text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
+          <ContextMenu.Item className="group text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] pr-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
             Back{' '}
             <div className="ml-auto pl-5 text-mauve11 group-data-[highlighted]:text-white group-data-[disabled]:text-mauve8">
               ⌘+[
             </div>
           </ContextMenu.Item>
           <ContextMenu.Item
-            className="group text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
+            className="group text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] pr-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
             disabled
           >
             Forward{' '}
@@ -33,14 +33,14 @@ const ContextMenuDemo = () => {
               ⌘+]
             </div>
           </ContextMenu.Item>
-          <ContextMenu.Item className="group text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
+          <ContextMenu.Item className="group text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] pr-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
             Reload{' '}
             <div className="ml-auto pl-5 text-mauve11 group-data-[highlighted]:text-white group-data-[disabled]:text-mauve8">
               ⌘+R
             </div>
           </ContextMenu.Item>
           <ContextMenu.Sub>
-            <ContextMenu.SubTrigger className="group text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[state=open]:bg-violet4 data-[state=open]:text-violet11 data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1 data-[highlighted]:data-[state=open]:bg-violet9 data-[highlighted]:data-[state=open]:text-violet1">
+            <ContextMenu.SubTrigger className="group text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] pr-[5px] relative pl-[25px] select-none outline-none data-[state=open]:bg-violet4 data-[state=open]:text-violet11 data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1 data-[highlighted]:data-[state=open]:bg-violet9 data-[highlighted]:data-[state=open]:text-violet1">
               More Tools
               <div className="ml-auto pl-5 text-mauve11 group-data-[highlighted]:text-white group-data-[disabled]:text-mauve8">
                 <ChevronRightIcon />
@@ -52,30 +52,30 @@ const ContextMenuDemo = () => {
                 sideOffset={2}
                 alignOffset={-5}
               >
-                <ContextMenu.Item className="group text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
+                <ContextMenu.Item className="group text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] pr-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
                   Save Page As…{' '}
                   <div className="ml-auto pl-5 text-mauve11 group-data-[highlighted]:text-white group-data-[disabled]:text-mauve8">
                     ⌘+S
                   </div>
                 </ContextMenu.Item>
-                <ContextMenu.Item className="text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
+                <ContextMenu.Item className="text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] pr-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
                   Create Shortcut…
                 </ContextMenu.Item>
-                <ContextMenu.Item className="text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
+                <ContextMenu.Item className="text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] pr-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
                   Name Window…
                 </ContextMenu.Item>
-                <ContextMenu.Separator className="h-[1px] bg-violet6 m-[5px]" />
-                <ContextMenu.Item className="text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
+                <ContextMenu.Separator className="h-px bg-violet6 m-[5px]" />
+                <ContextMenu.Item className="text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] pr-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
                   Developer Tools
                 </ContextMenu.Item>
               </ContextMenu.SubContent>
             </ContextMenu.Portal>
           </ContextMenu.Sub>
 
-          <ContextMenu.Separator className="h-[1px] bg-violet6 m-[5px]" />
+          <ContextMenu.Separator className="h-px bg-violet6 m-[5px]" />
 
           <ContextMenu.CheckboxItem
-            className="group text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
+            className="group text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] pr-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
             checked={bookmarksChecked}
             onCheckedChange={setBookmarksChecked}
           >
@@ -88,7 +88,7 @@ const ContextMenuDemo = () => {
             </div>
           </ContextMenu.CheckboxItem>
           <ContextMenu.CheckboxItem
-            className="text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
+            className="text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] pr-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
             checked={urlsChecked}
             onCheckedChange={setUrlsChecked}
           >
@@ -98,14 +98,14 @@ const ContextMenuDemo = () => {
             Show Full URLs
           </ContextMenu.CheckboxItem>
 
-          <ContextMenu.Separator className="h-[1px] bg-violet6 m-[5px]" />
+          <ContextMenu.Separator className="h-px bg-violet6 m-[5px]" />
 
           <ContextMenu.Label className="pl-[25px] text-xs leading-[25px] text-mauve11">
             People
           </ContextMenu.Label>
           <ContextMenu.RadioGroup value={person} onValueChange={setPerson}>
             <ContextMenu.RadioItem
-              className="text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
+              className="text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] pr-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
               value="pedro"
             >
               <ContextMenu.ItemIndicator className="absolute left-0 w-[25px] inline-flex items-center justify-center">
@@ -114,7 +114,7 @@ const ContextMenuDemo = () => {
               Pedro Duarte
             </ContextMenu.RadioItem>
             <ContextMenu.RadioItem
-              className="text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
+              className="text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] pr-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
               value="colm"
             >
               <ContextMenu.ItemIndicator className="absolute left-0 w-[25px] inline-flex items-center justify-center">
