@@ -5,7 +5,7 @@ import { FontItalicIcon } from '@radix-ui/react-icons';
 const ToggleDemo = () => (
   <Toggle.Root
     aria-label="Toggle italic"
-    className="hover:bg-violet3 color-mauve11 data-[state=on]:bg-violet6 data-[state=on]:text-violet12 shadow-blackA4 flex size-[35px] items-center justify-center rounded bg-white leading-4 shadow-[0_2px_10px] focus:shadow-[0_0_0_2px] focus:shadow-black"
+    className="flex size-[35px] items-center justify-center rounded bg-white leading-4 text-mauve11 shadow-[0_2px_10px] shadow-blackA4 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black data-[state=on]:bg-violet6 data-[state=on]:text-violet12"
   >
     <FontItalicIcon />
   </Toggle.Root>

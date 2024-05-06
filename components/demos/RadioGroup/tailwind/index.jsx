@@ -10,37 +10,37 @@ const RadioGroupDemo = () => (
     >
       <div className="flex items-center">
         <RadioGroup.Item
-          className="bg-white size-[25px] rounded-full shadow-[0_2px_10px] shadow-blackA4 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black outline-none cursor-default"
+          className="size-[25px] cursor-default rounded-full bg-white shadow-[0_2px_10px] shadow-blackA4 outline-none hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black"
           value="default"
           id="r1"
         >
-          <RadioGroup.Indicator className="flex items-center justify-center size-full relative after:block after:size-[11px] after:rounded-full after:bg-violet11" />
+          <RadioGroup.Indicator className="relative flex size-full items-center justify-center after:block after:size-[11px] after:rounded-full after:bg-violet11" />
         </RadioGroup.Item>
-        <label className="text-white text-[15px] leading-none pl-[15px]" htmlFor="r1">
+        <label className="pl-[15px] text-[15px] leading-none text-white" htmlFor="r1">
           Default
         </label>
       </div>
       <div className="flex items-center">
         <RadioGroup.Item
-          className="bg-white size-[25px] rounded-full shadow-[0_2px_10px] shadow-blackA4 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black outline-none cursor-default"
+          className="size-[25px] cursor-default rounded-full bg-white shadow-[0_2px_10px] shadow-blackA4 outline-none hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black"
           value="comfortable"
           id="r2"
         >
-          <RadioGroup.Indicator className="flex items-center justify-center size-full relative after:block after:size-[11px] after:rounded-full after:bg-violet11" />
+          <RadioGroup.Indicator className="relative flex size-full items-center justify-center after:block after:size-[11px] after:rounded-full after:bg-violet11" />
         </RadioGroup.Item>
-        <label className="text-white text-[15px] leading-none pl-[15px]" htmlFor="r2">
+        <label className="pl-[15px] text-[15px] leading-none text-white" htmlFor="r2">
           Comfortable
         </label>
       </div>
       <div className="flex items-center">
         <RadioGroup.Item
-          className="bg-white size-[25px] rounded-full shadow-[0_2px_10px] shadow-blackA4 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black outline-none cursor-default"
+          className="size-[25px] cursor-default rounded-full bg-white shadow-[0_2px_10px] shadow-blackA4 outline-none hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black"
           value="compact"
           id="r3"
         >
-          <RadioGroup.Indicator className="flex items-center justify-center size-full relative after:block after:size-[11px] after:rounded-full after:bg-violet11" />
+          <RadioGroup.Indicator className="relative flex size-full items-center justify-center after:block after:size-[11px] after:rounded-full after:bg-violet11" />
         </RadioGroup.Item>
-        <label className="text-white text-[15px] leading-none pl-[15px]" htmlFor="r3">
+        <label className="pl-[15px] text-[15px] leading-none text-white" htmlFor="r3">
           Compact
         </label>
       </div>

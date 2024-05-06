@@ -2,7 +2,7 @@ import React from 'react';
 import * as AspectRatio from '@radix-ui/react-aspect-ratio';
 
 const AspectRatioDemo = () => (
-  <div className="shadow-blackA4 w-[300px] overflow-hidden rounded-md shadow-[0_2px_10px]">
+  <div className="w-[300px] overflow-hidden rounded-md shadow-[0_2px_10px] shadow-blackA4">
     <AspectRatio.Root ratio={16 / 9}>
       <img
         className="size-full object-cover"
