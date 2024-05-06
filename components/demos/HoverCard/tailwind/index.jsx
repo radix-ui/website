@@ -19,7 +19,7 @@ const HoverCardDemo = () => (
     </HoverCard.Trigger>
     <HoverCard.Portal>
       <HoverCard.Content
-        className="data-[side=bottom]:animate-slideUpAndFade data-[side=right]:animate-slideLeftAndFade data-[side=left]:animate-slideRightAndFade data-[side=top]:animate-slideDownAndFade w-[300px] rounded-md bg-white p-5 shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] data-[state=open]:transition-all"
+        className="w-[300px] rounded-md bg-white p-5 shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade data-[side=right]:animate-slideLeftAndFade data-[side=top]:animate-slideDownAndFade data-[state=open]:transition-all"
         sideOffset={5}
       >
         <div className="flex flex-col gap-[7px]">
@@ -30,21 +30,21 @@ const HoverCardDemo = () => (
           />
           <div className="flex flex-col gap-[15px]">
             <div>
-              <div className="text-mauve12 m-0 text-[15px] font-medium">Radix</div>
-              <div className="text-mauve10 m-0 text-[15px]">@radix_ui</div>
+              <div className="m-0 text-[15px] font-medium text-mauve12">Radix</div>
+              <div className="m-0 text-[15px] text-mauve10">@radix_ui</div>
             </div>
-            <div className="text-mauve12 m-0 text-[15px]">
+            <div className="m-0 text-[15px] text-mauve12">
               Components, icons, colors, and templates for building high-quality, accessible UI.
               Free and open-source.
             </div>
             <div className="flex gap-[15px]">
               <div className="flex gap-[5px]">
-                <div className="text-mauve12 m-0 text-[15px] font-medium">0</div>{' '}
-                <div className="text-mauve10 m-0 text-[15px]">Following</div>
+                <div className="m-0 text-[15px] font-medium text-mauve12">0</div>{' '}
+                <div className="m-0 text-[15px] text-mauve10">Following</div>
               </div>
               <div className="flex gap-[5px]">
-                <div className="text-mauve12 m-0 text-[15px] font-medium">2,900</div>{' '}
-                <div className="text-mauve10 m-0 text-[15px]">Followers</div>
+                <div className="m-0 text-[15px] font-medium text-mauve12">2,900</div>{' '}
+                <div className="m-0 text-[15px] text-mauve10">Followers</div>
               </div>
             </div>
           </div>
