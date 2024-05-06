@@ -39,7 +39,6 @@ type CaseStudyPage = {
     companyUrl: string;
     companyFounded: string;
     companyLogoVariant: CaseStudyLogoVariant;
-    companyLogoWidth: string;
     nextCaseStudyTitle: string;
     nextCaseStudySlug: string;
   };
@@ -92,11 +91,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                   <BoxLink
                     target="_blank"
                     href={`https://${frontmatter.companyUrl}`}
-                    style={{
-                      display: 'inline-block',
-                      width: frontmatter.companyLogoWidth ?? 'auto',
-                      maxWidth: '380px',
-                    }}
+                    style={{ display: 'inline-block', maxWidth: '380px' }}
                   >
                     <AccessibleIcon label={`${frontmatter.metaTitle} homepage`}>
                       <CaseStudyLogo variant={frontmatter.companyLogoVariant} />
