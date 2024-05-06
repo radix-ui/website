@@ -39,7 +39,6 @@ type CaseStudyPage = {
     companyUrl: string;
     companyFounded: string;
     companyLogoVariant: CaseStudyLogoVariant;
-    companyLogoWidth: string;
     nextCaseStudyTitle: string;
     nextCaseStudySlug: string;
   };
@@ -68,7 +67,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
               <MDXProvider frontmatter={frontmatter}>
                 <Component components={components as any} />
               </MDXProvider>
-              <Flex align="center" gap="3" mt="7">
+              <Flex align="center" gap="3" mt="8">
                 <Avatar
                   size="5"
                   src={frontmatter.authorAvatarUrl}
@@ -92,11 +91,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                   <BoxLink
                     target="_blank"
                     href={`https://${frontmatter.companyUrl}`}
-                    style={{
-                      display: 'inline-block',
-                      width: frontmatter.companyLogoWidth ?? 'auto',
-                      maxWidth: '380px',
-                    }}
+                    style={{ display: 'inline-block', maxWidth: '380px' }}
                   >
                     <AccessibleIcon label={`${frontmatter.metaTitle} homepage`}>
                       <CaseStudyLogo variant={frontmatter.companyLogoVariant} />
@@ -104,7 +99,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                   </BoxLink>
                 </Box>
                 <Box mb="5">
-                  <Heading as="h4" size="4">
+                  <Heading as="h4" size="3">
                     About
                   </Heading>
                   <Text as="p" mb="1">
@@ -124,7 +119,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                   </Flex>
                 </Box>
                 <Box mb="5">
-                  <Heading size="4" as="h4">
+                  <Heading size="3" as="h4">
                     Founded
                   </Heading>
                   <Text as="p">{frontmatter.companyFounded}</Text>
