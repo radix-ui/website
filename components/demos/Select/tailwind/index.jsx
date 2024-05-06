@@ -31,7 +31,7 @@ const SelectDemo = () => (
             <SelectItem value="pineapple">Pineapple</SelectItem>
           </Select.Group>
 
-          <Select.Separator className="h-[1px] bg-violet6 m-[5px]" />
+          <Select.Separator className="h-px bg-violet6 m-[5px]" />
 
           <Select.Group>
             <Select.Label className="px-[25px] text-xs leading-[25px] text-mauve11">
@@ -46,7 +46,7 @@ const SelectDemo = () => (
             <SelectItem value="leek">Leek</SelectItem>
           </Select.Group>
 
-          <Select.Separator className="h-[1px] bg-violet6 m-[5px]" />
+          <Select.Separator className="h-px bg-violet6 m-[5px]" />
 
           <Select.Group>
             <Select.Label className="px-[25px] text-xs leading-[25px] text-mauve11">

@@ -11,7 +11,7 @@ const HoverCardDemo = () => (
         rel="noreferrer noopener"
       >
         <img
-          className="block h-[45px] w-[45px] rounded-full"
+          className="block size-[45px] rounded-full"
           src="https://pbs.twimg.com/profile_images/1337055608613253126/r_eiMp2H_400x400.png"
           alt="Radix UI"
         />
@@ -24,27 +24,27 @@ const HoverCardDemo = () => (
       >
         <div className="flex flex-col gap-[7px]">
           <img
-            className="block h-[60px] w-[60px] rounded-full"
+            className="block size-[60px] rounded-full"
             src="https://pbs.twimg.com/profile_images/1337055608613253126/r_eiMp2H_400x400.png"
             alt="Radix UI"
           />
           <div className="flex flex-col gap-[15px]">
             <div>
-              <div className="text-mauve12 m-0 text-[15px] font-medium leading-[1.5]">Radix</div>
-              <div className="text-mauve10 m-0 text-[15px] leading-[1.5]">@radix_ui</div>
+              <div className="text-mauve12 m-0 text-[15px] font-medium">Radix</div>
+              <div className="text-mauve10 m-0 text-[15px]">@radix_ui</div>
             </div>
-            <div className="text-mauve12 m-0 text-[15px] leading-[1.5]">
+            <div className="text-mauve12 m-0 text-[15px]">
               Components, icons, colors, and templates for building high-quality, accessible UI.
               Free and open-source.
             </div>
             <div className="flex gap-[15px]">
               <div className="flex gap-[5px]">
-                <div className="text-mauve12 m-0 text-[15px] font-medium leading-[1.5]">0</div>{' '}
-                <div className="text-mauve10 m-0 text-[15px] leading-[1.5]">Following</div>
+                <div className="text-mauve12 m-0 text-[15px] font-medium">0</div>{' '}
+                <div className="text-mauve10 m-0 text-[15px]">Following</div>
               </div>
               <div className="flex gap-[5px]">
-                <div className="text-mauve12 m-0 text-[15px] font-medium leading-[1.5]">2,900</div>{' '}
-                <div className="text-mauve10 m-0 text-[15px] leading-[1.5]">Followers</div>
+                <div className="text-mauve12 m-0 text-[15px] font-medium">2,900</div>{' '}
+                <div className="text-mauve10 m-0 text-[15px]">Followers</div>
               </div>
             </div>
           </div>
