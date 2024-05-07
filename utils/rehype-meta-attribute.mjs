@@ -1,10 +1,10 @@
 // https://github.com/wooorm/xdm#syntax-highlighting-with-the-meta-field
 
-const visit = require('unist-util-visit');
+import { visit } from 'unist-util-visit';
 
 var re = /\b([-\w]+)(?:=(?:"([^"]*)"|'([^']*)'|([^"'\s]+)))?/g;
 
-module.exports = (options = {}) => {
+export default (options = {}) => {
   return (tree) => {
     visit(tree, 'element', onelement);
   };

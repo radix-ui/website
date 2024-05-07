@@ -6,8 +6,8 @@ import compareVersions from 'compare-versions';
 import { bundleMDX } from 'mdx-bundler';
 import remarkSlug from 'remark-slug';
 import rehypeHeroCodeBlock from '@utils/rehype-hero-code-block';
-import rehypeMetaAttribute from '@utils/rehype-meta-attribute';
-import rehypeHighlightCode from '@utils/rehype-highlight-code';
+import rehypeMetaAttribute from '@utils/rehype-meta-attribute.mjs';
+import rehypeHighlightCode from '@utils/rehype-highlight-code.mjs';
 
 import type { Frontmatter } from 'types/frontmatter';
 
@@ -34,8 +34,9 @@ export const getAllFrontmatter = (fromPath) => {
 
 export const getMdxBySlug = async (basePath, slug) => {
   const source = fs.readFileSync(path.join(DATA_PATH, basePath, `${slug}.mdx`), 'utf8');
-  const { frontmatter, code } = await bundleMDX(source, {
-    xdmOptions(input, options) {
+  const { frontmatter, code } = await bundleMDX({
+    source: source,
+    mdxOptions(options, frontmatter) {
       options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkSlug];
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
