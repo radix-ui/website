@@ -19,7 +19,10 @@ export const PrimitivesSearchDesktop = () => {
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (!isEditingContent(event) && event.key === '/') {
+      const isSlashKey = event.key === '/';
+      const isMetaKey = event.key === 'k' && (event.ctrlKey || event.metaKey);
+
+      if (!isEditingContent(event) && (isSlashKey || isMetaKey)) {
         triggerRef.current.click();
         event.preventDefault();
       }
