@@ -1,7 +1,4 @@
-// @ts-nocheck
-// Something is fucked up about Color.js and Next.js when building
-// import Color from 'colorjs.io';
-import Color from '@utils/color.js';
+import Color from 'colorjs.io';
 import { composeRefs } from '@radix-ui/react-compose-refs';
 import { TextField } from '@radix-ui/themes';
 import styles from './ColorField.module.css';
