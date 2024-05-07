@@ -1,4 +1,4 @@
-import Color from '@utils/color.js';
+import Color from 'colorjs.io';
 import NextLink from 'next/link';
 import { ColorsHeader } from '@components/ColorsHeader';
 import { ColorsMobileMenu } from '@components/ColorsMobileMenu';

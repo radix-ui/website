@@ -1,13 +1,13 @@
 // Inspired by https://github.com/j0lv3r4/mdx-prism
 
-const rangeParser = require('parse-numeric-range');
-const visit = require('unist-util-visit');
-const nodeToString = require('hast-util-to-string');
-const refractor = require('refractor');
-const highlightLine = require('./rehype-highlight-line');
-const highlightWord = require('./rehype-highlight-word');
+import rangeParser from 'parse-numeric-range';
+import { visit } from 'unist-util-visit';
+import { toString as nodeToString } from 'hast-util-to-string';
+import refractor from 'refractor';
+import highlightLine from './rehype-highlight-line.mjs';
+import highlightWord from './rehype-highlight-word.mjs';
 
-module.exports = (options = {}) => {
+export default (options = {}) => {
   return (tree) => {
     visit(tree, 'element', visitor);
   };

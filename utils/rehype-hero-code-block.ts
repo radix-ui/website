@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import visit from 'unist-util-visit';
+import { visit } from 'unist-util-visit';
 import { UnistNode, UnistTree } from './unist';
 import { SUPPORTED_CSS_LIBS } from './constants';
 import { mdxElement } from './unist-mdx-element';

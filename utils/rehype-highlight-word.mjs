@@ -1,10 +1,10 @@
-const hastToHtml = require('hast-util-to-html');
-const unified = require('unified');
-const parse = require('rehype-parse');
+import { toHtml as hastToHtml } from 'hast-util-to-html';
+import { unified } from 'unified';
+import parse from 'rehype-parse';
 
 const CALLOUT = /__(.*?)__/g;
 
-module.exports = (code) => {
+export default (code) => {
   const html = hastToHtml(code);
   const result = html.replace(CALLOUT, (_, text) => `<span class="highlight-word">${text}</span>`);
   const hast = unified().use(parse, { emitParseErrors: true, fragment: true }).parse(result);
