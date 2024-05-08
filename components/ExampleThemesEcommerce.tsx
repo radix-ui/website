@@ -64,7 +64,7 @@ export const ExampleThemesEcommerce = ({ focusable = true, ...props }: ExampleLa
   });
 
   return (
-    <Flex align="center" gap="6" ref={setPortalContainer} {...props}>
+    <Flex align="center" wrap="wrap" gap="6" ref={setPortalContainer} {...props}>
       <Flex flexShrink="0" gap="6" direction="column" width="304px">
         <Card size="1">
           <Flex mb="2">
