@@ -56,7 +56,7 @@ Use <Slottable /> when your component has multiple childrens to pass the props t
 import React from 'react';
 import { Slot, Slottable } from '@radix-ui/react-slot';
 
-function Button({ asChild, leftElement, rightElement, ...props }) {
+function Button({ asChild, children, leftElement, rightElement, ...props }) {
   const Comp = asChild ? Slot : 'button';
   return (
     <Comp {...props}>
