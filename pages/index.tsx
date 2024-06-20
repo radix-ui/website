@@ -213,13 +213,17 @@ const previewImagesDarkMode = [
 
 const MainContent = () => (
   <Box>
-    <Section size={{ initial: '2', md: '4', lg: '2' }} pb={{ initial: '4', lg: '7' }}>
+    <Section
+      size={{ initial: '2', md: '4', lg: '2' }}
+      pb={{ initial: '4', lg: '7' }}
+      mt={{ lg: 'max(-160px, min(0px, calc(-0.2 * (100vh - 800px)))' }}
+    >
       <Box>
         <Flex align="center" gap="2" mb="6">
-          <Badge asChild size="2" radius="full">
+          <Badge asChild size="3" radius="full">
             <NextLink href="/blog/themes-3">
-              See what’s new in Radix Themes 3.0
-              <ArrowRightIcon width="13" height="13" style={{ marginLeft: -2 }} />
+              Read about Radix Themes 3.0
+              <ArrowRightIcon width="15" height="15" style={{ marginLeft: -2 }} />
             </NextLink>
           </Badge>
         </Flex>
