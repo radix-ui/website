@@ -30,7 +30,7 @@ const ALGOLIA_PUBLIC_API_KEY = '9d44395c1b7b172ac84b7e5ab80bf8c5';
 const searchClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_PUBLIC_API_KEY);
 
 const SUPPORTED_LEVELS = ['lvl0', 'lvl1', 'lvl2', 'lvl3', 'lvl4'] as const;
-type LevelContentType = typeof SUPPORTED_LEVELS[number];
+type LevelContentType = (typeof SUPPORTED_LEVELS)[number];
 type ContentType = LevelContentType | 'content';
 type SearchItem = Hit<{
   type: ContentType;
@@ -387,12 +387,10 @@ function ItemBreadcrumb({ item, levels }: { item: SearchItem; levels: typeof SUP
         return heading ? (
           <React.Fragment key={index}>
             {index > 0 ? (
-              <Box asChild style={{ color: 'var(--gray-a11)' }}>
-                <span>
-                  <CaretRightIcon style={{ display: 'inline-block' }} />
-                  {/* Adding a comma to insert a natural break in the speech flow */}
-                  <VisuallyHidden>, </VisuallyHidden>
-                </span>
+              <Box as="span" display="inline" style={{ color: 'var(--gray-a11)' }}>
+                <CaretRightIcon style={{ display: 'inline-block' }} />
+                {/* Adding a comma to insert a natural break in the speech flow */}
+                <VisuallyHidden>, </VisuallyHidden>
               </Box>
             ) : null}
             <Highlight hit={item} attribute={['hierarchy', level]} />

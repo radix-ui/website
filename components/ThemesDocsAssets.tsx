@@ -1215,29 +1215,29 @@ export function ThemesGridExample() {
         gap="3"
         p="3"
         m="2"
-        columns="repeat(3, auto)"
+        columns="repeat(3, minmax(0, 96px))"
         style={{
           borderRadius: 'var(--radius-2)',
           backgroundColor: 'var(--gray-a2)',
           outline: '1px dashed var(--gray-a7)',
         }}
       >
-        <Box width="96px" height="64px">
+        <Box height="64px">
           <DecorativeBox />
         </Box>
-        <Box width="96px" height="64px">
+        <Box height="64px">
           <DecorativeBox />
         </Box>
-        <Box width="96px" height="64px">
+        <Box height="64px">
           <DecorativeBox />
         </Box>
-        <Box width="96px" height="64px">
+        <Box height="64px">
           <DecorativeBox />
         </Box>
-        <Box width="96px" height="64px">
+        <Box height="64px">
           <DecorativeBox />
         </Box>
-        <Box width="96px" height="64px">
+        <Box height="64px">
           <DecorativeBox />
         </Box>
       </Grid>
