@@ -230,8 +230,8 @@
 
 @keyframes keypress {
   from {
-    background-color: var(--gray-5);
-    box-shadow: 0 0 0 1px var(--gray-5);
+    background-color: hsl(210 10% 50% / 0.2);
+    box-shadow: 0 0 0 1px hsl(210 10% 50% / 0.2);
   }
 }
 
