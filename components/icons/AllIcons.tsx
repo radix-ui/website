@@ -1,6 +1,15 @@
 import React from 'react';
 import * as Icons from '@radix-ui/react-icons';
-import { Grid, Tooltip, Heading, Box, IconButton, Flex } from '@radix-ui/themes';
+import {
+  Grid,
+  Tooltip,
+  Heading,
+  Box,
+  IconButton,
+  Flex,
+  DropdownMenu,
+  Text,
+} from '@radix-ui/themes';
 import { useCopyToast } from './CopyToast';
 
 import styles from './AllIcons.module.css';
@@ -47,41 +56,54 @@ type CopyButtonProps = {
 const CopyButton = ({ children, label }: CopyButtonProps) => {
   const { showCopyToast } = useCopyToast();
 
+  const handleCopyCode = React.useCallback(
+    (code) => {
+      navigator.clipboard.writeText(code);
+      showCopyToast(code);
+    },
+    [label, showCopyToast]
+  );
+
+  const handleCopyLabel = React.useCallback(() => {
+    const formattedLabel = label
+      .split(' ')
+      .map((word) => word[0].toUpperCase() + word.slice(1))
+      .join('')
+      .concat('Icon');
+
+    navigator.clipboard.writeText(formattedLabel);
+    showCopyToast(formattedLabel);
+  }, [label, showCopyToast]);
+
   return (
-    <Tooltip className="radix-themes-custom-fonts" content={label} side="top" sideOffset={5}>
-      <IconButton
-        highContrast
-        variant="ghost"
-        size="4"
-        onClick={(event: React.MouseEvent) => {
-          const svg = event.currentTarget.querySelector('svg');
-          const code = svg ? svg.outerHTML : null;
+    <DropdownMenu.Root>
+      <Tooltip className="radix-themes-custom-fonts" content={label} side="top" sideOffset={5}>
+        <DropdownMenu.Trigger>
+          <IconButton highContrast variant="ghost" size="4">
+            {children}
+          </IconButton>
+        </DropdownMenu.Trigger>
+      </Tooltip>
+      <DropdownMenu.Content>
+        <DropdownMenu.Item
+          onClick={(event: React.MouseEvent) => {
+            const svg = event.currentTarget.querySelector('svg');
+            const code = svg ? svg.outerHTML : null;
 
-          // Copy code to clipboard via a hidden textarea element
-          if (code) {
-            // Temporary shim until a proper focus-visible handler is added
-            if (document.activeElement instanceof HTMLButtonElement) {
-              document.activeElement.blur();
-            }
-
-            const textarea = document.createElement('textarea');
-            textarea.value = code.toString();
-            textarea.setAttribute('readonly', '');
-            textarea.style.position = 'absolute';
-            textarea.style.left = '-9999px';
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-
-            // Show CopyToast and set latest icon
-            showCopyToast(code);
-          }
-        }}
-      >
-        {children}
-      </IconButton>
-    </Tooltip>
+            code ? handleCopyCode(code) : null;
+          }}
+        >
+          Copy SVG <Text hidden>{children}</Text>
+        </DropdownMenu.Item>
+        <DropdownMenu.Item
+          onClick={() => {
+            handleCopyLabel();
+          }}
+        >
+          Copy label
+        </DropdownMenu.Item>
+      </DropdownMenu.Content>
+    </DropdownMenu.Root>
   );
 };
 
