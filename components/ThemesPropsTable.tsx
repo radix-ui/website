@@ -146,7 +146,7 @@ const uniqueDescriptions: UniqueDescriptions = {
     scaling: (
       <>
         The linear scaling applied to the theme. See the{' '}
-        <Link href="/themes/docs/theme/layout#scaling">layout guide</Link> for more details.
+        <Link href="/themes/docs/theme/spacing#scaling">scaling guide</Link> for more details.
       </>
     ),
   },
