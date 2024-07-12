@@ -65,7 +65,7 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
             style={{ position: 'absolute', height: 'inherit', top: 0, left: 0, right: 0 }}
           >
             <Flex
-              display={{ xs: 'none' }}
+              display={{ sm: 'none' }}
               align="center"
               position="absolute"
               top="0"
@@ -87,7 +87,7 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
             </Flex>
 
             <Flex
-              display={{ initial: 'none', xs: 'flex' }}
+              display={{ initial: 'none', sm: 'flex' }}
               align="center"
               position="absolute"
               top="0"
