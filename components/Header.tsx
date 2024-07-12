@@ -76,7 +76,7 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
               <NextLink href="/" passHref legacyBehavior>
                 <BoxLink>
                   <AccessibleIcon label="Radix Homepage">
-                    {mobileMenu.open ? <RadixLogoIcon /> : <RadixLogo />}
+                    {mobileMenu.open ? <RadixLogoIcon /> : <RadixByWorkOSLogo />}
                   </AccessibleIcon>
                 </BoxLink>
               </NextLink>
@@ -93,17 +93,9 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
             >
               <NextLink href="/" passHref legacyBehavior>
                 <BoxLink>
-                  <Flex display={{ initial: 'none', sm: 'flex' }}>
-                    <AccessibleIcon label="Radix Homepage">
-                      <RadixByWorkOSLogo />
-                    </AccessibleIcon>
-                  </Flex>
-
-                  <Flex display={{ initial: 'flex', sm: 'none' }}>
-                    <AccessibleIcon label="Radix Homepage">
-                      <RadixLogo />
-                    </AccessibleIcon>
-                  </Flex>
+                  <AccessibleIcon label="Radix Homepage">
+                    <RadixByWorkOSLogo />
+                  </AccessibleIcon>
                 </BoxLink>
               </NextLink>
             </Flex>
