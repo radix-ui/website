@@ -8,7 +8,7 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useMobileMenuContext } from './MobileMenu';
 import { classNames } from '@utils/classNames';
-import { RadixLogo, RadixLogoIcon } from './RadixLogo';
+import { RadixByWorkOSLogo, RadixLogo, RadixLogoIcon } from './RadixLogo';
 import { RemoveScroll } from 'react-remove-scroll';
 
 export interface HeaderProps {
@@ -93,9 +93,17 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
             >
               <NextLink href="/" passHref legacyBehavior>
                 <BoxLink>
-                  <AccessibleIcon label="Radix Homepage">
-                    <RadixLogo />
-                  </AccessibleIcon>
+                  <Flex display={{ initial: 'none', sm: 'flex' }}>
+                    <AccessibleIcon label="Radix Homepage">
+                      <RadixByWorkOSLogo />
+                    </AccessibleIcon>
+                  </Flex>
+
+                  <Flex display={{ initial: 'flex', sm: 'none' }}>
+                    <AccessibleIcon label="Radix Homepage">
+                      <RadixLogo />
+                    </AccessibleIcon>
+                  </Flex>
                 </BoxLink>
               </NextLink>
             </Flex>
