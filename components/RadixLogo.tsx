@@ -1,5 +1,3 @@
-import { Flex } from '@radix-ui/themes';
-
 export const RadixLogo = () => (
   <svg
     width="76"
