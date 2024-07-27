@@ -48,7 +48,7 @@ export const ExampleThemesMusicApp = ({ focusable = true, ...props }: ExampleLay
         </style>
       </Head>
 
-      <Flex align="center" gap="6" {...props}>
+      <Flex align="center" wrap="wrap" gap="6" {...props}>
         <Flex flexShrink="0" gap="6" direction="column" width="416px">
           <Card size="3">
             <Flex align="center" justify="between" mb="5">

@@ -61,7 +61,7 @@ export const ExampleThemesDashboard = ({ focusable = true, ...props }: ExampleLa
   });
 
   return (
-    <Flex align="center" gap="6" ref={setPortalContainer} {...props}>
+    <Flex align="center" wrap="wrap" gap="6" ref={setPortalContainer} {...props}>
       <Flex flexShrink="0" gap="6" direction="column" width="640px">
         <Card size="4">
           <Heading as="h3" size="6" trim="start" mb="2">
