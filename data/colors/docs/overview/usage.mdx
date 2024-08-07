@@ -174,3 +174,59 @@ import {
 import { ThemeProvider } from '@emotion/react';
 import styled from '@emotion/styled';
 ```
+
+## vanilla-extract
+
+```js
+import {
+  gray,
+  blue,
+  red,
+  green,
+  grayDark,
+  blueDark,
+  redDark,
+  greenDark,
+} from '@radix-ui/colors'
+import { createTheme } from '@vanilla-extract/css'
+
+export const [theme, vars] = createTheme({
+  colors: {
+    ...gray,
+    ...blue,
+    ...red,
+    ...green,
+  },
+})
+
+export const darkTheme = createTheme(vars, {
+  colors: {
+    ...grayDark,
+    ...blueDark,
+    ...redDark,
+    ...greenDark,
+  },
+})
+
+// Use the colors in your styles
+export const styles = {
+  button: style({
+    backgroundColor: vars.colors.blue4,
+    color: vars.colors.blue11,
+    borderColor: vars.colors.blue7,
+    ":hover": {
+      backgroundColor: vars.colors.blue5,
+      borderColor: vars.colors.blue8,
+    },
+  }),
+}
+
+// Apply your theme to it
+export default function App() {
+  return (
+    <body className={theme}>
+      <button className={styles.button}>Radix Colors</button>
+    </body>
+  );
+}
+```
