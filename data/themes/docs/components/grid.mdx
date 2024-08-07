@@ -29,11 +29,9 @@ The following props are shared between [Box](./box), [Flex](./flex), [Grid](./gr
 
 ## Examples
 
-### Columns
+### Responsive
 
-The `columns` prop can also accept an object to create responsive layouts.
-
-This example will create a grid with 1 column on smaller screens and 2 columns from the medium breakpoint.
+All props marked `Responsive`, such as `columns` and `rows` accept a [breakpoint object](/themes/docs/theme/breakpoints). For example, the following grid starts with 1 column, and uses 2 columns from the medium breakpoint.
 
 ```jsx live=true
 <Grid columns={{ initial: '1', md: '2' }} gap="3" width="auto">

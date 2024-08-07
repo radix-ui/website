@@ -33,6 +33,7 @@ const definitions = {
     flexGrow: props.layoutPropDefs.flexGrow,
   },
   gridChildrenPropDefs: {
+    gridArea: props.layoutPropDefs.gridArea,
     gridColumn: props.layoutPropDefs.gridColumn,
     gridColumnStart: props.layoutPropDefs.gridColumnStart,
     gridColumnEnd: props.layoutPropDefs.gridColumnEnd,
