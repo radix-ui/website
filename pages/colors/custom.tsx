@@ -68,7 +68,9 @@ import { ThemesPanelBackgroundImage } from '@components/ThemesPanelBackgroundIma
 import { AvatarIconFallback } from '@components/AvatarIconFallback';
 import { ColorField } from '@components/ColorField';
 import { generateRadixColors } from '@components/generateRadixColors';
-import { useLocalStorage, useIsomorphicLayoutEffect } from 'usehooks-ts';
+import { useLocalStorage } from '../../utils/use-local-storage';
+import { useLayoutEffect } from '../../utils/use-layout-effect';
+import { useIsHydrated } from '../../utils/use-is-hydrated';
 import { useTheme } from 'next-themes';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
 import copy from 'copy-to-clipboard';
@@ -90,7 +92,7 @@ export default function Page() {
   // Discard local storage values that are older than 2 hours
   const [timestamp, setTimestamp] = useLocalStorage('colors/timestamp', Date.now());
   const [discardStoredValues] = React.useState(Date.now() - timestamp > 1000 * 60 * 2);
-  useIsomorphicLayoutEffect(() => {
+  useLayoutEffect(() => {
     if (discardStoredValues) {
       setLightAccentValue('#3D63DD');
       setLightGrayValue('#8B8D98');
@@ -142,10 +144,8 @@ export default function Page() {
     [setCopied]
   );
 
-  const [hydrated, setHydrated] = React.useState(false);
-  useIsomorphicLayoutEffect(() => setHydrated(true), []);
-
-  if (!hydrated) {
+  const isHydrated = useIsHydrated();
+  if (!isHydrated) {
     return null;
   }
 
