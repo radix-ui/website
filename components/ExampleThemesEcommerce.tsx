@@ -1250,7 +1250,7 @@ export const ExampleThemesEcommerce = ({ focusable = true, ...props }: ExampleLa
             <Grid rows="256px 256px" columns="3">
               <Box p="4">
                 <Heading as="h3" size="8" mb="2">
-                  Dare to stand out
+                  Dare to stand out
                 </Heading>
                 <Text as="p" mb="3" size="3">
                   Striking patterns, vibrant hues, and unusual designs.

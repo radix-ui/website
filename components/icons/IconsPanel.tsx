@@ -181,11 +181,11 @@ function MyComponent () {
                 highContrast
                 color="gray"
               >
-                MIT License
+                MIT License
               </Link>
               .
               <br />
-              Copyright © 2022–present WorkOS.
+              Copyright © 2022–present WorkOS.
             </Text>
           </Box>
         </Box>

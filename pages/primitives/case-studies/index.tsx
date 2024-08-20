@@ -40,7 +40,7 @@ export default function CaseStudy() {
             </Heading>
             <Text align="center" size="4" mb="3" as="p" style={{ maxWidth: 480 }} color="gray">
               Learn how teams behind everyone’s favorite products use Radix to save time, boost
-              quality, and set the bar for accessibility.
+              quality, andset the bar for accessibility.
             </Text>
           </Flex>
           <Grid
@@ -207,7 +207,7 @@ export default function CaseStudy() {
                   highContrast
                   color="gray"
                 >
-                  Submit your case study
+                  Submityourcasestudy
                   <ArrowTopRightIcon />
                 </Link>
               </Flex>

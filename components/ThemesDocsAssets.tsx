@@ -789,7 +789,7 @@ export function ThemesTypeSpecimen() {
 
             <Box maxWidth="260px" display={{ initial: 'none', sm: 'block' }}>
               <Heading trim="end" size="8">
-                Ambiguous voice of a heart which prefers kiwi bowls to a zephyr.
+                Ambiguous voice of a heart which prefers kiwi bowls to a zephyr.
               </Heading>
             </Box>
           </Grid>
@@ -1137,7 +1137,7 @@ function AlbumCard() {
           </Heading>
 
           <Text align="center" as="p" color="gray" size="2" mb="4">
-            A dark and introspective album that showcases a distinctive blend of genres.
+            A dark and introspective album that showcases a distinctive blend of genres.
           </Text>
 
           <Flex justify="center" gap="3">

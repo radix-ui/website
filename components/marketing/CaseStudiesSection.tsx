@@ -25,7 +25,7 @@ export const CaseStudiesSection = () => {
         <Box mb="5">
           <MarketingCaption mb="1">Case studies</MarketingCaption>
           <Heading as="h2" size="7" style={{ maxWidth: 500 }}>
-            World-class teams use Radix Primitives to power their products
+            World-class teams use Radix Primitives to power their products
           </Heading>
         </Box>
 
@@ -41,8 +41,8 @@ export const CaseStudiesSection = () => {
                   </AccessibleIcon>
                 </Box>
                 <Text as="p" size="3" mb="4" style={{ textIndent: '-0.5em' }}>
-                  “Radix Primitives are crucial for the Node.js website and are a significant part
-                  of Node’s Web Design System. It allows our engineers to focus on what matters and
+                  “Radix Primitives are crucial for the Node.js website and are a significant part
+                  of Node’s Web Design System. It allows our engineers to focus on what matters and
                   create delightful experiences for the community.”
                 </Text>
                 <Flex align="center" gap="3">
@@ -70,8 +70,8 @@ export const CaseStudiesSection = () => {
                 </Box>
                 <Text as="p" size="3" mb="4" style={{ textIndent: '-0.5em' }}>
                   “We’ve been able to focus on building solid user experiences on top of Radix
-                  Primitives. With UI components, there are just too many angles and rabbit holes to
-                  cover for product teams that wish to move quickly.”
+                  Primitives. With UI components, there are just too many angles and rabbit holes to
+                  cover for product teams that wish to move quickly.”
                 </Text>
                 <Flex align="center" gap="3">
                   <Avatar
@@ -82,7 +82,7 @@ export const CaseStudiesSection = () => {
                     aria-describedby="person2"
                   />
                   <Text color="gray" size="3" id="person2">
-                    Rauno Freiberg, UI Engineer at Vercel
+                    Rauno Freiberg, UI Engineer at Vercel
                   </Text>
                 </Flex>
               </a>

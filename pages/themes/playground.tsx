@@ -2128,7 +2128,7 @@ export default function ComponentsPage() {
                 Versions of the <Em>Lorem ipsum</Em> text have been used in typesetting at least
                 since the 1960s, when it was popularized by advertisements for Letraset transfer
                 sheets. It is typically a corrupted version of{' '}
-                <Em>De finibus bonorum et malorum</Em>, a 1st-century BC text by the Roman statesman
+                <Em>De finibus bonorum et malorum</Em>, a1st-century BC text by the Roman statesman
                 and philosopher Cicero, with words altered, added, and removed to make it
                 nonsensical and improper Latin.
               </Box>
@@ -2146,14 +2146,14 @@ export default function ComponentsPage() {
                 <Tabs.Content value="specimen">
                   <Box mt="6" style={{ width: 'calc(585px * var(--scaling))' }}>
                     <Heading size="9">
-                      The principles of the typographic craft are difficult to master
+                      The principles of the typographic craft are difficult tomaster
                     </Heading>
                   </Box>
 
                   <Grid columns="auto auto" mt="6" gap="6">
                     <Box pr="4" style={{ width: 'calc(340px * var(--scaling))' }}>
                       <Heading size="5" mb="2">
-                        The principles of the typographic craft are difficult to master
+                        The principles of the typographic craft are difficult tomaster
                       </Heading>
                       <Text as="p" size="3">
                         The goal of typography is to relate font size, line height, and line width
@@ -2164,7 +2164,7 @@ export default function ComponentsPage() {
 
                     <Box style={{ width: 'calc(330px * var(--scaling))' }}>
                       <Heading size="4" mb="2">
-                        The principles of the typographic craft are difficult to master
+                        The principles of the typographic craft are difficult tomaster
                       </Heading>
                       <Text as="p" size="3">
                         The goal of typography is to relate font size, line height, and line width
@@ -2175,7 +2175,7 @@ export default function ComponentsPage() {
 
                     <Box style={{ width: 'calc(290px * var(--scaling))' }}>
                       <Heading size="3" mb="1">
-                        The principles of the typographic craft are difficult to master
+                        The principles of the typographic craft are difficult tomaster
                       </Heading>
                       <Text as="p" size="2">
                         The goal of typography is to relate font size, line height, and line width
@@ -2186,7 +2186,7 @@ export default function ComponentsPage() {
 
                     <Box style={{ width: 'calc(260px * var(--scaling))' }}>
                       <Heading size="2" mb="1">
-                        The principles of the typographic craft are difficult to master
+                        The principles of the typographic craft are difficult tomaster
                       </Heading>
                       <Text as="p" size="1">
                         The goal of typography is to relate font size, line height, and line width
@@ -2555,7 +2555,7 @@ export default function ComponentsPage() {
                         <Link href="#link">graphic designer</Link>, who contributed{' '}
                         <Link href="#link">interface</Link> elements and{' '}
                         <Link href="#link">typefaces</Link> for the first{' '}
-                        <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+                        <Link href="#link">AppleMacintosh</Link> personal computer from 1983 to
                         1986.
                       </Text>
 
@@ -2564,7 +2564,7 @@ export default function ComponentsPage() {
                         <Link href="#link">graphic designer</Link>, who contributed{' '}
                         <Link href="#link">interface</Link> elements and{' '}
                         <Link href="#link">typefaces</Link> for the first{' '}
-                        <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+                        <Link href="#link">AppleMacintosh</Link> personal computer from 1983 to
                         1986.
                       </Text>
 
@@ -2573,7 +2573,7 @@ export default function ComponentsPage() {
                         <Link href="#link">graphic designer</Link>, who contributed{' '}
                         <Link href="#link">interface</Link> elements and{' '}
                         <Link href="#link">typefaces</Link> for the first{' '}
-                        <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+                        <Link href="#link">AppleMacintosh</Link> personal computer from 1983 to
                         1986.
                       </Text>
                     </Flex>
@@ -2588,7 +2588,7 @@ export default function ComponentsPage() {
                         <Link href="#link">graphic designer</Link>, who contributed{' '}
                         <Link href="#link">interface</Link> elements and{' '}
                         <Link href="#link">typefaces</Link> for the first{' '}
-                        <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+                        <Link href="#link">AppleMacintosh</Link> personal computer from 1983 to
                         1986.
                       </Text>
 
@@ -2597,7 +2597,7 @@ export default function ComponentsPage() {
                         <Link href="#link">graphic designer</Link>, who contributed{' '}
                         <Link href="#link">interface</Link> elements and{' '}
                         <Link href="#link">typefaces</Link> for the first{' '}
-                        <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+                        <Link href="#link">AppleMacintosh</Link> personal computer from 1983 to
                         1986.
                       </Text>
 
@@ -2606,7 +2606,7 @@ export default function ComponentsPage() {
                         <Link href="#link">graphic designer</Link>, who contributed{' '}
                         <Link href="#link">interface</Link> elements and{' '}
                         <Link href="#link">typefaces</Link> for the first{' '}
-                        <Link href="#link">Apple Macintosh</Link> personal computer from 1983 to
+                        <Link href="#link">AppleMacintosh</Link> personal computer from 1983 to
                         1986.
                       </Text>
                     </Flex>
@@ -4220,7 +4220,7 @@ export default function ComponentsPage() {
                   <Box mt="6" style={{ width: 'calc(760px * var(--scaling))' }}>
                     <Text as="p" size="5">
                       The goal of typography is to relate font size, line height, and line width in
-                      a proportional way that maximizes beauty and makes reading easier and more
+                      aproportional way that maximizes beauty and makes reading easier and more
                       pleasant. The question is: What proportion(s) will give us the best results?
                       The golden ratio is often observed in nature where beauty and utility
                       intersect; perhaps we can use this “divine” proportion to enhance these
@@ -4231,7 +4231,7 @@ export default function ComponentsPage() {
                   <Box mt="6" style={{ width: 'calc(700px * var(--scaling))' }}>
                     <Text as="p" size="4">
                       The goal of typography is to relate font size, line height, and line width in
-                      a proportional way that maximizes beauty and makes reading easier and more
+                      aproportional way that maximizes beauty and makes reading easier and more
                       pleasant. The question is: What proportion(s) will give us the best results?
                       The golden ratio is often observed in nature where beauty and utility
                       intersect; perhaps we can use this “divine” proportion to enhance these
@@ -4242,7 +4242,7 @@ export default function ComponentsPage() {
                   <Box mt="6" style={{ width: 'calc(640px * var(--scaling))' }}>
                     <Text as="p" size="3">
                       The goal of typography is to relate font size, line height, and line width in
-                      a proportional way that maximizes beauty and makes reading easier and more
+                      aproportional way that maximizes beauty and makes reading easier and more
                       pleasant. The question is: What proportion(s) will give us the best results?
                       The golden ratio is often observed in nature where beauty and utility
                       intersect; perhaps we can use this “divine” proportion to enhance these
@@ -4253,7 +4253,7 @@ export default function ComponentsPage() {
                   <Box mt="6" style={{ width: 'calc(572px * var(--scaling))' }}>
                     <Text as="p" size="2">
                       The goal of typography is to relate font size, line height, and line width in
-                      a proportional way that maximizes beauty and makes reading easier and more
+                      aproportional way that maximizes beauty and makes reading easier and more
                       pleasant. The question is: What proportion(s) will give us the best results?
                       The golden ratio is often observed in nature where beauty and utility
                       intersect; perhaps we can use this “divine” proportion to enhance these

@@ -71,12 +71,12 @@ export default function ColorsHome() {
         <Section size={{ initial: '2', md: '4' }}>
           <Container>
             <SerifHeading mb="3" style={{ maxWidth: 720 }}>
-              A gorgeous, accessible color system for user interfaces
+              A gorgeous, accessible color system for userinterfaces
             </SerifHeading>
 
             <Box style={{ maxWidth: 500 }}>
               <Text size="5" as="p" mb="6" color="gray">
-                Comprehensive color system for designing beautiful, accessible websites and apps.
+                Comprehensive color system fordesigning beautiful, accessible websites andapps.
               </Text>
             </Box>
 
@@ -217,7 +217,7 @@ export default function ColorsHome() {
                   <EyeOpenIcon width="30" height="30" />
                 </Flex>
                 <Heading size="4" as="h3" mb="2">
-                  Accessibility made easy
+                  Accessibility madeeasy
                 </Heading>
                 <Text as="p" size="3">
                   Text colors are guaranteed to pass target contrast ratios against the
@@ -229,11 +229,11 @@ export default function ColorsHome() {
                   <MoonIcon width="30" height="30" />
                 </Flex>
                 <Heading size="4" as="h3" mb="2">
-                  Automatic dark mode
+                  Automatic darkmode
                 </Heading>
                 <Text as="p" size="3">
-                  Switching to dark theme is as simple as applying a class to a container. Dark mode
-                  Just Works™.
+                  Switching to dark theme is as simple as applying aclass to acontainer. Dark mode
+                  JustWorks™.
                 </Text>
               </Box>
               <Box style={{ maxWidth: 540 }}>
@@ -244,7 +244,7 @@ export default function ColorsHome() {
                   Transparent variants
                 </Heading>
                 <Text as="p" size="3">
-                  Each scale has a matching alpha color variant, which is handy for UI components
+                  Each scale has amatching alpha color variant, which is handy for UI components
                   that need to blend into colored backgrounds.
                 </Text>
               </Box>
@@ -253,7 +253,7 @@ export default function ColorsHome() {
                   <Half2Icon width="30" height="30" />
                 </Flex>
                 <Heading size="4" as="h3" mb="2">
-                  APCA text contrast
+                  APCA textcontrast
                 </Heading>
                 <Text as="p" size="3">
                   Contrast targets are based on the modern APCA contrast algorithm, which accurately
@@ -280,7 +280,7 @@ export default function ColorsHome() {
                   Designed for user interfaces
                 </Heading>
                 <Text as="p" size="3">
-                  Each step is designed with a specific use case in mind, such as backgrounds, hover
+                  Each step is designed with aspecific use case in mind, such as backgrounds, hover
                   states, borders, overlays, or text.
                 </Text>
               </Box>
