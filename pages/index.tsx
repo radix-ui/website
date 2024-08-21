@@ -231,7 +231,7 @@ const MainContent = () => (
           <SerifHeading mb="3">
             Start building
             <br />
-            your appnow
+            your app now
           </SerifHeading>
         </Box>
         <Box display={{ initial: 'none', lg: 'block' }}>
