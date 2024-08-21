@@ -30,6 +30,7 @@ export const ThemeToggle = ({
           size="3"
           variant="ghost"
           color="gray"
+          aria-label="Toggle theme"
           onClick={() => {
             // Set 'system' theme if the next theme matches the system theme
             const resolvedTheme = theme === 'system' ? systemTheme : theme;
