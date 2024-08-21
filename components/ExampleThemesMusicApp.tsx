@@ -702,7 +702,7 @@ export const ExampleThemesMusicApp = ({ focusable = true, ...props }: ExampleLay
                           Automatic downloads
                         </Text>
                         <Text as="div" color="gray" size="1">
-                          Automatically download music when added to your library
+                          Automatically download music when added to your library
                         </Text>
                       </Box>
 
@@ -717,7 +717,7 @@ export const ExampleThemesMusicApp = ({ focusable = true, ...props }: ExampleLay
                           Lossless audio
                         </Text>
                         <Text as="div" color="gray" size="1">
-                          Preserve every detail of the original audio, but consume significantly
+                          Preserve every detail of the original audio, but consume significantly
                           more data
                         </Text>
                       </Box>
@@ -1132,7 +1132,7 @@ export const ExampleThemesMusicApp = ({ focusable = true, ...props }: ExampleLay
                   </Heading>
 
                   <Text align="center" as="p" color="gray" size="2" mb="4">
-                    A dark and introspective album that showcases King Krule’s distinctive blend of
+                    A dark and introspective album that showcases King Krule’s distinctive blend of
                     genres, while delivering hauntingly raw and poetic lyrics.
                   </Text>
 

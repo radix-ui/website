@@ -90,12 +90,12 @@ export const ComponentHighlightsSection = () => {
                 <Flex gap="2" align="start" mb="1">
                   <Checkmark />
                   <Heading as="h3" size="3">
-                    Full keyboard navigation
+                    Full keyboard navigation
                   </Heading>
                 </Flex>
                 <Text as="p" color="gray" size="3" ml="6">
-                  Navigate the menu using arrow keys, Escape, and Enter hotkeys, or even via
-                  typeahead.
+                  Navigate the menu using arrow keys, Escape, and Enter hotkeys, or even
+                  via typeahead.
                 </Text>
               </Box>
 
@@ -111,11 +111,11 @@ export const ComponentHighlightsSection = () => {
                 <Flex gap="2" align="start" mb="1">
                   <Checkmark />
                   <Heading as="h3" size="3">
-                    Modal and non-modal modes
+                    Modal and non-modal modes
                   </Heading>
                 </Flex>
                 <Text as="p" color="gray" size="3" ml="6">
-                  Configure whether the dropdown menu allows or blocks outside interactions.
+                  Configure whether the dropdown menu allows or blocks outside interactions.
                 </Text>
               </Box>
 
@@ -135,7 +135,7 @@ export const ComponentHighlightsSection = () => {
                   </Heading>
                 </Flex>
                 <Text as="p" color="gray" size="3" ml="6">
-                  Nest another level of fully functional submenus inside the dropdown menu.
+                  Nest another level of fully functional submenus inside the dropdown menu.
                 </Text>
               </Box>
 
@@ -151,12 +151,12 @@ export const ComponentHighlightsSection = () => {
                 <Flex gap="2" align="start" mb="1">
                   <Checkmark />
                   <Heading as="h3" size="3">
-                    Supports assistive technology
+                    Supports assistive technology
                   </Heading>
                 </Flex>
                 <Text as="p" color="gray" size="3" ml="6">
-                  Implements correct semantics and behaviors, so it's accessible to people using
-                  assistive technology.
+                  Implements correct semantics and behaviors, so it's accessible to people using
+                  assistive technology.
                 </Text>
               </Box>
 
@@ -172,12 +172,12 @@ export const ComponentHighlightsSection = () => {
                 <Flex gap="2" align="start" mb="1" mr="-1">
                   <Checkmark />
                   <Heading as="h3" size="3">
-                    Collision and origin-aware animations
+                    Collision and origin-aware animations
                   </Heading>
                 </Flex>
                 <Text as="p" color="gray" size="3" ml="6">
                   Create open and close animations that take the dropdown menu’s actual position
-                  into account.
+                  into account.
                 </Text>
               </Box>
 
@@ -193,12 +193,12 @@ export const ComponentHighlightsSection = () => {
                 <Flex gap="2" align="start" mb="1">
                   <Checkmark />
                   <Heading as="h3" size="3">
-                    Control alignment and collisions
+                    Control alignment and collisions
                   </Heading>
                 </Flex>
                 <Text as="p" color="gray" size="3" ml="6">
                   Position the menu anywhere relative to the trigger, taking collisions with the
-                  screen into account.
+                  screen into account.
                 </Text>
               </Box>
 
@@ -214,12 +214,12 @@ export const ComponentHighlightsSection = () => {
                 <Flex gap="2" align="start" mb="1">
                   <Checkmark />
                   <Heading as="h3" size="3">
-                    Fully managed focus
+                    Fully managed focus
                   </Heading>
                 </Flex>
                 <Text as="p" color="gray" size="3" ml="6">
-                  Granularly control focus behavior when user closes the dropdown menu or focuses an
-                  outside element.
+                  Granularly control focus behavior when user closes the dropdown menu or focuses
+                  an outside element.
                 </Text>
               </Box>
 
@@ -235,12 +235,12 @@ export const ComponentHighlightsSection = () => {
                 <Flex gap="2" align="start" mb="1">
                   <Checkmark />
                   <Heading as="h3" size="3">
-                    Supports checkable items
+                    Supports checkable items
                   </Heading>
                 </Flex>
                 <Text as="p" color="gray" size="3" ml="6">
-                  Items can be used to perform actions, as well as act as checkbox or radiobutton
-                  controls.
+                  Items can be used to perform actions, as well as act as checkbox or
+                  radiobutton controls.
                 </Text>
               </Box>
 

@@ -81,11 +81,11 @@ const textAlign = (
 
 const textWrap = (
   <>
-    Controls the wrapping behavior of the text. See the corresponding{' '}
+    Controls the wrapping behavior of the text. See the corresponding{' '}
     <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap">
       text-wrap
     </ExternalLink>{' '}
-    values for details.
+    values for details.
   </>
 );
 

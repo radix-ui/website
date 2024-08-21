@@ -152,7 +152,7 @@ export const ExampleThemesDashboard = ({ focusable = true, ...props }: ExampleLa
                   Comments
                 </Heading>
                 <Text as="p" size="2" color="gray">
-                  Receive notifications when someone comments on your documents or mentions you.
+                  Receive notifications when someone comments on your documents or mentions you.
                 </Text>
               </Box>
               <Flex direction="column" gap="4" mt="1">
@@ -226,7 +226,7 @@ export const ExampleThemesDashboard = ({ focusable = true, ...props }: ExampleLa
                   New documents
                 </Heading>
                 <Text as="p" size="2" color="gray">
-                  Receive notifications whenever people on your team create new documents.
+                  Receive notifications whenever people on your team create new documents.
                 </Text>
               </Box>
               <Flex direction="column" gap="4" mt="1">
@@ -574,7 +574,7 @@ export const ExampleThemesDashboard = ({ focusable = true, ...props }: ExampleLa
           </Flex>
 
           <Text as="p" size="3" align="center" mb="5">
-            You paid $17,975.30. A receipt copy was sent to <Strong>accounting@example.com</Strong>
+            You paid $17,975.30. A receipt copy was sent to <Strong>accounting@example.com</Strong>
           </Text>
 
           <Flex direction="column" gap="3" align="stretch">

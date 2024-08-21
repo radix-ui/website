@@ -8,7 +8,7 @@ export const BenefitsSection = () => {
         <Box mb="7">
           <MarketingCaption mb="1">Why Radix Primitives</MarketingCaption>
           <Heading as="h2" size="7">
-            Spend less time on
+            Spend less time on
             <br />
             undifferentiated work
           </Heading>

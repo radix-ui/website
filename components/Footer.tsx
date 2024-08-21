@@ -32,7 +32,7 @@ export const Footer = () => {
                 fontWeight: 'inherit',
               }}
             >
-              A project by{' '}
+              A project by{' '}
               <Link color="gray" href="https://workos.com">
                 WorkOS
               </Link>

@@ -265,7 +265,7 @@ export const PrimitivesHero = () => {
               Core building blocks for your design system
             </SerifHeading>
             <Text size="5" as="p" mb="6" color="gray" style={{ maxWidth: 520 }}>
-              Unstyled, accessible, open source React primitives for high-quality web apps and
+              Unstyled, accessible, open source React primitives for high-quality web apps and
               design systems.
             </Text>
           </Box>
@@ -365,7 +365,7 @@ export const PrimitivesHero = () => {
                         Dropdown Menu
                       </Heading>
                       <Text as="p" size="2" color="gray">
-                        With submenus, checkable items, collision handling, arrow key navigation,
+                        With submenus, checkable items, collision handling, arrow key navigation,
                         and typeahead support.
                       </Text>
                     </GrabBox>
