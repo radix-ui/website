@@ -2120,10 +2120,10 @@ color-name@~1.1.4:
   resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.4.tgz#c2a09a87acbde69543de6f63fa3995c826c536a2"
   integrity sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==
 
-colorjs.io@0.4.5:
-  version "0.4.5"
-  resolved "https://registry.yarnpkg.com/colorjs.io/-/colorjs.io-0.4.5.tgz#7775f787ff90aca7a38f6edb7b7c0f8cce1e6418"
-  integrity sha512-yCtUNCmge7llyfd/Wou19PMAcf5yC3XXhgFoAh6zsO2pGswhUPBaaUh8jzgHnXtXuZyFKzXZNAnyF5i+apICow==
+colorjs.io@0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/colorjs.io/-/colorjs.io-0.5.2.tgz#63b20139b007591ebc3359932bef84628eb3fcef"
+  integrity sha512-twmVoizEW7ylZSN32OgKdXRmo1qg+wT5/6C3xu5b9QsWzSFAhHLn2xd8ro0diCsKfCj1RdaTP/nrcW+vAoQPIw==
 
 comma-separated-tokens@^1.0.0:
   version "1.0.8"

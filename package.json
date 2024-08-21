@@ -56,7 +56,7 @@
     "algoliasearch": "^4.14.2",
     "bezier-easing": "^2.1.0",
     "codesandbox": "^2.2.3",
-    "colorjs.io": "0.4.5",
+    "colorjs.io": "0.5.2",
     "copy-to-clipboard": "^3.3.1",
     "esbuild": "0.19.5",
     "eslint-config-next": "^14.2.3",
