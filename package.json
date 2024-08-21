@@ -69,7 +69,7 @@
     "next-themes": "^0.0.14",
     "node-fetch": "^3.3.2",
     "parse-numeric-range": "^1.3.0",
-    "postcss": "^8.4.38",
+    "postcss": "^8.4.41",
     "prism-react-renderer": "^1.2.0",
     "prismjs": "^1.23.0",
     "react": "^18.3.1",
