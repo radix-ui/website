@@ -21,7 +21,7 @@ import { classNames } from '@utils/classNames';
 import * as Colors from '@radix-ui/colors';
 import { useTheme } from 'next-themes';
 import { Cross2Icon, InfoCircledIcon } from '@radix-ui/react-icons';
-import copy from 'copy-to-clipboard';
+import { copy } from '../utils/clipboard';
 
 const brightColors = ['amber', 'yellow', 'lime', 'mint', 'sky'];
 
@@ -418,7 +418,7 @@ const CopyButton = ({ onClick, ...props }: React.ComponentPropsWithoutRef<typeof
         ref={ref}
         size="2"
         style={{ userSelect: 'auto' }}
-        onClick={async (event) => {
+        onClick={(event) => {
           onClick?.(event);
           const originalDefaultPrevented = event.defaultPrevented;
 
@@ -433,7 +433,7 @@ const CopyButton = ({ onClick, ...props }: React.ComponentPropsWithoutRef<typeof
             });
 
             if (!originalDefaultPrevented) {
-              copy(text);
+              void copy(text);
             }
           }
         }}

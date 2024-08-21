@@ -5,7 +5,7 @@ import { Box, Flex, IconButton, ScrollArea, Theme } from '@radix-ui/themes';
 import { CheckIcon, CopyIcon } from '@radix-ui/react-icons';
 import { classNames } from '@utils/classNames';
 import styles from './CodeBlock.module.css';
-import copy from 'copy-to-clipboard';
+import { copy } from '../utils/clipboard';
 
 import refractor from 'refractor/core';
 import js from 'refractor/lang/javascript';
@@ -166,7 +166,7 @@ const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
           const value = event.currentTarget
             .closest(`[data-code-block-content]`)
             .querySelector('code').textContent;
-          copy(value);
+          await copy(value);
           setHasCopied(true);
         }}
         color="gray"

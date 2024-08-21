@@ -73,7 +73,7 @@ import { useLayoutEffect } from '../../utils/use-layout-effect';
 import { useIsHydrated } from '../../utils/use-is-hydrated';
 import { useTheme } from 'next-themes';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
-import copy from 'copy-to-clipboard';
+import { copy } from '../../utils/clipboard';
 import { CustomSwatch } from '@components/CustomSwatch';
 import { ColorUsageRange } from '@components/ColorUsageRange';
 import { ColorStepLabel } from '@components/ColorStepLabel';
@@ -290,7 +290,7 @@ export default function Page() {
 
                         <DropdownMenu.SubContent>
                           <DropdownMenu.Item
-                            onSelect={() => {
+                            onSelect={async () => {
                               const css = getColorScaleCss({
                                 isDarkMode: resolvedTheme === 'dark',
                                 name: getColorName(accentValue),
@@ -303,7 +303,7 @@ export default function Page() {
                                 surfaceWideGamut: result.accentSurfaceWideGamut,
                               });
 
-                              copy(css);
+                              await copy(css);
                               setCopiedMessage('accents');
                             }}
                           >
