@@ -97,13 +97,13 @@ export const DeveloperExperienceSection = () => {
           <Box style={{ maxWidth: 430 }}>
             <MarketingCaption mb="1">Developer experience to love</MarketingCaption>
             <Heading as="h2" size="7" mb="4">
-              Develop with an open, thought‑out API
+              Develop with an open, thought‑out API
             </Heading>
 
             <Text as="p" mb="5" style={{ maxWidth: 500 }}>
               One of our main goals is to provide the best possible developer experience. Radix
-              Primitives provides a fully-typed API. All components share a similar API, creating
-              a consistent and predictable experience.
+              Primitives provides a fully-typed API. All components share a similar API, creating a
+              consistent and predictable experience.
             </Text>
 
             <HiddenScroll

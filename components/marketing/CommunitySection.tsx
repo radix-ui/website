@@ -8,7 +8,7 @@ export const CommunitySection = () => {
       <Box mb="5">
         <Flex mb="1">
           <MarketingCaption mb="1">An active and friendly community</MarketingCaption>
-          <Text size="3"> 👋</Text>
+          <Text size="3"> 👋</Text>
         </Flex>
         <Heading as="h2" size="7" mb="4">
           Join our fast-growing community
@@ -38,7 +38,7 @@ export const CommunitySection = () => {
               Twitter
             </Heading>
             <Text size="3" as="p" color="gray">
-              For announcements, updates, and general Radix tips.
+              For announcements, updates, and general Radix tips.
             </Text>
           </a>
         </Card>

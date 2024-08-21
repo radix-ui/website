@@ -231,7 +231,7 @@ const MainContent = () => (
           <SerifHeading mb="3">
             Start building
             <br />
-            your app now
+            your app now
           </SerifHeading>
         </Box>
         <Box display={{ initial: 'none', lg: 'block' }}>
@@ -241,7 +241,7 @@ const MainContent = () => (
           >
             Start building
             <br />
-            your app now
+            your app now
           </SerifHeading>
         </Box>
       </Box>
@@ -249,8 +249,8 @@ const MainContent = () => (
       <Box style={{ maxWidth: 500 }}>
         <Text size={{ initial: '4', xs: '5' }}>
           <Text as="p" mb="5" color="gray">
-            An open source component library optimized for fast development, easy maintenance,
-            and accessibility. Just import and go—no configuration required.
+            An open source component library optimized for fast development, easy maintenance, and
+            accessibility. Just import and go—no configuration required.
           </Text>
 
           <Box mb="5">

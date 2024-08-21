@@ -366,7 +366,7 @@ export const AccessibilitySection = () => {
         <Box mb="5">
           <MarketingCaption mb="1">Supports assistive technology</MarketingCaption>
           <Heading as="h2" size="7">
-            Accessibility out of the box
+            Accessibility out of the box
           </Heading>
         </Box>
 
@@ -530,7 +530,7 @@ export const AccessibilitySection = () => {
               WAI-ARIA compliant
             </Heading>
             <Text size="3" as="p" color="gray">
-              Radix Primitives follow the WAI-ARIA guidelines, implementing correct semantics and
+              Radix Primitives follow the WAI-ARIA guidelines, implementing correct semantics and
               behaviors for our components.
             </Text>
           </Card>
