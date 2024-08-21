@@ -71,7 +71,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                 <Avatar
                   size="5"
                   src={frontmatter.authorAvatarUrl}
-                  aria-describedby="author"
+                  aria-label={frontmatter.author}
                   fallback={null}
                   radius="full"
                 />

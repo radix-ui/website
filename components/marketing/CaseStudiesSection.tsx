@@ -51,7 +51,7 @@ export const CaseStudiesSection = () => {
                     fallback="R"
                     radius="full"
                     src="/marketing/avatar-claudio-wunder.jpg"
-                    aria-describedby="person1"
+                    aria-labelledby="person1"
                   />
                   <Text color="gray" size="3" id="person1">
                     Claudio Wunder, Node.js Core Collaborator
@@ -79,7 +79,7 @@ export const CaseStudiesSection = () => {
                     fallback="R"
                     radius="full"
                     src="/marketing/avatar-rauno-freiberg.jpg"
-                    aria-describedby="person2"
+                    aria-labelledby="person2"
                   />
                   <Text color="gray" size="3" id="person2">
                     Rauno Freiberg, UI Engineer at Vercel
