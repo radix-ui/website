@@ -141,9 +141,9 @@ export const Header = ({ children, gitHubLink, ghost }: HeaderProps) => {
               </Link>
 
               {gitHubLink && (
-                <Tooltip className="radix-themes-custom-fonts" content="View GitHub ">
+                <Tooltip className="radix-themes-custom-fonts" content="View GitHub">
                   <IconButton asChild size="3" variant="ghost" color="gray">
-                    <a href={gitHubLink} target="_blank">
+                    <a href={gitHubLink} target="_blank" aria-label="View GitHub">
                       <GitHubLogoIcon width="16" height="16" />
                     </a>
                   </IconButton>
