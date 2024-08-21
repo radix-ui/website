@@ -3,7 +3,7 @@
 import * as React from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import { useEffectEvent } from './use-effect-event';
-import { canUseDom } from './can-use-dom';
+import { canUseDOM } from './can-use-dom';
 
 /**
  * Options for customizing the behavior of serialization and deserialization.
@@ -65,7 +65,7 @@ export function useLocalStorage<T>(
     const initialValueToUse = initialValue instanceof Function ? initialValue() : initialValue;
 
     // Prevent build error "window is undefined" but keep working
-    if (!canUseDom) {
+    if (!canUseDOM) {
       return initialValueToUse;
     }
 
@@ -90,7 +90,7 @@ export function useLocalStorage<T>(
   // ... persists the new value to localStorage.
   const setValue: React.Dispatch<SetStateAction<T>> = useEffectEvent((value) => {
     // Prevent build error "window is undefined" but keeps working
-    if (!canUseDom) {
+    if (!canUseDOM) {
       console.warn(
         `Tried setting localStorage key “${key}” even though environment is not a client`
       );
@@ -116,7 +116,7 @@ export function useLocalStorage<T>(
 
   const removeValue = useEffectEvent(() => {
     // Prevent build error "window is undefined" but keeps working
-    if (!canUseDom) {
+    if (!canUseDOM) {
       console.warn(
         `Tried removing localStorage key “${key}” even though environment is not a client`
       );
