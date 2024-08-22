@@ -1,71 +1,12 @@
 import { Text } from '@radix-ui/themes';
-import { styled } from '@utils/stitches';
+import { styled } from '@utils/css';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
+import styles from './PrimitivesHeroRadioGroup.module.css';
 
-export const RadioCards = styled(RadioGroupPrimitive.Root, {
-  display: 'flex',
-  flexDirection: 'column',
-  width: '60%',
-  backgroundColor: 'var(--color-panel-solid)',
-  borderRadius: 'var(--radius-4)',
-  boxShadow: '0 0 0 1px var(--gray-a3), var(--shadow-4)',
-});
-
-const StyledRadioButton = styled('div', {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  borderRadius: '100%',
-  width: 20,
-  height: 20,
-  boxShadow: 'inset 0 0 0 1px var(--gray-8)',
-  backgroundColor: 'var(--color-surface)',
-  flexShrink: 0,
-  marginRight: 'var(--space-3)',
-});
-
-const StyledRadioIndicator = styled('div', {
-  width: 10,
-  height: 10,
-  borderRadius: '100%',
-  backgroundColor: 'var(--gray-12)',
-  transform: 'scale(0)',
-});
-
-const StyledRadio = styled(RadioGroupPrimitive.Item, {
-  all: 'unset',
-  boxSizing: 'border-box',
-  userSelect: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  padding: 'var(--space-3)',
-  '&:first-child': {
-    borderTopLeftRadius: 'var(--radius-4)',
-    borderTopRightRadius: 'var(--radius-4)',
-  },
-  '&:last-child': {
-    borderBottomLeftRadius: 'var(--radius-4)',
-    borderBottomRightRadius: 'var(--radius-4)',
-  },
-  '& + &': {
-    boxShadow: 'inset 0 1px var(--gray-5)',
-  },
-  '@media (hover: hover)': {
-    '&:hover': {
-      backgroundColor: 'var(--gray-a2)',
-    },
-  },
-  '&[data-state="checked"]': {
-    zIndex: 1,
-    backgroundColor: 'var(--gray-a2)',
-    [`& ${StyledRadioIndicator}`]: {
-      transform: 'scale(1)',
-    },
-  },
-  '&:focus-visible[data-state="checked"]': {
-    boxShadow: '0 0 0 2px var(--accent-8)',
-  },
-});
+export const RadioCards = styled(RadioGroupPrimitive.Root, styles.Cards);
+const StyledRadioButton = styled('div', styles.RadioButton);
+const StyledRadioIndicator = styled('div', styles.RadioIndicator);
+const StyledRadio = styled(RadioGroupPrimitive.Item, styles.Radio);
 
 export function PrimitivesHeroRadioGroup() {
   return (
