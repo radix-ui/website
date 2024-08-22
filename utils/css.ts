@@ -19,10 +19,10 @@ export function styled<Comp extends React.ComponentType | keyof JSX.IntrinsicEle
     }
   );
   if (typeof Component === 'string') {
-    wrapped.displayName = `Styled${capitalize(Component)}`;
+    wrapped.displayName = `styled$({Component})`;
   } else {
     const name = Component.displayName || Component.name || 'Component';
-    wrapped.displayName = name.startsWith('Styled') ? name : `Styled${name}`;
+    wrapped.displayName = name.startsWith('Styled') ? name : `styled(${name})`;
   }
   return wrapped;
 }
