@@ -18,9 +18,9 @@
   max-height: 85vh;
   padding: 25px;
   animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-.AlertDialogContent:focus {
-  outline: none;
+  &:focus {
+    outline: none;
+  }
 }
 
 .AlertDialogTitle {
@@ -48,39 +48,39 @@
   line-height: 1;
   font-weight: 500;
   height: 35px;
-}
 
-.Button:global(.violet) {
-  background-color: white;
-  color: var(--violet-11);
-  box-shadow: 0 2px 10px var(--black-a7);
-  &:hover {
-    background-color: var(--mauve-3);
+  &:global(.violet) {
+    background-color: white;
+    color: var(--violet-11);
+    box-shadow: 0 2px 10px var(--black-a7);
+    &:hover {
+      background-color: var(--mauve-3);
+    }
+    &:focus {
+      box-shadow: 0 0 0 2px black;
+    }
   }
-  &:focus {
-    box-shadow: 0 0 0 2px black;
-  }
-}
 
-.Button:global(.red) {
-  background-color: var(--red-4);
-  color: var(--red-11);
-  &:hover {
-    background-color: var(--red-5);
+  &:global(.red) {
+    background-color: var(--red-4);
+    color: var(--red-11);
+    &:hover {
+      background-color: var(--red-5);
+    }
+    &:focus {
+      box-shadow: 0 0 0 2px var(--red-7);
+    }
   }
-  &:focus {
-    box-shadow: 0 0 0 2px var(--red-7);
-  }
-}
 
-.Button:global(.mauve) {
-  background-color: var(--mauve-4);
-  color: var(--mauve-11);
-  &:hover {
-    background-color: var(--mauve-5);
-  }
-  &:focus {
-    box-shadow: 0 0 0 2px var(--mauve-7);
+  &:global(.mauve) {
+    background-color: var(--mauve-4);
+    color: var(--mauve-11);
+    &:hover {
+      background-color: var(--mauve-5);
+    }
+    &:focus {
+      box-shadow: 0 0 0 2px var(--mauve-7);
+    }
   }
 }
 

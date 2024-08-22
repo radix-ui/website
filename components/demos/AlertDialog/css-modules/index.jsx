@@ -3,7 +3,7 @@ import * as AlertDialog from '@radix-ui/react-alert-dialog';
 import styles from './styles.module.css';
 
 const AlertDialogDemo = () => (
-  <AlertDialog.Root className={styles.AlertDialog}>
+  <AlertDialog.Root className={styles.AlertDialogRoot}>
     <AlertDialog.Trigger asChild>
       <button className={`${styles.Button} violet`}>Delete account</button>
     </AlertDialog.Trigger>
