@@ -61,20 +61,20 @@ You can style a component state by targeting its `data-state` attribute.
 
 ## Styling with CSS-in-JS
 
-The examples below are using [Stitches](https://stitches.dev), but you can use any CSS-in-JS library of your choice.
+The examples below are using [Styled Components](https://styled-components.com/), but you can use any CSS-in-JS library of your choice.
 
 ### Styling a part
 
-You can style a component part by wrapping it in a `styled` function (or equivalent).
+Most CSS-in-JS libraries export a function for passing components and their styles. You can provide the Radix primitive component directly.
 
 ```jsx line=5-7,11
 import * as React from 'react';
 import * as Accordion from '@radix-ui/react-accordion';
-import { styled } from '@stitches/react';
+import styled from 'styled-components';
 
-const StyledItem = __styled__(Accordion.Item, {
-  borderBottom: '1px solid gainsboro',
-});
+const StyledItem = __styled__(Accordion.Item)`
+  border-bottom: 1px solid gainsboro;
+`;
 
 const AccordionDemo = () => (
   <Accordion.Root>
@@ -91,16 +91,16 @@ export default AccordionDemo;
 You can style a component state by targeting its `data-state` attribute.
 
 ```jsx
-import { styled } from '@stitches/react';
 import * as Accordion from '@radix-ui/react-accordion';
+import styled from 'styled-components';
 
-const StyledItem = styled(Accordion.Item, {
-  borderBottom: '1px solid gainsboro',
+const StyledItem = styled(Accordion.Item)`
+  border-bottom: 1px solid gainsboro;
 
-  '&[__data-state__=open]': {
-    borderBottomWidth: '2px',
-  },
-});
+  &[__data-state__='open'] {
+    border-bottom-width: 2px;
+  }
+`;
 ```
 
 ## Extending a primitive
