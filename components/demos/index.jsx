@@ -2,7 +2,7 @@ export { default as AccordionDemo } from './Accordion/css-modules';
 export { default as AlertDialogDemo } from './AlertDialog/css-modules';
 export { default as AspectRatioDemo } from './AspectRatio/css-modules';
 export { default as AvatarDemo } from './Avatar/css-modules';
-export { default as CheckboxDemo } from './Checkbox/stitches';
+export { default as CheckboxDemo } from './Checkbox/css-modules';
 export { default as CollapsibleDemo } from './Collapsible/stitches';
 export { default as ContextMenuDemo } from './ContextMenu/stitches';
 export { default as DialogDemo } from './Dialog/stitches';
