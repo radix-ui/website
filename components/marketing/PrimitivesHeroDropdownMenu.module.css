@@ -1,0 +1,62 @@
+.Arrow {
+  fill: var(--color-panel-solid);
+}
+
+.ContentWrapper {
+  /* The default `position: fixed` is wobbly when scrolling with Mac touchpads,
+  which is OK when using components for real, but looks awkward in the demos.
+  `position: absolute` stays put as you scroll. */
+  & [data-radix-popper-content-wrapper] {
+    position: absolute !important;
+  }
+}
+
+.Content,
+.SubContent {
+  background-color: var(--color-panel-solid);
+  border-radius: var(--radius-3);
+  padding: var(--space-1);
+  box-shadow: 0 0 0 1px var(--gray-a3), var(--shadow-4);
+}
+
+.SubContent {
+  margin-top: calc(var(--space-1) * -1);
+}
+
+.Separator {
+  height: 1px;
+  background-color: var(--gray-a4);
+  margin: var(--space-1);
+  margin-left: 20px;
+}
+
+.Item,
+.CheckboxItem,
+.SubTrigger {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-1);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  cursor: default;
+  user-select: none;
+  white-space: nowrap;
+  height: var(--space-5);
+  color: var(--gray-12);
+  min-width: 90px;
+  padding-left: 20px;
+  padding-right: var(--space-4);
+  border-radius: var(--radius-2);
+
+  &[data-state='open'] {
+    background-color: var(--gray-a3);
+  }
+
+  /* &:active for touch devices */
+  &[data-highlighted],
+  &:active {
+    outline: 0;
+    background-color: var(--gray-12);
+    color: var(--color-background);
+  }
+}
