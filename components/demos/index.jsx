@@ -1,4 +1,4 @@
-export { default as AccordionDemo } from './Accordion/stitches';
+export { default as AccordionDemo } from './Accordion/css-modules';
 export { default as AlertDialogDemo } from './AlertDialog/stitches';
 export { default as AspectRatioDemo } from './AspectRatio/stitches';
 export { default as AvatarDemo } from './Avatar/stitches';
