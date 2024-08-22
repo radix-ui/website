@@ -1,0 +1,8 @@
+.ContentWrapper {
+  /* The default `position: fixed` is wobbly when scrolling with Mac touchpads,
+   * which is OK when using components for real, but looks awkward in the demos.
+   * `position: absolute` stays put as you scroll. */
+  & [data-radix-popper-content-wrapper] {
+    position: absolute !important;
+  }
+}

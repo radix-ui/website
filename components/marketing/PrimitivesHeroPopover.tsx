@@ -1,18 +1,12 @@
 import React from 'react';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
-import { styled } from '@utils/stitches';
+import { styled } from '@utils/css';
 import { PrimitivesHeroButton } from '@components/marketing/PrimitivesHeroButton';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import { Flex, IconButton, Text, TextField, Grid, Box } from '@radix-ui/themes';
+import styles from './PrimitivesHeroPopover.module.css';
 
-const PopoverContentWrapper = styled('div', {
-  // The default `position: fixed` is wobbly when scrolling with Mac touchpads,
-  // which is OK when using components for real, but looks awkward in the demos.
-  // `position: absolute` stays put as you scroll.
-  '& [data-radix-popper-content-wrapper]': {
-    position: 'absolute !important',
-  },
-});
+const PopoverContentWrapper = styled('div', styles.ContentWrapper);
 
 export function PrimitivesHeroPopover() {
   // We prevent the initial auto focus because it's a demo rather than a real UI,
