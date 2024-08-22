@@ -21,7 +21,8 @@ export function styled<Comp extends React.ComponentType | keyof JSX.IntrinsicEle
   if (typeof Component === 'string') {
     wrapped.displayName = `Styled${capitalize(Component)}`;
   } else {
-    wrapped.displayName = `Styled${Component.displayName || Component.name || 'Component'}`;
+    const name = Component.displayName || Component.name || 'Component';
+    wrapped.displayName = name.startsWith('Styled') ? name : `Styled${name}`;
   }
   return wrapped;
 }
