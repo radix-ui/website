@@ -18,7 +18,7 @@ export { default as RadioGroupDemo } from './RadioGroup/css-modules';
 export { default as ScrollAreaDemo } from './ScrollArea/css-modules';
 export { default as SelectDemo } from './Select/css-modules';
 export { default as SeparatorDemo } from './Separator/css-modules';
-export { default as SliderDemo } from './Slider/stitches';
+export { default as SliderDemo } from './Slider/css-modules';
 export { default as SwitchDemo } from './Switch/stitches';
 export { default as TabsDemo } from './Tabs/stitches';
 export { default as ToastDemo } from './Toast/stitches';
