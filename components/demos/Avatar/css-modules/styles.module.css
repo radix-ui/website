@@ -1,4 +1,4 @@
-.AvatarRoot {
+.Root {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -11,14 +11,14 @@
   background-color: var(--black-a3);
 }
 
-.AvatarImage {
+.Image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: inherit;
 }
 
-.AvatarFallback {
+.Fallback {
   width: 100%;
   height: 100%;
   display: flex;

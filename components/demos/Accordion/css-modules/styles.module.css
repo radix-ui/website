@@ -1,11 +1,11 @@
-.AccordionRoot {
+.Root {
   border-radius: 6px;
   width: 300px;
   background-color: var(--mauve-6);
   box-shadow: 0 2px 10px var(--black-a4);
 }
 
-.AccordionItem {
+.Item {
   overflow: hidden;
   margin-top: 1px;
   &:first-child {
@@ -26,12 +26,12 @@
   }
 }
 
-.AccordionHeader {
+.Header {
   all: unset;
   display: flex;
 }
 
-.AccordionTrigger {
+.Trigger {
   all: unset;
   font-family: inherit;
   background-color: transparent;
@@ -51,7 +51,7 @@
   }
 }
 
-.AccordionContent {
+.Content {
   overflow: hidden;
   font-size: 15px;
   color: var(--mauve-11);
@@ -64,14 +64,14 @@
   }
 }
 
-.AccordionContentText {
+.ContentText {
   padding: 15px 20px;
 }
 
-.AccordionChevron {
+.Chevron {
   color: var(--violet-10);
   transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
-  .AccordionTrigger[data-state='open'] > & {
+  .Trigger[data-state='open'] > & {
     transform: rotate(180deg);
   }
 }

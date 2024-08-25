@@ -1,4 +1,4 @@
-.CheckboxRoot {
+.Root {
   all: unset;
   background-color: white;
   width: 25px;
@@ -17,7 +17,7 @@
   }
 }
 
-.CheckboxIndicator {
+.Indicator {
   color: var(--violet-11);
 }
 

@@ -1,11 +1,11 @@
-.AlertDialogOverlay {
+.Overlay {
   background-color: var(--black-a9);
   position: fixed;
   inset: 0;
   animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.AlertDialogContent {
+.Content {
   background-color: white;
   border-radius: 6px;
   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
@@ -23,14 +23,14 @@
   }
 }
 
-.AlertDialogTitle {
+.Title {
   margin: 0;
   color: var(--mauve-12);
   font-size: 17px;
   font-weight: 500;
 }
 
-.AlertDialogDescription {
+.Description {
   margin-bottom: 20px;
   color: var(--mauve-11);
   font-size: 15px;

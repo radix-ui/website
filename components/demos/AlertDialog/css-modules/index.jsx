@@ -3,17 +3,15 @@ import * as AlertDialog from '@radix-ui/react-alert-dialog';
 import styles from './styles.module.css';
 
 const AlertDialogDemo = () => (
-  <AlertDialog.Root className={styles.AlertDialogRoot}>
+  <AlertDialog.Root className={styles.Root}>
     <AlertDialog.Trigger asChild>
       <button className={`${styles.Button} violet`}>Delete account</button>
     </AlertDialog.Trigger>
     <AlertDialog.Portal>
-      <AlertDialog.Overlay className={styles.AlertDialogOverlay} />
-      <AlertDialog.Content className={styles.AlertDialogContent}>
-        <AlertDialog.Title className={styles.AlertDialogTitle}>
-          Are you absolutely sure?
-        </AlertDialog.Title>
-        <AlertDialog.Description className={styles.AlertDialogDescription}>
+      <AlertDialog.Overlay className={styles.Overlay} />
+      <AlertDialog.Content className={styles.Content}>
+        <AlertDialog.Title className={styles.Title}>Are you absolutely sure?</AlertDialog.Title>
+        <AlertDialog.Description className={styles.Description}>
           This action cannot be undone. This will permanently delete your account and remove your
           data from our servers.
         </AlertDialog.Description>

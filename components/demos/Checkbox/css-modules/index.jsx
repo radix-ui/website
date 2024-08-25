@@ -6,8 +6,8 @@ import styles from './styles.module.css';
 const CheckboxDemo = () => (
   <form>
     <div style={{ display: 'flex', alignItems: 'center' }}>
-      <Checkbox.Root className={styles.CheckboxRoot} defaultChecked id="c1">
-        <Checkbox.Indicator className={styles.CheckboxIndicator}>
+      <Checkbox.Root className={styles.Root} defaultChecked id="c1">
+        <Checkbox.Indicator className={styles.Indicator}>
           <CheckIcon />
         </Checkbox.Indicator>
       </Checkbox.Root>
