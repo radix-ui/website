@@ -16,7 +16,7 @@ export { default as PopoverDemo } from './Popover/css-modules';
 export { default as ProgressDemo } from './Progress/css-modules';
 export { default as RadioGroupDemo } from './RadioGroup/css-modules';
 export { default as ScrollAreaDemo } from './ScrollArea/css-modules';
-export { default as SelectDemo } from './Select/stitches';
+export { default as SelectDemo } from './Select/css-modules';
 export { default as SeparatorDemo } from './Separator/stitches';
 export { default as SliderDemo } from './Slider/stitches';
 export { default as SwitchDemo } from './Switch/stitches';
