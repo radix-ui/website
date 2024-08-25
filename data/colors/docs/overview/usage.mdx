@@ -51,55 +51,6 @@ Radix Colors provides the colors bundled as raw CSS files. You can import them d
   the `.dark` and `.dark-theme` classes.
 </Note>
 
-## Stitches
-
-```jsx
-import {
-  gray,
-  blue,
-  red,
-  green,
-  grayDark,
-  blueDark,
-  redDark,
-  greenDark,
-} from '@radix-ui/colors';
-
-// Spread the scales in your light and dark themes
-import { createStitches } from '@stitches/react';
-
-const { styled, createTheme } = createStitches({
-  theme: {
-    colors: {
-      ...gray,
-      ...blue,
-      ...red,
-      ...green,
-    },
-  },
-});
-
-const darkTheme = createTheme({
-  colors: {
-    ...grayDark,
-    ...blueDark,
-    ...redDark,
-    ...greenDark,
-  },
-});
-
-// Use the colors in your styles
-const Button = styled('button', {
-  backgroundColor: '$blue4',
-  color: '$blue11',
-  borderColor: '$blue7',
-  '&:hover': {
-    backgroundColor: '$blue5',
-    borderColor: '$blue8',
-  },
-});
-```
-
 ## styled-components
 
 ```js
@@ -187,8 +138,8 @@ import {
   blueDark,
   redDark,
   greenDark,
-} from '@radix-ui/colors'
-import { createTheme } from '@vanilla-extract/css'
+} from '@radix-ui/colors';
+import { createTheme } from '@vanilla-extract/css';
 
 export const [theme, vars] = createTheme({
   colors: {
@@ -197,7 +148,7 @@ export const [theme, vars] = createTheme({
     ...red,
     ...green,
   },
-})
+});
 
 export const darkTheme = createTheme(vars, {
   colors: {
@@ -206,7 +157,7 @@ export const darkTheme = createTheme(vars, {
     ...redDark,
     ...greenDark,
   },
-})
+});
 
 // Use the colors in your styles
 export const styles = {
@@ -214,12 +165,12 @@ export const styles = {
     backgroundColor: vars.colors.blue4,
     color: vars.colors.blue11,
     borderColor: vars.colors.blue7,
-    ":hover": {
+    ':hover': {
       backgroundColor: vars.colors.blue5,
       borderColor: vars.colors.blue8,
     },
   }),
-}
+};
 
 // Apply your theme to it
 export default function App() {
