@@ -20,7 +20,7 @@ export { default as SelectDemo } from './Select/css-modules';
 export { default as SeparatorDemo } from './Separator/css-modules';
 export { default as SliderDemo } from './Slider/css-modules';
 export { default as SwitchDemo } from './Switch/css-modules';
-export { default as TabsDemo } from './Tabs/stitches';
+export { default as TabsDemo } from './Tabs/css-modules';
 export { default as ToastDemo } from './Toast/stitches';
 export { default as ToggleDemo } from './Toggle/stitches';
 export { default as ToggleGroupDemo } from './ToggleGroup/stitches';
