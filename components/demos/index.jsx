@@ -25,7 +25,7 @@ export { default as ToastDemo } from './Toast/css-modules';
 export { default as ToggleDemo } from './Toggle/css-modules';
 export { default as ToggleGroupDemo } from './ToggleGroup/css-modules';
 export { default as ToolbarDemo } from './Toolbar/css-modules';
-export { default as TooltipDemo } from './Tooltip/stitches';
+export { default as TooltipDemo } from './Tooltip/css-modules';
 
 export { default as GettingStartedDemo } from './GettingStarted/css-modules';
 export * from './Colors';
