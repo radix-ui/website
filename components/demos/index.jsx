@@ -8,7 +8,7 @@ export { default as ContextMenuDemo } from './ContextMenu/css-modules';
 export { default as DialogDemo } from './Dialog/css-modules';
 export { default as DropdownMenuDemo } from './DropdownMenu/css-modules';
 export { default as FormDemo } from './Form/css-modules';
-export { default as HoverCardDemo } from './HoverCard/stitches';
+export { default as HoverCardDemo } from './HoverCard/css-modules';
 export { default as LabelDemo } from './Label/stitches';
 export { default as MenubarDemo } from './Menubar/stitches';
 export { default as NavigationMenuDemo } from './NavigationMenu/stitches';
