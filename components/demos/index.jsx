@@ -9,7 +9,7 @@ export { default as DialogDemo } from './Dialog/css-modules';
 export { default as DropdownMenuDemo } from './DropdownMenu/css-modules';
 export { default as FormDemo } from './Form/css-modules';
 export { default as HoverCardDemo } from './HoverCard/css-modules';
-export { default as LabelDemo } from './Label/stitches';
+export { default as LabelDemo } from './Label/css-modules';
 export { default as MenubarDemo } from './Menubar/stitches';
 export { default as NavigationMenuDemo } from './NavigationMenu/stitches';
 export { default as PopoverDemo } from './Popover/stitches';
