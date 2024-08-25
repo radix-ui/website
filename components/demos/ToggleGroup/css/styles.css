@@ -25,6 +25,7 @@ button {
   align-items: center;
   justify-content: center;
   margin-left: 1px;
+  user-select: none;
 }
 .ToggleGroupItem:first-child {
   margin-left: 0;
