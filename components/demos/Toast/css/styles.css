@@ -107,6 +107,7 @@ button {
   justify-content: center;
   border-radius: 4px;
   font-weight: 500;
+  user-select: none;
 }
 .Button.small {
   font-size: 12px;

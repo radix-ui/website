@@ -21,7 +21,7 @@ export { default as SeparatorDemo } from './Separator/css-modules';
 export { default as SliderDemo } from './Slider/css-modules';
 export { default as SwitchDemo } from './Switch/css-modules';
 export { default as TabsDemo } from './Tabs/css-modules';
-export { default as ToastDemo } from './Toast/stitches';
+export { default as ToastDemo } from './Toast/css-modules';
 export { default as ToggleDemo } from './Toggle/stitches';
 export { default as ToggleGroupDemo } from './ToggleGroup/stitches';
 export { default as ToolbarDemo } from './Toolbar/stitches';
