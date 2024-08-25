@@ -1,11 +1,5 @@
-@import '@radix-ui/colors/black-alpha.css';
-
-/* reset */
-button {
+.Root {
   all: unset;
-}
-
-.SwitchRoot {
   width: 42px;
   height: 25px;
   background-color: var(--black-a9);
@@ -21,7 +15,7 @@ button {
   }
 }
 
-.SwitchThumb {
+.Thumb {
   display: block;
   width: 21px;
   height: 21px;
