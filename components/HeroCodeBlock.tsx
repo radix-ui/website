@@ -216,10 +216,8 @@ const makeCodeSandboxParams = (
 
   switch (cssLib) {
     case 'css':
+    case 'css-modules':
       files = makeCssConfig(componentName, sources);
-      break;
-    case 'stitches':
-      files = makeStitchesConfig(componentName, sources);
       break;
     case 'tailwind':
       files = makeTailwindConfig(componentName, sources);

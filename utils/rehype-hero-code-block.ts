@@ -14,18 +14,12 @@ const rehypeHeroCodeBlock = () => (tree: UnistTree) => {
         node.children = [];
 
         SUPPORTED_CSS_LIBS.forEach((lib) => {
-          ['index.jsx', 'styles.css', 'tailwind.config.js'].forEach((file) => {
+          ['index.jsx', 'styles.css', 'styles.module.css', 'tailwind.config.js'].forEach((file) => {
             const filePath = `${process.cwd()}/components/demos/${folder}/${lib}/${file}`;
             if (fileExists(filePath)) {
               const extension = file.split('.').pop();
               const syntax = getSyntax(extension);
               let source = fs.readFileSync(path.join(filePath), 'utf8');
-
-              // We reference @utils/stitches in the original stitches demos to ensure
-              // styles are extracted in SSR when rendered to docs pages.
-              if (lib === 'stitches' && file === 'index.jsx') {
-                source = source.replace('@utils/stitches', '@stitches/react');
-              }
 
               node.children.push(
                 mdxElement({
