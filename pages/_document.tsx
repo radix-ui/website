@@ -1,6 +1,5 @@
 import React from 'react';
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
-import { getCssText } from '@utils/stitches';
 import { renderSnippet, gtagUrl } from '@utils/analytics';
 
 export default class Document extends NextDocument {
@@ -8,7 +7,6 @@ export default class Document extends NextDocument {
     return (
       <Html lang="en">
         <Head>
-          <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
           <link
             rel="preload"
             href="/fonts/AdobeTextPro-Regular.woff2"

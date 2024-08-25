@@ -27,7 +27,7 @@ const CollapsibleDemo = () => {
           <span className={styles.Text}>@radix-ui/colors</span>
         </div>
         <div className={styles.Repository}>
-          <span className={styles.Text}>@stitches/react</span>
+          <span className={styles.Text}>@radix-ui/themes</span>
         </div>
       </Collapsible.Content>
     </Collapsible.Root>
