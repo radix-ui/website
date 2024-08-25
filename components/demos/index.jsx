@@ -26,6 +26,6 @@ export { default as ToggleDemo } from './Toggle/stitches';
 export { default as ToggleGroupDemo } from './ToggleGroup/stitches';
 export { default as ToolbarDemo } from './Toolbar/stitches';
 export { default as TooltipDemo } from './Tooltip/stitches';
-//
-export { default as GettingStartedDemo } from './GettingStarted/stitches';
+
+export { default as GettingStartedDemo } from './GettingStarted/css-modules';
 export * from './Colors';
