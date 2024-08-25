@@ -1,8 +1,4 @@
-@import '@radix-ui/colors/black-alpha.css';
-@import '@radix-ui/colors/mauve.css';
-@import '@radix-ui/colors/violet.css';
-
-.ScrollAreaRoot {
+.Root {
   width: 200px;
   height: 225px;
   border-radius: 4px;
@@ -12,13 +8,13 @@
   --scrollbar-size: 10px;
 }
 
-.ScrollAreaViewport {
+.Viewport {
   width: 100%;
   height: 100%;
   border-radius: inherit;
 }
 
-.ScrollAreaScrollbar {
+.Scrollbar {
   display: flex;
   /* ensures no selection */
   user-select: none;
@@ -27,38 +23,39 @@
   padding: 2px;
   background: var(--black-a3);
   transition: background 160ms ease-out;
-}
-.ScrollAreaScrollbar:hover {
-  background: var(--black-a5);
-}
-.ScrollAreaScrollbar[data-orientation='vertical'] {
-  width: var(--scrollbar-size);
-}
-.ScrollAreaScrollbar[data-orientation='horizontal'] {
-  flex-direction: column;
-  height: var(--scrollbar-size);
+  &:hover {
+    background: var(--black-a5);
+  }
+  &[data-orientation='vertical'] {
+    width: var(--scrollbar-size);
+  }
+  &[data-orientation='horizontal'] {
+    flex-direction: column;
+    height: var(--scrollbar-size);
+  }
 }
 
-.ScrollAreaThumb {
+.Thumb {
   flex: 1;
   background: var(--mauve-10);
   border-radius: var(--scrollbar-size);
   position: relative;
-}
-/* increase target size for touch devices https://www.w3.org/WAI/WCAG21/Understanding/target-size.html */
-.ScrollAreaThumb::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  min-width: 44px;
-  min-height: 44px;
+
+  /* increase target size for touch devices https://www.w3.org/WAI/WCAG21/Understanding/target-size.html */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    min-width: 44px;
+    min-height: 44px;
+  }
 }
 
-.ScrollAreaCorner {
+.Corner {
   background: var(--black-a5);
 }
 
