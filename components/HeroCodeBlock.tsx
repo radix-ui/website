@@ -216,11 +216,14 @@ const makeCodeSandboxParams = (
 
   switch (cssLib) {
     case 'css':
-    case 'css-modules':
       files = makeCssConfig(componentName, sources);
+      break;
+    case 'css-modules':
+      files = makeCssModulesConfig(componentName, sources);
       break;
     case 'tailwind':
       files = makeTailwindConfig(componentName, sources);
+      break;
   }
 
   return getParameters({ files, template: 'node' });
@@ -294,6 +297,81 @@ svg {
     },
     'styles.css': {
       content: sources['styles.css'],
+      isBinary: false,
+    },
+  };
+
+  return files;
+};
+
+const makeCssModulesConfig = (componentName: string, sources: Record<string, string>) => {
+  const dependencies = {
+    react: 'latest',
+    'react-dom': 'latest',
+    '@radix-ui/colors': 'latest',
+    '@radix-ui/react-icons': 'latest',
+    [`@radix-ui/react-${componentName}`]: 'latest',
+    classnames: 'latest',
+  };
+
+  const devDependencies = {
+    vite: 'latest',
+    '@vitejs/plugin-react': 'latest',
+  };
+
+  const files = {
+    'package.json': {
+      content: {
+        scripts: { start: 'vite' },
+        dependencies,
+        devDependencies,
+      },
+      isBinary: false,
+    },
+    ...viteConfig,
+    'App.jsx': {
+      content: sources['index.jsx'],
+      isBinary: false,
+    },
+    'index.jsx': {
+      content: `import { createRoot } from 'react-dom/client';
+import App from './App';
+import './global.css';
+
+const container = document.getElementById('root');
+const root = createRoot(container);
+
+root.render(<App />);`,
+      isBinary: false,
+    },
+    'global.css': {
+      content: `* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(330deg, hsl(272, 53%, 50%) 0%, hsl(226, 68%, 56%) 100%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 120px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+svg {
+  display: block;
+}
+`,
+      isBinary: false,
+    },
+    'styles.module.css': {
+      content: sources['styles.module.css'],
       isBinary: false,
     },
   };
