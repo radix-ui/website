@@ -121,9 +121,9 @@ function App(props: AppProps) {
         attribute="class"
         value={{ light: 'light-theme', dark: 'dark-theme' }}
         defaultTheme="system"
-        // @ts-ignore
-        children={<Pages {...props} />}
-      />
+      >
+        <Pages {...props} />
+      </ThemeProvider>
     </CssLibPreferenceProvider>
   );
 }

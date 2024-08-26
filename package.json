@@ -65,7 +65,7 @@
     "lodash.debounce": "^4.0.8",
     "mdx-bundler": "^10.0.2",
     "next": "^14.2.6",
-    "next-themes": "^0.0.14",
+    "next-themes": "^0.3.0",
     "node-fetch": "^3.3.2",
     "parse-numeric-range": "^1.3.0",
     "postcss": "^8.4.41",
