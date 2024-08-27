@@ -1187,7 +1187,7 @@ interface ToDoList {
 
 const ToDoList = ({ focusable, items, onItemsChange }: ToDoList) => {
   const tabIndex = focusable ? undefined : -1;
-  const itemsContent = {
+  const itemsContent: Record<string, React.ReactElement> = {
     a: (
       <span>
         Respond to comment{' '}

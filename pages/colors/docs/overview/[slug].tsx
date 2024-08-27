@@ -9,6 +9,7 @@ import { UseCasesTable } from '@components/UseCasesTable';
 import { CopyIcon } from '@radix-ui/react-icons';
 
 import type { Frontmatter } from 'types/frontmatter';
+import { GetStaticPropsContext } from 'next';
 
 type Doc = {
   frontmatter: Frontmatter;
@@ -46,7 +47,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps(context) {
-  const { frontmatter, code } = await getMdxBySlug('colors/docs/overview/', context.params.slug);
+export async function getStaticProps(context: GetStaticPropsContext<{ slug: string }>) {
+  const { frontmatter, code } = await getMdxBySlug('colors/docs/overview/', context.params!.slug);
   return { props: { frontmatter, code } };
 }

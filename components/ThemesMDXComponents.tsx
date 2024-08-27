@@ -15,7 +15,7 @@ export const ThemesMDXComponents = {
   ...icons,
   ThemesUnofficialFigmaLibrary,
   ThemesUnofficialTailwindPlugin,
-  ThemesPropsTable: (props) => (
+  ThemesPropsTable: (props: any) => (
     <Box mt="4" mb="6">
       <ThemesPropsTable {...props} />
     </Box>

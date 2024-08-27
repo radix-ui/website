@@ -25,6 +25,7 @@ import {
 import { getMDXComponent } from 'mdx-bundler/client';
 import NextLink from 'next/link';
 import React from 'react';
+import { GetStaticPropsContext } from 'next';
 
 type CaseStudyPage = {
   frontmatter: {
@@ -158,8 +159,11 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps(context) {
-  const { frontmatter, code } = await getMdxBySlug('primitives/case-studies/', context.params.slug);
+export async function getStaticProps(context: GetStaticPropsContext<{ slug: string }>) {
+  const { frontmatter, code } = await getMdxBySlug(
+    'primitives/case-studies/',
+    context.params!.slug,
+  );
   const frontmatters = getAllFrontmatter('primitives/case-studies');
   const thisIndex = frontmatters.findIndex((data) => data.slug.includes(frontmatter.slug));
   const nextIndex = thisIndex + 1 < frontmatters.length ? thisIndex + 1 : 0;

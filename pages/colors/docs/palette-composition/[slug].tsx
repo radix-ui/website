@@ -18,6 +18,7 @@ import { ColorGrayPairsComplementary } from '@components/ColorGrayPairsComplemen
 import { PlusIcon } from '@radix-ui/react-icons';
 
 import type { Frontmatter } from 'types/frontmatter';
+import { GetStaticPropsContext } from 'next';
 
 type Doc = {
   frontmatter: Frontmatter;
@@ -73,10 +74,10 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps(context) {
+export async function getStaticProps(context: GetStaticPropsContext<{ slug: string }>) {
   const { frontmatter, code } = await getMdxBySlug(
     'colors/docs/palette-composition/',
-    context.params.slug
+    context.params!.slug,
   );
   return { props: { frontmatter, code } };
 }

@@ -87,7 +87,7 @@ const MagicCurtainItem = ({
       [...items, item].sort((a, b) => {
         // Sort items according to their order in the DOM
         return a.ref.current!.compareDocumentPosition(b.ref.current!) & 4 ? -1 : 1;
-      })
+      }),
     );
 
     return () => {
@@ -162,7 +162,10 @@ const MagicCurtainControls = ({ images = [] }: MagicCurtainControlsProps) => {
           // By manually flushing we ensure they sync within a frame, removing the flash.
           ReactDOM.flushSync(() => {
             itemToHide?.setVisibility('hidden');
-            event.currentTarget!.removeEventListener('animationend', handleAnimationEnd);
+            (event.currentTarget as HTMLElement)!.removeEventListener(
+              'animationend',
+              handleAnimationEnd,
+            );
 
             // Run the rescheduled animation callback if it’s there
             upcomingAnimationCallback.current?.();
@@ -174,7 +177,7 @@ const MagicCurtainControls = ({ images = [] }: MagicCurtainControlsProps) => {
       itemToHide?.setVisibility('animating-out');
       itemToHide?.ref.current?.addEventListener('animationend', handleAnimationEnd);
     },
-    [context.items]
+    [context.items],
   );
 
   return (
@@ -215,7 +218,7 @@ const MagicCurtainControls = ({ images = [] }: MagicCurtainControlsProps) => {
               // Wait a tick and reset the control index if it wasn't changed by anything else
               setTimeout(() => {
                 context.setHoveredControl((current) =>
-                  current === index.toString() ? '' : current
+                  current === index.toString() ? '' : current,
                 );
               });
             }}
@@ -234,7 +237,7 @@ const MagicCurtainControls = ({ images = [] }: MagicCurtainControlsProps) => {
                 // Wait a tick and reset the control index if it wasn't changed by anything else
                 setTimeout(() => {
                   context.setFocusedControl((current) =>
-                    current === index.toString() ? '' : current
+                    current === index.toString() ? '' : current,
                   );
                 });
               }}
@@ -308,7 +311,7 @@ const MagicCurtainControls = ({ images = [] }: MagicCurtainControlsProps) => {
                     // Wait a tick and reset the control index if it wasn't changed by anything else
                     setTimeout(() => {
                       context.setHoveredControl((current) =>
-                        current === index.toString() ? '' : current
+                        current === index.toString() ? '' : current,
                       );
                     });
                   }}

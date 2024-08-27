@@ -24,7 +24,7 @@ interface UseLocalStorageOptions<T> {
 export function useLocalStorage<T>(
   key: string,
   initialValue: T | (() => T),
-  options: UseLocalStorageOptions<T> = {}
+  options: UseLocalStorageOptions<T> = {},
 ): [T, Dispatch<SetStateAction<T>>, () => void] {
   const { initializeWithValue = false } = options;
 
@@ -32,7 +32,7 @@ export function useLocalStorage<T>(
     (value) => {
       return options.serializer ? options.serializer(value) : JSON.stringify(value);
     },
-    [options]
+    [options],
   );
 
   const deserializer = React.useCallback<(value: string) => T>(
@@ -42,7 +42,7 @@ export function useLocalStorage<T>(
       }
       // Support 'undefined' as a value
       if (value === 'undefined') {
-        return (undefined as unknown) as T;
+        return undefined as unknown as T;
       }
 
       const defaultValue = initialValue instanceof Function ? initialValue() : initialValue;
@@ -56,7 +56,7 @@ export function useLocalStorage<T>(
 
       return parsed as T;
     },
-    [options, initialValue]
+    [options, initialValue],
   );
 
   // Get from local storage then
@@ -92,7 +92,7 @@ export function useLocalStorage<T>(
     // Prevent build error "window is undefined" but keeps working
     if (!canUseDOM) {
       console.warn(
-        `Tried setting localStorage key “${key}” even though environment is not a client`
+        `Tried setting localStorage key “${key}” even though environment is not a client`,
       );
       return;
     }
@@ -118,7 +118,7 @@ export function useLocalStorage<T>(
     // Prevent build error "window is undefined" but keeps working
     if (!canUseDOM) {
       console.warn(
-        `Tried removing localStorage key “${key}” even though environment is not a client`
+        `Tried removing localStorage key “${key}” even though environment is not a client`,
       );
       return;
     }
@@ -140,25 +140,30 @@ export function useLocalStorage<T>(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key]);
 
-  const handleStorageChange = React.useCallback(
+  const handleStorageChange = React.useCallback<{
+    (event: CustomEvent): void;
+    (event: StorageEvent): void;
+  }>(
     (event: StorageEvent | CustomEvent) => {
       if ((event as StorageEvent).key && (event as StorageEvent).key !== key) {
         return;
       }
       setStoredValue(readValue());
     },
-    [key, readValue]
+    [key, readValue],
   );
 
   React.useEffect(() => {
     // Define the listening target
 
     window.addEventListener('storage', handleStorageChange);
+    // @ts-expect-error
     window.addEventListener('local-storage', handleStorageChange);
 
     // Remove event listener on cleanup
     return () => {
       window.removeEventListener('storage', handleStorageChange);
+      // @ts-expect-error
       window.removeEventListener('local-storage', handleStorageChange);
     };
   }, [handleStorageChange]);

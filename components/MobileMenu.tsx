@@ -11,7 +11,7 @@ const [MenuProvider, useMenuContext] = createContext<{
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }>('MobileMenu');
 
-export const MobileMenuProvider = ({ children }) => {
+export const MobileMenuProvider = ({ children }: { children: React.ReactNode }) => {
   const [open, setOpen] = React.useState(false);
 
   const router = useRouter();
@@ -55,7 +55,7 @@ export const MobileMenuProvider = ({ children }) => {
 
 export const useMobileMenuContext = () => useMenuContext('MobileMenu');
 
-export const MobileMenu = ({ children }) => {
+export const MobileMenu = ({ children }: { children: React.ReactNode }) => {
   const mobileMenu = useMobileMenuContext();
 
   if (!mobileMenu.open) {

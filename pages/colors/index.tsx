@@ -136,45 +136,47 @@ export default function ColorsHome() {
               <ColorStepLabel>11</ColorStepLabel>
               <ColorStepLabel>12</ColorStepLabel>
 
-              {[
-                'gray',
-                'mauve',
-                'slate',
-                'sage',
-                'olive',
-                'sand',
-                'tomato',
-                'red',
-                'ruby',
-                'crimson',
-                'pink',
-                'plum',
-                'purple',
-                'violet',
-                'iris',
-                'indigo',
-                'blue',
-                'cyan',
-                'teal',
-                'jade',
-                'green',
-                'grass',
-                'bronze',
-                'gold',
-                'brown',
-                'orange',
-                'amber',
-                'yellow',
-                'lime',
-                'mint',
-                'sky',
-              ].map((scale) => (
+              {(
+                [
+                  'gray',
+                  'mauve',
+                  'slate',
+                  'sage',
+                  'olive',
+                  'sand',
+                  'tomato',
+                  'red',
+                  'ruby',
+                  'crimson',
+                  'pink',
+                  'plum',
+                  'purple',
+                  'violet',
+                  'iris',
+                  'indigo',
+                  'blue',
+                  'cyan',
+                  'teal',
+                  'jade',
+                  'green',
+                  'grass',
+                  'bronze',
+                  'gold',
+                  'brown',
+                  'orange',
+                  'amber',
+                  'yellow',
+                  'lime',
+                  'mint',
+                  'sky',
+                ] as const
+              ).map((scale) => (
                 <React.Fragment key={scale}>
                   <Text color="gray" size="2">
                     {scale.charAt(0).toUpperCase() + scale.slice(1)}
                   </Text>
                   {Array.from({ length: 12 }, (_, i) => i + 1).map((step) => (
-                    <Swatch key={step} scale={scale} step={step.toString()} />
+                    <Swatch key={step} scale={scale} step={step.toString() as '1'} />
                   ))}
                 </React.Fragment>
               ))}
@@ -193,13 +195,13 @@ export default function ColorsHome() {
                 <ColorStepLabel key={step}>{step}</ColorStepLabel>
               ))}
 
-              {['black', 'white'].map((scale) => (
+              {(['black', 'white'] as const).map((scale) => (
                 <React.Fragment key={scale}>
                   <Text color="gray" size="2">
                     {scale.charAt(0).toUpperCase() + scale.slice(1)}
                   </Text>
                   {Array.from({ length: 12 }, (_, i) => i + 1).map((step) => (
-                    <Swatch key={step} scale={scale} step={step.toString()} />
+                    <Swatch key={step} scale={scale} step={step.toString() as '1'} />
                   ))}
                 </React.Fragment>
               ))}

@@ -8,6 +8,7 @@ import { getAllFrontmatter, getAllVersionsFromPath, getMdxBySlug } from '@utils/
 import { getPackageData, formatBytes } from '@utils/bundlephobia';
 
 import type { Frontmatter } from 'types/frontmatter';
+import type { GetStaticPropsContext } from 'next';
 
 type Doc = {
   frontmatter: Frontmatter;
@@ -56,12 +57,11 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps(context) {
-  const { frontmatter, code } = await getMdxBySlug(
-    'primitives/docs/utilities/',
-    context.params.slug.join('/')
-  );
-  const [componentName, componentVersion] = context.params.slug;
+export async function getStaticProps(context: GetStaticPropsContext<{ slug: string[] }>) {
+  const slugs = context.params?.slug ? context.params.slug : [];
+  const slug = slugs.join('/');
+  const { frontmatter, code } = await getMdxBySlug('primitives/docs/utilities/', slug);
+  const [componentName, componentVersion] = slugs;
 
   const packageData = frontmatter.name
     ? await getPackageData(frontmatter.name, componentVersion).catch(() => null)

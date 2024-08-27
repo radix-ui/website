@@ -29,6 +29,7 @@ import {
   Text,
   TextField,
   Theme,
+  type ThemeProps,
 } from '@radix-ui/themes';
 import { Label } from '@radix-ui/react-label';
 import { allPeople } from './people';
@@ -40,7 +41,11 @@ import { accentColors, themePropDefs } from '@utils/themes/props';
 import { TabNavDemo } from '@components/tab-nav-demo';
 import styles from './ThemesDocsAssets.module.css';
 
-export function ThemesPanelCardExample({ panelBackground }) {
+export function ThemesPanelCardExample({
+  panelBackground,
+}: {
+  panelBackground: ThemeProps['panelBackground'];
+}) {
   const passwordFieldId = 'example-password-field' + React.useId();
   return (
     <Theme panelBackground={panelBackground} asChild>
@@ -94,7 +99,11 @@ export function ThemesPanelCardExample({ panelBackground }) {
   );
 }
 
-export function ThemesPanelTableExample({ panelBackground }) {
+export function ThemesPanelTableExample({
+  panelBackground,
+}: {
+  panelBackground: ThemeProps['panelBackground'];
+}) {
   return (
     <Card>
       <Inset>
@@ -687,7 +696,7 @@ export function ThemesAllColors() {
                 borderRadius: '1px',
               }}
             />
-          ))
+          )),
         )}
       </Grid>
 

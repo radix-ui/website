@@ -55,7 +55,7 @@ function DemoContainer({
 
 const FocusArea = React.forwardRef<HTMLDivElement, React.ComponentProps<'div'>>(function FocusArea(
   { children, onKeyDown, ...props },
-  forwardedRef
+  forwardedRef,
 ) {
   const ownRef = React.useRef<HTMLDivElement | null>(null);
   const composedRef = useComposedRefs(ownRef, forwardedRef);
@@ -152,7 +152,7 @@ export const PrimitivesHero = () => {
       if (event.key === 'Tab' && event.shiftKey === false) {
         const selector = 'a, button, input, select, textarea, [data-focus-area-exit]';
         const elements = Array.from(document.querySelectorAll<HTMLElement>(selector)).filter(
-          (element) => element.tabIndex !== -1 || element.hasAttribute('data-focus-area-exit')
+          (element) => element.tabIndex !== -1 || element.hasAttribute('data-focus-area-exit'),
         );
 
         // Find last exit guard
@@ -172,7 +172,7 @@ export const PrimitivesHero = () => {
       if (event.key === 'Tab' && event.shiftKey) {
         const selector = 'a, button, input, select, textarea, [data-focus-area-entry]';
         const elements = Array.from(document.querySelectorAll<HTMLElement>(selector)).filter(
-          (element) => element.tabIndex !== -1 || element.hasAttribute('data-focus-area-entry')
+          (element) => element.tabIndex !== -1 || element.hasAttribute('data-focus-area-entry'),
         );
 
         // Find first entry guard
@@ -203,12 +203,12 @@ export const PrimitivesHero = () => {
           (element) =>
             element.tabIndex !== -1 ||
             element === event.target ||
-            element.hasAttribute('data-focus-area-entry')
+            element.hasAttribute('data-focus-area-entry'),
         );
 
         // Find first entry guard
         const firstEntryIndex = elements.findIndex((el) =>
-          el.hasAttribute('data-focus-area-entry')
+          el.hasAttribute('data-focus-area-entry'),
         );
 
         if (elements.indexOf(event.target) + 1 === firstEntryIndex) {
@@ -230,7 +230,7 @@ export const PrimitivesHero = () => {
           (element) =>
             element.tabIndex !== -1 ||
             element === event.target ||
-            element.hasAttribute('data-focus-area-exit')
+            element.hasAttribute('data-focus-area-exit'),
         );
 
         // Find last exit guard
@@ -298,6 +298,7 @@ export const PrimitivesHero = () => {
                   position: 'relative',
 
                   // Remove the actual margin
+                  // @ts-expect-error
                   '--margin-left-override': 0,
 
                   // Move the responsive margin here

@@ -231,7 +231,7 @@ type ThemesPropsDef = Record<
   }
 >;
 
-function applyResponsive(value: string | undefined, isResponsive) {
+function applyResponsive(value: string | undefined, isResponsive?: boolean) {
   if (value && isResponsive) {
     return `Responsive<${value}>`;
   }
@@ -239,7 +239,7 @@ function applyResponsive(value: string | undefined, isResponsive) {
   return value;
 }
 
-function applyStringUnion(value: string | undefined, isEnumString) {
+function applyStringUnion(value: string | undefined, isEnumString?: boolean) {
   if (value && isEnumString) {
     return `Union<string, ${value}>`;
   }
@@ -249,17 +249,20 @@ function applyStringUnion(value: string | undefined, isEnumString) {
 
 const MAX_TYPE_LENGTH = 60;
 
-function formatDefinitions(definitions: Record<ComponentName, ThemesPropsDef>) {
+function formatDefinitions(
+  definitions: Record<ComponentName, ThemesPropsDef>,
+): Record<string, any> {
   const formattedProps = {};
 
   Object.keys(definitions).forEach((componentName) => {
-    const propsDef = definitions[componentName] as ThemesPropsDef;
+    const propsDef = (definitions as any)[componentName] as ThemesPropsDef;
 
-    formattedProps[componentName] = Object.keys(propsDef).map((key) => {
+    (formattedProps as any)[componentName] = Object.keys(propsDef).map((key) => {
       const item = propsDef[key];
       const propName = key;
       const description =
-        uniqueDescriptions[componentName]?.[propName] || commonDescriptions[propName];
+        (uniqueDescriptions as any)[componentName]?.[propName] ||
+        (commonDescriptions as any)[propName];
 
       let value = applyStringUnion(formatValues(item.values), item.type === 'enum | string');
       value = applyResponsive(value, item.responsive);

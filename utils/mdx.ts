@@ -1,9 +1,11 @@
 import fs from 'fs';
 import path from 'path';
+// @ts-expect-error
 import glob from 'glob';
 import matter from 'gray-matter';
 import compareVersions from 'compare-versions';
 import { bundleMDX } from 'mdx-bundler';
+// @ts-expect-error
 import remarkSlug from 'remark-slug';
 import rehypeHeroCodeBlock from '@utils/rehype-hero-code-block';
 import rehypeMetaAttribute from '@utils/rehype-meta-attribute.mjs';
@@ -15,9 +17,9 @@ const ROOT_PATH = process.cwd();
 export const DATA_PATH = path.join(ROOT_PATH, 'data');
 
 // the front matter and content of all mdx files based on `docsPaths`
-export const getAllFrontmatter = (fromPath) => {
+export const getAllFrontmatter = (fromPath: string) => {
   const PATH = path.join(DATA_PATH, fromPath);
-  const paths = glob.sync(`${PATH}/**/*.mdx`);
+  const paths = glob.sync(`${PATH}/**/*.mdx`) as string[];
 
   return paths
     .map((filePath) => {
@@ -29,10 +31,10 @@ export const getAllFrontmatter = (fromPath) => {
         slug: filePath.replace(`${DATA_PATH}/`, '').replace('.mdx', ''),
       } as Frontmatter;
     })
-    .sort((a, b) => Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)));
+    .sort((a, b) => Number(new Date(b.publishedAt!)) - Number(new Date(a.publishedAt!)));
 };
 
-export const getMdxBySlug = async (basePath, slug) => {
+export const getMdxBySlug = async (basePath: string, slug: string) => {
   const source = fs.readFileSync(path.join(DATA_PATH, basePath, `${slug}.mdx`), 'utf8');
   const { frontmatter, code } = await bundleMDX({
     source: source,
@@ -58,7 +60,7 @@ export const getMdxBySlug = async (basePath, slug) => {
   };
 };
 
-export function getAllVersionsFromPath(fromPath) {
+export function getAllVersionsFromPath(fromPath: string) {
   const PATH = path.join(DATA_PATH, fromPath);
   if (!fs.existsSync(PATH)) return [];
   return fs

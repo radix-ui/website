@@ -115,6 +115,6 @@ export type RouteProps = {
   pages: PageProps[];
 };
 
-export const allThemesRoutes = themesRoutes.reduce((acc, curr: RouteProps) => {
+export const allThemesRoutes = themesRoutes.reduce<PageProps[]>((acc, curr) => {
   return [...acc, ...curr.pages];
 }, []);

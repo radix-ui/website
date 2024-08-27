@@ -9,17 +9,17 @@ import smoothscroll from 'smoothscroll-polyfill';
 
 const [CarouselProvider, useCarouselContext] = createContext<{
   _: any;
-  slideListRef: React.RefObject<HTMLElement>;
+  slideListRef: React.RefObject<HTMLDivElement>;
   onNextClick(): void;
   onPrevClick(): void;
   nextDisabled: boolean;
   prevDisabled: boolean;
 }>('Carousel');
 
-export const Carousel = (props) => {
+export const Carousel = (props: { children: React.ReactNode; [key: string]: any }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const { children, ...carouselProps } = props;
-  const slideListRef = useRef<HTMLElement>(null);
+  const slideListRef = useRef<HTMLDivElement>(null);
   const [_, force] = useState({});
   const [nextDisabled, setNextDisabled] = useState(false);
   const [prevDisabled, setPrevDisabled] = useState(true);
@@ -127,7 +127,7 @@ export const Carousel = (props) => {
   );
 };
 
-export const CarouselSlideList = (props) => {
+export const CarouselSlideList = (props: React.ComponentProps<'div'>) => {
   const context = useCarouselContext('CarouselSlideList');
   const ref = React.useRef<React.ElementRef<'div'>>(null);
   const composedRefs = useComposedRefs(ref, context.slideListRef);
@@ -154,7 +154,7 @@ export const CarouselSlideList = (props) => {
       {...props}
       ref={composedRefs}
       data-state={dragStart ? 'dragging' : undefined}
-      onMouseDownCapture={composeEventHandlers(props.onMouseDownCapture, (event: MouseEvent) => {
+      onMouseDownCapture={composeEventHandlers(props.onMouseDownCapture, (event) => {
         if (event.target instanceof HTMLInputElement) {
           return;
         }
@@ -169,7 +169,7 @@ export const CarouselSlideList = (props) => {
           });
         }
       })}
-      onPointerDown={composeEventHandlers(props.onPointerDown, (event: PointerEvent) => {
+      onPointerDown={composeEventHandlers(props.onPointerDown, (event) => {
         if (event.target instanceof HTMLInputElement) {
           return;
         }
@@ -178,7 +178,7 @@ export const CarouselSlideList = (props) => {
         element.style.userSelect = 'none';
         element.setPointerCapture(event.pointerId);
       })}
-      onPointerUp={composeEventHandlers(props.onPointerUp, (event: PointerEvent) => {
+      onPointerUp={composeEventHandlers(props.onPointerUp, (event) => {
         if (event.target instanceof HTMLInputElement) {
           return;
         }
@@ -191,7 +191,11 @@ export const CarouselSlideList = (props) => {
   );
 };
 
-export const CarouselSlide = (props) => {
+export const CarouselSlide = (
+  props: React.ComponentProps<'div'> & {
+    as?: any;
+  },
+) => {
   const { as: Comp = 'div', ...slideProps } = props;
   const context = useCarouselContext('CarouselSlide');
   const ref = useRef<HTMLDivElement | null>(null);
@@ -201,7 +205,7 @@ export const CarouselSlide = (props) => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setIntersectionRatio(entry.intersectionRatio),
-      { root: context.slideListRef.current, threshold: [0, 0.5, 1] }
+      { root: context.slideListRef.current, threshold: [0, 0.5, 1] },
     );
     if (ref.current) {
       observer.observe(ref.current);
@@ -214,11 +218,11 @@ export const CarouselSlide = (props) => {
       {...slideProps}
       ref={ref}
       data-slide-intersection-ratio={intersectionRatio}
-      onDragStart={(event) => {
+      onDragStart={(event: React.DragEvent<HTMLDivElement>) => {
         event.preventDefault();
         isDraggingRef.current = true;
       }}
-      onClick={(event) => {
+      onClick={(event: React.MouseEvent<HTMLDivElement>) => {
         if (isDraggingRef.current) {
           event.preventDefault();
         }
@@ -227,7 +231,11 @@ export const CarouselSlide = (props) => {
   );
 };
 
-export const CarouselNext = (props) => {
+export const CarouselNext = (
+  props: React.ComponentProps<'button'> & {
+    as?: any;
+  },
+) => {
   const { as: Comp = 'button', ...nextProps } = props;
   const context = useCarouselContext('CarouselNext');
   return (
@@ -235,7 +243,11 @@ export const CarouselNext = (props) => {
   );
 };
 
-export const CarouselPrevious = (props) => {
+export const CarouselPrevious = (
+  props: React.ComponentProps<'button'> & {
+    as?: any;
+  },
+) => {
   const { as: Comp = 'button', ...prevProps } = props;
   const context = useCarouselContext('CarouselPrevious');
   return (

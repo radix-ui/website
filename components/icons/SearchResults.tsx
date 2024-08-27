@@ -108,7 +108,7 @@ export const SearchResults = ({ value }: SearchResultsProps) => {
 };
 
 // https://github.com/sindresorhus/escape-string-regexp/blob/main/index.js
-function escapeStringRegexp(string) {
+function escapeStringRegexp(string: string) {
   if (typeof string !== 'string') {
     throw new TypeError('Expected a string');
   }

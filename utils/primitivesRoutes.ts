@@ -80,6 +80,13 @@ export type RouteProps = {
   pages: PageProps[];
 };
 
-export const allPrimitivesRoutes = primitivesRoutes.reduce((acc, curr: RouteProps) => {
+export const allPrimitivesRoutes = primitivesRoutes.reduce<
+  {
+    title: string;
+    slug: string;
+    deprecated?: boolean;
+    preview?: boolean;
+  }[]
+>((acc, curr: RouteProps) => {
   return [...acc, ...curr.pages];
 }, []);

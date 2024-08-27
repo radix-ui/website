@@ -1,10 +1,14 @@
 import * as React from 'react';
 import { classNames } from './classNames';
 
-export function styled<Comp extends React.ComponentType | keyof JSX.IntrinsicElements, Ref = any>(
-  Component: Comp,
-  ...classes: string[]
-) {
+export function styled<
+  Comp extends
+    | React.ComponentType
+    | React.ForwardRefExoticComponent<any>
+    | React.MemoExoticComponent<any>
+    | keyof JSX.IntrinsicElements,
+  Ref = any,
+>(Component: Comp, ...classes: string[]) {
   const wrapped = React.forwardRef<Ref, React.ComponentProps<Comp>>(
     ({ children, ...props }: any, ref) => {
       return React.createElement(
@@ -14,9 +18,9 @@ export function styled<Comp extends React.ComponentType | keyof JSX.IntrinsicEle
           ref: ref,
           className: classNames(props.className, ...classes),
         },
-        children
+        children,
       );
-    }
+    },
   );
   if (typeof Component === 'string') {
     wrapped.displayName = `styled$({Component})`;

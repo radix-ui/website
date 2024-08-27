@@ -55,7 +55,7 @@ export const DeveloperExperienceSection = () => {
     const lastLineIsBelow = lastLine.offsetTop + lastLine.offsetHeight > codeBlockHeight - paddingY;
     const lastLineIsAbove = !lastLineIsBelow;
 
-    let translateY;
+    let translateY: number;
     if (codeFits && lastLineIsAbove) {
       translateY = 0;
     } else if (codeFits && lastLineIsBelow) {
@@ -76,7 +76,7 @@ export const DeveloperExperienceSection = () => {
     });
 
     requestAnimationFrame(
-      () => (codeInner.style.transform = `translate3d(0, ${-translateY}px, 0)`)
+      () => (codeInner.style.transform = `translate3d(0, ${-translateY}px, 0)`),
     );
   }, [activeLines]);
 

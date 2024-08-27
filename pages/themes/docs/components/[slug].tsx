@@ -10,6 +10,7 @@ import { QuickNav } from '@components/QuickNav';
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 
 import type { Frontmatter } from 'types/frontmatter';
+import { GetStaticPropsContext } from 'next';
 
 type Doc = {
   frontmatter: Frontmatter;
@@ -115,7 +116,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps(context) {
-  const { frontmatter, code } = await getMdxBySlug('themes/docs/components/', context.params.slug);
+export async function getStaticProps(context: GetStaticPropsContext<{ slug: string }>) {
+  const { frontmatter, code } = await getMdxBySlug('themes/docs/components/', context.params!.slug);
   return { props: { frontmatter, code } };
 }

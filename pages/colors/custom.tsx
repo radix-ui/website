@@ -141,7 +141,7 @@ export default function Page() {
         setCopied('');
       }, COPIED_TIMEOUT);
     },
-    [setCopied]
+    [setCopied],
   );
 
   const isHydrated = useIsHydrated();
@@ -939,7 +939,7 @@ const ToDoList = ({ items, onItemsChange }: ToDoList) => {
   );
 };
 
-const itemsContent = {
+const itemsContent: Record<string, React.ReactElement> = {
   a: (
     <span>
       Respond to comment{' '}

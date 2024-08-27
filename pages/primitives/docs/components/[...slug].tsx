@@ -7,6 +7,7 @@ import { OldVersionNote } from '@components/OldVersionNote';
 import { getAllFrontmatter, getAllVersionsFromPath, getMdxBySlug } from '@utils/mdx';
 import { getPackageData, formatBytes } from '@utils/bundlephobia';
 import type { Frontmatter } from 'types/frontmatter';
+import { GetStaticPropsContext } from 'next';
 
 type Doc = {
   frontmatter: Frontmatter;
@@ -33,7 +34,7 @@ export default function ComponentsDoc({ frontmatter, code }: Doc) {
           name={frontmatter.metaTitle}
           href={`/primitives/docs/components/${frontmatter.slug.replace(
             frontmatter.version ?? '',
-            ''
+            '',
           )}`}
         />
       )}
@@ -58,12 +59,12 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps(context) {
+export async function getStaticProps(context: GetStaticPropsContext<{ slug: string[] }>) {
   const { frontmatter, code } = await getMdxBySlug(
     'primitives/docs/components/',
-    context.params.slug.join('/')
+    context.params!.slug.join('/'),
   );
-  const [componentName, componentVersion] = context.params.slug;
+  const [componentName, componentVersion] = context.params!.slug;
 
   const packageData = frontmatter.name
     ? await getPackageData(frontmatter.name, componentVersion).catch(() => null)

@@ -36,10 +36,10 @@ export const HeroCodeBlock = ({
     .map((pre) => {
       if (pre && typeof pre === 'object' && 'props' in pre) {
         return {
-          id: pre.props.title,
-          title: pre.props.title,
-          cssLib: pre.props.cssLib,
-          children: React.Children.only(pre.props.children).props?.children,
+          id: pre.props.title as string,
+          title: pre.props.title as string,
+          cssLib: pre.props.cssLib as CssLib,
+          children: React.Children.only(pre.props.children).props?.children as React.ReactNode,
           source: pre.props.source,
         };
       }
@@ -212,7 +212,7 @@ const onlyUnique = <T,>(value: T, index: number, self: T[]) => self.indexOf(valu
 const makeCodeSandboxParams = (
   componentName: string,
   sources: Record<string, string>,
-  cssLib: CssLib
+  cssLib: CssLib,
 ) => {
   let files = {};
 
