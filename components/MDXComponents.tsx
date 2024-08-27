@@ -128,7 +128,7 @@ export const components = {
   pre: ({ children }) => (
     <CodeBlock.Root my="5">
       {children.props.live && (
-        <CodeBlock.LivePreview code={childrenText(children)} scroll={children.props.scroll} />
+        <CodeBlock.LivePreview code={childrenText(children) ?? ''} scroll={children.props.scroll} />
       )}
       <CodeBlock.Content>
         <CodeBlock.Pre>{children}</CodeBlock.Pre>

@@ -12,7 +12,7 @@ export function PrimitivesHeroPopover() {
   // We prevent the initial auto focus because it's a demo rather than a real UI,
   // so the parent page focus is not stolen.
   const initialAutoFocusPrevented = React.useRef(false);
-  const contentRef = React.useRef<HTMLDivElement>(null);
+  const contentRef = React.useRef<HTMLDivElement | null>(null);
   const [open, setOpen] = React.useState(true);
 
   return (
@@ -53,7 +53,7 @@ export function PrimitivesHeroPopover() {
               // Restore default behaviour, but prevent the focus scroll
               // which happens when content wrapper has `position: absolute`
               setTimeout(() => {
-                const inputToFocus = contentRef.current.querySelector('input');
+                const inputToFocus = contentRef.current?.querySelector('input');
                 inputToFocus?.focus({ preventScroll: true });
                 inputToFocus?.select();
               });

@@ -45,7 +45,7 @@ type ExampleLayoutProps = React.ComponentPropsWithoutRef<typeof Flex> & {
 
 export const ExampleThemesEcommerce = ({ focusable = true, ...props }: ExampleLayoutProps) => {
   // We’ll use a different portal container for homepage demo purposes; this is usually not needed.
-  const [portalContainer, setPortalContainer] = React.useState<HTMLDivElement>(null);
+  const [portalContainer, setPortalContainer] = React.useState<HTMLDivElement | null>(null);
 
   // Interactive elements may be not focusable for homepage demo purposes
   const tabIndex = focusable ? undefined : -1;
@@ -60,7 +60,7 @@ export const ExampleThemesEcommerce = ({ focusable = true, ...props }: ExampleLa
     color: '',
     productMaterial: '',
     productColor: '',
-    productSizes: [],
+    productSizes: [] as string[],
   });
 
   return (

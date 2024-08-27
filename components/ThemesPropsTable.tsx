@@ -265,7 +265,7 @@ function formatDefinitions(definitions: Record<ComponentName, ThemesPropsDef>) {
       value = applyResponsive(value, item.responsive);
 
       const shouldUseSimpleType = item.values
-        ? value.length > MAX_TYPE_LENGTH || item.type === 'enum | string'
+        ? value!.length > MAX_TYPE_LENGTH || item.type === 'enum | string'
         : true;
 
       return {

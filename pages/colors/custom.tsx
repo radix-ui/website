@@ -916,8 +916,8 @@ const ToDoList = ({ items, onItemsChange }: ToDoList) => {
               checked={item.completed}
               onCheckedChange={(checked) => {
                 const newItems = items.slice();
-                const newItem = newItems.find((candidate) => candidate.id === item.id);
-                newItem.completed = Boolean(checked);
+                const newItem = newItems.find((candidate) => candidate.id === item.id)!;
+                newItem.completed = !!checked;
                 onItemsChange(newItems);
               }}
             />
@@ -1128,9 +1128,12 @@ const LinksExample = ({ highContrast = false }) => (
   </Blockquote>
 );
 
-const LayersRoot = (
-  props: Extract<React.ComponentPropsWithoutRef<typeof ToggleGroup.Root>, { type: 'single' }>
-) => <ToggleGroup.Root type="single" defaultValue="1" className={styles.LayersRoot} {...props} />;
+const LayersRoot = ({
+  type = 'single',
+  ...props
+}: Extract<React.ComponentPropsWithoutRef<typeof ToggleGroup.Root>, { type: 'single' }>) => (
+  <ToggleGroup.Root type={type} defaultValue="1" className={styles.LayersRoot} {...props} />
+);
 
 const LayersItem = (props: React.ComponentPropsWithoutRef<typeof ToggleGroup.Item>) => (
   <Reset>

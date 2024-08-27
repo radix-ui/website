@@ -166,9 +166,11 @@ const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
         onClick={async (event) => {
           const value = event.currentTarget
             .closest(`[data-code-block-content]`)
-            .querySelector('code').textContent;
-          await copy(value);
-          setHasCopied(true);
+            ?.querySelector('code')?.textContent;
+          if (value) {
+            await copy(value);
+            setHasCopied(true);
+          }
         }}
         color="gray"
         variant="soft"

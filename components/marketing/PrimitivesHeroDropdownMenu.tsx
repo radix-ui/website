@@ -28,7 +28,7 @@ export function PrimitivesHeroDropdownMenu() {
   const [showToolbar, setShowToolbar] = React.useState<boolean | 'indeterminate'>(true);
   const [showUrls, setShowUrls] = React.useState<boolean | 'indeterminate'>(false);
   const triggerRef = React.useRef<HTMLButtonElement>(null);
-  const contentRef = React.useRef<HTMLDivElement>(null);
+  const contentRef = React.useRef<HTMLDivElement | null>(null);
   const [open, setOpen] = React.useState(true);
 
   return (
@@ -67,7 +67,7 @@ export function PrimitivesHeroDropdownMenu() {
               // Restore default behaviour, but prevent the focus scroll
               // which happens when content wrapper has `position: absolute`
               setTimeout(() => {
-                contentRef.current.focus({ preventScroll: true });
+                contentRef.current?.focus({ preventScroll: true });
               });
             } else {
               initialAutoFocusPrevented.current = true;

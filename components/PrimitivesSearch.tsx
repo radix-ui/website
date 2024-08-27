@@ -1,7 +1,7 @@
 import * as React from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import { createAutocomplete } from '@algolia/autocomplete-core';
-import { parseAlgoliaHitSnippet } from '@algolia/autocomplete-preset-algolia';
+import { parseAlgoliaHitSnippet, SnippetedHit } from '@algolia/autocomplete-preset-algolia';
 import { ExclamationTriangleIcon, CaretRightIcon } from '@radix-ui/react-icons';
 import { Box, Tooltip, Text, Flex, Slot } from '@radix-ui/themes';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
@@ -30,7 +30,7 @@ const ALGOLIA_PUBLIC_API_KEY = '9d44395c1b7b172ac84b7e5ab80bf8c5';
 const searchClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_PUBLIC_API_KEY);
 
 const SUPPORTED_LEVELS = ['lvl0', 'lvl1', 'lvl2', 'lvl3', 'lvl4'] as const;
-type LevelContentType = (typeof SUPPORTED_LEVELS)[number];
+type LevelContentType = typeof SUPPORTED_LEVELS[number];
 type ContentType = LevelContentType | 'content';
 type SearchItem = Hit<{
   type: ContentType;
@@ -97,7 +97,7 @@ function PrimitivesSearchRoot({
           return searchClient
             .search<SearchItem>([
               {
-                indexName: process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME,
+                indexName: process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME!,
                 query,
                 params: {
                   hitsPerPage,
@@ -223,7 +223,7 @@ function PrimitivesSearchClearButton({ children }: { children: React.ReactNode }
       <Slot
         onClick={(event) => {
           autocomplete.setQuery('');
-          event.currentTarget.closest('[role="combobox"]').querySelector('input')?.focus();
+          event.currentTarget.closest('[role="combobox"]')?.querySelector('input')?.focus();
         }}
       >
         {children}
@@ -401,7 +401,13 @@ function ItemBreadcrumb({ item, levels }: { item: SearchItem; levels: typeof SUP
   );
 }
 
-function Highlight<THit>({ hit, attribute }: { hit: THit; attribute: keyof THit | string[] }) {
+function Highlight<THit extends SnippetedHit<unknown>>({
+  hit,
+  attribute,
+}: {
+  hit: THit;
+  attribute: keyof THit | string[];
+}) {
   return (
     <>
       {parseAlgoliaHitSnippet<THit>({ hit, attribute }).map(({ value, isHighlighted }, index) =>

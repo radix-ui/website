@@ -25,7 +25,7 @@ export const DeveloperExperienceSection = () => {
     }
 
     const paddingY = 24;
-    const codeInner = pre.querySelector('code');
+    const codeInner = pre.querySelector('code')!;
     const codeBlockHeight = pre.clientHeight - paddingY * 2;
 
     const lines = pre.querySelectorAll<HTMLElement>('[data-highlighted]');

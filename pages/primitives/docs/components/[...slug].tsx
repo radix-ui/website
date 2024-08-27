@@ -31,7 +31,10 @@ export default function ComponentsDoc({ frontmatter, code }: Doc) {
       {frontmatter.version !== frontmatter.versions?.[0] && (
         <OldVersionNote
           name={frontmatter.metaTitle}
-          href={`/primitives/docs/components/${frontmatter.slug.replace(frontmatter.version, '')}`}
+          href={`/primitives/docs/components/${frontmatter.slug.replace(
+            frontmatter.version ?? '',
+            ''
+          )}`}
         />
       )}
 
@@ -62,13 +65,15 @@ export async function getStaticProps(context) {
   );
   const [componentName, componentVersion] = context.params.slug;
 
-  const { gzip } = await getPackageData(frontmatter.name, componentVersion);
+  const packageData = frontmatter.name
+    ? await getPackageData(frontmatter.name, componentVersion).catch(() => null)
+    : null;
 
   const extendedFrontmatter = {
     ...frontmatter,
     version: componentVersion,
     versions: getAllVersionsFromPath(`primitives/docs/components/${componentName}`),
-    gzip: typeof gzip === 'number' ? formatBytes(gzip) : null,
+    gzip: typeof packageData?.gzip === 'number' ? formatBytes(packageData.gzip) : null,
   };
 
   return { props: { frontmatter: extendedFrontmatter, code } };

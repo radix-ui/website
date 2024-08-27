@@ -45,7 +45,7 @@ export const CustomSwatch = ({
   style,
   ...props
 }: CustomSwatchProps) => {
-  const contentRef = React.useRef<HTMLDivElement>(null);
+  const contentRef = React.useRef<HTMLDivElement | null>(null);
   const { resolvedTheme } = useTheme();
   const friendlyScaleName = `${scale.charAt(0).toUpperCase() + scale.slice(1)}`;
   const friendlyColorName = `${friendlyScaleName} ${step}`;

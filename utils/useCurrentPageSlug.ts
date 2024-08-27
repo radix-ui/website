@@ -7,5 +7,5 @@ export function useCurrentPageSlug() {
   if (Array.isArray(routerSlug)) {
     return currentPageSlug.replace('[...slug]', routerSlug[0]);
   }
-  return currentPageSlug.replace('[slug]', routerSlug);
+  return currentPageSlug.replace('[slug]', routerSlug ?? '');
 }

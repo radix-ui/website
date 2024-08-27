@@ -1573,7 +1573,9 @@ export function ThemesBlogPostExampleDataList() {
                 variant="ghost"
                 onClick={(event) => {
                   const text = event.currentTarget.parentElement?.textContent;
-                  void navigator.clipboard.writeText(text);
+                  if (text) {
+                    void navigator.clipboard.writeText(text);
+                  }
                 }}
               >
                 <CopyIcon />

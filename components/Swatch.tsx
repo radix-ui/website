@@ -34,7 +34,7 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
   const cssVariable = ['white', 'black'].includes(scale)
     ? `var(--${scale}-a${step})`
     : `var(--${scale}-${step})`;
-  const contentRef = React.useRef<HTMLDivElement>(null);
+  const contentRef = React.useRef<HTMLDivElement | null>(null);
   const { resolvedTheme } = useTheme();
 
   const friendlyScaleName = `${scale.charAt(0).toUpperCase() + scale.slice(1)}`;
@@ -89,8 +89,8 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
                 const hexA = getValue({ scale, step, dark, alpha: true });
                 const p3 = getValue({ scale, step, dark, p3: true });
                 const p3A = getValue({ scale, step, dark, p3: true, alpha: true });
-                const themeKey = ['light', 'dark'].includes(resolvedTheme)
-                  ? resolvedTheme
+                const themeKey = ['light', 'dark'].includes(resolvedTheme!)
+                  ? (resolvedTheme as 'light' | 'dark')
                   : 'light';
                 const stepContrastInfo = contrastInfo[themeKey]?.[`${scale}-${step}`];
 

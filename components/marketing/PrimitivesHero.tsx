@@ -57,7 +57,7 @@ const FocusArea = React.forwardRef<HTMLDivElement, React.ComponentProps<'div'>>(
   { children, onKeyDown, ...props },
   forwardedRef
 ) {
-  const ownRef = React.useRef<HTMLDivElement>(null);
+  const ownRef = React.useRef<HTMLDivElement | null>(null);
   const composedRef = useComposedRefs(ownRef, forwardedRef);
 
   return (
@@ -108,7 +108,7 @@ const FocusArea = React.forwardRef<HTMLDivElement, React.ComponentProps<'div'>>(
 });
 
 export const PrimitivesHero = () => {
-  const lastUsedFocusArea = React.useRef<HTMLElement>(null);
+  const lastUsedFocusArea = React.useRef<HTMLElement | null>(null);
   const isRoving = React.useRef(false);
 
   React.useEffect(() => {
@@ -159,7 +159,7 @@ export const PrimitivesHero = () => {
         elements.reverse();
         const lastExit = elements.find((el) => el.matches('[data-focus-area-exit]'));
         elements.reverse();
-        const lastExitIndex = elements.indexOf(lastExit);
+        const lastExitIndex = elements.indexOf(lastExit!);
         const nextElement = elements[lastExitIndex + 1];
 
         if (nextElement) {
@@ -177,7 +177,7 @@ export const PrimitivesHero = () => {
 
         // Find first entry guard
         const firstEntry = elements.find((el) => el.matches('[data-focus-area-entry]'));
-        const firstEntryIndex = elements.indexOf(firstEntry);
+        const firstEntryIndex = elements.indexOf(firstEntry!);
         const prevElement = elements[firstEntryIndex - 1];
 
         if (prevElement) {
@@ -237,7 +237,7 @@ export const PrimitivesHero = () => {
         elements.reverse();
         const lastExit = elements.find((el) => el.hasAttribute('data-focus-area-exit'));
         elements.reverse();
-        const lastExitIndex = elements.indexOf(lastExit);
+        const lastExitIndex = elements.indexOf(lastExit!);
 
         if (elements.indexOf(event.target) - 1 === lastExitIndex) {
           event.preventDefault();

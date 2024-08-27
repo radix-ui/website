@@ -37,7 +37,7 @@ const [MagicCurtainProvider, useMagicCurtainContext] = createContext<{
 }>('MagicCurtain');
 
 const MagicCurtainRoot = ({ children }: React.PropsWithChildren<{}>) => {
-  const ref = React.useRef<HTMLDivElement>(null);
+  const ref = React.useRef<HTMLDivElement | null>(null);
   const [items, setItems] = React.useState<MagicCurtainItem[]>([]);
   const [hoveredControl, setHoveredControl] = React.useState('');
   const [highlightedControl, setHighlightedControl] = React.useState('0');
@@ -77,7 +77,7 @@ const MagicCurtainItem = ({
   defaultVisibility?: Visibility;
 }) => {
   const context = useMagicCurtainContext('MagicCurtain');
-  const ref = React.useRef<HTMLDivElement>(null);
+  const ref = React.useRef<HTMLDivElement | null>(null);
   const [visibility, setVisibility] = React.useState<Visibility>(defaultVisibility);
 
   useIsomorphicLayoutEffect(() => {
@@ -86,7 +86,7 @@ const MagicCurtainItem = ({
     context.setItems((items) =>
       [...items, item].sort((a, b) => {
         // Sort items according to their order in the DOM
-        return a.ref.current.compareDocumentPosition(b.ref.current) & 4 ? -1 : 1;
+        return a.ref.current!.compareDocumentPosition(b.ref.current!) & 4 ? -1 : 1;
       })
     );
 
@@ -108,11 +108,11 @@ interface MagicCurtainControlsProps {
   images?: string[];
 }
 
-const MagicCurtainControls = ({ images }: MagicCurtainControlsProps) => {
+const MagicCurtainControls = ({ images = [] }: MagicCurtainControlsProps) => {
   const context = useMagicCurtainContext('MagicCurtain');
 
   const rootRef = React.useRef<HTMLElement>(null);
-  const viewportWrapperRef = React.useRef<HTMLDivElement>(null);
+  const viewportWrapperRef = React.useRef<HTMLDivElement | null>(null);
   const [menuValue, setMenuValue] = React.useState<string>('');
   const [offsetIndex, setOffsetIndex] = React.useState<string>('');
   const hasAnimatingItem = !!context.items.find((value) => value.visibility === 'animating-out');
@@ -132,7 +132,10 @@ const MagicCurtainControls = ({ images }: MagicCurtainControlsProps) => {
       }
     });
 
-    observer.observe(viewportWrapperRef.current, { childList: true });
+    if (viewportWrapperRef.current) {
+      observer.observe(viewportWrapperRef.current, { childList: true });
+    }
+
     return () => observer.disconnect();
   }, []);
 
@@ -158,8 +161,8 @@ const MagicCurtainControls = ({ images }: MagicCurtainControlsProps) => {
           // the animation ends, creating a flash of visible content.
           // By manually flushing we ensure they sync within a frame, removing the flash.
           ReactDOM.flushSync(() => {
-            itemToHide.setVisibility('hidden');
-            event.currentTarget.removeEventListener('animationend', handleAnimationEnd);
+            itemToHide?.setVisibility('hidden');
+            event.currentTarget!.removeEventListener('animationend', handleAnimationEnd);
 
             // Run the rescheduled animation callback if it’s there
             upcomingAnimationCallback.current?.();
@@ -367,7 +370,7 @@ const MagicCurtainControls = ({ images }: MagicCurtainControlsProps) => {
 
 const MagicCurtainMirrorControls = () => {
   const context = useMagicCurtainContext('MagicCurtain');
-  const ref = React.useRef<HTMLDivElement>(null);
+  const ref = React.useRef<HTMLDivElement | null>(null);
 
   React.useEffect(() => {
     const positionControls = debounce(() => {

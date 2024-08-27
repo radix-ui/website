@@ -21,7 +21,7 @@ export const PrimitivesSearchMobile = ({
       const input = inputRef.current;
 
       if (input === document.activeElement && event.target !== input) {
-        input.blur();
+        input?.blur();
       }
     };
 

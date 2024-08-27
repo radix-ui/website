@@ -32,17 +32,19 @@ export const HeroCodeBlock = ({
   const cssLibCandidate = cssLibProp ?? preferredCssLib;
   const [isCodeExpanded, setIsCodeExpanded] = React.useState(false);
 
-  const snippets = React.Children.toArray(children).map((pre) => {
-    if (pre && typeof pre === 'object' && 'props' in pre) {
-      return {
-        id: pre.props.title,
-        title: pre.props.title,
-        cssLib: pre.props.cssLib,
-        children: React.Children.only(pre.props.children).props?.children,
-        source: pre.props.source,
-      };
-    }
-  });
+  const snippets = React.Children.toArray(children)
+    .map((pre) => {
+      if (pre && typeof pre === 'object' && 'props' in pre) {
+        return {
+          id: pre.props.title,
+          title: pre.props.title,
+          cssLib: pre.props.cssLib,
+          children: React.Children.only(pre.props.children).props?.children,
+          source: pre.props.source,
+        };
+      }
+    })
+    .filter((v): v is NonNullable<typeof v> => !!v);
 
   const availableCssLibs = snippets.map(({ cssLib }) => cssLib).filter(onlyUnique);
   const usedCssLib = availableCssLibs.includes(cssLibCandidate) ? cssLibCandidate : DEFAULT_CSS_LIB;
@@ -84,7 +86,7 @@ export const HeroCodeBlock = ({
             <input
               type="hidden"
               name="parameters"
-              value={makeCodeSandboxParams(frontmatter.name, sources, usedCssLib)}
+              value={makeCodeSandboxParams(frontmatter.name!, sources, usedCssLib)}
             />
             <Tooltip
               className="radix-themes-custom-fonts"

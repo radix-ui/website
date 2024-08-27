@@ -72,7 +72,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                   size="5"
                   src={frontmatter.authorAvatarUrl}
                   aria-label={frontmatter.author}
-                  fallback={null}
+                  fallback={null as any}
                   radius="full"
                 />
                 <Box id="author">

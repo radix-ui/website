@@ -41,7 +41,7 @@ type ExampleLayoutProps = React.ComponentPropsWithoutRef<typeof Flex> & {
 
 export const ExampleThemesDashboard = ({ focusable = true, ...props }: ExampleLayoutProps) => {
   // We’ll use a different portal container for homepage demo purposes; this is usually not needed.
-  const [portalContainer, setPortalContainer] = React.useState<HTMLDivElement>(null);
+  const [portalContainer, setPortalContainer] = React.useState<HTMLDivElement | null>(null);
 
   // Interactive elements may be not focusable for homepage demo purposes
   const tabIndex = focusable ? undefined : -1;
@@ -1244,8 +1244,8 @@ const ToDoList = ({ focusable, items, onItemsChange }: ToDoList) => {
               checked={item.completed}
               onCheckedChange={(checked) => {
                 const newItems = items.slice();
-                const newItem = newItems.find((candidate) => candidate.id === item.id);
-                newItem.completed = Boolean(checked);
+                const newItem = newItems.find((candidate) => candidate.id === item.id)!;
+                newItem.completed = !!checked;
                 onItemsChange(newItems);
               }}
             />

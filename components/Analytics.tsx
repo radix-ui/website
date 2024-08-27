@@ -6,9 +6,15 @@ import { handleUrlChange } from '@utils/analytics';
 export function Analytics() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const url = searchParams ? pathname + '?' + searchParams : pathname;
+  let url: string | null = null;
+  // next router hooks may return null
+  if (pathname != null) {
+    url = searchParams ? pathname + '?' + searchParams : pathname;
+  }
   React.useEffect(() => {
-    handleUrlChange(url);
+    if (url) {
+      handleUrlChange(url);
+    }
   }, [url]);
 
   return null;
