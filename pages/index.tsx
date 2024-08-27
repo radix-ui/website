@@ -3,7 +3,7 @@ import * as React from 'react';
 import NextLink from 'next/link';
 import { ThemesHeader } from '@components/ThemesHeader';
 import { ExampleThemesDashboard } from '@components/ExampleThemesDashboard';
-import { MagicCurtain } from '@components/MagicCurtain';
+import * as MagicCurtain from '@components/MagicCurtain';
 import { ExampleThemesEcommerce } from '@components/ExampleThemesEcommerce';
 import { ExampleThemesMusicApp } from '@components/ExampleThemesMusicApp';
 import { MobileMenuProvider } from '@components/MobileMenu';

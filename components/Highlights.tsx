@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Text, Box, Flex, Heading, Separator, Link, Select } from '@radix-ui/themes';
 import { ArrowTopRightIcon, CheckIcon } from '@radix-ui/react-icons';

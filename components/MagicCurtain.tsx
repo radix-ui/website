@@ -1,3 +1,4 @@
+'use client';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import styles from './MagicCurtain.module.css';
@@ -410,9 +411,7 @@ const MagicCurtainMirrorControls = () => {
   );
 };
 
-export const MagicCurtain = {
-  Root: MagicCurtainRoot,
-  Item: MagicCurtainItem,
-  Controls: MagicCurtainControls,
-  MirrorControls: MagicCurtainMirrorControls,
-};
+export { MagicCurtainRoot as Root };
+export { MagicCurtainItem as Item };
+export { MagicCurtainControls as Controls };
+export { MagicCurtainMirrorControls as MirrorControls };

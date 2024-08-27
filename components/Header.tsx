@@ -1,3 +1,4 @@
+'use client';
 import * as React from 'react';
 import { AccessibleIcon, Flex, IconButton, Link, Theme, Tooltip } from '@radix-ui/themes';
 import styles from './Header.module.css';
