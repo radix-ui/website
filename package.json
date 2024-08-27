@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "engines": {
-    "node": "18.x"
+    "node": "20.x"
   },
   "scripts": {
     "dev": "next dev",
@@ -111,7 +111,7 @@
     }
   },
   "volta": {
-    "node": "18.20.4"
+    "node": "20.15.0"
   },
   "packageManager": "yarn@1.22.18"
 }
