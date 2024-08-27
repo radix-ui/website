@@ -1,11 +1,11 @@
 import React from 'react';
 import { AppProps } from 'next/app';
-import { useRouter } from 'next/router';
-import { ThemeProvider } from 'next-themes';
+import { Router, useRouter } from 'next/router';
 import { Theme } from '@radix-ui/themes';
+import { ThemeProvider } from '@components/ThemeProvider';
 import { PrimitivesDocsPage } from '@components/PrimitivesDocsPage';
 import { ColorsDocsPage } from '@components/ColorsDocsPage';
-import { useAnalytics } from '@utils/analytics';
+import { handleUrlChange } from '@utils/analytics';
 import { CssLibPreferenceProvider } from '@components/CssLibPreference';
 import { ThemesDocsPage } from '@components/ThemesDocsPage';
 import { Favicon } from '@components/Favicon';
@@ -116,12 +116,7 @@ function App(props: AppProps) {
 
   return (
     <CssLibPreferenceProvider>
-      <ThemeProvider
-        disableTransitionOnChange
-        attribute="class"
-        value={{ light: 'light-theme', dark: 'dark-theme' }}
-        defaultTheme="system"
-      >
+      <ThemeProvider>
         <Pages {...props} />
       </ThemeProvider>
     </CssLibPreferenceProvider>
@@ -129,3 +124,12 @@ function App(props: AppProps) {
 }
 
 export default App;
+
+function useAnalytics() {
+  React.useEffect(() => {
+    Router.events.on('routeChangeComplete', handleUrlChange);
+    return () => {
+      Router.events.off('routeChangeComplete', handleUrlChange);
+    };
+  }, []);
+}
