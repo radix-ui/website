@@ -264,6 +264,43 @@ export default () => (
 }
 ```
 
+#### Applying Animations in Non-Tailwind CSS Projects
+
+When working with CSS animations outside of Tailwind, it’s important to avoid conflicts with dynamic height calculations, especially in flex layouts. Instead of using height, you can use **max-height** for smoother animations and to prevent double rendering issues. Here’s how you can define the animations using **max-height**:
+
+```css
+/* styles.css */
+.AccordionContent {
+  overflow: hidden;
+}
+.AccordionContent[data-state='open'] {
+  animation: slideDown 300ms ease-out;
+}
+.AccordionContent[data-state='closed'] {
+  animation: slideUp 300ms ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    __max-height__: 0;
+  }
+  to {
+    __max-height__: var(__--radix-accordion-content-height__);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    __max-height__: var(__--radix-accordion-content-height__);
+  }
+  to {
+    __max-height__: 0;
+  }
+}
+```
+
+Using **max-height** ensures that the animation doesn’t conflict with the automatic height calculations performed by flex layouts, leading to smoother transitions without layout recalculation issues.
+
 ## Accessibility
 
 Adheres to the [Disclosure WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure).
