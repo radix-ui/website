@@ -15,12 +15,12 @@ export const ThemeToggle = ({
       <Head>
         <style>{`
         :root, .light, .light-theme {
-          --theme-toggle-sun-icon-display: block;
-          --theme-toggle-moon-icon-display: none;
-        }
-        .dark, .dark-theme {
           --theme-toggle-sun-icon-display: none;
           --theme-toggle-moon-icon-display: block;
+        }
+        .dark, .dark-theme {
+          --theme-toggle-sun-icon-display: block;
+          --theme-toggle-moon-icon-display: none;
         }
       `}</style>
       </Head>
