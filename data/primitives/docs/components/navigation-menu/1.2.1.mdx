@@ -222,8 +222,8 @@ Contains the top level menu items.
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -256,8 +256,8 @@ A top level menu item, contains a link or trigger with content combination.
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -293,8 +293,8 @@ The button that toggles the content.
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -331,8 +331,8 @@ Contains the content associated with each trigger.
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -430,8 +430,8 @@ A navigational link.
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -484,8 +484,8 @@ An optional indicator element that renders below the list, is used to highlight 
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -532,8 +532,8 @@ An optional viewport element that is used to render active content outside of th
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -660,7 +660,10 @@ export default () => (
 }
 .NavigationMenuIndicator[data-orientation='horizontal'] {
   height: 3px;
-  transition: width, transform, 250ms ease;
+  transition:
+    width,
+    transform,
+    250ms ease;
 }
 ```
 
@@ -809,7 +812,10 @@ export default () => (
   position: relative;
   width: var(__--radix-navigation-menu-viewport-width__);
   height: var(__--radix-navigation-menu-viewport-height__);
-  transition: width, height, 250ms ease;
+  transition:
+    width,
+    height,
+    250ms ease;
 }
 
 @keyframes enterFromRight {

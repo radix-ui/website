@@ -197,8 +197,8 @@ The button that toggles the select. The `Select.Content` will position itself by
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -239,8 +239,8 @@ The part that reflects the selected value. By default the selected item's text w
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -275,8 +275,8 @@ A small icon often displayed next to the value as a visual affordance for the fa
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -315,8 +315,8 @@ The component that pops out when the select is open.
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -426,10 +426,9 @@ The component that pops out when the select is open.
       description: (
         <span>
           When <Code>true</Code>, overrides the <Code>side</Code> and
-          <Code>align</Code> preferences to prevent collisions with boundary edges.
-          Only available when <Code>position</Code> is set to <Code>
-            popper
-          </Code>.
+          <Code>align</Code> preferences to prevent collisions with boundary
+          edges. Only available when <Code>position</Code> is set to{' '}
+          <Code>popper</Code>.
         </span>
       ),
     },
@@ -456,10 +455,9 @@ The component that pops out when the select is open.
         <span>
           The distance in pixels from the boundary edges where collision
           detection should occur. Accepts a number (same for all sides), or a
-          partial padding object, for example: <Code>{`{ top: 20, left: 20 }`}</Code>
-          . Only available when <Code>position</Code> is set to <Code>
-            popper
-          </Code>.
+          partial padding object, for example:{' '}
+          <Code>{`{ top: 20, left: 20 }`}</Code>. Only available when{' '}
+          <Code>position</Code> is set to <Code>popper</Code>.
         </span>
       ),
     },
@@ -590,8 +588,8 @@ The scrolling viewport that contains all of the items.
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -615,8 +613,8 @@ The component that contains the select items.
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -689,8 +687,8 @@ The textual part of the item. It should only contain the text you want to see in
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -714,8 +712,8 @@ Renders when the item is selected. You can style this element directly, or you c
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -739,8 +737,8 @@ An optional button used as an affordance to show the viewport overflow as well a
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -764,8 +762,8 @@ An optional button used as an affordance to show the viewport overflow as well a
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -789,8 +787,8 @@ Used to group multiple items. use in conjunction with `Select.Label` to ensure g
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -814,8 +812,8 @@ Used to render the label of a group. It won't be focusable using arrow keys.
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -839,8 +837,8 @@ Used to visually separate items in the select.
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -864,8 +862,8 @@ An optional arrow element to render alongside the content. This can be used to h
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -1326,7 +1324,7 @@ export const Select = React.forwardRef(
         </SelectPrimitive.Portal>
       </SelectPrimitive.Root>
     );
-  }
+  },
 );
 
 export const SelectItem = React.forwardRef(
@@ -1339,6 +1337,6 @@ export const SelectItem = React.forwardRef(
         </SelectPrimitive.ItemIndicator>
       </SelectPrimitive.Item>
     );
-  }
+  },
 );
 ```
