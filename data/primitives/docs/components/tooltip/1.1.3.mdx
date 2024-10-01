@@ -1,30 +1,29 @@
 ---
-metaTitle: Popover
-metaDescription: Displays rich content in a portal, triggered by a button.
-name: popover
-aria: https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal
+metaTitle: Tooltip
+metaDescription: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+name: tooltip
+aria: https://www.w3.org/WAI/ARIA/apg/patterns/tooltip
 ---
 
-# Popover
+# Tooltip
 
 <Description>
-  Displays rich content in a portal, triggered by a button.
+  A popup that displays information related to an element when the element
+  receives keyboard focus or the mouse hovers over it.
 </Description>
 
 <HeroContainer>
-  <PopoverDemo />
+  <TooltipDemo />
 </HeroContainer>
 
-<HeroCodeBlock folder="Popover" />
+<HeroCodeBlock folder="Tooltip" />
 
 <Highlights
   features={[
-    'Can be controlled or uncontrolled.',
-    'Customize side, alignment, offsets, collision handling.',
-    'Optionally render a pointing arrow.',
-    'Focus is fully managed and customizable.',
-    'Supports modal and non-modal modes.',
-    'Dismissing and layering behavior is highly customizable.',
+    'Provider to control display delay globally.',
+    'Opens when the trigger is focused or hovered.',
+    'Closes when the trigger is activated or when pressing escape.',
+    'Supports custom timings.',
   ]}
 />
 
@@ -33,7 +32,7 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal
 Install the component from your command line.
 
 ```bash
-npm install @radix-ui/react-popover
+npm install @radix-ui/react-tooltip
 ```
 
 ## Anatomy
@@ -41,27 +40,60 @@ npm install @radix-ui/react-popover
 Import all parts and piece them together.
 
 ```jsx
-import * as Popover from '@radix-ui/react-popover';
+import * as Tooltip from '@radix-ui/react-tooltip';
 
 export default () => (
-  <Popover.Root>
-    <Popover.Trigger />
-    <Popover.Anchor />
-    <Popover.Portal>
-      <Popover.Content>
-        <Popover.Close />
-        <Popover.Arrow />
-      </Popover.Content>
-    </Popover.Portal>
-  </Popover.Root>
+  <Tooltip.Provider>
+    <Tooltip.Root>
+      <Tooltip.Trigger />
+      <Tooltip.Portal>
+        <Tooltip.Content>
+          <Tooltip.Arrow />
+        </Tooltip.Content>
+      </Tooltip.Portal>
+    </Tooltip.Root>
+  </Tooltip.Provider>
 );
 ```
 
 ## API Reference
 
+### Provider
+
+Wraps your app to provide global functionality to your tooltips.
+
+<PropsTable
+  data={[
+    {
+      name: 'delayDuration',
+      type: 'number',
+      default: 700,
+      description:
+        'The duration from when the mouse enters a tooltip trigger until the tooltip opens.',
+    },
+    {
+      name: 'skipDelayDuration',
+      type: 'number',
+      default: 300,
+      description:
+        'How much time a user has to enter another trigger without incurring a delay again.',
+    },
+    {
+      name: 'disableHoverableContent',
+      type: 'boolean',
+      description: (
+        <span>
+          Prevents <Code>Tooltip.Content</Code> from remaining open when
+          hovering. Disabling this has accessibility consequences.
+        </span>
+      ),
+    },
+  ]}
+/>
+
 ### Root
 
-Contains all the parts of a popover.
+Contains all the parts of a tooltip.
 
 <PropsTable
   data={[
@@ -70,7 +102,7 @@ Contains all the parts of a popover.
       type: 'boolean',
       description: (
         <span>
-          The open state of the popover when it is initially rendered. Use when
+          The open state of the tooltip when it is initially rendered. Use when
           you do not need to control its open state.
         </span>
       ),
@@ -80,7 +112,7 @@ Contains all the parts of a popover.
       type: 'boolean',
       description: (
         <span>
-          The controlled open state of the popover. Must be used in conjunction
+          The controlled open state of the tooltip. Must be used in conjunction
           with <Code>onOpenChange</Code>.
         </span>
       ),
@@ -91,20 +123,26 @@ Contains all the parts of a popover.
       typeSimple: 'function',
       description: (
         <span>
-          Event handler called when the open state of the popover changes.
+          Event handler called when the open state of the tooltip changes.
         </span>
       ),
     },
     {
-      name: 'modal',
-      required: false,
+      name: 'delayDuration',
+      type: 'number',
+      default: 700,
+      description:
+        'Override the duration given to the `Provider` to customise the open delay for a specific tooltip.',
+    },
+    {
+      name: 'disableHoverableContent',
       type: 'boolean',
-      default: 'false',
+      default: false,
       description: (
         <span>
-          The modality of the popover. When set to <Code>true</Code>,
-          interaction with outside elements will be disabled and only popover
-          content will be visible to screen readers.
+          Prevents <Code>Tooltip.Content</Code> from remaining open when
+          hovering. Disabling this has accessibility consequences. Inherits from{' '}
+          <Code>Tooltip.Provider</Code>.
         </span>
       ),
     },
@@ -113,7 +151,7 @@ Contains all the parts of a popover.
 
 ### Trigger
 
-The button that toggles the popover. By default, the `Popover.Content` will position itself against the trigger.
+The button that toggles the tooltip. By default, the `Tooltip.Content` will position itself against the trigger.
 
 <PropsTable
   data={[
@@ -128,8 +166,8 @@ The button that toggles the popover. By default, the `Popover.Content` will posi
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -140,32 +178,7 @@ The button that toggles the popover. By default, the `Popover.Content` will posi
   data={[
     {
       attribute: '[data-state]',
-      values: ['open', 'closed'],
-    },
-  ]}
-/>
-
-### Anchor
-
-An optional element to position the `Popover.Content` against. If this part is not used, the content will position alongside the <Code>Popover.Trigger</Code>.
-
-<PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
-        </>
-      ),
+      values: ['closed', 'delayed-open', 'instant-open'],
     },
   ]}
 />
@@ -183,7 +196,7 @@ When used, portals the content part into the `body`.
         <span>
           Used to force mounting when more control is needed. Useful when
           controlling animation with React animation libraries. If used on this
-          part, it will be inherited by <Code>Popover.Content</Code>.
+          part, it will be inherited by <Code>Tooltip.Content</Code>.
         </span>
       ),
     },
@@ -198,7 +211,7 @@ When used, portals the content part into the `body`.
 
 ### Content
 
-The component that pops out when the popover is open.
+The component that pops out when the tooltip is open.
 
 <PropsTable
   data={[
@@ -213,31 +226,20 @@ The component that pops out when the popover is open.
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
     {
-      name: 'onOpenAutoFocus',
-      type: '(event: Event) => void',
-      typeSimple: 'function',
+      name: 'aria-label',
+      type: 'string',
       description: (
         <span>
-          Event handler called when focus moves into the component after
-          opening. It can be prevented by calling{' '}
-          <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onCloseAutoFocus',
-      type: '(event: Event) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when focus moves to the trigger after closing. It
-          can be prevented by calling <Code>event.preventDefault</Code>.
+          By default, screenreaders will announce the content inside the
+          component. If this is not descriptive enough, or you have content that
+          cannot be announced, use <Code>aria-label</Code> as a more descriptive
+          label.
         </span>
       ),
     },
@@ -265,37 +267,13 @@ The component that pops out when the popover is open.
       ),
     },
     {
-      name: 'onFocusOutside',
-      type: '(event: FocusOutsideEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when focus moves outside the bounds of the
-          component. It can be prevented by calling{' '}
-          <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onInteractOutside',
-      type: '(event: PointerDownOutsideEvent | FocusOutsideEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when an interaction (pointer or focus event)
-          happens outside the bounds of the component. It can be prevented by
-          calling <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
       name: 'forceMount',
       type: 'boolean',
       description: (
         <span>
           Used to force mounting when more control is needed. Useful when
           controlling animation with React animation libraries. It inherits from{' '}
-          <Code>Popover.Portal</Code>.
+          <Code>Tooltip.Portal</Code>.
         </span>
       ),
     },
@@ -303,10 +281,10 @@ The component that pops out when the popover is open.
       name: 'side',
       type: '"top" | "right" | "bottom" | "left"',
       typeSimple: 'enum',
-      default: '"bottom"',
+      default: '"top"',
       description: (
         <span>
-          The preferred side of the anchor to render against when open. Will be
+          The preferred side of the trigger to render against when open. Will be
           reversed when collisions occur and <Code>avoidCollisions</Code> is
           enabled.
         </span>
@@ -316,7 +294,11 @@ The component that pops out when the popover is open.
       name: 'sideOffset',
       type: 'number',
       default: '0',
-      description: <span>The distance in pixels from the anchor.</span>,
+      description: (
+        <span>
+          <span>The distance in pixels from the trigger.</span>
+        </span>
+      ),
     },
     {
       name: 'align',
@@ -325,8 +307,8 @@ The component that pops out when the popover is open.
       default: '"center"',
       description: (
         <span>
-          The preferred alignment against the anchor. May change when collisions
-          occur.
+          The preferred alignment against the trigger. May change when
+          collisions occur.
         </span>
       ),
     },
@@ -348,7 +330,8 @@ The component that pops out when the popover is open.
       description: (
         <span>
           When <Code>true</Code>, overrides the <Code>side</Code> and
-          <Code>align</Code> preferences to prevent collisions with boundary edges.
+          <Code>align</Code> preferences to prevent collisions with boundary
+          edges.
         </span>
       ),
     },
@@ -374,8 +357,8 @@ The component that pops out when the popover is open.
         <span>
           The distance in pixels from the boundary edges where collision
           detection should occur. Accepts a number (same for all sides), or a
-          partial padding object, for example: <Code>{`{ top: 20, left: 20 }`}</Code>
-          .
+          partial padding object, for example:{' '}
+          <Code>{`{ top: 20, left: 20 }`}</Code>.
         </span>
       ),
     },
@@ -422,7 +405,7 @@ The component that pops out when the popover is open.
   data={[
     {
       attribute: '[data-state]',
-      values: ['open', 'closed'],
+      values: ['closed', 'delayed-open', 'instant-open'],
     },
     {
       attribute: '[data-side]',
@@ -438,7 +421,7 @@ The component that pops out when the popover is open.
 <CssVariablesTable
   data={[
     {
-      cssVariable: '--radix-popover-content-transform-origin',
+      cssVariable: '--radix-tooltip-content-transform-origin',
       description: (
         <>
           The <Code>transform-origin</Code> computed from the content and arrow
@@ -447,23 +430,23 @@ The component that pops out when the popover is open.
       ),
     },
     {
-      cssVariable: '--radix-popover-content-available-width',
+      cssVariable: '--radix-tooltip-content-available-width',
       description: (
         <>The remaining width between the trigger and the boundary edge</>
       ),
     },
     {
-      cssVariable: '--radix-popover-content-available-height',
+      cssVariable: '--radix-tooltip-content-available-height',
       description: (
         <>The remaining height between the trigger and the boundary edge</>
       ),
     },
     {
-      cssVariable: '--radix-popover-trigger-width',
+      cssVariable: '--radix-tooltip-trigger-width',
       description: <>The width of the trigger</>,
     },
     {
-      cssVariable: '--radix-popover-trigger-height',
+      cssVariable: '--radix-tooltip-trigger-height',
       description: <>The height of the trigger</>,
     },
   ]}
@@ -471,7 +454,7 @@ The component that pops out when the popover is open.
 
 ### Arrow
 
-An optional arrow element to render alongside the popover. This can be used to help visually link the anchor with the `Popover.Content`. Must be rendered inside `Popover.Content`.
+An optional arrow element to render alongside the tooltip. This can be used to help visually link the trigger with the `Tooltip.Content`. Must be rendered inside `Tooltip.Content`.
 
 <PropsTable
   data={[
@@ -486,8 +469,8 @@ An optional arrow element to render alongside the popover. This can be used to h
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -506,87 +489,96 @@ An optional arrow element to render alongside the popover. This can be used to h
   ]}
 />
 
-### Close
-
-The button that closes an open popover.
-
-<PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
-        </>
-      ),
-    },
-  ]}
-/>
-
 ## Examples
+
+### Configure globally
+
+Use the `Provider` to control `delayDuration` and `skipDelayDuration` globally.
+
+```jsx line=4
+import * as Tooltip from '@radix-ui/react-tooltip';
+
+export default () => (
+  <Tooltip.Provider __delayDuration__={800} __skipDelayDuration__={500}>
+    <Tooltip.Root>
+      <Tooltip.Trigger>…</Tooltip.Trigger>
+      <Tooltip.Content>…</Tooltip.Content>
+    </Tooltip.Root>
+    <Tooltip.Root>
+      <Tooltip.Trigger>…</Tooltip.Trigger>
+      <Tooltip.Content>…</Tooltip.Content>
+    </Tooltip.Root>
+  </Tooltip.Provider>
+);
+```
+
+### Show instantly
+
+Use the `delayDuration` prop to control the time it takes for the tooltip to open.
+
+```jsx line=4
+import * as Tooltip from '@radix-ui/react-tooltip';
+
+export default () => (
+  <Tooltip.Root __delayDuration__={0}>
+    <Tooltip.Trigger>…</Tooltip.Trigger>
+    <Tooltip.Content>…</Tooltip.Content>
+  </Tooltip.Root>
+);
+```
 
 ### Constrain the content size
 
 You may want to constrain the width of the content so that it matches the trigger width. You may also want to constrain its height to not exceed the viewport.
 
-We expose several CSS custom properties such as `--radix-popover-trigger-width` and `--radix-popover-content-available-height` to support this. Use them to constrain the content dimensions.
+We expose several CSS custom properties such as `--radix-tooltip-trigger-width` and `--radix-tooltip-content-available-height` to support this. Use them to constrain the content dimensions.
 
 ```jsx line=9
 // index.jsx
-import * as Popover from '@radix-ui/react-popover';
+import * as Tooltip from '@radix-ui/react-tooltip';
 import './styles.css';
 
 export default () => (
-  <Popover.Root>
-    <Popover.Trigger>…</Popover.Trigger>
-    <Popover.Portal>
-      <Popover.Content __className__="PopoverContent" sideOffset={5}>
+  <Tooltip.Root>
+    <Tooltip.Trigger>…</Tooltip.Trigger>
+    <Tooltip.Portal>
+      <Tooltip.Content __className__="TooltipContent" sideOffset={5}>
         …
-      </Popover.Content>
-    </Popover.Portal>
-  </Popover.Root>
+      </Tooltip.Content>
+    </Tooltip.Portal>
+  </Tooltip.Root>
 );
 ```
 
 ```css
 /* styles.css */
-.PopoverContent {
-  width: var(__--radix-popover-trigger-width__);
-  max-height: var(__--radix-popover-content-available-height__);
+.TooltipContent {
+  width: var(__--radix-tooltip-trigger-width__);
+  max-height: var(__--radix-tooltip-content-available-height__);
 }
 ```
 
 ### Origin-aware animations
 
-We expose a CSS custom property `--radix-popover-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
+We expose a CSS custom property `--radix-tooltip-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
-```jsx line=9
+```jsx line=8
 // index.jsx
-import * as Popover from '@radix-ui/react-popover';
+import * as Tooltip from '@radix-ui/react-tooltip';
 import './styles.css';
 
 export default () => (
-  <Popover.Root>
-    <Popover.Trigger>…</Popover.Trigger>
-    <Popover.Portal>
-      <Popover.Content __className__="PopoverContent">…</Popover.Content>
-    </Popover.Portal>
-  </Popover.Root>
+  <Tooltip.Root>
+    <Tooltip.Trigger>…</Tooltip.Trigger>
+    <Tooltip.Content __className__="TooltipContent">…</Tooltip.Content>
+  </Tooltip.Root>
 );
 ```
 
-```css line=3
+```css line=3-4
 /* styles.css */
-.PopoverContent {
-  transform-origin: var(__--radix-popover-content-transform-origin__);
+.TooltipContent {
+  transform-origin: var(--radix-tooltip-content-transform-origin);
   animation: scaleIn 0.5s ease-out;
 }
 
@@ -606,31 +598,29 @@ export default () => (
 
 We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
 
-```jsx line=9
+```jsx line=8
 // index.jsx
-import * as Popover from '@radix-ui/react-popover';
+import * as Tooltip from '@radix-ui/react-tooltip';
 import './styles.css';
 
 export default () => (
-  <Popover.Root>
-    <Popover.Trigger>…</Popover.Trigger>
-    <Popover.Portal>
-      <Popover.Content __className__="PopoverContent">…</Popover.Content>
-    </Popover.Portal>
-  </Popover.Root>
+  <Tooltip.Root>
+    <Tooltip.Trigger>…</Tooltip.Trigger>
+    <Tooltip.Content __className__="TooltipContent">…</Tooltip.Content>
+  </Tooltip.Root>
 );
 ```
 
-```css line=6-11
+```css line=6,9
 /* styles.css */
-.PopoverContent {
+.TooltipContent {
   animation-duration: 0.6s;
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
-.PopoverContent[__data-side__='top'] {
+.TooltipContent[data-side='top'] {
   animation-name: slideUp;
 }
-.PopoverContent[__data-side__='bottom'] {
+.TooltipContent[data-side='bottom'] {
   animation-name: slideDown;
 }
 
@@ -657,69 +647,27 @@ export default () => (
 }
 ```
 
-### With custom anchor
-
-You can anchor the content to another element if you do not want to use the trigger as the anchor.
-
-```jsx line=7-11
-// index.jsx
-import * as Popover from '@radix-ui/react-popover';
-import './styles.css';
-
-export default () => (
-  <Popover.Root>
-    <Popover.Anchor __asChild__>
-      <div className="Row">
-        Row as anchor <Popover.Trigger>Trigger</Popover.Trigger>
-      </div>
-    </Popover.Anchor>
-
-    <Popover.Portal>
-      <Popover.Content>…</Popover.Content>
-    </Popover.Portal>
-  </Popover.Root>
-);
-```
-
-```css
-/* styles.css */
-.Row {
-  background-color: gainsboro;
-  padding: 20px;
-}
-```
-
 ## Accessibility
-
-Adheres to the [Dialog WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal).
 
 ### Keyboard Interactions
 
 <KeyboardTable
   data={[
     {
+      keys: ['Tab'],
+      description: 'Opens/closes the tooltip without delay.',
+    },
+    {
       keys: ['Space'],
-      description: 'Opens/closes the popover.',
+      description: 'If open, closes the tooltip without delay.',
     },
     {
       keys: ['Enter'],
-      description: 'Opens/closes the popover.',
+      description: 'If open, closes the tooltip without delay.',
     },
     {
-      keys: ['Tab'],
-      description: 'Moves focus to the next focusable element',
-    },
-    {
-      keys: ['Shift + Tab'],
-      description: 'Moves focus to the previous focusable element',
-    },
-    {
-      keys: ['Esc'],
-      description: (
-        <span>
-          Closes the popover and moves focus to <Code>Popover.Trigger</Code>.
-        </span>
-      ),
+      keys: ['Escape'],
+      description: 'If open, closes the tooltip without delay.',
     },
   ]}
 />
@@ -728,41 +676,53 @@ Adheres to the [Dialog WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/
 
 Create your own API by abstracting the primitive parts into your own component.
 
-#### Abstract the arrow and set default configuration
+### Abstract parts and introduce a content prop
 
-This example abstracts the `Popover.Arrow` part and sets a default `sideOffset` configuration.
+This example abstracts all of the `Tooltip` parts and introduces a new `content` prop.
 
 #### Usage
 
 ```jsx
-import { Popover, PopoverTrigger, PopoverContent } from './your-popover';
+import { Tooltip } from './your-tooltip';
 
 export default () => (
-  <Popover>
-    <PopoverTrigger>Popover trigger</PopoverTrigger>
-    <PopoverContent>Popover content</PopoverContent>
-  </Popover>
+  <Tooltip content="Tooltip content">
+    <button>Tooltip trigger</button>
+  </Tooltip>
 );
 ```
 
 #### Implementation
 
-```jsx
-// your-popover.jsx
+Use the [`asChild` prop](/primitives/docs/guides/composition) to convert the trigger part into a slottable area. It will replace the trigger with the child that gets passed to it.
+
+```jsx line=8-10
+// your-tooltip.jsx
 import React from 'react';
-import * as PopoverPrimitive from '@radix-ui/react-popover';
+import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 
-export const Popover = PopoverPrimitive.Root;
-export const PopoverTrigger = PopoverPrimitive.Trigger;
-
-export const PopoverContent = React.forwardRef(
-  ({ children, ...props }, forwardedRef) => (
-    <PopoverPrimitive.Portal>
-      <PopoverPrimitive.Content sideOffset={5} {...props} ref={forwardedRef}>
+export function Tooltip({
+  children,
+  content,
+  open,
+  defaultOpen,
+  onOpenChange,
+  ...props
+}) {
+  return (
+    <TooltipPrimitive.Root
+      open={open}
+      defaultOpen={defaultOpen}
+      onOpenChange={onOpenChange}
+    >
+      <TooltipPrimitive.Trigger __asChild__>
         {children}
-        <PopoverPrimitive.Arrow />
-      </PopoverPrimitive.Content>
-    </PopoverPrimitive.Portal>
-  )
-);
+      </TooltipPrimitive.Trigger>
+      <TooltipPrimitive.Content side="top" align="center" {...props}>
+        {content}
+        <TooltipPrimitive.Arrow width={11} height={5} />
+      </TooltipPrimitive.Content>
+    </TooltipPrimitive.Root>
+  );
+}
 ```

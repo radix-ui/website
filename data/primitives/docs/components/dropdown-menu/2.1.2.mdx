@@ -1,36 +1,36 @@
 ---
-metaTitle: Menubar
-metaDescription:
-  A visually persistent menu common in desktop applications that provides quick
-  access to a consistent set of commands.
-name: menubar
-aria: https://www.w3.org/WAI/ARIA/apg/patterns/menu/
+metaTitle: Dropdown Menu
+metaDescription: Displays a menu to the user—such as a set of actions or functions—triggered by a button.
+name: dropdown-menu
+aria: https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/
 ---
 
-# Menu Bar
+# Dropdown Menu
 
 <Description>
-  A visually persistent menu common in desktop applications that provides quick
-  access to a consistent set of commands.
+  Displays a menu to the user—such as a set of actions or functions—triggered by
+  a button.
 </Description>
 
 <HeroContainer>
-  <MenubarDemo />
+  <DropdownMenuDemo />
 </HeroContainer>
 
-<HeroCodeBlock folder="Menubar" />
+<HeroCodeBlock folder="DropdownMenu" />
 
 <Highlights
   features={[
     'Can be controlled or uncontrolled.',
     'Supports submenus with configurable reading direction.',
     'Supports items, labels, groups of items.',
-    'Supports checkable items (single or multiple).',
+    'Supports checkable items (single or multiple) with optional indeterminate state.',
+    'Supports modal and non-modal modes.',
     'Customize side, alignment, offsets, collision handling.',
     'Optionally render a pointing arrow.',
     'Focus is fully managed.',
     'Full keyboard navigation.',
     'Typeahead support.',
+    'Dismissing and layering behavior is highly customizable.',
   ]}
 />
 
@@ -39,7 +39,7 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/menu/
 Install the component from your command line.
 
 ```bash
-npm install @radix-ui/react-menubar
+npm install @radix-ui/react-dropdown-menu
 ```
 
 ## Anatomy
@@ -47,44 +47,43 @@ npm install @radix-ui/react-menubar
 Import all parts and piece them together.
 
 ```jsx
-import * as Menubar from '@radix-ui/react-menubar';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 export default () => (
-  <Menubar.Root>
-    <Menubar.Menu>
-      <Menubar.Trigger />
-      <Menubar.Portal>
-        <Menubar.Content>
-          <Menubar.Label />
-          <Menubar.Item />
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger />
 
-          <Menubar.Group>
-            <Menubar.Item />
-          </Menubar.Group>
+    <DropdownMenu.Portal>
+      <DropdownMenu.Content>
+        <DropdownMenu.Label />
+        <DropdownMenu.Item />
 
-          <Menubar.CheckboxItem>
-            <Menubar.ItemIndicator />
-          </Menubar.CheckboxItem>
+        <DropdownMenu.Group>
+          <DropdownMenu.Item />
+        </DropdownMenu.Group>
 
-          <Menubar.RadioGroup>
-            <Menubar.RadioItem>
-              <Menubar.ItemIndicator />
-            </Menubar.RadioItem>
-          </Menubar.RadioGroup>
+        <DropdownMenu.CheckboxItem>
+          <DropdownMenu.ItemIndicator />
+        </DropdownMenu.CheckboxItem>
 
-          <Menubar.Sub>
-            <Menubar.SubTrigger />
-            <Menubar.Portal>
-              <Menubar.SubContent />
-            </Menubar.Portal>
-          </Menubar.Sub>
+        <DropdownMenu.RadioGroup>
+          <DropdownMenu.RadioItem>
+            <DropdownMenu.ItemIndicator />
+          </DropdownMenu.RadioItem>
+        </DropdownMenu.RadioGroup>
 
-          <Menubar.Separator />
-          <Menubar.Arrow />
-        </Menubar.Content>
-      </Menubar.Portal>
-    </Menubar.Menu>
-  </Menubar.Root>
+        <DropdownMenu.Sub>
+          <DropdownMenu.SubTrigger />
+          <DropdownMenu.Portal>
+            <DropdownMenu.SubContent />
+          </DropdownMenu.Portal>
+        </DropdownMenu.Sub>
+
+        <DropdownMenu.Separator />
+        <DropdownMenu.Arrow />
+      </DropdownMenu.Content>
+    </DropdownMenu.Portal>
+  </DropdownMenu.Root>
 );
 ```
 
@@ -92,54 +91,52 @@ export default () => (
 
 ### Root
 
-Contains all the parts of a menubar.
+Contains all the parts of a dropdown menu.
 
 <PropsTable
   data={[
     {
-      name: 'asChild',
+      name: 'defaultOpen',
+      type: 'boolean',
+      description: (
+        <span>
+          The open state of the dropdown menu when it is initially rendered. Use
+          when you do not need to control its open state.
+        </span>
+      ),
+    },
+    {
+      name: 'open',
+      type: 'boolean',
+      description: (
+        <span>
+          The controlled open state of the dropdown menu. Must be used in
+          conjunction with <Code>onOpenChange</Code>.
+        </span>
+      ),
+    },
+    {
+      name: 'onOpenChange',
+      type: '(open: boolean) => void',
+      typeSimple: 'function',
+      description: (
+        <span>
+          Event handler called when the open state of the dropdown menu changes.
+        </span>
+      ),
+    },
+    {
+      name: 'modal',
       required: false,
       type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
-        </>
-      ),
-    },
-    {
-      name: 'defaultValue',
-      required: false,
-      type: 'string',
+      default: 'true',
       description: (
         <span>
-          The value of the menu that should be open when initially rendered. Use
-          when you do not need to control the value state.
+          The modality of the dropdown menu. When set to <Code>true</Code>,
+          interaction with outside elements will be disabled and only menu
+          content will be visible to screen readers.
         </span>
       ),
-    },
-    {
-      name: 'value',
-      required: false,
-      type: 'string',
-      description: (
-        <span>
-          The controlled value of the menu to open. Should be used in
-          conjunction with <Code>onValueChange</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onValueChange',
-      required: false,
-      type: '(value: string) => void',
-      typeSimple: 'function',
-      description: 'Event handler called when the value changes.',
     },
     {
       name: 'dir',
@@ -148,58 +145,9 @@ Contains all the parts of a menubar.
       typeSimple: 'enum',
       description: (
         <span>
-          The reading direction. If omitted, inherits globally from{' '}
-          <Code>DirectionProvider</Code> or assumes LTR (left-to-right) reading
-          mode.
-        </span>
-      ),
-    },
-    {
-      name: 'loop',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <span>
-          When <Code>true</Code>, keyboard navigation will loop from last item
-          to first, and vice versa.
-        </span>
-      ),
-    },
-  ]}
-/>
-
-### Menu
-
-A top level menu item, contains a trigger with content combination.
-
-<PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
-        </>
-      ),
-    },
-    {
-      name: 'value',
-      required: false,
-      type: 'string',
-      description: (
-        <span>
-          A unique value that associates the item with an active value when the
-          navigation menu is controlled. This prop is managed automatically when
-          uncontrolled.
+          The reading direction of submenus when applicable. If omitted,
+          inherits globally from <Code>DirectionProvider</Code> or assumes LTR
+          (left-to-right) reading mode.
         </span>
       ),
     },
@@ -208,7 +156,7 @@ A top level menu item, contains a trigger with content combination.
 
 ### Trigger
 
-The button that toggles the content. By default, the `Menubar.Content` will position itself against the trigger.
+The button that toggles the dropdown menu. By default, the `DropdownMenu.Content` will position itself against the trigger.
 
 <PropsTable
   data={[
@@ -223,8 +171,8 @@ The button that toggles the content. By default, the `Menubar.Content` will posi
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -236,10 +184,6 @@ The button that toggles the content. By default, the `Menubar.Content` will posi
     {
       attribute: '[data-state]',
       values: ['open', 'closed'],
-    },
-    {
-      attribute: '[data-highlighted]',
-      values: 'Present when highlighted',
     },
     {
       attribute: '[data-disabled]',
@@ -261,8 +205,8 @@ When used, portals the content part into the `body`.
         <span>
           Used to force mounting when more control is needed. Useful when
           controlling animation with React animation libraries. If used on this
-          part, it will be inherited by <Code>Menubar.Content</Code> and{' '}
-          <Code>Menubar.SubContent</Code> respectively.
+          part, it will be inherited by <Code>DropdownMenu.Content</Code> and{' '}
+          <Code>DropdownMenu.SubContent</Code> respectively.
         </span>
       ),
     },
@@ -277,7 +221,7 @@ When used, portals the content part into the `body`.
 
 ### Content
 
-The component that pops out when a menu is open.
+The component that pops out when the dropdown menu is open.
 
 <PropsTable
   data={[
@@ -292,8 +236,8 @@ The component that pops out when a menu is open.
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -374,7 +318,7 @@ The component that pops out when a menu is open.
         <span>
           Used to force mounting when more control is needed. Useful when
           controlling animation with React animation libraries. It inherits from{' '}
-          <Code>Menubar.Portal</Code>.
+          <Code>DropdownMenu.Portal</Code>.
         </span>
       ),
     },
@@ -427,7 +371,8 @@ The component that pops out when a menu is open.
       description: (
         <span>
           When <Code>true</Code>, overrides the <Code>side</Code> and
-          <Code>align</Code> preferences to prevent collisions with boundary edges.
+          <Code>align</Code> preferences to prevent collisions with boundary
+          edges.
         </span>
       ),
     },
@@ -453,8 +398,8 @@ The component that pops out when a menu is open.
         <span>
           The distance in pixels from the boundary edges where collision
           detection should occur. Accepts a number (same for all sides), or a
-          partial padding object, for example: <Code>{`{ top: 20, left: 20 }`}</Code>
-          .
+          partial padding object, for example:{' '}
+          <Code>{`{ top: 20, left: 20 }`}</Code>.
         </span>
       ),
     },
@@ -511,13 +456,17 @@ The component that pops out when a menu is open.
       attribute: '[data-align]',
       values: ['start', 'end', 'center'],
     },
+    {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
+    },
   ]}
 />
 
 <CssVariablesTable
   data={[
     {
-      cssVariable: '--radix-menubar-content-transform-origin',
+      cssVariable: '--radix-dropdown-menu-content-transform-origin',
       description: (
         <>
           The <Code>transform-origin</Code> computed from the content and arrow
@@ -526,23 +475,23 @@ The component that pops out when a menu is open.
       ),
     },
     {
-      cssVariable: '--radix-menubar-content-available-width',
+      cssVariable: '--radix-dropdown-menu-content-available-width',
       description: (
         <>The remaining width between the trigger and the boundary edge</>
       ),
     },
     {
-      cssVariable: '--radix-menubar-content-available-height',
+      cssVariable: '--radix-dropdown-menu-content-available-height',
       description: (
         <>The remaining height between the trigger and the boundary edge</>
       ),
     },
     {
-      cssVariable: '--radix-menubar-trigger-width',
+      cssVariable: '--radix-dropdown-menu-trigger-width',
       description: <>The width of the trigger</>,
     },
     {
-      cssVariable: '--radix-menubar-trigger-height',
+      cssVariable: '--radix-dropdown-menu-trigger-height',
       description: <>The height of the trigger</>,
     },
   ]}
@@ -550,7 +499,7 @@ The component that pops out when a menu is open.
 
 ### Arrow
 
-An optional arrow element to render alongside a menubar menu. This can be used to help visually link the trigger with the `Menubar.Content`. Must be rendered inside `Menubar.Content`.
+An optional arrow element to render alongside the dropdown menu. This can be used to help visually link the trigger with the `DropdownMenu.Content`. Must be rendered inside `DropdownMenu.Content`.
 
 <PropsTable
   data={[
@@ -565,8 +514,8 @@ An optional arrow element to render alongside a menubar menu. This can be used t
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -587,7 +536,7 @@ An optional arrow element to render alongside a menubar menu. This can be used t
 
 ### Item
 
-The component that contains the menubar items.
+The component that contains the dropdown menu items.
 
 <PropsTable
   data={[
@@ -602,8 +551,8 @@ The component that contains the menubar items.
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -625,7 +574,7 @@ The component that contains the menubar items.
         <span>
           Event handler called when the user selects an item (via mouse or
           keyboard). Calling <Code>event.preventDefault</Code> in this handler
-          will prevent the menubar from closing when selecting that item.
+          will prevent the dropdown menu from closing when selecting that item.
         </span>
       ),
     },
@@ -646,6 +595,10 @@ The component that contains the menubar items.
 <DataAttributesTable
   data={[
     {
+      attribute: '[data-orientation]',
+      values: ['vertical', 'horizontal'],
+    },
+    {
       attribute: '[data-highlighted]',
       values: 'Present when highlighted',
     },
@@ -658,7 +611,7 @@ The component that contains the menubar items.
 
 ### Group
 
-Used to group multiple `Menubar.Item`s.
+Used to group multiple `DropdownMenu.Item`s.
 
 <PropsTable
   data={[
@@ -673,8 +626,8 @@ Used to group multiple `Menubar.Item`s.
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -698,8 +651,8 @@ Used to render a label. It won't be focusable using arrow keys.
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -723,8 +676,8 @@ An item that can be controlled and rendered like a checkbox.
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -740,7 +693,7 @@ An item that can be controlled and rendered like a checkbox.
     },
     {
       name: 'onCheckedChange',
-      type: '(checked: boolean) => void',
+      type: `(checked: boolean) => void`,
       typeSimple: 'function',
       description: (
         <span>Event handler called when the checked state changes.</span>
@@ -764,7 +717,7 @@ An item that can be controlled and rendered like a checkbox.
         <span>
           Event handler called when the user selects an item (via mouse or
           keyboard). Calling <Code>event.preventDefault</Code> in this handler
-          will prevent the menubar from closing when selecting that item.
+          will prevent the dropdown menu from closing when selecting that item.
         </span>
       ),
     },
@@ -786,7 +739,7 @@ An item that can be controlled and rendered like a checkbox.
   data={[
     {
       attribute: '[data-state]',
-      values: ['checked', 'unchecked'],
+      values: ['checked', 'unchecked', 'indeterminate'],
     },
     {
       attribute: '[data-highlighted]',
@@ -801,7 +754,7 @@ An item that can be controlled and rendered like a checkbox.
 
 ### RadioGroup
 
-Used to group multiple `Menubar.RadioItem`s.
+Used to group multiple `DropdownMenu.RadioItem`s.
 
 <PropsTable
   data={[
@@ -816,8 +769,8 @@ Used to group multiple `Menubar.RadioItem`s.
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -852,8 +805,8 @@ An item that can be controlled and rendered like a radio.
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -881,7 +834,7 @@ An item that can be controlled and rendered like a radio.
         <span>
           Event handler called when the user selects an item (via mouse or
           keyboard). Calling <Code>event.preventDefault</Code> in this handler
-          will prevent the menubar from closing when selecting that item.
+          will prevent the dropdown menu from closing when selecting that item.
         </span>
       ),
     },
@@ -903,7 +856,7 @@ An item that can be controlled and rendered like a radio.
   data={[
     {
       attribute: '[data-state]',
-      values: ['checked', 'unchecked'],
+      values: ['checked', 'unchecked', 'indeterminate'],
     },
     {
       attribute: '[data-highlighted]',
@@ -918,7 +871,7 @@ An item that can be controlled and rendered like a radio.
 
 ### ItemIndicator
 
-Renders when the parent `Menubar.CheckboxItem` or `Menubar.RadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
+Renders when the parent `DropdownMenu.CheckboxItem` or `DropdownMenu.RadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
 
 <PropsTable
   data={[
@@ -933,8 +886,8 @@ Renders when the parent `Menubar.CheckboxItem` or `Menubar.RadioItem` is checked
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -955,14 +908,14 @@ Renders when the parent `Menubar.CheckboxItem` or `Menubar.RadioItem` is checked
   data={[
     {
       attribute: '[data-state]',
-      values: ['checked', 'unchecked'],
+      values: ['checked', 'unchecked', 'indeterminate'],
     },
   ]}
 />
 
 ### Separator
 
-Used to visually separate items in a menubar menu.
+Used to visually separate items in the dropdown menu.
 
 <PropsTable
   data={[
@@ -977,8 +930,8 @@ Used to visually separate items in a menubar menu.
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -1026,7 +979,7 @@ Contains all the parts of a submenu.
 
 ### SubTrigger
 
-An item that opens a submenu. Must be rendered inside `Menubar.Sub`.
+An item that opens a submenu. Must be rendered inside `DropdownMenu.Sub`.
 
 <PropsTable
   data={[
@@ -1041,8 +994,8 @@ An item that opens a submenu. Must be rendered inside `Menubar.Sub`.
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -1087,9 +1040,43 @@ An item that opens a submenu. Must be rendered inside `Menubar.Sub`.
   ]}
 />
 
+<CssVariablesTable
+  data={[
+    {
+      cssVariable: '--radix-dropdown-menu-content-transform-origin',
+      description: (
+        <>
+          The <Code>transform-origin</Code> computed from the content and arrow
+          positions/offsets
+        </>
+      ),
+    },
+    {
+      cssVariable: '--radix-dropdown-menu-content-available-width',
+      description: (
+        <>The remaining width between the trigger and the boundary edge</>
+      ),
+    },
+    {
+      cssVariable: '--radix-dropdown-menu-content-available-height',
+      description: (
+        <>The remaining height between the trigger and the boundary edge</>
+      ),
+    },
+    {
+      cssVariable: '--radix-dropdown-menu-trigger-width',
+      description: <>The width of the trigger</>,
+    },
+    {
+      cssVariable: '--radix-dropdown-menu-trigger-height',
+      description: <>The height of the trigger</>,
+    },
+  ]}
+/>
+
 ### SubContent
 
-The component that pops out when a submenu is open. Must be rendered inside `Menubar.Sub`.
+The component that pops out when a submenu is open. Must be rendered inside `DropdownMenu.Sub`.
 
 <PropsTable
   data={[
@@ -1104,8 +1091,8 @@ The component that pops out when a submenu is open. Must be rendered inside `Men
           merging their props and behavior.
           <br />
           <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
+          Read our <a href="../guides/composition">Composition</a> guide for
+          more details.
         </>
       ),
     },
@@ -1175,7 +1162,7 @@ The component that pops out when a submenu is open. Must be rendered inside `Men
         <span>
           Used to force mounting when more control is needed. Useful when
           controlling animation with React animation libraries. It inherits from{' '}
-          <Code>Menubar.Portal</Code>.
+          <Code>DropdownMenu.Portal</Code>.
         </span>
       ),
     },
@@ -1203,7 +1190,8 @@ The component that pops out when a submenu is open. Must be rendered inside `Men
       description: (
         <span>
           When <Code>true</Code>, overrides the <Code>side</Code> and
-          <Code>align</Code> preferences to prevent collisions with boundary edges.
+          <Code>align</Code> preferences to prevent collisions with boundary
+          edges.
         </span>
       ),
     },
@@ -1229,8 +1217,8 @@ The component that pops out when a submenu is open. Must be rendered inside `Men
         <span>
           The distance in pixels from the boundary edges where collision
           detection should occur. Accepts a number (same for all sides), or a
-          partial padding object, for example: <Code>{`{ top: 20, left: 20 }`}</Code>
-          .
+          partial padding object, for example:{' '}
+          <Code>{`{ top: 20, left: 20 }`}</Code>.
         </span>
       ),
     },
@@ -1294,102 +1282,64 @@ The component that pops out when a submenu is open. Must be rendered inside `Men
   ]}
 />
 
-<CssVariablesTable
-  data={[
-    {
-      cssVariable: '--radix-menubar-content-transform-origin',
-      description: (
-        <>
-          The <Code>transform-origin</Code> computed from the content and arrow
-          positions/offsets
-        </>
-      ),
-    },
-    {
-      cssVariable: '--radix-menubar-content-available-width',
-      description: (
-        <>The remaining width between the trigger and the boundary edge</>
-      ),
-    },
-    {
-      cssVariable: '--radix-menubar-content-available-height',
-      description: (
-        <>The remaining height between the trigger and the boundary edge</>
-      ),
-    },
-    {
-      cssVariable: '--radix-menubar-trigger-width',
-      description: <>The width of the trigger</>,
-    },
-    {
-      cssVariable: '--radix-menubar-trigger-height',
-      description: <>The height of the trigger</>,
-    },
-  ]}
-/>
-
 ## Examples
 
 ### With submenus
 
-You can create submenus by using `Menubar.Sub` in combination with its parts.
+You can create submenus by using `DropdownMenu.Sub` in combination with its parts.
 
-```jsx line=9-18
-<Menubar.Root>
-  <Menubar.Menu>
-    <Menubar.Trigger>…</Menubar.Trigger>
-    <Menubar.Portal>
-      <Menubar.Content>
-        <Menubar.Item>…</Menubar.Item>
-        <Menubar.Item>…</Menubar.Item>
-        <Menubar.Separator />
-        <Menubar.Sub>
-          <Menubar.SubTrigger>Sub menu →</Menubar.SubTrigger>
-          <Menubar.Portal>
-            <Menubar.SubContent>
-              <Menubar.Item>Sub menu item</Menubar.Item>
-              <Menubar.Item>Sub menu item</Menubar.Item>
-              <Menubar.Arrow />
-            </Menubar.SubContent>
-          </Menubar.Portal>
-        </Menubar.Sub>
-        <Menubar.Separator />
-        <Menubar.Item>…</Menubar.Item>
-      </Menubar.Content>
-    </Menubar.Portal>
-  </Menubar.Menu>
-</Menubar.Root>
+```jsx line=8-17
+<DropdownMenu.Root>
+  <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+  <DropdownMenu.Portal>
+    <DropdownMenu.Content>
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Sub>
+        <DropdownMenu.SubTrigger>Sub menu →</DropdownMenu.SubTrigger>
+        <DropdownMenu.Portal>
+          <DropdownMenu.SubContent>
+            <DropdownMenu.Item>Sub menu item</DropdownMenu.Item>
+            <DropdownMenu.Item>Sub menu item</DropdownMenu.Item>
+            <DropdownMenu.Arrow />
+          </DropdownMenu.SubContent>
+        </DropdownMenu.Portal>
+      </DropdownMenu.Sub>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Portal>
+</DropdownMenu.Root>
 ```
 
 ### With disabled items
 
 You can add special styles to disabled items via the `data-disabled` attribute.
 
-```jsx line=11
+```jsx line=10
 // index.jsx
-import * as Menubar from '@radix-ui/react-menubar';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import './styles.css';
 
 export default () => (
-  <Menubar.Root>
-    <Menubar.Menu>
-      <Menubar.Trigger>…</Menubar.Trigger>
-      <Menubar.Portal>
-        <Menubar.Content>
-          <Menubar.Item __className__="MenubarItem" __disabled__>
-            …
-          </Menubar.Item>
-          <Menubar.Item className="MenubarItem">…</Menubar.Item>
-        </Menubar.Content>
-      </Menubar.Portal>
-    </Menubar.Menu>
-  </Menubar.Root>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+    <DropdownMenu.Portal>
+      <DropdownMenu.Content>
+        <DropdownMenu.Item __className__="DropdownMenuItem" __disabled__>
+          …
+        </DropdownMenu.Item>
+        <DropdownMenu.Item className="DropdownMenuItem">…</DropdownMenu.Item>
+      </DropdownMenu.Content>
+    </DropdownMenu.Portal>
+  </DropdownMenu.Root>
 );
 ```
 
 ```css line=2
 /* styles.css */
-.MenubarItem[__data-disabled__] {
+.DropdownMenuItem[__data-disabled__] {
   color: gainsboro;
 }
 ```
@@ -1398,77 +1348,71 @@ export default () => (
 
 Use the `Separator` part to add a separator between items.
 
-```jsx line=7,9
-<Menubar.Root>
-  <Menubar.Menu>
-    <Menubar.Trigger>…</Menubar.Trigger>
-    <Menubar.Portal>
-      <Menubar.Content>
-        <Menubar.Item>…</Menubar.Item>
-        <Menubar.Separator />
-        <Menubar.Item>…</Menubar.Item>
-        <Menubar.Separator />
-        <Menubar.Item>…</Menubar.Item>
-      </Menubar.Content>
-    </Menubar.Portal>
-  </Menubar.Menu>
-</Menubar.Root>
+```jsx line=6,8
+<DropdownMenu.Root>
+  <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+  <DropdownMenu.Portal>
+    <DropdownMenu.Content>
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Portal>
+</DropdownMenu.Root>
 ```
 
 ### With labels
 
 Use the `Label` part to help label a section.
 
-```jsx line=6
-<Menubar.Root>
-  <Menubar.Menu>
-    <Menubar.Trigger>…</Menubar.Trigger>
-    <Menubar.Portal>
-      <Menubar.Content>
-        <Menubar.Label>Label</Menubar.Label>
-        <Menubar.Item>…</Menubar.Item>
-        <Menubar.Item>…</Menubar.Item>
-        <Menubar.Item>…</Menubar.Item>
-      </Menubar.Content>
-    </Menubar.Portal>
-  </Menubar.Menu>
-</Menubar.Root>
+```jsx line=5
+<DropdownMenu.Root>
+  <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+  <DropdownMenu.Portal>
+    <DropdownMenu.Content>
+      <DropdownMenu.Label>Label</DropdownMenu.Label>
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+      <DropdownMenu.Item>…</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Portal>
+</DropdownMenu.Root>
 ```
 
 ### With checkbox items
 
 Use the `CheckboxItem` part to add an item that can be checked.
 
-```jsx line=6,17-22
+```jsx line=6,16-21
 import React from 'react';
 import { CheckIcon } from '@radix-ui/react-icons';
-import * as Menubar from '@radix-ui/react-menubar';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 export default () => {
   const [checked, setChecked] = React.useState(true);
 
   return (
-    <Menubar.Root>
-      <Menubar.Menu>
-        <Menubar.Trigger>…</Menubar.Trigger>
-        <Menubar.Portal>
-          <Menubar.Content>
-            <Menubar.Item>…</Menubar.Item>
-            <Menubar.Item>…</Menubar.Item>
-            <Menubar.Separator />
-            <Menubar.CheckboxItem
-              checked={checked}
-              onCheckedChange={setChecked}
-            >
-              <Menubar.ItemIndicator>
-                <CheckIcon />
-              </Menubar.ItemIndicator>
-              Checkbox item
-            </Menubar.CheckboxItem>
-          </Menubar.Content>
-        </Menubar.Portal>
-      </Menubar.Menu>
-    </Menubar.Root>
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content>
+          <DropdownMenu.Item>…</DropdownMenu.Item>
+          <DropdownMenu.Item>…</DropdownMenu.Item>
+          <DropdownMenu.Separator />
+          <DropdownMenu.CheckboxItem
+            checked={checked}
+            onCheckedChange={setChecked}
+          >
+            <DropdownMenu.ItemIndicator>
+              <CheckIcon />
+            </DropdownMenu.ItemIndicator>
+            Checkbox item
+          </DropdownMenu.CheckboxItem>
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
   );
 };
 ```
@@ -1477,38 +1421,42 @@ export default () => {
 
 Use the `RadioGroup` and `RadioItem` parts to add an item that can be checked amongst others.
 
-```jsx line=6,14-27
+```jsx line=6,13-32
 import React from 'react';
 import { CheckIcon } from '@radix-ui/react-icons';
-import * as Menubar from '@radix-ui/react-menubar';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 export default () => {
   const [color, setColor] = React.useState('blue');
 
   return (
-    <Menubar.Root>
-      <Menubar.Menu>
-        <Menubar.Trigger>…</Menubar.Trigger>
-        <Menubar.Portal>
-          <Menubar.Content>
-            <Menubar.RadioGroup value={color} onValueChange={setColor}>
-              <Menubar.RadioItem value="red">
-                <Menubar.ItemIndicator>
-                  <CheckIcon />
-                </Menubar.ItemIndicator>
-                Red
-              </Menubar.RadioItem>
-              <Menubar.RadioItem value="blue">
-                <Menubar.ItemIndicator>
-                  <CheckIcon />
-                </Menubar.ItemIndicator>
-                Blue
-              </Menubar.RadioItem>
-            </Menubar.RadioGroup>
-          </Menubar.Content>
-        </Menubar.Portal>
-      </Menubar.Menu>
-    </Menubar.Root>
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content>
+          <DropdownMenu.RadioGroup value={color} onValueChange={setColor}>
+            <DropdownMenu.RadioItem value="red">
+              <DropdownMenu.ItemIndicator>
+                <CheckIcon />
+              </DropdownMenu.ItemIndicator>
+              Red
+            </DropdownMenu.RadioItem>
+            <DropdownMenu.RadioItem value="blue">
+              <DropdownMenu.ItemIndicator>
+                <CheckIcon />
+              </DropdownMenu.ItemIndicator>
+              Blue
+            </DropdownMenu.RadioItem>
+            <DropdownMenu.RadioItem value="green">
+              <DropdownMenu.ItemIndicator>
+                <CheckIcon />
+              </DropdownMenu.ItemIndicator>
+              Green
+            </DropdownMenu.RadioItem>
+          </DropdownMenu.RadioGroup>
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
   );
 };
 ```
@@ -1517,27 +1465,25 @@ export default () => {
 
 You can add extra decorative elements in the `Item` parts, such as images.
 
-```jsx line=10,14
-import * as Menubar from '@radix-ui/react-menubar';
+```jsx line=9,13
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 export default () => (
-  <Menubar.Root>
-    <Menubar.Menu>
-      <Menubar.Trigger>…</Menubar.Trigger>
-      <Menubar.Portal>
-        <Menubar.Content>
-          <Menubar.Item>
-            <img src="…" />
-            Adolfo Hess
-          </Menubar.Item>
-          <Menubar.Item>
-            <img src="…" />
-            Miyah Myles
-          </Menubar.Item>
-        </Menubar.Content>
-      </Menubar.Portal>
-    </Menubar.Menu>
-  </Menubar.Root>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+    <DropdownMenu.Portal>
+      <DropdownMenu.Content>
+        <DropdownMenu.Item>
+          <img src="…" />
+          Adolfo Hess
+        </DropdownMenu.Item>
+        <DropdownMenu.Item>
+          <img src="…" />
+          Miyah Myles
+        </DropdownMenu.Item>
+      </DropdownMenu.Content>
+    </DropdownMenu.Portal>
+  </DropdownMenu.Root>
 );
 ```
 
@@ -1545,58 +1491,58 @@ export default () => (
 
 You may want to constrain the width of the content (or sub-content) so that it matches the trigger (or sub-trigger) width. You may also want to constrain its height to not exceed the viewport.
 
-We expose several CSS custom properties such as `--radix-menubar-trigger-width` and `--radix-menubar-content-available-height` to support this. Use them to constrain the content dimensions.
+We expose several CSS custom properties such as `--radix-dropdown-menu-trigger-width` and `--radix-dropdown-menu-content-available-height` to support this. Use them to constrain the content dimensions.
 
 ```jsx line=9
 // index.jsx
-import * as Menubar from '@radix-ui/react-menubar';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import './styles.css';
 
 export default () => (
-  <Menubar.Root>
-    <Menubar.Trigger>…</Menubar.Trigger>
-    <Menubar.Portal>
-      <Menubar.Content __className__="MenubarContent" sideOffset={5}>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+    <DropdownMenu.Portal>
+      <DropdownMenu.Content __className__="DropdownMenuContent" sideOffset={5}>
         …
-      </Menubar.Content>
-    </Menubar.Portal>
-  </Menubar.Root>
+      </DropdownMenu.Content>
+    </DropdownMenu.Portal>
+  </DropdownMenu.Root>
 );
 ```
 
 ```css
 /* styles.css */
-.MenubarContent {
-  width: var(__--radix-menubar-trigger-width__);
-  max-height: var(__--radix-menubar-content-available-height__);
+.DropdownMenuContent {
+  width: var(__--radix-dropdown-menu-trigger-width__);
+  max-height: var(__--radix-dropdown-menu-content-available-height__);
 }
 ```
 
 ### Origin-aware animations
 
-We expose a CSS custom property `--radix-menubar-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
+We expose a CSS custom property `--radix-dropdown-menu-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
-```jsx line=10
+```jsx line=9
 // index.jsx
-import * as Menubar from '@radix-ui/react-menubar';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import './styles.css';
 
 export default () => (
-  <Menubar.Root>
-    <Menubar.Menu>
-      <Menubar.Trigger>…</Menubar.Trigger>
-      <Menubar.Portal>
-        <Menubar.Content __className__="MenubarContent">…</Menubar.Content>
-      </Menubar.Portal>
-    </Menubar.Menu>
-  </Menubar.Root>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+    <DropdownMenu.Portal>
+      <DropdownMenu.Content __className__="DropdownMenuContent">
+        …
+      </DropdownMenu.Content>
+    </DropdownMenu.Portal>
+  </DropdownMenu.Root>
 );
 ```
 
 ```css line=3
 /* styles.css */
-.MenubarContent {
-  transform-origin: var(__--radix-menubar-content-transform-origin__);
+.DropdownMenuContent {
+  transform-origin: var(__--radix-dropdown-menu-content-transform-origin__);
   animation: scaleIn 0.5s ease-out;
 }
 
@@ -1616,33 +1562,33 @@ export default () => (
 
 We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
 
-```jsx line=10
+```jsx line=9
 // index.jsx
-import * as Menubar from '@radix-ui/react-menubar';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import './styles.css';
 
 export default () => (
-  <Menubar.Root>
-    <Menubar.Menu>
-      <Menubar.Trigger>…</Menubar.Trigger>
-      <Menubar.Portal>
-        <Menubar.Content __className__="MenubarContent">…</Menubar.Content>
-      </Menubar.Portal>
-    </Menubar.Menu>
-  </Menubar.Root>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+    <DropdownMenu.Portal>
+      <DropdownMenu.Content __className__="DropdownMenuContent">
+        …
+      </DropdownMenu.Content>
+    </DropdownMenu.Portal>
+  </DropdownMenu.Root>
 );
 ```
 
 ```css line=6-11
 /* styles.css */
-.MenubarContent {
+.DropdownMenuContent {
   animation-duration: 0.6s;
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
-.MenubarContent[__data-side='top'__] {
+.DropdownMenuContent[__data-side='top'__] {
   animation-name: slideUp;
 }
-.MenubarContent[__data-side='bottom'__] {
+.DropdownMenuContent[__data-side='bottom'__] {
   animation-name: slideDown;
 }
 
@@ -1681,8 +1627,8 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA
       keys: ['Space'],
       description: (
         <span>
-          When focus is on <Code>Menubar.Trigger</Code>, opens the menubar and
-          focuses the first item.
+          When focus is on <Code>DropdownMenu.Trigger</Code>, opens the dropdown
+          menu and focuses the first item.
           <br />
           When focus is on an item, activates the focused item.
         </span>
@@ -1692,8 +1638,8 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA
       keys: ['Enter'],
       description: (
         <span>
-          When focus is on <Code>Menubar.Trigger</Code>, opens the associated
-          menu.
+          When focus is on <Code>DropdownMenu.Trigger</Code>, opens the dropdown
+          menu and focuses the first item.
           <br />
           When focus is on an item, activates the focused item.
         </span>
@@ -1703,7 +1649,7 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA
       keys: ['ArrowDown'],
       description: (
         <span>
-          When focus is on <Code>Menubar.Trigger</Code>, opens the associated
+          When focus is on <Code>DropdownMenu.Trigger</Code>, opens the dropdown
           menu.
           <br />
           When focus is on an item, moves focus to the next item.
@@ -1720,12 +1666,8 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA
       keys: ['ArrowRight', 'ArrowLeft'],
       description: (
         <span>
-          When focus is on a <Code>Menubar.Trigger</Code>, moves focus to the
-          next or previous item. <br />
-          When focus is on a <Code>Menubar.SubTrigger</Code>, opens or closes the
-          submenu depending on reading direction. <br />
-          When focus is within a <Code>Menubar.Content</Code>, opens the next
-          menu in the menubar.
+          When focus is on <Code>DropdownMenu.SubTrigger</Code>, opens or closes
+          the submenu depending on reading direction.
         </span>
       ),
     },
@@ -1733,10 +1675,112 @@ Adheres to the [Menu Button WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA
       keys: ['Esc'],
       description: (
         <span>
-          Closes the currently open menu and moves focus to its{' '}
-          <Code>Menubar.Trigger</Code>.
+          Closes the dropdown menu and moves focus to{' '}
+          <Code>DropdownMenu.Trigger</Code>.
         </span>
       ),
     },
   ]}
 />
+
+## Custom APIs
+
+Create your own API by abstracting the primitive parts into your own component.
+
+### Abstract the arrow and item indicators
+
+This example abstracts the `DropdownMenu.Arrow` and `DropdownMenu.ItemIndicator` parts. It also wraps implementation details for `CheckboxItem` and `RadioItem`.
+
+#### Usage
+
+```jsx
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuItem,
+  DropdownMenuGroup,
+  DropdownMenuCheckboxItem,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+} from './your-dropdown-menu';
+
+export default () => (
+  <DropdownMenu>
+    <DropdownMenuTrigger>DropdownMenu trigger</DropdownMenuTrigger>
+    <DropdownMenuContent>
+      <DropdownMenuItem>Item</DropdownMenuItem>
+      <DropdownMenuLabel>Label</DropdownMenuLabel>
+      <DropdownMenuGroup>Group</DropdownMenuGroup>
+      <DropdownMenuCheckboxItem>CheckboxItem</DropdownMenuCheckboxItem>
+      <DropdownMenuSeparator>Separator</DropdownMenuSeparator>
+      <DropdownMenuRadioGroup>
+        <DropdownMenuRadioItem>RadioItem</DropdownMenuRadioItem>
+        <DropdownMenuRadioItem>RadioItem</DropdownMenuRadioItem>
+      </DropdownMenuRadioGroup>
+    </DropdownMenuContent>
+  </DropdownMenu>
+);
+```
+
+#### Implementation
+
+```jsx
+// your-dropdown-menu.jsx
+import React from 'react';
+import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
+import { CheckIcon, DividerHorizontalIcon } from '@radix-ui/react-icons';
+
+export const DropdownMenu = DropdownMenuPrimitive.Root;
+export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
+
+export const DropdownMenuContent = React.forwardRef(
+  ({ children, ...props }, forwardedRef) => {
+    return (
+      <DropdownMenuPrimitive.Portal>
+        <DropdownMenuPrimitive.Content {...props} ref={forwardedRef}>
+          {children}
+          <DropdownMenuPrimitive.Arrow />
+        </DropdownMenuPrimitive.Content>
+      </DropdownMenuPrimitive.Portal>
+    );
+  },
+);
+
+export const DropdownMenuLabel = DropdownMenuPrimitive.Label;
+export const DropdownMenuItem = DropdownMenuPrimitive.Item;
+export const DropdownMenuGroup = DropdownMenuPrimitive.Group;
+
+export const DropdownMenuCheckboxItem = React.forwardRef(
+  ({ children, ...props }, forwardedRef) => {
+    return (
+      <DropdownMenuPrimitive.CheckboxItem {...props} ref={forwardedRef}>
+        {children}
+        <DropdownMenuPrimitive.ItemIndicator>
+          {props.checked === 'indeterminate' && <DividerHorizontalIcon />}
+          {props.checked === true && <CheckIcon />}
+        </DropdownMenuPrimitive.ItemIndicator>
+      </DropdownMenuPrimitive.CheckboxItem>
+    );
+  },
+);
+
+export const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
+
+export const DropdownMenuRadioItem = React.forwardRef(
+  ({ children, ...props }, forwardedRef) => {
+    return (
+      <DropdownMenuPrimitive.RadioItem {...props} ref={forwardedRef}>
+        {children}
+        <DropdownMenuPrimitive.ItemIndicator>
+          <CheckIcon />
+        </DropdownMenuPrimitive.ItemIndicator>
+      </DropdownMenuPrimitive.RadioItem>
+    );
+  },
+);
+
+export const DropdownMenuSeparator = DropdownMenuPrimitive.Separator;
+```
