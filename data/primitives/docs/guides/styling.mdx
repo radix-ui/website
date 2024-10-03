@@ -6,8 +6,8 @@ metaDescription: Radix Primitives are unstyled—and compatible with any styling
 # Styling
 
 <Description>
-  Radix Primitives are unstyled—and compatible with any styling solution—giving
-  you complete control over styling.
+	Radix Primitives are unstyled—and compatible with any styling solution—giving
+	you complete control over styling.
 </Description>
 
 ## Styling overview
@@ -31,15 +31,15 @@ When components are stateful, their state will be exposed in a `data-state` attr
 You can style a component part by targeting the `className` that you provide.
 
 ```jsx line=3,7
-import * as React from 'react';
-import * as Accordion from '@radix-ui/react-accordion';
-import './styles.css';
+import * as React from "react";
+import * as Accordion from "@radix-ui/react-accordion";
+import "./styles.css";
 
 const AccordionDemo = () => (
-  <Accordion.Root>
-    <Accordion.Item __className__="AccordionItem" value="item-1" />
-    {/* … */}
-  </Accordion.Root>
+	<Accordion.Root>
+		<Accordion.Item __className__="AccordionItem" value="item-1" />
+		{/* … */}
+	</Accordion.Root>
 );
 
 export default AccordionDemo;
@@ -51,11 +51,11 @@ You can style a component state by targeting its `data-state` attribute.
 
 ```css
 .AccordionItem {
-  border-bottom: 1px solid gainsboro;
+	border-bottom: 1px solid gainsboro;
 }
 
-.AccordionItem[__data-state__='open'] {
-  border-bottom-width: 2px;
+.AccordionItem[__data-state__="open"] {
+	border-bottom-width: 2px;
 }
 ```
 
@@ -68,19 +68,19 @@ The examples below are using [styled-components](https://styled-components.com/)
 Most CSS-in-JS libraries export a function for passing components and their styles. You can provide the Radix primitive component directly.
 
 ```jsx line=5-7,11
-import * as React from 'react';
-import * as Accordion from '@radix-ui/react-accordion';
-import styled from 'styled-components';
+import * as React from "react";
+import * as Accordion from "@radix-ui/react-accordion";
+import styled from "styled-components";
 
 const StyledItem = __styled__(Accordion.Item)`
   border-bottom: 1px solid gainsboro;
 `;
 
 const AccordionDemo = () => (
-  <Accordion.Root>
-    <StyledItem value="item-1" />
-    {/* … */}
-  </Accordion.Root>
+	<Accordion.Root>
+		<StyledItem value="item-1" />
+		{/* … */}
+	</Accordion.Root>
 );
 
 export default AccordionDemo;
@@ -91,15 +91,15 @@ export default AccordionDemo;
 You can style a component state by targeting its `data-state` attribute.
 
 ```jsx
-import * as Accordion from '@radix-ui/react-accordion';
-import styled from 'styled-components';
+import * as Accordion from "@radix-ui/react-accordion";
+import styled from "styled-components";
 
 const StyledItem = styled(Accordion.Item)`
-  border-bottom: 1px solid gainsboro;
+	border-bottom: 1px solid gainsboro;
 
-  &[__data-state__='open'] {
-    border-bottom-width: 2px;
-  }
+	&[__data-state__="open"] {
+		border-bottom-width: 2px;
+	}
 `;
 ```
 
@@ -108,16 +108,16 @@ const StyledItem = styled(Accordion.Item)`
 Extending a primitive is done the same way you extend any React component.
 
 ```tsx
-import * as React from 'react';
-import * as AccordionPrimitive from '@radix-ui/react-accordion';
+import * as React from "react";
+import * as AccordionPrimitive from "@radix-ui/react-accordion";
 
 const AccordionItem = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Item>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
+	React.ElementRef<typeof AccordionPrimitive.Item>,
+	React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
 >((props, forwardedRef) => (
-  <AccordionPrimitive.Item {...props} ref={forwardedRef} />
+	<AccordionPrimitive.Item {...props} ref={forwardedRef} />
 ));
-AccordionItem.displayName = 'AccordionItem';
+AccordionItem.displayName = "AccordionItem";
 ```
 
 ## Summary

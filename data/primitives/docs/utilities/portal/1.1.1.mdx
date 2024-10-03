@@ -7,14 +7,14 @@ name: portal
 # Portal
 
 <Description>
-  Renders a React subtree in a different part of the DOM.
+	Renders a React subtree in a different part of the DOM.
 </Description>
 
 <Highlights
-  features={[
-    'Render any React subtree outside of your App.',
-    'Appends to `document.body` by default but can be customized to use a different container.',
-  ]}
+	features={[
+		"Render any React subtree outside of your App.",
+		"Appends to `document.body` by default but can be customized to use a different container.",
+	]}
 />
 
 ## Installation
@@ -30,7 +30,7 @@ npm install @radix-ui/react-portal
 Import the component.
 
 ```jsx
-import * as Portal from '@radix-ui/react-portal';
+import * as Portal from "@radix-ui/react-portal";
 
 export default () => <Portal.Root />;
 ```
@@ -40,7 +40,7 @@ export default () => <Portal.Root />;
 Use the portal primitive.
 
 ```jsx
-import * as Portal from '@radix-ui/react-portal';
+import * as Portal from "@radix-ui/react-portal";
 
 export default () => <Portal.Root>Content</Portal.Root>;
 ```
@@ -52,28 +52,28 @@ export default () => <Portal.Root>Content</Portal.Root>;
 Anything you put inside this component will be rendered in a separate `<div>` element. By default, this element will be appended to `document.body` but you can choose a different container by using the `container` prop.
 
 <PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
-        </>
-      ),
-    },
-    {
-      name: 'container',
-      type: 'HTMLElement',
-      description:
-        'A optional different container where the portaled content should be appended.',
-    },
-  ]}
+	data={[
+		{
+			name: "asChild",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+		{
+			name: "container",
+			type: "HTMLElement",
+			description:
+				"A optional different container where the portaled content should be appended.",
+		},
+	]}
 />

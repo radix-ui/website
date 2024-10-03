@@ -22,9 +22,9 @@ However, you also get access to the same CSS variables that power the Radix Them
 For more information on specific tokens, refer to the corresponding guides in the [Theme section](/themes/docs/theme/overview).
 
 <Flex direction="column" gap="7" my="6">
-  <ThemesAllColors />
-  <ThemesTypeSpecimen />
-  <ThemesPanelComposition />
+	<ThemesAllColors />
+	<ThemesTypeSpecimen />
+	<ThemesPanelComposition />
 </Flex>
 
 ## Overriding styles
@@ -74,8 +74,8 @@ Your main content and portalled content are separated by the stacking context th
 As of Next.js 13.0 to 14.1, the import order of CSS files in `app/**/layout.tsx` is not guaranteed, so Radix Themes may overwrite your own styles even when written correctly:
 
 ```js
-import '@radix-ui/themes/styles.css';
-import './my-styles.css';
+import "@radix-ui/themes/styles.css";
+import "./my-styles.css";
 ```
 
 This Next.js issue may come and go sporadically, or happen only in development or production.
@@ -99,25 +99,25 @@ When you render a custom portal in a Radix Themes project, it will naturally app
 ```jsx line=11,18
 // Implementation example of a custom dialog using the low-level Dialog primitive
 // Refer to https://www.radix-ui.com/primitives/docs/components/dialog
-import * as Dialog from '@radix-ui/react-dialog';
-import { Theme } from '@radix-ui/themes';
+import * as Dialog from "@radix-ui/react-dialog";
+import { Theme } from "@radix-ui/themes";
 
 function MyCustomDialog() {
-  return (
-    <Dialog.Root>
-      <Dialog.Trigger>Open</Dialog.Trigger>
-      <Dialog.Portal>
-        <Theme>
-          <Dialog.Overlay />
-          <Dialog.Content>
-            <Dialog.Title />
-            <Dialog.Description />
-            <Dialog.Close />
-          </Dialog.Content>
-        </Theme>
-      </Dialog.Portal>
-    </Dialog.Root>
-  );
+	return (
+		<Dialog.Root>
+			<Dialog.Trigger>Open</Dialog.Trigger>
+			<Dialog.Portal>
+				<Theme>
+					<Dialog.Overlay />
+					<Dialog.Content>
+						<Dialog.Title />
+						<Dialog.Description />
+						<Dialog.Close />
+					</Dialog.Content>
+				</Theme>
+			</Dialog.Portal>
+		</Dialog.Root>
+	);
 }
 ```
 
@@ -131,33 +131,33 @@ Consider a simple paragraph style that just resets the browser’s default margi
 
 ```css
 .my-paragraph {
-  margin: 0;
+	margin: 0;
 }
 ```
 
 You might apply the margin prop from a `Box` onto your custom paragraph via `asChild`:
 
 ```jsx line="7,9"
-import '@radix-ui/themes/styles.css';
-import './my-styles.css';
+import "@radix-ui/themes/styles.css";
+import "./my-styles.css";
 
 function MyApp() {
-  return (
-    <Theme>
-      <Box asChild m="5">
-        <p className="my-paragraph">My custom paragraph</p>
-      </Box>
-    </Theme>
-  );
+	return (
+		<Theme>
+			<Box asChild m="5">
+				<p className="my-paragraph">My custom paragraph</p>
+			</Box>
+		</Theme>
+	);
 }
 ```
 
 Yet, this won’t work intuitively. The custom styles are imported after Radix Themes styles, so they will override the margin prop. As a workaround, Radix Themes provides separate `tokens.css`, `components.css`, and `utilities.css` files that the original `styles.css` is built upon:
 
 ```jsx
-import '@radix-ui/themes/tokens.css';
-import '@radix-ui/themes/components.css';
-import '@radix-ui/themes/utilities.css';
+import "@radix-ui/themes/tokens.css";
+import "@radix-ui/themes/components.css";
+import "@radix-ui/themes/utilities.css";
 ```
 
 You can import `utilities.css` after your custom styles to ensure that the layout props work as expected with your custom styles. However, if you use Next.js, keep in mind the [import order issue](#nextjs-import-order) that’s mentioned above.
@@ -165,7 +165,7 @@ You can import `utilities.css` after your custom styles to ensure that the layou
 If you use [standalone layout components](/themes/docs/overview/layout#standalone-usage), split CSS files are also available for them:
 
 ```jsx
-import '@radix-ui/themes/layout/tokens.css';
-import '@radix-ui/themes/layout/components.css';
-import '@radix-ui/themes/layout/utilities.css';
+import "@radix-ui/themes/layout/tokens.css";
+import "@radix-ui/themes/layout/components.css";
+import "@radix-ui/themes/layout/utilities.css";
 ```

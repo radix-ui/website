@@ -9,10 +9,10 @@ name: accessible-icon
 <Description>Makes icons accessible by adding a label.</Description>
 
 <Highlights
-  features={[
-    'Quickly make any icon accessible by wrapping it and providing a meaningful label.',
-    'No visual difference, but announced correctly by screen readers.',
-  ]}
+	features={[
+		"Quickly make any icon accessible by wrapping it and providing a meaningful label.",
+		"No visual difference, but announced correctly by screen readers.",
+	]}
 />
 
 ## Installation
@@ -28,7 +28,7 @@ npm install @radix-ui/react-accessible-icon
 Import the component.
 
 ```jsx
-import * as AccessibleIcon from '@radix-ui/react-accessible-icon';
+import * as AccessibleIcon from "@radix-ui/react-accessible-icon";
 
 export default () => <AccessibleIcon.Root />;
 ```
@@ -40,21 +40,21 @@ export default () => <AccessibleIcon.Root />;
 Contains the icon to make accessible.
 
 <PropsTable
-  data={[
-    {
-      name: 'label',
-      required: true,
-      type: 'string',
-      description: (
-        <span>
-          The accessible label for the icon. This label will be visually hidden
-          but announced to screen reader users, similar to <Code>alt</Code> text
-          for <Code>img</Code>
-          tags.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "label",
+			required: true,
+			type: "string",
+			description: (
+				<span>
+					The accessible label for the icon. This label will be visually hidden
+					but announced to screen reader users, similar to <Code>alt</Code> text
+					for <Code>img</Code>
+					tags.
+				</span>
+			),
+		},
+	]}
 />
 
 ## Accessibility

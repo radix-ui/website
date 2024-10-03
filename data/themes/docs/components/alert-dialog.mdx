@@ -6,29 +6,29 @@ sourcePath: components/alert-dialog
 
 ```jsx live=true
 <AlertDialog.Root>
-  <AlertDialog.Trigger>
-    <Button color="red">Revoke access</Button>
-  </AlertDialog.Trigger>
-  <AlertDialog.Content maxWidth="450px">
-    <AlertDialog.Title>Revoke access</AlertDialog.Title>
-    <AlertDialog.Description size="2">
-      Are you sure? This application will no longer be accessible and any
-      existing sessions will be expired.
-    </AlertDialog.Description>
+	<AlertDialog.Trigger>
+		<Button color="red">Revoke access</Button>
+	</AlertDialog.Trigger>
+	<AlertDialog.Content maxWidth="450px">
+		<AlertDialog.Title>Revoke access</AlertDialog.Title>
+		<AlertDialog.Description size="2">
+			Are you sure? This application will no longer be accessible and any
+			existing sessions will be expired.
+		</AlertDialog.Description>
 
-    <Flex gap="3" mt="4" justify="end">
-      <AlertDialog.Cancel>
-        <Button variant="soft" color="gray">
-          Cancel
-        </Button>
-      </AlertDialog.Cancel>
-      <AlertDialog.Action>
-        <Button variant="solid" color="red">
-          Revoke access
-        </Button>
-      </AlertDialog.Action>
-    </Flex>
-  </AlertDialog.Content>
+		<Flex gap="3" mt="4" justify="end">
+			<AlertDialog.Cancel>
+				<Button variant="soft" color="gray">
+					Cancel
+				</Button>
+			</AlertDialog.Cancel>
+			<AlertDialog.Action>
+				<Button variant="solid" color="red">
+					Revoke access
+				</Button>
+			</AlertDialog.Action>
+		</Flex>
+	</AlertDialog.Content>
 </AlertDialog.Root>
 ```
 
@@ -77,49 +77,49 @@ Use it in conjunction with the `width`, `minWidth` and `maxWidth` props to contr
 
 ```jsx live=true line=6,17,28,39
 <Flex gap="4" align="center">
-  <AlertDialog.Root>
-    <AlertDialog.Trigger>
-      <Button variant="soft">Size 1</Button>
-    </AlertDialog.Trigger>
-    <AlertDialog.Content __size__="1" maxWidth="300px">
-      <Text as="p" trim="both" size="1">
-        The quick brown fox jumps over the lazy dog.
-      </Text>
-    </AlertDialog.Content>
-  </AlertDialog.Root>
+	<AlertDialog.Root>
+		<AlertDialog.Trigger>
+			<Button variant="soft">Size 1</Button>
+		</AlertDialog.Trigger>
+		<AlertDialog.Content __size__="1" maxWidth="300px">
+			<Text as="p" trim="both" size="1">
+				The quick brown fox jumps over the lazy dog.
+			</Text>
+		</AlertDialog.Content>
+	</AlertDialog.Root>
 
-  <AlertDialog.Root>
-    <AlertDialog.Trigger>
-      <Button variant="soft">Size 2</Button>
-    </AlertDialog.Trigger>
-    <AlertDialog.Content __size__="2" maxWidth="400px">
-      <Text as="p" trim="both" size="2">
-        The quick brown fox jumps over the lazy dog.
-      </Text>
-    </AlertDialog.Content>
-  </AlertDialog.Root>
+	<AlertDialog.Root>
+		<AlertDialog.Trigger>
+			<Button variant="soft">Size 2</Button>
+		</AlertDialog.Trigger>
+		<AlertDialog.Content __size__="2" maxWidth="400px">
+			<Text as="p" trim="both" size="2">
+				The quick brown fox jumps over the lazy dog.
+			</Text>
+		</AlertDialog.Content>
+	</AlertDialog.Root>
 
-  <AlertDialog.Root>
-    <AlertDialog.Trigger>
-      <Button variant="soft">Size 3</Button>
-    </AlertDialog.Trigger>
-    <AlertDialog.Content __size__="3" maxWidth="500px">
-      <Text as="p" trim="both" size="3">
-        The quick brown fox jumps over the lazy dog.
-      </Text>
-    </AlertDialog.Content>
-  </AlertDialog.Root>
+	<AlertDialog.Root>
+		<AlertDialog.Trigger>
+			<Button variant="soft">Size 3</Button>
+		</AlertDialog.Trigger>
+		<AlertDialog.Content __size__="3" maxWidth="500px">
+			<Text as="p" trim="both" size="3">
+				The quick brown fox jumps over the lazy dog.
+			</Text>
+		</AlertDialog.Content>
+	</AlertDialog.Root>
 
-  <AlertDialog.Root>
-    <AlertDialog.Trigger>
-      <Button variant="soft">Size 4</Button>
-    </AlertDialog.Trigger>
-    <AlertDialog.Content __size__="4">
-      <Text as="p" trim="both" size="4">
-        The quick brown fox jumps over the lazy dog.
-      </Text>
-    </AlertDialog.Content>
-  </AlertDialog.Root>
+	<AlertDialog.Root>
+		<AlertDialog.Trigger>
+			<Button variant="soft">Size 4</Button>
+		</AlertDialog.Trigger>
+		<AlertDialog.Content __size__="4">
+			<Text as="p" trim="both" size="4">
+				The quick brown fox jumps over the lazy dog.
+			</Text>
+		</AlertDialog.Content>
+	</AlertDialog.Root>
 </Flex>
 ```
 
@@ -129,52 +129,52 @@ Use the [Inset](/themes/docs/components/inset) component to align content flush 
 
 ```jsx live=true
 <AlertDialog.Root>
-  <AlertDialog.Trigger>
-    <Button color="red">Delete users</Button>
-  </AlertDialog.Trigger>
-  <AlertDialog.Content maxWidth="500px">
-    <AlertDialog.Title>Delete Users</AlertDialog.Title>
-    <AlertDialog.Description size="2">
-      Are you sure you want to delete these users? This action is permanent and
-      cannot be undone.
-    </AlertDialog.Description>
+	<AlertDialog.Trigger>
+		<Button color="red">Delete users</Button>
+	</AlertDialog.Trigger>
+	<AlertDialog.Content maxWidth="500px">
+		<AlertDialog.Title>Delete Users</AlertDialog.Title>
+		<AlertDialog.Description size="2">
+			Are you sure you want to delete these users? This action is permanent and
+			cannot be undone.
+		</AlertDialog.Description>
 
-    <Inset side="x" my="5">
-      <Table.Root>
-        <Table.Header>
-          <Table.Row>
-            <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
-          </Table.Row>
-        </Table.Header>
+		<Inset side="x" my="5">
+			<Table.Root>
+				<Table.Header>
+					<Table.Row>
+						<Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+						<Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+						<Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
+					</Table.Row>
+				</Table.Header>
 
-        <Table.Body>
-          <Table.Row>
-            <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
-            <Table.Cell>danilo@example.com</Table.Cell>
-            <Table.Cell>Developer</Table.Cell>
-          </Table.Row>
+				<Table.Body>
+					<Table.Row>
+						<Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+						<Table.Cell>danilo@example.com</Table.Cell>
+						<Table.Cell>Developer</Table.Cell>
+					</Table.Row>
 
-          <Table.Row>
-            <Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
-            <Table.Cell>zahra@example.com</Table.Cell>
-            <Table.Cell>Admin</Table.Cell>
-          </Table.Row>
-        </Table.Body>
-      </Table.Root>
-    </Inset>
+					<Table.Row>
+						<Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+						<Table.Cell>zahra@example.com</Table.Cell>
+						<Table.Cell>Admin</Table.Cell>
+					</Table.Row>
+				</Table.Body>
+			</Table.Root>
+		</Inset>
 
-    <Flex gap="3" justify="end">
-      <AlertDialog.Cancel>
-        <Button variant="soft" color="gray">
-          Cancel
-        </Button>
-      </AlertDialog.Cancel>
-      <AlertDialog.Action>
-        <Button color="red">Delete users</Button>
-      </AlertDialog.Action>
-    </Flex>
-  </AlertDialog.Content>
+		<Flex gap="3" justify="end">
+			<AlertDialog.Cancel>
+				<Button variant="soft" color="gray">
+					Cancel
+				</Button>
+			</AlertDialog.Cancel>
+			<AlertDialog.Action>
+				<Button color="red">Delete users</Button>
+			</AlertDialog.Action>
+		</Flex>
+	</AlertDialog.Content>
 </AlertDialog.Root>
 ```

@@ -8,17 +8,17 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/tabs
 # Tabs
 
 <Description>
-  A set of layered sections of content—known as tab panels—that display one
-  panel of content at a time.
+	A set of layered sections of content—known as tab panels—that display one
+	panel of content at a time.
 </Description>
 
 <Highlights
-  features={[
-    'Can be controlled or uncontrolled.',
-    'Supports horizontal/vertical orientation.',
-    'Supports automatic/manual activation.',
-    'Full keyboard navigation.',
-  ]}
+	features={[
+		"Can be controlled or uncontrolled.",
+		"Supports horizontal/vertical orientation.",
+		"Supports automatic/manual activation.",
+		"Full keyboard navigation.",
+	]}
 />
 
 ## Installation
@@ -34,15 +34,15 @@ npm install @radix-ui/react-tabs
 Import the components and piece the parts together.
 
 ```jsx
-import * as Tabs from '@radix-ui/react-tabs';
+import * as Tabs from "@radix-ui/react-tabs";
 
 export default () => (
-  <Tabs.Root>
-    <Tabs.List>
-      <Tabs.Tab />
-    </Tabs.List>
-    <Tabs.Panel />
-  </Tabs.Root>
+	<Tabs.Root>
+		<Tabs.List>
+			<Tabs.Tab />
+		</Tabs.List>
+		<Tabs.Panel />
+	</Tabs.Root>
 );
 ```
 
@@ -51,50 +51,50 @@ export default () => (
 Create your styled tabs component from the primitive parts.
 
 ```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Tabs from '@radix-ui/react-tabs';
+import { styled } from "path-to/stitches.config";
+import * as Tabs from "@radix-ui/react-tabs";
 
 const StyledTabs = styled(Tabs.Root, {
-  display: 'flex',
-  flexDirection: 'column',
+	display: "flex",
+	flexDirection: "column",
 });
 
 const StyledList = styled(Tabs.List, {
-  flexShrink: 0,
-  display: 'flex',
-  borderBottom: '1px solid gainsboro',
+	flexShrink: 0,
+	display: "flex",
+	borderBottom: "1px solid gainsboro",
 });
 
 const StyledTab = styled(Tabs.Tab, {
-  flexShrink: 0,
-  padding: '10px 20px',
-  color: 'slategray',
-  userSelect: 'none',
+	flexShrink: 0,
+	padding: "10px 20px",
+	color: "slategray",
+	userSelect: "none",
 
-  '&:hover': { color: 'black' },
+	"&:hover": { color: "black" },
 
-  '&[data-state="active"]': {
-    color: 'black',
-    boxShadow: 'inset 0 -1px 0 0 currentColor, 0 1px 0 0 currentColor',
-  },
+	'&[data-state="active"]': {
+		color: "black",
+		boxShadow: "inset 0 -1px 0 0 currentColor, 0 1px 0 0 currentColor",
+	},
 });
 
 const StyledPanel = styled(Tabs.Panel, {
-  flexGrow: 1,
-  padding: 20,
+	flexGrow: 1,
+	padding: 20,
 });
 
 export default () => (
-  <StyledTabs defaultValue="tab1">
-    <StyledList aria-label="tabs example">
-      <StyledTab value="tab1">One</StyledTab>
-      <StyledTab value="tab2">Two</StyledTab>
-      <StyledTab value="tab3">Three</StyledTab>
-    </StyledList>
-    <StyledPanel value="tab1">Tab one content</StyledPanel>
-    <StyledPanel value="tab2">Tab two content</StyledPanel>
-    <StyledPanel value="tab3">Tab three content</StyledPanel>
-  </StyledTabs>
+	<StyledTabs defaultValue="tab1">
+		<StyledList aria-label="tabs example">
+			<StyledTab value="tab1">One</StyledTab>
+			<StyledTab value="tab2">Two</StyledTab>
+			<StyledTab value="tab3">Three</StyledTab>
+		</StyledList>
+		<StyledPanel value="tab1">Tab one content</StyledPanel>
+		<StyledPanel value="tab2">Tab two content</StyledPanel>
+		<StyledPanel value="tab3">Tab three content</StyledPanel>
+	</StyledTabs>
 );
 ```
 
@@ -111,63 +111,63 @@ export default () => (
 Contains all the tabs component parts.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'defaultValue',
-      required: false,
-      type: 'string',
-      description:
-        'The value of the tab that should be active when initially rendered. Use when you do not need to control the state of the tabs.',
-    },
-    {
-      name: 'value',
-      required: false,
-      type: 'string',
-      description: (
-        <span>
-          The controlled value of the tab to activate. Should be used in
-          conjunction with <Code>onValueChange</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onValueChange',
-      required: false,
-      type: '(value: string) => void',
-      typeSimple: 'function',
-      description: 'Event handler called when the value changes.',
-    },
-    {
-      name: 'orientation',
-      required: false,
-      type: '"horizontal" | "vertical" | undefined',
-      typeSimple: 'enum',
-      default: '"horizontal"',
-      description: 'The orientation of the component.',
-    },
-    {
-      name: 'activationMode',
-      required: false,
-      type: '"automatic" | "manual"',
-      typeSimple: 'enum',
-      default: '"automatic"',
-      description: (
-        <span>
-          When <Code>automatic</Code>, tabs are activated when receiving focus.
-          When <Code>manual</Code>, tabs are activated when clicked.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "div",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "defaultValue",
+			required: false,
+			type: "string",
+			description:
+				"The value of the tab that should be active when initially rendered. Use when you do not need to control the state of the tabs.",
+		},
+		{
+			name: "value",
+			required: false,
+			type: "string",
+			description: (
+				<span>
+					The controlled value of the tab to activate. Should be used in
+					conjunction with <Code>onValueChange</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onValueChange",
+			required: false,
+			type: "(value: string) => void",
+			typeSimple: "function",
+			description: "Event handler called when the value changes.",
+		},
+		{
+			name: "orientation",
+			required: false,
+			type: '"horizontal" | "vertical" | undefined',
+			typeSimple: "enum",
+			default: '"horizontal"',
+			description: "The orientation of the component.",
+		},
+		{
+			name: "activationMode",
+			required: false,
+			type: '"automatic" | "manual"',
+			typeSimple: "enum",
+			default: '"automatic"',
+			description: (
+				<span>
+					When <Code>automatic</Code>, tabs are activated when receiving focus.
+					When <Code>manual</Code>, tabs are activated when clicked.
+				</span>
+			),
+		},
+	]}
 />
 
 ### List
@@ -175,29 +175,29 @@ Contains all the tabs component parts.
 Contains the tabs aligned along the edge of the active panel.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'loop',
-      required: false,
-      type: 'boolean',
-      default: 'true',
-      description: (
-        <span>
-          When <Code>true</Code>, keyboard navigation will loop from last tab to
-          first, and vice versa.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "div",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "loop",
+			required: false,
+			type: "boolean",
+			default: "true",
+			description: (
+				<span>
+					When <Code>true</Code>, keyboard navigation will loop from last tab to
+					first, and vice versa.
+				</span>
+			),
+		},
+	]}
 />
 
 ### Tab
@@ -205,35 +205,35 @@ Contains the tabs aligned along the edge of the active panel.
 The button that activates its associated panel.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'value',
-      required: true,
-      type: 'string',
-      description: 'A unique value that associates the tab with a panel.',
-    },
-    {
-      name: 'disabled',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <span>
-          When <Code>true</Code>, prevents the user from interacting with the
-          tab.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "div",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "value",
+			required: true,
+			type: "string",
+			description: "A unique value that associates the tab with a panel.",
+		},
+		{
+			name: "disabled",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<span>
+					When <Code>true</Code>, prevents the user from interacting with the
+					tab.
+				</span>
+			),
+		},
+	]}
 />
 
 ### Panel
@@ -241,23 +241,23 @@ The button that activates its associated panel.
 Contains the content associated with each tab.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'value',
-      required: true,
-      type: 'string',
-      description: 'A unique value that associates the panel with a tab.',
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "div",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "value",
+			required: true,
+			type: "string",
+			description: "A unique value that associates the panel with a tab.",
+		},
+	]}
 />
 
 ## Examples
@@ -267,50 +267,50 @@ Contains the content associated with each tab.
 You can create a vertical tab by using the `orientation` prop.
 
 ```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Tabs from '@radix-ui/react-tabs';
+import { styled } from "path-to/stitches.config";
+import * as Tabs from "@radix-ui/react-tabs";
 
 const StyledTabs = styled(Tabs.Root, {
-  display: 'flex',
+	display: "flex",
 });
 
 const StyledList = styled(Tabs.List, {
-  flexShrink: 0,
-  flexDirection: 'column',
-  display: 'flex',
-  borderRight: '1px solid gainsboro',
+	flexShrink: 0,
+	flexDirection: "column",
+	display: "flex",
+	borderRight: "1px solid gainsboro",
 });
 
 const StyledTab = styled(Tabs.Tab, {
-  flexShrink: 0,
-  padding: '10px 20px',
-  color: 'slategray',
-  userSelect: 'none',
+	flexShrink: 0,
+	padding: "10px 20px",
+	color: "slategray",
+	userSelect: "none",
 
-  '&:hover': { color: 'black' },
+	"&:hover": { color: "black" },
 
-  '&[data-state="active"]': {
-    color: 'black',
-    boxShadow: 'inset -1px 0 0 currentColor, 1px 0 0 currentColor',
-  },
+	'&[data-state="active"]': {
+		color: "black",
+		boxShadow: "inset -1px 0 0 currentColor, 1px 0 0 currentColor",
+	},
 });
 
 const StyledPanel = styled(Tabs.Panel, {
-  flexGrow: 1,
-  padding: 20,
+	flexGrow: 1,
+	padding: 20,
 });
 
 export default () => (
-  <StyledTabs defaultValue="tab1" orientation="vertical">
-    <StyledList aria-label="tabs example">
-      <StyledTab value="tab1">One</StyledTab>
-      <StyledTab value="tab2">Two</StyledTab>
-      <StyledTab value="tab3">Three</StyledTab>
-    </StyledList>
-    <StyledPanel value="tab1">Tab one content</StyledPanel>
-    <StyledPanel value="tab2">Tab two content</StyledPanel>
-    <StyledPanel value="tab3">Tab three content</StyledPanel>
-  </StyledTabs>
+	<StyledTabs defaultValue="tab1" orientation="vertical">
+		<StyledList aria-label="tabs example">
+			<StyledTab value="tab1">One</StyledTab>
+			<StyledTab value="tab2">Two</StyledTab>
+			<StyledTab value="tab3">Three</StyledTab>
+		</StyledList>
+		<StyledPanel value="tab1">Tab one content</StyledPanel>
+		<StyledPanel value="tab2">Tab two content</StyledPanel>
+		<StyledPanel value="tab3">Tab three content</StyledPanel>
+	</StyledTabs>
 );
 ```
 
@@ -321,67 +321,67 @@ Adheres to the [Tabs WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/pa
 ### Keyboard Interactions
 
 <KeyboardTable
-  data={[
-    {
-      keys: ['Tab'],
-      description: (
-        <span>
-          When focus moves onto the tabs, focuses the active tab. When a tab
-          contains focus, moves focus to the active panel.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowDown'],
-      description: (
-        <span>
-          Moves focus to the next tab depending on <Code>orientation</Code> and
-          activates its associated panel.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowRight'],
-      description: (
-        <span>
-          Moves focus to the next tab depending on <Code>orientation</Code> and
-          activates its associated panel.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowUp'],
-      description: (
-        <span>
-          Moves focus to the previous tab depending on <Code>orientation</Code>{' '}
-          and activates its associated panel.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowLeft'],
-      description: (
-        <span>
-          Moves focus to the previous tab depending on <Code>orientation</Code>{' '}
-          and activates its associated panel.
-        </span>
-      ),
-    },
-    {
-      keys: ['Home'],
-      description: (
-        <span>
-          Moves focus to the first tab and activates its associated panel.
-        </span>
-      ),
-    },
-    {
-      keys: ['End'],
-      description: (
-        <span>
-          Moves focus to the last tab and activates its associated panel.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			keys: ["Tab"],
+			description: (
+				<span>
+					When focus moves onto the tabs, focuses the active tab. When a tab
+					contains focus, moves focus to the active panel.
+				</span>
+			),
+		},
+		{
+			keys: ["ArrowDown"],
+			description: (
+				<span>
+					Moves focus to the next tab depending on <Code>orientation</Code> and
+					activates its associated panel.
+				</span>
+			),
+		},
+		{
+			keys: ["ArrowRight"],
+			description: (
+				<span>
+					Moves focus to the next tab depending on <Code>orientation</Code> and
+					activates its associated panel.
+				</span>
+			),
+		},
+		{
+			keys: ["ArrowUp"],
+			description: (
+				<span>
+					Moves focus to the previous tab depending on <Code>orientation</Code>{" "}
+					and activates its associated panel.
+				</span>
+			),
+		},
+		{
+			keys: ["ArrowLeft"],
+			description: (
+				<span>
+					Moves focus to the previous tab depending on <Code>orientation</Code>{" "}
+					and activates its associated panel.
+				</span>
+			),
+		},
+		{
+			keys: ["Home"],
+			description: (
+				<span>
+					Moves focus to the first tab and activates its associated panel.
+				</span>
+			),
+		},
+		{
+			keys: ["End"],
+			description: (
+				<span>
+					Moves focus to the last tab and activates its associated panel.
+				</span>
+			),
+		},
+	]}
 />

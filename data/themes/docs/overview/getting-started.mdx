@@ -68,7 +68,7 @@ Install the package from your command line.
 Import the global CSS file at the root of your application.
 
 ```ts
-import '@radix-ui/themes/styles.css';
+import "@radix-ui/themes/styles.css";
 ```
 
 ### 3. Add the Theme component
@@ -76,18 +76,18 @@ import '@radix-ui/themes/styles.css';
 Add `Theme` to your application, wrapping the root component inside of `body`.
 
 ```jsx line=7,9
-import { Theme } from '@radix-ui/themes';
+import { Theme } from "@radix-ui/themes";
 
 export default function () {
-  return (
-    <html>
-      <body>
-        <Theme>
-          <MyApp />
-        </Theme>
-      </body>
-    </html>
-  );
+	return (
+		<html>
+			<body>
+				<Theme>
+					<MyApp />
+				</Theme>
+			</body>
+		</html>
+	);
 }
 ```
 
@@ -96,15 +96,15 @@ export default function () {
 You are now ready to use Radix Themes components.
 
 ```jsx
-import { Flex, Text, Button } from '@radix-ui/themes';
+import { Flex, Text, Button } from "@radix-ui/themes";
 
 export default function MyApp() {
-  return (
-    <Flex direction="column" gap="2">
-      <Text>Hello from Radix Themes :)</Text>
-      <Button>Let's go</Button>
-    </Flex>
-  );
+	return (
+		<Flex direction="column" gap="2">
+			<Text>Hello from Radix Themes :)</Text>
+			<Button>Let's go</Button>
+		</Flex>
+	);
 }
 ```
 
@@ -118,7 +118,7 @@ Pass [configuration](/themes/docs/components/theme) to the `Theme` to customize 
 
 ```jsx line=1
 <Theme accentColor="crimson" grayColor="sand" radius="large" scaling="95%">
-  <MyApp />
+	<MyApp />
 </Theme>
 ```
 
@@ -129,15 +129,15 @@ Pass [configuration](/themes/docs/components/theme) to the `Theme` to customize 
 To add `ThemePanel` to your app, import it from the package and drop it inside your root `Theme`.
 
 ```jsx line=7
-import { Theme, ThemePanel } from '@radix-ui/themes';
+import { Theme, ThemePanel } from "@radix-ui/themes";
 
 export default function () {
-  return (
-    <Theme>
-      <MyApp />
-      <ThemePanel />
-    </Theme>
-  );
+	return (
+		<Theme>
+			<MyApp />
+			<ThemePanel />
+		</Theme>
+	);
 }
 ```
 

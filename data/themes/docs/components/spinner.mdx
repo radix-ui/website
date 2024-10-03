@@ -22,9 +22,9 @@ Use the `size` prop to control the size of the spinner.
 
 ```jsx live="true"
 <Flex align="center" gap="4">
-  <Spinner size="1" />
-  <Spinner size="2" />
-  <Spinner size="3" />
+	<Spinner size="1" />
+	<Spinner size="2" />
+	<Spinner size="3" />
 </Flex>
 ```
 
@@ -34,13 +34,13 @@ Use the `loading` prop to control whether the spinner or its children are displa
 
 ```jsx live="true"
 <Flex gap="4">
-  <Spinner loading={true}>
-    <Switch defaultChecked />
-  </Spinner>
+	<Spinner loading={true}>
+		<Switch defaultChecked />
+	</Spinner>
 
-  <Spinner loading={false}>
-    <Switch defaultChecked />
-  </Spinner>
+	<Spinner loading={false}>
+		<Switch defaultChecked />
+	</Spinner>
 </Flex>
 ```
 
@@ -56,9 +56,9 @@ If you have an icon inside the button, you can use the button’s `disabled` sta
 
 ```jsx live=true scroll=true
 <Button disabled>
-  <Spinner loading>
-    <BookmarkIcon />
-  </Spinner>
-  Bookmark
+	<Spinner loading>
+		<BookmarkIcon />
+	</Spinner>
+	Bookmark
 </Button>
 ```

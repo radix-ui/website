@@ -12,7 +12,7 @@ metaDescription: Overview of the space scale and scaling options.
 Spacing values are derived from a 9-step scale, which is used for props such as margin and padding. These props accept numeric strings from `"1"` to `"9"`, which correspond to the steps in the scale below.
 
 <Box my="7">
-  <ThemesSpacingScale />
+	<ThemesSpacingScale />
 </Box>
 
 <ThemesSpacingTable />
@@ -40,24 +40,24 @@ Values which affect layout (spacing, font size, line height) scale relatively to
 
 ```jsx line="1"
 <Theme scaling="100%">
-  <Card variant="surface">
-    <Flex gap="3" align="center">
-      <Avatar size="3" src={person.image} fallback={person.name} />
-      <Box>
-        <Text as="div" size="2" weight="bold">
-          {person.name}
-        </Text>
-        <Text as="div" size="2" color="gray">
-          Approved invoice <Link>#3461</Link>
-        </Text>
-      </Box>
-    </Flex>
-  </Card>
+	<Card variant="surface">
+		<Flex gap="3" align="center">
+			<Avatar size="3" src={person.image} fallback={person.name} />
+			<Box>
+				<Text as="div" size="2" weight="bold">
+					{person.name}
+				</Text>
+				<Text as="div" size="2" color="gray">
+					Approved invoice <Link>#3461</Link>
+				</Text>
+			</Box>
+		</Flex>
+	</Card>
 </Theme>
 ```
 
 <Box my="5">
-  <ThemesScalingExample />
+	<ThemesScalingExample />
 </Box>
 
 #### Scaling factor
@@ -66,6 +66,6 @@ The scaling factor token can be accessed using the `--scaling` CSS variable. If 
 
 ```css
 .MyCustomComponent {
-  width: calc(200px * var(--scaling));
+	width: calc(200px * var(--scaling));
 }
 ```

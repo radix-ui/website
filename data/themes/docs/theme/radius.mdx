@@ -13,27 +13,27 @@ Theme `radius` setting manages the radius factor applied to the components:
 
 ```jsx line="1"
 <Theme radius="medium">
-  <TextField.Root size="3" placeholder="Reply…">
-    <TextField.Slot side="right" px="1">
-      <Button size="2">Send</Button>
-    </TextField.Slot>
-  </TextField.Root>
+	<TextField.Root size="3" placeholder="Reply…">
+		<TextField.Slot side="right" px="1">
+			<Button size="2">Send</Button>
+		</TextField.Slot>
+	</TextField.Root>
 </Theme>
 ```
 
 <Box my="5">
-  <ThemesRadiusExample />
+	<ThemesRadiusExample />
 </Box>
 
 The resulting `border-radius` is contextual and differs depending on the component. For example, when set to `full`, a [Button](/themes/docs/components/button) becomes pill-shaped, while a [Checkbox](/themes/docs/components/checkbox) will never become fully rounded to prevent any confusion between it and a [Radio](/themes/docs/components/radio).
 
 ```jsx live=true
 <Theme radius="full">
-  <Flex align="center" gap="3">
-    <Button>Save</Button>
-    <Switch defaultChecked />
-    <Checkbox defaultChecked />
-  </Flex>
+	<Flex align="center" gap="3">
+		<Button>Save</Button>
+		<Switch defaultChecked />
+		<Checkbox defaultChecked />
+	</Flex>
 </Theme>
 ```
 
@@ -43,11 +43,11 @@ Certain components allow you to override the radius factor using their own `radi
 
 ```jsx live=true
 <Flex align="center" gap="3">
-  <Button radius="none">Save</Button>
-  <Button radius="small">Save</Button>
-  <Button radius="medium">Save</Button>
-  <Button radius="large">Save</Button>
-  <Button radius="full">Save</Button>
+	<Button radius="none">Save</Button>
+	<Button radius="small">Save</Button>
+	<Button radius="medium">Save</Button>
+	<Button radius="large">Save</Button>
+	<Button radius="full">Save</Button>
 </Flex>
 ```
 
@@ -58,7 +58,7 @@ Components that render panels, like Card, Dialog, and Popover, among others, won
 Radius values used in the components are derived from a 6-step scale.
 
 <Box mt="5" mb="6">
-  <ThemesRadiusScale />
+	<ThemesRadiusScale />
 </Box>
 
 While you can’t use a specific step on a particular component directly—the `radius` prop is used to set just the radius factor—you can use the radius scale to style your own components.

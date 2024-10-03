@@ -12,7 +12,7 @@ metaDescription: Using appearance to manage and integrate dark mode.
 Light and dark modes are supported out of the box, allowing you to easily switch appearance without additional design or styling.
 
 <Box my="5">
-  <ThemesDarkModeExample />
+	<ThemesDarkModeExample />
 </Box>
 
 ## Basic usage
@@ -21,7 +21,7 @@ By default, the root `Theme` appearance is `light`. To set a different appearanc
 
 ```jsx line=1
 <Theme appearance="dark">
-  <MyApp />
+	<MyApp />
 </Theme>
 ```
 
@@ -38,33 +38,33 @@ Integration with `next-themes` is simple and straightforward because Radix Theme
 To enable dark mode, use `<ThemeProvider>` from `next-themes` with `attribute="class"`.
 
 ```jsx line=6
-import { Theme } from '@radix-ui/themes';
-import { ThemeProvider } from 'next-themes';
+import { Theme } from "@radix-ui/themes";
+import { ThemeProvider } from "next-themes";
 
 export default function () {
-  return (
-    <ThemeProvider attribute="class">
-      <Theme>
-        <MyApp />
-      </Theme>
-    </ThemeProvider>
-  );
+	return (
+		<ThemeProvider attribute="class">
+			<Theme>
+				<MyApp />
+			</Theme>
+		</ThemeProvider>
+	);
 }
 ```
 
 {
 
 <Callout.Root my="5" color="gray">
-  <Callout.Icon>
-    <InfoCircledIcon />
-  </Callout.Icon>
-  <Callout.Text>
-    <Strong>Do not</Strong> try to set{' '}
-    <Code>{'<Theme appearance={resolvedTheme}>'}</Code>. Instead, rely just on
-    class switching that <Code>next-themes</Code> provides. This way{' '}
-    <Code>next-themes</Code> can prevent the appearance flash during initial
-    render.
-  </Callout.Text>
+	<Callout.Icon>
+		<InfoCircledIcon />
+	</Callout.Icon>
+	<Callout.Text>
+		<Strong>Do not</Strong> try to set{" "}
+		<Code>{"<Theme appearance={resolvedTheme}>"}</Code>. Instead, rely just on
+		class switching that <Code>next-themes</Code> provides. This way{" "}
+		<Code>next-themes</Code> can prevent the appearance flash during initial
+		render.
+	</Callout.Text>
 </Callout.Root>
 
 }

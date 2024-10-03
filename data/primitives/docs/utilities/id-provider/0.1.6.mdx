@@ -9,19 +9,19 @@ name: id
 <Description>Wraps your app to provide stable ids internally.</Description>
 
 <Callout.Root color="yellow" mt="-3">
-  <Callout.Text>
-    {[
-      'This package has been deprecated. Learn more about our changes for ',
-      <Link href="/primitives/docs/guides/server-side-rendering">
-        SSR support here
-      </Link>,
-      '.',
-    ]}
-  </Callout.Text>
+	<Callout.Text>
+		{[
+			"This package has been deprecated. Learn more about our changes for ",
+			<Link href="/primitives/docs/guides/server-side-rendering">
+				SSR support here
+			</Link>,
+			".",
+		]}
+	</Callout.Text>
 </Callout.Root>
 
 <Highlights
-  features={['Enables stable ids in server rendered environments.']}
+	features={["Enables stable ids in server rendered environments."]}
 />
 
 ## Installation
@@ -37,7 +37,7 @@ npm install @radix-ui/react-id
 Import the component.
 
 ```jsx
-import { IdProvider } from '@radix-ui/react-id';
+import { IdProvider } from "@radix-ui/react-id";
 
 export default () => <IdProvider />;
 ```

@@ -7,15 +7,15 @@ name: avatar
 # Avatar
 
 <Description>
-  An image element with a fallback for representing the user.
+	An image element with a fallback for representing the user.
 </Description>
 
 <Highlights
-  features={[
-    'Automatic and manual control over when the image renders.',
-    'Fallback part accepts any children.',
-    'Optionally delay fallback rendering to avoid content flashing.',
-  ]}
+	features={[
+		"Automatic and manual control over when the image renders.",
+		"Fallback part accepts any children.",
+		"Optionally delay fallback rendering to avoid content flashing.",
+	]}
 />
 
 ## Installation
@@ -31,13 +31,13 @@ npm install @radix-ui/react-avatar
 Import the components and piece the parts together.
 
 ```jsx
-import * as Avatar from '@radix-ui/react-avatar';
+import * as Avatar from "@radix-ui/react-avatar";
 
 export default () => (
-  <Avatar.Root>
-    <Avatar.Image />
-    <Avatar.Fallback />
-  </Avatar.Root>
+	<Avatar.Root>
+		<Avatar.Image />
+		<Avatar.Fallback />
+	</Avatar.Root>
 );
 ```
 
@@ -46,41 +46,41 @@ export default () => (
 Create your styled avatar component from the primitive parts.
 
 ```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Avatar from '@radix-ui/react-avatar';
+import { styled } from "path-to/stitches.config";
+import * as Avatar from "@radix-ui/react-avatar";
 
 const StyledAvatar = styled(Avatar.Root, {
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  verticalAlign: 'middle',
-  overflow: 'hidden',
-  userSelect: 'none',
-  width: 48,
-  height: 48,
-  borderRadius: 24,
+	display: "inline-flex",
+	alignItems: "center",
+	justifyContent: "center",
+	verticalAlign: "middle",
+	overflow: "hidden",
+	userSelect: "none",
+	width: 48,
+	height: 48,
+	borderRadius: 24,
 });
 
 const StyledImage = styled(Avatar.Image, {
-  width: '100%',
-  height: '100%',
-  objectFit: 'cover',
+	width: "100%",
+	height: "100%",
+	objectFit: "cover",
 });
 
 const StyledFallback = styled(Avatar.Fallback, {
-  width: '100%',
-  height: '100%',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: 'dodgerblue',
+	width: "100%",
+	height: "100%",
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "center",
+	backgroundColor: "dodgerblue",
 });
 
 export default () => (
-  <StyledAvatar>
-    <StyledImage src="https://picsum.photos/id/1005/400/400" />
-    <StyledFallback>UI</StyledFallback>
-  </StyledAvatar>
+	<StyledAvatar>
+		<StyledImage src="https://picsum.photos/id/1005/400/400" />
+		<StyledFallback>UI</StyledFallback>
+	</StyledAvatar>
 );
 ```
 
@@ -97,29 +97,29 @@ export default () => (
 Contains all the parts of an avatar.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'span',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-avatar',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes. It will be
-          added as a data attribute. Pass <Code>null</Code> to remove selector.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "span",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "selector",
+			required: false,
+			type: "string | null",
+			default: "radix-avatar",
+			description: (
+				<span>
+					A string to use as the component selector for CSS purposes. It will be
+					added as a data attribute. Pass <Code>null</Code> to remove selector.
+				</span>
+			),
+		},
+	]}
 />
 
 ### Image
@@ -127,36 +127,36 @@ Contains all the parts of an avatar.
 The image to render. By default it will only render when it has loaded. You can use the `onLoadingStatusChange` handler if you need more control.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'img',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-avatar-image',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes. It will be
-          added as a data attribute. Pass <Code>null</Code> to remove selector.
-        </span>
-      ),
-    },
-    {
-      name: 'onLoadingStatusChange',
-      type: '(status: "idle" | "loading" | "loaded" | "error") => void',
-      typeSimple: 'function',
-      description:
-        'A callback providing information about the loading status of the image. This is useful in case you want to control more precisely what to render as the image is loading.',
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "img",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "selector",
+			required: false,
+			type: "string | null",
+			default: "radix-avatar-image",
+			description: (
+				<span>
+					A string to use as the component selector for CSS purposes. It will be
+					added as a data attribute. Pass <Code>null</Code> to remove selector.
+				</span>
+			),
+		},
+		{
+			name: "onLoadingStatusChange",
+			type: '(status: "idle" | "loading" | "loaded" | "error") => void',
+			typeSimple: "function",
+			description:
+				"A callback providing information about the loading status of the image. This is useful in case you want to control more precisely what to render as the image is loading.",
+		},
+	]}
 />
 
 ### Fallback
@@ -164,35 +164,35 @@ The image to render. By default it will only render when it has loaded. You can 
 An element that renders when the image hasn't loaded. This means whilst it's loading, or if there was an error. If you notice a flash during loading, you can provide a `delayMs` prop to delay its rendering so it only renders for those with slower connections. For more control, use the `onLoadingStatusChange` handler on `Avatar.Image`.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'span',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-avatar-fallback',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes. It will be
-          added as a data attribute. Pass <Code>null</Code> to remove selector.
-        </span>
-      ),
-    },
-    {
-      name: 'delayMs',
-      type: 'number',
-      description:
-        'Useful for delaying rendering so it only appears for those with slower connections.',
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "span",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "selector",
+			required: false,
+			type: "string | null",
+			default: "radix-avatar-fallback",
+			description: (
+				<span>
+					A string to use as the component selector for CSS purposes. It will be
+					added as a data attribute. Pass <Code>null</Code> to remove selector.
+				</span>
+			),
+		},
+		{
+			name: "delayMs",
+			type: "number",
+			description:
+				"Useful for delaying rendering so it only appears for those with slower connections.",
+		},
+	]}
 />
 
 ## Examples
@@ -200,100 +200,100 @@ An element that renders when the image hasn't loaded. This means whilst it's loa
 ### Initials only
 
 ```jsx
-import * as Avatar from '@radix-ui/react-avatar';
+import * as Avatar from "@radix-ui/react-avatar";
 
 const StyledAvatar = styled(Avatar.Root, {
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  verticalAlign: 'middle',
-  overflow: 'hidden',
-  userSelect: 'none',
-  width: 48,
-  height: 48,
-  borderRadius: 24,
+	display: "inline-flex",
+	alignItems: "center",
+	justifyContent: "center",
+	verticalAlign: "middle",
+	overflow: "hidden",
+	userSelect: "none",
+	width: 48,
+	height: 48,
+	borderRadius: 24,
 });
 
 const StyledFallback = styled(Avatar.Fallback, {
-  width: '100%',
-  height: '100%',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: 'dodgerblue',
-  fontWeight: 500,
+	width: "100%",
+	height: "100%",
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "center",
+	backgroundColor: "dodgerblue",
+	fontWeight: 500,
 });
 
 export default () => (
-  <StyledAvatar>
-    <StyledFallback>UI</StyledFallback>
-  </StyledAvatar>
+	<StyledAvatar>
+		<StyledFallback>UI</StyledFallback>
+	</StyledAvatar>
 );
 ```
 
 ### Clickable Avatar with tooltip
 
 ```jsx
-import * as Avatar from '@radix-ui/react-avatar';
-import * as Tooltip from '@radix-ui/react-tooltip';
+import * as Avatar from "@radix-ui/react-avatar";
+import * as Tooltip from "@radix-ui/react-tooltip";
 
 const StyledAvatar = styled(Avatar.Root, {
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  verticalAlign: 'middle',
-  overflow: 'hidden',
-  userSelect: 'none',
-  width: 48,
-  height: 48,
-  borderRadius: 24,
-  appearance: 'none',
-  border: 'none',
-  padding: 0,
+	display: "inline-flex",
+	alignItems: "center",
+	justifyContent: "center",
+	verticalAlign: "middle",
+	overflow: "hidden",
+	userSelect: "none",
+	width: 48,
+	height: 48,
+	borderRadius: 24,
+	appearance: "none",
+	border: "none",
+	padding: 0,
 });
 
 const StyledImage = styled(Avatar.Image, {
-  width: '100%',
-  height: '100%',
-  objectFit: 'cover',
+	width: "100%",
+	height: "100%",
+	objectFit: "cover",
 });
 
 const StyledFallback = styled(Avatar.Fallback, {
-  width: '100%',
-  height: '100%',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: 'dodgerblue',
+	width: "100%",
+	height: "100%",
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "center",
+	backgroundColor: "dodgerblue",
 });
 
 const StyledTooltipTrigger = styled(Tooltip.Trigger, {
-  backgroundColor: 'transparent',
-  border: 'none',
-  padding: 0,
+	backgroundColor: "transparent",
+	border: "none",
+	padding: 0,
 });
 
 const StyledTooltipContent = styled(Tooltip.Content, {
-  borderRadius: 3,
-  padding: '5px 10px',
-  fontSize: 14,
-  backgroundColor: 'gainsboro',
-  color: 'black',
+	borderRadius: 3,
+	padding: "5px 10px",
+	fontSize: 14,
+	backgroundColor: "gainsboro",
+	color: "black",
 });
 
 export default () => (
-  <Tooltip.Root>
-    <StyledTooltipTrigger>
-      <StyledAvatar onClick={() => alert('Clicked!')}>
-        <StyledImage src="https://picsum.photos/id/1006/400/400" />
-        <StyledFallback>AB</StyledFallback>
-      </StyledAvatar>
-    </StyledTooltipTrigger>
+	<Tooltip.Root>
+		<StyledTooltipTrigger>
+			<StyledAvatar onClick={() => alert("Clicked!")}>
+				<StyledImage src="https://picsum.photos/id/1006/400/400" />
+				<StyledFallback>AB</StyledFallback>
+			</StyledAvatar>
+		</StyledTooltipTrigger>
 
-    <StyledTooltipContent side="top">
-      Tooltip content
-      <Tooltip.Arrow style={{ fill: 'gainsboro' }} />
-    </StyledTooltipContent>
-  </Tooltip.Root>
+		<StyledTooltipContent side="top">
+			Tooltip content
+			<Tooltip.Arrow style={{ fill: "gainsboro" }} />
+		</StyledTooltipContent>
+	</Tooltip.Root>
 );
 ```

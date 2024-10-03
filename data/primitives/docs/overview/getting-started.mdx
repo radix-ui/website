@@ -7,7 +7,7 @@ name: popover
 # Getting started
 
 <Description>
-  A quick tutorial to get you up and running with Radix Primitives.
+	A quick tutorial to get you up and running with Radix Primitives.
 </Description>
 
 ## Implementing a Popover
@@ -28,19 +28,19 @@ Import and structure the parts.
 
 ```jsx line=3,6-14
 // index.jsx
-import * as React from 'react';
-import * as Popover from '@radix-ui/react-popover';
+import * as React from "react";
+import * as Popover from "@radix-ui/react-popover";
 
 const PopoverDemo = () => (
-  <Popover.Root>
-    <Popover.Trigger>More info</Popover.Trigger>
-    <Popover.Portal>
-      <Popover.Content>
-        Some more info…
-        <Popover.Arrow />
-      </Popover.Content>
-    </Popover.Portal>
-  </Popover.Root>
+	<Popover.Root>
+		<Popover.Trigger>More info</Popover.Trigger>
+		<Popover.Portal>
+			<Popover.Content>
+				Some more info…
+				<Popover.Arrow />
+			</Popover.Content>
+		</Popover.Portal>
+	</Popover.Root>
 );
 
 export default PopoverDemo;
@@ -52,20 +52,20 @@ Add styles where desired.
 
 ```jsx line=4,8,10,12
 // index.jsx
-import * as React from 'react';
-import * as Popover from '@radix-ui/react-popover';
-import './styles.css';
+import * as React from "react";
+import * as Popover from "@radix-ui/react-popover";
+import "./styles.css";
 
 const PopoverDemo = () => (
-  <Popover.Root>
-    <Popover.Trigger __className__="PopoverTrigger">Show info</Popover.Trigger>
-    <Popover.Portal>
-      <Popover.Content __className__="PopoverContent">
-        Some content
-        <Popover.Arrow __className__="PopoverArrow" />
-      </Popover.Content>
-    </Popover.Portal>
-  </Popover.Root>
+	<Popover.Root>
+		<Popover.Trigger __className__="PopoverTrigger">Show info</Popover.Trigger>
+		<Popover.Portal>
+			<Popover.Content __className__="PopoverContent">
+				Some content
+				<Popover.Arrow __className__="PopoverArrow" />
+			</Popover.Content>
+		</Popover.Portal>
+	</Popover.Root>
 );
 
 export default PopoverDemo;
@@ -74,19 +74,19 @@ export default PopoverDemo;
 ```css
 /* styles.css */
 .PopoverTrigger {
-  background-color: white;
-  border-radius: 4px;
+	background-color: white;
+	border-radius: 4px;
 }
 
 .PopoverContent {
-  border-radius: 4px;
-  padding: 20px;
-  width: 260px;
-  background-color: white;
+	border-radius: 4px;
+	padding: 20px;
+	width: 260px;
+	background-color: white;
 }
 
 .PopoverArrow {
-  fill: white;
+	fill: white;
 }
 ```
 
@@ -95,7 +95,7 @@ export default PopoverDemo;
 Here's a complete demo.
 
 <HeroContainer>
-  <GettingStartedDemo />
+	<GettingStartedDemo />
 </HeroContainer>
 
 <HeroCodeBlock folder="GettingStarted" cssLib="css" />
