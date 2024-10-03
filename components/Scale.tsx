@@ -6,7 +6,8 @@ import tinycolor from 'tinycolor2';
 
 type Scale = Record<string, string>;
 
-const HSLA_ALPHA_REGEX = /hsla\(\s*\d{1,3}\s*,\s*\d{1,3}(?:\.\d+)?%\s*,\s*\d{1,3}(?:\.\d+)?%\s*,\s*(\d(?:\.\d+)?|\.\d+)\s*\)/;
+const HSLA_ALPHA_REGEX =
+  /hsla\(\s*\d{1,3}\s*,\s*\d{1,3}(?:\.\d+)?%\s*,\s*\d{1,3}(?:\.\d+)?%\s*,\s*(\d(?:\.\d+)?|\.\d+)\s*\)/;
 
 const toCssCasing = (str: string) =>
   str
@@ -37,7 +38,7 @@ const scaleToHexObject = (name: string, scale: Scale) => {
   return `const ${name} = {\n${values}\n}`;
 };
 
-const scaleToCSS = (name, scale: Scale) => {
+const scaleToCSS = (name: string, scale: Scale) => {
   const values = Object.entries(scale)
     .map(([key, val]) => [toCssCasing(key), val])
     .map(([key, val]) => `  --${key}: ${val};`)
@@ -62,7 +63,7 @@ const scaleToLESS = (scale: Scale) => {
 const scaleToSvg = (
   scale: Record<string, string>,
   valueWidth: number = 50,
-  valueHeight: number = 35
+  valueHeight: number = 35,
 ) => {
   const values = Object.values(scale);
   return `<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${
@@ -81,9 +82,9 @@ const scaleToSvg = (
 // pulling  the first scale and getting the keys from it
 const colorKeys = Object.keys(Object.values(Colors)[0]);
 
-const getBgColorForDarkCell = (name) => {
+const getBgColorForDarkCell = (name: string) => {
   const baseScale = name.replace('DarkA', 'Dark');
-  const scale = Colors[baseScale];
+  const scale = (Colors as any)[baseScale];
   return Object.values(scale)[0];
 };
 
@@ -141,8 +142,8 @@ export const ColorScale = ({ label, name }: { label: string; name: keyof typeof 
                 backgroundColor: isDarkAlpha
                   ? Colors['grayDark']['gray1']
                   : isAlpha
-                  ? 'white'
-                  : 'transparent',
+                    ? 'white'
+                    : 'transparent',
 
                 // Show transparency grid for whiteA and blackA
                 ...(isBlackA && {

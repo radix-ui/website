@@ -236,7 +236,7 @@ export const AccessibilitySection = () => {
   const keyframeRef = React.useRef(0);
   const iterationRef = React.useRef(0);
   const timeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
-  const containerRef = React.useRef<HTMLDivElement>(null);
+  const containerRef = React.useRef<HTMLDivElement | null>(null);
   const intersectingRef = React.useRef(false);
   const playKeypressAnimation = React.useRef(true);
   const [keyframe, setKeyframe] = React.useState(0);
@@ -280,7 +280,7 @@ export const AccessibilitySection = () => {
         // Intersection flag is disabled once less than 10% of the container is visible in the viewport,
         // and enabled once more than 90% of the container is visible in the viewport. Alternatively,
         // it's considered intersecting if the container takes up at least 70% of the viewport height.
-        const almostCoversViewport = entry.intersectionRect.height / entry.rootBounds.height > 0.7;
+        const almostCoversViewport = entry.intersectionRect.height / entry.rootBounds!.height > 0.7;
         const newIsIntersecting =
           entry.intersectionRatio > (intersectingRef.current ? 0.1 : 0.9) || almostCoversViewport;
 
@@ -366,7 +366,7 @@ export const AccessibilitySection = () => {
         <Box mb="5">
           <MarketingCaption mb="1">Supports assistive technology</MarketingCaption>
           <Heading as="h2" size="7">
-            Accessibility out of the box
+            Accessibility out of the box
           </Heading>
         </Box>
 
@@ -468,8 +468,9 @@ export const AccessibilitySection = () => {
                       <MockQwertyKeyboard
                         key={keyframe}
                         currentKey={
-                          playKeypressAnimation.current &&
-                          animations[currentSequence][keyframe]?.key
+                          playKeypressAnimation.current
+                            ? animations[currentSequence][keyframe]?.key
+                            : null
                         }
                       />
                     </Flex>
@@ -489,8 +490,9 @@ export const AccessibilitySection = () => {
                       <MockArrowKeyboard
                         key={keyframe}
                         currentKey={
-                          playKeypressAnimation.current &&
-                          animations[currentSequence][keyframe]?.key
+                          playKeypressAnimation.current
+                            ? animations[currentSequence][keyframe]?.key
+                            : null
                         }
                       />
                     </Flex>
@@ -530,7 +532,7 @@ export const AccessibilitySection = () => {
               WAI-ARIA compliant
             </Heading>
             <Text size="3" as="p" color="gray">
-              Radix Primitives follow the WAI-ARIA guidelines, implementing correct semantics and
+              Radix Primitives follow the WAI-ARIA guidelines, implementing correct semantics and
               behaviors for our components.
             </Text>
           </Card>
@@ -760,7 +762,7 @@ const MockRtlDropdown = ({ state }: { state?: MockDropdownState }) => {
   );
 };
 
-const MockQwertyKeyboard = ({ currentKey }: { currentKey?: string }) => {
+const MockQwertyKeyboard = ({ currentKey }: { currentKey?: string | null }) => {
   return (
     <Flex direction="column" align="center" gap="2">
       <Flex gap="1" justify="start">
@@ -800,7 +802,7 @@ const MockQwertyKeyboard = ({ currentKey }: { currentKey?: string }) => {
   );
 };
 
-const MockArrowKeyboard = ({ currentKey }: { currentKey?: string }) => {
+const MockArrowKeyboard = ({ currentKey }: { currentKey?: string | null }) => {
   return (
     <Flex direction="column" align="end" style={{ gap: 7 }}>
       <Flex justify="start" style={{ gap: 6 }}>
@@ -965,7 +967,7 @@ type SpeakerIconProps = {
 };
 
 const SpeakerIcon = ({ animating = true }: SpeakerIconProps) => {
-  const containerRef = React.useRef<HTMLDivElement>(null);
+  const containerRef = React.useRef<HTMLDivElement | null>(null);
   const shouldPauseAnimation = React.useRef(animating);
   const [currentlyAnimating, setCurrentlyAnimating] = React.useState(animating);
 

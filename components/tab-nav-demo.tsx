@@ -13,7 +13,7 @@ interface TabNavDemoProps extends React.ComponentPropsWithoutRef<typeof TabNav.R
 const TabNavDemo = React.forwardRef<React.ElementRef<typeof TabNav.Root>, TabNavDemoProps>(
   ({ baseUrl, items = ['Account', 'Documents'], ...props }, forwardedRef) => {
     const params = useSearchParams();
-    const tab = params.get('tab-nav');
+    const tab = params?.get('tab-nav');
     return (
       <TabNav.Root {...props} ref={forwardedRef}>
         {items.map((item, i) => (

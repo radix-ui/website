@@ -25,23 +25,53 @@ export const CaseStudiesSection = () => {
         <Box mb="5">
           <MarketingCaption mb="1">Case studies</MarketingCaption>
           <Heading as="h2" size="7" style={{ maxWidth: 500 }}>
-            World-class teams use Radix Primitives to power their products
+            World-class teams use Radix Primitives to power their products
           </Heading>
         </Box>
 
         <Grid columns={{ sm: '2' }} gap="5" mb="6">
+          <NextLink passHref legacyBehavior href="/primitives/case-studies/nodejs">
+            <Card asChild size="3">
+              <a>
+                <Box mb="5" height="24px">
+                  <AccessibleIcon label="Node.js case study">
+                    <Box asChild position="relative" top="-10px">
+                      <CaseStudyLogo variant="Node.js" />
+                    </Box>
+                  </AccessibleIcon>
+                </Box>
+                <Text as="p" size="3" mb="4" style={{ textIndent: '-0.5em' }}>
+                  “Radix Primitives are crucial for the Node.js website and are a significant part
+                  of Node’s Web Design System. It allows our engineers to focus on what matters and
+                  create delightful experiences for the community.”
+                </Text>
+                <Flex align="center" gap="3">
+                  <Avatar
+                    size="3"
+                    fallback="R"
+                    radius="full"
+                    src="/marketing/avatar-claudio-wunder.jpg"
+                    aria-labelledby="person1"
+                  />
+                  <Text color="gray" size="3" id="person1">
+                    Claudio Wunder, Node.js Core Collaborator
+                  </Text>
+                </Flex>
+              </a>
+            </Card>
+          </NextLink>
           <NextLink passHref legacyBehavior href="/primitives/case-studies/vercel">
             <Card asChild size="3">
               <a>
-                <Box mb="5">
+                <Box mb="5" height="24px">
                   <AccessibleIcon label="Vercel case study">
                     <CaseStudyLogo variant="Vercel" />
                   </AccessibleIcon>
                 </Box>
                 <Text as="p" size="3" mb="4" style={{ textIndent: '-0.5em' }}>
                   “We’ve been able to focus on building solid user experiences on top of Radix
-                  Primitives. With UI components, there are just too many angles and rabbit holes to
-                  cover for product teams that wish to move quickly.”
+                  Primitives. With UI components, there are just too many angles and rabbit holes to
+                  cover for product teams that wish to move quickly.”
                 </Text>
                 <Flex align="center" gap="3">
                   <Avatar
@@ -49,38 +79,10 @@ export const CaseStudiesSection = () => {
                     fallback="R"
                     radius="full"
                     src="/marketing/avatar-rauno-freiberg.jpg"
-                    aria-describedby="person1"
-                  />
-                  <Text color="gray" size="3" id="person1">
-                    Rauno Freiberg, UI Engineer at Vercel
-                  </Text>
-                </Flex>
-              </a>
-            </Card>
-          </NextLink>
-          <NextLink passHref legacyBehavior href="/primitives/case-studies/codesandbox">
-            <Card asChild size="3">
-              <a>
-                <Box mb="5">
-                  <AccessibleIcon label="CodeSandbox case study">
-                    <CaseStudyLogo variant="CodeSandbox" />
-                  </AccessibleIcon>
-                </Box>
-                <Text as="p" size="3" mb="4" style={{ textIndent: '-0.5em' }}>
-                  “Radix has significantly improved the accessibility standard in our components. We
-                  spend far less time discussing and implementing keyboard navigation, focus traps,
-                  and researching appropriate ARIA techniques for our components.”
-                </Text>
-                <Flex align="center" gap="3">
-                  <Avatar
-                    size="3"
-                    fallback="S"
-                    radius="full"
-                    src="/marketing/avatar-scott-hutcheson.png"
-                    aria-describedby="person2"
+                    aria-labelledby="person2"
                   />
                   <Text color="gray" size="3" id="person2">
-                    Scott Hutcheson, Product Engineer at CodeSandbox
+                    Rauno Freiberg, UI Engineer at Vercel
                   </Text>
                 </Flex>
               </a>
@@ -110,14 +112,6 @@ export const CaseStudiesSection = () => {
           px={{ initial: '5', xs: '6', sm: '7', md: '9' }}
         >
           <Grid columns="none" flow="column" align="center" justify="start" gap="6">
-            <NextLink href="/primitives/case-studies/atom-learning" passHref legacyBehavior>
-              <LogoLink>
-                <AccessibleIcon label="Atom Learning case study">
-                  <CaseStudyLogo variant="Atom Learning" width="86" />
-                </AccessibleIcon>
-              </LogoLink>
-            </NextLink>
-
             <NextLink href="/primitives/case-studies/basedash" passHref legacyBehavior>
               <LogoLink>
                 <AccessibleIcon label="Basedash case study">
@@ -130,6 +124,14 @@ export const CaseStudiesSection = () => {
               <LogoLink style={{ marginBottom: -6 }}>
                 <AccessibleIcon label="basement.studio case study">
                   <CaseStudyLogo variant="basement.studio" width="120" />
+                </AccessibleIcon>
+              </LogoLink>
+            </NextLink>
+
+            <NextLink href="/primitives/case-studies/codesandbox" passHref legacyBehavior>
+              <LogoLink style={{ marginBottom: -4 }}>
+                <AccessibleIcon label="CodeSandbox case study">
+                  <CaseStudyLogo variant="CodeSandbox" width="160" />
                 </AccessibleIcon>
               </LogoLink>
             </NextLink>

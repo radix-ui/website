@@ -15,7 +15,7 @@ export const primitivesRoutes = [
       { title: 'Styling', slug: 'primitives/docs/guides/styling' },
       { title: 'Animation', slug: 'primitives/docs/guides/animation' },
       { title: 'Composition', slug: 'primitives/docs/guides/composition' },
-      { title: 'Server side rendering', slug: 'primitives/docs/guides/server-side-rendering' },
+      { title: 'Server-side rendering', slug: 'primitives/docs/guides/server-side-rendering' },
     ],
   },
 
@@ -80,6 +80,13 @@ export type RouteProps = {
   pages: PageProps[];
 };
 
-export const allPrimitivesRoutes = primitivesRoutes.reduce((acc, curr: RouteProps) => {
+export const allPrimitivesRoutes = primitivesRoutes.reduce<
+  {
+    title: string;
+    slug: string;
+    deprecated?: boolean;
+    preview?: boolean;
+  }[]
+>((acc, curr: RouteProps) => {
   return [...acc, ...curr.pages];
 }, []);

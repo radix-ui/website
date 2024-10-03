@@ -25,6 +25,7 @@ import {
 import { getMDXComponent } from 'mdx-bundler/client';
 import NextLink from 'next/link';
 import React from 'react';
+import { GetStaticPropsContext } from 'next';
 
 type CaseStudyPage = {
   frontmatter: {
@@ -39,7 +40,6 @@ type CaseStudyPage = {
     companyUrl: string;
     companyFounded: string;
     companyLogoVariant: CaseStudyLogoVariant;
-    companyLogoWidth: string;
     nextCaseStudyTitle: string;
     nextCaseStudySlug: string;
   };
@@ -68,12 +68,12 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
               <MDXProvider frontmatter={frontmatter}>
                 <Component components={components as any} />
               </MDXProvider>
-              <Flex align="center" gap="3" mt="7">
+              <Flex align="center" gap="3" mt="8">
                 <Avatar
                   size="5"
                   src={frontmatter.authorAvatarUrl}
-                  aria-describedby="author"
-                  fallback={null}
+                  aria-label={frontmatter.author}
+                  fallback={null as any}
                   radius="full"
                 />
                 <Box id="author">
@@ -92,11 +92,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                   <BoxLink
                     target="_blank"
                     href={`https://${frontmatter.companyUrl}`}
-                    style={{
-                      display: 'inline-block',
-                      width: frontmatter.companyLogoWidth ?? 'auto',
-                      maxWidth: '380px',
-                    }}
+                    style={{ display: 'inline-block', maxWidth: '380px' }}
                   >
                     <AccessibleIcon label={`${frontmatter.metaTitle} homepage`}>
                       <CaseStudyLogo variant={frontmatter.companyLogoVariant} />
@@ -104,7 +100,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                   </BoxLink>
                 </Box>
                 <Box mb="5">
-                  <Heading as="h4" size="4">
+                  <Heading as="h4" size="3">
                     About
                   </Heading>
                   <Text as="p" mb="1">
@@ -124,7 +120,7 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
                   </Flex>
                 </Box>
                 <Box mb="5">
-                  <Heading size="4" as="h4">
+                  <Heading size="3" as="h4">
                     Founded
                   </Heading>
                   <Text as="p">{frontmatter.companyFounded}</Text>
@@ -163,8 +159,11 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps(context) {
-  const { frontmatter, code } = await getMdxBySlug('primitives/case-studies/', context.params.slug);
+export async function getStaticProps(context: GetStaticPropsContext<{ slug: string }>) {
+  const { frontmatter, code } = await getMdxBySlug(
+    'primitives/case-studies/',
+    context.params!.slug,
+  );
   const frontmatters = getAllFrontmatter('primitives/case-studies');
   const thisIndex = frontmatters.findIndex((data) => data.slug.includes(frontmatter.slug));
   const nextIndex = thisIndex + 1 < frontmatters.length ? thisIndex + 1 : 0;

@@ -1,5 +1,5 @@
 const path = require('path');
-const glob = require('glob');
+const { globSync } = require('glob');
 const compareVersions = require('compare-versions');
 
 module.exports = {
@@ -89,7 +89,7 @@ module.exports = {
     const DATA_PATH = path.join(__dirname, 'data');
 
     function getLatestVersionFromPath(fromPath) {
-      const paths = glob.sync(`${DATA_PATH}/${fromPath}/**/*.mdx`);
+      const paths = globSync(`${DATA_PATH}/${fromPath}/**/*.mdx`);
       const components = {};
 
       paths.forEach((p) => {

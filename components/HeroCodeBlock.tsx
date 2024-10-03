@@ -32,17 +32,19 @@ export const HeroCodeBlock = ({
   const cssLibCandidate = cssLibProp ?? preferredCssLib;
   const [isCodeExpanded, setIsCodeExpanded] = React.useState(false);
 
-  const snippets = React.Children.toArray(children).map((pre) => {
-    if (pre && typeof pre === 'object' && 'props' in pre) {
-      return {
-        id: pre.props.title,
-        title: pre.props.title,
-        cssLib: pre.props.cssLib,
-        children: React.Children.only(pre.props.children).props?.children,
-        source: pre.props.source,
-      };
-    }
-  });
+  const snippets = React.Children.toArray(children)
+    .map((pre) => {
+      if (pre && typeof pre === 'object' && 'props' in pre) {
+        return {
+          id: pre.props.title as string,
+          title: pre.props.title as string,
+          cssLib: pre.props.cssLib as CssLib,
+          children: React.Children.only(pre.props.children).props?.children as React.ReactNode,
+          source: pre.props.source,
+        };
+      }
+    })
+    .filter((v): v is NonNullable<typeof v> => !!v);
 
   const availableCssLibs = snippets.map(({ cssLib }) => cssLib).filter(onlyUnique);
   const usedCssLib = availableCssLibs.includes(cssLibCandidate) ? cssLibCandidate : DEFAULT_CSS_LIB;
@@ -84,7 +86,7 @@ export const HeroCodeBlock = ({
             <input
               type="hidden"
               name="parameters"
-              value={makeCodeSandboxParams(frontmatter.name, sources, usedCssLib)}
+              value={makeCodeSandboxParams(frontmatter.name!, sources, usedCssLib)}
             />
             <Tooltip
               className="radix-themes-custom-fonts"
@@ -210,7 +212,7 @@ const onlyUnique = <T,>(value: T, index: number, self: T[]) => self.indexOf(valu
 const makeCodeSandboxParams = (
   componentName: string,
   sources: Record<string, string>,
-  cssLib: CssLib
+  cssLib: CssLib,
 ) => {
   let files = {};
 
@@ -218,11 +220,12 @@ const makeCodeSandboxParams = (
     case 'css':
       files = makeCssConfig(componentName, sources);
       break;
-    case 'stitches':
-      files = makeStitchesConfig(componentName, sources);
+    case 'css-modules':
+      files = makeCssModulesConfig(componentName, sources);
       break;
     case 'tailwind':
       files = makeTailwindConfig(componentName, sources);
+      break;
   }
 
   return getParameters({ files, template: 'node' });
@@ -303,14 +306,14 @@ svg {
   return files;
 };
 
-const makeStitchesConfig = (componentName: string, sources: Record<string, string>) => {
+const makeCssModulesConfig = (componentName: string, sources: Record<string, string>) => {
   const dependencies = {
     react: 'latest',
     'react-dom': 'latest',
     '@radix-ui/colors': 'latest',
     '@radix-ui/react-icons': 'latest',
     [`@radix-ui/react-${componentName}`]: 'latest',
-    '@stitches/react': 'latest',
+    classnames: 'latest',
   };
 
   const devDependencies = {
@@ -367,6 +370,10 @@ svg {
   display: block;
 }
 `,
+      isBinary: false,
+    },
+    'styles.module.css': {
+      content: sources['styles.module.css'],
       isBinary: false,
     },
   };

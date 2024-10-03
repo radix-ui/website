@@ -1,4 +1,4 @@
-import Color from '@utils/color.js';
+import Color from 'colorjs.io';
 import NextLink from 'next/link';
 import { ColorsHeader } from '@components/ColorsHeader';
 import { ColorsMobileMenu } from '@components/ColorsMobileMenu';
@@ -68,10 +68,12 @@ import { ThemesPanelBackgroundImage } from '@components/ThemesPanelBackgroundIma
 import { AvatarIconFallback } from '@components/AvatarIconFallback';
 import { ColorField } from '@components/ColorField';
 import { generateRadixColors } from '@components/generateRadixColors';
-import { useLocalStorage, useIsomorphicLayoutEffect } from 'usehooks-ts';
+import { useLocalStorage } from '../../utils/use-local-storage';
+import { useLayoutEffect } from '../../utils/use-layout-effect';
+import { useIsHydrated } from '../../utils/use-is-hydrated';
 import { useTheme } from 'next-themes';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
-import copy from 'copy-to-clipboard';
+import { copy } from '../../utils/clipboard';
 import { CustomSwatch } from '@components/CustomSwatch';
 import { ColorUsageRange } from '@components/ColorUsageRange';
 import { ColorStepLabel } from '@components/ColorStepLabel';
@@ -90,7 +92,7 @@ export default function Page() {
   // Discard local storage values that are older than 2 hours
   const [timestamp, setTimestamp] = useLocalStorage('colors/timestamp', Date.now());
   const [discardStoredValues] = React.useState(Date.now() - timestamp > 1000 * 60 * 2);
-  useIsomorphicLayoutEffect(() => {
+  useLayoutEffect(() => {
     if (discardStoredValues) {
       setLightAccentValue('#3D63DD');
       setLightGrayValue('#8B8D98');
@@ -139,13 +141,11 @@ export default function Page() {
         setCopied('');
       }, COPIED_TIMEOUT);
     },
-    [setCopied]
+    [setCopied],
   );
 
-  const [hydrated, setHydrated] = React.useState(false);
-  useIsomorphicLayoutEffect(() => setHydrated(true), []);
-
-  if (!hydrated) {
+  const isHydrated = useIsHydrated();
+  if (!isHydrated) {
     return null;
   }
 
@@ -290,7 +290,7 @@ export default function Page() {
 
                         <DropdownMenu.SubContent>
                           <DropdownMenu.Item
-                            onSelect={() => {
+                            onSelect={async () => {
                               const css = getColorScaleCss({
                                 isDarkMode: resolvedTheme === 'dark',
                                 name: getColorName(accentValue),
@@ -303,7 +303,7 @@ export default function Page() {
                                 surfaceWideGamut: result.accentSurfaceWideGamut,
                               });
 
-                              copy(css);
+                              await copy(css);
                               setCopiedMessage('accents');
                             }}
                           >
@@ -916,8 +916,8 @@ const ToDoList = ({ items, onItemsChange }: ToDoList) => {
               checked={item.completed}
               onCheckedChange={(checked) => {
                 const newItems = items.slice();
-                const newItem = newItems.find((candidate) => candidate.id === item.id);
-                newItem.completed = Boolean(checked);
+                const newItem = newItems.find((candidate) => candidate.id === item.id)!;
+                newItem.completed = !!checked;
                 onItemsChange(newItems);
               }}
             />
@@ -939,7 +939,7 @@ const ToDoList = ({ items, onItemsChange }: ToDoList) => {
   );
 };
 
-const itemsContent = {
+const itemsContent: Record<string, React.ReactElement> = {
   a: (
     <span>
       Respond to comment{' '}
@@ -1128,9 +1128,12 @@ const LinksExample = ({ highContrast = false }) => (
   </Blockquote>
 );
 
-const LayersRoot = (
-  props: Extract<React.ComponentPropsWithoutRef<typeof ToggleGroup.Root>, { type: 'single' }>
-) => <ToggleGroup.Root type="single" defaultValue="1" className={styles.LayersRoot} {...props} />;
+const LayersRoot = ({
+  type = 'single',
+  ...props
+}: Extract<React.ComponentPropsWithoutRef<typeof ToggleGroup.Root>, { type: 'single' }>) => (
+  <ToggleGroup.Root type={type} defaultValue="1" className={styles.LayersRoot} {...props} />
+);
 
 const LayersItem = (props: React.ComponentPropsWithoutRef<typeof ToggleGroup.Item>) => (
   <Reset>

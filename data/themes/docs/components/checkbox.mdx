@@ -15,7 +15,7 @@ sourcePath: components/checkbox
 
 ## API Reference
 
-This component inherits props from the [Checkbox primitive](/primitives/docs/components/checkbox) and supports [common margin props](/themes/docs/overview/layout#margin-props).
+This component inherits props from the [Checkbox primitive](/primitives/docs/components/checkbox) and supports [common margin props](/themes/docs/overview/layout#margin-props).
 
 <ThemesPropsTable defs="checkboxPropDefs" />
 
@@ -161,5 +161,16 @@ Use the native `disabled` attribute to create a disabled checkbox.
       Checked
     </Flex>
   </Text>
+</Flex>
+```
+
+### Indeterminate
+
+Use the `"indeterminate"` value to create an indeterminate checkbox.
+
+```jsx live="true"
+<Flex gap="2">
+  <Checkbox defaultChecked="indeterminate" />
+  <Checkbox checked="indeterminate" />
 </Flex>
 ```

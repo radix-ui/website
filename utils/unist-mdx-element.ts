@@ -1,4 +1,4 @@
-import u from 'unist-builder';
+import { u } from 'unist-builder';
 import { UnistNode } from './unist';
 
 interface Args {

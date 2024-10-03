@@ -25,7 +25,7 @@ export const DeveloperExperienceSection = () => {
     }
 
     const paddingY = 24;
-    const codeInner = pre.querySelector('code');
+    const codeInner = pre.querySelector('code')!;
     const codeBlockHeight = pre.clientHeight - paddingY * 2;
 
     const lines = pre.querySelectorAll<HTMLElement>('[data-highlighted]');
@@ -55,7 +55,7 @@ export const DeveloperExperienceSection = () => {
     const lastLineIsBelow = lastLine.offsetTop + lastLine.offsetHeight > codeBlockHeight - paddingY;
     const lastLineIsAbove = !lastLineIsBelow;
 
-    let translateY;
+    let translateY: number;
     if (codeFits && lastLineIsAbove) {
       translateY = 0;
     } else if (codeFits && lastLineIsBelow) {
@@ -76,7 +76,7 @@ export const DeveloperExperienceSection = () => {
     });
 
     requestAnimationFrame(
-      () => (codeInner.style.transform = `translate3d(0, ${-translateY}px, 0)`)
+      () => (codeInner.style.transform = `translate3d(0, ${-translateY}px, 0)`),
     );
   }, [activeLines]);
 
@@ -97,13 +97,13 @@ export const DeveloperExperienceSection = () => {
           <Box style={{ maxWidth: 430 }}>
             <MarketingCaption mb="1">Developer experience to love</MarketingCaption>
             <Heading as="h2" size="7" mb="4">
-              Develop with an open, thought‑out API
+              Develop with an open, thought‑out API
             </Heading>
 
             <Text as="p" mb="5" style={{ maxWidth: 500 }}>
               One of our main goals is to provide the best possible developer experience. Radix
-              Primitives provides a fully-typed API. All components share a similar API, creating
-              a consistent and predictable experience.
+              Primitives provides a fully-typed API. All components share a similar API, creating a
+              consistent and predictable experience.
             </Text>
 
             <HiddenScroll

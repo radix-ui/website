@@ -1,3 +1,4 @@
+'use client';
 import * as React from 'react';
 import * as themes from '@radix-ui/themes';
 import * as icons from '@radix-ui/react-icons';
@@ -5,7 +6,7 @@ import { Box, Flex, IconButton, ScrollArea, Theme } from '@radix-ui/themes';
 import { CheckIcon, CopyIcon } from '@radix-ui/react-icons';
 import { classNames } from '@utils/classNames';
 import styles from './CodeBlock.module.css';
-import copy from 'copy-to-clipboard';
+import { copy } from '../utils/clipboard';
 
 import refractor from 'refractor/core';
 import js from 'refractor/lang/javascript';
@@ -13,10 +14,10 @@ import jsx from 'refractor/lang/jsx';
 import bash from 'refractor/lang/bash';
 import css from 'refractor/lang/css';
 import diff from 'refractor/lang/diff';
-import hastToHtml from 'hast-util-to-html';
+import { toHtml as hastToHtml } from 'hast-util-to-html';
 import rangeParser from 'parse-numeric-range';
-import highlightLine from '@utils/rehype-highlight-line';
-import highlightWord from '@utils/rehype-highlight-word';
+import highlightLine from '@utils/rehype-highlight-line.mjs';
+import highlightWord from '@utils/rehype-highlight-word.mjs';
 
 import { LiveCode } from './LiveCode';
 import { DecorativeBox, ThemesVolumeControlExample } from './ThemesDocsAssets';
@@ -126,11 +127,11 @@ const Code = React.forwardRef<HTMLElement, CodeProps>(function Code(
   { className, children, invertLineHighlight = false, language, lines = '0', ...props },
   forwardedRef
 ) {
-  let result = refractor.highlight(children, language);
+  let root = refractor.highlight(children, language);
 
-  result = highlightLine(result, rangeParser(lines));
-  result = highlightWord(result);
-  result = hastToHtml(result);
+  root = highlightLine(root, rangeParser(lines));
+  const content = highlightWord(root);
+  const result = hastToHtml(content);
 
   return (
     <code
@@ -165,9 +166,11 @@ const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
         onClick={async (event) => {
           const value = event.currentTarget
             .closest(`[data-code-block-content]`)
-            .querySelector('code').textContent;
-          copy(value);
-          setHasCopied(true);
+            ?.querySelector('code')?.textContent;
+          if (value) {
+            await copy(value);
+            setHasCopied(true);
+          }
         }}
         color="gray"
         variant="soft"

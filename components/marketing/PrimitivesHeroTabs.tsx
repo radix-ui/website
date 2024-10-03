@@ -1,84 +1,16 @@
 import React from 'react';
-import { styled } from '@utils/stitches';
+import { styled } from '@utils/css';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import { PrimitivesHeroButton } from '@components/marketing/PrimitivesHeroButton';
 import { TextField, Text, Box, Flex } from '@radix-ui/themes';
 import { Label } from '@radix-ui/react-label';
+import styles from './PrimitivesHeroTabs.module.css';
 
-const StyledTabs = styled(TabsPrimitive.Root, {
-  display: 'flex',
-  flexDirection: 'column',
-  width: '80%',
-  borderRadius: 'var(--radius-4)',
-  boxShadow: '0 0 0 1px var(--gray-a3), var(--shadow-4)',
-});
-
-const StyledList = styled(TabsPrimitive.List, {
-  flexShrink: 0,
-  display: 'flex',
-});
-
-const StyledTrigger = styled(TabsPrimitive.Trigger, {
-  $$sideShadow: '0 0',
-  $$bottomShadow: 'inset 0 -1px var(--gray-6)',
-  all: 'unset',
-  padding: '0 20px',
-  height: 'var(--space-7)',
-  flex: 1,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  lineHeight: 1,
-  userSelect: 'none',
-  backgroundColor: 'var(--gray-2)',
-  color: 'var(--gray-a11)',
-  boxShadow: '$$bottomShadow, $$sideShadow',
-  '&:hover': {
-    backgroundColor: 'var(--gray-1)',
-  },
-  '&[data-state="active"]': {
-    color: 'var(--gray-12)',
-    backgroundColor: 'var(--color-panel-solid)',
-    $$bottomShadow: '0 0',
-  },
-  '&:focus-visible': {
-    zIndex: 1,
-    boxShadow: `0 0 0 2px var(--accent-8)`,
-  },
-  '& + &': {
-    $$sideShadow: '-1px 0 var(--gray-6)',
-  },
-  '&:first-child': {
-    borderTopLeftRadius: 'var(--radius-4)',
-  },
-  '&:last-child': {
-    borderTopRightRadius: 'var(--radius-4)',
-  },
-});
-
-const StyledContent = styled(TabsPrimitive.Content, {
-  flexGrow: 1,
-  padding: 20,
-  backgroundColor: 'var(--color-panel-solid)',
-  borderBottomLeftRadius: 'var(--radius-4)',
-  borderBottomRightRadius: 'var(--radius-4)',
-  outline: 'none',
-  '&:focus-visible': { boxShadow: `0 0 0 2px var(--blue-8)` },
-});
-
-const Tabs = StyledTabs;
-const TabsList = StyledList;
-const TabsTrigger = StyledTrigger;
-const TabsContent = StyledContent;
-
-const Fieldset = styled('fieldset', {
-  all: 'unset',
-  marginBottom: 'var(--space-3)',
-  width: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'flex-start',
-});
+const Tabs = styled(TabsPrimitive.Root, styles.Tabs);
+const TabsList = styled(TabsPrimitive.List, styles.List);
+const TabsTrigger = styled(TabsPrimitive.Trigger, styles.Trigger);
+const TabsContent = styled(TabsPrimitive.Content, styles.Content);
+const Fieldset = styled('fieldset', styles.Fieldset);
 
 export function PrimitivesHeroTabs() {
   return (

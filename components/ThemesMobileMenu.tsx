@@ -1,3 +1,4 @@
+'use client';
 import { themesRoutes } from '@utils/themesRoutes';
 import { Box, ScrollArea } from '@radix-ui/themes';
 import { ThemesHeader } from './ThemesHeader';

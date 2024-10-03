@@ -29,6 +29,7 @@ import {
   Text,
   TextField,
   Theme,
+  type ThemeProps,
 } from '@radix-ui/themes';
 import { Label } from '@radix-ui/react-label';
 import { allPeople } from './people';
@@ -40,7 +41,11 @@ import { accentColors, themePropDefs } from '@utils/themes/props';
 import { TabNavDemo } from '@components/tab-nav-demo';
 import styles from './ThemesDocsAssets.module.css';
 
-export function ThemesPanelCardExample({ panelBackground }) {
+export function ThemesPanelCardExample({
+  panelBackground,
+}: {
+  panelBackground: ThemeProps['panelBackground'];
+}) {
   const passwordFieldId = 'example-password-field' + React.useId();
   return (
     <Theme panelBackground={panelBackground} asChild>
@@ -94,7 +99,11 @@ export function ThemesPanelCardExample({ panelBackground }) {
   );
 }
 
-export function ThemesPanelTableExample({ panelBackground }) {
+export function ThemesPanelTableExample({
+  panelBackground,
+}: {
+  panelBackground: ThemeProps['panelBackground'];
+}) {
   return (
     <Card>
       <Inset>
@@ -687,7 +696,7 @@ export function ThemesAllColors() {
                 borderRadius: '1px',
               }}
             />
-          ))
+          )),
         )}
       </Grid>
 
@@ -789,7 +798,7 @@ export function ThemesTypeSpecimen() {
 
             <Box maxWidth="260px" display={{ initial: 'none', sm: 'block' }}>
               <Heading trim="end" size="8">
-                Ambiguous voice of a heart which prefers kiwi bowls to a zephyr.
+                Ambiguous voice of a heart which prefers kiwi bowls to a zephyr.
               </Heading>
             </Box>
           </Grid>
@@ -1137,7 +1146,7 @@ function AlbumCard() {
           </Heading>
 
           <Text align="center" as="p" color="gray" size="2" mb="4">
-            A dark and introspective album that showcases a distinctive blend of genres.
+            A dark and introspective album that showcases a distinctive blend of genres.
           </Text>
 
           <Flex justify="center" gap="3">
@@ -1215,29 +1224,29 @@ export function ThemesGridExample() {
         gap="3"
         p="3"
         m="2"
-        columns="repeat(3, auto)"
+        columns="repeat(3, minmax(0, 96px))"
         style={{
           borderRadius: 'var(--radius-2)',
           backgroundColor: 'var(--gray-a2)',
           outline: '1px dashed var(--gray-a7)',
         }}
       >
-        <Box width="96px" height="64px">
+        <Box height="64px">
           <DecorativeBox />
         </Box>
-        <Box width="96px" height="64px">
+        <Box height="64px">
           <DecorativeBox />
         </Box>
-        <Box width="96px" height="64px">
+        <Box height="64px">
           <DecorativeBox />
         </Box>
-        <Box width="96px" height="64px">
+        <Box height="64px">
           <DecorativeBox />
         </Box>
-        <Box width="96px" height="64px">
+        <Box height="64px">
           <DecorativeBox />
         </Box>
-        <Box width="96px" height="64px">
+        <Box height="64px">
           <DecorativeBox />
         </Box>
       </Grid>
@@ -1573,7 +1582,9 @@ export function ThemesBlogPostExampleDataList() {
                 variant="ghost"
                 onClick={(event) => {
                   const text = event.currentTarget.parentElement?.textContent;
-                  void navigator.clipboard.writeText(text);
+                  if (text) {
+                    void navigator.clipboard.writeText(text);
+                  }
                 }}
               >
                 <CopyIcon />

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import { createAutocomplete } from '@algolia/autocomplete-core';
-import { parseAlgoliaHitSnippet } from '@algolia/autocomplete-preset-algolia';
+import { parseAlgoliaHitSnippet, SnippetedHit } from '@algolia/autocomplete-preset-algolia';
 import { ExclamationTriangleIcon, CaretRightIcon } from '@radix-ui/react-icons';
 import { Box, Tooltip, Text, Flex, Slot } from '@radix-ui/themes';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
@@ -22,7 +22,7 @@ import type {
   AutocompleteState as InternalAutocompleteState,
   AutocompleteApi as InternalAutocompleteApi,
 } from '@algolia/autocomplete-core';
-import type { Hit } from '@algolia/client-search';
+import type { Hit, SearchResponse } from '@algolia/client-search';
 
 const ALGOLIA_APP_ID = 'VXVOLU3YVQ';
 const ALGOLIA_PUBLIC_API_KEY = '9d44395c1b7b172ac84b7e5ab80bf8c5';
@@ -97,7 +97,7 @@ function PrimitivesSearchRoot({
           return searchClient
             .search<SearchItem>([
               {
-                indexName: process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME,
+                indexName: process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME!,
                 query,
                 params: {
                   hitsPerPage,
@@ -135,7 +135,7 @@ function PrimitivesSearchRoot({
             })
             .then(({ results }) => {
               // we only have 1 query, so we  grab the hits from the first result
-              const { hits } = results[0];
+              const { hits } = results[0] as SearchResponse<SearchItem>;
               const sources = groupBy(hits, (hit) => hit.hierarchy.lvl0);
               return Object.entries(sources)
                 .sort(sortSources)
@@ -223,7 +223,7 @@ function PrimitivesSearchClearButton({ children }: { children: React.ReactNode }
       <Slot
         onClick={(event) => {
           autocomplete.setQuery('');
-          event.currentTarget.closest('[role="combobox"]').querySelector('input')?.focus();
+          event.currentTarget.closest('[role="combobox"]')?.querySelector('input')?.focus();
         }}
       >
         {children}
@@ -387,12 +387,10 @@ function ItemBreadcrumb({ item, levels }: { item: SearchItem; levels: typeof SUP
         return heading ? (
           <React.Fragment key={index}>
             {index > 0 ? (
-              <Box asChild style={{ color: 'var(--gray-a11)' }}>
-                <span>
-                  <CaretRightIcon style={{ display: 'inline-block' }} />
-                  {/* Adding a comma to insert a natural break in the speech flow */}
-                  <VisuallyHidden>, </VisuallyHidden>
-                </span>
+              <Box as="span" display="inline" style={{ color: 'var(--gray-a11)' }}>
+                <CaretRightIcon style={{ display: 'inline-block' }} />
+                {/* Adding a comma to insert a natural break in the speech flow */}
+                <VisuallyHidden>, </VisuallyHidden>
               </Box>
             ) : null}
             <Highlight hit={item} attribute={['hierarchy', level]} />
@@ -403,7 +401,13 @@ function ItemBreadcrumb({ item, levels }: { item: SearchItem; levels: typeof SUP
   );
 }
 
-function Highlight<THit>({ hit, attribute }: { hit: THit; attribute: keyof THit | string[] }) {
+function Highlight<THit extends SnippetedHit<unknown>>({
+  hit,
+  attribute,
+}: {
+  hit: THit;
+  attribute: keyof THit | string[];
+}) {
   return (
     <>
       {parseAlgoliaHitSnippet<THit>({ hit, attribute }).map(({ value, isHighlighted }, index) =>

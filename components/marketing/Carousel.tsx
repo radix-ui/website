@@ -9,17 +9,17 @@ import smoothscroll from 'smoothscroll-polyfill';
 
 const [CarouselProvider, useCarouselContext] = createContext<{
   _: any;
-  slideListRef: React.RefObject<HTMLElement>;
+  slideListRef: React.RefObject<HTMLDivElement>;
   onNextClick(): void;
   onPrevClick(): void;
   nextDisabled: boolean;
   prevDisabled: boolean;
 }>('Carousel');
 
-export const Carousel = (props) => {
-  const ref = useRef<HTMLDivElement>(null);
+export const Carousel = (props: { children: React.ReactNode; [key: string]: any }) => {
+  const ref = useRef<HTMLDivElement | null>(null);
   const { children, ...carouselProps } = props;
-  const slideListRef = useRef<HTMLElement>(null);
+  const slideListRef = useRef<HTMLDivElement>(null);
   const [_, force] = useState({});
   const [nextDisabled, setNextDisabled] = useState(false);
   const [prevDisabled, setPrevDisabled] = useState(true);
@@ -42,13 +42,14 @@ export const Carousel = (props) => {
 
   const handleNextClick = useCallback(() => {
     const nextSlide = getSlideInDirection(1);
+    const slideList = slideListRef.current;
 
-    if (nextSlide) {
-      const { scrollLeft, scrollWidth, clientWidth } = slideListRef.current;
+    if (slideList && nextSlide) {
+      const { scrollLeft, scrollWidth, clientWidth } = slideList;
       const itemWidth = nextSlide.clientWidth;
       const itemsToScroll = itemWidth * 2.5 < document.documentElement.offsetWidth ? 2 : 1;
       const nextPos = Math.floor(scrollLeft / itemWidth) * itemWidth + itemWidth * itemsToScroll;
-      slideListRef.current.scrollTo({ left: nextPos, behavior: 'smooth' });
+      slideList.scrollTo({ left: nextPos, behavior: 'smooth' });
 
       // Disable previous & next buttons immediately
       setPrevDisabled(nextPos <= 0);
@@ -60,12 +61,13 @@ export const Carousel = (props) => {
 
   const handlePrevClick = useCallback(() => {
     const prevSlide = getSlideInDirection(-1);
-    if (prevSlide) {
-      const { scrollLeft, scrollWidth, clientWidth } = slideListRef.current;
+    const slideList = slideListRef.current;
+    if (slideList && prevSlide) {
+      const { scrollLeft, scrollWidth, clientWidth } = slideList;
       const itemWidth = prevSlide.clientWidth;
       const itemsToScroll = itemWidth * 2.5 < document.documentElement.offsetWidth ? 2 : 1;
       const nextPos = Math.ceil(scrollLeft / itemWidth) * itemWidth - itemWidth * itemsToScroll;
-      slideListRef.current.scrollTo({ left: nextPos, behavior: 'smooth' });
+      slideList.scrollTo({ left: nextPos, behavior: 'smooth' });
 
       // Disable previous & next buttons immediately
       setPrevDisabled(nextPos <= 0);
@@ -125,14 +127,17 @@ export const Carousel = (props) => {
   );
 };
 
-export const CarouselSlideList = (props) => {
+export const CarouselSlideList = (props: React.ComponentProps<'div'>) => {
   const context = useCarouselContext('CarouselSlideList');
   const ref = React.useRef<React.ElementRef<'div'>>(null);
   const composedRefs = useComposedRefs(ref, context.slideListRef);
-  const [dragStart, setDragStart] = React.useState(null);
+  const [dragStart, setDragStart] = React.useState<null | {
+    scrollX: number;
+    pointerX: number;
+  }>(null);
 
   const handleMouseMove = useCallbackRef((event) => {
-    if (ref.current) {
+    if (dragStart && ref.current) {
       const distanceX = event.clientX - dragStart.pointerX;
       ref.current.scrollLeft = dragStart.scrollX - distanceX;
     }
@@ -149,7 +154,7 @@ export const CarouselSlideList = (props) => {
       {...props}
       ref={composedRefs}
       data-state={dragStart ? 'dragging' : undefined}
-      onMouseDownCapture={composeEventHandlers(props.onMouseDownCapture, (event: MouseEvent) => {
+      onMouseDownCapture={composeEventHandlers(props.onMouseDownCapture, (event) => {
         if (event.target instanceof HTMLInputElement) {
           return;
         }
@@ -164,7 +169,7 @@ export const CarouselSlideList = (props) => {
           });
         }
       })}
-      onPointerDown={composeEventHandlers(props.onPointerDown, (event: PointerEvent) => {
+      onPointerDown={composeEventHandlers(props.onPointerDown, (event) => {
         if (event.target instanceof HTMLInputElement) {
           return;
         }
@@ -173,7 +178,7 @@ export const CarouselSlideList = (props) => {
         element.style.userSelect = 'none';
         element.setPointerCapture(event.pointerId);
       })}
-      onPointerUp={composeEventHandlers(props.onPointerUp, (event: PointerEvent) => {
+      onPointerUp={composeEventHandlers(props.onPointerUp, (event) => {
         if (event.target instanceof HTMLInputElement) {
           return;
         }
@@ -186,19 +191,25 @@ export const CarouselSlideList = (props) => {
   );
 };
 
-export const CarouselSlide = (props) => {
+export const CarouselSlide = (
+  props: React.ComponentProps<'div'> & {
+    as?: any;
+  },
+) => {
   const { as: Comp = 'div', ...slideProps } = props;
   const context = useCarouselContext('CarouselSlide');
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const [intersectionRatio, setIntersectionRatio] = useState(0);
   const isDraggingRef = useRef(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setIntersectionRatio(entry.intersectionRatio),
-      { root: context.slideListRef.current, threshold: [0, 0.5, 1] }
+      { root: context.slideListRef.current, threshold: [0, 0.5, 1] },
     );
-    observer.observe(ref.current);
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
     return () => observer.disconnect();
   }, [context.slideListRef]);
 
@@ -207,11 +218,11 @@ export const CarouselSlide = (props) => {
       {...slideProps}
       ref={ref}
       data-slide-intersection-ratio={intersectionRatio}
-      onDragStart={(event) => {
+      onDragStart={(event: React.DragEvent<HTMLDivElement>) => {
         event.preventDefault();
         isDraggingRef.current = true;
       }}
-      onClick={(event) => {
+      onClick={(event: React.MouseEvent<HTMLDivElement>) => {
         if (isDraggingRef.current) {
           event.preventDefault();
         }
@@ -220,7 +231,11 @@ export const CarouselSlide = (props) => {
   );
 };
 
-export const CarouselNext = (props) => {
+export const CarouselNext = (
+  props: React.ComponentProps<'button'> & {
+    as?: any;
+  },
+) => {
   const { as: Comp = 'button', ...nextProps } = props;
   const context = useCarouselContext('CarouselNext');
   return (
@@ -228,7 +243,11 @@ export const CarouselNext = (props) => {
   );
 };
 
-export const CarouselPrevious = (props) => {
+export const CarouselPrevious = (
+  props: React.ComponentProps<'button'> & {
+    as?: any;
+  },
+) => {
   const { as: Comp = 'button', ...prevProps } = props;
   const context = useCarouselContext('CarouselPrevious');
   return (

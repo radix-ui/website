@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -5,7 +6,7 @@ import { useRouter } from 'next/router';
 type TitleAndMetaTagsProps = {
   title?: string;
   description?: string;
-  image: string;
+  image?: string | null;
   url?: string;
   pathname?: string;
 };
@@ -19,7 +20,7 @@ export function TitleAndMetaTags({
 }: TitleAndMetaTagsProps) {
   const router = useRouter();
 
-  const imageUrl = image.startsWith('http') ? image : `${url}/social/${image}`;
+  const imageUrl = image ? (image.startsWith('http') ? image : `${url}/social/${image}`) : null;
   const path = pathname || router.pathname;
 
   return (
@@ -31,7 +32,7 @@ export function TitleAndMetaTags({
       <meta property="og:url" content={`${url}${path}`} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={imageUrl} />
+      {imageUrl && <meta property="og:image" content={imageUrl} />}
 
       <meta name="twitter:site" content="@radix_ui" />
       <meta name="twitter:card" content="summary_large_image" />

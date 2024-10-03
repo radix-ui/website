@@ -20,7 +20,7 @@ import styles from './CustomSwatch.module.css';
 import { classNames } from '@utils/classNames';
 import { useTheme } from 'next-themes';
 import { Cross2Icon, InfoCircledIcon } from '@radix-ui/react-icons';
-import copy from 'copy-to-clipboard';
+import { copy } from '../utils/clipboard';
 
 const brightColors = ['amber', 'yellow', 'lime', 'mint', 'sky'];
 
@@ -45,7 +45,7 @@ export const CustomSwatch = ({
   style,
   ...props
 }: CustomSwatchProps) => {
-  const contentRef = React.useRef<HTMLDivElement>(null);
+  const contentRef = React.useRef<HTMLDivElement | null>(null);
   const { resolvedTheme } = useTheme();
   const friendlyScaleName = `${scale.charAt(0).toUpperCase() + scale.slice(1)}`;
   const friendlyColorName = `${friendlyScaleName} ${step}`;
@@ -289,7 +289,7 @@ const CopyButton = ({ onClick, ...props }: React.ComponentPropsWithoutRef<typeof
         ref={ref}
         size="2"
         style={{ userSelect: 'auto' }}
-        onClick={async (event) => {
+        onClick={(event) => {
           onClick?.(event);
           const originalDefaultPrevented = event.defaultPrevented;
 
@@ -304,7 +304,7 @@ const CopyButton = ({ onClick, ...props }: React.ComponentPropsWithoutRef<typeof
             });
 
             if (!originalDefaultPrevented) {
-              copy(text);
+              void copy(text);
             }
           }
         }}

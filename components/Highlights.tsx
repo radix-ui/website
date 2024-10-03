@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Text, Box, Flex, Heading, Separator, Link, Select } from '@radix-ui/themes';
 import { ArrowTopRightIcon, CheckIcon } from '@radix-ui/react-icons';
@@ -5,7 +6,7 @@ import { useRouter } from 'next/router';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { FrontmatterContext } from './MDXComponents';
 
-export function Highlights({ features }) {
+export function Highlights({ features }: { features: React.ReactNode[] }) {
   const router = useRouter();
   const frontmatter = React.useContext(FrontmatterContext);
 
@@ -20,27 +21,30 @@ export function Highlights({ features }) {
 
         <Flex asChild m="0" p="0" gap="3" direction="column">
           <ul>
-            {features.map((feature, i) => (
-              <Flex key={i} gap="4" align="start">
-                <Flex
-                  width="24px"
-                  height="24px"
-                  align="center"
-                  justify="center"
-                  flexShrink="0"
-                  style={{
-                    backgroundColor: 'var(--green-4)',
-                    borderRadius: '50%',
-                    color: 'var(--green-11)',
-                  }}
-                >
-                  <CheckIcon />
-                </Flex>
-                <Text size="3" as="p">
-                  {feature}
-                </Text>
-              </Flex>
-            ))}
+            {features.map(
+              (feature, i) =>
+                feature != null && (
+                  <Flex key={i} gap="4" align="start">
+                    <Flex
+                      width="24px"
+                      height="24px"
+                      align="center"
+                      justify="center"
+                      flexShrink="0"
+                      style={{
+                        backgroundColor: 'var(--green-4)',
+                        borderRadius: '50%',
+                        color: 'var(--green-11)',
+                      }}
+                    >
+                      <CheckIcon />
+                    </Flex>
+                    <Text size="3" as="p">
+                      {feature}
+                    </Text>
+                  </Flex>
+                ),
+            )}
           </ul>
         </Flex>
       </Box>

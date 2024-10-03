@@ -52,7 +52,9 @@ export const colorsRoutes = [
   },
 ];
 
-export const allColorsRoutes = colorsRoutes.reduce((acc, curr) => {
+export const allColorsRoutes = colorsRoutes.reduce<
+  { title: string; slug: string; draft: boolean }[]
+>((acc, curr) => {
   acc = [...acc, ...curr.pages.filter((p) => p.draft !== true)];
   return acc;
 }, []);

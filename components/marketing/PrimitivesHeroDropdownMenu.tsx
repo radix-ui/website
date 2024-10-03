@@ -1,6 +1,5 @@
 import React from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { styled } from '@utils/stitches';
 import {
   CaretDownIcon,
   CaretRightIcon,
@@ -10,74 +9,17 @@ import {
 } from '@radix-ui/react-icons';
 import { Box, Flex } from '@radix-ui/themes';
 import { PrimitivesHeroButton } from '@components/marketing/PrimitivesHeroButton';
+import styles from './PrimitivesHeroDropdownMenu.module.css';
+import { styled } from '@utils/css';
 
-const DropdownMenuArrow = styled(DropdownMenuPrimitive.Arrow, {
-  fill: 'var(--color-panel-solid)',
-});
-
-const contentCss = {
-  backgroundColor: 'var(--color-panel-solid)',
-  borderRadius: 'var(--radius-3)',
-  padding: 'var(--space-1)',
-  boxShadow: '0 0 0 1px var(--gray-a3), var(--shadow-4)',
-};
-
-const DropdownMenuContentWrapper = styled('div', {
-  // The default `position: fixed` is wobbly when scrolling with Mac touchpads,
-  // which is OK when using components for real, but looks awkward in the demos.
-  // `position: absolute` stays put as you scroll.
-  '& [data-radix-popper-content-wrapper]': {
-    position: 'absolute !important',
-  },
-});
-
-const DropdownMenuContent: any = styled(DropdownMenuPrimitive.Content, contentCss);
-
-const DropdownMenuSeparator = styled(DropdownMenuPrimitive.Separator, {
-  height: 1,
-  backgroundColor: 'var(--gray-a4)',
-  marginTop: 'var(--space-1)',
-  marginRight: 'var(--space-1)',
-  marginBottom: 'var(--space-1)',
-  marginLeft: '20px',
-});
-
-const itemCss = {
-  display: 'flex',
-  alignItems: 'center',
-  fontSize: 'var(--font-size-1)',
-  fontVariantNumeric: 'tabular-nums',
-  lineHeight: '1',
-  cursor: 'default',
-  userSelect: 'none',
-  whiteSpace: 'nowrap',
-  height: 'var(--space-5)',
-  color: 'var(--gray-12)',
-  minWidth: 90,
-  paddingLeft: '20px',
-  paddingRight: 'var(--space-4)',
-  borderRadius: 'var(--radius-2)',
-
-  '&[data-state="open"]': {
-    backgroundColor: 'var(--gray-a3)',
-  },
-
-  // &:active for touch devices
-  '&[data-highlighted], &:active': {
-    outline: 0,
-    backgroundColor: 'var(--gray-12)',
-    color: 'var(--color-background)',
-  },
-};
-
-const DropdownMenuItem = styled(DropdownMenuPrimitive.Item, itemCss);
-const DropdownMenuCheckboxItem = styled(DropdownMenuPrimitive.CheckboxItem, itemCss);
-
-const DropdownMenuSubTrigger = styled(DropdownMenuPrimitive.SubTrigger, itemCss);
-const DropdownMenuSubContent: any = styled(DropdownMenuPrimitive.SubContent, {
-  ...contentCss,
-  marginTop: 'calc(var(--space-1) * -1)',
-});
+const DropdownMenuArrow = styled(DropdownMenuPrimitive.Arrow, styles.Arrow);
+const DropdownMenuContentWrapper = styled('div', styles.ContentWrapper);
+const DropdownMenuContent = styled(DropdownMenuPrimitive.Content, styles.Content);
+const DropdownMenuSeparator = styled(DropdownMenuPrimitive.Separator, styles.Separator);
+const DropdownMenuItem = styled(DropdownMenuPrimitive.Item, styles.Item);
+const DropdownMenuCheckboxItem = styled(DropdownMenuPrimitive.CheckboxItem, styles.CheckboxItem);
+const DropdownMenuSubTrigger = styled(DropdownMenuPrimitive.SubTrigger, styles.SubTrigger);
+const DropdownMenuSubContent = styled(DropdownMenuPrimitive.SubContent, styles.SubContent);
 
 export function PrimitivesHeroDropdownMenu() {
   // We prevent the initial auto focus because it's a demo rather than a real UI,
@@ -86,7 +28,7 @@ export function PrimitivesHeroDropdownMenu() {
   const [showToolbar, setShowToolbar] = React.useState<boolean | 'indeterminate'>(true);
   const [showUrls, setShowUrls] = React.useState<boolean | 'indeterminate'>(false);
   const triggerRef = React.useRef<HTMLButtonElement>(null);
-  const contentRef = React.useRef<HTMLDivElement>(null);
+  const contentRef = React.useRef<HTMLDivElement | null>(null);
   const [open, setOpen] = React.useState(true);
 
   return (
@@ -115,6 +57,7 @@ export function PrimitivesHeroDropdownMenu() {
               event.preventDefault();
             }
           }}
+          // @ts-expect-error
           onOpenAutoFocus={(event: FocusEvent) => {
             // We prevent the initial auto focus because it's a demo rather than a real UI,
             // so the parent page focus is not stolen.
@@ -124,7 +67,7 @@ export function PrimitivesHeroDropdownMenu() {
               // Restore default behaviour, but prevent the focus scroll
               // which happens when content wrapper has `position: absolute`
               setTimeout(() => {
-                contentRef.current.focus({ preventScroll: true });
+                contentRef.current?.focus({ preventScroll: true });
               });
             } else {
               initialAutoFocusPrevented.current = true;

@@ -1,7 +1,4 @@
-// @ts-nocheck
-// Something is fucked up about Color.js and Next.js when building
-// import Color from 'colorjs.io';
-import Color from '@utils/color.js';
+import Color from 'colorjs.io';
 import { composeRefs } from '@radix-ui/react-compose-refs';
 import { TextField } from '@radix-ui/themes';
 import styles from './ColorField.module.css';
@@ -141,7 +138,7 @@ export const ColorField = React.forwardRef<HTMLInputElement, ColorFieldProps>(
                   // Some gymnastics here to make sure that we don't lose the current color space format,
                   // e.g. if the user had "lch(45 70.5 286.08)" in the input before, it should stay "lch"
                   // after using the native browser’s picker, which always outputs a color formatted as hex.
-                  const colorSpace = new Color(value).spaceId;
+                  const colorSpace = new Color(value!).spaceId;
                   const string = toShortFormat(
                     new Color(event.currentTarget.value).to(colorSpace).toString()
                   );
@@ -160,7 +157,7 @@ export const ColorField = React.forwardRef<HTMLInputElement, ColorFieldProps>(
                 value={toCssFormat(
                   toShortFormat(
                     new Color(toCssFormat(color)).to('srgb').toString({ format: 'hex' })
-                  )
+                  )!
                 )}
               />
               <div className={styles.ColorFieldSwatchBorder} />

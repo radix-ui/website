@@ -1,0 +1,51 @@
+.PrimitivesHeroButton {
+  all: unset;
+  align-items: center;
+  box-sizing: border-box;
+  user-select: none;
+  display: inline-flex;
+  color: var(--gray-12);
+  font-size: var(--font-size-1);
+  line-height: 1;
+  gap: var(--space-3);
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+  height: var(--space-5);
+  border-radius: var(--radius-2);
+  /* For Safari layout shifts when interacting with positioned components */
+  will-change: transform;
+
+  &:where([data-variant='white']) {
+    background-color: var(--white-a9);
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--white-a11);
+      }
+    }
+    .dark &,
+    .dark-theme & {
+      background-color: var(--white-a3);
+      @media (hover: hover) {
+        &:hover {
+          background-color: var(--white-a4);
+        }
+      }
+    }
+  }
+
+  &:where([data-variant='gray']) {
+    background-color: var(--gray-a4);
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--gray-a5);
+      }
+    }
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 2px var(--gray-a8);
+  }
+}

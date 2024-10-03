@@ -1,14 +1,13 @@
 import React from 'react';
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
-import { getCssText } from '@utils/stitches';
-import { renderSnippet, gtagUrl } from '@utils/analytics';
+import { renderGtagSnippet, GTAG_URL } from '@utils/analytics';
 
 export default class Document extends NextDocument {
   render() {
+    const gtagSnippet = renderGtagSnippet();
     return (
       <Html lang="en">
         <Head>
-          <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
           <link
             rel="preload"
             href="/fonts/AdobeTextPro-Regular.woff2"
@@ -78,8 +77,12 @@ export default class Document extends NextDocument {
 `,
             }}
           />
-          <script async src={gtagUrl} />
-          <script dangerouslySetInnerHTML={{ __html: renderSnippet() }} />
+          {gtagSnippet && (
+            <>
+              <script async src={GTAG_URL} />
+              <script dangerouslySetInnerHTML={{ __html: gtagSnippet }} />
+            </>
+          )}
         </Head>
         <body>
           <Main />

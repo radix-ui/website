@@ -3,7 +3,7 @@ import NextLink from 'next/link';
 import { Box, Flex, Link, Text } from '@radix-ui/themes';
 import { useCurrentPageSlug } from '@utils/useCurrentPageSlug';
 
-export function DocsPagination({ allRoutes }) {
+export function DocsPagination({ allRoutes }: { allRoutes: Route[] }) {
   const currentPageSlug = useCurrentPageSlug();
   const currentPageIndex = allRoutes.findIndex((page) => page.slug === currentPageSlug);
   const previous = allRoutes[currentPageIndex - 1];
@@ -25,7 +25,7 @@ export function DocsPagination({ allRoutes }) {
   );
 }
 
-function DocsPaginationLink({ route, direction }) {
+function DocsPaginationLink({ route, direction }: { route: Route; direction: string }) {
   return (
     <Flex
       gap="1"
@@ -44,3 +44,5 @@ function DocsPaginationLink({ route, direction }) {
     </Flex>
   );
 }
+
+type Route = { title: string; slug: string };

@@ -6,6 +6,7 @@ import { getAllFrontmatter, getMdxBySlug } from '@utils/mdx';
 import { QuickNav } from '@components/QuickNav';
 
 import type { Frontmatter } from 'types/frontmatter';
+import { GetStaticPropsContext } from 'next';
 
 type Doc = {
   frontmatter: Frontmatter;
@@ -47,7 +48,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps(context) {
-  const { frontmatter, code } = await getMdxBySlug('primitives/docs/guides/', context.params.slug);
+export async function getStaticProps(context: GetStaticPropsContext<{ slug: string }>) {
+  const { frontmatter, code } = await getMdxBySlug('primitives/docs/guides/', context.params!.slug);
   return { props: { frontmatter, code } };
 }

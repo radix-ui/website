@@ -7,6 +7,115 @@ metaDescription: Radix Primitives releases and their changelogs.
 
 <Description>Radix Primitives releases and their changelogs.</Description>
 
+## October 1, 2024
+
+<PackageRelease name="Alert Dialog" version="1.1.2" />
+
+- Fix `allowPinchZoom` bug for trackpad users <PRLink id={3127} />
+
+<PackageRelease name="Avatar" version="1.1.1" />
+
+- Check for `referrerPolicy` when checking the image loading status <PRLink id={2772} />
+
+<PackageRelease name="Checkbox" version="1.1.2" />
+
+- Fix a bug where `defaultChecked` unexpectedly changed for uncontrolled checkboxes <PRLink id={2135} />
+- Forward the `form` prop to the bubble input element to fix non-parent form submissions <PRLink id={3161} />
+
+<PackageRelease name="Dialog" version="1.1.2" />
+
+- Fix `allowPinchZoom` bug for trackpad users <PRLink id={3127} />
+
+<PackageRelease name="Radio Group" version="1.2.1" />
+
+- Forward the `form` prop to the bubble input element to fix non-parent form submissions <PRLink id={3161} />
+
+<PackageRelease name="Scroll Area" version="1.2.0" />
+
+- Fix `asChild` prop not working as expected on the `Viewport` <PRLink id={2945} />
+- Update internal styles to fix other issues with `Viewport` <PRLink id={2945} />
+
+<PackageRelease name="Select" version="2.1.2" />
+
+- Fix error thrown when items are initially undefined <PRLink id={2623} />
+- Fix several bugs for touch devices <PRLink id={2939} />
+- Forward the `form` prop to the bubble input element to fix non-parent form submissions <PRLink id={3161} />
+- Fix position bug where popover may start off-screen for long items <PRLink id={3149} />
+
+<PackageRelease name="Slider" version="1.2.1" />
+
+- Forward the root `form` prop to each thumb's bubble input element to fix non-parent form submissions <PRLink id={3161} />
+
+<PackageRelease name="Switch" version="1.1.1" />
+
+- Forward the `form` prop to the bubble input element to fix non-parent form submissions <PRLink id={3161} />
+
+<PackageRelease name="Toast" version="1.2.2" />
+
+- Fix incorrect focus when `hotkey` is an empty array <PRLink id={2491} />
+
+## June 28, 2024
+
+<PackageRelease name="Checkbox" version="1.1.1" />
+
+- Export `CheckedState` type
+
+<PackageRelease name="Tooltip" version="1.1.2" />
+
+- Export `TooltipProviderProps` type
+
+## June 21, 2024
+
+<PackageRelease name="Portal" version="1.1.1" />
+
+- Add a missing internal utility to `package.json`. The corresponding packages that provide a Portal part also received a patch update. <PRLink id={2966} />
+
+## June 19, 2024
+
+<PackageRelease name="All primitives" />
+
+<br />
+
+Released minor versions for all primitives with the following changes:
+
+- Full React 19 compatability <PRLink id={2952} />
+- Full RSC compatibility <PRLink id={2923} />
+- Internal build tooling changes <PRLink id={2922} /> <PRLink id={2931} />
+- Update and pin `react-remove-scroll` dependency version to avoid double scrollbar bugs in edge cases <PRLink id={2776} />
+- Don’t scroll menu items in response to hover <PRLink id={2451} />
+- Make sure that components that close on Escape key press capture the corresponding keyboard event. This way you can call `stopPropagation` in `onEscapeKeyDown` if you need more control rendering Radix components within another component that closes on Escape key press.
+- Make sure that components with roving focus do not interfere with browser or system hotkeys, such as back navigation <PRLink id={2739} />
+- Make sure that components that support `hideWhenDetached` prop do not allow interactions with hidden content <PRLink id={2743} /> <PRLink id={2745} />
+
+<PackageRelease name="Dialog" version="1.2.0" />
+
+- Log an error when an accessible title via the `Dialog.Title` part is missing <PRLink id={2948} />
+- Log a warning when an accessible description via the `Dialog.Description` part is missing <PRLink id={2948} />
+
+<PackageRelease name="Label" version="2.1.0" />
+
+- Make sure that the component doesn’t interfere when clicking on the spinner of a number input
+
+<PackageRelease name="Navigation Menu" version="1.2.0" />
+
+- Remove unsupported `disableOutsidePointerEvents` prop
+
+<PackageRelease name="Portal" version="1.1.0" />
+
+- Fix hydration error in SSR on the initial render <PRLink id={2923} />
+
+<PackageRelease name="Progress" version="1.2.0" />
+
+- Explicitly allow `value={undefined}` to represent an indeterminate state, matching the current practical behaviour <PRLink id={2947} />
+
+<PackageRelease name="Select" version="2.1.0" />
+
+- Add `nonce` prop to be able to pass CSP nonce to the inline styles <PRLink id={2728} />
+
+<PackageRelease name="Scroll Area" version="1.1.0" />
+
+- Add `nonce` prop to be able to pass CSP nonce to the inline styles <PRLink id={2728} />
+
 ## September 25, 2023
 
 <PackageRelease name="Alert Dialog" version="1.0.5" />
@@ -38,7 +147,7 @@ metaDescription: Radix Primitives releases and their changelogs.
 - Fix pointer-events issue when clicking outside <PRLink id={2177} />
 - Fix `Portal` part types lying about accepting DOM props <PRLink id={2178} />
 
-<PackageRelease name="Menu Bar" version="1.0.4" />
+<PackageRelease name="Menubar" version="1.0.4" />
 
 - Fix pointer-events issue when clicking outside <PRLink id={2177} />
 - Fix `Portal` part types lying about accepting DOM props <PRLink id={2178} />

@@ -89,6 +89,7 @@ input {
   margin-bottom: 10px;
   color: var(--violet-12);
   display: block;
+  user-select: none;
 }
 
 .Input {

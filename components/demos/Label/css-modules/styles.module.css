@@ -1,0 +1,29 @@
+.Root {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 35px;
+  color: white;
+}
+
+.Input {
+  all: unset;
+  width: 200px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 0 10px;
+  height: 35px;
+  font-size: 15px;
+  line-height: 1;
+  color: white;
+  background-color: var(--black-a2);
+  box-shadow: 0 0 0 1px var(--black-a6);
+  &:focus {
+    box-shadow: 0 0 0 2px black;
+  }
+  &::selection {
+    background-color: var(--black-a6);
+    color: white;
+  }
+}

@@ -8,14 +8,14 @@ export function QuickNav({ title = 'Quick nav' }: { title?: string }) {
 
   React.useEffect(() => {
     const headingElements: HTMLHeadingElement[] = Array.from(
-      document.querySelectorAll('[data-heading]')
+      document.querySelectorAll('[data-heading]'),
     );
 
     setHeadings(headingElements);
   }, []);
 
   // Function to determine the Heading Level based on `nodeName` (H2, H3, etc)
-  const getLevel = (nodeName) => {
+  const getLevel = (nodeName: string) => {
     return Number(nodeName.replace('H', ''));
   };
 

@@ -14,6 +14,7 @@ import { QuickNav } from '@components/QuickNav';
 import NextLink from 'next/link';
 import { ArrowLeftIcon } from '@radix-ui/react-icons';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
+import { GetStaticPropsContext } from 'next';
 
 type BlogPost = {
   frontmatter: Frontmatter;
@@ -70,7 +71,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps(context) {
-  const { frontmatter, code } = await getMdxBySlug('blog', context.params.slug);
+export async function getStaticProps(context: GetStaticPropsContext<{ slug: string }>) {
+  const { frontmatter, code } = await getMdxBySlug('blog', context.params!.slug);
   return { props: { frontmatter, code } };
 }

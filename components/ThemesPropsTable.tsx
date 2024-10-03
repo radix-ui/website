@@ -33,6 +33,7 @@ const definitions = {
     flexGrow: props.layoutPropDefs.flexGrow,
   },
   gridChildrenPropDefs: {
+    gridArea: props.layoutPropDefs.gridArea,
     gridColumn: props.layoutPropDefs.gridColumn,
     gridColumnStart: props.layoutPropDefs.gridColumnStart,
     gridColumnEnd: props.layoutPropDefs.gridColumnEnd,
@@ -80,11 +81,11 @@ const textAlign = (
 
 const textWrap = (
   <>
-    Controls the wrapping behavior of the text. See the corresponding{' '}
+    Controls the wrapping behavior of the text. See the corresponding{' '}
     <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap">
       text-wrap
     </ExternalLink>{' '}
-    values for details.
+    values for details.
   </>
 );
 
@@ -146,7 +147,7 @@ const uniqueDescriptions: UniqueDescriptions = {
     scaling: (
       <>
         The linear scaling applied to the theme. See the{' '}
-        <Link href="/themes/docs/theme/layout#scaling">layout guide</Link> for more details.
+        <Link href="/themes/docs/theme/spacing#scaling">scaling guide</Link> for more details.
       </>
     ),
   },
@@ -230,7 +231,7 @@ type ThemesPropsDef = Record<
   }
 >;
 
-function applyResponsive(value: string | undefined, isResponsive) {
+function applyResponsive(value: string | undefined, isResponsive?: boolean) {
   if (value && isResponsive) {
     return `Responsive<${value}>`;
   }
@@ -238,7 +239,7 @@ function applyResponsive(value: string | undefined, isResponsive) {
   return value;
 }
 
-function applyStringUnion(value: string | undefined, isEnumString) {
+function applyStringUnion(value: string | undefined, isEnumString?: boolean) {
   if (value && isEnumString) {
     return `Union<string, ${value}>`;
   }
@@ -248,23 +249,26 @@ function applyStringUnion(value: string | undefined, isEnumString) {
 
 const MAX_TYPE_LENGTH = 60;
 
-function formatDefinitions(definitions: Record<ComponentName, ThemesPropsDef>) {
+function formatDefinitions(
+  definitions: Record<ComponentName, ThemesPropsDef>,
+): Record<string, any> {
   const formattedProps = {};
 
   Object.keys(definitions).forEach((componentName) => {
-    const propsDef = definitions[componentName] as ThemesPropsDef;
+    const propsDef = (definitions as any)[componentName] as ThemesPropsDef;
 
-    formattedProps[componentName] = Object.keys(propsDef).map((key) => {
+    (formattedProps as any)[componentName] = Object.keys(propsDef).map((key) => {
       const item = propsDef[key];
       const propName = key;
       const description =
-        uniqueDescriptions[componentName]?.[propName] || commonDescriptions[propName];
+        (uniqueDescriptions as any)[componentName]?.[propName] ||
+        (commonDescriptions as any)[propName];
 
       let value = applyStringUnion(formatValues(item.values), item.type === 'enum | string');
       value = applyResponsive(value, item.responsive);
 
       const shouldUseSimpleType = item.values
-        ? value.length > MAX_TYPE_LENGTH || item.type === 'enum | string'
+        ? value!.length > MAX_TYPE_LENGTH || item.type === 'enum | string'
         : true;
 
       return {

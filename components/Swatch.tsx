@@ -21,20 +21,57 @@ import { classNames } from '@utils/classNames';
 import * as Colors from '@radix-ui/colors';
 import { useTheme } from 'next-themes';
 import { Cross2Icon, InfoCircledIcon } from '@radix-ui/react-icons';
-import copy from 'copy-to-clipboard';
+import { copy } from '../utils/clipboard';
 
-const brightColors = ['amber', 'yellow', 'lime', 'mint', 'sky'];
+export type ColorScale =
+  | 'white'
+  | 'black'
+  | 'gray'
+  | 'mauve'
+  | 'slate'
+  | 'sage'
+  | 'olive'
+  | 'sand'
+  | 'tomato'
+  | 'red'
+  | 'ruby'
+  | 'crimson'
+  | 'pink'
+  | 'plum'
+  | 'purple'
+  | 'violet'
+  | 'iris'
+  | 'indigo'
+  | 'blue'
+  | 'cyan'
+  | 'teal'
+  | 'jade'
+  | 'green'
+  | 'grass'
+  | 'bronze'
+  | 'gold'
+  | 'brown'
+  | 'orange'
+  | 'amber'
+  | 'yellow'
+  | 'lime'
+  | 'mint'
+  | 'sky';
+
+type ColorStep = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+
+const brightColors = ['amber', 'yellow', 'lime', 'mint', 'sky'] as const;
 
 interface SwatchProps extends React.ComponentPropsWithoutRef<'button'> {
-  scale: string;
-  step: string;
+  scale: ColorScale;
+  step: `${ColorStep}`;
 }
 
 export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
   const cssVariable = ['white', 'black'].includes(scale)
     ? `var(--${scale}-a${step})`
     : `var(--${scale}-${step})`;
-  const contentRef = React.useRef<HTMLDivElement>(null);
+  const contentRef = React.useRef<HTMLDivElement | null>(null);
   const { resolvedTheme } = useTheme();
 
   const friendlyScaleName = `${scale.charAt(0).toUpperCase() + scale.slice(1)}`;
@@ -89,10 +126,10 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
                 const hexA = getValue({ scale, step, dark, alpha: true });
                 const p3 = getValue({ scale, step, dark, p3: true });
                 const p3A = getValue({ scale, step, dark, p3: true, alpha: true });
-                const themeKey = ['light', 'dark'].includes(resolvedTheme)
-                  ? resolvedTheme
+                const themeKey = ['light', 'dark'].includes(resolvedTheme!)
+                  ? (resolvedTheme as 'light' | 'dark')
                   : 'light';
-                const stepContrastInfo = contrastInfo[themeKey]?.[`${scale}-${step}`];
+                const stepContrastInfo = (contrastInfo as any)[themeKey]?.[`${scale}-${step}`];
 
                 return (
                   <Grid align="center" columns={{ xs: 'auto 1fr' }} gapY={{ xs: '2' }} gapX="5">
@@ -124,7 +161,7 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
                         {['5'].includes(step) && 'Step 12 labels'}
                         {['6', '7', '8'].includes(step) && 'Steps 1–5 backgrounds'}
                         {['9', '10'].includes(step) &&
-                          (brightColors.includes(scale) ? 'Dark text' : 'White text')}
+                          (isBrightColor(scale) ? 'Dark text' : 'White text')}
                         {['11', '12'].includes(step) && 'Background colors'}
                       </Text>
                     </Box>
@@ -291,7 +328,9 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
                       Value
                     </Text>
                     <Box>
-                      <CopyButton>{String(Colors[scale + 'A'][scale + 'A' + step])}</CopyButton>
+                      <CopyButton>
+                        {String((Colors as any)[scale + 'A'][scale + 'A' + step])}
+                      </CopyButton>
                     </Box>
 
                     <Text color="gray" size="2">
@@ -313,8 +352,7 @@ export const Swatch = ({ scale, step, style, ...props }: SwatchProps) => {
                 }
 
                 if (+step < 11) {
-                  const isBright = brightColors.includes(scale);
-                  return isBright ? 'light' : 'dark';
+                  return isBrightColor(scale) ? 'light' : 'dark';
                 }
 
                 return otherTheme;
@@ -343,7 +381,7 @@ const getValue = ({
   p3,
 }: {
   scale: string;
-  step: string;
+  step: string | number;
   alpha?: boolean;
   dark?: boolean;
   p3?: boolean;
@@ -352,8 +390,8 @@ const getValue = ({
   const p3Key = p3 ? 'P3' : '';
   const darkKey = dark ? 'Dark' : '';
   const scaleKey = scale + darkKey + p3Key + alphaKey;
-  const colorKey = scale + alphaKey + step;
-  const value = String(Colors[scaleKey][colorKey]);
+  const colorKey = scale + alphaKey + String(step);
+  const value = String((Colors as any)[scaleKey][colorKey]);
   return p3 ? value : value.toUpperCase();
 };
 
@@ -365,7 +403,7 @@ interface CopyButtonState {
 
 type CopyButtonStateReducer = (
   prevState: CopyButtonState,
-  newState: Partial<CopyButtonState>
+  newState: Partial<CopyButtonState>,
 ) => CopyButtonState;
 
 const CopyButton = ({ onClick, ...props }: React.ComponentPropsWithoutRef<typeof Button>) => {
@@ -395,7 +433,7 @@ const CopyButton = ({ onClick, ...props }: React.ComponentPropsWithoutRef<typeof
       open: false,
       text: 'Click to copy',
       timeout: null,
-    }
+    },
   );
 
   return (
@@ -418,7 +456,7 @@ const CopyButton = ({ onClick, ...props }: React.ComponentPropsWithoutRef<typeof
         ref={ref}
         size="2"
         style={{ userSelect: 'auto' }}
-        onClick={async (event) => {
+        onClick={(event) => {
           onClick?.(event);
           const originalDefaultPrevented = event.defaultPrevented;
 
@@ -433,7 +471,7 @@ const CopyButton = ({ onClick, ...props }: React.ComponentPropsWithoutRef<typeof
             });
 
             if (!originalDefaultPrevented) {
-              copy(text);
+              void copy(text);
             }
           }
         }}
@@ -3053,3 +3091,7 @@ const contrastInfo = {
     },
   },
 };
+
+function isBrightColor(color: ColorScale): color is (typeof brightColors)[number] {
+  return brightColors.includes(color as any);
+}

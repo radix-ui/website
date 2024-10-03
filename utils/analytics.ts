@@ -1,37 +1,27 @@
-import React from 'react';
-import { Router } from 'next/router';
+export const GTAG_TRACKING_ID = 'G-MNCYB63WJR';
+export const GTAG_URL = `https://www.googletagmanager.com/gtag/js?id=${GTAG_TRACKING_ID}`;
 
 type WindowWithAnalytics = Window &
   typeof globalThis & {
     gtag: any;
   };
 
-const trackingID = 'G-MNCYB63WJR';
-
-export const useAnalytics = () => {
-  React.useEffect(() => {
-    const handleRouteChange = (url) => {
-      if (process.env.NODE_ENV === 'production') {
-        (window as WindowWithAnalytics).gtag('config', trackingID, {
-          page_location: url,
-          page_title: document.title,
-        });
-      }
-    };
-    Router.events.on('routeChangeComplete', handleRouteChange);
-    return () => Router.events.off('routeChangeComplete', handleRouteChange);
-  }, []);
-};
-
-export const gtagUrl = `https://www.googletagmanager.com/gtag/js?id=${trackingID}`;
-
-export function renderSnippet() {
+export function renderGtagSnippet() {
   if (process.env.NODE_ENV === 'production') {
     return `
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', '${trackingID}');
+    gtag('config', '${GTAG_TRACKING_ID}');
     `;
+  }
+}
+
+export function handleUrlChange(url: string) {
+  if (process.env.NODE_ENV === 'production') {
+    (window as WindowWithAnalytics).gtag('config', GTAG_TRACKING_ID, {
+      page_location: url,
+      page_title: document.title,
+    });
   }
 }

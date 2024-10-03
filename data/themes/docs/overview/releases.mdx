@@ -7,6 +7,56 @@ metaDescription: Radix Themes releases and their changelogs.
 
 <Description>Radix Themes releases and their changelogs.</Description>
 
+## 3.1.3
+
+- Support indeterminate indicator for the uncontrolled `Checkbox` component
+
+## 3.1.2
+
+- Add `areas` prop to the `Grid` component and `gridArea` prop to all layout components (`Box`, `Container`, `Flex`, `Grid`, `Section`)
+- Add `overflow-wrap: anywhere` style to the `DataList` component so that long values—such as IDs—can break over to next line
+- Support indeterminate indicator for the indeterminate `Checkbox` component
+
+## 3.1.1
+
+<Note>June 21, 2024</Note>
+
+- Upgrade [Radix Primitives](/primitives/docs/overview/releases#june-21-2024)
+
+## 3.1.0
+
+<Note>June 20, 2024</Note>
+
+- Support React 19
+- Upgrade all [Radix Primitives](/primitives/docs/overview/releases#june-19-2024)
+
+## 3.0.5
+
+<Note>May 16, 2024</Note>
+
+- Add `align`, `height`, `minHeight`, and `maxHeight` props to `AlertDialog.Content` and `Dialog.Content`
+
+## 3.0.4
+
+<Note>May 15, 2024</Note>
+
+- Fix an issue when the Radix Themes package couldn’t be bundled with webpack because of a circular dependency within
+- Support the `max` prop on the Progress component
+
+## 3.0.3
+
+<Note>May 1, 2024</Note>
+
+- Fix an issue when the theme `grayColor` setting would have no effect in combination with explicit `appearance="light"` or `appearance="dark"` values
+- Fix a regression when `Link` would use an automatic high-contrast color when an explicit `color` value was used.
+- Fix a regression when `Link` would not use the correct text selection and focus color when nested in gray text.
+- Tweak `Link` tap highlight style
+- Tweak `CheckboxGroup.Item` and `RadioGroup.Item` so that a layout with overflowing text truncation would be possible to achieve
+- Remove an unnecessary `data-accent-color` attribute from components where it had no practical effect to be there.
+- Rework the internals of the `color` prop definition.
+- Rework the autofilled and disabled colors for `TextField` and `TextArea`
+- Add an internal `--spinner-animation-duration` CSS variable for the `Spinner` component
+
 ## 3.0.2
 
 <Note>April 3, 2024</Note>
@@ -30,7 +80,7 @@ metaDescription: Radix Themes releases and their changelogs.
 
 <Box mt="3" mb="6">
   Radix Themes 3.0 comes with a new layout engine, 11 new components, and full
-  ESM support. [Read the announcement](/blog/themes-3).
+  ESM support. [Read the announcement](/blog/themes-3).
 </Box>
 
 ### Upgrade guide
@@ -104,7 +154,7 @@ If you were using the following tokens for your custom components, make sure to 
   - Replace your `size="2"` usage with `size="3"`
 - `Card` internal HTML structure and styles were reworked and now renders a single HTML node. Make sure that your code works as expected if you were relying on any of the implementation quirks to override styles or behaviour.
   - If you need to override the Card’s background color on variants other than `ghost`, use `--card-background-color` variable instead of assigning `background-color` directly, or set your background color on an `<Inset p="current">` element nested as the first child of the Card.
-  - Check your Card instances that uses `asChild` or is `asChild`’ed onto by a parent component. (The common case with link or button card without any extra styles will work as expected).
+  - Check your Card instances that uses `asChild` or is `asChild`’ed onto by a parent component. (The common case with link or button card without any extra styles will work as expected).
 - `HoverCard` and `Popover` now have `maxWidth="480px"` by default on the Content part.
   - If you use popovers and hover cards that need a wider width, override `maxWidth` with your own value.
 - `RadioGroup` internal HTML structure and styles were reworked and is now designed to display an optional text label when passing `children` to the `Item` part. The `Root` part now also provides flex column styles and spacing.
@@ -139,7 +189,7 @@ If you were using the following tokens for your custom components, make sure to 
     - **[Breaking]** Remove component prop definitions and internal helpers from the root `@radix-ui/themes` import entry point and export them from `@radix-ui/themes/props` and `@radix-ui/themes/helpers` to make it possible to build your own component library on top of Radix Themes using the same techniques.
     - Add a wildcard entry point to the package to allow direct access to the package internals as an escape hatch if you have a complex tooling setup that can’t support modern module resolution rules
     - Add extra CSS file exports for advanced use-cases:
-      - Export individual `tokens.css`, `components.css`, and `utilities.css` files in case you need fine-grained control of the CSS precedence. For example, this allows to import Radix Themes `utilities.css` after your own CSS, and everything else before that.
+      - Export individual `tokens.css`, `components.css`, and `utilities.css` files in case you need fine-grained control of the CSS precedence. For example, this allows to import Radix Themes `utilities.css` after your own CSS, and everything else before that.
       - Additionally to the above, you can customise which colors to import. Instead of importing `tokens.css`, you can also import `tokens/base.css` and `tokens/colors/*.css`, where `*` corresponds to the names of the accent and gray colors you need in your project.
       - Export `layout.css` that only includes styles for the layout components (Box, Flex, Grid, Container, Section). Individual exports `layout/tokens.css`, `layout/components.css`, and `layout/utilities.css` are also available to support the above use-case.
   - Props
@@ -309,7 +359,7 @@ If you were using the following tokens for your custom components, make sure to 
 
 <Note>December 5, 2023</Note>
 
-- Fix an issue when Chrome would sometimes crash while using CSS inspector on a Radix Themes stylesheet.
+- Fix an issue when Chrome would sometimes crash while using CSS inspector on a Radix Themes stylesheet.
 
 ## 2.0.1
 

@@ -3,7 +3,7 @@ import * as React from 'react';
 import NextLink from 'next/link';
 import { ThemesHeader } from '@components/ThemesHeader';
 import { ExampleThemesDashboard } from '@components/ExampleThemesDashboard';
-import { MagicCurtain } from '@components/MagicCurtain';
+import * as MagicCurtain from '@components/MagicCurtain';
 import { ExampleThemesEcommerce } from '@components/ExampleThemesEcommerce';
 import { ExampleThemesMusicApp } from '@components/ExampleThemesMusicApp';
 import { MobileMenuProvider } from '@components/MobileMenu';
@@ -213,13 +213,17 @@ const previewImagesDarkMode = [
 
 const MainContent = () => (
   <Box>
-    <Section size={{ initial: '2', md: '4', lg: '2' }} pb={{ initial: '4', lg: '7' }}>
+    <Section
+      size={{ initial: '2', md: '4', lg: '2' }}
+      pb={{ initial: '4', lg: '7' }}
+      mt={{ lg: 'max(-160px, min(0px, calc(-0.2 * (100vh - 800px)))' }}
+    >
       <Box>
         <Flex align="center" gap="2" mb="6">
-          <Badge asChild size="2" radius="full">
+          <Badge asChild size="3" radius="full">
             <NextLink href="/blog/themes-3">
-              See what’s new in Radix Themes 3.0
-              <ArrowRightIcon width="13" height="13" style={{ marginLeft: -2 }} />
+              Read about Radix Themes 3.0
+              <ArrowRightIcon width="15" height="15" style={{ marginLeft: -2 }} />
             </NextLink>
           </Badge>
         </Flex>
@@ -227,7 +231,7 @@ const MainContent = () => (
           <SerifHeading mb="3">
             Start building
             <br />
-            your app now
+            your app now
           </SerifHeading>
         </Box>
         <Box display={{ initial: 'none', lg: 'block' }}>
@@ -237,7 +241,7 @@ const MainContent = () => (
           >
             Start building
             <br />
-            your app now
+            your app now
           </SerifHeading>
         </Box>
       </Box>
@@ -245,8 +249,8 @@ const MainContent = () => (
       <Box style={{ maxWidth: 500 }}>
         <Text size={{ initial: '4', xs: '5' }}>
           <Text as="p" mb="5" color="gray">
-            An open source component library optimized for fast development, easy maintenance,
-            and accessibility. Just import and go—no configuration required.
+            An open source component library optimized for fast development, easy maintenance, and
+            accessibility. Just import and go—no configuration required.
           </Text>
 
           <Box mb="5">

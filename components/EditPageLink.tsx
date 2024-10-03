@@ -11,7 +11,7 @@ export function EditPageLink() {
   if (Array.isArray(routerSlug)) {
     filePath = filePath.replace('[...slug]', routerSlug.join('/'));
   } else {
-    filePath = filePath.replace('[slug]', routerSlug);
+    filePath = filePath.replace('[slug]', routerSlug ?? '');
   }
   const editUrl = `${filePath}.mdx`;
 

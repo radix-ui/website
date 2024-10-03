@@ -2,7 +2,7 @@ import * as React from 'react';
 import NextLink from 'next/link';
 import { Callout, Link, Text } from '@radix-ui/themes';
 
-export function OldVersionNote({ name, href }) {
+export function OldVersionNote({ name, href }: { name: string; href: string }) {
   return (
     <Callout.Root color="yellow" mt={{ initial: '-3', md: '-8' }} mb="6">
       <Callout.Text>

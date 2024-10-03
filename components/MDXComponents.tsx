@@ -38,18 +38,18 @@ export const components = {
   ColorScaleGroup,
   Tabs,
   HeroCodeBlock,
-  h1: (props) => (
+  h1: (props: any) => (
     <Heading asChild size="8" mb="2">
       <h1 {...props} style={{ scrollMarginTop: 'var(--space-9)' }} />
     </Heading>
   ),
-  Description: ({ children, ...props }) => {
+  Description: ({ children, ...props }: any) => {
     // takes the text even if it's wrapped in `<p>`
     // https://github.com/wooorm/xdm/issues/47
     const childText = typeof children === 'string' ? children : children.props.children;
     return <Text as="p" size="4" mt="2" mb="7" color="gray" children={childText} {...props} />;
   },
-  h2: ({ children, id, ...props }) => (
+  h2: ({ children, id, ...props }: any) => (
     <Heading
       size="6"
       mt="8"
@@ -65,7 +65,7 @@ export const components = {
       </h2>
     </Heading>
   ),
-  h3: ({ children, id, ...props }) => (
+  h3: ({ children, id, ...props }: any) => (
     <Heading
       size="4"
       mt="7"
@@ -81,13 +81,13 @@ export const components = {
       </h3>
     </Heading>
   ),
-  h4: ({ children, ...props }) => (
+  h4: ({ children, ...props }: any) => (
     <Heading asChild size="4" mt="6" mb="3" {...props}>
       <h4 children={children} style={{ scrollMarginTop: 'var(--space-9)' }} />
     </Heading>
   ),
-  p: (props) => <Text mb="4" as="p" size="3" {...props} />,
-  a: ({ href = '', children, ...props }) => {
+  p: (props: any) => <Text mb="4" as="p" size="3" {...props} />,
+  a: ({ href = '', children, ...props }: any) => {
     if (href.startsWith('http')) {
       return (
         <Flex asChild display="inline-flex" align="center" gap="1">
@@ -104,31 +104,31 @@ export const components = {
       </NextLink>
     );
   },
-  hr: (props) => <Separator size="2" {...props} my="8" style={{ marginInline: 'auto' }} />,
-  ul: (props) => <ul {...props} className={styles.List} />,
-  ol: ({ children, ...props }) => (
+  hr: (props: any) => <Separator size="2" {...props} my="8" style={{ marginInline: 'auto' }} />,
+  ul: (props: any) => <ul {...props} className={styles.List} />,
+  ol: ({ children, ...props }: any) => (
     <Box {...props} mb="3" pl="4" asChild>
       <ol>{children}</ol>
     </Box>
   ),
-  li: (props) => (
+  li: (props: any) => (
     <li className={styles.ListItem}>
       <Text {...props} />
     </li>
   ),
   em: Em,
   strong: Strong,
-  img: ({ style, ...props }) => (
+  img: ({ style, ...props }: any) => (
     <Box my="6">
       <img {...props} style={{ maxWidth: '100%', verticalAlign: 'middle', ...style }} />
     </Box>
   ),
   blockquote: Blockquote,
   // todo: line highlights, style overrides, live preview
-  pre: ({ children }) => (
+  pre: ({ children }: any) => (
     <CodeBlock.Root my="5">
       {children.props.live && (
-        <CodeBlock.LivePreview code={childrenText(children)} scroll={children.props.scroll} />
+        <CodeBlock.LivePreview code={childrenText(children) ?? ''} scroll={children.props.scroll} />
       )}
       <CodeBlock.Content>
         <CodeBlock.Pre>{children}</CodeBlock.Pre>
@@ -136,7 +136,7 @@ export const components = {
       </CodeBlock.Content>
     </CodeBlock.Root>
   ),
-  code: ({ className, line, live, style, ...props }) => {
+  code: ({ className, line, live, style, ...props }: any) => {
     // if it's a codeblock (``` block in markdown), it'll have a className from prism
     const isInlineCode = !className;
     return isInlineCode ? (
@@ -147,7 +147,7 @@ export const components = {
   },
   CodeBlock,
   NextLink,
-  Note: ({ children, ...props }) => (
+  Note: ({ children, ...props }: any) => (
     <Box className={styles.Note} asChild my="2" {...props}>
       <aside children={children} />
     </Box>
@@ -155,18 +155,18 @@ export const components = {
   Highlights,
   Kbd: Kbd,
   Code,
-  CssVariablesTable: (props) => (
+  CssVariablesTable: (props: any) => (
     <Box mt="2">
       <CssVariablesTable {...props} />
     </Box>
   ),
-  DataAttributesTable: (props) => <DataAttributesTable {...props} />,
-  PropsTable: (props) => (
+  DataAttributesTable: (props: any) => <DataAttributesTable {...props} />,
+  PropsTable: (props: any) => (
     <Box my="4">
       <PropsTable {...props} />
     </Box>
   ),
-  KeyboardTable: (props) => (
+  KeyboardTable: (props: any) => (
     <Box mb="5">
       <KeyboardTable {...props} />
     </Box>
@@ -200,7 +200,7 @@ export const FrontmatterContext = React.createContext<Frontmatter>({} as any);
 
 // Custom provider for next-mdx-remote
 // https://github.com/hashicorp/next-mdx-remote#using-providers
-export function MDXProvider(props) {
+export function MDXProvider(props: { frontmatter: Frontmatter; children: React.ReactNode }) {
   const { frontmatter, children } = props;
   return <FrontmatterContext.Provider value={frontmatter}>{children}</FrontmatterContext.Provider>;
 }

@@ -45,7 +45,7 @@ type ExampleLayoutProps = React.ComponentPropsWithoutRef<typeof Flex> & {
 
 export const ExampleThemesEcommerce = ({ focusable = true, ...props }: ExampleLayoutProps) => {
   // We’ll use a different portal container for homepage demo purposes; this is usually not needed.
-  const [portalContainer, setPortalContainer] = React.useState<HTMLDivElement>(null);
+  const [portalContainer, setPortalContainer] = React.useState<HTMLDivElement | null>(null);
 
   // Interactive elements may be not focusable for homepage demo purposes
   const tabIndex = focusable ? undefined : -1;
@@ -60,7 +60,7 @@ export const ExampleThemesEcommerce = ({ focusable = true, ...props }: ExampleLa
     color: '',
     productMaterial: '',
     productColor: '',
-    productSizes: [],
+    productSizes: [] as string[],
   });
 
   return (
@@ -328,24 +328,21 @@ export const ExampleThemesEcommerce = ({ focusable = true, ...props }: ExampleLa
             {[
               {
                 name: 'Poncho #4',
-                url:
-                  'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&h=80&q=80&crop=entropy',
+                url: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&h=80&q=80&crop=entropy',
                 caption: 'Size M',
                 count: '1',
                 price: '$79',
               },
               {
                 name: 'Jeans #8',
-                url:
-                  'https://images.unsplash.com/photo-1602293589930-45aad59ba3ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&h=80&q=80&crop=entropy',
+                url: 'https://images.unsplash.com/photo-1602293589930-45aad59ba3ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&h=80&q=80&crop=entropy',
                 caption: 'Size 30',
                 count: '2',
                 price: '$118',
               },
               {
                 name: 'Sneakers #14',
-                url:
-                  'https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&h=80&q=80&crop=center',
+                url: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&h=80&q=80&crop=center',
                 caption: 'Size 8',
                 count: '1',
                 price: '$116',
@@ -637,27 +634,23 @@ export const ExampleThemesEcommerce = ({ focusable = true, ...props }: ExampleLa
             {[
               {
                 name: 'Jeans #8',
-                url:
-                  'https://images.unsplash.com/photo-1602293589930-45aad59ba3ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=272&h=272&q=80&crop=entropy',
+                url: 'https://images.unsplash.com/photo-1602293589930-45aad59ba3ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=272&h=272&q=80&crop=entropy',
                 price: '$118',
               },
 
               {
                 name: 'Jacket #3',
-                url:
-                  'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&crop=entropy&w=272&h=272&q=80',
+                url: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&crop=entropy&w=272&h=272&q=80',
                 price: '$49',
               },
               {
                 name: 'Pants #10',
-                url:
-                  'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=272&h=272&q=80',
+                url: 'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=272&h=272&q=80',
                 price: '$32',
               },
               {
                 name: 'Shirt #11',
-                url:
-                  'https://images.unsplash.com/photo-1611312449412-6cefac5dc3e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=272&h=272&q=80',
+                url: 'https://images.unsplash.com/photo-1611312449412-6cefac5dc3e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=272&h=272&q=80',
                 price: '$39',
               },
             ].map((item) => (
@@ -1007,56 +1000,58 @@ export const ExampleThemesEcommerce = ({ focusable = true, ...props }: ExampleLa
 
             <Separator size="4" />
 
-            {([
-              {
-                id: 1005,
-                paymentStatus: 'Paid',
-                paymentStatusColor: 'teal',
-                fulfillment: 'Delivering',
-                fulfillmentColor: 'amber',
-                amount: '$154.60',
-              },
-              {
-                id: 1004,
-                paymentStatus: 'Paid',
-                paymentStatusColor: 'teal',
-                fulfillment: 'Unfulfilled',
-                fulfillmentColor: 'amber',
-                amount: '$93.49',
-              },
-              {
-                id: 1003,
-                paymentStatus: 'Refunded',
-                paymentStatusColor: 'gray',
-                fulfillment: 'Cancelled',
-                fulfillmentColor: 'red',
-                amount: '$39.00',
-              },
-              {
-                id: 1002,
-                paymentStatus: 'Unpaid',
-                paymentStatusColor: 'amber',
-                fulfillment: 'Unfulfilled',
-                fulfillmentColor: 'amber',
-                amount: '$438.90',
-              },
-              {
-                id: 1001,
-                paymentStatus: 'Paid',
-                paymentStatusColor: 'teal',
-                fulfillment: 'Fulfilled',
-                fulfillmentColor: 'teal',
-                amount: '$532.64',
-              },
-              {
-                id: 1000,
-                paymentStatus: 'Paid',
-                paymentStatusColor: 'teal',
-                fulfillment: 'Fulfilled',
-                fulfillmentColor: 'teal',
-                amount: '$625.03',
-              },
-            ] as const).map((order) => (
+            {(
+              [
+                {
+                  id: 1005,
+                  paymentStatus: 'Paid',
+                  paymentStatusColor: 'teal',
+                  fulfillment: 'Delivering',
+                  fulfillmentColor: 'amber',
+                  amount: '$154.60',
+                },
+                {
+                  id: 1004,
+                  paymentStatus: 'Paid',
+                  paymentStatusColor: 'teal',
+                  fulfillment: 'Unfulfilled',
+                  fulfillmentColor: 'amber',
+                  amount: '$93.49',
+                },
+                {
+                  id: 1003,
+                  paymentStatus: 'Refunded',
+                  paymentStatusColor: 'gray',
+                  fulfillment: 'Cancelled',
+                  fulfillmentColor: 'red',
+                  amount: '$39.00',
+                },
+                {
+                  id: 1002,
+                  paymentStatus: 'Unpaid',
+                  paymentStatusColor: 'amber',
+                  fulfillment: 'Unfulfilled',
+                  fulfillmentColor: 'amber',
+                  amount: '$438.90',
+                },
+                {
+                  id: 1001,
+                  paymentStatus: 'Paid',
+                  paymentStatusColor: 'teal',
+                  fulfillment: 'Fulfilled',
+                  fulfillmentColor: 'teal',
+                  amount: '$532.64',
+                },
+                {
+                  id: 1000,
+                  paymentStatus: 'Paid',
+                  paymentStatusColor: 'teal',
+                  fulfillment: 'Fulfilled',
+                  fulfillmentColor: 'teal',
+                  amount: '$625.03',
+                },
+              ] as const
+            ).map((order) => (
               <Grid columns="4" key={order.id}>
                 <Text size="3" color="gray">
                   <Link
@@ -1250,7 +1245,7 @@ export const ExampleThemesEcommerce = ({ focusable = true, ...props }: ExampleLa
             <Grid rows="256px 256px" columns="3">
               <Box p="4">
                 <Heading as="h3" size="8" mb="2">
-                  Dare to stand out
+                  Dare to stand out
                 </Heading>
                 <Text as="p" mb="3" size="3">
                   Striking patterns, vibrant hues, and unusual designs.
@@ -1536,7 +1531,7 @@ const ToggleButtons = React.forwardRef<ToggleGroupRootElement, ToggleButtonsProp
         ref={forwardedRef}
         {...props}
         {...(tabIndex !== undefined && { tabIndex })}
-        onValueChange={(value) => {
+        onValueChange={(value: any) => {
           if (value) {
             props.onValueChange(value);
           }
@@ -1556,5 +1551,5 @@ const ToggleButtons = React.forwardRef<ToggleGroupRootElement, ToggleButtonsProp
         ))}
       </ToggleGroup.Root>
     );
-  }
+  },
 );

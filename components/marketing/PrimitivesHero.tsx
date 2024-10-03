@@ -1,7 +1,6 @@
 import React from 'react';
 import NextLink from 'next/link';
 import { Box, Text, Link, Flex, Container, Heading } from '@radix-ui/themes';
-import { styled } from '@utils/stitches';
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons';
 import {
   Carousel,
@@ -24,97 +23,92 @@ import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import { Button, Section } from '@radix-ui/themes';
 import { SerifHeading } from '@components/SerifHeading';
 import { HiddenScroll } from './HiddenScroll';
+import styles from './PrimitivesHero.module.css';
 
-const DemoContainer = styled('div', {
-  display: 'flex',
-  position: 'relative',
-  alignItems: 'center',
-  justifyContent: 'center',
-  width: 300,
-  height: 400,
-  borderRadius: 'var(--radius-4)',
-  marginBottom: 'var(--space-2)',
+function DemoContainer({
+  children,
+  ariaUnhide,
+  component,
+}: {
+  children: React.ReactNode;
+  ariaUnhide?: boolean;
+  component?: string;
+}) {
+  return (
+    <Flex
+      data-component={component}
+      className={styles.DemoContainer}
+      aria-hidden={ariaUnhide ? undefined : true}
+      position="relative"
+      align="center"
+      justify="center"
+      width={{ initial: '300px', xs: '400px' }}
+      height="400px"
+      // Content slightly above vertical center feels perfectly centred
+      pb="3"
+      mb="2"
+    >
+      {children}
+    </Flex>
+  );
+}
 
-  // Content slightly above vertical center feels perfectly centred
-  paddingBottom: 'var(--space-3)',
+const FocusArea = React.forwardRef<HTMLDivElement, React.ComponentProps<'div'>>(function FocusArea(
+  { children, onKeyDown, ...props },
+  forwardedRef,
+) {
+  const ownRef = React.useRef<HTMLDivElement | null>(null);
+  const composedRef = useComposedRefs(ownRef, forwardedRef);
 
-  // Can't select text because the carousel is draggable
-  userSelect: 'none',
-  cursor: 'default',
+  return (
+    <div
+      {...props}
+      className={styles.FocusArea}
+      data-focus-area
+      ref={composedRef}
+      tabIndex={0}
+      onKeyDown={(event) => {
+        onKeyDown?.(event);
 
-  '@media (min-width: 520px)': {
-    width: 400,
-  },
-});
+        // Move focus inside the FocusArea when Enter or Spacebar is pressed
+        if (event.target === event.currentTarget && (event.key === 'Enter' || event.key === ' ')) {
+          // We are looking for something obviously focusable
+          const tier1 =
+            '[role="menu"], [role="dialog"] input, [role="dialog"] button, [tabindex="0"]';
+          const tier2 = 'a, button, input, select, textarea';
 
-const StyledFocusArea = styled('div', {
-  outline: 0,
-  borderRadius: 'var(--radius-4)',
-  '&:focus': {
-    boxShadow: '0 0 0 2px var(--blue-a8)',
-  },
-  '&:focus:not(:focus-visible)': {
-    boxShadow: 'none',
-  },
-});
+          // Search for tier 1 and tier 2 elements, prioritising
+          const elementToFocus = [
+            event.currentTarget.querySelector<HTMLElement>(tier1),
+            event.currentTarget.querySelector<HTMLElement>(tier2),
+          ].filter((el) => Boolean(el))[0];
 
-const FocusArea = React.forwardRef<HTMLDivElement, React.ComponentProps<typeof StyledFocusArea>>(
-  ({ children, onKeyDown, ...props }, forwardedRef) => {
-    const ownRef = React.useRef<HTMLDivElement>(null);
-    const composedRef = useComposedRefs(ownRef, forwardedRef);
-
-    return (
-      <StyledFocusArea
-        {...props}
-        data-focus-area
-        ref={composedRef}
-        tabIndex={0}
-        onKeyDown={(event) => {
-          onKeyDown?.(event);
-
-          // Move focus inside the FocusArea when Enter or Spacebar is pressed
-          if (
-            event.target === event.currentTarget &&
-            (event.key === 'Enter' || event.key === ' ')
-          ) {
-            // We are looking for something obviously focusable
-            const tier1 =
-              '[role="menu"], [role="dialog"] input, [role="dialog"] button, [tabindex="0"]';
-            const tier2 = 'a, button, input, select, textarea';
-
-            // Search for tier 1 and tier 2 elements, prioritising
-            const elementToFocus = [
-              event.currentTarget.querySelector<HTMLElement>(tier1),
-              event.currentTarget.querySelector<HTMLElement>(tier2),
-            ].filter((el) => Boolean(el))[0];
-
-            if (elementToFocus) {
-              event.preventDefault();
-              elementToFocus.focus();
-            }
+          if (elementToFocus) {
+            event.preventDefault();
+            elementToFocus.focus();
           }
+        }
 
-          // Move focus onto the FocusArea when Escape is pressed, unless the focus is currently inside a modal
-          if (
-            event.key === 'Escape' &&
-            event.target instanceof HTMLElement &&
-            event.target !== event.currentTarget &&
-            event.target.closest('[role="dialog"], [role="menu"]') === null
-          ) {
-            event.currentTarget.focus();
-          }
-        }}
-      >
-        <div data-focus-area-entry />
-        {children}
-        <div data-focus-area-exit />
-      </StyledFocusArea>
-    );
-  }
-);
+        // Move focus onto the FocusArea when Escape is pressed, unless the focus is currently inside a modal
+        if (
+          event.key === 'Escape' &&
+          event.target instanceof HTMLElement &&
+          event.target !== event.currentTarget &&
+          event.target.closest('[role="dialog"], [role="menu"]') === null
+        ) {
+          event.currentTarget.focus();
+        }
+      }}
+    >
+      <div data-focus-area-entry />
+      {children}
+      <div data-focus-area-exit />
+    </div>
+  );
+});
 
 export const PrimitivesHero = () => {
-  const lastUsedFocusArea = React.useRef<HTMLElement>(null);
+  const lastUsedFocusArea = React.useRef<HTMLElement | null>(null);
   const isRoving = React.useRef(false);
 
   React.useEffect(() => {
@@ -158,14 +152,14 @@ export const PrimitivesHero = () => {
       if (event.key === 'Tab' && event.shiftKey === false) {
         const selector = 'a, button, input, select, textarea, [data-focus-area-exit]';
         const elements = Array.from(document.querySelectorAll<HTMLElement>(selector)).filter(
-          (element) => element.tabIndex !== -1 || element.hasAttribute('data-focus-area-exit')
+          (element) => element.tabIndex !== -1 || element.hasAttribute('data-focus-area-exit'),
         );
 
         // Find last exit guard
         elements.reverse();
         const lastExit = elements.find((el) => el.matches('[data-focus-area-exit]'));
         elements.reverse();
-        const lastExitIndex = elements.indexOf(lastExit);
+        const lastExitIndex = elements.indexOf(lastExit!);
         const nextElement = elements[lastExitIndex + 1];
 
         if (nextElement) {
@@ -178,12 +172,12 @@ export const PrimitivesHero = () => {
       if (event.key === 'Tab' && event.shiftKey) {
         const selector = 'a, button, input, select, textarea, [data-focus-area-entry]';
         const elements = Array.from(document.querySelectorAll<HTMLElement>(selector)).filter(
-          (element) => element.tabIndex !== -1 || element.hasAttribute('data-focus-area-entry')
+          (element) => element.tabIndex !== -1 || element.hasAttribute('data-focus-area-entry'),
         );
 
         // Find first entry guard
         const firstEntry = elements.find((el) => el.matches('[data-focus-area-entry]'));
-        const firstEntryIndex = elements.indexOf(firstEntry);
+        const firstEntryIndex = elements.indexOf(firstEntry!);
         const prevElement = elements[firstEntryIndex - 1];
 
         if (prevElement) {
@@ -209,12 +203,12 @@ export const PrimitivesHero = () => {
           (element) =>
             element.tabIndex !== -1 ||
             element === event.target ||
-            element.hasAttribute('data-focus-area-entry')
+            element.hasAttribute('data-focus-area-entry'),
         );
 
         // Find first entry guard
         const firstEntryIndex = elements.findIndex((el) =>
-          el.hasAttribute('data-focus-area-entry')
+          el.hasAttribute('data-focus-area-entry'),
         );
 
         if (elements.indexOf(event.target) + 1 === firstEntryIndex) {
@@ -236,14 +230,14 @@ export const PrimitivesHero = () => {
           (element) =>
             element.tabIndex !== -1 ||
             element === event.target ||
-            element.hasAttribute('data-focus-area-exit')
+            element.hasAttribute('data-focus-area-exit'),
         );
 
         // Find last exit guard
         elements.reverse();
         const lastExit = elements.find((el) => el.hasAttribute('data-focus-area-exit'));
         elements.reverse();
-        const lastExitIndex = elements.indexOf(lastExit);
+        const lastExitIndex = elements.indexOf(lastExit!);
 
         if (elements.indexOf(event.target) - 1 === lastExitIndex) {
           event.preventDefault();
@@ -265,7 +259,7 @@ export const PrimitivesHero = () => {
               Core building blocks for your design system
             </SerifHeading>
             <Text size="5" as="p" mb="6" color="gray" style={{ maxWidth: 520 }}>
-              Unstyled, accessible, open source React primitives for high-quality web apps and
+              Unstyled, accessible, open source React primitives for high-quality web apps and
               design systems.
             </Text>
           </Box>
@@ -304,6 +298,7 @@ export const PrimitivesHero = () => {
                   position: 'relative',
 
                   // Remove the actual margin
+                  // @ts-expect-error
                   '--margin-left-override': 0,
 
                   // Move the responsive margin here
@@ -317,15 +312,7 @@ export const PrimitivesHero = () => {
                       onKeyDown={onFocusAreaKeyDown}
                       onFocus={onFocusAreaFocus}
                     >
-                      <DemoContainer
-                        aria-hidden
-                        css={{
-                          background: 'linear-gradient(120deg, var(--indigo-6), var(--crimson-5))',
-                          '.dark &, .dark-theme &': {
-                            background: 'linear-gradient(120deg, var(--indigo-4), var(--plum-3))',
-                          },
-                        }}
-                      >
+                      <DemoContainer component="dialog">
                         <PrimitivesHeroDialog />
                       </DemoContainer>
                     </FocusArea>
@@ -348,15 +335,7 @@ export const PrimitivesHero = () => {
                       onKeyDown={onFocusAreaKeyDown}
                       onFocus={onFocusAreaFocus}
                     >
-                      <DemoContainer
-                        aria-hidden
-                        css={{
-                          background: 'linear-gradient(120deg,  var(--crimson-5), var(--blue-5))',
-                          '.dark &, .dark-theme &': {
-                            background: 'linear-gradient(120deg,  var(--plum-3), var(--blue-3))',
-                          },
-                        }}
-                      >
+                      <DemoContainer component="dropdown-menu">
                         <PrimitivesHeroDropdownMenu />
                       </DemoContainer>
                     </FocusArea>
@@ -365,7 +344,7 @@ export const PrimitivesHero = () => {
                         Dropdown Menu
                       </Heading>
                       <Text as="p" size="2" color="gray">
-                        With submenus, checkable items, collision handling, arrow key navigation,
+                        With submenus, checkable items, collision handling, arrow key navigation,
                         and typeahead support.
                       </Text>
                     </GrabBox>
@@ -379,15 +358,7 @@ export const PrimitivesHero = () => {
                       onKeyDown={onFocusAreaKeyDown}
                       onFocus={onFocusAreaFocus}
                     >
-                      <DemoContainer
-                        aria-hidden
-                        css={{
-                          background: 'linear-gradient(120deg, var(--blue-5), var(--lime-3))',
-                          '.dark &, .dark-theme &': {
-                            background: 'linear-gradient(120deg, var(--blue-3), var(--sand-6))',
-                          },
-                        }}
-                      >
+                      <DemoContainer component="popover">
                         <PrimitivesHeroPopover />
                       </DemoContainer>
                     </FocusArea>
@@ -410,15 +381,7 @@ export const PrimitivesHero = () => {
                       onKeyDown={onFocusAreaKeyDown}
                       onFocus={onFocusAreaFocus}
                     >
-                      <DemoContainer
-                        aria-hidden
-                        css={{
-                          background: 'linear-gradient(120deg, var(--lime-3), var(--pink-4))',
-                          '.dark &, .dark-theme &': {
-                            background: 'linear-gradient(120deg, var(--sand-6), var(--pink-3))',
-                          },
-                        }}
-                      >
+                      <DemoContainer component="slider">
                         <PrimitivesHeroSlider />
                       </DemoContainer>
                     </FocusArea>
@@ -441,15 +404,7 @@ export const PrimitivesHero = () => {
                       onKeyDown={onFocusAreaKeyDown}
                       onFocus={onFocusAreaFocus}
                     >
-                      <DemoContainer
-                        aria-hidden
-                        css={{
-                          background: 'linear-gradient(120deg, var(--pink-4), var(--gold-5))',
-                          '.dark &, .dark-theme &': {
-                            background: 'linear-gradient(120deg, var(--pink-3), var(--gold-4))',
-                          },
-                        }}
-                      >
+                      <DemoContainer component="scroll-area">
                         <PrimitivesHeroScrollArea />
                       </DemoContainer>
                     </FocusArea>
@@ -472,15 +427,7 @@ export const PrimitivesHero = () => {
                       onKeyDown={onFocusAreaKeyDown}
                       onFocus={onFocusAreaFocus}
                     >
-                      <DemoContainer
-                        aria-hidden
-                        css={{
-                          background: 'linear-gradient(120deg, var(--gold-5), var(--tomato-5))',
-                          '.dark &, .dark-theme &': {
-                            background: 'linear-gradient(120deg, var(--gold-4), var(--crimson-4))',
-                          },
-                        }}
-                      >
+                      <DemoContainer component="tabs">
                         <PrimitivesHeroTabs />
                       </DemoContainer>
                     </FocusArea>
@@ -503,16 +450,7 @@ export const PrimitivesHero = () => {
                       onKeyDown={onFocusAreaKeyDown}
                       onFocus={onFocusAreaFocus}
                     >
-                      <DemoContainer
-                        aria-hidden
-                        css={{
-                          background: 'linear-gradient(120deg, var(--tomato-5), var(--indigo-7))',
-                          '.dark &, .dark-theme &': {
-                            background:
-                              'linear-gradient(120deg, var(--crimson-4), var(--indigo-5))',
-                          },
-                        }}
-                      >
+                      <DemoContainer component="accordion">
                         <PrimitivesHeroAccordion />
                       </DemoContainer>
                     </FocusArea>
@@ -535,15 +473,7 @@ export const PrimitivesHero = () => {
                       onKeyDown={onFocusAreaKeyDown}
                       onFocus={onFocusAreaFocus}
                     >
-                      <DemoContainer
-                        aria-hidden
-                        css={{
-                          background: 'linear-gradient(120deg, var(--indigo-7), var(--cyan-3))',
-                          '.dark &, .dark-theme &': {
-                            background: 'linear-gradient(120deg, var(--indigo-5), var(--cyan-7))',
-                          },
-                        }}
-                      >
+                      <DemoContainer component="radio-group">
                         <PrimitivesHeroRadioGroup />
                       </DemoContainer>
                     </FocusArea>
@@ -566,15 +496,7 @@ export const PrimitivesHero = () => {
                       onKeyDown={onFocusAreaKeyDown}
                       onFocus={onFocusAreaFocus}
                     >
-                      <DemoContainer
-                        aria-hidden
-                        css={{
-                          background: 'linear-gradient(120deg, var(--cyan-3), var(--mint-5))',
-                          '.dark &, .dark-theme &': {
-                            background: 'linear-gradient(120deg, var(--cyan-7), var(--teal-6))',
-                          },
-                        }}
-                      >
+                      <DemoContainer component="toggle-group">
                         <PrimitivesHeroToggleGroup />
                       </DemoContainer>
                     </FocusArea>
@@ -597,15 +519,7 @@ export const PrimitivesHero = () => {
                       onKeyDown={onFocusAreaKeyDown}
                       onFocus={onFocusAreaFocus}
                     >
-                      <DemoContainer
-                        aria-hidden
-                        css={{
-                          background: 'linear-gradient(120deg, var(--mint-5), var(--red-3))',
-                          '.dark &, .dark-theme &': {
-                            background: 'linear-gradient(120deg, var(--teal-6), var(--plum-4))',
-                          },
-                        }}
-                      >
+                      <DemoContainer component="switch">
                         <PrimitivesHeroSwitch />
                       </DemoContainer>
                     </FocusArea>
@@ -623,15 +537,7 @@ export const PrimitivesHero = () => {
                 <Box pr="5">
                   <CarouselSlide>
                     <FocusArea onKeyDown={onFocusAreaKeyDown} onFocus={onFocusAreaFocus}>
-                      <DemoContainer
-                        css={{
-                          backgroundColor: 'var(--white-a3)',
-                          boxShadow: '0 0 0 1px var(--gray-a5)',
-                          '.dark &, .dark-theme &': {
-                            backgroundColor: 'var(--black-a3)',
-                          },
-                        }}
-                      >
+                      <DemoContainer ariaUnhide>
                         <Flex align="center" direction="column" gap="2">
                           <Text size="2" color="gray">
                             See more components in the docs
@@ -696,63 +602,18 @@ export const PrimitivesHero = () => {
   );
 };
 
-const CarouselArrowButton = styled('button', {
-  unset: 'all',
-  outline: 0,
-  margin: 0,
-  border: 0,
-  padding: 0,
+const CarouselArrowButton = ({ children, ...props }: React.ComponentProps<'button'>) => {
+  return (
+    <button {...props} type="button" className={styles.CarouselArrowButton}>
+      {children}
+    </button>
+  );
+};
 
-  display: 'flex',
-  position: 'relative',
-  zIndex: 1,
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: 'var(--color-panel-solid)',
-  borderRadius: '100%',
-  width: 'var(--space-8)',
-  height: 'var(--space-8)',
-  color: 'var(--gray-12)',
-
-  boxShadow: 'var(--black-a7) 0px 2px 12px -5px, var(--black-a2) 0px 1px 3px',
-  willChange: 'transform, box-shadow, opacity',
-  transition: 'all 100ms',
-
-  '@media (hover: hover)': {
-    '&:hover': {
-      boxShadow: 'var(--black-a6) 0px 3px 16px -5px, var(--black-a2) 0px 1px 3px',
-
-      // Fix a bug when hovering at button edges would cause the button to jitter because of transform
-      '&::before': {
-        content: '',
-        inset: -2,
-        borderRadius: '100%',
-        position: 'absolute',
-      },
-    },
-  },
-  '&:focus-visible:not(:active)': {
-    boxShadow: 'var(--black-a7) 0px 2px 12px -5px, var(--black-a2) 0px 1px 3px',
-    outline: '2px solid var(--accent-8)',
-  },
-  '&:active': {
-    transform: 'translateY(1px)',
-    boxShadow: 'var(--black-a7) 0px 2px 10px -5px, var(--black-a2) 0px 1px 3px',
-    transition: 'opacity 100ms',
-  },
-  '&:disabled': {
-    opacity: 0,
-  },
-  '@media (hover: none) and (pointer: coarse)': {
-    display: 'none',
-  },
-});
-
-const GrabBox = styled('div', {
-  cursor: 'grab',
-  '&:active': { cursor: 'grabbing' },
-
-  // Fill in spaces between slides
-  marginRight: 'calc(-1 * var(--space-5))',
-  paddingRight: 'var(--space-5)',
-});
+const GrabBox = ({ children, ...props }: React.ComponentProps<'div'>) => {
+  return (
+    <div {...props} className={styles.GrabBox}>
+      {children}
+    </div>
+  );
+};

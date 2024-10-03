@@ -51,55 +51,6 @@ Radix Colors provides the colors bundled as raw CSS files. You can import them d
   the `.dark` and `.dark-theme` classes.
 </Note>
 
-## Stitches
-
-```jsx
-import {
-  gray,
-  blue,
-  red,
-  green,
-  grayDark,
-  blueDark,
-  redDark,
-  greenDark,
-} from '@radix-ui/colors';
-
-// Spread the scales in your light and dark themes
-import { createStitches } from '@stitches/react';
-
-const { styled, createTheme } = createStitches({
-  theme: {
-    colors: {
-      ...gray,
-      ...blue,
-      ...red,
-      ...green,
-    },
-  },
-});
-
-const darkTheme = createTheme({
-  colors: {
-    ...grayDark,
-    ...blueDark,
-    ...redDark,
-    ...greenDark,
-  },
-});
-
-// Use the colors in your styles
-const Button = styled('button', {
-  backgroundColor: '$blue4',
-  color: '$blue11',
-  borderColor: '$blue7',
-  '&:hover': {
-    backgroundColor: '$blue5',
-    borderColor: '$blue8',
-  },
-});
-```
-
 ## styled-components
 
 ```js
@@ -173,4 +124,60 @@ import {
 } from '@radix-ui/colors';
 import { ThemeProvider } from '@emotion/react';
 import styled from '@emotion/styled';
+```
+
+## vanilla-extract
+
+```js
+import {
+  gray,
+  blue,
+  red,
+  green,
+  grayDark,
+  blueDark,
+  redDark,
+  greenDark,
+} from '@radix-ui/colors';
+import { createTheme } from '@vanilla-extract/css';
+
+export const [theme, vars] = createTheme({
+  colors: {
+    ...gray,
+    ...blue,
+    ...red,
+    ...green,
+  },
+});
+
+export const darkTheme = createTheme(vars, {
+  colors: {
+    ...grayDark,
+    ...blueDark,
+    ...redDark,
+    ...greenDark,
+  },
+});
+
+// Use the colors in your styles
+export const styles = {
+  button: style({
+    backgroundColor: vars.colors.blue4,
+    color: vars.colors.blue11,
+    borderColor: vars.colors.blue7,
+    ':hover': {
+      backgroundColor: vars.colors.blue5,
+      borderColor: vars.colors.blue8,
+    },
+  }),
+};
+
+// Apply your theme to it
+export default function App() {
+  return (
+    <body className={theme}>
+      <button className={styles.button}>Radix Colors</button>
+    </body>
+  );
+}
 ```

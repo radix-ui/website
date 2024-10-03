@@ -19,8 +19,11 @@ export const PrimitivesSearchDesktop = () => {
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (!isEditingContent(event) && event.key === '/') {
-        triggerRef.current.click();
+      const isSlashKey = event.key === '/';
+      const isMetaKey = event.key === 'k' && (event.ctrlKey || event.metaKey);
+
+      if (!isEditingContent(event) && (isSlashKey || isMetaKey)) {
+        triggerRef.current?.click();
         event.preventDefault();
       }
     };
@@ -57,7 +60,7 @@ export const PrimitivesSearchDesktop = () => {
           <DialogPrimitive.Overlay className={styles.PrimitivesSearchDesktopDialogOverlay}>
             <DialogPrimitive.Content
               onEscapeKeyDown={() => {
-                if (inputRef.current.value === '') {
+                if (inputRef.current?.value === '') {
                   setDialogOpen(false);
                 } else {
                   clearButtonRef.current?.click();
