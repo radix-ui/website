@@ -30,13 +30,13 @@ Use the `loading` prop to control whether the skeleton or its children are displ
 
 ```jsx live="true"
 <Flex gap="4">
-  <Skeleton loading={true}>
-    <Switch defaultChecked />
-  </Skeleton>
+	<Skeleton loading={true}>
+		<Switch defaultChecked />
+	</Skeleton>
 
-  <Skeleton loading={false}>
-    <Switch defaultChecked />
-  </Skeleton>
+	<Skeleton loading={false}>
+		<Switch defaultChecked />
+	</Skeleton>
 </Flex>
 ```
 
@@ -46,15 +46,15 @@ When using Skeleton with text, you’d usually wrap the text node itself rather 
 
 ```jsx live="true" line="4,7,9"
 <Container size="1">
-  <Flex direction="column" gap="2">
-    <Text>
-      <Skeleton>Lorem ipsum dolor sit amet.</Skeleton>
-    </Text>
+	<Flex direction="column" gap="2">
+		<Text>
+			<Skeleton>Lorem ipsum dolor sit amet.</Skeleton>
+		</Text>
 
-    <Skeleton>
-      <Text>Lorem ipsum dolor sit amet</Text>
-    </Skeleton>
-  </Flex>
+		<Skeleton>
+			<Text>Lorem ipsum dolor sit amet</Text>
+		</Skeleton>
+	</Flex>
 </Container>
 ```
 
@@ -62,22 +62,22 @@ The difference is especially noticeable when wrapping longer paragraphs:
 
 ```jsx live="true" line="4,8,11,17"
 <Container size="1">
-  <Flex direction="column" gap="3">
-    <Text>
-      <Skeleton>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-        felis tellus, efficitur id convallis a, viverra eget libero. Nam magna
-        erat, fringilla sed commodo sed, aliquet nec magna.
-      </Skeleton>
-    </Text>
+	<Flex direction="column" gap="3">
+		<Text>
+			<Skeleton>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+				felis tellus, efficitur id convallis a, viverra eget libero. Nam magna
+				erat, fringilla sed commodo sed, aliquet nec magna.
+			</Skeleton>
+		</Text>
 
-    <Skeleton>
-      <Text>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-        felis tellus, efficitur id convallis a, viverra eget libero. Nam magna
-        erat, fringilla sed commodo sed, aliquet nec magna.
-      </Text>
-    </Skeleton>
-  </Flex>
+		<Skeleton>
+			<Text>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+				felis tellus, efficitur id convallis a, viverra eget libero. Nam magna
+				erat, fringilla sed commodo sed, aliquet nec magna.
+			</Text>
+		</Skeleton>
+	</Flex>
 </Container>
 ```

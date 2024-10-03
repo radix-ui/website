@@ -10,21 +10,21 @@ aria: https://www.w3.org/TR/wai-aria/#navigation
 <Description>A collection of links for navigating websites.</Description>
 
 <HeroContainer>
-  <NavigationMenuDemo />
+	<NavigationMenuDemo />
 </HeroContainer>
 
 <HeroCodeBlock folder="NavigationMenu" />
 
 <Highlights
-  features={[
-    'Can be controlled or uncontrolled.',
-    'Flexible layout structure with managed tab focus.',
-    'Supports submenus.',
-    'Optional active item indicator.',
-    'Full keyboard navigation.',
-    'Exposes CSS variables for advanced animation.',
-    'Supports custom timings.',
-  ]}
+	features={[
+		"Can be controlled or uncontrolled.",
+		"Flexible layout structure with managed tab focus.",
+		"Supports submenus.",
+		"Optional active item indicator.",
+		"Full keyboard navigation.",
+		"Exposes CSS variables for advanced animation.",
+		"Supports custom timings.",
+	]}
 />
 
 ## Installation
@@ -40,37 +40,37 @@ npm install @radix-ui/react-navigation-menu
 Import all parts and piece them together.
 
 ```jsx
-import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 
 export default () => (
-  <NavigationMenu.Root>
-    <NavigationMenu.List>
-      <NavigationMenu.Item>
-        <NavigationMenu.Trigger />
-        <NavigationMenu.Content>
-          <NavigationMenu.Link />
-        </NavigationMenu.Content>
-      </NavigationMenu.Item>
+	<NavigationMenu.Root>
+		<NavigationMenu.List>
+			<NavigationMenu.Item>
+				<NavigationMenu.Trigger />
+				<NavigationMenu.Content>
+					<NavigationMenu.Link />
+				</NavigationMenu.Content>
+			</NavigationMenu.Item>
 
-      <NavigationMenu.Item>
-        <NavigationMenu.Link />
-      </NavigationMenu.Item>
+			<NavigationMenu.Item>
+				<NavigationMenu.Link />
+			</NavigationMenu.Item>
 
-      <NavigationMenu.Item>
-        <NavigationMenu.Trigger />
-        <NavigationMenu.Content>
-          <NavigationMenu.Sub>
-            <NavigationMenu.List />
-            <NavigationMenu.Viewport />
-          </NavigationMenu.Sub>
-        </NavigationMenu.Content>
-      </NavigationMenu.Item>
+			<NavigationMenu.Item>
+				<NavigationMenu.Trigger />
+				<NavigationMenu.Content>
+					<NavigationMenu.Sub>
+						<NavigationMenu.List />
+						<NavigationMenu.Viewport />
+					</NavigationMenu.Sub>
+				</NavigationMenu.Content>
+			</NavigationMenu.Item>
 
-      <NavigationMenu.Indicator />
-    </NavigationMenu.List>
+			<NavigationMenu.Indicator />
+		</NavigationMenu.List>
 
-    <NavigationMenu.Viewport />
-  </NavigationMenu.Root>
+		<NavigationMenu.Viewport />
+	</NavigationMenu.Root>
 );
 ```
 
@@ -81,77 +81,77 @@ export default () => (
 Contains all the parts of a navigation menu.
 
 <PropsTable
-  data={[
-    {
-      name: 'defaultValue',
-      required: false,
-      type: 'string',
-      description:
-        'The value of the menu item that should be active when initially rendered. Use when you do not need to control the value state.',
-    },
-    {
-      name: 'value',
-      required: false,
-      type: 'string',
-      description: (
-        <span>
-          The controlled value of the menu item to activate. Should be used in
-          conjunction with <Code>onValueChange</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onValueChange',
-      required: false,
-      type: '(value: string) => void',
-      typeSimple: 'function',
-      description: 'Event handler called when the value changes.',
-    },
-    {
-      name: 'delayDuration',
-      type: 'number',
-      default: 200,
-      description:
-        'The duration from when the mouse enters a trigger until the content opens.',
-    },
-    {
-      name: 'skipDelayDuration',
-      type: 'number',
-      default: 300,
-      description:
-        'How much time a user has to enter another trigger without incurring a delay again.',
-    },
-    {
-      name: 'dir',
-      required: false,
-      type: '"ltr" | "rtl"',
-      typeSimple: 'enum',
-      description: (
-        <span>
-          The reading direction of the menu when applicable. If omitted,
-          inherits globally from <Code>DirectionProvider</Code> or assumes LTR
-          (left-to-right) reading mode.
-        </span>
-      ),
-    },
-    {
-      name: 'orientation',
-      required: false,
-      type: '"horizontal" | "vertical"',
-      typeSimple: 'enum',
-      default: '"horizontal"',
-      description: 'The orientation of the menu.',
-    },
-  ]}
+	data={[
+		{
+			name: "defaultValue",
+			required: false,
+			type: "string",
+			description:
+				"The value of the menu item that should be active when initially rendered. Use when you do not need to control the value state.",
+		},
+		{
+			name: "value",
+			required: false,
+			type: "string",
+			description: (
+				<span>
+					The controlled value of the menu item to activate. Should be used in
+					conjunction with <Code>onValueChange</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onValueChange",
+			required: false,
+			type: "(value: string) => void",
+			typeSimple: "function",
+			description: "Event handler called when the value changes.",
+		},
+		{
+			name: "delayDuration",
+			type: "number",
+			default: 200,
+			description:
+				"The duration from when the mouse enters a trigger until the content opens.",
+		},
+		{
+			name: "skipDelayDuration",
+			type: "number",
+			default: 300,
+			description:
+				"How much time a user has to enter another trigger without incurring a delay again.",
+		},
+		{
+			name: "dir",
+			required: false,
+			type: '"ltr" | "rtl"',
+			typeSimple: "enum",
+			description: (
+				<span>
+					The reading direction of the menu when applicable. If omitted,
+					inherits globally from <Code>DirectionProvider</Code> or assumes LTR
+					(left-to-right) reading mode.
+				</span>
+			),
+		},
+		{
+			name: "orientation",
+			required: false,
+			type: '"horizontal" | "vertical"',
+			typeSimple: "enum",
+			default: '"horizontal"',
+			description: "The orientation of the menu.",
+		},
+	]}
 />
 
 <DataAttributesTable
-  data={[
-    {
-      attribute: '[data-orientation]',
-      values: ['vertical', 'horizontal'],
-    },
-  ]}
+	data={[
+		{
+			attribute: "[data-orientation]",
+			values: ["vertical", "horizontal"],
+		},
+	]}
 />
 
 ### Sub
@@ -159,50 +159,50 @@ Contains all the parts of a navigation menu.
 Signifies a submenu. Use it in place of the root part when nested to create a submenu.
 
 <PropsTable
-  data={[
-    {
-      name: 'defaultValue',
-      required: false,
-      type: 'string',
-      description:
-        'The value of the menu item that should be active when initially rendered. Use when you do not need to control the value state.',
-    },
-    {
-      name: 'value',
-      required: false,
-      type: 'string',
-      description: (
-        <span>
-          The controlled value of the sub menu item to activate. Should be used
-          in conjunction with <Code>onValueChange</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onValueChange',
-      required: false,
-      type: '(value: string) => void',
-      typeSimple: 'function',
-      description: 'Event handler called when the value changes.',
-    },
-    {
-      name: 'orientation',
-      required: false,
-      type: '"horizontal" | "vertical"',
-      typeSimple: 'enum',
-      default: '"horizontal"',
-      description: 'The orientation of the menu.',
-    },
-  ]}
+	data={[
+		{
+			name: "defaultValue",
+			required: false,
+			type: "string",
+			description:
+				"The value of the menu item that should be active when initially rendered. Use when you do not need to control the value state.",
+		},
+		{
+			name: "value",
+			required: false,
+			type: "string",
+			description: (
+				<span>
+					The controlled value of the sub menu item to activate. Should be used
+					in conjunction with <Code>onValueChange</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onValueChange",
+			required: false,
+			type: "(value: string) => void",
+			typeSimple: "function",
+			description: "Event handler called when the value changes.",
+		},
+		{
+			name: "orientation",
+			required: false,
+			type: '"horizontal" | "vertical"',
+			typeSimple: "enum",
+			default: '"horizontal"',
+			description: "The orientation of the menu.",
+		},
+	]}
 />
 
 <DataAttributesTable
-  data={[
-    {
-      attribute: '[data-orientation]',
-      values: ['vertical', 'horizontal'],
-    },
-  ]}
+	data={[
+		{
+			attribute: "[data-orientation]",
+			values: ["vertical", "horizontal"],
+		},
+	]}
 />
 
 ### List
@@ -210,33 +210,33 @@ Signifies a submenu. Use it in place of the root part when nested to create a su
 Contains the top level menu items.
 
 <PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for
-          more details.
-        </>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "asChild",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+	]}
 />
 
 <DataAttributesTable
-  data={[
-    {
-      attribute: '[data-orientation]',
-      values: ['vertical', 'horizontal'],
-    },
-  ]}
+	data={[
+		{
+			attribute: "[data-orientation]",
+			values: ["vertical", "horizontal"],
+		},
+	]}
 />
 
 ### Item
@@ -244,36 +244,36 @@ Contains the top level menu items.
 A top level menu item, contains a link or trigger with content combination.
 
 <PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for
-          more details.
-        </>
-      ),
-    },
-    {
-      name: 'value',
-      required: false,
-      type: 'string',
-      description: (
-        <span>
-          A unique value that associates the item with an active value when the
-          navigation menu is controlled. This prop is managed automatically when
-          uncontrolled.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "asChild",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+		{
+			name: "value",
+			required: false,
+			type: "string",
+			description: (
+				<span>
+					A unique value that associates the item with an active value when the
+					navigation menu is controlled. This prop is managed automatically when
+					uncontrolled.
+				</span>
+			),
+		},
+	]}
 />
 
 ### Trigger
@@ -281,37 +281,37 @@ A top level menu item, contains a link or trigger with content combination.
 The button that toggles the content.
 
 <PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for
-          more details.
-        </>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "asChild",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+	]}
 />
 
 <DataAttributesTable
-  data={[
-    {
-      attribute: '[data-state]',
-      values: ['open', 'closed'],
-    },
-    {
-      attribute: '[data-disabled]',
-      values: 'Present when disabled',
-    },
-  ]}
+	data={[
+		{
+			attribute: "[data-state]",
+			values: ["open", "closed"],
+		},
+		{
+			attribute: "[data-disabled]",
+			values: "Present when disabled",
+		},
+	]}
 />
 
 ### Content
@@ -319,98 +319,98 @@ The button that toggles the content.
 Contains the content associated with each trigger.
 
 <PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for
-          more details.
-        </>
-      ),
-    },
-    {
-      name: 'onEscapeKeyDown',
-      type: '(event: KeyboardEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when the escape key is down. It can be prevented
-          by calling <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onPointerDownOutside',
-      type: '(event: PointerDownOutsideEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when a pointer event occurs outside the bounds of
-          the component. It can be prevented by calling{' '}
-          <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onFocusOutside',
-      type: '(event: FocusOutsideEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when focus moves outside the bounds of the
-          component. It can be prevented by calling{' '}
-          <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onInteractOutside',
-      type: '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when an interaction (pointer or focus event)
-          happens outside the bounds of the component. It can be prevented by
-          calling <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'forceMount',
-      type: 'boolean',
-      description: (
-        <span>
-          Used to force mounting when more control is needed. Useful when
-          controlling animation with React animation libraries.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "asChild",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+		{
+			name: "onEscapeKeyDown",
+			type: "(event: KeyboardEvent) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when the escape key is down. It can be prevented
+					by calling <Code>event.preventDefault</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onPointerDownOutside",
+			type: "(event: PointerDownOutsideEvent) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when a pointer event occurs outside the bounds of
+					the component. It can be prevented by calling{" "}
+					<Code>event.preventDefault</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onFocusOutside",
+			type: "(event: FocusOutsideEvent) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when focus moves outside the bounds of the
+					component. It can be prevented by calling{" "}
+					<Code>event.preventDefault</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onInteractOutside",
+			type: "(event: React.FocusEvent | MouseEvent | TouchEvent) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when an interaction (pointer or focus event)
+					happens outside the bounds of the component. It can be prevented by
+					calling <Code>event.preventDefault</Code>.
+				</span>
+			),
+		},
+		{
+			name: "forceMount",
+			type: "boolean",
+			description: (
+				<span>
+					Used to force mounting when more control is needed. Useful when
+					controlling animation with React animation libraries.
+				</span>
+			),
+		},
+	]}
 />
 
 <DataAttributesTable
-  data={[
-    {
-      attribute: '[data-state]',
-      values: ['open', 'closed'],
-    },
-    {
-      attribute: '[data-motion]',
-      values: ['to-start', 'to-end', 'from-start', 'from-end'],
-    },
-    {
-      attribute: '[data-orientation]',
-      values: ['vertical', 'horizontal'],
-    },
-  ]}
+	data={[
+		{
+			attribute: "[data-state]",
+			values: ["open", "closed"],
+		},
+		{
+			attribute: "[data-motion]",
+			values: ["to-start", "to-end", "from-start", "from-end"],
+		},
+		{
+			attribute: "[data-orientation]",
+			values: ["vertical", "horizontal"],
+		},
+	]}
 />
 
 ### Link
@@ -418,53 +418,53 @@ Contains the content associated with each trigger.
 A navigational link.
 
 <PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for
-          more details.
-        </>
-      ),
-    },
-    {
-      name: 'active',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: 'Used to identify the link as the currently active page.',
-    },
-    {
-      name: 'onSelect',
-      type: '(event: Event) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when the user selects a link (via mouse or
-          keyboard). Calling <Code>event.preventDefault</Code> in this handler
-          will prevent the navigation menu from closing when selecting that
-          link.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "asChild",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+		{
+			name: "active",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: "Used to identify the link as the currently active page.",
+		},
+		{
+			name: "onSelect",
+			type: "(event: Event) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when the user selects a link (via mouse or
+					keyboard). Calling <Code>event.preventDefault</Code> in this handler
+					will prevent the navigation menu from closing when selecting that
+					link.
+				</span>
+			),
+		},
+	]}
 />
 
 <DataAttributesTable
-  data={[
-    {
-      attribute: '[data-active]',
-      values: 'Present when active',
-    },
-  ]}
+	data={[
+		{
+			attribute: "[data-active]",
+			values: "Present when active",
+		},
+	]}
 />
 
 ### Indicator
@@ -472,47 +472,47 @@ A navigational link.
 An optional indicator element that renders below the list, is used to highlight the currently active trigger.
 
 <PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for
-          more details.
-        </>
-      ),
-    },
-    {
-      name: 'forceMount',
-      type: 'boolean',
-      description: (
-        <span>
-          Used to force mounting when more control is needed. Useful when
-          controlling animation with React animation libraries.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "asChild",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+		{
+			name: "forceMount",
+			type: "boolean",
+			description: (
+				<span>
+					Used to force mounting when more control is needed. Useful when
+					controlling animation with React animation libraries.
+				</span>
+			),
+		},
+	]}
 />
 
 <DataAttributesTable
-  data={[
-    {
-      attribute: '[data-state]',
-      values: ['visible', 'hidden'],
-    },
-    {
-      attribute: '[data-orientation]',
-      values: ['vertical', 'horizontal'],
-    },
-  ]}
+	data={[
+		{
+			attribute: "[data-state]",
+			values: ["visible", "hidden"],
+		},
+		{
+			attribute: "[data-orientation]",
+			values: ["vertical", "horizontal"],
+		},
+	]}
 />
 
 ### Viewport
@@ -520,62 +520,62 @@ An optional indicator element that renders below the list, is used to highlight 
 An optional viewport element that is used to render active content outside of the list.
 
 <PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for
-          more details.
-        </>
-      ),
-    },
-    {
-      name: 'forceMount',
-      type: 'boolean',
-      description: (
-        <span>
-          Used to force mounting when more control is needed. Useful when
-          controlling animation with React animation libraries.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "asChild",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+		{
+			name: "forceMount",
+			type: "boolean",
+			description: (
+				<span>
+					Used to force mounting when more control is needed. Useful when
+					controlling animation with React animation libraries.
+				</span>
+			),
+		},
+	]}
 />
 
 <DataAttributesTable
-  data={[
-    {
-      attribute: '[data-state]',
-      values: ['open', 'closed'],
-    },
-    {
-      attribute: '[data-orientation]',
-      values: ['vertical', 'horizontal'],
-    },
-  ]}
+	data={[
+		{
+			attribute: "[data-state]",
+			values: ["open", "closed"],
+		},
+		{
+			attribute: "[data-orientation]",
+			values: ["vertical", "horizontal"],
+		},
+	]}
 />
 
 <CssVariablesTable
-  data={[
-    {
-      cssVariable: '--radix-navigation-menu-viewport-width',
-      description:
-        'The width of the viewport when visible/hidden, computed from the active content',
-    },
-    {
-      cssVariable: '--radix-navigation-menu-viewport-height',
-      description:
-        'The height of the viewport when visible/hidden, computed from the active content',
-    },
-  ]}
+	data={[
+		{
+			cssVariable: "--radix-navigation-menu-viewport-width",
+			description:
+				"The width of the viewport when visible/hidden, computed from the active content",
+		},
+		{
+			cssVariable: "--radix-navigation-menu-viewport-height",
+			description:
+				"The height of the viewport when visible/hidden, computed from the active content",
+		},
+	]}
 />
 
 ## Examples
@@ -586,16 +586,16 @@ You can create a vertical menu by using the `orientation` prop.
 
 ```jsx line=1
 <NavigationMenu.Root __orientation__="vertical">
-  <NavigationMenu.List>
-    <NavigationMenu.Item>
-      <NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
-      <NavigationMenu.Content>Item one content</NavigationMenu.Content>
-    </NavigationMenu.Item>
-    <NavigationMenu.Item>
-      <NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
-      <NavigationMenu.Content>Item Two content</NavigationMenu.Content>
-    </NavigationMenu.Item>
-  </NavigationMenu.List>
+	<NavigationMenu.List>
+		<NavigationMenu.Item>
+			<NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
+			<NavigationMenu.Content>Item one content</NavigationMenu.Content>
+		</NavigationMenu.Item>
+		<NavigationMenu.Item>
+			<NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
+			<NavigationMenu.Content>Item Two content</NavigationMenu.Content>
+		</NavigationMenu.Item>
+	</NavigationMenu.List>
 </NavigationMenu.Root>
 ```
 
@@ -607,19 +607,19 @@ Tab focus will be maintained automatically.
 
 ```jsx line=14
 <NavigationMenu.Root>
-  <NavigationMenu.List>
-    <NavigationMenu.Item>
-      <NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
-      <NavigationMenu.Content>Item one content</NavigationMenu.Content>
-    </NavigationMenu.Item>
-    <NavigationMenu.Item>
-      <NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
-      <NavigationMenu.Content>Item two content</NavigationMenu.Content>
-    </NavigationMenu.Item>
-  </NavigationMenu.List>
+	<NavigationMenu.List>
+		<NavigationMenu.Item>
+			<NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
+			<NavigationMenu.Content>Item one content</NavigationMenu.Content>
+		</NavigationMenu.Item>
+		<NavigationMenu.Item>
+			<NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
+			<NavigationMenu.Content>Item two content</NavigationMenu.Content>
+		</NavigationMenu.Item>
+	</NavigationMenu.List>
 
-  {/* NavigationMenu.Content will be rendered here when active */}
-  <NavigationMenu.Viewport />
+	{/* NavigationMenu.Content will be rendered here when active */}
+	<NavigationMenu.Viewport />
 </NavigationMenu.Root>
 ```
 
@@ -630,40 +630,40 @@ an animated visual cue such as an arrow or highlight to accompany the `Viewport`
 
 ```jsx line=17
 // index.jsx
-import * as NavigationMenu from '@radix-ui/react-navigation-menu';
-import './styles.css';
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import "./styles.css";
 
 export default () => (
-  <NavigationMenu.Root>
-    <NavigationMenu.List>
-      <NavigationMenu.Item>
-        <NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
-        <NavigationMenu.Content>Item one content</NavigationMenu.Content>
-      </NavigationMenu.Item>
-      <NavigationMenu.Item>
-        <NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
-        <NavigationMenu.Content>Item two content</NavigationMenu.Content>
-      </NavigationMenu.Item>
+	<NavigationMenu.Root>
+		<NavigationMenu.List>
+			<NavigationMenu.Item>
+				<NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
+				<NavigationMenu.Content>Item one content</NavigationMenu.Content>
+			</NavigationMenu.Item>
+			<NavigationMenu.Item>
+				<NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
+				<NavigationMenu.Content>Item two content</NavigationMenu.Content>
+			</NavigationMenu.Item>
 
-      <NavigationMenu.Indicator __className__="NavigationMenuIndicator" />
-    </NavigationMenu.List>
+			<NavigationMenu.Indicator __className__="NavigationMenuIndicator" />
+		</NavigationMenu.List>
 
-    <NavigationMenu.Viewport />
-  </NavigationMenu.Root>
+		<NavigationMenu.Viewport />
+	</NavigationMenu.Root>
 );
 ```
 
 ```css
 /* styles.css */
 .NavigationMenuIndicator {
-  background-color: grey;
+	background-color: grey;
 }
-.NavigationMenuIndicator[data-orientation='horizontal'] {
-  height: 3px;
-  transition:
-    width,
-    transform,
-    250ms ease;
+.NavigationMenuIndicator[data-orientation="horizontal"] {
+	height: 3px;
+	transition:
+		width,
+		transform,
+		250ms ease;
 }
 ```
 
@@ -675,33 +675,33 @@ sure to assign and set a `defaultValue`.
 
 ```jsx line=10,25
 <NavigationMenu.Root>
-  <NavigationMenu.List>
-    <NavigationMenu.Item>
-      <NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
-      <NavigationMenu.Content>Item one content</NavigationMenu.Content>
-    </NavigationMenu.Item>
-    <NavigationMenu.Item>
-      <NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
-      <NavigationMenu.Content>
-        <NavigationMenu.__Sub__ __defaultValue__="sub1">
-          <NavigationMenu.List>
-            <NavigationMenu.Item value="sub1">
-              <NavigationMenu.Trigger>Sub item one</NavigationMenu.Trigger>
-              <NavigationMenu.Content>
-                Sub item one content
-              </NavigationMenu.Content>
-            </NavigationMenu.Item>
-            <NavigationMenu.Item value="sub2">
-              <NavigationMenu.Trigger>Sub item two</NavigationMenu.Trigger>
-              <NavigationMenu.Content>
-                Sub item two content
-              </NavigationMenu.Content>
-            </NavigationMenu.Item>
-          </NavigationMenu.List>
-        </NavigationMenu.__Sub__>
-      </NavigationMenu.Content>
-    </NavigationMenu.Item>
-  </NavigationMenu.List>
+	<NavigationMenu.List>
+		<NavigationMenu.Item>
+			<NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
+			<NavigationMenu.Content>Item one content</NavigationMenu.Content>
+		</NavigationMenu.Item>
+		<NavigationMenu.Item>
+			<NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
+			<NavigationMenu.Content>
+				<NavigationMenu.__Sub__ __defaultValue__="sub1">
+					<NavigationMenu.List>
+						<NavigationMenu.Item value="sub1">
+							<NavigationMenu.Trigger>Sub item one</NavigationMenu.Trigger>
+							<NavigationMenu.Content>
+								Sub item one content
+							</NavigationMenu.Content>
+						</NavigationMenu.Item>
+						<NavigationMenu.Item value="sub2">
+							<NavigationMenu.Trigger>Sub item two</NavigationMenu.Trigger>
+							<NavigationMenu.Content>
+								Sub item two content
+							</NavigationMenu.Content>
+						</NavigationMenu.Item>
+					</NavigationMenu.List>
+				</NavigationMenu.__Sub__>
+			</NavigationMenu.Content>
+		</NavigationMenu.Item>
+	</NavigationMenu.List>
 </NavigationMenu.Root>
 ```
 
@@ -712,43 +712,43 @@ This will ensure accessibility and consistent keyboard control is maintained. He
 
 ```jsx line=7-16,22,25
 // index.jsx
-import { usePathname } from 'next/navigation';
-import NextLink from 'next/link';
-import * as NavigationMenu from '@radix-ui/react-navigation-menu';
-import './styles.css';
+import { usePathname } from "next/navigation";
+import NextLink from "next/link";
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import "./styles.css";
 
 const Link = ({ href, ...props }) => {
-  const pathname = usePathname();
-  const isActive = href === pathname;
+	const pathname = usePathname();
+	const isActive = href === pathname;
 
-  return (
-    <NavigationMenu.Link asChild active={isActive}>
-      <NextLink href={href} className="NavigationMenuLink" {...props} />
-    </NavigationMenu.Link>
-  );
+	return (
+		<NavigationMenu.Link asChild active={isActive}>
+			<NextLink href={href} className="NavigationMenuLink" {...props} />
+		</NavigationMenu.Link>
+	);
 };
 
 export default () => (
-  <NavigationMenu.Root>
-    <NavigationMenu.List>
-      <NavigationMenu.Item>
-        <Link href="/">Home</Link>
-      </NavigationMenu.Item>
-      <NavigationMenu.Item>
-        <Link href="/about">About</Link>
-      </NavigationMenu.Item>
-    </NavigationMenu.List>
-  </NavigationMenu.Root>
+	<NavigationMenu.Root>
+		<NavigationMenu.List>
+			<NavigationMenu.Item>
+				<Link href="/">Home</Link>
+			</NavigationMenu.Item>
+			<NavigationMenu.Item>
+				<Link href="/about">About</Link>
+			</NavigationMenu.Item>
+		</NavigationMenu.List>
+	</NavigationMenu.Root>
 );
 ```
 
 ```css
 /* styles.css */
 .NavigationMenuLink {
-  text-decoration: none;
+	text-decoration: none;
 }
 .NavigationMenuLink[data-active] {
-  text-decoration: 'underline';
+	text-decoration: "underline";
 }
 ```
 
@@ -761,105 +761,105 @@ Combining these with `position: absolute;` allows you to create smooth overlappi
 
 ```jsx line=10-12,16-18,22
 // index.jsx
-import * as NavigationMenu from '@radix-ui/react-navigation-menu';
-import './styles.css';
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import "./styles.css";
 
 export default () => (
-  <NavigationMenu.Root>
-    <NavigationMenu.List>
-      <NavigationMenu.Item>
-        <NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
-        <NavigationMenu.Content __className__="NavigationMenuContent">
-          Item one content
-        </NavigationMenu.Content>
-      </NavigationMenu.Item>
-      <NavigationMenu.Item>
-        <NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
-        <NavigationMenu.Content __className__="NavigationMenuContent">
-          Item two content
-        </NavigationMenu.Content>
-      </NavigationMenu.Item>
-    </NavigationMenu.List>
+	<NavigationMenu.Root>
+		<NavigationMenu.List>
+			<NavigationMenu.Item>
+				<NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
+				<NavigationMenu.Content __className__="NavigationMenuContent">
+					Item one content
+				</NavigationMenu.Content>
+			</NavigationMenu.Item>
+			<NavigationMenu.Item>
+				<NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
+				<NavigationMenu.Content __className__="NavigationMenuContent">
+					Item two content
+				</NavigationMenu.Content>
+			</NavigationMenu.Item>
+		</NavigationMenu.List>
 
-    <NavigationMenu.Viewport __className__="NavigationMenuViewport" />
-  </NavigationMenu.Root>
+		<NavigationMenu.Viewport __className__="NavigationMenuViewport" />
+	</NavigationMenu.Root>
 );
 ```
 
 ```css line=9-20,24,25
 /* styles.css */
 .NavigationMenuContent {
-  position: absolute;
-  top: 0;
-  left: 0;
-  animation-duration: 250ms;
-  animation-timing-function: ease;
+	position: absolute;
+	top: 0;
+	left: 0;
+	animation-duration: 250ms;
+	animation-timing-function: ease;
 }
-.NavigationMenuContent[__data-motion__='from-start'] {
-  animation-name: enterFromLeft;
+.NavigationMenuContent[__data-motion__="from-start"] {
+	animation-name: enterFromLeft;
 }
-.NavigationMenuContent[__data-motion__='from-end'] {
-  animation-name: enterFromRight;
+.NavigationMenuContent[__data-motion__="from-end"] {
+	animation-name: enterFromRight;
 }
-.NavigationMenuContent[__data-motion__='to-start'] {
-  animation-name: exitToLeft;
+.NavigationMenuContent[__data-motion__="to-start"] {
+	animation-name: exitToLeft;
 }
-.NavigationMenuContent[__data-motion__='to-end'] {
-  animation-name: exitToRight;
+.NavigationMenuContent[__data-motion__="to-end"] {
+	animation-name: exitToRight;
 }
 
 .NavigationMenuViewport {
-  position: relative;
-  width: var(__--radix-navigation-menu-viewport-width__);
-  height: var(__--radix-navigation-menu-viewport-height__);
-  transition:
-    width,
-    height,
-    250ms ease;
+	position: relative;
+	width: var(__--radix-navigation-menu-viewport-width__);
+	height: var(__--radix-navigation-menu-viewport-height__);
+	transition:
+		width,
+		height,
+		250ms ease;
 }
 
 @keyframes enterFromRight {
-  from {
-    opacity: 0;
-    transform: translateX(200px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+	from {
+		opacity: 0;
+		transform: translateX(200px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
 }
 
 @keyframes enterFromLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-200px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+	from {
+		opacity: 0;
+		transform: translateX(-200px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
 }
 
 @keyframes exitToRight {
-  from {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateX(200px);
-  }
+	from {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	to {
+		opacity: 0;
+		transform: translateX(200px);
+	}
 }
 
 @keyframes exitToLeft {
-  from {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateX(-200px);
-  }
+	from {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	to {
+		opacity: 0;
+		transform: translateX(-200px);
+	}
 }
 ```
 
@@ -886,74 +886,74 @@ See [this example](/primitives/docs/components/navigation-menu#with-client-side-
 ### Keyboard Interactions
 
 <KeyboardTable
-  data={[
-    {
-      keys: ['Space', 'Enter'],
-      description: (
-        <span>
-          When focus is on <Code>NavigationMenu.Trigger</Code>, opens the
-          content.
-        </span>
-      ),
-    },
-    {
-      keys: ['Tab'],
-      description: 'Moves focus to the next focusable element.',
-    },
-    {
-      keys: ['ArrowDown'],
-      description: (
-        <span>
-          When <Code>horizontal</Code> and focus is on an open{' '}
-          <Code>NavigationMenu.Trigger</Code>, moves focus into{' '}
-          <Code>NavigationMenu.Content</Code>.
-          <br />
-          Moves focus to the next <Code>NavigationMenu.Trigger</Code> or{' '}
-          <Code>NavigationMenu.Link</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowUp'],
-      description: (
-        <span>
-          Moves focus to the previous <Code>NavigationMenu.Trigger</Code> or{' '}
-          <Code>NavigationMenu.Link</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowRight', 'ArrowLeft'],
-      description: (
-        <span>
-          When <Code>vertical</Code> and focus is on an open{' '}
-          <Code>NavigationMenu.Trigger</Code>, moves focus into its{' '}
-          <Code>NavigationMenu.Content</Code>.
-          <br />
-          Moves focus to the next / previous <Code>
-            NavigationMenu.Trigger
-          </Code>{' '}
-          or <Code>NavigationMenu.Link</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['Home', 'End'],
-      description: (
-        <span>
-          Moves focus to the first/last <Code>NavigationMenu.Trigger</Code> or{' '}
-          <Code>NavigationMenu.Link</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['Esc'],
-      description: (
-        <span>
-          Closes open <Code>NavigationMenu.Content</Code> and moves focus to its{' '}
-          <Code>NavigationMenu.Trigger</Code>.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			keys: ["Space", "Enter"],
+			description: (
+				<span>
+					When focus is on <Code>NavigationMenu.Trigger</Code>, opens the
+					content.
+				</span>
+			),
+		},
+		{
+			keys: ["Tab"],
+			description: "Moves focus to the next focusable element.",
+		},
+		{
+			keys: ["ArrowDown"],
+			description: (
+				<span>
+					When <Code>horizontal</Code> and focus is on an open{" "}
+					<Code>NavigationMenu.Trigger</Code>, moves focus into{" "}
+					<Code>NavigationMenu.Content</Code>.
+					<br />
+					Moves focus to the next <Code>NavigationMenu.Trigger</Code> or{" "}
+					<Code>NavigationMenu.Link</Code>.
+				</span>
+			),
+		},
+		{
+			keys: ["ArrowUp"],
+			description: (
+				<span>
+					Moves focus to the previous <Code>NavigationMenu.Trigger</Code> or{" "}
+					<Code>NavigationMenu.Link</Code>.
+				</span>
+			),
+		},
+		{
+			keys: ["ArrowRight", "ArrowLeft"],
+			description: (
+				<span>
+					When <Code>vertical</Code> and focus is on an open{" "}
+					<Code>NavigationMenu.Trigger</Code>, moves focus into its{" "}
+					<Code>NavigationMenu.Content</Code>.
+					<br />
+					Moves focus to the next / previous <Code>
+						NavigationMenu.Trigger
+					</Code>{" "}
+					or <Code>NavigationMenu.Link</Code>.
+				</span>
+			),
+		},
+		{
+			keys: ["Home", "End"],
+			description: (
+				<span>
+					Moves focus to the first/last <Code>NavigationMenu.Trigger</Code> or{" "}
+					<Code>NavigationMenu.Link</Code>.
+				</span>
+			),
+		},
+		{
+			keys: ["Esc"],
+			description: (
+				<span>
+					Closes open <Code>NavigationMenu.Content</Code> and moves focus to its{" "}
+					<Code>NavigationMenu.Trigger</Code>.
+				</span>
+			),
+		},
+	]}
 />

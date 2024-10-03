@@ -22,8 +22,8 @@ Compose formatting components to add [emphasis](/themes/docs/components/em), [si
 
 ```jsx live=true
 <Text>
-  The <Em>most</Em> important thing to remember is,{' '}
-  <Strong>stay positive</Strong>.
+	The <Em>most</Em> important thing to remember is,{" "}
+	<Strong>stay positive</Strong>.
 </Text>
 ```
 
@@ -32,7 +32,7 @@ Compose formatting components to add [emphasis](/themes/docs/components/em), [si
 The typographic system is based on a 9-step `size` scale. Every step has a corresponding font size, line height and letter spacing value which are all designed to be used in combination.
 
 <Box my="7">
-  <ThemesFontSizeScale />
+	<ThemesFontSizeScale />
 </Box>
 
 ```jsx live="true"
@@ -47,12 +47,12 @@ The following weights are supported. Weights can be [customized](/themes/docs/th
 
 ```jsx live="true"
 <Text size="6">
-  <Flex direction="column">
-    <Text weight="light">Light</Text>
-    <Text weight="regular">Regular</Text>
-    <Text weight="medium">Medium</Text>
-    <Text weight="bold">Bold</Text>
-  </Flex>
+	<Flex direction="column">
+		<Text weight="light">Light</Text>
+		<Text weight="regular">Regular</Text>
+		<Text weight="medium">Medium</Text>
+		<Text weight="bold">Bold</Text>
+	</Flex>
 </Text>
 ```
 
@@ -78,12 +78,12 @@ To customize the font family used in your theme, remap the corresponding `font-f
 
 ```css
 .radix-themes {
-  --default-font-family:  /* Your custom default font */
-  --heading-font-family:  /* Your custom font for <Heading> components */
-  --code-font-family:     /* Your custom font for <Code> components */
-  --strong-font-family:   /* Your custom font for <Strong> components */
-  --em-font-family:       /* Your custom font for <Em> components */
-  --quote-font-family:    /* Your custom font for <Quote> components */
+	--default-font-family:  /* Your custom default font */ --heading-font-family:
+		/* Your custom font for <Heading> components */ --code-font-family:
+		/* Your custom font for <Code> components */ --strong-font-family:
+		/* Your custom font for <Strong> components */ --em-font-family:
+		/* Your custom font for <Em> components */ --quote-font-family:
+		/* Your custom font for <Quote> components */;
 }
 ```
 
@@ -92,20 +92,20 @@ To customize the font family used in your theme, remap the corresponding `font-f
 To load custom fonts via [next/font](https://nextjs.org/docs/app/api-reference/components/font), use the [`variable`](https://nextjs.org/docs/app/api-reference/components/font#variable) option to define a CSS variable name. Then, add that CSS variable class to your HTML document.
 
 ```jsx
-import { Inter } from 'next/font/google';
+import { Inter } from "next/font/google";
 
 const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
+	subsets: ["latin"],
+	display: "swap",
+	variable: "--font-inter",
 });
 
 export default function RootLayout({ children }) {
-  return (
-    <html lang="en" className={inter.variable}>
-      <body>{children}</body>
-    </html>
-  );
+	return (
+		<html lang="en" className={inter.variable}>
+			<body>{children}</body>
+		</html>
+	);
 }
 ```
 
@@ -113,7 +113,7 @@ Finally, assign the CSS variable in your custom CSS:
 
 ```css
 .radix-themes {
-  --default-font-family: var(--font-inter);
+	--default-font-family: var(--font-inter);
 }
 ```
 
@@ -125,10 +125,10 @@ To customize the exact font weights used in your theme, remap the corresponding 
 
 ```css
 .radix-themes {
-  --font-weight-light: 200;
-  --font-weight-regular: 300;
-  --font-weight-medium: 600;
-  --font-weight-bold: 800;
+	--font-weight-light: 200;
+	--font-weight-regular: 300;
+	--font-weight-medium: 600;
+	--font-weight-bold: 800;
 }
 ```
 
@@ -138,11 +138,11 @@ There’s a number of advanced typographic features that can be customized. Thes
 
 ```css
 .radix-themes {
-  --heading-font-family: 'Untitled Sans', sans-serif;
-  --heading-font-size-adjust: 1.05;
-  --heading-font-style: normal;
-  --heading-leading-trim-start: 0.42em;
-  --heading-leading-trim-end: 0.38em;
-  --heading-letter-spacing: -0.01em;
+	--heading-font-family: "Untitled Sans", sans-serif;
+	--heading-font-size-adjust: 1.05;
+	--heading-font-style: normal;
+	--heading-leading-trim-start: 0.42em;
+	--heading-leading-trim-end: 0.38em;
+	--heading-letter-spacing: -0.01em;
 }
 ```

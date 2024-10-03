@@ -24,8 +24,7 @@ export default function PrimitivesHome() {
 
 			<TitleAndMetaTags
 				title="Radix Primitives"
-				description="Unstyled, accessible, open source React primitives for high-quality web apps and
-        design systems."
+				description="Unstyled, accessible, open source React primitives for high-quality web apps and design systems."
 				image="primitives.png"
 			/>
 			<Box style={{ height: 0 }}>

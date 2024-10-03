@@ -12,15 +12,15 @@ features:
 # Checkbox
 
 <Description>
-  A control that allows the user to toggle between checked and not checked.
+	A control that allows the user to toggle between checked and not checked.
 </Description>
 
 <Highlights
-  features={[
-    'Supports indeterminate state.',
-    'Full keyboard navigation.',
-    'Can be controlled or uncontrolled.',
-  ]}
+	features={[
+		"Supports indeterminate state.",
+		"Full keyboard navigation.",
+		"Can be controlled or uncontrolled.",
+	]}
 />
 
 ## Installation
@@ -36,12 +36,12 @@ npm install @radix-ui/react-checkbox
 Import the components and piece the parts together.
 
 ```jsx
-import * as Checkbox from '@radix-ui/react-checkbox';
+import * as Checkbox from "@radix-ui/react-checkbox";
 
 export default () => (
-  <Checkbox.Root>
-    <Checkbox.Indicator />
-  </Checkbox.Root>
+	<Checkbox.Root>
+		<Checkbox.Indicator />
+	</Checkbox.Root>
 );
 ```
 
@@ -50,33 +50,33 @@ export default () => (
 Create your styled checkbox component from the primitive parts.
 
 ```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Checkbox from '@radix-ui/react-checkbox';
-import { CheckIcon } from '@radix-ui/react-icons';
+import { styled } from "path-to/stitches.config";
+import * as Checkbox from "@radix-ui/react-checkbox";
+import { CheckIcon } from "@radix-ui/react-icons";
 
 const StyledCheckbox = styled(Checkbox.Root, {
-  appearance: 'none',
-  backgroundColor: 'transparent',
-  border: 'none',
-  padding: 0,
-  boxShadow: 'inset 0 0 0 1px gainsboro',
-  width: 15,
-  height: 15,
-  borderRadius: 2,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+	appearance: "none",
+	backgroundColor: "transparent",
+	border: "none",
+	padding: 0,
+	boxShadow: "inset 0 0 0 1px gainsboro",
+	width: 15,
+	height: 15,
+	borderRadius: 2,
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "center",
 
-  '&:focus': {
-    outline: 'none',
-    boxShadow: 'inset 0 0 0 1px dodgerblue, 0 0 0 1px dodgerblue',
-  },
+	"&:focus": {
+		outline: "none",
+		boxShadow: "inset 0 0 0 1px dodgerblue, 0 0 0 1px dodgerblue",
+	},
 });
 
 export default () => (
-  <StyledCheckbox defaultChecked>
-    <Checkbox.Indicator as={CheckIcon} />
-  </StyledCheckbox>
+	<StyledCheckbox defaultChecked>
+		<Checkbox.Indicator as={CheckIcon} />
+	</StyledCheckbox>
 );
 ```
 
@@ -93,98 +93,98 @@ export default () => (
 Contains all the parts of a checkbox.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'button',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-checkbox',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes. It will be
-          added as a data attribute. Pass <Code>null</Code> to remove selector.
-        </span>
-      ),
-    },
-    {
-      name: 'defaultChecked',
-      type: 'boolean',
-      description:
-        'The checked state of the checkbox when it is initially rendered. Use when you do not need to control its checked state.',
-    },
-    {
-      name: 'checked',
-      type: 'boolean',
-      description: (
-        <span>
-          The controlled checked state of the checkbox. Must be used in
-          conjunction with <Code>onCheckedChange</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onCheckedChange',
-      type: '(event: React.ChangeEvent<HTMLInputElement>) => void',
-      typeSimple: 'function',
-      description:
-        'Event handler called when the checked state of the checkbox changes.',
-    },
-    {
-      name: 'disabled',
-      type: 'boolean',
-      description: (
-        <span>
-          When <Code>true</Code>, prevents the user from interacting with the
-          checkbox.
-        </span>
-      ),
-    },
-    {
-      name: 'required',
-      type: 'boolean',
-      description: (
-        <span>
-          When <Code>true</Code>, indicates that the user must check the
-          checkbox before the owning form can be submitted.
-        </span>
-      ),
-    },
-    {
-      name: 'readOnly',
-      type: 'boolean',
-      description: (
-        <span>
-          When <Code>true</Code>, makes the checkbox not mutable, meaning the
-          user cannot check the checkbox.
-        </span>
-      ),
-    },
-    {
-      name: 'name',
-      type: 'string',
-      description:
-        'The name of the checkbox. Submitted with its owning form as part of a name/value pair.',
-    },
-    {
-      name: 'value',
-      type: 'string',
-      default: 'on',
-      description: (
-        <span>
-          The value given as data when submitted with a <Code>name</Code>.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "button",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "selector",
+			required: false,
+			type: "string | null",
+			default: "radix-checkbox",
+			description: (
+				<span>
+					A string to use as the component selector for CSS purposes. It will be
+					added as a data attribute. Pass <Code>null</Code> to remove selector.
+				</span>
+			),
+		},
+		{
+			name: "defaultChecked",
+			type: "boolean",
+			description:
+				"The checked state of the checkbox when it is initially rendered. Use when you do not need to control its checked state.",
+		},
+		{
+			name: "checked",
+			type: "boolean",
+			description: (
+				<span>
+					The controlled checked state of the checkbox. Must be used in
+					conjunction with <Code>onCheckedChange</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onCheckedChange",
+			type: "(event: React.ChangeEvent<HTMLInputElement>) => void",
+			typeSimple: "function",
+			description:
+				"Event handler called when the checked state of the checkbox changes.",
+		},
+		{
+			name: "disabled",
+			type: "boolean",
+			description: (
+				<span>
+					When <Code>true</Code>, prevents the user from interacting with the
+					checkbox.
+				</span>
+			),
+		},
+		{
+			name: "required",
+			type: "boolean",
+			description: (
+				<span>
+					When <Code>true</Code>, indicates that the user must check the
+					checkbox before the owning form can be submitted.
+				</span>
+			),
+		},
+		{
+			name: "readOnly",
+			type: "boolean",
+			description: (
+				<span>
+					When <Code>true</Code>, makes the checkbox not mutable, meaning the
+					user cannot check the checkbox.
+				</span>
+			),
+		},
+		{
+			name: "name",
+			type: "string",
+			description:
+				"The name of the checkbox. Submitted with its owning form as part of a name/value pair.",
+		},
+		{
+			name: "value",
+			type: "string",
+			default: "on",
+			description: (
+				<span>
+					The value given as data when submitted with a <Code>name</Code>.
+				</span>
+			),
+		},
+	]}
 />
 
 ### Indicator
@@ -192,35 +192,35 @@ Contains all the parts of a checkbox.
 Renders when the checkbox is in a checked or indeterminate state. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'span',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-checkbox-indicator',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes. It will be
-          added as a data attribute. Pass <Code>null</Code> to remove selector.
-        </span>
-      ),
-    },
-    {
-      name: 'forceMount',
-      type: 'boolean',
-      description:
-        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "span",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "selector",
+			required: false,
+			type: "string | null",
+			default: "radix-checkbox-indicator",
+			description: (
+				<span>
+					A string to use as the component selector for CSS purposes. It will be
+					added as a data attribute. Pass <Code>null</Code> to remove selector.
+				</span>
+			),
+		},
+		{
+			name: "forceMount",
+			type: "boolean",
+			description:
+				"Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+		},
+	]}
 />
 
 ## Examples
@@ -228,57 +228,57 @@ Renders when the checkbox is in a checked or indeterminate state. You can style 
 ### Indeterminate
 
 ```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Checkbox from '@radix-ui/react-checkbox';
-import { DividerHorizontalIcon } from '@radix-ui/react-icons';
+import { styled } from "path-to/stitches.config";
+import * as Checkbox from "@radix-ui/react-checkbox";
+import { DividerHorizontalIcon } from "@radix-ui/react-icons";
 
 const StyledCheckbox = styled(Checkbox.Root, {
-  appearance: 'none',
-  backgroundColor: 'transparent',
-  border: 'none',
-  padding: 0,
-  boxShadow: 'inset 0 0 0 1px gainsboro',
-  width: 15,
-  height: 15,
-  borderRadius: 2,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  marginBottom: 10,
+	appearance: "none",
+	backgroundColor: "transparent",
+	border: "none",
+	padding: 0,
+	boxShadow: "inset 0 0 0 1px gainsboro",
+	width: 15,
+	height: 15,
+	borderRadius: 2,
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "center",
+	marginBottom: 10,
 
-  '&:focus': {
-    outline: 'none',
-    boxShadow: 'inset 0 0 0 1px dodgerblue, 0 0 0 1px dodgerblue',
-  },
+	"&:focus": {
+		outline: "none",
+		boxShadow: "inset 0 0 0 1px dodgerblue, 0 0 0 1px dodgerblue",
+	},
 });
 
 export default () => {
-  const [checked, setChecked] = React.useState('indeterminate');
+	const [checked, setChecked] = React.useState("indeterminate");
 
-  return (
-    <>
-      <StyledCheckbox
-        checked={checked}
-        onCheckedChange={(event) => setChecked(event.target.checked)}
-      >
-        <Checkbox.Indicator>
-          {checked === 'indeterminate' && <DividerHorizontalIcon />}
-          {checked === true && <CheckIcon />}
-        </Checkbox.Indicator>
-      </StyledCheckbox>
+	return (
+		<>
+			<StyledCheckbox
+				checked={checked}
+				onCheckedChange={(event) => setChecked(event.target.checked)}
+			>
+				<Checkbox.Indicator>
+					{checked === "indeterminate" && <DividerHorizontalIcon />}
+					{checked === true && <CheckIcon />}
+				</Checkbox.Indicator>
+			</StyledCheckbox>
 
-      <button
-        type="button"
-        onClick={() =>
-          setChecked((prevIsChecked) =>
-            prevIsChecked === 'indeterminate' ? false : 'indeterminate'
-          )
-        }
-      >
-        Toggle indeterminate
-      </button>
-    </>
-  );
+			<button
+				type="button"
+				onClick={() =>
+					setChecked((prevIsChecked) =>
+						prevIsChecked === "indeterminate" ? false : "indeterminate",
+					)
+				}
+			>
+				Toggle indeterminate
+			</button>
+		</>
+	);
 };
 ```
 
@@ -289,14 +289,14 @@ Adheres to the [tri-state Checkbox WAI-ARIA design pattern](https://www.w3.org/W
 ### Keyboard Interactions
 
 <KeyboardTable
-  data={[
-    {
-      keys: ['Space'],
-      description: 'Checks/unchecks the checkbox.',
-    },
-    {
-      keys: ['Enter'],
-      description: 'Checks/unchecks the checkbox.',
-    },
-  ]}
+	data={[
+		{
+			keys: ["Space"],
+			description: "Checks/unchecks the checkbox.",
+		},
+		{
+			keys: ["Enter"],
+			description: "Checks/unchecks the checkbox.",
+		},
+	]}
 />

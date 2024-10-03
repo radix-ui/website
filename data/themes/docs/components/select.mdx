@@ -6,23 +6,23 @@ sourcePath: components/select
 
 ```jsx live=true
 <Select.Root defaultValue="apple">
-  <Select.Trigger />
-  <Select.Content>
-    <Select.Group>
-      <Select.Label>Fruits</Select.Label>
-      <Select.Item value="orange">Orange</Select.Item>
-      <Select.Item value="apple">Apple</Select.Item>
-      <Select.Item value="grape" disabled>
-        Grape
-      </Select.Item>
-    </Select.Group>
-    <Select.Separator />
-    <Select.Group>
-      <Select.Label>Vegetables</Select.Label>
-      <Select.Item value="carrot">Carrot</Select.Item>
-      <Select.Item value="potato">Potato</Select.Item>
-    </Select.Group>
-  </Select.Content>
+	<Select.Trigger />
+	<Select.Content>
+		<Select.Group>
+			<Select.Label>Fruits</Select.Label>
+			<Select.Item value="orange">Orange</Select.Item>
+			<Select.Item value="apple">Apple</Select.Item>
+			<Select.Item value="grape" disabled>
+				Grape
+			</Select.Item>
+		</Select.Group>
+		<Select.Separator />
+		<Select.Group>
+			<Select.Label>Vegetables</Select.Label>
+			<Select.Item value="carrot">Carrot</Select.Item>
+			<Select.Item value="potato">Potato</Select.Item>
+		</Select.Group>
+	</Select.Content>
 </Select.Root>
 ```
 
@@ -70,29 +70,29 @@ Use the `size` prop to control the size.
 
 ```jsx live=true
 <Flex gap="3" align="center">
-  <Select.Root size="1" defaultValue="apple">
-    <Select.Trigger />
-    <Select.Content>
-      <Select.Item value="apple">Apple</Select.Item>
-      <Select.Item value="orange">Orange</Select.Item>
-    </Select.Content>
-  </Select.Root>
+	<Select.Root size="1" defaultValue="apple">
+		<Select.Trigger />
+		<Select.Content>
+			<Select.Item value="apple">Apple</Select.Item>
+			<Select.Item value="orange">Orange</Select.Item>
+		</Select.Content>
+	</Select.Root>
 
-  <Select.Root size="2" defaultValue="apple">
-    <Select.Trigger />
-    <Select.Content>
-      <Select.Item value="apple">Apple</Select.Item>
-      <Select.Item value="orange">Orange</Select.Item>
-    </Select.Content>
-  </Select.Root>
+	<Select.Root size="2" defaultValue="apple">
+		<Select.Trigger />
+		<Select.Content>
+			<Select.Item value="apple">Apple</Select.Item>
+			<Select.Item value="orange">Orange</Select.Item>
+		</Select.Content>
+	</Select.Root>
 
-  <Select.Root size="3" defaultValue="apple">
-    <Select.Trigger />
-    <Select.Content>
-      <Select.Item value="apple">Apple</Select.Item>
-      <Select.Item value="orange">Orange</Select.Item>
-    </Select.Content>
-  </Select.Root>
+	<Select.Root size="3" defaultValue="apple">
+		<Select.Trigger />
+		<Select.Content>
+			<Select.Item value="apple">Apple</Select.Item>
+			<Select.Item value="orange">Orange</Select.Item>
+		</Select.Content>
+	</Select.Root>
 </Flex>
 ```
 
@@ -102,29 +102,29 @@ Use the `variant` prop on `Trigger` and `Content` to customize the visual style.
 
 ```jsx live=true
 <Flex gap="3" align="center">
-  <Select.Root defaultValue="apple">
-    <Select.Trigger variant="surface" />
-    <Select.Content>
-      <Select.Item value="apple">Apple</Select.Item>
-      <Select.Item value="orange">Orange</Select.Item>
-    </Select.Content>
-  </Select.Root>
+	<Select.Root defaultValue="apple">
+		<Select.Trigger variant="surface" />
+		<Select.Content>
+			<Select.Item value="apple">Apple</Select.Item>
+			<Select.Item value="orange">Orange</Select.Item>
+		</Select.Content>
+	</Select.Root>
 
-  <Select.Root defaultValue="apple">
-    <Select.Trigger variant="classic" />
-    <Select.Content>
-      <Select.Item value="apple">Apple</Select.Item>
-      <Select.Item value="orange">Orange</Select.Item>
-    </Select.Content>
-  </Select.Root>
+	<Select.Root defaultValue="apple">
+		<Select.Trigger variant="classic" />
+		<Select.Content>
+			<Select.Item value="apple">Apple</Select.Item>
+			<Select.Item value="orange">Orange</Select.Item>
+		</Select.Content>
+	</Select.Root>
 
-  <Select.Root defaultValue="apple">
-    <Select.Trigger variant="soft" />
-    <Select.Content>
-      <Select.Item value="apple">Apple</Select.Item>
-      <Select.Item value="orange">Orange</Select.Item>
-    </Select.Content>
-  </Select.Root>
+	<Select.Root defaultValue="apple">
+		<Select.Trigger variant="soft" />
+		<Select.Content>
+			<Select.Item value="apple">Apple</Select.Item>
+			<Select.Item value="orange">Orange</Select.Item>
+		</Select.Content>
+	</Select.Root>
 </Flex>
 ```
 
@@ -134,21 +134,21 @@ Use the `ghost` trigger variant to render the trigger without a visually contain
 
 ```jsx live=true line=11
 <Flex gap="3" align="center">
-  <Select.Root defaultValue="apple">
-    <Select.Trigger variant="surface" />
-    <Select.Content>
-      <Select.Item value="apple">Apple</Select.Item>
-      <Select.Item value="orange">Orange</Select.Item>
-    </Select.Content>
-  </Select.Root>
+	<Select.Root defaultValue="apple">
+		<Select.Trigger variant="surface" />
+		<Select.Content>
+			<Select.Item value="apple">Apple</Select.Item>
+			<Select.Item value="orange">Orange</Select.Item>
+		</Select.Content>
+	</Select.Root>
 
-  <Select.Root defaultValue="apple">
-    <Select.Trigger variant="ghost" />
-    <Select.Content>
-      <Select.Item value="apple">Apple</Select.Item>
-      <Select.Item value="orange">Orange</Select.Item>
-    </Select.Content>
-  </Select.Root>
+	<Select.Root defaultValue="apple">
+		<Select.Trigger variant="ghost" />
+		<Select.Content>
+			<Select.Item value="apple">Apple</Select.Item>
+			<Select.Item value="orange">Orange</Select.Item>
+		</Select.Content>
+	</Select.Root>
 </Flex>
 ```
 
@@ -158,37 +158,37 @@ Use the `color` prop on `Trigger` and `Content` to assign a specific color value
 
 ```jsx live=true
 <Flex gap="3">
-  <Select.Root defaultValue="apple">
-    <Select.Trigger color="indigo" variant="soft" />
-    <Select.Content color="indigo">
-      <Select.Item value="apple">Apple</Select.Item>
-      <Select.Item value="orange">Orange</Select.Item>
-    </Select.Content>
-  </Select.Root>
+	<Select.Root defaultValue="apple">
+		<Select.Trigger color="indigo" variant="soft" />
+		<Select.Content color="indigo">
+			<Select.Item value="apple">Apple</Select.Item>
+			<Select.Item value="orange">Orange</Select.Item>
+		</Select.Content>
+	</Select.Root>
 
-  <Select.Root defaultValue="apple">
-    <Select.Trigger color="cyan" variant="soft" />
-    <Select.Content color="cyan">
-      <Select.Item value="apple">Apple</Select.Item>
-      <Select.Item value="orange">Orange</Select.Item>
-    </Select.Content>
-  </Select.Root>
+	<Select.Root defaultValue="apple">
+		<Select.Trigger color="cyan" variant="soft" />
+		<Select.Content color="cyan">
+			<Select.Item value="apple">Apple</Select.Item>
+			<Select.Item value="orange">Orange</Select.Item>
+		</Select.Content>
+	</Select.Root>
 
-  <Select.Root defaultValue="apple">
-    <Select.Trigger color="orange" variant="soft" />
-    <Select.Content color="orange">
-      <Select.Item value="apple">Apple</Select.Item>
-      <Select.Item value="orange">Orange</Select.Item>
-    </Select.Content>
-  </Select.Root>
+	<Select.Root defaultValue="apple">
+		<Select.Trigger color="orange" variant="soft" />
+		<Select.Content color="orange">
+			<Select.Item value="apple">Apple</Select.Item>
+			<Select.Item value="orange">Orange</Select.Item>
+		</Select.Content>
+	</Select.Root>
 
-  <Select.Root defaultValue="apple">
-    <Select.Trigger color="crimson" variant="soft" />
-    <Select.Content color="crimson">
-      <Select.Item value="apple">Apple</Select.Item>
-      <Select.Item value="orange">Orange</Select.Item>
-    </Select.Content>
-  </Select.Root>
+	<Select.Root defaultValue="apple">
+		<Select.Trigger color="crimson" variant="soft" />
+		<Select.Content color="crimson">
+			<Select.Item value="apple">Apple</Select.Item>
+			<Select.Item value="orange">Orange</Select.Item>
+		</Select.Content>
+	</Select.Root>
 </Flex>
 ```
 
@@ -198,21 +198,21 @@ Use the `highContrast` prop on `Content` to increase item contrast.
 
 ```jsx live=true line=12
 <Flex gap="3">
-  <Select.Root defaultValue="apple">
-    <Select.Trigger color="gray" />
-    <Select.Content color="gray" variant="solid">
-      <Select.Item value="apple">Apple</Select.Item>
-      <Select.Item value="orange">Orange</Select.Item>
-    </Select.Content>
-  </Select.Root>
+	<Select.Root defaultValue="apple">
+		<Select.Trigger color="gray" />
+		<Select.Content color="gray" variant="solid">
+			<Select.Item value="apple">Apple</Select.Item>
+			<Select.Item value="orange">Orange</Select.Item>
+		</Select.Content>
+	</Select.Root>
 
-  <Select.Root defaultValue="apple">
-    <Select.Trigger color="gray" />
-    <Select.Content color="gray" variant="solid" highContrast>
-      <Select.Item value="apple">Apple</Select.Item>
-      <Select.Item value="orange">Orange</Select.Item>
-    </Select.Content>
-  </Select.Root>
+	<Select.Root defaultValue="apple">
+		<Select.Trigger color="gray" />
+		<Select.Content color="gray" variant="solid" highContrast>
+			<Select.Item value="apple">Apple</Select.Item>
+			<Select.Item value="orange">Orange</Select.Item>
+		</Select.Content>
+	</Select.Root>
 </Flex>
 ```
 
@@ -222,29 +222,29 @@ Use the `radius` prop to assign a specific radius value.
 
 ```jsx live=true
 <Flex gap="3">
-  <Select.Root defaultValue="apple">
-    <Select.Trigger radius="none" />
-    <Select.Content>
-      <Select.Item value="apple">Apple</Select.Item>
-      <Select.Item value="orange">Orange</Select.Item>
-    </Select.Content>
-  </Select.Root>
+	<Select.Root defaultValue="apple">
+		<Select.Trigger radius="none" />
+		<Select.Content>
+			<Select.Item value="apple">Apple</Select.Item>
+			<Select.Item value="orange">Orange</Select.Item>
+		</Select.Content>
+	</Select.Root>
 
-  <Select.Root defaultValue="apple">
-    <Select.Trigger radius="large" />
-    <Select.Content>
-      <Select.Item value="apple">Apple</Select.Item>
-      <Select.Item value="orange">Orange</Select.Item>
-    </Select.Content>
-  </Select.Root>
+	<Select.Root defaultValue="apple">
+		<Select.Trigger radius="large" />
+		<Select.Content>
+			<Select.Item value="apple">Apple</Select.Item>
+			<Select.Item value="orange">Orange</Select.Item>
+		</Select.Content>
+	</Select.Root>
 
-  <Select.Root defaultValue="apple">
-    <Select.Trigger radius="full" />
-    <Select.Content>
-      <Select.Item value="apple">Apple</Select.Item>
-      <Select.Item value="orange">Orange</Select.Item>
-    </Select.Content>
-  </Select.Root>
+	<Select.Root defaultValue="apple">
+		<Select.Trigger radius="full" />
+		<Select.Content>
+			<Select.Item value="apple">Apple</Select.Item>
+			<Select.Item value="orange">Orange</Select.Item>
+		</Select.Content>
+	</Select.Root>
 </Flex>
 ```
 
@@ -254,23 +254,23 @@ Use the `placeholder` prop to create a `Trigger` that doesn’t need an initial 
 
 ```jsx live="true"
 <Select.Root>
-  <Select.Trigger placeholder="Pick a fruit" />
-  <Select.Content>
-    <Select.Group>
-      <Select.Label>Fruits</Select.Label>
-      <Select.Item value="orange">Orange</Select.Item>
-      <Select.Item value="apple">Apple</Select.Item>
-      <Select.Item value="grape" disabled>
-        Grape
-      </Select.Item>
-    </Select.Group>
-    <Select.Separator />
-    <Select.Group>
-      <Select.Label>Vegetables</Select.Label>
-      <Select.Item value="carrot">Carrot</Select.Item>
-      <Select.Item value="potato">Potato</Select.Item>
-    </Select.Group>
-  </Select.Content>
+	<Select.Trigger placeholder="Pick a fruit" />
+	<Select.Content>
+		<Select.Group>
+			<Select.Label>Fruits</Select.Label>
+			<Select.Item value="orange">Orange</Select.Item>
+			<Select.Item value="apple">Apple</Select.Item>
+			<Select.Item value="grape" disabled>
+				Grape
+			</Select.Item>
+		</Select.Group>
+		<Select.Separator />
+		<Select.Group>
+			<Select.Label>Vegetables</Select.Label>
+			<Select.Item value="carrot">Carrot</Select.Item>
+			<Select.Item value="potato">Potato</Select.Item>
+		</Select.Group>
+	</Select.Content>
 </Select.Root>
 ```
 
@@ -280,11 +280,11 @@ Set `position="popper"` prop to position the select menu below the trigger.
 
 ```jsx live=true
 <Select.Root defaultValue="apple">
-  <Select.Trigger />
-  <Select.Content position="popper">
-    <Select.Item value="apple">Apple</Select.Item>
-    <Select.Item value="orange">Orange</Select.Item>
-  </Select.Content>
+	<Select.Trigger />
+	<Select.Content position="popper">
+		<Select.Item value="apple">Apple</Select.Item>
+		<Select.Item value="orange">Orange</Select.Item>
+	</Select.Content>
 </Select.Root>
 ```
 
@@ -294,20 +294,20 @@ When using server-side rendering, you might notice a layout shift after hydratio
 
 ```jsx live=true
 () => {
-  const data = {
-    apple: 'Apple',
-    orange: 'Orange',
-  };
-  const [value, setValue] = React.useState('apple');
-  return (
-    <Select.Root value={value} onValueChange={setValue}>
-      <Select.Trigger>{data[value]}</Select.Trigger>
-      <Select.Content>
-        <Select.Item value="apple">Apple</Select.Item>
-        <Select.Item value="orange">Orange</Select.Item>
-      </Select.Content>
-    </Select.Root>
-  );
+	const data = {
+		apple: "Apple",
+		orange: "Orange",
+	};
+	const [value, setValue] = React.useState("apple");
+	return (
+		<Select.Root value={value} onValueChange={setValue}>
+			<Select.Trigger>{data[value]}</Select.Trigger>
+			<Select.Content>
+				<Select.Item value="apple">Apple</Select.Item>
+				<Select.Item value="orange">Orange</Select.Item>
+			</Select.Content>
+		</Select.Root>
+	);
 };
 ```
 
@@ -317,26 +317,26 @@ You can customise how Trigger renders the value by controlling its children manu
 
 ```jsx live=true
 () => {
-  const data = {
-    light: { label: 'Light', icon: <SunIcon /> },
-    dark: { label: 'Dark', icon: <MoonIcon /> },
-  };
-  const [value, setValue] = React.useState('light');
-  return (
-    <Flex direction="column" maxWidth="160px">
-      <Select.Root value={value} onValueChange={setValue}>
-        <Select.Trigger>
-          <Flex as="span" align="center" gap="2">
-            {data[value].icon}
-            {data[value].label}
-          </Flex>
-        </Select.Trigger>
-        <Select.Content position="popper">
-          <Select.Item value="light">Light</Select.Item>
-          <Select.Item value="dark">Dark</Select.Item>
-        </Select.Content>
-      </Select.Root>
-    </Flex>
-  );
+	const data = {
+		light: { label: "Light", icon: <SunIcon /> },
+		dark: { label: "Dark", icon: <MoonIcon /> },
+	};
+	const [value, setValue] = React.useState("light");
+	return (
+		<Flex direction="column" maxWidth="160px">
+			<Select.Root value={value} onValueChange={setValue}>
+				<Select.Trigger>
+					<Flex as="span" align="center" gap="2">
+						{data[value].icon}
+						{data[value].label}
+					</Flex>
+				</Select.Trigger>
+				<Select.Content position="popper">
+					<Select.Item value="light">Light</Select.Item>
+					<Select.Item value="dark">Dark</Select.Item>
+				</Select.Content>
+			</Select.Root>
+		</Flex>
+	);
 };
 ```

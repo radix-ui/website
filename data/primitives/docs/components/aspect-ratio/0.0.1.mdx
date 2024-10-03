@@ -8,7 +8,7 @@ name: aspect-ratio
 
 <Description>Displays content within a desired ratio.</Description>
 
-<Highlights features={['Accepts any custom ratio.']} />
+<Highlights features={["Accepts any custom ratio."]} />
 
 ## Installation
 
@@ -23,7 +23,7 @@ npm install @radix-ui/react-aspect-ratio
 Import the component.
 
 ```jsx
-import * as AspectRatio from '@radix-ui/react-aspect-ratio';
+import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 
 export default () => <AspectRatio.Root />;
 ```
@@ -33,16 +33,16 @@ export default () => <AspectRatio.Root />;
 Use the aspect ratio primitive.
 
 ```jsx
-import * as AspectRatio from '@radix-ui/react-aspect-ratio';
+import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 
 export default () => (
-  <AspectRatio.Root>
-    <img
-      src="https://images.unsplash.com/photo-1605030753481-bb38b08c384a"
-      alt="mountain view"
-      style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-    />
-  </AspectRatio.Root>
+	<AspectRatio.Root>
+		<img
+			src="https://images.unsplash.com/photo-1605030753481-bb38b08c384a"
+			alt="mountain view"
+			style={{ objectFit: "cover", width: "100%", height: "100%" }}
+		/>
+	</AspectRatio.Root>
 );
 ```
 
@@ -53,23 +53,23 @@ export default () => (
 Contains the content you want to constrain to a given ratio.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'ratio',
-      type: 'number',
-      default: '1',
-      description: 'The desired ratio',
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "div",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "ratio",
+			type: "number",
+			default: "1",
+			description: "The desired ratio",
+		},
+	]}
 />
 
 ## Examples
@@ -77,15 +77,15 @@ Contains the content you want to constrain to a given ratio.
 ### 16 x 9 ratio
 
 ```jsx
-import * as AspectRatio from '@radix-ui/react-aspect-ratio';
+import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 
 export default () => (
-  <AspectRatio.Root ratio={16 / 9}>
-    <img
-      src="https://images.unsplash.com/photo-1605030753481-bb38b08c384a"
-      alt="mountain view"
-      style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-    />
-  </AspectRatio.Root>
+	<AspectRatio.Root ratio={16 / 9}>
+		<img
+			src="https://images.unsplash.com/photo-1605030753481-bb38b08c384a"
+			alt="mountain view"
+			style={{ objectFit: "cover", width: "100%", height: "100%" }}
+		/>
+	</AspectRatio.Root>
 );
 ```

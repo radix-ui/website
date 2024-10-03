@@ -24,7 +24,7 @@ const toCssCasing = (str: string) =>
 
 const scaleToHSLObject = (name: string, scale: Scale) => {
 	const values = Object.entries(scale)
-		.map(([key, val]) => `  ${key}: '${tinycolor(val).toHslString()}',`)
+		.map(([key, val]) => `	${key}: "${tinycolor(val).toHslString()}",`)
 		.join("\n");
 	return `const ${name} = {\n${values}\n}`;
 };
@@ -39,7 +39,7 @@ const scaleToHexObject = (name: string, scale: Scale) => {
 				.toString(16)
 				.padStart(2, "0");
 
-			return `  ${key}: '${tinycolor(value).toHexString()}${hexAlpha === "ff" ? "" : hexAlpha}',`;
+			return `	${key}: "${tinycolor(value).toHexString()}${hexAlpha === "ff" ? "" : hexAlpha}",`;
 		})
 		.join("\n");
 	return `const ${name} = {\n${values}\n}`;
@@ -48,7 +48,7 @@ const scaleToHexObject = (name: string, scale: Scale) => {
 const scaleToCSS = (name: string, scale: Scale) => {
 	const values = Object.entries(scale)
 		.map(([key, val]) => [toCssCasing(key), val])
-		.map(([key, val]) => `  --${key}: ${val};`)
+		.map(([key, val]) => `	--${key}: ${val};`)
 		.join("\n");
 	return `.${name} {\n${values}\n}`;
 };
@@ -86,7 +86,7 @@ const scaleToSvg = (
 		.join("")}</svg>`;
 };
 
-// pulling  the first scale and getting the keys from it
+// pulling the first scale and getting the keys from it
 const colorKeys = Object.keys(Object.values(Colors)[0]);
 
 const getBgColorForDarkCell = (name: string) => {
@@ -164,20 +164,20 @@ export const ColorScale = ({
 									backgroundSize: "16px 16px",
 									backgroundPosition: "0px 0px, 8px 0px, 8px -8px, 0px 8px",
 									backgroundImage: `
-                      linear-gradient(45deg, #f8f8f8 25%, transparent 25%),
-                      linear-gradient(135deg, #f8f8f8 25%, transparent 25%),
-                      linear-gradient(45deg, transparent 75%, #f8f8f8 75%),
-                      linear-gradient(135deg, transparent 75%, #f8f8f8 75%)`,
+											linear-gradient(45deg, #f8f8f8 25%, transparent 25%),
+											linear-gradient(135deg, #f8f8f8 25%, transparent 25%),
+											linear-gradient(45deg, transparent 75%, #f8f8f8 75%),
+											linear-gradient(135deg, transparent 75%, #f8f8f8 75%)`,
 								}),
 								...(isWhiteA && {
 									backgroundColor: "#181818",
 									backgroundSize: "16px 16px",
 									backgroundPosition: "0px 0px, 8px 0px, 8px -8px, 0px 8px",
 									backgroundImage: `
-                      linear-gradient(45deg, #222222 25%, transparent 25%),
-                      linear-gradient(135deg, #222222 25%, transparent 25%),
-                      linear-gradient(45deg, transparent 75%, #222222 75%),
-                      linear-gradient(135deg, transparent 75%, #222222 75%)`,
+											linear-gradient(45deg, #222222 25%, transparent 25%),
+											linear-gradient(135deg, #222222 25%, transparent 25%),
+											linear-gradient(45deg, transparent 75%, #222222 75%),
+											linear-gradient(135deg, transparent 75%, #222222 75%)`,
 								}),
 							}}
 						>

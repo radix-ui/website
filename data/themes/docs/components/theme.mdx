@@ -18,28 +18,28 @@ Wrap a component tree in the `Theme` component to provide or modify configuratio
 
 ```jsx live=true
 <Box maxWidth="400px">
-  <Card size="2">
-    <Flex direction="column" gap="3">
-      <Grid gap="1">
-        <Text as="div" weight="bold" size="2" mb="1">
-          Feedback
-        </Text>
-        <TextArea placeholder="Write your feedback…" />
-      </Grid>
-      <Flex asChild justify="between">
-        <label>
-          <Text color="gray" size="2">
-            Attach screenshot?
-          </Text>
-          <Switch size="1" defaultChecked />
-        </label>
-      </Flex>
-      <Grid columns="2" gap="2">
-        <Button variant="surface">Back</Button>
-        <Button>Send</Button>
-      </Grid>
-    </Flex>
-  </Card>
+	<Card size="2">
+		<Flex direction="column" gap="3">
+			<Grid gap="1">
+				<Text as="div" weight="bold" size="2" mb="1">
+					Feedback
+				</Text>
+				<TextArea placeholder="Write your feedback…" />
+			</Grid>
+			<Flex asChild justify="between">
+				<label>
+					<Text color="gray" size="2">
+						Attach screenshot?
+					</Text>
+					<Switch size="1" defaultChecked />
+				</label>
+			</Flex>
+			<Grid columns="2" gap="2">
+				<Button variant="surface">Back</Button>
+				<Button>Send</Button>
+			</Grid>
+		</Flex>
+	</Card>
 </Box>
 ```
 
@@ -49,56 +49,56 @@ Nest another theme to modify configuration for a specific subtree. Configuration
 
 ```jsx live=true scroll=true line=16,32
 <Card size="2">
-  <Flex gap="6">
-    <Flex direction="column" gap="3">
-      <Heading as="h5" size="2">
-        Global
-      </Heading>
-      <Grid gap="1">
-        <Text as="div" weight="bold" size="2" mb="1">
-          Feedback
-        </Text>
-        <TextArea placeholder="Write your feedback…" />
-      </Grid>
-      <Button>Send</Button>
-    </Flex>
+	<Flex gap="6">
+		<Flex direction="column" gap="3">
+			<Heading as="h5" size="2">
+				Global
+			</Heading>
+			<Grid gap="1">
+				<Text as="div" weight="bold" size="2" mb="1">
+					Feedback
+				</Text>
+				<TextArea placeholder="Write your feedback…" />
+			</Grid>
+			<Button>Send</Button>
+		</Flex>
 
-    <Theme __accentColor__="cyan" __radius__="full">
-      <Card size="2">
-        <Flex gap="6">
-          <Flex direction="column" gap="3">
-            <Heading as="h5" size="2">
-              Child
-            </Heading>
-            <Grid gap="1">
-              <Text as="div" weight="bold" size="2" mb="1">
-                Feedback
-              </Text>
-              <TextArea placeholder="Write your feedback…" />
-            </Grid>
-            <Button>Send</Button>
-          </Flex>
+		<Theme __accentColor__="cyan" __radius__="full">
+			<Card size="2">
+				<Flex gap="6">
+					<Flex direction="column" gap="3">
+						<Heading as="h5" size="2">
+							Child
+						</Heading>
+						<Grid gap="1">
+							<Text as="div" weight="bold" size="2" mb="1">
+								Feedback
+							</Text>
+							<TextArea placeholder="Write your feedback…" />
+						</Grid>
+						<Button>Send</Button>
+					</Flex>
 
-          <Theme __accentColor__="orange">
-            <Card size="2">
-              <Flex direction="column" gap="3">
-                <Heading as="h5" size="2">
-                  Grandchild
-                </Heading>
-                <Grid gap="1">
-                  <Text as="div" weight="bold" size="2" mb="1">
-                    Feedback
-                  </Text>
-                  <TextArea placeholder="Write your feedback…" />
-                </Grid>
-                <Button>Send</Button>
-              </Flex>
-            </Card>
-          </Theme>
-        </Flex>
-      </Card>
-    </Theme>
-  </Flex>
+					<Theme __accentColor__="orange">
+						<Card size="2">
+							<Flex direction="column" gap="3">
+								<Heading as="h5" size="2">
+									Grandchild
+								</Heading>
+								<Grid gap="1">
+									<Text as="div" weight="bold" size="2" mb="1">
+										Feedback
+									</Text>
+									<TextArea placeholder="Write your feedback…" />
+								</Grid>
+								<Button>Send</Button>
+							</Flex>
+						</Card>
+					</Theme>
+				</Flex>
+			</Card>
+		</Theme>
+	</Flex>
 </Card>
 ```
 
@@ -108,34 +108,34 @@ Override configuration per component by passing any supported prop directly to t
 
 ```jsx live=true line=15,20
 <Box maxWidth="400px">
-  <Card size="2">
-    <Flex direction="column" gap="3">
-      <Grid gap="1">
-        <Text as="div" weight="bold" size="2" mb="1">
-          Feedback
-        </Text>
-        <TextArea placeholder="Write your feedback…" />
-      </Grid>
-      <Flex asChild justify="between">
-        <label>
-          <Text color="gray" size="2">
-            Attach screenshot?
-          </Text>
-          <Switch
-            size="1"
-            __color__="orange"
-            __radius__="full"
-            defaultChecked
-          />
-        </label>
-      </Flex>
-      <Grid columns="2" gap="2">
-        <Button variant="surface">Back</Button>
-        <Button __color__="cyan" __radius__="full">
-          Send
-        </Button>
-      </Grid>
-    </Flex>
-  </Card>
+	<Card size="2">
+		<Flex direction="column" gap="3">
+			<Grid gap="1">
+				<Text as="div" weight="bold" size="2" mb="1">
+					Feedback
+				</Text>
+				<TextArea placeholder="Write your feedback…" />
+			</Grid>
+			<Flex asChild justify="between">
+				<label>
+					<Text color="gray" size="2">
+						Attach screenshot?
+					</Text>
+					<Switch
+						size="1"
+						__color__="orange"
+						__radius__="full"
+						defaultChecked
+					/>
+				</label>
+			</Flex>
+			<Grid columns="2" gap="2">
+				<Button variant="surface">Back</Button>
+				<Button __color__="cyan" __radius__="full">
+					Send
+				</Button>
+			</Grid>
+		</Flex>
+	</Card>
 </Box>
 ```

@@ -6,9 +6,9 @@ sourcePath: components/text-field
 
 ```jsx live=true
 <TextField.Root placeholder="Search the docs…">
-  <TextField.Slot>
-    <MagnifyingGlassIcon height="16" width="16" />
-  </TextField.Slot>
+	<TextField.Slot>
+		<MagnifyingGlassIcon height="16" width="16" />
+	</TextField.Slot>
 </TextField.Root>
 ```
 
@@ -34,15 +34,15 @@ Use the `size` prop to control the size.
 
 ```jsx live=true
 <Flex direction="column" gap="3">
-  <Box maxWidth="200px">
-    <TextField.Root size="1" placeholder="Search the docs…" />
-  </Box>
-  <Box maxWidth="250px">
-    <TextField.Root size="2" placeholder="Search the docs…" />
-  </Box>
-  <Box maxWidth="300px">
-    <TextField.Root size="3" placeholder="Search the docs…" />
-  </Box>
+	<Box maxWidth="200px">
+		<TextField.Root size="1" placeholder="Search the docs…" />
+	</Box>
+	<Box maxWidth="250px">
+		<TextField.Root size="2" placeholder="Search the docs…" />
+	</Box>
+	<Box maxWidth="300px">
+		<TextField.Root size="3" placeholder="Search the docs…" />
+	</Box>
 </Flex>
 ```
 
@@ -50,39 +50,39 @@ Use matching component sizes when composing Text Field with buttons. However, do
 
 ```jsx live=true
 <Flex direction="column" gap="3" maxWidth="400px">
-  <Box maxWidth="200px">
-    <TextField.Root placeholder="Search the docs…" size="1">
-      <TextField.Slot>
-        <MagnifyingGlassIcon height="16" width="16" />
-      </TextField.Slot>
-    </TextField.Root>
-  </Box>
+	<Box maxWidth="200px">
+		<TextField.Root placeholder="Search the docs…" size="1">
+			<TextField.Slot>
+				<MagnifyingGlassIcon height="16" width="16" />
+			</TextField.Slot>
+		</TextField.Root>
+	</Box>
 
-  <Box maxWidth="250px">
-    <TextField.Root placeholder="Search the docs…" size="2">
-      <TextField.Slot>
-        <MagnifyingGlassIcon height="16" width="16" />
-      </TextField.Slot>
-      <TextField.Slot>
-        <IconButton size="1" variant="ghost">
-          <DotsHorizontalIcon height="14" width="14" />
-        </IconButton>
-      </TextField.Slot>
-    </TextField.Root>
-  </Box>
+	<Box maxWidth="250px">
+		<TextField.Root placeholder="Search the docs…" size="2">
+			<TextField.Slot>
+				<MagnifyingGlassIcon height="16" width="16" />
+			</TextField.Slot>
+			<TextField.Slot>
+				<IconButton size="1" variant="ghost">
+					<DotsHorizontalIcon height="14" width="14" />
+				</IconButton>
+			</TextField.Slot>
+		</TextField.Root>
+	</Box>
 
-  <Box maxWidth="300px">
-    <TextField.Root placeholder="Search the docs…" size="3">
-      <TextField.Slot>
-        <MagnifyingGlassIcon height="16" width="16" />
-      </TextField.Slot>
-      <TextField.Slot pr="3">
-        <IconButton size="2" variant="ghost">
-          <DotsHorizontalIcon height="16" width="16" />
-        </IconButton>
-      </TextField.Slot>
-    </TextField.Root>
-  </Box>
+	<Box maxWidth="300px">
+		<TextField.Root placeholder="Search the docs…" size="3">
+			<TextField.Slot>
+				<MagnifyingGlassIcon height="16" width="16" />
+			</TextField.Slot>
+			<TextField.Slot pr="3">
+				<IconButton size="2" variant="ghost">
+					<DotsHorizontalIcon height="16" width="16" />
+				</IconButton>
+			</TextField.Slot>
+		</TextField.Root>
+	</Box>
 </Flex>
 ```
 
@@ -92,9 +92,9 @@ Use the `variant` prop to control the visual style.
 
 ```jsx live=true
 <Flex direction="column" gap="3" maxWidth="250px">
-  <TextField.Root variant="surface" placeholder="Search the docs…" />
-  <TextField.Root variant="classic" placeholder="Search the docs…" />
-  <TextField.Root variant="soft" placeholder="Search the docs…" />
+	<TextField.Root variant="surface" placeholder="Search the docs…" />
+	<TextField.Root variant="classic" placeholder="Search the docs…" />
+	<TextField.Root variant="soft" placeholder="Search the docs…" />
 </Flex>
 ```
 
@@ -104,13 +104,13 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
 
 ```jsx live=true
 <Flex direction="column" gap="3" maxWidth="250px">
-  <TextField.Root
-    color="indigo"
-    variant="soft"
-    placeholder="Search the docs…"
-  />
-  <TextField.Root color="green" variant="soft" placeholder="Search the docs…" />
-  <TextField.Root color="red" variant="soft" placeholder="Search the docs…" />
+	<TextField.Root
+		color="indigo"
+		variant="soft"
+		placeholder="Search the docs…"
+	/>
+	<TextField.Root color="green" variant="soft" placeholder="Search the docs…" />
+	<TextField.Root color="red" variant="soft" placeholder="Search the docs…" />
 </Flex>
 ```
 
@@ -120,8 +120,8 @@ Use the `radius` prop to assign a specific radius value.
 
 ```jsx live=true
 <Flex direction="column" gap="3" maxWidth="250px">
-  <TextField.Root radius="none" placeholder="Search the docs…" />
-  <TextField.Root radius="large" placeholder="Search the docs…" />
-  <TextField.Root radius="full" placeholder="Search the docs…" />
+	<TextField.Root radius="none" placeholder="Search the docs…" />
+	<TextField.Root radius="large" placeholder="Search the docs…" />
+	<TextField.Root radius="full" placeholder="Search the docs…" />
 </Flex>
 ```

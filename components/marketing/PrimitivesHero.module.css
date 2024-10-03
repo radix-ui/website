@@ -144,7 +144,7 @@
 				var(--black-a2) 0px 1px 3px;
 
 			/* Fix a bug when hovering at button edges would cause the button to
-         jitter because of transform */
+			jitter because of transform */
 			&::before {
 				content: "";
 				inset: -2;

@@ -8,7 +8,7 @@ name: slot
 
 <Description>Merges its props onto its immediate child.</Description>
 
-<Highlights features={['Can be used to support your own `asChild` prop.']} />
+<Highlights features={["Can be used to support your own `asChild` prop."]} />
 
 ## Installation
 
@@ -23,12 +23,12 @@ npm install @radix-ui/react-slot
 Import the component.
 
 ```jsx
-import { Slot } from '@radix-ui/react-slot';
+import { Slot } from "@radix-ui/react-slot";
 
 export default () => (
-  <Slot>
-    <div>Hello</div>
-  </Slot>
+	<Slot>
+		<div>Hello</div>
+	</Slot>
 );
 ```
 
@@ -40,12 +40,12 @@ When your component has a single children element:
 
 ```jsx line=9
 // your-button.jsx
-import React from 'react';
-import { Slot } from '@radix-ui/react-slot';
+import React from "react";
+import { Slot } from "@radix-ui/react-slot";
 
 function Button({ asChild, ...props }) {
-  const Comp = asChild ? Slot : 'button';
-  return <Comp {...props} />;
+	const Comp = asChild ? Slot : "button";
+	return <Comp {...props} />;
 }
 ```
 
@@ -53,30 +53,30 @@ Use <Slottable /> when your component has multiple childrens to pass the props t
 
 ```jsx
 // your-button.jsx
-import React from 'react';
-import { Slot, Slottable } from '@radix-ui/react-slot';
+import React from "react";
+import { Slot, Slottable } from "@radix-ui/react-slot";
 
 function Button({ asChild, children, leftElement, rightElement, ...props }) {
-  const Comp = asChild ? Slot : 'button';
-  return (
-    <Comp {...props}>
-      {leftElement}
-      <Slottable>{children}</Slottable>
-      {rightElement}
-    </Comp>
-  );
+	const Comp = asChild ? Slot : "button";
+	return (
+		<Comp {...props}>
+			{leftElement}
+			<Slottable>{children}</Slottable>
+			{rightElement}
+		</Comp>
+	);
 }
 ```
 
 ### Usage
 
 ```jsx
-import { Button } from './your-button';
+import { Button } from "./your-button";
 
 export default () => (
-  <Button asChild>
-    <a href="/contact">Contact</a>
-  </Button>
+	<Button asChild>
+		<a href="/contact">Contact</a>
+	</Button>
 );
 ```
 
@@ -89,16 +89,16 @@ When merging event handlers, `Slot` will create a new function where the child h
 If one of the event handlers relies on `event.defaultPrevented` make sure that the order is correct.
 
 ```jsx
-import { Slot } from '@radix-ui/react-slot';
+import { Slot } from "@radix-ui/react-slot";
 
 export default () => (
-  <Slot
-    onClick={(event) => {
-      if (!event.defaultPrevented)
-        console.log('Not logged because default is prevented.');
-    }}
-  >
-    <button onClick={(event) => event.preventDefault()} />
-  </Slot>
+	<Slot
+		onClick={(event) => {
+			if (!event.defaultPrevented)
+				console.log("Not logged because default is prevented.");
+		}}
+	>
+		<button onClick={(event) => event.preventDefault()} />
+	</Slot>
 );
 ```

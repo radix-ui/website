@@ -159,18 +159,18 @@ export const IconsPanel = () => {
 								<CodeBlock.Pre>
 									<CodeBlock.Code language="jsx">
 										{`
-import { FaceIcon, ImageIcon, SunIcon } from '@radix-ui/react-icons'
+import { FaceIcon, ImageIcon, SunIcon } from "@radix-ui/react-icons"
 
 function MyComponent () {
-  return (
-    <div>
-      <FaceIcon />
-      <SunIcon />
-      <ImageIcon />
-    </div>
-  )
+	return (
+		<div>
+			<FaceIcon />
+			<SunIcon />
+			<ImageIcon />
+		</div>
+	y)
 }
-                  `.trim()}
+`.trim()}
 									</CodeBlock.Code>
 								</CodeBlock.Pre>
 							</CodeBlock.Content>

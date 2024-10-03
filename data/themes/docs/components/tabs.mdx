@@ -6,25 +6,25 @@ sourcePath: components/tabs
 
 ```jsx live=true
 <Tabs.Root defaultValue="account">
-  <Tabs.List>
-    <Tabs.Trigger value="account">Account</Tabs.Trigger>
-    <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
-    <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
-  </Tabs.List>
+	<Tabs.List>
+		<Tabs.Trigger value="account">Account</Tabs.Trigger>
+		<Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+		<Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+	</Tabs.List>
 
-  <Box pt="3">
-    <Tabs.Content value="account">
-      <Text size="2">Make changes to your account.</Text>
-    </Tabs.Content>
+	<Box pt="3">
+		<Tabs.Content value="account">
+			<Text size="2">Make changes to your account.</Text>
+		</Tabs.Content>
 
-    <Tabs.Content value="documents">
-      <Text size="2">Access and update your documents.</Text>
-    </Tabs.Content>
+		<Tabs.Content value="documents">
+			<Text size="2">Access and update your documents.</Text>
+		</Tabs.Content>
 
-    <Tabs.Content value="settings">
-      <Text size="2">Edit your profile or update contact information.</Text>
-    </Tabs.Content>
-  </Box>
+		<Tabs.Content value="settings">
+			<Text size="2">Edit your profile or update contact information.</Text>
+		</Tabs.Content>
+	</Box>
 </Tabs.Root>
 ```
 
@@ -60,21 +60,21 @@ Use the `size` prop to control the size of the tab list.
 
 ```jsx live=true line="3,11"
 <Flex direction="column" gap="4" pb="2">
-  <Tabs.Root defaultValue="account">
-    <Tabs.List size="1">
-      <Tabs.Trigger value="account">Account</Tabs.Trigger>
-      <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
-      <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
-    </Tabs.List>
-  </Tabs.Root>
+	<Tabs.Root defaultValue="account">
+		<Tabs.List size="1">
+			<Tabs.Trigger value="account">Account</Tabs.Trigger>
+			<Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+			<Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+		</Tabs.List>
+	</Tabs.Root>
 
-  <Tabs.Root defaultValue="account">
-    <Tabs.List size="2">
-      <Tabs.Trigger value="account">Account</Tabs.Trigger>
-      <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
-      <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
-    </Tabs.List>
-  </Tabs.Root>
+	<Tabs.Root defaultValue="account">
+		<Tabs.List size="2">
+			<Tabs.Trigger value="account">Account</Tabs.Trigger>
+			<Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+			<Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+		</Tabs.List>
+	</Tabs.Root>
 </Flex>
 ```
 
@@ -84,37 +84,37 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color) to t
 
 ```jsx live=true line="3,11,19,27"
 <Flex direction="column" gap="4" pb="2">
-  <Tabs.Root defaultValue="account">
-    <Tabs.List color="indigo">
-      <Tabs.Trigger value="account">Account</Tabs.Trigger>
-      <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
-      <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
-    </Tabs.List>
-  </Tabs.Root>
+	<Tabs.Root defaultValue="account">
+		<Tabs.List color="indigo">
+			<Tabs.Trigger value="account">Account</Tabs.Trigger>
+			<Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+			<Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+		</Tabs.List>
+	</Tabs.Root>
 
-  <Tabs.Root defaultValue="account">
-    <Tabs.List color="cyan">
-      <Tabs.Trigger value="account">Account</Tabs.Trigger>
-      <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
-      <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
-    </Tabs.List>
-  </Tabs.Root>
+	<Tabs.Root defaultValue="account">
+		<Tabs.List color="cyan">
+			<Tabs.Trigger value="account">Account</Tabs.Trigger>
+			<Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+			<Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+		</Tabs.List>
+	</Tabs.Root>
 
-  <Tabs.Root defaultValue="account">
-    <Tabs.List color="orange">
-      <Tabs.Trigger value="account">Account</Tabs.Trigger>
-      <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
-      <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
-    </Tabs.List>
-  </Tabs.Root>
+	<Tabs.Root defaultValue="account">
+		<Tabs.List color="orange">
+			<Tabs.Trigger value="account">Account</Tabs.Trigger>
+			<Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+			<Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+		</Tabs.List>
+	</Tabs.Root>
 
-  <Tabs.Root defaultValue="account">
-    <Tabs.List color="crimson">
-      <Tabs.Trigger value="account">Account</Tabs.Trigger>
-      <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
-      <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
-    </Tabs.List>
-  </Tabs.Root>
+	<Tabs.Root defaultValue="account">
+		<Tabs.List color="crimson">
+			<Tabs.Trigger value="account">Account</Tabs.Trigger>
+			<Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+			<Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+		</Tabs.List>
+	</Tabs.Root>
 </Flex>
 ```
 
@@ -124,21 +124,21 @@ Use the `highContrast` prop to increase color contrast with the background.
 
 ```jsx live=true line="11"
 <Flex direction="column" gap="4" pb="2">
-  <Tabs.Root defaultValue="account">
-    <Tabs.List color="gray">
-      <Tabs.Trigger value="account">Account</Tabs.Trigger>
-      <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
-      <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
-    </Tabs.List>
-  </Tabs.Root>
+	<Tabs.Root defaultValue="account">
+		<Tabs.List color="gray">
+			<Tabs.Trigger value="account">Account</Tabs.Trigger>
+			<Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+			<Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+		</Tabs.List>
+	</Tabs.Root>
 
-  <Tabs.Root defaultValue="account">
-    <Tabs.List color="gray" highContrast>
-      <Tabs.Trigger value="account">Account</Tabs.Trigger>
-      <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
-      <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
-    </Tabs.List>
-  </Tabs.Root>
+	<Tabs.Root defaultValue="account">
+		<Tabs.List color="gray" highContrast>
+			<Tabs.Trigger value="account">Account</Tabs.Trigger>
+			<Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+			<Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+		</Tabs.List>
+	</Tabs.Root>
 </Flex>
 ```
 

@@ -6,7 +6,7 @@ metaDescription: Understanding the color system and it’s application in your t
 # Color
 
 <Description>
-  Understanding the color system and its application in your theme.
+	Understanding the color system and its application in your theme.
 </Description>
 
 Radix Themes comes with a number of color scales, each with their own light, dark and alpha variants. Under the hood, the color system is powered by [Radix Colors](/colors).
@@ -17,7 +17,7 @@ Accent color is the most dominant color in your theme. It is used for primary bu
 
 ```jsx
 <Theme accentColor="indigo">
-  <MyApp />
+	<MyApp />
 </Theme>
 ```
 
@@ -26,7 +26,7 @@ Accent color is the most dominant color in your theme. It is used for primary bu
 There is a range of accent colors to choose from:
 
 <Box mt="5" mb="8">
-  <ThemesAccentSwatches />
+	<ThemesAccentSwatches />
 </Box>
 
 #### Accent scale anatomy
@@ -34,7 +34,7 @@ There is a range of accent colors to choose from:
 Each accent is a 12-step scale that includes a solid and a transparent variant of each color. For example, here’s the `indigo` color scale:
 
 <Box mt="5" mb="8">
-  <ThemesColorScale type="accent" />
+	<ThemesColorScale type="accent" />
 </Box>
 
 #### Accent scale tokens
@@ -79,7 +79,7 @@ You can also choose between a pure gray or a number of tinted grays. Your accent
 
 ```jsx
 <Theme grayColor="mauve">
-  <MyApp />
+	<MyApp />
 </Theme>
 ```
 
@@ -88,7 +88,7 @@ You can also choose between a pure gray or a number of tinted grays. Your accent
 There is 6 grays to choose from. The difference may seem subtle, but it is impactful especially on pages with a lot of text or in dense UIs.
 
 <Box mt="5" mb="8">
-  <ThemeGraySwatches />
+	<ThemeGraySwatches />
 </Box>
 
 #### Gray scale anatomy
@@ -96,7 +96,7 @@ There is 6 grays to choose from. The difference may seem subtle, but it is impac
 Grays are based on the same 12-step color scale that includes a solid and a transparent variant of each color. For example, here’s the `slate` color scale:
 
 <Box mt="5" mb="8">
-  <ThemesColorScale type="gray" />
+	<ThemesColorScale type="gray" />
 </Box>
 
 #### Gray scale tokens
@@ -142,35 +142,35 @@ Nested components will automatically inherit the new accent color.
 
 ```jsx live=true line=17
 <Theme accentColor="indigo">
-  <Flex align="start" direction={{ initial: 'column', sm: 'row' }} gap="4">
-    <Callout.Root>
-      <Callout.Icon>
-        <InfoCircledIcon />
-      </Callout.Icon>
-      <Callout.Text>
-        <Flex as="span" align="center" gap="4">
-          <Text>There are new commits.</Text>
-          <Button variant="surface" size="1" my="-2">
-            Refresh
-          </Button>
-        </Flex>
-      </Callout.Text>
-    </Callout.Root>
+	<Flex align="start" direction={{ initial: "column", sm: "row" }} gap="4">
+		<Callout.Root>
+			<Callout.Icon>
+				<InfoCircledIcon />
+			</Callout.Icon>
+			<Callout.Text>
+				<Flex as="span" align="center" gap="4">
+					<Text>There are new commits.</Text>
+					<Button variant="surface" size="1" my="-2">
+						Refresh
+					</Button>
+				</Flex>
+			</Callout.Text>
+		</Callout.Root>
 
-    <Callout.Root color="gray">
-      <Callout.Icon>
-        <InfoCircledIcon />
-      </Callout.Icon>
-      <Callout.Text>
-        <Flex as="span" align="center" gap="4">
-          <Text>There are new commits.</Text>
-          <Button variant="surface" size="1" my="-2">
-            Refresh
-          </Button>
-        </Flex>
-      </Callout.Text>
-    </Callout.Root>
-  </Flex>
+		<Callout.Root color="gray">
+			<Callout.Icon>
+				<InfoCircledIcon />
+			</Callout.Icon>
+			<Callout.Text>
+				<Flex as="span" align="center" gap="4">
+					<Text>There are new commits.</Text>
+					<Button variant="surface" size="1" my="-2">
+						Refresh
+					</Button>
+				</Flex>
+			</Callout.Text>
+		</Callout.Root>
+	</Flex>
 </Theme>
 ```
 
@@ -186,12 +186,12 @@ Most of the time, components with a `color` prop also provide a `highContrast` o
 
 ```jsx live=true line="5"
 <Flex gap="4">
-  <Button variant="classic" color="gray">
-    Edit profile
-  </Button>
-  <Button variant="classic" color="gray" highContrast>
-    Edit profile
-  </Button>
+	<Button variant="classic" color="gray">
+		Edit profile
+	</Button>
+	<Button variant="classic" color="gray" highContrast>
+		Edit profile
+	</Button>
 </Flex>
 ```
 
@@ -203,17 +203,17 @@ Radix Themes automatically adjusts the focus and selection colors depending on t
 
 ```jsx live=true line="1,6,9"
 <Theme accentColor="indigo">
-  <Flex direction="column" gap="4">
-    <Text>
-      Complete your account setup in <Link href="#">settings</Link>
-    </Text>
-    <Text color="gray">
-      Complete your account setup in <Link href="#">settings</Link>
-    </Text>
-    <Text color="red">
-      Complete your account setup in <Link href="#">settings</Link>
-    </Text>
-  </Flex>
+	<Flex direction="column" gap="4">
+		<Text>
+			Complete your account setup in <Link href="#">settings</Link>
+		</Text>
+		<Text color="gray">
+			Complete your account setup in <Link href="#">settings</Link>
+		</Text>
+		<Text color="red">
+			Complete your account setup in <Link href="#">settings</Link>
+		</Text>
+	</Flex>
 </Theme>
 ```
 
@@ -272,24 +272,24 @@ The `panelBackground` prop controls whether panelled elements use a solid or a t
 
 ```jsx
 <Theme panelBackground="translucent">
-  <MyApp />
+	<MyApp />
 </Theme>
 ```
 
 <Box mt="5" mb="6">
-  <ThemesPanelCardExample panelBackground="translucent" />
+	<ThemesPanelCardExample panelBackground="translucent" />
 </Box>
 
 While `solid` is useful when you'd prefer to present information unobstructed.
 
 ```jsx
 <Theme panelBackground="solid">
-  <MyApp />
+	<MyApp />
 </Theme>
 ```
 
 <Box mt="5" mb="6">
-  <ThemesPanelCardExample panelBackground="solid" />
+	<ThemesPanelCardExample panelBackground="solid" />
 </Box>
 
 ---
@@ -306,9 +306,9 @@ You can replace a specific color with your brand color by remapping the correspo
 
 ```css
 .radix-themes {
-  --my-brand-color: #3052f6;
-  --indigo-9: var(--my-brand-color);
-  --indigo-a9: var(--my-brand-color);
+	--my-brand-color: #3052f6;
+	--indigo-9: var(--my-brand-color);
+	--indigo-a9: var(--my-brand-color);
 }
 ```
 
@@ -321,21 +321,21 @@ You can use the [custom color palette tool](/colors/custom) to generate a custom
 To generate dark theme colors, toggle the appearance to use the dark theme. Make sure to paste the generated CSS after your light theme color overrides.
 
 <Text as="div" align="center" my="6">
-  <Box asChild mb="2">
-    <Link asChild>
-      <NextLink href="/colors/custom">
-        <img
-          src="https://workos.imgix.net/images/4c48334e-feb3-4046-9569-bd695b174728.png?auto=format&fit=clip&q=80"
-          style={{
-            width: '100%',
-            display: 'block',
-            borderRadius: 'var(--radius-4)',
-          }}
-        />
-      </NextLink>
-    </Link>
-  </Box>
-  {<a href="/colors/custom">Create a custom palette →</a>}
+	<Box asChild mb="2">
+		<Link asChild>
+			<NextLink href="/colors/custom">
+				<img
+					src="https://workos.imgix.net/images/4c48334e-feb3-4046-9569-bd695b174728.png?auto=format&fit=clip&q=80"
+					style={{
+						width: "100%",
+						display: "block",
+						borderRadius: "var(--radius-4)",
+					}}
+				/>
+			</NextLink>
+		</Link>
+	</Box>
+	{<a href="/colors/custom">Create a custom palette →</a>}
 </Text>
 
 ### Color aliasing
@@ -346,36 +346,36 @@ In this case, you can remap Radix Themes tokens in place of one another and recl
 
 ```css
 .radix-themes {
-  --red-1: var(--ruby-1);
-  --red-2: var(--ruby-2);
-  --red-3: var(--ruby-3);
-  --red-4: var(--ruby-4);
-  --red-5: var(--ruby-5);
-  --red-6: var(--ruby-6);
-  --red-7: var(--ruby-7);
-  --red-8: var(--ruby-8);
-  --red-9: var(--ruby-9);
-  --red-10: var(--ruby-10);
-  --red-11: var(--ruby-11);
-  --red-12: var(--ruby-12);
+	--red-1: var(--ruby-1);
+	--red-2: var(--ruby-2);
+	--red-3: var(--ruby-3);
+	--red-4: var(--ruby-4);
+	--red-5: var(--ruby-5);
+	--red-6: var(--ruby-6);
+	--red-7: var(--ruby-7);
+	--red-8: var(--ruby-8);
+	--red-9: var(--ruby-9);
+	--red-10: var(--ruby-10);
+	--red-11: var(--ruby-11);
+	--red-12: var(--ruby-12);
 
-  --red-a1: var(--ruby-a1);
-  --red-a2: var(--ruby-a2);
-  --red-a3: var(--ruby-a3);
-  --red-a4: var(--ruby-a4);
-  --red-a5: var(--ruby-a5);
-  --red-a6: var(--ruby-a6);
-  --red-a7: var(--ruby-a7);
-  --red-a8: var(--ruby-a8);
-  --red-a9: var(--ruby-a9);
-  --red-a10: var(--ruby-a10);
-  --red-a11: var(--ruby-a11);
-  --red-a12: var(--ruby-a12);
+	--red-a1: var(--ruby-a1);
+	--red-a2: var(--ruby-a2);
+	--red-a3: var(--ruby-a3);
+	--red-a4: var(--ruby-a4);
+	--red-a5: var(--ruby-a5);
+	--red-a6: var(--ruby-a6);
+	--red-a7: var(--ruby-a7);
+	--red-a8: var(--ruby-a8);
+	--red-a9: var(--ruby-a9);
+	--red-a10: var(--ruby-a10);
+	--red-a11: var(--ruby-a11);
+	--red-a12: var(--ruby-a12);
 
-  --red-surface: var(--ruby-surface);
-  --red-indicator: var(--ruby-indicator);
-  --red-track: var(--ruby-track);
-  --red-contrast: var(--ruby-contrast);
+	--red-surface: var(--ruby-surface);
+	--red-indicator: var(--ruby-indicator);
+	--red-track: var(--ruby-track);
+	--red-contrast: var(--ruby-contrast);
 }
 ```
 
@@ -391,17 +391,17 @@ If you’d prefer to reduce your CSS bundle size and have access just to the col
 
 ```ts
 // Base theme tokens
-import '@radix-ui/themes/tokens/base.css';
+import "@radix-ui/themes/tokens/base.css";
 
 // Include just the colors you use, for example `ruby`, `teal`, and `slate`.
 // Remember to import the gray tint that matches your theme setting.
-import '@radix-ui/themes/tokens/colors/ruby.css';
-import '@radix-ui/themes/tokens/colors/teal.css';
-import '@radix-ui/themes/tokens/colors/slate.css';
+import "@radix-ui/themes/tokens/colors/ruby.css";
+import "@radix-ui/themes/tokens/colors/teal.css";
+import "@radix-ui/themes/tokens/colors/slate.css";
 
 // Rest of the CSS
-import '@radix-ui/themes/components.css';
-import '@radix-ui/themes/utilities.css';
+import "@radix-ui/themes/components.css";
+import "@radix-ui/themes/utilities.css";
 ```
 
 Please note that the colors you didn’t import will still be accepted by the `color` prop in React. Also, make sure that your developer tooling [preserves](/themes/docs/overview/styling#nextjs-import-order) the order of the imported CSS files.

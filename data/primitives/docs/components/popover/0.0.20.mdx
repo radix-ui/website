@@ -8,18 +8,18 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal
 # Popover
 
 <Description>
-  Displays rich content in a portal, triggered by a button.
+	Displays rich content in a portal, triggered by a button.
 </Description>
 
 <Highlights
-  features={[
-    'Can be controlled or uncontrolled.',
-    'Customize side, alignment, offsets, collision handling.',
-    'Optionally render a pointing arrow.',
-    'Focus is fully managed and customizable.',
-    'Supports modal and non-modal modes.',
-    'Dismissing and layering behavior is highly customizable.',
-  ]}
+	features={[
+		"Can be controlled or uncontrolled.",
+		"Customize side, alignment, offsets, collision handling.",
+		"Optionally render a pointing arrow.",
+		"Focus is fully managed and customizable.",
+		"Supports modal and non-modal modes.",
+		"Dismissing and layering behavior is highly customizable.",
+	]}
 />
 
 ## Installation
@@ -35,17 +35,17 @@ npm install @radix-ui/react-popover
 Import all parts and piece them together.
 
 ```jsx
-import * as Popover from '@radix-ui/react-popover';
+import * as Popover from "@radix-ui/react-popover";
 
 export default () => (
-  <Popover.Root>
-    <Popover.Trigger />
-    <Popover.Anchor />
-    <Popover.Content>
-      <Popover.Close />
-      <Popover.Arrow />
-    </Popover.Content>
-  </Popover.Root>
+	<Popover.Root>
+		<Popover.Trigger />
+		<Popover.Anchor />
+		<Popover.Content>
+			<Popover.Close />
+			<Popover.Arrow />
+		</Popover.Content>
+	</Popover.Root>
 );
 ```
 
@@ -56,51 +56,51 @@ export default () => (
 Contains all the parts of a popover.
 
 <PropsTable
-  data={[
-    {
-      name: 'defaultOpen',
-      type: 'boolean',
-      description: (
-        <span>
-          The open state of the popover when it is initially rendered. Use when
-          you do not need to control its open state.
-        </span>
-      ),
-    },
-    {
-      name: 'open',
-      type: 'boolean',
-      description: (
-        <span>
-          The controlled open state of the popover. Must be used in conjunction
-          with <Code>onOpenChange</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onOpenChange',
-      type: '(open: boolean) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when the open state of the popover changes.
-        </span>
-      ),
-    },
-    {
-      name: 'modal',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <span>
-          The modality of the popover. When set to <Code>true</Code>,
-          interaction with outside elements will be disabled and only popover
-          content will be visible to screen readers.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "defaultOpen",
+			type: "boolean",
+			description: (
+				<span>
+					The open state of the popover when it is initially rendered. Use when
+					you do not need to control its open state.
+				</span>
+			),
+		},
+		{
+			name: "open",
+			type: "boolean",
+			description: (
+				<span>
+					The controlled open state of the popover. Must be used in conjunction
+					with <Code>onOpenChange</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onOpenChange",
+			type: "(open: boolean) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when the open state of the popover changes.
+				</span>
+			),
+		},
+		{
+			name: "modal",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<span>
+					The modality of the popover. When set to <Code>true</Code>,
+					interaction with outside elements will be disabled and only popover
+					content will be visible to screen readers.
+				</span>
+			),
+		},
+	]}
 />
 
 ### Trigger
@@ -108,17 +108,17 @@ Contains all the parts of a popover.
 The button that toggles the popover. By default, the `Popover.Content` will position itself against the trigger.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'button',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "button",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+	]}
 />
 
 ### Anchor
@@ -126,17 +126,17 @@ The button that toggles the popover. By default, the `Popover.Content` will posi
 An optional element to position the `Popover.Content` against. If this part is not used, the content will position alongside the <Code>Popover.Trigger</Code>.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "div",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+	]}
 />
 
 ### Content
@@ -144,171 +144,172 @@ An optional element to position the `Popover.Content` against. If this part is n
 The component that pops out when the popover is open.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'onOpenAutoFocus',
-      type: '(event: Event) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when focus moves into the component after
-          opening. It can be prevented by calling{' '}
-          <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onCloseAutoFocus',
-      type: '(event: Event) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when focus moves to the trigger after closing. It
-          can be prevented by calling <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onEscapeKeyDown',
-      type: '(event: KeyboardEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when the escape key is down. It can be prevented
-          by calling <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onPointerDownOutside',
-      type: '(event: PointerDownOutsideEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when a pointer event occurs outside the bounds of
-          the component. It can be prevented by calling{' '}
-          <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onFocusOutside',
-      type: '(event: FocusOutsideEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when focus moves outside the bounds of the
-          component. It can be prevented by calling{' '}
-          <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onInteractOutside',
-      type: '(event: PointerDownOutsideEvent | FocusOutsideEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when an interaction (pointer or focus event)
-          happens outside the bounds of the component. It can be prevented by
-          calling <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'portalled',
-      type: 'boolean',
-      default: 'true',
-      description: (
-        <span>
-          Whether to render in a <Code>Portal</Code> when open.
-        </span>
-      ),
-    },
-    {
-      name: 'forceMount',
-      type: 'boolean',
-      description: (
-        <span>
-          Used to force mounting when more control is needed. Useful when
-          controlling animation with React animation libraries.
-        </span>
-      ),
-    },
-    {
-      name: 'side',
-      type: '"top" | "right" | "bottom" | "left"',
-      typeSimple: 'enum',
-      default: '"bottom"',
-      description: (
-        <span>
-          The preferred side of the anchor to render against when open. Will be
-          reversed when collisions occur and <Code>avoidCollisions</Code> is
-          enabled.
-        </span>
-      ),
-    },
-    {
-      name: 'sideOffset',
-      type: 'number',
-      default: '0',
-      description: <span>The distance in pixels from the anchor.</span>,
-    },
-    {
-      name: 'align',
-      type: '"start" | "center" | "end"',
-      typeSimple: 'enum',
-      default: '"center"',
-      description: (
-        <span>
-          The preferred alignment against the anchor. May change when collisions
-          occur.
-        </span>
-      ),
-    },
-    {
-      name: 'alignOffset',
-      type: 'number',
-      default: '0',
-      description: (
-        <span>
-          An offset in pixels from the <Code>"start"</Code> or{' '}
-          <Code>"end"</Code> alignment options.
-        </span>
-      ),
-    },
-    {
-      name: 'avoidCollisions',
-      type: 'boolean',
-      default: 'true',
-      description: (
-        <span>
-          When <Code>true</Code>, overrides the <Code>side</Code> and
-          <Code>align</Code> preferences to prevent collisions with window edges.
-        </span>
-      ),
-    },
-    {
-      name: 'collisionTolerance',
-      type: 'number',
-      default: '0',
-      description: (
-        <span>
-          The distance in pixels from window edges where collision detection
-          should occur.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "div",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "onOpenAutoFocus",
+			type: "(event: Event) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when focus moves into the component after
+					opening. It can be prevented by calling{" "}
+					<Code>event.preventDefault</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onCloseAutoFocus",
+			type: "(event: Event) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when focus moves to the trigger after closing. It
+					can be prevented by calling <Code>event.preventDefault</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onEscapeKeyDown",
+			type: "(event: KeyboardEvent) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when the escape key is down. It can be prevented
+					by calling <Code>event.preventDefault</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onPointerDownOutside",
+			type: "(event: PointerDownOutsideEvent) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when a pointer event occurs outside the bounds of
+					the component. It can be prevented by calling{" "}
+					<Code>event.preventDefault</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onFocusOutside",
+			type: "(event: FocusOutsideEvent) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when focus moves outside the bounds of the
+					component. It can be prevented by calling{" "}
+					<Code>event.preventDefault</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onInteractOutside",
+			type: "(event: PointerDownOutsideEvent | FocusOutsideEvent) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when an interaction (pointer or focus event)
+					happens outside the bounds of the component. It can be prevented by
+					calling <Code>event.preventDefault</Code>.
+				</span>
+			),
+		},
+		{
+			name: "portalled",
+			type: "boolean",
+			default: "true",
+			description: (
+				<span>
+					Whether to render in a <Code>Portal</Code> when open.
+				</span>
+			),
+		},
+		{
+			name: "forceMount",
+			type: "boolean",
+			description: (
+				<span>
+					Used to force mounting when more control is needed. Useful when
+					controlling animation with React animation libraries.
+				</span>
+			),
+		},
+		{
+			name: "side",
+			type: '"top" | "right" | "bottom" | "left"',
+			typeSimple: "enum",
+			default: '"bottom"',
+			description: (
+				<span>
+					The preferred side of the anchor to render against when open. Will be
+					reversed when collisions occur and <Code>avoidCollisions</Code> is
+					enabled.
+				</span>
+			),
+		},
+		{
+			name: "sideOffset",
+			type: "number",
+			default: "0",
+			description: <span>The distance in pixels from the anchor.</span>,
+		},
+		{
+			name: "align",
+			type: '"start" | "center" | "end"',
+			typeSimple: "enum",
+			default: '"center"',
+			description: (
+				<span>
+					The preferred alignment against the anchor. May change when collisions
+					occur.
+				</span>
+			),
+		},
+		{
+			name: "alignOffset",
+			type: "number",
+			default: "0",
+			description: (
+				<span>
+					An offset in pixels from the <Code>"start"</Code> or{" "}
+					<Code>"end"</Code> alignment options.
+				</span>
+			),
+		},
+		{
+			name: "avoidCollisions",
+			type: "boolean",
+			default: "true",
+			description: (
+				<span>
+					When <Code>true</Code>, overrides the <Code>side</Code> and
+					<Code>align</Code> preferences to prevent collisions with window
+					edges.
+				</span>
+			),
+		},
+		{
+			name: "collisionTolerance",
+			type: "number",
+			default: "0",
+			description: (
+				<span>
+					The distance in pixels from window edges where collision detection
+					should occur.
+				</span>
+			),
+		},
+	]}
 />
 
 ### Arrow
@@ -316,40 +317,40 @@ The component that pops out when the popover is open.
 An optional arrow element to render alongside the popover. This can be used to help visually link the anchor with the `Popover.Content`. Must be rendered inside `Popover.Content`.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'svg',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the entire SVG and all of its paths.',
-    },
-    {
-      name: 'width',
-      type: 'number',
-      default: 10,
-      description: <span>The width of the arrow in pixels.</span>,
-    },
-    {
-      name: 'height',
-      type: 'number',
-      default: 5,
-      description: <span>The height of the arrow in pixels.</span>,
-    },
-    {
-      name: 'offset',
-      type: 'number',
-      default: 0,
-      description: (
-        <span>
-          The distance in pixels to render from the <Code>Popover.Content</Code>{' '}
-          edge.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "svg",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the entire SVG and all of its paths.",
+		},
+		{
+			name: "width",
+			type: "number",
+			default: 10,
+			description: <span>The width of the arrow in pixels.</span>,
+		},
+		{
+			name: "height",
+			type: "number",
+			default: 5,
+			description: <span>The height of the arrow in pixels.</span>,
+		},
+		{
+			name: "offset",
+			type: "number",
+			default: 0,
+			description: (
+				<span>
+					The distance in pixels to render from the <Code>Popover.Content</Code>{" "}
+					edge.
+				</span>
+			),
+		},
+	]}
 />
 
 ### Close
@@ -357,17 +358,17 @@ An optional arrow element to render alongside the popover. This can be used to h
 The button that closes an open popover.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'button',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "button",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+	]}
 />
 
 ## Examples
@@ -377,24 +378,24 @@ The button that closes an open popover.
 We expose a CSS custom property `--radix-popover-content-transform-origin`. Use it to animate the content from its computed origin based on `side`, `sideOffset`, `align`, `alignOffset` and any collisions.
 
 ```jsx line=4-7,9-12,17
-import { styled, keyframes } from '@stitches/react';
-import * as Popover from '@radix-ui/react-popover';
+import { styled, keyframes } from "@stitches/react";
+import * as Popover from "@radix-ui/react-popover";
 
 const scaleIn = keyframes({
-  '0%': { opacity: 0, transform: 'scale(0)' },
-  '100%': { opacity: 1, transform: 'scale(1)' },
+	"0%": { opacity: 0, transform: "scale(0)" },
+	"100%": { opacity: 1, transform: "scale(1)" },
 });
 
 const StyledContent = styled(Popover.Content, {
-  transformOrigin: 'var(--radix-popover-content-transform-origin)',
-  animation: `${scaleIn} 0.5s ease-out forwards`,
+	transformOrigin: "var(--radix-popover-content-transform-origin)",
+	animation: `${scaleIn} 0.5s ease-out forwards`,
 });
 
 export default () => (
-  <Popover.Root>
-    <Popover.Trigger>…</Popover.Trigger>
-    <StyledContent>…</StyledContent>
-  </Popover.Root>
+	<Popover.Root>
+		<Popover.Trigger>…</Popover.Trigger>
+		<StyledContent>…</StyledContent>
+	</Popover.Root>
 );
 ```
 
@@ -403,32 +404,32 @@ export default () => (
 We expose `data-side` and `data-align` attributes. Their values will change at runtime to reflect collisions. Use them to create collision and direction-aware animations.
 
 ```jsx line=4-7,9,12-14-19,24
-import { styled, keyframes } from '@stitches/react';
-import * as Popover from '@radix-ui/react-popover';
+import { styled, keyframes } from "@stitches/react";
+import * as Popover from "@radix-ui/react-popover";
 
 const slideDown = keyframes({
-  '0%': { opacity: 0, transform: 'translateY(-10px)' },
-  '100%': { opacity: 1, transform: 'translateY(0)' },
+	"0%": { opacity: 0, transform: "translateY(-10px)" },
+	"100%": { opacity: 1, transform: "translateY(0)" },
 });
 
 const slideUp = keyframes({
-  '0%': { opacity: 0, transform: 'translateY(10px)' },
-  '100%': { opacity: 1, transform: 'translateY(0)' },
+	"0%": { opacity: 0, transform: "translateY(10px)" },
+	"100%": { opacity: 1, transform: "translateY(0)" },
 });
 
 const StyledContent = styled(Popover.Content, {
-  animationDuration: '0.6s',
-  animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
-  animationFillMode: 'forwards',
-  '&[data-side="top"]': { animationName: slideUp },
-  '&[data-side="bottom"]': { animationName: slideDown },
+	animationDuration: "0.6s",
+	animationTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+	animationFillMode: "forwards",
+	'&[data-side="top"]': { animationName: slideUp },
+	'&[data-side="bottom"]': { animationName: slideDown },
 });
 
 export default () => (
-  <Popover.Root>
-    <Popover.Trigger>…</Popover.Trigger>
-    <StyledContent>…</StyledContent>
-  </Popover.Root>
+	<Popover.Root>
+		<Popover.Trigger>…</Popover.Trigger>
+		<StyledContent>…</StyledContent>
+	</Popover.Root>
 );
 ```
 
@@ -439,39 +440,39 @@ export default () => (
 You can anchor the content to another element if you do not want to use the trigger as the anchor.
 
 ```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Popover from '@radix-ui/react-popover';
+import { styled } from "path-to/stitches.config";
+import * as Popover from "@radix-ui/react-popover";
 
 const StyledContent = styled(Popover.Content, {
-  borderRadius: 3,
-  padding: '20px',
-  fontSize: 14,
-  backgroundColor: 'gainsboro',
-  color: 'black',
+	borderRadius: 3,
+	padding: "20px",
+	fontSize: 14,
+	backgroundColor: "gainsboro",
+	color: "black",
 });
 
 const StyledArrow = styled(Popover.Arrow, {
-  fill: 'gainsboro',
+	fill: "gainsboro",
 });
 
 const StyledAnchor = styled(Popover.Anchor, {
-  background: 'gainsboro',
-  padding: 20,
+	background: "gainsboro",
+	padding: 20,
 });
 
 export default () => (
-  <Popover.Root>
-    <StyledAnchor>
-      Row as anchor <Popover.Trigger>Trigger</Popover.Trigger>
-    </StyledAnchor>
+	<Popover.Root>
+		<StyledAnchor>
+			Row as anchor <Popover.Trigger>Trigger</Popover.Trigger>
+		</StyledAnchor>
 
-    <StyledContent>
-      <h3>Popover content</h3>
-      <p>Are you sure you wanna do this?</p>
-      <Popover.Close>Yes</Popover.Close>
-      <StyledArrow />
-    </StyledContent>
-  </Popover.Root>
+		<StyledContent>
+			<h3>Popover content</h3>
+			<p>Are you sure you wanna do this?</p>
+			<Popover.Close>Yes</Popover.Close>
+			<StyledArrow />
+		</StyledContent>
+	</Popover.Root>
 );
 ```
 
@@ -482,32 +483,32 @@ Adheres to the [Dialog WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/
 ### Keyboard Interactions
 
 <KeyboardTable
-  data={[
-    {
-      keys: ['Space'],
-      description: 'Opens/closes the popover.',
-    },
-    {
-      keys: ['Enter'],
-      description: 'Opens/closes the popover.',
-    },
-    {
-      keys: ['Tab'],
-      description: 'Moves focus to the next focusable element',
-    },
-    {
-      keys: ['Shift + Tab'],
-      description: 'Moves focus to the previous focusable element',
-    },
-    {
-      keys: ['Esc'],
-      description: (
-        <span>
-          Closes the popover and moves focus to <Code>Popover.Trigger</Code>.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			keys: ["Space"],
+			description: "Opens/closes the popover.",
+		},
+		{
+			keys: ["Enter"],
+			description: "Opens/closes the popover.",
+		},
+		{
+			keys: ["Tab"],
+			description: "Moves focus to the next focusable element",
+		},
+		{
+			keys: ["Shift + Tab"],
+			description: "Moves focus to the previous focusable element",
+		},
+		{
+			keys: ["Esc"],
+			description: (
+				<span>
+					Closes the popover and moves focus to <Code>Popover.Trigger</Code>.
+				</span>
+			),
+		},
+	]}
 />
 
 ## Custom APIs
@@ -521,13 +522,13 @@ This example abstracts the `Popover.Arrow` part and sets a default `sideOffset` 
 #### Usage
 
 ```jsx
-import { Popover, PopoverTrigger, PopoverContent } from './your-popover';
+import { Popover, PopoverTrigger, PopoverContent } from "./your-popover";
 
 export default () => (
-  <Popover>
-    <PopoverTrigger>Popover trigger</PopoverTrigger>
-    <PopoverContent>Popover content</PopoverContent>
-  </Popover>
+	<Popover>
+		<PopoverTrigger>Popover trigger</PopoverTrigger>
+		<PopoverContent>Popover content</PopoverContent>
+	</Popover>
 );
 ```
 
@@ -535,18 +536,18 @@ export default () => (
 
 ```jsx
 // your-popover.jsx
-import React from 'react';
-import * as PopoverPrimitive from '@radix-ui/react-popover';
+import React from "react";
+import * as PopoverPrimitive from "@radix-ui/react-popover";
 
 export const Popover = PopoverPrimitive.Root;
 export const PopoverTrigger = PopoverPrimitive.Trigger;
 
 export const PopoverContent = React.forwardRef(
-  ({ children, ...props }, forwardedRef) => (
-    <PopoverPrimitive.Content sideOffset={5} {...props} ref={forwardedRef}>
-      {children}
-      <PopoverPrimitive.Arrow />
-    </PopoverPrimitive.Content>
-  )
+	({ children, ...props }, forwardedRef) => (
+		<PopoverPrimitive.Content sideOffset={5} {...props} ref={forwardedRef}>
+			{children}
+			<PopoverPrimitive.Arrow />
+		</PopoverPrimitive.Content>
+	),
 );
 ```

@@ -33,12 +33,11 @@ export const FancyBackground = ({
 						transform: "translateX(-50%)",
 						backgroundRepeat: "no-repeat",
 						backgroundImage: `
-              radial-gradient(circle 800px at 700px 200px, var(--purple-2), transparent),
-              radial-gradient(circle 600px at calc(100% - 300px) 300px, var(--blue-3), transparent),
-              radial-gradient(circle 800px at right center, var(--sky-3), transparent),
-              radial-gradient(circle 800px at right bottom, var(--sky-1), transparent),
-              radial-gradient(circle 800px at calc(50% - 600px) calc(100% - 100px), var(--pink-3), var(--pink-1), transparent)
-            `,
+							radial-gradient(circle 800px at 700px 200px, var(--purple-2), transparent),
+							radial-gradient(circle 600px at calc(100% - 300px) 300px, var(--blue-3), transparent),
+							radial-gradient(circle 800px at right center, var(--sky-3), transparent),
+							radial-gradient(circle 800px at right bottom, var(--sky-1), transparent),
+							radial-gradient(circle 800px at calc(50% - 600px) calc(100% - 100px), var(--pink-3), var(--pink-1), transparent)`,
 					}}
 				/>
 			</Box>

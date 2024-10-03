@@ -9,7 +9,7 @@ aria: https://www.w3.org/TR/wai-aria-1.2/#separator
 
 <Description>Visually or semantically separates content.</Description>
 
-<Highlights features={['Supports horizontal and vertical orientations.']} />
+<Highlights features={["Supports horizontal and vertical orientations."]} />
 
 ## Installation
 
@@ -24,7 +24,7 @@ npm install @radix-ui/react-separator
 Import the components and piece the parts together.
 
 ```jsx
-import * as Separator from '@radix-ui/react-separator';
+import * as Separator from "@radix-ui/react-separator";
 
 export default () => <Separator.Root />;
 ```
@@ -34,13 +34,13 @@ export default () => <Separator.Root />;
 Create your styled separator component from the primitive part.
 
 ```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Separator from '@radix-ui/react-separator';
+import { styled } from "path-to/stitches.config";
+import * as Separator from "@radix-ui/react-separator";
 
 const StyledSeparator = styled(Separator.Root, {
-  backgroundColor: 'gainsboro',
-  height: 1,
-  margin: '20px 0',
+	backgroundColor: "gainsboro",
+	height: 1,
+	margin: "20px 0",
 });
 
 export default () => <StyledSeparator />;
@@ -59,47 +59,47 @@ export default () => <StyledSeparator />;
 The separator.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'selector',
-      required: false,
-      type: 'string | null',
-      default: 'radix-separator',
-      description: (
-        <span>
-          A string to use as the component selector for CSS purposes. It will be
-          added as a data attribute. Pass <Code>null</Code> to remove selector.
-        </span>
-      ),
-    },
-    {
-      name: 'orientation',
-      type: '"horizontal" | "vertical"',
-      typeSimple: 'enum',
-      default: '"horizontal"',
-      description: 'The orientation of the separator.',
-    },
-    {
-      name: 'decorative',
-      type: 'boolean',
-      description: (
-        <span>
-          When <Code>true</Code>, signifies that it is purely visual, carries no
-          semantic meaning, and ensures it is not present in the accessibility
-          tree.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "div",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "selector",
+			required: false,
+			type: "string | null",
+			default: "radix-separator",
+			description: (
+				<span>
+					A string to use as the component selector for CSS purposes. It will be
+					added as a data attribute. Pass <Code>null</Code> to remove selector.
+				</span>
+			),
+		},
+		{
+			name: "orientation",
+			type: '"horizontal" | "vertical"',
+			typeSimple: "enum",
+			default: '"horizontal"',
+			description: "The orientation of the separator.",
+		},
+		{
+			name: "decorative",
+			type: "boolean",
+			description: (
+				<span>
+					When <Code>true</Code>, signifies that it is purely visual, carries no
+					semantic meaning, and ensures it is not present in the accessibility
+					tree.
+				</span>
+			),
+		},
+	]}
 />
 
 ## Accessibility

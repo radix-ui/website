@@ -8,11 +8,11 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/disclosure
 # Collapsible
 
 <Description>
-  An interactive component which expands/collapses a panel.
+	An interactive component which expands/collapses a panel.
 </Description>
 
 <Highlights
-  features={['Full keyboard navigation.', 'Can be controlled or uncontrolled.']}
+	features={["Full keyboard navigation.", "Can be controlled or uncontrolled."]}
 />
 
 ## Installation
@@ -28,13 +28,13 @@ npm install @radix-ui/react-collapsible
 Import all parts and piece them together.
 
 ```jsx
-import * as Collapsible from '@radix-ui/react-collapsible';
+import * as Collapsible from "@radix-ui/react-collapsible";
 
 export default () => (
-  <Collapsible.Root>
-    <Collapsible.Button />
-    <Collapsible.Content />
-  </Collapsible.Root>
+	<Collapsible.Root>
+		<Collapsible.Button />
+		<Collapsible.Content />
+	</Collapsible.Root>
 );
 ```
 
@@ -43,21 +43,21 @@ export default () => (
 Create your styled collapsible component from the primitive parts.
 
 ```jsx
-import { styled } from 'path-to/stitches.config';
-import * as Collapsible from '@radix-ui/react-collapsible';
+import { styled } from "path-to/stitches.config";
+import * as Collapsible from "@radix-ui/react-collapsible";
 
 const StyledContent = styled(Collapsible.CollapsibleContent, {
-  padding: 10,
-  marginTop: 10,
-  backgroundColor: 'gainsboro',
-  borderRadius: 6,
+	padding: 10,
+	marginTop: 10,
+	backgroundColor: "gainsboro",
+	borderRadius: 6,
 });
 
 export default () => (
-  <Collapsible.Root>
-    <Collapsible.Button>Button</Collapsible.Button>
-    <StyledContent>Content 1</StyledContent>
-  </Collapsible.Root>
+	<Collapsible.Root>
+		<Collapsible.Button>Button</Collapsible.Button>
+		<StyledContent>Content 1</StyledContent>
+	</Collapsible.Root>
 );
 ```
 
@@ -74,50 +74,50 @@ export default () => (
 Contains all the parts of a collapsible.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'defaultOpen',
-      type: 'boolean',
-      description:
-        'The open state of the collapsible when it is initially rendered. Use when you do not need to control its open state.',
-    },
-    {
-      name: 'open',
-      type: 'boolean',
-      description: (
-        <span>
-          The controlled open state of the collapsible. Must be used in
-          conjunction with <Code>onOpenChange</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onOpenChange',
-      type: '(open: boolean) => void',
-      typeSimple: 'function',
-      description:
-        'Event handler called when the open state of the collapsible changes.',
-    },
-    {
-      name: 'disabled',
-      type: 'boolean',
-      description: (
-        <span>
-          When <Code>true</Code>, prevents the user from interacting with the
-          collapsible.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "div",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "defaultOpen",
+			type: "boolean",
+			description:
+				"The open state of the collapsible when it is initially rendered. Use when you do not need to control its open state.",
+		},
+		{
+			name: "open",
+			type: "boolean",
+			description: (
+				<span>
+					The controlled open state of the collapsible. Must be used in
+					conjunction with <Code>onOpenChange</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onOpenChange",
+			type: "(open: boolean) => void",
+			typeSimple: "function",
+			description:
+				"Event handler called when the open state of the collapsible changes.",
+		},
+		{
+			name: "disabled",
+			type: "boolean",
+			description: (
+				<span>
+					When <Code>true</Code>, prevents the user from interacting with the
+					collapsible.
+				</span>
+			),
+		},
+	]}
 />
 
 ### Button
@@ -125,17 +125,17 @@ Contains all the parts of a collapsible.
 The button that toggles the collapsible.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'button',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "button",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+	]}
 />
 
 ### Content
@@ -143,23 +143,23 @@ The button that toggles the collapsible.
 The component that contains the collapsible content.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'forceMount',
-      type: 'boolean',
-      description:
-        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "div",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "forceMount",
+			type: "boolean",
+			description:
+				"Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+		},
+	]}
 />
 
 ## Styling
@@ -170,22 +170,22 @@ We expose a CSS custom property `--radix-collapsible-content-height`.<br />Use i
 
 ```jsx
 const slideDown = keyframes({
-  from: { height: 0 },
-  to: { height: 'var(--radix-collapsible-content-height)' },
+	from: { height: 0 },
+	to: { height: "var(--radix-collapsible-content-height)" },
 });
 
 const slideUp = keyframes({
-  from: { height: 'var(--radix-collapsible-content-height)' },
-  to: { height: 0 },
+	from: { height: "var(--radix-collapsible-content-height)" },
+	to: { height: 0 },
 });
 
 const StyledContent = styled(Collapsible.Content, {
-  '&[data-state="open"]': {
-    animation: `${slideDown} 300ms ease-out forwards`,
-  },
-  '&[data-state="closed"]': {
-    animation: `${slideUp} 300ms ease-out forwards`,
-  },
+	'&[data-state="open"]': {
+		animation: `${slideDown} 300ms ease-out forwards`,
+	},
+	'&[data-state="closed"]': {
+		animation: `${slideUp} 300ms ease-out forwards`,
+	},
 });
 ```
 
@@ -196,14 +196,14 @@ Adheres to the [Disclosure WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/
 ### Keyboard Interactions
 
 <KeyboardTable
-  data={[
-    {
-      keys: ['Space'],
-      description: 'Opens/closes the collapsible.',
-    },
-    {
-      keys: ['Enter'],
-      description: 'Opens/closes the collapsible.',
-    },
-  ]}
+	data={[
+		{
+			keys: ["Space"],
+			description: "Opens/closes the collapsible.",
+		},
+		{
+			keys: ["Enter"],
+			description: "Opens/closes the collapsible.",
+		},
+	]}
 />

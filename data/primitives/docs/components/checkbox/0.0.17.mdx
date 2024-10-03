@@ -8,15 +8,15 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/checkbox
 # Checkbox
 
 <Description>
-  A control that allows the user to toggle between checked and not checked.
+	A control that allows the user to toggle between checked and not checked.
 </Description>
 
 <Highlights
-  features={[
-    'Supports indeterminate state.',
-    'Full keyboard navigation.',
-    'Can be controlled or uncontrolled.',
-  ]}
+	features={[
+		"Supports indeterminate state.",
+		"Full keyboard navigation.",
+		"Can be controlled or uncontrolled.",
+	]}
 />
 
 ## Installation
@@ -32,12 +32,12 @@ npm install @radix-ui/react-checkbox
 Import all parts and piece them together.
 
 ```jsx
-import * as Checkbox from '@radix-ui/react-checkbox';
+import * as Checkbox from "@radix-ui/react-checkbox";
 
 export default () => (
-  <Checkbox.Root>
-    <Checkbox.Indicator />
-  </Checkbox.Root>
+	<Checkbox.Root>
+		<Checkbox.Indicator />
+	</Checkbox.Root>
 );
 ```
 
@@ -48,76 +48,76 @@ export default () => (
 Contains all the parts of a checkbox.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'button',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'defaultChecked',
-      type: 'boolean',
-      description:
-        'The checked state of the checkbox when it is initially rendered. Use when you do not need to control its checked state.',
-    },
-    {
-      name: 'checked',
-      type: 'boolean',
-      description: (
-        <span>
-          The controlled checked state of the checkbox. Must be used in
-          conjunction with <Code>onCheckedChange</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onCheckedChange',
-      type: `(checked: boolean | 'indeterminate') => void`,
-      typeSimple: 'function',
-      description:
-        'Event handler called when the checked state of the checkbox changes.',
-    },
-    {
-      name: 'disabled',
-      type: 'boolean',
-      description: (
-        <span>
-          When <Code>true</Code>, prevents the user from interacting with the
-          checkbox.
-        </span>
-      ),
-    },
-    {
-      name: 'required',
-      type: 'boolean',
-      description: (
-        <span>
-          When <Code>true</Code>, indicates that the user must check the
-          checkbox before the owning form can be submitted.
-        </span>
-      ),
-    },
-    {
-      name: 'name',
-      type: 'string',
-      description:
-        'The name of the checkbox. Submitted with its owning form as part of a name/value pair.',
-    },
-    {
-      name: 'value',
-      type: 'string',
-      default: 'on',
-      description: (
-        <span>
-          The value given as data when submitted with a <Code>name</Code>.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "button",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "defaultChecked",
+			type: "boolean",
+			description:
+				"The checked state of the checkbox when it is initially rendered. Use when you do not need to control its checked state.",
+		},
+		{
+			name: "checked",
+			type: "boolean",
+			description: (
+				<span>
+					The controlled checked state of the checkbox. Must be used in
+					conjunction with <Code>onCheckedChange</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onCheckedChange",
+			type: `(checked: boolean | 'indeterminate') => void`,
+			typeSimple: "function",
+			description:
+				"Event handler called when the checked state of the checkbox changes.",
+		},
+		{
+			name: "disabled",
+			type: "boolean",
+			description: (
+				<span>
+					When <Code>true</Code>, prevents the user from interacting with the
+					checkbox.
+				</span>
+			),
+		},
+		{
+			name: "required",
+			type: "boolean",
+			description: (
+				<span>
+					When <Code>true</Code>, indicates that the user must check the
+					checkbox before the owning form can be submitted.
+				</span>
+			),
+		},
+		{
+			name: "name",
+			type: "string",
+			description:
+				"The name of the checkbox. Submitted with its owning form as part of a name/value pair.",
+		},
+		{
+			name: "value",
+			type: "string",
+			default: "on",
+			description: (
+				<span>
+					The value given as data when submitted with a <Code>name</Code>.
+				</span>
+			),
+		},
+	]}
 />
 
 ### Indicator
@@ -125,23 +125,23 @@ Contains all the parts of a checkbox.
 Renders when the checkbox is in a checked or indeterminate state. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'span',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'forceMount',
-      type: 'boolean',
-      description:
-        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "span",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "forceMount",
+			type: "boolean",
+			description:
+				"Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+		},
+	]}
 />
 
 ## Examples
@@ -151,33 +151,33 @@ Renders when the checkbox is in a checked or indeterminate state. You can style 
 You can set the checkbox to `indeterminate` by taking control of its state.
 
 ```jsx line=5,9-14,16
-import { DividerHorizontalIcon, CheckIcon } from '@radix-ui/react-icons';
-import * as Checkbox from '@radix-ui/react-checkbox';
+import { DividerHorizontalIcon, CheckIcon } from "@radix-ui/react-icons";
+import * as Checkbox from "@radix-ui/react-checkbox";
 
 export default () => {
-  const [checked, setChecked] = React.useState('indeterminate');
+	const [checked, setChecked] = React.useState("indeterminate");
 
-  return (
-    <>
-      <StyledCheckbox checked={checked} onCheckedChange={setChecked}>
-        <Checkbox.Indicator>
-          {checked === 'indeterminate' && <DividerHorizontalIcon />}
-          {checked === true && <CheckIcon />}
-        </Checkbox.Indicator>
-      </StyledCheckbox>
+	return (
+		<>
+			<StyledCheckbox checked={checked} onCheckedChange={setChecked}>
+				<Checkbox.Indicator>
+					{checked === "indeterminate" && <DividerHorizontalIcon />}
+					{checked === true && <CheckIcon />}
+				</Checkbox.Indicator>
+			</StyledCheckbox>
 
-      <button
-        type="button"
-        onClick={() =>
-          setChecked((prevIsChecked) =>
-            prevIsChecked === 'indeterminate' ? false : 'indeterminate'
-          )
-        }
-      >
-        Toggle indeterminate
-      </button>
-    </>
-  );
+			<button
+				type="button"
+				onClick={() =>
+					setChecked((prevIsChecked) =>
+						prevIsChecked === "indeterminate" ? false : "indeterminate",
+					)
+				}
+			>
+				Toggle indeterminate
+			</button>
+		</>
+	);
 };
 ```
 
@@ -188,14 +188,14 @@ Adheres to the [tri-state Checkbox WAI-ARIA design pattern](https://www.w3.org/W
 ### Keyboard Interactions
 
 <KeyboardTable
-  data={[
-    {
-      keys: ['Space'],
-      description: 'Checks/unchecks the checkbox.',
-    },
-    {
-      keys: ['Enter'],
-      description: 'Checks/unchecks the checkbox.',
-    },
-  ]}
+	data={[
+		{
+			keys: ["Space"],
+			description: "Checks/unchecks the checkbox.",
+		},
+		{
+			keys: ["Enter"],
+			description: "Checks/unchecks the checkbox.",
+		},
+	]}
 />

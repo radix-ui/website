@@ -8,7 +8,7 @@ metaImage: https://workos.imgix.net/images/ac05ebb6-4a7e-49e3-8395-8b148b27dede.
 # Radix Themes 3.0
 
 <Description>
-  New layout engine, new components, and custom color palette generator.
+	New layout engine, new components, and custom color palette generator.
 </Description>
 
 ## Introduction
@@ -24,7 +24,7 @@ For the comprehensive changelog and a migration guide, see the [release notes](/
 Radix Themes comes with almost 30 color scales, each with their own light, dark and alpha variants. Under the hood, the color system is powered by [Radix Colors](/colors).
 
 <Box mt="6" mb="7">
-  <ThemesAccentSwatches />
+	<ThemesAccentSwatches />
 </Box>
 
 Every scale has been tuned to provide fully accessible contrast ratios, each with steps that correspond to backgrounds, interactive components, borders and text. Offering the most beautiful and intuitive color system you’ve ever used.
@@ -32,21 +32,21 @@ Every scale has been tuned to provide fully accessible contrast ratios, each wit
 Today, we are introducing a new tool which allows you to create your own brand palette for Radix Themes. It’s a simple interface that lets you specify a primary color, a gray color, and your page background, generating a color configuration to copy-paste into your theme styles.
 
 <Text as="div" align="center" my="6">
-  <Box asChild mb="2">
-    <Link asChild>
-      <NextLink href="/colors/custom">
-        <img
-          src="https://workos.imgix.net/images/4c48334e-feb3-4046-9569-bd695b174728.png?auto=format&fit=clip&q=80"
-          style={{
-            width: '100%',
-            display: 'block',
-            borderRadius: 'var(--radius-4)',
-          }}
-        />
-      </NextLink>
-    </Link>
-  </Box>
-  {<a href="/colors/custom">Create a custom palette →</a>}
+	<Box asChild mb="2">
+		<Link asChild>
+			<NextLink href="/colors/custom">
+				<img
+					src="https://workos.imgix.net/images/4c48334e-feb3-4046-9569-bd695b174728.png?auto=format&fit=clip&q=80"
+					style={{
+						width: "100%",
+						display: "block",
+						borderRadius: "var(--radius-4)",
+					}}
+				/>
+			</NextLink>
+		</Link>
+	</Box>
+	{<a href="/colors/custom">Create a custom palette →</a>}
 </Text>
 
 ---
@@ -70,7 +70,7 @@ It comes with an intuitive API to conditionally render its children when they ar
 ```jsx
 // Inside the button:
 <Spinner loading={loading}>
-  <CubeIcon />
+	<CubeIcon />
 </Spinner>
 ```
 
@@ -82,7 +82,7 @@ Skeleton is another loading component in this release:
 
 ```jsx live=true
 <Skeleton>
-  <Button radius="full">Button</Button>
+	<Button radius="full">Button</Button>
 </Skeleton>
 ```
 
@@ -120,7 +120,7 @@ Unlike others, [Reset](/themes/docs/components/reset) is an invisible component:
 
 ```jsx live=true
 <Reset>
-  <button>Button</button>
+	<button>Button</button>
 </Reset>
 ```
 
@@ -133,28 +133,28 @@ In most interfaces, these styles are global and affect the entire app, so that t
 [Radio Cards](/themes/docs/components/radio-cards) is a common pattern for picking a single value out of multiple. They are used for visually engaging forms where each options gets more weight compared to a regular radio button:
 
 <ThemesBlogPostExampleArea>
-  <Box width="100%" maxWidth="600px">
-    <RadioCards.Root defaultValue="1" columns={{ initial: '1', sm: '3' }}>
-      <RadioCards.Item value="1">
-        <Flex direction="column" width="100%">
-          <Text weight="bold">8-core CPU</Text>
-          <Text>32 GB RAM</Text>
-        </Flex>
-      </RadioCards.Item>
-      <RadioCards.Item value="2">
-        <Flex direction="column" width="100%">
-          <Text weight="bold">6-core CPU</Text>
-          <Text>24 GB RAM</Text>
-        </Flex>
-      </RadioCards.Item>
-      <RadioCards.Item value="3">
-        <Flex direction="column" width="100%">
-          <Text weight="bold">4-core CPU</Text>
-          <Text>16 GB RAM</Text>
-        </Flex>
-      </RadioCards.Item>
-    </RadioCards.Root>
-  </Box>
+	<Box width="100%" maxWidth="600px">
+		<RadioCards.Root defaultValue="1" columns={{ initial: "1", sm: "3" }}>
+			<RadioCards.Item value="1">
+				<Flex direction="column" width="100%">
+					<Text weight="bold">8-core CPU</Text>
+					<Text>32 GB RAM</Text>
+				</Flex>
+			</RadioCards.Item>
+			<RadioCards.Item value="2">
+				<Flex direction="column" width="100%">
+					<Text weight="bold">6-core CPU</Text>
+					<Text>24 GB RAM</Text>
+				</Flex>
+			</RadioCards.Item>
+			<RadioCards.Item value="3">
+				<Flex direction="column" width="100%">
+					<Text weight="bold">4-core CPU</Text>
+					<Text>16 GB RAM</Text>
+				</Flex>
+			</RadioCards.Item>
+		</RadioCards.Root>
+	</Box>
 </ThemesBlogPostExampleArea>
 
 ### Checkbox Cards
@@ -162,31 +162,31 @@ In most interfaces, these styles are global and affect the entire app, so that t
 [Checkbox Cards](/themes/docs/components/checkbox-cards) are similar to Radio Cards, but are used for picking multiple values:
 
 <ThemesBlogPostExampleArea>
-  <Box width="100%" maxWidth="600px">
-    <CheckboxCards.Root
-      defaultValue={['1']}
-      columns={{ initial: '1', sm: '3' }}
-    >
-      <CheckboxCards.Item value="1">
-        <Flex direction="column" width="100%">
-          <Text weight="bold">A1 Keyboard</Text>
-          <Text>US Layout</Text>
-        </Flex>
-      </CheckboxCards.Item>
-      <CheckboxCards.Item value="2">
-        <Flex direction="column" width="100%">
-          <Text weight="bold">Pro Mouse</Text>
-          <Text>Zero-lag wireless</Text>
-        </Flex>
-      </CheckboxCards.Item>
-      <CheckboxCards.Item value="3">
-        <Flex direction="column" width="100%">
-          <Text weight="bold">Lightning Mat</Text>
-          <Text>Next-gen charging</Text>
-        </Flex>
-      </CheckboxCards.Item>
-    </CheckboxCards.Root>
-  </Box>
+	<Box width="100%" maxWidth="600px">
+		<CheckboxCards.Root
+			defaultValue={["1"]}
+			columns={{ initial: "1", sm: "3" }}
+		>
+			<CheckboxCards.Item value="1">
+				<Flex direction="column" width="100%">
+					<Text weight="bold">A1 Keyboard</Text>
+					<Text>US Layout</Text>
+				</Flex>
+			</CheckboxCards.Item>
+			<CheckboxCards.Item value="2">
+				<Flex direction="column" width="100%">
+					<Text weight="bold">Pro Mouse</Text>
+					<Text>Zero-lag wireless</Text>
+				</Flex>
+			</CheckboxCards.Item>
+			<CheckboxCards.Item value="3">
+				<Flex direction="column" width="100%">
+					<Text weight="bold">Lightning Mat</Text>
+					<Text>Next-gen charging</Text>
+				</Flex>
+			</CheckboxCards.Item>
+		</CheckboxCards.Root>
+	</Box>
 </ThemesBlogPostExampleArea>
 
 ### Progress
@@ -234,7 +234,7 @@ Consider the following piece of code:
 This would create a flexbox layout that’s `500px` wide. But what if you wanted to use a different width on mobile? This is possible using the responsive object syntax, where you can specify the value to use at a particular breakpoint:
 
 ```jsx
-<Flex width={{ initial: '100%', sm: '300px', md: '500px' }} />
+<Flex width={{ initial: "100%", sm: "300px", md: "500px" }} />
 ```
 
 Now, in addition to [space scale values](/themes/docs/theme/spacing), layout props will support valid CSS values. For example, `100px`, `50vw`, or even expressions like `calc(100vw - 200px)` can be used at specific breakpoints.
@@ -243,8 +243,8 @@ However, does it perform well? Does it work with server components? Well, here�
 
 ```jsx
 <div
-  style={{ '--width': '100%', '--width-md': '500px', '--width-sm': '300px' }}
-  class="rt-Flex rt-r-w sm:rt-r-w md:rt-r-w"
+	style={{ "--width": "100%", "--width-md": "500px", "--width-sm": "300px" }}
+	class="rt-Flex rt-r-w sm:rt-r-w md:rt-r-w"
 />
 ```
 
@@ -263,7 +263,7 @@ Radix Themes layout comes with the full power that utility class frameworks may 
 If you want to use _just_ the layout component from Radix Themes, that’s also possible. Just make sure that JavaScript tree-shaking works on your side, and import the layout essentials CSS:
 
 ```jsx
-import '@radix-ui/themes/layout.css';
+import "@radix-ui/themes/layout.css";
 ```
 
 ---

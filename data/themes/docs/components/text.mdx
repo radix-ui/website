@@ -33,15 +33,15 @@ Use the `size` prop to control text size. This prop also provides correct line h
 
 ```jsx live=true scroll=true
 <Flex direction="column" gap="3">
-  <Text size="1">The quick brown fox jumps over the lazy dog.</Text>
-  <Text size="2">The quick brown fox jumps over the lazy dog.</Text>
-  <Text size="3">The quick brown fox jumps over the lazy dog.</Text>
-  <Text size="4">The quick brown fox jumps over the lazy dog.</Text>
-  <Text size="5">The quick brown fox jumps over the lazy dog.</Text>
-  <Text size="6">The quick brown fox jumps over the lazy dog.</Text>
-  <Text size="7">The quick brown fox jumps over the lazy dog.</Text>
-  <Text size="8">The quick brown fox jumps over the lazy dog.</Text>
-  <Text size="9">The quick brown fox jumps over the lazy dog.</Text>
+	<Text size="1">The quick brown fox jumps over the lazy dog.</Text>
+	<Text size="2">The quick brown fox jumps over the lazy dog.</Text>
+	<Text size="3">The quick brown fox jumps over the lazy dog.</Text>
+	<Text size="4">The quick brown fox jumps over the lazy dog.</Text>
+	<Text size="5">The quick brown fox jumps over the lazy dog.</Text>
+	<Text size="6">The quick brown fox jumps over the lazy dog.</Text>
+	<Text size="7">The quick brown fox jumps over the lazy dog.</Text>
+	<Text size="8">The quick brown fox jumps over the lazy dog.</Text>
+	<Text size="9">The quick brown fox jumps over the lazy dog.</Text>
 </Flex>
 ```
 
@@ -65,41 +65,41 @@ Sizes 1–3 are designed to work well for UI labels.
 
 ```jsx live=true
 <Grid align="center" columns="2" gap="5" p="3">
-  <Flex direction="column">
-    <Text size="3" weight="bold">
-      Get started
-    </Text>
-    <Text color="gray" size="2">
-      Start your next project in minutes
-    </Text>
-  </Flex>
+	<Flex direction="column">
+		<Text size="3" weight="bold">
+			Get started
+		</Text>
+		<Text color="gray" size="2">
+			Start your next project in minutes
+		</Text>
+	</Flex>
 
-  <Flex direction="column">
-    <Text size="2" weight="bold">
-      Get started
-    </Text>
-    <Text color="gray" size="2">
-      Start your next project in minutes
-    </Text>
-  </Flex>
+	<Flex direction="column">
+		<Text size="2" weight="bold">
+			Get started
+		</Text>
+		<Text color="gray" size="2">
+			Start your next project in minutes
+		</Text>
+	</Flex>
 
-  <Flex direction="column">
-    <Text size="2" weight="bold">
-      Get started
-    </Text>
-    <Text color="gray" size="1">
-      Start your next project in minutes
-    </Text>
-  </Flex>
+	<Flex direction="column">
+		<Text size="2" weight="bold">
+			Get started
+		</Text>
+		<Text color="gray" size="1">
+			Start your next project in minutes
+		</Text>
+	</Flex>
 
-  <Flex direction="column">
-    <Text size="1" weight="bold">
-      Get started
-    </Text>
-    <Text color="gray" size="1">
-      Start your next project in minutes
-    </Text>
-  </Flex>
+	<Flex direction="column">
+		<Text size="1" weight="bold">
+			Get started
+		</Text>
+		<Text color="gray" size="1">
+			Start your next project in minutes
+		</Text>
+	</Flex>
 </Grid>
 ```
 
@@ -139,26 +139,26 @@ The prop works similarly to the upcoming [half-leading control](https://www.w3.o
 
 ```jsx live="true"
 <Flex direction="column" gap="3">
-  <Text
-    trim="normal"
-    style={{
-      background: 'var(--gray-a2)',
-      borderTop: '1px dashed var(--gray-a7)',
-      borderBottom: '1px dashed var(--gray-a7)',
-    }}
-  >
-    Without trim
-  </Text>
-  <Text
-    trim="both"
-    style={{
-      background: 'var(--gray-a2)',
-      borderTop: '1px dashed var(--gray-a7)',
-      borderBottom: '1px dashed var(--gray-a7)',
-    }}
-  >
-    With trim
-  </Text>
+	<Text
+		trim="normal"
+		style={{
+			background: "var(--gray-a2)",
+			borderTop: "1px dashed var(--gray-a7)",
+			borderBottom: "1px dashed var(--gray-a7)",
+		}}
+	>
+		Without trim
+	</Text>
+	<Text
+		trim="both"
+		style={{
+			background: "var(--gray-a2)",
+			borderTop: "1px dashed var(--gray-a7)",
+			borderBottom: "1px dashed var(--gray-a7)",
+		}}
+	>
+		With trim
+	</Text>
 </Flex>
 ```
 
@@ -166,39 +166,39 @@ Trimming the leading is useful when dialing in vertical spacing in cards or othe
 
 ```jsx live="true"
 <Flex direction="column" gap="3">
-  <Box
-    style={{
-      background: 'var(--gray-a2)',
-      border: '1px dashed var(--gray-a7)',
-    }}
-    p="4"
-  >
-    <Heading mb="1" size="3">
-      Without trim
-    </Heading>
-    <Text>
-      The goal of typography is to relate font size, line height, and line width
-      in a proportional way that maximizes beauty and makes reading easier and
-      more pleasant.
-    </Text>
-  </Box>
+	<Box
+		style={{
+			background: "var(--gray-a2)",
+			border: "1px dashed var(--gray-a7)",
+		}}
+		p="4"
+	>
+		<Heading mb="1" size="3">
+			Without trim
+		</Heading>
+		<Text>
+			The goal of typography is to relate font size, line height, and line width
+			in a proportional way that maximizes beauty and makes reading easier and
+			more pleasant.
+		</Text>
+	</Box>
 
-  <Box
-    p="4"
-    style={{
-      background: 'var(--gray-a2)',
-      border: '1px dashed var(--gray-a7)',
-    }}
-  >
-    <Heading mb="1" size="3" trim="start">
-      With trim
-    </Heading>
-    <Text trim="end">
-      The goal of typography is to relate font size, line height, and line width
-      in a proportional way that maximizes beauty and makes reading easier and
-      more pleasant.
-    </Text>
-  </Box>
+	<Box
+		p="4"
+		style={{
+			background: "var(--gray-a2)",
+			border: "1px dashed var(--gray-a7)",
+		}}
+	>
+		<Heading mb="1" size="3" trim="start">
+			With trim
+		</Heading>
+		<Text trim="end">
+			The goal of typography is to relate font size, line height, and line width
+			in a proportional way that maximizes beauty and makes reading easier and
+			more pleasant.
+		</Text>
+	</Box>
 </Flex>
 ```
 
@@ -206,10 +206,10 @@ The default trim values are configured for the system font stack that’s used b
 
 ```css
 .radix-themes {
-  --default-leading-trim-start: 0.42em;
-  --default-leading-trim-end: 0.36em;
-  --heading-leading-trim-start: 0.42em;
-  --heading-leading-trim-end: 0.36em;
+	--default-leading-trim-start: 0.42em;
+	--default-leading-trim-end: 0.36em;
+	--heading-leading-trim-start: 0.42em;
+	--heading-leading-trim-end: 0.36em;
 }
 ```
 
@@ -219,11 +219,11 @@ Use the `truncate` prop to truncate text with an ellipsis when it overflows its 
 
 ```jsx live=true line=2
 <Flex maxWidth="300px">
-  <Text truncate>
-    The goal of typography is to relate font size, line height, and line width
-    in a proportional way that maximizes beauty and makes reading easier and
-    more pleasant.
-  </Text>
+	<Text truncate>
+		The goal of typography is to relate font size, line height, and line width
+		in a proportional way that maximizes beauty and makes reading easier and
+		more pleasant.
+	</Text>
 </Flex>
 ```
 
@@ -233,48 +233,48 @@ Use the `wrap` prop to control text wrapping.
 
 ```jsx live=true line=2
 <Flex maxWidth="270px">
-  <Text wrap="nowrap">
-    The goal of typography is to relate font size, line height, and line width
-    in a proportional way that maximizes beauty and makes reading easier and
-    more pleasant.
-  </Text>
+	<Text wrap="nowrap">
+		The goal of typography is to relate font size, line height, and line width
+		in a proportional way that maximizes beauty and makes reading easier and
+		more pleasant.
+	</Text>
 </Flex>
 ```
 
 ```jsx live=true line=2
 <Flex maxWidth="270px">
-  <Text wrap="balance">
-    The goal of typography is to relate font size, line height, and line width
-    in a proportional way that maximizes beauty and makes reading easier and
-    more pleasant.
-  </Text>
+	<Text wrap="balance">
+		The goal of typography is to relate font size, line height, and line width
+		in a proportional way that maximizes beauty and makes reading easier and
+		more pleasant.
+	</Text>
 </Flex>
 ```
 
 ```jsx live=true line=2
 <Flex maxWidth="270px">
-  <Text wrap="pretty">
-    The goal of typography is to relate font size, line height, and line width
-    in a proportional way that maximizes beauty and makes reading easier and
-    more pleasant.
-  </Text>
+	<Text wrap="pretty">
+		The goal of typography is to relate font size, line height, and line width
+		in a proportional way that maximizes beauty and makes reading easier and
+		more pleasant.
+	</Text>
 </Flex>
 ```
 
 {
 
 <Callout.Root my="5" color="gray">
-  <Callout.Icon>
-    <InfoCircledIcon />
-  </Callout.Icon>
-  <Callout.Text>
-    <Code>text-wrap: pretty</Code> is an experimental value that is{' '}
-    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap#browser_compatibility">
-      not yet supported in all browsers
-    </a>
-    . However, it can be treated as a progressive enhancement for browsers that do
-    support it.
-  </Callout.Text>
+	<Callout.Icon>
+		<InfoCircledIcon />
+	</Callout.Icon>
+	<Callout.Text>
+		<Code>text-wrap: pretty</Code> is an experimental value that is{" "}
+		<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap#browser_compatibility">
+			not yet supported in all browsers
+		</a>
+		. However, it can be treated as a progressive enhancement for browsers that
+		do support it.
+	</Callout.Text>
 </Callout.Root>
 
 }
@@ -285,10 +285,10 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color). The
 
 ```jsx live=true scroll=true
 <Flex direction="column">
-  <Text color="indigo">The quick brown fox jumps over the lazy dog.</Text>
-  <Text color="cyan">The quick brown fox jumps over the lazy dog.</Text>
-  <Text color="orange">The quick brown fox jumps over the lazy dog.</Text>
-  <Text color="crimson">The quick brown fox jumps over the lazy dog.</Text>
+	<Text color="indigo">The quick brown fox jumps over the lazy dog.</Text>
+	<Text color="cyan">The quick brown fox jumps over the lazy dog.</Text>
+	<Text color="orange">The quick brown fox jumps over the lazy dog.</Text>
+	<Text color="crimson">The quick brown fox jumps over the lazy dog.</Text>
 </Flex>
 ```
 
@@ -298,10 +298,10 @@ Use the `highContrast` prop to increase color contrast with the background.
 
 ```jsx live="true"
 <Flex direction="column">
-  <Text color="gray">The quick brown fox jumps over the lazy dog.</Text>
-  <Text color="gray" highContrast>
-    The quick brown fox jumps over the lazy dog.
-  </Text>
+	<Text color="gray">The quick brown fox jumps over the lazy dog.</Text>
+	<Text color="gray" highContrast>
+		The quick brown fox jumps over the lazy dog.
+	</Text>
 </Flex>
 ```
 
@@ -311,9 +311,9 @@ Compose `Text` with formatting components to add emphasis and structure to conte
 
 ```jsx live="true"
 <Text as="p">
-  Look, such a helpful <Link href="#">link</Link>, an <Em>italic emphasis</Em>,
-  a piece of computer <Code>code</Code>, and even a hotkey combination{' '}
-  <Kbd>⇧⌘A</Kbd> within the text.
+	Look, such a helpful <Link href="#">link</Link>, an <Em>italic emphasis</Em>,
+	a piece of computer <Code>code</Code>, and even a hotkey combination{" "}
+	<Kbd>⇧⌘A</Kbd> within the text.
 </Text>
 ```
 
@@ -323,11 +323,11 @@ Composing `Text` with a form control like [`Checkbox`](/themes/docs/components/c
 
 ```jsx live="true"
 <Box maxWidth="300px">
-  <Text as="label" size="3">
-    <Flex gap="2">
-      <Checkbox defaultChecked /> I understand that these documents are
-      confidential and cannot be shared with a third party.
-    </Flex>
-  </Text>
+	<Text as="label" size="3">
+		<Flex gap="2">
+			<Checkbox defaultChecked /> I understand that these documents are
+			confidential and cannot be shared with a third party.
+		</Flex>
+	</Text>
 </Box>
 ```

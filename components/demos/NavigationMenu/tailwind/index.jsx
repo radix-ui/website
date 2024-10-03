@@ -20,8 +20,7 @@ const NavigationMenuDemo = () => {
 							<li className="row-span-3 grid">
 								<NavigationMenu.Link asChild>
 									<a
-										className="flex h-full w-full select-none
-                    flex-col justify-end rounded-md bg-gradient-to-b from-purple9 to-indigo9 p-[25px] no-underline outline-none focus:shadow-[0_0_0_2px] focus:shadow-violet7"
+										className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-purple9 to-indigo9 p-[25px] no-underline outline-none focus:shadow-[0_0_0_2px] focus:shadow-violet7"
 										href="/"
 									>
 										<svg

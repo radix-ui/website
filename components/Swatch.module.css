@@ -10,10 +10,10 @@
 
 	/* prettier-ignore */
 	background-image:
-    linear-gradient(45deg, var(--transparency-grid-color-2) 25%, transparent 25%),
-    linear-gradient(135deg, var(--transparency-grid-color-2) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, var(--transparency-grid-color-2) 75%),
-    linear-gradient(135deg, transparent 75%, var(--transparency-grid-color-2) 75%);
+		linear-gradient(45deg, var(--transparency-grid-color-2) 25%, transparent 25%),
+		linear-gradient(135deg, var(--transparency-grid-color-2) 25%, transparent 25%),
+		linear-gradient(45deg, transparent 75%, var(--transparency-grid-color-2) 75%),
+		linear-gradient(135deg, transparent 75%, var(--transparency-grid-color-2) 75%);
 }
 
 .SwatchTransparencyGrid[data-color-scale="white"] {

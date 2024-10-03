@@ -7,15 +7,15 @@ name: avatar
 # Avatar
 
 <Description>
-  An image element with a fallback for representing the user.
+	An image element with a fallback for representing the user.
 </Description>
 
 <Highlights
-  features={[
-    'Automatic and manual control over when the image renders.',
-    'Fallback part accepts any children.',
-    'Optionally delay fallback rendering to avoid content flashing.',
-  ]}
+	features={[
+		"Automatic and manual control over when the image renders.",
+		"Fallback part accepts any children.",
+		"Optionally delay fallback rendering to avoid content flashing.",
+	]}
 />
 
 ## Installation
@@ -31,13 +31,13 @@ npm install @radix-ui/react-avatar
 Import all parts and piece them together.
 
 ```jsx
-import * as Avatar from '@radix-ui/react-avatar';
+import * as Avatar from "@radix-ui/react-avatar";
 
 export default () => (
-  <Avatar.Root>
-    <Avatar.Image />
-    <Avatar.Fallback />
-  </Avatar.Root>
+	<Avatar.Root>
+		<Avatar.Image />
+		<Avatar.Fallback />
+	</Avatar.Root>
 );
 ```
 
@@ -48,17 +48,17 @@ export default () => (
 Contains all the parts of an avatar.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'span',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "span",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+	]}
 />
 
 ### Image
@@ -66,24 +66,24 @@ Contains all the parts of an avatar.
 The image to render. By default it will only render when it has loaded. You can use the `onLoadingStatusChange` handler if you need more control.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'img',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'onLoadingStatusChange',
-      type: '(status: "idle" | "loading" | "loaded" | "error") => void',
-      typeSimple: 'function',
-      description:
-        'A callback providing information about the loading status of the image. This is useful in case you want to control more precisely what to render as the image is loading.',
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "img",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "onLoadingStatusChange",
+			type: '(status: "idle" | "loading" | "loaded" | "error") => void',
+			typeSimple: "function",
+			description:
+				"A callback providing information about the loading status of the image. This is useful in case you want to control more precisely what to render as the image is loading.",
+		},
+	]}
 />
 
 ### Fallback
@@ -91,23 +91,23 @@ The image to render. By default it will only render when it has loaded. You can 
 An element that renders when the image hasn't loaded. This means whilst it's loading, or if there was an error. If you notice a flash during loading, you can provide a `delayMs` prop to delay its rendering so it only renders for those with slower connections. For more control, use the `onLoadingStatusChange` handler on `Avatar.Image`.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'span',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'delayMs',
-      type: 'number',
-      description:
-        'Useful for delaying rendering so it only appears for those with slower connections.',
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "span",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "delayMs",
+			type: "number",
+			description:
+				"Useful for delaying rendering so it only appears for those with slower connections.",
+		},
+	]}
 />
 
 ## Examples
@@ -117,19 +117,19 @@ An element that renders when the image hasn't loaded. This means whilst it's loa
 You can compose the Avatar with a [Tooltip](/primitives/docs/components/tooltip) to display extra information.
 
 ```jsx line=2,5,6,8,10-14
-import * as Avatar from '@radix-ui/react-avatar';
-import * as Tooltip from '@radix-ui/react-tooltip';
+import * as Avatar from "@radix-ui/react-avatar";
+import * as Tooltip from "@radix-ui/react-tooltip";
 
 export default () => (
-  <Tooltip.Root>
-    <Tooltip.Trigger>
-      <Avatar.Root>…</Avatar.Root>
-    </Tooltip.Trigger>
+	<Tooltip.Root>
+		<Tooltip.Trigger>
+			<Avatar.Root>…</Avatar.Root>
+		</Tooltip.Trigger>
 
-    <Tooltip.Content side="top">
-      Tooltip content
-      <Tooltip.Arrow />
-    </Tooltip.Content>
-  </Tooltip.Root>
+		<Tooltip.Content side="top">
+			Tooltip content
+			<Tooltip.Arrow />
+		</Tooltip.Content>
+	</Tooltip.Root>
 );
 ```

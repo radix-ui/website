@@ -10,14 +10,14 @@ aria: https://www.w3.org/TR/wai-aria/#aria-live
 <Description>A succinct message that is displayed temporarily.</Description>
 
 <Highlights
-  features={[
-    'Automatically closes.',
-    'Pauses closing on hover, focus and window blur.',
-    'Supports hotkey to jump to toast viewport.',
-    'Supports closing via swipe gesture.',
-    'Exposes CSS variables for swipe gesture animations.',
-    'Can be controlled or uncontrolled.',
-  ]}
+	features={[
+		"Automatically closes.",
+		"Pauses closing on hover, focus and window blur.",
+		"Supports hotkey to jump to toast viewport.",
+		"Supports closing via swipe gesture.",
+		"Exposes CSS variables for swipe gesture animations.",
+		"Can be controlled or uncontrolled.",
+	]}
 />
 
 ## Installation
@@ -33,19 +33,19 @@ npm install @radix-ui/react-toast
 Import the component.
 
 ```jsx
-import * as Toast from '@radix-ui/react-toast';
+import * as Toast from "@radix-ui/react-toast";
 
 export default () => (
-  <Toast.Provider>
-    <Toast.Root>
-      <Toast.Title />
-      <Toast.Description />
-      <Toast.Action />
-      <Toast.Close />
-    </Toast.Root>
+	<Toast.Provider>
+		<Toast.Root>
+			<Toast.Title />
+			<Toast.Description />
+			<Toast.Action />
+			<Toast.Close />
+		</Toast.Root>
 
-    <Toast.Viewport />
-  </Toast.Provider>
+		<Toast.Viewport />
+	</Toast.Provider>
 );
 ```
 
@@ -56,38 +56,38 @@ export default () => (
 The provider that wraps your toasts and toast viewport. It usually wraps the application.
 
 <PropsTable
-  data={[
-    {
-      name: 'duration',
-      type: 'number',
-      default: 5000,
-      description:
-        'The time in milliseconds that should elapse before automatically closing each toast.',
-    },
-    {
-      name: 'label',
-      required: true,
-      type: 'string',
-      default: '"Notification"',
-      description:
-        'An author-localized label for each toast. Used to help screen reader users associate the interruption with a toast.',
-    },
-    {
-      name: 'swipeDirection',
-      type: '"right" | "left" | "up" | "down"',
-      typeSimple: 'enum',
-      default: '"right"',
-      description:
-        'The direction of the pointer swipe that should close the toast.',
-    },
-    {
-      name: 'swipeThreshold',
-      type: 'number',
-      default: 50,
-      description:
-        'The distance in pixels that the swipe gesture must travel before a close is triggered.',
-    },
-  ]}
+	data={[
+		{
+			name: "duration",
+			type: "number",
+			default: 5000,
+			description:
+				"The time in milliseconds that should elapse before automatically closing each toast.",
+		},
+		{
+			name: "label",
+			required: true,
+			type: "string",
+			default: '"Notification"',
+			description:
+				"An author-localized label for each toast. Used to help screen reader users associate the interruption with a toast.",
+		},
+		{
+			name: "swipeDirection",
+			type: '"right" | "left" | "up" | "down"',
+			typeSimple: "enum",
+			default: '"right"',
+			description:
+				"The direction of the pointer swipe that should close the toast.",
+		},
+		{
+			name: "swipeThreshold",
+			type: "number",
+			default: 50,
+			description:
+				"The distance in pixels that the swipe gesture must travel before a close is triggered.",
+		},
+	]}
 />
 
 ### Viewport
@@ -95,48 +95,47 @@ The provider that wraps your toasts and toast viewport. It usually wraps the app
 The fixed area where toasts appear. Users can jump to the viewport by pressing a hotkey. It is up to you to ensure the discoverability of the hotkey for keyboard users.
 
 <PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
-        </>
-      ),
-    },
-    {
-      name: 'hotkey',
-      type: 'string[]',
-      default: '["F8"]',
-      description: (
-        <span>
-          The keys to use as the keyboard shortcut that will move focus to the
-          toast viewport. Use <Code>event.code</Code> value for each key from{' '}
-          <Link href="https://keycode.info/" variant="blue" target="_blank">
-            keycode.info
-          </Link>
-          . For meta keys, use <Code>ctrlKey</Code>, <Code>shiftKey</Code>, <Code>
-            altKey
-          </Code> and/or <Code>metaKey</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'label',
-      type: 'string',
-      default: '"Notifications ({hotkey})"',
-      description:
-        'An author-localized label for the toast region to provide context for screen reader users when navigating page landmarks. The available `{hotkey}` placeholder will be replaced for you.',
-    },
-  ]}
+	data={[
+		{
+			name: "asChild",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+		{
+			name: "hotkey",
+			type: "string[]",
+			default: '["F8"]',
+			description: (
+				<span>
+					The keys to use as the keyboard shortcut that will move focus to the
+					toast viewport. Use <Code>event.code</Code> value for each key from{" "}
+					<Link href="https://keycode.info/" variant="blue" target="_blank">
+						keycode.info
+					</Link>
+					. For meta keys, use <Code>ctrlKey</Code>, <Code>shiftKey</Code>,{" "}
+					<Code>altKey</Code> and/or <Code>metaKey</Code>.
+				</span>
+			),
+		},
+		{
+			name: "label",
+			type: "string",
+			default: '"Notifications ({hotkey})"',
+			description:
+				"An author-localized label for the toast region to provide context for screen reader users when navigating page landmarks. The available `{hotkey}` placeholder will be replaced for you.",
+		},
+	]}
 />
 
 ### Root
@@ -144,175 +143,175 @@ The fixed area where toasts appear. Users can jump to the viewport by pressing a
 The toast that automatically closes. It should not be held open to [acquire a user response](/primitives/docs/components/toast#action).
 
 <PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
-        </>
-      ),
-    },
-    {
-      name: 'type',
-      type: '"foreground" | "background"',
-      typeSimple: 'enum',
-      default: '"foreground"',
-      description: (
-        <span>
-          Control the{' '}
-          <Link
-            href="/primitives/docs/components/toast#sensitivity"
-            variant="blue"
-          >
-            sensitivity
-          </Link>{' '}
-          of the toast for accessibility purposes. For toasts that are the
-          result of a user action, choose <Code>foreground</Code>. Toasts
-          generated from background tasks should use <Code>background</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'duration',
-      type: 'number',
-      description:
-        'The time in milliseconds that should elapse before automatically closing the toast. This will override the value supplied to the provider.',
-    },
-    {
-      name: 'defaultOpen',
-      type: 'boolean',
-      default: 'true',
-      description:
-        'The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.',
-    },
-    {
-      name: 'open',
-      type: 'boolean',
-      description: (
-        <span>
-          The controlled open state of the dialog. Must be used in conjunction
-          with <Code>onOpenChange</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onOpenChange',
-      type: '(open: boolean) => void',
-      typeSimple: 'function',
-      description:
-        'Event handler called when the open state of the dialog changes.',
-    },
-    {
-      name: 'onEscapeKeyDown',
-      type: '(event: KeyboardEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when the escape key is down. It can be prevented
-          by calling <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onSwipeStart',
-      type: '(event: SwipeEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when starting a swipe interaction. It can be
-          prevented by calling <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onSwipeMove',
-      type: '(event: SwipeEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called during a swipe interaction. It can be prevented
-          by calling <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onSwipeEnd',
-      type: '(event: SwipeEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called at the end of a swipe interaction. It can be
-          prevented by calling <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onSwipeCancel',
-      type: '(event: SwipeEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when a swipe interaction is cancelled. It can be
-          prevented by calling <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'forceMount',
-      type: 'boolean',
-      description:
-        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
-    },
-  ]}
+	data={[
+		{
+			name: "asChild",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+		{
+			name: "type",
+			type: '"foreground" | "background"',
+			typeSimple: "enum",
+			default: '"foreground"',
+			description: (
+				<span>
+					Control the{" "}
+					<Link
+						href="/primitives/docs/components/toast#sensitivity"
+						variant="blue"
+					>
+						sensitivity
+					</Link>{" "}
+					of the toast for accessibility purposes. For toasts that are the
+					result of a user action, choose <Code>foreground</Code>. Toasts
+					generated from background tasks should use <Code>background</Code>.
+				</span>
+			),
+		},
+		{
+			name: "duration",
+			type: "number",
+			description:
+				"The time in milliseconds that should elapse before automatically closing the toast. This will override the value supplied to the provider.",
+		},
+		{
+			name: "defaultOpen",
+			type: "boolean",
+			default: "true",
+			description:
+				"The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+		},
+		{
+			name: "open",
+			type: "boolean",
+			description: (
+				<span>
+					The controlled open state of the dialog. Must be used in conjunction
+					with <Code>onOpenChange</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onOpenChange",
+			type: "(open: boolean) => void",
+			typeSimple: "function",
+			description:
+				"Event handler called when the open state of the dialog changes.",
+		},
+		{
+			name: "onEscapeKeyDown",
+			type: "(event: KeyboardEvent) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when the escape key is down. It can be prevented
+					by calling <Code>event.preventDefault</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onSwipeStart",
+			type: "(event: SwipeEvent) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when starting a swipe interaction. It can be
+					prevented by calling <Code>event.preventDefault</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onSwipeMove",
+			type: "(event: SwipeEvent) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called during a swipe interaction. It can be prevented
+					by calling <Code>event.preventDefault</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onSwipeEnd",
+			type: "(event: SwipeEvent) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called at the end of a swipe interaction. It can be
+					prevented by calling <Code>event.preventDefault</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onSwipeCancel",
+			type: "(event: SwipeEvent) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when a swipe interaction is cancelled. It can be
+					prevented by calling <Code>event.preventDefault</Code>.
+				</span>
+			),
+		},
+		{
+			name: "forceMount",
+			type: "boolean",
+			description:
+				"Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+		},
+	]}
 />
 
 <DataAttributesTable
-  data={[
-    {
-      attribute: '[data-state]',
-      values: ['open', 'closed'],
-    },
-    {
-      attribute: '[data-swipe]',
-      values: ['start', 'move', 'cancel', 'end'],
-    },
-    {
-      attribute: '[data-swipe-direction]',
-      values: ['up', 'down', 'left', 'right'],
-    },
-  ]}
+	data={[
+		{
+			attribute: "[data-state]",
+			values: ["open", "closed"],
+		},
+		{
+			attribute: "[data-swipe]",
+			values: ["start", "move", "cancel", "end"],
+		},
+		{
+			attribute: "[data-swipe-direction]",
+			values: ["up", "down", "left", "right"],
+		},
+	]}
 />
 
 <CssVariablesTable
-  data={[
-    {
-      cssVariable: '--radix-toast-swipe-move-x',
-      description: 'The offset position of the toast when horizontally swiping',
-    },
-    {
-      cssVariable: '--radix-toast-swipe-move-y',
-      description: 'The offset position of the toast when vertically swiping',
-    },
-    {
-      cssVariable: '--radix-toast-swipe-end-x',
-      description:
-        'The offset end position of the toast after horizontally swiping',
-    },
-    {
-      cssVariable: '--radix-toast-swipe-end-y',
-      description:
-        'The offset end position of the toast after vertically swiping',
-    },
-  ]}
+	data={[
+		{
+			cssVariable: "--radix-toast-swipe-move-x",
+			description: "The offset position of the toast when horizontally swiping",
+		},
+		{
+			cssVariable: "--radix-toast-swipe-move-y",
+			description: "The offset position of the toast when vertically swiping",
+		},
+		{
+			cssVariable: "--radix-toast-swipe-end-x",
+			description:
+				"The offset end position of the toast after horizontally swiping",
+		},
+		{
+			cssVariable: "--radix-toast-swipe-end-y",
+			description:
+				"The offset end position of the toast after vertically swiping",
+		},
+	]}
 />
 
 ### Title
@@ -320,24 +319,24 @@ The toast that automatically closes. It should not be held open to [acquire a us
 An optional title for the toast.
 
 <PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
-        </>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "asChild",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+	]}
 />
 
 ### Description
@@ -345,24 +344,24 @@ An optional title for the toast.
 The toast message.
 
 <PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
-        </>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "asChild",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+	]}
 />
 
 ### Action
@@ -372,38 +371,38 @@ An action that is safe to ignore to ensure users are not expected to complete ta
 When obtaining a user response is necessary, portal an [`AlertDialog`](/primitives/docs/components/alert-dialog) styled as a toast into the viewport instead.
 
 <PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
-        </>
-      ),
-    },
-    {
-      name: 'altText',
-      required: true,
-      type: 'string',
-      description: (
-        <>
-          Describe an{' '}
-          <Link variant="subtle" href="./toast#alternative-action">
-            alternative way to achieve the action
-          </Link>{' '}
-          for screen reader users who cannot access the toast easily.
-        </>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "asChild",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+		{
+			name: "altText",
+			required: true,
+			type: "string",
+			description: (
+				<>
+					Describe an{" "}
+					<Link variant="subtle" href="./toast#alternative-action">
+						alternative way to achieve the action
+					</Link>{" "}
+					for screen reader users who cannot access the toast easily.
+				</>
+			),
+		},
+	]}
 />
 
 ### Close
@@ -411,24 +410,24 @@ When obtaining a user response is necessary, portal an [`AlertDialog`](/primitiv
 A button that allows users to dismiss the toast before its duration has elapsed.
 
 <PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
-        </>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "asChild",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+	]}
 />
 
 ## Examples
@@ -439,8 +438,8 @@ Override the default hotkey using the `event.code` value for each key from [keyc
 
 ```jsx line=3
 <Toast.Provider>
-  {/* ... */}
-  <Toast.Viewport __hotkey__={['altKey', 'KeyT']} />
+	{/* ... */}
+	<Toast.Viewport __hotkey__={["altKey", "KeyT"]} />
 </Toast.Provider>
 ```
 
@@ -450,7 +449,7 @@ Customise the duration of a toast to override the provider value.
 
 ```jsx line=1
 <Toast.Root __duration__={3000}>
-  <Toast.Description>Saved!</Toast.Description>
+	<Toast.Description>Saved!</Toast.Description>
 </Toast.Root>
 ```
 
@@ -460,22 +459,22 @@ When a toast must appear every time a user clicks a button, use state to render 
 
 ```jsx line=6,11-15
 export default () => {
-  const [savedCount, setSavedCount] = React.useState(0);
+	const [savedCount, setSavedCount] = React.useState(0);
 
-  return (
-    <div>
-      <form onSubmit={() => setSavedCount((count) => count + 1)}>
-        {/* ... */}
-        <button>save</button>
-      </form>
+	return (
+		<div>
+			<form onSubmit={() => setSavedCount((count) => count + 1)}>
+				{/* ... */}
+				<button>save</button>
+			</form>
 
-      {Array.from({ length: savedCount }).map((_, index) => (
-        <Toast.Root key={index}>
-          <Toast.Description>Saved!</Toast.Description>
-        </Toast.Root>
-      ))}
-    </div>
-  );
+			{Array.from({ length: savedCount }).map((_, index) => (
+				<Toast.Root key={index}>
+					<Toast.Description>Saved!</Toast.Description>
+				</Toast.Root>
+			))}
+		</div>
+	);
 };
 ```
 
@@ -484,32 +483,32 @@ export default () => {
 Combine `--radix-toast-swipe-move-[x|y]` and `--radix-toast-swipe-end-[x|y]` CSS variables with `data-swipe="[start|move|cancel|end]"` attributes to animate a swipe to close gesture. Here's an example using Stitches:
 
 ```jsx line=4-7,10-19,23
-import { styled, keyframes } from '@stitches/react';
-import * as ToastPrimitive from '@radix-ui/react-toast';
+import { styled, keyframes } from "@stitches/react";
+import * as ToastPrimitive from "@radix-ui/react-toast";
 
 const slideRight = css.keyframes({
-  from: { transform: 'translateX(var(--radix-toast-swipe-end-x))' },
-  to: { transform: 'translateX(100%)' },
+	from: { transform: "translateX(var(--radix-toast-swipe-end-x))" },
+	to: { transform: "translateX(100%)" },
 });
 
 const Toast = styled(ToastPrimitive.Root, {
-  '&[data-swipe="move"]': {
-    transform: 'translateX(var(--radix-toast-swipe-move-x))',
-  },
-  '&[data-swipe="cancel"]': {
-    transform: 'translateX(0)',
-    transition: 'transform 200ms ease-out',
-  },
-  '&[data-swipe="end"]': {
-    animation: `${slideRight} 100ms ease-out`,
-  },
+	'&[data-swipe="move"]': {
+		transform: "translateX(var(--radix-toast-swipe-move-x))",
+	},
+	'&[data-swipe="cancel"]': {
+		transform: "translateX(0)",
+		transition: "transform 200ms ease-out",
+	},
+	'&[data-swipe="end"]': {
+		animation: `${slideRight} 100ms ease-out`,
+	},
 });
 
 export default () => (
-  <ToastPrimitive.Provider __swipeDirection__="right">
-    <Toast>...</Toast>
-    <ToastPrimitive.Viewport />
-  </ToastPrimitive.Provider>
+	<ToastPrimitive.Provider __swipeDirection__="right">
+		<Toast>...</Toast>
+		<ToastPrimitive.Viewport />
+	</ToastPrimitive.Provider>
 );
 ```
 
@@ -533,13 +532,13 @@ Background toasts are announced at the next graceful opportunity, for example, w
 
 ```jsx line=1,6
 <Toast.Root type="foreground">
-  <Toast.Description>File removed successfully.</Toast.Description>
-  <Toast.Close>Dismiss</Toast.Close>
+	<Toast.Description>File removed successfully.</Toast.Description>
+	<Toast.Close>Dismiss</Toast.Close>
 </Toast.Root>
 
 <Toast.Root type="background">
-  <Toast.Description>We've just released Radix 1.0.</Toast.Description>
-  <Toast.Close>Dismiss</Toast.Close>
+	<Toast.Description>We've just released Radix 1.0.</Toast.Description>
+	<Toast.Close>Dismiss</Toast.Close>
 </Toast.Root>
 ```
 
@@ -551,20 +550,20 @@ You can direct the user to a permanent place in your application where they can 
 
 ```jsx line=4,10,12
 <Toast.Root type="background">
-  <Toast.Title>Upgrade Available!</Toast.Title>
-  <Toast.Description>We've just released Radix 1.0.</Toast.Description>
-  <Toast.Action altText="Goto account settings to upgrade">
-    Upgrade
-  </Toast.Action>
-  <Toast.Close>Dismiss</Toast.Close>
+	<Toast.Title>Upgrade Available!</Toast.Title>
+	<Toast.Description>We've just released Radix 1.0.</Toast.Description>
+	<Toast.Action altText="Goto account settings to upgrade">
+		Upgrade
+	</Toast.Action>
+	<Toast.Close>Dismiss</Toast.Close>
 </Toast.Root>
 
 <Toast.Root __type__="foreground" __duration__={10000}>
-  <Toast.Description>File removed successfully.</Toast.Description>
-  <Toast.Action altText="Undo (Alt+U)">
-    Undo <kbd>Alt</kbd>+<kbd>U</kbd>
-  </Toast.Action>
-  <Toast.Close>Dismiss</Toast.Close>
+	<Toast.Description>File removed successfully.</Toast.Description>
+	<Toast.Action altText="Undo (Alt+U)">
+		Undo <kbd>Alt</kbd>+<kbd>U</kbd>
+	</Toast.Action>
+	<Toast.Close>Dismiss</Toast.Close>
 </Toast.Root>
 ```
 
@@ -574,56 +573,56 @@ When providing an icon (or font icon), remember to label it correctly for screen
 
 ```jsx line=3-4
 <Toast.Root type="foreground">
-  <Toast.Description>Saved!</Toast.Description>
-  <Toast.Close aria-label="Close">
-    <span aria-hidden>×</span>
-  </Toast.Close>
+	<Toast.Description>Saved!</Toast.Description>
+	<Toast.Close aria-label="Close">
+		<span aria-hidden>×</span>
+	</Toast.Close>
 </Toast.Root>
 ```
 
 ### Keyboard Interactions
 
 <KeyboardTable
-  data={[
-    {
-      keys: ['F8'],
-      description: 'Focuses toasts viewport.',
-    },
-    {
-      keys: ['Tab'],
-      description: 'Moves focus to the next focusable element.',
-    },
-    {
-      keys: ['Shift + Tab'],
-      description: 'Moves focus to the previous focusable element.',
-    },
-    {
-      keys: ['Space'],
-      description: (
-        <span>
-          When focus is on a <Code>Toast.Action</Code> or{' '}
-          <Code>Toast.Close</Code>, closes the toast.
-        </span>
-      ),
-    },
-    {
-      keys: ['Enter'],
-      description: (
-        <span>
-          When focus is on a <Code>Toast.Action</Code> or{' '}
-          <Code>Toast.Close</Code>, closes the toast.
-        </span>
-      ),
-    },
-    {
-      keys: ['Esc'],
-      description: (
-        <span>
-          When focus is on a <Code>Toast</Code>, closes the toast.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			keys: ["F8"],
+			description: "Focuses toasts viewport.",
+		},
+		{
+			keys: ["Tab"],
+			description: "Moves focus to the next focusable element.",
+		},
+		{
+			keys: ["Shift + Tab"],
+			description: "Moves focus to the previous focusable element.",
+		},
+		{
+			keys: ["Space"],
+			description: (
+				<span>
+					When focus is on a <Code>Toast.Action</Code> or{" "}
+					<Code>Toast.Close</Code>, closes the toast.
+				</span>
+			),
+		},
+		{
+			keys: ["Enter"],
+			description: (
+				<span>
+					When focus is on a <Code>Toast.Action</Code> or{" "}
+					<Code>Toast.Close</Code>, closes the toast.
+				</span>
+			),
+		},
+		{
+			keys: ["Esc"],
+			description: (
+				<span>
+					When focus is on a <Code>Toast</Code>, closes the toast.
+				</span>
+			),
+		},
+	]}
 />
 
 ## Custom APIs
@@ -635,12 +634,12 @@ Create your own API by abstracting the primitive parts into your own component.
 #### Usage
 
 ```jsx
-import { Toast } from './your-toast';
+import { Toast } from "./your-toast";
 
 export default () => (
-  <Toast title="Upgrade available" content="We've just released Radix 3.0!">
-    <button onClick={handleUpgrade}>Upgrade</button>
-  </Toast>
+	<Toast title="Upgrade available" content="We've just released Radix 3.0!">
+		<button onClick={handleUpgrade}>Upgrade</button>
+	</Toast>
 );
 ```
 
@@ -648,21 +647,21 @@ export default () => (
 
 ```jsx
 // your-toast.jsx
-import * as ToastPrimitive from '@radix-ui/react-toast';
+import * as ToastPrimitive from "@radix-ui/react-toast";
 
 export const Toast = ({ title, content, children, ...props }) => {
-  return (
-    <ToastPrimitive.Root {...props}>
-      {title && <ToastPrimitive.Title>{title}</ToastPrimitive.Title>}
-      <ToastPrimitive.Description>{content}</ToastPrimitive.Description>
-      {children && (
-        <ToastPrimitive.Action asChild>{children}</ToastPrimitive.Action>
-      )}
-      <ToastPrimitive.Close aria-label="Close">
-        <span aria-hidden>×</span>
-      </ToastPrimitive.Close>
-    </ToastPrimitive.Root>
-  );
+	return (
+		<ToastPrimitive.Root {...props}>
+			{title && <ToastPrimitive.Title>{title}</ToastPrimitive.Title>}
+			<ToastPrimitive.Description>{content}</ToastPrimitive.Description>
+			{children && (
+				<ToastPrimitive.Action asChild>{children}</ToastPrimitive.Action>
+			)}
+			<ToastPrimitive.Close aria-label="Close">
+				<span aria-hidden>×</span>
+			</ToastPrimitive.Close>
+		</ToastPrimitive.Root>
+	);
 };
 ```
 
@@ -673,19 +672,19 @@ Create your own imperative API to allow [toast duplication](/primitives/docs/com
 #### Usage
 
 ```jsx
-import { Toast } from './your-toast';
+import { Toast } from "./your-toast";
 
 export default () => {
-  const savedRef = React.useRef();
-  return (
-    <div>
-      <form onSubmit={() => savedRef.current.publish()}>
-        {/* ... */}
-        <button>Save</button>
-      </form>
-      <Toast ref={savedRef}>Saved successfully!</Toast>
-    </div>
-  );
+	const savedRef = React.useRef();
+	return (
+		<div>
+			<form onSubmit={() => savedRef.current.publish()}>
+				{/* ... */}
+				<button>Save</button>
+			</form>
+			<Toast ref={savedRef}>Saved successfully!</Toast>
+		</div>
+	);
 };
 ```
 
@@ -693,26 +692,26 @@ export default () => {
 
 ```jsx
 // your-toast.jsx
-import React from 'react';
-import * as ToastPrimitive from '@radix-ui/react-toast';
+import React from "react";
+import * as ToastPrimitive from "@radix-ui/react-toast";
 
 export const Toast = React.forwardRef((props, forwardedRef) => {
-  const { children, ...toastProps } = props;
-  const [count, setCount] = React.useState(0);
+	const { children, ...toastProps } = props;
+	const [count, setCount] = React.useState(0);
 
-  React.useImperativeHandle(forwardedRef, () => ({
-    publish: () => setCount((count) => count + 1),
-  }));
+	React.useImperativeHandle(forwardedRef, () => ({
+		publish: () => setCount((count) => count + 1),
+	}));
 
-  return (
-    <>
-      {Array.from({ length: count }).map((_, index) => (
-        <ToastPrimitive.Root key={index} {...toastProps}>
-          <ToastPrimitive.Description>{children}</ToastPrimitive.Description>
-          <ToastPrimitive.Close>Dismiss</ToastPrimitive.Close>
-        </ToastPrimitive.Root>
-      ))}
-    </>
-  );
+	return (
+		<>
+			{Array.from({ length: count }).map((_, index) => (
+				<ToastPrimitive.Root key={index} {...toastProps}>
+					<ToastPrimitive.Description>{children}</ToastPrimitive.Description>
+					<ToastPrimitive.Close>Dismiss</ToastPrimitive.Close>
+				</ToastPrimitive.Root>
+			))}
+		</>
+	);
 });
 ```

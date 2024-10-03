@@ -10,14 +10,14 @@ aria: https://www.w3.org/TR/wai-aria/#navigation
 <Description>A collection of links for navigating websites.</Description>
 
 <Highlights
-  features={[
-    'Can be controlled or uncontrolled.',
-    'Flexible layout structure with managed tab focus.',
-    'Supports submenus.',
-    'Optional active item indicator.',
-    'Full keyboard navigation.',
-    'Exposes CSS variables for advanced animation.',
-  ]}
+	features={[
+		"Can be controlled or uncontrolled.",
+		"Flexible layout structure with managed tab focus.",
+		"Supports submenus.",
+		"Optional active item indicator.",
+		"Full keyboard navigation.",
+		"Exposes CSS variables for advanced animation.",
+	]}
 />
 
 ## Installation
@@ -33,37 +33,37 @@ npm install @radix-ui/react-navigation-menu
 Import all parts and piece them together.
 
 ```jsx
-import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 
 export default () => (
-  <NavigationMenu.Root>
-    <NavigationMenu.List>
-      <NavigationMenu.Item>
-        <NavigationMenu.Trigger />
-        <NavigationMenu.Content>
-          <NavigationMenu.Link />
-        </NavigationMenu.Content>
-      </NavigationMenu.Item>
+	<NavigationMenu.Root>
+		<NavigationMenu.List>
+			<NavigationMenu.Item>
+				<NavigationMenu.Trigger />
+				<NavigationMenu.Content>
+					<NavigationMenu.Link />
+				</NavigationMenu.Content>
+			</NavigationMenu.Item>
 
-      <NavigationMenu.Item>
-        <NavigationMenu.Link />
-      </NavigationMenu.Item>
+			<NavigationMenu.Item>
+				<NavigationMenu.Link />
+			</NavigationMenu.Item>
 
-      <NavigationMenu.Item>
-        <NavigationMenu.Trigger />
-        <NavigationMenu.Content>
-          <NavigationMenu.Sub>
-            <NavigationMenu.List />
-            <NavigationMenu.Viewport />
-          </NavigationMenu.Sub>
-        </NavigationMenu.Content>
-      </NavigationMenu.Item>
+			<NavigationMenu.Item>
+				<NavigationMenu.Trigger />
+				<NavigationMenu.Content>
+					<NavigationMenu.Sub>
+						<NavigationMenu.List />
+						<NavigationMenu.Viewport />
+					</NavigationMenu.Sub>
+				</NavigationMenu.Content>
+			</NavigationMenu.Item>
 
-      <NavigationMenu.Indicator />
-    </NavigationMenu.List>
+			<NavigationMenu.Indicator />
+		</NavigationMenu.List>
 
-    <NavigationMenu.Viewport />
-  </NavigationMenu.Root>
+		<NavigationMenu.Viewport />
+	</NavigationMenu.Root>
 );
 ```
 
@@ -74,50 +74,50 @@ export default () => (
 Contains all the parts of a navigation menu.
 
 <PropsTable
-  data={[
-    {
-      name: 'defaultValue',
-      required: false,
-      type: 'string',
-      description:
-        'The value of the menu item that should be active when initially rendered. Use when you do not need to control the value state.',
-    },
-    {
-      name: 'value',
-      required: false,
-      type: 'string',
-      description: (
-        <span>
-          The controlled value of the menu item to activate. Should be used in
-          conjunction with <Code>onValueChange</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onValueChange',
-      required: false,
-      type: '(value: string) => void',
-      typeSimple: 'function',
-      description: 'Event handler called when the value changes.',
-    },
-    {
-      name: 'dir',
-      required: false,
-      type: '"ltr" | "rtl"',
-      typeSimple: 'enum',
-      default: '"ltr"',
-      description:
-        'The reading direction of the menu when applicable. If omitted, assumes LTR (left-to-right) reading mode.',
-    },
-    {
-      name: 'orientation',
-      required: false,
-      type: '"horizontal" | "vertical"',
-      typeSimple: 'enum',
-      default: '"horizontal"',
-      description: 'The orientation of the menu.',
-    },
-  ]}
+	data={[
+		{
+			name: "defaultValue",
+			required: false,
+			type: "string",
+			description:
+				"The value of the menu item that should be active when initially rendered. Use when you do not need to control the value state.",
+		},
+		{
+			name: "value",
+			required: false,
+			type: "string",
+			description: (
+				<span>
+					The controlled value of the menu item to activate. Should be used in
+					conjunction with <Code>onValueChange</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onValueChange",
+			required: false,
+			type: "(value: string) => void",
+			typeSimple: "function",
+			description: "Event handler called when the value changes.",
+		},
+		{
+			name: "dir",
+			required: false,
+			type: '"ltr" | "rtl"',
+			typeSimple: "enum",
+			default: '"ltr"',
+			description:
+				"The reading direction of the menu when applicable. If omitted, assumes LTR (left-to-right) reading mode.",
+		},
+		{
+			name: "orientation",
+			required: false,
+			type: '"horizontal" | "vertical"',
+			typeSimple: "enum",
+			default: '"horizontal"',
+			description: "The orientation of the menu.",
+		},
+	]}
 />
 
 ### Sub
@@ -125,41 +125,41 @@ Contains all the parts of a navigation menu.
 Signifies a submenu. Use it in place of the root part when nested to create a submenu.
 
 <PropsTable
-  data={[
-    {
-      name: 'defaultValue',
-      required: false,
-      type: 'string',
-      description:
-        'The value of the menu item that should be active when initially rendered. Use when you do not need to control the value state.',
-    },
-    {
-      name: 'value',
-      required: false,
-      type: 'string',
-      description: (
-        <span>
-          The controlled value of the sub menu item to activate. Should be used
-          in conjunction with <Code>onValueChange</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onValueChange',
-      required: false,
-      type: '(value: string) => void',
-      typeSimple: 'function',
-      description: 'Event handler called when the value changes.',
-    },
-    {
-      name: 'orientation',
-      required: false,
-      type: '"horizontal" | "vertical"',
-      typeSimple: 'enum',
-      default: '"horizontal"',
-      description: 'The orientation of the menu.',
-    },
-  ]}
+	data={[
+		{
+			name: "defaultValue",
+			required: false,
+			type: "string",
+			description:
+				"The value of the menu item that should be active when initially rendered. Use when you do not need to control the value state.",
+		},
+		{
+			name: "value",
+			required: false,
+			type: "string",
+			description: (
+				<span>
+					The controlled value of the sub menu item to activate. Should be used
+					in conjunction with <Code>onValueChange</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onValueChange",
+			required: false,
+			type: "(value: string) => void",
+			typeSimple: "function",
+			description: "Event handler called when the value changes.",
+		},
+		{
+			name: "orientation",
+			required: false,
+			type: '"horizontal" | "vertical"',
+			typeSimple: "enum",
+			default: '"horizontal"',
+			description: "The orientation of the menu.",
+		},
+	]}
 />
 
 ### List
@@ -167,24 +167,24 @@ Signifies a submenu. Use it in place of the root part when nested to create a su
 Contains the top level menu items.
 
 <PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
-        </>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "asChild",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+	]}
 />
 
 ### Item
@@ -192,36 +192,36 @@ Contains the top level menu items.
 A top level menu item, contains a link or trigger with content combination.
 
 <PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
-        </>
-      ),
-    },
-    {
-      name: 'value',
-      required: false,
-      type: 'string',
-      description: (
-        <span>
-          A unique value that associates the item with an active value when the
-          navigation menu is controlled. This prop is managed automatically when
-          uncontrolled.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "asChild",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+		{
+			name: "value",
+			required: false,
+			type: "string",
+			description: (
+				<span>
+					A unique value that associates the item with an active value when the
+					navigation menu is controlled. This prop is managed automatically when
+					uncontrolled.
+				</span>
+			),
+		},
+	]}
 />
 
 ### Trigger
@@ -229,24 +229,24 @@ A top level menu item, contains a link or trigger with content combination.
 The button that toggles the content.
 
 <PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
-        </>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "asChild",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+	]}
 />
 
 ### Content
@@ -254,94 +254,94 @@ The button that toggles the content.
 Contains the content associated with each trigger.
 
 <PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
-        </>
-      ),
-    },
-    {
-      name: 'disableOutsidePointerEvents',
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <span>
-          When <Code>true</Code>, hover/focus/click interactions will be
-          disabled on elements outside the bounds of the component. Users will
-          need to click twice on outside elements to interact with them: Once to
-          close the navigation menu, and again to activate the element.
-        </span>
-      ),
-    },
-    {
-      name: 'onEscapeKeyDown',
-      type: '(event: KeyboardEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when the escape key is down. It can be prevented
-          by calling <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onPointerDownOutside',
-      type: '(event: PointerDownOutsideEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when a pointer event occurs outside the bounds of
-          the component. It can be prevented by calling{' '}
-          <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onFocusOutside',
-      type: '(event: FocusOutsideEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when focus moves outside the bounds of the
-          component. It can be prevented by calling{' '}
-          <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onInteractOutside',
-      type: '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when an interaction (pointer or focus event)
-          happens outside the bounds of the component. It can be prevented by
-          calling <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'forceMount',
-      type: 'boolean',
-      description: (
-        <span>
-          Used to force mounting when more control is needed. Useful when
-          controlling animation with React animation libraries.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "asChild",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+		{
+			name: "disableOutsidePointerEvents",
+			type: "boolean",
+			default: "false",
+			description: (
+				<span>
+					When <Code>true</Code>, hover/focus/click interactions will be
+					disabled on elements outside the bounds of the component. Users will
+					need to click twice on outside elements to interact with them: Once to
+					close the navigation menu, and again to activate the element.
+				</span>
+			),
+		},
+		{
+			name: "onEscapeKeyDown",
+			type: "(event: KeyboardEvent) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when the escape key is down. It can be prevented
+					by calling <Code>event.preventDefault</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onPointerDownOutside",
+			type: "(event: PointerDownOutsideEvent) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when a pointer event occurs outside the bounds of
+					the component. It can be prevented by calling{" "}
+					<Code>event.preventDefault</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onFocusOutside",
+			type: "(event: FocusOutsideEvent) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when focus moves outside the bounds of the
+					component. It can be prevented by calling{" "}
+					<Code>event.preventDefault</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onInteractOutside",
+			type: "(event: React.FocusEvent | MouseEvent | TouchEvent) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when an interaction (pointer or focus event)
+					happens outside the bounds of the component. It can be prevented by
+					calling <Code>event.preventDefault</Code>.
+				</span>
+			),
+		},
+		{
+			name: "forceMount",
+			type: "boolean",
+			description: (
+				<span>
+					Used to force mounting when more control is needed. Useful when
+					controlling animation with React animation libraries.
+				</span>
+			),
+		},
+	]}
 />
 
 ### Link
@@ -349,31 +349,31 @@ Contains the content associated with each trigger.
 A navigational link.
 
 <PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
-        </>
-      ),
-    },
-    {
-      name: 'active',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: 'Used to identify the link as the currently active page.',
-    },
-  ]}
+	data={[
+		{
+			name: "asChild",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+		{
+			name: "active",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: "Used to identify the link as the currently active page.",
+		},
+	]}
 />
 
 ### Indicator
@@ -381,34 +381,34 @@ A navigational link.
 An optional indicator element that renders below the list, is used to highlight the currently active trigger.
 
 <PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
-        </>
-      ),
-    },
-    {
-      name: 'forceMount',
-      type: 'boolean',
-      description: (
-        <span>
-          Used to force mounting when more control is needed. Useful when
-          controlling animation with React animation libraries.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "asChild",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+		{
+			name: "forceMount",
+			type: "boolean",
+			description: (
+				<span>
+					Used to force mounting when more control is needed. Useful when
+					controlling animation with React animation libraries.
+				</span>
+			),
+		},
+	]}
 />
 
 ### Viewport
@@ -416,34 +416,34 @@ An optional indicator element that renders below the list, is used to highlight 
 An optional viewport element that is used to render active content outside of the list.
 
 <PropsTable
-  data={[
-    {
-      name: 'asChild',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <>
-          Change the default rendered element for the one passed as a child,
-          merging their props and behavior.
-          <br />
-          <br />
-          Read our <a href="../guides/composition">Composition</a> guide for more
-          details.
-        </>
-      ),
-    },
-    {
-      name: 'forceMount',
-      type: 'boolean',
-      description: (
-        <span>
-          Used to force mounting when more control is needed. Useful when
-          controlling animation with React animation libraries.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "asChild",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+		{
+			name: "forceMount",
+			type: "boolean",
+			description: (
+				<span>
+					Used to force mounting when more control is needed. Useful when
+					controlling animation with React animation libraries.
+				</span>
+			),
+		},
+	]}
 />
 
 ## Examples
@@ -454,16 +454,16 @@ You can create a vertical menu by using the `orientation` prop.
 
 ```jsx line=1
 <NavigationMenu.Root __orientation__="vertical">
-  <NavigationMenu.List>
-    <NavigationMenu.Item>
-      <NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
-      <NavigationMenu.Content>Item one content</NavigationMenu.Content>
-    </NavigationMenu.Item>
-    <NavigationMenu.Item>
-      <NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
-      <NavigationMenu.Content>Item Two content</NavigationMenu.Content>
-    </NavigationMenu.Item>
-  </NavigationMenu.List>
+	<NavigationMenu.List>
+		<NavigationMenu.Item>
+			<NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
+			<NavigationMenu.Content>Item one content</NavigationMenu.Content>
+		</NavigationMenu.Item>
+		<NavigationMenu.Item>
+			<NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
+			<NavigationMenu.Content>Item Two content</NavigationMenu.Content>
+		</NavigationMenu.Item>
+	</NavigationMenu.List>
 </NavigationMenu.Root>
 ```
 
@@ -475,19 +475,19 @@ Tab focus will be maintained automatically.
 
 ```jsx line=14
 <NavigationMenu.Root>
-  <NavigationMenu.List>
-    <NavigationMenu.Item>
-      <NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
-      <NavigationMenu.Content>Item one content</NavigationMenu.Content>
-    </NavigationMenu.Item>
-    <NavigationMenu.Item>
-      <NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
-      <NavigationMenu.Content>Item two content</NavigationMenu.Content>
-    </NavigationMenu.Item>
-  </NavigationMenu.List>
+	<NavigationMenu.List>
+		<NavigationMenu.Item>
+			<NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
+			<NavigationMenu.Content>Item one content</NavigationMenu.Content>
+		</NavigationMenu.Item>
+		<NavigationMenu.Item>
+			<NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
+			<NavigationMenu.Content>Item two content</NavigationMenu.Content>
+		</NavigationMenu.Item>
+	</NavigationMenu.List>
 
-  {/* NavigationMenu.Content will be rendered here when active */}
-  <NavigationMenu.Viewport />
+	{/* NavigationMenu.Content will be rendered here when active */}
+	<NavigationMenu.Viewport />
 </NavigationMenu.Root>
 ```
 
@@ -496,32 +496,32 @@ Tab focus will be maintained automatically.
 You can use the optional `Indicator` part to highlight the currently active `Trigger`, this is useful when you want to provide an animated visual cue such as an arrow or highlight to accompany the `Viewport`.
 
 ```jsx line=4-8,22
-import { styled } from '@stitches/react';
-import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+import { styled } from "@stitches/react";
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 
 const StyledIndicator = styled(NavigationMenu.Link, {
-  backgroundColor: 'grey',
-  transition: 'width, transform, 250ms ease',
-  '&[data-orientation="horizontal"]': { height: 3 },
+	backgroundColor: "grey",
+	transition: "width, transform, 250ms ease",
+	'&[data-orientation="horizontal"]': { height: 3 },
 });
 
 export default () => (
-  <NavigationMenu.Root>
-    <NavigationMenu.List>
-      <NavigationMenu.Item>
-        <NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
-        <NavigationMenu.Content>Item one content</NavigationMenu.Content>
-      </NavigationMenu.Item>
-      <NavigationMenu.Item>
-        <NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
-        <NavigationMenu.Content>Item two content</NavigationMenu.Content>
-      </NavigationMenu.Item>
+	<NavigationMenu.Root>
+		<NavigationMenu.List>
+			<NavigationMenu.Item>
+				<NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
+				<NavigationMenu.Content>Item one content</NavigationMenu.Content>
+			</NavigationMenu.Item>
+			<NavigationMenu.Item>
+				<NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
+				<NavigationMenu.Content>Item two content</NavigationMenu.Content>
+			</NavigationMenu.Item>
 
-      <StyledIndicator />
-    </NavigationMenu.List>
+			<StyledIndicator />
+		</NavigationMenu.List>
 
-    <NavigationMenu.Viewport />
-  </NavigationMenu.Root>
+		<NavigationMenu.Viewport />
+	</NavigationMenu.Root>
 );
 ```
 
@@ -533,33 +533,33 @@ sure to assign and set a `defaultValue`.
 
 ```jsx line=10,25
 <NavigationMenu.Root>
-  <NavigationMenu.List>
-    <NavigationMenu.Item>
-      <NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
-      <NavigationMenu.Content>Item one content</NavigationMenu.Content>
-    </NavigationMenu.Item>
-    <NavigationMenu.Item>
-      <NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
-      <NavigationMenu.Content>
-        <NavigationMenu.__Sub__ __defaultValue__="sub1">
-          <NavigationMenu.List>
-            <NavigationMenu.Item value="sub1">
-              <NavigationMenu.Trigger>Sub item one</NavigationMenu.Trigger>
-              <NavigationMenu.Content>
-                Sub item one content
-              </NavigationMenu.Content>
-            </NavigationMenu.Item>
-            <NavigationMenu.Item value="sub2">
-              <NavigationMenu.Trigger>Sub item two</NavigationMenu.Trigger>
-              <NavigationMenu.Content>
-                Sub item two content
-              </NavigationMenu.Content>
-            </NavigationMenu.Item>
-          </NavigationMenu.List>
-        </NavigationMenu.__Sub__>
-      </NavigationMenu.Content>
-    </NavigationMenu.Item>
-  </NavigationMenu.List>
+	<NavigationMenu.List>
+		<NavigationMenu.Item>
+			<NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
+			<NavigationMenu.Content>Item one content</NavigationMenu.Content>
+		</NavigationMenu.Item>
+		<NavigationMenu.Item>
+			<NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
+			<NavigationMenu.Content>
+				<NavigationMenu.__Sub__ __defaultValue__="sub1">
+					<NavigationMenu.List>
+						<NavigationMenu.Item value="sub1">
+							<NavigationMenu.Trigger>Sub item one</NavigationMenu.Trigger>
+							<NavigationMenu.Content>
+								Sub item one content
+							</NavigationMenu.Content>
+						</NavigationMenu.Item>
+						<NavigationMenu.Item value="sub2">
+							<NavigationMenu.Trigger>Sub item two</NavigationMenu.Trigger>
+							<NavigationMenu.Content>
+								Sub item two content
+							</NavigationMenu.Content>
+						</NavigationMenu.Item>
+					</NavigationMenu.List>
+				</NavigationMenu.__Sub__>
+			</NavigationMenu.Content>
+		</NavigationMenu.Item>
+	</NavigationMenu.List>
 </NavigationMenu.Root>
 ```
 
@@ -570,43 +570,43 @@ This will ensure accessibility and consistent keyboard control is maintained. He
 
 ```jsx line=14-26,32,35
 import {
-  useMatch,
-  useResolvedPath,
-  Link as RouterLink,
-} from 'react-router-dom';
-import { styled } from '@stitches/react';
-import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+	useMatch,
+	useResolvedPath,
+	Link as RouterLink,
+} from "react-router-dom";
+import { styled } from "@stitches/react";
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 
 const StyledLink = styled(NavigationMenu.Link, {
-  textDecoration: 'none',
-  '&[data-active]': { textDecoration: 'underline' },
+	textDecoration: "none",
+	"&[data-active]": { textDecoration: "underline" },
 });
 
 const CustomLink = ({ children, to, ...props }) => {
-  const resolved = useResolvedPath(to);
-  const match = useMatch({ path: resolved.pathname, end: true });
-  const isActive = Boolean(match);
+	const resolved = useResolvedPath(to);
+	const match = useMatch({ path: resolved.pathname, end: true });
+	const isActive = Boolean(match);
 
-  return (
-    <StyledLink active={isActive} asChild>
-      <RouterLink to={to} {...props}>
-        {children}
-      </RouterLink>
-    </StyledLink>
-  );
+	return (
+		<StyledLink active={isActive} asChild>
+			<RouterLink to={to} {...props}>
+				{children}
+			</RouterLink>
+		</StyledLink>
+	);
 };
 
 export default () => (
-  <NavigationMenu.Root>
-    <NavigationMenu.List>
-      <NavigationMenu.Item>
-        <CustomLink to="/">Home</CustomLink>
-      </NavigationMenu.Item>
-      <NavigationMenu.Item>
-        <CustomLink to="/about">About</CustomLink>
-      </NavigationMenu.Item>
-    </NavigationMenu.List>
-  </NavigationMenu.Root>
+	<NavigationMenu.Root>
+		<NavigationMenu.List>
+			<NavigationMenu.Item>
+				<CustomLink to="/">Home</CustomLink>
+			</NavigationMenu.Item>
+			<NavigationMenu.Item>
+				<CustomLink to="/about">About</CustomLink>
+			</NavigationMenu.Item>
+		</NavigationMenu.List>
+	</NavigationMenu.Root>
 );
 ```
 
@@ -619,64 +619,64 @@ Combining these with `position: absolute;` allows you to create smooth overlappi
 Here's an example using Stitches:
 
 ```jsx line=29-34,41,49,53,57
-import { styled, keyframes } from '@stitches/react';
-import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+import { styled, keyframes } from "@stitches/react";
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 
 const enterFromLeft = css.keyframes({
-  from: { transform: 'translateX(-100%)', opacity: 0 },
-  to: { transform: 'translateX(0)', opacity: 1 },
+	from: { transform: "translateX(-100%)", opacity: 0 },
+	to: { transform: "translateX(0)", opacity: 1 },
 });
 
 const enterFromRight = css.keyframes({
-  from: { transform: 'translateX(100%)', opacity: 0 },
-  to: { transform: 'translateX(0)', opacity: 1 },
+	from: { transform: "translateX(100%)", opacity: 0 },
+	to: { transform: "translateX(0)", opacity: 1 },
 });
 
 const exitToLeft = css.keyframes({
-  from: { transform: 'translateX(0)', opacity: 1 },
-  to: { transform: 'translateX(-100%)', opacity: 0 },
+	from: { transform: "translateX(0)", opacity: 1 },
+	to: { transform: "translateX(-100%)", opacity: 0 },
 });
 
 const exitToRight = css.keyframes({
-  from: { transform: 'translateX(0)', opacity: 1 },
-  to: { transform: 'translateX(100%)', opacity: 0 },
+	from: { transform: "translateX(0)", opacity: 1 },
+	to: { transform: "translateX(100%)", opacity: 0 },
 });
 
 const StyledContent = styled(NavigationMenu.Root, {
-  position: 'absolute',
-  top: 0,
-  left: 0,
+	position: "absolute",
+	top: 0,
+	left: 0,
 
-  animationDuration: '250ms',
-  animationTimingFunction: 'ease',
-  '&[data-motion="from-start"]': { animationName: enterFromLeft },
-  '&[data-motion="from-end"]': { animationName: enterFromRight },
-  '&[data-motion="to-start"]': { animationName: exitToLeft },
-  '&[data-motion="to-end"]': { animationName: exitToRight },
+	animationDuration: "250ms",
+	animationTimingFunction: "ease",
+	'&[data-motion="from-start"]': { animationName: enterFromLeft },
+	'&[data-motion="from-end"]': { animationName: enterFromRight },
+	'&[data-motion="to-start"]': { animationName: exitToLeft },
+	'&[data-motion="to-end"]': { animationName: exitToRight },
 });
 
 const StyledViewport = styled(NavigationMenu.Viewport, {
-  position: 'relative',
-  width: 'var(--radix-hover-menu-viewport-width)',
-  height: 'var(--radix-hover-menu-viewport-height)',
-  transition: 'width, height, 250ms ease',
+	position: "relative",
+	width: "var(--radix-hover-menu-viewport-width)",
+	height: "var(--radix-hover-menu-viewport-height)",
+	transition: "width, height, 250ms ease",
 });
 
 export default () => (
-  <NavigationMenu.Root>
-    <NavigationMenu.List>
-      <NavigationMenu.Item>
-        <NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
-        <StyledContent>Item one content</StyledContent>
-      </NavigationMenu.Item>
-      <NavigationMenu.Item>
-        <NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
-        <StyledContent>Item two content</StyledContent>
-      </NavigationMenu.Item>
-    </NavigationMenu.List>
+	<NavigationMenu.Root>
+		<NavigationMenu.List>
+			<NavigationMenu.Item>
+				<NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
+				<StyledContent>Item one content</StyledContent>
+			</NavigationMenu.Item>
+			<NavigationMenu.Item>
+				<NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
+				<StyledContent>Item two content</StyledContent>
+			</NavigationMenu.Item>
+		</NavigationMenu.List>
 
-    <StyledViewport />
-  </NavigationMenu.Root>
+		<StyledViewport />
+	</NavigationMenu.Root>
 );
 ```
 
@@ -703,74 +703,74 @@ See [this example](/primitives/docs/components/navigation-menu#with-router-links
 ### Keyboard Interactions
 
 <KeyboardTable
-  data={[
-    {
-      keys: ['Space', 'Enter'],
-      description: (
-        <span>
-          When focus is on <Code>NavigationMenu.Trigger</Code>, opens the
-          content.
-        </span>
-      ),
-    },
-    {
-      keys: ['Tab'],
-      description: 'Moves focus to the next focusable element.',
-    },
-    {
-      keys: ['ArrowDown'],
-      description: (
-        <span>
-          When <Code>horizontal</Code> and focus is on an open{' '}
-          <Code>NavigationMenu.Trigger</Code>, moves focus into{' '}
-          <Code>NavigationMenu.Content</Code>.
-          <br />
-          Moves focus to the next <Code>NavigationMenu.Trigger</Code> or{' '}
-          <Code>NavigationMenu.Link</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowUp'],
-      description: (
-        <span>
-          Moves focus to the previous <Code>NavigationMenu.Trigger</Code> or{' '}
-          <Code>NavigationMenu.Link</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['ArrowRight', 'ArrowLeft'],
-      description: (
-        <span>
-          When <Code>vertical</Code> and focus is on an open{' '}
-          <Code>NavigationMenu.Trigger</Code>, moves focus into its{' '}
-          <Code>NavigationMenu.Content</Code>.
-          <br />
-          Moves focus to the next / previous <Code>
-            NavigationMenu.Trigger
-          </Code>{' '}
-          or <Code>NavigationMenu.Link</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['Home', 'End'],
-      description: (
-        <span>
-          Moves focus to the first/last <Code>NavigationMenu.Trigger</Code> or{' '}
-          <Code>NavigationMenu.Link</Code>.
-        </span>
-      ),
-    },
-    {
-      keys: ['Esc'],
-      description: (
-        <span>
-          Closes open <Code>NavigationMenu.Content</Code> and moves focus to its{' '}
-          <Code>NavigationMenu.Trigger</Code>.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			keys: ["Space", "Enter"],
+			description: (
+				<span>
+					When focus is on <Code>NavigationMenu.Trigger</Code>, opens the
+					content.
+				</span>
+			),
+		},
+		{
+			keys: ["Tab"],
+			description: "Moves focus to the next focusable element.",
+		},
+		{
+			keys: ["ArrowDown"],
+			description: (
+				<span>
+					When <Code>horizontal</Code> and focus is on an open{" "}
+					<Code>NavigationMenu.Trigger</Code>, moves focus into{" "}
+					<Code>NavigationMenu.Content</Code>.
+					<br />
+					Moves focus to the next <Code>NavigationMenu.Trigger</Code> or{" "}
+					<Code>NavigationMenu.Link</Code>.
+				</span>
+			),
+		},
+		{
+			keys: ["ArrowUp"],
+			description: (
+				<span>
+					Moves focus to the previous <Code>NavigationMenu.Trigger</Code> or{" "}
+					<Code>NavigationMenu.Link</Code>.
+				</span>
+			),
+		},
+		{
+			keys: ["ArrowRight", "ArrowLeft"],
+			description: (
+				<span>
+					When <Code>vertical</Code> and focus is on an open{" "}
+					<Code>NavigationMenu.Trigger</Code>, moves focus into its{" "}
+					<Code>NavigationMenu.Content</Code>.
+					<br />
+					Moves focus to the next / previous <Code>
+						NavigationMenu.Trigger
+					</Code>{" "}
+					or <Code>NavigationMenu.Link</Code>.
+				</span>
+			),
+		},
+		{
+			keys: ["Home", "End"],
+			description: (
+				<span>
+					Moves focus to the first/last <Code>NavigationMenu.Trigger</Code> or{" "}
+					<Code>NavigationMenu.Link</Code>.
+				</span>
+			),
+		},
+		{
+			keys: ["Esc"],
+			description: (
+				<span>
+					Closes open <Code>NavigationMenu.Content</Code> and moves focus to its{" "}
+					<Code>NavigationMenu.Trigger</Code>.
+				</span>
+			),
+		},
+	]}
 />

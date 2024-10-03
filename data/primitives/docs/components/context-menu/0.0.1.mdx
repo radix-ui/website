@@ -8,19 +8,19 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/menu
 # Context Menu
 
 <Description>
-  Displays a menu located at the pointer, triggered by a right click.
+	Displays a menu located at the pointer, triggered by a right click.
 </Description>
 
 <Highlights
-  features={[
-    'Supports items, labels, groups of items.',
-    'Supports checkable items (single or multiple).',
-    'Customize side, alignment, offsets, collision handling.',
-    'Focus is fully managed.',
-    'Full keyboard navigation.',
-    'Typeahead support.',
-    'Dismissing and layering behavior is highly customizable.',
-  ]}
+	features={[
+		"Supports items, labels, groups of items.",
+		"Supports checkable items (single or multiple).",
+		"Customize side, alignment, offsets, collision handling.",
+		"Focus is fully managed.",
+		"Full keyboard navigation.",
+		"Typeahead support.",
+		"Dismissing and layering behavior is highly customizable.",
+	]}
 />
 
 ## Installation
@@ -36,33 +36,33 @@ npm install @radix-ui/react-context-menu
 Import the components and piece the parts together.
 
 ```jsx
-import * as ContextMenu from '@radix-ui/react-context-menu';
+import * as ContextMenu from "@radix-ui/react-context-menu";
 
 export default () => (
-  <ContextMenu.Root>
-    <ContextMenu.Trigger />
+	<ContextMenu.Root>
+		<ContextMenu.Trigger />
 
-    <ContextMenu.Content>
-      <ContextMenu.Label />
-      <ContextMenu.Item />
+		<ContextMenu.Content>
+			<ContextMenu.Label />
+			<ContextMenu.Item />
 
-      <ContextMenu.Group>
-        <ContextMenu.Item />
-      </ContextMenu.Group>
+			<ContextMenu.Group>
+				<ContextMenu.Item />
+			</ContextMenu.Group>
 
-      <ContextMenu.CheckboxItem>
-        <ContextMenu.ItemIndicator />
-      </ContextMenu.CheckboxItem>
+			<ContextMenu.CheckboxItem>
+				<ContextMenu.ItemIndicator />
+			</ContextMenu.CheckboxItem>
 
-      <ContextMenu.RadioGroup>
-        <ContextMenu.RadioItem>
-          <ContextMenu.ItemIndicator />
-        </ContextMenu.RadioItem>
-      </ContextMenu.RadioGroup>
+			<ContextMenu.RadioGroup>
+				<ContextMenu.RadioItem>
+					<ContextMenu.ItemIndicator />
+				</ContextMenu.RadioItem>
+			</ContextMenu.RadioGroup>
 
-      <ContextMenu.Separator />
-    </ContextMenu.Content>
-  </ContextMenu.Root>
+			<ContextMenu.Separator />
+		</ContextMenu.Content>
+	</ContextMenu.Root>
 );
 ```
 
@@ -71,49 +71,49 @@ export default () => (
 Create your styled context menu component from the primitive parts.
 
 ```jsx
-import { styled } from 'path-to/stitches.config';
-import * as ContextMenu from '@radix-ui/react-context-menu';
+import { styled } from "path-to/stitches.config";
+import * as ContextMenu from "@radix-ui/react-context-menu";
 
 const StyledContent = styled(ContextMenu.Content, {
-  minWidth: 130,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 5,
-  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
+	minWidth: 130,
+	backgroundColor: "white",
+	borderRadius: 6,
+	padding: 5,
+	boxShadow: "0px 5px 15px -5px hsla(206,22%,7%,.15)",
 });
 
 const StyledItem = styled(ContextMenu.Item, {
-  fontSize: 13,
-  padding: '5px 10px',
-  borderRadius: 3,
-  cursor: 'default',
+	fontSize: 13,
+	padding: "5px 10px",
+	borderRadius: 3,
+	cursor: "default",
 
-  '&:focus': {
-    outline: 'none',
-    backgroundColor: 'dodgerblue',
-    color: 'white',
-  },
+	"&:focus": {
+		outline: "none",
+		backgroundColor: "dodgerblue",
+		color: "white",
+	},
 });
 
 export default () => (
-  <ContextMenu.Root>
-    <ContextMenu.Trigger>
-      <div
-        style={{
-          backgroundColor: 'gainsboro',
-          padding: 50,
-          textAlign: 'center',
-        }}
-      >
-        Right-click anywhere
-      </div>
-    </ContextMenu.Trigger>
-    <StyledContent>
-      <StyledItem onSelect={() => console.log('cut')}>Cut</StyledItem>
-      <StyledItem onSelect={() => console.log('copy')}>Copy</StyledItem>
-      <StyledItem onSelect={() => console.log('paste')}>Paste</StyledItem>
-    </StyledContent>
-  </ContextMenu.Root>
+	<ContextMenu.Root>
+		<ContextMenu.Trigger>
+			<div
+				style={{
+					backgroundColor: "gainsboro",
+					padding: 50,
+					textAlign: "center",
+				}}
+			>
+				Right-click anywhere
+			</div>
+		</ContextMenu.Trigger>
+		<StyledContent>
+			<StyledItem onSelect={() => console.log("cut")}>Cut</StyledItem>
+			<StyledItem onSelect={() => console.log("copy")}>Copy</StyledItem>
+			<StyledItem onSelect={() => console.log("paste")}>Paste</StyledItem>
+		</StyledContent>
+	</ContextMenu.Root>
 );
 ```
 
@@ -136,17 +136,17 @@ Contains all the parts of a context menu.
 The area that opens the context menu. Wrap it around the target you want the context menu to open from when right-clicking (or using the relevant keyboard shortcuts).
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'span',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "span",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+	]}
 />
 
 ### Content
@@ -154,147 +154,148 @@ The area that opens the context menu. Wrap it around the target you want the con
 The component that pops out in an open context menu.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'loop',
-      required: false,
-      type: 'boolean',
-      default: 'false',
-      description: (
-        <span>
-          When <Code>true</Code>, keyboard navigation will loop from last item
-          to first, and vice versa.
-        </span>
-      ),
-    },
-    {
-      name: 'disableOutsidePointerEvents',
-      type: 'boolean',
-      default: 'true',
-      description: (
-        <span>
-          When <Code>true</Code>, hover/focus/click interactions will be
-          disabled on elements outside the bounds of the component. Users will
-          need to click twice on outside elements to interact with them: Once to
-          close the context menu, and again to activate the element.
-        </span>
-      ),
-    },
-    {
-      name: 'onEscapeKeyDown',
-      type: '(event: KeyboardEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when the escape key is down. It can be prevented
-          by calling <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onPointerDownOutside',
-      type: '(event: MouseEvent | TouchEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when a pointer event occurs outside the bounds of
-          the component. It can be prevented by calling{' '}
-          <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onInteractOutside',
-      type: '(event: React.FocusEvent | MouseEvent | TouchEvent) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when an interaction (pointer or focus event)
-          happens outside the bounds of the component. It can be prevented by
-          calling <Code>event.preventDefault</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'forceMount',
-      type: 'boolean',
-      description:
-        'Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.',
-    },
-    {
-      name: 'side',
-      type: '"top" | "right" | "bottom" | "left"',
-      typeSimple: 'enum',
-      default: '"bottom"',
-      description: (
-        <span>
-          The preferred side of the anchor to render against when open. Will be
-          reversed when collisions occur and <Code>avoidCollisions</Code> is
-          enabled.
-        </span>
-      ),
-    },
-    {
-      name: 'sideOffset',
-      type: 'number',
-      default: '0',
-      description: <span>The distance in pixels from the anchor.</span>,
-    },
-    {
-      name: 'align',
-      type: '"start" | "center" | "end"',
-      typeSimple: 'enum',
-      default: '"center"',
-      description: (
-        <span>
-          The preferred alignment against the anchor. May change when collisions
-          occur.
-        </span>
-      ),
-    },
-    {
-      name: 'alignOffset',
-      type: 'number',
-      default: '0',
-      description: (
-        <span>
-          An offset in pixels from the <Code>"start"</Code> or{' '}
-          <Code>"end"</Code> alignment options.
-        </span>
-      ),
-    },
-    {
-      name: 'avoidCollisions',
-      type: 'boolean',
-      default: 'true',
-      description: (
-        <span>
-          When <Code>true</Code>, overrides the <Code>side</Code> and
-          <Code>align</Code> preferences to prevent collisions with window edges.
-        </span>
-      ),
-    },
-    {
-      name: 'collisionTolerance',
-      type: 'number',
-      default: '0',
-      description: (
-        <span>
-          The distance in pixels from window edges where collision detection
-          should occur.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "div",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "loop",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<span>
+					When <Code>true</Code>, keyboard navigation will loop from last item
+					to first, and vice versa.
+				</span>
+			),
+		},
+		{
+			name: "disableOutsidePointerEvents",
+			type: "boolean",
+			default: "true",
+			description: (
+				<span>
+					When <Code>true</Code>, hover/focus/click interactions will be
+					disabled on elements outside the bounds of the component. Users will
+					need to click twice on outside elements to interact with them: Once to
+					close the context menu, and again to activate the element.
+				</span>
+			),
+		},
+		{
+			name: "onEscapeKeyDown",
+			type: "(event: KeyboardEvent) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when the escape key is down. It can be prevented
+					by calling <Code>event.preventDefault</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onPointerDownOutside",
+			type: "(event: MouseEvent | TouchEvent) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when a pointer event occurs outside the bounds of
+					the component. It can be prevented by calling{" "}
+					<Code>event.preventDefault</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onInteractOutside",
+			type: "(event: React.FocusEvent | MouseEvent | TouchEvent) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when an interaction (pointer or focus event)
+					happens outside the bounds of the component. It can be prevented by
+					calling <Code>event.preventDefault</Code>.
+				</span>
+			),
+		},
+		{
+			name: "forceMount",
+			type: "boolean",
+			description:
+				"Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+		},
+		{
+			name: "side",
+			type: '"top" | "right" | "bottom" | "left"',
+			typeSimple: "enum",
+			default: '"bottom"',
+			description: (
+				<span>
+					The preferred side of the anchor to render against when open. Will be
+					reversed when collisions occur and <Code>avoidCollisions</Code> is
+					enabled.
+				</span>
+			),
+		},
+		{
+			name: "sideOffset",
+			type: "number",
+			default: "0",
+			description: <span>The distance in pixels from the anchor.</span>,
+		},
+		{
+			name: "align",
+			type: '"start" | "center" | "end"',
+			typeSimple: "enum",
+			default: '"center"',
+			description: (
+				<span>
+					The preferred alignment against the anchor. May change when collisions
+					occur.
+				</span>
+			),
+		},
+		{
+			name: "alignOffset",
+			type: "number",
+			default: "0",
+			description: (
+				<span>
+					An offset in pixels from the <Code>"start"</Code> or{" "}
+					<Code>"end"</Code> alignment options.
+				</span>
+			),
+		},
+		{
+			name: "avoidCollisions",
+			type: "boolean",
+			default: "true",
+			description: (
+				<span>
+					When <Code>true</Code>, overrides the <Code>side</Code> and
+					<Code>align</Code> preferences to prevent collisions with window
+					edges.
+				</span>
+			),
+		},
+		{
+			name: "collisionTolerance",
+			type: "number",
+			default: "0",
+			description: (
+				<span>
+					The distance in pixels from window edges where collision detection
+					should occur.
+				</span>
+			),
+		},
+	]}
 />
 
 ### Item
@@ -302,50 +303,50 @@ The component that pops out in an open context menu.
 The component that contains the context menu items.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'disabled',
-      type: 'boolean',
-      description: (
-        <span>
-          When <Code>true</Code>, prevents the user from interacting with the
-          item.
-        </span>
-      ),
-    },
-    {
-      name: 'onSelect',
-      type: '(event: Event) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when the user selects an item (via mouse or
-          keyboard). Calling <Code>event.preventDefault</Code> in this handler
-          will prevent the context menu from closing when selecting that item.
-        </span>
-      ),
-    },
-    {
-      name: 'textValue',
-      type: 'string',
-      description: (
-        <span>
-          Optional text used for typeahead purposes. By default the typeahead
-          behavior will use the <Code>.textContent</Code> of the item. Use this
-          when the content is complex, or you have non-textual content inside.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "div",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "disabled",
+			type: "boolean",
+			description: (
+				<span>
+					When <Code>true</Code>, prevents the user from interacting with the
+					item.
+				</span>
+			),
+		},
+		{
+			name: "onSelect",
+			type: "(event: Event) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when the user selects an item (via mouse or
+					keyboard). Calling <Code>event.preventDefault</Code> in this handler
+					will prevent the context menu from closing when selecting that item.
+				</span>
+			),
+		},
+		{
+			name: "textValue",
+			type: "string",
+			description: (
+				<span>
+					Optional text used for typeahead purposes. By default the typeahead
+					behavior will use the <Code>.textContent</Code> of the item. Use this
+					when the content is complex, or you have non-textual content inside.
+				</span>
+			),
+		},
+	]}
 />
 
 ### Group
@@ -353,17 +354,17 @@ The component that contains the context menu items.
 Used to group multiple `ContextMenu.Item`s.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "div",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+	]}
 />
 
 ### Label
@@ -371,17 +372,17 @@ Used to group multiple `ContextMenu.Item`s.
 Used to render a label. It won't be focusable using arrow keys.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "div",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+	]}
 />
 
 ### CheckboxItem
@@ -389,68 +390,68 @@ Used to render a label. It won't be focusable using arrow keys.
 An item that can be controlled and rendered like a checkbox.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'checked',
-      type: 'boolean',
-      description: (
-        <span>
-          The controlled checked state of the item. Must be used in conjunction
-          with <Code>onCheckedChange</Code>.
-        </span>
-      ),
-    },
-    {
-      name: 'onCheckedChange',
-      type: '(checked: boolean) => void',
-      typeSimple: 'function',
-      description: (
-        <span>Event handler called when the checked state changes.</span>
-      ),
-    },
-    {
-      name: 'disabled',
-      type: 'boolean',
-      description: (
-        <span>
-          When <Code>true</Code>, prevents the user from interacting with the
-          item.
-        </span>
-      ),
-    },
-    {
-      name: 'onSelect',
-      type: '(event: Event) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when the user selects an item (via mouse or
-          keyboard). Calling <Code>event.preventDefault</Code> in this handler
-          will prevent the context menu from closing when selecting that item.
-        </span>
-      ),
-    },
-    {
-      name: 'textValue',
-      type: 'string',
-      description: (
-        <span>
-          Optional text used for typeahead purposes. By default the typeahead
-          behavior will use the <Code>.textContent</Code> of the item. Use this
-          when the content is complex, or you have non-textual content inside.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "div",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "checked",
+			type: "boolean",
+			description: (
+				<span>
+					The controlled checked state of the item. Must be used in conjunction
+					with <Code>onCheckedChange</Code>.
+				</span>
+			),
+		},
+		{
+			name: "onCheckedChange",
+			type: "(checked: boolean) => void",
+			typeSimple: "function",
+			description: (
+				<span>Event handler called when the checked state changes.</span>
+			),
+		},
+		{
+			name: "disabled",
+			type: "boolean",
+			description: (
+				<span>
+					When <Code>true</Code>, prevents the user from interacting with the
+					item.
+				</span>
+			),
+		},
+		{
+			name: "onSelect",
+			type: "(event: Event) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when the user selects an item (via mouse or
+					keyboard). Calling <Code>event.preventDefault</Code> in this handler
+					will prevent the context menu from closing when selecting that item.
+				</span>
+			),
+		},
+		{
+			name: "textValue",
+			type: "string",
+			description: (
+				<span>
+					Optional text used for typeahead purposes. By default the typeahead
+					behavior will use the <Code>.textContent</Code> of the item. Use this
+					when the content is complex, or you have non-textual content inside.
+				</span>
+			),
+		},
+	]}
 />
 
 ### RadioGroup
@@ -458,28 +459,28 @@ An item that can be controlled and rendered like a checkbox.
 Used to group multiple `ContextMenu.RadioItem`s.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'value',
-      type: 'string',
-      description: 'The value of the selected item in the group.',
-    },
-    {
-      name: 'onValueChange',
-      type: '(value: string) => void',
-      typeSimple: 'function',
-      description: 'Event handler called when the value changes.',
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "div",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "value",
+			type: "string",
+			description: "The value of the selected item in the group.",
+		},
+		{
+			name: "onValueChange",
+			type: "(value: string) => void",
+			typeSimple: "function",
+			description: "Event handler called when the value changes.",
+		},
+	]}
 />
 
 ### RadioItem
@@ -487,56 +488,56 @@ Used to group multiple `ContextMenu.RadioItem`s.
 An item that can be controlled and rendered like a radio.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'value',
-      type: 'string',
-      required: true,
-      description: 'The unique value of the item.',
-    },
-    {
-      name: 'disabled',
-      type: 'boolean',
-      description: (
-        <span>
-          When <Code>true</Code>, prevents the user from interacting with the
-          item.
-        </span>
-      ),
-    },
-    {
-      name: 'onSelect',
-      type: '(event: Event) => void',
-      typeSimple: 'function',
-      description: (
-        <span>
-          Event handler called when the user selects an item (via mouse or
-          keyboard). Calling <Code>event.preventDefault</Code> in this handler
-          will prevent the context menu from closing when selecting that item.
-        </span>
-      ),
-    },
-    {
-      name: 'textValue',
-      type: 'string',
-      description: (
-        <span>
-          Optional text used for typeahead purposes. By default the typeahead
-          behavior will use the <Code>.textContent</Code> of the item. Use this
-          when the content is complex, or you have non-textual content inside.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "div",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "value",
+			type: "string",
+			required: true,
+			description: "The unique value of the item.",
+		},
+		{
+			name: "disabled",
+			type: "boolean",
+			description: (
+				<span>
+					When <Code>true</Code>, prevents the user from interacting with the
+					item.
+				</span>
+			),
+		},
+		{
+			name: "onSelect",
+			type: "(event: Event) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when the user selects an item (via mouse or
+					keyboard). Calling <Code>event.preventDefault</Code> in this handler
+					will prevent the context menu from closing when selecting that item.
+				</span>
+			),
+		},
+		{
+			name: "textValue",
+			type: "string",
+			description: (
+				<span>
+					Optional text used for typeahead purposes. By default the typeahead
+					behavior will use the <Code>.textContent</Code> of the item. Use this
+					when the content is complex, or you have non-textual content inside.
+				</span>
+			),
+		},
+	]}
 />
 
 ### ItemIndicator
@@ -544,27 +545,27 @@ An item that can be controlled and rendered like a radio.
 Renders when the parent `ContextMenu.CheckboxItem` or `ContextMenu.RadioItem` is checked. You can style this element directly, or you can use it as a wrapper to put an icon into, or both.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'span',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-    {
-      name: 'forceMount',
-      type: 'boolean',
-      description: (
-        <span>
-          Used to force mounting when more control is needed. Useful when
-          controlling animation with React animation libraries.
-        </span>
-      ),
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "span",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+		{
+			name: "forceMount",
+			type: "boolean",
+			description: (
+				<span>
+					Used to force mounting when more control is needed. Useful when
+					controlling animation with React animation libraries.
+				</span>
+			),
+		},
+	]}
 />
 
 ### Separator
@@ -572,17 +573,17 @@ Renders when the parent `ContextMenu.CheckboxItem` or `ContextMenu.RadioItem` is
 Used to visually separate items in the context menu.
 
 <PropsTable
-  data={[
-    {
-      name: 'as',
-      required: false,
-      type: 'keyof JSX.IntrinsicElements | React.ComponentType<any>',
-      typeSimple: 'enum',
-      default: 'div',
-      description:
-        'Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.',
-    },
-  ]}
+	data={[
+		{
+			name: "as",
+			required: false,
+			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			typeSimple: "enum",
+			default: "div",
+			description:
+				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+		},
+	]}
 />
 
 ## Styling
@@ -593,13 +594,13 @@ We expose a CSS custom property `--radix-context-menu-content-transform-origin`.
 
 ```jsx
 const scaleIn = keyframes({
-  '0%': { opacity: 0, transform: 'scale(0)' },
-  '100%': { opacity: 1, transform: 'scale(1)' },
+	"0%": { opacity: 0, transform: "scale(0)" },
+	"100%": { opacity: 1, transform: "scale(1)" },
 });
 
 const StyledContent = styled(ContextMenu.Content, {
-  transformOrigin: 'var(--radix-context-menu-content-transform-origin)',
-  animation: `${scaleIn} 0.5s ease-out forwards`,
+	transformOrigin: "var(--radix-context-menu-content-transform-origin)",
+	animation: `${scaleIn} 0.5s ease-out forwards`,
 });
 ```
 
@@ -609,21 +610,21 @@ We expose `data-side` and `data-align` attributes. Their values will change at r
 
 ```jsx
 const slideDown = keyframes({
-  '0%': { opacity: 0, transform: 'translateY(-10px)' },
-  '100%': { opacity: 1, transform: 'translateY(0)' },
+	"0%": { opacity: 0, transform: "translateY(-10px)" },
+	"100%": { opacity: 1, transform: "translateY(0)" },
 });
 
 const slideUp = keyframes({
-  '0%': { opacity: 0, transform: 'translateY(10px)' },
-  '100%': { opacity: 1, transform: 'translateY(0)' },
+	"0%": { opacity: 0, transform: "translateY(10px)" },
+	"100%": { opacity: 1, transform: "translateY(0)" },
 });
 
 const StyledContent = styled(ContextMenu.Content, {
-  animationDuration: '0.6s',
-  animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
-  animationFillMode: 'forwards',
-  '&[data-side="top"]': { animationName: slideUp },
-  '&[data-side="bottom"]': { animationName: slideDown },
+	animationDuration: "0.6s",
+	animationTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+	animationFillMode: "forwards",
+	'&[data-side="top"]': { animationName: slideUp },
+	'&[data-side="bottom"]': { animationName: slideDown },
 });
 ```
 
@@ -634,55 +635,55 @@ const StyledContent = styled(ContextMenu.Content, {
 You can add special styles to disabled items via the `data-disabled` attribute.
 
 ```jsx
-import { styled } from 'path-to/stitches.config';
-import * as ContextMenu from '@radix-ui/react-context-menu';
+import { styled } from "path-to/stitches.config";
+import * as ContextMenu from "@radix-ui/react-context-menu";
 
 const StyledContent = styled(ContextMenu.Content, {
-  minWidth: 130,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 5,
-  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
+	minWidth: 130,
+	backgroundColor: "white",
+	borderRadius: 6,
+	padding: 5,
+	boxShadow: "0px 5px 15px -5px hsla(206,22%,7%,.15)",
 });
 
 const StyledItem = styled(ContextMenu.Item, {
-  fontSize: 13,
-  padding: '5px 10px',
-  borderRadius: 3,
-  cursor: 'default',
+	fontSize: 13,
+	padding: "5px 10px",
+	borderRadius: 3,
+	cursor: "default",
 
-  '&[data-disabled]': {
-    color: 'gainsboro',
-  },
+	"&[data-disabled]": {
+		color: "gainsboro",
+	},
 
-  '&:focus': {
-    outline: 'none',
-    backgroundColor: 'dodgerblue',
-    color: 'white',
-  },
+	"&:focus": {
+		outline: "none",
+		backgroundColor: "dodgerblue",
+		color: "white",
+	},
 });
 
 export default () => (
-  <ContextMenu.Root>
-    <ContextMenu.Trigger>
-      <div
-        style={{
-          backgroundColor: 'gainsboro',
-          padding: 50,
-          textAlign: 'center',
-        }}
-      >
-        Right-click anywhere
-      </div>
-    </ContextMenu.Trigger>
-    <StyledContent>
-      <StyledItem disabled onSelect={() => console.log('cut')}>
-        Cut
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('copy')}>Copy</StyledItem>
-      <StyledItem onSelect={() => console.log('paste')}>Paste</StyledItem>
-    </StyledContent>
-  </ContextMenu.Root>
+	<ContextMenu.Root>
+		<ContextMenu.Trigger>
+			<div
+				style={{
+					backgroundColor: "gainsboro",
+					padding: 50,
+					textAlign: "center",
+				}}
+			>
+				Right-click anywhere
+			</div>
+		</ContextMenu.Trigger>
+		<StyledContent>
+			<StyledItem disabled onSelect={() => console.log("cut")}>
+				Cut
+			</StyledItem>
+			<StyledItem onSelect={() => console.log("copy")}>Copy</StyledItem>
+			<StyledItem onSelect={() => console.log("paste")}>Paste</StyledItem>
+		</StyledContent>
+	</ContextMenu.Root>
 );
 ```
 
@@ -691,58 +692,58 @@ export default () => (
 Use the `Separator` part to add a separator between items.
 
 ```jsx
-import { styled } from 'path-to/stitches.config';
-import * as ContextMenu from '@radix-ui/react-context-menu';
+import { styled } from "path-to/stitches.config";
+import * as ContextMenu from "@radix-ui/react-context-menu";
 
 const StyledContent = styled(ContextMenu.Content, {
-  minWidth: 130,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 5,
-  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
+	minWidth: 130,
+	backgroundColor: "white",
+	borderRadius: 6,
+	padding: 5,
+	boxShadow: "0px 5px 15px -5px hsla(206,22%,7%,.15)",
 });
 
 const StyledItem = styled(ContextMenu.Item, {
-  fontSize: 13,
-  padding: '5px 10px',
-  borderRadius: 3,
-  cursor: 'default',
+	fontSize: 13,
+	padding: "5px 10px",
+	borderRadius: 3,
+	cursor: "default",
 
-  '&:focus': {
-    outline: 'none',
-    backgroundColor: 'dodgerblue',
-    color: 'white',
-  },
+	"&:focus": {
+		outline: "none",
+		backgroundColor: "dodgerblue",
+		color: "white",
+	},
 });
 
 const StyledSeparator = styled(ContextMenu.Separator, {
-  height: 1,
-  backgroundColor: 'gainsboro',
-  margin: 5,
+	height: 1,
+	backgroundColor: "gainsboro",
+	margin: 5,
 });
 
 export default () => (
-  <ContextMenu.Root>
-    <ContextMenu.Trigger>
-      <div
-        style={{
-          backgroundColor: 'gainsboro',
-          padding: 50,
-          textAlign: 'center',
-        }}
-      >
-        Right-click anywhere
-      </div>
-    </ContextMenu.Trigger>
-    <StyledContent>
-      <StyledItem onSelect={() => console.log('undo')}>Undo</StyledItem>
-      <StyledItem onSelect={() => console.log('redo')}>Redo</StyledItem>
-      <StyledSeparator />
-      <StyledItem onSelect={() => console.log('cut')}>Cut</StyledItem>
-      <StyledItem onSelect={() => console.log('copy')}>Copy</StyledItem>
-      <StyledItem onSelect={() => console.log('paste')}>Paste</StyledItem>
-    </StyledContent>
-  </ContextMenu.Root>
+	<ContextMenu.Root>
+		<ContextMenu.Trigger>
+			<div
+				style={{
+					backgroundColor: "gainsboro",
+					padding: 50,
+					textAlign: "center",
+				}}
+			>
+				Right-click anywhere
+			</div>
+		</ContextMenu.Trigger>
+		<StyledContent>
+			<StyledItem onSelect={() => console.log("undo")}>Undo</StyledItem>
+			<StyledItem onSelect={() => console.log("redo")}>Redo</StyledItem>
+			<StyledSeparator />
+			<StyledItem onSelect={() => console.log("cut")}>Cut</StyledItem>
+			<StyledItem onSelect={() => console.log("copy")}>Copy</StyledItem>
+			<StyledItem onSelect={() => console.log("paste")}>Paste</StyledItem>
+		</StyledContent>
+	</ContextMenu.Root>
 );
 ```
 
@@ -751,67 +752,67 @@ export default () => (
 Use the `Label` part to help label a section.
 
 ```jsx
-import { styled } from 'path-to/stitches.config';
-import * as ContextMenu from '@radix-ui/react-context-menu';
+import { styled } from "path-to/stitches.config";
+import * as ContextMenu from "@radix-ui/react-context-menu";
 
 const StyledContent = styled(ContextMenu.Content, {
-  minWidth: 130,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 5,
-  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
+	minWidth: 130,
+	backgroundColor: "white",
+	borderRadius: 6,
+	padding: 5,
+	boxShadow: "0px 5px 15px -5px hsla(206,22%,7%,.15)",
 });
 
 const StyledItem = styled(ContextMenu.Item, {
-  fontSize: 13,
-  padding: '5px 10px',
-  borderRadius: 3,
-  cursor: 'default',
+	fontSize: 13,
+	padding: "5px 10px",
+	borderRadius: 3,
+	cursor: "default",
 
-  '&:focus': {
-    outline: 'none',
-    backgroundColor: 'dodgerblue',
-    color: 'white',
-  },
+	"&:focus": {
+		outline: "none",
+		backgroundColor: "dodgerblue",
+		color: "white",
+	},
 });
 
 const StyledLabel = styled(ContextMenu.Label, {
-  color: 'slategray',
-  fontSize: 13,
-  padding: '5px 10px',
-  cursor: 'default',
+	color: "slategray",
+	fontSize: 13,
+	padding: "5px 10px",
+	cursor: "default",
 });
 
 const StyledSeparator = styled(ContextMenu.Separator, {
-  height: 1,
-  backgroundColor: 'gainsboro',
-  margin: 5,
+	height: 1,
+	backgroundColor: "gainsboro",
+	margin: 5,
 });
 
 export default () => (
-  <ContextMenu.Root>
-    <ContextMenu.Trigger>
-      <div
-        style={{
-          backgroundColor: 'gainsboro',
-          padding: 50,
-          textAlign: 'center',
-        }}
-      >
-        Right-click anywhere
-      </div>
-    </ContextMenu.Trigger>
-    <StyledContent>
-      <StyledLabel>Recently Closed</StyledLabel>
-      <StyledItem onSelect={() => console.log('workos')}>WorkOS</StyledItem>
-      <StyledItem onSelect={() => console.log('radix-ui')}>Radix-ui</StyledItem>
-      <StyledItem onSelect={() => console.log('stitches')}>Stitches</StyledItem>
-      <StyledSeparator />
-      <StyledLabel>Recently Visited</StyledLabel>
-      <StyledItem onSelect={() => console.log('github')}>GitHub</StyledItem>
-      <StyledItem onSelect={() => console.log('workos')}>WorkOS</StyledItem>
-    </StyledContent>
-  </ContextMenu.Root>
+	<ContextMenu.Root>
+		<ContextMenu.Trigger>
+			<div
+				style={{
+					backgroundColor: "gainsboro",
+					padding: 50,
+					textAlign: "center",
+				}}
+			>
+				Right-click anywhere
+			</div>
+		</ContextMenu.Trigger>
+		<StyledContent>
+			<StyledLabel>Recently Closed</StyledLabel>
+			<StyledItem onSelect={() => console.log("workos")}>WorkOS</StyledItem>
+			<StyledItem onSelect={() => console.log("radix-ui")}>Radix-ui</StyledItem>
+			<StyledItem onSelect={() => console.log("stitches")}>Stitches</StyledItem>
+			<StyledSeparator />
+			<StyledLabel>Recently Visited</StyledLabel>
+			<StyledItem onSelect={() => console.log("github")}>GitHub</StyledItem>
+			<StyledItem onSelect={() => console.log("workos")}>WorkOS</StyledItem>
+		</StyledContent>
+	</ContextMenu.Root>
 );
 ```
 
@@ -820,30 +821,30 @@ export default () => (
 Use the `CheckboxItem` part to add an item that can be checked.
 
 ```jsx
-import { styled } from 'path-to/stitches.config';
-import * as ContextMenu from '@radix-ui/react-context-menu';
-import { CheckIcon } from '@radix-ui/react-icons';
+import { styled } from "path-to/stitches.config";
+import * as ContextMenu from "@radix-ui/react-context-menu";
+import { CheckIcon } from "@radix-ui/react-icons";
 
 const StyledContent = styled(ContextMenu.Content, {
-  minWidth: 130,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 5,
-  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
+	minWidth: 130,
+	backgroundColor: "white",
+	borderRadius: 6,
+	padding: 5,
+	boxShadow: "0px 5px 15px -5px hsla(206,22%,7%,.15)",
 });
 
 const itemStyles = {
-  fontSize: 13,
-  padding: '5px 10px 5px 25px',
-  borderRadius: 3,
-  cursor: 'default',
-  position: 'relative',
+	fontSize: 13,
+	padding: "5px 10px 5px 25px",
+	borderRadius: 3,
+	cursor: "default",
+	position: "relative",
 
-  '&:focus': {
-    outline: 'none',
-    backgroundColor: 'dodgerblue',
-    color: 'white',
-  },
+	"&:focus": {
+		outline: "none",
+		backgroundColor: "dodgerblue",
+		color: "white",
+	},
 };
 
 const StyledItem = styled(ContextMenu.Item, itemStyles);
@@ -851,49 +852,49 @@ const StyledItem = styled(ContextMenu.Item, itemStyles);
 const StyledCheckboxItem = styled(ContextMenu.CheckboxItem, itemStyles);
 
 const StyledItemIndicator = styled(ContextMenu.ItemIndicator, {
-  position: 'absolute',
-  left: 5,
+	position: "absolute",
+	left: 5,
 });
 
 const StyledSeparator = styled(ContextMenu.Separator, {
-  height: 1,
-  backgroundColor: 'gainsboro',
-  margin: 5,
+	height: 1,
+	backgroundColor: "gainsboro",
+	margin: 5,
 });
 
 export default () => {
-  const [checked, setChecked] = React.useState(true);
+	const [checked, setChecked] = React.useState(true);
 
-  return (
-    <ContextMenu.Root>
-      <ContextMenu.Trigger>
-        <div
-          style={{
-            backgroundColor: 'gainsboro',
-            padding: 50,
-            textAlign: 'center',
-          }}
-        >
-          Right-click anywhere
-        </div>
-      </ContextMenu.Trigger>
-      <StyledContent>
-        <StyledItem onSelect={() => console.log('radix-ui')}>
-          About Radix UI
-        </StyledItem>
-        <StyledItem onSelect={() => console.log('check-for-updates')}>
-          Check for updates
-        </StyledItem>
-        <StyledSeparator />
-        <StyledCheckboxItem checked={checked} onCheckedChange={setChecked}>
-          <StyledItemIndicator>
-            <CheckIcon />
-          </StyledItemIndicator>
-          Show hidden files
-        </StyledCheckboxItem>
-      </StyledContent>
-    </ContextMenu.Root>
-  );
+	return (
+		<ContextMenu.Root>
+			<ContextMenu.Trigger>
+				<div
+					style={{
+						backgroundColor: "gainsboro",
+						padding: 50,
+						textAlign: "center",
+					}}
+				>
+					Right-click anywhere
+				</div>
+			</ContextMenu.Trigger>
+			<StyledContent>
+				<StyledItem onSelect={() => console.log("radix-ui")}>
+					About Radix UI
+				</StyledItem>
+				<StyledItem onSelect={() => console.log("check-for-updates")}>
+					Check for updates
+				</StyledItem>
+				<StyledSeparator />
+				<StyledCheckboxItem checked={checked} onCheckedChange={setChecked}>
+					<StyledItemIndicator>
+						<CheckIcon />
+					</StyledItemIndicator>
+					Show hidden files
+				</StyledCheckboxItem>
+			</StyledContent>
+		</ContextMenu.Root>
+	);
 };
 ```
 
@@ -902,30 +903,30 @@ export default () => {
 Use the `RadioGroup` and `RadioItem` parts to add an item that can be checked amongst others.
 
 ```jsx
-import { styled } from 'path-to/stitches.config';
-import * as ContextMenu from '@radix-ui/react-context-menu';
-import { CheckIcon } from '@radix-ui/react-icons';
+import { styled } from "path-to/stitches.config";
+import * as ContextMenu from "@radix-ui/react-context-menu";
+import { CheckIcon } from "@radix-ui/react-icons";
 
 const StyledContent = styled(ContextMenu.Content, {
-  minWidth: 130,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 5,
-  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
+	minWidth: 130,
+	backgroundColor: "white",
+	borderRadius: 6,
+	padding: 5,
+	boxShadow: "0px 5px 15px -5px hsla(206,22%,7%,.15)",
 });
 
 const itemStyles = {
-  fontSize: 13,
-  padding: '5px 10px 5px 25px',
-  borderRadius: 3,
-  cursor: 'default',
-  position: 'relative',
+	fontSize: 13,
+	padding: "5px 10px 5px 25px",
+	borderRadius: 3,
+	cursor: "default",
+	position: "relative",
 
-  '&:focus': {
-    outline: 'none',
-    backgroundColor: 'dodgerblue',
-    color: 'white',
-  },
+	"&:focus": {
+		outline: "none",
+		backgroundColor: "dodgerblue",
+		color: "white",
+	},
 };
 
 const StyledItem = styled(ContextMenu.Item, itemStyles);
@@ -935,115 +936,115 @@ const StyledRadioGroup = styled(ContextMenu.RadioGroup, {});
 const StyledRadioItem = styled(ContextMenu.RadioItem, itemStyles);
 
 const StyledItemIndicator = styled(ContextMenu.ItemIndicator, {
-  position: 'absolute',
-  left: 5,
+	position: "absolute",
+	left: 5,
 });
 
 export default () => {
-  const [color, setColor] = React.useState('blue');
+	const [color, setColor] = React.useState("blue");
 
-  return (
-    <ContextMenu.Root>
-      <ContextMenu.Trigger>
-        <div
-          style={{
-            backgroundColor: 'gainsboro',
-            padding: 50,
-            textAlign: 'center',
-          }}
-        >
-          Right-click anywhere
-        </div>
-      </ContextMenu.Trigger>
-      <StyledContent>
-        <StyledRadioGroup value={color} onValueChange={setColor}>
-          <StyledRadioItem value="red">
-            <StyledItemIndicator>
-              <CheckIcon />
-            </StyledItemIndicator>
-            Red
-          </StyledRadioItem>
-          <StyledRadioItem value="blue">
-            <StyledItemIndicator>
-              <CheckIcon />
-            </StyledItemIndicator>
-            Blue
-          </StyledRadioItem>
-          <StyledRadioItem value="green">
-            <StyledItemIndicator>
-              <CheckIcon />
-            </StyledItemIndicator>
-            Green
-          </StyledRadioItem>
-        </StyledRadioGroup>
-      </StyledContent>
-    </ContextMenu.Root>
-  );
+	return (
+		<ContextMenu.Root>
+			<ContextMenu.Trigger>
+				<div
+					style={{
+						backgroundColor: "gainsboro",
+						padding: 50,
+						textAlign: "center",
+					}}
+				>
+					Right-click anywhere
+				</div>
+			</ContextMenu.Trigger>
+			<StyledContent>
+				<StyledRadioGroup value={color} onValueChange={setColor}>
+					<StyledRadioItem value="red">
+						<StyledItemIndicator>
+							<CheckIcon />
+						</StyledItemIndicator>
+						Red
+					</StyledRadioItem>
+					<StyledRadioItem value="blue">
+						<StyledItemIndicator>
+							<CheckIcon />
+						</StyledItemIndicator>
+						Blue
+					</StyledRadioItem>
+					<StyledRadioItem value="green">
+						<StyledItemIndicator>
+							<CheckIcon />
+						</StyledItemIndicator>
+						Green
+					</StyledRadioItem>
+				</StyledRadioGroup>
+			</StyledContent>
+		</ContextMenu.Root>
+	);
 };
 ```
 
 ### With complex items
 
 ```jsx
-import { styled } from 'path-to/stitches.config';
-import * as ContextMenu from '@radix-ui/react-context-menu';
+import { styled } from "path-to/stitches.config";
+import * as ContextMenu from "@radix-ui/react-context-menu";
 
 const StyledContent = styled(ContextMenu.Content, {
-  minWidth: 130,
-  backgroundColor: 'white',
-  borderRadius: 6,
-  padding: 5,
-  boxShadow: '0px 5px 15px -5px hsla(206,22%,7%,.15)',
+	minWidth: 130,
+	backgroundColor: "white",
+	borderRadius: 6,
+	padding: 5,
+	boxShadow: "0px 5px 15px -5px hsla(206,22%,7%,.15)",
 });
 
 const StyledItem = styled(ContextMenu.Item, {
-  fontSize: 13,
-  padding: '5px 10px',
-  borderRadius: 3,
-  cursor: 'default',
+	fontSize: 13,
+	padding: "5px 10px",
+	borderRadius: 3,
+	cursor: "default",
 
-  '&:focus': {
-    outline: 'none',
-    backgroundColor: 'dodgerblue',
-    color: 'white',
-  },
+	"&:focus": {
+		outline: "none",
+		backgroundColor: "dodgerblue",
+		color: "white",
+	},
 });
 
-const Image = styled('img', {
-  width: 24,
-  height: 24,
-  borderRadius: 9999,
-  marginRight: 10,
+const Image = styled("img", {
+	width: 24,
+	height: 24,
+	borderRadius: 9999,
+	marginRight: 10,
 });
 
 export default () => (
-  <ContextMenu.Root>
-    <ContextMenu.Trigger>
-      <div
-        style={{
-          backgroundColor: 'gainsboro',
-          padding: 50,
-          textAlign: 'center',
-        }}
-      >
-        Right-click anywhere
-      </div>
-    </ContextMenu.Trigger>
-    <StyledContent>
-      <StyledItem onSelect={() => console.log('adolfo-hess')}>
-        <Image src="https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=facearea&facepad=3&w=24&h=24&dpr=2&q=80" />
-        Adolfo Hess
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('miyah-myles')}>
-        <Image src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=facearea&facepad=3&w=24&h=24&dpr=2&q=80" />
-        Miyah Myles
-      </StyledItem>
-      <StyledItem onSelect={() => console.log('sylvia-reynolds')}>
-        <Image src="https://images.unsplash.com/photo-1508186225823-0963cf9ab0de?auto=format&fit=facearea&facepad=3&w=24&h=24&dpr=2&q=80" />
-        Sylvia Reynolds
-      </StyledItem>
-    </StyledContent>
-  </ContextMenu.Root>
+	<ContextMenu.Root>
+		<ContextMenu.Trigger>
+			<div
+				style={{
+					backgroundColor: "gainsboro",
+					padding: 50,
+					textAlign: "center",
+				}}
+			>
+				Right-click anywhere
+			</div>
+		</ContextMenu.Trigger>
+		<StyledContent>
+			<StyledItem onSelect={() => console.log("adolfo-hess")}>
+				<Image src="https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=facearea&facepad=3&w=24&h=24&dpr=2&q=80" />
+				Adolfo Hess
+			</StyledItem>
+			<StyledItem onSelect={() => console.log("miyah-myles")}>
+				<Image src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=facearea&facepad=3&w=24&h=24&dpr=2&q=80" />
+				Miyah Myles
+			</StyledItem>
+			<StyledItem onSelect={() => console.log("sylvia-reynolds")}>
+				<Image src="https://images.unsplash.com/photo-1508186225823-0963cf9ab0de?auto=format&fit=facearea&facepad=3&w=24&h=24&dpr=2&q=80" />
+				Sylvia Reynolds
+			</StyledItem>
+		</StyledContent>
+	</ContextMenu.Root>
 );
 ```
 
@@ -1054,26 +1055,26 @@ Uses [roving tabindex](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interf
 ### Keyboard Interactions
 
 <KeyboardTable
-  data={[
-    {
-      keys: ['Space'],
-      description: <span>Activates the focused item.</span>,
-    },
-    {
-      keys: ['Enter'],
-      description: <span>Activates the focused item.</span>,
-    },
-    {
-      keys: ['ArrowDown'],
-      description: <span>Moves focus to the next item.</span>,
-    },
-    {
-      keys: ['ArrowUp'],
-      description: <span>Moves focus to the previous item.</span>,
-    },
-    {
-      keys: ['Esc'],
-      description: 'Closes the context menu',
-    },
-  ]}
+	data={[
+		{
+			keys: ["Space"],
+			description: <span>Activates the focused item.</span>,
+		},
+		{
+			keys: ["Enter"],
+			description: <span>Activates the focused item.</span>,
+		},
+		{
+			keys: ["ArrowDown"],
+			description: <span>Moves focus to the next item.</span>,
+		},
+		{
+			keys: ["ArrowUp"],
+			description: <span>Moves focus to the previous item.</span>,
+		},
+		{
+			keys: ["Esc"],
+			description: "Closes the context menu",
+		},
+	]}
 />
