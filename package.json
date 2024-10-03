@@ -2,6 +2,7 @@
   "name": "radix-site",
   "version": "0.0.0",
   "private": true,
+  "packageManager": "pnpm@9.12.0",
   "engines": {
     "node": "20.x"
   },
@@ -11,7 +12,7 @@
     "start": "next start",
     "prettier": "prettier --write .",
     "scraper:setup": "docker run -it --name radix_algolia --env-file=./algolia/.env -e \"CONFIG=$(cat ./algolia/config.development.json | jq -r tostring)\" algolia/docsearch-scraper",
-    "scraper:reset": "docker rm radix_algolia && yarn scraper:setup",
+    "scraper:reset": "docker rm radix_algolia && pnpm scraper:setup",
     "scraper:run": "docker start radix_algolia",
     "scraper:production": "docker run -it --env-file=./algolia/.env -e \"CONFIG=$(cat ./algolia/config.json | jq -r tostring)\" algolia/docsearch-scraper"
   },
@@ -58,7 +59,7 @@
     "colorjs.io": "0.5.2",
     "esbuild": "0.19.5",
     "eslint-config-next": "^14.2.6",
-    "glob": "^7.1.6",
+    "glob": "^10",
     "gray-matter": "^4.0.2",
     "hast-util-to-html": "^9.0.1",
     "hast-util-to-string": "^3.0.0",
@@ -88,7 +89,6 @@
     "usehooks-ts": "^3.0.1"
   },
   "devDependencies": {
-    "@types/bezier-easing": "^2.1.2",
     "@types/lodash.debounce": "^4.0.6",
     "@types/node": "20.12.10",
     "@types/react": "^18.3.4",
@@ -98,8 +98,7 @@
     "@types/tinycolor2": "^1.4.3",
     "autoprefixer": "^10.4.19",
     "compare-versions": "^3.6.0",
-    "husky": "4.3.6",
-    "lint-staged": "10.5.3",
+    "husky": "^9.1.6",
     "prettier": "^3.3.3",
     "pretty-quick": "^4.0.0",
     "sucrase": "3.29.0",
@@ -109,9 +108,5 @@
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
-  },
-  "volta": {
-    "node": "20.15.0"
-  },
-  "packageManager": "yarn@1.22.18"
+  }
 }

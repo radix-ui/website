@@ -1,11 +1,9 @@
 import fs from 'fs';
 import path from 'path';
-// @ts-expect-error
-import glob from 'glob';
+import { globSync } from 'glob';
 import matter from 'gray-matter';
 import compareVersions from 'compare-versions';
 import { bundleMDX } from 'mdx-bundler';
-// @ts-expect-error
 import remarkSlug from 'remark-slug';
 import rehypeHeroCodeBlock from '@utils/rehype-hero-code-block';
 import rehypeMetaAttribute from '@utils/rehype-meta-attribute.mjs';
@@ -19,7 +17,7 @@ export const DATA_PATH = path.join(ROOT_PATH, 'data');
 // the front matter and content of all mdx files based on `docsPaths`
 export const getAllFrontmatter = (fromPath: string) => {
   const PATH = path.join(DATA_PATH, fromPath);
-  const paths = glob.sync(`${PATH}/**/*.mdx`) as string[];
+  const paths = globSync(`${PATH}/**/*.mdx`)
 
   return paths
     .map((filePath) => {
