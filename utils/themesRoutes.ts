@@ -9,6 +9,7 @@ export const themesRoutes = [
 			{ title: "Styling", slug: "themes/docs/overview/styling" },
 			{ title: "Layout", slug: "themes/docs/overview/layout" },
 			{ title: "Releases", slug: "themes/docs/overview/releases" },
+			{ title: "Resources", slug: "themes/docs/overview/resources" },
 		],
 	},
 	{
