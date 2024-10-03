@@ -1094,38 +1094,38 @@ By default the trigger will automatically display the selected item `ItemText`'s
 If you need more flexibility, you can control the component using `value`/`onValueChange` props and passing `children` to `SelectValue`. Remember to make sure what you put in there is accessible.
 
 ```jsx line=1,4,6
-const countries = { france: '🇫🇷', 'united-kingdom': '🇬🇧', spain: '🇪🇸' };
+const countries = { france: "🇫🇷", "united-kingdom": "🇬🇧", spain: "🇪🇸" };
 
 export default () => {
-  const [value, setValue] = React.useState('france');
-  return (
-    <Select.Root __value__={value} __onValueChange__={setValue}>
-      <Select.Trigger>
-        <Select.Value __aria-label__={value}>
-          {__countries[value]__}
-        </Select.Value>
-        <Select.Icon />
-      </Select.Trigger>
-      <Select.Portal>
-      <Select.Content>
-        <Select.Viewport>
-          <Select.Item value="france">
-            <Select.ItemText>France</Select.ItemText>
-            <Select.ItemIndicator>…</Select.ItemIndicator>
-          </Select.Item>
-          <Select.Item value="united-kingdom">
-            <Select.ItemText>United Kingdom</Select.ItemText>
-            <Select.ItemIndicator>…</Select.ItemIndicator>
-          </Select.Item>
-          <Select.Item value="spain">
-            <Select.ItemText>Spain</Select.ItemText>
-            <Select.ItemIndicator>…</Select.ItemIndicator>
-          </Select.Item>
-        </Select.Viewport>
-      </Select.Content>
-      </Select.Portal>
-    </Select.Root>
-  );
+	const [value, setValue] = React.useState("france");
+	return (
+		<Select.Root __value__={value} __onValueChange__={setValue}>
+			<Select.Trigger>
+				<Select.Value __aria-label__={value}>
+					{__countries[value]__}
+				</Select.Value>
+				<Select.Icon />
+			</Select.Trigger>
+			<Select.Portal>
+			<Select.Content>
+				<Select.Viewport>
+					<Select.Item value="france">
+						<Select.ItemText>France</Select.ItemText>
+						<Select.ItemIndicator>…</Select.ItemIndicator>
+					</Select.Item>
+					<Select.Item value="united-kingdom">
+						<Select.ItemText>United Kingdom</Select.ItemText>
+						<Select.ItemIndicator>…</Select.ItemIndicator>
+					</Select.Item>
+					<Select.Item value="spain">
+						<Select.ItemText>Spain</Select.ItemText>
+						<Select.ItemIndicator>…</Select.ItemIndicator>
+					</Select.Item>
+				</Select.Viewport>
+			</Select.Content>
+			</Select.Portal>
+		</Select.Root>
+	);
 };
 ```
 

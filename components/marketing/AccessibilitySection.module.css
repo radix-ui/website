@@ -85,7 +85,7 @@
 	padding: 1px;
 
 	/* width: 100%;
-  height: 100%; */
+	height: 100%; */
 
 	display: grid;
 	/* overflow: hidden; */
@@ -94,11 +94,11 @@
 	background-color: var(--color-panel-solid);
 
 	/*
-  $$subpanel: 'transparent',
-  '.dark &, .dark-theme &': {
-    $$subpanel: 'var(--mauve-a2)',
-  }
-  */
+	$$subpanel: 'transparent',
+	'.dark &, .dark-theme &': {
+		$$subpanel: 'var(--mauve-a2)',
+	}
+	*/
 }
 @media (min-width: 365px) {
 	.AccessibilitySectionExamplesContainer {

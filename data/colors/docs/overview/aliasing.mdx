@@ -6,7 +6,7 @@ metaDescription: How to use Radix Colors.
 # Aliasing
 
 <Description>
-  A guide to providing semantic aliases for colors.
+	A guide to providing semantic aliases for colors.
 </Description>
 
 ## Semantic aliases
@@ -14,110 +14,110 @@ metaDescription: How to use Radix Colors.
 Referencing color scales by their actual scale name can work well, like `blue` and `red`. But often, creating semantic aliases like `accent`, `primary`, `neutral`, or `brand` can be helpful, especially when it comes to theming.
 
 <Tabs.Root asChild defaultValue="css">
-  <CodeBlock.Root my="5">
-    <CodeBlock.Header>
-      <Tabs.List>
-        <Tabs.Trigger value="css">CSS</Tabs.Trigger>
-        <Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
-      </Tabs.List>
-    </CodeBlock.Header>
+	<CodeBlock.Root my="5">
+		<CodeBlock.Header>
+			<Tabs.List>
+				<Tabs.Trigger value="css">CSS</Tabs.Trigger>
+				<Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
+			</Tabs.List>
+		</CodeBlock.Header>
 
-    <Tabs.Content asChild value="css">
-      <CodeBlock.Content>
-        <CodeBlock.Pre>
-          <CodeBlock.Code language="css">
-            {`/*
+		<Tabs.Content asChild value="css">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="css">
+						{`/*
  * Note: Importing from the CDN in production is not recommended.
  * It's intended for prototyping only.
  */
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue.css';
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green.css';
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/yellow.css';
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/red.css';
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/yellow.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/red.css";
 
 :root {
-  --accent-1: var(--blue-1);
-  --accent-2: var(--blue-2);
-  --accent-3: var(--blue-3);
-  --accent-4: var(--blue-4);
-  --accent-5: var(--blue-5);
-  --accent-6: var(--blue-6);
-  --accent-7: var(--blue-7);
-  --accent-8: var(--blue-8);
-  --accent-9: var(--blue-9);
-  --accent-10: var(--blue-10);
-  --accent-11: var(--blue-11);
-  --accent-12: var(--blue-12);
+	--accent-1: var(--blue-1);
+	--accent-2: var(--blue-2);
+	--accent-3: var(--blue-3);
+	--accent-4: var(--blue-4);
+	--accent-5: var(--blue-5);
+	--accent-6: var(--blue-6);
+	--accent-7: var(--blue-7);
+	--accent-8: var(--blue-8);
+	--accent-9: var(--blue-9);
+	--accent-10: var(--blue-10);
+	--accent-11: var(--blue-11);
+	--accent-12: var(--blue-12);
 
-  --success-1: var(--green-1);
-  --success-2: var(--green-2);
-  /* repeat for all steps */
+	--success-1: var(--green-1);
+	--success-2: var(--green-2);
+	/* repeat for all steps */
 
-  --warning-1: var(--yellow-1);
-  --warning-2: var(--yellow-2);
-  /* repeat for all steps */
+	--warning-1: var(--yellow-1);
+	--warning-2: var(--yellow-2);
+	/* repeat for all steps */
 
-  --danger-1: var(--red-1);
-  --danger-2: var(--red-2);
-  /* repeat for all steps */
+	--danger-1: var(--red-1);
+	--danger-2: var(--red-2);
+	/* repeat for all steps */
 }
 `}
-          </CodeBlock.Code>
-        </CodeBlock.Pre>
-        <CodeBlock.CopyButton />
-      </CodeBlock.Content>
-    </Tabs.Content>
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
 
-    <Tabs.Content asChild value="css-in-js">
-      <CodeBlock.Content>
-        <CodeBlock.Pre>
-          <CodeBlock.Code language="js">
+		<Tabs.Content asChild value="css-in-js">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="js">
 {`import {
-  blue,
-  green,
-  yellow,
-  red
-} from '@radix-ui/colors';
+	blue,
+	green,
+	yellow,
+	red
+} from "@radix-ui/colors";
 
 const theme = {
-  ...blue,
-  ...green,
-  ...yellow,
-  ...red,
+	...blue,
+	...green,
+	...yellow,
+	...red,
 
-  accent1: blue.blue1,
-  accent2: blue.blue2,
-  accent3: blue.blue3,
-  accent4: blue.blue4,
-  accent5: blue.blue5,
-  accent6: blue.blue6,
-  accent7: blue.blue7,
-  accent8: blue.blue8,
-  accent9: blue.blue9,
-  accent10: blue.blue10,
-  accent11: blue.blue11,
-  accent12: blue.blue12,
+	accent1: blue.blue1,
+	accent2: blue.blue2,
+	accent3: blue.blue3,
+	accent4: blue.blue4,
+	accent5: blue.blue5,
+	accent6: blue.blue6,
+	accent7: blue.blue7,
+	accent8: blue.blue8,
+	accent9: blue.blue9,
+	accent10: blue.blue10,
+	accent11: blue.blue11,
+	accent12: blue.blue12,
 
-  success1: green.green1,
-  success2: green.green2,
-  // repeat for all steps
+	success1: green.green1,
+	success2: green.green2,
+	// repeat for all steps
 
-  warning1: yellow.yellow1,
-  warning2: yellow.yellow2,
-  // repeat for all steps
+	warning1: yellow.yellow1,
+	warning2: yellow.yellow2,
+	// repeat for all steps
 
-  danger1: red.red1,
-  danger2: red.red2,
-  // repeat for all steps
+	danger1: red.red1,
+	danger2: red.red2,
+	// repeat for all steps
 };
 `}
-          </CodeBlock.Code>
-        </CodeBlock.Pre>
-        <CodeBlock.CopyButton />
-      </CodeBlock.Content>
-    </Tabs.Content>
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
 
-  </CodeBlock.Root>
+	</CodeBlock.Root>
 </Tabs.Root>
 
 With this approach, you will likely run into issues where you need to use the same scale for multiple semantics. Common examples include:
@@ -130,87 +130,87 @@ With this approach, you will likely run into issues where you need to use the sa
 In this scenario, you can choose to define multiple semantic aliases which map to the same scale.
 
 <Tabs.Root asChild defaultValue="css">
-  <CodeBlock.Root my="5">
-    <CodeBlock.Header>
-      <Tabs.List>
-        <Tabs.Trigger value="css">CSS</Tabs.Trigger>
-        <Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
-      </Tabs.List>
-    </CodeBlock.Header>
+	<CodeBlock.Root my="5">
+		<CodeBlock.Header>
+			<Tabs.List>
+				<Tabs.Trigger value="css">CSS</Tabs.Trigger>
+				<Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
+			</Tabs.List>
+		</CodeBlock.Header>
 
-    <Tabs.Content asChild value="css">
-      <CodeBlock.Content>
-        <CodeBlock.Pre>
-          <CodeBlock.Code language="css">
-            {`/*
+		<Tabs.Content asChild value="css">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="css">
+						{`/*
  * Note: Importing from the CDN in production is not recommended.
  * It's intended for prototyping only.
  */
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue.css';
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green.css';
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/yellow.css';
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/yellow.css";
 
 :root {
-  --accent-1: var(--blue-1);
-  --accent-2: var(--blue-2);
-  --info-1: var(--blue-1);
-  --info-2: var(--blue-2);
+	--accent-1: var(--blue-1);
+	--accent-2: var(--blue-2);
+	--info-1: var(--blue-1);
+	--info-2: var(--blue-2);
 
-  --success-1: var(--green-1);
-  --success-2: var(--green-2);
-  --valid-1: var(--green-1);
-  --valid-2: var(--green-2);
+	--success-1: var(--green-1);
+	--success-2: var(--green-2);
+	--valid-1: var(--green-1);
+	--valid-2: var(--green-2);
 
-  --warning-1: var(--yellow-1);
-  --warning-2: var(--yellow-2);
-  --pending-1: var(--yellow-1);
-  --pending-2: var(--yellow-2);
+	--warning-1: var(--yellow-1);
+	--warning-2: var(--yellow-2);
+	--pending-1: var(--yellow-1);
+	--pending-2: var(--yellow-2);
 }
 `}
-          </CodeBlock.Code>
-        </CodeBlock.Pre>
-        <CodeBlock.CopyButton />
-      </CodeBlock.Content>
-    </Tabs.Content>
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
 
-    <Tabs.Content asChild value="css-in-js">
-      <CodeBlock.Content>
-        <CodeBlock.Pre>
-          <CodeBlock.Code language="js">
+		<Tabs.Content asChild value="css-in-js">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="js">
 {`import {
-  blue,
-  green,
-  yellow
-} from '@radix-ui/colors';
+	blue,
+	green,
+	yellow
+} from "@radix-ui/colors";
 
 const theme = {
-  ...blue,
-  ...green,
-  ...yellow,
+	...blue,
+	...green,
+	...yellow,
 
-  accent1: blue.blue1,
-  accent2: blue.blue2,
-  info1: blue.blue1,
-  info2: blue.blue2,
+	accent1: blue.blue1,
+	accent2: blue.blue2,
+	info1: blue.blue1,
+	info2: blue.blue2,
 
-  success1: green.green1,
-  success2: green.green2,
-  valid1: green.green1,
-  valid2: green.green2,
+	success1: green.green1,
+	success2: green.green2,
+	valid1: green.green1,
+	valid2: green.green2,
 
-  warning1: yellow.yellow1,
-  warning2: yellow.yellow2,
-  pending1: yellow.yellow1,
-  pending2: yellow.yellow2,
+	warning1: yellow.yellow1,
+	warning2: yellow.yellow2,
+	pending1: yellow.yellow1,
+	pending2: yellow.yellow2,
 };
 `}
-          </CodeBlock.Code>
-        </CodeBlock.Pre>
-        <CodeBlock.CopyButton />
-      </CodeBlock.Content>
-    </Tabs.Content>
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
 
-  </CodeBlock.Root>
+	</CodeBlock.Root>
 </Tabs.Root>
 
 Or you can simply recommend that your teammates defer to the original scale name for situations where there is no appropriate semantic alias.
@@ -220,110 +220,110 @@ Or you can simply recommend that your teammates defer to the original scale name
 Each step in Radix Colors scales is designed for a specific use case. To help your team know which step to use, you can provide aliases based on the designed use cases.
 
 <Tabs.Root asChild defaultValue="css">
-  <CodeBlock.Root my="5">
-    <CodeBlock.Header>
-      <Tabs.List>
-        <Tabs.Trigger value="css">CSS</Tabs.Trigger>
-        <Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
-      </Tabs.List>
-    </CodeBlock.Header>
+	<CodeBlock.Root my="5">
+		<CodeBlock.Header>
+			<Tabs.List>
+				<Tabs.Trigger value="css">CSS</Tabs.Trigger>
+				<Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
+			</Tabs.List>
+		</CodeBlock.Header>
 
-    <Tabs.Content asChild value="css">
-      <CodeBlock.Content>
-        <CodeBlock.Pre>
-          <CodeBlock.Code language="css">
+		<Tabs.Content asChild value="css">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="css">
 {`/*
  * Note: Importing from the CDN in production is not recommended.
  * It's intended for prototyping only.
  */
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue.css';
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green.css';
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/yellow.css';
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/red.css';
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/yellow.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/red.css";
 
 :root {
-  --accent-base: var(--blue-1);
-  --accent-bg-subtle: var(--blue-2);
-  --accent-bg: var(--blue-3);
-  --accent-bg-hover: var(--blue-4);
-  --accent-bg-active: var(--blue-5);
-  --accent-line: var(--blue-6);
-  --accent-border: var(--blue-7);
-  --accent-border-hover: var(--blue-8);
-  --accent-solid: var(--blue-9);
-  --accent-solid-hover: var(--blue-10);
-  --accent-text: var(--blue-11);
-  --accent-text-contrast: var(--blue-12);
+	--accent-base: var(--blue-1);
+	--accent-bg-subtle: var(--blue-2);
+	--accent-bg: var(--blue-3);
+	--accent-bg-hover: var(--blue-4);
+	--accent-bg-active: var(--blue-5);
+	--accent-line: var(--blue-6);
+	--accent-border: var(--blue-7);
+	--accent-border-hover: var(--blue-8);
+	--accent-solid: var(--blue-9);
+	--accent-solid-hover: var(--blue-10);
+	--accent-text: var(--blue-11);
+	--accent-text-contrast: var(--blue-12);
 
-  --success-base: var(--green-1);
-  --success-bg-subtle: var(--green-2);
-  /* repeat for all steps */
+	--success-base: var(--green-1);
+	--success-bg-subtle: var(--green-2);
+	/* repeat for all steps */
 
-  --warning-base: var(--yellow-1);
-  --warning-bg-subtle: var(--yellow-2);
-  /* repeat for all steps */
+	--warning-base: var(--yellow-1);
+	--warning-bg-subtle: var(--yellow-2);
+	/* repeat for all steps */
 
-  --danger-base: var(--red-1);
-  --danger-bg-subtle: var(--red-2);
-  /* repeat for all steps */
+	--danger-base: var(--red-1);
+	--danger-bg-subtle: var(--red-2);
+	/* repeat for all steps */
 }
 `}
-          </CodeBlock.Code>
-        </CodeBlock.Pre>
-        <CodeBlock.CopyButton />
-      </CodeBlock.Content>
-    </Tabs.Content>
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
 
-    <Tabs.Content asChild value="css-in-js">
-      <CodeBlock.Content>
-        <CodeBlock.Pre>
-          <CodeBlock.Code language="js">
+		<Tabs.Content asChild value="css-in-js">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="js">
 {`import {
-  blue,
-  green,
-  yellow,
-  red
-} from '@radix-ui/colors';
+	blue,
+	green,
+	yellow,
+	red
+} from "@radix-ui/colors";
 
 const theme = {
-  ...blue,
-  ...green,
-  ...yellow,
-  ...red,
+	...blue,
+	...green,
+	...yellow,
+	...red,
 
-  accentBase: blue.blue1,
-  accentBgSubtle: blue.blue2,
-  accentBg: blue.blue3,
-  accentBgHover: blue.blue4,
-  accentBgActive: blue.blue5,
-  accentLine: blue.blue6,
-  accentBorder: blue.blue7,
-  accentBorderHover: blue.blue8,
-  accentSolid: blue.blue9,
-  accentSolidHover: blue2.blue10,
-  accentText: blue.blue11,
-  accentTextContrast: blue.blue12,
+	accentBase: blue.blue1,
+	accentBgSubtle: blue.blue2,
+	accentBg: blue.blue3,
+	accentBgHover: blue.blue4,
+	accentBgActive: blue.blue5,
+	accentLine: blue.blue6,
+	accentBorder: blue.blue7,
+	accentBorderHover: blue.blue8,
+	accentSolid: blue.blue9,
+	accentSolidHover: blue2.blue10,
+	accentText: blue.blue11,
+	accentTextContrast: blue.blue12,
 
-  successBase: green.green1,
-  successBgSubtle: green.green2,
-  // repeat for all steps
+	successBase: green.green1,
+	successBgSubtle: green.green2,
+	// repeat for all steps
 
-  warningBase: yellow.yellow1,
-  warningBgSubtle: yellow.yellow2,
-  // repeat for all steps
+	warningBase: yellow.yellow1,
+	warningBgSubtle: yellow.yellow2,
+	// repeat for all steps
 
-  dangerBase: red.red1,
-  dangerBgSubtle: red.red2,
-  // repeat for all steps
+	dangerBase: red.red1,
+	dangerBgSubtle: red.red2,
+	// repeat for all steps
 };
 `}
-          </CodeBlock.Code>
-        </CodeBlock.Pre>
-        <CodeBlock.CopyButton />
-      </CodeBlock.Content>
-    </Tabs.Content>
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
 
-  </CodeBlock.Root>
+	</CodeBlock.Root>
 </Tabs.Root>
 
 Again, with this approach, you will likely run into issues where you need to use the same step for multiple use cases. Common examples include:
@@ -334,74 +334,74 @@ Again, with this approach, you will likely run into issues where you need to use
 In these cases, you can choose to define multiple aliases which map to the same step.
 
 <Tabs.Root asChild defaultValue="css">
-  <CodeBlock.Root my="5">
-    <CodeBlock.Header>
-      <Tabs.List>
-        <Tabs.Trigger value="css">CSS</Tabs.Trigger>
-        <Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
-      </Tabs.List>
-    </CodeBlock.Header>
+	<CodeBlock.Root my="5">
+		<CodeBlock.Header>
+			<Tabs.List>
+				<Tabs.Trigger value="css">CSS</Tabs.Trigger>
+				<Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
+			</Tabs.List>
+		</CodeBlock.Header>
 
-    <Tabs.Content asChild value="css">
-      <CodeBlock.Content>
-        <CodeBlock.Pre>
-          <CodeBlock.Code language="css">
+		<Tabs.Content asChild value="css">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="css">
 {`/*
  * Note: Importing from the CDN in production is not recommended.
  * It's intended for prototyping only.
  */
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/gray.css';
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue.css';
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green.css';
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/yellow.css';
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/red.css';
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/gray.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/yellow.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/red.css";
 
 :root {
-  --gray-solid: var(--gray-9);
-  --gray-placeholder-text: var(--gray-9);
+	--gray-solid: var(--gray-9);
+	--gray-placeholder-text: var(--gray-9);
 
-  --accent-border-hover: var(--blue-8);
-  --accent-focus-ring: var(--blue-8);
+	--accent-border-hover: var(--blue-8);
+	--accent-focus-ring: var(--blue-8);
 }
 `}
-          </CodeBlock.Code>
-        </CodeBlock.Pre>
-        <CodeBlock.CopyButton />
-      </CodeBlock.Content>
-    </Tabs.Content>
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
 
-    <Tabs.Content asChild value="css-in-js">
-      <CodeBlock.Content>
-        <CodeBlock.Pre>
-          <CodeBlock.Code language="js">
+		<Tabs.Content asChild value="css-in-js">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="js">
 {`import {
-  gray,
-  blue,
-  green,
-  yellow,
-  red
-} from '@radix-ui/colors';
+	gray,
+	blue,
+	green,
+	yellow,
+	red
+} from "@radix-ui/colors";
 
 const theme = {
-  ...gray,
-  ...blue,
-  ...green,
-  ...yellow,
-  ...red,
+	...gray,
+	...blue,
+	...green,
+	...yellow,
+	...red,
 
-  graySolid: gray.gray9,
-  grayPlaceholderText: gray.gray9,
+	graySolid: gray.gray9,
+	grayPlaceholderText: gray.gray9,
 
-  accentBorderHover: blue.blue8,
-  accentFocusRing: blue.blue8,
+	accentBorderHover: blue.blue8,
+	accentFocusRing: blue.blue8,
 };`}
-          </CodeBlock.Code>
-        </CodeBlock.Pre>
-        <CodeBlock.CopyButton />
-      </CodeBlock.Content>
-    </Tabs.Content>
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
 
-  </CodeBlock.Root>
+	</CodeBlock.Root>
 </Tabs.Root>
 
 Or you can simply recommend that your teammates defer to the original step number for situations where use cases don't have an alias.
@@ -416,94 +416,94 @@ When designing for both light and dark modes, you sometimes need to map a variab
 - An overlay that is light transparent black in light mode, and a darker transparent black in dark mode.
 
 <Tabs.Root asChild defaultValue="css">
-  <CodeBlock.Root my="5">
-    <CodeBlock.Header>
-      <Tabs.List>
-        <Tabs.Trigger value="css">CSS</Tabs.Trigger>
-        <Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
-      </Tabs.List>
-    </CodeBlock.Header>
+	<CodeBlock.Root my="5">
+		<CodeBlock.Header>
+			<Tabs.List>
+				<Tabs.Trigger value="css">CSS</Tabs.Trigger>
+				<Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
+			</Tabs.List>
+		</CodeBlock.Header>
 
-    <Tabs.Content asChild value="css">
-      <CodeBlock.Content>
-        <CodeBlock.Pre>
-          <CodeBlock.Code language="css">
+		<Tabs.Content asChild value="css">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="css">
 {`/*
  * Note: Importing from the CDN in production is not recommended.
  * It's intended for prototyping only.
  */
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/slate.css';
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/slate-alpha.css';
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/white-alpha.css';
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/black-alpha.css';
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/slate.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/slate-alpha.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/white-alpha.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/black-alpha.css";
 
 :root {
-  --panel: white;
-  --panel-contrast: var(--black-a9);
-  --shadow: var(--slate-a3);
-  --overlay: var(--black-a8);
+	--panel: white;
+	--panel-contrast: var(--black-a9);
+	--shadow: var(--slate-a3);
+	--overlay: var(--black-a8);
 }
 
 .dark {
-  /* Remap your colors for dark mode */
-  --panel: var(--slate-2);
-  --panel-contrast: var(--white-a9);
-  --shadow: black;
-  --overlay: var(--black-a11);
+	/* Remap your colors for dark mode */
+	--panel: var(--slate-2);
+	--panel-contrast: var(--white-a9);
+	--shadow: black;
+	--overlay: var(--black-a11);
 }`}
-          </CodeBlock.Code>
-        </CodeBlock.Pre>
-        <CodeBlock.CopyButton />
-      </CodeBlock.Content>
-    </Tabs.Content>
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
 
-    <Tabs.Content asChild value="css-in-js">
-      <CodeBlock.Content>
-        <CodeBlock.Pre>
-          <CodeBlock.Code language="js">
-{`import styled, { ThemeProvider } from 'styled-components';
+		<Tabs.Content asChild value="css-in-js">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="js">
+{`import styled, { ThemeProvider } from "styled-components";
 import {
-  slate,
-  slateA,
-  whiteA,
-  blackA
-} from '@radix-ui/colors';
+	slate,
+	slateA,
+	whiteA,
+	blackA
+} from "@radix-ui/colors";
 
 const theme = {
-  ...slate,
-  ...slateA,
-  ...whiteA,
-  ...blackA,
+	...slate,
+	...slateA,
+	...whiteA,
+	...blackA,
 
-  panel: 'white',
-  panelContrast: black.blackA11,
-  shadow: slate.slateA3,
-  overlay: slate.blackA8,
+	panel: "white",
+	panelContrast: black.blackA11,
+	shadow: slate.slateA3,
+	overlay: slate.blackA8,
 };
 
 const darkTheme = {
-  ...slateDark,
-  ...slateDarkA,
-  ...whiteA,
-  ...blackA,
+	...slateDark,
+	...slateDarkA,
+	...whiteA,
+	...blackA,
 
-  // Remap your colors for dark mode
-  panel: slate.slate2,
-  panelContrast: whiteA.whiteA9,
-  shadow: 'black',
-  overlay: blackA.blackA11,
+	// Remap your colors for dark mode
+	panel: slate.slate2,
+	panelContrast: whiteA.whiteA9,
+	shadow: "black",
+	overlay: blackA.blackA11,
 }
 
 <ThemeProvider theme={darkTheme}>
-  // your app
+	// your app
 </ThemeProvider>`}
-          </CodeBlock.Code>
-        </CodeBlock.Pre>
-        <CodeBlock.CopyButton />
-      </CodeBlock.Content>
-    </Tabs.Content>
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
 
-  </CodeBlock.Root>
+	</CodeBlock.Root>
 </Tabs.Root>
 
 Avoid using specific variable names like "CardBg", or "Tooltip", because you will likely need to use each variable for multiple use cases.
@@ -517,84 +517,84 @@ If you wish, you can rename scales. Reasons might include:
 - Rename a scale to match your brand, like how Discord use `blurple`.
 
 <Tabs.Root asChild defaultValue="css">
-  <CodeBlock.Root my="5">
-    <CodeBlock.Header>
-      <Tabs.List>
-        <Tabs.Trigger value="css">CSS</Tabs.Trigger>
-        <Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
-      </Tabs.List>
-    </CodeBlock.Header>
+	<CodeBlock.Root my="5">
+		<CodeBlock.Header>
+			<Tabs.List>
+				<Tabs.Trigger value="css">CSS</Tabs.Trigger>
+				<Tabs.Trigger value="css-in-js">CSS-in-JS</Tabs.Trigger>
+			</Tabs.List>
+		</CodeBlock.Header>
 
-    <Tabs.Content asChild value="css">
-      <CodeBlock.Content>
-        <CodeBlock.Pre>
-          <CodeBlock.Code language="css">
+		<Tabs.Content asChild value="css">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="css">
 {`/*
  * Note: Importing from the CDN in production is not recommended.
  * It's intended for prototyping only.
  */
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/slate.css';
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/sky.css';
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/grass.css';
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/violet.css';
-@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/crimson.css';
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/slate.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/sky.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/grass.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/violet.css";
+@import "https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/crimson.css";
 
 :root {
-  --gray-1: var(--slate-1);
-  --gray-2: var(--slate-2);
+	--gray-1: var(--slate-1);
+	--gray-2: var(--slate-2);
 
-  --blue-1: var(--sky-1);
-  --blue-2: var(--sky-2);
+	--blue-1: var(--sky-1);
+	--blue-2: var(--sky-2);
 
-  --green-1: var(--grass-1);
-  --green-2: var(--grass-2);
+	--green-1: var(--grass-1);
+	--green-2: var(--grass-2);
 
-  --blurple-1: var(--violet-1);
-  --blurple-2: var(--violet-2);
+	--blurple-1: var(--violet-1);
+	--blurple-2: var(--violet-2);
 
-  --caribbean-sunset-1: var(--crimson-1);
-  --caribbean-sunset-2: var(--crimson-2);
+	--caribbean-sunset-1: var(--crimson-1);
+	--caribbean-sunset-2: var(--crimson-2);
 }
 `}
-          </CodeBlock.Code>
-        </CodeBlock.Pre>
-        <CodeBlock.CopyButton />
-      </CodeBlock.Content>
-    </Tabs.Content>
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
 
-    <Tabs.Content asChild value="css-in-js">
-      <CodeBlock.Content>
-        <CodeBlock.Pre>
-          <CodeBlock.Code language="js">
+		<Tabs.Content asChild value="css-in-js">
+			<CodeBlock.Content>
+				<CodeBlock.Pre>
+					<CodeBlock.Code language="js">
 {`import {
-  slate,
-  sky,
-  grass,
-  violet,
-  crimson
-} from '@radix-ui/colors';
+	slate,
+	sky,
+	grass,
+	violet,
+	crimson
+} from "@radix-ui/colors";
 
 const theme = {
-  gray1: slate.slate1,
-  gray2: slate.slate2,
+	gray1: slate.slate1,
+	gray2: slate.slate2,
 
-  blue1: sky.sky1,
-  blue2: sky.sky2,
+	blue1: sky.sky1,
+	blue2: sky.sky2,
 
-  green1: grass.grass1,
-  green2: grass.grass2,
+	green1: grass.grass1,
+	green2: grass.grass2,
 
-  blurple1: violet.violet1,
-  blurple2: violet.violet2,
+	blurple1: violet.violet1,
+	blurple2: violet.violet2,
 
-  caribbeanSunset1: crimson.crimson1,
-  caribbeanSunset2: crimson.crimson2,
+	caribbeanSunset1: crimson.crimson1,
+	caribbeanSunset2: crimson.crimson2,
 };`}
-          </CodeBlock.Code>
-        </CodeBlock.Pre>
-        <CodeBlock.CopyButton />
-      </CodeBlock.Content>
-    </Tabs.Content>
+					</CodeBlock.Code>
+				</CodeBlock.Pre>
+				<CodeBlock.CopyButton />
+			</CodeBlock.Content>
+		</Tabs.Content>
 
-  </CodeBlock.Root>
+	</CodeBlock.Root>
 </Tabs.Root>

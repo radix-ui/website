@@ -102,9 +102,8 @@ export const DeveloperExperienceSection = () => {
 			style={{
 				backgroundColor: "var(--sky-6)",
 				background: `
-          radial-gradient(ellipse at 100% 100%, hsl(254 100% 6% / 0.07), var(--violet-a1), transparent),
-          linear-gradient(to bottom right, var(--mint-2), var(--indigo-2), var(--pink-3), var(--cyan-3))
-        `,
+					radial-gradient(ellipse at 100% 100%, hsl(254 100% 6% / 0.07), var(--violet-a1), transparent),
+					linear-gradient(to bottom right, var(--mint-2), var(--indigo-2), var(--pink-3), var(--cyan-3))`,
 			}}
 		>
 			<Container mx={{ initial: "5", xs: "6", sm: "7", md: "9" }}>
@@ -390,10 +389,9 @@ const WindowControlButtons = () => (
 		height="12px"
 		style={{
 			background: `
-        radial-gradient(circle closest-side at 6px, var(--gray-a7) 90%, #FFFFFF00),
-        radial-gradient(circle closest-side at 24px, var(--gray-a7) 90%, #FFFFFF00),
-        radial-gradient(circle closest-side at 42px, var(--gray-a7) 90%, #FFFFFF00)
-      `,
+				radial-gradient(circle closest-side at 6px, var(--gray-a7) 90%, #FFFFFF00),
+				radial-gradient(circle closest-side at 24px, var(--gray-a7) 90%, #FFFFFF00),
+				radial-gradient(circle closest-side at 42px, var(--gray-a7) 90%, #FFFFFF00)`,
 		}}
 	/>
 );
@@ -409,91 +407,93 @@ const WindowTitle = () => (
 const code = {
 	unstyled: `// Add styles with your preferred CSS technology
 const TooltipContent = styled(Tooltip.Content, {
-  backgroundColor: 'black',
-  borderRadius: '3px',
-  padding: '5px'
+	backgroundColor: "black",
+	borderRadius: "3px",
+	padding: "5px"
 });
 
 const PopoverContent = styled(Popover.Content, {
-  backgroundColor: 'white',
-  boxShadow: '0 2px 10px -3px rgb(0 0 0 / 20%)',
-  borderRadius: '3px',
+	backgroundColor: "white",
+	boxShadow: "0 2px 10px -3px rgb(0 0 0 / 20%)",
+	borderRadius: "3px",
 });
 
 const DialogContent = styled(Dialog.Content, {
-  backgroundColor: 'white',
-  boxShadow: '0 3px 15px -4px rgb(0 0 0 / 30%)',
-  borderRadius: '5px',
+	backgroundColor: "white",
+	boxShadow: "0 3px 15px -4px rgb(0 0 0 / 30%)",
+	borderRadius: "5px",
 });`,
 
-	composable: `// Compose a custom Tooltip component
+	composable: `
+
+// Compose a custom Tooltip component
 export const StatusTooltip = ({ state, label }) => {
-  return (
-    <Tooltip.Root>
-      <Tooltip.Trigger asChild>
-        <Text>
-          <Status variant={state} />
-        </Text>
-      </Tooltip.Trigger>
-      <Tooltip.Portal>
-        <TooltipContent>
-          <Tooltip.Arrow />
-          {label}
-        </TooltipContent>
-      </Tooltip.Portal>
-    </Tooltip.Root>
-  );
+	return (
+		<Tooltip.Root>
+			<Tooltip.Trigger asChild>
+				<Text>
+					<Status variant={state} />
+				</Text>
+			</Tooltip.Trigger>
+			<Tooltip.Portal>
+				<TooltipContent>
+					<Tooltip.Arrow />
+					{label}
+				</TooltipContent>
+			</Tooltip.Portal>
+		</Tooltip.Root>
+	);
 };`,
 
 	customizable: `// Compose a Popover with custom focus and positioning
 export const StatusPopover = ({ children }) => {
-  const popoverCloseButton = React.useRef(null);
-  return (
-    <Popover.Root>
-      <Popover.Trigger>View status</Popover.Trigger>
-      <Popover.Portal>
-        <PopoverContent
-          align="start"
-          collisionPadding={10}
-          onOpenAutoFocus={(event) => {
-            // Focus the close button when popover opens
-            popoverCloseButton.current?.focus();
-            event.preventDefault();
-          }}
-        >
-          {children}
-          <Popover.Close ref={popoverCloseButton}>
-            Close
-          </Popover.Close>
-        </PopoverContent>
-      </Popover.Portal>
-    </Popover.Root>
-  );
+	const popoverCloseButton = React.useRef(null);
+	return (
+		<Popover.Root>
+			<Popover.Trigger>View status</Popover.Trigger>
+			<Popover.Portal>
+				<PopoverContent
+					align="start"
+					collisionPadding={10}
+					onOpenAutoFocus={(event) => {
+						// Focus the close button when popover opens
+						popoverCloseButton.current?.focus();
+						event.preventDefault();
+					}}
+				>
+					{children}
+					<Popover.Close ref={popoverCloseButton}>
+						Close
+					</Popover.Close>
+				</PopoverContent>
+			</Popover.Portal>
+		</Popover.Root>
+	);
 };`,
 
 	consistent: `// Compose a Dialog with custom focus management
 export const InfoDialog = ({ children }) => {
-  const dialogCloseButton = React.useRef(null);
-  return (
-    <Dialog.Root>
-      <Dialog.Trigger>View details</Dialog.Trigger>
-      <Dialog.Overlay />
-      <Dialog.Portal>
-        <DialogContent
-          onOpenAutoFocus={(event) => {
-            // Focus the close button when dialog opens
-            dialogCloseButton.current?.focus();
-            event.preventDefault();
-          }}
-        >
-          {children}
-          <Dialog.Close ref={dialogCloseButton}>
-            Close
-          </Dialog.Close>
-        </DialogContent>
-      </Dialog.Portal>
-    </Dialog.Root>
-  );
+	const dialogCloseButton = React.useRef(null);
+	return (
+		<Dialog.Root>
+			<Dialog.Trigger>View details</Dialog.Trigger>
+			<Dialog.Overlay />
+			<Dialog.Portal>
+				<DialogContent
+					onOpenAutoFocus={(event) => {
+						// Focus the close button when dialog opens
+						dialogCloseButton.current?.focus();
+						event.preventDefault();
+					}}
+				>
+					{children}
+					<Dialog.Close ref={dialogCloseButton}>
+						Close
+					</Dialog.Close>
+				</DialogContent>
+			</Dialog.Portal>
+		</Dialog.Root>
+	);
 };`,
 };
 
@@ -502,4 +502,4 @@ const allCode = [
 	code.composable,
 	code.customizable,
 	code.consistent,
-].join("\n\n");
+].join("\t");

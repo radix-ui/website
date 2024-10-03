@@ -487,31 +487,31 @@ export default () => (
 
 ```jsx
 // your-alert-dialog.jsx
-import React from 'react';
-import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
+import React from "react";
+import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
 
 export function AlertDialog({ children, ...props }) {
-  return (
-    <AlertDialogPrimitive.Root {...props}>
-      <AlertDialogPrimitive.Overlay />
-      {children}
-    </AlertDialogPrimitive.Root>
-  );
+	return (
+		<AlertDialogPrimitive.Root {...props}>
+			<AlertDialogPrimitive.Overlay />
+			{children}
+		</AlertDialogPrimitive.Root>
+	);
 }
 
 export const AlertDialogContent = React.forwardRef(
-  ({ children, ...props }, forwardedRef) => (
-    <AlertDialogPrimitive.Content
-      {...props}
-      ref={forwardedRef}
-      // Don't close the Alert Dialog when pressing ESC
-      onEscapeKeyDown={(event) => event.preventDefault()}
-      // Don't close the Alert Dialog when clicking outside
-      onPointerDownOutside={(event) => event.preventDefault()}
-    >
-      {children}
-    </>
-  )
+	({ children, ...props }, forwardedRef) => (
+		<AlertDialogPrimitive.Content
+			{...props}
+			ref={forwardedRef}
+			// Don't close the Alert Dialog when pressing ESC
+			onEscapeKeyDown={(event) => event.preventDefault()}
+			// Don't close the Alert Dialog when clicking outside
+			onPointerDownOutside={(event) => event.preventDefault()}
+		>
+			{children}
+		</>
+	)
 );
 
 export const AlertDialogTrigger = AlertDialogPrimitive.Trigger;

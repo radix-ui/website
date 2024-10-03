@@ -532,13 +532,13 @@ Background toasts are announced at the next graceful opportunity, for example, w
 
 ```jsx line=1,6
 <Toast.Root type="foreground">
-  <Toast.Description>File removed successfully.</Toast.Description>
-  <Toast.Close>Dismiss</Toast.Close>
+	<Toast.Description>File removed successfully.</Toast.Description>
+	<Toast.Close>Dismiss</Toast.Close>
 </Toast.Root>
 
 <Toast.Root type="background">
-  <Toast.Description>We've just released Radix 1.0.</Toast.Description>
-  <Toast.Close>Dismiss</Toast.Close>
+	<Toast.Description>We've just released Radix 1.0.</Toast.Description>
+	<Toast.Close>Dismiss</Toast.Close>
 </Toast.Root>
 ```
 
@@ -550,20 +550,20 @@ You can direct the user to a permanent place in your application where they can 
 
 ```jsx line=4,10,12
 <Toast.Root type="background">
-  <Toast.Title>Upgrade Available!</Toast.Title>
-  <Toast.Description>We've just released Radix 1.0.</Toast.Description>
-  <Toast.Action altText="Goto account settings to upgrade">
-    Upgrade
-  </Toast.Action>
-  <Toast.Close>Dismiss</Toast.Close>
+	<Toast.Title>Upgrade Available!</Toast.Title>
+	<Toast.Description>We've just released Radix 1.0.</Toast.Description>
+	<Toast.Action altText="Goto account settings to upgrade">
+		Upgrade
+	</Toast.Action>
+	<Toast.Close>Dismiss</Toast.Close>
 </Toast.Root>
 
 <Toast.Root __type__="foreground" __duration__={10000}>
-  <Toast.Description>File removed successfully.</Toast.Description>
-  <Toast.Action altText="Undo (Alt+U)">
-    Undo <kbd>Alt</kbd>+<kbd>U</kbd>
-  </Toast.Action>
-  <Toast.Close>Dismiss</Toast.Close>
+	<Toast.Description>File removed successfully.</Toast.Description>
+	<Toast.Action altText="Undo (Alt+U)">
+		Undo <kbd>Alt</kbd>+<kbd>U</kbd>
+	</Toast.Action>
+	<Toast.Close>Dismiss</Toast.Close>
 </Toast.Root>
 ```
 

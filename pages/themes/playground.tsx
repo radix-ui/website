@@ -160,12 +160,12 @@ export default function ComponentsPage() {
 
 				<Box display={{ initial: "none", lg: "block" }}>
 					{/* Components that hide the scrollbar (like Dialog) add padding to
-          account for the scrollbar gap to avoid layout jank. This does not
-          work for position: fixed elements. Since we use react-remove-scroll
-          under the hood for those primitives, we can add this helper class
-          provided by that lib to deal with that for the ThemePanel.
-          https://github.com/radix-ui/website/issues/64
-          https://github.com/theKashey/react-remove-scroll#positionfixed-elements */}
+					account for the scrollbar gap to avoid layout jank. This does not
+					work for position: fixed elements. Since we use react-remove-scroll
+					under the hood for those primitives, we can add this helper class
+					provided by that lib to deal with that for the ThemePanel.
+					https://github.com/radix-ui/website/issues/64
+					https://github.com/theKashey/react-remove-scroll#positionfixed-elements */}
 					<ThemePanel
 						className={RemoveScroll.classNames.zeroRight}
 						onAppearanceChange={(newTheme) => {

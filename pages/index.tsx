@@ -415,14 +415,14 @@ const redBackgroundImageStyle = {
 //   transform: 'scaleY(-0.5) scaleX(-1) rotate(-15deg)',
 
 const codeExample = `
-import '@radix-ui/themes/styles.css';
-import { Theme, Button } from '@radix-ui/themes'
+import "@radix-ui/themes/styles.css";
+import { Theme, Button } from "@radix-ui/themes";
 
 export default () => (
-  <Theme>
-    <Button>Hey 👋</Button>
-  </Theme>
-)
+	<Theme>
+		<Button>Hey 👋</Button>
+	</Theme>
+);
 `.trim();
 
 const BackgroundImage = ({
