@@ -1326,11 +1326,11 @@ export default function ComponentsPage() {
 																				fallback="V"
 																			/>
 																			<Box>
-																				{/* @ts-ignore */}
 																				<Text
 																					as="div"
 																					weight="medium"
-																					size={String(+size + 1)}
+																					// @ts-ignore
+																					size={+size + 1}
 																				>
 																					Emily Adams
 																				</Text>
