@@ -1,10 +1,13 @@
-import { Box } from '@radix-ui/themes';
-import styles from './HiddenScroll.module.css';
-import * as React from 'react';
+import { Box } from "@radix-ui/themes";
+import styles from "./HiddenScroll.module.css";
+import * as React from "react";
 
 export const HiddenScroll = ({
-  className,
-  ...props
+	className,
+	...props
 }: React.ComponentPropsWithoutRef<typeof Box>) => (
-  <Box className={`${className ? `${className} ` : ''}${styles.HiddenScroll}`} {...props} />
+	<Box
+		className={`${className ? `${className} ` : ""}${styles.HiddenScroll}`}
+		{...props}
+	/>
 );

@@ -1,5 +1,5 @@
-import { Header, HeaderProps } from './Header';
+import { Header, HeaderProps } from "./Header";
 
 export const BlogHeader = (props: HeaderProps) => {
-  return <Header gitHubLink="https://github.com/radix-ui" {...props} />;
+	return <Header gitHubLink="https://github.com/radix-ui" {...props} />;
 };
