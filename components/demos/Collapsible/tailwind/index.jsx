@@ -6,27 +6,27 @@ const CollapsibleDemo = () => {
   const [open, setOpen] = React.useState(false);
   return (
     <Collapsible.Root className="w-[300px]" open={open} onOpenChange={setOpen}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <span className="text-violet11 text-[15px] leading-[25px]" style={{ color: 'white' }}>
+      <div className="flex items-center justify-between">
+        <span className=" text-[15px] leading-[25px] text-white">
           @peduarte starred 3 repositories
         </span>
         <Collapsible.Trigger asChild>
-          <button className="rounded-full h-[25px] w-[25px] inline-flex items-center justify-center text-violet11 shadow-[0_2px_10px] shadow-blackA4 outline-none data-[state=closed]:bg-white data-[state=open]:bg-violet3 hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black">
+          <button className="inline-flex size-[25px] items-center justify-center rounded-full text-violet11 shadow-[0_2px_10px] shadow-blackA4 outline-none hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black data-[state=closed]:bg-white data-[state=open]:bg-violet3">
             {open ? <Cross2Icon /> : <RowSpacingIcon />}
           </button>
         </Collapsible.Trigger>
       </div>
 
-      <div className="bg-white rounded my-[10px] p-[10px] shadow-[0_2px_10px] shadow-blackA4">
-        <span className="text-violet11 text-[15px] leading-[25px]">@radix-ui/primitives</span>
+      <div className="my-2.5 rounded bg-white p-2.5 shadow-[0_2px_10px] shadow-blackA4">
+        <span className="text-[15px] leading-[25px] text-violet11">@radix-ui/primitives</span>
       </div>
 
       <Collapsible.Content>
-        <div className="bg-white rounded my-[10px] p-[10px] shadow-[0_2px_10px] shadow-blackA4">
-          <span className="text-violet11 text-[15px] leading-[25px]">@radix-ui/colors</span>
+        <div className="my-2.5 rounded bg-white p-2.5 shadow-[0_2px_10px] shadow-blackA4">
+          <span className="text-[15px] leading-[25px] text-violet11">@radix-ui/colors</span>
         </div>
-        <div className="bg-white rounded my-[10px] p-[10px] shadow-[0_2px_10px] shadow-blackA4">
-          <span className="text-violet11 text-[15px] leading-[25px]">@radix-ui/themes</span>
+        <div className="my-2.5 rounded bg-white p-2.5 shadow-[0_2px_10px] shadow-blackA4">
+          <span className="text-[15px] leading-[25px] text-violet11">@radix-ui/themes</span>
         </div>
       </Collapsible.Content>
     </Collapsible.Root>
