@@ -43,10 +43,10 @@ git checkout main
 git pull upstream main
 ```
 
-1. Install dependencies with [yarn](https://yarnpkg.com):
+1. Install dependencies with [pnpm](https://pnpm.io):
 
 ```sh
-yarn install
+pnpm install
 ```
 
 1. Create a new branch related to your PR:
@@ -71,12 +71,12 @@ git push -u origin HEAD
 
 ```bash
 # install dependencies
-yarn install
+pnpm install
 
 # start the local server and see the site in your browser
-yarn dev
+pnpm dev
 ```
 
 Make your changes and check that they resolve the problem as expected.
 
-Finally, run `yarn build` to ensure that the build runs successfully before submitting the pull request.
+Finally, run `pnpm build` to ensure that the build runs successfully before submitting the pull request.

@@ -6,7 +6,7 @@ import { SUPPORTED_CSS_LIBS } from './constants';
 import { mdxElement } from './unist-mdx-element';
 
 const rehypeHeroCodeBlock = () => (tree: UnistTree) => {
-  visit(tree, (node: UnistNode) => {
+  visit(tree , (node: UnistNode) => {
     if (node.name === 'HeroCodeBlock') {
       const folder = getAttribute(node, 'folder');
 
