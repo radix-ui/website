@@ -1,4 +1,5 @@
 :root {
+	tab-size: 2;
 	--header-height: 48px;
 	--quick-nav-display: none;
 	--component-highlights-item-width: calc(100vw - 100px);
