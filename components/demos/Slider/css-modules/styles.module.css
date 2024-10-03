@@ -1,40 +1,40 @@
 .Root {
-  position: relative;
-  display: flex;
-  align-items: center;
-  user-select: none;
-  touch-action: none;
-  width: 200px;
-  height: 20px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	user-select: none;
+	touch-action: none;
+	width: 200px;
+	height: 20px;
 }
 
 .Track {
-  background-color: var(--black-a10);
-  position: relative;
-  flex-grow: 1;
-  border-radius: 9999px;
-  height: 3px;
+	background-color: var(--black-a10);
+	position: relative;
+	flex-grow: 1;
+	border-radius: 9999px;
+	height: 3px;
 }
 
 .Range {
-  position: absolute;
-  background-color: white;
-  border-radius: 9999px;
-  height: 100%;
+	position: absolute;
+	background-color: white;
+	border-radius: 9999px;
+	height: 100%;
 }
 
 .Thumb {
-  display: block;
-  width: 20px;
-  height: 20px;
-  background-color: white;
-  box-shadow: 0 2px 10px var(--black-a7);
-  border-radius: 10px;
-  &:hover {
-    background-color: var(--violet-3);
-  }
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 5px var(--black-a8);
-  }
+	display: block;
+	width: 20px;
+	height: 20px;
+	background-color: white;
+	box-shadow: 0 2px 10px var(--black-a7);
+	border-radius: 10px;
+	&:hover {
+		background-color: var(--violet-3);
+	}
+	&:focus {
+		outline: none;
+		box-shadow: 0 0 0 5px var(--black-a8);
+	}
 }

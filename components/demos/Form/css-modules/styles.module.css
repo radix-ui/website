@@ -1,81 +1,81 @@
 .Root {
-  width: 260px;
+	width: 260px;
 }
 
 .Field {
-  display: grid;
-  margin-bottom: 10px;
+	display: grid;
+	margin-bottom: 10px;
 }
 
 .Label {
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 35px;
-  color: white;
+	font-size: 15px;
+	font-weight: 500;
+	line-height: 35px;
+	color: white;
 }
 
 .Message {
-  font-size: 13px;
-  color: white;
-  opacity: 0.8;
+	font-size: 13px;
+	color: white;
+	opacity: 0.8;
 }
 
 .Input,
 .Textarea {
-  all: unset;
-  box-sizing: border-box;
-  width: 100%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  font-size: 15px;
-  color: white;
-  background-color: var(--black-a2);
-  box-shadow: 0 0 0 1px var(--black-a6);
-  &:hover {
-    box-shadow: 0 0 0 1px black;
-  }
-  &:focus {
-    box-shadow: 0 0 0 2px black;
-  }
-  &::selection {
-    background-color: var(--black-a6);
-    color: white;
-  }
+	all: unset;
+	box-sizing: border-box;
+	width: 100%;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 4px;
+	font-size: 15px;
+	color: white;
+	background-color: var(--black-a2);
+	box-shadow: 0 0 0 1px var(--black-a6);
+	&:hover {
+		box-shadow: 0 0 0 1px black;
+	}
+	&:focus {
+		box-shadow: 0 0 0 2px black;
+	}
+	&::selection {
+		background-color: var(--black-a6);
+		color: white;
+	}
 }
 
 .Input {
-  padding: 0 10px;
-  height: 35px;
-  line-height: 1;
+	padding: 0 10px;
+	height: 35px;
+	line-height: 1;
 }
 
 .Textarea {
-  resize: none;
-  padding: 10px;
+	resize: none;
+	padding: 10px;
 }
 
 .Button {
-  all: unset;
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  padding: 0 15px;
-  font-size: 15px;
-  line-height: 1;
-  font-weight: 500;
-  height: 35px;
-  width: 100%;
-  background-color: white;
-  color: var(--violet-11);
-  box-shadow: 0 2px 10px var(--black-a4);
-  &:hover {
-    background-color: var(--mauve-3);
-  }
-  &:focus {
-    box-shadow: 0 0 0 2px black;
-  }
+	all: unset;
+	box-sizing: border-box;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 4px;
+	padding: 0 15px;
+	font-size: 15px;
+	line-height: 1;
+	font-weight: 500;
+	height: 35px;
+	width: 100%;
+	background-color: white;
+	color: var(--violet-11);
+	box-shadow: 0 2px 10px var(--black-a4);
+	&:hover {
+		background-color: var(--mauve-3);
+	}
+	&:focus {
+		box-shadow: 0 0 0 2px black;
+	}
 }

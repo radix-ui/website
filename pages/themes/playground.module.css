@@ -1,81 +1,85 @@
 .PlaygroundRoot :global(.rt-Heading):where([id]) {
-  scroll-margin-top: calc(var(--header-height) + var(--space-6));
+	scroll-margin-top: calc(var(--header-height) + var(--space-6));
 }
 
 .PlaygroundTable {
-  border-collapse: collapse;
+	border-collapse: collapse;
 }
 
 .PlaygroundTable:not(.rt-TableRootTable) {
-  margin-bottom: calc(var(--space-4) * -1);
+	margin-bottom: calc(var(--space-4) * -1);
 
-  /* Prevent intrinsic line height from influencing alignment inside the table cells */
-  line-height: 0;
+	/* Prevent intrinsic line height from influencing alignment inside the table cells */
+	line-height: 0;
 }
 
-.PlaygroundTable th:not(:global(.rt-TableColumnHeaderCell), :global(.rt-TableRowHeaderCell)) {
-  font-weight: var(--font-weight-regular);
+.PlaygroundTable
+	th:not(:global(.rt-TableColumnHeaderCell), :global(.rt-TableRowHeaderCell)) {
+	font-weight: var(--font-weight-regular);
 }
 
 .PlaygroundTable tr:not(:global(.rt-TableRow)) {
-  vertical-align: middle;
+	vertical-align: middle;
 }
 
-.PlaygroundTable th:not(:global(.rt-TableColumnHeaderCell), :global(.rt-TableRowHeaderCell)),
+.PlaygroundTable
+	th:not(:global(.rt-TableColumnHeaderCell), :global(.rt-TableRowHeaderCell)),
 .PlaygroundTable td:not(:global(.rt-TableCell)) {
-  padding: 0;
-  padding-right: var(--space-4);
-  padding-bottom: var(--space-4);
-  text-align: center;
+	padding: 0;
+	padding-right: var(--space-4);
+	padding-bottom: var(--space-4);
+	text-align: center;
 }
 
 .PlaygroundTable tbody tr td:first-child:not(:global(.rt-TableCell)) {
-  padding-left: 0;
-  padding-right: var(--space-4);
-  min-width: 64px;
-  text-align: left;
+	padding-left: 0;
+	padding-right: var(--space-4);
+	min-width: 64px;
+	text-align: left;
 }
 
-.PlaygroundTable thead th:not(:global(.rt-TableColumnHeaderCell), :global(.rt-TableRowHeaderCell)),
+.PlaygroundTable
+	thead
+	th:not(:global(.rt-TableColumnHeaderCell), :global(.rt-TableRowHeaderCell)),
 .PlaygroundTable tbody tr td:first-child:not(:global(.rt-TableCell)) {
-  font-size: var(--font-size-1);
-  letter-spacing: var(--letter-spacing-1);
-  line-height: var(--line-height-1);
-  color: var(--gray-a11);
+	font-size: var(--font-size-1);
+	letter-spacing: var(--letter-spacing-1);
+	line-height: var(--line-height-1);
+	color: var(--gray-a11);
 }
 
 .PlaygroundTable :global(.rt-TextFieldRoot) {
-  width: 180px;
+	width: 180px;
 }
 .PlaygroundTable :global(.rt-TextArea) {
-  width: 180px;
+	width: 180px;
 }
 .PlaygroundTable :global(.rt-CalloutRoot) {
-  white-space: nowrap;
+	white-space: nowrap;
 }
 .PlaygroundTable :global(.rt-Badge) {
-  vertical-align: top;
+	vertical-align: top;
 }
 .PlaygroundTable :global(.rt-SliderRoot) {
-  width: 160px;
+	width: 160px;
 }
 
 /**
  * Docs link
  */
 @media (hover: hover) {
-  .PlaygroundDocsLink {
-    opacity: 0;
-    transition: opacity 50ms linear;
-  }
+	.PlaygroundDocsLink {
+		opacity: 0;
+		transition: opacity 50ms linear;
+	}
 
-  .PlaygroundSection:hover .PlaygroundDocsLink {
-    opacity: 1;
-  }
+	.PlaygroundSection:hover .PlaygroundDocsLink {
+		opacity: 1;
+	}
 }
 
 @media (hover: none) {
-  .PlaygroundDocsLink {
-    display: none;
-  }
+	.PlaygroundDocsLink {
+		display: none;
+	}
 }

@@ -1,72 +1,76 @@
-.SwatchTransparencyGrid[data-color-scale='white'],
-.SwatchTransparencyGrid[data-color-scale='black'] {
-  background-size: 16px 16px;
-  background-position: 0px 0px, 8px 0px, 8px -8px, 0px 8px;
-  background-color: var(--transparency-grid-color-1);
+.SwatchTransparencyGrid[data-color-scale="white"],
+.SwatchTransparencyGrid[data-color-scale="black"] {
+	background-size: 16px 16px;
+	background-position:
+		0px 0px,
+		8px 0px,
+		8px -8px,
+		0px 8px;
+	background-color: var(--transparency-grid-color-1);
 
-  /* prettier-ignore */
-  background-image:
+	/* prettier-ignore */
+	background-image:
     linear-gradient(45deg, var(--transparency-grid-color-2) 25%, transparent 25%),
     linear-gradient(135deg, var(--transparency-grid-color-2) 25%, transparent 25%),
     linear-gradient(45deg, transparent 75%, var(--transparency-grid-color-2) 75%),
     linear-gradient(135deg, transparent 75%, var(--transparency-grid-color-2) 75%);
 }
 
-.SwatchTransparencyGrid[data-color-scale='white'] {
-  --transparency-grid-color-1: #808080;
-  --transparency-grid-color-2: #888888;
+.SwatchTransparencyGrid[data-color-scale="white"] {
+	--transparency-grid-color-1: #808080;
+	--transparency-grid-color-2: #888888;
 }
 
-.SwatchTransparencyGrid[data-color-scale='black'] {
-  --transparency-grid-color-1: #808080;
-  --transparency-grid-color-2: #888888;
+.SwatchTransparencyGrid[data-color-scale="black"] {
+	--transparency-grid-color-1: #808080;
+	--transparency-grid-color-2: #888888;
 }
 
 .SwatchTrigger {
-  display: flex;
-  margin: -2px;
-  border: 2px solid transparent;
-  background-clip: padding-box;
-  box-sizing: content-box;
-  border-radius: var(--radius-2);
-  height: var(--space-7);
-  outline-offset: -2px;
+	display: flex;
+	margin: -2px;
+	border: 2px solid transparent;
+	background-clip: padding-box;
+	box-sizing: content-box;
+	border-radius: var(--radius-2);
+	height: var(--space-7);
+	outline-offset: -2px;
 
-  border-radius: var(--radius-1);
-  overflow: hidden;
+	border-radius: var(--radius-1);
+	overflow: hidden;
 }
 
 .SwatchTrigger span {
-  width: 100%;
-  height: 100%;
-  outline-offset: -1px;
-  outline: 1px solid transparent;
+	width: 100%;
+	height: 100%;
+	outline-offset: -1px;
+	outline: 1px solid transparent;
 }
 
 @media (hover: hover) {
-  .SwatchTrigger:hover {
-    outline: 2px solid var(--gray-12);
-  }
-  .SwatchTrigger:hover span {
-    outline-width: 0px;
-  }
+	.SwatchTrigger:hover {
+		outline: 2px solid var(--gray-12);
+	}
+	.SwatchTrigger:hover span {
+		outline-width: 0px;
+	}
 }
 
 .SwatchTrigger:focus-visible,
-.SwatchTrigger[data-state='open'] {
-  outline: 2px solid var(--gray-12);
+.SwatchTrigger[data-state="open"] {
+	outline: 2px solid var(--gray-12);
 }
 
 @media (min-width: 768px) {
-  .SwatchTrigger {
-    height: var(--space-8);
-  }
+	.SwatchTrigger {
+		height: var(--space-8);
+	}
 }
 
 .SwatchContent {
-  margin: auto;
+	margin: auto;
 }
 
 :global(:is(.dark, .dark-theme)) .SwatchContent {
-  background-color: var(--color-background);
+	background-color: var(--color-background);
 }

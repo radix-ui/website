@@ -1,19 +1,19 @@
-@import '@radix-ui/colors/violet.css';
+@import "@radix-ui/colors/violet.css";
 
 .SeparatorRoot {
-  background-color: var(--violet-6);
+	background-color: var(--violet-6);
 }
-.SeparatorRoot[data-orientation='horizontal'] {
-  height: 1px;
-  width: 100%;
+.SeparatorRoot[data-orientation="horizontal"] {
+	height: 1px;
+	width: 100%;
 }
-.SeparatorRoot[data-orientation='vertical'] {
-  height: 100%;
-  width: 1px;
+.SeparatorRoot[data-orientation="vertical"] {
+	height: 100%;
+	width: 1px;
 }
 
 .Text {
-  color: white;
-  font-size: 15px;
-  line-height: 20px;
+	color: white;
+	font-size: 15px;
+	line-height: 20px;
 }

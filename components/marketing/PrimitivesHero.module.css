@@ -1,181 +1,189 @@
 .DemoContainer {
-  background: var(--white-a3);
-  box-shadow: 0 0 0 1px var(--gray-a5);
-  border-radius: var(--radius-4);
-  /* Can't select text because the carousel is draggable */
-  user-select: none;
-  cursor: default;
+	background: var(--white-a3);
+	box-shadow: 0 0 0 1px var(--gray-a5);
+	border-radius: var(--radius-4);
+	/* Can't select text because the carousel is draggable */
+	user-select: none;
+	cursor: default;
 
-  .dark &,
-  .dark-theme & {
-    background: var(--black-a3);
-  }
+	.dark &,
+	.dark-theme & {
+		background: var(--black-a3);
+	}
 
-  &:where([data-component]) {
-    box-shadow: initial;
-  }
+	&:where([data-component]) {
+		box-shadow: initial;
+	}
 
-  &:where([data-component='dialog']) {
-    background: linear-gradient(120deg, var(--indigo-6), var(--crimson-5));
-    .dark &,
-    .dark-theme & {
-      background: linear-gradient(120deg, var(--indigo-4), var(--plum-3));
-    }
-  }
+	&:where([data-component="dialog"]) {
+		background: linear-gradient(120deg, var(--indigo-6), var(--crimson-5));
+		.dark &,
+		.dark-theme & {
+			background: linear-gradient(120deg, var(--indigo-4), var(--plum-3));
+		}
+	}
 
-  &:where([data-component='dropdown-menu']) {
-    background: linear-gradient(120deg, var(--crimson-5), var(--blue-5));
-    .dark &,
-    .dark-theme & {
-      background: linear-gradient(120deg, var(--plum-3), var(--blue-3));
-    }
-  }
+	&:where([data-component="dropdown-menu"]) {
+		background: linear-gradient(120deg, var(--crimson-5), var(--blue-5));
+		.dark &,
+		.dark-theme & {
+			background: linear-gradient(120deg, var(--plum-3), var(--blue-3));
+		}
+	}
 
-  &:where([data-component='popover']) {
-    background: linear-gradient(120deg, var(--blue-5), var(--lime-3));
-    .dark &,
-    .dark-theme & {
-      background: linear-gradient(120deg, var(--blue-3), var(--sand-6));
-    }
-  }
+	&:where([data-component="popover"]) {
+		background: linear-gradient(120deg, var(--blue-5), var(--lime-3));
+		.dark &,
+		.dark-theme & {
+			background: linear-gradient(120deg, var(--blue-3), var(--sand-6));
+		}
+	}
 
-  &:where([data-component='slider']) {
-    background: linear-gradient(120deg, var(--lime-3), var(--pink-4));
-    .dark &,
-    .dark-theme & {
-      background: linear-gradient(120deg, var(--sand-6), var(--pink-3));
-    }
-  }
+	&:where([data-component="slider"]) {
+		background: linear-gradient(120deg, var(--lime-3), var(--pink-4));
+		.dark &,
+		.dark-theme & {
+			background: linear-gradient(120deg, var(--sand-6), var(--pink-3));
+		}
+	}
 
-  &:where([data-component='scroll-area']) {
-    background: linear-gradient(120deg, var(--pink-4), var(--gold-5));
-    .dark &,
-    .dark-theme & {
-      background: linear-gradient(120deg, var(--pink-3), var(--gold-4));
-    }
-  }
+	&:where([data-component="scroll-area"]) {
+		background: linear-gradient(120deg, var(--pink-4), var(--gold-5));
+		.dark &,
+		.dark-theme & {
+			background: linear-gradient(120deg, var(--pink-3), var(--gold-4));
+		}
+	}
 
-  &:where([data-component='tabs']) {
-    background: linear-gradient(120deg, var(--gold-5), var(--tomato-5));
-    .dark &,
-    .dark-theme & {
-      background: linear-gradient(120deg, var(--gold-4), var(--crimson-4));
-    }
-  }
+	&:where([data-component="tabs"]) {
+		background: linear-gradient(120deg, var(--gold-5), var(--tomato-5));
+		.dark &,
+		.dark-theme & {
+			background: linear-gradient(120deg, var(--gold-4), var(--crimson-4));
+		}
+	}
 
-  &:where([data-component='accordion']) {
-    background: linear-gradient(120deg, var(--tomato-5), var(--indigo-7));
-    .dark &,
-    .dark-theme & {
-      background: linear-gradient(120deg, var(--crimson-4), var(--indigo-5));
-    }
-  }
+	&:where([data-component="accordion"]) {
+		background: linear-gradient(120deg, var(--tomato-5), var(--indigo-7));
+		.dark &,
+		.dark-theme & {
+			background: linear-gradient(120deg, var(--crimson-4), var(--indigo-5));
+		}
+	}
 
-  &:where([data-component='accordion']) {
-    background: linear-gradient(120deg, var(--tomato-5), var(--indigo-7));
-    .dark &,
-    .dark-theme & {
-      background: linear-gradient(120deg, var(--crimson-4), var(--indigo-5));
-    }
-  }
+	&:where([data-component="accordion"]) {
+		background: linear-gradient(120deg, var(--tomato-5), var(--indigo-7));
+		.dark &,
+		.dark-theme & {
+			background: linear-gradient(120deg, var(--crimson-4), var(--indigo-5));
+		}
+	}
 
-  &:where([data-component='radio-group']) {
-    background: linear-gradient(120deg, var(--indigo-7), var(--cyan-3));
-    .dark &,
-    .dark-theme & {
-      background: linear-gradient(120deg, var(--indigo-5), var(--cyan-7));
-    }
-  }
+	&:where([data-component="radio-group"]) {
+		background: linear-gradient(120deg, var(--indigo-7), var(--cyan-3));
+		.dark &,
+		.dark-theme & {
+			background: linear-gradient(120deg, var(--indigo-5), var(--cyan-7));
+		}
+	}
 
-  &:where([data-component='toggle-group']) {
-    background: linear-gradient(120deg, var(--cyan-3), var(--mint-5));
-    .dark &,
-    .dark-theme & {
-      background: linear-gradient(120deg, var(--cyan-7), var(--teal-6));
-    }
-  }
+	&:where([data-component="toggle-group"]) {
+		background: linear-gradient(120deg, var(--cyan-3), var(--mint-5));
+		.dark &,
+		.dark-theme & {
+			background: linear-gradient(120deg, var(--cyan-7), var(--teal-6));
+		}
+	}
 
-  &:where([data-component='switch']) {
-    background: linear-gradient(120deg, var(--mint-5), var(--red-3));
-    .dark &,
-    .dark-theme & {
-      background: linear-gradient(120deg, var(--teal-6), var(--plum-4));
-    }
-  }
+	&:where([data-component="switch"]) {
+		background: linear-gradient(120deg, var(--mint-5), var(--red-3));
+		.dark &,
+		.dark-theme & {
+			background: linear-gradient(120deg, var(--teal-6), var(--plum-4));
+		}
+	}
 }
 
 .FocusArea {
-  outline: 0;
-  border-radius: var(--radius-4);
-  &:focus {
-    box-shadow: 0 0 0 2px var(--blue-a8);
-  }
-  &:focus:not(:focus-visible) {
-    box-shadow: none;
-  }
+	outline: 0;
+	border-radius: var(--radius-4);
+	&:focus {
+		box-shadow: 0 0 0 2px var(--blue-a8);
+	}
+	&:focus:not(:focus-visible) {
+		box-shadow: none;
+	}
 }
 
 .CarouselArrowButton {
-  all: unset;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  position: relative;
-  height: var(--space-8);
-  width: var(--space-8);
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-  border: 0;
-  border-radius: 9999px;
-  outline: 0;
-  background-color: var(--color-panel-solid);
-  color: var(--gray-12);
-  box-shadow: var(--black-a7) 0px 2px 12px -5px, var(--black-a2) 0px 1px 3px;
-  will-change: transform, box-shadow, opacity;
-  transition: all 100ms;
+	all: unset;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	position: relative;
+	height: var(--space-8);
+	width: var(--space-8);
+	align-items: center;
+	justify-content: center;
+	z-index: 1;
+	border: 0;
+	border-radius: 9999px;
+	outline: 0;
+	background-color: var(--color-panel-solid);
+	color: var(--gray-12);
+	box-shadow:
+		var(--black-a7) 0px 2px 12px -5px,
+		var(--black-a2) 0px 1px 3px;
+	will-change: transform, box-shadow, opacity;
+	transition: all 100ms;
 
-  @media (hover: hover) {
-    &:hover {
-      box-shadow: var(--black-a6) 0px 3px 16px -5px, var(--black-a2) 0px 1px 3px;
+	@media (hover: hover) {
+		&:hover {
+			box-shadow:
+				var(--black-a6) 0px 3px 16px -5px,
+				var(--black-a2) 0px 1px 3px;
 
-      /* Fix a bug when hovering at button edges would cause the button to
+			/* Fix a bug when hovering at button edges would cause the button to
          jitter because of transform */
-      &::before {
-        content: '';
-        inset: -2;
-        border-radius: 100%;
-        position: absolute;
-      }
-    }
-  }
-  &:focus-visible:not(:active) {
-    box-shadow: var(--black-a7) 0px 2px 12px -5px, var(--black-a2) 0px 1px 3px;
-    outline: 2px solid var(--accent-8);
-  }
+			&::before {
+				content: "";
+				inset: -2;
+				border-radius: 100%;
+				position: absolute;
+			}
+		}
+	}
+	&:focus-visible:not(:active) {
+		box-shadow:
+			var(--black-a7) 0px 2px 12px -5px,
+			var(--black-a2) 0px 1px 3px;
+		outline: 2px solid var(--accent-8);
+	}
 
-  &:active {
-    transform: translateY(1px);
-    box-shadow: var(--black-a7) 0px 2px 10px -5px, var(--black-a2) 0px 1px 3px;
-    transition: opacity 100ms;
-  }
+	&:active {
+		transform: translateY(1px);
+		box-shadow:
+			var(--black-a7) 0px 2px 10px -5px,
+			var(--black-a2) 0px 1px 3px;
+		transition: opacity 100ms;
+	}
 
-  &:disabled {
-    opacity: 0;
-  }
+	&:disabled {
+		opacity: 0;
+	}
 
-  @media (hover: none) and (pointer: coarse) {
-    display: none;
-  }
+	@media (hover: none) and (pointer: coarse) {
+		display: none;
+	}
 }
 
 .GrabBox {
-  /* Fill in spaces between slides */
-  margin-right: calc(-1 * var(--space-5));
-  padding-right: var(--space-5);
+	/* Fill in spaces between slides */
+	margin-right: calc(-1 * var(--space-5));
+	padding-right: var(--space-5);
 
-  cursor: grab;
-  &:active {
-    cursor: grabbing;
-  }
+	cursor: grab;
+	&:active {
+		cursor: grabbing;
+	}
 }

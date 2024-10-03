@@ -1,61 +1,61 @@
 .GroupGrid {
-  justify-items: center;
-  justify-content: space-between;
-  row-gap: var(--space-7);
-  column-gap: var(--space-6);
+	justify-items: center;
+	justify-content: space-between;
+	row-gap: var(--space-7);
+	column-gap: var(--space-6);
 }
 
 @media (max-width: 350px) {
-  .GroupGrid {
-    grid-template-columns: repeat(5, 15px);
-  }
+	.GroupGrid {
+		grid-template-columns: repeat(5, 15px);
+	}
 }
 
 @media (min-width: 350px) and (max-width: 449px) {
-  .GroupGrid {
-    grid-template-columns: repeat(7, 15px);
-  }
+	.GroupGrid {
+		grid-template-columns: repeat(7, 15px);
+	}
 }
 
 @media (min-width: 450px) and (max-width: 549px) {
-  .GroupGrid {
-    grid-template-columns: repeat(9, 15px);
-  }
+	.GroupGrid {
+		grid-template-columns: repeat(9, 15px);
+	}
 }
 
 @media (min-width: 550px) and (max-width: 649px) {
-  .GroupGrid {
-    grid-template-columns: repeat(10, 15px);
-  }
+	.GroupGrid {
+		grid-template-columns: repeat(10, 15px);
+	}
 }
 
 @media (min-width: 650px) and (max-width: 749px) {
-  .GroupGrid {
-    grid-template-columns: repeat(12, 15px);
-  }
+	.GroupGrid {
+		grid-template-columns: repeat(12, 15px);
+	}
 }
 
 @media (min-width: 750px) and (max-width: 899px) {
-  .GroupGrid {
-    grid-template-columns: repeat(4, 15px);
-  }
+	.GroupGrid {
+		grid-template-columns: repeat(4, 15px);
+	}
 }
 
 @media (min-width: 900px) and (max-width: 1049px) {
-  .GroupGrid {
-    grid-template-columns: repeat(5, 15px);
-  }
+	.GroupGrid {
+		grid-template-columns: repeat(5, 15px);
+	}
 }
 
 @media (min-width: 1050px) {
-  .GroupGrid {
-    grid-template-columns: repeat(6, 15px);
-  }
+	.GroupGrid {
+		grid-template-columns: repeat(6, 15px);
+	}
 }
 
 @media (min-width: 750px) {
-  .IconsContainer {
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-9);
-  }
+	.IconsContainer {
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--space-9);
+	}
 }

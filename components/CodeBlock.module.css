@@ -1,114 +1,114 @@
 .CodeBlockRoot {
-  --code-block-radius: var(--radius-4);
-  position: relative;
-  box-sizing: border-box;
-  background-color: var(--code-block-background);
-  border-radius: var(--code-block-radius);
+	--code-block-radius: var(--radius-4);
+	position: relative;
+	box-sizing: border-box;
+	background-color: var(--code-block-background);
+	border-radius: var(--code-block-radius);
 }
 
 .CodeBlockRoot::after {
-  content: '';
-  inset: 0;
-  position: absolute;
-  box-shadow: 0 0 0 1px var(--code-block-border);
-  border-radius: var(--code-block-radius);
-  pointer-events: none;
+	content: "";
+	inset: 0;
+	position: absolute;
+	box-shadow: 0 0 0 1px var(--code-block-border);
+	border-radius: var(--code-block-radius);
+	pointer-events: none;
 }
 
 .CodeBlockHeader {
-  background-color: var(--code-block-header-background);
-  border-radius: var(--code-block-radius) var(--code-block-radius) 0 0;
+	background-color: var(--code-block-header-background);
+	border-radius: var(--code-block-radius) var(--code-block-radius) 0 0;
 }
 
 .CodeBlockLivePreview {
-  text-wrap: pretty;
-  background-color: var(--color-background);
-  border-radius: var(--code-block-radius) var(--code-block-radius) 0 0;
-  box-shadow: inset 0 -1px var(--code-block-border);
+	text-wrap: pretty;
+	background-color: var(--color-background);
+	border-radius: var(--code-block-radius) var(--code-block-radius) 0 0;
+	box-shadow: inset 0 -1px var(--code-block-border);
 }
 
 .CodeBlockLivePreviewInner {
-  padding: var(--space-4);
+	padding: var(--space-4);
 
-  /* Avoid subtle alignment issues with inline elements rendered in the live preview */
-  line-height: 1;
+	/* Avoid subtle alignment issues with inline elements rendered in the live preview */
+	line-height: 1;
 }
 
-.CodeBlockLivePreviewInner[data-scroll='true'] {
-  width: max-content;
+.CodeBlockLivePreviewInner[data-scroll="true"] {
+	width: max-content;
 }
 
 .CodeBlockContent {
-  box-sizing: border-box;
-  position: relative;
-  height: 100%;
+	box-sizing: border-box;
+	position: relative;
+	height: 100%;
 }
 
 /* Set copy button positioning only when within code block content */
 .CodeBlockContent .CodeBlockCopyButton {
-  position: absolute;
-  top: 7px;
-  right: 7px;
+	position: absolute;
+	top: 7px;
+	right: 7px;
 
-  transition: opacity 80ms ease-out;
-  opacity: 0;
+	transition: opacity 80ms ease-out;
+	opacity: 0;
 }
 
 @media (max-width: 767px) {
-  .CodeBlockContent .CodeBlockCopyButton {
-    display: none;
-  }
+	.CodeBlockContent .CodeBlockCopyButton {
+		display: none;
+	}
 }
 
 .CodeBlockContent .CodeBlockCopyButton:focus-visible {
-  opacity: 1;
+	opacity: 1;
 }
 
 @media (hover: hover) {
-  .CodeBlockContent:hover .CodeBlockCopyButton {
-    opacity: 1;
-  }
+	.CodeBlockContent:hover .CodeBlockCopyButton {
+		opacity: 1;
+	}
 }
 
 .CodeBlockPre {
-  --letter-spacing: var(--letter-spacing-2);
+	--letter-spacing: var(--letter-spacing-2);
 
-  box-sizing: border-box;
-  overflow: hidden;
-  height: 100%;
-  padding: var(--space-3) var(--space-4);
+	box-sizing: border-box;
+	overflow: hidden;
+	height: 100%;
+	padding: var(--space-3) var(--space-4);
 
-  font-family: var(--code-font-family);
-  font-size: calc(var(--font-size-2) * var(--code-font-size-adjust));
-  line-height: 22px;
-  white-space: pre;
+	font-family: var(--code-font-family);
+	font-size: calc(var(--font-size-2) * var(--code-font-size-adjust));
+	line-height: 22px;
+	white-space: pre;
 }
 
 .CodeBlockPre code {
-  all: unset;
-  display: contents;
+	all: unset;
+	display: contents;
 }
 
-.CodeBlockPre [data-highlighted='true'] {
-  background-color: var(--accent-a3);
-  padding-left: var(--space-4);
-  padding-right: var(--space-4);
-  margin-left: calc(-1 * var(--space-4));
-  margin-right: calc(-1 * var(--space-4));
+.CodeBlockPre [data-highlighted="true"] {
+	background-color: var(--accent-a3);
+	padding-left: var(--space-4);
+	padding-right: var(--space-4);
+	margin-left: calc(-1 * var(--space-4));
+	margin-right: calc(-1 * var(--space-4));
 }
 
-.CodeBlockPre [data-invert-line-highlight='true'] [data-highlighted='true'] {
-  background-color: transparent;
-  padding: unset;
-  margin: unset;
+.CodeBlockPre [data-invert-line-highlight="true"] [data-highlighted="true"] {
+	background-color: transparent;
+	padding: unset;
+	margin: unset;
 }
 
-.CodeBlockPre [data-invert-line-highlight='true'] [data-highlighted='false'],
-.CodeBlockPre [data-invert-line-highlight='true'] [data-highlighted='false'] * {
-  color: var(--gray-a8);
+.CodeBlockPre [data-invert-line-highlight="true"] [data-highlighted="false"],
+.CodeBlockPre [data-invert-line-highlight="true"] [data-highlighted="false"] * {
+	color: var(--gray-a8);
 }
 
-.CodeBlockPre [data-invert-line-highlight='true'] [data-highlighted],
-.CodeBlockPre [data-invert-line-highlight='true'] [data-highlighted] * {
-  transition: color 100ms ease-in-out;
+.CodeBlockPre [data-invert-line-highlight="true"] [data-highlighted],
+.CodeBlockPre [data-invert-line-highlight="true"] [data-highlighted] * {
+	transition: color 100ms ease-in-out;
 }

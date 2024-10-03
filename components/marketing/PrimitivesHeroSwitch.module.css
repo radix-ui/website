@@ -1,44 +1,46 @@
 .Switch {
-  all: unset;
-  width: 42px;
-  height: 25px;
-  background-color: var(--gray-a5);
-  border-radius: 9999px;
-  position: relative;
-  transition: background-color 100ms, box-shadow 100ms;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	all: unset;
+	width: 42px;
+	height: 25px;
+	background-color: var(--gray-a5);
+	border-radius: 9999px;
+	position: relative;
+	transition:
+		background-color 100ms,
+		box-shadow 100ms;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
-  &[data-state='checked'] {
-    background-color: #2c333b;
-  }
+	&[data-state="checked"] {
+		background-color: #2c333b;
+	}
 
-  &:where(.dark, .dark-theme) {
-    box-shadow: 0 0 0 1px var(--gray-a8);
-  }
+	&:where(.dark, .dark-theme) {
+		box-shadow: 0 0 0 1px var(--gray-a8);
+	}
 
-  &:where(.dark, .dark-theme) &[data-state='checked'] {
-    background-color: #141417;
-    box-shadow: 0 0 0 1px var(--gray-a6);
-  }
+	&:where(.dark, .dark-theme) &[data-state="checked"] {
+		background-color: #141417;
+		box-shadow: 0 0 0 1px var(--gray-a6);
+	}
 
-  &:focus-visible {
-    box-shadow: 0 0 0 2px var(--accent-a8);
-  }
+	&:focus-visible {
+		box-shadow: 0 0 0 2px var(--accent-a8);
+	}
 }
 
 .Thumb {
-  all: unset;
-  display: block;
-  width: 21px;
-  height: 21px;
-  background-color: white;
-  border-radius: 9999px;
-  box-shadow: 0 2px 2px var(--black-a6);
-  transition: transform 100ms;
-  transform: translateX(2px);
-  will-change: transform;
+	all: unset;
+	display: block;
+	width: 21px;
+	height: 21px;
+	background-color: white;
+	border-radius: 9999px;
+	box-shadow: 0 2px 2px var(--black-a6);
+	transition: transform 100ms;
+	transform: translateX(2px);
+	will-change: transform;
 
-  &[data-state='checked'] {
-    transform: translateX(19px);
-  }
+	&[data-state="checked"] {
+		transform: translateX(19px);
+	}
 }

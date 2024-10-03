@@ -1,106 +1,108 @@
 .Content {
-  border-radius: 6px;
-  padding: 20px;
-  width: 300px;
-  background-color: white;
-  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
-  animation-duration: 400ms;
-  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, opacity;
-  &[data-side='top'] {
-    animation-name: slideDownAndFade;
-  }
-  &[data-side='right'] {
-    animation-name: slideLeftAndFade;
-  }
-  &[data-side='bottom'] {
-    animation-name: slideUpAndFade;
-  }
-  &[data-side='left'] {
-    animation-name: slideRightAndFade;
-  }
+	border-radius: 6px;
+	padding: 20px;
+	width: 300px;
+	background-color: white;
+	box-shadow:
+		hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+		hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+	animation-duration: 400ms;
+	animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+	will-change: transform, opacity;
+	&[data-side="top"] {
+		animation-name: slideDownAndFade;
+	}
+	&[data-side="right"] {
+		animation-name: slideLeftAndFade;
+	}
+	&[data-side="bottom"] {
+		animation-name: slideUpAndFade;
+	}
+	&[data-side="left"] {
+		animation-name: slideRightAndFade;
+	}
 }
 
 .Arrow {
-  fill: white;
+	fill: white;
 }
 
 .ImageTrigger {
-  all: unset;
-  cursor: pointer;
-  border-radius: 100%;
-  display: inline-block;
-  &:focus {
-    box-shadow: 0 0 0 2px white;
-  }
+	all: unset;
+	cursor: pointer;
+	border-radius: 100%;
+	display: inline-block;
+	&:focus {
+		box-shadow: 0 0 0 2px white;
+	}
 }
 
 .Image {
-  display: block;
-  border-radius: 100%;
-  &:global(.normal) {
-    width: 45px;
-    height: 45px;
-  }
-  &:global(.large) {
-    width: 60px;
-    height: 60px;
-  }
+	display: block;
+	border-radius: 100%;
+	&:global(.normal) {
+		width: 45px;
+		height: 45px;
+	}
+	&:global(.large) {
+		width: 60px;
+		height: 60px;
+	}
 }
 
 .Text {
-  margin: 0;
-  color: var(--mauve-12);
-  font-size: 15px;
-  line-height: 1.5;
-  &:global(.faded) {
-    color: var(--mauve-10);
-  }
-  &:global(.bold) {
-    font-weight: 500;
-  }
+	margin: 0;
+	color: var(--mauve-12);
+	font-size: 15px;
+	line-height: 1.5;
+	&:global(.faded) {
+		color: var(--mauve-10);
+	}
+	&:global(.bold) {
+		font-weight: 500;
+	}
 }
 
 @keyframes slideUpAndFade {
-  0% {
-    opacity: 0;
-    transform: translateY(2px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+	0% {
+		opacity: 0;
+		transform: translateY(2px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 @keyframes slideRightAndFade {
-  0% {
-    opacity: 0;
-    transform: translateX(-2px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
+	0% {
+		opacity: 0;
+		transform: translateX(-2px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
 }
 
 @keyframes slideDownAndFade {
-  0% {
-    opacity: 0;
-    transform: translateY(-2px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+	0% {
+		opacity: 0;
+		transform: translateY(-2px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 @keyframes slideLeftAndFade {
-  0% {
-    opacity: 0;
-    transform: translateX(2px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
+	0% {
+		opacity: 0;
+		transform: translateX(2px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
 }

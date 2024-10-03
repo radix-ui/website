@@ -1,49 +1,49 @@
 .ColorFieldRoot {
-  display: contents;
+	display: contents;
 }
 
 .ColorFieldSwatchWrapper {
-  height: var(--space-4);
-  width: var(--space-4);
-  position: relative;
-  border-radius: 1.5px;
+	height: var(--space-4);
+	width: var(--space-4);
+	position: relative;
+	border-radius: 1.5px;
 }
 
 .ColorFieldSwatch {
-  display: block;
-  padding: 0;
-  border: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: inherit;
-  -webkit-tap-highlight-color: transparent;
+	display: block;
+	padding: 0;
+	border: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	border-radius: inherit;
+	-webkit-tap-highlight-color: transparent;
 }
 
 .ColorFieldSwatch:disabled {
-  opacity: 0.75;
+	opacity: 0.75;
 }
 
 .ColorFieldSwatch:focus-visible {
-  outline-offset: 2px;
-  outline: 2px solid var(--color-focus-root);
+	outline-offset: 2px;
+	outline: 2px solid var(--color-focus-root);
 }
 
 .ColorFieldSwatch::-webkit-color-swatch-wrapper,
 .ColorFieldSwatch::-webkit-color-swatch {
-  border: 0;
-  padding: 0;
+	border: 0;
+	padding: 0;
 }
 
 .ColorFieldSwatch::-moz-color-swatch {
-  border: 0;
-  padding: 0;
+	border: 0;
+	padding: 0;
 }
 
 .ColorFieldSwatchBorder {
-  position: absolute;
-  inset: 0;
-  border: 1px solid var(--gray-a6);
-  border-radius: inherit;
-  pointer-events: none;
+	position: absolute;
+	inset: 0;
+	border: 1px solid var(--gray-a6);
+	border-radius: inherit;
+	pointer-events: none;
 }

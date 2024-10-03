@@ -1,23 +1,23 @@
 .PrimitivesSearchMobileInput {
-  display: block;
-  margin: 0;
-  padding: 0;
-  outline: 0;
-  border: 0;
-  appearance: none;
-  color: var(--gray-12);
-  font-family: inherit;
-  font-size: var(--font-size-3);
-  line-height: var(--line-height-3);
-  width: 100%;
-  display: flex;
-  align-items: center;
-  border-radius: 100px;
-  gap: var(--space-2);
-  padding-left: var(--space-7);
-  padding-right: 0;
+	display: block;
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	border: 0;
+	appearance: none;
+	color: var(--gray-12);
+	font-family: inherit;
+	font-size: var(--font-size-3);
+	line-height: var(--line-height-3);
+	width: 100%;
+	display: flex;
+	align-items: center;
+	border-radius: 100px;
+	gap: var(--space-2);
+	padding-left: var(--space-7);
+	padding-right: 0;
 
-  background: var(--gray-a3);
-  padding-top: var(--space-2);
-  padding-bottom: var(--space-2);
+	background: var(--gray-a3);
+	padding-top: var(--space-2);
+	padding-bottom: var(--space-2);
 }

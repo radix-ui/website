@@ -1,121 +1,123 @@
 .Root {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  box-shadow: 0 2px 10px var(--black-a4);
+	display: flex;
+	flex-direction: column;
+	width: 300px;
+	box-shadow: 0 2px 10px var(--black-a4);
 }
 
 .List {
-  flex-shrink: 0;
-  display: flex;
-  border-bottom: 1px solid var(--mauve-6);
+	flex-shrink: 0;
+	display: flex;
+	border-bottom: 1px solid var(--mauve-6);
 }
 
 .Trigger {
-  all: unset;
-  font-family: inherit;
-  background-color: white;
-  padding: 0 20px;
-  height: 45px;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
-  line-height: 1;
-  color: var(--mauve-11);
-  user-select: none;
-  &:first-child {
-    border-top-left-radius: 6px;
-  }
-  &:last-child {
-    border-top-right-radius: 6px;
-  }
-  &:hover {
-    color: var(--violet-11);
-  }
-  &[data-state='active'] {
-    color: var(--violet-11);
-    box-shadow: inset 0 -1px 0 0 currentColor, 0 1px 0 0 currentColor;
-  }
-  &:focus {
-    position: relative;
-    box-shadow: 0 0 0 2px black;
-  }
+	all: unset;
+	font-family: inherit;
+	background-color: white;
+	padding: 0 20px;
+	height: 45px;
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 15px;
+	line-height: 1;
+	color: var(--mauve-11);
+	user-select: none;
+	&:first-child {
+		border-top-left-radius: 6px;
+	}
+	&:last-child {
+		border-top-right-radius: 6px;
+	}
+	&:hover {
+		color: var(--violet-11);
+	}
+	&[data-state="active"] {
+		color: var(--violet-11);
+		box-shadow:
+			inset 0 -1px 0 0 currentColor,
+			0 1px 0 0 currentColor;
+	}
+	&:focus {
+		position: relative;
+		box-shadow: 0 0 0 2px black;
+	}
 }
 
 .Content {
-  flex-grow: 1;
-  padding: 20px;
-  background-color: white;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-  outline: none;
-  &:focus {
-    box-shadow: 0 0 0 2px black;
-  }
+	flex-grow: 1;
+	padding: 20px;
+	background-color: white;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+	outline: none;
+	&:focus {
+		box-shadow: 0 0 0 2px black;
+	}
 }
 
 .Text {
-  margin-top: 0;
-  margin-bottom: 20px;
-  color: var(--mauve-11);
-  font-size: 15px;
-  line-height: 1.5;
+	margin-top: 0;
+	margin-bottom: 20px;
+	color: var(--mauve-11);
+	font-size: 15px;
+	line-height: 1.5;
 }
 
 .Fieldset {
-  all: unset;
-  margin-bottom: 15px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+	all: unset;
+	margin-bottom: 15px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
 }
 
 .Label {
-  font-size: 13px;
-  line-height: 1;
-  margin-bottom: 10px;
-  color: var(--violet-12);
-  display: block;
-  user-select: none;
+	font-size: 13px;
+	line-height: 1;
+	margin-bottom: 10px;
+	color: var(--violet-12);
+	display: block;
+	user-select: none;
 }
 
 .Input {
-  all: unset;
-  flex: 1 0 auto;
-  border-radius: 4px;
-  padding: 0 10px;
-  font-size: 15px;
-  line-height: 1;
-  color: var(--violet-11);
-  box-shadow: 0 0 0 1px var(--violet-7);
-  height: 35px;
-  &:focus {
-    box-shadow: 0 0 0 2px var(--violet-8);
-  }
+	all: unset;
+	flex: 1 0 auto;
+	border-radius: 4px;
+	padding: 0 10px;
+	font-size: 15px;
+	line-height: 1;
+	color: var(--violet-11);
+	box-shadow: 0 0 0 1px var(--violet-7);
+	height: 35px;
+	&:focus {
+		box-shadow: 0 0 0 2px var(--violet-8);
+	}
 }
 
 .Button {
-  all: unset;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  padding: 0 15px;
-  font-size: 15px;
-  line-height: 1;
-  font-weight: 500;
-  height: 35px;
-  &:global(.green) {
-    background-color: var(--green-4);
-    color: var(--green-11);
-    &:hover {
-      background-color: var(--green-5);
-    }
-    &:focus {
-      box-shadow: 0 0 0 2px var(--green-7);
-    }
-  }
+	all: unset;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 4px;
+	padding: 0 15px;
+	font-size: 15px;
+	line-height: 1;
+	font-weight: 500;
+	height: 35px;
+	&:global(.green) {
+		background-color: var(--green-4);
+		color: var(--green-11);
+		&:hover {
+			background-color: var(--green-5);
+		}
+		&:focus {
+			box-shadow: 0 0 0 2px var(--green-7);
+		}
+	}
 }

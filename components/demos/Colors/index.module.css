@@ -1,47 +1,47 @@
 .BaseButton {
-  all: unset;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  height: var(--space-6);
-  padding-inline: var(--space-4);
-  border-radius: var(--radius-3);
-  font-weight: 600;
-  font-size: 14px;
+	all: unset;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	height: var(--space-6);
+	padding-inline: var(--space-4);
+	border-radius: var(--radius-3);
+	font-weight: 600;
+	font-size: 14px;
 }
 
 .MenuItemButton {
-  padding-inline: var(--space-5);
-  justify-content: flex-start;
-  max-width: 250px;
-  color: var(--gray-12);
-  border-radius: 0;
-  font-weight: normal;
-  font-size: 12px;
-  background-color: transparent;
-  font-variant-numeric: tabular-nums;
+	padding-inline: var(--space-5);
+	justify-content: flex-start;
+	max-width: 250px;
+	color: var(--gray-12);
+	border-radius: 0;
+	font-weight: normal;
+	font-size: 12px;
+	background-color: transparent;
+	font-variant-numeric: tabular-nums;
 }
 
 .MenuItemButton:hover {
-  background-color: var(--color-4);
+	background-color: var(--color-4);
 }
 
 .MenuItemButton:active,
-.MenuItemButton[data-state='active'] {
-  background-color: var(--color-5);
+.MenuItemButton[data-state="active"] {
+	background-color: var(--color-5);
 }
 
-.MenuItemButton[data-state='selected'],
-.MenuItemButton[data-state='selected']:hover,
-.MenuItemButton[data-state='selected']:active {
-  background-color: var(--color-4);
+.MenuItemButton[data-state="selected"],
+.MenuItemButton[data-state="selected"]:hover,
+.MenuItemButton[data-state="selected"]:active {
+	background-color: var(--color-4);
 }
 
-.MenuItemButton[data-state='highlighted'] {
-  background-color: var(--color-5);
+.MenuItemButton[data-state="highlighted"] {
+	background-color: var(--color-5);
 }
 
-.MenuItemButton[data-state='highlighted']:hover,
-.MenuItemButton[data-state='highlighted']:active {
-  background-color: var(--color-6);
+.MenuItemButton[data-state="highlighted"]:hover,
+.MenuItemButton[data-state="highlighted"]:active {
+	background-color: var(--color-6);
 }

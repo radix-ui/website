@@ -1,107 +1,109 @@
 .Accordion {
-  background: var(--color-panel-solid);
-  border-radius: var(--radius-4);
-  box-shadow: 0 0 0 1px var(--gray-a3), var(--shadow-4);
-  width: 80%;
+	background: var(--color-panel-solid);
+	border-radius: var(--radius-4);
+	box-shadow:
+		0 0 0 1px var(--gray-a3),
+		var(--shadow-4);
+	width: 80%;
 }
 
 .Item {
-  overflow: hidden;
-  margin-top: 1px;
-  box-shadow: 0 1px 0 var(--gray-6);
+	overflow: hidden;
+	margin-top: 1px;
+	box-shadow: 0 1px 0 var(--gray-6);
 
-  &:first-child {
-    margin-top: 0;
-    border-top-left-radius: var(--radius-4);
-    border-top-right-radius: var(--radius-4);
-  }
+	&:first-child {
+		margin-top: 0;
+		border-top-left-radius: var(--radius-4);
+		border-top-right-radius: var(--radius-4);
+	}
 
-  &:last-child {
-    border-bottom-left-radius: var(--radius-4);
-    border-bottom-right-radius: var(--radius-4);
-  }
+	&:last-child {
+		border-bottom-left-radius: var(--radius-4);
+		border-bottom-right-radius: var(--radius-4);
+	}
 
-  &:focus-within {
-    position: relative;
-    z-index: 1;
-    box-shadow: 0 0 0 2px var(--accent-8);
-  }
+	&:focus-within {
+		position: relative;
+		z-index: 1;
+		box-shadow: 0 0 0 2px var(--accent-8);
+	}
 }
 
 .Header {
-  all: unset;
-  display: flex;
+	all: unset;
+	display: flex;
 }
 
 .Trigger {
-  all: unset;
-  padding: 0 var(--space-4);
-  height: var(--space-8);
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-family: var(--font-sans);
-  font-size: var(--font-size-2);
-  line-height: 1;
-  color: var(--gray-12);
-  transition: box-shadow 300ms;
+	all: unset;
+	padding: 0 var(--space-4);
+	height: var(--space-8);
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-family: var(--font-sans);
+	font-size: var(--font-size-2);
+	line-height: 1;
+	color: var(--gray-12);
+	transition: box-shadow 300ms;
 
-  &[data-state='open'] {
-    box-shadow: 0 1px 0 var(--gray-6);
-  }
+	&[data-state="open"] {
+		box-shadow: 0 1px 0 var(--gray-6);
+	}
 
-  @media (hover: hover) {
-    &:hover {
-      background-color: var(--gray-a2);
-    }
-  }
+	@media (hover: hover) {
+		&:hover {
+			background-color: var(--gray-a2);
+		}
+	}
 }
 
 .Content {
-  overflow: hidden;
-  font-size: var(--font-size-2);
-  color: var(--gray-a11);
-  background-color: var(--gray-a2);
-  line-height: 1.5;
-  margin: 1px;
+	overflow: hidden;
+	font-size: var(--font-size-2);
+	color: var(--gray-a11);
+	background-color: var(--gray-a2);
+	line-height: 1.5;
+	margin: 1px;
 
-  &[data-state='open'] {
-    animation: slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1) forwards;
-  }
+	&[data-state="open"] {
+		animation: slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1) forwards;
+	}
 
-  &[data-state='closed'] {
-    animation: slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1) forwards;
-  }
+	&[data-state="closed"] {
+		animation: slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1) forwards;
+	}
 }
 
 .ContentText {
-  padding: 15px 20px;
+	padding: 15px 20px;
 }
 
 .Chevron {
-  color: var(--gray-a9);
-  transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
+	color: var(--gray-a9);
+	transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
 
-  [data-state='open'] & {
-    transform: rotate(180deg);
-  }
+	[data-state="open"] & {
+		transform: rotate(180deg);
+	}
 }
 
 @keyframes slideDown {
-  from {
-    height: 0;
-  }
-  to {
-    height: var(--radix-accordion-content-height);
-  }
+	from {
+		height: 0;
+	}
+	to {
+		height: var(--radix-accordion-content-height);
+	}
 }
 
 @keyframes slideUp {
-  from {
-    height: var(--radix-accordion-content-height);
-  }
-  to {
-    height: 0;
-  }
+	from {
+		height: var(--radix-accordion-content-height);
+	}
+	to {
+		height: 0;
+	}
 }
