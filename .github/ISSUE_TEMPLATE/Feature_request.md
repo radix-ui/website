@@ -1,6 +1,6 @@
 ---
-name: 'Feature request'
-about: 'Suggest an idea for a feature on the site'
+name: "Feature request"
+about: "Suggest an idea for a feature on the site"
 ---
 
 ## Feature request

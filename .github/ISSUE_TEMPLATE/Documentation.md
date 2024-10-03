@@ -1,6 +1,6 @@
 ---
-name: 'Documentation'
-about: 'Suggestions for Radix documentation'
+name: "Documentation"
+about: "Suggestions for Radix documentation"
 ---
 
 ## Documentation

@@ -1,6 +1,6 @@
 ---
-name: 'Question'
-about: 'For usage questions, please use Stack Overflow or GitHub Discussions'
+name: "Question"
+about: "For usage questions, please use Stack Overflow or GitHub Discussions"
 ---
 
 ## Question
