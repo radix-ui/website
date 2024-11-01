@@ -168,7 +168,7 @@ function MyComponent () {
 			<SunIcon />
 			<ImageIcon />
 		</div>
-	y)
+	)
 }
 `.trim()}
 									</CodeBlock.Code>
