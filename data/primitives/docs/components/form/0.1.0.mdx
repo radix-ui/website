@@ -397,14 +397,14 @@ When no `children` are provided, `Form.Message` will render a default error mess
 
 ```jsx
 // will yield "This value is missing"
-<Form.Message match="missingValue" />
+<Form.Message match="valueMissing" />
 ```
 
 You can provide a more meaningful message by passing your own `children`. This is also useful for internationalization.
 
 ```jsx
 // will yield "Please provide a name"
-<Form.Message match="missingValue">__Please provide a name__</Form.Message>
+<Form.Message match="valueMissing">__Please provide a name__</Form.Message>
 ```
 
 ### Custom validation
@@ -560,7 +560,7 @@ In addition, this provides control over when to reset single server errors. For 
 		type="email"
 		__onChange__={() => setServerErrors((prev) => ({ ...prev, email: false }))}
 	/>
-	<Form.Message match="missingValue">Please enter your email.</Form.Message>
+	<Form.Message match="valueMissing">Please enter your email.</Form.Message>
 	<Form.Message match="typeMismatch" forceMatch={serverErrors.email}>
 		Please provide a valid email.
 	</Form.Message>
