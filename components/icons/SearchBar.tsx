@@ -1,8 +1,7 @@
 import React from "react";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { Flex, Separator } from "@radix-ui/themes";
-// @ts-expect-error
-import AutosizeInput from "react-input-autosize";
+import { AutosizeInput } from "../AutosizeInput";
 
 import styles from "./SearchBar.module.css";
 
@@ -32,13 +31,13 @@ export const SearchBar = ({ value, onValueChange }: SearchBarProps) => {
 				/>
 
 				<AutosizeInput
-					ref={inputRef}
+					inputRef={inputRef}
 					autoComplete="off"
 					placeholder="Search"
 					name="form-field-name"
 					value={value}
 					className={styles.SearchBarInput}
-					onChange={(event: any) => onValueChange(event.target.value)}
+					onChange={(event) => onValueChange(event.target.value)}
 				/>
 			</Flex>
 
