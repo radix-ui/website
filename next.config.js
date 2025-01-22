@@ -52,12 +52,22 @@ module.exports = {
 			},
 			{
 				source: "/docs/primitives/utilities/aspect-ratio/:slug*",
-				destination: "/primitives/docs/components/aspect-ratio/:slug*",
+				destination: "/primitives/docs/components/aspect-ratio",
 				permanent: true,
 			},
 			{
 				source: "/docs/primitives/utilities/label/:slug*",
-				destination: "/primitives/docs/components/label/:slug*",
+				destination: "/primitives/docs/components/label",
+				permanent: true,
+			},
+			{
+				source: "/primitives/docs/components/:slug/:version",
+				destination: "/primitives/docs/components/:slug",
+				permanent: true,
+			},
+			{
+				source: "/primitives/docs/utilities/:slug/:version",
+				destination: "/primitives/docs/utilities/:slug",
 				permanent: true,
 			},
 			{
