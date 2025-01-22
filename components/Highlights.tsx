@@ -75,27 +75,11 @@ export function Highlights({ features }: { features: React.ReactNode[] }) {
 						<Separator size="2" mb="4" />
 					</Box>
 
-					<Flex mb="2" align="center">
-						<Select.Root
-							size="2"
-							value={frontmatter.version}
-							onValueChange={(value) =>
-								router.push(`./${frontmatter.name}/${value}`)
-							}
-						>
-							<Select.Trigger variant="ghost" color="gray" />
-							<Select.Content className="radix-themes-custom-fonts">
-								{(frontmatter.versions || []).map((v, i) => {
-									return (
-										<Select.Item key={v} value={v}>
-											{v}
-											{i === 0 && " (latest)"}
-										</Select.Item>
-									);
-								})}
-							</Select.Content>
-						</Select.Root>
-					</Flex>
+					{frontmatter.version && (
+						<Text size="2" color="gray" as="p">
+							Version: {frontmatter.version}
+						</Text>
+					)}
 
 					{frontmatter.gzip && (
 						<Text size="2" color="gray" as="p">
@@ -133,24 +117,6 @@ export function Highlights({ features }: { features: React.ReactNode[] }) {
 									target="_blank"
 								>
 									View source
-									<ArrowTopRightIcon style={{ color: "var(--gray-9)" }} />
-								</Link>
-							</Flex>
-						</Box>
-						<Box>
-							<Flex
-								asChild
-								display="inline-flex"
-								align="center"
-								position="relative"
-								gap="1"
-							>
-								<Link
-									size="2"
-									href={`https://www.npmjs.com/package/@radix-ui/react-${publishedName}`}
-									target="_blank"
-								>
-									View on npm
 									<ArrowTopRightIcon style={{ color: "var(--gray-9)" }} />
 								</Link>
 							</Flex>
