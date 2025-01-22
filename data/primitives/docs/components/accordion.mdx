@@ -12,10 +12,18 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/accordion
 	associated section of content.
 </Description>
 
+<HeroContainer>
+	<AccordionDemo />
+</HeroContainer>
+
+<HeroCodeBlock folder="Accordion" />
+
 <Highlights
 	features={[
 		"Full keyboard navigation.",
-		"Can expand only one panel at a time.",
+		"Supports horizontal/vertical orientation.",
+		"Supports Right to Left direction.",
+		"Can expand one or multiple items.",
 		"Can be controlled or uncontrolled.",
 	]}
 />
@@ -30,7 +38,7 @@ npm install @radix-ui/react-accordion
 
 ## Anatomy
 
-Import the components and piece the parts together.
+Import all parts and piece them together.
 
 ```jsx
 import * as Accordion from "@radix-ui/react-accordion";
@@ -39,78 +47,13 @@ export default () => (
 	<Accordion.Root>
 		<Accordion.Item>
 			<Accordion.Header>
-				<Accordion.Button />
-			<Accordion.Header>
-			<Accordion.Panel />
+				<Accordion.Trigger />
+			</Accordion.Header>
+			<Accordion.Content />
 		</Accordion.Item>
 	</Accordion.Root>
 );
 ```
-
-## Basic example
-
-Create your styled accordion component from the primitive parts.
-
-```jsx
-import { styled } from "path-to/stitches.config";
-import * as Accordion from "@radix-ui/react-accordion";
-
-const StyledAccordion = styled(Accordion.Root, {
-	borderTop: "1px solid gainsboro",
-});
-
-const StyledItem = styled(Accordion.Item, {
-	borderBottom: "1px solid gainsboro",
-});
-
-const StyledHeader = styled(Accordion.Header, {
-	margin: 0,
-	display: "flex",
-});
-
-const StyledButton = styled(Accordion.Button, {
-	backgroundColor: "transparent",
-	border: "none",
-	padding: 10,
-	flex: 1,
-	textAlign: "left",
-});
-
-const StyledPanel = styled(Accordion.Panel, {
-	padding: 10,
-});
-
-export default () => (
-	<StyledAccordion>
-		<StyledItem value="item-1">
-			<StyledHeader>
-				<StyledButton>Item 1</StyledButton>
-			</StyledHeader>
-			<StyledPanel>Here goes the content for the accordion item 1.</StyledPanel>
-		</StyledItem>
-
-		<StyledItem value="item-2">
-			<StyledHeader>
-				<StyledButton>Item 2</StyledButton>
-			</StyledHeader>
-			<StyledPanel>Here goes the content for the accordion item 2.</StyledPanel>
-		</StyledItem>
-
-		<StyledItem value="item-3">
-			<StyledHeader>
-				<StyledButton>Item 3</StyledButton>
-			</StyledHeader>
-			<StyledPanel>Here goes the content for the accordion item 3.</StyledPanel>
-		</StyledItem>
-	</StyledAccordion>
-);
-```
-
-<Note>
-
-**Note:** This example uses [Stitches](https://stitches.dev) but any styling solution is [compatible](/primitives/docs/guides/styling).
-
-</Note>
 
 ## API Reference
 
@@ -121,13 +64,32 @@ Contains all the parts of an accordion.
 <PropsTable
 	data={[
 		{
-			name: "as",
+			name: "asChild",
 			required: false,
-			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+		{
+			name: "type",
+			required: true,
+			type: '"single" | "multiple"',
 			typeSimple: "enum",
-			default: "div",
-			description:
-				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+			description: (
+				<span>
+					Determines whether one or multiple items can be opened at the same
+					time.
+				</span>
+			),
 		},
 		{
 			name: "value",
@@ -135,8 +97,9 @@ Contains all the parts of an accordion.
 			type: "string",
 			description: (
 				<span>
-					The controlled value of the item to expand. Must be used in
-					conjunction with <Code>onValueChange</Code>.
+					The controlled value of the item to expand when <Code>type</Code> is{" "}
+					<Code>"single"</Code>. Must be used in conjunction with{" "}
+					<Code>onValueChange</Code>.
 				</span>
 			),
 		},
@@ -144,8 +107,75 @@ Contains all the parts of an accordion.
 			name: "defaultValue",
 			required: false,
 			type: "string",
-			description:
-				"The value of the item to expand when initially rendered. Use when you do not need to control the state of the items.",
+			description: (
+				<span>
+					The value of the item to expand when initially rendered and{" "}
+					<Code>type</Code> is <Code>"single"</Code>. Use when you do not need
+					to control the state of the items.
+				</span>
+			),
+		},
+		{
+			name: "onValueChange",
+			required: false,
+			type: "(value: string) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when the expanded state of an item changes and{" "}
+					<Code>type</Code> is <Code>"single"</Code>.
+				</span>
+			),
+		},
+		{
+			name: "value",
+			required: false,
+			default: "[]",
+			type: "string[]",
+			description: (
+				<span>
+					The controlled value of the item to expand when <Code>type</Code> is{" "}
+					<Code>"multiple"</Code>. Must be used in conjunction with{" "}
+					<Code>onValueChange</Code>.
+				</span>
+			),
+		},
+		{
+			name: "defaultValue",
+			required: false,
+			default: "[]",
+			type: "string[]",
+			description: (
+				<span>
+					The value of the item to expand when initially rendered when{" "}
+					<Code>type</Code> is <Code>"multiple"</Code>. Use when you do not need
+					to control the state of the items.
+				</span>
+			),
+		},
+		{
+			name: "onValueChange",
+			required: false,
+			type: "(value: string[]) => void",
+			typeSimple: "function",
+			description: (
+				<span>
+					Event handler called when the expanded state of an item changes and{" "}
+					<Code>type</Code> is <Code>"multiple"</Code>.
+				</span>
+			),
+		},
+		{
+			name: "collapsible",
+			required: false,
+			default: "false",
+			type: "boolean",
+			description: (
+				<span>
+					When <Code>type</Code> is <Code>"single"</Code>, allows closing
+					content when clicking trigger for an open item.
+				</span>
+			),
 		},
 		{
 			name: "disabled",
@@ -160,12 +190,30 @@ Contains all the parts of an accordion.
 			),
 		},
 		{
-			name: "onValueChange",
+			name: "dir",
 			required: false,
-			type: "(value: string) => void",
-			typeSimple: "function",
+			type: '"ltr" | "rtl"',
+			typeSimple: "enum",
+			default: '"ltr"',
 			description:
-				"Event handler called when the expanded state of an item changes.",
+				"The reading direction of the accordion when applicable. If omitted, assumes LTR (left-to-right) reading mode.",
+		},
+		{
+			name: "orientation",
+			required: false,
+			type: '"horizontal" | "vertical"',
+			typeSimple: "enum",
+			default: '"vertical"',
+			description: "The orientation of the accordion.",
+		},
+	]}
+/>
+
+<DataAttributesTable
+	data={[
+		{
+			attribute: "[data-orientation]",
+			values: ["vertical", "horizontal"],
 		},
 	]}
 />
@@ -177,13 +225,20 @@ Contains all the parts of a collapsible section.
 <PropsTable
 	data={[
 		{
-			name: "as",
+			name: "asChild",
 			required: false,
-			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
-			typeSimple: "enum",
-			default: "div",
-			description:
-				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
 		},
 		{
 			name: "disabled",
@@ -206,56 +261,128 @@ Contains all the parts of a collapsible section.
 	]}
 />
 
-### Header
-
-Wraps an `Accordion.Button`. Use the `as` prop to update it to the appropriate heading level for your page.
-
-<PropsTable
+<DataAttributesTable
 	data={[
 		{
-			name: "as",
-			required: false,
-			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
-			typeSimple: "enum",
-			default: "h3",
-			description:
-				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+			attribute: "[data-state]",
+			values: ["open", "closed"],
+		},
+		{
+			attribute: "[data-disabled]",
+			values: "Present when disabled",
+		},
+		{
+			attribute: "[data-orientation]",
+			values: ["vertical", "horizontal"],
 		},
 	]}
 />
 
-### Button
+### Header
+
+Wraps an `Accordion.Trigger`. Use the `asChild` prop to update it to the appropriate heading level for your page.
+
+<PropsTable
+	data={[
+		{
+			name: "asChild",
+			required: false,
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
+		},
+	]}
+/>
+
+<DataAttributesTable
+	data={[
+		{
+			attribute: "[data-state]",
+			values: ["open", "closed"],
+		},
+		{
+			attribute: "[data-disabled]",
+			values: "Present when disabled",
+		},
+		{
+			attribute: "[data-orientation]",
+			values: ["vertical", "horizontal"],
+		},
+	]}
+/>
+
+### Trigger
 
 Toggles the collapsed state of its associated item. It should be nested inside of an `Accordion.Header`.
 
 <PropsTable
 	data={[
 		{
-			name: "as",
+			name: "asChild",
 			required: false,
-			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
-			typeSimple: "enum",
-			default: "button",
-			description:
-				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
 		},
 	]}
 />
 
-### Panel
+<DataAttributesTable
+	data={[
+		{
+			attribute: "[data-state]",
+			values: ["open", "closed"],
+		},
+		{
+			attribute: "[data-disabled]",
+			values: "Present when disabled",
+		},
+		{
+			attribute: "[data-orientation]",
+			values: ["vertical", "horizontal"],
+		},
+	]}
+/>
+
+### Content
 
 Contains the collapsible content for an item.
 
 <PropsTable
 	data={[
 		{
-			name: "as",
+			name: "asChild",
 			required: false,
-			type: "keyof JSX.IntrinsicElements | React.ComponentType<any>",
-			typeSimple: "enum",
-			default: "div",
-			description:
-				"Change the component to a different HTML tag or custom component. This will merge the original component props with the props of the supplied element/component and change the underlying DOM node.",
+			type: "boolean",
+			default: "false",
+			description: (
+				<>
+					Change the default rendered element for the one passed as a child,
+					merging their props and behavior.
+					<br />
+					<br />
+					Read our <a href="../guides/composition">Composition</a> guide for
+					more details.
+				</>
+			),
 		},
 		{
 			name: "forceMount",
@@ -270,160 +397,165 @@ Contains the collapsible content for an item.
 	]}
 />
 
+<DataAttributesTable
+	data={[
+		{
+			attribute: "[data-state]",
+			values: ["open", "closed"],
+		},
+		{
+			attribute: "[data-disabled]",
+			values: "Present when disabled",
+		},
+		{
+			attribute: "[data-orientation]",
+			values: ["vertical", "horizontal"],
+		},
+	]}
+/>
+
+<CssVariablesTable
+	data={[
+		{
+			cssVariable: "--radix-accordion-content-width",
+			description: "The width of the content when it opens/closes",
+		},
+		{
+			cssVariable: "--radix-accordion-content-height",
+			description: "The height of the content when it opens/closes",
+		},
+	]}
+/>
+
 ## Examples
-
-### With chevrons
-
-```jsx
-import { styled } from "path-to/stitches.config";
-import * as Accordion from "@radix-ui/react-accordion";
-import { ChevronDownIcon } from "@radix-ui/react-icons";
-
-const StyledAccordion = styled(Accordion.Root, {
-	borderTop: "1px solid gainsboro",
-});
-
-const StyledItem = styled(Accordion.Item, {
-	borderBottom: "1px solid gainsboro",
-});
-
-const StyledHeader = styled(Accordion.Header, {
-	margin: 0,
-	display: "flex",
-});
-
-const StyledButton = styled(Accordion.Button, {
-	backgroundColor: "transparent",
-	border: "none",
-	padding: 10,
-	flex: 1,
-	display: "flex",
-	alignItems: "center",
-	justifyContent: "space-between",
-});
-
-const StyledPanel = styled(Accordion.Panel, {
-	padding: 10,
-});
-
-const AccordionChevron = styled(ChevronDownIcon, {
-	transition: "transform 300ms",
-
-	"[data-state=open] &": {
-		transform: "rotate(180deg)",
-	},
-});
-
-export default () => (
-	<StyledAccordion>
-		<StyledItem value="item-1">
-			<StyledHeader>
-				<StyledButton>
-					Item 1
-					<AccordionChevron aria-hidden />
-				</StyledButton>
-			</StyledHeader>
-			<StyledPanel>Here goes the content for the accordion item 1.</StyledPanel>
-		</StyledItem>
-
-		<StyledItem value="item-2">
-			<StyledHeader>
-				<StyledButton>
-					Item 2
-					<AccordionChevron aria-hidden />
-				</StyledButton>
-			</StyledHeader>
-			<StyledPanel>Here goes the content for the accordion item 2.</StyledPanel>
-		</StyledItem>
-
-		<StyledItem value="item-3">
-			<StyledHeader>
-				<StyledButton>
-					Item 3
-					<AccordionChevron aria-hidden />
-				</StyledButton>
-			</StyledHeader>
-			<StyledPanel>Here goes the content for the accordion item 3.</StyledPanel>
-		</StyledItem>
-	</StyledAccordion>
-);
-```
 
 ### Expanded by default
 
-```jsx
-import { styled } from "path-to/stitches.config";
+Use the `defaultValue` prop to define the open item by default.
+
+```jsx line=1
+<Accordion.Root type="single" __defaultValue__="item-2">
+	<Accordion.Item value="item-1">…</Accordion.Item>
+	<Accordion.Item value="item-2">…</Accordion.Item>
+</Accordion.Root>
+```
+
+### Allow collapsing all items
+
+Use the `collapsible` prop to allow all items to close.
+
+```jsx line=1
+<Accordion.Root type="single" __collapsible__>
+	<Accordion.Item value="item-1">…</Accordion.Item>
+	<Accordion.Item value="item-2">…</Accordion.Item>
+</Accordion.Root>
+```
+
+### Multiple items open at the same time
+
+Set the `type` prop to `multiple` to enable opening multiple items at once.
+
+```jsx line=1
+<Accordion.Root type="__multiple__">
+	<Accordion.Item value="item-1">…</Accordion.Item>
+	<Accordion.Item value="item-2">…</Accordion.Item>
+</Accordion.Root>
+```
+
+### Rotated icon when open
+
+You can add extra decorative elements, such as chevrons, and rotate it when the item is open.
+
+```jsx line=12
+// index.jsx
 import * as Accordion from "@radix-ui/react-accordion";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
-
-const StyledAccordion = styled(Accordion.Root, {
-	borderTop: "1px solid gainsboro",
-});
-
-const StyledItem = styled(Accordion.Item, {
-	borderBottom: "1px solid gainsboro",
-});
-
-const StyledHeader = styled(Accordion.Header, {
-	margin: 0,
-	display: "flex",
-});
-
-const StyledButton = styled(Accordion.Button, {
-	backgroundColor: "transparent",
-	border: "none",
-	padding: 10,
-	flex: 1,
-	display: "flex",
-	alignItems: "center",
-	justifyContent: "space-between",
-});
-
-const StyledPanel = styled(Accordion.Panel, {
-	padding: 10,
-});
-
-const AccordionChevron = styled(ChevronDownIcon, {
-	transition: "transform 300ms",
-
-	"[data-state=open] &": {
-		transform: "rotate(180deg)",
-	},
-});
+import "./styles.css";
 
 export default () => (
-	<StyledAccordion defaultValue="item-2">
-		<StyledItem value="item-1">
-			<StyledHeader>
-				<StyledButton>
-					Item 1
-					<AccordionChevron aria-hidden />
-				</StyledButton>
-			</StyledHeader>
-			<StyledPanel>Here goes the content for the accordion item 1.</StyledPanel>
-		</StyledItem>
-
-		<StyledItem value="item-2">
-			<StyledHeader>
-				<StyledButton>
-					Item 2
-					<AccordionChevron aria-hidden />
-				</StyledButton>
-			</StyledHeader>
-			<StyledPanel>Here goes the content for the accordion item 2.</StyledPanel>
-		</StyledItem>
-
-		<StyledItem value="item-3">
-			<StyledHeader>
-				<StyledButton>
-					Item 3
-					<AccordionChevron aria-hidden />
-				</StyledButton>
-			</StyledHeader>
-			<StyledPanel>Here goes the content for the accordion item 3.</StyledPanel>
-		</StyledItem>
-	</StyledAccordion>
+	<Accordion.Root type="single">
+		<Accordion.Item value="item-1">
+			<Accordion.Header>
+				<Accordion.Trigger className="AccordionTrigger">
+					<span>Trigger text</span>
+					<ChevronDownIcon __className__="AccordionChevron" aria-hidden />
+				</Accordion.Trigger>
+			</Accordion.Header>
+			<Accordion.Content>…</Accordion.Content>
+		</Accordion.Item>
+	</Accordion.Root>
 );
+```
+
+```css line=5-7
+/* styles.css */
+.AccordionChevron {
+	transition: transform 300ms;
+}
+.AccordionTrigger[data-state="open"] > .AccordionChevron {
+	transform: rotate(180deg);
+}
+```
+
+### Horizontal orientation
+
+Use the `orientation` prop to create a horizontal accordion.
+
+```jsx line=1
+<Accordion.Root __orientation__="horizontal">
+	<Accordion.Item value="item-1">…</Accordion.Item>
+	<Accordion.Item value="item-2">…</Accordion.Item>
+</Accordion.Root>
+```
+
+### Animating content size
+
+Use the `--radix-accordion-content-width` and/or `--radix-accordion-content-height` CSS variables to animate the size of the content when it opens/closes:
+
+```jsx line=9
+// index.jsx
+import * as Accordion from "@radix-ui/react-accordion";
+import "./styles.css";
+
+export default () => (
+	<Accordion.Root type="single">
+		<Accordion.Item value="item-1">
+			<Accordion.Header>…</Accordion.Header>
+			<Accordion.Content __className__="AccordionContent">…</Accordion.Content>
+		</Accordion.Item>
+	</Accordion.Root>
+);
+```
+
+```css line=21,27
+/* styles.css */
+.AccordionContent {
+	overflow: hidden;
+}
+.AccordionContent[data-state="open"] {
+	animation: slideDown 300ms ease-out;
+}
+.AccordionContent[data-state="closed"] {
+	animation: slideUp 300ms ease-out;
+}
+
+@keyframes slideDown {
+	from {
+		height: 0;
+	}
+	to {
+		height: var(__--radix-accordion-content-height__);
+	}
+}
+
+@keyframes slideUp {
+	from {
+		height: var(__--radix-accordion-content-height__);
+	}
+	to {
+		height: 0;
+	}
+}
 ```
 
 ## Accessibility
@@ -438,7 +570,7 @@ Adheres to the [Accordion WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/a
 			keys: ["Space"],
 			description: (
 				<span>
-					When focus is on an <Code>Accordion.Button</Code> of a collapsed
+					When focus is on an <Code>Accordion.Trigger</Code> of a collapsed
 					section, expands the section.
 				</span>
 			),
@@ -447,7 +579,7 @@ Adheres to the [Accordion WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/a
 			keys: ["Enter"],
 			description: (
 				<span>
-					When focus is on an <Code>Accordion.Button</Code> of a collapsed
+					When focus is on an <Code>Accordion.Trigger</Code> of a collapsed
 					section, expands the section.
 				</span>
 			),
@@ -464,7 +596,8 @@ Adheres to the [Accordion WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/a
 			keys: ["ArrowDown"],
 			description: (
 				<span>
-					Moves focus to the next <Code>Accordion.Button</Code>.
+					Moves focus to the next <Code>Accordion.Trigger</Code> when{" "}
+					<Code>orientation</Code> is <Code>vertical</Code>.
 				</span>
 			),
 		},
@@ -472,7 +605,26 @@ Adheres to the [Accordion WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/a
 			keys: ["ArrowUp"],
 			description: (
 				<span>
-					Moves focus to the previous <Code>Accordion.Button</Code>.
+					Moves focus to the previous <Code>Accordion.Trigger</Code> when{" "}
+					<Code>orientation</Code> is <Code>vertical</Code>.
+				</span>
+			),
+		},
+		{
+			keys: ["ArrowRight"],
+			description: (
+				<span>
+					Moves focus to the next <Code>Accordion.Trigger</Code> when{" "}
+					<Code>orientation</Code> is <Code>horizontal</Code>.
+				</span>
+			),
+		},
+		{
+			keys: ["ArrowLeft"],
+			description: (
+				<span>
+					Moves focus to the previous <Code>Accordion.Trigger</Code> when{" "}
+					<Code>orientation</Code> is <Code>horizontal</Code>.
 				</span>
 			),
 		},
@@ -480,8 +632,8 @@ Adheres to the [Accordion WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/a
 			keys: ["Home"],
 			description: (
 				<span>
-					When focus is on an <Code>Accordion.Button</Code>, moves focus to the
-					first <Code>Accordion.Button</Code>.
+					When focus is on an <Code>Accordion.Trigger</Code>, moves focus to the
+					first <Code>Accordion.Trigger</Code>.
 				</span>
 			),
 		},
@@ -489,8 +641,8 @@ Adheres to the [Accordion WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/a
 			keys: ["End"],
 			description: (
 				<span>
-					When focus is on an <Code>Accordion.Button</Code>, moves focus to the
-					last <Code>Accordion.Button</Code>.
+					When focus is on an <Code>Accordion.Trigger</Code>, moves focus to the
+					last <Code>Accordion.Trigger</Code>.
 				</span>
 			),
 		},
