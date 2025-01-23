@@ -52,12 +52,22 @@ module.exports = {
 			},
 			{
 				source: "/docs/primitives/utilities/aspect-ratio/:slug*",
-				destination: "/primitives/docs/components/aspect-ratio/:slug*",
+				destination: "/primitives/docs/components/aspect-ratio",
 				permanent: true,
 			},
 			{
 				source: "/docs/primitives/utilities/label/:slug*",
-				destination: "/primitives/docs/components/label/:slug*",
+				destination: "/primitives/docs/components/label",
+				permanent: true,
+			},
+			{
+				source: "/primitives/docs/components/:slug/:version",
+				destination: "/primitives/docs/components/:slug",
+				permanent: true,
+			},
+			{
+				source: "/primitives/docs/utilities/:slug/:version",
+				destination: "/primitives/docs/utilities/:slug",
 				permanent: true,
 			},
 			{
@@ -80,62 +90,6 @@ module.exports = {
 				destination: "/themes/docs/overview/getting-started",
 				permanent: false,
 			},
-		];
-	},
-
-	// Generate URL rewrites for components and utilities
-	// So navigating to /tooltip rewrites to /tooltip/[latestVersion]
-	async rewrites() {
-		const DATA_PATH = path.join(__dirname, "data");
-
-		function getLatestVersionFromPath(fromPath) {
-			const paths = globSync(`${DATA_PATH}/${fromPath}/**/*.mdx`);
-			const components = {};
-
-			paths.forEach((p) => {
-				const [name, version] = p
-					.replace(DATA_PATH, "")
-					.replace(`/${fromPath}/`, "")
-					.replace(".mdx", "")
-					.split("/");
-
-				components[name] = [...(components[name] || [version]), version];
-			});
-
-			const latest = Object.entries(components).reduce((acc, curr) => {
-				const [name, versions] = curr;
-				const [latestVersion] = versions.sort(compareVersions).reverse();
-				acc[name] = latestVersion;
-				return acc;
-			}, {});
-
-			return latest;
-		}
-
-		function createRewrites(latestVersionMap, url) {
-			return [...Object.entries(latestVersionMap)].reduce((redirects, curr) => {
-				const [name, version] = curr;
-				redirects.push({
-					source: `${url}${name}`,
-					destination: `${url}${name}/${version}`,
-				});
-				return redirects;
-			}, []);
-		}
-
-		return [
-			...createRewrites(
-				getLatestVersionFromPath("primitives/docs/components"),
-				"/primitives/docs/components/",
-			),
-			...createRewrites(
-				getLatestVersionFromPath("primitives/docs/utilities"),
-				"/primitives/docs/utilities/",
-			),
-			...createRewrites(
-				getLatestVersionFromPath("design-system/docs/components"),
-				"/design-docs/system/components/",
-			),
 		];
 	},
 };

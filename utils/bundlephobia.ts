@@ -14,7 +14,7 @@ export function formatBytes(bytes: number, decimals = 2) {
 export async function getPackageData(
 	name: string,
 	version: string,
-): Promise<{ gzip: number | undefined }> {
+): Promise<{ gzip: number | undefined; version: string | undefined }> {
 	const bundlephobiaResponse = await fetch(
 		`https://bundlephobia.com/api/size?package=@radix-ui/react-${name}@${version}`,
 	);
@@ -22,6 +22,6 @@ export async function getPackageData(
 	try {
 		return (await bundlephobiaResponse.json()) as any;
 	} catch (e) {
-		return { gzip: undefined };
+		return { gzip: undefined, version: undefined };
 	}
 }
