@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { Flex, Separator } from "@radix-ui/themes";
 import { AutosizeInput } from "../AutosizeInput";

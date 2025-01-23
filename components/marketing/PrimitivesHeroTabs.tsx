@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { styled } from "@utils/css";
 import { Label, Tabs as TabsPrimitive } from "radix-ui";
 import { PrimitivesHeroButton } from "@components/marketing/PrimitivesHeroButton";

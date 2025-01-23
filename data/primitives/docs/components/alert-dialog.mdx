@@ -387,7 +387,7 @@ An accessible description to be announced when the dialog is opened. Alternative
 Use the controlled props to programmatically close the Alert Dialog after an async operation has completed.
 
 ```jsx line=4,7,10,15,17
-import React from "react";
+import * as React from "react";
 import { AlertDialog } from "radix-ui";
 
 const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));

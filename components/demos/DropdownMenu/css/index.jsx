@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { DropdownMenu } from "radix-ui";
 import {
 	HamburgerMenuIcon,

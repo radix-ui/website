@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { useTheme } from "next-themes";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { IconButton, Tooltip } from "@radix-ui/themes";

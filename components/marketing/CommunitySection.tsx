@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { MarketingCaption } from "./MarketingCaption";
 import { Box, Heading, Text, Card, Grid, Flex } from "@radix-ui/themes";
 

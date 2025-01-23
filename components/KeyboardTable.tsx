@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Box, Text, Kbd, Flex, Table } from "@radix-ui/themes";
 
 type KeyboardDef = {

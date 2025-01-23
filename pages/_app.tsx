@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { AppProps } from "next/app";
 import { Router, useRouter } from "next/router";
 import { Theme } from "@radix-ui/themes";

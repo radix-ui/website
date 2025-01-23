@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Slider as SliderPrimitive } from "radix-ui";
 import { styled } from "@utils/css";
 import styles from "./PrimitivesHeroSlider.module.css";

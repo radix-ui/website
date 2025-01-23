@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { ScrollArea } from "radix-ui";
 
 const TAGS = Array.from({ length: 50 }).map(

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Flex } from "@radix-ui/themes";
 import styles from "./HeroCodeBlock.module.css";
 

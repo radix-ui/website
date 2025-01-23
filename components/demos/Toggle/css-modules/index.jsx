@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Toggle } from "radix-ui";
 import { FontItalicIcon } from "@radix-ui/react-icons";
 import styles from "./styles.module.css";

@@ -410,7 +410,7 @@ If you want to hide the description, wrap it inside our [Visually Hidden](../uti
 Use the controlled props to programmatically close the Dialog after an async operation has completed.
 
 ```jsx line=4,7,10,15,17
-import React from "react";
+import * as React from "react";
 import { Dialog } from "radix-ui";
 
 const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
@@ -490,7 +490,7 @@ export default () => {
 Customise the element that your dialog portals into.
 
 ```jsx line=5,10,16
-import React from "react";
+import * as React from "react";
 import { Dialog } from "radix-ui";
 
 export default () => {
@@ -571,7 +571,7 @@ export default () => (
 
 ```jsx
 // your-dialog.jsx
-import React from "react";
+import * as React from "react";
 import { Dialog as DialogPrimitive } from "radix-ui";
 import { Cross1Icon } from "@radix-ui/react-icons";
 

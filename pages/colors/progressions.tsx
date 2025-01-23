@@ -5,7 +5,7 @@ import { TitleAndMetaTags } from "@components/TitleAndMetaTags";
 import { transposeProgressionStart } from "@components/generateRadixColors";
 import { Section, Container, Heading, Box, Flex, Text } from "@radix-ui/themes";
 import BezierEasing from "bezier-easing";
-import React from "react";
+import * as React from "react";
 
 export default function Page() {
 	return (

@@ -27,7 +27,7 @@ import {
 } from "@radix-ui/themes";
 import { getMDXComponent } from "mdx-bundler/client";
 import NextLink from "next/link";
-import React from "react";
+import * as React from "react";
 import { GetStaticPropsContext } from "next";
 
 type CaseStudyPage = {

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { HoverCard } from "radix-ui";
 
 const HoverCardDemo = () => (

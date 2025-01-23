@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Popover } from "radix-ui";
 import { MixerHorizontalIcon, Cross2Icon } from "@radix-ui/react-icons";
 import styles from "./styles.module.css";

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Switch as SwitchPrimitive } from "radix-ui";
 import { styled } from "@utils/css";
 import styles from "./PrimitivesHeroSwitch.module.css";

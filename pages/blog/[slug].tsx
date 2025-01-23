@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { getMDXComponent } from "mdx-bundler/client";
 import { MDXProvider, components } from "@components/MDXComponents";
 import { getAllFrontmatter, getMdxBySlug } from "@utils/mdx";

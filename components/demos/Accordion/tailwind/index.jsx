@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import classNames from "classnames";
 import { Accordion } from "radix-ui";
 import { ChevronDownIcon } from "@radix-ui/react-icons";

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { AlertDialog } from "radix-ui";
 import "./styles.css";
 

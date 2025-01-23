@@ -40,7 +40,7 @@ When your component has a single children element:
 
 ```jsx line=9
 // your-button.jsx
-import React from "react";
+import * as React from "react";
 import { Slot } from "radix-ui";
 
 function Button({ asChild, ...props }) {
@@ -53,7 +53,7 @@ Use `Slottable` when your component has multiple children to pass the props to t
 
 ```jsx
 // your-button.jsx
-import React from "react";
+import * as React from "react";
 import { Slot } from "radix-ui";
 
 function Button({ asChild, children, leftElement, rightElement, ...props }) {

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import NextLink from "next/link";
 import { Text, Heading, Box, Badge, Flex } from "@radix-ui/themes";
 import { classNames } from "@utils/classNames";

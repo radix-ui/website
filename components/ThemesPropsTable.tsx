@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { PropsTable } from "./PropsTable";
 import * as props from "@utils/themes/props";
 import { Code, Link as DSLink } from "@radix-ui/themes";

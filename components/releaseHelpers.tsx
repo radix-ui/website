@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Flex, Heading, Badge, Link, Text } from "@radix-ui/themes";
 
 export function PackageRelease({

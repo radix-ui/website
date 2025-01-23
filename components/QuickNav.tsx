@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Box, Link, Heading, ScrollArea } from "@radix-ui/themes";
 import { RemoveScroll } from "react-remove-scroll";
 import styles from "./QuickNav.module.css";

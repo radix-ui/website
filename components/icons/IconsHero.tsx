@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { ArrowLeftIcon, FigmaLogoIcon } from "@radix-ui/react-icons";
 import {
 	Box,

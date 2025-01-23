@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Popover as PopoverPrimitive } from "radix-ui";
 import { styled } from "@utils/css";
 import { PrimitivesHeroButton } from "@components/marketing/PrimitivesHeroButton";

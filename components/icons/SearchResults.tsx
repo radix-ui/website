@@ -1,6 +1,6 @@
 import * as Icons from "@radix-ui/react-icons";
 import { Button, Flex, Grid, Text } from "@radix-ui/themes";
-import React from "react";
+import * as React from "react";
 import { useCopyToast } from "./CopyToast";
 
 type SearchResultsProps = {
