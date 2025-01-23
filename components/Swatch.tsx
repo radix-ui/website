@@ -499,19 +499,17 @@ interface CopyButtonState {
 	timeout: ReturnType<typeof setTimeout> | null;
 }
 
-type CopyButtonStateReducer = (
-	prevState: CopyButtonState,
-	newState: Partial<CopyButtonState>,
-) => CopyButtonState;
-
 const CopyButton = ({
 	onClick,
 	...props
 }: React.ComponentPropsWithoutRef<typeof Button>) => {
 	const ref = React.useRef<HTMLButtonElement>(null);
 
-	const [state, setState] = React.useReducer<CopyButtonStateReducer>(
-		(prevState, newState) => {
+	const [state, setState] = React.useReducer(
+		(
+			prevState: CopyButtonState,
+			newState: Partial<CopyButtonState>,
+		): CopyButtonState => {
 			// Start a timeout to change the text when tooltip is closed
 			if (newState.open === false) {
 				newState.timeout = setTimeout(() => {

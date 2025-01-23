@@ -6,7 +6,7 @@ export function styled<
 		| React.ComponentType
 		| React.ForwardRefExoticComponent<any>
 		| React.MemoExoticComponent<any>
-		| keyof JSX.IntrinsicElements,
+		| keyof React.JSX.IntrinsicElements,
 	Ref = any,
 >(Component: Comp, ...classes: string[]) {
 	const wrapped = React.forwardRef<Ref, React.ComponentProps<Comp>>(

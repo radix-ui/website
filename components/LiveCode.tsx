@@ -18,7 +18,7 @@ export const LiveCode = ({
 	scope = {},
 	onRender = () => undefined,
 }: LiveCodeProps) => {
-	const currentError = React.useRef<Error>();
+	const currentError = React.useRef<Error | undefined>(undefined);
 	const setCurrentError = (error: Error | undefined) =>
 		(currentError.current = error);
 

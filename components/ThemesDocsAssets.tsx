@@ -1619,28 +1619,21 @@ export function ThemesBlogPostExampleSegmentedControl() {
 export function ThemesBlogPostExampleSegmentedControlAnimated() {
 	const [value, setValue] = React.useState("1");
 	const previousValueRef = React.useRef(value);
-	const timeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
 
 	React.useEffect(() => {
+		let timeout: number | null = null;
 		if (value === "1") {
-			timeoutRef.current = setTimeout(() => setValue("2"), 2000);
-		}
-
-		if (value === "2" && previousValueRef.current === "1") {
-			timeoutRef.current = setTimeout(() => setValue("3"), 2000);
-		}
-
-		if (value === "2" && previousValueRef.current === "3") {
-			timeoutRef.current = setTimeout(() => setValue("1"), 2000);
-		}
-
-		if (value === "3") {
-			timeoutRef.current = setTimeout(() => setValue("2"), 2000);
+			timeout = window.setTimeout(() => setValue("2"), 2000);
+		} else if (value === "2" && previousValueRef.current === "1") {
+			timeout = window.setTimeout(() => setValue("3"), 2000);
+		} else if (value === "2" && previousValueRef.current === "3") {
+			timeout = window.setTimeout(() => setValue("1"), 2000);
+		} else if (value === "3") {
+			timeout = window.setTimeout(() => setValue("2"), 2000);
 		}
 
 		previousValueRef.current = value;
-
-		return () => clearTimeout(timeoutRef.current);
+		return () => window.clearTimeout(timeout!);
 	}, [value]);
 
 	return (

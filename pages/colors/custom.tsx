@@ -157,14 +157,14 @@ export default function Page() {
 	const result = resolvedTheme === "dark" ? darkModeResult : lightModeResult;
 
 	const [copied, setCopied] = React.useState("");
-	const copiedTimeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
+	const copiedTimeoutRef = React.useRef<number | null>(null);
 	const COPIED_TIMEOUT = 1500;
 
 	const setCopiedMessage = React.useCallback(
 		(message: string) => {
 			setCopied(message);
-			clearTimeout(copiedTimeoutRef.current);
-			copiedTimeoutRef.current = setTimeout(() => {
+			window.clearTimeout(copiedTimeoutRef.current!);
+			copiedTimeoutRef.current = window.setTimeout(() => {
 				setCopied("");
 			}, COPIED_TIMEOUT);
 		},

@@ -36,7 +36,8 @@ const searchClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_PUBLIC_API_KEY);
 const SUPPORTED_LEVELS = ["lvl0", "lvl1", "lvl2", "lvl3", "lvl4"] as const;
 type LevelContentType = (typeof SUPPORTED_LEVELS)[number];
 type ContentType = LevelContentType | "content";
-type SearchItem = Hit<{
+type SearchItem = SnippetedHit<{
+	objectID: string;
 	type: ContentType;
 	url: string;
 	hierarchy: {

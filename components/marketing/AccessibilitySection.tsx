@@ -244,7 +244,7 @@ const animations: Record<SequenceType, AnimationKeyframe[]> = {
 export const AccessibilitySection = () => {
 	const keyframeRef = React.useRef(0);
 	const iterationRef = React.useRef(0);
-	const timeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
+	const timeoutRef = React.useRef<number | null>(null);
 	const containerRef = React.useRef<HTMLDivElement | null>(null);
 	const intersectingRef = React.useRef(false);
 	const playKeypressAnimation = React.useRef(true);
@@ -303,7 +303,7 @@ export const AccessibilitySection = () => {
 					if (newIsIntersecting === false) {
 						iterationRef.current = 0;
 						keyframeRef.current = 0;
-						clearTimeout(timeoutRef.current);
+						window.clearTimeout(timeoutRef.current!);
 						setKeyframe(0);
 					}
 
@@ -322,7 +322,7 @@ export const AccessibilitySection = () => {
 	}, []);
 
 	React.useEffect(() => {
-		clearTimeout(timeoutRef.current);
+		window.clearTimeout(timeoutRef.current!);
 
 		const updateKeyframe = () => {
 			// Increment keyframe counter, or loop from 1st when last keyframe is reached
@@ -336,12 +336,12 @@ export const AccessibilitySection = () => {
 				iterationRef.current++;
 			}
 
-			clearTimeout(timeoutRef.current);
+			window.clearTimeout(timeoutRef.current!);
 			setKeyframe(keyframeRef.current);
 
 			// If visible in the viewport request animation frame when next keyframe is due
 			if (intersectingRef.current) {
-				timeoutRef.current = setTimeout(
+				timeoutRef.current = window.setTimeout(
 					() => requestAnimationFrame(() => updateKeyframe()),
 					animations[currentSequence][keyframeRef.current].duration,
 				);
@@ -350,14 +350,14 @@ export const AccessibilitySection = () => {
 
 		// Start the animation in 1s once the container is visible in the viewport
 		if (isIntersecting) {
-			timeoutRef.current = setTimeout(
+			timeoutRef.current = window.setTimeout(
 				() => requestAnimationFrame(() => updateKeyframe()),
 				1000,
 			);
 			playKeypressAnimation.current = true;
 		}
 
-		return () => clearTimeout(timeoutRef.current);
+		return () => window.clearTimeout(timeoutRef.current!);
 	}, [currentSequence, isIntersecting]);
 
 	return (

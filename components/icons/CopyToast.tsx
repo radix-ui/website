@@ -19,7 +19,7 @@ export const CopyToastProvider = ({
 }) => {
 	const [open, setOpen] = React.useState(false);
 	const [icon, setIcon] = React.useState("");
-	const timeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
+	const timeoutRef = React.useRef<number | null>(null);
 
 	return (
 		<CopyToastContext.Provider
@@ -27,8 +27,8 @@ export const CopyToastProvider = ({
 				showCopyToast: React.useCallback((icon) => {
 					setIcon(icon);
 					setOpen(true);
-					clearTimeout(timeoutRef.current);
-					timeoutRef.current = setTimeout(() => setOpen(false), 3000);
+					window.clearTimeout(timeoutRef.current!);
+					timeoutRef.current = window.setTimeout(() => setOpen(false), 3000);
 				}, []),
 			}}
 		>

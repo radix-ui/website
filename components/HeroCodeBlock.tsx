@@ -36,12 +36,12 @@ export const HeroCodeBlock = ({
 		.map((pre) => {
 			if (pre && typeof pre === "object" && "props" in pre) {
 				return {
-					id: pre.props.title as string,
-					title: pre.props.title as string,
-					cssLib: pre.props.cssLib as CssLib,
-					children: React.Children.only(pre.props.children).props
+					id: (pre.props as any).title as string,
+					title: (pre.props as any).title as string,
+					cssLib: (pre.props as any).cssLib as CssLib,
+					children: React.Children.only((pre.props as any).children).props
 						?.children as React.ReactNode,
-					source: pre.props.source,
+					source: (pre.props as any).source,
 				};
 			}
 		})

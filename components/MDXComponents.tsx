@@ -248,8 +248,8 @@ export function MDXProvider(props: {
 	);
 }
 
-export const childrenText = (children?: React.ReactNode): string | null => {
-	if (isReactElement(children)) {
+export const childrenText = (children?: unknown): string | null => {
+	if (isReactElementWithChildren(children)) {
 		return childrenText(children.props?.children);
 	}
 
@@ -264,7 +264,7 @@ export const childrenText = (children?: React.ReactNode): string | null => {
 	return null;
 };
 
-const isReactElement = (
-	element?: React.ReactNode,
-): element is React.ReactElement =>
-	React.isValidElement(element) && Boolean(element.props.children);
+const isReactElementWithChildren = (
+	element?: unknown,
+): element is React.ReactElement<{ children: React.ReactNode }> =>
+	React.isValidElement(element) && !!(element.props as any).children;

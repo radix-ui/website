@@ -7,7 +7,7 @@ import smoothscroll from "smoothscroll-polyfill";
 
 const [CarouselProvider, useCarouselContext] = Context.createContext<{
 	_: any;
-	slideListRef: React.RefObject<HTMLDivElement>;
+	slideListRef: React.RefObject<HTMLDivElement | null>;
 	onNextClick(): void;
 	onPrevClick(): void;
 	nextDisabled: boolean;
@@ -24,7 +24,7 @@ export const Carousel = (props: {
 	const [_, force] = useState({});
 	const [nextDisabled, setNextDisabled] = useState(false);
 	const [prevDisabled, setPrevDisabled] = useState(true);
-	const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
+	const timeoutRef = useRef<number | null>(null);
 	const navigationUpdateDelay = useRef(100);
 	useEffect(() => smoothscroll.polyfill(), []);
 
@@ -93,7 +93,7 @@ export const Carousel = (props: {
 		if (timeoutRef.current) {
 			clearTimeout(timeoutRef.current);
 		}
-		timeoutRef.current = setTimeout(() => {
+		timeoutRef.current = window.setTimeout(() => {
 			requestAnimationFrame(() => {
 				if (slideListRef.current) {
 					const { scrollLeft, scrollWidth, clientWidth } = slideListRef.current;

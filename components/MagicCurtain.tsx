@@ -13,7 +13,7 @@ type ForceReducedMotion = "always" | "if-hi-res" | "never";
 interface MagicCurtainItem {
 	visibility: Visibility;
 	setVisibility: (visibility: Visibility) => void;
-	ref: React.RefObject<HTMLDivElement>;
+	ref: React.RefObject<HTMLDivElement | null>;
 }
 
 const [MagicCurtainProvider, useMagicCurtainContext] = Context.createContext<{
@@ -91,7 +91,7 @@ const MagicCurtainItem = ({
 		React.useState<Visibility>(defaultVisibility);
 
 	useIsomorphicLayoutEffect(() => {
-		const item = { ref, visibility, setVisibility };
+		const item: MagicCurtainItem = { ref, visibility, setVisibility };
 
 		context.setItems((items) =>
 			[...items, item].sort((a, b) => {
