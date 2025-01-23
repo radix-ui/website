@@ -1,7 +1,7 @@
 // Fork of https://github.com/JedWatson/react-input-autosize
 // Copyright (c) 2018 Jed Watson, MIT License
 import * as React from "react";
-import { useComposedRefs } from "@radix-ui/react-compose-refs";
+import { useComposedRefs } from "radix-ui/internal";
 
 const SIZER_STYLE: React.CSSProperties = {
 	position: "absolute",

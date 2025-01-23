@@ -1,5 +1,5 @@
 import React from "react";
-import * as Switch from "@radix-ui/react-switch";
+import { Switch } from "radix-ui";
 
 const SwitchDemo = () => (
 	<form>

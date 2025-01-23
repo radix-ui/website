@@ -72,7 +72,7 @@ import { useLocalStorage } from "../../utils/use-local-storage";
 import { useLayoutEffect } from "../../utils/use-layout-effect";
 import { useIsHydrated } from "../../utils/use-is-hydrated";
 import { useTheme } from "next-themes";
-import * as ToggleGroup from "@radix-ui/react-toggle-group";
+import { ToggleGroup } from "radix-ui";
 import { copy } from "../../utils/clipboard";
 import { CustomSwatch } from "@components/CustomSwatch";
 import { ColorUsageRange } from "@components/ColorUsageRange";

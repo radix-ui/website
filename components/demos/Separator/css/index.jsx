@@ -1,5 +1,5 @@
 import React from "react";
-import * as Separator from "@radix-ui/react-separator";
+import { Separator } from "radix-ui";
 import "./styles.css";
 
 const SeparatorDemo = () => (

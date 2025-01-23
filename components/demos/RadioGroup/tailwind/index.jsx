@@ -1,5 +1,5 @@
 import React from "react";
-import * as RadioGroup from "@radix-ui/react-radio-group";
+import { RadioGroup } from "radix-ui";
 
 const RadioGroupDemo = () => (
 	<form>

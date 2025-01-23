@@ -1,5 +1,5 @@
 import React from "react";
-import * as PopoverPrimitive from "@radix-ui/react-popover";
+import { Popover as PopoverPrimitive } from "radix-ui";
 import { styled } from "@utils/css";
 import { PrimitivesHeroButton } from "@components/marketing/PrimitivesHeroButton";
 import { Cross2Icon } from "@radix-ui/react-icons";

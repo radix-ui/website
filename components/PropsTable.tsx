@@ -11,7 +11,7 @@ import {
 	ScrollArea,
 } from "@radix-ui/themes";
 import { InfoCircledIcon, DividerHorizontalIcon } from "@radix-ui/react-icons";
-import { AccessibleIcon } from "@radix-ui/react-accessible-icon";
+import { AccessibleIcon } from "radix-ui";
 
 export type PropDef = {
 	name: string;
@@ -74,9 +74,9 @@ export function PropsTable({
 												<Popover.Root>
 													<Popover.Trigger>
 														<IconButton variant="ghost" size="1" color="gray">
-															<AccessibleIcon label="Prop description">
+															<AccessibleIcon.Root label="Prop description">
 																<InfoCircledIcon />
-															</AccessibleIcon>
+															</AccessibleIcon.Root>
 														</IconButton>
 													</Popover.Trigger>
 													<Popover.Content
@@ -108,9 +108,9 @@ export function PropsTable({
 												<Popover.Root>
 													<Popover.Trigger>
 														<IconButton variant="ghost" color="gray" size="1">
-															<AccessibleIcon label="See full type">
+															<AccessibleIcon.Root label="See full type">
 																<InfoCircledIcon />
-															</AccessibleIcon>
+															</AccessibleIcon.Root>
 														</IconButton>
 													</Popover.Trigger>
 													<Popover.Content
@@ -155,11 +155,11 @@ export function PropsTable({
 												{defaultValue}
 											</Code>
 										) : (
-											<AccessibleIcon label="No default value">
+											<AccessibleIcon.Root label="No default value">
 												<DividerHorizontalIcon
 													style={{ color: "var(--gray-8)" }}
 												/>
-											</AccessibleIcon>
+											</AccessibleIcon.Root>
 										)}
 									</Table.Cell>
 								</Table.Row>

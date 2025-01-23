@@ -1,5 +1,5 @@
 import React from "react";
-import * as Tooltip from "@radix-ui/react-tooltip";
+import { Tooltip } from "radix-ui";
 import { PlusIcon } from "@radix-ui/react-icons";
 
 const TooltipDemo = () => {

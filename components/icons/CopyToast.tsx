@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, Theme, Flex } from "@radix-ui/themes";
-import * as Toast from "@radix-ui/react-toast";
+import { Toast } from "radix-ui";
 
 import styles from "./CopyToast.module.css";
 

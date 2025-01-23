@@ -11,7 +11,7 @@ import {
 } from "@components/marketing/CaseStudyLogo";
 import { MarketingCaption } from "@components/marketing/MarketingCaption";
 import { getAllFrontmatter, getMdxBySlug } from "@utils/mdx";
-import { Root as AccessibleIcon } from "@radix-ui/react-accessible-icon";
+import { AccessibleIcon } from "radix-ui";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import {
 	Avatar,
@@ -100,9 +100,11 @@ export default function CaseStudy({ frontmatter, code }: CaseStudyPage) {
 										href={`https://${frontmatter.companyUrl}`}
 										style={{ display: "inline-block", maxWidth: "380px" }}
 									>
-										<AccessibleIcon label={`${frontmatter.metaTitle} homepage`}>
+										<AccessibleIcon.Root
+											label={`${frontmatter.metaTitle} homepage`}
+										>
 											<CaseStudyLogo variant={frontmatter.companyLogoVariant} />
-										</AccessibleIcon>
+										</AccessibleIcon.Root>
 									</BoxLink>
 								</Box>
 								<Box mb="5">

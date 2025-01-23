@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as Toast from "@radix-ui/react-toast";
+import { Toast } from "radix-ui";
 
 const ToastDemo = () => {
 	const [open, setOpen] = React.useState(false);

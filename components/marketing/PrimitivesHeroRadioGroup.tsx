@@ -1,6 +1,6 @@
 import { Text } from "@radix-ui/themes";
 import { styled } from "@utils/css";
-import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
+import { RadioGroup as RadioGroupPrimitive } from "radix-ui";
 import styles from "./PrimitivesHeroRadioGroup.module.css";
 
 export const RadioCards = styled(RadioGroupPrimitive.Root, styles.Cards);

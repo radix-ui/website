@@ -1,9 +1,8 @@
 import React from "react";
 import { styled } from "@utils/css";
-import * as TabsPrimitive from "@radix-ui/react-tabs";
+import { Label, Tabs as TabsPrimitive } from "radix-ui";
 import { PrimitivesHeroButton } from "@components/marketing/PrimitivesHeroButton";
 import { TextField, Text, Box, Flex } from "@radix-ui/themes";
-import { Label } from "@radix-ui/react-label";
 import styles from "./PrimitivesHeroTabs.module.css";
 
 const Tabs = styled(TabsPrimitive.Root, styles.Tabs);
@@ -25,24 +24,24 @@ export function PrimitivesHeroTabs() {
 			</TabsList>
 			<TabsContent value="tab1">
 				<Fieldset>
-					<Label>
+					<Label.Root>
 						<Box mb="1">
 							<Text size="1" color="gray">
 								Name
 							</Text>
 						</Box>
 						<TextField.Root size="1" id="name" defaultValue="Pedro Duarte" />
-					</Label>
+					</Label.Root>
 				</Fieldset>
 				<Fieldset>
-					<Label>
+					<Label.Root>
 						<Box mb="1">
 							<Text size="1" color="gray">
 								Username
 							</Text>
 						</Box>
 						<TextField.Root size="1" id="username" defaultValue="@peduarte" />
-					</Label>
+					</Label.Root>
 				</Fieldset>
 				<Flex justify="end" mt="4">
 					<PrimitivesHeroButton variant="gray">Save</PrimitivesHeroButton>
@@ -50,24 +49,24 @@ export function PrimitivesHeroTabs() {
 			</TabsContent>
 			<TabsContent value="tab2">
 				<Fieldset>
-					<Label>
+					<Label.Root>
 						<Box mb="1">
 							<Text size="1" color="gray">
 								Current password
 							</Text>
 						</Box>
 						<TextField.Root size="1" id="currentPassword" type="password" />
-					</Label>
+					</Label.Root>
 				</Fieldset>
 				<Fieldset>
-					<Label>
+					<Label.Root>
 						<Box mb="1">
 							<Text size="1" color="gray">
 								New password
 							</Text>
 						</Box>
 						<TextField.Root size="1" id="newPassword" type="password" />
-					</Label>
+					</Label.Root>
 				</Fieldset>
 				<Flex justify="end" mt="4">
 					<PrimitivesHeroButton variant="gray">

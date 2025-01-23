@@ -6,7 +6,7 @@ import {
 	TextAlignRightIcon,
 } from "@radix-ui/react-icons";
 import styles from "./PrimitivesHeroToggleGroup.module.css";
-import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group";
+import { ToggleGroup as ToggleGroupPrimitive } from "radix-ui";
 
 const ToggleGroup = styled(ToggleGroupPrimitive.Root, styles.ToggleGroup);
 const ToggleGroupItem = styled(ToggleGroupPrimitive.Item, styles.Item);

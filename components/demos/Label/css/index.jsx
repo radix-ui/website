@@ -1,5 +1,5 @@
 import React from "react";
-import * as Label from "@radix-ui/react-label";
+import { Label } from "radix-ui";
 import "./styles.css";
 
 const LabelDemo = () => (

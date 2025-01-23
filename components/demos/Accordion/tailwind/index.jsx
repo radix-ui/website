@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import * as Accordion from "@radix-ui/react-accordion";
+import { Accordion } from "radix-ui";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 
 const AccordionDemo = () => (

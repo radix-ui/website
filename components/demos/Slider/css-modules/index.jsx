@@ -1,5 +1,5 @@
 import React from "react";
-import * as Slider from "@radix-ui/react-slider";
+import { Slider } from "radix-ui";
 import styles from "./styles.module.css";
 
 const SliderDemo = () => (

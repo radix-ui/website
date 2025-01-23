@@ -1,5 +1,5 @@
 import React from "react";
-import * as Select from "@radix-ui/react-select";
+import { Select } from "radix-ui";
 import classnames from "classnames";
 import {
 	CheckIcon,

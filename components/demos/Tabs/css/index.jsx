@@ -1,5 +1,5 @@
 import React from "react";
-import * as Tabs from "@radix-ui/react-tabs";
+import { Tabs } from "radix-ui";
 import "./styles.css";
 
 const TabsDemo = () => (

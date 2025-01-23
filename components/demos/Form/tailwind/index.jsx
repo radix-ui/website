@@ -1,5 +1,5 @@
 import React from "react";
-import * as Form from "@radix-ui/react-form";
+import { Form } from "radix-ui";
 
 const FormDemo = () => (
 	<Form.Root className="w-[260px]">

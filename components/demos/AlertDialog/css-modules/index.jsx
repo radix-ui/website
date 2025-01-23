@@ -1,5 +1,5 @@
 import React from "react";
-import * as AlertDialog from "@radix-ui/react-alert-dialog";
+import { AlertDialog } from "radix-ui";
 import styles from "./styles.module.css";
 
 const AlertDialogDemo = () => (

@@ -19,7 +19,7 @@ import { PrimitivesHeroAccordion } from "./PrimitivesHeroAccordion";
 import { PrimitivesHeroRadioGroup } from "./PrimitivesHeroRadioGroup";
 import { PrimitivesHeroToggleGroup } from "./PrimitivesHeroToggleGroup";
 import { PrimitivesHeroSwitch } from "./PrimitivesHeroSwitch";
-import { useComposedRefs } from "@radix-ui/react-compose-refs";
+import { useComposedRefs } from "radix-ui/internal";
 import { Button, Section } from "@radix-ui/themes";
 import { SerifHeading } from "@components/SerifHeading";
 import { HiddenScroll } from "./HiddenScroll";

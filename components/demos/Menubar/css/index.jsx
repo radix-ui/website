@@ -1,5 +1,5 @@
 import React from "react";
-import * as Menubar from "@radix-ui/react-menubar";
+import { Menubar } from "radix-ui";
 import {
 	CheckIcon,
 	ChevronRightIcon,

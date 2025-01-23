@@ -2,8 +2,8 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import styles from "./MagicCurtain.module.css";
-import { createContext } from "@radix-ui/react-context";
-import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import { Context } from "radix-ui/internal";
+import { NavigationMenu } from "radix-ui";
 import debounce from "lodash.debounce";
 import { useIsomorphicLayoutEffect } from "@utils/useIsomorphicLayoutEffect";
 
@@ -16,7 +16,7 @@ interface MagicCurtainItem {
 	ref: React.RefObject<HTMLDivElement>;
 }
 
-const [MagicCurtainProvider, useMagicCurtainContext] = createContext<{
+const [MagicCurtainProvider, useMagicCurtainContext] = Context.createContext<{
 	items: MagicCurtainItem[];
 	setItems: React.Dispatch<React.SetStateAction<MagicCurtainItem[]>>;
 

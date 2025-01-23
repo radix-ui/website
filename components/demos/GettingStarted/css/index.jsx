@@ -1,5 +1,5 @@
 import React from "react";
-import * as Popover from "@radix-ui/react-popover";
+import { Popover } from "radix-ui";
 import "./styles.css";
 
 const PopoverDemo = () => (

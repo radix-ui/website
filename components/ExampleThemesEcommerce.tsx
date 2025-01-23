@@ -35,9 +35,8 @@ import {
 	TextAlignRightIcon,
 	VideoIcon,
 } from "@radix-ui/react-icons";
-import { Label } from "@radix-ui/react-label";
 import * as React from "react";
-import * as ToggleGroup from "@radix-ui/react-toggle-group";
+import { Label, ToggleGroup } from "radix-ui";
 
 type ExampleLayoutProps = React.ComponentPropsWithoutRef<typeof Flex> & {
 	focusable?: boolean;
@@ -193,11 +192,11 @@ export const ExampleThemesEcommerce = ({
 
 					<Flex gap="2" align="end">
 						<Flex direction="column" flexGrow="1">
-							<Label asChild>
+							<Label.Root asChild>
 								<Text size="1" color="gray" mb="1">
 									Color
 								</Text>
-							</Label>
+							</Label.Root>
 
 							<Select.Root defaultValue="Pastel" size="2">
 								<Select.Trigger tabIndex={tabIndex} variant="soft" />
@@ -213,11 +212,11 @@ export const ExampleThemesEcommerce = ({
 						</Flex>
 
 						<Flex direction="column" minWidth="80px">
-							<Label asChild>
+							<Label.Root asChild>
 								<Text size="1" color="gray" mb="1">
 									Size
 								</Text>
-							</Label>
+							</Label.Root>
 							<Select.Root defaultValue="8" size="2">
 								<Select.Trigger tabIndex={tabIndex} variant="soft" />
 								<Select.Content
@@ -551,11 +550,11 @@ export const ExampleThemesEcommerce = ({
 
 					<Flex gap="2" align="end">
 						<Flex direction="column" flexGrow="1">
-							<Label asChild>
+							<Label.Root asChild>
 								<Text size="1" color="gray" mb="1">
 									Color
 								</Text>
-							</Label>
+							</Label.Root>
 
 							<Select.Root defaultValue="Lighter" size="2">
 								<Select.Trigger tabIndex={tabIndex} variant="soft" />
@@ -571,11 +570,11 @@ export const ExampleThemesEcommerce = ({
 						</Flex>
 
 						<Flex direction="column">
-							<Label asChild>
+							<Label.Root asChild>
 								<Text size="1" color="gray" mb="1">
 									Size
 								</Text>
-							</Label>
+							</Label.Root>
 
 							<Select.Root defaultValue="30" size="2">
 								<Select.Trigger tabIndex={tabIndex} variant="soft" />
@@ -815,7 +814,7 @@ export const ExampleThemesEcommerce = ({
 
 					<Grid columns="5" gap="2" mb="4">
 						<Box gridColumn="1 / 5">
-							<Label>
+							<Label.Root>
 								<Text size="2" weight="bold" mb="2" asChild>
 									<Box display="inline-block">Title</Box>
 								</Text>
@@ -826,11 +825,11 @@ export const ExampleThemesEcommerce = ({
 									placeholder="Enter product title"
 									defaultValue="Skirt #16"
 								/>
-							</Label>
+							</Label.Root>
 						</Box>
 
 						<Box>
-							<Label>
+							<Label.Root>
 								<Text size="2" weight="bold" mb="2" asChild>
 									<Box display="inline-block">Price</Box>
 								</Text>
@@ -841,7 +840,7 @@ export const ExampleThemesEcommerce = ({
 									placeholder="Enter price"
 									defaultValue="$99"
 								/>
-							</Label>
+							</Label.Root>
 						</Box>
 					</Grid>
 
@@ -926,11 +925,11 @@ export const ExampleThemesEcommerce = ({
 					</Box>
 
 					<Box mb="4">
-						<Label htmlFor="skirt-description">
+						<Label.Root htmlFor="skirt-description">
 							<Text size="2" weight="bold" mb="2" asChild>
 								<Box display="inline-block">Description</Box>
 							</Text>
-						</Label>
+						</Label.Root>
 						<Box position="relative">
 							<TextArea
 								tabIndex={tabIndex}

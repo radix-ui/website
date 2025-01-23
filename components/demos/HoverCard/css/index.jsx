@@ -1,5 +1,5 @@
 import React from "react";
-import * as HoverCard from "@radix-ui/react-hover-card";
+import { HoverCard } from "radix-ui";
 import "./styles.css";
 
 const HoverCardDemo = () => (

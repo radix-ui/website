@@ -1,5 +1,5 @@
 import React from "react";
-import * as Avatar from "@radix-ui/react-avatar";
+import { Avatar } from "radix-ui";
 import "./styles.css";
 
 const AvatarDemo = () => (

@@ -1,5 +1,5 @@
 import React from "react";
-import * as Form from "@radix-ui/react-form";
+import { Form } from "radix-ui";
 import "./styles.css";
 
 const FormDemo = () => (

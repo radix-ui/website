@@ -1,5 +1,5 @@
 import React from "react";
-import * as AspectRatio from "@radix-ui/react-aspect-ratio";
+import { AspectRatio } from "radix-ui";
 
 const AspectRatioDemo = () => (
 	<div className="w-[300px] overflow-hidden rounded-md shadow-[0_2px_10px] shadow-blackA4">

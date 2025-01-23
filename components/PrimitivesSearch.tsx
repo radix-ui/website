@@ -7,19 +7,20 @@ import {
 } from "@algolia/autocomplete-preset-algolia";
 import { ExclamationTriangleIcon, CaretRightIcon } from "@radix-ui/react-icons";
 import { Box, Tooltip, Text, Flex, Slot } from "@radix-ui/themes";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { VisuallyHidden } from "radix-ui";
 import styles from "./PrimitivesSearch.module.css";
-import { createContext } from "@radix-ui/react-context";
+import { Context } from "radix-ui/internal";
 
-const [PrimitivesSearchProvider, usePrimitivesSearchContext] = createContext<{
-	autocomplete: InternalAutocompleteApi<
-		SearchItem,
-		React.BaseSyntheticEvent<object, any, any>,
-		React.MouseEvent<Element, MouseEvent>,
-		React.KeyboardEvent<Element>
-	>;
-	searchState: AutocompleteState;
-}>("PrimitivesSearch");
+const [PrimitivesSearchProvider, usePrimitivesSearchContext] =
+	Context.createContext<{
+		autocomplete: InternalAutocompleteApi<
+			SearchItem,
+			React.BaseSyntheticEvent<object, any, any>,
+			React.MouseEvent<Element, MouseEvent>,
+			React.KeyboardEvent<Element>
+		>;
+		searchState: AutocompleteState;
+	}>("PrimitivesSearch");
 
 import type {
 	AutocompleteState as InternalAutocompleteState,
@@ -414,7 +415,7 @@ function ItemLink({ item }: { item: SearchItem }) {
 					/>
 				</ItemTitle>
 				{/* Adding a semi-colon to insert a break in the speech flow */}
-				<VisuallyHidden>; </VisuallyHidden>
+				<VisuallyHidden.Root>; </VisuallyHidden.Root>
 				<ItemBreadcrumb item={item} levels={SUPPORTED_LEVELS} />
 			</a>
 		</Box>
@@ -455,7 +456,7 @@ function ItemBreadcrumb({
 							>
 								<CaretRightIcon style={{ display: "inline-block" }} />
 								{/* Adding a comma to insert a natural break in the speech flow */}
-								<VisuallyHidden>, </VisuallyHidden>
+								<VisuallyHidden.Root>, </VisuallyHidden.Root>
 							</Box>
 						) : null}
 						<Highlight hit={item} attribute={["hierarchy", level]} />

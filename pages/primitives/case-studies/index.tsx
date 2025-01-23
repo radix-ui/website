@@ -5,7 +5,7 @@ import { PrimitivesMobileMenu } from "@components/PrimitivesMobileMenu";
 import { TitleAndMetaTags } from "@components/TitleAndMetaTags";
 import { CaseStudyLogo } from "@components/marketing/CaseStudyLogo";
 import { LogoLink } from "@components/marketing/LogoLink";
-import { Root as AccessibleIcon } from "@radix-ui/react-accessible-icon";
+import { AccessibleIcon } from "radix-ui";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import {
 	Box,
@@ -63,11 +63,11 @@ export default function CaseStudy() {
 							legacyBehavior
 						>
 							<LogoLink variant="box">
-								<AccessibleIcon label="Acid Tango case study">
+								<AccessibleIcon.Root label="Acid Tango case study">
 									<Flex justify="center" height="100%">
 										<CaseStudyLogo variant="Acid Tango" />
 									</Flex>
-								</AccessibleIcon>
+								</AccessibleIcon.Root>
 							</LogoLink>
 						</NextLink>
 						<NextLink
@@ -76,11 +76,11 @@ export default function CaseStudy() {
 							legacyBehavior
 						>
 							<LogoLink variant="box">
-								<AccessibleIcon label="Atom Learning case study">
+								<AccessibleIcon.Root label="Atom Learning case study">
 									<Flex justify="center" height="100%">
 										<CaseStudyLogo variant="Atom Learning" />
 									</Flex>
-								</AccessibleIcon>
+								</AccessibleIcon.Root>
 							</LogoLink>
 						</NextLink>
 						<NextLink
@@ -89,11 +89,11 @@ export default function CaseStudy() {
 							legacyBehavior
 						>
 							<LogoLink variant="box">
-								<AccessibleIcon label="Basedash case study">
+								<AccessibleIcon.Root label="Basedash case study">
 									<Flex justify="center" height="100%">
 										<CaseStudyLogo variant="Basedash" />
 									</Flex>
-								</AccessibleIcon>
+								</AccessibleIcon.Root>
 							</LogoLink>
 						</NextLink>
 						<NextLink
@@ -102,11 +102,11 @@ export default function CaseStudy() {
 							legacyBehavior
 						>
 							<LogoLink variant="box">
-								<AccessibleIcon label="basement.studio case study">
+								<AccessibleIcon.Root label="basement.studio case study">
 									<Flex justify="center" height="100%">
 										<CaseStudyLogo variant="basement.studio" />
 									</Flex>
-								</AccessibleIcon>
+								</AccessibleIcon.Root>
 							</LogoLink>
 						</NextLink>
 						<NextLink
@@ -115,11 +115,11 @@ export default function CaseStudy() {
 							legacyBehavior
 						>
 							<LogoLink variant="box">
-								<AccessibleIcon label="CodeSandbox case study">
+								<AccessibleIcon.Root label="CodeSandbox case study">
 									<Flex justify="center" height="100%">
 										<CaseStudyLogo variant="CodeSandbox" />
 									</Flex>
-								</AccessibleIcon>
+								</AccessibleIcon.Root>
 							</LogoLink>
 						</NextLink>
 						<NextLink
@@ -128,11 +128,11 @@ export default function CaseStudy() {
 							legacyBehavior
 						>
 							<LogoLink variant="box">
-								<AccessibleIcon label="Composer case study">
+								<AccessibleIcon.Root label="Composer case study">
 									<Flex justify="center" height="100%">
 										<CaseStudyLogo variant="Composer" />
 									</Flex>
-								</AccessibleIcon>
+								</AccessibleIcon.Root>
 							</LogoLink>
 						</NextLink>
 						<NextLink
@@ -141,11 +141,11 @@ export default function CaseStudy() {
 							legacyBehavior
 						>
 							<LogoLink variant="box">
-								<AccessibleIcon label="Compound case study">
+								<AccessibleIcon.Root label="Compound case study">
 									<Flex justify="center" height="100%">
 										<CaseStudyLogo variant="Compound" />
 									</Flex>
-								</AccessibleIcon>
+								</AccessibleIcon.Root>
 							</LogoLink>
 						</NextLink>
 						<NextLink
@@ -154,11 +154,11 @@ export default function CaseStudy() {
 							legacyBehavior
 						>
 							<LogoLink variant="box">
-								<AccessibleIcon label="Linear case study">
+								<AccessibleIcon.Root label="Linear case study">
 									<Flex justify="center" height="100%">
 										<CaseStudyLogo variant="Linear" />
 									</Flex>
-								</AccessibleIcon>
+								</AccessibleIcon.Root>
 							</LogoLink>
 						</NextLink>
 						<NextLink
@@ -167,11 +167,11 @@ export default function CaseStudy() {
 							legacyBehavior
 						>
 							<LogoLink variant="box">
-								<AccessibleIcon label="Liveblocks case study">
+								<AccessibleIcon.Root label="Liveblocks case study">
 									<Flex justify="center" height="100%">
 										<CaseStudyLogo variant="Liveblocks" />
 									</Flex>
-								</AccessibleIcon>
+								</AccessibleIcon.Root>
 							</LogoLink>
 						</NextLink>
 						<NextLink
@@ -180,11 +180,11 @@ export default function CaseStudy() {
 							legacyBehavior
 						>
 							<LogoLink variant="box">
-								<AccessibleIcon label="Magnetis case study">
+								<AccessibleIcon.Root label="Magnetis case study">
 									<Flex justify="center" height="100%">
 										<CaseStudyLogo variant="Magnetis" />
 									</Flex>
-								</AccessibleIcon>
+								</AccessibleIcon.Root>
 							</LogoLink>
 						</NextLink>
 						<NextLink
@@ -193,11 +193,11 @@ export default function CaseStudy() {
 							legacyBehavior
 						>
 							<LogoLink variant="box">
-								<AccessibleIcon label="Supabase case study">
+								<AccessibleIcon.Root label="Supabase case study">
 									<Flex justify="center" height="100%">
 										<CaseStudyLogo variant="Supabase" />
 									</Flex>
-								</AccessibleIcon>
+								</AccessibleIcon.Root>
 							</LogoLink>
 						</NextLink>
 						<NextLink
@@ -206,11 +206,11 @@ export default function CaseStudy() {
 							legacyBehavior
 						>
 							<LogoLink variant="box">
-								<AccessibleIcon label="Node.js case study">
+								<AccessibleIcon.Root label="Node.js case study">
 									<Flex justify="center" height="100%">
 										<CaseStudyLogo variant="Node.js" />
 									</Flex>
-								</AccessibleIcon>
+								</AccessibleIcon.Root>
 							</LogoLink>
 						</NextLink>
 						<NextLink
@@ -219,11 +219,11 @@ export default function CaseStudy() {
 							legacyBehavior
 						>
 							<LogoLink variant="box">
-								<AccessibleIcon label="Teamflow case study">
+								<AccessibleIcon.Root label="Teamflow case study">
 									<Flex justify="center" height="100%">
 										<CaseStudyLogo variant="Teamflow" />
 									</Flex>
-								</AccessibleIcon>
+								</AccessibleIcon.Root>
 							</LogoLink>
 						</NextLink>
 						<NextLink
@@ -232,11 +232,11 @@ export default function CaseStudy() {
 							legacyBehavior
 						>
 							<LogoLink variant="box">
-								<AccessibleIcon label="University of Amsterdam case study">
+								<AccessibleIcon.Root label="University of Amsterdam case study">
 									<Flex justify="center" height="100%">
 										<CaseStudyLogo variant="University of Amsterdam" />
 									</Flex>
-								</AccessibleIcon>
+								</AccessibleIcon.Root>
 							</LogoLink>
 						</NextLink>
 						<NextLink
@@ -245,11 +245,11 @@ export default function CaseStudy() {
 							legacyBehavior
 						>
 							<LogoLink variant="box">
-								<AccessibleIcon label="Vercel case study">
+								<AccessibleIcon.Root label="Vercel case study">
 									<Flex justify="center" height="100%">
 										<CaseStudyLogo variant="Vercel" />
 									</Flex>
-								</AccessibleIcon>
+								</AccessibleIcon.Root>
 							</LogoLink>
 						</NextLink>
 					</Grid>

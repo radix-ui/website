@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { useLayoutEffect } from "@radix-ui/react-use-layout-effect";
+import { useLayoutEffect } from "radix-ui/internal";
 import { DEFAULT_CSS_LIB, SUPPORTED_CSS_LIBS } from "@utils/constants";
 import type { CssLib } from "@utils/constants";
 

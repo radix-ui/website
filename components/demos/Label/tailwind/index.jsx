@@ -1,5 +1,5 @@
 import React from "react";
-import * as Label from "@radix-ui/react-label";
+import { Label } from "radix-ui";
 
 const LabelDemo = () => (
 	<div className="flex flex-wrap items-center gap-[15px] px-5">

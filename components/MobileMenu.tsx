@@ -1,12 +1,12 @@
 "use client";
 import * as React from "react";
-import { createContext } from "@radix-ui/react-context";
+import { Context } from "radix-ui/internal";
 import { RemoveScroll } from "react-remove-scroll";
-import { Slot } from "@radix-ui/react-slot";
+import { Slot } from "radix-ui";
 import { Box, Portal, Theme } from "@radix-ui/themes";
 import { useRouter } from "next/router";
 
-const [MenuProvider, useMenuContext] = createContext<{
+const [MenuProvider, useMenuContext] = Context.createContext<{
 	open: boolean;
 	setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }>("MobileMenu");
@@ -69,7 +69,7 @@ export const MobileMenu = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<Portal>
 			<Theme className="radix-themes-custom-fonts">
-				<RemoveScroll as={Slot} allowPinchZoom enabled>
+				<RemoveScroll as={Slot.Root} allowPinchZoom enabled>
 					<Box
 						position="fixed"
 						inset="0"

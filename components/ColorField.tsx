@@ -1,5 +1,5 @@
 import Color from "colorjs.io";
-import { composeRefs } from "@radix-ui/react-compose-refs";
+import { composeRefs } from "radix-ui/internal";
 import { TextField } from "@radix-ui/themes";
 import styles from "./ColorField.module.css";
 import * as React from "react";

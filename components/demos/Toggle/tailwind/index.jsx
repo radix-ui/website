@@ -1,5 +1,5 @@
 import React from "react";
-import * as Toggle from "@radix-ui/react-toggle";
+import { Toggle } from "radix-ui";
 import { FontItalicIcon } from "@radix-ui/react-icons";
 
 const ToggleDemo = () => (

@@ -31,7 +31,7 @@ import {
 	Theme,
 	type ThemeProps,
 } from "@radix-ui/themes";
-import { Label } from "@radix-ui/react-label";
+import { Label } from "radix-ui";
 import { allPeople } from "./people";
 import {
 	CheckIcon,
@@ -217,7 +217,7 @@ export function ThemesVariantsExample() {
 
 							<Flex direction="column" gap="4">
 								<Flex asChild direction="column" gap="2">
-									<Label>
+									<Label.Root>
 										<Text size="2" weight="bold">
 											Name
 										</Text>
@@ -225,11 +225,11 @@ export function ThemesVariantsExample() {
 											variant="surface"
 											defaultValue="Emily Adams"
 										/>
-									</Label>
+									</Label.Root>
 								</Flex>
 
 								<Flex asChild direction="column" gap="2">
-									<Label>
+									<Label.Root>
 										<Text size="2" weight="bold">
 											Username
 										</Text>
@@ -237,11 +237,11 @@ export function ThemesVariantsExample() {
 											variant="surface"
 											defaultValue="@emilyadams"
 										/>
-									</Label>
+									</Label.Root>
 								</Flex>
 
 								<Flex asChild direction="column" gap="2">
-									<Label>
+									<Label.Root>
 										<Text size="2" weight="bold">
 											Email
 										</Text>
@@ -249,7 +249,7 @@ export function ThemesVariantsExample() {
 											variant="surface"
 											defaultValue="emily@example.com"
 										/>
-									</Label>
+									</Label.Root>
 								</Flex>
 
 								<Flex direction="column" gap="2">
@@ -1047,7 +1047,7 @@ export function ThemesVolumeControlExample() {
 
 					<Grid columns={{ initial: "2", xs: "4" }} pt="2" pb="1" gapY="5">
 						<Flex direction="column" gap="2" align="center" asChild>
-							<Label>
+							<Label.Root>
 								<IconButton variant="soft" color="gray">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -1067,11 +1067,11 @@ export function ThemesVolumeControlExample() {
 										On
 									</Text>
 								</Flex>
-							</Label>
+							</Label.Root>
 						</Flex>
 
 						<Flex direction="column" gap="2" align="center" asChild>
-							<Label>
+							<Label.Root>
 								<IconButton variant="solid">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -1091,11 +1091,11 @@ export function ThemesVolumeControlExample() {
 										On
 									</Text>
 								</Flex>
-							</Label>
+							</Label.Root>
 						</Flex>
 
 						<Flex direction="column" gap="2" align="center" asChild>
-							<Label>
+							<Label.Root>
 								<IconButton variant="soft" color="gray">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -1115,11 +1115,11 @@ export function ThemesVolumeControlExample() {
 										Off
 									</Text>
 								</Flex>
-							</Label>
+							</Label.Root>
 						</Flex>
 
 						<Flex direction="column" gap="2" align="center" asChild>
-							<Label>
+							<Label.Root>
 								<IconButton variant="soft" color="gray">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -1139,7 +1139,7 @@ export function ThemesVolumeControlExample() {
 										Off
 									</Text>
 								</Flex>
-							</Label>
+							</Label.Root>
 						</Flex>
 					</Grid>
 				</Flex>

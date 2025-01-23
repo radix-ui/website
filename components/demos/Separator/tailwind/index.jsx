@@ -1,5 +1,5 @@
 import React from "react";
-import * as Separator from "@radix-ui/react-separator";
+import { Separator } from "radix-ui";
 
 const SeparatorDemo = () => (
 	<div className="mx-[15px] w-full max-w-[300px]">

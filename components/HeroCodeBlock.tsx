@@ -10,7 +10,7 @@ import {
 	Theme,
 	Grid,
 } from "@radix-ui/themes";
-import * as Collapsible from "@radix-ui/react-collapsible";
+import { Collapsible } from "radix-ui";
 import { getParameters } from "codesandbox/lib/api/define";
 import { CodeSandboxLogoIcon, CopyIcon } from "@radix-ui/react-icons";
 import { isValidCssLib, useCssLibPreference } from "./CssLibPreference";

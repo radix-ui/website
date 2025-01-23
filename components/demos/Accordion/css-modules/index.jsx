@@ -1,5 +1,5 @@
 import React from "react";
-import * as Accordion from "@radix-ui/react-accordion";
+import { Accordion } from "radix-ui";
 import classNames from "classnames";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import styles from "./styles.module.css";

@@ -1,5 +1,5 @@
 import React from "react";
-import * as Toolbar from "@radix-ui/react-toolbar";
+import { Toolbar } from "radix-ui";
 import {
 	StrikethroughIcon,
 	TextAlignLeftIcon,

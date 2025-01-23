@@ -1,5 +1,5 @@
 import React from "react";
-import * as Collapsible from "@radix-ui/react-collapsible";
+import { Collapsible } from "radix-ui";
 import { RowSpacingIcon, Cross2Icon } from "@radix-ui/react-icons";
 import styles from "./styles.module.css";
 

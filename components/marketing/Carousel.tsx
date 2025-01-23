@@ -1,13 +1,11 @@
 import * as React from "react";
-import { useComposedRefs } from "@radix-ui/react-compose-refs";
-import { createContext } from "@radix-ui/react-context";
-import { useCallbackRef } from "@radix-ui/react-use-callback-ref";
+import { useComposedRefs, useCallbackRef, Context } from "radix-ui/internal";
 import { composeEventHandlers } from "@radix-ui/primitive";
 import debounce from "lodash.debounce";
 import { useCallback, useEffect, useRef, useState } from "react";
 import smoothscroll from "smoothscroll-polyfill";
 
-const [CarouselProvider, useCarouselContext] = createContext<{
+const [CarouselProvider, useCarouselContext] = Context.createContext<{
 	_: any;
 	slideListRef: React.RefObject<HTMLDivElement>;
 	onNextClick(): void;

@@ -1,6 +1,6 @@
 import { Box, Text } from "@radix-ui/themes";
 import { styled } from "@utils/css";
-import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
+import { ScrollArea as ScrollAreaPrimitive } from "radix-ui";
 import styles from "./PrimitivesHeroScrollArea.module.css";
 
 const StyledScrollArea = styled(ScrollAreaPrimitive.Root, styles.ScrollArea);

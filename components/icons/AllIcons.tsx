@@ -11,11 +11,11 @@ import {
 import { useCopyToast } from "./CopyToast";
 
 import styles from "./AllIcons.module.css";
-import { TooltipProvider } from "@radix-ui/react-tooltip";
+import { Tooltip as TooltipPrimitive } from "radix-ui";
 
 export const AllIcons = React.memo(() => {
 	return (
-		<TooltipProvider disableHoverableContent>
+		<TooltipPrimitive.Provider disableHoverableContent>
 			<Grid className={styles.IconsContainer}>
 				<Box>
 					<Typography />
@@ -34,7 +34,7 @@ export const AllIcons = React.memo(() => {
 					<Alignment />
 				</Box>
 			</Grid>
-		</TooltipProvider>
+		</TooltipPrimitive.Provider>
 	);
 });
 

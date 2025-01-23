@@ -11,7 +11,7 @@ import {
 } from "@radix-ui/themes";
 import { ArrowTopRightIcon, CheckIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { VisuallyHidden } from "radix-ui";
 import { FrontmatterContext } from "./MDXComponents";
 
 export function Highlights({ features }: { features: React.ReactNode[] }) {
@@ -67,9 +67,9 @@ export function Highlights({ features }: { features: React.ReactNode[] }) {
 				data-algolia-exclude
 			>
 				<nav>
-					<VisuallyHidden asChild>
+					<VisuallyHidden.Root asChild>
 						<h2 id="site-component-info-heading">Component Reference Links</h2>
-					</VisuallyHidden>
+					</VisuallyHidden.Root>
 
 					<Box asChild display={{ sm: "none" }}>
 						<Separator size="2" mb="4" />

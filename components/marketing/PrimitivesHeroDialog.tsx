@@ -1,9 +1,8 @@
 import React from "react";
-import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { Dialog as DialogPrimitive, Label } from "radix-ui";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { Flex, TextField, Grid, Text, IconButton, Box } from "@radix-ui/themes";
 import { PrimitivesHeroButton } from "./PrimitivesHeroButton";
-import { Label } from "@radix-ui/react-label";
 
 export function PrimitivesHeroDialog() {
 	// We prevent the initial auto focus because it's a demo rather than a real UI,
@@ -47,25 +46,25 @@ export function PrimitivesHeroDialog() {
 				</DialogPrimitive.Title>
 
 				<Flex mb="2" direction="column">
-					<Label>
+					<Label.Root>
 						<Box mb="1">
 							<Text size="1" color="gray">
 								Name
 							</Text>
 						</Box>
 						<TextField.Root size="1" id="name" defaultValue="Pedro Duarte" />
-					</Label>
+					</Label.Root>
 				</Flex>
 
 				<Flex mb="4" direction="column">
-					<Label>
+					<Label.Root>
 						<Box mb="1">
 							<Text size="1" color="gray">
 								Username
 							</Text>
 						</Box>
 						<TextField.Root size="1" id="username" defaultValue="@peduarte" />
-					</Label>
+					</Label.Root>
 				</Flex>
 
 				<Flex justify="end" gap="2">

@@ -1,5 +1,5 @@
 import React from "react";
-import * as Dialog from "@radix-ui/react-dialog";
+import { Dialog } from "radix-ui";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import styles from "./styles.module.css";
 

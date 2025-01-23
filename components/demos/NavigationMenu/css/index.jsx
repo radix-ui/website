@@ -1,5 +1,5 @@
 import React from "react";
-import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import { NavigationMenu } from "radix-ui";
 import classNames from "classnames";
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import "./styles.css";

@@ -1,5 +1,5 @@
 import React from "react";
-import * as AspectRatio from "@radix-ui/react-aspect-ratio";
+import { AspectRatio } from "radix-ui";
 import "./styles.css";
 
 const AspectRatioDemo = () => (

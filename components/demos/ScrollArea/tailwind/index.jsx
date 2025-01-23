@@ -1,5 +1,5 @@
 import React from "react";
-import * as ScrollArea from "@radix-ui/react-scroll-area";
+import { ScrollArea } from "radix-ui";
 
 const TAGS = Array.from({ length: 50 }).map(
 	(_, i, a) => `v1.2.0-beta.${a.length - i}`,
