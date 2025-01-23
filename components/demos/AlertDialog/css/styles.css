@@ -16,11 +16,9 @@ button {
 }
 
 .AlertDialogContent {
-	background-color: white;
+	background-color: var(--gray-1);
 	border-radius: 6px;
-	box-shadow:
-		hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
-		hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+	box-shadow: var(--shadow-6);
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -59,37 +57,38 @@ button {
 	line-height: 1;
 	font-weight: 500;
 	height: 35px;
+	user-select: none;
+}
+.Button:focus:not(:focus-visible) {
+	outline: 0;
+}
+.Button:focus-visible {
+	outline: 2px solid var(--violet-6);
+	outline-offset: 1px;
 }
 .Button.violet {
-	background-color: white;
-	color: var(--violet-11);
-	box-shadow: 0 2px 10px var(--black-a7);
+	background-color: var(--violet-4);
+	color: var(--violet-12);
+	outline-color: var(--violet-6);
 }
 .Button.violet:hover {
 	background-color: var(--mauve-3);
 }
-.Button.violet:focus {
-	box-shadow: 0 0 0 2px black;
-}
 .Button.red {
 	background-color: var(--red-4);
 	color: var(--red-11);
+	outline-color: var(--red-7);
 }
 .Button.red:hover {
 	background-color: var(--red-5);
 }
-.Button.red:focus {
-	box-shadow: 0 0 0 2px var(--red-7);
-}
 .Button.mauve {
 	background-color: var(--mauve-4);
 	color: var(--mauve-11);
+	outline-color: var(--mauve-7);
 }
 .Button.mauve:hover {
 	background-color: var(--mauve-5);
-}
-.Button.mauve:focus {
-	box-shadow: 0 0 0 2px var(--mauve-7);
 }
 
 @keyframes overlayShow {

@@ -1,4 +1,4 @@
-const { mauve, violet, red, blackA } = require("@radix-ui/colors");
+const { mauve, violet, red, blackA, gray } = require("@radix-ui/colors");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -10,6 +10,7 @@ module.exports = {
 				...violet,
 				...red,
 				...blackA,
+				...gray,
 			},
 			keyframes: {
 				overlayShow: {
