@@ -10,27 +10,27 @@ const AccordionDemo = () => (
 		defaultValue="item-1"
 		collapsible
 	>
-		<Accordion.Item value="item-1">
-			<Accordion.Trigger>Is it accessible?</Accordion.Trigger>
-			<Accordion.Content>
+		<AccordionItem value="item-1">
+			<AccordionTrigger>Is it accessible?</AccordionTrigger>
+			<AccordionContent>
 				Yes. It adheres to the WAI-ARIA design pattern.
-			</Accordion.Content>
-		</Accordion.Item>
+			</AccordionContent>
+		</AccordionItem>
 
-		<Accordion.Item value="item-2">
-			<Accordion.Trigger>Is it unstyled?</Accordion.Trigger>
-			<Accordion.Content>
+		<AccordionItem value="item-2">
+			<AccordionTrigger>Is it unstyled?</AccordionTrigger>
+			<AccordionContent>
 				Yes. It's unstyled by default, giving you freedom over the look and
 				feel.
-			</Accordion.Content>
-		</Accordion.Item>
+			</AccordionContent>
+		</AccordionItem>
 
-		<Accordion.Item value="item-3">
-			<Accordion.Trigger>Can it be animated?</Accordion.Trigger>
-			<Accordion.Content>
+		<AccordionItem value="item-3">
+			<AccordionTrigger>Can it be animated?</AccordionTrigger>
+			<AccordionContent>
 				Yes! You can animate the Accordion with CSS or JavaScript.
-			</Accordion.Content>
-		</Accordion.Item>
+			</AccordionContent>
+		</AccordionItem>
 	</Accordion.Root>
 );
 
@@ -54,7 +54,7 @@ const AccordionTrigger = React.forwardRef(
 		<Accordion.Header className="flex">
 			<Accordion.Trigger
 				className={classNames(
-					"group flex h-[45px] flex-1 cursor-default items-center justify-between bg-white px-5 text-[15px] leading-none text-violet11 shadow-[0_1px_0] shadow-mauve6 outline-none hover:bg-mauve2",
+					"group flex h-[45px] flex-1 cursor-default items-center justify-between bg-mauve1 px-5 text-[15px] leading-none text-violet11 shadow-[0_1px_0] shadow-mauve6 outline-none hover:bg-mauve2",
 					className,
 				)}
 				{...props}
