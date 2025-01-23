@@ -39,7 +39,7 @@ npm install @radix-ui/react-toggle-group
 Import the component.
 
 ```jsx
-import * as ToggleGroup from "@radix-ui/react-toggle-group";
+import { ToggleGroup } from "radix-ui";
 
 export default () => (
 	<ToggleGroup.Root>
@@ -300,7 +300,7 @@ You can control the component to ensure a value.
 
 ```jsx line=5,8
 import * as React from "react";
-import * as ToggleGroup from "@radix-ui/react-toggle-group";
+import { ToggleGroup } from "radix-ui";
 
 export default () => {
 	const [value, setValue] = React.useState("left");

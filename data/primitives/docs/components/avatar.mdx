@@ -37,7 +37,7 @@ npm install @radix-ui/react-avatar
 Import all parts and piece them together.
 
 ```jsx
-import * as Avatar from "@radix-ui/react-avatar";
+import { Avatar } from "radix-ui";
 
 export default () => (
 	<Avatar.Root>
@@ -143,9 +143,8 @@ An element that renders when the image hasn't loaded. This means whilst it's loa
 
 You can compose the Avatar with a [Tooltip](/primitives/docs/components/tooltip) to display extra information.
 
-```jsx line=2,5,6,8,10-14
-import * as Avatar from "@radix-ui/react-avatar";
-import * as Tooltip from "@radix-ui/react-tooltip";
+```jsx line=1,4,5,7,9-13
+import { Avatar, __Tooltip__ } from "radix-ui";
 
 export default () => (
 	<Tooltip.Root>

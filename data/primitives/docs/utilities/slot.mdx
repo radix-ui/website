@@ -23,12 +23,12 @@ npm install @radix-ui/react-slot
 Import the component.
 
 ```jsx
-import { Slot } from "@radix-ui/react-slot";
+import { Slot } from "radix-ui";
 
 export default () => (
-	<Slot>
+	<Slot.Root>
 		<div>Hello</div>
-	</Slot>
+	</Slot.Root>
 );
 ```
 
@@ -41,27 +41,27 @@ When your component has a single children element:
 ```jsx line=9
 // your-button.jsx
 import React from "react";
-import { Slot } from "@radix-ui/react-slot";
+import { Slot } from "radix-ui";
 
 function Button({ asChild, ...props }) {
-	const Comp = asChild ? Slot : "button";
+	const Comp = asChild ? Slot.Root : "button";
 	return <Comp {...props} />;
 }
 ```
 
-Use <Slottable /> when your component has multiple childrens to pass the props to the correct element:
+Use `Slottable` when your component has multiple children to pass the props to the correct element:
 
 ```jsx
 // your-button.jsx
 import React from "react";
-import { Slot, Slottable } from "@radix-ui/react-slot";
+import { Slot } from "radix-ui";
 
 function Button({ asChild, children, leftElement, rightElement, ...props }) {
-	const Comp = asChild ? Slot : "button";
+	const Comp = asChild ? Slot.Root : "button";
 	return (
 		<Comp {...props}>
 			{leftElement}
-			<Slottable>{children}</Slottable>
+			<Slot.Slottable>{children}</Slottable>
 			{rightElement}
 		</Comp>
 	);
@@ -89,10 +89,10 @@ When merging event handlers, `Slot` will create a new function where the child h
 If one of the event handlers relies on `event.defaultPrevented` make sure that the order is correct.
 
 ```jsx
-import { Slot } from "@radix-ui/react-slot";
+import { Slot } from "radix-ui";
 
 export default () => (
-	<Slot
+	<Slot.Root
 		onClick={(event) => {
 			if (!event.defaultPrevented)
 				console.log("Not logged because default is prevented.");

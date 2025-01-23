@@ -20,7 +20,7 @@ A good example is with `Tooltip.Trigger`. By default this part is rendered as a 
 
 ```jsx line=7
 import * as React from "react";
-import * as Tooltip from "@radix-ui/react-tooltip";
+import { Tooltip } from "radix-ui";
 
 export default () => (
 	<Tooltip.Root>
@@ -82,10 +82,9 @@ Whilst this isn't necessary for **all** parts, we recommend always doing it so t
 `asChild` can be used as deeply as you need to. This means it is a great way to compose multiple primitive's behavior together.
 Here is an example of how you can compose `Tooltip.Trigger` and `Dialog.Trigger` together with your own button:
 
-```jsx line=13-17
+```jsx line=12-16
 import * as React from "react";
-import * as Dialog from "@radix-ui/react-dialog";
-import * as Tooltip from "@radix-ui/react-tooltip";
+import { Dialog, Tooltip } from "radix-ui";
 
 const MyButton = React.forwardRef((props, forwardedRef) => (
 	<button {...props} ref={forwardedRef} />

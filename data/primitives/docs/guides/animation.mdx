@@ -55,7 +55,7 @@ When many stateful Primitives are hidden from view, they are actually removed fr
 For example, if you want to use React Spring to animate a `Dialog`, you would do so by conditionally rendering the dialog `Overlay` and `Content` parts based on the animation state from one of its hooks like `useTransition`:
 
 ```jsx
-import * as Dialog from "@radix-ui/react-dialog";
+import { Dialog } from "radix-ui";
 import { useTransition, animated, config } from "react-spring";
 
 function Example() {

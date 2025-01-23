@@ -39,7 +39,7 @@ npm install @radix-ui/react-toast
 Import the component.
 
 ```jsx
-import * as Toast from "@radix-ui/react-toast";
+import { Toast } from "radix-ui";
 
 export default () => (
 	<Toast.Provider>
@@ -504,7 +504,7 @@ Combine `--radix-toast-swipe-move-[x|y]` and `--radix-toast-swipe-end-[x|y]` CSS
 
 ```jsx line=6,7
 // index.jsx
-import * as Toast from "@radix-ui/react-toast";
+import { Toast } from "radix-ui";
 import "./styles.css";
 
 export default () => (
@@ -673,7 +673,7 @@ export default () => (
 
 ```jsx
 // your-toast.jsx
-import * as ToastPrimitive from "@radix-ui/react-toast";
+import { Toast as ToastPrimitive } from "radix-ui";
 
 export const Toast = ({ title, content, children, ...props }) => {
 	return (
@@ -719,7 +719,7 @@ export default () => {
 ```jsx
 // your-toast.jsx
 import React from "react";
-import * as ToastPrimitive from "@radix-ui/react-toast";
+import { Toast as ToastPrimitive } from "radix-ui";
 
 export const Toast = React.forwardRef((props, forwardedRef) => {
 	const { children, ...toastProps } = props;

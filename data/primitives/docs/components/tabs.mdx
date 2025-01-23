@@ -40,7 +40,7 @@ npm install @radix-ui/react-tabs
 Import all parts and piece them together.
 
 ```jsx
-import * as Tabs from "@radix-ui/react-tabs";
+import { Tabs } from "radix-ui";
 
 export default () => (
 	<Tabs.Root>
@@ -314,7 +314,7 @@ Contains the content associated with each trigger.
 You can create vertical tabs by using the `orientation` prop.
 
 ```jsx line=4
-import * as Tabs from "@radix-ui/react-tabs";
+import { Tabs } from "radix-ui";
 
 export default () => (
 	<Tabs.Root defaultValue="tab1" __orientation__="vertical">

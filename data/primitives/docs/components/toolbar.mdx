@@ -39,7 +39,7 @@ npm install @radix-ui/react-toolbar
 Import the component.
 
 ```jsx
-import * as Toolbar from "@radix-ui/react-toolbar";
+import { Toolbar } from "radix-ui";
 
 export default () => (
 	<Toolbar.Root>
@@ -413,9 +413,8 @@ All our primitives which expose a `Trigger` part, such as `Dialog`, `AlertDialog
 
 Here is an example using our `DropdownMenu` primitive.
 
-```jsx line=9-11
-import * as Toolbar from "@radix-ui/react-toolbar";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+```jsx line=8-10
+import { Toolbar, DropdownMenu } from "radix-ui";
 
 export default () => (
 	<Toolbar.Root>

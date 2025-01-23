@@ -32,7 +32,7 @@ You can style a component part by targeting the `className` that you provide.
 
 ```jsx line=3,7
 import * as React from "react";
-import * as Accordion from "@radix-ui/react-accordion";
+import { Accordion } from "radix-ui";
 import "./styles.css";
 
 const AccordionDemo = () => (
@@ -69,7 +69,7 @@ Most CSS-in-JS libraries export a function for passing components and their styl
 
 ```jsx line=5-7,11
 import * as React from "react";
-import * as Accordion from "@radix-ui/react-accordion";
+import { Accordion } from "radix-ui";
 import styled from "styled-components";
 
 const StyledItem = __styled__(Accordion.Item)`
@@ -91,7 +91,7 @@ export default AccordionDemo;
 You can style a component state by targeting its `data-state` attribute.
 
 ```jsx
-import * as Accordion from "@radix-ui/react-accordion";
+import { Accordion } from "radix-ui";
 import styled from "styled-components";
 
 const StyledItem = styled(Accordion.Item)`
@@ -109,7 +109,7 @@ Extending a primitive is done the same way you extend any React component.
 
 ```tsx
 import * as React from "react";
-import * as AccordionPrimitive from "@radix-ui/react-accordion";
+import { Accordion as AccordionPrimitive } from "radix-ui";
 
 const AccordionItem = React.forwardRef<
 	React.ElementRef<typeof AccordionPrimitive.Item>,

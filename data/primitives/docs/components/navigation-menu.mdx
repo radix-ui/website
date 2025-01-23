@@ -40,7 +40,7 @@ npm install @radix-ui/react-navigation-menu
 Import all parts and piece them together.
 
 ```jsx
-import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import { NavigationMenu } from "radix-ui";
 
 export default () => (
 	<NavigationMenu.Root>
@@ -630,7 +630,7 @@ an animated visual cue such as an arrow or highlight to accompany the `Viewport`
 
 ```jsx line=17
 // index.jsx
-import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import { NavigationMenu } from "radix-ui";
 import "./styles.css";
 
 export default () => (
@@ -714,7 +714,7 @@ This will ensure accessibility and consistent keyboard control is maintained. He
 // index.jsx
 import { usePathname } from "next/navigation";
 import NextLink from "next/link";
-import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import { NavigationMenu } from "radix-ui";
 import "./styles.css";
 
 const Link = ({ href, ...props }) => {
@@ -761,7 +761,7 @@ Combining these with `position: absolute;` allows you to create smooth overlappi
 
 ```jsx line=10-12,16-18,22
 // index.jsx
-import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import { NavigationMenu } from "radix-ui";
 import "./styles.css";
 
 export default () => (

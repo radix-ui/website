@@ -16,10 +16,10 @@ In this quick tutorial, we will install and style the [Popover](../components/po
 
 ### 1. Install the primitive
 
-Install the component from your command line.
+Install Radix Primitives from your command line.
 
 ```bash
-npm install @radix-ui/react-popover@latest -E
+npm install radix-ui@latest
 ```
 
 ### 2. Import the parts
@@ -29,7 +29,7 @@ Import and structure the parts.
 ```jsx line=3,6-14
 // index.jsx
 import * as React from "react";
-import * as Popover from "@radix-ui/react-popover";
+import { Popover } from "radix-ui";
 
 const PopoverDemo = () => (
 	<Popover.Root>
@@ -53,7 +53,7 @@ Add styles where desired.
 ```jsx line=4,8,10,12
 // index.jsx
 import * as React from "react";
-import * as Popover from "@radix-ui/react-popover";
+import { Popover } from "radix-ui";
 import "./styles.css";
 
 const PopoverDemo = () => (

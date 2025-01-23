@@ -40,7 +40,7 @@ npm install @radix-ui/react-tooltip
 Import all parts and piece them together.
 
 ```jsx
-import * as Tooltip from "@radix-ui/react-tooltip";
+import { Tooltip } from "radix-ui";
 
 export default () => (
 	<Tooltip.Provider>
@@ -496,7 +496,7 @@ An optional arrow element to render alongside the tooltip. This can be used to h
 Use the `Provider` to control `delayDuration` and `skipDelayDuration` globally.
 
 ```jsx line=4
-import * as Tooltip from "@radix-ui/react-tooltip";
+import { Tooltip } from "radix-ui";
 
 export default () => (
 	<Tooltip.Provider __delayDuration__={800} __skipDelayDuration__={500}>
@@ -517,7 +517,7 @@ export default () => (
 Use the `delayDuration` prop to control the time it takes for the tooltip to open.
 
 ```jsx line=4
-import * as Tooltip from "@radix-ui/react-tooltip";
+import { Tooltip } from "radix-ui";
 
 export default () => (
 	<Tooltip.Root __delayDuration__={0}>
@@ -535,7 +535,7 @@ We expose several CSS custom properties such as `--radix-tooltip-trigger-width` 
 
 ```jsx line=9
 // index.jsx
-import * as Tooltip from "@radix-ui/react-tooltip";
+import { Tooltip } from "radix-ui";
 import "./styles.css";
 
 export default () => (
@@ -564,7 +564,7 @@ We expose a CSS custom property `--radix-tooltip-content-transform-origin`. Use 
 
 ```jsx line=8
 // index.jsx
-import * as Tooltip from "@radix-ui/react-tooltip";
+import { Tooltip } from "radix-ui";
 import "./styles.css";
 
 export default () => (
@@ -600,7 +600,7 @@ We expose `data-side` and `data-align` attributes. Their values will change at r
 
 ```jsx line=8
 // index.jsx
-import * as Tooltip from "@radix-ui/react-tooltip";
+import { Tooltip } from "radix-ui";
 import "./styles.css";
 
 export default () => (
@@ -699,7 +699,7 @@ Use the [`asChild` prop](/primitives/docs/guides/composition) to convert the tri
 ```jsx line=8-10
 // your-tooltip.jsx
 import React from "react";
-import * as TooltipPrimitive from "@radix-ui/react-tooltip";
+import { Tooltip as TooltipPrimitive } from "radix-ui";
 
 export function Tooltip({
 	children,

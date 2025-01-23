@@ -43,7 +43,7 @@ npm install @radix-ui/react-alert-dialog
 Import all parts and piece them together.
 
 ```jsx
-import * as AlertDialog from "@radix-ui/react-alert-dialog";
+import { AlertDialog } from "radix-ui";
 
 export default () => (
 	<AlertDialog.Root>
@@ -388,7 +388,7 @@ Use the controlled props to programmatically close the Alert Dialog after an asy
 
 ```jsx line=4,7,10,15,17
 import React from "react";
-import * as AlertDialog from "@radix-ui/react-alert-dialog";
+import { AlertDialog } from "radix-ui";
 
 const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
 

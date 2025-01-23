@@ -38,7 +38,7 @@ npm install @radix-ui/react-checkbox
 Import all parts and piece them together.
 
 ```jsx
-import * as Checkbox from "@radix-ui/react-checkbox";
+import { Checkbox } from "radix-ui";
 
 export default () => (
 	<Checkbox.Root>
@@ -198,7 +198,7 @@ You can set the checkbox to `indeterminate` by taking control of its state.
 
 ```jsx line=5,9-14,16
 import { DividerHorizontalIcon, CheckIcon } from "@radix-ui/react-icons";
-import * as Checkbox from "@radix-ui/react-checkbox";
+import { Checkbox } from "radix-ui";
 
 export default () => {
 	const [checked, setChecked] = React.useState("indeterminate");

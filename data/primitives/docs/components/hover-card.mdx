@@ -39,7 +39,7 @@ npm install @radix-ui/react-hover-card
 Import all parts and piece them together.
 
 ```jsx
-import * as HoverCard from "@radix-ui/react-hover-card";
+import { HoverCard } from "radix-ui";
 
 export default () => (
 	<HoverCard.Root>
@@ -420,7 +420,7 @@ An optional arrow element to render alongside the hover card. This can be used t
 Use the `openDelay` prop to control the time it takes for the hover card to open.
 
 ```jsx line=4
-import * as HoverCard from "@radix-ui/react-hover-card";
+import { HoverCard } from "radix-ui";
 
 export default () => (
 	<HoverCard.Root __openDelay__={0}>
@@ -438,7 +438,7 @@ We expose several CSS custom properties such as `--radix-hover-card-trigger-widt
 
 ```jsx line=9
 // index.jsx
-import * as HoverCard from "@radix-ui/react-hover-card";
+import { HoverCard } from "radix-ui";
 import "./styles.css";
 
 export default () => (
@@ -467,7 +467,7 @@ We expose a CSS custom property `--radix-hover-card-content-transform-origin`. U
 
 ```jsx line=8
 // index.jsx
-import * as HoverCard from "@radix-ui/react-hover-card";
+import { HoverCard } from "radix-ui";
 import "./styles.css";
 
 export default () => (
@@ -503,7 +503,7 @@ We expose `data-side` and `data-align` attributes. Their values will change at r
 
 ```jsx line=8
 // index.jsx
-import * as HoverCard from "@radix-ui/react-hover-card";
+import { HoverCard } from "radix-ui";
 import "./styles.css";
 
 export default () => (

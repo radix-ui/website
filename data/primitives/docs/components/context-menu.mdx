@@ -46,7 +46,7 @@ npm install @radix-ui/react-context-menu
 Import all parts and piece them together.
 
 ```jsx
-import * as ContextMenu from "@radix-ui/react-context-menu";
+import { ContextMenu } from "radix-ui";
 
 export default () => (
 	<ContextMenu.Root>
@@ -1247,7 +1247,7 @@ You can add special styles to disabled items via the `data-disabled` attribute.
 
 ```jsx line=10
 // index.jsx
-import * as ContextMenu from "@radix-ui/react-context-menu";
+import { ContextMenu } from "radix-ui";
 import "./styles.css";
 
 export default () => (
@@ -1316,7 +1316,7 @@ Use the `CheckboxItem` part to add an item that can be checked.
 ```jsx line=6,16-21
 import React from "react";
 import { CheckIcon } from "@radix-ui/react-icons";
-import * as ContextMenu from "@radix-ui/react-context-menu";
+import { ContextMenu } from "radix-ui";
 
 export default () => {
 	const [checked, setChecked] = React.useState(true);
@@ -1352,7 +1352,7 @@ Use the `RadioGroup` and `RadioItem` parts to add an item that can be checked am
 ```jsx line=6,13-32
 import React from "react";
 import { CheckIcon } from "@radix-ui/react-icons";
-import * as ContextMenu from "@radix-ui/react-context-menu";
+import { ContextMenu } from "radix-ui";
 
 export default () => {
 	const [color, setColor] = React.useState("blue");
@@ -1394,7 +1394,7 @@ export default () => {
 You can add extra decorative elements in the `Item` parts, such as images.
 
 ```jsx line=9,13
-import * as ContextMenu from "@radix-ui/react-context-menu";
+import { ContextMenu } from "radix-ui";
 
 export default () => (
 	<ContextMenu.Root>
@@ -1423,7 +1423,7 @@ We expose several CSS custom properties such as `--radix-context-menu-trigger-wi
 
 ```jsx line=9
 // index.jsx
-import * as ContextMenu from "@radix-ui/react-context-menu";
+import { ContextMenu } from "radix-ui";
 import "./styles.css";
 
 export default () => (
@@ -1452,7 +1452,7 @@ We expose a CSS custom property `--radix-context-menu-content-transform-origin`.
 
 ```jsx line=9
 // index.jsx
-import * as ContextMenu from "@radix-ui/react-context-menu";
+import { ContextMenu } from "radix-ui";
 import "./styles.css";
 
 export default () => (
@@ -1492,7 +1492,7 @@ We expose `data-side` and `data-align` attributes. Their values will change at r
 
 ```jsx line=9
 // index.jsx
-import * as ContextMenu from "@radix-ui/react-context-menu";
+import { ContextMenu } from "radix-ui";
 import "./styles.css";
 
 export default () => (

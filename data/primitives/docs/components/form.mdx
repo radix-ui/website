@@ -46,7 +46,7 @@ npm install @radix-ui/react-form
 Import all parts and piece them together.
 
 ```jsx
-import * as Form from "@radix-ui/react-form";
+import { Form } from "radix-ui";
 
 export default () => (
 	<Form.Root>
@@ -434,7 +434,7 @@ Here is an example styling the `Label` part.
 ```jsx line=8
 //index.jsx
 import * as React from "react";
-import Form from "@radix-ui/react-form";
+import { Form } from "radix-ui";
 
 export default () => (
 	<Form.Root>
@@ -488,7 +488,7 @@ Here's an example with server-side error handling:
 
 ```jsx line=5-8,13,23,28-30,49-54
 import * as React from "react";
-import * as Form from "@radix-ui/react-form";
+import { Form } from "radix-ui";
 
 function Page() {
 	const [serverErrors, setServerErrors] = React.useState({

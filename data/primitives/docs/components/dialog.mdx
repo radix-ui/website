@@ -44,7 +44,7 @@ npm install @radix-ui/react-dialog
 Import all parts and piece them together.
 
 ```jsx
-import * as Dialog from "@radix-ui/react-dialog";
+import { Dialog } from "radix-ui";
 
 export default () => (
 	<Dialog.Root>
@@ -411,7 +411,7 @@ Use the controlled props to programmatically close the Dialog after an async ope
 
 ```jsx line=4,7,10,15,17
 import React from "react";
-import * as Dialog from "@radix-ui/react-dialog";
+import { Dialog } from "radix-ui";
 
 const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
@@ -446,7 +446,7 @@ Move the content inside the overlay to render a dialog with overflow.
 
 ```jsx
 // index.jsx
-import * as Dialog from "@radix-ui/react-dialog";
+import { Dialog } from "radix-ui";
 import "./styles.css";
 
 export default () => {
@@ -491,7 +491,7 @@ Customise the element that your dialog portals into.
 
 ```jsx line=5,10,16
 import React from "react";
-import * as Dialog from "@radix-ui/react-dialog";
+import { Dialog } from "radix-ui";
 
 export default () => {
 	const [container, setContainer] = React.useState(null);
@@ -572,7 +572,7 @@ export default () => (
 ```jsx
 // your-dialog.jsx
 import React from "react";
-import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { Dialog as DialogPrimitive } from "radix-ui";
 import { Cross1Icon } from "@radix-ui/react-icons";
 
 export const DialogContent = React.forwardRef(

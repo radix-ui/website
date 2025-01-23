@@ -35,7 +35,7 @@ Components adhere to the [WAI-ARIA design patterns](https://www.w3.org/TR/wai-ar
 
 ### Unstyled
 
-Components ship with zero styles, giving you complete control over styling. Components can be styled with any styling solution (vanilla CSS, CSS preprocessors, CSS-in-JS libraries). Learn more in our [styling](../guides/styling) guide.
+Components ship without styles, giving you complete control over the look and feel. Components can be styled with any styling solution. Learn more in our [styling](../guides/styling) guide.
 
 ### Opened
 
@@ -51,7 +51,17 @@ One of our main goals is to provide the best possible developer experience. Radi
 
 ### Incremental adoption
 
-Each primitive can be installed individually so you can adopt them incrementally.
+We recommend installing the `radix-ui` package and importing the primitives you need. This is the simplest way to get started, prevent version conflicts or duplication, and makes it easy to manage updates. The package is tree-shakeable, so you should only ship the components you use.
+
+```bash
+npm install radix-ui
+```
+
+```tsx
+import { Dialog, DropdownMenu, Tooltip } from "radix-ui";
+```
+
+Alternatively, each primitive can be installed individually:
 
 ```bash
 npm install @radix-ui/react-dialog
@@ -59,25 +69,21 @@ npm install @radix-ui/react-dropdown-menu
 npm install @radix-ui/react-tooltip
 ```
 
-Primitives are also versioned independently, to further facilitate incremental adoption.
+```tsx
+import * as Dialog from "@radix-ui/react-dialog";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import * as Tooltip from "@radix-ui/react-tooltip";
+```
+
+When installing separately, we recommend updating all Radix packages together to prevent duplication of shared dependencies and keep your bundle size down.
 
 ## Community
 
-### Discord
+To get involved with the Radix community, ask questions and share tips, [Join our Discord](https://discord.com/invite/7Xb99uG).
 
-To get involved with the Radix community, ask questions, and share tips, join our Discord.
-
-[Join our Discord](https://discord.com/invite/7Xb99uG)
-
-### Twitter
-
-To receive updates on new primitives, announcements, blog posts, and general Radix tips, follow along on Twitter.
-
-[Follow Radix on Twitter](https://twitter.com/radix_ui)
-
-### GitHub
+To receive updates on new primitives, announcements, blog posts, and general Radix tips, follow along on [Bluesky](https://bsky.app/profile/radix-ui.com) or [Twitter](https://twitter.com/radix_ui).
 
 To file issues, request features, and contribute, check out our GitHub.
 
-[GitHub repo](https://github.com/radix-ui/primitives)
-[Code of conduct](https://github.com/radix-ui/primitives/blob/main/CODE_OF_CONDUCT.md)
+- [GitHub repo](https://github.com/radix-ui/primitives)
+- [Code of conduct](https://github.com/radix-ui/primitives/blob/main/CODE_OF_CONDUCT.md)

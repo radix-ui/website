@@ -88,23 +88,8 @@ export const primitivesRoutes = [
 				slug: "primitives/docs/utilities/accessible-icon",
 			},
 			{
-				title: "Announce",
-				slug: "primitives/docs/utilities/announce",
-				deprecated: true,
-			},
-			{
 				title: "Direction Provider",
 				slug: "primitives/docs/utilities/direction-provider",
-			},
-			{
-				title: "Id Provider",
-				slug: "primitives/docs/utilities/id-provider",
-				deprecated: true,
-			},
-			{
-				title: "Polymorphic",
-				slug: "primitives/docs/utilities/polymorphic",
-				deprecated: true,
 			},
 			{ title: "Portal", slug: "primitives/docs/utilities/portal" },
 			{ title: "Slot", slug: "primitives/docs/utilities/slot" },
