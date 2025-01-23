@@ -217,6 +217,21 @@ export const Footer = () => {
 						<li>
 							<Text as="p" size="2" mt="3">
 								<Link
+									href="https://bsky.app/profile/radix-ui.com"
+									color="gray"
+									target="_blank"
+									style={{ display: "inline-flex", alignItems: "center" }}
+								>
+									Bluesky
+									<Flex asChild ml="2" style={{ color: "var(--gray-8)" }}>
+										<ArrowTopRightIcon />
+									</Flex>
+								</Link>
+							</Text>
+						</li>
+						<li>
+							<Text as="p" size="2" mt="3">
+								<Link
 									href="https://twitter.com/radix_ui"
 									color="gray"
 									target="_blank"
