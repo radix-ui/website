@@ -65,7 +65,7 @@ export async function getStaticProps(
 
 	const extendedFrontmatter = {
 		...frontmatter,
-		version: packageData?.version,
+		version: packageData?.version ?? null,
 		gzip:
 			typeof packageData?.gzip === "number"
 				? formatBytes(packageData.gzip)
