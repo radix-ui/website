@@ -61,7 +61,7 @@ function Button({ asChild, children, leftElement, rightElement, ...props }) {
 	return (
 		<Comp {...props}>
 			{leftElement}
-			<Slot.Slottable>{children}</Slottable>
+			<Slot.Slottable>{children}</Slot.Slottable>
 			{rightElement}
 		</Comp>
 	);
@@ -92,13 +92,14 @@ If one of the event handlers relies on `event.defaultPrevented` make sure that t
 import { Slot } from "radix-ui";
 
 export default () => (
-	<Slot.Root
-		onClick={(event) => {
-			if (!event.defaultPrevented)
-				console.log("Not logged because default is prevented.");
-		}}
-	>
-		<button onClick={(event) => event.preventDefault()} />
-	</Slot>
+  <Slot.Root
+    onClick={(event) => {
+      if (!event.defaultPrevented) {
+        console.log("Not logged because default is prevented.");
+      }
+    }}
+  >
+    <button onClick={(event) => event.preventDefault()} />
+  </Slot.Root>
 );
 ```
