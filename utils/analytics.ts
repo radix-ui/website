@@ -1,4 +1,4 @@
-export const GTAG_TRACKING_ID = "G-MNCYB63WJR";
+export const GTAG_TRACKING_ID = "G-ZTHXHJWP08";
 export const GTAG_URL = `https://www.googletagmanager.com/gtag/js?id=${GTAG_TRACKING_ID}`;
 
 type WindowWithAnalytics = Window &
