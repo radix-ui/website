@@ -24,6 +24,7 @@ Install the package from your command line.
         <Tabs.Trigger value="npm">npm</Tabs.Trigger>
         <Tabs.Trigger value="yarn">yarn</Tabs.Trigger>
         <Tabs.Trigger value="pnpm">pnpm</Tabs.Trigger>
+        <Tabs.Trigger value="bun">pnpm</Tabs.Trigger>
       </Tabs.List>
     </CodeBlock.Header>
 
@@ -54,6 +55,17 @@ Install the package from your command line.
         <CodeBlock.Pre>
           <CodeBlock.Code language="bash">
             {'pnpm add @radix-ui/themes'}
+          </CodeBlock.Code>
+        </CodeBlock.Pre>
+        <CodeBlock.CopyButton />
+      </CodeBlock.Content>
+    </Tabs.Content>
+ 
+    <Tabs.Content asChild value="pnpm">
+      <CodeBlock.Content>
+        <CodeBlock.Pre>
+          <CodeBlock.Code language="bash">
+            {'bun add @radix-ui/themes'}
           </CodeBlock.Code>
         </CodeBlock.Pre>
         <CodeBlock.CopyButton />
