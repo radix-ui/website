@@ -61,7 +61,7 @@ function Button({ asChild, children, leftElement, rightElement, ...props }) {
 	return (
 		<Comp {...props}>
 			{leftElement}
-			<Slot.Slottable>{children}</Slottable>
+			<Slot.Slottable>{children}</Slot.Slottable>
 			{rightElement}
 		</Comp>
 	);
@@ -99,6 +99,6 @@ export default () => (
 		}}
 	>
 		<button onClick={(event) => event.preventDefault()} />
-	</Slot>
+	</Slot.Root>
 );
 ```
