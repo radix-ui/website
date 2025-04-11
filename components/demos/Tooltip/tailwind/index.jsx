@@ -17,7 +17,7 @@ const TooltipDemo = () => {
 						sideOffset={5}
 					>
 						Add to library
-						<Tooltip.Arrow className="fill-white" />
+						<Tooltip.Arrow className="fill-white mx-1" />
 					</Tooltip.Content>
 				</Tooltip.Portal>
 			</Tooltip.Root>
