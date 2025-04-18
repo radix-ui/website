@@ -99,7 +99,7 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
       react-remove-scroll:
-        specifier: ^2.6.2
+        specifier: ^2.6.3
         version: 2.6.3(@types/react@18.3.11)(react@18.3.1)
       refractor:
         specifier: ^3.3.1
