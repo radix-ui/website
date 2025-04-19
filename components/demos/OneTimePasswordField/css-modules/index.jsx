@@ -10,6 +10,7 @@ const OneTimePasswordFieldDemo = () => (
 		<OneTimePasswordField.Input className={styles.Input} />
 		<OneTimePasswordField.Input className={styles.Input} />
 		<OneTimePasswordField.Input className={styles.Input} />
+		<OneTimePasswordField.HiddenInput />
 	</OneTimePasswordField.Root>
 );
 

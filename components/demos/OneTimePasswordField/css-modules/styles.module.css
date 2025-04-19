@@ -1,12 +1,12 @@
 .Root {
 	display: flex;
 	gap: 0.5rem;
+	flex-wrap: nowrap;
 }
 
 .Input {
 	all: unset;
 	box-sizing: border-box;
-	width: 100%;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -18,8 +18,8 @@
 	box-shadow: 0 0 0 1px var(--black-a6);
 	padding: 0;
 	height: 35px;
+	width: 24px;
 	line-height: 1;
-	aspect-ratio: 1.5 / 2;
 
 	&:hover {
 		box-shadow: 0 0 0 1px black;
