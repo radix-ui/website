@@ -7,6 +7,47 @@ metaDescription: Radix Primitives releases and their changelogs.
 
 <Description>Radix Primitives releases and their changelogs.</Description>
 
+## April 17, 2025
+
+This release introduces a brand new primitive in preview: [`OneTimePasswordField`](../components/one-time-password-field).
+
+This new group of components are designed to implement a common design pattern for one-time password fields displayed as separate input fields for each character. This UI is deceptively complex to implement in such a way that interactions follow user expectations. The new primitive handles all of this complexity for you, including:
+
+- Keyboard navigation mimicking the behavior of a single input field
+- Overriding values on paste
+- Password manager autofill support
+- Input validation for numeric and alphanumeric values
+- Auto-submit on completion
+- Focus management
+- Hidden input to provide a single value to form data
+
+As this is a preview release, **the API is currently unstable**. We hope you'll help us test it out and let us know how it goes.
+
+Import the primitive using the `unstable_` prefix.
+
+```tsx
+import { unstable_OneTimePasswordField as OneTimePasswordField } from "radix-ui";
+
+export function Verify() {
+	return (
+		<OneTimePasswordField.Root>
+			<OneTimePasswordField.Input />
+			<OneTimePasswordField.Input />
+			<OneTimePasswordField.Input />
+			<OneTimePasswordField.Input />
+			<OneTimePasswordField.Input />
+			<OneTimePasswordField.Input />
+			<OneTimePasswordField.HiddenInput />
+		</OneTimePasswordField.Root>
+	);
+}
+```
+
+### Other updates
+
+- All form controls with internal bubble inputs now use the Radix `Primitive` component by default. This will allow us to expose these components in a future release so users can better control this behavior in the future.
+- Minor improvements to `useControllableState` to enhance performance, reduce surface area for bugs, and log warnings when misused
+
 ## April 8, 2025
 
 - Improved rendering performance for the Tooltip provider <PRLink id={2720} />
