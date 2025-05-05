@@ -7,6 +7,42 @@ metaDescription: Radix Primitives releases and their changelogs.
 
 <Description>Radix Primitives releases and their changelogs.</Description>
 
+## May 5, 2025
+
+This release introduces a brand new primitive in preview: [`PasswordToggleField`](../components/password-toggle-field).
+
+This new primitive provides components for rendering a password input alongside a button to toggle its visibility. Aside from its primary functionality, it also includes:
+
+- Returning focus to the input when toggling with a pointer
+- Maintaining focus when toggling with keyboard or virtual navigation
+- Resetting visibility to hidden after form submission to prevent accidental storage
+- Implicit accessible labeling for icon-based toggle buttons
+
+This API is currently unstable, and we hope you'll help us test it out! Import the primitive using the `unstable_` prefix.
+
+```tsx
+import { unstable_PasswordToggleField as PasswordToggleField } from "radix-ui";
+
+export function PasswordField() {
+	return (
+		<PasswordToggleField.Root>
+			<PasswordToggleField.Input />
+			<PasswordToggleField.Toggle>
+				<PasswordToggleField.Icon
+					visible={<EyeOpenIcon />}
+					hidden={<EyeClosedIcon />}
+				/>
+			</PasswordToggleField.Toggle>
+		</PasswordToggleField.Root>
+	);
+}
+```
+
+### Other updates
+
+- Add unstable `Provider`, `Trigger` and `BubbleInput` parts to Checkbox ([#3459](https://github.com/radix-ui/primitives/pull/3459))
+- Update default input type to `text` and pass to the underlying input element ([#3510](https://github.com/radix-ui/primitives/pull/3510))
+
 ## April 22, 2025
 
 - Update the dependency for `use-sync-external-store` to ensure entrypoint is valid <PRLink id={3491} />
