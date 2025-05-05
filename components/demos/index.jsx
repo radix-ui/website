@@ -13,6 +13,7 @@ export { default as LabelDemo } from "./Label/css-modules";
 export { default as MenubarDemo } from "./Menubar/css-modules";
 export { default as NavigationMenuDemo } from "./NavigationMenu/css-modules";
 export { default as OneTimePasswordFieldDemo } from "./OneTimePasswordField/css-modules";
+export { default as PasswordToggleFieldDemo } from "./PasswordToggleField/css-modules";
 export { default as PopoverDemo } from "./Popover/css-modules";
 export { default as ProgressDemo } from "./Progress/css-modules";
 export { default as RadioGroupDemo } from "./RadioGroup/css-modules";
