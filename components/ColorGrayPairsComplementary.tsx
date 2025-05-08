@@ -28,6 +28,10 @@ const darkBgColors = ["sky", "mint", "lime", "yellow", "amber"];
 export function ColorGrayPairsComplementary() {
 	return (
 		<Box>
+			<Text as="p" mb="3">
+				Scales designed for white foreground text:
+			</Text>
+
 			<Grid
 				align="center"
 				my="5"
@@ -77,7 +81,7 @@ export function ColorGrayPairsComplementary() {
 							as="p"
 							size="2"
 							style={{
-								color: `var(--${color}-9-contrast)`,
+								color: `var(--${color}-contrast)`,
 								textTransform: "capitalize",
 							}}
 						>
