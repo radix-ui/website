@@ -8,6 +8,7 @@ export default class Document extends NextDocument {
 		return (
 			<Html lang="en">
 				<Head>
+					<meta name="algolia-site-verification" content="9C06A3E7B1CAAFBA" />
 					<link
 						rel="preload"
 						href="/fonts/AdobeTextPro-Regular.woff2"
