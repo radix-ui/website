@@ -1,19 +1,20 @@
 {
-	"index_name": "docs",
-	"start_urls": ["https://www.radix-ui.com/primitives/docs"],
-	"stop_urls": ["https://www.radix-ui.com/primitives/docs/overview/releases"],
-	"selectors": {
-		"lvl0": {
-			"selector": "[data-algolia-lvl0]",
-			"global": true
-		},
-		"lvl1": "[data-algolia-page-scope] h1",
-		"lvl2": "[data-algolia-page-scope] h2",
-		"lvl3": "[data-algolia-page-scope] h3",
-		"lvl4": "[data-algolia-page-scope] h4",
-		"text": "[data-algolia-page-scope] p, [data-algolia-page-scope] li"
-	},
-	"min_indexed_level": 1,
-	"selectors_exclude": ["[data-algolia-exclude]"],
-	"scrape_start_urls": false
+  "index_name": "radix_website_hf6d3bhd9_workos_vercel_app_co3q04we0u_pages",
+  "start_urls": ["https://www.radix-ui.com/primitives/docs"],
+  "stop_urls": ["https://www.radix-ui.com/primitives/docs/overview/releases"],
+  "selectors": {
+    "lvl0": {
+      "selector": "[data-algolia-lvl0], [data-algolia-page-scope] h1",
+      "global": true,
+      "default_value": "Documentation"
+    },
+    "lvl1": "[data-algolia-page-scope] h1",
+    "lvl2": "[data-algolia-page-scope] h2",
+    "lvl3": "[data-algolia-page-scope] h3",
+    "lvl4": "[data-algolia-page-scope] h4",
+    "text": "[data-algolia-page-scope] p, [data-algolia-page-scope] li"
+  },
+  "min_indexed_level": 1,
+  "selectors_exclude": ["[data-algolia-exclude]"],
+  "scrape_start_urls": false
 }
