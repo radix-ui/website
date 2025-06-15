@@ -27,7 +27,7 @@ import type {
 	AutocompleteApi as InternalAutocompleteApi,
 } from "@algolia/autocomplete-core";
 import type { Hit, SearchResponse } from "@algolia/client-search";
-
+//Updated new search api key
 const ALGOLIA_APP_ID = "CO3Q04WE0U";
 const ALGOLIA_PUBLIC_API_KEY = "0715976de79c8c1bdb658b4189a605ff";
 
@@ -141,7 +141,7 @@ function PrimitivesSearchRoot({
 							throw error;
 						})
 						.then(({ results }) => {
-							// we only have 1 query, so we  grab the hits from the first result
+							// Uncategorized the hitquery
 							const { hits } = results[0] as SearchResponse<SearchItem>;
 							const sources = groupBy(hits, (hit) => hit.hierarchy?.lvl0 || "Uncategorized");
 							return Object.entries(sources)
