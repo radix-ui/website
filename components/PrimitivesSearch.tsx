@@ -27,9 +27,9 @@ import type {
 	AutocompleteApi as InternalAutocompleteApi,
 } from "@algolia/autocomplete-core";
 import type { Hit, SearchResponse } from "@algolia/client-search";
-
-const ALGOLIA_APP_ID = "VXVOLU3YVQ";
-const ALGOLIA_PUBLIC_API_KEY = "9d44395c1b7b172ac84b7e5ab80bf8c5";
+//Updated new search api key
+const ALGOLIA_APP_ID = "CO3Q04WE0U";
+const ALGOLIA_PUBLIC_API_KEY = "0715976de79c8c1bdb658b4189a605ff";
 
 const searchClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_PUBLIC_API_KEY);
 
@@ -40,6 +40,7 @@ type SearchItem = SnippetedHit<{
 	objectID: string;
 	type: ContentType;
 	url: string;
+	title: string;
 	hierarchy: {
 		lvl0: string;
 		lvl1: string;
@@ -115,6 +116,7 @@ function PrimitivesSearchRoot({
 										"hierarchy.lvl3",
 										"hierarchy.lvl4",
 										"content",
+										"title",
 									],
 									attributesToSnippet: [
 										`hierarchy.lvl0:${snippetLength}`,
@@ -139,19 +141,20 @@ function PrimitivesSearchRoot({
 							throw error;
 						})
 						.then(({ results }) => {
-							// we only have 1 query, so we  grab the hits from the first result
+							// Uncategorized the hitquery
 							const { hits } = results[0] as SearchResponse<SearchItem>;
-							const sources = groupBy(hits, (hit) => hit.hierarchy.lvl0);
+							const sources = groupBy(hits, (hit) => hit.hierarchy?.lvl0 || "Uncategorized");
 							return Object.entries(sources)
 								.sort(sortSources)
 								.map(([lvl0, items]) => ({
-									onSelect: (params) => {
-										params.setIsOpen(false);
-									},
-									sourceId: lvl0,
-									getItemUrl: ({ item }) => item.url,
-									getItems: () => items,
-								}));
+								onSelect: (params) => {
+									params.setIsOpen(false);
+								},
+								sourceId: lvl0 || "Uncategorized",
+								getItemUrl: ({ item }) => item.url,
+								getItems: () => items,
+							}));
+
 						});
 				},
 			}),
@@ -433,39 +436,50 @@ function ItemTitle(props: ItemTitleProps) {
 }
 
 function ItemBreadcrumb({
-	item,
-	levels,
+  item,
+  levels,
 }: {
-	item: SearchItem;
-	levels: typeof SUPPORTED_LEVELS;
+  item: SearchItem;
+  levels: typeof SUPPORTED_LEVELS;
 }) {
-	const itemLevelIndex =
-		item.type === "content" ? levels.length - 1 : levels.indexOf(item.type);
-	const breadcrumbLevels = levels.slice(0, itemLevelIndex);
+  if (!item.hierarchy || typeof item.hierarchy !== "object") {
+    
+    const fallbackText = item.title || item.content || "No title available";
+    return (
+      <Text size="2" color="gray" as="p">
+        {fallbackText}
+      </Text>
+    );
+  }
 
-	return (
-		<Text size="2" color="gray" as="p">
-			{breadcrumbLevels.map((level, index) => {
-				const heading = item.hierarchy[level];
-				return heading ? (
-					<React.Fragment key={index}>
-						{index > 0 ? (
-							<Box
-								as="span"
-								display="inline"
-								style={{ color: "var(--gray-a11)" }}
-							>
-								<CaretRightIcon style={{ display: "inline-block" }} />
-								{/* Adding a comma to insert a natural break in the speech flow */}
-								<VisuallyHidden.Root>, </VisuallyHidden.Root>
-							</Box>
-						) : null}
-						<Highlight hit={item} attribute={["hierarchy", level]} />
-					</React.Fragment>
-				) : null;
-			})}
-		</Text>
-	);
+  const itemLevelIndex =
+    item.type === "content" ? levels.length - 1 : levels.indexOf(item.type);
+  const breadcrumbLevels = levels.slice(0, itemLevelIndex);
+
+  return (
+    <Text size="2" color="gray" as="p">
+      {breadcrumbLevels.map((level, index) => {
+        const heading = item.hierarchy[level];
+        if (!heading) return null;
+
+        return (
+          <React.Fragment key={index}>
+            {index > 0 && (
+              <Box
+                as="span"
+                display="inline"
+                style={{ color: "var(--gray-a11)" }}
+              >
+                <CaretRightIcon style={{ display: "inline-block" }} />
+                <VisuallyHidden.Root>, </VisuallyHidden.Root>
+              </Box>
+            )}
+            <Highlight hit={item} attribute={["hierarchy", level]} />
+          </React.Fragment>
+        );
+      })}
+    </Text>
+  );
 }
 
 function Highlight<THit extends SnippetedHit<unknown>>({

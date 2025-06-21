@@ -1,8 +1,8 @@
 {
-	"index_name": "development_docs",
-	"start_urls": ["https://24fe-92-28-230-172.eu.ngrok.io/primitives/docs"],
+	"index_name": "radix_website_hf6d3bhd9_workos_vercel_app_co3q04we0u_pages",
+	"start_urls": ["http://localhost:3000/primitives/docs"],
 	"stop_urls": [
-		"https://24fe-92-28-230-172.eu.ngrok.io/primitives/docs/overview/releases"
+		"http://localhost:3000/primitives/docs/overview/releases"
 	],
 	"selectors": {
 		"lvl0": {
