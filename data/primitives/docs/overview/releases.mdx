@@ -7,6 +7,95 @@ metaDescription: Radix Primitives releases and their changelogs.
 
 <Description>Radix Primitives releases and their changelogs.</Description>
 
+## May 5, 2025
+
+This release introduces a brand new primitive in preview: [`PasswordToggleField`](../components/password-toggle-field).
+
+This new primitive provides components for rendering a password input alongside a button to toggle its visibility. Aside from its primary functionality, it also includes:
+
+- Returning focus to the input when toggling with a pointer
+- Maintaining focus when toggling with keyboard or virtual navigation
+- Resetting visibility to hidden after form submission to prevent accidental storage
+- Implicit accessible labeling for icon-based toggle buttons
+
+This API is currently unstable, and we hope you'll help us test it out! Import the primitive using the `unstable_` prefix.
+
+```tsx
+import { unstable_PasswordToggleField as PasswordToggleField } from "radix-ui";
+
+export function PasswordField() {
+	return (
+		<PasswordToggleField.Root>
+			<PasswordToggleField.Input />
+			<PasswordToggleField.Toggle>
+				<PasswordToggleField.Icon
+					visible={<EyeOpenIcon />}
+					hidden={<EyeClosedIcon />}
+				/>
+			</PasswordToggleField.Toggle>
+		</PasswordToggleField.Root>
+	);
+}
+```
+
+### Other updates
+
+- Add unstable `Provider`, `Trigger` and `BubbleInput` parts to Checkbox ([#3459](https://github.com/radix-ui/primitives/pull/3459))
+- Update default input type to `text` and pass to the underlying input element ([#3510](https://github.com/radix-ui/primitives/pull/3510))
+
+## April 22, 2025
+
+- Update the dependency for `use-sync-external-store` to ensure entrypoint is valid <PRLink id={3491} />
+
+## April 17, 2025
+
+This release introduces a brand new primitive in preview: [`OneTimePasswordField`](../components/one-time-password-field).
+
+This new group of components are designed to implement a common design pattern for one-time password fields displayed as separate input fields for each character. This UI is deceptively complex to implement in such a way that interactions follow user expectations. The new primitive handles all of this complexity for you, including:
+
+- Keyboard navigation mimicking the behavior of a single input field
+- Overriding values on paste
+- Password manager autofill support
+- Input validation for numeric and alphanumeric values
+- Auto-submit on completion
+- Focus management
+- Hidden input to provide a single value to form data
+
+As this is a preview release, **the API is currently unstable**. We hope you'll help us test it out and let us know how it goes.
+
+Import the primitive using the `unstable_` prefix.
+
+```tsx
+import { unstable_OneTimePasswordField as OneTimePasswordField } from "radix-ui";
+
+export function Verify() {
+	return (
+		<OneTimePasswordField.Root>
+			<OneTimePasswordField.Input />
+			<OneTimePasswordField.Input />
+			<OneTimePasswordField.Input />
+			<OneTimePasswordField.Input />
+			<OneTimePasswordField.Input />
+			<OneTimePasswordField.Input />
+			<OneTimePasswordField.HiddenInput />
+		</OneTimePasswordField.Root>
+	);
+}
+```
+
+### Other updates
+
+- All form controls with internal bubble inputs now use the Radix `Primitive` component by default. This will allow us to expose these components in a future release so users can better control this behavior in the future.
+- Minor improvements to `useControllableState` to enhance performance, reduce surface area for bugs, and log warnings when misused
+
+## April 8, 2025
+
+- Improved rendering performance for the Tooltip provider <PRLink id={2720} />
+- Ensure Tooltip is closed when `pointerdown` is fired on the trigger <PRLink id={3380} />
+- Add support for `crossOrigin` in Avatar images <PRLink id={3261} />
+- Fix Avatar flashing when an image is already cached <PRLink id={3008} />
+- Improve `displayName` for better debugging of slottable components <PRLink id={3441} />
+
 ## February 5, 2025
 
 - Updated dependencies to remove peer dependency warnings for `react` and `react-dom` <PRLink id={3350} />

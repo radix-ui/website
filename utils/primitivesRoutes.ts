@@ -60,6 +60,16 @@ export const primitivesRoutes = [
 				title: "Navigation Menu",
 				slug: "primitives/docs/components/navigation-menu",
 			},
+			{
+				title: "One-Time Password Field",
+				slug: "primitives/docs/components/one-time-password-field",
+				preview: true,
+			},
+			{
+				title: "Password Toggle Field",
+				slug: "primitives/docs/components/password-toggle-field",
+				preview: true,
+			},
 			{ title: "Popover", slug: "primitives/docs/components/popover" },
 			{ title: "Progress", slug: "primitives/docs/components/progress" },
 			{ title: "Radio Group", slug: "primitives/docs/components/radio-group" },

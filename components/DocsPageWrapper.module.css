@@ -19,13 +19,13 @@
 @media (min-width: 1440px) {
 	.DocsPageWrapper {
 		margin-left: calc(
-			-104px + (100vw - 1440px) * 0.52 - (100vw - 1440px) * 1.25
+			-144px + (100vw - 1440px) * 0.52 - (100vw - 1440px) * 1.25
 		);
 	}
 }
 
 @media (min-width: 1640px) {
 	.DocsPageWrapper {
-		margin-left: -250px;
+		margin-left: -290px;
 	}
 }

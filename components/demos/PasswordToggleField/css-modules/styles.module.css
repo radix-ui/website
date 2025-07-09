@@ -1,0 +1,52 @@
+.Root {
+	display: flex;
+	flex-wrap: nowrap;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 4px;
+	color: #fff;
+	background-color: var(--black-a2);
+	box-shadow: 0 0 0 1px var(--black-a6);
+	padding: 0 0.75em;
+	padding-right: 9px;
+	height: 36px;
+	gap: 8px;
+
+	&:hover {
+		box-shadow: 0 0 0 1px black;
+	}
+
+	&:focus-within {
+		box-shadow: 0 0 0 2px black;
+	}
+}
+
+.Input,
+.Toggle {
+	all: unset;
+	box-sizing: border-box;
+	height: 18px;
+	font-size: 15px;
+	color: inherit;
+	line-height: 1;
+}
+
+.Input {
+	&::selection {
+		background-color: var(--black-a6);
+		color: white;
+	}
+}
+
+.Toggle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	aspect-ratio: 1;
+	border-radius: 0.5px;
+	&:focus-visible {
+		outline: 2px solid var(--accent-9);
+		outline-offset: 2px;
+	}
+}
