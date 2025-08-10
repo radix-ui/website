@@ -129,7 +129,6 @@ export const ColorScale = ({
 	const isAlpha = name.endsWith("A");
 	const isDarkAlpha = name.endsWith("DarkA");
 	const isWhiteA = name.endsWith("whiteA");
-	const isBlackA = name.endsWith("blackA");
 
 	return (
 		<Flex
@@ -152,33 +151,27 @@ export const ColorScale = ({
 							width="48px"
 							flexShrink="1"
 							style={{
-								backgroundColor: isDarkAlpha
-									? Colors["grayDark"]["gray1"]
-									: isAlpha
-										? "white"
-										: "transparent",
-
-								// Show transparency grid for whiteA and blackA
-								...(isBlackA && {
-									backgroundColor: "white",
-									backgroundSize: "16px 16px",
-									backgroundPosition: "0px 0px, 8px 0px, 8px -8px, 0px 8px",
-									backgroundImage: `
-											linear-gradient(45deg, #f8f8f8 25%, transparent 25%),
-											linear-gradient(135deg, #f8f8f8 25%, transparent 25%),
-											linear-gradient(45deg, transparent 75%, #f8f8f8 75%),
-											linear-gradient(135deg, transparent 75%, #f8f8f8 75%)`,
-								}),
-								...(isWhiteA && {
-									backgroundColor: "#181818",
-									backgroundSize: "16px 16px",
-									backgroundPosition: "0px 0px, 8px 0px, 8px -8px, 0px 8px",
-									backgroundImage: `
-											linear-gradient(45deg, #222222 25%, transparent 25%),
-											linear-gradient(135deg, #222222 25%, transparent 25%),
-											linear-gradient(45deg, transparent 75%, #222222 75%),
-											linear-gradient(135deg, transparent 75%, #222222 75%)`,
-								}),
+								// Show transparency grid for all alpha colors
+								...(isAlpha
+									? {
+											backgroundColor:
+												isWhiteA || isDarkAlpha ? "#181818" : "#ffffff",
+											backgroundSize: "16px 16px",
+											backgroundPosition: "0 0, 8px 0, 8px -8px, 0 8px",
+											backgroundImage:
+												isWhiteA || isDarkAlpha
+													? `
+              linear-gradient(45deg, #222222 25%, transparent 25%),
+              linear-gradient(135deg, #222222 25%, transparent 25%),
+              linear-gradient(45deg, transparent 75%, #222222 75%),
+              linear-gradient(135deg, transparent 75%, #222222 75%)`
+													: `
+              linear-gradient(45deg, #f8f8f8 25%, transparent 25%),
+              linear-gradient(135deg, #f8f8f8 25%, transparent 25%),
+              linear-gradient(45deg, transparent 75%, #f8f8f8 75%),
+              linear-gradient(135deg, transparent 75%, #f8f8f8 75%)`,
+										}
+									: { backgroundColor: "transparent" }),
 							}}
 						>
 							<Box
