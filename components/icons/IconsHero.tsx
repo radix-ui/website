@@ -86,7 +86,7 @@ export const IconsHero = () => {
 							>
 								<a
 									target="_blank"
-									href="https://www.figma.com/file/9Df5CaFUEomVzn20gRpaX3/Radix-Icons"
+									href="https://www.figma.com/community/file/1510053249065427020/radix-icons"
 								>
 									<FigmaLogoIcon
 										width="20"

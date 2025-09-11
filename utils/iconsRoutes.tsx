@@ -3,8 +3,6 @@ import {
 	DownloadIcon,
 	FigmaLogoIcon,
 	GitHubLogoIcon,
-	IconJarLogoIcon,
-	SketchLogoIcon,
 } from "@radix-ui/react-icons";
 
 export const iconsRoutes: RouteProps[] = [
@@ -13,18 +11,8 @@ export const iconsRoutes: RouteProps[] = [
 		pages: [
 			{
 				title: "Figma",
-				slug: "https://www.figma.com/file/9Df5CaFUEomVzn20gRpaX3/Radix-Icons",
+				slug: "https://www.figma.com/community/file/1510053249065427020/radix-icons",
 				icon: <FigmaLogoIcon />,
-			},
-			{
-				title: "Sketch",
-				slug: "https://raw.githubusercontent.com/radix-ui/icons/master/Radix-Icons.sketch",
-				icon: <SketchLogoIcon />,
-			},
-			{
-				title: "IconJar",
-				slug: "https://raw.githubusercontent.com/radix-ui/icons/master/Radix-Icons.iconjar.zip",
-				icon: <IconJarLogoIcon />,
 			},
 			{
 				title: "SVG",
