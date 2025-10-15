@@ -77,7 +77,7 @@ export function ColorGrayPairsComplementary() {
 							as="p"
 							size="2"
 							style={{
-								color: `var(--${color}-9-contrast)`,
+								color: `var(--${color}-contrast)`,
 								textTransform: "capitalize",
 							}}
 						>
