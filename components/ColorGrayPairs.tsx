@@ -20,8 +20,6 @@ const pairings = [
 	{ color: "sand", pairs: ["yellow", "amber", "orange", "brown"] },
 ];
 
-const darkTextPair = ["sky", "mint", "lime", "amber", "yellow"];
-
 export function ColorGrayPairs() {
 	return (
 		<Box>
@@ -65,9 +63,7 @@ export function ColorGrayPairs() {
 									as="p"
 									size="2"
 									style={{
-										color: darkTextPair.includes(pair)
-											? `var(--${color}-12)`
-											: "white",
+										color: `var(--${pair}-contrast)`,
 										textTransform: "capitalize",
 									}}
 								>
