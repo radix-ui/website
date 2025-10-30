@@ -4,8 +4,6 @@ import {
 	DownloadIcon,
 	FigmaLogoIcon,
 	GitHubLogoIcon,
-	IconJarLogoIcon,
-	SketchLogoIcon,
 } from "@radix-ui/react-icons";
 import { Flex, Link } from "@radix-ui/themes";
 
@@ -37,40 +35,13 @@ export const Menu = () => {
 					<Link
 						size="2"
 						underline="hover"
-						href="https://www.figma.com/file/9Df5CaFUEomVzn20gRpaX3/Radix-Icons"
+						href="https://www.figma.com/community/file/1510053249065427020/radix-icons"
 						target="_blank"
 						highContrast
 						color="gray"
 					>
 						<FigmaLogoIcon />
 						Open in Figma
-					</Link>
-				</Flex>
-				<Flex align="center" gap="2" asChild>
-					<Link
-						size="2"
-						underline="hover"
-						href="https://raw.githubusercontent.com/radix-ui/icons/master/Radix-Icons.sketch"
-						target="_blank"
-						highContrast
-						color="gray"
-					>
-						<SketchLogoIcon />
-						Download for Sketch
-					</Link>
-				</Flex>
-
-				<Flex align="center" gap="2" asChild>
-					<Link
-						size="2"
-						underline="hover"
-						href="https://raw.githubusercontent.com/radix-ui/icons/master/Radix-Icons.iconjar.zip"
-						target="_blank"
-						highContrast
-						color="gray"
-					>
-						<IconJarLogoIcon />
-						Download IconJar
 					</Link>
 				</Flex>
 
