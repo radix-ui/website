@@ -28,8 +28,8 @@ import type {
 } from "@algolia/autocomplete-core";
 import type { Hit, SearchResponse } from "@algolia/client-search";
 //Updated new search api key
-const ALGOLIA_APP_ID = "CO3Q04WE0U";
-const ALGOLIA_PUBLIC_API_KEY = "0715976de79c8c1bdb658b4189a605ff";
+const ALGOLIA_APP_ID = "VXVOLU3YVQ";
+const ALGOLIA_PUBLIC_API_KEY = "9d44395c1b7b172ac84b7e5ab80bf8c5";
 
 const searchClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_PUBLIC_API_KEY);
 
