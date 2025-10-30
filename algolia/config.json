@@ -1,5 +1,5 @@
 {
-  "index_name": "radix_website_hf6d3bhd9_workos_vercel_app_co3q04we0u_pages",
+  "index_name": "docs",
   "start_urls": ["https://www.radix-ui.com/primitives/docs"],
   "stop_urls": ["https://www.radix-ui.com/primitives/docs/overview/releases"],
   "selectors": {
