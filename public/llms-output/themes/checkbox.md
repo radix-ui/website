@@ -1,0 +1,172 @@
+# Checkbox
+
+Base input element to toggle an option on and off.
+
+```jsx live=true
+<Text as="label" size="2">
+	<Flex gap="2">
+		<Checkbox defaultChecked />
+		Agree to Terms and Conditions
+	</Flex>
+</Text>
+```
+
+## API Reference
+
+This component inherits props from the [Checkbox primitive](/primitives/docs/components/checkbox) and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size of the checkbox.
+
+```jsx live=true
+<Flex align="center" gap="2">
+	<Checkbox size="1" defaultChecked />
+	<Checkbox size="2" defaultChecked />
+	<Checkbox size="3" defaultChecked />
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style of the checkbox.
+
+```jsx live=true
+<Flex align="center" gap="4">
+	<Flex gap="2">
+		<Checkbox variant="surface" defaultChecked />
+		<Checkbox variant="surface" />
+	</Flex>
+
+	<Flex gap="2">
+		<Checkbox variant="classic" defaultChecked />
+		<Checkbox variant="classic" />
+	</Flex>
+
+	<Flex gap="2">
+		<Checkbox variant="soft" defaultChecked />
+		<Checkbox variant="soft" />
+	</Flex>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
+
+```jsx live=true
+<Flex gap="2">
+	<Checkbox color="indigo" defaultChecked />
+	<Checkbox color="cyan" defaultChecked />
+	<Checkbox color="orange" defaultChecked />
+	<Checkbox color="crimson" defaultChecked />
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to increase color contrast with the background.
+
+```jsx live=true
+<Grid columns="5" display="inline-grid" gap="2">
+	<Checkbox color="indigo" defaultChecked />
+	<Checkbox color="cyan" defaultChecked />
+	<Checkbox color="orange" defaultChecked />
+	<Checkbox color="crimson" defaultChecked />
+	<Checkbox color="gray" defaultChecked />
+
+	<Checkbox color="indigo" defaultChecked highContrast />
+	<Checkbox color="cyan" defaultChecked highContrast />
+	<Checkbox color="orange" defaultChecked highContrast />
+	<Checkbox color="crimson" defaultChecked highContrast />
+	<Checkbox color="gray" defaultChecked highContrast />
+</Grid>
+```
+
+### Alignment
+
+Composing `Checkbox` within `Text` automatically centers it with the first line of text.
+
+```jsx live="true"
+<Flex direction="column" gap="3">
+	<Text as="label" size="2">
+		<Flex as="span" gap="2">
+			<Checkbox size="1" defaultChecked /> Agree to Terms and Conditions
+		</Flex>
+	</Text>
+
+	<Text as="label" size="3">
+		<Flex as="span" gap="2">
+			<Checkbox size="2" defaultChecked /> Agree to Terms and Conditions
+		</Flex>
+	</Text>
+
+	<Text as="label" size="4">
+		<Flex as="span" gap="2">
+			<Checkbox size="3" defaultChecked /> Agree to Terms and Conditions
+		</Flex>
+	</Text>
+</Flex>
+```
+
+It is automatically well-aligned with multi-line text too.
+
+```jsx live="true"
+<Box maxWidth="300px">
+	<Text as="label" size="3">
+		<Flex as="span" gap="2">
+			<Checkbox defaultChecked /> I understand that these documents are
+			confidential and cannot be shared with a third party.
+		</Flex>
+	</Text>
+</Box>
+```
+
+### Disabled
+
+Use the native `disabled` attribute to create a disabled checkbox.
+
+```jsx live="true"
+<Flex direction="column" gap="2">
+	<Text as="label" size="2">
+		<Flex as="span" gap="2">
+			<Checkbox />
+			Not checked
+		</Flex>
+	</Text>
+
+	<Text as="label" size="2">
+		<Flex as="span" gap="2">
+			<Checkbox defaultChecked />
+			Checked
+		</Flex>
+	</Text>
+
+	<Text as="label" size="2" color="gray">
+		<Flex as="span" gap="2">
+			<Checkbox disabled />
+			Not checked
+		</Flex>
+	</Text>
+
+	<Text as="label" size="2" color="gray">
+		<Flex as="span" gap="2">
+			<Checkbox disabled defaultChecked />
+			Checked
+		</Flex>
+	</Text>
+</Flex>
+```
+
+### Indeterminate
+
+Use the `"indeterminate"` value to create an indeterminate checkbox.
+
+```jsx live="true"
+<Flex gap="2">
+	<Checkbox defaultChecked="indeterminate" />
+	<Checkbox checked="indeterminate" />
+</Flex>
+```

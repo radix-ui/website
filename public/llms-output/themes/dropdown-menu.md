@@ -1,0 +1,329 @@
+# Dropdown Menu
+
+Menu representing a set of actions, triggered by a button.
+
+```jsx live=true
+<DropdownMenu.Root>
+	<DropdownMenu.Trigger>
+		<Button variant="soft">
+			Options
+			<DropdownMenu.TriggerIcon />
+		</Button>
+	</DropdownMenu.Trigger>
+	<DropdownMenu.Content>
+		<DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+		<DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+		<DropdownMenu.Separator />
+		<DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
+
+		<DropdownMenu.Sub>
+			<DropdownMenu.SubTrigger>More</DropdownMenu.SubTrigger>
+			<DropdownMenu.SubContent>
+				<DropdownMenu.Item>Move to project…</DropdownMenu.Item>
+				<DropdownMenu.Item>Move to folder…</DropdownMenu.Item>
+
+				<DropdownMenu.Separator />
+				<DropdownMenu.Item>Advanced options…</DropdownMenu.Item>
+			</DropdownMenu.SubContent>
+		</DropdownMenu.Sub>
+
+		<DropdownMenu.Separator />
+		<DropdownMenu.Item>Share</DropdownMenu.Item>
+		<DropdownMenu.Item>Add to favorites</DropdownMenu.Item>
+		<DropdownMenu.Separator />
+		<DropdownMenu.Item shortcut="⌘ ⌫" color="red">
+			Delete
+		</DropdownMenu.Item>
+	</DropdownMenu.Content>
+</DropdownMenu.Root>
+```
+
+## API Reference
+
+This component inherits props from the [Dropdown Menu primitive](/primitives/docs/components/dropdown-menu).
+
+### Root
+
+Contains all the parts of a dropdown menu.
+
+### Trigger
+
+Wraps the control that will open the dropdown menu.
+
+### Trigger Icon
+
+An optional icon part.
+
+### Content
+
+The component that pops out when the dropdown menu is open.
+
+### Label
+
+Used to render a label. It won't be focusable using arrow keys.
+
+### Item
+
+The component that contains the dropdown menu items.
+
+### Group
+
+Used to group multiple `Item` parts.
+
+### RadioGroup
+
+Used to group multiple `RadioItem` parts.
+
+### RadioItem
+
+An item that can be controlled and rendered like a radio.
+
+### CheckboxItem
+
+An item that can be controlled and rendered like a checkbox.
+
+### Sub
+
+Contains all the parts of a submenu.
+
+### SubTrigger
+
+An item that opens a submenu. Must be rendered inside `DropdownMenu.Sub`.
+
+### SubContent
+
+The component that pops out when a submenu is open. Must be rendered inside `DropdownMenu.Sub`.
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Flex gap="3" align="center">
+	<DropdownMenu.Root>
+		<DropdownMenu.Trigger>
+			<Button variant="soft" size="1">
+				Options
+				<DropdownMenu.TriggerIcon />
+			</Button>
+		</DropdownMenu.Trigger>
+		<DropdownMenu.Content size="1">
+			<DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+			<DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+			<DropdownMenu.Separator />
+			<DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
+
+			<DropdownMenu.Separator />
+			<DropdownMenu.Item shortcut="⌘ ⌫" color="red">
+				Delete
+			</DropdownMenu.Item>
+		</DropdownMenu.Content>
+	</DropdownMenu.Root>
+
+	<DropdownMenu.Root>
+		<DropdownMenu.Trigger>
+			<Button variant="soft" size="2">
+				Options
+				<DropdownMenu.TriggerIcon />
+			</Button>
+		</DropdownMenu.Trigger>
+		<DropdownMenu.Content size="2">
+			<DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+			<DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+			<DropdownMenu.Separator />
+			<DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
+
+			<DropdownMenu.Separator />
+			<DropdownMenu.Item shortcut="⌘ ⌫" color="red">
+				Delete
+			</DropdownMenu.Item>
+		</DropdownMenu.Content>
+	</DropdownMenu.Root>
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to customize the visual style of the dropdown menu.
+
+```jsx live=true
+<Flex gap="3" align="center">
+	<DropdownMenu.Root>
+		<DropdownMenu.Trigger>
+			<Button variant="solid">
+				Options
+				<DropdownMenu.TriggerIcon />
+			</Button>
+		</DropdownMenu.Trigger>
+		<DropdownMenu.Content variant="solid">
+			<DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+			<DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+			<DropdownMenu.Separator />
+			<DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
+
+			<DropdownMenu.Separator />
+			<DropdownMenu.Item shortcut="⌘ ⌫" color="red">
+				Delete
+			</DropdownMenu.Item>
+		</DropdownMenu.Content>
+	</DropdownMenu.Root>
+
+	<DropdownMenu.Root>
+		<DropdownMenu.Trigger>
+			<Button variant="soft">
+				Options
+				<DropdownMenu.TriggerIcon />
+			</Button>
+		</DropdownMenu.Trigger>
+		<DropdownMenu.Content variant="soft">
+			<DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+			<DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+			<DropdownMenu.Separator />
+			<DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
+
+			<DropdownMenu.Separator />
+			<DropdownMenu.Item shortcut="⌘ ⌫" color="red">
+				Delete
+			</DropdownMenu.Item>
+		</DropdownMenu.Content>
+	</DropdownMenu.Root>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color). You can also pass `color` to a specific item to override for semantic reasons (ie. destruction action).
+
+```jsx live=true
+<Flex gap="3">
+	<DropdownMenu.Root>
+		<DropdownMenu.Trigger>
+			<Button variant="soft" color="indigo">
+				Options
+				<DropdownMenu.TriggerIcon />
+			</Button>
+		</DropdownMenu.Trigger>
+		<DropdownMenu.Content variant="soft" color="indigo">
+			<DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+			<DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+			<DropdownMenu.Separator />
+			<DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
+		</DropdownMenu.Content>
+	</DropdownMenu.Root>
+
+	<DropdownMenu.Root>
+		<DropdownMenu.Trigger>
+			<Button variant="soft" color="cyan">
+				Options
+				<DropdownMenu.TriggerIcon />
+			</Button>
+		</DropdownMenu.Trigger>
+		<DropdownMenu.Content variant="soft" color="cyan">
+			<DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+			<DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+			<DropdownMenu.Separator />
+			<DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
+		</DropdownMenu.Content>
+	</DropdownMenu.Root>
+
+	<DropdownMenu.Root>
+		<DropdownMenu.Trigger>
+			<Button variant="soft" color="orange">
+				Options
+				<DropdownMenu.TriggerIcon />
+			</Button>
+		</DropdownMenu.Trigger>
+		<DropdownMenu.Content variant="soft" color="orange">
+			<DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+			<DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+			<DropdownMenu.Separator />
+			<DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
+		</DropdownMenu.Content>
+	</DropdownMenu.Root>
+
+	<DropdownMenu.Root>
+		<DropdownMenu.Trigger>
+			<Button variant="soft" color="crimson">
+				Options
+				<DropdownMenu.TriggerIcon />
+			</Button>
+		</DropdownMenu.Trigger>
+		<DropdownMenu.Content variant="soft" color="crimson">
+			<DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+			<DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+			<DropdownMenu.Separator />
+			<DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
+		</DropdownMenu.Content>
+	</DropdownMenu.Root>
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to increase color contrast with the background.
+
+```jsx live=true line="24,54"
+<Grid columns="2" gap="3" display="inline-grid">
+	<DropdownMenu.Root>
+		<DropdownMenu.Trigger>
+			<Button color="gray">
+				Options
+				<DropdownMenu.TriggerIcon />
+			</Button>
+		</DropdownMenu.Trigger>
+		<DropdownMenu.Content color="gray">
+			<DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+			<DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+			<DropdownMenu.Separator />
+			<DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
+		</DropdownMenu.Content>
+	</DropdownMenu.Root>
+
+	<DropdownMenu.Root>
+		<DropdownMenu.Trigger>
+			<Button color="gray" highContrast>
+				Options
+				<DropdownMenu.TriggerIcon />
+			</Button>
+		</DropdownMenu.Trigger>
+		<DropdownMenu.Content color="gray" highContrast>
+			<DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+			<DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+			<DropdownMenu.Separator />
+			<DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
+		</DropdownMenu.Content>
+	</DropdownMenu.Root>
+
+	<DropdownMenu.Root>
+		<DropdownMenu.Trigger>
+			<Button color="gray" variant="soft">
+				Options
+				<DropdownMenu.TriggerIcon />
+			</Button>
+		</DropdownMenu.Trigger>
+		<DropdownMenu.Content color="gray" variant="soft">
+			<DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+			<DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+			<DropdownMenu.Separator />
+			<DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
+		</DropdownMenu.Content>
+	</DropdownMenu.Root>
+
+	<DropdownMenu.Root>
+		<DropdownMenu.Trigger>
+			<Button color="gray" variant="soft" highContrast>
+				Options
+				<DropdownMenu.TriggerIcon />
+			</Button>
+		</DropdownMenu.Trigger>
+		<DropdownMenu.Content color="gray" variant="soft" highContrast>
+			<DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+			<DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+			<DropdownMenu.Separator />
+			<DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
+		</DropdownMenu.Content>
+	</DropdownMenu.Root>
+</Grid>
+```

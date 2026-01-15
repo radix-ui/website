@@ -1,0 +1,220 @@
+# Radio Group
+
+Set of interactive radio buttons where only one can be selected at a time.
+
+```jsx live=true
+<RadioGroup.Root defaultValue="1" name="example">
+	<RadioGroup.Item value="1">Default</RadioGroup.Item>
+	<RadioGroup.Item value="2">Comfortable</RadioGroup.Item>
+	<RadioGroup.Item value="3">Compact</RadioGroup.Item>
+</RadioGroup.Root>
+```
+
+## API Reference
+
+This component inherits props from the [Radio Group primitive](/primitives/docs/components/radio-group) and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+### Root
+
+Contains all the parts of a radio group.
+
+### Item
+
+An item in the group that can be checked.
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the radiobutton size.
+
+```jsx live=true
+<Flex align="center" gap="2">
+	<RadioGroup.Root size="1" defaultValue="1">
+		<RadioGroup.Item value="1" />
+	</RadioGroup.Root>
+
+	<RadioGroup.Root size="2" defaultValue="1">
+		<RadioGroup.Item value="1" />
+	</RadioGroup.Root>
+
+	<RadioGroup.Root size="3" defaultValue="1">
+		<RadioGroup.Item value="1" />
+	</RadioGroup.Root>
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style of the radio buttons.
+
+```jsx live=true
+<Flex gap="2">
+	<Flex direction="column" asChild gap="2">
+		<RadioGroup.Root variant="surface" defaultValue="1">
+			<RadioGroup.Item value="1" />
+			<RadioGroup.Item value="2" />
+		</RadioGroup.Root>
+	</Flex>
+
+	<Flex direction="column" asChild gap="2">
+		<RadioGroup.Root variant="classic" defaultValue="1">
+			<RadioGroup.Item value="1" />
+			<RadioGroup.Item value="2" />
+		</RadioGroup.Root>
+	</Flex>
+
+	<Flex direction="column" asChild gap="2">
+		<RadioGroup.Root variant="soft" defaultValue="1">
+			<RadioGroup.Item value="1" />
+			<RadioGroup.Item value="2" />
+		</RadioGroup.Root>
+	</Flex>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
+
+```jsx live=true
+<Flex gap="2">
+	<RadioGroup.Root color="indigo" defaultValue="1">
+		<RadioGroup.Item value="1" />
+	</RadioGroup.Root>
+
+	<RadioGroup.Root color="cyan" defaultValue="1">
+		<RadioGroup.Item value="1" />
+	</RadioGroup.Root>
+
+	<RadioGroup.Root color="orange" defaultValue="1">
+		<RadioGroup.Item value="1" />
+	</RadioGroup.Root>
+
+	<RadioGroup.Root color="crimson" defaultValue="1">
+		<RadioGroup.Item value="1" />
+	</RadioGroup.Root>
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to increase color contrast with the background.
+
+```jsx live=true
+<Grid rows="2" gap="2" display="inline-grid" flow="column">
+	<RadioGroup.Root color="indigo" defaultValue="1">
+		<RadioGroup.Item value="1" />
+	</RadioGroup.Root>
+
+	<RadioGroup.Root color="indigo" defaultValue="1" highContrast>
+		<RadioGroup.Item value="1" />
+	</RadioGroup.Root>
+
+	<RadioGroup.Root color="cyan" defaultValue="1">
+		<RadioGroup.Item value="1" />
+	</RadioGroup.Root>
+
+	<RadioGroup.Root color="cyan" defaultValue="1" highContrast>
+		<RadioGroup.Item value="1" />
+	</RadioGroup.Root>
+
+	<RadioGroup.Root color="orange" defaultValue="1">
+		<RadioGroup.Item value="1" />
+	</RadioGroup.Root>
+
+	<RadioGroup.Root color="orange" defaultValue="1" highContrast>
+		<RadioGroup.Item value="1" />
+	</RadioGroup.Root>
+
+	<RadioGroup.Root color="crimson" defaultValue="1">
+		<RadioGroup.Item value="1" />
+	</RadioGroup.Root>
+
+	<RadioGroup.Root color="crimson" defaultValue="1" highContrast>
+		<RadioGroup.Item value="1" />
+	</RadioGroup.Root>
+
+	<RadioGroup.Root color="gray" defaultValue="1">
+		<RadioGroup.Item value="1" />
+	</RadioGroup.Root>
+
+	<RadioGroup.Root color="gray" defaultValue="1" highContrast>
+		<RadioGroup.Item value="1" />
+	</RadioGroup.Root>
+</Grid>
+```
+
+### Alignment
+
+Composing `RadioGroup.Item` within `Text` automatically centers it with the first line of text.
+
+```jsx live="true"
+<Flex direction="column" gap="3">
+	<RadioGroup.Root size="1" defaultValue="1">
+		<Text as="label" size="2">
+			<Flex gap="2">
+				<RadioGroup.Item value="1" /> Default
+			</Flex>
+		</Text>
+
+		<Text as="label" size="2">
+			<Flex gap="2">
+				<RadioGroup.Item value="2" /> Compact
+			</Flex>
+		</Text>
+	</RadioGroup.Root>
+
+	<RadioGroup.Root size="2" defaultValue="1">
+		<Text as="label" size="3">
+			<Flex gap="2">
+				<RadioGroup.Item value="1" /> Default
+			</Flex>
+		</Text>
+
+		<Text as="label" size="3">
+			<Flex gap="2">
+				<RadioGroup.Item value="2" /> Compact
+			</Flex>
+		</Text>
+	</RadioGroup.Root>
+
+	<RadioGroup.Root size="3" defaultValue="1">
+		<Text as="label" size="4">
+			<Flex gap="2">
+				<RadioGroup.Item value="1" /> Default
+			</Flex>
+		</Text>
+
+		<Text as="label" size="4">
+			<Flex gap="2">
+				<RadioGroup.Item value="2" /> Compact
+			</Flex>
+		</Text>
+	</RadioGroup.Root>
+</Flex>
+```
+
+It is automatically well-aligned with multi-line text too.
+
+### Disabled
+
+Use the native `disabled` attribute to create a disabled radiobutton.
+
+```jsx live="true"
+<Flex direction="column" gap="2">
+	<RadioGroup.Root defaultValue="2">
+		<RadioGroup.Item value="1">Off</RadioGroup.Item>
+		<RadioGroup.Item value="2">On</RadioGroup.Item>
+	</RadioGroup.Root>
+
+	<RadioGroup.Root defaultValue="2">
+		<RadioGroup.Item value="1" disabled>
+			Off
+		</RadioGroup.Item>
+		<RadioGroup.Item value="2" disabled>
+			On
+		</RadioGroup.Item>
+	</RadioGroup.Root>
+</Flex>
+```

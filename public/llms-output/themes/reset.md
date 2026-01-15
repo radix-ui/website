@@ -1,0 +1,580 @@
+# Reset
+
+Removes default browser styles from any component.
+
+## API Reference
+
+Reset component is used to aggressively reset browser styles on a specific element.
+
+It renders a [Slot primitive](/primitives/docs/utilities/slot) that:
+
+- Accepts a single React element as its child
+- Removes opinionated browser styles
+- Sets idiomatic layout defaults, like `display: block` for images or `width: stretch` for inputs
+- Sets the [cursor](/themes/docs/theme/cursors) style according to your theme settings
+- Adds `box-sizing: border-box`
+
+## Examples
+
+### Anchor
+
+```jsx live="true"
+<Reset>
+	<a href="#">Anchor</a>
+</Reset>
+```
+
+### Abbreviation
+
+```jsx live="true"
+<Reset>
+	<abbr title="Abbreviation">ABR</abbr>
+</Reset>
+```
+
+### Address
+
+```jsx live="true"
+<Reset>
+	<address>Address</address>
+</Reset>
+```
+
+### Article
+
+```jsx live="true"
+<Reset>
+	<article>Article</article>
+</Reset>
+```
+
+### Aside
+
+```jsx live="true"
+<Reset>
+	<aside>Aside content</aside>
+</Reset>
+```
+
+### Bold
+
+```jsx live="true"
+<Reset>
+	<b>Bold text</b>
+</Reset>
+```
+
+### Bi-directional isolation
+
+```jsx live="true"
+<Reset>
+	<bdi>Bi-directional isolation</bdi>
+</Reset>
+```
+
+### Bi-directional override
+
+```jsx live="true"
+<Reset>
+	<bdo>Bi-directional override</bdo>
+</Reset>
+```
+
+### Block quote
+
+```jsx live="true"
+<Reset>
+	<blockquote>Block quote</blockquote>
+</Reset>
+```
+
+### Button
+
+```jsx live="true"
+<Reset>
+	<button>Button</button>
+</Reset>
+```
+
+### Citation
+
+```jsx live="true"
+<Reset>
+	<cite>Citation</cite>
+</Reset>
+```
+
+### Code
+
+```jsx live="true"
+<Reset>
+	<code>Computer code</code>
+</Reset>
+```
+
+### Data
+
+```jsx live="true"
+<Reset>
+	<data>Machine-readable equivalent</data>
+</Reset>
+```
+
+### Deleted text
+
+```jsx live="true"
+<Reset>
+	<del>Deleted text</del>
+</Reset>
+```
+
+### Details
+
+```jsx live="true"
+<Reset>
+	<details>
+		<summary>Summary for a details element</summary>
+		Additional details
+	</details>
+</Reset>
+```
+
+### Definition
+
+```jsx live="true"
+<Reset>
+	<dfn>Definition</dfn>
+</Reset>
+```
+
+### Div
+
+```jsx live="true"
+<Reset>
+	<div>Div</div>
+</Reset>
+```
+
+### Emphasized text
+
+```jsx live="true"
+<Reset>
+	<em>Emphasized text</em>
+</Reset>
+```
+
+### Fieldset
+
+```jsx live="true"
+<Reset>
+	<fieldset>Fieldset</fieldset>
+</Reset>
+```
+
+### Figure
+
+```jsx live="true"
+<Reset>
+	<figure>Figure</figure>
+</Reset>
+```
+
+### Figure caption
+
+```jsx live="true"
+<Reset>
+	<figcaption>Figure caption</figcaption>
+</Reset>
+```
+
+### Footer
+
+```jsx live="true"
+<Reset>
+	<footer>Footer</footer>
+</Reset>
+```
+
+### Form
+
+```jsx live="true"
+<Reset>
+	<form>Form</form>
+</Reset>
+```
+
+### Heading
+
+```jsx live="true"
+<Reset>
+	<h1>Heading</h1>
+</Reset>
+```
+
+### Header
+
+```jsx live="true"
+<Reset>
+	<header>Header</header>
+</Reset>
+```
+
+### Italic text
+
+```jsx live="true"
+<Reset>
+	<i>Italic text</i>
+</Reset>
+```
+
+### Inline frame
+
+When reset, `<iframe>` elements get `display: block` and `width: stretch`.
+
+```jsx live="true"
+<Reset>
+	<iframe src="https://example.com" />
+</Reset>
+```
+
+### Image
+
+When reset, `<img>` elements get `display: block` and `max-width: 100%`.
+
+```jsx live="true"
+<Reset>
+	<img src="https://images.unsplash.com/photo-1556825578-5813abf36e34?q=80&w=3864&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+</Reset>
+```
+
+### Input
+
+When reset, textual `<input>` types get `display: block` and `width: stretch`.
+
+```jsx live="true"
+<Reset>
+	<input placeholder="Input control" />
+</Reset>
+```
+
+### Inserted text
+
+```jsx live="true"
+<Reset>
+	<ins>Inserted text</ins>
+</Reset>
+```
+
+### Keyboard input
+
+```jsx live="true"
+<Reset>
+	<kbd>Keyboard input</kbd>
+</Reset>
+```
+
+### Label
+
+```jsx live="true"
+<Reset>
+	<label>Label</label>
+</Reset>
+```
+
+### Legend
+
+```jsx live="true"
+<Reset>
+	<legend>Legend</legend>
+</Reset>
+```
+
+### List item
+
+```jsx live="true"
+<Reset>
+	<li>List item</li>
+</Reset>
+```
+
+### Main
+
+```jsx live="true"
+<Reset>
+	<main>Main</main>
+</Reset>
+```
+
+### Marked text
+
+```jsx live="true"
+<Reset>
+	<mark>Marked text</mark>
+</Reset>
+```
+
+### Navigation
+
+```jsx live="true"
+<Reset>
+	<nav>Navigation</nav>
+</Reset>
+```
+
+### Ordered list
+
+```jsx live="true"
+<Reset>
+	<ol>
+		<li>Coffee</li>
+		<li>Tea</li>
+		<li>Milk</li>
+	</ol>
+</Reset>
+```
+
+### Output
+
+```jsx live="true"
+<Reset>
+	<output>Output</output>
+</Reset>
+```
+
+### Paragraph
+
+```jsx live="true"
+<Reset>
+	<p>Paragraph</p>
+</Reset>
+```
+
+### Preformatted text
+
+```jsx live="true"
+<Reset>
+	<pre>{'Preformatted text: "    "'}</pre>
+</Reset>
+```
+
+### Quote
+
+```jsx live="true"
+<Reset>
+	<q>Quote</q>
+</Reset>
+```
+
+### Strikethrough text
+
+```jsx live="true"
+<Reset>
+	<s>Strikethrough text</s>
+</Reset>
+```
+
+### Sample output
+
+```jsx live="true"
+<Reset>
+	<samp>Sample output</samp>
+</Reset>
+```
+
+### Section
+
+```jsx live="true"
+<Reset>
+	<section>Section</section>
+</Reset>
+```
+
+### Select
+
+```jsx live="true"
+<Reset>
+	<select>
+		<option value="1">Option 1</option>
+		<option value="2">Option 2</option>
+		<option value="3">Option 3</option>
+		<option value="4">Option 4</option>
+	</select>
+</Reset>
+```
+
+### Small text
+
+```jsx live="true"
+<Reset>
+	<small>Small text</small>
+</Reset>
+```
+
+### Span
+
+```jsx live="true"
+<Reset>
+	<span>Span</span>
+</Reset>
+```
+
+### Strong text
+
+```jsx live="true"
+<Reset>
+	<strong>Strong text</strong>
+</Reset>
+```
+
+### Subscript text
+
+```jsx live="true"
+<Reset>
+	<sub>Subscript text</sub>
+</Reset>
+```
+
+### Superscript text
+
+```jsx live="true"
+<Reset>
+	<sup>Superscript text</sup>
+</Reset>
+```
+
+### SVG
+
+When reset, `<svg>` elements get `display: block`, `max-width: 100%`, and `flex-shrink: 0`.
+
+```jsx live="true"
+<Reset>
+	<svg
+		width="76"
+		height="24"
+		viewBox="0 0 76 24"
+		fill="currentcolor"
+		xmlns="http://www.w3.org/2000/svg"
+	>
+		<path d="M43.9022 20.0061H46.4499C46.2647 19.0375 46.17 18.1161 46.17 17.0058V12.3753C46.17 9.25687 44.3893 7.72127 41.1943 7.72127C38.3003 7.72127 36.3324 9.23324 36.0777 11.8083H38.9254C39.0181 10.698 39.8052 9.96561 41.1017 9.96561C42.4446 9.96561 43.3243 10.6743 43.3243 12.1391V12.7061L39.8052 13.1077C37.4206 13.3912 35.5684 14.3834 35.5684 16.7931C35.5684 18.9666 37.2353 20.2659 39.5274 20.2659C41.4027 20.2659 42.9845 19.4863 43.6401 18.1161C43.6689 18.937 43.9022 20.0061 43.9022 20.0061ZM40.3377 18.1634C39.157 18.1634 38.5087 17.5727 38.5087 16.6278C38.5087 15.3757 39.4579 15.0922 40.7082 14.9268L43.3243 14.6197V15.352C43.3243 17.242 41.8658 18.1634 40.3377 18.1634ZM56.2588 20.0061H59.176V3H56.2125V9.96561C55.6569 8.76075 54.3141 7.72127 52.4851 7.72127C49.3058 7.72127 47.099 10.2963 47.099 14.0054C47.099 17.7381 49.3058 20.2896 52.4851 20.2896C54.2678 20.2896 55.68 19.2973 56.2588 18.0925V20.0061ZM56.282 14.218C56.282 16.5569 55.1938 18.0689 53.3185 18.0689C51.3969 18.0689 50.1856 16.486 50.1856 14.0054C50.1856 11.5485 51.3969 9.94198 53.3185 9.94198C55.1938 9.94198 56.282 11.454 56.282 13.7928V14.218ZM60.9066 5.97304H64.0553V3.01996H60.9066V5.97304ZM60.9992 20.0061H63.9627V8.00476H60.9992V20.0061ZM67.6638 20.0061L70.6041 15.8954L73.5212 20.0061H76.9246L72.3636 13.7219L76.5542 8.00476H73.3823L70.7661 11.7138L68.1731 8.00476H64.7697L69.0066 13.8637L64.4919 20.0061H67.6638Z" />
+		<path
+			fillRule="evenodd"
+			clipRule="evenodd"
+			d="M24.9132 20V14.0168H28.7986L32.4513 20H35.7006L31.6894 13.5686C33.5045 12.986 35.0955 11.507 35.0955 9.01961C35.0955 5.7479 32.7994 4 28.9571 4H22V20H24.9132ZM24.9132 6.35294V11.6863H28.821C31.0395 11.6863 32.1599 10.7675 32.1599 9.01961C32.1599 7.27171 30.9395 6.35294 28.621 6.35294H24.9132Z"
+		/>
+		<path d="M7 23C3.13401 23 0 19.6422 0 15.5C0 11.3578 3.13401 8 7 8V23Z" />
+		<path d="M7 0H0V7H7V0Z" />
+		<path d="M11.5 7C13.433 7 15 5.433 15 3.5C15 1.567 13.433 0 11.5 0C9.56704 0 8 1.567 8 3.5C8 5.433 9.56704 7 11.5 7Z" />
+	</svg>
+</Reset>
+```
+
+### Table
+
+```jsx live="true"
+<Reset>
+	<table>
+		<Reset>
+			<caption>Table caption</caption>
+		</Reset>
+
+		<Reset>
+			<thead>
+				<Reset>
+					<tr>
+						<Reset>
+							<th scope="col">Column header</th>
+						</Reset>
+						<Reset>
+							<th scope="col">Column header</th>
+						</Reset>
+					</tr>
+				</Reset>
+			</thead>
+		</Reset>
+
+		<Reset>
+			<tbody>
+				<Reset>
+					<tr>
+						<Reset>
+							<th scope="row">Row header</th>
+						</Reset>
+						<Reset>
+							<td>Cell data</td>
+						</Reset>
+					</tr>
+				</Reset>
+				<Reset>
+					<tr>
+						<Reset>
+							<th scope="row">Row header</th>
+						</Reset>
+						<Reset>
+							<td>Cell data</td>
+						</Reset>
+					</tr>
+				</Reset>
+			</tbody>
+		</Reset>
+
+		<Reset>
+			<tfoot>
+				<Reset>
+					<tr>
+						<Reset>
+							<th scope="row">Row header</th>
+						</Reset>
+						<Reset>
+							<td>Cell data</td>
+						</Reset>
+					</tr>
+				</Reset>
+			</tfoot>
+		</Reset>
+	</table>
+</Reset>
+```
+
+### Text area
+
+```jsx live="true"
+<Reset>
+	<textarea placeholder="Text area" />
+</Reset>
+```
+
+### Time
+
+```jsx live="true"
+<Reset>
+	<time dateTime="2021-01-01">Time</time>
+</Reset>
+```
+
+### Unarticulated annotation
+
+```jsx live="true"
+<Reset>
+	<u>Unarticulated annotation</u>
+</Reset>
+```
+
+### Unordered list
+
+```jsx live="true"
+<Reset>
+	<ul>
+		<li>Coffee</li>
+		<li>Tea</li>
+		<li>Milk</li>
+	</ul>
+</Reset>
+```
+
+### Variable
+
+```jsx live="true"
+<Reset>
+	<var>Variable</var>
+</Reset>
+```

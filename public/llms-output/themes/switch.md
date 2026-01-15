@@ -1,0 +1,153 @@
+# Switch
+
+Toggle switch alternative to the checkbox.
+
+```jsx live=true
+<Switch defaultChecked />
+```
+
+## API Reference
+
+This component inherits props from the [Switch primitive](/primitives/docs/components/switch) and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size of the switch.
+
+```jsx live=true
+<Flex align="center" gap="2">
+	<Switch size="1" defaultChecked />
+	<Switch size="2" defaultChecked />
+	<Switch size="3" defaultChecked />
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style of the switch.
+
+```jsx live=true scroll=true
+<Flex gap="2">
+	<Flex direction="column" gap="3">
+		<Switch variant="surface" />
+		<Switch variant="classic" />
+		<Switch variant="soft" />
+	</Flex>
+
+	<Flex direction="column" gap="3">
+		<Switch variant="surface" defaultChecked />
+		<Switch variant="classic" defaultChecked />
+		<Switch variant="soft" defaultChecked />
+	</Flex>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
+
+```jsx live=true
+<Flex gap="2">
+	<Switch color="indigo" defaultChecked />
+	<Switch color="cyan" defaultChecked />
+	<Switch color="orange" defaultChecked />
+	<Switch color="crimson" defaultChecked />
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to increase color contrast in light mode.
+
+```jsx live=true
+<Grid rows="2" gapX="2" gapY="3" display="inline-grid" flow="column">
+	<Switch color="indigo" defaultChecked />
+	<Switch color="indigo" defaultChecked highContrast />
+	<Switch color="cyan" defaultChecked />
+	<Switch color="cyan" defaultChecked highContrast />
+	<Switch color="orange" defaultChecked />
+	<Switch color="orange" defaultChecked highContrast />
+	<Switch color="crimson" defaultChecked />
+	<Switch color="crimson" defaultChecked highContrast />
+	<Switch color="gray" defaultChecked />
+	<Switch color="gray" defaultChecked highContrast />
+</Grid>
+```
+
+### Radius
+
+Use the `radius` prop to assign a specific radius value.
+
+```jsx live=true
+<Flex gap="3">
+	<Switch radius="none" defaultChecked />
+	<Switch radius="small" defaultChecked />
+	<Switch radius="full" defaultChecked />
+</Flex>
+```
+
+### Alignment
+
+Composing `Switch` within `Text` automatically centers it with the first line of text.
+
+```jsx live="true"
+<Flex direction="column" gap="3">
+	<Text as="label" size="2">
+		<Flex gap="2">
+			<Switch size="1" defaultChecked /> Sync settings
+		</Flex>
+	</Text>
+
+	<Text as="label" size="3">
+		<Flex gap="2">
+			<Switch size="2" defaultChecked /> Sync settings
+		</Flex>
+	</Text>
+
+	<Text as="label" size="4">
+		<Flex gap="2">
+			<Switch size="3" defaultChecked /> Sync settings
+		</Flex>
+	</Text>
+</Flex>
+```
+
+It is automatically well-aligned with multi-line text too.
+
+### Disabled
+
+Use the native `disabled` attribute to create a disabled switch.
+
+```jsx live="true"
+<Flex direction="column" gap="2">
+	<Text as="label" size="2">
+		<Flex gap="2">
+			<Switch size="1" />
+			Off
+		</Flex>
+	</Text>
+
+	<Text as="label" size="2">
+		<Flex gap="2">
+			<Switch size="1" defaultChecked />
+			On
+		</Flex>
+	</Text>
+
+	<Text as="label" size="2" color="gray">
+		<Flex gap="2">
+			<Switch size="1" disabled />
+			On
+		</Flex>
+	</Text>
+
+	<Text as="label" size="2" color="gray">
+		<Flex gap="2">
+			<Switch size="1" disabled defaultChecked />
+			Off
+		</Flex>
+	</Text>
+</Flex>
+```

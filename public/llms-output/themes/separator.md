@@ -1,0 +1,71 @@
+# Separator
+
+Visually or semantically separates content.
+
+```jsx live=true
+<Text size="2">
+	Tools for building high-quality, accessible UI.
+	<Separator my="3" size="4" />
+	<Flex gap="3" align="center">
+		Themes
+		<Separator orientation="vertical" />
+		Primitives
+		<Separator orientation="vertical" />
+		Icons
+		<Separator orientation="vertical" />
+		Colors
+	</Flex>
+</Text>
+```
+
+## API Reference
+
+This component inherits props from the [Separator primitive](/primitives/docs/components/separator) and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size of the separator. The largest step takes full width or height of the container.
+
+```jsx live="true"
+<Flex direction="column" gap="4">
+	<Separator orientation="horizontal" size="1" />
+	<Separator orientation="horizontal" size="2" />
+	<Separator orientation="horizontal" size="3" />
+	<Separator orientation="horizontal" size="4" />
+</Flex>
+```
+
+```jsx live="true"
+<Flex align="center" gap="4" height="96px">
+	<Separator orientation="vertical" size="1" />
+	<Separator orientation="vertical" size="2" />
+	<Separator orientation="vertical" size="3" />
+	<Separator orientation="vertical" size="4" />
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
+
+```jsx live=true
+<Flex direction="column" gap="3">
+	<Separator color="indigo" size="4" />
+	<Separator color="cyan" size="4" />
+	<Separator color="orange" size="4" />
+	<Separator color="crimson" size="4" />
+</Flex>
+```
+
+### Orientation
+
+Use the `orientation` prop to control whether the separator is horizontal or vertical.
+
+```jsx live="true"
+<Flex align="center" gap="4">
+	<Separator orientation="horizontal" />
+	<Separator orientation="vertical" />
+</Flex>
+```

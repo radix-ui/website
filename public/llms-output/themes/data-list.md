@@ -1,0 +1,249 @@
+# Data List
+
+Displays metadata as a list of key-value pairs.
+
+```jsx live=true
+<DataList.Root>
+	<DataList.Item align="center">
+		<DataList.Label minWidth="88px">Status</DataList.Label>
+		<DataList.Value>
+			<Badge color="jade" variant="soft" radius="full">
+				Authorized
+			</Badge>
+		</DataList.Value>
+	</DataList.Item>
+	<DataList.Item>
+		<DataList.Label minWidth="88px">ID</DataList.Label>
+		<DataList.Value>
+			<Flex align="center" gap="2">
+				<Code variant="ghost">u_2J89JSA4GJ</Code>
+				<IconButton
+					size="1"
+					aria-label="Copy value"
+					color="gray"
+					variant="ghost"
+				>
+					<CopyIcon />
+				</IconButton>
+			</Flex>
+		</DataList.Value>
+	</DataList.Item>
+	<DataList.Item>
+		<DataList.Label minWidth="88px">Name</DataList.Label>
+		<DataList.Value>Vlad Moroz</DataList.Value>
+	</DataList.Item>
+	<DataList.Item>
+		<DataList.Label minWidth="88px">Email</DataList.Label>
+		<DataList.Value>
+			<Link href="mailto:vlad@workos.com">vlad@workos.com</Link>
+		</DataList.Value>
+	</DataList.Item>
+	<DataList.Item>
+		<DataList.Label minWidth="88px">Company</DataList.Label>
+		<DataList.Value>
+			<Link target="_blank" href="https://workos.com">
+				WorkOS
+			</Link>
+		</DataList.Value>
+	</DataList.Item>
+</DataList.Root>
+```
+
+## API Reference
+
+This component is based on the `dl` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+### Root
+
+Contains all the parts of the data list.
+
+### Item
+
+Wraps a key-value pair.
+
+### Label
+
+Contains the key of the key-value pair.
+
+### Value
+
+Contains the value of the key-value pair.
+
+## Examples
+
+### Orientation
+
+Use the `orientation` prop to change the way the data list is layed-out.
+
+```jsx live=true
+<DataList.Root orientation={{ initial: "vertical", sm: "horizontal" }}>
+	<DataList.Item>
+		<DataList.Label minWidth="88px">Name</DataList.Label>
+		<DataList.Value>Vlad Moroz</DataList.Value>
+	</DataList.Item>
+	<DataList.Item>
+		<DataList.Label minWidth="88px">Email</DataList.Label>
+		<DataList.Value>
+			<Link href="mailto:vlad@workos.com">vlad@workos.com</Link>
+		</DataList.Value>
+	</DataList.Item>
+	<DataList.Item>
+		<DataList.Label minWidth="88px">Company</DataList.Label>
+		<DataList.Value>
+			<Link target="_blank" href="https://workos.com">
+				WorkOS
+			</Link>
+		</DataList.Value>
+	</DataList.Item>
+</DataList.Root>
+```
+
+### Size
+
+Use the `size` prop to change the size of the data list.
+
+```jsx live=true
+<Flex direction="column" gap="6">
+	<DataList.Root size="1">
+		<DataList.Item>
+			<DataList.Label minWidth="88px">Name</DataList.Label>
+			<DataList.Value>Vlad Moroz</DataList.Value>
+		</DataList.Item>
+		<DataList.Item>
+			<DataList.Label minWidth="88px">Email</DataList.Label>
+			<DataList.Value>
+				<Link href="mailto:vlad@workos.com">vlad@workos.com</Link>
+			</DataList.Value>
+		</DataList.Item>
+		<DataList.Item>
+			<DataList.Label minWidth="88px">Company</DataList.Label>
+			<DataList.Value>
+				<Link target="_blank" href="https://workos.com">
+					WorkOS
+				</Link>
+			</DataList.Value>
+		</DataList.Item>
+	</DataList.Root>
+
+	<DataList.Root size="2">
+		<DataList.Item>
+			<DataList.Label minWidth="88px">Name</DataList.Label>
+			<DataList.Value>Vlad Moroz</DataList.Value>
+		</DataList.Item>
+		<DataList.Item>
+			<DataList.Label minWidth="88px">Email</DataList.Label>
+			<DataList.Value>
+				<Link href="mailto:vlad@workos.com">vlad@workos.com</Link>
+			</DataList.Value>
+		</DataList.Item>
+		<DataList.Item>
+			<DataList.Label minWidth="88px">Company</DataList.Label>
+			<DataList.Value>
+				<Link target="_blank" href="https://workos.com">
+					WorkOS
+				</Link>
+			</DataList.Value>
+		</DataList.Item>
+	</DataList.Root>
+
+	<DataList.Root size="3">
+		<DataList.Item>
+			<DataList.Label minWidth="88px">Name</DataList.Label>
+			<DataList.Value>Vlad Moroz</DataList.Value>
+		</DataList.Item>
+		<DataList.Item>
+			<DataList.Label minWidth="88px">Email</DataList.Label>
+			<DataList.Value>
+				<Link href="mailto:vlad@workos.com">vlad@workos.com</Link>
+			</DataList.Value>
+		</DataList.Item>
+		<DataList.Item>
+			<DataList.Label minWidth="88px">Company</DataList.Label>
+			<DataList.Value>
+				<Link target="_blank" href="https://workos.com">
+					WorkOS
+				</Link>
+			</DataList.Value>
+		</DataList.Item>
+	</DataList.Root>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop on the Label part to assign a specific [color](/themes/docs/theme/color).
+
+```jsx live=true
+<DataList.Root orientation="vertical">
+	<DataList.Item>
+		<DataList.Label color="indigo">Name</DataList.Label>
+		<DataList.Value>Indigo</DataList.Value>
+	</DataList.Item>
+	<DataList.Item>
+		<DataList.Label color="cyan">Name</DataList.Label>
+		<DataList.Value>Cyan</DataList.Value>
+	</DataList.Item>
+	<DataList.Item>
+		<DataList.Label color="orange">Name</DataList.Label>
+		<DataList.Value>Orange</DataList.Value>
+	</DataList.Item>
+	<DataList.Item>
+		<DataList.Label color="crimson">Name</DataList.Label>
+		<DataList.Value>Crimson</DataList.Value>
+	</DataList.Item>
+</DataList.Root>
+```
+
+### High-contrast
+
+Use the `highContrast` prop increase color contrast with the background.
+
+```jsx live=true
+<Flex gap="9">
+	<DataList.Root orientation="vertical">
+		<DataList.Item>
+			<DataList.Label color="indigo">Name</DataList.Label>
+			<DataList.Value>Indigo</DataList.Value>
+		</DataList.Item>
+		<DataList.Item>
+			<DataList.Label color="cyan">Name</DataList.Label>
+			<DataList.Value>Cyan</DataList.Value>
+		</DataList.Item>
+		<DataList.Item>
+			<DataList.Label color="orange">Name</DataList.Label>
+			<DataList.Value>Orange</DataList.Value>
+		</DataList.Item>
+		<DataList.Item>
+			<DataList.Label color="crimson">Name</DataList.Label>
+			<DataList.Value>Crimson</DataList.Value>
+		</DataList.Item>
+	</DataList.Root>
+
+	<DataList.Root orientation="vertical">
+		<DataList.Item>
+			<DataList.Label color="indigo" highContrast>
+				Name
+			</DataList.Label>
+			<DataList.Value>Indigo</DataList.Value>
+		</DataList.Item>
+		<DataList.Item>
+			<DataList.Label color="cyan" highContrast>
+				Name
+			</DataList.Label>
+			<DataList.Value>Cyan</DataList.Value>
+		</DataList.Item>
+		<DataList.Item>
+			<DataList.Label color="orange" highContrast>
+				Name
+			</DataList.Label>
+			<DataList.Value>Orange</DataList.Value>
+		</DataList.Item>
+		<DataList.Item>
+			<DataList.Label color="crimson" highContrast>
+				Name
+			</DataList.Label>
+			<DataList.Value>Crimson</DataList.Value>
+		</DataList.Item>
+	</DataList.Root>
+</Flex>
+```

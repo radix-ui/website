@@ -1,0 +1,31 @@
+# Quote
+
+Short inline quotation.
+
+```jsx live=true
+<Text>
+	His famous quote,{" "}
+	<Quote>Styles come and go. Good design is a language, not a style</Quote>,
+	elegantly summs up Massimo’s philosophy of design.
+</Text>
+```
+
+## API Reference
+
+This component is based on the `q` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+## Examples
+
+### Truncate
+
+Use the `truncate` prop to truncate text with an ellipsis when it overflows its container.
+
+```jsx live=true line=2
+<Flex maxWidth="300px">
+	<Quote truncate>
+		The goal of typography is to relate font size, line height, and line width
+		in a proportional way that maximizes beauty and makes reading easier and
+		more pleasant.
+	</Quote>
+</Flex>
+```

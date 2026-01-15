@@ -1,0 +1,63 @@
+# Theme overview
+
+Use the Theme component to change the look and feel of your UI.
+
+# Theme overview
+
+Use the Theme component to change the look and feel of your UI.
+
+## Anatomy
+
+The [Theme component](/themes/docs/components/theme) defines the overall visual look of your application. It can be customized by passing a minimal set of configuration options.
+
+```jsx live=true
+<Theme
+	accentColor="mint"
+	grayColor="gray"
+	panelBackground="solid"
+	scaling="100%"
+	radius="full"
+>
+	<ThemesVolumeControlExample />
+</Theme>
+```
+
+A well tuned set of defaults is provided to get you started, but don’t be afraid to play with all of the available options to find the right visual style for your application. Check out the [Playground](/themes/playground) to see what effect each option has.
+
+## Variants
+
+Variants are visual variations of a component which are used to create visual hierarchies and communicate relative importance.
+
+Each component offers a different set of variants, though all are designed to be consistent and complimentary with each other.
+
+```jsx live=true
+<Flex gap="3" align="center">
+	<Button variant="classic">
+		Get started <ArrowRightIcon />
+	</Button>
+	<Button variant="solid">
+		Get started <ArrowRightIcon />
+	</Button>
+	<Button variant="soft">
+		Get started <ArrowRightIcon />
+	</Button>
+</Flex>
+```
+
+## Examples
+
+Using a combination of component variants alongside customized theme settings allows you to create a multitude of unique-looking interfaces.
+
+For example you could create:
+
+- [Music applications](/themes/example-music-app)
+- [Ecommerce product elements](/themes/example-ecommerce)
+- [SaaS dashboards](/themes/example-dashboard)
+
+Or any number of differing treatments and styles.
+
+## Tokens
+
+Tokens provide direct access to theme values and give you flexibility to build and customize your own themed components.
+
+For all available theme tokens see the [source code](https://github.com/radix-ui/themes/tree/main/packages/radix-ui-themes/src/styles/tokens), or read more about each type of token in the relevant theme pages.

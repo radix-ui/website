@@ -1,0 +1,39 @@
+# Grid
+
+Component for creating grid layouts.
+
+```jsx live=true
+<Grid columns="3" gap="3" rows="repeat(2, 64px)" width="auto">
+	<DecorativeBox />
+	<DecorativeBox />
+	<DecorativeBox />
+	<DecorativeBox />
+	<DecorativeBox />
+	<DecorativeBox />
+</Grid>
+```
+
+## API Reference
+
+This component is based on the `div` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+Use these props to create grid layouts.
+
+The following props are shared between [Box](./box), [Flex](./flex), [Grid](./grid), [Container](./container) and [Section](./section) components. Read more about layout components in [Layout](/themes/docs/overview/layout).
+
+## Examples
+
+### Responsive
+
+All props marked `Responsive`, such as `columns` and `rows` accept a [breakpoint object](/themes/docs/theme/breakpoints). For example, the following grid starts with 1 column, and uses 2 columns from the medium breakpoint.
+
+```jsx live=true
+<Grid columns={{ initial: "1", md: "2" }} gap="3" width="auto">
+	<Box height="64px">
+		<DecorativeBox />
+	</Box>
+	<Box height="64px">
+		<DecorativeBox />
+	</Box>
+</Grid>
+```

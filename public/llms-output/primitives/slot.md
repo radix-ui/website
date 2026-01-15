@@ -1,0 +1,100 @@
+# Slot
+
+Merges its props onto its immediate child.
+
+# Slot
+
+Merges its props onto its immediate child.
+
+## Installation
+
+Install the component from your command line.
+
+```bash
+npm install @radix-ui/react-slot
+```
+
+## Anatomy
+
+Import the component.
+
+```jsx
+import { Slot } from "radix-ui";
+
+export default () => (
+	<Slot.Root>
+		<div>Hello</div>
+	</Slot.Root>
+);
+```
+
+## Basic example
+
+Use to create your own `asChild` API.
+
+When your component has a single children element:
+
+```jsx line=9
+// your-button.jsx
+import * as React from "react";
+import { Slot } from "radix-ui";
+
+function Button({ asChild, ...props }) {
+	const Comp = asChild ? Slot.Root : "button";
+	return <Comp {...props} />;
+}
+```
+
+Use `Slottable` when your component has multiple children to pass the props to the correct element:
+
+```jsx
+// your-button.jsx
+import * as React from "react";
+import { Slot } from "radix-ui";
+
+function Button({ asChild, children, leftElement, rightElement, ...props }) {
+	const Comp = asChild ? Slot.Root : "button";
+	return (
+		<Comp {...props}>
+			{leftElement}
+			<Slot.Slottable>{children}</Slot.Slottable>
+			{rightElement}
+		</Comp>
+	);
+}
+```
+
+### Usage
+
+```jsx
+import { Button } from "./your-button";
+
+export default () => (
+	<Button asChild>
+		<a href="/contact">Contact</a>
+	</Button>
+);
+```
+
+### Event handlers
+
+Any prop that starts with `on` (e.g., `onClick`) is considered an event handler.
+
+When merging event handlers, `Slot` will create a new function where the child handler takes precedence over the slot handler.
+
+If one of the event handlers relies on `event.defaultPrevented` make sure that the order is correct.
+
+```jsx
+import { Slot } from "radix-ui";
+
+export default () => (
+	<Slot.Root
+		onClick={(event) => {
+			if (!event.defaultPrevented)
+				console.log("Not logged because default is prevented.");
+		}}
+	>
+		<button onClick={(event) => event.preventDefault()} />
+	</Slot.Root>
+);
+```

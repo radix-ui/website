@@ -1,0 +1,116 @@
+# Code
+
+Marks text to signify a short fragment of computer code.
+
+```jsx live=true
+<Code>console.log()</Code>
+```
+
+## API Reference
+
+This component is based on the `code` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+## Examples
+
+### Size
+
+Use the `size` prop to control text size. This prop also provides correct line height and corrective letter spacing—as text size increases, the relative line height and letter spacing decrease.
+
+```jsx live=true scroll=true
+<Flex direction="column" gap="3" align="start">
+	<Code size="1">console.log()</Code>
+	<Code size="2">console.log()</Code>
+	<Code size="3">console.log()</Code>
+	<Code size="4">console.log()</Code>
+	<Code size="5">console.log()</Code>
+	<Code size="6">console.log()</Code>
+	<Code size="7">console.log()</Code>
+	<Code size="8">console.log()</Code>
+	<Code size="9">console.log()</Code>
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style.
+
+```jsx live=true
+<Flex direction="column" align="start" gap="2">
+	<Code variant="solid">console.log()</Code>
+	<Code variant="soft">console.log()</Code>
+	<Code variant="outline">console.log()</Code>
+	<Code variant="ghost">console.log()</Code>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
+
+```jsx live=true
+<Flex direction="column" align="start" gap="2">
+	<Code color="indigo">console.log()</Code>
+	<Code color="crimson">console.log()</Code>
+	<Code color="cyan">console.log()</Code>
+	<Code color="orange">console.log()</Code>
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to increase color contrast with the background.
+
+```jsx live=true
+<Flex gap="3">
+	<Flex direction="column" align="start" gap="2">
+		<Code color="gray" variant="solid">
+			console.log()
+		</Code>
+		<Code color="gray" variant="soft">
+			console.log()
+		</Code>
+		<Code color="gray" variant="outline">
+			console.log()
+		</Code>
+		<Code color="gray" variant="ghost">
+			console.log()
+		</Code>
+	</Flex>
+
+	<Flex direction="column" align="start" gap="2">
+		<Code color="gray" variant="solid" highContrast>
+			console.log()
+		</Code>
+		<Code color="gray" variant="soft" highContrast>
+			console.log()
+		</Code>
+		<Code color="gray" variant="outline" highContrast>
+			console.log()
+		</Code>
+		<Code color="gray" variant="ghost" highContrast>
+			console.log()
+		</Code>
+	</Flex>
+</Flex>
+```
+
+### Weight
+
+Use the `weight` prop to set the text weight.
+
+```jsx live="true"
+<Flex direction="column" gap="2" align="start">
+	<Code weight="regular">console.log()</Code>
+	<Code weight="bold">console.log()</Code>
+</Flex>
+```
+
+### Truncate
+
+Use the `truncate` prop to truncate text with an ellipsis when it overflows its container.
+
+```jsx live=true line=2
+<Flex maxWidth="200px">
+	<Code truncate>linear-gradient(red, orange, yellow, green, blue);</Code>
+</Flex>
+```

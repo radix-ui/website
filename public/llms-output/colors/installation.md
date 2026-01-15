@@ -1,0 +1,73 @@
+# Installation
+
+How to install Radix Colors.
+
+# Installation
+
+How to install Radix Colors.
+
+## npm
+
+Install Radix Colors from your terminal via npm, yarn or pnpm. Current version is `3.0.0`
+
+```bash
+# with npm
+npm install @radix-ui/colors
+# with yarn
+yarn add @radix-ui/colors
+# with pnpm
+pnpm add @radix-ui/colors
+```
+
+## CDN
+
+To get started quickly, you can use the CDN files.
+
+```html
+<!-- Load whichever light and dark scales you need -->
+<link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/gray.css"
+/>
+<link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue.css"
+/>
+<link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green.css"
+/>
+<link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/red.css"
+/>
+<link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/gray-dark.css"
+/>
+<link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue-dark.css"
+/>
+<link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green-dark.css"
+/>
+<link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/red-dark.css"
+/>
+```
+
+The example above uses the `@latest` tag to point to the latest version of the scales. You can pin your scales to a specific version.
+
+```html
+<link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@radix-ui/colors@3.0.0/blue.css"
+/>
+<link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@radix-ui/colors@3.0.0/blue-dark.css"
+/>
+```
