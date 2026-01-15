@@ -96,11 +96,11 @@ import "./styles.css";
 
 const PopoverDemo = () => (
 	<Popover.Root>
-		<Popover.Trigger __className__="PopoverTrigger">Show info</Popover.Trigger>
+		<Popover.Trigger className="PopoverTrigger">Show info</Popover.Trigger>
 		<Popover.Portal>
-			<Popover.Content __className__="PopoverContent">
+			<Popover.Content className="PopoverContent">
 				Some content
-				<Popover.Arrow __className__="PopoverArrow" />
+				<Popover.Arrow className="PopoverArrow" />
 			</Popover.Content>
 		</Popover.Portal>
 	</Popover.Root>
@@ -1191,7 +1191,7 @@ import { Tooltip } from "radix-ui";
 
 export default () => (
 	<Tooltip.Root>
-		<Tooltip.Trigger __asChild__>
+		<Tooltip.Trigger asChild>
 			<a href="https://www.radix-ui.com/">Radix UI</a>
 		</Tooltip.Trigger>
 		<Tooltip.Portal>…</Tooltip.Portal>
@@ -1219,7 +1219,7 @@ This is done by spreading all of the props onto the underlying DOM node.
 const MyButton = () => <button />;
 
 // after
-const MyButton = (props) => <button {...__props__} />;
+const MyButton = (props) => <button {...props} />;
 ```
 
 We recommend always doing this so that you are not concerned with implementation details (ie. which props/events to accept). We find this is good practice for "leaf" components in general.
@@ -1237,8 +1237,8 @@ This is done using `React.forwardRef` (read more on [react.dev](https://react.de
 const MyButton = (props) => <button {...props} />;
 
 // after
-const MyButton = __React.forwardRef__((props, __forwardedRef__) => (
-	<button {...props} __ref__={__forwardedRef__} />
+const MyButton = React.forwardRef((props, forwardedRef) => (
+	<button {...props} ref={forwardedRef} />
 ));
 ```
 
@@ -1261,8 +1261,8 @@ export default () => {
 	return (
 		<Dialog.Root>
 			<Tooltip.Root>
-				<Tooltip.Trigger __asChild__>
-					<Dialog.Trigger __asChild__>
+				<Tooltip.Trigger asChild>
+					<Dialog.Trigger asChild>
 						<MyButton>Open dialog</MyButton>
 					</Dialog.Trigger>
 				</Tooltip.Trigger>
@@ -1338,7 +1338,7 @@ import "./styles.css";
 
 const AccordionDemo = () => (
 	<Accordion.Root>
-		<Accordion.Item __className__="AccordionItem" value="item-1" />
+		<Accordion.Item className="AccordionItem" value="item-1" />
 		{/* … */}
 	</Accordion.Root>
 );
@@ -1355,7 +1355,7 @@ You can style a component state by targeting its `data-state` attribute.
 	border-bottom: 1px solid gainsboro;
 }
 
-.AccordionItem[__data-state__="open"] {
+.AccordionItem[data-state="open"] {
 	border-bottom-width: 2px;
 }
 ```
@@ -1373,7 +1373,7 @@ import * as React from "react";
 import { Accordion } from "radix-ui";
 import styled from "styled-components";
 
-const StyledItem = __styled__(Accordion.Item)`
+const StyledItem = styled(Accordion.Item)`
   border-bottom: 1px solid gainsboro;
 `;
 
@@ -1398,7 +1398,7 @@ import styled from "styled-components";
 const StyledItem = styled(Accordion.Item)`
 	border-bottom: 1px solid gainsboro;
 
-	&[__data-state__="open"] {
+	&[data-state="open"] {
 		border-bottom-width: 2px;
 	}
 `;
@@ -1496,7 +1496,7 @@ Contains the collapsible content for an item.
 Use the `defaultValue` prop to define the open item by default.
 
 ```jsx line=1
-<Accordion.Root type="single" __defaultValue__="item-2">
+<Accordion.Root type="single" defaultValue="item-2">
 	<Accordion.Item value="item-1">…</Accordion.Item>
 	<Accordion.Item value="item-2">…</Accordion.Item>
 </Accordion.Root>
@@ -1507,7 +1507,7 @@ Use the `defaultValue` prop to define the open item by default.
 Use the `collapsible` prop to allow all items to close.
 
 ```jsx line=1
-<Accordion.Root type="single" __collapsible__>
+<Accordion.Root type="single" collapsible>
 	<Accordion.Item value="item-1">…</Accordion.Item>
 	<Accordion.Item value="item-2">…</Accordion.Item>
 </Accordion.Root>
@@ -1518,7 +1518,7 @@ Use the `collapsible` prop to allow all items to close.
 Set the `type` prop to `multiple` to enable opening multiple items at once.
 
 ```jsx line=1
-<Accordion.Root type="__multiple__">
+<Accordion.Root type="multiple">
 	<Accordion.Item value="item-1">…</Accordion.Item>
 	<Accordion.Item value="item-2">…</Accordion.Item>
 </Accordion.Root>
@@ -1540,7 +1540,7 @@ export default () => (
 			<Accordion.Header>
 				<Accordion.Trigger className="AccordionTrigger">
 					<span>Trigger text</span>
-					<ChevronDownIcon __className__="AccordionChevron" aria-hidden />
+					<ChevronDownIcon className="AccordionChevron" aria-hidden />
 				</Accordion.Trigger>
 			</Accordion.Header>
 			<Accordion.Content>…</Accordion.Content>
@@ -1564,7 +1564,7 @@ export default () => (
 Use the `orientation` prop to create a horizontal accordion.
 
 ```jsx line=1
-<Accordion.Root __orientation__="horizontal">
+<Accordion.Root orientation="horizontal">
 	<Accordion.Item value="item-1">…</Accordion.Item>
 	<Accordion.Item value="item-2">…</Accordion.Item>
 </Accordion.Root>
@@ -1583,7 +1583,7 @@ export default () => (
 	<Accordion.Root type="single">
 		<Accordion.Item value="item-1">
 			<Accordion.Header>…</Accordion.Header>
-			<Accordion.Content __className__="AccordionContent">…</Accordion.Content>
+			<Accordion.Content className="AccordionContent">…</Accordion.Content>
 		</Accordion.Item>
 	</Accordion.Root>
 );
@@ -1606,13 +1606,13 @@ export default () => (
 		height: 0;
 	}
 	to {
-		height: var(__--radix-accordion-content-height__);
+		height: var(--radix-accordion-content-height);
 	}
 }
 
 @keyframes slideUp {
 	from {
-		height: var(__--radix-accordion-content-height__);
+		height: var(--radix-accordion-content-height);
 	}
 	to {
 		height: 0;
@@ -1722,7 +1722,7 @@ export default () => {
 	const [open, setOpen] = React.useState(false);
 
 	return (
-		<AlertDialog.Root __open__={open} __onOpenChange__={setOpen}>
+		<AlertDialog.Root open={open} onOpenChange={setOpen}>
 			<AlertDialog.Trigger>Open</AlertDialog.Trigger>
 			<AlertDialog.Portal>
 				<AlertDialog.Overlay />
@@ -1754,7 +1754,7 @@ export default () => {
 		<div>
 			<AlertDialog.Root>
 				<AlertDialog.Trigger />
-				<AlertDialog.Portal __container__={container}>
+				<AlertDialog.Portal container={container}>
 					<AlertDialog.Overlay />
 					<AlertDialog.Content>...</AlertDialog.Content>
 				</AlertDialog.Portal>
@@ -1860,7 +1860,7 @@ An element that renders when the image hasn't loaded. This means whilst it's loa
 You can compose the Avatar with a [Tooltip](/primitives/docs/components/tooltip) to display extra information.
 
 ```jsx line=1,4,5,7,9-13
-import { Avatar, __Tooltip__ } from "radix-ui";
+import { Avatar, Tooltip } from "radix-ui";
 
 export default () => (
 	<Tooltip.Root>
@@ -2022,7 +2022,7 @@ import "./styles.css";
 export default () => (
 	<Collapsible.Root>
 		<Collapsible.Trigger>…</Collapsible.Trigger>
-		<Collapsible.Content __className__="CollapsibleContent">
+		<Collapsible.Content className="CollapsibleContent">
 			…
 		</Collapsible.Content>
 	</Collapsible.Root>
@@ -2046,13 +2046,13 @@ export default () => (
 		height: 0;
 	}
 	to {
-		height: var(__--radix-collapsible-content-height__);
+		height: var(--radix-collapsible-content-height);
 	}
 }
 
 @keyframes slideUp {
 	from {
-		height: var(__--radix-collapsible-content-height__);
+		height: var(--radix-collapsible-content-height);
 	}
 	to {
 		height: 0;
@@ -2242,7 +2242,7 @@ export default () => (
 		<ContextMenu.Trigger>…</ContextMenu.Trigger>
 		<ContextMenu.Portal>
 			<ContextMenu.Content>
-				<ContextMenu.Item __className__="ContextMenuItem" __disabled__>
+				<ContextMenu.Item className="ContextMenuItem" disabled>
 					…
 				</ContextMenu.Item>
 				<ContextMenu.Item className="ContextMenuItem">…</ContextMenu.Item>
@@ -2254,7 +2254,7 @@ export default () => (
 
 ```css line=2
 /* styles.css */
-.ContextMenuItem[__data-disabled__] {
+.ContextMenuItem[data-disabled] {
 	color: gainsboro;
 }
 ```
@@ -2417,7 +2417,7 @@ export default () => (
 	<ContextMenu.Root>
 		<ContextMenu.Trigger>…</ContextMenu.Trigger>
 		<ContextMenu.Portal>
-			<ContextMenu.Content __className__="ContextMenuContent">
+			<ContextMenu.Content className="ContextMenuContent">
 				…
 			</ContextMenu.Content>
 		</ContextMenu.Portal>
@@ -2428,8 +2428,8 @@ export default () => (
 ```css
 /* styles.css */
 .ContextMenuContent {
-	width: var(__--radix-context-menu-trigger-width__);
-	max-height: var(__--radix-context-menu-content-available-height__);
+	width: var(--radix-context-menu-trigger-width);
+	max-height: var(--radix-context-menu-content-available-height);
 }
 ```
 
@@ -2446,7 +2446,7 @@ export default () => (
 	<ContextMenu.Root>
 		<ContextMenu.Trigger>…</ContextMenu.Trigger>
 		<ContextMenu.Portal>
-			<ContextMenu.Content __className__="ContextMenuContent">
+			<ContextMenu.Content className="ContextMenuContent">
 				…
 			</ContextMenu.Content>
 		</ContextMenu.Portal>
@@ -2457,7 +2457,7 @@ export default () => (
 ```css line=3
 /* styles.css */
 .ContextMenuContent {
-	transform-origin: var(__--radix-context-menu-content-transform-origin__);
+	transform-origin: var(--radix-context-menu-content-transform-origin);
 	animation: scaleIn 0.5s ease-out;
 }
 
@@ -2486,7 +2486,7 @@ export default () => (
 	<ContextMenu.Root>
 		<ContextMenu.Trigger>…</ContextMenu.Trigger>
 		<ContextMenu.Portal>
-			<ContextMenu.Content __className__="ContextMenuContent">
+			<ContextMenu.Content className="ContextMenuContent">
 				…
 			</ContextMenu.Content>
 		</ContextMenu.Portal>
@@ -2500,10 +2500,10 @@ export default () => (
 	animation-duration: 0.6s;
 	animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
-.ContextMenuContent[__data-side="top"__] {
+.ContextMenuContent[data-side="top"] {
 	animation-name: slideUp;
 }
-.ContextMenuContent[__data-side="bottom"__] {
+.ContextMenuContent[data-side="bottom"] {
 	animation-name: slideDown;
 }
 
@@ -2631,7 +2631,7 @@ export default () => {
 	const [open, setOpen] = React.useState(false);
 
 	return (
-		<Dialog.Root __open__={open} __onOpenChange__={setOpen}>
+		<Dialog.Root open={open} onOpenChange={setOpen}>
 			<Dialog.Trigger>Open</Dialog.Trigger>
 			<Dialog.Portal>
 				<Dialog.Overlay />
@@ -2711,13 +2711,13 @@ export default () => {
 		<div>
 			<Dialog.Root>
 				<Dialog.Trigger />
-				<Dialog.Portal __container__={container}>
+				<Dialog.Portal container={container}>
 					<Dialog.Overlay />
 					<Dialog.Content>...</Dialog.Content>
 				</Dialog.Portal>
 			</Dialog.Root>
 
-			<div ref={__setContainer__} />
+			<div ref={setContainer} />
 		</div>
 	);
 };
@@ -2951,7 +2951,7 @@ export default () => (
 		<DropdownMenu.Trigger>…</DropdownMenu.Trigger>
 		<DropdownMenu.Portal>
 			<DropdownMenu.Content>
-				<DropdownMenu.Item __className__="DropdownMenuItem" __disabled__>
+				<DropdownMenu.Item className="DropdownMenuItem" disabled>
 					…
 				</DropdownMenu.Item>
 				<DropdownMenu.Item className="DropdownMenuItem">…</DropdownMenu.Item>
@@ -2963,7 +2963,7 @@ export default () => (
 
 ```css line=2
 /* styles.css */
-.DropdownMenuItem[__data-disabled__] {
+.DropdownMenuItem[data-disabled] {
 	color: gainsboro;
 }
 ```
@@ -3126,7 +3126,7 @@ export default () => (
 	<DropdownMenu.Root>
 		<DropdownMenu.Trigger>…</DropdownMenu.Trigger>
 		<DropdownMenu.Portal>
-			<DropdownMenu.Content __className__="DropdownMenuContent" sideOffset={5}>
+			<DropdownMenu.Content className="DropdownMenuContent" sideOffset={5}>
 				…
 			</DropdownMenu.Content>
 		</DropdownMenu.Portal>
@@ -3137,8 +3137,8 @@ export default () => (
 ```css
 /* styles.css */
 .DropdownMenuContent {
-	width: var(__--radix-dropdown-menu-trigger-width__);
-	max-height: var(__--radix-dropdown-menu-content-available-height__);
+	width: var(--radix-dropdown-menu-trigger-width);
+	max-height: var(--radix-dropdown-menu-content-available-height);
 }
 ```
 
@@ -3155,7 +3155,7 @@ export default () => (
 	<DropdownMenu.Root>
 		<DropdownMenu.Trigger>…</DropdownMenu.Trigger>
 		<DropdownMenu.Portal>
-			<DropdownMenu.Content __className__="DropdownMenuContent">
+			<DropdownMenu.Content className="DropdownMenuContent">
 				…
 			</DropdownMenu.Content>
 		</DropdownMenu.Portal>
@@ -3166,7 +3166,7 @@ export default () => (
 ```css line=3
 /* styles.css */
 .DropdownMenuContent {
-	transform-origin: var(__--radix-dropdown-menu-content-transform-origin__);
+	transform-origin: var(--radix-dropdown-menu-content-transform-origin);
 	animation: scaleIn 0.5s ease-out;
 }
 
@@ -3195,7 +3195,7 @@ export default () => (
 	<DropdownMenu.Root>
 		<DropdownMenu.Trigger>…</DropdownMenu.Trigger>
 		<DropdownMenu.Portal>
-			<DropdownMenu.Content __className__="DropdownMenuContent">
+			<DropdownMenu.Content className="DropdownMenuContent">
 				…
 			</DropdownMenu.Content>
 		</DropdownMenu.Portal>
@@ -3209,10 +3209,10 @@ export default () => (
 	animation-duration: 0.6s;
 	animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
-.DropdownMenuContent[__data-side="top"__] {
+.DropdownMenuContent[data-side="top"] {
 	animation-name: slideUp;
 }
-.DropdownMenuContent[__data-side="bottom"__] {
+.DropdownMenuContent[data-side="bottom"] {
 	animation-name: slideDown;
 }
 
@@ -3432,7 +3432,7 @@ Using `asChild` you can compose the `Form` primitive parts with your own compone
 ```jsx line=3
 <Form.Field name="name">
 	<Form.Label>Full name</Form.Label>
-	<Form.Control __asChild__>
+	<Form.Control asChild>
 		<TextField.Input variant="primary" />
 	</Form.Control>
 </Form.Field>
@@ -3443,7 +3443,7 @@ It can also be used to compose other types of controls, such as a `select`:
 ```jsx line=3
 <Form.Field name="country">
 	<Form.Label>Country</Form.Label>
-	<Form.Control __asChild__>
+	<Form.Control asChild>
 		<select>
 			<option value="uk">United Kingdom</option>…
 		</select>
@@ -3479,7 +3479,7 @@ You can pass your own validation function into the `match` prop on `Form.Message
 <Form.Field name="name">
 	<Form.Label>Full name</Form.Label>
 	<Form.Control />
-	<Form.Message __match__={(value, formData) => value !== "John"}>
+	<Form.Message match={(value, formData) => value !== "John"}>
 		Only John is allowed.
 	</Form.Message>
 </Form.Field>
@@ -3501,7 +3501,7 @@ import { Form } from "radix-ui";
 export default () => (
 	<Form.Root>
 		<Form.Field name="email">
-			<Form.Label __className__="FormLabel">Email</Form.Label>
+			<Form.Label className="FormLabel">Email</Form.Label>
 			<Form.Control type="email" />
 		</Form.Field>
 	</Form.Root>
@@ -3510,10 +3510,10 @@ export default () => (
 
 ```css line=2,5
 /* styles.css */
-.FormLabel[__data-invalid__] {
+.FormLabel[data-invalid] {
 	color: red;
 }
-.FormLabel[__data-valid__] {
+.FormLabel[data-valid] {
 	color: green;
 }
 ```
@@ -3530,7 +3530,7 @@ You may need to access the raw validity state of a field in order to display you
 			<Form.Control asChild>
 				<TextField.Input
 					variant="primary"
-					state={getTextFieldInputState(__validity__)}
+					state={getTextFieldInputState(validity)}
 				/>
 			</Form.Control>
 		)}
@@ -3571,27 +3571,27 @@ function Page() {
 					 * Map errors from your server response into a structure you'd like to work with.
 					 * In this case resulting in this object: `{ email: false, password: true }`
 					 */
-					.catch((errors) => __setServerErrors__(mapServerErrors(errors)));
+					.catch((errors) => setServerErrors(mapServerErrors(errors)));
 
 				// prevent default form submission
 				event.preventDefault();
 			}}
 			onClearServerErrors={() =>
-				__setServerErrors__({ email: false, password: false })
+				setServerErrors({ email: false, password: false })
 			}
 		>
-			<Form.Field name="email" __serverInvalid__={serverErrors.email}>
+			<Form.Field name="email" serverInvalid={serverErrors.email}>
 				<Form.Label>Email address</Form.Label>
 				<Form.Control type="email" required />
 				<Form.Message match="valueMissing">
 					Please enter your email.
 				</Form.Message>
-				<Form.Message match="typeMismatch" __forceMatch__={serverErrors.email}>
+				<Form.Message match="typeMismatch" forceMatch={serverErrors.email}>
 					Please provide a valid email.
 				</Form.Message>
 			</Form.Field>
 
-			<Form.Field name="password" __serverInvalid__={serverErrors.password}>
+			<Form.Field name="password" serverInvalid={serverErrors.password}>
 				<Form.Label>Password</Form.Label>
 				<Form.Control type="password" required />
 				<Form.Message match="valueMissing">
@@ -3620,7 +3620,7 @@ In addition, this provides control over when to reset single server errors. For 
 	<Form.Label>Email address</Form.Label>
 	<Form.Control
 		type="email"
-		__onChange__={() => setServerErrors((prev) => ({ ...prev, email: false }))}
+		onChange={() => setServerErrors((prev) => ({ ...prev, email: false }))}
 	/>
 	<Form.Message match="valueMissing">Please enter your email.</Form.Message>
 	<Form.Message match="typeMismatch" forceMatch={serverErrors.email}>
@@ -3706,7 +3706,7 @@ Use the `openDelay` prop to control the time it takes for the hover card to open
 import { HoverCard } from "radix-ui";
 
 export default () => (
-	<HoverCard.Root __openDelay__={0}>
+	<HoverCard.Root openDelay={0}>
 		<HoverCard.Trigger>…</HoverCard.Trigger>
 		<HoverCard.Content>…</HoverCard.Content>
 	</HoverCard.Root>
@@ -3728,7 +3728,7 @@ export default () => (
 	<HoverCard.Root>
 		<HoverCard.Trigger>…</HoverCard.Trigger>
 		<HoverCard.Portal>
-			<HoverCard.Content __className__="HoverCardContent" sideOffset={5}>
+			<HoverCard.Content className="HoverCardContent" sideOffset={5}>
 				…
 			</HoverCard.Content>
 		</HoverCard.Portal>
@@ -3739,8 +3739,8 @@ export default () => (
 ```css
 /* styles.css */
 .HoverCardContent {
-	width: var(__--radix-hover-card-trigger-width__);
-	max-height: var(__--radix-hover-card-content-available-height__);
+	width: var(--radix-hover-card-trigger-width);
+	max-height: var(--radix-hover-card-content-available-height);
 }
 ```
 
@@ -3756,7 +3756,7 @@ import "./styles.css";
 export default () => (
 	<HoverCard.Root>
 		<HoverCard.Trigger>…</HoverCard.Trigger>
-		<HoverCard.Content __className__="HoverCardContent">…</HoverCard.Content>
+		<HoverCard.Content className="HoverCardContent">…</HoverCard.Content>
 	</HoverCard.Root>
 );
 ```
@@ -3764,7 +3764,7 @@ export default () => (
 ```css line=3
 /* styles.css */
 .HoverCardContent {
-	transform-origin: var(__--radix-hover-card-content-transform-origin__);
+	transform-origin: var(--radix-hover-card-content-transform-origin);
 	animation: scaleIn 0.5s ease-out;
 }
 
@@ -3792,7 +3792,7 @@ import "./styles.css";
 export default () => (
 	<HoverCard.Root>
 		<HoverCard.Trigger>…</HoverCard.Trigger>
-		<HoverCard.Content __className__="HoverCardContent">…</HoverCard.Content>
+		<HoverCard.Content className="HoverCardContent">…</HoverCard.Content>
 	</HoverCard.Root>
 );
 ```
@@ -3803,10 +3803,10 @@ export default () => (
 	animation-duration: 0.6s;
 	animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
-.HoverCardContent[__data-side="top"__] {
+.HoverCardContent[data-side="top"] {
 	animation-name: slideUp;
 }
-.HoverCardContent[__data-side="bottom"__] {
+.HoverCardContent[data-side="bottom"] {
 	animation-name: slideDown;
 }
 
@@ -4060,7 +4060,7 @@ export default () => (
 			<Menubar.Trigger>…</Menubar.Trigger>
 			<Menubar.Portal>
 				<Menubar.Content>
-					<Menubar.Item __className__="MenubarItem" __disabled__>
+					<Menubar.Item className="MenubarItem" disabled>
 						…
 					</Menubar.Item>
 					<Menubar.Item className="MenubarItem">…</Menubar.Item>
@@ -4073,7 +4073,7 @@ export default () => (
 
 ```css line=2
 /* styles.css */
-.MenubarItem[__data-disabled__] {
+.MenubarItem[data-disabled] {
 	color: gainsboro;
 }
 ```
@@ -4240,7 +4240,7 @@ export default () => (
 	<Menubar.Root>
 		<Menubar.Trigger>…</Menubar.Trigger>
 		<Menubar.Portal>
-			<Menubar.Content __className__="MenubarContent" sideOffset={5}>
+			<Menubar.Content className="MenubarContent" sideOffset={5}>
 				…
 			</Menubar.Content>
 		</Menubar.Portal>
@@ -4251,8 +4251,8 @@ export default () => (
 ```css
 /* styles.css */
 .MenubarContent {
-	width: var(__--radix-menubar-trigger-width__);
-	max-height: var(__--radix-menubar-content-available-height__);
+	width: var(--radix-menubar-trigger-width);
+	max-height: var(--radix-menubar-content-available-height);
 }
 ```
 
@@ -4270,7 +4270,7 @@ export default () => (
 		<Menubar.Menu>
 			<Menubar.Trigger>…</Menubar.Trigger>
 			<Menubar.Portal>
-				<Menubar.Content __className__="MenubarContent">…</Menubar.Content>
+				<Menubar.Content className="MenubarContent">…</Menubar.Content>
 			</Menubar.Portal>
 		</Menubar.Menu>
 	</Menubar.Root>
@@ -4280,7 +4280,7 @@ export default () => (
 ```css line=3
 /* styles.css */
 .MenubarContent {
-	transform-origin: var(__--radix-menubar-content-transform-origin__);
+	transform-origin: var(--radix-menubar-content-transform-origin);
 	animation: scaleIn 0.5s ease-out;
 }
 
@@ -4310,7 +4310,7 @@ export default () => (
 		<Menubar.Menu>
 			<Menubar.Trigger>…</Menubar.Trigger>
 			<Menubar.Portal>
-				<Menubar.Content __className__="MenubarContent">…</Menubar.Content>
+				<Menubar.Content className="MenubarContent">…</Menubar.Content>
 			</Menubar.Portal>
 		</Menubar.Menu>
 	</Menubar.Root>
@@ -4323,10 +4323,10 @@ export default () => (
 	animation-duration: 0.6s;
 	animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
-.MenubarContent[__data-side="top"__] {
+.MenubarContent[data-side="top"] {
 	animation-name: slideUp;
 }
-.MenubarContent[__data-side="bottom"__] {
+.MenubarContent[data-side="bottom"] {
 	animation-name: slideDown;
 }
 
@@ -4461,7 +4461,7 @@ An optional viewport element that is used to render active content outside of th
 You can create a vertical menu by using the `orientation` prop.
 
 ```jsx line=1
-<NavigationMenu.Root __orientation__="vertical">
+<NavigationMenu.Root orientation="vertical">
 	<NavigationMenu.List>
 		<NavigationMenu.Item>
 			<NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
@@ -4521,7 +4521,7 @@ export default () => (
 				<NavigationMenu.Content>Item two content</NavigationMenu.Content>
 			</NavigationMenu.Item>
 
-			<NavigationMenu.Indicator __className__="NavigationMenuIndicator" />
+			<NavigationMenu.Indicator className="NavigationMenuIndicator" />
 		</NavigationMenu.List>
 
 		<NavigationMenu.Viewport />
@@ -4559,7 +4559,7 @@ sure to assign and set a `defaultValue`.
 		<NavigationMenu.Item>
 			<NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
 			<NavigationMenu.Content>
-				<NavigationMenu.__Sub__ __defaultValue__="sub1">
+				<NavigationMenu.Sub defaultValue="sub1">
 					<NavigationMenu.List>
 						<NavigationMenu.Item value="sub1">
 							<NavigationMenu.Trigger>Sub item one</NavigationMenu.Trigger>
@@ -4574,7 +4574,7 @@ sure to assign and set a `defaultValue`.
 							</NavigationMenu.Content>
 						</NavigationMenu.Item>
 					</NavigationMenu.List>
-				</NavigationMenu.__Sub__>
+				</NavigationMenu.Sub>
 			</NavigationMenu.Content>
 		</NavigationMenu.Item>
 	</NavigationMenu.List>
@@ -4645,19 +4645,19 @@ export default () => (
 		<NavigationMenu.List>
 			<NavigationMenu.Item>
 				<NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>
-				<NavigationMenu.Content __className__="NavigationMenuContent">
+				<NavigationMenu.Content className="NavigationMenuContent">
 					Item one content
 				</NavigationMenu.Content>
 			</NavigationMenu.Item>
 			<NavigationMenu.Item>
 				<NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>
-				<NavigationMenu.Content __className__="NavigationMenuContent">
+				<NavigationMenu.Content className="NavigationMenuContent">
 					Item two content
 				</NavigationMenu.Content>
 			</NavigationMenu.Item>
 		</NavigationMenu.List>
 
-		<NavigationMenu.Viewport __className__="NavigationMenuViewport" />
+		<NavigationMenu.Viewport className="NavigationMenuViewport" />
 	</NavigationMenu.Root>
 );
 ```
@@ -4671,23 +4671,23 @@ export default () => (
 	animation-duration: 250ms;
 	animation-timing-function: ease;
 }
-.NavigationMenuContent[__data-motion__="from-start"] {
+.NavigationMenuContent[data-motion="from-start"] {
 	animation-name: enterFromLeft;
 }
-.NavigationMenuContent[__data-motion__="from-end"] {
+.NavigationMenuContent[data-motion="from-end"] {
 	animation-name: enterFromRight;
 }
-.NavigationMenuContent[__data-motion__="to-start"] {
+.NavigationMenuContent[data-motion="to-start"] {
 	animation-name: exitToLeft;
 }
-.NavigationMenuContent[__data-motion__="to-end"] {
+.NavigationMenuContent[data-motion="to-end"] {
 	animation-name: exitToRight;
 }
 
 .NavigationMenuViewport {
 	position: relative;
-	width: var(__--radix-navigation-menu-viewport-width__);
-	height: var(__--radix-navigation-menu-viewport-height__);
+	width: var(--radix-navigation-menu-viewport-width);
+	height: var(--radix-navigation-menu-viewport-height);
 	transition:
 		width,
 		height,
@@ -5084,7 +5084,7 @@ export default () => (
 	<Popover.Root>
 		<Popover.Trigger>…</Popover.Trigger>
 		<Popover.Portal>
-			<Popover.Content __className__="PopoverContent" sideOffset={5}>
+			<Popover.Content className="PopoverContent" sideOffset={5}>
 				…
 			</Popover.Content>
 		</Popover.Portal>
@@ -5095,8 +5095,8 @@ export default () => (
 ```css
 /* styles.css */
 .PopoverContent {
-	width: var(__--radix-popover-trigger-width__);
-	max-height: var(__--radix-popover-content-available-height__);
+	width: var(--radix-popover-trigger-width);
+	max-height: var(--radix-popover-content-available-height);
 }
 ```
 
@@ -5113,7 +5113,7 @@ export default () => (
 	<Popover.Root>
 		<Popover.Trigger>…</Popover.Trigger>
 		<Popover.Portal>
-			<Popover.Content __className__="PopoverContent">…</Popover.Content>
+			<Popover.Content className="PopoverContent">…</Popover.Content>
 		</Popover.Portal>
 	</Popover.Root>
 );
@@ -5122,7 +5122,7 @@ export default () => (
 ```css line=3
 /* styles.css */
 .PopoverContent {
-	transform-origin: var(__--radix-popover-content-transform-origin__);
+	transform-origin: var(--radix-popover-content-transform-origin);
 	animation: scaleIn 0.5s ease-out;
 }
 
@@ -5151,7 +5151,7 @@ export default () => (
 	<Popover.Root>
 		<Popover.Trigger>…</Popover.Trigger>
 		<Popover.Portal>
-			<Popover.Content __className__="PopoverContent">…</Popover.Content>
+			<Popover.Content className="PopoverContent">…</Popover.Content>
 		</Popover.Portal>
 	</Popover.Root>
 );
@@ -5163,10 +5163,10 @@ export default () => (
 	animation-duration: 0.6s;
 	animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
-.PopoverContent[__data-side__="top"] {
+.PopoverContent[data-side="top"] {
 	animation-name: slideUp;
 }
-.PopoverContent[__data-side__="bottom"] {
+.PopoverContent[data-side="bottom"] {
 	animation-name: slideDown;
 }
 
@@ -5204,7 +5204,7 @@ import "./styles.css";
 
 export default () => (
 	<Popover.Root>
-		<Popover.Anchor __asChild__>
+		<Popover.Anchor asChild>
 			<div className="Row">
 				Row as anchor <Popover.Trigger>Trigger</Popover.Trigger>
 			</div>
@@ -5584,7 +5584,7 @@ export default () => (
 	<Select.Root>
 		<Select.Trigger>…</Select.Trigger>
 		<Select.Portal>
-			<Select.Content __position__="popper" __sideOffset__={5}>
+			<Select.Content position="popper" sideOffset={5}>
 				…
 			</Select.Content>
 		</Select.Portal>
@@ -5608,7 +5608,7 @@ export default () => (
 		<Select.Trigger>…</Select.Trigger>
 		<Select.Portal>
 			<Select.Content
-				__className__="SelectContent"
+				className="SelectContent"
 				position="popper"
 				sideOffset={5}
 			>
@@ -5622,8 +5622,8 @@ export default () => (
 ```css
 /* styles.css */
 .SelectContent {
-	width: var(__--radix-select-trigger-width__);
-	max-height: var(__--radix-select-content-available-height__);
+	width: var(--radix-select-trigger-width);
+	max-height: var(--radix-select-content-available-height);
 }
 ```
 
@@ -5642,7 +5642,7 @@ export default () => (
 		<Select.Portal>
 			<Select.Content>
 				<Select.Viewport>
-					<Select.Item __className__="SelectItem" __disabled__>
+					<Select.Item className="SelectItem" disabled>
 						…
 					</Select.Item>
 					<Select.Item>…</Select.Item>
@@ -5656,7 +5656,7 @@ export default () => (
 
 ```css line=2
 /* styles.css */
-.SelectItem[__data-disabled__] {
+.SelectItem[data-disabled] {
 	color: "gainsboro";
 }
 ```
@@ -5672,8 +5672,8 @@ import "./styles.css";
 
 export default () => (
 	<Select.Root>
-		<Select.Trigger __className__="SelectTrigger">
-			<Select.Value __placeholder__="Pick an option" />
+		<Select.Trigger className="SelectTrigger">
+			<Select.Value placeholder="Pick an option" />
 			<Select.Icon />
 		</Select.Trigger>
 		<Select.Portal>
@@ -5685,7 +5685,7 @@ export default () => (
 
 ```css line=2
 /* styles.css */
-.SelectTrigger[__data-placeholder__] {
+.SelectTrigger[data-placeholder] {
 	color: "gainsboro";
 }
 ```
@@ -5775,10 +5775,10 @@ const countries = { france: "🇫🇷", "united-kingdom": "🇬🇧", spain: "�
 export default () => {
 	const [value, setValue] = React.useState("france");
 	return (
-		<Select.Root __value__={value} __onValueChange__={setValue}>
+		<Select.Root value={value} onValueChange={setValue}>
 			<Select.Trigger>
-				<Select.Value __aria-label__={value}>
-					{__countries[value]__}
+				<Select.Value aria-label={value}>
+					{countries[value]}
 				</Select.Value>
 				<Select.Icon />
 			</Select.Trigger>
@@ -5819,19 +5819,19 @@ export default () => (
 		<Select.Trigger>…</Select.Trigger>
 		<Select.Portal>
 			<Select.Content>
-				<ScrollArea.Root __className__="ScrollAreaRoot" type="auto">
-					<Select.Viewport __asChild__>
-						<ScrollArea.Viewport __className__="ScrollAreaViewport">
+				<ScrollArea.Root className="ScrollAreaRoot" type="auto">
+					<Select.Viewport asChild>
+						<ScrollArea.Viewport className="ScrollAreaViewport">
 							<StyledItem>…</StyledItem>
 							<StyledItem>…</StyledItem>
 							<StyledItem>…</StyledItem>
 						</ScrollArea.Viewport>
 					</Select.Viewport>
 					<ScrollArea.Scrollbar
-						__className__="ScrollAreaScrollbar"
+						className="ScrollAreaScrollbar"
 						orientation="vertical"
 					>
-						<ScrollArea.Thumb __className__="ScrollAreaThumb" />
+						<ScrollArea.Thumb className="ScrollAreaThumb" />
 					</ScrollArea.Scrollbar>
 				</ScrollArea.Root>
 			</Select.Content>
@@ -5889,7 +5889,7 @@ export default () => (
 
 		<Label htmlFor="country">Country</Label>
 		<Select.Root>
-			<Select.Trigger __id__="country">…</Select.Trigger>
+			<Select.Trigger id="country">…</Select.Trigger>
 			<Select.Portal>
 				<Select.Content>…</Select.Content>
 			</Select.Portal>
@@ -6078,7 +6078,7 @@ export default () => (
 	<Slider.Root
 		className="SliderRoot"
 		defaultValue={[50]}
-		__orientation__="vertical"
+		orientation="vertical"
 	>
 		<Slider.Track className="SliderTrack">
 			<Slider.Range className="SliderRange" />
@@ -6095,7 +6095,7 @@ export default () => (
 	display: flex;
 	align-items: center;
 }
-.SliderRoot[__data-orientation="vertical"__] {
+.SliderRoot[data-orientation="vertical"] {
 	flex-direction: column;
 	width: 20px;
 	height: 100px;
@@ -6106,7 +6106,7 @@ export default () => (
 	flex-grow: 1;
 	background-color: grey;
 }
-.SliderTrack[__data-orientation="vertical"__] {
+.SliderTrack[data-orientation="vertical"] {
 	width: 3px;
 }
 
@@ -6114,7 +6114,7 @@ export default () => (
 	position: absolute;
 	background-color: black;
 }
-.SliderRange[__data-orientation="vertical"__] {
+.SliderRange[data-orientation="vertical"] {
 	width: 100%;
 }
 
@@ -6152,7 +6152,7 @@ Use the `step` prop to increase the stepping interval.
 import { Slider } from "radix-ui";
 
 export default () => (
-	<Slider.Root defaultValue={[50]} __step__={10}>
+	<Slider.Root defaultValue={[50]} step={10}>
 		<Slider.Track>
 			<Slider.Range />
 		</Slider.Track>
@@ -6169,7 +6169,7 @@ Use `minStepsBetweenThumbs` to avoid thumbs with equal values.
 import { Slider } from "radix-ui";
 
 export default () => (
-	<Slider.Root defaultValue={[25, 75]} step={10} __minStepsBetweenThumbs__={1}>
+	<Slider.Root defaultValue={[25, 75]} step={10} minStepsBetweenThumbs={1}>
 		<Slider.Track>
 			<Slider.Range />
 		</Slider.Track>
@@ -6352,7 +6352,7 @@ You can create vertical tabs by using the `orientation` prop.
 import { Tabs } from "radix-ui";
 
 export default () => (
-	<Tabs.Root defaultValue="tab1" __orientation__="vertical">
+	<Tabs.Root defaultValue="tab1" orientation="vertical">
 		<Tabs.List aria-label="tabs example">
 			<Tabs.Trigger value="tab1">One</Tabs.Trigger>
 			<Tabs.Trigger value="tab2">Two</Tabs.Trigger>
@@ -6451,7 +6451,7 @@ Override the default hotkey using the `event.code` value for each key from [keyc
 ```jsx line=3
 <Toast.Provider>
 	{/* ... */}
-	<Toast.Viewport __hotkey__={["altKey", "KeyT"]} />
+	<Toast.Viewport hotkey={["altKey", "KeyT"]} />
 </Toast.Provider>
 ```
 
@@ -6460,7 +6460,7 @@ Override the default hotkey using the `event.code` value for each key from [keyc
 Customise the duration of a toast to override the provider value.
 
 ```jsx line=1
-<Toast.Root __duration__={3000}>
+<Toast.Root duration={3000}>
 	<Toast.Description>Saved!</Toast.Description>
 </Toast.Root>
 ```
@@ -6500,8 +6500,8 @@ import { Toast } from "radix-ui";
 import "./styles.css";
 
 export default () => (
-	<Toast.Provider __swipeDirection__="right">
-		<Toast.Root __className__="ToastRoot">...</Toast.Root>
+	<Toast.Provider swipeDirection="right">
+		<Toast.Root className="ToastRoot">...</Toast.Root>
 		<Toast.Viewport />
 	</Toast.Provider>
 );
@@ -6509,20 +6509,20 @@ export default () => (
 
 ```css line=2,3,5,9,15
 /* styles.css */
-.ToastRoot[__data-swipe__="move"] {
-	transform: translateX(var(__--radix-toast-swipe-move-x__));
+.ToastRoot[data-swipe="move"] {
+	transform: translateX(var(--radix-toast-swipe-move-x));
 }
-.ToastRoot[__data-swipe__="cancel"] {
+.ToastRoot[data-swipe="cancel"] {
 	transform: translateX(0);
 	transition: transform 200ms ease-out;
 }
-.ToastRoot[__data-swipe__="end"] {
+.ToastRoot[data-swipe="end"] {
 	animation: slideRight 100ms ease-out;
 }
 
 @keyframes slideRight {
 	from {
-		transform: translateX(var(__--radix-toast-swipe-end-x__));
+		transform: translateX(var(--radix-toast-swipe-end-x));
 	}
 	to {
 		transform: translateX(100%);
@@ -6576,7 +6576,7 @@ You can direct the user to a permanent place in your application where they can 
 	<Toast.Close>Dismiss</Toast.Close>
 </Toast.Root>
 
-<Toast.Root __type__="foreground" __duration__={10000}>
+<Toast.Root type="foreground" duration={10000}>
 	<Toast.Description>File removed successfully.</Toast.Description>
 	<Toast.Action altText="Undo (Alt+U)">
 		Undo <kbd>Alt</kbd>+<kbd>U</kbd>
@@ -6892,7 +6892,7 @@ export default () => (
 		<Toolbar.Button>Action 1</Toolbar.Button>
 		<Toolbar.Separator />
 		<DropdownMenu.Root>
-			<Toolbar.Button __asChild__>
+			<Toolbar.Button asChild>
 				<DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>
 			</Toolbar.Button>
 			<DropdownMenu.Content>…</DropdownMenu.Content>
@@ -6983,7 +6983,7 @@ Use the `Provider` to control `delayDuration` and `skipDelayDuration` globally.
 import { Tooltip } from "radix-ui";
 
 export default () => (
-	<Tooltip.Provider __delayDuration__={800} __skipDelayDuration__={500}>
+	<Tooltip.Provider delayDuration={800} skipDelayDuration={500}>
 		<Tooltip.Root>
 			<Tooltip.Trigger>…</Tooltip.Trigger>
 			<Tooltip.Content>…</Tooltip.Content>
@@ -7004,7 +7004,7 @@ Use the `delayDuration` prop to control the time it takes for the tooltip to ope
 import { Tooltip } from "radix-ui";
 
 export default () => (
-	<Tooltip.Root __delayDuration__={0}>
+	<Tooltip.Root delayDuration={0}>
 		<Tooltip.Trigger>…</Tooltip.Trigger>
 		<Tooltip.Content>…</Tooltip.Content>
 	</Tooltip.Root>
@@ -7026,7 +7026,7 @@ export default () => (
 	<Tooltip.Root>
 		<Tooltip.Trigger>…</Tooltip.Trigger>
 		<Tooltip.Portal>
-			<Tooltip.Content __className__="TooltipContent" sideOffset={5}>
+			<Tooltip.Content className="TooltipContent" sideOffset={5}>
 				…
 			</Tooltip.Content>
 		</Tooltip.Portal>
@@ -7037,8 +7037,8 @@ export default () => (
 ```css
 /* styles.css */
 .TooltipContent {
-	width: var(__--radix-tooltip-trigger-width__);
-	max-height: var(__--radix-tooltip-content-available-height__);
+	width: var(--radix-tooltip-trigger-width);
+	max-height: var(--radix-tooltip-content-available-height);
 }
 ```
 
@@ -7054,7 +7054,7 @@ import "./styles.css";
 export default () => (
 	<Tooltip.Root>
 		<Tooltip.Trigger>…</Tooltip.Trigger>
-		<Tooltip.Content __className__="TooltipContent">…</Tooltip.Content>
+		<Tooltip.Content className="TooltipContent">…</Tooltip.Content>
 	</Tooltip.Root>
 );
 ```
@@ -7090,7 +7090,7 @@ import "./styles.css";
 export default () => (
 	<Tooltip.Root>
 		<Tooltip.Trigger>…</Tooltip.Trigger>
-		<Tooltip.Content __className__="TooltipContent">…</Tooltip.Content>
+		<Tooltip.Content className="TooltipContent">…</Tooltip.Content>
 	</Tooltip.Root>
 );
 ```
@@ -7178,7 +7178,7 @@ export function Tooltip({
 			defaultOpen={defaultOpen}
 			onOpenChange={onOpenChange}
 		>
-			<TooltipPrimitive.Trigger __asChild__>
+			<TooltipPrimitive.Trigger asChild>
 				{children}
 			</TooltipPrimitive.Trigger>
 			<TooltipPrimitive.Content side="top" align="center" {...props}>

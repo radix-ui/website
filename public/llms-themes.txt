@@ -2019,7 +2019,7 @@ Use it in conjunction with the `width`, `minWidth` and `maxWidth` props to contr
 		<AlertDialog.Trigger>
 			<Button variant="soft">Size 1</Button>
 		</AlertDialog.Trigger>
-		<AlertDialog.Content __size__="1" maxWidth="300px">
+		<AlertDialog.Content size="1" maxWidth="300px">
 			<Text as="p" trim="both" size="1">
 				The quick brown fox jumps over the lazy dog.
 			</Text>
@@ -2030,7 +2030,7 @@ Use it in conjunction with the `width`, `minWidth` and `maxWidth` props to contr
 		<AlertDialog.Trigger>
 			<Button variant="soft">Size 2</Button>
 		</AlertDialog.Trigger>
-		<AlertDialog.Content __size__="2" maxWidth="400px">
+		<AlertDialog.Content size="2" maxWidth="400px">
 			<Text as="p" trim="both" size="2">
 				The quick brown fox jumps over the lazy dog.
 			</Text>
@@ -2041,7 +2041,7 @@ Use it in conjunction with the `width`, `minWidth` and `maxWidth` props to contr
 		<AlertDialog.Trigger>
 			<Button variant="soft">Size 3</Button>
 		</AlertDialog.Trigger>
-		<AlertDialog.Content __size__="3" maxWidth="500px">
+		<AlertDialog.Content size="3" maxWidth="500px">
 			<Text as="p" trim="both" size="3">
 				The quick brown fox jumps over the lazy dog.
 			</Text>
@@ -2052,7 +2052,7 @@ Use it in conjunction with the `width`, `minWidth` and `maxWidth` props to contr
 		<AlertDialog.Trigger>
 			<Button variant="soft">Size 4</Button>
 		</AlertDialog.Trigger>
-		<AlertDialog.Content __size__="4">
+		<AlertDialog.Content size="4">
 			<Text as="p" trim="both" size="4">
 				The quick brown fox jumps over the lazy dog.
 			</Text>
@@ -4505,7 +4505,7 @@ Use it in conjunction with the `width`, `minWidth` and `maxWidth` props to contr
 		<Dialog.Trigger>
 			<Button variant="soft">Size 1</Button>
 		</Dialog.Trigger>
-		<Dialog.Content __size__="1" maxWidth="300px">
+		<Dialog.Content size="1" maxWidth="300px">
 			<Text as="p" trim="both" size="1">
 				The quick brown fox jumps over the lazy dog.
 			</Text>
@@ -4516,7 +4516,7 @@ Use it in conjunction with the `width`, `minWidth` and `maxWidth` props to contr
 		<Dialog.Trigger>
 			<Button variant="soft">Size 2</Button>
 		</Dialog.Trigger>
-		<Dialog.Content __size__="2" maxWidth="400px">
+		<Dialog.Content size="2" maxWidth="400px">
 			<Text as="p" trim="both" size="2">
 				The quick brown fox jumps over the lazy dog.
 			</Text>
@@ -4527,7 +4527,7 @@ Use it in conjunction with the `width`, `minWidth` and `maxWidth` props to contr
 		<Dialog.Trigger>
 			<Button variant="soft">Size 3</Button>
 		</Dialog.Trigger>
-		<Dialog.Content __size__="3" maxWidth="500px">
+		<Dialog.Content size="3" maxWidth="500px">
 			<Text as="p" trim="both" size="3">
 				The quick brown fox jumps over the lazy dog.
 			</Text>
@@ -4538,7 +4538,7 @@ Use it in conjunction with the `width`, `minWidth` and `maxWidth` props to contr
 		<Dialog.Trigger>
 			<Button variant="soft">Size 4</Button>
 		</Dialog.Trigger>
-		<Dialog.Content __size__="4">
+		<Dialog.Content size="4">
 			<Text as="p" trim="both" size="4">
 				The quick brown fox jumps over the lazy dog.
 			</Text>
@@ -5853,7 +5853,7 @@ Use it in conjunction with the `width`/`minWidth`/`maxWidth` and `height`/`minHe
 		<Popover.Trigger>
 			<Button variant="soft">Size 1</Button>
 		</Popover.Trigger>
-		<Popover.Content __size__="1" maxWidth="300px">
+		<Popover.Content size="1" maxWidth="300px">
 			<Text as="p" trim="both" size="1">
 				The quick brown fox jumps over the lazy dog.
 			</Text>
@@ -5864,7 +5864,7 @@ Use it in conjunction with the `width`/`minWidth`/`maxWidth` and `height`/`minHe
 		<Popover.Trigger>
 			<Button variant="soft">Size 2</Button>
 		</Popover.Trigger>
-		<Popover.Content __size__="2" maxWidth="400px">
+		<Popover.Content size="2" maxWidth="400px">
 			<Text as="p" trim="both" size="2">
 				The quick brown fox jumps over the lazy dog.
 			</Text>
@@ -5875,7 +5875,7 @@ Use it in conjunction with the `width`/`minWidth`/`maxWidth` and `height`/`minHe
 		<Popover.Trigger>
 			<Button variant="soft">Size 3</Button>
 		</Popover.Trigger>
-		<Popover.Content __size__="3" maxWidth="500px">
+		<Popover.Content size="3" maxWidth="500px">
 			<Text as="p" trim="both" size="3">
 				The quick brown fox jumps over the lazy dog.
 			</Text>
@@ -5886,7 +5886,7 @@ Use it in conjunction with the `width`/`minWidth`/`maxWidth` and `height`/`minHe
 		<Popover.Trigger>
 			<Button variant="soft">Size 4</Button>
 		</Popover.Trigger>
-		<Popover.Content __size__="4">
+		<Popover.Content size="4">
 			<Text as="p" trim="both" size="4">
 				The quick brown fox jumps over the lazy dog.
 			</Text>
@@ -8616,7 +8616,7 @@ Use the `size` prop to control how large the text and padding of the table cells
 
 ```jsx live=true line=2,22,42
 <Flex direction="column" gap="5" maxWidth="350px">
-	<Table.Root __size__="1">
+	<Table.Root size="1">
 		<Table.Header>
 			<Table.Row>
 				<Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
@@ -8636,7 +8636,7 @@ Use the `size` prop to control how large the text and padding of the table cells
 		</Table.Body>
 	</Table.Root>
 
-	<Table.Root __size__="2">
+	<Table.Root size="2">
 		<Table.Header>
 			<Table.Row>
 				<Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
@@ -8656,7 +8656,7 @@ Use the `size` prop to control how large the text and padding of the table cells
 		</Table.Body>
 	</Table.Root>
 
-	<Table.Root __size__="3">
+	<Table.Root size="3">
 		<Table.Header>
 			<Table.Row>
 				<Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
@@ -9442,7 +9442,7 @@ Nest another theme to modify configuration for a specific subtree. Configuration
 			<Button>Send</Button>
 		</Flex>
 
-		<Theme __accentColor__="cyan" __radius__="full">
+		<Theme accentColor="cyan" radius="full">
 			<Card size="2">
 				<Flex gap="6">
 					<Flex direction="column" gap="3">
@@ -9458,7 +9458,7 @@ Nest another theme to modify configuration for a specific subtree. Configuration
 						<Button>Send</Button>
 					</Flex>
 
-					<Theme __accentColor__="orange">
+					<Theme accentColor="orange">
 						<Card size="2">
 							<Flex direction="column" gap="3">
 								<Heading as="h5" size="2">
@@ -9502,15 +9502,15 @@ Override configuration per component by passing any supported prop directly to t
 					</Text>
 					<Switch
 						size="1"
-						__color__="orange"
-						__radius__="full"
+						color="orange"
+						radius="full"
 						defaultChecked
 					/>
 				</label>
 			</Flex>
 			<Grid columns="2" gap="2">
 				<Button variant="surface">Back</Button>
-				<Button __color__="cyan" __radius__="full">
+				<Button color="cyan" radius="full">
 					Send
 				</Button>
 			</Grid>

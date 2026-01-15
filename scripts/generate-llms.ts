@@ -76,7 +76,10 @@ async function mdxToMarkdown(content: string): Promise<string> {
 		});
 
 	const result = await processor.process(content);
-	return String(result);
+	// Remove double underscores used for highlighting in source files
+	// e.g., __className__ -> className, __--radix-popover-trigger-width__ -> --radix-popover-trigger-width
+	const cleaned = String(result).replace(/__([^_\s]+)__/g, "$1");
+	return cleaned;
 }
 
 // Get file metadata from frontmatter
