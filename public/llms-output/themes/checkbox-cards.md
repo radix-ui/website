@@ -1,0 +1,160 @@
+# Checkbox Cards
+
+Set of interactive cards where multiple options can be selected at a time.
+
+```jsx live=true
+<Box maxWidth="600px">
+	<CheckboxCards.Root defaultValue={["1"]} columns={{ initial: "1", sm: "3" }}>
+		<CheckboxCards.Item value="1">
+			<Flex direction="column" width="100%">
+				<Text weight="bold">A1 Keyboard</Text>
+				<Text>US Layout</Text>
+			</Flex>
+		</CheckboxCards.Item>
+		<CheckboxCards.Item value="2">
+			<Flex direction="column" width="100%">
+				<Text weight="bold">Pro Mouse</Text>
+				<Text>Zero-lag wireless</Text>
+			</Flex>
+		</CheckboxCards.Item>
+		<CheckboxCards.Item value="3">
+			<Flex direction="column" width="100%">
+				<Text weight="bold">Lightning Mat</Text>
+				<Text>Wireless charging</Text>
+			</Flex>
+		</CheckboxCards.Item>
+	</CheckboxCards.Root>
+</Box>
+```
+
+## API Reference
+
+This component is based on the `div` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+### Root
+
+### Item
+
+An item in the group that can be checked.
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Flex align="center" gap="3">
+	<CheckboxCards.Root defaultValue={["1"]} size="1">
+		<CheckboxCards.Item value="1">Agree to Terms</CheckboxCards.Item>
+	</CheckboxCards.Root>
+
+	<CheckboxCards.Root defaultValue={["1"]} size="2">
+		<CheckboxCards.Item value="1">Agree to Terms</CheckboxCards.Item>
+	</CheckboxCards.Root>
+
+	<CheckboxCards.Root defaultValue={["1"]} size="3">
+		<CheckboxCards.Item value="1">Agree to Terms</CheckboxCards.Item>
+	</CheckboxCards.Root>
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style.
+
+```jsx live=true
+<Flex direction="column" gap="3" maxWidth="200px">
+	<CheckboxCards.Root defaultValue={["1"]} variant="surface">
+		<CheckboxCards.Item value="1">Agree to Terms</CheckboxCards.Item>
+	</CheckboxCards.Root>
+
+	<CheckboxCards.Root defaultValue={["1"]} variant="classic">
+		<CheckboxCards.Item value="1">Agree to Terms</CheckboxCards.Item>
+	</CheckboxCards.Root>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
+
+```jsx live=true
+<Flex direction="column" gap="3" maxWidth="200px">
+	<CheckboxCards.Root defaultValue={["1"]} color="indigo">
+		<CheckboxCards.Item value="1">Agree to Terms</CheckboxCards.Item>
+	</CheckboxCards.Root>
+
+	<CheckboxCards.Root defaultValue={["1"]} color="cyan">
+		<CheckboxCards.Item value="1">Agree to Terms</CheckboxCards.Item>
+	</CheckboxCards.Root>
+
+	<CheckboxCards.Root defaultValue={["1"]} color="orange">
+		<CheckboxCards.Item value="1">Agree to Terms</CheckboxCards.Item>
+	</CheckboxCards.Root>
+
+	<CheckboxCards.Root defaultValue={["1"]} color="crimson">
+		<CheckboxCards.Item value="1">Agree to Terms</CheckboxCards.Item>
+	</CheckboxCards.Root>
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to increase color contrast with the background.
+
+```jsx live=true
+<Grid columns="2" gap="3" display="inline-grid">
+	<CheckboxCards.Root defaultValue={["1"]} color="indigo">
+		<CheckboxCards.Item value="1">Agree to Terms</CheckboxCards.Item>
+	</CheckboxCards.Root>
+
+	<CheckboxCards.Root defaultValue={["1"]} color="indigo" highContrast>
+		<CheckboxCards.Item value="1">Agree to Terms</CheckboxCards.Item>
+	</CheckboxCards.Root>
+
+	<CheckboxCards.Root defaultValue={["1"]} color="cyan">
+		<CheckboxCards.Item value="1">Agree to Terms</CheckboxCards.Item>
+	</CheckboxCards.Root>
+
+	<CheckboxCards.Root defaultValue={["1"]} color="cyan" highContrast>
+		<CheckboxCards.Item value="1">Agree to Terms</CheckboxCards.Item>
+	</CheckboxCards.Root>
+
+	<CheckboxCards.Root defaultValue={["1"]} color="orange">
+		<CheckboxCards.Item value="1">Agree to Terms</CheckboxCards.Item>
+	</CheckboxCards.Root>
+
+	<CheckboxCards.Root defaultValue={["1"]} color="orange" highContrast>
+		<CheckboxCards.Item value="1">Agree to Terms</CheckboxCards.Item>
+	</CheckboxCards.Root>
+
+	<CheckboxCards.Root defaultValue={["1"]} color="crimson">
+		<CheckboxCards.Item value="1">Agree to Terms</CheckboxCards.Item>
+	</CheckboxCards.Root>
+
+	<CheckboxCards.Root defaultValue={["1"]} color="crimson" highContrast>
+		<CheckboxCards.Item value="1">Agree to Terms</CheckboxCards.Item>
+	</CheckboxCards.Root>
+</Grid>
+```
+
+### Disabled
+
+```jsx live=true
+<Flex direction="column" gap="4" maxWidth="450px">
+	<CheckboxCards.Root columns="2" defaultValue="2">
+		<CheckboxCards.Item value="1">Off</CheckboxCards.Item>
+		<CheckboxCards.Item value="2">On</CheckboxCards.Item>
+	</CheckboxCards.Root>
+
+	<CheckboxCards.Root columns="2" defaultValue="2">
+		<CheckboxCards.Item value="1" disabled>
+			Off
+		</CheckboxCards.Item>
+		<CheckboxCards.Item value="2" disabled>
+			On
+		</CheckboxCards.Item>
+	</CheckboxCards.Root>
+</Flex>
+```

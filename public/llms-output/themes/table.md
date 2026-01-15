@@ -1,0 +1,171 @@
+# Table
+
+Semantic table element for presenting data.
+
+```jsx live=true
+<Table.Root>
+	<Table.Header>
+		<Table.Row>
+			<Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+			<Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+			<Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
+		</Table.Row>
+	</Table.Header>
+
+	<Table.Body>
+		<Table.Row>
+			<Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+			<Table.Cell>danilo@example.com</Table.Cell>
+			<Table.Cell>Developer</Table.Cell>
+		</Table.Row>
+
+		<Table.Row>
+			<Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+			<Table.Cell>zahra@example.com</Table.Cell>
+			<Table.Cell>Admin</Table.Cell>
+		</Table.Row>
+
+		<Table.Row>
+			<Table.RowHeaderCell>Jasper Eriksson</Table.RowHeaderCell>
+			<Table.Cell>jasper@example.com</Table.Cell>
+			<Table.Cell>Developer</Table.Cell>
+		</Table.Row>
+	</Table.Body>
+</Table.Root>
+```
+
+## API Reference
+
+### Root
+
+Groups the `Header` and `Body` parts. This component is based on the `table` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+### Header
+
+Contains the column headings for the table, based on the `thead` element.
+
+### Body
+
+Displays the table data. This component is based on the `tbody` element.
+
+### Row
+
+A row of table cells. Based on the `tr` element.
+
+### Cell
+
+A basic table cell. This component is based on the `td` element, but uses `justify` instead of `align` to control how horizontal space is distributed within the table cell.
+
+### ColumnHeaderCell
+
+The header of a table column. Based on the `th` element and provides the same props interface as the `Cell` part.
+
+### RowHeaderCell
+
+The header of a table row. Based on the `th` element and provides the same props interface as the `Cell` part.
+
+## Examples
+
+### Size
+
+Use the `size` prop to control how large the text and padding of the table cells should be.
+
+```jsx live=true line=2,22,42
+<Flex direction="column" gap="5" maxWidth="350px">
+	<Table.Root size="1">
+		<Table.Header>
+			<Table.Row>
+				<Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+				<Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+			</Table.Row>
+		</Table.Header>
+
+		<Table.Body>
+			<Table.Row>
+				<Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+				<Table.Cell>danilo@example.com</Table.Cell>
+			</Table.Row>
+			<Table.Row>
+				<Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+				<Table.Cell>zahra@example.com</Table.Cell>
+			</Table.Row>
+		</Table.Body>
+	</Table.Root>
+
+	<Table.Root size="2">
+		<Table.Header>
+			<Table.Row>
+				<Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+				<Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+			</Table.Row>
+		</Table.Header>
+
+		<Table.Body>
+			<Table.Row>
+				<Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+				<Table.Cell>danilo@example.com</Table.Cell>
+			</Table.Row>
+			<Table.Row>
+				<Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+				<Table.Cell>zahra@example.com</Table.Cell>
+			</Table.Row>
+		</Table.Body>
+	</Table.Root>
+
+	<Table.Root size="3">
+		<Table.Header>
+			<Table.Row>
+				<Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+				<Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+			</Table.Row>
+		</Table.Header>
+
+		<Table.Body>
+			<Table.Row>
+				<Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+				<Table.Cell>danilo@example.com</Table.Cell>
+			</Table.Row>
+			<Table.Row>
+				<Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+				<Table.Cell>zahra@example.com</Table.Cell>
+			</Table.Row>
+		</Table.Body>
+	</Table.Root>
+</Flex>
+```
+
+### With a backplate
+
+Use `variant="surface"` to add a visually enclosed backplate to the table.
+
+```jsx live=true
+<Table.Root variant="surface">
+	<Table.Header>
+		<Table.Row>
+			<Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+			<Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+			<Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
+		</Table.Row>
+	</Table.Header>
+
+	<Table.Body>
+		<Table.Row>
+			<Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+			<Table.Cell>danilo@example.com</Table.Cell>
+			<Table.Cell>Developer</Table.Cell>
+		</Table.Row>
+
+		<Table.Row>
+			<Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+			<Table.Cell>zahra@example.com</Table.Cell>
+			<Table.Cell>Admin</Table.Cell>
+		</Table.Row>
+
+		<Table.Row>
+			<Table.RowHeaderCell>Jasper Eriksson</Table.RowHeaderCell>
+			<Table.Cell>jasper@example.com</Table.Cell>
+			<Table.Cell>Developer</Table.Cell>
+		</Table.Row>
+	</Table.Body>
+</Table.Root>
+```

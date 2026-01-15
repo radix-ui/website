@@ -1,0 +1,137 @@
+# Typography
+
+Guidance for using and tuning typography.
+
+# Typography
+
+Guidance for using and tuning typography.
+
+## Base components
+
+Use [Text](/themes/docs/components/text) and [Heading](/themes/docs/components/heading) components to render titles and body copy. These components share `size` and `weight` props and map to the underlying type system to ensure consistent typography throughout your app.
+
+```jsx live=true
+<Heading mb="2" size="4">Typographic principles</Heading>
+<Text>The goal of typography is to relate font size, line height, and line width in a proportional way that maximizes beauty and makes reading easier and more pleasant.</Text>
+```
+
+## Formatting components
+
+Compose formatting components to add [emphasis](/themes/docs/components/em), [signal importance](/themes/docs/components/strong), present [code](/themes/docs/components/code) and more.
+
+```jsx live=true
+<Text>
+	The <Em>most</Em> important thing to remember is,{" "}
+	<Strong>stay positive</Strong>.
+</Text>
+```
+
+## Type scale
+
+The typographic system is based on a 9-step `size` scale. Every step has a corresponding font size, line height and letter spacing value which are all designed to be used in combination.
+
+```jsx live="true"
+<Text size="6">The quick brown fox jumps over the lazy dog.</Text>
+```
+
+## Font weight
+
+The following weights are supported. Weights can be [customized](/themes/docs/theme/typography#custom-font-weights) to map to your own typeface.
+
+```jsx live="true"
+<Text size="6">
+	<Flex direction="column">
+		<Text weight="light">Light</Text>
+		<Text weight="regular">Regular</Text>
+		<Text weight="medium">Medium</Text>
+		<Text weight="bold">Bold</Text>
+	</Flex>
+</Text>
+```
+
+## Font family
+
+By default, Radix Themes uses a system font stack for portability and legibility. Continue to the next section to learn about customizing your theme with a custom font.
+
+## Customization
+
+Radix Themes typography can be customized by overriding the corresponding CSS variables of the token system. Refer to the [source code](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/typography.css) for the full list of the typographic tokens.
+
+Make sure that your CSS is applied after the Radix Themes styles so that it takes precedence.
+
+### Custom fonts
+
+You can provide your own fonts, however, how you choose to import and serve them is up to you. It is only required that you specify your named fonts using the correct syntax.
+
+To customize the font family used in your theme, remap the corresponding `font-family` tokens:
+
+```css
+.radix-themes {
+	--default-font-family:  /* Your custom default font */ --heading-font-family:
+		/* Your custom font for <Heading> components */ --code-font-family:
+		/* Your custom font for <Code> components */ --strong-font-family:
+		/* Your custom font for <Strong> components */ --em-font-family:
+		/* Your custom font for <Em> components */ --quote-font-family:
+		/* Your custom font for <Quote> components */;
+}
+```
+
+### With next/font
+
+To load custom fonts via [next/font](https://nextjs.org/docs/app/api-reference/components/font), use the [`variable`](https://nextjs.org/docs/app/api-reference/components/font#variable) option to define a CSS variable name. Then, add that CSS variable class to your HTML document.
+
+```jsx
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+	subsets: ["latin"],
+	display: "swap",
+	variable: "--font-inter",
+});
+
+export default function RootLayout({ children }) {
+	return (
+		<html lang="en" className={inter.variable}>
+			<body>{children}</body>
+		</html>
+	);
+}
+```
+
+Finally, assign the CSS variable in your custom CSS:
+
+```css
+.radix-themes {
+	--default-font-family: var(--font-inter);
+}
+```
+
+Be aware that you may encounter css import order issues if you are running the app router. See [common styling issues](/themes/docs/overview/styling#nextjs-import-order) for more information.
+
+### Custom font weights
+
+To customize the exact font weights used in your theme, remap the corresponding `font-weight` tokens to your own values:
+
+```css
+.radix-themes {
+	--font-weight-light: 200;
+	--font-weight-regular: 300;
+	--font-weight-medium: 600;
+	--font-weight-bold: 800;
+}
+```
+
+### Advanced settings
+
+There’s a number of advanced typographic features that can be customized. These include a font size multiplier for certain components, font style, letter spacing, and leading trim. For example, you can customize the headings to render with a relatively larger font size than your default font, different leading trim values, and tighter letter spacing:
+
+```css
+.radix-themes {
+	--heading-font-family: "Untitled Sans", sans-serif;
+	--heading-font-size-adjust: 1.05;
+	--heading-font-style: normal;
+	--heading-leading-trim-start: 0.42em;
+	--heading-leading-trim-end: 0.38em;
+	--heading-letter-spacing: -0.01em;
+}
+```

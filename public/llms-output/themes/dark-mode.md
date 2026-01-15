@@ -1,0 +1,57 @@
+# Dark mode
+
+Using appearance to manage and integrate dark mode.
+
+# Dark mode
+
+Using appearance to manage and integrate dark mode.
+
+## Overview
+
+Light and dark modes are supported out of the box, allowing you to easily switch appearance without additional design or styling.
+
+## Basic usage
+
+By default, the root `Theme` appearance is `light`. To set a different appearance pass it via the `appearance` prop. This will force the theme to use the specified setting.
+
+```jsx line=1
+<Theme appearance="dark">
+	<MyApp />
+</Theme>
+```
+
+## Inheriting system appearance
+
+A common requirement is to inherit the appearance setting from a user’s system preferences.
+
+This is a deceptively complex problem to solve given SSR, SSG and client side hydration considerations. To make implementation easier, we recommend integrating with a theme switching library.
+
+### With next-themes
+
+Integration with `next-themes` is simple and straightforward because Radix Themes implements matching class names.
+
+To enable dark mode, use `<ThemeProvider>` from `next-themes` with `attribute="class"`.
+
+```jsx line=6
+import { Theme } from "@radix-ui/themes";
+import { ThemeProvider } from "next-themes";
+
+export default function () {
+	return (
+		<ThemeProvider attribute="class">
+			<Theme>
+				<MyApp />
+			</Theme>
+		</ThemeProvider>
+	);
+}
+```
+
+### With other libraries
+
+Any library that supports class switching is compatible. You’ll just need to ensure that the appended class names match those supported by Radix Themes:
+
+- `className="light"`
+- `className="light-theme"`
+- `className="dark"`
+- `className="dark-theme"`

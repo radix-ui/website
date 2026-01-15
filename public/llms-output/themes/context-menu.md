@@ -1,0 +1,281 @@
+# Context Menu
+
+Menu representing a set of actions, displayed at the point of right click or long press.
+
+```jsx live=true
+<ContextMenu.Root>
+	<ContextMenu.Trigger>
+		<RightClickZone style={{ height: 150 }} />
+	</ContextMenu.Trigger>
+	<ContextMenu.Content>
+		<ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+		<ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+		<ContextMenu.Separator />
+		<ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
+
+		<ContextMenu.Sub>
+			<ContextMenu.SubTrigger>More</ContextMenu.SubTrigger>
+			<ContextMenu.SubContent>
+				<ContextMenu.Item>Move to project…</ContextMenu.Item>
+				<ContextMenu.Item>Move to folder…</ContextMenu.Item>
+				<ContextMenu.Separator />
+				<ContextMenu.Item>Advanced options…</ContextMenu.Item>
+			</ContextMenu.SubContent>
+		</ContextMenu.Sub>
+
+		<ContextMenu.Separator />
+		<ContextMenu.Item>Share</ContextMenu.Item>
+		<ContextMenu.Item>Add to favorites</ContextMenu.Item>
+		<ContextMenu.Separator />
+		<ContextMenu.Item shortcut="⌘ ⌫" color="red">
+			Delete
+		</ContextMenu.Item>
+	</ContextMenu.Content>
+</ContextMenu.Root>
+```
+
+## API Reference
+
+This component inherits props from the [Context Menu primitive](/primitives/docs/components/context-menu).
+
+### Root
+
+Contains all the parts of a context menu.
+
+### Trigger
+
+Wraps the element that will open the context menu.
+
+### Content
+
+The component that pops out when the context menu is open.
+
+### Label
+
+Used to render a label. It won't be focusable using arrow keys.
+
+### Item
+
+The component that contains the context menu items.
+
+### Group
+
+Used to group multiple `Item` parts.
+
+### RadioGroup
+
+Used to group multiple `RadioItem` parts.
+
+### RadioItem
+
+An item that can be controlled and rendered like a radio.
+
+### CheckboxItem
+
+An item that can be controlled and rendered like a checkbox.
+
+### Sub
+
+Contains all the parts of a submenu.
+
+### SubTrigger
+
+An item that opens a submenu. Must be rendered inside `ContextMenu.Sub`.
+
+### SubContent
+
+The component that pops out when a submenu is open. Must be rendered inside `ContextMenu.Sub`.
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Grid columns="2" gap="3">
+	<ContextMenu.Root>
+		<ContextMenu.Trigger>
+			<RightClickZone title="Size one" />
+		</ContextMenu.Trigger>
+		<ContextMenu.Content size="1">
+			<ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+			<ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+			<ContextMenu.Separator />
+			<ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
+
+			<ContextMenu.Separator />
+			<ContextMenu.Item shortcut="⌘ ⌫" color="red">
+				Delete
+			</ContextMenu.Item>
+		</ContextMenu.Content>
+	</ContextMenu.Root>
+
+	<ContextMenu.Root>
+		<ContextMenu.Trigger>
+			<RightClickZone title="Size two" />
+		</ContextMenu.Trigger>
+		<ContextMenu.Content size="2">
+			<ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+			<ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+			<ContextMenu.Separator />
+			<ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
+
+			<ContextMenu.Separator />
+			<ContextMenu.Item shortcut="⌘ ⌫" color="red">
+				Delete
+			</ContextMenu.Item>
+		</ContextMenu.Content>
+	</ContextMenu.Root>
+</Grid>
+```
+
+### Variant
+
+Use the `variant` prop to customize the visual style of the context menu.
+
+```jsx live=true
+<Grid columns="2" gap="3">
+	<ContextMenu.Root>
+		<ContextMenu.Trigger>
+			<RightClickZone title="Solid" />
+		</ContextMenu.Trigger>
+		<ContextMenu.Content variant="solid">
+			<ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+			<ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+			<ContextMenu.Separator />
+			<ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
+
+			<ContextMenu.Separator />
+			<ContextMenu.Item shortcut="⌘ ⌫" color="red">
+				Delete
+			</ContextMenu.Item>
+		</ContextMenu.Content>
+	</ContextMenu.Root>
+
+	<ContextMenu.Root>
+		<ContextMenu.Trigger>
+			<RightClickZone title="Soft" />
+		</ContextMenu.Trigger>
+		<ContextMenu.Content variant="soft">
+			<ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+			<ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+			<ContextMenu.Separator />
+			<ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
+
+			<ContextMenu.Separator />
+			<ContextMenu.Item shortcut="⌘ ⌫" color="red">
+				Delete
+			</ContextMenu.Item>
+		</ContextMenu.Content>
+	</ContextMenu.Root>
+</Grid>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color). You can also pass `color` to a specific item to override for semantic reasons (i.e. a destructive action).
+
+```jsx live=true
+<Grid columns="2" gap="3">
+	<ContextMenu.Root>
+		<ContextMenu.Trigger>
+			<RightClickZone title="Indigo" />
+		</ContextMenu.Trigger>
+		<ContextMenu.Content color="indigo">
+			<ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+			<ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+			<ContextMenu.Separator />
+			<ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
+
+			<ContextMenu.Separator />
+			<ContextMenu.Item shortcut="⌘ ⌫" color="red">
+				Delete
+			</ContextMenu.Item>
+		</ContextMenu.Content>
+	</ContextMenu.Root>
+
+	<ContextMenu.Root>
+		<ContextMenu.Trigger>
+			<RightClickZone title="Cyan" />
+		</ContextMenu.Trigger>
+		<ContextMenu.Content color="cyan">
+			<ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+			<ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+			<ContextMenu.Separator />
+			<ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
+
+			<ContextMenu.Separator />
+			<ContextMenu.Item shortcut="⌘ ⌫" color="red">
+				Delete
+			</ContextMenu.Item>
+		</ContextMenu.Content>
+	</ContextMenu.Root>
+
+	<ContextMenu.Root>
+		<ContextMenu.Trigger>
+			<RightClickZone title="Orange" />
+		</ContextMenu.Trigger>
+		<ContextMenu.Content color="orange">
+			<ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+			<ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+			<ContextMenu.Separator />
+			<ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
+
+			<ContextMenu.Separator />
+			<ContextMenu.Item shortcut="⌘ ⌫" color="red">
+				Delete
+			</ContextMenu.Item>
+		</ContextMenu.Content>
+	</ContextMenu.Root>
+
+	<ContextMenu.Root>
+		<ContextMenu.Trigger>
+			<RightClickZone title="Crimson" />
+		</ContextMenu.Trigger>
+		<ContextMenu.Content color="crimson">
+			<ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+			<ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+			<ContextMenu.Separator />
+			<ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
+
+			<ContextMenu.Separator />
+			<ContextMenu.Item shortcut="⌘ ⌫" color="red">
+				Delete
+			</ContextMenu.Item>
+		</ContextMenu.Content>
+	</ContextMenu.Root>
+</Grid>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to increase color contrast with the background.
+
+```jsx live=true line="18"
+<Grid columns="2" gap="3">
+	<ContextMenu.Root>
+		<ContextMenu.Trigger>
+			<RightClickZone title="Standard" />
+		</ContextMenu.Trigger>
+		<ContextMenu.Content color="gray">
+			<ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+			<ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+			<ContextMenu.Separator />
+			<ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
+		</ContextMenu.Content>
+	</ContextMenu.Root>
+
+	<ContextMenu.Root>
+		<ContextMenu.Trigger>
+			<RightClickZone title="High-contrast" />
+		</ContextMenu.Trigger>
+		<ContextMenu.Content color="gray" highContrast>
+			<ContextMenu.Item shortcut="⌘ E">Edit</ContextMenu.Item>
+			<ContextMenu.Item shortcut="⌘ D">Duplicate</ContextMenu.Item>
+			<ContextMenu.Separator />
+			<ContextMenu.Item shortcut="⌘ N">Archive</ContextMenu.Item>
+		</ContextMenu.Content>
+	</ContextMenu.Root>
+</Grid>
+```

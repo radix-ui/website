@@ -1,0 +1,182 @@
+# Callout
+
+Short message to attract user’s attention.
+
+```jsx live=true
+<Callout.Root>
+	<Callout.Icon>
+		<InfoCircledIcon />
+	</Callout.Icon>
+	<Callout.Text>
+		You will need admin privileges to install and access this application.
+	</Callout.Text>
+</Callout.Root>
+```
+
+## API Reference
+
+### Root
+
+Groups Icon and Text parts. This component is based on the `div` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+### Icon
+
+Provides width and height for the icon associated with the callout. This component is based on the `div` element.
+
+### Text
+
+Renders the callout text. This component is based on the `p` element.
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size.
+
+```jsx live=true
+<Flex direction="column" gap="3" align="start">
+	<Callout.Root size="1">
+		<Callout.Icon>
+			<InfoCircledIcon />
+		</Callout.Icon>
+		<Callout.Text>
+			You will need admin privileges to install and access this application.
+		</Callout.Text>
+	</Callout.Root>
+
+	<Callout.Root size="2">
+		<Callout.Icon>
+			<InfoCircledIcon />
+		</Callout.Icon>
+		<Callout.Text>
+			You will need admin privileges to install and access this application.
+		</Callout.Text>
+	</Callout.Root>
+
+	<Callout.Root size="3">
+		<Callout.Icon>
+			<InfoCircledIcon />
+		</Callout.Icon>
+		<Callout.Text>
+			You will need admin privileges to install and access this application.
+		</Callout.Text>
+	</Callout.Root>
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style.
+
+```jsx live=true
+<Flex direction="column" gap="3">
+	<Callout.Root variant="soft">
+		<Callout.Icon>
+			<InfoCircledIcon />
+		</Callout.Icon>
+		<Callout.Text>
+			You will need <Link href="#">admin privileges</Link> to install and access
+			this application.
+		</Callout.Text>
+	</Callout.Root>
+
+	<Callout.Root variant="surface">
+		<Callout.Icon>
+			<InfoCircledIcon />
+		</Callout.Icon>
+		<Callout.Text>
+			You will need <Link href="#">admin privileges</Link> to install and access
+			this application.
+		</Callout.Text>
+	</Callout.Root>
+
+	<Callout.Root variant="outline">
+		<Callout.Icon>
+			<InfoCircledIcon />
+		</Callout.Icon>
+		<Callout.Text>
+			You will need <Link href="#">admin privileges</Link> to install and access
+			this application.
+		</Callout.Text>
+	</Callout.Root>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color).
+
+```jsx live=true
+<Flex direction="column" gap="3">
+	<Callout.Root color="blue">
+		<Callout.Icon>
+			<InfoCircledIcon />
+		</Callout.Icon>
+		<Callout.Text>
+			You will need <Link href="#">admin privileges</Link> to install and access
+			this application.
+		</Callout.Text>
+	</Callout.Root>
+
+	<Callout.Root color="green">
+		<Callout.Icon>
+			<InfoCircledIcon />
+		</Callout.Icon>
+		<Callout.Text>
+			You will need <Link href="#">admin privileges</Link> to install and access
+			this application.
+		</Callout.Text>
+	</Callout.Root>
+
+	<Callout.Root color="red">
+		<Callout.Icon>
+			<InfoCircledIcon />
+		</Callout.Icon>
+		<Callout.Text>
+			You will need <Link href="#">admin privileges</Link> to install and access
+			this application.
+		</Callout.Text>
+	</Callout.Root>
+</Flex>
+```
+
+### High-contrast
+
+Use the `HighContrast` prop to add additional contrast.
+
+```jsx live=true line="11"
+<Flex direction="column" gap="3">
+	<Callout.Root color="gray" variant="soft">
+		<Callout.Icon>
+			<InfoCircledIcon />
+		</Callout.Icon>
+		<Callout.Text>
+			An update to Radix Themes is available. See what’s new in version 3.2.0.
+		</Callout.Text>
+	</Callout.Root>
+
+	<Callout.Root color="gray" variant="soft" highContrast>
+		<Callout.Icon>
+			<InfoCircledIcon />
+		</Callout.Icon>
+		<Callout.Text>
+			An update to Radix Themes is available. See what’s new in version 3.2.0.
+		</Callout.Text>
+	</Callout.Root>
+</Flex>
+```
+
+### As alert
+
+Add a native [WAI-ARIA `alert` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) to the callout when the user’s immediate attention is required, like when an error message appears. The screen reader will be interrupted, announcing the new content immediately.
+
+```jsx live=true
+<Callout.Root color="red" role="alert">
+	<Callout.Icon>
+		<ExclamationTriangleIcon />
+	</Callout.Icon>
+	<Callout.Text>
+		Access denied. Please contact the network administrator to view this page.
+	</Callout.Text>
+</Callout.Root>
+```

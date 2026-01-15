@@ -12,6 +12,7 @@ import type { Node, Parent } from "unist";
 const ROOT_PATH = process.cwd();
 const DATA_PATH = path.join(ROOT_PATH, "data");
 const PUBLIC_PATH = path.join(ROOT_PATH, "public");
+const LLMS_OUTPUT_PATH = path.join(PUBLIC_PATH, "llms-output");
 const BASE_URL = "https://www.radix-ui.com";
 
 // MDX node types
@@ -83,14 +84,16 @@ async function mdxToMarkdown(content: string): Promise<string> {
 }
 
 // Get file metadata from frontmatter
-function getFileInfo(filePath: string): { title: string; description: string; slug: string } {
+function getFileInfo(filePath: string): { title: string; description: string; slug: string; filename: string } {
 	const source = fs.readFileSync(filePath, "utf8");
 	const { data } = matter(source);
 	const slug = filePath.replace(`${DATA_PATH}/`, "").replace(".mdx", "");
+	const filename = path.basename(filePath, ".mdx");
 	return {
-		title: data.metaTitle || data.name || path.basename(filePath, ".mdx"),
+		title: data.metaTitle || data.name || filename,
 		description: data.metaDescription || "",
 		slug,
+		filename,
 	};
 }
 
@@ -103,7 +106,7 @@ async function processMdxFile(filePath: string): Promise<string> {
 	const title = data.metaTitle || data.name || path.basename(filePath, ".mdx");
 	const description = data.metaDescription || "";
 
-	let output = `## ${title}\n\n`;
+	let output = `# ${title}\n\n`;
 	if (description) {
 		output += `${description}\n\n`;
 	}
@@ -112,145 +115,130 @@ async function processMdxFile(filePath: string): Promise<string> {
 	return output;
 }
 
-// Process all files in a directory
-async function processDirectory(dirPath: string, sectionTitle: string): Promise<string> {
+// Process all files in a directory and write individual files
+async function processDirectory(dirPath: string, outputSubDir: string): Promise<void> {
 	const fullPath = path.join(DATA_PATH, dirPath);
 	const files = globSync(`${fullPath}/*.mdx`).sort();
-
-	let output = `# ${sectionTitle}\n\n`;
 
 	for (const file of files) {
 		const fileName = path.basename(file, ".mdx");
 		console.log(`  Processing ${fileName}...`);
 		try {
 			const content = await processMdxFile(file);
-			output += content + "\n\n---\n\n";
+			const outputPath = path.join(outputSubDir, `${fileName}.md`);
+			writeOutput(outputPath, content, true);
 		} catch (e) {
 			console.error(`  Error processing ${fileName}:`, e);
 		}
 	}
-
-	return output;
 }
 
 // Generate documentation for each product
-async function generatePrimitives(): Promise<string> {
+async function generatePrimitives(): Promise<void> {
 	console.log("\n=== Generating Radix Primitives ===\n");
 
-	let output = `# Radix Primitives - Complete Documentation
-
-> Radix Primitives is an open-source React component library for building high-quality, accessible design systems and web applications. Components are unstyled, accessible, and customizable.
-
-`;
-
-	output += await processDirectory("primitives/docs/overview", "Overview");
-	output += await processDirectory("primitives/docs/guides", "Guides");
-	output += await processDirectory("primitives/docs/components", "Components");
-	output += await processDirectory("primitives/docs/utilities", "Utilities");
-
-	return output;
+	await processDirectory("primitives/docs/overview", "primitives");
+	await processDirectory("primitives/docs/guides", "primitives");
+	await processDirectory("primitives/docs/components", "primitives");
+	await processDirectory("primitives/docs/utilities", "primitives");
 }
 
-async function generateThemes(): Promise<string> {
+async function generateThemes(): Promise<void> {
 	console.log("\n=== Generating Radix Themes ===\n");
 
-	let output = `# Radix Themes - Complete Documentation
-
-> Radix Themes is a styled component library built on Radix Primitives with a beautiful default theme.
-
-`;
-
-	output += await processDirectory("themes/docs/overview", "Overview");
-	output += await processDirectory("themes/docs/theme", "Theme Configuration");
-	output += await processDirectory("themes/docs/components", "Components");
-
-	return output;
+	await processDirectory("themes/docs/overview", "themes");
+	await processDirectory("themes/docs/theme", "themes");
+	await processDirectory("themes/docs/components", "themes");
 }
 
-async function generateColors(): Promise<string> {
+async function generateColors(): Promise<void> {
 	console.log("\n=== Generating Radix Colors ===\n");
 
-	let output = `# Radix Colors - Complete Documentation
-
-> Radix Colors is a gorgeous, accessible color system for designing beautiful websites and apps.
-
-`;
-
-	output += await processDirectory("colors/docs/overview", "Overview");
-	output += await processDirectory("colors/docs/palette-composition", "Palette Composition");
-
-	return output;
+	await processDirectory("colors/docs/overview", "colors");
+	await processDirectory("colors/docs/palette-composition", "colors");
 }
 
 // Generate llms.txt index
 function generateIndex(): string {
 	console.log("\n=== Generating Index ===\n");
 
-	function formatLink(filePath: string): string {
-		const info = getFileInfo(filePath);
-		const desc = info.description ? `: ${info.description}` : "";
-		return `- [${info.title}](${BASE_URL}/${info.slug})${desc}`;
+	// Convert title to anchor-friendly format
+	function titleToAnchor(title: string): string {
+		return title
+			.toLowerCase()
+			.replace(/[^\w\s-]/g, "") // Remove special chars except spaces and hyphens
+			.replace(/\s+/g, "-") // Replace spaces with hyphens
+			.replace(/-+/g, "-"); // Replace multiple hyphens with single
 	}
 
-	function processDir(dirPath: string): string {
+	function formatLink(filePath: string, outputDir: string): string {
+		const info = getFileInfo(filePath);
+		const desc = info.description ? `: ${info.description}` : "";
+		return `- [${info.title}](/llms-output/${outputDir}/${info.filename}.md)${desc}`;
+	}
+
+	function processDir(dirPath: string, outputDir: string): string {
 		const files = globSync(`${DATA_PATH}/${dirPath}/*.mdx`).sort();
-		return files.map(formatLink).join("\n");
+		return files.map((file) => formatLink(file, outputDir)).join("\n");
 	}
 
 	return `# Radix UI
 
 > Radix UI is an open-source React component library for building high-quality, accessible design systems and web apps.
 
-For complete documentation in a single file, see:
-- [Full Documentation](${BASE_URL}/llms-full.txt): All Radix UI documentation combined
-- [Primitives Documentation](${BASE_URL}/llms-primitives.txt): Complete Primitives docs
-- [Themes Documentation](${BASE_URL}/llms-themes.txt): Complete Themes docs
-- [Colors Documentation](${BASE_URL}/llms-colors.txt): Complete Colors docs
-
 ## Radix Primitives
 
 Unstyled, accessible React components for building high-quality design systems and web applications.
 
 ### Overview
-${processDir("primitives/docs/overview")}
+${processDir("primitives/docs/overview", "primitives")}
 
 ### Guides
-${processDir("primitives/docs/guides")}
+${processDir("primitives/docs/guides", "primitives")}
 
 ### Components
-${processDir("primitives/docs/components")}
+${processDir("primitives/docs/components", "primitives")}
 
 ### Utilities
-${processDir("primitives/docs/utilities")}
+${processDir("primitives/docs/utilities", "primitives")}
 
 ## Radix Themes
 
 A styled component library built on Radix Primitives with a beautiful default theme.
 
 ### Overview
-${processDir("themes/docs/overview")}
+${processDir("themes/docs/overview", "themes")}
 
 ### Theme Configuration
-${processDir("themes/docs/theme")}
+${processDir("themes/docs/theme", "themes")}
 
 ### Components
-${processDir("themes/docs/components")}
+${processDir("themes/docs/components", "themes")}
 
 ## Radix Colors
 
 A gorgeous, accessible color system for designing beautiful websites and apps.
 
 ### Overview
-${processDir("colors/docs/overview")}
+${processDir("colors/docs/overview", "colors")}
 
 ### Palette Composition
-${processDir("colors/docs/palette-composition")}
+${processDir("colors/docs/palette-composition", "colors")}
 `;
 }
 
 // Write output file
-function writeOutput(filename: string, content: string) {
-	const outputPath = path.join(PUBLIC_PATH, filename);
+function writeOutput(filename: string, content: string, useOutputDir = false) {
+	const outputPath = useOutputDir
+		? path.join(LLMS_OUTPUT_PATH, filename)
+		: path.join(PUBLIC_PATH, filename);
+
+	// Ensure directory exists
+	const dir = path.dirname(outputPath);
+	if (!fs.existsSync(dir)) {
+		fs.mkdirSync(dir, { recursive: true });
+	}
+
 	fs.writeFileSync(outputPath, content.trim());
 	const size = (fs.statSync(outputPath).size / 1024).toFixed(2);
 	console.log(`Generated: ${outputPath} (${size} KB)`);
@@ -260,36 +248,12 @@ function writeOutput(filename: string, content: string) {
 async function main() {
 	console.log("Radix UI LLMs Documentation Generator\n");
 
-	const primitives = await generatePrimitives();
-	writeOutput("llms-primitives.txt", primitives);
-
-	const themes = await generateThemes();
-	writeOutput("llms-themes.txt", themes);
-
-	const colors = await generateColors();
-	writeOutput("llms-colors.txt", colors);
-
-	// Combined file
-	console.log("\n=== Generating Combined ===");
-	const combined = `# Radix UI - Complete Documentation
-
-> Radix UI is an open-source React component library for building high-quality, accessible design systems and web apps.
-
----
-
-${primitives}
-
----
-
-${themes}
-
----
-
-${colors}
-`;
-	writeOutput("llms-full.txt", combined);
+	await generatePrimitives();
+	await generateThemes();
+	await generateColors();
 
 	// Index
+	console.log("\n=== Generating Index ===\n");
 	const index = generateIndex();
 	writeOutput("llms.txt", index);
 

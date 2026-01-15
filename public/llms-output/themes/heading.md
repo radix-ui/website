@@ -1,0 +1,209 @@
+# Heading
+
+Semantic heading element.
+
+```jsx live=true
+<Heading>The quick brown fox jumps over the lazy dog</Heading>
+```
+
+## API Reference
+
+This component is based on the `h1` element and supports [common margin props](/themes/docs/overview/layout#margin-props).
+
+## Examples
+
+### As another element
+
+Use the `as` prop to change the heading level. This prop is purely semantic and does not change the visual appearance.
+
+```jsx live=true
+<Heading as="h1">Level 1</Heading>
+<Heading as="h2">Level 2</Heading>
+<Heading as="h3">Level 3</Heading>
+```
+
+### Size
+
+Use the `size` prop to control the size of the heading. The prop also provides correct line height and corrective letter spacing—as text size increases, the relative line height and letter spacing decrease.
+
+```jsx live=true scroll=true
+<Flex direction="column" gap="3">
+	<Heading size="1">The quick brown fox jumps over the lazy dog</Heading>
+	<Heading size="2">The quick brown fox jumps over the lazy dog</Heading>
+	<Heading size="3">The quick brown fox jumps over the lazy dog</Heading>
+	<Heading size="4">The quick brown fox jumps over the lazy dog</Heading>
+	<Heading size="5">The quick brown fox jumps over the lazy dog</Heading>
+	<Heading size="6">The quick brown fox jumps over the lazy dog</Heading>
+	<Heading size="7">The quick brown fox jumps over the lazy dog</Heading>
+	<Heading size="8">The quick brown fox jumps over the lazy dog</Heading>
+	<Heading size="9">The quick brown fox jumps over the lazy dog</Heading>
+</Flex>
+```
+
+### Weight
+
+Use the `weight` prop to set the text weight.
+
+```jsx live=true scroll=true
+<Heading weight="regular">
+  The quick brown fox jumps over the lazy dog.
+</Heading>
+
+<Heading weight="medium">
+  The quick brown fox jumps over the lazy dog.
+</Heading>
+
+<Heading weight="bold">
+  The quick brown fox jumps over the lazy dog.
+</Heading>
+```
+
+### Align
+
+Use the `align` prop to set text alignment.
+
+```jsx live=true
+<Heading align="left">Left-aligned</Heading>
+<Heading align="center">Center-aligned</Heading>
+<Heading align="right">Right-aligned</Heading>
+```
+
+### Trim
+
+Use the `trim` prop to trim the leading space at the start, end, or both sides of the text box.
+
+The prop works similarly to the upcoming [half-leading control](https://www.w3.org/TR/css-inline-3/#leading-trim) spec, but uses a common [negative margin workaround](https://seek-oss.github.io/capsize/) under the hood for cross-browser support.
+
+```jsx live=true
+<Flex direction="column" gap="3">
+	<Heading
+		trim="normal"
+		style={{
+			background: "var(--gray-a2)",
+			borderTop: "1px dashed var(--gray-a7)",
+			borderBottom: "1px dashed var(--gray-a7)",
+		}}
+	>
+		Without trim
+	</Heading>
+	<Heading
+		trim="both"
+		style={{
+			background: "var(--gray-a2)",
+			borderTop: "1px dashed var(--gray-a7)",
+			borderBottom: "1px dashed var(--gray-a7)",
+		}}
+	>
+		With trim
+	</Heading>
+</Flex>
+```
+
+Trimming the leading is useful when dialing in vertical spacing in cards or other “boxy” components. Otherwise, padding looks larger on top and bottom than on the sides.
+
+```jsx live=true
+<Flex direction="column" gap="3">
+	<Box
+		style={{
+			background: "var(--gray-a2)",
+			border: "1px dashed var(--gray-a7)",
+		}}
+		p="4"
+	>
+		<Heading mb="1" size="3">
+			Without trim
+		</Heading>
+		<Text>
+			The goal of typography is to relate font size, line height, and line width
+			in a proportional way that maximizes beauty and makes reading easier and
+			more pleasant.
+		</Text>
+	</Box>
+
+	<Box
+		p="4"
+		style={{
+			background: "var(--gray-a2)",
+			border: "1px dashed var(--gray-a7)",
+		}}
+	>
+		<Heading mb="1" size="3" trim="start">
+			With trim
+		</Heading>
+		<Text trim="end">
+			The goal of typography is to relate font size, line height, and line width
+			in a proportional way that maximizes beauty and makes reading easier and
+			more pleasant.
+		</Text>
+	</Box>
+</Flex>
+```
+
+The default trim values are configured for the system font stack that’s used by Radix Themes. If you are using custom fonts, you can [adjust](/themes/docs/theme/typography#customization) the trim values using the corresponding CSS variables.
+
+```css
+.radix-themes {
+	--default-leading-trim-start: 0.42em;
+	--default-leading-trim-end: 0.36em;
+	--heading-leading-trim-start: 0.42em;
+	--heading-leading-trim-end: 0.36em;
+}
+```
+
+### Truncate
+
+Use the `truncate` prop to truncate text with an ellipsis when it overflows its container.
+
+```jsx live=true line=2
+<Flex maxWidth="300px">
+	<Heading truncate>The quick brown fox jumps over the lazy dog</Heading>
+</Flex>
+```
+
+### Wrap
+
+Use the `wrap` prop to control text wrapping.
+
+```jsx live=true line=2
+<Flex maxWidth="300px">
+	<Heading wrap="nowrap">The quick brown fox jumps over the lazy dog</Heading>
+</Flex>
+```
+
+```jsx live=true line=2
+<Flex maxWidth="300px">
+	<Heading wrap="balance">The quick brown fox jumps over the lazy dog</Heading>
+</Flex>
+```
+
+```jsx live=true line=2
+<Flex maxWidth="300px">
+	<Heading wrap="pretty">The quick brown fox jumps over the lazy dog</Heading>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color). The text colors are designed to achieve at least Lc 60 APCA contrast over common background colors.
+
+```jsx live=true scroll=true
+<Flex direction="column">
+	<Heading color="indigo">The quick brown fox jumps over the lazy dog</Heading>
+	<Heading color="cyan">The quick brown fox jumps over the lazy dog</Heading>
+	<Heading color="orange">The quick brown fox jumps over the lazy dog</Heading>
+	<Heading color="crimson">The quick brown fox jumps over the lazy dog</Heading>
+</Flex>
+```
+
+### High-contrast
+
+Use the `highContrast` prop to increase color contrast with the background.
+
+```jsx live="true"
+<Flex direction="column">
+	<Heading color="gray">The quick brown fox jumps over the lazy dog.</Heading>
+	<Heading color="gray" highContrast>
+		The quick brown fox jumps over the lazy dog.
+	</Heading>
+</Flex>
+```
