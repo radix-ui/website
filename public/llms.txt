@@ -1,0 +1,160 @@
+# Radix UI
+
+> Radix UI is an open-source React component library for building high-quality, accessible design systems and web apps.
+
+For complete documentation in a single file, see:
+- [Full Documentation](https://www.radix-ui.com/llms-full.txt): All Radix UI documentation combined
+- [Primitives Documentation](https://www.radix-ui.com/llms-primitives.txt): Complete Primitives docs
+- [Themes Documentation](https://www.radix-ui.com/llms-themes.txt): Complete Themes docs
+- [Colors Documentation](https://www.radix-ui.com/llms-colors.txt): Complete Colors docs
+
+## Radix Primitives
+
+Unstyled, accessible React components for building high-quality design systems and web applications.
+
+### Overview
+- [Accessibility](https://www.radix-ui.com/primitives/docs/overview/accessibility): Radix Primitives follow the WAI-ARIA authoring practices guidelines and are tested in a wide selection of modern browsers and commonly used assistive technologies.
+- [Getting started](https://www.radix-ui.com/primitives/docs/overview/getting-started): A quick tutorial to get you up and running with Radix Primitives.
+- [Introduction](https://www.radix-ui.com/primitives/docs/overview/introduction): An open-source UI component library for building high-quality, accessible design systems and web apps.
+- [Releases](https://www.radix-ui.com/primitives/docs/overview/releases): Radix Primitives releases and their changelogs.
+
+### Guides
+- [Animation](https://www.radix-ui.com/primitives/docs/guides/animation): Animate Radix Primitives with CSS keyframes or the JavaScript animation library of your choice.
+- [Composition](https://www.radix-ui.com/primitives/docs/guides/composition): Use the `asChild` prop to compose Radix's functionality onto alternative element types or your own React components.
+- [Server-side rendering](https://www.radix-ui.com/primitives/docs/guides/server-side-rendering): Radix Primitives can be rendered on the server. However, Primitives in React versions less than 18 rely on hydration for ids.
+- [Styling](https://www.radix-ui.com/primitives/docs/guides/styling): Radix Primitives are unstyled—and compatible with any styling solution—giving you complete control over styling.
+
+### Components
+- [Accordion](https://www.radix-ui.com/primitives/docs/components/accordion): A vertically stacked set of interactive headings that each reveal an associated section of content.
+- [Alert Dialog](https://www.radix-ui.com/primitives/docs/components/alert-dialog): A modal dialog that interrupts the user with important content and expects a response.
+- [Aspect Ratio](https://www.radix-ui.com/primitives/docs/components/aspect-ratio): Displays content within a desired ratio.
+- [Avatar](https://www.radix-ui.com/primitives/docs/components/avatar): An image element with a fallback for representing the user.
+- [Checkbox](https://www.radix-ui.com/primitives/docs/components/checkbox): A control that allows the user to toggle between checked and not checked.
+- [Collapsible](https://www.radix-ui.com/primitives/docs/components/collapsible): An interactive component which expands/collapses a panel.
+- [Context Menu](https://www.radix-ui.com/primitives/docs/components/context-menu): Displays a menu located at the pointer, triggered by a right click or a long press.
+- [Dialog](https://www.radix-ui.com/primitives/docs/components/dialog): A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
+- [Dropdown Menu](https://www.radix-ui.com/primitives/docs/components/dropdown-menu): Displays a menu to the user—such as a set of actions or functions—triggered by a button.
+- [Form](https://www.radix-ui.com/primitives/docs/components/form): Collect information from your users using validation rules.
+- [Hover Card](https://www.radix-ui.com/primitives/docs/components/hover-card): For sighted users to preview content available behind a link.
+- [Label](https://www.radix-ui.com/primitives/docs/components/label): Renders an accessible label associated with controls.
+- [Menubar](https://www.radix-ui.com/primitives/docs/components/menubar): A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.
+- [Navigation Menu](https://www.radix-ui.com/primitives/docs/components/navigation-menu): A collection of links for navigating websites.
+- [One-Time Password Field](https://www.radix-ui.com/primitives/docs/components/one-time-password-field): A group of single-character text inputs to handle one-time password verification
+- [Password Toggle Field](https://www.radix-ui.com/primitives/docs/components/password-toggle-field): A password input field with an integrated button to toggle the value's visibility
+- [Popover](https://www.radix-ui.com/primitives/docs/components/popover): Displays rich content in a portal, triggered by a button.
+- [Progress](https://www.radix-ui.com/primitives/docs/components/progress): Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+- [Radio Group](https://www.radix-ui.com/primitives/docs/components/radio-group): A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.
+- [Scroll Area](https://www.radix-ui.com/primitives/docs/components/scroll-area): Augments native scroll functionality for custom, cross-browser styling.
+- [Select](https://www.radix-ui.com/primitives/docs/components/select): Displays a list of options for the user to pick from—triggered by a button.
+- [Separator](https://www.radix-ui.com/primitives/docs/components/separator): Visually or semantically separates content.
+- [Slider](https://www.radix-ui.com/primitives/docs/components/slider): An input where the user selects a value from within a given range.
+- [Switch](https://www.radix-ui.com/primitives/docs/components/switch): A control that allows the user to toggle between checked and not checked.
+- [Tabs](https://www.radix-ui.com/primitives/docs/components/tabs): A set of layered sections of content—known as tab panels—that are displayed one at a time.
+- [Toast](https://www.radix-ui.com/primitives/docs/components/toast): A succinct message that is displayed temporarily.
+- [Toggle Group](https://www.radix-ui.com/primitives/docs/components/toggle-group): A set of two-state buttons that can be toggled on or off.
+- [Toggle](https://www.radix-ui.com/primitives/docs/components/toggle): A two-state button that can be either on or off.
+- [Toolbar](https://www.radix-ui.com/primitives/docs/components/toolbar): A container for grouping a set of controls, such as buttons, toggle groups or dropdown menus.
+- [Tooltip](https://www.radix-ui.com/primitives/docs/components/tooltip): A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+
+### Utilities
+- [Accessible Icon](https://www.radix-ui.com/primitives/docs/utilities/accessible-icon): Makes icons accessible by adding a label.
+- [Direction Provider](https://www.radix-ui.com/primitives/docs/utilities/direction-provider): Wraps your app to provide global reading direction.
+- [Portal](https://www.radix-ui.com/primitives/docs/utilities/portal): Renders a React subtree in a different part of the DOM.
+- [Slot](https://www.radix-ui.com/primitives/docs/utilities/slot): Merges its props onto its immediate child.
+- [Visually Hidden](https://www.radix-ui.com/primitives/docs/utilities/visually-hidden): Hides content from the screen in an accessible way.
+
+## Radix Themes
+
+A styled component library built on Radix Primitives with a beautiful default theme.
+
+### Overview
+- [Getting started](https://www.radix-ui.com/themes/docs/overview/getting-started): Install Radix Themes and start building in minutes
+- [Layout](https://www.radix-ui.com/themes/docs/overview/layout): Get the layout concerns right.
+- [Releases](https://www.radix-ui.com/themes/docs/overview/releases): Radix Themes releases and their changelogs.
+- [Resources](https://www.radix-ui.com/themes/docs/overview/resources): Related assets and resources.
+- [Styling](https://www.radix-ui.com/themes/docs/overview/styling): How to approach styling with Radix Themes.
+
+### Theme Configuration
+- [Breakpoints](https://www.radix-ui.com/themes/docs/theme/breakpoints): Built-in breakpoints allow you to easily build adapative layouts.
+- [Color](https://www.radix-ui.com/themes/docs/theme/color): Understanding the color system and it’s application in your theme.
+- [Cursors](https://www.radix-ui.com/themes/docs/theme/cursors): Customizing cursors used for interactive elements.
+- [Dark mode](https://www.radix-ui.com/themes/docs/theme/dark-mode): Using appearance to manage and integrate dark mode.
+- [Theme overview](https://www.radix-ui.com/themes/docs/theme/overview): Use the Theme component to change the look and feel of your UI.
+- [Radius](https://www.radix-ui.com/themes/docs/theme/radius): Choosing the right radius setting in your theme.
+- [Shadows](https://www.radix-ui.com/themes/docs/theme/shadows): Understanding the shadow styles used in your theme.
+- [Spacing](https://www.radix-ui.com/themes/docs/theme/spacing): Overview of the space scale and scaling options.
+- [Typography](https://www.radix-ui.com/themes/docs/theme/typography): Guidance for using and tuning typography.
+
+### Components
+- [Accessible Icon](https://www.radix-ui.com/themes/docs/components/accessible-icon): Makes icons accessible by adding a label.
+- [Alert Dialog](https://www.radix-ui.com/themes/docs/components/alert-dialog): Modal confirmation dialog that interrupts the user and expects a response.
+- [Aspect Ratio](https://www.radix-ui.com/themes/docs/components/aspect-ratio): Displays content within a desired ratio.
+- [Avatar](https://www.radix-ui.com/themes/docs/components/avatar): Profile picture, user initials or fallback icon.
+- [Badge](https://www.radix-ui.com/themes/docs/components/badge): Stylized badge element.
+- [Blockquote](https://www.radix-ui.com/themes/docs/components/blockquote): Block-level quotation from another source.
+- [Box](https://www.radix-ui.com/themes/docs/components/box): Fundamental layout building block.
+- [Button](https://www.radix-ui.com/themes/docs/components/button): Trigger an action or event, such as submitting a form or displaying a dialog.
+- [Callout](https://www.radix-ui.com/themes/docs/components/callout): Short message to attract user’s attention.
+- [Card](https://www.radix-ui.com/themes/docs/components/card): Container that groups related content and actions.
+- [Checkbox Cards](https://www.radix-ui.com/themes/docs/components/checkbox-cards): Set of interactive cards where multiple options can be selected at a time.
+- [Checkbox Group](https://www.radix-ui.com/themes/docs/components/checkbox-group): Set of interactive buttons where multiple options can be selected at a time.
+- [Checkbox](https://www.radix-ui.com/themes/docs/components/checkbox): Base input element to toggle an option on and off.
+- [Code](https://www.radix-ui.com/themes/docs/components/code): Marks text to signify a short fragment of computer code.
+- [Container](https://www.radix-ui.com/themes/docs/components/container): Constrains the maximum width of page content.
+- [Context Menu](https://www.radix-ui.com/themes/docs/components/context-menu): Menu representing a set of actions, displayed at the point of right click or long press.
+- [Data List](https://www.radix-ui.com/themes/docs/components/data-list): Displays metadata as a list of key-value pairs.
+- [Dialog](https://www.radix-ui.com/themes/docs/components/dialog): Modal dialog window displayed above the page.
+- [Dropdown Menu](https://www.radix-ui.com/themes/docs/components/dropdown-menu): Menu representing a set of actions, triggered by a button.
+- [Em](https://www.radix-ui.com/themes/docs/components/em): Marks text to stress emphasis.
+- [Flex](https://www.radix-ui.com/themes/docs/components/flex): Component for creating flex layouts.
+- [Grid](https://www.radix-ui.com/themes/docs/components/grid): Component for creating grid layouts.
+- [Heading](https://www.radix-ui.com/themes/docs/components/heading): Semantic heading element.
+- [Hover Card](https://www.radix-ui.com/themes/docs/components/hover-card): For sighted users to preview content available behind a link.
+- [Icon Button](https://www.radix-ui.com/themes/docs/components/icon-button): Button designed specifically for usage with a single icon.
+- [Inset](https://www.radix-ui.com/themes/docs/components/inset): Applies a negative margin to allow content to bleed into the surrounding container.
+- [Kbd](https://www.radix-ui.com/themes/docs/components/kbd): Represents keyboard input or a hotkey.
+- [Link](https://www.radix-ui.com/themes/docs/components/link): Semantic element for navigation between pages.
+- [Popover](https://www.radix-ui.com/themes/docs/components/popover): Floating element for displaying rich content, triggered by a button.
+- [Portal](https://www.radix-ui.com/themes/docs/components/portal): Renders a React subtree in a different part of the DOM.
+- [Progress](https://www.radix-ui.com/themes/docs/components/progress): Displays a progress bar related to a task.
+- [Quote](https://www.radix-ui.com/themes/docs/components/quote): Short inline quotation.
+- [Radio Cards](https://www.radix-ui.com/themes/docs/components/radio-cards): Set of interactive cards where only one can be selected at a time.
+- [Radio Group](https://www.radix-ui.com/themes/docs/components/radio-group): Set of interactive radio buttons where only one can be selected at a time.
+- [Radio](https://www.radix-ui.com/themes/docs/components/radio): Standalone radio button that can be used in any layout.
+- [Reset](https://www.radix-ui.com/themes/docs/components/reset): Removes default browser styles from any component.
+- [Scroll Area](https://www.radix-ui.com/themes/docs/components/scroll-area): Custom-styled scrollable area using native functionality.
+- [Section](https://www.radix-ui.com/themes/docs/components/section): Denotes a section of page content.
+- [Segmented Control](https://www.radix-ui.com/themes/docs/components/segmented-control): Toggle buttons for switching between different values or views.
+- [Select](https://www.radix-ui.com/themes/docs/components/select): Displays a list of options for the user to pick from—triggered by a button.
+- [Separator](https://www.radix-ui.com/themes/docs/components/separator): Visually or semantically separates content.
+- [Skeleton](https://www.radix-ui.com/themes/docs/components/skeleton): Replaces content with same shape placeholder that indicates a loading state.
+- [Slider](https://www.radix-ui.com/themes/docs/components/slider): Provides user selection from a range of values.
+- [Slot](https://www.radix-ui.com/themes/docs/components/slot): Merges its props onto its immediate child.
+- [Spinner](https://www.radix-ui.com/themes/docs/components/spinner): Displays an animated loading indicator.
+- [Strong](https://www.radix-ui.com/themes/docs/components/strong): Marks text to signify strong importance.
+- [Switch](https://www.radix-ui.com/themes/docs/components/switch): Toggle switch alternative to the checkbox.
+- [Tab Nav](https://www.radix-ui.com/themes/docs/components/tab-nav): Navigation menu with links styled as tabs.
+- [Table](https://www.radix-ui.com/themes/docs/components/table): Semantic table element for presenting data.
+- [Tabs](https://www.radix-ui.com/themes/docs/components/tabs): Set of content sections to be displayed one at a time.
+- [Text Area](https://www.radix-ui.com/themes/docs/components/text-area): Captures multi-line user input.
+- [Text Field](https://www.radix-ui.com/themes/docs/components/text-field): Captures user input with an optional slot for buttons and icons.
+- [Text](https://www.radix-ui.com/themes/docs/components/text): Foundational text primitive.
+- [Theme](https://www.radix-ui.com/themes/docs/components/theme): Wraps all or part of a React tree to provide theme configuration.
+- [Tooltip](https://www.radix-ui.com/themes/docs/components/tooltip): Floating element that provides a control with contextual information via pointer or focus.
+- [Visually Hidden](https://www.radix-ui.com/themes/docs/components/visually-hidden): Hides content from the screen in an accessible way.
+
+## Radix Colors
+
+A gorgeous, accessible color system for designing beautiful websites and apps.
+
+### Overview
+- [Aliasing](https://www.radix-ui.com/colors/docs/overview/aliasing): How to use Radix Colors.
+- [Custom palettes](https://www.radix-ui.com/colors/docs/overview/custom-palettes): How to create custom Radix Colors palettes.
+- [Installation](https://www.radix-ui.com/colors/docs/overview/installation): How to install Radix Colors.
+- [Releases](https://www.radix-ui.com/colors/docs/overview/releases): Radix Colors changelog.
+- [How to use Radix Colors](https://www.radix-ui.com/colors/docs/overview/usage): How to use Radix Colors.
+
+### Palette Composition
+- [Composing a color palette](https://www.radix-ui.com/colors/docs/palette-composition/composing-a-palette): A guide to composing a color palette with Radix Colors.
+- [Scales](https://www.radix-ui.com/colors/docs/palette-composition/scales): See all accessible color scales that Radix Colors provides.
+- [Use cases](https://www.radix-ui.com/colors/docs/palette-composition/understanding-the-scale): How to use Radix Colors.
