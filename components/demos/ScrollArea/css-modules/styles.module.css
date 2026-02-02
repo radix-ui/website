@@ -4,7 +4,7 @@
 	border-radius: 4px;
 	overflow: hidden;
 	box-shadow: 0 2px 10px var(--black-a4);
-	background-color: white;
+	background-color: var(--color-background);
 	--scrollbar-size: 10px;
 }
 

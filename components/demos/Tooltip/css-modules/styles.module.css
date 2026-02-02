@@ -4,7 +4,7 @@
 	font-size: 15px;
 	line-height: 1;
 	color: var(--violet-11);
-	background-color: white;
+	background-color: var(--color-background);
 	box-shadow:
 		hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
 		hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
@@ -40,7 +40,7 @@
 	align-items: center;
 	justify-content: center;
 	color: var(--violet-11);
-	background-color: white;
+	background-color: var(--color-background);
 	box-shadow: 0 2px 10px var(--black-a7);
 	user-select: none;
 	&:hover {
