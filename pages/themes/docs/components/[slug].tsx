@@ -1,13 +1,14 @@
 import * as React from "react";
 import { getMDXComponent } from "mdx-bundler/client";
 import NextLink from "next/link";
+import { useRouter } from "next/router";
 import { Box, Flex, Link, Text, Heading } from "@radix-ui/themes";
 import { TitleAndMetaTags } from "@components/TitleAndMetaTags";
 import { MDXProvider } from "@components/MDXComponents";
 import { ThemesMDXComponents } from "@components/ThemesMDXComponents";
 import { getAllFrontmatter, getMdxBySlug } from "@utils/mdx";
 import { QuickNav } from "@components/QuickNav";
-import { ArrowTopRightIcon } from "@radix-ui/react-icons";
+import { ArrowTopRightIcon, FileTextIcon } from "@radix-ui/react-icons";
 
 import type { Frontmatter } from "types/frontmatter";
 import { GetStaticPropsContext } from "next";
@@ -20,6 +21,7 @@ type Doc = {
 export default function GuidesDoc({ frontmatter, code }: Doc) {
 	const Component = React.useMemo(() => getMDXComponent(code), [code]);
 	const componentName = frontmatter.metaTitle.replace(/\s+/g, "");
+	const router = useRouter();
 
 	return (
 		<>
@@ -48,6 +50,7 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
 				</Text>
 
 				<Flex
+					data-md-exclude
 					direction={{ initial: "column", xs: "row" }}
 					gap={{ initial: "3", xs: "5" }}
 					mt="5"
@@ -74,6 +77,12 @@ export default function GuidesDoc({ frontmatter, code }: Doc) {
 							<Box asChild style={{ color: "var(--gray-9)" }}>
 								<ArrowTopRightIcon />
 							</Box>
+						</Link>
+					</Flex>
+
+					<Flex asChild display="inline-flex" align="center" gap="2">
+						<Link size="3" href={`${router.asPath}.md`}>
+							View as Markdown
 						</Link>
 					</Flex>
 
