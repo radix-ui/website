@@ -126,12 +126,6 @@ function cleanupHtml() {
 			removeNode(tree, node);
 		}
 
-		// Remove live preview elements (interactive demos)
-		const livePreviews = selectAll("[data-live-preview='true']", tree);
-		for (const node of livePreviews) {
-			removeNode(tree, node);
-		}
-
 		// Remove elements marked for markdown exclusion
 		const mdExcluded = selectAll("[data-md-exclude]", tree);
 		for (const node of mdExcluded) {

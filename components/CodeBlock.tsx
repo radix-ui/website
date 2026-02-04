@@ -48,7 +48,7 @@ const LivePreview = React.forwardRef<HTMLDivElement, LivePreviewProps>(
 		forwardedRef,
 	) {
 		return (
-			<Theme asChild className="radix-themes-default-fonts" data-live-preview>
+			<Theme asChild className="radix-themes-default-fonts" data-md-exclude>
 				<Box
 					ref={forwardedRef}
 					className={classNames(styles.CodeBlockLivePreview, className)}
