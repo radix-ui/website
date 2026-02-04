@@ -70,7 +70,7 @@ async function convertHtmlToMarkdown(html: string): Promise<string> {
 		.use(remarkStringify, {
 			bullet: "-",
 			emphasis: "_",
-			strong: "**",
+			strong: "*",
 			fence: "`",
 			fences: true,
 			listItemIndent: "one",
@@ -113,6 +113,12 @@ function cleanupHtml() {
 		// Remove elements marked as excluded from indexing
 		const excluded = selectAll("[data-algolia-exclude]", tree);
 		for (const node of excluded) {
+			removeNode(tree, node);
+		}
+
+		// Remove hidden category labels (e.g., "Components", "Guides")
+		const hiddenLabels = selectAll("[data-algolia-lvl0]", tree);
+		for (const node of hiddenLabels) {
 			removeNode(tree, node);
 		}
 
