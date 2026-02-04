@@ -211,7 +211,7 @@ function removeNode(tree: Root | Element, nodeToRemove: Element): void {
 				return true;
 			}
 			for (const child of node.children) {
-				if (child.type === "element" || child.type === "root") {
+				if (child.type === "element") {
 					if (visit(child as Element)) {
 						return true;
 					}

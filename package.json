@@ -66,6 +66,7 @@
 		"usehooks-ts": "^3.0.1"
 	},
 	"devDependencies": {
+		"@types/hast": "3.0.4",
 		"@types/lodash.debounce": "^4.0.6",
 		"@types/node": "20.12.10",
 		"@types/react": "^18.3.4",
