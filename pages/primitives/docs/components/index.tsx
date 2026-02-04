@@ -39,19 +39,23 @@ export default function ComponentsIndex({ components }: Props) {
 				</Text>
 			</Box>
 
-			<Flex direction="column" gap="4">
-				{components.map((component) => (
-					<Box key={component.slug}>
-						<NextLink href={`/${component.slug}`} passHref legacyBehavior>
-							<Link size="3" weight="medium">
-								{component.title}
-							</Link>
-						</NextLink>
-						<Text as="p" size="2" color="gray">
-							{component.description}
-						</Text>
-					</Box>
-				))}
+			<Flex direction="column" gap="4" asChild p="0">
+				<ul>
+					{components.map((component) => (
+						<Box key={component.slug} asChild>
+							<li>
+								<NextLink href={`/${component.slug}`} passHref legacyBehavior>
+									<Link size="3" weight="medium">
+										{component.title}
+									</Link>
+								</NextLink>
+								<Text as="p" size="2" color="gray">
+									{component.description}
+								</Text>
+							</li>
+						</Box>
+					))}
+				</ul>
 			</Flex>
 		</>
 	);
