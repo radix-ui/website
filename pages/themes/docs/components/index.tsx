@@ -1,20 +1,21 @@
 import * as React from "react";
-import { getMDXComponent } from "mdx-bundler/client";
+import NextLink from "next/link";
+import { Heading, Text, Box, Flex, Link } from "@radix-ui/themes";
 import { TitleAndMetaTags } from "@components/TitleAndMetaTags";
-import { MDXProvider } from "@components/MDXComponents";
-import { ThemesMDXComponents } from "@components/ThemesMDXComponents";
-import { QuickNav } from "@components/QuickNav";
-import { getMdxBySlug } from "@utils/mdx";
+import { getAllFrontmatter } from "@utils/mdx";
 import type { Frontmatter } from "types/frontmatter";
 
-type Doc = {
-	frontmatter: Frontmatter;
-	code: string;
+type ComponentItem = {
+	slug: string;
+	title: string;
+	description: string;
 };
 
-export default function ComponentsIndex({ frontmatter, code }: Doc) {
-	const Component = React.useMemo(() => getMDXComponent(code), [code]);
+type Props = {
+	components: ComponentItem[];
+};
 
+export default function ComponentsIndex({ components }: Props) {
 	return (
 		<>
 			<div data-algolia-lvl0 style={{ display: "none" }}>
@@ -22,24 +23,51 @@ export default function ComponentsIndex({ frontmatter, code }: Doc) {
 			</div>
 
 			<TitleAndMetaTags
-				title={`${frontmatter.metaTitle} – Radix Themes`}
-				description={frontmatter.metaDescription}
+				title="Components – Radix Themes"
+				description="A comprehensive library of React components for building beautiful, accessible user interfaces."
 				image="themes.png"
 			/>
 
-			<MDXProvider frontmatter={frontmatter}>
-				<Component components={ThemesMDXComponents as any} />
-			</MDXProvider>
+			<Heading as="h1" size="8" mb="2">
+				Components
+			</Heading>
 
-			<QuickNav key={frontmatter.slug} />
+			<Box mb="7">
+				<Text as="p" size="4" color="gray">
+					A comprehensive library of React components for building beautiful,
+					accessible user interfaces.
+				</Text>
+			</Box>
+
+			<Flex direction="column" gap="4">
+				{components.map((component) => (
+					<Box key={component.slug}>
+						<NextLink href={`/${component.slug}`} passHref legacyBehavior>
+							<Link size="3" weight="medium">
+								{component.title}
+							</Link>
+						</NextLink>
+						<Text as="p" size="2" color="gray">
+							{component.description}
+						</Text>
+					</Box>
+				))}
+			</Flex>
 		</>
 	);
 }
 
 export async function getStaticProps() {
-	const { frontmatter, code } = await getMdxBySlug(
-		"themes/docs/components/",
-		"index",
-	);
-	return { props: { frontmatter, code } };
+	const frontmatters = getAllFrontmatter("themes/docs/components");
+
+	const components = frontmatters
+		.filter((fm) => !fm.slug.endsWith("/index"))
+		.map((fm) => ({
+			slug: fm.slug,
+			title: fm.metaTitle,
+			description: fm.metaDescription,
+		}))
+		.sort((a, b) => a.title.localeCompare(b.title));
+
+	return { props: { components } };
 }
