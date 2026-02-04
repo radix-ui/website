@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { format } from "oxfmt";
 import { unified } from "unified";
 import rehypeParse from "rehype-parse";
 import rehypeRemark from "rehype-remark";
@@ -46,12 +47,15 @@ export default async function handler(
 		// Convert HTML to Markdown
 		const markdown = await convertHtmlToMarkdown(html);
 
+		// Format markdown
+		const { code: formattedMarkdown } = await format("file.md", markdown);
+
 		// Set appropriate headers
 		res.setHeader("Content-Type", "text/markdown; charset=utf-8");
 		res.setHeader("X-Content-Type-Options", "nosniff");
 		res.setHeader("Cache-Control", "public, max-age=3600, s-maxage=86400");
 
-		return res.status(200).send(markdown);
+		return res.status(200).send(formattedMarkdown);
 	} catch (error) {
 		console.error("Error converting to markdown:", error);
 		return res
@@ -119,6 +123,12 @@ function cleanupHtml() {
 		// Remove hidden category labels (e.g., "Components", "Guides")
 		const hiddenLabels = selectAll("[data-algolia-lvl0]", tree);
 		for (const node of hiddenLabels) {
+			removeNode(tree, node);
+		}
+
+		// Remove live preview elements (interactive demos)
+		const livePreviews = selectAll("[data-live-preview='true']", tree);
+		for (const node of livePreviews) {
 			removeNode(tree, node);
 		}
 
