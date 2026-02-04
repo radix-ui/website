@@ -132,6 +132,20 @@ function cleanupHtml() {
 			removeNode(tree, node);
 		}
 
+		// Remove visually-hidden elements (AccessibleIcon, screen-reader-only spans)
+		// These use clip:rect(0, 0, 0, 0) or similar visually-hidden CSS patterns
+		const allSpans = selectAll("span", tree) as Element[];
+		for (const span of allSpans) {
+			const style = span.properties?.style;
+			if (
+				typeof style === "string" &&
+				(style.includes("clip:rect(0, 0, 0, 0)") ||
+					style.includes("clip: rect(0, 0, 0, 0)"))
+			) {
+				removeNode(tree, span);
+			}
+		}
+
 		// Remove navigation and footer elements
 		const navFooterSelectors = ["nav", "footer"];
 		for (const selector of navFooterSelectors) {
