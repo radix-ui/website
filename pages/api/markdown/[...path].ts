@@ -43,14 +43,9 @@ export default async function handler(
 		}
 
 		const html = await htmlResponse.text();
-
-		// Convert HTML to Markdown
 		const markdown = await convertHtmlToMarkdown(html);
-
-		// Format markdown
 		const { code: formattedMarkdown } = await format("file.md", markdown);
 
-		// Set appropriate headers
 		res.setHeader("Content-Type", "text/markdown; charset=utf-8");
 		res.setHeader("X-Content-Type-Options", "nosniff");
 		res.setHeader("Cache-Control", "public, max-age=3600, s-maxage=86400");

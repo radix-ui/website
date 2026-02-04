@@ -9,9 +9,9 @@ import {
 	Flex,
 	Inset,
 	ScrollArea,
-	VisuallyHidden,
 } from "@radix-ui/themes";
 import { InfoCircledIcon, DividerHorizontalIcon } from "@radix-ui/react-icons";
+import { AccessibleIcon } from "radix-ui";
 
 export type PropDef = {
 	name: string;
@@ -73,11 +73,15 @@ export function PropsTable({
 											{description && (
 												<Popover.Root>
 													<Popover.Trigger>
-														<IconButton variant="ghost" size="1" color="gray">
-															<InfoCircledIcon aria-hidden="true" />
-															<VisuallyHidden data-md-exclude>
-																Prop description
-															</VisuallyHidden>
+														<IconButton
+															variant="ghost"
+															size="1"
+															color="gray"
+															data-md-exclude
+														>
+															<AccessibleIcon.Root label="Prop description">
+																<InfoCircledIcon aria-hidden="true" />
+															</AccessibleIcon.Root>
 														</IconButton>
 													</Popover.Trigger>
 													<Popover.Content
@@ -108,11 +112,15 @@ export function PropsTable({
 											{Boolean(typeSimple) && Boolean(type) && (
 												<Popover.Root>
 													<Popover.Trigger>
-														<IconButton variant="ghost" color="gray" size="1">
-															<InfoCircledIcon aria-hidden="true" />
-															<VisuallyHidden data-md-exclude>
-																See full type
-															</VisuallyHidden>
+														<IconButton
+															variant="ghost"
+															color="gray"
+															size="1"
+															data-md-exclude
+														>
+															<AccessibleIcon.Root label="See full type">
+																<InfoCircledIcon />
+															</AccessibleIcon.Root>
 														</IconButton>
 													</Popover.Trigger>
 													<Popover.Content
@@ -158,13 +166,11 @@ export function PropsTable({
 											</Code>
 										) : (
 											<>
-												<DividerHorizontalIcon
-													aria-hidden="true"
-													style={{ color: "var(--gray-8)" }}
-												/>
-												<VisuallyHidden data-md-exclude>
-													No default value
-												</VisuallyHidden>
+												<AccessibleIcon.Root label="No default value">
+													<DividerHorizontalIcon
+														style={{ color: "var(--gray-8)" }}
+													/>
+												</AccessibleIcon.Root>
 											</>
 										)}
 									</Table.Cell>
