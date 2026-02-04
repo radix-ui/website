@@ -48,7 +48,11 @@ export default async function handler(
 
 		res.setHeader("Content-Type", "text/markdown; charset=utf-8");
 		res.setHeader("X-Content-Type-Options", "nosniff");
-		res.setHeader("Cache-Control", "public, max-age=3600, s-maxage=86400");
+		// Aggressive caching: 7 days browser, 30 days CDN, serve stale for 90 days while revalidating
+		res.setHeader(
+			"Cache-Control",
+			"public, max-age=604800, s-maxage=2592000, stale-while-revalidate=7776000",
+		);
 
 		return res.status(200).send(formattedMarkdown);
 	} catch (error) {
