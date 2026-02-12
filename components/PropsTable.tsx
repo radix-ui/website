@@ -73,9 +73,14 @@ export function PropsTable({
 											{description && (
 												<Popover.Root>
 													<Popover.Trigger>
-														<IconButton variant="ghost" size="1" color="gray">
+														<IconButton
+															variant="ghost"
+															size="1"
+															color="gray"
+															data-md-exclude
+														>
 															<AccessibleIcon.Root label="Prop description">
-																<InfoCircledIcon />
+																<InfoCircledIcon aria-hidden="true" />
 															</AccessibleIcon.Root>
 														</IconButton>
 													</Popover.Trigger>
@@ -107,7 +112,12 @@ export function PropsTable({
 											{Boolean(typeSimple) && Boolean(type) && (
 												<Popover.Root>
 													<Popover.Trigger>
-														<IconButton variant="ghost" color="gray" size="1">
+														<IconButton
+															variant="ghost"
+															color="gray"
+															size="1"
+															data-md-exclude
+														>
 															<AccessibleIcon.Root label="See full type">
 																<InfoCircledIcon />
 															</AccessibleIcon.Root>
@@ -155,11 +165,13 @@ export function PropsTable({
 												{defaultValue}
 											</Code>
 										) : (
-											<AccessibleIcon.Root label="No default value">
-												<DividerHorizontalIcon
-													style={{ color: "var(--gray-8)" }}
-												/>
-											</AccessibleIcon.Root>
+											<>
+												<AccessibleIcon.Root label="No default value">
+													<DividerHorizontalIcon
+														style={{ color: "var(--gray-8)" }}
+													/>
+												</AccessibleIcon.Root>
+											</>
 										)}
 									</Table.Cell>
 								</Table.Row>

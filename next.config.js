@@ -13,6 +13,15 @@ module.exports = {
 	},
 
 	// Next.js config
+	async rewrites() {
+		return [
+			{
+				source: "/:path*.md",
+				destination: "/api/markdown/:path*",
+			},
+		];
+	},
+
 	async redirects() {
 		return [
 			{
