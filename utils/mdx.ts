@@ -23,10 +23,12 @@ export const getAllFrontmatter = (fromPath: string) => {
 		.map((filePath) => {
 			const source = fs.readFileSync(path.join(filePath), "utf8");
 			const { data, content } = matter(source);
-
+			// 修复：使用 path.relative 来获取相对路径，跨平台兼容
+			const relativePath = path.relative(DATA_PATH, filePath);
+			const slug = relativePath.replace(/\.mdx$/, "").replace(/\\/g, "/"); // 统一使用正斜杠
 			return {
 				...(data as Frontmatter),
-				slug: filePath.replace(`${DATA_PATH}/`, "").replace(".mdx", ""),
+				slug,
 			} as Frontmatter;
 		})
 		.sort(
